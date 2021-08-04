@@ -10,6 +10,6 @@ export default {
       format: 'esm'
     }
   ],
-  plugins: [ts({ include: ['./src/**/*.ts'] }), terser(), filesize()],
+  plugins: [ts({ include: ['./src/**/*.{ts,tsx}'] }), terser(), filesize()],
   external: ['react']
 }

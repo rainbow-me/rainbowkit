@@ -5,12 +5,13 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c ../../rollup.config.js"
+    "build": "rollup -c ../../rollup.config.js",
+    "dev": "rollup -cw ../../rollup.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@walletconnect/client": "^1.5.2"
+    "@walletconnect/client": "^2.0.0-beta.16"
   }
 }
