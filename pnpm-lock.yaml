@@ -22,6 +22,7 @@ specifiers:
   prettier: ^2.3.2
   react: ^17.0.2
   react-dom: ^17.0.2
+  react-qr-code: ^2.0.1
   rollup: ^2.55.1
   rollup-plugin-filesize: ^9.1.1
   rollup-plugin-terser: ^7.0.2
@@ -31,6 +32,7 @@ specifiers:
 dependencies:
   '@walletconnect/client': 2.0.0-beta.16
   jotai: 1.2.2_react@17.0.2
+  react-qr-code: 2.0.1_react@17.0.2
 
 devDependencies:
   '@commitlint/cli': 13.1.0
@@ -2908,7 +2910,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -3082,7 +3083,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
@@ -3970,7 +3970,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /psl/1.8.0:
     resolution: {integrity: sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ==}
@@ -4011,6 +4010,10 @@ packages:
     resolution: {integrity: sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=}
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: true
+
+  /qr.js/0.0.0:
+    resolution: {integrity: sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=}
+    dev: false
 
   /qs/6.5.2:
     resolution: {integrity: sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==}
@@ -4108,11 +4111,21 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
+
+  /react-qr-code/2.0.1_react@17.0.2:
+    resolution: {integrity: sha512-Qoe05Qkl1U7PsbhvOjhA/XSIKXDX3oX/uR1mWTrwBsi+aRJvMfPCRgWZJZLJazFFqsQAuMFyaI+UCh/Lhue+xQ==}
+    peerDependencies:
+      react: ^16.x || ^17.x
+      react-native-svg: '*'
+    dependencies:
+      prop-types: 15.7.2
+      qr.js: 0.0.0
+      react: 17.0.2
+    dev: false
 
   /react-refresh/0.8.3:
     resolution: {integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==}

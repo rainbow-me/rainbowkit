@@ -1,25 +1,14 @@
-import React, { Suspense, useEffect } from 'react'
-import { createClient } from '../src/core'
+import React, { Suspense, useEffect, useState } from 'react'
+import { useClient } from '../src/core'
+import QRCode from 'react-qr-code'
 
 const AtomicWallet = () => {
-  useEffect(() => {
-    createClient().then((client) =>
-      client
-        .connect({
-          permissions: {
-            blockchain: {
-              chains: ['homestead']
-            },
-            jsonrpc: {
-              methods: ['eth_sendTransaction', 'personal_sign', 'eth_signTypedData']
-            }
-          }
-        })
-        .then(console.log)
-    )
-  }, [])
+  const [uri, set] = useState('')
+  const { session } = useClient({ onURI: set })
 
-  return <></>
+  console.log(session)
+
+  return <>{uri && <QRCode value={uri} />}</>
 }
 
 export const Wallet = () => {

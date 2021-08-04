@@ -1,23 +1,63 @@
 import { atom, useAtom } from 'jotai'
 
-import WalletConnectClient from '@walletconnect/client'
+import WalletConnectClient, { CLIENT_EVENTS } from '@walletconnect/client'
+import type { ClientOptions, PairingTypes, ClientTypes, SessionTypes } from '@walletconnect/types'
+import { constructDeeplink, getClientPairings } from './util'
+import { useEffect } from 'react'
 
-export const createClient = async () => {
-  return await WalletConnectClient.init({
-    relayProvider: 'wss://relay.walletconnect.org',
-    metadata: {
-      name: 'Example Dapp',
-      description: 'Example Dapp',
-      url: '#',
-      icons: ['https://walletconnect.org/walletconnect-logo.png']
-    }
-  })
+const defaultOptions: ClientOptions = {
+  relayProvider: 'wss://relay.walletconnect.org',
+  metadata: {
+    name: 'Example Dapp',
+    description: 'Example Dapp',
+    url: '#',
+    icons: ['https://walletconnect.org/walletconnect-logo.png']
+  }
 }
 
-const clientAtom = atom(async () => createClient())
+const createClient = async ({
+  options = defaultOptions,
+  onURI,
+  clientConnectParams = {
+    permissions: {
+      blockchain: {
+        chains: ['eip155:1', 'eip155:10', 'eip155:100', 'eip155:137', 'cosmos:cosmoshub-4']
+      },
+      jsonrpc: {
+        methods: ['eth_sendTransaction', 'personal_sign', 'eth_signTypedData']
+      }
+    }
+  }
+}: {
+  options?: ClientOptions
+  onURI: (uri: string) => void
+  clientConnectParams?: ClientTypes.ConnectParams
+}) => {
+  const client = await WalletConnectClient.init(options)
+  let session: SessionTypes.Settled
 
-export const useClient = () => {
-  const [client] = useAtom(clientAtom)
+  client.on(CLIENT_EVENTS.pairing.proposal, async (proposal: PairingTypes.Proposal) => {
+    const { uri } = proposal.signal.params
 
-  return client
+    const deeplink = constructDeeplink(uri)
+    onURI(deeplink)
+  })
+
+  if (!getClientPairings(client).length) {
+    session = await client.connect(clientConnectParams)
+  }
+
+  return { client, session }
+}
+
+const clientAtom = atom<{ client: WalletConnectClient; session: SessionTypes.Settled }>({ client: null, session: null })
+
+export const useClient = ({ onURI }: { onURI: (uri: string) => void }) => {
+  const [{ client, session }, set] = useAtom(clientAtom)
+
+  useEffect(() => {
+    createClient({ onURI }).then(set)
+  }, [])
+
+  return { client, session }
 }

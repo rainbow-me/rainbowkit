@@ -5,7 +5,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -cw",
+    "build:watch": "rollup -cw",
+    "demo": "next",
     "postinstall": "husky install",
     "lint": "eslint . --ext=js,mjs,ts,cjs",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md}\"",
@@ -51,7 +52,8 @@
   },
   "dependencies": {
     "@walletconnect/client": "^2.0.0-beta.16",
-    "jotai": "^1.2.2"
+    "jotai": "^1.2.2",
+    "react-qr-code": "^2.0.1"
   },
   "description": "",
   "main": "rollup.config.js",
