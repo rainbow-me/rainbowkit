@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2019",
+    "preserveSymlinks": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "isolatedModules": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true
+  },
+  "exclude": ["examples", "packages/*/dist"]
+}

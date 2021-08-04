@@ -1,0 +1,3 @@
+coverage
+.next
+packages/*/dist

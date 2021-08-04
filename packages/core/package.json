@@ -1,0 +1,13 @@
+{
+  "name": "@rainbowkit/core",
+  "version": "0.0.0",
+  "description": "",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c ../rollup.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
