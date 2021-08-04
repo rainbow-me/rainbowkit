@@ -5,7 +5,7 @@
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c ../rollup.config.js"
+    "build": "rollup -c ../../rollup.config.js"
   },
   "keywords": [],
   "author": "",
