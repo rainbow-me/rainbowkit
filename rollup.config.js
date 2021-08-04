@@ -3,7 +3,7 @@ import { terser } from 'rollup-plugin-terser'
 import filesize from 'rollup-plugin-filesize'
 
 export default {
-  input: 'src/index.tsx',
+  input: 'src/index.ts',
   output: [
     {
       dir: 'dist',
@@ -11,5 +11,5 @@ export default {
     }
   ],
   plugins: [ts({ include: ['./src/**/*.{ts,tsx}'] }), terser(), filesize()],
-  external: ['react']
+  external: ['react', '@walletconnect/client']
 }
