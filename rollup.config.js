@@ -11,5 +11,5 @@ export default {
     }
   ],
   plugins: [ts({ include: ['./src/**/*.{ts,tsx}'] }), terser(), filesize()],
-  external: ['react', '@walletconnect/client']
+  external: ['react', '@web3-react/core', '@web3-react/injected-connector']
 }

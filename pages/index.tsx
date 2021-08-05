@@ -1,14 +1,24 @@
 import React, { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-
-const Wallet = dynamic(() => import('../components/Wallet').then((m) => m.Wallet), { ssr: false })
+import { useWallet, withWeb3React } from '../src/index'
 
 const Index = () => {
+  const { isConnected, connect, disconnect, address } = useWallet()
+
   return (
-    <div>
-      <Wallet />
-    </div>
+    <>
+      {isConnected ? (
+        <div>
+          <button onClick={disconnect}>Disconnect</button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={connect}>Connect</button>
+        </div>
+      )}
+      {address}
+    </>
   )
 }
 
-export default Index
+export default withWeb3React(Index)
