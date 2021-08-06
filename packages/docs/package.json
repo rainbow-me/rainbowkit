@@ -1,0 +1,13 @@
+{
+  "name": "docs",
+  "private": true,
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@rainbowkit/core": "workspace:*"
+  },
+  "scripts": {
+    "dev": "next"
+  }
+}

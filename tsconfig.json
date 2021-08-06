@@ -4,7 +4,6 @@
     "module": "esnext",
     "declaration": true,
     "preserveSymlinks": true,
-    "outDir": "dist",
     "isolatedModules": true,
     "esModuleInterop": true,
     "downlevelIteration": true,
@@ -16,23 +15,12 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "declarationDir": "dist",
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strict": false,
     "noEmit": true,
     "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["packages/docs/next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

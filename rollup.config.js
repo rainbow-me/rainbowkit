@@ -8,6 +8,10 @@ export default {
     {
       dir: 'dist',
       format: 'esm'
+    },
+    {
+      file: 'dist/index.cjs',
+      format: 'cjs'
     }
   ],
   plugins: [ts({ include: ['./src/**/*.{ts,tsx}'] }), terser(), filesize()],

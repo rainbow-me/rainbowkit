@@ -1,0 +1,40 @@
+{
+  "name": "@rainbowkit/core",
+  "version": "0.0.0",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.js",
+    "build:watch": "rollup -c ../../rollup.config.js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rainbow-me/rainbowkit/issues"
+  },
+  "homepage": "https://github.com/rainbow-me/rainbowkit#readme",
+  "dependencies": {
+    "@ethersproject/providers": "^5.4.3",
+    "@ethersproject/units": "^5.4.0",
+    "@web3-react/abstract-connector": "^6.0.7",
+    "@web3-react/core": "^6.1.9",
+    "react-useportal": "^1.0.14"
+  },
+  "description": "",
+  "optionalDependencies": {
+    "@walletconnect/client": "^2.0.0-beta.16",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletlink-connector": "^6.2.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
