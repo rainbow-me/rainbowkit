@@ -1,26 +1,15 @@
-import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
-import { AbstractConnectorArguments } from '@web3-react/types'
-import { Web3Provider } from '@ethersproject/providers'
-import { useEagerConnect } from './common'
+import { useConnector } from './common'
 
-export const useWallet = (opts?: AbstractConnectorArguments) => {
-  const {
-    library: provider,
-    activate,
-    active: isConnected,
-    deactivate: disconnect,
-    chainId,
-    connector,
-    account: address,
-    error
-  } = useWeb3React<Web3Provider>()
+export type InjectedWalletOptions = ConstructorParameters<typeof InjectedConnector>[0] & { connectOnMount?: boolean }
 
-  const injected = new InjectedConnector({ supportedChainIds: [1, 137], ...opts }) // Support mainnet and MATIC by default
+export const useInjectedWallet = (opts?: InjectedWalletOptions) => {
+  const options = opts || {}
+  const { connectOnMount, ...injectedOptions } = options
 
-  const tried = useEagerConnect(injected)
+  const injected = new InjectedConnector(injectedOptions)
 
-  const connect = async () => await activate(injected)
+  const ctx = useConnector(injected, connectOnMount)
 
-  return { provider, connect, isConnected, disconnect, chainId, connector, address, error }
+  return ctx
 }

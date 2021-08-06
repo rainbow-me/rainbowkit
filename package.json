@@ -55,12 +55,15 @@
     "@ethersproject/units": "^5.4.0",
     "@walletconnect/client": "^2.0.0-beta.16",
     "@web3-react/core": "^6.1.9",
-    "@web3-react/injected-connector": "^6.0.7",
     "jotai": "^1.2.2"
   },
   "description": "",
   "main": "rollup.config.js",
   "directories": {
     "example": "example"
+  },
+  "optionalDependencies": {
+    "@web3-react/walletlink-connector": "^6.2.3",
+    "@web3-react/injected-connector": "^6.0.7"
   }
 }

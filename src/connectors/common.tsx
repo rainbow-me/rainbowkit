@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider, ExternalProvider } from '@ethersproject/providers'
-import { InjectedConnector } from '@web3-react/injected-connector'
+import { AbstractConnector } from '@web3-react/abstract-connector'
+import { Send, SendReturnResult, SendReturn } from '@web3-react/injected-connector/dist/types'
+
+declare global {
+  interface Window {
+    ethereum: Web3Provider
+  }
+}
 
 export type Web3ProviderInit = (provider: Web3Provider) => void
 
@@ -30,30 +37,45 @@ export const withWeb3React = (
 
   return component
 }
-export function useEagerConnect(injected: InjectedConnector) {
-  const { activate, active } = useWeb3React()
 
-  const [tried, setTried] = useState(false)
+const useConnectOnMount = (connector: AbstractConnector, enabled: boolean) => {
+  const { active, activate } = useWeb3React()
 
   useEffect(() => {
-    injected.isAuthorized().then((isAuthorized: boolean) => {
-      if (isAuthorized) {
-        activate(injected, undefined, true).catch(() => {
-          setTried(true)
-        })
-      } else {
-        setTried(true)
-      }
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []) // intentionally only running on mount (make sure it's only mounted once :))
-
-  // if the connection worked, wait until we get confirmation of that to flip the flag
-  useEffect(() => {
-    if (!tried && active) {
-      setTried(true)
+    const cachedState = localStorage.getItem('rk-connect-on-mount')
+    if (cachedState && enabled && !active && window.ethereum) {
+      activate(connector)
     }
-  }, [tried, active])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []) // Only trigger on mount
+}
 
-  return tried
+export function useConnector<T extends AbstractConnector = AbstractConnector>(
+  abstractConnector: T,
+  connectOnMount = true
+) {
+  const {
+    library: provider,
+    activate,
+    active: isConnected,
+    deactivate,
+    chainId,
+    connector,
+    account: address,
+    error
+  } = useWeb3React<Web3Provider>()
+
+  const disconnect = () => {
+    localStorage.removeItem('rk-connect-on-mount')
+    return deactivate()
+  }
+
+  useConnectOnMount(abstractConnector, connectOnMount)
+
+  const connect = async () => {
+    localStorage.setItem('rk-connect-on-mount', 'true')
+    return await activate(abstractConnector)
+  }
+
+  return { provider, connect, isConnected, disconnect, chainId, connector: connector as T, address, error }
 }
