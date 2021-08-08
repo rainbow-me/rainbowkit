@@ -6,6 +6,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@ethersproject/units": "^5.4.0",
+    "@rainbowkit/connectors": "workspace:^0.0.0",
     "@rainbowkit/core": "workspace:*",
     "dokz": "^2.0.7",
     "framer-motion": "^4.1.17",

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
-import { Web3Provider, ExternalProvider } from '@ethersproject/providers'
+import { useEffect, useState } from 'react'
+import { useWeb3React } from '@web3-react/core'
+import { Web3Provider } from '@ethersproject/providers'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 declare global {

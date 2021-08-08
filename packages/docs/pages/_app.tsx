@@ -17,6 +17,7 @@ export default function App(props: AppProps) {
         <DokzProvider
           headerLogo={<span>🌈 RainbowKit</span>}
           docsRootPath="pages/docs"
+          initialColorMode="dark"
           headerItems={[<GithubLink key="0" url="https://github.com/remorses/dokz" />, <ColorModeSwitch key="1" />]}
         >
           <Component {...pageProps} />

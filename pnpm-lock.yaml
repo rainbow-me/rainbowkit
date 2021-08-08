@@ -74,6 +74,27 @@ importers:
       tslib: 2.3.0
       typescript: 4.3.5
 
+  packages/connectors:
+    specifiers:
+      '@ethersproject/providers': ^5.4.3
+      '@ethersproject/units': ^5.4.0
+      '@rainbowkit/core': workspace:^0.0.0
+      '@walletconnect/client': ^2.0.0-beta.16
+      '@web3-react/abstract-connector': ^6.0.7
+      '@web3-react/core': ^6.1.9
+      '@web3-react/injected-connector': ^6.0.7
+      '@web3-react/walletlink-connector': ^6.2.3
+    dependencies:
+      '@ethersproject/providers': 5.4.3
+      '@ethersproject/units': 5.4.0
+      '@rainbowkit/core': link:../core
+      '@web3-react/abstract-connector': 6.0.7
+      '@web3-react/core': 6.1.9
+    optionalDependencies:
+      '@walletconnect/client': 2.0.0-beta.17
+      '@web3-react/injected-connector': 6.0.7
+      '@web3-react/walletlink-connector': 6.2.3
+
   packages/core:
     specifiers:
       '@ethersproject/providers': ^5.4.3
@@ -101,6 +122,7 @@ importers:
       '@emotion/react': ^11.4.1
       '@emotion/styled': ^11.3.0
       '@ethersproject/units': ^5.4.0
+      '@rainbowkit/connectors': workspace:^0.0.0
       '@rainbowkit/core': workspace:*
       dokz: ^2.0.7
       framer-motion: ^4.1.17
@@ -112,6 +134,7 @@ importers:
       '@emotion/react': 11.4.1_react@17.0.2
       '@emotion/styled': 11.3.0_a004d704e6197b43c0d970f424150c43
       '@ethersproject/units': 5.4.0
+      '@rainbowkit/connectors': link:../connectors
       '@rainbowkit/core': link:../core
       dokz: 2.0.7_897dbf47686c6033b7e555ffa6303608
       framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2

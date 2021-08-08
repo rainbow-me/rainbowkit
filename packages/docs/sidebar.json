@@ -7,11 +7,26 @@
             "name": "docs",
             "children": [
                 {
-                    "path": "pages/docs/index.mdx",
-                    "name": "index.mdx",
-                    "meta": {},
-                    "title": "Index",
-                    "url": "/docs/"
+                    "path": "pages/docs/api",
+                    "name": "api",
+                    "children": [
+                        {
+                            "path": "pages/docs/api/HOC.mdx",
+                            "name": "HOC.mdx",
+                            "meta": {},
+                            "title": "HOC",
+                            "url": "/docs/api/HOC"
+                        },
+                        {
+                            "path": "pages/docs/api/hooks.mdx",
+                            "name": "hooks.mdx",
+                            "meta": {},
+                            "title": "Hooks",
+                            "url": "/docs/api/hooks"
+                        }
+                    ],
+                    "size": null,
+                    "type": "directory"
                 }
             ],
             "size": null,
