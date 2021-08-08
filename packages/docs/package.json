@@ -2,10 +2,15 @@
   "name": "docs",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.6.5",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@rainbowkit/core": "workspace:*",
+    "dokz": "^2.0.7",
+    "framer-motion": "^4.1.17",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "@rainbowkit/core": "workspace:*"
+    "react-dom": "latest"
   },
   "scripts": {
     "dev": "next"

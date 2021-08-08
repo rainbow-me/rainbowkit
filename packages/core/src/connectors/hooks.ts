@@ -46,6 +46,7 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
     if (connectOnMount) {
       setStorage(storageProvider || localStorage)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const disconnect = () => {

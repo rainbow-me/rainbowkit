@@ -1,6 +1,8 @@
 {
   "name": "@rainbowkit/core",
+  "type": "module",
   "version": "0.0.0",
+  "description": "Rainbow UI kit",
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
@@ -12,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git"
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/core"
   },
   "keywords": [],
   "author": "",
@@ -28,7 +31,6 @@
     "@web3-react/core": "^6.1.9",
     "react-useportal": "^1.0.14"
   },
-  "description": "",
   "optionalDependencies": {
     "@walletconnect/client": "^2.0.0-beta.16",
     "@web3-react/injected-connector": "^6.0.7",

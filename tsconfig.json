@@ -6,21 +6,16 @@
     "preserveSymlinks": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "downlevelIteration": true,
-    "noImplicitAny": false,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
     "skipLibCheck": true,
     "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "strict": false,
     "noEmit": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules"],
-  "include": ["packages/docs/next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules"]
 }
