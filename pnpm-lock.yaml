@@ -100,6 +100,7 @@ importers:
       '@chakra-ui/react': ^1.6.5
       '@emotion/react': ^11.4.1
       '@emotion/styled': ^11.3.0
+      '@ethersproject/units': ^5.4.0
       '@rainbowkit/core': workspace:*
       dokz: ^2.0.7
       framer-motion: ^4.1.17
@@ -110,6 +111,7 @@ importers:
       '@chakra-ui/react': 1.6.5_4fc78eefa481b142b73174ceac2a27a1
       '@emotion/react': 11.4.1_react@17.0.2
       '@emotion/styled': 11.3.0_a004d704e6197b43c0d970f424150c43
+      '@ethersproject/units': 5.4.0
       '@rainbowkit/core': link:../core
       dokz: 2.0.7_897dbf47686c6033b7e555ffa6303608
       framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
