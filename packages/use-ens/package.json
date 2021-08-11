@@ -1,0 +1,30 @@
+{
+  "name": "use-ens",
+  "version": "0.0.0-wip.0",
+  "description": "A React hook to fetch ENS data",
+  "files": [
+    "dist"
+  ],
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=12.4"
+  },
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.js",
+    "build:watch": "rollup -c ../../rollup.config.js -w"
+  },
+  "keywords": [
+    "ens",
+    "ethereum",
+    "react",
+    "react-hook",
+    "hooks",
+    "blockchain"
+  ],
+  "author": "v1rtl",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "get-ens": "^0.0.0"
+  }
+}

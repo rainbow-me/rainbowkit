@@ -3,10 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "description": "web3-react connectors wrapped in React hooks",
-  "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
-  },
+  "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c ../../rollup.config.js",
