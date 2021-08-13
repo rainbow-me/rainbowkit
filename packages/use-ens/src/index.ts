@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getENS, ResolvedENS } from 'get-ens'
-import { Provider } from '@ethersproject/providers'
+import type { Provider } from '@ethersproject/providers'
 
 /**
  * A React hook to fetch ENS records from a domain.
