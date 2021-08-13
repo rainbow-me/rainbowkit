@@ -137,9 +137,9 @@ importers:
 
   packages/use-ens:
     specifiers:
-      get-ens: ^0.1.1
+      get-ens: ^0.1.4
     dependencies:
-      get-ens: 0.1.1
+      get-ens: 0.1.4
 
 packages:
 
@@ -5007,8 +5007,8 @@ packages:
     engines: {node: 6.* || 8.* || >= 10.*}
     dev: true
 
-  /get-ens/0.1.1:
-    resolution: {integrity: sha512-l9UJpkQA/2i3uWxl+SxF2SvtUTJRfYqzSydsaEIvnt5/xEsPiP8epMuEbxaAoxPiciWWz5GQH5C+5aA4U+I1Zw==}
+  /get-ens/0.1.4:
+    resolution: {integrity: sha512-aGegNUVGbMhhlXOtrzEuwSdsn/rLbJo87TDA3okHUU/CJSubJWgThZsz2bnLKRYttdEWUtvV9JteIhX5UcyD2g==}
     engines: {node: '>=12.4'}
     dependencies:
       '@ethersproject/contracts': 5.4.1
