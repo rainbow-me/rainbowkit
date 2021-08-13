@@ -2,5 +2,14 @@
 const { withDokz } = require('dokz/dist/plugin')
 
 module.exports = withDokz({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx']
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  redirects: async function () {
+    return [
+      {
+        source: '/docs/api',
+        destination: '/docs/API',
+        permanent: true
+      }
+    ]
+  }
 })

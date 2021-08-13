@@ -7,22 +7,22 @@
             "name": "docs",
             "children": [
                 {
-                    "path": "pages/docs/api",
-                    "name": "api",
+                    "path": "pages/docs/API",
+                    "name": "API",
                     "children": [
                         {
-                            "path": "pages/docs/api/HOC.mdx",
+                            "path": "pages/docs/API/HOC.mdx",
                             "name": "HOC.mdx",
                             "meta": {},
                             "title": "HOC",
-                            "url": "/docs/api/HOC"
+                            "url": "/docs/API/HOC"
                         },
                         {
-                            "path": "pages/docs/api/hooks.mdx",
+                            "path": "pages/docs/API/hooks.mdx",
                             "name": "hooks.mdx",
                             "meta": {},
                             "title": "Hooks",
-                            "url": "/docs/api/hooks"
+                            "url": "/docs/API/hooks"
                         }
                     ],
                     "size": null,
