@@ -1,6 +1,6 @@
 # use-ens
 
-A React hook to fetch ENS data.
+A React hook to fetch ENS records from a domain.
 
 ## Install
 
