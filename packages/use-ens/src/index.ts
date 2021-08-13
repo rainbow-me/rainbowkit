@@ -3,10 +3,10 @@ import { getENS } from 'get-ens'
 import { Provider } from '@ethersproject/providers'
 
 export const useENS = (provider: Provider, domain: string) => {
-  const [data, set] = useState({ address: '', records: {} })
+  const [data, set] = useState({ address: '', owner: '' })
 
   useEffect(() => {
-    if (provider) getENS(provider)(domain).then(set)
+    if (provider && domain) getENS(provider)(domain).then(set)
   }, [domain, provider])
 
   return data

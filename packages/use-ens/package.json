@@ -1,6 +1,6 @@
 {
   "name": "use-ens",
-  "version": "0.0.0-wip.0",
+  "version": "0.0.0-wip.1",
   "description": "A React hook to fetch ENS data",
   "files": [
     "dist"
@@ -25,6 +25,6 @@
   "author": "v1rtl",
   "license": "UNLICENSED",
   "dependencies": {
-    "get-ens": "^0.0.0"
+    "get-ens": "^0.0.1"
   }
 }

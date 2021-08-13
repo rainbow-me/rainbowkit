@@ -18,7 +18,7 @@ import { useENS } from 'use-ens'
 const App = () => {
   const { provider } = useWeb3React()
 
-  const { address, records } = useENS(provider)('example.eth')
+  const { address, records, owner } = useENS(provider)('dame.eth')
 
   return (
     <>
