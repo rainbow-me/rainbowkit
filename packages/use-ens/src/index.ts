@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getENS } from 'get-ens'
+import { getENS, ResolvedENS } from 'get-ens'
 import { Provider } from '@ethersproject/providers'
 
 /**
@@ -8,8 +8,8 @@ import { Provider } from '@ethersproject/providers'
  * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = (provider: Provider, domain: string) => {
-  const [data, set] = useState({ address: '', owner: '' })
+export const useENS = (provider: Provider, domain: string): ResolvedENS => {
+  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: { web: {} } })
 
   useEffect(() => {
     if (provider && domain) getENS(provider)(domain).then(set)
