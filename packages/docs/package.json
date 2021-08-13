@@ -2,17 +2,17 @@
   "name": "docs",
   "private": true,
   "dependencies": {
-    "@chakra-ui/react": "^1.6.5",
+    "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@ethersproject/units": "^5.4.0",
-    "@rainbowkit/connectors": "workspace:^0.0.0",
+    "@rainbowkit/connectors": "workspace:*",
     "@rainbowkit/core": "workspace:*",
     "dokz": "^2.0.7",
     "framer-motion": "^4.1.17",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "next": "^11.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "scripts": {
     "dev": "next"
