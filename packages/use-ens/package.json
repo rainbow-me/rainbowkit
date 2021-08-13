@@ -1,6 +1,6 @@
 {
   "name": "use-ens",
-  "version": "0.0.0-wip.7",
+  "version": "0.0.0-wip.8",
   "description": "A React hook to fetch ENS data",
   "files": [
     "dist"
