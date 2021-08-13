@@ -137,9 +137,9 @@ importers:
 
   packages/use-ens:
     specifiers:
-      get-ens: ^0.0.3
+      get-ens: ^0.1.0
     dependencies:
-      get-ens: 0.0.3
+      get-ens: 0.1.0
 
 packages:
 
@@ -5007,12 +5007,11 @@ packages:
     engines: {node: 6.* || 8.* || >= 10.*}
     dev: true
 
-  /get-ens/0.0.3:
-    resolution: {integrity: sha512-zbe9Nk4aCremyAo7Lv69eIjCERNj48W1cFRN/SLfp1lF8KCm2v/yVz6y531pW/zZSehvcD+lWGveFI3xTvjtyQ==}
+  /get-ens/0.1.0:
+    resolution: {integrity: sha512-jW0EYz+baq7OasT4KV2K0zaztL66BSSNc70DafyObeQXNrd8uYZd2c2nwh5bV9Vn94KC2bg3pxGV03TLmRAUkg==}
     dependencies:
       '@ethersproject/contracts': 5.4.1
       '@ethersproject/providers': 5.4.3
-      idna-uts46-hx: 3.4.0
       keccak: 3.0.1
     transitivePeerDependencies:
       - bufferutil
@@ -5393,13 +5392,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-
-  /idna-uts46-hx/3.4.0:
-    resolution: {integrity: sha512-b1I4qYTcJcX1TANn8OhOGrQUIWOfZUWrLKWDeKbV6posVLjp7OTqFKX3N20efrIMzQM1KhiphOEazBEEUFR9bg==}
-    engines: {node: '>=10.18.0', npm: '>=6.13.4'}
-    dependencies:
-      punycode: 2.1.1
-    dev: false
 
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
