@@ -8,29 +8,38 @@ A React hook to fetch ENS records from a domain.
 pnpm i use-ens
 ```
 
-## Usage
+## Example
+
+[![CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/useens-demo-q566k)
 
 ```jsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { useENS } from 'use-ens'
 
 const App = () => {
-  const { provider } = useWeb3React()
+  const { provider, activate } = useWeb3React()
 
-  const { address, records, owner } = useENS(provider)('dame.eth')
+  useEffect(() => {
+      injected.isAuthorized().then((isAuth) => {
+        if (isAuth) activate(injected)
+      })
+    }, [])
+
+  const { address, records } = useENS(provider, 'dame.eth')
 
   return (
     <>
       <p>Address: {address ? address : ''}</p>
       <p>ENS Records</p>
       <ul>
-        {Object.entries(records).map(([k, v]) => (
+        {records.web && Object.entries(records.web).map(([k, v]) => (
           <li>
             {k}: {v}
           </li>
         ))}
       </ul>
+      {!active && <button onClick={() => activate(injected)}>Connect<button>}
     </>
   )
 }
