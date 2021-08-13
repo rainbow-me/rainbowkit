@@ -26,5 +26,9 @@
   "license": "UNLICENSED",
   "dependencies": {
     "get-ens": "^0.0.3"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
   }
 }
