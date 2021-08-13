@@ -1,10 +1,11 @@
 {
   "name": "use-ens",
-  "version": "0.0.0-wip.2",
+  "version": "0.0.0-wip.4",
   "description": "A React hook to fetch ENS data",
   "files": [
     "dist"
   ],
+  "type": "module",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "engines": {
