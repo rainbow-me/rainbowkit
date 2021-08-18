@@ -9,5 +9,5 @@ core (re-exports with custom tweaks)
     use-ens
   ui (re-exports of badge and modal)
     badge (components for a Uniswap-like UI for wallet)
-    modal (auth modal w/ Rainbow design)
+    modal (auth modal)
 ```
