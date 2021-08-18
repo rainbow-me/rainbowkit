@@ -2,7 +2,7 @@
 
 ## Library structure
 
-``` 
+```
 core (re-exports with custom tweaks)
   util (hooks, HOCs, re-exports of some packages)
     connectors (connector aliases: useInjectedConnector, useWalletLinkConnector etc)
