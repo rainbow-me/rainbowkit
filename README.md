@@ -1,5 +1,11 @@
 # rainbowkit
 
+## Setup
+
+1. Install [pnpm](https://pnpm.io/installation/)
+2. Run `pnpm i`
+3. Go to any pkg and run `pnpm build` to build invidual packages
+
 ## Library structure
 
 ```
