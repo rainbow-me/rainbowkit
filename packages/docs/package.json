@@ -5,6 +5,7 @@
     "@ethersproject/units": "^5.4.0",
     "@rainbowkit/connectors": "workspace:*",
     "@rainbowkit/core": "workspace:*",
+    "@rainbowkit/util": "workspace:^0.0.0",
     "framer-motion": "^4.1.17",
     "next": "^11.1.0",
     "nextra": "^1.1.0",
