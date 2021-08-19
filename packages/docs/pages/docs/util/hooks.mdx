@@ -2,17 +2,15 @@
 name: Hooks
 ---
 
-import { Playground } from 'dokz'
 import { withWeb3React } from '@rainbowkit/core'
 import { useInjectedConnector } from '@rainbowkit/connectors'
-import { Box, Button, Heading, Code } from '@chakra-ui/react'
 import { formatEther } from '@ethersproject/units'
 
 # Hooks
 
 ## Utility hooks
 
-### useConnector(connector, connectOnMount?, storageProvider?)
+### useConnector
 
 A React hook for using individual connectors from web3-react.
 
@@ -36,7 +34,7 @@ export const useCustomConnector = (opts?: CustomWalletOptions) => {
 
 ## Connector hooks
 
-### useInjectedConnector(connector, connectOnMount?, storageProvider?)
+### useInjectedConnector
 
 A React hook to connect to a web3 wallet with web3-react `InjectedConnector`.
 
@@ -68,32 +66,3 @@ const App = () => {
   )
 }
 ```
-
-<Playground>
-  {withWeb3React(() => {
-    const { isConnected, connect, disconnect, address, provider } = useInjectedConnector()
-    const [bal, set] = React.useState('')
-    React.useEffect(() => {
-      if (provider && address) provider.getBalance(address).then((b) => set(formatEther(b).slice(0, 10)))
-    }, [provider, address])
-    return (
-      <Box p="2rem">
-        {isConnected ? (
-          <div>
-            <Button onClick={disconnect}>Disconnect</Button>
-          </div>
-        ) : (
-          <div>
-            <Button onClick={connect}>Connect</Button>
-          </div>
-        )}
-        <Box>
-          Address: <Code>{address}</Code>
-        </Box>
-        <Box>
-          Balance: <Code>{bal}</Code>
-        </Box>
-      </Box>
-    )
-  })}
-</Playground>

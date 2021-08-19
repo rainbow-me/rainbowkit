@@ -1,15 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { withDokz } = require('dokz/dist/plugin')
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-module.exports = withDokz({
+const withNextra = require('nextra')({
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  redirects: async function () {
-    return [
-      {
-        source: '/docs/api',
-        destination: '/docs/API',
-        permanent: true
-      }
-    ]
-  }
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.js'
+  // optional: add `unstable_staticImage: true` to enable Nextra's auto image import
 })
+module.exports = withNextra()
