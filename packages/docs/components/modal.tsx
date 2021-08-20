@@ -8,18 +8,22 @@ const ModalExample = () => {
   const { Portal } = usePortal()
 
   const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
-    wallets: [{ name: 'metamask' }],
-    chains: [1]
+    wallets: ['metamask', 'coinbase'],
+    chains: ['polygon', 'mainnet']
   })
 
   return (
     <>
       <pre>
-        {JSON.stringify({
-          isConnected,
-          isConnecting,
-          address
-        })}
+        {JSON.stringify(
+          {
+            isConnected,
+            isConnecting,
+            address
+          },
+          null,
+          2
+        )}
       </pre>
       <button className={styles.modalButton} onClick={() => (isConnected ? disconnect() : connect())}>
         {isConnected ? 'Disconnect' : 'Connect Wallet'}

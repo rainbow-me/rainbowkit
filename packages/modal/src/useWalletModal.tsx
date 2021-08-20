@@ -3,17 +3,17 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
-import { ModalProps, Wallet } from './types'
+import { Chain, ModalProps, Wallet } from './types'
 import { createConnector } from './utils/createConnector'
 
 export const useWalletModal = ({
   modal: ModalComponent,
   chains,
-  wallets
+  wallets: selectedWallets
 }: {
   modal?: React.ComponentType<ModalProps> | false
-  wallets: Wallet[]
-  chains: number[]
+  wallets: (Wallet | string)[]
+  chains?: Chain[]
 }) => {
   const {
     activate,
@@ -23,8 +23,18 @@ export const useWalletModal = ({
     account: address
   } = useWeb3React<Web3Provider>()
 
+  const wallets = selectedWallets.map((w) =>
+    typeof w === 'string'
+      ? {
+          name: w,
+          hidden: false,
+          options: {}
+        }
+      : w
+  ) as Wallet[]
+
   const connectToWallet = async (name: string) => {
-    const options = wallets.find((w) => w.options)
+    const options = wallets.find((w) => w.name === name).options || {}
     const { instance } = await createConnector({ name: name, chains, options })
     await activate(instance)
   }

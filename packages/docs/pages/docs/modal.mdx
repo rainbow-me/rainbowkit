@@ -9,19 +9,13 @@ import { withWeb3React } from '@rainbowkit/util'
 import { useWeb3React } from '@web3-react/core'
 
 const ModalExample = () => {
-  const [connectors, set] = useState<Connector[]>([])
-
   const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
-    connectors
+    wallets: ['coinbase', 'metamask'],
+    chains: ['mainnet', 'polygon']
   })
 
   return (
     <>
-      {JSON.stringify({
-        isConnected,
-        isConnecting,
-        address
-      })}
       <button onClick={() => (isConnected ? disconnect() : connect())}>
         {isConnected ? 'Disconnect' : 'Connect Wallet'}
       </button>
