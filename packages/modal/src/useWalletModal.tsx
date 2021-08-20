@@ -6,6 +6,12 @@ import { Modal as ModalUI } from './components/Modal'
 import { Chain, ModalProps, Wallet } from './types'
 import { createConnector } from './utils/createConnector'
 
+declare global {
+  interface Window {
+    ethereum: Web3Provider
+  }
+}
+
 export const useWalletModal = ({
   modal: ModalComponent,
   chains,
@@ -41,7 +47,8 @@ export const useWalletModal = ({
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
-    if (walletName) connectToWallet(walletName)
+
+    if (walletName && !isConnected && window.ethereum) connectToWallet(walletName)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
