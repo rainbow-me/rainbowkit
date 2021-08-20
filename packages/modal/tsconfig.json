@@ -7,5 +7,6 @@
     "declarationDir": "dist",
     "jsx": "react",
     "outDir": "dist"
-  }
+  },
+  "include": ["src", "assets.d.ts"]
 }

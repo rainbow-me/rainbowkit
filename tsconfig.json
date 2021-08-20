@@ -15,7 +15,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "strict": false,
     "noEmit": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "exclude": ["node_modules"]
 }
