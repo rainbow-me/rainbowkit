@@ -4,16 +4,12 @@ import { Modal } from '../../components/modal'
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Connector, initWallets, useWalletModal } from '@rainbowkit/modal'
+import { Connector, useWalletModal } from '@rainbowkit/modal'
 import { withWeb3React } from '@rainbowkit/util'
 import { useWeb3React } from '@web3-react/core'
 
 const ModalExample = () => {
   const [connectors, set] = useState<Connector[]>([])
-
-  useEffect(() => {
-    initWallets({ chains: [1], wallets: ['metamask'] }).then(set)
-  }, [])
 
   const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
     connectors
