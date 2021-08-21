@@ -1,5 +1,5 @@
 import React, { Dispatch, useEffect } from 'react'
-import { Web3Provider } from '@ethersproject/providers'
+import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
@@ -8,7 +8,30 @@ import { createConnector } from './utils/createConnector'
 
 declare global {
   interface Window {
-    ethereum: Web3Provider
+    ethereum: ExternalProvider
+  }
+}
+
+function parseSendReturn(sendReturn: any): any {
+  return sendReturn.result || sendReturn
+}
+
+const isAuthorized = async () => {
+  if (!window.ethereum) {
+    return false
+  }
+
+  try {
+    // @ts-ignore
+    return await window.ethereum.send('eth_accounts').then((sendReturn) => {
+      if (parseSendReturn(sendReturn).length > 0) {
+        return true
+      } else {
+        return false
+      }
+    })
+  } catch {
+    return false
   }
 }
 
@@ -48,7 +71,10 @@ export const useWalletModal = ({
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    if (walletName && !isConnected && window.ethereum) connectToWallet(walletName)
+    isAuthorized().then((yes) => {
+      if (walletName && !isConnected && window.ethereum && yes) connectToWallet(walletName)
+    })
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
