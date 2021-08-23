@@ -78,26 +78,14 @@ importers:
       typescript: 4.3.5
       typescript-plugin-css-modules: 3.4.0_typescript@4.3.5
 
-  packages/connectors:
+  packages/badge:
     specifiers:
-      '@ethersproject/providers': ^5.4.3
-      '@ethersproject/units': ^5.4.0
-      '@rainbowkit/core': workspace:^0.0.0
-      '@walletconnect/client': ^2.0.0-beta.16
-      '@web3-react/abstract-connector': ^6.0.7
-      '@web3-react/core': ^6.1.9
-      '@web3-react/injected-connector': ^6.0.7
-      '@web3-react/walletlink-connector': ^6.2.3
+      '@ethersproject/address': ^5.4.0
+      react: '>=17'
     dependencies:
-      '@ethersproject/providers': 5.4.3
-      '@ethersproject/units': 5.4.0
-      '@rainbowkit/core': link:../core
-      '@web3-react/abstract-connector': 6.0.7
-      '@web3-react/core': 6.1.9_react@17.0.2
-    optionalDependencies:
-      '@walletconnect/client': 2.0.0-beta.17
-      '@web3-react/injected-connector': 6.0.7
-      '@web3-react/walletlink-connector': 6.2.3
+      '@ethersproject/address': 5.4.0
+    devDependencies:
+      react: 17.0.2
 
   packages/core:
     specifiers:
@@ -111,11 +99,12 @@ importers:
       '@ethersproject/units': 5.4.0
       '@rainbowkit/util': link:../util
       '@web3-react/abstract-connector': 6.0.7
-      '@web3-react/core': 6.1.9
+      '@web3-react/core': 6.1.9_react@17.0.2
 
   packages/docs:
     specifiers:
       '@ethersproject/units': ^5.4.0
+      '@rainbowkit/badge': workspace:*
       '@rainbowkit/core': workspace:*
       '@rainbowkit/modal': workspace:*
       '@rainbowkit/util': workspace:*
@@ -127,8 +116,10 @@ importers:
       react: ^17.0.2
       react-dom: ^17.0.2
       react-useportal: ^1.0.14
+      use-ens: workspace:^0.0.0-wip.11
     dependencies:
       '@ethersproject/units': 5.4.0
+      '@rainbowkit/badge': link:../badge
       '@rainbowkit/core': link:../core
       '@rainbowkit/modal': link:../modal
       '@rainbowkit/util': link:../util
@@ -140,6 +131,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-useportal: 1.0.14_react-dom@17.0.2+react@17.0.2
+      use-ens: link:../use-ens
 
   packages/modal:
     specifiers:
@@ -161,19 +153,17 @@ importers:
 
   packages/use-ens:
     specifiers:
-      get-ens: ^1.0.0
+      get-ens: ^1.0.1
     dependencies:
-      get-ens: 1.0.0
+      get-ens: 1.0.1
 
   packages/util:
     specifiers:
       '@ethersproject/providers': ^5.4.3
-      '@rainbowkit/connectors': workspace:^0.0.0
       '@web3-react/abstract-connector': ^6.0.7
       '@web3-react/core': ^6.1.9
     dependencies:
       '@ethersproject/providers': 5.4.3
-      '@rainbowkit/connectors': link:../connectors
       '@web3-react/abstract-connector': 6.0.7
       '@web3-react/core': 6.1.9_react@17.0.2
 
@@ -1594,18 +1584,6 @@ packages:
     resolution: {integrity: sha512-RhQasA4Ox8CxUC0OENc1AJJm8UTybu/oOCM61Zjg6y0iF7Z0sqv1Ai1VdhC33hrQpA8qSBgoXN9PaP8jKmtdqg==}
     dependencies:
       '@web3-react/types': 6.0.7
-    dev: false
-
-  /@web3-react/core/6.1.9:
-    resolution: {integrity: sha512-P877DslsbAkWIlMANpWiK7pCvNwlz0kJC0EGckuVh0wlA23J4UnFxq6xyOaxkxaDCu14rA/tAO0NbwjcXTQgSA==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@ethersproject/keccak256': 5.4.0
-      '@web3-react/abstract-connector': 6.0.7
-      '@web3-react/types': 6.0.7
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
     dev: false
 
   /@web3-react/core/6.1.9_react@17.0.2:
@@ -4162,8 +4140,8 @@ packages:
     engines: {node: 6.* || 8.* || >= 10.*}
     dev: true
 
-  /get-ens/1.0.0:
-    resolution: {integrity: sha512-eR0C4N+iRDuuYvRzA0XeEKLhH2DXZj1bMVjx5ZcUyxKy/LJwgw8H3pRm5rsnfvlBZCDI/GgIJfWBkPOm6wJ7lg==}
+  /get-ens/1.0.1:
+    resolution: {integrity: sha512-XjUKMI18fd5mROOR9mE0r/DfZtI6Gu0Lqm6AvnFnUbYBuiREdwoQPfe26TR52xBqofXPzZFQc+sfTWlfhjNdPQ==}
     engines: {node: '>=12.4'}
     dependencies:
       '@ethersproject/contracts': 5.4.1

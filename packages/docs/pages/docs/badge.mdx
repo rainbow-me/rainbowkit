@@ -1,0 +1,47 @@
+import { EthAddress } from '@rainbowkit/badge'
+import { EthAddressPic } from '../../components/badge'
+
+# `@rainbowkit/badge`
+
+A wallet Badge for your dapp.
+
+## EthAddress
+
+Basic ethereum address badge.
+
+```jsx
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+```
+
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+
+Without shortening:
+
+```jsx
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" shorten={false} />
+```
+
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" shorten={false} />
+
+With profile icon:
+
+```jsx
+import React from 'react'
+import { EthAddress } from '@rainbowkit/badge'
+import { useENS } from 'use-ens'
+import { useConnectOnMount } from '@rainbowkit/core'
+
+const EthAddressPicExample = () => {
+  const data = useENS(provider, 'foda.eth', { cache: 'force-cache' })
+
+  useConnectOnMount(injected, true)
+
+  return (
+    <>
+      <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
+    </>
+  )
+}
+```
+
+<EthAddressPic />

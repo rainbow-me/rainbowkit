@@ -1,7 +1,7 @@
 {
-  "name": "use-ens",
-  "version": "0.0.0-wip.11",
-  "description": "A React hook to fetch ENS data",
+  "name": "@rainbowkit/badge",
+  "version": "0.0.0-wip.0",
+  "description": "Wallet badge for every dapp",
   "files": [
     "dist"
   ],
@@ -12,8 +12,8 @@
     "node": ">=12.4"
   },
   "scripts": {
-    "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w"
+    "build": "rollup -c",
+    "build:watch": "rollup -cw"
   },
   "keywords": [
     "ens",
@@ -25,11 +25,13 @@
   ],
   "author": "v1rtl",
   "license": "UNLICENSED",
-  "dependencies": {
-    "get-ens": "^1.0.1"
-  },
   "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17"
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "react": ">=17"
+  },
+  "dependencies": {
+    "@ethersproject/address": "^5.4.0"
   }
 }

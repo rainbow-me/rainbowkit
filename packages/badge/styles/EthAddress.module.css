@@ -1,0 +1,23 @@
+.address {
+  font-family: sans-serif;
+  font-weight: 500;
+  color: #252525;
+}
+
+.container {
+  border-radius: 10px;
+  padding: 0.4rem 0.8rem;
+  background-color: #e2e2e2;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 50%;
+  margin-left: 0.5rem;
+}

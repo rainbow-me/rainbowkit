@@ -8,11 +8,11 @@ import type { Provider } from '@ethersproject/providers'
  * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = (provider: Provider, domain: string): ResolvedENS => {
+export const useENS = (provider: Provider, domain: string, fetchOptions?: RequestInit): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: { web: {} } })
 
   useEffect(() => {
-    if (provider && domain) getENS(provider)(domain).then(set)
+    if (provider && domain) getENS(provider)(domain, fetchOptions).then(set)
   }, [domain, provider])
 
   return data
