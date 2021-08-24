@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Web3Provider } from '@ethersproject/providers'
 import { useConnectOnMount } from './useConnectOnMount'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
@@ -20,7 +19,7 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
     connector,
     account: address,
     error
-  } = useWeb3React<Web3Provider>()
+  } = useWeb3React<T>()
 
   useEffect(() => {
     if (connectOnMount) {

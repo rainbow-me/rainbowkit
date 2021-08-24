@@ -1,16 +1,10 @@
-import React, { Dispatch, useEffect } from 'react'
-import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
+import React, { useEffect } from 'react'
+import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import { createConnector, Wallet, Chain, isAuthorized } from '@rainbowkit/utils'
 import { ModalProps } from './types'
-
-declare global {
-  interface Window {
-    ethereum: ExternalProvider
-  }
-}
 
 export const useWalletModal = ({
   modal: ModalComponent,
