@@ -12,9 +12,7 @@ declare global {
   }
 }
 
-function parseSendReturn(sendReturn: any): any {
-  return sendReturn.result || sendReturn
-}
+const parseSendReturn = (sendReturn: any): any => sendReturn.result || sendReturn
 
 const isAuthorized = async () => {
   if (!window.ethereum) {
@@ -24,11 +22,7 @@ const isAuthorized = async () => {
   try {
     // @ts-ignore
     return await window.ethereum.send('eth_accounts').then((sendReturn) => {
-      if (parseSendReturn(sendReturn).length > 0) {
-        return true
-      } else {
-        return false
-      }
+      return parseSendReturn(sendReturn).length > 0
     })
   } catch {
     return false

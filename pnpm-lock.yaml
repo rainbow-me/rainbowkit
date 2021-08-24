@@ -141,6 +141,16 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       react-useportal: 1.0.14_react-dom@17.0.2+react@17.0.2
 
+  packages/hooks:
+    specifiers:
+      '@ethersproject/providers': ^5.4.3
+      '@web3-react/abstract-connector': ^6.0.7
+      '@web3-react/core': ^6.1.9
+    dependencies:
+      '@ethersproject/providers': 5.4.3
+      '@web3-react/abstract-connector': 6.0.7
+      '@web3-react/core': 6.1.9_react@17.0.2
+
   packages/modal:
     specifiers:
       '@rainbowkit/util': workspace:^0.0.0
