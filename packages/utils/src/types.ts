@@ -1,8 +1,5 @@
-import { useConnector } from './hooks'
+import { Dispatch } from 'react'
 
-export type SharedConnectorOptions = Partial<{
-  connectOnMount: boolean
-  storageProvider: Storage
-}>
+export type Chain = string | number
 
-export type ConnectorContext = ReturnType<typeof useConnector>
+export type Wallet = { name: string; hidden?: boolean; options?: Record<string, any> }

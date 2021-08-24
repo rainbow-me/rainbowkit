@@ -1,2 +1,5 @@
 export * from './types'
 export * from './withWeb3React'
+export * from './isAuthorized'
+export * from './connector'
+export * from './convert'

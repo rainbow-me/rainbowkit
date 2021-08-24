@@ -3,29 +3,12 @@ import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
-import { Chain, ModalProps, Wallet } from './types'
-import { createConnector } from './utils/createConnector'
+import { createConnector, Wallet, Chain, isAuthorized } from '@rainbowkit/utils'
+import { ModalProps } from './types'
 
 declare global {
   interface Window {
     ethereum: ExternalProvider
-  }
-}
-
-const parseSendReturn = (sendReturn: any): any => sendReturn.result || sendReturn
-
-const isAuthorized = async () => {
-  if (!window.ethereum) {
-    return false
-  }
-
-  try {
-    // @ts-ignore
-    return await window.ethereum.send('eth_accounts').then((sendReturn) => {
-      return parseSendReturn(sendReturn).length > 0
-    })
-  } catch {
-    return false
   }
 }
 

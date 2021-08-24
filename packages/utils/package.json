@@ -8,7 +8,7 @@
     "build": "rollup -c ../../rollup.config.js",
     "build:watch": "rollup -c ../../rollup.config.js -w"
   },
-  "description": "Hooks, HOCs, re-exports of some packages for RainbowKit",
+  "description": "Small utilities used in RainbowKit packages",
   "keywords": [],
   "author": "",
   "license": "MIT",

@@ -9,9 +9,7 @@ declare global {
 const parseSendReturn = (sendReturn: any): any => sendReturn.result || sendReturn
 
 export const isAuthorized = async () => {
-  if (!window.ethereum) {
-    return false
-  }
+  if (!window.ethereum) return false
 
   try {
     // @ts-ignore

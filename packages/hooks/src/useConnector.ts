@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import { AbstractConnector } from '@web3-react/abstract-connector'
 import { useConnectOnMount } from './useConnectOnMount'
+import { AbstractConnector } from '@web3-react/abstract-connector'
 
-export function useConnector<T extends AbstractConnector = any>(
+export function useConnector<T extends AbstractConnector = AbstractConnector>(
   abstractConnector: T,
   connectOnMount = true,
   storageProvider?: Storage
@@ -34,7 +34,7 @@ export function useConnector<T extends AbstractConnector = any>(
     return deactivate()
   }
 
-  useConnectOnMount<T>(abstractConnector, connectOnMount, storage)
+  useConnectOnMount(abstractConnector, connectOnMount, storage)
 
   const connect = async () => {
     if (connectOnMount) storage.setItem('rk-connect-on-mount', 'true')
@@ -43,3 +43,10 @@ export function useConnector<T extends AbstractConnector = any>(
 
   return { provider, connect, isConnected, disconnect, chainId, connector: connector as T, address, error }
 }
+
+export type SharedConnectorOptions = Partial<{
+  connectOnMount: boolean
+  storageProvider: Storage
+}>
+
+export type ConnectorContext = ReturnType<typeof useConnector>
