@@ -1,0 +1,20 @@
+{
+  "name": "@rainbowkit/utils",
+  "type": "module",
+  "version": "0.0.0",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.js",
+    "build:watch": "rollup -c ../../rollup.config.js -w"
+  },
+  "description": "Small utilities used in RainbowKit packages",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@ethersproject/providers": "^5.4.3",
+    "@web3-react/abstract-connector": "^6.0.7",
+    "@web3-react/core": "^6.1.9"
+  }
+}

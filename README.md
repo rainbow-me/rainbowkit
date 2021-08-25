@@ -10,10 +10,10 @@
 
 ```
 core (re-exports with custom tweaks)
-  util (hooks, HOCs, re-exports of some packages)
-    connectors (connector aliases: useInjectedConnector, useWalletLinkConnector etc)
+  hooks (hooks for web3)
     use-ens
   ui (re-exports of badge and modal)
     badge (components for a Uniswap-like UI for wallet)
     modal (auth modal)
+  utils (small utilities used by other packages)
 ```

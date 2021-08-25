@@ -1,5 +1,3 @@
 export * from './useWalletModal'
 export * from './components/Modal'
-export * from './types'
-export * from './utils/createConnector'
-export * from './utils/importConnector'
+export * from '../../utils/src/types'

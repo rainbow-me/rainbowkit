@@ -1,8 +1,6 @@
+import type { Wallet } from '@rainbowkit/utils'
 import { Dispatch } from 'react'
-
-export type Chain = string | number
-
-export type Wallet = { name: string; hidden?: boolean; options?: Record<string, any> }
+import type { ExternalProvider } from '@ethersproject/providers'
 
 export interface ModalProps {
   wallets: Wallet[]

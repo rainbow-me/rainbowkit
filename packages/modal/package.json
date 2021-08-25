@@ -33,7 +33,7 @@
     "rollup-plugin-postcss": "^4.0.1"
   },
   "dependencies": {
-    "@rainbowkit/util": "workspace:^0.0.0",
+    "@rainbowkit/utils": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7"
   },
   "optionalDependencies": {

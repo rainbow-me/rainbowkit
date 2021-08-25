@@ -1,28 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Web3Provider } from '@ethersproject/providers'
+import { useConnectOnMount } from './useConnectOnMount'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-
-declare global {
-  interface Window {
-    ethereum: Web3Provider
-  }
-}
-
-export const useConnectOnMount = (connector: AbstractConnector, enabled?: boolean, storage?: Storage) => {
-  const { active, activate } = useWeb3React()
-
-  useEffect(() => {
-    let cachedState = true
-    if (storage) cachedState = storage.getItem('rk-connect-on-mount') === 'true'
-
-    if (cachedState && enabled && !active && window.ethereum) {
-      activate(connector)
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storage]) // Only trigger on mount
-}
 
 export function useConnector<T extends AbstractConnector = AbstractConnector>(
   abstractConnector: T,
@@ -40,7 +19,7 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
     connector,
     account: address,
     error
-  } = useWeb3React<Web3Provider>()
+  } = useWeb3React<T>()
 
   useEffect(() => {
     if (connectOnMount) {
@@ -63,3 +42,10 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
 
   return { provider, connect, isConnected, disconnect, chainId, connector: connector as T, address, error }
 }
+
+export type SharedConnectorOptions = Partial<{
+  connectOnMount: boolean
+  storageProvider: Storage
+}>
+
+export type ConnectorContext = ReturnType<typeof useConnector>

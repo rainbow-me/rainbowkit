@@ -1,39 +1,10 @@
-import React, { Dispatch, useEffect } from 'react'
-import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
+import React, { useEffect } from 'react'
+import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
-import { Chain, ModalProps, Wallet } from './types'
-import { createConnector } from './utils/createConnector'
-
-declare global {
-  interface Window {
-    ethereum: ExternalProvider
-  }
-}
-
-function parseSendReturn(sendReturn: any): any {
-  return sendReturn.result || sendReturn
-}
-
-const isAuthorized = async () => {
-  if (!window.ethereum) {
-    return false
-  }
-
-  try {
-    // @ts-ignore
-    return await window.ethereum.send('eth_accounts').then((sendReturn) => {
-      if (parseSendReturn(sendReturn).length > 0) {
-        return true
-      } else {
-        return false
-      }
-    })
-  } catch {
-    return false
-  }
-}
+import { createConnector, Wallet, Chain, isAuthorized } from '@rainbowkit/utils'
+import { ModalProps } from './types'
 
 export const useWalletModal = ({
   modal: ModalComponent,

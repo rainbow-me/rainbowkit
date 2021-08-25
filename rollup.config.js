@@ -11,5 +11,5 @@ export default {
     }
   ],
   plugins: [ts({ include: ['./src/**/*.{ts,tsx}', './*.d.ts'] }), terser(), filesize()],
-  external: ['react', '@web3-react/core', '@web3-react/injected-connector', '@ethersproject/providers']
+  external: ['react', '@web3-react/core', '@ethersproject/providers']
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Wallet, useWalletModal } from '@rainbowkit/modal'
-import { withWeb3React } from '@rainbowkit/util'
+import { withWeb3React } from '@rainbowkit/utils'
 import usePortal from 'react-useportal'
 import styles from '../styles/button.module.css'
 

@@ -6,7 +6,7 @@
     "@rainbowkit/badge": "workspace:*",
     "@rainbowkit/core": "workspace:*",
     "@rainbowkit/modal": "workspace:*",
-    "@rainbowkit/util": "workspace:*",
+    "@rainbowkit/utils": "workspace:*",
     "@web3-react/injected-connector": "^6.0.7",
     "framer-motion": "^4.1.17",
     "next": "^11.1.0",

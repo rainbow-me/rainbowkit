@@ -1,5 +1,5 @@
 {
-  "name": "@rainbowkit/util",
+  "name": "@rainbowkit/hooks",
   "type": "module",
   "version": "0.0.0",
   "exports": "./dist/index.js",
@@ -8,13 +8,16 @@
     "build": "rollup -c ../../rollup.config.js",
     "build:watch": "rollup -c ../../rollup.config.js -w"
   },
-  "description": "Hooks, HOCs, re-exports of some packages for RainbowKit",
+  "description": "RainbowKit Hooks",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@ethersproject/abstract-provider": "^5.4.1",
     "@ethersproject/providers": "^5.4.3",
+    "@rainbowkit/utils": "workspace:^0.0.0",
     "@web3-react/abstract-connector": "^6.0.7",
-    "@web3-react/core": "^6.1.9"
+    "@web3-react/core": "^6.1.9",
+    "use-ens": "workspace:*"
   }
 }
