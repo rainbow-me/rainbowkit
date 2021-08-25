@@ -1,5 +1,5 @@
 import React from 'react'
-import { isAddress, shortenAddress } from '@rainbowkit/utils'
+import { isAddress, shortenAddress, chainIDToToken } from '@rainbowkit/utils'
 import styles from '../../styles/EthAddress.module.css'
 import { BaseProvider } from '@ethersproject/providers'
 import { useState, useEffect } from 'react'
@@ -11,8 +11,8 @@ export interface EthAddressProps {
   shorten?: boolean
   showBalance?: boolean
   provider?: BaseProvider
-  networkId?: number
   profileIcon?: string
+  networkToken?: string
   classNames?: Partial<{
     profileIcon: string
     container: string
@@ -21,12 +21,20 @@ export interface EthAddressProps {
   }>
 }
 
-export const EthAddress = ({ addr, shorten, profileIcon, showBalance, provider, ...props }: EthAddressProps) => {
+export const EthAddress = ({
+  addr,
+  shorten,
+  profileIcon,
+  showBalance,
+  provider,
+  networkToken,
+  ...props
+}: EthAddressProps) => {
   shorten = shorten === undefined ? true : shorten
 
   const [bal, setBal] = useState('0')
 
-  const [symbol, setSymbol] = useState('eth')
+  const [symbol, setSymbol] = useState(networkToken || 'eth')
 
   useEffect(() => {
     if (showBalance && provider && addr) {
@@ -37,9 +45,11 @@ export const EthAddress = ({ addr, shorten, profileIcon, showBalance, provider, 
           setBal(floatBal.toFixed(0))
         } else setBal(floatBal.toPrecision(4))
 
-        provider.getNetwork().then(({ name }) => {
-          setSymbol(name)
-        })
+        if (!networkToken) {
+          provider.getNetwork().then(({ name, chainId }) => {
+            setSymbol(chainIDToToken(chainId))
+          })
+        }
       })
     }
   }, [provider, showBalance, addr])
