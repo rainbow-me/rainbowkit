@@ -1,5 +1,5 @@
 import { EthAddress } from '@rainbowkit/badge'
-import { EthAddressPic } from '../../components/badge'
+import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 
 # `@rainbowkit/badge`
 
@@ -25,23 +25,35 @@ Without shortening:
 
 With profile icon:
 
-```jsx
+```tsx
 import React from 'react'
 import { EthAddress } from '@rainbowkit/badge'
 import { useENS } from 'use-ens'
-import { useConnectOnMount } from '@rainbowkit/core'
+import { useWeb3React } from '@web3-react/core'
 
 const EthAddressPicExample = () => {
+  const { library: provider } = useWeb3React()
+
   const data = useENS(provider, 'foda.eth', { cache: 'force-cache' })
 
-  useConnectOnMount(injected, true)
-
-  return (
-    <>
-      <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
-    </>
-  )
+  return <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
 }
 ```
 
 <EthAddressPic />
+
+With balance:
+
+```tsx
+import React from 'react'
+import { EthAddress } from '@rainbowkit/badge'
+import { useENS } from 'use-ens'
+
+const EthAddressBalanceExample = () => {
+  const { library: provider, activate, account: address } = useWeb3React()
+
+  return <EthAddress showBalance provider={provider} addr={address} />
+}
+```
+
+<EthAddressBalance />

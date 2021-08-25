@@ -1,4 +1,5 @@
-.address {
+.address,
+.balance {
   font-family: sans-serif;
   font-weight: 500;
   color: #252525;
@@ -20,4 +21,10 @@
   width: 1.5rem;
   border: 50%;
   margin-left: 0.5rem;
+}
+
+.balance {
+  padding-right: 0.4rem;
+  margin-right: 0.4rem;
+  border-right: 2px solid #b4b4b4;
 }

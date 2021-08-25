@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { Wallet, useWalletModal } from '@rainbowkit/modal'
-import { withWeb3React } from '@rainbowkit/utils'
+import { useWalletModal } from '@rainbowkit/modal'
 import usePortal from 'react-useportal'
 import styles from '../styles/button.module.css'
+import { Web3ReactProvider } from '@web3-react/core'
+import { setupProvider } from '@rainbowkit/utils'
 
 const ModalExample = () => {
   const { Portal } = usePortal()
 
-  const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
+  const { disconnect, isConnected, connect, Modal, isConnecting, address, connector } = useWalletModal({
     wallets: ['metamask', 'coinbase'],
-    chains: ['polygon', 'mainnet']
+    chains: ['mainnet', 'polygon', 'bsc', 'fantom']
   })
 
   return (
@@ -32,4 +33,8 @@ const ModalExample = () => {
     </>
   )
 }
-export const Modal = withWeb3React(ModalExample)
+export const Modal = () => (
+  <Web3ReactProvider getLibrary={setupProvider()}>
+    <ModalExample />
+  </Web3ReactProvider>
+)
