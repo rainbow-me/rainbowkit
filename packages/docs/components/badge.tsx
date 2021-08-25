@@ -6,7 +6,7 @@ import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { useConnectOnMount } from '@rainbowkit/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 
-const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
+export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
 
 const EthAddressPicExample = () => {
   const { library: provider, activate } = useWeb3React()

@@ -1,0 +1,67 @@
+import { History } from '../../components/history'
+
+# Hooks
+
+## useTxHistory
+
+```tsx
+import React from 'react'
+import { useTxHistory, logsFetcher } from '@rainbowkit/hooks'
+import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
+import { setupProvider } from '@rainbowkit/utils'
+import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
+import { formatEther } from '@ethersproject/units'
+
+const provider = new EtherscanProvider()
+
+const HistoryExample = () => {
+  const { account: address } = useWeb3React()
+
+  const {
+    data: txes,
+    loading,
+    error
+  } = useTxHistory<TransactionResponse>({ address, fetcher: etherscanFetcher, provider })
+
+  if (error) return <strong style={{ color: 'red' }}>Error! {error?.message}</strong>
+
+  if (data && !loading)
+    return (
+      <>
+        {txes.slice(0, 10).map((tx) => (
+          <div key={tx.hash} style={{ fontFamily: 'monospace' }}>
+            <a href={`https://etherscan.io/tx/${tx.hash}`}>{tx.hash.slice(0, 8)}</a>
+            {' | '}
+            <span>Value: {parseFloat(formatEther(tx.value)).toPrecision(3)} ETH</span>
+          </div>
+        ))}
+      </>
+    )
+
+  if (loading) return <p>Loading...</p>
+}
+```
+
+<History />
+
+## useConnector
+
+A React hook for using individual connectors from web3-react.
+
+```tsx
+import { Connector, ConnectorProps } from 'my-custom-connector'
+import { useConnector } from '@rainbowkit/core'
+
+export type CustomWalletOptions = ConnectorProps & { connectOnMount?: boolean }
+
+export const useCustomConnector = (opts?: CustomWalletOptions) => {
+  const options = opts || {}
+  const { connectOnMount, ...injectedOptions } = options
+
+  const injected = new InjectedConnector(injectedOptions)
+
+  const ctx = useConnector(injected, connectOnMount)
+
+  return ctx
+}
+```
