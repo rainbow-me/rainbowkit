@@ -10,6 +10,6 @@ export default {
       format: 'esm'
     }
   ],
-  plugins: [ts({ include: ['./src/**/*.{ts,tsx}', './*.d.ts'] }), terser(), filesize()],
+  plugins: [ts({ include: ['./src/**/*.{ts,tsx}', './*.d.ts'] }), terser({ mangle: false }), filesize()],
   external: ['react', '@web3-react/core', '@ethersproject/providers']
 }

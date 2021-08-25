@@ -3,19 +3,24 @@
   "private": true,
   "dependencies": {
     "@ethersproject/units": "^5.4.0",
+    "@rainbowkit/badge": "workspace:*",
     "@rainbowkit/core": "workspace:*",
+    "@rainbowkit/hooks": "workspace:^0.0.0",
     "@rainbowkit/modal": "workspace:*",
     "@rainbowkit/utils": "workspace:*",
     "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletlink-connector": "^6.2.3",
     "framer-motion": "^4.1.17",
     "next": "^11.1.0",
     "nextra": "^1.1.0",
     "nextra-theme-docs": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-useportal": "^1.0.14"
+    "react-useportal": "^1.0.14",
+    "use-ens": "workspace:^0.0.0-wip.11"
   },
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "build": "next build"
   }
 }

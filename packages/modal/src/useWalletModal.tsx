@@ -3,8 +3,24 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
-import { createConnector, Wallet, Chain, isAuthorized } from '@rainbowkit/utils'
-import { ModalProps } from './types'
+import { isAuthorized } from '@rainbowkit/utils'
+import type { Wallet, Chain } from '@rainbowkit/utils'
+import type { ModalProps } from './types'
+import { createConnector } from './utils'
+import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+
+export type WalletInterface = Omit<
+  Web3ReactContextInterface<Web3Provider>,
+  'activate' | 'deactivate' | 'library' | 'account' | 'active'
+> & {
+  Modal?: () => JSX.Element
+  connect: () => void
+  disconnect: () => void
+  provider: Web3Provider
+  isConnected: boolean
+  isConnecting: boolean
+  address: string
+}
 
 export const useWalletModal = ({
   modal: ModalComponent,
@@ -14,13 +30,14 @@ export const useWalletModal = ({
   modal?: React.ComponentType<ModalProps> | false
   wallets: (Wallet | string)[]
   chains?: Chain[]
-}) => {
+}): WalletInterface => {
   const {
     activate,
     deactivate,
     library: provider,
     active: isConnected,
-    account: address
+    account: address,
+    ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
   const wallets = selectedWallets.map((w) =>
@@ -34,17 +51,21 @@ export const useWalletModal = ({
   ) as Wallet[]
 
   const connectToWallet = async (name: string) => {
-    const options = wallets.find((w) => w.name === name).options || {}
+    const options = wallets.find((w) => w.name === name)?.options || {}
+
     const { instance } = await createConnector({ name: name, chains, options })
+
     await activate(instance)
   }
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    isAuthorized().then((yes) => {
-      if (walletName && !isConnected && window.ethereum && yes) connectToWallet(walletName)
-    })
+    if (walletName && !isConnected && window.ethereum && selectedWallets.includes(walletName)) {
+      isAuthorized().then((yes) => {
+        if (yes) connectToWallet(walletName)
+      })
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -76,8 +97,8 @@ export const useWalletModal = ({
       />
     )
 
-    return { Modal, connect, disconnect, provider, isConnected, isConnecting, address }
+    return { Modal, connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
   } else {
-    return { connect, disconnect, provider, isConnected, isConnecting, address }
+    return { connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
   }
 }

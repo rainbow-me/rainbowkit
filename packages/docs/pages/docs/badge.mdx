@@ -1,0 +1,59 @@
+import { EthAddress } from '@rainbowkit/badge'
+import { EthAddressPic, EthAddressBalance } from '../../components/badge'
+
+# `@rainbowkit/badge`
+
+A wallet Badge for your dapp.
+
+## EthAddress
+
+Basic ethereum address badge.
+
+```jsx
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+```
+
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+
+Without shortening:
+
+```jsx
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" shorten={false} />
+```
+
+<EthAddress addr="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" shorten={false} />
+
+With profile icon:
+
+```tsx
+import React from 'react'
+import { EthAddress } from '@rainbowkit/badge'
+import { useENS } from 'use-ens'
+import { useWeb3React } from '@web3-react/core'
+
+const EthAddressPicExample = () => {
+  const { library: provider } = useWeb3React()
+
+  const data = useENS(provider, 'foda.eth', { cache: 'force-cache' })
+
+  return <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
+}
+```
+
+<EthAddressPic />
+
+With balance:
+
+```tsx
+import React from 'react'
+import { EthAddress } from '@rainbowkit/badge'
+import { useENS } from 'use-ens'
+
+const EthAddressBalanceExample = () => {
+  const { library: provider, activate, account: address } = useWeb3React()
+
+  return <EthAddress showBalance provider={provider} addr={address} />
+}
+```
+
+<EthAddressBalance />

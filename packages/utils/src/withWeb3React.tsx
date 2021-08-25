@@ -4,7 +4,7 @@ import { Web3Provider, ExternalProvider } from '@ethersproject/providers'
 
 export type Web3ProviderInit = (provider: Web3Provider) => void
 
-export const setupProvider = (web3ProviderInit: Web3ProviderInit) => {
+export const setupProvider = (web3ProviderInit?: Web3ProviderInit) => {
   return function getLibrary(provider: ExternalProvider): Web3Provider {
     const library = new Web3Provider(provider)
     library.pollingInterval = 12000

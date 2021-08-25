@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getENS, ResolvedENS } from 'get-ens'
-import type { Provider } from '@ethersproject/providers'
+import type { BaseProvider as Provider } from '@ethersproject/providers'
 
 /**
  * A React hook to fetch ENS records from a domain.
@@ -8,11 +8,27 @@ import type { Provider } from '@ethersproject/providers'
  * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = (provider: Provider, domain: string): ResolvedENS => {
+export const useENS = ({
+  provider,
+  domain,
+  fetchOptions,
+  contractAddress
+}: {
+  provider: Provider
+  domain: string
+  fetchOptions?: RequestInit
+  contractAddress?: string
+}): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: { web: {} } })
 
   useEffect(() => {
-    if (provider && domain) getENS(provider)(domain).then(set)
+    if (provider && domain) {
+      provider.getNetwork().then(({ chainId }) => {
+        if (contractAddress || chainId === 1) {
+          getENS(provider, contractAddress)(domain, fetchOptions).then(set)
+        }
+      })
+    }
   }, [domain, provider])
 
   return data

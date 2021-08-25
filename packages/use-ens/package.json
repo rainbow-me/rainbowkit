@@ -26,7 +26,7 @@
   "author": "v1rtl",
   "license": "UNLICENSED",
   "dependencies": {
-    "get-ens": "^1.0.0"
+    "get-ens": "^1.0.1"
   },
   "peerDependencies": {
     "react": ">=17",
