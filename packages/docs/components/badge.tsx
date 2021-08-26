@@ -1,6 +1,6 @@
 import React from 'react'
 import { EthAddress } from '@rainbowkit/badge'
-import { setupProvider, withWeb3React } from '@rainbowkit/utils'
+import { setupProvider } from '@rainbowkit/utils'
 import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { useConnectOnMount } from '@rainbowkit/core'

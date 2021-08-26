@@ -19,7 +19,7 @@ const HistoryExample = () => {
     data: txes,
     loading,
     error
-  } = useTxHistory<TransactionResponse>({
+  } = useTxHistory<TransactionResponse, EtherscanProvider>({
     address: address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f',
     fetcher: etherscanFetcher,
     provider
