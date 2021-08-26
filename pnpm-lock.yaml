@@ -186,14 +186,16 @@ importers:
   packages/utils:
     specifiers:
       '@ethersproject/address': ^5.4.0
+      '@ethersproject/bignumber': ^5.4.1
       '@ethersproject/providers': ^5.4.3
       '@web3-react/abstract-connector': ^6.0.7
       '@web3-react/core': ^6.1.9
     dependencies:
       '@ethersproject/address': 5.4.0
+      '@ethersproject/bignumber': 5.4.1
       '@ethersproject/providers': 5.4.4
       '@web3-react/abstract-connector': 6.0.7
-      '@web3-react/core': 6.1.9
+      '@web3-react/core': 6.1.9_react@17.0.2
 
 packages:
 
@@ -1610,18 +1612,6 @@ packages:
     resolution: {integrity: sha512-RhQasA4Ox8CxUC0OENc1AJJm8UTybu/oOCM61Zjg6y0iF7Z0sqv1Ai1VdhC33hrQpA8qSBgoXN9PaP8jKmtdqg==}
     dependencies:
       '@web3-react/types': 6.0.7
-    dev: false
-
-  /@web3-react/core/6.1.9:
-    resolution: {integrity: sha512-P877DslsbAkWIlMANpWiK7pCvNwlz0kJC0EGckuVh0wlA23J4UnFxq6xyOaxkxaDCu14rA/tAO0NbwjcXTQgSA==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      '@ethersproject/keccak256': 5.4.0
-      '@web3-react/abstract-connector': 6.0.7
-      '@web3-react/types': 6.0.7
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
     dev: false
 
   /@web3-react/core/6.1.9_react@17.0.2:
