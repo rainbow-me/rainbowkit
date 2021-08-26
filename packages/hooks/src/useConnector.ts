@@ -2,9 +2,14 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { useConnectOnMount } from './useConnectOnMount'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-
+/**
+ * A React hook for using individual connectors from web3-react.
+ * @param connector web3-react connector
+ * @param connectOnMount enable/disable connecting on mount
+ * @param storageProvider browser storage (`localStorage`, `sessionStorage` etc)
+ */
 export function useConnector<T extends AbstractConnector = AbstractConnector>(
-  abstractConnector: T,
+  connector: T,
   connectOnMount = true,
   storageProvider?: Storage
 ) {
@@ -16,7 +21,7 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
     active: isConnected,
     deactivate,
     chainId,
-    connector,
+
     account: address,
     error
   } = useWeb3React<T>()
@@ -33,11 +38,11 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
     return deactivate()
   }
 
-  useConnectOnMount(abstractConnector, connectOnMount, storage)
+  useConnectOnMount(connector, connectOnMount, storage)
 
   const connect = async () => {
     if (connectOnMount) storage.setItem('rk-connect-on-mount', 'true')
-    return await activate(abstractConnector)
+    return await activate(connector)
   }
 
   return { provider, connect, isConnected, disconnect, chainId, connector: connector as T, address, error }

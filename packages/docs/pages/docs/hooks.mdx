@@ -7,7 +7,7 @@ import { History } from '../../components/history'
 ```tsx
 import React from 'react'
 import { useTxHistory, logsFetcher } from '@rainbowkit/hooks'
-import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
+import { useWeb3React } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
 import { formatEther } from '@ethersproject/units'
@@ -50,7 +50,7 @@ A React hook for using individual connectors from web3-react.
 
 ```tsx
 import { Connector, ConnectorProps } from 'my-custom-connector'
-import { useConnector } from '@rainbowkit/core'
+import { useConnector } from '@rainbowkit/hooks'
 
 export type CustomWalletOptions = ConnectorProps & { connectOnMount?: boolean }
 
@@ -63,5 +63,29 @@ export const useCustomConnector = (opts?: CustomWalletOptions) => {
   const ctx = useConnector(injected, connectOnMount)
 
   return ctx
+}
+```
+
+## useConnectOnMount
+
+A React hook that attempts to connect to a provider if it was initialized before.
+
+```tsx
+import { useState, useEffect } from 'react'
+import { useWeb3React } from '@web3-react/core'
+import { useConnectOnMount } from '@rainbowkit/hooks'
+
+const App = () => {
+  const { library: provider, connector } = useWeb3React()
+
+  const [storage, set] = useState<Storage>()
+
+  useEffect(() => {
+    set(sessionStorage)
+  }, [])
+
+  useConnectOnMount(connector, true, storage)
+
+  return <h1>hello world</h1>
 }
 ```

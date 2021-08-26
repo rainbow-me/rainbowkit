@@ -2,6 +2,9 @@ import React from 'react'
 import type { ModalProps } from '../types'
 import styles from '../../styles/modal.module.css'
 
+/**
+ * Rainbow-styled Modal
+ */
 export const Modal = ({ wallets, connect, setConnecting, isConnecting }: ModalProps) => {
   return (
     <div className={isConnecting ? styles.modalOverlay : styles.modalHidden}>
