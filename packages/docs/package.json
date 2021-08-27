@@ -13,7 +13,7 @@
     "framer-motion": "^4.1.17",
     "next": "^11.1.0",
     "nextra": "^1.1.0",
-    "nextra-theme-docs": "^1.2.2",
+    "nextra-theme-docs": "^1.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-useportal": "^1.0.14",
