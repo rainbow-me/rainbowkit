@@ -2,7 +2,11 @@ import { History } from '../../components/history'
 
 # Hooks
 
+RainbowKit provides a variety of hooks that makes it easy to access data and perform actions within your dapp.
+
 ## useTxHistory
+
+Fetch transaction history for an etherium `address` with a given `provider` and `fetcher` function with any`options` needed.
 
 ```tsx
 import React from 'react'
@@ -21,7 +25,12 @@ const HistoryExample = () => {
     data: txes,
     loading,
     error
-  } = useTxHistory<TransactionResponse>({ address, fetcher: etherscanFetcher, provider })
+  } = useTxHistory<TransactionResponse>({
+    address,
+    fetcher: etherscanFetcher,
+    provider,
+    options: {}
+  })
 
   if (error) return <strong style={{ color: 'red' }}>Error! {error?.message}</strong>
 
@@ -42,11 +51,26 @@ const HistoryExample = () => {
 }
 ```
 
+The optional `fetcher` function should take the following form:
+
+```ts
+export const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
+  provider,
+  address,
+  options = {}
+}) => {
+  // Return an array of transactions.
+  return provider.getHistory(address, options.fromBlock, options.toBlock)
+}
+```
+
+### Example
+
 <History />
 
 ## useConnector
 
-A React hook for using individual connectors from web3-react.
+A React hook for using individual connectors from web3-react. Pass a web3-react `connector` and a boolean indicating if web3-react should `connectOnMount` with the given connector. You can pass an optional `storageProvider` which defaults to `window.localStorage`.
 
 ```tsx
 import { Connector, ConnectorProps } from 'my-custom-connector'
@@ -56,19 +80,39 @@ export type CustomWalletOptions = ConnectorProps & { connectOnMount?: boolean }
 
 export const useCustomConnector = (opts?: CustomWalletOptions) => {
   const options = opts || {}
-  const { connectOnMount, ...injectedOptions } = options
+  const { connectOnMount, ...customConnectorOpts } = options
 
-  const injected = new InjectedConnector(injectedOptions)
+  const connector = new Connector(customConnectorOpts)
 
-  const ctx = useConnector(injected, connectOnMount)
+  const {
+    provider,
+    connect,
+    isConnected,
+    disconnect,
+    chainId,
+    connector,
+    address,
+    error
+  } = useConnector(connector, connectOnMount, window.localStorage)
 
-  return ctx
+  return {
+    provider,
+    connect,
+    isConnected,
+    disconnect,
+    chainId,
+    connector,
+    address,
+    error
+  }
 }
 ```
 
 ## useConnectOnMount
 
-A React hook that attempts to connect to a provider if it was initialized before.
+A React hook that attempts to connect to a provider as if it was initialized before.
+
+// TODO Unclear when this would be used instead of useConnector
 
 ```tsx
 import { useState, useEffect } from 'react'
