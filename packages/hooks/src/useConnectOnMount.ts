@@ -6,9 +6,9 @@ import { isAuthorized } from '@rainbowkit/utils'
  * A React hook that attempts to connect to a provider if it was initialized before.
  * @param connector web3-react connector
  * @param enabled enable/disable the hook
- * @param storage browser storage to use. default is `localStorage`
+ * @param storage browser storage to use.
  */
-export const useConnectOnMount = (connector: any, enabled?: boolean, storage: Storage = localStorage) => {
+export const useConnectOnMount = (connector: any, enabled: boolean, storage: Storage) => {
   const { active, activate } = useWeb3React()
 
   useEffect(() => {
