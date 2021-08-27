@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
+    "@ethersproject/bignumber": "^5.4.1",
     "@ethersproject/providers": "^5.4.4",
     "@rainbowkit/utils": "workspace:^0.0.0",
     "@web3-react/abstract-connector": "^6.0.7",
