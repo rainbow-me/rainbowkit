@@ -2,7 +2,7 @@ import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from '../../styles/Tx.module.css'
-import { PENDING_ICON, SUCCESS_ICON } from '../constants/images'
+import { FAIL_ICON, PENDING_ICON, SUCCESS_ICON } from '../constants/images'
 
 export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
@@ -24,6 +24,8 @@ export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
         return PENDING_ICON
       case 'success':
         return SUCCESS_ICON
+      case 'fail':
+        return FAIL_ICON
     }
   }, [status])
 
