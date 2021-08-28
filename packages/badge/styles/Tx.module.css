@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: max-content;
+  padding: 0.6rem 0.8rem;
+  background-color: #e2e2e2;
+}
+
+.container a {
+  color: #5b749b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.container a::after {
+  content: '↗';
+}
+
+.icon {
+  margin-left: 1rem;
+  height: 1rem;
+  width: 1rem;
+}

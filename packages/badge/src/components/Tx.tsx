@@ -1,6 +1,8 @@
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
+import styles from '../../styles/Tx.module.css'
+import { PENDING_ICON, SUCCESS_ICON } from '../constants/images'
 
 export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
@@ -9,21 +11,23 @@ export interface TxProps {
   chainId?: number
   explorerUrl?: string
   provider?: BaseProvider
+  classNames?: Partial<{
+    container: string
+    icon: string
+  }>
 }
 
-export const Tx = ({ status, ...props }: TxProps) => {
+export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
   const iconUrl = useMemo(() => {
     switch (status) {
       case 'pending':
-        return '/icons/pending.svg'
+        return PENDING_ICON
       case 'success':
-        return '/icons/success.svg'
+        return SUCCESS_ICON
     }
   }, [status])
 
   const [link, setLink] = useState('')
-
-  const [title, setTitle] = useState(props.title || '')
 
   useEffect(() => {
     if (props.hash) {
@@ -33,11 +37,17 @@ export const Tx = ({ status, ...props }: TxProps) => {
   }, [props.hash, props.explorerUrl, props.chainId])
 
   return (
-    <span>
+    <div className={`${styles.container} ${classNames?.container}`}>
       <a href={link} title={title}>
         {title}
       </a>{' '}
-      <img src={iconUrl} aria-label={status} alt={status} title={status} />
-    </span>
+      <img
+        className={`${styles.icon} ${classNames?.icon}`}
+        src={iconUrl}
+        aria-label={status}
+        alt={status}
+        title={status}
+      />
+    </div>
   )
 }
