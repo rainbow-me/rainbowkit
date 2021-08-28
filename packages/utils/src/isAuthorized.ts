@@ -13,7 +13,7 @@ export const isAuthorized = async () => {
 
   try {
     // @ts-ignore
-    return await window.ethereum.send('eth_accounts').then((sendReturn) => {
+    return await window.ethereum.request({ method: 'eth_accounts' }).then((sendReturn) => {
       return parseSendReturn(sendReturn).length > 0
     })
   } catch {
