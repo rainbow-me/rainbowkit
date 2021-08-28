@@ -35,7 +35,11 @@ importers:
       rollup-plugin-filesize: ^9.1.1
       rollup-plugin-terser: ^7.0.2
       tslib: ^2.3.1
+<<<<<<< HEAD
       typescript: ^4.4.2
+=======
+      typescript: '4.3'
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       typescript-plugin-css-modules: ^3.4.0
     dependencies:
       '@ethersproject/providers': 5.4.4
@@ -51,7 +55,11 @@ importers:
       '@commitlint/config-conventional': 13.1.0
       '@compiled/babel-plugin': 0.6.14
       '@compiled/react': 0.6.13_react@17.0.2
+<<<<<<< HEAD
       '@rollup/plugin-typescript': 8.2.5_887d5a15efe47b5fde43404113fb4044
+=======
+      '@rollup/plugin-typescript': 8.2.5_fb60d1099d0f1062e1f455c5bc85cce0
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       '@types/node': 16.7.3
       '@types/react': 17.0.19
       '@typescript-eslint/eslint-plugin': 4.29.3_5b13bab190e8051f191796d8c4619073
@@ -63,7 +71,11 @@ importers:
       eslint-plugin-react: 7.24.0_eslint@7.32.0
       eslint-plugin-react-hooks: 4.2.0_eslint@7.32.0
       husky: 7.0.2
+<<<<<<< HEAD
       next: 11.1.0_01b6e46c81e6fda6a6d233df547d9171
+=======
+      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       prettier: 2.3.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -133,7 +145,11 @@ importers:
       '@web3-react/injected-connector': 6.0.7
       '@web3-react/walletlink-connector': 6.2.3
       framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
+<<<<<<< HEAD
       next: 11.1.0_01b6e46c81e6fda6a6d233df547d9171
+=======
+      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       nextra: 1.1.0_react@17.0.2
       nextra-theme-docs: 1.2.6_a2ec4242d38c07a1ad9e147a26042ca5
       react: 17.0.2
@@ -144,6 +160,10 @@ importers:
   packages/hooks:
     specifiers:
       '@ethersproject/abstract-provider': ^5.4.1
+<<<<<<< HEAD
+=======
+      '@ethersproject/bignumber': ^5.4.1
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       '@ethersproject/providers': ^5.4.4
       '@rainbowkit/utils': workspace:^0.0.0
       '@web3-react/abstract-connector': ^6.0.7
@@ -151,6 +171,7 @@ importers:
       use-ens: workspace:*
     dependencies:
       '@ethersproject/abstract-provider': 5.4.1
+      '@ethersproject/bignumber': 5.4.1
       '@ethersproject/providers': 5.4.4
       '@rainbowkit/utils': link:../utils
       '@web3-react/abstract-connector': 6.0.7
@@ -1201,7 +1222,11 @@ packages:
       warning: 4.0.3
     dev: false
 
+<<<<<<< HEAD
   /@rollup/plugin-typescript/8.2.5_887d5a15efe47b5fde43404113fb4044:
+=======
+  /@rollup/plugin-typescript/8.2.5_fb60d1099d0f1062e1f455c5bc85cce0:
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
     resolution: {integrity: sha512-QL/LvDol/PAGB2O0S7/+q2HpSUNodpw7z6nGn9BfoVCPOZ0r4EALrojFU29Bkoi2Hr2jgTocTejJ5GGWZfOxbQ==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
@@ -1527,12 +1552,21 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+<<<<<<< HEAD
     dev: false
 
   /@walletconnect/types/1.6.5:
     resolution: {integrity: sha512-S9DsODI35PbIDuOSkIiF8SzTstqCqX/4+kV7n18vyukEFPlpSSHwZMwJUfzo9yJ0pqsqLNZta+jvb88gJRuAaA==}
     dev: false
 
+=======
+    dev: false
+
+  /@walletconnect/types/1.6.5:
+    resolution: {integrity: sha512-S9DsODI35PbIDuOSkIiF8SzTstqCqX/4+kV7n18vyukEFPlpSSHwZMwJUfzo9yJ0pqsqLNZta+jvb88gJRuAaA==}
+    dev: false
+
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
   /@walletconnect/utils/1.6.5:
     resolution: {integrity: sha512-QB5rn/1s0PKVitAQ2/mgWbay2XfN21y3ob+5g6IhxtJRW31bbMoZw5YfO6s4ixLaZZez5LNQXstvQAclRzB7jQ==}
     dependencies:
@@ -5723,7 +5757,11 @@ packages:
       react: ^16.13.1
       react-dom: ^16.13.1
     dependencies:
+<<<<<<< HEAD
       next: 11.1.0_01b6e46c81e6fda6a6d233df547d9171
+=======
+      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     dev: false
@@ -5818,7 +5856,11 @@ packages:
       grapheme-splitter: 1.0.4
       intersection-observer: 0.12.0
       match-sorter: 4.2.1
+<<<<<<< HEAD
       next: 11.1.0_01b6e46c81e6fda6a6d233df547d9171
+=======
+      next: 11.1.0_f31b35bdaa3b7c2fce82404f09d2dac4
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
       next-themes: 0.0.8_7df30a00c1bfce1004e3004b7e801a78
       parse-git-url: 1.0.1
       prism-react-renderer: 1.2.1_react@17.0.2
@@ -6425,11 +6467,19 @@ packages:
   /platform/1.3.6:
     resolution: {integrity: sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==}
 
+<<<<<<< HEAD
   /pnp-webpack-plugin/1.6.4_typescript@4.4.2:
     resolution: {integrity: sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==}
     engines: {node: '>=6'}
     dependencies:
       ts-pnp: 1.2.0_typescript@4.4.2
+=======
+  /pnp-webpack-plugin/1.6.4_typescript@4.3.5:
+    resolution: {integrity: sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==}
+    engines: {node: '>=6'}
+    dependencies:
+      ts-pnp: 1.2.0_typescript@4.3.5
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
     transitivePeerDependencies:
       - typescript
 
@@ -8530,7 +8580,11 @@ packages:
     resolution: {integrity: sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==}
     dev: false
 
+<<<<<<< HEAD
   /ts-pnp/1.2.0_typescript@4.4.2:
+=======
+  /ts-pnp/1.2.0_typescript@4.3.5:
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
     resolution: {integrity: sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==}
     engines: {node: '>=6'}
     peerDependencies:
@@ -8539,7 +8593,11 @@ packages:
       typescript:
         optional: true
     dependencies:
+<<<<<<< HEAD
       typescript: 4.4.2
+=======
+      typescript: 4.3.5
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
 
   /tsconfig-paths/3.11.0:
     resolution: {integrity: sha512-7ecdYDnIdmv639mmDwslG6KQg1Z9STTz1j7Gcz0xa+nshh/gKDAHcPxRbWOsA3SPp0tXP2leTcY9Kw+NAkfZzA==}
@@ -8637,7 +8695,11 @@ packages:
       sass: 1.38.1
       stylus: 0.54.8
       tsconfig-paths: 3.11.0
+<<<<<<< HEAD
       typescript: 4.4.2
+=======
+      typescript: 4.3.5
+>>>>>>> 59ee6d5d5847351f62e0d1f97a85613d0764a5d1
     transitivePeerDependencies:
       - ts-node
     dev: true
