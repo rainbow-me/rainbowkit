@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { isAuthorized } from '@rainbowkit/utils'
 
@@ -8,10 +8,11 @@ import { isAuthorized } from '@rainbowkit/utils'
  * @param enabled enable/disable the hook
  * @param storage browser storage to use.
  */
-export const useConnectOnMount = (connector: any, enabled: boolean, storage: Storage) => {
+export const useConnectOnMount = (connector: any, enabled: boolean, storageProvider?: Storage | false) => {
   const { active, activate } = useWeb3React()
 
   useEffect(() => {
+    const storage = storageProvider === undefined ? localStorage : storageProvider
     let cachedState = true
     if (storage) cachedState = storage.getItem('rk-connect-on-mount') === 'true'
 
@@ -22,5 +23,5 @@ export const useConnectOnMount = (connector: any, enabled: boolean, storage: Sto
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storage]) // Only trigger on mount
+  }, [storageProvider]) // Only trigger on mount
 }

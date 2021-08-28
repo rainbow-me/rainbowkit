@@ -3,7 +3,7 @@ import { EthAddress } from '@rainbowkit/badge'
 import { setupProvider } from '@rainbowkit/utils'
 import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
-import { useConnectOnMount } from '@rainbowkit/core'
+import { useConnectOnMount } from '@rainbowkit/hooks'
 import { InjectedConnector } from '@web3-react/injected-connector'
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
@@ -47,7 +47,7 @@ const EthAddressBalanceExample = () => {
       >
         Activate connector
       </button>
-      <EthAddress showBalance={true} provider={provider} addr={address} />
+      <EthAddress balance={true} provider={provider} addr={address} />
     </>
   )
 }
