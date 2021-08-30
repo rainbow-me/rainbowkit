@@ -1,4 +1,4 @@
-import { EthAddress, Tx } from '@rainbowkit/badge'
+import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/badge'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 
 # `@rainbowkit/badge`
@@ -140,3 +140,50 @@ const TxView = () => {
   chainId={1}
   hash="0x4d7a50148d6aefff1a63571818d8072f4cccdd331f77699b77d314847c2d3058"
 />
+
+## AccountInfo
+
+Account information block.
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { AccountInfo } from '@rainbowkit/badge'
+
+const Wallet = () => {
+  return (
+    <AccountInfo
+      address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f"
+      wallet={{
+        name: 'WalletConnect',
+        iconUrl: 'https://app.uniswap.org/static/media/walletConnectIcon.304e3277.svg'
+      }}
+    />
+  )
+}
+```
+
+<AccountInfo
+  address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f"
+  wallet={{
+    name: 'WalletConnect',
+    iconUrl: 'https://app.uniswap.org/static/media/walletConnectIcon.304e3277.svg'
+  }}
+/>
+
+## ExplorerLink
+
+Manually pass explorer URL:
+
+```tsx
+<ExplorerLink explorerUrl="https://etherscan.com" address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+```
+
+<ExplorerLink explorerUrl="https://etherscan.com" address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+
+Detect explorer based on chain ID:
+
+```tsx
+<ExplorerLink chainId={1} address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+```
+
+<ExplorerLink chainId={1} address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
