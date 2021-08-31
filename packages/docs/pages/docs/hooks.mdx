@@ -10,7 +10,7 @@ Fetch transaction history for an etherium `address` with a given `provider` and 
 
 ```tsx
 import React from 'react'
-import { useTxHistory, logsFetcher } from '@rainbowkit/hooks'
+import { useTxHistory, logsFetcher, etherscanFetcher } from '@rainbowkit/hooks'
 import { useWeb3React } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
@@ -27,7 +27,7 @@ const HistoryExample = () => {
     error
   } = useTxHistory<TransactionResponse>({
     address,
-    fetcher: etherscanFetcher,
+    fetcher: logsFetcher,
     provider,
     options: {}
   })
@@ -51,16 +51,30 @@ const HistoryExample = () => {
 }
 ```
 
-The optional `fetcher` function should take the following form:
+The optional `fetcher` function should follow the same form of the two provided fetcher functions.
+`opts` can be whatever you want for the given fetcher.
 
 ```ts
-export const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
+type TxHistoryFetcher<Tx extends any = any, P extends Provider = Provider> = (opts: {
+  address: string
+  provider: P
+  options?: any
+}) => Promise<Tx[]>
+
+const myFetcher = async ({ provider, address, options = {}}) => {
+  return provider.whatever({...options})
+}
+
+const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
+  return await provider.getLogs({ fromBlock: 0, ...options, address })
+}
+
+const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
   provider,
   address,
   options = {}
 }) => {
-  // Return an array of transactions.
-  return provider.getHistory(address, options.fromBlock, options.toBlock)
+  return await provider.getHistory(address, options.fromBlock, options.toBlock)
 }
 ```
 
@@ -110,9 +124,7 @@ export const useCustomConnector = (opts?: CustomWalletOptions) => {
 
 ## useConnectOnMount
 
-A React hook that attempts to connect to a provider as if it was initialized before.
-
-// TODO Unclear when this would be used instead of useConnector
+A react hook that attempts to reconnect to a provider to restore an already established connection.
 
 ```tsx
 import { useState, useEffect } from 'react'
