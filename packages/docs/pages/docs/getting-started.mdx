@@ -1,0 +1,71 @@
+import Callout from 'nextra-theme-docs/callout'
+
+# Getting Started
+
+## Installation
+
+```sh
+# pnpm
+pnpm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+# yarn
+yarn add react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+# npm
+npm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+```
+
+## Quickstart
+
+### CRA
+
+<Callout type="warning" emoji="⚠️">
+  Webpack 5 or newer is required
+</Callout>
+
+```jsx
+// index.js
+import React from 'react'
+import { render } from 'react-dom'
+import { Web3ReactProvider } from '@web3-react/core'
+import { setupProvider } from '@rainbowkit/core'
+import { App } from './app'
+
+render(
+  <Web3ReactProvider getLibrary={setupProvider()}>
+    <App />
+  </Web3ReactProvider>,
+  document.getElementById('root')
+)
+```
+
+### Next.js
+
+<Callout type="warning" emoji="⚠️">
+  Next.js 11.0.2 or newer is required
+</Callout>
+
+```jsx
+// _app.jsx
+import React from 'react'
+import { Web3ReactProvider } from '@web3-react/core'
+import { setupProvider } from '@rainbowkit/core'
+
+const App = ({ Component, pageProps }) => {
+  return (
+    <Web3ReactProvider getLibrary={setupProvider()}>
+      <Component {...pageProps} />
+    </Web3ReactProvider>
+  )
+}
+
+export default App
+```
+
+Since all RainbowKit packages are pure ESM, don't forget to enable `esmExternals` in your Next.js config!
+
+```js
+module.exports = {
+  experimental: {
+    esmExternals: true // if something stops working, try 'loose' instead
+  }
+}
+```
