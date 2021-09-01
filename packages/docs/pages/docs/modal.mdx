@@ -2,6 +2,24 @@ import { Modal } from '../../components/modal'
 
 # `@rainbowkit/modal`
 
+
+A `Modal` React component for connecting to a wallet. It interacts with web3-react's state machine to connect your dapp to a wallet.
+
+You are free to use `useWeb3React` elsewhere in your dapp and it will respond to any actions taken by the modal.
+
+In the options argument, you can pass a list of `wallets` you want featured in the modal:
+
+- `coinbase`
+- `metamask`
+- ...TODO
+
+Specify which chain IDs are supported in the `chains` option:
+
+- `mainnet`,
+- `polygon`,
+- ...TODO
+
+
 ```tsx
 import React, { useState, useEffect } from 'react'
 import { Connector, useWalletModal } from '@rainbowkit/modal'
