@@ -15,7 +15,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting }: ModalPr
           .filter((x) => !x.hidden)
           .map((c) => (
             // TODO: remove temp style
-            <button key={c.name} onClick={() => connect(c)} style={{display: 'block'}}>
+            <button key={c.name} onClick={() => connect(c)}>
               {c.name}
             </button>
           ))}
