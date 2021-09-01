@@ -12,8 +12,7 @@
 core (re-exports with custom tweaks)
   hooks (hooks for web3)
     use-ens
-  ui (re-exports of badge and modal)
-    badge (components for a Uniswap-like UI for wallet)
-    modal (auth modal)
+  ui (UI components + modal)
+  modal (modal hook + component)
   utils (small utilities used by other packages)
 ```

@@ -21,3 +21,7 @@
   max-width: 800px;
   padding: 1rem;
 }
+
+.modal button {
+  display: block;
+}
