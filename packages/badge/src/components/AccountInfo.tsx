@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styles from '../../styles/AccountInfo.module.css'
 import { CopyAddressButton } from './CopyAddressButton'
 import { ExplorerLink, ExplorerProps } from './ExplorerLink'
+import { useChainId } from '@rainbowkit/hooks'
 
 export interface AccountInfoProps {
   address: string
@@ -23,17 +24,7 @@ export const AccountInfo = ({
   copyAddress: CopyAddress,
   explorerUrl
 }: AccountInfoProps) => {
-  const [chainId, setChainId] = useState(initialChainId)
-
-  useEffect(() => {
-    if (!initialChainId) {
-      if (provider) {
-        provider.getNetwork().then(({ chainId }) => setChainId(chainId))
-      } else {
-        setChainId(1)
-      }
-    }
-  }, [provider, initialChainId])
+  const chainId = useChainId({ provider, initialChainId })
 
   return (
     <div className={styles.container}>
