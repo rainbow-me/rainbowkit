@@ -1,6 +1,8 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { Chain, Wallet } from '@rainbowkit/utils'
 import { chainNametoID, connectorByWallet } from '@rainbowkit/utils'
+import metamask from '../assets/icons/metamask.png'
+import coinbase from '../assets/icons/coinbase.png'
 
 /**
  *
@@ -26,4 +28,14 @@ export const createConnector = async ({ name, options, chains }: Wallet & { chai
   }) as AbstractConnector
 
   return { instance, name }
+}
+
+export const getIcon = (name: string) => {
+  switch (name) {
+    case 'metamask':
+      return metamask
+    case 'coinbase':
+    case 'walletlink':
+      return coinbase
+  }
 }

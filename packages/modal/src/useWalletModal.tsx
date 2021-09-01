@@ -40,15 +40,27 @@ export const useWalletModal = ({
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
-  const wallets = selectedWallets.map((w) =>
-    typeof w === 'string'
-      ? {
-          name: w,
-          hidden: false,
-          options: {}
-        }
-      : w
-  ) as Wallet[]
+  const wallets = selectedWallets.map((w) => {
+    if (typeof w === 'string') {
+      switch (w) {
+        case 'metamask':
+          return {
+            name: w,
+            hidden: false,
+            options: {},
+            iconUrl: '/icons/rainbow.png'
+          }
+        default:
+          return {
+            name: w,
+            hidden: false,
+            options: {}
+          }
+      }
+    }
+
+    return w
+  }) as Wallet[]
 
   const connectToWallet = async (name: string) => {
     const options = wallets.find((w) => w.name === name)?.options || {}
