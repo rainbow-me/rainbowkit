@@ -12,20 +12,32 @@ export const useENS = ({
   provider,
   domain,
   fetchOptions,
-  contractAddress
+  contractAddress,
+  cache
 }: {
   provider: Provider
   domain: string
   fetchOptions?: RequestInit
   contractAddress?: string
+  cache?: boolean
 }): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: { web: {} } })
 
   useEffect(() => {
+    if (cache) {
+      try {
+        const cachedData = JSON.parse(localStorage.getItem(`use-ens-${domain}`))
+        set(cachedData)
+        // eslint-disable-next-line no-empty
+      } catch {}
+    }
     if (provider && domain) {
       provider.getNetwork().then(({ chainId }) => {
         if (contractAddress || chainId === 1) {
-          getENS(provider, contractAddress)(domain, fetchOptions).then(set)
+          getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
+            if (cache) localStorage.setItem(`use-ens-${domain}`, JSON.stringify(data))
+            set(data)
+          })
         }
       })
     }

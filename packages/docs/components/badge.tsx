@@ -11,7 +11,7 @@ export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 
 const EthAddressPicExample = () => {
   const { library: provider, activate } = useWeb3React()
 
-  const data = useENS({ provider, domain: 'foda.eth', fetchOptions: { cache: 'force-cache' } })
+  const data = useENS({ provider, domain: 'foda.eth', fetchOptions: { cache: 'force-cache' }, cache: true })
 
   useConnectOnMount(injected, true)
 
