@@ -6,21 +6,22 @@
 }
 
 .container {
-  border-radius: 10px;
-  padding: 0.4rem 0.8rem;
-  background-color: #e2e2e2;
+  border-radius: 16px;
+  padding: 12px 16px;
+  background: radial-gradient(100% 425.83% at 100% 0%, #f3efef 0%, rgba(243, 240, 240, 0.5) 100%);
   width: max-content;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .profileIcon {
   height: 1.5rem;
   width: 1.5rem;
   border: 50%;
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .balance {

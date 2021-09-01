@@ -54,8 +54,34 @@ import { useENS } from 'use-ens'
 const EthAddressBalanceExample = () => {
   const { library: provider, activate, account: address } = useWeb3React()
 
-  return <EthAddress showBalance provider={provider} addr={address} />
+  return <EthAddress balance provider={provider} addr={address} />
 }
 ```
 
 <EthAddressBalance />
+
+With both:
+
+```tsx
+import React from 'react'
+import { EthAddress } from '@rainbowkit/badge'
+import { useENS } from 'use-ens'
+
+const EthAddressBalanceExample = () => {
+  const { library: provider, activate, account: address } = useWeb3React()
+
+  const data = useENS(provider, 'foda.eth', { cache: 'force-cache' })
+
+  return (
+    <EthAddress
+      addr="foda.eth"
+      profileIcon={data.records?.avatar as string}
+      balance
+      provider={provider}
+      addr={address}
+    />
+  )
+}
+```
+
+<EthAddressPic balance />
