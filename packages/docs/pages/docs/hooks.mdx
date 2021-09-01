@@ -2,11 +2,15 @@ import { History } from '../../components/history'
 
 # Hooks
 
+RainbowKit provides a variety of hooks that makes it easy to access data and perform actions within your dapp.
+
 ## useTxHistory
+
+Fetch transaction history for an etherium `address` with a given `provider` and `fetcher` function with any`options` needed.
 
 ```tsx
 import React from 'react'
-import { useTxHistory, logsFetcher } from '@rainbowkit/hooks'
+import { useTxHistory, logsFetcher, etherscanFetcher } from '@rainbowkit/hooks'
 import { useWeb3React } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
@@ -21,7 +25,12 @@ const HistoryExample = () => {
     data: txes,
     loading,
     error
-  } = useTxHistory<TransactionResponse>({ address, fetcher: etherscanFetcher, provider })
+  } = useTxHistory<TransactionResponse>({
+    address,
+    fetcher: logsFetcher,
+    provider,
+    options: {}
+  })
 
   if (error) return <strong style={{ color: 'red' }}>Error! {error?.message}</strong>
 
@@ -42,11 +51,40 @@ const HistoryExample = () => {
 }
 ```
 
+The optional `fetcher` function should follow the same form of the two provided fetcher functions.
+`opts` can be whatever you want for the given fetcher.
+
+```ts
+type TxHistoryFetcher<Tx extends any = any, P extends Provider = Provider> = (opts: {
+  address: string
+  provider: P
+  options?: any
+}) => Promise<Tx[]>
+
+const myFetcher = async ({ provider, address, options = {}}) => {
+  return provider.whatever({...options})
+}
+
+const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
+  return await provider.getLogs({ fromBlock: 0, ...options, address })
+}
+
+const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
+  provider,
+  address,
+  options = {}
+}) => {
+  return await provider.getHistory(address, options.fromBlock, options.toBlock)
+}
+```
+
+### Example
+
 <History />
 
 ## useConnector
 
-A React hook for using individual connectors from web3-react.
+A React hook for using individual connectors from web3-react. Pass a web3-react `connector` and a boolean indicating if web3-react should `connectOnMount` with the given connector. You can pass an optional `storageProvider` which defaults to `window.localStorage`.
 
 ```tsx
 import { Connector, ConnectorProps } from 'my-custom-connector'
@@ -56,19 +94,37 @@ export type CustomWalletOptions = ConnectorProps & { connectOnMount?: boolean }
 
 export const useCustomConnector = (opts?: CustomWalletOptions) => {
   const options = opts || {}
-  const { connectOnMount, ...injectedOptions } = options
+  const { connectOnMount, ...customConnectorOpts } = options
 
-  const injected = new InjectedConnector(injectedOptions)
+  const connector = new Connector(customConnectorOpts)
 
-  const ctx = useConnector(injected, connectOnMount)
+  const {
+    provider,
+    connect,
+    isConnected,
+    disconnect,
+    chainId,
+    connector,
+    address,
+    error
+  } = useConnector(connector, connectOnMount, window.localStorage)
 
-  return ctx
+  return {
+    provider,
+    connect,
+    isConnected,
+    disconnect,
+    chainId,
+    connector,
+    address,
+    error
+  }
 }
 ```
 
 ## useConnectOnMount
 
-A React hook that attempts to connect to a provider if it was initialized before.
+A react hook that attempts to reconnect to a provider to restore an already established connection.
 
 ```tsx
 import { useState, useEffect } from 'react'
