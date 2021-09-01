@@ -41,3 +41,14 @@ export const chainIDToToken = (id: number) => {
       return 'FTM'
   }
 }
+
+export const chainIDToExplorer = (id: number) => {
+  switch (id) {
+    case 1:
+      return 'https://etherscan.com'
+    case 56:
+      return 'https://bscscan.com'
+    case 137:
+      return 'https://polygonscan.com'
+  }
+}
