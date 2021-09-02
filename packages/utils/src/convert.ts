@@ -27,11 +27,7 @@ export const chainNametoID = (name: string) => {
 
 export const chainIDToToken = (id: number) => {
   switch (id) {
-    case 1:
-    case 3:
-    case 4:
-    case 5:
-    case 42:
+    default:
       return 'ETH'
     case 137:
       return 'MATIC'

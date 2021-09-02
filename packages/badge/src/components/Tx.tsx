@@ -1,5 +1,7 @@
+import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
-import { chainIDToExplorer } from '@rainbowkit/utils'
+import { parseEther } from '@ethersproject/units'
+import { chainIDToExplorer, shortenAddress, toSignificant, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from '../../styles/Tx.module.css'
 import { FAIL_ICON, PENDING_ICON, SUCCESS_ICON } from '../constants/images'
@@ -8,6 +10,10 @@ export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
   title?: string
   hash?: string
+  data?: string
+  from?: string
+  to?: string
+  value?: BigNumber
   chainId?: number
   explorerUrl?: string
   provider?: BaseProvider
@@ -17,7 +23,17 @@ export interface TxProps {
   }>
 }
 
-export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
+export const Tx = ({
+  status,
+  title: initialTitle,
+  classNames,
+  chainId = 1,
+  data,
+  value,
+  from,
+  to,
+  ...props
+}: TxProps) => {
   const iconUrl = useMemo(() => {
     switch (status) {
       case 'pending':
@@ -29,14 +45,21 @@ export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
     }
   }, [status])
 
+  const [title, setTitle] = useState(initialTitle || '')
   const [link, setLink] = useState('')
 
   useEffect(() => {
     if (props.hash) {
-      if (props.explorerUrl) setLink(`${props.explorerUrl}/${props.hash}`)
-      else if (props.chainId) setLink(`${chainIDToExplorer(props.chainId)}/${props.hash}`)
+      if (props.explorerUrl) setLink(`${props.explorerUrl}/tx/${props.hash}`)
+      else if (chainId) {
+        setLink(`${chainIDToExplorer(chainId)}/tx/${props.hash}`)
+      }
+
+      if (!initialTitle) {
+        setTitle(guessTitle({ data, from, to, chainId, value }))
+      }
     }
-  }, [props.hash, props.explorerUrl, props.chainId])
+  }, [props.hash, props.explorerUrl, chainId])
 
   return (
     <div className={`${styles.container} ${classNames?.container}`}>

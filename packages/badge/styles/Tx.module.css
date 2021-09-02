@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  max-width: max-content;
+  justify-content: space-between;
   padding: 0.6rem 0.8rem;
   background-color: #e2e2e2;
+  min-width: 500px;
 }
 
 .container a {
@@ -18,7 +19,7 @@
 }
 
 .container a::after {
-  content: '↗';
+  content: ' ↗';
 }
 
 .icon {
