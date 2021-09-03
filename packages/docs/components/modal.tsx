@@ -9,8 +9,8 @@ const ModalExample = () => {
   const { Portal } = usePortal()
 
   const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
-    wallets: ['metamask', 'coinbase'],
-    chains: ['mainnet', 'polygon', 'bsc', 'fantom'],
+    wallets: ['metamask', 'coinbase', 'frame'],
+    chains: ['mainnet'],
     terms: (
       <span>
         By connecting a wallet, you acknowledge that you have read and agree to the RainbowKit{' '}

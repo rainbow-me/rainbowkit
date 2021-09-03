@@ -3,6 +3,7 @@ import { Chain, Wallet } from '@rainbowkit/utils'
 import { chainNametoID, connectorByWallet } from '@rainbowkit/utils'
 import metamask from '../assets/icons/metamask.png'
 import coinbase from '../assets/icons/coinbase.png'
+import frame from '../assets/icons/frame.png'
 
 /**
  *
@@ -37,5 +38,7 @@ export const getIcon = (name: string) => {
     case 'coinbase':
     case 'walletlink':
       return coinbase
+    case 'frame':
+      return frame
   }
 }

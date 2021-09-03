@@ -8,6 +8,7 @@
     "@rainbowkit/hooks": "workspace:^0.0.0",
     "@rainbowkit/modal": "workspace:*",
     "@rainbowkit/utils": "workspace:*",
+    "@web3-react/frame-connector": "^6.0.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletlink-connector": "^6.2.3",
     "framer-motion": "^4.1.17",

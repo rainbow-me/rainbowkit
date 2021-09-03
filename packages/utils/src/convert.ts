@@ -6,6 +6,8 @@ export const connectorByWallet = (name: string) => {
     case 'coinbase':
     case 'walletlink':
       return 'WalletLink'
+    case 'frame':
+      return 'Frame'
   }
 }
 
