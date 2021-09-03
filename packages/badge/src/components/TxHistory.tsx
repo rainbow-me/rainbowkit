@@ -3,6 +3,7 @@ import { etherscanFetcher, TxHistoryFetcher, useTxHistory } from '@rainbowkit/ho
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from '../index'
+import loadingIcon from '../../assets/loading.svg'
 import styles from '../../styles/TxHistory.module.css'
 
 export interface TxHistoryProps {
@@ -26,7 +27,12 @@ export const TxHistory = ({
 }: TxHistoryProps) => {
   const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
 
-  if (loading && !error) return <div>Loading...</div>
+  if (loading && !error)
+    return (
+      <div className={styles.loading}>
+        <img src={loadingIcon} alt="loading..." aria-roledescription="Loading icon" /> Loading...
+      </div>
+    )
 
   if (error) {
     console.error(error)

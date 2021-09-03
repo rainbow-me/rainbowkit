@@ -3,7 +3,8 @@ import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from '../../styles/Tx.module.css'
-import { FAIL_ICON, PENDING_ICON, SUCCESS_ICON } from '../constants/images'
+import { FAIL_ICON, SUCCESS_ICON } from '../constants/images'
+import PENDING_ICON from '../../assets/loading.svg'
 
 export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
