@@ -11,7 +11,13 @@ const TxHistoryExampleDemo = () => {
 
   useConnectOnMount(injected, true)
 
-  return <TxHistory address={address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f'} provider={provider} />
+  return (
+    <TxHistory
+      address={address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f'}
+      provider={provider}
+      options={{ fromBlock: 12862901 }}
+    />
+  )
 }
 
 export const TxHistoryExample = () => (

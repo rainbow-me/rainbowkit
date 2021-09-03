@@ -1,7 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
-import { parseEther } from '@ethersproject/units'
-import { chainIDToExplorer, shortenAddress, toSignificant, guessTitle } from '@rainbowkit/utils'
+import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from '../../styles/Tx.module.css'
 import { FAIL_ICON, PENDING_ICON, SUCCESS_ICON } from '../constants/images'
@@ -59,6 +58,7 @@ export const Tx = ({
         setTitle(guessTitle({ data, from, to, chainId, value }))
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.hash, props.explorerUrl, chainId])
 
   return (
@@ -66,13 +66,15 @@ export const Tx = ({
       <a href={link} title={title}>
         {title}
       </a>{' '}
-      <img
-        className={`${styles.icon} ${classNames?.icon}`}
-        src={iconUrl}
-        aria-label={status}
-        alt={status}
-        title={status}
-      />
+      {status && (
+        <img
+          className={`${styles.icon} ${classNames?.icon}`}
+          src={iconUrl}
+          aria-label={status}
+          alt={status}
+          title={status}
+        />
+      )}
     </div>
   )
 }

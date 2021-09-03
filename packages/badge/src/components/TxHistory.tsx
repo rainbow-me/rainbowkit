@@ -3,6 +3,7 @@ import { etherscanFetcher, TxHistoryFetcher, useTxHistory } from '@rainbowkit/ho
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from '../index'
+import styles from '../../styles/TxHistory.module.css'
 
 export interface TxHistoryProps {
   txComponent?: (props: TxProps) => JSX.Element
@@ -13,17 +14,29 @@ export interface TxHistoryProps {
   address: string
   provider: BaseProvider
   fetcher?: TxHistoryFetcher
+  options: Record<string, any>
 }
 
 export const TxHistory = ({
   txComponent: Tx = DefaultTx,
   address,
   provider,
-  fetcher = etherscanFetcher
+  fetcher = etherscanFetcher,
+  options
 }: TxHistoryProps) => {
-  const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher })
+  const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
 
-  if (error) return <div>Error! Failed to fetch transactions</div>
+  if (loading && !error) return <div>Loading...</div>
+
+  if (error) {
+    console.error(error)
+
+    return (
+      <div className={styles.error}>
+        <strong>Error!</strong> Failed to fetch transactions
+      </div>
+    )
+  }
 
   return (
     <div>

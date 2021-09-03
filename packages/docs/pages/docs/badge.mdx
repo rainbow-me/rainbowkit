@@ -194,12 +194,15 @@ Detect explorer based on chain ID:
 ## TxHistory
 
 ```tsx
+import { TxHistory } from '@rainbowkit/badge'
+import { EtherscanProvider } from '@rainbowkit/ui'
+
+const provider = new EtherscanProvider('homestead', 'API_KEY')
+
 const TxHistoryExample = () => {
   const { account: address } = useWeb3React()
 
-  useConnectOnMount(injected, true)
-
-  return <TxHistory address={address} provider={provider} />
+  return <TxHistory address={address} provider={provider} options={{ fromBlock: 12862901 }} />
 }
 ```
 
