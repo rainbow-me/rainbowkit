@@ -1,4 +1,6 @@
 export * from './useConnectOnMount'
 export * from './useConnector'
 export * from './useTxHistory'
+export * from './useChainId'
+export * from './usePendingTx'
 export * from 'use-ens'

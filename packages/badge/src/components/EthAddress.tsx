@@ -4,7 +4,6 @@ import styles from '../../styles/EthAddress.module.css'
 import { BaseProvider } from '@ethersproject/providers'
 import { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
-import { formatEther } from '@ethersproject/units'
 
 export interface EthAddressProps {
   addr: string
