@@ -61,8 +61,8 @@ type TxHistoryFetcher<Tx extends any = any, P extends Provider = Provider> = (op
   options?: any
 }) => Promise<Tx[]>
 
-const myFetcher = async ({ provider, address, options = {}}) => {
-  return provider.whatever({...options})
+const myFetcher = async ({ provider, address, options = {} }) => {
+  return provider.whatever({ ...options })
 }
 
 const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
@@ -98,16 +98,11 @@ export const useCustomConnector = (opts?: CustomWalletOptions) => {
 
   const connector = new Connector(customConnectorOpts)
 
-  const {
-    provider,
-    connect,
-    isConnected,
-    disconnect,
-    chainId,
+  const { provider, connect, isConnected, disconnect, chainId, connector, address, error } = useConnector(
     connector,
-    address,
-    error
-  } = useConnector(connector, connectOnMount, window.localStorage)
+    connectOnMount,
+    window.localStorage
+  )
 
   return {
     provider,
@@ -124,7 +119,7 @@ export const useCustomConnector = (opts?: CustomWalletOptions) => {
 
 ## useConnectOnMount
 
-A react hook that attempts to reconnect to a provider to restore an already established connection.
+A React hook that attempts to reconnect to a provider to restore an already established connection.
 
 ```tsx
 import { useState, useEffect } from 'react'

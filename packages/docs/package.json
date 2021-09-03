@@ -11,7 +11,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletlink-connector": "^6.2.3",
     "framer-motion": "^4.1.17",
-    "next": "^11.1.0",
+    "next": "^11.1.1",
     "nextra": "^1.1.0",
     "nextra-theme-docs": "^1.2.6",
     "react": "^17.0.2",
