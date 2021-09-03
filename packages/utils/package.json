@@ -22,6 +22,7 @@
     "@web3-react/core": ">=6.1"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@web3-react/core": ">=6.1"
   }
 }

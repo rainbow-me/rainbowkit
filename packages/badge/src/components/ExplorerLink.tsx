@@ -7,7 +7,7 @@ export type ExplorerProps = { chainId?: number; address: string; explorerUrl?: s
   HTMLAnchorElement
 >
 
-export const ExplorerLink = ({ chainId, address, explorerUrl, ...props }: ExplorerProps) => (
+export const ExplorerLink = ({ chainId = 1, address, explorerUrl, ...props }: ExplorerProps) => (
   <a
     className={styles.link}
     href={`https://${explorerUrl || chainIDToExplorer(chainId)}/address/${address}`}

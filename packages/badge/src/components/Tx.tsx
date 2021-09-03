@@ -34,7 +34,7 @@ export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
   useEffect(() => {
     if (props.hash) {
       if (props.explorerUrl) setLink(`${props.explorerUrl}/${props.hash}`)
-      else if (props.chainId) setLink(`${chainIDToExplorer(props.chainId)}/${props.hash}`)
+      else if (props.chainId) setLink(`${chainIDToExplorer(props.chainId || 1)}/${props.hash}`)
     }
   }, [props.hash, props.explorerUrl, props.chainId])
 
