@@ -56,6 +56,7 @@ export const EthAddress = ({
 
   return (
     <div className={`${styles.container} ${props.classNames?.container}`}>
+      {profileIcon && <img src={profileIcon} className={`${styles.profileIcon} ${props.classNames?.profileIcon}`} />}
       {balance && (
         <span className={`${styles.balance} ${props.classNames?.balance}`}>
           {bal} {symbol.toUpperCase()}
@@ -64,7 +65,6 @@ export const EthAddress = ({
       <span className={`${styles.address} ${props.classNames?.address}`}>
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
       </span>
-      {profileIcon && <img src={profileIcon} className={`${styles.profileIcon} ${props.classNames?.profileIcon}`} />}
     </div>
   )
 }
