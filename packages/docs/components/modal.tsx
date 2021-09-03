@@ -8,9 +8,15 @@ import { setupProvider } from '@rainbowkit/utils'
 const ModalExample = () => {
   const { Portal } = usePortal()
 
-  const { disconnect, isConnected, connect, Modal, isConnecting, address, connector } = useWalletModal({
+  const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
     wallets: ['metamask', 'coinbase'],
-    chains: ['mainnet', 'polygon', 'bsc', 'fantom']
+    chains: ['mainnet', 'polygon', 'bsc', 'fantom'],
+    terms: (
+      <span>
+        By connecting a wallet, you acknowledge that you have read and agree to the RainbowKit{' '}
+        <a href="/tos">Terms of Service</a>.
+      </span>
+    )
   })
 
   return (

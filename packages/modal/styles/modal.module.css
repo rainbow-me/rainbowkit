@@ -17,11 +17,14 @@
 
 .modal {
   min-height: 525px;
-  min-width: 390px;
+  max-width: 390px;
   padding: 24px;
   position: relative;
   background: #ffffff;
   border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
@@ -95,9 +98,7 @@
   height: 34px;
   width: 34px;
   border-radius: 10px;
-  box-shadow: 0px 4px 12px rgba(0, 30, 89, 0.3);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  padding: 2px;
+  filter: drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3));
 }
 
 .close {

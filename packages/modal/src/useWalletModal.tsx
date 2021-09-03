@@ -25,11 +25,13 @@ export type WalletInterface = Omit<
 export const useWalletModal = ({
   modal: ModalComponent,
   chains,
-  wallets: selectedWallets
+  wallets: selectedWallets,
+  terms
 }: {
   modal?: React.ComponentType<ModalProps> | false
   wallets: (Wallet | string)[]
   chains?: Chain[]
+  terms?: JSX.Element
 }): WalletInterface => {
   const {
     activate,
@@ -100,14 +102,7 @@ export const useWalletModal = ({
   }
 
   if (typeof ModalComponent === 'undefined') {
-    const Modal = () => (
-      <ModalUI
-        wallets={wallets}
-        connect={activateConnector}
-        isConnecting={isConnecting}
-        setConnecting={setConnecting}
-      />
-    )
+    const Modal = () => <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms }} />
 
     return { Modal, connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
   } else {

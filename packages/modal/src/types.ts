@@ -7,4 +7,6 @@ export interface ModalProps {
 
   isConnecting: boolean
   setConnecting: Dispatch<boolean>
+
+  terms?: JSX.Element
 }
