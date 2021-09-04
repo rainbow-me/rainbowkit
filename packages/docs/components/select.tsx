@@ -10,7 +10,46 @@ const Select = () => {
   return (
     <>
       <Activate />
-      <NetworkSelect chains={['ethereum', 'polygon', 'bsc', 'arbitrum', 'optimism']} provider={provider} />
+      <NetworkSelect
+        chains={[
+          'ethereum',
+          'optimism',
+          'arbitrum',
+          'bsc',
+          'polygon',
+          'xdai',
+          'ftm',
+          'avax',
+          'fuse',
+          'huobi',
+          'xdai arbitrum',
+          'klaytn',
+          'celo',
+          'okex',
+          'tomo',
+          'callisto',
+          'clover',
+          'edgeware',
+          'aurora',
+          // testnets
+
+          'ropsten',
+          'rinkeby',
+          'goerli',
+          'kovan',
+          'okex testnet',
+          'bsc testnet',
+          'eco testnet',
+          'optimism goerli',
+          'klaytn testnet',
+          'avax testnet',
+          'celo testnet',
+          'polygon testnet',
+          'arb testnet',
+          'near testnet'
+        ]}
+        provider={provider}
+      />
     </>
   )
 }

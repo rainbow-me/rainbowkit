@@ -26,6 +26,10 @@ function hasSubArray(master: string[], sub: string[]) {
   )
 }
 
+const findInSubArray = (master: string[], sub: string[]) => {
+  return master.indexOf(master.find((x) => sub.includes(x)))
+}
+
 export interface ChainOptionProps {
   chain: Chain
   children?: ReactNode
@@ -37,7 +41,12 @@ export const ChainOption = ({
   ...props
 }: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
   <div aria-label="option" {...props} className={`${styles.option} ${props.className}`}>
-    {chain.logoURL && <img src={chain.logoURL} />} {chain.name} {children}
+    <img
+      height={32}
+      width={32}
+      src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
+    />{' '}
+    {chain.name} {children}
   </div>
 )
 
@@ -48,7 +57,14 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }:
 
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === currentChainId), [currentChainId])
 
-  const filteredChains = useMemo(() => chains.filter((chain) => hasSubArray(chainNames, chain.aliases)), [chainNames])
+  const filteredChains = useMemo(
+    () =>
+      chains
+        .filter((chain) => hasSubArray(chainNames, chain.aliases))
+        // to sort the same way as given in props
+        .sort((a, b) => findInSubArray(chainNames, a.aliases) - findInSubArray(chainNames, b.aliases)),
+    [chainNames]
+  )
 
   return (
     <div

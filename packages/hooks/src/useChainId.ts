@@ -13,9 +13,16 @@ export const useChainId = ({
 }): number => {
   const [chainId, setChainId] = useState(initialChainId)
 
+  const setChain = (x: { chainId: number } | number) => {
+    setChainId(typeof x === 'number' ? x : x.chainId)
+  }
+
   useEffect(() => {
     if (provider) {
-      provider.getNetwork().then(({ chainId }) => setChainId(chainId))
+      provider.getNetwork().then(setChain)
+      provider.on('chainChanged', setChain)
+
+      return () => void provider.off('chainChange', setChain)
     } else {
       setChainId(1)
     }

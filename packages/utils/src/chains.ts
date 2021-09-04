@@ -37,6 +37,248 @@ export const chains: Chain[] = [
     logoURL: 'https://dweb.link/ipfs/bafkreihr4iw5yptth3uanym4s62vfr66eaqhywjwuqk4btf2i2uku7lutq'
   },
   {
+    name: 'Optimism',
+    chain: 'ETH',
+    network: 'mainnet',
+    rpc: ['https://mainnet.optimism.io/'],
+    nativeCurrency: { name: 'Ether', symbol: 'OETH', decimals: 18 },
+    infoURL: 'https://optimism.io',
+    chainId: 10,
+    aliases: ['optimism'],
+    logoURL: 'https://dweb.link/ipfs/bafkreifjyybj7whe5bsa4fbgjnfmhdhkhsbw6ffghrzrttg5sfjb6fwzs4'
+  },
+  {
+    name: 'Arbitrum',
+    chainId: 42161,
+    chain: 'ETH',
+    network: 'mainnet',
+    nativeCurrency: { name: 'Ether', symbol: 'AETH', decimals: 18 },
+    rpc: [
+      'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
+      'https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}',
+      'https://arb1.arbitrum.io/rpc',
+      'wss://arb1.arbitrum.io/ws'
+    ],
+    explorers: [
+      { name: 'Arbiscan', url: 'https://arbiscan.io', standard: 'EIP3091' },
+      { name: 'Arbitrum Explorer', url: 'https://explorer.arbitrum.io', standard: 'EIP3091' }
+    ],
+    infoURL: 'https://arbitrum.io',
+    aliases: ['arb', 'arbitrum'],
+    logoURL: 'https://bafkreiexp4jgjydr4g7eug2lbbmetzt62lmrtpsx7ro5yqcdqggnc4ioea.ipfs.dweb.link'
+  },
+  {
+    name: 'Binance Smart Chain',
+    chain: 'BSC',
+    network: 'mainnet',
+    rpc: [
+      'https://bsc-dataseed1.binance.org',
+      'https://bsc-dataseed2.binance.org',
+      'https://bsc-dataseed3.binance.org',
+      'https://bsc-dataseed4.binance.org',
+      'https://bsc-dataseed1.defibit.io',
+      'https://bsc-dataseed2.defibit.io',
+      'https://bsc-dataseed3.defibit.io',
+      'https://bsc-dataseed4.defibit.io',
+      'https://bsc-dataseed1.ninicoin.io',
+      'https://bsc-dataseed2.ninicoin.io',
+      'https://bsc-dataseed3.ninicoin.io',
+      'https://bsc-dataseed4.ninicoin.io',
+      'wss://bsc-ws-node.nariox.org'
+    ],
+    nativeCurrency: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
+    infoURL: 'https://www.binance.org',
+    chainId: 56,
+    explorers: [{ name: 'bscscan', url: 'https://bscscan.com', standard: 'EIP3091' }],
+    aliases: ['bsc', 'binance'],
+    logoURL: 'https://dweb.link/ipfs/bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi'
+  },
+  {
+    name: 'Polygon',
+    chain: 'Polygon',
+    network: 'mainnet',
+    rpc: [
+      'https://rpc-mainnet.matic.network',
+      'wss://ws-mainnet.matic.network',
+      'https://rpc-mainnet.matic.quiknode.pro',
+      'https://matic-mainnet.chainstacklabs.com'
+    ],
+    nativeCurrency: { name: 'Matic', symbol: 'MATIC', decimals: 18 },
+    infoURL: 'https://matic.network/',
+    chainId: 137,
+    explorers: [{ name: 'polygonscan', url: 'https://polygonscan.com', standard: 'EIP3091' }],
+    aliases: ['polygon', 'matic'],
+    logoURL: 'https://dweb.link/ipfs/bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq'
+  },
+  {
+    name: 'xDAI Chain',
+    chain: 'XDAI',
+    network: 'mainnet',
+    rpc: [
+      'https://rpc.xdaichain.com',
+      'https://xdai.poanetwork.dev',
+      'wss://rpc.xdaichain.com/wss',
+      'wss://xdai.poanetwork.dev/wss',
+      'http://xdai.poanetwork.dev',
+      'https://dai.poa.network',
+      'ws://xdai.poanetwork.dev:8546'
+    ],
+    nativeCurrency: { name: 'xDAI', symbol: 'xDAI', decimals: 18 },
+    infoURL: 'https://forum.poa.network/c/xdai-chain',
+    chainId: 100,
+    slip44: 700,
+    aliases: ['xdai'],
+    logoURL: 'https://bafkreibzm64fdn6lk47fkax3hlwg5hov2z6jlgot7ymfzkzkczxfv7544y.ipfs.dweb.link/'
+  },
+  {
+    name: 'Fantom Opera',
+    chain: 'FTM',
+    network: 'mainnet',
+    rpc: ['https://rpc.ftm.tools'],
+    nativeCurrency: { name: 'Fantom', symbol: 'FTM', decimals: 18 },
+    infoURL: 'https://fantom.foundation',
+    chainId: 250,
+    explorers: [{ name: 'ftmscan', url: 'https://ftmscan.com', standard: 'EIP3091' }],
+    aliases: ['fantom', 'ftm'],
+    logoURL: 'https://bafkreica3l2ne64fu74wdsu4a4mpsn5yshn7isybnwvruduxnkz6bbpb5i.ipfs.dweb.link'
+  },
+  {
+    name: 'Avalanche',
+    chain: 'AVAX',
+    network: 'mainnet',
+    rpc: ['https://api.avax.network/ext/bc/C/rpc'],
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    infoURL: 'https://cchain.explorer.avax.network/',
+    chainId: 43114,
+    aliases: ['avax', 'avalanche'],
+    logoURL: 'https://bafkreihcnx7i6a3i44bqzcj6ogvlksthefftkal4q7gbbbudegalzxdap4.ipfs.dweb.link'
+  },
+  {
+    name: 'Fuse',
+    chain: 'FUSE',
+    network: 'mainnet',
+    rpc: ['https://rpc.fuse.io'],
+    nativeCurrency: { name: 'Fuse', symbol: 'FUSE', decimals: 18 },
+    infoURL: 'https://fuse.io/',
+    chainId: 122,
+    aliases: ['fuse'],
+    logoURL: 'https://bafkreie5s2ig4odw3mvw3ovggughp7w6d3xjbxqefakj5fvzeo4rpeje5m.ipfs.dweb.link'
+  },
+  {
+    name: 'Huobi ECO Chain',
+    chain: 'Heco',
+    network: 'mainnet',
+    rpc: ['https://http-mainnet.hecochain.com', 'wss://ws-mainnet.hecochain.com'],
+    nativeCurrency: { name: 'Huobi ECO Chain Native Token', symbol: 'HT', decimals: 18 },
+    infoURL: 'https://www.hecochain.com',
+    chainId: 128,
+    explorers: [{ name: 'hecoinfo', url: 'https://hecoinfo.com', standard: 'EIP3091' }],
+    aliases: ['huobi', 'eco'],
+    logoURL: 'https://bafkreibbuqctrcydn5ty3n6i7pblegqfxb2ep6vjejqlf3esqsrbispyuq.ipfs.dweb.link'
+  },
+  {
+    name: 'Arbitrum on xDai',
+    chain: 'AOX',
+    network: 'xdai',
+    rpc: ['https://arbitrum.xdaichain.com/'],
+    nativeCurrency: { name: 'xDAI', symbol: 'xDAI', decimals: 18 },
+    infoURL: 'https://xdaichain.com',
+    chainId: 200,
+    explorers: [{ name: 'blockscout', url: 'https://blockscout.com/xdai/arbitrum', standard: 'EIP3091' }],
+    parent: { chain: 'eip155-100', type: 'L2' },
+    aliases: ['xdai arbitrum']
+  },
+  {
+    name: 'Klaytn Cypress',
+    chain: 'KLAY',
+    network: 'cypress',
+    rpc: ['https://node-api.klaytnapi.com/v1/klaytn'],
+    nativeCurrency: { name: 'KLAY', symbol: 'KLAY', decimals: 18 },
+    infoURL: 'https://www.klaytn.com/',
+    chainId: 8217,
+    slip44: 8217,
+    aliases: ['klaytn', 'klaytn cypress'],
+    logoURL: 'https://dweb.link/ipfs/bafkreig7dsk3hnd7ml6cfq5ffgrt3eozisuasrama2x7b2cbuim5lucvoa'
+  },
+  {
+    name: 'Celo',
+    chainId: 42220,
+    chain: 'CELO',
+    network: 'Mainnet',
+    nativeCurrency: { name: 'CELO', symbol: 'CELO', decimals: 18 },
+    rpc: ['https://forno.celo.org', 'wss://forno.celo.org/ws'],
+    infoURL: 'https://docs.celo.org/',
+    aliases: ['celo'],
+    logoURL: 'https://dweb.link/ipfs/bafkreidctyoxzh37mwc7g2hteapfh3ocomdphjkpf64n6kuqq5sakoveum'
+  },
+  {
+    name: 'OKExChain',
+    chain: 'okexchain',
+    network: 'mainnet',
+    rpc: ['https://exchainrpc.okex.org'],
+    nativeCurrency: { name: 'OKExChain Global Utility Token', symbol: 'OKT', decimals: 18 },
+    infoURL: 'https://www.okex.com/okexchain',
+    chainId: 66,
+    explorers: [{ name: 'OKLink', url: 'https://www.oklink.com/okexchain', standard: 'EIP3091' }],
+    aliases: ['okex'],
+    logoURL: 'https://bafkreidpeihzclobn5xinf7zfjcmheyohsv72nnys5kyd6oovtlpnotaru.ipfs.dweb.link'
+  },
+  {
+    name: 'TomoChain',
+    chain: 'TOMO',
+    network: 'mainnet',
+    rpc: ['https://rpc.tomochain.com'],
+    nativeCurrency: { name: 'TomoChain Ether', symbol: 'TOMO', decimals: 18 },
+    infoURL: 'https://tomocoin.io',
+    chainId: 88,
+    aliases: ['tomochain', 'tomo'],
+    logoURL: 'https://bafkreicjbvapqbs6r44rxb2lzhtqc7n6i67wvzn6gg5a6hfrneanwel5im.ipfs.dweb.link'
+  },
+  {
+    name: 'Callisto',
+    chain: 'CLO',
+    network: 'mainnet',
+    rpc: ['https://clo-geth.0xinfra.com'],
+    nativeCurrency: { name: 'Callisto Ether', symbol: 'CLO', decimals: 18 },
+    infoURL: 'https://callisto.network',
+    chainId: 820,
+    slip44: 820,
+    aliases: ['callisto']
+  },
+  {
+    name: 'Clover',
+    chain: 'Clover',
+    network: 'clover mainnet',
+    rpc: ['https://rpc-ivy.clover.finance', 'https://rpc-ivy-2.clover.finance', 'https://rpc-ivy-3.clover.finance'],
+    nativeCurrency: { name: 'Clover', symbol: 'CLV', decimals: 18 },
+    infoURL: 'https://clover.finance',
+    chainId: 1024,
+    aliases: ['clover']
+  },
+  {
+    name: 'Edgeware',
+    chain: 'EDG',
+    network: 'mainnet',
+    rpc: ['https://mainnet1.edgewa.re'],
+    nativeCurrency: { name: 'Edge', symbol: 'EDG', decimals: 18 },
+    infoURL: 'http://edgewa.re',
+    chainId: 2021,
+    aliases: ['edgeware']
+  },
+  {
+    name: 'Aurora',
+    chain: 'NEAR',
+    network: 'mainnet',
+    rpc: ['https://rpc.mainnet.aurora.dev:8545'],
+    nativeCurrency: { name: 'Ether', symbol: 'aETH', decimals: 18 },
+    infoURL: 'https://aurora.dev',
+    chainId: 1313161554,
+    aliases: ['near', 'aurora'],
+    logoURL: 'https://dweb.link/ipfs/bafkreie2wmgm56ytj4vpgcknucoqc3dtlzvpr7pqpcj462nudu2w4czj7a'
+  },
+
+  /// TESTNETS
+  {
     name: 'Ethereum Testnet Ropsten',
     chain: 'ETH',
     network: 'ropsten',
@@ -74,17 +316,6 @@ export const chains: Chain[] = [
     aliases: ['goerli']
   },
   {
-    name: 'Optimism',
-    chain: 'ETH',
-    network: 'mainnet',
-    rpc: ['https://mainnet.optimism.io/'],
-    nativeCurrency: { name: 'Ether', symbol: 'OETH', decimals: 18 },
-    infoURL: 'https://optimism.io',
-    chainId: 10,
-    aliases: ['optimism'],
-    logoURL: 'https://dweb.link/ipfs/bafkreifjyybj7whe5bsa4fbgjnfmhdhkhsbw6ffghrzrttg5sfjb6fwzs4'
-  },
-  {
     name: 'Ethereum Testnet Kovan',
     chain: 'ETH',
     network: 'kovan',
@@ -101,33 +332,7 @@ export const chains: Chain[] = [
     chainId: 42,
     aliases: ['kovan']
   },
-  {
-    name: 'Binance Smart Chain',
-    chain: 'BSC',
-    network: 'mainnet',
-    rpc: [
-      'https://bsc-dataseed1.binance.org',
-      'https://bsc-dataseed2.binance.org',
-      'https://bsc-dataseed3.binance.org',
-      'https://bsc-dataseed4.binance.org',
-      'https://bsc-dataseed1.defibit.io',
-      'https://bsc-dataseed2.defibit.io',
-      'https://bsc-dataseed3.defibit.io',
-      'https://bsc-dataseed4.defibit.io',
-      'https://bsc-dataseed1.ninicoin.io',
-      'https://bsc-dataseed2.ninicoin.io',
-      'https://bsc-dataseed3.ninicoin.io',
-      'https://bsc-dataseed4.ninicoin.io',
-      'wss://bsc-ws-node.nariox.org'
-    ],
-    nativeCurrency: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
-    infoURL: 'https://www.binance.org',
-    chainId: 56,
-    explorers: [{ name: 'bscscan', url: 'https://bscscan.com', standard: 'EIP3091' }],
-    aliases: ['bsc', 'binance'],
-    logoURL: 'https://dweb.link/ipfs/bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi'
-  },
-  {
+  /*   {
     name: 'Ontology',
     chain: 'Ontology',
     network: 'mainnet',
@@ -142,7 +347,7 @@ export const chains: Chain[] = [
     chainId: 58,
     explorers: [{ name: 'explorer', url: 'https://explorer.ont.io/', standard: 'EIP3091' }],
     aliases: ['ont', 'ontology']
-  },
+  }, */
   {
     name: 'OKExChain Testnet',
     chain: 'okexchain',
@@ -156,18 +361,6 @@ export const chains: Chain[] = [
     aliases: ['okex testnet']
   },
   {
-    name: 'OKExChain',
-    chain: 'okexchain',
-    network: 'mainnet',
-    rpc: ['https://exchainrpc.okex.org'],
-    nativeCurrency: { name: 'OKExChain Global Utility Token', symbol: 'OKT', decimals: 18 },
-    infoURL: 'https://www.okex.com/okexchain',
-    chainId: 66,
-    explorers: [{ name: 'OKLink', url: 'https://www.oklink.com/okexchain', standard: 'EIP3091' }],
-    aliases: ['okex'],
-    logoURL: 'https://bafkreidpeihzclobn5xinf7zfjcmheyohsv72nnys5kyd6oovtlpnotaru.ipfs.dweb.link'
-  },
-  {
     name: 'Optimistic Ethereum Testnet Kovan',
     chain: 'ETH',
     network: 'kovan',
@@ -176,17 +369,6 @@ export const chains: Chain[] = [
     infoURL: 'https://optimism.io',
     chainId: 69,
     aliases: ['optimism kovan']
-  },
-  {
-    name: 'TomoChain',
-    chain: 'TOMO',
-    network: 'mainnet',
-    rpc: ['https://rpc.tomochain.com'],
-    nativeCurrency: { name: 'TomoChain Ether', symbol: 'TOMO', decimals: 18 },
-    infoURL: 'https://tomocoin.io',
-    chainId: 88,
-    aliases: ['tomochain', 'tomo'],
-    logoURL: 'https://bafkreicjbvapqbs6r44rxb2lzhtqc7n6i67wvzn6gg5a6hfrneanwel5im.ipfs.dweb.link'
   },
   {
     name: 'Binance Smart Chain Testnet',
@@ -207,86 +389,7 @@ export const chains: Chain[] = [
     explorers: [{ name: 'bscscan-testnet', url: 'https://testnet.bscscan.com', standard: 'EIP3091' }],
     aliases: ['bsc testnet', 'chapel', 'binance testnet']
   },
-  {
-    name: 'xDAI Chain',
-    chain: 'XDAI',
-    network: 'mainnet',
-    rpc: [
-      'https://rpc.xdaichain.com',
-      'https://xdai.poanetwork.dev',
-      'wss://rpc.xdaichain.com/wss',
-      'wss://xdai.poanetwork.dev/wss',
-      'http://xdai.poanetwork.dev',
-      'https://dai.poa.network',
-      'ws://xdai.poanetwork.dev:8546'
-    ],
-    nativeCurrency: { name: 'xDAI', symbol: 'xDAI', decimals: 18 },
-    infoURL: 'https://forum.poa.network/c/xdai-chain',
-    chainId: 100,
-    slip44: 700,
-    aliases: ['xdai']
-  },
-  {
-    name: 'Fuse',
-    chain: 'FUSE',
-    network: 'mainnet',
-    rpc: ['https://rpc.fuse.io'],
-    nativeCurrency: { name: 'Fuse', symbol: 'FUSE', decimals: 18 },
-    infoURL: 'https://fuse.io/',
-    chainId: 122,
-    aliases: ['fuse']
-  },
-  {
-    name: 'Huobi ECO Chain',
-    chain: 'Heco',
-    network: 'mainnet',
-    rpc: ['https://http-mainnet.hecochain.com', 'wss://ws-mainnet.hecochain.com'],
-    nativeCurrency: { name: 'Huobi ECO Chain Native Token', symbol: 'HT', decimals: 18 },
-    infoURL: 'https://www.hecochain.com',
-    chainId: 128,
-    explorers: [{ name: 'hecoinfo', url: 'https://hecoinfo.com', standard: 'EIP3091' }],
-    aliases: ['huobi', 'eco']
-  },
-  {
-    name: 'Polygon',
-    chain: 'Polygon',
-    network: 'mainnet',
-    rpc: [
-      'https://rpc-mainnet.matic.network',
-      'wss://ws-mainnet.matic.network',
-      'https://rpc-mainnet.matic.quiknode.pro',
-      'https://matic-mainnet.chainstacklabs.com'
-    ],
-    nativeCurrency: { name: 'Matic', symbol: 'MATIC', decimals: 18 },
-    infoURL: 'https://matic.network/',
-    chainId: 137,
-    explorers: [{ name: 'polygonscan', url: 'https://polygonscan.com', standard: 'EIP3091' }],
-    aliases: ['polygon', 'matic'],
-    logoURL: 'https://dweb.link/ipfs/bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq'
-  },
-  {
-    name: 'Arbitrum on xDai',
-    chain: 'AOX',
-    network: 'xdai',
-    rpc: ['https://arbitrum.xdaichain.com/'],
-    nativeCurrency: { name: 'xDAI', symbol: 'xDAI', decimals: 18 },
-    infoURL: 'https://xdaichain.com',
-    chainId: 200,
-    explorers: [{ name: 'blockscout', url: 'https://blockscout.com/xdai/arbitrum', standard: 'EIP3091' }],
-    parent: { chain: 'eip155-100', type: 'L2' },
-    aliases: ['xdai arbitrum']
-  },
-  {
-    name: 'Fantom Opera',
-    chain: 'FTM',
-    network: 'mainnet',
-    rpc: ['https://rpc.ftm.tools'],
-    nativeCurrency: { name: 'Fantom', symbol: 'FTM', decimals: 18 },
-    infoURL: 'https://fantom.foundation',
-    chainId: 250,
-    explorers: [{ name: 'ftmscan', url: 'https://ftmscan.com', standard: 'EIP3091' }],
-    aliases: ['fantom', 'ftm']
-  },
+
   {
     name: 'Huobi ECO Chain Testnet',
     chain: 'Heco',
@@ -309,17 +412,6 @@ export const chains: Chain[] = [
     aliases: ['optimism goerli']
   },
   {
-    name: 'Callisto',
-    chain: 'CLO',
-    network: 'mainnet',
-    rpc: ['https://clo-geth.0xinfra.com'],
-    nativeCurrency: { name: 'Callisto Ether', symbol: 'CLO', decimals: 18 },
-    infoURL: 'https://callisto.network',
-    chainId: 820,
-    slip44: 820,
-    aliases: ['callisto']
-  },
-  {
     name: 'Klaytn Testnet Baobab',
     chain: 'KLAY',
     network: 'baobab',
@@ -329,26 +421,6 @@ export const chains: Chain[] = [
     infoURL: 'https://www.klaytn.com/',
     chainId: 1001,
     aliases: ['klaytn testnet', 'klaytn baobab']
-  },
-  {
-    name: 'Clover',
-    chain: 'Clover',
-    network: 'clover mainnet',
-    rpc: ['https://rpc-ivy.clover.finance', 'https://rpc-ivy-2.clover.finance', 'https://rpc-ivy-3.clover.finance'],
-    nativeCurrency: { name: 'Clover', symbol: 'CLV', decimals: 18 },
-    infoURL: 'https://clover.finance',
-    chainId: 1024,
-    aliases: ['clover']
-  },
-  {
-    name: 'Edgeware',
-    chain: 'EDG',
-    network: 'mainnet',
-    rpc: ['https://mainnet1.edgewa.re'],
-    nativeCurrency: { name: 'Edge', symbol: 'EDG', decimals: 18 },
-    infoURL: 'http://edgewa.re',
-    chainId: 2021,
-    aliases: ['edgeware']
   },
   {
     name: 'Ontology Testnet',
@@ -367,47 +439,7 @@ export const chains: Chain[] = [
     explorers: [{ name: 'explorer', url: 'https://explorer.ont.io/testnet', standard: 'EIP3091' }],
     aliases: ['ontology testnet']
   },
-  {
-    name: 'Klaytn Cypress',
-    chain: 'KLAY',
-    network: 'cypress',
-    rpc: ['https://node-api.klaytnapi.com/v1/klaytn'],
-    nativeCurrency: { name: 'KLAY', symbol: 'KLAY', decimals: 18 },
-    infoURL: 'https://www.klaytn.com/',
-    chainId: 8217,
-    slip44: 8217,
-    aliases: ['klaytn', 'klaytn cypress']
-  },
-  {
-    name: 'Arbitrum',
-    chainId: 42161,
-    chain: 'ETH',
-    network: 'mainnet',
-    nativeCurrency: { name: 'Ether', symbol: 'AETH', decimals: 18 },
-    rpc: [
-      'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
-      'https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}',
-      'https://arb1.arbitrum.io/rpc',
-      'wss://arb1.arbitrum.io/ws'
-    ],
-    explorers: [
-      { name: 'Arbiscan', url: 'https://arbiscan.io', standard: 'EIP3091' },
-      { name: 'Arbitrum Explorer', url: 'https://explorer.arbitrum.io', standard: 'EIP3091' }
-    ],
-    infoURL: 'https://arbitrum.io',
-    aliases: ['arb', 'arbitrum'],
-    logoURL: 'https://bafkreiexp4jgjydr4g7eug2lbbmetzt62lmrtpsx7ro5yqcdqggnc4ioea.ipfs.dweb.link'
-  },
-  {
-    name: 'Celo',
-    chainId: 42220,
-    chain: 'CELO',
-    network: 'Mainnet',
-    nativeCurrency: { name: 'CELO', symbol: 'CELO', decimals: 18 },
-    rpc: ['https://forno.celo.org', 'wss://forno.celo.org/ws'],
-    infoURL: 'https://docs.celo.org/',
-    aliases: ['celo']
-  },
+
   {
     name: 'Avalanche Fuji Testnet',
     chain: 'AVAX',
@@ -418,16 +450,6 @@ export const chains: Chain[] = [
     infoURL: 'https://cchain.explorer.avax-test.network',
     chainId: 43113,
     aliases: ['avax testnet', 'avalanche testnet', 'avax fuji', 'avalanche fuji']
-  },
-  {
-    name: 'Avalanche',
-    chain: 'AVAX',
-    network: 'mainnet',
-    rpc: ['https://api.avax.network/ext/bc/C/rpc'],
-    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
-    infoURL: 'https://cchain.explorer.avax.network/',
-    chainId: 43114,
-    aliases: ['avax', 'avalanche']
   },
   {
     name: 'Celo Alfajores Testnet',
@@ -464,7 +486,7 @@ export const chains: Chain[] = [
     infoURL: 'https://matic.network/',
     chainId: 80001,
     explorers: [{ name: 'polygonscan', url: 'https://mumbai.polygonscan.com/', standard: 'EIP3091' }],
-    aliases: ['matic testnet', 'polygon testnet']
+    aliases: ['matic testnet', 'polygon testnet', 'mumbai']
   },
   {
     name: 'Arbitrum Testnet Rinkeby',
@@ -476,16 +498,6 @@ export const chains: Chain[] = [
     infoURL: 'https://arbitrum.io',
     explorers: [{ name: 'arbitrum-rinkeby', url: 'https://rinkeby-explorer.arbitrum.io', standard: 'EIP3091' }],
     aliases: ['arb testnet', 'arbitrum testnet', 'arb rinkeby', 'arbitrum rinkeby']
-  },
-  {
-    name: 'Aurora',
-    chain: 'NEAR',
-    network: 'mainnet',
-    rpc: ['https://rpc.mainnet.aurora.dev:8545'],
-    nativeCurrency: { name: 'Ether', symbol: 'aETH', decimals: 18 },
-    infoURL: 'https://aurora.dev',
-    chainId: 1313161554,
-    aliases: ['near', 'aurora']
   },
   {
     name: 'Aurora TestNet',

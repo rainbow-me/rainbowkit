@@ -30,6 +30,8 @@
   width: 100%;
   z-index: 100;
   background-color: #cecece;
+  overflow-y: scroll;
+  max-height: calc(4 * 52px);
 }
 
 .hidden {

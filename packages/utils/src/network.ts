@@ -21,10 +21,16 @@ export const switchNetwork = async (provider: Web3Provider, chain: Chain) => {
 
     await provider.send('wallet_addEthereumChain', [obj])
   } catch (e) {
-    await provider.send('wallet_switchEthereumChain', [
-      {
-        chainId: `0x${chain.chainId.toString(16)}`
-      }
-    ])
+    console.error(e)
+
+    try {
+      await provider.send('wallet_switchEthereumChain', [
+        {
+          chainId: `0x${chain.chainId.toString(16)}`
+        }
+      ])
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
