@@ -11,6 +11,15 @@ export const connectorByWallet = (name: string) => {
   }
 }
 
+export const walletByConnector = (connector: string) => {
+  switch (connector) {
+    case 'InjectedConnector':
+      return 'metamask'
+    case 'WalletLinkConnector':
+      return 'coinbase'
+  }
+}
+
 export const chainNametoID = (name: string) => {
   return chains.find((chain) => chain.aliases.includes(name)).chainId
 }

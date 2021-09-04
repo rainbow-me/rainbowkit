@@ -1,9 +1,26 @@
-export const chains = [
+export type Chain = {
+  name: string
+  chain: string
+  network: string
+  rpc: string[]
+  nativeCurrency: { name: string; symbol: string; decimals: number }
+  infoURL: string
+  chainId: number
+  ens?: { registry: string }
+  explorers?: { name: string; url: string; standard: string }[]
+  aliases: string[]
+  logoURL?: string
+  slip44?: number
+  faucets?: string[]
+  parent?: { chain: string; type: string }
+}
+
+export const chains: Chain[] = [
   {
-    name: 'Ethereum Mainnet',
+    name: 'Ethereum',
     chain: 'ETH',
     network: 'mainnet',
-    icon: 'ethereum',
+
     rpc: [
       'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
       'wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}',
@@ -16,7 +33,8 @@ export const chains = [
     slip44: 60,
     ens: { registry: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e' },
     explorers: [{ name: 'etherscan', url: 'https://etherscan.io', standard: 'EIP3091' }],
-    aliases: ['ethereum', 'mainnet']
+    aliases: ['ethereum', 'mainnet'],
+    logoURL: 'https://dweb.link/ipfs/bafkreihr4iw5yptth3uanym4s62vfr66eaqhywjwuqk4btf2i2uku7lutq'
   },
   {
     name: 'Ethereum Testnet Ropsten',
@@ -56,14 +74,15 @@ export const chains = [
     aliases: ['goerli']
   },
   {
-    name: 'Optimistic Ethereum',
+    name: 'Optimism',
     chain: 'ETH',
     network: 'mainnet',
     rpc: ['https://mainnet.optimism.io/'],
     nativeCurrency: { name: 'Ether', symbol: 'OETH', decimals: 18 },
     infoURL: 'https://optimism.io',
     chainId: 10,
-    aliases: ['optimism']
+    aliases: ['optimism'],
+    logoURL: 'https://dweb.link/ipfs/bafkreifjyybj7whe5bsa4fbgjnfmhdhkhsbw6ffghrzrttg5sfjb6fwzs4'
   },
   {
     name: 'Ethereum Testnet Kovan',
@@ -83,7 +102,7 @@ export const chains = [
     aliases: ['kovan']
   },
   {
-    name: 'Binance Smart Chain Mainnet',
+    name: 'Binance Smart Chain',
     chain: 'BSC',
     network: 'mainnet',
     rpc: [
@@ -105,10 +124,11 @@ export const chains = [
     infoURL: 'https://www.binance.org',
     chainId: 56,
     explorers: [{ name: 'bscscan', url: 'https://bscscan.com', standard: 'EIP3091' }],
-    aliases: ['bsc', 'binance']
+    aliases: ['bsc', 'binance'],
+    logoURL: 'https://dweb.link/ipfs/bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi'
   },
   {
-    name: 'Ontology Mainnet',
+    name: 'Ontology',
     chain: 'Ontology',
     network: 'mainnet',
     rpc: [
@@ -119,7 +139,6 @@ export const chains = [
     ],
     nativeCurrency: { name: 'ONG', symbol: 'ONG', decimals: 9 },
     infoURL: 'https://ont.io/',
-    shortName: 'Ontology Mainnet',
     chainId: 58,
     explorers: [{ name: 'explorer', url: 'https://explorer.ont.io/', standard: 'EIP3091' }],
     aliases: ['ont', 'ontology']
@@ -137,7 +156,7 @@ export const chains = [
     aliases: ['okex testnet']
   },
   {
-    name: 'OKExChain Mainnet',
+    name: 'OKExChain',
     chain: 'okexchain',
     network: 'mainnet',
     rpc: ['https://exchainrpc.okex.org'],
@@ -145,7 +164,8 @@ export const chains = [
     infoURL: 'https://www.okex.com/okexchain',
     chainId: 66,
     explorers: [{ name: 'OKLink', url: 'https://www.oklink.com/okexchain', standard: 'EIP3091' }],
-    aliases: ['okex']
+    aliases: ['okex'],
+    logoURL: 'https://bafkreidpeihzclobn5xinf7zfjcmheyohsv72nnys5kyd6oovtlpnotaru.ipfs.dweb.link'
   },
   {
     name: 'Optimistic Ethereum Testnet Kovan',
@@ -165,7 +185,8 @@ export const chains = [
     nativeCurrency: { name: 'TomoChain Ether', symbol: 'TOMO', decimals: 18 },
     infoURL: 'https://tomocoin.io',
     chainId: 88,
-    aliases: ['tomochain', 'tomo']
+    aliases: ['tomochain', 'tomo'],
+    logoURL: 'https://bafkreicjbvapqbs6r44rxb2lzhtqc7n6i67wvzn6gg5a6hfrneanwel5im.ipfs.dweb.link'
   },
   {
     name: 'Binance Smart Chain Testnet',
@@ -206,7 +227,7 @@ export const chains = [
     aliases: ['xdai']
   },
   {
-    name: 'Fuse Mainnet',
+    name: 'Fuse',
     chain: 'FUSE',
     network: 'mainnet',
     rpc: ['https://rpc.fuse.io'],
@@ -216,7 +237,7 @@ export const chains = [
     aliases: ['fuse']
   },
   {
-    name: 'Huobi ECO Chain Mainnet',
+    name: 'Huobi ECO Chain',
     chain: 'Heco',
     network: 'mainnet',
     rpc: ['https://http-mainnet.hecochain.com', 'wss://ws-mainnet.hecochain.com'],
@@ -227,7 +248,7 @@ export const chains = [
     aliases: ['huobi', 'eco']
   },
   {
-    name: 'Polygon Mainnet',
+    name: 'Polygon',
     chain: 'Polygon',
     network: 'mainnet',
     rpc: [
@@ -240,7 +261,8 @@ export const chains = [
     infoURL: 'https://matic.network/',
     chainId: 137,
     explorers: [{ name: 'polygonscan', url: 'https://polygonscan.com', standard: 'EIP3091' }],
-    aliases: ['polygon', 'matic']
+    aliases: ['polygon', 'matic'],
+    logoURL: 'https://dweb.link/ipfs/bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq'
   },
   {
     name: 'Arbitrum on xDai',
@@ -262,8 +284,7 @@ export const chains = [
     nativeCurrency: { name: 'Fantom', symbol: 'FTM', decimals: 18 },
     infoURL: 'https://fantom.foundation',
     chainId: 250,
-    icon: 'fantom',
-    explorers: [{ name: 'ftmscan', url: 'https://ftmscan.com', icon: 'ftmscan', standard: 'EIP3091' }],
+    explorers: [{ name: 'ftmscan', url: 'https://ftmscan.com', standard: 'EIP3091' }],
     aliases: ['fantom', 'ftm']
   },
   {
@@ -288,11 +309,11 @@ export const chains = [
     aliases: ['optimism goerli']
   },
   {
-    name: 'Callisto Mainnet',
+    name: 'Callisto',
     chain: 'CLO',
     network: 'mainnet',
     rpc: ['https://clo-geth.0xinfra.com'],
-    nativeCurrency: { name: 'Callisto Mainnet Ether', symbol: 'CLO', decimals: 18 },
+    nativeCurrency: { name: 'Callisto Ether', symbol: 'CLO', decimals: 18 },
     infoURL: 'https://callisto.network',
     chainId: 820,
     slip44: 820,
@@ -310,7 +331,7 @@ export const chains = [
     aliases: ['klaytn testnet', 'klaytn baobab']
   },
   {
-    name: 'Clover Mainnet',
+    name: 'Clover',
     chain: 'Clover',
     network: 'clover mainnet',
     rpc: ['https://rpc-ivy.clover.finance', 'https://rpc-ivy-2.clover.finance', 'https://rpc-ivy-3.clover.finance'],
@@ -320,7 +341,7 @@ export const chains = [
     aliases: ['clover']
   },
   {
-    name: 'Edgeware Mainnet',
+    name: 'Edgeware',
     chain: 'EDG',
     network: 'mainnet',
     rpc: ['https://mainnet1.edgewa.re'],
@@ -342,13 +363,12 @@ export const chains = [
     faucets: ['https://developer.ont.io/'],
     nativeCurrency: { name: 'ONG', symbol: 'ONG', decimals: 9 },
     infoURL: 'https://ont.io/',
-    shortName: 'Ontology Testnet',
     chainId: 5851,
     explorers: [{ name: 'explorer', url: 'https://explorer.ont.io/testnet', standard: 'EIP3091' }],
     aliases: ['ontology testnet']
   },
   {
-    name: 'Klaytn Mainnet Cypress',
+    name: 'Klaytn Cypress',
     chain: 'KLAY',
     network: 'cypress',
     rpc: ['https://node-api.klaytnapi.com/v1/klaytn'],
@@ -359,7 +379,7 @@ export const chains = [
     aliases: ['klaytn', 'klaytn cypress']
   },
   {
-    name: 'Arbitrum One',
+    name: 'Arbitrum',
     chainId: 42161,
     chain: 'ETH',
     network: 'mainnet',
@@ -375,10 +395,11 @@ export const chains = [
       { name: 'Arbitrum Explorer', url: 'https://explorer.arbitrum.io', standard: 'EIP3091' }
     ],
     infoURL: 'https://arbitrum.io',
-    aliases: ['arb', 'arbitrum']
+    aliases: ['arb', 'arbitrum'],
+    logoURL: 'https://bafkreiexp4jgjydr4g7eug2lbbmetzt62lmrtpsx7ro5yqcdqggnc4ioea.ipfs.dweb.link'
   },
   {
-    name: 'Celo Mainnet',
+    name: 'Celo',
     chainId: 42220,
     chain: 'CELO',
     network: 'Mainnet',
@@ -399,7 +420,7 @@ export const chains = [
     aliases: ['avax testnet', 'avalanche testnet', 'avax fuji', 'avalanche fuji']
   },
   {
-    name: 'Avalanche Mainnet',
+    name: 'Avalanche',
     chain: 'AVAX',
     network: 'mainnet',
     rpc: ['https://api.avax.network/ext/bc/C/rpc'],
@@ -457,7 +478,7 @@ export const chains = [
     aliases: ['arb testnet', 'arbitrum testnet', 'arb rinkeby', 'arbitrum rinkeby']
   },
   {
-    name: 'Aurora MainNet',
+    name: 'Aurora',
     chain: 'NEAR',
     network: 'mainnet',
     rpc: ['https://rpc.mainnet.aurora.dev:8545'],

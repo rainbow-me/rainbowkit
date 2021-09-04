@@ -1,0 +1,37 @@
+.select {
+  background-color: #cfcfcf;
+  position: relative;
+}
+
+.option {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.option:hover {
+  background-color: #b8b8b8;
+}
+
+.option img {
+  margin-right: 1rem;
+}
+
+.current {
+  background-color: #e6e6e6;
+}
+
+.list {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #cecece;
+}
+
+.hidden {
+  display: none;
+}

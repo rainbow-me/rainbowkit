@@ -14,14 +14,12 @@ export const useChainId = ({
   const [chainId, setChainId] = useState(initialChainId)
 
   useEffect(() => {
-    if (!initialChainId) {
-      if (provider) {
-        provider.getNetwork().then(({ chainId }) => setChainId(chainId))
-      } else {
-        setChainId(1)
-      }
+    if (provider) {
+      provider.getNetwork().then(({ chainId }) => setChainId(chainId))
+    } else {
+      setChainId(1)
     }
-  }, [provider, initialChainId])
+  }, [provider])
 
   return chainId
 }

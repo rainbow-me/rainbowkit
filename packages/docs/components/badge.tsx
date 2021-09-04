@@ -5,6 +5,7 @@ import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { useConnectOnMount } from '@rainbowkit/hooks'
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { Activate } from './activate'
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
 
@@ -17,12 +18,7 @@ const EthAddressPicExample = ({ balance }: { balance?: boolean }) => {
 
   return (
     <>
-      <button
-        style={{ border: '3px solid black', padding: '0.4rem', margin: '20px 0', fontWeight: 'bold' }}
-        onClick={() => activate(injected)}
-      >
-        Activate connector
-      </button>
+      <Activate />
       <EthAddress balance={balance} addr="foda.eth" profileIcon={data.records?.avatar as string} />
     </>
   )
@@ -41,12 +37,7 @@ const EthAddressBalanceExample = () => {
 
   return (
     <>
-      <button
-        style={{ border: '3px solid black', padding: '0.4rem', margin: '20px 0', fontWeight: 'bold' }}
-        onClick={() => activate(injected)}
-      >
-        Activate connector
-      </button>
+      <Activate />
       <EthAddress balance={true} provider={provider} addr={address || '0x0A9f12d325b905907C43566b4740F2dFE10C3C4B'} />
     </>
   )

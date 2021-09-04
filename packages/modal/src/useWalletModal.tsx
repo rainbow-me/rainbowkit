@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import { isAuthorized } from '@rainbowkit/utils'
-import type { Wallet, Chain } from '@rainbowkit/utils'
+import type { Wallet } from '@rainbowkit/utils'
 import type { ModalProps } from './types'
 import { createConnector } from './utils'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
@@ -29,7 +29,7 @@ export const useWalletModal = ({
 }: {
   modal?: React.ComponentType<ModalProps> | false
   wallets: (Wallet | string)[]
-  chains?: Chain[]
+  chains?: (string | number)[]
 }): WalletInterface => {
   const {
     activate,
