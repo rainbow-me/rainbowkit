@@ -13,6 +13,7 @@ export interface NetworkSelectProps {
     option: string
     hidden: string
     current: string
+    list: string
   }>
 }
 
@@ -40,7 +41,7 @@ export const ChainOption = ({
   </div>
 )
 
-export const NetworkSelect = ({ chains: chainNames, provider, classNames }: NetworkSelectProps) => {
+export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }: NetworkSelectProps) => {
   const currentChainId = useChainId({ initialChainId: 1, provider })
 
   const [isExpanded, setExpand] = useState(false)
