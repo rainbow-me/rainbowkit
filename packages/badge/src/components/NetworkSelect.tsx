@@ -42,6 +42,7 @@ export const ChainOption = ({
 }: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
   <div aria-label="option" {...props} className={`${styles.option} ${props.className}`}>
     <img
+      aria-hidden="true"
       height={32}
       width={32}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
@@ -68,12 +69,15 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }:
 
   return (
     <div
+      tabIndex={0}
+      role="button"
       aria-label="select"
       aria-roledescription="Select a dapp network"
       className={`${styles.select} ${classNames.select}`}
     >
       {currentChain?.chainId && (
         <ChainOption
+          aria-selected={true}
           chain={currentChain}
           className={`${styles.current} ${classNames.current}`}
           onClick={() => setExpand(!isExpanded)}

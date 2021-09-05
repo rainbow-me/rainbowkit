@@ -91,7 +91,7 @@ export const chains: Chain[] = [
     chainId: 56,
     explorers: [{ name: 'bscscan', url: 'https://bscscan.com', standard: 'EIP3091' }],
     aliases: ['bsc', 'binance'],
-    logoURL: 'https://dweb.link/ipfs/bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi'
+    logoURL: 'https://bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi.ipfs.dweb.link'
   },
   {
     name: 'Polygon',
@@ -108,7 +108,7 @@ export const chains: Chain[] = [
     chainId: 137,
     explorers: [{ name: 'polygonscan', url: 'https://polygonscan.com', standard: 'EIP3091' }],
     aliases: ['polygon', 'matic'],
-    logoURL: 'https://dweb.link/ipfs/bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq'
+    logoURL: 'https://bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq.ipfs.dweb.link'
   },
   {
     name: 'xDAI Chain',
@@ -128,7 +128,7 @@ export const chains: Chain[] = [
     chainId: 100,
     slip44: 700,
     aliases: ['xdai'],
-    logoURL: 'https://bafkreibzm64fdn6lk47fkax3hlwg5hov2z6jlgot7ymfzkzkczxfv7544y.ipfs.dweb.link/'
+    logoURL: 'https://bafkreibzm64fdn6lk47fkax3hlwg5hov2z6jlgot7ymfzkzkczxfv7544y.ipfs.dweb.link'
   },
   {
     name: 'Fantom Opera',
@@ -198,7 +198,7 @@ export const chains: Chain[] = [
     chainId: 8217,
     slip44: 8217,
     aliases: ['klaytn', 'klaytn cypress'],
-    logoURL: 'https://dweb.link/ipfs/bafkreig7dsk3hnd7ml6cfq5ffgrt3eozisuasrama2x7b2cbuim5lucvoa'
+    logoURL: 'https://bafkreig7dsk3hnd7ml6cfq5ffgrt3eozisuasrama2x7b2cbuim5lucvoa.ipfs.dweb.link'
   },
   {
     name: 'Celo',
@@ -209,7 +209,7 @@ export const chains: Chain[] = [
     rpc: ['https://forno.celo.org', 'wss://forno.celo.org/ws'],
     infoURL: 'https://docs.celo.org/',
     aliases: ['celo'],
-    logoURL: 'https://dweb.link/ipfs/bafkreidctyoxzh37mwc7g2hteapfh3ocomdphjkpf64n6kuqq5sakoveum'
+    logoURL: 'https://bafkreidctyoxzh37mwc7g2hteapfh3ocomdphjkpf64n6kuqq5sakoveum.ipfs.dweb.link'
   },
   {
     name: 'OKExChain',
@@ -243,7 +243,8 @@ export const chains: Chain[] = [
     infoURL: 'https://callisto.network',
     chainId: 820,
     slip44: 820,
-    aliases: ['callisto']
+    aliases: ['callisto'],
+    logoURL: 'https://bafkreiegobffux6t6l6bkbhl6y4bcnutwc2jby2dhgw5wwozwiqr2whpwe.ipfs.dweb.link'
   },
   {
     name: 'Clover',
@@ -253,7 +254,8 @@ export const chains: Chain[] = [
     nativeCurrency: { name: 'Clover', symbol: 'CLV', decimals: 18 },
     infoURL: 'https://clover.finance',
     chainId: 1024,
-    aliases: ['clover']
+    aliases: ['clover'],
+    logoURL: 'https://bafkreiep5avqj5ls5iebj5v6zyhn56lmrkuxwy435iovmwxkob2xys6roq.ipfs.dweb.link'
   },
   {
     name: 'Edgeware',
@@ -263,7 +265,8 @@ export const chains: Chain[] = [
     nativeCurrency: { name: 'Edge', symbol: 'EDG', decimals: 18 },
     infoURL: 'http://edgewa.re',
     chainId: 2021,
-    aliases: ['edgeware']
+    aliases: ['edgeware'],
+    logoURL: 'https://bafkreibznduvl3upt3zpsivd66hfgdgy3m3h74tfmfvlhpa2vpd7ax3e5u.ipfs.dweb.link'
   },
   {
     name: 'Aurora',
@@ -274,7 +277,7 @@ export const chains: Chain[] = [
     infoURL: 'https://aurora.dev',
     chainId: 1313161554,
     aliases: ['near', 'aurora'],
-    logoURL: 'https://dweb.link/ipfs/bafkreie2wmgm56ytj4vpgcknucoqc3dtlzvpr7pqpcj462nudu2w4czj7a'
+    logoURL: 'https://bafkreie2wmgm56ytj4vpgcknucoqc3dtlzvpr7pqpcj462nudu2w4czj7a.ipfs.dweb.link'
   },
 
   /// TESTNETS
