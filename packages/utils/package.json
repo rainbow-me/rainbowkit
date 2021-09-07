@@ -16,6 +16,7 @@
   "dependencies": {
     "@ethersproject/address": "^5.4.0",
     "@ethersproject/bignumber": "^5.4.1",
+    "@ethersproject/bytes": "^5.4.0",
     "@ethersproject/providers": "^5.4.4",
     "@web3-react/abstract-connector": "^6.0.7"
   },
@@ -23,6 +24,7 @@
     "@web3-react/core": ">=6.1"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
     "@web3-react/core": ">=6.1"
   }
 }

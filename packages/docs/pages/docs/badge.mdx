@@ -1,5 +1,6 @@
 import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/badge'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
+import { SelectNetworkExample } from '../../components/select'
 
 # `@rainbowkit/badge`
 
@@ -189,3 +190,49 @@ Detect explorer based on chain ID:
 ```
 
 <ExplorerLink chainId={1} address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+
+## NetworkSelect
+
+```tsx
+<NetworkSelect
+  chains={[
+    'ethereum',
+    'optimism',
+    'arbitrum',
+    'bsc',
+    'polygon',
+    'xdai',
+    'ftm',
+    'avax',
+    'fuse',
+    'huobi',
+    'xdai arbitrum',
+    'klaytn',
+    'celo',
+    'okex',
+    'tomo',
+    'callisto',
+    'clover',
+    'edgeware',
+    'aurora',
+    // testnets
+
+    'ropsten',
+    'rinkeby',
+    'goerli',
+    'kovan',
+    'okex testnet',
+    'bsc testnet',
+    'eco testnet',
+    'optimism goerli',
+    'klaytn testnet',
+    'avax testnet',
+    'celo testnet',
+    'polygon testnet',
+    'arb testnet',
+    'near testnet'
+  ]}
+/>
+```
+
+<SelectNetworkExample />
