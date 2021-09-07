@@ -54,11 +54,11 @@ import { useENS } from 'use-ens'
 const EthAddressBalanceExample = () => {
   const { library: provider, activate, account: address } = useWeb3React()
 
-  return <EthAddress showBalance provider={provider} addr={address} />
+  return <EthAddress balance provider={provider} addr={address} />
 }
 ```
 
-<EthAddressBalance />
+<EthAddressBalance balance />
 
 ## Tx
 

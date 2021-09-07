@@ -8,7 +8,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
 
-const EthAddressPicExample = () => {
+const EthAddressPicExample = ({ balance }: { balance?: boolean }) => {
   const { library: provider, activate } = useWeb3React()
 
   const data = useENS({ provider, domain: 'foda.eth', fetchOptions: { cache: 'force-cache' }, cache: true })
@@ -23,14 +23,14 @@ const EthAddressPicExample = () => {
       >
         Activate connector
       </button>
-      <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
+      <EthAddress balance={balance} addr="foda.eth" profileIcon={data.records?.avatar as string} />
     </>
   )
 }
 
-export const EthAddressPic = () => (
+export const EthAddressPic = ({ balance }: { balance?: boolean }) => (
   <Web3ReactProvider getLibrary={setupProvider()}>
-    <EthAddressPicExample />
+    <EthAddressPicExample balance={balance} />
   </Web3ReactProvider>
 )
 
@@ -47,7 +47,7 @@ const EthAddressBalanceExample = () => {
       >
         Activate connector
       </button>
-      <EthAddress balance={true} provider={provider} addr={address} />
+      <EthAddress balance={true} provider={provider} addr={address || '0x0A9f12d325b905907C43566b4740F2dFE10C3C4B'} />
     </>
   )
 }
