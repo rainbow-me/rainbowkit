@@ -1,4 +1,4 @@
-import { useConnectOnMount } from '@rainbowkit/core'
+import { useConnectOnMount } from '@rainbowkit/hooks'
 import { useWeb3React } from '@web3-react/core'
 import React from 'react'
 import styles from '../styles/button.module.css'

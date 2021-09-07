@@ -1,8 +1,8 @@
 import type { Log, TransactionResponse } from '@ethersproject/abstract-provider'
-import type { EtherscanProvider, BaseProvider as Provider } from '@ethersproject/providers'
+import type { EtherscanProvider } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
 
-export type TxHistoryFetcher<Tx extends any = any, P extends Provider = Provider> = (opts: {
+export type TxHistoryFetcher<Tx extends any = any, P extends any = any> = (opts: {
   address: string
   provider: P
   options?: any
@@ -26,7 +26,7 @@ export const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanPr
  * There are two fetchers availaible, event logs fetcher (`logsFetcher`) and Etherscan fetcher (`etherscanFetcher`).
  * `logsFetcher` is used by default.
  */
-export const useTxHistory = <Tx extends any = any, P extends Provider = Provider>({
+export const useTxHistory = <Tx extends any = any, P extends any = any>({
   fetcher = logsFetcher,
   address,
   options,
