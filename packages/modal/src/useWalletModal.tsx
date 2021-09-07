@@ -31,6 +31,7 @@ export const useWalletModal = ({
   modal?: React.ComponentType<ModalProps> | false
   wallets: (Wallet | string)[]
   chains?: (string | number)[]
+  terms?: string
 }): WalletInterface => {
   const {
     activate,
