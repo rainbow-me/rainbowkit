@@ -3,8 +3,8 @@ import { useTxHistory, etherscanFetcher, useConnectOnMount } from '@rainbowkit/h
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import styles from '../styles/button.module.css'
-import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
-
+import { EtherscanProvider } from '@ethersproject/providers'
+import type { TransactionResponse } from '@ethersproject/providers'
 import { formatEther } from '@ethersproject/units'
 import { injected } from './badge'
 
