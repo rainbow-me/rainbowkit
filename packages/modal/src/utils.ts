@@ -4,6 +4,7 @@ import { chainNametoID, connectorByWallet } from '@rainbowkit/utils'
 import metamask from '../assets/icons/metamask.png'
 import coinbase from '../assets/icons/coinbase.png'
 import frame from '../assets/icons/frame.png'
+import assert from 'assert'
 
 /**
  *
@@ -21,6 +22,8 @@ export const importConnector = async (mod: string): Promise<any> => {
  */
 export const createConnector = async ({ name, options, chains }: Wallet & { chains?: Chain[] }) => {
   const connectorName = connectorByWallet(name)
+
+  assert.notEqual(connectorName, undefined, `Could not find connector for ${name}`)
 
   const Connector = await importConnector(connectorName)
   const instance = new Connector({
