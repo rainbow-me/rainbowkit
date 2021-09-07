@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rollup -c ../../rollup.config.js",
     "build:watch": "rollup -c ../../rollup.config.js -w",
-    "prepare": "pnpm build"
+    "postinstall": "pnpm build"
   },
   "description": "Small utilities used in RainbowKit packages",
   "keywords": [],

@@ -22,6 +22,6 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "prepare": "pnpm build"
+    "postinstall": "pnpm build"
   }
 }
