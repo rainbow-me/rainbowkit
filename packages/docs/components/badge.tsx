@@ -19,7 +19,7 @@ const EthAddressPicExample = ({ balance }: { balance?: boolean }) => {
   return (
     <>
       <Activate />
-      <EthAddress balance={balance} addr="foda.eth" profileIcon={data.records?.avatar as string} />
+      <EthAddress balance={balance} addr="foda.eth" profileIcon={data?.records?.avatar as string} />
     </>
   )
 }
