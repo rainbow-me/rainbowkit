@@ -117,3 +117,18 @@
   right: 24px;
   top: 24px;
 }
+
+.terms {
+  font-weight: 600;
+  color: rgba(60, 66, 82, 0.6);
+}
+
+.terms a {
+  color: #a0c7ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
