@@ -3,7 +3,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 100000000;
+  z-index: 999;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -17,7 +17,7 @@
 
 .modal {
   min-height: 525px;
-  max-width: 390px;
+  width: 390px;
   padding: 24px;
   position: relative;
   background: #ffffff;

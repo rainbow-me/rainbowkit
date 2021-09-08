@@ -24,7 +24,7 @@ export type WalletInterface = Omit<
 
 export const useWalletModal = ({
   modal: ModalComponent,
-  chains,
+  chains = [],
   wallets: selectedWallets,
   terms
 }: {

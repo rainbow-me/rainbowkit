@@ -1,5 +1,6 @@
 import React from 'react'
 import 'nextra-theme-docs/style.css'
+import '../styles/landing.global.css'
 /**
  *
  * @param {import('next/app').AppProps} props
