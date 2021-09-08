@@ -15,6 +15,6 @@
     "preserveSymlinks": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js"],
+  "include": ["next-env.d.ts", "extra.d.ts", "**/*.ts", "**/*.tsx", "pages/_app.js"],
   "exclude": ["node_modules"]
 }
