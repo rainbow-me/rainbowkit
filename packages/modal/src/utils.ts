@@ -1,9 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { Wallet } from '@rainbowkit/utils'
 import { chainNametoID, connectorByWallet } from '@rainbowkit/utils'
-import metamask from '../assets/icons/metamask.png'
-import coinbase from '../assets/icons/coinbase.png'
-import frame from '../assets/icons/frame.png'
 import assert from 'assert'
 
 /**
@@ -37,11 +34,15 @@ export const createConnector = async ({ name, options, chains }: Wallet & { chai
 export const getIcon = (name: string) => {
   switch (name) {
     case 'metamask':
-      return metamask
+      return 'https://bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e.ipfs.dweb.link'
     case 'coinbase':
     case 'walletlink':
-      return coinbase
+      return 'https://bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4.ipfs.dweb.link'
     case 'frame':
-      return frame
+      return 'https://bafkreihgrm4ebmo7ybe6vzzhwgdpiv6t4jrljl5t7y7n3keyq6n6susvra.ipfs.dweb.link'
+    case 'torus':
+      return 'https://bafkreiao4cnnidbqblkmd2xfb2akutm2bjdr5r4xnbuwumzhda3ikxyb7a.ipfs.dweb.link'
+    case 'rainbow':
+      return 'https://bafkreiext3sw6h2iwayx24xe6fnvnhm5ueewdiq3eyiambugpgspiigtvi.ipfs.dweb.link'
   }
 }

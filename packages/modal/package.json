@@ -30,7 +30,6 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@rollup/plugin-image": "^2.1.1",
     "react": "^17.0.2",
     "rollup-plugin-postcss": "^4.0.1"
   },
@@ -41,6 +40,7 @@
   "optionalDependencies": {
     "@web3-react/frame-connector": "^6.0.9",
     "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/torus-connector": "^6.1.9",
     "@web3-react/walletlink-connector": "^6.2.3"
   }
 }

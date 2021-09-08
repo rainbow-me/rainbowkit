@@ -3,13 +3,14 @@ import { chains } from './chains'
 export const connectorByWallet = (name: string) => {
   switch (name) {
     case 'metamask':
-    case 'trust':
       return 'Injected'
     case 'coinbase':
     case 'walletlink':
       return 'WalletLink'
     case 'frame':
       return 'Frame'
+    case 'torus':
+      return 'Torus'
   }
 }
 
@@ -19,6 +20,8 @@ export const walletByConnector = (connector: string) => {
       return 'metamask'
     case 'WalletLinkConnector':
       return 'coinbase'
+    case 'TorusConnector':
+      return 'torus'
   }
 }
 
