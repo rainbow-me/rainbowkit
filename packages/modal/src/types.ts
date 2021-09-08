@@ -7,4 +7,16 @@ export interface ModalProps {
 
   isConnecting: boolean
   setConnecting: Dispatch<boolean>
+
+  terms?: JSX.Element
+  classNames?: Partial<{
+    modal: string
+    close: string
+    overlay: string
+    hidden: string
+    title: string
+    caption: string
+    wallets: string
+    terms: string
+  }>
 }
