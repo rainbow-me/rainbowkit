@@ -1,5 +1,5 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { etherscanFetcher, TxHistoryFetcher, useChainId, useTxHistory } from '@rainbowkit/hooks'
+import { logsFetcher, TxHistoryFetcher, useChainId, useTxHistory } from '@rainbowkit/hooks'
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from '../index'
@@ -22,7 +22,7 @@ export const TxHistory = ({
   txComponent: Tx = DefaultTx,
   address,
   provider,
-  fetcher = etherscanFetcher,
+  fetcher = logsFetcher,
   options
 }: TxHistoryProps) => {
   const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
