@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import { isAuthorized } from '@rainbowkit/utils'
-import type { Wallet, Chain } from '@rainbowkit/utils'
+import type { Wallet } from '@rainbowkit/utils'
 import type { ModalProps } from './types'
 import { createConnector } from './utils'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
@@ -24,12 +24,14 @@ export type WalletInterface = Omit<
 
 export const useWalletModal = ({
   modal: ModalComponent,
-  chains,
-  wallets: selectedWallets
+  chains = [],
+  wallets: selectedWallets,
+  terms
 }: {
   modal?: React.ComponentType<ModalProps> | false
   wallets: (Wallet | string)[]
-  chains?: Chain[]
+  chains?: (string | number)[]
+  terms?: JSX.Element
 }): WalletInterface => {
   const {
     activate,
@@ -40,15 +42,27 @@ export const useWalletModal = ({
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
-  const wallets = selectedWallets.map((w) =>
-    typeof w === 'string'
-      ? {
-          name: w,
-          hidden: false,
-          options: {}
-        }
-      : w
-  ) as Wallet[]
+  const wallets = selectedWallets.map((w) => {
+    if (typeof w === 'string') {
+      switch (w) {
+        case 'metamask':
+          return {
+            name: w,
+            hidden: false,
+            options: {},
+            iconUrl: '/icons/rainbow.png'
+          }
+        default:
+          return {
+            name: w,
+            hidden: false,
+            options: {}
+          }
+      }
+    }
+
+    return w
+  }) as Wallet[]
 
   const connectToWallet = async (name: string) => {
     const options = wallets.find((w) => w.name === name)?.options || {}
@@ -88,14 +102,7 @@ export const useWalletModal = ({
   }
 
   if (typeof ModalComponent === 'undefined') {
-    const Modal = () => (
-      <ModalUI
-        wallets={wallets}
-        connect={activateConnector}
-        isConnecting={isConnecting}
-        setConnecting={setConnecting}
-      />
-    )
+    const Modal = () => <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms }} />
 
     return { Modal, connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
   } else {

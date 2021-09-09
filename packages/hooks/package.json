@@ -6,7 +6,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w"
+    "build:watch": "rollup -c ../../rollup.config.js -w",
+    "postinstall": "pnpm build"
   },
   "description": "RainbowKit Hooks",
   "keywords": [],

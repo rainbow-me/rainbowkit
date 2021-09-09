@@ -3,8 +3,8 @@
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 10;
-  position: absolute;
+  z-index: 999;
+  position: fixed;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -16,12 +16,120 @@
 }
 
 .modal {
-  background: white;
-  max-height: 600px;
-  max-width: 800px;
-  padding: 1rem;
+  min-height: 525px;
+  width: 390px;
+  padding: 24px;
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.modal button {
+.title {
+  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+
+  letter-spacing: 0.4px;
+  font-feature-settings: 'ss08' on, 'cv09' on;
+
+  color: #25292e;
+
   display: block;
+  margin-bottom: 4px;
+}
+
+.caption {
+  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 19px;
+
+  letter-spacing: 0.5px;
+  font-feature-settings: 'ss08' on, 'cv09' on;
+
+  color: rgba(60, 66, 82, 0.6);
+
+  display: block;
+}
+
+.wallets {
+  margin-top: 24px;
+}
+
+.wallets li {
+  margin-bottom: 12px;
+  padding: 11px;
+  width: 100%;
+}
+
+.wallets li button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.wallets li span {
+  font-family: SF Pro Rounded;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #25292e;
+
+  text-transform: capitalize;
+}
+
+.wallets li .icon {
+  margin-right: 12px;
+  height: 34px;
+  width: 34px;
+  border-radius: 10px;
+  filter: drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3));
+}
+
+.close {
+  text-align: center;
+  letter-spacing: 0.4px;
+
+  /* primary/gray80 */
+  color: rgba(60, 66, 82, 0.8);
+
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 17px;
+
+  position: absolute;
+
+  right: 24px;
+  top: 24px;
+}
+
+.terms {
+  font-weight: 600;
+  color: rgba(60, 66, 82, 0.6);
+  font-size: 14px;
+}
+
+.terms a {
+  color: #a0c7ff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
 }

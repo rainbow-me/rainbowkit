@@ -28,22 +28,24 @@ export const AccountInfo = ({
 
   return (
     <div className={styles.container}>
-      {wallet.name && (
+      {wallet?.name && (
         <div>
           Connected with <strong>{wallet.name}</strong>
         </div>
       )}
       <div className={styles.address}>
-        {wallet.iconUrl && <img className={styles.icon} src={wallet.iconUrl} title={wallet.name} alt={wallet.name} />}{' '}
+        {wallet?.iconUrl && <img className={styles.icon} src={wallet.iconUrl} title={wallet.name} alt={wallet.name} />}{' '}
         {address}
       </div>
       <div>
-        <>
-          {(Explorer === undefined || Explorer === true) && <ExplorerLink {...{ address, chainId, explorerUrl }} />}
-          {Explorer && typeof Explorer !== 'boolean' && <Explorer {...{ address, chainId, explorerUrl }} />}
-        </>
+        {(explorerUrl || chainId) && (
+          <>
+            {(Explorer === undefined || Explorer === true) && <ExplorerLink {...{ address, chainId, explorerUrl }} />}
+            {Explorer && typeof Explorer !== 'boolean' && <Explorer {...{ address, chainId, explorerUrl }} />}
+          </>
+        )}
         <>{(CopyAddress === undefined || CopyAddress === true) && <CopyAddressButton {...{ address }} />}</>
-        <>{Explorer && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
+        <>{CopyAddress && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
       </div>
     </div>
   )

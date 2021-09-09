@@ -2,10 +2,12 @@
   border-radius: 10px;
   padding: 1rem;
   border: 1px solid gray;
+  width: max-content;
 }
 
 .address {
   display: inline-flex;
+  font-weight: 600;
 }
 
 .icon {

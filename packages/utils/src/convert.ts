@@ -1,50 +1,38 @@
+import { chains } from './chains'
+
 export const connectorByWallet = (name: string) => {
   switch (name) {
     case 'metamask':
-    case 'trust':
       return 'Injected'
     case 'coinbase':
     case 'walletlink':
       return 'WalletLink'
+    case 'frame':
+      return 'Frame'
+    case 'torus':
+      return 'Torus'
+  }
+}
+
+export const walletByConnector = (connector: string) => {
+  switch (connector) {
+    case 'InjectedConnector':
+      return 'metamask'
+    case 'WalletLinkConnector':
+      return 'coinbase'
+    case 'TorusConnector':
+      return 'torus'
   }
 }
 
 export const chainNametoID = (name: string) => {
-  switch (name) {
-    case 'mainnet':
-    case 'ethereum':
-      return 1
-    case 'matic':
-    case 'polygon':
-      return 137
-    case 'bsc':
-    case 'binance':
-      return 56
-    case 'fantom':
-      return 250
-  }
+  return chains.find((chain) => chain.aliases.includes(name)).chainId
 }
 
 export const chainIDToToken = (id: number) => {
-  switch (id) {
-    default:
-      return 'ETH'
-    case 137:
-      return 'MATIC'
-    case 56:
-      return 'BNB'
-    case 250:
-      return 'FTM'
-  }
+  return chains.find((chain) => chain.chainId === id).nativeCurrency.symbol
 }
 
 export const chainIDToExplorer = (id: number) => {
-  switch (id) {
-    case 1:
-      return 'https://etherscan.com'
-    case 56:
-      return 'https://bscscan.com'
-    case 137:
-      return 'https://polygonscan.com'
-  }
+  return chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id)).explorers[0]
 }

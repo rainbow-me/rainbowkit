@@ -6,9 +6,7 @@
 }
 
 .container {
-  border-radius: 10px;
-  padding: 0.4rem 0.8rem;
-  background-color: #e2e2e2;
+  background: white;
   width: max-content;
   display: flex;
   flex-direction: row;
@@ -20,7 +18,7 @@
   height: 1.5rem;
   width: 1.5rem;
   border: 50%;
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .balance {

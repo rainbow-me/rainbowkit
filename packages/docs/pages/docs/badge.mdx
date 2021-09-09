@@ -1,6 +1,7 @@
 import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/badge'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 import { TxHistoryExample } from '../../components/txhistory'
+import { SelectNetworkExample } from '../../components/select'
 
 # `@rainbowkit/badge`
 
@@ -55,11 +56,11 @@ import { useENS } from 'use-ens'
 const EthAddressBalanceExample = () => {
   const { library: provider, activate, account: address } = useWeb3React()
 
-  return <EthAddress showBalance provider={provider} addr={address} />
+  return <EthAddress balance provider={provider} addr={address} />
 }
 ```
 
-<EthAddressBalance />
+<EthAddressBalance balance />
 
 ## Tx
 
@@ -207,3 +208,49 @@ const TxHistoryExample = () => {
 ```
 
 <TxHistoryExample />
+
+## NetworkSelect
+
+```tsx
+<NetworkSelect
+  chains={[
+    'ethereum',
+    'optimism',
+    'arbitrum',
+    'bsc',
+    'polygon',
+    'xdai',
+    'ftm',
+    'avax',
+    'fuse',
+    'huobi',
+    'xdai arbitrum',
+    'klaytn',
+    'celo',
+    'okex',
+    'tomo',
+    'callisto',
+    'clover',
+    'edgeware',
+    'aurora',
+    // testnets
+
+    'ropsten',
+    'rinkeby',
+    'goerli',
+    'kovan',
+    'okex testnet',
+    'bsc testnet',
+    'eco testnet',
+    'optimism goerli',
+    'klaytn testnet',
+    'avax testnet',
+    'celo testnet',
+    'polygon testnet',
+    'arb testnet',
+    'near testnet'
+  ]}
+/>
+```
+
+<SelectNetworkExample />

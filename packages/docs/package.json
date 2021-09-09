@@ -2,13 +2,16 @@
   "name": "docs",
   "private": true,
   "dependencies": {
+    "@ethersproject/abstract-provider": "^5.4.1",
     "@ethersproject/units": "^5.4.0",
     "@rainbowkit/badge": "workspace:*",
     "@rainbowkit/core": "workspace:*",
     "@rainbowkit/hooks": "workspace:^0.0.0",
     "@rainbowkit/modal": "workspace:*",
     "@rainbowkit/utils": "workspace:*",
+    "@web3-react/frame-connector": "^6.0.9",
     "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/torus-connector": "^6.1.9",
     "@web3-react/walletlink-connector": "^6.2.3",
     "framer-motion": "^4.1.17",
     "next": "^11.1.1",
@@ -17,10 +20,12 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-useportal": "^1.0.14",
+    "url-loader": "^4.1.1",
     "use-ens": "workspace:^0.0.0-wip.11"
   },
   "scripts": {
     "dev": "next",
-    "build": "next build"
+    "build": "next build",
+    "postinstall": "pnpm build"
   }
 }

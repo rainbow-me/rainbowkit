@@ -5,10 +5,11 @@ import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { useConnectOnMount } from '@rainbowkit/hooks'
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { Activate } from './activate'
 
-export const injected = new InjectedConnector({ supportedChainIds: [1, 137, 56, 250] })
+export const injected = new InjectedConnector({})
 
-const EthAddressPicExample = () => {
+const EthAddressPicExample = ({ balance }: { balance?: boolean }) => {
   const { library: provider, activate } = useWeb3React()
 
   const data = useENS({ provider, domain: 'foda.eth', fetchOptions: { cache: 'force-cache' }, cache: true })
@@ -17,20 +18,15 @@ const EthAddressPicExample = () => {
 
   return (
     <>
-      <button
-        style={{ border: '3px solid black', padding: '0.4rem', margin: '20px 0', fontWeight: 'bold' }}
-        onClick={() => activate(injected)}
-      >
-        Activate connector
-      </button>
-      <EthAddress addr="foda.eth" profileIcon={data.records?.avatar as string} />
+      <Activate />
+      <EthAddress balance={balance} addr="foda.eth" profileIcon={data?.records?.avatar as string} />
     </>
   )
 }
 
-export const EthAddressPic = () => (
+export const EthAddressPic = ({ balance }: { balance?: boolean }) => (
   <Web3ReactProvider getLibrary={setupProvider()}>
-    <EthAddressPicExample />
+    <EthAddressPicExample balance={balance} />
   </Web3ReactProvider>
 )
 
@@ -41,13 +37,8 @@ const EthAddressBalanceExample = () => {
 
   return (
     <>
-      <button
-        style={{ border: '3px solid black', padding: '0.4rem', margin: '20px 0', fontWeight: 'bold' }}
-        onClick={() => activate(injected)}
-      >
-        Activate connector
-      </button>
-      <EthAddress balance={true} provider={provider} addr={address} />
+      <Activate />
+      <EthAddress balance={true} provider={provider} addr={address || '0x0A9f12d325b905907C43566b4740F2dFE10C3C4B'} />
     </>
   )
 }

@@ -1,0 +1,23 @@
+.main {
+  margin: 0 auto;
+  max-width: 80vw;
+}
+
+.header {
+  padding: 4vw 12vw;
+}
+
+.header h1 {
+  font-weight: 900;
+  font-size: calc(4rem + 2vw);
+}
+
+.button {
+  padding: 0.4rem 0.8rem;
+  background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
+  border-radius: 15px;
+  border: 4px solid transparent;
+  font-weight: 800;
+  color: white;
+  font-size: 1.4rem;
+}

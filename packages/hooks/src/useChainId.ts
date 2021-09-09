@@ -13,15 +13,20 @@ export const useChainId = ({
 }): number => {
   const [chainId, setChainId] = useState(initialChainId)
 
+  const setChain = (x: { chainId: number } | number) => {
+    setChainId(typeof x === 'number' ? x : x.chainId)
+  }
+
   useEffect(() => {
-    if (!initialChainId) {
-      if (provider) {
-        provider.getNetwork().then(({ chainId }) => setChainId(chainId))
-      } else {
-        setChainId(1)
-      }
+    if (provider) {
+      provider.getNetwork().then(setChain)
+      provider.on('chainChanged', setChain)
+
+      return () => void provider.off('chainChange', setChain)
+    } else {
+      setChainId(1)
     }
-  }, [provider, initialChainId])
+  }, [provider])
 
   return chainId
 }

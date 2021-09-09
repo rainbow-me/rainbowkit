@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { isAuthorized } from '@rainbowkit/utils'
 
@@ -14,7 +14,7 @@ export const useConnectOnMount = (connector: any, enabled: boolean, storageProvi
   useEffect(() => {
     const storage = storageProvider === undefined ? localStorage : storageProvider
     let cachedState = true
-    if (storage) cachedState = storage.getItem('rk-connect-on-mount') === 'true'
+    if (storage) cachedState = storage.getItem('rk-last-wallet') !== undefined
 
     isAuthorized().then((yes) => {
       if (cachedState && enabled && !active && window.ethereum && yes) {
@@ -24,4 +24,6 @@ export const useConnectOnMount = (connector: any, enabled: boolean, storageProvi
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageProvider]) // Only trigger on mount
+
+  return active
 }

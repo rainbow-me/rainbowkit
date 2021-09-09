@@ -3,8 +3,8 @@ import { useTxHistory, etherscanFetcher, useConnectOnMount } from '@rainbowkit/h
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import styles from '../styles/button.module.css'
-import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
-
+import { EtherscanProvider } from '@ethersproject/providers'
+import type { TransactionResponse } from '@ethersproject/abstract-provider'
 import { formatEther } from '@ethersproject/units'
 import { injected } from './badge'
 
@@ -19,7 +19,7 @@ const HistoryExample = () => {
     data: txes,
     loading,
     error
-  } = useTxHistory<TransactionResponse, EtherscanProvider>({
+  } = useTxHistory<TransactionResponse & { value: any }, EtherscanProvider>({
     address: address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f',
     fetcher: etherscanFetcher,
     provider

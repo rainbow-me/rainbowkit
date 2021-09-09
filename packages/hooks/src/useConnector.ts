@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { useConnectOnMount } from './useConnectOnMount'
 import { AbstractConnector } from '@web3-react/abstract-connector'
+import { walletByConnector } from '@rainbowkit/utils'
 /**
  * A React hook for using individual connectors from web3-react.
  * @param connector web3-react connector
@@ -34,14 +35,14 @@ export function useConnector<T extends AbstractConnector = AbstractConnector>(
   }, [])
 
   const disconnect = () => {
-    if (connectOnMount) storage.removeItem('rk-connect-on-mount')
+    if (connectOnMount) storage.removeItem('rk-last-wallet')
     return deactivate()
   }
 
   useConnectOnMount(connector, connectOnMount, storage)
 
   const connect = async () => {
-    if (connectOnMount) storage.setItem('rk-connect-on-mount', 'true')
+    if (connectOnMount) localStorage.setItem('rk-last-wallet', walletByConnector(connector.constructor.name))
     return await activate(connector)
   }
 
