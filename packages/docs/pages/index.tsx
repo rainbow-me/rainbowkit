@@ -35,7 +35,7 @@ const Index = () => {
         {isConnected ? 'Disconnect' : 'Connect'}
       </button>
       {isConnecting && <Modal />}
-      <AccountInfo {...{ provider, address }} copyAddress />
+      {isConnected && <AccountInfo {...{ provider, address }} copyAddress />}
     </main>
   )
 }
