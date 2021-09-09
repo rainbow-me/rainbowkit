@@ -26,11 +26,11 @@ export const walletByConnector = (connector: string) => {
 }
 
 export const chainNametoID = (name: string) => {
-  return chains.find((chain) => chain.aliases.includes(name)).chainId
+  return chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
 }
 
 export const chainIDToToken = (id: number) => {
-  return chains.find((chain) => chain.chainId === id).nativeCurrency.symbol
+  return chains.find((chain) => chain.chainId === id)?.nativeCurrency.symbol || 'ETH'
 }
 
 export const chainIDToExplorer = (id: number) => {

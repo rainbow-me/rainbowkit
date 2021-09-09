@@ -8,7 +8,7 @@ import type { TransactionResponse } from '@ethersproject/abstract-provider'
 import { formatEther } from '@ethersproject/units'
 import { injected } from './badge'
 
-const provider = new EtherscanProvider('homestead')
+export const provider = new EtherscanProvider('homestead')
 
 const HistoryExample = () => {
   const { account: address } = useWeb3React()

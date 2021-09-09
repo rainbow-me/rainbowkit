@@ -30,10 +30,12 @@
     "react": ">=17"
   },
   "devDependencies": {
+    "@rollup/plugin-image": "^2.1.1",
     "react": "^17.0.2"
   },
   "dependencies": {
     "@ethersproject/bignumber": "^5.4.1",
+    "@ethersproject/transactions": "^5.4.0",
     "@ethersproject/units": "^5.4.0",
     "@rainbowkit/hooks": "workspace:*",
     "@rainbowkit/utils": "workspace:*"

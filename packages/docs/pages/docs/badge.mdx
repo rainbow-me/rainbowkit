@@ -1,5 +1,6 @@
 import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/badge'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
+import { TxHistoryExample } from '../../components/txhistory'
 import { SelectNetworkExample } from '../../components/select'
 
 # `@rainbowkit/badge`
@@ -190,6 +191,23 @@ Detect explorer based on chain ID:
 ```
 
 <ExplorerLink chainId={1} address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />
+
+## TxHistory
+
+```tsx
+import { TxHistory } from '@rainbowkit/badge'
+import { EtherscanProvider } from '@rainbowkit/ui'
+
+const provider = new EtherscanProvider('homestead', 'API_KEY')
+
+const TxHistoryExample = () => {
+  const { account: address } = useWeb3React()
+
+  return <TxHistory address={address} provider={provider} options={{ fromBlock: 12862901 }} />
+}
+```
+
+<TxHistoryExample />
 
 ## NetworkSelect
 

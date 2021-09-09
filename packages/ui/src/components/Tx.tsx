@@ -1,13 +1,19 @@
+import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
-import { chainIDToExplorer } from '@rainbowkit/utils'
+import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import styles from '../../styles/Tx.module.css'
-import { FAIL_ICON, PENDING_ICON, SUCCESS_ICON } from '../constants/images'
+import { FAIL_ICON, SUCCESS_ICON } from '../constants/images'
+import PENDING_ICON from '../../assets/loading.svg'
 
 export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
   title?: string
   hash?: string
+  data?: string
+  from?: string
+  to?: string
+  value?: BigNumber
   chainId?: number
   explorerUrl?: string
   provider?: BaseProvider
@@ -17,7 +23,17 @@ export interface TxProps {
   }>
 }
 
-export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
+export const Tx = ({
+  status,
+  title: initialTitle,
+  classNames,
+  chainId = 1,
+  data,
+  value,
+  from,
+  to,
+  ...props
+}: TxProps) => {
   const iconUrl = useMemo(() => {
     switch (status) {
       case 'pending':
@@ -29,27 +45,41 @@ export const Tx = ({ status, title, classNames, ...props }: TxProps) => {
     }
   }, [status])
 
+  const [title, setTitle] = useState(initialTitle || '')
   const [link, setLink] = useState('')
 
   useEffect(() => {
     if (props.hash) {
-      if (props.explorerUrl) setLink(`${props.explorerUrl}/${props.hash}`)
-      else if (props.chainId) setLink(`${chainIDToExplorer(props.chainId || 1)}/${props.hash}`)
+      if (props.explorerUrl) setLink(`${props.explorerUrl}/tx/${props.hash}`)
+      else if (chainId) {
+        setLink(`${chainIDToExplorer(chainId).url}/tx/${props.hash}`)
+      }
+
+      if (!initialTitle) {
+        setTitle(guessTitle({ data, from, to, chainId, value }))
+      }
     }
-  }, [props.hash, props.explorerUrl, props.chainId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.hash, props.explorerUrl, chainId])
 
   return (
     <div className={`${styles.container} ${classNames?.container}`}>
-      <a href={link} title={title}>
-        {title}
-      </a>{' '}
-      <img
-        className={`${styles.icon} ${classNames?.icon}`}
-        src={iconUrl}
-        aria-label={status}
-        alt={status}
-        title={status}
-      />
+      {link === '' ? (
+        title
+      ) : (
+        <a href={link} title={title}>
+          {title}
+        </a>
+      )}
+      {status && (
+        <img
+          className={`${styles.icon} ${classNames?.icon}`}
+          src={iconUrl}
+          aria-label={status}
+          alt={status}
+          title={status}
+        />
+      )}
     </div>
   )
 }
