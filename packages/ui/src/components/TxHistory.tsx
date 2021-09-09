@@ -1,5 +1,5 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { etherscanFetcher, TxHistoryFetcher, useTxHistory } from '@rainbowkit/hooks'
+import { etherscanFetcher, TxHistoryFetcher, useChainId, useTxHistory } from '@rainbowkit/hooks'
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from '../index'
@@ -27,6 +27,8 @@ export const TxHistory = ({
 }: TxHistoryProps) => {
   const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
 
+  const chainId = useChainId({ provider, initialChainId: 1 })
+
   if (loading && !error)
     return (
       <div className={styles.loading}>
@@ -47,7 +49,7 @@ export const TxHistory = ({
   return (
     <div>
       {txes?.map((tx) => (
-        <Tx key={tx.hash} status="success" {...tx} />
+        <Tx key={tx.hash} {...tx} chainId={chainId} />
       ))}
     </div>
   )

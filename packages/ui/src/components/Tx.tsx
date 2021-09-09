@@ -52,7 +52,7 @@ export const Tx = ({
     if (props.hash) {
       if (props.explorerUrl) setLink(`${props.explorerUrl}/tx/${props.hash}`)
       else if (chainId) {
-        setLink(`${chainIDToExplorer(chainId)}/tx/${props.hash}`)
+        setLink(`${chainIDToExplorer(chainId).url}/tx/${props.hash}`)
       }
 
       if (!initialTitle) {
@@ -64,9 +64,13 @@ export const Tx = ({
 
   return (
     <div className={`${styles.container} ${classNames?.container}`}>
-      <a href={link} title={title}>
-        {title}
-      </a>{' '}
+      {link === '' ? (
+        title
+      ) : (
+        <a href={link} title={title}>
+          {title}
+        </a>
+      )}
       {status && (
         <img
           className={`${styles.icon} ${classNames?.icon}`}
