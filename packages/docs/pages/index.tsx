@@ -5,6 +5,10 @@ import { withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { etherscanFetcher, useChainId } from '@rainbowkit/hooks'
+import { EtherscanProvider } from '@ethersproject/providers'
+
+const etherscan = new EtherscanProvider('homestead', '8BXAX6RUPGRKGVUKPJ54RJ1C9696QQBRIC')
 
 const Index = () => {
   const { connect, disconnect, isConnected, Modal, isConnecting, provider, address } = useWalletModal({
@@ -13,6 +17,8 @@ const Index = () => {
   })
 
   const [fromBlock, setFromBlock] = useState(0)
+
+  const chainId = useChainId({ provider, initialChainId: 1 })
 
   useEffect(() => {
     if (provider) {
@@ -77,37 +83,45 @@ const Index = () => {
         {isConnected && (
           <>
             <AccountInfo {...{ provider, address }} copyAddress />
-            <button
-              className={styles.button}
-              onClick={() =>
-                provider
-                  .getSigner()
-                  .signMessage('Hello World')
-                  .then((sig) => alert(`Signature: ${sig}`))
-                  .catch((error) => alert(error.message))
-              }
-            >
-              Sign message
-            </button>
-            <button
-              onClick={async () => {
-                if (provider) {
-                  const res = await provider.send('eth_sendTransaction', [
-                    {
-                      from: address,
-                      to: address,
-                      value: '0x0'
-                    }
-                  ])
-                  console.log(res)
+            <div className={styles.inline}>
+              <button
+                className={styles.button}
+                onClick={() =>
+                  provider
+                    .getSigner()
+                    .signMessage('Hello World')
+                    .then((sig) => alert(`Signature: ${sig}`))
+                    .catch((error) => alert(error.message))
                 }
-              }}
-            >
-              Send 0 ETH
-            </button>
-            {fromBlock && (
+              >
+                Sign message
+              </button>
+              <button
+                className={styles.button}
+                onClick={async () => {
+                  if (provider) {
+                    const res = await provider.send('eth_sendTransaction', [
+                      {
+                        from: address,
+                        to: address,
+                        value: '0x0'
+                      }
+                    ])
+                    console.log(res)
+                  }
+                }}
+              >
+                Send 0 ETH to yourself
+              </button>
+            </div>
+            {fromBlock && chainId === 1 && (
               <>
-                <TxHistory {...{ provider, address }} options={{ fromBlock, toBlock: fromBlock }} />
+                <TxHistory
+                  {...{ address }}
+                  provider={etherscan}
+                  fetcher={etherscanFetcher}
+                  options={{ fromBlock: 13061959, toBlock: 13073635 }}
+                />
               </>
             )}
           </>

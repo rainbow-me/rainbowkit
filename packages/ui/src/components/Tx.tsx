@@ -29,7 +29,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 0.8rem;
-  background-color: #e2e2e2;
   width: max-content;
   img {
     margin-left: 1rem;
@@ -37,7 +36,7 @@ const Container = styled.div`
     width: 1rem;
   }
   a {
-    color: #5b749b;
+    color: var(--fg-2);
     text-decoration: none;
     font-weight: bold;
   }

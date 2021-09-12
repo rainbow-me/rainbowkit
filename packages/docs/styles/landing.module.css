@@ -1,6 +1,9 @@
 .main {
   margin: 0 auto;
   max-width: 80vw;
+  display: grid;
+  gap: 2rem;
+  width: max-content;
 }
 
 .header {
@@ -45,4 +48,9 @@
 
 .icon {
   height: 1.25rem;
+}
+
+.inline {
+  display: flex;
+  justify-content: space-between;
 }

@@ -68,7 +68,7 @@ export const TxHistory = ({
 
     return (
       <Error>
-        <strong>Error!</strong> {error?.data.message}
+        <strong>Error!</strong> {error?.data?.message || error.message || 'Failed to fetch transactions'}
       </Error>
     )
   }
