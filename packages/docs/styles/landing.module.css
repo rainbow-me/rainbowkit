@@ -4,7 +4,8 @@
 }
 
 .header {
-  padding: 4vw 12vw;
+  padding-top: 4vw;
+  padding-bottom: 4vw;
 }
 
 .header h1 {
@@ -12,12 +13,36 @@
   font-size: calc(4rem + 2vw);
 }
 
-.button {
-  padding: 0.4rem 0.8rem;
+.button,
+.networkSelectCurrent {
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
   border-radius: 15px;
   border: 4px solid transparent;
   font-weight: 800;
-  color: white;
-  font-size: 1.4rem;
+  line-height: 1;
+  color: #ebebeb;
+  font-size: 1.25rem;
+  z-index: 20;
+  height: 54px;
+}
+
+.nav {
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 5;
+}
+
+.nav > * {
+  margin-right: 1.25rem;
+}
+
+.icon {
+  height: 1.25rem;
 }

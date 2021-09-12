@@ -1,20 +1,29 @@
 import { chainIDToExplorer } from '@rainbowkit/utils'
 import React from 'react'
-import styles from '../../styles/ExplorerLink.module.css'
+import { styled } from '@linaria/react'
 
 export type ExplorerProps = { chainId?: number; address: string; explorerUrl?: string } & React.DetailedHTMLProps<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
   HTMLAnchorElement
 >
 
+const Link = styled.a`
+  text-decoration: none;
+  &::before {
+    content: '↗ ';
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 export const ExplorerLink = ({ chainId = 1, address, explorerUrl, ...props }: ExplorerProps) => (
-  <a
-    className={styles.link}
+  <Link
     href={`${explorerUrl || chainIDToExplorer(chainId).url}/address/${address}`}
     target="_blank"
     rel="noreferrer"
     {...props}
   >
     View on explorer
-  </a>
+  </Link>
 )

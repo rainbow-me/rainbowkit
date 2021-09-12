@@ -1,5 +1,5 @@
 import React from 'react'
-import { EthAddress } from '@rainbowkit/badge'
+import { EthAddress } from '@rainbowkit/ui'
 import { setupProvider } from '@rainbowkit/utils'
 import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'

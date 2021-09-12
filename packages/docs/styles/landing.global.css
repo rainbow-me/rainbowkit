@@ -55,3 +55,9 @@
   font-style: normal;
   font-display: auto;
 }
+
+:root {
+  --fg: #c0c0c0;
+  --fg-2: #dee9eb;
+  --bg-2: #001a1f;
+}

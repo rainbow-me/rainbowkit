@@ -1,9 +1,10 @@
 import React, { ReactNode, useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbowkit/utils'
 import { useChainId } from '@rainbowkit/hooks'
-import styles from '../../styles/NetworkSelect.module.css'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
+import { styled } from '@linaria/react'
+import { findInSubArray, hasSubArray } from '../utils'
 
 export interface NetworkSelectProps {
   chains: string[]
@@ -14,41 +15,66 @@ export interface NetworkSelectProps {
     hidden: string
     current: string
     list: string
+    icon: string
   }>
 }
 
-function hasSubArray(master: string[], sub: string[]) {
-  return sub.some(
-    (
-      (i) => (v: string) =>
-        (i = master.indexOf(v, i) + 1)
-    )(0)
-  )
-}
+const Select = styled.div`
+  position: relative;
+`
 
-const findInSubArray = (master: string[], sub: string[]) => {
-  return master.indexOf(master.find((x) => sub.includes(x)))
-}
+type ListProps = { isExpanded: boolean; className: string }
+
+const List = styled.div`
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  max-height: calc(4 * 52px);
+  padding-bottom: 1rem;
+  display: ${(props: ListProps) => (props.isExpanded ? 'block' : 'none')};
+  z-index: -1;
+  background: var(--bg-2);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  top: 40px;
+  padding-top: 20px;
+` as React.ComponentType<ListProps>
+
+const Option = styled.div`
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  img {
+    margin-right: 1rem;
+  }
+  &:hover {
+    color: var(--fg-2);
+  }
+`
 
 export interface ChainOptionProps {
   chain: Chain
   children?: ReactNode
+  iconClassName?: string
 }
 
 export const ChainOption = ({
   chain,
   children,
+  iconClassName,
   ...props
 }: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
-  <div aria-label="option" {...props} className={`${styles.option} ${props.className}`}>
+  <Option aria-label="option" {...props} className={props.className}>
     <img
       aria-hidden="true"
-      height={32}
-      width={32}
+      className={`${iconClassName}`}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
     />{' '}
     {chain.name} {children}
-  </div>
+  </Option>
 )
 
 export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }: NetworkSelectProps) => {
@@ -68,22 +94,23 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }:
   )
 
   return (
-    <div
+    <Select
       tabIndex={0}
       role="button"
       aria-label="select"
       aria-roledescription="Select a dapp network"
-      className={`${styles.select} ${classNames.select}`}
+      className={classNames?.select}
     >
       {currentChain?.chainId && (
         <ChainOption
           aria-selected={true}
           chain={currentChain}
-          className={`${styles.current} ${classNames.current}`}
+          className={`${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
+          iconClassName={classNames?.icon}
         />
       )}
-      <div className={`${styles.list} ${!isExpanded && `${styles.hidden} ${classNames.hidden}`} ${classNames.list}`}>
+      <List isExpanded={isExpanded} className={`${isExpanded ? '' : classNames?.hidden} ${classNames.list}`}>
         {filteredChains
           .filter((ch) => ch.chainId !== currentChainId)
           .map((ch) => {
@@ -92,11 +119,12 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }:
                 chain={ch}
                 key={ch.name}
                 onClick={() => switchNetwork(provider, ch)}
-                className={classNames.option}
+                className={`${classNames.option}`}
+                iconClassName={classNames?.icon}
               />
             )
           })}
-      </div>
-    </div>
+      </List>
+    </Select>
   )
 }

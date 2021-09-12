@@ -2,9 +2,9 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
-import styles from '../../styles/Tx.module.css'
 import { FAIL_ICON, SUCCESS_ICON } from '../constants/images'
 import PENDING_ICON from '../../assets/loading.svg'
+import { styled } from '@linaria/react'
 
 export interface TxProps {
   status?: 'pending' | 'success' | 'fail'
@@ -22,6 +22,32 @@ export interface TxProps {
     icon: string
   }>
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  background-color: #e2e2e2;
+  min-width: 500px;
+  img {
+    margin-left: 1rem;
+    height: 1rem;
+    width: 1rem;
+  }
+  a {
+    color: #5b749b;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a::after {
+    content: ' ↗';
+  }
+`
 
 export const Tx = ({
   status,
@@ -63,7 +89,7 @@ export const Tx = ({
   }, [props.hash, props.explorerUrl, chainId])
 
   return (
-    <div className={`${styles.container} ${classNames?.container}`}>
+    <Container className={classNames?.container}>
       {link === '' ? (
         title
       ) : (
@@ -71,15 +97,7 @@ export const Tx = ({
           {title}
         </a>
       )}
-      {status && (
-        <img
-          className={`${styles.icon} ${classNames?.icon}`}
-          src={iconUrl}
-          aria-label={status}
-          alt={status}
-          title={status}
-        />
-      )}
-    </div>
+      {status && <img className={classNames?.icon} src={iconUrl} aria-label={status} alt={status} title={status} />}
+    </Container>
   )
 }

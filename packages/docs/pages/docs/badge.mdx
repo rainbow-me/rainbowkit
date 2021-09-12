@@ -1,9 +1,9 @@
-import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/badge'
+import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/ui'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 import { TxHistoryExample } from '../../components/txhistory'
 import { SelectNetworkExample } from '../../components/select'
 
-# `@rainbowkit/badge`
+# `@rainbowkit/ui`
 
 A wallet Badge for your dapp.
 It displays the users wallet address, their balance, and what method they are connected with (e.g. rainbow, walletconnect, metamask, coinbase, etc).
@@ -31,7 +31,7 @@ With profile icon:
 
 ```tsx
 import React from 'react'
-import { EthAddress } from '@rainbowkit/badge'
+import { EthAddress } from '@rainbowkit/ui'
 import { useENS } from 'use-ens'
 import { useWeb3React } from '@web3-react/core'
 
@@ -50,7 +50,7 @@ With balance:
 
 ```tsx
 import React from 'react'
-import { EthAddress } from '@rainbowkit/badge'
+import { EthAddress } from '@rainbowkit/ui'
 import { useENS } from 'use-ens'
 
 const EthAddressBalanceExample = () => {
@@ -70,7 +70,7 @@ Success:
 
 ```tsx
 import React from 'react'
-import { Tx } from '@rainbowkit/badge'
+import { Tx } from '@rainbowkit/ui'
 
 const TxView = () => (
   <Tx
@@ -93,7 +93,7 @@ Pending:
 
 ```tsx
 import React from 'react'
-import { Tx } from '@rainbowkit/badge'
+import { Tx } from '@rainbowkit/ui'
 
 const TxView = () => (
   <Tx
@@ -116,7 +116,7 @@ Get explorer based on network ID:
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Tx } from '@rainbowkit/badge'
+import { Tx } from '@rainbowkit/ui'
 
 const TxView = () => {
   const { library: provider } = useWeb3React()
@@ -151,7 +151,7 @@ Account information block.
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { AccountInfo } from '@rainbowkit/badge'
+import { AccountInfo } from '@rainbowkit/ui'
 
 const Wallet = () => {
   return (
@@ -195,7 +195,7 @@ Detect explorer based on chain ID:
 ## TxHistory
 
 ```tsx
-import { TxHistory } from '@rainbowkit/badge'
+import { TxHistory } from '@rainbowkit/ui'
 import { EtherscanProvider } from '@rainbowkit/ui'
 
 const provider = new EtherscanProvider('homestead', 'API_KEY')

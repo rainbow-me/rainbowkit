@@ -6,7 +6,11 @@
     "dist"
   ],
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./bundle.css": "./dist/bundle.css",
+    "./dist/bundle.css": "./dist/bundle.css"
+  },
   "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12.4"
@@ -30,11 +34,15 @@
     "react": ">=17"
   },
   "devDependencies": {
+    "@linaria/core": "^3.0.0-beta.4",
+    "@linaria/rollup": "^3.0.0-beta.12",
+    "@linaria/shaker": "^3.0.0-beta.12",
     "@rollup/plugin-image": "^2.1.1",
     "react": "^17.0.2",
-    "rollup-plugin-postcss": "^4.0.1"
+    "rollup-plugin-css-only": "^3.1.0"
   },
   "dependencies": {
+    "@linaria/react": "^3.0.0-beta.7",
     "@rainbowkit/utils": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7"
   },

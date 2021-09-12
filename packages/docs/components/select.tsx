@@ -1,5 +1,5 @@
 import React from 'react'
-import { NetworkSelect } from '@rainbowkit/badge'
+import { NetworkSelect } from '@rainbowkit/ui'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import { Activate } from './activate'

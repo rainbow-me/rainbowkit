@@ -1,6 +1,9 @@
 import React from 'react'
 import 'nextra-theme-docs/style.css'
 import '../styles/landing.global.css'
+import '@rainbowkit/ui/bundle.css'
+import '@rainbowkit/modal/bundle.css'
+
 /**
  *
  * @param {import('next/app').AppProps} props

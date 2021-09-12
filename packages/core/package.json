@@ -25,9 +25,10 @@
   "dependencies": {
     "@ethersproject/providers": "^5.4.4",
     "@ethersproject/units": "^5.4.0",
-    "@rainbowkit/badge": "workspace:*",
+    "@rainbowkit/ui": "workspace:*",
     "@rainbowkit/hooks": "workspace:*",
     "@rainbowkit/utils": "workspace:*",
+    "@rainbowkit/modal": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7"
   },
   "peerDependencies": {

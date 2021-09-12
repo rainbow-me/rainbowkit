@@ -1,9 +1,10 @@
 import React from 'react'
 import { isAddress, shortenAddress, chainIDToToken, toSignificant } from '@rainbowkit/utils'
-import styles from '../../styles/EthAddress.module.css'
 import { BaseProvider } from '@ethersproject/providers'
 import { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
+import { styled } from '@linaria/react'
+import { css } from '@linaria/core'
 
 export interface EthAddressProps {
   addr: string
@@ -19,6 +20,36 @@ export interface EthAddressProps {
     balance: string
   }>
 }
+
+const Container = styled.div`
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+const Address = styled.div`
+  font-family: sans-serif;
+  font-weight: 500;
+  color: var(--fg);
+`
+
+const Balance = styled.span`
+  font-family: sans-serif;
+  font-weight: 500;
+  color: var(--fg);
+  padding-right: 0.4rem;
+  margin-right: 0.4rem;
+  border-right: 2px solid var(--fg);
+`
+
+const ProfileIcon = styled.img`
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 50%;
+  margin-right: 0.5rem;
+`
 
 export const EthAddress = ({
   addr,
@@ -55,16 +86,16 @@ export const EthAddress = ({
   }, [provider, addr, balance])
 
   return (
-    <div className={`${styles.container} ${props.classNames?.container}`}>
-      {profileIcon && <img src={profileIcon} className={`${styles.profileIcon} ${props.classNames?.profileIcon}`} />}
+    <Container className={props.classNames?.container}>
+      {profileIcon && <ProfileIcon src={profileIcon} className={props.classNames?.profileIcon} />}
       {balance && (
-        <span className={`${styles.balance} ${props.classNames?.balance}`}>
+        <Balance className={props.classNames?.balance}>
           {bal} {symbol.toUpperCase()}
-        </span>
+        </Balance>
       )}
-      <span className={`${styles.address} ${props.classNames?.address}`}>
+      <Address className={props.classNames?.address}>
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
-      </span>
-    </div>
+      </Address>
+    </Container>
   )
 }

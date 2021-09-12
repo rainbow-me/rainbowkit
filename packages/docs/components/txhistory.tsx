@@ -1,4 +1,4 @@
-import { TxHistory } from '@rainbowkit/badge'
+import { TxHistory } from '@rainbowkit/ui'
 import { useConnectOnMount } from '@rainbowkit/hooks'
 import { setupProvider } from '@rainbowkit/utils'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'

@@ -34,5 +34,10 @@ export const chainIDToToken = (id: number) => {
 }
 
 export const chainIDToExplorer = (id: number) => {
-  return chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id)).explorers[0]
+  return (
+    chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id))?.explorers?.[0] || {
+      name: 'etherscan',
+      url: 'https://etherscan.io'
+    }
+  )
 }
