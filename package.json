@@ -27,10 +27,10 @@
     "@compiled/babel-plugin": "^0.6.14",
     "@compiled/react": "^0.6.13",
     "@rollup/plugin-typescript": "^8.2.5",
-    "@types/node": "^16.7.7",
-    "@types/react": "^17.0.19",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@types/node": "^16.9.1",
+    "@types/react": "^17.0.20",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -38,8 +38,8 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.2",
-    "next": "^11.1.1",
-    "prettier": "^2.3.2",
+    "next": "^11.1.2",
+    "prettier": "^2.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.56.3",
@@ -63,6 +63,6 @@
   },
   "optionalDependencies": {
     "@web3-react/injected-connector": "^6.0.7",
-    "@web3-react/walletlink-connector": "^6.2.3"
+    "@web3-react/walletlink-connector": "^6.2.5"
   }
 }

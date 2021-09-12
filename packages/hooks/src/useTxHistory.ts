@@ -9,7 +9,7 @@ export type TxHistoryFetcher<Tx extends any = any, P extends any = any> = (opts:
 }) => Promise<Tx[]>
 
 export const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
-  return await provider.getLogs({ fromBlock: 0, ...options, address })
+  return await provider.getLogs({ address, ...options })
 }
 
 export const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
@@ -39,7 +39,7 @@ export const useTxHistory = <Tx extends any = any, P extends any = any>({
 }) => {
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState<Tx[]>()
-  const [error, setError] = useState<Error>()
+  const [error, setError] = useState<Error & { data?: { message: string; code: string } }>()
 
   useEffect(() => {
     if (address && provider && fetcher) {

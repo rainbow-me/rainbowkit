@@ -30,7 +30,7 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 0.6rem 0.8rem;
   background-color: #e2e2e2;
-  min-width: 500px;
+  width: max-content;
   img {
     margin-left: 1rem;
     height: 1rem;

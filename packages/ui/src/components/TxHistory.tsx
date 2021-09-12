@@ -16,12 +16,13 @@ export interface TxHistoryProps {
   address: string
   provider: BaseProvider
   fetcher?: TxHistoryFetcher
-  options: Record<string, any>
+  options?: Record<string, any>
 }
 
 const Status = styled.div`
   border-radius: 15px;
   padding: 15px;
+  width: max-content;
 `
 
 const Error = styled(Status)`
@@ -49,7 +50,7 @@ export const TxHistory = ({
   address,
   provider,
   fetcher = logsFetcher,
-  options
+  options = {}
 }: TxHistoryProps) => {
   const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
 
@@ -67,7 +68,7 @@ export const TxHistory = ({
 
     return (
       <Error>
-        <strong>Error!</strong> Failed to fetch transactions
+        <strong>Error!</strong> {error?.data.message}
       </Error>
     )
   }
