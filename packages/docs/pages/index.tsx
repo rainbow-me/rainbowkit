@@ -1,14 +1,15 @@
 import React from 'react'
 import { useWalletModal } from '@rainbowkit/modal'
 import { AccountInfo, EthAddress, NetworkSelect, TxHistory } from '@rainbowkit/ui'
-import { withWeb3React } from '@rainbowkit/utils'
+import { chainNametoID, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { etherscanFetcher, useChainId } from '@rainbowkit/hooks'
-import { EtherscanProvider } from '@ethersproject/providers'
+import { useChainId } from '@rainbowkit/hooks'
+import { ChainProvider } from 'chain-provider'
+import { chainIdToName } from '@rainbowkit/core'
 
-const etherscan = new EtherscanProvider('homestead', '8BXAX6RUPGRKGVUKPJ54RJ1C9696QQBRIC')
+const etherscan = new ChainProvider('homestead', '8BXAX6RUPGRKGVUKPJ54RJ1C9696QQBRIC')
 
 const Index = () => {
   const { connect, disconnect, isConnected, Modal, isConnecting, provider, address } = useWalletModal({
@@ -20,10 +21,13 @@ const Index = () => {
 
   const chainId = useChainId({ provider, initialChainId: 1 })
 
+  const [explorer, setExplorer] = useState<ChainProvider>()
+
   useEffect(() => {
     if (provider) {
       provider.getBlockNumber().then((block) => {
         setFromBlock(block - 500)
+        provider.getNetwork().then((chainId) => setExplorer(new ChainProvider(chainIdToName(chainId))))
       })
       provider.on('chainChanged', () => {
         provider.getBlockNumber().then((block) => {
@@ -118,7 +122,7 @@ const Index = () => {
               <>
                 <TxHistory
                   {...{ address }}
-                  provider={etherscan}
+                  provider={explorer}
                   fetcher={etherscanFetcher}
                   options={{ fromBlock: 13061959, toBlock: 13073635 }}
                 />

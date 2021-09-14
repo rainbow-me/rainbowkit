@@ -25,19 +25,15 @@ export const walletByConnector = (connector: string) => {
   }
 }
 
-export const chainNametoID = (name: string) => {
-  return chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
-}
+export const chainNametoID = (name: string) => chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
 
-export const chainIDToToken = (id: number) => {
-  return chains.find((chain) => chain.chainId === id)?.nativeCurrency.symbol || 'ETH'
-}
+export const chainIdToName = (id: number) => chains.find((chain) => chain.chainId === id)?.name || 'ethereum'
 
-export const chainIDToExplorer = (id: number) => {
-  return (
-    chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id))?.explorers?.[0] || {
-      name: 'etherscan',
-      url: 'https://etherscan.io'
-    }
-  )
-}
+export const chainIDToToken = (id: number) =>
+  chains.find((chain) => chain.chainId === id)?.nativeCurrency.symbol || 'ETH'
+
+export const chainIDToExplorer = (id: number) =>
+  chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id))?.explorers?.[0] || {
+    name: 'etherscan',
+    url: 'https://etherscan.io'
+  }

@@ -1,24 +1,6 @@
-import type { Log, TransactionResponse } from '@ethersproject/abstract-provider'
-import type { EtherscanProvider } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
-
-export type TxHistoryFetcher<Tx extends any = any, P extends any = any> = (opts: {
-  address: string
-  provider: P
-  options?: any
-}) => Promise<Tx[]>
-
-export const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
-  return await provider.getLogs({ address, ...options })
-}
-
-export const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
-  provider,
-  address,
-  options = {}
-}) => {
-  return await provider.getHistory(address, options.fromBlock, options.toBlock)
-}
+import { logsFetcher } from '@rainbowkit/utils'
+import type { TxHistoryFetcher } from '@rainbowkit/utils'
 
 /**
  * Fetch transaction history for an address.

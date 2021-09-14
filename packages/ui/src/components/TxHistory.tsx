@@ -1,5 +1,6 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { logsFetcher, TxHistoryFetcher, useChainId, useTxHistory } from '@rainbowkit/hooks'
+import { useChainId, useTxHistory } from '@rainbowkit/hooks'
+import { logsFetcher, TxHistoryFetcher } from '@rainbowkit/utils'
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from './Tx'

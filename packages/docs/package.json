@@ -13,6 +13,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/torus-connector": "^6.1.9",
     "@web3-react/walletlink-connector": "^6.2.5",
+    "chain-provider": "^0.0.3",
     "framer-motion": "^4.1.17",
     "next": "^11.1.2",
     "nextra": "^1.1.0",

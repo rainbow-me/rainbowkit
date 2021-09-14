@@ -33,7 +33,7 @@ export const chains: Chain[] = [
     slip44: 60,
     ens: { registry: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e' },
     explorers: [{ name: 'etherscan', url: 'https://etherscan.io', standard: 'EIP3091' }],
-    aliases: ['ethereum', 'mainnet'],
+    aliases: ['ethereum', 'mainnet', 'homestead'],
     logoURL: 'https://dweb.link/ipfs/bafkreihr4iw5yptth3uanym4s62vfr66eaqhywjwuqk4btf2i2uku7lutq'
   },
   {
@@ -64,7 +64,7 @@ export const chains: Chain[] = [
       { name: 'Arbitrum Explorer', url: 'https://explorer.arbitrum.io', standard: 'EIP3091' }
     ],
     infoURL: 'https://arbitrum.io',
-    aliases: ['arb', 'arbitrum'],
+    aliases: ['arbitrum'],
     logoURL: 'https://bafkreiexp4jgjydr4g7eug2lbbmetzt62lmrtpsx7ro5yqcdqggnc4ioea.ipfs.dweb.link'
   },
   {
@@ -361,7 +361,7 @@ export const chains: Chain[] = [
     infoURL: 'https://www.okex.com/okexchain',
     chainId: 65,
     explorers: [{ name: 'OKLink', url: 'https://www.oklink.com/okexchain-test', standard: 'EIP3091' }],
-    aliases: ['okex testnet']
+    aliases: ['okex testnet', 'okex-testnet']
   },
   {
     name: 'Optimistic Ethereum Testnet Kovan',
@@ -371,7 +371,7 @@ export const chains: Chain[] = [
     nativeCurrency: { name: 'Kovan Ether', symbol: 'KOR', decimals: 18 },
     infoURL: 'https://optimism.io',
     chainId: 69,
-    aliases: ['optimism kovan']
+    aliases: ['optimism kovan', 'optimism-testnet', 'optimism-kovan']
   },
   {
     name: 'Binance Smart Chain Testnet',
