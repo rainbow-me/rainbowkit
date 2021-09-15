@@ -1,15 +1,13 @@
 import React from 'react'
 import { useWalletModal } from '@rainbowkit/modal'
 import { AccountInfo, EthAddress, NetworkSelect, TxHistory } from '@rainbowkit/ui'
-import { chainNametoID, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
+import { etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useChainId } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { chainIdToName } from '@rainbowkit/core'
-
-const etherscan = new ChainProvider('homestead', '8BXAX6RUPGRKGVUKPJ54RJ1C9696QQBRIC')
 
 const Index = () => {
   const { connect, disconnect, isConnected, Modal, isConnecting, provider, address } = useWalletModal({
