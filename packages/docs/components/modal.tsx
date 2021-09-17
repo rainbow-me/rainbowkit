@@ -8,7 +8,11 @@ import { setupProvider } from '@rainbowkit/utils'
 const ModalExample = () => {
   const { Portal } = usePortal()
 
-  const { disconnect, isConnected, connect, Modal, isConnecting, address } = useWalletModal({
+  const {
+    state: { disconnect, isConnected, connect, isConnecting },
+    Modal,
+    address
+  } = useWalletModal({
     wallets: ['metamask', 'coinbase', 'frame'],
     chains: ['mainnet'],
     terms: (

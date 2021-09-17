@@ -1,17 +1,29 @@
 import React from 'react'
 import { useWalletModal } from '@rainbowkit/modal'
-import { AccountInfo, EthAddress, NetworkSelect, TxHistory } from '@rainbowkit/ui'
-import { etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
+import { AccountInfo, EthAddress, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
+import { colors, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useChainId } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { chainIdToName } from '@rainbowkit/core'
+import { addressHashedColorIndex, addressHashedEmoji } from '@rainbowkit/utils'
 
 const Index = () => {
-  const { connect, disconnect, isConnected, Modal, isConnecting, provider, address } = useWalletModal({
-    wallets: ['metamask', 'coinbase'],
+  const {
+    Modal,
+    provider,
+    address,
+    state: { connect, disconnect, isConnected, isConnecting }
+  } = useWalletModal({
+    wallets: [
+      'metamask',
+      {
+        name: 'coinbase',
+        options: {}
+      }
+    ],
     chains: ['mainnet', 'polygon', 'optimism']
   })
 
@@ -38,7 +50,13 @@ const Index = () => {
   return (
     <>
       <nav className={styles.nav}>
-        <EthAddress addr={address} balance provider={provider} />
+        <Profile
+          copyAddress
+          modalOptions={{
+            chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
+            wallets: ['metamask', 'coinbase']
+          }}
+        />
         <NetworkSelect
           provider={provider}
           chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan']}
@@ -58,6 +76,7 @@ const Index = () => {
           {isConnected ? 'Disconnect' : 'Connect'}
         </button>
       </nav>
+
       <main className={styles.main}>
         <style jsx global>
           {`
@@ -76,6 +95,7 @@ const Index = () => {
             }
           `}
         </style>
+
         <header className={styles.header}>
           <h1>RainbowKit</h1>
           <p>The ultimate Dapp framework.</p>

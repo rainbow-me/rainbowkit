@@ -1,7 +1,7 @@
 import { getWalletInfo } from '@rainbowkit/utils'
 import { useEffect, useState } from 'react'
 
-export const useWalletInfo = (initialValue: { name: string; logoURI: string }) => {
+export const useWalletInfo = (initialValue?: { name: string; logoURI: string }) => {
   const [info, set] = useState(initialValue || { name: '', logoURI: '' })
 
   useEffect(() => {
