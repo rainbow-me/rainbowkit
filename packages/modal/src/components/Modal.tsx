@@ -126,6 +126,7 @@ const Terms = styled.div`
   font-weight: 600;
   color: rgba(60, 66, 82, 0.6);
   font-size: 14px;
+  line-height: 1.5;
   a {
     color: #a0c7ff;
     font-weight: 700;

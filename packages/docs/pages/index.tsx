@@ -4,6 +4,8 @@ import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/util
 import styles from '../styles/landing.module.css'
 import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
+import { useMemo } from 'react'
+import { chainIDToToken } from '@rainbowkit/core'
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
@@ -11,6 +13,8 @@ const Index = () => {
   const [fromBlock, setFromBlock] = useState(0)
 
   const [explorer, setExplorer] = useState<ChainProvider>()
+
+  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
   useEffect(() => {
     if (provider) {
@@ -33,7 +37,13 @@ const Index = () => {
           copyAddress
           modalOptions={{
             chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
-            wallets: ['metamask', 'coinbase']
+            wallets: ['metamask', 'coinbase'],
+            terms: (
+              <>
+                By connecting, you acknowledge that you’ve read and agree to the{' '}
+                <a>RainbowKit&apos;s Terms of Service.</a>
+              </>
+            )
           }}
         />
         <NetworkSelect
@@ -102,7 +112,7 @@ const Index = () => {
                   }
                 }}
               >
-                Send 0 ETH to yourself
+                Send 0 {symbol} to yourself
               </button>
             </div>
             {fromBlock && chainId === 1 && (

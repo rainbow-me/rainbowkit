@@ -10,6 +10,9 @@ const StyledButton = styled.button`
   svg > path {
     fill: var(--fg);
   }
+  svg {
+    margin-left: 0.5rem;
+  }
 `
 
 export const CopyAddressButton = ({ address }: { address: string }) => (
