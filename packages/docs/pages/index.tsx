@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
 import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
-import { useState } from 'react'
-import { useEffect } from 'react'
 import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 
