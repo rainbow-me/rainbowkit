@@ -26,6 +26,7 @@ const Pill = styled.div`
   height: 54px;
   position: relative;
   display: flex;
+  cursor: pointer;
 `
 
 const Menu = styled.ul`
