@@ -1,12 +1,11 @@
 import React from 'react'
-import { AccountInfo, EthAddress, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
-import { colors, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
+import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
+import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
-import { chainIdToName } from '@rainbowkit/core'
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
