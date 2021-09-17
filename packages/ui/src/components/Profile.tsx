@@ -13,6 +13,10 @@ const Button = styled.button`
   font-weight: 800;
 `
 
+const Container = styled.div`
+  position: relative;
+`
+
 const Pill = styled.div`
   padding: 0.6rem 1.2rem;
   background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
@@ -24,7 +28,6 @@ const Pill = styled.div`
   font-size: 1.25rem;
   z-index: 20;
   height: 54px;
-  position: relative;
   display: flex;
   cursor: pointer;
 `
@@ -122,21 +125,22 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
 
   return (
     <>
-      <Pill>
+      <Container>
         {state.isConnected ? (
           <>
-            <EthAddress
-              onClick={() => setExpandedState(!isExpanded)}
-              profileIcon={
-                (records?.avatar as string) ||
-                (() => (
-                  <EmojiIcon $bgColor={color} role="img">
-                    {emoji}
-                  </EmojiIcon>
-                ))
-              }
-              {...{ provider, address }}
-            />{' '}
+            <Pill onClick={() => setExpandedState(!isExpanded)}>
+              <EthAddress
+                profileIcon={
+                  (records?.avatar as string) ||
+                  (() => (
+                    <EmojiIcon $bgColor={color} role="img">
+                      {emoji}
+                    </EmojiIcon>
+                  ))
+                }
+                {...{ provider, address }}
+              />
+            </Pill>
             {isExpanded && (
               <Menu>
                 <li>
@@ -164,7 +168,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
             {state.isConnecting && <Modal />}
           </>
         )}
-      </Pill>
+      </Container>
     </>
   )
 }
