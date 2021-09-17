@@ -6,7 +6,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { styled } from '@linaria/react'
 import { useSignificantBalance } from '@rainbowkit/hooks/src'
 
-export interface EthAddressProps {
+export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string
   shorten?: boolean
   provider?: BaseProvider
@@ -49,22 +49,21 @@ export const EthAddress = ({
   balance,
   provider,
   networkToken,
+  classNames,
   ...props
 }: EthAddressProps) => {
   shorten = shorten === undefined ? true : shorten
 
   return (
-    <Container className={props.classNames?.container}>
+    <Container {...props} className={classNames?.container}>
       {ProfileIconURLOrImage &&
         (typeof ProfileIconURLOrImage === 'string' ? (
-          <ProfileIcon src={ProfileIconURLOrImage} className={props.classNames?.profileIcon} />
+          <ProfileIcon src={ProfileIconURLOrImage} className={classNames?.profileIcon} />
         ) : (
           <ProfileIconURLOrImage />
         ))}
 
-      <Address className={props.classNames?.address}>
-        {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
-      </Address>
+      <Address className={classNames?.address}>{(shorten && isAddress(addr) && shortenAddress(addr)) || addr}</Address>
     </Container>
   )
 }

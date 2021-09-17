@@ -122,10 +122,11 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
 
   return (
     <>
-      <Pill onClick={() => setExpandedState(!isExpanded)}>
+      <Pill>
         {state.isConnected ? (
           <>
             <EthAddress
+              onClick={() => setExpandedState(!isExpanded)}
               profileIcon={
                 (records?.avatar as string) ||
                 (() => (
