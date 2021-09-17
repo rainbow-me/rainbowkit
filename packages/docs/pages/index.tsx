@@ -1,31 +1,15 @@
 import React from 'react'
-import { useWalletModal } from '@rainbowkit/modal'
 import { AccountInfo, EthAddress, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
 import { colors, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useChainId } from '@rainbowkit/hooks'
+import { useChainId, useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { chainIdToName } from '@rainbowkit/core'
-import { addressHashedColorIndex, addressHashedEmoji } from '@rainbowkit/utils'
 
 const Index = () => {
-  const {
-    Modal,
-    provider,
-    address,
-    state: { connect, disconnect, isConnected, isConnecting }
-  } = useWalletModal({
-    wallets: [
-      'metamask',
-      {
-        name: 'coinbase',
-        options: {}
-      }
-    ],
-    chains: ['mainnet', 'polygon', 'optimism']
-  })
+  const { provider, address, isConnected } = useWeb3State()
 
   const [fromBlock, setFromBlock] = useState(0)
 
@@ -67,14 +51,6 @@ const Index = () => {
             icon: styles.icon
           }}
         />
-        <button
-          className={styles.button}
-          onClick={() => {
-            isConnected ? disconnect() : connect()
-          }}
-        >
-          {isConnected ? 'Disconnect' : 'Connect'}
-        </button>
       </nav>
 
       <main className={styles.main}>
@@ -100,8 +76,6 @@ const Index = () => {
           <h1>RainbowKit</h1>
           <p>The ultimate Dapp framework.</p>
         </header>
-
-        {isConnecting && <Modal />}
         {isConnected && (
           <>
             <AccountInfo {...{ provider, address }} copyAddress />
