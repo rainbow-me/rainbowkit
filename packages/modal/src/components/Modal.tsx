@@ -96,7 +96,7 @@ const WalletList = styled.ul`
   }
 
   li span {
-    font-family: SF Pro Rounded;
+    font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
@@ -126,6 +126,7 @@ const Terms = styled.div`
   font-weight: 600;
   color: rgba(60, 66, 82, 0.6);
   font-size: 14px;
+  line-height: 1.5;
   a {
     color: #a0c7ff;
     font-weight: 700;
@@ -137,7 +138,7 @@ const Terms = styled.div`
 `
 
 const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Pick<ModalProps, 'connect'>) => {
-  const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [])
+  const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
 
   return (
     <li key={name}>
@@ -173,7 +174,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
             {wallets
               .filter((x) => !x.hidden)
               .map((c) => {
-                return <WalletIcon connect={connect} wallet={c} />
+                return <WalletIcon key={c.name} connect={connect} wallet={c} />
               })}
           </WalletList>
         </div>

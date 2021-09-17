@@ -1,25 +1,20 @@
-import React from 'react'
-import { useWalletModal } from '@rainbowkit/modal'
-import { AccountInfo, EthAddress, NetworkSelect, TxHistory } from '@rainbowkit/ui'
-import { etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
+import React, { useState, useEffect } from 'react'
+import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
+import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { useChainId } from '@rainbowkit/hooks'
+import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
-import { chainIdToName } from '@rainbowkit/core'
+import { useMemo } from 'react'
+import { chainIDToToken } from '@rainbowkit/core'
 
 const Index = () => {
-  const { connect, disconnect, isConnected, Modal, isConnecting, provider, address } = useWalletModal({
-    wallets: ['metamask', 'coinbase'],
-    chains: ['mainnet', 'polygon', 'optimism']
-  })
+  const { provider, address, isConnected, chainId } = useWeb3State()
 
   const [fromBlock, setFromBlock] = useState(0)
 
-  const chainId = useChainId({ provider, initialChainId: 1 })
-
   const [explorer, setExplorer] = useState<ChainProvider>()
+
+  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
   useEffect(() => {
     if (provider) {
@@ -38,9 +33,21 @@ const Index = () => {
   return (
     <>
       <nav className={styles.nav}>
-        <EthAddress addr={address} balance provider={provider} />
+        <Profile
+          copyAddress
+          modalOptions={{
+            chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
+            wallets: ['metamask', 'coinbase'],
+            terms: (
+              <>
+                By connecting, you acknowledge that you’ve read and agree to the{' '}
+                <a>RainbowKit&apos;s Terms of Service.</a>
+              </>
+            )
+          }}
+        />
         <NetworkSelect
-          provider={provider}
+          {...{ provider, chainId }}
           chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan']}
           classNames={{
             current: styles.networkSelectCurrent,
@@ -49,15 +56,8 @@ const Index = () => {
             icon: styles.icon
           }}
         />
-        <button
-          className={styles.button}
-          onClick={() => {
-            isConnected ? disconnect() : connect()
-          }}
-        >
-          {isConnected ? 'Disconnect' : 'Connect'}
-        </button>
       </nav>
+
       <main className={styles.main}>
         <style jsx global>
           {`
@@ -76,12 +76,11 @@ const Index = () => {
             }
           `}
         </style>
+
         <header className={styles.header}>
           <h1>RainbowKit</h1>
           <p>The ultimate Dapp framework.</p>
         </header>
-
-        {isConnecting && <Modal />}
         {isConnected && (
           <>
             <AccountInfo {...{ provider, address }} copyAddress />
@@ -113,13 +112,13 @@ const Index = () => {
                   }
                 }}
               >
-                Send 0 ETH to yourself
+                Send 0 {symbol} to yourself
               </button>
             </div>
             {fromBlock && chainId === 1 && (
               <>
                 <TxHistory
-                  {...{ address }}
+                  {...{ address, chainId }}
                   provider={explorer}
                   fetcher={etherscanFetcher}
                   options={{ fromBlock: 13061959, toBlock: 13073635 }}

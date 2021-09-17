@@ -5,12 +5,13 @@ import { setupProvider } from '@rainbowkit/utils'
 import { Activate } from './activate'
 
 const Select = () => {
-  const { library: provider } = useWeb3React()
+  const { library: provider, chainId } = useWeb3React()
 
   return (
     <>
       <Activate />
       <NetworkSelect
+        chainId={chainId}
         chains={[
           'ethereum',
           'optimism',

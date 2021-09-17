@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import { isAuthorized } from '@rainbowkit/utils'
 import type { Wallet } from '@rainbowkit/utils'
-import type { ModalProps } from './types'
+import type { ModalProps, UseWalletModalOptions } from './types'
 import { createConnector } from './utils'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 
@@ -14,12 +14,14 @@ export type WalletInterface = Omit<
   'activate' | 'deactivate' | 'library' | 'account' | 'active'
 > & {
   Modal?: () => JSX.Element
-  connect: () => void
-  disconnect: () => void
   provider: Web3Provider
-  isConnected: boolean
-  isConnecting: boolean
   address: string
+  state: {
+    connect: () => void
+    disconnect: () => void
+    isConnected: boolean
+    isConnecting: boolean
+  }
 }
 
 export const useWalletModal = ({
@@ -27,12 +29,7 @@ export const useWalletModal = ({
   chains = [],
   wallets: selectedWallets,
   terms
-}: {
-  modal?: React.ComponentType<ModalProps> | false
-  wallets: (Wallet | string)[]
-  chains?: (string | number)[]
-  terms?: JSX.Element
-}): WalletInterface => {
+}: UseWalletModalOptions): WalletInterface => {
   const {
     activate,
     deactivate,
@@ -104,8 +101,8 @@ export const useWalletModal = ({
   if (typeof ModalComponent === 'undefined') {
     const Modal = () => <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms }} />
 
-    return { Modal, connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
+    return { Modal, state: { isConnected, isConnecting, connect, disconnect }, provider, address, ...web3ReactProps }
   } else {
-    return { connect, disconnect, provider, isConnected, isConnecting, address, ...web3ReactProps }
+    return { state: { connect, disconnect, isConnected, isConnecting }, provider, address, ...web3ReactProps }
   }
 }

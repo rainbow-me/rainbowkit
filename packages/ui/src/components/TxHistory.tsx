@@ -1,5 +1,5 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { useChainId, useTxHistory } from '@rainbowkit/hooks'
+import { useTxHistory } from '@rainbowkit/hooks'
 import { logsFetcher, TxHistoryFetcher } from '@rainbowkit/utils'
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
@@ -7,6 +7,7 @@ import type { TxProps } from './Tx'
 import loadingIcon from '../../assets/loading.svg'
 import { styled } from '@linaria/react'
 import { css } from '@linaria/core'
+import { useWeb3State } from '@rainbowkit/hooks/src'
 
 export interface TxHistoryProps {
   txComponent?: (props: TxProps) => JSX.Element
@@ -16,6 +17,7 @@ export interface TxHistoryProps {
   }>
   address: string
   provider: BaseProvider
+  chainId: number
   fetcher?: TxHistoryFetcher
   options?: Record<string, any>
 }
@@ -51,11 +53,10 @@ export const TxHistory = ({
   address,
   provider,
   fetcher = logsFetcher,
-  options = {}
+  options = {},
+  chainId
 }: TxHistoryProps) => {
   const { data: txes, error, loading } = useTxHistory({ address, provider, fetcher, options })
-
-  const chainId = useChainId({ provider, initialChainId: 1 })
 
   if (loading && !error)
     return (

@@ -20,3 +20,10 @@ export interface ModalProps {
     terms: string
   }>
 }
+
+export interface UseWalletModalOptions {
+  modal?: React.ComponentType<ModalProps> | false
+  wallets: (Wallet | string)[]
+  chains?: (string | number)[]
+  terms?: JSX.Element
+}

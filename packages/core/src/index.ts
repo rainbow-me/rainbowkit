@@ -1,4 +1,5 @@
 export * from '@rainbowkit/utils'
 export * from '@rainbowkit/hooks'
 export * from '@rainbowkit/ui'
-export * from '@rainbowkit/modal'
+export { useWalletModal } from '@rainbowkit/modal'
+export type { UseWalletModalOptions } from '@rainbowkit/modal'

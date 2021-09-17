@@ -1,6 +1,5 @@
 import React, { ReactNode, useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbowkit/utils'
-import { useChainId } from '@rainbowkit/hooks'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { styled } from '@linaria/react'
@@ -9,6 +8,7 @@ import { findInSubArray, hasSubArray } from '../utils'
 export interface NetworkSelectProps {
   chains: string[]
   provider: Web3Provider
+  chainId: number
   classNames?: Partial<{
     select: string
     option: string
@@ -77,12 +77,10 @@ export const ChainOption = ({
   </Option>
 )
 
-export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }: NetworkSelectProps) => {
-  const currentChainId = useChainId({ initialChainId: 1, provider })
-
+export const NetworkSelect = ({ chains: chainNames, provider, classNames = {}, chainId }: NetworkSelectProps) => {
   const [isExpanded, setExpand] = useState(false)
 
-  const currentChain = useMemo(() => chains.find((chain) => chain.chainId === currentChainId), [currentChainId])
+  const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
 
   const filteredChains = useMemo(
     () =>
@@ -112,7 +110,7 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {} }:
       )}
       <List isExpanded={isExpanded} className={`${isExpanded ? '' : classNames?.hidden} ${classNames.list}`}>
         {filteredChains
-          .filter((ch) => ch.chainId !== currentChainId)
+          .filter((ch) => ch.chainId !== chainId)
           .map((ch) => {
             return (
               <ChainOption

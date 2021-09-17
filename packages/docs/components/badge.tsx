@@ -19,7 +19,7 @@ const EthAddressPicExample = ({ balance }: { balance?: boolean }) => {
   return (
     <>
       <Activate />
-      <EthAddress balance={balance} addr="foda.eth" profileIcon={data?.records?.avatar as string} />
+      <EthAddress balance={balance} address="foda.eth" profileIcon={data?.records?.avatar as string} />
     </>
   )
 }
@@ -38,7 +38,11 @@ const EthAddressBalanceExample = () => {
   return (
     <>
       <Activate />
-      <EthAddress balance={true} provider={provider} addr={address || '0x0A9f12d325b905907C43566b4740F2dFE10C3C4B'} />
+      <EthAddress
+        balance={true}
+        provider={provider}
+        address={address || '0x0A9f12d325b905907C43566b4740F2dFE10C3C4B'}
+      />
     </>
   )
 }
