@@ -9,6 +9,10 @@ import { useMemo } from 'react'
 import { addressHashedColorIndex, addressHashedEmoji, chainIDToToken, colors } from '@rainbowkit/utils'
 import { CopyAddressButton } from './CopyAddressButton'
 
+const Button = styled.button`
+  font-weight: 800;
+`
+
 const Pill = styled.div`
   padding: 0.6rem 1.2rem;
   background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
@@ -134,7 +138,8 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
             {isExpanded && (
               <Menu>
                 <li>
-                  {bal.slice(0, 5)} {symbol} <img height={32} width={32} src={logoURI} alt={name} title={name} />
+                  {bal.slice(0, 5)} {symbol}{' '}
+                  {logoURI !== '' && <img height={32} width={32} src={logoURI} alt={name} title={name} />}
                 </li>
                 <li>
                   {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
@@ -144,7 +149,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
                   )}
                 </li>
                 <li>
-                  <DisconnectButton>
+                  <DisconnectButton onClick={() => state.disconnect()}>
                     Disconnect <CloseIcon />
                   </DisconnectButton>
                 </li>
@@ -153,7 +158,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
           </>
         ) : (
           <>
-            <button onClick={() => state.connect()}>Connect</button>
+            <Button onClick={() => state.connect()}>Connect</Button>
             {state.isConnecting && <Modal />}
           </>
         )}
