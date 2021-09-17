@@ -7,14 +7,14 @@ import { injected } from './badge'
 import { provider } from './history'
 
 const TxHistoryExampleDemo = () => {
-  const { account: address } = useWeb3React()
+  const { account: address, chainId } = useWeb3React()
 
   useConnectOnMount(injected, true)
 
   return (
     <TxHistory
+      {...{ provider, chainId }}
       address={address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f'}
-      provider={provider}
       options={{ fromBlock: 12862901 }}
     />
   )

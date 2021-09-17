@@ -2,7 +2,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import React, { useEffect, useState } from 'react'
 import { CopyAddressButton } from './CopyAddressButton'
 import { ExplorerLink, ExplorerProps } from './ExplorerLink'
-import { useChainId, useWalletInfo } from '@rainbowkit/hooks'
+import { useWalletInfo } from '@rainbowkit/hooks'
 import { styled } from '@linaria/react'
 
 export interface AccountInfoProps {
@@ -10,7 +10,7 @@ export interface AccountInfoProps {
   wallet?: { name: string; logoURI: string }
   explorer?: boolean | ((props: ExplorerProps) => JSX.Element)
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
-  provider?: Web3Provider
+
   chainId?: number
   explorerUrl?: string
   classNames?: Partial<{
@@ -50,13 +50,11 @@ const Footer = styled.div`
 export const AccountInfo = ({
   address,
   wallet,
-  chainId: initialChainId,
-  provider,
+  chainId,
   explorer: Explorer,
   copyAddress: CopyAddress,
   explorerUrl
 }: AccountInfoProps) => {
-  const chainId = useChainId({ provider, initialChainId })
   const { name, logoURI } = useWalletInfo(wallet)
 
   return (

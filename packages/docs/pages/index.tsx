@@ -4,16 +4,14 @@ import { colors, etherscanFetcher, withWeb3React } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { useChainId, useWeb3State } from '@rainbowkit/hooks'
+import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { chainIdToName } from '@rainbowkit/core'
 
 const Index = () => {
-  const { provider, address, isConnected } = useWeb3State()
+  const { provider, address, isConnected, chainId } = useWeb3State()
 
   const [fromBlock, setFromBlock] = useState(0)
-
-  const chainId = useChainId({ provider, initialChainId: 1 })
 
   const [explorer, setExplorer] = useState<ChainProvider>()
 
@@ -42,7 +40,7 @@ const Index = () => {
           }}
         />
         <NetworkSelect
-          provider={provider}
+          {...{ provider, chainId }}
           chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan']}
           classNames={{
             current: styles.networkSelectCurrent,
@@ -113,7 +111,7 @@ const Index = () => {
             {fromBlock && chainId === 1 && (
               <>
                 <TxHistory
-                  {...{ address }}
+                  {...{ address, chainId }}
                   provider={explorer}
                   fetcher={etherscanFetcher}
                   options={{ fromBlock: 13061959, toBlock: 13073635 }}
