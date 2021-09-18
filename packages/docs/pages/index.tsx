@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
-import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/utils'
+import { etherscanFetcher, withWeb3React, chainIdToAlias } from '@rainbowkit/utils'
 import styles from '../styles/landing.module.css'
-import { useWeb3State } from '@rainbowkit/hooks'
+import { useWeb3State, usePendingTx, useSignMessage } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { useMemo } from 'react'
-import { chainIDToToken } from '@rainbowkit/core'
+import { chainIDToToken, chainIDToExplorer } from '@rainbowkit/utils'
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
@@ -16,11 +16,15 @@ const Index = () => {
 
   const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
+  const txes = usePendingTx({ provider })
+
+  const sign = useSignMessage({ provider, message: 'Hello' })
+
   useEffect(() => {
+    if (chainId) setExplorer(new ChainProvider(chainIdToAlias(chainId)))
     if (provider) {
       provider.getBlockNumber().then((block) => {
         setFromBlock(block - 500)
-        provider.getNetwork().then((chainId) => setExplorer(new ChainProvider(chainIdToName(chainId))))
       })
       provider.on('chainChanged', () => {
         provider.getBlockNumber().then((block) => {
@@ -28,7 +32,7 @@ const Index = () => {
         })
       })
     }
-  }, [provider])
+  }, [provider, chainId])
 
   return (
     <>
@@ -88,9 +92,7 @@ const Index = () => {
               <button
                 className={styles.button}
                 onClick={() =>
-                  provider
-                    .getSigner()
-                    .signMessage('Hello World')
+                  sign()
                     .then((sig) => alert(`Signature: ${sig}`))
                     .catch((error) => alert(error.message))
                 }
@@ -101,14 +103,14 @@ const Index = () => {
                 className={styles.button}
                 onClick={async () => {
                   if (provider) {
-                    const res = await provider.send('eth_sendTransaction', [
+                    const tx = await provider.send('eth_sendTransaction', [
                       {
                         from: address,
                         to: address,
                         value: '0x0'
                       }
                     ])
-                    console.log(res)
+                    alert(`Success! View on explorer: ${chainIDToExplorer(chainId).url}/tx/${tx}`)
                   }
                 }}
               >
@@ -125,6 +127,7 @@ const Index = () => {
                 />
               </>
             )}
+            {JSON.stringify(txes, null, 2)}
           </>
         )}
       </main>

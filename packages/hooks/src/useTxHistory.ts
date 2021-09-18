@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { logsFetcher } from '@rainbowkit/utils'
 import type { TxHistoryFetcher } from '@rainbowkit/utils'
+import { Listener } from '@ethersproject/abstract-provider'
+import { BaseProvider, Web3Provider } from '@ethersproject/providers'
 
 /**
  * Fetch transaction history for an address.
@@ -8,7 +10,7 @@ import type { TxHistoryFetcher } from '@rainbowkit/utils'
  * There are two fetchers availaible, event logs fetcher (`logsFetcher`) and Etherscan fetcher (`etherscanFetcher`).
  * `logsFetcher` is used by default.
  */
-export const useTxHistory = <Tx extends any = any, P extends any = any>({
+export const useTxHistory = <Tx extends any = any, P extends BaseProvider = Web3Provider>({
   fetcher = logsFetcher,
   address,
   options,
@@ -24,6 +26,8 @@ export const useTxHistory = <Tx extends any = any, P extends any = any>({
   const [error, setError] = useState<Error & { data?: { message: string; code: string } }>()
 
   useEffect(() => {
+    const sub: Listener = (tx) => setData((arr) => [...arr, { ...tx, status: 'pending' }])
+
     if (address && provider && fetcher) {
       fetcher({ address, provider, options })
         .then((txes) => {
@@ -35,6 +39,12 @@ export const useTxHistory = <Tx extends any = any, P extends any = any>({
           setError(err)
         })
     }
+    if (provider) {
+      provider.on('pending', sub)
+
+      return () => void provider.off('pending', sub)
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, provider, fetcher])
 

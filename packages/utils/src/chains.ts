@@ -22,8 +22,8 @@ export const chains: Chain[] = [
     network: 'mainnet',
 
     rpc: [
-      'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
-      'wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}',
+      'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      'wss://mainnet.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       'https://api.mycryptoapi.com/eth',
       'https://cloudflare-eth.com'
     ],
@@ -54,7 +54,7 @@ export const chains: Chain[] = [
     network: 'mainnet',
     nativeCurrency: { name: 'Ether', symbol: 'AETH', decimals: 18 },
     rpc: [
-      'https://mainnet.infura.io/v3/${INFURA_API_KEY}',
+      'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       'https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}',
       'https://arb1.arbitrum.io/rpc',
       'wss://arb1.arbitrum.io/ws'
@@ -285,9 +285,12 @@ export const chains: Chain[] = [
     name: 'Ethereum Testnet Ropsten',
     chain: 'ETH',
     network: 'ropsten',
-    rpc: ['https://ropsten.infura.io/v3/${INFURA_API_KEY}', 'wss://ropsten.infura.io/ws/v3/${INFURA_API_KEY}'],
+    rpc: [
+      'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      'wss://ropsten.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161'
+    ],
     faucets: ['https://faucet.ropsten.be?${ADDRESS}'],
-    nativeCurrency: { name: 'Ropsten Ether', symbol: 'ROP', decimals: 18 },
+    nativeCurrency: { name: 'Ropsten Ether', symbol: 'ETH', decimals: 18 },
     infoURL: 'https://github.com/ethereum/ropsten',
     chainId: 3,
     ens: { registry: '0x112234455c3a32fd11230c42e7bccd4a84e02010' },
@@ -297,9 +300,12 @@ export const chains: Chain[] = [
     name: 'Ethereum Testnet Rinkeby',
     chain: 'ETH',
     network: 'rinkeby',
-    rpc: ['https://rinkeby.infura.io/v3/${INFURA_API_KEY}', 'wss://rinkeby.infura.io/ws/v3/${INFURA_API_KEY}'],
+    rpc: [
+      'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      'wss://rinkeby.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161'
+    ],
     faucets: ['https://faucet.rinkeby.io'],
-    nativeCurrency: { name: 'Rinkeby Ether', symbol: 'RIN', decimals: 18 },
+    nativeCurrency: { name: 'Rinkeby Ether', symbol: 'ETH', decimals: 18 },
     infoURL: 'https://www.rinkeby.io',
     chainId: 4,
     ens: { registry: '0xe7410170f87102df0055eb195163a03b7f2bff4a' },
@@ -312,7 +318,7 @@ export const chains: Chain[] = [
     network: 'goerli',
     rpc: ['https://rpc.goerli.mudit.blog/', 'https://rpc.slock.it/goerli ', 'https://goerli.prylabs.net/'],
     faucets: ['https://goerli-faucet.slock.it/?address=${ADDRESS}', 'https://faucet.goerli.mudit.blog'],
-    nativeCurrency: { name: 'Görli Ether', symbol: 'GOR', decimals: 18 },
+    nativeCurrency: { name: 'Görli Ether', symbol: 'ETH', decimals: 18 },
     infoURL: 'https://goerli.net/#about',
     chainId: 5,
     ens: { registry: '0x112234455c3a32fd11230c42e7bccd4a84e02010' },
@@ -325,12 +331,12 @@ export const chains: Chain[] = [
     rpc: [
       'https://kovan.poa.network',
       'http://kovan.poa.network:8545',
-      'https://kovan.infura.io/v3/${INFURA_API_KEY}',
-      'wss://kovan.infura.io/ws/v3/${INFURA_API_KEY}',
+      'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      'wss://kovan.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       'ws://kovan.poa.network:8546'
     ],
     faucets: ['https://faucet.kovan.network', 'https://gitter.im/kovan-testnet/faucet'],
-    nativeCurrency: { name: 'Kovan Ether', symbol: 'KOV', decimals: 18 },
+    nativeCurrency: { name: 'Kovan Ether', symbol: 'ETH', decimals: 18 },
     infoURL: 'https://kovan-testnet.github.io/website',
     chainId: 42,
     aliases: ['kovan']
