@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
-import { etherscanFetcher, withWeb3React, chainIdToAlias } from '@rainbowkit/utils'
+import React, { useState, useEffect, useMemo } from 'react'
+import {
+  etherscanFetcher,
+  withWeb3React,
+  chainIdToAlias,
+  chainIDToToken,
+  chainIDToExplorer,
+  Profile,
+  useSignMessage,
+  usePendingTx,
+  useWeb3State,
+  AccountInfo,
+  NetworkSelect,
+  TxHistory
+} from '@rainbowkit/core'
 import styles from '../styles/landing.module.css'
-import { useWeb3State, usePendingTx, useSignMessage } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
-import { useMemo } from 'react'
-import { chainIDToToken, chainIDToExplorer } from '@rainbowkit/utils'
+import { InfuraWebSocketProvider } from '@ethersproject/providers'
+
+const mainnetProvider = new InfuraWebSocketProvider('homestead', '0c8c992691dc4bfe97b4365a27fb2ce4')
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
@@ -38,6 +50,7 @@ const Index = () => {
     <>
       <nav className={styles.nav}>
         <Profile
+          rpcProvider={mainnetProvider}
           copyAddress
           modalOptions={{
             chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],

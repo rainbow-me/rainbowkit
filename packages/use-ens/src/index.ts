@@ -21,7 +21,7 @@ export const useENS = ({
   contractAddress?: string
   cache?: boolean
 }): ResolvedENS => {
-  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: { web: {} } })
+  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {} })
 
   useEffect(() => {
     if (cache) {
@@ -30,8 +30,7 @@ export const useENS = ({
         set(cachedData)
         // eslint-disable-next-line no-empty
       } catch {}
-    }
-    if (provider && domain) {
+    } else if (provider && domain) {
       provider.getNetwork().then(({ chainId }) => {
         if (contractAddress || chainId === 1) {
           getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
@@ -41,7 +40,7 @@ export const useENS = ({
         }
       })
     }
-  }, [domain, provider])
+  }, [cache, contractAddress, domain, fetchOptions, provider])
 
   return data
 }

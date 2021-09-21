@@ -4,14 +4,11 @@ import { useWalletModal } from '@rainbowkit/modal'
 import type { UseWalletModalOptions } from '@rainbowkit/modal'
 import { useState } from 'react'
 import { EthAddress } from './EthAddress'
-import { useENS, useSignificantBalance, useWalletInfo } from '@rainbowkit/hooks'
+import { useENS, useWalletInfo, useSignificantBalance } from '@rainbowkit/hooks'
 import { useMemo } from 'react'
 import { addressHashedColorIndex, addressHashedEmoji, chainIDToToken, colors } from '@rainbowkit/utils'
 import { CopyAddressButton } from './CopyAddressButton'
-
-const Button = styled.button`
-  font-weight: 800;
-`
+import { JsonRpcProvider } from '@ethersproject/providers'
 
 const Container = styled.div`
   position: relative;
@@ -30,6 +27,8 @@ const Pill = styled.div`
   height: 54px;
   display: flex;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 `
 
 const Menu = styled.ul`
@@ -103,14 +102,19 @@ const CloseIcon = () => {
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  rpcProvider?: JsonRpcProvider
 }
 
-export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: ProfileProps) => {
+export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcProvider }: ProfileProps) => {
   const { state, Modal, provider, address, chainId } = useWalletModal(modalOptions)
 
   const { logoURI, name } = useWalletInfo()
 
-  const { records } = useENS({ provider, domain: address, fetchOptions: { cache: 'force-cache' } })
+  const { records, ...ens } = useENS({
+    provider: rpcProvider,
+    domain: address,
+    fetchOptions: { cache: 'force-cache' }
+  })
 
   const { emoji, color } = useMemo(
     () => ({ emoji: addressHashedEmoji(address), color: colors[addressHashedColorIndex(address)] }),
@@ -122,6 +126,8 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
   const bal = useSignificantBalance({ provider, address })
 
   const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
+
+  console.log(ens, records)
 
   return (
     <>
@@ -144,8 +150,8 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
             {isExpanded && (
               <Menu>
                 <li>
-                  {bal.slice(0, 5)} {symbol}{' '}
-                  {logoURI !== '' && <img height={32} width={32} src={logoURI} alt={name} title={name} />}
+                  {bal.slice(0, 5)} {symbol}
+                  <img src={logoURI} width={32} height={32} alt={name} />
                 </li>
                 <li>
                   {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
@@ -164,7 +170,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
           </>
         ) : (
           <>
-            <Button onClick={() => state.connect()}>Connect</Button>
+            <Pill onClick={() => state.connect()}>Connect</Pill>
             {state.isConnecting && <Modal />}
           </>
         )}
