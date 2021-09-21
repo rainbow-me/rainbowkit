@@ -33,7 +33,6 @@ const Pill = styled.div`
 
 const Menu = styled.ul`
   background: #17181c;
-  outline: 4px solid #17181c;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   border-radius: 16px;
