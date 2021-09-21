@@ -110,11 +110,13 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcPr
 
   const { logoURI, name } = useWalletInfo()
 
-  const { records, domain: address } = useENS({
+  const { records, domain } = useENS({
     provider: rpcProvider,
     domain: accountAddress,
     fetchOptions: { cache: 'force-cache' }
   })
+
+  const address = useMemo(() => domain || accountAddress, [domain, accountAddress])
 
   const [isExpanded, setExpandedState] = useState(false)
 
@@ -134,10 +136,10 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcPr
       return {
         emoji: addressHashedEmoji(address),
         color: colors[addressHashedColorIndex(address)],
-        address: accountAddress
+        address
       }
     }
-  }, [accountAddress, address, records.avatar])
+  }, [address, records.avatar])
 
   return (
     <>
