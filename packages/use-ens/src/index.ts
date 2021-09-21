@@ -21,7 +21,7 @@ export const useENS = ({
   contractAddress?: string
   cache?: boolean
 }): ResolvedENS => {
-  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {} })
+  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
 
   useEffect(() => {
     if (cache) {

@@ -106,28 +106,38 @@ export interface ProfileProps {
 }
 
 export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcProvider }: ProfileProps) => {
-  const { state, Modal, provider, address, chainId } = useWalletModal(modalOptions)
+  const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
 
   const { logoURI, name } = useWalletInfo()
 
-  const { records, ...ens } = useENS({
+  const { records, domain: address } = useENS({
     provider: rpcProvider,
-    domain: address,
+    domain: accountAddress,
     fetchOptions: { cache: 'force-cache' }
   })
 
-  const { emoji, color } = useMemo(
-    () => ({ emoji: addressHashedEmoji(address), color: colors[addressHashedColorIndex(address)] }),
-    [address]
-  )
-
   const [isExpanded, setExpandedState] = useState(false)
 
-  const bal = useSignificantBalance({ provider, address })
+  const bal = useSignificantBalance({ provider, address: accountAddress })
 
   const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
-  console.log(ens, records)
+  const { avatar, emoji, color } = useMemo(() => {
+    if (records.avatar) {
+      const avatar = records.avatar
+      if (avatar) {
+        if (avatar.startsWith('ipfs://')) {
+          return { avatar: `https://ipfs.io/ipfs/${avatar.slice(7)}`, address }
+        } else return { avatar, address }
+      }
+    } else {
+      return {
+        emoji: addressHashedEmoji(address),
+        color: colors[addressHashedColorIndex(address)],
+        address: accountAddress
+      }
+    }
+  }, [accountAddress, address, records.avatar])
 
   return (
     <>
@@ -137,7 +147,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcPr
             <Pill onClick={() => setExpandedState(!isExpanded)}>
               <EthAddress
                 profileIcon={
-                  (records?.avatar as string) ||
+                  avatar ||
                   (() => (
                     <EmojiIcon $bgColor={color} role="img">
                       {emoji}

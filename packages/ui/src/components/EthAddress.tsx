@@ -39,6 +39,7 @@ const ProfileIcon = styled.img`
   height: 1.5rem;
   width: 1.5rem;
   border: 50%;
+  border-radius: 50%;
   margin-right: 6px;
 `
 
@@ -52,7 +53,7 @@ export const EthAddress = ({
   classNames,
   ...props
 }: EthAddressProps) => {
-  shorten = shorten === undefined ? true : shorten
+  shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten
 
   return (
     <Container {...props} className={classNames?.container}>
