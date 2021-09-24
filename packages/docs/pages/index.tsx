@@ -3,21 +3,23 @@ import {
   etherscanFetcher,
   withWeb3React,
   chainIdToAlias,
-  chainIDToToken,
-  chainIDToExplorer,
-  Profile,
   useSignMessage,
   usePendingTx,
   useWeb3State,
   AccountInfo,
   NetworkSelect,
-  TxHistory
+  TxHistory,
+  walletConnectRPCs,
+  Profile
 } from '@rainbowkit/core'
 import styles from '../styles/landing.module.css'
 import { ChainProvider } from 'chain-provider'
 import { InfuraWebSocketProvider } from '@ethersproject/providers'
+import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
+import { matcha } from '../lib/matcha'
+import { Contract } from '@ethersproject/contracts'
 
-const mainnetProvider = new InfuraWebSocketProvider('homestead', '0c8c992691dc4bfe97b4365a27fb2ce4')
+const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
@@ -25,8 +27,6 @@ const Index = () => {
   const [fromBlock, setFromBlock] = useState(0)
 
   const [explorer, setExplorer] = useState<ChainProvider>()
-
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
   const txes = usePendingTx({ provider })
 
@@ -54,7 +54,17 @@ const Index = () => {
           copyAddress
           modalOptions={{
             chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
-            wallets: ['metamask', 'coinbase'],
+            wallets: [
+              'metamask',
+              'coinbase',
+              {
+                name: 'rainbow',
+                connectorName: 'walletconnect',
+                options: {
+                  rpc: walletConnectRPCs
+                } as WalletConnectConnectorArguments
+              }
+            ],
             terms: (
               <>
                 By connecting, you acknowledge that you’ve read and agree to the{' '}
@@ -114,20 +124,15 @@ const Index = () => {
               </button>
               <button
                 className={styles.button}
-                onClick={async () => {
-                  if (provider) {
-                    const tx = await provider.send('eth_sendTransaction', [
-                      {
-                        from: address,
-                        to: address,
-                        value: '0x0'
-                      }
-                    ])
-                    alert(`Success! View on explorer: ${chainIDToExplorer(chainId).url}/tx/${tx}`)
+                onClick={() => {
+                  if (chainId === 137 || chainId === 1) {
+                    matcha(chainId, provider, address).then((obj) => {
+                      console.log(obj)
+                    })
                   }
                 }}
               >
-                Send 0 {symbol} to yourself
+                {chainId === 137 || chainId === 1 ? 'Swap 10 USDT to 10 USDC' : 'Switch to Mainnet or Polygon'}
               </button>
             </div>
             {fromBlock && chainId === 1 && (

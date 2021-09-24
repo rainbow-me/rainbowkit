@@ -1,10 +1,8 @@
 import React from 'react'
-import { isAddress, shortenAddress, chainIDToToken, toSignificant } from '@rainbowkit/utils'
+import { isAddress, shortenAddress } from '@rainbowkit/utils'
 import { BaseProvider } from '@ethersproject/providers'
-import { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { styled } from '@linaria/react'
-import { useSignificantBalance } from '@rainbowkit/hooks/src'
 
 export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string

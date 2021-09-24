@@ -1,8 +1,8 @@
 import { getWalletInfo } from '@rainbowkit/utils'
 import { useEffect, useState } from 'react'
 
-export const useWalletInfo = (initialValue?: { name: string; logoURI: string }) => {
-  const [info, set] = useState(initialValue || { name: '', logoURI: '' })
+export const useWalletInfo = (initialValue: { name: string; logoURI: string } = { name: '', logoURI: '' }) => {
+  const [info, set] = useState(initialValue)
 
   useEffect(() => {
     const listener = () => {
@@ -11,9 +11,9 @@ export const useWalletInfo = (initialValue?: { name: string; logoURI: string }) 
       if (lastUsedWallet) set(getWalletInfo(lastUsedWallet))
     }
 
-    window.addEventListener('storage', listener)
-
     listener()
+
+    window.addEventListener('storage', listener)
 
     return () => window.removeEventListener('storage', listener)
   }, [])

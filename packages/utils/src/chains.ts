@@ -15,6 +15,30 @@ export type Chain = {
   parent?: { chain: string; type: string }
 }
 
+export enum ChainId {
+  MAINNET = 1,
+  OPTIMISM = 10,
+  ARBITRUM = 42161,
+  BSC = 56,
+  POLYGON = 137,
+  XDAI = 100,
+  AVAX = 43114,
+  FUSE = 122,
+  ECO = 128,
+  FANTOM = 250,
+  AOX = 200,
+  KLAYTN = 8217,
+  CELO = 42220,
+  OKEX = 66,
+  TOMO = 88,
+  CALLISTO = 820,
+  CLOVER = 1024,
+  EDGE = 2021,
+  NEAR = 1313161554,
+  ROPSTEN = 3,
+  RINKEBY = 4
+}
+
 export const chains: Chain[] = [
   {
     name: 'Ethereum',
@@ -111,7 +135,7 @@ export const chains: Chain[] = [
     logoURL: 'https://bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq.ipfs.dweb.link'
   },
   {
-    name: 'xDAI Chain',
+    name: 'xDAI',
     chain: 'XDAI',
     network: 'mainnet',
     rpc: [

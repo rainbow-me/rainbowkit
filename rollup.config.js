@@ -1,6 +1,5 @@
 import ts from '@rollup/plugin-typescript'
-import { terser } from 'rollup-plugin-terser'
-import filesize from 'rollup-plugin-filesize'
+// import filesize from 'rollup-plugin-filesize'
 
 export default {
   input: 'src/index.ts',
@@ -10,6 +9,6 @@ export default {
       format: 'esm'
     }
   ],
-  plugins: [ts({ include: ['./src/**/*.{ts,tsx}', './*.d.ts'] }), terser({ mangle: false }), filesize()],
+  plugins: [ts({ include: ['./src/**/*.{ts,tsx}', './*.d.ts'] }) /* terser({ mangle: false }), filesize() */],
   external: ['react', '@web3-react/core', '@ethersproject/providers']
 }

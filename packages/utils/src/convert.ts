@@ -11,6 +11,9 @@ export const connectorByWallet = (name: string) => {
       return 'Frame'
     case 'torus':
       return 'Torus'
+    case 'walletconnect':
+    case 'rainbow':
+      return 'WalletConnect'
   }
 }
 
@@ -22,6 +25,8 @@ export const walletByConnector = (connector: string) => {
       return 'coinbase'
     case 'TorusConnector':
       return 'torus'
+    case 'WalletConnectConnector':
+      return 'walletconnect'
   }
 }
 

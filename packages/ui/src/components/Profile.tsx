@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { styled } from '@linaria/react'
 import { useWalletModal } from '@rainbowkit/modal'
 import type { UseWalletModalOptions } from '@rainbowkit/modal'
-import { useState } from 'react'
 import { EthAddress } from './EthAddress'
-import { useENS, useWalletInfo, useSignificantBalance } from '@rainbowkit/hooks'
-import { useMemo } from 'react'
+import { useENS, useSignificantBalance, useWalletInfo } from '@rainbowkit/hooks'
 import { addressHashedColorIndex, addressHashedEmoji, chainIDToToken, colors } from '@rainbowkit/utils'
 import { CopyAddressButton } from './CopyAddressButton'
-import { JsonRpcProvider } from '@ethersproject/providers'
+import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
 
 const Container = styled.div`
   position: relative;
@@ -102,15 +100,43 @@ export interface ProfileProps {
   modalOptions: UseWalletModalOptions
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
   rpcProvider?: JsonRpcProvider
+  ipfsGatewayUrl?: string
 }
 
-export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcProvider }: ProfileProps) => {
-  const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
+const SelectedWalletWithBalance = ({
+  provider,
+  accountAddress,
+  chainId
+}: {
+  provider: BaseProvider
+  accountAddress: string
+  chainId: number
+}) => {
+  const bal = useSignificantBalance({ provider, address: accountAddress })
+
+  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
   const { logoURI, name } = useWalletInfo()
 
+  return (
+    <li>
+      {bal.slice(0, 5)} {symbol}
+      {logoURI && <img src={logoURI} width={32} height={32} alt={name} />}
+    </li>
+  )
+}
+
+export const Profile = ({
+  modalOptions,
+  copyAddress: CopyAddressComponent,
+  rpcProvider,
+  ipfsGatewayUrl = 'ipfs.infura-ipfs.io'
+}: ProfileProps) => {
+  const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
+
   const { records, domain } = useENS({
-    provider: rpcProvider,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    provider: rpcProvider || provider!,
     domain: accountAddress,
     fetchOptions: { cache: 'force-cache' }
   })
@@ -119,16 +145,12 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcPr
 
   const [isExpanded, setExpandedState] = useState(false)
 
-  const bal = useSignificantBalance({ provider, address: accountAddress })
-
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
-
   const { avatar, emoji, color } = useMemo(() => {
     if (records.avatar) {
       const avatar = records.avatar
       if (avatar) {
         if (avatar.startsWith('ipfs://')) {
-          return { avatar: `https://ipfs.io/ipfs/${avatar.slice(7)}`, address }
+          return { avatar: `https://${avatar.slice(7)}.${ipfsGatewayUrl}`, address }
         } else return { avatar, address }
       }
     } else {
@@ -160,10 +182,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent, rpcPr
             </Pill>
             {isExpanded && (
               <Menu>
-                <li>
-                  {bal.slice(0, 5)} {symbol}
-                  <img src={logoURI} width={32} height={32} alt={name} />
-                </li>
+                <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
                 <li>
                   {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
                     <CopyAddressButton {...{ address }} />

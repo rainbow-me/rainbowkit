@@ -17,15 +17,20 @@ export const importConnector = async (mod: string): Promise<any> => {
 /**
  * Imports and creates a connector with given options
  */
-export const createConnector = async ({ name, options, chains }: Wallet & { chains?: (string | number)[] }) => {
-  const connectorName = connectorByWallet(name)
+export const createConnector = async ({
+  name,
+  options,
+  chains,
+  connectorName
+}: Wallet & { chains?: (string | number)[] }) => {
+  connectorName = connectorName || connectorByWallet(name)
 
   assert.notEqual(connectorName, undefined, `Could not find connector for ${name}`)
 
   const Connector = await importConnector(connectorName)
   const instance = new Connector({
     ...options,
-    supportedChainIds: chains.map((chain) => (typeof chain === 'string' ? chainNametoID(chain) : chain))
+    supportedChainIds: chains?.map((chain) => (typeof chain === 'string' ? chainNametoID(chain) : chain))
   }) as AbstractConnector
 
   return { instance, name }

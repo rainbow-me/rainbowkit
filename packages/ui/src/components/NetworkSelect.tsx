@@ -25,21 +25,21 @@ const Select = styled.div`
 
 type ListProps = { isExpanded: boolean; className: string }
 
-const List = styled.div`
+const List = styled.div<ListProps>`
   position: absolute;
   left: 0;
   width: 100%;
   overflow-y: auto;
   max-height: calc(4 * 52px);
   padding-bottom: 1rem;
-  display: ${(props: ListProps) => (props.isExpanded ? 'block' : 'none')};
+  display: ${(props) => (props.isExpanded ? 'block' : 'none')};
   z-index: -1;
   background: var(--bg-2);
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   top: 40px;
   padding-top: 20px;
-` as React.ComponentType<ListProps>
+`
 
 const Option = styled.div`
   padding: 0.5rem 0.8rem;
