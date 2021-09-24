@@ -1,23 +1,20 @@
-.main {
+import { css } from '@linaria/core'
+import { styled } from '@linaria/react'
+
+export const Inline = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const Main = styled.main`
   margin: 0 auto;
   max-width: 80vw;
   display: grid;
   gap: 2rem;
   width: max-content;
-}
+`
 
-.header {
-  padding-top: 4vw;
-  padding-bottom: 4vw;
-}
-
-.header h1 {
-  font-weight: 900;
-  font-size: calc(4rem + 2vw);
-}
-
-.button,
-.networkSelectCurrent {
+export const Button = css`
   padding: 0.6rem 1.2rem;
   background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
   border-radius: 15px;
@@ -28,9 +25,9 @@
   font-size: 1.25rem;
   z-index: 20;
   height: 54px;
-}
+`
 
-.nav {
+export const Nav = styled.nav`
   padding: 1rem;
   position: sticky;
   top: 0;
@@ -40,17 +37,21 @@
   flex-direction: row;
   justify-content: flex-end;
   z-index: 5;
-}
 
-.nav > * {
-  margin-right: 1.25rem;
-}
+  > * {
+    margin-right: 1.25rem;
+  }
+`
 
-.icon {
+export const Header = styled.header`
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+  h1 {
+    font-weight: 900;
+    font-size: calc(4rem + 2vw);
+  }
+`
+
+export const Icon = css`
   height: 1.25rem;
-}
-
-.inline {
-  display: flex;
-  justify-content: space-between;
-}
+`

@@ -17,7 +17,7 @@ import { ChainProvider } from 'chain-provider'
 import { InfuraWebSocketProvider } from '@ethersproject/providers'
 import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
 import { matcha } from '../lib/matcha'
-import { Contract } from '@ethersproject/contracts'
+import { Nav, Main, Inline, Button, Header, Icon } from '../components/layout'
 
 const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
@@ -48,7 +48,7 @@ const Index = () => {
 
   return (
     <>
-      <nav className={styles.nav}>
+      <Nav>
         <Profile
           rpcProvider={mainnetProvider}
           copyAddress
@@ -77,15 +77,13 @@ const Index = () => {
           {...{ provider, chainId }}
           chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan']}
           classNames={{
-            current: styles.networkSelectCurrent,
-            list: styles.networkSelectList,
-            option: styles.networkSelectOption,
-            icon: styles.icon
+            current: Button,
+            icon: Icon
           }}
         />
-      </nav>
+      </Nav>
 
-      <main className={styles.main}>
+      <Main>
         <style jsx global>
           {`
             body {
@@ -104,16 +102,16 @@ const Index = () => {
           `}
         </style>
 
-        <header className={styles.header}>
+        <Header>
           <h1>RainbowKit</h1>
           <p>The ultimate Dapp framework.</p>
-        </header>
+        </Header>
         {isConnected && (
           <>
             <AccountInfo {...{ provider, address }} copyAddress />
-            <div className={styles.inline}>
+            <Inline>
               <button
-                className={styles.button}
+                className={Button}
                 onClick={() =>
                   sign()
                     .then((sig) => alert(`Signature: ${sig}`))
@@ -123,7 +121,7 @@ const Index = () => {
                 Sign message
               </button>
               <button
-                className={styles.button}
+                className={Button}
                 onClick={() => {
                   if (chainId === 137 || chainId === 1) {
                     matcha(chainId, provider, address).then((obj) => {
@@ -134,7 +132,7 @@ const Index = () => {
               >
                 {chainId === 137 || chainId === 1 ? 'Swap 10 USDT to 10 USDC' : 'Switch to Mainnet or Polygon'}
               </button>
-            </div>
+            </Inline>
             {fromBlock && chainId === 1 && (
               <>
                 <TxHistory
@@ -148,7 +146,7 @@ const Index = () => {
             {JSON.stringify(txes, null, 2)}
           </>
         )}
-      </main>
+      </Main>
     </>
   )
 }

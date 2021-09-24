@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+const withLinaria = require('next-linaria')
+
 const withNextra = require('nextra')({
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   theme: 'nextra-theme-docs',
@@ -29,4 +31,4 @@ const withNextra = require('nextra')({
     return config
   }
 })
-module.exports = withNextra()
+module.exports = withLinaria(withNextra())

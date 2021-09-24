@@ -1,8 +1,15 @@
+import { css } from '@linaria/core'
 import { useConnectOnMount } from '@rainbowkit/hooks'
 import { useWeb3React } from '@web3-react/core'
 import React from 'react'
-import styles from '../styles/button.module.css'
 import { injected } from './badge'
+
+const button = css`
+  border: 3px solid black;
+  padding: 0.4rem;
+  margin: 20px 0;
+  font-weight: bold;
+`
 
 export const Activate = () => {
   const { activate } = useWeb3React()
@@ -10,7 +17,7 @@ export const Activate = () => {
   useConnectOnMount(injected, true)
 
   return (
-    <button className={styles.button} onClick={() => activate(injected)}>
+    <button className={button} onClick={() => activate(injected)}>
       Activate connector
     </button>
   )
