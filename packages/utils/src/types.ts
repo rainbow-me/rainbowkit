@@ -1,4 +1,4 @@
-export type Wallet = { name: string; hidden?: boolean; options?: Record<string, any> }
+export type Wallet = { name: string; hidden?: boolean; options?: Record<string, any>; connectorName?: string }
 
 export type TxHistoryFetcher<Tx extends any = any, P extends any = any, O extends any = any> = (opts: {
   address: string

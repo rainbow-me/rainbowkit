@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
+    "@ethersproject/contracts": "^5.4.1",
+    "@ethersproject/transactions": "^5.4.0",
     "@ethersproject/units": "^5.4.0",
     "@rainbowkit/core": "workspace:*",
     "@rainbowkit/hooks": "workspace:^0.0.0",
@@ -12,6 +14,7 @@
     "@web3-react/frame-connector": "^6.0.9",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/torus-connector": "^6.1.9",
+    "@web3-react/walletconnect-connector": "^6.2.4",
     "@web3-react/walletlink-connector": "^6.2.5",
     "chain-provider": "^0.0.3",
     "framer-motion": "^4.1.17",
@@ -31,6 +34,6 @@
     "start": "NODE_ENV=production next start -p 3000"
   },
   "devDependencies": {
-    "core-js": "^3.17.3"
+    "core-js": "^3.18.0"
   }
 }

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import { isAuthorized } from '@rainbowkit/utils'
 import type { Wallet } from '@rainbowkit/utils'
-import type { ModalProps, UseWalletModalOptions } from './types'
+import type { UseWalletModalOptions } from './types'
 import { createConnector } from './utils'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 
@@ -14,8 +14,8 @@ export type WalletInterface = Omit<
   'activate' | 'deactivate' | 'library' | 'account' | 'active'
 > & {
   Modal?: () => JSX.Element
-  provider: Web3Provider
-  address: string
+  provider: Web3Provider | undefined
+  address: string | undefined | null
   state: {
     connect: () => void
     disconnect: () => void
@@ -88,8 +88,8 @@ export const useWalletModal = ({
   }
 
   const activateConnector = async (c: Wallet) => {
-    localStorage.setItem('rk-last-wallet', c.name)
-    await connectToWallet(c.name)
+    localStorage.setItem('rk-last-wallet', c.connectorName || c.name)
+    await connectToWallet(c.connectorName || c.name)
     return setConnecting(false)
   }
 

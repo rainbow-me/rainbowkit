@@ -17,9 +17,8 @@ export const useSignificantBalance = ({
   const set = (v: BigNumber) => setBal(toSignificant(v))
 
   useEffect(() => {
-    if (initialValue) {
-      set(initialValue)
-    } else if (provider) {
+    if (initialValue) set(initialValue)
+    else if (provider) {
       provider.getBalance(address).then((b: BigNumber) => {
         set(b)
       })

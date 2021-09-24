@@ -6,8 +6,6 @@ import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from './Tx'
 import loadingIcon from '../../assets/loading.svg'
 import { styled } from '@linaria/react'
-import { css } from '@linaria/core'
-import { useWeb3State } from '@rainbowkit/hooks/src'
 
 export interface TxHistoryProps {
   txComponent?: (props: TxProps) => JSX.Element
@@ -78,7 +76,7 @@ export const TxHistory = ({
   return (
     <div>
       {txes?.map((tx) => (
-        <Tx key={tx.hash} {...tx} chainId={chainId} />
+        <Tx key={tx.hash} {...tx} chainId={chainId} status={tx.status} />
       ))}
     </div>
   )

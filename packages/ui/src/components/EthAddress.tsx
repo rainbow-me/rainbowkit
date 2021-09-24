@@ -1,10 +1,8 @@
 import React from 'react'
-import { isAddress, shortenAddress, chainIDToToken, toSignificant } from '@rainbowkit/utils'
+import { isAddress, shortenAddress } from '@rainbowkit/utils'
 import { BaseProvider } from '@ethersproject/providers'
-import { useState, useEffect } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { styled } from '@linaria/react'
-import { useSignificantBalance } from '@rainbowkit/hooks/src'
 
 export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string
@@ -39,6 +37,7 @@ const ProfileIcon = styled.img`
   height: 1.5rem;
   width: 1.5rem;
   border: 50%;
+  border-radius: 50%;
   margin-right: 6px;
 `
 
@@ -52,7 +51,7 @@ export const EthAddress = ({
   classNames,
   ...props
 }: EthAddressProps) => {
-  shorten = shorten === undefined ? true : shorten
+  shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten
 
   return (
     <Container {...props} className={classNames?.container}>

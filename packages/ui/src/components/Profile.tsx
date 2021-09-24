@@ -1,17 +1,12 @@
-import React from 'react'
+import React, { useMemo, useState } from 'react'
 import { styled } from '@linaria/react'
 import { useWalletModal } from '@rainbowkit/modal'
 import type { UseWalletModalOptions } from '@rainbowkit/modal'
-import { useState } from 'react'
 import { EthAddress } from './EthAddress'
 import { useENS, useSignificantBalance, useWalletInfo } from '@rainbowkit/hooks'
-import { useMemo } from 'react'
 import { addressHashedColorIndex, addressHashedEmoji, chainIDToToken, colors } from '@rainbowkit/utils'
 import { CopyAddressButton } from './CopyAddressButton'
-
-const Button = styled.button`
-  font-weight: 800;
-`
+import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
 
 const Container = styled.div`
   position: relative;
@@ -30,6 +25,8 @@ const Pill = styled.div`
   height: 54px;
   display: flex;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 `
 
 const Menu = styled.ul`
@@ -102,25 +99,68 @@ const CloseIcon = () => {
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  rpcProvider?: JsonRpcProvider
+  ipfsGatewayUrl?: string
 }
 
-export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: ProfileProps) => {
-  const { state, Modal, provider, address, chainId } = useWalletModal(modalOptions)
+const SelectedWalletWithBalance = ({
+  provider,
+  accountAddress,
+  chainId
+}: {
+  provider: BaseProvider
+  accountAddress: string
+  chainId: number
+}) => {
+  const bal = useSignificantBalance({ provider, address: accountAddress })
+
+  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
 
   const { logoURI, name } = useWalletInfo()
 
-  const { records } = useENS({ provider, domain: address, fetchOptions: { cache: 'force-cache' } })
-
-  const { emoji, color } = useMemo(
-    () => ({ emoji: addressHashedEmoji(address), color: colors[addressHashedColorIndex(address)] }),
-    [address]
+  return (
+    <li>
+      {bal.slice(0, 5)} {symbol}
+      {logoURI && <img src={logoURI} width={32} height={32} alt={name} />}
+    </li>
   )
+}
+
+export const Profile = ({
+  modalOptions,
+  copyAddress: CopyAddressComponent,
+  rpcProvider,
+  ipfsGatewayUrl = 'ipfs.infura-ipfs.io'
+}: ProfileProps) => {
+  const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
+
+  const { records, domain } = useENS({
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    provider: rpcProvider || provider!,
+    domain: accountAddress,
+    fetchOptions: { cache: 'force-cache' }
+  })
+
+  const address = useMemo(() => domain || accountAddress, [domain, accountAddress])
 
   const [isExpanded, setExpandedState] = useState(false)
 
-  const bal = useSignificantBalance({ provider, address })
-
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
+  const { avatar, emoji, color } = useMemo(() => {
+    if (records.avatar) {
+      const avatar = records.avatar
+      if (avatar) {
+        if (avatar.startsWith('ipfs://')) {
+          return { avatar: `https://${avatar.slice(7)}.${ipfsGatewayUrl}`, address }
+        } else return { avatar, address }
+      }
+    } else {
+      return {
+        emoji: addressHashedEmoji(address),
+        color: colors[addressHashedColorIndex(address)],
+        address
+      }
+    }
+  }, [address, records.avatar])
 
   return (
     <>
@@ -130,7 +170,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
             <Pill onClick={() => setExpandedState(!isExpanded)}>
               <EthAddress
                 profileIcon={
-                  (records?.avatar as string) ||
+                  avatar ||
                   (() => (
                     <EmojiIcon $bgColor={color} role="img">
                       {emoji}
@@ -142,10 +182,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
             </Pill>
             {isExpanded && (
               <Menu>
-                <li>
-                  {bal.slice(0, 5)} {symbol}{' '}
-                  {logoURI !== '' && <img height={32} width={32} src={logoURI} alt={name} title={name} />}
-                </li>
+                <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
                 <li>
                   {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
                     <CopyAddressButton {...{ address }} />
@@ -163,7 +200,7 @@ export const Profile = ({ modalOptions, copyAddress: CopyAddressComponent }: Pro
           </>
         ) : (
           <>
-            <Button onClick={() => state.connect()}>Connect</Button>
+            <Pill onClick={() => state.connect()}>Connect</Pill>
             {state.isConnecting && <Modal />}
           </>
         )}

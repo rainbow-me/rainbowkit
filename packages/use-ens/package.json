@@ -1,7 +1,7 @@
 {
   "name": "use-ens",
-  "version": "0.0.0-wip.11",
-  "description": "A React hook to fetch ENS data",
+  "version": "0.0.0-wip.12",
+  "description": "A React hook to fetch ENS records from a domain.",
   "files": [
     "dist"
   ],
@@ -27,7 +27,7 @@
   "author": "v1rtl",
   "license": "UNLICENSED",
   "dependencies": {
-    "get-ens": "^1.0.2"
+    "get-ens": "^2.0.1"
   },
   "peerDependencies": {
     "react": ">=17",

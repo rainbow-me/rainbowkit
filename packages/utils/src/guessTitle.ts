@@ -9,7 +9,7 @@ export const guessTitle = ({
   to,
   chainId = 1,
   value
-}: Partial<{ from: string; to: string; data: string; value: BigNumber; chainId: number }>) => {
+}: Partial<{ data: string; chainId: number }> & { from: string; to: string; value: BigNumber }) => {
   if (data === '0x') {
     if (from === to) return `Cancel transaction`
     else

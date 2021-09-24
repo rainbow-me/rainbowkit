@@ -4,6 +4,8 @@ const withNextra = require('nextra')({
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.js',
+
+  esmExternals: 'loose',
   redirects: async () => {
     return [
       {

@@ -1,11 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import { AccountInfo, NetworkSelect, TxHistory, Profile } from '@rainbowkit/ui'
-import { etherscanFetcher, withWeb3React, chainIdToName } from '@rainbowkit/utils'
+import React, { useState, useEffect, useMemo } from 'react'
+import {
+  etherscanFetcher,
+  withWeb3React,
+  chainIdToAlias,
+  useSignMessage,
+  usePendingTx,
+  useWeb3State,
+  AccountInfo,
+  NetworkSelect,
+  TxHistory,
+  walletConnectRPCs,
+  Profile
+} from '@rainbowkit/core'
 import styles from '../styles/landing.module.css'
-import { useWeb3State } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
-import { useMemo } from 'react'
-import { chainIDToToken } from '@rainbowkit/core'
+import { InfuraWebSocketProvider } from '@ethersproject/providers'
+import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
+import { matcha } from '../lib/matcha'
+import { Contract } from '@ethersproject/contracts'
+
+const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
@@ -14,13 +28,15 @@ const Index = () => {
 
   const [explorer, setExplorer] = useState<ChainProvider>()
 
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
+  const txes = usePendingTx({ provider })
+
+  const sign = useSignMessage({ provider, message: 'Hello' })
 
   useEffect(() => {
+    if (chainId) setExplorer(new ChainProvider(chainIdToAlias(chainId)))
     if (provider) {
       provider.getBlockNumber().then((block) => {
         setFromBlock(block - 500)
-        provider.getNetwork().then((chainId) => setExplorer(new ChainProvider(chainIdToName(chainId))))
       })
       provider.on('chainChanged', () => {
         provider.getBlockNumber().then((block) => {
@@ -28,16 +44,27 @@ const Index = () => {
         })
       })
     }
-  }, [provider])
+  }, [provider, chainId])
 
   return (
     <>
       <nav className={styles.nav}>
         <Profile
+          rpcProvider={mainnetProvider}
           copyAddress
           modalOptions={{
             chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
-            wallets: ['metamask', 'coinbase'],
+            wallets: [
+              'metamask',
+              'coinbase',
+              {
+                name: 'rainbow',
+                connectorName: 'walletconnect',
+                options: {
+                  rpc: walletConnectRPCs
+                } as WalletConnectConnectorArguments
+              }
+            ],
             terms: (
               <>
                 By connecting, you acknowledge that you’ve read and agree to the{' '}
@@ -88,9 +115,7 @@ const Index = () => {
               <button
                 className={styles.button}
                 onClick={() =>
-                  provider
-                    .getSigner()
-                    .signMessage('Hello World')
+                  sign()
                     .then((sig) => alert(`Signature: ${sig}`))
                     .catch((error) => alert(error.message))
                 }
@@ -99,20 +124,15 @@ const Index = () => {
               </button>
               <button
                 className={styles.button}
-                onClick={async () => {
-                  if (provider) {
-                    const res = await provider.send('eth_sendTransaction', [
-                      {
-                        from: address,
-                        to: address,
-                        value: '0x0'
-                      }
-                    ])
-                    console.log(res)
+                onClick={() => {
+                  if (chainId === 137 || chainId === 1) {
+                    matcha(chainId, provider, address).then((obj) => {
+                      console.log(obj)
+                    })
                   }
                 }}
               >
-                Send 0 {symbol} to yourself
+                {chainId === 137 || chainId === 1 ? 'Swap 10 USDT to 10 USDC' : 'Switch to Mainnet or Polygon'}
               </button>
             </div>
             {fromBlock && chainId === 1 && (
@@ -125,6 +145,7 @@ const Index = () => {
                 />
               </>
             )}
+            {JSON.stringify(txes, null, 2)}
           </>
         )}
       </main>
