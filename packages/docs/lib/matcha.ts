@@ -4,7 +4,6 @@ import { UnsignedTransaction } from '@ethersproject/transactions'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { ABI } from './abi'
-import { parseEther } from '@ethersproject/units'
 
 export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
   const getSwapUrl = (url: string) =>
@@ -28,11 +27,20 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
 
   const address = await signer.getAddress()
 
-  // const abi = new Contract(quote.buyTokenAddress, ABI, signer)
+  const abi = new Contract(quote.buyTokenAddress, ABI, signer)
 
-  // const allowed = await abi.approve(address, quote.buyTokenAddress)
+  try {
+    const allowance = (await abi.allowance(address, address)).toString()
 
-  // console.log(parseEther(allowed))
+    if (allowance === '0') {
+      console.log('Swap is not allowed')
+
+      const tx = await abi.approve(address, 1_000_000)
+      console.log(tx)
+    }
+  } catch (e) {
+    console.error(e)
+  }
 
   try {
     const tx = await signer.sendTransaction({
