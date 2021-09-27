@@ -124,9 +124,7 @@ const Index = () => {
                 className={Button}
                 onClick={() => {
                   if (chainId === 137 || chainId === 1) {
-                    matcha(chainId, provider, address).then((obj) => {
-                      console.log(obj)
-                    })
+                    matcha(chainId, provider)
                   }
                 }}
               >

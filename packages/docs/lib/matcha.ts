@@ -1,86 +1,12 @@
 import { ChainId } from '@rainbowkit/utils'
-import { BaseProvider, Web3Provider } from '@ethersproject/providers'
-import { serialize as serializeTransaction, UnsignedTransaction } from '@ethersproject/transactions'
+import { Web3Provider } from '@ethersproject/providers'
+import { UnsignedTransaction } from '@ethersproject/transactions'
+import { BigNumber } from '@ethersproject/bignumber'
+import { Contract } from '@ethersproject/contracts'
+import { ABI } from './abi'
+import { parseEther } from '@ethersproject/units'
 
-const USDC = {
-  [ChainId.MAINNET]: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
-  [ChainId.POLYGON]: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174'
-}
-
-const USDC_ABI = [
-  {
-    constant: false,
-    inputs: [{ name: 'newImplementation', type: 'address' }],
-    name: 'upgradeTo',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [
-      { name: 'newImplementation', type: 'address' },
-      { name: 'data', type: 'bytes' }
-    ],
-    name: 'upgradeToAndCall',
-    outputs: [],
-    payable: true,
-    stateMutability: 'payable',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'implementation',
-    outputs: [{ name: '', type: 'address' }],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    constant: false,
-    inputs: [{ name: 'newAdmin', type: 'address' }],
-    name: 'changeAdmin',
-    outputs: [],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: 'admin',
-    outputs: [{ name: '', type: 'address' }],
-    payable: false,
-    stateMutability: 'view',
-    type: 'function'
-  },
-  {
-    inputs: [{ name: '_implementation', type: 'address' }],
-    payable: false,
-    stateMutability: 'nonpayable',
-    type: 'constructor'
-  },
-  { payable: true, stateMutability: 'payable', type: 'fallback' },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: false, name: 'previousAdmin', type: 'address' },
-      { indexed: false, name: 'newAdmin', type: 'address' }
-    ],
-    name: 'AdminChanged',
-    type: 'event'
-  },
-  {
-    anonymous: false,
-    inputs: [{ indexed: false, name: 'implementation', type: 'address' }],
-    name: 'Upgraded',
-    type: 'event'
-  }
-]
-
-export const matcha = async (chainId: ChainId, provider: Web3Provider, address: string) => {
+export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
   const getSwapUrl = (url: string) =>
     `https://${url}/swap/v1/quote?buyAmount=${1 * 1_000_000}&buyToken=USDT&sellToken=USDC`
 
@@ -88,14 +14,35 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider, address: 
 
   switch (chainId) {
     case ChainId.POLYGON:
-      url = getSwapUrl('polygon-cached-api.matcha.0x.org')
+      url = getSwapUrl('polygon.api.0x.org')
       break
     case ChainId.MAINNET:
       url = getSwapUrl('api.0x.org')
       break
   }
+
   const res = await fetch(url)
-  const quote: UnsignedTransaction = await res.json()
+  const quote = await res.json()
 
   const signer = provider.getSigner()
+
+  const address = await signer.getAddress()
+
+  // const abi = new Contract(quote.buyTokenAddress, ABI, signer)
+
+  // const allowed = await abi.approve(address, quote.buyTokenAddress)
+
+  // console.log(parseEther(allowed))
+
+  try {
+    const tx = await signer.sendTransaction({
+      ...quote,
+      value: BigNumber.from(quote.value)
+    })
+
+    const receipt = await provider.waitForTransaction(tx.hash)
+    return receipt
+  } catch (e) {
+    alert(`Failed to swap, ${e.data.message}`)
+  }
 }
