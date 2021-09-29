@@ -28,7 +28,19 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
 
   const abi = new Contract(quote.sellTokenAddress, ABI, signer)
 
-  console.log(quote.to)
+  try {
+    const allowance = (await abi.allowance(address, quote.allowanceTarget)).toString()
+
+    if (allowance >= quote.sellAmount) {
+      console.log('Swap is not allowed')
+
+      const tx = await abi.approve(quote.allowanceTarget, BigNumber.from(quote.sellAmount))
+
+      console.log(tx)
+    }
+  } catch (e) {
+    console.error(e)
+  }
 
   try {
     const tx = await signer.sendTransaction({
