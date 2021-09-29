@@ -10,7 +10,7 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
   const address = await signer.getAddress()
 
   const getSwapUrl = (url: string) =>
-    `https://${url}/swap/v1/quote?buyAmount=${1 * 1_000_000}&buyToken=USDT&sellToken=USDC`
+    `https://${url}/swap/v1/quote?sellAmount=${1 * 1_000_000}&buyToken=USDT&sellToken=USDC`
 
   let url: string
 
@@ -28,21 +28,8 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
 
   const abi = new Contract(quote.sellTokenAddress, ABI, signer)
 
-  try {
-    const allowance = (await abi.allowance(address, quote.allowanceTarget)).toString()
-
-    console.log(`Allowance: ${allowance}`)
-
-    if (allowance === '0') {
-      console.log('Swap is not allowed')
-
-      const tx = await abi.approve(quote.allowanceTarget, BigNumber.from(quote.sellAmount))
-
-      console.log(tx)
-    }
-  } catch (e) {
-    console.error(e)
-  }
+  console.log(quote.buyAmount)
+  console.log(quote.sellAmount)
 
   try {
     const tx = await signer.sendTransaction({
