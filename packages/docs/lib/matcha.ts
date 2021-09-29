@@ -28,13 +28,12 @@ export const matcha = async (chainId: ChainId, provider: Web3Provider) => {
 
   const abi = new Contract(quote.sellTokenAddress, ABI, signer)
 
-  console.log(quote.buyAmount)
-  console.log(quote.sellAmount)
+  console.log(quote.to)
 
   try {
     const tx = await signer.sendTransaction({
-      ...quote,
-      value: BigNumber.from(quote.value)
+      to: quote.allowanceTarget,
+      data: quote.data
     })
 
     const receipt = await provider.waitForTransaction(tx.hash)
