@@ -150,7 +150,7 @@ export const Profile = ({
       const avatar = records.avatar
       if (avatar) {
         if (avatar.startsWith('ipfs://')) {
-          return { avatar: `https://${avatar.slice(7)}.${ipfsGatewayUrl}`, address }
+          return { avatar: `https://${ipfsGatewayUrl}/ipfs/${avatar.slice(7)}`, address }
         } else return { avatar, address }
       }
     } else {
