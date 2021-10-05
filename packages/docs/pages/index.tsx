@@ -15,6 +15,7 @@ import { InfuraWebSocketProvider } from '@ethersproject/providers'
 import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
 import { zrx } from '../lib/zrx'
 import { Nav, Main, Inline, Button, Header, Icon } from '../components/layout'
+import { css } from '@linaria/core'
 
 const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
@@ -70,13 +71,25 @@ const Index = () => {
               </>
             )
           }}
+          classNames={{
+            pill: css`
+              background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
+              color: #ebebeb;
+            `,
+            menu: css`
+              background: #17181c;
+            `
+          }}
         />
         <NetworkSelect
           {...{ provider, chainId }}
           chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan', 'ropsten']}
           classNames={{
             current: Button,
-            icon: Icon
+            icon: Icon,
+            list: css`
+              background-color: #001a1f;
+            `
           }}
         />
       </Nav>

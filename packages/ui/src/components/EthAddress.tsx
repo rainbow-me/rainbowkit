@@ -30,7 +30,6 @@ const Container = styled.div`
 const Address = styled.div`
   font-family: sans-serif;
   font-weight: 800;
-  color: var(--fg);
 `
 
 const ProfileIcon = styled.img`

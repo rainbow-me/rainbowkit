@@ -6,33 +6,49 @@ RainbowKit provides a variety of hooks that makes it easy to access data and per
 
 ## useTxHistory
 
-Fetch transaction history for an etherium `address` with a given `provider` and `fetcher` function with any`options` needed.
+Manage your local dapp transactions.
 
 ```tsx
 import React from 'react'
-import { useTxHistory, logsFetcher, etherscanFetcher } from '@rainbowkit/hooks'
-import { useWeb3React } from '@web3-react/core'
-import { setupProvider } from '@rainbowkit/utils'
-import { EtherscanProvider, TransactionResponse } from '@ethersproject/providers'
+import { useTxHistory } from '@rainbowkit/hooks'
+
+const Index = () => {
+  const { address, chainId, provider } = useWeb3State()
+  const { txes, submit, reset } = useTxHistory({ provider, rememberHistory: true })
+
+  return <TxHistory {...{ chainId, provider, txes, reset }} />
+}
+```
+
+## useExplorerTxHistory
+
+Fetch transaction history from a blokchain explorer (e.g. Etherscan) for an ethereum `address` with a given `provider` and `fetcher` function with any `options` needed.
+
+```tsx
+import React from 'react'
+import { useExplorerTxHistory, useWeb3State } from '@rainbowkit/hooks'
+import { setupProvider, etherscanFetcher } from '@rainbowkit/utils'
+import { ChainProvider } from 'chain-provider'
 import { formatEther } from '@ethersproject/units'
 
 const provider = new EtherscanProvider()
 
 const HistoryExample = () => {
-  const { account: address } = useWeb3React()
+  const { address } = useWeb3State()
 
   const {
     data: txes,
     loading,
     error
-  } = useTxHistory<TransactionResponse>({
-    address,
-    fetcher: logsFetcher,
-    provider,
-    options: {}
+  } = useExplorerTxHistory({
+    address: address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f',
+    fetcher: etherscanFetcher,
+    provider
   })
 
   if (error) return <strong style={{ color: 'red' }}>Error! {error?.message}</strong>
+
+  if (loading) return <p>Loading...</p>
 
   if (data && !loading)
     return (
@@ -46,8 +62,6 @@ const HistoryExample = () => {
         ))}
       </>
     )
-
-  if (loading) return <p>Loading...</p>
 }
 ```
 
@@ -65,10 +79,6 @@ const myFetcher = async ({ provider, address, options = {} }) => {
   return provider.whatever({ ...options })
 }
 
-const logsFetcher: TxHistoryFetcher<Log> = async ({ provider, address, options = {} }) => {
-  return await provider.getLogs({ fromBlock: 0, ...options, address })
-}
-
 const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider> = async ({
   provider,
   address,
@@ -77,8 +87,6 @@ const etherscanFetcher: TxHistoryFetcher<TransactionResponse, EtherscanProvider>
   return await provider.getHistory(address, options.fromBlock, options.toBlock)
 }
 ```
-
-### Example
 
 <History />
 

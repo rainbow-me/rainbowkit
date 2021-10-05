@@ -3,12 +3,12 @@
   "private": true,
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
-    "@ethersproject/bignumber": "^5.4.1",
+    "@ethersproject/bignumber": "^5.4.2",
     "@ethersproject/contracts": "^5.4.1",
     "@ethersproject/transactions": "^5.4.0",
     "@ethersproject/units": "^5.4.0",
-    "@linaria/core": "^3.0.0-beta.4",
-    "@linaria/react": "^3.0.0-beta.7",
+    "@linaria/core": "^3.0.0-beta.13",
+    "@linaria/react": "^3.0.0-beta.13",
     "@rainbowkit/core": "workspace:*",
     "@rainbowkit/hooks": "workspace:^0.0.0",
     "@rainbowkit/modal": "workspace:*",
@@ -39,6 +39,6 @@
     "start": "NODE_ENV=production next start -p 3000"
   },
   "devDependencies": {
-    "core-js": "^3.18.0"
+    "core-js": "^3.18.2"
   }
 }

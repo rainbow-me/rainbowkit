@@ -1,13 +1,47 @@
-import { EthAddress, Tx, ExplorerLink, AccountInfo } from '@rainbowkit/ui'
+import { EthAddress, Tx, TxHistory, ExplorerLink, AccountInfo, Profile } from '@rainbowkit/ui'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 import { TxHistoryExample } from '../../components/txhistory'
 import { SelectNetworkExample } from '../../components/select'
+import { ProfileExample } from '../../components/profile'
 
 # `@rainbowkit/ui`
 
-A wallet Badge for your dapp.
-It displays the users wallet address, their balance, and what method they are connected with (e.g. rainbow, walletconnect, metamask, coinbase, etc).
+Collection of RainbowKit UI components.
+
+## Profile
+
+User badge for your dapp. It displays the users wallet address, their balance, and what method they are connected with (e.g. rainbow, walletconnect, metamask, coinbase, etc).
 Use it to indicate that the user's wallet is connected by replacing your "Connect Wallet" open modal button.
+
+```jsx
+<Profile
+  rpcProvider={mainnetProvider} // explorer provider
+  copyAddress
+  ipfsGatewayUrl="ipfs.io" // IPFS gateway for avatars starting with `ipfs://`
+  modalOptions={{ // same options as useModal
+    chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan', 'ropsten'],
+    wallets: [
+      'metamask',
+      'coinbase',
+      {
+        name: 'rainbow',
+        connectorName: 'walletconnect',
+        options: {
+          rpc: walletConnectRPCs
+        } as WalletConnectConnectorArguments
+      }
+    ],
+    terms: ( // terms of usage shown in the below of a modal
+      <>
+        By connecting, you acknowledge that you’ve read and agree to the{' '}
+        <a>RainbowKit&apos;s Terms of Service.</a>
+      </>
+    )
+  }}
+/>
+```
+
+<ProfileExample />
 
 ## EthAddress
 
@@ -196,14 +230,29 @@ Detect explorer based on chain ID:
 
 ```tsx
 import { TxHistory } from '@rainbowkit/ui'
-import { EtherscanProvider } from '@rainbowkit/ui'
+import { useExplorerTxHistory, useWeb3State } from '@rainbowkit/hooks'
+import { ChainProvider } from 'chain-provider'
 
-const provider = new EtherscanProvider('homestead', 'API_KEY')
+const { address, chainId, provider } = useWeb3State()
+const [latestBlock, setLatestBlock] = useState(12862901)
 
-const TxHistoryExample = () => {
-  const { account: address } = useWeb3React()
+useConnectOnMount(injected, true)
 
-  return <TxHistory address={address} provider={provider} options={{ fromBlock: 12862901 }} />
+const { data: txes } = useExplorerTxHistory({
+  fetcher: etherscanFetcher,
+  provider: new ChainProvider('mainnet'),
+  address,
+  options: {
+    fromBlock: latestBlock
+  }
+})
+
+const App = () => {
+  useEffect(() => {
+    if (provider) provider.getBlockNumber().then((block) => setLatestBlock(block - 100_000))
+  }, [provider])
+
+  return <TxHistory {...{ chainId, txes }} />
 }
 ```
 

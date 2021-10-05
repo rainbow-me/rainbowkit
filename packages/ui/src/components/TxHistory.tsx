@@ -14,13 +14,13 @@ export interface TxHistoryProps {
   }>
   chainId: number
   txes: TransactionWithStatus[]
-  reset: () => void
+  reset?: () => void
 }
 
 export const TxHistory = ({ txes, txComponent: Tx = DefaultTx, chainId, reset }: TxHistoryProps) => {
   return (
     <div>
-      <button onClick={() => reset()}>Clear transactions</button>
+      {reset && <button onClick={() => reset()}>Clear transactions</button>}
       {txes?.map((tx) => (
         <Tx key={tx.hash} {...tx} chainId={chainId} />
       ))}

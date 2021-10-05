@@ -3,6 +3,7 @@ import { NetworkSelect } from '@rainbowkit/ui'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
 import { setupProvider } from '@rainbowkit/utils'
 import { Activate } from './activate'
+import { css } from '@linaria/core'
 
 const Select = () => {
   const { library: provider, chainId } = useWeb3React()
@@ -49,6 +50,11 @@ const Select = () => {
           'arb testnet',
           'near testnet'
         ]}
+        classNames={{
+          list: css`
+            background-color: white;
+          `
+        }}
         provider={provider}
       />
     </>

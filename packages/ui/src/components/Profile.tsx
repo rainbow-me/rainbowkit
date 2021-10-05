@@ -10,18 +10,16 @@ import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
 
 const Container = styled.div`
   position: relative;
+  width: max-content;
 `
 
 const Pill = styled.div`
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
   border-radius: 15px;
   border: 4px solid transparent;
   font-weight: 800;
   line-height: 1;
-  color: #ebebeb;
   font-size: 1.25rem;
-  z-index: 20;
   height: 54px;
   display: flex;
   cursor: pointer;
@@ -30,17 +28,20 @@ const Pill = styled.div`
 `
 
 const Menu = styled.ul`
-  background: #17181c;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   border-radius: 16px;
   position: absolute;
   top: 64px;
   left: 0;
-  width: 100%;
+  margin: 0;
+
   padding: 12.5px 13px;
   img {
     display: inline-block;
+  }
+  li {
+    list-style-type: none;
   }
   li:nth-child(1) {
     margin-bottom: 1rem;
@@ -101,6 +102,11 @@ export interface ProfileProps {
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
   rpcProvider?: JsonRpcProvider
   ipfsGatewayUrl?: string
+  classNames?: Partial<{
+    pill: string
+    menu: string
+    container: string
+  }>
 }
 
 const SelectedWalletWithBalance = ({
@@ -130,7 +136,8 @@ export const Profile = ({
   modalOptions,
   copyAddress: CopyAddressComponent,
   rpcProvider,
-  ipfsGatewayUrl = 'ipfs.infura-ipfs.io'
+  ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
+  classNames
 }: ProfileProps) => {
   const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
 
@@ -163,48 +170,46 @@ export const Profile = ({
   }, [address, records.avatar])
 
   return (
-    <>
-      <Container>
-        {state.isConnected ? (
-          <>
-            <Pill onClick={() => setExpandedState(!isExpanded)}>
-              <EthAddress
-                profileIcon={
-                  avatar ||
-                  (() => (
-                    <EmojiIcon $bgColor={color} role="img">
-                      {emoji}
-                    </EmojiIcon>
-                  ))
-                }
-                {...{ provider, address }}
-              />
-            </Pill>
-            {isExpanded && (
-              <Menu>
-                <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
-                <li>
-                  {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
-                    <CopyAddressButton {...{ address }} />
-                  ) : (
-                    typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
-                  )}
-                </li>
-                <li>
-                  <DisconnectButton onClick={() => state.disconnect()}>
-                    Disconnect <CloseIcon />
-                  </DisconnectButton>
-                </li>
-              </Menu>
-            )}
-          </>
-        ) : (
-          <>
-            <Pill onClick={() => state.connect()}>Connect</Pill>
-            {state.isConnecting && <Modal />}
-          </>
-        )}
-      </Container>
-    </>
+    <Container className={classNames?.container || ''}>
+      {state.isConnected ? (
+        <>
+          <Pill className={classNames?.pill || ''} onClick={() => setExpandedState(!isExpanded)}>
+            <EthAddress
+              profileIcon={
+                avatar ||
+                (() => (
+                  <EmojiIcon $bgColor={color} role="img">
+                    {emoji}
+                  </EmojiIcon>
+                ))
+              }
+              {...{ provider, address }}
+            />
+          </Pill>
+          {isExpanded && (
+            <Menu className={classNames?.menu || ''}>
+              <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
+              <li>
+                {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
+                  <CopyAddressButton {...{ address }} />
+                ) : (
+                  typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
+                )}
+              </li>
+              <li>
+                <DisconnectButton onClick={() => state.disconnect()}>
+                  Disconnect <CloseIcon />
+                </DisconnectButton>
+              </li>
+            </Menu>
+          )}
+        </>
+      ) : (
+        <>
+          <Pill onClick={() => state.connect()}>Connect</Pill>
+          {state.isConnecting && <Modal />}
+        </>
+      )}
+    </Container>
   )
 }

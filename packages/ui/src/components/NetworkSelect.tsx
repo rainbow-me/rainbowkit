@@ -4,6 +4,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { styled } from '@linaria/react'
 import { findInSubArray, hasSubArray } from '../utils'
+import { css } from '@linaria/core'
 
 export interface NetworkSelectProps {
   chains: string[]
@@ -29,15 +30,11 @@ const List = styled.div<ListProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  overflow-y: auto;
-  max-height: calc(4 * 52px);
   padding-bottom: 1rem;
   display: ${(props) => (props.isExpanded ? 'block' : 'none')};
-  z-index: -1;
-  background: var(--bg-2);
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  top: 40px;
+  z-index: 10;
+  border-radius: 15px;
+  top: 70px;
   padding-top: 20px;
 `
 
@@ -50,9 +47,6 @@ const Option = styled.div`
   img {
     margin-right: 1rem;
   }
-  &:hover {
-    color: var(--fg-2);
-  }
 `
 
 export interface ChainOptionProps {
@@ -61,6 +55,10 @@ export interface ChainOptionProps {
   iconClassName?: string
 }
 
+const Icon = styled.img`
+  max-height: 1.25rem;
+`
+
 export const ChainOption = ({
   chain,
   children,
@@ -68,9 +66,9 @@ export const ChainOption = ({
   ...props
 }: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
   <Option aria-label="option" {...props} className={props.className}>
-    <img
+    <Icon
       aria-hidden="true"
-      className={`${iconClassName}`}
+      className={` ${iconClassName}`}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
     />{' '}
     {chain.name} {children}
@@ -103,12 +101,14 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {}, c
         <ChainOption
           aria-selected={true}
           chain={currentChain}
-          className={`${classNames?.current}`}
+          className={`${css`
+            z-index: 20;
+          `} ${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
           iconClassName={classNames?.icon}
         />
       )}
-      <List isExpanded={isExpanded} className={`${isExpanded ? '' : classNames?.hidden} ${classNames.list}`}>
+      <List isExpanded={isExpanded} className={`${isExpanded ? '' : classNames?.hidden} ${classNames.list || ''}`}>
         {filteredChains
           .filter((ch) => ch.chainId !== chainId)
           .map((ch) => {
@@ -117,8 +117,8 @@ export const NetworkSelect = ({ chains: chainNames, provider, classNames = {}, c
                 chain={ch}
                 key={ch.name}
                 onClick={() => switchNetwork(provider, ch)}
-                className={`${classNames.option}`}
-                iconClassName={classNames?.icon}
+                className={classNames.option || ''}
+                iconClassName={classNames?.icon || ''}
               />
             )
           })}

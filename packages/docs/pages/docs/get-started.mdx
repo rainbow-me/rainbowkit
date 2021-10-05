@@ -25,16 +25,10 @@ npm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
 // index.js
 import React from 'react'
 import { render } from 'react-dom'
-import { Web3ReactProvider } from '@web3-react/core'
-import { setupProvider } from '@rainbowkit/core'
+import { withWeb3React } from '@rainbowkit/core'
 import { App } from './app'
 
-render(
-  <Web3ReactProvider getLibrary={setupProvider()}>
-    <App />
-  </Web3ReactProvider>,
-  document.getElementById('root')
-)
+render(withWeb3React(App), document.getElementById('root'))
 ```
 
 ### Next.js
@@ -46,18 +40,13 @@ render(
 ```jsx
 // _app.jsx
 import React from 'react'
-import { Web3ReactProvider } from '@web3-react/core'
-import { setupProvider } from '@rainbowkit/core'
+import { withWeb3React } from '@rainbowkit/core'
 
 const App = ({ Component, pageProps }) => {
-  return (
-    <Web3ReactProvider getLibrary={setupProvider()}>
-      <Component {...pageProps} />
-    </Web3ReactProvider>
-  )
+  return <Component {...pageProps} />
 }
 
-export default App
+export default withWeb3React(App)
 ```
 
 Since all RainbowKit packages are pure ESM, don't forget to enable `esmExternals` in your Next.js config!

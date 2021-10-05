@@ -2,7 +2,6 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
 import React, { useEffect, useState, useMemo } from 'react'
-import PENDING_ICON from '../../assets/loading.svg'
 import { styled } from '@linaria/react'
 
 export interface TxProps {
@@ -36,7 +35,6 @@ const Container = styled.div`
     width: 1rem;
   }
   a {
-    color: var(--fg-2);
     text-decoration: none;
     font-weight: bold;
   }
