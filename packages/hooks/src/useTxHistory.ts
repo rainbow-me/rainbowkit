@@ -1,52 +1,98 @@
 import { useEffect, useState } from 'react'
-import { logsFetcher } from '@rainbowkit/utils'
-import type { TxHistoryFetcher } from '@rainbowkit/utils'
-import { Listener } from '@ethersproject/abstract-provider'
-import { BaseProvider, Web3Provider } from '@ethersproject/providers'
+import { Transaction } from '@ethersproject/transactions'
+import { BaseProvider, TransactionReceipt } from '@ethersproject/providers'
+
+const safeJSONParse = (json: string) => {
+  try {
+    return JSON.parse(json)
+  } catch {
+    return {}
+  }
+}
+
+export type TransactionWithStatus = Pick<Transaction, 'data' | 'from' | 'to' | 'value' | 'hash' | 'nonce' | 'type'> & {
+  status: 'pending' | 'fail' | 'success'
+  blockNumber: number | null
+}
 
 /**
- * Fetch transaction history for an address.
- *
- * There are two fetchers availaible, event logs fetcher (`logsFetcher`) and Etherscan fetcher (`etherscanFetcher`).
- * `logsFetcher` is used by default.
+ * Returns all pending txes
  */
-export const useTxHistory = <Tx extends any = any, P extends BaseProvider = Web3Provider>({
-  fetcher = logsFetcher,
-  address,
-  options,
+export const useTxHistory = ({
+  initialTxes,
+  rememberHistory,
   provider
 }: {
-  fetcher?: TxHistoryFetcher
-  provider: P
-  address: string
-  options?: any
-}) => {
-  const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<Tx[]>()
-  const [error, setError] = useState<Error & { data?: { message: string; code: string } }>()
+  initialTxes?: TransactionWithStatus[]
+  rememberHistory?: boolean
+  provider: BaseProvider
+}): { txes: TransactionWithStatus[]; submit: (tx: Transaction) => void; reset: () => void } => {
+  const [txes, set] = useState<TransactionWithStatus[]>(initialTxes || [])
+
+  const submit = async (tx: Transaction) => {
+    set((txes) => [
+      ...txes,
+      {
+        ...tx,
+        blockNumber: null,
+        status: 'pending'
+      }
+    ])
+  }
 
   useEffect(() => {
-    const sub: Listener = (tx) => setData((arr) => [...arr, { ...tx, status: 'pending' }])
+    for (const tx of txes) {
+      if (tx.status === 'pending') {
+        const common = {
+          data: tx.data,
+          from: tx.from,
+          to: tx.to,
+          hash: tx.hash,
+          value: tx.value,
+          type: tx.type,
+          nonce: tx.nonce
+        }
 
-    if (address && provider && fetcher) {
-      fetcher({ address, provider, options })
-        .then((txes) => {
-          setLoading(false)
-          setData(txes as Tx[])
-        })
-        .catch((err) => {
-          setLoading(false)
-          setError(err)
-        })
+        if (!tx.hash)
+          set([
+            ...txes.filter((t) => t.hash !== tx.hash),
+            {
+              ...common,
+              status: 'fail',
+              blockNumber: null
+            }
+          ])
+        else if (provider) {
+          provider.once(tx.hash, (result: TransactionReceipt) => {
+            set([
+              ...txes.filter((t) => t.hash !== tx.hash),
+              {
+                ...common,
+                status: result.status === 0 ? 'fail' : 'success',
+                blockNumber: result.blockNumber
+              }
+            ])
+          })
+        }
+      }
     }
-    if (provider) {
-      provider.on('pending', sub)
-
-      return () => void provider.off('pending', sub)
+    if (rememberHistory && txes?.[0]) {
+      localStorage.setItem('rk-tx-history', JSON.stringify(txes))
     }
+  }, [txes, rememberHistory, provider])
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address, provider, fetcher])
+  useEffect(() => {
+    if (rememberHistory) {
+      const txes = safeJSONParse(localStorage.getItem('rk-tx-history')) || []
 
-  return { loading, data, error }
+      set(txes)
+    }
+  }, [rememberHistory])
+
+  const reset = () => {
+    localStorage.removeItem('rk-last-history')
+    set([])
+  }
+
+  return { txes, submit, reset }
 }

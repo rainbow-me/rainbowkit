@@ -318,7 +318,8 @@ export const chains: Chain[] = [
     infoURL: 'https://github.com/ethereum/ropsten',
     chainId: 3,
     ens: { registry: '0x112234455c3a32fd11230c42e7bccd4a84e02010' },
-    aliases: ['ropsten']
+    aliases: ['ropsten'],
+    explorers: [{ name: 'etherscan-ropsten', url: 'https://ropsten.etherscan.io', standard: 'EIP3091' }]
   },
   {
     name: 'Ethereum Testnet Rinkeby',

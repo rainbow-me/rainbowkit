@@ -3,21 +3,19 @@ import {
   etherscanFetcher,
   withWeb3React,
   chainIdToAlias,
-  useSignMessage,
-  usePendingTx,
-  useWeb3State,
   AccountInfo,
   NetworkSelect,
   TxHistory,
   walletConnectRPCs,
   Profile
 } from '@rainbowkit/core'
-import styles from '../styles/landing.module.css'
+import { useTxHistory, useWeb3State, useSignMessage } from '@rainbowkit/hooks'
 import { ChainProvider } from 'chain-provider'
 import { InfuraWebSocketProvider } from '@ethersproject/providers'
 import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
-import { matcha } from '../lib/matcha'
+import { zrx } from '../lib/zrx'
 import { Nav, Main, Inline, Button, Header, Icon } from '../components/layout'
+import { css } from '@linaria/core'
 
 const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
@@ -28,9 +26,9 @@ const Index = () => {
 
   const [explorer, setExplorer] = useState<ChainProvider>()
 
-  const txes = usePendingTx({ provider })
-
   const sign = useSignMessage({ provider, message: 'Hello' })
+
+  const { txes, submit, reset } = useTxHistory({ provider, rememberHistory: true })
 
   useEffect(() => {
     if (chainId) setExplorer(new ChainProvider(chainIdToAlias(chainId)))
@@ -52,8 +50,9 @@ const Index = () => {
         <Profile
           rpcProvider={mainnetProvider}
           copyAddress
+          ipfsGatewayUrl="ipfs.io"
           modalOptions={{
-            chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan'],
+            chains: ['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan', 'ropsten'],
             wallets: [
               'metamask',
               'coinbase',
@@ -72,13 +71,25 @@ const Index = () => {
               </>
             )
           }}
+          classNames={{
+            pill: css`
+              background: linear-gradient(#001a1f) padding-box, linear-gradient(to right, #f14444, #4f4fd6) border-box;
+              color: #ebebeb;
+            `,
+            menu: css`
+              background: #17181c;
+            `
+          }}
         />
         <NetworkSelect
           {...{ provider, chainId }}
-          chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan']}
+          chains={['mainnet', 'polygon', 'optimism', 'arbitrum', 'kovan', 'ropsten']}
           classNames={{
             current: Button,
-            icon: Icon
+            icon: Icon,
+            list: css`
+              background-color: #001a1f;
+            `
           }}
         />
       </Nav>
@@ -122,26 +133,19 @@ const Index = () => {
               </button>
               <button
                 className={Button}
-                onClick={() => {
-                  if (chainId === 137 || chainId === 1) {
-                    matcha(chainId, provider)
+                onClick={async () => {
+                  if ([1, 3, 137].includes(chainId)) {
+                    const tx = await zrx(chainId, provider)
+
+                    if (typeof tx !== 'string') submit(tx)
                   }
                 }}
               >
-                {chainId === 137 || chainId === 1 ? 'Swap 10 USDT to 10 USDC' : 'Switch to Mainnet or Polygon'}
+                {[1, 3, 137].includes(chainId) ? 'Swap 1 USDC to 1 DAI' : 'Switch to Mainnet, Ropsten or Polygon'}
               </button>
             </Inline>
-            {fromBlock && chainId === 1 && (
-              <>
-                <TxHistory
-                  {...{ address, chainId }}
-                  provider={explorer}
-                  fetcher={etherscanFetcher}
-                  options={{ fromBlock: 13061959, toBlock: 13073635 }}
-                />
-              </>
-            )}
-            {JSON.stringify(txes, null, 2)}
+
+            <TxHistory {...{ chainId, provider, txes, reset }} />
           </>
         )}
       </Main>

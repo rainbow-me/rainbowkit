@@ -1,23 +1,32 @@
 import { TxHistory } from '@rainbowkit/ui'
-import { useConnectOnMount } from '@rainbowkit/hooks'
-import { setupProvider } from '@rainbowkit/utils'
+import { useConnectOnMount, useExplorerTxHistory, useWeb3State } from '@rainbowkit/hooks'
+import { etherscanFetcher, setupProvider } from '@rainbowkit/utils'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { injected } from './badge'
-import { provider } from './history'
+import { ChainProvider } from 'chain-provider'
+import { useState } from 'react'
 
 const TxHistoryExampleDemo = () => {
-  const { account: address, chainId } = useWeb3React()
+  const { address, chainId, provider } = useWeb3State()
+  const [latestBlock, setLatestBlock] = useState(12862901)
 
   useConnectOnMount(injected, true)
 
-  return (
-    <TxHistory
-      {...{ provider, chainId }}
-      address={address || '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f'}
-      options={{ fromBlock: 12862901 }}
-    />
-  )
+  const { data: txes } = useExplorerTxHistory({
+    fetcher: etherscanFetcher,
+    provider: new ChainProvider('mainnet'),
+    address,
+    options: {
+      fromBlock: latestBlock
+    }
+  })
+
+  useEffect(() => {
+    if (provider) provider.getBlockNumber().then((block) => setLatestBlock(block - 100_000))
+  }, [provider])
+
+  return <TxHistory {...{ chainId, txes }} />
 }
 
 export const TxHistoryExample = () => (
