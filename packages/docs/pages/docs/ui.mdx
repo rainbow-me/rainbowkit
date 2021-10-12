@@ -1,10 +1,10 @@
-import { EthAddress, Tx, TxHistory, ExplorerLink, AccountInfo, Profile } from '@rainbowkit/ui'
+import { EthAddress, Tx, TxHistory, ExplorerLink, AccountInfo, Profile } from '@rainbow-me/kit-ui'
 import { EthAddressPic, EthAddressBalance } from '../../components/badge'
 import { TxHistoryExample } from '../../components/txhistory'
 import { SelectNetworkExample } from '../../components/select'
 import { ProfileExample } from '../../components/profile'
 
-# `@rainbowkit/ui`
+# `@rainbow-me/kit-ui`
 
 Collection of RainbowKit UI components.
 
@@ -65,7 +65,7 @@ With profile icon:
 
 ```tsx
 import React from 'react'
-import { EthAddress } from '@rainbowkit/ui'
+import { EthAddress } from '@rainbow-me/kit-ui'
 import { useENS } from 'use-ens'
 import { useWeb3React } from '@web3-react/core'
 
@@ -84,7 +84,7 @@ With balance:
 
 ```tsx
 import React from 'react'
-import { EthAddress } from '@rainbowkit/ui'
+import { EthAddress } from '@rainbow-me/kit-ui'
 import { useENS } from 'use-ens'
 
 const EthAddressBalanceExample = () => {
@@ -104,7 +104,7 @@ Success:
 
 ```tsx
 import React from 'react'
-import { Tx } from '@rainbowkit/ui'
+import { Tx } from '@rainbow-me/kit-ui'
 
 const TxView = () => (
   <Tx
@@ -127,7 +127,7 @@ Pending:
 
 ```tsx
 import React from 'react'
-import { Tx } from '@rainbowkit/ui'
+import { Tx } from '@rainbow-me/kit-ui'
 
 const TxView = () => (
   <Tx
@@ -150,7 +150,7 @@ Get explorer based on network ID:
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Tx } from '@rainbowkit/ui'
+import { Tx } from '@rainbow-me/kit-ui'
 
 const TxView = () => {
   const { library: provider } = useWeb3React()
@@ -185,7 +185,7 @@ Account information block.
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { AccountInfo } from '@rainbowkit/ui'
+import { AccountInfo } from '@rainbow-me/kit-ui'
 
 const Wallet = () => {
   return (
@@ -229,8 +229,8 @@ Detect explorer based on chain ID:
 ## TxHistory
 
 ```tsx
-import { TxHistory } from '@rainbowkit/ui'
-import { useExplorerTxHistory, useWeb3State } from '@rainbowkit/hooks'
+import { TxHistory } from '@rainbow-me/kit-ui'
+import { useExplorerTxHistory, useWeb3State } from '@rainbow-me/kit-hooks'
 import { ChainProvider } from 'chain-provider'
 
 const { address, chainId, provider } = useWeb3State()

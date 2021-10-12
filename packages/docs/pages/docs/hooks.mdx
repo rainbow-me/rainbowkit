@@ -10,7 +10,7 @@ Manage your local dapp transactions.
 
 ```tsx
 import React from 'react'
-import { useTxHistory } from '@rainbowkit/hooks'
+import { useTxHistory } from '@rainbow-me/kit-hooks'
 
 const Index = () => {
   const { address, chainId, provider } = useWeb3State()
@@ -26,8 +26,8 @@ Fetch transaction history from a blokchain explorer (e.g. Etherscan) for an ethe
 
 ```tsx
 import React from 'react'
-import { useExplorerTxHistory, useWeb3State } from '@rainbowkit/hooks'
-import { setupProvider, etherscanFetcher } from '@rainbowkit/utils'
+import { useExplorerTxHistory, useWeb3State } from '@rainbow-me/kit-hooks'
+import { setupProvider, etherscanFetcher } from '@rainbow-me/kit-utils'
 import { ChainProvider } from 'chain-provider'
 import { formatEther } from '@ethersproject/units'
 
@@ -96,7 +96,7 @@ A React hook for using individual connectors from web3-react. Pass a web3-react 
 
 ```tsx
 import { Connector, ConnectorProps } from 'my-custom-connector'
-import { useConnector } from '@rainbowkit/hooks'
+import { useConnector } from '@rainbow-me/kit-hooks'
 
 export type CustomWalletOptions = ConnectorProps & { connectOnMount?: boolean }
 
@@ -132,7 +132,7 @@ A React hook that attempts to reconnect to a provider to restore an already esta
 ```tsx
 import { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { useConnectOnMount } from '@rainbowkit/hooks'
+import { useConnectOnMount } from '@rainbow-me/kit-hooks'
 
 const App = () => {
   const { library: provider, connector } = useWeb3React()

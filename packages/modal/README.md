@@ -1,19 +1,19 @@
-# @rainbowkit/modal
+# @rainbow-me/kit-modal
 
 Ultimate wallet modal solution for React.
 
 ## Install
 
 ```sh
-pnpm i @rainbowkit/modal
+pnpm i @rainbow-me/kit-modal
 ```
 
 ## Example
 
 ```jsx
 import React, { useState, useEffect } from 'react'
-import { Connector, useWalletModal } from '@rainbowkit/modal'
-import { withWeb3React } from '@rainbowkit/util'
+import { Connector, useWalletModal } from '@rainbow-me/kit-modal'
+import { withWeb3React } from '@rainbow-me/kit-util'
 import { useWeb3React } from '@web3-react/core'
 
 const App = () => {

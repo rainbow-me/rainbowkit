@@ -1,5 +1,5 @@
 {
-  "name": "@rainbowkit/hooks",
+  "name": "@rainbow-me/kit-hooks",
   "type": "module",
   "version": "0.0.0",
   "exports": "./dist/index.js",
@@ -18,7 +18,8 @@
     "@ethersproject/bignumber": "^5.4.1",
     "@ethersproject/contracts": "^5.4.1",
     "@ethersproject/providers": "^5.4.4",
-    "@rainbowkit/utils": "workspace:*",
+    "@ethersproject/transactions": "^5.4.0",
+    "@rainbow-me/kit-utils": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7",
     "use-ens": "workspace:*"
   },

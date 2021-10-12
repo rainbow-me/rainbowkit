@@ -1,7 +1,7 @@
 import { InfuraWebSocketProvider } from '@ethersproject/providers'
 import { css } from '@linaria/core'
-import { Profile } from '@rainbowkit/ui'
-import { walletConnectRPCs, withWeb3React } from '@rainbowkit/utils'
+import { Profile } from '@rainbow-me/kit-ui'
+import { walletConnectRPCs, withWeb3React } from '@rainbow-me/kit-utils'
 import { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
 import React from 'react'
 

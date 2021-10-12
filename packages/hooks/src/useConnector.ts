@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { useConnectOnMount } from './useConnectOnMount'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { walletByConnector } from '@rainbowkit/utils'
+import { walletByConnector } from '@rainbow-me/kit-utils'
 /**
  * A React hook for using individual connectors from web3-react.
  * @param connector web3-react connector

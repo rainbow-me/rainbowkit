@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
-import { chainIDToExplorer, guessTitle } from '@rainbowkit/utils'
+import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
 import React, { useEffect, useState, useMemo } from 'react'
 import { styled } from '@linaria/react'
 

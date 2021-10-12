@@ -1,6 +1,6 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { Wallet } from '@rainbowkit/utils'
-import { chainNametoID, connectorByWallet } from '@rainbowkit/utils'
+import { Wallet } from '@rainbow-me/kit-utils'
+import { chainNametoID, connectorByWallet } from '@rainbow-me/kit-utils'
 import assert from 'assert'
 
 /**

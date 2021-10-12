@@ -1,5 +1,5 @@
 import { css } from '@linaria/core'
-import { useConnectOnMount } from '@rainbowkit/hooks'
+import { useConnectOnMount } from '@rainbow-me/kit-hooks'
 import { useWeb3React } from '@web3-react/core'
 import React from 'react'
 import { injected } from './badge'

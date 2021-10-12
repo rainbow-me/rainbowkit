@@ -1,5 +1,5 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { TransactionWithStatus } from '@rainbowkit/hooks'
+import { TransactionWithStatus } from '@rainbow-me/kit-hooks'
 import React from 'react'
 import { Tx as DefaultTx } from './Tx'
 import type { TxProps } from './Tx'

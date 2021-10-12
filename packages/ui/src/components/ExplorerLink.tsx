@@ -1,4 +1,4 @@
-import { chainIDToExplorer } from '@rainbowkit/utils'
+import { chainIDToExplorer } from '@rainbow-me/kit-utils'
 import React from 'react'
 import { styled } from '@linaria/react'
 

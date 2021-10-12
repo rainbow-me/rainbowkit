@@ -6,11 +6,11 @@ import Callout from 'nextra-theme-docs/callout'
 
 ```sh
 # pnpm
-pnpm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+pnpm i react @web3-react/core @rainbow-me/kit-core @web3-react/injected-connector
 # yarn
-yarn add react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+yarn add react @web3-react/core @rainbow-me/kit-core @web3-react/injected-connector
 # npm
-npm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
+npm i react @web3-react/core @rainbow-me/kit-core @web3-react/injected-connector
 ```
 
 ## Quickstart
@@ -25,7 +25,7 @@ npm i react @web3-react/core @rainbowkit/core @web3-react/injected-connector
 // index.js
 import React from 'react'
 import { render } from 'react-dom'
-import { withWeb3React } from '@rainbowkit/core'
+import { withWeb3React } from '@rainbow-me/kit-core'
 import { App } from './app'
 
 render(withWeb3React(App), document.getElementById('root'))
@@ -40,7 +40,7 @@ render(withWeb3React(App), document.getElementById('root'))
 ```jsx
 // _app.jsx
 import React from 'react'
-import { withWeb3React } from '@rainbowkit/core'
+import { withWeb3React } from '@rainbow-me/kit-core'
 
 const App = ({ Component, pageProps }) => {
   return <Component {...pageProps} />

@@ -1,4 +1,4 @@
-import { ChainId } from '@rainbowkit/utils'
+import { ChainId } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'

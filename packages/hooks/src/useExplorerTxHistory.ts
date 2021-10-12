@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { logsFetcher } from '@rainbowkit/utils'
-import type { TxHistoryFetcher } from '@rainbowkit/utils'
+import { logsFetcher } from '@rainbow-me/kit-utils'
+import type { TxHistoryFetcher } from '@rainbow-me/kit-utils'
 import { Listener } from '@ethersproject/abstract-provider'
 import { BaseProvider, Web3Provider } from '@ethersproject/providers'
 

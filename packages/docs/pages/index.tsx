@@ -8,8 +8,8 @@ import {
   TxHistory,
   walletConnectRPCs,
   Profile
-} from '@rainbowkit/core'
-import { useTxHistory, useWeb3State, useSignMessage } from '@rainbowkit/hooks'
+} from '@rainbow-me/kit-core'
+import { useTxHistory, useWeb3State, useSignMessage } from '@rainbow-me/kit-hooks'
 import { ChainProvider } from 'chain-provider'
 import { InfuraWebSocketProvider } from '@ethersproject/providers'
 import type { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'

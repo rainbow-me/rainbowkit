@@ -1,7 +1,7 @@
 import React from 'react'
-import { NetworkSelect } from '@rainbowkit/ui'
+import { NetworkSelect } from '@rainbow-me/kit-ui'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
-import { setupProvider } from '@rainbowkit/utils'
+import { setupProvider } from '@rainbow-me/kit-utils'
 import { Activate } from './activate'
 import { css } from '@linaria/core'
 

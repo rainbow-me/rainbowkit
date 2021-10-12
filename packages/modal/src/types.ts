@@ -1,4 +1,4 @@
-import type { Wallet } from '@rainbowkit/utils'
+import type { Wallet } from '@rainbow-me/kit-utils'
 import { Dispatch } from 'react'
 
 export interface ModalProps {

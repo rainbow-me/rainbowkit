@@ -3,9 +3,9 @@ import type { ModalProps } from '../types'
 import close from '../../assets/close.svg'
 import next from '../../assets/next.svg'
 import { styled } from '@linaria/react'
-import type { Wallet } from '@rainbowkit/utils'
+import type { Wallet } from '@rainbow-me/kit-utils'
 
-import { getWalletInfo } from '@rainbowkit/utils'
+import { getWalletInfo } from '@rainbow-me/kit-utils'
 
 const Title = styled.span`
   font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;

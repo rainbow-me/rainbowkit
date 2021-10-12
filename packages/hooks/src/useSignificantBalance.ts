@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
-import { toSignificant } from '@rainbowkit/utils'
+import { toSignificant } from '@rainbow-me/kit-utils'
 import { useEffect, useState } from 'react'
 
 export const useSignificantBalance = ({

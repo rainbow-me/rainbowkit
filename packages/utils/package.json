@@ -1,5 +1,5 @@
 {
-  "name": "@rainbowkit/utils",
+  "name": "@rainbow-me/kit-utils",
   "type": "module",
   "version": "0.0.0",
   "exports": "./dist/index.js",

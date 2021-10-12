@@ -1,4 +1,4 @@
-import { getWalletInfo } from '@rainbowkit/utils'
+import { getWalletInfo } from '@rainbow-me/kit-utils'
 import { useEffect, useState } from 'react'
 
 export const useWalletInfo = (initialValue: { name: string; logoURI: string } = { name: '', logoURI: '' }) => {

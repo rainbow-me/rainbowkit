@@ -2,7 +2,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import React, { useEffect, useState } from 'react'
 import { CopyAddressButton } from './CopyAddressButton'
 import { ExplorerLink, ExplorerProps } from './ExplorerLink'
-import { useWalletInfo } from '@rainbowkit/hooks'
+import { useWalletInfo } from '@rainbow-me/kit-hooks'
 import { styled } from '@linaria/react'
 
 export interface AccountInfoProps {

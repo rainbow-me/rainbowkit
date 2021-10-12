@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useWalletModal } from '@rainbowkit/modal'
+import { useWalletModal } from '@rainbow-me/kit-modal'
 import usePortal from 'react-useportal'
 import { Web3ReactProvider } from '@web3-react/core'
-import { setupProvider } from '@rainbowkit/utils'
+import { setupProvider } from '@rainbow-me/kit-utils'
 import { css } from '@linaria/core'
 
 const modalButton = css`

@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from 'react'
-import { Chain, chains, switchNetwork } from '@rainbowkit/utils'
+import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { styled } from '@linaria/react'

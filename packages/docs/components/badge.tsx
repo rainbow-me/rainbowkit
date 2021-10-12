@@ -1,9 +1,9 @@
 import React from 'react'
-import { EthAddress } from '@rainbowkit/ui'
-import { setupProvider } from '@rainbowkit/utils'
+import { EthAddress } from '@rainbow-me/kit-ui'
+import { setupProvider } from '@rainbow-me/kit-utils'
 import { useENS } from 'use-ens'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
-import { useConnectOnMount } from '@rainbowkit/hooks'
+import { useConnectOnMount } from '@rainbow-me/kit-hooks'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { Activate } from './activate'
 

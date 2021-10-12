@@ -1,5 +1,5 @@
 import React from 'react'
-import { isAddress, shortenAddress } from '@rainbowkit/utils'
+import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { styled } from '@linaria/react'

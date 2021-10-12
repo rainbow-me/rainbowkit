@@ -1,8 +1,8 @@
 import React from 'react'
 import 'nextra-theme-docs/style.css'
 import '../styles/landing.global.css'
-import '@rainbowkit/ui/bundle.css'
-import '@rainbowkit/modal/bundle.css'
+import '@rainbow-me/kit-ui/bundle.css'
+import '@rainbow-me/kit-modal/bundle.css'
 
 /**
  *
