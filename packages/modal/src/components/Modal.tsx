@@ -79,6 +79,24 @@ const CloseButton = styled.button`
   top: 24px;
 `
 
+const WalletLabel = styled.span`
+  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #25292e;
+
+  text-transform: capitalize;
+`
+
 const WalletList = styled.ul`
   margin-top: 24px;
 
@@ -95,29 +113,14 @@ const WalletList = styled.ul`
     width: 100%;
   }
 
-  li span {
-    font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 24px;
-
-    /* identical to box height */
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.5px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-
-    color: #25292e;
-
-    text-transform: capitalize;
+  li img:first-child {
+    margin-right: 12px;
+    height: 34px;
+    width: 34px;
   }
 `
 
 const Icon = styled.img`
-  margin-right: 12px;
-  height: 34px;
-  width: 34px;
   border-radius: 10px;
   filter: drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3));
 `
@@ -137,26 +140,88 @@ const Terms = styled.div`
   }
 `
 
-const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Pick<ModalProps, 'connect'>) => {
+const MoreWallets = styled.button`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 11px;
+  & > div {
+    display: inherit;
+    flex-direction: inherit;
+  }
+`
+
+const MoreWalletsGroup = styled.div`
+  margin-right: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2px;
+  width: max-content;
+  & > div > img {
+    width: 16px;
+    height: 16px;
+  }
+`
+
+const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
   const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
 
   return (
     <li key={name}>
-      <button onClick={() => connect(wallet)}>
-        <span>
+      <button onClick={() => (connect ? connect(wallet) : undefined)}>
+        <WalletLabel>
           <Icon src={logoURI} alt={name} />
           {name}
-        </span>
+        </WalletLabel>
         <img src={next} alt={`Select ${name}`} />
       </button>
     </li>
   )
 }
 
+const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
+  const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
+
+  return (
+    <div key={name}>
+      <Icon src={logoURI} alt={name} />
+    </div>
+  )
+}
+
+const BackButton = styled.button`
+  width: 100%;
+  padding: 11px;
+  display: flex;
+  span {
+    color: #25292e;
+    font-size: 20px;
+  }
+  span::before {
+    content: '<- ';
+  }
+`
+
 /**
  * Rainbow-styled Modal
  */
 export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, classNames }: ModalProps) => {
+  const { visibleWallets, hiddenWallets } = useMemo(() => {
+    const visibleWallets: Wallet[] = []
+    const hiddenWallets: Wallet[] = []
+
+    for (const wallet of wallets) {
+      if (wallet.hidden) {
+        hiddenWallets.push(wallet)
+      } else visibleWallets.push(wallet)
+    }
+    return { visibleWallets, hiddenWallets }
+  }, [wallets])
+
+  const [isHiddenWalletsOpened, setHiddenWalletsOpened] = useState(false)
+
   return (
     <ModalOverlay
       $isConnecting={isConnecting}
@@ -171,12 +236,29 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
 
           <WalletList className={classNames?.wallets}>
-            {wallets
-              .filter((x) => !x.hidden)
-              .map((c) => {
-                return <WalletIcon key={c.name} connect={connect} wallet={c} />
-              })}
+            {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
+              return <WalletIcon key={c.name} connect={connect} wallet={c} />
+            })}
           </WalletList>
+          {hiddenWallets.length && !isHiddenWalletsOpened && (
+            <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
+              <div>
+                <MoreWalletsGroup>
+                  {hiddenWallets.map((w) => (
+                    <MoreWalletsIcon wallet={w} key={w.name} />
+                  ))}
+                </MoreWalletsGroup>
+                <WalletLabel>More wallets</WalletLabel>
+              </div>
+
+              <img src={next} alt="Open more wallets" />
+            </MoreWallets>
+          )}
+          {isHiddenWalletsOpened && (
+            <BackButton onClick={() => setHiddenWalletsOpened(false)}>
+              <Caption>Back</Caption>
+            </BackButton>
+          )}
         </div>
         {terms && <Terms className={classNames?.terms}>{terms}</Terms>}
       </StyledModal>

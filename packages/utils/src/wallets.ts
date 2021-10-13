@@ -1,4 +1,4 @@
-export const getWalletInfo = (name: string) => {
+export const getWalletInfo = (name: string): { name: string; logoURI: string } => {
   switch (name) {
     case 'metamask':
       return {
@@ -25,6 +25,21 @@ export const getWalletInfo = (name: string) => {
       return {
         name: 'Rainbow',
         logoURI: 'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link'
+      }
+    case 'trust':
+      return {
+        name: 'Trust',
+        logoURI: 'https://bafkreiaa457sqcvunki6x7uydyjmniox22vclagwqda5qbskwd27to32aq.ipfs.dweb.link'
+      }
+    case 'gnosis':
+      return {
+        name: 'Gnosis',
+        logoURI: 'https://bafkreifsbu7uy4m25t5hty27x7nfrz3ot3wcvlnqwfujom7ax6qmixgciu.ipfs.dweb.link'
+      }
+    case 'argent':
+      return {
+        name: 'Argent',
+        logoURI: 'https://bafkreic5w3umuv7hz7drgyp6ymmpiqre4cnd36ftsutrrazgrecpvo5rgq.ipfs.dweb.link'
       }
   }
 }
