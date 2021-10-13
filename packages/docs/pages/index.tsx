@@ -19,6 +19,13 @@ import { css } from '@linaria/core'
 
 const mainnetProvider = new InfuraWebSocketProvider('homestead', '372913dfd3114b34983d2256c46195a7')
 
+const wcOptions = {
+  connectorName: 'walletconnect',
+  options: {
+    rpc: walletConnectRPCs
+  } as WalletConnectConnectorArguments
+}
+
 const Index = () => {
   const { provider, address, isConnected, chainId } = useWeb3State()
 
@@ -58,10 +65,22 @@ const Index = () => {
               'coinbase',
               {
                 name: 'rainbow',
-                connectorName: 'walletconnect',
-                options: {
-                  rpc: walletConnectRPCs
-                } as WalletConnectConnectorArguments
+                ...wcOptions
+              },
+              {
+                name: 'trust',
+                hidden: true,
+                ...wcOptions
+              },
+              {
+                name: 'gnosis',
+                hidden: true,
+                ...wcOptions
+              },
+              {
+                name: 'argent',
+                hidden: true,
+                ...wcOptions
               }
             ],
             terms: (
