@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-modal",
   "version": "0.0.0-wip.0",
-  "description": "Ultimate wallet modal solution for React",
+  "description": "Universal Ethereum wallet modal library for React",
   "files": [
     "dist"
   ],
@@ -52,5 +52,10 @@
     "@web3-react/torus-connector": "^6.1.9",
     "@web3-react/walletconnect-connector": "^6.2.4",
     "@web3-react/walletlink-connector": "^6.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/modal"
   }
 }

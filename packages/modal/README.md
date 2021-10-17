@@ -1,6 +1,6 @@
 # @rainbow-me/kit-modal
 
-Ultimate wallet modal solution for React.
+Universal Ethereum wallet modal library for React.
 
 ## Install
 

@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-utils",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.0-wip.0",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -9,9 +9,14 @@
     "build:watch": "rollup -c ../../rollup.config.js -w",
     "postinstall": "pnpm build"
   },
-  "description": "Small utilities used in RainbowKit packages",
-  "keywords": [],
-  "author": "",
+  "description": "A collection of utilities for RainbowKit",
+  "keywords": [
+    "rainbowkit",
+    "utils",
+    "web3",
+    "eth"
+  ],
+  "author": "v1rtl",
   "license": "MIT",
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
@@ -29,5 +34,16 @@
     "@rollup/plugin-json": "^4.1.0",
     "@types/chroma-js": "^2.1.3",
     "@web3-react/core": ">=6.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=12.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/utils"
   }
 }

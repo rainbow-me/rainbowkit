@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-hooks",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.0-wip.0",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -9,9 +9,15 @@
     "build:watch": "rollup -c ../../rollup.config.js -w",
     "postinstall": "pnpm build"
   },
-  "description": "RainbowKit Hooks",
-  "keywords": [],
-  "author": "",
+  "description": "React hooks for RainbowKit",
+  "keywords": [
+    "hooks",
+    "react",
+    "rainbowkit",
+    "ethereum",
+    "web3"
+  ],
+  "author": "v1rtl",
   "license": "MIT",
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
@@ -28,5 +34,16 @@
   },
   "devDependencies": {
     "@web3-react/core": ">=6.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=12.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/hooks"
   }
 }
