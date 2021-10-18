@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-core",
   "type": "module",
-  "version": "0.0.0-wip.0",
+  "version": "0.0.0-wip.1",
   "description": "Umbrella package of RainbowKit",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
