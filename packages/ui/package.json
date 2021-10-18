@@ -17,8 +17,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "build:watch": "rollup -cw",
-    "postinstall": "pnpm build"
+    "build:watch": "rollup -cw"
   },
   "keywords": [
     "ens",

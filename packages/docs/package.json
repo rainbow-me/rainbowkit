@@ -36,7 +36,6 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "postinstall": "pnpm build",
     "start": "NODE_ENV=production next start -p 3000"
   },
   "devDependencies": {

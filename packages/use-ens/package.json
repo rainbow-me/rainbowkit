@@ -13,8 +13,7 @@
   },
   "scripts": {
     "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w",
-    "postinstall": "pnpm build"
+    "build:watch": "rollup -c ../../rollup.config.js -w"
   },
   "keywords": [
     "ens",
