@@ -1,5 +1,6 @@
 {
-  "name": "@rainbowkit/core",
+  "name": "rainboiwkit",
+  "private": true,
   "version": "0.0.0",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
