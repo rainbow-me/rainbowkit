@@ -10,7 +10,7 @@ import { BaseProvider, Web3Provider } from '@ethersproject/providers'
  * There are two fetchers availaible, event logs fetcher (`logsFetcher`) and Etherscan fetcher (`etherscanFetcher`).
  * `logsFetcher` is used by default.
  */
-export const useExplorerTxHistory = <Tx extends any = any, P extends BaseProvider = Web3Provider>({
+export const useExplorerTxHistory = <Tx = any, P extends BaseProvider = Web3Provider>({
   fetcher = logsFetcher,
   address,
   options,
@@ -44,8 +44,6 @@ export const useExplorerTxHistory = <Tx extends any = any, P extends BaseProvide
 
       return () => void provider.off('pending', sub)
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address, provider, fetcher])
 
   return { loading, data, error }

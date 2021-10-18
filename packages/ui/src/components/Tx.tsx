@@ -61,7 +61,6 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
         setTitle(guessTitle({ data, from, to, chainId, value }))
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.hash, props.explorerUrl, chainId])
 
   return (

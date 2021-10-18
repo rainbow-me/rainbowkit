@@ -21,8 +21,6 @@ export const useConnectOnMount = (connector: any, enabled: boolean, storageProvi
         activate(connector)
       }
     })
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageProvider]) // Only trigger on mount
 
   return active

@@ -21,9 +21,9 @@
   "license": "MIT",
   "dependencies": {
     "@ethersproject/abstract-provider": "^5.4.1",
-    "@ethersproject/bignumber": "^5.4.1",
+    "@ethersproject/bignumber": "^5.4.2",
     "@ethersproject/contracts": "^5.4.1",
-    "@ethersproject/providers": "^5.4.4",
+    "@ethersproject/providers": "^5.4.5",
     "@ethersproject/transactions": "^5.4.0",
     "@rainbow-me/kit-utils": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7",
@@ -33,7 +33,7 @@
     "@web3-react/core": ">=6.1"
   },
   "devDependencies": {
-    "@web3-react/core": ">=6.1"
+    "@web3-react/core": "^6.1.9"
   },
   "files": [
     "dist"

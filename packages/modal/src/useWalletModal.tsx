@@ -77,8 +77,6 @@ export const useWalletModal = ({
         if (yes) connectToWallet(walletName)
       })
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [isConnecting, setConnecting] = useState(false)
