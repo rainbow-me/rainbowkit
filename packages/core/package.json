@@ -7,7 +7,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w"
+    "build:watch": "rollup -c ../../rollup.config.js -w",
+    "prepare": "pnpm build"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,10 @@
   "dependencies": {
     "@ethersproject/providers": "^5.4.5",
     "@ethersproject/units": "^5.4.0",
-    "@rainbow-me/kit-hooks": "workspace:*",
-    "@rainbow-me/kit-modal": "workspace:*",
-    "@rainbow-me/kit-ui": "workspace:*",
-    "@rainbow-me/kit-utils": "workspace:*",
+    "@rainbow-me/kit-hooks": "workspace:^",
+    "@rainbow-me/kit-modal": "workspace:^",
+    "@rainbow-me/kit-ui": "workspace:^",
+    "@rainbow-me/kit-utils": "workspace:^",
     "@web3-react/abstract-connector": "^6.0.7"
   },
   "peerDependencies": {

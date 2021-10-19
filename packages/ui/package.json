@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "build:watch": "rollup -cw"
+    "build:watch": "rollup -cw",
+    "prepare": "pnpm build"
   },
   "keywords": [
     "ens",
@@ -46,7 +47,7 @@
     "@ethersproject/transactions": "^5.4.0",
     "@ethersproject/units": "^5.4.0",
     "@rainbow-me/kit-hooks": "workspace:*",
-    "@rainbow-me/kit-modal": "workspace:^0.0.0",
+    "@rainbow-me/kit-modal": "workspace:*",
     "@rainbow-me/kit-utils": "workspace:*"
   },
   "repository": {
