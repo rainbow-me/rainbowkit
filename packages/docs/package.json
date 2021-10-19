@@ -30,7 +30,7 @@
     "react-dom": "^17.0.2",
     "react-useportal": "^1.0.14",
     "url-loader": "^4.1.1",
-    "use-ens": "workspace:^0.0.0-wip.11",
+    "use-ens": "workspace:^0.0.0",
     "walletlink": "^2.1.11"
   },
   "scripts": {
@@ -40,5 +40,6 @@
   },
   "devDependencies": {
     "core-js": "^3.18.3"
-  }
+  },
+  "version": null
 }

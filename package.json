@@ -2,14 +2,17 @@
   "name": "rainboiwkit",
   "private": true,
   "version": "0.0.0",
-  "exports": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "postinstall": "husky install",
     "lint": "eslint . --ext=js,mjs,ts,cjs,tsx",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
-    "test": "echo no tests yet"
+    "test": "echo no tests yet",
+    "chgset:run": "changeset",
+    "chgset:version": "changeset version",
+    "chgset": "pnpm chgset:run && pnpm chgset:version",
+    "release": "changeset publish"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/rainbow-me/rainbowkit#readme",
   "devDependencies": {
+    "@changesets/cli": "2.17.0",
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
     "@compiled/babel-plugin": "^0.8.0",
