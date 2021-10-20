@@ -107,6 +107,7 @@ export interface ProfileProps {
     menu: string
     container: string
   }>
+  button: ({ connect }: { connect: () => void }) => JSX.Element
 }
 
 const SelectedWalletWithBalance = ({
@@ -132,12 +133,15 @@ const SelectedWalletWithBalance = ({
   )
 }
 
+const ConnectButton = ({ connect }: { connect: () => void }) => <Pill onClick={() => connect()}>Connect</Pill>
+
 export const Profile = ({
   modalOptions,
   copyAddress: CopyAddressComponent,
   rpcProvider,
   ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
-  classNames
+  classNames,
+  button: ButtonComponent = ConnectButton
 }: ProfileProps) => {
   const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
 
@@ -206,7 +210,7 @@ export const Profile = ({
         </>
       ) : (
         <>
-          <Pill onClick={() => state.connect()}>Connect</Pill>
+          <ButtonComponent connect={state.connect} />
           {state.isConnecting && <Modal />}
         </>
       )}
