@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.3
+
+### Patch Changes
+
+- do not try to import if module is undefined
+
 ## 0.0.2
 
 ### Patch Changes
