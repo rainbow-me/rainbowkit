@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.2
+
+### Patch Changes
+
+- bug release
+
 ## 0.0.1
 
 ### Patch Changes
