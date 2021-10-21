@@ -9,7 +9,9 @@ import assert from 'assert'
  * @returns
  */
 export const importConnector = async (mod: string): Promise<any> => {
-  const x = await import(`@web3-react/${mod.toLowerCase()}-connector/dist/${mod.toLowerCase()}-connector.esm.js`)
+  const x = await import(
+    `./node_modules/@web3-react/${mod.toLowerCase()}-connector/dist/${mod.toLowerCase()}-connector.esm.js`
+  )
 
   return x[`${mod}Connector`]
 }

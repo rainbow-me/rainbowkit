@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.1
+
+### Patch Changes
+
+- try to prefix import path of importConnector with `./node_modules`
+
 ## 0.0.0
 
 ### Patch Changes
