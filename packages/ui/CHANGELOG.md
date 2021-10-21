@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.1
+
+### Patch Changes
+
+- add `button` prop to `Profile` to allow setting custom connect button
+
 ## 0.0.0
 
 ### Patch Changes
