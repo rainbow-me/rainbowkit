@@ -40,7 +40,7 @@ export const useENS = ({
         }
       })
     }
-  }, [cache, contractAddress, domain, fetchOptions, provider])
+  }, [cache, contractAddress, domain, fetchOptions])
 
   return data
 }
