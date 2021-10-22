@@ -3,7 +3,6 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
-import { isAuthorized } from '@rainbow-me/kit-utils'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
 
@@ -37,16 +36,14 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   const connectToWallet = async (name: string) => {
     const { connector } = wallets.find((w) => w.name === name) || {}
 
-    await activate(connector)
+    if (!isConnected) await activate(connector)
   }
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    if (walletName && !isConnected && window.ethereum && wallets.find((w) => w.name === walletName)) {
-      isAuthorized().then((yes) => {
-        if (yes) connectToWallet(walletName)
-      })
+    if (walletName && !isConnected && !!wallets.find((w) => w.name === walletName)) {
+      connectToWallet(walletName)
     }
   }, [])
 
