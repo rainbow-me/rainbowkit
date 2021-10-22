@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.3
+
+### Patch Changes
+
+- don't crash if cached ens data is null
+
 ## 0.0.2
 
 ### Patch Changes
