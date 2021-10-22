@@ -149,7 +149,8 @@ export const Profile = ({
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     provider: rpcProvider || provider!,
     domain: accountAddress,
-    fetchOptions: { cache: 'force-cache' }
+    fetchOptions: { cache: 'force-cache' },
+    cache: true
   })
 
   const address = useMemo(() => domain || accountAddress, [domain, accountAddress])
