@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.14
+
+### Patch Changes
+
+- fix properties not being optional in Profile ensOptions
+
 ## 0.0.13
 
 ### Patch Changes

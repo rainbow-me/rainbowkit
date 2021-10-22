@@ -117,7 +117,7 @@ export interface ProfileProps {
     disconnect: () => void
     isConnected: boolean
   }) => JSX.Element
-  ensOptions?: UseENSOptions
+  ensOptions?: Partial<UseENSOptions>
 }
 
 const SelectedWalletWithBalance = ({
