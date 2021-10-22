@@ -1,6 +1,6 @@
 {
   "name": "use-ens",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React hook to fetch ENS records from a domain.",
   "files": [
     "dist"

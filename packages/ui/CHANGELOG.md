@@ -1,5 +1,12 @@
 # @rainbow-me/kit-ui
 
+## 0.0.9
+
+### Patch Changes
+
+- allow passing options to useENS
+  - @rainbow-me/kit-hooks@0.0.3
+
 ## 0.0.8
 
 ### Patch Changes

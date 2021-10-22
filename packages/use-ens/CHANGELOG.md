@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.2
+
+### Patch Changes
+
+- allow passing options to useENS
+
 ## 0.0.1
 
 ### Patch Changes
