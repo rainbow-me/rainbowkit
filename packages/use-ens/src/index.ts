@@ -23,7 +23,7 @@ export const useENS = ({ provider, domain, fetchOptions, contractAddress, cache 
     if (cache) {
       try {
         const cachedData = JSON.parse(localStorage.getItem(`use-ens-${domain}`))
-        set(cachedData)
+        if (cachedData != null) set(cachedData)
         // eslint-disable-next-line no-empty
       } catch {}
     } else if (provider && domain) {
