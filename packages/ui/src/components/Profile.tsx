@@ -7,6 +7,7 @@ import { useENS, useSignificantBalance, useWalletInfo } from '@rainbow-me/kit-ho
 import { addressHashedColorIndex, addressHashedEmoji, chainIDToToken, colors } from '@rainbow-me/kit-utils'
 import { CopyAddressButton } from './CopyAddressButton'
 import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
+import type { UseENSOptions } from '@rainbow-me/kit-hooks'
 
 const Container = styled.div`
   position: relative;
@@ -107,7 +108,16 @@ export interface ProfileProps {
     menu: string
     container: string
   }>
-  button: ({ connect }: { connect: () => void }) => JSX.Element
+  button: ({
+    connect,
+    disconnect,
+    isConnected
+  }: {
+    connect: () => void
+    disconnect: () => void
+    isConnected: boolean
+  }) => JSX.Element
+  ensOptions?: UseENSOptions
 }
 
 const SelectedWalletWithBalance = ({
@@ -141,7 +151,8 @@ export const Profile = ({
   rpcProvider,
   ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
   classNames,
-  button: ButtonComponent = ConnectButton
+  button: ButtonComponent = ConnectButton,
+  ensOptions
 }: ProfileProps) => {
   const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
 
@@ -150,7 +161,8 @@ export const Profile = ({
     provider: rpcProvider || provider!,
     domain: accountAddress,
     fetchOptions: { cache: 'force-cache' },
-    cache: true
+    cache: true,
+    ...ensOptions
   })
 
   const address = useMemo(() => domain || accountAddress, [domain, accountAddress])
@@ -211,7 +223,7 @@ export const Profile = ({
         </>
       ) : (
         <>
-          <ButtonComponent connect={state.connect} />
+          <ButtonComponent connect={state.connect} disconnect={state.disconnect} isConnected={state.isConnecting} />
           {state.isConnecting && <Modal />}
         </>
       )}

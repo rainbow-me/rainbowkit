@@ -2,25 +2,21 @@ import { useEffect, useState } from 'react'
 import { getENS, ResolvedENS } from 'get-ens'
 import type { BaseProvider as Provider } from '@ethersproject/providers'
 
+export type UseENSOptions = {
+  provider: Provider
+  domain: string
+  fetchOptions?: RequestInit
+  contractAddress?: string
+  cache?: boolean
+}
+
 /**
  * A React hook to fetch ENS records from a domain.
  * @param provider Ethers.js provider
  * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = ({
-  provider,
-  domain,
-  fetchOptions,
-  contractAddress,
-  cache
-}: {
-  provider: Provider
-  domain: string
-  fetchOptions?: RequestInit
-  contractAddress?: string
-  cache?: boolean
-}): ResolvedENS => {
+export const useENS = ({ provider, domain, fetchOptions, contractAddress, cache }: UseENSOptions): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
 
   useEffect(() => {
