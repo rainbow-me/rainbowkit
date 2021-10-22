@@ -240,7 +240,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
             })}
           </WalletList>
-          {hiddenWallets.length && !isHiddenWalletsOpened && (
+          {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
             <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
               <div>
                 <MoreWalletsGroup>
