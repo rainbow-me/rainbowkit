@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.4
+
+### Patch Changes
+
+- still try get ENS from provider if cache is empty
+
 ## 0.0.3
 
 ### Patch Changes
