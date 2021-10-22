@@ -9,11 +9,9 @@ import assert from 'assert'
  * @returns
  */
 export const importConnector = async (mod: string): Promise<any> => {
-  if (mod) {
-    const x = await import(`@web3-react/${mod.toLowerCase()}-connector/dist/${mod.toLowerCase()}-connector.esm.js`)
+  const x = await import(`@web3-react/${mod.toLowerCase()}-connector/dist/${mod.toLowerCase()}-connector.esm.js`)
 
-    return x[`${mod}Connector`]
-  } else return undefined
+  return x[`${mod}Connector`]
 }
 
 /**
@@ -24,7 +22,12 @@ export const createConnector = async ({
   options,
   chains,
   connectorName
-}: Wallet & { chains?: (string | number)[] }) => {
+}: {
+  chains?: (string | number)[]
+  name: string
+  options?: Record<string, unknown>
+  connectorName?: string
+}) => {
   connectorName = connectorName || connectorByWallet(name)
 
   assert.notEqual(connectorName, undefined, `Could not find connector for ${name}`)

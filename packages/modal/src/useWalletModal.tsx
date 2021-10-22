@@ -6,7 +6,7 @@ import { Modal as ModalUI } from './components/Modal'
 import { isAuthorized } from '@rainbow-me/kit-utils'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
-import { createConnector } from './utils'
+
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 
 export type WalletInterface = Omit<
@@ -24,12 +24,7 @@ export type WalletInterface = Omit<
   }
 }
 
-export const useWalletModal = ({
-  modal: ModalComponent,
-  chains = [],
-  wallets: selectedWallets,
-  terms
-}: UseWalletModalOptions): WalletInterface => {
+export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWalletModalOptions): WalletInterface => {
   const {
     activate,
     deactivate,
@@ -39,40 +34,16 @@ export const useWalletModal = ({
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
-  const wallets = selectedWallets.map((w) => {
-    if (typeof w === 'string') {
-      switch (w) {
-        case 'metamask':
-          return {
-            name: w,
-            hidden: false,
-            options: {},
-            iconUrl: '/icons/rainbow.png'
-          }
-        default:
-          return {
-            name: w,
-            hidden: false,
-            options: {}
-          }
-      }
-    }
-
-    return w
-  }) as Wallet[]
-
   const connectToWallet = async (name: string) => {
-    const options = wallets.find((w) => w.name === name)?.options || {}
+    const { connector } = wallets.find((w) => w.name === name) || {}
 
-    const { instance } = await createConnector({ name: name, chains, options })
-
-    await activate(instance)
+    await activate(connector)
   }
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    if (walletName && !isConnected && window.ethereum && selectedWallets.includes(walletName)) {
+    if (walletName && !isConnected && window.ethereum && wallets.find((w) => w.name === walletName)) {
       isAuthorized().then((yes) => {
         if (yes) connectToWallet(walletName)
       })
@@ -86,8 +57,8 @@ export const useWalletModal = ({
   }
 
   const activateConnector = async (c: Wallet) => {
-    localStorage.setItem('rk-last-wallet', c.connectorName || c.name)
-    await connectToWallet(c.connectorName || c.name)
+    localStorage.setItem('rk-last-wallet', c.name)
+    await connectToWallet(c.name)
     return setConnecting(false)
   }
 

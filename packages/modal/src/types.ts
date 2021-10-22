@@ -23,7 +23,7 @@ export interface ModalProps {
 
 export interface UseWalletModalOptions {
   modal?: React.ComponentType<ModalProps> | false
-  wallets: (Wallet | string)[]
+  wallets: Wallet[]
   chains?: (string | number)[]
   terms?: JSX.Element
 }

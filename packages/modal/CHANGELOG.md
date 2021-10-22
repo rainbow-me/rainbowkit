@@ -1,5 +1,13 @@
 # @rainbow-me/kit-modal
 
+## 0.0.4
+
+### Patch Changes
+
+- make the user import connectors instead of a library doing it
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-utils@0.0.1
+
 ## 0.0.3
 
 ### Patch Changes
