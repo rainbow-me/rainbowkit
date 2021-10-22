@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/kit-ui",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "UI components for RainbowKit",
   "files": [
     "dist"
