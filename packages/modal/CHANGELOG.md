@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.6
+
+### Patch Changes
+
+- fix(modal): don't show "0" if there are no hidden wallets
+
 ## 0.0.5
 
 ### Patch Changes
