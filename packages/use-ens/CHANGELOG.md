@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.5
+
+### Patch Changes
+
+- remove bugging `cache` in use-ens
+
 ## 0.0.4
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @rainbow-me/kit-ui
 
+## 0.0.17
+
+### Patch Changes
+
+- remove bugging `cache` in use-ens
+  - @rainbow-me/kit-hooks@0.0.7
+
 ## 0.0.16
 
 ### Patch Changes
