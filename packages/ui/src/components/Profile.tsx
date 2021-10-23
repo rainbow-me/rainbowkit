@@ -161,7 +161,6 @@ export const Profile = ({
     provider: rpcProvider || provider!,
     domain: accountAddress,
     fetchOptions: { cache: 'force-cache' },
-    cache: true,
     ...ensOptions
   })
 

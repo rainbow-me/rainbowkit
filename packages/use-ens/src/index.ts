@@ -7,7 +7,6 @@ export type UseENSOptions = {
   domain: string
   fetchOptions?: RequestInit
   contractAddress?: string
-  cache?: boolean
 }
 
 /**
@@ -16,33 +15,20 @@ export type UseENSOptions = {
  * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = ({ provider, domain, fetchOptions, contractAddress, cache }: UseENSOptions): ResolvedENS => {
+export const useENS = ({ provider, domain, fetchOptions, contractAddress }: UseENSOptions): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
 
   useEffect(() => {
-    const getENSFromProvider = () => {
+    if (provider && domain) {
       provider.getNetwork().then(({ chainId }) => {
         if (contractAddress || chainId === 1) {
           getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
-            if (cache) localStorage.setItem(`use-ens-${domain}`, JSON.stringify(data))
             set(data)
           })
         }
       })
     }
-
-    if (cache) {
-      try {
-        const cachedData = JSON.parse(localStorage.getItem(`use-ens-${domain}`))
-        if (cachedData != null) set(cachedData)
-        // eslint-disable-next-line no-empty
-      } catch {
-        getENSFromProvider()
-      }
-    } else if (provider && domain) {
-      getENSFromProvider()
-    }
-  }, [cache, contractAddress, domain, fetchOptions])
+  }, [contractAddress, domain, fetchOptions])
 
   return data
 }
