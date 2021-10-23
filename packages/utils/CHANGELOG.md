@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.2
+
+### Patch Changes
+
+- feat(utils): update `ChainId` enum, use Rainbow icons for some chains
+
 ## 0.0.1
 
 ### Patch Changes
