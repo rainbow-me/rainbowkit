@@ -36,7 +36,9 @@ export enum ChainId {
   EDGE = 2021,
   NEAR = 1313161554,
   ROPSTEN = 3,
-  RINKEBY = 4
+  RINKEBY = 4,
+  KOVAN = 42,
+  GOERLI = 5
 }
 
 export const chains: Chain[] = [
@@ -58,7 +60,7 @@ export const chains: Chain[] = [
     ens: { registry: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e' },
     explorers: [{ name: 'etherscan', url: 'https://etherscan.io', standard: 'EIP3091' }],
     aliases: ['ethereum', 'mainnet', 'homestead'],
-    logoURL: 'https://dweb.link/ipfs/bafkreihr4iw5yptth3uanym4s62vfr66eaqhywjwuqk4btf2i2uku7lutq'
+    logoURL: 'https://ipfs.io/ipfs/bafkreicqc2cxsoplwmbuk3amcap7bfr56wnrcksq7huqg2bpmwa75hlc2y'
   },
   {
     name: 'Optimism',
@@ -69,7 +71,7 @@ export const chains: Chain[] = [
     infoURL: 'https://optimism.io',
     chainId: 10,
     aliases: ['optimism'],
-    logoURL: 'https://dweb.link/ipfs/bafkreifjyybj7whe5bsa4fbgjnfmhdhkhsbw6ffghrzrttg5sfjb6fwzs4'
+    logoURL: 'https://ipfs.io/ipfs/bafkreieyg2v6gxaaascecc2chrxwg26fvteyrwktf7epir7acdhkncxtrm'
   },
   {
     name: 'Arbitrum',
@@ -89,7 +91,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://arbitrum.io',
     aliases: ['arbitrum'],
-    logoURL: 'https://bafkreiexp4jgjydr4g7eug2lbbmetzt62lmrtpsx7ro5yqcdqggnc4ioea.ipfs.dweb.link'
+    logoURL: 'https://ipfs.io/ipfs/bafkreicg6e4twffmbrhfoq4bl7tfdkqgeew4pnd5h5lxsgvzckrosg3cra'
   },
   {
     name: 'Binance Smart Chain',
@@ -132,7 +134,7 @@ export const chains: Chain[] = [
     chainId: 137,
     explorers: [{ name: 'polygonscan', url: 'https://polygonscan.com', standard: 'EIP3091' }],
     aliases: ['polygon', 'matic'],
-    logoURL: 'https://bafkreih3kma5jhfo5sy3hsqcyf7ipg7lommwk2whvaxp2zkoe76ai7mjyq.ipfs.dweb.link'
+    logoURL: 'https://ipfs.io/ipfs/bafkreidhxhnuwatm7xoiwuniiwycewblmxiu65dkklt3t3fwtx2eumbswu'
   },
   {
     name: 'xDAI',
@@ -152,7 +154,7 @@ export const chains: Chain[] = [
     chainId: 100,
     slip44: 700,
     aliases: ['xdai'],
-    logoURL: 'https://bafkreibzm64fdn6lk47fkax3hlwg5hov2z6jlgot7ymfzkzkczxfv7544y.ipfs.dweb.link'
+    logoURL: 'https://ipfs.io/ipfs/bafkreifmdkmojin3cfsxyithsz4mgvnv5veieqt2cqb3cfxgf4zt2oa6wi'
   },
   {
     name: 'Fantom Opera',
