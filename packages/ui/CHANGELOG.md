@@ -1,5 +1,13 @@
 # @rainbow-me/kit-ui
 
+## 0.0.18
+
+### Patch Changes
+
+- feat(ui, modal): decouple components from Profile, improve default styles for Modal
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-modal@0.0.8
+
 ## 0.0.17
 
 ### Patch Changes
