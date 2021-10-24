@@ -8,7 +8,7 @@ import type { Wallet } from '@rainbow-me/kit-utils'
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 
 const Title = styled.span`
-  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -49,7 +49,7 @@ const StyledModal = styled.div`
 `
 
 const Caption = styled.span`
-  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -80,7 +80,7 @@ const CloseButton = styled.button`
 `
 
 const WalletLabel = styled.span`
-  font-family: ui-rounded, 'SF Pro Rounded', 'Inter', system-ui, sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -99,11 +99,13 @@ const WalletLabel = styled.span`
 
 const WalletList = styled.ul`
   margin-top: 24px;
+  list-style-type: none;
+  padding-left: 0;
 
   li {
     margin-bottom: 12px;
     padding: 11px;
-    width: 100%;
+    width: unset;
   }
 
   li button {
@@ -111,6 +113,8 @@ const WalletList = styled.ul`
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    background: none;
+    border: none;
   }
 
   li img:first-child {
