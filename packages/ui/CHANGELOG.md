@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.19
+
+### Patch Changes
+
+- fix(ui/profile): properties for button component
+
 ## 0.0.18
 
 ### Patch Changes
