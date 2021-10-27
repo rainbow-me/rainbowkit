@@ -27,11 +27,13 @@ export interface ProfileProps {
   button?: ({
     connect,
     disconnect,
-    isConnected
+    isConnected,
+    isConnecting
   }: {
     connect: () => void
     disconnect: () => void
     isConnected: boolean
+    isConnecting: boolean
   }) => JSX.Element
   dropdown?: (props: WalletDropdownProps) => JSX.Element
   ensOptions?: Partial<UseENSOptions>
@@ -49,7 +51,13 @@ export const Profile = ({
   dropdown: DropdownComponent = WalletDropdown,
   ensOptions
 }: ProfileProps) => {
-  const { state, Modal, provider, address: accountAddress, chainId } = useWalletModal(modalOptions)
+  const {
+    state: { isConnected, isConnecting, disconnect, connect },
+    Modal,
+    provider,
+    address: accountAddress,
+    chainId
+  } = useWalletModal(modalOptions)
 
   const { records, domain } = useENS({
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -65,7 +73,7 @@ export const Profile = ({
 
   return (
     <Container className={classNames?.container || ''}>
-      {state.isConnected ? (
+      {isConnected ? (
         <>
           <Badge
             {...{ records, ipfsGatewayUrl, address, provider }}
@@ -76,15 +84,15 @@ export const Profile = ({
             <DropdownComponent
               {...{ address, accountAddress, chainId, provider }}
               copyAddress={CopyAddressComponent}
-              disconnect={state.disconnect}
+              disconnect={disconnect}
               className={classNames?.menu || ''}
             />
           )}
         </>
       ) : (
         <>
-          <ButtonComponent connect={state.connect} disconnect={state.disconnect} isConnected={state.isConnecting} />
-          {state.isConnecting && <Modal />}
+          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting }} />
+          {isConnecting && <Modal />}
         </>
       )}
     </Container>
