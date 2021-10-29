@@ -60,7 +60,7 @@ export const chains: Chain[] = [
     ens: { registry: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e' },
     explorers: [{ name: 'etherscan', url: 'https://etherscan.io', standard: 'EIP3091' }],
     aliases: ['ethereum', 'mainnet', 'homestead'],
-    logoURL: 'https://ipfs.io/ipfs/bafkreicqc2cxsoplwmbuk3amcap7bfr56wnrcksq7huqg2bpmwa75hlc2y'
+    logoURL: 'https://ipfs.io/ipfs/QmU1rGfe87iNEC1rComqCREDT9hX86TiysU3mqJ5iSFb6i'
   },
   {
     name: 'Optimism',
@@ -154,7 +154,7 @@ export const chains: Chain[] = [
     chainId: 100,
     slip44: 700,
     aliases: ['xdai'],
-    logoURL: 'https://ipfs.io/ipfs/bafkreifmdkmojin3cfsxyithsz4mgvnv5veieqt2cqb3cfxgf4zt2oa6wi'
+    logoURL: 'https://ipfs.io/ipfs/QmZAKjCruRsqE3njkbEZqNfKeKoD4w389UeYK4L751hcJy'
   },
   {
     name: 'Fantom Opera',
@@ -308,7 +308,7 @@ export const chains: Chain[] = [
 
   /// TESTNETS
   {
-    name: 'Ethereum Testnet Ropsten',
+    name: 'Ropsten',
     chain: 'ETH',
     network: 'ropsten',
     rpc: [
@@ -324,7 +324,7 @@ export const chains: Chain[] = [
     explorers: [{ name: 'etherscan-ropsten', url: 'https://ropsten.etherscan.io', standard: 'EIP3091' }]
   },
   {
-    name: 'Ethereum Testnet Rinkeby',
+    name: 'Rinkeby',
     chain: 'ETH',
     network: 'rinkeby',
     rpc: [
@@ -340,7 +340,7 @@ export const chains: Chain[] = [
     aliases: ['rinkeby']
   },
   {
-    name: 'Ethereum Testnet Görli',
+    name: 'Görli',
     chain: 'ETH',
     network: 'goerli',
     rpc: ['https://rpc.goerli.mudit.blog/', 'https://rpc.slock.it/goerli ', 'https://goerli.prylabs.net/'],
@@ -352,7 +352,7 @@ export const chains: Chain[] = [
     aliases: ['goerli']
   },
   {
-    name: 'Ethereum Testnet Kovan',
+    name: 'Kovan',
     chain: 'ETH',
     network: 'kovan',
     rpc: [
@@ -397,7 +397,7 @@ export const chains: Chain[] = [
     aliases: ['okex testnet', 'okex-testnet']
   },
   {
-    name: 'Optimistic Ethereum Testnet Kovan',
+    name: 'Optimistic Kovan',
     chain: 'ETH',
     network: 'kovan',
     rpc: ['https://kovan.optimism.io/'],
@@ -438,7 +438,7 @@ export const chains: Chain[] = [
     aliases: ['eco testnet', 'huobi testnet']
   },
   {
-    name: 'Optimistic Ethereum Testnet Goerli',
+    name: 'Optimistic Goerli',
     chain: 'ETH',
     network: 'goerli',
     rpc: ['https://goerli.optimism.io/'],
