@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.20
+
+### Patch Changes
+
+- make NetworkSelect follow Rainbow design
+
 ## 0.0.19
 
 ### Patch Changes
