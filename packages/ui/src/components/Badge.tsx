@@ -13,6 +13,9 @@ export interface BadgeProps {
   ipfsGatewayUrl: string
 }
 
+/**
+ * User bagge showing current address/ENS username and a profile picture/emoji icon
+ */
 export const Badge = ({
   records,
   address,
@@ -20,36 +23,20 @@ export const Badge = ({
   ipfsGatewayUrl,
   ...props
 }: BadgeProps & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => {
-  const { avatar, emoji, color } = useMemo(() => {
+  const avatar = useMemo(() => {
     if (records.avatar) {
       const avatar = records.avatar
       if (avatar) {
         if (avatar.startsWith('ipfs://')) {
-          return { avatar: `https://${ipfsGatewayUrl}/ipfs/${avatar.slice(7)}`, address }
-        } else return { avatar, address }
-      }
-    } else {
-      return {
-        emoji: addressHashedEmoji(address),
-        color: colors[addressHashedColorIndex(address)],
-        address
+          return `https://${ipfsGatewayUrl}/ipfs/${avatar.slice(7)}`
+        } else return avatar
       }
     }
   }, [address, records.avatar])
 
   return (
     <Pill {...props}>
-      <EthAddress
-        profileIcon={
-          avatar ||
-          (() => (
-            <EmojiIcon $bgColor={color} role="img">
-              {emoji}
-            </EmojiIcon>
-          ))
-        }
-        {...{ provider, address }}
-      />
+      <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />
     </Pill>
   )
 }
