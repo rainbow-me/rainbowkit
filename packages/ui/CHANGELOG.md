@@ -1,5 +1,13 @@
 # @rainbow-me/kit-ui
 
+## 0.0.21
+
+### Patch Changes
+
+- make EmojiIcon more useful and remove Torus from supported connectors of web3-react (for now)
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-modal@0.0.9
+
 ## 0.0.20
 
 ### Patch Changes
