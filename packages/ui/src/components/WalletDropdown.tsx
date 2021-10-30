@@ -27,10 +27,8 @@ const Menu = styled.ul`
   border-radius: 16px;
   position: absolute;
   top: 64px;
-  left: 0;
   min-width: 160px;
   margin: 0;
-
   padding: 12.5px 13px;
   img {
     display: inline-block;
