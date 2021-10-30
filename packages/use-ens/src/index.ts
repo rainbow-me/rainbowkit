@@ -24,12 +24,10 @@ export const useENS = ({
 
   useEffect(() => {
     if (provider && domain && !data) {
-      if (chainId) {
-        if (contractAddress || chainId === 1) {
-          getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
-            set(data)
-          })
-        }
+      if (chainId === 1 || contractAddress) {
+        getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
+          set(data)
+        })
       } else {
         provider.getNetwork().then(({ chainId }: { chainId: number }) => {
           if (contractAddress || chainId === 1) {

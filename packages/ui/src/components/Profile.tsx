@@ -87,7 +87,7 @@ export const Profile = ({
 
   return (
     <Container className={classNames?.container || ''}>
-      {isConnected && address && chainId && provider ? (
+      {isConnected ? (
         <>
           <Badge
             {...{ ipfsGatewayUrl, address, provider }}
@@ -97,14 +97,13 @@ export const Profile = ({
           >
             <DropdownIcon />
           </Badge>
-          {address && accountAddress && (
-            <DropdownComponent
-              {...{ address, accountAddress, chainId, provider, isExpanded }}
-              copyAddress={CopyAddressComponent}
-              disconnect={disconnect}
-              className={classNames?.menu || ''}
-            />
-          )}
+
+          <DropdownComponent
+            {...{ address, accountAddress, chainId, provider, isExpanded }}
+            copyAddress={CopyAddressComponent}
+            disconnect={disconnect}
+            className={classNames?.menu || ''}
+          />
         </>
       ) : (
         <>
