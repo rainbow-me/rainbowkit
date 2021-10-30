@@ -36,7 +36,7 @@ const List = styled.div<ListProps>`
   z-index: 10;
   padding: 4px;
   border-radius: 16px;
-  top: calc(10px + 24px + 8px); /* margin + height + paddings */
+  top: 42px;
   font-weight: 800;
 `
 

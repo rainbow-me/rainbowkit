@@ -26,7 +26,7 @@ const Menu = styled.ul`
   backdrop-filter: blur(20px);
   border-radius: 16px;
   position: absolute;
-  top: 64px;
+  top: 42px;
   min-width: 160px;
   margin: 0;
   padding: 12.5px 13px;
