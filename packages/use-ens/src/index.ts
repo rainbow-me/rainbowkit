@@ -4,6 +4,7 @@ import type { BaseProvider as Provider } from '@ethersproject/providers'
 
 export type UseENSOptions = {
   provider: Provider
+  chainId: number
   domain: string
   fetchOptions?: RequestInit
   contractAddress?: string
@@ -11,22 +12,28 @@ export type UseENSOptions = {
 
 /**
  * A React hook to fetch ENS records from a domain.
- * @param provider Ethers.js provider
- * @param domain ENS domain to fetch data from
  * @returns
  */
-export const useENS = ({ provider, domain, fetchOptions, contractAddress }: UseENSOptions): ResolvedENS => {
+export const useENS = ({ provider, domain, fetchOptions, contractAddress, chainId }: UseENSOptions): ResolvedENS => {
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
 
   useEffect(() => {
-    if (provider && domain) {
-      provider.getNetwork().then(({ chainId }) => {
+    if (provider && domain && data.address !== null) {
+      if (chainId) {
         if (contractAddress || chainId === 1) {
           getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
             set(data)
           })
         }
-      })
+      } else {
+        provider.getNetwork().then(({ chainId }) => {
+          if (contractAddress || chainId === 1) {
+            getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
+              set(data)
+            })
+          }
+        })
+      }
     }
   }, [contractAddress, domain, fetchOptions])
 

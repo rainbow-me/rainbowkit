@@ -18,7 +18,7 @@ const Container = styled.div`
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
-  rpcProvider?: JsonRpcProvider
+  ENSProvider?: JsonRpcProvider
   ipfsGatewayUrl?: string
   classNames?: Partial<{
     pill: string
@@ -62,7 +62,7 @@ const DropdownIcon = () => (
 export const Profile = ({
   modalOptions,
   copyAddress: CopyAddressComponent,
-  rpcProvider,
+  ENSProvider,
   ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
   classNames,
   button: ButtonComponent = ConnectButton,
@@ -78,8 +78,8 @@ export const Profile = ({
   } = useWalletModal(modalOptions)
 
   const { records, domain } = useENS({
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    provider: rpcProvider || provider!,
+    provider: ENSProvider,
+    chainId,
     domain: accountAddress,
     fetchOptions: { cache: 'force-cache' },
     ...ensOptions
