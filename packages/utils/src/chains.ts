@@ -407,7 +407,7 @@ export const chains: Chain[] = [
     aliases: ['optimism kovan', 'optimism-testnet', 'optimism-kovan']
   },
   {
-    name: 'Binance Smart Chain Testnet',
+    name: 'BSC Testnet',
     chain: 'BSC',
     network: 'Chapel',
     rpc: [
@@ -448,7 +448,7 @@ export const chains: Chain[] = [
     aliases: ['optimism goerli']
   },
   {
-    name: 'Klaytn Testnet Baobab',
+    name: 'Klaytn Baobab',
     chain: 'KLAY',
     network: 'baobab',
     rpc: ['https://node-api.klaytnapi.com/v1/klaytn'],
