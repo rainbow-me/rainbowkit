@@ -19,11 +19,11 @@
   "author": "v1rtl",
   "license": "MIT",
   "dependencies": {
-    "@ethersproject/abstract-provider": "^5.4.1",
-    "@ethersproject/address": "^5.4.0",
-    "@ethersproject/bignumber": "^5.4.2",
-    "@ethersproject/bytes": "^5.4.0",
-    "@ethersproject/providers": "^5.4.5",
+    "@ethersproject/abstract-provider": "^5.5.1",
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/bytes": "^5.5.0",
+    "@ethersproject/providers": "^5.5.0",
     "@web3-react/abstract-connector": "^6.0.7",
     "chroma-js": "^2.1.2"
   },

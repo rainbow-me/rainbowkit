@@ -75,7 +75,8 @@ export const Profile = ({
   const ens = useENS({
     provider: ENSProvider,
     chainId,
-    domain: accountAddress,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    domain: accountAddress!,
     fetchOptions: { cache: 'force-cache' },
     ...ensOptions
   })
@@ -86,7 +87,7 @@ export const Profile = ({
 
   return (
     <Container className={classNames?.container || ''}>
-      {isConnected ? (
+      {isConnected && address && chainId && provider ? (
         <>
           <Badge
             {...{ ipfsGatewayUrl, address, provider }}
@@ -96,7 +97,7 @@ export const Profile = ({
           >
             <DropdownIcon />
           </Badge>
-          {isExpanded && (
+          {isExpanded && address && accountAddress && (
             <DropdownComponent
               {...{ address, accountAddress, chainId, provider }}
               copyAddress={CopyAddressComponent}
@@ -108,7 +109,7 @@ export const Profile = ({
       ) : (
         <>
           <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting }} />
-          {isConnecting && <Modal />}
+          {isConnecting && typeof Modal !== 'undefined' && <Modal />}
         </>
       )}
     </Container>

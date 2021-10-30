@@ -1,17 +1,13 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from '@linaria/react'
+import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
 
-export interface TxProps {
+export type TxProps = {
   status?: 'pending' | 'success' | 'fail'
   title?: string
-  hash?: string
-  data?: string
-  from?: string
-  to?: string
-  value?: BigNumber
   chainId?: number
   explorerUrl?: string
   provider?: BaseProvider
@@ -19,7 +15,7 @@ export interface TxProps {
     container: string
     icon: string
   }>
-}
+} & Pick<TransactionWithStatus, 'status' | 'to' | 'value' | 'from' | 'data' | 'hash'>
 
 const Container = styled.div`
   display: flex;
@@ -58,7 +54,8 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
       }
 
       if (!initialTitle) {
-        setTitle(guessTitle({ data, from, to, chainId, value }))
+        const guessedTitle = guessTitle({ data, from, to, chainId, value })
+        if (guessedTitle) setTitle(guessedTitle)
       }
     }
   }, [props.hash, props.explorerUrl, chainId])

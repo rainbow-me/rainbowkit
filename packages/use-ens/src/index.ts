@@ -3,7 +3,7 @@ import { getENS, ResolvedENS } from 'get-ens'
 
 export type UseENSOptions = {
   provider: any
-  chainId: number
+  chainId?: number
   domain: string
   fetchOptions?: RequestInit
   contractAddress?: string
@@ -31,7 +31,7 @@ export const useENS = ({
           })
         }
       } else {
-        provider.getNetwork().then(({ chainId }) => {
+        provider.getNetwork().then(({ chainId }: { chainId: number }) => {
           if (contractAddress || chainId === 1) {
             getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
               set(data)

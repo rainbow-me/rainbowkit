@@ -6,7 +6,7 @@ import { EmojiIcon } from './EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
 
 export interface BadgeProps {
-  records: ENSRecords
+  records: ENSRecords | undefined
   address: string
   provider: BaseProvider
   ipfsGatewayUrl: string
@@ -24,7 +24,7 @@ export const Badge = ({
   ...props
 }: BadgeProps & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => {
   const avatar = useMemo(() => {
-    if (records.avatar) {
+    if (records?.avatar) {
       const avatar = records.avatar
       if (avatar) {
         if (avatar.startsWith('ipfs://')) {
@@ -32,7 +32,7 @@ export const Badge = ({
         } else return avatar
       }
     }
-  }, [address, records.avatar])
+  }, [address, records?.avatar])
 
   return (
     <Pill {...props}>

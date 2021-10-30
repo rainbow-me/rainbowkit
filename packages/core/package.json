@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/rainbow-me/rainbowkit#readme",
   "dependencies": {
-    "@ethersproject/providers": "^5.4.5",
-    "@ethersproject/units": "^5.4.0",
+    "@ethersproject/providers": "^5.5.0",
+    "@ethersproject/units": "^5.5.0",
     "@rainbow-me/kit-hooks": "workspace:*",
     "@rainbow-me/kit-modal": "workspace:*",
     "@rainbow-me/kit-ui": "workspace:*",

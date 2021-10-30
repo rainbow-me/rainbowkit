@@ -22,6 +22,7 @@ export const getWalletInfo = (name: string): { name: string; logoURI: string } =
         logoURI: 'https://bafkreiao4cnnidbqblkmd2xfb2akutm2bjdr5r4xnbuwumzhda3ikxyb7a.ipfs.dweb.link'
       }
     case 'rainbow':
+    default:
       return {
         name: 'Rainbow',
         logoURI: 'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link'

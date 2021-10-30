@@ -9,10 +9,10 @@ export const guessTitle = ({
   to,
   chainId = 1,
   value
-}: Partial<{ data: string; chainId: number }> & { from: string; to: string; value: BigNumber }) => {
+}: Partial<{ data: string; chainId: number }> & { from: string; to: string; value?: BigNumber }) => {
   if (data === '0x') {
     if (from === to) return `Cancel transaction`
-    else
+    else if (value)
       return `Transfer ${toSignificant(value)} ${chainIDToToken(chainId)} from ${shortenAddress(
         from
       )} to ${shortenAddress(to)}`

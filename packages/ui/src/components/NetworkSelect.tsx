@@ -95,11 +95,13 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
 
   const filteredChains = useMemo(() => {
-    const tmp = []
+    const tmp: Chain[] = []
 
     for (const chain of selectedChains) {
-      if (typeof chain === 'string') tmp.push(chains.find((x) => x.aliases.includes(chain)))
-      else tmp.push(chain)
+      if (typeof chain === 'string') {
+        const chainObj = chains.find((x) => x.aliases.includes(chain))
+        if (chainObj) tmp.push(chainObj)
+      } else tmp.push(chain)
     }
     return tmp
   }, [selectedChains])
