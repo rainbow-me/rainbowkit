@@ -1,5 +1,12 @@
 # @rainbow-me/kit-ui
 
+## 0.0.28
+
+### Patch Changes
+
+- reduce ENS calls
+  - @rainbow-me/kit-hooks@0.0.9
+
 ## 0.0.27
 
 ### Patch Changes
