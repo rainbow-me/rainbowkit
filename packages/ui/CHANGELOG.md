@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.23
+
+### Patch Changes
+
+- feat(ui/badge): allow passing children
+
 ## 0.0.22
 
 ### Patch Changes
