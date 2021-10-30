@@ -14,11 +14,17 @@ export type UseENSOptions = {
  * A React hook to fetch ENS records from a domain.
  * @returns
  */
-export const useENS = ({ provider, domain, fetchOptions, contractAddress, chainId }: UseENSOptions): ResolvedENS => {
-  const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
+export const useENS = ({
+  provider,
+  domain,
+  fetchOptions,
+  contractAddress,
+  chainId
+}: UseENSOptions): ResolvedENS | undefined => {
+  const [data, set] = useState<ResolvedENS>()
 
   useEffect(() => {
-    if (provider && domain && data.owner == null) {
+    if (provider && domain && !data) {
       if (chainId) {
         if (contractAddress || chainId === 1) {
           getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
