@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.34
+
+### Patch Changes
+
+- fix(ui): don't trigger WalletDropdown re-render
+
 ## 0.0.33
 
 ### Patch Changes
