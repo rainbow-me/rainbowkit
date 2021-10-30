@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.24
+
+### Patch Changes
+
+- feat(ui/walletdropdown): add default background and font size
+
 ## 0.0.23
 
 ### Patch Changes
