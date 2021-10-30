@@ -1,5 +1,13 @@
 # @rainbow-me/kit-ui
 
+## 0.0.22
+
+### Patch Changes
+
+- feat(ui): make Profile look like in the mockup
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-modal@0.0.10
+
 ## 0.0.21
 
 ### Patch Changes
