@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.3
+
+### Patch Changes
+
+- update chain names
+
 ## 0.0.2
 
 ### Patch Changes
