@@ -18,7 +18,7 @@ export const useENS = ({ provider, domain, fetchOptions, contractAddress, chainI
   const [data, set] = useState<ResolvedENS>({ address: null, owner: null, records: {}, domain: '' })
 
   useEffect(() => {
-    if (provider && domain && data.address !== null) {
+    if (provider && domain && data.owner == null) {
       if (chainId) {
         if (contractAddress || chainId === 1) {
           getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
