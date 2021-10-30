@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.27
+
+### Patch Changes
+
+- final touch for WalletDropdown
+
 ## 0.0.26
 
 ### Patch Changes
