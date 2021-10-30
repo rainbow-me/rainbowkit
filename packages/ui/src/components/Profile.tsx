@@ -80,7 +80,7 @@ export const Profile = ({
     ...ensOptions
   })
 
-  const address = useMemo(() => ens.domain || accountAddress, [ens?.domain, accountAddress])
+  const address = useMemo(() => ens?.domain || accountAddress, [ens?.domain, accountAddress])
 
   const [isExpanded, setExpandedState] = useState(false)
 
