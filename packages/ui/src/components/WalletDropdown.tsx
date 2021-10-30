@@ -20,7 +20,8 @@ const CloseIcon = () => {
   )
 }
 
-const Menu = styled.ul`
+const Menu = styled.ul<{ $isExpanded: boolean }>`
+  display: ${({ $isExpanded }) => ($isExpanded ? 'block' : 'none')};
   background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
@@ -70,6 +71,7 @@ export type WalletDropdownProps = {
   chainId: number
   provider: BaseProvider
   disconnect: () => void
+  isExpanded: boolean
 } & React.ClassAttributes<HTMLUListElement> &
   React.HTMLAttributes<HTMLUListElement>
 
@@ -103,9 +105,10 @@ export const WalletDropdown = ({
   chainId,
   provider,
   disconnect,
+  isExpanded,
   ...props
 }: WalletDropdownProps) => (
-  <Menu {...props}>
+  <Menu $isExpanded={isExpanded} {...props}>
     <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
     <li>
       {CopyAddressComponent === true || CopyAddressComponent === undefined ? (

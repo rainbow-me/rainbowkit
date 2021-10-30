@@ -97,9 +97,9 @@ export const Profile = ({
           >
             <DropdownIcon />
           </Badge>
-          {isExpanded && address && accountAddress && (
+          {address && accountAddress && (
             <DropdownComponent
-              {...{ address, accountAddress, chainId, provider }}
+              {...{ address, accountAddress, chainId, provider, isExpanded }}
               copyAddress={CopyAddressComponent}
               disconnect={disconnect}
               className={classNames?.menu || ''}
