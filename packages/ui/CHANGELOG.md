@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.32
+
+### Patch Changes
+
+- fix(ui): ens fix
+
 ## 0.0.31
 
 ### Patch Changes
