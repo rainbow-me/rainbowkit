@@ -1,7 +1,6 @@
-import { addressHashedEmoji, colors, addressHashedColorIndex } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
 import { EthAddress } from './EthAddress'
-import { ENSRecords } from 'get-ens'
+import type { ENSRecords } from 'get-ens'
 import { Pill } from './Pill'
 import { EmojiIcon } from './EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'

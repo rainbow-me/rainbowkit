@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getENS, ResolvedENS } from 'get-ens'
-import type { BaseProvider as Provider } from '@ethersproject/providers'
 
 export type UseENSOptions = {
-  provider: Provider
+  provider: any
   chainId: number
   domain: string
   fetchOptions?: RequestInit

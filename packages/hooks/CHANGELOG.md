@@ -1,5 +1,20 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.12
+
+### Patch Changes
+
+- ENS fixes
+- Updated dependencies [undefined]
+  - use-ens@0.0.9
+
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - use-ens@0.0.8
+
 ## 0.0.10
 
 ### Patch Changes

@@ -25,12 +25,7 @@ export interface ProfileProps {
     menu: string
     container: string
   }>
-  button?: ({
-    connect,
-    disconnect,
-    isConnected,
-    isConnecting
-  }: {
+  button?: (props: {
     connect: () => void
     disconnect: () => void
     isConnected: boolean
@@ -77,7 +72,7 @@ export const Profile = ({
     chainId
   } = useWalletModal(modalOptions)
 
-  const { records, domain } = useENS({
+  const ens = useENS({
     provider: ENSProvider,
     chainId,
     domain: accountAddress,
@@ -85,7 +80,7 @@ export const Profile = ({
     ...ensOptions
   })
 
-  const address = useMemo(() => domain || accountAddress, [domain, accountAddress])
+  const address = useMemo(() => ens.domain || accountAddress, [ens?.domain, accountAddress])
 
   const [isExpanded, setExpandedState] = useState(false)
 
@@ -94,7 +89,8 @@ export const Profile = ({
       {isConnected ? (
         <>
           <Badge
-            {...{ records, ipfsGatewayUrl, address, provider }}
+            {...{ ipfsGatewayUrl, address, provider }}
+            records={ens?.records}
             onClick={() => setExpandedState(!isExpanded)}
             className={classNames?.pill || ''}
           >
