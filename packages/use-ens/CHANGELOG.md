@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.11
+
+### Patch Changes
+
+- fix(use-ens): fix never triggering with `chainId`
+
 ## 0.0.10
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @rainbow-me/kit-ui
 
+## 0.0.35
+
+### Patch Changes
+
+- fix(use-ens): fix never triggering with `chainId`
+  - @rainbow-me/kit-hooks@0.0.14
+
 ## 0.0.34
 
 ### Patch Changes
