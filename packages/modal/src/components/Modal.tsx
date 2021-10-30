@@ -8,7 +8,6 @@ import type { Wallet } from '@rainbow-me/kit-utils'
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 
 const Title = styled.span`
-  font-family: sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -49,7 +48,6 @@ const StyledModal = styled.div`
 `
 
 const Caption = styled.span`
-  font-family: sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -80,13 +78,11 @@ const CloseButton = styled.button`
 `
 
 const WalletLabel = styled.span`
-  font-family: sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
   line-height: 24px;
 
-  /* identical to box height */
   display: flex;
   align-items: center;
   letter-spacing: 0.5px;
