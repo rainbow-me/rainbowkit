@@ -21,12 +21,14 @@ const CloseIcon = () => {
 }
 
 const Menu = styled.ul`
+  background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   border-radius: 16px;
   position: absolute;
   top: 64px;
   left: 0;
+  min-width: 160px;
   margin: 0;
 
   padding: 12.5px 13px;
@@ -34,6 +36,7 @@ const Menu = styled.ul`
     display: inline-block;
   }
   li {
+    font-size: 14px;
     list-style-type: none;
   }
   li:nth-child(1) {
