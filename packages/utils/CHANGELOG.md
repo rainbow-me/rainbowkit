@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.4
+
+### Patch Changes
+
+- fix: types and bad ifs in strict mode
+
 ## 0.0.3
 
 ### Patch Changes

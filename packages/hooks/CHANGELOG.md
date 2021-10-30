@@ -1,5 +1,14 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.13
+
+### Patch Changes
+
+- fix: types and bad ifs in strict mode
+- Updated dependencies [undefined]
+  - use-ens@0.0.10
+  - @rainbow-me/kit-utils@0.0.4
+
 ## 0.0.12
 
 ### Patch Changes

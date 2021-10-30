@@ -1,5 +1,16 @@
 # @rainbow-me/kit-core
 
+## 0.0.32
+
+### Patch Changes
+
+- fix: types and bad ifs in strict mode
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-hooks@0.0.13
+  - @rainbow-me/kit-modal@0.0.12
+  - @rainbow-me/kit-ui@0.0.33
+  - @rainbow-me/kit-utils@0.0.4
+
 ## 0.0.31
 
 ### Patch Changes

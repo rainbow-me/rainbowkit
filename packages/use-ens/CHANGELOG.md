@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.10
+
+### Patch Changes
+
+- fix: types and bad ifs in strict mode
+
 ## 0.0.9
 
 ### Patch Changes
