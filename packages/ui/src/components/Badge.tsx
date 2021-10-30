@@ -21,6 +21,7 @@ export const Badge = ({
   address,
   provider,
   ipfsGatewayUrl,
+  children,
   ...props
 }: BadgeProps & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => {
   const avatar = useMemo(() => {
@@ -36,7 +37,8 @@ export const Badge = ({
 
   return (
     <Pill {...props}>
-      <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />
+      <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />{' '}
+      {children}
     </Pill>
   )
 }
