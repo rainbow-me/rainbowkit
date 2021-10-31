@@ -21,7 +21,8 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 1.25rem;
   border: 4px solid gray;
-  width: max-content;
+  min-width: max-content;
+  width: 100%;
 `
 
 const Address = styled.div`
@@ -52,12 +53,13 @@ export const AccountInfo = ({
   chainId,
   explorer: Explorer,
   copyAddress: CopyAddress,
-  explorerUrl
+  explorerUrl,
+  classNames
 }: AccountInfoProps) => {
   const { name, logoURI } = useWalletInfo(wallet)
 
   return (
-    <Container>
+    <Container className={classNames.container || ''}>
       {name && (
         <div>
           Connected with <strong>{name}</strong>
