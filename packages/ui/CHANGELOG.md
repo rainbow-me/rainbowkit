@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.39
+
+### Patch Changes
+
+- fix(ui/Pill): set default color
+
 ## 0.0.38
 
 ### Patch Changes
