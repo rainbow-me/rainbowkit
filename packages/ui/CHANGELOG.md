@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.38
+
+### Patch Changes
+
+- fix(ui/AccountInfo): add missing `classNames` prop
+
 ## 0.0.37
 
 ### Patch Changes
