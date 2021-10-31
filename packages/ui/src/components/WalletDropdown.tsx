@@ -24,6 +24,7 @@ const Menu = styled.ul<{ $isExpanded: boolean }>`
   display: ${({ $isExpanded }) => ($isExpanded ? 'block' : 'none')};
   background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+
   backdrop-filter: blur(20px);
   border-radius: 16px;
   position: absolute;

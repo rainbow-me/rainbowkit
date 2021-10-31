@@ -46,8 +46,7 @@ const Option = styled.div`
   align-items: center;
   flex-direction: row;
   border-radius: 12px;
-  background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  color: #e9f2ff;
   backdrop-filter: blur(20px);
 `
 

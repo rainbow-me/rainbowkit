@@ -29,6 +29,7 @@ const Container = styled.div`
 
 const Address = styled.div`
   font-weight: 800;
+  color: #e9f2ff;
 `
 
 const ProfileIcon = styled.img`

@@ -1,5 +1,4 @@
-import { Web3Provider } from '@ethersproject/providers'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CopyAddressButton } from './CopyAddressButton'
 import { ExplorerLink, ExplorerProps } from './ExplorerLink'
 import { useWalletInfo } from '@rainbow-me/kit-hooks'
