@@ -10,4 +10,5 @@ export const Pill = styled.div`
   backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 7px;
+  color: #e9f2ff;
 `
