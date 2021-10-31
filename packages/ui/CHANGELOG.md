@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.36
+
+### Patch Changes
+
+- fix(ui): set default color
+
 ## 0.0.35
 
 ### Patch Changes
