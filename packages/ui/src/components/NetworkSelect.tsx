@@ -119,9 +119,9 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
           chain={currentChain}
           className={`${css`
             padding: 7px;
-
-            /* Note: backdrop-filter has minimal browser support */
             border-radius: 16px;
+            background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
+            backdrop-filter: blur(20px);
           `} ${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
           iconClassName={classNames?.icon}

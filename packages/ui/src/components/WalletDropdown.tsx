@@ -38,6 +38,7 @@ const Menu = styled.ul<{ $isExpanded: boolean }>`
   li {
     font-size: 14px;
     list-style-type: none;
+    color: #e9f2ff;
   }
   li:nth-child(1) {
     margin-bottom: 1rem;
