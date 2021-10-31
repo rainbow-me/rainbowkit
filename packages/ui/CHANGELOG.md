@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.37
+
+### Patch Changes
+
+- fix(ui): a bit more color fixes
+
 ## 0.0.36
 
 ### Patch Changes
