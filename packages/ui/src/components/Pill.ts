@@ -11,4 +11,5 @@ export const Pill = styled.div`
   border-radius: 16px;
   padding: 7px;
   color: #e9f2ff;
+  font-weight: 800;
 `
