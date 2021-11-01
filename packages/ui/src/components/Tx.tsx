@@ -6,10 +6,25 @@ import { styled } from '@linaria/react'
 import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
 
 export type TxProps = {
+  /**
+   * Transaction status
+   */
   status?: 'pending' | 'success' | 'fail'
+  /**
+   * Transaction title
+   */
   title?: string
+  /**
+   * Blockchain network ID of a transaction
+   */
   chainId?: number
+  /**
+   * Blockchain Explorer URL
+   */
   explorerUrl?: string
+  /**
+   * RPC Provider
+   */
   provider?: BaseProvider
   classNames?: Partial<{
     container: string

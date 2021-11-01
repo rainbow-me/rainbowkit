@@ -5,13 +5,34 @@ import { useWalletInfo } from '@rainbow-me/kit-hooks'
 import { styled } from '@linaria/react'
 
 export interface AccountInfoProps {
+  /**
+   * Blockchain account address
+   */
   address: string
+  /**
+   * Wallet name and logo image
+   */
   wallet?: { name: string; logoURI: string }
+  /**
+   * Blockchain explorer component, auto-detected if not set or set to true
+   */
   explorer?: boolean | ((props: ExplorerProps) => JSX.Element)
+  /**
+   * Copy address button component, enabled if set to true or not set
+   */
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  /**
+   * Current chain ID
+   */
 
   chainId?: number
+  /**
+   * URL to a address on a blockchain explorer
+   */
   explorerUrl?: string
+  /**
+   * Custom CSS classNames
+   */
   classNames?: Partial<{
     container: string
   }>
@@ -46,6 +67,9 @@ const Footer = styled.div`
     margin-right: 1.5rem;
   }
 `
+/**
+ * Blockchain account information block.
+ */
 
 export const AccountInfo = ({
   address,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { isAuthorized } from '@rainbow-me/kit-utils'
 

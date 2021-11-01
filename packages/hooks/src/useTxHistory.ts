@@ -16,7 +16,8 @@ export type TransactionWithStatus = Pick<Transaction, 'data' | 'from' | 'to' | '
 }
 
 /**
- * Returns all pending txes
+ * A React hook to manage transaction history state with manual updating
+ * @returns transactions array
  */
 export const useTxHistory = ({
   initialTxes,

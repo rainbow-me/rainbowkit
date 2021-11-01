@@ -3,6 +3,10 @@ import { BaseProvider } from '@ethersproject/providers'
 import { toSignificant } from '@rainbow-me/kit-utils'
 import { useEffect, useState } from 'react'
 
+/**
+ * Outputs a balance of BigNumber to a human-readable format
+ * @returns formatted balance
+ */
 export const useSignificantBalance = ({
   provider,
   address,

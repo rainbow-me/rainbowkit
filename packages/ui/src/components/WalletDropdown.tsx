@@ -68,11 +68,29 @@ const Menu = styled.ul<{ $isExpanded: boolean }>`
 
 export type WalletDropdownProps = {
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  /**
+   * Ethereum or ENS address
+   */
   address: string
+  /**
+   * Ethereum address
+   */
   accountAddress: string
+  /**
+   * Blockchain network ID
+   */
   chainId: number
+  /**
+   * RPC Provider
+   */
   provider: BaseProvider
+  /**
+   * Disconnect from current provider
+   */
   disconnect: () => void
+  /**
+   * Visible state
+   */
   isExpanded: boolean
 } & React.ClassAttributes<HTMLUListElement> &
   React.HTMLAttributes<HTMLUListElement>

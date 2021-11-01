@@ -6,9 +6,21 @@ import { EmojiIcon } from './EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
 
 export interface BadgeProps {
-  records: ENSRecords | undefined
+  /**
+   * ENS records
+   */
+  records?: ENSRecords | undefined
+  /**
+   * Blockchain account address
+   */
   address: string
+  /**
+   * RPC Provider
+   */
   provider: BaseProvider
+  /**
+   * Base URL for IPFS gateway to resolve `ipfs://` links
+   */
   ipfsGatewayUrl: string
 }
 
