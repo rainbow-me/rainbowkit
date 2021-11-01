@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.40
+
+### Patch Changes
+
+- fix font-weight
+
 ## 0.0.39
 
 ### Patch Changes
