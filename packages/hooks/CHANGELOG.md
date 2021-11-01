@@ -1,5 +1,11 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.15
+
+### Patch Changes
+
+- JSDoc
+
 ## 0.0.14
 
 ### Patch Changes
