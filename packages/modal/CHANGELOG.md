@@ -1,5 +1,13 @@
 # @rainbow-me/kit-modal
 
+## 0.0.13
+
+### Patch Changes
+
+- fix minor bugs and add basic tests
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-utils@0.0.5
+
 ## 0.0.12
 
 ### Patch Changes

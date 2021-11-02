@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.12
+
+### Patch Changes
+
+- fix minor bugs and add basic tests
+
 ## 0.0.11
 
 ### Patch Changes
