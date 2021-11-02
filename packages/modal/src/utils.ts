@@ -1,6 +1,5 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import { Wallet } from '@rainbow-me/kit-utils'
-import { chainNametoID, connectorByWallet } from '@rainbow-me/kit-utils'
+import { chainNametoId, connectorByWallet } from '@rainbow-me/kit-utils'
 import assert from 'assert'
 
 /**
@@ -35,7 +34,7 @@ export const createConnector = async ({
   const Connector = await importConnector(connectorName)
   const instance = new Connector({
     ...options,
-    supportedChainIds: chains?.map((chain) => (typeof chain === 'string' ? chainNametoID(chain) : chain))
+    supportedChainIds: chains?.map((chain) => (typeof chain === 'string' ? chainNametoId(chain) : chain))
   }) as AbstractConnector
 
   return { instance, name }

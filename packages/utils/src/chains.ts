@@ -485,7 +485,7 @@ export const chains: Chain[] = [
     nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
     infoURL: 'https://cchain.explorer.avax-test.network',
     chainId: 43113,
-    aliases: ['avax testnet', 'avalanche testnet', 'avax fuji', 'avalanche fuji']
+    aliases: ['avax testnet', 'avalanche testnet', 'avax fuji', 'avalanche fuji', 'fuji', 'fuji testnet']
   },
   {
     name: 'Celo Alfajores Testnet',

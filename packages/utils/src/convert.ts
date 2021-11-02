@@ -1,7 +1,12 @@
 import { chains } from './chains'
 
-export const connectorByWallet = (name: string) => {
-  switch (name) {
+/**
+ * Finds a connector name by wallet name
+ * @param wallet wallet name
+ * @returns connector name
+ */
+export const connectorByWallet = (wallet: string) => {
+  switch (wallet) {
     case 'metamask':
       return 'Injected'
     case 'coinbase':
@@ -9,34 +14,40 @@ export const connectorByWallet = (name: string) => {
       return 'WalletLink'
     case 'frame':
       return 'Frame'
-    case 'torus':
-      return 'Torus'
     case 'walletconnect':
     case 'rainbow':
+    case 'argent':
       return 'WalletConnect'
   }
 }
 
+/**
+ * Finds a wallet name by connector name
+ * @param connector connect name
+ * @returns wallet name
+ */
 export const walletByConnector = (connector: string) => {
   switch (connector) {
     case 'InjectedConnector':
       return 'metamask'
     case 'WalletLinkConnector':
-      return 'coinbase'
-    case 'TorusConnector':
-      return 'torus'
+      return 'walletlink'
     case 'WalletConnectConnector':
       return 'walletconnect'
+    case 'FrameConnector':
+      return 'frame'
   }
 }
 
-export const chainNametoID = (name: string) => chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
+export const chainNametoId = (name: string): number =>
+  chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
 
-export const chainIdToName = (id: number) => chains.find((chain) => chain.chainId === id)?.name || 'Ethereum'
+export const chainIdToName = (id: number): string => chains.find((chain) => chain.chainId === id)?.name || 'Ethereum'
 
-export const chainIdToAlias = (id: number) => chains.find((chain) => chain.chainId === id)?.aliases[0] || 'ethereum'
+export const chainIdToAlias = (id: number): string =>
+  chains.find((chain) => chain.chainId === id)?.aliases[0] || 'ethereum'
 
-export const chainIDToToken = (id: number) =>
+export const chainIDToToken = (id: number): string =>
   chains.find((chain) => chain.chainId === id)?.nativeCurrency.symbol || 'ETH'
 
 export const chainIDToExplorer = (id: number) =>

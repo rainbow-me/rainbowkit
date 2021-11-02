@@ -77,15 +77,14 @@ export const avatars = [
 
 export const popularEmojis = avatars.map((avatar) => avatar.emoji)
 export const emojiColorIndexes = avatars.map((avatar) => avatar.colorIndex)
+
 const emojiCount = avatars.length
 
 export function hashCode(text: string) {
-  let hash = 0,
-    i,
-    chr
+  let hash = 0
   if (text.length === 0) return hash
-  for (i = 0; i < text.length; i++) {
-    chr = text.charCodeAt(i)
+  for (let i = 0; i < text.length; i++) {
+    const chr = text.charCodeAt(i)
     hash = (hash << 5) - hash + chr
     hash |= 0
   }
@@ -110,8 +109,6 @@ export function addressHashedEmoji(address: string) {
 
 export function colorHexToIndex(colorHex: string | null) {
   if (!colorHex) return 0
-  if (colors.includes(colorHex)) {
-    return colors.indexOf(colorHex)
-  }
+  if (colors.includes(colorHex)) return colors.indexOf(colorHex)
   return 0
 }

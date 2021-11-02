@@ -1,12 +1,23 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES2019",
+    "target": "ES2020",
+    "module": "esnext",
     "declaration": true,
     "declarationDir": "dist",
-    "jsx": "react",
-    "outDir": "dist"
+    "preserveSymlinks": true,
+    "outDir": "dist",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true
   },
   "exclude": ["node_modules"],
   "include": ["src"]

@@ -1,4 +1,4 @@
-name: tests
+name: CI
 
 on: [pull_request, push]
 
@@ -15,19 +15,26 @@ jobs:
         node: [lts/*]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node }}
-    - name: Cache .pnpm-store
-      uses: actions/cache@v1
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
-    - name: Install pnpm
-      run: npm i -g pnpm@${{env.pnpm}}
-    - run: pnpm install
-    #- run: pnpm run test # skip for now
-    - run: pnpm run lint
-    - run: pnpm run format
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache .pnpm-store
+        uses: actions/cache@v1
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Install pnpm
+        run: npm i -g pnpm@${{env.pnpm}}
+      - name: Install dependencies
+        run: pnpm install
+      - name: Lint and format
+        run: pnpm lint && pnpm format
+      - name: Run tests
+        run: pnpm test
+      - name: Coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage.lcov
