@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.6
+
+### Patch Changes
+
+- improve `guessTitle` and `toSignificant` utils
+
 ## 0.0.5
 
 ### Patch Changes
