@@ -1,6 +1,6 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import { connectorByWallet, walletByConnector, chainNametoId } from '../../packages/utils/src/convert'
+import { connectorByWallet, walletByConnector, chainNametoId, chainIdToName } from '../../packages/utils/src/convert'
 
 let t = suite('connectorByWallet')
 
@@ -40,6 +40,16 @@ t('finds chain ID by chain name', () => {
 
 t('returns 1 if chain is not found', () => {
   assert.equal(chainNametoId('unknown-chain'), 1)
+})
+
+t = suite('chainIdToName')
+
+t('finds chain name by ID', () => {
+  assert.equal([chainIdToName(1), chainIdToName(43113)], ['Ethereum', 'Avalanche Fuji Testnet'])
+})
+
+t('returns "Ethereum" if not found', () => {
+  assert.equal(chainIdToName(666), 'Ethereum')
 })
 
 t.run()
