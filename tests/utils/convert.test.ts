@@ -1,6 +1,13 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import { connectorByWallet, walletByConnector, chainNametoId, chainIdToName } from '../../packages/utils/src/convert'
+import {
+  connectorByWallet,
+  walletByConnector,
+  chainNametoId,
+  chainIdToName,
+  chainIDToToken,
+  chainIDToExplorer
+} from '../../packages/utils/src/convert'
 
 let t = suite('connectorByWallet')
 
@@ -42,6 +49,8 @@ t('returns 1 if chain is not found', () => {
   assert.equal(chainNametoId('unknown-chain'), 1)
 })
 
+t.run()
+
 t = suite('chainIdToName')
 
 t('finds chain name by ID', () => {
@@ -50,6 +59,37 @@ t('finds chain name by ID', () => {
 
 t('returns "Ethereum" if not found', () => {
   assert.equal(chainIdToName(666), 'Ethereum')
+})
+
+t.run()
+
+t = suite('chainIDToToken')
+
+t('returns token symbol for a chain ID', () => {
+  assert.equal(chainIDToToken(137), 'MATIC')
+})
+
+t('returns token symbol for a chain ID', () => {
+  assert.equal(chainIDToToken(666), 'ETH')
+})
+
+t.run()
+
+t = suite('chainIDToExplorer')
+
+t('returns explorer name and URL by chain ID', () => {
+  assert.equal(chainIDToExplorer(137), {
+    name: 'polygonscan',
+    url: 'https://polygonscan.com',
+    standard: 'EIP3091'
+  })
+})
+
+t('returns etherscan if chain ID is not found', () => {
+  assert.equal(chainIDToExplorer(666), {
+    name: 'etherscan',
+    url: 'https://etherscan.io'
+  })
 })
 
 t.run()
