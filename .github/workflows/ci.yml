@@ -31,6 +31,8 @@ jobs:
         run: pnpm install
       - name: Lint and format
         run: pnpm lint && pnpm format
+      - name: Build packages
+        run: pnpm build -r
       - name: Run tests
         run: pnpm test
       - name: Coverage

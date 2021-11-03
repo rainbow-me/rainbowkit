@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils.js'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { JSDOM } from 'jsdom'
-import { EmojiIcon } from '../../packages/ui/dist/index.js'
+import { EmojiIcon } from '../../packages/ui/dist/index'
 
 const { window } = new JSDOM('', { url: 'https://localhost' })
 
