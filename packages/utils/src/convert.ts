@@ -53,5 +53,6 @@ export const chainIDToToken = (id: number): string =>
 export const chainIDToExplorer = (id: number) =>
   chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id))?.explorers?.[0] || {
     name: 'etherscan',
-    url: 'https://etherscan.io'
+    url: 'https://etherscan.io',
+    standard: 'EIP3091'
   }

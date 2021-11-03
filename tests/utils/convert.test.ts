@@ -88,7 +88,16 @@ t('returns explorer name and URL by chain ID', () => {
 t('returns etherscan if chain ID is not found', () => {
   assert.equal(chainIDToExplorer(666), {
     name: 'etherscan',
-    url: 'https://etherscan.io'
+    url: 'https://etherscan.io',
+    standard: 'EIP3091'
+  })
+})
+
+t('returns etherscan if chain ID is 0', () => {
+  assert.equal(chainIDToExplorer(0), {
+    name: 'etherscan',
+    url: 'https://etherscan.io',
+    standard: 'EIP3091'
   })
 })
 

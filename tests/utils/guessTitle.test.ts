@@ -20,7 +20,7 @@ t('if transaction contains value return `Transfer ...`', () => {
       from: ADDRESS,
       to: '0x0000000000000000000000000000000000000001'
     }),
-    `Transfer 12 ETH from 0x0000...0000 to 0x0000...0001`
+    `Transfer 12.00 ETH from 0x0000...0000 to 0x0000...0001`
   )
 })
 

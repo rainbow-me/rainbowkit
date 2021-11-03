@@ -9,7 +9,7 @@
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "test:run": "tsm node_modules/uvu/bin.js tests",
-    "test:coverage": "c8 --include=packages/*/src pnpm test:run",
+    "test:coverage": "c8 --include=packages/*/src/**/*.{ts,tsx} pnpm test:run",
     "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
     "test": "pnpm test:coverage && pnpm test:report",
     "chgset:run": "changeset",
