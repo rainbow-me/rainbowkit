@@ -8,8 +8,8 @@
     "lint": "eslint . --ext=js,mjs,ts,cjs,tsx",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
-    "test:run": "node --experimental-loader esbuild-node-loader -r @babel/register node_modules/uvu/bin.js tests",
-    "test:coverage": "c8 --include=packages/*/src/**/*.{ts,tsx} pnpm test:run",
+    "test:run": "tsm node_modules/uvu/bin.js tests",
+    "test:coverage": "c8 --include=packages/*/src pnpm test:run",
     "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
     "test": "pnpm test:coverage && pnpm test:report",
     "chgset:run": "changeset",
@@ -65,7 +65,6 @@
     "tslib": "^2.3.1",
     "tsm": "^2.1.4",
     "typescript": "~4.4.4",
-    "typescript-plugin-css-modules": "^3.4.0",
     "uvu": "^0.5.2"
   },
   "dependencies": {
@@ -74,9 +73,5 @@
     "@walletconnect/client": "^1.6.6",
     "@web3-react/core": "^6.1.9",
     "react-useportal": "^1.0.14"
-  },
-  "optionalDependencies": {
-    "@web3-react/injected-connector": "^6.0.7",
-    "@web3-react/walletlink-connector": "^6.2.7"
   }
 }

@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils.js'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { JSDOM } from 'jsdom'
-/* import { EmojiIcon } from '../../packages/ui/src/components/EmojiIcon'
+import { EmojiIcon } from '../../packages/ui/dist/index.js'
 
 const { window } = new JSDOM('', { url: 'https://localhost' })
 
@@ -32,7 +32,7 @@ t.after.each(() => {
   rootContainer = null
 })
 
-t('it sets an emoji and icon based on an address', () => {
+t('it sets an emoji based on an address', () => {
   act(() => {
     render(<EmojiIcon address="0xD3B282e9880cDcB1142830731cD83f7ac0e1043f" />, rootContainer)
     return undefined
@@ -41,8 +41,6 @@ t('it sets an emoji and icon based on an address', () => {
   const emojiSpan = document.querySelector('span[role="img"]')
 
   assert.equal(emojiSpan.textContent, '🌎')
-  assert.equal(getComputedStyle(emojiSpan).color, 'red')
 })
 
 t.run()
- */
