@@ -18,7 +18,7 @@ export const useSignificantBalance = ({
 }) => {
   const [bal, setBal] = useState('0')
 
-  const set = (v: BigNumber) => setBal(toSignificant(v.toNumber()))
+  const set = (v: BigNumber) => setBal(toSignificant(v))
 
   useEffect(() => {
     if (initialValue) set(initialValue)
