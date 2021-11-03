@@ -1,8 +1,8 @@
-import { JSDOM } from 'jsdom'
 import { useWalletInfo } from '../../packages/hooks/src/useWalletInfo'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { renderHook } from '@testing-library/react-hooks'
+import { JSDOM } from 'jsdom'
 
 const { window } = new JSDOM('', { url: 'https://localhost' })
 

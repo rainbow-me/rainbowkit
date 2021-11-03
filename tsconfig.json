@@ -8,6 +8,7 @@
     "preserveSymlinks": true,
     "noEmit": true,
     "declaration": true,
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "jsx": "preserve"
   }
 }
