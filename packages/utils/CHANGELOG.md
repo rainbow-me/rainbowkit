@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.7
+
+### Patch Changes
+
+- tests and minor fixes for utils
+
 ## 0.0.6
 
 ### Patch Changes
