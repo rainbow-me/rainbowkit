@@ -32,6 +32,7 @@
     "@ethersproject/bignumber": "^5.5.0",
     "@rollup/plugin-typescript": "^8.3.0",
     "@testing-library/react-hooks": "^7.0.2",
+    "@types/jsdom": "^16.2.13",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
