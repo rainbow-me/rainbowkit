@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.8
+
+### Patch Changes
+
+- more jsdoc
+
 ## 0.0.7
 
 ### Patch Changes

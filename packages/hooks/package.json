@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-hooks",
   "type": "module",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
