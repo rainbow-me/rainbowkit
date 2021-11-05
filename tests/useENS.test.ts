@@ -7,6 +7,7 @@ import * as uvu from 'uvu'
 
 const { window } = new JSDOM('')
 
+// @ts-ignore
 global.window = window
 global.document = window.document
 global.navigator = window.navigator

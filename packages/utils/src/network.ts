@@ -1,6 +1,11 @@
 import { Web3Provider } from '@ethersproject/providers'
 import type { Chain } from './chains'
 
+/**
+ * Switch web3 provider network
+ * @param provider web3 provider
+ * @param chain chain object
+ */
 export const switchNetwork = async (provider: Web3Provider, chain: Chain) => {
   const obj = {
     chainId: `0x${chain.chainId.toString(16)}`,

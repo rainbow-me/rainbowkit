@@ -1,3 +1,8 @@
+/**
+ * Get wallet name and icon
+ * @param name wallet name (saved as `rk-last-wallet` in storage)
+ * @returns wallet name and logo
+ */
 export const getWalletInfo = (name: string): { name: string; logoURI: string } => {
   switch (name) {
     case 'metamask':
