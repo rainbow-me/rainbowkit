@@ -138,11 +138,7 @@ export const WalletDropdown = ({
       $isExpanded={isExpanded}
       $foreground={foreground}
       $background={background}
-      className={`${menu} ${css`
-        li {
-          ${menuItem}
-        }
-      `} ${className || ''}`}
+      className={`${menu} ${className || ''}`}
       {...props}
     >
       <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
@@ -154,12 +150,7 @@ export const WalletDropdown = ({
         )}
       </li>
       <li>
-        <button
-          className={css`
-            ${disconnectStyles}
-          `}
-          onClick={() => disconnect()}
-        >
+        <button className={disconnectStyles} onClick={() => disconnect()}>
           Disconnect <CloseIcon />
         </button>
       </li>

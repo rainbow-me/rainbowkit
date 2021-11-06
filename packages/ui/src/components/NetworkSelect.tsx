@@ -123,9 +123,7 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
           $foreground={foreground}
           className={`${css`
             padding: 7px;
-            ${option}
-            ${current}
-          `} ${classNames?.current}`}
+          `} ${option} ${current} ${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
           iconClassName={classNames?.icon}
         />
@@ -133,7 +131,7 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
       <List
         $background={background}
         $isExpanded={isExpanded}
-        className={`${list} ${isExpanded ? '' : classNames?.hidden} ${classNames.list || ''}`}
+        className={`${list} ${isExpanded ? '' : classNames?.hidden} ${classNames?.list || ''}`}
       >
         {filteredChains.map((ch) => {
           const isActiveChain = ch.chainId === currentChain?.chainId
@@ -151,25 +149,16 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
                 img {
                   margin-right: 6px;
                 }
-                ${option}
-              `} ${
+              `} ${option} ${
                 isActiveChain
-                  ? css`
+                  ? `${css`
                       position: relative;
-                      ${active}
-                    `
+                    `} ${active}`
                   : ''
               } ${classNames.option || ''}`}
               iconClassName={classNames?.icon || ''}
             >
-              {ch.name}{' '}
-              {isActiveChain && (
-                <Indicator
-                  className={css`
-                    ${indicator}
-                  `}
-                />
-              )}
+              {ch.name} {isActiveChain && <Indicator className={indicator} />}
             </ChainOption>
           )
         })}

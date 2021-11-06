@@ -32,14 +32,7 @@ export const EmojiIcon = ({ address, className, ...props }: EmojiIconProps) => {
   }, [address])
 
   return (
-    <StyledIcon
-      $bgColor={color}
-      role="img"
-      className={`${css`
-        ${styles}
-      `} ${className}`}
-      {...props}
-    >
+    <StyledIcon $bgColor={color} role="img" className={`${styles} ${className}`} {...props}>
       {emoji}
     </StyledIcon>
   )

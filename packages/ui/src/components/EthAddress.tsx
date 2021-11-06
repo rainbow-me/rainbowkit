@@ -34,8 +34,9 @@ const ProfileIcon = styled.img`
   margin-right: 6px;
 `
 
-const Address = styled.div<{ $foreground: string }>`
+const Address = styled.div<{ $foreground: string; $fontWeight: number }>`
   color: ${({ $foreground }) => $foreground};
+  font-weight: ${({ $fontWeight }) => $fontWeight};
 `
 
 export const EthAddress = ({
@@ -52,32 +53,22 @@ export const EthAddress = ({
 
   const {
     components: {
-      EthAddress: { address, profileIcon }
+      EthAddress: { profileIcon }
     },
-    foreground
+    foreground,
+    fontWeights
   } = useTheme()
 
   return (
-    <Container
-      {...props}
-      className={`${css`
-        ${profileIcon}
-      `} ${classNames?.container || ''}`}
-    >
+    <Container {...props} className={classNames?.container || ''}>
       {ProfileIconURLOrImage &&
         (typeof ProfileIconURLOrImage === 'string' ? (
-          <ProfileIcon src={ProfileIconURLOrImage} className={classNames?.profileIcon} />
+          <ProfileIcon src={ProfileIconURLOrImage} className={`${profileIcon} ${classNames?.profileIcon}`} />
         ) : (
           <ProfileIconURLOrImage />
         ))}
 
-      <Address
-        $foreground={foreground}
-        className={css`
-          ${address}
-          ${classNames?.address || ''}
-        `}
-      >
+      <Address $fontWeight={fontWeights.extraBold} $foreground={foreground} className={classNames?.address || ''}>
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
       </Address>
     </Container>
