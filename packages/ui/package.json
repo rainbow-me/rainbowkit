@@ -48,6 +48,7 @@
     "@ethersproject/units": "^5.5.0",
     "@rainbow-me/kit-hooks": "workspace:*",
     "@rainbow-me/kit-modal": "workspace:*",
+    "@rainbow-me/kit-theming": "workspace:^0.0.16",
     "@rainbow-me/kit-utils": "workspace:*",
     "get-ens": "^2.0.1"
   },

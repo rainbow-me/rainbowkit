@@ -3,6 +3,8 @@ import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { styled } from '@linaria/react'
+import { useTheme } from '@rainbow-me/kit-theming'
+import { css } from '@linaria/core'
 
 export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string
@@ -27,17 +29,13 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Address = styled.div`
-  font-weight: 800;
-  color: #e9f2ff;
-`
-
 const ProfileIcon = styled.img`
-  height: 1.5rem;
-  width: 1.5rem;
-  border: 50%;
   border-radius: 50%;
   margin-right: 6px;
+`
+
+const Address = styled.div<{ $foreground: string }>`
+  color: ${({ $foreground }) => $foreground};
 `
 
 export const EthAddress = ({
@@ -52,8 +50,20 @@ export const EthAddress = ({
 }: EthAddressProps) => {
   shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten
 
+  const {
+    components: {
+      EthAddress: { address, profileIcon }
+    },
+    foreground
+  } = useTheme()
+
   return (
-    <Container {...props} className={classNames?.container}>
+    <Container
+      {...props}
+      className={`${css`
+        ${profileIcon}
+      `} ${classNames?.container || ''}`}
+    >
       {ProfileIconURLOrImage &&
         (typeof ProfileIconURLOrImage === 'string' ? (
           <ProfileIcon src={ProfileIconURLOrImage} className={classNames?.profileIcon} />
@@ -61,7 +71,15 @@ export const EthAddress = ({
           <ProfileIconURLOrImage />
         ))}
 
-      <Address className={classNames?.address}>{(shorten && isAddress(addr) && shortenAddress(addr)) || addr}</Address>
+      <Address
+        $foreground={foreground}
+        className={css`
+          ${address}
+          ${classNames?.address || ''}
+        `}
+      >
+        {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
+      </Address>
     </Container>
   )
 }

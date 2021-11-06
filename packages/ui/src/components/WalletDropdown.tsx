@@ -1,13 +1,11 @@
 import { BaseProvider } from '@ethersproject/providers'
+import { css, CSSProperties } from '@linaria/core'
 import { styled } from '@linaria/react'
 import { useSignificantBalance, useWalletInfo } from '@rainbow-me/kit-hooks'
+import { useTheme } from '@rainbow-me/kit-theming'
 import { chainIDToToken } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
 import { CopyAddressButton } from './CopyAddressButton'
-
-const DisconnectButton = styled.button`
-  color: #ff494a;
-`
 
 const CloseIcon = () => {
   return (
@@ -20,14 +18,12 @@ const CloseIcon = () => {
   )
 }
 
-const Menu = styled.ul<{ $isExpanded: boolean }>`
+const Menu = styled.ul<{ $isExpanded: boolean; $background: string; $foreground: string }>`
   display: ${({ $isExpanded }) => ($isExpanded ? 'block' : 'none')};
-  background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-
-  backdrop-filter: blur(20px);
+  background: ${({ $background }) => $background};
   border-radius: 16px;
   position: absolute;
+
   top: 42px;
   min-width: 160px;
   margin: 0;
@@ -38,7 +34,7 @@ const Menu = styled.ul<{ $isExpanded: boolean }>`
   li {
     font-size: 14px;
     list-style-type: none;
-    color: #e9f2ff;
+    color: ${({ $foreground }) => $foreground};
   }
   li:nth-child(1) {
     margin-bottom: 1rem;
@@ -126,21 +122,47 @@ export const WalletDropdown = ({
   provider,
   disconnect,
   isExpanded,
+  className,
   ...props
-}: WalletDropdownProps) => (
-  <Menu $isExpanded={isExpanded} {...props}>
-    <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
-    <li>
-      {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
-        <CopyAddressButton {...{ address }} />
-      ) : (
-        typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
-      )}
-    </li>
-    <li>
-      <DisconnectButton onClick={() => disconnect()}>
-        Disconnect <CloseIcon />
-      </DisconnectButton>
-    </li>
-  </Menu>
-)
+}: WalletDropdownProps) => {
+  const {
+    components: {
+      WalletDropdown: { disconnect: disconnectStyles, menu, menuItem }
+    },
+    foreground,
+    background
+  } = useTheme()
+
+  return (
+    <Menu
+      $isExpanded={isExpanded}
+      $foreground={foreground}
+      $background={background}
+      className={`${menu} ${css`
+        li {
+          ${menuItem}
+        }
+      `} ${className || ''}`}
+      {...props}
+    >
+      <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
+      <li>
+        {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
+          <CopyAddressButton {...{ address }} />
+        ) : (
+          typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
+        )}
+      </li>
+      <li>
+        <button
+          className={css`
+            ${disconnectStyles}
+          `}
+          onClick={() => disconnect()}
+        >
+          Disconnect <CloseIcon />
+        </button>
+      </li>
+    </Menu>
+  )
+}

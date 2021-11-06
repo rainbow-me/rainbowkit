@@ -1,0 +1,48 @@
+{
+  "name": "@rainbow-me/kit-theming",
+  "version": "0.0.16",
+  "description": "Theme provider for RainbowKit",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=12.4"
+  },
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.js",
+    "build:watch": "rollup -cw ../../rollup.config.js",
+    "prepare": "pnpm build"
+  },
+  "keywords": [
+    "ens",
+    "ethereum",
+    "react",
+    "react-hook",
+    "hooks",
+    "blockchain"
+  ],
+  "author": "v1rtl",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "@linaria/core": "^3.0.0-beta.13",
+    "react": "^17.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/zustand"
+  },
+  "dependencies": {
+    "@callstack/react-theme-provider": "^3.0.7",
+    "csstype": "^3.0.9"
+  },
+  "devDependencies": {
+    "@linaria/core": "^3.0.0-beta.13",
+    "react": "^17.0.2"
+  }
+}
