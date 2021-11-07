@@ -58,7 +58,11 @@ const Menu = styled.ul<{ $isExpanded: boolean; $background: string; $foreground:
     width: 100%;
   }
   li > button {
+    border: none;
+    background: none;
     font-weight: 600;
+    cursor: pointer;
+    padding: 0;
   }
 `
 
@@ -127,7 +131,7 @@ export const WalletDropdown = ({
 }: WalletDropdownProps) => {
   const {
     components: {
-      WalletDropdown: { disconnect: disconnectStyles, menu, menuItem }
+      WalletDropdown: { disconnect: disconnectStyles, menu }
     },
     foreground,
     background

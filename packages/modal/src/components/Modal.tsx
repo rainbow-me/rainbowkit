@@ -6,6 +6,7 @@ import { styled } from '@linaria/react'
 import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
+import { css } from '@linaria/core'
 
 const Title = styled.span`
   font-style: normal;
@@ -20,6 +21,11 @@ const Title = styled.span`
 
   display: block;
   margin-bottom: 4px;
+`
+
+const resetButtonStyles = css`
+  background: none;
+  border: none;
 `
 
 const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
@@ -170,7 +176,7 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
 
   return (
     <li key={name}>
-      <button onClick={() => (connect ? connect(wallet) : undefined)}>
+      <button className={resetButtonStyles} onClick={() => (connect ? connect(wallet) : undefined)}>
         <WalletLabel>
           <Icon src={logoURI} alt={name} />
           {name}
@@ -228,7 +234,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
       className={isConnecting ? `${classNames?.overlay}` : `${classNames?.hidden}`}
     >
       <StyledModal className={classNames?.modal}>
-        <CloseButton className={classNames?.close} onClick={() => setConnecting(false)}>
+        <CloseButton className={`${resetButtonStyles} ${classNames?.close}`} onClick={() => setConnecting(false)}>
           <img src={close} alt="close" title="close" />
         </CloseButton>
         <div>
@@ -241,7 +247,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
             })}
           </WalletList>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
-            <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
+            <MoreWallets className={resetButtonStyles} onClick={() => setHiddenWalletsOpened(true)}>
               <div>
                 <MoreWalletsGroup>
                   {hiddenWallets.map((w) => (

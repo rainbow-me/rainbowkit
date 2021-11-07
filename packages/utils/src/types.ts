@@ -1,9 +1,7 @@
-import type { AbstractConnector } from '@web3-react/abstract-connector'
-
-export type Wallet = {
+export type Wallet<T = any> = {
   name: string
   hidden?: boolean
-  connector: AbstractConnector
+  connector: T
 }
 
 export type TxHistoryFetcher<Tx = any, P = any, O = any> = (opts: {

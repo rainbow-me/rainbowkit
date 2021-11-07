@@ -35,13 +35,13 @@ const Select = styled.div`
 
 const List = styled.div<ListProps>`
   position: absolute;
-  right: 0;
   min-width: 160px;
   width: max-content;
   display: ${(props) => (props.$isExpanded ? 'block' : 'none')};
   z-index: 10;
   padding: 4px;
   top: 42px;
+  background: ${({ $background }) => $background};
 `
 
 const Option = styled.div<{ $foreground: string }>`
@@ -88,6 +88,7 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
     components: {
       NetworkSelect: { current, active, option, indicator, list }
     },
+
     foreground,
     background
   } = useTheme()

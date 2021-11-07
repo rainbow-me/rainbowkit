@@ -7,15 +7,17 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./bundle.css": "./dist/bundle.css",
+    "./dist/bundle.css": "./dist/bundle.css"
   },
   "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12.4"
   },
   "scripts": {
-    "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -cw ../../rollup.config.js",
+    "build": "rollup -c ",
+    "build:watch": "rollup -cw ",
     "prepare": "pnpm build"
   },
   "keywords": [
@@ -43,6 +45,9 @@
   },
   "devDependencies": {
     "@linaria/core": "^3.0.0-beta.13",
-    "react": "^17.0.2"
+    "@linaria/rollup": "^3.0.0-beta.13",
+    "react": "^17.0.2",
+    "rollup": "^2.59.0",
+    "rollup-plugin-css-only": "^3.1.0"
   }
 }

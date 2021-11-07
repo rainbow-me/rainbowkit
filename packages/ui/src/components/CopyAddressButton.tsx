@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { styled } from '@linaria/react'
+import { useTheme } from '@rainbow-me/kit-theming'
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ $foreground: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,13 +14,18 @@ const StyledButton = styled.button`
   svg {
     margin-left: 0.5rem;
   }
+
+  color: ${({ $foreground }) => $foreground};
 `
 
 export const CopyAddressButton = ({ address }: { address: string }) => {
   const [copied, set] = useState(false)
 
+  const { foreground } = useTheme()
+
   return (
     <StyledButton
+      $foreground={foreground}
       onClick={() => {
         navigator.clipboard.writeText(address).then(() => set(true))
       }}

@@ -8,7 +8,18 @@ export type RainbowKitTheme = Partial<{
   }
   background: string
   foreground: string
-  fontWeights: Record<string, number>
+  fontWeights: Partial<{
+    thin: number
+    extraLight: number
+    light: number
+    medium: number
+    semiBold: number
+    bold: number
+    black: number
+  }> & {
+    normal: number
+    extraBold: 800
+  }
   components: Partial<{
     NetworkSelect: Partial<{
       list: CSS
