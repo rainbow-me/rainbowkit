@@ -7,7 +7,7 @@ import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 
-const Title = styled.span`
+export const ModalTitle = styled.span`
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -22,7 +22,7 @@ const Title = styled.span`
   margin-bottom: 4px;
 `
 
-const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
+export const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
   width: 100%;
   height: 100vh;
   top: 0;
@@ -35,7 +35,7 @@ const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
   align-items: center;
 `
 
-const StyledModal = styled.div`
+export const StyledModal = styled.div`
   min-height: 525px;
   width: 390px;
   padding: 24px;
@@ -232,7 +232,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           <img src={close} alt="close" title="close" />
         </CloseButton>
         <div>
-          <Title className={classNames?.title}>Connect to a wallet</Title>
+          <ModalTitle className={classNames?.title}>Connect to a wallet</ModalTitle>
           <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
 
           <WalletList className={classNames?.wallets}>

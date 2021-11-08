@@ -63,6 +63,8 @@ const Menu = styled.ul<{ $isExpanded: boolean }>`
   }
   li > button {
     font-weight: 600;
+    border: none;
+    bakground: none;
   }
 `
 
