@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.47
+
+### Patch Changes
+
+- allow user to toggle dropdown from button component
+
 ## 0.0.46
 
 ### Patch Changes
