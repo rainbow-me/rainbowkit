@@ -30,6 +30,7 @@ export interface ProfileProps {
     disconnect: () => void
     isConnected: boolean
     isConnecting: boolean
+    toggleDropdown: () => void
   }) => JSX.Element
   dropdown?: (props: WalletDropdownProps) => JSX.Element
   ensOptions?: Partial<UseENSOptions>
@@ -85,6 +86,8 @@ export const Profile = ({
 
   const [isExpanded, setExpandedState] = useState(false)
 
+  const toggleDropdown = () => setExpandedState(!isExpanded)
+
   return (
     <Container className={classNames?.container || ''}>
       {isConnected ? (
@@ -92,7 +95,7 @@ export const Profile = ({
           <Badge
             {...{ ipfsGatewayUrl, address, provider }}
             records={ens?.records}
-            onClick={() => setExpandedState(!isExpanded)}
+            onClick={toggleDropdown}
             className={classNames?.pill || ''}
           >
             <DropdownIcon />
@@ -107,7 +110,7 @@ export const Profile = ({
         </>
       ) : (
         <>
-          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting }} />
+          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown }} />
           {isConnecting && typeof Modal !== 'undefined' && <Modal />}
         </>
       )}
