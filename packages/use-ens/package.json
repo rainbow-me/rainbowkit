@@ -12,8 +12,10 @@
     "node": ">=12.4"
   },
   "scripts": {
-    "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w"
+    "build": "node build.js",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typegen": "tsc --emitDeclarationOnly || true"
   },
   "keywords": [
     "ens",

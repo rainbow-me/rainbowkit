@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { render } from 'react-dom'
 import { act } from 'react-dom/test-utils.js'
 import { suite } from 'uvu'
@@ -44,3 +44,4 @@ t('it sets an emoji based on an address', () => {
 })
 
 t.run()
+ */
