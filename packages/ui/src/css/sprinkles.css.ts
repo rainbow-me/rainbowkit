@@ -117,6 +117,7 @@ const layoutStyles = defineProperties({
     display: ['none', 'block', 'flex', 'inline-flex'],
     flexDirection: ['row', 'column'],
     height: vars.space,
+    justifyContent: [...flexAlignment, 'space-around', 'space-between'],
     paddingTop: vars.space,
     paddingBottom: vars.space,
     paddingLeft: vars.space,

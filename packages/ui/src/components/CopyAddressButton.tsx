@@ -1,25 +1,15 @@
 import React, { useState } from 'react'
-import { styled } from '@linaria/react'
-
-const StyledButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-  svg > path {
-    fill: var(--fg);
-  }
-  svg {
-    margin-left: 0.5rem;
-  }
-`
+import Box from './Box'
 
 export const CopyAddressButton = ({ address }: { address: string }) => {
   const [copied, set] = useState(false)
 
   return (
-    <StyledButton
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="row"
       onClick={() => {
         navigator.clipboard.writeText(address).then(() => set(true))
       }}
@@ -31,6 +21,6 @@ export const CopyAddressButton = ({ address }: { address: string }) => {
           fill="black"
         />
       </svg>
-    </StyledButton>
+    </Box>
   )
 }
