@@ -14,15 +14,15 @@ export const setupProvider = (web3ProviderInit?: Web3ProviderInit) => {
 }
 
 export const withWeb3React = (
-  Component: React.ComponentType,
+  Component: React.ComponentType<any>,
   web3ProviderInit?: Web3ProviderInit
 ): React.ComponentType => {
   const getLibrary = setupProvider(web3ProviderInit)
 
-  const component = () => {
+  const component = (props: unknown) => {
     return (
       <Web3ReactProvider getLibrary={getLibrary}>
-        <Component />
+        <Component {...props} />
       </Web3ReactProvider>
     )
   }
