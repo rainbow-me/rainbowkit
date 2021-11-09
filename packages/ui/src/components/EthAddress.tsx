@@ -2,7 +2,7 @@ import React from 'react'
 import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import { styled } from '@linaria/react'
+import Box from './Box'
 
 export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string
@@ -19,27 +19,6 @@ export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   }>
 }
 
-const Container = styled.div`
-  width: max-content;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`
-
-const Address = styled.div`
-  font-weight: 800;
-  color: #e9f2ff;
-`
-
-const ProfileIcon = styled.img`
-  height: 1.5rem;
-  width: 1.5rem;
-  border: 50%;
-  border-radius: 50%;
-  margin-right: 6px;
-`
-
 export const EthAddress = ({
   address: addr,
   shorten,
@@ -53,15 +32,33 @@ export const EthAddress = ({
   shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten
 
   return (
-    <Container {...props} className={classNames?.container}>
+    <Box
+      width="max"
+      display="flex"
+      flexDirection="row"
+      justifyContent="center"
+      alignItems="center"
+      {...props}
+      className={classNames?.container}
+    >
       {ProfileIconURLOrImage &&
         (typeof ProfileIconURLOrImage === 'string' ? (
-          <ProfileIcon src={ProfileIconURLOrImage} className={classNames?.profileIcon} />
+          <Box
+            as="img"
+            borderRadius="1/2"
+            marginRight="6"
+            height="24"
+            width="24"
+            src={ProfileIconURLOrImage}
+            className={classNames?.profileIcon}
+          />
         ) : (
           <ProfileIconURLOrImage />
         ))}
 
-      <Address className={classNames?.address}>{(shorten && isAddress(addr) && shortenAddress(addr)) || addr}</Address>
-    </Container>
+      <Box fontWeight="heavy" color="sky90" as="span" className={classNames?.address}>
+        {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
+      </Box>
+    </Box>
   )
 }

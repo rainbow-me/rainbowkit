@@ -4,6 +4,7 @@ import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 export const [themeClass, vars] = createTheme({
   borderWidths: {
     '4': '4px'
+
     // more
   },
   color: {
@@ -65,8 +66,8 @@ export const [themeClass, vars] = createTheme({
     }
   },
   radii: {
-    '10': '10px'
-    // more
+    '10': '10px',
+    '1/2': '50%'
   },
 
   space: {
@@ -74,6 +75,7 @@ export const [themeClass, vars] = createTheme({
     px: '1px',
     '2': '2px',
     '4': '4px',
+    '6': '6px',
     '8': '8px',
     '12': '12px',
     '14': '14px',
