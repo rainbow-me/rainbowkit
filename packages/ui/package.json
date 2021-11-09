@@ -46,21 +46,21 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@linaria/core": "^3.0.0-beta.13",
-    "@linaria/react": "^3.0.0-beta.13",
-    "@linaria/rollup": "^3.0.0-beta.13",
-    "@linaria/shaker": "^3.0.0-beta.13",
-    "@rollup/plugin-image": "^2.1.1",
-    "react": "^17.0.2",
-    "rollup-plugin-css-only": "^3.1.0"
+    "@vanilla-extract/esbuild-plugin": "^2.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "react": "^17.0.2"
   },
   "dependencies": {
+    "@dessert-box/react": "^0.2.0",
     "@ethersproject/bignumber": "^5.5.0",
     "@ethersproject/transactions": "^5.5.0",
     "@ethersproject/units": "^5.5.0",
     "@rainbow-me/kit-hooks": "workspace:*",
     "@rainbow-me/kit-modal": "workspace:*",
     "@rainbow-me/kit-utils": "workspace:*",
+    "@vanilla-extract/css": "^1.6.3",
+    "@vanilla-extract/sprinkles": "^1.3.1",
     "get-ens": "^2.0.1"
   },
   "repository": {

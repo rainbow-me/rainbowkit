@@ -2,7 +2,8 @@ import React from 'react'
 import { CopyAddressButton } from './CopyAddressButton'
 import { ExplorerLink, ExplorerProps } from './ExplorerLink'
 import { useWalletInfo } from '@rainbow-me/kit-hooks'
-import { styled } from '@linaria/react'
+
+import Box from './Box'
 
 export interface AccountInfoProps {
   /**
@@ -38,35 +39,6 @@ export interface AccountInfoProps {
   }>
 }
 
-const Container = styled.div`
-  border-radius: 10px;
-  padding: 1.25rem;
-  border: 4px solid gray;
-  min-width: max-content;
-  width: 100%;
-`
-
-const Address = styled.div`
-  display: inline-flex;
-  align-items: center;
-  font-weight: 600;
-  font-size: 1.4rem;
-`
-
-const Avatar = styled.img`
-  margin-right: 0.5rem;
-  height: 1.25rem;
-  width: 1.25rem;
-`
-
-const Footer = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-top: 1rem;
-  & > * {
-    margin-right: 1.5rem;
-  }
-`
 /**
  * Blockchain account information block.
  */
@@ -83,18 +55,30 @@ export const AccountInfo = ({
   const { name, logoURI } = useWalletInfo(wallet)
 
   return (
-    <Container className={classNames.container || ''}>
+    <Box
+      borderRadius="10"
+      padding="20"
+      borderWidth="4"
+      minWidth="max"
+      width="full"
+      borderColor="gray80"
+      // use dynamic styles from vanilla-extract?
+      className={classNames.container || ''}
+    >
       {name && (
         <div>
           Connected with <strong>{name}</strong>
         </div>
       )}
       {address && (
-        <Address>
-          {logoURI && <Avatar src={logoURI} title={name} alt={name} />} {address}
-        </Address>
+        <Box display="inline-flex" alignItems="center" fontWeight="semibold" fontSize="23">
+          {logoURI && (
+            <Box as="img" width="24" height="24" margin={[0, 'medium', 0, 0]} src={logoURI} title={name} alt={name} />
+          )}{' '}
+          {address}
+        </Box>
       )}
-      <Footer>
+      <Box display="flex" flexDirection="row" paddingTop="1rem">
         <>{(CopyAddress === undefined || CopyAddress === true) && <CopyAddressButton {...{ address }} />}</>
         <>{CopyAddress && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
         {(explorerUrl || chainId) && (
@@ -103,7 +87,7 @@ export const AccountInfo = ({
             {Explorer && typeof Explorer !== 'boolean' && <Explorer {...{ address, chainId, explorerUrl }} />}
           </>
         )}
-      </Footer>
-    </Container>
+      </Box>
+    </Box>
   )
 }
