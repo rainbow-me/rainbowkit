@@ -72,11 +72,11 @@ export const AccountInfo = ({
       )}
       {address && (
         <Box display="inline-flex" alignItems="center" fontWeight="semibold" fontSize="23">
-          {logoURI && <Box as="img" width="24" height="24" marginRight="2" src={logoURI} title={name} alt={name} />}{' '}
+          {logoURI && <Box as="img" width="24" height="24" marginRight="8" src={logoURI} title={name} alt={name} />}{' '}
           {address}
         </Box>
       )}
-      <Box display="flex" flexDirection="row" paddingTop="1rem">
+      <Box display="flex" flexDirection="row" paddingTop="16">
         <>{(CopyAddress === undefined || CopyAddress === true) && <CopyAddressButton {...{ address }} />}</>
         <>{CopyAddress && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
         {(explorerUrl || chainId) && (
