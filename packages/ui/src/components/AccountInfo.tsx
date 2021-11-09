@@ -72,9 +72,7 @@ export const AccountInfo = ({
       )}
       {address && (
         <Box display="inline-flex" alignItems="center" fontWeight="semibold" fontSize="23">
-          {logoURI && (
-            <Box as="img" width="24" height="24" margin={[0, 'medium', 0, 0]} src={logoURI} title={name} alt={name} />
-          )}{' '}
+          {logoURI && <Box as="img" width="24" height="24" marginRight="2" src={logoURI} title={name} alt={name} />}{' '}
           {address}
         </Box>
       )}
