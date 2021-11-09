@@ -6,9 +6,9 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "preserveSymlinks": true,
-    "noEmit": true,
     "declaration": true,
     "declarationDir": "dist",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "skipLibCheck": true
   }
 }

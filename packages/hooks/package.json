@@ -2,12 +2,21 @@
   "name": "@rainbow-me/kit-hooks",
   "type": "module",
   "version": "0.0.20",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./useExplorerTxHistory": "./dist/useExplorerTxHistory.js",
+    "./useSignificantBalance": "./dist/useSignificantBalance.js",
+    "./useSignMessage": "./dist/useSignMessage.js",
+    "./useTxHistory": "./dist/useTxHistory.js",
+    "./useWalletInfo": "./dist/useWalletInfo.js",
+    "./useWeb3State": "./dist/useWeb3State.js"
+  },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c ../../rollup.config.js",
-    "build:watch": "rollup -c ../../rollup.config.js -w",
-    "prepare": "pnpm build"
+    "build": "node build.js",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typegen": "tsc --emitDeclarationOnly || true"
   },
   "description": "React hooks for RainbowKit",
   "keywords": [

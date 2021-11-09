@@ -8,17 +8,19 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./bundle.css": "./dist/bundle.css",
-    "./dist/bundle.css": "./dist/bundle.css"
+    "./components/Modal": "./dist/components/Modal.js",
+    "./useWalletModal": "./dist/useWalletModal.js",
+    "./utils": "./dist/utils.js"
   },
   "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12.4"
   },
   "scripts": {
-    "build": "rollup -c ",
-    "build:watch": "rollup -cw",
-    "prepare": "pnpm build"
+    "build": "node build.js",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typegen": "tsc --emitDeclarationOnly || true"
   },
   "keywords": [
     "ens",

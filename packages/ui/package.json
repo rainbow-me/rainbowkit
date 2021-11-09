@@ -8,17 +8,29 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./bundle.css": "./dist/bundle.css",
-    "./dist/bundle.css": "./dist/bundle.css"
+    "./components/AccountInfo": "./components/Account.js",
+    "./components/Badge": "./components/Badge.js",
+    "./components/CopyAddressButton": "./dist/components/CopyAddressButton.js",
+    "./components/EmojiIcon.js": "./dist/components/EmojiIcon.js",
+    "./components/EthAddress.js": "./dist/components/EthAddress.js",
+    "./components/ExplorerLink.js": "./dist/components/ExplorerLink.js",
+    "./components/NetworkSelect.js": "./dist/components/NetworkSelect.js",
+    "./components/Pill.js": "./dist/components/Pill.js",
+    "./components/Profile.js": "./dist/components/Profile.js",
+    "./components/Tx.js": "./dist/components/Tx.js",
+    "./components/TxHistory.js": "./dist/components/TxHistory.js",
+    "./components/UnsupportedNetwork.js": "./dist/components/UnsupportedNetwork.js",
+    "./components/WalletDropdown.js": "./dist/components/WalletDropdown.js"
   },
   "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12.4"
   },
   "scripts": {
-    "build": "rollup -c",
-    "build:watch": "rollup -cw",
-    "prepare": "pnpm build"
+    "build": "node build.js",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typegen": "tsc --emitDeclarationOnly || true"
   },
   "keywords": [
     "ens",
