@@ -1,6 +1,9 @@
 import * as esbuild from 'esbuild'
 import readdir from 'recursive-readdir-files'
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
+import svgrPlugin from 'esbuild-plugin-svgr'
+import postcss from 'postcss'
+import autoprefixer from 'autoprefixer'
 
 async function processCss(css) {
   const result = await postcss([autoprefixer]).process(css, {
@@ -16,6 +19,7 @@ esbuild
     bundle: false,
     format: 'esm',
     plugins: [
+      svgrPlugin(),
       vanillaExtractPlugin({
         processCss
       })
