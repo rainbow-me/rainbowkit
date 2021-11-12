@@ -1,5 +1,6 @@
 import { AlchemyWebSocketProvider } from '@ethersproject/providers'
 import { useWalletModal } from '@rainbow-me/kit-modal'
+import { withWeb3React } from '@rainbow-me/kit-utils'
 import React, { useEffect, useState } from 'react'
 import { supportedChainIds, wallets } from '../lib/wallets'
 
@@ -25,4 +26,4 @@ const Example = () => {
   )
 }
 
-export default Example
+export default withWeb3React(Example)

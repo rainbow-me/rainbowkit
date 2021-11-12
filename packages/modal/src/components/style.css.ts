@@ -35,7 +35,18 @@ export const StyledModalClassName = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between'
-}) /* styled.div`
+}) /* styled.div`style({
+  width: '100%',
+  height: '100vh',
+  top: 0,
+  left: 0,
+  zIndex: 999,
+  position: 'fixed',
+  background: 'rgba(0, 0, 0, 0.5)',
+  justifyContent: 'center',
+  alignItems: 'center',
+  display: isConnecting ? 'flex' : 'none'
+})
   min-height: 525px;
   width: 390px;
   padding: 24px;
@@ -190,4 +201,16 @@ export const IconClassName = style({
 export const MoreWalletsIconClassName = style({
   height: '1rem',
   width: '1rem'
+})
+
+export const ModalOverlayClassName = style({
+  width: '100%',
+  height: '100vh',
+  top: 0,
+  left: 0,
+  zIndex: 999,
+  position: 'fixed',
+  background: 'rgba(0, 0, 0, 0.5)',
+  justifyContent: 'center',
+  alignItems: 'center'
 })

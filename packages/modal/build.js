@@ -4,7 +4,7 @@ import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
 import svgrPlugin from 'esbuild-plugin-svgr'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-import { EsmExternalsPlugin } from '@esbuild-plugins/esm-externals'
+// import { EsmExternalsPlugin } from '@esbuild-plugins/esm-externals'
 
 async function processCss(css) {
   const result = await postcss([autoprefixer]).process(css, {
@@ -14,15 +14,22 @@ async function processCss(css) {
   return result.css
 }
 
+let makeAllPackagesExternalPlugin = {
+  name: 'make-all-packages-external',
+  setup(build) {
+    let filter = /^[^./]|^\.[^./]|^\.\.[^/]/ // Must not start with "/" or "./" or "../"
+    build.onResolve({ filter }, (args) => ({ path: args.path, external: true }))
+  }
+}
+
 esbuild
   .build({
     entryPoints: (await readdir('src')).map((x) => x.path),
     bundle: true,
     format: 'esm',
+    platform: 'browser',
     plugins: [
-      EsmExternalsPlugin({
-        externals: ['@rainbow-me/kit-utils', '@vanilla-extract/css', '@web3-react/abstract-connector', 'react']
-      }),
+      makeAllPackagesExternalPlugin,
       svgrPlugin(),
       vanillaExtractPlugin({
         processCss

@@ -1,8 +1,8 @@
-import React, { Attributes, DetailedHTMLProps, useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import type { ModalProps } from '../types'
 import close from '../../assets/close.svg'
 import next from '../../assets/next.svg'
-
+import { assignInlineVars } from '@vanilla-extract/dynamic'
 import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
@@ -11,6 +11,7 @@ import {
   CaptionClassName,
   CloseButtonClassName,
   IconClassName,
+  ModalOverlayClassName,
   ModalTitleClassName,
   MoreWalletsClassName,
   MoreWalletsGroupClassName,
@@ -43,20 +44,19 @@ export const ModalTitle = ({ className, children, ...props }: BoxProps) => (
 `
  */
 
-export const ModalOverlay = ({ className, children, isConnecting, ...props }: BoxProps & { isConnecting: boolean }) => (
+export const ModalOverlay = ({
+  className,
+  children,
+  isConnecting,
+  style,
+  ...props
+}: BoxProps & { isConnecting: boolean }) => (
   <div
-    className={`${style({
-      width: '100%',
-      height: '100vh',
-      top: 0,
-      left: 0,
-      zIndex: 999,
-      position: 'fixed',
-      background: 'rgba(0, 0, 0, 0.5)',
-      justifyContent: 'center',
-      alignItems: 'center',
+    className={`${ModalOverlayClassName} ${className}`}
+    style={{
+      ...style,
       display: isConnecting ? 'flex' : 'none'
-    })} ${className}`}
+    }}
     {...props}
   >
     {children}

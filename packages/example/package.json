@@ -6,6 +6,7 @@
   "dependencies": {
     "@rainbow-me/kit-modal": "workspace:^0.0.16",
     "@rainbow-me/kit-utils": "workspace:^0.0.8",
+    "@vanilla-extract/next-plugin": "^1.0.1",
     "@web3-react/injected-connector": ">=6",
     "@web3-react/walletconnect-connector": ">=6",
     "@web3-react/walletlink-connector": ">=6",
