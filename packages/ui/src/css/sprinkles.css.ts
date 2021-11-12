@@ -67,7 +67,7 @@ export const [themeClass, vars] = createTheme({
   },
   radii: {
     '10': '10px',
-    '1/2': '50%'
+    '1/2': '9999px'
   },
 
   space: {
