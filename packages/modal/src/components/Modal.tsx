@@ -1,13 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { Attributes, DetailedHTMLProps, useEffect, useMemo, useState } from 'react'
 import type { ModalProps } from '../types'
 import close from '../../assets/close.svg'
 import next from '../../assets/next.svg'
-import { styled } from '@linaria/react'
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 
-export const ModalTitle = styled.span`
+type BoxProps = React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>
+
+const ModalTitleClassName = style({
+  fontStyle: 'normal',
+  fontWeight: 800,
+  fontSize: '20px',
+  lineHeight: '24px',
+  letterSpacing: '0.4px',
+  fontFeatureSettings: "'ss08' on, 'cv09' on",
+  color: '#25292e',
+  display: 'block',
+  marginBottom: '4px'
+}) /* styled.span`
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -20,9 +32,15 @@ export const ModalTitle = styled.span`
 
   display: block;
   margin-bottom: 4px;
-`
+` */
 
-export const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
+export const ModalTitle = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${ModalTitleClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+/* styled.div<{ $isConnecting: boolean }>`
   width: 100%;
   height: 100vh;
   top: 0;
@@ -34,8 +52,39 @@ export const ModalOverlay = styled.div<{ $isConnecting: boolean }>`
   justify-content: center;
   align-items: center;
 `
+ */
 
-export const StyledModal = styled.div`
+export const ModalOverlay = ({ className, children, isConnecting, ...props }: BoxProps & { isConnecting: boolean }) => (
+  <div
+    className={`${style({
+      width: '100%',
+      height: '100vh',
+      top: 0,
+      left: 0,
+      zIndex: 999,
+      position: 'fixed',
+      background: 'rgba(0, 0, 0, 0.5)',
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: isConnecting ? 'flex' : 'none'
+    })} ${className}`}
+    {...props}
+  >
+    {children}
+  </div>
+)
+
+export const StyledModalClassName = style({
+  minHeight: '525px',
+  width: '390px',
+  padding: '24px',
+  position: 'relative',
+  background: 'white',
+  borderRadius: '24px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between'
+}) /* styled.div`
   min-height: 525px;
   width: 390px;
   padding: 24px;
@@ -45,9 +94,24 @@ export const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`
+` */
 
-const Caption = styled.span`
+export const StyledModal = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${StyledModalClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const CaptionClassName = style({
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  lineHeight: '19px',
+  letterSpacing: '0.5px',
+  fontFeatureSettings: "'ss08' on, 'cv09' on",
+  color: 'rgba(60, 66, 82, 0.6)',
+  display: 'block'
+}) /*  styled.span`
   font-style: normal;
   font-weight: bold;
   font-size: 1rem;
@@ -59,9 +123,25 @@ const Caption = styled.span`
   color: rgba(60, 66, 82, 0.6);
 
   display: block;
-`
+` */
 
-const CloseButton = styled.button`
+export const Caption = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${CaptionClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const CloseButtonClassName = style({
+  textAlign: 'center',
+  letterSpacing: '0.4px',
+  color: 'rgba(60, 66, 82, 0.8)',
+  fontWeight: 900,
+  fontSize: '14px',
+  lineHeight: '17px',
+  position: 'absolute',
+  right: 24,
+  top: 24
+}) /* styled.button`
   text-align: center;
   letter-spacing: 0.4px;
 
@@ -75,9 +155,26 @@ const CloseButton = styled.button`
 
   right: 24px;
   top: 24px;
-`
+` */
 
-const WalletLabel = styled.span`
+export const CloseButton = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${CloseButtonClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const WalletLabelClassName = style({
+  fontStyle: 'normal',
+  fontWeight: 800,
+  fontSize: '20px',
+  lineHeight: '24px',
+  display: 'flex',
+  alignItems: 'center',
+  letterSpacing: '0.5px',
+  fontFeatureSettings: "'pnum' on, 'lnum' on",
+  color: '#25292e',
+  textTransform: 'capitalize'
+}) /* styled.span`
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
@@ -91,9 +188,15 @@ const WalletLabel = styled.span`
   color: #25292e;
 
   text-transform: capitalize;
-`
+` */
 
-const WalletList = styled.ul`
+export const WalletLabel = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${WalletLabelClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+/* styled.ul`
   margin-top: 24px;
   list-style-type: none;
   padding-left: 0;
@@ -118,29 +221,37 @@ const WalletList = styled.ul`
     height: 34px;
     width: 34px;
   }
-`
+` */
 
-const Icon = styled.img`
-  border-radius: 10px;
-  filter: drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3));
-`
+const TermsClassName = style({
+  fontWeight: 600,
+  color: 'rgba(60, 66, 82, 0.6)',
+  fontSize: '14px',
+  lineHeight: 1.5
+})
 
-const Terms = styled.div`
-  font-weight: 600;
-  color: rgba(60, 66, 82, 0.6);
-  font-size: 14px;
-  line-height: 1.5;
-  a {
-    color: #a0c7ff;
-    font-weight: 700;
-    text-decoration: none;
+globalStyle(`${TermsClassName} > a`, {
+  color: '#a0c7ff',
+  fontWeight: 700,
+  textDecoration: 'none',
+  ':hover': {
+    textDecoration: 'underline'
   }
-  a:hover {
-    text-decoration: underline;
-  }
-`
+})
 
-const MoreWallets = styled.button`
+const Terms = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${TermsClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const MoreWalletsClassName = style({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  padding: '11px'
+}) /* styled.button`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -150,20 +261,33 @@ const MoreWallets = styled.button`
     display: inherit;
     flex-direction: inherit;
   }
-`
+` */
 
-const MoreWalletsGroup = styled.div`
-  margin-right: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 2px;
-  width: max-content;
-  & > div > img {
-    width: 16px;
-    height: 16px;
-  }
-`
+const MoreWallets = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${MoreWalletsClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const Icon = ({
+  logoURI,
+  name,
+  className,
+  ...props
+}: { logoURI: string; name: string } & React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) => (
+  <img
+    className={`${style({
+      borderRadius: '10px',
+      filter: 'drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3))'
+    })} ${className}`}
+    src={logoURI}
+    alt={name}
+    {...props}
+  />
+)
 
 const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
   const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
@@ -172,7 +296,7 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
     <li key={name}>
       <button onClick={() => (connect ? connect(wallet) : undefined)}>
         <WalletLabel>
-          <Icon src={logoURI} alt={name} />
+          <Icon {...{ name, logoURI }} />
           {name}
         </WalletLabel>
         <img src={next} alt={`Select ${name}`} />
@@ -186,23 +310,54 @@ const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
 
   return (
     <div key={name}>
-      <Icon src={logoURI} alt={name} />
+      <Icon
+        {...{ name, logoURI }}
+        className={style({
+          height: '1rem',
+          width: '1rem'
+        })}
+      />
     </div>
   )
 }
 
-const BackButton = styled.button`
+const BackButtonClassName = style({
+  width: '100%',
+  padding: '11px',
+  display: 'flex'
+}) /* styled.button`
   width: 100%;
   padding: 11px;
   display: flex;
-  span {
-    color: #25292e;
-    font-size: 20px;
-  }
-  span::before {
-    content: '<- ';
-  }
-`
+` */
+
+const BackButton = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${BackButtonClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
+
+const MoreWalletsGroupClassName = style({
+  marginRight: '12px',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridTemplateRows: '1fr 1fr',
+  gap: '2px',
+  width: 'max-content'
+}) /* styled.div`
+  margin-right: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2px;
+  width: max-content;
+` */
+
+const MoreWalletsGroup = ({ className, children, ...props }: BoxProps) => (
+  <div className={`${MoreWalletsGroupClassName} ${className}`} {...props}>
+    {children}
+  </div>
+)
 
 /**
  * Rainbow-styled Modal
@@ -224,7 +379,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
 
   return (
     <ModalOverlay
-      $isConnecting={isConnecting}
+      isConnecting={isConnecting}
       className={isConnecting ? `${classNames?.overlay}` : `${classNames?.hidden}`}
     >
       <StyledModal className={classNames?.modal}>
@@ -235,14 +390,25 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           <ModalTitle className={classNames?.title}>Connect to a wallet</ModalTitle>
           <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
 
-          <WalletList className={classNames?.wallets}>
+          <div
+            className={`${style({
+              marginTop: '24px',
+              listStyleType: 'none',
+              paddingLeft: 0
+            })} ${classNames?.wallets}`}
+          >
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
             })}
-          </WalletList>
+          </div>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
             <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
-              <div>
+              <div
+                className={style({
+                  display: 'inherit',
+                  flexDirection: 'inherit'
+                })}
+              >
                 <MoreWalletsGroup>
                   {hiddenWallets.map((w) => (
                     <MoreWalletsIcon wallet={w} key={w.name} />
@@ -256,7 +422,17 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           )}
           {isHiddenWalletsOpened && (
             <BackButton onClick={() => setHiddenWalletsOpened(false)}>
-              <Caption>Back</Caption>
+              <Caption
+                className={style({
+                  color: '#25292e',
+                  fontSize: '20px',
+                  '::before': {
+                    content: '<- '
+                  }
+                })}
+              >
+                Back
+              </Caption>
             </BackButton>
           )}
         </div>

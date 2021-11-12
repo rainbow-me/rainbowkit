@@ -1,6 +1,5 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { chainNametoId, connectorByWallet } from '@rainbow-me/kit-utils'
-import assert from 'assert'
 
 /**
  *
@@ -29,7 +28,7 @@ export const createConnector = async ({
 }) => {
   connectorName = connectorName || connectorByWallet(name)
 
-  assert.notEqual(connectorName, undefined, `Could not find connector for ${name}`)
+  if (connectorName == null) throw new Error(`Could not find connector for ${name}`)
 
   const Connector = await importConnector(connectorName)
   const instance = new Connector({
