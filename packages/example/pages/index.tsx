@@ -1,26 +1,26 @@
 import { AlchemyWebSocketProvider } from '@ethersproject/providers'
-import { NetworkSelect, Profile, UnsupportedNetwork, useWeb3State } from '@rainbow-me/kit-core'
-import { UnsupportedChainIdError } from '@web3-react/core'
+import { useWalletModal } from '@rainbow-me/kit-modal'
 import React, { useEffect, useState } from 'react'
 import { supportedChainIds, wallets } from '../lib/wallets'
 
 const ENSProvider = new AlchemyWebSocketProvider('homestead', 'vINSe04ri6EJ_hs94sK88MMeIBVPhnNo')
 
 const Example = () => {
-  const { provider, chainId, error } = useWeb3State()
-  const [visible, set] = useState(false)
-
-  useEffect(() => {
-    if (error instanceof UnsupportedChainIdError) set(true)
-  }, [error])
+  const {
+    state: { disconnect, isConnected, connect, isConnecting },
+    Modal,
+    address
+  } = useWalletModal({
+    wallets,
+    chains: ['mainnet', 'polygon']
+  })
 
   return (
     <>
-      <nav style={{ display: 'flex', flexDirection: 'row' }}>
-        <Profile modalOptions={{ wallets }} ENSProvider={ENSProvider} />
-        <NetworkSelect {...{ provider, chainId }} chains={['ethereum', 'arbitrum', 'polygon', 'optimism']} />
-        <UnsupportedNetwork isVisible={visible} chainId={chainId} supportedChainIds={supportedChainIds} />
-      </nav>
+      <button onClick={() => (isConnected ? disconnect() : connect())}>
+        {isConnected ? 'Disconnect' : 'Connect Wallet'}
+      </button>
+      {isConnecting && <Modal />}
     </>
   )
 }
