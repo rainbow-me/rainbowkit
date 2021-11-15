@@ -34,14 +34,9 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@esbuild-plugins/esm-externals": "^0.0.6",
-    "@esbuild-plugins/node-resolve": "^0.1.4",
-    "@rollup/plugin-image": "^2.1.1",
     "autoprefixer": "^10.4.0",
-    "esbuild-plugin-svgr": "^0.0.3",
     "postcss": "^8.3.11",
-    "react": "^17.0.2",
-    "rollup-plugin-css-only": "^3.1.0"
+    "react": "^17.0.2"
   },
   "dependencies": {
     "@rainbow-me/kit-utils": "workspace:*",

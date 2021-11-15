@@ -1,7 +1,6 @@
 import * as esbuild from 'esbuild'
 import readdir from 'recursive-readdir-files'
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
-import svgrPlugin from 'esbuild-plugin-svgr'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 // import { EsmExternalsPlugin } from '@esbuild-plugins/esm-externals'
@@ -29,7 +28,6 @@ esbuild
     format: 'esm',
     platform: 'browser',
     plugins: [
-      svgrPlugin(),
       vanillaExtractPlugin({
         processCss
       }),
