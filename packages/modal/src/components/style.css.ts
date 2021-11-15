@@ -10,20 +10,7 @@ export const ModalTitleClassName = style({
   color: '#25292e',
   display: 'block',
   marginBottom: '4px'
-}) /* styled.span`
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-
-  letter-spacing: 0.4px;
-  font-feature-settings: 'ss08' on, 'cv09' on;
-
-  color: #25292e;
-
-  display: block;
-  margin-bottom: 4px;
-` */
+})
 
 export const StyledModalClassName = style({
   minHeight: '525px',
@@ -58,6 +45,17 @@ export const StyledModalClassName = style({
   justify-content: space-between;
 ` */
 
+export const ButtonOptionClassName = style({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  width: '100%',
+  background: 'none',
+  border: 'none',
+  padding: 0,
+  cursor: 'pointer'
+})
+
 export const CaptionClassName = style({
   fontStyle: 'normal',
   fontWeight: 'bold',
@@ -67,20 +65,7 @@ export const CaptionClassName = style({
   fontFeatureSettings: "'ss08' on, 'cv09' on",
   color: 'rgba(60, 66, 82, 0.6)',
   display: 'block'
-}) /*  styled.span`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1rem;
-  line-height: 19px;
-
-  letter-spacing: 0.5px;
-  font-feature-settings: 'ss08' on, 'cv09' on;
-
-  color: rgba(60, 66, 82, 0.6);
-
-  display: block;
-` */
-
+})
 export const CloseButtonClassName = style({
   textAlign: 'center',
   letterSpacing: '0.4px',
@@ -91,21 +76,7 @@ export const CloseButtonClassName = style({
   position: 'absolute',
   right: 24,
   top: 24
-}) /* styled.button`
-  text-align: center;
-  letter-spacing: 0.4px;
-
-  color: rgba(60, 66, 82, 0.8);
-
-  font-weight: 900;
-  font-size: 14px;
-  line-height: 17px;
-
-  position: absolute;
-
-  right: 24px;
-  top: 24px;
-` */
+})
 export const TermsClassName = style({
   fontWeight: 600,
   color: 'rgba(60, 66, 82, 0.6)',
@@ -128,17 +99,7 @@ export const MoreWalletsClassName = style({
   flexDirection: 'row',
   justifyContent: 'space-between',
   padding: '11px'
-}) /* styled.button`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 11px;
-  & > div {
-    display: inherit;
-    flex-direction: inherit;
-  }
-` */
+})
 
 export const MoreWalletsGroupClassName = style({
   marginRight: '12px',
@@ -147,24 +108,16 @@ export const MoreWalletsGroupClassName = style({
   gridTemplateRows: '1fr 1fr',
   gap: '2px',
   width: 'max-content'
-}) /* styled.div`
-  margin-right: 12px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 2px;
-  width: max-content;
-` */
+})
 
 export const BackButtonClassName = style({
   width: '100%',
   padding: '11px',
-  display: 'flex'
-}) /* styled.button`
-  width: 100%;
-  padding: 11px;
-  display: flex;
-` */
+  display: 'flex',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer'
+})
 
 export const WalletLabelClassName = style({
   fontStyle: 'normal',
@@ -177,26 +130,14 @@ export const WalletLabelClassName = style({
   fontFeatureSettings: "'pnum' on, 'lnum' on",
   color: '#25292e',
   textTransform: 'capitalize'
-}) /* styled.span`
-  font-style: normal;
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 24px;
-
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.5px;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-
-  color: #25292e;
-
-  text-transform: capitalize;
-` */
+})
 
 export const IconClassName = style({
   borderRadius: '10px',
   filter: 'drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3))'
 })
+
+export const OptionIconClassName = style({ marginRight: '12px', height: '34px', width: '34px' })
 
 export const MoreWalletsIconClassName = style({
   height: '1rem',
@@ -221,6 +162,12 @@ export const WalletsClassName = style({
   paddingLeft: 0
 })
 
+export const WalletOptionClassName = style({
+  marginBottom: '12px',
+  padding: '11px',
+  width: 'unset'
+})
+
 export const MoreWalletsInnerClassName = style({
   display: 'inherit',
   flexDirection: 'inherit'
@@ -229,7 +176,9 @@ export const MoreWalletsInnerClassName = style({
 export const BackButtonCaptionClassName = style({
   color: '#25292e',
   fontSize: '20px',
+  cursor: 'pointer',
   '::before': {
-    content: '<- '
+    content: '\\21A9',
+    marginRight: '0.5rem'
   }
 })

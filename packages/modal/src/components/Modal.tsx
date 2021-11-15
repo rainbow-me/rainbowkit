@@ -21,10 +21,14 @@ import {
   TermsClassName,
   WalletLabelClassName,
   WalletsClassName,
-  BackButtonCaptionClassName
+  BackButtonCaptionClassName,
+  OptionIconClassName,
+  ButtonOptionClassName,
+  WalletOptionClassName
 } from './style.css'
+import { CloseIcon, NextIcon } from '../icons'
 
-type BoxProps = React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>
+type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
 
 export const ModalTitle = ({ className, children, ...props }: BoxProps) => (
   <div className={`${ModalTitleClassName} ${className}`} {...props}>
@@ -122,10 +126,10 @@ const Terms = ({ className, children, ...props }: BoxProps) => (
   </div>
 )
 
-const MoreWallets = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${MoreWalletsClassName} ${className}`} {...props}>
+const MoreWallets = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
+  <button className={`${MoreWalletsClassName} ${ButtonOptionClassName} ${className}`} {...props}>
     {children}
-  </div>
+  </button>
 )
 
 const Icon = ({
@@ -142,13 +146,13 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
   const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
 
   return (
-    <li key={name}>
-      <button onClick={() => (connect ? connect(wallet) : undefined)}>
+    <li className={WalletOptionClassName} key={name}>
+      <button onClick={() => (connect ? connect(wallet) : undefined)} className={ButtonOptionClassName}>
         <WalletLabel>
-          <Icon {...{ name, logoURI }} />
+          <Icon {...{ name, logoURI }} className={OptionIconClassName} />
           {name}
         </WalletLabel>
-        <img src={next} alt={`Select ${name}`} />
+        <NextIcon />
       </button>
     </li>
   )
@@ -164,10 +168,10 @@ const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
   )
 }
 
-const BackButton = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${BackButtonClassName} ${className}`} {...props}>
+const BackButton = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
+  <button className={`${BackButtonClassName} ${className}`} {...props}>
     {children}
-  </div>
+  </button>
 )
 
 const MoreWalletsGroup = ({ className, children, ...props }: BoxProps) => (
@@ -201,7 +205,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
     >
       <StyledModal className={classNames?.modal}>
         <CloseButton className={classNames?.close} onClick={() => setConnecting(false)}>
-          <img src={close} alt="close" title="close" />
+          <CloseIcon />
         </CloseButton>
         <div>
           <ModalTitle className={classNames?.title}>Connect to a wallet</ModalTitle>
@@ -223,7 +227,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
                 <WalletLabel>More wallets</WalletLabel>
               </div>
 
-              <img src={next} alt="Open more wallets" />
+              <NextIcon />
             </MoreWallets>
           )}
           {isHiddenWalletsOpened && (
