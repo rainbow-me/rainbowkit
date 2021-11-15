@@ -214,3 +214,22 @@ export const ModalOverlayClassName = style({
   justifyContent: 'center',
   alignItems: 'center'
 })
+
+export const WalletsClassName = style({
+  marginTop: '24px',
+  listStyleType: 'none',
+  paddingLeft: 0
+})
+
+export const MoreWalletsInnerClassName = style({
+  display: 'inherit',
+  flexDirection: 'inherit'
+})
+
+export const BackButtonCaptionClassName = style({
+  color: '#25292e',
+  fontSize: '20px',
+  '::before': {
+    content: '<- '
+  }
+})

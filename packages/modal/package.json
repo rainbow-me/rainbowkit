@@ -6,7 +6,10 @@
     "dist"
   ],
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./dist/index.css": "./dist/index.css"
+  },
   "types": "./dist/index.d.ts",
   "engines": {
     "node": ">=12.4"

@@ -29,11 +29,11 @@ esbuild
     format: 'esm',
     platform: 'browser',
     plugins: [
-      makeAllPackagesExternalPlugin,
       svgrPlugin(),
       vanillaExtractPlugin({
         processCss
-      })
+      }),
+      makeAllPackagesExternalPlugin
     ],
 
     outdir: 'dist'

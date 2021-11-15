@@ -14,13 +14,15 @@ import {
   ModalOverlayClassName,
   ModalTitleClassName,
   MoreWalletsClassName,
+  MoreWalletsInnerClassName,
   MoreWalletsGroupClassName,
   MoreWalletsIconClassName,
   StyledModalClassName,
   TermsClassName,
-  WalletLabelClassName
+  WalletLabelClassName,
+  WalletsClassName,
+  BackButtonCaptionClassName
 } from './style.css'
-import { style } from '@vanilla-extract/css'
 
 type BoxProps = React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>
 
@@ -205,25 +207,14 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           <ModalTitle className={classNames?.title}>Connect to a wallet</ModalTitle>
           <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
 
-          <div
-            className={`${style({
-              marginTop: '24px',
-              listStyleType: 'none',
-              paddingLeft: 0
-            })} ${classNames?.wallets}`}
-          >
+          <div className={`${WalletsClassName} ${classNames?.wallets}`}>
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
             })}
           </div>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
             <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
-              <div
-                className={style({
-                  display: 'inherit',
-                  flexDirection: 'inherit'
-                })}
-              >
+              <div className={MoreWalletsInnerClassName}>
                 <MoreWalletsGroup>
                   {hiddenWallets.map((w) => (
                     <MoreWalletsIcon wallet={w} key={w.name} />
@@ -237,17 +228,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           )}
           {isHiddenWalletsOpened && (
             <BackButton onClick={() => setHiddenWalletsOpened(false)}>
-              <Caption
-                className={style({
-                  color: '#25292e',
-                  fontSize: '20px',
-                  '::before': {
-                    content: '<- '
-                  }
-                })}
-              >
-                Back
-              </Caption>
+              <Caption className={BackButtonCaptionClassName}>Back</Caption>
             </BackButton>
           )}
         </div>
