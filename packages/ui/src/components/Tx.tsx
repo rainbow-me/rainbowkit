@@ -1,9 +1,8 @@
-import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
 import React, { useEffect, useState } from 'react'
-import { styled } from '@linaria/react'
 import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
+import { ExplorerLinkClassName, TxContainerClassName } from '../css/style.css'
 
 export type TxProps = {
   /**
@@ -32,31 +31,6 @@ export type TxProps = {
   }>
 } & Pick<TransactionWithStatus, 'status' | 'to' | 'value' | 'from' | 'data' | 'hash'>
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 0.8rem;
-  width: 100%;
-
-  img {
-    margin-left: 1rem;
-    height: 1rem;
-    width: 1rem;
-  }
-  a {
-    text-decoration: none;
-    font-weight: bold;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  a::after {
-    content: ' ↗';
-  }
-`
-
 export const Tx = ({ status, title: initialTitle, classNames, chainId, data, value, from, to, ...props }: TxProps) => {
   const [title, setTitle] = useState(initialTitle || '')
   const [link, setLink] = useState('')
@@ -76,16 +50,16 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
   }, [props.hash, props.explorerUrl, chainId])
 
   return (
-    <Container className={classNames?.container}>
+    <div className={`${TxContainerClassName} ${classNames?.container || ''}`}>
       {link === '' ? (
         <span>{title || 'Contract call'}</span>
       ) : (
-        <a href={link} title={title}>
+        <a className={ExplorerLinkClassName} href={link} title={title}>
           {title}
         </a>
       )}
 
       <span>{status}</span>
-    </Container>
+    </div>
   )
 }
