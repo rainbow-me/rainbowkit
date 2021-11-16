@@ -1,8 +1,5 @@
 import React, { useMemo, useState } from 'react'
 import type { ModalProps } from '../types'
-import close from '../../assets/close.svg'
-import next from '../../assets/next.svg'
-import { assignInlineVars } from '@vanilla-extract/dynamic'
 import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
