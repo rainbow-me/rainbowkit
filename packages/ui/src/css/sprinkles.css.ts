@@ -17,7 +17,7 @@ export const vars = createGlobalTheme(':root', {
     sky80: 'rgba(88, 91, 100, 0.8)',
     sky60: 'rgba(88, 91, 100, 0.6)',
     white: '#FFFFFF',
-    green: '2CCC00',
+    green: '#2CCC00',
 
     // need to add colors
     // from design system in figma
