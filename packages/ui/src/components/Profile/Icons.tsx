@@ -12,7 +12,7 @@ export const DropdownIcon = () => (
 )
 
 export const ConnectButton = ({ connect }: { connect: () => void }) => (
-  <Box padding="8px" borderRadius="16" className={PillStyles} onClick={() => connect()}>
+  <Box padding="8" borderRadius="16" className={PillStyles} onClick={() => connect()}>
     Connect
   </Box>
 )
