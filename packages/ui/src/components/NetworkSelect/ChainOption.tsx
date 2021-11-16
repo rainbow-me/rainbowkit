@@ -14,6 +14,7 @@ export interface ChainOptionProps {
 export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainOptionProps) => (
   <Box
     display="flex"
+    position="relative"
     cursor="pointer"
     alignItems="center"
     flexDirection="row"
