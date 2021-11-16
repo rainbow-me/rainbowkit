@@ -1,9 +1,8 @@
 import { addressHashedEmoji, colors, addressHashedColorIndex } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
-import { StyledIconClassName } from './style.css'
+import { Box } from '../Box'
 
-export type EmojiIconProps = React.ClassAttributes<HTMLSpanElement> &
-  React.HTMLAttributes<HTMLSpanElement> & { address: string }
+export type EmojiIconProps = React.HTMLAttributes<HTMLSpanElement> & { address: string }
 
 /**
  * Emoji icon mapped to an Ethereum address
@@ -17,13 +16,21 @@ export const EmojiIcon = ({ address, className, ...props }: EmojiIconProps) => {
   }, [address])
 
   return (
-    <span
-      className={`${StyledIconClassName} ${className || ''}`}
+    <Box
+      as="span"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      borderRadius="1/2"
+      fontSize="14"
+      marginRight="10"
+      width="28"
+      height="28"
+      className={className || ''}
       style={{ backgroundColor: color }}
-      role="img"
       {...props}
     >
       {emoji}
-    </span>
+    </Box>
   )
 }

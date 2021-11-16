@@ -61,7 +61,6 @@ export const AccountInfo = ({
       borderWidth="4"
       minWidth="max"
       width="full"
-      borderColor="gray80"
       className={classNames.container || ''}
     >
       {name && (
@@ -75,7 +74,7 @@ export const AccountInfo = ({
           {address}
         </Box>
       )}
-      <Box display="flex" flexDirection="row" paddingTop="16">
+      <Box display="flex" flexDirection="row" paddingTop="16" paddingRight="24">
         <>{(CopyAddress === undefined || CopyAddress === true) && <CopyAddressButton {...{ address }} />}</>
         <>{CopyAddress && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
         {(explorerUrl || chainId) && (

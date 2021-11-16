@@ -1,9 +1,10 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { Box } from '../Box'
-import { IconStyles, IndicatorStyles, ListStyles, OptionStyles } from './style.css'
+import { IndicatorStyles, ListStyles } from './style.css'
+import { ChainOption } from './ChainOption'
 
 export interface NetworkSelectProps {
   chains: (string | Chain)[]
@@ -18,30 +19,6 @@ export interface NetworkSelectProps {
     icon: string
   }>
 }
-
-type ListProps = { isExpanded: boolean; className: string }
-
-export interface ChainOptionProps {
-  chain: Chain
-  children?: ReactNode
-  iconClassName?: string
-}
-
-export const ChainOption = ({
-  chain,
-  children,
-  iconClassName,
-  ...props
-}: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
-  <div aria-label="option" {...props} className={`${OptionStyles} ${props.className || ''}`}>
-    <img
-      aria-hidden="true"
-      className={`${IconStyles} ${iconClassName}`}
-      src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
-    />{' '}
-    {children}
-  </div>
-)
 
 export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {}, chainId }: NetworkSelectProps) => {
   const [isExpanded, setExpand] = useState(false)
@@ -78,7 +55,16 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
           iconClassName={classNames?.icon}
         />
       )}
-      <div className={`${ListStyles} ${isExpanded ? '' : classNames?.hidden} ${classNames.list || ''}`}>
+      <Box
+        right="0"
+        position="absolute"
+        width="max"
+        padding="4"
+        borderRadius="16"
+        fontWeight="heavy"
+        display={isExpanded ? 'block' : 'none'}
+        className={`${ListStyles} ${classNames.list || ''}`}
+      >
         {filteredChains.map((ch) => {
           const isCurrentChain = ch.chainId === currentChain?.chainId
 
@@ -89,14 +75,25 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
               onClick={() => {
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={` ${classNames.option || ''}`}
+              className={`${classNames.option || ''}`}
               iconClassName={classNames?.icon || ''}
             >
-              {ch.name} {isCurrentChain && <div className={IndicatorStyles} />}
+              {ch.name}{' '}
+              {isCurrentChain && (
+                <Box
+                  position="absolute"
+                  width="8"
+                  height="8"
+                  right="14"
+                  borderRadius="1/2"
+                  background="green"
+                  className={IndicatorStyles}
+                />
+              )}
             </ChainOption>
           )
         })}
-      </div>
+      </Box>
     </Box>
   )
 }

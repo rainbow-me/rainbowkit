@@ -67,6 +67,7 @@ export const [themeClass, vars] = createTheme({
   },
   radii: {
     '10': '10px',
+    '12': '12px',
     '16': '16px',
     '1/2': '9999px'
   },
@@ -84,6 +85,7 @@ export const [themeClass, vars] = createTheme({
     '18': '18px',
     '20': '20px',
     '24': '24px',
+    '28': '28px',
     auto: 'auto',
     full: '100%',
     fit: 'fit-content',
@@ -134,7 +136,9 @@ const layoutStyles = defineProperties({
     fontSize: vars.fontSize,
     fontWeight: vars.fontWeight,
     fontFamily: vars.fontFamily,
-    minWidth: vars.space
+    minWidth: vars.space,
+    minHeight: vars.space,
+    right: vars.space
   },
   shorthands: {
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
