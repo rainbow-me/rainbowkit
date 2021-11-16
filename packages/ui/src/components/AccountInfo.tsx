@@ -62,7 +62,6 @@ export const AccountInfo = ({
       minWidth="max"
       width="full"
       borderColor="gray80"
-      // use dynamic styles from vanilla-extract?
       className={classNames.container || ''}
     >
       {name && (
