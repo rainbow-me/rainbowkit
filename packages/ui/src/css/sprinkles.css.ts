@@ -143,6 +143,7 @@ const layoutStyles = defineProperties({
     right: vars.space
   },
   shorthands: {
+    margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom']
