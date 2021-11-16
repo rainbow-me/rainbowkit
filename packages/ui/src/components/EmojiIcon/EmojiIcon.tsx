@@ -1,6 +1,6 @@
 import { addressHashedEmoji, colors, addressHashedColorIndex } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
-import { StyledIconClassName } from '../css/style.css'
+import { StyledIconClassName } from './style.css'
 
 export type EmojiIconProps = React.ClassAttributes<HTMLSpanElement> &
   React.HTMLAttributes<HTMLSpanElement> & { address: string }

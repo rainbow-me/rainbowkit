@@ -2,7 +2,7 @@ import React from 'react'
 import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import { Box } from './Box'
+import { Box } from '../Box'
 
 export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
   address: string

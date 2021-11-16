@@ -2,8 +2,8 @@ import React, { ReactNode, useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
-import { Box } from './Box'
-import { IconStyles, IndicatorStyles, ListStyles, OptionStyles } from '../css/style.css'
+import { Box } from '../Box'
+import { IconStyles, IndicatorStyles, ListStyles, OptionStyles } from './style.css'
 
 export interface NetworkSelectProps {
   chains: (string | Chain)[]

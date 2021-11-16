@@ -1,7 +1,7 @@
 import { TransactionWithStatus } from '@rainbow-me/kit-hooks'
 import React from 'react'
-import { Tx as DefaultTx } from './Tx'
-import type { TxProps } from './Tx'
+import { Tx as DefaultTx } from '../Tx'
+import type { TxProps } from '../Tx'
 
 export interface TxHistoryProps {
   /**

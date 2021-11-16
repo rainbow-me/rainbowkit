@@ -2,7 +2,7 @@ import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
 import React, { useEffect, useState } from 'react'
 import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
-import { ExplorerLinkClassName, TxContainerClassName } from '../css/style.css'
+import { ExplorerLinkClassName, TxContainerClassName } from './style.css'
 
 export type TxProps = {
   /**

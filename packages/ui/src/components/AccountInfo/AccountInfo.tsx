@@ -1,9 +1,9 @@
 import React from 'react'
-import { CopyAddressButton } from './CopyAddressButton'
-import { ExplorerLink, ExplorerProps } from './ExplorerLink'
+import { CopyAddressButton } from '../CopyAddressButton'
+import { ExplorerLink, ExplorerProps } from '../ExplorerLink'
 import { useWalletInfo } from '@rainbow-me/kit-hooks'
 
-import { Box } from './Box'
+import { Box } from '../Box'
 
 export interface AccountInfoProps {
   /**

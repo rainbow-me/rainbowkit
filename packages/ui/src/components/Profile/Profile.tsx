@@ -4,9 +4,9 @@ import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
 import { useENS } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import type { UseENSOptions } from '@rainbow-me/kit-hooks'
-import { Badge } from './Badge'
-import { WalletDropdown, WalletDropdownProps } from './WalletDropdown'
-import { DropdownIconClassName, PillStyles, ProfileContainerClassName } from '../css/style.css'
+import { Badge } from '../Badge'
+import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
+import { DropdownIconClassName, PillStyles, ProfileContainerClassName } from './style.css'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
