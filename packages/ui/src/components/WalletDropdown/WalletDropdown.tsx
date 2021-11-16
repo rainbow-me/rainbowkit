@@ -49,6 +49,7 @@ export const WalletDropdown = ({
 }: WalletDropdownProps) => (
   // might need {...props} here?
   <Box
+    as="ul"
     position="absolute"
     margin="0"
     borderRadius="16"
