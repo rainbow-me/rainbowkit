@@ -12,7 +12,7 @@ export interface UnsupportedNetworkProps {
 
 export const UnsupportedNetwork = ({ chainId, chainName, supportedChainIds, isVisible }: UnsupportedNetworkProps) => {
   return (
-    <ModalOverlay $isConnecting={isVisible}>
+    <ModalOverlay isConnecting={isVisible}>
       <div className={UnsupportedNetworkModalBodyClassName}>
         <ModalTitle>Unsupported Network: {chainName || chainIdToName(chainId)}.</ModalTitle>
         <p className={UnsupportedNetworkModalTextClassName}>

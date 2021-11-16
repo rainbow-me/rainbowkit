@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react'
 import { EthAddress } from './EthAddress'
 import type { ENSRecords } from 'get-ens'
-import { Pill } from './Pill'
+
 import { EmojiIcon } from './EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
+import { PillStyles } from '../css/style.css'
+import { Box } from './Box'
 
 export interface BadgeProps {
   /**
@@ -47,9 +49,17 @@ export const Badge = ({
   }, [address, records?.avatar])
 
   return (
-    <Pill {...props}>
+    <Box
+      display="flex"
+      cursor="pointer"
+      justifyContent="center"
+      alignItems="center"
+      fontWeight="heavy"
+      color="sky90"
+      className={PillStyles}
+    >
       <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />{' '}
       {children}
-    </Pill>
+    </Box>
   )
 }

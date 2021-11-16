@@ -67,6 +67,7 @@ export const [themeClass, vars] = createTheme({
   },
   radii: {
     '10': '10px',
+    '16': '16px',
     '1/2': '9999px'
   },
 
@@ -124,7 +125,7 @@ const layoutStyles = defineProperties({
     paddingBottom: vars.space,
     paddingLeft: vars.space,
     paddingRight: vars.space,
-    // probably some opinions on margin usage
+    position: ['absolute', 'fixed', 'relative', 'sticky'],
     marginTop: vars.space,
     marginBottom: vars.space,
     marginRight: vars.space,
@@ -150,4 +151,12 @@ const colorStyles = defineProperties({
   }
 })
 
-export const atoms = createSprinkles(layoutStyles, colorStyles)
+const unresponsiveProperties = defineProperties({
+  properties: {
+    cursor: ['default', 'pointer']
+  }
+})
+
+export type UnresponsiveProperties = keyof typeof unresponsiveProperties
+
+export const atoms = createSprinkles(layoutStyles, colorStyles, unresponsiveProperties)

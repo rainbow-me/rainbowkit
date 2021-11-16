@@ -4,10 +4,9 @@ import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
 import { useENS } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import type { UseENSOptions } from '@rainbow-me/kit-hooks'
-import { Pill } from './Pill'
 import { Badge } from './Badge'
 import { WalletDropdown, WalletDropdownProps } from './WalletDropdown'
-import { DropdownIconClassName, ProfileContainerClassName } from '../css/style.css'
+import { DropdownIconClassName, PillStyles, ProfileContainerClassName } from '../css/style.css'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
@@ -30,7 +29,11 @@ export interface ProfileProps {
   ensOptions?: Partial<UseENSOptions>
 }
 
-const ConnectButton = ({ connect }: { connect: () => void }) => <Pill onClick={() => connect()}>Connect</Pill>
+const ConnectButton = ({ connect }: { connect: () => void }) => (
+  <div className={PillStyles} onClick={() => connect()}>
+    Connect
+  </div>
+)
 
 const DropdownIcon = () => (
   <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" className={DropdownIconClassName}>

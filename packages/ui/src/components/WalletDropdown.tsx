@@ -1,13 +1,11 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { styled } from '@linaria/react'
+
 import { useSignificantBalance, useWalletInfo } from '@rainbow-me/kit-hooks'
 import { chainIDToToken } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
+import { MenuStyles } from '../css/style.css'
+import { Box } from './Box'
 import { CopyAddressButton } from './CopyAddressButton'
-
-const DisconnectButton = styled.button`
-  color: #ff494a;
-`
 
 const CloseIcon = () => {
   return (
@@ -19,54 +17,6 @@ const CloseIcon = () => {
     </svg>
   )
 }
-
-const Menu = styled.ul<{ $isExpanded: boolean }>`
-  display: ${({ $isExpanded }) => ($isExpanded ? 'block' : 'none')};
-  background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-
-  backdrop-filter: blur(20px);
-  border-radius: 16px;
-  position: absolute;
-  top: 42px;
-  min-width: 160px;
-  margin: 0;
-  padding: 12.5px 13px;
-  img {
-    display: inline-block;
-  }
-  li {
-    font-size: 14px;
-    list-style-type: none;
-    color: #e9f2ff;
-  }
-  li:nth-child(1) {
-    margin-bottom: 1rem;
-    font-weight: 800;
-  }
-  li:nth-child(2) {
-    margin-bottom: 11px;
-  }
-  li:nth-child(3) {
-    padding-top: 11px;
-    border-top: 2px solid rgba(255, 255, 255, 0.01);
-    margin-top: 24px;
-    margin-bottom: 0;
-  }
-  li:nth-child(1),
-  li > button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-  }
-  li > button {
-    font-weight: 600;
-    border: none;
-    bakground: none;
-  }
-`
 
 export type WalletDropdownProps = {
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
@@ -130,19 +80,29 @@ export const WalletDropdown = ({
   isExpanded,
   ...props
 }: WalletDropdownProps) => (
-  <Menu $isExpanded={isExpanded} {...props}>
+  // might need {...props} here?
+  <Box className={MenuStyles} display={isExpanded ? 'block' : 'none'}>
     <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
-    <li>
+    <Box as="li" fontSize="14" color="sky90">
       {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
         <CopyAddressButton {...{ address }} />
       ) : (
         typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
       )}
-    </li>
-    <li>
-      <DisconnectButton onClick={() => disconnect()}>
+    </Box>
+    <Box as="li" fontSize="14">
+      <Box
+        as="button"
+        fontWeight="semibold"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        width="full"
+        color="red"
+        onClick={() => disconnect()}
+      >
         Disconnect <CloseIcon />
-      </DisconnectButton>
-    </li>
-  </Menu>
+      </Box>
+    </Box>
+  </Box>
 )

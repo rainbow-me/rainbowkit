@@ -38,8 +38,8 @@ export const EthAddress = ({
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      {...props}
       className={classNames?.container}
+      {...props}
     >
       {ProfileIconURLOrImage &&
         (typeof ProfileIconURLOrImage === 'string' ? (

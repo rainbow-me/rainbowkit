@@ -2,8 +2,8 @@ import React, { ReactNode, useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
-import { styled } from '@linaria/react'
-import { css } from '@linaria/core'
+import { Box } from './Box'
+import { IconStyles, IndicatorStyles, ListStyles, OptionStyles } from '../css/style.css'
 
 export interface NetworkSelectProps {
   chains: (string | Chain)[]
@@ -19,36 +19,7 @@ export interface NetworkSelectProps {
   }>
 }
 
-const Select = styled.div`
-  position: relative;
-`
-
 type ListProps = { isExpanded: boolean; className: string }
-
-const List = styled.div<ListProps>`
-  position: absolute;
-  right: 0;
-  min-width: 160px;
-  width: max-content;
-  display: ${(props) => (props.isExpanded ? 'block' : 'none')};
-  background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
-  backdrop-filter: blur(20px);
-  z-index: 10;
-  padding: 4px;
-  border-radius: 16px;
-  top: 42px;
-  font-weight: 800;
-`
-
-const Option = styled.div`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  border-radius: 12px;
-  color: #e9f2ff;
-  backdrop-filter: blur(20px);
-`
 
 export interface ChainOptionProps {
   chain: Chain
@@ -56,36 +27,20 @@ export interface ChainOptionProps {
   iconClassName?: string
 }
 
-const Icon = styled.img`
-  min-width: 24px;
-  min-height: 24px;
-`
-
-const Indicator = styled.div`
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  right: 14px;
-  top: calc(50% - 4px);
-  border-radius: 50%;
-
-  background: #2ccc00;
-`
-
 export const ChainOption = ({
   chain,
   children,
   iconClassName,
   ...props
 }: ChainOptionProps & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
-  <Option aria-label="option" {...props} className={props.className || ''}>
-    <Icon
+  <div aria-label="option" {...props} className={`${OptionStyles} ${props.className || ''}`}>
+    <img
       aria-hidden="true"
-      className={` ${iconClassName}`}
+      className={`${IconStyles} ${iconClassName}`}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
     />{' '}
     {children}
-  </Option>
+  </div>
 )
 
 export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {}, chainId }: NetworkSelectProps) => {
@@ -106,7 +61,8 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
   }, [selectedChains])
 
   return (
-    <Select
+    <Box
+      position="relative"
       tabIndex={0}
       role="button"
       aria-label="select"
@@ -117,17 +73,12 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
         <ChainOption
           aria-selected={true}
           chain={currentChain}
-          className={`${css`
-            padding: 7px;
-            border-radius: 16px;
-            background: linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%);
-            backdrop-filter: blur(20px);
-          `} ${classNames?.current}`}
+          className={`${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
           iconClassName={classNames?.icon}
         />
       )}
-      <List isExpanded={isExpanded} className={`${isExpanded ? '' : classNames?.hidden} ${classNames.list || ''}`}>
+      <div className={`${ListStyles} ${isExpanded ? '' : classNames?.hidden} ${classNames.list || ''}`}>
         {filteredChains.map((ch) => {
           const isCurrentChain = ch.chainId === currentChain?.chainId
 
@@ -138,26 +89,14 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
               onClick={() => {
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={`${css`
-                padding: 10px;
-                img {
-                  margin-right: 6px;
-                }
-              `} ${
-                isCurrentChain
-                  ? css`
-                      position: relative;
-                      background: rgba(255, 255, 255, 0.06);
-                    `
-                  : ''
-              } ${classNames.option || ''}`}
+              className={` ${classNames.option || ''}`}
               iconClassName={classNames?.icon || ''}
             >
-              {ch.name} {isCurrentChain && <Indicator />}
+              {ch.name} {isCurrentChain && <div className={IndicatorStyles} />}
             </ChainOption>
           )
         })}
-      </List>
-    </Select>
+      </div>
+    </Box>
   )
 }
