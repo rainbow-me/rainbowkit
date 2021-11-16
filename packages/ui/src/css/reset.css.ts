@@ -1,5 +1,4 @@
 import { style as resetStyles } from '@vanilla-extract/css'
-import { vars } from './sprinkles.css'
 
 import 'focus-visible'
 
@@ -11,7 +10,7 @@ export const base = resetStyles({
   border: 0,
   boxSizing: 'border-box',
   fontSize: '100%',
-  font: 'inherit',
+  fontFamily: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
   selectors: {

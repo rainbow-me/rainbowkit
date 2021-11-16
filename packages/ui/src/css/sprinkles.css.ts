@@ -40,7 +40,7 @@ export const vars = createGlobalTheme(':root', {
     // #00D146
   },
   fontFamily: {
-    body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif'
   },
   fontSize: {
     '14': '14px',
