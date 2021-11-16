@@ -6,6 +6,7 @@ import { EmojiIcon } from '../EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
 import { PillStyles } from './style.css'
 import { Box } from '../Box'
+import { BoxProps } from '../Box/Box'
 
 export interface BadgeProps {
   /**
@@ -35,8 +36,9 @@ export const Badge = ({
   provider,
   ipfsGatewayUrl,
   children,
+  className,
   ...props
-}: BadgeProps & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>) => {
+}: BadgeProps & BoxProps) => {
   const avatar = useMemo(() => {
     if (records?.avatar) {
       const avatar = records.avatar
@@ -56,7 +58,8 @@ export const Badge = ({
       alignItems="center"
       fontWeight="heavy"
       color="sky90"
-      className={PillStyles}
+      className={`${PillStyles} ${className}`}
+      {...props}
     >
       <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />{' '}
       {children}

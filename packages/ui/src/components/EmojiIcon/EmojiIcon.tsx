@@ -1,8 +1,9 @@
 import { addressHashedEmoji, colors, addressHashedColorIndex } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
 import { Box } from '../Box'
+import type { BoxProps } from '../Box/Box'
 
-export type EmojiIconProps = React.HTMLAttributes<HTMLSpanElement> & { address: string }
+export type EmojiIconProps = BoxProps & { address: string }
 
 /**
  * Emoji icon mapped to an Ethereum address

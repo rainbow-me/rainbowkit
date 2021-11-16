@@ -2,10 +2,10 @@ import { style } from '@vanilla-extract/css'
 
 export const ExplorerLinkClassName = style({
   textDecoration: 'none',
-  '&::before': {
+  '::before': {
     content: '↗ '
   },
-  '&:hover': {
+  ':hover': {
     textDecoration: 'underline'
   }
 })

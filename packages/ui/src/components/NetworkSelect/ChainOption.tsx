@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Chain } from '@rainbow-me/kit-utils'
-import { OptionStyles } from './style.css'
+import { OptionStyles, SelectOptionStyles } from './style.css'
 import { Box } from '../Box'
 
 export interface ChainOptionProps {

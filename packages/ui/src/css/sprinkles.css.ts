@@ -112,7 +112,7 @@ const layoutStyles = defineProperties({
   properties: {
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
-    borderColor: vars.colors,
+    borderColor: vars.color,
     borderWidth: vars.borderWidths,
     borderBottomWidth: vars.borderWidths,
     borderTopWidth: vars.borderWidths,

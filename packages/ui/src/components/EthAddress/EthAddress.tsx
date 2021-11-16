@@ -3,8 +3,9 @@ import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Box } from '../Box'
+import { BoxProps } from '../Box/Box'
 
-export interface EthAddressProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface EthAddressProps extends BoxProps {
   address: string
   shorten?: boolean
   provider?: BaseProvider
@@ -38,7 +39,7 @@ export const EthAddress = ({
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      className={classNames?.container}
+      className={classNames?.container || ''}
       {...props}
     >
       {ProfileIconURLOrImage &&
