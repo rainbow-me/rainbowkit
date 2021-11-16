@@ -17,6 +17,7 @@ export const [themeClass, vars] = createTheme({
     sky80: 'rgba(88, 91, 100, 0.8)',
     sky60: 'rgba(88, 91, 100, 0.6)',
     white: '#FFFFFF',
+    green: '2CCC00',
 
     // need to add colors
     // from design system in figma
@@ -79,6 +80,7 @@ export const [themeClass, vars] = createTheme({
     '4': '4px',
     '6': '6px',
     '8': '8px',
+    '10': '10px',
     '12': '12px',
     '14': '14px',
     '16': '16px',
