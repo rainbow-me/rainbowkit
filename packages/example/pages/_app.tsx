@@ -1,4 +1,5 @@
 import '@rainbow-me/kit-modal/dist/index.css'
+import '@rainbow-me/kit-ui/dist/index.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
 
