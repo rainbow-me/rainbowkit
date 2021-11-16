@@ -7,8 +7,9 @@ import type { UseENSOptions } from '@rainbow-me/kit-hooks'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
 
-import { ConnectButton, DropdownIcon } from './Icons'
+import { DropdownIcon } from './Icons'
 import { Box } from '../Box'
+import { ConnectButton } from './ConnectButton'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions

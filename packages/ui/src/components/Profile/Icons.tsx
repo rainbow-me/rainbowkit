@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box } from '../Box'
-import { DropdownIconClassName, PillStyles } from './style.css'
+import { DropdownIconClassName } from './style.css'
 
 export const DropdownIcon = () => (
   <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" className={DropdownIconClassName}>
@@ -9,10 +8,4 @@ export const DropdownIcon = () => (
       fill="white"
     />
   </svg>
-)
-
-export const ConnectButton = ({ connect }: { connect: () => void }) => (
-  <Box padding="8" borderRadius="16" className={PillStyles} onClick={() => connect()}>
-    Connect
-  </Box>
 )
