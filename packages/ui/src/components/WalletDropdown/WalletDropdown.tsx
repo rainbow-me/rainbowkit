@@ -3,9 +3,10 @@ import { BaseProvider } from '@ethersproject/providers'
 import { useSignificantBalance, useWalletInfo } from '@rainbow-me/kit-hooks'
 import { chainIDToToken } from '@rainbow-me/kit-utils'
 import React, { useMemo } from 'react'
-import { MenuStyles } from '../css/style.css'
-import { Box } from './Box'
-import { CopyAddressButton } from './CopyAddressButton'
+
+import { Box } from '../Box'
+import { CopyAddressButton } from '../CopyAddressButton'
+import { MenuStyles } from './style.css'
 
 const CloseIcon = () => {
   return (
