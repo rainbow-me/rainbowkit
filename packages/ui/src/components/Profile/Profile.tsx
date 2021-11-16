@@ -6,8 +6,9 @@ import { JsonRpcProvider } from '@ethersproject/providers'
 import type { UseENSOptions } from '@rainbow-me/kit-hooks'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
-import { ProfileContainerClassName } from './style.css'
+
 import { ConnectButton, DropdownIcon } from './Icons'
+import { Box } from '../Box'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
@@ -64,7 +65,7 @@ export const Profile = ({
   const toggleDropdown = () => setExpandedState(!isExpanded)
 
   return (
-    <div className={`${ProfileContainerClassName} ${classNames?.container || ''}`}>
+    <Box position="relative" width="max" className={`${classNames?.container || ''}`}>
       {isConnected ? (
         <>
           <Badge
@@ -89,6 +90,6 @@ export const Profile = ({
           {isConnecting && typeof Modal !== 'undefined' && <Modal />}
         </>
       )}
-    </div>
+    </Box>
   )
 }

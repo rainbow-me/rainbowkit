@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from '../Box'
 import { DropdownIconClassName, PillStyles } from './style.css'
 
 export const DropdownIcon = () => (
@@ -11,7 +12,7 @@ export const DropdownIcon = () => (
 )
 
 export const ConnectButton = ({ connect }: { connect: () => void }) => (
-  <div className={PillStyles} onClick={() => connect()}>
+  <Box padding="8px" borderRadius="16" className={PillStyles} onClick={() => connect()}>
     Connect
-  </div>
+  </Box>
 )
