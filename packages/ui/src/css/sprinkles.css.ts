@@ -1,7 +1,7 @@
-import { createTheme } from '@vanilla-extract/css'
+import { createGlobalTheme } from '@vanilla-extract/css'
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 
-export const [themeClass, vars] = createTheme({
+export const vars = createGlobalTheme(':root', {
   borderWidths: {
     '4': '4px'
 
