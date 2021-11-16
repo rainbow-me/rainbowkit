@@ -39,6 +39,7 @@
     "react": "^17.0.2"
   },
   "dependencies": {
+    "@dessert-box/core": "^0.1.0",
     "@dessert-box/react": "^0.2.0",
     "@ethersproject/bignumber": "^5.5.0",
     "@ethersproject/transactions": "^5.5.0",
