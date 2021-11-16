@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@rainbow-me/kit-core": "workspace:^0.0.46",
     "@rainbow-me/kit-modal": "workspace:^0.0.16",
     "@rainbow-me/kit-ui": "workspace:^0.0.47",
     "@rainbow-me/kit-utils": "workspace:^0.0.8",
