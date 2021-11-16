@@ -45,7 +45,7 @@ export const EthAddress = ({
         (typeof ProfileIconURLOrImage === 'string' ? (
           <Box
             as="img"
-            borderRadius="1/2"
+            borderRadius="full"
             marginRight="6"
             height="24"
             width="24"

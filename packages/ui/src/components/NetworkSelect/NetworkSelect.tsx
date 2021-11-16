@@ -85,7 +85,7 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
                   width="8"
                   height="8"
                   right="14"
-                  borderRadius="1/2"
+                  borderRadius="full"
                   background="green"
                   className={IndicatorStyles}
                 />

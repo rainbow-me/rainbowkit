@@ -70,7 +70,7 @@ export const vars = createGlobalTheme(':root', {
     '10': '10px',
     '12': '12px',
     '16': '16px',
-    '1/2': '9999px'
+    full: '9999px'
   },
 
   space: {

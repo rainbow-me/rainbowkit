@@ -21,7 +21,7 @@ export const EmojiIcon = ({ address, className, ...props }: EmojiIconProps) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      borderRadius="1/2"
+      borderRadius="full"
       fontSize="14"
       marginRight="10"
       width="28"
