@@ -14,7 +14,7 @@ export const UnsupportedNetwork = ({ chainId, chainName, supportedChainIds, isVi
   return (
     <ModalOverlay isConnecting={isVisible}>
       <div className={UnsupportedNetworkModalBodyClassName}>
-        <ModalTitle>Unsupported Network: {chainName || chainIdToName(chainId)}.</ModalTitle>
+        <ModalTitle>Unsupported Network: {chainName || chainId ? chainIdToName(chainId) : 'Unknown'}.</ModalTitle>
         <p className={UnsupportedNetworkModalTextClassName}>
           Please switch to one of the supported networks: {supportedChainIds.map(chainIdToName).join(', ')}
         </p>
