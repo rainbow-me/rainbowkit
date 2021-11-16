@@ -1,6 +1,8 @@
 import { createGlobalTheme } from '@vanilla-extract/css'
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 
+import './reset.css'
+
 export const vars = createGlobalTheme(':root', {
   borderWidths: {
     '4': '4px'
@@ -166,4 +168,5 @@ const unresponsiveProperties = defineProperties({
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties
 
-export const atoms = createSprinkles(layoutStyles, colorStyles, unresponsiveProperties)
+export const sprinkles = createSprinkles(layoutStyles, colorStyles, unresponsiveProperties)
+export type Sprinkles = Parameters<typeof sprinkles>[0]
