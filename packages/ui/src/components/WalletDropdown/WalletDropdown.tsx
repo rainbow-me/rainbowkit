@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Box } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
-import { CloseIcon } from './CloseIcon'
+import { CloseIcon, EtherscanIcon } from './Icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
 import { MenuStyles } from './style.css'
 
@@ -58,12 +58,36 @@ export const WalletDropdown = ({
     display={isExpanded ? 'block' : 'none'}
   >
     <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
-    <Box as="li" fontSize="14" color="sky90">
+    <Box
+      as="li"
+      fontSize="14"
+      color="sky90"
+      marginBottom="16"
+      fontWeight="heavy"
+      display="flex"
+      width="full"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
         <CopyAddressButton {...{ address }} />
       ) : (
         typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
       )}
+    </Box>
+    <Box
+      as="li"
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      width="full"
+      marginBottom="16"
+      color="sky90"
+    >
+      <Box as="span" fontSize="14" fontWeight="semibold">
+        Etherscan
+      </Box>
+      <EtherscanIcon />
     </Box>
     <Box as="li" fontSize="14">
       <Box

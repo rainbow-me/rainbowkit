@@ -32,7 +32,14 @@ esbuild
       }),
       makeAllPackagesExternalPlugin
     ],
+    watch: {
+      onRebuild(error, result) {
+        if (error) console.error('watch build failed:', error)
+        else console.log('watch build succeeded:', result)
+      }
+    },
 
     outdir: 'dist'
   })
+  .then(() => console.log('watching...'))
   .catch(() => process.exit(1))

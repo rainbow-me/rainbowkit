@@ -69,6 +69,7 @@ export const vars = createGlobalTheme(':root', {
     }
   },
   radii: {
+    '6': '6px',
     '10': '10px',
     '12': '12px',
     '16': '16px',
@@ -90,6 +91,7 @@ export const vars = createGlobalTheme(':root', {
     '20': '20px',
     '24': '24px',
     '28': '28px',
+    '32': '32px',
     auto: 'auto',
     full: '100%',
     fit: 'fit-content',
@@ -123,7 +125,7 @@ const layoutStyles = defineProperties({
     borderBottomRightRadius: vars.radii,
     borderTopLeftRadius: vars.radii,
     borderTopRightRadius: vars.radii,
-    display: ['none', 'block', 'flex', 'inline-flex'],
+    display: ['none', 'block', 'flex', 'inline-flex', 'inline-block'],
     flexDirection: ['row', 'column'],
     height: vars.space,
     justifyContent: [...flexAlignment, 'space-around', 'space-between'],
