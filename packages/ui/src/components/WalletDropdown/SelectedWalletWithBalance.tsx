@@ -21,12 +21,12 @@ export const SelectedWalletWithBalance = ({
   const { logoURI, name } = useWalletInfo()
 
   return (
-    <Box as="li" marginBottom="16" display="flex" justifyContent="space-between" alignItems="center">
+    <Box as="li" marginBottom="16" display="flex" justifyContent="space-between" alignItems="flex-start">
       <Box>
-        <Text as="h1" weight="heavy">
+        <Text as="h1" color="white" weight="heavy">
           {bal.slice(0, 5)} {symbol}
         </Text>
-        <Text as="h2" weight="heavy">
+        <Text as="h2" color="white60" size="14" weight="heavy">
           {name}
         </Text>
       </Box>
