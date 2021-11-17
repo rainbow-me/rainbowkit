@@ -50,6 +50,7 @@ export const WalletDropdown = ({
   // might need {...props} here?
   <Box
     as="ul"
+    background="blackLight"
     position="absolute"
     margin="0"
     borderRadius="16"

@@ -6,8 +6,9 @@ import './reset.css'
 export const vars = createGlobalTheme(':root', {
   borderWidths: {
     '4': '4px'
-
-    // more
+  },
+  borderStyle: {
+    solid: 'solid'
   },
   color: {
     appleBlue: '#0A84FF',
@@ -20,11 +21,14 @@ export const vars = createGlobalTheme(':root', {
     sky60: 'rgba(88, 91, 100, 0.6)',
     white: '#FFFFFF',
     white60: 'rgba(255, 255, 255, 0.6)',
+    white04: 'rgba(255, 255, 255, .04)',
+    white01: 'rgba(255, 255, 255, .01)',
     green: '#2CCC00',
 
     // need to add colors
     // from design system in figma
     black: '#000000',
+    blackLight: '#1A1B1F',
     blue: '#0E76FD',
     red: '#FF494A'
     // light mode colors
@@ -70,6 +74,7 @@ export const vars = createGlobalTheme(':root', {
     }
   },
   radii: {
+    '1': '1px',
     '6': '6px',
     '10': '10px',
     '12': '12px',
@@ -118,6 +123,7 @@ const layoutStyles = defineProperties({
     alignItems: [...flexAlignment, 'baseline'],
     alignSelf: [...flexAlignment, 'baseline'],
     borderColor: vars.color,
+    borderStyle: vars.borderStyle,
     borderWidth: vars.borderWidths,
     borderBottomWidth: vars.borderWidths,
     borderTopWidth: vars.borderWidths,
