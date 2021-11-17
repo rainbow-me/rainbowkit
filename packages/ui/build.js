@@ -4,6 +4,8 @@ import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
 
+const isWatching = process.argv.includes('--watch')
+
 async function processCss(css) {
   const result = await postcss([autoprefixer]).process(css, {
     from: undefined /* suppress source map warning */
@@ -32,14 +34,19 @@ esbuild
       }),
       makeAllPackagesExternalPlugin
     ],
-    watch: {
-      onRebuild(error, result) {
-        if (error) console.error('watch build failed:', error)
-        else console.log('watch build succeeded:', result)
-      }
-    },
-
+    watch: isWatching
+      ? {
+          onRebuild(error, result) {
+            if (error) console.error('watch build failed:', error)
+            else console.log('watch build succeeded:', result)
+          }
+        }
+      : undefined,
     outdir: 'dist'
   })
-  .then(() => console.log('watching...'))
+  .then(() => {
+    if (isWatching) {
+      console.log('watching...')
+    }
+  })
   .catch(() => process.exit(1))
