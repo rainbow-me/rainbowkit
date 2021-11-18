@@ -13,9 +13,12 @@ type Props = {
 }
 
 export const Text = React.forwardRef(
-  ({ as = 'div', children, color = 'black', font = 'body', size = '16' }: Props, ref: React.Ref<HTMLElement>) => {
+  (
+    { as = 'div', children, color = 'black', font = 'body', size = '16', weight = 'regular' }: Props,
+    ref: React.Ref<HTMLElement>
+  ) => {
     return (
-      <Box as={as} ref={ref} color={color} fontFamily={font} fontSize={size}>
+      <Box as={as} ref={ref} color={color} fontFamily={font} fontSize={size} fontWeight={weight}>
         {children}
       </Box>
     )

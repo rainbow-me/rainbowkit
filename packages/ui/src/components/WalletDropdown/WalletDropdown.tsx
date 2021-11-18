@@ -4,6 +4,7 @@ import React from 'react'
 
 import { Box } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
+import { Text } from '../Text'
 import { CloseIcon, EtherscanIcon } from './Icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
 import { MenuStyles } from './style.css'
@@ -54,7 +55,7 @@ export const WalletDropdown = ({
     position="absolute"
     margin="0"
     borderRadius="16"
-    padding="14"
+    padding="12"
     className={MenuStyles}
     display={isExpanded ? 'block' : 'none'}
   >
@@ -62,7 +63,6 @@ export const WalletDropdown = ({
     <Box
       as="li"
       fontSize="14"
-      color="sky90"
       marginBottom="16"
       fontWeight="heavy"
       display="flex"
@@ -78,22 +78,23 @@ export const WalletDropdown = ({
     </Box>
     <Box
       as="li"
+      color="sky90"
       display="flex"
       justifyContent="space-between"
       alignItems="center"
       width="full"
       marginBottom="16"
-      color="sky90"
     >
-      <Box as="span" fontSize="14" fontWeight="semibold">
+      <Text as="h3" color="sky90" size="14" weight="bold">
         Etherscan
+      </Text>
+      <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+        <EtherscanIcon />
       </Box>
-      <EtherscanIcon />
     </Box>
-    <Box as="li" fontSize="14">
+    <Box as="li">
       <Box
         as="button"
-        fontWeight="semibold"
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -101,7 +102,12 @@ export const WalletDropdown = ({
         color="red"
         onClick={() => disconnect()}
       >
-        Disconnect <CloseIcon />
+        <Text color="red" size="14" weight="bold">
+          Disconnect
+        </Text>
+        <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+          <CloseIcon />
+        </Box>
       </Box>
     </Box>
   </Box>
