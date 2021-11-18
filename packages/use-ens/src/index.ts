@@ -23,23 +23,21 @@ export const useENS = ({
   const [data, set] = useState<ResolvedENS>()
 
   useEffect(() => {
-    const ac = new AbortController()
     if (provider && domain && !data) {
       if (chainId === 1 || contractAddress) {
-        getENS(provider, contractAddress)(domain, { ...fetchOptions, signal: ac.signal }).then((data) => {
+        getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
           set(data)
         })
       } else {
         provider.getNetwork().then(({ chainId }: { chainId: number }) => {
           if (contractAddress || chainId === 1) {
-            getENS(provider, contractAddress)(domain, { ...fetchOptions, signal: ac.signal }).then((data) => {
+            getENS(provider, contractAddress)(domain, fetchOptions).then((data) => {
               set(data)
             })
           }
         })
       }
     }
-    return () => ac.abort()
   }, [contractAddress, domain, fetchOptions])
 
   return data
