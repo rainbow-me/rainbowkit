@@ -1,10 +1,10 @@
-import { style as resetStyles } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css'
 
 import 'focus-visible'
 
 const hideFocusRingsDataAttribute = '[data-js-focus-visible] &:focus:not([data-focus-visible-added])'
 
-export const base = resetStyles({
+export const base = style({
   margin: 0,
   padding: 0,
   border: 0,
@@ -20,20 +20,11 @@ export const base = resetStyles({
   }
 })
 
-// HTML5 display-role reset for older browsers
-const block = resetStyles({
-  display: 'block'
-})
-
-const body = resetStyles({
-  lineHeight: 1
-})
-
-const list = resetStyles({
+const list = style({
   listStyle: 'none'
 })
 
-const quote = resetStyles({
+const quote = style({
   quotes: 'none',
   selectors: {
     '&:before, &:after': {
@@ -42,35 +33,33 @@ const quote = resetStyles({
   }
 })
 
-const table = resetStyles({
+const table = style({
   borderCollapse: 'collapse',
   borderSpacing: 0
 })
 
-const appearance = resetStyles({
+const appearance = style({
   appearance: 'none'
 })
 
-const field = resetStyles([
-  block,
+const field = style([
   appearance,
-  resetStyles({
+  {
     outline: 'none',
     '::placeholder': {
       opacity: 1
     }
-  })
+  }
 ])
 
-// Custom reset rules
-const mark = resetStyles({
+const mark = style({
   backgroundColor: 'transparent',
   color: 'inherit'
 })
 
-const select = resetStyles([
+const select = style([
   field,
-  resetStyles({
+  {
     ':disabled': {
       opacity: 1
     },
@@ -79,12 +68,12 @@ const select = resetStyles([
         display: 'none'
       }
     }
-  })
+  }
 ])
 
-const input = resetStyles([
+const input = style([
   field,
-  resetStyles({
+  {
     selectors: {
       '&::-ms-clear': {
         display: 'none'
@@ -93,36 +82,23 @@ const input = resetStyles([
         WebkitAppearance: 'none'
       }
     }
-  })
+  }
 ])
 
-const button = resetStyles({
+const button = style({
   background: 'none'
 })
 
-const a = resetStyles({
+const a = style({
   textDecoration: 'none',
   color: 'inherit'
 })
 
 export const element = {
-  article: block,
-  aside: block,
-  details: block,
-  div: block,
-  figcaption: block,
-  figure: block,
-  footer: block,
-  header: block,
-  hgroup: block,
-  menu: block,
-  nav: block,
-  section: block,
   ul: list,
   ol: list,
   blockquote: quote,
   q: quote,
-  body,
   a,
   table,
   mark,
@@ -131,5 +107,3 @@ export const element = {
   textarea: field,
   input
 }
-
-export type Element = keyof typeof element

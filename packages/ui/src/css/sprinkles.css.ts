@@ -152,7 +152,7 @@ const layoutStyles = defineProperties({
     minWidth: vars.space,
     minHeight: vars.space,
     right: vars.space
-  },
+  } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
@@ -172,7 +172,7 @@ const colorStyles = defineProperties({
 const unresponsiveProperties = defineProperties({
   properties: {
     cursor: ['default', 'pointer']
-  }
+  } as const
 })
 
 export type UnresponsiveProperties = keyof typeof unresponsiveProperties

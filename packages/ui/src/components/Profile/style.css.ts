@@ -1,7 +1,8 @@
 import { style } from '@vanilla-extract/css'
+import { sprinkles } from '../../css/sprinkles.css'
 
-export const DropdownIconClassName = style({
-  marginLeft: '6px'
+export const DropdownIconClassName = sprinkles({
+  marginLeft: '6'
 })
 
 /**

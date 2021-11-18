@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { sprinkles } from '../../css/sprinkles.css'
 
 export const ExplorerLinkClassName = style({
   textDecoration: 'none',
@@ -10,11 +11,15 @@ export const ExplorerLinkClassName = style({
   }
 })
 
-export const TxContainerClassName = style({
-  display: 'flex',
-  alignItems: 'center',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  padding: '0.6rem 0.8rem',
-  width: '100%'
-})
+export const TxContainerClassName = style([
+  sprinkles({
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 'full'
+  }),
+  {
+    padding: '0.6rem 0.8rem'
+  }
+])

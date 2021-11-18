@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { sprinkles } from '../../css/sprinkles.css'
 
 export const ListStyles = style({
   minWidth: '160px',
@@ -17,6 +18,6 @@ export const IndicatorStyles = style({
   top: 'calc(50% - 4px)'
 })
 
-export const SelectOptionStyles = style({
-  padding: '10px'
+export const SelectOptionStyles = sprinkles({
+  padding: '10'
 })

@@ -8,7 +8,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./dist/index.css": "./dist/index.css"
+    "./index.css": "./dist/index.css"
   },
   "types": "./dist/index.d.ts",
   "engines": {
