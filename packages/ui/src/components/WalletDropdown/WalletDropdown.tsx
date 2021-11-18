@@ -5,7 +5,7 @@ import React from 'react'
 import { Box } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
 import { Text } from '../Text'
-import { CloseIcon, EtherscanIcon } from './Icons'
+import { CloseIcon, ExplorerIcon } from './Icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
 import { MenuStyles } from './style.css'
 
@@ -86,10 +86,10 @@ export const WalletDropdown = ({
       marginBottom="16"
     >
       <Text as="h3" color="sky90" size="14" weight="bold">
-        Etherscan
+        Explorer
       </Text>
       <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
-        <EtherscanIcon />
+        <ExplorerIcon />
       </Box>
     </Box>
     <Box as="li">

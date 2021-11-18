@@ -86,7 +86,8 @@ const input = style([
 ])
 
 const button = style({
-  background: 'none'
+  background: 'none',
+  cursor: 'pointer'
 })
 
 const a = style({
