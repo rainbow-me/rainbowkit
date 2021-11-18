@@ -3,7 +3,7 @@ import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { Box } from '../Box'
-import { IndicatorStyles, ListStyles, SelectOptionStyles } from './style.css'
+import { ButtonStyles, CurrentChainOptionStyles, IndicatorStyles, ListStyles, SelectOptionStyles } from './style.css'
 import { ChainOption } from './ChainOption'
 
 export interface NetworkSelectProps {
@@ -50,9 +50,10 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
         <ChainOption
           aria-selected={true}
           chain={currentChain}
-          className={`${classNames?.current}`}
+          className={`${ButtonStyles} ${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
           iconClassName={classNames?.icon}
+          padding="6"
         />
       )}
       <Box
@@ -75,7 +76,9 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
               onClick={() => {
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={`${SelectOptionStyles} ${classNames.option || ''}`}
+              className={`${SelectOptionStyles} ${isCurrentChain ? CurrentChainOptionStyles : ''} ${
+                classNames.option || ''
+              }`}
               iconClassName={classNames?.icon || ''}
             >
               {ch.name}{' '}

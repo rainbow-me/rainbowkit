@@ -21,6 +21,7 @@ export const vars = createGlobalTheme(':root', {
     sky60: 'rgba(88, 91, 100, 0.6)',
     white: '#FFFFFF',
     white60: 'rgba(255, 255, 255, 0.6)',
+    white10: 'rgba(255, 255, 255, 0.1)',
     white04: 'rgba(255, 255, 255, .04)',
     white01: 'rgba(255, 255, 255, .01)',
     green: '#2CCC00',

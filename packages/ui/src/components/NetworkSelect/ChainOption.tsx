@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react'
 import { Chain } from '@rainbow-me/kit-utils'
-import { OptionStyles } from './style.css'
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 
-export interface ChainOptionProps {
+export interface ChainOptionProps extends BoxProps {
   chain: Chain
   children?: ReactNode
   iconClassName?: string
@@ -22,13 +21,14 @@ export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainO
     color="sky90"
     aria-label="option"
     {...props}
-    className={`${OptionStyles} ${props.className || ''}`}
+    className={props.className || ''}
   >
     <Box
       as="img"
       aria-hidden="true"
       minWidth="24"
       minHeight="24"
+      marginRight="6"
       className={iconClassName}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
     />{' '}
