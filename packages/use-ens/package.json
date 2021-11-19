@@ -28,7 +28,7 @@
   "author": "v1rtl",
   "license": "UNLICENSED",
   "dependencies": {
-    "get-ens": "^2.0.1"
+    "get-ens": "^2.0.2"
   },
   "peerDependencies": {
     "react": ">=17",
@@ -40,12 +40,6 @@
     "directory": "packages/use-ens"
   },
   "devDependencies": {
-    "@ethersproject/providers": "^5.5.0",
-    "@testing-library/react-hooks": "^7.0.2",
-    "enhanced-resolve": "^5.8.3",
-    "fetch-mock": "^9.11.0",
-    "jsdom": "^18.0.1",
-    "regenerator-runtime": "^0.13.9",
-    "uvu": "^0.5.2"
+    "@ethersproject/providers": "^5.5.0"
   }
 }
