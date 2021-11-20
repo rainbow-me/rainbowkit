@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { styled } from '@linaria/react'
 import { useWalletModal } from '@rainbow-me/kit-modal'
 import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
-import { useENS } from '@rainbow-me/kit-hooks'
+import { useENSWithAvatar } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import type { UseENSOptions } from '@rainbow-me/kit-hooks'
 import { Pill } from './Pill'
@@ -73,15 +73,7 @@ export const Profile = ({
     chainId
   } = useWalletModal(modalOptions)
 
-  const ens = useENS({
-    provider: ENSProvider,
-    chainId,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    domain: accountAddress!,
-    fetchOptions: { cache: 'force-cache' },
-    ...ensOptions
-  })
-
+  const ens = useENSWithAvatar({ address: accountAddress, provider: ENSProvider })
   const address = useMemo(() => ens?.domain || accountAddress, [ens?.domain, accountAddress])
 
   const [isExpanded, setExpandedState] = useState(false)
@@ -94,9 +86,9 @@ export const Profile = ({
         <>
           <Badge
             {...{ ipfsGatewayUrl, address, provider }}
-            records={ens?.records}
             onClick={toggleDropdown}
             className={classNames?.pill || ''}
+            {...ens}
           >
             <DropdownIcon />
           </Badge>
