@@ -1,5 +1,13 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.21
+
+### Patch Changes
+
+- useENSWithAvatar for Profile instead of use-ens
+- Updated dependencies [undefined]
+  - use-ens@0.0.13
+
 ## 0.0.20
 
 ### Patch Changes

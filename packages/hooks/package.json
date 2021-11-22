@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/kit-hooks",
   "type": "module",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "exports": {
     ".": "./dist/index.js",
     "./useExplorerTxHistory": "./dist/useExplorerTxHistory.js",

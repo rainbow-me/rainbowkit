@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react'
 import { EthAddress } from '../EthAddress'
-import type { ENSRecords } from 'get-ens'
-
 import { EmojiIcon } from '../EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
 import { PillStyles } from './style.css'
@@ -10,9 +8,13 @@ import { BoxProps } from '../Box/Box'
 
 export interface BadgeProps {
   /**
-   * ENS records
+   * ENS avatar
    */
-  records?: ENSRecords | undefined
+  avatar?: string
+  /**
+   * ENS domain
+   */
+  domain?: string
   /**
    * Blockchain account address
    */
@@ -31,7 +33,8 @@ export interface BadgeProps {
  * User bagge showing current address/ENS username and a profile picture/emoji icon
  */
 export const Badge = ({
-  records,
+  avatar: _avatar,
+  domain,
   address,
   provider,
   ipfsGatewayUrl,
@@ -40,15 +43,12 @@ export const Badge = ({
   ...props
 }: BadgeProps & BoxProps) => {
   const avatar = useMemo(() => {
-    if (records?.avatar) {
-      const avatar = records.avatar
-      if (avatar) {
-        if (avatar.startsWith('ipfs://')) {
-          return `https://${ipfsGatewayUrl}/ipfs/${avatar.slice(7)}`
-        } else return avatar
-      }
+    if (_avatar) {
+      if (_avatar.startsWith('ipfs://')) {
+        return `https://${ipfsGatewayUrl}/ipfs/${_avatar.slice(7)}`
+      } else return _avatar
     }
-  }, [address, records?.avatar])
+  }, [address, _avatar])
 
   return (
     <Box
