@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.13
+
+### Patch Changes
+
+- useENSWithAvatar for Profile instead of use-ens
+
 ## 0.0.12
 
 ### Patch Changes
