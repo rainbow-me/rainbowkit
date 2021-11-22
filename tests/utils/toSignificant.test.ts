@@ -20,3 +20,5 @@ t('returns a float number if less than 9999', () => {
 })
 
 t.run()
+
+process.exit() // for some reason uvu doesn't exit itself
