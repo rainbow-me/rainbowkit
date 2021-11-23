@@ -22,7 +22,7 @@ import {
   OptionIconClassName,
   ButtonOptionClassName,
   WalletOptionClassName
-} from './style.css'
+} from './Modal.css'
 import { CloseIcon, NextIcon } from '../icons'
 
 type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
