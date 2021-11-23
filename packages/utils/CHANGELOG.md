@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.9
+
+### Patch Changes
+
+- vanilla-extract and many other updates
+
 ## 0.0.8
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @rainbow-me/kit-ui
 
+## 0.0.49
+
+### Patch Changes
+
+- vanilla-extract and many other updates
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-hooks@0.0.22
+  - @rainbow-me/kit-modal@0.0.17
+  - @rainbow-me/kit-utils@0.0.9
+
 ## 0.0.48
 
 ### Patch Changes

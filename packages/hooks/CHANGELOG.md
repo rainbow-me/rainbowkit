@@ -1,5 +1,14 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.22
+
+### Patch Changes
+
+- vanilla-extract and many other updates
+- Updated dependencies [undefined]
+  - use-ens@0.0.14
+  - @rainbow-me/kit-utils@0.0.9
+
 ## 0.0.21
 
 ### Patch Changes

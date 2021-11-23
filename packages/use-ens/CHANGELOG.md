@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.14
+
+### Patch Changes
+
+- vanilla-extract and many other updates
+
 ## 0.0.13
 
 ### Patch Changes

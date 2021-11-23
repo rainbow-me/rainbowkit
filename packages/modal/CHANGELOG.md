@@ -1,5 +1,13 @@
 # @rainbow-me/kit-modal
 
+## 0.0.17
+
+### Patch Changes
+
+- vanilla-extract and many other updates
+- Updated dependencies [undefined]
+  - @rainbow-me/kit-utils@0.0.9
+
 ## 0.0.16
 
 ### Patch Changes
