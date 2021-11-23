@@ -64,7 +64,7 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
         borderRadius="16"
         fontWeight="heavy"
         display={isExpanded ? 'block' : 'none'}
-        className={`${ListStyles} ${classNames.list || ''}`}
+        className={[ListStyles, classNames.list]}
       >
         {filteredChains.map((ch) => {
           const isCurrentChain = ch.chainId === currentChain?.chainId
