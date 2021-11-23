@@ -139,7 +139,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
   return (
     <ModalOverlay
       isConnecting={isConnecting}
-      className={isConnecting ? `${classNames?.overlay}` : `${classNames?.hidden}`}
+      className={isConnecting ? `${clsx(classNames?.overlay)}` : `${clsx(classNames?.hidden)}`}
     >
       <StyledModal className={clsx(classNames?.modal)}>
         <CloseButton className={clsx(classNames?.close)} onClick={() => setConnecting(false)}>
