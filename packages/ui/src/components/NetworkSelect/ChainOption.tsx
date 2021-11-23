@@ -21,7 +21,7 @@ export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainO
     color="sky90"
     aria-label="option"
     {...props}
-    className={props.className || ''}
+    className={props.className}
   >
     <Box
       as="img"
