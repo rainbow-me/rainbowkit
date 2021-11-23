@@ -1,6 +1,6 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 
-export const ModalTitleClassName = style({
+export const ModalTitle = style({
   fontStyle: 'normal',
   fontWeight: 800,
   fontSize: '20px',
@@ -12,7 +12,7 @@ export const ModalTitleClassName = style({
   marginBottom: '4px'
 })
 
-export const StyledModalClassName = style({
+export const StyledModal = style({
   minHeight: '525px',
   width: '390px',
   padding: '24px',
@@ -24,7 +24,7 @@ export const StyledModalClassName = style({
   justifyContent: 'space-between'
 })
 
-export const ButtonOptionClassName = style({
+export const ButtonOption = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -35,7 +35,7 @@ export const ButtonOptionClassName = style({
   cursor: 'pointer'
 })
 
-export const CaptionClassName = style({
+export const Caption = style({
   fontStyle: 'normal',
   fontWeight: 'bold',
   fontSize: '1rem',
@@ -45,7 +45,7 @@ export const CaptionClassName = style({
   color: 'rgba(60, 66, 82, 0.6)',
   display: 'block'
 })
-export const CloseButtonClassName = style({
+export const CloseButton = style({
   textAlign: 'center',
   letterSpacing: '0.4px',
   color: 'rgba(60, 66, 82, 0.8)',
@@ -56,14 +56,14 @@ export const CloseButtonClassName = style({
   right: 24,
   top: 24
 })
-export const TermsClassName = style({
+export const Terms = style({
   fontWeight: 600,
   color: 'rgba(60, 66, 82, 0.6)',
   fontSize: '14px',
   lineHeight: 1.5
 })
 
-globalStyle(`${TermsClassName} > a`, {
+globalStyle(`${Terms} > a`, {
   color: '#a0c7ff',
   fontWeight: 700,
   textDecoration: 'none',
@@ -72,7 +72,7 @@ globalStyle(`${TermsClassName} > a`, {
   }
 })
 
-export const MoreWalletsClassName = style({
+export const MoreWallets = style({
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
@@ -80,7 +80,7 @@ export const MoreWalletsClassName = style({
   padding: '11px'
 })
 
-export const MoreWalletsGroupClassName = style({
+export const MoreWalletsGroup = style({
   marginRight: '12px',
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
@@ -89,7 +89,7 @@ export const MoreWalletsGroupClassName = style({
   width: 'max-content'
 })
 
-export const BackButtonClassName = style({
+export const BackButton = style({
   width: '100%',
   padding: '11px',
   display: 'flex',
@@ -98,7 +98,7 @@ export const BackButtonClassName = style({
   cursor: 'pointer'
 })
 
-export const WalletLabelClassName = style({
+export const WalletLabel = style({
   fontStyle: 'normal',
   fontWeight: 800,
   fontSize: '20px',
@@ -111,19 +111,19 @@ export const WalletLabelClassName = style({
   textTransform: 'capitalize'
 })
 
-export const IconClassName = style({
+export const Icon = style({
   borderRadius: '10px',
   filter: 'drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3))'
 })
 
-export const OptionIconClassName = style({ marginRight: '12px', height: '34px', width: '34px' })
+export const OptionIcon = style({ marginRight: '12px', height: '34px', width: '34px' })
 
-export const MoreWalletsIconClassName = style({
+export const MoreWalletsIcon = style({
   height: '1rem',
   width: '1rem'
 })
 
-export const ModalOverlayClassName = style({
+export const ModalOverlay = style({
   width: '100%',
   height: '100vh',
   top: 0,
@@ -135,24 +135,24 @@ export const ModalOverlayClassName = style({
   alignItems: 'center'
 })
 
-export const WalletsClassName = style({
+export const Wallets = style({
   marginTop: '24px',
   listStyleType: 'none',
   paddingLeft: 0
 })
 
-export const WalletOptionClassName = style({
+export const WalletOption = style({
   marginBottom: '12px',
   padding: '11px',
   width: 'unset'
 })
 
-export const MoreWalletsInnerClassName = style({
+export const MoreWalletsInner = style({
   display: 'inherit',
   flexDirection: 'inherit'
 })
 
-export const BackButtonCaptionClassName = style({
+export const BackButtonCaption = style({
   color: '#25292e',
   fontSize: '20px',
   cursor: 'pointer',

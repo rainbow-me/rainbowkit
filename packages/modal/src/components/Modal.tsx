@@ -3,49 +3,16 @@ import type { ModalProps } from '../types'
 import type { Wallet } from '@rainbow-me/kit-utils'
 
 import { getWalletInfo } from '@rainbow-me/kit-utils'
-import {
-  BackButtonClassName,
-  CaptionClassName,
-  CloseButtonClassName,
-  IconClassName,
-  ModalOverlayClassName,
-  ModalTitleClassName,
-  MoreWalletsClassName,
-  MoreWalletsInnerClassName,
-  MoreWalletsGroupClassName,
-  MoreWalletsIconClassName,
-  StyledModalClassName,
-  TermsClassName,
-  WalletLabelClassName,
-  WalletsClassName,
-  BackButtonCaptionClassName,
-  OptionIconClassName,
-  ButtonOptionClassName,
-  WalletOptionClassName
-} from './Modal.css'
+import * as styles from './Modal.css'
 import { CloseIcon, NextIcon } from '../icons'
 
 type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
 
 export const ModalTitle = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${ModalTitleClassName} ${className}`} {...props}>
+  <div className={`${styles.ModalTitle} ${className}`} {...props}>
     {children}
   </div>
 )
-
-/* styled.div<{ $isConnecting: boolean }>`
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  display: ${(props) => (props.$isConnecting ? 'flex' : 'none')};
-  justify-content: center;
-  align-items: center;
-`
- */
 
 export const ModalOverlay = ({
   className,
@@ -55,7 +22,7 @@ export const ModalOverlay = ({
   ...props
 }: BoxProps & { isConnecting: boolean }) => (
   <div
-    className={`${ModalOverlayClassName} ${className}`}
+    className={`${styles.ModalOverlay} ${className}`}
     style={{
       ...style,
       display: isConnecting ? 'flex' : 'none'
@@ -67,64 +34,37 @@ export const ModalOverlay = ({
 )
 
 export const StyledModal = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${StyledModalClassName} ${className}`} {...props}>
+  <div className={`${styles.StyledModal} ${className}`} {...props}>
     {children}
   </div>
 )
 
 export const Caption = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${CaptionClassName} ${className}`} {...props}>
+  <div className={`${styles.Caption} ${className}`} {...props}>
     {children}
   </div>
 )
 
 export const CloseButton = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${CloseButtonClassName} ${className}`} {...props}>
+  <div className={`${styles.CloseButton} ${className}`} {...props}>
     {children}
   </div>
 )
 
 export const WalletLabel = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${WalletLabelClassName} ${className}`} {...props}>
+  <div className={`${styles.WalletLabel} ${className}`} {...props}>
     {children}
   </div>
 )
 
-/* styled.ul`
-  margin-top: 24px;
-  list-style-type: none;
-  padding-left: 0;
-
-  li {
-    margin-bottom: 12px;
-    padding: 11px;
-    width: unset;
-  }
-
-  li button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    background: none;
-    border: none;
-  }
-
-  li img:first-child {
-    margin-right: 12px;
-    height: 34px;
-    width: 34px;
-  }
-` */
-
 const Terms = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${TermsClassName} ${className}`} {...props}>
+  <div className={`${styles.Terms} ${className}`} {...props}>
     {children}
   </div>
 )
 
 const MoreWallets = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
-  <button className={`${MoreWalletsClassName} ${ButtonOptionClassName} ${className}`} {...props}>
+  <button className={`${styles.MoreWallets} ${styles.ButtonOption} ${className}`} {...props}>
     {children}
   </button>
 )
@@ -137,16 +77,16 @@ const Icon = ({
 }: { logoURI: string; name: string } & React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
->) => <img className={`${IconClassName} ${className}`} src={logoURI} alt={name} {...props} />
+>) => <img className={`${styles.Icon} ${className}`} src={logoURI} alt={name} {...props} />
 
 const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
   const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
 
   return (
-    <li className={WalletOptionClassName} key={name}>
-      <button onClick={() => (connect ? connect(wallet) : undefined)} className={ButtonOptionClassName}>
+    <li className={styles.WalletOption} key={name}>
+      <button onClick={() => (connect ? connect(wallet) : undefined)} className={styles.ButtonOption}>
         <WalletLabel>
-          <Icon {...{ name, logoURI }} className={OptionIconClassName} />
+          <Icon {...{ name, logoURI }} className={styles.OptionIcon} />
           {name}
         </WalletLabel>
         <NextIcon />
@@ -160,19 +100,19 @@ const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
 
   return (
     <div key={name}>
-      <Icon {...{ name, logoURI }} className={MoreWalletsIconClassName} />
+      <Icon {...{ name, logoURI }} className={styles.MoreWalletsIcon} />
     </div>
   )
 }
 
 const BackButton = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
-  <button className={`${BackButtonClassName} ${className}`} {...props}>
+  <button className={`${styles.BackButton} ${className}`} {...props}>
     {children}
   </button>
 )
 
 const MoreWalletsGroup = ({ className, children, ...props }: BoxProps) => (
-  <div className={`${MoreWalletsGroupClassName} ${className}`} {...props}>
+  <div className={`${styles.MoreWalletsGroup} ${className}`} {...props}>
     {children}
   </div>
 )
@@ -208,14 +148,14 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           <ModalTitle className={classNames?.title}>Connect to a wallet</ModalTitle>
           <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
 
-          <div className={`${WalletsClassName} ${classNames?.wallets}`}>
+          <div className={`${styles.Wallets} ${classNames?.wallets}`}>
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
             })}
           </div>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
             <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
-              <div className={MoreWalletsInnerClassName}>
+              <div className={styles.MoreWalletsInner}>
                 <MoreWalletsGroup>
                   {hiddenWallets.map((w) => (
                     <MoreWalletsIcon wallet={w} key={w.name} />
@@ -229,7 +169,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
           )}
           {isHiddenWalletsOpened && (
             <BackButton onClick={() => setHiddenWalletsOpened(false)}>
-              <Caption className={BackButtonCaptionClassName}>Back</Caption>
+              <Caption className={styles.BackButtonCaption}>Back</Caption>
             </BackButton>
           )}
         </div>
