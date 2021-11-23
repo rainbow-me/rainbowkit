@@ -27,7 +27,7 @@ export const EmojiIcon = ({ address, className, ...props }: EmojiIconProps) => {
       marginRight="10"
       width="28"
       height="28"
-      className={className || ''}
+      className={className}
       style={{ backgroundColor: color }}
       {...props}
     >
