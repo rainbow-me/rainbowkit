@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 import {
   ButtonStyles,
   CurrentChainOptionStyles,
@@ -11,8 +11,9 @@ import {
   SelectOptionStyles
 } from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
+import clsx from 'clsx'
 
-export interface NetworkSelectProps {
+export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]
   provider: Web3Provider
   chainId: number
@@ -26,7 +27,13 @@ export interface NetworkSelectProps {
   }>
 }
 
-export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {}, chainId }: NetworkSelectProps) => {
+export const NetworkSelect = ({
+  chains: selectedChains,
+  provider,
+  classNames = {},
+  chainId,
+  ...props
+}: NetworkSelectProps) => {
   const [isExpanded, setExpand] = useState(false)
 
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
@@ -50,7 +57,8 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
       role="button"
       aria-label="select"
       aria-roledescription="Select a dapp network"
-      className={classNames?.select}
+      className={clsx(classNames.select)}
+      {...props}
     >
       {currentChain?.chainId && (
         <ChainOption
@@ -58,11 +66,12 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
           chain={currentChain}
           className={`${ButtonStyles} ${classNames?.current}`}
           onClick={() => setExpand(!isExpanded)}
-          iconClassName={classNames?.icon}
+          iconClassName={classNames?.icon || ''}
           padding="6"
         />
       )}
       <Box
+        background="blackLight"
         right="0"
         position="absolute"
         width="max"
@@ -82,9 +91,11 @@ export const NetworkSelect = ({ chains: selectedChains, provider, classNames = {
               onClick={() => {
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={`${SelectOptionStyles} ${isCurrentChain ? CurrentChainOptionStyles : ''} ${
+              className={clsx(
+                SelectOptionStyles,
+                isCurrentChain ? CurrentChainOptionStyles : '',
                 classNames.option || ''
-              }`}
+              )}
               iconClassName={classNames?.icon || ''}
             >
               {ch.name}{' '}

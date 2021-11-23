@@ -3,7 +3,6 @@ import { sprinkles } from '../../css/sprinkles.css'
 
 export const ListStyles = style({
   minWidth: '160px',
-  background: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1A1B1F 99.85%);',
   backdropFilter: 'blur(20px)',
   zIndex: 10,
   top: '42px'

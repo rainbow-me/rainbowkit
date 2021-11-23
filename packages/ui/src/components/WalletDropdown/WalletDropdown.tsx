@@ -1,5 +1,6 @@
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer } from '@rainbow-me/kit-utils'
+import clsx from 'clsx'
 import React, { useMemo } from 'react'
 import { Box, BoxProps } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
@@ -44,6 +45,7 @@ export const WalletDropdown = ({
   provider,
   disconnect,
   isExpanded,
+  className,
   ...props
 }: WalletDropdownProps) => {
   const explorerName = useMemo(() => {
@@ -62,7 +64,7 @@ export const WalletDropdown = ({
       margin="0"
       borderRadius="16"
       padding="12"
-      className={MenuStyles}
+      className={clsx(MenuStyles, className)}
       display={isExpanded ? 'block' : 'none'}
       {...props}
     >

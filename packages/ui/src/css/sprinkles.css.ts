@@ -29,7 +29,7 @@ export const vars = createGlobalTheme(':root', {
     // need to add colors
     // from design system in figma
     black: '#000000',
-    blackLight: '#1A1B1F',
+    blackLight: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1A1B1F 99.85%)',
     blue: '#0E76FD',
     red: '#FF494A'
     // light mode colors

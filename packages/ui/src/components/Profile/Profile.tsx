@@ -3,7 +3,6 @@ import { useWalletModal } from '@rainbow-me/kit-modal'
 import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
 import { useENSWithAvatar } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import type { UseENSOptions } from '@rainbow-me/kit-hooks'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
 
@@ -29,7 +28,6 @@ export interface ProfileProps {
     toggleDropdown: () => void
   }) => JSX.Element
   dropdown?: (props: WalletDropdownProps) => JSX.Element
-  ensOptions?: Partial<UseENSOptions>
 }
 
 export const Profile = ({
@@ -39,8 +37,7 @@ export const Profile = ({
   ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
   classNames,
   button: ButtonComponent = ConnectButton,
-  dropdown: DropdownComponent = WalletDropdown,
-  ensOptions
+  dropdown: DropdownComponent = WalletDropdown
 }: ProfileProps) => {
   const {
     state: { isConnected, isConnecting, disconnect, connect },
