@@ -3,7 +3,6 @@ import readdir from 'recursive-readdir-files'
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
 import postcss from 'postcss'
 import autoprefixer from 'autoprefixer'
-// import { EsmExternalsPlugin } from '@esbuild-plugins/esm-externals'
 
 async function processCss(css) {
   const result = await postcss([autoprefixer]).process(css, {
