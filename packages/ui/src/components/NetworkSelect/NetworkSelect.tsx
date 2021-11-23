@@ -91,11 +91,7 @@ export const NetworkSelect = ({
               onClick={() => {
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={clsx(
-                SelectOptionStyles,
-                isCurrentChain ? CurrentChainOptionStyles : '',
-                classNames.option || ''
-              )}
+              className={clsx([SelectOptionStyles, { CurrentChainOptionStyles: isCurrentChain }, classNames.option])}
               iconClassName={classNames?.icon || ''}
             >
               {ch.name}{' '}

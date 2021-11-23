@@ -3,6 +3,7 @@ import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
 import React, { useEffect, useState } from 'react'
 import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
 import { ExplorerLinkClassName, TxContainerClassName } from './Tx.css'
+import clsx from 'clsx'
 
 export type TxProps = {
   /**
@@ -50,7 +51,7 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
   }, [props.hash, props.explorerUrl, chainId])
 
   return (
-    <div className={`${TxContainerClassName} ${classNames?.container || ''}`}>
+    <div className={clsx(TxContainerClassName, classNames.container)}>
       {link === '' ? (
         <span>{title || 'Contract call'}</span>
       ) : (
