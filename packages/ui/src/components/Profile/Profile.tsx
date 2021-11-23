@@ -58,7 +58,7 @@ export const Profile = ({
   const toggleDropdown = () => setExpandedState(!isExpanded)
 
   return (
-    <Box position="relative" width="max" className={`${classNames?.container || ''}`}>
+    <Box position="relative" width="max" className={classNames?.container}>
       {isConnected ? (
         <>
           <Badge
