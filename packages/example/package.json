@@ -6,13 +6,13 @@
   "dependencies": {
     "@rainbow-me/kit-core": "workspace:^0.0.47",
     "@rainbow-me/kit-modal": "workspace:^0.0.16",
+    "@rainbow-me/kit-utils": "workspace:^0.0.8",
+    "@vanilla-extract/next-plugin": "^1.0.1",
     "@rainbow-me/kit-ui": "workspace:^0.0.48",
     "@web3-react/injected-connector": ">=6",
     "@web3-react/walletconnect-connector": ">=6",
     "@web3-react/walletlink-connector": ">=6",
-    "linaria": "^3.0.0-beta.14",
     "next": "^12.0.2",
-    "next-linaria": "^0.11.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

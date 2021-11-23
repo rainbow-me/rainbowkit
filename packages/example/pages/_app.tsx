@@ -1,9 +1,10 @@
+import '@rainbow-me/kit-modal/index.css'
+import '@rainbow-me/kit-ui/index.css'
+import type { AppProps } from 'next/app'
 import React from 'react'
-import { withWeb3React } from '@rainbow-me/kit-core'
-import { AppProps } from 'next/app'
-import '@rainbow-me/kit-ui/bundle.css'
-import '@rainbow-me/kit-modal/bundle.css'
 
-const App = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return <Component {...pageProps} />
+}
 
-export default withWeb3React(App)
+export default App

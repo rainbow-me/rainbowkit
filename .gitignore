@@ -104,5 +104,3 @@ dist
 .tern-port
 
 pnpm-lock.yaml
-.linaria-cache
-.linaria-cache/**/*.css

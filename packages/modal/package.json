@@ -8,9 +8,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./components/Modal": "./dist/components/Modal.js",
-    "./useWalletModal": "./dist/useWalletModal.js",
-    "./utils": "./dist/utils.js"
+    "./index.css": "./dist/index.css"
   },
   "types": "./dist/index.d.ts",
   "engines": {
@@ -36,17 +34,16 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@linaria/core": "^3.0.0-beta.13",
-    "@linaria/rollup": "^3.0.0-beta.13",
-    "@linaria/shaker": "^3.0.0-beta.13",
-    "@rollup/plugin-image": "^2.1.1",
-    "react": "^17.0.2",
-    "rollup-plugin-css-only": "^3.1.0"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "react": "^17.0.2"
   },
   "dependencies": {
-    "@linaria/react": "^3.0.0-beta.13",
     "@rainbow-me/kit-utils": "workspace:*",
-    "@web3-react/abstract-connector": "^6.0.7"
+    "@vanilla-extract/css": "^1.6.3",
+    "@vanilla-extract/dynamic": "^2.0.0",
+    "@web3-react/abstract-connector": "^6.0.7",
+    "clsx": "^1.1.1"
   },
   "optionalDependencies": {
     "@web3-react/frame-connector": ">=6",

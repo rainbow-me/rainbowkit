@@ -33,8 +33,6 @@
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@ethersproject/bignumber": "^5.5.0",
-    "@linaria/babel-preset": "^3.0.0-beta.13",
-    "@linaria/esbuild": "^3.0.0-beta.13",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.11.9",

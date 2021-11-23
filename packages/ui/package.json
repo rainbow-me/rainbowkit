@@ -8,19 +8,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./components/AccountInfo": "./components/Account.js",
-    "./components/Badge": "./components/Badge.js",
-    "./components/CopyAddressButton": "./dist/components/CopyAddressButton.js",
-    "./components/EmojiIcon.js": "./dist/components/EmojiIcon.js",
-    "./components/EthAddress.js": "./dist/components/EthAddress.js",
-    "./components/ExplorerLink.js": "./dist/components/ExplorerLink.js",
-    "./components/NetworkSelect.js": "./dist/components/NetworkSelect.js",
-    "./components/Pill.js": "./dist/components/Pill.js",
-    "./components/Profile.js": "./dist/components/Profile.js",
-    "./components/Tx.js": "./dist/components/Tx.js",
-    "./components/TxHistory.js": "./dist/components/TxHistory.js",
-    "./components/UnsupportedNetwork.js": "./dist/components/UnsupportedNetwork.js",
-    "./components/WalletDropdown.js": "./dist/components/WalletDropdown.js"
+    "./index.css": "./dist/index.css"
   },
   "types": "./dist/index.d.ts",
   "engines": {
@@ -28,6 +16,7 @@
   },
   "scripts": {
     "build": "node build.js",
+    "build:watch": "node build.js --watch",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
     "typegen": "tsc --emitDeclarationOnly || true"
@@ -46,13 +35,10 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@linaria/core": "^3.0.0-beta.13",
-    "@linaria/react": "^3.0.0-beta.13",
-    "@linaria/rollup": "^3.0.0-beta.13",
-    "@linaria/shaker": "^3.0.0-beta.13",
-    "@rollup/plugin-image": "^2.1.1",
-    "react": "^17.0.2",
-    "rollup-plugin-css-only": "^3.1.0"
+    "@vanilla-extract/private": "^1.0.1",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "react": "^17.0.2"
   },
   "dependencies": {
     "@ethersproject/bignumber": "^5.5.0",
@@ -61,6 +47,10 @@
     "@rainbow-me/kit-hooks": "workspace:*",
     "@rainbow-me/kit-modal": "workspace:*",
     "@rainbow-me/kit-utils": "workspace:*",
+    "@vanilla-extract/css": "^1.6.3",
+    "@vanilla-extract/sprinkles": "^1.3.1",
+    "clsx": "^1.1.1",
+    "focus-visible": "^5.2.0",
     "get-ens": "^2.0.1"
   },
   "repository": {
