@@ -39,7 +39,7 @@ export const EthAddress = ({
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      className={classNames?.container || ''}
+      className={classNames?.container}
       {...props}
     >
       {ProfileIconURLOrImage &&
