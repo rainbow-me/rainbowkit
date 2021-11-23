@@ -1,7 +1,7 @@
 import { ModalTitle, ModalOverlay } from '@rainbow-me/kit-modal'
 import { chainIdToName } from '@rainbow-me/kit-utils'
 import React from 'react'
-import { UnsupportedNetworkModalBodyClassName, UnsupportedNetworkModalTextClassName } from './style.css'
+import { UnsupportedNetworkModalBodyClassName, UnsupportedNetworkModalTextClassName } from './UnsupportedNetwork.css'
 
 export interface UnsupportedNetworkProps {
   chainId?: number

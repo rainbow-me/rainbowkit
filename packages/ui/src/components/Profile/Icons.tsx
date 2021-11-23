@@ -1,5 +1,5 @@
 import React from 'react'
-import { DropdownIconClassName } from './style.css'
+import { DropdownIconClassName } from './Profile.css'
 
 export const DropdownIcon = () => (
   <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" className={DropdownIconClassName}>

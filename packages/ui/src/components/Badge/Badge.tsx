@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { EthAddress } from '../EthAddress'
 import { EmojiIcon } from '../EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
-import { PillStyles } from './style.css'
+import { PillStyles } from './Badge.css'
 import { Box } from '../Box'
 import { BoxProps } from '../Box/Box'
 

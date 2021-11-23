@@ -6,7 +6,7 @@ import { CopyAddressButton } from '../CopyAddressButton'
 import { Text } from '../Text'
 import { CloseIcon, ExplorerIcon } from './Icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
-import { MenuStyles } from './style.css'
+import { MenuStyles } from './WalletDropdown.css'
 
 export interface WalletDropdownProps extends BoxProps {
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element)

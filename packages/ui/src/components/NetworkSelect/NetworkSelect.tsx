@@ -3,7 +3,13 @@ import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
 import { Box } from '../Box'
-import { ButtonStyles, CurrentChainOptionStyles, IndicatorStyles, ListStyles, SelectOptionStyles } from './style.css'
+import {
+  ButtonStyles,
+  CurrentChainOptionStyles,
+  IndicatorStyles,
+  ListStyles,
+  SelectOptionStyles
+} from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
 
 export interface NetworkSelectProps {

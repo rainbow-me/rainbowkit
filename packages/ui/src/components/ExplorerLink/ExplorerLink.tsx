@@ -1,7 +1,7 @@
 import { chainIDToExplorer } from '@rainbow-me/kit-utils'
 import clsx from 'clsx'
 import React from 'react'
-import { ExplorerLinkClassName } from './style.css'
+import { ExplorerLinkClassName } from './ExplorerLink.css'
 
 export type ExplorerProps = { chainId?: number; address: string; explorerUrl?: string } & React.DetailedHTMLProps<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
