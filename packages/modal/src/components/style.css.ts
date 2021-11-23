@@ -22,28 +22,7 @@ export const StyledModalClassName = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between'
-}) /* styled.div`style({
-  width: '100%',
-  height: '100vh',
-  top: 0,
-  left: 0,
-  zIndex: 999,
-  position: 'fixed',
-  background: 'rgba(0, 0, 0, 0.5)',
-  justifyContent: 'center',
-  alignItems: 'center',
-  display: isConnecting ? 'flex' : 'none'
-})
-  min-height: 525px;
-  width: 390px;
-  padding: 24px;
-  position: relative;
-  background: #ffffff;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-` */
+}) 
 
 export const ButtonOptionClassName = style({
   display: 'flex',
