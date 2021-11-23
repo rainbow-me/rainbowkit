@@ -58,7 +58,7 @@ export const Badge = ({
       alignItems="center"
       fontWeight="heavy"
       color="sky90"
-      className={`${PillStyles} ${className}`}
+      className={[PillStyles, className]}
       {...props}
     >
       <EthAddress profileIcon={avatar || (() => <EmojiIcon address={address} />)} {...{ provider, address }} />{' '}
