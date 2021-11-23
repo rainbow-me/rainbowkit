@@ -1,4 +1,5 @@
 import { chainIDToExplorer } from '@rainbow-me/kit-utils'
+import clsx from 'clsx'
 import React from 'react'
 import { ExplorerLinkClassName } from './style.css'
 
@@ -12,7 +13,7 @@ export const ExplorerLink = ({ chainId = 1, address, explorerUrl, className, ...
     href={`${explorerUrl || chainIDToExplorer(chainId).url}/address/${address}`}
     target="_blank"
     rel="noreferrer"
-    className={`${ExplorerLinkClassName} ${className || ''}`}
+    className={clsx(ExplorerLinkClassName, className)}
     {...props}
   >
     View on explorer

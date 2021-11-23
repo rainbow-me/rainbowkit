@@ -22,7 +22,7 @@ export const StyledModalClassName = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between'
-}) 
+})
 
 export const ButtonOptionClassName = style({
   display: 'flex',
