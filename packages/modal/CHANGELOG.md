@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.18
+
+### Patch Changes
+
+- fix type import in modal
+
 ## 0.0.17
 
 ### Patch Changes

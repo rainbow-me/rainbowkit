@@ -1,14 +1,14 @@
 {
   "name": "example",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@rainbow-me/kit-core": "workspace:^0.0.48",
-    "@rainbow-me/kit-modal": "workspace:^0.0.17",
+    "@rainbow-me/kit-core": "workspace:^0.0.49",
+    "@rainbow-me/kit-modal": "workspace:^0.0.18",
     "@rainbow-me/kit-utils": "workspace:^0.0.9",
     "@vanilla-extract/next-plugin": "^1.0.1",
-    "@rainbow-me/kit-ui": "workspace:^0.0.49",
+    "@rainbow-me/kit-ui": "workspace:^0.0.50",
     "@web3-react/injected-connector": ">=6",
     "@web3-react/walletconnect-connector": ">=6",
     "@web3-react/walletlink-connector": ">=6",
