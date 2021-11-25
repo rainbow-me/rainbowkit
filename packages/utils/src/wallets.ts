@@ -1,3 +1,11 @@
+import type { AbstractConnector } from '@web3-react/abstract-connector'
+
+export type Wallet = {
+  name: string
+  hidden?: boolean
+  connector: AbstractConnector
+}
+
 /**
  * Get wallet name and icon
  * @param name wallet name (saved as `rk-last-wallet` in storage)
