@@ -1,26 +1,8 @@
 import * as esbuild from 'esbuild'
 import readdir from 'recursive-readdir-files'
-import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
-import postcss from 'postcss'
-import autoprefixer from 'autoprefixer'
+import { externals, vanillaExtract } from '../../esbuild/plugins.js'
 
 const isWatching = process.argv.includes('--watch')
-
-async function processCss(css) {
-  const result = await postcss([autoprefixer]).process(css, {
-    from: undefined /* suppress source map warning */
-  })
-
-  return result.css
-}
-
-let makeAllPackagesExternalPlugin = {
-  name: 'make-all-packages-external',
-  setup(build) {
-    let filter = /^[^./]|^\.[^./]|^\.\.[^/]/ // Must not start with "/" or "./" or "../"
-    build.onResolve({ filter }, (args) => ({ path: args.path, external: true }))
-  }
-}
 
 esbuild
   .build({
@@ -28,12 +10,7 @@ esbuild
     bundle: true,
     format: 'esm',
     platform: 'browser',
-    plugins: [
-      vanillaExtractPlugin({
-        processCss
-      }),
-      makeAllPackagesExternalPlugin
-    ],
+    plugins: [vanillaExtract, externals],
     watch: isWatching
       ? {
           onRebuild(error, result) {
