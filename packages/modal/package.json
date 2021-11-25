@@ -35,21 +35,21 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.1",
     "react": "^17.0.2"
   },
   "dependencies": {
     "@rainbow-me/kit-utils": "workspace:*",
-    "@vanilla-extract/css": "^1.6.3",
+    "@vanilla-extract/css": "^1.6.4",
     "@vanilla-extract/dynamic": "^2.0.0",
     "@web3-react/abstract-connector": "^6.0.7",
     "clsx": "^1.1.1"
   },
   "optionalDependencies": {
-    "@web3-react/frame-connector": ">=6",
-    "@web3-react/injected-connector": ">=6",
-    "@web3-react/walletconnect-connector": ">=6",
-    "@web3-react/walletlink-connector": ">=6"
+    "@web3-react/frame-connector": "^6.0.9",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "^6.2.8",
+    "@web3-react/walletlink-connector": "^6.2.8"
   },
   "repository": {
     "type": "git",

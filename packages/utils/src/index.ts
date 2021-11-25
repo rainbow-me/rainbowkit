@@ -1,4 +1,3 @@
-export * from './types'
 export * from './withWeb3React'
 export * from './isAuthorized'
 export * from './convert'
