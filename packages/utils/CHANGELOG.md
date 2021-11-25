@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.12
+
+### Patch Changes
+
+- fix(utils): missing re-export
+
 ## 0.0.11
 
 ### Patch Changes
