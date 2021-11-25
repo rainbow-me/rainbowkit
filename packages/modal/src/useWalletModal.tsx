@@ -5,8 +5,7 @@ import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
-
-import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
