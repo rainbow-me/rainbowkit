@@ -2,6 +2,7 @@
   "name": "example",
   "version": "1.0.4",
   "description": "",
+  "private": true,
   "main": "index.js",
   "dependencies": {
     "@rainbow-me/kit-core": "workspace:^0.0.50",
