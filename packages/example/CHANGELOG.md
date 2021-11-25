@@ -1,5 +1,16 @@
 # example
 
+## 1.0.6
+
+### Patch Changes
+
+- chore: bump deps and fix failing utils build
+- Updated dependencies
+  - @rainbow-me/kit-modal@0.0.21
+  - @rainbow-me/kit-ui@0.0.53
+  - @rainbow-me/kit-utils@0.0.11
+  - @rainbow-me/kit-core@0.0.52
+
 ## 1.0.5
 
 ### Patch Changes

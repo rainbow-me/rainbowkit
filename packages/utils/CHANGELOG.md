@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.11
+
+### Patch Changes
+
+- chore: bump deps and fix failing utils build
+
 ## 0.0.10
 
 ### Patch Changes

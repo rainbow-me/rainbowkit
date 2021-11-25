@@ -1,5 +1,15 @@
 # @rainbow-me/kit-core
 
+## 0.0.52
+
+### Patch Changes
+
+- Updated dependencies
+  - @rainbow-me/kit-modal@0.0.21
+  - @rainbow-me/kit-ui@0.0.53
+  - @rainbow-me/kit-utils@0.0.11
+  - @rainbow-me/kit-hooks@0.0.24
+
 ## 0.0.51
 
 ### Patch Changes

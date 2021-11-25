@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.15
+
+### Patch Changes
+
+- chore: bump deps and fix failing utils build
+
 ## 0.0.14
 
 ### Patch Changes

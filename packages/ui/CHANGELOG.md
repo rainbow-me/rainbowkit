@@ -1,5 +1,15 @@
 # @rainbow-me/kit-ui
 
+## 0.0.53
+
+### Patch Changes
+
+- chore: bump deps and fix failing utils build
+- Updated dependencies
+  - @rainbow-me/kit-modal@0.0.21
+  - @rainbow-me/kit-utils@0.0.11
+  - @rainbow-me/kit-hooks@0.0.24
+
 ## 0.0.52
 
 ### Patch Changes
