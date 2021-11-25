@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.19
+
+### Patch Changes
+
+- fix(modal): pseudoselector
+
 ## 0.0.18
 
 ### Patch Changes
