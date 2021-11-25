@@ -53,8 +53,8 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   }
 
   const activateConnector = async (c: Wallet) => {
-    localStorage.setItem('rk-last-wallet', c.name)
     await connectToWallet(c.name)
+    localStorage.setItem('rk-last-wallet', c.name)
     return setConnecting(false)
   }
 
