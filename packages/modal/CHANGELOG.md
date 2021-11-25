@@ -1,5 +1,13 @@
 # @rainbow-me/kit-modal
 
+## 0.0.23
+
+### Patch Changes
+
+- ultimatively fix esbuild
+- Updated dependencies
+  - @rainbow-me/kit-utils@0.0.13
+
 ## 0.0.22
 
 ### Patch Changes

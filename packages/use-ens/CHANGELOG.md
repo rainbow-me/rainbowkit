@@ -1,5 +1,11 @@
 # use-ens
 
+## 0.0.16
+
+### Patch Changes
+
+- ultimatively fix esbuild
+
 ## 0.0.15
 
 ### Patch Changes

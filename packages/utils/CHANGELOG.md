@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.13
+
+### Patch Changes
+
+- ultimatively fix esbuild
+
 ## 0.0.12
 
 ### Patch Changes

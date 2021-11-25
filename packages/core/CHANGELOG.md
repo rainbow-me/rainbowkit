@@ -1,5 +1,16 @@
 # @rainbow-me/kit-core
 
+## 0.0.54
+
+### Patch Changes
+
+- ultimatively fix esbuild
+- Updated dependencies
+  - @rainbow-me/kit-hooks@0.0.26
+  - @rainbow-me/kit-modal@0.0.23
+  - @rainbow-me/kit-ui@0.0.55
+  - @rainbow-me/kit-utils@0.0.13
+
 ## 0.0.53
 
 ### Patch Changes

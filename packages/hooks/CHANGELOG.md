@@ -1,5 +1,14 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.26
+
+### Patch Changes
+
+- ultimatively fix esbuild
+- Updated dependencies
+  - use-ens@0.0.16
+  - @rainbow-me/kit-utils@0.0.13
+
 ## 0.0.25
 
 ### Patch Changes

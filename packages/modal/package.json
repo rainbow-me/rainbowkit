@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/kit-modal",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Universal Ethereum wallet modal library for React",
   "files": [
     "dist"
