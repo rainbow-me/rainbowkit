@@ -66,10 +66,11 @@ export const Terms = style({
 globalStyle(`${Terms} > a`, {
   color: '#a0c7ff',
   fontWeight: 700,
-  textDecoration: 'none',
-  '&:hover': {
-    textDecoration: 'underline'
-  }
+  textDecoration: 'none'
+})
+
+globalStyle(`${Terms} > a:hover`, {
+  textDecoration: 'underline'
 })
 
 export const MoreWallets = style({
