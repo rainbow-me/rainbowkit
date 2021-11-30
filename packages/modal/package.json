@@ -7,21 +7,8 @@
   ],
   "type": "module",
   "exports": {
-    "./dist/index.css": "./dist/index.css",
-    "./index.css": "./index.css",
-    "./package.json": "./package.json",
-    "./": {
-      "module": "./dist/vanilla-extract-sprinkles.esm.js",
-      "default": "./dist/vanilla-extract-sprinkles.cjs.js"
-    },
-    "./createRuntimeSprinkles": {
-      "module": "./createRuntimeSprinkles/dist/vanilla-extract-sprinkles-createRuntimeSprinkles.esm.js",
-      "default": "./createRuntimeSprinkles/dist/vanilla-extract-sprinkles-createRuntimeSprinkles.cjs.js"
-    },
-    "./createUtils": {
-      "module": "./createUtils/dist/vanilla-extract-sprinkles-createUtils.esm.js",
-      "default": "./createUtils/dist/vanilla-extract-sprinkles-createUtils.cjs.js"
-    }
+    ".": "./dist/index.js",
+    "./index.css": "./dist/index.css"
   },
   "types": "./dist/index.d.ts",
   "engines": {
@@ -51,8 +38,8 @@
   },
   "dependencies": {
     "@rainbow-me/kit-utils": "workspace:*",
-    "@vanilla-extract/css": "^1.6.4",
-    "@vanilla-extract/dynamic": "^2.0.0",
+    "@vanilla-extract/css": "^1.6.6",
+    "@vanilla-extract/dynamic": "^2.0.1",
     "@web3-react/abstract-connector": "^6.0.7",
     "clsx": "^1.1.1"
   },
