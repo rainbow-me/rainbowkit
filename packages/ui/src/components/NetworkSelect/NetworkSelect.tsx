@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
 import { useState } from 'react'
@@ -12,6 +12,8 @@ import {
 } from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
 import clsx from 'clsx'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
+import useToggle from '../../hooks/useToggle'
 
 export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]
@@ -34,7 +36,7 @@ export const NetworkSelect = ({
   chainId,
   ...props
 }: NetworkSelectProps) => {
-  const [isExpanded, setExpand] = useState(false)
+  const [open, toggle] = useToggle(false)
 
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
 
@@ -50,11 +52,15 @@ export const NetworkSelect = ({
     return tmp
   }, [selectedChains])
 
+  const node = useRef<HTMLDivElement>()
+  useOnClickOutside(node, open ? toggle : undefined)
+
   return (
     <Box
       position="relative"
       tabIndex={0}
       role="button"
+      ref={node}
       aria-label="select"
       aria-roledescription="Select a dapp network"
       className={clsx(classNames.select)}
@@ -65,7 +71,7 @@ export const NetworkSelect = ({
           aria-selected={true}
           chain={currentChain}
           className={`${ButtonStyles} ${classNames?.current}`}
-          onClick={() => setExpand(!isExpanded)}
+          onClick={toggle}
           iconClassName={classNames?.icon || ''}
           padding="6"
         />
@@ -78,7 +84,7 @@ export const NetworkSelect = ({
         padding="4"
         borderRadius="16"
         fontWeight="heavy"
-        display={isExpanded ? 'block' : 'none'}
+        display={open ? 'block' : 'none'}
         className={[ListStyles, classNames.list]}
       >
         {filteredChains.map((ch) => {
