@@ -85,7 +85,7 @@ export const WalletDropdown = ({
           typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
         )}
       </Box>
-      <Box as="li" color="sky90" width="full" marginBottom="16">
+      <Box as="li" width="full" marginBottom="16">
         <Box
           as="a"
           display="flex"
@@ -98,7 +98,7 @@ export const WalletDropdown = ({
           <Text as="h3" color="sky90" size="14" weight="bold">
             {explorerName}
           </Text>
-          <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+          <Box width="20" color="sky90" height="20" display="flex" justifyContent="center" alignItems="center">
             <ExplorerIcon />
           </Box>
         </Box>
