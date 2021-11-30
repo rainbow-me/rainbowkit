@@ -1,5 +1,12 @@
 # @rainbow-me/kit-core
 
+## 0.0.56
+
+### Patch Changes
+
+- Updated dependencies
+  - @rainbow-me/kit-ui@0.0.57
+
 ## 0.0.55
 
 ### Patch Changes

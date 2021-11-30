@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.57
+
+### Patch Changes
+
+- do not use headings for UI components
+
 ## 0.0.56
 
 ### Patch Changes
