@@ -69,6 +69,7 @@ export const chains: Chain[] = [
     rpc: ['https://mainnet.optimism.io/'],
     nativeCurrency: { name: 'Ether', symbol: 'OETH', decimals: 18 },
     infoURL: 'https://optimism.io',
+    explorers: [{ name: 'OP Explorer', url: 'https://optimistic.etherscan.io', standard: 'EIP3091' }],
     chainId: 10,
     aliases: ['optimism'],
     logoURL: 'https://ipfs.io/ipfs/bafkreieyg2v6gxaaascecc2chrxwg26fvteyrwktf7epir7acdhkncxtrm'
