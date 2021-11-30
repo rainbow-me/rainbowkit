@@ -1,5 +1,13 @@
 # @rainbow-me/kit-ui
 
+## 0.0.56
+
+### Patch Changes
+
+- bump vanilla-extract
+- Updated dependencies
+  - @rainbow-me/kit-modal@0.0.24
+
 ## 0.0.55
 
 ### Patch Changes

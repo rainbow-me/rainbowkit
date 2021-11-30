@@ -1,5 +1,14 @@
 # example
 
+## 1.0.9
+
+### Patch Changes
+
+- Updated dependencies
+  - @rainbow-me/kit-modal@0.0.24
+  - @rainbow-me/kit-ui@0.0.56
+  - @rainbow-me/kit-core@0.0.55
+
 ## 1.0.8
 
 ### Patch Changes

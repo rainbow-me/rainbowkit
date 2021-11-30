@@ -1,5 +1,11 @@
 # @rainbow-me/kit-modal
 
+## 0.0.24
+
+### Patch Changes
+
+- bump vanilla-extract
+
 ## 0.0.23
 
 ### Patch Changes
