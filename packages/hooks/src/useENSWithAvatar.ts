@@ -15,10 +15,13 @@ export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
     if (provider && address) {
       const getENSInfo = async () => {
         const domain = await provider.lookupAddress(address)
+
         setEnsDomain(domain)
         const resolver = await provider.getResolver(domain)
-        const avatar = await resolver.getText('avatar')
-        setAvatar(avatar)
+        if (resolver) {
+          const avatar = await resolver.getText('avatar')
+          setAvatar(avatar)
+        }
       }
 
       getENSInfo()
