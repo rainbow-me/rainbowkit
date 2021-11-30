@@ -1,5 +1,11 @@
 # @rainbow-me/kit-ui
 
+## 0.0.60
+
+### Patch Changes
+
+- fix(ui/WalletDropDown): use divs instead of spans
+
 ## 0.0.59
 
 ### Patch Changes
