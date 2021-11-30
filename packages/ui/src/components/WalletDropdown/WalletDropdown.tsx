@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import React, { useMemo } from 'react'
 import { Box, BoxProps } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
+import { ExplorerLink } from '../ExplorerLink'
 import { Text } from '../Text'
 import { CloseIcon, ExplorerIcon } from './Icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
@@ -85,20 +86,22 @@ export const WalletDropdown = ({
           typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
         )}
       </Box>
-      <Box
-        as="li"
-        color="sky90"
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        width="full"
-        marginBottom="16"
-      >
-        <Text as="h3" color="sky90" size="14" weight="bold">
-          {explorerName}
-        </Text>
-        <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
-          <ExplorerIcon />
+      <Box as="li" color="sky90" width="full" marginBottom="16">
+        <Box
+          as="a"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          href={`${chainIDToExplorer(chainId).url}/address/${accountAddress}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Text as="h3" color="sky90" size="14" weight="bold">
+            {explorerName}
+          </Text>
+          <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+            <ExplorerIcon />
+          </Box>
         </Box>
       </Box>
       <Box as="li">
