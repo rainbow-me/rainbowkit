@@ -9,7 +9,9 @@
     "./useSignMessage": "./dist/useSignMessage.js",
     "./useTxHistory": "./dist/useTxHistory.js",
     "./useWalletInfo": "./dist/useWalletInfo.js",
-    "./useWeb3State": "./dist/useWeb3State.js"
+    "./useWeb3State": "./dist/useWeb3State.js",
+    "./useOnClickOutside": "./dist/useOnClickOutside.js",
+    "./useToggle": "./dist/useToggle.js"
   },
   "types": "./dist/index.d.ts",
   "scripts": {

@@ -1,7 +1,7 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { useWalletModal } from '@rainbow-me/kit-modal'
 import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
-import { useENSWithAvatar } from '@rainbow-me/kit-hooks'
+import { useENSWithAvatar, useOnClickOutside, useToggle } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
@@ -9,8 +9,6 @@ import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
 import { DropdownIcon } from './Icons'
 import { Box } from '../Box'
 import { ConnectButton } from './ConnectButton'
-import { useOnClickOutside } from '../../hooks/useOnClickOutside'
-import useToggle from '../../hooks/useToggle'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions

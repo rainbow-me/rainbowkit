@@ -1,19 +1,11 @@
 import React, { useMemo, useRef } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
 import { Web3Provider } from '@ethersproject/providers'
-import { useState } from 'react'
 import { Box, BoxProps } from '../Box'
-import {
-  ButtonStyles,
-  CurrentChainOptionStyles,
-  IndicatorStyles,
-  ListStyles,
-  SelectOptionStyles
-} from './NetworkSelect.css'
+import { ButtonStyles, IndicatorStyles, ListStyles, SelectOptionStyles } from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
 import clsx from 'clsx'
-import { useOnClickOutside } from '../../hooks/useOnClickOutside'
-import useToggle from '../../hooks/useToggle'
+import { useToggle, useOnClickOutside } from '@rainbow-me/kit-hooks'
 
 export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]
