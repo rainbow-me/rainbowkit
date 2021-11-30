@@ -1,5 +1,11 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.27
+
+### Patch Changes
+
+- fix failing build
+
 ## 0.0.26
 
 ### Patch Changes

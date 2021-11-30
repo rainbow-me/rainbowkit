@@ -1,5 +1,12 @@
 # example
 
+## 1.0.11
+
+### Patch Changes
+
+- @rainbow-me/kit-core@0.0.57
+- @rainbow-me/kit-ui@0.0.58
+
 ## 1.0.10
 
 ### Patch Changes
