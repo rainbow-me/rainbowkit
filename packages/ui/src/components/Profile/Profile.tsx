@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { useWalletModal } from '@rainbow-me/kit-modal'
 import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
-import { useENSWithAvatar } from '@rainbow-me/kit-hooks'
+import { useENSWithAvatar, useOnClickOutside, useToggle } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
@@ -50,33 +50,36 @@ export const Profile = ({
   const ens = useENSWithAvatar({ address: accountAddress, provider: ENSProvider })
   const address = useMemo(() => ens?.domain || accountAddress, [ens?.domain, accountAddress])
 
-  const [isExpanded, setExpandedState] = useState(false)
+  const [open, toggle] = useToggle(false)
 
-  const toggleDropdown = () => setExpandedState(!isExpanded)
+  const node = useRef<HTMLDivElement>()
+  useOnClickOutside(node, open ? toggle : undefined)
 
   return (
     <Box position="relative" width="max" className={classNames?.container}>
       {isConnected ? (
         <>
-          <Badge
-            {...{ ipfsGatewayUrl, address, provider }}
-            onClick={toggleDropdown}
-            className={classNames?.pill || ''}
-            {...ens}
-          >
-            <DropdownIcon />
-          </Badge>
+          <div ref={node}>
+            <Badge
+              {...{ ipfsGatewayUrl, address, provider }}
+              onClick={toggle}
+              className={classNames?.pill || ''}
+              {...ens}
+            >
+              <DropdownIcon />
+            </Badge>
 
-          <DropdownComponent
-            {...{ address, accountAddress, chainId, provider, isExpanded }}
-            copyAddress={CopyAddressComponent}
-            disconnect={disconnect}
-            className={classNames?.menu || ''}
-          />
+            <DropdownComponent
+              {...{ address, accountAddress, chainId, provider, isExpanded: open }}
+              copyAddress={CopyAddressComponent}
+              disconnect={disconnect}
+              className={classNames?.menu || ''}
+            />
+          </div>
         </>
       ) : (
         <>
-          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown }} />
+          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
           {isConnecting && typeof Modal !== 'undefined' && <Modal />}
         </>
       )}
