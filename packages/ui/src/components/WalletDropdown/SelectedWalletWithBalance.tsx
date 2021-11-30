@@ -24,10 +24,10 @@ export const SelectedWalletWithBalance = ({
     <>
       <Box as="li" paddingBottom="12" display="flex" justifyContent="space-between" alignItems="flex-start">
         <Box>
-          <Text as="span" color="white" weight="heavy">
+          <Text as="div" color="white" weight="heavy">
             {bal.slice(0, 5)} {symbol}
           </Text>
-          <Text as="span" color="white60" size="14" weight="heavy">
+          <Text as="div" color="white60" size="14" weight="heavy">
             {name}
           </Text>
         </Box>
