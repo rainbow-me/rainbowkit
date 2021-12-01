@@ -1,8 +1,11 @@
 import type { Wallet } from '@rainbow-me/kit-utils'
 import { Dispatch } from 'react'
+import { UserRejectedRequestError } from '@web3-react/injected-connector'
+import { UnsupportedChainIdError } from '@web3-react/core'
 
 export interface ModalProps {
   wallets: Wallet[]
+  error?: UserRejectedRequestError | UnsupportedChainIdError | Error
   connect: (w: Wallet) => Promise<void>
 
   isConnecting: boolean

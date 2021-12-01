@@ -6,6 +6,7 @@ import { Modal as ModalUI } from './components/Modal'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+import { UserRejectedRequestError } from '@web3-react/injected-connector'
 
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
@@ -29,22 +30,38 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     library: provider,
     active: isConnected,
     account: address,
+    error,
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
+
+  const [isRejected, setRejected] = useState(false)
 
   const connectToWallet = async (name: string) => {
     const { connector } = wallets.find((w) => w.name === name) || {}
 
-    if (!isConnected) await activate(connector)
+    if (!isConnected)
+      try {
+        await activate(connector, undefined, true)
+      } catch (error) {
+        if (error.name === 'UserRejectedRequestError') {
+          setRejected(true)
+        }
+      }
   }
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    if (walletName && !isConnected && !!wallets.find((w) => w.name === walletName)) {
+    if (!isRejected && walletName && !!wallets.find((w) => w.name === walletName)) {
       connectToWallet(walletName)
     }
   }, [])
+
+  useEffect(() => {
+    if (isRejected) {
+      localStorage.removeItem('rk-last-wallet')
+    }
+  }, [isRejected])
 
   const [isConnecting, setConnecting] = useState(false)
 
@@ -54,8 +71,12 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
 
   const activateConnector = async (c: Wallet) => {
     await connectToWallet(c.name)
-    localStorage.setItem('rk-last-wallet', c.name)
-    return setConnecting(false)
+
+    if (!isRejected) {
+      localStorage.setItem('rk-last-wallet', c.name)
+
+      return setConnecting(false)
+    }
   }
 
   const disconnect = () => {
@@ -64,7 +85,9 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   }
 
   if (typeof ModalComponent === 'undefined') {
-    const Modal = () => <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms }} />
+    const Modal = () => (
+      <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms, error }} />
+    )
 
     return { Modal, state: { isConnected, isConnecting, connect, disconnect }, provider, address, ...web3ReactProps }
   } else {
