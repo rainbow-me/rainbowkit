@@ -18,7 +18,7 @@ export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainO
     alignItems="center"
     flexDirection="row"
     borderRadius="12"
-    color="sky90"
+    color="foreground"
     aria-label="option"
     {...props}
     className={props.className}

@@ -69,7 +69,7 @@ export const NetworkSelect = ({
         />
       )}
       <Box
-        background="blackLight"
+        background="background"
         right="0"
         position="absolute"
         width="max"

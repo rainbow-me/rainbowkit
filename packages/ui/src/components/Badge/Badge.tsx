@@ -57,7 +57,7 @@ export const Badge = ({
       justifyContent="center"
       alignItems="center"
       fontWeight="heavy"
-      color="sky90"
+      color="foreground"
       className={[PillStyles, className]}
       {...props}
     >
