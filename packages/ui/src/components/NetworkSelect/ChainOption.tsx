@@ -26,8 +26,8 @@ export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainO
     <Box
       as="img"
       aria-hidden="true"
-      minWidth="24"
-      minHeight="24"
+      width="24"
+      height="24"
       marginRight="6"
       className={iconClassName}
       src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
