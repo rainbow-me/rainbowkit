@@ -59,7 +59,7 @@ export const WalletDropdown = ({
   return (
     <Box
       as="ul"
-      background="blackLight"
+      background="background"
       position="absolute"
       margin="0"
       borderRadius="16"
@@ -95,10 +95,10 @@ export const WalletDropdown = ({
           target="_blank"
           rel="noreferrer"
         >
-          <Text as="h3" color="sky90" size="14" weight="bold">
+          <Text as="h3" color="foreground" size="14" weight="bold">
             {explorerName}
           </Text>
-          <Box width="20" color="sky90" height="20" display="flex" justifyContent="center" alignItems="center">
+          <Box width="20" color="foreground" height="20" display="flex" justifyContent="center" alignItems="center">
             <ExplorerIcon />
           </Box>
         </Box>

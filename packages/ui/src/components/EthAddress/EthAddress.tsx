@@ -57,7 +57,7 @@ export const EthAddress = ({
           <ProfileIconURLOrImage />
         ))}
 
-      <Box fontWeight="heavy" color="sky90" as="span" className={classNames?.address}>
+      <Box fontWeight="heavy" color="foreground" as="span" className={classNames?.address}>
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
       </Box>
     </Box>

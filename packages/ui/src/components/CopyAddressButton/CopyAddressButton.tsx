@@ -13,7 +13,7 @@ export const CopyAddressButton = ({ address }: { address: string }) => {
       justifyContent="space-between"
       alignItems="center"
       width="full"
-      color="sky90"
+      color="foreground"
       flexDirection="row"
       onClick={() => {
         navigator.clipboard.writeText(address).then(() => set(true))

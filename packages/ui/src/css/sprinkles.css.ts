@@ -19,7 +19,7 @@ export const vars = createGlobalTheme(':root', {
     sky90: '#e9f2ff', // might not be actually sky90
     sky80: 'rgba(88, 91, 100, 0.8)',
     sky60: 'rgba(88, 91, 100, 0.6)',
-    white: '#FFFFFF',
+    white: 'white',
     white60: 'rgba(255, 255, 255, 0.6)',
     white10: 'rgba(255, 255, 255, 0.1)',
     white04: 'rgba(255, 255, 255, .04)',
@@ -29,9 +29,8 @@ export const vars = createGlobalTheme(':root', {
     // need to add colors
     // from design system in figma
     black: '#000000',
-    blackLight: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1A1B1F 99.85%)',
     blue: '#0E76FD',
-    red: '#FF494A'
+    red: '#FF494A',
     // light mode colors
     // #FFFFFF
     // #25292E
@@ -44,6 +43,9 @@ export const vars = createGlobalTheme(':root', {
     // #E0E8FF  with varying opacity
     // #000000
     // #00D146
+    foreground: 'white',
+    background: '#1A1B1F',
+    placeholder: '#A3A4A5'
   },
   fontFamily: {
     body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif'

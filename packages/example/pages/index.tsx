@@ -14,7 +14,7 @@ const Example = () => {
     <>
       <nav style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
         <Profile modalOptions={{ wallets }} ENSProvider={ENSProvider} />
-        <NetworkSelect {...{ provider, chainId }} chains={['ethereum', 'arbitrum', 'polygon', 'optimism']} />
+        <NetworkSelect {...{ provider, chainId }} chains={['ethereum', 'arbitrum', 'polygon', 'optimism', 'ropsten']} />
         <UnsupportedNetwork isVisible={!!error} chainId={chainId} supportedChainIds={supportedChainIds} />
       </nav>
     </>
