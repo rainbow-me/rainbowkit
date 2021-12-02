@@ -17,6 +17,7 @@ export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
     current: string
     list: string
     icon: string
+    wrongNetwork: string
   }>
 }
 
@@ -72,7 +73,7 @@ export const NetworkSelect = ({
           fontWeight="heavy"
           background="background"
           aria-label="option"
-          className={`${ButtonStyles}`}
+          className={clsx(ButtonStyles, classNames.wrongNetwork)}
         >
           Wrong network ⚠️
         </Box>
@@ -81,9 +82,9 @@ export const NetworkSelect = ({
           <ChainOption
             aria-selected={true}
             chain={currentChain}
-            className={`${ButtonStyles} ${classNames?.current}`}
+            className={cslx(ButtonStyles, classNames.current)}
             onClick={toggle}
-            iconClassName={classNames?.icon || ''}
+            iconClassName={clsx(classNames.icon)}
             padding="6"
           />
         )
@@ -130,4 +131,7 @@ export const NetworkSelect = ({
       </Box>
     </Box>
   )
+}
+function cslx(ButtonStyles: string, current: string): string {
+  throw new Error('Function not implemented.')
 }
