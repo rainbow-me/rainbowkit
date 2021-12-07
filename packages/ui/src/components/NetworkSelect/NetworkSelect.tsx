@@ -5,12 +5,11 @@ import { Box, BoxProps } from '../Box'
 import { ButtonStyles, IndicatorStyles, ListStyles, SelectOptionStyles } from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
 import clsx from 'clsx'
-import { useToggle, useOnClickOutside } from '@rainbow-me/kit-hooks'
+import { useToggle, useOnClickOutside, useWeb3State } from '@rainbow-me/kit-hooks'
+import { UnsupportedChainIdError } from '@web3-react/core'
 
 export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]
-  provider: Web3Provider
-  chainId: number
   classNames?: Partial<{
     select: string
     option: string
@@ -18,17 +17,19 @@ export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
     current: string
     list: string
     icon: string
+    wrongNetwork: string
   }>
 }
 
 export const NetworkSelect = ({
   chains: selectedChains,
-  provider,
+
   classNames = {},
-  chainId,
   ...props
 }: NetworkSelectProps) => {
   const [open, toggle] = useToggle(false)
+
+  const { error, provider, chainId } = useWeb3State()
 
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
 
@@ -49,6 +50,7 @@ export const NetworkSelect = ({
 
   return (
     <Box
+      width="max"
       position="relative"
       tabIndex={0}
       role="button"
@@ -58,15 +60,34 @@ export const NetworkSelect = ({
       className={clsx(classNames.select)}
       {...props}
     >
-      {currentChain?.chainId && (
-        <ChainOption
-          aria-selected={true}
-          chain={currentChain}
-          className={`${ButtonStyles} ${classNames?.current}`}
-          onClick={toggle}
-          iconClassName={classNames?.icon || ''}
-          padding="6"
-        />
+      {error instanceof UnsupportedChainIdError ? (
+        <Box
+          display="flex"
+          position="relative"
+          cursor="pointer"
+          alignItems="center"
+          flexDirection="row"
+          padding="8"
+          color="foreground"
+          borderRadius="16"
+          fontWeight="heavy"
+          background="background"
+          aria-label="option"
+          className={clsx(ButtonStyles, classNames.wrongNetwork)}
+        >
+          Wrong network ⚠️
+        </Box>
+      ) : (
+        currentChain?.chainId && (
+          <ChainOption
+            aria-selected={true}
+            chain={currentChain}
+            className={cslx(ButtonStyles, classNames.current)}
+            onClick={toggle}
+            iconClassName={clsx(classNames.icon)}
+            padding="6"
+          />
+        )
       )}
       <Box
         background="background"
@@ -110,4 +131,7 @@ export const NetworkSelect = ({
       </Box>
     </Box>
   )
+}
+function cslx(ButtonStyles: string, current: string): string {
+  throw new Error('Function not implemented.')
 }

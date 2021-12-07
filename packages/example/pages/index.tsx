@@ -1,21 +1,19 @@
 import { AlchemyWebSocketProvider } from '@ethersproject/providers'
-import { NetworkSelect, Profile, UnsupportedNetwork } from '@rainbow-me/kit-ui'
+import { NetworkSelect, Profile } from '@rainbow-me/kit-ui'
 import { withWeb3React } from '@rainbow-me/kit-utils'
 import React from 'react'
-import { supportedChainIds, wallets } from '../lib/wallets'
-import { useWeb3State } from '@rainbow-me/kit-core'
+import { wallets } from '../lib/wallets'
 
 const ENSProvider = new AlchemyWebSocketProvider('homestead', 'vINSe04ri6EJ_hs94sK88MMeIBVPhnNo')
 
 const Example = () => {
-  const { chainId, provider, error } = useWeb3State()
-
   return (
     <>
-      <nav style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <nav
+        style={{ display: 'grid', gap: '0.5rem', gridTemplateColumns: 'repeat(2, max-content)', width: 'max-content' }}
+      >
         <Profile modalOptions={{ wallets }} ENSProvider={ENSProvider} />
-        <NetworkSelect {...{ provider, chainId }} chains={['ethereum', 'arbitrum', 'polygon', 'optimism', 'ropsten']} />
-        <UnsupportedNetwork isVisible={!!error} chainId={chainId} supportedChainIds={supportedChainIds} />
+        <NetworkSelect chains={['ethereum', 'arbitrum', 'polygon', 'optimism', 'ropsten']} />
       </nav>
     </>
   )
