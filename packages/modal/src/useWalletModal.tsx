@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Modal as ModalUI } from './components/Modal'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { UserRejectedRequestError } from '@web3-react/injected-connector'
 
@@ -38,6 +39,11 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
 
   const connectToWallet = async (name: string) => {
     const { connector } = wallets.find((w) => w.name === name) || {}
+
+    // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
+    if (connector instanceof WalletConnectConnector) {
+      connector.walletConnectProvider = undefined
+    }
 
     if (!isConnected)
       try {
