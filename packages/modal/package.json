@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "node build.js",
+    "build:watch": "node build.js --watch",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
     "typegen": "tsc --emitDeclarationOnly || true"
