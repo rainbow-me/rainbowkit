@@ -1,5 +1,11 @@
 import { globalStyle, style } from '@vanilla-extract/css'
 
+const center = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+})
+
 export const ModalTitle = style({
   fontStyle: 'normal',
   fontWeight: 800,
@@ -99,18 +105,20 @@ export const BackButton = style({
   cursor: 'pointer'
 })
 
-export const WalletLabel = style({
-  fontStyle: 'normal',
-  fontWeight: 800,
-  fontSize: '20px',
-  lineHeight: '24px',
-  display: 'flex',
-  alignItems: 'center',
-  letterSpacing: '0.5px',
-  fontFeatureSettings: "'pnum' on, 'lnum' on",
-  color: '#25292e',
-  textTransform: 'capitalize'
-})
+export const WalletLabel = style([
+  center,
+  {
+    fontStyle: 'normal',
+    fontWeight: 800,
+    fontSize: '20px',
+    lineHeight: '24px',
+
+    letterSpacing: '0.5px',
+    fontFeatureSettings: "'pnum' on, 'lnum' on",
+    color: '#25292e',
+    textTransform: 'capitalize'
+  }
+])
 
 export const Icon = style({
   borderRadius: '10px',
@@ -124,17 +132,18 @@ export const MoreWalletsIcon = style({
   width: '1rem'
 })
 
-export const ModalOverlay = style({
-  width: '100%',
-  height: '100vh',
-  top: 0,
-  left: 0,
-  zIndex: 999,
-  position: 'fixed',
-  background: 'rgba(0, 0, 0, 0.5)',
-  justifyContent: 'center',
-  alignItems: 'center'
-})
+export const ModalOverlay = style([
+  center,
+  {
+    width: '100%',
+    height: '100vh',
+    top: 0,
+    left: 0,
+    zIndex: 999,
+    position: 'fixed',
+    background: 'rgba(0, 0, 0, 0.5)'
+  }
+])
 
 export const Wallets = style({
   marginTop: '24px',
@@ -161,4 +170,9 @@ export const BackButtonCaption = style({
     content: '\\21A9',
     marginRight: '0.5rem'
   }
+})
+
+export const ErrorMessage = style({
+  color: 'red',
+  marginTop: '0.5rem'
 })

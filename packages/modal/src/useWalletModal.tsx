@@ -7,8 +7,6 @@ import type { Wallet } from '@rainbow-me/kit-utils'
 import type { UseWalletModalOptions } from './types'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
-import { UserRejectedRequestError } from '@web3-react/injected-connector'
-
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
   'activate' | 'deactivate' | 'library' | 'account' | 'active'
@@ -32,6 +30,7 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     active: isConnected,
     account: address,
     error,
+    setError,
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
@@ -49,6 +48,7 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
       try {
         await activate(connector, undefined, true)
       } catch (error) {
+        setError(error)
         if (error.name === 'UserRejectedRequestError') {
           setRejected(true)
         }
@@ -95,8 +95,23 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
       <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms, error }} />
     )
 
-    return { Modal, state: { isConnected, isConnecting, connect, disconnect }, provider, address, ...web3ReactProps }
+    return {
+      Modal,
+      state: { isConnected, isConnecting, connect, disconnect },
+      provider,
+      address,
+      error,
+      setError,
+      ...web3ReactProps
+    }
   } else {
-    return { state: { connect, disconnect, isConnected, isConnecting }, provider, address, ...web3ReactProps }
+    return {
+      state: { connect, disconnect, isConnected, isConnecting },
+      error,
+      setError,
+      provider,
+      address,
+      ...web3ReactProps
+    }
   }
 }

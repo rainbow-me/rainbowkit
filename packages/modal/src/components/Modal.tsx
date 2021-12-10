@@ -148,7 +148,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
         <div>
           <ModalTitle className={clsx(classNames?.title)}>Connect to a wallet</ModalTitle>
           <Caption className={clsx(classNames?.caption)}>Choose your preferred wallet</Caption>
-          {error?.message}
+          {error && <div className={clsx(styles.ErrorMessage, classNames?.error)}>{error.message}</div>}
           <div className={clsx(styles.Wallets, classNames?.wallets)}>
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
