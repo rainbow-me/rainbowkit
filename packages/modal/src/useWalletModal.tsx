@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
@@ -34,7 +34,7 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
-  const [isRejected, setRejected] = useState(false)
+  const isRejected = useRef(false)
 
   const connectToWallet = async (name: string) => {
     const { connector } = wallets.find((w) => w.name === name) || {}
@@ -49,8 +49,10 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
         await activate(connector, undefined, true)
       } catch (error) {
         setError(error)
+
         if (error.name === 'UserRejectedRequestError') {
-          setRejected(true)
+          isRejected.current = true
+          localStorage.removeItem('rk-last-wallet')
         }
       }
   }
@@ -58,16 +60,10 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
 
-    if (!isRejected && walletName && !!wallets.find((w) => w.name === walletName)) {
+    if (!isRejected.current && walletName && !!wallets.find((w) => w.name === walletName)) {
       connectToWallet(walletName)
     }
   }, [])
-
-  useEffect(() => {
-    if (isRejected) {
-      localStorage.removeItem('rk-last-wallet')
-    }
-  }, [isRejected])
 
   const [isConnecting, setConnecting] = useState(false)
 
@@ -78,8 +74,10 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   const activateConnector = async (c: Wallet) => {
     await connectToWallet(c.name)
 
-    if (!isRejected) {
+    if (!isRejected.current) {
       localStorage.setItem('rk-last-wallet', c.name)
+
+      console.log('here')
 
       return setConnecting(false)
     }
