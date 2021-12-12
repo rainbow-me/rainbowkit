@@ -77,8 +77,6 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     if (!isRejected.current) {
       localStorage.setItem('rk-last-wallet', c.name)
 
-      console.log('here')
-
       return setConnecting(false)
     }
   }
