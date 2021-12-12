@@ -10,8 +10,7 @@ export const ListStyles = style({
 
 export const ButtonStyles = style({
   backdropFilter: 'blur(20px)',
-  background: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%)',
-  lineHeight: 1.25
+  background: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%)'
 })
 
 globalStyle(`${ButtonStyles} img`, {

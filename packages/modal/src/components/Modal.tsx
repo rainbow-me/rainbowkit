@@ -85,7 +85,7 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
 
   return (
     <li className={styles.WalletOption} key={name}>
-      <button onClick={() => (connect ? connect(wallet) : undefined)} className={styles.ButtonOption}>
+      <button onClick={() => void connect(wallet)} className={styles.ButtonOption}>
         <WalletLabel>
           <Icon {...{ name, logoURI }} className={styles.OptionIcon} />
           {name}
@@ -121,7 +121,7 @@ const MoreWalletsGroup = ({ className, children, ...props }: BoxProps) => (
 /**
  * Rainbow-styled Modal
  */
-export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, classNames }: ModalProps) => {
+export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, classNames, error }: ModalProps) => {
   const { visibleWallets, hiddenWallets } = useMemo(() => {
     const visibleWallets: Wallet[] = []
     const hiddenWallets: Wallet[] = []
@@ -148,7 +148,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
         <div>
           <ModalTitle className={clsx(classNames?.title)}>Connect to a wallet</ModalTitle>
           <Caption className={clsx(classNames?.caption)}>Choose your preferred wallet</Caption>
-
+          {error && <div className={clsx(styles.ErrorMessage, classNames?.error)}>{error.message}</div>}
           <div className={clsx(styles.Wallets, classNames?.wallets)}>
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
               return <WalletIcon key={c.name} connect={connect} wallet={c} />
