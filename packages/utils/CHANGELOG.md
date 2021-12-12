@@ -1,5 +1,11 @@
 # @rainbow-me/kit-utils
 
+## 0.0.14
+
+### Patch Changes
+
+- fix walletconnect in modal
+
 ## 0.0.13
 
 ### Patch Changes
