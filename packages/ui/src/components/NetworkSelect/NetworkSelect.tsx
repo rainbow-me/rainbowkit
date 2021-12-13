@@ -82,7 +82,7 @@ export const NetworkSelect = ({
           <ChainOption
             aria-selected={true}
             chain={currentChain}
-            className={cslx(ButtonStyles, classNames.current)}
+            className={clsx(ButtonStyles, classNames.current)}
             onClick={toggle}
             iconClassName={clsx(classNames.icon)}
             padding="6"
