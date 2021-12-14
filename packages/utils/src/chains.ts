@@ -81,7 +81,7 @@ export const chains: Chain[] = [
     network: 'mainnet',
     nativeCurrency: { name: 'Ether', symbol: 'AETH', decimals: 18 },
     rpc: [
-      'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+      // 'https://arbitrum-mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       'https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}',
       'https://arb1.arbitrum.io/rpc',
       'wss://arb1.arbitrum.io/ws'
