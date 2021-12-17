@@ -132,6 +132,3 @@ export const NetworkSelect = ({
     </Box>
   )
 }
-function cslx(ButtonStyles: string, current: string): string {
-  throw new Error('Function not implemented.')
-}

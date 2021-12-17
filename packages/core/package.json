@@ -11,6 +11,7 @@
     "dev": "pnpm build:watch & pnpm typegen:watch",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
