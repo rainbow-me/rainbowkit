@@ -6,10 +6,13 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "node build.js",
+    "build:watch": "node build.js --watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
-    "typegen": "tsc --emitDeclarationOnly || true"
+    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "description": "A collection of utilities for RainbowKit",
   "keywords": [

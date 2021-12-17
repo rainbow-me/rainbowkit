@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "postinstall": "husky install",
+    "dev": "pnpm dev -r --parallel",
+    "start": "pnpm dev",
     "lint": "eslint . --ext=js,mjs,ts,cjs,tsx && pnpm typecheck -r",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
