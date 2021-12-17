@@ -15,6 +15,7 @@
     "build": "node build.js",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true"
   },
   "keywords": [

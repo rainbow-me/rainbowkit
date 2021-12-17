@@ -19,6 +19,7 @@
     "build:watch": "node build.js --watch",
     "prepare": "pnpm build",
     "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true"
   },
   "keywords": [
