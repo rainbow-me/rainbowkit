@@ -38,6 +38,7 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     account: address,
     error,
     setError,
+    connector,
     ...web3ReactProps
   } = useWeb3React<Web3Provider>()
 
@@ -91,6 +92,11 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
   const disconnect = () => {
     localStorage.removeItem('rk-last-wallet')
     deactivate()
+    if (connector instanceof WalletConnectConnector) {
+      // walletconnect connector needs to be closed manually
+      // see web3-react issues: https://github.com/NoahZinsmeister/web3-react/issues?q=deactivate
+      connector.close()
+    }
   }
 
   if (typeof ModalComponent === 'undefined') {
