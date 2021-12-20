@@ -45,7 +45,7 @@ export const NetworkSelect = ({
     return tmp
   }, [selectedChains])
 
-  const node = useRef<HTMLDivElement>()
+  const node = useRef<HTMLDivElement | null>(null)
   useOnClickOutside(node, open ? toggle : undefined)
 
   return (
@@ -108,6 +108,7 @@ export const NetworkSelect = ({
               chain={ch}
               key={ch.name}
               onClick={() => {
+                // @ts-expect-error provider could be undefined?
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
               className={clsx([SelectOptionStyles, { CurrentChainOptionStyles: isCurrentChain }, classNames.option])}

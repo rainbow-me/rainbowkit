@@ -16,7 +16,9 @@ export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
       const getENSInfo = async () => {
         const domain = await provider.lookupAddress(address)
 
+        // @ts-expect-error domain could be null?
         setEnsDomain(domain)
+        // @ts-expect-error domain could be null?
         const resolver = await provider.getResolver(domain)
         if (resolver) {
           const avatar = await resolver.getText('avatar')

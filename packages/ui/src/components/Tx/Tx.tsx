@@ -44,6 +44,7 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
       }
 
       if (!initialTitle) {
+        // @ts-expect-error 'from' and 'to' could be undefined?
         const guessedTitle = guessTitle({ data, from, to, chainId, value })
         if (guessedTitle) setTitle(guessedTitle)
       }
@@ -51,7 +52,7 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
   }, [props.hash, props.explorerUrl, chainId])
 
   return (
-    <div className={clsx(TxContainerClassName, classNames.container)}>
+    <div className={clsx(TxContainerClassName, classNames?.container)}>
       {link === '' ? (
         <span>{title || 'Contract call'}</span>
       ) : (

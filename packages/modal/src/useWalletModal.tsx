@@ -48,9 +48,9 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
       try {
         await activate(connector, undefined, true)
       } catch (error) {
-        setError(error)
+        setError(error as Error)
 
-        if (error.name === 'UserRejectedRequestError') {
+        if (error instanceof Error && error.name === 'UserRejectedRequestError') {
           isRejected.current = true
           localStorage.removeItem('rk-last-wallet')
         }

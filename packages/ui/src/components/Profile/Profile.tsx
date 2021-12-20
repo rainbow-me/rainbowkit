@@ -47,12 +47,13 @@ export const Profile = ({
     chainId
   } = useWalletModal(modalOptions)
 
+  // @ts-expect-error accountAddress and ENSProvider could be undefined?
   const ens = useENSWithAvatar({ address: accountAddress, provider: ENSProvider })
   const address = useMemo(() => ens?.domain || accountAddress, [ens?.domain, accountAddress])
 
   const [open, toggle] = useToggle(false)
 
-  const node = useRef<HTMLDivElement>()
+  const node = useRef<HTMLDivElement | null>(null)
   useOnClickOutside(node, open ? toggle : undefined)
 
   return (
@@ -60,6 +61,7 @@ export const Profile = ({
       {isConnected ? (
         <>
           <div ref={node}>
+            {/* @ts-expect-error address could be undefined? */}
             <Badge
               {...{ ipfsGatewayUrl, address, provider }}
               onClick={toggle}
@@ -69,6 +71,7 @@ export const Profile = ({
               <DropdownIcon />
             </Badge>
 
+            {/* @ts-expect-error address could be undefined? */}
             <DropdownComponent
               {...{ address, accountAddress, chainId, provider, isExpanded: open }}
               copyAddress={CopyAddressComponent}

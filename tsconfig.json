@@ -9,6 +9,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "jsx": "preserve",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true
   }
 }
