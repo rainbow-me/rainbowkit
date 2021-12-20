@@ -85,7 +85,13 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
 
   return (
     <li className={styles.WalletOption} key={name}>
-      <button onClick={() => void connect(wallet)} className={styles.ButtonOption}>
+      <button
+        onClick={() => {
+          // @ts-expect-error connect could be undefined?
+          connect(wallet)
+        }}
+        className={styles.ButtonOption}
+      >
         <WalletLabel>
           <Icon {...{ name, logoURI }} className={styles.OptionIcon} />
           {name}

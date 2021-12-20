@@ -91,17 +91,17 @@ export function hashCode(text: string) {
   return hash
 }
 
-export function addressHashedIndex(address: string) {
+export function addressHashedIndex(address: string | null) {
   if (address == null) return null
   return Math.abs(hashCode(address.toLowerCase()) % emojiCount)
 }
 
-export function addressHashedColorIndex(address: string) {
+export function addressHashedColorIndex(address: string | null) {
   if (address == null) return null
   return emojiColorIndexes[Math.abs(hashCode(address.toLowerCase()) % emojiCount)]
 }
 
-export function addressHashedEmoji(address: string) {
+export function addressHashedEmoji(address: string | null) {
   const index = addressHashedIndex(address)
   if (index == null) return null
   return popularEmojis[index]

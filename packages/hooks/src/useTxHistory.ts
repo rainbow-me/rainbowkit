@@ -84,7 +84,8 @@ export const useTxHistory = ({
 
   useEffect(() => {
     if (rememberHistory) {
-      const txes = safeJSONParse(localStorage.getItem('rk-tx-history')) || []
+      const txHistory = localStorage.getItem('rk-tx-history')
+      const txes = txHistory ? safeJSONParse(txHistory) ?? [] : []
 
       set(txes)
     }

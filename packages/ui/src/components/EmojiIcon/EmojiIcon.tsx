@@ -12,7 +12,7 @@ export const EmojiIcon = ({ address, className, ...props }: EmojiIconProps) => {
   const { emoji, color } = useMemo(() => {
     return {
       emoji: addressHashedEmoji(address),
-      color: colors[addressHashedColorIndex(address)]
+      color: colors[addressHashedColorIndex(address) ?? 0]
     }
   }, [address])
 

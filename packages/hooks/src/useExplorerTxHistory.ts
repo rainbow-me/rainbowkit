@@ -22,7 +22,7 @@ export const useExplorerTxHistory = <Tx = any, P extends BaseProvider = Web3Prov
   options?: any
 }) => {
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState<Tx[]>()
+  const [data, setData] = useState<Tx[]>([])
   const [error, setError] = useState<Error & { data?: { message: string; code: string } }>()
 
   useEffect(() => {
