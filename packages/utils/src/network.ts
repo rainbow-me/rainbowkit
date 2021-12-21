@@ -24,7 +24,7 @@ export const switchNetwork = async (provider: Web3Provider, chain: Chain) => {
         chainId: formattedChainId
       }
     ])
-  } catch (error) {
+  } catch (error: any) {
     // walletconnect-connector throws an "JSON RPC response format is invalid", but
     // this error is not correct. The RPC response is valid, and the network has changed.
     // Other L2-centric apps recognize this error and switch the network.
