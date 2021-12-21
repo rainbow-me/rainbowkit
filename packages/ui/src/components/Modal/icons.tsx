@@ -1,6 +1,8 @@
 import React from 'react'
 import { SVGProps } from 'react'
+
 type Props = SVGProps<SVGSVGElement>
+
 export const CloseIcon = (props: Props) => (
   <svg role="img" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <circle cx="17" cy="17" r="17" fill="url(#a)" />
