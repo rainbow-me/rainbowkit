@@ -1,8 +1,8 @@
 import React, { useMemo, useRef } from 'react'
-import { useWalletModal } from '@rainbow-me/kit-modal'
-import type { UseWalletModalOptions } from '@rainbow-me/kit-modal'
 import { useENSWithAvatar, useOnClickOutside, useToggle } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
+import { useWalletModal } from '../Modal'
+import type { UseWalletModalOptions } from '../Modal'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
 

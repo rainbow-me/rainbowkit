@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
-import { Web3Provider } from '@ethersproject/providers'
+import type { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
-import { Modal as ModalUI } from './components/Modal'
+import { Modal as ModalUI, ModalProps } from './Modal'
 import type { Wallet } from '@rainbow-me/kit-utils'
-import type { UseWalletModalOptions } from './types'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
   'activate' | 'deactivate' | 'library' | 'account' | 'active'
@@ -20,6 +20,13 @@ export type WalletInterface = Omit<
     isConnected: boolean
     isConnecting: boolean
   }
+}
+
+export interface UseWalletModalOptions {
+  modal?: React.ComponentType<ModalProps> | false
+  wallets: Wallet[]
+  chains?: (string | number)[]
+  terms?: JSX.Element
 }
 
 export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWalletModalOptions): WalletInterface => {

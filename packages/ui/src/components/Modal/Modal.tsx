@@ -1,27 +1,43 @@
-import React, { useMemo, useState } from 'react'
-import type { ModalProps } from '../types'
+import React, { useMemo, useState, Dispatch } from 'react'
+import type { UserRejectedRequestError } from '@web3-react/injected-connector'
+import type { UnsupportedChainIdError } from '@web3-react/core'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import clsx from 'clsx'
-
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 import * as styles from './Modal.css'
-import { CloseIcon, NextIcon } from '../icons'
+import { CloseIcon, NextIcon } from './icons'
+
+export interface ModalProps {
+  wallets: Wallet[]
+  error?: UserRejectedRequestError | UnsupportedChainIdError | Error
+  connect: (w: Wallet) => Promise<void>
+
+  isConnecting: boolean
+  setConnecting: Dispatch<boolean>
+
+  terms?: JSX.Element
+  classNames?: Partial<{
+    modal: string
+    close: string
+    overlay: string
+    hidden: string
+    title: string
+    caption: string
+    wallets: string
+    terms: string
+    error: string
+  }>
+}
 
 type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
 
-export const ModalTitle = ({ className, children, ...props }: BoxProps) => (
+const ModalTitle = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.ModalTitle, className)} {...props}>
     {children}
   </div>
 )
 
-export const ModalOverlay = ({
-  className,
-  children,
-  isConnecting,
-  style,
-  ...props
-}: BoxProps & { isConnecting: boolean }) => (
+const ModalOverlay = ({ className, children, isConnecting, style, ...props }: BoxProps & { isConnecting: boolean }) => (
   <div
     className={clsx(styles.ModalOverlay, className)}
     style={{
@@ -34,25 +50,25 @@ export const ModalOverlay = ({
   </div>
 )
 
-export const StyledModal = ({ className, children, ...props }: BoxProps) => (
+const StyledModal = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.StyledModal, className)} {...props}>
     {children}
   </div>
 )
 
-export const Caption = ({ className, children, ...props }: BoxProps) => (
+const Caption = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.Caption, className)} {...props}>
     {children}
   </div>
 )
 
-export const CloseButton = ({ className, children, ...props }: BoxProps) => (
+const CloseButton = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.CloseButton, className)} {...props}>
     {children}
   </div>
 )
 
-export const WalletLabel = ({ className, children, ...props }: BoxProps) => (
+const WalletLabel = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.WalletLabel, className)} {...props}>
     {children}
   </div>
