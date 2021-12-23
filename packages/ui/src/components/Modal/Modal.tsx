@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { getWalletInfo } from '@rainbow-me/kit-utils'
 import * as styles from './Modal.css'
 import { CloseIcon, NextIcon } from './icons'
+import { Box } from '../Box'
 
 export interface ModalProps {
   wallets: Wallet[]
@@ -112,7 +113,9 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
           <Icon {...{ name, logoURI }} className={styles.OptionIcon} />
           {name}
         </WalletLabel>
-        <NextIcon />
+        <Box color="modalTextSecondary">
+          <NextIcon />
+        </Box>
       </button>
     </li>
   )
@@ -122,9 +125,9 @@ const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
   const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
 
   return (
-    <div key={name}>
+    <Box color="modalTextSecondary">
       <Icon {...{ name, logoURI }} className={styles.MoreWalletsIcon} />
-    </div>
+    </Box>
   )
 }
 
@@ -187,7 +190,9 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
                 <WalletLabel>More wallets</WalletLabel>
               </div>
 
-              <NextIcon />
+              <Box color="modalTextSecondary">
+                <NextIcon />
+              </Box>
             </MoreWallets>
           )}
           {isHiddenWalletsOpened && (

@@ -55,7 +55,7 @@ export const AccountInfo = ({
   const { name, logoURI } = useWalletInfo(wallet)
 
   return (
-    <Box borderRadius="10" padding="20" borderWidth="4" minWidth="max" width="full" className={classNames?.container}>
+    <Box borderRadius="menu" padding="20" borderWidth="4" minWidth="max" width="full" className={classNames?.container}>
       {name && (
         <div>
           Connected with <strong>{name}</strong>

@@ -3,6 +3,7 @@ import { isAddress, shortenAddress } from '@rainbow-me/kit-utils'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Box } from '../Box'
+import { Text } from '../Text'
 import { BoxProps } from '../Box/Box'
 
 export interface EthAddressProps extends BoxProps {
@@ -57,9 +58,9 @@ export const EthAddress = ({
           <ProfileIconURLOrImage />
         ))}
 
-      <Box fontWeight="heavy" color="foreground" as="span" className={classNames?.address}>
+      <Text weight="heavy" color="dropdownButtonText" as="span" className={classNames?.address}>
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
-      </Box>
+      </Text>
     </Box>
   )
 }

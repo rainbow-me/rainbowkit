@@ -1,160 +1,139 @@
-import { createGlobalTheme } from '@vanilla-extract/css'
+import { createGlobalThemeContract } from '@vanilla-extract/css'
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles'
 
 import './reset.css'
 
-export const vars = createGlobalTheme(':root', {
-  borderWidths: {
-    '4': '4px'
+const themeContractValues = {
+  colors: {
+    connectButtonBackground: '',
+    connectButtonText: '',
+    connectionIndicator: '',
+    dropdownButtonBackground: '',
+    dropdownButtonText: '',
+    menuBackground: '',
+    menuDivider: '',
+    menuItemSelectedBackground: '',
+    menuText: '',
+    menuTextAction: '',
+    menuTextDisconnect: '',
+    menuTextSecondary: '',
+    modalBackdrop: '',
+    modalBackground: '',
+    modalClose: '',
+    modalText: '',
+    modalTextError: '',
+    modalTextSecondary: ''
   },
-  borderStyle: {
-    solid: 'solid'
-  },
-  color: {
-    appleBlue: '#0A84FF',
-    greyDark: '#25292E',
-    grey80: 'rgba(60, 66, 82, 0.8)',
-    grey60: 'rgba(60, 66, 82, 0.6)',
-    sky100: '#E0E8FF',
-    sky90: '#e9f2ff', // might not be actually sky90
-    sky80: 'rgba(88, 91, 100, 0.8)',
-    sky60: 'rgba(88, 91, 100, 0.6)',
-    white: 'white',
-    white60: 'rgba(255, 255, 255, 0.6)',
-    white10: 'rgba(255, 255, 255, 0.1)',
-    white04: 'rgba(255, 255, 255, .04)',
-    white01: 'rgba(255, 255, 255, .01)',
-    green: '#2CCC00',
-
-    // need to add colors
-    // from design system in figma
-    black: '#000000',
-    blue: '#0E76FD',
-    red: '#FF494A',
-    // light mode colors
-    // #FFFFFF
-    // #25292E
-    // #3C4252 with varying opacity
-    // #25292E
-    // #2CCC00
-    // dark mode colors
-    // #12131A
-    // #E0E8FF
-    // #E0E8FF  with varying opacity
-    // #000000
-    // #00D146
-    foreground: 'white',
-    background: '#1A1B1F',
-    placeholder: '#A3A4A5'
-  },
-  fontFamily: {
-    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif'
-  },
-  fontSize: {
-    '14': '14px',
-    '16': '16px',
-    '18': '18px',
-    '20': '20px',
-    '23': '23px'
-    // more
-  },
-
-  fontWeight: {
-    regular: {
-      fontWeight: '400'
-    },
-    medium: {
-      fontWeight: '500'
-    },
-    semibold: {
-      fontWeight: '600'
-    },
-    bold: {
-      fontWeight: '700'
-    },
-    heavy: {
-      fontWeight: '800'
-    }
+  fonts: {
+    body: ''
   },
   radii: {
-    '1': '1px',
-    '6': '6px',
-    '10': '10px',
-    '12': '12px',
-    '16': '16px',
-    full: '9999px'
+    connectButton: '',
+    dropdownButton: '',
+    menu: '',
+    menuItem: '',
+    modal: '',
+    networkButton: ''
   },
-
-  space: {
-    '0': '0',
-    px: '1px',
-    '2': '2px',
-    '4': '4px',
-    '6': '6px',
-    '8': '8px',
-    '10': '10px',
-    '12': '12px',
-    '14': '14px',
-    '16': '16px',
-    '18': '18px',
-    '20': '20px',
-    '24': '24px',
-    '28': '28px',
-    '32': '32px',
-    auto: 'auto',
-    full: '100%',
-    fit: 'fit-content',
-    max: 'max-content',
-    min: 'min-content',
-    viewHeight: '100vh',
-    viewWidth: '100vw',
-    none: '0'
+  shadows: {
+    connectButton: '',
+    dropdownButton: '',
+    menu: '',
+    networkButton: ''
   }
-})
+}
 
-const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const
+export type Theme = typeof themeContractValues
+
+let varIndex = 0
+export const themeVars = createGlobalThemeContract(themeContractValues, () => `rk-${(varIndex++).toString(36)}`)
+
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>
+}
+export type ThemePartial = DeepPartial<Theme>
+
+const spacing = {
+  '0': '0',
+  '4': '4px',
+  '6': '6px',
+  '8': '8px',
+  '10': '10px',
+  '12': '12px',
+  '14': '14px',
+  '16': '16px',
+  '18': '18px',
+  '20': '20px',
+  '24': '24px',
+  '28': '28px',
+  '32': '32px'
+}
+
+const dimensions = {
+  '4': '4px',
+  '8': '8px',
+  '20': '20px',
+  '24': '24px',
+  '28': '28px',
+  full: '100%',
+  max: 'max-content',
+  viewHeight: '100vh'
+}
+
+const flexAlignment = ['flex-start', 'center'] as const
 
 const layoutStyles = defineProperties({
-  conditions: {
-    mobile: {},
-    tablet: { '@media': 'screen and (min-width: 768px)' },
-    desktop: { '@media': 'screen and (min-width: 1024px)' }
-  },
-  defaultCondition: 'mobile',
-  // need to alphabetize
   properties: {
-    alignItems: [...flexAlignment, 'baseline'],
-    alignSelf: [...flexAlignment, 'baseline'],
-    borderColor: vars.color,
-    borderStyle: vars.borderStyle,
-    borderWidth: vars.borderWidths,
-    borderBottomWidth: vars.borderWidths,
-    borderTopWidth: vars.borderWidths,
-    borderRadius: vars.radii,
-    borderBottomLeftRadius: vars.radii,
-    borderBottomRightRadius: vars.radii,
-    borderTopLeftRadius: vars.radii,
-    borderTopRightRadius: vars.radii,
-    display: ['none', 'block', 'flex', 'inline-flex', 'inline-block'],
+    alignItems: flexAlignment,
+    alignSelf: flexAlignment,
+    borderRadius: {
+      ...themeVars.radii,
+      '1': '1px',
+      '6': '6px',
+      '10': '10px',
+      full: '9999px'
+    },
+    borderStyle: {
+      solid: 'solid'
+    },
+    borderWidth: {
+      '4': '4px'
+    },
+    display: ['none', 'block', 'flex', 'inline-flex'],
     flexDirection: ['row', 'column'],
-    height: vars.space,
-    justifyContent: [...flexAlignment, 'space-around', 'space-between'],
-    paddingTop: vars.space,
-    paddingBottom: vars.space,
-    paddingLeft: vars.space,
-    paddingRight: vars.space,
-    position: ['absolute', 'fixed', 'relative', 'sticky'],
-    marginTop: vars.space,
-    marginBottom: vars.space,
-    marginRight: vars.space,
-    marginLeft: vars.space,
-    width: vars.space,
-    fontSize: vars.fontSize,
-    fontWeight: vars.fontWeight,
-    fontFamily: vars.fontFamily,
-    minWidth: vars.space,
-    minHeight: vars.space,
-    right: vars.space
+    fontFamily: themeVars.fonts,
+    fontSize: {
+      '14': '14px',
+      '16': '16px',
+      '18': '18px',
+      '20': '20px',
+      '23': '23px'
+    },
+    fontWeight: {
+      regular: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      heavy: '800'
+    },
+    height: dimensions,
+    justifyContent: [...flexAlignment, 'space-between'],
+    marginBottom: spacing,
+    marginLeft: spacing,
+    marginRight: spacing,
+    marginTop: spacing,
+    minWidth: {
+      max: 'max-content'
+    },
+    paddingBottom: spacing,
+    paddingLeft: spacing,
+    paddingRight: spacing,
+    paddingTop: spacing,
+    position: ['absolute', 'fixed', 'relative'],
+    right: {
+      '0': '0'
+    },
+    width: dimensions
   } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
@@ -166,19 +145,18 @@ const layoutStyles = defineProperties({
 
 const colorStyles = defineProperties({
   properties: {
-    color: vars.color,
-    background: vars.color
-    // etc.
+    color: themeVars.colors,
+    background: themeVars.colors,
+    borderColor: themeVars.colors,
+    boxShadow: themeVars.shadows
   }
 })
 
 const unresponsiveProperties = defineProperties({
   properties: {
-    cursor: ['default', 'pointer']
+    cursor: ['pointer']
   } as const
 })
-
-export type UnresponsiveProperties = keyof typeof unresponsiveProperties
 
 export const sprinkles = createSprinkles(layoutStyles, colorStyles, unresponsiveProperties)
 export type Sprinkles = Parameters<typeof sprinkles>[0]

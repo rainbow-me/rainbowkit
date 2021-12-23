@@ -3,8 +3,9 @@ import { sprinkles } from '../../css/sprinkles.css'
 
 export const ModalTitle = style([
   sprinkles({
-    color: 'greyDark',
+    color: 'modalText',
     display: 'block',
+    fontFamily: 'body',
     fontSize: '20',
     fontWeight: 'heavy',
     marginBottom: '4'
@@ -19,7 +20,8 @@ export const ModalTitle = style([
 
 export const StyledModal = style([
   sprinkles({
-    background: 'white',
+    background: 'modalBackground',
+    borderRadius: 'modal',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -28,8 +30,7 @@ export const StyledModal = style([
   }),
   {
     minHeight: '525px',
-    width: '390px',
-    borderRadius: '24px'
+    width: '390px'
   }
 ])
 
@@ -39,7 +40,7 @@ export const ButtonOption = style([
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 'none',
+    padding: '0',
     width: 'full'
   }),
   {
@@ -50,8 +51,9 @@ export const ButtonOption = style([
 
 export const Caption = style([
   sprinkles({
-    color: 'grey60',
+    color: 'modalTextSecondary',
     display: 'block',
+    fontFamily: 'body',
     fontWeight: 'bold'
   }),
   {
@@ -65,7 +67,7 @@ export const Caption = style([
 
 export const CloseButton = style([
   sprinkles({
-    color: 'grey80',
+    color: 'modalClose',
     fontSize: '14',
     position: 'absolute'
   }),
@@ -81,7 +83,7 @@ export const CloseButton = style([
 
 export const Terms = style([
   sprinkles({
-    color: 'grey60',
+    color: 'modalTextSecondary',
     fontSize: '14',
     fontWeight: 'semibold'
   }),
@@ -141,7 +143,7 @@ export const BackButton = style([
 export const WalletLabel = style([
   sprinkles({
     alignItems: 'center',
-    color: 'greyDark',
+    color: 'modalText',
     display: 'flex',
     fontSize: '20',
     fontWeight: 'heavy',
@@ -183,6 +185,7 @@ export const MoreWalletsIcon = style({
 export const ModalOverlay = style([
   sprinkles({
     alignItems: 'center',
+    background: 'modalBackdrop',
     display: 'flex',
     height: 'viewHeight',
     justifyContent: 'center',
@@ -192,8 +195,7 @@ export const ModalOverlay = style([
   {
     top: 0,
     left: 0,
-    zIndex: 999,
-    background: 'rgba(0, 0, 0, 0.5)'
+    zIndex: 999
   }
 ])
 
@@ -224,7 +226,7 @@ export const MoreWalletsInner = style({
 
 export const BackButtonCaption = style([
   sprinkles({
-    color: 'greyDark',
+    color: 'modalText',
     cursor: 'pointer',
     fontSize: '20'
   }),
@@ -236,7 +238,12 @@ export const BackButtonCaption = style([
   }
 ])
 
-export const ErrorMessage = style({
-  color: 'red',
-  marginTop: '0.5rem'
-})
+export const ErrorMessage = style([
+  sprinkles({
+    fontFamily: 'body',
+    color: 'modalTextError'
+  }),
+  {
+    marginTop: '0.5rem'
+  }
+])

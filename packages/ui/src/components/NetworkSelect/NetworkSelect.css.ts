@@ -1,4 +1,4 @@
-import { globalStyle, GlobalStyleRule, style } from '@vanilla-extract/css'
+import { globalStyle, style } from '@vanilla-extract/css'
 import { sprinkles } from '../../css/sprinkles.css'
 
 export const ListStyles = style({
@@ -8,10 +8,14 @@ export const ListStyles = style({
   top: '42px'
 })
 
-export const ButtonStyles = style({
-  backdropFilter: 'blur(20px)',
-  background: 'linear-gradient(179.83deg, rgba(26, 27, 31, 0.8) 0.15%, #1a1b1f 99.85%)'
-})
+export const ButtonStyles = style([
+  sprinkles({
+    background: 'dropdownButtonBackground'
+  }),
+  {
+    backdropFilter: 'blur(20px)'
+  }
+])
 
 globalStyle(`${ButtonStyles} img`, {
   marginRight: 0
@@ -26,5 +30,5 @@ export const SelectOptionStyles = sprinkles({
 })
 
 export const CurrentChainOptionStyles = sprinkles({
-  background: 'white10'
+  background: 'menuItemSelectedBackground'
 })

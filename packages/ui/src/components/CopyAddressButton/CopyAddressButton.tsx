@@ -13,13 +13,13 @@ export const CopyAddressButton = ({ address }: { address: string }) => {
       justifyContent="space-between"
       alignItems="center"
       width="full"
-      color="foreground"
+      color="menuTextAction"
       flexDirection="row"
       onClick={() => {
         navigator.clipboard.writeText(address).then(() => set(true))
       }}
     >
-      <Text size="14" weight="bold" color="sky90">
+      <Text size="14" weight="bold" color="menuTextAction">
         {copied ? 'Copied' : 'Copy Address'}
       </Text>
       <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
