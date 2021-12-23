@@ -10,7 +10,6 @@ export const base = style({
   border: 0,
   boxSizing: 'border-box',
   fontSize: '100%',
-  fontFamily: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
   selectors: {

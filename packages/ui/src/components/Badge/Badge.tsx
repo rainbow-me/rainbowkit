@@ -57,7 +57,7 @@ export const Badge = ({
       justifyContent="center"
       alignItems="center"
       fontWeight="heavy"
-      color="foreground"
+      color="connectButtonText"
       className={[PillStyles, className]}
       {...props}
     >

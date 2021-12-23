@@ -59,10 +59,10 @@ export const WalletDropdown = ({
   return (
     <Box
       as="ul"
-      background="background"
+      background="menuBackground"
       position="absolute"
       margin="0"
-      borderRadius="16"
+      borderRadius="menu"
       padding="12"
       className={clsx(MenuStyles, className)}
       display={isExpanded ? 'block' : 'none'}
@@ -95,10 +95,10 @@ export const WalletDropdown = ({
           target="_blank"
           rel="noreferrer"
         >
-          <Text as="h3" color="foreground" size="14" weight="bold">
+          <Text as="h3" color="menuText" size="14" weight="bold">
             {explorerName}
           </Text>
-          <Box width="20" color="foreground" height="20" display="flex" justifyContent="center" alignItems="center">
+          <Box width="20" color="menuText" height="20" display="flex" justifyContent="center" alignItems="center">
             <ExplorerIcon />
           </Box>
         </Box>
@@ -110,10 +110,10 @@ export const WalletDropdown = ({
           alignItems="center"
           justifyContent="space-between"
           width="full"
-          color="red"
+          color="menuTextDisconnect"
           onClick={() => disconnect()}
         >
-          <Text color="red" size="14" weight="bold">
+          <Text color="menuTextDisconnect" size="14" weight="bold">
             Disconnect
           </Text>
           <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">

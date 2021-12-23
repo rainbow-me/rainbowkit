@@ -1,0 +1,1 @@
+export { RainbowkitThemeProvider } from './RainbowkitThemeProvider'
