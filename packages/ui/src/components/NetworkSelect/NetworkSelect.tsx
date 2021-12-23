@@ -24,7 +24,6 @@ export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
     current: string
     list: string
     icon: string
-    wrongNetwork: string
   }>
 }
 
@@ -36,9 +35,9 @@ export const NetworkSelect = ({
 }: NetworkSelectProps) => {
   const [open, toggle] = useToggle(false)
 
-  const { error, provider, chainId } = useWeb3State()
+  const { provider, chainId } = useWeb3State()
 
-  const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId), [chainId])
+  const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId) || chains[0], [chainId])
 
   const filteredChains = useMemo(() => {
     const tmp: Chain[] = []
@@ -67,37 +66,15 @@ export const NetworkSelect = ({
       className={clsx(classNames.select)}
       {...props}
     >
-      {error instanceof UnsupportedChainIdError ? (
-        <Box
-          display="flex"
-          position="relative"
-          cursor="pointer"
-          alignItems="center"
-          flexDirection="row"
-          padding="8"
-          fontFamily="body"
-          color="menuText"
-          borderRadius="dropdownButton"
-          fontWeight="heavy"
-          background="dropdownButtonBackground"
-          aria-label="option"
-          className={clsx(ButtonStyles, classNames.wrongNetwork)}
-        >
-          Wrong network ⚠️
-        </Box>
-      ) : (
-        currentChain?.chainId && (
-          <ChainOption
-            aria-selected={true}
-            chain={currentChain}
-            className={clsx(ButtonStyles, classNames.current)}
-            onClick={toggle}
-            iconClassName={clsx(classNames.icon)}
-            padding="6"
-            borderRadius="networkButton"
-          />
-        )
-      )}
+      <ChainOption
+        aria-selected={true}
+        chain={currentChain}
+        className={clsx(ButtonStyles, classNames.current)}
+        onClick={toggle}
+        iconClassName={clsx(classNames.icon)}
+        padding="6"
+        borderRadius="networkButton"
+      />
       <Box
         background="menuBackground"
         right="0"

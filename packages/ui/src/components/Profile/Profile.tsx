@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { useENSWithAvatar, useOnClickOutside, useToggle } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { useWalletModal } from '../Modal'
@@ -9,6 +9,8 @@ import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
 import { DropdownIcon } from './Icons'
 import { Box } from '../Box'
 import { ConnectButton } from './ConnectButton'
+import { UnsupportedChainIdError } from '@web3-react/core'
+import clsx from 'clsx'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions
@@ -19,6 +21,7 @@ export interface ProfileProps {
     pill: string
     menu: string
     container: string
+    wrongNetwork: string
   }>
   button?: (props: {
     connect: () => void
@@ -44,7 +47,8 @@ export const Profile = ({
     Modal,
     provider,
     address: accountAddress,
-    chainId
+    chainId,
+    error
   } = useWalletModal(modalOptions)
 
   // @ts-expect-error accountAddress and ENSProvider could be undefined?
@@ -58,32 +62,53 @@ export const Profile = ({
 
   return (
     <Box position="relative" width="max" className={classNames?.container}>
-      {isConnected ? (
-        <>
-          <div ref={node}>
-            {/* @ts-expect-error address could be undefined? */}
-            <Badge
-              {...{ ipfsGatewayUrl, address, provider }}
-              onClick={toggle}
-              className={classNames?.pill || ''}
-              {...ens}
-            >
-              <DropdownIcon />
-            </Badge>
-
-            {/* @ts-expect-error address could be undefined? */}
-            <DropdownComponent
-              {...{ address, accountAddress, chainId, provider, isExpanded: open }}
-              copyAddress={CopyAddressComponent}
-              disconnect={disconnect}
-              className={classNames?.menu || ''}
-            />
-          </div>
-        </>
+      {error instanceof UnsupportedChainIdError ? (
+        <Box
+          display="flex"
+          position="relative"
+          cursor="pointer"
+          alignItems="center"
+          flexDirection="row"
+          padding="6"
+          fontFamily="body"
+          color="menuText"
+          borderRadius="dropdownButton"
+          fontWeight="heavy"
+          background="dropdownButtonBackground"
+          className={clsx(classNames?.wrongNetwork)}
+        >
+          Wrong network ⚠️
+        </Box>
       ) : (
         <>
-          <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
-          {isConnecting && typeof Modal !== 'undefined' && <Modal />}
+          {isConnected ? (
+            <>
+              <div ref={node}>
+                {/* @ts-expect-error address could be undefined? */}
+                <Badge
+                  {...{ ipfsGatewayUrl, address, provider }}
+                  onClick={toggle}
+                  className={classNames?.pill || ''}
+                  {...ens}
+                >
+                  <DropdownIcon />
+                </Badge>
+
+                {/* @ts-expect-error address could be undefined? */}
+                <DropdownComponent
+                  {...{ address, accountAddress, chainId, provider, isExpanded: open }}
+                  copyAddress={CopyAddressComponent}
+                  disconnect={disconnect}
+                  className={classNames?.menu || ''}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
+              {isConnecting && typeof Modal !== 'undefined' && <Modal />}
+            </>
+          )}
         </>
       )}
     </Box>
