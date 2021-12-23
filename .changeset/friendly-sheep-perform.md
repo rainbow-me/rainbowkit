@@ -2,9 +2,9 @@
 '@rainbow-me/kit-ui': patch
 ---
 
-Add `RainbowkitThemeProvider` and `defaultTheme`
+Added `RainbowkitThemeProvider` and `defaultTheme`
 
-All theme values have been removed from the CSS files. Instead, themes are now configured via the `RainbowkitThemeProvider` component.
+All theme values have been removed from the provided CSS file. Instead, themes are now configured via the `RainbowkitThemeProvider` component.
 
 Basic usage with the default theme:
 
