@@ -1,6 +1,5 @@
 import React, { useMemo, useRef } from 'react'
 import { Chain, chains, switchNetwork } from '@rainbow-me/kit-utils'
-import { Web3Provider } from '@ethersproject/providers'
 import { Box, BoxProps } from '../Box'
 import {
   ButtonStyles,
@@ -13,7 +12,6 @@ import { ChainOption } from './ChainOption'
 import { Text } from '../Text'
 import clsx from 'clsx'
 import { useToggle, useOnClickOutside, useWeb3State } from '@rainbow-me/kit-hooks'
-import { UnsupportedChainIdError } from '@web3-react/core'
 
 export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]
@@ -35,7 +33,11 @@ export const NetworkSelect = ({
 }: NetworkSelectProps) => {
   const [open, toggle] = useToggle(false)
 
-  const { provider, chainId } = useWeb3State()
+  const { provider, chainId, error } = useWeb3State()
+
+  const isUnsupportedChain = useMemo(() => {
+    return error instanceof Error && error.name === 'UnsupportedChainIdError'
+  }, [error])
 
   const currentChain = useMemo(() => chains.find((chain) => chain.chainId === chainId) || chains[0], [chainId])
 
@@ -84,6 +86,7 @@ export const NetworkSelect = ({
         borderRadius="menu"
         fontWeight="heavy"
         display={open ? 'block' : 'none'}
+        cursor={isUnsupportedChain ? 'not-allowed' : 'pointer'}
         className={[ListStyles, classNames.list]}
       >
         {filteredChains.map((ch) => {
@@ -97,13 +100,17 @@ export const NetworkSelect = ({
                 // @ts-expect-error provider could be undefined?
                 if (!isCurrentChain) switchNetwork(provider, ch)
               }}
-              className={clsx([SelectOptionStyles, { [CurrentChainOptionStyles]: isCurrentChain }, classNames.option])}
+              className={clsx([
+                SelectOptionStyles,
+                { [CurrentChainOptionStyles]: isCurrentChain && !isUnsupportedChain },
+                classNames.option
+              ])}
               iconClassName={classNames?.icon || ''}
             >
               <Text color="dropdownButtonText" weight="bold">
                 {ch.name}
               </Text>
-              {isCurrentChain && (
+              {isCurrentChain && !isUnsupportedChain && (
                 <Box
                   position="absolute"
                   width="8"

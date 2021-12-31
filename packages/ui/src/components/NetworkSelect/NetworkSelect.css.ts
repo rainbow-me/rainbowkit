@@ -5,7 +5,8 @@ export const ListStyles = style({
   minWidth: '160px',
   backdropFilter: 'blur(20px)',
   zIndex: 10,
-  top: '42px'
+  top: '42px',
+  cursor: 'pointer'
 })
 
 export const ButtonStyles = style([

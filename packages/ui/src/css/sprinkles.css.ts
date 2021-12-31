@@ -154,7 +154,7 @@ const colorStyles = defineProperties({
 
 const unresponsiveProperties = defineProperties({
   properties: {
-    cursor: ['pointer']
+    cursor: ['pointer', 'not-allowed', 'inherit']
   } as const
 })
 

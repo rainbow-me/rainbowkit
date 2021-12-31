@@ -14,7 +14,7 @@ export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainO
   <Box
     display="flex"
     position="relative"
-    cursor="pointer"
+    cursor="inherit"
     alignItems="center"
     flexDirection="row"
     borderRadius="menuItem"
