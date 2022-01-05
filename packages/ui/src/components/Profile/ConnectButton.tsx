@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 import { Box } from '../Box'
 import { PillStyles } from './Profile.css'
 
-export const ConnectButton = ({ connect }: { connect: () => void }) => (
+export const ConnectButton = ({ setConnecting }: { setConnecting: Dispatch<boolean> }) => (
   <Box
     as="button"
     padding="8"
@@ -10,7 +10,7 @@ export const ConnectButton = ({ connect }: { connect: () => void }) => (
     fontFamily="body"
     borderRadius="connectButton"
     className={PillStyles}
-    onClick={() => connect()}
+    onClick={() => setConnecting(true)}
   >
     Connect
   </Box>

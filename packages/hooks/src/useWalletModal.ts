@@ -5,6 +5,7 @@ import { useState } from 'react'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
+import { AbstractConnector } from '@web3-react/abstract-connector'
 
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
@@ -12,9 +13,8 @@ export type WalletInterface = Omit<
 > & {
   provider: Web3Provider | undefined
   address: string | undefined | null
-  activateConnector: (w: Wallet) => Promise<void>
   state: {
-    connect: () => void
+    connect: (w: Wallet) => Promise<void>
     disconnect: () => void
     isConnected: boolean
     isConnecting: boolean
@@ -41,9 +41,7 @@ export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterf
 
   const isRejected = useRef(false)
 
-  const connectToWallet = async (name: string) => {
-    const { connector } = wallets.find((w) => w.name === name) || {}
-
+  const connectToWallet = async (connector: AbstractConnector) => {
     // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
     if (connector instanceof WalletConnectConnector) {
       connector.walletConnectProvider = undefined
@@ -64,20 +62,17 @@ export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterf
 
   useEffect(() => {
     const walletName = localStorage.getItem('rk-last-wallet')
+    const wallet = wallets.find((w) => w.name === walletName)
 
-    if (!isRejected.current && walletName && !!wallets.find((w) => w.name === walletName)) {
-      connectToWallet(walletName)
+    if (!isRejected.current && walletName && !!wallet) {
+      connectToWallet(wallet?.connector)
     }
   }, [])
 
   const [isConnecting, setConnecting] = useState(false)
 
-  const connect = () => {
-    setConnecting(true)
-  }
-
-  const activateConnector = async (c: Wallet) => {
-    await connectToWallet(c.name)
+  const connect = async (c: Wallet) => {
+    await connectToWallet(c.connector)
 
     if (!isRejected.current) {
       localStorage.setItem('rk-last-wallet', c.name)
@@ -102,7 +97,6 @@ export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterf
     setError,
     provider,
     address,
-    activateConnector,
     ...web3ReactProps
   }
 }
