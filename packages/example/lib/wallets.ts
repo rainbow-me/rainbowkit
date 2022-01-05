@@ -1,31 +1,20 @@
 import { Wallet, walletConnectRPCs, ChainId } from '@rainbow-me/kit-utils'
 import { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
-
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 
-const wcOptions = {
-  options: {
-    rpc: walletConnectRPCs
-  } as WalletConnectConnectorArguments
-}
+const wcOptions = { options: { rpc: walletConnectRPCs } as WalletConnectConnectorArguments }
 
-export const supportedChainIds = [ChainId.MAINNET, ChainId.POLYGON, ChainId.OPTIMISM, ChainId.ARBITRUM]
-
-export const COMMON_OPTS = {
-  supportedChainIds
-}
+export const COMMON_OPTS = { supportedChainIds: [ChainId.MAINNET, ChainId.POLYGON, ChainId.OPTIMISM, ChainId.ARBITRUM] }
 
 export const metamask = new InjectedConnector({ ...COMMON_OPTS })
 
 export const walletconnect = new WalletConnectConnector({
   ...COMMON_OPTS,
-
   rpc: {
     1: 'https://mainnet.infura.io/v3/0c8c992691dc4bfe97b4365a27fb2ce4',
-    137: 'https://polygon-mainnet.infura.io/v3/0c8c992691dc4bfe97b4365a27fb2ce4',
-    43114: 'https://api.avax.network/ext/bc/C/rpc'
+    137: 'https://polygon-mainnet.infura.io/v3/0c8c992691dc4bfe97b4365a27fb2ce4'
   }
 })
 
