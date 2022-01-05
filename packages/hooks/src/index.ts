@@ -1,4 +1,3 @@
-export * from 'use-ens'
 export * from './useExplorerTxHistory'
 export * from './useTxHistory'
 export * from './useWalletInfo'
