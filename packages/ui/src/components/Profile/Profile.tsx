@@ -1,11 +1,10 @@
 import React, { useMemo, useRef } from 'react'
-import { useENSWithAvatar, useOnClickOutside, useToggle } from '@rainbow-me/kit-hooks'
+import { useENSWithAvatar, useOnClickOutside, useToggle, useWalletModal } from '@rainbow-me/kit-hooks'
+import type { UseWalletModalOptions } from '@rainbow-me/kit-hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { useWalletModal } from '../Modal'
-import type { UseWalletModalOptions } from '../Modal'
 import { Badge } from '../Badge'
 import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
-
+import { Modal } from '../Modal'
 import { DropdownIcon } from './Icons'
 import { Box } from '../Box'
 import { ConnectButton } from './ConnectButton'
@@ -40,8 +39,8 @@ export const Profile = ({
   dropdown: DropdownComponent = WalletDropdown
 }: ProfileProps) => {
   const {
-    state: { isConnected, isConnecting, disconnect, connect },
-    Modal,
+    state: { isConnected, isConnecting, disconnect, connect, setConnecting },
+    activateConnector,
     provider,
     address: accountAddress,
     chainId
@@ -83,7 +82,9 @@ export const Profile = ({
       ) : (
         <>
           <ButtonComponent {...{ connect, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
-          {isConnecting && typeof Modal !== 'undefined' && <Modal />}
+          {isConnecting && typeof Modal !== 'undefined' && (
+            <Modal connect={activateConnector} {...{ setConnecting, isConnecting }} {...modalOptions} />
+          )}
         </>
       )}
     </Box>

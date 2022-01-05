@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { Dispatch, useEffect, useRef } from 'react'
 import type { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
-import { Modal as ModalUI, ModalProps } from './Modal'
 import type { Wallet } from '@rainbow-me/kit-utils'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
@@ -11,25 +10,23 @@ export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,
   'activate' | 'deactivate' | 'library' | 'account' | 'active'
 > & {
-  Modal?: () => JSX.Element
   provider: Web3Provider | undefined
   address: string | undefined | null
+  activateConnector: (w: Wallet) => Promise<void>
   state: {
     connect: () => void
     disconnect: () => void
     isConnected: boolean
     isConnecting: boolean
+    setConnecting: Dispatch<boolean>
   }
 }
 
 export interface UseWalletModalOptions {
-  modal?: React.ComponentType<ModalProps> | false
   wallets: Wallet[]
-  chains?: (string | number)[]
-  terms?: JSX.Element
 }
 
-export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWalletModalOptions): WalletInterface => {
+export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterface => {
   const {
     activate,
     deactivate,
@@ -52,7 +49,7 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
       connector.walletConnectProvider = undefined
     }
 
-    if (!isConnected)
+    if (!isConnected && connector)
       try {
         await activate(connector, undefined, true)
       } catch (error) {
@@ -99,28 +96,13 @@ export const useWalletModal = ({ modal: ModalComponent, wallets, terms }: UseWal
     }
   }
 
-  if (typeof ModalComponent === 'undefined') {
-    const Modal = () => (
-      <ModalUI connect={activateConnector} {...{ wallets, isConnecting, setConnecting, terms, error }} />
-    )
-
-    return {
-      Modal,
-      state: { isConnected, isConnecting, connect, disconnect },
-      provider,
-      address,
-      error,
-      setError,
-      ...web3ReactProps
-    }
-  } else {
-    return {
-      state: { connect, disconnect, isConnected, isConnecting },
-      error,
-      setError,
-      provider,
-      address,
-      ...web3ReactProps
-    }
+  return {
+    state: { connect, disconnect, isConnected, isConnecting, setConnecting },
+    error,
+    setError,
+    provider,
+    address,
+    activateConnector,
+    ...web3ReactProps
   }
 }

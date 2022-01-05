@@ -42,6 +42,7 @@
     "@ethersproject/transactions": "^5.5.0",
     "@rainbow-me/kit-utils": "workspace:*",
     "@web3-react/abstract-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "6.2.4",
     "use-ens": "workspace:*"
   },
   "peerDependencies": {
