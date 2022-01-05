@@ -1,5 +1,16 @@
 # @rainbow-me/kit-core
 
+## 0.0.62
+
+### Patch Changes
+
+- 664bf79: Move kit-modal components into kit-ui
+- Updated dependencies [5e7ae56]
+- Updated dependencies
+- Updated dependencies [664bf79]
+  - @rainbow-me/kit-ui@0.0.63
+  - @rainbow-me/kit-hooks@0.0.30
+
 ## 0.0.61
 
 ### Patch Changes

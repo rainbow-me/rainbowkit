@@ -1,5 +1,11 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.30
+
+### Patch Changes
+
+- remove use-ens from RainbowKit
+
 ## 0.0.29
 
 ### Patch Changes

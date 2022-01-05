@@ -1,5 +1,14 @@
 # example
 
+## 1.0.16
+
+### Patch Changes
+
+- Updated dependencies [5e7ae56]
+- Updated dependencies [664bf79]
+  - @rainbow-me/kit-ui@0.0.63
+  - @rainbow-me/kit-core@0.0.62
+
 ## 1.0.15
 
 ### Patch Changes
