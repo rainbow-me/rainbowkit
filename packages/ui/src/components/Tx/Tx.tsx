@@ -1,6 +1,6 @@
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import type { TransactionWithStatus, TransactionStatus } from '@rainbow-me/kit-hooks'
 import clsx from 'clsx'
 import { FailIcon, LoadingIcon, SuccessIcon, ViewTransactionIcon } from './icons'
@@ -62,6 +62,17 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
     }
   }, [props.hash, props.explorerUrl, chainId])
 
+  const statusColor = useMemo(() => {
+    switch (status) {
+      case 'fail':
+        return 'error'
+      case 'pending':
+        return 'menuTextSecondary'
+      case 'success':
+        return 'menuTextAction'
+    }
+  }, [status])
+
   return (
     <Box
       display="flex"
@@ -78,8 +89,8 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
           <Box as="span" color="menuText" fontSize="16" fontWeight="bold">
             {title || 'Contract call'}
           </Box>
-          <Box as="span" color="menuTextSecondary" marginTop="4" fontSize="14" fontWeight="bold">
-            {status}
+          <Box as="span" color={statusColor} marginTop="4" fontSize="14" fontWeight="bold">
+            {status[0].toUpperCase() + status.slice(1)}
           </Box>
         </Box>
       </Box>
