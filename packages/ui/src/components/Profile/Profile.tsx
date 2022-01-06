@@ -82,9 +82,7 @@ export const Profile = ({
       ) : (
         <>
           <ButtonComponent {...{ setConnecting, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
-          {isConnecting && typeof Modal !== 'undefined' && (
-            <Modal {...{ setConnecting, isConnecting, connect }} {...modalOptions} />
-          )}
+          {isConnecting && <Modal {...{ setConnecting, isConnecting, connect }} {...modalOptions} />}
         </>
       )}
     </Box>

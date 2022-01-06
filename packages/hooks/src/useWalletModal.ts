@@ -3,7 +3,6 @@ import type { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import type { Wallet } from '@rainbow-me/kit-utils'
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
@@ -41,9 +40,11 @@ export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterf
 
   const isRejected = useRef(false)
 
+  const isWC = (connector: AbstractConnector) => 'walletConnectProvider' in connector || 'walletLink' in connector
+
   const connectToWallet = async (connector: AbstractConnector) => {
-    // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
-    if (connector instanceof WalletConnectConnector) {
+    if (isWC(connector)) {
+      // @ts-ignore if the connector is walletconnect and the user has already tried to connect, manually reset the connector
       connector.walletConnectProvider = undefined
     }
 
@@ -84,9 +85,8 @@ export const useWalletModal = ({ wallets }: UseWalletModalOptions): WalletInterf
   const disconnect = () => {
     localStorage.removeItem('rk-last-wallet')
     deactivate()
-    if (connector instanceof WalletConnectConnector) {
-      // walletconnect connector needs to be closed manually
-      // see web3-react issues: https://github.com/NoahZinsmeister/web3-react/issues?q=deactivate
+    if (connector && isWC(connector)) {
+      // @ts-ignore walletconnect connector needs to be closed manually, see: https://github.com/NoahZinsmeister/web3-react/issues?q=deactivate
       connector.close()
     }
   }
