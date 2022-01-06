@@ -1,5 +1,11 @@
 # @rainbow-me/kit-hooks
 
+## 0.0.31
+
+### Patch Changes
+
+- rework modal to make it simpler to work with
+
 ## 0.0.30
 
 ### Patch Changes

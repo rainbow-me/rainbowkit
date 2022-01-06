@@ -1,5 +1,13 @@
 # @rainbow-me/kit-ui
 
+## 0.0.64
+
+### Patch Changes
+
+- rework modal to make it simpler to work with
+- Updated dependencies
+  - @rainbow-me/kit-hooks@0.0.31
+
 ## 0.0.63
 
 ### Patch Changes
