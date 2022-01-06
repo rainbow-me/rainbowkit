@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Transaction } from '@ethersproject/transactions'
 import { BaseProvider, TransactionReceipt } from '@ethersproject/providers'
+import { BigNumber } from '@ethersproject/bignumber'
 
 const safeJSONParse = (json: string) => {
   try {
@@ -10,9 +10,21 @@ const safeJSONParse = (json: string) => {
   }
 }
 
-export type TransactionWithStatus = Pick<Transaction, 'data' | 'from' | 'to' | 'value' | 'hash' | 'nonce' | 'type'> & {
-  status: 'pending' | 'fail' | 'success'
-  blockNumber: number | null
+export type TransactionStatus = 'pending' | 'fail' | 'success'
+
+export type Transaction = {
+  value: BigNumber
+  from: string
+  to: string
+  data?: string
+  blockNumber?: number
+  hash: string
+  type?: string
+  nonce?: number
+}
+
+export type TransactionWithStatus = Transaction & {
+  status: TransactionStatus
 }
 
 /**
@@ -35,7 +47,6 @@ export const useTxHistory = ({
       ...txes,
       {
         ...tx,
-        blockNumber: null,
         status: 'pending'
       }
     ])
@@ -59,8 +70,7 @@ export const useTxHistory = ({
             ...txes.filter((t) => t.hash !== tx.hash),
             {
               ...common,
-              status: 'fail',
-              blockNumber: null
+              status: 'fail'
             }
           ])
         else if (provider) {

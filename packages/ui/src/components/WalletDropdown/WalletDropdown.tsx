@@ -5,7 +5,7 @@ import React, { useMemo } from 'react'
 import { Box, BoxProps } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
 import { Text } from '../Text'
-import { CloseIcon, ExplorerIcon } from './Icons'
+import { CloseIcon, ExplorerIcon } from './icons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
 import { MenuStyles } from './WalletDropdown.css'
 

@@ -241,7 +241,7 @@ export const BackButtonCaption = style([
 export const ErrorMessage = style([
   sprinkles({
     fontFamily: 'body',
-    color: 'modalTextError'
+    color: 'error'
   }),
   {
     marginTop: '0.5rem'

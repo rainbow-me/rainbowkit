@@ -5,6 +5,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@ethersproject/bignumber": "^5.5.0",
     "@rainbow-me/kit-core": "workspace:*",
     "@rainbow-me/kit-ui": "workspace:*",
     "@rainbow-me/kit-utils": "workspace:*",
