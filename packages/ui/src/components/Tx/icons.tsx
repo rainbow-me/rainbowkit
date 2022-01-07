@@ -18,7 +18,7 @@ export const LoadingIcon = (props: IconProps) => (
       strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="bevel"
-    />
+    ></path>
     <defs>
       <radialGradient
         id="paint0_angular_46_59699"
