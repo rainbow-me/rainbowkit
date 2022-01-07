@@ -5,6 +5,7 @@ import type { TransactionWithStatus, TransactionStatus } from '@rainbow-me/kit-h
 import clsx from 'clsx'
 import { FailIcon, LoadingIcon, SuccessIcon, ViewTransactionIcon } from './icons'
 import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
 
 export type TxProps = {
   /**
@@ -86,10 +87,10 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
           <StatusIcon status={status} />
         </Box>
         <Box display="flex" flexDirection="column" marginLeft="14" marginRight="4">
-          <Box as="span" color="menuText" fontSize="16" fontWeight="bold">
+          <Text as="span" color="menuText" size="16" weight="bold">
             {title || 'Contract call'}
-          </Box>
-          <Box as="span" color={statusColor} marginTop="4" fontSize="14" fontWeight="bold">
+          </Text>
+          <Box as="span" color={statusColor} marginTop="4" fontFamily="body" fontSize="14" fontWeight="bold">
             {status[0].toUpperCase() + status.slice(1)}
           </Box>
         </Box>

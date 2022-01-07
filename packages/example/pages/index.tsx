@@ -47,7 +47,7 @@ const Example = () => {
             status: 'success',
             data: '0x',
             value: BigNumber.from(BigInt(1.27 * 10 ** 18)),
-            hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074231',
+            hash: '0x0dce30c7f31bcb3bf45b4ead6e0389b25b75d2be78264eeeea948323c414c2c7',
             from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
             to: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159'
           },
