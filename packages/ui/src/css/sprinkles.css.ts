@@ -78,9 +78,7 @@ const dimensions = {
   full: '100%',
   max: 'max-content',
   viewHeight: '100vh',
-  viewWidth: '100vw',
-
-  menuDesktop: '400px'
+  viewWidth: '100vw'
 }
 
 const flexAlignment = ['flex-start', 'center'] as const

@@ -27,7 +27,7 @@ export interface TxHistoryProps extends Omit<BoxProps, 'reset'> {
 
 export const TxHistory = ({ txes, txComponent: Tx = DefaultTx, chainId, reset, ...props }: TxHistoryProps) => {
   return (
-    <Box padding="24" borderRadius="menu" background="menuBackground" boxShadow="menu" width="menuDesktop" {...props}>
+    <Box padding="24" borderRadius="menu" background="menuBackground" boxShadow="menu" width="full" {...props}>
       {reset && <button onClick={() => reset()}>Clear transactions</button>}
       {txes?.map((tx) => (
         <Tx key={tx.hash} {...tx} chainId={chainId} />
