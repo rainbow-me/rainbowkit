@@ -39,7 +39,6 @@
     "react": ">=17"
   },
   "devDependencies": {
-    "@rollup/plugin-json": "^4.1.0",
     "@types/chroma-js": "^2.1.3",
     "@vanilla-extract/private": "^1.0.2",
     "@web3-react/core": "^6.1.9",
