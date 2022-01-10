@@ -5,7 +5,7 @@ import { chainIDToExplorer } from '../../utils'
 import { Box, BoxProps } from '../Box'
 import { CopyAddressButton } from '../CopyAddressButton'
 import { Text } from '../Text'
-import { CloseIcon, ExplorerIcon } from './icons'
+import { CloseIcon, ExplorerIcon } from './walletIcons'
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
 import { MenuStyles } from './WalletDropdown.css'
 
