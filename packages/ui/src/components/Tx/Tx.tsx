@@ -1,15 +1,17 @@
 import { BaseProvider } from '@ethersproject/providers'
 import { chainIDToExplorer, guessTitle } from '@rainbow-me/kit-utils'
-import React, { useEffect, useState } from 'react'
-import type { TransactionWithStatus } from '@rainbow-me/kit-hooks'
-import { ExplorerLinkClassName, TxContainerClassName } from './Tx.css'
+import React, { useEffect, useMemo, useState } from 'react'
+import type { TransactionWithStatus, TransactionStatus } from '@rainbow-me/kit-hooks'
 import clsx from 'clsx'
+import { FailIcon, LoadingIcon, SuccessIcon, ViewTransactionIcon } from './icons'
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
 
 export type TxProps = {
   /**
    * Transaction status
    */
-  status?: 'pending' | 'success' | 'fail'
+  status?: TransactionStatus
   /**
    * Transaction title
    */
@@ -32,6 +34,17 @@ export type TxProps = {
   }>
 } & Pick<TransactionWithStatus, 'status' | 'to' | 'value' | 'from' | 'data' | 'hash'>
 
+const StatusIcon = ({ status }: { status: TransactionStatus }) => {
+  switch (status) {
+    case 'fail':
+      return <FailIcon />
+    case 'pending':
+      return <LoadingIcon />
+    case 'success':
+      return <SuccessIcon />
+  }
+}
+
 export const Tx = ({ status, title: initialTitle, classNames, chainId, data, value, from, to, ...props }: TxProps) => {
   const [title, setTitle] = useState(initialTitle || '')
   const [link, setLink] = useState('')
@@ -44,24 +57,47 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
       }
 
       if (!initialTitle) {
-        // @ts-expect-error 'from' and 'to' could be undefined?
         const guessedTitle = guessTitle({ data, from, to, chainId, value })
         if (guessedTitle) setTitle(guessedTitle)
       }
     }
   }, [props.hash, props.explorerUrl, chainId])
 
-  return (
-    <div className={clsx(TxContainerClassName, classNames?.container)}>
-      {link === '' ? (
-        <span>{title || 'Contract call'}</span>
-      ) : (
-        <a className={ExplorerLinkClassName} href={link} title={title}>
-          {title}
-        </a>
-      )}
+  const statusColor = useMemo(() => {
+    switch (status) {
+      case 'fail':
+        return 'error'
+      case 'pending':
+        return 'menuTextSecondary'
+      case 'success':
+        return 'menuTextAction'
+    }
+  }, [status])
 
-      <span>{status}</span>
-    </div>
+  return (
+    <Box
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
+      marginBottom="24"
+      className={clsx(classNames?.container)}
+    >
+      <Box display="flex" flexDirection="row" alignItems="center">
+        <Box as="span" color={status === 'fail' ? 'error' : 'menuTextAction'}>
+          <StatusIcon status={status} />
+        </Box>
+        <Box display="flex" flexDirection="column" marginLeft="14" marginRight="4">
+          <Text as="span" color="menuText" size="16" weight="bold">
+            {title || 'Contract call'}
+          </Text>
+          <Box as="span" color={statusColor} marginTop="4" fontFamily="body" fontSize="14" fontWeight="bold">
+            {status[0].toUpperCase() + status.slice(1)}
+          </Box>
+        </Box>
+      </Box>
+      <Box as="a" color="menuTextAction" href={link} title="View on explorer">
+        <ViewTransactionIcon />
+      </Box>
+    </Box>
   )
 }

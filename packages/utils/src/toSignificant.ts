@@ -4,14 +4,15 @@ import { nFormat } from './nFormat'
 
 /**
  * Rounds a number to significant 4-digit number
- * @param big number
+ * @param b big number
+ * @param precision
  * @returns formatted number
  */
-export const toSignificant = (b: BigNumber): string => {
+export const toSignificant = (b: BigNumber, precision = 4): string => {
   const formatted = formatEther(b)
   const floatBal = parseFloat(formatted)
 
   if (floatBal > 9999) return nFormat(floatBal, 0)
 
-  return floatBal.toPrecision(4)
+  return floatBal.toPrecision(precision)
 }
