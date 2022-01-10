@@ -1,4 +1,4 @@
-import { Wallet, walletConnectRPCs, ChainId } from '@rainbow-me/kit-utils'
+import { Wallet, walletConnectRPCs, ChainId } from '@rainbow-me/rainbowkit'
 import { WalletConnectConnectorArguments } from '@web3-react/walletconnect-connector'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'

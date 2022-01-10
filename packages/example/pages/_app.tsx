@@ -1,4 +1,4 @@
-import '@rainbow-me/kit-ui/index.css'
+import '@rainbow-me/rainbowkit/index.css'
 import type { AppProps } from 'next/app'
 import React from 'react'
 

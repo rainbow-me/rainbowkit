@@ -1,7 +1,12 @@
 import { AlchemyWebSocketProvider } from '@ethersproject/providers'
-import { useWeb3State } from '@rainbow-me/kit-core'
-import { NetworkSelect, Profile, RainbowkitThemeProvider, defaultTheme } from '@rainbow-me/kit-ui'
-import { withWeb3React } from '@rainbow-me/kit-utils'
+import {
+  useWeb3State,
+  NetworkSelect,
+  Profile,
+  RainbowkitThemeProvider,
+  defaultTheme,
+  withWeb3React
+} from '@rainbow-me/rainbowkit'
 import React from 'react'
 import { wallets } from '../lib/wallets'
 
