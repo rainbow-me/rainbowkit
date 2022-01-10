@@ -21,8 +21,8 @@ const themeContractValues = {
     modalBackground: '',
     modalClose: '',
     modalText: '',
-    modalTextError: '',
-    modalTextSecondary: ''
+    modalTextSecondary: '',
+    error: ''
   },
   fonts: {
     body: ''
@@ -77,7 +77,8 @@ const dimensions = {
   '28': '28px',
   full: '100%',
   max: 'max-content',
-  viewHeight: '100vh'
+  viewHeight: '100vh',
+  viewWidth: '100vw'
 }
 
 const flexAlignment = ['flex-start', 'center'] as const
@@ -122,9 +123,8 @@ const layoutStyles = defineProperties({
     marginLeft: spacing,
     marginRight: spacing,
     marginTop: spacing,
-    minWidth: {
-      max: 'max-content'
-    },
+    minWidth: dimensions,
+    maxWidth: dimensions,
     paddingBottom: spacing,
     paddingLeft: spacing,
     paddingRight: spacing,

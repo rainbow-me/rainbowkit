@@ -12,14 +12,14 @@ const themeValues: Theme = {
     menuDivider: 'rgba(255, 255, 255, .04)',
     menuItemSelectedBackground: 'rgba(255, 255, 255, 0.1)',
     menuText: 'white',
-    menuTextAction: '#e9f2ff',
+    menuTextAction: '#4892FE',
     menuTextDisconnect: '#FF494A',
     menuTextSecondary: '#A3A4A5',
+    error: '#FF494A',
     modalBackdrop: 'rgba(0, 0, 0, 0.5)',
     modalBackground: 'white',
     modalClose: 'rgba(60, 66, 82, 0.8)',
     modalText: '#25292E',
-    modalTextError: '#FF494A',
     modalTextSecondary: 'rgba(60, 66, 82, 0.6)'
   },
   fonts: {
