@@ -3,7 +3,7 @@ import { UnsupportedChainIdError } from '@web3-react/core'
 import clsx from 'clsx'
 import { Chain, chains, switchNetwork } from '../../utils'
 import { useToggle, useOnClickOutside, useWeb3State } from '../../hooks'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Box/Box'
 import {
   ButtonStyles,
   IndicatorStyles,
@@ -12,7 +12,7 @@ import {
   CurrentChainOptionStyles
 } from './NetworkSelect.css'
 import { ChainOption } from './ChainOption'
-import { Text } from '../Text'
+import { Text } from '../Text/Text'
 
 export interface NetworkSelectProps extends Omit<BoxProps, 'className'> {
   chains: (string | Chain)[]

@@ -1,9 +1,9 @@
 import React from 'react'
-import { CopyAddressButton } from '../CopyAddressButton'
-import { ExplorerLink, ExplorerProps } from '../ExplorerLink'
+import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton'
+import { ExplorerLink, ExplorerProps } from '../ExplorerLink/ExplorerLink'
 import { useWalletInfo } from '../../hooks'
 
-import { Box } from '../Box'
+import { Box } from '../Box/Box'
 
 export interface AccountInfoProps {
   /**

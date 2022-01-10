@@ -1,1 +1,0 @@
-export { CopyAddressButton } from './CopyAddressButton'

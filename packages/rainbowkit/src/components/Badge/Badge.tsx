@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react'
-import { EthAddress } from '../EthAddress'
-import { EmojiIcon } from '../EmojiIcon'
+import { EthAddress } from '../EthAddress/EthAddress'
+import { EmojiIcon } from '../EmojiIcon/EmojiIcon'
 import { BaseProvider } from '@ethersproject/providers'
 import { PillStyles } from './Badge.css'
-import { Box } from '../Box'
-import { BoxProps } from '../Box/Box'
+import { Box, BoxProps } from '../Box/Box'
 
 export interface BadgeProps {
   /**

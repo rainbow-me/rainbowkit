@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Box } from '../Box'
-import { Text } from '../Text'
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
 import { CopyIcon } from './Icons'
 
 export const CopyAddressButton = ({ address }: { address: string }) => {

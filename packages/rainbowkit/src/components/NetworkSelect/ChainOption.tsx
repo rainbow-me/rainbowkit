@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Chain } from '../../utils'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Box/Box'
 
 export interface ChainOptionProps extends BoxProps {
   chain: Chain

@@ -2,9 +2,8 @@ import React from 'react'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { isAddress, shortenAddress } from '../../utils'
-import { Box } from '../Box'
-import { Text } from '../Text'
-import { BoxProps } from '../Box/Box'
+import { Box, BoxProps } from '../Box/Box'
+import { Text } from '../Text/Text'
 
 export interface EthAddressProps extends BoxProps {
   address: string

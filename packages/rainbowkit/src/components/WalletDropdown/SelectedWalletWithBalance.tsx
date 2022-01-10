@@ -2,8 +2,8 @@ import React, { useMemo } from 'react'
 import { BaseProvider } from '@ethersproject/providers'
 import { useSignificantBalance, useWalletInfo } from '../../hooks'
 import { chainIDToToken } from '../../utils'
-import { Box } from '../Box'
-import { Text } from '../Text'
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
 
 export const SelectedWalletWithBalance = ({
   provider,
