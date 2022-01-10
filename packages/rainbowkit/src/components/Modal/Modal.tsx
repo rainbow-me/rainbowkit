@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { getWalletInfo, Wallet } from '../../utils'
 import * as styles from './Modal.css'
 import { CloseIcon, NextIcon } from './icons'
-import { Box } from '../Box'
+import { Box } from '../Box/Box'
 
 export interface ModalProps {
   wallets: Wallet[]

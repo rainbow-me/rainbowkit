@@ -1,11 +1,11 @@
 import React, { Dispatch, useMemo, useRef } from 'react'
 import { useENSWithAvatar, useOnClickOutside, useToggle, useWalletModal, UseWalletModalOptions } from '../../hooks'
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { Badge } from '../Badge'
-import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown'
-import { Modal } from '../Modal'
+import { Badge } from '../Badge/Badge'
+import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown/WalletDropdown'
+import { Modal } from '../Modal/Modal'
 import { DropdownIcon } from './Icons'
-import { Box } from '../Box'
+import { Box } from '../Box/Box'
 import { ConnectButton } from './ConnectButton'
 
 export interface ProfileProps {

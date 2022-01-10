@@ -1,5 +1,5 @@
 import React, { Dispatch } from 'react'
-import { Box } from '../Box'
+import { Box } from '../Box/Box'
 import { PillStyles } from './Profile.css'
 
 export const ConnectButton = ({ setConnecting }: { setConnecting: Dispatch<boolean> }) => (

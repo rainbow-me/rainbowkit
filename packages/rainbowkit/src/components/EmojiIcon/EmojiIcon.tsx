@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import { addressHashedEmoji, colors, addressHashedColorIndex } from '../../utils'
-import { Box } from '../Box'
-import type { BoxProps } from '../Box/Box'
+import { Box, BoxProps } from '../Box/Box'
 
 export type EmojiIconProps = BoxProps & { address: string }
 
