@@ -1,4 +1,4 @@
-import { useWalletInfo } from '../../packages/hooks/src/useWalletInfo'
+import { useWalletInfo } from '../../packages/rainbowkit/src/hooks/useWalletInfo'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { renderHook } from '@testing-library/react-hooks'

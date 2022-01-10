@@ -1,4 +1,4 @@
-import { resolveAddress } from '../../packages/utils/src/resolveAddress'
+import { resolveAddress } from '../../packages/rainbowkit/src/utils/resolveAddress'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { AlchemyProvider } from '@ethersproject/providers'

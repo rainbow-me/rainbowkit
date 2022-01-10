@@ -1,4 +1,4 @@
-import { toSignificant } from '../../packages/utils/src/toSignificant'
+import { toSignificant } from '../../packages/rainbowkit/src/utils/toSignificant'
 import { suite } from 'uvu'
 import { BigNumber } from '@ethersproject/bignumber'
 import * as assert from 'uvu/assert'
