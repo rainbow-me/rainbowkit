@@ -1,4 +1,4 @@
-import { useENSWithAvatar } from '../../packages/hooks/src/useENSWithAvatar'
+import { useENSWithAvatar } from '../../packages/rainbowkit/src/hooks/useENSWithAvatar'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 import { renderHook } from '@testing-library/react-hooks'

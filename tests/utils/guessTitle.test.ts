@@ -1,4 +1,4 @@
-import { guessTitle } from '../../packages/utils/src/guessTitle'
+import { guessTitle } from '../../packages/rainbowkit/src/utils/guessTitle'
 import { suite } from 'uvu'
 import { BigNumber } from '@ethersproject/bignumber'
 import * as assert from 'uvu/assert'

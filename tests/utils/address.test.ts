@@ -1,6 +1,6 @@
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
-import { isAddress, shortenAddress } from '../../packages/utils/src/address'
+import { isAddress, shortenAddress } from '../../packages/rainbowkit/src/utils/address'
 
 const ADDRESS = '0x0000000000000000000000000000000000000000'
 

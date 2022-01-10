@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getWalletInfo } from '../utils'
+import { getWalletInfo } from '../utils/wallets'
 
 /**
  * A React hook to get most recently used wallet information from storage

@@ -1,4 +1,4 @@
-import { nFormat } from '../../packages/utils/src/nFormat'
+import { nFormat } from '../../packages/rainbowkit/src/utils/nFormat'
 import { suite } from 'uvu'
 import * as assert from 'uvu/assert'
 
