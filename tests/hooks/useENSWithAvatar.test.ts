@@ -12,11 +12,15 @@ global.window = window
 global.document = window.document
 global.requestAnimationFrame = null
 
-const provider = new AlchemyWebSocketProvider('homestead', 'vINSe04ri6EJ_hs94sK88MMeIBVPhnNo')
+const t = suite<{
+  provider: AlchemyWebSocketProvider
+}>('useENSWithAvatar')
 
-const t = suite('useENSWithAvatar')
+t.before((context) => {
+  context.provider = new AlchemyWebSocketProvider('homestead', 'vINSe04ri6EJ_hs94sK88MMeIBVPhnNo')
+})
 
-t('resolves avatar and domain', async () => {
+t('resolves avatar and domain', async ({ provider }) => {
   const { result, waitForNextUpdate } = renderHook(() =>
     useENSWithAvatar({ provider, address: '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f' })
   )
@@ -27,6 +31,10 @@ t('resolves avatar and domain', async () => {
     avatar: 'ipfs://bafkreia4t7isswz3fpqzwc7rokd5m7rd3dom7aavcbthxk5fggixncngru',
     domain: 'v1rtl.eth'
   })
+})
+
+t.after(({ provider }) => {
+  provider.destroy()
 })
 
 t.run()
