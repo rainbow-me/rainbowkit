@@ -77,6 +77,7 @@ export const NetworkSelect = ({
           fontFamily="body"
           color="menuText"
           borderRadius="dropdownButton"
+          boxShadow="dropdownButton"
           fontWeight="heavy"
           background="dropdownButtonBackground"
           aria-label="option"
@@ -94,11 +95,13 @@ export const NetworkSelect = ({
             iconClassName={clsx(classNames.icon)}
             padding="6"
             borderRadius="networkButton"
+            boxShadow="dropdownButton"
           />
         )
       )}
       <Box
         background="menuBackground"
+        boxShadow="menu"
         right="0"
         position="absolute"
         width="max"

@@ -67,7 +67,7 @@ export const Caption = style([
 
 export const CloseButton = style([
   sprinkles({
-    color: 'modalClose',
+    color: 'modalTextSecondary',
     fontSize: '14',
     position: 'absolute'
   }),
