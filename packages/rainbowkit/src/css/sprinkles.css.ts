@@ -45,8 +45,7 @@ const themeContractValues = {
 
 export type Theme = typeof themeContractValues
 
-let varIndex = 0
-export const themeVars = createGlobalThemeContract(themeContractValues, () => `rk-${(varIndex++).toString(36)}`)
+export const themeVars = createGlobalThemeContract(themeContractValues, (_, path) => `rk-${path.join('-')}`)
 
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>

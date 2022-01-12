@@ -1,15 +1,32 @@
 import React, { ReactNode } from 'react'
-import { assignInlineVars } from '@vanilla-extract/dynamic'
-import { themeVars, Theme } from '../../css/sprinkles.css'
+import { Theme } from '../../css/sprinkles.css'
+import { cssStringFromTheme } from '../../css/cssStringFromTheme'
 
 export function RainbowkitThemeProvider({
+  id,
   children,
-  theme
+  theme,
+  darkModeTheme
 }: {
-  children: ReactNode | ((style: Record<string, string>) => ReactNode)
+  id?: string
+  children: ReactNode
   theme: Theme | (() => Theme)
+  darkModeTheme?: Theme | (() => Theme)
 }) {
-  const style = assignInlineVars(themeVars, typeof theme === 'function' ? theme() : theme)
+  const selector = id ? `[data-rk-id="${id}"]` : '[data-rk]'
 
-  return typeof children === 'function' ? children(style) : <div style={style}>{children}</div>
+  const themeCss = `${selector}{${cssStringFromTheme(theme)}}`
+  const darkModeThemeCss = darkModeTheme
+    ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(darkModeTheme)}}}`
+    : null
+
+  return (
+    <div {...(id ? { 'data-rk-id': id } : { 'data-rk': '' })}>
+      <style>
+        {themeCss}
+        {darkModeThemeCss}
+      </style>
+      {children}
+    </div>
+  )
 }
