@@ -16,9 +16,10 @@ t('returns a 4-digit fixed value if more than 9999', () => {
 })
 
 t('returns a float number if less than 9999', () => {
-  assert.equal([toBN(502.543 * 10 ** 18), toBN(27.2225 * 10 ** 18)].map(toSignificant), ['502.5', '27.22'])
+  assert.equal(
+    [toBN(502.543 * 10 ** 18), toBN(27.2225 * 10 ** 18)].map((n) => toSignificant(n)),
+    ['502.5', '27.22']
+  )
 })
 
 t.run()
-
-process.exit() // for some reason uvu doesn't exit itself
