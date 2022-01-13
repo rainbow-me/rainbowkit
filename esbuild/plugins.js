@@ -10,9 +10,11 @@ async function processCss(css) {
   return result.css
 }
 
-export const vanillaExtract = vanillaExtractPlugin({
-  processCss
-})
+export const vanillaExtract = ({ identifiers = 'debug' } = {}) =>
+  vanillaExtractPlugin({
+    processCss,
+    identifiers
+  })
 
 export const externals = {
   name: 'make-all-packages-external',

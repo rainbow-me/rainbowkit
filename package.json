@@ -18,7 +18,7 @@
     "chgset:version": "changeset version",
     "chgset": "pnpm chgset:run && pnpm chgset:version",
     "release": "changeset publish",
-    "prerelease": "pnpm build -r"
+    "prerelease": "MINIFY_CSS=true pnpm build -r"
   },
   "repository": {
     "type": "git",
