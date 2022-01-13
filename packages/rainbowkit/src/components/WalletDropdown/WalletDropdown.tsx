@@ -1,7 +1,7 @@
 import { BaseProvider } from '@ethersproject/providers'
 import clsx from 'clsx'
 import React, { useMemo } from 'react'
-import { chainIDToExplorer } from '../../utils'
+import { chainIDToExplorer } from '../../utils/convert'
 import { Box, BoxProps } from '../Box/Box'
 import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton'
 import { Text } from '../Text/Text'

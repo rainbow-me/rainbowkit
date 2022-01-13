@@ -1,7 +1,7 @@
 import React from 'react'
 import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton'
-import { ExplorerLink, ExplorerProps } from '../ExplorerLink/ExplorerLink'
-import { useWalletInfo } from '../../hooks'
+import { ExplorerLink, ExplorerLinkProps } from '../ExplorerLink/ExplorerLink'
+import { useWalletInfo } from '../../hooks/useWalletInfo'
 
 import { Box } from '../Box/Box'
 
@@ -17,7 +17,7 @@ export interface AccountInfoProps {
   /**
    * Blockchain explorer component, auto-detected if not set or set to true
    */
-  explorer?: boolean | ((props: ExplorerProps) => JSX.Element)
+  explorer?: boolean | ((props: ExplorerLinkProps) => JSX.Element)
   /**
    * Copy address button component, enabled if set to true or not set
    */
