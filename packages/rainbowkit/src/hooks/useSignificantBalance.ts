@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider } from '@ethersproject/providers'
 import { useEffect, useState } from 'react'
-import { toSignificant } from '../utils'
+import { toSignificant } from '../utils/toSignificant'
 
 /**
  * Outputs a balance of BigNumber to a human-readable format

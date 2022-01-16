@@ -1,8 +1,11 @@
 import React, { useMemo, useRef } from 'react'
 import { UnsupportedChainIdError } from '@web3-react/core'
 import clsx from 'clsx'
-import { Chain, chains, switchNetwork } from '../../utils'
-import { useToggle, useOnClickOutside, useWeb3State } from '../../hooks'
+import { Chain, chains } from '../../utils/chains'
+import { switchNetwork } from '../../utils/network'
+import { useWeb3State } from '../../hooks/useWeb3State'
+import { useOnClickOutside } from '../../hooks/useOnClickOutside'
+import { useToggle } from '../../hooks/useToggle'
 import { Box, BoxProps } from '../Box/Box'
 import {
   ButtonStyles,

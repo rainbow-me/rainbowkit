@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Listener } from '@ethersproject/abstract-provider'
 import { BaseProvider, Web3Provider } from '@ethersproject/providers'
-import { logsFetcher, TxHistoryFetcher } from '../utils'
+import { logsFetcher, TxHistoryFetcher } from '../utils/fetchers'
 
 /**
  * Fetch transaction history for an address.

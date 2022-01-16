@@ -1,7 +1,7 @@
 import React from 'react'
 import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import { isAddress, shortenAddress } from '../../utils'
+import { isAddress, shortenAddress } from '../../utils/address'
 import { Box, BoxProps } from '../Box/Box'
 import { Text } from '../Text/Text'
 

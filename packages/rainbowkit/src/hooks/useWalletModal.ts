@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { useState } from 'react'
 import type { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import type { Wallet } from '../utils'
+import type { Wallet } from '../utils/wallets'
 
 export type WalletInterface = Omit<
   Web3ReactContextInterface<Web3Provider>,

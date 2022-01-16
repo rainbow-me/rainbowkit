@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
 import { BaseProvider } from '@ethersproject/providers'
-import { useSignificantBalance, useWalletInfo } from '../../hooks'
-import { chainIDToToken } from '../../utils'
+import { useSignificantBalance } from '../../hooks/useSignificantBalance'
+import { useWalletInfo } from '../../hooks/useWalletInfo'
+import { chainIDToToken } from '../../utils/convert'
 import { Box } from '../Box/Box'
 import { Text } from '../Text/Text'
 

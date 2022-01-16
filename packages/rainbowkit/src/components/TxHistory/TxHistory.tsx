@@ -1,5 +1,5 @@
-import { TransactionWithStatus } from '../../hooks'
 import React from 'react'
+import { TransactionWithStatus } from '../../hooks/useTxHistory'
 import { Tx as DefaultTx, TxProps } from '../Tx/Tx'
 import { Box, BoxProps } from '../Box/Box'
 import { ViewHistoryIcon } from './icons'
