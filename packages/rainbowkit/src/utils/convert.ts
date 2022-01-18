@@ -1,4 +1,4 @@
-import { chains } from './chains'
+import { chains } from './chains';
 
 /**
  * Finds a connector name by wallet name
@@ -8,18 +8,18 @@ import { chains } from './chains'
 export const connectorByWallet = (wallet: string) => {
   switch (wallet) {
     case 'metamask':
-      return 'Injected'
+      return 'Injected';
     case 'coinbase':
     case 'walletlink':
-      return 'WalletLink'
+      return 'WalletLink';
     case 'frame':
-      return 'Frame'
+      return 'Frame';
     case 'walletconnect':
     case 'rainbow':
     case 'argent':
-      return 'WalletConnect'
+      return 'WalletConnect';
   }
-}
+};
 
 /**
  * Finds a wallet name by connector name
@@ -29,30 +29,32 @@ export const connectorByWallet = (wallet: string) => {
 export const walletByConnector = (connector: string) => {
   switch (connector) {
     case 'InjectedConnector':
-      return 'metamask'
+      return 'metamask';
     case 'WalletLinkConnector':
-      return 'walletlink'
+      return 'walletlink';
     case 'WalletConnectConnector':
-      return 'walletconnect'
+      return 'walletconnect';
     case 'FrameConnector':
-      return 'frame'
+      return 'frame';
   }
-}
+};
 
 export const chainNametoId = (name: string): number =>
-  chains.find((chain) => chain.aliases.includes(name))?.chainId || 1
+  chains.find(chain => chain.aliases.includes(name))?.chainId || 1;
 
-export const chainIdToName = (id: number): string => chains.find((chain) => chain.chainId === id)?.name || 'Ethereum'
+export const chainIdToName = (id: number): string =>
+  chains.find(chain => chain.chainId === id)?.name || 'Ethereum';
 
 export const chainIdToAlias = (id: number): string =>
-  chains.find((chain) => chain.chainId === id)?.aliases[0] || 'ethereum'
+  chains.find(chain => chain.chainId === id)?.aliases[0] || 'ethereum';
 
 export const chainIDToToken = (id: number): string =>
-  chains.find((chain) => chain.chainId === id)?.nativeCurrency.symbol || 'ETH'
+  chains.find(chain => chain.chainId === id)?.nativeCurrency.symbol || 'ETH';
 
 export const chainIDToExplorer = (id: number) =>
-  chains.find((chain) => chain.chainId === (!id || id === 0 ? 1 : id))?.explorers?.[0] || {
+  chains.find(chain => chain.chainId === (!id || id === 0 ? 1 : id))
+    ?.explorers?.[0] || {
     name: 'etherscan',
+    standard: 'EIP3091',
     url: 'https://etherscan.io',
-    standard: 'EIP3091'
-  }
+  };

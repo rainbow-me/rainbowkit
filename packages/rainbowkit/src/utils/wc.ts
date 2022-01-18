@@ -1,9 +1,9 @@
-import { chains } from './chains'
+import { chains } from './chains';
 
-const walletConnectRPCs: Record<number, string> = {}
+const walletConnectRPCs: Record<number, string> = {};
 
 for (const chain of chains) {
-  walletConnectRPCs[chain.chainId] = chain.rpc[0]
+  walletConnectRPCs[chain.chainId] = chain.rpc[0];
 }
 
-export { walletConnectRPCs }
+export { walletConnectRPCs };

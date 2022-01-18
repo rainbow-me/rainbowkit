@@ -1,34 +1,40 @@
-import React, { Dispatch, useMemo, useRef } from 'react'
-import { useENSWithAvatar } from '../../hooks/useENSWithAvatar'
-import { useOnClickOutside } from '../../hooks/useOnClickOutside'
-import { useToggle } from '../../hooks/useToggle'
-import { useWalletModal, UseWalletModalOptions } from '../../hooks/useWalletModal'
-import { JsonRpcProvider } from '@ethersproject/providers'
-import { Badge } from '../Badge/Badge'
-import { WalletDropdown, WalletDropdownProps } from '../WalletDropdown/WalletDropdown'
-import { Modal } from '../Modal/Modal'
-import { DropdownIcon } from './Icons'
-import { Box } from '../Box/Box'
-import { ConnectButton } from './ConnectButton'
+import { JsonRpcProvider } from '@ethersproject/providers';
+import React, { Dispatch, useMemo, useRef } from 'react';
+import { useENSWithAvatar } from '../../hooks/useENSWithAvatar';
+import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { useToggle } from '../../hooks/useToggle';
+import {
+  useWalletModal,
+  UseWalletModalOptions,
+} from '../../hooks/useWalletModal';
+import { Badge } from '../Badge/Badge';
+import { Box } from '../Box/Box';
+import { Modal } from '../Modal/Modal';
+import {
+  WalletDropdown,
+  WalletDropdownProps,
+} from '../WalletDropdown/WalletDropdown';
+import { ConnectButton } from './ConnectButton';
+import { DropdownIcon } from './Icons';
 
 export interface ProfileProps {
-  modalOptions: UseWalletModalOptions
-  copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
-  ENSProvider?: JsonRpcProvider
-  ipfsGatewayUrl?: string
+  modalOptions: UseWalletModalOptions;
+  copyAddress?: boolean | ((props: { address: string }) => JSX.Element);
+  ENSProvider?: JsonRpcProvider;
+  ipfsGatewayUrl?: string;
   classNames?: Partial<{
-    pill: string
-    menu: string
-    container: string
-  }>
+    pill: string;
+    menu: string;
+    container: string;
+  }>;
   button?: (props: {
-    setConnecting: Dispatch<boolean>
-    disconnect: () => void
-    isConnected: boolean
-    isConnecting: boolean
-    toggleDropdown: () => void
-  }) => JSX.Element
-  dropdown?: (props: WalletDropdownProps) => JSX.Element
+    setConnecting: Dispatch<boolean>;
+    disconnect: () => void;
+    isConnected: boolean;
+    isConnecting: boolean;
+    toggleDropdown: () => void;
+  }) => JSX.Element;
+  dropdown?: (props: WalletDropdownProps) => JSX.Element;
 }
 
 export const Profile = ({
@@ -38,35 +44,41 @@ export const Profile = ({
   ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
   classNames,
   button: ButtonComponent = ConnectButton,
-  dropdown: DropdownComponent = WalletDropdown
+  dropdown: DropdownComponent = WalletDropdown,
 }: ProfileProps) => {
   const {
-    state: { isConnected, isConnecting, disconnect, setConnecting, connect },
-
-    provider,
     address: accountAddress,
-    chainId
-  } = useWalletModal(modalOptions)
+    chainId,
+    provider,
+    state: { connect, disconnect, isConnected, isConnecting, setConnecting },
+  } = useWalletModal(modalOptions);
 
-  // @ts-expect-error accountAddress and ENSProvider could be undefined?
-  const ens = useENSWithAvatar({ address: accountAddress, provider: ENSProvider })
-  const address = useMemo(() => ens?.domain || accountAddress, [ens?.domain, accountAddress])
+  const ens = useENSWithAvatar({
+    // @ts-expect-error accountAddress could be undefined?
+    address: accountAddress,
+    // @ts-expect-error ENSProvider could be undefined?
+    provider: ENSProvider,
+  });
+  const address = useMemo(
+    () => ens?.domain || accountAddress,
+    [ens?.domain, accountAddress]
+  );
 
-  const [open, toggle] = useToggle(false)
+  const [open, toggle] = useToggle(false);
 
-  const node = useRef<HTMLDivElement | null>(null)
-  useOnClickOutside(node, open ? toggle : undefined)
+  const node = useRef<HTMLDivElement | null>(null);
+  useOnClickOutside(node, open ? toggle : undefined);
 
   return (
-    <Box position="relative" width="max" className={classNames?.container}>
+    <Box className={classNames?.container} position="relative" width="max">
       {isConnected ? (
         <>
           <div ref={node}>
             {/* @ts-expect-error address could be undefined? */}
             <Badge
-              {...{ ipfsGatewayUrl, address, provider }}
-              onClick={toggle}
+              {...{ address, ipfsGatewayUrl, provider }}
               className={classNames?.pill || ''}
+              onClick={toggle}
               {...ens}
             >
               <DropdownIcon />
@@ -74,19 +86,38 @@ export const Profile = ({
 
             {/* @ts-expect-error address could be undefined? */}
             <DropdownComponent
-              {...{ address, accountAddress, chainId, provider, isExpanded: open }}
+              {...{
+                accountAddress,
+                address,
+                chainId,
+                isExpanded: open,
+                provider,
+              }}
+              className={classNames?.menu || ''}
               copyAddress={CopyAddressComponent}
               disconnect={disconnect}
-              className={classNames?.menu || ''}
             />
           </div>
         </>
       ) : (
         <>
-          <ButtonComponent {...{ setConnecting, disconnect, isConnected, isConnecting, toggleDropdown: toggle }} />
-          {isConnecting && <Modal {...{ setConnecting, isConnecting, connect }} {...modalOptions} />}
+          <ButtonComponent
+            {...{
+              disconnect,
+              isConnected,
+              isConnecting,
+              setConnecting,
+              toggleDropdown: toggle,
+            }}
+          />
+          {isConnecting && (
+            <Modal
+              {...{ connect, isConnecting, setConnecting }}
+              {...modalOptions}
+            />
+          )}
         </>
       )}
     </Box>
-  )
-}
+  );
+};

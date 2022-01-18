@@ -1,97 +1,130 @@
-import { BaseProvider } from '@ethersproject/providers'
-import React, { useEffect, useMemo, useState } from 'react'
-import clsx from 'clsx'
-import { chainIDToExplorer } from '../../utils/convert'
-import { guessTitle } from '../../utils/guessTitle'
-import type { TransactionWithStatus, TransactionStatus } from '../../hooks/useTxHistory'
-import { FailIcon, LoadingIcon, SuccessIcon, ViewTransactionIcon } from './icons'
-import { Box } from '../Box/Box'
-import { Text } from '../Text/Text'
+import { BaseProvider } from '@ethersproject/providers';
+import clsx from 'clsx';
+import React, { useEffect, useMemo, useState } from 'react';
+import type {
+  TransactionStatus,
+  TransactionWithStatus,
+} from '../../hooks/useTxHistory';
+import { chainIDToExplorer } from '../../utils/convert';
+import { guessTitle } from '../../utils/guessTitle';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import {
+  FailIcon,
+  LoadingIcon,
+  SuccessIcon,
+  ViewTransactionIcon,
+} from './icons';
 
 export type TxProps = {
   /**
    * Transaction status
    */
-  status?: TransactionStatus
+  status?: TransactionStatus;
   /**
    * Transaction title
    */
-  title?: string
+  title?: string;
   /**
    * Blockchain network ID of a transaction
    */
-  chainId?: number
+  chainId?: number;
   /**
    * Blockchain Explorer URL
    */
-  explorerUrl?: string
+  explorerUrl?: string;
   /**
    * RPC Provider
    */
-  provider?: BaseProvider
+  provider?: BaseProvider;
   classNames?: Partial<{
-    container: string
-    icon: string
-  }>
-} & Pick<TransactionWithStatus, 'status' | 'to' | 'value' | 'from' | 'data' | 'hash'>
+    container: string;
+    icon: string;
+  }>;
+} & Pick<
+  TransactionWithStatus,
+  'status' | 'to' | 'value' | 'from' | 'data' | 'hash'
+>;
 
 const StatusIcon = ({ status }: { status: TransactionStatus }) => {
   switch (status) {
     case 'fail':
-      return <FailIcon />
+      return <FailIcon />;
     case 'pending':
-      return <LoadingIcon />
+      return <LoadingIcon />;
     case 'success':
-      return <SuccessIcon />
+      return <SuccessIcon />;
   }
-}
+};
 
-export const Tx = ({ status, title: initialTitle, classNames, chainId, data, value, from, to, ...props }: TxProps) => {
-  const [title, setTitle] = useState(initialTitle || '')
-  const [link, setLink] = useState('')
+export const Tx = ({
+  chainId,
+  classNames,
+  data,
+  from,
+  status,
+  title: initialTitle,
+  to,
+  value,
+  ...props
+}: TxProps) => {
+  const [title, setTitle] = useState(initialTitle || '');
+  const [link, setLink] = useState('');
 
   useEffect(() => {
     if (props.hash) {
-      if (props.explorerUrl) setLink(`${props.explorerUrl}/tx/${props.hash}`)
+      if (props.explorerUrl) setLink(`${props.explorerUrl}/tx/${props.hash}`);
       else if (chainId) {
-        setLink(`${chainIDToExplorer(chainId).url}/tx/${props.hash}`)
+        setLink(`${chainIDToExplorer(chainId).url}/tx/${props.hash}`);
       }
 
       if (!initialTitle) {
-        const guessedTitle = guessTitle({ data, from, to, chainId, value })
-        if (guessedTitle) setTitle(guessedTitle)
+        const guessedTitle = guessTitle({ chainId, data, from, to, value });
+        if (guessedTitle) setTitle(guessedTitle);
       }
     }
-  }, [props.hash, props.explorerUrl, chainId])
+  }, [props.hash, props.explorerUrl, chainId]);
 
   const statusColor = useMemo(() => {
     switch (status) {
       case 'fail':
-        return 'error'
+        return 'error';
       case 'pending':
-        return 'menuTextSecondary'
+        return 'menuTextSecondary';
       case 'success':
-        return 'menuTextAction'
+        return 'menuTextAction';
     }
-  }, [status])
+  }, [status]);
 
   return (
     <Box
+      className={clsx(classNames?.container)}
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
       marginBottom="24"
-      className={clsx(classNames?.container)}
     >
-      <Box display="flex" flexDirection="row" alignItems="center">
+      <Box alignItems="center" display="flex" flexDirection="row">
         <Box as="span" color={status === 'fail' ? 'error' : 'menuTextAction'}>
           <StatusIcon status={status} />
         </Box>
-        <Box display="flex" flexDirection="column" marginLeft="14" marginRight="4">
+        <Box
+          display="flex"
+          flexDirection="column"
+          marginLeft="14"
+          marginRight="4"
+        >
           <Text as="span" color="menuText" size="16" weight="bold">
             {title || 'Contract call'}
           </Text>
-          <Box as="span" color={statusColor} marginTop="4" fontFamily="body" fontSize="14" fontWeight="bold">
+          <Box
+            as="span"
+            color={statusColor}
+            fontFamily="body"
+            fontSize="14"
+            fontWeight="bold"
+            marginTop="4"
+          >
             {status[0].toUpperCase() + status.slice(1)}
           </Box>
         </Box>
@@ -100,5 +133,5 @@ export const Tx = ({ status, title: initialTitle, classNames, chainId, data, val
         <ViewTransactionIcon />
       </Box>
     </Box>
-  )
-}
+  );
+};

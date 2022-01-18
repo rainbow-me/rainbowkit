@@ -1,42 +1,41 @@
-import React from 'react'
-import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton'
-import { ExplorerLink, ExplorerLinkProps } from '../ExplorerLink/ExplorerLink'
-import { useWalletInfo } from '../../hooks/useWalletInfo'
-
-import { Box } from '../Box/Box'
+import React from 'react';
+import { useWalletInfo } from '../../hooks/useWalletInfo';
+import { Box } from '../Box/Box';
+import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton';
+import { ExplorerLink, ExplorerLinkProps } from '../ExplorerLink/ExplorerLink';
 
 export interface AccountInfoProps {
   /**
    * Blockchain account address
    */
-  address: string
+  address: string;
   /**
    * Wallet name and logo image
    */
-  wallet?: { name: string; logoURI: string }
+  wallet?: { name: string; logoURI: string };
   /**
    * Blockchain explorer component, auto-detected if not set or set to true
    */
-  explorer?: boolean | ((props: ExplorerLinkProps) => JSX.Element)
+  explorer?: boolean | ((props: ExplorerLinkProps) => JSX.Element);
   /**
    * Copy address button component, enabled if set to true or not set
    */
-  copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  copyAddress?: boolean | ((props: { address: string }) => JSX.Element);
   /**
    * Current chain ID
    */
 
-  chainId?: number
+  chainId?: number;
   /**
    * URL to a address on a blockchain explorer
    */
-  explorerUrl?: string
+  explorerUrl?: string;
   /**
    * Custom CSS classNames
    */
   classNames?: Partial<{
-    container: string
-  }>
+    container: string;
+  }>;
 }
 
 /**
@@ -45,38 +44,72 @@ export interface AccountInfoProps {
 
 export const AccountInfo = ({
   address,
-  wallet,
   chainId,
-  explorer: Explorer,
+  classNames,
   copyAddress: CopyAddress,
+  explorer: Explorer,
   explorerUrl,
-  classNames
+  wallet,
 }: AccountInfoProps) => {
-  const { name, logoURI } = useWalletInfo(wallet)
+  const { logoURI, name } = useWalletInfo(wallet);
 
   return (
-    <Box borderRadius="menu" padding="20" borderWidth="4" minWidth="max" width="full" className={classNames?.container}>
+    <Box
+      borderRadius="menu"
+      borderWidth="4"
+      className={classNames?.container}
+      minWidth="max"
+      padding="20"
+      width="full"
+    >
       {name && (
         <div>
           Connected with <strong>{name}</strong>
         </div>
       )}
       {address && (
-        <Box display="inline-flex" alignItems="center" fontWeight="semibold" fontSize="23">
-          {logoURI && <Box as="img" width="24" height="24" marginRight="8" src={logoURI} title={name} alt={name} />}{' '}
+        <Box
+          alignItems="center"
+          display="inline-flex"
+          fontSize="23"
+          fontWeight="semibold"
+        >
+          {logoURI && (
+            <Box
+              alt={name}
+              as="img"
+              height="24"
+              marginRight="8"
+              src={logoURI}
+              title={name}
+              width="24"
+            />
+          )}{' '}
           {address}
         </Box>
       )}
-      <Box display="flex" flexDirection="row" paddingTop="16" paddingRight="24">
-        <>{(CopyAddress === undefined || CopyAddress === true) && <CopyAddressButton {...{ address }} />}</>
-        <>{CopyAddress && typeof CopyAddress !== 'boolean' && <CopyAddress {...{ address }} />}</>
+      <Box display="flex" flexDirection="row" paddingRight="24" paddingTop="16">
+        <>
+          {(CopyAddress === undefined || CopyAddress === true) && (
+            <CopyAddressButton {...{ address }} />
+          )}
+        </>
+        <>
+          {CopyAddress && typeof CopyAddress !== 'boolean' && (
+            <CopyAddress {...{ address }} />
+          )}
+        </>
         {(explorerUrl || chainId) && (
           <>
-            {(Explorer === undefined || Explorer === true) && <ExplorerLink {...{ address, chainId, explorerUrl }} />}
-            {Explorer && typeof Explorer !== 'boolean' && <Explorer {...{ address, chainId, explorerUrl }} />}
+            {(Explorer === undefined || Explorer === true) && (
+              <ExplorerLink {...{ address, chainId, explorerUrl }} />
+            )}
+            {Explorer && typeof Explorer !== 'boolean' && (
+              <Explorer {...{ address, chainId, explorerUrl }} />
+            )}
           </>
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};

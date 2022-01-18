@@ -1,4 +1,4 @@
-import { getAddress } from '@ethersproject/address'
+import { getAddress } from '@ethersproject/address';
 
 /**
  * Check an Ethereum address for validity
@@ -7,9 +7,9 @@ import { getAddress } from '@ethersproject/address'
  */
 export function isAddress(value: string): string | false {
   try {
-    return getAddress(value)
+    return getAddress(value);
   } catch {
-    return false
+    return false;
   }
 }
 /**
@@ -19,8 +19,8 @@ export function isAddress(value: string): string | false {
  * @returns formatted string
  */
 export function shortenAddress(address: string, chars = 4): string {
-  const parsed = isAddress(address)
-  if (!parsed) throw Error(`Invalid 'address' parameter '${address}'.`)
+  const parsed = isAddress(address);
+  if (!parsed) throw Error(`Invalid 'address' parameter '${address}'.`);
 
-  return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`
+  return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`;
 }

@@ -1,30 +1,36 @@
-import React, { useState } from 'react'
-import { Box } from '../Box/Box'
-import { Text } from '../Text/Text'
-import { CopyIcon } from './Icons'
+import React, { useState } from 'react';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+import { CopyIcon } from './Icons';
 
 export const CopyAddressButton = ({ address }: { address: string }) => {
-  const [copied, set] = useState(false)
+  const [copied, set] = useState(false);
 
   return (
     <Box
-      as="button"
-      display="flex"
-      justifyContent="space-between"
       alignItems="center"
-      width="full"
+      as="button"
       color="menuTextAction"
+      display="flex"
       flexDirection="row"
+      justifyContent="space-between"
       onClick={() => {
-        navigator.clipboard.writeText(address).then(() => set(true))
+        navigator.clipboard.writeText(address).then(() => set(true));
       }}
+      width="full"
     >
-      <Text size="14" weight="bold" color="menuTextAction">
+      <Text color="menuTextAction" size="14" weight="bold">
         {copied ? 'Copied' : 'Copy Address'}
       </Text>
-      <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+      <Box
+        alignItems="center"
+        display="flex"
+        height="20"
+        justifyContent="center"
+        width="20"
+      >
         <CopyIcon />
       </Box>
     </Box>
-  )
-}
+  );
+};

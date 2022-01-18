@@ -1,8 +1,8 @@
-import { Theme } from '../css/sprinkles.css'
+import { Theme } from '../css/sprinkles.css';
 
 export const baseTheme: Pick<Theme, 'radii' | 'fonts'> = {
   fonts: {
-    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif'
+    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   },
   radii: {
     connectButton: '16px',
@@ -10,6 +10,6 @@ export const baseTheme: Pick<Theme, 'radii' | 'fonts'> = {
     menu: '16px',
     menuItem: '12px',
     modal: '24px',
-    networkButton: '12px'
-  }
-}
+    networkButton: '12px',
+  },
+};
