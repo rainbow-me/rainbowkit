@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, import/no-unresolved, import/no-extraneous-dependencies */
 import * as esbuild from 'esbuild';
-import readdir from 'recursive-readdir-files'; // eslint-disable-line import/no-unresolved
+import readdir from 'recursive-readdir-files';
 import { externals, vanillaExtract } from '../../esbuild/plugins.js';
 
 const isWatching = process.argv.includes('--watch');
