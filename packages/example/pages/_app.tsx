@@ -1,9 +1,9 @@
-import '@rainbow-me/rainbowkit/index.css'
-import type { AppProps } from 'next/app'
-import React from 'react'
+import '@rainbow-me/rainbowkit/index.css';
+import type { AppProps } from 'next/app';
+import React from 'react';
 
 function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }
 
-export default App
+export default App;

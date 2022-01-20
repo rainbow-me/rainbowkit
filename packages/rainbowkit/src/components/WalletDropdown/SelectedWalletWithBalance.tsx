@@ -1,29 +1,35 @@
-import React, { useMemo } from 'react'
-import { BaseProvider } from '@ethersproject/providers'
-import { useSignificantBalance } from '../../hooks/useSignificantBalance'
-import { useWalletInfo } from '../../hooks/useWalletInfo'
-import { chainIDToToken } from '../../utils/convert'
-import { Box } from '../Box/Box'
-import { Text } from '../Text/Text'
+import { BaseProvider } from '@ethersproject/providers';
+import React, { useMemo } from 'react';
+import { useSignificantBalance } from '../../hooks/useSignificantBalance';
+import { useWalletInfo } from '../../hooks/useWalletInfo';
+import { chainIDToToken } from '../../utils/convert';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
 
 export const SelectedWalletWithBalance = ({
-  provider,
   accountAddress,
-  chainId
+  chainId,
+  provider,
 }: {
-  provider: BaseProvider
-  accountAddress: string
-  chainId: number
+  provider: BaseProvider;
+  accountAddress: string;
+  chainId: number;
 }) => {
-  const bal = useSignificantBalance({ provider, address: accountAddress })
+  const bal = useSignificantBalance({ address: accountAddress, provider });
 
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId])
+  const symbol = useMemo(() => chainIDToToken(chainId), [chainId]);
 
-  const { logoURI, name } = useWalletInfo()
+  const { logoURI, name } = useWalletInfo();
 
   return (
     <>
-      <Box as="li" paddingBottom="12" display="flex" justifyContent="space-between" alignItems="flex-start">
+      <Box
+        alignItems="flex-start"
+        as="li"
+        display="flex"
+        justifyContent="space-between"
+        paddingBottom="12"
+      >
         <Box>
           <Text as="div" color="menuText" weight="heavy">
             {bal.slice(0, 5)} {symbol}
@@ -33,9 +39,24 @@ export const SelectedWalletWithBalance = ({
           </Text>
         </Box>
 
-        {logoURI && <Box as="img" borderRadius="6" src={logoURI} width="20" height="20" alt={name} />}
+        {logoURI && (
+          <Box
+            alt={name}
+            as="img"
+            borderRadius="6"
+            height="20"
+            src={logoURI}
+            width="20"
+          />
+        )}
       </Box>
-      <Box as="hr" height="4" background="menuDivider" borderRadius="1" marginBottom="12" />
+      <Box
+        as="hr"
+        background="menuDivider"
+        borderRadius="1"
+        height="4"
+        marginBottom="12"
+      />
     </>
-  )
-}
+  );
+};

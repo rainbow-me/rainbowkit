@@ -1,45 +1,36 @@
-import React from 'react'
-import { BaseProvider } from '@ethersproject/providers'
-import { BigNumber } from '@ethersproject/bignumber'
-import { isAddress, shortenAddress } from '../../utils/address'
-import { Box, BoxProps } from '../Box/Box'
-import { Text } from '../Text/Text'
+import React from 'react';
+import { isAddress, shortenAddress } from '../../utils/address';
+import { Box, BoxProps } from '../Box/Box';
+import { Text } from '../Text/Text';
 
 export interface EthAddressProps extends BoxProps {
-  address: string
-  shorten?: boolean
-  provider?: BaseProvider
-  balance?: boolean | BigNumber
-  profileIcon?: string | React.ComponentType<any>
-  networkToken?: string
+  address: string;
+  profileIcon?: string | React.ComponentType<any>;
+  shorten?: boolean;
   classNames?: Partial<{
-    profileIcon: string
-    container: string
-    address: string
-    balance: string
-  }>
+    profileIcon: string;
+    container: string;
+    address: string;
+  }>;
 }
 
 export const EthAddress = ({
   address: addr,
-  shorten,
-  profileIcon: ProfileIconURLOrImage,
-  balance,
-  provider,
-  networkToken,
   classNames,
+  profileIcon: ProfileIconURLOrImage,
+  shorten,
   ...props
 }: EthAddressProps) => {
-  shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten
+  shorten = shorten === undefined && /^0x[a-fA-F0-9]{40}$/ ? true : shorten;
 
   return (
     <Box
-      width="max"
+      alignItems="center"
+      className={classNames?.container}
       display="flex"
       flexDirection="row"
       justifyContent="center"
-      alignItems="center"
-      className={classNames?.container}
+      width="max"
       {...props}
     >
       {ProfileIconURLOrImage &&
@@ -47,19 +38,24 @@ export const EthAddress = ({
           <Box
             as="img"
             borderRadius="full"
-            marginRight="6"
-            height="24"
-            width="24"
-            src={ProfileIconURLOrImage}
             className={classNames?.profileIcon}
+            height="24"
+            marginRight="6"
+            src={ProfileIconURLOrImage}
+            width="24"
           />
         ) : (
           <ProfileIconURLOrImage />
         ))}
 
-      <Text weight="heavy" color="dropdownButtonText" as="span" className={classNames?.address}>
+      <Text
+        as="span"
+        className={classNames?.address}
+        color="dropdownButtonText"
+        weight="heavy"
+      >
         {(shorten && isAddress(addr) && shortenAddress(addr)) || addr}
       </Text>
     </Box>
-  )
-}
+  );
+};

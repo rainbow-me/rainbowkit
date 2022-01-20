@@ -1,109 +1,110 @@
-import { style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css';
 
-import 'focus-visible'
+import 'focus-visible';
 
-const hideFocusRingsDataAttribute = '[data-js-focus-visible] &:focus:not([data-focus-visible-added])'
+const hideFocusRingsDataAttribute =
+  '[data-js-focus-visible] &:focus:not([data-focus-visible-added])';
 
 export const base = style({
-  margin: 0,
-  padding: 0,
   border: 0,
   boxSizing: 'border-box',
   fontSize: '100%',
-  verticalAlign: 'baseline',
-  WebkitTapHighlightColor: 'transparent',
+  margin: 0,
+  padding: 0,
   selectors: {
     [`${hideFocusRingsDataAttribute}`]: {
-      outline: 'none'
-    }
-  }
-})
+      outline: 'none',
+    },
+  },
+  verticalAlign: 'baseline',
+  WebkitTapHighlightColor: 'transparent',
+});
 
 const list = style({
-  listStyle: 'none'
-})
+  listStyle: 'none',
+});
 
 const quote = style({
   quotes: 'none',
   selectors: {
     '&:before, &:after': {
-      content: "''"
-    }
-  }
-})
+      content: "''",
+    },
+  },
+});
 
 const table = style({
   borderCollapse: 'collapse',
-  borderSpacing: 0
-})
+  borderSpacing: 0,
+});
 
 const appearance = style({
-  appearance: 'none'
-})
+  appearance: 'none',
+});
 
 const field = style([
   appearance,
   {
-    outline: 'none',
     '::placeholder': {
-      opacity: 1
-    }
-  }
-])
+      opacity: 1,
+    },
+    'outline': 'none',
+  },
+]);
 
 const mark = style({
   backgroundColor: 'transparent',
-  color: 'inherit'
-})
+  color: 'inherit',
+});
 
 const select = style([
   field,
   {
     ':disabled': {
-      opacity: 1
+      opacity: 1,
     },
-    selectors: {
+    'selectors': {
       '&::-ms-expand': {
-        display: 'none'
-      }
-    }
-  }
-])
+        display: 'none',
+      },
+    },
+  },
+]);
 
 const input = style([
   field,
   {
     selectors: {
       '&::-ms-clear': {
-        display: 'none'
+        display: 'none',
       },
       '&::-webkit-search-cancel-button': {
-        WebkitAppearance: 'none'
-      }
-    }
-  }
-])
+        WebkitAppearance: 'none',
+      },
+    },
+  },
+]);
 
 const button = style({
   background: 'none',
-  cursor: 'pointer'
-})
+  cursor: 'pointer',
+});
 
 const a = style({
+  color: 'inherit',
   textDecoration: 'none',
-  color: 'inherit'
-})
+});
 
 export const element = {
-  ul: list,
-  ol: list,
-  blockquote: quote,
-  q: quote,
   a,
-  table,
-  mark,
-  select,
+  blockquote: quote,
   button,
+  input,
+  mark,
+  ol: list,
+  q: quote,
+  select,
+  table,
   textarea: field,
-  input
-}
+  ul: list,
+};

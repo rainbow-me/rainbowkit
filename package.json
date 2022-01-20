@@ -8,6 +8,7 @@
     "dev": "pnpm dev -r --parallel",
     "start": "pnpm dev",
     "lint": "eslint . --ext=js,mjs,ts,cjs,tsx && pnpm typecheck -r",
+    "lint:fix": "eslint . --ext=js,mjs,ts,cjs,tsx --fix",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "test:run": "tsm --experimental-specifier-resolution=node node_modules/uvu/bin.js tests",
@@ -35,6 +36,8 @@
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/providers": "^5.5.0",
+    "@rushstack/eslint-patch": "^1.1.0",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.11.11",
@@ -46,13 +49,9 @@
     "autoprefixer": "^10.4.0",
     "c8": "^7.10.0",
     "esbuild": "^0.14.1",
-    "esbuild-node-loader": "^0.6.3",
-    "eslint": "^8.3.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint": "7.32.0",
+    "eslint-config-rainbow": "^3.0.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "fetch-mock": "^9.11.0",
     "husky": "^7.0.4",
     "jsdom": "^18.1.1",
@@ -67,12 +66,5 @@
     "tsm": "^2.1.4",
     "typescript": "~4.5.2",
     "uvu": "^0.5.2"
-  },
-  "dependencies": {
-    "@ethersproject/providers": "^5.5.0",
-    "@ethersproject/units": "^5.5.0",
-    "@walletconnect/client": "^1.6.6",
-    "@web3-react/core": "^6.1.9",
-    "react-useportal": "^1.0.14"
   }
 }

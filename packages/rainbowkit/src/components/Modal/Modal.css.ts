@@ -1,5 +1,5 @@
-import { globalStyle, style } from '@vanilla-extract/css'
-import { sprinkles } from '../../css/sprinkles.css'
+import { globalStyle, style } from '@vanilla-extract/css';
+import { sprinkles } from '../../css/sprinkles.css';
 
 export const ModalTitle = style([
   sprinkles({
@@ -8,15 +8,15 @@ export const ModalTitle = style([
     fontFamily: 'body',
     fontSize: '20',
     fontWeight: 'heavy',
-    marginBottom: '4'
+    marginBottom: '4',
   }),
   {
+    fontFeatureSettings: "'ss08' on, 'cv09' on",
     fontStyle: 'normal',
-    lineHeight: '24px',
     letterSpacing: '0.4px',
-    fontFeatureSettings: "'ss08' on, 'cv09' on"
-  }
-])
+    lineHeight: '24px',
+  },
+]);
 
 export const StyledModal = style([
   sprinkles({
@@ -26,13 +26,13 @@ export const StyledModal = style([
     flexDirection: 'column',
     justifyContent: 'space-between',
     padding: '24',
-    position: 'relative'
+    position: 'relative',
   }),
   {
     minHeight: '525px',
-    width: '390px'
-  }
-])
+    width: '390px',
+  },
+]);
 
 export const ButtonOption = style([
   sprinkles({
@@ -41,104 +41,104 @@ export const ButtonOption = style([
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: '0',
-    width: 'full'
+    width: 'full',
   }),
   {
     background: 'none',
-    border: 'none'
-  }
-])
+    border: 'none',
+  },
+]);
 
 export const Caption = style([
   sprinkles({
     color: 'modalTextSecondary',
     display: 'block',
     fontFamily: 'body',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }),
   {
-    fontStyle: 'normal',
+    fontFeatureSettings: "'ss08' on, 'cv09' on",
     fontSize: '1rem',
-    lineHeight: '19px',
+    fontStyle: 'normal',
     letterSpacing: '0.5px',
-    fontFeatureSettings: "'ss08' on, 'cv09' on"
-  }
-])
+    lineHeight: '19px',
+  },
+]);
 
 export const CloseButton = style([
   sprinkles({
     color: 'modalTextSecondary',
     fontSize: '14',
-    position: 'absolute'
+    position: 'absolute',
   }),
   {
-    textAlign: 'center',
-    letterSpacing: '0.4px',
     fontWeight: 900,
+    letterSpacing: '0.4px',
     lineHeight: '17px',
     right: 24,
-    top: 24
-  }
-])
+    textAlign: 'center',
+    top: 24,
+  },
+]);
 
 export const Terms = style([
   sprinkles({
     color: 'modalTextSecondary',
     fontSize: '14',
-    fontWeight: 'semibold'
+    fontWeight: 'semibold',
   }),
   {
-    lineHeight: 1.5
-  }
-])
+    lineHeight: 1.5,
+  },
+]);
 
 globalStyle(`${Terms} > a`, {
   color: '#a0c7ff',
   fontWeight: 700,
-  textDecoration: 'none'
-})
+  textDecoration: 'none',
+});
 
 globalStyle(`${Terms} > a:hover`, {
-  textDecoration: 'underline'
-})
+  textDecoration: 'underline',
+});
 
 export const MoreWallets = style([
   sprinkles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 'full'
+    width: 'full',
   }),
   {
-    padding: '11px'
-  }
-])
+    padding: '11px',
+  },
+]);
 
 export const MoreWalletsGroup = style([
   sprinkles({
-    marginRight: '12'
+    marginRight: '12',
   }),
   {
     display: 'grid',
+    gap: '2px',
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: '1fr 1fr',
-    gap: '2px',
-    width: 'max-content'
-  }
-])
+    width: 'max-content',
+  },
+]);
 
 export const BackButton = style([
   sprinkles({
     cursor: 'pointer',
     display: 'flex',
-    width: 'full'
+    width: 'full',
   }),
   {
-    padding: '11px',
     background: 'none',
-    border: 'none'
-  }
-])
+    border: 'none',
+    padding: '11px',
+  },
+]);
 
 export const WalletLabel = style([
   sprinkles({
@@ -147,40 +147,40 @@ export const WalletLabel = style([
     display: 'flex',
     fontSize: '20',
     fontWeight: 'heavy',
-    justifyContent: 'center'
+    justifyContent: 'center',
   }),
   {
-    fontStyle: 'normal',
-    lineHeight: '24px',
-    letterSpacing: '0.5px',
     fontFeatureSettings: "'pnum' on, 'lnum' on",
-    textTransform: 'capitalize'
-  }
-])
+    fontStyle: 'normal',
+    letterSpacing: '0.5px',
+    lineHeight: '24px',
+    textTransform: 'capitalize',
+  },
+]);
 
 export const Icon = style([
   sprinkles({
-    borderRadius: '10'
+    borderRadius: '10',
   }),
   {
-    filter: 'drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3))'
-  }
-])
+    filter: 'drop-shadow(0px 4px 12px rgba(0, 30, 89, 0.3))',
+  },
+]);
 
 export const OptionIcon = style([
   sprinkles({
-    marginRight: '12'
+    marginRight: '12',
   }),
   {
     height: '34px',
-    width: '34px'
-  }
-])
+    width: '34px',
+  },
+]);
 
 export const MoreWalletsIcon = style({
   height: '1rem',
-  width: '1rem'
-})
+  width: '1rem',
+});
 
 export const ModalOverlay = style([
   sprinkles({
@@ -190,60 +190,60 @@ export const ModalOverlay = style([
     height: 'viewHeight',
     justifyContent: 'center',
     position: 'fixed',
-    width: 'full'
+    width: 'full',
   }),
   {
-    top: 0,
     left: 0,
-    zIndex: 999
-  }
-])
+    top: 0,
+    zIndex: 999,
+  },
+]);
 
 export const Wallets = style([
   sprinkles({
-    marginTop: '24'
+    marginTop: '24',
   }),
   {
     listStyleType: 'none',
-    paddingLeft: 0
-  }
-])
+    paddingLeft: 0,
+  },
+]);
 
 export const WalletOption = style([
   sprinkles({
-    marginBottom: '12'
+    marginBottom: '12',
   }),
   {
     padding: '11px',
-    width: 'unset'
-  }
-])
+    width: 'unset',
+  },
+]);
 
 export const MoreWalletsInner = style({
   display: 'inherit',
-  flexDirection: 'inherit'
-})
+  flexDirection: 'inherit',
+});
 
 export const BackButtonCaption = style([
   sprinkles({
     color: 'modalText',
     cursor: 'pointer',
-    fontSize: '20'
+    fontSize: '20',
   }),
   {
     '::before': {
       content: '\\21A9',
-      marginRight: '0.5rem'
-    }
-  }
-])
+      marginRight: '0.5rem',
+    },
+  },
+]);
 
 export const ErrorMessage = style([
   sprinkles({
+    color: 'error',
     fontFamily: 'body',
-    color: 'error'
   }),
   {
-    marginTop: '0.5rem'
-  }
-])
+    marginTop: '0.5rem',
+  },
+]);

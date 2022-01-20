@@ -1,126 +1,141 @@
-import { BaseProvider } from '@ethersproject/providers'
-import clsx from 'clsx'
-import React, { useMemo } from 'react'
-import { chainIDToExplorer } from '../../utils/convert'
-import { Box, BoxProps } from '../Box/Box'
-import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton'
-import { Text } from '../Text/Text'
-import { CloseIcon, ExplorerIcon } from './icons'
-import { SelectedWalletWithBalance } from './SelectedWalletWithBalance'
-import { MenuStyles } from './WalletDropdown.css'
+import { BaseProvider } from '@ethersproject/providers';
+import clsx from 'clsx';
+import React, { useMemo } from 'react';
+import { chainIDToExplorer } from '../../utils/convert';
+import { Box, BoxProps } from '../Box/Box';
+import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton';
+import { Text } from '../Text/Text';
+import { SelectedWalletWithBalance } from './SelectedWalletWithBalance';
+import { MenuStyles } from './WalletDropdown.css';
+import { CloseIcon, ExplorerIcon } from './icons';
 
 export interface WalletDropdownProps extends BoxProps {
-  copyAddress?: boolean | ((props: { address: string }) => JSX.Element)
+  copyAddress?: boolean | ((props: { address: string }) => JSX.Element);
   /**
    * Ethereum or ENS address
    */
-  address: string
+  address: string;
   /**
    * Ethereum address
    */
-  accountAddress: string
+  accountAddress: string;
   /**
    * Blockchain network ID
    */
-  chainId: number
+  chainId: number;
   /**
    * RPC Provider
    */
-  provider: BaseProvider
+  provider: BaseProvider;
   /**
    * Disconnect from current provider
    */
-  disconnect: () => void
+  disconnect: () => void;
   /**
    * Visible state
    */
-  isExpanded: boolean
+  isExpanded: boolean;
 }
 
 export const WalletDropdown = ({
-  copyAddress: CopyAddressComponent,
-  address,
   accountAddress,
+  address,
   chainId,
-  provider,
+  className,
+  copyAddress: CopyAddressComponent,
   disconnect,
   isExpanded,
-  className,
+  provider,
   ...props
 }: WalletDropdownProps) => {
   const explorerName = useMemo(() => {
     if (chainId) {
-      const name = chainIDToExplorer(chainId).name
-      return `${name[0].toUpperCase()}${name.slice(1)}`
+      const name = chainIDToExplorer(chainId).name;
+      return `${name[0].toUpperCase()}${name.slice(1)}`;
     }
-    return 'Etherscan'
-  }, [chainId])
+    return 'Etherscan';
+  }, [chainId]);
 
   return (
     <Box
       as="ul"
       background="menuBackground"
-      position="absolute"
-      margin="0"
       borderRadius="menu"
-      padding="12"
       className={clsx(MenuStyles, className)}
       display={isExpanded ? 'block' : 'none'}
+      margin="0"
+      padding="12"
+      position="absolute"
       {...props}
     >
-      <SelectedWalletWithBalance {...{ chainId, provider, accountAddress }} />
+      <SelectedWalletWithBalance {...{ accountAddress, chainId, provider }} />
       <Box
-        as="li"
-        fontSize="14"
-        marginBottom="16"
-        fontWeight="heavy"
-        display="flex"
-        width="full"
-        justifyContent="space-between"
         alignItems="center"
+        as="li"
+        display="flex"
+        fontSize="14"
+        fontWeight="heavy"
+        justifyContent="space-between"
+        marginBottom="16"
+        width="full"
       >
         {CopyAddressComponent === true || CopyAddressComponent === undefined ? (
           <CopyAddressButton {...{ address }} />
         ) : (
-          typeof CopyAddressComponent !== 'boolean' && <CopyAddressComponent {...{ address }} />
+          typeof CopyAddressComponent !== 'boolean' && (
+            <CopyAddressComponent {...{ address }} />
+          )
         )}
       </Box>
-      <Box as="li" width="full" marginBottom="16">
+      <Box as="li" marginBottom="16" width="full">
         <Box
+          alignItems="center"
           as="a"
           display="flex"
-          justifyContent="space-between"
-          alignItems="center"
           href={`${chainIDToExplorer(chainId).url}/address/${accountAddress}`}
-          target="_blank"
+          justifyContent="space-between"
           rel="noreferrer"
+          target="_blank"
         >
           <Text as="h3" color="menuText" size="14" weight="bold">
             {explorerName}
           </Text>
-          <Box width="20" color="menuText" height="20" display="flex" justifyContent="center" alignItems="center">
+          <Box
+            alignItems="center"
+            color="menuText"
+            display="flex"
+            height="20"
+            justifyContent="center"
+            width="20"
+          >
             <ExplorerIcon />
           </Box>
         </Box>
       </Box>
       <Box as="li">
         <Box
-          as="button"
-          display="flex"
           alignItems="center"
-          justifyContent="space-between"
-          width="full"
+          as="button"
           color="menuTextDisconnect"
+          display="flex"
+          justifyContent="space-between"
           onClick={() => disconnect()}
+          width="full"
         >
           <Text color="menuTextDisconnect" size="14" weight="bold">
             Disconnect
           </Text>
-          <Box width="20" height="20" display="flex" justifyContent="center" alignItems="center">
+          <Box
+            alignItems="center"
+            display="flex"
+            height="20"
+            justifyContent="center"
+            width="20"
+          >
             <CloseIcon />
           </Box>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};

@@ -1,37 +1,45 @@
-import React, { ReactNode } from 'react'
-import { Chain } from '../../utils/chains'
-import { Box, BoxProps } from '../Box/Box'
+import React, { ReactNode } from 'react';
+import { Chain } from '../../utils/chains';
+import { Box, BoxProps } from '../Box/Box';
 
 export interface ChainOptionProps extends BoxProps {
-  chain: Chain
-  children?: ReactNode
-  iconClassName?: string
-  className: string
-  onClick: () => void
+  chain: Chain;
+  children?: ReactNode;
+  iconClassName?: string;
+  className: string;
+  onClick: () => void;
 }
 
-export const ChainOption = ({ chain, children, iconClassName, ...props }: ChainOptionProps) => (
+export const ChainOption = ({
+  chain,
+  children,
+  iconClassName,
+  ...props
+}: ChainOptionProps) => (
   <Box
-    display="flex"
-    position="relative"
-    cursor="pointer"
     alignItems="center"
-    flexDirection="row"
+    aria-label="option"
     borderRadius="menuItem"
     color="menuText"
-    aria-label="option"
+    cursor="pointer"
+    display="flex"
+    flexDirection="row"
+    position="relative"
     {...props}
     className={props.className}
   >
     <Box
-      as="img"
       aria-hidden="true"
-      width="24"
+      as="img"
+      className={iconClassName}
       height="24"
       marginRight="6"
-      className={iconClassName}
-      src={chain.logoURL || 'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'}
+      src={
+        chain.logoURL ||
+        'https://bafkreidyoljjm3jbmbewkxunvnn76s6cswo3d7ldhpnas54uphil23vlfu.ipfs.dweb.link/'
+      }
+      width="24"
     />{' '}
     {children}
   </Box>
-)
+);

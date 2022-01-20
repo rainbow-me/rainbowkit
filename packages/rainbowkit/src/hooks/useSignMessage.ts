@@ -1,4 +1,4 @@
-import { Web3Provider } from '@ethersproject/providers'
+import { Web3Provider } from '@ethersproject/providers';
 
 /**
  * A React hook to sign Ethereum messages with a Web3 provider
@@ -10,8 +10,14 @@ import { Web3Provider } from '@ethersproject/providers'
  * ```
  * @returns a function to sign a message
  */
-export const useSignMessage = ({ provider, message }: { provider: Web3Provider; message: string }) => {
+export const useSignMessage = ({
+  message,
+  provider,
+}: {
+  provider: Web3Provider;
+  message: string;
+}) => {
   return async function sign() {
-    return await provider.getSigner().signMessage(message)
-  }
-}
+    return await provider.getSigner().signMessage(message);
+  };
+};
