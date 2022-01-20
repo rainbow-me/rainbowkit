@@ -1,16 +1,16 @@
-import { style } from '@vanilla-extract/css'
-import { sprinkles } from '../../css/sprinkles.css'
+import { style } from '@vanilla-extract/css';
+import { sprinkles } from '../../css/sprinkles.css';
 
 export const DropdownIconClassName = sprinkles({
-  marginLeft: '6'
-})
+  marginLeft: '6',
+});
 
 export const PillStyles = style([
   sprinkles({
     background: 'connectButtonBackground',
-    boxShadow: 'connectButton'
+    boxShadow: 'connectButton',
   }),
   {
-    backdropFilter: 'blur(20px)'
-  }
-])
+    backdropFilter: 'blur(20px)',
+  },
+]);

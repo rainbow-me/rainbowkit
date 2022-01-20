@@ -1,34 +1,34 @@
-import { Web3Provider, BaseProvider } from '@ethersproject/providers'
-import { useEffect, useState } from 'react'
+import { BaseProvider, Web3Provider } from '@ethersproject/providers';
+import { useEffect, useState } from 'react';
 
 export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
   address,
-  provider
+  provider,
 }: {
-  address: string
-  provider: T
+  address: string;
+  provider: T;
 }) => {
-  const [avatar, setAvatar] = useState<string>()
-  const [domain, setEnsDomain] = useState(address)
+  const [avatar, setAvatar] = useState<string>();
+  const [domain, setEnsDomain] = useState(address);
 
   useEffect(() => {
     if (provider && address) {
       const getENSInfo = async () => {
-        const domain = await provider.lookupAddress(address)
+        const domain = await provider.lookupAddress(address);
 
         // @ts-expect-error domain could be null?
-        setEnsDomain(domain)
+        setEnsDomain(domain);
         // @ts-expect-error domain could be null?
-        const resolver = await provider.getResolver(domain)
+        const resolver = await provider.getResolver(domain);
         if (resolver) {
-          const avatar = await resolver.getText('avatar')
-          setAvatar(avatar)
+          const avatar = await resolver.getText('avatar');
+          setAvatar(avatar);
         }
-      }
+      };
 
-      getENSInfo()
+      getENSInfo();
     }
-  }, [provider, address])
+  }, [provider, address]);
 
-  return { avatar, domain }
-}
+  return { avatar, domain };
+};

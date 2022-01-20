@@ -1,11 +1,11 @@
-import { style } from '@vanilla-extract/css'
+import { style } from '@vanilla-extract/css';
 
 export const ExplorerLinkClassName = style({
-  textDecoration: 'none',
   '::before': {
-    content: '↗ '
+    content: '↗ ',
   },
   ':hover': {
-    textDecoration: 'underline'
-  }
-})
+    textDecoration: 'underline',
+  },
+  'textDecoration': 'none',
+});

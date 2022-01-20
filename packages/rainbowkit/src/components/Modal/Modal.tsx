@@ -1,81 +1,94 @@
-import React, { useMemo, useState, Dispatch, useRef } from 'react'
-import { DialogOverlay, DialogContent } from '@reach/dialog'
-import type { UserRejectedRequestError } from '@web3-react/injected-connector'
-import type { UnsupportedChainIdError } from '@web3-react/core'
-import clsx from 'clsx'
-import { sprinkles } from '../../css/sprinkles.css'
-import { getWalletInfo, Wallet } from '../../utils/wallets'
-import { useThemeRootProps } from '../RainbowkitThemeProvider/RainbowkitThemeProvider'
-import * as styles from './Modal.css'
-import { CloseIcon, NextIcon } from './icons'
-import { Box } from '../Box/Box'
+import { DialogContent, DialogOverlay } from '@reach/dialog';
+import type { UnsupportedChainIdError } from '@web3-react/core';
+import type { UserRejectedRequestError } from '@web3-react/injected-connector';
+import clsx from 'clsx';
+import React, { Dispatch, useMemo, useRef, useState } from 'react';
+import { sprinkles } from '../../css/sprinkles.css';
+import { getWalletInfo, Wallet } from '../../utils/wallets';
+import { Box } from '../Box/Box';
+import { useThemeRootProps } from '../RainbowkitThemeProvider/RainbowkitThemeProvider';
+import * as styles from './Modal.css';
+import { CloseIcon, NextIcon } from './icons';
 
 export interface ModalProps {
-  wallets: Wallet[]
-  error?: UserRejectedRequestError | UnsupportedChainIdError | Error
-  connect: (w: Wallet) => Promise<void>
-
-  isConnecting: boolean
-  setConnecting: Dispatch<boolean>
-
-  terms?: JSX.Element
   classNames?: Partial<{
-    modal: string
-    close: string
-    overlay: string
-    hidden: string
-    title: string
-    caption: string
-    wallets: string
-    terms: string
-    error: string
-  }>
+    caption: string;
+    close: string;
+    error: string;
+    hidden: string;
+    modal: string;
+    overlay: string;
+    terms: string;
+    title: string;
+    wallets: string;
+  }>;
+  connect: (w: Wallet) => Promise<void>;
+  error?: UserRejectedRequestError | UnsupportedChainIdError | Error;
+  isConnecting: boolean;
+  setConnecting: Dispatch<boolean>;
+  terms?: JSX.Element;
+  wallets: Wallet[];
 }
 
-type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
+type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> &
+  React.HTMLAttributes<T>;
 
-const Caption = ({ className, children, ...props }: BoxProps) => (
+const Caption = ({ children, className, ...props }: BoxProps) => (
   <div className={clsx(styles.Caption, className)} {...props}>
     {children}
   </div>
-)
+);
 
-const WalletLabel = ({ className, children, ...props }: BoxProps) => (
+const WalletLabel = ({ children, className, ...props }: BoxProps) => (
   <div className={clsx(styles.WalletLabel, className)} {...props}>
     {children}
   </div>
-)
+);
 
-const Terms = ({ className, children, ...props }: BoxProps) => (
+const Terms = ({ children, className, ...props }: BoxProps) => (
   <div className={clsx(styles.Terms, className)} {...props}>
     {children}
   </div>
-)
+);
 
 const Icon = ({
+  className,
   logoURI,
   name,
-  className,
   ...props
 }: { logoURI: string; name: string } & React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
->) => <img className={clsx(styles.Icon, className)} src={logoURI} alt={name} {...props} />
+>) => (
+  <img
+    alt={name}
+    className={clsx(styles.Icon, className)}
+    src={logoURI}
+    {...props}
+  />
+);
 
-const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
-  const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
+const WalletIcon = ({
+  connect,
+  wallet,
+}: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
+  const { logoURI, name } = useMemo(
+    () => getWalletInfo(wallet.name),
+    [wallet.name]
+  );
 
   return (
     <li className={styles.WalletOption} key={name}>
       <button
+        className={styles.ButtonOption}
         onClick={() => {
           // @ts-expect-error connect could be undefined?
-          connect(wallet)
+          connect(wallet);
         }}
-        className={styles.ButtonOption}
+        type="button"
       >
         <WalletLabel>
-          <Icon {...{ name, logoURI }} className={styles.OptionIcon} />
+          <Icon {...{ logoURI, name }} className={styles.OptionIcon} />
           {name}
         </WalletLabel>
         <Box color="modalTextSecondary">
@@ -83,39 +96,50 @@ const WalletIcon = ({ wallet, connect }: { wallet: Wallet } & Partial<Pick<Modal
         </Box>
       </button>
     </li>
-  )
-}
+  );
+};
 
 const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
-  const { name, logoURI } = useMemo(() => getWalletInfo(wallet.name), [wallet.name])
+  const { logoURI, name } = useMemo(
+    () => getWalletInfo(wallet.name),
+    [wallet.name]
+  );
 
   return (
     <Box color="modalTextSecondary">
-      <Icon {...{ name, logoURI }} className={styles.MoreWalletsIcon} />
+      <Icon {...{ logoURI, name }} className={styles.MoreWalletsIcon} />
     </Box>
-  )
-}
+  );
+};
 
 /**
  * Rainbow-styled Modal
  */
-export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, classNames, error }: ModalProps) => {
-  const { visibleWallets, hiddenWallets } = useMemo(() => {
-    const visibleWallets: Wallet[] = []
-    const hiddenWallets: Wallet[] = []
+export const Modal = ({
+  classNames,
+  connect,
+  error,
+  isConnecting,
+  setConnecting,
+  terms,
+  wallets,
+}: ModalProps) => {
+  const { hiddenWallets, visibleWallets } = useMemo(() => {
+    const visibleWallets: Wallet[] = [];
+    const hiddenWallets: Wallet[] = [];
 
     for (const wallet of wallets) {
       if (wallet.hidden) {
-        hiddenWallets.push(wallet)
-      } else visibleWallets.push(wallet)
+        hiddenWallets.push(wallet);
+      } else visibleWallets.push(wallet);
     }
-    return { visibleWallets, hiddenWallets }
-  }, [wallets])
+    return { hiddenWallets, visibleWallets };
+  }, [wallets]);
 
-  const [isHiddenWalletsOpened, setHiddenWalletsOpened] = useState(false)
+  const [isHiddenWalletsOpened, setHiddenWalletsOpened] = useState(false);
 
-  const initialFocusRef = useRef<HTMLHeadingElement | null>(null)
-  const titleId = 'rk_modal_title'
+  const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
+  const titleId = 'rk_modal_title';
 
   return (
     <DialogOverlay
@@ -125,7 +149,7 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
         styles.ModalOverlay,
         sprinkles({
           background: 'modalBackdrop',
-          position: 'fixed'
+          position: 'fixed',
         })
       )}
       initialFocusRef={initialFocusRef}
@@ -144,25 +168,37 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
         </Box>
 
         <div>
-          <h1 className={clsx(styles.ModalTitle, classNames?.title)} id={titleId} ref={initialFocusRef} tabIndex={-1}>
+          <h1
+            className={clsx(styles.ModalTitle, classNames?.title)}
+            id={titleId}
+            ref={initialFocusRef}
+            tabIndex={-1}
+          >
             Connect to a wallet
           </h1>
-          <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
-          {error && <div className={clsx(styles.ErrorMessage, classNames?.error)}>{error.message}</div>}
+          <Caption className={classNames?.caption}>
+            Choose your preferred wallet
+          </Caption>
+          {error && (
+            <div className={clsx(styles.ErrorMessage, classNames?.error)}>
+              {error.message}
+            </div>
+          )}
           <div className={clsx(styles.Wallets, classNames?.wallets)}>
-            {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
-              return <WalletIcon key={c.name} connect={connect} wallet={c} />
+            {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map(c => {
+              return <WalletIcon connect={connect} key={c.name} wallet={c} />;
             })}
           </div>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
             <button
               className={clsx(styles.MoreWallets, styles.ButtonOption)}
               onClick={() => setHiddenWalletsOpened(true)}
+              type="button"
             >
               <div className={styles.MoreWalletsInner}>
                 <div className={styles.MoreWalletsGroup}>
-                  {hiddenWallets.map((w) => (
-                    <MoreWalletsIcon wallet={w} key={w.name} />
+                  {hiddenWallets.map(w => (
+                    <MoreWalletsIcon key={w.name} wallet={w} />
                   ))}
                 </div>
                 <WalletLabel>More wallets</WalletLabel>
@@ -174,7 +210,11 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
             </button>
           )}
           {isHiddenWalletsOpened && (
-            <button className={styles.BackButton} onClick={() => setHiddenWalletsOpened(false)}>
+            <button
+              className={styles.BackButton}
+              onClick={() => setHiddenWalletsOpened(false)}
+              type="button"
+            >
               <Caption className={styles.BackButtonCaption}>Back</Caption>
             </button>
           )}
@@ -182,5 +222,5 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
         {terms && <Terms className={classNames?.terms}>{terms}</Terms>}
       </DialogContent>
     </DialogOverlay>
-  )
-}
+  );
+};

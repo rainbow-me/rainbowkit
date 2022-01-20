@@ -1,50 +1,67 @@
-import React from 'react'
-import { TransactionWithStatus } from '../../hooks/useTxHistory'
-import { Tx as DefaultTx, TxProps } from '../Tx/Tx'
-import { Box, BoxProps } from '../Box/Box'
-import { ViewHistoryIcon } from './icons'
+import React from 'react';
+import { TransactionWithStatus } from '../../hooks/useTxHistory';
+import { Box, BoxProps } from '../Box/Box';
+import { Tx as DefaultTx, TxProps } from '../Tx/Tx';
+import { ViewHistoryIcon } from './icons';
 
 export interface TxHistoryProps extends Omit<BoxProps, 'reset'> {
   /**
    * Custom `<Tx />` component
    */
-  txComponent?: (props: TxProps) => JSX.Element
+  txComponent?: (props: TxProps) => JSX.Element;
 
   /**
    * Blockchain network ID
    */
-  chainId: number
+  chainId: number;
   /**
    * Array of currently saved transactions
    */
-  txes: TransactionWithStatus[]
+  txes: TransactionWithStatus[];
   /**
    * Erase all saved transactions from browser storage
    */
-  reset?: () => void
+  reset?: () => void;
 }
 
-export const TxHistory = ({ txes, txComponent: Tx = DefaultTx, chainId, reset, ...props }: TxHistoryProps) => {
+export const TxHistory = ({
+  txes,
+  txComponent: Tx = DefaultTx,
+  chainId,
+  reset,
+  ...props
+}: TxHistoryProps) => {
   return (
-    <Box padding="24" borderRadius="menu" background="menuBackground" boxShadow="menu" width="full" {...props}>
-      {reset && <button onClick={() => reset()}>Clear transactions</button>}
-      {txes?.map((tx) => (
+    <Box
+      background="menuBackground"
+      borderRadius="menu"
+      boxShadow="menu"
+      padding="24"
+      width="full"
+      {...props}
+    >
+      {reset && (
+        <button onClick={() => reset()} type="button">
+          Clear transactions
+        </button>
+      )}
+      {txes?.map(tx => (
         <Tx key={tx.hash} {...tx} chainId={chainId} />
       ))}
       <Box
-        width="full"
+        alignItems="center"
         as="button"
         color="menuTextAction"
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
-        alignItems="center"
+        width="full"
       >
-        <Box as="span" fontWeight="bold" fontSize="16">
+        <Box as="span" fontSize="16" fontWeight="bold">
           View Full History
         </Box>
         <ViewHistoryIcon />
       </Box>
     </Box>
-  )
-}
+  );
+};

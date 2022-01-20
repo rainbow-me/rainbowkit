@@ -1,31 +1,31 @@
-import { useEffect, useState } from 'react'
-import { BaseProvider, TransactionReceipt } from '@ethersproject/providers'
-import { BigNumber } from '@ethersproject/bignumber'
+import { BigNumber } from '@ethersproject/bignumber';
+import { BaseProvider, TransactionReceipt } from '@ethersproject/providers';
+import { useEffect, useState } from 'react';
 
 const safeJSONParse = (json: string) => {
   try {
-    return JSON.parse(json)
+    return JSON.parse(json);
   } catch {
-    return {}
+    return {};
   }
-}
+};
 
-export type TransactionStatus = 'pending' | 'fail' | 'success'
+export type TransactionStatus = 'pending' | 'fail' | 'success';
 
 export type Transaction = {
-  value: BigNumber
-  from: string
-  to: string
-  data?: string
-  blockNumber?: number
-  hash: string
-  type?: string
-  nonce?: number
-}
+  value: BigNumber;
+  from: string;
+  to: string;
+  data?: string;
+  blockNumber?: number;
+  hash: string;
+  type?: string;
+  nonce?: number;
+};
 
 export type TransactionWithStatus = Transaction & {
-  status: TransactionStatus
-}
+  status: TransactionStatus;
+};
 
 /**
  * A React hook to manage transaction history state with manual updating
@@ -33,24 +33,28 @@ export type TransactionWithStatus = Transaction & {
  */
 export const useTxHistory = ({
   initialTxes,
+  provider,
   rememberHistory,
-  provider
 }: {
-  initialTxes?: TransactionWithStatus[]
-  rememberHistory?: boolean
-  provider: BaseProvider
-}): { txes: TransactionWithStatus[]; submit: (tx: Transaction) => void; reset: () => void } => {
-  const [txes, set] = useState<TransactionWithStatus[]>(initialTxes || [])
+  initialTxes?: TransactionWithStatus[];
+  rememberHistory?: boolean;
+  provider: BaseProvider;
+}): {
+  txes: TransactionWithStatus[];
+  submit: (tx: Transaction) => void;
+  reset: () => void;
+} => {
+  const [txes, set] = useState<TransactionWithStatus[]>(initialTxes || []);
 
   const submit = async (tx: Transaction) => {
-    set((txes) => [
+    set(txes => [
       ...txes,
       {
         ...tx,
-        status: 'pending'
-      }
-    ])
-  }
+        status: 'pending',
+      },
+    ]);
+  };
 
   useEffect(() => {
     for (const tx of txes) {
@@ -58,53 +62,53 @@ export const useTxHistory = ({
         const common = {
           data: tx.data,
           from: tx.from,
-          to: tx.to,
           hash: tx.hash,
-          value: tx.value,
+          nonce: tx.nonce,
+          to: tx.to,
           type: tx.type,
-          nonce: tx.nonce
-        }
+          value: tx.value,
+        };
 
         if (!tx.hash)
           set([
-            ...txes.filter((t) => t.hash !== tx.hash),
+            ...txes.filter(t => t.hash !== tx.hash),
             {
               ...common,
-              status: 'fail'
-            }
-          ])
+              status: 'fail',
+            },
+          ]);
         else if (provider) {
           provider.once(tx.hash, (result: TransactionReceipt) => {
             set([
-              ...txes.filter((t) => t.hash !== tx.hash),
+              ...txes.filter(t => t.hash !== tx.hash),
               {
                 ...common,
+                blockNumber: result.blockNumber,
                 status: result.status === 0 ? 'fail' : 'success',
-                blockNumber: result.blockNumber
-              }
-            ])
-          })
+              },
+            ]);
+          });
         }
       }
     }
     if (rememberHistory && txes?.[0]) {
-      localStorage.setItem('rk-tx-history', JSON.stringify(txes))
+      localStorage.setItem('rk-tx-history', JSON.stringify(txes));
     }
-  }, [txes, rememberHistory, provider])
+  }, [txes, rememberHistory, provider]);
 
   useEffect(() => {
     if (rememberHistory) {
-      const txHistory = localStorage.getItem('rk-tx-history')
-      const txes = txHistory ? safeJSONParse(txHistory) ?? [] : []
+      const txHistory = localStorage.getItem('rk-tx-history');
+      const txes = txHistory ? safeJSONParse(txHistory) ?? [] : [];
 
-      set(txes)
+      set(txes);
     }
-  }, [rememberHistory])
+  }, [rememberHistory]);
 
   const reset = () => {
-    localStorage.removeItem('rk-last-history')
-    set([])
-  }
+    localStorage.removeItem('rk-last-history');
+    set([]);
+  };
 
-  return { txes, submit, reset }
-}
+  return { reset, submit, txes };
+};
