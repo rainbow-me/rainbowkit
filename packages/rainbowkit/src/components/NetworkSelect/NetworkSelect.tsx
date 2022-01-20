@@ -57,10 +57,6 @@ export const NetworkSelect = ({
   const node = useRef<HTMLDivElement | null>(null)
   useOnClickOutside(node, open ? toggle : undefined)
 
-  if (!currentChain) {
-    return null
-  }
-
   return (
     <Box
       width="max"
