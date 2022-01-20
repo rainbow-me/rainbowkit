@@ -1,8 +1,11 @@
-import React, { useMemo, useState, Dispatch } from 'react'
+import React, { useMemo, useState, Dispatch, useRef } from 'react'
+import { DialogOverlay, DialogContent } from '@reach/dialog'
 import type { UserRejectedRequestError } from '@web3-react/injected-connector'
 import type { UnsupportedChainIdError } from '@web3-react/core'
 import clsx from 'clsx'
+import { sprinkles } from '../../css/sprinkles.css'
 import { getWalletInfo, Wallet } from '../../utils/wallets'
+import { useThemeRootProps } from '../RainbowkitThemeProvider/RainbowkitThemeProvider'
 import * as styles from './Modal.css'
 import { CloseIcon, NextIcon } from './icons'
 import { Box } from '../Box/Box'
@@ -31,39 +34,8 @@ export interface ModalProps {
 
 type BoxProps<T = HTMLDivElement> = React.ClassAttributes<T> & React.HTMLAttributes<T>
 
-const ModalTitle = ({ className, children, ...props }: BoxProps) => (
-  <div className={clsx(styles.ModalTitle, className)} {...props}>
-    {children}
-  </div>
-)
-
-const ModalOverlay = ({ className, children, isConnecting, style, ...props }: BoxProps & { isConnecting: boolean }) => (
-  <div
-    className={clsx(styles.ModalOverlay, className)}
-    style={{
-      ...style,
-      display: isConnecting ? 'flex' : 'none'
-    }}
-    {...props}
-  >
-    {children}
-  </div>
-)
-
-const StyledModal = ({ className, children, ...props }: BoxProps) => (
-  <div className={clsx(styles.StyledModal, className)} {...props}>
-    {children}
-  </div>
-)
-
 const Caption = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.Caption, className)} {...props}>
-    {children}
-  </div>
-)
-
-const CloseButton = ({ className, children, ...props }: BoxProps) => (
-  <div className={clsx(styles.CloseButton, className)} {...props}>
     {children}
   </div>
 )
@@ -78,12 +50,6 @@ const Terms = ({ className, children, ...props }: BoxProps) => (
   <div className={clsx(styles.Terms, className)} {...props}>
     {children}
   </div>
-)
-
-const MoreWallets = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
-  <button className={clsx(styles.MoreWallets, styles.ButtonOption, className)} {...props}>
-    {children}
-  </button>
 )
 
 const Icon = ({
@@ -130,18 +96,6 @@ const MoreWalletsIcon = ({ wallet }: { wallet: Wallet }) => {
   )
 }
 
-const BackButton = ({ className, children, ...props }: BoxProps<HTMLButtonElement>) => (
-  <button className={clsx(styles.BackButton, className)} {...props}>
-    {children}
-  </button>
-)
-
-const MoreWalletsGroup = ({ className, children, ...props }: BoxProps) => (
-  <div className={clsx(styles.MoreWalletsGroup, className)} {...props}>
-    {children}
-  </div>
-)
-
 /**
  * Rainbow-styled Modal
  */
@@ -160,18 +114,40 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
 
   const [isHiddenWalletsOpened, setHiddenWalletsOpened] = useState(false)
 
+  const initialFocusRef = useRef<HTMLHeadingElement | null>(null)
+  const titleId = 'rk_modal_title'
+
   return (
-    <ModalOverlay
-      isConnecting={isConnecting}
-      className={isConnecting ? `${clsx(classNames?.overlay)}` : `${clsx(classNames?.hidden)}`}
+    <DialogOverlay
+      {...useThemeRootProps()}
+      aria-labelledby={titleId}
+      className={clsx(
+        styles.ModalOverlay,
+        sprinkles({
+          background: 'modalBackdrop',
+          position: 'fixed'
+        })
+      )}
+      initialFocusRef={initialFocusRef}
+      isOpen={isConnecting}
+      onDismiss={() => setConnecting(false)}
     >
-      <StyledModal className={clsx(classNames?.modal)}>
-        <CloseButton className={clsx(classNames?.close)} onClick={() => setConnecting(false)}>
+      <DialogContent className={styles.StyledModal}>
+        <Box
+          aria-label="Close"
+          as="button"
+          className={clsx(styles.CloseButton, classNames?.close)}
+          onClick={() => setConnecting(false)}
+          type="button"
+        >
           <CloseIcon />
-        </CloseButton>
+        </Box>
+
         <div>
-          <ModalTitle className={clsx(classNames?.title)}>Connect to a wallet</ModalTitle>
-          <Caption className={clsx(classNames?.caption)}>Choose your preferred wallet</Caption>
+          <h1 className={clsx(styles.ModalTitle, classNames?.title)} id={titleId} ref={initialFocusRef} tabIndex={-1}>
+            Connect to a wallet
+          </h1>
+          <Caption className={classNames?.caption}>Choose your preferred wallet</Caption>
           {error && <div className={clsx(styles.ErrorMessage, classNames?.error)}>{error.message}</div>}
           <div className={clsx(styles.Wallets, classNames?.wallets)}>
             {(isHiddenWalletsOpened ? hiddenWallets : visibleWallets).map((c) => {
@@ -179,29 +155,32 @@ export const Modal = ({ wallets, connect, setConnecting, isConnecting, terms, cl
             })}
           </div>
           {hiddenWallets.length !== 0 && !isHiddenWalletsOpened && (
-            <MoreWallets onClick={() => setHiddenWalletsOpened(true)}>
+            <button
+              className={clsx(styles.MoreWallets, styles.ButtonOption)}
+              onClick={() => setHiddenWalletsOpened(true)}
+            >
               <div className={styles.MoreWalletsInner}>
-                <MoreWalletsGroup>
+                <div className={styles.MoreWalletsGroup}>
                   {hiddenWallets.map((w) => (
                     <MoreWalletsIcon wallet={w} key={w.name} />
                   ))}
-                </MoreWalletsGroup>
+                </div>
                 <WalletLabel>More wallets</WalletLabel>
               </div>
 
               <Box color="modalTextSecondary">
                 <NextIcon />
               </Box>
-            </MoreWallets>
+            </button>
           )}
           {isHiddenWalletsOpened && (
-            <BackButton onClick={() => setHiddenWalletsOpened(false)}>
+            <button className={styles.BackButton} onClick={() => setHiddenWalletsOpened(false)}>
               <Caption className={styles.BackButtonCaption}>Back</Caption>
-            </BackButton>
+            </button>
           )}
         </div>
-        {terms && <Terms className={clsx(classNames?.terms)}>{terms}</Terms>}
-      </StyledModal>
-    </ModalOverlay>
+        {terms && <Terms className={classNames?.terms}>{terms}</Terms>}
+      </DialogContent>
+    </DialogOverlay>
   )
 }

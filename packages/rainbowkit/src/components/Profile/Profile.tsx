@@ -10,6 +10,7 @@ import { Modal } from '../Modal/Modal'
 import { DropdownIcon } from './Icons'
 import { Box } from '../Box/Box'
 import { ConnectButton } from './ConnectButton'
+import * as styles from './Profile.css'
 
 export interface ProfileProps {
   modalOptions: UseWalletModalOptions

@@ -1,6 +1,22 @@
-import React, { ReactNode } from 'react'
+import React, { createContext, ReactNode, useContext } from 'react'
 import { Theme } from '../../css/sprinkles.css'
 import { cssStringFromTheme } from '../../css/cssStringFromTheme'
+
+const ThemeIdContext = createContext<string | undefined>(undefined)
+
+const anonymousDataAttribute = 'data-rk'
+const idDataAttribute = 'data-rk-id'
+
+const createThemeRootProps = (id: string | undefined) =>
+  id ? { [idDataAttribute]: id } : { [anonymousDataAttribute]: '' }
+
+const createThemeRootSelector = (id: string | undefined) =>
+  id ? `[${idDataAttribute}="${id}"]` : `[${anonymousDataAttribute}]`
+
+export const useThemeRootProps = () => {
+  const id = useContext(ThemeIdContext)
+  return createThemeRootProps(id)
+}
 
 export interface RainbowkitThemeProviderProps {
   id?: string
@@ -10,7 +26,7 @@ export interface RainbowkitThemeProviderProps {
 }
 
 export function RainbowkitThemeProvider({ id, children, theme, darkModeTheme }: RainbowkitThemeProviderProps) {
-  const selector = id ? `[data-rk-id="${id}"]` : '[data-rk]'
+  const selector = createThemeRootSelector(id)
 
   const themeCss = `${selector}{${cssStringFromTheme(theme)}}`
   const darkModeThemeCss = darkModeTheme
@@ -18,12 +34,14 @@ export function RainbowkitThemeProvider({ id, children, theme, darkModeTheme }: 
     : null
 
   return (
-    <div {...(id ? { 'data-rk-id': id } : { 'data-rk': '' })}>
-      <style>
-        {themeCss}
-        {darkModeThemeCss}
-      </style>
-      {children}
-    </div>
+    <ThemeIdContext.Provider value={id}>
+      <div {...createThemeRootProps(id)}>
+        <style>
+          {themeCss}
+          {darkModeThemeCss}
+        </style>
+        {children}
+      </div>
+    </ThemeIdContext.Provider>
   )
 }

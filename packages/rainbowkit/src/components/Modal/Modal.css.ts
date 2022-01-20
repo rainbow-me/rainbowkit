@@ -194,8 +194,7 @@ export const ModalOverlay = style([
   }),
   {
     top: 0,
-    left: 0,
-    zIndex: 999
+    left: 0
   }
 ])
 
