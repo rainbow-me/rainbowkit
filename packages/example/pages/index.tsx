@@ -159,7 +159,7 @@ const Example = () => {
 
           @media (prefers-color-scheme: dark) {
             :root {
-              ${cssStringFromTheme(darkModeTheme)}
+              ${cssStringFromTheme(darkModeTheme, { extends: theme })}
             }
           }
         `}
