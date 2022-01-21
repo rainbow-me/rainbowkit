@@ -32,7 +32,7 @@ export {
 } from './utils/convert';
 export { isAddress, shortenAddress } from './utils/address';
 export { toSignificant } from './utils/toSignificant';
-export { guessTitle } from './utils/guessTitle';
+export { labelTransaction } from './utils/labelTransaction';
 export { chains, ChainId } from './utils/chains';
 export type { Chain } from './utils/chains';
 export { switchNetwork } from './utils/network';
