@@ -20,7 +20,8 @@ export function RainbowkitThemeProvider({
   const themeCss = `${selector}{${cssStringFromTheme(theme)}}`;
   const darkModeThemeCss = darkModeTheme
     ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
-        darkModeTheme
+        darkModeTheme,
+        { extends: theme }
       )}}}`
     : null;
 
