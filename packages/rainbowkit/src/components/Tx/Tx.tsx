@@ -6,7 +6,7 @@ import type {
   TransactionWithStatus,
 } from '../../hooks/useTxHistory';
 import { chainIDToExplorer } from '../../utils/convert';
-import { guessTitle } from '../../utils/guessTitle';
+import { labelTransaction } from '../../utils/labelTransaction';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 import {
@@ -79,7 +79,13 @@ export const Tx = ({
       }
 
       if (!initialTitle) {
-        const guessedTitle = guessTitle({ chainId, data, from, to, value });
+        const guessedTitle = labelTransaction({
+          chainId,
+          data,
+          from,
+          to,
+          value,
+        });
         if (guessedTitle) setTitle(guessedTitle);
       }
     }

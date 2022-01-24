@@ -110,6 +110,7 @@ importers:
 
   packages/rainbowkit:
     specifiers:
+      '@ethersproject/abi': ^5.5.0
       '@ethersproject/abstract-provider': ^5.5.1
       '@ethersproject/address': ^5.5.0
       '@ethersproject/bignumber': ^5.5.0
@@ -136,6 +137,7 @@ importers:
       postcss: ^8.4.4
       react: ^17.0.2
     dependencies:
+      '@ethersproject/abi': 5.5.0
       '@ethersproject/abstract-provider': 5.5.1
       '@ethersproject/address': 5.5.0
       '@ethersproject/bignumber': 5.5.0
