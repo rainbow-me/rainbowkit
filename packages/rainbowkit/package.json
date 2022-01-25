@@ -39,7 +39,8 @@
   "license": "UNLICENSED",
   "peerDependencies": {
     "@web3-react/core": ">=6.1",
-    "react": ">=17"
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "devDependencies": {
     "@types/chroma-js": "^2.1.3",
