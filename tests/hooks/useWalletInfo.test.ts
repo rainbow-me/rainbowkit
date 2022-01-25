@@ -23,7 +23,7 @@ t('picks up last used wallet from storage', async () => {
 
   assert.equal(result.current, {
     logoURI:
-      'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
     name: 'Rainbow',
   });
   localStorage.removeItem('rk-last-wallet');
@@ -33,14 +33,14 @@ t('accepts initial value', () => {
   const { result } = renderHook(() =>
     useWalletInfo({
       logoURI:
-        'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link',
+        'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
       name: 'Rainbow',
     })
   );
 
   assert.equal(result.current, {
     logoURI:
-      'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
     name: 'Rainbow',
   });
 });
