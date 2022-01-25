@@ -57,12 +57,7 @@ export const chains: Chain[] = [
     name: 'Ethereum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'ETH' },
     network: 'mainnet',
-    rpc: [
-      'https://mainnet.infura.io/v3/',
-      'wss://mainnet.infura.io/ws/v3/',
-      'https://api.mycryptoapi.com/eth',
-      'https://cloudflare-eth.com',
-    ],
+    rpc: ['https://api.mycryptoapi.com/eth', 'https://cloudflare-eth.com'],
     slip44: 60,
   },
   {
@@ -102,12 +97,7 @@ export const chains: Chain[] = [
     name: 'Arbitrum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'AETH' },
     network: 'mainnet',
-    rpc: [
-      'https://arbitrum-mainnet.infura.io/v3/',
-      'https://arb-mainnet.g.alchemy.com/v2/',
-      'https://arb1.arbitrum.io/rpc',
-      'wss://arb1.arbitrum.io/ws',
-    ],
+    rpc: ['https://arb1.arbitrum.io/rpc', 'wss://arb1.arbitrum.io/ws'],
   },
   {
     aliases: ['bsc', 'binance'],
@@ -398,7 +388,7 @@ export const chains: Chain[] = [
     name: 'Ropsten',
     nativeCurrency: { decimals: 18, name: 'Ropsten Ether', symbol: 'ETH' },
     network: 'ropsten',
-    rpc: ['https://ropsten.infura.io/v3/', 'wss://ropsten.infura.io/ws/v3/'],
+    rpc: [],
   },
   {
     aliases: ['rinkeby'],
@@ -417,7 +407,7 @@ export const chains: Chain[] = [
     name: 'Rinkeby',
     nativeCurrency: { decimals: 18, name: 'Rinkeby Ether', symbol: 'ETH' },
     network: 'rinkeby',
-    rpc: ['https://rinkeby.infura.io/v3/', 'wss://rinkeby.infura.io/ws/v3/'],
+    rpc: [],
   },
   {
     aliases: ['goerli'],
@@ -451,8 +441,6 @@ export const chains: Chain[] = [
     nativeCurrency: { decimals: 18, name: 'Kovan Ether', symbol: 'ETH' },
     network: 'kovan',
     rpc: [
-      'https://kovan.infura.io/v3/',
-      'wss://kovan.infura.io/ws/v3/',
       'https://kovan.poa.network',
       'http://kovan.poa.network:8545',
       'ws://kovan.poa.network:8546',
