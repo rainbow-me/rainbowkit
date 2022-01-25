@@ -37,7 +37,7 @@ export function Dialog({
     return () => {
       (previouslyActiveElement as HTMLElement).focus?.();
     };
-  }, [open]);
+  }, [initialFocusRef]);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
@@ -46,7 +46,7 @@ export function Dialog({
     document.addEventListener('keydown', handleEscape);
 
     return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
+  }, [open, onClose]);
 
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
 
