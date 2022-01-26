@@ -57,12 +57,7 @@ export const chains: Chain[] = [
     name: 'Ethereum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'ETH' },
     network: 'mainnet',
-    rpc: [
-      'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'wss://mainnet.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'https://api.mycryptoapi.com/eth',
-      'https://cloudflare-eth.com',
-    ],
+    rpc: ['https://api.mycryptoapi.com/eth', 'https://cloudflare-eth.com'],
     slip44: 60,
   },
   {
@@ -102,12 +97,7 @@ export const chains: Chain[] = [
     name: 'Arbitrum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'AETH' },
     network: 'mainnet',
-    rpc: [
-      // 'https://arbitrum-mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}',
-      'https://arb1.arbitrum.io/rpc',
-      'wss://arb1.arbitrum.io/ws',
-    ],
+    rpc: ['https://arb1.arbitrum.io/rpc', 'wss://arb1.arbitrum.io/ws'],
   },
   {
     aliases: ['bsc', 'binance'],
@@ -398,10 +388,7 @@ export const chains: Chain[] = [
     name: 'Ropsten',
     nativeCurrency: { decimals: 18, name: 'Ropsten Ether', symbol: 'ETH' },
     network: 'ropsten',
-    rpc: [
-      'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'wss://ropsten.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-    ],
+    rpc: [],
   },
   {
     aliases: ['rinkeby'],
@@ -420,10 +407,7 @@ export const chains: Chain[] = [
     name: 'Rinkeby',
     nativeCurrency: { decimals: 18, name: 'Rinkeby Ether', symbol: 'ETH' },
     network: 'rinkeby',
-    rpc: [
-      'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'wss://rinkeby.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-    ],
+    rpc: [],
   },
   {
     aliases: ['goerli'],
@@ -459,27 +443,10 @@ export const chains: Chain[] = [
     rpc: [
       'https://kovan.poa.network',
       'http://kovan.poa.network:8545',
-      'https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      'wss://kovan.infura.io/ws/v3/9aa3d95b3bc440fa88ea12eaa4456161',
       'ws://kovan.poa.network:8546',
     ],
   },
-  /*   {
-    name: 'Ontology',
-    chain: 'Ontology',
-    network: 'mainnet',
-    rpc: [
-      'https://dappnode1.ont.io:20339',
-      'https://dappnode2.ont.io:20339',
-      'https://dappnode3.ont.io:20339',
-      'https://dappnode4.ont.io:20339'
-    ],
-    nativeCurrency: { name: 'ONG', symbol: 'ONG', decimals: 9 },
-    infoURL: 'https://ont.io/',
-    chainId: 58,
-    explorers: [{ name: 'explorer', url: 'https://explorer.ont.io/', standard: 'EIP3091' }],
-    aliases: ['ont', 'ontology']
-  }, */
+
   {
     aliases: ['okex testnet', 'okex-testnet'],
     chain: 'okexchain',
