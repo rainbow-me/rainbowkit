@@ -18,22 +18,6 @@ export const ModalTitle = style([
   },
 ]);
 
-export const StyledModal = style([
-  sprinkles({
-    background: 'modalBackground',
-    borderRadius: 'modal',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    padding: '24',
-    position: 'relative',
-  }),
-  {
-    minHeight: '525px',
-    width: '390px',
-  },
-]);
-
 export const ButtonOption = style([
   sprinkles({
     cursor: 'pointer',
@@ -181,23 +165,6 @@ export const MoreWalletsIcon = style({
   height: '1rem',
   width: '1rem',
 });
-
-export const ModalOverlay = style([
-  sprinkles({
-    alignItems: 'center',
-    background: 'modalBackdrop',
-    display: 'flex',
-    height: 'viewHeight',
-    justifyContent: 'center',
-    position: 'fixed',
-    width: 'full',
-  }),
-  {
-    left: 0,
-    top: 0,
-    zIndex: 999,
-  },
-]);
 
 export const Wallets = style([
   sprinkles({
