@@ -74,12 +74,15 @@ export const Profile = ({
       {isConnected ? (
         <>
           <div ref={node}>
-            {/* @ts-expect-error address could be undefined? */}
             <Badge
-              {...{ address, ipfsGatewayUrl, provider }}
+              // @ts-expect-error address could be undefined?
+              address={address}
+              avatar={ens.avatar}
               className={classNames?.pill || ''}
+              ipfsGatewayUrl={ipfsGatewayUrl}
               onClick={toggle}
-              {...ens}
+              // @ts-expect-error provider could be undefined?
+              provider={provider}
             >
               <DropdownIcon />
             </Badge>

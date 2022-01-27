@@ -10,19 +10,29 @@ export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
 }) => {
   const [avatar, setAvatar] = useState<string>();
   const [domain, setEnsDomain] = useState(address);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (provider && address) {
       const getENSInfo = async () => {
-        const domain = await provider.lookupAddress(address);
+        const ensDomain = await provider.lookupAddress(address);
 
-        // @ts-expect-error domain could be null?
-        setEnsDomain(domain);
-        // @ts-expect-error domain could be null?
-        const resolver = await provider.getResolver(domain);
+        if (!ensDomain) {
+          setLoading(false);
+          return;
+        }
+
+        setEnsDomain(ensDomain);
+
+        const resolver = await provider.getResolver(ensDomain);
         if (resolver) {
           const avatar = await resolver.getText('avatar');
-          setAvatar(avatar);
+
+          if (avatar) {
+            setAvatar(avatar);
+          }
+
+          setLoading(false);
         }
       };
 
@@ -30,5 +40,5 @@ export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
     }
   }, [provider, address]);
 
-  return { avatar, domain };
+  return { avatar, domain, loading };
 };
