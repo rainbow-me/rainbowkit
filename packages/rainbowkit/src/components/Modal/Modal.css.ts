@@ -214,3 +214,8 @@ export const ErrorMessage = style([
     marginTop: '0.5rem',
   },
 ]);
+
+export const dialog = style({
+  minHeight: '525px',
+  width: '390px',
+});

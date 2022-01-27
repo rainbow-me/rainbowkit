@@ -136,6 +136,7 @@ importers:
       get-ens: ^2.0.3
       postcss: ^8.4.4
       react: ^17.0.2
+      react-merge-refs: ^1.1.0
     dependencies:
       '@ethersproject/abi': 5.5.0
       '@ethersproject/abstract-provider': 5.5.1
@@ -157,6 +158,7 @@ importers:
       deepmerge: 4.2.2
       focus-visible: 5.2.0
       get-ens: 2.0.3
+      react-merge-refs: 1.1.0
     devDependencies:
       '@types/chroma-js': 2.1.3
       '@vanilla-extract/private': 1.0.3
@@ -7341,6 +7343,10 @@ packages:
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+
+  /react-merge-refs/1.1.0:
+    resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
+    dev: false
 
   /react-refresh/0.8.3:
     resolution: {integrity: sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==}

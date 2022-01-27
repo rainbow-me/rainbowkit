@@ -10,7 +10,6 @@ import {
   RainbowkitThemeProvider,
   TxHistory,
   useWeb3State,
-  WalletDialog,
   withWeb3React,
 } from '@rainbow-me/rainbowkit';
 import React, { useState } from 'react';
@@ -101,7 +100,7 @@ const Example = () => {
         >
           <Profile
             ENSProvider={ENSProvider}
-            dropdown={WalletDialog}
+            // dropdown={WalletDialog}
             modalOptions={{ wallets }}
           />
           <NetworkSelect

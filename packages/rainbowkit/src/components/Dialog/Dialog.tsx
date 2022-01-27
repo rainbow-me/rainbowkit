@@ -1,4 +1,6 @@
+import clsx from 'clsx';
 import React, {
+  forwardRef,
   MouseEventHandler,
   ReactNode,
   RefObject,
@@ -20,63 +22,76 @@ interface DialogProps {
   titleId: string;
   initialFocusRef: RefObject<HTMLElement | null>;
   children: ReactNode;
+  classNames?: Partial<{
+    overlay: string;
+    content: string;
+  }>;
 }
 
-export function Dialog({
-  children,
-  initialFocusRef,
-  onClose = () => {},
-  open,
-  titleId,
-}: DialogProps) {
-  useEffect(() => {
-    const previouslyActiveElement = document.activeElement;
+export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
+  (
+    {
+      children,
+      classNames,
+      initialFocusRef,
+      onClose = () => {},
+      open,
+      titleId,
+    },
+    ref
+  ) => {
+    useEffect(() => {
+      const previouslyActiveElement = document.activeElement;
 
-    initialFocusRef?.current?.focus();
+      initialFocusRef?.current?.focus();
 
-    return () => {
-      (previouslyActiveElement as HTMLElement).focus?.();
-    };
-  }, [initialFocusRef]);
+      return () => {
+        (previouslyActiveElement as HTMLElement).focus?.();
+      };
+    }, [initialFocusRef]);
 
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) =>
-      open && event.key === 'Escape' && onClose();
+    useEffect(() => {
+      const handleEscape = (event: KeyboardEvent) =>
+        open && event.key === 'Escape' && onClose();
 
-    document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape);
 
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [open, onClose]);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }, [open, onClose]);
 
-  const handleBackdropClick = useCallback(() => onClose(), [onClose]);
+    const handleBackdropClick = useCallback(() => onClose(), [onClose]);
 
-  const themeRootProps = useThemeRootProps();
+    const themeRootProps = useThemeRootProps();
 
-  return (
-    <>
-      {open
-        ? createPortal(
-            <Box
-              {...themeRootProps}
-              aria-labelledby={titleId}
-              aria-modal
-              background="modalBackdrop"
-              className={styles.overlay}
-              onClick={handleBackdropClick}
-              position="fixed"
-              role="dialog"
-            >
-              <FocusTrap
-                className={styles.content}
-                onClick={stopPropagation}
-                role="document"
+    return (
+      <>
+        {open
+          ? createPortal(
+              <Box
+                {...themeRootProps}
+                aria-labelledby={titleId}
+                aria-modal
+                background="modalBackdrop"
+                className={clsx(styles.overlay, classNames?.overlay)}
+                onClick={handleBackdropClick}
+                position="fixed"
+                role="dialog"
               >
-                {children}
-              </FocusTrap>
-            </Box>,
-            document.body
-          )
-        : null}
-    </>
-  );
-}
+                <FocusTrap
+                  className={clsx(styles.content, classNames?.content)}
+                  onClick={stopPropagation}
+                  ref={ref}
+                  role="document"
+                >
+                  {children}
+                </FocusTrap>
+              </Box>,
+              document.body
+            )
+          : null}
+      </>
+    );
+  }
+);
+
+Dialog.displayName = 'Dialog';

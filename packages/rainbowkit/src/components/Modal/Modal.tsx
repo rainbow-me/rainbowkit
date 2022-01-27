@@ -146,6 +146,7 @@ export const Modal = ({
 
   return (
     <Dialog
+      classNames={{ content: styles.dialog }}
       initialFocusRef={initialFocusRef}
       onClose={stopConnecting}
       open={isConnecting}

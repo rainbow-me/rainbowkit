@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import { ChainId } from '../utils/chains';
 import { chainIDToExplorer } from '../utils/convert';
 
-export const useExplorerName = (chainId: ChainId = 1) => {
-  const explorerName = useMemo(() => {
-    if (chainId) {
-      const name = chainIDToExplorer(chainId).name;
-      return `${name[0].toUpperCase()}${name.slice(1)}`;
-    }
-    return 'Etherscan';
+export const useExplorer = (chainId: ChainId = 1) => {
+  const data = useMemo(() => {
+    const data = chainIDToExplorer(chainId);
+    return {
+      ...data,
+      name: `${data.name[0].toUpperCase()}${data.name.slice(1)}`,
+    };
   }, [chainId]);
-  return explorerName;
+  return data;
 };

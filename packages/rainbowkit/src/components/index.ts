@@ -1,5 +1,3 @@
-export { AccountInfo } from './AccountInfo/AccountInfo';
-export type { AccountInfoProps } from './AccountInfo/AccountInfo';
 export { Badge } from './Badge/Badge';
 export type { BadgeProps } from './Badge/Badge';
 export { CopyAddressButton } from './CopyAddressButton/CopyAddressButton';
@@ -21,5 +19,4 @@ export { Tx } from './Tx/Tx';
 export type { TxProps } from './Tx/Tx';
 export { TxHistory } from './TxHistory/TxHistory';
 export type { TxHistoryProps } from './TxHistory/TxHistory';
-export { WalletDropdown } from './WalletDropdown/WalletDropdown';
 export { WalletDialog } from './WalletDialog/WalletDialog';

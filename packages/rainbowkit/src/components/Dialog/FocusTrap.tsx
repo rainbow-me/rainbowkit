@@ -1,4 +1,5 @@
-import React, { useCallback, useRef } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
+import mergeRefs from 'react-merge-refs';
 
 const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
   const focusableElements = element.querySelectorAll(
@@ -12,8 +13,13 @@ const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
   ].focus();
 };
 
-export function FocusTrap(props: JSX.IntrinsicElements['div']) {
+export const FocusTrap = forwardRef<
+  HTMLDivElement,
+  JSX.IntrinsicElements['div']
+>((props, ref) => {
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const finalRef = mergeRefs([contentRef, ref]);
 
   return (
     <>
@@ -25,7 +31,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         )}
         tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
       />
-      <div ref={contentRef} {...props} />
+      <div ref={finalRef} {...props} />
       <div
         onFocus={useCallback(
           () =>
@@ -36,4 +42,6 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
       />
     </>
   );
-}
+});
+
+FocusTrap.displayName = 'FocusTrap';

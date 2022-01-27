@@ -27,8 +27,4 @@ export const content = style([
     padding: '24',
     position: 'relative',
   }),
-  {
-    minHeight: '525px',
-    width: '390px',
-  },
 ]);

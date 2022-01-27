@@ -9,14 +9,14 @@ import {
 } from '../../hooks/useWalletModal';
 import { ChainId } from '../../utils/chains';
 import { Badge } from '../Badge/Badge';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { EmojiIcon } from '../EmojiIcon/EmojiIcon';
 import { Modal } from '../Modal/Modal';
-import { WalletDropdown } from '../WalletDropdown/WalletDropdown';
+import { WalletDialog } from '../WalletDialog/WalletDialog';
 import { ConnectButton } from './ConnectButton';
 import { DropdownIcon } from './Icons';
 
-export interface DropdownProps extends BoxProps {
+export interface AccountInfoProps {
   copyAddress?: boolean | ((props: { address: string }) => JSX.Element);
   /**
    * Ethereum or ENS address
@@ -43,6 +43,10 @@ export interface DropdownProps extends BoxProps {
    */
   isExpanded: boolean;
   /**
+   * Toggle visible state
+   */
+  toggle: () => void;
+  /**
    * Avatar URL
    */
   avatar?: string;
@@ -50,6 +54,10 @@ export interface DropdownProps extends BoxProps {
    * Profile icon from ENS avatar (with emoji icon as fallback)
    */
   profileIcon?: string | React.ComponentType<any>;
+  /**
+   * Dialog window class name
+   */
+  className?: string;
 }
 
 export interface ProfileProps {
@@ -72,7 +80,7 @@ export interface ProfileProps {
     isConnecting: boolean;
     toggleDropdown: () => void;
   }) => JSX.Element;
-  dropdown?: (props: DropdownProps) => JSX.Element;
+  accountMenu?: typeof WalletDialog;
 }
 
 export const Profile = ({
@@ -82,7 +90,7 @@ export const Profile = ({
   ipfsGatewayUrl = 'cloudflare-ipfs.com',
   classNames,
   button: ButtonComponent = ConnectButton,
-  dropdown: DropdownComponent = WalletDropdown,
+  accountMenu: AccountMenu = WalletDialog,
 }: ProfileProps) => {
   const {
     address: accountAddress,
@@ -107,10 +115,10 @@ export const Profile = ({
     [ens?.domain, accountAddress]
   );
 
-  const [open, toggle] = useToggle(false);
+  const [isExpanded, toggle] = useToggle(false);
 
   const node = useRef<HTMLDivElement | null>(null);
-  useOnClickOutside(node, open ? toggle : undefined);
+  useOnClickOutside(node, isExpanded ? toggle : undefined);
 
   const profileIcon = useMemo(() => {
     if (ens.avatar) {
@@ -125,35 +133,36 @@ export const Profile = ({
     <Box className={classNames?.container} position="relative" width="max">
       {isConnected ? (
         <>
-          <div ref={node}>
-            <Badge
-              // @ts-expect-error address could be undefined?
-              address={address}
-              avatar={ens.avatar}
-              className={classNames?.pill || ''}
-              onClick={toggle}
-              profileIcon={profileIcon}
-              // @ts-expect-error provider could be undefined?
-              provider={provider}
-            >
-              <DropdownIcon />
-            </Badge>
+          <Badge
+            // @ts-expect-error address could be undefined?
+            address={address}
+            avatar={ens.avatar}
+            className={classNames?.pill || ''}
+            onClick={toggle}
+            profileIcon={profileIcon}
+            // @ts-expect-error provider could be undefined?
+            provider={provider}
+          >
+            <DropdownIcon />
+          </Badge>
 
-            {/* @ts-expect-error address could be undefined? */}
-            <DropdownComponent
+          {address && accountAddress && chainId && provider && (
+            <AccountMenu
               {...{
                 accountAddress,
                 address,
                 chainId,
-                isExpanded: open,
+                isExpanded,
                 profileIcon,
                 provider,
+                ref: node,
+                toggle,
               }}
               className={classNames?.menu || ''}
               copyAddress={CopyAddressComponent}
               disconnect={disconnect}
             />
-          </div>
+          )}
         </>
       ) : (
         <>

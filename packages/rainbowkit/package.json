@@ -70,7 +70,8 @@
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
     "focus-visible": "^5.2.0",
-    "get-ens": "^2.0.3"
+    "get-ens": "^2.0.3",
+    "react-merge-refs": "^1.1.0"
   },
   "repository": {
     "type": "git",

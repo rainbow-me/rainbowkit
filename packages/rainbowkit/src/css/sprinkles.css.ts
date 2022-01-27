@@ -133,6 +133,7 @@ const layoutStyles = defineProperties({
     paddingLeft: spacing,
     paddingRight: spacing,
     paddingTop: spacing,
+    gap: spacing,
     position: ['absolute', 'fixed', 'relative'],
     right: {
       '0': '0',
