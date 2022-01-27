@@ -22,6 +22,7 @@ type Props = {
   // transform?: BoxProps['textTransform']
   weight?: BoxProps['fontWeight'];
   className?: string;
+  lineHeight?: BoxProps['lineHeight'];
 };
 
 export const Text = React.forwardRef(
@@ -32,6 +33,7 @@ export const Text = React.forwardRef(
       className,
       color,
       font = 'body',
+      lineHeight,
       size = '16',
       weight = 'regular',
     }: Props,
@@ -45,6 +47,7 @@ export const Text = React.forwardRef(
         fontFamily={font}
         fontSize={size}
         fontWeight={weight}
+        lineHeight={lineHeight}
         ref={ref}
       >
         {children}

@@ -16,7 +16,7 @@ const stopPropagation: MouseEventHandler<unknown> = event =>
 
 interface DialogProps {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   titleId: string;
   initialFocusRef: RefObject<HTMLElement | null>;
   children: ReactNode;
@@ -25,7 +25,7 @@ interface DialogProps {
 export function Dialog({
   children,
   initialFocusRef,
-  onClose,
+  onClose = () => {},
   open,
   titleId,
 }: DialogProps) {

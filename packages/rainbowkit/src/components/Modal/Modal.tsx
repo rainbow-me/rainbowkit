@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import React, { Dispatch, useCallback, useMemo, useRef, useState } from 'react';
 import { getWalletInfo, Wallet } from '../../utils/wallets';
 import { Box } from '../Box/Box';
-import { Dialog } from './Dialog';
+import { Dialog } from '../Dialog/Dialog';
 import * as styles from './Modal.css';
 import { CloseIcon, NextIcon } from './icons';
 

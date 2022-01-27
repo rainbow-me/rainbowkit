@@ -1,8 +1,6 @@
 import { BaseProvider } from '@ethersproject/providers';
-import React, { useMemo } from 'react';
-import { useSignificantBalance } from '../../hooks/useSignificantBalance';
-import { useWalletInfo } from '../../hooks/useWalletInfo';
-import { chainIDToToken } from '../../utils/convert';
+import React from 'react';
+import { useSelectedWalletWithBalance } from '../../hooks/useSelectedWalletWithBalance';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
@@ -15,11 +13,11 @@ export const SelectedWalletWithBalance = ({
   accountAddress: string;
   chainId: number;
 }) => {
-  const bal = useSignificantBalance({ address: accountAddress, provider });
-
-  const symbol = useMemo(() => chainIDToToken(chainId), [chainId]);
-
-  const { logoURI, name } = useWalletInfo();
+  const { bal, logoURI, name, symbol } = useSelectedWalletWithBalance({
+    address: accountAddress,
+    chainId,
+    provider,
+  });
 
   return (
     <>

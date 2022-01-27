@@ -1,41 +1,14 @@
-import { BaseProvider } from '@ethersproject/providers';
 import clsx from 'clsx';
-import React, { useMemo } from 'react';
+import React from 'react';
+import { useExplorerName } from '../../hooks/useExplorerName';
 import { chainIDToExplorer } from '../../utils/convert';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { CopyAddressButton } from '../CopyAddressButton/CopyAddressButton';
+import { DropdownProps } from '../Profile/Profile';
 import { Text } from '../Text/Text';
 import { SelectedWalletWithBalance } from './SelectedWalletWithBalance';
 import { MenuStyles } from './WalletDropdown.css';
 import { CloseIcon, ExplorerIcon } from './icons';
-
-export interface WalletDropdownProps extends BoxProps {
-  copyAddress?: boolean | ((props: { address: string }) => JSX.Element);
-  /**
-   * Ethereum or ENS address
-   */
-  address: string;
-  /**
-   * Ethereum address
-   */
-  accountAddress: string;
-  /**
-   * Blockchain network ID
-   */
-  chainId: number;
-  /**
-   * RPC Provider
-   */
-  provider: BaseProvider;
-  /**
-   * Disconnect from current provider
-   */
-  disconnect: () => void;
-  /**
-   * Visible state
-   */
-  isExpanded: boolean;
-}
 
 export const WalletDropdown = ({
   accountAddress,
@@ -47,14 +20,8 @@ export const WalletDropdown = ({
   isExpanded,
   provider,
   ...props
-}: WalletDropdownProps) => {
-  const explorerName = useMemo(() => {
-    if (chainId) {
-      const name = chainIDToExplorer(chainId).name;
-      return `${name[0].toUpperCase()}${name.slice(1)}`;
-    }
-    return 'Etherscan';
-  }, [chainId]);
+}: DropdownProps) => {
+  const explorerName = useExplorerName(chainId);
 
   return (
     <Box
@@ -69,6 +36,13 @@ export const WalletDropdown = ({
       {...props}
     >
       <SelectedWalletWithBalance {...{ accountAddress, chainId, provider }} />
+      <Box
+        as="hr"
+        background="menuDivider"
+        borderRadius="1"
+        height="4"
+        marginBottom="12"
+      />
       <Box
         alignItems="center"
         as="li"

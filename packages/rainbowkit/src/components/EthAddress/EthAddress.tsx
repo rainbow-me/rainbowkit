@@ -5,6 +5,9 @@ import { Text } from '../Text/Text';
 
 export interface EthAddressProps extends BoxProps {
   address: string;
+  /**
+   * Profile icon from ENS avatar (with emoji icon as fallback)
+   */
   profileIcon?: string | React.ComponentType<any>;
   shorten?: boolean;
   classNames?: Partial<{

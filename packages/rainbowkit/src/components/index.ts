@@ -22,4 +22,4 @@ export type { TxProps } from './Tx/Tx';
 export { TxHistory } from './TxHistory/TxHistory';
 export type { TxHistoryProps } from './TxHistory/TxHistory';
 export { WalletDropdown } from './WalletDropdown/WalletDropdown';
-export type { WalletDropdownProps } from './WalletDropdown/WalletDropdown';
+export { WalletDialog } from './WalletDialog/WalletDialog';

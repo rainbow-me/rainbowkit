@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react';
 export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
   address,
   provider,
+  urlResolver,
 }: {
   address: string;
   provider: T;
+  urlResolver?: (address: string) => string;
 }) => {
   const [avatar, setAvatar] = useState<string>();
   const [domain, setEnsDomain] = useState(address);
@@ -29,7 +31,9 @@ export const useENSWithAvatar = <T extends BaseProvider = Web3Provider>({
           const avatar = await resolver.getText('avatar');
 
           if (avatar) {
-            setAvatar(avatar);
+            setAvatar(
+              typeof urlResolver === 'function' ? urlResolver(avatar) : avatar
+            );
           }
 
           setLoading(false);

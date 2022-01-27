@@ -78,6 +78,7 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '54': '54px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
@@ -137,6 +138,7 @@ const layoutStyles = defineProperties({
       '0': '0',
     },
     width: dimensions,
+    lineHeight: ['1', '1.2'],
   } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
