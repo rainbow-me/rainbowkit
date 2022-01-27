@@ -20,47 +20,47 @@ t('getWalletInfo', () => {
     [
       {
         logoURI:
-          'https://bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e',
         name: 'MetaMask',
       },
       {
         logoURI:
-          'https://bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4',
         name: 'Coinbase',
       },
       {
         logoURI:
-          'https://bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4',
         name: 'Coinbase',
       },
       {
         logoURI:
-          'https://bafkreihgrm4ebmo7ybe6vzzhwgdpiv6t4jrljl5t7y7n3keyq6n6susvra.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreihgrm4ebmo7ybe6vzzhwgdpiv6t4jrljl5t7y7n3keyq6n6susvra',
         name: 'Frame',
       },
       {
         logoURI:
-          'https://bafkreiao4cnnidbqblkmd2xfb2akutm2bjdr5r4xnbuwumzhda3ikxyb7a.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreiao4cnnidbqblkmd2xfb2akutm2bjdr5r4xnbuwumzhda3ikxyb7a',
         name: 'Torus',
       },
       {
         logoURI:
-          'https://bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
         name: 'Rainbow',
       },
       {
         logoURI:
-          'https://bafkreiaa457sqcvunki6x7uydyjmniox22vclagwqda5qbskwd27to32aq.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreiaa457sqcvunki6x7uydyjmniox22vclagwqda5qbskwd27to32aq',
         name: 'Trust',
       },
       {
         logoURI:
-          'https://bafkreifsbu7uy4m25t5hty27x7nfrz3ot3wcvlnqwfujom7ax6qmixgciu.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreifsbu7uy4m25t5hty27x7nfrz3ot3wcvlnqwfujom7ax6qmixgciu',
         name: 'Gnosis',
       },
       {
         logoURI:
-          'https://bafkreic5w3umuv7hz7drgyp6ymmpiqre4cnd36ftsutrrazgrecpvo5rgq.ipfs.dweb.link',
+          'https://cloudflare-ipfs.com/ipfs/bafkreic5w3umuv7hz7drgyp6ymmpiqre4cnd36ftsutrrazgrecpvo5rgq',
         name: 'Argent',
       },
     ]

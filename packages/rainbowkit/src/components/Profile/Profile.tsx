@@ -41,7 +41,7 @@ export const Profile = ({
   modalOptions,
   copyAddress: CopyAddressComponent,
   ENSProvider,
-  ipfsGatewayUrl = 'ipfs.infura-ipfs.io',
+  ipfsGatewayUrl = 'cloudflare-ipfs.com',
   classNames,
   button: ButtonComponent = ConnectButton,
   dropdown: DropdownComponent = WalletDropdown,

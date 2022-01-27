@@ -53,7 +53,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://ethereum.org',
     logoURL:
-      'https://ipfs.io/ipfs/QmU1rGfe87iNEC1rComqCREDT9hX86TiysU3mqJ5iSFb6i',
+      'https://cloudflare-ipfs.com/ipfs/QmU1rGfe87iNEC1rComqCREDT9hX86TiysU3mqJ5iSFb6i',
     name: 'Ethereum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'ETH' },
     network: 'mainnet',
@@ -73,7 +73,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://optimism.io',
     logoURL:
-      'https://ipfs.io/ipfs/bafkreieyg2v6gxaaascecc2chrxwg26fvteyrwktf7epir7acdhkncxtrm',
+      'https://cloudflare-ipfs.com/ipfs/bafkreieyg2v6gxaaascecc2chrxwg26fvteyrwktf7epir7acdhkncxtrm',
     name: 'Optimism',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'OETH' },
     network: 'mainnet',
@@ -93,7 +93,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://arbitrum.io',
     logoURL:
-      'https://ipfs.io/ipfs/bafkreicg6e4twffmbrhfoq4bl7tfdkqgeew4pnd5h5lxsgvzckrosg3cra',
+      'https://cloudflare-ipfs.com/ipfs/bafkreicg6e4twffmbrhfoq4bl7tfdkqgeew4pnd5h5lxsgvzckrosg3cra',
     name: 'Arbitrum',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'AETH' },
     network: 'mainnet',
@@ -108,7 +108,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://www.binance.org',
     logoURL:
-      'https://bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreia6gq4i4jlaouenm6mnl4xpohufbxlmbf7nhhebu3cacbmukljrsi',
     name: 'Binance Smart Chain',
     nativeCurrency: {
       decimals: 18,
@@ -145,7 +145,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://matic.network/',
     logoURL:
-      'https://ipfs.io/ipfs/bafkreidhxhnuwatm7xoiwuniiwycewblmxiu65dkklt3t3fwtx2eumbswu',
+      'https://cloudflare-ipfs.com/ipfs/bafkreidhxhnuwatm7xoiwuniiwycewblmxiu65dkklt3t3fwtx2eumbswu',
     name: 'Polygon',
     nativeCurrency: { decimals: 18, name: 'Matic', symbol: 'MATIC' },
     network: 'mainnet',
@@ -162,7 +162,7 @@ export const chains: Chain[] = [
     chainId: 100,
     infoURL: 'https://forum.poa.network/c/xdai-chain',
     logoURL:
-      'https://ipfs.io/ipfs/QmZAKjCruRsqE3njkbEZqNfKeKoD4w389UeYK4L751hcJy',
+      'https://cloudflare-ipfs.com/ipfs/QmZAKjCruRsqE3njkbEZqNfKeKoD4w389UeYK4L751hcJy',
     name: 'xDAI',
     nativeCurrency: { decimals: 18, name: 'xDAI', symbol: 'xDAI' },
     network: 'mainnet',
@@ -186,7 +186,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://fantom.foundation',
     logoURL:
-      'https://bafkreica3l2ne64fu74wdsu4a4mpsn5yshn7isybnwvruduxnkz6bbpb5i.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreica3l2ne64fu74wdsu4a4mpsn5yshn7isybnwvruduxnkz6bbpb5i',
     name: 'Fantom Opera',
     nativeCurrency: { decimals: 18, name: 'Fantom', symbol: 'FTM' },
     network: 'mainnet',
@@ -198,7 +198,7 @@ export const chains: Chain[] = [
     chainId: 43114,
     infoURL: 'https://cchain.explorer.avax.network/',
     logoURL:
-      'https://bafkreihcnx7i6a3i44bqzcj6ogvlksthefftkal4q7gbbbudegalzxdap4.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreihcnx7i6a3i44bqzcj6ogvlksthefftkal4q7gbbbudegalzxdap4',
     name: 'Avalanche',
     nativeCurrency: { decimals: 18, name: 'Avalanche', symbol: 'AVAX' },
     network: 'mainnet',
@@ -210,7 +210,7 @@ export const chains: Chain[] = [
     chainId: 122,
     infoURL: 'https://fuse.io/',
     logoURL:
-      'https://bafkreie5s2ig4odw3mvw3ovggughp7w6d3xjbxqefakj5fvzeo4rpeje5m.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreie5s2ig4odw3mvw3ovggughp7w6d3xjbxqefakj5fvzeo4rpeje5m',
     name: 'Fuse',
     nativeCurrency: { decimals: 18, name: 'Fuse', symbol: 'FUSE' },
     network: 'mainnet',
@@ -225,7 +225,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://www.hecochain.com',
     logoURL:
-      'https://bafkreibbuqctrcydn5ty3n6i7pblegqfxb2ep6vjejqlf3esqsrbispyuq.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreibbuqctrcydn5ty3n6i7pblegqfxb2ep6vjejqlf3esqsrbispyuq',
     name: 'Huobi ECO Chain',
     nativeCurrency: {
       decimals: 18,
@@ -262,7 +262,7 @@ export const chains: Chain[] = [
     chainId: 8217,
     infoURL: 'https://www.klaytn.com/',
     logoURL:
-      'https://bafkreig7dsk3hnd7ml6cfq5ffgrt3eozisuasrama2x7b2cbuim5lucvoa.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreig7dsk3hnd7ml6cfq5ffgrt3eozisuasrama2x7b2cbuim5lucvoa',
     name: 'Klaytn Cypress',
     nativeCurrency: { decimals: 18, name: 'KLAY', symbol: 'KLAY' },
     network: 'cypress',
@@ -275,7 +275,7 @@ export const chains: Chain[] = [
     chainId: 42220,
     infoURL: 'https://docs.celo.org/',
     logoURL:
-      'https://bafkreidctyoxzh37mwc7g2hteapfh3ocomdphjkpf64n6kuqq5sakoveum.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreidctyoxzh37mwc7g2hteapfh3ocomdphjkpf64n6kuqq5sakoveum',
     name: 'Celo',
     nativeCurrency: { decimals: 18, name: 'CELO', symbol: 'CELO' },
     network: 'Mainnet',
@@ -294,7 +294,7 @@ export const chains: Chain[] = [
     ],
     infoURL: 'https://www.okex.com/okexchain',
     logoURL:
-      'https://bafkreidpeihzclobn5xinf7zfjcmheyohsv72nnys5kyd6oovtlpnotaru.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreidpeihzclobn5xinf7zfjcmheyohsv72nnys5kyd6oovtlpnotaru',
     name: 'OKExChain',
     nativeCurrency: {
       decimals: 18,
@@ -310,7 +310,7 @@ export const chains: Chain[] = [
     chainId: 88,
     infoURL: 'https://tomocoin.io',
     logoURL:
-      'https://bafkreicjbvapqbs6r44rxb2lzhtqc7n6i67wvzn6gg5a6hfrneanwel5im.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreicjbvapqbs6r44rxb2lzhtqc7n6i67wvzn6gg5a6hfrneanwel5im',
     name: 'TomoChain',
     nativeCurrency: { decimals: 18, name: 'TomoChain Ether', symbol: 'TOMO' },
     network: 'mainnet',
@@ -322,7 +322,7 @@ export const chains: Chain[] = [
     chainId: 820,
     infoURL: 'https://callisto.network',
     logoURL:
-      'https://bafkreiegobffux6t6l6bkbhl6y4bcnutwc2jby2dhgw5wwozwiqr2whpwe.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreiegobffux6t6l6bkbhl6y4bcnutwc2jby2dhgw5wwozwiqr2whpwe',
     name: 'Callisto',
     nativeCurrency: { decimals: 18, name: 'Callisto Ether', symbol: 'CLO' },
     network: 'mainnet',
@@ -335,7 +335,7 @@ export const chains: Chain[] = [
     chainId: 1024,
     infoURL: 'https://clover.finance',
     logoURL:
-      'https://bafkreiep5avqj5ls5iebj5v6zyhn56lmrkuxwy435iovmwxkob2xys6roq.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreiep5avqj5ls5iebj5v6zyhn56lmrkuxwy435iovmwxkob2xys6roq',
     name: 'Clover',
     nativeCurrency: { decimals: 18, name: 'Clover', symbol: 'CLV' },
     network: 'clover mainnet',
@@ -351,7 +351,7 @@ export const chains: Chain[] = [
     chainId: 2021,
     infoURL: 'http://edgewa.re',
     logoURL:
-      'https://bafkreibznduvl3upt3zpsivd66hfgdgy3m3h74tfmfvlhpa2vpd7ax3e5u.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreibznduvl3upt3zpsivd66hfgdgy3m3h74tfmfvlhpa2vpd7ax3e5u',
     name: 'Edgeware',
     nativeCurrency: { decimals: 18, name: 'Edge', symbol: 'EDG' },
     network: 'mainnet',
@@ -363,7 +363,7 @@ export const chains: Chain[] = [
     chainId: 1313161554,
     infoURL: 'https://aurora.dev',
     logoURL:
-      'https://bafkreie2wmgm56ytj4vpgcknucoqc3dtlzvpr7pqpcj462nudu2w4czj7a.ipfs.dweb.link',
+      'https://cloudflare-ipfs.com/ipfs/bafkreie2wmgm56ytj4vpgcknucoqc3dtlzvpr7pqpcj462nudu2w4czj7a',
     name: 'Aurora',
     nativeCurrency: { decimals: 18, name: 'Ether', symbol: 'aETH' },
     network: 'mainnet',
