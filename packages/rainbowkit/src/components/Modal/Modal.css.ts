@@ -129,6 +129,7 @@ export const WalletLabel = style([
     alignItems: 'center',
     color: 'modalText',
     display: 'flex',
+    fontFamily: 'body',
     fontSize: '20',
     fontWeight: 'heavy',
     justifyContent: 'center',
