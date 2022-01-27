@@ -23,7 +23,7 @@ const themes = { darkTheme, dimTheme, lightTheme } as const;
 const darkModeThemes = { darkTheme, dimTheme, none: undefined } as const;
 
 const Example = () => {
-  const { chainId, provider } = useWeb3State();
+  const { chainId } = useWeb3State();
   const [themeName, setThemeName] = useState<keyof typeof themes>('lightTheme');
   const [darkModeThemeName, setDarkModeThemeName] =
     useState<keyof typeof darkModeThemes>('none');
@@ -101,7 +101,6 @@ const Example = () => {
           <Profile ENSProvider={ENSProvider} modalOptions={{ wallets }} />
           <NetworkSelect
             chains={['ethereum', 'arbitrum', 'polygon', 'ropsten']}
-            {...{ chainId, provider }}
           />
         </nav>
         <TxHistory
