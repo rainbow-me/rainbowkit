@@ -30,6 +30,13 @@ t('resolves avatar and domain', async ({ provider }) => {
       provider,
     })
   );
+
+  assert.equal(result.current, {
+    avatar: undefined,
+    domain: '0xD3B282e9880cDcB1142830731cD83f7ac0e1043f',
+    loading: true,
+  });
+
   await waitForNextUpdate({ timeout: 5000 });
   await waitForNextUpdate({ timeout: 5000 });
 
@@ -37,6 +44,32 @@ t('resolves avatar and domain', async ({ provider }) => {
     avatar:
       'ipfs://bafkreia4t7isswz3fpqzwc7rokd5m7rd3dom7aavcbthxk5fggixncngru',
     domain: 'v1rtl.eth',
+    loading: false,
+  });
+});
+
+const mockAddress = '0xde7f309de0f69c49e7c065bb4ae6dffe0f5e32f4';
+
+t('gracefully handles missing ENS reverse record', async ({ provider }) => {
+  const { result, waitForNextUpdate } = renderHook(() =>
+    useENSWithAvatar({
+      address: mockAddress,
+      provider,
+    })
+  );
+
+  assert.equal(result.current, {
+    avatar: undefined,
+    domain: mockAddress,
+    loading: true,
+  });
+
+  await waitForNextUpdate({ timeout: 5000 });
+
+  assert.equal(result.current, {
+    avatar: undefined,
+    domain: mockAddress,
+    loading: false,
   });
 });
 
