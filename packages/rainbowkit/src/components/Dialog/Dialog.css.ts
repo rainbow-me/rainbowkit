@@ -17,14 +17,4 @@ export const overlay = style([
   },
 ]);
 
-export const content = style([
-  sprinkles({
-    background: 'modalBackground',
-    borderRadius: 'modal',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    padding: '24',
-    position: 'relative',
-  }),
-]);
+export const content = sprinkles({ position: 'relative' });

@@ -12,6 +12,7 @@ import { Badge } from '../Badge/Badge';
 import { Box } from '../Box/Box';
 import { EmojiIcon } from '../EmojiIcon/EmojiIcon';
 import { Modal } from '../Modal/Modal';
+import { TxHistoryProps } from '../TxHistory/TxHistory';
 import { WalletDialog } from '../WalletDialog/WalletDialog';
 import { ConnectButton } from './ConnectButton';
 import { DropdownIcon } from './Icons';
@@ -58,6 +59,10 @@ export interface AccountInfoProps {
    * Dialog window class name
    */
   className?: string;
+  /**
+   * TxHistory props
+   */
+  txHistoryProps?: TxHistoryProps;
 }
 
 export interface ProfileProps {
@@ -81,6 +86,7 @@ export interface ProfileProps {
     toggleDropdown: () => void;
   }) => JSX.Element;
   accountMenu?: typeof WalletDialog;
+  txHistoryProps?: TxHistoryProps;
 }
 
 export const Profile = ({
@@ -91,6 +97,7 @@ export const Profile = ({
   classNames,
   button: ButtonComponent = ConnectButton,
   accountMenu: AccountMenu = WalletDialog,
+  txHistoryProps,
 }: ProfileProps) => {
   const {
     address: accountAddress,
@@ -157,6 +164,7 @@ export const Profile = ({
                 provider,
                 ref: node,
                 toggle,
+                txHistoryProps,
               }}
               className={classNames?.menu || ''}
               copyAddress={CopyAddressComponent}

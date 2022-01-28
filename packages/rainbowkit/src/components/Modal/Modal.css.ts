@@ -215,7 +215,18 @@ export const ErrorMessage = style([
   },
 ]);
 
-export const dialog = style({
-  minHeight: '525px',
-  width: '390px',
-});
+export const dialog = style([
+  sprinkles({
+    background: 'modalBackground',
+    borderRadius: 'modal',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: '24',
+    position: 'relative',
+  }),
+  {
+    minHeight: '525px',
+    width: '390px',
+  },
+]);

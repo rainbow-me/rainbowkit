@@ -2,9 +2,20 @@ import { style } from '@vanilla-extract/css';
 import { sprinkles } from '../../css/sprinkles.css';
 
 export const dialog = style([
+  sprinkles({ display: 'flex', flexDirection: 'column', gap: '24' }),
   {
-    justifyContent: 'flex-start !important',
-    width: '340px',
+    width: '388px',
   },
-  sprinkles({ gap: '16', height: 'max' }),
+]);
+
+export const accountInfo = style([
+  sprinkles({
+    background: 'modalBackground',
+    borderRadius: 'modal',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16',
+    justifyContent: 'flex-start',
+    padding: '24',
+  }),
 ]);

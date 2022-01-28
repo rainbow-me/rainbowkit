@@ -8,7 +8,6 @@ import {
   NetworkSelect,
   Profile,
   RainbowkitThemeProvider,
-  TxHistory,
   useWeb3State,
   withWeb3React,
 } from '@rainbow-me/rainbowkit';
@@ -102,45 +101,45 @@ const Example = () => {
             ENSProvider={ENSProvider}
             // dropdown={WalletDialog}
             modalOptions={{ wallets }}
+            txHistoryProps={{
+              chainId,
+              txes: [
+                {
+                  from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074231',
+                  status: 'pending',
+                  to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  value: BigNumber.from(0),
+                },
+                {
+                  from: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
+                  hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074440',
+                  status: 'fail',
+                  to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  value: BigNumber.from(0),
+                },
+                {
+                  data: '0x',
+                  from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  hash: '0x0dce30c7f31bcb3bf45b4ead6e0389b25b75d2be78264eeeea948323c414c2c7',
+                  status: 'success',
+                  to: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
+                  value: BigNumber.from(BigInt(1.27 * 10 ** 18)),
+                },
+                {
+                  from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  hash: '0x06c9d030c00d78caf7131f128392df9255607aef31b5555f1744fe963814dabd',
+                  status: 'success',
+                  to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+                  value: BigNumber.from(0),
+                },
+              ],
+            }}
           />
           <NetworkSelect
             chains={['ethereum', 'arbitrum', 'polygon', 'ropsten']}
           />
         </nav>
-        <TxHistory
-          chainId={chainId}
-          txes={[
-            {
-              from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074231',
-              status: 'pending',
-              to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              value: BigNumber.from(0),
-            },
-            {
-              from: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
-              hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074440',
-              status: 'fail',
-              to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              value: BigNumber.from(0),
-            },
-            {
-              data: '0x',
-              from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              hash: '0x0dce30c7f31bcb3bf45b4ead6e0389b25b75d2be78264eeeea948323c414c2c7',
-              status: 'success',
-              to: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
-              value: BigNumber.from(BigInt(1.27 * 10 ** 18)),
-            },
-            {
-              from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              hash: '0x06c9d030c00d78caf7131f128392df9255607aef31b5555f1744fe963814dabd',
-              status: 'success',
-              to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-              value: BigNumber.from(0),
-            },
-          ]}
-        />
       </div>
     </>
   );
