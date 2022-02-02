@@ -8,9 +8,6 @@ export const dimTheme = createTheme({
       'linear-gradient(179.83deg, rgba(26, 27, 31, 0.9) 0.15%, #1A1B1F 99.85%)',
     connectButtonText: 'white',
     connectionIndicator: '#30E000',
-    dropdownButtonBackground:
-      'linear-gradient(179.83deg, rgba(26, 27, 31, 0.9) 0.15%, #1A1B1F 99.85%)',
-    dropdownButtonText: 'white',
     error: '#FF494A',
     menuBackground: '#1A1B1F',
     menuDivider: 'rgba(255, 255, 255, .04)',
@@ -27,8 +24,6 @@ export const dimTheme = createTheme({
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-    dropdownButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
     menu: '0px 10px 30px rgba(0, 0, 0, 0.1)',
-    networkButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
   },
 });

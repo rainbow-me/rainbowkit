@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { getWalletInfo } from '../../packages/rainbowkit/src/utils/wallets';
+import { getWalletInfo } from '../../packages/rainbowkit-old/src/utils/wallets';
 
 const t = suite('getWalletInfo');
 

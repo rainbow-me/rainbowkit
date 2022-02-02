@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { JSDOM } from 'jsdom';
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { useENSWithAvatar } from '../../packages/rainbowkit/src/hooks/useENSWithAvatar';
+import { useENSWithAvatar } from '../../packages/rainbowkit-old/src/hooks/useENSWithAvatar';
 
 const { window } = new JSDOM('', { url: 'https://localhost' });
 

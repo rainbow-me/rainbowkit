@@ -7,7 +7,7 @@ import {
   chainNametoId,
   connectorByWallet,
   walletByConnector,
-} from '../../packages/rainbowkit/src/utils/convert';
+} from '../../packages/rainbowkit-old/src/utils/convert';
 
 let t = suite('connectorByWallet');
 

@@ -3,7 +3,7 @@ import * as assert from 'uvu/assert';
 import {
   isAddress,
   shortenAddress,
-} from '../../packages/rainbowkit/src/utils/address';
+} from '../../packages/rainbowkit-old/src/utils/address';
 
 const ADDRESS = '0x0000000000000000000000000000000000000000';
 

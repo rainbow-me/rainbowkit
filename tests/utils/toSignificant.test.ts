@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { toSignificant } from '../../packages/rainbowkit/src/utils/toSignificant';
+import { toSignificant } from '../../packages/rainbowkit-old/src/utils/toSignificant';
 
 const t = suite('toSignificant');
 

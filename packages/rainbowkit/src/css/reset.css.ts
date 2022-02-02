@@ -88,6 +88,7 @@ const input = style([
 const button = style({
   background: 'none',
   cursor: 'pointer',
+  textAlign: 'left',
 });
 
 const a = style({
