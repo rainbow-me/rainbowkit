@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 
 type Props = {
+  id?: string;
   as?:
     | 'code'
     | 'div'
@@ -22,6 +23,7 @@ type Props = {
   // transform?: BoxProps['textTransform']
   weight?: BoxProps['fontWeight'];
   className?: string;
+  tabIndex?: number;
 };
 
 export const Text = React.forwardRef(
@@ -32,7 +34,9 @@ export const Text = React.forwardRef(
       className,
       color,
       font = 'body',
+      id,
       size = '16',
+      tabIndex,
       weight = 'regular',
     }: Props,
     ref: React.Ref<HTMLElement>
@@ -45,7 +49,9 @@ export const Text = React.forwardRef(
         fontFamily={font}
         fontSize={size}
         fontWeight={weight}
+        id={id}
         ref={ref}
+        tabIndex={tabIndex}
       >
         {children}
       </Box>

@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { nFormat } from '../../packages/rainbowkit/src/utils/nFormat';
+import { nFormat } from '../../packages/rainbowkit-old/src/utils/nFormat';
 
 const t = suite('nFormat');
 

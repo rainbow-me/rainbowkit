@@ -9,8 +9,6 @@ const themeContractValues = {
     connectButtonBackground: '',
     connectButtonText: '',
     connectionIndicator: '',
-    dropdownButtonBackground: '',
-    dropdownButtonText: '',
     error: '',
     menuBackground: '',
     menuDivider: '',
@@ -30,17 +28,11 @@ const themeContractValues = {
   },
   radii: {
     connectButton: '',
-    dropdownButton: '',
-    menu: '',
-    menuItem: '',
     modal: '',
-    networkButton: '',
   },
   shadows: {
     connectButton: '',
-    dropdownButton: '',
     menu: '',
-    networkButton: '',
   },
 };
 
@@ -120,6 +112,7 @@ const layoutStyles = defineProperties({
       bold: '700',
       heavy: '800',
     },
+    gap: spacing,
     height: dimensions,
     justifyContent: [...flexAlignment, 'space-between'],
     marginBottom: spacing,

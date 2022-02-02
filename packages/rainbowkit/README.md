@@ -1,6 +1,6 @@
-# rainbowkit
+# RainbowKit
 
-The ultimate Dapp framework.
+The best way to connect a wallet.
 
 ## Install
 

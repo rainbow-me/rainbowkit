@@ -1,7 +1,7 @@
 import { AlchemyProvider } from '@ethersproject/providers';
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { resolveAddress } from '../../packages/rainbowkit/src/utils/resolveAddress';
+import { resolveAddress } from '../../packages/rainbowkit-old/src/utils/resolveAddress';
 
 const t = suite('resolveAddress');
 

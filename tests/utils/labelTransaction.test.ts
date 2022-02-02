@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { labelTransaction } from '../../packages/rainbowkit/src/utils/labelTransaction';
+import { labelTransaction } from '../../packages/rainbowkit-old/src/utils/labelTransaction';
 
 const ADDRESS = '0x0000000000000000000000000000000000000000';
 

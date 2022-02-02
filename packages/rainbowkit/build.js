@@ -18,9 +18,7 @@ esbuild
       './src/index.ts',
 
       // esbuild needs these additional entry points in order to support tree shaking while also supporting CSS
-      ...(await getRecursivePaths('src/hooks')),
       ...(await getRecursivePaths('src/themes')),
-      ...(await getRecursivePaths('src/utils')),
 
       // The build output is cleaner when bundling all components into a single chunk
       // This is done assuming that consumers use most of the components in the package, which is a reasonable assumption for now
