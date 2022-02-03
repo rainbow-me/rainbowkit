@@ -19,12 +19,21 @@ export const useThemeRootProps = () => {
   return createThemeRootProps(id);
 };
 
-export interface ThemeProviderProps {
+export type ThemeProviderProps = {
   id?: string;
   children: ReactNode;
   theme?: Theme | (() => Theme);
   darkModeTheme?: Theme | (() => Theme);
-}
+} & (
+  | {
+      theme?: Theme | (() => Theme);
+      darkModeTheme?: Theme | (() => Theme);
+    }
+  | {
+      theme: null;
+      darkModeTheme?: never;
+    }
+);
 
 export function ThemeProvider({
   children,
@@ -33,6 +42,12 @@ export function ThemeProvider({
   theme = lightTheme,
 }: ThemeProviderProps) {
   const selector = createThemeRootSelector(id);
+
+  if (!theme) {
+    return (
+      <ThemeIdContext.Provider value={id}>{children}</ThemeIdContext.Provider>
+    );
+  }
 
   const themeCss = `${selector}{${cssStringFromTheme(theme)}}`;
   const darkModeThemeCss = darkModeTheme
