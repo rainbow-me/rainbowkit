@@ -27,7 +27,7 @@ export const content = style([
     position: 'relative',
   }),
   {
-    minHeight: '525px',
+    // minHeight: '525px',
     width: '390px',
   },
 ]);

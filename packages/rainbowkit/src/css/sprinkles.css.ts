@@ -72,13 +72,14 @@ const dimensions = {
   '24': '24px',
   '28': '28px',
   '40': '40px',
+  '48': '48px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
   'viewWidth': '100vw',
 };
 
-const flexAlignment = ['flex-start', 'center'] as const;
+const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
 const layoutStyles = defineProperties({
   properties: {

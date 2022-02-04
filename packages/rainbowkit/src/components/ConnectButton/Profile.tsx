@@ -3,14 +3,14 @@ import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DropdownIcon } from '../Icons/Dropdown';
-import { Text } from '../Text/Text';
 import { ProfilePillImageClassName } from './Profile.css';
+import { ProfileDetails } from './ProfileDetails';
 import { formatAddress } from './formatAddress';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
-  const [{ data: accountData }, disconnect] = useAccount({
+  const [{ data: accountData }] = useAccount({
     fetchEns: true,
   });
 
@@ -27,6 +27,7 @@ export function Profile() {
     accountData.ens?.name ?? formatAddress(accountData.address);
 
   const ethBalance = balanceData?.formatted;
+  const ethBalanceFormatted = Number(ethBalance).toPrecision(3);
 
   return (
     <>
@@ -47,7 +48,7 @@ export function Profile() {
         >
           {balanceData && (
             <Box padding="8" paddingLeft="12">
-              {Number(ethBalance).toPrecision(3)} ETH
+              {ethBalanceFormatted} ETH
             </Box>
           )}
           <Box
@@ -75,34 +76,16 @@ export function Profile() {
         </Box>
       </div>
 
-      <Dialog
-        initialFocusRef={initialFocusRef}
-        onClose={() => setOpen(false)}
-        open={open}
-        titleId={titleId}
-      >
-        <Box display="flex" flexDirection="column" gap="24">
-          <Text
-            as="h1"
-            color="modalText"
-            id={titleId}
-            ref={initialFocusRef}
-            size="23"
-            tabIndex={-1}
-          >
-            {accountName}
-          </Text>
-          <Box
-            as="button"
-            color="modalText"
-            fontFamily="body"
-            onClick={disconnect}
-            type="button"
-          >
-            Disconnect
-          </Box>
-        </Box>
-      </Dialog>
+      {accountData && (
+        <Dialog
+          initialFocusRef={initialFocusRef}
+          onClose={() => setOpen(false)}
+          open={open}
+          titleId={titleId}
+        >
+          <ProfileDetails onClose={() => setOpen(false)} />
+        </Dialog>
+      )}
     </>
   );
 }
