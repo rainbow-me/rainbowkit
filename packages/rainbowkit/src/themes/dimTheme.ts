@@ -7,6 +7,7 @@ export const dimTheme = createTheme({
     connectButtonBackground:
       'linear-gradient(179.83deg, rgba(26, 27, 31, 0.9) 0.15%, #1A1B1F 99.85%)',
     connectButtonText: 'white',
+    connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
     error: '#FF494A',
     menuBackground: '#1A1B1F',

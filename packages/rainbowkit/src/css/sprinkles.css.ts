@@ -8,6 +8,7 @@ const themeContractValues = {
   colors: {
     connectButtonBackground: '',
     connectButtonText: '',
+    connectedProfileBorder: '',
     connectionIndicator: '',
     error: '',
     menuBackground: '',
@@ -70,6 +71,7 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '40': '40px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
@@ -94,6 +96,7 @@ const layoutStyles = defineProperties({
     },
     borderWidth: {
       '4': '4px',
+      '2': '2px',
     },
     display: ['none', 'block', 'flex', 'inline-flex'],
     flexDirection: ['row', 'column'],

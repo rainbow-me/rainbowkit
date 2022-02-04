@@ -19,14 +19,19 @@ export function Connect() {
         <Box
           as="button"
           background="connectButtonBackground"
+          borderColor="connectButtonText"
           borderRadius="connectButton"
+          borderStyle="solid"
+          borderWidth="2"
           boxShadow="connectButton"
           color="connectButtonText"
+          fontFamily="body"
+          fontWeight="bold"
           onClick={() => setOpen(true)}
           padding="8"
           type="button"
         >
-          Connect
+          Connect Wallet
         </Box>
       </div>
 
@@ -45,7 +50,7 @@ export function Connect() {
             size="23"
             tabIndex={-1}
           >
-            Connect
+            Connect Wallet
           </Text>
           <Box display="flex" flexDirection="column" gap="18">
             {wallets.map(wallet => {

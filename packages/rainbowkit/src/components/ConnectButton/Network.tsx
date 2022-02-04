@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
+import { DropdownIcon } from '../Icons/Dropdown';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
@@ -44,13 +45,17 @@ export function Network() {
     <>
       <div>
         <Box
+          alignItems="center"
           as="button"
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
           color="connectButtonText"
+          display="flex"
+          fontFamily="body"
+          fontWeight="bold"
           onClick={() => setOpen(true)}
-          padding="8"
+          padding="10"
           type="button"
         >
           <Box alignItems="center" display="flex" gap="4">
@@ -67,6 +72,8 @@ export function Network() {
               {networkData.chain?.unsupported && '(unsupported)'}
             </div>
           </Box>
+          {networkData.chain?.unsupported && '(unsupported)'}
+          <DropdownIcon />
         </Box>
       </div>
 

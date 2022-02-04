@@ -22,8 +22,8 @@ export function ConnectButton() {
 
   return accountData ? (
     <Box display="flex" gap="12">
-      <Profile />
       <Network />
+      <Profile />
     </Box>
   ) : (
     <Connect />

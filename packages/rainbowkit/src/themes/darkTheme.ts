@@ -7,6 +7,7 @@ export const darkTheme = createTheme({
     connectButtonBackground:
       'linear-gradient(179.83deg, rgba(0, 0, 0, 0.9) 0.15%, #000000 99.85%)',
     connectButtonText: 'white',
+    connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
     error: '#FF494A',
     menuBackground: '#000',
