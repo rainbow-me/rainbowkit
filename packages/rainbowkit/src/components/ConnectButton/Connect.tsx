@@ -1,7 +1,10 @@
-import React, { useRef, useState } from 'react';
+import WalletConnect from '@walletconnect/client';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { QRCode } from '../QRCode/QRCode';
 import { useWallets } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
 
@@ -10,6 +13,21 @@ export function Connect() {
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const titleId = 'rk_connect_title';
   const wallets = useWallets();
+  const [uri, setUri] = useState('');
+
+  useEffect(() => {
+    if (open) {
+      const connector = new WalletConnect({
+        bridge: 'https://bridge.walletconnect.org',
+      });
+
+      if (connector && !connector.connected) {
+        connector.createSession({ chainId: 1 }).then(() => {
+          setUri(connector.uri);
+        });
+      }
+    }
+  }, [open]);
 
   return (
     <>
@@ -55,6 +73,7 @@ export function Connect() {
             >
               Connect Wallet
             </Text>
+            <Box>{uri && <QRCode logoSize={72} size={380} uri={uri} />}</Box>
             <Box display="flex" flexDirection="column" gap="18">
               {wallets.map(wallet => {
                 return (
