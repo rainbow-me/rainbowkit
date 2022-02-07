@@ -1,9 +1,9 @@
 import '@rainbow-me/rainbowkit/index.css';
 import {
   chain,
-  getDefaultWallets,
   darkTheme,
-  defaultL2Chains,
+  getDefaultWallets,
+  // defaultL2Chains,
   lightTheme,
   RainbowKitProvider,
   WagmiProvider,

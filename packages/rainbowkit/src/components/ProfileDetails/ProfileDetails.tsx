@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
+import { formatAddress } from '../ConnectButton/formatAddress';
 import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
@@ -9,7 +10,6 @@ import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
 import { ProfileDetailsImageClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
-import { formatAddress } from './formatAddress';
 
 interface ProfileDetailsProps {
   //   accountName: string | null;
@@ -68,9 +68,9 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
                 color="modalText"
                 id={titleId}
                 // ref={initialFocusRef}
-                size="20"
+                size="23"
                 tabIndex={-1}
-                weight="bold"
+                weight="heavy"
               >
                 {accountName}
               </Text>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { Box } from '../Box/Box';
+import { Network } from '../Network/Network';
+import { Profile } from '../Profile/Profile';
 import { Connect } from './Connect';
-import { Network } from './Network';
-import { Profile } from './Profile';
 
 export function ConnectButton() {
   const [isMounted, setIsMounted] = useState(false);

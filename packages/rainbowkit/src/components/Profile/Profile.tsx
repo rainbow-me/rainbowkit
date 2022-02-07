@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
+import { formatAddress } from '../ConnectButton/formatAddress';
 import { Dialog } from '../Dialog/Dialog';
+import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
+import { TxList } from '../Txs/TxList';
 import { ProfilePillImageClassName } from './Profile.css';
-import { ProfileDetails } from './ProfileDetails';
-import { formatAddress } from './formatAddress';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
@@ -85,7 +87,12 @@ export function Profile() {
           open={open}
           titleId={titleId}
         >
-          <ProfileDetails onClose={() => setOpen(false)} />
+          <DialogContent>
+            <ProfileDetails onClose={() => setOpen(false)} />
+          </DialogContent>
+          <DialogContent marginTop="24">
+            <TxList />
+          </DialogContent>
         </Dialog>
       )}
     </>
