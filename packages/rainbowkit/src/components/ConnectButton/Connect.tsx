@@ -16,22 +16,26 @@ export function Connect() {
   return (
     <>
       <div>
-        <Box
-          as="button"
-          background="connectButtonBackground"
-          borderColor="connectButtonText"
-          borderRadius="connectButton"
-          borderStyle="solid"
-          borderWidth="2"
-          boxShadow="connectButton"
-          color="connectButtonText"
-          fontFamily="body"
-          fontWeight="bold"
-          onClick={() => setOpen(true)}
-          padding="8"
-          type="button"
-        >
-          Connect Wallet
+        <Box background="connectButtonBackground" borderRadius="connectButton">
+          <Box
+            as="button"
+            background="connectButtonInnerBackground"
+            borderColor={
+              open ? 'connectedProfileBorder' : 'connectButtonBackground'
+            }
+            borderRadius="connectButton"
+            borderStyle="solid"
+            borderWidth="2"
+            boxShadow="connectButton"
+            color="connectButtonText"
+            fontFamily="body"
+            fontWeight="bold"
+            onClick={() => setOpen(true)}
+            padding="8"
+            type="button"
+          >
+            Connect Wallet
+          </Box>
         </Box>
       </div>
 
