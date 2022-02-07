@@ -1,7 +1,7 @@
 import '@rainbow-me/rainbowkit/index.css';
 import {
   chain,
-  defaultL2Chains,
+  getDefaultWallets,
   RainbowKitProvider,
   WagmiProvider,
 } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,12 @@ const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
-const chains = [chain.mainnet, ...defaultL2Chains];
+const chains = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimisticEthereum, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
 
 const connectors = ({ chainId }) => {
   const rpcUrl =
@@ -27,6 +32,7 @@ const connectors = ({ chainId }) => {
   return [
     new InjectedConnector({
       chains,
+      options: { shimDisconnect: true },
     }),
     new WalletConnectConnector({
       chains,
@@ -45,10 +51,16 @@ const connectors = ({ chainId }) => {
   ];
 };
 
+const wallets = getDefaultWallets({
+  InjectedConnector,
+  WalletConnectConnector,
+  WalletLinkConnector,
+});
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      <RainbowKitProvider>
+      <RainbowKitProvider chains={chains} wallets={wallets}>
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiProvider>

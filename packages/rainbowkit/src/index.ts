@@ -1,5 +1,9 @@
 export * from './components';
 
+export { getDefaultWallets } from './components/RainbowKitProvider/getDefaultWallets';
+export { wallet } from './components/RainbowKitProvider/wallet';
+export type { Wallet } from './components/RainbowKitProvider/WalletsContext';
+
 export type { Theme } from './css/sprinkles.css';
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
