@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
+import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
@@ -83,65 +84,64 @@ export function Network() {
         open={open}
         titleId={titleId}
       >
-        <Box display="flex" flexDirection="column" gap="24">
-          <Text
-            as="h1"
-            color="modalText"
-            id={titleId}
-            ref={initialFocusRef}
-            size="23"
-            tabIndex={-1}
-          >
-            Network
-          </Text>
-          <Box display="flex" flexDirection="column" gap="18">
-            {switchNetwork &&
-              networkData.chains.map(chain => {
-                const isCurrentChain = chain.id === networkData.chain?.id;
-                const chainIconUrl = chainIconUrlsById[chain.id];
+        <DialogContent>
+          <Box display="flex" flexDirection="column" gap="24">
+            <Text
+              as="h1"
+              color="modalText"
+              id={titleId}
+              ref={initialFocusRef}
+              size="23"
+              tabIndex={-1}
+            >
+              Network
+            </Text>
+            <Box display="flex" flexDirection="column" gap="18">
+              {switchNetwork &&
+                networkData.chains.map(chain => {
+                  const isCurrentChain = chain.id === networkData.chain?.id;
+                  const chainIconUrl = chainIconUrlsById[chain.id];
 
-                return (
-                  <Box
-                    as="button"
-                    color="modalText"
-                    disabled={isCurrentChain}
-                    fontFamily="body"
-                    fontWeight={isCurrentChain ? 'heavy' : undefined}
-                    key={chain.id}
-                    onClick={
-                      isCurrentChain
-                        ? undefined
-                        : () => {
-                            setIsSwitching(true);
-                            switchNetwork(chain.id);
-                          }
-                    }
-                    type="button"
-                  >
+                  return (
                     <Box
-                      alignItems="center"
-                      display="flex"
-                      flexDirection="row"
-                      gap="6"
+                      as="button"
+                      color="modalText"
+                      disabled={isCurrentChain}
+                      fontFamily="body"
+                      fontWeight={isCurrentChain ? 'heavy' : undefined}
+                      key={chain.id}
+                      onClick={
+                        isCurrentChain
+                          ? undefined
+                          : () => {
+                              setIsSwitching(true);
+                              switchNetwork(chain.id);
+                            }
+                      }
+                      type="button"
                     >
-                      {chainIconUrl ? (
-                        <img
-                          alt={chain.name}
-                          height="24"
-                          src={chainIconUrl}
-                          width="24"
-                        />
-                      ) : null}
-                      <div>{chain.name}</div>
+                      <Box
+                        alignItems="center"
+                        display="flex"
+                        flexDirection="row"
+                        gap="6"
+                      >
+                        {chainIconUrl ? (
+                          <img
+                            alt={chain.name}
+                            height="24"
+                            src={chainIconUrl}
+                            width="24"
+                          />
+                        ) : null}
+                        <div>{chain.name}</div>
+                      </Box>
                     </Box>
-                  </Box>
-                );
-              })}
+                  );
+                })}
+            </Box>
           </Box>
-          {isSwitching ? (
-            <Text color="modalText">Check your device...</Text>
-          ) : null}
-        </Box>
+        </DialogContent>
       </Dialog>
     </>
   );
