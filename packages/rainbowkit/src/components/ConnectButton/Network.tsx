@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
+import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
 export function Network() {
@@ -11,6 +12,8 @@ export function Network() {
   const [{ data: networkData }, switchNetwork] = useNetwork();
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const titleId = 'rk_network_title';
+
+  const chainIconUrlsById = useChainIconUrlsById();
 
   useEffect(() => {
     if (!connectData.connector) {
@@ -35,6 +38,8 @@ export function Network() {
     return null;
   }
 
+  const currentChainIconUrl = chainIconUrlsById[networkData.chain.id];
+
   return (
     <>
       <div>
@@ -48,8 +53,20 @@ export function Network() {
           padding="8"
           type="button"
         >
-          {networkData.chain.name ?? networkData.chain.id}{' '}
-          {networkData.chain?.unsupported && '(unsupported)'}
+          <Box alignItems="center" display="flex" gap="4">
+            {currentChainIconUrl ? (
+              <img
+                alt={networkData.chain.name ?? 'Chain icon'}
+                height="16"
+                src={currentChainIconUrl}
+                width="16"
+              />
+            ) : null}
+            <div>
+              {networkData.chain.name ?? networkData.chain.id}{' '}
+              {networkData.chain?.unsupported && '(unsupported)'}
+            </div>
+          </Box>
         </Box>
       </div>
 
@@ -72,28 +89,44 @@ export function Network() {
           </Text>
           <Box display="flex" flexDirection="column" gap="18">
             {switchNetwork &&
-              networkData.chains.map(x => {
-                const activeChain = x.id === networkData.chain?.id;
+              networkData.chains.map(chain => {
+                const isCurrentChain = chain.id === networkData.chain?.id;
+                const chainIconUrl = chainIconUrlsById[chain.id];
 
                 return (
                   <Box
                     as="button"
                     color="modalText"
-                    disabled={activeChain}
+                    disabled={isCurrentChain}
                     fontFamily="body"
-                    fontWeight={activeChain ? 'heavy' : undefined}
-                    key={x.id}
+                    fontWeight={isCurrentChain ? 'heavy' : undefined}
+                    key={chain.id}
                     onClick={
-                      activeChain
+                      isCurrentChain
                         ? undefined
                         : () => {
                             setIsSwitching(true);
-                            switchNetwork(x.id);
+                            switchNetwork(chain.id);
                           }
                     }
                     type="button"
                   >
-                    {x.name}
+                    <Box
+                      alignItems="center"
+                      display="flex"
+                      flexDirection="row"
+                      gap="6"
+                    >
+                      {chainIconUrl ? (
+                        <img
+                          alt={chain.name}
+                          height="24"
+                          src={chainIconUrl}
+                          width="24"
+                        />
+                      ) : null}
+                      <div>{chain.name}</div>
+                    </Box>
                   </Box>
                 );
               })}

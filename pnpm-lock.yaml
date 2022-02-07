@@ -43,7 +43,7 @@ importers:
       tsm: ^2.1.4
       typescript: ~4.5.2
       uvu: ^0.5.2
-      wagmi: ^0.2.6
+      wagmi: ^0.2.9
     devDependencies:
       '@babel/core': 7.16.10
       '@babel/preset-env': 7.16.11_@babel+core@7.16.10
@@ -84,7 +84,7 @@ importers:
       tsm: 2.2.1
       typescript: 4.5.5
       uvu: 0.5.3
-      wagmi: 0.2.6_@babel+core@7.16.10+react@17.0.2
+      wagmi: 0.2.9_@babel+core@7.16.10+react@17.0.2
 
   packages/example:
     specifiers:
@@ -99,7 +99,7 @@ importers:
       next: ^12.0.4
       react: ^17.0.2
       react-dom: ^17.0.2
-      wagmi: ^0.2.6
+      wagmi: ^0.2.9
     dependencies:
       '@ethersproject/bignumber': 5.5.0
       '@ethersproject/providers': 5.5.2
@@ -112,7 +112,7 @@ importers:
       next: 12.0.8_41563b681f1f25e776a26b5294d9ed9a
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
-      wagmi: 0.2.6_d79805ec19627b044802e3660740266e
+      wagmi: 0.2.9_d79805ec19627b044802e3660740266e
 
   packages/rainbowkit:
     specifiers:
@@ -8685,8 +8685,8 @@ packages:
       xml-name-validator: 4.0.0
     dev: true
 
-  /wagmi-private/0.1.7_a13ea548add5f9d2f92219480027944f:
-    resolution: {integrity: sha512-73HlcoZkom1WSZCfNRrtNd7MZ3j1z5T9nVG3LJZ+dAhOhVLxg00uEFo6PGq2Ex8IWkowU5fff9DCDWYGoCjrCg==}
+  /wagmi-private/0.1.8_a13ea548add5f9d2f92219480027944f:
+    resolution: {integrity: sha512-xREyemJcxdLYlIYrNagdv46PUaovCCGz+Bfy/6D3ZUTbsW/5E/50MK+a+NzJSuAjCbtTF9kaiZIaGBUNx/AO8A==}
     peerDependencies:
       '@walletconnect/ethereum-provider': 1.7.1
       ethers: ^5.5.1
@@ -8706,8 +8706,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /wagmi-private/0.1.7_d0bfad94a71d33c81e7ee6fa6a6788ce:
-    resolution: {integrity: sha512-73HlcoZkom1WSZCfNRrtNd7MZ3j1z5T9nVG3LJZ+dAhOhVLxg00uEFo6PGq2Ex8IWkowU5fff9DCDWYGoCjrCg==}
+  /wagmi-private/0.1.8_d0bfad94a71d33c81e7ee6fa6a6788ce:
+    resolution: {integrity: sha512-xREyemJcxdLYlIYrNagdv46PUaovCCGz+Bfy/6D3ZUTbsW/5E/50MK+a+NzJSuAjCbtTF9kaiZIaGBUNx/AO8A==}
     peerDependencies:
       '@walletconnect/ethereum-provider': 1.7.1
       ethers: ^5.5.1
@@ -8728,8 +8728,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /wagmi/0.2.6_@babel+core@7.16.10+react@17.0.2:
-    resolution: {integrity: sha512-0pvboWgCkPrX16K0evT9VxNVTq559FSs28WwjotPKlMYAkkcVN46kTIWaLUN7Bm5BaysWlgxaCHrS6kcBC9czw==}
+  /wagmi/0.2.9_@babel+core@7.16.10+react@17.0.2:
+    resolution: {integrity: sha512-lHmpC1O30t2Q80N2GuhoAQZiXG/I1gQO3HGdrn9wS8fbjaYM653JgjbwWzY9kCMqrPEdK5s2BDPhgqguHzu0gQ==}
     peerDependencies:
       ethers: ^5.5.1
       react: ^17.0.0
@@ -8737,7 +8737,7 @@ packages:
       '@ethersproject/providers': 5.5.2
       '@walletconnect/ethereum-provider': 1.7.1
       react: 17.0.2
-      wagmi-private: 0.1.7_a13ea548add5f9d2f92219480027944f
+      wagmi-private: 0.1.8_a13ea548add5f9d2f92219480027944f
       walletlink: 2.4.5_@babel+core@7.16.10
     transitivePeerDependencies:
       - '@babel/core'
@@ -8748,8 +8748,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /wagmi/0.2.6_d79805ec19627b044802e3660740266e:
-    resolution: {integrity: sha512-0pvboWgCkPrX16K0evT9VxNVTq559FSs28WwjotPKlMYAkkcVN46kTIWaLUN7Bm5BaysWlgxaCHrS6kcBC9czw==}
+  /wagmi/0.2.9_d79805ec19627b044802e3660740266e:
+    resolution: {integrity: sha512-lHmpC1O30t2Q80N2GuhoAQZiXG/I1gQO3HGdrn9wS8fbjaYM653JgjbwWzY9kCMqrPEdK5s2BDPhgqguHzu0gQ==}
     peerDependencies:
       ethers: ^5.5.1
       react: ^17.0.0
@@ -8758,7 +8758,7 @@ packages:
       '@walletconnect/ethereum-provider': 1.7.1
       ethers: 5.5.3
       react: 17.0.2
-      wagmi-private: 0.1.7_d0bfad94a71d33c81e7ee6fa6a6788ce
+      wagmi-private: 0.1.8_d0bfad94a71d33c81e7ee6fa6a6788ce
       walletlink: 2.4.5_@babel+core@7.16.10
     transitivePeerDependencies:
       - '@babel/core'

@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { useConnect } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
+import { WalletsContext } from '../RainbowKitProvider/WalletsContext';
 import { Text } from '../Text/Text';
 
 export function Connect() {
@@ -9,6 +10,8 @@ export function Connect() {
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const [{ data: connectData }, connect] = useConnect();
   const titleId = 'rk_connect_title';
+
+  const wallets = useContext(WalletsContext);
 
   return (
     <>
@@ -45,20 +48,47 @@ export function Connect() {
             Connect
           </Text>
           <Box display="flex" flexDirection="column" gap="18">
-            {connectData.connectors.map(x => (
-              <Box
-                as="button"
-                color={x.ready ? 'modalText' : 'modalTextSecondary'}
-                disabled={!x.ready}
-                fontFamily="body"
-                key={x.id}
-                onClick={() => connect(x)}
-                type="button"
-              >
-                {x.name}
-                {!x.ready && ' (unsupported)'}
-              </Box>
-            ))}
+            {wallets.map(wallet => {
+              const walletConnector = connectData.connectors.find(
+                connector => connector instanceof wallet.connectorClass
+              );
+
+              if (!walletConnector) {
+                return null;
+              }
+
+              return (
+                <Box
+                  as="button"
+                  color={
+                    walletConnector.ready ? 'modalText' : 'modalTextSecondary'
+                  }
+                  disabled={!walletConnector.ready}
+                  fontFamily="body"
+                  key={walletConnector.id}
+                  onClick={() => connect(walletConnector)}
+                  type="button"
+                >
+                  <Box
+                    alignItems="center"
+                    display="flex"
+                    flexDirection="row"
+                    gap="6"
+                  >
+                    <img
+                      alt={wallet.name}
+                      height="24"
+                      src={wallet.iconUrl}
+                      width="24"
+                    />
+                    <div>
+                      {wallet.name}
+                      {!walletConnector.ready && ' (unsupported)'}
+                    </div>
+                  </Box>
+                </Box>
+              );
+            })}
           </Box>
         </Box>
       </Dialog>
