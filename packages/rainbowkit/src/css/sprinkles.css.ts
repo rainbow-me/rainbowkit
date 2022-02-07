@@ -7,6 +7,7 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     connectButtonBackground: '',
+    connectButtonInnerBackground: '',
     connectButtonText: '',
     connectedProfileBorder: '',
     connectionIndicator: '',
@@ -23,6 +24,7 @@ const themeContractValues = {
     modalClose: '',
     modalText: '',
     modalTextSecondary: '',
+    transparent: '',
   },
   fonts: {
     body: '',

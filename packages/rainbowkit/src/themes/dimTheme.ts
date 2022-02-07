@@ -6,6 +6,8 @@ export const dimTheme = createTheme({
   colors: {
     connectButtonBackground:
       'linear-gradient(179.83deg, rgba(26, 27, 31, 0.9) 0.15%, #1A1B1F 99.85%)',
+    connectButtonInnerBackground:
+      'linear-gradient(0deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.15))',
     connectButtonText: 'white',
     connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
@@ -22,6 +24,7 @@ export const dimTheme = createTheme({
     modalClose: 'rgba(255, 255, 255, 0.06)',
     modalText: '#fff',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
+    transparent: 'transparent',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',

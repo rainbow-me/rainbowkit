@@ -4,8 +4,9 @@ import { createTheme } from './createTheme';
 export const darkTheme = createTheme({
   ...baseTheme,
   colors: {
-    connectButtonBackground:
-      'linear-gradient(179.83deg, rgba(0, 0, 0, 0.9) 0.15%, #000000 99.85%)',
+    connectButtonBackground: '#000',
+    connectButtonInnerBackground:
+      'linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12))',
     connectButtonText: 'white',
     connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
@@ -23,6 +24,7 @@ export const darkTheme = createTheme({
     modalClose: 'rgba(255, 255, 255, 0.08)',
     modalText: '#fff',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
+    transparent: 'transparent',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',

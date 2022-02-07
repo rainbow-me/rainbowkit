@@ -42,7 +42,6 @@ export function Profile() {
           display="flex"
           fontFamily="body"
           fontWeight="bold"
-          // height="39"
           onClick={() => setOpen(true)}
           type="button"
         >
@@ -52,7 +51,10 @@ export function Profile() {
             </Box>
           )}
           <Box
-            borderColor="connectedProfileBorder"
+            background="connectButtonInnerBackground"
+            borderColor={
+              open ? 'connectedProfileBorder' : 'connectButtonBackground'
+            }
             borderRadius="connectButton"
             borderStyle="solid"
             borderWidth="2"

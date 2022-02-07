@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
@@ -9,10 +9,12 @@ interface ProfileDetailsActionProps {
   label: string;
   action: () => void;
   icon: JSX.Element;
+  color: BoxProps['color'];
 }
 
 export function ProfileDetailsAction({
   action,
+  color,
   icon,
   label,
 }: ProfileDetailsActionProps) {
@@ -21,18 +23,16 @@ export function ProfileDetailsAction({
       as="button"
       display="flex"
       flexDirection="row"
-      gap="4"
       justifyContent="space-between"
       onClick={action}
-      paddingY="8"
+      paddingY="16"
     >
-      {/* text */}
       <Box>
-        <Text color="modalText" size="18" weight="bold">
+        <Text color={color} size="18" weight="bold">
           {label}
         </Text>
       </Box>
-      <Box>{icon}</Box>
+      <Box color={color}>{icon}</Box>
     </Box>
   );
 }

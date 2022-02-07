@@ -3,6 +3,9 @@ import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
+import { DisconnectIcon } from '../Icons/Disconnect';
+import { ExploreIcon } from '../Icons/Explore';
+import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
 import { ProfileDetailsImageClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
@@ -36,7 +39,7 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
   const titleId = 'rk_profile_title';
 
   return (
-    <Box display="flex" flexDirection="column" gap="24">
+    <Box display="flex" flexDirection="column" gap="12">
       {/* Top row */}
       <Box
         alignItems="flex-start"
@@ -93,24 +96,28 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
           <CloseIcon />
         </Box>
       </Box>
-      {/* <Box
-        as="button"
-        borderRadius="full"
-        color="modalText"
-        fontFamily="body"
-        onClick={disconnect}
-        type="button"
-      >
-        Disconnect
-      </Box> */}
       <ProfileDetailsAction
         action={() => {}}
+        color="modalText"
         icon={<CopyIcon />}
         label="Copy Address"
       />
       <ProfileDetailsAction
+        action={() => {}}
+        color="modalText"
+        icon={<ExploreIcon />}
+        label="View on Etherscan"
+      />
+      <ProfileDetailsAction
+        action={() => {}}
+        color="modalText"
+        icon={<SwitchAccountIcon />}
+        label="Switch Accounts"
+      />
+      <ProfileDetailsAction
         action={disconnect}
-        icon={<CopyIcon />}
+        color="error"
+        icon={<DisconnectIcon />}
         label="Disconnect"
       />
     </Box>
