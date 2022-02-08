@@ -140,6 +140,9 @@ export function Network() {
                   );
                 })}
             </Box>
+            {isSwitching ? (
+              <Text color="modalText">Check your device...</Text>
+            ) : null}
           </Box>
         </DialogContent>
       </Dialog>
