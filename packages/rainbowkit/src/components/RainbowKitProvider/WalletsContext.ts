@@ -1,12 +1,10 @@
 import { createContext } from 'react';
-import type { Connector } from 'wagmi';
-
-export type ConnectorClass = new (...args: unknown[]) => Connector;
 
 export interface Wallet {
+  id: string;
   name: string;
   iconUrl: string;
-  connectorClass: ConnectorClass;
+  connectorId: string;
 }
 
 export const WalletsContext = createContext<Wallet[]>([]);

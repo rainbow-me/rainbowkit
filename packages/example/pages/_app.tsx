@@ -2,7 +2,6 @@ import '@rainbow-me/rainbowkit/index.css';
 import {
   chain,
   darkTheme,
-  getDefaultWallets,
   lightTheme,
   RainbowKitProvider,
   WagmiProvider,
@@ -55,12 +54,6 @@ const connectors = ({ chainId }) => {
   ];
 };
 
-const wallets = getDefaultWallets({
-  InjectedConnector,
-  WalletConnectConnector,
-  WalletLinkConnector,
-});
-
 function App({ Component, pageProps }: AppProps) {
   const [selectedTheme, setSelectedTheme] = useState(LIGHT_THEME);
   const isLightTheme = selectedTheme === LIGHT_THEME;
@@ -74,7 +67,6 @@ function App({ Component, pageProps }: AppProps) {
         chains={chains}
         // @ts-ignore RainbowKitProviderProps type is not picking up 'theme' as a property
         theme={theme}
-        wallets={wallets}
       >
         <Component {...pageProps} />
         <button onClick={toggleTheme} type="button">
