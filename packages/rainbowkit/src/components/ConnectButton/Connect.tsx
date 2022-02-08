@@ -73,7 +73,7 @@ export function Connect() {
             >
               Connect Wallet
             </Text>
-            <Box>{uri && <QRCode logoSize={72} size={380} uri={uri} />}</Box>
+            <Box>{uri && <QRCode logoSize={72} size={342} uri={uri} />}</Box>
             <Box display="flex" flexDirection="column" gap="18">
               {wallets.map(wallet => {
                 return (
