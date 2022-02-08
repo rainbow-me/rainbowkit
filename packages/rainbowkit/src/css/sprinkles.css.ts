@@ -24,7 +24,6 @@ const themeContractValues = {
     modalClose: '',
     modalText: '',
     modalTextSecondary: '',
-    transparent: '',
   },
   fonts: {
     body: '',
