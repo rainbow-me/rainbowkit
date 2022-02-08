@@ -1,7 +1,5 @@
 import React from 'react';
 
-// interface Props {}
-
 export const CloseIcon = () => (
   <svg
     fill="none"

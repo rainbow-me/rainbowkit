@@ -3,9 +3,6 @@ import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
-  //   accountName: string | null;
-  //   balance: string | null;
-  //   disconnect: () => void;
   label: string;
   action: () => void;
   icon: JSX.Element;

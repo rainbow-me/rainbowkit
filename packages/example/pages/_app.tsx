@@ -3,7 +3,6 @@ import {
   chain,
   darkTheme,
   getDefaultWallets,
-  // defaultL2Chains,
   lightTheme,
   RainbowKitProvider,
   WagmiProvider,

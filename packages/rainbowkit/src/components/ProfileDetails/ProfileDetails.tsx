@@ -12,9 +12,6 @@ import { ProfileDetailsImageClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  //   accountName: string | null;
-  //   balance: string | null;
-  //   disconnect: () => void;
   onClose: () => void;
 }
 

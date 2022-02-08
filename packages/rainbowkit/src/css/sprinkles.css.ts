@@ -98,8 +98,8 @@ const layoutStyles = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
-      '4': '4px',
       '2': '2px',
+      '4': '4px',
     },
     display: ['none', 'block', 'flex', 'inline-flex'],
     flexDirection: ['row', 'column'],
