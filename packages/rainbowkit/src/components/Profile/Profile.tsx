@@ -88,7 +88,10 @@ export function Profile() {
           titleId={titleId}
         >
           <DialogContent>
-            <ProfileDetails onClose={() => setOpen(false)} />
+            <ProfileDetails
+              initialFocusRef={initialFocusRef}
+              onClose={() => setOpen(false)}
+            />
           </DialogContent>
           <DialogContent marginTop="24">
             <TxList />

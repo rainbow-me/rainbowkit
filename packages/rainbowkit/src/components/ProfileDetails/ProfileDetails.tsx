@@ -12,10 +12,14 @@ import { ProfileDetailsImageClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
+  initialFocusRef: React.MutableRefObject<HTMLHeadingElement | null>;
   onClose: () => void;
 }
 
-export function ProfileDetails({ onClose }: ProfileDetailsProps) {
+export function ProfileDetails({
+  initialFocusRef,
+  onClose,
+}: ProfileDetailsProps) {
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   });
@@ -36,7 +40,6 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
 
   return (
     <Box display="flex" flexDirection="column" gap="12">
-      {/* Top row */}
       <Box
         alignItems="flex-start"
         display="flex"
@@ -44,9 +47,7 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
         height="48"
         justifyContent="space-between"
       >
-        {/* details */}
         <Box display="flex" flexDirection="row">
-          {/* img box */}
           {accountData.ens?.avatar ? (
             <Box marginRight="12">
               <img
@@ -56,16 +57,14 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
               />
             </Box>
           ) : null}
-          {/* name & balance box */}
           <Box display="flex" flexDirection="column">
             <Box marginBottom="6">
               <Text
                 as="h1"
                 color="modalText"
                 id={titleId}
-                // ref={initialFocusRef}
+                ref={initialFocusRef}
                 size="23"
-                tabIndex={-1}
                 weight="heavy"
               >
                 {accountName}
@@ -79,7 +78,6 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
                     color="modalText"
                     id={titleId}
                     size="16"
-                    tabIndex={-1}
                     weight="heavy"
                   >
                     {balance} ETH
@@ -89,7 +87,6 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
             </Box>
           </Box>
         </Box>
-        {/* Box */}
         <Box as="button" borderRadius="full" onClick={onClose}>
           <CloseIcon />
         </Box>
