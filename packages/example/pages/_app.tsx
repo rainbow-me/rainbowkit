@@ -1,18 +1,22 @@
 import '@rainbow-me/rainbowkit/index.css';
 import {
   chain,
+  darkTheme,
   getDefaultWallets,
+  lightTheme,
   RainbowKitProvider,
   WagmiProvider,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 
 const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
+const LIGHT_THEME = 'light';
+const DARK_THEME = 'dark';
 
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
@@ -58,10 +62,24 @@ const wallets = getDefaultWallets({
 });
 
 function App({ Component, pageProps }: AppProps) {
+  const [selectedTheme, setSelectedTheme] = useState(LIGHT_THEME);
+  const isLightTheme = selectedTheme === LIGHT_THEME;
+  const toggleTheme = useCallback(() => {
+    setSelectedTheme(isLightTheme ? DARK_THEME : LIGHT_THEME);
+  }, [isLightTheme]);
+  const theme = isLightTheme ? lightTheme : darkTheme;
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      <RainbowKitProvider chains={chains} wallets={wallets}>
+      <RainbowKitProvider
+        chains={chains}
+        // @ts-ignore RainbowKitProviderProps type is not picking up 'theme' as a property
+        theme={theme}
+        wallets={wallets}
+      >
         <Component {...pageProps} />
+        <button onClick={toggleTheme} type="button">
+          {selectedTheme}
+        </button>
       </RainbowKitProvider>
     </WagmiProvider>
   );

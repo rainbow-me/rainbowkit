@@ -19,15 +19,11 @@ export const overlay = style([
 
 export const content = style([
   sprinkles({
-    background: 'modalBackground',
-    borderRadius: 'modal',
     display: 'flex',
     flexDirection: 'column',
-    padding: '24',
     position: 'relative',
   }),
   {
-    minHeight: '525px',
     width: '390px',
   },
 ]);

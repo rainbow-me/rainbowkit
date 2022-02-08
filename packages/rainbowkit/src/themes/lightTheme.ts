@@ -4,9 +4,11 @@ import { createTheme } from './createTheme';
 export const lightTheme = createTheme({
   ...baseTheme,
   colors: {
-    connectButtonBackground:
-      'linear-gradient(176.73deg, #FFFFFF 2.7%, rgba(255, 255, 255, 0.9) 97.31%)',
+    connectButtonBackground: '#FFFFFF',
+    connectButtonInnerBackground:
+      'linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))',
     connectButtonText: '#25292E',
+    connectedProfileBorder: '#FF007A',
     connectionIndicator: '#2CCC00',
     error: '#FF494A',
     menuBackground: '#fff',

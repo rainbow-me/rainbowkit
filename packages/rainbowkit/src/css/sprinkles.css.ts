@@ -7,7 +7,9 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     connectButtonBackground: '',
+    connectButtonInnerBackground: '',
     connectButtonText: '',
+    connectedProfileBorder: '',
     connectionIndicator: '',
     error: '',
     menuBackground: '',
@@ -70,13 +72,15 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '40': '40px',
+  '48': '48px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
   'viewWidth': '100vw',
 };
 
-const flexAlignment = ['flex-start', 'center'] as const;
+const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
 const layoutStyles = defineProperties({
   properties: {
@@ -93,6 +97,7 @@ const layoutStyles = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      '2': '2px',
       '4': '4px',
     },
     display: ['none', 'block', 'flex', 'inline-flex'],
