@@ -32,7 +32,6 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
     accountData.ens?.name ?? formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
-
   const titleId = 'rk_profile_title';
 
   return (
@@ -73,18 +72,20 @@ export function ProfileDetails({ onClose }: ProfileDetailsProps) {
               </Text>
             </Box>
             <Box>
-              <Box>
-                <Text
-                  as="h1"
-                  color="modalText"
-                  id={titleId}
-                  size="16"
-                  tabIndex={-1}
-                  weight="heavy"
-                >
-                  {balance} ETH
-                </Text>
-              </Box>
+              {balanceData && (
+                <Box>
+                  <Text
+                    as="h1"
+                    color="modalText"
+                    id={titleId}
+                    size="16"
+                    tabIndex={-1}
+                    weight="heavy"
+                  >
+                    {balance} ETH
+                  </Text>
+                </Box>
+              )}
             </Box>
           </Box>
         </Box>
