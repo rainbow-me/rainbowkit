@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
@@ -27,6 +27,24 @@ export function ProfileDetails({
   const [{ data: balanceData }] = useBalance({
     addressOrName: accountData?.address,
   });
+
+  const [copiedAddress, setCopiedAddress] = useState(false);
+
+  const copyAddressAction = useCallback(() => {
+    if (accountData?.address) {
+      navigator.clipboard.writeText(accountData?.address);
+      setCopiedAddress(true);
+    }
+  }, [accountData?.address]);
+
+  useEffect(() => {
+    if (copiedAddress) {
+      const timer = setTimeout(() => {
+        setCopiedAddress(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [copiedAddress]);
 
   if (!accountData) {
     return null;
@@ -92,10 +110,10 @@ export function ProfileDetails({
         </Box>
       </Box>
       <ProfileDetailsAction
-        action={() => {}}
+        action={copyAddressAction}
         color="modalText"
         icon={<CopyIcon />}
-        label="Copy Address"
+        label={copiedAddress ? 'Copied!' : 'Copy Address'}
       />
       <ProfileDetailsAction
         action={() => {}}
