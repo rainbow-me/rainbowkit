@@ -1,18 +1,15 @@
-import React, { useContext, useRef, useState } from 'react';
-import { useConnect } from 'wagmi';
+import React, { useRef, useState } from 'react';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { WalletsContext } from '../RainbowKitProvider/WalletsContext';
+import { useWallets } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
 
 export function Connect() {
   const [open, setOpen] = useState(false);
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
-  const [{ data: connectData }, connect] = useConnect();
   const titleId = 'rk_connect_title';
-
-  const wallets = useContext(WalletsContext);
+  const wallets = useWallets();
 
   return (
     <>
@@ -60,24 +57,14 @@ export function Connect() {
             </Text>
             <Box display="flex" flexDirection="column" gap="18">
               {wallets.map(wallet => {
-                const walletConnector = connectData.connectors.find(
-                  connector => connector instanceof wallet.connectorClass
-                );
-
-                if (!walletConnector) {
-                  return null;
-                }
-
                 return (
                   <Box
                     as="button"
-                    color={
-                      walletConnector.ready ? 'modalText' : 'modalTextSecondary'
-                    }
-                    disabled={!walletConnector.ready}
+                    color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+                    disabled={!wallet.ready}
                     fontFamily="body"
-                    key={walletConnector.id}
-                    onClick={() => connect(walletConnector)}
+                    key={wallet.id}
+                    onClick={wallet.connect}
                     type="button"
                   >
                     <Box
@@ -94,7 +81,7 @@ export function Connect() {
                       />
                       <div>
                         {wallet.name}
-                        {!walletConnector.ready && ' (unsupported)'}
+                        {!wallet.ready && ' (unsupported)'}
                       </div>
                     </Box>
                   </Box>

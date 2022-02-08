@@ -5,10 +5,11 @@ import {
 } from '../ThemeProvider/ThemeProvider';
 import { ChainIconsContext, ChainWithIconUrl } from './ChainIconsContext';
 import { Wallet, WalletsContext } from './WalletsContext';
+import { defaultWallets } from './defaultWallets';
 import { provideChainIconUrls } from './provideChainIconUrls';
 
 export interface RainbowKitProviderProps extends ThemeProviderProps {
-  wallets: Wallet[];
+  wallets?: Wallet[];
   chains: ChainWithIconUrl[];
   children: ReactNode;
 }
@@ -16,7 +17,7 @@ export interface RainbowKitProviderProps extends ThemeProviderProps {
 export function RainbowKitProvider({
   chains,
   children,
-  wallets,
+  wallets = defaultWallets,
   ...themeProps
 }: RainbowKitProviderProps) {
   const chainsWithIconUrls = useMemo(

@@ -1,6 +1,6 @@
 export * from './components';
 
-export { getDefaultWallets } from './components/RainbowKitProvider/getDefaultWallets';
+export { defaultWallets } from './components/RainbowKitProvider/defaultWallets';
 export { wallet } from './components/RainbowKitProvider/wallet';
 export type { Wallet } from './components/RainbowKitProvider/WalletsContext';
 
