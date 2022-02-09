@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Box } from '../Box/Box';
 import { Network } from '../Network/Network';
 import { Profile } from '../Profile/Profile';
+
 import { Connect } from './Connect';
 
 export function ConnectButton() {
   const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, [setIsMounted]);
-
+  const [{ data: connectData }, connect] = useConnect();
   const [{ data: accountData }] = useAccount({
     fetchEns: true,
   });
+
+  const walletConnectDefault = new WalletConnectConnector({
+    options: {
+      qrcode: false,
+    },
+  });
+
+  useEffect(() => {
+    if (!connectData.connector) {
+      connect(walletConnectDefault);
+    }
+    setIsMounted(true);
+  }, [setIsMounted]);
 
   if (!isMounted) {
     return null;
@@ -26,6 +37,6 @@ export function ConnectButton() {
       <Profile />
     </Box>
   ) : (
-    <Connect />
+    <Connect uri={connectData.connector.getProvider().connector.uri} />
   );
 }
