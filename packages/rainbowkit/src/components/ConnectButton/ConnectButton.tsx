@@ -25,7 +25,7 @@ export function ConnectButton() {
       connect(walletConnectDefault);
     }
     setIsMounted(true);
-  }, [setIsMounted]);
+  }, [setIsMounted, connect, walletConnectDefault, connectData.connector]);
 
   if (!isMounted) {
     return null;
