@@ -63,11 +63,7 @@ function App({ Component, pageProps }: AppProps) {
   const theme = isLightTheme ? lightTheme : darkTheme;
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      <RainbowKitProvider
-        chains={chains}
-        // @ts-ignore RainbowKitProviderProps type is not picking up 'theme' as a property
-        theme={theme}
-      >
+      <RainbowKitProvider chains={chains} theme={theme}>
         <Component {...pageProps} />
         <button onClick={toggleTheme} type="button">
           {selectedTheme}

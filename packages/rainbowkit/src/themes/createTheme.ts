@@ -1,14 +1,14 @@
 import deepmerge from 'deepmerge';
-import { Theme, ThemePartial } from '../css/sprinkles.css';
+import { ThemePartial, ThemeVars } from '../css/sprinkles.css';
 
-export function createTheme(themeValues: Theme) {
+export function createTheme(themeValues: ThemeVars) {
   return function theme(
     options: {
       overrides?: ThemePartial;
     } = {}
-  ): Theme {
+  ): ThemeVars {
     return options.overrides
-      ? (deepmerge(themeValues, options.overrides) as Theme)
+      ? (deepmerge(themeValues, options.overrides) as ThemeVars)
       : themeValues;
   };
 }
