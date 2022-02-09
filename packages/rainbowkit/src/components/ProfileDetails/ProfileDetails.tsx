@@ -54,6 +54,10 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
+  useEffect(() => {
+    setSwitchWalletOpen(false);
+  }, [accountData?.address]);
+
   if (!accountData || !networkData) {
     return null;
   }
