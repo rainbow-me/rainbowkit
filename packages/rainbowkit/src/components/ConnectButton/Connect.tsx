@@ -1,15 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Box } from '../Box/Box';
+import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { useWallets } from '../RainbowKitProvider/useWallets';
-import { Text } from '../Text/Text';
 
 export function Connect() {
   const [open, setOpen] = useState(false);
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const titleId = 'rk_connect_title';
-  const wallets = useWallets();
 
   return (
     <>
@@ -44,51 +42,7 @@ export function Connect() {
         titleId={titleId}
       >
         <DialogContent>
-          <Box display="flex" flexDirection="column" gap="24">
-            <Text
-              as="h1"
-              color="modalText"
-              id={titleId}
-              ref={initialFocusRef}
-              size="23"
-              tabIndex={-1}
-            >
-              Connect Wallet
-            </Text>
-            <Box display="flex" flexDirection="column" gap="18">
-              {wallets.map(wallet => {
-                return (
-                  <Box
-                    as="button"
-                    color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-                    disabled={!wallet.ready}
-                    fontFamily="body"
-                    key={wallet.id}
-                    onClick={wallet.connect}
-                    type="button"
-                  >
-                    <Box
-                      alignItems="center"
-                      display="flex"
-                      flexDirection="row"
-                      gap="6"
-                    >
-                      <img
-                        alt={wallet.name}
-                        height="24"
-                        src={wallet.iconUrl}
-                        width="24"
-                      />
-                      <div>
-                        {wallet.name}
-                        {!wallet.ready && ' (unsupported)'}
-                      </div>
-                    </Box>
-                  </Box>
-                );
-              })}
-            </Box>
-          </Box>
+          <ConnectOptions initialFocusRef={initialFocusRef} />
         </DialogContent>
       </Dialog>
     </>

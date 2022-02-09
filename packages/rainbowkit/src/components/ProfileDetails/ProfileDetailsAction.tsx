@@ -4,7 +4,7 @@ import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
   label: string;
-  action: () => void;
+  action?: () => void;
   icon: JSX.Element;
   color: BoxProps['color'];
   url?: string;

@@ -3,6 +3,9 @@ import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
+import ConnectOptions from '../ConnectOptions/ConnectOptions';
+import { Dialog } from '../Dialog/Dialog';
+import { DialogContent } from '../Dialog/DialogContent';
 import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
@@ -40,6 +43,8 @@ export function ProfileDetails({
     }
   }, [accountData?.address]);
 
+  const [switchWalletOpen, setSwitchWalletOpen] = useState(false);
+
   useEffect(() => {
     if (copiedAddress) {
       const timer = setTimeout(() => {
@@ -64,83 +69,95 @@ export function ProfileDetails({
   }`;
 
   return (
-    <Box display="flex" flexDirection="column" gap="12">
-      <Box
-        alignItems="flex-start"
-        display="flex"
-        flexDirection="row"
-        height="48"
-        justifyContent="space-between"
-      >
-        <Box display="flex" flexDirection="row">
-          {accountData.ens?.avatar ? (
-            <Box marginRight="12">
-              <img
-                alt="ENS Avatar"
-                className={ProfileDetailsImageClassName}
-                src={accountData.ens.avatar}
-              />
-            </Box>
-          ) : null}
-          <Box display="flex" flexDirection="column">
-            <Box marginBottom="6">
-              <Text
-                as="h1"
-                color="modalText"
-                id={titleId}
-                ref={initialFocusRef}
-                size="23"
-                weight="heavy"
-              >
-                {accountName}
-              </Text>
-            </Box>
-            <Box>
-              {balanceData && (
-                <Box>
-                  <Text
-                    as="h1"
-                    color="modalText"
-                    id={titleId}
-                    size="16"
-                    weight="heavy"
-                  >
-                    {balance} ETH
-                  </Text>
-                </Box>
-              )}
+    <>
+      <Box display="flex" flexDirection="column" gap="12">
+        <Box
+          alignItems="flex-start"
+          display="flex"
+          flexDirection="row"
+          height="48"
+          justifyContent="space-between"
+        >
+          <Box display="flex" flexDirection="row">
+            {accountData.ens?.avatar ? (
+              <Box marginRight="12">
+                <img
+                  alt="ENS Avatar"
+                  className={ProfileDetailsImageClassName}
+                  src={accountData.ens.avatar}
+                />
+              </Box>
+            ) : null}
+            <Box display="flex" flexDirection="column">
+              <Box marginBottom="6">
+                <Text
+                  as="h1"
+                  color="modalText"
+                  id={titleId}
+                  ref={initialFocusRef}
+                  size="23"
+                  weight="heavy"
+                >
+                  {accountName}
+                </Text>
+              </Box>
+              <Box>
+                {balanceData && (
+                  <Box>
+                    <Text
+                      as="h1"
+                      color="modalText"
+                      id={titleId}
+                      size="16"
+                      weight="heavy"
+                    >
+                      {balance} ETH
+                    </Text>
+                  </Box>
+                )}
+              </Box>
             </Box>
           </Box>
+          <Box as="button" borderRadius="full" onClick={onClose}>
+            <CloseIcon />
+          </Box>
         </Box>
-        <Box as="button" borderRadius="full" onClick={onClose}>
-          <CloseIcon />
-        </Box>
+        <ProfileDetailsAction
+          action={copyAddressAction}
+          color="modalText"
+          icon={<CopyIcon />}
+          label={copiedAddress ? 'Copied!' : 'Copy Address'}
+        />
+        <ProfileDetailsAction
+          action={() => {}}
+          color="modalText"
+          icon={<ExploreIcon />}
+          label="View on Explorer"
+          url={explorerUrl}
+        />
+        <ProfileDetailsAction
+          action={() => {}}
+          color="modalText"
+          icon={<SwitchAccountIcon />}
+          label="Switch Accounts"
+        />
+        <ProfileDetailsAction
+          action={onDisconnect}
+          color="error"
+          icon={<DisconnectIcon />}
+          label="Disconnect"
+        />
       </Box>
-      <ProfileDetailsAction
-        action={copyAddressAction}
-        color="modalText"
-        icon={<CopyIcon />}
-        label={copiedAddress ? 'Copied!' : 'Copy Address'}
-      />
-      <ProfileDetailsAction
-        action={() => {}}
-        color="modalText"
-        icon={<ExploreIcon />}
-        label="View on Explorer"
-        url={explorerUrl}
-      />
-      <ProfileDetailsAction
-        action={() => {}}
-        color="modalText"
-        icon={<SwitchAccountIcon />}
-        label="Switch Accounts"
-      />
-      <ProfileDetailsAction
-        action={onDisconnect}
-        color="error"
-        icon={<DisconnectIcon />}
-        label="Disconnect"
-      />
-    </Box>
+      <Dialog
+        initialFocusRef={initialFocusRef}
+        onClose={() => setSwitchWalletOpen(false)}
+        open={switchWalletOpen}
+        titleId={titleId}
+      >
+        <DialogContent>
+          <ConnectOptions initialFocusRef={initialFocusRef} />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
