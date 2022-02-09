@@ -14,18 +14,18 @@ export function ConnectButton() {
     fetchEns: true,
   });
 
-  const walletConnectDefault = new WalletConnectConnector({
-    options: {
-      qrcode: false,
-    },
-  });
-
   useEffect(() => {
     if (!connectData.connector) {
+      const walletConnectDefault = new WalletConnectConnector({
+        options: {
+          qrcode: false,
+        },
+      });
+
       connect(walletConnectDefault);
     }
     setIsMounted(true);
-  }, [setIsMounted, connect, walletConnectDefault, connectData.connector]);
+  }, [setIsMounted, connect, connectData.connector]);
 
   if (!isMounted) {
     return null;
