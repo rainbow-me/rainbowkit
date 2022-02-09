@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useAccount, useBalance } from 'wagmi';
+import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import { CloseIcon } from '../Icons/Close';
@@ -28,6 +29,8 @@ export function ProfileDetails({
     addressOrName: accountData?.address,
   });
 
+  const [{ data: networkData }] = useNetwork();
+
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {
@@ -46,7 +49,7 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
-  if (!accountData) {
+  if (!accountData || !networkData) {
     return null;
   }
 
@@ -55,6 +58,10 @@ export function ProfileDetails({
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
+
+  const explorerUrl = `${chainIdToExplorerLink(networkData?.chain?.id)}${
+    accountData.address
+  }`;
 
   return (
     <Box display="flex" flexDirection="column" gap="12">
@@ -119,7 +126,8 @@ export function ProfileDetails({
         action={() => {}}
         color="modalText"
         icon={<ExploreIcon />}
-        label="View on Etherscan"
+        label="View on Explorer"
+        url={explorerUrl}
       />
       <ProfileDetailsAction
         action={() => {}}
