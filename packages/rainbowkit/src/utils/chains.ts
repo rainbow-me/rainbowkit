@@ -11,7 +11,6 @@ export enum ChainId {
   POLYGON = 137,
 }
 
-// todo: wrap up object types
 export const chainInfo: Record<ChainId, Chain> = {
   [ChainId.MAINNET]: {
     chainId: ChainId.MAINNET,
