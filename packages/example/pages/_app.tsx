@@ -1,4 +1,4 @@
-import '@rainbow-me/rainbowkit/index.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import {
   chain,
   darkTheme,
