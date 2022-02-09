@@ -136,7 +136,7 @@ export function ProfileDetails({
           url={explorerUrl}
         />
         <ProfileDetailsAction
-          action={() => {}}
+          action={() => setSwitchWalletOpen(true)}
           color="modalText"
           icon={<SwitchAccountIcon />}
           label="Switch Accounts"
