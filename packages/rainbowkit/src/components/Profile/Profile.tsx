@@ -12,7 +12,7 @@ import { ProfilePillImageClassName } from './Profile.css';
 export function Profile() {
   const [open, setOpen] = useState(false);
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
-  const [{ data: accountData }] = useAccount({
+  const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   });
 
@@ -89,8 +89,10 @@ export function Profile() {
         >
           <DialogContent>
             <ProfileDetails
+              accountData={accountData}
               initialFocusRef={initialFocusRef}
               onClose={() => setOpen(false)}
+              onDisconnect={() => disconnect()}
             />
           </DialogContent>
           <DialogContent marginTop="24">
