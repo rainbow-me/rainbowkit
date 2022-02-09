@@ -1,14 +1,13 @@
 import '@rainbow-me/rainbowkit/index.css';
 import {
-  chain,
   darkTheme,
   lightTheme,
   RainbowKitProvider,
-  WagmiProvider,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
 import React, { useCallback, useState } from 'react';
+import { chain, Provider as WagmiProvider } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
