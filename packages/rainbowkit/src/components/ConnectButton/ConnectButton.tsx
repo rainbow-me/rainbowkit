@@ -37,6 +37,12 @@ export function ConnectButton() {
       <Profile />
     </Box>
   ) : (
-    <Connect uri={connectData.connector.getProvider().connector.uri} />
+    <>
+      {connectData.connector && (
+        <>
+          <Connect uri={connectData.connector.getProvider().connector.uri} />
+        </>
+      )}
+    </>
   );
 }
