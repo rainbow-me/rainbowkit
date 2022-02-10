@@ -1,19 +1,19 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
-import { Theme, themeVars } from './sprinkles.css';
+import { ThemeVars, themeVars } from './sprinkles.css';
 
-const resolveTheme = (theme: Theme | (() => Theme)) =>
+const resolveThemeVars = (theme: ThemeVars | (() => ThemeVars)) =>
   typeof theme === 'function' ? theme() : theme;
 
 export function cssObjectFromTheme(
-  theme: Theme | (() => Theme),
-  { extends: baseTheme }: { extends?: Theme | (() => Theme) } = {}
+  theme: ThemeVars | (() => ThemeVars),
+  { extends: baseTheme }: { extends?: ThemeVars | (() => ThemeVars) } = {}
 ) {
   const resolvedThemeVars = {
     // We use an object spread here to ensure it's a plain object since vanilla-extract's
     // var objects have a custom 'toString' method that returns a CSS string, but we don't
     // want to leak this to our consumers since they're unaware we're using vanilla-extract.
     // Instead, we want them to handle this explicitly via our 'cssStringFromTheme' function.
-    ...assignInlineVars(themeVars, resolveTheme(theme)),
+    ...assignInlineVars(themeVars, resolveThemeVars(theme)),
   };
 
   if (!baseTheme) {
@@ -22,7 +22,7 @@ export function cssObjectFromTheme(
 
   const resolvedBaseThemeVars = assignInlineVars(
     themeVars,
-    resolveTheme(baseTheme)
+    resolveThemeVars(baseTheme)
   );
 
   const filteredVars = Object.fromEntries(

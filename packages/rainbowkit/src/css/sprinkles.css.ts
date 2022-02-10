@@ -38,7 +38,7 @@ const themeContractValues = {
   },
 };
 
-export type Theme = typeof themeContractValues;
+export type ThemeVars = typeof themeContractValues;
 
 export const themeVars = createGlobalThemeContract(
   themeContractValues,
@@ -48,7 +48,7 @@ export const themeVars = createGlobalThemeContract(
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
-export type ThemePartial = DeepPartial<Theme>;
+export type ThemePartial = DeepPartial<ThemeVars>;
 
 const spacing = {
   '0': '0',

@@ -1,6 +1,6 @@
-import { Theme } from '../css/sprinkles.css';
+import { ThemeVars } from '../css/sprinkles.css';
 
-export const baseTheme: Pick<Theme, 'radii' | 'fonts'> = {
+export const baseTheme: Pick<ThemeVars, 'radii' | 'fonts'> = {
   fonts: {
     body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   },

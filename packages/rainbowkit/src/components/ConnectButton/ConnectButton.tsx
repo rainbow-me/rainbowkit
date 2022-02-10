@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { useIsMounted } from '../../hooks/useIsMounted';
 import { Box } from '../Box/Box';
 import { Network } from '../Network/Network';
 import { Profile } from '../Profile/Profile';
@@ -8,8 +9,9 @@ import { Profile } from '../Profile/Profile';
 import { Connect } from './Connect';
 
 export function ConnectButton() {
-  const [isMounted, setIsMounted] = useState(false);
   const [{ data: connectData }, connect] = useConnect();
+  const isMounted = useIsMounted();
+
   const [{ data: accountData }] = useAccount({
     fetchEns: true,
   });
