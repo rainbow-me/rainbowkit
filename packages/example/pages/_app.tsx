@@ -1,14 +1,14 @@
-import '@rainbow-me/rainbowkit/index.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import {
-  chain,
+  Chain,
   darkTheme,
   lightTheme,
   RainbowKitProvider,
-  WagmiProvider,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
 import React, { useCallback, useState } from 'react';
+import { chain, Provider as WagmiProvider } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
@@ -20,7 +20,7 @@ const DARK_THEME = 'dark';
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
-const chains = [
+const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
   { ...chain.optimisticEthereum, name: 'Optimism' },
@@ -63,11 +63,7 @@ function App({ Component, pageProps }: AppProps) {
   const theme = isLightTheme ? lightTheme : darkTheme;
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      <RainbowKitProvider
-        chains={chains}
-        // @ts-ignore RainbowKitProviderProps type is not picking up 'theme' as a property
-        theme={theme}
-      >
+      <RainbowKitProvider chains={chains} theme={theme}>
         <Component {...pageProps} />
         <button onClick={toggleTheme} type="button">
           {selectedTheme}

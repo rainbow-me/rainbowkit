@@ -1,9 +1,9 @@
 import { cssObjectFromTheme } from './cssObjectFromTheme';
-import { Theme } from './sprinkles.css';
+import { ThemeVars } from './sprinkles.css';
 
 export function cssStringFromTheme(
-  theme: Theme | (() => Theme),
-  options: { extends?: Theme | (() => Theme) } = {}
+  theme: ThemeVars | (() => ThemeVars),
+  options: { extends?: ThemeVars | (() => ThemeVars) } = {}
 ) {
   return Object.entries(cssObjectFromTheme(theme, options))
     .map(([key, value]) => `${key}:${value};`)

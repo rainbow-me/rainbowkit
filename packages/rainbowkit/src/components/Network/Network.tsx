@@ -32,7 +32,7 @@ export function Network() {
     provider.on('chainChanged', stopSwitching);
 
     return () => {
-      provider.off('chainChanged', stopSwitching);
+      provider.removeListener('chainChanged', stopSwitching);
     };
   }, [connectData.connector, setIsSwitching]);
 

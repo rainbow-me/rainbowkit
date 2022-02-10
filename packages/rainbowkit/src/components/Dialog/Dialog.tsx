@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { Box } from '../Box/Box';
-import { useThemeRootProps } from '../ThemeProvider/ThemeProvider';
+import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
 import { FocusTrap } from './FocusTrap';
 
