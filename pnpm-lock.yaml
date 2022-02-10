@@ -2486,7 +2486,7 @@ packages:
   /@types/qrcode/1.4.2:
     resolution: {integrity: sha512-7uNT9L4WQTNJejHTSTdaJhfBSCN73xtXaHFyBJ8TSwiLhe4PRuTue7Iph0s2nG9R/ifUaSnGhLUOZavlBEqDWQ==}
     dependencies:
-      '@types/node': 17.0.10
+      '@types/node': 17.0.16
     dev: true
 
   /@types/react-dom/17.0.11:

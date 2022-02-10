@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAccount, useConnect } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { useIsMounted } from '../../hooks/useIsMounted';
@@ -26,8 +26,7 @@ export function ConnectButton() {
 
       connect(walletConnectDefault);
     }
-    setIsMounted(true);
-  }, [setIsMounted, connect, connectData.connector]);
+  }, [isMounted, connect, connectData.connector]);
 
   if (!isMounted) {
     return null;
