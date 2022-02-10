@@ -1,7 +1,11 @@
-import React from 'react';
-import { useAccount, useBalance } from 'wagmi';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
+import ConnectOptions from '../ConnectOptions/ConnectOptions';
+import { Dialog } from '../Dialog/Dialog';
+import { DialogContent } from '../Dialog/DialogContent';
 import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
@@ -28,7 +32,33 @@ export function ProfileDetails({
     addressOrName: accountData?.address,
   });
 
-  if (!accountData) {
+  const [{ data: networkData }] = useNetwork();
+
+  const [copiedAddress, setCopiedAddress] = useState(false);
+
+  const copyAddressAction = useCallback(() => {
+    if (accountData?.address) {
+      navigator.clipboard.writeText(accountData?.address);
+      setCopiedAddress(true);
+    }
+  }, [accountData?.address]);
+
+  const [switchWalletOpen, setSwitchWalletOpen] = useState(false);
+
+  useEffect(() => {
+    if (copiedAddress) {
+      const timer = setTimeout(() => {
+        setCopiedAddress(false);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [copiedAddress]);
+
+  useEffect(() => {
+    setSwitchWalletOpen(false);
+  }, [accountData?.address]);
+
+  if (!accountData || !networkData) {
     return null;
   }
 
@@ -38,83 +68,100 @@ export function ProfileDetails({
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
 
+  const explorerUrl = `${chainIdToExplorerLink(networkData?.chain?.id)}${
+    accountData.address
+  }`;
+
   return (
-    <Box display="flex" flexDirection="column" gap="12">
-      <Box
-        alignItems="flex-start"
-        display="flex"
-        flexDirection="row"
-        height="48"
-        justifyContent="space-between"
-      >
-        <Box display="flex" flexDirection="row">
-          {accountData.ens?.avatar ? (
-            <Box marginRight="12">
-              <img
-                alt="ENS Avatar"
-                className={ProfileDetailsImageClassName}
-                src={accountData.ens.avatar}
-              />
-            </Box>
-          ) : null}
-          <Box display="flex" flexDirection="column">
-            <Box marginBottom="6">
-              <Text
-                as="h1"
-                color="modalText"
-                id={titleId}
-                ref={initialFocusRef}
-                size="23"
-                weight="heavy"
-              >
-                {accountName}
-              </Text>
-            </Box>
-            <Box>
-              {balanceData && (
-                <Box>
-                  <Text
-                    as="h1"
-                    color="modalText"
-                    id={titleId}
-                    size="16"
-                    weight="heavy"
-                  >
-                    {balance} ETH
-                  </Text>
-                </Box>
-              )}
+    <>
+      <Box display="flex" flexDirection="column" gap="12">
+        <Box
+          alignItems="flex-start"
+          display="flex"
+          flexDirection="row"
+          height="48"
+          justifyContent="space-between"
+        >
+          <Box display="flex" flexDirection="row">
+            {accountData.ens?.avatar ? (
+              <Box marginRight="12">
+                <img
+                  alt="ENS Avatar"
+                  className={ProfileDetailsImageClassName}
+                  src={accountData.ens.avatar}
+                />
+              </Box>
+            ) : null}
+            <Box display="flex" flexDirection="column">
+              <Box marginBottom="6">
+                <Text
+                  as="h1"
+                  color="modalText"
+                  id={titleId}
+                  ref={initialFocusRef}
+                  size="23"
+                  weight="heavy"
+                >
+                  {accountName}
+                </Text>
+              </Box>
+              <Box>
+                {balanceData && (
+                  <Box>
+                    <Text
+                      as="h1"
+                      color="modalText"
+                      id={titleId}
+                      size="16"
+                      weight="heavy"
+                    >
+                      {balance} ETH
+                    </Text>
+                  </Box>
+                )}
+              </Box>
             </Box>
           </Box>
+          <Box as="button" borderRadius="full" onClick={onClose}>
+            <CloseIcon />
+          </Box>
         </Box>
-        <Box as="button" borderRadius="full" onClick={onClose}>
-          <CloseIcon />
-        </Box>
+        <ProfileDetailsAction
+          action={copyAddressAction}
+          color="modalText"
+          icon={<CopyIcon />}
+          label={copiedAddress ? 'Copied!' : 'Copy Address'}
+        />
+        <ProfileDetailsAction
+          action={() => {}}
+          color="modalText"
+          icon={<ExploreIcon />}
+          label="View on Explorer"
+          url={explorerUrl}
+        />
+        <ProfileDetailsAction
+          action={() => setSwitchWalletOpen(true)}
+          color="modalText"
+          icon={<SwitchAccountIcon />}
+          label="Switch Accounts"
+        />
+        <ProfileDetailsAction
+          action={onDisconnect}
+          color="error"
+          icon={<DisconnectIcon />}
+          label="Disconnect"
+        />
       </Box>
-      <ProfileDetailsAction
-        action={() => {}}
-        color="modalText"
-        icon={<CopyIcon />}
-        label="Copy Address"
-      />
-      <ProfileDetailsAction
-        action={() => {}}
-        color="modalText"
-        icon={<ExploreIcon />}
-        label="View on Etherscan"
-      />
-      <ProfileDetailsAction
-        action={() => {}}
-        color="modalText"
-        icon={<SwitchAccountIcon />}
-        label="Switch Accounts"
-      />
-      <ProfileDetailsAction
-        action={onDisconnect}
-        color="error"
-        icon={<DisconnectIcon />}
-        label="Disconnect"
-      />
-    </Box>
+      <Dialog
+        initialFocusRef={initialFocusRef}
+        onClose={() => setSwitchWalletOpen(false)}
+        open={switchWalletOpen}
+        titleId={titleId}
+      >
+        <DialogContent>
+          <ConnectOptions initialFocusRef={initialFocusRef} />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
