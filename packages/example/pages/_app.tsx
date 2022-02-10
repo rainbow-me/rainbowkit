@@ -1,5 +1,6 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  Chain,
   darkTheme,
   lightTheme,
   RainbowKitProvider,
@@ -19,7 +20,7 @@ const DARK_THEME = 'dark';
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
-const chains = [
+const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
   { ...chain.optimisticEthereum, name: 'Optimism' },
