@@ -62,7 +62,8 @@ export function Profile() {
             color="connectButtonText"
             fontFamily="body"
             fontWeight="bold"
-            padding="6"
+            paddingX="8"
+            paddingY="6"
           >
             <Box alignItems="center" display="flex" height="24">
               {accountData.ens?.avatar ? (

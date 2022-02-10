@@ -55,16 +55,17 @@ export function Network() {
           fontFamily="body"
           fontWeight="bold"
           onClick={() => setOpen(true)}
-          padding="10"
+          paddingX="10"
+          paddingY="8"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="4">
+          <Box alignItems="center" display="flex" gap="8" height="24">
             {currentChainIconUrl ? (
               <img
                 alt={networkData.chain.name ?? 'Chain icon'}
-                height="16"
+                height="24"
                 src={currentChainIconUrl}
-                width="16"
+                width="24"
               />
             ) : null}
             <div>
@@ -114,12 +115,14 @@ export function Network() {
                         gap="6"
                       >
                         {chainIconUrl ? (
-                          <img
-                            alt={chain.name}
-                            height="24"
-                            src={chainIconUrl}
-                            width="24"
-                          />
+                          <Box marginRight="8">
+                            <img
+                              alt={chain.name}
+                              height="24"
+                              src={chainIconUrl}
+                              width="24"
+                            />
+                          </Box>
                         ) : null}
                         <div>{chain.name}</div>
                       </Box>
