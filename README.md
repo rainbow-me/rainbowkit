@@ -25,7 +25,7 @@ Note that the default list of wallets in RainbowKit requires instances of wagmiâ
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import { Provider as WagmiProvider, chain } from 'wagmi';
 
@@ -34,7 +34,7 @@ const infuraId = process.env.INFURA_ID;
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
-const chains = [
+const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
   { ...chain.optimisticEthereum, name: 'Optimism' },
@@ -148,6 +148,47 @@ const App = () => {
     </RainbowKitProvider>
   );
 };
+```
+
+## Chains
+
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
+
+Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmiâ€™s `Chain` type and the chain metadata used by RainbowKit.
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+];
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
+
+```tsx
+const chains: Chain[] = [
+  {
+    ...chain.mainnet,
+    name: 'Ethereum',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...chain.polygonMainnet,
+    name: 'Polygon',
+    iconUrl: 'https://example.com/icons/polygon.png',
+  },
+];
 ```
 
 ## Themes
