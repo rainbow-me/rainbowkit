@@ -12,18 +12,18 @@ import { ProfileDetailsImageClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
+  accountData: ReturnType<typeof useAccount>[0]['data'];
   initialFocusRef: React.MutableRefObject<HTMLHeadingElement | null>;
   onClose: () => void;
+  onDisconnect: () => void;
 }
 
 export function ProfileDetails({
+  accountData,
   initialFocusRef,
   onClose,
+  onDisconnect,
 }: ProfileDetailsProps) {
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: true,
-  });
-
   const [{ data: balanceData }] = useBalance({
     addressOrName: accountData?.address,
   });
@@ -110,7 +110,7 @@ export function ProfileDetails({
         label="Switch Accounts"
       />
       <ProfileDetailsAction
-        action={disconnect}
+        action={onDisconnect}
         color="error"
         icon={<DisconnectIcon />}
         label="Disconnect"
