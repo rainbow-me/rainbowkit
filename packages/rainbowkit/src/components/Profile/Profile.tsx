@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
@@ -11,7 +11,6 @@ import { ProfilePillImageClassName } from './Profile.css';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
-  const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   });
@@ -81,16 +80,10 @@ export function Profile() {
       </div>
 
       {accountData && (
-        <Dialog
-          initialFocusRef={initialFocusRef}
-          onClose={() => setOpen(false)}
-          open={open}
-          titleId={titleId}
-        >
+        <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
           <DialogContent>
             <ProfileDetails
               accountData={accountData}
-              initialFocusRef={initialFocusRef}
               onClose={() => setOpen(false)}
               onDisconnect={() => disconnect()}
             />

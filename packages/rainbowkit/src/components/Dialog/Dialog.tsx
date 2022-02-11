@@ -1,7 +1,6 @@
 import React, {
   MouseEventHandler,
   ReactNode,
-  RefObject,
   useCallback,
   useEffect,
 } from 'react';
@@ -18,27 +17,11 @@ interface DialogProps {
   open: boolean;
   onClose: () => void;
   titleId: string;
-  initialFocusRef: RefObject<HTMLElement | null>;
+  onMountAutoFocus?: (event: Event) => void;
   children: ReactNode;
 }
 
-export function Dialog({
-  children,
-  initialFocusRef,
-  onClose,
-  open,
-  titleId,
-}: DialogProps) {
-  useEffect(() => {
-    const previouslyActiveElement = document.activeElement;
-
-    initialFocusRef?.current?.focus();
-
-    return () => {
-      (previouslyActiveElement as HTMLElement).focus?.();
-    };
-  }, [initialFocusRef]);
-
+export function Dialog({ children, onClose, open, titleId }: DialogProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
       open && event.key === 'Escape' && onClose();

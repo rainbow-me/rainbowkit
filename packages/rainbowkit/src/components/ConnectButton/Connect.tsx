@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Box } from '../Box/Box';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
@@ -6,7 +6,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 
 export function Connect() {
   const [open, setOpen] = useState(false);
-  const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
+
   const titleId = 'rk_connect_title';
 
   return (
@@ -35,14 +35,9 @@ export function Connect() {
         </Box>
       </div>
 
-      <Dialog
-        initialFocusRef={initialFocusRef}
-        onClose={() => setOpen(false)}
-        open={open}
-        titleId={titleId}
-      >
+      <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
         <DialogContent>
-          <ConnectOptions initialFocusRef={initialFocusRef} />
+          <ConnectOptions />
         </DialogContent>
       </Dialog>
     </>
