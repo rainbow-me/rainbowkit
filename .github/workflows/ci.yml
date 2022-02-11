@@ -35,8 +35,3 @@ jobs:
         run: pnpm build -r
       - name: Run tests
         run: pnpm test
-      - name: Coverage
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage.lcov
