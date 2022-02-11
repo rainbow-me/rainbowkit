@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
@@ -12,7 +12,6 @@ export function Network() {
   const [isSwitching, setIsSwitching] = useState(false);
   const [{ data: connectData }] = useConnect();
   const [{ data: networkData }, switchNetwork] = useNetwork();
-  const initialFocusRef = useRef<HTMLHeadingElement | null>(null);
   const titleId = 'rk_network_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
@@ -78,22 +77,10 @@ export function Network() {
         </Box>
       </div>
 
-      <Dialog
-        initialFocusRef={initialFocusRef}
-        onClose={() => setOpen(false)}
-        open={open}
-        titleId={titleId}
-      >
+      <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
         <DialogContent>
           <Box display="flex" flexDirection="column" gap="24">
-            <Text
-              as="h1"
-              color="modalText"
-              id={titleId}
-              ref={initialFocusRef}
-              size="23"
-              tabIndex={-1}
-            >
+            <Text as="h1" color="modalText" id={titleId} size="23">
               Network
             </Text>
             <Box display="flex" flexDirection="column" gap="18">

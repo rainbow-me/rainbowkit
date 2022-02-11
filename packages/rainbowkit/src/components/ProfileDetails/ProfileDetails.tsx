@@ -17,14 +17,12 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   accountData: ReturnType<typeof useAccount>[0]['data'];
-  initialFocusRef: React.MutableRefObject<HTMLHeadingElement | null>;
   onClose: () => void;
   onDisconnect: () => void;
 }
 
 export function ProfileDetails({
   accountData,
-  initialFocusRef,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
@@ -98,7 +96,6 @@ export function ProfileDetails({
                   as="h1"
                   color="modalText"
                   id={titleId}
-                  ref={initialFocusRef}
                   size="23"
                   weight="heavy"
                 >
@@ -153,13 +150,12 @@ export function ProfileDetails({
         />
       </Box>
       <Dialog
-        initialFocusRef={initialFocusRef}
         onClose={() => setSwitchWalletOpen(false)}
         open={switchWalletOpen}
         titleId={titleId}
       >
         <DialogContent>
-          <ConnectOptions initialFocusRef={initialFocusRef} />
+          <ConnectOptions />
         </DialogContent>
       </Dialog>
     </>

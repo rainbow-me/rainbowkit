@@ -3,26 +3,13 @@ import { Box } from '../Box/Box';
 import { useWallets } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
 
-interface ConnectOptionsProps {
-  initialFocusRef: React.MutableRefObject<HTMLHeadingElement | null>;
-}
-
-export default function ConnectOptions({
-  initialFocusRef,
-}: ConnectOptionsProps) {
+export default function ConnectOptions() {
   const wallets = useWallets();
   const titleId = 'rk_connect_title';
 
   return (
     <Box display="flex" flexDirection="column" gap="24">
-      <Text
-        as="h1"
-        color="modalText"
-        id={titleId}
-        ref={initialFocusRef}
-        size="23"
-        tabIndex={-1}
-      >
+      <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet
       </Text>
       <Box display="flex" flexDirection="column" gap="18">
