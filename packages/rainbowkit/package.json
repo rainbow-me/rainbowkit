@@ -60,6 +60,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rainbow-me/rainbowkit.git",
-    "directory": "packages/rainbowkit-old"
+    "directory": "packages/rainbowkit"
   }
 }

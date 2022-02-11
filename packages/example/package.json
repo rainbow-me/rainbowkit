@@ -1,14 +1,11 @@
 {
   "name": "example",
-  "version": "1.0.17",
+  "version": "0.0.0",
   "description": "",
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "@ethersproject/bignumber": "^5.5.0",
-    "@ethersproject/providers": "^5.5.0",
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@vanilla-extract/next-plugin": "^1.0.1",
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/walletconnect-connector": "6.2.4",
     "@web3-react/walletlink-connector": "^6.2.8",
