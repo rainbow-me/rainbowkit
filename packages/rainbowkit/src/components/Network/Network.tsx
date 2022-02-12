@@ -103,6 +103,7 @@ export function Network() {
 
                   return (
                     <MenuButton
+                      disabled={isCurrentChain}
                       key={chain.id}
                       onClick={
                         isCurrentChain
@@ -114,13 +115,10 @@ export function Network() {
                       }
                     >
                       <Box
-                        as="button"
                         color="modalText"
-                        disabled={isCurrentChain}
                         fontFamily="body"
                         fontSize="18"
                         fontWeight={isCurrentChain ? 'heavy' : 'bold'}
-                        type="button"
                       >
                         <Box
                           alignItems="center"

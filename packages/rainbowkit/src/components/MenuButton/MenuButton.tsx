@@ -4,21 +4,21 @@ import { MenuButtonClassName } from './MenuButton.css';
 
 type Props = {
   children?: React.ReactNode;
-  key?: string;
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
   as?: React.ElementType<any>;
+  disabled?: boolean;
 };
 
 export const MenuButton = React.forwardRef(
   (
-    { as = 'button', children, key, onClick, ...urlProps }: Props,
+    { as = 'button', children, disabled = false, onClick, ...urlProps }: Props,
     ref: React.Ref<HTMLElement>
   ) => {
     return (
       <Box
         as={as}
         className={MenuButtonClassName}
-        key={key}
+        disabled={disabled}
         onClick={onClick}
         ref={ref}
         {...urlProps}
