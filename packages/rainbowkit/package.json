@@ -44,6 +44,7 @@
     "wagmi": "<1"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.2",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.4",
@@ -55,7 +56,8 @@
     "@vanilla-extract/sprinkles": "^1.3.2",
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
-    "focus-visible": "^5.2.0"
+    "focus-visible": "^5.2.0",
+    "qrcode": "^1.5.0"
   },
   "repository": {
     "type": "git",

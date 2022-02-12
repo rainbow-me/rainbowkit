@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useConnect } from 'wagmi';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Box } from '../Box/Box';
+import { QRCode } from '../QRCode/QRCode';
 import { useWallets } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
 
 export default function ConnectOptions() {
   const wallets = useWallets();
   const titleId = 'rk_connect_title';
+  const [uri, setURI] = useState('');
+  const [{ data: connectData }, connect] = useConnect();
+
+  useEffect(() => {
+    if (!connectData.connector) {
+      const walletConnectDefault = new WalletConnectConnector({
+        options: {
+          qrcode: false,
+        },
+      });
+
+      connect(walletConnectDefault);
+    }
+
+    if (connectData.connector) {
+      setURI(connectData.connector.getProvider().connector.uri);
+    }
+  }, [connect, connectData.connector]);
 
   return (
     <Box display="flex" flexDirection="column" gap="24">
       <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet
       </Text>
+
+      <Box>{uri && <QRCode logoSize={72} size={342} uri={uri} />}</Box>
+
       <Box display="flex" flexDirection="column" gap="18">
         {wallets.map(wallet => {
           return (
