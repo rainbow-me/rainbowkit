@@ -48,7 +48,7 @@ export function Profile() {
         >
           {balanceData && (
             <Box padding="8" paddingLeft="12">
-              {ethBalanceFormatted} ETH
+              {ethBalanceFormatted} {balanceData.symbol}
             </Box>
           )}
           <Box
