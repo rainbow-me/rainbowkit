@@ -1,24 +1,35 @@
 import React from 'react';
 import { Box } from '../Box/Box';
-import { MenuButtonClassName } from './MenuButton.css';
+import {
+  MenuButtonClassName,
+  SelectedMenuButtonClassName,
+} from './MenuButton.css';
 
 type Props = {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
   as?: React.ElementType<any>;
-  disabled?: boolean;
+  currentlySelected?: boolean;
 };
 
 export const MenuButton = React.forwardRef(
   (
-    { as = 'button', children, disabled = false, onClick, ...urlProps }: Props,
+    {
+      as = 'button',
+      children,
+      currentlySelected = false,
+      onClick,
+      ...urlProps
+    }: Props,
     ref: React.Ref<HTMLElement>
   ) => {
     return (
       <Box
         as={as}
-        className={MenuButtonClassName}
-        disabled={disabled}
+        className={
+          currentlySelected ? SelectedMenuButtonClassName : MenuButtonClassName
+        }
+        disabled={currentlySelected}
         onClick={onClick}
         ref={ref}
         {...urlProps}

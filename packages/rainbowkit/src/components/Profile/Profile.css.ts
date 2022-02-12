@@ -20,3 +20,9 @@ export const ProfilePillClassName = style([
     'transition': '0.125s ease',
   },
 ]);
+
+export const InnerProfilePillClassName = style([
+  {
+    transition: '0.125s ease',
+  },
+]);

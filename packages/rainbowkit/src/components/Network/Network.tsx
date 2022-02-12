@@ -7,7 +7,7 @@ import { DropdownIcon } from '../Icons/Dropdown';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
-import { NetworkClassName } from './Network.css';
+import { NetworkClassName, SelectedMarkClassName } from './Network.css';
 
 export function Network() {
   const [open, setOpen] = useState(false);
@@ -103,13 +103,13 @@ export function Network() {
 
                   return (
                     <MenuButton
-                      disabled={isCurrentChain}
+                      currentlySelected={isCurrentChain}
                       key={chain.id}
                       onClick={
                         isCurrentChain
                           ? undefined
                           : () => {
-                              setIsSwitching(true);
+                              setIsSwitching(chain.id);
                               switchNetwork(chain.id);
                             }
                       }
@@ -124,19 +124,35 @@ export function Network() {
                           alignItems="center"
                           display="flex"
                           flexDirection="row"
-                          gap="4"
-                          height="24"
+                          justifyContent="space-between"
                         >
-                          {chainIconUrl ? (
-                            <Box height="full" marginRight="8">
-                              <img
-                                alt={chain.name}
-                                src={chainIconUrl}
-                                width="24"
-                              />
-                            </Box>
-                          ) : null}
-                          <div>{chain.name}</div>
+                          <Box
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                            gap="4"
+                            height="24"
+                          >
+                            {chainIconUrl ? (
+                              <Box height="full" marginRight="8">
+                                <img
+                                  alt={chain.name}
+                                  src={chainIconUrl}
+                                  width="24"
+                                />
+                              </Box>
+                            ) : null}
+                            <div>{chain.name}</div>
+                          </Box>
+                          {isCurrentChain && (
+                            <Box
+                              borderRadius="full"
+                              className={SelectedMarkClassName}
+                              height="12"
+                              marginRight="4"
+                              width="12"
+                            />
+                          )}
                         </Box>
                       </Box>
                     </MenuButton>
@@ -149,7 +165,7 @@ export function Network() {
           <DialogContent marginTop="14">
             <Box padding="10">
               <Text color="modalText" font="body" size="18" weight="bold">
-                Check your device...
+                Confirm in your wallet...
               </Text>
             </Box>
           </DialogContent>

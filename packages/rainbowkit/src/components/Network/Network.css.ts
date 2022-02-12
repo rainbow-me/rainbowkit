@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { sprinkles } from '../../css/sprinkles.css';
 
 export const NetworkClassName = style([
   {
@@ -12,3 +13,7 @@ export const NetworkClassName = style([
     'transition': '0.125s ease',
   },
 ]);
+
+export const SelectedMarkClassName = sprinkles({
+  background: 'connectionIndicator',
+});
