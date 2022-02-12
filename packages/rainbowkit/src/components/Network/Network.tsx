@@ -144,11 +144,17 @@ export function Network() {
                   );
                 })}
             </Box>
-            {isSwitching ? (
-              <Text color="modalText">Check your device...</Text>
-            ) : null}
           </Box>
         </DialogContent>
+        {isSwitching && (
+          <DialogContent marginTop="14">
+            <Box padding="10">
+              <Text color="modalText" font="body" size="18" weight="bold">
+                Check your device...
+              </Text>
+            </Box>
+          </DialogContent>
+        )}
       </Dialog>
     </>
   );
