@@ -128,10 +128,9 @@ export function Network() {
                           height="24"
                         >
                           {chainIconUrl ? (
-                            <Box marginRight="8">
+                            <Box height="full" marginRight="8">
                               <img
                                 alt={chain.name}
-                                height="24"
                                 src={chainIconUrl}
                                 width="24"
                               />
