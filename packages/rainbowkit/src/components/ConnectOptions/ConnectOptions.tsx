@@ -29,7 +29,7 @@ export default function ConnectOptions() {
   }, [connect, connectData.connector]);
 
   return (
-    <Box display="flex" flexDirection="column" gap="24">
+    <Box display="flex" flexDirection="column" gap="24" padding="14">
       <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet
       </Text>

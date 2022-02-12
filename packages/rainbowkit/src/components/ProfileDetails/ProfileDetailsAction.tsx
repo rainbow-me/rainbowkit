@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
@@ -25,21 +26,22 @@ export function ProfileDetailsAction({
       }
     : {};
   return (
-    <Box
-      as={url ? 'a' : 'button'}
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      onClick={action}
-      paddingY="16"
-      {...urlProps}
-    >
-      <Box>
-        <Text color={color} size="18" weight="bold">
-          {label}
-        </Text>
+    <MenuButton as={url ? 'a' : 'button'} onClick={action} {...urlProps}>
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+      >
+        <Box>
+          <Text color={color} size="18" weight="bold">
+            {label}
+          </Text>
+        </Box>
+        <Box color={color} height="max">
+          {icon}
+        </Box>
       </Box>
-      <Box color={color}>{icon}</Box>
-    </Box>
+    </MenuButton>
   );
 }

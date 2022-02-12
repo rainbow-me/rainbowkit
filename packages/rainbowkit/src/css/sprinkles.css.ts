@@ -30,6 +30,7 @@ const themeContractValues = {
   },
   radii: {
     connectButton: '',
+    menuButton: '',
     modal: '',
   },
   shadows: {
@@ -74,6 +75,7 @@ const dimensions = {
   '28': '28px',
   '40': '40px',
   '48': '48px',
+  '54': '54px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',

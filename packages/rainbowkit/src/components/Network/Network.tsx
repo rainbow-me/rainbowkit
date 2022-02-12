@@ -4,8 +4,10 @@ import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
+import { NetworkClassName } from './Network.css';
 
 export function Network() {
   const [open, setOpen] = useState(false);
@@ -50,6 +52,7 @@ export function Network() {
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
+          className={NetworkClassName}
           color="connectButtonText"
           display="flex"
           fontFamily="body"
@@ -80,23 +83,26 @@ export function Network() {
 
       <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
         <DialogContent>
-          <Box display="flex" flexDirection="column" gap="24">
-            <Text as="h1" color="modalText" id={titleId} size="23">
-              Network
-            </Text>
-            <Box display="flex" flexDirection="column" gap="18">
+          <Box display="flex" flexDirection="column" gap="14">
+            <Box padding="14" paddingBottom="0">
+              <Text
+                as="h1"
+                color="modalText"
+                id={titleId}
+                size="23"
+                weight="heavy"
+              >
+                Select Network
+              </Text>
+            </Box>
+            <Box display="flex" flexDirection="column" gap="10">
               {switchNetwork &&
                 networkData.chains.map(chain => {
                   const isCurrentChain = chain.id === networkData.chain?.id;
                   const chainIconUrl = chainIconUrlsById[chain.id];
 
                   return (
-                    <Box
-                      as="button"
-                      color="modalText"
-                      disabled={isCurrentChain}
-                      fontFamily="body"
-                      fontWeight={isCurrentChain ? 'heavy' : undefined}
+                    <MenuButton
                       key={chain.id}
                       onClick={
                         isCurrentChain
@@ -106,27 +112,37 @@ export function Network() {
                               switchNetwork(chain.id);
                             }
                       }
-                      type="button"
                     >
                       <Box
-                        alignItems="center"
-                        display="flex"
-                        flexDirection="row"
-                        gap="6"
+                        as="button"
+                        color="modalText"
+                        disabled={isCurrentChain}
+                        fontFamily="body"
+                        fontSize="18"
+                        fontWeight={isCurrentChain ? 'heavy' : 'bold'}
+                        type="button"
                       >
-                        {chainIconUrl ? (
-                          <Box marginRight="8">
-                            <img
-                              alt={chain.name}
-                              height="24"
-                              src={chainIconUrl}
-                              width="24"
-                            />
-                          </Box>
-                        ) : null}
-                        <div>{chain.name}</div>
+                        <Box
+                          alignItems="center"
+                          display="flex"
+                          flexDirection="row"
+                          gap="4"
+                          height="24"
+                        >
+                          {chainIconUrl ? (
+                            <Box marginRight="8">
+                              <img
+                                alt={chain.name}
+                                height="24"
+                                src={chainIconUrl}
+                                width="24"
+                              />
+                            </Box>
+                          ) : null}
+                          <div>{chain.name}</div>
+                        </Box>
                       </Box>
-                    </Box>
+                    </MenuButton>
                   );
                 })}
             </Box>

@@ -7,7 +7,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 import { TxList } from '../Txs/TxList';
-import { ProfilePillImageClassName } from './Profile.css';
+import { ProfilePillClassName, ProfilePillImageClassName } from './Profile.css';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
@@ -39,6 +39,7 @@ export function Profile() {
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
+          className={ProfilePillClassName}
           color="connectButtonText"
           display="flex"
           fontFamily="body"
