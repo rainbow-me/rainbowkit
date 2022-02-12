@@ -112,7 +112,7 @@ export function ProfileDetails({
                       size="16"
                       weight="heavy"
                     >
-                      {balance} ETH
+                      {balance} {balanceData.symbol}
                     </Text>
                   </Box>
                 )}
