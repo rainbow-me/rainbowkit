@@ -1,0 +1,31 @@
+{
+  "name": "rainbowkit-site",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/providers": "^5.5.0",
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "@vanilla-extract/babel-plugin": "^1.1.4",
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/next-plugin": "^2.0.1",
+    "@web3-react/injected-connector": "^6.0.7",
+    "@web3-react/walletconnect-connector": "6.2.4",
+    "@web3-react/walletlink-connector": "^6.2.8",
+    "ethers": "^5.0.0",
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "wagmi": "<1"
+  },
+  "scripts": {
+    "dev": "next",
+    "typecheck": "pnpm tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
