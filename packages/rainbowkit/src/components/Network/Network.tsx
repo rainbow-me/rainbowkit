@@ -72,7 +72,6 @@ export function Network() {
               {networkData.chain?.unsupported && '(unsupported)'}
             </div>
           </Box>
-          {networkData.chain?.unsupported && '(unsupported)'}
           <DropdownIcon />
         </Box>
       </div>

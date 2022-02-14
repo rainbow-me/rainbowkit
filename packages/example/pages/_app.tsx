@@ -17,8 +17,14 @@ const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
 const LIGHT_THEME = 'light';
 const DARK_THEME = 'dark';
 
+const isChainSupported = (chainId?: number) =>
+  chains.some(x => x.id === chainId);
+
 const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
+  new providers.InfuraProvider(
+    isChainSupported(chainId) ? chainId : chain.mainnet.id,
+    infuraId
+  );
 
 const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
