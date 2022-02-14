@@ -5,9 +5,11 @@ export const darkTheme = createTheme({
   ...baseTheme,
   colors: {
     connectButtonBackground: '#000',
+    connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
       'linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12))',
     connectButtonText: 'white',
+    connectButtonTextError: 'white',
     connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
     error: '#FF494A',

@@ -47,10 +47,18 @@ export function Network() {
         <Box
           alignItems="center"
           as="button"
-          background="connectButtonBackground"
+          background={
+            networkData.chain.unsupported
+              ? 'connectButtonBackgroundError'
+              : 'connectButtonBackground'
+          }
           borderRadius="connectButton"
           boxShadow="connectButton"
-          color="connectButtonText"
+          color={
+            networkData.chain.unsupported
+              ? 'connectButtonTextError'
+              : 'connectButtonText'
+          }
           display="flex"
           fontFamily="body"
           fontWeight="bold"
@@ -58,20 +66,21 @@ export function Network() {
           padding="10"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="4">
-            {currentChainIconUrl ? (
-              <img
-                alt={networkData.chain.name ?? 'Chain icon'}
-                height="16"
-                src={currentChainIconUrl}
-                width="16"
-              />
-            ) : null}
-            <div>
-              {networkData.chain.name ?? networkData.chain.id}{' '}
-              {networkData.chain?.unsupported && '(unsupported)'}
-            </div>
-          </Box>
+          {networkData.chain?.unsupported ? (
+            <Box>Invalid network</Box>
+          ) : (
+            <Box alignItems="center" display="flex" gap="4">
+              {currentChainIconUrl ? (
+                <img
+                  alt={networkData.chain.name ?? 'Chain icon'}
+                  height="16"
+                  src={currentChainIconUrl}
+                  width="16"
+                />
+              ) : null}
+              <div>{networkData.chain.name ?? networkData.chain.id}</div>
+            </Box>
+          )}
           <DropdownIcon />
         </Box>
       </div>
