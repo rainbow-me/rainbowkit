@@ -3,28 +3,24 @@ import { sprinkles } from '../../css/sprinkles.css';
 
 export const MenuButtonClassName = style([
   sprinkles({
+    background: {
+      active: 'menuItemActiveBackground',
+      hover: 'menuItemBackground',
+    },
     borderRadius: 'menuButton',
     paddingX: '14',
     paddingY: '10',
+    transform: {
+      active: 'shrink',
+      hover: 'grow',
+    },
+    transition: 'default',
   }),
-  {
-    ':hover': {
-      backgroundColor: 'rgba(196, 196, 196, 0.1)',
-      transform: 'scale(1.025)',
-    },
-    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-    ':active': {
-      backgroundColor: 'rgba(196, 196, 196, 0.2)',
-      transform: 'scale(0.975)',
-    },
-    'transition': '0.125s ease',
-    'will-change': 'transform',
-  },
 ]);
 
 export const SelectedMenuButtonClassName = style([
   sprinkles({
-    background: 'menuItemSelectedBackground',
+    background: 'menuItemBackground',
     borderRadius: 'menuButton',
     paddingX: '14',
     paddingY: '10',

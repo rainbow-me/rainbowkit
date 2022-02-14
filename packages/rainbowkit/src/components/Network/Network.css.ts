@@ -1,18 +1,12 @@
-import { style } from '@vanilla-extract/css';
 import { sprinkles } from '../../css/sprinkles.css';
 
-export const NetworkClassName = style([
-  {
-    ':hover': {
-      transform: 'scale(1.025)',
-    },
-    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-    ':active': {
-      transform: 'scale(0.95)',
-    },
-    'transition': '0.125s ease',
+export const NetworkClassName = sprinkles({
+  transform: {
+    active: 'shrink',
+    hover: 'grow',
   },
-]);
+  transition: 'default',
+});
 
 export const SelectedMarkClassName = sprinkles({
   background: 'connectionIndicator',

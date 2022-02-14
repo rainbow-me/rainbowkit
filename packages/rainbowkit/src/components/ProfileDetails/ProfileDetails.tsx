@@ -127,6 +127,7 @@ export function ProfileDetails({
             as="button"
             borderRadius="full"
             className={CloseButtonClassName}
+            height="34"
             onClick={onClose}
           >
             <CloseIcon />
