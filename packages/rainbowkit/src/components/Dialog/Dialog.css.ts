@@ -6,6 +6,11 @@ const slideUp = keyframes({
   '100%': { transform: 'translateY(0deg)' },
 });
 
+const fadeIn = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
 export const overlay = style([
   sprinkles({
     alignItems: 'center',
@@ -17,6 +22,7 @@ export const overlay = style([
     width: 'full',
   }),
   {
+    animation: `${fadeIn} 350ms ease`,
     left: 0,
     top: 0,
   },
@@ -29,7 +35,7 @@ export const content = style([
     position: 'relative',
   }),
   {
-    animation: `${slideUp} 500ms cubic-bezier(0.16, 1, 0.3, 1)`,
+    animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 350ms ease`,
     width: '390px',
   },
 ]);

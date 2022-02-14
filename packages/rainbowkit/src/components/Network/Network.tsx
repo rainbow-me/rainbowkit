@@ -4,8 +4,10 @@ import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
+import { NetworkClassName, SelectedMarkClassName } from './Network.css';
 
 export function Network() {
   const [open, setOpen] = useState(false);
@@ -50,21 +52,23 @@ export function Network() {
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
+          className={NetworkClassName}
           color="connectButtonText"
           display="flex"
           fontFamily="body"
           fontWeight="bold"
           onClick={() => setOpen(true)}
-          padding="10"
+          paddingX="10"
+          paddingY="8"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="4">
+          <Box alignItems="center" display="flex" gap="8" height="24">
             {currentChainIconUrl ? (
               <img
                 alt={networkData.chain.name ?? 'Chain icon'}
-                height="16"
+                height="24"
                 src={currentChainIconUrl}
-                width="16"
+                width="24"
               />
             ) : null}
             <div>
@@ -79,59 +83,93 @@ export function Network() {
 
       <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
         <DialogContent>
-          <Box display="flex" flexDirection="column" gap="24">
-            <Text as="h1" color="modalText" id={titleId} size="23">
-              Network
-            </Text>
-            <Box display="flex" flexDirection="column" gap="18">
+          <Box display="flex" flexDirection="column" gap="14">
+            <Box padding="14" paddingBottom="0">
+              <Text
+                as="h1"
+                color="modalText"
+                id={titleId}
+                size="23"
+                weight="heavy"
+              >
+                Select Network
+              </Text>
+            </Box>
+            <Box display="flex" flexDirection="column" gap="10">
               {switchNetwork &&
                 networkData.chains.map(chain => {
                   const isCurrentChain = chain.id === networkData.chain?.id;
                   const chainIconUrl = chainIconUrlsById[chain.id];
 
                   return (
-                    <Box
-                      as="button"
-                      color="modalText"
-                      disabled={isCurrentChain}
-                      fontFamily="body"
-                      fontWeight={isCurrentChain ? 'heavy' : undefined}
+                    <MenuButton
+                      currentlySelected={isCurrentChain}
                       key={chain.id}
                       onClick={
                         isCurrentChain
                           ? undefined
                           : () => {
-                              setIsSwitching(true);
+                              setIsSwitching(chain.id);
                               switchNetwork(chain.id);
                             }
                       }
-                      type="button"
                     >
                       <Box
-                        alignItems="center"
-                        display="flex"
-                        flexDirection="row"
-                        gap="6"
+                        color="modalText"
+                        fontFamily="body"
+                        fontSize="18"
+                        fontWeight={isCurrentChain ? 'heavy' : 'bold'}
                       >
-                        {chainIconUrl ? (
-                          <img
-                            alt={chain.name}
+                        <Box
+                          alignItems="center"
+                          display="flex"
+                          flexDirection="row"
+                          justifyContent="space-between"
+                        >
+                          <Box
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                            gap="4"
                             height="24"
-                            src={chainIconUrl}
-                            width="24"
-                          />
-                        ) : null}
-                        <div>{chain.name}</div>
+                          >
+                            {chainIconUrl ? (
+                              <Box height="full" marginRight="8">
+                                <img
+                                  alt={chain.name}
+                                  src={chainIconUrl}
+                                  width="24"
+                                />
+                              </Box>
+                            ) : null}
+                            <div>{chain.name}</div>
+                          </Box>
+                          {isCurrentChain && (
+                            <Box
+                              borderRadius="full"
+                              className={SelectedMarkClassName}
+                              height="12"
+                              marginRight="4"
+                              width="12"
+                            />
+                          )}
+                        </Box>
                       </Box>
-                    </Box>
+                    </MenuButton>
                   );
                 })}
             </Box>
-            {isSwitching ? (
-              <Text color="modalText">Check your device...</Text>
-            ) : null}
           </Box>
         </DialogContent>
+        {isSwitching && (
+          <DialogContent marginTop="14">
+            <Box padding="10">
+              <Text color="modalText" font="body" size="18" weight="bold">
+                Confirm in your wallet...
+              </Text>
+            </Box>
+          </DialogContent>
+        )}
       </Dialog>
     </>
   );

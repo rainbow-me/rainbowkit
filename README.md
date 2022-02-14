@@ -320,7 +320,8 @@ const myCustomTheme: Theme = {
     error: '...',
     menuBackground: '...',
     menuDivider: '...',
-    menuItemSelectedBackground: '...',
+    menuItemActiveBackground: '...',
+    menuItemBackground: '...',
     menuText: '...',
     menuTextAction: '...',
     menuTextDisconnect: '...',
@@ -336,6 +337,7 @@ const myCustomTheme: Theme = {
   },
   radii: {
     connectButton: '...',
+    menuButton: '...',
     modal: '...',
   },
   shadows: {

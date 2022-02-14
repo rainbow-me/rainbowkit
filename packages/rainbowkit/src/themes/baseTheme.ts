@@ -6,6 +6,7 @@ export const baseTheme: Pick<ThemeVars, 'radii' | 'fonts'> = {
   },
   radii: {
     connectButton: '16px',
+    menuButton: '18px',
     modal: '28px',
   },
 };

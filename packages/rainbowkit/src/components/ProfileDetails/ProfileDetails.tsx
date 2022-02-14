@@ -12,7 +12,10 @@ import { DisconnectIcon } from '../Icons/Disconnect';
 import { ExploreIcon } from '../Icons/Explore';
 import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
-import { ProfileDetailsImageClassName } from './ProfileDetails.css';
+import {
+  CloseButtonClassName,
+  ProfileDetailsImageClassName,
+} from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
@@ -77,8 +80,9 @@ export function ProfileDetails({
           alignItems="flex-start"
           display="flex"
           flexDirection="row"
-          height="48"
+          height="54"
           justifyContent="space-between"
+          margin="10"
         >
           <Box display="flex" flexDirection="row">
             {accountData.ens?.avatar ? (
@@ -119,7 +123,13 @@ export function ProfileDetails({
               </Box>
             </Box>
           </Box>
-          <Box as="button" borderRadius="full" onClick={onClose}>
+          <Box
+            as="button"
+            borderRadius="full"
+            className={CloseButtonClassName}
+            height="34"
+            onClick={onClose}
+          >
             <CloseIcon />
           </Box>
         </Box>
