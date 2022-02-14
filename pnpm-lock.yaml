@@ -32,7 +32,7 @@ importers:
       react-dom: ^17.0.2
       recursive-readdir-files: ^2.0.7
       typescript: ~4.5.2
-      wagmi: ^0.2.9
+      wagmi: ^0.2.10
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -62,7 +62,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       recursive-readdir-files: 2.0.7
       typescript: 4.5.5
-      wagmi: 0.2.9_@babel+core@7.17.2+react@17.0.2
+      wagmi: 0.2.10_@babel+core@7.17.2+react@17.0.2
 
   packages/example:
     specifiers:
@@ -7396,8 +7396,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /wagmi/0.2.9_@babel+core@7.17.2+react@17.0.2:
-    resolution: {integrity: sha512-lHmpC1O30t2Q80N2GuhoAQZiXG/I1gQO3HGdrn9wS8fbjaYM653JgjbwWzY9kCMqrPEdK5s2BDPhgqguHzu0gQ==}
+  /wagmi/0.2.10_@babel+core@7.17.2+react@17.0.2:
+    resolution: {integrity: sha512-hTP9HfWrtuQzi+kN9IHi7sk/2nA+vsvKmQHEI9njSuMgGiJrLAGb9viHLQdGazlRR6aSoKBGz5CteXVhlV8AQg==}
     peerDependencies:
       ethers: ^5.5.1
       react: ^17.0.0
