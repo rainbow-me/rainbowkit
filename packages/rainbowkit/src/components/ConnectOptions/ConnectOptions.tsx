@@ -34,7 +34,9 @@ export default function ConnectOptions() {
         Connect Wallet
       </Text>
 
-      <Box>{uri && <QRCode logoSize={72} size={342} uri={uri} />}</Box>
+      <Box style={{ height: '342px' }}>
+        {uri && <QRCode logoSize={72} size={342} uri={uri} />}
+      </Box>
 
       <Box display="flex" flexDirection="column" gap="18">
         {wallets.map(wallet => {
