@@ -7,7 +7,6 @@ import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
-import * as styles from './ConnectButton.css';
 import { formatAddress } from './formatAddress';
 
 const useBooleanState = (initialValue: boolean) => {
@@ -129,10 +128,14 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
         >
           <Box alignItems="center" display="flex" height="24">
             {account.ensAvatar ? (
-              <img
+              <Box
                 alt="ENS Avatar"
-                className={styles.avatar}
+                as="img"
+                borderRadius="full"
+                height="24"
+                marginRight="6"
                 src={account.ensAvatar}
+                width="24"
               />
             ) : null}
             {account.displayName}
