@@ -7,8 +7,10 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     connectButtonBackground: '',
+    connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
     connectButtonText: '',
+    connectButtonTextError: '',
     connectedProfileBorder: '',
     connectionIndicator: '',
     error: '',

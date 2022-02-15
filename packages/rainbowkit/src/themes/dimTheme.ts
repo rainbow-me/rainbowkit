@@ -5,9 +5,11 @@ export const dimTheme = createTheme({
   ...baseTheme,
   colors: {
     connectButtonBackground: '#1A1B1F',
+    connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
       'linear-gradient(0deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.15))',
     connectButtonText: 'white',
+    connectButtonTextError: 'white',
     connectedProfileBorder: '#FF007A',
     connectionIndicator: '#30E000',
     error: '#FF494A',

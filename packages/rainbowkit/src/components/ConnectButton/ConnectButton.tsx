@@ -57,10 +57,16 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
         <Box
           alignItems="center"
           as="button"
-          background="connectButtonBackground"
+          background={
+            chain.unsupported
+              ? 'connectButtonBackgroundError'
+              : 'connectButtonBackground'
+          }
           borderRadius="connectButton"
           boxShadow="connectButton"
-          color="connectButtonText"
+          color={
+            chain.unsupported ? 'connectButtonTextError' : 'connectButtonText'
+          }
           display="flex"
           fontFamily="body"
           fontWeight="bold"
@@ -71,20 +77,21 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
           transition="default"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="8" height="24">
-            {chain.iconUrl ? (
-              <img
-                alt={chain.name ?? 'Chain icon'}
-                height="24"
-                src={chain.iconUrl}
-                width="24"
-              />
-            ) : null}
-            <div>
-              {chain.name ?? chain.id}
-              {chain?.unsupported && ' (unsupported)'}
-            </div>
-          </Box>
+          {chain.unsupported ? (
+            <Box>Invalid network</Box>
+          ) : (
+            <Box alignItems="center" display="flex" gap="4">
+              {chain.iconUrl ? (
+                <img
+                  alt={chain.name ?? 'Chain icon'}
+                  height="24"
+                  src={chain.iconUrl}
+                  width="24"
+                />
+              ) : null}
+              <div>{chain.name ?? chain.id}</div>
+            </Box>
+          )}
           <DropdownIcon />
         </Box>
       )}
