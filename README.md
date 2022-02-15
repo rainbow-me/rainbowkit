@@ -397,6 +397,7 @@ export const YourApp = () => {
                     />
                   )}
                   {chain.name ?? chain.id}
+                  {chain.unsupported && ' (unsupported)'}
                 </button>
               )}
               <button onClick={showAccountModal} type="button">
