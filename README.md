@@ -410,7 +410,7 @@ export const YourApp = () => {
 };
 ```
 
-The following render props are provided to your function.
+The following props are passed to your render function.
 
 ### Account properties
 
