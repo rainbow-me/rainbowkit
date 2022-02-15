@@ -316,7 +316,7 @@ const myCustomTheme: Theme = {
     connectButtonBackgroundError: '...',
     connectButtonInnerBackground: '...',
     connectButtonText: '...',
-    connectButtonError: '...',
+    connectButtonTextError: '...',
     connectedProfileBorder: '...',
     connectionIndicator: '...',
     error: '...',
