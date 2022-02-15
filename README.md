@@ -357,6 +357,207 @@ const App = () => {
 };
 ```
 
+## Custom buttons
+
+If you want to customize the rendering of the top-level RainbowKit buttons, the `ConnectButton` component also accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
+
+A minimal re-implementation of the built-in buttons would look something like this:
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return (
+    <>
+      <ConnectButton>
+        {({
+          account,
+          chain,
+          showAccountModal,
+          showChainModal,
+          showConnectModal,
+        }) =>
+          !account ? (
+            <button onClick={showConnectModal} type="button">
+              Connect Wallet
+            </button>
+          ) : (
+            <div style={{ display: 'flex', gap: 12 }}>
+              {chain && (
+                <button
+                  onClick={showChainModal}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                  type="button"
+                >
+                  {chain.iconUrl && (
+                    <img
+                      alt={chain.name ?? 'Chain icon'}
+                      src={chain.iconUrl}
+                      style={{ width: 12, height: 12, marginRight: 4 }}
+                    />
+                  )}
+                  {chain.name ?? chain.id}
+                  {chain.unsupported && ' (unsupported)'}
+                </button>
+              )}
+              <button onClick={showAccountModal} type="button">
+                {account.displayName}
+                {account.displayBalance ? ` (${account.displayBalance})` : ''}
+              </button>
+            </div>
+          )
+        }
+      </ConnectButton>
+    </>
+  );
+};
+```
+
+The following props are passed to your render function.
+
+### Account properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>account</code></td>
+      <td><code>object | undefined</code></td>
+      <td>Object containing details about the current account, described below</td>
+    </tr>
+    <tr>
+      <td><code>account.address</code></td>
+      <td><code>string</code></td>
+      <td>The full account address, e.g. <code>"0x7a3d05c70581bD345fe117c06e45f9669205384f"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.balanceDecimals</code></td>
+      <td><code>number | undefined</code></td>
+      <td>The account balance in decimals</td>
+    </tr>
+    <tr>
+      <td><code>account.balanceFormatted</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The account balance formatted as a string, e.g. <code>"1.234567890123456789"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.balanceSymbol</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The currency symbol for the balance, e.g. <code>"ETH"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.displayBalance</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The balance formatted to 3 significant digits, plus the symbol, e.g. <code>"1.23 ETH"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.displayName</code></td>
+      <td><code>string</code></td>
+      <td>The ENS name, or a truncated version of the address, e.g. 
+      <code>"rainbowwallet.eth"</code> or <code>"0x7a3d...384f"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.ensAvatar</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The ENS avatar URI</td>
+    </tr>
+    <tr>
+      <td><code>account.ensName</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The ENS name, e.g. <code>"rainbowwallet.eth"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Chain properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>chain</code></td>
+      <td><code>object | undefined</code></td>
+      <td>Object containing details about the current chain, described below</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.iconUrl</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The chain icon URL</td>
+    </tr>
+    <tr>
+      <td><code>chain.id</code></td>
+      <td><code>number</code></td>
+      <td>The chain ID, e.g. <code>1</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.name</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The chain name, e.g. <code>"Ethereum"</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.unsupported</code></td>
+      <td><code>boolean | undefined</code></td>
+      <td>Boolean indicating whether the current chain is unsupported</td>
+    </tr>
+  </tbody>
+</table>
+
+### Modal state properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>showAccountModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to show the account modal</td>
+    </tr>
+    <tr>
+      <td><code>showChainModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to show the chain modal</td>
+    </tr>
+    <tr>
+      <td><code>showConnectModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to show the connect modal</td>
+    </tr>
+    <tr>
+      <td><code>accountModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the account modal is open</td>
+    </tr>
+    <tr>
+      <td><code>chainModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the chain modal is open</td>
+    </tr>
+    <tr>
+      <td><code>connectModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the connect modal is open</td>
+    </tr>
+  </tbody>
+</table>
+
 ## License
 
 [MIT.](./LICENSE.md)

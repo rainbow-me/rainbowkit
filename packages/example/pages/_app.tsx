@@ -71,6 +71,8 @@ function App({ Component, pageProps }: AppProps) {
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
       <RainbowKitProvider chains={chains} theme={theme}>
         <Component {...pageProps} />
+
+        <h3 style={{ fontFamily: 'sans-serif' }}>Theme</h3>
         <button onClick={toggleTheme} type="button">
           {selectedTheme}
         </button>
