@@ -21,7 +21,7 @@ const Example = () => {
       </div>
 
       <div>
-        <h2>Custom UI</h2>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Custom buttons</h3>
         <ConnectButton>
           {({
             account,
