@@ -5,12 +5,12 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 import { TxList } from '../Txs/TxList';
 
-export interface ProfileModalProps {
+export interface AccountModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-export function ProfileModal({ onClose, open }: ProfileModalProps) {
+export function AccountModal({ onClose, open }: AccountModalProps) {
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   });
@@ -19,7 +19,7 @@ export function ProfileModal({ onClose, open }: ProfileModalProps) {
     return null;
   }
 
-  const titleId = 'rk_profile_title';
+  const titleId = 'rk_account_modal_title';
 
   return (
     <>

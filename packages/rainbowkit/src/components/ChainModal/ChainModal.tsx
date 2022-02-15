@@ -7,16 +7,16 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
-export interface NetworkModalProps {
+export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-export function NetworkModal({ onClose, open }: NetworkModalProps) {
+export function ChainModal({ onClose, open }: ChainModalProps) {
   const [isSwitching, setIsSwitching] = useState(false);
   const [{ data: connectData }] = useConnect();
   const [{ data: networkData }, switchNetwork] = useNetwork();
-  const titleId = 'rk_network_title';
+  const titleId = 'rk_chain_modal_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
 

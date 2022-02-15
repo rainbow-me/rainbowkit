@@ -1,11 +1,11 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
+import { AccountModal } from '../AccountModal/AccountModal';
 import { Box } from '../Box/Box';
+import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { DropdownIcon } from '../Icons/Dropdown';
-import { NetworkModal as ChainModal } from '../NetworkModal/NetworkModal';
-import { ProfileModal as AccountModal } from '../ProfileModal/ProfileModal';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import * as styles from './ConnectButton.css';
 import { formatAddress } from './formatAddress';
@@ -66,16 +66,19 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
           fontFamily="body"
           fontWeight="bold"
           onClick={showChainModal}
-          padding="10"
+          paddingX="10"
+          paddingY="8"
+          transform={{ active: 'shrink', hover: 'grow' }}
+          transition="default"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="4">
+          <Box alignItems="center" display="flex" gap="8" height="24">
             {chain.iconUrl ? (
               <img
                 alt={chain.name ?? 'Chain icon'}
-                height="16"
+                height="24"
                 src={chain.iconUrl}
-                width="16"
+                width="24"
               />
             ) : null}
             <div>
@@ -98,6 +101,8 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
         fontFamily="body"
         fontWeight="bold"
         onClick={showAccountModal}
+        transform={{ active: 'shrink', hover: 'grow' }}
+        transition="default"
         type="button"
       >
         {account.displayBalance && (
@@ -118,7 +123,9 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
           color="connectButtonText"
           fontFamily="body"
           fontWeight="bold"
-          padding="6"
+          paddingX="8"
+          paddingY="6"
+          transition="default"
         >
           <Box alignItems="center" display="flex" height="24">
             {account.ensAvatar ? (
@@ -135,7 +142,12 @@ const defaultConnectButtonRenderer: ConnectButtonRenderer = ({
       </Box>
     </Box>
   ) : (
-    <Box background="connectButtonBackground" borderRadius="connectButton">
+    <Box
+      background="connectButtonBackground"
+      borderRadius="connectButton"
+      transform={{ active: 'shrink', hover: 'grow' }}
+      transition="default"
+    >
       <Box
         as="button"
         background="connectButtonInnerBackground"
