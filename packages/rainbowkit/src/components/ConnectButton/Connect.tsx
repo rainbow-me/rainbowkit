@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { Box } from '../Box/Box';
-import ConnectOptions from '../ConnectOptions/ConnectOptions';
-import { Dialog } from '../Dialog/Dialog';
-import { DialogContent } from '../Dialog/DialogContent';
+import { ConnectModal } from '../ConnectModal/ConnectModal';
 
 export function Connect() {
   const [open, setOpen] = useState(false);
-
-  const titleId = 'rk_connect_title';
 
   return (
     <>
@@ -35,11 +31,7 @@ export function Connect() {
         </Box>
       </div>
 
-      <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
-        <DialogContent>
-          <ConnectOptions />
-        </DialogContent>
-      </Dialog>
+      <ConnectModal onClose={() => setOpen(false)} open={open} />
     </>
   );
 }

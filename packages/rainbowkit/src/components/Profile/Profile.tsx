@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
-import { Dialog } from '../Dialog/Dialog';
-import { DialogContent } from '../Dialog/DialogContent';
 import { DropdownIcon } from '../Icons/Dropdown';
-import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
-import { TxList } from '../Txs/TxList';
+import { ProfileModal } from '../ProfileModal/ProfileModal';
 import { ProfilePillImageClassName } from './Profile.css';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
-  const [{ data: accountData }, disconnect] = useAccount({
+  const [{ data: accountData }] = useAccount({
     fetchEns: true,
   });
 
@@ -23,7 +20,6 @@ export function Profile() {
     return null;
   }
 
-  const titleId = 'rk_profile_title';
   const accountName =
     accountData.ens?.name ?? formatAddress(accountData.address);
 
@@ -79,20 +75,7 @@ export function Profile() {
         </Box>
       </div>
 
-      {accountData && (
-        <Dialog onClose={() => setOpen(false)} open={open} titleId={titleId}>
-          <DialogContent>
-            <ProfileDetails
-              accountData={accountData}
-              onClose={() => setOpen(false)}
-              onDisconnect={() => disconnect()}
-            />
-          </DialogContent>
-          <DialogContent marginTop="24">
-            <TxList />
-          </DialogContent>
-        </Dialog>
-      )}
+      <ProfileModal onClose={() => setOpen(false)} open={open} />
     </>
   );
 }
