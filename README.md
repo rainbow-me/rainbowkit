@@ -18,7 +18,7 @@ Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [et
 
 ## Getting started
 
-To start, import RainbowKit’s base styles, configure your wagmi connectors and desired chains, then wrap your application in the RainbowKit and wagmi providers.
+To start, import RainbowKit’s base styles, configure your wagmi connectors and desired chains, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
 
 Note that the default list of wallets in RainbowKit requires instances of wagmi’s [`InjectedConnector`](https://wagmi-xyz.vercel.app/docs/connectors/injected), [`WalletConnectConnector`](https://wagmi-xyz.vercel.app/docs/connectors/walletConnect) and [`WalletLinkConnector`](https://wagmi-xyz.vercel.app/docs/connectors/walletLink).
 
@@ -26,8 +26,8 @@ Note that the default list of wallets in RainbowKit requires instances of wagmi�
 import '@rainbow-me/rainbowkit/styles.css';
 
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
-import { Provider as WagmiProvider, chain } from 'wagmi';
 
 const infuraId = process.env.INFURA_ID;
 
@@ -322,7 +322,8 @@ const myCustomTheme: Theme = {
     error: '...',
     menuBackground: '...',
     menuDivider: '...',
-    menuItemSelectedBackground: '...',
+    menuItemActiveBackground: '...',
+    menuItemBackground: '...',
     menuText: '...',
     menuTextAction: '...',
     menuTextDisconnect: '...',
@@ -338,6 +339,7 @@ const myCustomTheme: Theme = {
   },
   radii: {
     connectButton: '...',
+    menuButton: '...',
     modal: '...',
   },
   shadows: {

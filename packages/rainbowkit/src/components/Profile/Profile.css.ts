@@ -6,3 +6,15 @@ export const ProfilePillImageClassName = sprinkles({
   marginRight: '6',
   width: '24',
 });
+
+export const ProfilePillClassName = sprinkles({
+  transform: {
+    active: 'shrink',
+    hover: 'grow',
+  },
+  transition: 'default',
+});
+
+export const InnerProfilePillClassName = sprinkles({
+  transition: 'default',
+});

@@ -5,7 +5,7 @@ import { Text } from '../Text/Text';
 
 export function TxList() {
   return (
-    <Box display="flex" flexDirection="column" gap="12">
+    <Box display="flex" flexDirection="column" gap="12" padding="14">
       <Text color="modalText" size="20" weight="heavy">
         Transactions
       </Text>

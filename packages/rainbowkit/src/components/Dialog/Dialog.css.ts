@@ -1,5 +1,15 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
 import { sprinkles } from '../../css/sprinkles.css';
+
+const slideUp = keyframes({
+  '0%': { transform: 'translateY(100%)' },
+  '100%': { transform: 'translateY(0deg)' },
+});
+
+const fadeIn = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
 
 export const overlay = style([
   sprinkles({
@@ -12,6 +22,7 @@ export const overlay = style([
     width: 'full',
   }),
   {
+    animation: `${fadeIn} 350ms ease`,
     left: 0,
     top: 0,
   },
@@ -24,6 +35,7 @@ export const content = style([
     position: 'relative',
   }),
   {
+    animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 350ms ease`,
     width: '390px',
   },
 ]);

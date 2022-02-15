@@ -29,12 +29,14 @@ export default function ConnectOptions() {
   }, [connect, connectData.connector]);
 
   return (
-    <Box display="flex" flexDirection="column" gap="24">
+    <Box display="flex" flexDirection="column" gap="24" padding="14">
       <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet
       </Text>
 
-      <Box>{uri && <QRCode logoSize={72} size={342} uri={uri} />}</Box>
+      <Box style={{ height: '342px' }}>
+        {uri && <QRCode logoSize={72} size={342} uri={uri} />}
+      </Box>
 
       <Box display="flex" flexDirection="column" gap="18">
         {wallets.map(wallet => {
