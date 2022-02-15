@@ -20,21 +20,19 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   accountData: ReturnType<typeof useAccount>[0]['data'];
+  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  networkData: ReturnType<typeof useNetwork>[0]['data'];
   onClose: () => void;
   onDisconnect: () => void;
 }
 
 export function ProfileDetails({
   accountData,
+  balanceData,
+  networkData,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
-  const [{ data: balanceData }] = useBalance({
-    addressOrName: accountData?.address,
-  });
-
-  const [{ data: networkData }] = useNetwork();
-
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {

@@ -191,7 +191,7 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const isMounted = useIsMounted();
 
-  const [{ data: accountData }] = useAccount({
+  const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   });
 
@@ -199,7 +199,7 @@ export function ConnectButton({
     addressOrName: accountData?.address,
   });
 
-  const [{ data: networkData }] = useNetwork();
+  const [{ data: networkData }, switchNetwork] = useNetwork();
 
   const chainIconUrlsById = useChainIconUrlsById();
   const chainIconUrl = networkData.chain
@@ -272,8 +272,20 @@ export function ConnectButton({
       })}
 
       <ConnectModal onClose={hideConnectModal} open={connectModalOpen} />
-      <AccountModal onClose={hideAccountModal} open={accountModalOpen} />
-      <ChainModal onClose={hideChainModal} open={chainModalOpen} />
+      <AccountModal
+        accountData={accountData}
+        balanceData={balanceData}
+        networkData={networkData}
+        onClose={hideAccountModal}
+        onDisconnect={disconnect}
+        open={accountModalOpen}
+      />
+      <ChainModal
+        networkData={networkData}
+        onClose={hideChainModal}
+        onSwitchNetwork={switchNetwork}
+        open={chainModalOpen}
+      />
     </>
   );
 }
