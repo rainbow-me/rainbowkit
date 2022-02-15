@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box } from '../Box/Box';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
+import { ConnectClassName } from './Connect.css';
 
 export function Connect() {
   const [open, setOpen] = useState(false);
@@ -8,7 +9,11 @@ export function Connect() {
   return (
     <>
       <div>
-        <Box background="connectButtonBackground" borderRadius="connectButton">
+        <Box
+          background="connectButtonBackground"
+          borderRadius="connectButton"
+          className={ConnectClassName}
+        >
           <Box
             as="button"
             background="connectButtonInnerBackground"

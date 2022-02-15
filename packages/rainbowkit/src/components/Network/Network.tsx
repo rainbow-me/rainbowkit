@@ -4,6 +4,7 @@ import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { NetworkModal } from '../NetworkModal/NetworkModal';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
+import { NetworkClassName } from './Network.css';
 
 export function Network() {
   const [open, setOpen] = useState(false);
@@ -26,21 +27,23 @@ export function Network() {
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
+          className={NetworkClassName}
           color="connectButtonText"
           display="flex"
           fontFamily="body"
           fontWeight="bold"
           onClick={() => setOpen(true)}
-          padding="10"
+          paddingX="10"
+          paddingY="8"
           type="button"
         >
-          <Box alignItems="center" display="flex" gap="4">
+          <Box alignItems="center" display="flex" gap="8" height="24">
             {currentChainIconUrl ? (
               <img
                 alt={networkData.chain.name ?? 'Chain icon'}
-                height="16"
+                height="24"
                 src={currentChainIconUrl}
-                width="16"
+                width="24"
               />
             ) : null}
             <div>

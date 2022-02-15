@@ -14,7 +14,8 @@ const themeContractValues = {
     error: '',
     menuBackground: '',
     menuDivider: '',
-    menuItemSelectedBackground: '',
+    menuItemActiveBackground: '',
+    menuItemBackground: '',
     menuText: '',
     menuTextAction: '',
     menuTextDisconnect: '',
@@ -30,6 +31,7 @@ const themeContractValues = {
   },
   radii: {
     connectButton: '',
+    menuButton: '',
     modal: '',
   },
   shadows: {
@@ -69,11 +71,14 @@ const spacing = {
 const dimensions = {
   '4': '4px',
   '8': '8px',
+  '12': '12px',
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '34': '34px',
   '40': '40px',
   '48': '48px',
+  '54': '54px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
@@ -81,6 +86,26 @@ const dimensions = {
 };
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
+
+const interactionProperties = defineProperties({
+  conditions: {
+    base: {},
+    hover: { selector: '&:hover' },
+    active: { selector: '&:active' },
+  },
+  defaultCondition: 'base',
+  properties: {
+    transform: {
+      grow: 'scale(1.025)',
+      growLg: 'scale(1.1)',
+      shrink: 'scale(0.95)',
+      shrinkSm: 'scale(0.9)',
+    },
+    transition: {
+      default: '0.125s ease',
+    },
+  },
+});
 
 const layoutStyles = defineProperties({
   properties: {
@@ -145,6 +170,12 @@ const layoutStyles = defineProperties({
 });
 
 const colorStyles = defineProperties({
+  conditions: {
+    base: {},
+    hover: { selector: '&:hover' },
+    active: { selector: '&:active' },
+  },
+  defaultCondition: 'base',
   properties: {
     background: themeVars.colors,
     borderColor: themeVars.colors,
@@ -160,8 +191,9 @@ const unresponsiveProperties = defineProperties({
 });
 
 export const sprinkles = createSprinkles(
-  layoutStyles,
   colorStyles,
+  interactionProperties,
+  layoutStyles,
   unresponsiveProperties
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];

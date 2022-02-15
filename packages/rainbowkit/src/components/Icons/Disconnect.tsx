@@ -3,8 +3,8 @@ import React from 'react';
 export const DisconnectIcon = () => (
   <svg
     fill="none"
-    height="18"
-    viewBox="0 0 17 18"
+    height="17"
+    viewBox="0 0 17 17"
     width="17"
     xmlns="http://www.w3.org/2000/svg"
   >

@@ -4,7 +4,11 @@ import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { ProfileModal } from '../ProfileModal/ProfileModal';
-import { ProfilePillImageClassName } from './Profile.css';
+import {
+  InnerProfilePillClassName,
+  ProfilePillClassName,
+  ProfilePillImageClassName,
+} from './Profile.css';
 
 export function Profile() {
   const [open, setOpen] = useState(false);
@@ -35,6 +39,7 @@ export function Profile() {
           background="connectButtonBackground"
           borderRadius="connectButton"
           boxShadow="connectButton"
+          className={ProfilePillClassName}
           color="connectButtonText"
           display="flex"
           fontFamily="body"
@@ -55,10 +60,12 @@ export function Profile() {
             borderRadius="connectButton"
             borderStyle="solid"
             borderWidth="2"
+            className={InnerProfilePillClassName}
             color="connectButtonText"
             fontFamily="body"
             fontWeight="bold"
-            padding="6"
+            paddingX="8"
+            paddingY="6"
           >
             <Box alignItems="center" display="flex" height="24">
               {accountData.ens?.avatar ? (
