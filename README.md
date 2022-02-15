@@ -451,7 +451,7 @@ The following render props are provided to your function.
     <tr>
       <td><code>account.displayBalance</code></td>
       <td><code>string | undefined</code></td>
-      <td>The balance formatted to 4 significant digits, plus the symbol, e.g. <code>"1.235 ETH"</code></td>
+      <td>The balance formatted to 3 significant digits, plus the symbol, e.g. <code>"1.23 ETH"</code></td>
     </tr>
     <tr>
       <td><code>account.displayName</code></td>
