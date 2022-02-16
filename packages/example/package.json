@@ -19,7 +19,7 @@
   },
   "scripts": {
     "dev": "next",
-    "typecheck": "pnpm tsc --noEmit"
+    "typecheck": "yarn tsc --noEmit"
   },
   "keywords": [],
   "author": "",
