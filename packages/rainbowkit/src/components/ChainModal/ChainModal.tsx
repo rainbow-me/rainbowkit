@@ -10,12 +10,18 @@ import { Text } from '../Text/Text';
 export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
+  networkData: ReturnType<typeof useNetwork>[0]['data'];
+  onSwitchNetwork?: (chainId: number) => unknown;
 }
 
-export function ChainModal({ onClose, open }: ChainModalProps) {
+export function ChainModal({
+  networkData,
+  onClose,
+  onSwitchNetwork,
+  open,
+}: ChainModalProps) {
   const [isSwitching, setIsSwitching] = useState(false);
   const [{ data: connectData }] = useConnect();
-  const [{ data: networkData }, switchNetwork] = useNetwork();
   const titleId = 'rk_chain_modal_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
@@ -59,7 +65,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             </Text>
           </Box>
           <Box display="flex" flexDirection="column" gap="10">
-            {switchNetwork &&
+            {onSwitchNetwork &&
               networkData.chains.map(chain => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const chainIconUrl = chainIconUrlsById[chain.id];
@@ -73,7 +79,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         ? undefined
                         : () => {
                             setIsSwitching(chain.id);
-                            switchNetwork(chain.id);
+                            onSwitchNetwork(chain.id);
                           }
                     }
                   >

@@ -1,20 +1,27 @@
 import React from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 import { TxList } from '../Txs/TxList';
 
 export interface AccountModalProps {
+  accountData: ReturnType<typeof useAccount>[0]['data'];
+  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  networkData: ReturnType<typeof useNetwork>[0]['data'];
   open: boolean;
   onClose: () => void;
+  onDisconnect: () => void;
 }
 
-export function AccountModal({ onClose, open }: AccountModalProps) {
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: true,
-  });
-
+export function AccountModal({
+  accountData,
+  balanceData,
+  networkData,
+  onClose,
+  onDisconnect,
+  open,
+}: AccountModalProps) {
   if (!accountData) {
     return null;
   }
@@ -28,8 +35,10 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
           <DialogContent>
             <ProfileDetails
               accountData={accountData}
+              balanceData={balanceData}
+              networkData={networkData}
               onClose={onClose}
-              onDisconnect={() => disconnect()}
+              onDisconnect={onDisconnect}
             />
           </DialogContent>
           <DialogContent marginTop="24">
