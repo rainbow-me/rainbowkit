@@ -96,6 +96,7 @@ importers:
       autoprefixer: ^10.4.0
       clsx: ^1.1.1
       deepmerge: ^4.2.2
+      detect-browser: ^5.3.0
       focus-visible: ^5.2.0
       postcss: ^8.4.4
       qrcode: ^1.5.0
@@ -106,6 +107,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.3.3_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
       deepmerge: 4.2.2
+      detect-browser: 5.3.0
       focus-visible: 5.2.0
       qrcode: 1.5.0
     devDependencies:
@@ -3754,6 +3756,10 @@ packages:
 
   /detect-browser/5.2.0:
     resolution: {integrity: sha512-tr7XntDAu50BVENgQfajMLzacmSe34D+qZc4zjnniz0ZVuw/TZcLcyxHQjYpJTM36sGEkZZlYLnIM1hH7alTMA==}
+
+  /detect-browser/5.3.0:
+    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
+    dev: false
 
   /detect-indent/6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
