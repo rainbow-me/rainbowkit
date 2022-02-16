@@ -3,7 +3,9 @@ import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { CloseIcon } from '../Icons/Close';
 import { MenuButton } from '../MenuButton/MenuButton';
+import { CloseButtonClassName } from '../ProfileDetails/ProfileDetails.css';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
@@ -53,16 +55,43 @@ export function ChainModal({
     <Dialog onClose={onClose} open={open} titleId={titleId}>
       <DialogContent>
         <Box display="flex" flexDirection="column" gap="14">
-          <Box padding="14" paddingBottom="0">
-            <Text
-              as="h1"
-              color="modalText"
-              id={titleId}
-              size="23"
-              weight="heavy"
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            padding="14"
+          >
+            <Box paddingBottom="0">
+              <Text
+                as="h1"
+                color="modalText"
+                id={titleId}
+                size="23"
+                weight="heavy"
+              >
+                Choose a network
+              </Text>
+              <Box marginTop="4">
+                <Text
+                  as="h1"
+                  color="modalTextSecondary"
+                  id={titleId}
+                  size="16"
+                  weight="bold"
+                >
+                  Choose your preferred network
+                </Text>
+              </Box>
+            </Box>
+            <Box
+              as="button"
+              borderRadius="full"
+              className={CloseButtonClassName}
+              height="34"
+              onClick={onClose}
             >
-              Select Network
-            </Text>
+              <CloseIcon />
+            </Box>
           </Box>
           <Box display="flex" flexDirection="column" gap="10">
             {onSwitchNetwork &&
@@ -115,12 +144,25 @@ export function ChainModal({
                         </Box>
                         {isCurrentChain && (
                           <Box
-                            background="connectionIndicator"
-                            borderRadius="full"
-                            height="12"
-                            marginRight="4"
-                            width="12"
-                          />
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                          >
+                            <Text
+                              color="connectionIndicator"
+                              size="16"
+                              weight="heavy"
+                            >
+                              Connected
+                            </Text>
+                            <Box
+                              background="connectionIndicator"
+                              borderRadius="full"
+                              height="12"
+                              marginLeft="8"
+                              width="12"
+                            />
+                          </Box>
                         )}
                       </Box>
                     </Box>
