@@ -42,7 +42,7 @@ export function AccountModal({
             />
           </DialogContent>
           <DialogContent marginTop="24">
-            <TxList />
+            <TxList accountData={accountData} />
           </DialogContent>
         </Dialog>
       )}
