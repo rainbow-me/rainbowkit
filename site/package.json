@@ -1,5 +1,5 @@
 {
-  "name": "rainbowkit-site",
+  "name": "site",
   "version": "0.0.0",
   "description": "",
   "private": true,
@@ -15,6 +15,7 @@
     "@web3-react/walletlink-connector": "^6.2.8",
     "ethers": "^5.0.0",
     "next": "^12.0.10",
+    "next-transpile-modules": "^9.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -22,8 +23,8 @@
     "wagmi": "<1"
   },
   "scripts": {
-    "dev:site": "next",
-    "typecheck": "pnpm tsc --noEmit"
+    "dev:site": "next dev",
+    "build:site": "next build"
   },
   "keywords": [],
   "author": "",

@@ -17,7 +17,7 @@
   ],
   "engines": {
     "node": ">=12.4"
-  },
+  }, 
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
