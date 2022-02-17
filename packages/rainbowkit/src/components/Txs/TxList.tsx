@@ -8,6 +8,8 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { Text } from '../Text/Text';
 import { Tx, TxItem } from './TxItem';
 
+const NUMBER_OF_VISIBLE_TXS = 3;
+
 const txs: Tx[] = [
   {
     data: null,
@@ -61,6 +63,7 @@ export function TxList({ accountData }: TxListProps) {
   const explorerUrl = `${chainIdToExplorerLink(networkData?.chain?.id)}${
     accountData?.address
   }`;
+  const visibleTxs = txs.slice(0, NUMBER_OF_VISIBLE_TXS);
   return (
     <>
       <Box display="flex" flexDirection="column" gap="12" padding="14">
@@ -69,7 +72,7 @@ export function TxList({ accountData }: TxListProps) {
         </Text>
         <Box display="flex" flexDirection="column" gap="14">
           {txs ? (
-            txs.slice(0, 5).map(tx => <TxItem key={tx.hash} tx={tx} />)
+            visibleTxs.map(tx => <TxItem key={tx.hash} tx={tx} />)
           ) : (
             <Text color="modalText" size="16" weight="medium">
               Your transactions will appear here.
