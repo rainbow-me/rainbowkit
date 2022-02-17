@@ -22,7 +22,8 @@
     "wagmi": "<1"
   },
   "scripts": {
-    "dev:site": "next",
+    "dev:site": "next dev",
+    "build:site": "next build",
     "typecheck": "pnpm tsc --noEmit"
   },
   "keywords": [],

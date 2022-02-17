@@ -18,7 +18,8 @@
     "wagmi": "<1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
+    "build": "next build",
     "typecheck": "pnpm tsc --noEmit"
   },
   "keywords": [],
