@@ -44,7 +44,6 @@ export function MobileOptions() {
                 />
                 <Text as="h2" color="modalText" size="13">
                   {wallet.name}
-                  {/* {!wallet.ready && ' (unsupported)'} */}
                 </Text>
               </Box>
             </Box>
