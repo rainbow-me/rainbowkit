@@ -9,7 +9,7 @@ export function MobileOptions() {
   return (
     <Box>
       <Box display="flex" justifyContent="center" paddingBottom="12">
-        <Text as="h1" color="modalText" id={titleId} size="20">
+        <Text as="h1" color="modalText" id={titleId} size="20" weight="bold">
           Connect a Wallet
         </Text>
       </Box>
