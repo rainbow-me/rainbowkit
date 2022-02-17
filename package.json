@@ -17,7 +17,8 @@
     "chgset": "pnpm chgset:run && pnpm chgset:version",
     "release": "changeset publish",
     "prerelease": "MINIFY_CSS=true pnpm build -r && cp README.md packages/rainbowkit/README.md",
-    "ci": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=example"
+    "ci:example": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=example",
+    "ci:site": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build:site --filter=site"
   },
   "repository": {
     "type": "git",
