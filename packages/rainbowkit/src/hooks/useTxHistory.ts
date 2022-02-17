@@ -35,26 +35,26 @@ export type TransactionWithInfo = Transaction & {
 };
 
 /**
- * A React hook to manage transaction history state with manual updating
- * @returns transactions array
+ * Manage transaction history state
+ * @returns TransactionsWithInfo[]
  */
 export const useTxHistory = ({
-  initialTxes,
+  initialTxs,
   rememberHistory,
 }: {
-  initialTxes?: TransactionWithInfo[];
+  initialTxs?: TransactionWithInfo[];
   rememberHistory?: boolean;
 }): {
-  txes: TransactionWithInfo[];
-  submit: (tx: Transaction) => void;
-  reset: () => void;
+  txs: TransactionWithInfo[];
+  submitTx: (tx: Transaction) => void;
+  resetTxs: () => void;
 } => {
-  const [txes, set] = useState<TransactionWithInfo[]>(initialTxes || []);
+  const [txs, setTxs] = useState<TransactionWithInfo[]>(initialTxs || []);
   const provider = useProvider();
 
-  const submit = async (tx: Transaction) => {
-    set(txes => [
-      ...txes,
+  const submitTx = async (tx: Transaction) => {
+    setTxs(txs => [
+      ...txs,
       {
         ...tx,
         info: 'tbd',
@@ -64,7 +64,7 @@ export const useTxHistory = ({
   };
 
   useEffect(() => {
-    for (const tx of txes) {
+    for (const tx of txs) {
       if (tx.status === 'pending') {
         const common = {
           data: tx.data,
@@ -77,8 +77,8 @@ export const useTxHistory = ({
         };
 
         if (!tx.hash)
-          set([
-            ...txes.filter(t => t.hash !== tx.hash),
+          setTxs([
+            ...txs.filter(t => t.hash !== tx.hash),
             {
               ...common,
               info: 'tbd',
@@ -87,8 +87,8 @@ export const useTxHistory = ({
           ]);
         else if (provider) {
           provider.once(tx.hash, (result: any) => {
-            set([
-              ...txes.filter(t => t.hash !== tx.hash),
+            setTxs([
+              ...txs.filter(t => t.hash !== tx.hash),
               {
                 ...common,
                 blockNumber: result.blockNumber,
@@ -100,24 +100,24 @@ export const useTxHistory = ({
         }
       }
     }
-    if (rememberHistory && txes?.[0]) {
-      localStorage.setItem('rk-tx-history', JSON.stringify(txes));
+    if (rememberHistory && txs?.[0]) {
+      localStorage.setItem('rk-tx-history', JSON.stringify(txs));
     }
-  }, [txes, rememberHistory, provider]);
+  }, [txs, rememberHistory, provider]);
 
   useEffect(() => {
     if (rememberHistory) {
       const txHistory = localStorage.getItem('rk-tx-history');
-      const txes = txHistory ? safeJSONParse(txHistory) ?? [] : [];
+      const txs = txHistory ? safeJSONParse(txHistory) ?? [] : [];
 
-      set(txes);
+      setTxs(txs);
     }
   }, [rememberHistory]);
 
-  const reset = () => {
+  const resetTxs = () => {
     localStorage.removeItem('rk-last-history');
-    set([]);
+    setTxs([]);
   };
 
-  return { reset, submit, txes };
+  return { resetTxs, submitTx, txs };
 };
