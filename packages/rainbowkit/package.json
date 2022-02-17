@@ -10,11 +10,8 @@
     ".": "./dist/index.js",
     "./styles.css": "./dist/index.css"
   },
-  "main": "./src/index.ts",
-  "publishConfig": {
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts"
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "sideEffects": [
     "src/css/reset.css.ts"
   ],

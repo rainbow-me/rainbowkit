@@ -78,7 +78,7 @@ export function ChainModal({
                       isCurrentChain
                         ? undefined
                         : () => {
-                            setIsSwitching(Boolean(chain.id));
+                            setIsSwitching(chain.id);
                             onSwitchNetwork(chain.id);
                           }
                     }
