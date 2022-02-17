@@ -15,11 +15,11 @@
     "@web3-react/walletlink-connector": "^6.2.8",
     "ethers": "^5.0.0",
     "next": "^12.0.10",
-    "next-transpile-modules": "^9.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
+    "next-transpile-modules": "^9.0.0",
     "wagmi": "<1"
   },
   "scripts": {
