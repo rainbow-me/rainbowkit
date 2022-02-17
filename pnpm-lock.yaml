@@ -72,6 +72,7 @@ importers:
       '@web3-react/walletlink-connector': ^6.2.8
       ethers: ^5.0.0
       next: ^12.0.4
+      next-transpile-modules: ^9.0.0
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
@@ -81,6 +82,7 @@ importers:
       '@web3-react/walletlink-connector': 6.2.11_@babel+core@7.17.2
       ethers: 5.5.4
       next: 12.0.10_d5abbaeffd538e81ebdb9da980300710
+      next-transpile-modules: 9.0.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -126,6 +128,7 @@ importers:
       '@web3-react/walletlink-connector': ^6.2.8
       ethers: ^5.0.0
       next: ^12.0.10
+      next-transpile-modules: ^9.0.0
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
@@ -140,6 +143,7 @@ importers:
       '@web3-react/walletlink-connector': 6.2.11_@babel+core@7.17.2
       ethers: 5.5.4
       next: 12.0.10_d5abbaeffd538e81ebdb9da980300710
+      next-transpile-modules: 9.0.0
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
@@ -3846,6 +3850,14 @@ packages:
     resolution: {integrity: sha512-ucAnuBEhUK4boH2HjVYG5Q2mQyPorvv0u/ocS+zhdw0S8AlHYY+GOFhP1Gio5z4icpP2ivFSvhtFjQi8+T9ppw==}
     dev: false
 
+  /enhanced-resolve/5.9.0:
+    resolution: {integrity: sha512-weDYmzbBygL7HzGGS26M3hGQx68vehdEg6VUmqSOaFzXExFqlnKuSvsEJCVGQHScS8CQMbrAqftT+AzzHNt/YA==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      graceful-fs: 4.2.9
+      tapable: 2.2.1
+    dev: false
+
   /enquirer/2.3.6:
     resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
     engines: {node: '>=8.6'}
@@ -5075,7 +5087,6 @@ packages:
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
-    dev: true
 
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
@@ -5933,6 +5944,13 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: true
+
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
+    dependencies:
+      enhanced-resolve: 5.9.0
+      escalade: 3.1.1
+    dev: false
 
   /next/12.0.10_d5abbaeffd538e81ebdb9da980300710:
     resolution: {integrity: sha512-1y3PpGzpb/EZzz1jgne+JfZXKAVJUjYXwxzrADf/LWN+8yi9o79vMLXpW3mevvCHkEF2sBnIdjzNn16TJrINUw==}
@@ -7171,6 +7189,11 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
     dev: true
+
+  /tapable/2.2.1:
+    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
+    engines: {node: '>=6'}
+    dev: false
 
   /term-size/1.2.0:
     resolution: {integrity: sha1-RYuDiH8oj8Vtb/+/rSYuJmOO+mk=}
