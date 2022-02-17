@@ -12,6 +12,10 @@
   },
   "main": "./src/index.ts",
   "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
   "sideEffects": [
     "src/css/reset.css.ts"
   ],
