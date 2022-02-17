@@ -20,8 +20,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "typecheck": "pnpm tsc --noEmit"
+    "build": "next build"
   },
   "keywords": [],
   "author": "",

@@ -11,7 +11,6 @@
     "./styles.css": "./dist/index.css"
   },
   "main": "./src/index.ts",
-  "types": "./dist/index.d.ts",
   "publishConfig": {
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts"
@@ -21,7 +20,7 @@
   ],
   "engines": {
     "node": ">=12.4"
-  },
+  }, 
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
