@@ -1,5 +1,11 @@
 import React from 'react';
 import { useNetwork } from 'wagmi';
+import {
+  FAIL_TX_STATUS,
+  PENDING_TX_STATUS,
+  SUCCESS_TX_STATUS,
+  TransactionWithInfo,
+} from '../../hooks/useTxHistory';
 import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
 import { DisconnectIcon } from '../Icons/Disconnect';
@@ -9,28 +15,13 @@ import { SuccessIcon } from '../Icons/Success';
 
 import { Text } from '../Text/Text';
 
-const PENDING = 'PENDING';
-const SUCCESS = 'SUCCESS';
-const FAIL = 'FAIL';
-
-export type Tx = {
-  data: string | null;
-  from: string;
-  hash: string;
-  info: string;
-  status: string;
-  to: string;
-  value: number;
-  secsToConfirmationEstimate: number;
-};
-
 const getTxStatusIcon = (status: string) => {
   switch (status) {
-    case PENDING:
+    case PENDING_TX_STATUS:
       return SpinnerIcon;
-    case SUCCESS:
+    case SUCCESS_TX_STATUS:
       return SuccessIcon;
-    case FAIL:
+    case FAIL_TX_STATUS:
       return DisconnectIcon;
     default:
       return SpinnerIcon;
@@ -38,25 +29,25 @@ const getTxStatusIcon = (status: string) => {
 };
 
 interface TxProps {
-  tx: Tx;
+  tx: TransactionWithInfo;
 }
 
 export function TxItem({ tx }: TxProps) {
   const Icon = getTxStatusIcon(tx.status);
   const iconColor =
-    tx.status === FAIL
+    tx.status === FAIL_TX_STATUS
       ? 'error'
-      : tx.status === SUCCESS
+      : tx.status === SUCCESS_TX_STATUS
       ? 'connectionIndicator'
       : 'menuTextAction';
   const [{ data: networkData }] = useNetwork();
 
   const confirmationStatus =
-    tx.status === SUCCESS
+    tx.status === SUCCESS_TX_STATUS
       ? 'Completed'
-      : tx.status === FAIL
+      : tx.status === FAIL_TX_STATUS
       ? 'Failed'
-      : `About ${tx?.secsToConfirmationEstimate} secs to confirm`;
+      : 'Pending';
   return (
     <Box
       color="menuText"
