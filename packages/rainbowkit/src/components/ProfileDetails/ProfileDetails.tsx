@@ -131,6 +131,7 @@ export function ProfileDetails({
             <CloseIcon />
           </Box>
         </Box>
+        <Box background="menuDivider" borderRadius="6" height="2" marginX="8" />
         <ProfileDetailsAction
           action={copyAddressAction}
           color="modalText"

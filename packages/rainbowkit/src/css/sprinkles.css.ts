@@ -71,6 +71,7 @@ const spacing = {
 };
 
 const dimensions = {
+  '2': '2px',
   '4': '4px',
   '8': '8px',
   '12': '12px',
@@ -165,6 +166,8 @@ const layoutStyles = defineProperties({
   } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
+    marginX: ['marginLeft', 'marginRight'],
+    marginY: ['marginTop', 'marginBottom'],
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],

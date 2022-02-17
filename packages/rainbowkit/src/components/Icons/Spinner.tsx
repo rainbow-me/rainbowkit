@@ -1,33 +1,20 @@
 import React from 'react';
+import { SpinnerIconClassName } from './Icons.css';
 
-export const Spinner = () => (
-  <svg
-    fill="none"
-    height="22"
-    viewBox="0 0 22 22"
-    width="22"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20"
-      stroke="url(#paint0_angular_2_92901)"
-      strokeLinecap="round"
-      strokeLinejoin="bevel"
-      strokeWidth="3"
-    />
-    <defs>
-      <radialGradient
-        cx="0"
-        cy="0"
-        gradientTransform="translate(11 11) rotate(90) scale(9)"
-        gradientUnits="userSpaceOnUse"
-        id="paint0_angular_2_92901"
-        r="1"
-      >
-        <stop offset="0.783452" stopColor="#4892FE" />
-        <stop offset="0.888512" stopColor="#4892FE" stopOpacity="0" />
-        <stop offset="1" stopColor="#4892FE" stopOpacity="0" />
-      </radialGradient>
-    </defs>
-  </svg>
+export const SpinnerIcon = () => (
+  <div>
+    <svg
+      className={SpinnerIconClassName}
+      fill="none"
+      height="20"
+      viewBox="0 0 20 20"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10 19.4443C15.0977 19.4443 19.2812 15.252 19.2812 10.1543C19.2812 5.06543 15.0889 0.873047 10 0.873047C4.90234 0.873047 0.71875 5.06543 0.71875 10.1543C0.71875 15.252 4.91113 19.4443 10 19.4443ZM10 17.1328C6.1416 17.1328 3.03906 14.0215 3.03906 10.1543C3.03906 6.2959 6.13281 3.18457 10 3.18457C13.8584 3.18457 16.9697 6.2959 16.9697 10.1543C16.9785 14.0215 13.8672 17.1328 10 17.1328ZM9.07715 14.3379C9.4375 14.3379 9.7627 14.1533 9.97363 13.8369L13.7441 8.00977C13.8848 7.79883 13.9814 7.5791 13.9814 7.36816C13.9814 6.84961 13.5244 6.48926 13.0322 6.48926C12.707 6.48926 12.4258 6.66504 12.2148 7.0166L9.05957 12.0967L7.5918 10.2949C7.37207 10.0225 7.13477 9.9082 6.84473 9.9082C6.33496 9.9082 5.92188 10.3125 5.92188 10.8223C5.92188 11.0684 6.00098 11.2793 6.18555 11.5078L8.1543 13.8545C8.40918 14.1709 8.70801 14.3379 9.07715 14.3379Z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
 );
