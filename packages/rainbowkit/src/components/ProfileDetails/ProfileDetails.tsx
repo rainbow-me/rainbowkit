@@ -109,7 +109,7 @@ export function ProfileDetails({
                   <Box>
                     <Text
                       as="h1"
-                      color="modalText"
+                      color="modalTextSecondary"
                       id={titleId}
                       size="16"
                       weight="heavy"
@@ -131,6 +131,7 @@ export function ProfileDetails({
             <CloseIcon />
           </Box>
         </Box>
+        <Box background="menuDivider" borderRadius="6" height="2" marginX="8" />
         <ProfileDetailsAction
           action={copyAddressAction}
           color="modalText"

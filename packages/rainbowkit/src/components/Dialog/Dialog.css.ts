@@ -22,7 +22,7 @@ export const overlay = style([
     width: 'full',
   }),
   {
-    animation: `${fadeIn} 350ms ease`,
+    animation: `${fadeIn} 150ms ease`,
     left: 0,
     top: 0,
   },
@@ -35,7 +35,7 @@ export const content = style([
     position: 'relative',
   }),
   {
-    animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 350ms ease`,
+    animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 150ms ease`,
     width: '390px',
   },
 ]);
