@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useConnect } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { QRCode } from '../QRCode/QRCode';
 import { useWallets } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
+import { MobileOptions } from './MobileOptions';
 
 export default function ConnectOptions() {
   const wallets = useWallets();
@@ -28,7 +30,9 @@ export default function ConnectOptions() {
     }
   }, [connect, connectData.connector]);
 
-  return (
+  return isMobile() ? (
+    <MobileOptions />
+  ) : (
     <Box display="flex" flexDirection="column" gap="24" padding="14">
       <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet

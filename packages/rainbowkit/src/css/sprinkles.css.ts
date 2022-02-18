@@ -68,6 +68,7 @@ const spacing = {
   '24': '24px',
   '28': '28px',
   '32': '32px',
+  '36': '36px',
 };
 
 const dimensions = {
@@ -82,6 +83,7 @@ const dimensions = {
   '40': '40px',
   '48': '48px',
   '54': '54px',
+  '60': '60px',
   'full': '100%',
   'max': 'max-content',
   'viewHeight': '100vh',
@@ -132,6 +134,7 @@ const layoutStyles = defineProperties({
     flexDirection: ['row', 'column'],
     fontFamily: themeVars.fonts,
     fontSize: {
+      '13': '13px',
       '14': '14px',
       '16': '16px',
       '18': '18px',
