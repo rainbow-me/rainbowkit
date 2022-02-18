@@ -18,7 +18,7 @@ const connectorDisplayNameFromId = (connectorId: string): string => {
     : `a connector with an ID of "${connectorId}"`;
 };
 
-interface WalletWithConnector extends Wallet {
+export interface WalletWithConnector extends Wallet {
   ready: boolean;
   connect: () => ReturnType<ReturnType<typeof useConnect>[1]>;
 }

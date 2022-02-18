@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box } from '../Box/Box';
-import { useWallets } from '../RainbowKitProvider/useWallets';
+import { WalletWithConnector } from '../RainbowKitProvider/useWallets';
 import { Text } from '../Text/Text';
 
-export function MobileOptions() {
+export function MobileOptions({ wallets }: { wallets: WalletWithConnector[] }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWallets();
+
   return (
     <Box>
       <Box display="flex" justifyContent="center" paddingBottom="12">
