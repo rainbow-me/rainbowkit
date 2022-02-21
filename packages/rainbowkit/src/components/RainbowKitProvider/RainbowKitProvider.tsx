@@ -4,8 +4,6 @@ import { ThemeVars } from '../../css/sprinkles.css';
 import { darkTheme } from '../../themes/darkTheme';
 import { lightTheme } from '../../themes/lightTheme';
 import { ChainIconsContext, ChainWithIconUrl } from './ChainIconsContext';
-import { Wallet, WalletsContext } from './WalletsContext';
-import { defaultWallets } from './defaultWallets';
 import { provideChainIconUrls } from './provideChainIconUrls';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
@@ -37,7 +35,6 @@ const defaultTheme: DynamicTheme = {
 };
 
 export interface RainbowKitProviderProps {
-  wallets?: Wallet[];
   chains: ChainWithIconUrl[];
   id?: string;
   children: ReactNode;
@@ -46,7 +43,6 @@ export interface RainbowKitProviderProps {
 
 export function RainbowKitProvider({
   chains,
-  wallets = defaultWallets,
   id,
   theme = defaultTheme,
   children,
@@ -59,32 +55,30 @@ export function RainbowKitProvider({
   const selector = createThemeRootSelector(id);
 
   return (
-    <WalletsContext.Provider value={wallets}>
-      <ChainIconsContext.Provider value={chainsWithIconUrls}>
-        <ThemeIdContext.Provider value={id}>
-          {theme ? (
-            <div {...createThemeRootProps(id)}>
-              <style>
-                {[
-                  `${selector}{${cssStringFromTheme(
-                    'lightMode' in theme ? theme.lightMode : theme
-                  )}}`,
+    <ChainIconsContext.Provider value={chainsWithIconUrls}>
+      <ThemeIdContext.Provider value={id}>
+        {theme ? (
+          <div {...createThemeRootProps(id)}>
+            <style>
+              {[
+                `${selector}{${cssStringFromTheme(
+                  'lightMode' in theme ? theme.lightMode : theme
+                )}}`,
 
-                  'darkMode' in theme
-                    ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
-                        theme.darkMode,
-                        { extends: theme.lightMode }
-                      )}}}`
-                    : null,
-                ].join('')}
-              </style>
-              {children}
-            </div>
-          ) : (
-            children
-          )}
-        </ThemeIdContext.Provider>
-      </ChainIconsContext.Provider>
-    </WalletsContext.Provider>
+                'darkMode' in theme
+                  ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
+                      theme.darkMode,
+                      { extends: theme.lightMode }
+                    )}}}`
+                  : null,
+              ].join('')}
+            </style>
+            {children}
+          </div>
+        ) : (
+          children
+        )}
+      </ThemeIdContext.Provider>
+    </ChainIconsContext.Provider>
   );
 }

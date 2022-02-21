@@ -1,87 +1,24 @@
-import { useContext, useMemo } from 'react';
-import { Connector, useConnect } from 'wagmi';
-import { Wallet, WalletsContext } from './WalletsContext';
+import { useConnect } from 'wagmi';
+import { WalletMeta } from './wallet';
 
-const isNotNull = <T>(value: T | null): value is T => value !== null;
+export function useWallets(): (WalletMeta & {
+  ready?: boolean;
+  connect?: () => void;
+})[] {
+  const [{ data: connectData }, wagmiConnect] = useConnect();
 
-const warnedConnectorIds: string[] = [];
+  return connectData.connectors
+    .filter(connector => connector._wallet)
+    .map(connector => {
+      const connect = () => {
+        wagmiConnect(connector);
+      };
 
-const connectorDisplayNameFromId = (connectorId: string): string => {
-  const connecterNamesById = {
-    injected: 'InjectedConnector',
-    walletConnect: 'WalletConnectConnector',
-    walletLink: 'WalletLinkConnector',
-  } as const;
-
-  return connectorId in connecterNamesById
-    ? connecterNamesById[connectorId as keyof typeof connecterNamesById]
-    : `a connector with an ID of "${connectorId}"`;
-};
-
-export interface WalletWithConnector extends Wallet {
-  ready: boolean;
-  connect: () => ReturnType<ReturnType<typeof useConnect>[1]>;
-}
-
-export function useWallets(): WalletWithConnector[] {
-  const wallets = useContext(WalletsContext);
-  const [{ data: connectData }, connect] = useConnect();
-
-  const connectorsById = useMemo(() => {
-    const connectors: Record<string, Connector> = {};
-
-    connectData.connectors.forEach(connector => {
-      connectors[connector.id] = connector;
+      return {
+        useWalletDetail: () => ({ connect }),
+        ...(connector._wallet as WalletMeta),
+        connect,
+        ready: connector.ready,
+      };
     });
-
-    return connectors;
-  }, [connectData.connectors]);
-
-  return useMemo(
-    () =>
-      wallets
-        .map(wallet => {
-          const connector = connectorsById[wallet.connectorId];
-
-          if (!connector) {
-            if (
-              process.env.NODE_ENV !== 'production' &&
-              !warnedConnectorIds.includes(wallet.connectorId)
-            ) {
-              const connectorIds = Object.keys(connectorsById);
-
-              // eslint-disable-next-line no-console
-              console.warn(
-                `Wallet "${
-                  wallet.id
-                }" needs access to an instance of ${connectorDisplayNameFromId(
-                  wallet.connectorId
-                )} but couldn't find ${
-                  connectorIds.length === 0
-                    ? 'any connectors.'
-                    : `one. The only available ${
-                        connectorIds.length > 1
-                          ? 'connectors are'
-                          : 'connector is'
-                      } ${connectorIds
-                        .map(connectorDisplayNameFromId)
-                        .join(', ')}.`
-                }`
-              );
-
-              warnedConnectorIds.push(wallet.connectorId);
-            }
-
-            return null;
-          }
-
-          return {
-            ...wallet,
-            connect: () => connect(connector),
-            ready: connector.ready,
-          };
-        })
-        .filter(isNotNull),
-    [connect, connectorsById, wallets]
-  );
 }
