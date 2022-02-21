@@ -18,14 +18,17 @@ Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [et
 
 ## Getting started
 
-To start, import RainbowKit’s base styles, configure your wagmi connectors and desired chains, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
-
-Note that the default list of wallets in RainbowKit requires instances of wagmi’s [`InjectedConnector`](https://wagmi-xyz.vercel.app/docs/connectors/injected), [`WalletConnectConnector`](https://wagmi-xyz.vercel.app/docs/connectors/walletConnect) and [`WalletLinkConnector`](https://wagmi-xyz.vercel.app/docs/connectors/walletLink).
+To start, import RainbowKit’s base styles, configure your wallets and desired chains, generate the required connectors, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import {
+  RainbowKitProvider,
+  Chain,
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
@@ -41,30 +44,16 @@ const chains: Chain[] = [
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 
-const connectors = ({ chainId }) => {
-  const rpcUrl =
+const wallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
     chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0];
+    chain.mainnet.rpcUrls[0],
+});
 
-  return [
-    new InjectedConnector({
-      chains,
-      options: { shimDisconnect: true },
-    }),
-    new WalletConnectConnector({
-      options: {
-        infuraId,
-        qrcode: true,
-      },
-    }),
-    new WalletLinkConnector({
-      options: {
-        appName: 'My RainbowKit app',
-        jsonRpcUrl: `${rpcUrl}/${infuraId}`,
-      },
-    }),
-  ];
-};
+const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
@@ -98,24 +87,60 @@ You’re done! RainbowKit will now handle your user’s wallet selection, displa
 The following wallet options are presented by default:
 
 - Rainbow
+- WalletConnect
 - Coinbase
 - MetaMask
 
 ### Customizing the wallet list
 
-The list of wallets can be customized via the `wallets` prop on `RainbowKitProvider`.
-
 All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
 
 ```tsx
-import { RainbowKitProvider, wallet, Wallet } from '@rainbow-me/rainbowkit';
+import {
+  RainbowKitProvider,
+  Chain,
+  wallet,
+  Wallet,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
 
-const wallets: Wallet[] = [wallet.rainbow, wallet.metamask, wallet.coinbase];
+const infuraId = process.env.INFURA_ID;
+
+const provider = ({ chainId }) =>
+  new providers.InfuraProvider(chainId, infuraId);
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimisticEthereum, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
+
+const wallets: Wallet[] = [
+    wallet.rainbow({ chains, infuraId }),
+    wallet.walletConnect({ chains, infuraId }),
+    wallet.coinbase({
+      appName: 'My RainbowKit App',
+      jsonRpcUrl: ({ chainId }) =>
+        chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+        chain.mainnet.rpcUrls[0],
+    }),
+    wallet.metamask(),
+  ]
+);
+
+const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
-    <RainbowKitProvider wallets={wallets} {...etc}>
-      {/* ... */}
+    <RainbowKitProvider chains={chains}>
+      <WagmiProvider
+        autoConnect
+        connectors={connectors}
+        provider={provider}
+      >
+        <YourApp />
+      </WagmiProvider>
     </RainbowKitProvider>
   );
 };
@@ -123,28 +148,56 @@ const App = () => {
 
 ### Creating a custom wallet
 
-The `Wallet` type is provided to help you define your own custom wallets. The `defaultWallets` array is available if you want to insert your custom wallet into the list.
+The `Wallet` type is provided to help you define your own custom wallets.
 
 ```tsx
 import {
   RainbowKitProvider,
-  defaultWallets,
+  Chain,
   Wallet,
+  getDefaultWallets,
+  connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 
-const myCustomWallet: Wallet = {
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimisticEthereum, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
+
+const myCustomWallet: Wallet = () => ({
   id: 'myCustomWallet',
   name: 'My Custom Wallet',
   iconUrl: 'https://example.com/icon.png',
-  connectorId: 'walletConnect',
-};
+  connector: new WalletConnectConnector({
+    chains,
+    options: {
+      infuraId,
+      qrcode: true,
+    },
+  }),
+});
+
+const defaultWallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
 
 const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
 
+const connectors = connectorsForWallets(wallets);
+
 const App = () => {
   return (
-    <RainbowKitProvider wallets={wallets} {...etc}>
-      {/* ... */}
+    <RainbowKitProvider chains={chains}>
+      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+        <YourApp />
+      </WagmiProvider>
     </RainbowKitProvider>
   );
 };

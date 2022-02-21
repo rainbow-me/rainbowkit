@@ -1,9 +1,6 @@
 import QRCodeUtil from 'qrcode';
 import React, { ReactElement, useMemo } from 'react';
 
-const RAINBOW_LOGO_URL =
-  'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa';
-
 const generateMatrix = (
   value: string,
   errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel
@@ -24,6 +21,7 @@ const generateMatrix = (
 
 type Props = {
   ecl?: QRCodeUtil.QRCodeErrorCorrectionLevel;
+  logoUri: string;
   logoMargin?: number;
   logoSize?: number;
   size?: number;
@@ -32,9 +30,9 @@ type Props = {
 
 export function QRCode({
   ecl = 'M',
-
   logoMargin = 10,
   logoSize = 50,
+  logoUri,
   size = 200,
   uri,
 }: Props) {
@@ -130,7 +128,7 @@ export function QRCode({
           <img
             alt=""
             height={logoSize}
-            src={RAINBOW_LOGO_URL}
+            src={logoUri}
             style={{
               all: 'revert',
               borderRadius: '25%',

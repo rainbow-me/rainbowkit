@@ -1,44 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { useConnect } from 'wagmi';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import React from 'react';
 import { Box } from '../Box/Box';
 import { QRCode } from '../QRCode/QRCode';
-import { WalletWithConnector } from '../RainbowKitProvider/useWallets';
+import { useWallets } from '../RainbowKitProvider/useWallets';
+import { WalletConnector } from '../RainbowKitProvider/wallet';
 import { Text } from '../Text/Text';
 
-export function DesktopOptions({
-  wallets,
+function WalletDetail({
+  useWalletDetail,
 }: {
-  wallets: WalletWithConnector[];
+  useWalletDetail: NonNullable<WalletConnector['useWalletDetail']>;
 }) {
+  const { qrCode } = useWalletDetail();
+
+  if (!qrCode) {
+    return null;
+  }
+
+  return (
+    <Box style={{ height: '342px' }}>
+      {qrCode?.uri ? (
+        <QRCode
+          logoSize={72}
+          logoUri={qrCode.logoUri}
+          size={342}
+          uri={qrCode.uri}
+        />
+      ) : null}
+    </Box>
+  );
+}
+
+export function DesktopOptions() {
   const titleId = 'rk_connect_title';
-  const [uri, setURI] = useState('');
-  const [{ data: connectData }, connect] = useConnect();
+  const wallets = useWallets();
 
-  useEffect(() => {
-    if (!connectData.connector) {
-      const walletConnectDefault = new WalletConnectConnector({
-        options: {
-          qrcode: false,
-        },
-      });
+  // Hard coded for now
+  const rainbowWallet = wallets.find(wallet => wallet.id === 'rainbow');
 
-      connect(walletConnectDefault);
-    }
-
-    if (connectData.connector) {
-      setURI(connectData.connector.getProvider().connector.uri);
-    }
-  }, [connect, connectData.connector]);
   return (
     <Box display="flex" flexDirection="column" gap="24" padding="14">
       <Text as="h1" color="modalText" id={titleId} size="23">
         Connect Wallet
       </Text>
 
-      <Box style={{ height: '342px' }}>
-        {uri && <QRCode logoSize={72} size={342} uri={uri} />}
-      </Box>
+      {
+        // Hard coded for now
+        rainbowWallet?.useWalletDetail && (
+          <WalletDetail useWalletDetail={rainbowWallet.useWalletDetail} />
+        )
+      }
 
       <Box display="flex" flexDirection="column" gap="18">
         {wallets.map(wallet => {
