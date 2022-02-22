@@ -250,11 +250,11 @@ RainbowKit ships with a static CSS file that can be themed via CSS variables, wh
 
 There are 3 built-in themes:
 
-- `lightTheme`
+- `lightTheme` (default)
 - `darkTheme`
 - `dimTheme`
 
-By default, depending on the user’s color mode, either the `lightTheme` or `darkTheme` will be provided automatically. You can override this by importing the desired theme from RainbowKit and providing it to the `theme` prop on `RainbowKitProvider`.
+These themes can be imported from RainbowKit and provided to the `theme` prop on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';

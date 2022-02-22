@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
-import { darkTheme } from '../../themes/darkTheme';
 import { lightTheme } from '../../themes/lightTheme';
 import { ChainIconsContext, ChainWithIconUrl } from './ChainIconsContext';
 import { provideChainIconUrls } from './provideChainIconUrls';
@@ -24,27 +23,23 @@ export const useThemeRootProps = () => {
 
 export type Theme = ThemeVars | (() => ThemeVars);
 
-type DynamicTheme = {
-  lightMode: Theme;
-  darkMode: Theme;
-};
-
-const defaultTheme: DynamicTheme = {
-  darkMode: darkTheme,
-  lightMode: lightTheme,
-};
-
 export interface RainbowKitProviderProps {
   chains: ChainWithIconUrl[];
   id?: string;
   children: ReactNode;
-  theme?: Theme | DynamicTheme | null;
+  theme?:
+    | Theme
+    | {
+        lightMode: Theme;
+        darkMode: Theme;
+      }
+    | null;
 }
 
 export function RainbowKitProvider({
   chains,
   id,
-  theme = defaultTheme,
+  theme = lightTheme,
   children,
 }: RainbowKitProviderProps) {
   const chainsWithIconUrls = useMemo(
