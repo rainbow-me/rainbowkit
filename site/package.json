@@ -23,8 +23,8 @@
     "wagmi": "<1"
   },
   "scripts": {
-    "dev:site": "next dev",
-    "build:site": "next build",
+    "dev": "next dev --port 3001",
+    "build": "next build",
     "typecheck": "pnpm tsc --noEmit"
   },
   "keywords": [],
