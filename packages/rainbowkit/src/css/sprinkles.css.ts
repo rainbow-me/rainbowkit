@@ -49,11 +49,6 @@ export const themeVars = createGlobalThemeContract(
   (_, path) => `rk-${path.join('-')}`
 );
 
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
-};
-export type ThemePartial = DeepPartial<ThemeVars>;
-
 const spacing = {
   '0': '0',
   '4': '4px',

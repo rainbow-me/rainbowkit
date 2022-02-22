@@ -250,11 +250,11 @@ RainbowKit ships with a static CSS file that can be themed via CSS variables, wh
 
 There are 3 built-in themes:
 
-- `lightTheme`
+- `lightTheme` (default)
 - `darkTheme`
 - `dimTheme`
 
-By default, depending on the user’s color mode, either the `lightTheme` or `darkTheme` will be provided automatically. You can override this by importing the desired theme from RainbowKit and providing it to the `theme` prop on `RainbowKitProvider`.
+These themes can be imported from RainbowKit and provided to the `theme` prop on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -262,31 +262,6 @@ import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 const App = () => {
   return (
     <RainbowKitProvider theme={darkTheme} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-### Customizing built-in themes
-
-The built-in themes also accept overrides if you want to make any adjustments.
-
-```tsx
-import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
-
-const customLightTheme = lightTheme({
-  overrides: {
-    colors: {
-      connectButtonBackground: 'blue',
-      connectButtonText: 'white',
-    },
-  },
-});
-
-const App = () => {
-  return (
-    <RainbowKitProvider theme={customLightTheme} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );

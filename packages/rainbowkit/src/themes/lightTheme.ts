@@ -1,8 +1,7 @@
 import { baseTheme } from './baseTheme';
-import { createTheme } from './createTheme';
 
-export const lightTheme = createTheme({
-  ...baseTheme,
+export const lightTheme = () => ({
+  ...baseTheme(),
   colors: {
     connectButtonBackground: '#FFFFFF',
     connectButtonBackgroundError: '#FF494A',

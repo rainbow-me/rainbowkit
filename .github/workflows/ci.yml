@@ -32,6 +32,6 @@ jobs:
       - name: Lint and format
         run: pnpm lint && pnpm format
       - name: Build packages
-        run: pnpm build -r
+        run: pnpm build --recursive
       - name: Run tests
         run: pnpm test
