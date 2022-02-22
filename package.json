@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --ext=js,mjs,ts,cjs,tsx --fix",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
-    "test": "echo \"No test script specified\"",
+    "test": "vitest",
     "chgset:run": "changeset",
     "chgset:version": "changeset version",
     "chgset": "pnpm chgset:run && pnpm chgset:version",
@@ -41,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "@vanilla-extract/esbuild-plugin": "^2.0.0",
+    "@vanilla-extract/vite-plugin": "^3.1.2",
     "autoprefixer": "^10.4.0",
     "esbuild": "^0.14.1",
     "eslint": "7.32.0",
@@ -54,6 +55,7 @@
     "react-dom": "^17.0.2",
     "recursive-readdir-files": "^2.0.7",
     "typescript": "~4.5.2",
+    "vitest": "^0.5.0",
     "wagmi": "^0.2.10"
   }
 }
