@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "postinstall": "husky install",
-    "dev": "pnpm dev -r --parallel",
+    "dev": "pnpm dev --recursive --parallel",
     "start": "pnpm dev",
-    "lint": "eslint . --ext=js,mjs,ts,cjs,tsx && pnpm typecheck -r",
+    "lint": "eslint . --ext=js,mjs,ts,cjs,tsx && pnpm typecheck --recursive",
     "lint:fix": "eslint . --ext=js,mjs,ts,cjs,tsx --fix",
     "format": "prettier --check \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,mjs,cjs,md,tsx}\"",
@@ -16,7 +16,7 @@
     "chgset:version": "changeset version",
     "chgset": "pnpm chgset:run && pnpm chgset:version",
     "release": "changeset publish",
-    "prerelease": "MINIFY_CSS=true pnpm build -r && cp README.md packages/rainbowkit/README.md",
+    "prerelease": "MINIFY_CSS=true pnpm build --recursive && cp README.md packages/rainbowkit/README.md",
     "ci:example": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=example",
     "ci:site": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build:site --filter=site"
   },
