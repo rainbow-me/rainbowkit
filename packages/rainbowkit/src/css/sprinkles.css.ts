@@ -6,6 +6,7 @@ import './reset.css';
 
 const themeContractValues = {
   colors: {
+    buttonText: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',

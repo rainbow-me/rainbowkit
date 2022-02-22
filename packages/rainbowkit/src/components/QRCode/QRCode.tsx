@@ -1,5 +1,7 @@
 import QRCodeUtil from 'qrcode';
 import React, { ReactElement, useMemo } from 'react';
+import { Box } from '../Box/Box';
+import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 const generateMatrix = (
   value: string,
@@ -109,10 +111,15 @@ export function QRCode({
   const logoWrapperSize = logoSize + logoMargin * 2;
 
   return (
-    <div>
+    <Box
+      borderRadius="modal"
+      boxShadow="connectButton"
+      className={QRCodeBackgroundClassName}
+      padding="16"
+    >
       <div
         style={{
-          height: '375px',
+          height: '350px',
           userSelect: 'none',
         }}
       >
@@ -151,6 +158,6 @@ export function QRCode({
           {dots}
         </svg>
       </div>
-    </div>
+    </Box>
   );
 }

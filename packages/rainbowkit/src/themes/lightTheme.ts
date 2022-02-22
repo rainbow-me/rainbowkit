@@ -3,6 +3,7 @@ import { baseTheme } from './baseTheme';
 export const lightTheme = () => ({
   ...baseTheme(),
   colors: {
+    buttonText: '#FFF',
     connectButtonBackground: '#FFFFFF',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:

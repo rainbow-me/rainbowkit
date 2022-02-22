@@ -18,10 +18,17 @@ interface DialogProps {
   onClose: () => void;
   titleId: string;
   onMountAutoFocus?: (event: Event) => void;
+  wide?: boolean;
   children: ReactNode;
 }
 
-export function Dialog({ children, onClose, open, titleId }: DialogProps) {
+export function Dialog({
+  children,
+  onClose,
+  open,
+  titleId,
+  wide = false,
+}: DialogProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
       open && event.key === 'Escape' && onClose();
@@ -50,7 +57,7 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
               role="dialog"
             >
               <FocusTrap
-                className={styles.content}
+                className={wide ? styles.wideContent : styles.content}
                 onClick={stopPropagation}
                 role="document"
               >
