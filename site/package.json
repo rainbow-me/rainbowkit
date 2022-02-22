@@ -24,7 +24,8 @@
   },
   "scripts": {
     "dev:site": "next dev",
-    "build:site": "next build"
+    "build:site": "next build",
+    "typecheck": "pnpm tsc --noEmit"
   },
   "keywords": [],
   "author": "",
