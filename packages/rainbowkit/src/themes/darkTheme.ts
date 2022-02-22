@@ -1,8 +1,7 @@
 import { baseTheme } from './baseTheme';
-import { createTheme } from './createTheme';
 
-export const darkTheme = createTheme({
-  ...baseTheme,
+export const darkTheme = () => ({
+  ...baseTheme(),
   colors: {
     connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',

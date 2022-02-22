@@ -268,31 +268,6 @@ const App = () => {
 };
 ```
 
-### Customizing built-in themes
-
-The built-in themes also accept overrides if you want to make any adjustments.
-
-```tsx
-import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
-
-const customLightTheme = lightTheme({
-  overrides: {
-    colors: {
-      connectButtonBackground: 'blue',
-      connectButtonText: 'white',
-    },
-  },
-});
-
-const App = () => {
-  return (
-    <RainbowKitProvider theme={customLightTheme} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
 ### Dark mode support
 
 If your app uses the standard `prefers-color-mode: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
