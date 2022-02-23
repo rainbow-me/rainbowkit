@@ -171,7 +171,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 marginX="6"
                 style={{ height: 382 }}
               >
-                {' '}
                 {selectedWallet ? (
                   <WalletDetail wallet={selectedWallet} />
                 ) : (
@@ -185,17 +184,30 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 flexDirection="row"
                 gap="8"
                 height="34"
+                justifyContent="space-between"
                 marginTop="12"
                 marginX="6"
                 paddingY="8"
               >
-                {isRainbow && (
+                {isRainbow ? (
                   <>
-                    <Text color="menuTextSecondary" size="16" weight="bold">
+                    <Text color="menuTextSecondary" size="14" weight="bold">
                       Don&apos;t have the Rainbow Mobile App Yet?
                     </Text>
-                    <Button label="GET" />
+                    <Button label="GET" onClick={() => {}} />
                   </>
+                ) : (
+                  selectedWallet && (
+                    <>
+                      <Text color="menuTextSecondary" size="14" weight="bold">
+                        Confirm the connection in {selectedWallet.name}
+                      </Text>
+                      <Button
+                        label="Reopen"
+                        onClick={() => selectedWallet?.connect?.()}
+                      />
+                    </>
+                  )
                 )}
               </Box>
             </Box>

@@ -3,6 +3,7 @@ import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { LoginIcon } from '../Icons/Login';
 import { Text } from '../Text/Text';
+import { introTextClassName } from './ConnectModalIntro.css';
 
 export function ConnectModalIntro() {
   return (
@@ -17,7 +18,7 @@ export function ConnectModalIntro() {
       <Text color="modalText" size="18" weight="bold">
         A New Way to Log In
       </Text>
-      <Text color="modalTextSecondary" size="16">
+      <Text className={introTextClassName} color="modalTextSecondary" size="16">
         Instead of a creating a new username and password on every site, you can
         use a wallet to log in instantly
       </Text>
@@ -29,7 +30,7 @@ export function ConnectModalIntro() {
         justifyContent="center"
         marginTop="16"
       >
-        <Button label="Get a Wallet" />
+        <Button label="Get a Wallet" onClick={() => {}} />
         <Text color="accentColor" weight="bold">
           Learn More
         </Text>
