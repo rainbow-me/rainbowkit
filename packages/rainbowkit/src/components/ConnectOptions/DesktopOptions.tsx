@@ -69,7 +69,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       <Box
         display="flex"
         flexDirection="column"
-        gap="8"
+        gap="6"
         marginX="14"
         paddingX="6"
         paddingY="14"
@@ -78,6 +78,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         <Box paddingY="8">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
+          </Text>
+        </Box>
+        <Box marginTop="8">
+          <Text color="modalTextSecondary" size="14" weight="bold">
+            Popular
           </Text>
         </Box>
         <Box display="flex" flexDirection="column" gap="6">
