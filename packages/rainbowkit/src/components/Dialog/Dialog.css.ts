@@ -36,6 +36,14 @@ export const content = style([
   }),
   {
     animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 150ms ease`,
+    maxWidth: '100vw',
     width: '390px',
+  },
+]);
+
+export const wideContent = style([
+  content,
+  {
+    width: '712px',
   },
 ]);

@@ -7,7 +7,6 @@ export const dialogContent = style([
     borderRadius: 'modal',
     display: 'flex',
     flexDirection: 'column',
-    padding: '14',
     position: 'relative',
   }),
 ]);

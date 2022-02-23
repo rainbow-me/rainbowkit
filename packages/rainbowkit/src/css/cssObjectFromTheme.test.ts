@@ -6,6 +6,7 @@ describe('cssObjectFromTheme', () => {
   it('converts themes to CSS-in-JS objects', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
+        "--rk-colors-buttonText": "#FFF",
         "--rk-colors-connectButtonBackground": "#FFFFFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
         "--rk-colors-connectButtonInnerBackground": "linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))",

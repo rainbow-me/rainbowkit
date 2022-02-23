@@ -4,12 +4,17 @@ import { dialogContent } from './DialogContent.css';
 
 interface DialogContentProps {
   children: ReactNode;
-  marginTop?: BoxProps['margin'];
+  padding?: BoxProps['padding'];
+  marginTop?: BoxProps['marginTop'];
 }
 
-export function DialogContent({ children, marginTop }: DialogContentProps) {
+export function DialogContent({
+  children,
+  marginTop,
+  padding = '14',
+}: DialogContentProps) {
   return (
-    <Box className={dialogContent} marginTop={marginTop}>
+    <Box className={dialogContent} marginTop={marginTop} padding={padding}>
       {children}
     </Box>
   );

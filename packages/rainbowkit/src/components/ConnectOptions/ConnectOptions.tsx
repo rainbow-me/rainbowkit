@@ -3,6 +3,6 @@ import { isMobile } from '../../utils/isMobile';
 import { DesktopOptions } from './DesktopOptions';
 import { MobileOptions } from './MobileOptions';
 
-export default function ConnectOptions() {
-  return isMobile() ? <MobileOptions /> : <DesktopOptions />;
+export default function ConnectOptions({ onClose }: { onClose: () => void }) {
+  return isMobile() ? <MobileOptions /> : <DesktopOptions onClose={onClose} />;
 }

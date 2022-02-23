@@ -93,7 +93,7 @@ const walletConnect =
       },
     }),
     iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
+      'https://raw.githubusercontent.com/WalletConnect/walletconnect-assets/master/png/square/walletconnect-square-blue.png',
     id: 'walletConnect',
     name: 'WalletConnect',
   });

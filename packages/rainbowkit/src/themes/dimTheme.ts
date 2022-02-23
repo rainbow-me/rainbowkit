@@ -3,6 +3,7 @@ import { baseTheme } from './baseTheme';
 export const dimTheme = () => ({
   ...baseTheme(),
   colors: {
+    buttonText: '#FFF',
     connectButtonBackground: '#1A1B1F',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
