@@ -8,19 +8,46 @@ import { SpinnerIcon } from '../Icons/Spinner';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { QRCode } from '../QRCode/QRCode';
 import { useWallets } from '../RainbowKitProvider/useWallets';
-import { WalletConnector, WalletMeta } from '../RainbowKitProvider/wallet';
+import { WalletMeta } from '../RainbowKitProvider/wallet';
 import { Text } from '../Text/Text';
 import { walletLogoClassName } from './DesktopOptions.css';
 
 function WalletDetail({
-  useWalletDetail,
+  wallet,
 }: {
-  useWalletDetail: NonNullable<WalletConnector['useWalletDetail']>;
+  wallet:
+    | WalletMeta & {
+        ready?: boolean | undefined;
+        connect?: (() => void) | undefined;
+      };
 }) {
+  const { iconUrl, name, useWalletDetail } = wallet;
+  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const { qrCode } = useWalletDetail();
 
   if (!qrCode) {
-    return null;
+    return (
+      <Box alignItems="center" display="flex" flexDirection="column" gap="20">
+        <img
+          alt={name}
+          className={walletLogoClassName}
+          height="60"
+          src={iconUrl}
+          width="60"
+        />
+        <Box alignItems="center" display="flex" flexDirection="column" gap="10">
+          <Text color="modalText" size="20" weight="bold">
+            Opening {name}
+          </Text>
+          <Box display="flex" flexDirection="row" gap="6">
+            <SpinnerIcon />
+            <Text color="menuTextAction" size="16" weight="bold">
+              Waiting for connection
+            </Text>
+          </Box>
+        </Box>
+      </Box>
+    );
   }
 
   return (
@@ -43,11 +70,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<
-    | (WalletMeta & {
-        ready?: boolean | undefined;
-        connect?: (() => void) | undefined;
-      })
-    | undefined
+    WalletMeta & {
+      ready?: boolean | undefined;
+      connect?: (() => void) | undefined;
+    }
   >();
   const isRainbow = selectedOptionId === 'rainbow';
   const wallets = useWallets();
@@ -159,24 +185,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 style={{ height: 382 }}
               >
                 {' '}
-                {selectedOptionId ? (
-                  isRainbow && selectedWallet?.useWalletDetail ? (
-                    <WalletDetail
-                      useWalletDetail={selectedWallet?.useWalletDetail}
-                    />
-                  ) : (
-                    <>
-                      <Text color="modalText" size="20" weight="bold">
-                        Opening {selectedOptionId}
-                      </Text>
-                      <Box display="flex" flexDirection="row" gap="6">
-                        <SpinnerIcon />
-                        <Text color="menuTextAction" size="16" weight="bold">
-                          Waiting for connection
-                        </Text>
-                      </Box>
-                    </>
-                  )
+                {selectedWallet ? (
+                  <WalletDetail wallet={selectedWallet} />
                 ) : (
                   <ConnectModalIntro />
                 )}
