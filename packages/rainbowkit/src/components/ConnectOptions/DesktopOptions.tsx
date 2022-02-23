@@ -155,11 +155,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               >
                 {' '}
                 {selectedOptionId ? (
-                  isRainbow ? (
-                    // <WalletDetail
-                    //   useWalletDetail={selectedWallet?.useWalletDetail}
-                    // />
-                    <></>
+                  isRainbow && selectedWallet?.useWalletDetail ? (
+                    <WalletDetail
+                      useWalletDetail={selectedWallet?.useWalletDetail}
+                    />
                   ) : (
                     <>
                       <Text color="modalText" size="20" weight="bold">
