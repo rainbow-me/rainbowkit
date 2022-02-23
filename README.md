@@ -385,9 +385,44 @@ const App = () => {
 };
 ```
 
-## Custom buttons
+## `ConnectButton`
 
-If you want to customize the rendering of the top-level RainbowKit buttons, the `ConnectButton` component also accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
+The `ConnectButton` component exposes the following props to customize its appearance.
+
+<table>
+  <thead>
+    <tr>
+    <th>Prop</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>showAvatar</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Whether the avatar is visible next to the account name</td>
+    </tr>
+    <tr>
+      <td><code>showBalance</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Whether the balance is visible next to the account name</td>
+    </tr>
+    <tr>
+      <td><code>showChains</code></td>
+      <td><code>boolean</code></td>
+      <td><code>true</code></td>
+      <td>Whether the chain button is visible next to the account button</td>
+    </tr>
+  </tbody>
+</table>
+
+### Creating custom buttons
+
+If you want to create your own custom connection buttons, the low-level `ConnectButton.Custom` component is also provided which accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
 
 A minimal re-implementation of the built-in buttons would look something like this:
 
@@ -397,23 +432,23 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 export const YourApp = () => {
   return (
     <>
-      <ConnectButton>
+      <ConnectButton.Custom>
         {({
           account,
           chain,
-          showAccountModal,
-          showChainModal,
-          showConnectModal,
+          openAccountModal,
+          openChainModal,
+          openConnectModal,
         }) =>
           !account ? (
-            <button onClick={showConnectModal} type="button">
+            <button onClick={openConnectModal} type="button">
               Connect Wallet
             </button>
           ) : (
             <div style={{ display: 'flex', gap: 12 }}>
               {chain && (
                 <button
-                  onClick={showChainModal}
+                  onClick={openChainModal}
                   style={{ display: 'flex', alignItems: 'center' }}
                   type="button"
                 >
@@ -428,14 +463,14 @@ export const YourApp = () => {
                   {chain.unsupported && ' (unsupported)'}
                 </button>
               )}
-              <button onClick={showAccountModal} type="button">
+              <button onClick={openAccountModal} type="button">
                 {account.displayName}
                 {account.displayBalance ? ` (${account.displayBalance})` : ''}
               </button>
             </div>
           )
         }
-      </ConnectButton>
+      </ConnectButton.Custom>
     </>
   );
 };
@@ -554,19 +589,19 @@ The following props are passed to your render function.
   </thead>
   <tbody>
     <tr>
-      <td><code>showAccountModal</code></td>
+      <td><code>openAccountModal</code></td>
       <td><code>() => void</code></td>
-      <td>Function to show the account modal</td>
+      <td>Function to open the account modal</td>
     </tr>
     <tr>
-      <td><code>showChainModal</code></td>
+      <td><code>openChainModal</code></td>
       <td><code>() => void</code></td>
-      <td>Function to show the chain modal</td>
+      <td>Function to open the chain modal</td>
     </tr>
     <tr>
-      <td><code>showConnectModal</code></td>
+      <td><code>openConnectModal</code></td>
       <td><code>() => void</code></td>
-      <td>Function to show the connect modal</td>
+      <td>Function to open the connect modal</td>
     </tr>
     <tr>
       <td><code>accountModalOpen</code></td>
