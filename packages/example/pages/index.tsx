@@ -1,7 +1,11 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import React from 'react';
+import React, { useState } from 'react';
 
 const Example = () => {
+  const [showAvatar, setShowAvatar] = useState<boolean | undefined>();
+  const [showBalance, setShowBalance] = useState<boolean | undefined>();
+  const [showChains, setShowChains] = useState<boolean | undefined>();
+
   return (
     <div
       style={{
@@ -17,27 +21,31 @@ const Example = () => {
           justifyContent: 'flex-end',
         }}
       >
-        <ConnectButton />
+        <ConnectButton
+          showAvatar={showAvatar}
+          showBalance={showBalance}
+          showChains={showChains}
+        />
       </div>
 
       <div>
         <h3 style={{ fontFamily: 'sans-serif' }}>Custom buttons</h3>
-        <ConnectButton>
+        <ConnectButton.Custom>
           {({
             account,
             chain,
-            showAccountModal,
-            showChainModal,
-            showConnectModal,
+            openAccountModal,
+            openChainModal,
+            openConnectModal,
           }) =>
             !account ? (
-              <button onClick={showConnectModal} type="button">
+              <button onClick={openConnectModal} type="button">
                 Connect Wallet
               </button>
             ) : (
               <div style={{ display: 'flex', gap: 12 }}>
                 <button
-                  onClick={showChainModal}
+                  onClick={openChainModal}
                   style={{ alignItems: 'center', display: 'flex' }}
                   type="button"
                 >
@@ -50,7 +58,7 @@ const Example = () => {
                   )}
                   {chain.name ?? chain.id}
                 </button>
-                <button onClick={showAccountModal} type="button">
+                <button onClick={openAccountModal} type="button">
                   {account.displayName}
                   {account.balanceFormatted
                     ? ` (${account.balanceFormatted})`
@@ -59,7 +67,43 @@ const Example = () => {
               </div>
             )
           }
-        </ConnectButton>
+        </ConnectButton.Custom>
+      </div>
+
+      <div style={{ fontFamily: 'sans-serif' }}>
+        <h3>ConnectButton props</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <label style={{ userSelect: 'none' }}>
+            <input
+              checked={showAvatar ?? true}
+              onChange={event => {
+                setShowAvatar(event.currentTarget.checked);
+              }}
+              type="checkbox"
+            />{' '}
+            showAvatar
+          </label>
+          <label style={{ userSelect: 'none' }}>
+            <input
+              checked={showBalance ?? true}
+              onChange={event => {
+                setShowBalance(event.currentTarget.checked);
+              }}
+              type="checkbox"
+            />{' '}
+            showBalance
+          </label>
+          <label style={{ userSelect: 'none' }}>
+            <input
+              checked={showChains ?? true}
+              onChange={event => {
+                setShowChains(event.currentTarget.checked);
+              }}
+              type="checkbox"
+            />{' '}
+            showChains
+          </label>
+        </div>
       </div>
     </div>
   );
