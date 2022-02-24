@@ -41,9 +41,9 @@ type RadiiScale = {
   1: string;
   2: string;
 };
+type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 
 export type AccentValues = 'blue' | 'green' | 'purple' | 'pink';
-export type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 
 export interface ThemeFn {
   accentColor?: AccentValues;
