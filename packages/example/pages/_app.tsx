@@ -14,15 +14,6 @@ import React, { useState } from 'react';
 import { chain, WagmiProvider } from 'wagmi';
 
 const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
-const THEMES = {
-  dark: darkTheme,
-  light: lightTheme,
-  midnight: midnightTheme,
-};
-
-export type Modes = keyof typeof THEMES;
-export type Accents = 'blue' | 'purple' | 'green' | 'pink';
-export type Radii = 'large' | 'medium' | 'small' | 'none';
 
 const isChainSupported = (chainId?: number) =>
   chains.some(x => x.id === chainId);
@@ -52,6 +43,16 @@ const wallets = getDefaultWallets({
 });
 
 const connectors = connectorsForWallets(wallets);
+
+const THEMES = {
+  dark: darkTheme,
+  light: lightTheme,
+  midnight: midnightTheme,
+};
+
+export type Modes = keyof typeof THEMES;
+export type Accents = 'blue' | 'purple' | 'green' | 'pink';
+export type Radii = 'large' | 'medium' | 'small' | 'none';
 
 function App({ Component, pageProps }: AppProps) {
   const [mode, setMode] = useState<Modes>('light');

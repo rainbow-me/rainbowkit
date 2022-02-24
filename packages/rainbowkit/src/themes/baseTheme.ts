@@ -1,11 +1,5 @@
 import { ThemeVars } from '../css/sprinkles.css';
 
-type RadiiScale = {
-  0: string;
-  1: string;
-  2: string;
-};
-
 const radii: Record<RadiiValues, RadiiScale> = {
   large: {
     0: '6px',
@@ -31,7 +25,7 @@ const radii: Record<RadiiValues, RadiiScale> = {
 
 export const baseTheme = ({
   borderRadius = 'large',
-}: ThemeFn): Pick<ThemeVars, 'radii' | 'fonts'> => ({
+}: Pick<ThemeFn, 'borderRadius'>): Pick<ThemeVars, 'radii' | 'fonts'> => ({
   fonts: {
     body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   },
@@ -41,6 +35,12 @@ export const baseTheme = ({
     modal: radii[borderRadius][2],
   },
 });
+
+type RadiiScale = {
+  0: string;
+  1: string;
+  2: string;
+};
 
 export type AccentValues = 'blue' | 'green' | 'purple' | 'pink';
 export type RadiiValues = 'large' | 'medium' | 'small' | 'none';
