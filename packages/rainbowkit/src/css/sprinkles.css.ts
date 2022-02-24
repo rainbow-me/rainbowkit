@@ -112,6 +112,7 @@ const layoutStyles = defineProperties({
   properties: {
     alignItems: flexAlignment,
     alignSelf: flexAlignment,
+    backgroundSize: ['cover'] as const,
     borderRadius: {
       ...themeVars.radii,
       '1': '1px',
@@ -153,6 +154,7 @@ const layoutStyles = defineProperties({
     marginTop: spacing,
     maxWidth: dimensions,
     minWidth: dimensions,
+    overflow: ['hidden'] as const,
     paddingBottom: spacing,
     paddingLeft: spacing,
     paddingRight: spacing,
@@ -161,6 +163,7 @@ const layoutStyles = defineProperties({
     right: {
       '0': '0',
     },
+    userSelect: ['none'] as const,
     width: dimensions,
   } as const,
   shorthands: {

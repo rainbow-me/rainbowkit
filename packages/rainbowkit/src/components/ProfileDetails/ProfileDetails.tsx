@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
+import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
@@ -12,10 +13,7 @@ import { DisconnectIcon } from '../Icons/Disconnect';
 import { ExploreIcon } from '../Icons/Explore';
 import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
-import {
-  CloseButtonClassName,
-  ProfileDetailsImageClassName,
-} from './ProfileDetails.css';
+import { CloseButtonClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
@@ -82,16 +80,12 @@ export function ProfileDetails({
           justifyContent="space-between"
           margin="10"
         >
-          <Box display="flex" flexDirection="row">
-            {accountData.ens?.avatar ? (
-              <Box marginRight="12">
-                <img
-                  alt="ENS Avatar"
-                  className={ProfileDetailsImageClassName}
-                  src={accountData.ens.avatar}
-                />
-              </Box>
-            ) : null}
+          <Box display="flex" flexDirection="row" gap="12">
+            <Avatar
+              address={accountData.address}
+              imageUrl={accountData.ens?.avatar}
+              size={54}
+            />
             <Box display="flex" flexDirection="column">
               <Box marginBottom="6">
                 <Text

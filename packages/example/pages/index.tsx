@@ -72,7 +72,14 @@ const Example = () => {
 
       <div style={{ fontFamily: 'sans-serif' }}>
         <h3>ConnectButton props</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div
+          style={{
+            alignItems: 'flex-start',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
+          }}
+        >
           <label style={{ userSelect: 'none' }}>
             <input
               checked={showAvatar ?? true}
