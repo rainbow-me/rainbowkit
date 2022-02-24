@@ -30,7 +30,7 @@ export function ConnectModalIntro() {
         marginTop="16"
       >
         <Button label="Get a Wallet" />
-        <Text color="menuTextAction" weight="bold">
+        <Text color="accentColor" weight="bold">
           Learn More
         </Text>
       </Box>
