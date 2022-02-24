@@ -1,5 +1,8 @@
 lockfileVersion: 5.3
 
+onlyBuiltDependencies:
+  - esbuild
+
 importers:
 
   .:
@@ -12,6 +15,7 @@ importers:
       '@changesets/cli': 2.18.1
       '@commitlint/cli': ^15.0.0
       '@commitlint/config-conventional': ^15.0.0
+      '@lavamoat/preinstall-always-fail': ^1.0.0
       '@rushstack/eslint-patch': ^1.1.0
       '@types/node': ^16.11.11
       '@types/react': ^17.0.37
@@ -44,6 +48,7 @@ importers:
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
+      '@lavamoat/preinstall-always-fail': 1.0.0
       '@rushstack/eslint-patch': 1.1.0
       '@types/node': 16.11.22
       '@types/react': 17.0.39
@@ -2120,6 +2125,10 @@ packages:
       '@pedrouid/environment': 1.0.1
     dev: true
 
+  /@lavamoat/preinstall-always-fail/1.0.0:
+    resolution: {integrity: sha512-vD2DcC0ffJj1w2y1Lu0OU39wHmlPEd2tCDW04Bm6Kf4LyRnCHCezTsS8yzeSJ+4so7XP+TITuR5FGJRWxPb+GA==}
+    dev: true
+
   /@manypkg/find-root/1.1.0:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
@@ -2151,7 +2160,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
-    requiresBuild: true
     optional: true
 
   /@next/swc-darwin-arm64/12.0.10:
@@ -2159,7 +2167,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
-    requiresBuild: true
     optional: true
 
   /@next/swc-darwin-x64/12.0.10:
@@ -2167,7 +2174,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
-    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm-gnueabihf/12.0.10:
@@ -2175,7 +2181,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
-    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm64-gnu/12.0.10:
@@ -2183,7 +2188,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
-    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm64-musl/12.0.10:
@@ -2191,7 +2195,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
-    requiresBuild: true
     optional: true
 
   /@next/swc-linux-x64-gnu/12.0.10:
@@ -2199,7 +2202,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
-    requiresBuild: true
     optional: true
 
   /@next/swc-linux-x64-musl/12.0.10:
@@ -2207,7 +2209,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
-    requiresBuild: true
     optional: true
 
   /@next/swc-win32-arm64-msvc/12.0.10:
@@ -2215,7 +2216,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
-    requiresBuild: true
     optional: true
 
   /@next/swc-win32-ia32-msvc/12.0.10:
@@ -2223,7 +2223,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
-    requiresBuild: true
     optional: true
 
   /@next/swc-win32-x64-msvc/12.0.10:
@@ -2231,7 +2230,6 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
-    requiresBuild: true
     optional: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -3601,7 +3599,6 @@ packages:
 
   /core-js-pure/3.21.0:
     resolution: {integrity: sha512-VaJUunCZLnxuDbo1rNOzwbet9E1K9joiXS5+DQMPtgxd24wfsZbJZMMfQLGYMlCUvSxLfsRUUhoOR2x28mFfeg==}
-    requiresBuild: true
     dev: true
 
   /core-util-is/1.0.2:
@@ -3979,7 +3976,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [android]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -3988,7 +3984,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [darwin]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -3997,7 +3992,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [darwin]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4006,7 +4000,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [freebsd]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4015,7 +4008,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [freebsd]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4024,7 +4016,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4033,7 +4024,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4042,7 +4032,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4051,7 +4040,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4060,7 +4048,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [mips64el]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4069,7 +4056,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [ppc64]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4078,7 +4064,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [riscv64]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4087,7 +4072,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [s390x]
     os: [linux]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4096,7 +4080,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [netbsd]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4105,7 +4088,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [openbsd]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4114,7 +4096,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [sunos]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4123,7 +4104,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [win32]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4132,7 +4112,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -4141,7 +4120,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
-    requiresBuild: true
     dev: true
     optional: true
 
@@ -5667,7 +5645,6 @@ packages:
   /keccak/3.0.2:
     resolution: {integrity: sha512-PyKKjkH53wDMLGrvmRGSNWgmSxZOUqbnXwKL9tmgbFYA1iAYqW21kfR7mZXV0MlESiefxQQE9X9fTa3X+2MPDQ==}
     engines: {node: '>=10.0.0'}
-    requiresBuild: true
     dependencies:
       node-addon-api: 2.0.2
       node-gyp-build: 4.3.0
@@ -6924,7 +6901,6 @@ packages:
   /secp256k1/4.0.3:
     resolution: {integrity: sha512-NLZVf+ROMxwtEj3Xa562qgv2BK5e2WNmXPiOdVIPLgs6lyTzMvBq0aWTYMI5XCP9jZMVKOcqZLw/Wc4vDkuxhA==}
     engines: {node: '>=10.0.0'}
-    requiresBuild: true
     dependencies:
       elliptic: 6.5.4
       node-addon-api: 2.0.2
