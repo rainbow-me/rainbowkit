@@ -1,4 +1,5 @@
 import React from 'react';
+import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
@@ -109,20 +110,18 @@ export function ConnectButton({
                 paddingY="6"
                 transition="default"
               >
-                <Box alignItems="center" display="flex" height="24">
-                  {showAvatar && account.ensAvatar ? (
-                    <Box
-                      alt="ENS Avatar"
-                      as="img"
-                      borderRadius="full"
-                      height="24"
-                      marginRight="6"
-                      src={account.ensAvatar}
-                      width="24"
+                <Box alignItems="center" display="flex" gap="6" height="24">
+                  {showAvatar && (
+                    <Avatar
+                      address={account.address}
+                      imageUrl={account.ensAvatar}
+                      size={24}
                     />
-                  ) : null}
-                  {account.displayName}
-                  <DropdownIcon />
+                  )}
+                  <Box alignItems="center" display="flex">
+                    {account.displayName}
+                    <DropdownIcon />
+                  </Box>
                 </Box>
               </Box>
             </Box>
