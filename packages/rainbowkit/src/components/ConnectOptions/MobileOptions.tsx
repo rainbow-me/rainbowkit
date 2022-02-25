@@ -7,15 +7,16 @@ import {
 import { Text } from '../Text/Text';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { onClick } = wallet.useMobileWalletButton();
+  const { iconUrl, id, name, ready, useMobileWalletButton } = wallet;
+  const { onClick } = useMobileWalletButton();
 
   return (
     <Box
       as="button"
-      color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-      disabled={!wallet.ready}
+      color={ready ? 'modalText' : 'modalTextSecondary'}
+      disabled={!ready}
       fontFamily="body"
-      key={wallet.id}
+      key={id}
       onClick={onClick}
       type="button"
     >
@@ -26,17 +27,17 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         justifyContent="center"
       >
         <Box
-          alt={wallet.name}
+          alt={name}
           as="img"
           borderRadius="10"
           display="block"
           height="60"
           marginBottom="12"
-          src={wallet.iconUrl}
+          src={iconUrl}
           width="60"
         />
         <Text as="h2" color="modalText" size="13">
-          {wallet.name}
+          {name}
         </Text>
       </Box>
     </Box>
