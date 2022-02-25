@@ -7,25 +7,17 @@ import {
 import { Text } from '../Text/Text';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const button = wallet.useMobileWalletButton();
+  const { onClick } = wallet.useMobileWalletButton();
 
   return (
     <Box
-      {...(button.type === 'link'
-        ? {
-            as: 'a',
-            href: button.url,
-            style: !button.url ? { opacity: 0.5 } : undefined,
-          }
-        : {
-            as: 'button',
-            disabled: !wallet.ready,
-            onClick: wallet.connect,
-            type: 'button',
-          })}
+      as="button"
       color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+      disabled={!wallet.ready}
       fontFamily="body"
       key={wallet.id}
+      onClick={onClick}
+      type="button"
     >
       <Box
         alignItems="center"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Connector, useConnect, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -10,21 +10,14 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   id: string;
   name: string;
   iconUrl?: string;
-  useMobileWalletButton?: () =>
-    | {
-        type: 'link';
-        url?: string;
-      }
-    | {
-        type: 'button';
-        connect?: () => void;
-      };
+  useMobileWalletButton?: () => {
+    onClick: () => void;
+  };
   useDesktopWalletDetail?: () => {
     qrCode?: {
       uri?: string;
       logoUri: string;
     };
-    connect?: () => void;
   };
 };
 
@@ -35,25 +28,6 @@ type ConnectorArgs = {
 export type Wallet = (
   connectorArgs: ConnectorArgs
 ) => WalletConnectorConfig<any>;
-
-function useWalletConnectUri(connector: WalletConnectConnector) {
-  const [{ data: connectData }, connect] = useConnect();
-  const [uri, setUri] = useState<string | undefined>();
-
-  useEffect(() => {
-    if (!connectData.connector) {
-      connect(connector);
-    }
-
-    if (connectData.connector) {
-      setTimeout(() => {
-        setUri(connectData.connector.getProvider().connector.uri);
-      }, 0);
-    }
-  }, [connect, connectData.connector, connector]);
-
-  return uri;
-}
 
 interface RainbowOptions {
   chains: Chain[];
@@ -76,7 +50,18 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
       id: 'rainbow',
       name: 'Rainbow',
       useDesktopWalletDetail: () => {
-        const uri = useWalletConnectUri(connector);
+        const [{ data: connectData }, connect] = useConnect();
+        const [uri, setUri] = useState<string | undefined>();
+
+        useEffect(() => {
+          if (connectData.connector !== connector) {
+            connect(connector);
+          }
+
+          setTimeout(() => {
+            setUri(connector.getProvider().connector.uri);
+          }, 0);
+        }, [connect, connectData.connector]);
 
         return {
           qrCode: {
@@ -87,11 +72,21 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         };
       },
       useMobileWalletButton: () => {
-        const uri = useWalletConnectUri(connector);
+        const [{ data: connectData }, connect] = useConnect();
 
         return {
-          type: 'link',
-          url: uri && `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`,
+          onClick: useCallback(() => {
+            if (connectData.connector !== connector) {
+              connect(connector);
+            }
+
+            setTimeout(() => {
+              const { uri } = connector.getProvider().connector;
+              window.location.href = `https://rnbwapp.com/wc?uri=${
+                uri ? encodeURIComponent(uri) : ''
+              }`;
+            }, 0);
+          }, [connect, connectData.connector]),
         };
       },
     };

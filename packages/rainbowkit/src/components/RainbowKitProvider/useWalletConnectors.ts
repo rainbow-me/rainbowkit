@@ -26,8 +26,8 @@ export function useWalletConnectors(): WalletConnector[] {
       };
 
       return {
-        useDesktopWalletDetail: () => ({ connect }),
-        useMobileWalletButton: () => ({ connect, type: 'button' }),
+        useDesktopWalletDetail: () => ({}),
+        useMobileWalletButton: () => ({ onClick: connect }),
         ...(connector._wallet as WalletConnectorConfig),
         connect,
         ready: connector.ready,
