@@ -5,7 +5,7 @@ export function Button({ label }: { label: string }) {
   return (
     <Box
       as="button"
-      background="menuTextAction"
+      background="accentColor"
       borderRadius="full"
       paddingX="12"
       paddingY="6"
