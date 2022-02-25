@@ -45,7 +45,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
     return {
       connector,
       iconUrl:
-        'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
+        'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
       name: 'Rainbow',
       useWalletDetail: () => {
@@ -67,7 +67,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         return {
           qrCode: {
             logoUri:
-              'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
+              'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
             uri: qrCodeUri,
           },
         };
@@ -93,7 +93,7 @@ const walletConnect =
       },
     }),
     iconUrl:
-      'https://raw.githubusercontent.com/WalletConnect/walletconnect-assets/master/png/square/walletconnect-square-blue.png',
+      'https://cloudflare-ipfs.com/ipfs/QmbFLEB7Q9iCsSR2mvb48eyn1nvARKeLaPYFnzHVUeBDMV',
     id: 'walletConnect',
     name: 'WalletConnect',
   });
@@ -117,7 +117,7 @@ const coinbase =
       },
     }),
     iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/bafkreihl4wmkbzm44mxu33mbuy3hcrc5g6wmi32ns3y3gfwme6w2hcbdy4',
+      'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
     id: 'coinbase',
     name: 'Coinbase',
   });
@@ -134,7 +134,7 @@ const metamask =
       options: { shimDisconnect },
     }),
     iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e',
+      'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
     id: 'metamask',
     name: 'Metamask',
   });
