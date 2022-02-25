@@ -5,11 +5,21 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { Chain } from './ChainIconsContext';
 
-export type WalletMeta = {
+export type WalletConnectorConfig<C extends Connector = Connector> = {
+  connector: C;
   id: string;
   name: string;
   iconUrl?: string;
-  useWalletDetail?: () => {
+  useMobileWalletButton?: () =>
+    | {
+        type: 'link';
+        url?: string;
+      }
+    | {
+        type: 'button';
+        connect?: () => void;
+      };
+  useDesktopWalletDetail?: () => {
     qrCode?: {
       uri?: string;
       logoUri: string;
@@ -18,15 +28,32 @@ export type WalletMeta = {
   };
 };
 
-export type WalletConnector<C extends Connector = Connector> = WalletMeta & {
-  connector: C;
-};
-
 type ConnectorArgs = {
   chainId: number;
 };
 
-export type Wallet = (connectorArgs: ConnectorArgs) => WalletConnector<any>;
+export type Wallet = (
+  connectorArgs: ConnectorArgs
+) => WalletConnectorConfig<any>;
+
+function useWalletConnectUri(connector: WalletConnectConnector) {
+  const [{ data: connectData }, connect] = useConnect();
+  const [uri, setUri] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (!connectData.connector) {
+      connect(connector);
+    }
+
+    if (connectData.connector) {
+      setTimeout(() => {
+        setUri(connectData.connector.getProvider().connector.uri);
+      }, 0);
+    }
+  }, [connect, connectData.connector, connector]);
+
+  return uri;
+}
 
 interface RainbowOptions {
   chains: Chain[];
@@ -48,28 +75,23 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
       id: 'rainbow',
       name: 'Rainbow',
-      useWalletDetail: () => {
-        const [{ data: connectData }, connect] = useConnect();
-        const [qrCodeUri, setQrCodeUri] = useState<string | undefined>();
-
-        useEffect(() => {
-          if (!connectData.connector) {
-            connect(connector);
-          }
-
-          if (connectData.connector) {
-            setTimeout(() => {
-              setQrCodeUri(connectData.connector.getProvider().connector.uri);
-            }, 0);
-          }
-        }, [connect, connectData.connector]);
+      useDesktopWalletDetail: () => {
+        const uri = useWalletConnectUri(connector);
 
         return {
           qrCode: {
             logoUri:
               'https://cloudflare-ipfs.com/ipfs/bafkreico3pudvsd4j6emdtq4pmyfaat34reoebxyei7tvlpzp5hnec24qa',
-            uri: qrCodeUri,
+            uri,
           },
+        };
+      },
+      useMobileWalletButton: () => {
+        const uri = useWalletConnectUri(connector);
+
+        return {
+          type: 'link',
+          url: uri && `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`,
         };
       },
     };

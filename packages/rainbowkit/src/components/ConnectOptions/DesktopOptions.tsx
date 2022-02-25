@@ -7,23 +7,16 @@ import { CloseIcon } from '../Icons/Close';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { QRCode } from '../QRCode/QRCode';
-import { useWallets } from '../RainbowKitProvider/useWallets';
-import { WalletMeta } from '../RainbowKitProvider/wallet';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import { walletLogoClassName } from './DesktopOptions.css';
 
-function WalletDetail({
-  wallet,
-}: {
-  wallet:
-    | WalletMeta & {
-        ready?: boolean | undefined;
-        connect?: (() => void) | undefined;
-      };
-}) {
-  const { iconUrl, name, useWalletDetail } = wallet;
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
-  const { qrCode } = useWalletDetail();
+function WalletDetail({ wallet }: { wallet: WalletConnector }) {
+  const { iconUrl, name, useDesktopWalletDetail } = wallet;
+  const { qrCode } = useDesktopWalletDetail();
 
   if (!qrCode) {
     return (
@@ -69,21 +62,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const [selectedOptionId, setSelectedOptionId] = useState<
     string | undefined
   >();
-  const [selectedWallet, setSelectedWallet] = useState<
-    WalletMeta & {
-      ready?: boolean | undefined;
-      connect?: (() => void) | undefined;
-    }
-  >();
+  const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const isRainbow = selectedOptionId === 'rainbow';
-  const wallets = useWallets();
+  const wallets = useWalletConnectors();
 
-  const onSelectWallet = (
-    wallet: WalletMeta & {
-      ready?: boolean | undefined;
-      connect?: (() => void) | undefined;
-    }
-  ) => {
+  const onSelectWallet = (wallet: WalletConnector) => {
     setSelectedOptionId(wallet.id);
     const sWallet = wallets.find(w => wallet.id === w.id);
     setSelectedWallet(sWallet);
