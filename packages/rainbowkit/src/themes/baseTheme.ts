@@ -25,7 +25,7 @@ const radii: Record<RadiiValues, RadiiScale> = {
 
 export const baseTheme = ({
   borderRadius = 'large',
-}: Pick<ThemeFn, 'borderRadius'>): Pick<ThemeVars, 'radii' | 'fonts'> => ({
+}: Pick<ThemeOptions, 'borderRadius'>): Pick<ThemeVars, 'radii' | 'fonts'> => ({
   fonts: {
     body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   },
@@ -45,7 +45,7 @@ type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 
 export type AccentValues = 'blue' | 'green' | 'purple' | 'pink';
 
-export interface ThemeFn {
+export interface ThemeOptions {
   accentColor?: AccentValues;
   borderRadius?: RadiiValues;
 }

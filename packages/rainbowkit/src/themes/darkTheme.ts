@@ -1,4 +1,4 @@
-import { AccentValues, baseTheme, ThemeFn } from './baseTheme';
+import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
   blue: '#1A85FF',
@@ -10,7 +10,7 @@ const accents: Record<AccentValues, string> = {
 export const darkTheme = ({
   accentColor = 'blue',
   borderRadius,
-}: ThemeFn = {}) => ({
+}: ThemeOptions = {}) => ({
   ...baseTheme({ borderRadius }),
   colors: {
     accentColor: accents[accentColor],

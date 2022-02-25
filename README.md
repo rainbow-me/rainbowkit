@@ -252,7 +252,7 @@ There are 3 built-in themes:
 
 - `lightTheme` (default)
 - `darkTheme`
-- `dimTheme`
+- `midnightTheme`
 
 These themes can be imported from RainbowKit and provided to the `theme` prop on `RainbowKitProvider`.
 
@@ -276,13 +276,13 @@ If your app uses the standard `prefers-color-mode: dark` media query to swap bet
 import {
   RainbowKitProvider,
   lightTheme,
-  dimTheme,
+  midnightTheme,
 } from '@rainbow-me/rainbowkit';
 
 const App = () => {
   return (
     <RainbowKitProvider
-      theme={{ lightMode: lightTheme, darkMode: dimTheme }}
+      theme={{ lightMode: lightTheme, darkMode: midnightTheme }}
       {...etc}
     >
       {/* ... */}
