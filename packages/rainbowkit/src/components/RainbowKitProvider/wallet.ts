@@ -143,18 +143,47 @@ interface MetamaskOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
-const metamask =
-  ({ chains, shimDisconnect }: MetamaskOptions): Wallet =>
-  () => ({
-    connector: new InjectedConnector({
+const metamask = ({ chains, shimDisconnect }: MetamaskOptions): Wallet => {
+  const wallet: Wallet = () => {
+    const connector = new WalletConnectConnector({
       chains,
-      options: { shimDisconnect },
-    }),
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e',
-    id: 'metamask',
-    name: 'Metamask',
-  });
+      options: {
+        qrcode: false,
+      },
+    });
+
+    return {
+      connector: new InjectedConnector({
+        chains,
+        options: { shimDisconnect },
+      }),
+      iconUrl:
+        'https://cloudflare-ipfs.com/ipfs/bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e',
+      id: 'metamask',
+      name: 'Metamask',
+      useMobileWalletButton: () => {
+        const [{ data: connectData }, connect] = useConnect();
+
+        return {
+          onClick: useCallback(() => {
+            if (connectData.connector !== connector) {
+              connect(connector);
+            }
+
+            setTimeout(() => {
+              const { uri } = connector.getProvider().connector;
+              window.location.href = `https://metamask.app.link/wc?uri=${
+                uri ? encodeURIComponent(uri) : ''
+              }`;
+            }, 0);
+          }, [connect, connectData.connector]),
+        };
+      },
+    };
+  };
+
+  return wallet;
+};
 
 export const wallet = {
   coinbase,
