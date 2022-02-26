@@ -3,6 +3,7 @@ import { Connector, useConnect, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
+import { isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
 
 export type WalletConnectorConfig<C extends Connector = Connector> = {
@@ -142,8 +143,13 @@ const coinbase =
 interface MetamaskOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
+  isMobile?: boolean;
 }
-const metamask = ({ chains, shimDisconnect }: MetamaskOptions): Wallet => {
+const metamask = ({
+  chains,
+  isMobile = false,
+  shimDisconnect,
+}: MetamaskOptions): Wallet => {
   const wallet: Wallet = () => {
     const connector = new WalletConnectConnector({
       chains,
@@ -153,10 +159,12 @@ const metamask = ({ chains, shimDisconnect }: MetamaskOptions): Wallet => {
     });
 
     return {
-      connector: new InjectedConnector({
-        chains,
-        options: { shimDisconnect },
-      }),
+      connector: isMobile
+        ? connector
+        : new InjectedConnector({
+            chains,
+            options: { shimDisconnect },
+          }),
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/bafkreig23o6p5exkyrbhxveqap3krzeinisknloocwc5uijq6wrtrlpl3e',
       id: 'metamask',
@@ -206,7 +214,7 @@ export const getDefaultWallets = ({
   wallet.rainbow({ chains, infuraId }),
   wallet.walletConnect({ chains, infuraId }),
   wallet.coinbase({ appName, chains, jsonRpcUrl }),
-  wallet.metamask({ chains, shimDisconnect: true }),
+  wallet.metamask({ chains, isMobile: isMobile(), shimDisconnect: true }),
 ];
 
 export const connectorsForWallets = (wallets: Wallet[] = []) => {
