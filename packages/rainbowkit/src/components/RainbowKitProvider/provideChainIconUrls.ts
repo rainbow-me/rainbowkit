@@ -21,15 +21,15 @@ type ChainName =
 
 const chainIcons: Record<ChainName, string | null> = {
   arbitrumOne:
-    'https://cloudflare-ipfs.com/ipfs/bafkreicg6e4twffmbrhfoq4bl7tfdkqgeew4pnd5h5lxsgvzckrosg3cra',
+    'https://cloudflare-ipfs.com/ipfs/QmVUztw7AXEqh9yFEAUZarG6LYzYFbYAwkxgx2myXgBi7L',
   avalanche:
-    'https://cloudflare-ipfs.com/ipfs/bafkreihcnx7i6a3i44bqzcj6ogvlksthefftkal4q7gbbbudegalzxdap4',
+    'https://cloudflare-ipfs.com/ipfs/QmX5GEd2Siv5qpamrujYZjXEAkbEueQK8fvNpEXtiBpjRm',
   mainnet:
-    'https://cloudflare-ipfs.com/ipfs/QmU1rGfe87iNEC1rComqCREDT9hX86TiysU3mqJ5iSFb6i',
+    'https://cloudflare-ipfs.com/ipfs/QmV1rDdxo8PzgnMJHG8E2jHsBU1AxyE2T68tm4yv9jKMGh',
   optimisticEthereum:
-    'https://cloudflare-ipfs.com/ipfs/bafkreieyg2v6gxaaascecc2chrxwg26fvteyrwktf7epir7acdhkncxtrm',
+    'https://cloudflare-ipfs.com/ipfs/QmeK3XmVA5vCpzBWoaQLm4o4QdDZV5z4EcABPGhcQtK8Bo',
   polygonMainnet:
-    'https://cloudflare-ipfs.com/ipfs/bafkreidhxhnuwatm7xoiwuniiwycewblmxiu65dkklt3t3fwtx2eumbswu',
+    'https://cloudflare-ipfs.com/ipfs/QmdyoFWCpGCaxmtsYw6FFpuVBv6LCHTzZPYeZagvKYB964',
 
   // Omitted icons are set to 'null' so we know they've been explicitly excluded from the complete wagmi set (for now)
   ...{
