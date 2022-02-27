@@ -1,8 +1,19 @@
-import { baseTheme } from './baseTheme';
+import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
-export const dimTheme = () => ({
-  ...baseTheme(),
+const accents: Record<AccentValues, string> = {
+  blue: '#1A85FF',
+  green: '#3ddc84',
+  pink: '#EA33AE',
+  purple: '#575cff',
+};
+
+export const midnightTheme = ({
+  accentColor = 'blue',
+  borderRadius,
+}: ThemeOptions = {}) => ({
+  ...baseTheme({ borderRadius }),
   colors: {
+    accentColor: accents[accentColor],
     buttonText: '#FFF',
     connectButtonBackground: '#1A1B1F',
     connectButtonBackgroundError: '#FF494A',

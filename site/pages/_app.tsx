@@ -40,7 +40,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <RainbowKitProvider chains={chains} theme={darkTheme}>
+        <RainbowKitProvider chains={chains} theme={darkTheme()}>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiProvider>

@@ -6,6 +6,7 @@ describe('cssObjectFromTheme', () => {
   it('converts themes to CSS-in-JS objects', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
+        "--rk-colors-accentColor": "#1A85FF",
         "--rk-colors-buttonText": "#FFF",
         "--rk-colors-connectButtonBackground": "#FFFFFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
@@ -29,9 +30,9 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-modalText": "#25292E",
         "--rk-colors-modalTextSecondary": "rgba(60, 66, 82, 0.6)",
         "--rk-fonts-body": "SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif",
-        "--rk-radii-connectButton": "16px",
-        "--rk-radii-menuButton": "18px",
-        "--rk-radii-modal": "28px",
+        "--rk-radii-connectButton": "12px",
+        "--rk-radii-menuButton": "12px",
+        "--rk-radii-modal": "24px",
         "--rk-shadows-connectButton": "0px 4px 12px rgba(0, 0, 0, 0.1)",
         "--rk-shadows-menu": "0px 10px 30px rgba(0, 0, 0, 0.1)",
       }
