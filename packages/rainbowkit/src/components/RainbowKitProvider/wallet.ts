@@ -130,7 +130,7 @@ const coinbase =
   ({ chainId }) => ({
     connector:
       // @ts-expect-error
-      window.ethereum?.isCoinbaseWallet
+      typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet
         ? new InjectedConnector({ chains })
         : new WalletLinkConnector({
             chains,
