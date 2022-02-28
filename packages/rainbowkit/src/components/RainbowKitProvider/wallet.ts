@@ -85,7 +85,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
               if (uri) {
                 window.location.href = /android/i.test(navigator.userAgent)
-                  ? uri
+                  ? uri.replace(/^wc:/, 'rainbow:')
                   : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
               } else {
                 throw new Error('No WalletConnect URI found');
