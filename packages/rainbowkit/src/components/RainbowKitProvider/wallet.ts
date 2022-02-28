@@ -200,9 +200,11 @@ const metamask =
                     throw new Error('No WalletConnect URI found');
                   }
 
-                  window.location.href = `https://metamask.app.link/wc?uri=${encodeURIComponent(
-                    uri
-                  )}`;
+                  window.location.href = /android/i.test(navigator.userAgent)
+                    ? uri
+                    : `https://metamask.app.link/wc?uri=${encodeURIComponent(
+                        uri
+                      )}`;
                 }, 0);
               }, [connect, connectData.connector]),
             };
