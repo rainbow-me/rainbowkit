@@ -128,16 +128,20 @@ interface CoinbaseOptions {
 const coinbase =
   ({ appName, chains, jsonRpcUrl }: CoinbaseOptions): Wallet =>
   ({ chainId }) => ({
-    connector: new WalletLinkConnector({
-      chains,
-      options: {
-        appName,
-        jsonRpcUrl:
-          typeof jsonRpcUrl === 'function'
-            ? jsonRpcUrl({ chainId })
-            : jsonRpcUrl,
-      },
-    }),
+    connector:
+      // @ts-expect-error
+      window.ethereum?.isCoinbaseWallet
+        ? new InjectedConnector({ chains })
+        : new WalletLinkConnector({
+            chains,
+            options: {
+              appName,
+              jsonRpcUrl:
+                typeof jsonRpcUrl === 'function'
+                  ? jsonRpcUrl({ chainId })
+                  : jsonRpcUrl,
+            },
+          }),
     iconUrl:
       'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
     id: 'coinbase',
