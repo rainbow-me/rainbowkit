@@ -9,6 +9,7 @@ export function ConnectModalIntro() {
   return (
     <Box
       alignItems="center"
+      color="accentColor"
       display="flex"
       flexDirection="column"
       gap="16"
