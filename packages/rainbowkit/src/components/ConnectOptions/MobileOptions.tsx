@@ -36,8 +36,13 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
           src={iconUrl}
           width="60"
         />
-        <Text as="h2" color="modalText" size="13">
+        <Text
+          as="h2"
+          color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+          size="13"
+        >
           {name}
+          {!wallet.ready && ' (unsupported)'}
         </Text>
       </Box>
     </Box>
