@@ -43,16 +43,20 @@ function WalletDetail({ wallet }: { wallet: WalletConnector }) {
     );
   }
 
+  const size = 382;
+
   return (
     <Box>
       {qrCode?.uri ? (
         <QRCode
           logoSize={72}
           logoUri={qrCode.logoUri}
-          size={350}
+          size={size}
           uri={qrCode.uri}
         />
-      ) : null}
+      ) : (
+        <div style={{ height: size, width: size }} />
+      )}
     </Box>
   );
 }
