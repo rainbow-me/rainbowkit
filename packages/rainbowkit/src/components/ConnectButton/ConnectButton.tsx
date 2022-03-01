@@ -5,15 +5,15 @@ import { DropdownIcon } from '../Icons/Dropdown';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 export interface ConnectButtonProps {
-  showChains?: boolean;
+  accountStatus?: 'full' | 'avatar' | 'address';
   showBalance?: boolean;
-  showAvatar?: boolean;
+  chainStatus?: 'full' | 'icon' | 'name' | 'none';
 }
 
 export function ConnectButton({
-  showAvatar = true,
+  accountStatus = 'full',
+  chainStatus = 'full',
   showBalance = true,
-  showChains = true,
 }: ConnectButtonProps) {
   return (
     <ConnectButtonRenderer>
@@ -25,8 +25,20 @@ export function ConnectButton({
         openAccountModal,
         openChainModal,
         openConnectModal,
-      }) =>
-        account ? (
+      }) => {
+        const showChains = chainStatus !== 'none';
+        const showChainIcon = chainStatus === 'icon' || chainStatus === 'full';
+        const showChainName =
+          chainStatus === 'name' ||
+          chainStatus === 'full' ||
+          (chainStatus === 'icon' && !chain?.iconUrl); // If there is no iconUrl, show the name
+
+        const showAvatar =
+          accountStatus === 'avatar' || accountStatus === 'full';
+        const showAddress =
+          accountStatus === 'address' || accountStatus === 'full';
+
+        return account ? (
           <Box display="flex" gap="12">
             {showChains && chain && (
               <Box
@@ -47,6 +59,7 @@ export function ConnectButton({
                 display="flex"
                 fontFamily="body"
                 fontWeight="bold"
+                gap="6"
                 onClick={openChainModal}
                 paddingX="10"
                 paddingY="8"
@@ -58,7 +71,7 @@ export function ConnectButton({
                   <Box>Invalid network</Box>
                 ) : (
                   <Box alignItems="center" display="flex" gap="4">
-                    {chain.iconUrl ? (
+                    {showChainIcon && chain.iconUrl ? (
                       <img
                         alt={chain.name ?? 'Chain icon'}
                         height="24"
@@ -66,7 +79,7 @@ export function ConnectButton({
                         width="24"
                       />
                     ) : null}
-                    <div>{chain.name ?? chain.id}</div>
+                    {showChainName && <div>{chain.name ?? chain.id}</div>}
                   </Box>
                 )}
                 <DropdownIcon />
@@ -118,8 +131,9 @@ export function ConnectButton({
                       size={24}
                     />
                   )}
-                  <Box alignItems="center" display="flex">
-                    {account.displayName}
+
+                  <Box alignItems="center" display="flex" gap="6">
+                    {showAddress && <div>{account.displayName}</div>}
                     <DropdownIcon />
                   </Box>
                 </Box>
@@ -155,8 +169,8 @@ export function ConnectButton({
               Connect Wallet
             </Box>
           </Box>
-        )
-      }
+        );
+      }}
     </ConnectButtonRenderer>
   );
 }
