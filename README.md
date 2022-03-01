@@ -400,10 +400,10 @@ The `ConnectButton` component exposes the following props to customize its appea
   </thead>
   <tbody>
     <tr>
-      <td><code>showAvatar</code></td>
-      <td><code>boolean</code></td>
-      <td><code>true</code></td>
-      <td>Whether the avatar is visible next to the account name</td>
+      <td><code>accountStatus</code></td>
+      <td><code>"avatar" | "address" | "full"</code></td>
+      <td><code>"full"</code></td>
+      <td>Whether the active account’s avatar and/or address is displayed</td>
     </tr>
     <tr>
       <td><code>showBalance</code></td>
@@ -412,10 +412,10 @@ The `ConnectButton` component exposes the following props to customize its appea
       <td>Whether the balance is visible next to the account name</td>
     </tr>
     <tr>
-      <td><code>showChains</code></td>
-      <td><code>boolean</code></td>
-      <td><code>true</code></td>
-      <td>Whether the chain button is visible next to the account button</td>
+      <td><code>chainStatus</code></td>
+      <td><code>"icon" | "name" | "full" | "none"</code></td>
+      <td><code>"full"</code></td>
+      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
     </tr>
   </tbody>
 </table>

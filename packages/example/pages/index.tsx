@@ -1,10 +1,14 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import React, { useState } from 'react';
+import React, { ComponentProps, useState } from 'react';
+
+type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
+type AccountStatus = ConnectButtonProps['accountStatus'];
+type ChainStatus = ConnectButtonProps['chainStatus'];
 
 const Example = () => {
-  const [showAvatar, setShowAvatar] = useState<boolean | undefined>();
+  const [accountStatus, setAccountStatus] = useState<AccountStatus>();
   const [showBalance, setShowBalance] = useState<boolean | undefined>();
-  const [showChains, setShowChains] = useState<boolean | undefined>();
+  const [chainStatus, setChainStatus] = useState<ChainStatus>();
 
   return (
     <div
@@ -22,9 +26,9 @@ const Example = () => {
         }}
       >
         <ConnectButton
-          showAvatar={showAvatar}
+          accountStatus={accountStatus}
+          chainStatus={chainStatus}
           showBalance={showBalance}
-          showChains={showChains}
         />
       </div>
 
@@ -72,45 +76,62 @@ const Example = () => {
 
       <div style={{ fontFamily: 'sans-serif' }}>
         <h3>ConnectButton props</h3>
-        <div
-          style={{
-            alignItems: 'flex-start',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
-          }}
-        >
-          <label style={{ userSelect: 'none' }}>
-            <input
-              checked={showAvatar ?? true}
-              onChange={event => {
-                setShowAvatar(event.currentTarget.checked);
-              }}
-              type="checkbox"
-            />{' '}
-            showAvatar
-          </label>
-          <label style={{ userSelect: 'none' }}>
-            <input
-              checked={showBalance ?? true}
-              onChange={event => {
-                setShowBalance(event.currentTarget.checked);
-              }}
-              type="checkbox"
-            />{' '}
-            showBalance
-          </label>
-          <label style={{ userSelect: 'none' }}>
-            <input
-              checked={showChains ?? true}
-              onChange={event => {
-                setShowChains(event.currentTarget.checked);
-              }}
-              type="checkbox"
-            />{' '}
-            showChains
-          </label>
-        </div>
+        <table cellSpacing={12}>
+          <tbody>
+            <tr>
+              <td>
+                <label htmlFor="accountStatus">accountStatus</label>
+              </td>
+              <td>
+                <select
+                  id="accountStatus"
+                  onChange={event =>
+                    setAccountStatus(event.currentTarget.value as AccountStatus)
+                  }
+                  value={accountStatus}
+                >
+                  <option>full</option>
+                  <option>avatar</option>
+                  <option>address</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="showBalance">showBalance</label>
+              </td>
+              <td>
+                <input
+                  checked={showBalance ?? true}
+                  id="showBalance"
+                  onChange={event => {
+                    setShowBalance(event.currentTarget.checked);
+                  }}
+                  type="checkbox"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label htmlFor="chainStatus">chainStatus</label>
+              </td>
+              <td>
+                <select
+                  id="chainStatus"
+                  onChange={event =>
+                    setChainStatus(event.currentTarget.value as ChainStatus)
+                  }
+                  value={chainStatus}
+                >
+                  <option>full</option>
+                  <option>icon</option>
+                  <option>name</option>
+                  <option>none</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
