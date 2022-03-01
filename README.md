@@ -120,12 +120,13 @@ const wallets: Wallet[] = [
     wallet.rainbow({ chains, infuraId }),
     wallet.walletConnect({ chains, infuraId }),
     wallet.coinbase({
+      chains,
       appName: 'My RainbowKit App',
       jsonRpcUrl: ({ chainId }) =>
         chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
         chain.mainnet.rpcUrls[0],
     }),
-    wallet.metamask(),
+    wallet.metaMask({ chains, infuraId }),
   ]
 );
 

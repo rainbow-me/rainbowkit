@@ -149,13 +149,13 @@ const coinbase =
     name: 'Coinbase',
   });
 
-interface MetamaskOptions {
+interface MetaMaskOptions {
   chains: Chain[];
   infuraId: string;
   shimDisconnect?: boolean;
 }
-const metamask =
-  ({ chains, infuraId, shimDisconnect }: MetamaskOptions): Wallet =>
+const metaMask =
+  ({ chains, infuraId, shimDisconnect }: MetaMaskOptions): Wallet =>
   () => {
     const shouldUseWalletConnect =
       isMobile() &&
@@ -180,8 +180,8 @@ const metamask =
       connector,
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
-      id: 'metamask',
-      name: 'Metamask',
+      id: 'metaMask',
+      name: 'MetaMask',
       useMobileWalletButton: !shouldUseWalletConnect
         ? undefined
         : () => {
@@ -214,7 +214,7 @@ const metamask =
 
 export const wallet = {
   coinbase,
-  metamask,
+  metaMask,
   rainbow,
   walletConnect,
 } as const;
@@ -233,7 +233,7 @@ export const getDefaultWallets = ({
   wallet.rainbow({ chains, infuraId }),
   wallet.walletConnect({ chains, infuraId }),
   wallet.coinbase({ appName, chains, jsonRpcUrl }),
-  wallet.metamask({ chains, infuraId, shimDisconnect: true }),
+  wallet.metaMask({ chains, infuraId, shimDisconnect: true }),
 ];
 
 export const connectorsForWallets = (wallets: Wallet[] = []) => {
