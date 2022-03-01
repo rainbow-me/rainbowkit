@@ -18,6 +18,9 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
     qrCode?: {
       uri?: string;
       logoUri: string;
+      appInstallMessageText: string;
+      appInstallButtonText: string;
+      appInstallUrl: string;
     };
   };
 };
@@ -66,6 +69,9 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
         return {
           qrCode: {
+            appInstallButtonText: 'Get',
+            appInstallMessageText: 'Don\u0027t have the Rainbow app?',
+            appInstallUrl: 'https://rainbow.me',
             logoUri:
               'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
             uri,

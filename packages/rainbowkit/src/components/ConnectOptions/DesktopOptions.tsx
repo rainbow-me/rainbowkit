@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { CloseIcon } from '../Icons/Close';
@@ -18,27 +18,38 @@ function WalletDetail({ wallet }: { wallet: WalletConnector }) {
   const { iconUrl, name, useDesktopWalletDetail } = wallet;
   const { qrCode } = useDesktopWalletDetail();
 
+  const footerHeight: BoxProps['height'] = '34';
+  const footerGap: BoxProps['marginTop'] = '12';
+
   if (!qrCode) {
     return (
-      <Box alignItems="center" display="flex" flexDirection="column" gap="20">
-        <img
-          alt={name}
-          className={walletLogoClassName}
-          height="60"
-          src={iconUrl}
-          width="60"
-        />
-        <Box alignItems="center" display="flex" flexDirection="column" gap="10">
-          <Text color="modalText" size="20" weight="bold">
-            Opening {name}
-          </Text>
-          <Box display="flex" flexDirection="row" gap="6">
-            <SpinnerIcon />
-            <Text color="menuTextAction" size="16" weight="bold">
-              Waiting for connection
+      <Box>
+        <Box alignItems="center" display="flex" flexDirection="column" gap="20">
+          <img
+            alt={name}
+            className={walletLogoClassName}
+            height="60"
+            src={iconUrl}
+            width="60"
+          />
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            gap="10"
+          >
+            <Text color="modalText" size="20" weight="bold">
+              Opening {name}
             </Text>
+            <Box display="flex" flexDirection="row" gap="6">
+              <SpinnerIcon />
+              <Text color="menuTextAction" size="16" weight="bold">
+                Waiting for connection
+              </Text>
+            </Box>
           </Box>
         </Box>
+        <Box height={footerHeight} marginTop={footerGap} />
       </Box>
     );
   }
@@ -53,6 +64,27 @@ function WalletDetail({ wallet }: { wallet: WalletConnector }) {
           uri={qrCode.uri}
         />
       ) : null}
+      <Box
+        alignItems="center"
+        borderRadius="10"
+        display="flex"
+        flexDirection="row"
+        gap="8"
+        height={footerHeight}
+        marginTop={footerGap}
+        paddingY="8"
+      >
+        <Box flexGrow="1">
+          <Text color="menuTextSecondary" size="16" weight="bold">
+            {qrCode.appInstallMessageText}
+          </Text>
+        </Box>
+        <Button
+          href={qrCode.appInstallUrl}
+          label={qrCode.appInstallButtonText}
+          uppercase
+        />
+      </Box>
     </Box>
   );
 }
@@ -63,7 +95,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
-  const isRainbow = selectedOptionId === 'rainbow';
   const wallets = useWalletConnectors();
 
   const onSelectWallet = (wallet: WalletConnector) => {
@@ -136,12 +167,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       {!isMobile() && (
         <>
           <Box background="menuDivider" width="2" />
-          <Box
-            display="flex"
-            flexDirection="column"
-            margin="14"
-            style={{ flexGrow: 1 }}
-          >
+          <Box display="flex" flexDirection="column" flexGrow="1" margin="14">
             <Box display="flex" justifyContent="flex-end">
               <Box
                 as="button"
@@ -165,33 +191,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 justifyContent="center"
                 marginTop="12"
                 marginX="6"
-                style={{ height: 382 }}
+                style={{ height: 428 }}
               >
-                {' '}
                 {selectedWallet ? (
                   <WalletDetail wallet={selectedWallet} />
                 ) : (
                   <ConnectModalIntro />
-                )}
-              </Box>
-              <Box
-                alignItems="center"
-                borderRadius="10"
-                display="flex"
-                flexDirection="row"
-                gap="8"
-                height="34"
-                marginTop="12"
-                marginX="6"
-                paddingY="8"
-              >
-                {isRainbow && (
-                  <>
-                    <Text color="menuTextSecondary" size="16" weight="bold">
-                      Don&apos;t have the Rainbow Mobile App Yet?
-                    </Text>
-                    <Button label="GET" />
-                  </>
                 )}
               </Box>
             </Box>

@@ -130,6 +130,7 @@ const layoutStyles = defineProperties({
     },
     display: ['none', 'block', 'flex', 'inline-flex'],
     flexDirection: ['row', 'column'],
+    flexGrow: ['1'] as const,
     fontFamily: themeVars.fonts,
     fontSize: {
       '13': '13px',
@@ -194,7 +195,8 @@ const colorStyles = defineProperties({
 
 const unresponsiveProperties = defineProperties({
   properties: {
-    cursor: ['pointer'],
+    cursor: ['pointer'] as const,
+    textTransform: ['uppercase'] as const,
   } as const,
 });
 

@@ -20,7 +20,7 @@ type Props = {
   font?: BoxProps['fontFamily'];
   // lineHeight?: BoxProps['lineHeight']
   size?: BoxProps['fontSize'];
-  // transform?: BoxProps['textTransform']
+  uppercase?: boolean;
   weight?: BoxProps['fontWeight'];
   className?: string;
   tabIndex?: number;
@@ -37,6 +37,7 @@ export const Text = React.forwardRef(
       id,
       size = '16',
       tabIndex,
+      uppercase = false,
       weight = 'regular',
     }: Props,
     ref: React.Ref<HTMLElement>
@@ -52,6 +53,7 @@ export const Text = React.forwardRef(
         id={id}
         ref={ref}
         tabIndex={tabIndex}
+        textTransform={uppercase ? 'uppercase' : undefined}
       >
         {children}
       </Box>
