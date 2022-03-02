@@ -13,7 +13,6 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-connectButtonInnerBackground": "linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))",
         "--rk-colors-connectButtonText": "#25292E",
         "--rk-colors-connectButtonTextError": "white",
-        "--rk-colors-connectedProfileBorder": "#FF007A",
         "--rk-colors-connectionIndicator": "#2CCC00",
         "--rk-colors-error": "#FF494A",
         "--rk-colors-menuBackground": "#fff",

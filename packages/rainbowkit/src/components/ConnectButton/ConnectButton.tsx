@@ -109,9 +109,7 @@ export function ConnectButton({
               <Box
                 background="connectButtonInnerBackground"
                 borderColor={
-                  accountModalOpen
-                    ? 'connectedProfileBorder'
-                    : 'connectButtonBackground'
+                  accountModalOpen ? 'accentColor' : 'connectButtonBackground'
                 }
                 borderRadius="connectButton"
                 borderStyle="solid"
@@ -151,9 +149,7 @@ export function ConnectButton({
               as="button"
               background="connectButtonInnerBackground"
               borderColor={
-                connectModalOpen
-                  ? 'connectedProfileBorder'
-                  : 'connectButtonBackground'
+                connectModalOpen ? 'accentColor' : 'connectButtonBackground'
               }
               borderRadius="connectButton"
               borderStyle="solid"

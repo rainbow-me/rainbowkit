@@ -39,6 +39,8 @@ export function TxItem({ tx }: TxProps) {
       ? 'error'
       : tx.status === SUCCESS_TX_STATUS
       ? 'connectionIndicator'
+      : tx.status === PENDING_TX_STATUS
+      ? 'accentColor'
       : 'menuTextAction';
   const [{ data: networkData }] = useNetwork();
 

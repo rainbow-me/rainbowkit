@@ -14,7 +14,6 @@ const themeContractValues = {
     connectButtonInnerBackground: '',
     connectButtonText: '',
     connectButtonTextError: '',
-    connectedProfileBorder: '',
     connectionIndicator: '',
     error: '',
     menuBackground: '',
