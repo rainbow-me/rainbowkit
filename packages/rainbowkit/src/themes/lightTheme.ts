@@ -21,7 +21,6 @@ export const lightTheme = ({
       'linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))',
     connectButtonText: '#25292E',
     connectButtonTextError: 'white',
-    connectedProfileBorder: '#FF007A',
     connectionIndicator: '#2CCC00',
     error: '#FF494A',
     menuBackground: '#fff',

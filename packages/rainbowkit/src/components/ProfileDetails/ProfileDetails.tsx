@@ -156,6 +156,7 @@ export function ProfileDetails({
         onClose={() => setSwitchWalletOpen(false)}
         open={switchWalletOpen}
         titleId={titleId}
+        wide
       >
         <DialogContent>
           <ConnectOptions onClose={() => setSwitchWalletOpen(false)} />

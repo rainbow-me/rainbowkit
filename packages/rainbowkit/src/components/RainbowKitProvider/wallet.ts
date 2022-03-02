@@ -11,6 +11,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   id: string;
   name: string;
   iconUrl?: string;
+  downloadUrl?: string;
   useMobileWalletButton?: () => {
     onClick: () => void;
   };
@@ -46,6 +47,8 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
+      downloadUrl:
+        'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',

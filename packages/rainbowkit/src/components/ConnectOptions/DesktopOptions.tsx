@@ -1,64 +1,26 @@
 import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { CloseIcon } from '../Icons/Close';
-import { SpinnerIcon } from '../Icons/Spinner';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { QRCode } from '../QRCode/QRCode';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
+import {
+  ConnectDetail,
+  DownloadDetail,
+  InstructionDetail,
+} from './ConnectDetails';
 import { walletLogoClassName } from './DesktopOptions.css';
 
-function WalletDetail({ wallet }: { wallet: WalletConnector }) {
-  const { iconUrl, name, useDesktopWalletDetail } = wallet;
-  const { qrCode } = useDesktopWalletDetail();
-
-  if (!qrCode) {
-    return (
-      <Box alignItems="center" display="flex" flexDirection="column" gap="20">
-        <img
-          alt={name}
-          className={walletLogoClassName}
-          height="60"
-          src={iconUrl}
-          width="60"
-        />
-        <Box alignItems="center" display="flex" flexDirection="column" gap="10">
-          <Text color="modalText" size="20" weight="bold">
-            Opening {name}
-          </Text>
-          <Box display="flex" flexDirection="row" gap="6">
-            <SpinnerIcon />
-            <Text color="menuTextAction" size="16" weight="bold">
-              Waiting for connection
-            </Text>
-          </Box>
-        </Box>
-      </Box>
-    );
-  }
-
-  const size = 382;
-
-  return (
-    <Box>
-      {qrCode?.uri ? (
-        <QRCode
-          logoSize={72}
-          logoUri={qrCode.logoUri}
-          size={size}
-          uri={qrCode.uri}
-        />
-      ) : (
-        <div style={{ height: size, width: size }} />
-      )}
-    </Box>
-  );
+export enum WalletStep {
+  None = 'NONE',
+  Connect = 'CONNECT',
+  Download = 'DOWNLOAD',
+  Instructions = 'INSTRUCTIONS',
 }
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
@@ -74,8 +36,51 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedOptionId(wallet.id);
     const sWallet = wallets.find(w => wallet.id === w.id);
     setSelectedWallet(sWallet);
+    setWalletStep(WalletStep.Connect);
     wallet?.connect?.();
   };
+
+  const getWallet = () => {
+    setSelectedOptionId('rainbow');
+    const sWallet = wallets.find(w => 'rainbow' === w.id);
+    setSelectedWallet(sWallet);
+    setWalletStep(WalletStep.Download);
+  };
+
+  const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
+
+  let walletContent = null;
+  let headerLabel = null;
+
+  switch (walletStep) {
+    case WalletStep.None:
+      walletContent = <ConnectModalIntro getWallet={getWallet} />;
+      break;
+    case WalletStep.Connect:
+      walletContent = selectedWallet && (
+        <ConnectDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
+      );
+      headerLabel = isRainbow && 'Scan with Rainbow to connect';
+      break;
+    case WalletStep.Download:
+      walletContent = selectedWallet && (
+        <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
+      );
+      headerLabel = isRainbow && 'Scan to download Rainbow';
+
+      break;
+    case WalletStep.Instructions:
+      walletContent = selectedWallet && (
+        <InstructionDetail
+          setWalletStep={setWalletStep}
+          wallet={selectedWallet}
+        />
+      );
+      headerLabel = isRainbow && 'Get started with Rainbow';
+      break;
+    default:
+      break;
+  }
 
   return (
     <Box display="flex" flexDirection="row">
@@ -146,7 +151,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             margin="14"
             style={{ flexGrow: 1 }}
           >
-            <Box display="flex" justifyContent="flex-end">
+            <Box
+              alignItems="center"
+              display="flex"
+              justifyContent="space-between"
+              marginBottom="6"
+            >
+              <Box marginLeft="6">
+                {isRainbow && (
+                  <Text color="modalText" size="18" weight="heavy">
+                    {headerLabel}
+                  </Text>
+                )}
+              </Box>
               <Box
                 as="button"
                 onClick={onClose}
@@ -166,37 +183,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 display="flex"
                 flexDirection="column"
                 gap="6"
+                height="full"
                 justifyContent="center"
-                marginTop="12"
+                marginTop="6"
                 marginX="6"
-                style={{ height: 382 }}
               >
-                {' '}
-                {selectedWallet ? (
-                  <WalletDetail wallet={selectedWallet} />
-                ) : (
-                  <ConnectModalIntro />
-                )}
-              </Box>
-              <Box
-                alignItems="center"
-                borderRadius="10"
-                display="flex"
-                flexDirection="row"
-                gap="8"
-                height="34"
-                marginTop="12"
-                marginX="6"
-                paddingY="8"
-              >
-                {isRainbow && (
-                  <>
-                    <Text color="menuTextSecondary" size="16" weight="bold">
-                      Don&apos;t have the Rainbow Mobile App Yet?
-                    </Text>
-                    <Button label="GET" />
-                  </>
-                )}
+                {walletContent}
               </Box>
             </Box>
           </Box>

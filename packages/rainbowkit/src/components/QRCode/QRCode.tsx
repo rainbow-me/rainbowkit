@@ -115,14 +115,17 @@ export function QRCode({
 
   return (
     <Box
+      borderColor="menuDivider"
       borderRadius="modal"
-      boxShadow="connectButton"
+      borderStyle="solid"
+      borderWidth="2"
       className={QRCodeBackgroundClassName}
       padding={padding}
     >
       <Box
         style={{
           height: size,
+          userSelect: 'none',
           width: size,
         }}
         userSelect="none"
