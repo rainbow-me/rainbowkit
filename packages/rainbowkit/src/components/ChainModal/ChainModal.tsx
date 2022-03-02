@@ -53,7 +53,7 @@ export function ChainModal({
 
   return (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
-      <DialogContent>
+      <DialogContent bottomSheetOnMobile>
         <Box display="flex" flexDirection="column" gap="14">
           <Box
             display="flex"

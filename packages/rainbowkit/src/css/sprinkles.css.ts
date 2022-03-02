@@ -8,6 +8,7 @@ const themeContractValues = {
   colors: {
     accentColor: '',
     buttonText: '',
+    modalCloseBackground: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
@@ -83,8 +84,6 @@ const dimensions = {
   '60': '60px',
   'full': '100%',
   'max': 'max-content',
-  'viewHeight': '100vh',
-  'viewWidth': '100vw',
 };
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
@@ -109,9 +108,21 @@ const interactionProperties = defineProperties({
   },
 });
 
-const layoutStyles = defineProperties({
+export const desktopMinWidth = 768;
+
+const responsiveLayoutStyles = defineProperties({
+  conditions: {
+    mobile: {},
+    desktop: { '@media': `screen and (min-width: ${desktopMinWidth}px)` },
+  },
+  defaultCondition: 'mobile',
   properties: {
     alignItems: flexAlignment,
+  },
+});
+
+const layoutStyles = defineProperties({
+  properties: {
     alignSelf: flexAlignment,
     backgroundSize: ['cover'] as const,
     borderRadius: {
@@ -202,6 +213,7 @@ export const sprinkles = createSprinkles(
   colorStyles,
   interactionProperties,
   layoutStyles,
+  responsiveLayoutStyles,
   unresponsiveProperties
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];
