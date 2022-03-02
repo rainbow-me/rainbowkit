@@ -166,6 +166,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               </Box>
               <Box
                 as="button"
+                borderRadius="full"
+                display="flex"
                 onClick={onClose}
                 transform={{ active: 'shrinkSm', hover: 'growLg' }}
                 transition="default"

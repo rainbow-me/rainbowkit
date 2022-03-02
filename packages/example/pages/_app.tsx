@@ -73,7 +73,12 @@ function App({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains} theme={selectedTheme}>
         <Component {...pageProps} />
 
-        <div style={{ fontFamily: 'sans-serif' }}>
+        <div
+          style={{
+            fontFamily: 'sans-serif',
+            paddingBottom: 200, // Allow the page to scroll on mobile
+          }}
+        >
           <h3>Theme</h3>
           <div
             style={{

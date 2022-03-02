@@ -11,20 +11,26 @@ const fadeIn = keyframes({
   '100%': { opacity: 1 },
 });
 
+const bleed = 200;
 export const overlay = style([
   sprinkles({
-    alignItems: 'center',
+    alignItems: {
+      desktop: 'center',
+      mobile: 'flex-end',
+    },
     background: 'modalBackdrop',
     display: 'flex',
-    height: 'viewHeight',
     justifyContent: 'center',
     position: 'fixed',
-    width: 'full',
   }),
   {
     animation: `${fadeIn} 150ms ease`,
-    left: 0,
-    top: 0,
+    bottom: -bleed,
+    left: -bleed,
+    padding: bleed,
+    right: -bleed,
+    top: -bleed,
+    transform: 'translateZ(0)', // This is required for content to render under the URL bar on iOS
   },
 ]);
 

@@ -14,7 +14,7 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
 
   return !connectData ? (
     <Dialog onClose={onClose} open={open} titleId={titleId} wide>
-      <DialogContent padding="0">
+      <DialogContent bottomSheetOnMobile padding="0">
         <ConnectOptions onClose={onClose} />
       </DialogContent>
     </Dialog>

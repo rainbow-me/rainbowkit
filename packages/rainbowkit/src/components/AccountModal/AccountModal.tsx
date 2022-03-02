@@ -41,7 +41,7 @@ export function AccountModal({
               onDisconnect={onDisconnect}
             />
           </DialogContent>
-          <DialogContent marginTop="24">
+          <DialogContent bottomSheetOnMobile marginTop="24">
             <TxList accountData={accountData} />
           </DialogContent>
         </Dialog>
