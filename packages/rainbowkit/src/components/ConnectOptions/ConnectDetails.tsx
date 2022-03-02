@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
-import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { WalletConnector } from '../RainbowKitProvider/useWalletConnectors';
@@ -165,32 +164,6 @@ export function DownloadDetail({
   );
 }
 
-const instructionData = (wallet: WalletConnector) => [
-  {
-    id: 1,
-    label: `Open ${wallet.name}`,
-    logo: <img alt={wallet.name} height={40} src={wallet.iconUrl} width={40} />,
-  },
-  {
-    id: 2,
-    label: `Create or import a wallet`,
-    logo: (
-      <Box color="modalText">
-        <ScanIcon />
-      </Box>
-    ),
-  },
-  {
-    id: 3,
-    label: `Tap the scan button`,
-    logo: (
-      <Box color="modalText">
-        <ScanIcon />
-      </Box>
-    ),
-  },
-];
-
 export function InstructionDetail({
   setWalletStep,
   wallet,
@@ -206,36 +179,33 @@ export function InstructionDetail({
         gap="20"
         height="full"
         justifyContent="center"
-        marginLeft="28"
+        padding="32"
       >
-        {wallet &&
-          instructionData(wallet).map(d => (
+        {wallet?.instructions?.map((d, idx) => (
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            gap="16"
+            key={idx}
+          >
             <Box
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              gap="20"
-              key={d.id}
-            >
-              <Box
-                alignItems="center"
-                background="accentColor"
-                borderRadius="full"
-                display="flex"
-                height="20"
-                justifyContent="center"
-                width="20"
-              >
-                <Text color="buttonText" size="13" weight="heavy">
-                  {d.id}
-                </Text>
-              </Box>
-              <Box>{d.logo}</Box>
-              <Text color="modalText" size="16" weight="heavy">
-                {d.label}
+              background="accentColor"
+              borderRadius="6"
+              height="48"
+              minWidth="48"
+              width="48"
+            />
+            <Box display="flex" flexDirection="column" gap="4">
+              <Text color="modalText" size="14" weight="bold">
+                {d.title}
+              </Text>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                {d.subtitle}
               </Text>
             </Box>
-          ))}
+          </Box>
+        ))}
       </Box>
 
       <Box
