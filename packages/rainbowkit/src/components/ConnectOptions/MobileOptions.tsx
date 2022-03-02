@@ -95,8 +95,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         </Box>
       </Box>
 
-      <Box className={styles.scroll}>
-        <Box display="flex" justifyContent="center">
+      <Box className={styles.scroll} display="flex">
+        <Box display="flex" style={{ margin: '0 auto' }}>
           {wallets.map(wallet => {
             return (
               <Box key={wallet.id} paddingX="20">
