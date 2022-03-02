@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
+import { BackIcon } from '../Icons/Back';
 import { CloseIcon } from '../Icons/Close';
 import { MenuButton } from '../MenuButton/MenuButton';
 import {
@@ -51,6 +52,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   let walletContent = null;
   let headerLabel = null;
+  let headerBackButtonLink: WalletStep | null = null;
 
   switch (walletStep) {
     case WalletStep.None:
@@ -67,7 +69,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
       );
       headerLabel = isRainbow && 'Scan to download Rainbow';
-
+      headerBackButtonLink = WalletStep.Connect;
       break;
     case WalletStep.Instructions:
       walletContent = selectedWallet && (
@@ -77,6 +79,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         />
       );
       headerLabel = isRainbow && 'Get started with Rainbow';
+      headerBackButtonLink = WalletStep.Download;
       break;
     default:
       break;
@@ -157,7 +160,23 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               justifyContent="space-between"
               marginBottom="6"
             >
-              <Box width="34">{/* back button */}</Box>
+              <Box>
+                {headerBackButtonLink && (
+                  <Box
+                    as="button"
+                    color="accentColor"
+                    onClick={() =>
+                      headerBackButtonLink &&
+                      setWalletStep(headerBackButtonLink)
+                    }
+                    paddingX="8"
+                    transform={{ active: 'shrinkSm', hover: 'growLg' }}
+                    transition="default"
+                  >
+                    <BackIcon />
+                  </Box>
+                )}
+              </Box>
               <Box marginLeft="6">
                 {isRainbow && (
                   <Text color="modalText" size="18" weight="heavy">
