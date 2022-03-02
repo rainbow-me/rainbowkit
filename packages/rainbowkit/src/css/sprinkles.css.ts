@@ -66,6 +66,7 @@ const spacing = {
   '28': '28px',
   '32': '32px',
   '36': '36px',
+  '64': '64px',
 };
 
 const dimensions = {
