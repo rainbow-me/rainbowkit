@@ -27,7 +27,7 @@ export function ConnectDetail({
             <QRCode
               logoSize={72}
               logoUri={qrCode.logoUri}
-              size={346}
+              size={378}
               uri={qrCode.uri}
             />
           ) : null}
@@ -128,7 +128,7 @@ export function DownloadDetail({
           <QRCode
             logoSize={72}
             logoUri={qrCode.logoUri}
-            size={346}
+            size={378}
             uri={downloadUrl}
           />
         ) : null}
