@@ -14,6 +14,8 @@ export const lightTheme = ({
   ...baseTheme({ borderRadius }),
   colors: {
     accentColor: accents[accentColor],
+    buttonBorder: 'rgba(0, 0, 0, 0.04)',
+    buttonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     buttonText: '#FFF',
     connectButtonBackground: '#FFFFFF',
     connectButtonBackgroundError: '#FF494A',

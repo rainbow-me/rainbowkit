@@ -62,13 +62,13 @@ export function ConnectDetail({
                 Opening {name}
               </Text>
               <Box
-                color="accentColor"
+                color="modalTextSecondary"
                 display="flex"
                 flexDirection="row"
                 gap="6"
               >
                 <SpinnerIcon />
-                <Text color="accentColor" size="16" weight="bold">
+                <Text color="modalTextSecondary" size="16" weight="bold">
                   Waiting for connection
                 </Text>
               </Box>
@@ -96,6 +96,7 @@ export function ConnectDetail({
             <Button
               label="GET"
               onClick={() => setWalletStep(WalletStep.Download)}
+              type="secondary"
             />
           </>
         ) : (
@@ -103,7 +104,11 @@ export function ConnectDetail({
             <Text color="menuTextSecondary" size="14" weight="bold">
               Confirm the connection in {name}
             </Text>
-            <Button label="Reopen" onClick={() => wallet?.connect?.()} />
+            <Button
+              label="Retry"
+              onClick={() => wallet?.connect?.()}
+              type="secondary"
+            />
           </>
         )}
       </Box>
@@ -152,6 +157,7 @@ export function DownloadDetail({
           <Button
             label="Continue"
             onClick={() => setWalletStep(WalletStep.Instructions)}
+            type="secondary"
           />
         </>
       </Box>
@@ -250,6 +256,7 @@ export function InstructionDetail({
           <Button
             label="Connect"
             onClick={() => setWalletStep(WalletStep.Connect)}
+            type="secondary"
           />
         </>
       </Box>

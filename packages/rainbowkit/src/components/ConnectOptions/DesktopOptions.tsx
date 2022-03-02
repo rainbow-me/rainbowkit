@@ -144,7 +144,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       </Box>
       {!isMobile() && (
         <>
-          <Box background="menuDivider" width="2" />
+          <Box background="menuDivider" minWidth="2" width="2" />
           <Box
             display="flex"
             flexDirection="column"
@@ -157,6 +157,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               justifyContent="space-between"
               marginBottom="6"
             >
+              <Box>
+                <CloseIcon />
+              </Box>
               <Box marginLeft="6">
                 {isRainbow && (
                   <Text color="modalText" size="18" weight="heavy">

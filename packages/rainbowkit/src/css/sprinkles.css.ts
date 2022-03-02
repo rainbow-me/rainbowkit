@@ -7,8 +7,9 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
+    buttonBorder: '',
+    buttonSecondaryBackground: '',
     buttonText: '',
-    modalCloseBackground: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
@@ -27,6 +28,7 @@ const themeContractValues = {
     modalBackdrop: '',
     modalBackground: '',
     modalClose: '',
+    modalCloseBackground: '',
     modalText: '',
     modalTextSecondary: '',
   },
@@ -136,6 +138,7 @@ const layoutStyles = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      '1': '1px',
       '2': '2px',
       '4': '4px',
     },

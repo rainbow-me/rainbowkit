@@ -7,6 +7,8 @@ describe('cssObjectFromTheme', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
         "--rk-colors-accentColor": "#1A85FF",
+        "--rk-colors-buttonBorder": "rgba(0, 0, 0, 0.04)",
+        "--rk-colors-buttonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-buttonText": "#FFF",
         "--rk-colors-connectButtonBackground": "#FFFFFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
