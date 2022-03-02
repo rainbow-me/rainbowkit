@@ -3,9 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   Chain,
   connectorsForWallets,
-  darkTheme,
   getDefaultWallets,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
@@ -18,7 +16,7 @@ const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
 const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
-const chains: Chain[] = [
+export const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
   { ...chain.optimisticEthereum, name: 'Optimism' },
@@ -40,9 +38,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <RainbowKitProvider chains={chains} theme={darkTheme()}>
-          <Component {...pageProps} />
-        </RainbowKitProvider>
+        <Component {...pageProps} />
       </WagmiProvider>
       <style
         dangerouslySetInnerHTML={{

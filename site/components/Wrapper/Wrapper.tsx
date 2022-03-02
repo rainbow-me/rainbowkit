@@ -7,7 +7,7 @@ export function Wrapper({
   style,
 }: {
   children: ReactNode;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 }) {
   return (
     <div className={wrapper} style={style}>
