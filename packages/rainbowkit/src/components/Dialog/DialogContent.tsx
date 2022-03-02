@@ -16,15 +16,15 @@ export function DialogContent({
   padding = '14',
 }: DialogContentProps) {
   return (
-    <Box
-      className={[
-        styles.dialogContent,
-        bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
-      ].join(' ')}
-      marginTop={marginTop}
-      padding={padding}
-    >
-      {children}
+    <Box marginTop={marginTop}>
+      <Box
+        className={[
+          styles.dialogContent,
+          bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
+        ].join(' ')}
+      >
+        <Box padding={padding}>{children}</Box>
+      </Box>
     </Box>
   );
 }
