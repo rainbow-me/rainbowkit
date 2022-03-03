@@ -126,13 +126,25 @@ export function DownloadDetail({
   // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const { qrCode } = useDesktopWalletDetail();
   return (
-    <Box display="flex" flexDirection="column" height="full" width="full">
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      gap="24"
+      height="full"
+      width="full"
+    >
+      <Box style={{ maxWidth: 220, textAlign: 'center' }}>
+        <Text color="modalTextSecondary" size="14" weight="semibold">
+          Scan with your phone to download in iOS or Android
+        </Text>
+      </Box>
       <Box height="full">
         {qrCode?.logoUri && downloadUrl ? (
           <QRCode
-            logoSize={72}
+            logoSize={0}
             logoUri={qrCode.logoUri}
-            size={378}
+            size={268}
             uri={downloadUrl}
           />
         ) : null}
@@ -146,19 +158,13 @@ export function DownloadDetail({
         gap="8"
         height="34"
         justifyContent="space-between"
-        marginTop="6"
+        marginBottom="12"
         paddingY="8"
       >
-        <>
-          <Text color="menuTextSecondary" size="14" weight="bold">
-            Successfully downloaded?
-          </Text>
-          <Button
-            label="Continue"
-            onClick={() => setWalletStep(WalletStep.Instructions)}
-            type="secondary"
-          />
-        </>
+        <Button
+          label="Continue"
+          onClick={() => setWalletStep(WalletStep.Instructions)}
+        />
       </Box>
     </Box>
   );
@@ -176,7 +182,7 @@ export function InstructionDetail({
       <Box
         display="flex"
         flexDirection="column"
-        gap="20"
+        gap="28"
         height="full"
         justifyContent="center"
         padding="32"
@@ -210,25 +216,19 @@ export function InstructionDetail({
 
       <Box
         alignItems="center"
-        borderRadius="10"
         display="flex"
-        flexDirection="row"
-        gap="8"
-        height="34"
-        justifyContent="space-between"
-        marginTop="6"
-        paddingY="8"
+        flexDirection="column"
+        gap="16"
+        justifyContent="center"
+        marginBottom="24"
       >
-        <>
-          <Text color="menuTextSecondary" size="14" weight="bold">
-            Completed these steps?
-          </Text>
-          <Button
-            label="Connect"
-            onClick={() => setWalletStep(WalletStep.Connect)}
-            type="secondary"
-          />
-        </>
+        <Button
+          label="Connect"
+          onClick={() => setWalletStep(WalletStep.Connect)}
+        />
+        <Text color="accentColor" weight="bold">
+          Learn More
+        </Text>
       </Box>
     </Box>
   );

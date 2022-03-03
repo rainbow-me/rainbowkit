@@ -68,7 +68,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
       );
-      headerLabel = isRainbow && 'Scan to download Rainbow';
+      headerLabel = isRainbow && 'Install Rainbow';
       headerBackButtonLink = WalletStep.Connect;
       break;
     case WalletStep.Instructions:
@@ -177,7 +177,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Box>
                 )}
               </Box>
-              <Box marginLeft="6">
+              <Box>
                 {isRainbow && (
                   <Text color="modalText" size="18" weight="heavy">
                     {headerLabel}
