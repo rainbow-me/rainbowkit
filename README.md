@@ -341,6 +341,10 @@ import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
   colors: {
+    accentColor: '',
+    buttonBorder: '',
+    buttonSecondaryBackground: '',
+    buttonText: '',
     connectButtonBackground: '...',
     connectButtonBackgroundError: '...',
     connectButtonInnerBackground: '...',

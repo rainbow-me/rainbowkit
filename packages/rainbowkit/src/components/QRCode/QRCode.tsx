@@ -121,6 +121,7 @@ export function QRCode({
       borderWidth="2"
       className={QRCodeBackgroundClassName}
       padding={padding}
+      width="max"
     >
       <Box
         style={{

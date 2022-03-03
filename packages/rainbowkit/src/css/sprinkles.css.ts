@@ -12,8 +12,9 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
+    buttonBorder: '',
+    buttonSecondaryBackground: '',
     buttonText: '',
-    modalCloseBackground: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
@@ -32,6 +33,7 @@ const themeContractValues = {
     modalBackdrop: '',
     modalBackground: '',
     modalClose: '',
+    modalCloseBackground: '',
     modalText: '',
     modalTextSecondary: '',
   },
@@ -71,6 +73,7 @@ const spacing = {
   '28': '28px',
   '32': '32px',
   '36': '36px',
+  '64': '64px',
 };
 
 const dimensions = {
@@ -148,6 +151,7 @@ const unresponsiveProperties = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      '1': '1px',
       '2': '2px',
       '4': '4px',
     },

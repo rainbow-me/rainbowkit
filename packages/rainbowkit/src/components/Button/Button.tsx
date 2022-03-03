@@ -4,22 +4,32 @@ import { Text } from '../Text/Text';
 export function Button({
   label,
   onClick,
+  type = 'primary',
 }: {
   label: string;
+  type?: 'primary' | 'secondary';
   onClick: () => void;
 }) {
+  const isPrimary = type === 'primary';
   return (
     <Box
       as="button"
-      background="accentColor"
+      background={isPrimary ? 'accentColor' : 'buttonSecondaryBackground'}
+      borderColor="buttonBorder"
       borderRadius="full"
+      borderStyle="solid"
+      borderWidth="1"
       onClick={onClick}
       paddingX="12"
-      paddingY="6"
+      paddingY="4"
       transform={{ active: 'shrink', hover: 'grow' }}
       transition="default"
     >
-      <Text color="buttonText" size="16" weight="bold">
+      <Text
+        color={isPrimary ? 'buttonText' : 'accentColor'}
+        size="16"
+        weight="bold"
+      >
         {label}
       </Text>
     </Box>

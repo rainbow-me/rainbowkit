@@ -12,6 +12,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   name: string;
   iconUrl?: string;
   downloadUrl?: string;
+  instructions?: { title: string; subtitle: string; imgUrl?: string }[];
   useMobileWalletButton?: () => {
     onClick: () => void;
   };
@@ -47,11 +48,27 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
-      downloadUrl:
-        'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
+      downloadUrl: 'https://rainbow.download',
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
+      instructions: [
+        {
+          subtitle:
+            'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+          title: 'Open the Rainbow app',
+        },
+        {
+          subtitle:
+            'You can easily backup your wallet using our iCloud Backup feature on iOS.',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          subtitle:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          title: 'Tap the scan button',
+        },
+      ],
       name: 'Rainbow',
       useDesktopWalletDetail: () => {
         const [{ data: connectData }, connect] = useConnect();
