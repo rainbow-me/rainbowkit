@@ -1,19 +1,29 @@
 import React from 'react';
+import { mapResponsiveValue, ResponsiveValue } from '../../css/sprinkles.css';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
+type AccountStatus = 'full' | 'avatar' | 'address';
+type ChainStatus = 'full' | 'icon' | 'name' | 'none';
+
 export interface ConnectButtonProps {
-  accountStatus?: 'full' | 'avatar' | 'address';
-  showBalance?: boolean;
-  chainStatus?: 'full' | 'icon' | 'name' | 'none';
+  accountStatus?: ResponsiveValue<AccountStatus>;
+  showBalance?: ResponsiveValue<boolean>;
+  chainStatus?: ResponsiveValue<ChainStatus>;
 }
 
+const defaultProps = {
+  accountStatus: 'full',
+  chainStatus: { largeScreen: 'full', smallScreen: 'icon' },
+  showBalance: { largeScreen: true, smallScreen: false },
+} as const;
+
 export function ConnectButton({
-  accountStatus = 'full',
-  chainStatus = 'full',
-  showBalance = true,
+  accountStatus = defaultProps.accountStatus,
+  chainStatus = defaultProps.chainStatus,
+  showBalance = defaultProps.showBalance,
 }: ConnectButtonProps) {
   return (
     <ConnectButtonRenderer>
@@ -26,21 +36,9 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
-        const showChains = chainStatus !== 'none';
-        const showChainIcon = chainStatus === 'icon' || chainStatus === 'full';
-        const showChainName =
-          chainStatus === 'name' ||
-          chainStatus === 'full' ||
-          (chainStatus === 'icon' && !chain?.iconUrl); // If there is no iconUrl, show the name
-
-        const showAvatar =
-          accountStatus === 'avatar' || accountStatus === 'full';
-        const showAddress =
-          accountStatus === 'address' || accountStatus === 'full';
-
         return account ? (
           <Box display="flex" gap="12">
-            {showChains && chain && (
+            {chain && (
               <Box
                 alignItems="center"
                 as="button"
@@ -56,7 +54,9 @@ export function ConnectButton({
                     ? 'connectButtonTextError'
                     : 'connectButtonText'
                 }
-                display="flex"
+                display={mapResponsiveValue(chainStatus, value =>
+                  value === 'none' ? 'none' : 'flex'
+                )}
                 fontFamily="body"
                 fontWeight="bold"
                 gap="6"
@@ -71,15 +71,33 @@ export function ConnectButton({
                   <Box>Invalid network</Box>
                 ) : (
                   <Box alignItems="center" display="flex" gap="4">
-                    {showChainIcon && chain.iconUrl ? (
-                      <img
+                    {chain.iconUrl ? (
+                      <Box
                         alt={chain.name ?? 'Chain icon'}
+                        as="img"
+                        display={mapResponsiveValue(chainStatus, value =>
+                          value === 'full' || value === 'icon'
+                            ? 'block'
+                            : 'none'
+                        )}
                         height="24"
                         src={chain.iconUrl}
                         width="24"
                       />
                     ) : null}
-                    {showChainName && <div>{chain.name ?? chain.id}</div>}
+                    <Box
+                      display={mapResponsiveValue(chainStatus, value => {
+                        if (value === 'icon' && !chain.iconUrl) {
+                          return 'block'; // Show the chain name if there is no iconUrl
+                        }
+
+                        return value === 'full' || value === 'name'
+                          ? 'block'
+                          : 'none';
+                      })}
+                    >
+                      {chain.name ?? chain.id}
+                    </Box>
                   </Box>
                 )}
                 <DropdownIcon />
@@ -101,8 +119,14 @@ export function ConnectButton({
               transition="default"
               type="button"
             >
-              {showBalance && account.displayBalance && (
-                <Box padding="8" paddingLeft="12">
+              {account.displayBalance && (
+                <Box
+                  display={mapResponsiveValue(showBalance, value =>
+                    value ? 'block' : 'none'
+                  )}
+                  padding="8"
+                  paddingLeft="12"
+                >
                   {account.displayBalance}
                 </Box>
               )}
@@ -122,16 +146,28 @@ export function ConnectButton({
                 transition="default"
               >
                 <Box alignItems="center" display="flex" gap="6" height="24">
-                  {showAvatar && (
+                  <Box
+                    display={mapResponsiveValue(accountStatus, value =>
+                      value === 'full' || value === 'avatar' ? 'block' : 'none'
+                    )}
+                  >
                     <Avatar
                       address={account.address}
                       imageUrl={account.ensAvatar}
                       size={24}
                     />
-                  )}
+                  </Box>
 
                   <Box alignItems="center" display="flex" gap="6">
-                    {showAddress && <div>{account.displayName}</div>}
+                    <Box
+                      display={mapResponsiveValue(accountStatus, value =>
+                        value === 'full' || value === 'address'
+                          ? 'block'
+                          : 'none'
+                      )}
+                    >
+                      {account.displayName}
+                    </Box>
                     <DropdownIcon />
                   </Box>
                 </Box>
@@ -171,4 +207,5 @@ export function ConnectButton({
   );
 }
 
+ConnectButton.__defaultProps = defaultProps;
 ConnectButton.Custom = ConnectButtonRenderer;
