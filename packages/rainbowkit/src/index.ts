@@ -14,3 +14,4 @@ export { cssStringFromTheme } from './css/cssStringFromTheme';
 export { cssObjectFromTheme } from './css/cssObjectFromTheme';
 export { DesktopOptions } from './components/ConnectOptions/DesktopOptions';
 export { dialogContent } from './components/Dialog/DialogContent.css';
+export { ConnectButtonRenderer } from './components/ConnectButton/ConnectButtonRenderer';

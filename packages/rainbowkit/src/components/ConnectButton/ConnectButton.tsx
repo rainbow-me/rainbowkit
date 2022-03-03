@@ -8,11 +8,13 @@ export interface ConnectButtonProps {
   accountStatus?: 'full' | 'avatar' | 'address';
   showBalance?: boolean;
   chainStatus?: 'full' | 'icon' | 'name' | 'none';
+  onClick?: () => void;
 }
 
 export function ConnectButton({
   accountStatus = 'full',
   chainStatus = 'full',
+  onClick,
   showBalance = true,
 }: ConnectButtonProps) {
   return (
@@ -60,7 +62,7 @@ export function ConnectButton({
                 fontFamily="body"
                 fontWeight="bold"
                 gap="6"
-                onClick={openChainModal}
+                onClick={onClick ? onClick : openChainModal}
                 paddingX="10"
                 paddingY="8"
                 transform={{ active: 'shrink', hover: 'grow' }}
@@ -96,7 +98,7 @@ export function ConnectButton({
               display="flex"
               fontFamily="body"
               fontWeight="bold"
-              onClick={openAccountModal}
+              onClick={onClick ? onClick : openAccountModal}
               transform={{ active: 'shrink', hover: 'grow' }}
               transition="default"
               type="button"
@@ -158,7 +160,7 @@ export function ConnectButton({
               color="connectButtonText"
               fontFamily="body"
               fontWeight="bold"
-              onClick={openConnectModal}
+              onClick={onClick ? onClick : openConnectModal}
               padding="8"
               type="button"
             >
