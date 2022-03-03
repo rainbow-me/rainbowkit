@@ -36,7 +36,7 @@ export function Playground() {
   const [accountStatus, setAccountStatus] = useState<AccountStatus>('full');
   const [chainStatus, setChainStatus] = useState<ChainStatus>('full');
   const [view, setView] = useState<Views>('initial');
-  const [showBalance, setShowBalance] = useState<boolean | undefined>(true);
+  const [showBalance, setShowBalance] = useState('yes');
   const [{ data: connectData }] = useConnect();
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export function Playground() {
   const handleRadiiChange = value => setRadii(value);
   const handleAccountStatusChange = value => setAccountStatus(value);
   const handleChainStatusChange = value => setChainStatus(value);
-  const handleShowBalanceChange = value => setShowBalance(Boolean(value));
+  const handleShowBalanceChange = value => setShowBalance(value);
 
   const selectedTheme = THEMES[mode]({
     accentColor: accent,
@@ -83,7 +83,7 @@ export function Playground() {
                   return false;
                 }
               }}
-              showBalance={showBalance}
+              showBalance={showBalance === 'yes' ? true : false}
             />
           )}
           <div
@@ -275,23 +275,23 @@ export function Playground() {
               </ControlBox>
             </div>
             <div>
-              <h4>Icon status</h4>
+              <h4>Show balance</h4>
               <ControlBox>
                 <RadioGroup.Root
                   name="Show balance"
                   onValueChange={handleShowBalanceChange}
                   style={{ display: 'inline-flex', gap: 22 }}
-                  value={String(showBalance)}
+                  value={showBalance}
                 >
                   <RadioGroup.Item
                     className={radio}
                     data-label="Y"
-                    value="true"
+                    value="yes"
                   />
                   <RadioGroup.Item
                     className={radio}
                     data-label="F"
-                    value={undefined}
+                    value="no"
                   />
                 </RadioGroup.Root>
               </ControlBox>
