@@ -10,7 +10,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { ConnectButtonProps } from '@rainbow-me/rainbowkit/dist/components/ConnectButton/ConnectButton';
 import React, { useEffect, useState } from 'react';
-import { useConnect } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
 import { radio } from '../../css/radio.css';
 import { chains } from '../../pages/_app';
 import { Wrapper } from '../Wrapper/Wrapper';
@@ -38,6 +38,14 @@ export function Playground() {
   const [view, setView] = useState<Views>('initial');
   const [showBalance, setShowBalance] = useState('yes');
   const [{ data: connectData }] = useConnect();
+  const [, disconnect] = useAccount();
+
+  useEffect(() => {
+    // needed to force disconnect
+    setTimeout(() => {
+      disconnect();
+    }, 1000);
+  }, []);
 
   useEffect(() => {
     if (connectData.connected) {
