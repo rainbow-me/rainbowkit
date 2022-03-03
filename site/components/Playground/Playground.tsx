@@ -86,15 +86,17 @@ export function Playground() {
               showBalance={showBalance === 'yes' ? true : false}
             />
           )}
-          <div
-            className={dialogContent}
-            style={{
-              display: view === 'connecting' ? 'block' : 'none',
-              width: 712,
-            }}
-          >
-            <DesktopOptions onClose={() => {}} />
-          </div>
+
+          {view === 'connecting' && (
+            <div
+              className={dialogContent}
+              style={{
+                width: 712,
+              }}
+            >
+              <DesktopOptions onClose={() => {}} />
+            </div>
+          )}
         </div>
       </Wrapper>
 
