@@ -4,7 +4,7 @@ import { Box } from '../Box/Box';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
 import { CloseIcon } from '../Icons/Close';
-import { MenuButton } from '../MenuButton/MenuButton';
+import { ModalSelection } from '../ModalSelection/ModalSelection';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -96,30 +96,37 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         paddingY="14"
         style={{ minWidth: isMobile() ? 'full' : '260px' }}
       >
-        <Box paddingY="8">
+        <Box marginLeft="6" paddingY="8">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box marginTop="8">
+        <Box marginBottom="4" marginLeft="6" marginTop="8">
           <Text color="modalTextSecondary" size="14" weight="bold">
             Popular
           </Text>
         </Box>
-        <Box display="flex" flexDirection="column" gap="6">
+        <Box display="flex" flexDirection="column" gap="8">
           {wallets.map(wallet => {
             return (
-              <MenuButton
+              <ModalSelection
                 currentlySelected={wallet.id === selectedOptionId}
                 key={wallet.id}
                 onClick={() => onSelectWallet(wallet)}
               >
                 <Box
-                  color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+                  color={
+                    wallet.ready
+                      ? wallet.id === selectedOptionId
+                        ? 'buttonText'
+                        : 'modalText'
+                      : 'modalTextSecondary'
+                  }
                   disabled={!wallet.ready}
                   fontFamily="body"
                   fontSize="16"
                   fontWeight="bold"
+                  transition="default"
                 >
                   <Box
                     alignItems="center"
@@ -140,7 +147,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     </div>
                   </Box>
                 </Box>
-              </MenuButton>
+              </ModalSelection>
             );
           })}
         </Box>
