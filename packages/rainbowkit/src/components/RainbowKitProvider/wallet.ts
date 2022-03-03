@@ -33,7 +33,7 @@ export type Wallet = (
 
 interface RainbowOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
 }
 const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
   const wallet: Wallet = () => {
@@ -106,7 +106,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
 interface WalletConnectOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
 }
 const walletConnect =
   ({ chains, infuraId }: WalletConnectOptions): Wallet =>
@@ -154,7 +154,7 @@ const coinbase =
 
 interface MetaMaskOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
   shimDisconnect?: boolean;
 }
 const metaMask =
@@ -229,7 +229,7 @@ export const getDefaultWallets = ({
   jsonRpcUrl,
 }: {
   chains: WagmiChain[];
-  infuraId: string;
+  infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
 }) => [
