@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { AssetsIcon } from '../Icons/Assets';
+import { LoginIcon } from '../Icons/Login';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
@@ -26,13 +28,9 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           paddingX="36"
         >
           <Box alignItems="center" display="flex" flexDirection="row" gap="16">
-            <Box
-              background="accentColor"
-              borderRadius="6"
-              height="48"
-              minWidth="48"
-              width="48"
-            />
+            <Box borderRadius="6" height="48" minWidth="48" width="48">
+              <AssetsIcon />
+            </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
                 A Home for your Digital Assets
@@ -44,13 +42,9 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Box>
           </Box>
           <Box alignItems="center" display="flex" flexDirection="row" gap="16">
-            <Box
-              background="accentColor"
-              borderRadius="6"
-              height="48"
-              minWidth="48"
-              width="48"
-            />
+            <Box borderRadius="6" height="48" minWidth="48" width="48">
+              <LoginIcon />
+            </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
                 A New Way to Log In

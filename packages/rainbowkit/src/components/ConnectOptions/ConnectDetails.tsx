@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { CreateIcon } from '../Icons/Create';
+import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { WalletConnector } from '../RainbowKitProvider/useWalletConnectors';
@@ -170,6 +172,8 @@ export function DownloadDetail({
   );
 }
 
+const instructionImgs = [<CreateIcon key="create" />, <ScanIcon key="scan" />];
+
 export function InstructionDetail({
   setWalletStep,
   wallet,
@@ -177,6 +181,16 @@ export function InstructionDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
+  const renderedInstructionImgs = [
+    <img
+      alt={wallet.name}
+      height="48"
+      key="logo"
+      src={wallet.iconUrl}
+      width="48"
+    />,
+    ...instructionImgs,
+  ];
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       <Box
@@ -195,13 +209,9 @@ export function InstructionDetail({
             gap="16"
             key={idx}
           >
-            <Box
-              background="accentColor"
-              borderRadius="6"
-              height="48"
-              minWidth="48"
-              width="48"
-            />
+            <Box height="48" minWidth="48" width="48">
+              {renderedInstructionImgs[idx]}
+            </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
                 {d.title}
