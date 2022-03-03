@@ -387,7 +387,9 @@ const App = () => {
 
 ## `ConnectButton`
 
-The `ConnectButton` component exposes the following props to customize its appearance.
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+
+These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
 
 <table>
   <thead>
@@ -401,21 +403,21 @@ The `ConnectButton` component exposes the following props to customize its appea
   <tbody>
     <tr>
       <td><code>accountStatus</code></td>
-      <td><code>"avatar" | "address" | "full"</code></td>
+      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
       <td><code>"full"</code></td>
       <td>Whether the active account’s avatar and/or address is displayed</td>
     </tr>
     <tr>
-      <td><code>showBalance</code></td>
-      <td><code>boolean</code></td>
-      <td><code>true</code></td>
-      <td>Whether the balance is visible next to the account name</td>
+      <td><code>chainStatus</code></td>
+      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
+      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
+      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
     </tr>
     <tr>
-      <td><code>chainStatus</code></td>
-      <td><code>"icon" | "name" | "full" | "none"</code></td>
-      <td><code>"full"</code></td>
-      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
+      <td><code>showBalance</code></td>
+      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
+      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
+      <td>Whether the balance is visible next to the account name</td>
     </tr>
   </tbody>
 </table>

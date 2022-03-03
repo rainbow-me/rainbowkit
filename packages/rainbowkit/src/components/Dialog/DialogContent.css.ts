@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { desktopMinWidth, sprinkles } from '../../css/sprinkles.css';
+import { largeScreenMinWidth, sprinkles } from '../../css/sprinkles.css';
 
 export const dialogContent = style([
   sprinkles({
@@ -14,7 +14,7 @@ export const dialogContent = style([
 const bleed = 200;
 export const bottomSheetOverrides = style({
   '@media': {
-    [`screen and (max-width: ${desktopMinWidth - 1}px)`]: {
+    [`screen and (max-width: ${largeScreenMinWidth - 1}px)`]: {
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
       marginTop: -bleed,

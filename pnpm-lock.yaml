@@ -1,8 +1,5 @@
 lockfileVersion: 5.3
 
-onlyBuiltDependencies:
-  - esbuild
-
 importers:
 
   .:
@@ -101,7 +98,7 @@ importers:
       '@vanilla-extract/css': ^1.6.6
       '@vanilla-extract/dynamic': ^2.0.2
       '@vanilla-extract/private': ^1.0.2
-      '@vanilla-extract/sprinkles': ^1.3.2
+      '@vanilla-extract/sprinkles': ^1.4.0
       autoprefixer: ^10.4.0
       clsx: ^1.1.1
       detect-browser: ^5.3.0
@@ -113,7 +110,7 @@ importers:
     dependencies:
       '@vanilla-extract/css': 1.6.8
       '@vanilla-extract/dynamic': 2.0.2
-      '@vanilla-extract/sprinkles': 1.3.3_@vanilla-extract+css@1.6.8
+      '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
       detect-browser: 5.3.0
       focus-visible: 5.2.0
@@ -2645,8 +2642,8 @@ packages:
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
-  /@vanilla-extract/sprinkles/1.3.3_@vanilla-extract+css@1.6.8:
-    resolution: {integrity: sha512-LoxDYbVSrNZdsXME09UUescV9v2tT0AI2yalavR3KCGNY89i2Lp7j7iNZuXJMPK4MzW7CErfYDffcpJ5+PyU2g==}
+  /@vanilla-extract/sprinkles/1.4.0_@vanilla-extract+css@1.6.8:
+    resolution: {integrity: sha512-q9Tu5bHkN/fT0IFkBDEsNeTKN/8CFYkgGVDw0iZ+wM/n9IKhWrKLnOjDk1v9NpCXD3rUQqDipl0pdGCEcBe4RQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
@@ -7991,3 +7988,6 @@ packages:
     dependencies:
       bn.js: 4.12.0
       ethereumjs-util: 6.2.1
+
+onlyBuiltDependencies:
+  - esbuild
