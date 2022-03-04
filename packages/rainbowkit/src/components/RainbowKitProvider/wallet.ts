@@ -5,6 +5,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
+import { omitUndefinedValues } from './omitUndefinedValues';
 
 export type WalletConnectorConfig<C extends Connector = Connector> = {
   connector: C;
@@ -259,7 +260,7 @@ export const getDefaultWallets = ({
 export const connectorsForWallets = (wallets: Wallet[] = []) => {
   const connectors = (connectorArgs: ConnectorArgs) =>
     wallets.map(createWallet => {
-      const wallet = createWallet(connectorArgs);
+      const wallet = omitUndefinedValues(createWallet(connectorArgs));
 
       if (wallet.connector._wallet) {
         throw new Error(
