@@ -61,7 +61,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         },
         {
           subtitle:
-            'You can easily backup your wallet using our iCloud Backup feature on iOS.',
+            'You can easily backup your wallet using our backup feature on your phone.',
           title: 'Create or Import a Wallet',
         },
         {
