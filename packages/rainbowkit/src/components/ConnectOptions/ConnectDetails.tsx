@@ -18,7 +18,6 @@ export function GetDetail({
 }: {
   getMobileWallet: (walletId: string) => void;
 }) {
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const wallets = useWalletConnectors();
 
   const linkProps = (
@@ -130,7 +129,6 @@ export function ConnectDetail({
   wallet: WalletConnector;
 }) {
   const { iconUrl, name, useDesktopWalletDetail } = wallet;
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const { qrCode } = useDesktopWalletDetail();
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
