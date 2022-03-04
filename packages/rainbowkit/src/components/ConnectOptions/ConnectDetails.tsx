@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { CreateIcon } from '../Icons/Create';
@@ -13,9 +13,22 @@ import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 import { walletLogoClassName } from './DesktopOptions.css';
 
-export function GetDetail() {
+export function GetDetail({
+  getMobileWallet,
+}: {
+  getMobileWallet: (walletId: string) => void;
+}) {
   // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const wallets = useWalletConnectors();
+
+  const linkProps = (
+    link: string
+  ): { as: ElementType; href: string; rel: string; target: string } => ({
+    as: 'a',
+    href: link,
+    rel: 'noreferrer',
+    target: '_blank',
+  });
 
   return (
     <Box
@@ -35,49 +48,56 @@ export function GetDetail() {
         paddingX="4"
         width="full"
       >
-        {wallets?.map(wallet => (
-          <Box
-            alignItems="center"
-            display="flex"
-            gap="16"
-            justifyContent="space-between"
-            key={wallet.id}
-            width="full"
-          >
-            <Box
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              gap="16"
-            >
-              <Box height="48" minWidth="48" width="48">
-                <img
-                  alt={wallet.name}
-                  height={48}
-                  src={wallet.iconUrl}
-                  width={48}
-                />
+        {wallets
+          ?.filter(wallet => wallet.downloadUrls)
+          .map(wallet => {
+            const { downloadUrls, iconUrl, id, name } = wallet;
+            const mobileDownload = downloadUrls?.mobile;
+            return (
+              <Box
+                alignItems="center"
+                display="flex"
+                gap="16"
+                justifyContent="space-between"
+                key={wallet.id}
+                width="full"
+              >
+                <Box
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
+                  gap="16"
+                >
+                  <Box height="48" minWidth="48" width="48">
+                    <img alt={name} height={48} src={iconUrl} width={48} />
+                  </Box>
+                  <Box display="flex" flexDirection="column" gap="4">
+                    <Text color="modalText" size="14" weight="bold">
+                      {name}
+                    </Text>
+                    <Text color="modalTextSecondary" size="14" weight="medium">
+                      {downloadUrls?.mobile
+                        ? 'Mobile Wallet'
+                        : downloadUrls?.browserExtension
+                        ? 'Browser Extension'
+                        : null}
+                    </Text>
+                  </Box>
+                </Box>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap="4"
+                  onClick={() => mobileDownload && getMobileWallet(id)}
+                  {...(!mobileDownload && downloadUrls?.browserExtension
+                    ? linkProps(downloadUrls.browserExtension)
+                    : {})}
+                >
+                  <Button label="GET" onClick={() => {}} type="secondary" />
+                </Box>
               </Box>
-              <Box display="flex" flexDirection="column" gap="4">
-                <Text color="modalText" size="14" weight="bold">
-                  {wallet.name}
-                </Text>
-                <Text color="modalTextSecondary" size="14" weight="medium">
-                  Mobile Wallet
-                </Text>
-              </Box>
-            </Box>
-            <Box
-              as="a"
-              display="flex"
-              flexDirection="column"
-              gap="4"
-              href={wallet.downloadUrl}
-            >
-              <Button label="GET" onClick={() => {}} type="secondary" />
-            </Box>
-          </Box>
-        ))}
+            );
+          })}
       </Box>
       <Box
         alignItems="center"
@@ -216,9 +236,7 @@ export function DownloadDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrl, useDesktopWalletDetail } = wallet;
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
-  const { qrCode } = useDesktopWalletDetail();
+  const { downloadUrls } = wallet;
   return (
     <Box
       alignItems="center"
@@ -234,13 +252,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {qrCode?.logoUri && downloadUrl ? (
-          <QRCode
-            logoSize={0}
-            logoUri={qrCode.logoUri}
-            size={268}
-            uri={downloadUrl}
-          />
+        {downloadUrls?.mobile ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.mobile} />
         ) : null}
       </Box>
 

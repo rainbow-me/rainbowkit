@@ -23,7 +23,7 @@ const generateMatrix = (
 
 type Props = {
   ecl?: QRCodeUtil.QRCodeErrorCorrectionLevel;
-  logoUri: string;
+  logoUri?: string;
   logoMargin?: number;
   logoSize?: number;
   size?: number;

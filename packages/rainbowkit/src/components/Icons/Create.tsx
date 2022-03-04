@@ -16,7 +16,7 @@ export const CreateIcon = () => (
       rx="10"
       fill="url(#paint1_radial_251_1213)"
       fillOpacity="0.7"
-      style={{ 'mix-blend-mode': 'screen' }}
+      style={{ mixBlendMode: 'screen' }}
     />
     <rect
       x="0.5"

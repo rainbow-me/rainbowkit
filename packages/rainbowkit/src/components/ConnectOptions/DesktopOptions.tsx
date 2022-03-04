@@ -43,12 +43,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     wallet?.connect?.();
   };
 
-  // const getRainbowWallet = () => {
-  //   setSelectedOptionId('rainbow');
-  //   const sWallet = wallets.find(w => 'rainbow' === w.id);
-  //   setSelectedWallet(sWallet);
-  //   setWalletStep(WalletStep.Download);
-  // };
+  const getMobileWallet = (id: string) => {
+    setSelectedOptionId(id);
+    const sWallet = wallets.find(w => id === w.id);
+    setSelectedWallet(sWallet);
+    setWalletStep(WalletStep.Download);
+  };
 
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
 
@@ -63,7 +63,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       break;
     case WalletStep.Get:
-      walletContent = <GetDetail />;
+      walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = WalletStep.None;
       break;
