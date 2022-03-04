@@ -4,6 +4,7 @@ import { HoverClassName, SelectedClassName } from './ModalSelection.css';
 
 type Props = {
   children?: React.ReactNode;
+  disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
   as?: React.ElementType<any>;
   currentlySelected?: boolean;
@@ -15,6 +16,7 @@ export const ModalSelection = React.forwardRef(
       as = 'button',
       children,
       currentlySelected = false,
+      disabled,
       onClick,
       ...urlProps
     }: Props,
@@ -23,8 +25,14 @@ export const ModalSelection = React.forwardRef(
     return (
       <Box
         as={as}
-        className={currentlySelected ? SelectedClassName : HoverClassName}
-        disabled={currentlySelected}
+        className={
+          disabled
+            ? null
+            : currentlySelected
+            ? SelectedClassName
+            : HoverClassName
+        }
+        disabled={currentlySelected || disabled}
         onClick={onClick}
         ref={ref}
         {...urlProps}

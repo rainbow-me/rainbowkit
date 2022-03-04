@@ -111,6 +111,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             return (
               <ModalSelection
                 currentlySelected={wallet.id === selectedOptionId}
+                disabled={!wallet.ready}
                 key={wallet.id}
                 onClick={() => onSelectWallet(wallet)}
               >
@@ -122,7 +123,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                         : 'modalText'
                       : 'modalTextSecondary'
                   }
-                  disabled={!wallet.ready}
                   fontFamily="body"
                   fontSize="16"
                   fontWeight="bold"
