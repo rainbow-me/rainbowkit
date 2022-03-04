@@ -193,7 +193,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Box>
                 )}
               </Box>
-              <Box>
+              <Box
+                display="flex"
+                justifyContent="center"
+                style={{ flexGrow: 1 }}
+              >
                 {headerLabel && (
                   <Text color="modalText" size="18" weight="heavy">
                     {headerLabel}
