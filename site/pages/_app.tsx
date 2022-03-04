@@ -3,8 +3,8 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   Chain,
   connectorsForWallets,
-  darkTheme,
   getDefaultWallets,
+  midnightTheme,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
@@ -40,7 +40,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <RainbowKitProvider chains={chains} theme={darkTheme()}>
+        <RainbowKitProvider chains={chains} theme={midnightTheme()}>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiProvider>
