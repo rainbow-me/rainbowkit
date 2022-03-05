@@ -100,9 +100,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         display="flex"
         flexDirection="column"
         gap="6"
-        marginX="14"
-        paddingX="6"
-        paddingY="14"
+        marginX="16"
+        paddingX="8"
+        paddingY="16"
         style={{ minWidth: isMobile() ? 'full' : '260px' }}
       >
         <Box marginLeft="6" paddingY="8">
@@ -160,7 +160,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           <Box
             display="flex"
             flexDirection="column"
-            margin="14"
+            margin="16"
             style={{ flexGrow: 1 }}
           >
             <Box

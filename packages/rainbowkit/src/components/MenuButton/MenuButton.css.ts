@@ -8,11 +8,11 @@ export const MenuButtonClassName = style([
       hover: 'menuItemBackground',
     },
     borderRadius: 'menuButton',
-    paddingX: '14',
-    paddingY: '10',
+    color: 'modalText',
+    paddingX: '6',
+    paddingY: '6',
     transform: {
       active: 'shrink',
-      hover: 'grow',
     },
     transition: 'default',
   }),
@@ -20,9 +20,10 @@ export const MenuButtonClassName = style([
 
 export const SelectedMenuButtonClassName = style([
   sprinkles({
-    background: 'menuItemBackground',
+    background: 'accentColor',
     borderRadius: 'menuButton',
-    paddingX: '14',
-    paddingY: '10',
+    color: 'buttonText',
+    paddingX: '6',
+    paddingY: '6',
   }),
 ]);

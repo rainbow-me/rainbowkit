@@ -59,29 +59,17 @@ export function ChainModal({
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
-            padding="14"
           >
-            <Box paddingBottom="0">
+            <Box paddingBottom="0" paddingLeft="10" paddingTop="4">
               <Text
                 as="h1"
                 color="modalText"
                 id={titleId}
-                size="23"
+                size="18"
                 weight="heavy"
               >
-                Choose a network
+                Switch networks
               </Text>
-              <Box marginTop="4">
-                <Text
-                  as="h1"
-                  color="modalTextSecondary"
-                  id={titleId}
-                  size="16"
-                  weight="bold"
-                >
-                  Choose your preferred network
-                </Text>
-              </Box>
             </Box>
             <Box
               as="button"
@@ -93,7 +81,13 @@ export function ChainModal({
               <CloseIcon />
             </Box>
           </Box>
-          <Box display="flex" flexDirection="column" gap="10">
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="4"
+            paddingBottom="2"
+            paddingX="2"
+          >
             {onSwitchNetwork &&
               networkData.chains.map(chain => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
@@ -112,12 +106,7 @@ export function ChainModal({
                           }
                     }
                   >
-                    <Box
-                      color="modalText"
-                      fontFamily="body"
-                      fontSize="18"
-                      fontWeight={isCurrentChain ? 'heavy' : 'bold'}
-                    >
+                    <Box fontFamily="body" fontSize="16" fontWeight="bold">
                       <Box
                         alignItems="center"
                         display="flex"
@@ -129,14 +118,14 @@ export function ChainModal({
                           display="flex"
                           flexDirection="row"
                           gap="4"
-                          height="24"
+                          height="28"
                         >
                           {chainIconUrl ? (
                             <Box height="full" marginRight="8">
                               <img
                                 alt={chain.name}
                                 src={chainIconUrl}
-                                width="24"
+                                width="28"
                               />
                             </Box>
                           ) : null}
@@ -147,20 +136,17 @@ export function ChainModal({
                             alignItems="center"
                             display="flex"
                             flexDirection="row"
+                            marginRight="8"
                           >
-                            <Text
-                              color="connectionIndicator"
-                              size="16"
-                              weight="heavy"
-                            >
+                            <Text color="buttonText" size="14" weight="bold">
                               Connected
                             </Text>
                             <Box
                               background="connectionIndicator"
                               borderRadius="full"
-                              height="12"
+                              height="8"
                               marginLeft="8"
-                              width="12"
+                              width="8"
                             />
                           </Box>
                         )}
@@ -174,8 +160,8 @@ export function ChainModal({
       </DialogContent>
       {isSwitching && (
         <DialogContent marginTop="14">
-          <Box padding="10">
-            <Text color="modalText" font="body" size="18" weight="bold">
+          <Box padding="4">
+            <Text color="modalText" font="body" size="16" weight="bold">
               Confirm in your wallet...
             </Text>
           </Box>
