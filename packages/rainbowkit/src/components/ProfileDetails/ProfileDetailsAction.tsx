@@ -33,8 +33,8 @@ export function ProfileDetailsAction({
       }}
       borderRadius="menuButton"
       padding="10"
-      style={{ flexBasis: 0, flexGrow: 1 }}
-      transform={{ active: 'shrinkSm' }}
+      style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
+      transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
     >
       <Box

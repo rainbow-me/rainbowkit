@@ -85,6 +85,8 @@ export function TxList({ accountData }: TxListProps) {
         <Box
           alignItems="center"
           as="a"
+          borderRadius="menuButton"
+          color="modalTextSecondary"
           display="flex"
           flexDirection="row"
           href={explorerUrl}
@@ -101,9 +103,7 @@ export function TxList({ accountData }: TxListProps) {
           <Text color="menuText" font="body" size="14" weight="bold">
             View more on Explorer
           </Text>
-          <Box color="modalTextSecondary">
-            <ExternalLinkIcon />
-          </Box>
+          <ExternalLinkIcon />
         </Box>
       </Box>
     </>
