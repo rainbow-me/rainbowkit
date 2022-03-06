@@ -5,6 +5,7 @@ export const dialogContent = style([
   sprinkles({
     background: 'modalBackground',
     borderRadius: 'modal',
+    boxShadow: 'dialog',
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',

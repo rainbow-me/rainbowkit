@@ -51,6 +51,7 @@ const themeContractValues = {
   },
   shadows: {
     connectButton: '',
+    dialog: '',
     menu: '',
   },
 };
