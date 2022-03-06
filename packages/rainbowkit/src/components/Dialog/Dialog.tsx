@@ -5,6 +5,7 @@ import React, {
   useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
@@ -39,9 +40,8 @@ export function Dialog({
   }, [open, onClose]);
 
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
-
   const themeRootProps = useThemeRootProps();
-
+  const mobile = isMobile();
   return (
     <>
       {open
@@ -57,7 +57,7 @@ export function Dialog({
               role="dialog"
             >
               <FocusTrap
-                className={wide ? styles.wideContent : styles.content}
+                className={mobile || wide ? styles.wideContent : styles.content}
                 onClick={stopPropagation}
                 role="document"
               >
