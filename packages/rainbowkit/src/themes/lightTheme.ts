@@ -39,6 +39,7 @@ export const lightTheme = ({
     modalCloseBackground: 'rgba(0, 0, 0, 0.06)',
     modalText: '#25292E',
     modalTextSecondary: 'rgba(60, 66, 82, 0.6)',
+    standby: '#FFD641',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',

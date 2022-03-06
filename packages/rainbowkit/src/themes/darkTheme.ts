@@ -39,6 +39,7 @@ export const darkTheme = ({
     modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#fff',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
+    standby: '#FFD641',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
