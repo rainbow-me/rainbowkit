@@ -40,7 +40,7 @@ export const lightTheme = ({
     modalText: '#25292E',
     modalTextSecondary: 'rgba(60, 66, 82, 0.6)',
     profileAction: '#FFFFFF',
-    profileActionHover: 'rgba(255, 255, 255, 0.5);',
+    profileActionHover: 'rgba(255, 255, 255, 0.5)',
     profileForeground: 'rgba(60, 66, 66, 0.1)',
     standby: '#FFD641',
   },
