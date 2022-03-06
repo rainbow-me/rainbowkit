@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
-import { CloseIcon } from '../Icons/Close';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import {
   useWalletConnectors,
@@ -197,16 +197,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Text>
                 )}
               </Box>
-              <Box
-                as="button"
-                borderRadius="full"
-                display="flex"
-                onClick={onClose}
-                transform={{ active: 'shrinkSm', hover: 'growLg' }}
-                transition="default"
-              >
-                <CloseIcon />
-              </Box>
+              <CloseButton onClose={onClose} />
             </Box>
             <Box
               display="flex"

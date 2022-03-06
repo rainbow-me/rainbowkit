@@ -27,7 +27,10 @@ export function ProfileDetailsAction({
       as={url ? 'a' : 'button'}
       onClick={action}
       {...urlProps}
-      background="modalBackground"
+      background={{
+        base: 'modalBackground',
+        hover: 'buttonBorder',
+      }}
       borderRadius="menuButton"
       padding="10"
       style={{ flexBasis: 0, flexGrow: 1 }}

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { CloseIcon } from '../Icons/Close';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { CloseButtonClassName } from '../ProfileDetails/ProfileDetails.css';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
@@ -71,15 +70,7 @@ export function ChainModal({
                 Switch networks
               </Text>
             </Box>
-            <Box
-              as="button"
-              borderRadius="full"
-              className={CloseButtonClassName}
-              height="34"
-              onClick={onClose}
-            >
-              <CloseIcon />
-            </Box>
+            <CloseButton onClose={onClose} />
           </Box>
           <Box
             display="flex"

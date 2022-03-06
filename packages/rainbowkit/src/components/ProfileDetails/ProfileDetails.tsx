@@ -2,17 +2,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
 import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
-import { CloseButtonClassName } from './ProfileDetails.css';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
@@ -75,17 +74,15 @@ export function ProfileDetails({
             margin="10"
             style={{ textAlign: 'center' }}
           >
-            <Box
-              as="button"
-              borderRadius="full"
-              className={CloseButtonClassName}
-              height="34"
-              onClick={onClose}
-              position="absolute"
-              style={{ right: 16, top: 16 }}
-            >
-              <CloseIcon />
-            </Box>
+            <CloseButton
+              onClose={onClose}
+              style={{
+                position: 'absolute',
+                right: 16,
+                top: 16,
+                willChange: 'tranform',
+              }}
+            />{' '}
             <Box>
               <Avatar
                 address={accountData.address}
