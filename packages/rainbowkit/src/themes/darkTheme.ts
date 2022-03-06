@@ -39,6 +39,9 @@ export const darkTheme = ({
     modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#fff',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
+    profileAction: 'rgba(224, 232, 255, 0.1)',
+    profileActionHover: 'rgba(224, 232, 255, 0.2)',
+    profileForeground: 'rgba(224, 232, 255, 0.05)',
     standby: '#FFD641',
   },
   shadows: {

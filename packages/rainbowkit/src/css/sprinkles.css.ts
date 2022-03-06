@@ -36,6 +36,9 @@ const themeContractValues = {
     modalCloseBackground: '',
     modalText: '',
     modalTextSecondary: '',
+    profileAction: '',
+    profileActionHover: '',
+    profileForeground: '',
     standby: '',
   },
   fonts: {

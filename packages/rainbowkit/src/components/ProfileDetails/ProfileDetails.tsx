@@ -64,7 +64,7 @@ export function ProfileDetails({
   return (
     <>
       <Box display="flex" flexDirection="column">
-        <Box background="buttonSecondaryBackground" padding="14">
+        <Box background="profileForeground" padding="14">
           <Box
             alignItems="center"
             display="flex"

@@ -40,6 +40,9 @@ export const midnightTheme = ({
     modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#fff',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
+    profileAction: 'rgba(255, 255, 255, 0.1);',
+    profileActionHover: 'rgba(255, 255, 255, 0.2);',
+    profileForeground: 'rgba(255, 255, 255, 0.06);',
     standby: '#FFD641',
   },
   shadows: {

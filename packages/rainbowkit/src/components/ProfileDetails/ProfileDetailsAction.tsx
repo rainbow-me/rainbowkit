@@ -28,8 +28,8 @@ export function ProfileDetailsAction({
       onClick={action}
       {...urlProps}
       background={{
-        base: 'modalBackground',
-        hover: 'buttonBorder',
+        base: 'profileAction',
+        hover: 'profileActionHover',
       }}
       borderRadius="menuButton"
       padding="10"
@@ -48,7 +48,7 @@ export function ProfileDetailsAction({
           {icon}
         </Box>
         <Box>
-          <Text color="modalText" size="13" weight="bold">
+          <Text color="modalText" size="13" weight="semibold">
             {label}
           </Text>
         </Box>
