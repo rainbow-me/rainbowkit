@@ -422,6 +422,10 @@ const myCustomTheme: Theme = {
     modalCloseBackground: '...',
     modalText: '...',
     modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    standby: '',
   },
   fonts: {
     body: '...',
