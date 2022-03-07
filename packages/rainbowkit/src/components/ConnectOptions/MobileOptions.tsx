@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '../Box/Box';
+import { Button } from '../Button/Button';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { BackIcon } from '../Icons/Back';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -20,7 +22,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       fontFamily="body"
       key={id}
       onClick={onClick}
-      style={{ overflow: 'visible' }}
+      style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
     >
@@ -57,21 +59,213 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
   );
 }
 
+enum MobileWalletStep {
+  Connect = 'CONNECT',
+  Get = 'GET',
+}
+
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
+
+  let headerLabel = null;
+  let walletContent = null;
+  let headerBackButtonLink: MobileWalletStep | null = null;
+
+  const [walletStep, setWalletStep] = useState<MobileWalletStep>(
+    MobileWalletStep.Connect
+  );
+
+  switch (walletStep) {
+    case MobileWalletStep.Connect: {
+      headerLabel = 'Connect a wallet';
+      walletContent = (
+        <>
+          <Box className={styles.scroll} display="flex">
+            <Box display="flex" style={{ margin: '0 auto' }}>
+              {wallets.map(wallet => {
+                return (
+                  <Box key={wallet.id} paddingX="20">
+                    <Box width="60">
+                      <WalletButton wallet={wallet} />
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+          </Box>
+
+          <Box background="modalBorder" height="1" />
+
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            gap="36"
+            paddingX="36"
+            style={{ textAlign: 'center' }}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="12"
+              style={{ maxWidth: 360 }}
+            >
+              <Text color="modalText" size="16" weight="bold">
+                What is a wallet?
+              </Text>
+              <Text color="modalTextSecondary" size="16">
+                A wallet is used to send, receive, store, and display digital
+                assets like Ethereum and NFTs. It&apos;s also a new way to log
+                in, without needing to create new accounts and passwords
+                on&nbsp;every&nbsp;website.
+              </Text>
+            </Box>
+            <Box display="flex" gap="14" justifyContent="center">
+              <Button
+                label="Get a wallet"
+                onClick={() => setWalletStep(MobileWalletStep.Get)}
+                size="large"
+                type="secondary"
+              />
+              <Button
+                href="https://learn.rainbow.me"
+                label="Learn more"
+                size="large"
+                type="secondary"
+              />
+            </Box>
+          </Box>
+        </>
+      );
+      break;
+    }
+    case MobileWalletStep.Get: {
+      headerLabel = 'Get a Wallet';
+      headerBackButtonLink = MobileWalletStep.Connect;
+
+      const mobileWallets = wallets?.filter(
+        wallet => wallet.downloadUrls?.mobile
+      );
+
+      walletContent = (
+        <>
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            height="full"
+            width="full"
+          >
+            {mobileWallets.map((wallet, index) => {
+              const { downloadUrls, iconUrl, name } = wallet;
+
+              if (!downloadUrls?.mobile) {
+                return null;
+              }
+
+              return (
+                <Box
+                  display="flex"
+                  gap="16"
+                  key={wallet.id}
+                  paddingX="20"
+                  width="full"
+                >
+                  <img alt={name} height={48} src={iconUrl} width={48} />
+                  <Box display="flex" flexDirection="column" width="full">
+                    <Box alignItems="center" display="flex" height="48">
+                      <Box width="full">
+                        <Text color="modalText" size="18" weight="bold">
+                          {name}
+                        </Text>
+                      </Box>
+                      <Button
+                        href={downloadUrls.mobile}
+                        label="GET"
+                        size="small"
+                        type="secondary"
+                      />
+                    </Box>
+                    {index < mobileWallets.length - 1 ? (
+                      <Box
+                        background="modalBorder"
+                        height="1"
+                        marginY="16"
+                        width="full"
+                      />
+                    ) : null}
+                  </Box>
+                </Box>
+              );
+            })}
+          </Box>
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            gap="36"
+            paddingTop="24"
+            paddingX="36"
+            style={{ textAlign: 'center' }}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="12"
+              style={{ maxWidth: 360 }}
+            >
+              <Text color="modalText" size="16" weight="bold">
+                Not what you&apos;re looking for?
+              </Text>
+              <Text color="modalTextSecondary" size="16">
+                Select a wallet on the main screen to get started with a
+                different wallet provider.
+              </Text>
+            </Box>
+          </Box>
+        </>
+      );
+      break;
+    }
+  }
 
   return (
     <Box display="flex" flexDirection="column" gap="20" paddingY="16">
       <Box
         display="flex"
         justifyContent="center"
+        paddingBottom="6"
         paddingX="20"
         position="relative"
       >
-        <Text as="h1" color="modalText" id={titleId} size="20" weight="bold">
-          Connect a Wallet
-        </Text>
+        {headerBackButtonLink ? (
+          <Box
+            as="button"
+            color="accentColor"
+            display="flex"
+            onClick={() => setWalletStep(headerBackButtonLink!)}
+            padding="20"
+            position="absolute"
+            style={{
+              left: 0,
+              marginBottom: -20,
+              marginTop: -20,
+            }}
+            transform={{ active: 'shrinkSm', hover: 'growLg' }}
+            transition="default"
+          >
+            <Box alignItems="center" display="flex" height="24">
+              <BackIcon />
+            </Box>
+          </Box>
+        ) : null}
+
+        <Box style={{ textAlign: 'center' }} width="full">
+          <Text as="h1" color="modalText" id={titleId} size="20" weight="bold">
+            {headerLabel}
+          </Text>
+        </Box>
 
         <Box
           alignItems="center"
@@ -89,19 +283,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         </Box>
       </Box>
 
-      <Box className={styles.scroll} display="flex">
-        <Box display="flex" style={{ margin: '0 auto' }}>
-          {wallets.map(wallet => {
-            return (
-              <Box key={wallet.id} paddingX="20">
-                <Box width="60">
-                  <WalletButton wallet={wallet} />
-                </Box>
-              </Box>
-            );
-          })}
-        </Box>
-      </Box>
+      {walletContent}
     </Box>
   );
 }

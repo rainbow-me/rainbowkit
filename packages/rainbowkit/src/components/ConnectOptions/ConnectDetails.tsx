@@ -48,10 +48,15 @@ export function GetDetail({
         width="full"
       >
         {wallets
-          ?.filter(wallet => wallet.downloadUrls)
+          ?.filter(
+            wallet =>
+              wallet.downloadUrls?.browserExtension ??
+              wallet.downloadUrls?.mobileCompanion ??
+              wallet.downloadUrls?.desktop
+          )
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name } = wallet;
-            const mobileDownload = downloadUrls?.mobile;
+            const mobileDownload = downloadUrls?.mobileCompanion;
             return (
               <Box
                 alignItems="center"
@@ -75,7 +80,7 @@ export function GetDetail({
                       {name}
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {downloadUrls?.mobile
+                      {downloadUrls?.mobileCompanion
                         ? 'Mobile Wallet'
                         : downloadUrls?.browserExtension
                         ? 'Browser Extension'
