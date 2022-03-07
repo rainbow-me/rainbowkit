@@ -24,7 +24,6 @@ export function Button({
       borderStyle="solid"
       borderWidth="1"
       display="block"
-      href={href}
       onClick={onClick}
       paddingX="12"
       paddingY="4"
