@@ -58,7 +58,8 @@ export function Button({
       onClick={onClick}
       paddingX={paddingX}
       paddingY={paddingY}
-      transform={{ active: 'shrink', hover: 'grow' }}
+      style={{ willChange: 'transform' }}
+      transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
     >
       <Text

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
-import { CloseIcon } from '../Icons/Close';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import {
   useWalletConnectors,
@@ -100,9 +100,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         display="flex"
         flexDirection="column"
         gap="6"
-        marginX="14"
-        paddingX="6"
-        paddingY="14"
+        marginX="16"
+        paddingX="8"
+        paddingY="16"
         style={{ minWidth: isMobile() ? 'full' : '260px' }}
       >
         <Box marginLeft="6" paddingY="8">
@@ -156,11 +156,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       </Box>
       {!isMobile() && (
         <>
-          <Box background="menuDivider" minWidth="2" width="2" />
+          <Box background="modalBorder" minWidth="1" width="1" />
           <Box
             display="flex"
             flexDirection="column"
-            margin="14"
+            margin="16"
             style={{ flexGrow: 1 }}
           >
             <Box
@@ -197,16 +197,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Text>
                 )}
               </Box>
-              <Box
-                as="button"
-                borderRadius="full"
-                display="flex"
-                onClick={onClose}
-                transform={{ active: 'shrinkSm', hover: 'growLg' }}
-                transition="default"
-              >
-                <CloseIcon />
-              </Box>
+              <CloseButton onClose={onClose} />
             </Box>
             <Box
               display="flex"

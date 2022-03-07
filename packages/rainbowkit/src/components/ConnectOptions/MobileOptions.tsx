@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
-import { CloseIcon } from '../Icons/Close';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -95,7 +95,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="menuDivider" style={{ height: 1 }} />
+          <Box background="modalBorder" height="1" />
 
           <Box
             alignItems="center"
@@ -189,9 +189,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                     </Box>
                     {index < mobileWallets.length - 1 ? (
                       <Box
-                        background="menuDivider"
+                        background="modalBorder"
+                        height="1"
                         marginY="16"
-                        style={{ height: 1 }}
                         width="full"
                       />
                     ) : null}
@@ -231,7 +231,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box display="flex" flexDirection="column" gap="20" paddingY="20">
+    <Box display="flex" flexDirection="column" gap="20" paddingY="16">
       <Box
         display="flex"
         justifyContent="center"
@@ -276,15 +276,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           right="0"
         >
           <Box
-            as="button"
-            borderRadius="full"
-            display="flex"
-            onClick={onClose}
             style={{ marginBottom: -20, marginTop: -20 }} // Vertical bleed
-            transform={{ active: 'shrinkSm', hover: 'growLg' }}
-            transition="default"
           >
-            <CloseIcon />
+            <CloseButton onClose={onClose} />
           </Box>
         </Box>
       </Box>

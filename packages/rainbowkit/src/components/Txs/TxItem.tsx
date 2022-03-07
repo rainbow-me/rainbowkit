@@ -56,15 +56,16 @@ export function TxItem({ tx }: TxProps) {
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
+      paddingX="8"
       paddingY="4"
     >
-      <Box display="flex" flexDirection="row" gap="8">
+      <Box alignItems="center" display="flex" flexDirection="row" gap="14">
         <Box color={iconColor}>
           <Icon />
         </Box>
         <Box display="flex" flexDirection="column" gap="4">
           <Box>
-            <Text color="modalText" font="body" size="16" weight="bold">
+            <Text color="modalText" font="body" size="14" weight="bold">
               {tx?.info}
             </Text>
           </Box>
@@ -73,7 +74,7 @@ export function TxItem({ tx }: TxProps) {
               color="modalTextSecondary"
               font="body"
               size="14"
-              weight="bold"
+              weight="medium"
             >
               {confirmationStatus}
             </Text>
@@ -82,14 +83,12 @@ export function TxItem({ tx }: TxProps) {
       </Box>
       <Box
         as="a"
-        color="modalText"
-        height="20"
+        color="modalTextSecondary"
         href={`${chainIdToExplorerLink(networkData?.chain?.id)}tx/${tx.hash}`}
         rel="noreferrer"
         target="_blank"
         transform={{ active: 'shrink', hover: 'growLg' }}
         transition="default"
-        width="20"
       >
         <ExternalLinkIcon />
       </Box>

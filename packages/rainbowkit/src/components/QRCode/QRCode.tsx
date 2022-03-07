@@ -115,10 +115,10 @@ export function QRCode({
 
   return (
     <Box
-      borderColor="menuDivider"
+      borderColor="modalBorder"
       borderRadius="modal"
       borderStyle="solid"
-      borderWidth="2"
+      borderWidth="1"
       className={QRCodeBackgroundClassName}
       padding={padding}
       width="max"

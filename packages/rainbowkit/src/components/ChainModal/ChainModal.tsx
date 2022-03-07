@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { CloseIcon } from '../Icons/Close';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { CloseButtonClassName } from '../ProfileDetails/ProfileDetails.css';
 import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
@@ -22,7 +21,7 @@ export function ChainModal({
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
-  const [isSwitching, setIsSwitching] = useState(false);
+  const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const [{ data: connectData }] = useConnect();
   const titleId = 'rk_chain_modal_title';
 
@@ -34,7 +33,7 @@ export function ChainModal({
     }
 
     const stopSwitching = () => {
-      setIsSwitching(false);
+      setSwitchingToChain(null);
       onClose();
     };
 
@@ -45,7 +44,7 @@ export function ChainModal({
     return () => {
       provider.removeListener('chainChanged', stopSwitching);
     };
-  }, [connectData.connector, setIsSwitching, onClose]);
+  }, [connectData.connector, setSwitchingToChain, onClose]);
 
   if (!networkData || !networkData.chain) {
     return null;
@@ -59,44 +58,31 @@ export function ChainModal({
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
-            padding="14"
           >
-            <Box paddingBottom="0">
+            <Box paddingBottom="0" paddingLeft="10" paddingTop="4">
               <Text
                 as="h1"
                 color="modalText"
                 id={titleId}
-                size="23"
+                size="18"
                 weight="heavy"
               >
-                Choose a network
+                Switch networks
               </Text>
-              <Box marginTop="4">
-                <Text
-                  as="h1"
-                  color="modalTextSecondary"
-                  id={titleId}
-                  size="16"
-                  weight="bold"
-                >
-                  Choose your preferred network
-                </Text>
-              </Box>
             </Box>
-            <Box
-              as="button"
-              borderRadius="full"
-              className={CloseButtonClassName}
-              height="34"
-              onClick={onClose}
-            >
-              <CloseIcon />
-            </Box>
+            <CloseButton onClose={onClose} />
           </Box>
-          <Box display="flex" flexDirection="column" gap="10">
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="4"
+            paddingBottom="2"
+            paddingX="2"
+          >
             {onSwitchNetwork &&
               networkData.chains.map(chain => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
+                const switching = chain.id === switchingToChain;
                 const chainIconUrl = chainIconUrlsById[chain.id];
 
                 return (
@@ -107,17 +93,12 @@ export function ChainModal({
                       isCurrentChain
                         ? undefined
                         : () => {
-                            setIsSwitching(chain.id);
+                            setSwitchingToChain(chain.id);
                             onSwitchNetwork(chain.id);
                           }
                     }
                   >
-                    <Box
-                      color="modalText"
-                      fontFamily="body"
-                      fontSize="18"
-                      fontWeight={isCurrentChain ? 'heavy' : 'bold'}
-                    >
+                    <Box fontFamily="body" fontSize="16" fontWeight="bold">
                       <Box
                         alignItems="center"
                         display="flex"
@@ -129,14 +110,14 @@ export function ChainModal({
                           display="flex"
                           flexDirection="row"
                           gap="4"
-                          height="24"
+                          height="28"
                         >
                           {chainIconUrl ? (
                             <Box height="full" marginRight="8">
                               <img
                                 alt={chain.name}
                                 src={chainIconUrl}
-                                width="24"
+                                width="28"
                               />
                             </Box>
                           ) : null}
@@ -147,20 +128,46 @@ export function ChainModal({
                             alignItems="center"
                             display="flex"
                             flexDirection="row"
+                            marginRight="8"
                           >
-                            <Text
-                              color="connectionIndicator"
-                              size="16"
-                              weight="heavy"
-                            >
+                            <Text color="buttonText" size="14" weight="bold">
                               Connected
                             </Text>
                             <Box
                               background="connectionIndicator"
+                              borderColor="buttonBorder"
                               borderRadius="full"
-                              height="12"
+                              borderStyle="solid"
+                              borderWidth="2"
+                              height="8"
                               marginLeft="8"
-                              width="12"
+                              width="8"
+                            />
+                          </Box>
+                        )}
+                        {switching && (
+                          <Box
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                            marginRight="8"
+                          >
+                            <Text
+                              color="modalTextSecondary"
+                              size="14"
+                              weight="bold"
+                            >
+                              Confirm in Wallet
+                            </Text>
+                            <Box
+                              background="standby"
+                              borderColor="buttonBorder"
+                              borderRadius="full"
+                              borderStyle="solid"
+                              borderWidth="2"
+                              height="8"
+                              marginLeft="8"
+                              width="8"
                             />
                           </Box>
                         )}
@@ -172,15 +179,6 @@ export function ChainModal({
           </Box>
         </Box>
       </DialogContent>
-      {isSwitching && (
-        <DialogContent marginTop="14">
-          <Box padding="10">
-            <Text color="modalText" font="body" size="18" weight="bold">
-              Confirm in your wallet...
-            </Text>
-          </Box>
-        </DialogContent>
-      )}
     </Dialog>
   );
 }

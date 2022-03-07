@@ -409,7 +409,6 @@ const myCustomTheme: Theme = {
     connectionIndicator: '...',
     error: '...',
     menuBackground: '...',
-    menuDivider: '...',
     menuItemActiveBackground: '...',
     menuItemBackground: '...',
     menuText: '...',
@@ -418,10 +417,16 @@ const myCustomTheme: Theme = {
     menuTextSecondary: '...',
     modalBackdrop: '...',
     modalBackground: '...',
+    modalBorder: '...',
     modalClose: '...',
     modalCloseBackground: '...',
     modalText: '...',
     modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '',
   },
   fonts: {
     body: '...',
@@ -433,7 +438,9 @@ const myCustomTheme: Theme = {
   },
   shadows: {
     connectButton: '...',
+    dialog: '...',
     menu: '...',
+    selectedOption: '...',
   },
 };
 

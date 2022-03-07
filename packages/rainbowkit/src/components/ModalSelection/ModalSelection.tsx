@@ -27,6 +27,7 @@ export const ModalSelection = React.forwardRef(
         disabled={currentlySelected}
         onClick={onClick}
         ref={ref}
+        style={{ willChange: 'transform' }}
         {...urlProps}
       >
         {children}
