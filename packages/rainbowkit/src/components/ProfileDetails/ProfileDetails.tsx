@@ -137,7 +137,7 @@ export function ProfileDetails({
             />
           </Box>
         </Box>
-        <Box background="menuDivider" height="2" />
+        <Box background="modalBorder" height="1" />
         <Box>
           <TxList accountData={accountData} />
         </Box>

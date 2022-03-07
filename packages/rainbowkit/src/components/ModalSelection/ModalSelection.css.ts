@@ -8,9 +8,7 @@ export const HoverClassName = style([
       hover: 'menuItemBackground',
     },
     borderColor: {
-      active: 'buttonBorder',
       base: 'modalBackground',
-      hover: 'buttonBorder',
     },
     borderRadius: 'menuButton',
     borderStyle: 'solid',

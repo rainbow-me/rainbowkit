@@ -73,7 +73,7 @@ export function TxList({ accountData }: TxListProps) {
           {hasTransactions ? (
             visibleTxs.map(tx => <TxItem key={tx.hash} tx={tx} />)
           ) : (
-            <Box paddingTop="8" paddingX="8">
+            <Box paddingX="8" paddingY="6">
               <Text color="modalTextSecondary" size="14" weight="bold">
                 Your transactions will appear here...
               </Text>
@@ -94,9 +94,11 @@ export function TxList({ accountData }: TxListProps) {
           paddingX="8"
           paddingY="4"
           rel="noreferrer"
+          style={{ willChange: 'transform' }}
           target="_blank"
           transform={{
             active: 'shrink',
+            hover: 'grow',
           }}
           transition="default"
         >

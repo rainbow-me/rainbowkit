@@ -27,6 +27,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-menuTextSecondary": "#A3A4A5",
         "--rk-colors-modalBackdrop": "rgba(0, 0, 0, 0.3)",
         "--rk-colors-modalBackground": "#fff",
+        "--rk-colors-modalBorder": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-modalClose": "rgba(0, 0, 0, 0.6)",
         "--rk-colors-modalCloseBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-modalText": "#25292E",

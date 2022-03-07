@@ -156,7 +156,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       </Box>
       {!isMobile() && (
         <>
-          <Box background="menuDivider" minWidth="2" width="2" />
+          <Box background="menuDivider" minWidth="1" width="1" />
           <Box
             display="flex"
             flexDirection="column"

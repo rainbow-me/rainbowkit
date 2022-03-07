@@ -35,6 +35,7 @@ export const lightTheme = ({
     menuTextSecondary: '#A3A4A5',
     modalBackdrop: 'rgba(0, 0, 0, 0.3)',
     modalBackground: '#fff',
+    modalBorder: 'rgba(0, 0, 0, 0.06)',
     modalClose: 'rgba(0, 0, 0, 0.6)',
     modalCloseBackground: 'rgba(0, 0, 0, 0.06)',
     modalText: '#25292E',

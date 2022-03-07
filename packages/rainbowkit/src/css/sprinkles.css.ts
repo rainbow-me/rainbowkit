@@ -32,6 +32,7 @@ const themeContractValues = {
     menuTextSecondary: '',
     modalBackdrop: '',
     modalBackground: '',
+    modalBorder: '',
     modalClose: '',
     modalCloseBackground: '',
     modalText: '',
@@ -85,6 +86,7 @@ const spacing = {
 };
 
 const dimensions = {
+  '1': '1px',
   '2': '2px',
   '4': '4px',
   '8': '8px',

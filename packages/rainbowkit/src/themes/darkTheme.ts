@@ -35,6 +35,7 @@ export const darkTheme = ({
     menuTextSecondary: '#A3A4A5',
     modalBackdrop: 'rgba(0, 0, 0, 0.5)',
     modalBackground: '#1A1B1F',
+    modalBorder: 'rgba(255, 255, 255, 0.08)',
     modalClose: 'rgba(255, 255, 255, 0.6)',
     modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#fff',
