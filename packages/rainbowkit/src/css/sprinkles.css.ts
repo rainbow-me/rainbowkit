@@ -39,6 +39,7 @@ const themeContractValues = {
     profileAction: '',
     profileActionHover: '',
     profileForeground: '',
+    selectedOptionBorder: '',
     standby: '',
   },
   fonts: {
@@ -53,6 +54,7 @@ const themeContractValues = {
     connectButton: '',
     dialog: '',
     menu: '',
+    selectedOption: '',
   },
 };
 

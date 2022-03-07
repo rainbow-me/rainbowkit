@@ -34,6 +34,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-profileAction": "#FFFFFF",
         "--rk-colors-profileActionHover": "rgba(255, 255, 255, 0.5)",
         "--rk-colors-profileForeground": "rgba(60, 66, 66, 0.1)",
+        "--rk-colors-selectedOptionBorder": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-standby": "#FFD641",
         "--rk-fonts-body": "SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif",
         "--rk-radii-connectButton": "12px",
@@ -42,6 +43,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-connectButton": "0px 4px 12px rgba(0, 0, 0, 0.1)",
         "--rk-shadows-dialog": "0px 8px 32px rgba(0, 0, 0, 0.32)",
         "--rk-shadows-menu": "0px 10px 30px rgba(0, 0, 0, 0.1)",
+        "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
       }
     `);
   });

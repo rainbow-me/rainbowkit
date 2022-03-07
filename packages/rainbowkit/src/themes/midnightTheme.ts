@@ -43,11 +43,13 @@ export const midnightTheme = ({
     profileAction: 'rgba(255, 255, 255, 0.1)',
     profileActionHover: 'rgba(255, 255, 255, 0.2)',
     profileForeground: 'rgba(255, 255, 255, 0.06)',
+    selectedOptionBorder: 'rgba(224, 232, 255, 0.1)',
     standby: '#FFD641',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
     dialog: '0px 8px 32px rgba(0, 0, 0, 0.32)',
     menu: '0px 10px 30px rgba(0, 0, 0, 0.1)',
+    selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
   },
 });
