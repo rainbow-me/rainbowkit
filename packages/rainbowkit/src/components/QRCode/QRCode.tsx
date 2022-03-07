@@ -60,8 +60,8 @@ export function QRCode({
             fill={i % 2 !== 0 ? 'white' : 'black'}
             height={cellSize * (7 - i * 2)}
             key={`${i}-${x}-${y}`}
-            rx={(i - 3) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
-            ry={(i - 3) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
+            rx={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
+            ry={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
             width={cellSize * (7 - i * 2)}
             x={x1 + cellSize * i}
             y={y1 + cellSize * i}
