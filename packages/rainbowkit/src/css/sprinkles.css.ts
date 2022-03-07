@@ -1,14 +1,20 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createGlobalThemeContract } from '@vanilla-extract/css';
-import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles';
+import {
+  createMapValueFn,
+  createSprinkles,
+  defineProperties,
+  RequiredConditionalValue,
+} from '@vanilla-extract/sprinkles';
 
 import './reset.css';
 
 const themeContractValues = {
   colors: {
     accentColor: '',
+    buttonBorder: '',
+    buttonSecondaryBackground: '',
     buttonText: '',
-    modalCloseBackground: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
@@ -27,6 +33,7 @@ const themeContractValues = {
     modalBackdrop: '',
     modalBackground: '',
     modalClose: '',
+    modalCloseBackground: '',
     modalText: '',
     modalTextSecondary: '',
   },
@@ -66,6 +73,7 @@ const spacing = {
   '28': '28px',
   '32': '32px',
   '36': '36px',
+  '64': '64px',
 };
 
 const dimensions = {
@@ -107,20 +115,28 @@ const interactionProperties = defineProperties({
   },
 });
 
-export const desktopMinWidth = 768;
+export const largeScreenMinWidth = 768;
 
-const responsiveLayoutStyles = defineProperties({
+const responsiveProperties = defineProperties({
   conditions: {
-    mobile: {},
-    desktop: { '@media': `screen and (min-width: ${desktopMinWidth}px)` },
+    smallScreen: {},
+    largeScreen: {
+      '@media': `screen and (min-width: ${largeScreenMinWidth}px)`,
+    },
   },
-  defaultCondition: 'mobile',
+  defaultCondition: 'smallScreen',
   properties: {
     alignItems: flexAlignment,
+    display: ['none', 'block', 'flex'],
   },
 });
 
-const layoutStyles = defineProperties({
+export type ResponsiveValue<Value extends string | number | boolean> =
+  RequiredConditionalValue<typeof responsiveProperties, Value>;
+
+export const mapResponsiveValue = createMapValueFn(responsiveProperties);
+
+const unresponsiveProperties = defineProperties({
   properties: {
     alignSelf: flexAlignment,
     backgroundSize: ['cover'] as const,
@@ -135,10 +151,11 @@ const layoutStyles = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      '1': '1px',
       '2': '2px',
       '4': '4px',
     },
-    display: ['none', 'block', 'flex', 'inline-flex'],
+    cursor: ['pointer'],
     flexDirection: ['row', 'column'],
     fontFamily: themeVars.fonts,
     fontSize: {
@@ -187,7 +204,7 @@ const layoutStyles = defineProperties({
   },
 });
 
-const colorStyles = defineProperties({
+const colorProperties = defineProperties({
   conditions: {
     base: {},
     hover: { selector: '&:hover' },
@@ -202,17 +219,10 @@ const colorStyles = defineProperties({
   },
 });
 
-const unresponsiveProperties = defineProperties({
-  properties: {
-    cursor: ['pointer'],
-  } as const,
-});
-
 export const sprinkles = createSprinkles(
-  colorStyles,
+  colorProperties,
   interactionProperties,
-  layoutStyles,
-  responsiveLayoutStyles,
+  responsiveProperties,
   unresponsiveProperties
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];

@@ -5,13 +5,19 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
+import { omitUndefinedValues } from './omitUndefinedValues';
 
 export type WalletConnectorConfig<C extends Connector = Connector> = {
   connector: C;
   id: string;
   name: string;
   iconUrl?: string;
-  downloadUrl?: string;
+  downloadUrls?: {
+    mobile?: string;
+    desktop?: string;
+    browserExtension?: string;
+  };
+  instructions?: { title: string; subtitle: string; imgUrl?: string }[];
   useMobileWalletButton?: () => {
     onClick: () => void;
   };
@@ -33,7 +39,7 @@ export type Wallet = (
 
 interface RainbowOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
 }
 const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
   const wallet: Wallet = () => {
@@ -47,11 +53,27 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
-      downloadUrl:
-        'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
+      downloadUrls: { mobile: 'https://rainbow.download' },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
+      instructions: [
+        {
+          subtitle:
+            'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+          title: 'Open the Rainbow app',
+        },
+        {
+          subtitle:
+            'You can easily backup your wallet using our backup feature on your phone.',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          subtitle:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          title: 'Tap the scan button',
+        },
+      ],
       name: 'Rainbow',
       useDesktopWalletDetail: () => {
         const [{ data: connectData }, connect] = useConnect();
@@ -106,7 +128,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
 interface WalletConnectOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
 }
 const walletConnect =
   ({ chains, infuraId }: WalletConnectOptions): Wallet =>
@@ -146,15 +168,19 @@ const coinbase =
                   : jsonRpcUrl,
             },
           }),
+    downloadUrls: {
+      browserExtension:
+        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
+    },
     iconUrl:
       'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
     id: 'coinbase',
-    name: 'Coinbase',
+    name: 'Coinbase Wallet',
   });
 
 interface MetaMaskOptions {
   chains: Chain[];
-  infuraId: string;
+  infuraId?: string;
   shimDisconnect?: boolean;
 }
 const metaMask =
@@ -181,6 +207,10 @@ const metaMask =
 
     return {
       connector,
+      downloadUrls: {
+        browserExtension:
+          'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
+      },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
       id: 'metaMask',
@@ -229,7 +259,7 @@ export const getDefaultWallets = ({
   jsonRpcUrl,
 }: {
   chains: WagmiChain[];
-  infuraId: string;
+  infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
 }) => [
@@ -242,7 +272,7 @@ export const getDefaultWallets = ({
 export const connectorsForWallets = (wallets: Wallet[] = []) => {
   const connectors = (connectorArgs: ConnectorArgs) =>
     wallets.map(createWallet => {
-      const wallet = createWallet(connectorArgs);
+      const wallet = omitUndefinedValues(createWallet(connectorArgs));
 
       if (wallet.connector._wallet) {
         throw new Error(

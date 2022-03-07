@@ -21,31 +21,38 @@ export const useThemeRootProps = () => {
   return createThemeRootProps(id);
 };
 
-export type Theme = ThemeVars | (() => ThemeVars);
+export type Theme =
+  | ThemeVars
+  | {
+      lightMode: ThemeVars;
+      darkMode: ThemeVars;
+    };
 
 export interface RainbowKitProviderProps {
   chains: ChainWithIconUrl[];
   id?: string;
   children: ReactNode;
-  theme?:
-    | Theme
-    | {
-        lightMode: Theme;
-        darkMode: Theme;
-      }
-    | null;
+  theme?: Theme | null;
 }
+
+const defaultTheme = lightTheme();
 
 export function RainbowKitProvider({
   chains,
   id,
-  theme = lightTheme,
+  theme = defaultTheme,
   children,
 }: RainbowKitProviderProps) {
   const chainsWithIconUrls = useMemo(
     () => provideChainIconUrls(chains),
     [chains]
   );
+
+  if (typeof theme === 'function') {
+    throw new Error(
+      'A theme function was provided to the "theme" prop instead of a theme object. You must execute this function to get the resulting theme object.'
+    );
+  }
 
   const selector = createThemeRootSelector(id);
 

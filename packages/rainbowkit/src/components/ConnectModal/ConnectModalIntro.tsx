@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
+import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { Text } from '../Text/Text';
-import { introTextClassName } from './ConnectModalIntro.css';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
   return (
@@ -13,21 +13,49 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         color="accentColor"
         display="flex"
         flexDirection="column"
-        gap="16"
+        gap="64"
         justifyContent="center"
       >
-        <LoginIcon />
-        <Text color="modalText" size="18" weight="bold">
-          A New Way to Log In
+        <Text color="modalText" size="18" weight="heavy">
+          What is a Wallet?
         </Text>
-        <Text
-          className={introTextClassName}
-          color="modalTextSecondary"
-          size="16"
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="32"
+          height="full"
+          justifyContent="center"
+          paddingX="36"
         >
-          Instead of a creating a new username and password on every site, you
-          can use a wallet to log in instantly
-        </Text>
+          <Box alignItems="center" display="flex" flexDirection="row" gap="16">
+            <Box borderRadius="6" height="48" minWidth="48" width="48">
+              <AssetsIcon />
+            </Box>
+            <Box display="flex" flexDirection="column" gap="4">
+              <Text color="modalText" size="14" weight="bold">
+                A Home for your Digital Assets
+              </Text>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                Wallets are used to send, receive, store, and display digital
+                assets like Ethereum and NFTs.
+              </Text>
+            </Box>
+          </Box>
+          <Box alignItems="center" display="flex" flexDirection="row" gap="16">
+            <Box borderRadius="6" height="48" minWidth="48" width="48">
+              <LoginIcon />
+            </Box>
+            <Box display="flex" flexDirection="column" gap="4">
+              <Text color="modalText" size="14" weight="bold">
+                A New Way to Log In
+              </Text>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                Instead of creating new accounts and passwords on every website,
+                just connect your wallet instead.
+              </Text>
+            </Box>
+          </Box>
+        </Box>
         <Box
           alignItems="center"
           display="flex"

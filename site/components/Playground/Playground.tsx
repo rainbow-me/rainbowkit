@@ -25,8 +25,9 @@ export type Modes = keyof typeof THEMES;
 type ThemeOptions = Parameters<typeof lightTheme>[0];
 export type Accents = ThemeOptions['accentColor'];
 export type Radii = ThemeOptions['borderRadius'];
-type AccountStatus = ConnectButtonProps['accountStatus'];
-type ChainStatus = ConnectButtonProps['chainStatus'];
+type ExtractString<Value> = Value extends string ? Value : never;
+type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
+type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 export type Views = 'initial' | 'connecting' | 'connected';
 
 export function Playground() {

@@ -23,7 +23,7 @@ const generateMatrix = (
 
 type Props = {
   ecl?: QRCodeUtil.QRCodeErrorCorrectionLevel;
-  logoUri: string;
+  logoUri?: string;
   logoMargin?: number;
   logoSize?: number;
   size?: number;
@@ -121,6 +121,7 @@ export function QRCode({
       borderWidth="2"
       className={QRCodeBackgroundClassName}
       padding={padding}
+      width="max"
     >
       <Box
         style={{

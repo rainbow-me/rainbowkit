@@ -249,20 +249,71 @@ const chains: Chain[] = [
 
 RainbowKit ships with a static CSS file that can be themed via CSS variables, which `RainbowKitProvider` provides as inline styles by default.
 
+### Built-in themes
+
 There are 3 built-in themes:
 
 - `lightTheme` (default)
 - `darkTheme`
 - `midnightTheme`
 
-These themes can be imported from RainbowKit and provided to the `theme` prop on `RainbowKitProvider`.
+These themes are implemented as functions where the resulting theme object can be passed to the `theme` prop on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={darkTheme} {...etc}>
+    <RainbowKitProvider theme={darkTheme()} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Customizing the built-in themes
+
+The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>accentColor</code></td>
+      <td><code>"blue" | "green" | "pink" | "purple"</code></td>
+      <td><code>"blue"</code></td>
+      <td>The background/text color of various interactive elements</td>
+    </tr>
+    <tr>
+      <td><code>borderRadius</code></td>
+      <td><code>"none" | "small" | "medium" | "large"</code></td>
+      <td><code>"large"</code></td>
+      <td>The size of the entire border radius scale</td>
+    </tr>
+  </tbody>
+</table>
+
+For example, to customize the dark theme with a `purple` accent color and a `medium` border radius scale:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: 'purple',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
       {/* ... */}
     </RainbowKitProvider>
   );
@@ -277,13 +328,16 @@ If your app uses the standard `prefers-color-mode: dark` media query to swap bet
 import {
   RainbowKitProvider,
   lightTheme,
-  midnightTheme,
+  darkTheme,
 } from '@rainbow-me/rainbowkit';
 
 const App = () => {
   return (
     <RainbowKitProvider
-      theme={{ lightMode: lightTheme, darkMode: midnightTheme }}
+      theme={{
+        lightMode: lightTheme(),
+        darkMode: darkTheme(),
+      }}
       {...etc}
     >
       {/* ... */}
@@ -321,7 +375,9 @@ const App = () => {
           }
 
           html[data-dark] {
-            ${cssStringFromTheme(darkTheme, { extends: lightTheme })}
+            ${cssStringFromTheme(darkTheme, {
+              extends: lightTheme,
+            })}
           }
         `}
       </style>
@@ -332,15 +388,19 @@ const App = () => {
 };
 ```
 
-### Custom themes
+### Creating custom themes from scratch
 
-The `Theme` type is provided to help you define your own custom themes from scratch.
+The `Theme` type is provided to help you define your own custom themes with lower-level access to the theme variables used by the built-in themes.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
   colors: {
+    accentColor: '...',
+    buttonBorder: '...',
+    buttonSecondaryBackground: '...',
+    buttonText: '...',
     connectButtonBackground: '...',
     connectButtonBackgroundError: '...',
     connectButtonInnerBackground: '...',
@@ -359,6 +419,7 @@ const myCustomTheme: Theme = {
     modalBackdrop: '...',
     modalBackground: '...',
     modalClose: '...',
+    modalCloseBackground: '...',
     modalText: '...',
     modalTextSecondary: '...',
   },
@@ -387,7 +448,9 @@ const App = () => {
 
 ## `ConnectButton`
 
-The `ConnectButton` component exposes the following props to customize its appearance.
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+
+These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
 
 <table>
   <thead>
@@ -401,21 +464,21 @@ The `ConnectButton` component exposes the following props to customize its appea
   <tbody>
     <tr>
       <td><code>accountStatus</code></td>
-      <td><code>"avatar" | "address" | "full"</code></td>
+      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
       <td><code>"full"</code></td>
       <td>Whether the active account’s avatar and/or address is displayed</td>
     </tr>
     <tr>
-      <td><code>showBalance</code></td>
-      <td><code>boolean</code></td>
-      <td><code>true</code></td>
-      <td>Whether the balance is visible next to the account name</td>
+      <td><code>chainStatus</code></td>
+      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
+      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
+      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
     </tr>
     <tr>
-      <td><code>chainStatus</code></td>
-      <td><code>"icon" | "name" | "full" | "none"</code></td>
-      <td><code>"full"</code></td>
-      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
+      <td><code>showBalance</code></td>
+      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
+      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
+      <td>Whether the balance is visible next to the account name</td>
     </tr>
   </tbody>
 </table>

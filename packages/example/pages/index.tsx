@@ -2,13 +2,29 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React, { ComponentProps, useState } from 'react';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
-type AccountStatus = ConnectButtonProps['accountStatus'];
-type ChainStatus = ConnectButtonProps['chainStatus'];
+type ExtractString<Value> = Value extends string ? Value : never;
+type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
+type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
-  const [accountStatus, setAccountStatus] = useState<AccountStatus>();
-  const [showBalance, setShowBalance] = useState<boolean | undefined>();
-  const [chainStatus, setChainStatus] = useState<ChainStatus>();
+  const defaultProps = ConnectButton.__defaultProps;
+
+  const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
+    useState<AccountStatus>(defaultProps.accountStatus);
+  const [accountStatusLargeScreen, setAccountStatusLargeScreen] =
+    useState<AccountStatus>(defaultProps.accountStatus);
+
+  const [chainStatusSmallScreen, setChainStatusSmallScreen] =
+    useState<ChainStatus>(defaultProps.chainStatus.smallScreen);
+  const [chainStatusLargeScreen, setChainStatusLargeScreen] =
+    useState<ChainStatus>(defaultProps.chainStatus.largeScreen);
+
+  const [showBalanceSmallScreen, setShowBalanceSmallScreen] = useState<boolean>(
+    defaultProps.showBalance.smallScreen
+  );
+  const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
+    defaultProps.showBalance.largeScreen
+  );
 
   return (
     <div
@@ -26,9 +42,18 @@ const Example = () => {
         }}
       >
         <ConnectButton
-          accountStatus={accountStatus}
-          chainStatus={chainStatus}
-          showBalance={showBalance}
+          accountStatus={{
+            largeScreen: accountStatusLargeScreen,
+            smallScreen: accountStatusSmallScreen,
+          }}
+          chainStatus={{
+            largeScreen: chainStatusLargeScreen,
+            smallScreen: chainStatusSmallScreen,
+          }}
+          showBalance={{
+            largeScreen: showBalanceLargeScreen,
+            smallScreen: showBalanceSmallScreen,
+          }}
         />
       </div>
 
@@ -77,6 +102,13 @@ const Example = () => {
       <div style={{ fontFamily: 'sans-serif' }}>
         <h3>ConnectButton props</h3>
         <table cellSpacing={12}>
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>smallScreen</th>
+              <th>largeScreen</th>
+            </tr>
+          </thead>
           <tbody>
             <tr>
               <td>
@@ -86,9 +118,26 @@ const Example = () => {
                 <select
                   id="accountStatus"
                   onChange={event =>
-                    setAccountStatus(event.currentTarget.value as AccountStatus)
+                    setAccountStatusSmallScreen(
+                      event.currentTarget.value as AccountStatus
+                    )
                   }
-                  value={accountStatus}
+                  value={accountStatusSmallScreen}
+                >
+                  <option>full</option>
+                  <option>avatar</option>
+                  <option>address</option>
+                </select>
+              </td>
+              <td>
+                <select
+                  id="accountStatus"
+                  onChange={event =>
+                    setAccountStatusLargeScreen(
+                      event.currentTarget.value as AccountStatus
+                    )
+                  }
+                  value={accountStatusLargeScreen}
                 >
                   <option>full</option>
                   <option>avatar</option>
@@ -102,10 +151,20 @@ const Example = () => {
               </td>
               <td>
                 <input
-                  checked={showBalance ?? true}
+                  checked={showBalanceSmallScreen}
                   id="showBalance"
                   onChange={event => {
-                    setShowBalance(event.currentTarget.checked);
+                    setShowBalanceSmallScreen(event.currentTarget.checked);
+                  }}
+                  type="checkbox"
+                />
+              </td>
+              <td>
+                <input
+                  checked={showBalanceLargeScreen}
+                  id="showBalance"
+                  onChange={event => {
+                    setShowBalanceLargeScreen(event.currentTarget.checked);
                   }}
                   type="checkbox"
                 />
@@ -119,9 +178,27 @@ const Example = () => {
                 <select
                   id="chainStatus"
                   onChange={event =>
-                    setChainStatus(event.currentTarget.value as ChainStatus)
+                    setChainStatusSmallScreen(
+                      event.currentTarget.value as ChainStatus
+                    )
                   }
-                  value={chainStatus}
+                  value={chainStatusSmallScreen}
+                >
+                  <option>full</option>
+                  <option>icon</option>
+                  <option>name</option>
+                  <option>none</option>
+                </select>
+              </td>
+              <td>
+                <select
+                  id="chainStatus"
+                  onChange={event =>
+                    setChainStatusLargeScreen(
+                      event.currentTarget.value as ChainStatus
+                    )
+                  }
+                  value={chainStatusLargeScreen}
                 >
                   <option>full</option>
                   <option>icon</option>
