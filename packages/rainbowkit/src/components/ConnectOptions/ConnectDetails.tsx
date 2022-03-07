@@ -128,8 +128,9 @@ export function ConnectDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { iconUrl, name, useDesktopWalletDetail } = wallet;
+  const { downloadUrls, iconUrl, name, ready, useDesktopWalletDetail } = wallet;
   const { qrCode } = useDesktopWalletDetail();
+
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       {qrCode ? (
@@ -168,21 +169,41 @@ export function ConnectDetail({
               display="flex"
               flexDirection="column"
               gap="10"
+              paddingX="32"
+              style={{ textAlign: 'center' }}
             >
               <Text color="modalText" size="20" weight="bold">
-                Opening {name}
+                {ready
+                  ? `Opening ${name}`
+                  : downloadUrls?.browserExtension
+                  ? `${name} is not installed`
+                  : `${name} is not available`}
               </Text>
               <Box
                 color="modalTextSecondary"
                 display="flex"
                 flexDirection="row"
                 gap="6"
+                paddingX="28"
               >
-                <SpinnerIcon />
+                {ready ? <SpinnerIcon /> : null}
                 <Text color="modalTextSecondary" size="16" weight="bold">
-                  Waiting for connection
+                  {ready
+                    ? 'Waiting for connection'
+                    : downloadUrls?.browserExtension
+                    ? `The ${name} extension is not installed in your browser`
+                    : `${name} is not available on this device`}
                 </Text>
               </Box>
+              {!ready && downloadUrls?.browserExtension ? (
+                <Box paddingTop="8">
+                  <Button
+                    href={downloadUrls.browserExtension}
+                    label="Install"
+                    type="secondary"
+                  />
+                </Box>
+              ) : null}
             </Box>
           </Box>
         </Box>
@@ -199,7 +220,7 @@ export function ConnectDetail({
         marginTop="6"
         paddingY="8"
       >
-        {name === 'Rainbow' ? (
+        {!ready ? null : name === 'Rainbow' ? (
           <>
             <Text color="menuTextSecondary" size="14" weight="bold">
               Don&apos;t have the Rainbow Mobile App Yet?
