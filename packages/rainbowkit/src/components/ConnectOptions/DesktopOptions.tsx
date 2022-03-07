@@ -125,11 +125,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               >
                 <Box
                   color={
-                    wallet.ready
-                      ? wallet.id === selectedOptionId
-                        ? 'buttonText'
-                        : 'modalText'
-                      : 'modalTextSecondary'
+                    wallet.id === selectedOptionId ? 'buttonText' : 'modalText'
                   }
                   disabled={!wallet.ready}
                   fontFamily="body"
@@ -150,10 +146,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       src={wallet.iconUrl}
                       width="28"
                     />
-                    <div>
-                      {wallet.name}
-                      {!wallet.ready && ' (unsupported)'}
-                    </div>
+                    <div>{wallet.name}</div>
                   </Box>
                 </Box>
               </ModalSelection>
