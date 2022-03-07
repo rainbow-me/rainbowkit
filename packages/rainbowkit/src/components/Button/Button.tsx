@@ -27,7 +27,8 @@ export function Button({
       onClick={onClick}
       paddingX="12"
       paddingY="4"
-      transform={{ active: 'shrink', hover: 'grow' }}
+      style={{ willChange: 'transform' }}
+      transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
     >
       <Text

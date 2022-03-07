@@ -1,25 +1,22 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useAccount, useBalance, useNetwork } from 'wagmi';
-import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
+import { useAccount, useBalance } from 'wagmi';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { CloseIcon } from '../Icons/Close';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
-import { ExploreIcon } from '../Icons/Explore';
 import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
-import { CloseButtonClassName } from './ProfileDetails.css';
+import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   accountData: ReturnType<typeof useAccount>[0]['data'];
   balanceData: ReturnType<typeof useBalance>[0]['data'];
-  networkData: ReturnType<typeof useNetwork>[0]['data'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -27,7 +24,6 @@ interface ProfileDetailsProps {
 export function ProfileDetails({
   accountData,
   balanceData,
-  networkData,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
@@ -55,7 +51,7 @@ export function ProfileDetails({
     setSwitchWalletOpen(false);
   }, [accountData?.address]);
 
-  if (!accountData || !networkData) {
+  if (!accountData) {
     return null;
   }
 
@@ -65,34 +61,42 @@ export function ProfileDetails({
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
 
-  const explorerUrl = `${chainIdToExplorerLink(networkData?.chain?.id)}${
-    accountData.address
-  }`;
-
   return (
     <>
-      <Box display="flex" flexDirection="column" gap="12">
-        <Box
-          alignItems="flex-start"
-          display="flex"
-          flexDirection="row"
-          height="54"
-          justifyContent="space-between"
-          margin="10"
-        >
-          <Box display="flex" flexDirection="row" gap="12">
-            <Avatar
-              address={accountData.address}
-              imageUrl={accountData.ens?.avatar}
-              size={54}
-            />
+      <Box display="flex" flexDirection="column">
+        <Box background="profileForeground" padding="14">
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            gap="12"
+            justifyContent="center"
+            margin="10"
+            style={{ textAlign: 'center' }}
+          >
+            <CloseButton
+              onClose={onClose}
+              style={{
+                position: 'absolute',
+                right: 16,
+                top: 16,
+                willChange: 'tranform',
+              }}
+            />{' '}
+            <Box>
+              <Avatar
+                address={accountData.address}
+                imageUrl={accountData.ens?.avatar}
+                size={74}
+              />
+            </Box>
             <Box display="flex" flexDirection="column">
               <Box marginBottom="6">
                 <Text
                   as="h1"
                   color="modalText"
                   id={titleId}
-                  size="23"
+                  size="18"
                   weight="heavy"
                 >
                   {accountName}
@@ -105,8 +109,8 @@ export function ProfileDetails({
                       as="h1"
                       color="modalTextSecondary"
                       id={titleId}
-                      size="16"
-                      weight="heavy"
+                      size="14"
+                      weight="semibold"
                     >
                       {balance} {balanceData.symbol}
                     </Text>
@@ -115,42 +119,28 @@ export function ProfileDetails({
               </Box>
             </Box>
           </Box>
-          <Box
-            as="button"
-            borderRadius="full"
-            className={CloseButtonClassName}
-            height="34"
-            onClick={onClose}
-          >
-            <CloseIcon />
+          <Box display="flex" flexDirection="row" gap="8" marginTop="16">
+            <ProfileDetailsAction
+              action={copyAddressAction}
+              icon={<CopyIcon />}
+              label={copiedAddress ? 'Copied!' : 'Copy'}
+            />
+            <ProfileDetailsAction
+              action={() => setSwitchWalletOpen(true)}
+              icon={<SwitchAccountIcon />}
+              label="Switch"
+            />
+            <ProfileDetailsAction
+              action={onDisconnect}
+              icon={<DisconnectIcon />}
+              label="Disconnect"
+            />
           </Box>
         </Box>
-        <Box background="menuDivider" borderRadius="6" height="2" marginX="8" />
-        <ProfileDetailsAction
-          action={copyAddressAction}
-          color="modalText"
-          icon={<CopyIcon />}
-          label={copiedAddress ? 'Copied!' : 'Copy Address'}
-        />
-        <ProfileDetailsAction
-          action={() => {}}
-          color="modalText"
-          icon={<ExploreIcon />}
-          label="View on Explorer"
-          url={explorerUrl}
-        />
-        <ProfileDetailsAction
-          action={() => setSwitchWalletOpen(true)}
-          color="modalText"
-          icon={<SwitchAccountIcon />}
-          label="Switch Accounts"
-        />
-        <ProfileDetailsAction
-          action={onDisconnect}
-          color="error"
-          icon={<DisconnectIcon />}
-          label="Disconnect"
-        />
+        <Box background="modalBorder" height="1" />
+        <Box>
+          <TxList accountData={accountData} />
+        </Box>
       </Box>
       <Dialog
         onClose={() => setSwitchWalletOpen(false)}
@@ -158,7 +148,7 @@ export function ProfileDetails({
         titleId={titleId}
         wide
       >
-        <DialogContent>
+        <DialogContent bottomSheetOnMobile padding="0">
           <ConnectOptions onClose={() => setSwitchWalletOpen(false)} />
         </DialogContent>
       </Dialog>

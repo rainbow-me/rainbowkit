@@ -13,7 +13,7 @@ export function DialogContent({
   bottomSheetOnMobile = false,
   children,
   marginTop,
-  padding = '14',
+  padding = '16',
 }: DialogContentProps) {
   return (
     <Box marginTop={marginTop}>

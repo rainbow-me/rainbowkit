@@ -1,19 +1,16 @@
 import React from 'react';
-import { Box, BoxProps } from '../Box/Box';
-import { MenuButton } from '../MenuButton/MenuButton';
+import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
   label: string;
   action?: () => void;
   icon: JSX.Element;
-  color: BoxProps['color'];
   url?: string;
 }
 
 export function ProfileDetailsAction({
   action,
-  color,
   icon,
   label,
   url,
@@ -26,22 +23,36 @@ export function ProfileDetailsAction({
       }
     : {};
   return (
-    <MenuButton as={url ? 'a' : 'button'} onClick={action} {...urlProps}>
+    <Box
+      as={url ? 'a' : 'button'}
+      onClick={action}
+      {...urlProps}
+      background={{
+        base: 'profileAction',
+        hover: 'profileActionHover',
+      }}
+      borderRadius="menuButton"
+      padding="10"
+      style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
+      transform={{ active: 'shrinkSm', hover: 'grow' }}
+      transition="default"
+    >
       <Box
         alignItems="center"
         display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
+        flexDirection="column"
+        gap="2"
+        justifyContent="center"
       >
+        <Box color="modalText" height="max">
+          {icon}
+        </Box>
         <Box>
-          <Text color={color} size="18" weight="bold">
+          <Text color="modalText" size="13" weight="semibold">
             {label}
           </Text>
         </Box>
-        <Box color={color} height="max">
-          {icon}
-        </Box>
       </Box>
-    </MenuButton>
+    </Box>
   );
 }

@@ -131,7 +131,6 @@ export function ConnectButtonRenderer({
       <AccountModal
         accountData={accountData}
         balanceData={balanceData}
-        networkData={networkData}
         onClose={closeAccountModal}
         onDisconnect={disconnect}
         open={accountModalOpen}

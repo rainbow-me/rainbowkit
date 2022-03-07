@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '../Box/Box';
-import { CloseIcon } from '../Icons/Close';
+import { CloseButton } from '../CloseButton/CloseButton';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -62,7 +62,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors();
 
   return (
-    <Box display="flex" flexDirection="column" gap="20" paddingY="20">
+    <Box display="flex" flexDirection="column" gap="20" paddingY="16">
       <Box
         display="flex"
         justifyContent="center"
@@ -82,15 +82,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           right="0"
         >
           <Box
-            as="button"
-            borderRadius="full"
-            display="flex"
-            onClick={onClose}
             style={{ marginBottom: -20, marginTop: -20 }} // Vertical bleed
-            transform={{ active: 'shrinkSm', hover: 'growLg' }}
-            transition="default"
           >
-            <CloseIcon />
+            <CloseButton onClose={onClose} />
           </Box>
         </Box>
       </Box>

@@ -23,7 +23,6 @@ const themeContractValues = {
     connectionIndicator: '',
     error: '',
     menuBackground: '',
-    menuDivider: '',
     menuItemActiveBackground: '',
     menuItemBackground: '',
     menuText: '',
@@ -32,10 +31,16 @@ const themeContractValues = {
     menuTextSecondary: '',
     modalBackdrop: '',
     modalBackground: '',
+    modalBorder: '',
     modalClose: '',
     modalCloseBackground: '',
     modalText: '',
     modalTextSecondary: '',
+    profileAction: '',
+    profileActionHover: '',
+    profileForeground: '',
+    selectedOptionBorder: '',
+    standby: '',
   },
   fonts: {
     body: '',
@@ -47,7 +52,9 @@ const themeContractValues = {
   },
   shadows: {
     connectButton: '',
+    dialog: '',
     menu: '',
+    selectedOption: '',
   },
 };
 
@@ -60,6 +67,7 @@ export const themeVars = createGlobalThemeContract(
 
 const spacing = {
   '0': '0',
+  '2': '2px',
   '4': '4px',
   '6': '6px',
   '8': '8px',
@@ -77,6 +85,7 @@ const spacing = {
 };
 
 const dimensions = {
+  '1': '1px',
   '2': '2px',
   '4': '4px',
   '8': '8px',
