@@ -21,7 +21,7 @@ const provider = ({ chainId }) =>
 const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimisticEthereum, name: 'Optimism' },
+  { ...chain.optimism, name: 'Optimism' },
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 

@@ -1,7 +1,7 @@
-import { chain as wagmiChain } from 'wagmi';
 import type { ChainWithIconUrl } from './ChainIconsContext';
 
-// Sourced from https://github.com/tmm/wagmi/blob/main/packages/private/src/constants/chains.ts
+// Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
+// This is just so we can clearly see which of wagmi's first-class chains we provide icons for
 type ChainName =
   | 'arbitrumOne'
   | 'arbitrumRinkeby'
@@ -12,24 +12,42 @@ type ChainName =
   | 'kovan'
   | 'localhost'
   | 'mainnet'
-  | 'optimisticEthereum'
-  | 'optimisticKovan'
+  | 'optimism'
+  | 'optimismKovan'
   | 'polygonMainnet'
   | 'polygonTestnetMumbai'
   | 'rinkeby'
   | 'ropsten';
 
-const chainIcons: Record<ChainName, string | null> = {
-  arbitrumOne:
-    'https://cloudflare-ipfs.com/ipfs/QmVUztw7AXEqh9yFEAUZarG6LYzYFbYAwkxgx2myXgBi7L',
-  avalanche:
-    'https://cloudflare-ipfs.com/ipfs/QmX5GEd2Siv5qpamrujYZjXEAkbEueQK8fvNpEXtiBpjRm',
-  mainnet:
-    'https://cloudflare-ipfs.com/ipfs/QmV1rDdxo8PzgnMJHG8E2jHsBU1AxyE2T68tm4yv9jKMGh',
-  optimisticEthereum:
-    'https://cloudflare-ipfs.com/ipfs/QmeK3XmVA5vCpzBWoaQLm4o4QdDZV5z4EcABPGhcQtK8Bo',
-  polygonMainnet:
-    'https://cloudflare-ipfs.com/ipfs/QmdyoFWCpGCaxmtsYw6FFpuVBv6LCHTzZPYeZagvKYB964',
+const chainIcons: Record<
+  ChainName,
+  { chainId: number; iconUrl: string } | null
+> = {
+  arbitrumOne: {
+    chainId: 42_161,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmVUztw7AXEqh9yFEAUZarG6LYzYFbYAwkxgx2myXgBi7L',
+  },
+  avalanche: {
+    chainId: 43_114,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmX5GEd2Siv5qpamrujYZjXEAkbEueQK8fvNpEXtiBpjRm',
+  },
+  mainnet: {
+    chainId: 1,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmV1rDdxo8PzgnMJHG8E2jHsBU1AxyE2T68tm4yv9jKMGh',
+  },
+  optimism: {
+    chainId: 10,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmeK3XmVA5vCpzBWoaQLm4o4QdDZV5z4EcABPGhcQtK8Bo',
+  },
+  polygonMainnet: {
+    chainId: 137,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmdyoFWCpGCaxmtsYw6FFpuVBv6LCHTzZPYeZagvKYB964',
+  },
 
   // Omitted icons are set to 'null' so we know they've been explicitly excluded from the complete wagmi set (for now)
   ...{
@@ -39,17 +57,21 @@ const chainIcons: Record<ChainName, string | null> = {
     hardhat: null,
     kovan: null,
     localhost: null,
-    optimisticKovan: null,
+    optimismKovan: null,
     polygonTestnetMumbai: null,
     rinkeby: null,
     ropsten: null,
   },
 };
 
+function isNotNull<T>(value: T | null): value is T {
+  return value !== null;
+}
+
 const chainIconUrlsById = Object.fromEntries(
-  Object.entries(chainIcons)
-    .filter(([key]) => key in wagmiChain && wagmiChain[key].id !== undefined)
-    .map(([key, value]) => [wagmiChain[key].id, value])
+  Object.values(chainIcons)
+    .filter(isNotNull)
+    .map(({ chainId, iconUrl }) => [chainId, iconUrl])
 ) as Record<number, string>;
 
 /** @description Decorates an array of wagmi `Chain` objects with `iconUrl` properties if not already provided */
