@@ -12,7 +12,11 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   id: string;
   name: string;
   iconUrl?: string;
-  downloadUrl?: string;
+  downloadUrls?: {
+    mobile?: string;
+    desktop?: string;
+    browserExtension?: string;
+  };
   instructions?: { title: string; subtitle: string; imgUrl?: string }[];
   useMobileWalletButton?: () => {
     onClick: () => void;
@@ -49,7 +53,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
-      downloadUrl: 'https://rainbow.download',
+      downloadUrls: { mobile: 'https://rainbow.download' },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
@@ -61,7 +65,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         },
         {
           subtitle:
-            'You can easily backup your wallet using our iCloud Backup feature on iOS.',
+            'You can easily backup your wallet using our backup feature on your phone.',
           title: 'Create or Import a Wallet',
         },
         {
@@ -164,10 +168,14 @@ const coinbase =
                   : jsonRpcUrl,
             },
           }),
+    downloadUrls: {
+      browserExtension:
+        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
+    },
     iconUrl:
       'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
     id: 'coinbase',
-    name: 'Coinbase',
+    name: 'Coinbase Wallet',
   });
 
 interface MetaMaskOptions {
@@ -199,6 +207,10 @@ const metaMask =
 
     return {
       connector,
+      downloadUrls: {
+        browserExtension:
+          'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
+      },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
       id: 'metaMask',

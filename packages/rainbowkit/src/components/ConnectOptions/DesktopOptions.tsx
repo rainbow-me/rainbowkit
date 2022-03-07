@@ -13,12 +13,14 @@ import { Text } from '../Text/Text';
 import {
   ConnectDetail,
   DownloadDetail,
+  GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
 import { walletLogoClassName } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
+  Get = 'GET',
   Connect = 'CONNECT',
   Download = 'DOWNLOAD',
   Instructions = 'INSTRUCTIONS',
@@ -41,9 +43,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     wallet?.connect?.();
   };
 
-  const getWallet = () => {
-    setSelectedOptionId('rainbow');
-    const sWallet = wallets.find(w => 'rainbow' === w.id);
+  const getMobileWallet = (id: string) => {
+    setSelectedOptionId(id);
+    const sWallet = wallets.find(w => id === w.id);
     setSelectedWallet(sWallet);
     setWalletStep(WalletStep.Download);
   };
@@ -56,7 +58,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   switch (walletStep) {
     case WalletStep.None:
-      walletContent = <ConnectModalIntro getWallet={getWallet} />;
+      walletContent = (
+        <ConnectModalIntro getWallet={() => setWalletStep(WalletStep.Get)} />
+      );
+      break;
+    case WalletStep.Get:
+      walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
+      headerLabel = 'Get a Wallet';
+      headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Connect:
       walletContent = selectedWallet && (
@@ -184,8 +193,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Box>
                 )}
               </Box>
-              <Box>
-                {isRainbow && (
+              <Box
+                display="flex"
+                justifyContent="center"
+                style={{ flexGrow: 1 }}
+              >
+                {headerLabel && (
                   <Text color="modalText" size="18" weight="heavy">
                     {headerLabel}
                   </Text>

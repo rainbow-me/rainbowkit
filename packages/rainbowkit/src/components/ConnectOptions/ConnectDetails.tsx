@@ -1,14 +1,125 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
-import { WalletConnector } from '../RainbowKitProvider/useWalletConnectors';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 import { walletLogoClassName } from './DesktopOptions.css';
+
+export function GetDetail({
+  getMobileWallet,
+}: {
+  getMobileWallet: (walletId: string) => void;
+}) {
+  const wallets = useWalletConnectors();
+
+  const linkProps = (
+    link: string
+  ): { as: ElementType; href: string; rel: string; target: string } => ({
+    as: 'a',
+    href: link,
+    rel: 'noreferrer',
+    target: '_blank',
+  });
+
+  return (
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      height="full"
+      marginTop="18"
+      width="full"
+    >
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        gap="28"
+        height="full"
+        paddingX="4"
+        width="full"
+      >
+        {wallets
+          ?.filter(wallet => wallet.downloadUrls)
+          .map(wallet => {
+            const { downloadUrls, iconUrl, id, name } = wallet;
+            const mobileDownload = downloadUrls?.mobile;
+            return (
+              <Box
+                alignItems="center"
+                display="flex"
+                gap="16"
+                justifyContent="space-between"
+                key={wallet.id}
+                width="full"
+              >
+                <Box
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
+                  gap="16"
+                >
+                  <Box height="48" minWidth="48" width="48">
+                    <img alt={name} height={48} src={iconUrl} width={48} />
+                  </Box>
+                  <Box display="flex" flexDirection="column" gap="4">
+                    <Text color="modalText" size="14" weight="bold">
+                      {name}
+                    </Text>
+                    <Text color="modalTextSecondary" size="14" weight="medium">
+                      {downloadUrls?.mobile
+                        ? 'Mobile Wallet'
+                        : downloadUrls?.browserExtension
+                        ? 'Browser Extension'
+                        : null}
+                    </Text>
+                  </Box>
+                </Box>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap="4"
+                  onClick={() => mobileDownload && getMobileWallet(id)}
+                  {...(!mobileDownload && downloadUrls?.browserExtension
+                    ? linkProps(downloadUrls.browserExtension)
+                    : {})}
+                >
+                  <Button label="GET" onClick={() => {}} type="secondary" />
+                </Box>
+              </Box>
+            );
+          })}
+      </Box>
+      <Box
+        alignItems="center"
+        borderRadius="10"
+        display="flex"
+        flexDirection="column"
+        gap="8"
+        justifyContent="space-between"
+        marginBottom="4"
+        paddingY="8"
+        style={{ maxWidth: 275, textAlign: 'center' }}
+      >
+        <Text color="modalText" size="14" weight="bold">
+          Not what you&apos;re looking for?
+        </Text>
+        <Text color="modalTextSecondary" size="14" weight="semibold">
+          Select a wallet on the left to get started with a different wallet
+          provider.
+        </Text>
+      </Box>
+    </Box>
+  );
+}
 
 export function ConnectDetail({
   setWalletStep,
@@ -18,7 +129,6 @@ export function ConnectDetail({
   wallet: WalletConnector;
 }) {
   const { iconUrl, name, useDesktopWalletDetail } = wallet;
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
   const { qrCode } = useDesktopWalletDetail();
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
@@ -124,9 +234,7 @@ export function DownloadDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrl, useDesktopWalletDetail } = wallet;
-  // @ts-ignore couldn't fix this error rn, need another type impl that can be added in another PR
-  const { qrCode } = useDesktopWalletDetail();
+  const { downloadUrls } = wallet;
   return (
     <Box
       alignItems="center"
@@ -142,13 +250,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {qrCode?.logoUri && downloadUrl ? (
-          <QRCode
-            logoSize={0}
-            logoUri={qrCode.logoUri}
-            size={268}
-            uri={downloadUrl}
-          />
+        {downloadUrls?.mobile ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.mobile} />
         ) : null}
       </Box>
 
