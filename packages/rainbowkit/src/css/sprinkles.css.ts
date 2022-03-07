@@ -23,7 +23,6 @@ const themeContractValues = {
     connectionIndicator: '',
     error: '',
     menuBackground: '',
-    menuDivider: '',
     menuItemActiveBackground: '',
     menuItemBackground: '',
     menuText: '',

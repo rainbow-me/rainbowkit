@@ -18,7 +18,6 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-connectionIndicator": "#2CCC00",
         "--rk-colors-error": "#FF494A",
         "--rk-colors-menuBackground": "#fff",
-        "--rk-colors-menuDivider": "rgba(0, 0, 0, .04)",
         "--rk-colors-menuItemActiveBackground": "rgba(196, 196, 196, 0.2)",
         "--rk-colors-menuItemBackground": "rgba(196, 196, 196, 0.1)",
         "--rk-colors-menuText": "#25292E",

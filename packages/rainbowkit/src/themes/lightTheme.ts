@@ -26,7 +26,6 @@ export const lightTheme = ({
     connectionIndicator: '#2CCC00',
     error: '#FF494A',
     menuBackground: '#fff',
-    menuDivider: 'rgba(0, 0, 0, .04)',
     menuItemActiveBackground: 'rgba(196, 196, 196, 0.2)',
     menuItemBackground: 'rgba(196, 196, 196, 0.1)',
     menuText: '#25292E',

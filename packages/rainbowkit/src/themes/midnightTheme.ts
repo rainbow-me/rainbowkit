@@ -26,7 +26,6 @@ export const midnightTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     menuBackground: '#000',
-    menuDivider: 'rgba(255, 255, 255, .04)',
     menuItemActiveBackground: 'rgba(196, 196, 196, 0.2)',
     menuItemBackground: 'rgba(196, 196, 196, 0.1)',
     menuText: 'white',

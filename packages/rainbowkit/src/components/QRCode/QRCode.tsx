@@ -115,7 +115,7 @@ export function QRCode({
 
   return (
     <Box
-      borderColor="menuDivider"
+      borderColor="modalBorder"
       borderRadius="modal"
       borderStyle="solid"
       borderWidth="1"

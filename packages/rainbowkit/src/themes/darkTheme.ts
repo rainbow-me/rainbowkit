@@ -26,7 +26,6 @@ export const darkTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     menuBackground: '#1A1B1F',
-    menuDivider: 'rgba(255, 255, 255, .04)',
     menuItemActiveBackground: 'rgba(196, 196, 196, 0.2)',
     menuItemBackground: 'rgba(196, 196, 196, 0.1)',
     menuText: 'white',
