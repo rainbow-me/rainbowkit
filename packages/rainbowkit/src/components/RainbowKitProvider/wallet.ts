@@ -3,7 +3,7 @@ import { Connector, useConnect, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
-import { isMobile } from '../../utils/isMobile';
+import { isAndroid, isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
 import { omitUndefinedValues } from './omitUndefinedValues';
 
@@ -14,6 +14,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   iconUrl?: string;
   downloadUrls?: {
     mobile?: string;
+    mobileCompanion?: string;
     desktop?: string;
     browserExtension?: string;
   };
@@ -53,7 +54,10 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
-      downloadUrls: { mobile: 'https://rainbow.download' },
+      downloadUrls: {
+        mobile: 'https://rainbow.download',
+        mobileCompanion: 'https://rainbow.download',
+      },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
@@ -171,6 +175,9 @@ const coinbase =
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
+      mobile: isAndroid()
+        ? 'https://play.google.com/store/apps/details?id=org.toshi'
+        : 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
     },
     iconUrl:
       'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
@@ -210,6 +217,9 @@ const metaMask =
       downloadUrls: {
         browserExtension:
           'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
+        mobile: isAndroid()
+          ? 'https://play.google.com/store/apps/details?id=io.metamask'
+          : 'https://apps.apple.com/us/app/metamask/id1438144202',
       },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
@@ -233,7 +243,7 @@ const metaMask =
                     throw new Error('No WalletConnect URI found');
                   }
 
-                  window.location.href = /android/i.test(navigator.userAgent)
+                  window.location.href = isAndroid()
                     ? uri
                     : `https://metamask.app.link/wc?uri=${encodeURIComponent(
                         uri
