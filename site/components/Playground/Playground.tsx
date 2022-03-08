@@ -12,7 +12,7 @@ import { ConnectButtonProps } from '@rainbow-me/rainbowkit/dist/components/Conne
 import React, { useEffect, useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
 import { radio } from '../../css/radio.css';
-import { chains } from '../../pages/_app';
+import { chains } from '../Provider/Provider';
 import { Wrapper } from '../Wrapper/Wrapper';
 
 const THEMES = {

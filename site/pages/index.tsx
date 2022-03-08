@@ -6,8 +6,9 @@ import {
 import React from 'react';
 import { Blur } from '../components/Blur/Blur';
 import { Playground } from '../components/Playground/Playground';
+import { PlaygroundWallets } from '../components/Playground/PlaygroundWallets';
+import { chains, Provider } from '../components/Provider/Provider';
 import { Wrapper } from '../components/Wrapper/Wrapper';
-import { chains } from './_app';
 
 const Home = () => {
   return (
@@ -29,9 +30,11 @@ const Home = () => {
               width: 38,
             }}
           />
-          <RainbowKitProvider chains={chains} theme={darkTheme()}>
-            <ConnectButton />
-          </RainbowKitProvider>
+          <Provider>
+            <RainbowKitProvider chains={chains} theme={darkTheme()}>
+              <ConnectButton />
+            </RainbowKitProvider>{' '}
+          </Provider>
         </header>
         <main style={{ textAlign: 'center' }}>
           <h1
@@ -83,14 +86,41 @@ const Home = () => {
               textAlign: 'center',
             }}
           >
-            Make your Web3 login experience feel right at home on your website.
-            RainbowKit allows you to fully customize apprearance, color, corner
-            radius and even wallet providers - all through an easy-to-use API.
-            Get a feel for it below!
+            Customize apprearance, color and corner radius Get a feel for it
+            below!
+          </p>
+        </Wrapper>
+        <Provider>
+          <Playground />
+        </Provider>
+      </section>
+      <section
+        style={{
+          background: 'linear-gradient(180deg, #6F55F2 0%, #3F21D9 100%)',
+          padding: '160px 0',
+        }}
+      >
+        <Wrapper>
+          <h2 style={{ fontSize: 60, margin: '0 0 32px', textAlign: 'center' }}>
+            Configurable to your needs.
+          </h2>
+          <p
+            style={{
+              fontSize: 28,
+              fontWeight: 600,
+              letterSpacing: 0.6,
+              lineHeight: '33px',
+              margin: '0 auto 80px',
+              maxWidth: 760,
+              textAlign: 'center',
+            }}
+          >
+            Cofigure which wallet providers to expose - all through an
+            easy-to-use API. Get a feel for it below!
           </p>
         </Wrapper>
 
-        <Playground />
+        <PlaygroundWallets />
       </section>
     </>
   );
