@@ -165,7 +165,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               alignItems="center"
               display="flex"
               justifyContent="space-between"
-              marginBottom="6"
+              marginBottom="12"
             >
               <Box>
                 {headerBackButtonLink && (
@@ -200,7 +200,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 442 }}
+              style={{ minHeight: 438 }}
             >
               <Box
                 alignItems="center"

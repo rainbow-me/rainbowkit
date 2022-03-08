@@ -144,7 +144,7 @@ export function ConnectDetail({
             <QRCode
               logoSize={72}
               logoUri={qrCode.logoUri}
-              size={378}
+              size={382}
               uri={qrCode.uri}
             />
           ) : null}
