@@ -33,14 +33,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const isRainbow = selectedOptionId === 'rainbow';
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    wallet => wallet.ready || wallet.downloadUrls?.desktop
+  );
 
   const onSelectWallet = (wallet: WalletConnector) => {
     setSelectedOptionId(wallet.id);
     const sWallet = wallets.find(w => wallet.id === w.id);
     setSelectedWallet(sWallet);
     setWalletStep(WalletStep.Connect);
-    wallet?.connect?.();
+
+    if (wallet.ready) {
+      wallet.connect?.();
+    }
   };
 
   const getMobileWallet = (id: string) => {
