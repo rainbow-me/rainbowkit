@@ -374,7 +374,7 @@ export function InstructionDetail({
           transform={{ active: 'shrink', hover: 'grow' }}
           transition="default"
         >
-          <Text color="accentColor" weight="bold">
+          <Text color="accentColor" size="14" weight="bold">
             Learn More
           </Text>
         </Box>
