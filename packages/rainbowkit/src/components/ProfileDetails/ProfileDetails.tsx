@@ -91,7 +91,7 @@ export function ProfileDetails({
               />
             </Box>
             <Box display="flex" flexDirection="column">
-              <Box marginBottom="0">
+              <Box>
                 <Text
                   as="h1"
                   color="modalText"
