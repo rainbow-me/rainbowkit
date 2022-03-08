@@ -365,9 +365,19 @@ export function InstructionDetail({
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />
-        <Text color="accentColor" size="14" weight="bold">
-          Learn More
-        </Text>
+        <Box
+          as="a"
+          href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transform={{ active: 'shrink', hover: 'grow' }}
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

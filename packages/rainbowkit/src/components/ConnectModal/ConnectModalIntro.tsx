@@ -65,9 +65,19 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           marginTop="8"
         >
           <Button label="Get a Wallet" onClick={getWallet} />
-          <Text color="accentColor" size="14" weight="bold">
-            Learn More
-          </Text>
+          <Box
+            as="a"
+            href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+            rel="noreferrer"
+            style={{ willChange: 'transform' }}
+            target="_blank"
+            transform={{ active: 'shrink', hover: 'grow' }}
+            transition="default"
+          >
+            <Text color="accentColor" size="14" weight="bold">
+              Learn More
+            </Text>
+          </Box>
         </Box>
       </Box>
     </>
