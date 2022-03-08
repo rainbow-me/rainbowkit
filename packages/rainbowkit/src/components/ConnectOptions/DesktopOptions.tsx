@@ -177,6 +177,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       setWalletStep(headerBackButtonLink)
                     }
                     paddingX="8"
+                    paddingY="4"
+                    style={{ height: 17 }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >
