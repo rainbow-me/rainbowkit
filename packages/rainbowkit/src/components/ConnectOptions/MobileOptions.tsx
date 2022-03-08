@@ -116,7 +116,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               </Text>
               <Text color="modalTextSecondary" size="16">
                 A wallet is used to send, receive, store, and display digital
-                assets like Ethereum and NFTs. It&apos;s also a new way to log
+                assets like Ethereum and NFTs. It&rsquo;s also a new way to log
                 in, without needing to create new accounts and passwords
                 on&nbsp;every&nbsp;website.
               </Text>
@@ -216,7 +216,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               style={{ maxWidth: 360 }}
             >
               <Text color="modalText" size="16" weight="bold">
-                Not what you&apos;re looking for?
+                Not what you&rsquo;re looking for?
               </Text>
               <Text color="modalTextSecondary" size="16">
                 Select a wallet on the main screen to get started with a

@@ -115,7 +115,7 @@ export function GetDetail({
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          Not what you&apos;re looking for?
+          Not what you&rsquo;re looking for?
         </Text>
         <Text color="modalTextSecondary" size="14" weight="semibold">
           Select a wallet on the left to get started with a different wallet
@@ -228,7 +228,7 @@ export function ConnectDetail({
         {!ready ? null : name === 'Rainbow' ? (
           <>
             <Text color="menuTextSecondary" size="14" weight="bold">
-              Don&apos;t have the Rainbow Mobile App Yet?
+              Don&rsquo;t have the Rainbow Mobile App Yet?
             </Text>
             <Button
               label="GET"
