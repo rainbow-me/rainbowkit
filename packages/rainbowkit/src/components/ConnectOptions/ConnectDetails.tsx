@@ -75,7 +75,7 @@ export function GetDetail({
                   <Box height="48" minWidth="48" width="48">
                     <img alt={name} height={48} src={iconUrl} width={48} />
                   </Box>
-                  <Box display="flex" flexDirection="column" gap="4">
+                  <Box display="flex" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">
                       {name}
                     </Text>
