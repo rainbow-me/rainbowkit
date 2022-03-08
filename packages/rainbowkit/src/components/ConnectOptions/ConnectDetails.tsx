@@ -117,7 +117,7 @@ export function GetDetail({
         <Text color="modalText" size="14" weight="bold">
           Not what you&rsquo;re looking for?
         </Text>
-        <Text color="modalTextSecondary" size="14" weight="semibold">
+        <Text color="modalTextSecondary" size="14" weight="medium">
           Select a wallet on the left to get started with a different wallet
           provider.
         </Text>
@@ -227,8 +227,8 @@ export function ConnectDetail({
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
-              Don&rsquo;t have the Rainbow Mobile App Yet?
+            <Text color="menuTextSecondary" size="14" weight="medium">
+              Don&rsquo;t have the Rainbow App?
             </Text>
             <Button
               label="GET"
@@ -238,7 +238,7 @@ export function ConnectDetail({
           </>
         ) : (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
+            <Text color="menuTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
             <Button
