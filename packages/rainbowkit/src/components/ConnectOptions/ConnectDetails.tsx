@@ -365,7 +365,7 @@ export function InstructionDetail({
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />
-        <Text color="accentColor" weight="bold">
+        <Text color="accentColor" size="14" weight="bold">
           Learn More
         </Text>
       </Box>

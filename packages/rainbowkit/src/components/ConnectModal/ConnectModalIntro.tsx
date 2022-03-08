@@ -65,7 +65,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           marginTop="8"
         >
           <Button label="Get a Wallet" onClick={getWallet} />
-          <Text color="accentColor" weight="bold">
+          <Text color="accentColor" size="14" weight="bold">
             Learn More
           </Text>
         </Box>
