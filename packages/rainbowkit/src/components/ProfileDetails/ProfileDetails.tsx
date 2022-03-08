@@ -64,14 +64,14 @@ export function ProfileDetails({
   return (
     <>
       <Box display="flex" flexDirection="column">
-        <Box background="profileForeground" padding="14">
+        <Box background="profileForeground" padding="16">
           <Box
             alignItems="center"
             display="flex"
             flexDirection="column"
             gap="12"
             justifyContent="center"
-            margin="10"
+            margin="8"
             style={{ textAlign: 'center' }}
           >
             <CloseButton
@@ -91,7 +91,7 @@ export function ProfileDetails({
               />
             </Box>
             <Box display="flex" flexDirection="column">
-              <Box marginBottom="6">
+              <Box>
                 <Text
                   as="h1"
                   color="modalText"
@@ -119,7 +119,13 @@ export function ProfileDetails({
               </Box>
             </Box>
           </Box>
-          <Box display="flex" flexDirection="row" gap="8" marginTop="16">
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="8"
+            margin="2"
+            marginTop="16"
+          >
             <ProfileDetailsAction
               action={copyAddressAction}
               icon={<CopyIcon />}

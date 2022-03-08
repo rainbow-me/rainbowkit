@@ -75,7 +75,7 @@ export function GetDetail({
                   <Box height="48" minWidth="48" width="48">
                     <img alt={name} height={48} src={iconUrl} width={48} />
                   </Box>
-                  <Box display="flex" flexDirection="column" gap="4">
+                  <Box display="flex" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">
                       {name}
                     </Text>
@@ -117,7 +117,7 @@ export function GetDetail({
         <Text color="modalText" size="14" weight="bold">
           Not what you&rsquo;re looking for?
         </Text>
-        <Text color="modalTextSecondary" size="14" weight="semibold">
+        <Text color="modalTextSecondary" size="14" weight="medium">
           Select a wallet on the left to get started with a different wallet
           provider.
         </Text>
@@ -144,7 +144,7 @@ export function ConnectDetail({
             <QRCode
               logoSize={72}
               logoUri={qrCode.logoUri}
-              size={378}
+              size={382}
               uri={qrCode.uri}
             />
           ) : null}
@@ -227,8 +227,8 @@ export function ConnectDetail({
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
-              Don&rsquo;t have the Rainbow Mobile App Yet?
+            <Text color="menuTextSecondary" size="14" weight="medium">
+              Don&rsquo;t have the Rainbow App?
             </Text>
             <Button
               label="GET"
@@ -238,7 +238,7 @@ export function ConnectDetail({
           </>
         ) : (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
+            <Text color="menuTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
             <Button
@@ -365,7 +365,7 @@ export function InstructionDetail({
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />
-        <Text color="accentColor" weight="bold">
+        <Text color="accentColor" size="14" weight="bold">
           Learn More
         </Text>
       </Box>

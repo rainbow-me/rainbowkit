@@ -100,17 +100,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         display="flex"
         flexDirection="column"
         gap="6"
-        marginX="16"
-        paddingX="8"
-        paddingY="16"
-        style={{ minWidth: isMobile() ? 'full' : '260px' }}
+        margin="18"
+        style={{ minWidth: isMobile() ? 'full' : '248px' }}
       >
-        <Box marginLeft="6" paddingY="8">
+        <Box marginBottom="16" marginLeft="6" paddingTop="4">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box marginBottom="4" marginLeft="6" marginTop="8">
+        <Box marginLeft="6" marginY="4">
           <Text color="modalTextSecondary" size="14" weight="bold">
             Popular
           </Text>
@@ -167,7 +165,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               alignItems="center"
               display="flex"
               justifyContent="space-between"
-              marginBottom="6"
+              marginBottom="12"
             >
               <Box>
                 {headerBackButtonLink && (
@@ -179,6 +177,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       setWalletStep(headerBackButtonLink)
                     }
                     paddingX="8"
+                    paddingY="4"
+                    style={{ height: 17 }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >
@@ -202,7 +202,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 442 }}
+              style={{ minHeight: 438 }}
             >
               <Box
                 alignItems="center"
