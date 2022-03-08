@@ -72,13 +72,7 @@ export function ChainModal({
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap="4"
-            paddingBottom="2"
-            paddingX="2"
-          >
+          <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork &&
               networkData.chains.map(chain => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
@@ -128,9 +122,9 @@ export function ChainModal({
                             alignItems="center"
                             display="flex"
                             flexDirection="row"
-                            marginRight="8"
+                            marginRight="6"
                           >
-                            <Text color="buttonText" size="14" weight="bold">
+                            <Text color="buttonText" size="14" weight="medium">
                               Connected
                             </Text>
                             <Box
@@ -150,12 +144,12 @@ export function ChainModal({
                             alignItems="center"
                             display="flex"
                             flexDirection="row"
-                            marginRight="8"
+                            marginRight="6"
                           >
                             <Text
                               color="modalTextSecondary"
                               size="14"
-                              weight="bold"
+                              weight="medium"
                             >
                               Confirm in Wallet
                             </Text>
