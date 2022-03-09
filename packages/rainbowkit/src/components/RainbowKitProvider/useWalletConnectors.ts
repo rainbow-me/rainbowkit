@@ -33,7 +33,7 @@ export function useWalletConnectors(): WalletConnector[] {
         useMobileWalletButton: () => ({ onClick: connect }),
         ...(connector._wallet as WalletConnectorConfig),
         connect,
-        ready: connector.ready,
+        ready: connector.ready && (connector._wallet.ready ?? true),
       };
     });
 }

@@ -48,15 +48,10 @@ export function GetDetail({
         width="full"
       >
         {wallets
-          ?.filter(
-            wallet =>
-              wallet.downloadUrls?.browserExtension ??
-              wallet.downloadUrls?.mobileCompanion ??
-              wallet.downloadUrls?.desktop
-          )
+          ?.filter(wallet => wallet.downloadUrls?.desktop)
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name } = wallet;
-            const mobileDownload = downloadUrls?.mobileCompanion;
+            const mobileDownload = downloadUrls?.desktop?.mobileCompanion;
             return (
               <Box
                 alignItems="center"
@@ -80,9 +75,9 @@ export function GetDetail({
                       {name}
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {downloadUrls?.mobileCompanion
+                      {downloadUrls?.desktop?.mobileCompanion
                         ? 'Mobile Wallet'
-                        : downloadUrls?.browserExtension
+                        : downloadUrls?.desktop?.browserExtension
                         ? 'Browser Extension'
                         : null}
                     </Text>
@@ -93,8 +88,9 @@ export function GetDetail({
                   flexDirection="column"
                   gap="4"
                   onClick={() => mobileDownload && getMobileWallet(id)}
-                  {...(!mobileDownload && downloadUrls?.browserExtension
-                    ? linkProps(downloadUrls.browserExtension)
+                  {...(!mobileDownload &&
+                  downloadUrls?.desktop?.browserExtension
+                    ? linkProps(downloadUrls.desktop?.browserExtension)
                     : {})}
                 >
                   <Button label="GET" onClick={() => {}} type="secondary" />
@@ -192,7 +188,7 @@ export function ConnectDetail({
               <Text color="modalText" size="20" weight="bold">
                 {ready
                   ? `Opening ${name}`
-                  : downloadUrls?.browserExtension
+                  : downloadUrls?.desktop?.browserExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
@@ -216,10 +212,10 @@ export function ConnectDetail({
                   </>
                 )}
               </Box>
-              {!ready && downloadUrls?.browserExtension ? (
+              {!ready && downloadUrls?.desktop?.browserExtension ? (
                 <Box paddingTop="8">
                   <Button
-                    href={downloadUrls.browserExtension}
+                    href={downloadUrls.desktop?.browserExtension}
                     label="Install"
                     type="secondary"
                   />
