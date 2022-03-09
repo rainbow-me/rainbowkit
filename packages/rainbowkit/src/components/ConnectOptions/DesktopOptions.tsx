@@ -46,10 +46,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
     if (wallet.ready) {
       wallet?.connect?.().then(x => {
-      if (x.error) {
-        setConnectionError(true);
-      }
-    });
+        if (x.error) {
+          setConnectionError(true);
+        }
+      });
     }
   };
 

@@ -138,7 +138,7 @@ export function ConnectDetail({
 
   if (ready) {
     readyMsg = 'Waiting for connection';
-  } else if (downloadUrls?.browserExtension) {
+  } else if (downloadUrls?.desktop?.browserExtension) {
     readyMsg = `The ${name} extension is not installed in your browser`;
   } else {
     readyMsg = `${name} is not available on this device`;
