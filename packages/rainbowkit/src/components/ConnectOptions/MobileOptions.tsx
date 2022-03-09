@@ -78,7 +78,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
-      headerLabel = 'Connect a wallet';
+      headerLabel = 'Connect a Wallet';
       walletContent = (
         <>
           <Box className={styles.scroll} display="flex">
@@ -103,18 +103,18 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             alignItems="center"
             display="flex"
             flexDirection="column"
-            gap="36"
+            gap="32"
             paddingX="36"
             style={{ textAlign: 'center' }}
           >
             <Box
               display="flex"
               flexDirection="column"
-              gap="12"
-              style={{ maxWidth: 360 }}
+              gap="8"
+              style={{ maxWidth: 310 }}
             >
               <Text color="modalText" size="16" weight="bold">
-                What is a wallet?
+                What is a Wallet?
               </Text>
               <Text color="modalTextSecondary" size="16">
                 A wallet is used to send, receive, store, and display digital
@@ -125,14 +125,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
             <Box display="flex" gap="14" justifyContent="center">
               <Button
-                label="Get a wallet"
+                label="Get a Wallet"
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
               <Button
-                href="https://learn.rainbow.me"
-                label="Learn more"
+                href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+                label="Learn More"
                 size="large"
                 type="secondary"
               />
@@ -193,7 +193,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                       <Box
                         background="modalBorder"
                         height="1"
-                        marginY="16"
+                        marginY="10"
                         width="full"
                       />
                     ) : null}
@@ -215,7 +215,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               display="flex"
               flexDirection="column"
               gap="12"
-              style={{ maxWidth: 360 }}
+              style={{ maxWidth: 250 }}
             >
               <Text color="modalText" size="16" weight="bold">
                 Not what you&rsquo;re looking for?
@@ -233,7 +233,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box display="flex" flexDirection="column" gap="20" paddingY="16">
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="20"
+      paddingBottom="20"
+      paddingTop="16"
+      style={{ height: 442 }}
+    >
       <Box
         display="flex"
         justifyContent="center"
@@ -241,29 +248,35 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         paddingX="20"
         position="relative"
       >
-        {headerBackButtonLink ? (
+        {headerBackButtonLink && (
           <Box
-            as="button"
-            color="accentColor"
             display="flex"
-            onClick={() => setWalletStep(headerBackButtonLink!)}
-            padding="20"
             position="absolute"
             style={{
               left: 0,
               marginBottom: -20,
               marginTop: -20,
             }}
-            transform={{ active: 'shrinkSm', hover: 'growLg' }}
-            transition="default"
           >
-            <Box alignItems="center" display="flex" height="24">
+            <Box
+              alignItems="center"
+              as="button"
+              color="accentColor"
+              display="flex"
+              marginLeft="4"
+              marginTop="20"
+              onClick={() => setWalletStep(headerBackButtonLink!)}
+              padding="16"
+              style={{ height: 17 }}
+              transform={{ active: 'shrinkSm', hover: 'growLg' }}
+              transition="default"
+            >
               <BackIcon />
             </Box>
           </Box>
-        ) : null}
+        )}
 
-        <Box style={{ textAlign: 'center' }} width="full">
+        <Box marginTop="6" style={{ textAlign: 'center' }} width="full">
           <Text as="h1" color="modalText" id={titleId} size="20" weight="bold">
             {headerLabel}
           </Text>
@@ -273,7 +286,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           alignItems="center"
           display="flex"
           height="full"
-          paddingRight="10"
+          paddingRight="16"
           position="absolute"
           right="0"
         >
