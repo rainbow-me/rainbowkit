@@ -84,12 +84,14 @@ You’re done! RainbowKit will now handle your user’s wallet selection, displa
 
 ## Wallets
 
-The following wallet options are presented by default:
+The following wallet options are presented by default via the `getDefaultWallets` function:
 
 - Rainbow
 - WalletConnect
-- Coinbase
+- Coinbase Wallet
 - MetaMask
+
+An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
 
 ### Customizing the wallet list
 
@@ -116,30 +118,34 @@ const chains: Chain[] = [
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
 const wallets: Wallet[] = [
-    wallet.rainbow({ chains, infuraId }),
-    wallet.walletConnect({ chains, infuraId }),
-    wallet.coinbase({
-      chains,
-      appName: 'My RainbowKit App',
-      jsonRpcUrl: ({ chainId }) =>
-        chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-        chain.mainnet.rpcUrls[0],
-    }),
-    wallet.metaMask({ chains, infuraId }),
-  ]
-);
+  wallet.rainbow({ chains, infuraId }),
+  wallet.walletConnect({ chains, infuraId }),
+  wallet.coinbase({
+    chains,
+    appName: 'My RainbowKit App',
+    jsonRpcUrl: ({ chainId }) =>
+      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+      chain.mainnet.rpcUrls[0],
+  }),
+  wallet.metaMask({ chains, infuraId }),
+  ...(needsInjectedWalletFallback
+    ? [wallet.injected({ chains, infuraId })]
+    : []),
+];
 
 const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
     <RainbowKitProvider chains={chains}>
-      <WagmiProvider
-        autoConnect
-        connectors={connectors}
-        provider={provider}
-      >
+      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
         <YourApp />
       </WagmiProvider>
     </RainbowKitProvider>
