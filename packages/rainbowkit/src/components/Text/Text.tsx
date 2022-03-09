@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 
-type Props = {
+export type TextProps = {
   id?: string;
   as?:
     | 'code'
@@ -38,7 +38,7 @@ export const Text = React.forwardRef(
       size = '16',
       tabIndex,
       weight = 'regular',
-    }: Props,
+    }: TextProps,
     ref: React.Ref<HTMLElement>
   ) => {
     return (

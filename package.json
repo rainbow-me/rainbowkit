@@ -58,7 +58,7 @@
     "recursive-readdir-files": "^2.0.7",
     "typescript": "~4.5.2",
     "vitest": "^0.5.0",
-    "wagmi": "^0.2.10"
+    "wagmi": "^0.2.18"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

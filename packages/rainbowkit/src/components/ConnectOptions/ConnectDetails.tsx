@@ -48,10 +48,10 @@ export function GetDetail({
         width="full"
       >
         {wallets
-          ?.filter(wallet => wallet.downloadUrls)
+          ?.filter(wallet => wallet.downloadUrls?.desktop)
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name } = wallet;
-            const mobileDownload = downloadUrls?.mobile;
+            const mobileDownload = downloadUrls?.desktop?.mobileCompanion;
             return (
               <Box
                 alignItems="center"
@@ -70,14 +70,14 @@ export function GetDetail({
                   <Box height="48" minWidth="48" width="48">
                     <img alt={name} height={48} src={iconUrl} width={48} />
                   </Box>
-                  <Box display="flex" flexDirection="column" gap="4">
+                  <Box display="flex" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">
                       {name}
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {downloadUrls?.mobile
+                      {downloadUrls?.desktop?.mobileCompanion
                         ? 'Mobile Wallet'
-                        : downloadUrls?.browserExtension
+                        : downloadUrls?.desktop?.browserExtension
                         ? 'Browser Extension'
                         : null}
                     </Text>
@@ -88,8 +88,9 @@ export function GetDetail({
                   flexDirection="column"
                   gap="4"
                   onClick={() => mobileDownload && getMobileWallet(id)}
-                  {...(!mobileDownload && downloadUrls?.browserExtension
-                    ? linkProps(downloadUrls.browserExtension)
+                  {...(!mobileDownload &&
+                  downloadUrls?.desktop?.browserExtension
+                    ? linkProps(downloadUrls.desktop?.browserExtension)
                     : {})}
                 >
                   <Button label="GET" onClick={() => {}} type="secondary" />
@@ -110,9 +111,9 @@ export function GetDetail({
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          Not what you&apos;re looking for?
+          Not what you&rsquo;re looking for?
         </Text>
-        <Text color="modalTextSecondary" size="14" weight="semibold">
+        <Text color="modalTextSecondary" size="14" weight="medium">
           Select a wallet on the left to get started with a different wallet
           provider.
         </Text>
@@ -139,7 +140,7 @@ export function ConnectDetail({
             <QRCode
               logoSize={72}
               logoUri={qrCode.logoUri}
-              size={378}
+              size={382}
               uri={qrCode.uri}
             />
           ) : null}
@@ -175,7 +176,7 @@ export function ConnectDetail({
               <Text color="modalText" size="20" weight="bold">
                 {ready
                   ? `Opening ${name}`
-                  : downloadUrls?.browserExtension
+                  : downloadUrls?.desktop?.browserExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
@@ -190,15 +191,15 @@ export function ConnectDetail({
                 <Text color="modalTextSecondary" size="16" weight="bold">
                   {ready
                     ? 'Waiting for connection'
-                    : downloadUrls?.browserExtension
+                    : downloadUrls?.desktop?.browserExtension
                     ? `The ${name} extension is not installed in your browser`
                     : `${name} is not available on this device`}
                 </Text>
               </Box>
-              {!ready && downloadUrls?.browserExtension ? (
+              {!ready && downloadUrls?.desktop?.browserExtension ? (
                 <Box paddingTop="8">
                   <Button
-                    href={downloadUrls.browserExtension}
+                    href={downloadUrls.desktop?.browserExtension}
                     label="Install"
                     type="secondary"
                   />
@@ -222,8 +223,8 @@ export function ConnectDetail({
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
-              Don&apos;t have the Rainbow Mobile App Yet?
+            <Text color="menuTextSecondary" size="14" weight="medium">
+              Don&rsquo;t have the Rainbow App?
             </Text>
             <Button
               label="GET"
@@ -233,7 +234,7 @@ export function ConnectDetail({
           </>
         ) : (
           <>
-            <Text color="menuTextSecondary" size="14" weight="bold">
+            <Text color="menuTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
             <Button
@@ -360,9 +361,19 @@ export function InstructionDetail({
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />
-        <Text color="accentColor" weight="bold">
-          Learn More
-        </Text>
+        <Box
+          as="a"
+          href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transform={{ active: 'shrink', hover: 'grow' }}
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

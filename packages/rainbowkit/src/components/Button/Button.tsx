@@ -1,18 +1,45 @@
 import React from 'react';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { Text } from '../Text/Text';
+
+type Size = 'small' | 'medium' | 'large';
+
+const sizeVariants: Record<
+  Size,
+  {
+    paddingX: BoxProps['paddingX'];
+    paddingY: BoxProps['paddingY'];
+  }
+> = {
+  large: {
+    paddingX: '18',
+    paddingY: '12',
+  },
+  medium: {
+    paddingX: '12',
+    paddingY: '4',
+  },
+  small: {
+    paddingX: '10',
+    paddingY: '4',
+  },
+};
+
 export function Button({
   href,
   label,
   onClick,
+  size = 'medium',
   type = 'primary',
 }: {
   href?: string;
   label: string;
   onClick?: () => void;
+  size?: Size;
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
+  const { paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
@@ -25,14 +52,15 @@ export function Button({
       borderWidth="1"
       display="block"
       onClick={onClick}
-      paddingX="12"
-      paddingY="4"
-      transform={{ active: 'shrink', hover: 'grow' }}
+      paddingX={paddingX}
+      paddingY={paddingY}
+      style={{ willChange: 'transform' }}
+      transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
     >
       <Text
         color={isPrimary ? 'buttonText' : 'accentColor'}
-        size="16"
+        size="14"
         weight="bold"
       >
         {label}

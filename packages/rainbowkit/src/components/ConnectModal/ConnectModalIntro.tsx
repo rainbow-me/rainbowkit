@@ -13,8 +13,8 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         color="accentColor"
         display="flex"
         flexDirection="column"
-        gap="64"
         justifyContent="center"
+        style={{ gap: 62 }}
       >
         <Text color="modalText" size="18" weight="heavy">
           What is a Wallet?
@@ -62,12 +62,22 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           flexDirection="column"
           gap="16"
           justifyContent="center"
-          marginTop="16"
+          marginTop="8"
         >
           <Button label="Get a Wallet" onClick={getWallet} />
-          <Text color="accentColor" weight="bold">
-            Learn More
-          </Text>
+          <Box
+            as="a"
+            href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+            rel="noreferrer"
+            style={{ willChange: 'transform' }}
+            target="_blank"
+            transform={{ active: 'shrink', hover: 'grow' }}
+            transition="default"
+          >
+            <Text color="accentColor" size="14" weight="bold">
+              Learn More
+            </Text>
+          </Box>
         </Box>
       </Box>
     </>

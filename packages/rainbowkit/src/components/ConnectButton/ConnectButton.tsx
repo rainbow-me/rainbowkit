@@ -31,7 +31,6 @@ export function ConnectButton({
     <ConnectButtonRenderer>
       {({
         account,
-        accountModalOpen,
         chain,
         connectModalOpen,
         openAccountModal,
@@ -134,9 +133,7 @@ export function ConnectButton({
               )}
               <Box
                 background="connectButtonInnerBackground"
-                borderColor={
-                  accountModalOpen ? 'accentColor' : 'connectButtonBackground'
-                }
+                borderColor="connectButtonBackground"
                 borderRadius="connectButton"
                 borderStyle="solid"
                 borderWidth="2"

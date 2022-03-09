@@ -40,7 +40,7 @@ const provider = ({ chainId }) =>
 const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimisticEthereum, name: 'Optimism' },
+  { ...chain.optimism, name: 'Optimism' },
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 
@@ -82,174 +82,48 @@ export const YourApp = () => {
 
 You’re done! RainbowKit will now handle your user’s wallet selection, display wallet/transaction information and handle network/wallet switching.
 
-## Wallets
+### Customizing `ConnectButton`
 
-The following wallet options are presented by default:
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
 
-- Rainbow
-- WalletConnect
-- Coinbase
-- MetaMask
+These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
 
-### Customizing the wallet list
+<table>
+  <thead>
+    <tr>
+    <th>Prop</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>accountStatus</code></td>
+      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
+      <td><code>"full"</code></td>
+      <td>Whether the active account’s avatar and/or address is displayed</td>
+    </tr>
+    <tr>
+      <td><code>chainStatus</code></td>
+      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
+      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
+      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
+    </tr>
+    <tr>
+      <td><code>showBalance</code></td>
+      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
+      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
+      <td>Whether the balance is visible next to the account name</td>
+    </tr>
+  </tbody>
+</table>
 
-All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
-
-```tsx
-import {
-  RainbowKitProvider,
-  Chain,
-  wallet,
-  Wallet,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-
-const infuraId = process.env.INFURA_ID;
-
-const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimisticEthereum, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
-];
-
-const wallets: Wallet[] = [
-    wallet.rainbow({ chains, infuraId }),
-    wallet.walletConnect({ chains, infuraId }),
-    wallet.coinbase({
-      chains,
-      appName: 'My RainbowKit App',
-      jsonRpcUrl: ({ chainId }) =>
-        chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-        chain.mainnet.rpcUrls[0],
-    }),
-    wallet.metaMask({ chains, infuraId }),
-  ]
-);
-
-const connectors = connectorsForWallets(wallets);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider
-        autoConnect
-        connectors={connectors}
-        provider={provider}
-      >
-        <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
-  );
-};
-```
-
-### Creating a custom wallet
-
-The `Wallet` type is provided to help you define your own custom wallets.
-
-```tsx
-import {
-  RainbowKitProvider,
-  Chain,
-  Wallet,
-  getDefaultWallets,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimisticEthereum, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
-];
-
-const myCustomWallet: Wallet = () => ({
-  id: 'myCustomWallet',
-  name: 'My Custom Wallet',
-  iconUrl: 'https://example.com/icon.png',
-  connector: new WalletConnectConnector({
-    chains,
-    options: {
-      infuraId,
-      qrcode: true,
-    },
-  }),
-});
-
-const defaultWallets = getDefaultWallets({
-  chains,
-  infuraId,
-  appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
-});
-
-const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
-
-const connectors = connectorsForWallets(wallets);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
-  );
-};
-```
-
-## Chains
-
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
-Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
-
-```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    name: 'Ethereum',
-    iconUrl: 'https://example.com/icons/ethereum.png',
-  },
-  {
-    ...chain.polygonMainnet,
-    name: 'Polygon',
-    iconUrl: 'https://example.com/icons/polygon.png',
-  },
-];
-```
-
-## Themes
+### Choosing a theme
 
 RainbowKit ships with a static CSS file that can be themed via CSS variables, which `RainbowKitProvider` provides as inline styles by default.
 
-### Built-in themes
+#### Built-in themes
 
 There are 3 built-in themes:
 
@@ -271,7 +145,7 @@ const App = () => {
 };
 ```
 
-### Customizing the built-in themes
+#### Customizing the built-in themes
 
 The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
@@ -320,7 +194,7 @@ const App = () => {
 };
 ```
 
-### Dark mode support
+#### Dark mode support
 
 If your app uses the standard `prefers-color-mode: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
@@ -346,144 +220,50 @@ const App = () => {
 };
 ```
 
-### Custom theme selectors
+### Customizing chains
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit’s theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
-- `cssStringFromTheme`
-- `cssObjectFromTheme`
-
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
-
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we’re taking control of rendering the theme’s CSS, we’re passing `null` to the `theme` prop so that `RainbowKitProvider` doesn’t render any styles for us. Also note the use of the `extends` option on the `cssStringFromTheme` function which omits any theme variables that are the same as the base theme.
+Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
 
 ```tsx
-import {
-  RainbowKitProvider,
-  cssStringFromTheme,
-  lightTheme,
-  darkTheme,
-} from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+];
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
-      <style>
-        {`
-          :root {
-            ${cssStringFromTheme(lightTheme)}
-          }
-
-          html[data-dark] {
-            ${cssStringFromTheme(darkTheme, {
-              extends: lightTheme,
-            })}
-          }
-        `}
-      </style>
-
+    <RainbowKitProvider chains={chains} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );
 };
 ```
 
-### Creating custom themes from scratch
-
-The `Theme` type is provided to help you define your own custom themes with lower-level access to the theme variables used by the built-in themes.
+Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
-
-const myCustomTheme: Theme = {
-  colors: {
-    accentColor: '...',
-    buttonBorder: '...',
-    buttonSecondaryBackground: '...',
-    buttonText: '...',
-    connectButtonBackground: '...',
-    connectButtonBackgroundError: '...',
-    connectButtonInnerBackground: '...',
-    connectButtonText: '...',
-    connectButtonTextError: '...',
-    connectionIndicator: '...',
-    error: '...',
-    menuBackground: '...',
-    menuDivider: '...',
-    menuItemActiveBackground: '...',
-    menuItemBackground: '...',
-    menuText: '...',
-    menuTextAction: '...',
-    menuTextDisconnect: '...',
-    menuTextSecondary: '...',
-    modalBackdrop: '...',
-    modalBackground: '...',
-    modalClose: '...',
-    modalCloseBackground: '...',
-    modalText: '...',
-    modalTextSecondary: '...',
+const chains: Chain[] = [
+  {
+    ...chain.mainnet,
+    name: 'Ethereum',
+    iconUrl: 'https://example.com/icons/ethereum.png',
   },
-  fonts: {
-    body: '...',
+  {
+    ...chain.polygonMainnet,
+    name: 'Polygon',
+    iconUrl: 'https://example.com/icons/polygon.png',
   },
-  radii: {
-    connectButton: '...',
-    menuButton: '...',
-    modal: '...',
-  },
-  shadows: {
-    connectButton: '...',
-    menu: '...',
-  },
-};
-
-const App = () => {
-  return (
-    <RainbowKitProvider theme={myCustomTheme} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
+];
 ```
 
-## `ConnectButton`
+## Advanced usage
 
-The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
-
-These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
-
-<table>
-  <thead>
-    <tr>
-    <th>Prop</th>
-    <th>Type</th>
-    <th>Default</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>accountStatus</code></td>
-      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
-      <td><code>"full"</code></td>
-      <td>Whether the active account’s avatar and/or address is displayed</td>
-    </tr>
-    <tr>
-      <td><code>chainStatus</code></td>
-      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
-      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
-      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
-    </tr>
-    <tr>
-      <td><code>showBalance</code></td>
-      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
-      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
-      <td>Whether the balance is visible next to the account name</td>
-    </tr>
-  </tbody>
-</table>
-
-### Creating custom buttons
+### Creating a custom `ConnectButton`
 
 If you want to create your own custom connection buttons, the low-level `ConnectButton.Custom` component is also provided which accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
 
@@ -541,7 +321,7 @@ export const YourApp = () => {
 
 The following props are passed to your render function.
 
-### Account properties
+#### Account properties
 
 <table>
   <thead>
@@ -601,7 +381,7 @@ The following props are passed to your render function.
   </tbody>
 </table>
 
-### Chain properties
+#### Chain properties
 
 <table>
   <thead>
@@ -640,7 +420,7 @@ The following props are passed to your render function.
   </tbody>
 </table>
 
-### Modal state properties
+#### Modal state properties
 
 <table>
   <thead>
@@ -683,6 +463,188 @@ The following props are passed to your render function.
     </tr>
   </tbody>
 </table>
+
+### Customizing the wallet list
+
+The following wallet options are presented by default via the `getDefaultWallets` function:
+
+- Rainbow
+- WalletConnect
+- Coinbase Wallet
+- MetaMask
+
+An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
+
+All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
+
+```tsx
+import { wallet, Wallet } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: Wallet[] = [
+  wallet.rainbow({ chains, infuraId }),
+  wallet.walletConnect({ chains, infuraId }),
+  wallet.coinbase({
+    chains,
+    appName: 'My RainbowKit App',
+    jsonRpcUrl: ({ chainId }) =>
+      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+      chain.mainnet.rpcUrls[0],
+  }),
+  wallet.metaMask({ chains, infuraId }),
+  ...(needsInjectedWalletFallback
+    ? [wallet.injected({ chains, infuraId })]
+    : []),
+];
+```
+
+### Creating custom wallets
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time, so let us know if there are any particular wallets you’re interested in.
+
+The `Wallet` type is provided to help you define your own custom wallets.
+
+```tsx
+import { Wallet, getDefaultWallets } from '@rainbow-me/rainbowkit';
+
+const myCustomWallet: Wallet = () => ({
+  id: 'myCustomWallet',
+  name: 'My Custom Wallet',
+  iconUrl: 'https://example.com/icon.png',
+  connector: new WalletConnectConnector({
+    chains,
+    options: {
+      infuraId,
+      qrcode: true,
+    },
+  }),
+});
+
+const defaultWallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
+
+const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
+```
+
+### Creating custom themes
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
+
+While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  colors: {
+    accentColor: '...',
+    buttonBorder: '...',
+    buttonSecondaryBackground: '...',
+    buttonText: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    error: '...',
+    menuBackground: '...',
+    menuItemActiveBackground: '...',
+    menuItemBackground: '...',
+    menuText: '...',
+    menuTextAction: '...',
+    menuTextDisconnect: '...',
+    menuTextSecondary: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalClose: '...',
+    modalCloseBackground: '...',
+    modalText: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    menu: '...',
+    selectedOption: '...',
+  },
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myCustomTheme} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Creating custom theme selectors
+
+If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit’s theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+
+- `cssStringFromTheme`
+- `cssObjectFromTheme`
+
+These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+
+As a basic example, you can render your own `style` element with custom selectors for each theme. Since we’re taking control of rendering the theme’s CSS, we’re passing `null` to the `theme` prop so that `RainbowKitProvider` doesn’t render any styles for us. Also note the use of the `extends` option on the `cssStringFromTheme` function which omits any theme variables that are the same as the base theme.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style>
+        {`
+          :root {
+            ${cssStringFromTheme(lightTheme)}
+          }
+
+          html[data-dark] {
+            ${cssStringFromTheme(darkTheme, {
+              extends: lightTheme,
+            })}
+          }
+        `}
+      </style>
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
 
 ## License
 

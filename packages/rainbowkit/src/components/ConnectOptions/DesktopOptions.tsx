@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
-import { CloseIcon } from '../Icons/Close';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import {
   useWalletConnectors,
@@ -33,14 +33,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const isRainbow = selectedOptionId === 'rainbow';
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    wallet => wallet.ready || wallet.downloadUrls?.desktop
+  );
 
   const onSelectWallet = (wallet: WalletConnector) => {
     setSelectedOptionId(wallet.id);
     const sWallet = wallets.find(w => wallet.id === w.id);
     setSelectedWallet(sWallet);
     setWalletStep(WalletStep.Connect);
-    wallet?.connect?.();
+
+    if (wallet.ready) {
+      wallet.connect?.();
+    }
   };
 
   const getMobileWallet = (id: string) => {
@@ -100,17 +105,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         display="flex"
         flexDirection="column"
         gap="6"
-        marginX="14"
-        paddingX="6"
-        paddingY="14"
-        style={{ minWidth: isMobile() ? 'full' : '260px' }}
+        margin="18"
+        style={{ minWidth: isMobile() ? 'full' : '248px' }}
       >
-        <Box marginLeft="6" paddingY="8">
+        <Box marginBottom="16" marginLeft="6" paddingTop="4">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box marginBottom="4" marginLeft="6" marginTop="8">
+        <Box marginLeft="6" marginY="4">
           <Text color="modalTextSecondary" size="14" weight="bold">
             Popular
           </Text>
@@ -156,18 +159,18 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       </Box>
       {!isMobile() && (
         <>
-          <Box background="menuDivider" minWidth="2" width="2" />
+          <Box background="modalBorder" minWidth="1" width="1" />
           <Box
             display="flex"
             flexDirection="column"
-            margin="14"
+            margin="16"
             style={{ flexGrow: 1 }}
           >
             <Box
               alignItems="center"
               display="flex"
               justifyContent="space-between"
-              marginBottom="6"
+              marginBottom="12"
             >
               <Box>
                 {headerBackButtonLink && (
@@ -179,6 +182,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       setWalletStep(headerBackButtonLink)
                     }
                     paddingX="8"
+                    paddingY="4"
+                    style={{ height: 17 }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >
@@ -197,21 +202,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   </Text>
                 )}
               </Box>
-              <Box
-                as="button"
-                borderRadius="full"
-                display="flex"
-                onClick={onClose}
-                transform={{ active: 'shrinkSm', hover: 'growLg' }}
-                transition="default"
-              >
-                <CloseIcon />
-              </Box>
+              <CloseButton onClose={onClose} />
             </Box>
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 442 }}
+              style={{ minHeight: 438 }}
             >
               <Box
                 alignItems="center"

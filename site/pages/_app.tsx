@@ -2,7 +2,6 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
 import React from 'react';
-
 import '../css/global.css';
 
 function App({ Component, pageProps }: AppProps) {
