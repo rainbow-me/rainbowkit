@@ -82,180 +82,48 @@ export const YourApp = () => {
 
 You’re done! RainbowKit will now handle your user’s wallet selection, display wallet/transaction information and handle network/wallet switching.
 
-## Wallets
+### Customizing `ConnectButton`
 
-The following wallet options are presented by default via the `getDefaultWallets` function:
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
 
-- Rainbow
-- WalletConnect
-- Coinbase Wallet
-- MetaMask
+These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
 
-An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
+<table>
+  <thead>
+    <tr>
+    <th>Prop</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>accountStatus</code></td>
+      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
+      <td><code>"full"</code></td>
+      <td>Whether the active account’s avatar and/or address is displayed</td>
+    </tr>
+    <tr>
+      <td><code>chainStatus</code></td>
+      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
+      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
+      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
+    </tr>
+    <tr>
+      <td><code>showBalance</code></td>
+      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
+      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
+      <td>Whether the balance is visible next to the account name</td>
+    </tr>
+  </tbody>
+</table>
 
-### Customizing the wallet list
-
-All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
-
-```tsx
-import {
-  RainbowKitProvider,
-  Chain,
-  wallet,
-  Wallet,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-
-const infuraId = process.env.INFURA_ID;
-
-const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
-];
-
-const needsInjectedWalletFallback =
-  typeof window !== 'undefined' &&
-  window.ethereum &&
-  !window.ethereum.isMetaMask &&
-  !window.ethereum.isCoinbaseWallet;
-
-const wallets: Wallet[] = [
-  wallet.rainbow({ chains, infuraId }),
-  wallet.walletConnect({ chains, infuraId }),
-  wallet.coinbase({
-    chains,
-    appName: 'My RainbowKit App',
-    jsonRpcUrl: ({ chainId }) =>
-      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-      chain.mainnet.rpcUrls[0],
-  }),
-  wallet.metaMask({ chains, infuraId }),
-  ...(needsInjectedWalletFallback
-    ? [wallet.injected({ chains, infuraId })]
-    : []),
-];
-
-const connectors = connectorsForWallets(wallets);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
-  );
-};
-```
-
-### Creating a custom wallet
-
-The `Wallet` type is provided to help you define your own custom wallets.
-
-```tsx
-import {
-  RainbowKitProvider,
-  Chain,
-  Wallet,
-  getDefaultWallets,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
-];
-
-const myCustomWallet: Wallet = () => ({
-  id: 'myCustomWallet',
-  name: 'My Custom Wallet',
-  iconUrl: 'https://example.com/icon.png',
-  connector: new WalletConnectConnector({
-    chains,
-    options: {
-      infuraId,
-      qrcode: true,
-    },
-  }),
-});
-
-const defaultWallets = getDefaultWallets({
-  chains,
-  infuraId,
-  appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
-});
-
-const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
-
-const connectors = connectorsForWallets(wallets);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
-  );
-};
-```
-
-## Chains
-
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
-Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
-
-```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    name: 'Ethereum',
-    iconUrl: 'https://example.com/icons/ethereum.png',
-  },
-  {
-    ...chain.polygonMainnet,
-    name: 'Polygon',
-    iconUrl: 'https://example.com/icons/polygon.png',
-  },
-];
-```
-
-## Themes
+### Choosing a theme
 
 RainbowKit ships with a static CSS file that can be themed via CSS variables, which `RainbowKitProvider` provides as inline styles by default.
 
-### Built-in themes
+#### Built-in themes
 
 There are 3 built-in themes:
 
@@ -277,7 +145,7 @@ const App = () => {
 };
 ```
 
-### Customizing the built-in themes
+#### Customizing the built-in themes
 
 The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
@@ -326,7 +194,7 @@ const App = () => {
 };
 ```
 
-### Dark mode support
+#### Dark mode support
 
 If your app uses the standard `prefers-color-mode: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
@@ -352,51 +220,328 @@ const App = () => {
 };
 ```
 
-### Custom theme selectors
+### Customizing chains
 
-If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit’s theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
-- `cssStringFromTheme`
-- `cssObjectFromTheme`
-
-These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
-
-As a basic example, you can render your own `style` element with custom selectors for each theme. Since we’re taking control of rendering the theme’s CSS, we’re passing `null` to the `theme` prop so that `RainbowKitProvider` doesn’t render any styles for us. Also note the use of the `extends` option on the `cssStringFromTheme` function which omits any theme variables that are the same as the base theme.
+Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
 
 ```tsx
-import {
-  RainbowKitProvider,
-  cssStringFromTheme,
-  lightTheme,
-  darkTheme,
-} from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+];
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
-      <style>
-        {`
-          :root {
-            ${cssStringFromTheme(lightTheme)}
-          }
-
-          html[data-dark] {
-            ${cssStringFromTheme(darkTheme, {
-              extends: lightTheme,
-            })}
-          }
-        `}
-      </style>
-
+    <RainbowKitProvider chains={chains} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );
 };
 ```
 
-### Creating custom themes from scratch
+Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
 
-The `Theme` type is provided to help you define your own custom themes with lower-level access to the theme variables used by the built-in themes.
+```tsx
+const chains: Chain[] = [
+  {
+    ...chain.mainnet,
+    name: 'Ethereum',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...chain.polygonMainnet,
+    name: 'Polygon',
+    iconUrl: 'https://example.com/icons/polygon.png',
+  },
+];
+```
+
+## Advanced usage
+
+### Creating a custom `ConnectButton`
+
+If you want to create your own custom connection buttons, the low-level `ConnectButton.Custom` component is also provided which accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
+
+A minimal re-implementation of the built-in buttons would look something like this:
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return (
+    <>
+      <ConnectButton.Custom>
+        {({
+          account,
+          chain,
+          openAccountModal,
+          openChainModal,
+          openConnectModal,
+        }) =>
+          !account ? (
+            <button onClick={openConnectModal} type="button">
+              Connect Wallet
+            </button>
+          ) : (
+            <div style={{ display: 'flex', gap: 12 }}>
+              {chain && (
+                <button
+                  onClick={openChainModal}
+                  style={{ display: 'flex', alignItems: 'center' }}
+                  type="button"
+                >
+                  {chain.iconUrl && (
+                    <img
+                      alt={chain.name ?? 'Chain icon'}
+                      src={chain.iconUrl}
+                      style={{ width: 12, height: 12, marginRight: 4 }}
+                    />
+                  )}
+                  {chain.name ?? chain.id}
+                  {chain.unsupported && ' (unsupported)'}
+                </button>
+              )}
+              <button onClick={openAccountModal} type="button">
+                {account.displayName}
+                {account.displayBalance ? ` (${account.displayBalance})` : ''}
+              </button>
+            </div>
+          )
+        }
+      </ConnectButton.Custom>
+    </>
+  );
+};
+```
+
+The following props are passed to your render function.
+
+#### Account properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>account</code></td>
+      <td><code>object | undefined</code></td>
+      <td>Object containing details about the current account, described below</td>
+    </tr>
+    <tr>
+      <td><code>account.address</code></td>
+      <td><code>string</code></td>
+      <td>The full account address, e.g. <code>"0x7a3d05c70581bD345fe117c06e45f9669205384f"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.balanceDecimals</code></td>
+      <td><code>number | undefined</code></td>
+      <td>The account balance in decimals</td>
+    </tr>
+    <tr>
+      <td><code>account.balanceFormatted</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The account balance formatted as a string, e.g. <code>"1.234567890123456789"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.balanceSymbol</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The currency symbol for the balance, e.g. <code>"ETH"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.displayBalance</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The balance formatted to 3 significant digits, plus the symbol, e.g. <code>"1.23 ETH"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.displayName</code></td>
+      <td><code>string</code></td>
+      <td>The ENS name, or a truncated version of the address, e.g. 
+      <code>"rainbowwallet.eth"</code> or <code>"0x7a3d...384f"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.ensAvatar</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The ENS avatar URI</td>
+    </tr>
+    <tr>
+      <td><code>account.ensName</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The ENS name, e.g. <code>"rainbowwallet.eth"</code></td>
+    </tr>
+  </tbody>
+</table>
+
+#### Chain properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>chain</code></td>
+      <td><code>object | undefined</code></td>
+      <td>Object containing details about the current chain, described below</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.iconUrl</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The chain icon URL</td>
+    </tr>
+    <tr>
+      <td><code>chain.id</code></td>
+      <td><code>number</code></td>
+      <td>The chain ID, e.g. <code>1</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.name</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The chain name, e.g. <code>"Ethereum"</code></td>
+    </tr>
+    <tr>
+      <td><code>chain.unsupported</code></td>
+      <td><code>boolean | undefined</code></td>
+      <td>Boolean indicating whether the current chain is unsupported</td>
+    </tr>
+  </tbody>
+</table>
+
+#### Modal state properties
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>openAccountModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to open the account modal</td>
+    </tr>
+    <tr>
+      <td><code>openChainModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to open the chain modal</td>
+    </tr>
+    <tr>
+      <td><code>openConnectModal</code></td>
+      <td><code>() => void</code></td>
+      <td>Function to open the connect modal</td>
+    </tr>
+    <tr>
+      <td><code>accountModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the account modal is open</td>
+    </tr>
+    <tr>
+      <td><code>chainModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the chain modal is open</td>
+    </tr>
+    <tr>
+      <td><code>connectModalOpen</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the connect modal is open</td>
+    </tr>
+  </tbody>
+</table>
+
+### Customizing the wallet list
+
+The following wallet options are presented by default via the `getDefaultWallets` function:
+
+- Rainbow
+- WalletConnect
+- Coinbase Wallet
+- MetaMask
+
+An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
+
+All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
+
+```tsx
+import { wallet, Wallet } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: Wallet[] = [
+  wallet.rainbow({ chains, infuraId }),
+  wallet.walletConnect({ chains, infuraId }),
+  wallet.coinbase({
+    chains,
+    appName: 'My RainbowKit App',
+    jsonRpcUrl: ({ chainId }) =>
+      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+      chain.mainnet.rpcUrls[0],
+  }),
+  wallet.metaMask({ chains, infuraId }),
+  ...(needsInjectedWalletFallback
+    ? [wallet.injected({ chains, infuraId })]
+    : []),
+];
+```
+
+### Creating custom wallets
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time, so let us know if there are any particular wallets you’re interested in.
+
+The `Wallet` type is provided to help you define your own custom wallets.
+
+```tsx
+import { Wallet, getDefaultWallets } from '@rainbow-me/rainbowkit';
+
+const myCustomWallet: Wallet = () => ({
+  id: 'myCustomWallet',
+  name: 'My Custom Wallet',
+  iconUrl: 'https://example.com/icon.png',
+  connector: new WalletConnectConnector({
+    chains,
+    options: {
+      infuraId,
+      qrcode: true,
+    },
+  }),
+});
+
+const defaultWallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
+
+const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
+```
+
+### Creating custom themes
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
+
+While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -459,243 +604,47 @@ const App = () => {
 };
 ```
 
-## `ConnectButton`
+### Creating custom theme selectors
 
-The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit’s theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
 
-These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
+- `cssStringFromTheme`
+- `cssObjectFromTheme`
 
-<table>
-  <thead>
-    <tr>
-    <th>Prop</th>
-    <th>Type</th>
-    <th>Default</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>accountStatus</code></td>
-      <td><code>"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }</code></td>
-      <td><code>"full"</code></td>
-      <td>Whether the active account’s avatar and/or address is displayed</td>
-    </tr>
-    <tr>
-      <td><code>chainStatus</code></td>
-      <td><code>"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }</code></td>
-      <td><code>{ smallScreen: "icon", largeScreen: "full" }</code></td>
-      <td>Whether the current chain’s icon and/or name is displayed, or hidden entirely</td>
-    </tr>
-    <tr>
-      <td><code>showBalance</code></td>
-      <td><code>boolean | { smallScreen: boolean, largeScreen?: boolean }</code></td>
-      <td><code>{ smallScreen: false, largeScreen: true }</code></td>
-      <td>Whether the balance is visible next to the account name</td>
-    </tr>
-  </tbody>
-</table>
+These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
 
-### Creating custom buttons
-
-If you want to create your own custom connection buttons, the low-level `ConnectButton.Custom` component is also provided which accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
-
-A minimal re-implementation of the built-in buttons would look something like this:
+As a basic example, you can render your own `style` element with custom selectors for each theme. Since we’re taking control of rendering the theme’s CSS, we’re passing `null` to the `theme` prop so that `RainbowKitProvider` doesn’t render any styles for us. Also note the use of the `extends` option on the `cssStringFromTheme` function which omits any theme variables that are the same as the base theme.
 
 ```tsx
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
 
-export const YourApp = () => {
+const App = () => {
   return (
-    <>
-      <ConnectButton.Custom>
-        {({
-          account,
-          chain,
-          openAccountModal,
-          openChainModal,
-          openConnectModal,
-        }) =>
-          !account ? (
-            <button onClick={openConnectModal} type="button">
-              Connect Wallet
-            </button>
-          ) : (
-            <div style={{ display: 'flex', gap: 12 }}>
-              {chain && (
-                <button
-                  onClick={openChainModal}
-                  style={{ display: 'flex', alignItems: 'center' }}
-                  type="button"
-                >
-                  {chain.iconUrl && (
-                    <img
-                      alt={chain.name ?? 'Chain icon'}
-                      src={chain.iconUrl}
-                      style={{ width: 12, height: 12, marginRight: 4 }}
-                    />
-                  )}
-                  {chain.name ?? chain.id}
-                  {chain.unsupported && ' (unsupported)'}
-                </button>
-              )}
-              <button onClick={openAccountModal} type="button">
-                {account.displayName}
-                {account.displayBalance ? ` (${account.displayBalance})` : ''}
-              </button>
-            </div>
-          )
-        }
-      </ConnectButton.Custom>
-    </>
+    <RainbowKitProvider theme={null} {...etc}>
+      <style>
+        {`
+          :root {
+            ${cssStringFromTheme(lightTheme)}
+          }
+
+          html[data-dark] {
+            ${cssStringFromTheme(darkTheme, {
+              extends: lightTheme,
+            })}
+          }
+        `}
+      </style>
+
+      {/* ... */}
+    </RainbowKitProvider>
   );
 };
 ```
-
-The following props are passed to your render function.
-
-### Account properties
-
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th width="150">Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>account</code></td>
-      <td><code>object | undefined</code></td>
-      <td>Object containing details about the current account, described below</td>
-    </tr>
-    <tr>
-      <td><code>account.address</code></td>
-      <td><code>string</code></td>
-      <td>The full account address, e.g. <code>"0x7a3d05c70581bD345fe117c06e45f9669205384f"</code></td>
-    </tr>
-    <tr>
-      <td><code>account.balanceDecimals</code></td>
-      <td><code>number | undefined</code></td>
-      <td>The account balance in decimals</td>
-    </tr>
-    <tr>
-      <td><code>account.balanceFormatted</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The account balance formatted as a string, e.g. <code>"1.234567890123456789"</code></td>
-    </tr>
-    <tr>
-      <td><code>account.balanceSymbol</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The currency symbol for the balance, e.g. <code>"ETH"</code></td>
-    </tr>
-    <tr>
-      <td><code>account.displayBalance</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The balance formatted to 3 significant digits, plus the symbol, e.g. <code>"1.23 ETH"</code></td>
-    </tr>
-    <tr>
-      <td><code>account.displayName</code></td>
-      <td><code>string</code></td>
-      <td>The ENS name, or a truncated version of the address, e.g. 
-      <code>"rainbowwallet.eth"</code> or <code>"0x7a3d...384f"</code></td>
-    </tr>
-    <tr>
-      <td><code>account.ensAvatar</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The ENS avatar URI</td>
-    </tr>
-    <tr>
-      <td><code>account.ensName</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The ENS name, e.g. <code>"rainbowwallet.eth"</code></td>
-    </tr>
-  </tbody>
-</table>
-
-### Chain properties
-
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th width="150">Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>chain</code></td>
-      <td><code>object | undefined</code></td>
-      <td>Object containing details about the current chain, described below</code></td>
-    </tr>
-    <tr>
-      <td><code>chain.iconUrl</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The chain icon URL</td>
-    </tr>
-    <tr>
-      <td><code>chain.id</code></td>
-      <td><code>number</code></td>
-      <td>The chain ID, e.g. <code>1</code></td>
-    </tr>
-    <tr>
-      <td><code>chain.name</code></td>
-      <td><code>string | undefined</code></td>
-      <td>The chain name, e.g. <code>"Ethereum"</code></td>
-    </tr>
-    <tr>
-      <td><code>chain.unsupported</code></td>
-      <td><code>boolean | undefined</code></td>
-      <td>Boolean indicating whether the current chain is unsupported</td>
-    </tr>
-  </tbody>
-</table>
-
-### Modal state properties
-
-<table>
-  <thead>
-    <tr>
-    <th>Property</th>
-    <th width="150">Type</th>
-    <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>openAccountModal</code></td>
-      <td><code>() => void</code></td>
-      <td>Function to open the account modal</td>
-    </tr>
-    <tr>
-      <td><code>openChainModal</code></td>
-      <td><code>() => void</code></td>
-      <td>Function to open the chain modal</td>
-    </tr>
-    <tr>
-      <td><code>openConnectModal</code></td>
-      <td><code>() => void</code></td>
-      <td>Function to open the connect modal</td>
-    </tr>
-    <tr>
-      <td><code>accountModalOpen</code></td>
-      <td><code>boolean</code></td>
-      <td>Boolean indicating whether the account modal is open</td>
-    </tr>
-    <tr>
-      <td><code>chainModalOpen</code></td>
-      <td><code>boolean</code></td>
-      <td>Boolean indicating whether the chain modal is open</td>
-    </tr>
-    <tr>
-      <td><code>connectModalOpen</code></td>
-      <td><code>boolean</code></td>
-      <td>Boolean indicating whether the connect modal is open</td>
-    </tr>
-  </tbody>
-</table>
 
 ## License
 
