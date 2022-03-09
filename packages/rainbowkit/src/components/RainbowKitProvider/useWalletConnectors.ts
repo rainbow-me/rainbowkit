@@ -12,7 +12,10 @@ type ResolvedWalletConnectorConfig = Omit<
 
 export interface WalletConnector extends ResolvedWalletConnectorConfig {
   ready?: boolean;
-  connect?: () => void;
+  connect?: () => Promise<{
+    data?: any;
+    error?: Error | undefined;
+  }>;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -22,7 +25,7 @@ export function useWalletConnectors(): WalletConnector[] {
     .filter(connector => connector._wallet)
     .map(connector => {
       const connect = () => {
-        wagmiConnect(connector);
+        return wagmiConnect(connector);
       };
 
       return {
