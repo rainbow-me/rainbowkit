@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
-import { Text } from '../Text/Text';
+import { Text, TextProps } from '../Text/Text';
 
 type Size = 'small' | 'medium' | 'large';
 
@@ -9,17 +9,21 @@ const sizeVariants: Record<
   {
     paddingX: BoxProps['paddingX'];
     paddingY: BoxProps['paddingY'];
+    fontSize: TextProps['size'];
   }
 > = {
   large: {
-    paddingX: '18',
-    paddingY: '12',
+    fontSize: '16',
+    paddingX: '24',
+    paddingY: '10',
   },
   medium: {
+    fontSize: '14',
     paddingX: '12',
     paddingY: '4',
   },
   small: {
+    fontSize: '14',
     paddingX: '10',
     paddingY: '4',
   },
@@ -39,7 +43,7 @@ export function Button({
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
-  const { paddingX, paddingY } = sizeVariants[size];
+  const { fontSize, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
@@ -60,7 +64,7 @@ export function Button({
     >
       <Text
         color={isPrimary ? 'buttonText' : 'accentColor'}
-        size="14"
+        size={fontSize}
         weight="bold"
       >
         {label}
