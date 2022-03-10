@@ -18,10 +18,10 @@ export const lightTheme = ({
     buttonBorder: 'rgba(0, 0, 0, 0.04)',
     buttonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     buttonText: '#FFF',
-    connectButtonBackground: '#FFFFFF',
+    connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
-      'linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))',
+      'linear-gradient(0deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06))',
     connectButtonText: '#fff',
     connectButtonTextError: 'white',
     connectionIndicator: '#2CCC00',
