@@ -46,7 +46,7 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
-        inputs:
+        with:
           title: 'chore: version packages'
           commit: 'chore: version packages'
         env:
