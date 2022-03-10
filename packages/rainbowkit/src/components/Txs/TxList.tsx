@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAccount, useNetwork } from 'wagmi';
-import { TransactionWithInfo } from '../../hooks/useTxHistory';
-// import { useTxHistory } from '../../hooks/useTxHistory';
+import { TransactionWithInfo, useTxHistory } from '../../hooks/useTxHistory';
 import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
@@ -11,22 +10,14 @@ import { TxItem } from './TxItem';
 
 const NUMBER_OF_VISIBLE_TXS = 3;
 
-const txs: TransactionWithInfo[] = [
+const initialTxs: TransactionWithInfo[] = [
   {
     from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
     hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074231',
-    info: 'Swap 2 ETH for 7,000.26 DAI',
+    info: 'Swap 400 UNI for 7,001.26 USDC',
     status: 'pending',
     to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
     value: 32,
-  },
-  {
-    from: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
-    hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074440',
-    info: 'Deposit 200 DAI into Vault',
-    status: 'fail',
-    to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
-    value: 45,
   },
   {
     data: '0x',
@@ -36,6 +27,14 @@ const txs: TransactionWithInfo[] = [
     status: 'success',
     to: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
     value: 0.03,
+  },
+  {
+    from: '0x459aB34E608A8aF195c5A1995D9BCa3a1Fb0C159',
+    hash: '0xb26f5aadaa59932d27e86aa2e754b81ebc66e68b00514ad3bdad94d210074440',
+    info: 'Deposit 200 DAI into Vault',
+    status: 'fail',
+    to: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
+    value: 45,
   },
   {
     from: '0x604Ee422975E74050Eeaa3fC74BAbf6E008C0acC',
@@ -52,7 +51,7 @@ interface TxListProps {
 }
 
 export function TxList({ accountData }: TxListProps) {
-  // const transactionHistory = useTxHistory({});
+  const { txs } = useTxHistory({ initialTxs });
   const [{ data: networkData }] = useNetwork();
   const explorerUrl = `${chainIdToExplorerLink(networkData?.chain?.id)}${
     accountData?.address

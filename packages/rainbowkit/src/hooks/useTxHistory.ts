@@ -36,7 +36,6 @@ export type TransactionWithInfo = Transaction & {
 
 /**
  * Manage transaction history state
- * @returns TransactionsWithInfo[]
  */
 export const useTxHistory = ({
   initialTxs,
@@ -47,6 +46,7 @@ export const useTxHistory = ({
 }): {
   txs: TransactionWithInfo[];
   submitTx: (tx: Transaction) => void;
+  setTxs: React.Dispatch<React.SetStateAction<TransactionWithInfo[]>>;
   resetTxs: () => void;
 } => {
   const [txs, setTxs] = useState<TransactionWithInfo[]>(initialTxs || []);
@@ -119,5 +119,5 @@ export const useTxHistory = ({
     setTxs([]);
   };
 
-  return { resetTxs, submitTx, txs };
+  return { resetTxs, setTxs, submitTx, txs };
 };
