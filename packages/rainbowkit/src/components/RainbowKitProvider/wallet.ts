@@ -1,5 +1,4 @@
-import { useCallback } from 'react';
-import { Connector, useConnect, Chain as WagmiChain } from 'wagmi';
+import { Connector, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
@@ -20,9 +19,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
     };
   };
   instructions?: { title: string; subtitle: string; imgUrl?: string }[];
-  useMobileWalletButton?: () => {
-    onClick: () => void;
-  };
+  getMobileConnectionUri?: () => string;
   qrCode?: {
     logoUri?: string;
     getUri: () => string;
@@ -60,6 +57,13 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         },
         mobile: 'https://rainbow.download',
       },
+      getMobileConnectionUri: () => {
+        const { uri } = connector.getProvider().connector;
+
+        return isAndroid()
+          ? uri
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+      },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
@@ -83,29 +87,6 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
       name: 'Rainbow',
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
-      },
-      useMobileWalletButton: () => {
-        const [{ data: connectData }, connect] = useConnect();
-
-        return {
-          onClick: useCallback(() => {
-            if (connectData.connector !== connector) {
-              connect(connector);
-            }
-
-            setTimeout(() => {
-              const { uri } = connector.getProvider().connector;
-
-              if (!uri) {
-                throw new Error('No WalletConnect URI found');
-              }
-
-              window.location.href = /android/i.test(navigator.userAgent)
-                ? uri
-                : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
-            }, 0);
-          }, [connect, connectData.connector]),
-        };
       },
     };
   };
@@ -208,6 +189,15 @@ const metaMask =
           ? 'https://play.google.com/store/apps/details?id=io.metamask'
           : 'https://apps.apple.com/us/app/metamask/id1438144202',
       },
+      getMobileConnectionUri: shouldUseWalletConnect
+        ? () => {
+            const { uri } = connector.getProvider().connector;
+
+            return isAndroid()
+              ? uri
+              : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
+          }
+        : undefined,
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
       id: 'metaMask',
@@ -217,33 +207,6 @@ const metaMask =
         (typeof window !== 'undefined' &&
           // @ts-expect-error
           window.ethereum?.isMetaMask === true),
-      useMobileWalletButton: !shouldUseWalletConnect
-        ? undefined
-        : () => {
-            const [{ data: connectData }, connect] = useConnect();
-
-            return {
-              onClick: useCallback(() => {
-                if (connectData.connector !== connector) {
-                  connect(connector);
-                }
-
-                setTimeout(() => {
-                  const { uri } = connector.getProvider().connector;
-
-                  if (!uri) {
-                    throw new Error('No WalletConnect URI found');
-                  }
-
-                  window.location.href = isAndroid()
-                    ? uri
-                    : `https://metamask.app.link/wc?uri=${encodeURIComponent(
-                        uri
-                      )}`;
-                }, 0);
-              }, [connect, connectData.connector]),
-            };
-          },
     };
   };
 

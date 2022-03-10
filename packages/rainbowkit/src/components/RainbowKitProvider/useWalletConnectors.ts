@@ -1,16 +1,8 @@
 import { useConnect } from 'wagmi';
 import { WalletConnectorConfig } from './wallet';
 
-type OmittedFields = 'connector';
-type DefaultedFields = 'useMobileWalletButton';
-
-type ResolvedWalletConnectorConfig = Omit<
-  WalletConnectorConfig,
-  OmittedFields | DefaultedFields
-> &
-  Pick<Required<WalletConnectorConfig>, DefaultedFields>;
-
-export interface WalletConnector extends ResolvedWalletConnectorConfig {
+export interface WalletConnector
+  extends Omit<WalletConnectorConfig, 'connector'> {
   ready?: boolean;
   connect?: () => Promise<{
     data?: any;
@@ -19,19 +11,14 @@ export interface WalletConnector extends ResolvedWalletConnectorConfig {
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const [{ data: connectData }, wagmiConnect] = useConnect();
+  const [{ data: connectData }, connect] = useConnect();
 
   return connectData.connectors
     .filter(connector => connector._wallet)
     .map(connector => {
-      const connect = () => {
-        return wagmiConnect(connector);
-      };
-
       return {
-        useMobileWalletButton: () => ({ onClick: connect }),
         ...(connector._wallet as WalletConnectorConfig),
-        connect,
+        connect: () => connect(connector),
         ready: connector.ready && (connector._wallet.ready ?? true),
       };
     });
