@@ -123,14 +123,26 @@ export function GetDetail({
 }
 
 export function ConnectDetail({
+  connectionError,
   setWalletStep,
   wallet,
 }: {
+  connectionError: boolean;
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
   const { downloadUrls, iconUrl, name, ready, useDesktopWalletDetail } = wallet;
   const { qrCode } = useDesktopWalletDetail();
+
+  let readyMsg;
+
+  if (ready) {
+    readyMsg = 'Waiting for connection';
+  } else if (downloadUrls?.desktop?.browserExtension) {
+    readyMsg = `The ${name} extension is not installed in your browser`;
+  } else {
+    readyMsg = `${name} is not available on this device`;
+  }
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
@@ -187,14 +199,18 @@ export function ConnectDetail({
                 gap="6"
                 paddingX="28"
               >
-                {ready ? <SpinnerIcon /> : null}
-                <Text color="modalTextSecondary" size="16" weight="bold">
-                  {ready
-                    ? 'Waiting for connection'
-                    : downloadUrls?.desktop?.browserExtension
-                    ? `The ${name} extension is not installed in your browser`
-                    : `${name} is not available on this device`}
-                </Text>
+                {connectionError ? (
+                  <Text color="error" size="16" weight="bold">
+                    Error connecting. Please try again.
+                  </Text>
+                ) : (
+                  <>
+                    {ready ? <SpinnerIcon /> : null}
+                    <Text color="modalTextSecondary" size="16" weight="bold">
+                      {readyMsg}
+                    </Text>
+                  </>
+                )}
               </Box>
               {!ready && downloadUrls?.desktop?.browserExtension ? (
                 <Box paddingTop="8">
