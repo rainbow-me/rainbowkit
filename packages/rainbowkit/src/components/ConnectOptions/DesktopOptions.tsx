@@ -39,11 +39,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   );
 
   const onSelectWallet = (wallet: WalletConnector) => {
-    setSelectedOptionId(wallet.id);
-    const sWallet = wallets.find(w => wallet.id === w.id);
-    setSelectedWallet(sWallet);
-    setWalletStep(WalletStep.Connect);
-
     if (wallet.ready) {
       wallet?.connect?.().then(x => {
         if (x.error) {
@@ -51,6 +46,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         }
       });
     }
+
+    // Update selected wallet state on next tick so QR code URIs are ready to render
+    setTimeout(() => {
+      setSelectedOptionId(wallet.id);
+      const sWallet = wallets.find(w => wallet.id === w.id);
+      setSelectedWallet(sWallet);
+      setWalletStep(WalletStep.Connect);
+    }, 0);
   };
 
   const getMobileWallet = (id: string) => {
