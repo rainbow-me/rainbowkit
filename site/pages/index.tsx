@@ -1,41 +1,14 @@
-import {
-  ConnectButton,
-  darkTheme,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
 import React from 'react';
 import { Blur } from '../components/Blur/Blur';
 import { Playground } from '../components/Playground/Playground';
 import { PlaygroundWallets } from '../components/Playground/PlaygroundWallets';
-import { chains, Provider } from '../components/Provider/Provider';
+import { Provider } from '../components/Provider/Provider';
 import { Wrapper } from '../components/Wrapper/Wrapper';
 
 const Home = () => {
   return (
     <>
       <Wrapper style={{ position: 'relative', zIndex: 0 }}>
-        <header
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: '24px 0',
-          }}
-        >
-          <img
-            alt="Rainbow logo"
-            src="rainbow-avatar.png"
-            style={{
-              borderRadius: 12,
-              height: 38,
-              width: 38,
-            }}
-          />
-          <Provider>
-            <RainbowKitProvider chains={chains} theme={darkTheme()}>
-              <ConnectButton />
-            </RainbowKitProvider>{' '}
-          </Provider>
-        </header>
         <main style={{ textAlign: 'center' }}>
           <h1
             style={{
