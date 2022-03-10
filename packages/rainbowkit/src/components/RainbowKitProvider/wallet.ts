@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { Connector, useConnect, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -23,11 +23,9 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
   useMobileWalletButton?: () => {
     onClick: () => void;
   };
-  useDesktopWalletDetail?: () => {
-    qrCode?: {
-      uri?: string;
-      logoUri: string;
-    };
+  qrCode?: {
+    logoUri?: string;
+    getUri: () => string;
   };
   ready?: boolean;
 };
@@ -83,27 +81,8 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         },
       ],
       name: 'Rainbow',
-      useDesktopWalletDetail: () => {
-        const [{ data: connectData }, connect] = useConnect();
-        const [uri, setUri] = useState<string | undefined>();
-
-        useEffect(() => {
-          if (connectData.connector !== connector) {
-            connect(connector);
-          }
-
-          setTimeout(() => {
-            setUri(connector.getProvider().connector.uri);
-          }, 0);
-        }, [connect, connectData.connector]);
-
-        return {
-          qrCode: {
-            logoUri:
-              'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
-            uri,
-          },
-        };
+      qrCode: {
+        getUri: () => connector.getProvider().connector.uri,
       },
       useMobileWalletButton: () => {
         const [{ data: connectData }, connect] = useConnect();

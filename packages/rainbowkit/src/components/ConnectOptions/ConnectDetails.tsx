@@ -129,21 +129,18 @@ export function ConnectDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrls, iconUrl, name, ready, useDesktopWalletDetail } = wallet;
-  const { qrCode } = useDesktopWalletDetail();
+  const { downloadUrls, iconUrl, name, qrCode, ready } = wallet;
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       {qrCode ? (
         <Box height="full">
-          {qrCode?.uri ? (
-            <QRCode
-              logoSize={72}
-              logoUri={qrCode.logoUri}
-              size={382}
-              uri={qrCode.uri}
-            />
-          ) : null}
+          <QRCode
+            logoSize={72}
+            logoUri={qrCode.logoUri ?? iconUrl}
+            size={382}
+            uri={qrCode.getUri()}
+          />
         </Box>
       ) : (
         <Box

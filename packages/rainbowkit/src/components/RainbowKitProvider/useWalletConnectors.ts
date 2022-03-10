@@ -2,7 +2,7 @@ import { useConnect } from 'wagmi';
 import { WalletConnectorConfig } from './wallet';
 
 type OmittedFields = 'connector';
-type DefaultedFields = 'useDesktopWalletDetail' | 'useMobileWalletButton';
+type DefaultedFields = 'useMobileWalletButton';
 
 type ResolvedWalletConnectorConfig = Omit<
   WalletConnectorConfig,
@@ -26,7 +26,6 @@ export function useWalletConnectors(): WalletConnector[] {
       };
 
       return {
-        useDesktopWalletDetail: () => ({}),
         useMobileWalletButton: () => ({ onClick: connect }),
         ...(connector._wallet as WalletConnectorConfig),
         connect,
