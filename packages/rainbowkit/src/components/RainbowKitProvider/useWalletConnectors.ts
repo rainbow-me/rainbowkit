@@ -2,7 +2,7 @@ import { useConnect } from 'wagmi';
 import { WalletConnectorConfig } from './wallet';
 
 type OmittedFields = 'connector';
-type DefaultedFields = 'useDesktopWalletDetail' | 'useMobileWalletButton';
+type DefaultedFields = 'useDesktopWalletDetail';
 
 type ResolvedWalletConnectorConfig = Omit<
   WalletConnectorConfig,
@@ -19,20 +19,15 @@ export interface WalletConnector extends ResolvedWalletConnectorConfig {
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const [{ data: connectData }, wagmiConnect] = useConnect();
+  const [{ data: connectData }, connect] = useConnect();
 
   return connectData.connectors
     .filter(connector => connector._wallet)
     .map(connector => {
-      const connect = () => {
-        return wagmiConnect(connector);
-      };
-
       return {
         useDesktopWalletDetail: () => ({}),
-        useMobileWalletButton: () => ({ onClick: connect }),
         ...(connector._wallet as WalletConnectorConfig),
-        connect,
+        connect: () => connect(connector),
         ready: connector.ready && (connector._wallet.ready ?? true),
       };
     });

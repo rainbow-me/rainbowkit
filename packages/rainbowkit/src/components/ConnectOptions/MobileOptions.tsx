@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -11,8 +11,7 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { iconUrl, id, name, ready, useMobileWalletButton } = wallet;
-  const { onClick } = useMobileWalletButton();
+  const { connect, getMobileConnectionUri, iconUrl, id, name, ready } = wallet;
 
   return (
     <Box
@@ -21,7 +20,16 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       disabled={!ready}
       fontFamily="body"
       key={id}
-      onClick={onClick}
+      onClick={useCallback(() => {
+        connect?.();
+
+        if (getMobileConnectionUri) {
+          // Get URI on next tick after connecting to ensure it's available
+          setTimeout(() => {
+            window.location.href = getMobileConnectionUri();
+          }, 0);
+        }
+      }, [connect, getMobileConnectionUri])}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
