@@ -1,6 +1,7 @@
 import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
+  black: '#000',
   blue: '#1A85FF',
   green: '#3ddc84',
   pink: '#EA33AE',
@@ -21,7 +22,7 @@ export const lightTheme = ({
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
       'linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))',
-    connectButtonText: '#25292E',
+    connectButtonText: '#fff',
     connectButtonTextError: 'white',
     connectionIndicator: '#2CCC00',
     error: '#FF494A',

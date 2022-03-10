@@ -44,7 +44,7 @@ export function ConnectButton({
                 background={
                   chain.unsupported
                     ? 'connectButtonBackgroundError'
-                    : 'connectButtonBackground'
+                    : 'accentColor'
                 }
                 borderRadius="connectButton"
                 boxShadow="connectButton"
@@ -106,7 +106,7 @@ export function ConnectButton({
             <Box
               alignItems="center"
               as="button"
-              background="connectButtonBackground"
+              background="accentColor"
               borderRadius="connectButton"
               boxShadow="connectButton"
               color="connectButtonText"
@@ -173,7 +173,7 @@ export function ConnectButton({
           </Box>
         ) : (
           <Box
-            background="connectButtonBackground"
+            background="accentColor"
             borderRadius="connectButton"
             transform={{ active: 'shrink', hover: 'grow' }}
             transition="default"
@@ -181,9 +181,7 @@ export function ConnectButton({
             <Box
               as="button"
               background="connectButtonInnerBackground"
-              borderColor={
-                connectModalOpen ? 'accentColor' : 'connectButtonBackground'
-              }
+              borderColor={connectModalOpen ? 'accentColor' : 'accentColor'}
               borderRadius="connectButton"
               borderStyle="solid"
               borderWidth="2"

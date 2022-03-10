@@ -43,7 +43,7 @@ type RadiiScale = {
 };
 type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 
-export type AccentValues = 'blue' | 'green' | 'purple' | 'pink';
+export type AccentValues = 'blue' | 'green' | 'purple' | 'pink' | 'black';
 
 export interface ThemeOptions {
   accentColor?: AccentValues;

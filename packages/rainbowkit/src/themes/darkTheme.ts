@@ -1,6 +1,7 @@
 import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
+  black: '#000',
   blue: '#1A85FF',
   green: '#3ddc84',
   pink: '#EA33AE',

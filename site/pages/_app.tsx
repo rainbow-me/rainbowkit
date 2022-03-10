@@ -1,11 +1,12 @@
-/* eslint-disable react/no-danger */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   Chain,
   connectorsForWallets,
   getDefaultWallets,
-  midnightTheme,
+  lightTheme,
   RainbowKitProvider,
+  Theme,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
@@ -36,15 +37,22 @@ const wallets = getDefaultWallets({
 
 const connectors = connectorsForWallets(wallets);
 
+const myTheme: Theme = {
+  ...lightTheme({ borderRadius: 'small', accentColor: 'black' }),
+  fonts: {
+    body: 'Inter',
+  },
+};
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <RainbowKitProvider chains={chains} theme={midnightTheme()}>
+        <RainbowKitProvider chains={chains} theme={myTheme}>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiProvider>
-      <style
+      {/* <style
         dangerouslySetInnerHTML={{
           __html: `
 @font-face {
@@ -113,7 +121,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 `,
         }}
-      />
+      /> */}
     </>
   );
 }
