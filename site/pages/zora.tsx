@@ -85,7 +85,7 @@ const Home = () => {
             <input
               style={{
                 border: '1px solid rgb(179, 179, 179)',
-                height: 40,
+                height: 42,
                 borderRadius: 8,
                 width: '100%',
                 paddingLeft: 52,
@@ -101,7 +101,7 @@ const Home = () => {
               style={{
                 display: 'inline-block',
                 margin: '0 auto',
-                paddingTop: '40px',
+                paddingTop: '32px',
                 color: 'black',
                 fontSize: 16,
                 borderBottom: '2px solid',
@@ -125,7 +125,7 @@ const Logo = () => (
     height="72"
     viewBox="0 0 328 72"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ display: 'block', margin: '0 auto 60px' }}
+    style={{ display: 'block', margin: '0 auto 64px' }}
   >
     <path
       fillRule="evenodd"
