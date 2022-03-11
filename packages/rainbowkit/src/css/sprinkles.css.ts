@@ -41,7 +41,6 @@ const themeContractValues = {
     profileForeground: '',
     selectedOptionBorder: '',
     standby: '',
-    walletLogoBorder: '',
   },
   fonts: {
     body: '',

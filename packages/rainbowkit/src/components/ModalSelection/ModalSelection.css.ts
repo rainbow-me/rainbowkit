@@ -24,7 +24,7 @@ export const HoverClassName = style([
 export const SelectedClassName = style([
   sprinkles({
     background: 'accentColor',
-    borderColor: 'buttonBorder',
+    borderColor: 'selectedOptionBorder',
     borderRadius: 'menuButton',
     borderStyle: 'solid',
     borderWidth: '1',

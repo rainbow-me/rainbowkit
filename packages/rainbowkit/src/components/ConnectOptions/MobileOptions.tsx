@@ -55,7 +55,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
           width="60"
         >
           <Box
-            borderColor="walletLogoBorder"
+            borderColor="buttonBorder"
             borderRadius="13"
             borderStyle="solid"
             borderWidth="1"

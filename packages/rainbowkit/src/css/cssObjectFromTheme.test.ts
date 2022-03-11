@@ -36,7 +36,6 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-profileForeground": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-selectedOptionBorder": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-standby": "#FFD641",
-        "--rk-colors-walletLogoBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-fonts-body": "SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif",
         "--rk-radii-connectButton": "12px",
         "--rk-radii-menuButton": "12px",
