@@ -56,7 +56,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
           mobileCompanion: 'https://rainbow.download',
         },
         mobile: isAndroid()
-          ? 'https://play.google.com/store/apps/details?id=me.rainbow&hl=en_US&gl=US'
+          ? 'https://play.google.com/store/apps/details?id=me.rainbow'
           : 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
       },
       getMobileConnectionUri: () => {
