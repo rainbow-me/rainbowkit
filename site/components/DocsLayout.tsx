@@ -20,20 +20,24 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           bottom: 0,
         }}
       >
-        {docsRoutes.map(route => (
-          <div key={route.label} style={{ marginBottom: 24 }}>
-            <h3 className={text[4]} style={{ marginBottom: 12 }}>
-              {route.label}
-            </h3>
-            {route.pages.map(page => (
-              <Link key={page.title} slug={page.slug}>
-                {page.title}
-              </Link>
-            ))}
-          </div>
-        ))}
+        <div style={{ marginTop: 24 }}>
+          {docsRoutes.map(route => (
+            <div key={route.label} style={{ marginBottom: 24 }}>
+              <h3 className={text[4]} style={{ marginBottom: 12 }}>
+                {route.label}
+              </h3>
+              {route.pages.map(page => (
+                <Link key={page.title} slug={page.slug}>
+                  {page.title}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-      <div style={{ paddingLeft: 250, paddingTop: 60 }}>{children}</div>
+      <div style={{ paddingLeft: 250, paddingTop: 60, paddingBottom: 80 }}>
+        {children}
+      </div>
     </Wrapper>
   );
 }

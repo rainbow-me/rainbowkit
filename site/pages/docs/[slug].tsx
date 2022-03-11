@@ -2,7 +2,7 @@ import { components } from 'components/MdxComponents';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Head from 'next/head';
 import React from 'react';
-import { allDocs, Doc } from '../../.contentlayer/generated';
+import { allDocs, Doc } from '.contentlayer/generated';
 
 export default function DocPage({ doc }: { doc: Doc }) {
   const Component = useMDXComponent(doc.body.code);

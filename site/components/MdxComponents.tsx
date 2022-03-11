@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 /* eslint-disable jsx-a11y/heading-has-content */
+import { pre } from 'css/pre.css';
 import { h1, h3, p, text } from 'css/text.css';
 import React from 'react';
 
@@ -19,4 +20,11 @@ export const components = {
     <img {...props} style={{ display: 'block', maxWidth: '100%' }} />
   ),
   li: props => <p className={text[4]} style={{ lineHeight: 1.5 }} {...props} />,
+  pre: ({ children, ...props }) => {
+    return (
+      <pre className={pre} {...props}>
+        {children}
+      </pre>
+    );
+  },
 };

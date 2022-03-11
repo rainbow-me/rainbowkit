@@ -1,9 +1,9 @@
+import { Blur } from 'components/Blur/Blur';
+import { Playground } from 'components/Playground';
+import { PlaygroundWallets } from 'components/PlaygroundWallets';
+import { Provider } from 'components/Provider';
+import { Wrapper } from 'components/Wrapper/Wrapper';
 import React from 'react';
-import { Blur } from '../components/Blur/Blur';
-import { Playground } from '../components/Playground';
-import { PlaygroundWallets } from '../components/PlaygroundWallets';
-import { Provider } from '../components/Provider';
-import { Wrapper } from '../components/Wrapper/Wrapper';
 
 const Home = () => {
   return (
