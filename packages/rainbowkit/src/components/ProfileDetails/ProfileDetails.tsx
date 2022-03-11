@@ -7,6 +7,7 @@ import { formatAddress } from '../ConnectButton/formatAddress';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
 import { SwitchAccountIcon } from '../Icons/SwitchAccount';
@@ -128,7 +129,7 @@ export function ProfileDetails({
           >
             <ProfileDetailsAction
               action={copyAddressAction}
-              icon={<CopyIcon />}
+              icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
               label={copiedAddress ? 'Copied!' : 'Copy'}
             />
             <ProfileDetailsAction
