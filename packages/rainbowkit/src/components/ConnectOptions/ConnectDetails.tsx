@@ -361,9 +361,9 @@ export function InstructionDetail({
         alignItems="center"
         display="flex"
         flexDirection="column"
-        gap="16"
+        gap="12"
         justifyContent="center"
-        marginBottom="24"
+        marginBottom="16"
       >
         <Button
           label="Connect"
@@ -372,6 +372,8 @@ export function InstructionDetail({
         <Box
           as="a"
           href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          paddingX="12"
+          paddingY="4"
           rel="noreferrer"
           style={{ willChange: 'transform' }}
           target="_blank"

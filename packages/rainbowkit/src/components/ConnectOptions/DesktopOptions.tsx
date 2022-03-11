@@ -133,7 +133,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             Popular
           </Text>
         </Box>
-        <Box display="flex" flexDirection="column" gap="8">
+        <Box display="flex" flexDirection="column" gap="4">
           {wallets.map(wallet => {
             return (
               <ModalSelection
