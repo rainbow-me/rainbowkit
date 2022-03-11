@@ -144,7 +144,7 @@ export function ProfileDetails({
             />
           </Box>
         </Box>
-        <Box background="modalBorder" height="1" />
+        <Box background="generalBorder" height="1" />
         <Box>
           <TxList accountData={accountData} />
         </Box>

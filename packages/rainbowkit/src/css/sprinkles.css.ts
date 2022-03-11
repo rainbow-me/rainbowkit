@@ -22,6 +22,7 @@ const themeContractValues = {
     connectButtonTextError: '',
     connectionIndicator: '',
     error: '',
+    generalBorder: '',
     menuBackground: '',
     menuItemActiveBackground: '',
     menuItemBackground: '',

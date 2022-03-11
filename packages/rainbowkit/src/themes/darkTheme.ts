@@ -25,6 +25,7 @@ export const darkTheme = ({
     connectButtonTextError: 'white',
     connectionIndicator: '#30E000',
     error: '#FF494A',
+    generalBorder: 'rgba(255, 255, 255, 0.08)',
     menuBackground: '#1A1B1F',
     menuItemActiveBackground: 'rgba(196, 196, 196, 0.2)',
     menuItemBackground: 'rgba(196, 196, 196, 0.1)',

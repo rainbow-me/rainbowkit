@@ -118,7 +118,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="modalBorder" height="1" />
+          <Box background="generalBorder" height="1" />
 
           <Box
             alignItems="center"
@@ -212,7 +212,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                     </Box>
                     {index < mobileWallets.length - 1 ? (
                       <Box
-                        background="modalBorder"
+                        background="generalBorder"
                         height="1"
                         marginY="10"
                         width="full"
