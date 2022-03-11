@@ -43,7 +43,10 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         <Box
           alt={name}
           as="img"
-          borderRadius="10"
+          borderColor="walletLogoBorder"
+          borderRadius="13"
+          borderStyle="solid"
+          borderWidth="1"
           display="block"
           height="60"
           marginBottom="8"

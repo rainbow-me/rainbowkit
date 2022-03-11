@@ -41,6 +41,7 @@ const themeContractValues = {
     profileForeground: '',
     selectedOptionBorder: '',
     standby: '',
+    walletLogoBorder: '',
   },
   fonts: {
     body: '',
@@ -154,6 +155,7 @@ const unresponsiveProperties = defineProperties({
       '1': '1px',
       '6': '6px',
       '10': '10px',
+      '13': '13px',
       'full': '9999px',
     },
     borderStyle: {

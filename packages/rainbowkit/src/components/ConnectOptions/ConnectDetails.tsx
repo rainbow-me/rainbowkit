@@ -11,7 +11,6 @@ import {
 } from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
-import { walletLogoClassName } from './DesktopOptions.css';
 
 export function GetDetail({
   getMobileWallet,
@@ -167,13 +166,9 @@ export function ConnectDetail({
             flexDirection="column"
             gap="20"
           >
-            <img
-              alt={name}
-              className={walletLogoClassName}
-              height="60"
-              src={iconUrl}
-              width="60"
-            />
+            <Box borderRadius="6">
+              <img alt={name} height="60" src={iconUrl} width="60" />
+            </Box>
             <Box
               alignItems="center"
               display="flex"

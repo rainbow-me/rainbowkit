@@ -44,6 +44,7 @@ export const lightTheme = ({
     profileForeground: 'rgba(60, 66, 66, 0.1)',
     selectedOptionBorder: 'rgba(60, 66, 66, 0.1)',
     standby: '#FFD641',
+    walletLogoBorder: 'rgba(0, 0, 0, 0.04)',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',

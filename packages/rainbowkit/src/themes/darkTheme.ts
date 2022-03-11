@@ -44,6 +44,7 @@ export const darkTheme = ({
     profileForeground: 'rgba(224, 232, 255, 0.05)',
     selectedOptionBorder: 'rgba(224, 232, 255, 0.1)',
     standby: '#FFD641',
+    walletLogoBorder: 'rgba(255, 255, 255, 0.04);',
   },
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',

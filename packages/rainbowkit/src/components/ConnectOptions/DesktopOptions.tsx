@@ -16,7 +16,6 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { walletLogoClassName } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -158,9 +157,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     flexDirection="row"
                     gap="12"
                   >
-                    <img
+                    <Box
                       alt={wallet.name}
-                      className={walletLogoClassName}
+                      as="img"
+                      borderColor="walletLogoBorder"
+                      borderRadius="6"
+                      borderStyle="solid"
+                      borderWidth="1"
                       height="28"
                       src={wallet.iconUrl}
                       width="28"
