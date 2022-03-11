@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useProvider } from 'wagmi';
+import { useAccount, useNetwork, useProvider } from 'wagmi';
 
 const safeJSONParse = (json: string) => {
   try {
@@ -34,6 +34,10 @@ export type TransactionWithInfo = Transaction & {
   info: string;
 };
 
+export type TransactionsMap = {
+  [address: string]: { [chainId: number]: TransactionWithInfo[] };
+};
+
 /**
  * Manage transaction history state
  */
@@ -41,74 +45,100 @@ export const useTxHistory = ({
   initialTxs,
   rememberHistory,
 }: {
-  initialTxs?: TransactionWithInfo[];
+  initialTxs?: TransactionsMap;
   rememberHistory?: boolean;
 }): {
-  txs: TransactionWithInfo[];
-  submitTx: (tx: Transaction) => void;
-  setTxs: React.Dispatch<React.SetStateAction<TransactionWithInfo[]>>;
+  txs: TransactionsMap;
+  submitTx: (tx: Transaction, address: string, chainId: number) => void;
   resetTxs: () => void;
 } => {
-  const [txs, setTxs] = useState<TransactionWithInfo[]>(initialTxs || []);
+  const [txs, setTxs] = useState<TransactionsMap>(initialTxs || {});
   const provider = useProvider();
+  const [{ data: networkData }] = useNetwork();
+  const [{ data: accountData }] = useAccount();
+  const chainId = networkData.chain?.id;
+  const address = accountData?.address;
 
   const submitTx = async (tx: Transaction) => {
-    setTxs(txs => [
-      ...txs,
-      {
-        ...tx,
-        info: 'tbd',
-        status: 'pending',
-      },
-    ]);
+    if (address && chainId) {
+      setTxs(txs => ({
+        ...txs,
+        [address]: {
+          ...txs?.[address],
+          [chainId]: [
+            ...txs?.[address]?.[chainId],
+            {
+              ...tx,
+              info: 'tbd',
+              status: 'pending',
+            },
+          ],
+        },
+      }));
+    }
   };
 
   useEffect(() => {
-    for (const tx of txs) {
-      if (tx.status === 'pending') {
-        const common = {
-          data: tx.data,
-          from: tx.from,
-          hash: tx.hash,
-          nonce: tx.nonce,
-          to: tx.to,
-          type: tx.type,
-          value: tx.value,
-        };
+    if (address && chainId && txs?.[address]?.[chainId]) {
+      const currentTxs = txs?.[address]?.[chainId];
+      for (const tx of currentTxs) {
+        if (tx.status === 'pending') {
+          const common = {
+            data: tx.data,
+            from: tx.from,
+            hash: tx.hash,
+            nonce: tx.nonce,
+            to: tx.to,
+            type: tx.type,
+            value: tx.value,
+          };
 
-        if (!tx.hash)
-          setTxs([
-            ...txs.filter(t => t.hash !== tx.hash),
-            {
-              ...common,
-              info: 'tbd',
-              status: 'fail',
-            },
-          ]);
-        else if (provider) {
-          provider.once(tx.hash, (result: any) => {
-            setTxs([
-              ...txs.filter(t => t.hash !== tx.hash),
-              {
-                ...common,
-                blockNumber: result.blockNumber,
-                info: 'tbd',
-                status: result.status === 0 ? 'fail' : 'success',
+          if (!tx.hash)
+            setTxs(txs => ({
+              ...txs,
+              [address]: {
+                ...txs?.[address],
+                [chainId]: [
+                  ...currentTxs.filter(t => t.hash !== tx.hash),
+                  {
+                    ...common,
+                    info: 'tbd',
+                    status: 'fail',
+                  },
+                ],
               },
-            ]);
-          });
+            }));
+          else if (provider) {
+            provider.once(tx.hash, (result: any) => {
+              setTxs(txs => ({
+                ...txs,
+                [address]: {
+                  ...txs?.[address],
+                  [chainId]: [
+                    ...currentTxs.filter(t => t.hash !== tx.hash),
+                    {
+                      ...common,
+                      blockNumber: result.blockNumber,
+                      info: 'tbd',
+                      status: result.status === 0 ? 'fail' : 'success',
+                    },
+                  ],
+                },
+              }));
+            });
+          }
         }
       }
+      if (rememberHistory && txs) {
+        localStorage.setItem('rk-tx-history', JSON.stringify(txs));
+      }
     }
-    if (rememberHistory && txs?.[0]) {
-      localStorage.setItem('rk-tx-history', JSON.stringify(txs));
-    }
-  }, [txs, rememberHistory, provider]);
+  }, [txs, rememberHistory, provider, chainId, address]);
 
   useEffect(() => {
     if (rememberHistory) {
       const txHistory = localStorage.getItem('rk-tx-history');
-      const txs = txHistory ? safeJSONParse(txHistory) ?? [] : [];
+      const txs = txHistory ? safeJSONParse(txHistory) ?? {} : {};
 
       setTxs(txs);
     }
@@ -116,8 +146,8 @@ export const useTxHistory = ({
 
   const resetTxs = () => {
     localStorage.removeItem('rk-last-history');
-    setTxs([]);
+    setTxs({});
   };
 
-  return { resetTxs, setTxs, submitTx, txs };
+  return { resetTxs, submitTx, txs };
 };
