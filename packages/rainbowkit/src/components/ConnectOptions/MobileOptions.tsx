@@ -42,17 +42,27 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       >
         <Box
           alt={name}
-          as="img"
-          borderColor="walletLogoBorder"
           borderRadius="13"
-          borderStyle="solid"
-          borderWidth="1"
           display="block"
           height="60"
           marginBottom="8"
           src={iconUrl}
+          style={{
+            background: `url(${iconUrl})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
           width="60"
-        />
+        >
+          <Box
+            borderColor="walletLogoBorder"
+            borderRadius="13"
+            borderStyle="solid"
+            borderWidth="1"
+            height="full"
+            width="full"
+          />
+        </Box>
         <Text
           as="h2"
           color={wallet.ready ? 'modalText' : 'modalTextSecondary'}

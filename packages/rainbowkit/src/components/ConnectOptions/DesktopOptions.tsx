@@ -159,15 +159,24 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   >
                     <Box
                       alt={wallet.name}
-                      as="img"
-                      borderColor="walletLogoBorder"
                       borderRadius="6"
-                      borderStyle="solid"
-                      borderWidth="1"
                       height="28"
-                      src={wallet.iconUrl}
+                      style={{
+                        background: `url(${wallet.iconUrl})`,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                      }}
                       width="28"
-                    />
+                    >
+                      <Box
+                        borderColor="walletLogoBorder"
+                        borderRadius="6"
+                        borderStyle="solid"
+                        borderWidth="1"
+                        height="full"
+                        width="full"
+                      />
+                    </Box>
                     <div>{wallet.name}</div>
                   </Box>
                 </Box>

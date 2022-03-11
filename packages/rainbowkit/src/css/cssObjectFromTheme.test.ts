@@ -45,6 +45,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-dialog": "0px 8px 32px rgba(0, 0, 0, 0.32)",
         "--rk-shadows-menu": "0px 10px 30px rgba(0, 0, 0, 0.1)",
         "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
+        "--rk-shadows-selectedWallet": "0px 2px 6px rgba(0, 0, 0, 0.12)",
       }
     `);
   });
