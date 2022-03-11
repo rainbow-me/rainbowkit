@@ -81,7 +81,7 @@ export function ProfileDetails({
                 position: 'absolute',
                 right: 16,
                 top: 16,
-                willChange: 'tranform',
+                willChange: 'transform',
               }}
             />{' '}
             <Box>
