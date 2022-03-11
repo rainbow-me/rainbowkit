@@ -99,7 +99,7 @@ export function TxList({ accountData }: TxListProps) {
         <Box
           alignItems="center"
           as="a"
-          background={{ hover: 'modalBorder' }}
+          background={{ hover: 'profileForeground' }}
           borderRadius="menuButton"
           color="modalTextSecondary"
           display="flex"
