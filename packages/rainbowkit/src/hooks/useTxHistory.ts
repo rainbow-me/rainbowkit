@@ -48,25 +48,27 @@ export const useTxHistory = ({
   initialTxs?: TransactionsMap;
   rememberHistory?: boolean;
 }): {
-  txs: TransactionsMap;
+  txs: TransactionWithInfo[];
   submitTx: (tx: Transaction, address: string, chainId: number) => void;
   resetTxs: () => void;
 } => {
-  const [txs, setTxs] = useState<TransactionsMap>(initialTxs || {});
+  const [txMap, setTxMap] = useState<TransactionsMap>(initialTxs || {});
   const provider = useProvider();
   const [{ data: networkData }] = useNetwork();
   const [{ data: accountData }] = useAccount();
   const chainId = networkData.chain?.id;
   const address = accountData?.address;
 
+  const [txs, setTxs] = useState<TransactionWithInfo[]>([]);
+
   const submitTx = async (tx: Transaction) => {
     if (address && chainId) {
-      setTxs(txs => ({
-        ...txs,
+      setTxMap(tMap => ({
+        ...tMap,
         [address]: {
-          ...txs?.[address],
+          ...tMap?.[address],
           [chainId]: [
-            ...txs?.[address]?.[chainId],
+            ...tMap?.[address]?.[chainId],
             {
               ...tx,
               info: 'tbd',
@@ -79,8 +81,14 @@ export const useTxHistory = ({
   };
 
   useEffect(() => {
-    if (address && chainId && txs?.[address]?.[chainId]) {
-      const currentTxs = txs?.[address]?.[chainId];
+    if (chainId && address && txMap) {
+      setTxs(txMap?.[address]?.[chainId]);
+    }
+  }, [chainId, address, txMap]);
+
+  useEffect(() => {
+    if (address && chainId && txMap?.[address]?.[chainId]) {
+      const currentTxs = txMap[address][chainId];
       for (const tx of currentTxs) {
         if (tx.status === 'pending') {
           const common = {
@@ -94,10 +102,10 @@ export const useTxHistory = ({
           };
 
           if (!tx.hash)
-            setTxs(txs => ({
-              ...txs,
+            setTxMap(tMap => ({
+              ...tMap,
               [address]: {
-                ...txs?.[address],
+                ...tMap?.[address],
                 [chainId]: [
                   ...currentTxs.filter(t => t.hash !== tx.hash),
                   {
@@ -110,10 +118,10 @@ export const useTxHistory = ({
             }));
           else if (provider) {
             provider.once(tx.hash, (result: any) => {
-              setTxs(txs => ({
-                ...txs,
+              setTxMap(tMap => ({
+                ...tMap,
                 [address]: {
-                  ...txs?.[address],
+                  ...tMap?.[address],
                   [chainId]: [
                     ...currentTxs.filter(t => t.hash !== tx.hash),
                     {
@@ -129,24 +137,24 @@ export const useTxHistory = ({
           }
         }
       }
-      if (rememberHistory && txs) {
-        localStorage.setItem('rk-tx-history', JSON.stringify(txs));
+      if (rememberHistory && txMap) {
+        localStorage.setItem('rk-tx-history', JSON.stringify(txMap));
       }
     }
-  }, [txs, rememberHistory, provider, chainId, address]);
+  }, [txMap, rememberHistory, provider, chainId, address]);
 
   useEffect(() => {
     if (rememberHistory) {
       const txHistory = localStorage.getItem('rk-tx-history');
-      const txs = txHistory ? safeJSONParse(txHistory) ?? {} : {};
+      const storedTxMap = txHistory ? safeJSONParse(txHistory) ?? {} : {};
 
-      setTxs(txs);
+      setTxMap(storedTxMap);
     }
   }, [rememberHistory]);
 
   const resetTxs = () => {
     localStorage.removeItem('rk-last-history');
-    setTxs({});
+    setTxMap({});
   };
 
   return { resetTxs, submitTx, txs };
