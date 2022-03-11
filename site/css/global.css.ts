@@ -9,10 +9,12 @@ globalStyle('*', {
   margin: 0,
   padding: 0,
   verticalAlign: 'baseline',
+  WebkitFontSmoothing: 'antialiased',
   WebkitTapHighlightColor: 'transparent',
 });
 
 globalStyle('body', {
-  backgroundColor: 'black',
-  color: 'white',
+  // backgroundColor: 'black',
+  // color: 'white',
+  letterSpacing: 0.35,
 });

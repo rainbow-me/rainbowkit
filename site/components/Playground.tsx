@@ -11,9 +11,9 @@ import {
 import { ConnectButtonProps } from '@rainbow-me/rainbowkit/dist/components/ConnectButton/ConnectButton';
 import React, { useEffect, useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
-import { radio } from '../../css/radio.css';
-import { chains } from '../Provider/Provider';
-import { Wrapper } from '../Wrapper/Wrapper';
+import { radio } from '../css/radio.css';
+import { chains } from './Provider';
+import { Wrapper } from './Wrapper/Wrapper';
 
 const THEMES = {
   dark: darkTheme,

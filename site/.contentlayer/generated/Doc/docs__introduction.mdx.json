@@ -1,0 +1,18 @@
+{
+  "title": "Introduction",
+  "description": "The best way to connect a wallet 🌈",
+  "body": {
+    "raw": "\n# RainbowKit\n\n## The best way to connect a wallet 🌈\n\n<Img src=\"/hero.png\" />\n\nRainbowKit makes it easy to add wallet connection to your dapp. It's intuitive, lightweight and customizable.\n\n### Features\n\n- 🔥 Out-of-the-box wallet management\n- 👟 Easily customizable\n- 🕊 Lightweight\n- ✅ Accessible\n- 🦄 Built on top of wagmi and ethers\n\n### Community\n\n- Join the discussions on GitHub\n- Follow @rainbow on Twitter\n- Share your project\n",
+    "code": "var Component=(()=>{var h=Object.create;var l=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,b=Object.prototype.hasOwnProperty;var c=e=>l(e,\"__esModule\",{value:!0});var w=(e,n)=>()=>(n||e((n={exports:{}}).exports,n),n.exports),g=(e,n)=>{for(var o in n)l(e,o,{get:n[o],enumerable:!0})},a=(e,n,o,i)=>{if(n&&typeof n==\"object\"||typeof n==\"function\")for(let r of m(n))!b.call(e,r)&&(o||r!==\"default\")&&l(e,r,{get:()=>n[r],enumerable:!(i=u(n,r))||i.enumerable});return e},f=(e,n)=>a(c(l(e!=null?h(p(e)):{},\"default\",!n&&e&&e.__esModule?{get:()=>e.default,enumerable:!0}:{value:e,enumerable:!0})),e),x=(e=>(n,o)=>e&&e.get(n)||(o=a(c({}),n,1),e&&e.set(n,o),o))(typeof WeakMap!=\"undefined\"?new WeakMap:0);var d=w((k,s)=>{s.exports=_jsx_runtime});var F={};g(F,{default:()=>j,frontmatter:()=>y});var t=f(d()),y={title:\"Introduction\",description:\"The best way to connect a wallet \\u{1F308}\"};function _(e={}){let{wrapper:n}=e.components||{};return n?(0,t.jsx)(n,Object.assign({},e,{children:(0,t.jsx)(o,{})})):o();function o(){let i=Object.assign({h1:\"h1\",h2:\"h2\",p:\"p\",h3:\"h3\",ul:\"ul\",li:\"li\"},e.components),{Img:r}=i;return r||I(\"Img\",!0,\"10:1-10:24\"),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(i.h1,{children:\"RainbowKit\"}),`\n`,(0,t.jsx)(i.h2,{children:\"The best way to connect a wallet \\u{1F308}\"}),`\n`,(0,t.jsx)(r,{src:\"/hero.png\"}),`\n`,(0,t.jsx)(i.p,{children:\"RainbowKit makes it easy to add wallet connection to your dapp. It's intuitive, lightweight and customizable.\"}),`\n`,(0,t.jsx)(i.h3,{children:\"Features\"}),`\n`,(0,t.jsxs)(i.ul,{children:[`\n`,(0,t.jsx)(i.li,{children:\"\\u{1F525} Out-of-the-box wallet management\"}),`\n`,(0,t.jsx)(i.li,{children:\"\\u{1F45F} Easily customizable\"}),`\n`,(0,t.jsx)(i.li,{children:\"\\u{1F54A} Lightweight\"}),`\n`,(0,t.jsx)(i.li,{children:\"\\u2705 Accessible\"}),`\n`,(0,t.jsx)(i.li,{children:\"\\u{1F984} Built on top of wagmi and ethers\"}),`\n`]}),`\n`,(0,t.jsx)(i.h3,{children:\"Community\"}),`\n`,(0,t.jsxs)(i.ul,{children:[`\n`,(0,t.jsx)(i.li,{children:\"Join the discussions on GitHub\"}),`\n`,(0,t.jsx)(i.li,{children:\"Follow @rainbow on Twitter\"}),`\n`,(0,t.jsx)(i.li,{children:\"Share your project\"}),`\n`]})]})}}var j=_;function I(e,n,o){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\"+(o?\"\\nIt\\u2019s referenced in your code at `\"+o+\"` in `/Users/ped/Projects/rainbow/rainbowkit/site/data/_mdx_bundler_entry_point-c5866b74-d16a-4049-8d7f-b9c71371ae4a.mdx`\":\"\"))}return x(F);})();\n;return Component;"
+  },
+  "_id": "docs/introduction.mdx",
+  "_raw": {
+    "sourceFilePath": "docs/introduction.mdx",
+    "sourceFileName": "introduction.mdx",
+    "sourceFileDir": "docs",
+    "contentType": "mdx",
+    "flattenedPath": "docs/introduction"
+  },
+  "type": "Doc",
+  "slug": "introduction"
+}

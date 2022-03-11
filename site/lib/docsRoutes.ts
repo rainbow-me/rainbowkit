@@ -12,12 +12,15 @@ export type RouteProps = {
 export const docsRoutes: RouteProps[] = [
   {
     label: 'Overview',
-    pages: [{ title: 'Introduction', slug: 'docs/introduction' }],
+    pages: [
+      { title: 'Introduction', slug: 'introduction' },
+      { title: 'API', slug: 'api' },
+    ],
   },
 
   {
     label: 'Getting Started',
-    pages: [{ title: 'Installation', slug: 'docs/installation' }],
+    pages: [{ title: 'Installation', slug: 'installation' }],
   },
 ];
 

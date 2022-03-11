@@ -2,8 +2,8 @@
   "title": "Test title",
   "description": "About this file",
   "body": {
-    "raw": "\nHello world!!!!\n",
-    "html": "<p>Hello world!!!!</p>"
+    "raw": "\n# Hello world!!!!\n\n## how are you\n\nSome text\n",
+    "code": "var Component=(()=>{var m=Object.create;var i=Object.defineProperty;var x=Object.getOwnPropertyDescriptor;var d=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,u=Object.prototype.hasOwnProperty;var c=t=>i(t,\"__esModule\",{value:!0});var j=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),_=(t,e)=>{for(var n in e)i(t,n,{get:e[n],enumerable:!0})},l=(t,e,n,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of d(e))!u.call(t,s)&&(n||s!==\"default\")&&i(t,s,{get:()=>e[s],enumerable:!(r=x(e,s))||r.enumerable});return t},f=(t,e)=>l(c(i(t!=null?m(p(t)):{},\"default\",!e&&t&&t.__esModule?{get:()=>t.default,enumerable:!0}:{value:t,enumerable:!0})),t),g=(t=>(e,n)=>t&&t.get(e)||(n=l(c({}),e,1),t&&t.set(e,n),n))(typeof WeakMap!=\"undefined\"?new WeakMap:0);var h=j((D,a)=>{a.exports=_jsx_runtime});var y={};_(y,{default:()=>M,frontmatter:()=>b});var o=f(h()),b={title:\"Test title\",description:\"About this file\"};function w(t={}){let{wrapper:e}=t.components||{};return e?(0,o.jsx)(e,Object.assign({},t,{children:(0,o.jsx)(n,{})})):n();function n(){let r=Object.assign({h1:\"h1\",h2:\"h2\",p:\"p\"},t.components);return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(r.h1,{children:\"Hello world!!!!\"}),`\n`,(0,o.jsx)(r.h2,{children:\"how are you\"}),`\n`,(0,o.jsx)(r.p,{children:\"Some text\"})]})}}var M=w;return g(y);})();\n;return Component;"
   },
   "_id": "docs/test.mdx",
   "_raw": {

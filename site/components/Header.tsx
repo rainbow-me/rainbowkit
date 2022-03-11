@@ -3,17 +3,17 @@ import {
   darkTheme,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chains, Provider } from 'components/Provider/Provider';
-import { Wrapper } from 'components/Wrapper/Wrapper';
 import React from 'react';
+import { chains, Provider } from './Provider';
+import { Wrapper } from './Wrapper/Wrapper';
 
 export function Header() {
   return (
     <div
       style={{
         backdropFilter: 'blur(8px)',
-        backgroundColor: 'rgba(0,0,0,.2)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        backgroundColor: 'rgba(255, 255, 255, .95)',
+        borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
         justifyContent: 'space-between',
         left: 0,
         padding: '16px 0',

@@ -9,9 +9,9 @@ import {
 } from '@rainbow-me/rainbowkit';
 import React, { useState } from 'react';
 import { chain } from 'wagmi';
-import { radio } from '../../css/radio.css';
-import { infuraId, Provider } from '../Provider/Provider';
-import { Wrapper } from '../Wrapper/Wrapper';
+import { radio } from '../css/radio.css';
+import { infuraId, Provider } from './Provider';
+import { Wrapper } from './Wrapper/Wrapper';
 
 export const chains: Chain[] = [
   { ...chain.mainnet, name: 'Ethereum' },

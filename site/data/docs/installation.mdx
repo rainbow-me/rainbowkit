@@ -1,0 +1,84 @@
+---
+title: Installation
+description: Get up and running with RainbowKit
+---
+
+# Installation
+
+## Get up and running with RainbowKit
+
+RainbowKit makes it easy to add wallet connection to your dapp. It's intuitive, lightweight and customizable.
+
+### Install
+
+Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
+
+```
+npm install @rainbow-me/rainbowkit wagmi ethers
+```
+
+### Getting started
+
+To start, import RainbowKit’s base styles, configure your wallets and desired chains, generate the required connectors, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  RainbowKitProvider,
+  Chain,
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider, chain } from 'wagmi';
+import { providers } from 'ethers';
+
+const infuraId = process.env.INFURA_ID;
+
+const provider = ({ chainId }) =>
+  new providers.InfuraProvider(chainId, infuraId);
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimism, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
+
+const wallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
+
+const connectors = connectorsForWallets(wallets);
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains}>
+      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+        <YourApp />
+      </WagmiProvider>
+    </RainbowKitProvider>
+  );
+};
+```
+
+Then, in your app, import RainbowKit’s `ConnectButton` component.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return (
+    <>
+      <ConnectButton />
+    </>
+  );
+};
+```
+
+You’re done! RainbowKit will now handle your user’s wallet selection, display wallet/transaction information and handle network/wallet switching.

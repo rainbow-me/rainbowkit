@@ -1,8 +1,8 @@
 import React from 'react';
 import { Blur } from '../components/Blur/Blur';
-import { Playground } from '../components/Playground/Playground';
-import { PlaygroundWallets } from '../components/Playground/PlaygroundWallets';
-import { Provider } from '../components/Provider/Provider';
+import { Playground } from '../components/Playground';
+import { PlaygroundWallets } from '../components/PlaygroundWallets';
+import { Provider } from '../components/Provider';
 import { Wrapper } from '../components/Wrapper/Wrapper';
 
 const Home = () => {
