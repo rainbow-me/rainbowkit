@@ -592,6 +592,7 @@ const myCustomTheme: Theme = {
     dialog: '...',
     menu: '...',
     selectedOption: '...',
+    selectedWallet: '...',
   },
 };
 
