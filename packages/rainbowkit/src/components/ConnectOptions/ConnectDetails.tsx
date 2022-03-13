@@ -224,10 +224,10 @@ export function ConnectDetail({
         display="flex"
         flexDirection="row"
         gap="8"
-        height="34"
+        height="28"
         justifyContent="space-between"
         marginTop="6"
-        paddingY="8"
+        paddingY="0"
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>

@@ -24,7 +24,6 @@ const themeContractValues = {
     error: '',
     generalBorder: '',
     menuBackground: '',
-    menuItemActiveBackground: '',
     menuItemBackground: '',
     menuText: '',
     menuTextAction: '',

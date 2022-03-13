@@ -235,7 +235,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 438 }}
+              style={{ minHeight: 432 }}
             >
               <Box
                 alignItems="center"
@@ -245,7 +245,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 height="full"
                 justifyContent="center"
                 marginTop="6"
-                marginX="6"
+                marginX="8"
               >
                 {walletContent}
               </Box>

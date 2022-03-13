@@ -561,7 +561,6 @@ const myCustomTheme: Theme = {
     error: '...',
     generalBorder: '...',
     menuBackground: '...',
-    menuItemActiveBackground: '...',
     menuItemBackground: '...',
     menuText: '...',
     menuTextAction: '...',
