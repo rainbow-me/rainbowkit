@@ -123,7 +123,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         margin="18"
         style={{ minWidth: isMobile() ? 'full' : '248px' }}
       >
-        <Box marginBottom="16" marginLeft="6" paddingTop="0">
+        <Box marginBottom="16" marginLeft="6">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
@@ -158,7 +158,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     gap="12"
                   >
                     <Box
-                      alt={wallet.name}
                       borderRadius="6"
                       height="28"
                       style={{

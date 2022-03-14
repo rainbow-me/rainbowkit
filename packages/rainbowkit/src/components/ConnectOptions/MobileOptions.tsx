@@ -41,7 +41,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         justifyContent="center"
       >
         <Box
-          alt={name}
           borderRadius="13"
           display="block"
           height="60"
