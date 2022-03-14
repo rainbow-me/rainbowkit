@@ -129,16 +129,3 @@ const tokensModifiersPrefixed = [
 globalStyle(tokensModifiersPrefixed.map(s => `${pre} ${s}`).join(`, `), {
   userSelect: 'none',
 });
-
-//   ', ': {
-//   },
-
-//   // Styles for highlighted lines
-//   '.highlight-line, .highlight-line *': {
-//     transition: 'color 150ms ease',
-//   },
-//   '.highlight-line[data-highlighted=false], .highlight-line[data-highlighted=false] *':
-//     {
-//       color: 'var(--fadedLines)',
-//     },
-// },
