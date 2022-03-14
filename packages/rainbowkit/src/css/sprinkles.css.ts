@@ -57,6 +57,9 @@ const themeContractValues = {
     selectedOption: '',
     selectedWallet: '',
   },
+  borders: {
+    modalBorderWidth: '',
+  },
 };
 
 export type ThemeVars = typeof themeContractValues;
@@ -163,6 +166,7 @@ const unresponsiveProperties = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      ...themeVars.borders,
       '1': '1px',
       '2': '2px',
       '4': '4px',

@@ -547,6 +547,9 @@ While the built-in themes provide some level of customization, the `Theme` type 
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
+  borders: {
+    modalBorderWidth: '...',
+  },
   colors: {
     accentColor: '...',
     buttonBorder: '...',

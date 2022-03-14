@@ -7,7 +7,7 @@ export const dialogContent = style([
     borderColor: 'modalBorder',
     borderRadius: 'modal',
     borderStyle: 'solid',
-    borderWidth: '1',
+    borderWidth: 'modalBorderWidth',
     boxShadow: 'dialog',
     display: 'flex',
     flexDirection: 'column',

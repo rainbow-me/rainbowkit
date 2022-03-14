@@ -12,6 +12,9 @@ export const darkTheme = ({
   borderRadius,
 }: ThemeOptions = {}) => ({
   ...baseTheme({ borderRadius }),
+  borders: {
+    modalBorderWidth: '1px',
+  },
   colors: {
     accentColor: accents[accentColor],
     buttonBorder: 'rgba(255, 255, 255, 0.04)',
