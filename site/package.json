@@ -30,7 +30,6 @@
     "unist-util-visit": "4.1.0"
   },
   "devDependencies": {
-    "@types/hast": "2.3.4",
     "contentlayer": "0.1.2",
     "next-contentlayer": "0.1.2"
   },
