@@ -38,6 +38,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-selectedOptionBorder": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-standby": "#FFD641",
         "--rk-fonts-body": "SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif",
+        "--rk-radii-actionButton": "9999px",
         "--rk-radii-connectButton": "12px",
         "--rk-radii-menuButton": "12px",
         "--rk-radii-modal": "24px",

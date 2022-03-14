@@ -51,7 +51,7 @@ export function Button({
         : { as: 'button', type: 'button' })}
       background={isPrimary ? 'accentColor' : 'buttonSecondaryBackground'}
       borderColor="buttonBorder"
-      borderRadius="full"
+      borderRadius="actionButton"
       borderStyle="solid"
       borderWidth="1"
       display="block"

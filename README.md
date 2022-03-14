@@ -586,6 +586,7 @@ const myCustomTheme: Theme = {
     body: '...',
   },
   radii: {
+    actionButton: '...',
     connectButton: '...',
     menuButton: '...',
     modal: '...',

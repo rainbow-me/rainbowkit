@@ -46,6 +46,7 @@ const themeContractValues = {
     body: '',
   },
   radii: {
+    actionButton: '',
     connectButton: '',
     menuButton: '',
     modal: '',
