@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -33,19 +33,27 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const isRainbow = selectedOptionId === 'rainbow';
+  const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
     wallet => wallet.ready || wallet.downloadUrls?.desktop
   );
 
   const onSelectWallet = (wallet: WalletConnector) => {
-    setSelectedOptionId(wallet.id);
-    const sWallet = wallets.find(w => wallet.id === w.id);
-    setSelectedWallet(sWallet);
-    setWalletStep(WalletStep.Connect);
-
     if (wallet.ready) {
-      wallet.connect?.();
+      wallet?.connect?.().then(x => {
+        if (x.error) {
+          setConnectionError(true);
+        }
+      });
     }
+
+    // Update selected wallet state on next tick so QR code URIs are ready to render
+    setTimeout(() => {
+      setSelectedOptionId(wallet.id);
+      const sWallet = wallets.find(w => wallet.id === w.id);
+      setSelectedWallet(sWallet);
+      setWalletStep(WalletStep.Connect);
+    }, 0);
   };
 
   const getMobileWallet = (id: string) => {
@@ -61,6 +69,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerLabel = null;
   let headerBackButtonLink: WalletStep | null = null;
 
+  useEffect(() => {
+    setConnectionError(false);
+  }, [walletStep, selectedWallet]);
+
   switch (walletStep) {
     case WalletStep.None:
       walletContent = (
@@ -74,7 +86,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       break;
     case WalletStep.Connect:
       walletContent = selectedWallet && (
-        <ConnectDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
+        <ConnectDetail
+          connectionError={connectionError}
+          setWalletStep={setWalletStep}
+          wallet={selectedWallet}
+        />
       );
       headerLabel = isRainbow && 'Scan with Rainbow to connect';
       break;
