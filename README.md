@@ -559,8 +559,8 @@ const myCustomTheme: Theme = {
     connectButtonTextError: '...',
     connectionIndicator: '...',
     error: '...',
+    generalBorder: '...',
     menuBackground: '...',
-    menuItemActiveBackground: '...',
     menuItemBackground: '...',
     menuText: '...',
     menuTextAction: '...',
@@ -592,6 +592,7 @@ const myCustomTheme: Theme = {
     dialog: '...',
     menu: '...',
     selectedOption: '...',
+    selectedWallet: '...',
   },
 };
 

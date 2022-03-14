@@ -11,7 +11,6 @@ import {
 } from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
-import { walletLogoClassName } from './DesktopOptions.css';
 
 export function GetDetail({
   getMobileWallet,
@@ -167,13 +166,9 @@ export function ConnectDetail({
             flexDirection="column"
             gap="20"
           >
-            <img
-              alt={name}
-              className={walletLogoClassName}
-              height="60"
-              src={iconUrl}
-              width="60"
-            />
+            <Box borderRadius="6">
+              <img alt={name} height="60" src={iconUrl} width="60" />
+            </Box>
             <Box
               alignItems="center"
               display="flex"
@@ -229,10 +224,9 @@ export function ConnectDetail({
         display="flex"
         flexDirection="row"
         gap="8"
-        height="34"
+        height="28"
         justifyContent="space-between"
         marginTop="6"
-        paddingY="8"
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
@@ -366,9 +360,9 @@ export function InstructionDetail({
         alignItems="center"
         display="flex"
         flexDirection="column"
-        gap="16"
+        gap="12"
         justifyContent="center"
-        marginBottom="24"
+        marginBottom="16"
       >
         <Button
           label="Connect"
@@ -377,6 +371,8 @@ export function InstructionDetail({
         <Box
           as="a"
           href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          paddingX="12"
+          paddingY="4"
           rel="noreferrer"
           style={{ willChange: 'transform' }}
           target="_blank"

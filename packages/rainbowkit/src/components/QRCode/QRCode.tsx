@@ -38,7 +38,7 @@ export function QRCode({
   size: sizeProp = 200,
   uri,
 }: Props) {
-  const padding: NonNullable<BoxProps['padding']> = '16';
+  const padding: NonNullable<BoxProps['padding']> = '20';
   const size = sizeProp - parseInt(padding, 10) * 2;
 
   const dots = useMemo(() => {
@@ -115,8 +115,8 @@ export function QRCode({
 
   return (
     <Box
-      borderColor="modalBorder"
-      borderRadius="modal"
+      borderColor="generalBorder"
+      borderRadius="menuButton"
       borderStyle="solid"
       borderWidth="1"
       className={QRCodeBackgroundClassName}

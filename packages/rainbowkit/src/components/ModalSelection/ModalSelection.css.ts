@@ -4,34 +4,32 @@ import { sprinkles } from '../../css/sprinkles.css';
 export const HoverClassName = style([
   sprinkles({
     background: {
-      active: 'menuItemActiveBackground',
       hover: 'menuItemBackground',
-    },
-    borderColor: {
-      base: 'modalBackground',
     },
     borderRadius: 'menuButton',
     borderStyle: 'solid',
     borderWidth: '1',
-    paddingX: '6',
-    paddingY: '6',
+    paddingX: '5',
+    paddingY: '5',
     transform: {
       active: 'shrink',
       hover: 'grow',
     },
     transition: 'default',
   }),
+  { borderColor: 'transparent' },
 ]);
 
 export const SelectedClassName = style([
   sprinkles({
     background: 'accentColor',
-    borderColor: 'buttonBorder',
+    borderColor: 'selectedOptionBorder',
     borderRadius: 'menuButton',
     borderStyle: 'solid',
     borderWidth: '1',
-    paddingX: '6',
-    paddingY: '6',
+    boxShadow: 'selectedWallet',
+    paddingX: '5',
+    paddingY: '5',
     transition: 'default',
   }),
 ]);
