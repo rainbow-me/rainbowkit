@@ -16,6 +16,7 @@
     "chgset:run": "changeset",
     "chgset:version": "changeset version",
     "chgset": "pnpm chgset:run && pnpm chgset:version",
+    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules",
     "release": "changeset publish",
     "prerelease": "MINIFY_CSS=true pnpm build --recursive && cp README.md packages/rainbowkit/README.md",
     "ci:example": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=example",
