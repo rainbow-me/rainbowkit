@@ -25,7 +25,6 @@ const themeContractValues = {
     connectionIndicator: '',
     error: '',
     generalBorder: '',
-    menuBackground: '',
     menuItemBackground: '',
     modalBackdrop: '',
     modalBackground: '',

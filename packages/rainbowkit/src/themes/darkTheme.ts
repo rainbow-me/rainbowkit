@@ -31,7 +31,6 @@ export const darkTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
-    menuBackground: '#1A1B1F',
     menuItemBackground: 'rgba(224, 232, 255, 0.1)',
     modalBackdrop: 'rgba(0, 0, 0, 0.5)',
     modalBackground: '#1A1B1F',

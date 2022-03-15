@@ -31,7 +31,6 @@ export const lightTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(0, 0, 0, 0.06)',
-    menuBackground: '#FFF',
     menuItemBackground: 'rgba(60, 66, 66, 0.1)',
     modalBackdrop: 'rgba(0, 0, 0, 0.3)',
     modalBackground: '#FFF',
