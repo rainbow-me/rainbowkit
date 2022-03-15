@@ -27,7 +27,6 @@ const themeContractValues = {
     menuItemBackground: '',
     menuText: '',
     menuTextAction: '',
-    menuTextDisconnect: '',
     menuTextSecondary: '',
     modalBackdrop: '',
     modalBackground: '',

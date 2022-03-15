@@ -193,7 +193,7 @@ export function ConnectDetail({
               >
                 {connectionError ? (
                   <Text color="error" size="16" weight="bold">
-                    Error connecting. Please try again.
+                    Error connecting, please retry!
                   </Text>
                 ) : (
                   <>

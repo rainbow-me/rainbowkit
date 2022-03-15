@@ -567,7 +567,6 @@ const myCustomTheme: Theme = {
     menuItemBackground: '...',
     menuText: '...',
     menuTextAction: '...',
-    menuTextDisconnect: '...',
     menuTextSecondary: '...',
     modalBackdrop: '...',
     modalBackground: '...',
