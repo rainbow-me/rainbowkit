@@ -28,6 +28,13 @@ export const dialogContentWide = style([
   },
 ]);
 
+export const dialogContentMobile = style([
+  {
+    boxSizing: 'border-box',
+    width: '100vw',
+  },
+]);
+
 const bleed = 200;
 export const bottomSheetOverrides = style({
   '@media': {
