@@ -571,6 +571,7 @@ const myCustomTheme: Theme = {
     modalBackground: '...',
     modalBorder: '...',
     modalText: '...',
+    modalTextDim: '...',
     modalTextSecondary: '...',
     profileAction: '...',
     profileActionHover: '...',

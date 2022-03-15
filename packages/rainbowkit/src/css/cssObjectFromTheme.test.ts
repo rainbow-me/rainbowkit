@@ -27,6 +27,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-modalBackground": "#FFF",
         "--rk-colors-modalBorder": "rgba(255, 255, 255, 0)",
         "--rk-colors-modalText": "#25292E",
+        "--rk-colors-modalTextDim": "rgba(60, 66, 66, 0.3)",
         "--rk-colors-modalTextSecondary": "rgba(60, 66, 66, 0.6)",
         "--rk-colors-profileAction": "#FFF",
         "--rk-colors-profileActionHover": "rgba(255, 255, 255, 0.5)",

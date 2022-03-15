@@ -38,6 +38,7 @@ export const midnightTheme = ({
     modalBackground: '#000',
     modalBorder: 'rgba(255, 255, 255, 0.08)',
     modalText: '#FFF',
+    modalTextDim: 'rgba(255, 255, 255, 0.2)',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
     profileAction: 'rgba(255, 255, 255, 0.1)',
     profileActionHover: 'rgba(255, 255, 255, 0.2)',

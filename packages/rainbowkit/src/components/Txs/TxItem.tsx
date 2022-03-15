@@ -83,7 +83,7 @@ export function TxItem({ tx }: TxProps) {
           </Box>
         </Box>
       </Box>
-      <Box alignItems="center" color="modalTextSecondary" display="flex">
+      <Box alignItems="center" color="modalTextDim" display="flex">
         <ExternalLinkIcon />
       </Box>
     </Box>

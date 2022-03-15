@@ -37,6 +37,7 @@ export const lightTheme = ({
     modalBackground: '#FFF',
     modalBorder: 'rgba(255, 255, 255, 0)',
     modalText: '#25292E',
+    modalTextDim: 'rgba(60, 66, 66, 0.3)',
     modalTextSecondary: 'rgba(60, 66, 66, 0.6)',
     profileAction: '#FFF',
     profileActionHover: 'rgba(255, 255, 255, 0.5)',

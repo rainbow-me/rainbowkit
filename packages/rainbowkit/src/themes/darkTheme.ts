@@ -37,6 +37,7 @@ export const darkTheme = ({
     modalBackground: '#1A1B1F',
     modalBorder: 'rgba(255, 255, 255, 0.08)',
     modalText: '#FFF',
+    modalTextDim: 'rgba(224, 232, 255, 0.3)',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
     profileAction: 'rgba(224, 232, 255, 0.1)',
     profileActionHover: 'rgba(224, 232, 255, 0.2)',
