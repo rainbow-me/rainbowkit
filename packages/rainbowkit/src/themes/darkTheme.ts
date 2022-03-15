@@ -20,6 +20,8 @@ export const darkTheme = ({
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     actionButtonText: '#FFF',
+    closeButton: 'rgba(255, 255, 255, 0.6)',
+    closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#1A1B1F',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
@@ -37,8 +39,6 @@ export const darkTheme = ({
     modalBackdrop: 'rgba(0, 0, 0, 0.5)',
     modalBackground: '#1A1B1F',
     modalBorder: 'rgba(255, 255, 255, 0.08)',
-    modalClose: 'rgba(255, 255, 255, 0.6)',
-    modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#FFF',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
     profileAction: 'rgba(224, 232, 255, 0.1)',

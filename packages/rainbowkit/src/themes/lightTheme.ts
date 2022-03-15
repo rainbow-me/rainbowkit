@@ -20,6 +20,8 @@ export const lightTheme = ({
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     actionButtonText: '#FFF',
+    closeButton: 'rgba(0, 0, 0, 0.6)',
+    closeButtonBackground: 'rgba(0, 0, 0, 0.06)',
     connectButtonBackground: '#FFF',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
@@ -37,8 +39,6 @@ export const lightTheme = ({
     modalBackdrop: 'rgba(0, 0, 0, 0.3)',
     modalBackground: '#FFF',
     modalBorder: 'rgba(255, 255, 255, 0)',
-    modalClose: 'rgba(0, 0, 0, 0.6)',
-    modalCloseBackground: 'rgba(0, 0, 0, 0.06)',
     modalText: '#25292E',
     modalTextSecondary: 'rgba(60, 66, 82, 0.6)',
     profileAction: '#FFF',

@@ -20,6 +20,8 @@ export const midnightTheme = ({
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     actionButtonText: '#FFF',
+    closeButton: 'rgba(255, 255, 255, 0.6)',
+    closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
@@ -38,8 +40,6 @@ export const midnightTheme = ({
       'linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))',
     modalBackground: '#000',
     modalBorder: 'rgba(255, 255, 255, 0.08)',
-    modalClose: 'rgba(255, 255, 255, 0.6)',
-    modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
     modalText: '#FFF',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
     profileAction: 'rgba(255, 255, 255, 0.1)',
