@@ -41,7 +41,6 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
               {...themeRootProps}
               aria-labelledby={titleId}
               aria-modal
-              background="modalBackdrop"
               className={styles.overlay}
               onClick={handleBackdropClick}
               position="fixed"
