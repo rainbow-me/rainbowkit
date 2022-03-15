@@ -31,7 +31,7 @@ const sizeVariants: Record<
   },
 };
 
-export function Button({
+export function ActionButton({
   href,
   label,
   onClick,
@@ -51,8 +51,8 @@ export function Button({
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
         : { as: 'button', type: 'button' })}
-      background={isPrimary ? 'accentColor' : 'buttonSecondaryBackground'}
-      borderColor="buttonBorder"
+      background={isPrimary ? 'accentColor' : 'actionButtonSecondaryBackground'}
+      borderColor="actionButtonBorder"
       borderRadius="actionButton"
       borderStyle="solid"
       borderWidth="1"

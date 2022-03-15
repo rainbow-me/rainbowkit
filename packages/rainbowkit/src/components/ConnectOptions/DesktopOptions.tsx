@@ -170,7 +170,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       width="28"
                     >
                       <Box
-                        borderColor="buttonBorder"
+                        borderColor="actionButtonBorder"
                         borderRadius="6"
                         borderStyle="solid"
                         borderWidth="1"

@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
+import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
@@ -91,7 +91,11 @@ export function GetDetail({
                     ? linkProps(downloadUrls.desktop?.browserExtension)
                     : {})}
                 >
-                  <Button label="GET" onClick={() => {}} type="secondary" />
+                  <ActionButton
+                    label="GET"
+                    onClick={() => {}}
+                    type="secondary"
+                  />
                 </Box>
               </Box>
             );
@@ -205,7 +209,7 @@ export function ConnectDetail({
               </Box>
               {!ready && downloadUrls?.desktop?.browserExtension ? (
                 <Box paddingTop="8">
-                  <Button
+                  <ActionButton
                     href={downloadUrls.desktop?.browserExtension}
                     label="Install"
                     type="secondary"
@@ -232,7 +236,7 @@ export function ConnectDetail({
             <Text color="menuTextSecondary" size="14" weight="medium">
               Don&rsquo;t have the Rainbow App?
             </Text>
-            <Button
+            <ActionButton
               label="GET"
               onClick={() => setWalletStep(WalletStep.Download)}
               type="secondary"
@@ -243,7 +247,7 @@ export function ConnectDetail({
             <Text color="menuTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
-            <Button
+            <ActionButton
               label="Retry"
               onClick={() => wallet?.connect?.()}
               type="secondary"
@@ -294,7 +298,7 @@ export function DownloadDetail({
         marginBottom="12"
         paddingY="8"
       >
-        <Button
+        <ActionButton
           label="Continue"
           onClick={() => setWalletStep(WalletStep.Instructions)}
         />
@@ -363,7 +367,7 @@ export function InstructionDetail({
         justifyContent="center"
         marginBottom="16"
       >
-        <Button
+        <ActionButton
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />

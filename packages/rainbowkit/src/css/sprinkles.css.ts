@@ -12,8 +12,8 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
-    buttonBorder: '',
-    buttonSecondaryBackground: '',
+    actionButtonBorder: '',
+    actionButtonSecondaryBackground: '',
     buttonText: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',

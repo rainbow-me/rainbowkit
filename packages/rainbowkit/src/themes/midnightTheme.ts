@@ -17,8 +17,8 @@ export const midnightTheme = ({
   },
   colors: {
     accentColor: accents[accentColor],
-    buttonBorder: 'rgba(255, 255, 255, 0.04)',
-    buttonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
+    actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
+    actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     buttonText: '#FFF',
     connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',

@@ -8,8 +8,8 @@ describe('cssObjectFromTheme', () => {
       {
         "--rk-borders-modalBorderWidth": "0px",
         "--rk-colors-accentColor": "#1A85FF",
-        "--rk-colors-buttonBorder": "rgba(0, 0, 0, 0.04)",
-        "--rk-colors-buttonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
+        "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
+        "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-buttonText": "#FFF",
         "--rk-colors-connectButtonBackground": "#FFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
