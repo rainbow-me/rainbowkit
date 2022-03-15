@@ -565,7 +565,6 @@ const myCustomTheme: Theme = {
     connectionIndicator: '...',
     error: '...',
     generalBorder: '...',
-
     menuItemBackground: '...',
     modalBackdrop: '...',
     modalBackground: '...',
