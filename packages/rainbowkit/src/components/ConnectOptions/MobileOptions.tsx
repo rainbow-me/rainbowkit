@@ -41,15 +41,27 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         justifyContent="center"
       >
         <Box
-          alt={name}
-          as="img"
-          borderRadius="10"
+          borderRadius="13"
           display="block"
           height="60"
           marginBottom="8"
           src={iconUrl}
+          style={{
+            background: `url(${iconUrl})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
           width="60"
-        />
+        >
+          <Box
+            borderColor="buttonBorder"
+            borderRadius="13"
+            borderStyle="solid"
+            borderWidth="1"
+            height="full"
+            width="full"
+          />
+        </Box>
         <Text
           as="h2"
           color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
@@ -105,7 +117,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="modalBorder" height="1" />
+          <Box background="generalBorder" height="1" />
 
           <Box
             alignItems="center"
@@ -199,7 +211,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                     </Box>
                     {index < mobileWallets.length - 1 ? (
                       <Box
-                        background="modalBorder"
+                        background="generalBorder"
                         height="1"
                         marginY="10"
                         width="full"

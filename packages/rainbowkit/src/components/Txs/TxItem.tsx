@@ -8,7 +8,7 @@ import {
 } from '../../hooks/useTxHistory';
 import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
 import { Box } from '../Box/Box';
-import { DisconnectIcon } from '../Icons/Disconnect';
+import { CancelIcon } from '../Icons/Cancel';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { SuccessIcon } from '../Icons/Success';
@@ -22,7 +22,7 @@ const getTxStatusIcon = (status: string) => {
     case SUCCESS_TX_STATUS:
       return SuccessIcon;
     case FAIL_TX_STATUS:
-      return DisconnectIcon;
+      return CancelIcon;
     default:
       return SpinnerIcon;
   }
@@ -34,14 +34,7 @@ interface TxProps {
 
 export function TxItem({ tx }: TxProps) {
   const Icon = getTxStatusIcon(tx.status);
-  const iconColor =
-    tx.status === FAIL_TX_STATUS
-      ? 'error'
-      : tx.status === SUCCESS_TX_STATUS
-      ? 'connectionIndicator'
-      : tx.status === PENDING_TX_STATUS
-      ? 'accentColor'
-      : 'menuTextAction';
+  const color = tx.status === FAIL_TX_STATUS ? 'error' : 'accentColor';
   const [{ data: networkData }] = useNetwork();
 
   const confirmationStatus =
@@ -52,18 +45,25 @@ export function TxItem({ tx }: TxProps) {
       : 'Pending';
   return (
     <Box
+      as="a"
+      background={{ hover: 'profileForeground' }}
+      borderRadius="menuButton"
       color="menuText"
       display="flex"
       flexDirection="row"
+      href={`${chainIdToExplorerLink(networkData?.chain?.id)}tx/${tx.hash}`}
       justifyContent="space-between"
-      paddingX="8"
-      paddingY="4"
+      padding="8"
+      rel="noreferrer"
+      target="_blank"
+      transform={{ active: 'shrink', hover: 'grow' }}
+      transition="default"
     >
       <Box alignItems="center" display="flex" flexDirection="row" gap="14">
-        <Box color={iconColor}>
+        <Box color={color}>
           <Icon />
         </Box>
-        <Box display="flex" flexDirection="column" gap="4">
+        <Box display="flex" flexDirection="column" gap="2">
           <Box>
             <Text color="modalText" font="body" size="14" weight="bold">
               {tx?.info}
@@ -71,25 +71,19 @@ export function TxItem({ tx }: TxProps) {
           </Box>
           <Box>
             <Text
-              color="modalTextSecondary"
+              color={
+                tx.status === PENDING_TX_STATUS ? 'modalTextSecondary' : color
+              }
               font="body"
               size="14"
-              weight="medium"
+              weight="regular"
             >
               {confirmationStatus}
             </Text>
           </Box>
         </Box>
       </Box>
-      <Box
-        as="a"
-        color="modalTextSecondary"
-        href={`${chainIdToExplorerLink(networkData?.chain?.id)}tx/${tx.hash}`}
-        rel="noreferrer"
-        target="_blank"
-        transform={{ active: 'shrink', hover: 'growLg' }}
-        transition="default"
-      >
+      <Box alignItems="center" color="modalTextSecondary" display="flex">
         <ExternalLinkIcon />
       </Box>
     </Box>

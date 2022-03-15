@@ -4,7 +4,7 @@ import { largeScreenMinWidth, sprinkles } from '../../css/sprinkles.css';
 export const dialogContent = style([
   sprinkles({
     background: 'modalBackground',
-    borderColor: 'modalCloseBackground',
+    borderColor: 'modalBorder',
     borderRadius: 'modal',
     borderStyle: 'solid',
     borderWidth: '1',

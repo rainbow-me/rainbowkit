@@ -17,16 +17,16 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-connectButtonTextError": "white",
         "--rk-colors-connectionIndicator": "#2CCC00",
         "--rk-colors-error": "#FF494A",
+        "--rk-colors-generalBorder": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-menuBackground": "#fff",
-        "--rk-colors-menuItemActiveBackground": "rgba(196, 196, 196, 0.2)",
-        "--rk-colors-menuItemBackground": "rgba(196, 196, 196, 0.1)",
+        "--rk-colors-menuItemBackground": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-menuText": "#25292E",
         "--rk-colors-menuTextAction": "#4892FE",
         "--rk-colors-menuTextDisconnect": "#FF494A",
         "--rk-colors-menuTextSecondary": "#A3A4A5",
         "--rk-colors-modalBackdrop": "rgba(0, 0, 0, 0.3)",
         "--rk-colors-modalBackground": "#fff",
-        "--rk-colors-modalBorder": "rgba(0, 0, 0, 0.06)",
+        "--rk-colors-modalBorder": "rgba(255, 255, 255, 0)",
         "--rk-colors-modalClose": "rgba(0, 0, 0, 0.6)",
         "--rk-colors-modalCloseBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-modalText": "#25292E",
@@ -44,6 +44,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-dialog": "0px 8px 32px rgba(0, 0, 0, 0.32)",
         "--rk-shadows-menu": "0px 10px 30px rgba(0, 0, 0, 0.1)",
         "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
+        "--rk-shadows-selectedWallet": "0px 2px 6px rgba(0, 0, 0, 0.12)",
       }
     `);
   });

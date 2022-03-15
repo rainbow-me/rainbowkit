@@ -16,7 +16,6 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { walletLogoClassName } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -124,7 +123,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         margin="18"
         style={{ minWidth: isMobile() ? 'full' : '248px' }}
       >
-        <Box marginBottom="16" marginLeft="6" paddingTop="4">
+        <Box marginBottom="16" marginLeft="6">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
@@ -134,7 +133,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             Popular
           </Text>
         </Box>
-        <Box display="flex" flexDirection="column" gap="8">
+        <Box display="flex" flexDirection="column" gap="4">
           {wallets.map(wallet => {
             return (
               <ModalSelection
@@ -158,13 +157,25 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     flexDirection="row"
                     gap="12"
                   >
-                    <img
-                      alt={wallet.name}
-                      className={walletLogoClassName}
+                    <Box
+                      borderRadius="6"
                       height="28"
-                      src={wallet.iconUrl}
+                      style={{
+                        background: `url(${wallet.iconUrl})`,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                      }}
                       width="28"
-                    />
+                    >
+                      <Box
+                        borderColor="buttonBorder"
+                        borderRadius="6"
+                        borderStyle="solid"
+                        borderWidth="1"
+                        height="full"
+                        width="full"
+                      />
+                    </Box>
                     <div>{wallet.name}</div>
                   </Box>
                 </Box>
@@ -175,7 +186,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       </Box>
       {!isMobile() && (
         <>
-          <Box background="modalBorder" minWidth="1" width="1" />
+          <Box background="generalBorder" minWidth="1" width="1" />
           <Box
             display="flex"
             flexDirection="column"
@@ -199,7 +210,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     }
                     paddingX="8"
                     paddingY="4"
-                    style={{ height: 17 }}
+                    style={{ boxSizing: 'content-box', height: 17 }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >
@@ -223,7 +234,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 438 }}
+              style={{ minHeight: 432 }}
             >
               <Box
                 alignItems="center"
@@ -233,7 +244,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 height="full"
                 justifyContent="center"
                 marginTop="6"
-                marginX="6"
+                marginX="8"
               >
                 {walletContent}
               </Box>

@@ -129,7 +129,7 @@ export function ChainModal({
                             </Text>
                             <Box
                               background="connectionIndicator"
-                              borderColor="buttonBorder"
+                              borderColor="selectedOptionBorder"
                               borderRadius="full"
                               borderStyle="solid"
                               borderWidth="2"
@@ -155,7 +155,7 @@ export function ChainModal({
                             </Text>
                             <Box
                               background="standby"
-                              borderColor="buttonBorder"
+                              borderColor="selectedOptionBorder"
                               borderRadius="full"
                               borderStyle="solid"
                               borderWidth="2"

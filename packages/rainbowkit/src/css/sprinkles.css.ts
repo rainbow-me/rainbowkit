@@ -22,8 +22,8 @@ const themeContractValues = {
     connectButtonTextError: '',
     connectionIndicator: '',
     error: '',
+    generalBorder: '',
     menuBackground: '',
-    menuItemActiveBackground: '',
     menuItemBackground: '',
     menuText: '',
     menuTextAction: '',
@@ -55,6 +55,7 @@ const themeContractValues = {
     dialog: '',
     menu: '',
     selectedOption: '',
+    selectedWallet: '',
   },
 };
 
@@ -69,6 +70,7 @@ const spacing = {
   '0': '0',
   '2': '2px',
   '4': '4px',
+  '5': '5px',
   '6': '6px',
   '8': '8px',
   '10': '10px',
@@ -154,6 +156,7 @@ const unresponsiveProperties = defineProperties({
       '1': '1px',
       '6': '6px',
       '10': '10px',
+      '13': '13px',
       'full': '9999px',
     },
     borderStyle: {

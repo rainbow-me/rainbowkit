@@ -14,7 +14,7 @@ export const midnightTheme = ({
   ...baseTheme({ borderRadius }),
   colors: {
     accentColor: accents[accentColor],
-    buttonBorder: 'rgba(255, 255, 255, 0.12)',
+    buttonBorder: 'rgba(255, 255, 255, 0.04)',
     buttonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     buttonText: '#FFF',
     connectButtonBackground: '#000',
@@ -25,9 +25,9 @@ export const midnightTheme = ({
     connectButtonTextError: 'white',
     connectionIndicator: '#30E000',
     error: '#FF494A',
+    generalBorder: 'rgba(255, 255, 255, 0.08)',
     menuBackground: '#000',
-    menuItemActiveBackground: 'rgba(196, 196, 196, 0.2)',
-    menuItemBackground: 'rgba(196, 196, 196, 0.1)',
+    menuItemBackground: 'rgba(255, 255, 255, 0.08)',
     menuText: 'white',
     menuTextAction: '#4892FE',
     menuTextDisconnect: '#FF494A',
@@ -51,5 +51,6 @@ export const midnightTheme = ({
     dialog: '0px 8px 32px rgba(0, 0, 0, 0.32)',
     menu: '0px 10px 30px rgba(0, 0, 0, 0.1)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
+    selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.24)',
   },
 });
