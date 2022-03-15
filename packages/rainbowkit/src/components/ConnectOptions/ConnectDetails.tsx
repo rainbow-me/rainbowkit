@@ -233,7 +233,7 @@ export function ConnectDetail({
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
-            <Text color="menuTextSecondary" size="14" weight="medium">
+            <Text color="modalTextSecondary" size="14" weight="medium">
               Don&rsquo;t have the Rainbow App?
             </Text>
             <ActionButton
@@ -244,7 +244,7 @@ export function ConnectDetail({
           </>
         ) : (
           <>
-            <Text color="menuTextSecondary" size="14" weight="medium">
+            <Text color="modalTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
             <ActionButton

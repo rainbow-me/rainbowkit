@@ -117,7 +117,7 @@ export function TxList({ accountData }: TxListProps) {
           }}
           transition="default"
         >
-          <Text color="menuText" font="body" size="14" weight="bold">
+          <Text color="modalText" font="body" size="14" weight="bold">
             View more on Explorer
           </Text>
           <ExternalLinkIcon />
