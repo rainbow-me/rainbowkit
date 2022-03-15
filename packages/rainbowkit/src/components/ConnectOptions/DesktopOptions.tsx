@@ -121,7 +121,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         flexDirection="column"
         gap="6"
         margin="18"
-        style={{ minWidth: isMobile() ? 'full' : '248px' }}
+        style={{
+          minWidth: isMobile() ? 'full' : '251px',
+        }}
       >
         <Box marginBottom="16" marginLeft="6">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">

@@ -10,6 +10,7 @@ const sizeVariants: Record<
     paddingX: BoxProps['paddingX'];
     paddingY: BoxProps['paddingY'];
     fontSize: TextProps['size'];
+    height?: BoxProps['height'];
   }
 > = {
   large: {
@@ -19,6 +20,7 @@ const sizeVariants: Record<
   },
   medium: {
     fontSize: '14',
+    height: '28',
     paddingX: '12',
     paddingY: '4',
   },
@@ -43,7 +45,7 @@ export function Button({
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
-  const { fontSize, paddingX, paddingY } = sizeVariants[size];
+  const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
@@ -58,9 +60,10 @@ export function Button({
       onClick={onClick}
       paddingX={paddingX}
       paddingY={paddingY}
-      style={{ willChange: 'transform' }}
+      style={{ boxSizing: 'border-box', willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
+      {...(height ? { height } : {})}
     >
       <Text
         color={isPrimary ? 'buttonText' : 'accentColor'}

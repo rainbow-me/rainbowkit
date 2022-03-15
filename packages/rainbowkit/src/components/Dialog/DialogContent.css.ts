@@ -14,6 +14,18 @@ export const dialogContent = style([
     overflow: 'hidden',
     position: 'relative',
   }),
+  {
+    boxSizing: 'content-box',
+    maxWidth: '100vw',
+    width: '360px',
+  },
+]);
+
+export const dialogContentWide = style([
+  dialogContent,
+  {
+    width: '720px',
+  },
 ]);
 
 const bleed = 200;

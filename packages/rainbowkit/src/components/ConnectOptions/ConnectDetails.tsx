@@ -43,7 +43,6 @@ export function GetDetail({
         flexDirection="column"
         gap="28"
         height="full"
-        paddingX="4"
         width="full"
       >
         {wallets
