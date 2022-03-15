@@ -50,6 +50,8 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             background: `url(${iconUrl})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
+            touchCallout: 'none',
+            userSelect: 'none',
           }}
           width="60"
         >
