@@ -10,7 +10,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-accentColor": "#1A85FF",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
-        "--rk-colors-buttonText": "#FFF",
+        "--rk-colors-actionButtonText": "#FFF",
         "--rk-colors-connectButtonBackground": "#FFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
         "--rk-colors-connectButtonInnerBackground": "linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))",

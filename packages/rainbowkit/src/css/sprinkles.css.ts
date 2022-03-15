@@ -14,7 +14,7 @@ const themeContractValues = {
     accentColor: '',
     actionButtonBorder: '',
     actionButtonSecondaryBackground: '',
-    buttonText: '',
+    actionButtonText: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',

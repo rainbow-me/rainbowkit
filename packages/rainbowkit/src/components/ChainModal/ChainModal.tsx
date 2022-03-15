@@ -124,7 +124,11 @@ export function ChainModal({
                             flexDirection="row"
                             marginRight="6"
                           >
-                            <Text color="buttonText" size="14" weight="medium">
+                            <Text
+                              color="actionButtonText"
+                              size="14"
+                              weight="medium"
+                            >
                               Connected
                             </Text>
                             <Box

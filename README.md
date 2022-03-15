@@ -554,7 +554,7 @@ const myCustomTheme: Theme = {
     accentColor: '...',
     actionButtonBorder: '...',
     actionButtonSecondaryBackground: '...',
-    buttonText: '...',
+    actionButtonText: '...',
     connectButtonBackground: '...',
     connectButtonBackgroundError: '...',
     connectButtonInnerBackground: '...',

@@ -66,7 +66,7 @@ export function ActionButton({
       {...(height ? { height } : {})}
     >
       <Text
-        color={isPrimary ? 'buttonText' : 'accentColor'}
+        color={isPrimary ? 'actionButtonText' : 'accentColor'}
         size={fontSize}
         weight="bold"
       >

@@ -19,7 +19,7 @@ export const lightTheme = ({
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
-    buttonText: '#FFF',
+    actionButtonText: '#FFF',
     connectButtonBackground: '#FFF',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:

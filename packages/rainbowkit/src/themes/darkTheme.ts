@@ -19,7 +19,7 @@ export const darkTheme = ({
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
-    buttonText: '#FFF',
+    actionButtonText: '#FFF',
     connectButtonBackground: '#1A1B1F',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:

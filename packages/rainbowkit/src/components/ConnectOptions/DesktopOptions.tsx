@@ -145,7 +145,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               >
                 <Box
                   color={
-                    wallet.id === selectedOptionId ? 'buttonText' : 'modalText'
+                    wallet.id === selectedOptionId
+                      ? 'actionButtonText'
+                      : 'modalText'
                   }
                   disabled={!wallet.ready}
                   fontFamily="body"
