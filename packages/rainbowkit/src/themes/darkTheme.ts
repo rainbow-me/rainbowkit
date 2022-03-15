@@ -47,7 +47,6 @@ export const darkTheme = ({
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
     dialog: '0px 8px 32px rgba(0, 0, 0, 0.32)',
-    menu: '0px 10px 30px rgba(0, 0, 0, 0.1)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
     selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.24)',
   },
