@@ -121,7 +121,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         flexDirection="column"
         gap="6"
         margin="18"
-        style={{ minWidth: isMobile() ? 'full' : '248px' }}
+        style={{
+          minWidth: isMobile() ? 'full' : '251px',
+        }}
       >
         <Box marginBottom="16" marginLeft="6">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
@@ -143,7 +145,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               >
                 <Box
                   color={
-                    wallet.id === selectedOptionId ? 'buttonText' : 'modalText'
+                    wallet.id === selectedOptionId
+                      ? 'actionButtonText'
+                      : 'modalText'
                   }
                   disabled={!wallet.ready}
                   fontFamily="body"
@@ -168,7 +172,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       width="28"
                     >
                       <Box
-                        borderColor="buttonBorder"
+                        borderColor="actionButtonBorder"
                         borderRadius="6"
                         borderStyle="solid"
                         borderWidth="1"

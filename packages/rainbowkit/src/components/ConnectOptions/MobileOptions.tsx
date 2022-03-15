@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
+import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
 import {
@@ -50,11 +50,13 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             background: `url(${iconUrl})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
+            touchCallout: 'none',
+            userSelect: 'none',
           }}
           width="60"
         >
           <Box
-            borderColor="buttonBorder"
+            borderColor="actionButtonBorder"
             borderRadius="13"
             borderStyle="solid"
             borderWidth="1"
@@ -144,13 +146,13 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               </Text>
             </Box>
             <Box display="flex" gap="14" justifyContent="center">
-              <Button
+              <ActionButton
                 label="Get a Wallet"
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
-              <Button
+              <ActionButton
                 href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
                 label="Learn More"
                 size="large"
@@ -202,7 +204,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                           {name}
                         </Text>
                       </Box>
-                      <Button
+                      <ActionButton
                         href={downloadUrls.mobile}
                         label="GET"
                         size="small"

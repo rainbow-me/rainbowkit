@@ -88,7 +88,7 @@ export function TxList({ accountData }: TxListProps) {
             visibleTxs.map(tx => <TxItem key={tx.hash} tx={tx} />)
           ) : (
             <Box paddingBottom="8" paddingTop="6" paddingX="8">
-              <Text color="modalTextSecondary" size="14" weight="bold">
+              <Text color="modalTextDim" size="14" weight="bold">
                 Your transactions will appear here...
               </Text>
             </Box>
@@ -101,7 +101,7 @@ export function TxList({ accountData }: TxListProps) {
           as="a"
           background={{ hover: 'profileForeground' }}
           borderRadius="menuButton"
-          color="modalTextSecondary"
+          color="modalTextDim"
           display="flex"
           flexDirection="row"
           href={explorerUrl}
@@ -117,7 +117,7 @@ export function TxList({ accountData }: TxListProps) {
           }}
           transition="default"
         >
-          <Text color="menuText" font="body" size="14" weight="bold">
+          <Text color="modalText" font="body" size="14" weight="bold">
             View more on Explorer
           </Text>
           <ExternalLinkIcon />

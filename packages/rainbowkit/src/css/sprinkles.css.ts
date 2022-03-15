@@ -12,9 +12,11 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
-    buttonBorder: '',
-    buttonSecondaryBackground: '',
-    buttonText: '',
+    actionButtonBorder: '',
+    actionButtonSecondaryBackground: '',
+    actionButtonText: '',
+    closeButton: '',
+    closeButtonBackground: '',
     connectButtonBackground: '',
     connectButtonBackgroundError: '',
     connectButtonInnerBackground: '',
@@ -23,18 +25,12 @@ const themeContractValues = {
     connectionIndicator: '',
     error: '',
     generalBorder: '',
-    menuBackground: '',
     menuItemBackground: '',
-    menuText: '',
-    menuTextAction: '',
-    menuTextDisconnect: '',
-    menuTextSecondary: '',
     modalBackdrop: '',
     modalBackground: '',
     modalBorder: '',
-    modalClose: '',
-    modalCloseBackground: '',
     modalText: '',
+    modalTextDim: '',
     modalTextSecondary: '',
     profileAction: '',
     profileActionHover: '',
@@ -46,6 +42,7 @@ const themeContractValues = {
     body: '',
   },
   radii: {
+    actionButton: '',
     connectButton: '',
     menuButton: '',
     modal: '',
@@ -53,9 +50,11 @@ const themeContractValues = {
   shadows: {
     connectButton: '',
     dialog: '',
-    menu: '',
     selectedOption: '',
     selectedWallet: '',
+  },
+  borders: {
+    modalBorderWidth: '',
   },
 };
 
@@ -163,6 +162,7 @@ const unresponsiveProperties = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
+      ...themeVars.borders,
       '1': '1px',
       '2': '2px',
       '4': '4px',

@@ -48,7 +48,7 @@ export function TxItem({ tx }: TxProps) {
       as="a"
       background={{ hover: 'profileForeground' }}
       borderRadius="menuButton"
-      color="menuText"
+      color="modalText"
       display="flex"
       flexDirection="row"
       href={`${chainIdToExplorerLink(networkData?.chain?.id)}tx/${tx.hash}`}
@@ -83,7 +83,7 @@ export function TxItem({ tx }: TxProps) {
           </Box>
         </Box>
       </Box>
-      <Box alignItems="center" color="modalTextSecondary" display="flex">
+      <Box alignItems="center" color="modalTextDim" display="flex">
         <ExternalLinkIcon />
       </Box>
     </Box>

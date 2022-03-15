@@ -69,7 +69,7 @@ export function ConnectButton({
                 {chain.unsupported ? (
                   <Box>Invalid network</Box>
                 ) : (
-                  <Box alignItems="center" display="flex" gap="4">
+                  <Box alignItems="center" display="flex" gap="6">
                     {chain.iconUrl ? (
                       <Box
                         alt={chain.name ?? 'Chain icon'}
