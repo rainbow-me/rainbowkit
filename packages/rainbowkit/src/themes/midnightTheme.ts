@@ -34,7 +34,6 @@ export const midnightTheme = ({
     menuBackground: '#000',
     menuItemBackground: 'rgba(255, 255, 255, 0.08)',
     menuText: '#FFF',
-    menuTextAction: '#4892FE',
     menuTextSecondary: '#A3A4A5',
     modalBackdrop:
       'linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))',

@@ -24,7 +24,6 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-menuBackground": "#FFF",
         "--rk-colors-menuItemBackground": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-menuText": "#25292E",
-        "--rk-colors-menuTextAction": "#4892FE",
         "--rk-colors-menuTextSecondary": "#A3A4A5",
         "--rk-colors-modalBackdrop": "rgba(0, 0, 0, 0.3)",
         "--rk-colors-modalBackground": "#FFF",

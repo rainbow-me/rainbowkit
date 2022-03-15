@@ -34,7 +34,6 @@ export const lightTheme = ({
     menuBackground: '#FFF',
     menuItemBackground: 'rgba(60, 66, 66, 0.1)',
     menuText: '#25292E',
-    menuTextAction: '#4892FE',
     menuTextSecondary: '#A3A4A5',
     modalBackdrop: 'rgba(0, 0, 0, 0.3)',
     modalBackground: '#FFF',
