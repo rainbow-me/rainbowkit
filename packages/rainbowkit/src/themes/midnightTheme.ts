@@ -47,6 +47,7 @@ export const midnightTheme = ({
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
     dialog: '0px 8px 32px rgba(0, 0, 0, 0.32)',
+    profileDetailsAction: '0px 2px 6px rgba(37, 41, 46, 0.04)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
     selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.24)',
   },
