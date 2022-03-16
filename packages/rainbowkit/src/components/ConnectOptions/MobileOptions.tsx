@@ -283,7 +283,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       flexDirection="column"
       gap="20"
       paddingBottom="20"
-      paddingTop="16"
+      paddingTop="14"
       style={{ height: 442 }}
     >
       <Box
@@ -321,7 +321,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           </Box>
         )}
 
-        <Box marginTop="6" style={{ textAlign: 'center' }} width="full">
+        <Box marginTop="4" style={{ textAlign: 'center' }} width="full">
           <Text as="h1" color="modalText" id={titleId} size="20" weight="bold">
             {headerLabel}
           </Text>
@@ -330,8 +330,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         <Box
           alignItems="center"
           display="flex"
-          height="full"
-          paddingRight="16"
+          height="32"
+          paddingRight="14"
           position="absolute"
           right="0"
         >

@@ -96,6 +96,7 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '32': '32px',
   '34': '34px',
   '40': '40px',
   '48': '48px',
@@ -165,6 +166,7 @@ const unresponsiveProperties = defineProperties({
     },
     borderWidth: {
       ...themeVars.borders,
+      '0': '0px',
       '1': '1px',
       '2': '2px',
       '4': '4px',
