@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
+import { ActionButton } from '../Button/ActionButton';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { Text } from '../Text/Text';
@@ -60,14 +60,16 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           alignItems="center"
           display="flex"
           flexDirection="column"
-          gap="16"
+          gap="12"
           justifyContent="center"
           marginTop="8"
         >
-          <Button label="Get a Wallet" onClick={getWallet} />
+          <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
             as="a"
             href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+            paddingX="12"
+            paddingY="4"
             rel="noreferrer"
             style={{ willChange: 'transform' }}
             target="_blank"

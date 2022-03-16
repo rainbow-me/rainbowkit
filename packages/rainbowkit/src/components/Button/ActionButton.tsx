@@ -10,6 +10,7 @@ const sizeVariants: Record<
     paddingX: BoxProps['paddingX'];
     paddingY: BoxProps['paddingY'];
     fontSize: TextProps['size'];
+    height?: BoxProps['height'];
   }
 > = {
   large: {
@@ -19,6 +20,7 @@ const sizeVariants: Record<
   },
   medium: {
     fontSize: '14',
+    height: '28',
     paddingX: '12',
     paddingY: '4',
   },
@@ -29,7 +31,7 @@ const sizeVariants: Record<
   },
 };
 
-export function Button({
+export function ActionButton({
   href,
   label,
   onClick,
@@ -43,27 +45,28 @@ export function Button({
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
-  const { fontSize, paddingX, paddingY } = sizeVariants[size];
+  const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
         : { as: 'button', type: 'button' })}
-      background={isPrimary ? 'accentColor' : 'buttonSecondaryBackground'}
-      borderColor="buttonBorder"
-      borderRadius="full"
+      background={isPrimary ? 'accentColor' : 'actionButtonSecondaryBackground'}
+      borderColor="actionButtonBorder"
+      borderRadius="actionButton"
       borderStyle="solid"
       borderWidth="1"
       display="block"
       onClick={onClick}
       paddingX={paddingX}
       paddingY={paddingY}
-      style={{ willChange: 'transform' }}
+      style={{ boxSizing: 'border-box', willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
+      {...(height ? { height } : {})}
     >
       <Text
-        color={isPrimary ? 'buttonText' : 'accentColor'}
+        color={isPrimary ? 'actionButtonText' : 'accentColor'}
         size={fontSize}
         weight="bold"
       >

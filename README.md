@@ -474,11 +474,16 @@ While the built-in themes provide some level of customization, the `Theme` type 
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
+  borders: {
+    modalBorderWidth: '...',
+  },
   colors: {
     accentColor: '...',
-    buttonBorder: '...',
-    buttonSecondaryBackground: '...',
-    buttonText: '...',
+    actionButtonBorder: '...',
+    actionButtonSecondaryBackground: '...',
+    actionButtonText: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
     connectButtonBackground: '...',
     connectButtonBackgroundError: '...',
     connectButtonInnerBackground: '...',
@@ -486,19 +491,13 @@ const myCustomTheme: Theme = {
     connectButtonTextError: '...',
     connectionIndicator: '...',
     error: '...',
-    menuBackground: '...',
-    menuItemActiveBackground: '...',
+    generalBorder: '...',
     menuItemBackground: '...',
-    menuText: '...',
-    menuTextAction: '...',
-    menuTextDisconnect: '...',
-    menuTextSecondary: '...',
     modalBackdrop: '...',
     modalBackground: '...',
     modalBorder: '...',
-    modalClose: '...',
-    modalCloseBackground: '...',
     modalText: '...',
+    modalTextDim: '...',
     modalTextSecondary: '...',
     profileAction: '...',
     profileActionHover: '...',
@@ -510,6 +509,7 @@ const myCustomTheme: Theme = {
     body: '...',
   },
   radii: {
+    actionButton: '...',
     connectButton: '...',
     menuButton: '...',
     modal: '...',
@@ -517,8 +517,8 @@ const myCustomTheme: Theme = {
   shadows: {
     connectButton: '...',
     dialog: '...',
-    menu: '...',
     selectedOption: '...',
+    selectedWallet: '...',
   },
 };
 

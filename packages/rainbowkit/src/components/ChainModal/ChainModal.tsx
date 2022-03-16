@@ -124,12 +124,16 @@ export function ChainModal({
                             flexDirection="row"
                             marginRight="6"
                           >
-                            <Text color="buttonText" size="14" weight="medium">
+                            <Text
+                              color="actionButtonText"
+                              size="14"
+                              weight="medium"
+                            >
                               Connected
                             </Text>
                             <Box
                               background="connectionIndicator"
-                              borderColor="buttonBorder"
+                              borderColor="selectedOptionBorder"
                               borderRadius="full"
                               borderStyle="solid"
                               borderWidth="2"
@@ -155,7 +159,7 @@ export function ChainModal({
                             </Text>
                             <Box
                               background="standby"
-                              borderColor="buttonBorder"
+                              borderColor="selectedOptionBorder"
                               borderRadius="full"
                               borderStyle="solid"
                               borderWidth="2"

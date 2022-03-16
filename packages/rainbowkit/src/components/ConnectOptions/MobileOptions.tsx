@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
+import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
 import {
@@ -11,7 +11,7 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { connect, mobile, iconUrl, id, name, ready } = wallet;
+  const { connect, iconUrl, id, mobile, name, ready } = wallet;
   const getMobileUri = mobile?.getUri;
 
   return (
@@ -42,15 +42,29 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         justifyContent="center"
       >
         <Box
-          alt={name}
-          as="img"
-          borderRadius="10"
+          borderRadius="13"
           display="block"
           height="60"
           marginBottom="8"
           src={iconUrl}
+          style={{
+            background: `url(${iconUrl})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            touchCallout: 'none',
+            userSelect: 'none',
+          }}
           width="60"
-        />
+        >
+          <Box
+            borderColor="actionButtonBorder"
+            borderRadius="13"
+            borderStyle="solid"
+            borderWidth="1"
+            height="full"
+            width="full"
+          />
+        </Box>
         <Text
           as="h2"
           color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
@@ -106,7 +120,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="modalBorder" height="1" />
+          <Box background="generalBorder" height="1" />
 
           <Box
             alignItems="center"
@@ -133,13 +147,13 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               </Text>
             </Box>
             <Box display="flex" gap="14" justifyContent="center">
-              <Button
+              <ActionButton
                 label="Get a Wallet"
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
-              <Button
+              <ActionButton
                 href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
                 label="Learn More"
                 size="large"
@@ -191,7 +205,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                           {name}
                         </Text>
                       </Box>
-                      <Button
+                      <ActionButton
                         href={downloadUrls.mobile}
                         label="GET"
                         size="small"
@@ -200,7 +214,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                     </Box>
                     {index < mobileWallets.length - 1 ? (
                       <Box
-                        background="modalBorder"
+                        background="generalBorder"
                         height="1"
                         marginY="10"
                         width="full"

@@ -4,7 +4,6 @@ import { sprinkles } from '../../css/sprinkles.css';
 export const MenuButtonClassName = style([
   sprinkles({
     background: {
-      active: 'menuItemActiveBackground',
       hover: 'menuItemBackground',
     },
     borderRadius: 'menuButton',
@@ -27,7 +26,7 @@ export const SelectedMenuButtonClassName = style([
     borderStyle: 'solid',
     borderWidth: '1',
     boxShadow: 'selectedOption',
-    color: 'buttonText',
+    color: 'actionButtonText',
     paddingX: '6',
     paddingY: '6',
   }),

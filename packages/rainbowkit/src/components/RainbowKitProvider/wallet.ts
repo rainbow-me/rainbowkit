@@ -2,7 +2,7 @@ import { Connector, Chain as WagmiChain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
-import { isAndroid, isMobile } from '../../utils/isMobile';
+import { isAndroid, isIOS, isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
 import { omitUndefinedValues } from './omitUndefinedValues';
 
@@ -19,7 +19,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
     browserExtension?: string;
   };
   mobile?: {
-    getUri: () => string;
+    getUri?: () => string;
   };
   qrCode?: {
     iconUrl?: string;
@@ -59,8 +59,15 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
     return {
       connector,
       downloadUrls: {
-        mobile: 'https://rainbow.download',
+        mobile: isAndroid()
+          ? 'https://play.google.com/store/apps/details?id=me.rainbow'
+          : isIOS()
+          ? 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021'
+          : 'https://rainbow.download',
       },
+      iconUrl:
+        'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
+      id: 'rainbow',
       mobile: {
         getUri: () => {
           const { uri } = connector.getProvider().connector;
@@ -70,30 +77,27 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
             : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
-      iconUrl:
-        'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
-      id: 'rainbow',
       name: 'Rainbow',
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
         instructions: {
           steps: [
             {
-              step: 'install',
               description:
                 'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+              step: 'install',
               title: 'Open the Rainbow app',
             },
             {
-              step: 'create',
               description:
                 'You can easily backup your wallet using our backup feature on your phone.',
+              step: 'create',
               title: 'Create or Import a Wallet',
             },
             {
-              step: 'scan',
               description:
                 'After you scan, a connection prompt will appear for you to connect your wallet.',
+              step: 'scan',
               title: 'Tap the scan button',
             },
           ],
@@ -188,7 +192,6 @@ const metaMask =
         });
 
     return {
-      installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
       connector,
       downloadUrls: {
         browserExtension:
@@ -197,18 +200,21 @@ const metaMask =
           ? 'https://play.google.com/store/apps/details?id=io.metamask'
           : 'https://apps.apple.com/us/app/metamask/id1438144202',
       },
-      getMobileConnectionUri: shouldUseWalletConnect
-        ? () => {
-            const { uri } = connector.getProvider().connector;
-
-            return isAndroid()
-              ? uri
-              : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
-          }
-        : undefined,
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
       id: 'metaMask',
+      installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
+      mobile: {
+        getUri: shouldUseWalletConnect
+          ? () => {
+              const { uri } = connector.getProvider().connector;
+
+              return isAndroid()
+                ? uri
+                : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
+            }
+          : undefined,
+      },
       name: 'MetaMask',
     };
   };

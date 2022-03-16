@@ -1,6 +1,6 @@
 import React, { ElementType, ReactNode } from 'react';
 import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
+import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
@@ -9,13 +9,9 @@ import {
   useWalletConnectors,
   WalletConnector,
 } from '../RainbowKitProvider/useWalletConnectors';
-import {
-  InstructionStepName,
-  WalletConnectorConfig,
-} from '../RainbowKitProvider/wallet';
+import { InstructionStepName } from '../RainbowKitProvider/wallet';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
-import { walletLogoClassName } from './DesktopOptions.css';
 
 export function GetDetail({
   getMobileWallet,
@@ -48,7 +44,6 @@ export function GetDetail({
         flexDirection="column"
         gap="28"
         height="full"
-        paddingX="4"
         width="full"
       >
         {wallets
@@ -58,7 +53,7 @@ export function GetDetail({
               (wallet.qrCode && wallet.downloadUrls?.mobile)
           )
           .map(wallet => {
-            const { downloadUrls, qrCode, iconUrl, id, name } = wallet;
+            const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
             const hasMobileCompanionApp = downloadUrls?.mobile && qrCode;
             return (
               <Box
@@ -100,7 +95,11 @@ export function GetDetail({
                     ? linkProps(downloadUrls.browserExtension)
                     : {})}
                 >
-                  <Button label="GET" onClick={() => {}} type="secondary" />
+                  <ActionButton
+                    label="GET"
+                    onClick={() => {}}
+                    type="secondary"
+                  />
                 </Box>
               </Box>
             );
@@ -174,13 +173,9 @@ export function ConnectDetail({
             flexDirection="column"
             gap="20"
           >
-            <img
-              alt={name}
-              className={walletLogoClassName}
-              height="60"
-              src={iconUrl}
-              width="60"
-            />
+            <Box borderRadius="6">
+              <img alt={name} height="60" src={iconUrl} width="60" />
+            </Box>
             <Box
               alignItems="center"
               display="flex"
@@ -205,7 +200,7 @@ export function ConnectDetail({
               >
                 {connectionError ? (
                   <Text color="error" size="16" weight="bold">
-                    Error connecting. Please try again.
+                    Error connecting, please retry!
                   </Text>
                 ) : (
                   <>
@@ -218,7 +213,7 @@ export function ConnectDetail({
               </Box>
               {!ready && downloadUrls?.browserExtension ? (
                 <Box paddingTop="8">
-                  <Button
+                  <ActionButton
                     href={downloadUrls.browserExtension}
                     label="Install"
                     type="secondary"
@@ -236,17 +231,16 @@ export function ConnectDetail({
         display="flex"
         flexDirection="row"
         gap="8"
-        height="34"
+        height="28"
         justifyContent="space-between"
         marginTop="6"
-        paddingY="8"
       >
         {!ready ? null : name === 'Rainbow' ? (
           <>
-            <Text color="menuTextSecondary" size="14" weight="medium">
+            <Text color="modalTextSecondary" size="14" weight="medium">
               Don&rsquo;t have the Rainbow App?
             </Text>
-            <Button
+            <ActionButton
               label="GET"
               onClick={() => setWalletStep(WalletStep.Download)}
               type="secondary"
@@ -254,10 +248,10 @@ export function ConnectDetail({
           </>
         ) : (
           <>
-            <Text color="menuTextSecondary" size="14" weight="medium">
+            <Text color="modalTextSecondary" size="14" weight="medium">
               Confirm the connection in {name}
             </Text>
-            <Button
+            <ActionButton
               label="Retry"
               onClick={() => wallet?.connect?.()}
               type="secondary"
@@ -308,7 +302,7 @@ export function DownloadDetail({
         marginBottom="12"
         paddingY="8"
       >
-        <Button
+        <ActionButton
           label="Continue"
           onClick={() =>
             setWalletStep(
@@ -327,16 +321,16 @@ const stepIcons: Record<
   InstructionStepName,
   (wallet: WalletConnector) => ReactNode
 > = {
+  create: () => <CreateIcon />,
   install: wallet => (
     <Box
-      as="img"
       alt={wallet.name}
+      as="img"
       height="48"
       src={wallet.iconUrl}
       width="48"
     />
   ),
-  create: () => <CreateIcon />,
   scan: () => <ScanIcon />,
 };
 
@@ -384,17 +378,19 @@ export function InstructionDetail({
         alignItems="center"
         display="flex"
         flexDirection="column"
-        gap="16"
+        gap="12"
         justifyContent="center"
-        marginBottom="24"
+        marginBottom="16"
       >
-        <Button
+        <ActionButton
           label="Connect"
           onClick={() => setWalletStep(WalletStep.Connect)}
         />
         <Box
           as="a"
           href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          paddingX="12"
+          paddingY="4"
           rel="noreferrer"
           style={{ willChange: 'transform' }}
           target="_blank"
