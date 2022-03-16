@@ -513,6 +513,7 @@ const myCustomTheme: Theme = {
     connectButton: '...',
     menuButton: '...',
     modal: '...',
+    modalMobile: '...',
   },
   shadows: {
     connectButton: '...',

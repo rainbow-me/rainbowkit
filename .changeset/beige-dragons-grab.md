@@ -20,6 +20,7 @@ Theme object has been updated in the following way:
 `colors.modalTextDim`
 `radii.actionButton`
 `shadows.profileDetailsAction`
+`radii.modalMobile`
 
 **Removed**
 

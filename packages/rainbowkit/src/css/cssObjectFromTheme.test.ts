@@ -38,6 +38,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-radii-connectButton": "12px",
         "--rk-radii-menuButton": "12px",
         "--rk-radii-modal": "24px",
+        "--rk-radii-modalMobile": "28px",
         "--rk-shadows-connectButton": "0px 4px 12px rgba(0, 0, 0, 0.1)",
         "--rk-shadows-dialog": "0px 8px 32px rgba(0, 0, 0, 0.32)",
         "--rk-shadows-profileDetailsAction": "0px 2px 6px rgba(37, 41, 46, 0.04)",

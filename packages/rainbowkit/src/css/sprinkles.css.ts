@@ -46,6 +46,7 @@ const themeContractValues = {
     connectButton: '',
     menuButton: '',
     modal: '',
+    modalMobile: '',
   },
   shadows: {
     connectButton: '',

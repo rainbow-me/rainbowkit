@@ -48,6 +48,16 @@ export const dialogContentWideDesktop = style([
   },
 ]);
 
+export const dialogContentMobile = style([
+  sprinkles({
+    borderRadius: 'modalMobile',
+  }),
+  {
+    borderWidth: '0px',
+    boxSizing: 'border-box',
+  },
+]);
+
 const bleed = 200;
 export const bottomSheetOverrides = style({
   '@media': {
