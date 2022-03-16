@@ -20,7 +20,7 @@ export const midnightTheme = ({
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     actionButtonText: '#FFF',
-    closeButton: 'rgba(255, 255, 255, 0.6)',
+    closeButton: 'rgba(255, 255, 255, 0.7)',
     closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',

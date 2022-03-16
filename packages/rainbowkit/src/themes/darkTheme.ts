@@ -20,7 +20,7 @@ export const darkTheme = ({
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     actionButtonText: '#FFF',
-    closeButton: 'rgba(255, 255, 255, 0.6)',
+    closeButton: 'rgba(224, 232, 255, 0.6)',
     closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#1A1B1F',
     connectButtonBackgroundError: '#FF494A',

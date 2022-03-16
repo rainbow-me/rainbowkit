@@ -20,7 +20,7 @@ export const lightTheme = ({
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     actionButtonText: '#FFF',
-    closeButton: 'rgba(0, 0, 0, 0.6)',
+    closeButton: 'rgba(60, 66, 66, 0.8)',
     closeButtonBackground: 'rgba(0, 0, 0, 0.06)',
     connectButtonBackground: '#FFF',
     connectButtonBackgroundError: '#FF494A',

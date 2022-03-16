@@ -11,7 +11,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-actionButtonText": "#FFF",
-        "--rk-colors-closeButton": "rgba(0, 0, 0, 0.6)",
+        "--rk-colors-closeButton": "rgba(60, 66, 66, 0.8)",
         "--rk-colors-closeButtonBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-connectButtonBackground": "#FFF",
         "--rk-colors-connectButtonBackgroundError": "#FF494A",
