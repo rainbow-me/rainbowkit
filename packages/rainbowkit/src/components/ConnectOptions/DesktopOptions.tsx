@@ -34,7 +34,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const isRainbow = selectedOptionId === 'rainbow';
   const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
-    wallet => wallet.ready || wallet.downloadUrls?.desktop
+    wallet => wallet.ready || wallet.downloadUrls?.browserExtension
   );
 
   const onSelectWallet = (wallet: WalletConnector) => {

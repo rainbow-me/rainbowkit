@@ -11,7 +11,8 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { connect, getMobileConnectionUri, iconUrl, id, name, ready } = wallet;
+  const { connect, iconUrl, id, mobile, name, ready } = wallet;
+  const getMobileUri = mobile?.getUri;
 
   return (
     <Box
@@ -23,13 +24,13 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       onClick={useCallback(() => {
         connect?.();
 
-        if (getMobileConnectionUri) {
+        if (getMobileUri) {
           // Get URI on next tick after connecting to ensure it's available
           setTimeout(() => {
-            window.location.href = getMobileConnectionUri();
+            window.location.href = getMobileUri();
           }, 0);
         }
-      }, [connect, getMobileConnectionUri])}
+      }, [connect, getMobileUri])}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"

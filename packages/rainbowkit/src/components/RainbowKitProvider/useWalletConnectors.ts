@@ -19,7 +19,7 @@ export function useWalletConnectors(): WalletConnector[] {
       return {
         ...(connector._wallet as WalletConnectorConfig),
         connect: () => connect(connector),
-        ready: connector.ready && (connector._wallet.ready ?? true),
+        ready: (connector._wallet.installed ?? true) && connector.ready,
       };
     });
 }

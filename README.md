@@ -224,7 +224,7 @@ const App = () => {
 
 The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
-Your chain config can be defined in a single array using RainbowKit's `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
+Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
 
 ```tsx
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
@@ -464,79 +464,6 @@ The following props are passed to your render function.
   </tbody>
 </table>
 
-### Customizing the wallet list
-
-The following wallet options are presented by default via the `getDefaultWallets` function:
-
-- Rainbow
-- WalletConnect
-- Coinbase Wallet
-- MetaMask
-
-An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
-
-All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
-
-```tsx
-import { wallet, Wallet } from '@rainbow-me/rainbowkit';
-
-const needsInjectedWalletFallback =
-  typeof window !== 'undefined' &&
-  window.ethereum &&
-  !window.ethereum.isMetaMask &&
-  !window.ethereum.isCoinbaseWallet;
-
-const wallets: Wallet[] = [
-  wallet.rainbow({ chains, infuraId }),
-  wallet.walletConnect({ chains, infuraId }),
-  wallet.coinbase({
-    chains,
-    appName: 'My RainbowKit App',
-    jsonRpcUrl: ({ chainId }) =>
-      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-      chain.mainnet.rpcUrls[0],
-  }),
-  wallet.metaMask({ chains, infuraId }),
-  ...(needsInjectedWalletFallback
-    ? [wallet.injected({ chains, infuraId })]
-    : []),
-];
-```
-
-### Creating custom wallets
-
-> ⚠️ Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time, so let us know if there are any particular wallets you’re interested in.
-
-The `Wallet` type is provided to help you define your own custom wallets.
-
-```tsx
-import { Wallet, getDefaultWallets } from '@rainbow-me/rainbowkit';
-
-const myCustomWallet: Wallet = () => ({
-  id: 'myCustomWallet',
-  name: 'My Custom Wallet',
-  iconUrl: 'https://example.com/icon.png',
-  connector: new WalletConnectConnector({
-    chains,
-    options: {
-      infuraId,
-      qrcode: true,
-    },
-  }),
-});
-
-const defaultWallets = getDefaultWallets({
-  chains,
-  infuraId,
-  appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
-});
-
-const wallets: Wallet[] = [...defaultWallets, myCustomWallet];
-```
-
 ### Creating custom themes
 
 > ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
@@ -644,6 +571,150 @@ const App = () => {
     </RainbowKitProvider>
   );
 };
+```
+
+### Customizing the wallet list
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend avoiding changes to the wallet list for now.
+
+The following wallet options are presented by default via the `getDefaultWallets` function:
+
+- Rainbow
+- WalletConnect
+- Coinbase Wallet
+- MetaMask
+
+An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn’t been provided by another wallet.
+
+All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
+
+```tsx
+import { wallet, Wallet } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: Wallet[] = [
+  wallet.rainbow({ chains, infuraId }),
+  wallet.walletConnect({ chains, infuraId }),
+  wallet.coinbase({
+    chains,
+    appName: 'My RainbowKit App',
+    jsonRpcUrl: ({ chainId }) =>
+      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+      chain.mainnet.rpcUrls[0],
+  }),
+  wallet.metaMask({ chains, infuraId }),
+  ...(needsInjectedWalletFallback
+    ? [wallet.injected({ chains, infuraId })]
+    : []),
+];
+```
+
+### Creating custom wallets
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time, so let us know if there are any particular wallets you’re interested in.
+
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id</code></td>
+      <td><code>string</code></td>
+      <td>Unique ID per wallet</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td><code>string</code></td>
+      <td>Human-readable wallet name</td>
+    </tr>
+    <tr>
+      <td><code>iconUrl</code></td>
+      <td><code>string</code></td>
+      <td>URL for wallet icon</td>
+    </tr>
+    <tr>
+      <td><code>Connector</code></td>
+      <td><code>Connector</code></td>
+      <td>Instance of a <a href="https://wagmi.sh/guides/connectors">wagmi connector</a></td>
+    </tr>
+    <tr>
+      <td><code>installed</code></td>
+      <td><code>boolean | undefined</code></td>
+      <td>Whether the wallet is known to be installed, or <code>undefined</code> if indeterminate</td>
+    </tr>
+    <tr>
+      <td><code>mobile</code></td>
+      <td><code>{ getUri?: () => string } | undefined</code></td>
+      <td>Function for resolving a mobile wallet connection URI</td>
+    </tr>
+    <tr>
+      <td><code>qrCode</code></td>
+      <td><code>{ getUri: () => string, iconUrl?: string, instructions?: { steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
+      <td>Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon</td>
+    </tr>
+    <tr>
+      <td><code>downloadUrls</code></td>
+      <td><code>{ mobile?: string, browserExtension?: string } | undefined</code></td>
+      <td>Object containing download URLs</td>
+    </tr>
+  </tbody>
+</table>
+
+For example, to create a custom wallet using WalletConnect:
+
+```tsx
+import { Wallet, Chain } from '@rainbow-me/rainbowkit';
+
+interface MyCustomWalletOptions {
+  chains: Chain[];
+  infuraId?: string;
+}
+
+const myCustomWallet = ({
+  chains,
+  infuraId,
+}: MyCustomWalletOptions): Wallet => {
+  const connector = new WalletConnectConnector({
+    chains,
+    options: {
+      infuraId,
+      qrcode: false,
+    },
+  });
+
+  return {
+    id: 'myCustomWallet',
+    name: 'My Custom Wallet',
+    iconUrl: 'https://example.com/icon.png',
+    connector,
+    download: {
+      mobile: { url: 'https://example.com/download/mobile' },
+    },
+    mobile: {
+      getUri: () => {
+        const { uri } = connector.getProvider().connector;
+        return `https://example.com/wc?uri=${encodeURIComponent(uri)}`;
+      },
+    },
+    qrCode: {
+      getUri: () => connector.getProvider().connector.uri,
+    },
+  };
+};
+
+const walletInstance = myCustomWallet({ chains, infuraId });
 ```
 
 ## License
