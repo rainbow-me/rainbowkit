@@ -1,5 +1,7 @@
 import { globalStyle } from '@vanilla-extract/css';
 
+import { vars } from './vars.css';
+
 globalStyle('*', {
   border: 0,
   boxSizing: 'border-box',
@@ -12,6 +14,7 @@ globalStyle('*', {
 globalStyle('body', {
   // backgroundColor: 'black',
   // color: 'white',
+  backgroundColor: vars.colors.background,
   fontFamily:
     'SFRounded, ui-rounded, SF Pro Rounded, system-ui, Helvetica Neue, Arial, Helvetica, sans-serif',
   fontSize: '100%',

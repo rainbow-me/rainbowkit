@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-sort-props */
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { text } from 'css/text.css';
+import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -35,8 +36,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           ))}
         </div>
       </div>
+
       <div style={{ paddingLeft: 250, paddingTop: 60, paddingBottom: 80 }}>
-        {children}
+        <div style={{ padding: '0 24px' }}>{children}</div>
       </div>
     </Wrapper>
   );
@@ -55,12 +57,10 @@ function Link({ children, slug }) {
           padding: '8px 15px',
           borderRadius: 12,
           fontWeight: 600,
-          color: 'rgba(60, 66, 82, 0.8)',
+
           ...(router.query.slug === slug
             ? {
-                color: 'rgb(37, 41, 46)',
-                background:
-                  'radial-gradient(100% 464.29% at 0% 50%, rgba(60, 66, 82, 0.08) 0%, rgba(60, 66, 82, 0) 100%)',
+                background: vars.colors.fill,
               }
             : {}),
         }}
