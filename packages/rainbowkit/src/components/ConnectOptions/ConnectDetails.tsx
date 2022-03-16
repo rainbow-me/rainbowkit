@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import React, { ElementType, ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { Button } from '../Button/Button';
 import { CreateIcon } from '../Icons/Create';
@@ -9,6 +9,10 @@ import {
   useWalletConnectors,
   WalletConnector,
 } from '../RainbowKitProvider/useWalletConnectors';
+import {
+  InstructionStepName,
+  WalletConnectorConfig,
+} from '../RainbowKitProvider/wallet';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 import { walletLogoClassName } from './DesktopOptions.css';
@@ -48,10 +52,14 @@ export function GetDetail({
         width="full"
       >
         {wallets
-          ?.filter(wallet => wallet.downloadUrls?.desktop)
+          ?.filter(
+            wallet =>
+              wallet.downloadUrls?.browserExtension ||
+              (wallet.qrCode && wallet.downloadUrls?.mobile)
+          )
           .map(wallet => {
-            const { downloadUrls, iconUrl, id, name } = wallet;
-            const mobileDownload = downloadUrls?.desktop?.mobileCompanion;
+            const { downloadUrls, qrCode, iconUrl, id, name } = wallet;
+            const hasMobileCompanionApp = downloadUrls?.mobile && qrCode;
             return (
               <Box
                 alignItems="center"
@@ -75,9 +83,9 @@ export function GetDetail({
                       {name}
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {downloadUrls?.desktop?.mobileCompanion
+                      {hasMobileCompanionApp
                         ? 'Mobile Wallet'
-                        : downloadUrls?.desktop?.browserExtension
+                        : downloadUrls?.browserExtension
                         ? 'Browser Extension'
                         : null}
                     </Text>
@@ -87,10 +95,9 @@ export function GetDetail({
                   display="flex"
                   flexDirection="column"
                   gap="4"
-                  onClick={() => mobileDownload && getMobileWallet(id)}
-                  {...(!mobileDownload &&
-                  downloadUrls?.desktop?.browserExtension
-                    ? linkProps(downloadUrls.desktop?.browserExtension)
+                  onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
+                  {...(!hasMobileCompanionApp && downloadUrls?.browserExtension
+                    ? linkProps(downloadUrls.browserExtension)
                     : {})}
                 >
                   <Button label="GET" onClick={() => {}} type="secondary" />
@@ -137,7 +144,7 @@ export function ConnectDetail({
 
   if (ready) {
     readyMsg = 'Waiting for connection';
-  } else if (downloadUrls?.desktop?.browserExtension) {
+  } else if (downloadUrls?.browserExtension) {
     readyMsg = `The ${name} extension is not installed in your browser`;
   } else {
     readyMsg = `${name} is not available on this device`;
@@ -149,7 +156,7 @@ export function ConnectDetail({
         <Box height="full">
           <QRCode
             logoSize={72}
-            logoUri={qrCode.logoUri ?? iconUrl}
+            logoUri={qrCode.iconUrl ?? iconUrl}
             size={382}
             uri={qrCode.getUri()}
           />
@@ -185,7 +192,7 @@ export function ConnectDetail({
               <Text color="modalText" size="20" weight="bold">
                 {ready
                   ? `Opening ${name}`
-                  : downloadUrls?.desktop?.browserExtension
+                  : downloadUrls?.browserExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
@@ -209,10 +216,10 @@ export function ConnectDetail({
                   </>
                 )}
               </Box>
-              {!ready && downloadUrls?.desktop?.browserExtension ? (
+              {!ready && downloadUrls?.browserExtension ? (
                 <Box paddingTop="8">
                   <Button
-                    href={downloadUrls.desktop?.browserExtension}
+                    href={downloadUrls.browserExtension}
                     label="Install"
                     type="secondary"
                   />
@@ -269,7 +276,7 @@ export function DownloadDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrls } = wallet;
+  const { downloadUrls, qrCode } = wallet;
   return (
     <Box
       alignItems="center"
@@ -303,14 +310,35 @@ export function DownloadDetail({
       >
         <Button
           label="Continue"
-          onClick={() => setWalletStep(WalletStep.Instructions)}
+          onClick={() =>
+            setWalletStep(
+              qrCode?.instructions
+                ? WalletStep.Instructions
+                : WalletStep.Connect
+            )
+          }
         />
       </Box>
     </Box>
   );
 }
 
-const instructionImgs = [<CreateIcon key="create" />, <ScanIcon key="scan" />];
+const stepIcons: Record<
+  InstructionStepName,
+  (wallet: WalletConnector) => ReactNode
+> = {
+  install: wallet => (
+    <Box
+      as="img"
+      alt={wallet.name}
+      height="48"
+      src={wallet.iconUrl}
+      width="48"
+    />
+  ),
+  create: () => <CreateIcon />,
+  scan: () => <ScanIcon />,
+};
 
 export function InstructionDetail({
   setWalletStep,
@@ -319,16 +347,6 @@ export function InstructionDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const renderedInstructionImgs = [
-    <img
-      alt={wallet.name}
-      height="48"
-      key="logo"
-      src={wallet.iconUrl}
-      width="48"
-    />,
-    ...instructionImgs,
-  ];
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       <Box
@@ -339,7 +357,7 @@ export function InstructionDetail({
         justifyContent="center"
         padding="32"
       >
-        {wallet?.instructions?.map((d, idx) => (
+        {wallet?.qrCode?.instructions?.steps.map((d, idx) => (
           <Box
             alignItems="center"
             display="flex"
@@ -348,14 +366,14 @@ export function InstructionDetail({
             key={idx}
           >
             <Box height="48" minWidth="48" width="48">
-              {renderedInstructionImgs[idx]}
+              {stepIcons[d.step]?.(wallet)}
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
                 {d.title}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {d.subtitle}
+                {d.description}
               </Text>
             </Box>
           </Box>

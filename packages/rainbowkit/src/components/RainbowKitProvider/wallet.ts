@@ -6,25 +6,32 @@ import { isAndroid, isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
 import { omitUndefinedValues } from './omitUndefinedValues';
 
+export type InstructionStepName = 'install' | 'create' | 'scan';
+
 export type WalletConnectorConfig<C extends Connector = Connector> = {
+  installed?: boolean;
   connector: C;
   id: string;
   name: string;
   iconUrl: string;
   downloadUrls?: {
     mobile?: string;
-    desktop?: {
-      mobileCompanion?: string;
-      browserExtension?: string;
-    };
+    browserExtension?: string;
   };
-  instructions?: { title: string; subtitle: string; imgUrl?: string }[];
-  getMobileConnectionUri?: () => string;
-  qrCode?: {
-    logoUri?: string;
+  mobile?: {
     getUri: () => string;
   };
-  ready?: boolean;
+  qrCode?: {
+    iconUrl?: string;
+    getUri: () => string;
+    instructions?: {
+      steps: {
+        step: InstructionStepName;
+        title: string;
+        description: string;
+      }[];
+    };
+  };
 };
 
 type ConnectorArgs = {
@@ -40,7 +47,7 @@ interface RainbowOptions {
   infuraId?: string;
 }
 const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
-  const wallet: Wallet = () => {
+  return () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
@@ -52,46 +59,48 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
     return {
       connector,
       downloadUrls: {
-        desktop: {
-          mobileCompanion: 'https://rainbow.download',
-        },
         mobile: 'https://rainbow.download',
       },
-      getMobileConnectionUri: () => {
-        const { uri } = connector.getProvider().connector;
+      mobile: {
+        getUri: () => {
+          const { uri } = connector.getProvider().connector;
 
-        return isAndroid()
-          ? uri
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          return isAndroid()
+            ? uri
+            : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+        },
       },
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
-      instructions: [
-        {
-          subtitle:
-            'We recommend putting Rainbow on your home screen for faster access to your wallet.',
-          title: 'Open the Rainbow app',
-        },
-        {
-          subtitle:
-            'You can easily backup your wallet using our backup feature on your phone.',
-          title: 'Create or Import a Wallet',
-        },
-        {
-          subtitle:
-            'After you scan, a connection prompt will appear for you to connect your wallet.',
-          title: 'Tap the scan button',
-        },
-      ],
       name: 'Rainbow',
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
+        instructions: {
+          steps: [
+            {
+              step: 'install',
+              description:
+                'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+              title: 'Open the Rainbow app',
+            },
+            {
+              step: 'create',
+              description:
+                'You can easily backup your wallet using our backup feature on your phone.',
+              title: 'Create or Import a Wallet',
+            },
+            {
+              step: 'scan',
+              description:
+                'After you scan, a connection prompt will appear for you to connect your wallet.',
+              title: 'Tap the scan button',
+            },
+          ],
+        },
       },
     };
   };
-
-  return wallet;
 };
 
 interface WalletConnectOptions {
@@ -123,8 +132,9 @@ const coinbase =
   ({ appName, chains, jsonRpcUrl }: CoinbaseOptions): Wallet =>
   ({ chainId }) => ({
     connector:
+      typeof window !== 'undefined' &&
       // @ts-expect-error
-      typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet
+      window.ethereum?.isCoinbaseWallet
         ? new InjectedConnector({ chains })
         : new WalletLinkConnector({
             chains,
@@ -137,10 +147,8 @@ const coinbase =
             },
           }),
     downloadUrls: {
-      desktop: {
-        browserExtension:
-          'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
-      },
+      browserExtension:
+        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
       mobile: isAndroid()
         ? 'https://play.google.com/store/apps/details?id=org.toshi'
         : 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
@@ -159,11 +167,12 @@ interface MetaMaskOptions {
 const metaMask =
   ({ chains, infuraId, shimDisconnect }: MetaMaskOptions): Wallet =>
   () => {
-    const shouldUseWalletConnect =
-      isMobile() &&
+    const isMetaMaskInjected =
       typeof window !== 'undefined' &&
       // @ts-expect-error
-      !window.ethereum?.isMetaMask;
+      window.ethereum?.isMetaMask;
+
+    const shouldUseWalletConnect = isMobile() && !isMetaMaskInjected;
 
     const connector = shouldUseWalletConnect
       ? new WalletConnectConnector({
@@ -179,12 +188,11 @@ const metaMask =
         });
 
     return {
+      installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
       connector,
       downloadUrls: {
-        desktop: {
-          browserExtension:
-            'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
-        },
+        browserExtension:
+          'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
         mobile: isAndroid()
           ? 'https://play.google.com/store/apps/details?id=io.metamask'
           : 'https://apps.apple.com/us/app/metamask/id1438144202',
@@ -202,11 +210,6 @@ const metaMask =
         'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
       id: 'metaMask',
       name: 'MetaMask',
-      ready:
-        shouldUseWalletConnect ||
-        (typeof window !== 'undefined' &&
-          // @ts-expect-error
-          window.ethereum?.isMetaMask === true),
     };
   };
 
