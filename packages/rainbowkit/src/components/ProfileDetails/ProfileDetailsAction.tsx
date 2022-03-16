@@ -32,6 +32,7 @@ export function ProfileDetailsAction({
         hover: 'profileActionHover',
       }}
       borderRadius="menuButton"
+      boxShadow="profileDetailsAction"
       padding="10"
       style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}

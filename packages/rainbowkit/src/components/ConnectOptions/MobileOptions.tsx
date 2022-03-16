@@ -46,7 +46,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
           display="block"
           height="60"
           marginBottom="8"
-          src={iconUrl}
           style={{
             background: `url(${iconUrl})`,
             backgroundRepeat: 'no-repeat',
@@ -197,7 +196,28 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   paddingX="20"
                   width="full"
                 >
-                  <img alt={name} height={48} src={iconUrl} width={48} />
+                  <Box
+                    borderRadius="10"
+                    height="48"
+                    minWidth="48"
+                    style={{
+                      background: `url(${iconUrl})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      touchCallout: 'none',
+                      userSelect: 'none',
+                    }}
+                    width="48"
+                  >
+                    <Box
+                      borderColor="actionButtonBorder"
+                      borderRadius="10"
+                      borderStyle="solid"
+                      borderWidth="1"
+                      height="full"
+                      width="full"
+                    />
+                  </Box>
                   <Box display="flex" flexDirection="column" width="full">
                     <Box alignItems="center" display="flex" height="48">
                       <Box width="full">

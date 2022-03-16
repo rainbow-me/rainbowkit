@@ -70,8 +70,27 @@ export function GetDetail({
                   flexDirection="row"
                   gap="16"
                 >
-                  <Box height="48" minWidth="48" width="48">
-                    <img alt={name} height={48} src={iconUrl} width={48} />
+                  <Box
+                    borderRadius="10"
+                    height="48"
+                    src={iconUrl}
+                    style={{
+                      background: `url(${iconUrl})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      touchCallout: 'none',
+                      userSelect: 'none',
+                    }}
+                    width="48"
+                  >
+                    <Box
+                      borderColor="actionButtonBorder"
+                      borderRadius="10"
+                      borderStyle="solid"
+                      borderWidth="1"
+                      height="full"
+                      width="full"
+                    />
                   </Box>
                   <Box display="flex" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">

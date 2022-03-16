@@ -517,6 +517,7 @@ const myCustomTheme: Theme = {
   shadows: {
     connectButton: '...',
     dialog: '...',
+    profileDetailsAction: '...',
     selectedOption: '...',
     selectedWallet: '...',
   },
