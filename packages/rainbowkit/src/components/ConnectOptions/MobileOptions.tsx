@@ -312,7 +312,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               marginTop="20"
               onClick={() => setWalletStep(headerBackButtonLink!)}
               padding="16"
-              style={{ height: 17 }}
+              style={{ height: 17, willChange: 'transform' }}
               transform={{ active: 'shrinkSm', hover: 'growLg' }}
               transition="default"
             >
