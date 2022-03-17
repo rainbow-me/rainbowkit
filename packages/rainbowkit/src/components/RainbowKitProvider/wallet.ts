@@ -303,12 +303,12 @@ export type WalletConnectorInstance = WalletConnectorConfig & {
   groupName: string;
 };
 
-export const connectorsForWallets = (groupedWallets: Wallets) => {
+export const connectorsForWallets = (wallets: Wallets) => {
   return function (connectorArgs: ConnectorArgs) {
     const connectors: any[] = [];
 
-    groupedWallets.forEach(({ groupName, wallets }) => {
-      wallets.forEach(createWallet => {
+    wallets.forEach(({ groupName, wallets: groupedWallets }) => {
+      groupedWallets.forEach(createWallet => {
         const wallet = omitUndefinedValues(createWallet(connectorArgs));
 
         if (wallet.connector._wallet) {
