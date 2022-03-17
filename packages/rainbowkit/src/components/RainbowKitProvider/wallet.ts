@@ -248,7 +248,7 @@ export const wallet = {
   walletConnect,
 } as const;
 
-export type Wallets = Array<{ groupName: string; wallets: Array<Wallet> }>;
+export type Wallets = { groupName: string; wallets: Wallet[] }[];
 
 export const getDefaultWallets = ({
   appName,
