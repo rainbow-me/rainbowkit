@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -25,6 +25,17 @@ export enum WalletStep {
   Instructions = 'INSTRUCTIONS',
 }
 
+function groupBy<T>(items: T[], key: (item: T) => string): Record<string, T[]> {
+  return items.reduce((acc, item) => {
+    const keyValue = key(item);
+    if (!acc[keyValue]) {
+      acc[keyValue] = [];
+    }
+    acc[keyValue].push(item);
+    return acc;
+  }, {} as Record<string, T[]>);
+}
+
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const [selectedOptionId, setSelectedOptionId] = useState<
@@ -36,6 +47,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors().filter(
     wallet => wallet.ready || wallet.downloadUrls?.browserExtension
   );
+
+  const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
   const onSelectWallet = (wallet: WalletConnector) => {
     if (wallet.ready) {
@@ -130,63 +143,72 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             Connect a Wallet
           </Text>
         </Box>
-        <Box marginLeft="6" marginY="4">
-          <Text color="modalTextSecondary" size="14" weight="bold">
-            Popular
-          </Text>
-        </Box>
-        <Box display="flex" flexDirection="column" gap="4">
-          {wallets.map(wallet => {
-            return (
-              <ModalSelection
-                currentlySelected={wallet.id === selectedOptionId}
-                key={wallet.id}
-                onClick={() => onSelectWallet(wallet)}
-              >
-                <Box
-                  color={
-                    wallet.id === selectedOptionId
-                      ? 'actionButtonText'
-                      : 'modalText'
-                  }
-                  disabled={!wallet.ready}
-                  fontFamily="body"
-                  fontSize="16"
-                  fontWeight="bold"
-                  transition="default"
-                >
-                  <Box
-                    alignItems="center"
-                    display="flex"
-                    flexDirection="row"
-                    gap="12"
-                  >
-                    <Box
-                      borderRadius="6"
-                      height="28"
-                      style={{
-                        background: `url(${wallet.iconUrl})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                      }}
-                      width="28"
-                    >
-                      <Box
-                        borderColor="actionButtonBorder"
-                        borderRadius="6"
-                        borderStyle="solid"
-                        borderWidth="1"
-                        height="full"
-                        width="full"
-                      />
-                    </Box>
-                    <div>{wallet.name}</div>
+        {Object.entries(groupedWallets).map(
+          ([groupName, wallets], index) =>
+            wallets.length > 0 && (
+              <Fragment key={index}>
+                {groupName ? (
+                  <Box marginLeft="6" marginY="4">
+                    <Text color="modalTextSecondary" size="14" weight="bold">
+                      {groupName}
+                    </Text>
                   </Box>
+                ) : null}
+                <Box display="flex" flexDirection="column" gap="4">
+                  {wallets.map(wallet => {
+                    return (
+                      <ModalSelection
+                        currentlySelected={wallet.id === selectedOptionId}
+                        key={wallet.id}
+                        onClick={() => onSelectWallet(wallet)}
+                      >
+                        <Box
+                          color={
+                            wallet.id === selectedOptionId
+                              ? 'actionButtonText'
+                              : 'modalText'
+                          }
+                          disabled={!wallet.ready}
+                          fontFamily="body"
+                          fontSize="16"
+                          fontWeight="bold"
+                          transition="default"
+                        >
+                          <Box
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                            gap="12"
+                          >
+                            <Box
+                              borderRadius="6"
+                              height="28"
+                              style={{
+                                background: `url(${wallet.iconUrl})`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: 'cover',
+                              }}
+                              width="28"
+                            >
+                              <Box
+                                borderColor="actionButtonBorder"
+                                borderRadius="6"
+                                borderStyle="solid"
+                                borderWidth="1"
+                                height="full"
+                                width="full"
+                              />
+                            </Box>
+                            <div>{wallet.name}</div>
+                          </Box>
+                        </Box>
+                      </ModalSelection>
+                    );
+                  })}
                 </Box>
-              </ModalSelection>
-            );
-          })}
-        </Box>
+              </Fragment>
+            )
+        )}
       </Box>
       {!isMobile() && (
         <>
