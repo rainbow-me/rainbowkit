@@ -16,6 +16,7 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
+import { groupBy } from './groupBy';
 
 export enum WalletStep {
   None = 'NONE',
@@ -23,17 +24,6 @@ export enum WalletStep {
   Connect = 'CONNECT',
   Download = 'DOWNLOAD',
   Instructions = 'INSTRUCTIONS',
-}
-
-function groupBy<T>(items: T[], key: (item: T) => string): Record<string, T[]> {
-  return items.reduce((acc, item) => {
-    const keyValue = key(item);
-    if (!acc[keyValue]) {
-      acc[keyValue] = [];
-    }
-    acc[keyValue].push(item);
-    return acc;
-  }, {} as Record<string, T[]>);
 }
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
