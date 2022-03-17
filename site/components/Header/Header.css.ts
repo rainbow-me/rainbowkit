@@ -6,7 +6,7 @@ import { vars } from 'css/vars.css';
 export const header = style({
   backdropFilter: 'blur(8px)',
   backgroundColor: vars.colors.backgroundElevated,
-  borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+  borderBottom: `1px solid ${vars.colors.separator}`,
   justifyContent: 'space-between',
   paddingTop: vars.space[7],
   paddingBottom: vars.space[7],
