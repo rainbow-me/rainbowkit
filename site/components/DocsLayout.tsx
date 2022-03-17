@@ -1,3 +1,4 @@
+import { vars } from 'css/vars.css';
 import React from 'react';
 import { docsRoutes } from '../lib/docsRoutes';
 import { Sidebar } from './Sidebar/Sidebar';
@@ -21,7 +22,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       <div style={{ paddingBottom: 80, paddingLeft: 250, paddingTop: 60 }}>
-        <div style={{ padding: '0 24px' }}>{children}</div>
+        <div style={{ paddingLeft: vars.space[11] }}>{children}</div>
       </div>
     </Wrapper>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import '@rainbow-me/rainbowkit/styles.css';
 import { DocsLayout } from 'components/DocsLayout';
-import { Header } from 'components/Header';
+import { Header } from 'components/Header/Header';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React from 'react';

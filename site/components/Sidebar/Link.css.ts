@@ -1,20 +1,25 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
+import { calc } from '@vanilla-extract/css-utils';
 import { text } from 'css/text.css';
 import { vars } from 'css/vars.css';
 
 export const link = style([
-  text[4],
+  text[3],
   {
-    'borderRadius': 12,
+    'borderRadius': vars.radii[3],
     'display': 'block',
     'fontWeight': 600,
-    'padding': '8px 15px',
+    'paddingTop': vars.space[3],
+    'paddingRight': vars.space[5],
+    'paddingBottom': vars.space[3],
+    'paddingLeft': vars.space[5],
     'textDecoration': 'none',
     'marginBottom': vars.space[3],
+    'marginLeft': `${calc(vars.space[5]).negate()}`,
 
     ':hover': {
-      background: vars.colors.fill,
+      background: vars.colors.fillSecondary,
     },
 
     'selectors': {
