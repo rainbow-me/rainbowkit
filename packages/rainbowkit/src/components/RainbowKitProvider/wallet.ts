@@ -270,32 +270,19 @@ export const getDefaultWallets = ({
     // @ts-expect-error
     !window.ethereum.isCoinbaseWallet;
 
-  const popularWallets = [
-    wallet.rainbow({ chains, infuraId }),
-    wallet.walletConnect({ chains, infuraId }),
-    wallet.coinbase({ appName, chains, jsonRpcUrl }),
-    wallet.metaMask({ chains, infuraId, shimDisconnect: true }),
-  ];
-
-  const moreWallets = [
-    ...(needsInjectedWalletFallback
-      ? [wallet.injected({ chains, shimDisconnect: true })]
-      : []),
-  ];
-
   return [
     {
       groupName: 'Popular',
-      wallets: popularWallets,
+      wallets: [
+        wallet.rainbow({ chains, infuraId }),
+        wallet.walletConnect({ chains, infuraId }),
+        wallet.coinbase({ appName, chains, jsonRpcUrl }),
+        wallet.metaMask({ chains, infuraId, shimDisconnect: true }),
+        ...(needsInjectedWalletFallback
+          ? [wallet.injected({ chains, shimDisconnect: true })]
+          : []),
+      ],
     },
-    ...(moreWallets.length > 0
-      ? [
-          {
-            groupName: 'More',
-            wallets: moreWallets,
-          },
-        ]
-      : []),
   ];
 };
 
