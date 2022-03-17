@@ -5,4 +5,5 @@ export type Theme = {
   fonts: Tokens['fonts'];
   radii: Tokens['radii'];
   space: Tokens['space'];
+  fontSizes: Tokens['fontSizes'];
 };

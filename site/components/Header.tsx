@@ -50,7 +50,7 @@ export function Header() {
             style={{ all: 'unset', color: vars.colors.label }}
             type="button"
           >
-            mode
+            ·
           </button>
           <Provider>
             <RainbowKitProvider chains={chains} theme={darkTheme()}>

@@ -200,6 +200,15 @@ export const tokens = {
     7: '24px',
     round: '9999px',
   },
+  fontSizes: {
+    1: '11px',
+    2: '14px',
+    3: '16px',
+    4: '20px',
+    5: '24px',
+    6: '26px',
+    7: '32px',
+  },
 };
 
 export type Mode = 'light' | 'dark';
