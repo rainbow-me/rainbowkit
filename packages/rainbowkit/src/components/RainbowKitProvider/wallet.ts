@@ -292,7 +292,7 @@ export type WalletConnectorInstance = WalletConnectorConfig & {
 
 export const connectorsForWallets = (wallets: Wallets) => {
   return function (connectorArgs: ConnectorArgs) {
-    const connectors: any[] = [];
+    const connectors: Connector[] = [];
 
     wallets.forEach(({ groupName, wallets: groupedWallets }) => {
       groupedWallets.forEach(createWallet => {
