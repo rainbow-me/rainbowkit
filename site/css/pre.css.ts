@@ -1,17 +1,17 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { globalStyle, style } from '@vanilla-extract/css';
+import { vars } from './vars.css';
 
 export const pre = style({
   vars: {
-    '--background1': '#e9f2ff',
-    '--background2': '#f9fbff',
-    '--text': 'black',
+    '--background': vars.colors.fillElevated,
+    '--text': vars.colors.label,
     '--outline': 'inset 0 0 0 1px transparent',
-    '--syntax1': 'rgb(87, 70, 175)',
-    '--syntax2': 'rgb(121, 58, 175)',
-    '--syntax3': 'rgb(0, 106, 220)',
-    '--syntax4': 'rgb(87, 70, 175)',
-    '--comment': 'rgb(126, 134, 140)',
+    '--syntax1': vars.colors.purple,
+    '--syntax2': vars.colors.blue,
+    '--syntax3': vars.colors.purple,
+    '--syntax4': vars.colors.blue,
+    '--comment': vars.colors.labelQuaternary,
     '--removed': 'rgb(205, 43, 49)',
     '--added': '$rgb(24, 121, 78)',
     '--lineNumbers': 'rgb(217, 226, 252)',
@@ -36,8 +36,7 @@ export const pre = style({
   lineHeight: '21px',
   whiteSpace: 'pre',
   position: 'relative',
-  backgroundColor: 'var(--background2)',
-  background: 'linear-gradient(135deg, var(--background1), var(--background2))',
+  backgroundColor: 'var(--background)',
   color: 'var(--text)',
   boxShadow: 'var(--outline)',
   display: 'block',

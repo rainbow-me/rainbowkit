@@ -3,6 +3,7 @@
 import { pre } from 'css/pre.css';
 import { h1, h3, p, text } from 'css/text.css';
 import React from 'react';
+import { Link } from './Link/Link';
 
 export const components = {
   h1: props => <h1 className={h1} {...props} />,
@@ -15,6 +16,7 @@ export const components = {
   ),
   h3: props => <h3 className={h3} {...props} />,
   p: props => <p className={p} {...props} />,
+  a: props => <Link {...props} />,
   Img: props => (
     // eslint-disable-next-line jsx-a11y/alt-text
     <img {...props} style={{ display: 'block', maxWidth: '100%' }} />

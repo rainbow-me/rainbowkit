@@ -116,6 +116,7 @@ const colors = {
 export const tokens = {
   colors: {
     light: {
+      ...colors,
       blue: colors.blue60,
       green: colors.green60,
       red: colors.red60,
@@ -143,6 +144,7 @@ export const tokens = {
       separator: colors.gray20,
     },
     dark: {
+      ...colors,
       blue: colors.blue50,
       green: colors.green50,
       red: colors.red50,

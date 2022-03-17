@@ -12,9 +12,8 @@ globalStyle('*', {
 });
 
 globalStyle('body', {
-  // backgroundColor: 'black',
-  // color: 'white',
-  backgroundColor: vars.colors.background,
+  backgroundColor: vars.colors.backgroundElevated,
+  color: vars.colors.label,
   fontFamily:
     'SFRounded, ui-rounded, SF Pro Rounded, system-ui, Helvetica Neue, Arial, Helvetica, sans-serif',
   fontSize: '100%',

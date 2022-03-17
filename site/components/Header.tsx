@@ -47,6 +47,7 @@ export function Header() {
           />
           <button
             onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+            style={{ all: 'unset', color: vars.colors.label }}
             type="button"
           >
             mode
