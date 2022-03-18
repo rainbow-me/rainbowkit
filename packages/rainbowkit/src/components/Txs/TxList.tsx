@@ -62,20 +62,13 @@ export function TxList({ accountData }: TxListProps) {
   const [{ data: networkData }] = useNetwork();
   const chainId = networkData?.chain?.id;
   const address = accountData?.address;
-  const explorerUrl = `${chainIdToExplorerLink(chainId)}${address}`;
+  const explorerLink = chainIdToExplorerLink(chainId);
   const visibleTxs = txs?.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs?.length > 0;
 
   return (
-    <>
-      <Box
-        display="flex"
-        flexDirection="column"
-        gap="10"
-        paddingBottom="4"
-        paddingTop="18"
-        paddingX="18"
-      >
+    <Box display="flex" flexDirection="column" gap="4" paddingY="18">
+      <Box display="flex" flexDirection="column" gap="10" paddingX="18">
         {hasTransactions && (
           <Box paddingX="6">
             <Text color="modalTextSecondary" size="14" weight="semibold">
@@ -95,34 +88,36 @@ export function TxList({ accountData }: TxListProps) {
           )}
         </Box>
       </Box>
-      <Box paddingBottom="18" paddingX="18">
-        <Box
-          alignItems="center"
-          as="a"
-          background={{ hover: 'profileForeground' }}
-          borderRadius="menuButton"
-          color="modalTextDim"
-          display="flex"
-          flexDirection="row"
-          href={explorerUrl}
-          justifyContent="space-between"
-          paddingX="8"
-          paddingY="12"
-          rel="noreferrer"
-          style={{ willChange: 'transform' }}
-          target="_blank"
-          transform={{
-            active: 'shrink',
-            hover: 'grow',
-          }}
-          transition="default"
-        >
-          <Text color="modalText" font="body" size="14" weight="bold">
-            View more on Explorer
-          </Text>
-          <ExternalLinkIcon />
+      {explorerLink && (
+        <Box paddingX="18">
+          <Box
+            alignItems="center"
+            as="a"
+            background={{ hover: 'profileForeground' }}
+            borderRadius="menuButton"
+            color="modalTextDim"
+            display="flex"
+            flexDirection="row"
+            href={`${explorerLink}/address/${address}`}
+            justifyContent="space-between"
+            paddingX="8"
+            paddingY="12"
+            rel="noreferrer"
+            style={{ willChange: 'transform' }}
+            target="_blank"
+            transform={{
+              active: 'shrink',
+              hover: 'grow',
+            }}
+            transition="default"
+          >
+            <Text color="modalText" font="body" size="14" weight="bold">
+              View more on Explorer
+            </Text>
+            <ExternalLinkIcon />
+          </Box>
         </Box>
-      </Box>
-    </>
+      )}
+    </Box>
   );
 }

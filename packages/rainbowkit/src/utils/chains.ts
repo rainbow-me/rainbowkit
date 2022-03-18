@@ -1,7 +1,7 @@
 export type Chain = {
   name: string;
   chainId: number;
-  explorer?: string;
+  explorer: string;
 };
 
 export enum ChainId {
@@ -18,17 +18,17 @@ export const chainInfo: Record<ChainId, Chain> = {
     name: 'Ethereum',
   },
   [ChainId.OPTIMISM]: {
-    chainId: 10,
+    chainId: ChainId.OPTIMISM,
     explorer: 'https://optimistic.etherscan.io',
     name: 'Optimism',
   },
   [ChainId.ARBITRUM]: {
-    chainId: 42161,
+    chainId: ChainId.ARBITRUM,
     explorer: 'https://explorer.arbitrum.io',
     name: 'Arbitrum',
   },
   [ChainId.POLYGON]: {
-    chainId: 137,
+    chainId: ChainId.POLYGON,
     explorer: 'https://polygonscan.com',
     name: 'Polygon',
   },
