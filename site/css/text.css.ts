@@ -3,7 +3,7 @@ import { style, styleVariants } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
 const base = style({
-  color: vars.colors.label,
+  // color: vars.colors.label,
 });
 
 export const text = styleVariants({

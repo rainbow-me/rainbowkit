@@ -1,5 +1,5 @@
 import { Blur } from 'components/Blur/Blur';
-import { Playground } from 'components/Playground';
+import { Playground } from 'components/Playground/Playground';
 import { PlaygroundWallets } from 'components/PlaygroundWallets';
 import { Provider } from 'components/Provider';
 import { Wrapper } from 'components/Wrapper/Wrapper';
@@ -32,41 +32,16 @@ const Home = () => {
         <img
           alt="hero"
           src="hero.png"
-          style={{ display: 'block', margin: '60px 0', width: '100%' }}
+          style={{ display: 'block', margin: '60px 0 128px', width: '100%' }}
         />
       </Wrapper>
       <Blur style={{ right: 0, top: 0 }} />
       <Blur style={{ left: 0, top: 400 }} />
 
-      <section
-        style={{
-          background: 'linear-gradient(180deg, #6F55F2 0%, #3F21D9 100%)',
-          padding: '160px 0',
-        }}
-      >
-        <Wrapper>
-          <h2 style={{ fontSize: 60, margin: '0 0 32px', textAlign: 'center' }}>
-            Customization made easy.
-          </h2>
-          <p
-            style={{
-              fontSize: 28,
-              fontWeight: 600,
-              letterSpacing: 0.6,
-              lineHeight: '33px',
-              margin: '0 auto 80px',
-              maxWidth: 760,
-              textAlign: 'center',
-            }}
-          >
-            Customize apprearance, color and corner radius Get a feel for it
-            below!
-          </p>
-        </Wrapper>
-        <Provider>
-          <Playground />
-        </Provider>
-      </section>
+      <Provider>
+        <Playground />
+      </Provider>
+
       <section
         style={{
           background: 'linear-gradient(180deg, #6F55F2 0%, #3F21D9 100%)',
