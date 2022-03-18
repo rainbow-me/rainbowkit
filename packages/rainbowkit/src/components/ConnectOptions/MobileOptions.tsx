@@ -129,30 +129,24 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="generalBorder" height="1" marginBottom="20" />
+          <Box background="generalBorder" height="1" marginBottom="32" />
 
           <Box
             alignItems="center"
             display="flex"
             flexDirection="column"
             gap="32"
-            paddingX="36"
+            paddingX="32"
             style={{ textAlign: 'center' }}
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              gap="8"
-              style={{ maxWidth: 310 }}
-            >
+            <Box display="flex" flexDirection="column" gap="8">
               <Text color="modalText" size="16" weight="bold">
                 What is a Wallet?
               </Text>
               <Text color="modalTextSecondary" size="16">
                 A wallet is used to send, receive, store, and display digital
-                assets like Ethereum and NFTs. It&rsquo;s also a new way to log
-                in, without needing to create new accounts and passwords
-                on&nbsp;every&nbsp;website.
+                assets. It&rsquo;s also a new way to log in, without needing to
+                create new accounts and passwords on&nbsp;every&nbsp;website.
               </Text>
             </Box>
             <Box display="flex" gap="14" justifyContent="center">
@@ -258,21 +252,17 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               );
             })}
           </Box>
+          {/* spacer */}
+          <Box style={{ marginBottom: '42px' }} />
           <Box
             alignItems="center"
             display="flex"
             flexDirection="column"
             gap="36"
-            paddingTop="24"
             paddingX="36"
             style={{ textAlign: 'center' }}
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              gap="12"
-              style={{ maxWidth: 250 }}
-            >
+            <Box display="flex" flexDirection="column" gap="12">
               <Text color="modalText" size="16" weight="bold">
                 Not what you&rsquo;re looking for?
               </Text>

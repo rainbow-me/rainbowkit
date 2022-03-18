@@ -48,16 +48,17 @@ export function ActionButton({
   const isPrimary = type === 'primary';
   const isNotLarge = size !== 'large';
   const mobile = isMobile();
-  const backgroundColor = isPrimary
+  const background = isPrimary
     ? 'accentColor'
-    : 'actionButtonSecondaryBackground';
+    : isNotLarge
+    ? 'actionButtonSecondaryBackground'
+    : null;
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
         : { as: 'button', type: 'button' })}
-      background={backgroundColor}
       borderColor={
         mobile && isNotLarge ? 'actionButtonBorderMobile' : 'actionButtonBorder'
       }
@@ -71,6 +72,7 @@ export function ActionButton({
       style={{ willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
+      {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
       <Text
