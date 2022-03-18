@@ -662,7 +662,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
     </tr>
     <tr>
       <td><code>qrCode</code></td>
-      <td><code>{ getUri: () => string, iconUrl?: string, instructions?: { steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
+      <td><code>{ getUri: () => string, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
       <td>Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon</td>
     </tr>
     <tr>
@@ -716,6 +716,25 @@ const myCustomWallet = ({
 };
 
 const walletInstance = myCustomWallet({ chains, infuraId });
+```
+
+### Customizing the “Learn more” link
+
+By default, the introductory “Learn more” link within the “What is a wallet?” section points to https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually, but you can override this via the `learnMoreUrl` prop on `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      learnMoreUrl="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
 ```
 
 ## License
