@@ -18,6 +18,7 @@ export const lightTheme = ({
   colors: {
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
+    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     actionButtonText: '#FFF',
     closeButton: 'rgba(60, 66, 66, 0.8)',

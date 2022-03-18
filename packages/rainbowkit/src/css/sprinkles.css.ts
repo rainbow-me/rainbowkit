@@ -13,6 +13,7 @@ const themeContractValues = {
   colors: {
     accentColor: '',
     actionButtonBorder: '',
+    actionButtonBorderMobile: '',
     actionButtonSecondaryBackground: '',
     actionButtonText: '',
     closeButton: '',

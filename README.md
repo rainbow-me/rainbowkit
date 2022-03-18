@@ -480,6 +480,7 @@ const myCustomTheme: Theme = {
   colors: {
     accentColor: '...',
     actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',
     actionButtonText: '...',
     closeButton: '...',
