@@ -407,7 +407,7 @@ export function InstructionDetail({
         />
         <Box
           as="a"
-          href="https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app"
+          href={wallet?.qrCode?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"

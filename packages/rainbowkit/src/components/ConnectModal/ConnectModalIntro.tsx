@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
+import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
+  const learnMoreUrl = useContext(LearnMoreUrlContext);
+
   return (
     <>
       <Box
@@ -67,7 +70,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
             as="a"
-            href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+            href={learnMoreUrl}
             paddingX="12"
             paddingY="4"
             rel="noreferrer"

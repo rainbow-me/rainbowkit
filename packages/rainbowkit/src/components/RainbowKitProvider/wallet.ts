@@ -25,6 +25,7 @@ export type WalletConnectorConfig<C extends Connector = Connector> = {
     iconUrl?: string;
     getUri: () => string;
     instructions?: {
+      learnMoreUrl: string;
       steps: {
         step: InstructionStepName;
         title: string;
@@ -81,6 +82,8 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
         instructions: {
+          learnMoreUrl:
+            'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
           steps: [
             {
               description:

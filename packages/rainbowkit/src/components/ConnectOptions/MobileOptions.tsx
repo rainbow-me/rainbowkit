@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
+import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -89,6 +90,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
+  const learnMoreUrl = useContext(LearnMoreUrlContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -153,7 +155,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 type="secondary"
               />
               <ActionButton
-                href="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+                href={learnMoreUrl}
                 label="Learn More"
                 size="large"
                 type="secondary"
