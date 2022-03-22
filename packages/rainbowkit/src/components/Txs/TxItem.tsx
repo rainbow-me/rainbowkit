@@ -111,7 +111,7 @@ export function TxItem({ tx }: TxProps) {
       </Box>
       {mobile && (
         <Box
-          background="generalBorder"
+          background="generalBorderDim"
           height="1"
           marginLeft="44"
           marginRight="8"

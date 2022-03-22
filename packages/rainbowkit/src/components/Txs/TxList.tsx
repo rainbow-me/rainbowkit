@@ -109,7 +109,7 @@ export function TxList({ accountData }: TxListProps) {
               </Box>
               {mobile && (
                 <Box
-                  background="generalBorder"
+                  background="generalBorderDim"
                   height="1"
                   marginX="12"
                   marginY="8"

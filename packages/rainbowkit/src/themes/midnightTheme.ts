@@ -32,6 +32,7 @@ export const midnightTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
+    generalBorderDim: 'rgba(255, 255, 255, 0.04)',
     menuItemBackground: 'rgba(255, 255, 255, 0.08)',
     modalBackdrop: 'rgba(0, 0, 0, 0.7)',
     modalBackground: '#000',

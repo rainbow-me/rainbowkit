@@ -239,14 +239,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                         type="secondary"
                       />
                     </Box>
-                    {index < mobileWallets.length - 1 ? (
+                    {index < mobileWallets.length - 1 && (
                       <Box
-                        background="generalBorder"
+                        background="generalBorderDim"
                         height="1"
                         marginY="10"
                         width="full"
                       />
-                    ) : null}
+                    )}
                   </Box>
                 </Box>
               );
