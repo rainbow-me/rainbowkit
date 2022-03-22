@@ -254,10 +254,10 @@ export function ConnectDetail({
         justifyContent="space-between"
         marginTop="6"
       >
-        {!ready ? null : name === 'Rainbow' ? (
+        {!ready ? null : qrCode ? (
           <>
             <Text color="modalTextSecondary" size="14" weight="medium">
-              Don&rsquo;t have the Rainbow App?
+              Don&rsquo;t have the {name} App?
             </Text>
             <ActionButton
               label="GET"
@@ -378,7 +378,13 @@ export function InstructionDetail({
             gap="16"
             key={idx}
           >
-            <Box height="48" minWidth="48" width="48">
+            <Box
+              borderRadius="10"
+              height="48"
+              minWidth="48"
+              overflow="hidden"
+              width="48"
+            >
               {stepIcons[d.step]?.(wallet)}
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
