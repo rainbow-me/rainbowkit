@@ -4,7 +4,7 @@ import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { link } from './Link.css';
+import { link } from './Sidebar.css';
 
 export function Sidebar({ routes }) {
   return (
@@ -16,6 +16,7 @@ export function Sidebar({ routes }) {
             style={{
               color: vars.colors.labelTertiary,
               marginBottom: vars.space[4],
+              marginLeft: vars.space[5],
             }}
           >
             {route.label}

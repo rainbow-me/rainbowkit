@@ -1,0 +1,52 @@
+---
+title: Custom Wallet List
+description: Customising the wallet list
+---
+
+# Custom Wallet List
+
+## Customising the wallet list
+
+> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
+
+The following wallet options are presented by default via the getDefaultWallets function:
+
+- Rainbow
+- WalletConnect
+- Coinbase Wallet
+- MetaMask
+
+An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn't been provided by another wallet.
+
+All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
+
+```tsx
+import { wallet, Wallets } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: Wallets = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+      wallet.metaMask({ chains, infuraId }),
+      ...(needsInjectedWalletFallback
+        ? [wallet.injected({ chains, infuraId })]
+        : []),
+    ],
+  },
+];
+```

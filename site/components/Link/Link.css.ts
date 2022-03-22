@@ -3,4 +3,5 @@ import { vars } from 'css/vars.css';
 
 export const link = style({
   color: vars.colors.blue,
+  textDecoration: 'none',
 });

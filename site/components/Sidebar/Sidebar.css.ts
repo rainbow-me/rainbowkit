@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { calc } from '@vanilla-extract/css-utils';
 import { text } from 'css/text.css';
 import { vars } from 'css/vars.css';
 
@@ -15,8 +14,8 @@ export const link = style([
     'paddingBottom': vars.space[3],
     'paddingLeft': vars.space[5],
     'textDecoration': 'none',
-    'marginBottom': vars.space[3],
-    'marginLeft': `${calc(vars.space[5]).negate()}`,
+    'marginBottom': vars.space[2],
+    'color': vars.colors.label,
 
     ':hover': {
       background: vars.colors.fillSecondary,

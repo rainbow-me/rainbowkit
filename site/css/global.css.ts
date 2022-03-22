@@ -24,3 +24,8 @@ globalStyle('code, pre', {
   fontFamily: 'SFMono, ui-monospace, monospace',
   fontWeight: 400,
 });
+
+globalStyle('button', {
+  appearance: 'none',
+  background: 'transparent',
+});

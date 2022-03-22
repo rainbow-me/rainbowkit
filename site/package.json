@@ -6,6 +6,7 @@
   "dependencies": {
     "@ethersproject/bignumber": "5.5.0",
     "@ethersproject/providers": "5.5.0",
+    "@radix-ui/react-popover": "^0.1.6",
     "@radix-ui/react-radio-group": "0.1.5",
     "@rainbow-me/rainbowkit": "workspace:*",
     "@vanilla-extract/babel-plugin": "1.1.4",

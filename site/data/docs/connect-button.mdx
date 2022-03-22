@@ -1,0 +1,43 @@
+---
+title: ConnectButton
+description: Using and customising the ConnectButton
+---
+
+# ConnectButton
+
+## Using and customising the ConnectButton
+
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+
+These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
+
+<PropsTable
+  data={[
+    {
+      name: 'accountStatus',
+      required: false,
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      typeSimple: 'enum',
+      description:
+        'Whether the active account’s avatar and/or address is displayed',
+    },
+    {
+      name: 'chainStatus',
+      required: false,
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      typeSimple: 'enum',
+      description:
+        'Whether the current chain’s icon and/or name is displayed, or hidden entirely',
+    },
+    {
+      name: 'showBalance',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description: 'Whether the balance is visible next to the account name',
+    },
+  ]}
+/>
