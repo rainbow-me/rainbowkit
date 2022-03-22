@@ -49,36 +49,6 @@ export function TxItem({ tx }: TxProps) {
   const explorerLink = chainIdToExplorerLink(networkData?.chain?.id);
 
   return (
-    // <<<<<<< HEAD
-    // <Box
-    //   {...(explorerLink
-    //     ? {
-    //         as: 'a',
-    //         background: { hover: 'profileForeground' },
-    //         borderRadius: 'menuButton',
-    //         href: `${explorerLink}/tx/${tx.hash}`,
-    //         rel: 'noreferrer',
-    //         target: '_blank',
-    //         transform: { active: 'shrink', hover: 'grow' },
-    //         transition: 'default',
-    //       }
-    //     : {})}
-    //   color="modalText"
-    //   display="flex"
-    //   flexDirection="row"
-    //   justifyContent="space-between"
-    //   padding="8"
-    // >
-    //   <Box alignItems="center" display="flex" flexDirection="row" gap="14">
-    //     <Box color={color}>
-    //       <Icon />
-    //     </Box>
-    //     <Box display="flex" flexDirection="column" gap="2">
-    //       <Box>
-    //         <Text color="modalText" font="body" size="14" weight="bold">
-    //           {tx?.info}
-    //         </Text>
-    // =======
     <>
       <Box
         {...(explorerLink
@@ -99,11 +69,16 @@ export function TxItem({ tx }: TxProps) {
         justifyContent="space-between"
         padding="8"
       >
-        <Box alignItems="center" display="flex" flexDirection="row" gap="14">
+        <Box
+          alignItems="center"
+          display="flex"
+          flexDirection="row"
+          gap={mobile ? '16' : '14'}
+        >
           <Box color={color}>
             <Icon />
           </Box>
-          <Box display="flex" flexDirection="column" gap="2">
+          <Box display="flex" flexDirection="column" gap={mobile ? '4' : '2'}>
             <Box>
               <Text
                 color="modalText"
@@ -121,7 +96,7 @@ export function TxItem({ tx }: TxProps) {
                 }
                 font="body"
                 size="14"
-                weight="regular"
+                weight={mobile ? 'medium' : 'regular'}
               >
                 {confirmationStatus}
               </Text>
@@ -140,6 +115,7 @@ export function TxItem({ tx }: TxProps) {
           height="1"
           marginLeft="44"
           marginRight="8"
+          marginY="2"
         />
       )}
     </>

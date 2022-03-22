@@ -79,8 +79,16 @@ export function TxList({ accountData }: TxListProps) {
         paddingX={mobile ? '8' : '18'}
       >
         {hasTransactions && (
-          <Box paddingTop={mobile ? '0' : '8'} paddingX={mobile ? '12' : '6'}>
-            <Text color="modalTextSecondary" size="14" weight="semibold">
+          <Box
+            paddingBottom={mobile ? '4' : '0'}
+            paddingTop={mobile ? '0' : '8'}
+            paddingX={mobile ? '12' : '6'}
+          >
+            <Text
+              color="modalTextSecondary"
+              size={mobile ? '16' : '14'}
+              weight="semibold"
+            >
               Recent Transactions
             </Text>
           </Box>
@@ -139,7 +147,7 @@ export function TxList({ accountData }: TxListProps) {
               color="modalText"
               font="body"
               size={mobile ? '16' : '14'}
-              weight="bold"
+              weight={mobile ? 'semibold' : 'bold'}
             >
               View more on Explorer
             </Text>

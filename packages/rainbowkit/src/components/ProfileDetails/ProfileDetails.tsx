@@ -72,7 +72,7 @@ export function ProfileDetails({
             alignItems="center"
             display="flex"
             flexDirection="column"
-            gap="12"
+            gap={mobile ? '16' : '12'}
             justifyContent="center"
             margin="8"
             style={{ textAlign: 'center' }}
@@ -86,7 +86,7 @@ export function ProfileDetails({
                 willChange: 'transform',
               }}
             />{' '}
-            <Box marginTop={mobile ? '20' : '0'}>
+            <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
                 address={accountData.address}
                 imageUrl={accountData.ens?.avatar}
