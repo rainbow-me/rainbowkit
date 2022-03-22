@@ -100,7 +100,7 @@ function App({ Component, pageProps }: AppProps) {
                   <label key={themeName} style={{ userSelect: 'none' }}>
                     <input
                       checked={themeName === selectedThemeName}
-                      name="mode"
+                      name="theme"
                       onChange={e => setThemeName(e.target.value as ThemeName)}
                       type="radio"
                       value={themeName}
@@ -124,7 +124,7 @@ function App({ Component, pageProps }: AppProps) {
                   <label key={accentColor} style={{ userSelect: 'none' }}>
                     <input
                       checked={accentColor === selectedAccentColor}
-                      name="accent"
+                      name="accentColor"
                       onChange={e =>
                         setAccentColor(e.target.value as AccentColor)
                       }
@@ -150,7 +150,7 @@ function App({ Component, pageProps }: AppProps) {
                   <label key={radiusScale} style={{ userSelect: 'none' }}>
                     <input
                       checked={radiusScale === selectedRadiusScale}
-                      name="radii"
+                      name="radiusScale"
                       onChange={e =>
                         setRadiusScale(e.target.value as RadiusScale)
                       }
