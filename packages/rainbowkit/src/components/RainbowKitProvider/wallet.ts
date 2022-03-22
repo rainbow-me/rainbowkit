@@ -36,7 +36,7 @@ type WalletConnectorConfig<C extends Connector = Connector> = {
 };
 
 type ConnectorArgs = {
-  chainId: number;
+  chainId?: number;
 };
 
 export type Wallet = (
@@ -133,7 +133,7 @@ const walletConnect =
 interface CoinbaseOptions {
   chains: Chain[];
   appName: string;
-  jsonRpcUrl: string | ((args: { chainId: number }) => string);
+  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
 }
 const coinbase =
   ({ appName, chains, jsonRpcUrl }: CoinbaseOptions): Wallet =>

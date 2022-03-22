@@ -73,20 +73,22 @@ const Example = () => {
               </button>
             ) : (
               <div style={{ display: 'flex', gap: 12 }}>
-                <button
-                  onClick={openChainModal}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                  type="button"
-                >
-                  {chain.iconUrl && (
-                    <img
-                      alt={chain.name ?? 'Chain icon'}
-                      src={chain.iconUrl}
-                      style={{ height: 12, marginRight: 4, width: 12 }}
-                    />
-                  )}
-                  {chain.name ?? chain.id}
-                </button>
+                {chain && (
+                  <button
+                    onClick={openChainModal}
+                    style={{ alignItems: 'center', display: 'flex' }}
+                    type="button"
+                  >
+                    {chain.iconUrl && (
+                      <img
+                        alt={chain.name ?? 'Chain icon'}
+                        src={chain.iconUrl}
+                        style={{ height: 12, marginRight: 4, width: 12 }}
+                      />
+                    )}
+                    {chain.name ?? chain.id}
+                  </button>
+                )}
                 <button onClick={openAccountModal} type="button">
                   {account.displayName}
                   {account.balanceFormatted

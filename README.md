@@ -34,7 +34,7 @@ import { providers } from 'ethers';
 
 const infuraId = process.env.INFURA_ID;
 
-const provider = ({ chainId }) =>
+const provider = ({ chainId }: { chainId?: number }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
 const chains: Chain[] = [
