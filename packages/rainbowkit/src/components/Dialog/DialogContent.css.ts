@@ -15,23 +15,36 @@ export const dialogContent = style([
     position: 'relative',
   }),
   {
-    boxSizing: 'content-box',
-    maxWidth: '100vw',
-    width: '360px',
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        width: '360px',
+      },
+    },
+    'boxSizing': 'content-box',
+    'maxWidth': '100vw',
+    'width': '100vw',
   },
 ]);
 
-export const dialogContentWide = style([
+export const dialogContentWideMobile = style([
   dialogContent,
   {
-    width: '720px',
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        width: '480px',
+      },
+    },
   },
 ]);
 
-export const dialogContentMobile = style([
+export const dialogContentWideDesktop = style([
+  dialogContent,
   {
-    boxSizing: 'border-box',
-    width: '100vw',
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        width: '720px',
+      },
+    },
   },
 ]);
 
