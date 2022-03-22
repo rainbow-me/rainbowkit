@@ -590,7 +590,7 @@ An "Injected Wallet" fallback is also provided if `window.ethereum` exists and h
 All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
 
 ```tsx
-import { wallet, Wallet } from '@rainbow-me/rainbowkit';
+import { wallet, Wallets } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
   typeof window !== 'undefined' &&
@@ -598,20 +598,25 @@ const needsInjectedWalletFallback =
   !window.ethereum.isMetaMask &&
   !window.ethereum.isCoinbaseWallet;
 
-const wallets: Wallet[] = [
-  wallet.rainbow({ chains, infuraId }),
-  wallet.walletConnect({ chains, infuraId }),
-  wallet.coinbase({
-    chains,
-    appName: 'My RainbowKit App',
-    jsonRpcUrl: ({ chainId }) =>
-      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-      chain.mainnet.rpcUrls[0],
-  }),
-  wallet.metaMask({ chains, infuraId }),
-  ...(needsInjectedWalletFallback
-    ? [wallet.injected({ chains, infuraId })]
-    : []),
+const wallets: Wallets = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+      wallet.metaMask({ chains, infuraId }),
+      ...(needsInjectedWalletFallback
+        ? [wallet.injected({ chains, infuraId })]
+        : []),
+    ],
+  },
 ];
 ```
 

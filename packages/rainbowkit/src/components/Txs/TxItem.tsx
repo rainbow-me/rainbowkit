@@ -43,21 +43,28 @@ export function TxItem({ tx }: TxProps) {
       : tx.status === FAIL_TX_STATUS
       ? 'Failed'
       : 'Pending';
+
+  const explorerLink = chainIdToExplorerLink(networkData?.chain?.id);
+
   return (
     <Box
-      as="a"
-      background={{ hover: 'profileForeground' }}
-      borderRadius="menuButton"
+      {...(explorerLink
+        ? {
+            as: 'a',
+            background: { hover: 'profileForeground' },
+            borderRadius: 'menuButton',
+            href: `${explorerLink}/tx/${tx.hash}`,
+            rel: 'noreferrer',
+            target: '_blank',
+            transform: { active: 'shrink', hover: 'grow' },
+            transition: 'default',
+          }
+        : {})}
       color="modalText"
       display="flex"
       flexDirection="row"
-      href={`${chainIdToExplorerLink(networkData?.chain?.id)}tx/${tx.hash}`}
       justifyContent="space-between"
       padding="8"
-      rel="noreferrer"
-      target="_blank"
-      transform={{ active: 'shrink', hover: 'grow' }}
-      transition="default"
     >
       <Box alignItems="center" display="flex" flexDirection="row" gap="14">
         <Box color={color}>
@@ -83,9 +90,11 @@ export function TxItem({ tx }: TxProps) {
           </Box>
         </Box>
       </Box>
-      <Box alignItems="center" color="modalTextDim" display="flex">
-        <ExternalLinkIcon />
-      </Box>
+      {explorerLink && (
+        <Box alignItems="center" color="modalTextDim" display="flex">
+          <ExternalLinkIcon />
+        </Box>
+      )}
     </Box>
   );
 }

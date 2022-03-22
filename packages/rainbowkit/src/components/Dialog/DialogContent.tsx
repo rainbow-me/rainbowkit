@@ -23,9 +23,12 @@ export function DialogContent({
     <Box marginTop={marginTop}>
       <Box
         className={[
-          wide ? styles.dialogContentWide : styles.dialogContent,
+          wide
+            ? mobile
+              ? styles.dialogContentWideMobile
+              : styles.dialogContentWideDesktop
+            : styles.dialogContent,
           bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
-          mobile ? styles.dialogContentMobile : null,
         ].join(' ')}
       >
         <Box padding={padding}>{children}</Box>

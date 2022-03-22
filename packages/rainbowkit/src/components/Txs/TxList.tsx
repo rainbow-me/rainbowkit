@@ -62,20 +62,13 @@ export function TxList({ accountData }: TxListProps) {
   const [{ data: networkData }] = useNetwork();
   const chainId = networkData?.chain?.id;
   const address = accountData?.address;
-  const explorerUrl = `${chainIdToExplorerLink(chainId)}${address}`;
+  const explorerLink = chainIdToExplorerLink(chainId);
   const visibleTxs = txs?.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs?.length > 0;
 
   return (
-    <>
-      <Box
-        display="flex"
-        flexDirection="column"
-        gap="10"
-        paddingBottom="4"
-        paddingTop="18"
-        paddingX="18"
-      >
+    <Box display="flex" flexDirection="column" gap="4" padding="18">
+      <Box display="flex" flexDirection="column" gap="10">
         {hasTransactions && (
           <Box paddingX="6">
             <Text color="modalTextSecondary" size="14" weight="semibold">
@@ -95,7 +88,7 @@ export function TxList({ accountData }: TxListProps) {
           )}
         </Box>
       </Box>
-      <Box paddingBottom="18" paddingX="18">
+      {explorerLink && (
         <Box
           alignItems="center"
           as="a"
@@ -104,7 +97,7 @@ export function TxList({ accountData }: TxListProps) {
           color="modalTextDim"
           display="flex"
           flexDirection="row"
-          href={explorerUrl}
+          href={`${explorerLink}/address/${address}`}
           justifyContent="space-between"
           paddingX="8"
           paddingY="12"
@@ -122,7 +115,7 @@ export function TxList({ accountData }: TxListProps) {
           </Text>
           <ExternalLinkIcon />
         </Box>
-      </Box>
-    </>
+      )}
+    </Box>
   );
 }

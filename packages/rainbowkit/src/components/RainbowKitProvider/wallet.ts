@@ -8,7 +8,7 @@ import { omitUndefinedValues } from './omitUndefinedValues';
 
 export type InstructionStepName = 'install' | 'create' | 'scan';
 
-export type WalletConnectorConfig<C extends Connector = Connector> = {
+type WalletConnectorConfig<C extends Connector = Connector> = {
   installed?: boolean;
   connector: C;
   id: string;
@@ -251,6 +251,8 @@ export const wallet = {
   walletConnect,
 } as const;
 
+export type Wallets = { groupName: string; wallets: Wallet[] }[];
+
 export const getDefaultWallets = ({
   appName,
   chains,
@@ -261,7 +263,7 @@ export const getDefaultWallets = ({
   infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
-}) => {
+}): Wallets => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -272,36 +274,53 @@ export const getDefaultWallets = ({
     !window.ethereum.isCoinbaseWallet;
 
   return [
-    wallet.rainbow({ chains, infuraId }),
-    wallet.walletConnect({ chains, infuraId }),
-    wallet.coinbase({ appName, chains, jsonRpcUrl }),
-    wallet.metaMask({ chains, infuraId, shimDisconnect: true }),
-    ...(needsInjectedWalletFallback
-      ? [wallet.injected({ chains, shimDisconnect: true })]
-      : []),
+    {
+      groupName: 'Popular',
+      wallets: [
+        wallet.rainbow({ chains, infuraId }),
+        wallet.walletConnect({ chains, infuraId }),
+        wallet.coinbase({ appName, chains, jsonRpcUrl }),
+        wallet.metaMask({ chains, infuraId, shimDisconnect: true }),
+        ...(needsInjectedWalletFallback
+          ? [wallet.injected({ chains, shimDisconnect: true })]
+          : []),
+      ],
+    },
   ];
 };
 
-export const connectorsForWallets = (wallets: Wallet[] = []) => {
-  const connectors = (connectorArgs: ConnectorArgs) =>
-    wallets.map(createWallet => {
-      const wallet = omitUndefinedValues(createWallet(connectorArgs));
+export type WalletConnectorInstance = WalletConnectorConfig & {
+  groupName: string;
+};
 
-      if (wallet.connector._wallet) {
-        throw new Error(
-          `Can't connect wallet "${wallet.name}" to connector "${
-            wallet.connector.name ?? wallet.connector.id
-          }" as it's already connected to wallet "${
-            wallet.connector._wallet.name
-          }". Each wallet must have its own connector instance.`
-        );
-      }
+export const connectorsForWallets = (wallets: Wallets) => {
+  return function (connectorArgs: ConnectorArgs) {
+    const connectors: Connector[] = [];
 
-      // Mutate connector instance to add wallet metadata
-      wallet.connector._wallet = wallet;
+    wallets.forEach(({ groupName, wallets: groupedWallets }) => {
+      groupedWallets.forEach(createWallet => {
+        const wallet = omitUndefinedValues(createWallet(connectorArgs));
 
-      return wallet.connector;
+        if (wallet.connector._wallet) {
+          throw new Error(
+            `Can't connect wallet "${wallet.name}" to connector "${
+              wallet.connector.name ?? wallet.connector.id
+            }" as it's already connected to wallet "${
+              wallet.connector._wallet.name
+            }". Each wallet must have its own connector instance.`
+          );
+        }
+
+        // Mutate connector instance to add wallet metadata
+        wallet.connector._wallet = {
+          groupName,
+          ...wallet,
+        } as WalletConnectorInstance;
+
+        connectors.push(wallet.connector);
+      });
     });
 
-  return connectors;
+    return connectors;
+  };
 };
