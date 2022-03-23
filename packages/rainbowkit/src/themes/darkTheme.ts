@@ -18,6 +18,7 @@ export const darkTheme = ({
   colors: {
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
+    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     actionButtonText: '#FFF',
     closeButton: 'rgba(224, 232, 255, 0.6)',
@@ -31,6 +32,7 @@ export const darkTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
+    generalBorderDim: 'rgba(255, 255, 255, 0.04)',
     menuItemBackground: 'rgba(224, 232, 255, 0.1)',
     modalBackdrop: 'rgba(0, 0, 0, 0.5)',
     modalBackground: '#1A1B1F',

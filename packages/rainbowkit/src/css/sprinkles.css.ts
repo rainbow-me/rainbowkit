@@ -13,6 +13,7 @@ const themeContractValues = {
   colors: {
     accentColor: '',
     actionButtonBorder: '',
+    actionButtonBorderMobile: '',
     actionButtonSecondaryBackground: '',
     actionButtonText: '',
     closeButton: '',
@@ -25,6 +26,7 @@ const themeContractValues = {
     connectionIndicator: '',
     error: '',
     generalBorder: '',
+    generalBorderDim: '',
     menuItemBackground: '',
     modalBackdrop: '',
     modalBackground: '',
@@ -46,6 +48,7 @@ const themeContractValues = {
     connectButton: '',
     menuButton: '',
     modal: '',
+    modalMobile: '',
   },
   shadows: {
     connectButton: '',
@@ -83,6 +86,7 @@ const spacing = {
   '28': '28px',
   '32': '32px',
   '36': '36px',
+  '44': '44px',
   '64': '64px',
 };
 
@@ -95,7 +99,9 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '32': '32px',
   '34': '34px',
+  '36': '36px',
   '40': '40px',
   '48': '48px',
   '54': '54px',
@@ -164,6 +170,7 @@ const unresponsiveProperties = defineProperties({
     },
     borderWidth: {
       ...themeVars.borders,
+      '0': '0px',
       '1': '1px',
       '2': '2px',
       '4': '4px',
@@ -172,6 +179,7 @@ const unresponsiveProperties = defineProperties({
     flexDirection: ['row', 'column'],
     fontFamily: themeVars.fonts,
     fontSize: {
+      '12': '12px',
       '13': '13px',
       '14': '14px',
       '16': '16px',

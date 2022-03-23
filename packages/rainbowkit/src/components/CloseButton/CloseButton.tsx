@@ -1,4 +1,5 @@
 import React from 'react';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
 
@@ -9,6 +10,7 @@ export const CloseButton = ({
   onClose: () => void;
   style?: React.CSSProperties;
 }) => {
+  const mobile = isMobile();
   return (
     <Box
       alignItems="center"
@@ -17,16 +19,16 @@ export const CloseButton = ({
       borderColor="actionButtonBorder"
       borderRadius="full"
       borderStyle="solid"
-      borderWidth="1"
+      borderWidth={mobile ? '0' : '1'}
       color="closeButton"
       display="flex"
-      height="28"
+      height={mobile ? '32' : '28'}
       justifyContent="center"
       onClick={onClose}
-      style={style}
+      style={{ willChange: 'transform', ...(style ?? {}) }}
       transform={{ active: 'shrinkSm', hover: 'growLg' }}
       transition="default"
-      width="28"
+      width={mobile ? '32' : '28'}
     >
       <CloseIcon />
     </Box>

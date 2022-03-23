@@ -18,8 +18,10 @@ Theme object has been updated in the following way:
 
 `borders.modalBorderWidth`
 `colors.modalTextDim`
+`colors.actionButtonBorderMobile`
 `radii.actionButton`
 `shadows.profileDetailsAction`
+`radii.modalMobile`
 
 **Removed**
 

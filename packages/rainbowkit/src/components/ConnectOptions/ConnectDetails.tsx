@@ -156,10 +156,10 @@ export function ConnectDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrls, iconUrl, name, qrCode, ready } = wallet;
+  const { downloadUrls, iconUrl, name, qrCode, ready, showWalletConnectModal } =
+    wallet;
 
   let readyMsg;
-
   if (ready) {
     readyMsg = 'Waiting for connection';
   } else if (downloadUrls?.browserExtension) {
@@ -177,6 +177,28 @@ export function ConnectDetail({
       }
     })();
   }, [qrCode]);
+
+  const secondaryAction: {
+    description: string;
+    label: string;
+    onClick: () => void;
+  } = showWalletConnectModal
+    ? {
+        description: 'Need the official WalletConnect modal?',
+        label: 'OPEN',
+        onClick: showWalletConnectModal,
+      }
+    : qrCode
+    ? {
+        description: `Don\u2019t have the ${name} App?`,
+        label: 'GET',
+        onClick: () => setWalletStep(WalletStep.Download),
+      }
+    : {
+        description: `Confirm the connection in ${name}`,
+        label: 'RETRY',
+        onClick: () => wallet?.connect?.(),
+      };
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
@@ -264,25 +286,14 @@ export function ConnectDetail({
         justifyContent="space-between"
         marginTop="6"
       >
-        {!ready ? null : name === 'Rainbow' ? (
+        {!ready ? null : (
           <>
             <Text color="modalTextSecondary" size="14" weight="medium">
-              Don&rsquo;t have the Rainbow App?
+              {secondaryAction.description}
             </Text>
             <ActionButton
-              label="GET"
-              onClick={() => setWalletStep(WalletStep.Download)}
-              type="secondary"
-            />
-          </>
-        ) : (
-          <>
-            <Text color="modalTextSecondary" size="14" weight="medium">
-              Confirm the connection in {name}
-            </Text>
-            <ActionButton
-              label="Retry"
-              onClick={() => wallet?.connect?.()}
+              label={secondaryAction.label}
+              onClick={secondaryAction.onClick}
               type="secondary"
             />
           </>
@@ -311,7 +322,7 @@ export function DownloadDetail({
     >
       <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          Scan with your phone to download in iOS or Android
+          Scan with your phone to download on iOS or Android
         </Text>
       </Box>
       <Box height="full">
@@ -388,7 +399,13 @@ export function InstructionDetail({
             gap="16"
             key={idx}
           >
-            <Box height="48" minWidth="48" width="48">
+            <Box
+              borderRadius="10"
+              height="48"
+              minWidth="48"
+              overflow="hidden"
+              width="48"
+            >
               {stepIcons[d.step]?.(wallet)}
             </Box>
             <Box display="flex" flexDirection="column" gap="4">

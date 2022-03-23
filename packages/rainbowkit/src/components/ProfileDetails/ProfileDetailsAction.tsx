@@ -1,4 +1,5 @@
 import React from 'react';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
@@ -22,6 +23,7 @@ export function ProfileDetailsAction({
         target: '_blank',
       }
     : {};
+  const mobile = isMobile();
   return (
     <Box
       as={url ? 'a' : 'button'}
@@ -33,7 +35,7 @@ export function ProfileDetailsAction({
       }}
       borderRadius="menuButton"
       boxShadow="profileDetailsAction"
-      padding="10"
+      padding={mobile ? '8' : '10'}
       style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
@@ -49,7 +51,7 @@ export function ProfileDetailsAction({
           {icon}
         </Box>
         <Box>
-          <Text color="modalText" size="13" weight="semibold">
+          <Text color="modalText" size={mobile ? '12' : '13'} weight="semibold">
             {label}
           </Text>
         </Box>

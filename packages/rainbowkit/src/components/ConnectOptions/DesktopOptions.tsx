@@ -32,7 +32,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
-  const isRainbow = selectedOptionId === 'rainbow';
+  const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
     wallet => wallet.ready || wallet.downloadUrls?.browserExtension
@@ -94,13 +94,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = isRainbow && 'Scan with Rainbow to connect';
+      headerLabel = hasQrCode && `Scan with ${selectedWallet.name}`;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
         <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
       );
-      headerLabel = isRainbow && 'Install Rainbow';
+      headerLabel = hasQrCode && `Install ${selectedWallet.name}`;
       headerBackButtonLink = WalletStep.Connect;
       break;
     case WalletStep.Instructions:
@@ -110,7 +110,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = isRainbow && 'Get started with Rainbow';
+      headerLabel = hasQrCode && `Get started with ${selectedWallet.name}`;
       headerBackButtonLink = WalletStep.Download;
       break;
     default:
@@ -226,7 +226,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     }
                     paddingX="8"
                     paddingY="4"
-                    style={{ boxSizing: 'content-box', height: 17 }}
+                    style={{
+                      boxSizing: 'content-box',
+                      height: 17,
+                      willChange: 'transform',
+                    }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >

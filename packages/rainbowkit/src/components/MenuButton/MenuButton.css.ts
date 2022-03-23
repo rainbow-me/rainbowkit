@@ -9,12 +9,17 @@ export const MenuButtonClassName = style([
     borderRadius: 'menuButton',
 
     color: 'modalText',
-    paddingX: '6',
-    paddingY: '6',
+    padding: '6',
     transform: {
       active: 'shrink',
     },
     transition: 'default',
+  }),
+]);
+
+export const MobileMenuButtonClassName = style([
+  sprinkles({
+    padding: '8',
   }),
 ]);
 
@@ -27,7 +32,6 @@ export const SelectedMenuButtonClassName = style([
     borderWidth: '1',
     boxShadow: 'selectedOption',
     color: 'actionButtonText',
-    paddingX: '6',
-    paddingY: '6',
+    padding: '6',
   }),
 ]);

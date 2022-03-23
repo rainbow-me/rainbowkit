@@ -1,13 +1,13 @@
 import { Connector, useConnect } from 'wagmi';
 import { WalletConnectorInstance } from './wallet';
 
-export interface WalletConnector
-  extends Omit<WalletConnectorInstance, 'connector'> {
+export interface WalletConnector extends WalletConnectorInstance {
   ready?: boolean;
   connect?: () => Promise<{
     data?: any;
     error?: Error | undefined;
   }>;
+  showWalletConnectModal?: () => void;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -18,10 +18,18 @@ export function useWalletConnectors(): WalletConnector[] {
   )
     .filter(connector => connector._wallet)
     .map(connector => {
+      const wallet = connector._wallet as WalletConnectorInstance;
+
       return {
-        ...(connector._wallet as WalletConnectorInstance),
+        ...wallet,
         connect: () => connectAsync(connector),
-        ready: (connector._wallet.installed ?? true) && connector.ready,
+        ready: (wallet.installed ?? true) && connector.ready,
+        showWalletConnectModal: wallet.walletConnectModalConnector
+          ? () =>
+              connectAsync(
+                wallet.walletConnectModalConnector as Connector<any, any>
+              )
+          : undefined,
       };
     });
 }
