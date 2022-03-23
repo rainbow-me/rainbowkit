@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode, useEffect, useState } from 'react';
+import React, { ElementType, ReactNode } from 'react';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
@@ -149,10 +149,12 @@ export function GetDetail({
 
 export function ConnectDetail({
   connectionError,
+  qrCodeUri,
   setWalletStep,
   wallet,
 }: {
   connectionError: boolean;
+  qrCodeUri?: string;
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
@@ -167,16 +169,6 @@ export function ConnectDetail({
   } else {
     readyMsg = `${name} is not available on this device`;
   }
-
-  const [qrCodeUri, setQrCodeUri] = useState('');
-  useEffect(() => {
-    (async () => {
-      const uri = await qrCode?.getUri();
-      if (uri) {
-        setQrCodeUri(uri);
-      }
-    })();
-  }, [qrCode]);
 
   const secondaryAction: {
     description: string;

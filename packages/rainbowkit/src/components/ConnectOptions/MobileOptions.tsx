@@ -22,14 +22,11 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       disabled={!ready}
       fontFamily="body"
       key={id}
-      onClick={useCallback(() => {
+      onClick={useCallback(async () => {
         connect?.();
 
         if (getMobileUri) {
-          // Get URI on next tick after connecting to ensure it's available
-          setTimeout(async () => {
-            window.location.href = await getMobileUri();
-          }, 0);
+          window.location.href = await getMobileUri();
         }
       }, [connect, getMobileUri])}
       style={{ overflow: 'visible', textAlign: 'center' }}

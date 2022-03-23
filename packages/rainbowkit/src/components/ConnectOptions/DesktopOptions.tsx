@@ -32,6 +32,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
+  const [qrCodeUri, setQrCodeUri] = useState<string>();
   const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
@@ -49,10 +50,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       });
     }
 
-    // Update selected wallet state on next tick so QR code URIs are ready to render
-    setTimeout(() => {
+    setTimeout(async () => {
       setSelectedOptionId(wallet.id);
       const sWallet = wallets.find(w => wallet.id === w.id);
+      const uri = await sWallet?.qrCode?.getUri();
+      setQrCodeUri(uri);
       setSelectedWallet(sWallet);
       setWalletStep(WalletStep.Connect);
     }, 0);
@@ -90,6 +92,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <ConnectDetail
           connectionError={connectionError}
+          qrCodeUri={qrCodeUri}
           setWalletStep={setWalletStep}
           wallet={selectedWallet}
         />
