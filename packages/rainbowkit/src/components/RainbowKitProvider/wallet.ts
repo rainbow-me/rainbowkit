@@ -137,7 +137,7 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
       },
       // TODO: replace with high quality icon
       iconUrl:
-        'https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/ce5fbfe8-13b5-4f5f-184a-34f6ee7a3d00/lg',
+        'https://cloudflare-ipfs.com/ipfs/QmenqGTM4sPU7x27a4zdZfMCMrWvxZxnVST8dbyFFvUZZQ',
       id: 'argent',
       mobile: {
         getUri: () => {
