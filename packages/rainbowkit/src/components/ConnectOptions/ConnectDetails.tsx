@@ -312,7 +312,7 @@ export function DownloadDetail({
     >
       <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          Scan with your phone to download in iOS or Android
+          Scan with your phone to download on iOS or Android
         </Text>
       </Box>
       <Box height="full">
