@@ -57,7 +57,6 @@ export function ProfileDetails({
   }
 
   const accountName =
-    // @ts-expect-error TODO(jxom): address should be required
     accountData.ens?.name ?? formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
@@ -87,7 +86,6 @@ export function ProfileDetails({
             />{' '}
             <Box>
               <Avatar
-                // @ts-expect-error TODO(jxom): address should be required
                 address={accountData.address}
                 imageUrl={accountData.ens?.avatar}
                 size={74}

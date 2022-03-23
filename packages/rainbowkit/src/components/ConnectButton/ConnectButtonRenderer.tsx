@@ -98,7 +98,6 @@ export function ConnectButtonRenderer({
   return (
     <>
       {children({
-        // @ts-expect-error TODO(jxom): address should be required
         account: accountData
           ? {
               address: accountData.address,
@@ -107,10 +106,9 @@ export function ConnectButtonRenderer({
               balanceSymbol: balanceData?.symbol,
               displayBalance,
               displayName:
-                // @ts-expect-error TODO(jxom): address should be required
                 accountData.ens?.name ?? formatAddress(accountData.address),
               ensAvatar: accountData.ens?.avatar ?? undefined,
-              ensName: accountData.ens?.name,
+              ensName: accountData.ens?.name ?? undefined,
             }
           : undefined,
         accountModalOpen,
