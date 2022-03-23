@@ -17,11 +17,12 @@ Theme object has been updated in the following way:
 **Added**
 
 `borders.modalBorderWidth`
-`colors.modalTextDim`
 `colors.actionButtonBorderMobile`
+`colors.generalBorderDim`
+`colors.modalTextDim`
 `radii.actionButton`
-`shadows.profileDetailsAction`
 `radii.modalMobile`
+`shadows.profileDetailsAction`
 
 **Removed**
 
