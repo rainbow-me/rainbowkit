@@ -135,7 +135,6 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
           ? 'https://apps.apple.com/us/app/argent/id1358741926'
           : 'https://argent.link/app',
       },
-      // TODO: replace with high quality icon
       iconUrl:
         'https://cloudflare-ipfs.com/ipfs/QmenqGTM4sPU7x27a4zdZfMCMrWvxZxnVST8dbyFFvUZZQ',
       id: 'argent',
