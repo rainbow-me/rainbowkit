@@ -115,7 +115,6 @@ interface ArgentOptions {
   infuraId?: string;
 }
 
-// not included in default wallets
 export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
   return () => {
     const connector = new WalletConnectConnector({
