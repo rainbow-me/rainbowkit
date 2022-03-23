@@ -27,8 +27,8 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
 
         if (getMobileUri) {
           // Get URI on next tick after connecting to ensure it's available
-          setTimeout(() => {
-            window.location.href = getMobileUri();
+          setTimeout(async () => {
+            window.location.href = await getMobileUri();
           }, 0);
         }
       }, [connect, getMobileUri])}

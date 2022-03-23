@@ -47,19 +47,19 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const isMounted = useIsMounted();
 
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: true,
+  const { data: accountData, disconnect } = useAccount({
+    ens: true,
   });
 
-  const [{ data: balanceData }] = useBalance({
+  const { data: balanceData } = useBalance({
     addressOrName: accountData?.address,
   });
 
-  const [{ data: networkData }, switchNetwork] = useNetwork();
+  const { activeChain, chains, switchNetwork } = useNetwork();
 
   const chainIconUrlsById = useChainIconUrlsById();
-  const chainIconUrl = networkData.chain
-    ? chainIconUrlsById[networkData.chain.id] ?? undefined
+  const chainIconUrl = activeChain?.id
+    ? chainIconUrlsById[activeChain.id] ?? undefined
     : undefined;
 
   const {
@@ -98,6 +98,7 @@ export function ConnectButtonRenderer({
   return (
     <>
       {children({
+        // @ts-expect-error TODO(jxom): address should be required
         account: accountData
           ? {
               address: accountData.address,
@@ -106,18 +107,19 @@ export function ConnectButtonRenderer({
               balanceSymbol: balanceData?.symbol,
               displayBalance,
               displayName:
+                // @ts-expect-error TODO(jxom): address should be required
                 accountData.ens?.name ?? formatAddress(accountData.address),
               ensAvatar: accountData.ens?.avatar ?? undefined,
               ensName: accountData.ens?.name,
             }
           : undefined,
         accountModalOpen,
-        chain: networkData?.chain
+        chain: activeChain
           ? {
               iconUrl: chainIconUrl,
-              id: networkData.chain.id,
-              name: networkData.chain.name,
-              unsupported: networkData.chain.unsupported,
+              id: activeChain.id,
+              name: activeChain.name,
+              unsupported: activeChain.unsupported,
             }
           : undefined,
         chainModalOpen,
@@ -136,7 +138,8 @@ export function ConnectButtonRenderer({
         open={accountModalOpen}
       />
       <ChainModal
-        networkData={networkData}
+        activeChain={activeChain}
+        chains={chains}
         onClose={closeChainModal}
         onSwitchNetwork={switchNetwork}
         open={chainModalOpen}

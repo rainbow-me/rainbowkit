@@ -1,7 +1,7 @@
 import { Connector, Chain as WagmiChain } from 'wagmi';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { isAndroid, isIOS, isMobile } from '../../utils/isMobile';
 import { Chain } from './ChainIconsContext';
 import { omitUndefinedValues } from './omitUndefinedValues';
@@ -19,11 +19,11 @@ type WalletConnectorConfig<C extends Connector = Connector> = {
     browserExtension?: string;
   };
   mobile?: {
-    getUri?: () => string;
+    getUri?: () => Promise<string>;
   };
   qrCode?: {
     iconUrl?: string;
-    getUri: () => string;
+    getUri: () => Promise<string>;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -70,8 +70,8 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
       id: 'rainbow',
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
 
           return isAndroid()
             ? uri
@@ -80,7 +80,7 @@ const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
       },
       name: 'Rainbow',
       qrCode: {
-        getUri: () => connector.getProvider().connector.uri,
+        getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl:
             'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
@@ -139,11 +139,9 @@ const coinbase =
   ({ appName, chains, jsonRpcUrl }: CoinbaseOptions): Wallet =>
   ({ chainId }) => ({
     connector:
-      typeof window !== 'undefined' &&
-      // @ts-expect-error
-      window.ethereum?.isCoinbaseWallet
+      typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet
         ? new InjectedConnector({ chains })
-        : new WalletLinkConnector({
+        : new CoinbaseWalletConnector({
             chains,
             options: {
               appName,
@@ -175,9 +173,7 @@ const metaMask =
   ({ chains, infuraId, shimDisconnect }: MetaMaskOptions): Wallet =>
   () => {
     const isMetaMaskInjected =
-      typeof window !== 'undefined' &&
-      // @ts-expect-error
-      window.ethereum?.isMetaMask;
+      typeof window !== 'undefined' && window.ethereum?.isMetaMask;
 
     const shouldUseWalletConnect = isMobile() && !isMetaMaskInjected;
 
@@ -209,8 +205,8 @@ const metaMask =
       installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
       mobile: {
         getUri: shouldUseWalletConnect
-          ? () => {
-              const { uri } = connector.getProvider().connector;
+          ? async () => {
+              const { uri } = (await connector.getProvider()).connector;
 
               return isAndroid()
                 ? uri
@@ -266,11 +262,8 @@ export const getDefaultWallets = ({
 }): Wallets => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
-    // @ts-expect-error
     window.ethereum &&
-    // @ts-expect-error
     !window.ethereum.isMetaMask &&
-    // @ts-expect-error
     !window.ethereum.isCoinbaseWallet;
 
   return [

@@ -35,7 +35,7 @@ interface TxProps {
 export function TxItem({ tx }: TxProps) {
   const Icon = getTxStatusIcon(tx.status);
   const color = tx.status === FAIL_TX_STATUS ? 'error' : 'accentColor';
-  const [{ data: networkData }] = useNetwork();
+  const { activeChain } = useNetwork();
 
   const confirmationStatus =
     tx.status === SUCCESS_TX_STATUS
@@ -44,7 +44,7 @@ export function TxItem({ tx }: TxProps) {
       ? 'Failed'
       : 'Pending';
 
-  const explorerLink = chainIdToExplorerLink(networkData?.chain?.id);
+  const explorerLink = chainIdToExplorerLink(activeChain?.id);
 
   return (
     <Box

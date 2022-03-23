@@ -54,9 +54,9 @@ export const useTxHistory = ({
 } => {
   const [txMap, setTxMap] = useState<TransactionsMap>(initialTxs || {});
   const provider = useProvider();
-  const [{ data: networkData }] = useNetwork();
-  const [{ data: accountData }] = useAccount();
-  const chainId = networkData.chain?.id;
+  const { activeChain } = useNetwork();
+  const { data: accountData } = useAccount();
+  const chainId = activeChain?.id;
   const address = accountData?.address;
 
   const [txs, setTxs] = useState<TransactionWithInfo[]>([]);

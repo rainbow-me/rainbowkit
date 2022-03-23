@@ -54,13 +54,13 @@ const initialTxs: TransactionsMap = {
 };
 
 interface TxListProps {
-  accountData: ReturnType<typeof useAccount>[0]['data'];
+  accountData: ReturnType<typeof useAccount>['data'];
 }
 
 export function TxList({ accountData }: TxListProps) {
   const { txs } = useTxHistory({ initialTxs });
-  const [{ data: networkData }] = useNetwork();
-  const chainId = networkData?.chain?.id;
+  const { activeChain } = useNetwork();
+  const chainId = activeChain?.id;
   const address = accountData?.address;
   const explorerLink = chainIdToExplorerLink(chainId);
   const visibleTxs = txs?.slice(0, NUMBER_OF_VISIBLE_TXS);

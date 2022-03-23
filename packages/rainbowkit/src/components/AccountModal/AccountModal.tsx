@@ -5,8 +5,8 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 
 export interface AccountModalProps {
-  accountData: ReturnType<typeof useAccount>[0]['data'];
-  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  accountData: ReturnType<typeof useAccount>['data'];
+  balanceData: ReturnType<typeof useBalance>['data'];
   open: boolean;
   onClose: () => void;
   onDisconnect: () => void;

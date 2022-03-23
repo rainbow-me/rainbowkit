@@ -16,8 +16,8 @@ import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  accountData: ReturnType<typeof useAccount>[0]['data'];
-  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  accountData: ReturnType<typeof useAccount>['data'];
+  balanceData: ReturnType<typeof useBalance>['data'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -57,6 +57,7 @@ export function ProfileDetails({
   }
 
   const accountName =
+    // @ts-expect-error TODO(jxom): address should be required
     accountData.ens?.name ?? formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
@@ -86,6 +87,7 @@ export function ProfileDetails({
             />{' '}
             <Box>
               <Avatar
+                // @ts-expect-error TODO(jxom): address should be required
                 address={accountData.address}
                 imageUrl={accountData.ens?.avatar}
                 size={74}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useConnect, useNetwork } from 'wagmi';
+import { useNetwork, useProvider } from 'wagmi';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
@@ -9,44 +9,41 @@ import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
 import { Text } from '../Text/Text';
 
 export interface ChainModalProps {
+  activeChain: ReturnType<typeof useNetwork>['activeChain'];
+  chains: ReturnType<typeof useNetwork>['chains'];
   open: boolean;
   onClose: () => void;
-  networkData: ReturnType<typeof useNetwork>[0]['data'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
 export function ChainModal({
-  networkData,
+  activeChain,
+  chains,
   onClose,
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
-  const [{ data: connectData }] = useConnect();
   const titleId = 'rk_chain_modal_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
 
-  useEffect(() => {
-    if (!connectData.connector) {
-      return;
-    }
+  const provider = useProvider();
 
+  useEffect(() => {
     const stopSwitching = () => {
       setSwitchingToChain(null);
       onClose();
     };
-
-    const provider = connectData.connector.getProvider();
 
     provider.on('chainChanged', stopSwitching);
 
     return () => {
       provider.removeListener('chainChanged', stopSwitching);
     };
-  }, [connectData.connector, setSwitchingToChain, onClose]);
+  }, [setSwitchingToChain, onClose, provider]);
 
-  if (!networkData || !networkData.chain) {
+  if (!activeChain || !activeChain?.id) {
     return null;
   }
 
@@ -74,8 +71,8 @@ export function ChainModal({
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork &&
-              networkData.chains.map(chain => {
-                const isCurrentChain = chain.id === networkData.chain?.id;
+              chains.map(chain => {
+                const isCurrentChain = chain.id === activeChain?.id;
                 const switching = chain.id === switchingToChain;
                 const chainIconUrl = chainIconUrlsById[chain.id];
 

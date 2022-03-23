@@ -11,15 +11,21 @@ export interface WalletConnector
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const [{ data: connectData }, connect] = useConnect();
+  const { connect, connectors } = useConnect();
 
-  return connectData.connectors
-    .filter(connector => connector._wallet)
-    .map(connector => {
-      return {
-        ...(connector._wallet as WalletConnectorInstance),
-        connect: () => connect(connector),
-        ready: (connector._wallet.installed ?? true) && connector.ready,
-      };
-    });
+  // @ts-expect-error TODO(jxom): fix
+  return (
+    connectors
+      // @ts-expect-error TODO(jxom): fix
+      .filter(connector => connector._wallet)
+      .map(connector => {
+        return {
+          // @ts-expect-error TODO(jxom): fix
+          ...(connector._wallet as WalletConnectorInstance),
+          connect: () => connect(connector),
+          // @ts-expect-error TODO(jxom): fix
+          ready: (connector._wallet.installed ?? true) && connector.ready,
+        };
+      })
+  );
 }

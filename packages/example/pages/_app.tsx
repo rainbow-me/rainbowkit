@@ -11,7 +11,7 @@ import {
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
 import React, { useState } from 'react';
-import { chain, WagmiProvider } from 'wagmi';
+import { chain, createClient, WagmiProvider } from 'wagmi';
 
 const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
 
@@ -44,6 +44,12 @@ const wallets = getDefaultWallets({
 
 const connectors = connectorsForWallets(wallets);
 
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
 const themes = [
   { name: 'light', theme: lightTheme },
   { name: 'dark', theme: darkTheme },
@@ -70,7 +76,7 @@ function App({ Component, pageProps }: AppProps) {
     });
 
   return (
-    <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+    <WagmiProvider client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={selectedTheme}>
         <Component {...pageProps} />
 

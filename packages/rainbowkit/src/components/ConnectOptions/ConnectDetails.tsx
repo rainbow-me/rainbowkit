@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode } from 'react';
+import React, { ElementType, ReactNode, useEffect, useState } from 'react';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
@@ -168,6 +168,16 @@ export function ConnectDetail({
     readyMsg = `${name} is not available on this device`;
   }
 
+  const [qrCodeUri, setQrCodeUri] = useState('');
+  useEffect(() => {
+    (async () => {
+      const uri = await qrCode?.getUri();
+      if (uri) {
+        setQrCodeUri(uri);
+      }
+    })();
+  }, [qrCode]);
+
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       {qrCode ? (
@@ -176,7 +186,7 @@ export function ConnectDetail({
             logoSize={72}
             logoUri={qrCode.iconUrl ?? iconUrl}
             size={382}
-            uri={qrCode.getUri()}
+            uri={qrCodeUri}
           />
         </Box>
       ) : (
