@@ -2,12 +2,15 @@ import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
-import { ChainIconsContext, ChainWithIconUrl } from './ChainIconsContext';
 import {
   defaultLearnMoreUrl,
   LearnMoreUrlContext,
 } from './LearnMoreUrlContext';
-import { provideChainIconUrls } from './provideChainIconUrls';
+import {
+  RainbowKitChain,
+  RainbowKitChainContext,
+} from './RainbowKitChainContext';
+import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
@@ -33,7 +36,7 @@ export type Theme =
     };
 
 export interface RainbowKitProviderProps {
-  chains: ChainWithIconUrl[];
+  chains: RainbowKitChain[];
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
@@ -49,8 +52,8 @@ export function RainbowKitProvider({
   children,
   learnMoreUrl = defaultLearnMoreUrl,
 }: RainbowKitProviderProps) {
-  const chainsWithIconUrls = useMemo(
-    () => provideChainIconUrls(chains),
+  const rainbowkitChains = useMemo(
+    () => provideRainbowKitChains(chains),
     [chains]
   );
 
@@ -63,7 +66,7 @@ export function RainbowKitProvider({
   const selector = createThemeRootSelector(id);
 
   return (
-    <ChainIconsContext.Provider value={chainsWithIconUrls}>
+    <RainbowKitChainContext.Provider value={rainbowkitChains}>
       <LearnMoreUrlContext.Provider value={learnMoreUrl}>
         <ThemeIdContext.Provider value={id}>
           {theme ? (
@@ -89,6 +92,6 @@ export function RainbowKitProvider({
           )}
         </ThemeIdContext.Provider>
       </LearnMoreUrlContext.Provider>
-    </ChainIconsContext.Provider>
+    </RainbowKitChainContext.Provider>
   );
 }

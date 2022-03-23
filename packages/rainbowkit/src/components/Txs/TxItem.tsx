@@ -6,7 +6,7 @@ import {
   SUCCESS_TX_STATUS,
   TransactionWithInfo,
 } from '../../hooks/useTxHistory';
-import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
+import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CancelIcon } from '../Icons/Cancel';
@@ -46,7 +46,7 @@ export function TxItem({ tx }: TxProps) {
       ? 'Failed'
       : 'Pending';
 
-  const explorerLink = chainIdToExplorerLink(networkData?.chain?.id);
+  const explorerLink = chainToExplorerUrl(networkData?.chain);
 
   return (
     <>
