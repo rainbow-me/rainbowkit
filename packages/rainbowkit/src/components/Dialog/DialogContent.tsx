@@ -28,6 +28,7 @@ export function DialogContent({
               ? styles.dialogContentWideMobile
               : styles.dialogContentWideDesktop
             : styles.dialogContent,
+          mobile ? styles.dialogContentMobile : null,
           bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
         ].join(' ')}
       >

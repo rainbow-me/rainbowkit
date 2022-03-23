@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
@@ -26,6 +27,7 @@ export function ChainModal({
   const titleId = 'rk_chain_modal_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
+  const mobile = isMobile();
 
   useEffect(() => {
     if (!connectData.connector) {
@@ -59,119 +61,125 @@ export function ChainModal({
             flexDirection="row"
             justifyContent="space-between"
           >
+            {mobile && <div />}
             <Box paddingBottom="0" paddingLeft="10" paddingTop="4">
               <Text
                 as="h1"
                 color="modalText"
                 id={titleId}
-                size="18"
+                size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                Switch networks
+                Switch Networks
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork &&
-              networkData.chains.map(chain => {
+              networkData.chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const switching = chain.id === switchingToChain;
                 const chainIconUrl = chainIconUrlsById[chain.id];
 
                 return (
-                  <MenuButton
-                    currentlySelected={isCurrentChain}
-                    key={chain.id}
-                    onClick={
-                      isCurrentChain
-                        ? undefined
-                        : () => {
-                            setSwitchingToChain(chain.id);
-                            onSwitchNetwork(chain.id);
-                          }
-                    }
-                  >
-                    <Box fontFamily="body" fontSize="16" fontWeight="bold">
-                      <Box
-                        alignItems="center"
-                        display="flex"
-                        flexDirection="row"
-                        justifyContent="space-between"
-                      >
+                  <>
+                    <MenuButton
+                      currentlySelected={isCurrentChain}
+                      key={chain.id}
+                      onClick={
+                        isCurrentChain
+                          ? undefined
+                          : () => {
+                              setSwitchingToChain(chain.id);
+                              onSwitchNetwork(chain.id);
+                            }
+                      }
+                    >
+                      <Box fontFamily="body" fontSize="16" fontWeight="bold">
                         <Box
                           alignItems="center"
                           display="flex"
                           flexDirection="row"
-                          gap="4"
-                          height="28"
+                          justifyContent="space-between"
                         >
-                          {chainIconUrl ? (
-                            <Box height="full" marginRight="8">
-                              <img
-                                alt={chain.name}
-                                src={chainIconUrl}
-                                width="28"
+                          <Box
+                            alignItems="center"
+                            display="flex"
+                            flexDirection="row"
+                            gap="4"
+                            height={mobile ? '36' : '28'}
+                          >
+                            {chainIconUrl ? (
+                              <Box height="full" marginRight="8">
+                                <img
+                                  alt={chain.name}
+                                  src={chainIconUrl}
+                                  width={mobile ? '36' : '28'}
+                                />
+                              </Box>
+                            ) : null}
+                            <div>{chain.name}</div>
+                          </Box>
+                          {isCurrentChain && (
+                            <Box
+                              alignItems="center"
+                              display="flex"
+                              flexDirection="row"
+                              marginRight="6"
+                            >
+                              <Text
+                                color="actionButtonText"
+                                size="14"
+                                weight="medium"
+                              >
+                                Connected
+                              </Text>
+                              <Box
+                                background="connectionIndicator"
+                                borderColor="selectedOptionBorder"
+                                borderRadius="full"
+                                borderStyle="solid"
+                                borderWidth="2"
+                                height="8"
+                                marginLeft="8"
+                                width="8"
                               />
                             </Box>
-                          ) : null}
-                          <div>{chain.name}</div>
+                          )}
+                          {switching && (
+                            <Box
+                              alignItems="center"
+                              display="flex"
+                              flexDirection="row"
+                              marginRight="6"
+                            >
+                              <Text color="modalText" size="14" weight="medium">
+                                Confirm in Wallet
+                              </Text>
+                              <Box
+                                background="standby"
+                                borderColor="selectedOptionBorder"
+                                borderRadius="full"
+                                borderStyle="solid"
+                                borderWidth="2"
+                                height="8"
+                                marginLeft="8"
+                                width="8"
+                              />
+                            </Box>
+                          )}
                         </Box>
-                        {isCurrentChain && (
-                          <Box
-                            alignItems="center"
-                            display="flex"
-                            flexDirection="row"
-                            marginRight="6"
-                          >
-                            <Text
-                              color="actionButtonText"
-                              size="14"
-                              weight="medium"
-                            >
-                              Connected
-                            </Text>
-                            <Box
-                              background="connectionIndicator"
-                              borderColor="selectedOptionBorder"
-                              borderRadius="full"
-                              borderStyle="solid"
-                              borderWidth="2"
-                              height="8"
-                              marginLeft="8"
-                              width="8"
-                            />
-                          </Box>
-                        )}
-                        {switching && (
-                          <Box
-                            alignItems="center"
-                            display="flex"
-                            flexDirection="row"
-                            marginRight="6"
-                          >
-                            <Text
-                              color="modalTextSecondary"
-                              size="14"
-                              weight="medium"
-                            >
-                              Confirm in Wallet
-                            </Text>
-                            <Box
-                              background="standby"
-                              borderColor="selectedOptionBorder"
-                              borderRadius="full"
-                              borderStyle="solid"
-                              borderWidth="2"
-                              height="8"
-                              marginLeft="8"
-                              width="8"
-                            />
-                          </Box>
-                        )}
                       </Box>
-                    </Box>
-                  </MenuButton>
+                    </MenuButton>
+                    {mobile && idx < networkData?.chains?.length - 1 && (
+                      <Box
+                        background="generalBorderDim"
+                        height="1"
+                        marginX="8"
+                      />
+                    )}
+                  </>
                 );
               })}
           </Box>

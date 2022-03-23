@@ -2,28 +2,28 @@ import { ThemeVars } from '../css/sprinkles.css';
 
 const radii: Record<RadiiValues, RadiiScale> = {
   large: {
-    0: '6px',
-    1: '12px',
-    2: '24px',
-    3: '9999px',
+    actionButton: '9999px',
+    connectButton: '12px',
+    modal: '24px',
+    modalMobile: '28px',
   },
   medium: {
-    0: '4px',
-    1: '8px',
-    2: '16px',
-    3: '10px',
+    actionButton: '10px',
+    connectButton: '8px',
+    modal: '16px',
+    modalMobile: '18px',
   },
   none: {
-    0: '0px',
-    1: '0px',
-    2: '0px',
-    3: '0px',
+    actionButton: '0px',
+    connectButton: '0px',
+    modal: '0px',
+    modalMobile: '0px',
   },
   small: {
-    0: '4px',
-    1: '4px',
-    2: '8px',
-    3: '4px',
+    actionButton: '4px',
+    connectButton: '4px',
+    modal: '8px',
+    modalMobile: '8px',
   },
 };
 
@@ -34,18 +34,19 @@ export const baseTheme = ({
     body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
   },
   radii: {
-    actionButton: radii[borderRadius][3],
-    connectButton: radii[borderRadius][1],
-    menuButton: radii[borderRadius][1],
-    modal: radii[borderRadius][2],
+    actionButton: radii[borderRadius].actionButton,
+    connectButton: radii[borderRadius].connectButton,
+    menuButton: radii[borderRadius].connectButton,
+    modal: radii[borderRadius].modal,
+    modalMobile: radii[borderRadius].modalMobile,
   },
 });
 
 type RadiiScale = {
-  0: string;
-  1: string;
-  2: string;
-  3: string;
+  actionButton: string;
+  connectButton: string;
+  modal: string;
+  modalMobile: string;
 };
 type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 

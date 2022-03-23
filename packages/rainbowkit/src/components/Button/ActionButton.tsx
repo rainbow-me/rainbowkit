@@ -1,4 +1,5 @@
 import React from 'react';
+import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 
@@ -45,14 +46,22 @@ export function ActionButton({
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
+  const isNotLarge = size !== 'large';
+  const mobile = isMobile();
+  const background = isPrimary
+    ? 'accentColor'
+    : isNotLarge
+    ? 'actionButtonSecondaryBackground'
+    : null;
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
         : { as: 'button', type: 'button' })}
-      background={isPrimary ? 'accentColor' : 'actionButtonSecondaryBackground'}
-      borderColor="actionButtonBorder"
+      borderColor={
+        mobile && isNotLarge ? 'actionButtonBorderMobile' : 'actionButtonBorder'
+      }
       borderRadius="actionButton"
       borderStyle="solid"
       borderWidth="1"
@@ -60,9 +69,10 @@ export function ActionButton({
       onClick={onClick}
       paddingX={paddingX}
       paddingY={paddingY}
-      style={{ boxSizing: 'border-box', willChange: 'transform' }}
+      style={{ willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
+      {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
       <Text

@@ -226,7 +226,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     }
                     paddingX="8"
                     paddingY="4"
-                    style={{ boxSizing: 'content-box', height: 17 }}
+                    style={{
+                      boxSizing: 'content-box',
+                      height: 17,
+                      willChange: 'transform',
+                    }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >

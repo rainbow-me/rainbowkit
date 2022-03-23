@@ -389,7 +389,13 @@ export function InstructionDetail({
             gap="16"
             key={idx}
           >
-            <Box height="48" minWidth="48" width="48">
+            <Box
+              borderRadius="10"
+              height="48"
+              minWidth="48"
+              overflow="hidden"
+              width="48"
+            >
               {stepIcons[d.step]?.(wallet)}
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
