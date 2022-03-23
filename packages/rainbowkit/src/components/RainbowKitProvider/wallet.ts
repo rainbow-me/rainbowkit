@@ -116,19 +116,33 @@ interface WalletConnectOptions {
 }
 const walletConnect =
   ({ chains, infuraId }: WalletConnectOptions): Wallet =>
-  () => ({
-    connector: new WalletConnectConnector({
+  () => {
+    const ios = isIOS();
+
+    const connector = new WalletConnectConnector({
       chains,
       options: {
         infuraId,
-        qrcode: true,
+        qrcode: ios,
       },
-    }),
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmbFLEB7Q9iCsSR2mvb48eyn1nvARKeLaPYFnzHVUeBDMV',
-    id: 'walletConnect',
-    name: 'WalletConnect',
-  });
+    });
+
+    const getUri = () => connector.getProvider().connector.uri;
+
+    return {
+      connector,
+      iconUrl:
+        'https://cloudflare-ipfs.com/ipfs/QmbFLEB7Q9iCsSR2mvb48eyn1nvARKeLaPYFnzHVUeBDMV',
+      id: 'walletConnect',
+      name: 'WalletConnect',
+      ...(ios
+        ? {}
+        : {
+            mobile: { getUri },
+            qrCode: { getUri },
+          }),
+    };
+  };
 
 interface CoinbaseOptions {
   chains: Chain[];
@@ -291,6 +305,7 @@ export const getDefaultWallets = ({
 
 export type WalletConnectorInstance = WalletConnectorConfig & {
   groupName: string;
+  walletConnectModalConnector?: Connector;
 };
 
 export const connectorsForWallets = (wallets: Wallets) => {
@@ -311,9 +326,25 @@ export const connectorsForWallets = (wallets: Wallets) => {
           );
         }
 
+        let walletConnectModalConnector: Connector | undefined;
+        if (wallet.id === 'walletConnect' && wallet.qrCode) {
+          const { chains, options } = wallet.connector;
+
+          walletConnectModalConnector = new WalletConnectConnector({
+            chains,
+            options: {
+              ...options,
+              qrcode: true,
+            },
+          });
+
+          connectors.push(walletConnectModalConnector);
+        }
+
         // Mutate connector instance to add wallet metadata
         wallet.connector._wallet = {
           groupName,
+          walletConnectModalConnector,
           ...wallet,
         } as WalletConnectorInstance;
 
