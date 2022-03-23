@@ -154,13 +154,13 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
           steps: [
             {
               description:
-                'We recommend putting Argent on your home screen for faster access to your wallet.',
+                'Put Argent on your home screen for faster access to your wallet.',
               step: 'install',
               title: 'Open the Argent app',
             },
             {
               description:
-                'You can easily backup your wallet using our backup feature on your phone.',
+                'Create a wallet and username, or import an existing wallet.',
               step: 'create',
               title: 'Create or Import a Wallet',
             },
@@ -168,7 +168,7 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
               description:
                 'After you scan, a connection prompt will appear for you to connect your wallet.',
               step: 'scan',
-              title: 'Tap the scan button',
+              title: 'Tap the Scan QR button',
             },
           ],
         },
