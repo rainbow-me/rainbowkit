@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
+import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -61,6 +62,7 @@ export function ProfileDetails({
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
+  const mobile = isMobile();
 
   return (
     <>
@@ -70,7 +72,7 @@ export function ProfileDetails({
             alignItems="center"
             display="flex"
             flexDirection="column"
-            gap="12"
+            gap={mobile ? '16' : '12'}
             justifyContent="center"
             margin="8"
             style={{ textAlign: 'center' }}
@@ -84,20 +86,20 @@ export function ProfileDetails({
                 willChange: 'transform',
               }}
             />{' '}
-            <Box>
+            <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
                 address={accountData.address}
                 imageUrl={accountData.ens?.avatar}
-                size={74}
+                size={mobile ? 82 : 74}
               />
             </Box>
-            <Box display="flex" flexDirection="column">
+            <Box display="flex" flexDirection="column" gap={mobile ? '4' : '0'}>
               <Box>
                 <Text
                   as="h1"
                   color="modalText"
                   id={titleId}
-                  size="18"
+                  size={mobile ? '20' : '18'}
                   weight="heavy"
                 >
                   {accountName}
@@ -110,7 +112,7 @@ export function ProfileDetails({
                       as="h1"
                       color="modalTextSecondary"
                       id={titleId}
-                      size="14"
+                      size={mobile ? '16' : '14'}
                       weight="semibold"
                     >
                       {balance} {balanceData.symbol}

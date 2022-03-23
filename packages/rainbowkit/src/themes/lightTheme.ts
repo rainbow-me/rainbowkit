@@ -18,6 +18,7 @@ export const lightTheme = ({
   colors: {
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
+    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     actionButtonText: '#FFF',
     closeButton: 'rgba(60, 66, 66, 0.8)',
@@ -31,6 +32,7 @@ export const lightTheme = ({
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(0, 0, 0, 0.06)',
+    generalBorderDim: 'rgba(0, 0, 0, 0.03)',
     menuItemBackground: 'rgba(60, 66, 66, 0.1)',
     modalBackdrop: 'rgba(0, 0, 0, 0.3)',
     modalBackground: '#FFF',

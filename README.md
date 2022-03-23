@@ -480,6 +480,7 @@ const myCustomTheme: Theme = {
   colors: {
     accentColor: '...',
     actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',
     actionButtonText: '...',
     closeButton: '...',
@@ -513,6 +514,7 @@ const myCustomTheme: Theme = {
     connectButton: '...',
     menuButton: '...',
     modal: '...',
+    modalMobile: '...',
   },
   shadows: {
     connectButton: '...',
