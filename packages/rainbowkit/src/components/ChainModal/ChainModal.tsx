@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNetwork, useProvider } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
@@ -23,25 +23,32 @@ export function ChainModal({
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
+  const { data: accountData } = useAccount();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const titleId = 'rk_chain_modal_title';
 
   const chainIconUrlsById = useChainIconUrlsById();
 
-  const provider = useProvider();
-
   useEffect(() => {
+    if (!accountData?.connector) {
+      return;
+    }
+
     const stopSwitching = () => {
       setSwitchingToChain(null);
       onClose();
     };
 
-    provider.on('chainChanged', stopSwitching);
+    let provider: any;
+    accountData?.connector?.getProvider?.().then(provider_ => {
+      provider = provider_;
+      provider.on('chainChanged', stopSwitching);
+    });
 
     return () => {
-      provider.removeListener('chainChanged', stopSwitching);
+      provider?.removeListener('chainChanged', stopSwitching);
     };
-  }, [setSwitchingToChain, onClose, provider]);
+  }, [setSwitchingToChain, onClose, accountData?.connector]);
 
   if (!activeChain || !activeChain?.id) {
     return null;
