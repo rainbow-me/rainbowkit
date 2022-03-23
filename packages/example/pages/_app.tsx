@@ -45,7 +45,7 @@ const wallets = getDefaultWallets({
 
 const connectors = connectorsForWallets([
   ...wallets,
-  wallet.argent({ chains, infuraId }),
+  { groupName: 'Other', wallets: [wallet.argent({ chains, infuraId })] },
 ]);
 
 const themes = [
