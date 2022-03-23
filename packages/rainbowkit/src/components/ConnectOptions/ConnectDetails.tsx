@@ -180,7 +180,7 @@ export function ConnectDetail({
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
-      {qrCode ? (
+      {qrCode && qrCodeUri ? (
         <Box height="full">
           <QRCode
             logoSize={72}
