@@ -3,7 +3,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { isAndroid, isIOS, isMobile } from '../../utils/isMobile';
-import { Chain } from './ChainIconsContext';
+import { Chain } from './RainbowKitChainContext';
 import { omitUndefinedValues } from './omitUndefinedValues';
 
 export type InstructionStepName = 'install' | 'create' | 'scan';
