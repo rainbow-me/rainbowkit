@@ -7,6 +7,7 @@ import {
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
+  wallet,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
@@ -42,7 +43,10 @@ const wallets = getDefaultWallets({
     }/${infuraId}`,
 });
 
-const connectors = connectorsForWallets(wallets);
+const connectors = connectorsForWallets([
+  ...wallets,
+  { groupName: 'Other', wallets: [wallet.argent({ chains, infuraId })] },
+]);
 
 const themes = [
   { name: 'light', theme: lightTheme },
