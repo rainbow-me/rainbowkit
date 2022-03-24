@@ -55,7 +55,15 @@ const themes = [
 ] as const;
 type ThemeName = typeof themes[number]['name'];
 
-const accentColors = ['blue', 'purple', 'green', 'pink'] as const;
+const accentColors = [
+  'blue',
+  'green',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'yellow',
+] as const;
 type AccentColor = typeof accentColors[number];
 
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
