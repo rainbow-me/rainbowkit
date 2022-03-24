@@ -1,5 +1,5 @@
 import { useConnect } from 'wagmi';
-import { WalletConnectorInstance } from './wallet';
+import { WalletConnectorInstance } from './WalletConnectorInstance';
 
 export interface WalletConnector extends WalletConnectorInstance {
   ready?: boolean;

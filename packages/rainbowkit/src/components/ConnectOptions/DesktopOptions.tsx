@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
-import {
-  useWalletConnectors,
-  WalletConnector,
-} from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import {
   ConnectDetail,

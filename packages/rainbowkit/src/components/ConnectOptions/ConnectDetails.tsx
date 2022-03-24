@@ -1,15 +1,15 @@
 import React, { ElementType, ReactNode } from 'react';
+import { InstructionStepName } from '../../wallets/WalletConnectorConfig';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
-import {
-  useWalletConnectors,
-  WalletConnector,
-} from '../RainbowKitProvider/useWalletConnectors';
-import { InstructionStepName } from '../RainbowKitProvider/wallet';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 
