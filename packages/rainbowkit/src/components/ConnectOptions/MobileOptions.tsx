@@ -1,13 +1,13 @@
 import React, { useCallback, useContext, useState } from 'react';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
 import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
-import {
-  useWalletConnectors,
-  WalletConnector,
-} from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
