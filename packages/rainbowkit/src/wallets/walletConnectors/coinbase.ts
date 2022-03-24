@@ -1,6 +1,6 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
-import { Chain } from '../../components/RainbowKitProvider/ChainIconsContext';
+import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../utils/isMobile';
 import { Wallet } from '../Wallet';
 

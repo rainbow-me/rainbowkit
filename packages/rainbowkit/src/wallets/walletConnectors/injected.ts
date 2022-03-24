@@ -1,5 +1,5 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../components/RainbowKitProvider/ChainIconsContext';
+import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../Wallet';
 
 export interface InjectedOptions {

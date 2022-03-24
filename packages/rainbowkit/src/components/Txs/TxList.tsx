@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAccount, useNetwork } from 'wagmi';
 import { TransactionsMap, useTxHistory } from '../../hooks/useTxHistory';
-import { chainIdToExplorerLink } from '../../utils/chainIdToExplorerLink';
+import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
@@ -61,9 +61,9 @@ interface TxListProps {
 export function TxList({ accountData }: TxListProps) {
   const { txs } = useTxHistory({ initialTxs });
   const [{ data: networkData }] = useNetwork();
-  const chainId = networkData?.chain?.id;
+  const chain = networkData?.chain;
   const address = accountData?.address;
-  const explorerLink = chainIdToExplorerLink(chainId);
+  const explorerLink = chainToExplorerUrl(chain);
   const visibleTxs = txs?.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs?.length > 0;
   const mobile = isMobile();

@@ -6,7 +6,7 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
+import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 
 export interface ChainModalProps {
@@ -25,9 +25,8 @@ export function ChainModal({
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const [{ data: connectData }] = useConnect();
   const titleId = 'rk_chain_modal_title';
-
-  const chainIconUrlsById = useChainIconUrlsById();
   const mobile = isMobile();
+  const rainbowkitChainsById = useRainbowKitChainsById();
 
   useEffect(() => {
     if (!connectData.connector) {
@@ -80,7 +79,7 @@ export function ChainModal({
               networkData.chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const switching = chain.id === switchingToChain;
-                const chainIconUrl = chainIconUrlsById[chain.id];
+                const chainIconUrl = rainbowkitChainsById[chain.id]?.iconUrl;
 
                 return (
                   <>

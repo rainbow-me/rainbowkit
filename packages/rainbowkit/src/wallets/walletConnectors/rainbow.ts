@@ -1,5 +1,5 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/ChainIconsContext';
+import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isIOS } from '../../utils/isMobile';
 import { Wallet } from '../Wallet';
 
