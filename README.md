@@ -161,7 +161,7 @@ The built-in theme functions also accept an options object, allowing you to sele
   <tbody>
     <tr>
       <td><code>accentColor</code></td>
-      <td><code>"blue" | "green" | "pink" | "purple"</code></td>
+      <td><code>"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"</code></td>
       <td><code>"blue"</code></td>
       <td>The background/text color of various interactive elements</td>
     </tr>

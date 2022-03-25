@@ -34,3 +34,7 @@ Theme object has been updated in the following way:
 `shadows.menu`
 
 New theme type can be found in the Readme.
+
+**New Accent Colors**
+
+Developers can now choose between 7 accent colors (`"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"`).

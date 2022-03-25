@@ -7,7 +7,7 @@ describe('cssObjectFromTheme', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
         "--rk-borders-modalBorderWidth": "0px",
-        "--rk-colors-accentColor": "#1A85FF",
+        "--rk-colors-accentColor": "#0E76FD",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",

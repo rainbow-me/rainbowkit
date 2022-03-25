@@ -1,10 +1,13 @@
 import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
-  blue: '#1A85FF',
-  green: '#3ddc84',
-  pink: '#EA33AE',
-  purple: '#575cff',
+  blue: '#3898FF',
+  green: '#4BD166',
+  orange: '#FF983D',
+  pink: '#FF7AB8',
+  purple: '#7A70FF',
+  red: '#FF6257',
+  yellow: '#FFDF3D',
 };
 
 export const darkTheme = ({
