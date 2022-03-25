@@ -51,14 +51,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
 
     // Update selected wallet state on next tick so QR code URIs are ready to render
-    setTimeout(async () => {
+    wallet?.onConnecting?.(async () => {
       setSelectedOptionId(wallet.id);
       const sWallet = wallets.find(w => wallet.id === w.id);
       const uri = await sWallet?.qrCode?.getUri();
       setQrCodeUri(uri);
       setSelectedWallet(sWallet);
       setWalletStep(WalletStep.Connect);
-    }, 0);
+    });
   };
 
   const getMobileWallet = (id: string) => {

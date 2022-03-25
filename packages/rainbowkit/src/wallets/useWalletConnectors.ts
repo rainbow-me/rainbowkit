@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Connector, useConnect } from 'wagmi';
 import { WalletConnectorInstance } from './WalletConnectorInstance';
 
@@ -7,11 +8,16 @@ export interface WalletConnector extends WalletConnectorInstance {
     data?: any;
     error?: Error | undefined;
   }>;
+  onConnecting?: (fn: () => void) => void;
   showWalletConnectModal?: () => void;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const { connectAsync, connectors } = useConnect();
+  const { connectAsync, connector, connectors } = useConnect();
+
+  useEffect(() => () => {
+    connector?.off('connecting');
+  });
 
   return (
     connectors as (Connector<any, any> & { _wallet: WalletConnectorInstance })[]
@@ -23,6 +29,7 @@ export function useWalletConnectors(): WalletConnector[] {
       return {
         ...wallet,
         connect: () => connectAsync(connector),
+        onConnecting: fn => connector.on('connecting', fn),
         ready: (wallet.installed ?? true) && connector.ready,
         showWalletConnectModal: wallet.walletConnectModalConnector
           ? () =>

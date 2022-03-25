@@ -21,7 +21,7 @@ importers:
       '@typescript-eslint/parser': ^5.5.0
       '@vanilla-extract/esbuild-plugin': ^2.0.0
       '@vanilla-extract/vite-plugin': ^3.1.2
-      '@wagmi/core': ^0.2.0-next.2
+      '@wagmi/core': ^0.2.0-next.6
       autoprefixer: ^10.4.0
       esbuild: ^0.14.1
       eslint: 7.32.0
@@ -37,7 +37,7 @@ importers:
       recursive-readdir-files: ^2.0.7
       typescript: ~4.5.2
       vitest: ^0.5.0
-      wagmi: ^0.3.0-next.4
+      wagmi: ^0.3.0-next.8
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -56,7 +56,7 @@ importers:
       '@typescript-eslint/parser': 5.11.0_eslint@7.32.0+typescript@4.5.5
       '@vanilla-extract/esbuild-plugin': 2.0.2
       '@vanilla-extract/vite-plugin': 3.1.2
-      '@wagmi/core': 0.2.0-next.2_react@17.0.2
+      '@wagmi/core': 0.2.0-next.6_react@17.0.2
       autoprefixer: 10.4.2_postcss@8.4.6
       esbuild: 0.14.21
       eslint: 7.32.0
@@ -72,7 +72,7 @@ importers:
       recursive-readdir-files: 2.0.7
       typescript: 4.5.5
       vitest: 0.5.0
-      wagmi: 0.3.0-next.4_d5abbaeffd538e81ebdb9da980300710
+      wagmi: 0.3.0-next.8_d5abbaeffd538e81ebdb9da980300710
 
   packages/example:
     specifiers:
@@ -2365,6 +2365,7 @@ packages:
 
   /@lavamoat/preinstall-always-fail/1.0.0:
     resolution: {integrity: sha512-vD2DcC0ffJj1w2y1Lu0OU39wHmlPEd2tCDW04Bm6Kf4LyRnCHCezTsS8yzeSJ+4so7XP+TITuR5FGJRWxPb+GA==}
+    requiresBuild: true
     dev: true
 
   /@manypkg/find-root/1.1.0:
@@ -2398,6 +2399,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
+    requiresBuild: true
     optional: true
 
   /@next/swc-darwin-arm64/12.0.10:
@@ -2405,6 +2407,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
+    requiresBuild: true
     optional: true
 
   /@next/swc-darwin-x64/12.0.10:
@@ -2412,6 +2415,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm-gnueabihf/12.0.10:
@@ -2419,6 +2423,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm64-gnu/12.0.10:
@@ -2426,6 +2431,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm64-musl/12.0.10:
@@ -2433,6 +2439,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-x64-gnu/12.0.10:
@@ -2440,6 +2447,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-x64-musl/12.0.10:
@@ -2447,6 +2455,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-win32-arm64-msvc/12.0.10:
@@ -2454,6 +2463,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
+    requiresBuild: true
     optional: true
 
   /@next/swc-win32-ia32-msvc/12.0.10:
@@ -2461,6 +2471,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
+    requiresBuild: true
     optional: true
 
   /@next/swc-win32-x64-msvc/12.0.10:
@@ -2468,6 +2479,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
+    requiresBuild: true
     optional: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -2918,8 +2930,8 @@ packages:
       - supports-color
     dev: false
 
-  /@wagmi/core/0.2.0-next.2_08c87600d71ad17f6484ae066d3fa519:
-    resolution: {integrity: sha512-IGfpauC5blQje4jQAeCUhbP+zEJ3oNZFqlvBY79ZDeEgW786boUvqWG0wiZk97Qo9nVFCe9CD4/9wD+bVFcY4Q==}
+  /@wagmi/core/0.2.0-next.6_08c87600d71ad17f6484ae066d3fa519:
+    resolution: {integrity: sha512-dZMTmWre3e+gkMnAbtRjWxR5Yi3RyqugKbfrwWpbtQ8iXGqsGdvcxxyOaT8WOK7c+WL25gw/o0Ksdf+KJ1hdcg==}
     peerDependencies:
       '@coinbase/wallet-sdk': '>=3.0.1'
       '@walletconnect/ethereum-provider': '>=1.7.5'
@@ -2938,8 +2950,8 @@ packages:
       - react
     dev: true
 
-  /@wagmi/core/0.2.0-next.2_react@17.0.2:
-    resolution: {integrity: sha512-IGfpauC5blQje4jQAeCUhbP+zEJ3oNZFqlvBY79ZDeEgW786boUvqWG0wiZk97Qo9nVFCe9CD4/9wD+bVFcY4Q==}
+  /@wagmi/core/0.2.0-next.6_react@17.0.2:
+    resolution: {integrity: sha512-dZMTmWre3e+gkMnAbtRjWxR5Yi3RyqugKbfrwWpbtQ8iXGqsGdvcxxyOaT8WOK7c+WL25gw/o0Ksdf+KJ1hdcg==}
     peerDependencies:
       '@coinbase/wallet-sdk': '>=3.0.1'
       '@walletconnect/ethereum-provider': '>=1.7.5'
@@ -4009,6 +4021,7 @@ packages:
 
   /core-js-pure/3.21.0:
     resolution: {integrity: sha512-VaJUunCZLnxuDbo1rNOzwbet9E1K9joiXS5+DQMPtgxd24wfsZbJZMMfQLGYMlCUvSxLfsRUUhoOR2x28mFfeg==}
+    requiresBuild: true
     dev: true
 
   /core-util-is/1.0.2:
@@ -4390,6 +4403,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [android]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4398,6 +4412,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4406,6 +4421,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [darwin]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4414,6 +4430,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [freebsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4422,6 +4439,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [freebsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4430,6 +4448,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4438,6 +4457,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4446,6 +4466,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4454,6 +4475,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4462,6 +4484,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [mips64el]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4470,6 +4493,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ppc64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4478,6 +4502,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [riscv64]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4486,6 +4511,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [s390x]
     os: [linux]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4494,6 +4520,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [netbsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4502,6 +4529,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [openbsd]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4510,6 +4538,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [sunos]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4518,6 +4547,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [ia32]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4526,6 +4556,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -4534,6 +4565,7 @@ packages:
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6059,6 +6091,7 @@ packages:
   /keccak/3.0.2:
     resolution: {integrity: sha512-PyKKjkH53wDMLGrvmRGSNWgmSxZOUqbnXwKL9tmgbFYA1iAYqW21kfR7mZXV0MlESiefxQQE9X9fTa3X+2MPDQ==}
     engines: {node: '>=10.0.0'}
+    requiresBuild: true
     dependencies:
       node-addon-api: 2.0.2
       node-gyp-build: 4.3.0
@@ -7359,6 +7392,7 @@ packages:
   /secp256k1/4.0.3:
     resolution: {integrity: sha512-NLZVf+ROMxwtEj3Xa562qgv2BK5e2WNmXPiOdVIPLgs6lyTzMvBq0aWTYMI5XCP9jZMVKOcqZLw/Wc4vDkuxhA==}
     engines: {node: '>=10.0.0'}
+    requiresBuild: true
     dependencies:
       elliptic: 6.5.4
       node-addon-api: 2.0.2
@@ -8094,14 +8128,14 @@ packages:
       - stylus
     dev: true
 
-  /wagmi/0.3.0-next.4_d5abbaeffd538e81ebdb9da980300710:
-    resolution: {integrity: sha512-PwIUy6AqI/Vpt+fIy4cXXMgQouairCoT7sQJ5ekGKI58BUHVmO177oW8QMTIFqHKX+BpWNys3+lX4l3twtayhQ==}
+  /wagmi/0.3.0-next.8_d5abbaeffd538e81ebdb9da980300710:
+    resolution: {integrity: sha512-Yj5aJbyui76O2acodrPpNeFGTvkap9aeIgcdCD3nVReR9SElJ1/Sot5vWofvRCrlwox9mZIzcn72vtl8zf2enQ==}
     peerDependencies:
       ethers: '>=5.5.1'
       react: '>=17.0.0'
     dependencies:
       '@coinbase/wallet-sdk': 3.0.5_@babel+core@7.17.2
-      '@wagmi/core': 0.2.0-next.2_08c87600d71ad17f6484ae066d3fa519
+      '@wagmi/core': 0.2.0-next.6_08c87600d71ad17f6484ae066d3fa519
       '@walletconnect/ethereum-provider': 1.7.5
       react: 17.0.2
       react-query: 3.34.16_react-dom@17.0.2+react@17.0.2
