@@ -626,7 +626,7 @@ const wallets: WalletList = [
 
 > ⚠️ Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time, so let us know if there are any particular wallets you’re interested in.
 
-The `Wallet` type is provided to help you define your own custom wallet options. If you’d like to see some working examples, you can [view the source code for the built-in wallets.](/packages/rainbowkit/src/wallets/walletConnectors/)
+The `Wallet` type is provided to help you define your own custom wallets. If you’d like to see some working examples, you can [view the source code for the built-in wallets.](/packages/rainbowkit/src/wallets/walletConnectors/)
 
 #### `Wallet` properties
 

@@ -6,7 +6,7 @@ Update `Wallet` API
 
 Note that this only affects consumers that have created custom wallets. All built-in wallets have been updated to use the new API.
 
-- The `Wallet` type is now an object rather than a function. Static properties (`id`, `name`, etc.) have been left at the top level, while the `connector` and connection method configuration has been moved to the `wallet.getConnector()` function. This allows consumers to tell wallet instances apart without having to instantiate its connector.
+- The `Wallet` type is now an object rather than a function. Static properties (`id`, `name`, etc.) have been left at the top level, while the `connector` and connection method configuration has been moved to the `wallet.getConnector()` function. This allows consumers to tell wallet instances apart without having to instantiate their connectors.
   - `connector` has been moved to `createConnector().connector`
   - `qrCode` has been moved to `createConnector().qrCode`
   - `qrCode.logoUri` has been renamed to `qrCode.iconUrl` for consistency.
