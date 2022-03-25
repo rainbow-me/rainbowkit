@@ -1,7 +1,7 @@
 import { useConnect } from 'wagmi';
-import { WalletConnectorInstance } from './WalletConnectorInstance';
+import { WalletInstance } from './Wallet';
 
-export interface WalletConnector extends WalletConnectorInstance {
+export interface WalletConnector extends WalletInstance {
   ready?: boolean;
   connect?: () => Promise<{
     data?: any;
@@ -16,7 +16,7 @@ export function useWalletConnectors(): WalletConnector[] {
   return connectData.connectors
     .filter(connector => connector._wallet)
     .map(connector => {
-      const wallet = connector._wallet as WalletConnectorInstance;
+      const wallet = connector._wallet as WalletInstance;
 
       return {
         ...wallet,
