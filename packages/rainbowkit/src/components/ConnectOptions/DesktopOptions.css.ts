@@ -13,7 +13,7 @@ export const FadeScrollClassName = style([
   }),
   {
     maxHeight: 464,
-    overflowY: 'scroll',
+    overflowY: 'auto',
     selectors: {
       '&:before': {
         background: `linear-gradient(to bottom, ${themeVars.colors.modalBackground} 60%, rgba(255, 255, 255, 0) 100%)`,
