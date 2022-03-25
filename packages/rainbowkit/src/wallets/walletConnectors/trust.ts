@@ -58,7 +58,8 @@ export const trust = ({ chains, infuraId }: TrustOptions): Wallet => ({
               title: 'Create or Import a Wallet',
             },
             {
-              description: 'Create a New Connection by scanning the QR code.',
+              description:
+                'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
               step: 'scan',
               title: 'Tap WalletConnect in Settings',
             },
