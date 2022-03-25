@@ -33,6 +33,7 @@ export type Wallet<C extends Connector = Connector> = {
   downloadUrls?: {
     mobile?: string;
     browserExtension?: string;
+    scan?: string;
   };
   createConnector: (connectorArgs: {
     chainId?: number;

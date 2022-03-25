@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Adds Argent to available wallets
+Adds Argent & Trust to available wallets

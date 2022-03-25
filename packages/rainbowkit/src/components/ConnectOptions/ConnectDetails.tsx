@@ -316,8 +316,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {downloadUrls?.mobile ? (
-          <QRCode logoSize={0} size={268} uri={downloadUrls.mobile} />
+        {downloadUrls?.scan ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.scan} />
         ) : null}
       </Box>
 
