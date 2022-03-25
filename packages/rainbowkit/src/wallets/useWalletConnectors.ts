@@ -15,9 +15,12 @@ export interface WalletConnector extends WalletConnectorInstance {
 export function useWalletConnectors(): WalletConnector[] {
   const { connectAsync, connector, connectors } = useConnect();
 
-  useEffect(() => () => {
-    connector?.off('connecting');
-  });
+  useEffect(
+    () => () => {
+      connector?.off('connecting');
+    },
+    [connector]
+  );
 
   return (
     connectors as (Connector<any, any> & { _wallet: WalletConnectorInstance })[]

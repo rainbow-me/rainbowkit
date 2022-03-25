@@ -12,7 +12,7 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { connect, iconUrl, id, mobile, name, ready } = wallet;
+  const { connect, iconUrl, id, mobile, name, onConnecting, ready } = wallet;
   const getMobileUri = mobile?.getUri;
 
   return (
@@ -25,10 +25,12 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       onClick={useCallback(async () => {
         connect?.();
 
-        if (getMobileUri) {
-          window.location.href = await getMobileUri();
-        }
-      }, [connect, getMobileUri])}
+        onConnecting?.(async () => {
+          if (getMobileUri) {
+            window.location.href = await getMobileUri();
+          }
+        });
+      }, [connect, getMobileUri, onConnecting])}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
