@@ -19,6 +19,7 @@ export function GetDetail({
   getMobileWallet: (walletId: string) => void;
 }) {
   const wallets = useWalletConnectors();
+  const shownWallets = wallets.splice(0, 5);
 
   const linkProps = (
     link: string
@@ -46,7 +47,7 @@ export function GetDetail({
         height="full"
         width="full"
       >
-        {wallets
+        {shownWallets
           ?.filter(
             wallet =>
               wallet.downloadUrls?.browserExtension ||
