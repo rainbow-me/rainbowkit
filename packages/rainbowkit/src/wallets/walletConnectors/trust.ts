@@ -13,14 +13,14 @@ export const trust = ({ chains, infuraId }: TrustOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
   iconUrl:
-    'https://pbs.twimg.com/profile_images/1431208649507155978/Ad2o_xnz_400x400.jpg', //TODO: switch to IPFS
+    'https://cloudflare-ipfs.com/ipfs/Qmc8gX8mQNih2jcjqiJnbfEC8aXMUWZszTqJKcn98UHJFg',
   downloadUrls: {
     mobile: isAndroid()
       ? 'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp'
       : isIOS()
       ? 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409'
       : 'https://trustwallet.com/download/',
-    scan: 'https://trustwallet.com/download/',
+    scan: 'https://link.trustwallet.com',
   },
   createConnector: () => {
     const connector = new WalletConnectConnector({
