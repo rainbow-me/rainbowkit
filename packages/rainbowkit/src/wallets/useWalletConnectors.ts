@@ -17,7 +17,7 @@ export function useWalletConnectors(): WalletConnector[] {
 
   useEffect(
     () => () => {
-      connector?.off('connecting');
+      connector?.off('message');
     },
     [connector]
   );
@@ -32,7 +32,10 @@ export function useWalletConnectors(): WalletConnector[] {
       return {
         ...wallet,
         connect: () => connectAsync(connector),
-        onConnecting: fn => connector.on('connecting', fn),
+        onConnecting: fn =>
+          connector.on('message', ({ type }) =>
+            type === 'connecting' ? fn() : undefined
+          ),
         ready: (wallet.installed ?? true) && connector.ready,
         showWalletConnectModal: wallet.walletConnectModalConnector
           ? () =>
