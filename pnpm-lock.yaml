@@ -42,8 +42,6 @@ importers:
       typescript: ~4.5.2
       vitest: ^0.5.0
       wagmi: ^0.3.0-next.9
-    dependencies:
-      eventemitter3: 4.0.7
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -68,6 +66,7 @@ importers:
       eslint: 7.32.0
       eslint-config-rainbow: 3.0.0_f11522fde805f51f668ee73b4ebdf587
       eslint-plugin-jsx-a11y: 6.5.1_eslint@7.32.0
+      eventemitter3: 4.0.7
       husky: 7.0.4
       next: 12.0.10_d5abbaeffd538e81ebdb9da980300710
       postcss: 8.4.6
