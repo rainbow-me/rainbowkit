@@ -1,8 +1,22 @@
 import { keyframes, style } from '@vanilla-extract/css';
-import { sprinkles } from '../../css/sprinkles.css';
+import {
+  largeScreenMinWidth,
+  sprinkles,
+  themeVars,
+} from '../../css/sprinkles.css';
 
-const slideUp = keyframes({
-  '0%': { transform: 'translateY(100%)' },
+const {
+  modalEntrance: desktopTransition,
+  modalEntranceMobile: mobileTransition,
+} = themeVars.transitions;
+
+const slideUpDesktop = keyframes({
+  '0%': { transform: `translateY(${desktopTransition.slideDistance})` },
+  '100%': { transform: 'translateY(0deg)' },
+});
+
+const slideUpMobile = keyframes({
+  '0%': { transform: `translateY(${mobileTransition.slideDistance})` },
   '100%': { transform: 'translateY(0deg)' },
 });
 
@@ -24,13 +38,20 @@ export const overlay = style([
     position: 'fixed',
   }),
   {
-    animation: `${fadeIn} 150ms ease`,
     bottom: -bleed,
     left: -bleed,
     padding: bleed,
     right: -bleed,
     top: -bleed,
     transform: 'translateZ(0)', // This is required for content to render under the URL bar on iOS
+  },
+  {
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        animation: `${fadeIn} ${desktopTransition.fadeDuration} ease`,
+      },
+    },
+    'animation': `${fadeIn} ${mobileTransition.fadeDuration} ease`,
   },
 ]);
 
@@ -41,7 +62,14 @@ export const content = style([
     position: 'relative',
   }),
   {
-    animation: `${slideUp} 350ms cubic-bezier(.15,1.15,0.6,1.00), ${fadeIn} 150ms ease`,
     maxWidth: '100vw',
+  },
+  {
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        animation: `${slideUpDesktop} ${desktopTransition.slideDuration} ${desktopTransition.slideEasing}, ${fadeIn} ${desktopTransition.fadeDuration} ease`,
+      },
+    },
+    'animation': `${slideUpMobile} ${mobileTransition.slideDuration} ${mobileTransition.slideEasing}, ${fadeIn} ${mobileTransition.fadeDuration} ease`,
   },
 ]);

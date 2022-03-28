@@ -69,16 +69,22 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
+const transitionScales = ['large', 'small'] as const;
+type TransitionScale = typeof transitionScales[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedTransitionScale, setTransitionScale] =
+    useState<TransitionScale>('large');
 
   const selectedTheme = themes
     .find(({ name }) => name === selectedThemeName)
     ?.theme({
       accentColor: selectedAccentColor,
       borderRadius: selectedRadiusScale,
+      transitions: selectedTransitionScale,
     });
 
   return (
@@ -170,6 +176,32 @@ function App({ Component, pageProps }: AppProps) {
                       value={radiusScale}
                     />{' '}
                     {radiusScale}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4>Transitions</h4>
+              <div
+                style={{
+                  alignItems: 'flex-start',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
+                }}
+              >
+                {transitionScales.map(transitionScale => (
+                  <label key={transitionScale} style={{ userSelect: 'none' }}>
+                    <input
+                      checked={transitionScale === selectedTransitionScale}
+                      name="transitionScale"
+                      onChange={e =>
+                        setTransitionScale(e.target.value as TransitionScale)
+                      }
+                      type="radio"
+                      value={transitionScale}
+                    />{' '}
+                    {transitionScale}
                   </label>
                 ))}
               </div>
