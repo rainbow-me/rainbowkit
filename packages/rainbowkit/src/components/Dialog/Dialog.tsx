@@ -5,7 +5,6 @@ import React, {
   useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
@@ -19,17 +18,10 @@ interface DialogProps {
   onClose: () => void;
   titleId: string;
   onMountAutoFocus?: (event: Event) => void;
-  wide?: boolean;
   children: ReactNode;
 }
 
-export function Dialog({
-  children,
-  onClose,
-  open,
-  titleId,
-  wide = false,
-}: DialogProps) {
+export function Dialog({ children, onClose, open, titleId }: DialogProps) {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
       open && event.key === 'Escape' && onClose();
@@ -41,7 +33,6 @@ export function Dialog({
 
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
   const themeRootProps = useThemeRootProps();
-  const mobile = isMobile();
   return (
     <>
       {open
@@ -50,14 +41,13 @@ export function Dialog({
               {...themeRootProps}
               aria-labelledby={titleId}
               aria-modal
-              background="modalBackdrop"
               className={styles.overlay}
               onClick={handleBackdropClick}
               position="fixed"
               role="dialog"
             >
               <FocusTrap
-                className={mobile || wide ? styles.wideContent : styles.content}
+                className={styles.content}
                 onClick={stopPropagation}
                 role="document"
               >

@@ -1,10 +1,13 @@
 import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
-  blue: '#1A85FF',
-  green: '#3ddc84',
-  pink: '#EA33AE',
-  purple: '#575cff',
+  blue: '#3898FF',
+  green: '#4BD166',
+  orange: '#FF983D',
+  pink: '#FF7AB8',
+  purple: '#7A70FF',
+  red: '#FF6257',
+  yellow: '#FFDF3D',
 };
 
 export const midnightTheme = ({
@@ -12,33 +15,33 @@ export const midnightTheme = ({
   borderRadius,
 }: ThemeOptions = {}) => ({
   ...baseTheme({ borderRadius }),
+  borders: {
+    modalBorderWidth: '1px',
+  },
   colors: {
     accentColor: accents[accentColor],
-    buttonBorder: 'rgba(255, 255, 255, 0.04)',
-    buttonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
-    buttonText: '#FFF',
+    actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
+    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
+    actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
+    actionButtonText: '#FFF',
+    closeButton: 'rgba(255, 255, 255, 0.7)',
+    closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#000',
     connectButtonBackgroundError: '#FF494A',
     connectButtonInnerBackground:
       'linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12))',
-    connectButtonText: 'white',
-    connectButtonTextError: 'white',
+    connectButtonText: '#FFF',
+    connectButtonTextError: '#FFF',
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
-    menuBackground: '#000',
+    generalBorderDim: 'rgba(255, 255, 255, 0.04)',
     menuItemBackground: 'rgba(255, 255, 255, 0.08)',
-    menuText: 'white',
-    menuTextAction: '#4892FE',
-    menuTextDisconnect: '#FF494A',
-    menuTextSecondary: '#A3A4A5',
-    modalBackdrop:
-      'linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))',
+    modalBackdrop: 'rgba(0, 0, 0, 0.7)',
     modalBackground: '#000',
     modalBorder: 'rgba(255, 255, 255, 0.08)',
-    modalClose: 'rgba(255, 255, 255, 0.6)',
-    modalCloseBackground: 'rgba(255, 255, 255, 0.08)',
-    modalText: '#fff',
+    modalText: '#FFF',
+    modalTextDim: 'rgba(255, 255, 255, 0.2)',
     modalTextSecondary: 'rgba(255, 255, 255, 0.6)',
     profileAction: 'rgba(255, 255, 255, 0.1)',
     profileActionHover: 'rgba(255, 255, 255, 0.2)',
@@ -49,7 +52,7 @@ export const midnightTheme = ({
   shadows: {
     connectButton: '0px 4px 12px rgba(0, 0, 0, 0.1)',
     dialog: '0px 8px 32px rgba(0, 0, 0, 0.32)',
-    menu: '0px 10px 30px rgba(0, 0, 0, 0.1)',
+    profileDetailsAction: '0px 2px 6px rgba(37, 41, 46, 0.04)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
     selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.24)',
   },

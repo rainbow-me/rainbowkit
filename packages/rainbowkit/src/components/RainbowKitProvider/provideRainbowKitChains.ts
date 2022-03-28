@@ -1,7 +1,7 @@
-import type { ChainWithIconUrl } from './ChainIconsContext';
+import type { RainbowKitChain } from './RainbowKitChainContext';
 
 // Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
-// This is just so we can clearly see which of wagmi's first-class chains we provide icons for
+// This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrumOne'
   | 'arbitrumRinkeby'
@@ -19,7 +19,7 @@ type ChainName =
   | 'rinkeby'
   | 'ropsten';
 
-const chainIcons: Record<
+const chainMetadata: Record<
   ChainName,
   { chainId: number; iconUrl: string } | null
 > = {
@@ -69,13 +69,13 @@ function isNotNull<T>(value: T | null): value is T {
 }
 
 const chainIconUrlsById = Object.fromEntries(
-  Object.values(chainIcons)
+  Object.values(chainMetadata)
     .filter(isNotNull)
     .map(({ chainId, iconUrl }) => [chainId, iconUrl])
 ) as Record<number, string>;
 
-/** @description Decorates an array of wagmi `Chain` objects with `iconUrl` properties if not already provided */
-export const provideChainIconUrls = <Chain extends ChainWithIconUrl>(
+/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain properties if not already provided */
+export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
   chains: Chain[]
 ): Chain[] =>
   chains.map(chain => ({

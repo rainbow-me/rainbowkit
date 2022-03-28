@@ -13,7 +13,6 @@ export const HoverClassName = style([
     paddingY: '5',
     transform: {
       active: 'shrink',
-      hover: 'grow',
     },
     transition: 'default',
   }),

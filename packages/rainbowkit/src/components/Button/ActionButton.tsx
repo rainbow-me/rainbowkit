@@ -1,4 +1,5 @@
 import React from 'react';
+import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
 
@@ -10,6 +11,7 @@ const sizeVariants: Record<
     paddingX: BoxProps['paddingX'];
     paddingY: BoxProps['paddingY'];
     fontSize: TextProps['size'];
+    height?: BoxProps['height'];
   }
 > = {
   large: {
@@ -19,6 +21,7 @@ const sizeVariants: Record<
   },
   medium: {
     fontSize: '14',
+    height: '28',
     paddingX: '12',
     paddingY: '4',
   },
@@ -29,7 +32,7 @@ const sizeVariants: Record<
   },
 };
 
-export function Button({
+export function ActionButton({
   href,
   label,
   onClick,
@@ -43,15 +46,23 @@ export function Button({
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
-  const { fontSize, paddingX, paddingY } = sizeVariants[size];
+  const isNotLarge = size !== 'large';
+  const mobile = isMobile();
+  const background = isPrimary
+    ? 'accentColor'
+    : isNotLarge
+    ? 'actionButtonSecondaryBackground'
+    : null;
+  const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   return (
     <Box
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
         : { as: 'button', type: 'button' })}
-      background={isPrimary ? 'accentColor' : 'buttonSecondaryBackground'}
-      borderColor="buttonBorder"
-      borderRadius="full"
+      borderColor={
+        mobile && isNotLarge ? 'actionButtonBorderMobile' : 'actionButtonBorder'
+      }
+      borderRadius="actionButton"
       borderStyle="solid"
       borderWidth="1"
       display="block"
@@ -61,9 +72,11 @@ export function Button({
       style={{ willChange: 'transform' }}
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
+      {...(background ? { background } : {})}
+      {...(height ? { height } : {})}
     >
       <Text
-        color={isPrimary ? 'buttonText' : 'accentColor'}
+        color={isPrimary ? 'actionButtonText' : 'accentColor'}
         size={fontSize}
         weight="bold"
       >

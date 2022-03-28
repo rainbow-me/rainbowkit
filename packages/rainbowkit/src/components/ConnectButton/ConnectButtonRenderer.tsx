@@ -4,7 +4,7 @@ import { useIsMounted } from '../../hooks/useIsMounted';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
-import { useChainIconUrlsById } from '../RainbowKitProvider/ChainIconsContext';
+import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { formatAddress } from './formatAddress';
 
 const useBooleanState = (initialValue: boolean) => {
@@ -57,9 +57,9 @@ export function ConnectButtonRenderer({
 
   const [{ data: networkData }, switchNetwork] = useNetwork();
 
-  const chainIconUrlsById = useChainIconUrlsById();
+  const rainbowkitChainsById = useRainbowKitChainsById();
   const chainIconUrl = networkData.chain
-    ? chainIconUrlsById[networkData.chain.id] ?? undefined
+    ? rainbowkitChainsById[networkData.chain.id]?.iconUrl ?? undefined
     : undefined;
 
   const {

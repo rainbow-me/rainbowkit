@@ -1,7 +1,9 @@
 import React from 'react';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import {
   MenuButtonClassName,
+  MobileMenuButtonClassName,
   SelectedMenuButtonClassName,
 } from './MenuButton.css';
 
@@ -23,12 +25,14 @@ export const MenuButton = React.forwardRef(
     }: Props,
     ref: React.Ref<HTMLElement>
   ) => {
+    const mobile = isMobile();
     return (
       <Box
         as={as}
-        className={
-          currentlySelected ? SelectedMenuButtonClassName : MenuButtonClassName
-        }
+        className={[
+          currentlySelected ? SelectedMenuButtonClassName : MenuButtonClassName,
+          mobile ? MobileMenuButtonClassName : null,
+        ]}
         disabled={currentlySelected}
         onClick={onClick}
         ref={ref}

@@ -33,28 +33,39 @@ const walletCoinbase = wallet.coinbase({
 const walletMetaMask = wallet.metaMask({ chains, infuraId });
 
 export const connectors = connectorsForWallets([
-  walletRainbow,
-  walletWalletConnect,
+  {
+    groupName: 'suggested',
+    wallets: [walletRainbow, walletWalletConnect],
+  },
 ]);
 export const connectors1 = connectorsForWallets([
-  walletRainbow,
-  walletWalletConnect,
-  walletCoinbase,
+  {
+    groupName: 'suggested',
+    wallets: [walletRainbow, walletWalletConnect, walletCoinbase],
+  },
 ]);
 export const connectors2 = connectorsForWallets([
-  walletRainbow,
-  walletWalletConnect,
-  walletCoinbase,
-  walletMetaMask,
+  {
+    groupName: 'suggested',
+    wallets: [
+      walletRainbow,
+      walletWalletConnect,
+      walletCoinbase,
+      walletMetaMask,
+    ],
+  },
 ]);
 export const connectors3 = connectorsForWallets([
-  walletWalletConnect,
-  walletCoinbase,
-  walletMetaMask,
+  {
+    groupName: 'suggested',
+    wallets: [walletWalletConnect, walletCoinbase, walletMetaMask],
+  },
 ]);
 export const connectors4 = connectorsForWallets([
-  walletCoinbase,
-  walletMetaMask,
+  {
+    groupName: 'suggested',
+    wallets: [walletCoinbase, walletMetaMask],
+  },
 ]);
 
 const allConnectors = [

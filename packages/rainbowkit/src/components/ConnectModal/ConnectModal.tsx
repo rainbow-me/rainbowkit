@@ -13,8 +13,8 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const [{ data: connectData }] = useAccount();
 
   return !connectData ? (
-    <Dialog onClose={onClose} open={open} titleId={titleId} wide>
-      <DialogContent bottomSheetOnMobile padding="0">
+    <Dialog onClose={onClose} open={open} titleId={titleId}>
+      <DialogContent bottomSheetOnMobile padding="0" wide>
         <ConnectOptions onClose={onClose} />
       </DialogContent>
     </Dialog>

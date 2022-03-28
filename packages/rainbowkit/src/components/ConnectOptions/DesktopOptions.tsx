@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { isMobile } from '../../utils/isMobile';
+import {
+  useWalletConnectors,
+  WalletConnector,
+} from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
-import {
-  useWalletConnectors,
-  WalletConnector,
-} from '../RainbowKitProvider/useWalletConnectors';
 import { Text } from '../Text/Text';
 import {
   ConnectDetail,
@@ -16,6 +16,8 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
+import { FadeScrollClassName } from './DesktopOptions.css';
+import { groupBy } from './groupBy';
 
 export enum WalletStep {
   None = 'NONE',
@@ -31,11 +33,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
-  const isRainbow = selectedOptionId === 'rainbow';
+  const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
-    wallet => wallet.ready || wallet.downloadUrls?.desktop
+    wallet => wallet.ready || wallet.downloadUrls?.browserExtension
   );
+
+  const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
   const onSelectWallet = (wallet: WalletConnector) => {
     if (wallet.ready) {
@@ -91,13 +95,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = isRainbow && 'Scan with Rainbow to connect';
+      headerLabel = hasQrCode && `Scan with ${selectedWallet.name}`;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
         <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
       );
-      headerLabel = isRainbow && 'Install Rainbow';
+      headerLabel = hasQrCode && `Install ${selectedWallet.name}`;
       headerBackButtonLink = WalletStep.Connect;
       break;
     case WalletStep.Instructions:
@@ -107,7 +111,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = isRainbow && 'Get started with Rainbow';
+      headerLabel = hasQrCode && `Get started with ${selectedWallet.name}`;
       headerBackButtonLink = WalletStep.Download;
       break;
     default:
@@ -119,69 +123,83 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       <Box
         display="flex"
         flexDirection="column"
-        gap="6"
-        margin="18"
-        style={{ minWidth: isMobile() ? 'full' : '248px' }}
+        marginTop="18"
+        style={{
+          minWidth: isMobile() ? 'full' : '287px',
+        }}
       >
-        <Box marginBottom="16" marginLeft="6">
+        <Box marginLeft="6" paddingX="18">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box marginLeft="6" marginY="4">
-          <Text color="modalTextSecondary" size="14" weight="bold">
-            Popular
-          </Text>
-        </Box>
-        <Box display="flex" flexDirection="column" gap="4">
-          {wallets.map(wallet => {
-            return (
-              <ModalSelection
-                currentlySelected={wallet.id === selectedOptionId}
-                key={wallet.id}
-                onClick={() => onSelectWallet(wallet)}
-              >
-                <Box
-                  color={
-                    wallet.id === selectedOptionId ? 'buttonText' : 'modalText'
-                  }
-                  disabled={!wallet.ready}
-                  fontFamily="body"
-                  fontSize="16"
-                  fontWeight="bold"
-                  transition="default"
-                >
-                  <Box
-                    alignItems="center"
-                    display="flex"
-                    flexDirection="row"
-                    gap="12"
-                  >
-                    <Box
-                      borderRadius="6"
-                      height="28"
-                      style={{
-                        background: `url(${wallet.iconUrl})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                      }}
-                      width="28"
-                    >
-                      <Box
-                        borderColor="buttonBorder"
-                        borderRadius="6"
-                        borderStyle="solid"
-                        borderWidth="1"
-                        height="full"
-                        width="full"
-                      />
+        <Box className={FadeScrollClassName} paddingBottom="18">
+          {Object.entries(groupedWallets).map(
+            ([groupName, wallets], index) =>
+              wallets.length > 0 && (
+                <Fragment key={index}>
+                  {groupName ? (
+                    <Box marginBottom="8" marginTop="16" marginX="6">
+                      <Text color="modalTextSecondary" size="14" weight="bold">
+                        {groupName}
+                      </Text>
                     </Box>
-                    <div>{wallet.name}</div>
+                  ) : null}
+                  <Box display="flex" flexDirection="column" gap="4">
+                    {wallets.map(wallet => {
+                      return (
+                        <ModalSelection
+                          currentlySelected={wallet.id === selectedOptionId}
+                          key={wallet.id}
+                          onClick={() => onSelectWallet(wallet)}
+                        >
+                          <Box
+                            color={
+                              wallet.id === selectedOptionId
+                                ? 'actionButtonText'
+                                : 'modalText'
+                            }
+                            disabled={!wallet.ready}
+                            fontFamily="body"
+                            fontSize="16"
+                            fontWeight="bold"
+                            transition="default"
+                          >
+                            <Box
+                              alignItems="center"
+                              display="flex"
+                              flexDirection="row"
+                              gap="12"
+                            >
+                              <Box
+                                borderRadius="6"
+                                height="28"
+                                style={{
+                                  background: `url(${wallet.iconUrl})`,
+                                  backgroundRepeat: 'no-repeat',
+                                  backgroundSize: 'cover',
+                                }}
+                                width="28"
+                              >
+                                <Box
+                                  borderColor="actionButtonBorder"
+                                  borderRadius="6"
+                                  borderStyle="solid"
+                                  borderWidth="1"
+                                  height="full"
+                                  width="full"
+                                />
+                              </Box>
+                              <div>{wallet.name}</div>
+                            </Box>
+                          </Box>
+                        </ModalSelection>
+                      );
+                    })}
                   </Box>
-                </Box>
-              </ModalSelection>
-            );
-          })}
+                </Fragment>
+              )
+          )}
         </Box>
       </Box>
       {!isMobile() && (
@@ -210,7 +228,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     }
                     paddingX="8"
                     paddingY="4"
-                    style={{ boxSizing: 'content-box', height: 17 }}
+                    style={{
+                      boxSizing: 'content-box',
+                      height: 17,
+                      willChange: 'transform',
+                    }}
                     transform={{ active: 'shrinkSm', hover: 'growLg' }}
                     transition="default"
                   >
