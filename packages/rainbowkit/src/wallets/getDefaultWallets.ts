@@ -1,5 +1,5 @@
 import { Chain as WagmiChain } from 'wagmi';
-import { Wallets } from './Wallet';
+import { WalletList } from './Wallet';
 import { coinbase, CoinbaseOptions } from './walletConnectors/coinbase';
 import { injected } from './walletConnectors/injected';
 import { metaMask } from './walletConnectors/metaMask';
@@ -16,7 +16,7 @@ export const getDefaultWallets = ({
   infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
-}): Wallets => {
+}): WalletList => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
     // @ts-expect-error

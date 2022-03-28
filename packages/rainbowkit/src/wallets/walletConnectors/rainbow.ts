@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isIOS } from '../../utils/isMobile';
@@ -8,8 +9,19 @@ export interface RainbowOptions {
   infuraId?: string;
 }
 
-export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
-  return () => {
+export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
+  id: 'rainbow',
+  name: 'Rainbow',
+  iconUrl:
+    'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
+  downloadUrls: {
+    mobile: isAndroid()
+      ? 'https://play.google.com/store/apps/details?id=me.rainbow'
+      : isIOS()
+      ? 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021'
+      : 'https://rainbow.download',
+  },
+  createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
@@ -20,16 +32,6 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
 
     return {
       connector,
-      downloadUrls: {
-        mobile: isAndroid()
-          ? 'https://play.google.com/store/apps/details?id=me.rainbow'
-          : isIOS()
-          ? 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021'
-          : 'https://rainbow.download',
-      },
-      iconUrl:
-        'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
-      id: 'rainbow',
       mobile: {
         getUri: () => {
           const { uri } = connector.getProvider().connector;
@@ -39,7 +41,6 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
             : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
-      name: 'Rainbow',
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
         instructions: {
@@ -68,5 +69,5 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => {
         },
       },
     };
-  };
-};
+  },
+});

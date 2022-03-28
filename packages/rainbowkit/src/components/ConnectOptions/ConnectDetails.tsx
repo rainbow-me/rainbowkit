@@ -1,5 +1,5 @@
 import React, { ElementType, ReactNode } from 'react';
-import { InstructionStepName } from '../../wallets/WalletConnectorConfig';
+import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
   WalletConnector,

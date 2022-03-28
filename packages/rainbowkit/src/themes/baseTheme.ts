@@ -1,5 +1,15 @@
 import { ThemeVars } from '../css/sprinkles.css';
 
+// Source: https://css-tricks.com/snippets/css/system-font-stack
+// Note that quotes have been removed to avoid escaping and server/client mismatch issues
+const systemFontStack =
+  '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol';
+const fontStacks = {
+  rounded: `SFRounded, ui-rounded, SF Pro Rounded, ${systemFontStack}`,
+  system: systemFontStack,
+} as const;
+type FontStack = keyof typeof fontStacks;
+
 type RadiusScale = 'large' | 'medium' | 'small' | 'none';
 const radiusScales: Record<
   RadiusScale,
@@ -73,15 +83,17 @@ const transitionScales: Record<TransitionScale, ThemeVars['transitions']> = {
 
 interface BaseThemeOptions {
   borderRadius?: RadiusScale;
+  fontStack?: FontStack;
   transitions?: TransitionScale;
 }
 
 export const baseTheme = ({
   borderRadius = 'large',
+  fontStack = 'rounded',
   transitions = 'large',
 }: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts' | 'transitions'> => ({
   fonts: {
-    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
+    body: fontStacks[fontStack],
   },
   radii: {
     actionButton: radiusScales[borderRadius].actionButton,
