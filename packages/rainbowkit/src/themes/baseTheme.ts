@@ -1,6 +1,25 @@
 import { ThemeVars } from '../css/sprinkles.css';
 
-const radii: Record<RadiiValues, RadiiScale> = {
+// Source: https://css-tricks.com/snippets/css/system-font-stack
+// Note that quotes have been removed to avoid escaping and server/client mismatch issues
+const systemFontStack =
+  '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol';
+const fontStacks = {
+  rounded: `SFRounded, ui-rounded, SF Pro Rounded, ${systemFontStack}`,
+  system: systemFontStack,
+} as const;
+type FontStack = keyof typeof fontStacks;
+
+type RadiusScale = 'large' | 'medium' | 'small' | 'none';
+const radiusScales: Record<
+  RadiusScale,
+  {
+    actionButton: string;
+    connectButton: string;
+    modal: string;
+    modalMobile: string;
+  }
+> = {
   large: {
     actionButton: '9999px',
     connectButton: '12px',
@@ -27,28 +46,26 @@ const radii: Record<RadiiValues, RadiiScale> = {
   },
 };
 
+interface BaseThemeOptions {
+  borderRadius?: RadiusScale;
+  fontStack?: FontStack;
+}
+
 export const baseTheme = ({
   borderRadius = 'large',
-}: Pick<ThemeOptions, 'borderRadius'>): Pick<ThemeVars, 'radii' | 'fonts'> => ({
+  fontStack = 'rounded',
+}: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts'> => ({
   fonts: {
-    body: 'SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif',
+    body: fontStacks[fontStack],
   },
   radii: {
-    actionButton: radii[borderRadius].actionButton,
-    connectButton: radii[borderRadius].connectButton,
-    menuButton: radii[borderRadius].connectButton,
-    modal: radii[borderRadius].modal,
-    modalMobile: radii[borderRadius].modalMobile,
+    actionButton: radiusScales[borderRadius].actionButton,
+    connectButton: radiusScales[borderRadius].connectButton,
+    menuButton: radiusScales[borderRadius].connectButton,
+    modal: radiusScales[borderRadius].modal,
+    modalMobile: radiusScales[borderRadius].modalMobile,
   },
 });
-
-type RadiiScale = {
-  actionButton: string;
-  connectButton: string;
-  modal: string;
-  modalMobile: string;
-};
-type RadiiValues = 'large' | 'medium' | 'small' | 'none';
 
 export type AccentValues =
   | 'blue'
@@ -59,7 +76,6 @@ export type AccentValues =
   | 'orange'
   | 'yellow';
 
-export interface ThemeOptions {
+export interface ThemeOptions extends BaseThemeOptions {
   accentColor?: AccentValues;
-  borderRadius?: RadiiValues;
 }
