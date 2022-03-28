@@ -1,30 +1,31 @@
 import { Connector } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { ConnectorArgs, Wallets } from './Wallet';
-import { WalletConnectorInstance } from './WalletConnectorInstance';
+import { ConnectorArgs, WalletInstance, WalletList } from './Wallet';
 
-export const connectorsForWallets = (wallets: Wallets) => {
+export const connectorsForWallets = (walletList: WalletList) => {
   return function (connectorArgs: ConnectorArgs) {
     const connectors: Connector[] = [];
 
-    wallets.forEach(({ groupName, wallets: groupedWallets }) => {
-      groupedWallets.forEach(createWallet => {
-        const wallet = omitUndefinedValues(createWallet(connectorArgs));
+    walletList.forEach(({ groupName, wallets }) => {
+      wallets.forEach(({ createConnector, ...walletMeta }) => {
+        const { connector, ...connectionMethods } = omitUndefinedValues(
+          createConnector(connectorArgs)
+        );
 
-        if (wallet.connector._wallet) {
+        if (connector._wallet) {
           throw new Error(
-            `Can't connect wallet "${wallet.name}" to connector "${
-              wallet.connector.name ?? wallet.connector.id
+            `Can't connect wallet "${walletMeta.name}" to connector "${
+              connector.name ?? connector.id
             }" as it's already connected to wallet "${
-              wallet.connector._wallet.name
+              connector._wallet.name
             }". Each wallet must have its own connector instance.`
           );
         }
 
         let walletConnectModalConnector: Connector | undefined;
-        if (wallet.id === 'walletConnect' && wallet.qrCode) {
-          const { chains, options } = wallet.connector;
+        if (walletMeta.id === 'walletConnect' && connector.qrCode) {
+          const { chains, options } = connector;
 
           walletConnectModalConnector = new WalletConnectConnector({
             chains,
@@ -37,14 +38,18 @@ export const connectorsForWallets = (wallets: Wallets) => {
           connectors.push(walletConnectModalConnector);
         }
 
-        // Mutate connector instance to add wallet metadata
-        wallet.connector._wallet = {
+        const walletInstance: WalletInstance = {
+          connector,
           groupName,
           walletConnectModalConnector,
-          ...wallet,
-        } as WalletConnectorInstance;
+          ...walletMeta,
+          ...connectionMethods,
+        };
 
-        connectors.push(wallet.connector);
+        // Mutate connector instance to add wallet instance
+        connector._wallet = walletInstance;
+
+        connectors.push(connector);
       });
     });
 

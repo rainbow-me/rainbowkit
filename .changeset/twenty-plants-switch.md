@@ -4,14 +4,14 @@
 
 Support custom wallet groups
 
-Custom wallets must now be defined in a grouped format. The `Wallets` type is provided to support this.
+Custom wallets must now be defined using the `WalletList` type to support grouping.
 
 **Example usage**
 
 ```tsx
-import { wallet, Wallets } from '@rainbow-me/rainbowkit';
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
 
-const wallets: Wallets = [
+const wallets: WalletList = [
   {
     groupName: 'Suggested',
     wallets: [wallet.rainbow({ chains, infuraId })],
