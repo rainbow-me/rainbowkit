@@ -172,9 +172,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = MobileWalletStep.Connect;
 
-      const mobileWallets = wallets?.filter(
-        wallet => wallet.downloadUrls?.mobile
-      );
+      const mobileWallets = wallets
+        ?.filter(wallet => wallet.downloadUrls?.mobile)
+        ?.splice(0, 3);
 
       walletContent = (
         <>
