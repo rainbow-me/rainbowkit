@@ -171,6 +171,12 @@ The built-in theme functions also accept an options object, allowing you to sele
       <td><code>"large"</code></td>
       <td>The size of the entire border radius scale</td>
     </tr>
+    <tr>
+      <td><code>fontStack</code></td>
+      <td><code>"rounded" | "system"</code></td>
+      <td><code>"rounded"</code></td>
+      <td>The font stack used throughout the UI. Note that ‘rounded’ attempts to use <a href="https://developer.apple.com/fonts">SF Pro Rounded,</a> falling back to system fonts when it isn’t available.</td>
+    </tr>
   </tbody>
 </table>
 
