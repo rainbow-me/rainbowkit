@@ -32,14 +32,14 @@ export function useWalletConnectors({
       }
     });
 
-  function connectWallet(walletId: string, connector: Connector) {
-    return connect(connector).then(connection => {
-      if (connection.data) {
-        addRecentWalletId(walletId);
-      }
+  async function connectWallet(walletId: string, connector: Connector) {
+    const result = await connect(connector);
 
-      return connection;
-    });
+    if (result.data) {
+      addRecentWalletId(walletId);
+    }
+
+    return result;
   }
 
   return [...recentConnectors, ...otherConnectors].map(
