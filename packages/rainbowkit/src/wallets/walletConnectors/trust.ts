@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isIOS } from '../../utils/isMobile';
+import { isAndroid } from '../../utils/isMobile';
 import { Wallet } from '../Wallet';
 
 export interface TrustOptions {
@@ -15,12 +15,10 @@ export const trust = ({ chains, infuraId }: TrustOptions): Wallet => ({
   iconUrl:
     'https://cloudflare-ipfs.com/ipfs/Qmc8gX8mQNih2jcjqiJnbfEC8aXMUWZszTqJKcn98UHJFg',
   downloadUrls: {
-    mobile: isAndroid()
-      ? 'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp'
-      : isIOS()
-      ? 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409'
-      : 'https://trustwallet.com/download/',
-    scan: 'https://link.trustwallet.com',
+    android:
+      'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
+    ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
+    qrCode: 'https://link.trustwallet.com',
   },
   createConnector: () => {
     const connector = new WalletConnectConnector({

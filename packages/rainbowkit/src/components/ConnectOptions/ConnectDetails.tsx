@@ -51,11 +51,13 @@ export function GetDetail({
           ?.filter(
             wallet =>
               wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode && wallet.downloadUrls?.mobile)
+              (wallet.qrCode &&
+                (wallet.downloadUrls?.ios || wallet.downloadUrls?.android))
           )
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
-            const hasMobileCompanionApp = downloadUrls?.mobile && qrCode;
+            const hasMobileCompanionApp =
+              (downloadUrls?.ios || downloadUrls?.android) && qrCode;
             return (
               <Box
                 alignItems="center"
@@ -317,8 +319,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {downloadUrls?.scan ? (
-          <QRCode logoSize={0} size={268} uri={downloadUrls.scan} />
+        {downloadUrls?.qrCode ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.qrCode} />
         ) : null}
       </Box>
 

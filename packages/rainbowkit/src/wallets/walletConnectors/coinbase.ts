@@ -2,7 +2,6 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../utils/isMobile';
 import { Wallet } from '../Wallet';
 
 export interface CoinbaseOptions {
@@ -23,9 +22,8 @@ export const coinbase = ({
   downloadUrls: {
     browserExtension:
       'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
-    mobile: isAndroid()
-      ? 'https://play.google.com/store/apps/details?id=org.toshi'
-      : 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
+    android: 'https://play.google.com/store/apps/details?id=org.toshi',
+    ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
   },
   createConnector: ({ chainId }) => ({
     connector:
