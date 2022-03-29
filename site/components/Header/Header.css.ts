@@ -1,25 +1,34 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
+import { responsiveStyle } from 'css/responsiveStyle';
 import { text } from 'css/text.css';
 import { vars } from 'css/vars.css';
 
 export const header = style({
   backdropFilter: 'blur(8px)',
   backgroundColor: vars.colors.backgroundElevated,
+  position: 'sticky',
+  left: 0,
+  top: 0,
+  zIndex: 10,
+  width: '100%',
+});
+
+export const row = style({
   borderBottom: `1px solid ${vars.colors.separator}`,
   justifyContent: 'space-between',
   paddingTop: vars.space[7],
   paddingBottom: vars.space[7],
   paddingLeft: vars.space[10],
   paddingRight: vars.space[10],
-  position: 'sticky',
-  left: 0,
-  top: 0,
-  zIndex: 10,
-  width: '100%',
   alignItems: 'center',
   display: 'flex',
 });
+
+export const docsMobileMenuRow = style([
+  row,
+  responsiveStyle({ lg: { display: 'none' } }),
+]);
 
 export const logo = style({
   borderRadius: vars.radii[3],

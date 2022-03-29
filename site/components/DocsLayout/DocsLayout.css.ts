@@ -5,15 +5,7 @@ import { responsiveStyle } from 'css/responsiveStyle';
 import { vars } from 'css/vars.css';
 
 export const modalTriggerWrapper = style([
-  {
-    position: 'fixed',
-    padding: vars.space[6],
-    zIndex: 3,
-    width: '100%',
-    borderBottom: `1px solid ${vars.colors.separator}`,
-    backdropFilter: 'blur(8px)',
-    backgroundColor: vars.colors.backgroundElevated,
-  },
+  {},
   responsiveStyle({ lg: { display: 'none' } }),
 ]);
 
@@ -39,7 +31,6 @@ export const navigationSidebar = style([
 export const content = style([
   {
     paddingBottom: 80,
-
     paddingTop: 60,
   },
   responsiveStyle({

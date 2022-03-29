@@ -1,6 +1,7 @@
 import { Blur } from 'components/Blur/Blur';
+import { Header } from 'components/Header/Header';
 import { Playground } from 'components/Playground/Playground';
-import { PlaygroundWallets } from 'components/PlaygroundWallets';
+// import { PlaygroundWallets } from 'components/PlaygroundWallets';
 import { Provider } from 'components/Provider';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import React from 'react';
@@ -8,6 +9,7 @@ import React from 'react';
 const Home = () => {
   return (
     <>
+      <Header />
       <Wrapper style={{ position: 'relative', zIndex: 0 }}>
         <main style={{ textAlign: 'center' }}>
           <h1
@@ -68,7 +70,7 @@ const Home = () => {
           </p>
         </Wrapper>
 
-        <PlaygroundWallets />
+        {/* <PlaygroundWallets /> */}
       </section>
     </>
   );
