@@ -29,7 +29,11 @@ export const components = {
     // eslint-disable-next-line jsx-a11y/alt-text
     <img {...props} style={{ display: 'block', maxWidth: '100%' }} />
   ),
-  li: props => <p className={text[3]} style={{ lineHeight: 1.5 }} {...props} />,
+  ul: props => <ul style={{ paddingLeft: vars.space[4] }} {...props} />,
+  ol: props => <ol style={{ paddingLeft: vars.space[4] }} {...props} />,
+  li: props => (
+    <li className={text[3]} style={{ lineHeight: 1.5 }} {...props} />
+  ),
   pre: ({ children, ...props }) => {
     return (
       <pre

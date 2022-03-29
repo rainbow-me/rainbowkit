@@ -64,7 +64,7 @@ export function PropsTable({
                   </Code>
                   {description && (
                     <Popover>
-                      <PopoverTrigger style={{ marginLeft: vars.space[3] }}>
+                      <PopoverTrigger style={{ marginLeft: vars.space[2] }}>
                         <InfoIcon />
                       </PopoverTrigger>
                       <PopoverContent>{description}</PopoverContent>
@@ -75,7 +75,7 @@ export function PropsTable({
                   <Code>{Boolean(typeSimple) ? typeSimple : type} </Code>
                   {Boolean(typeSimple) && (
                     <Popover>
-                      <PopoverTrigger style={{ marginLeft: vars.space[3] }}>
+                      <PopoverTrigger style={{ marginLeft: vars.space[2] }}>
                         <InfoIcon />
                       </PopoverTrigger>
                       <PopoverContent>

@@ -4,13 +4,28 @@ import { link } from 'components/Link/Link.css';
 import { responsiveStyle } from 'css/responsiveStyle';
 import { vars } from 'css/vars.css';
 
-export const master = style([
+export const modalTriggerWrapper = style([
+  {
+    position: 'fixed',
+    padding: vars.space[6],
+    zIndex: 3,
+    width: '100%',
+    borderBottom: `1px solid ${vars.colors.separator}`,
+    backdropFilter: 'blur(8px)',
+    backgroundColor: vars.colors.backgroundElevated,
+  },
+  responsiveStyle({ lg: { display: 'none' } }),
+]);
+
+export const navigationSidebar = style([
   {
     paddingLeft: vars.space[6],
     paddingRight: vars.space[6],
+    display: 'none',
   },
   responsiveStyle({
     lg: {
+      display: 'block',
       bottom: 0,
       left: 'calc(50% - 512px)',
       paddingRight: 0,
@@ -21,7 +36,7 @@ export const master = style([
   }),
 ]);
 
-export const detail = style([
+export const content = style([
   {
     paddingBottom: 80,
 
