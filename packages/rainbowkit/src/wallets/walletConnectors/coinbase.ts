@@ -19,7 +19,7 @@ export const coinbase = ({
   id: 'coinbase',
   name: 'Coinbase Wallet',
   iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmZbVxx2s9BeZLrqTvgfpbciXmr3D9LLYCETRwjFUYAXEw',
+    'https://cloudflare-ipfs.com/ipfs/QmUavPiuPLYip1yG5tURat6gEqPf2ApffQ3BXE2RBr7Y4j',
   downloadUrls: {
     browserExtension:
       'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',

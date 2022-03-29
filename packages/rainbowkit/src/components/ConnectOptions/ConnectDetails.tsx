@@ -4,7 +4,7 @@ import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
@@ -147,6 +147,7 @@ export function GetDetail({
   );
 }
 
+const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   connectionError,
   setWalletStep,
@@ -214,8 +215,13 @@ export function ConnectDetail({
             flexDirection="column"
             gap="20"
           >
-            <Box borderRadius="6">
-              <img alt={name} height="60" src={iconUrl} width="60" />
+            <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
+              <img
+                alt={name}
+                height={LOGO_SIZE}
+                src={iconUrl}
+                width={LOGO_SIZE}
+              />
             </Box>
             <Box
               alignItems="center"

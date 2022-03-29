@@ -16,7 +16,7 @@ export const walletConnect = ({
   id: 'walletConnect',
   name: 'WalletConnect',
   iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmbFLEB7Q9iCsSR2mvb48eyn1nvARKeLaPYFnzHVUeBDMV',
+    'https://cloudflare-ipfs.com/ipfs/QmdLtcCjdBccqHL7UxyH7EcfRxcz7fPvD7KNAbrEiC66Dz',
   createConnector: () => {
     const ios = isIOS();
 

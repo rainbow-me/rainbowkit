@@ -13,7 +13,7 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
   iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
+    'https://cloudflare-ipfs.com/ipfs/QmeHbLNYHR1UQeRxJagW7qmREiCJy21eAqHxydjacNanXp',
   downloadUrls: {
     mobile: isAndroid()
       ? 'https://play.google.com/store/apps/details?id=me.rainbow'
