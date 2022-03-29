@@ -89,7 +89,7 @@ enum MobileWalletStep {
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors({ groupRecentWallets: false });
   const learnMoreUrl = useContext(LearnMoreUrlContext);
 
   let headerLabel = null;
