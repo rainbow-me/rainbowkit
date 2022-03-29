@@ -11,7 +11,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
-import { SwitchAccountIcon } from '../Icons/SwitchAccount';
+// import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
@@ -132,13 +132,13 @@ export function ProfileDetails({
             <ProfileDetailsAction
               action={copyAddressAction}
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
-              label={copiedAddress ? 'Copied!' : 'Copy'}
+              label={copiedAddress ? 'Copied!' : 'Copy Address'}
             />
-            <ProfileDetailsAction
+            {/* <ProfileDetailsAction
               action={() => setSwitchWalletOpen(true)}
               icon={<SwitchAccountIcon />}
               label="Switch"
-            />
+            /> */}
             <ProfileDetailsAction
               action={onDisconnect}
               icon={<DisconnectIcon />}
