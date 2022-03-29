@@ -5,13 +5,9 @@ import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { formatAddress } from '../ConnectButton/formatAddress';
-import ConnectOptions from '../ConnectOptions/ConnectOptions';
-import { Dialog } from '../Dialog/Dialog';
-import { DialogContent } from '../Dialog/DialogContent';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
-// import { SwitchAccountIcon } from '../Icons/SwitchAccount';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
@@ -38,8 +34,6 @@ export function ProfileDetails({
     }
   }, [accountData?.address]);
 
-  const [switchWalletOpen, setSwitchWalletOpen] = useState(false);
-
   useEffect(() => {
     if (copiedAddress) {
       const timer = setTimeout(() => {
@@ -48,10 +42,6 @@ export function ProfileDetails({
       return () => clearTimeout(timer);
     }
   }, [copiedAddress]);
-
-  useEffect(() => {
-    setSwitchWalletOpen(false);
-  }, [accountData?.address]);
 
   if (!accountData) {
     return null;
@@ -134,11 +124,6 @@ export function ProfileDetails({
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
               label={copiedAddress ? 'Copied!' : 'Copy Address'}
             />
-            {/* <ProfileDetailsAction
-              action={() => setSwitchWalletOpen(true)}
-              icon={<SwitchAccountIcon />}
-              label="Switch"
-            /> */}
             <ProfileDetailsAction
               action={onDisconnect}
               icon={<DisconnectIcon />}
@@ -151,15 +136,6 @@ export function ProfileDetails({
           <TxList accountData={accountData} />
         </Box>
       </Box>
-      <Dialog
-        onClose={() => setSwitchWalletOpen(false)}
-        open={switchWalletOpen}
-        titleId={titleId}
-      >
-        <DialogContent bottomSheetOnMobile padding="0" wide>
-          <ConnectOptions onClose={() => setSwitchWalletOpen(false)} />
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
