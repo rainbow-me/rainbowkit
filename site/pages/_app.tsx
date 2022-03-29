@@ -89,11 +89,11 @@ function App({ Component, pageProps }: AppProps) {
 
 @font-face {
   font-family: 'SFMono';
-  src: url('/fonts/subset-SFMono-Regular.eot');
-  src: url('/fonts/subset-SFMono-Regular.eot?#iefix')
+  src: url('/fonts/SF-Mono-Regular.eot');
+  src: url('/fonts/SF-Mono-Regular.eot?#iefix')
       format('embedded-opentype'),
-    url('/fonts/subset-SFMono-Regular.woff2') format('woff2'),
-    url('/fonts/subset-SFMono-Regular.woff') format('woff');
+    url('/fonts/SF-Mono-Regular.woff2') format('woff2'),
+    url('/fonts/SF-Mono-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: auto;
