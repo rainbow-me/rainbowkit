@@ -157,6 +157,7 @@ export function ConnectDetail({
     ready,
     showWalletConnectModal,
   } = wallet;
+  const desktopDeeplink = wallet.desktop?.getUri?.();
 
   let readyMsg;
   if (ready) {
@@ -171,6 +172,7 @@ export function ConnectDetail({
     description: string;
     label: string;
     onClick: () => void;
+    href?: string;
   } = showWalletConnectModal
     ? {
         description: 'Need the official WalletConnect modal?',
@@ -186,7 +188,8 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        onClick: () => reconnect(wallet),
+        onClick: () => (desktopDeeplink ? {} : reconnect(wallet)),
+        ...(desktopDeeplink ? { href: desktopDeeplink } : {}),
       };
 
   return (
@@ -284,8 +287,12 @@ export function ConnectDetail({
             </Text>
             <ActionButton
               label={secondaryAction.label}
-              onClick={secondaryAction.onClick}
               type="secondary"
+              {...(secondaryAction.href
+                ? { href: secondaryAction.href }
+                : {
+                    onClick: secondaryAction.onClick,
+                  })}
             />
           </>
         )}

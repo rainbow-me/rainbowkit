@@ -57,6 +57,7 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.argent({ chains, infuraId }),
       wallet.trust({ chains, infuraId }),
+      wallet.ledger({ chains, infuraId }),
     ],
   },
 ]);
