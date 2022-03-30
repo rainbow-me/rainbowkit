@@ -19,12 +19,14 @@ export const link = style([
 
     ':hover': {
       background: vars.colors.fillSecondary,
+      transition: 'background 200ms ease-in-out',
     },
 
     'selectors': {
       '&[data-active=true]': {
         background: vars.colors.blue,
         color: vars.colors.labelWhite,
+        boxShadow: `0px 2px 8px rgba(0, 0, 0, 0.2);`,
       },
     },
   },

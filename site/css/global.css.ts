@@ -22,10 +22,19 @@ globalStyle('body', {
 
 globalStyle('code, pre', {
   fontFamily: 'SFMono, ui-monospace, monospace',
-  fontWeight: 400,
+  fontWeight: 600,
 });
 
 globalStyle('button', {
   appearance: 'none',
   background: 'transparent',
+});
+
+globalStyle('li:before', {
+  backgroundColor: vars.colors.fill,
+  borderRadius: vars.radii[1],
+  content: '',
+  height: vars.space[1],
+  marginRight: vars.space[4],
+  width: vars.space[4],
 });

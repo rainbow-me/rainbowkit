@@ -5,6 +5,7 @@ import { vars } from 'css/vars.css';
 const base = style({
   fontFamily: vars.fonts.mono,
   fontSize: 'max(13px, 85%)',
+  fontWeight: '600',
   whiteSpace: 'nowrap',
   padding: '0 3px 2px 3px',
 });
