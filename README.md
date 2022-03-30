@@ -660,6 +660,11 @@ The `Wallet` type is provided to help you define your own custom wallets. If you
       <td>Human-readable wallet name</td>
     </tr>
     <tr>
+      <td><code>shortName</code></td>
+      <td><code>string | undefined</code></td>
+      <td>Optional short name for mobile use</td>
+    </tr>
+    <tr>
       <td><code>iconUrl</code></td>
       <td><code>string</code></td>
       <td>URL for wallet icon</td>

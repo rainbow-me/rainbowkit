@@ -17,6 +17,7 @@ export const coinbase = ({
 }: CoinbaseOptions): Wallet => ({
   id: 'coinbase',
   name: 'Coinbase Wallet',
+  shortName: 'Coinbase',
   iconUrl:
     'https://cloudflare-ipfs.com/ipfs/QmUavPiuPLYip1yG5tURat6gEqPf2ApffQ3BXE2RBr7Y4j',
   downloadUrls: {

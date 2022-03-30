@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -17,7 +18,6 @@ import {
   InstructionDetail,
 } from './ConnectDetails';
 import { FadeScrollClassName } from './DesktopOptions.css';
-import { groupBy } from './groupBy';
 
 export enum WalletStep {
   None = 'NONE',

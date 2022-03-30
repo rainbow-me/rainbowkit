@@ -1,3 +1,4 @@
+import { isNotNullish } from '../../utils/isNotNullish';
 import type { RainbowKitChain } from './RainbowKitChainContext';
 
 // Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
@@ -64,13 +65,9 @@ const chainMetadata: Record<
   },
 };
 
-function isNotNull<T>(value: T | null): value is T {
-  return value !== null;
-}
-
 const chainIconUrlsById = Object.fromEntries(
   Object.values(chainMetadata)
-    .filter(isNotNull)
+    .filter(isNotNullish)
     .map(({ chainId, iconUrl }) => [chainId, iconUrl])
 ) as Record<number, string>;
 
