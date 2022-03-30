@@ -13,7 +13,7 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmenqGTM4sPU7x27a4zdZfMCMrWvxZxnVST8dbyFFvUZZQ',
+    'https://cloudflare-ipfs.com/ipfs/QmdLEksT8MYzJN8JT1FUBBnpwYWWWw1bG9FBM97ttJTfay',
   downloadUrls: {
     mobile: isAndroid()
       ? 'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient'

@@ -27,7 +27,7 @@ export const metaMask = ({
     id: 'metaMask',
     name: 'MetaMask',
     iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
+      'https://cloudflare-ipfs.com/ipfs/QmYAF8F4tdhpHo6M6AH2vZVrWN1zQCVYeXDrrVUVUYowfz',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {
       browserExtension:
