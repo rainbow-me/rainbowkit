@@ -28,6 +28,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
 export type Wallet<C extends Connector = Connector> = {
   id: string;
   name: string;
+  shortName?: string;
   iconUrl: string;
   installed?: boolean;
   downloadUrls?: {

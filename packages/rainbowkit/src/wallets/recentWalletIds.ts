@@ -18,7 +18,7 @@ function dedupe<T>(array: T[]): T[] {
 }
 
 export function addRecentWalletId(walletId: string): void {
-  const newValue = dedupe([...getRecentWalletIds(), walletId]);
+  const newValue = dedupe([walletId, ...getRecentWalletIds()]);
 
   localStorage.setItem(storageKey, JSON.stringify(newValue));
 }

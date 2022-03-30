@@ -1,4 +1,6 @@
 import { Connector, useConnect } from 'wagmi';
+import { indexBy } from '../utils/indexBy';
+import { isNotNullish } from '../utils/isNotNullish';
 import { WalletInstance } from './Wallet';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
@@ -9,28 +11,11 @@ export interface WalletConnector extends WalletInstance {
     error?: Error | undefined;
   }>;
   showWalletConnectModal?: () => void;
+  recent: boolean;
 }
 
-export function useWalletConnectors({
-  groupRecentWallets = true,
-}: { groupRecentWallets?: boolean } = {}): WalletConnector[] {
+export function useWalletConnectors(): WalletConnector[] {
   const [{ data: connectData }, connect] = useConnect();
-  const recentWalletIds = getRecentWalletIds();
-
-  const recentConnectors: Connector[] = [];
-  const otherConnectors: Connector[] = [];
-
-  connectData.connectors
-    .filter(connector => connector._wallet)
-    .forEach(connector => {
-      const wallet = connector._wallet as WalletInstance;
-
-      if (groupRecentWallets && recentWalletIds.includes(wallet.id)) {
-        recentConnectors.push(connector);
-      } else {
-        otherConnectors.push(connector);
-      }
-    });
 
   async function connectWallet(walletId: string, connector: Connector) {
     const result = await connect(connector);
@@ -42,19 +27,44 @@ export function useWalletConnectors({
     return result;
   }
 
-  return [...recentConnectors, ...otherConnectors].map(
-    (connector: Connector) => {
-      const { groupName, ...wallet } = connector._wallet as WalletInstance;
+  const connectorByWalletId = indexBy(
+    connectData.connectors,
+    connector => (connector._wallet as WalletInstance)?.id
+  );
+
+  const MAX_RECENT_WALLETS = 3;
+  const recentConnectors: Connector[] = getRecentWalletIds()
+    .map(walletId => connectorByWalletId[walletId])
+    .filter(isNotNullish)
+    .slice(0, MAX_RECENT_WALLETS);
+
+  const connectors: Connector[] = [
+    ...recentConnectors,
+    ...connectData.connectors.filter(
+      connector => !recentConnectors.includes(connector)
+    ),
+  ];
+
+  return connectors
+    .map((connector: Connector) => {
+      const wallet = connector._wallet as WalletInstance;
+
+      if (!wallet) {
+        return null;
+      }
+
+      const recent = recentConnectors.includes(connector);
 
       return {
         ...wallet,
         connect: () => connectWallet(wallet.id, connector),
-        groupName: recentConnectors.includes(connector) ? 'Recent' : groupName,
+        groupName: recent ? 'Recent' : wallet.groupName,
         ready: (wallet.installed ?? true) && connector.ready,
+        recent,
         showWalletConnectModal: wallet.walletConnectModalConnector
           ? () => connectWallet(wallet.id, wallet.walletConnectModalConnector)
           : undefined,
       };
-    }
-  );
+    })
+    .filter(isNotNullish);
 }

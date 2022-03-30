@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Group recent wallets at the top of the wallet list.
+Highlight the most recently used wallets at the start of the wallet list.
