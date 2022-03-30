@@ -1,4 +1,4 @@
-import React, { ElementType, Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
 import {
@@ -49,6 +49,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           setConnectionError(true);
         }
       });
+      if (wallet.desktop) {
+        // if desktop deeplink
+        setTimeout(() => {
+          const uri = wallet.desktop?.getUri?.();
+          window.open(uri, '_blank');
+        }, 0);
+      }
     }
   };
 
@@ -158,23 +165,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                   ) : null}
                   <Box display="flex" flexDirection="column" gap="4">
                     {wallets.map(wallet => {
-                      const onClickProps:
-                        | {
-                            as: ElementType<any>;
-                            href: string | undefined;
-                            onClick: () => void;
-                          }
-                        | {
-                            onClick: () => void;
-                          } = wallet.desktop
-                        ? {
-                            as: 'a',
-                            href: wallet.desktop.getUri?.(),
-                            onClick: () => onSelectWallet(wallet),
-                          }
-                        : {
-                            onClick: () => onSelectWallet(wallet),
-                          };
                       return (
                         <ModalSelection
                           currentlySelected={wallet.id === selectedOptionId}
@@ -182,8 +172,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                           iconUrl={wallet.iconUrl}
                           key={wallet.id}
                           name={wallet.name}
+                          onClick={() => onSelectWallet(wallet)}
                           ready={wallet.ready}
-                          {...onClickProps}
                         />
                       );
                     })}
