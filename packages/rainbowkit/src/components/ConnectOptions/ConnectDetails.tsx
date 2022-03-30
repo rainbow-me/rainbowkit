@@ -51,13 +51,11 @@ export function GetDetail({
           ?.filter(
             wallet =>
               wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode &&
-                (wallet.downloadUrls?.ios || wallet.downloadUrls?.android))
+              (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
-            const hasMobileCompanionApp =
-              (downloadUrls?.ios || downloadUrls?.android) && qrCode;
+            const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
             return (
               <Box
                 alignItems="center"
