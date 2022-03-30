@@ -2,6 +2,10 @@
 
 **The best way to connect a wallet 🌈**
 
+## ⚠️ Please note
+
+RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wagmi-xyz.vercel.app/) which is currently `v0.x`. The APIs are not stable and likely to change in the near future. At this stage we’re looking for early adopters to provide feedback and help us improve the library.
+
 ## Features
 
 - 🔥 Out-of-the-box wallet management
