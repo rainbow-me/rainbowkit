@@ -32,9 +32,8 @@ export const metaMask = ({
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
-      mobile: isAndroid()
-        ? 'https://play.google.com/store/apps/details?id=io.metamask'
-        : 'https://apps.apple.com/us/app/metamask/id1438144202',
+      android: 'https://play.google.com/store/apps/details?id=io.metamask',
+      ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect

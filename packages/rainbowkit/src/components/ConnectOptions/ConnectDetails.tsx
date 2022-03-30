@@ -19,6 +19,7 @@ export function GetDetail({
   getMobileWallet: (walletId: string) => void;
 }) {
   const wallets = useWalletConnectors();
+  const shownWallets = wallets.splice(0, 5);
 
   const linkProps = (
     link: string
@@ -46,15 +47,15 @@ export function GetDetail({
         height="full"
         width="full"
       >
-        {wallets
+        {shownWallets
           ?.filter(
             wallet =>
               wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode && wallet.downloadUrls?.mobile)
+              (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
-            const hasMobileCompanionApp = downloadUrls?.mobile && qrCode;
+            const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
             return (
               <Box
                 alignItems="center"
@@ -322,8 +323,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {downloadUrls?.mobile ? (
-          <QRCode logoSize={0} size={268} uri={downloadUrls.mobile} />
+        {downloadUrls?.qrCode ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.qrCode} />
         ) : null}
       </Box>
 

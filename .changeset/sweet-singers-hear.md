@@ -13,4 +13,4 @@ Note that this only affects consumers that have created custom wallets. All buil
   - `instructions` has been moved to `createConnector().qrCode.instructions` and is now an object with a `steps` array where each item has a `step` property that is either `"install"`, `"create"`, or `"scan"`.
   - `getMobileConnectionUri` has been moved to `createConnector().mobile.getUri`
 - `ready` has been renamed to `installed` to differentiate it from wagmi’s `ready` concept.
-- `downloadUrls.desktop` has been replaced with a single `downloadUrls.browserExtension` property, deprecating the `downloadUrls.desktop.mobileCompanion` property.
+- `downloadUrls` has been restructured into an object with optional values `android`, `ios`, `browserExtension`, `qrCode` (link from scanning QR code on desktop).

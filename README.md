@@ -667,7 +667,7 @@ The `Wallet` type is provided to help you define your own custom wallets. If you
     </tr>
     <tr>
       <td><code>downloadUrls</code></td>
-      <td><code>{ mobile?: string, browserExtension?: string } | undefined</code></td>
+      <td><code>{ android?: string, ios?: string, browserExtension?: string, qrCode?: string } | undefined</code></td>
       <td>Object containing download URLs</td>
     </tr>
     <tr>
