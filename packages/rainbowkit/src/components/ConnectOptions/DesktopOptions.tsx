@@ -217,7 +217,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               justifyContent="space-between"
               marginBottom="12"
             >
-              <Box>
+              <Box width="28">
                 {headerBackButtonLink && (
                   <Box
                     as="button"
