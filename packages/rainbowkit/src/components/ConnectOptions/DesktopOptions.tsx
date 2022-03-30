@@ -50,7 +50,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         }
       });
       if (wallet.desktop) {
-        // if desktop deeplink
+        // if desktop deeplink, wait for uri
         setTimeout(() => {
           const uri = wallet.desktop?.getUri?.();
           window.open(uri, '_blank');

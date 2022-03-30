@@ -171,7 +171,7 @@ export function ConnectDetail({
   const secondaryAction: {
     description: string;
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
     href?: string;
   } = showWalletConnectModal
     ? {
@@ -188,8 +188,9 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        onClick: () => (desktopDeeplink ? {} : reconnect(wallet)),
-        ...(desktopDeeplink ? { href: desktopDeeplink } : {}),
+        ...(desktopDeeplink
+          ? { href: desktopDeeplink }
+          : { onClick: () => reconnect(wallet) }),
       };
 
   return (
