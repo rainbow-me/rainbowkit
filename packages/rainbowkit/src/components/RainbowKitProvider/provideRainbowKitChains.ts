@@ -34,6 +34,11 @@ const chainMetadata: Record<
     iconUrl:
       'https://cloudflare-ipfs.com/ipfs/QmX5GEd2Siv5qpamrujYZjXEAkbEueQK8fvNpEXtiBpjRm',
   },
+  hardhat: {
+    chainId: 31_337,
+    iconUrl:
+      'https://cloudflare-ipfs.com/ipfs/QmUjW7Nf8FjaHRk3ADjpnQKP8WE3B4no1wrZYaXz62VinU',
+  },
   mainnet: {
     chainId: 1,
     iconUrl:
@@ -55,7 +60,6 @@ const chainMetadata: Record<
     arbitrumRinkeby: null,
     avalancheFuji: null,
     goerli: null,
-    hardhat: null,
     kovan: null,
     localhost: null,
     optimismKovan: null,
