@@ -1,8 +1,9 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { Wallet } from '../../Wallet';
+import iconDataUrl from './coinbase.svg';
 
 export interface CoinbaseOptions {
   chains: Chain[];
@@ -18,8 +19,7 @@ export const coinbase = ({
   id: 'coinbase',
   name: 'Coinbase Wallet',
   shortName: 'Coinbase',
-  iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmUavPiuPLYip1yG5tURat6gEqPf2ApffQ3BXE2RBr7Y4j',
+  iconUrl: iconDataUrl,
   downloadUrls: {
     browserExtension:
       'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',

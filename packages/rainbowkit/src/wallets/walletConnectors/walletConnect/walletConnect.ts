@@ -1,8 +1,9 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isIOS } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isIOS } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
+import iconDataUrl from './walletConnect.svg';
 
 export interface WalletConnectOptions {
   chains: Chain[];
@@ -15,8 +16,7 @@ export const walletConnect = ({
 }: WalletConnectOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
-  iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmdLtcCjdBccqHL7UxyH7EcfRxcz7fPvD7KNAbrEiC66Dz',
+  iconUrl: iconDataUrl,
   createConnector: () => {
     const ios = isIOS();
 

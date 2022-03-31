@@ -1,9 +1,10 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isMobile } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isAndroid, isMobile } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
+import iconDataUrl from './metaMask.svg';
 
 export interface MetaMaskOptions {
   chains: Chain[];
@@ -26,8 +27,7 @@ export const metaMask = ({
   return {
     id: 'metaMask',
     name: 'MetaMask',
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmYAF8F4tdhpHo6M6AH2vZVrWN1zQCVYeXDrrVUVUYowfz',
+    iconUrl: iconDataUrl,
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {
       browserExtension:
