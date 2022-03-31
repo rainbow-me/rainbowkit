@@ -151,10 +151,12 @@ export function GetDetail({
 const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   connectionError,
+  reconnect,
   setWalletStep,
   wallet,
 }: {
   connectionError: boolean;
+  reconnect: (wallet: WalletConnector) => void;
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
@@ -189,7 +191,7 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        onClick: () => wallet?.connect?.(),
+        onClick: () => reconnect(wallet),
       };
 
   return (
@@ -244,6 +246,7 @@ export function ConnectDetail({
                 display="flex"
                 flexDirection="row"
                 gap="6"
+                height="24"
                 paddingX="28"
               >
                 {connectionError ? (
