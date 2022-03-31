@@ -244,6 +244,7 @@ export function ConnectDetail({
                 display="flex"
                 flexDirection="row"
                 gap="6"
+                height="24"
                 paddingX="28"
               >
                 {connectionError ? (
