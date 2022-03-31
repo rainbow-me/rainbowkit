@@ -18,6 +18,7 @@ export const coinbase = ({
 }: CoinbaseOptions): Wallet => ({
   id: 'coinbase',
   name: 'Coinbase Wallet',
+  shortName: 'Coinbase',
   iconUrl: iconDataUrl,
   downloadUrls: {
     browserExtension:

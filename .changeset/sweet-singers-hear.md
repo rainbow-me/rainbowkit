@@ -14,3 +14,4 @@ Note that this only affects consumers that have created custom wallets. All buil
   - `getMobileConnectionUri` has been moved to `createConnector().mobile.getUri`
 - `ready` has been renamed to `installed` to differentiate it from wagmi’s `ready` concept.
 - `downloadUrls` has been restructured into an object with optional values `android`, `ios`, `browserExtension`, `qrCode` (link from scanning QR code on desktop).
+- You can now provide an optional `shortName` property which will be used on mobile.
