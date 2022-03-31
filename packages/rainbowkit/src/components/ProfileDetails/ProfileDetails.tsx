@@ -9,7 +9,6 @@ import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
 import { Text } from '../Text/Text';
-import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
@@ -130,10 +129,6 @@ export function ProfileDetails({
               label="Disconnect"
             />
           </Box>
-        </Box>
-        <Box background="generalBorder" height="1" />
-        <Box>
-          <TxList accountData={accountData} />
         </Box>
       </Box>
     </>
