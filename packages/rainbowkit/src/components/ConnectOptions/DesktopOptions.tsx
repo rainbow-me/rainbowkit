@@ -41,7 +41,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
-  const onSelectWallet = (wallet: WalletConnector) => {
+  const connectToWallet = (wallet: WalletConnector) => {
+    setConnectionError(false);
     if (wallet.ready) {
       wallet?.connect?.().then(x => {
         if (x.error) {
@@ -49,7 +50,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         }
       });
     }
+  };
 
+  const onSelectWallet = (wallet: WalletConnector) => {
+    connectToWallet(wallet);
     // Update selected wallet state on next tick so QR code URIs are ready to render
     setTimeout(() => {
       setSelectedOptionId(wallet.id);
@@ -91,6 +95,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <ConnectDetail
           connectionError={connectionError}
+          reconnect={connectToWallet}
           setWalletStep={setWalletStep}
           wallet={selectedWallet}
         />
