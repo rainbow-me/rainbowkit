@@ -31,12 +31,12 @@ export const getDefaultWallets = ({
       groupName: 'Popular',
       wallets: [
         rainbow({ chains, infuraId }),
-        walletConnect({ chains, infuraId }),
         coinbase({ appName, chains, jsonRpcUrl }),
         metaMask({ chains, infuraId, shimDisconnect: true }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
+        walletConnect({ chains, infuraId }),
       ],
     },
   ];
