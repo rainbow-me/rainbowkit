@@ -17,7 +17,7 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { FadeScrollClassName } from './DesktopOptions.css';
+import { ScrollClassName } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -128,12 +128,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           minWidth: isMobile() ? 'full' : '287px',
         }}
       >
-        <Box marginLeft="6" paddingX="18">
+        <Box marginLeft="6" paddingBottom="10" paddingX="18">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box className={FadeScrollClassName} paddingBottom="18">
+        <Box className={ScrollClassName} paddingBottom="18">
           {Object.entries(groupedWallets).map(
             ([groupName, wallets], index) =>
               wallets.length > 0 && (
