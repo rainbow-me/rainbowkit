@@ -1,6 +1,6 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-
-import 'focus-visible';
+import { vars } from './vars.css';
 
 export const base = style({
   border: 0,
@@ -8,7 +8,11 @@ export const base = style({
   fontSize: '100%',
   margin: 0,
   padding: 0,
+  borderColor: vars.colors.separator,
+  borderStyle: 'solid',
+  borderWidth: 0,
   verticalAlign: 'baseline',
+  WebkitFontSmoothing: 'antialiased',
   WebkitTapHighlightColor: 'transparent',
 });
 
@@ -78,7 +82,9 @@ const input = style([
 ]);
 
 const button = style({
+  appearance: 'none',
   background: 'none',
+  border: 'none',
   cursor: 'pointer',
   textAlign: 'left',
 });

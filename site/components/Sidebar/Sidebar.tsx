@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-sort-props */
-import { text } from 'css/text.css';
-import { vars } from 'css/vars.css';
+import { Text } from 'components/Text/Text';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -11,16 +10,9 @@ export function Sidebar({ routes }) {
     <>
       {routes.map(route => (
         <div key={route.label} style={{ marginBottom: 24 }}>
-          <h3
-            className={text[3]}
-            style={{
-              color: vars.colors.labelTertiary,
-              marginBottom: vars.space[4],
-              marginLeft: vars.space[5],
-            }}
-          >
+          <Text as="h3" color="labelTertiary" marginBottom="4" marginLeft="5">
             {route.label}
-          </h3>
+          </Text>
           {route.pages.map(page => (
             <Link key={page.title} slug={page.slug}>
               {page.title}

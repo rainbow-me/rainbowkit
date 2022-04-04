@@ -10,7 +10,7 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { ConnectButtonProps } from '@rainbow-me/rainbowkit/dist/components/ConnectButton/ConnectButton';
-import { title2, titleLarge } from 'css/text.css';
+import { Text } from 'components/Text/Text';
 import { colors } from 'css/tokens';
 import { vars } from 'css/vars.css';
 import { motion } from 'framer-motion';
@@ -111,27 +111,28 @@ export function Playground() {
         }}
       >
         <Wrapper>
-          <h2
-            className={titleLarge}
+          <Text
+            as="h2"
             style={{ fontSize: 52, textAlign: 'center' }}
+            variant="titleLarge"
           >
             We&lsquo;re all gonna customize it.
-          </h2>
-          <p
-            className={title2}
+          </Text>
+          <Text
+            as="p"
+            marginTop="9"
+            marginX="auto"
             style={{
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: vars.space[9],
               maxWidth: 760,
               textAlign: 'center',
             }}
+            variant="title2"
           >
             Make your Web3 login experience feel right at home on your website.
             RainbowKit allows you to fully customize apprearance, color, corner
             radius, wallet providers and a lot more - all through an easy-to-use
             API. Get a feel for it below!
-          </p>
+          </Text>
         </Wrapper>
 
         <RainbowKitProvider

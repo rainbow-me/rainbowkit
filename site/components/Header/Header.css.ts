@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
+import { atoms } from 'css/atoms';
 import { responsiveStyle } from 'css/responsiveStyle';
-import { text } from 'css/text.css';
 import { vars } from 'css/vars.css';
 
 export const header = style({
@@ -14,35 +14,40 @@ export const header = style({
   width: '100%',
 });
 
-export const row = style({
-  borderBottom: `1px solid ${vars.colors.separator}`,
-  justifyContent: 'space-between',
-  paddingTop: vars.space[7],
-  paddingBottom: vars.space[7],
-  paddingLeft: vars.space[10],
-  paddingRight: vars.space[10],
-  alignItems: 'center',
-  display: 'flex',
-});
+export const row = style([
+  atoms({
+    borderBottomWidth: '1',
+    paddingY: '7',
+    paddingX: '10',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }),
+]);
 
 export const docsMobileMenuRow = style([
   row,
   responsiveStyle({ lg: { display: 'none' } }),
 ]);
 
-export const logo = style({
-  borderRadius: vars.radii[3],
-  height: 38,
-  width: 38,
-  boxShadow: '0 12px 16px rgba(0, 0, 0, 0.2)',
-});
+export const logo = style([
+  atoms({
+    borderRadius: '3',
+  }),
+  style({
+    height: 38,
+    width: 38,
+    boxShadow: '0 12px 16px rgba(0, 0, 0, 0.2)',
+  }),
+]);
 
 export const title = style([
-  text[4],
-  {
-    color: vars.colors.label,
+  atoms({
+    fontSize: '4',
+    color: 'label',
+    marginX: '4',
+  }),
+  style({
     fontWeight: 700,
-    marginLeft: vars.space[4],
-    marginRight: vars.space[4],
-  },
+  }),
 ]);

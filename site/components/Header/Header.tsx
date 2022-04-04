@@ -4,11 +4,12 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
+import { Box } from 'components/Box/Box';
 import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { chains, Provider } from '../Provider';
-import { docsMobileMenuRow, header, logo, row, title } from './Header.css';
+import { header, logo, row, title } from './Header.css';
 
 export function Header({
   docsMobileMenuRef,
@@ -22,8 +23,8 @@ export function Header({
   }, [mode]);
 
   return (
-    <div className={header}>
-      <div className={row}>
+    <Box className={header}>
+      <Box className={row}>
         <NextLink href="/">
           <img alt="Rainbow logo" className={logo} src="/rainbow-avatar.png" />
         </NextLink>
@@ -37,17 +38,23 @@ export function Header({
         >
           &nbsp;&nbsp;&nbsp;
         </button>
-        <div style={{ marginLeft: 'auto' }}>
+        <Box style={{ marginLeft: 'auto' }}>
           <Provider>
             <RainbowKitProvider chains={chains} theme={darkTheme()}>
               <ConnectButton />
             </RainbowKitProvider>{' '}
           </Provider>
-        </div>
-      </div>
+        </Box>
+      </Box>
       {docsMobileMenuRef && (
-        <div className={docsMobileMenuRow} ref={docsMobileMenuRef} />
+        <Box
+          borderBottomWidth="1"
+          borderColor="separator"
+          paddingX="10"
+          paddingY="4"
+          ref={docsMobileMenuRef}
+        />
       )}
-    </div>
+    </Box>
   );
 }

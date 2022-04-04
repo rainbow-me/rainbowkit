@@ -1,11 +1,11 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { text } from 'css/text.css';
+import { atoms } from 'css/atoms';
 import { vars } from 'css/vars.css';
 
 export const content = style([
-  text[3],
-  {
+  atoms({ fontSize: '3' }),
+  style({
     'minWidth': 200,
     'maxWidth': 320,
     'backgroundColor': vars.colors.fillElevated,
@@ -16,5 +16,5 @@ export const content = style([
     ':focus': {
       outline: 'none',
     },
-  },
+  }),
 ]);

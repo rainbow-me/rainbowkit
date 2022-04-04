@@ -1,3 +1,4 @@
+import { Box, BoxProps } from 'components/Box/Box';
 import React, { ReactNode } from 'react';
 
 import { wrapper } from './Wrapper.css';
@@ -5,13 +6,14 @@ import { wrapper } from './Wrapper.css';
 export function Wrapper({
   children,
   style,
+  ...props
 }: {
   children: ReactNode;
   style?: React.CSSProperties;
-}) {
+} & BoxProps) {
   return (
-    <div className={wrapper} style={style}>
+    <Box className={wrapper} style={style} {...props}>
       {children}
-    </div>
+    </Box>
   );
 }

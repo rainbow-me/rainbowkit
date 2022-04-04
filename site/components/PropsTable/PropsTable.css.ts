@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { text } from 'css/text.css';
+import { atoms } from 'css/atoms';
 import { vars } from 'css/vars.css';
 
 export const regionWrapper = style({
@@ -25,5 +25,9 @@ const cell = style({
   paddingLeft: vars.space[5],
 });
 
-export const th = style([cell, text[3]]);
-export const td = style([cell, text[2], { whiteSpace: 'nowrap' }]);
+export const th = style([cell, atoms({ fontSize: '3' })]);
+export const td = style([
+  cell,
+  atoms({ fontSize: '2' }),
+  { whiteSpace: 'nowrap' },
+]);

@@ -1,10 +1,12 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { text } from 'css/text.css';
+import { atoms } from 'css/atoms';
 import { vars } from 'css/vars.css';
 
 export const link = style([
-  text[3],
+  atoms({
+    fontSize: '3',
+  }),
   {
     'borderRadius': vars.radii[3],
     'display': 'block',

@@ -1,37 +1,31 @@
+/* eslint-disable react/jsx-sort-props */
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-/* eslint-disable jsx-a11y/heading-has-content */
 import { pre } from 'css/pre.css';
-import { body, text, title2, title3, titleLarge } from 'css/text.css';
-import { vars } from 'css/vars.css';
 import React from 'react';
+import { Box } from './Box/Box';
 import { Link } from './Link/Link';
 import { PropsTable } from './PropsTable/PropsTable';
+import { Text } from './Text/Text';
 
 export const components = {
-  h1: props => <h1 className={titleLarge} {...props} />,
+  h1: props => <Text as="h1" variant="titleLarge" {...props} />,
   h2: props => (
-    <h2
-      className={title3}
+    <Text
+      as="h2"
+      variant="title3"
       {...props}
-      style={{
-        color: vars.colors.labelSecondary,
-        marginTop: vars.space[2],
-        marginBottom: vars.space[6],
-        fontWeight: '500',
-      }}
+      color="labelSecondary"
+      marginTop="2"
+      marginBottom="6"
+      style={{ fontWeight: '500' }}
     />
   ),
-  h3: props => (
-    <h3 className={title2} {...props} style={{ marginTop: vars.space[11] }} />
-  ),
+  h3: props => <Text as="h3" variant="title2" marginTop="11" {...props} />,
   p: props => (
-    <p
-      className={body}
-      style={{
-        fontWeight: 500,
-        color: vars.colors.labelSecondary,
-        lineHeight: '25px',
-      }}
+    <Text
+      as="p"
+      color="labelSecondary"
+      style={{ fontWeight: 500 }}
       {...props}
     />
   ),
@@ -40,23 +34,20 @@ export const components = {
     // eslint-disable-next-line jsx-a11y/alt-text
     <img {...props} style={{ display: 'block', maxWidth: '100%' }} />
   ),
-  ol: props => <ol style={{ paddingLeft: vars.space[4] }} {...props} />,
+  ol: props => <Box as="ol" paddingLeft="4" {...props} />,
   li: props => (
-    <li
-      className={text[3]}
-      style={{ lineHeight: 1.5, display: 'flex', alignItems: 'center' }}
+    <Text
+      as="li"
+      variant="base"
       {...props}
+      style={{ listStyle: 'none', display: 'flex', alignItems: 'center' }}
     />
   ),
   pre: ({ children, ...props }) => {
     return (
-      <pre
-        className={pre}
-        style={{ marginTop: vars.space[9], marginBottom: vars.space[9] }}
-        {...props}
-      >
+      <Box as="pre" className={pre} marginY="9" {...props}>
         {children}
-      </pre>
+      </Box>
     );
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,

@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Button } from 'components/Button/Button';
 import {
   DocsMobileMenuContext,
   DocsMobileMenuSlot,
@@ -48,7 +49,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
         <DocsMobileMenuSlot>
           <DialogPrimitive.Root onOpenChange={setIsOpen} open={isOpen}>
             <div className={modalTriggerWrapper}>
-              <DialogPrimitive.Trigger>Menu</DialogPrimitive.Trigger>
+              <DialogPrimitive.Trigger asChild>
+                <Button>Menu</Button>
+              </DialogPrimitive.Trigger>
             </div>
             <DialogPrimitive.Portal>
               <DialogPrimitive.Overlay

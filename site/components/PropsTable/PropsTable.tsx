@@ -1,6 +1,7 @@
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable sort-destructure-keys/sort-destructure-keys */
 /* eslint-disable react/jsx-sort-props */
+import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
 import {
   Popover,
@@ -64,8 +65,10 @@ export function PropsTable({
                   </Code>
                   {description && (
                     <Popover>
-                      <PopoverTrigger style={{ marginLeft: vars.space[2] }}>
-                        <InfoIcon />
+                      <PopoverTrigger asChild>
+                        <Button size="xs" marginLeft="2">
+                          <InfoIcon />
+                        </Button>
                       </PopoverTrigger>
                       <PopoverContent>{description}</PopoverContent>
                     </Popover>
@@ -75,8 +78,10 @@ export function PropsTable({
                   <Code>{Boolean(typeSimple) ? typeSimple : type} </Code>
                   {Boolean(typeSimple) && (
                     <Popover>
-                      <PopoverTrigger style={{ marginLeft: vars.space[2] }}>
-                        <InfoIcon />
+                      <PopoverTrigger asChild>
+                        <Button size="xs" marginLeft="2">
+                          <InfoIcon />
+                        </Button>
                       </PopoverTrigger>
                       <PopoverContent>
                         <Code style={{ whiteSpace: 'normal' }}>{type}</Code>
