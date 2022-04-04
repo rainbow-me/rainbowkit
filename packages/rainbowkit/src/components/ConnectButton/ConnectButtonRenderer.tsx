@@ -47,14 +47,13 @@ export interface ConnectButtonRendererProps {
     accountModalOpen: boolean;
     chainModalOpen: boolean;
     connectModalOpen: boolean;
-    mounted: boolean;
   }) => ReactNode;
 }
 
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const mounted = useIsMounted();
+  const isMounted = useIsMounted();
 
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
@@ -102,10 +101,6 @@ export function ConnectButtonRenderer({
     closeChainModal();
   }, [hasAccountData, closeConnectModal, closeAccountModal, closeChainModal]);
 
-  const displayBalance = balanceData
-    ? `${Number(balanceData.formatted).toPrecision(3)} ${balanceData.symbol}`
-    : undefined;
-
   const walletConnectors = useWalletConnectors();
 
   const preloadImages = useCallback(
@@ -120,6 +115,14 @@ export function ConnectButtonRenderer({
   useEffect(() => {
     preloadImages();
   }, [preloadImages]);
+
+  if (!isMounted) {
+    return null;
+  }
+
+  const displayBalance = balanceData
+    ? `${Number(balanceData.formatted).toPrecision(3)} ${balanceData.symbol}`
+    : undefined;
 
   return (
     <>
@@ -150,7 +153,6 @@ export function ConnectButtonRenderer({
           : undefined,
         chainModalOpen,
         connectModalOpen,
-        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,
