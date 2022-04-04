@@ -50,6 +50,7 @@ export function Header({
         <Box
           borderBottomWidth="1"
           borderColor="separator"
+          display={{ lg: 'none' }}
           paddingX="10"
           paddingY="4"
           ref={docsMobileMenuRef}
