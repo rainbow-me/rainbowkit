@@ -184,7 +184,7 @@ export function ConnectDetail({
       }
     : qrCode
     ? {
-        description: `Don\u2019t have the ${name} App?`,
+        description: `Don\u2019t have the ${name} app?`,
         label: 'GET',
         onClick: () => setWalletStep(WalletStep.Download),
       }
