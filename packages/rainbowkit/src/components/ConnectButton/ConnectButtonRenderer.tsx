@@ -33,6 +33,7 @@ export interface ConnectButtonRendererProps {
       name?: string;
       unsupported?: boolean;
     };
+    mounted: boolean;
     openAccountModal: () => void;
     openChainModal: () => void;
     openConnectModal: () => void;
@@ -45,7 +46,7 @@ export interface ConnectButtonRendererProps {
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const isMounted = useIsMounted();
+  const mounted = useIsMounted();
 
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
@@ -87,10 +88,6 @@ export function ConnectButtonRenderer({
     closeChainModal();
   }, [hasAccountData, closeConnectModal, closeAccountModal, closeChainModal]);
 
-  if (!isMounted) {
-    return null;
-  }
-
   const displayBalance = balanceData
     ? `${Number(balanceData.formatted).toPrecision(3)} ${balanceData.symbol}`
     : undefined;
@@ -122,6 +119,7 @@ export function ConnectButtonRenderer({
           : undefined,
         chainModalOpen,
         connectModalOpen,
+        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,

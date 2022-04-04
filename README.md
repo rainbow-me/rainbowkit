@@ -292,8 +292,13 @@ export const YourApp = () => {
           openAccountModal,
           openChainModal,
           openConnectModal,
-        }) =>
-          !account ? (
+          mounted,
+        }) => {
+          if (!mounted) {
+            return null;
+          }
+
+          return !account ? (
             <button onClick={openConnectModal} type="button">
               Connect Wallet
             </button>
@@ -321,8 +326,8 @@ export const YourApp = () => {
                 {account.displayBalance ? ` (${account.displayBalance})` : ''}
               </button>
             </div>
-          )
-        }
+          );
+        }}
       </ConnectButton.Custom>
     </>
   );
@@ -460,6 +465,11 @@ The following props are passed to your render function.
       <td><code>accountModalOpen</code></td>
       <td><code>boolean</code></td>
       <td>Boolean indicating whether the account modal is open</td>
+    </tr>
+    <tr>
+      <td><code>mounted</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the component has mounted</td>
     </tr>
     <tr>
       <td><code>chainModalOpen</code></td>
