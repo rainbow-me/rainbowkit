@@ -100,7 +100,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = hasQrCode && `Scan with ${selectedWallet.name}`;
+      headerLabel = hasQrCode && `Scan with your phone`;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
