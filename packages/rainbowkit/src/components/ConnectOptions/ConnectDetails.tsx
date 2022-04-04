@@ -4,6 +4,7 @@ import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
@@ -54,7 +55,8 @@ export function GetDetail({
               (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
-            const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
+            const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
+              wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
             return (
               <Box
@@ -71,28 +73,14 @@ export function GetDetail({
                   flexDirection="row"
                   gap="16"
                 >
-                  <Box
+                  <AsyncImage
+                    background={iconBackground}
+                    borderColor="actionButtonBorder"
                     borderRadius="10"
                     height="48"
                     src={iconUrl}
-                    style={{
-                      background: `url(${iconUrl})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                      touchCallout: 'none',
-                      userSelect: 'none',
-                    }}
                     width="48"
-                  >
-                    <Box
-                      borderColor="actionButtonBorder"
-                      borderRadius="10"
-                      borderStyle="solid"
-                      borderWidth="1"
-                      height="full"
-                      width="full"
-                    />
-                  </Box>
+                  />
                   <Box display="flex" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">
                       {name}
@@ -160,8 +148,15 @@ export function ConnectDetail({
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
-  const { downloadUrls, iconUrl, name, qrCode, ready, showWalletConnectModal } =
-    wallet;
+  const {
+    downloadUrls,
+    iconBackground,
+    iconUrl,
+    name,
+    qrCode,
+    ready,
+    showWalletConnectModal,
+  } = wallet;
 
   let readyMsg;
   if (ready) {
@@ -199,8 +194,9 @@ export function ConnectDetail({
       {qrCode ? (
         <Box height="full">
           <QRCode
+            logoBackground={iconBackground}
             logoSize={72}
-            logoUri={qrCode.iconUrl ?? iconUrl}
+            logoUrl={iconUrl}
             size={382}
             uri={qrCode.getUri()}
           />
@@ -219,12 +215,7 @@ export function ConnectDetail({
             gap="20"
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
-              <img
-                alt={name}
-                height={LOGO_SIZE}
-                src={iconUrl}
-                width={LOGO_SIZE}
-              />
+              <AsyncImage height={LOGO_SIZE} src={iconUrl} width={LOGO_SIZE} />
             </Box>
             <Box
               alignItems="center"
@@ -363,9 +354,8 @@ const stepIcons: Record<
 > = {
   create: () => <CreateIcon />,
   install: wallet => (
-    <Box
-      alt={wallet.name}
-      as="img"
+    <AsyncImage
+      background={wallet.iconBackground}
       height="48"
       src={wallet.iconUrl}
       width="48"

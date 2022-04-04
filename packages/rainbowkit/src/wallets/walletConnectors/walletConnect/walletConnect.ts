@@ -3,7 +3,6 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './walletConnect.svg';
 
 export interface WalletConnectOptions {
   chains: Chain[];
@@ -16,7 +15,8 @@ export const walletConnect = ({
 }: WalletConnectOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
-  iconUrl: iconDataUrl,
+  iconUrl: async () => (await import('./walletConnect.svg')).default,
+  iconBackground: '#3b99fc',
   createConnector: () => {
     const ios = isIOS();
 
