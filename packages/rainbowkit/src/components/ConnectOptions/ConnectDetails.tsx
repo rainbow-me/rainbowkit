@@ -1,10 +1,10 @@
 import React, { ElementType, ReactNode } from 'react';
-import { InstructionStepName } from '../../wallets/WalletConnectorConfig';
+import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
-import { Box } from '../Box/Box';
+import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon } from '../Icons/Create';
 import { ScanIcon } from '../Icons/Scan';
@@ -19,6 +19,7 @@ export function GetDetail({
   getMobileWallet: (walletId: string) => void;
 }) {
   const wallets = useWalletConnectors();
+  const shownWallets = wallets.splice(0, 5);
 
   const linkProps = (
     link: string
@@ -46,15 +47,15 @@ export function GetDetail({
         height="full"
         width="full"
       >
-        {wallets
+        {shownWallets
           ?.filter(
             wallet =>
               wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode && wallet.downloadUrls?.mobile)
+              (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
             const { downloadUrls, iconUrl, id, name, qrCode } = wallet;
-            const hasMobileCompanionApp = downloadUrls?.mobile && qrCode;
+            const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
             return (
               <Box
                 alignItems="center"
@@ -147,12 +148,15 @@ export function GetDetail({
   );
 }
 
+const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   connectionError,
+  reconnect,
   setWalletStep,
   wallet,
 }: {
   connectionError: boolean;
+  reconnect: (wallet: WalletConnector) => void;
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
@@ -187,7 +191,7 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        onClick: () => wallet?.connect?.(),
+        onClick: () => reconnect(wallet),
       };
 
   return (
@@ -214,8 +218,13 @@ export function ConnectDetail({
             flexDirection="column"
             gap="20"
           >
-            <Box borderRadius="6">
-              <img alt={name} height="60" src={iconUrl} width="60" />
+            <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
+              <img
+                alt={name}
+                height={LOGO_SIZE}
+                src={iconUrl}
+                width={LOGO_SIZE}
+              />
             </Box>
             <Box
               alignItems="center"
@@ -237,6 +246,7 @@ export function ConnectDetail({
                 display="flex"
                 flexDirection="row"
                 gap="6"
+                height="24"
                 paddingX="28"
               >
                 {connectionError ? (
@@ -316,8 +326,8 @@ export function DownloadDetail({
         </Text>
       </Box>
       <Box height="full">
-        {downloadUrls?.mobile ? (
-          <QRCode logoSize={0} size={268} uri={downloadUrls.mobile} />
+        {downloadUrls?.qrCode ? (
+          <QRCode logoSize={0} size={268} uri={downloadUrls.qrCode} />
         ) : null}
       </Box>
 

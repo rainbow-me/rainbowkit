@@ -12,9 +12,9 @@ const accents: Record<AccentValues, string> = {
 
 export const midnightTheme = ({
   accentColor = 'blue',
-  borderRadius,
+  ...baseThemeOptions
 }: ThemeOptions = {}) => ({
-  ...baseTheme({ borderRadius }),
+  ...baseTheme(baseThemeOptions),
   borders: {
     modalBorderWidth: '1px',
   },

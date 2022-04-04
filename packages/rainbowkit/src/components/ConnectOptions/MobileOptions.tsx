@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
+import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -12,7 +13,7 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { connect, iconUrl, id, mobile, name, ready } = wallet;
+  const { connect, iconUrl, id, mobile, name, ready, shortName } = wallet;
   const getMobileUri = mobile?.getUri;
 
   return (
@@ -65,18 +66,26 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             width="full"
           />
         </Box>
-        <Text
-          as="h2"
-          color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-          size="13"
-          weight="medium"
-        >
-          {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
-          <Box as="span" position="relative">
-            {name}
-            {!wallet.ready && ' (unsupported)'}
-          </Box>
-        </Text>
+        <Box display="flex" flexDirection="column" gap="1">
+          <Text
+            as="h2"
+            color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+            size="13"
+            weight="medium"
+          >
+            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+            <Box as="span" position="relative">
+              {shortName ?? name}
+              {!wallet.ready && ' (unsupported)'}
+            </Box>
+          </Text>
+
+          {wallet.recent && (
+            <Text color="accentColor" size="12" weight="medium">
+              Recent
+            </Text>
+          )}
+        </Box>
       </Box>
     </Box>
   );
@@ -100,6 +109,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
     MobileWalletStep.Connect
   );
+
+  const ios = isIOS();
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
@@ -172,9 +183,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = MobileWalletStep.Connect;
 
-      const mobileWallets = wallets?.filter(
-        wallet => wallet.downloadUrls?.mobile
-      );
+      const mobileWallets = wallets
+        ?.filter(
+          wallet => wallet.downloadUrls?.ios || wallet.downloadUrls?.android
+        )
+        ?.splice(0, 3);
 
       walletContent = (
         <>
@@ -191,7 +204,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             {mobileWallets.map((wallet, index) => {
               const { downloadUrls, iconUrl, name } = wallet;
 
-              if (!downloadUrls?.mobile) {
+              if (!downloadUrls?.ios && !downloadUrls?.android) {
                 return null;
               }
 
@@ -233,7 +246,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                         </Text>
                       </Box>
                       <ActionButton
-                        href={downloadUrls.mobile}
+                        href={ios ? downloadUrls?.ios : downloadUrls?.android}
                         label="GET"
                         size="small"
                         type="secondary"

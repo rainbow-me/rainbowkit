@@ -1,10 +1,13 @@
 import { Chain as WagmiChain } from 'wagmi';
-import { Wallets } from './Wallet';
-import { coinbase, CoinbaseOptions } from './walletConnectors/coinbase';
-import { injected } from './walletConnectors/injected';
-import { metaMask } from './walletConnectors/metaMask';
-import { rainbow } from './walletConnectors/rainbow';
-import { walletConnect } from './walletConnectors/walletConnect';
+import { WalletList } from './Wallet';
+import {
+  coinbase,
+  CoinbaseOptions,
+} from './walletConnectors/coinbase/coinbase';
+import { injected } from './walletConnectors/injected/injected';
+import { metaMask } from './walletConnectors/metaMask/metaMask';
+import { rainbow } from './walletConnectors/rainbow/rainbow';
+import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 
 export const getDefaultWallets = ({
   appName,
@@ -16,7 +19,7 @@ export const getDefaultWallets = ({
   infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
-}): Wallets => {
+}): WalletList => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -31,12 +34,12 @@ export const getDefaultWallets = ({
       groupName: 'Popular',
       wallets: [
         rainbow({ chains, infuraId }),
-        walletConnect({ chains, infuraId }),
         coinbase({ appName, chains, jsonRpcUrl }),
         metaMask({ chains, infuraId, shimDisconnect: true }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
+        walletConnect({ chains, infuraId }),
       ],
     },
   ];

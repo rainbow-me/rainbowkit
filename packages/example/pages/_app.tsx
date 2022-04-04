@@ -45,7 +45,13 @@ const wallets = getDefaultWallets({
 
 const connectors = connectorsForWallets([
   ...wallets,
-  { groupName: 'Other', wallets: [wallet.argent({ chains, infuraId })] },
+  {
+    groupName: 'Other',
+    wallets: [
+      wallet.argent({ chains, infuraId }),
+      wallet.trust({ chains, infuraId }),
+    ],
+  },
 ]);
 
 const themes = [
@@ -54,6 +60,9 @@ const themes = [
   { name: 'midnight', theme: midnightTheme },
 ] as const;
 type ThemeName = typeof themes[number]['name'];
+
+const fontStacks = ['rounded', 'system'] as const;
+type FontStack = typeof fontStacks[number];
 
 const accentColors = [
   'blue',
@@ -71,6 +80,7 @@ type RadiusScale = typeof radiusScales[number];
 
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
+  const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
 
@@ -79,6 +89,7 @@ function App({ Component, pageProps }: AppProps) {
     ?.theme({
       accentColor: selectedAccentColor,
       borderRadius: selectedRadiusScale,
+      fontStack: selectedFontStack,
     });
 
   return (
@@ -118,6 +129,30 @@ function App({ Component, pageProps }: AppProps) {
                       value={themeName}
                     />{' '}
                     {themeName}
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4>Font stack</h4>
+              <div
+                style={{
+                  alignItems: 'flex-start',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 12,
+                }}
+              >
+                {fontStacks.map(fontStack => (
+                  <label key={fontStack} style={{ userSelect: 'none' }}>
+                    <input
+                      checked={fontStack === selectedFontStack}
+                      name="fontStack"
+                      onChange={e => setFontStack(e.target.value as FontStack)}
+                      type="radio"
+                      value={fontStack}
+                    />{' '}
+                    {fontStack}
                   </label>
                 ))}
               </div>

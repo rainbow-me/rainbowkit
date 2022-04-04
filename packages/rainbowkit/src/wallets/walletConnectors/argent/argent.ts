@@ -1,15 +1,26 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isIOS } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isAndroid } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
+import iconDataUrl from './argent.svg';
 
 export interface ArgentOptions {
   chains: Chain[];
   infuraId?: string;
 }
 
-export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
-  return () => {
+export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => ({
+  id: 'argent',
+  name: 'Argent',
+  iconUrl: iconDataUrl,
+  downloadUrls: {
+    android:
+      'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient',
+    ios: 'https://apps.apple.com/us/app/argent/id1358741926',
+    qrCode: 'https://argent.link/app',
+  },
+  createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
@@ -20,16 +31,6 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
 
     return {
       connector,
-      downloadUrls: {
-        mobile: isAndroid()
-          ? 'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient'
-          : isIOS()
-          ? 'https://apps.apple.com/us/app/argent/id1358741926'
-          : 'https://argent.link/app',
-      },
-      iconUrl:
-        'https://cloudflare-ipfs.com/ipfs/QmenqGTM4sPU7x27a4zdZfMCMrWvxZxnVST8dbyFFvUZZQ',
-      id: 'argent',
       mobile: {
         getUri: () => {
           const { uri } = connector.getProvider().connector;
@@ -39,7 +40,6 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
             : `https://argent.link/app/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
-      name: 'Argent',
       qrCode: {
         getUri: () => connector.getProvider().connector.uri,
         instructions: {
@@ -67,5 +67,5 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => {
         },
       },
     };
-  };
-};
+  },
+});

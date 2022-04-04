@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -16,8 +17,7 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { FadeScrollClassName } from './DesktopOptions.css';
-import { groupBy } from './groupBy';
+import { ScrollClassName } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -41,7 +41,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
-  const onSelectWallet = (wallet: WalletConnector) => {
+  const connectToWallet = (wallet: WalletConnector) => {
+    setConnectionError(false);
     if (wallet.ready) {
       wallet?.connect?.().then(x => {
         if (x.error) {
@@ -49,7 +50,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         }
       });
     }
+  };
 
+  const onSelectWallet = (wallet: WalletConnector) => {
+    connectToWallet(wallet);
     // Update selected wallet state on next tick so QR code URIs are ready to render
     setTimeout(() => {
       setSelectedOptionId(wallet.id);
@@ -91,6 +95,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <ConnectDetail
           connectionError={connectionError}
+          reconnect={connectToWallet}
           setWalletStep={setWalletStep}
           wallet={selectedWallet}
         />
@@ -128,12 +133,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           minWidth: isMobile() ? 'full' : '287px',
         }}
       >
-        <Box marginLeft="6" paddingX="18">
+        <Box marginLeft="6" paddingBottom="10" paddingX="18">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
             Connect a Wallet
           </Text>
         </Box>
-        <Box className={FadeScrollClassName} paddingBottom="18">
+        <Box className={ScrollClassName} paddingBottom="18">
           {Object.entries(groupedWallets).map(
             ([groupName, wallets], index) =>
               wallets.length > 0 && (
@@ -217,7 +222,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               justifyContent="space-between"
               marginBottom="12"
             >
-              <Box>
+              <Box width="28">
                 {headerBackButtonLink && (
                   <Box
                     as="button"

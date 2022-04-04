@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
@@ -82,10 +82,9 @@ export function ChainModal({
                 const chainIconUrl = rainbowkitChainsById[chain.id]?.iconUrl;
 
                 return (
-                  <>
+                  <Fragment key={chain.id}>
                     <MenuButton
                       currentlySelected={isCurrentChain}
-                      key={chain.id}
                       onClick={
                         isCurrentChain
                           ? undefined
@@ -178,7 +177,7 @@ export function ChainModal({
                         marginX="8"
                       />
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
           </Box>

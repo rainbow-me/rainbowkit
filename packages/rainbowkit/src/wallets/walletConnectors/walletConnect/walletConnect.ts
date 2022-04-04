@@ -1,16 +1,23 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isIOS } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isIOS } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
+import iconDataUrl from './walletConnect.svg';
 
 export interface WalletConnectOptions {
   chains: Chain[];
   infuraId?: string;
 }
 
-export const walletConnect =
-  ({ chains, infuraId }: WalletConnectOptions): Wallet =>
-  () => {
+export const walletConnect = ({
+  chains,
+  infuraId,
+}: WalletConnectOptions): Wallet => ({
+  id: 'walletConnect',
+  name: 'WalletConnect',
+  iconUrl: iconDataUrl,
+  createConnector: () => {
     const ios = isIOS();
 
     const connector = new WalletConnectConnector({
@@ -25,10 +32,6 @@ export const walletConnect =
 
     return {
       connector,
-      iconUrl:
-        'https://cloudflare-ipfs.com/ipfs/QmbFLEB7Q9iCsSR2mvb48eyn1nvARKeLaPYFnzHVUeBDMV',
-      id: 'walletConnect',
-      name: 'WalletConnect',
       ...(ios
         ? {}
         : {
@@ -36,4 +39,5 @@ export const walletConnect =
             qrCode: { getUri },
           }),
     };
-  };
+  },
+});
