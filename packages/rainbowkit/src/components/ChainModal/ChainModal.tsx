@@ -145,7 +145,7 @@ export function ChainModal({
                                 borderColor="selectedOptionBorder"
                                 borderRadius="full"
                                 borderStyle="solid"
-                                borderWidth="2"
+                                borderWidth="1"
                                 height="8"
                                 marginLeft="8"
                                 width="8"
@@ -164,10 +164,7 @@ export function ChainModal({
                               </Text>
                               <Box
                                 background="standby"
-                                borderColor="selectedOptionBorder"
                                 borderRadius="full"
-                                borderStyle="solid"
-                                borderWidth="2"
                                 height="8"
                                 marginLeft="8"
                                 width="8"
