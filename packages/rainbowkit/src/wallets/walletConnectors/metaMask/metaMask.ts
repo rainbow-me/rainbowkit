@@ -4,7 +4,6 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './metaMask.svg';
 
 export interface MetaMaskOptions {
   chains: Chain[];
@@ -27,7 +26,8 @@ export const metaMask = ({
   return {
     id: 'metaMask',
     name: 'MetaMask',
-    iconUrl: iconDataUrl,
+    iconUrl: async () => (await import('./metaMask.svg')).default,
+    iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {
       browserExtension:

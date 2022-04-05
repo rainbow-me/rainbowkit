@@ -20,39 +20,42 @@ type ChainName =
   | 'rinkeby'
   | 'ropsten';
 
-const chainMetadata: Record<
-  ChainName,
-  { chainId: number; iconUrl: string } | null
-> = {
+type ChainMetadata = {
+  chainId: number;
+  iconUrl: () => Promise<string>;
+  iconBackground: string;
+};
+
+const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrumOne: {
     chainId: 42_161,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmVUztw7AXEqh9yFEAUZarG6LYzYFbYAwkxgx2myXgBi7L',
+    iconBackground: '#96bedc',
+    iconUrl: async () => (await import('./chainIcons/arbitrum.svg')).default,
   },
   avalanche: {
     chainId: 43_114,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmX5GEd2Siv5qpamrujYZjXEAkbEueQK8fvNpEXtiBpjRm',
+    iconBackground: '#e84141',
+    iconUrl: async () => (await import('./chainIcons/avalanche.svg')).default,
   },
   hardhat: {
     chainId: 31_337,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmUjW7Nf8FjaHRk3ADjpnQKP8WE3B4no1wrZYaXz62VinU',
+    iconBackground: '#f9f7ec',
+    iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
   },
   mainnet: {
     chainId: 1,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmV1rDdxo8PzgnMJHG8E2jHsBU1AxyE2T68tm4yv9jKMGh',
+    iconBackground: '#484c50',
+    iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
   },
   optimism: {
     chainId: 10,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmeK3XmVA5vCpzBWoaQLm4o4QdDZV5z4EcABPGhcQtK8Bo',
+    iconBackground: '#ff5a57',
+    iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
   },
   polygonMainnet: {
     chainId: 137,
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmdyoFWCpGCaxmtsYw6FFpuVBv6LCHTzZPYeZagvKYB964',
+    iconBackground: '#9f71ec',
+    iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
   },
 
   // Omitted icons are set to 'null' so we know they've been explicitly excluded from the complete wagmi set (for now)
@@ -69,17 +72,17 @@ const chainMetadata: Record<
   },
 };
 
-const chainIconUrlsById = Object.fromEntries(
-  Object.values(chainMetadata)
+const chainMetadataById = Object.fromEntries(
+  Object.values(chainMetadataByName)
     .filter(isNotNullish)
-    .map(({ chainId, iconUrl }) => [chainId, iconUrl])
-) as Record<number, string>;
+    .map(({ chainId, ...metadata }) => [chainId, metadata])
+);
 
 /** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain properties if not already provided */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
   chains: Chain[]
 ): Chain[] =>
   chains.map(chain => ({
-    iconUrl: chainIconUrlsById[chain.id],
+    ...(chainMetadataById[chain.id] ?? {}),
     ...chain,
   }));
