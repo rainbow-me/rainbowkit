@@ -13,6 +13,7 @@ import { header, logo, row, title } from './Header.css';
 
 export function Header({
   docsMobileMenuRef,
+  ...props
 }: {
   docsMobileMenuRef?: React.RefObject<HTMLDivElement>;
 }) {
@@ -23,7 +24,7 @@ export function Header({
   }, [mode]);
 
   return (
-    <Box className={header}>
+    <Box className={header} {...props}>
       <Box className={row}>
         <NextLink href="/">
           <img alt="Rainbow logo" className={logo} src="/rainbow-avatar.png" />

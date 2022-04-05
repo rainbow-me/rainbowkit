@@ -48,29 +48,25 @@ const variant = {
   gray: style([
     atoms({
       color: 'label',
-      backgroundColor: 'fillSecondary',
+      backgroundColor: {
+        base: 'fillSecondary',
+        hover: 'fill',
+      },
     }),
-    style({}),
   ]),
   blue: style([
-    atoms({
-      color: 'blue',
-    }),
+    atoms({ color: 'blue' }),
     style({ backgroundColor: 'rgba(14, 118, 253, 0.08)' }),
   ]),
   outline: style([
-    atoms({
-      color: 'label',
-    }),
+    atoms({ color: 'label' }),
     style({
       backgroundColor: 'transparent',
       boxShadow: `inset 0 0 0 2px ${vars.colors.blue}`,
     }),
   ]),
   raised: style([
-    atoms({
-      color: 'label',
-    }),
+    atoms({ color: 'label' }),
     style({
       backgroundColor: 'transparent',
       boxShadow: `0 10px 30px rgba(27, 29, 31, 0.1), 0 5px 15px rgba(27, 29, 31, 0.04)`,
@@ -122,11 +118,20 @@ export const variants = recipe({
       display: 'inline-flex',
       borderRadius: 'round',
       fontFamily: 'normal',
+      transitionProperty: 'transform',
+      transitionTimingFunction: 'ease',
+      transitionDuration: '100',
+      transform: {
+        hover: 'grow',
+        active: 'shrink',
+      },
     }),
     style({
+      willChange: 'transform',
       fontWeight: 600,
       lineHeight: 1,
       selectors: {
+        '&:focus': { outline: 'none' },
         '&:disabled': {
           backgroundColor: vars.colors.fill,
           color: vars.colors.gray30,

@@ -1,44 +1,69 @@
-import { Blur } from 'components/Blur/Blur';
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+/* eslint-disable react/jsx-sort-props */
+import { Box } from 'components/Box/Box';
 import { Header } from 'components/Header/Header';
 import { Playground } from 'components/Playground/Playground';
 // import { PlaygroundWallets } from 'components/PlaygroundWallets';
 import { Provider } from 'components/Provider';
+import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import React from 'react';
 
 const Home = () => {
   return (
-    <>
-      <Header />
-      <Wrapper style={{ position: 'relative', zIndex: 0 }}>
-        <main style={{ textAlign: 'center' }}>
-          <h1
-            style={{
-              background: 'linear-gradient(270deg, #7E51FF 0%, #5790FF 100%)',
-              display: 'inline-block',
-              fontSize: 40,
-              marginTop: 60,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            RainbowKit
-          </h1>
-          <h2 style={{ fontSize: 60, margin: '5px 0 20px' }}>
-            The best way to connect a wallet
-          </h2>
-          <h3 style={{ fontSize: 28, fontWeight: 600 }}>
-            Designed for everyone. Built for developers.
-          </h3>
-        </main>
-        <img
-          alt="hero"
-          src="hero.png"
-          style={{ display: 'block', margin: '60px 0 128px', width: '100%' }}
-        />
-      </Wrapper>
-      <Blur style={{ right: 0, top: 0 }} />
-      <Blur style={{ left: 0, top: 400 }} />
+    <Box data-mode="dark">
+      <Box
+        style={{
+          backgroundColor: '#131415',
+          backgroundImage:
+            'radial-gradient(50% 50% at 50% 50%, #053085 0%, rgba(19, 0, 96, 0) 100%)',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center bottom',
+          backgroundSize: '95% 70%',
+        }}
+        overflow="hidden"
+      >
+        <Header />
+        <Box paddingY="11" marginY="11">
+          <Wrapper style={{ position: 'relative', zIndex: 0 }}>
+            <Box as="main" style={{ textAlign: 'center' }}>
+              <Text
+                as="h1"
+                variant="titleLarge"
+                marginBottom="6"
+                weight="bold"
+                style={{
+                  background:
+                    'linear-gradient(270deg, #7E51FF 0%, #5790FF 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                RainbowKit
+              </Text>
+              <Text
+                as="h2"
+                variant="titleLarge"
+                weight="bold"
+                marginBottom="8"
+                style={{ fontSize: 52 }}
+              >
+                The best way to connect a wallet
+              </Text>
+              <Text as="h3" variant="title2" weight="bold">
+                Designed for everyone. Built for developers.
+              </Text>
+            </Box>
+            <Box
+              as="img"
+              alt="hero"
+              src="hero.png"
+              marginTop="10"
+              style={{ display: 'block', width: '100%' }}
+            />
+          </Wrapper>
+        </Box>
+      </Box>
 
       <Provider>
         <Playground />
@@ -72,7 +97,7 @@ const Home = () => {
 
         {/* <PlaygroundWallets /> */}
       </section>
-    </>
+    </Box>
   );
 };
 

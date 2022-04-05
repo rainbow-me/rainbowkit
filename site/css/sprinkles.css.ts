@@ -160,6 +160,7 @@ const unresponsiveProperties = defineProperties({
     },
     transitionTimingFunction: {
       linear: 'linear',
+      ease: 'ease',
       in: 'cubic-bezier(0.4, 0, 1, 1)',
       out: 'cubic-bezier(0, 0, 0.2, 1)',
       inOut: 'cubic-bezier(0.42, 0, 0.58, 1)',
@@ -225,11 +226,28 @@ const motionSafeProperties = defineProperties({
   },
 });
 
+const interactionProperties = defineProperties({
+  conditions: {
+    base: {},
+    hover: { selector: '&:hover' },
+    focus: { selector: '&:focus' },
+    active: { selector: '&:active' },
+  },
+  defaultCondition: 'base',
+  properties: {
+    transform: {
+      grow: 'scale(1.04)',
+      shrink: 'scale(0.95)',
+    },
+  },
+});
+
 export const sprinkles = createSprinkles(
   responsiveProperties,
   unresponsiveProperties,
   colorProperties,
-  motionSafeProperties
+  motionSafeProperties,
+  interactionProperties
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];
 
