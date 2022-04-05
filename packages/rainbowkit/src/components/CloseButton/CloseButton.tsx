@@ -22,13 +22,13 @@ export const CloseButton = ({
       borderWidth={mobile ? '0' : '1'}
       color="closeButton"
       display="flex"
-      height={mobile ? '32' : '28'}
+      height={mobile ? '30' : '28'}
       justifyContent="center"
       onClick={onClose}
       style={{ willChange: 'transform', ...(style ?? {}) }}
       transform={{ active: 'shrinkSm', hover: 'growLg' }}
       transition="default"
-      width={mobile ? '32' : '28'}
+      width={mobile ? '30' : '28'}
     >
       <CloseIcon />
     </Box>
