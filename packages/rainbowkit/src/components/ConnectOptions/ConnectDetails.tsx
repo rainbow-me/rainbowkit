@@ -254,10 +254,10 @@ export function ConnectDetail({
                 )}
               </Box>
               {!ready && downloadUrls?.browserExtension ? (
-                <Box paddingTop="8">
+                <Box paddingTop="20">
                   <ActionButton
                     href={downloadUrls.browserExtension}
-                    label="Install"
+                    label="INSTALL"
                     type="secondary"
                   />
                 </Box>
