@@ -31,13 +31,16 @@ export function ProfileDetailsAction({
       {...urlProps}
       background={{
         base: 'profileAction',
-        hover: 'profileActionHover',
+        ...(!mobile ? { hover: 'profileActionHover' } : {}),
       }}
       borderRadius="menuButton"
       boxShadow="profileDetailsAction"
       padding={mobile ? '8' : '10'}
       style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
-      transform={{ active: 'shrinkSm', hover: 'grow' }}
+      transform={{
+        active: 'shrinkSm',
+        ...(!mobile ? { hover: 'grow' } : {}),
+      }}
       transition="default"
     >
       <Box
