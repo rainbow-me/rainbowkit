@@ -31,10 +31,15 @@ export function ConnectButton({
       {({
         account,
         chain,
+        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,
       }) => {
+        if (!mounted) {
+          return null;
+        }
+
         return account ? (
           <Box display="flex" gap="12">
             {chain && (
