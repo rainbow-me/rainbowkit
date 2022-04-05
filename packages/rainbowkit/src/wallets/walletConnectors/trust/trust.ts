@@ -3,7 +3,6 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './trust.svg';
 
 export interface TrustOptions {
   chains: Chain[];
@@ -13,7 +12,8 @@ export interface TrustOptions {
 export const trust = ({ chains, infuraId }: TrustOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
-  iconUrl: iconDataUrl,
+  iconUrl: async () => (await import('./trust.svg')).default,
+  iconBackground: '#fff',
   downloadUrls: {
     android:
       'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',

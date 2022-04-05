@@ -1,5 +1,6 @@
 import React from 'react';
 import { mapResponsiveValue, ResponsiveValue } from '../../css/sprinkles.css';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
@@ -70,19 +71,25 @@ export function ConnectButton({
                   <Box>Invalid network</Box>
                 ) : (
                   <Box alignItems="center" display="flex" gap="6">
-                    {chain.iconUrl ? (
+                    {chain.hasIcon ? (
                       <Box
-                        alt={chain.name ?? 'Chain icon'}
-                        as="img"
                         display={mapResponsiveValue(chainStatus, value =>
                           value === 'full' || value === 'icon'
                             ? 'block'
                             : 'none'
                         )}
                         height="24"
-                        src={chain.iconUrl}
                         width="24"
-                      />
+                      >
+                        <AsyncImage
+                          alt={chain.name ?? 'Chain icon'}
+                          background={chain.iconBackground}
+                          borderRadius="full"
+                          height="24"
+                          src={chain.iconUrl}
+                          width="24"
+                        />
+                      </Box>
                     ) : null}
                     <Box
                       display={mapResponsiveValue(chainStatus, value => {

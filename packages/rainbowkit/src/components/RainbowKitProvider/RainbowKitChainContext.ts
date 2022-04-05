@@ -3,7 +3,8 @@ import { Chain as WagmiChain } from 'wagmi';
 
 export interface RainbowKitChain {
   id: number;
-  iconUrl?: string | null;
+  iconUrl?: string | (() => Promise<string>) | null;
+  iconBackground?: string;
 }
 
 // This type is a combination of wagmi and RainbowKit chain types to make
@@ -12,8 +13,10 @@ export type Chain = WagmiChain & RainbowKitChain;
 
 export const RainbowKitChainContext = createContext<RainbowKitChain[]>([]);
 
+export const useRainbowKitChains = () => useContext(RainbowKitChainContext);
+
 export const useRainbowKitChainsById = () => {
-  const rainbowkitChains = useContext(RainbowKitChainContext);
+  const rainbowkitChains = useRainbowKitChains();
 
   return useMemo(() => {
     const rainbowkitChainsById: Record<number, RainbowKitChain> = {};

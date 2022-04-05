@@ -161,50 +161,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       return (
                         <ModalSelection
                           currentlySelected={wallet.id === selectedOptionId}
+                          iconBackground={wallet.iconBackground}
+                          iconUrl={wallet.iconUrl}
                           key={wallet.id}
+                          name={wallet.name}
                           onClick={() => onSelectWallet(wallet)}
-                        >
-                          <Box
-                            color={
-                              wallet.id === selectedOptionId
-                                ? 'actionButtonText'
-                                : 'modalText'
-                            }
-                            disabled={!wallet.ready}
-                            fontFamily="body"
-                            fontSize="16"
-                            fontWeight="bold"
-                            transition="default"
-                          >
-                            <Box
-                              alignItems="center"
-                              display="flex"
-                              flexDirection="row"
-                              gap="12"
-                            >
-                              <Box
-                                borderRadius="6"
-                                height="28"
-                                style={{
-                                  background: `url(${wallet.iconUrl})`,
-                                  backgroundRepeat: 'no-repeat',
-                                  backgroundSize: 'cover',
-                                }}
-                                width="28"
-                              >
-                                <Box
-                                  borderColor="actionButtonBorder"
-                                  borderRadius="6"
-                                  borderStyle="solid"
-                                  borderWidth="1"
-                                  height="full"
-                                  width="full"
-                                />
-                              </Box>
-                              <div>{wallet.name}</div>
-                            </Box>
-                          </Box>
-                        </ModalSelection>
+                          ready={wallet.ready}
+                        />
                       );
                     })}
                   </Box>

@@ -164,6 +164,7 @@ const unresponsiveProperties = defineProperties({
       '6': '6px',
       '10': '10px',
       '13': '13px',
+      '25%': '25%',
       'full': '9999px',
     },
     borderStyle: {
