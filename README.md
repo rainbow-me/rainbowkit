@@ -18,7 +18,7 @@ RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wa
 
 Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
 
-`npm install @rainbow-me/rainbowkit wagmi ethers`
+`npm install @rainbow-me/rainbowkit wagmi@0.2 ethers`
 
 ## Getting started
 
