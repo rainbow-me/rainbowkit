@@ -10,6 +10,7 @@ type BaseProps = {
   size?: styles.Size;
   suffix?: React.ReactElement;
   variant?: styles.Variant;
+  style?: React.CSSProperties;
 } & Pick<
   JSX.IntrinsicElements['button'],
   | 'onClick'
@@ -58,6 +59,7 @@ export const Button = React.forwardRef(
       prefix,
       shape,
       size = 'm',
+      style,
       suffix,
       variant = 'gray',
       ...boxProps
@@ -74,6 +76,7 @@ export const Button = React.forwardRef(
         ref={ref}
         {...boxProps}
         as={boxProps.as ?? 'button'}
+        style={style}
       >
         {prefix && <Box>{prefix}</Box>}
         {children}

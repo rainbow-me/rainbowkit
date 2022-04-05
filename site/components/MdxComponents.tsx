@@ -67,4 +67,5 @@ export const components = {
     );
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
+  blockquote: props => <Box as="blockquote" {...props} />,
 };

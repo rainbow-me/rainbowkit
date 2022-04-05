@@ -35,6 +35,7 @@ export function PropsTable({
       role="region"
       aria-label={ariaLabel}
       tabIndex={0}
+      marginBottom="9"
     >
       <table className={table}>
         <thead>
@@ -66,7 +67,11 @@ export function PropsTable({
                   {description && (
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button size="xs" marginLeft="2">
+                        <Button
+                          size="xs"
+                          marginLeft="2"
+                          style={{ verticalAlign: 'middle' }}
+                        >
                           <InfoIcon />
                         </Button>
                       </PopoverTrigger>
@@ -79,7 +84,11 @@ export function PropsTable({
                   {Boolean(typeSimple) && (
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button size="xs" marginLeft="2">
+                        <Button
+                          size="xs"
+                          marginLeft="2"
+                          style={{ verticalAlign: 'middle' }}
+                        >
                           <InfoIcon />
                         </Button>
                       </PopoverTrigger>
