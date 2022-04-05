@@ -1,9 +1,9 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isMobile } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isAndroid, isMobile } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
 
 export interface MetaMaskOptions {
   chains: Chain[];
@@ -26,15 +26,14 @@ export const metaMask = ({
   return {
     id: 'metaMask',
     name: 'MetaMask',
-    iconUrl:
-      'https://cloudflare-ipfs.com/ipfs/QmdaG1gGZDAhSzQuicSHD32ernCzgB8p72WvnBDTUDrRNh',
+    iconUrl: async () => (await import('./metaMask.svg')).default,
+    iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
-      mobile: isAndroid()
-        ? 'https://play.google.com/store/apps/details?id=io.metamask'
-        : 'https://apps.apple.com/us/app/metamask/id1438144202',
+      android: 'https://play.google.com/store/apps/details?id=io.metamask',
+      ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect

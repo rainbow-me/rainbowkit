@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -16,7 +16,7 @@
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
-    "wagmi": "<1"
+    "wagmi": "^0.2.0"
   },
   "scripts": {
     "dev": "next dev",

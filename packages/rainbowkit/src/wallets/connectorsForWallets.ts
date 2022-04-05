@@ -24,7 +24,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
 
         let walletConnectModalConnector: Connector | undefined;
-        if (walletMeta.id === 'walletConnect' && connector.qrCode) {
+        if (walletMeta.id === 'walletConnect' && connectionMethods.qrCode) {
           const { chains, options } = connector;
 
           walletConnectModalConnector = new WalletConnectConnector({

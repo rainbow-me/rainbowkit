@@ -1,10 +1,16 @@
 import React, { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
+import { isNotNullish } from '../../utils/isNotNullish';
+import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { AccountModal } from '../AccountModal/AccountModal';
+import { loadImages, useAsyncImage } from '../AsyncImage/useAsyncImage';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
-import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import {
+  useRainbowKitChains,
+  useRainbowKitChainsById,
+} from '../RainbowKitProvider/RainbowKitChainContext';
 import { formatAddress } from './formatAddress';
 
 const useBooleanState = (initialValue: boolean) => {
@@ -28,11 +34,14 @@ export interface ConnectButtonRendererProps {
       ensName?: string;
     };
     chain?: {
+      hasIcon: boolean;
       iconUrl?: string;
+      iconBackground?: string;
       id: number;
       name?: string;
       unsupported?: boolean;
     };
+    mounted: boolean;
     openAccountModal: () => void;
     openChainModal: () => void;
     openConnectModal: () => void;
@@ -45,7 +54,7 @@ export interface ConnectButtonRendererProps {
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const isMounted = useIsMounted();
+  const mounted = useIsMounted();
 
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
@@ -57,10 +66,16 @@ export function ConnectButtonRenderer({
 
   const [{ data: networkData }, switchNetwork] = useNetwork();
 
+  const rainbowKitChains = useRainbowKitChains();
   const rainbowkitChainsById = useRainbowKitChainsById();
-  const chainIconUrl = networkData.chain
-    ? rainbowkitChainsById[networkData.chain.id]?.iconUrl ?? undefined
+
+  const rainbowKitChain = networkData.chain
+    ? rainbowkitChainsById[networkData.chain.id]
     : undefined;
+  const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
+  const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
+
+  const resolvedChainIconUrl = useAsyncImage(chainIconUrl);
 
   const {
     setFalse: closeConnectModal,
@@ -87,9 +102,20 @@ export function ConnectButtonRenderer({
     closeChainModal();
   }, [hasAccountData, closeConnectModal, closeAccountModal, closeChainModal]);
 
-  if (!isMounted) {
-    return null;
-  }
+  const walletConnectors = useWalletConnectors();
+
+  const preloadImages = useCallback(
+    () =>
+      loadImages(
+        ...walletConnectors.map(wallet => wallet.iconUrl),
+        ...rainbowKitChains.map(chain => chain.iconUrl).filter(isNotNullish)
+      ),
+    [walletConnectors, rainbowKitChains]
+  );
+
+  useEffect(() => {
+    preloadImages();
+  }, [preloadImages]);
 
   const displayBalance = balanceData
     ? `${Number(balanceData.formatted).toPrecision(3)} ${balanceData.symbol}`
@@ -114,7 +140,9 @@ export function ConnectButtonRenderer({
         accountModalOpen,
         chain: networkData?.chain
           ? {
-              iconUrl: chainIconUrl,
+              hasIcon: Boolean(chainIconUrl),
+              iconBackground: chainIconBackground,
+              iconUrl: resolvedChainIconUrl,
               id: networkData.chain.id,
               name: networkData.chain.name,
               unsupported: networkData.chain.unsupported,
@@ -122,6 +150,7 @@ export function ConnectButtonRenderer({
           : undefined,
         chainModalOpen,
         connectModalOpen,
+        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,

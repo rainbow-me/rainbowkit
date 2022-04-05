@@ -79,12 +79,25 @@ const Example = () => {
                     style={{ alignItems: 'center', display: 'flex' }}
                     type="button"
                   >
-                    {chain.iconUrl && (
-                      <img
-                        alt={chain.name ?? 'Chain icon'}
-                        src={chain.iconUrl}
-                        style={{ height: 12, marginRight: 4, width: 12 }}
-                      />
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          background: chain.iconBackground,
+                          borderRadius: 999,
+                          height: 12,
+                          marginRight: 4,
+                          overflow: 'hidden',
+                          width: 12,
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? 'Chain icon'}
+                            src={chain.iconUrl}
+                            style={{ height: 12, width: 12 }}
+                          />
+                        )}
+                      </div>
                     )}
                     {chain.name ?? chain.id}
                   </button>

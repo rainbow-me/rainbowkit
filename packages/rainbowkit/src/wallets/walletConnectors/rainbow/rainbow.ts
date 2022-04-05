@@ -1,8 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isIOS } from '../../utils/isMobile';
-import { Wallet } from '../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isAndroid } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
 
 export interface RainbowOptions {
   chains: Chain[];
@@ -12,14 +12,12 @@ export interface RainbowOptions {
 export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
-  iconUrl:
-    'https://cloudflare-ipfs.com/ipfs/QmPuPcm6g1dkyUUfLsFnP5ukxdRfR1c8MuBHCHwbk57Tov',
+  iconUrl: async () => (await import('./rainbow.svg')).default,
+  iconBackground: '#0c2f78',
   downloadUrls: {
-    mobile: isAndroid()
-      ? 'https://play.google.com/store/apps/details?id=me.rainbow'
-      : isIOS()
-      ? 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021'
-      : 'https://rainbow.download',
+    android: 'https://play.google.com/store/apps/details?id=me.rainbow',
+    ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
+    qrCode: 'https://rainbow.download',
   },
   createConnector: () => {
     const connector = new WalletConnectConnector({

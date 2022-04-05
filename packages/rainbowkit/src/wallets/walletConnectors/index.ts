@@ -1,9 +1,10 @@
-import { argent } from './argent';
-import { coinbase } from './coinbase';
-import { injected } from './injected';
-import { metaMask } from './metaMask';
-import { rainbow } from './rainbow';
-import { walletConnect } from './walletConnect';
+import { argent } from './argent/argent';
+import { coinbase } from './coinbase/coinbase';
+import { injected } from './injected/injected';
+import { metaMask } from './metaMask/metaMask';
+import { rainbow } from './rainbow/rainbow';
+import { trust } from './trust/trust';
+import { walletConnect } from './walletConnect/walletConnect';
 
 export const wallet = {
   argent,
@@ -11,5 +12,6 @@ export const wallet = {
   injected,
   metaMask,
   rainbow,
+  trust,
   walletConnect,
 };

@@ -25,6 +25,10 @@ esbuild
       './src/components/index.ts',
     ],
     format: 'esm',
+    loader: {
+      '.png': 'dataurl',
+      '.svg': 'dataurl',
+    },
     outdir: 'dist',
     platform: 'browser',
     plugins: [

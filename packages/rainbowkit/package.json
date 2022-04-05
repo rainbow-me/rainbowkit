@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/rainbowkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The best way to connect a wallet",
   "files": [
     "dist"
@@ -22,7 +22,7 @@
     "build": "node build.js",
     "build:watch": "node build.js --watch",
     "dev": "pnpm build:watch & pnpm typegen:watch",
-    "prepare": "pnpm build",
+    "prepare": "MINIFY_CSS=true pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true",
@@ -41,7 +41,7 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": "<1"
+    "wagmi": "^0.2.0"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
@@ -58,7 +58,8 @@
     "clsx": "^1.1.1",
     "detect-browser": "^5.3.0",
     "focus-visible": "^5.2.0",
-    "qrcode": "^1.5.0"
+    "qrcode": "^1.5.0",
+    "react-remove-scroll": "^2.4.4"
   },
   "repository": {
     "type": "git",

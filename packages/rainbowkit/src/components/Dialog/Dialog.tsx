@@ -5,6 +5,7 @@ import React, {
   useEffect,
 } from 'react';
 import { createPortal } from 'react-dom';
+import { RemoveScroll } from 'react-remove-scroll';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
@@ -37,23 +38,25 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
     <>
       {open
         ? createPortal(
-            <Box
-              {...themeRootProps}
-              aria-labelledby={titleId}
-              aria-modal
-              className={styles.overlay}
-              onClick={handleBackdropClick}
-              position="fixed"
-              role="dialog"
-            >
-              <FocusTrap
-                className={styles.content}
-                onClick={stopPropagation}
-                role="document"
+            <RemoveScroll>
+              <Box
+                {...themeRootProps}
+                aria-labelledby={titleId}
+                aria-modal
+                className={styles.overlay}
+                onClick={handleBackdropClick}
+                position="fixed"
+                role="dialog"
               >
-                {children}
-              </FocusTrap>
-            </Box>,
+                <FocusTrap
+                  className={styles.content}
+                  onClick={stopPropagation}
+                  role="document"
+                >
+                  {children}
+                </FocusTrap>
+              </Box>
+            </RemoveScroll>,
             document.body
           )
         : null}

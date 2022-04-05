@@ -25,6 +25,11 @@ const fadeIn = keyframes({
   '100%': { opacity: 1 },
 });
 
+const nestedModalZIndexes: Record<string, number> = {
+  coinbase: 2147483647,
+  walletConnect: 99999999999999,
+};
+
 const bleed = 200;
 export const overlay = style([
   sprinkles({
@@ -44,6 +49,7 @@ export const overlay = style([
     right: -bleed,
     top: -bleed,
     transform: 'translateZ(0)', // This is required for content to render under the URL bar on iOS
+    zIndex: Math.min(...Object.values(nestedModalZIndexes)) - 1,
   },
   {
     '@media': {

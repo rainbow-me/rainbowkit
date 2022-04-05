@@ -7,6 +7,10 @@ export function groupBy<Item>(
   items.forEach(item => {
     const key = getKey(item);
 
+    if (!key) {
+      return;
+    }
+
     if (!groupedItems[key]) {
       groupedItems[key] = [];
     }

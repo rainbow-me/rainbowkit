@@ -85,6 +85,7 @@ export const themeVars = createGlobalThemeContract(
 
 const spacing = {
   '0': '0',
+  '1': '1px',
   '2': '2px',
   '4': '4px',
   '5': '5px',
@@ -113,6 +114,7 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '30': '30px',
   '32': '32px',
   '34': '34px',
   '36': '36px',
@@ -177,6 +179,7 @@ const unresponsiveProperties = defineProperties({
       '6': '6px',
       '10': '10px',
       '13': '13px',
+      '25%': '25%',
       'full': '9999px',
     },
     borderStyle: {

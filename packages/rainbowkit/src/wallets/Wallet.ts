@@ -12,7 +12,6 @@ type RainbowKitConnector<C extends Connector = Connector> = {
     getUri?: () => string;
   };
   qrCode?: {
-    iconUrl?: string;
     getUri: () => string;
     instructions?: {
       learnMoreUrl: string;
@@ -28,11 +27,15 @@ type RainbowKitConnector<C extends Connector = Connector> = {
 export type Wallet<C extends Connector = Connector> = {
   id: string;
   name: string;
-  iconUrl: string;
+  shortName?: string;
+  iconUrl: string | (() => Promise<string>);
+  iconBackground: string;
   installed?: boolean;
   downloadUrls?: {
-    mobile?: string;
+    android?: string;
+    ios?: string;
     browserExtension?: string;
+    qrCode?: string;
   };
   createConnector: (connectorArgs: {
     chainId?: number;
