@@ -31,7 +31,6 @@ export function ConnectButton({
       {({
         account,
         chain,
-        connectModalOpen,
         openAccountModal,
         openChainModal,
         openConnectModal,
@@ -188,9 +187,7 @@ export function ConnectButton({
             <Box
               as="button"
               background="connectButtonInnerBackground"
-              borderColor={
-                connectModalOpen ? 'accentColor' : 'connectButtonBackground'
-              }
+              borderColor="connectButtonBackground"
               borderRadius="connectButton"
               borderStyle="solid"
               borderWidth="2"
