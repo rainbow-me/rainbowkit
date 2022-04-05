@@ -1,12 +1,13 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import * as DialogPrimitive from '@radix-ui/react-dialog';
+import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import {
   DocsMobileMenuContext,
   DocsMobileMenuSlot,
 } from 'components/DocsMobileMenu/DocsMobileMenu';
 import { Header } from 'components/Header/Header';
+import { Link } from 'components/Link/Link';
 import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -16,7 +17,6 @@ import { Sidebar } from '../Sidebar/Sidebar';
 import { Wrapper } from '../Wrapper/Wrapper';
 import {
   content,
-  modalTriggerWrapper,
   navigationSidebar,
   pagination,
   paginationItem,
@@ -48,11 +48,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       <DocsMobileMenuContext.Provider value={docsMobileMenuRef}>
         <DocsMobileMenuSlot>
           <DialogPrimitive.Root onOpenChange={setIsOpen} open={isOpen}>
-            <div className={modalTriggerWrapper}>
+            <Box display={{ lg: 'none' }}>
               <DialogPrimitive.Trigger asChild>
                 <Button>Menu</Button>
               </DialogPrimitive.Trigger>
-            </div>
+            </Box>
             <DialogPrimitive.Portal>
               <DialogPrimitive.Overlay
                 style={{
@@ -75,17 +75,17 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   pointerEvents: 'none',
                 }}
               >
-                <div
+                <Box
+                  backgroundColor="fillElevated"
+                  padding="6"
+                  pointerEvents="none"
                   style={{
-                    pointerEvents: 'auto',
                     width: `calc(250px + ${vars.space[6]})`,
-                    padding: vars.space[6],
                     height: '100%',
-                    backgroundColor: vars.colors.fillElevated,
                   }}
                 >
                   <Sidebar routes={docsRoutes} />
-                </div>
+                </Box>
               </DialogPrimitive.Content>
             </DialogPrimitive.Portal>
           </DialogPrimitive.Root>
@@ -93,37 +93,35 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
       </DocsMobileMenuContext.Provider>
 
       <Wrapper>
-        <div className={navigationSidebar}>
+        <Box className={navigationSidebar}>
           <Sidebar routes={docsRoutes} />
-        </div>
+        </Box>
 
-        <div className={content}>
-          <div
-            style={{ paddingLeft: vars.space[10], paddingRight: vars.space[6] }}
-          >
+        <Box className={content}>
+          <Box paddingLeft={{ lg: '10' }}>
             <>{children}</>
 
             <div className={pagination}>
               {previous && (
                 <NextLink href={`/docs/${previous.slug}`} passHref>
-                  <a className={paginationItem}>
+                  <Link className={paginationItem}>
                     <PreviousIcon />
                     {previous.title}
-                  </a>
+                  </Link>
                 </NextLink>
               )}
               <span aria-hidden />
               {next && (
                 <NextLink href={`/docs/${next.slug}`} passHref>
-                  <a className={paginationItem}>
+                  <Link className={paginationItem}>
                     {next.title}
                     <NextIcon />
-                  </a>
+                  </Link>
                 </NextLink>
               )}
             </div>
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Wrapper>
     </>
   );

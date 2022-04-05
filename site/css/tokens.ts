@@ -178,6 +178,7 @@ export const tokens = {
     mono: 'SFMono, ui-monospace, monospace',
   },
   space: {
+    '0': '0px',
     'px': '1px',
     '1': '2px',
     '2': '4px',
@@ -192,10 +193,12 @@ export const tokens = {
     '11': '64px',
   },
   borderWidths: {
+    '0': '0px',
     '1': '1px',
     '2': '2px',
   },
   radii: {
+    '0': '0px',
     '1': '3px',
     '2': '6px',
     '3': '12px',

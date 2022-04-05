@@ -79,9 +79,20 @@ const variant = {
   ]),
 };
 
+const weight = {
+  normal: style({ fontWeight: '400' }),
+  medium: style({ fontWeight: '500' }),
+  semibold: style({ fontWeight: '600' }),
+  bold: style({ fontWeight: '700' }),
+  heavy: style({ fontWeight: '800' }),
+};
+
+export type Weights = keyof typeof weight;
+
 export const variants = recipe({
   variants: {
     variant,
+    weight,
   },
 });
 

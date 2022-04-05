@@ -1,8 +1,67 @@
-import React from 'react';
+import clsx from 'clsx';
+import * as React from 'react';
+import { Box, BoxProps } from '../Box/Box';
+import * as styles from './Link.css';
 
-import { link } from './Link.css';
+type Props = {
+  children?: React.ReactNode;
 
-export function Link(props) {
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a className={link} {...props} />;
-}
+  color?: BoxProps['color'];
+  margin?: BoxProps['margin'];
+  marginBottom?: BoxProps['marginBottom'];
+  marginLeft?: BoxProps['marginLeft'];
+  marginRight?: BoxProps['marginRight'];
+  marginTop?: BoxProps['marginTop'];
+  marginY?: BoxProps['marginY'];
+  marginX?: BoxProps['marginX'];
+  style?: React.CSSProperties;
+} & Pick<JSX.IntrinsicElements['a'], 'href' | 'className'> &
+  styles.Variants;
+
+export const Link = React.forwardRef(
+  (
+    {
+      children,
+      className,
+      color,
+      margin,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginTop,
+      marginX,
+      marginY,
+      style,
+      variant = 'blue',
+      ...props
+    }: Props,
+    ref: React.Ref<HTMLElement>
+  ) => {
+    return (
+      <Box
+        as="a"
+        className={clsx(
+          styles.variants({
+            variant,
+          }),
+          className
+        )}
+        color={color}
+        margin={margin}
+        marginBottom={marginBottom}
+        marginLeft={marginLeft}
+        marginRight={marginRight}
+        marginTop={marginTop}
+        marginX={marginX}
+        marginY={marginY}
+        ref={ref}
+        style={style}
+        {...props}
+      >
+        {children}
+      </Box>
+    );
+  }
+);
+
+Link.displayName = 'Link';

@@ -1,7 +1,12 @@
-import { style } from '@vanilla-extract/css';
-import { vars } from 'css/vars.css';
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { atoms } from 'css/atoms';
 
-export const link = style({
-  color: vars.colors.blue,
-  textDecoration: 'none',
+export const variants = recipe({
+  variants: {
+    variant: {
+      blue: atoms({ color: 'blue' }),
+    },
+  },
 });
+
+export type Variants = RecipeVariants<typeof variants>;

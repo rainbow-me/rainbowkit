@@ -5,10 +5,11 @@ import { Box, BoxProps } from '../Box/Box';
 import * as styles from './Button.css';
 
 type BaseProps = {
-  size?: styles.Size;
-  variant?: styles.Variant;
   prefix?: React.ReactElement;
+  shape?: styles.Shape;
+  size?: styles.Size;
   suffix?: React.ReactElement;
+  variant?: styles.Variant;
 } & Pick<
   JSX.IntrinsicElements['button'],
   | 'onClick'
@@ -55,6 +56,7 @@ export const Button = React.forwardRef(
     {
       children,
       prefix,
+      shape,
       size = 'm',
       suffix,
       variant = 'gray',
@@ -67,13 +69,14 @@ export const Button = React.forwardRef(
         className={styles.variants({
           size,
           variant,
+          shape,
         })}
         ref={ref}
         {...boxProps}
         as={boxProps.as ?? 'button'}
       >
         {prefix && <Box>{prefix}</Box>}
-        <span>{children}</span>
+        {children}
         {suffix && <Box>{suffix}</Box>}
       </Box>
     );

@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-sort-props */
+import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,8 +10,14 @@ export function Sidebar({ routes }) {
   return (
     <>
       {routes.map(route => (
-        <div key={route.label} style={{ marginBottom: 24 }}>
-          <Text as="h3" color="labelTertiary" marginBottom="4" marginLeft="5">
+        <Box key={route.label} marginBottom="7">
+          <Text
+            as="h3"
+            color="labelTertiary"
+            marginBottom="4"
+            marginLeft="5"
+            weight="semibold"
+          >
             {route.label}
           </Text>
           {route.pages.map(page => (
@@ -18,7 +25,7 @@ export function Sidebar({ routes }) {
               {page.title}
             </Link>
           ))}
-        </div>
+        </Box>
       ))}
     </>
   );

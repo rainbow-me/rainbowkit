@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-sort-props */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
+import { Code } from 'components/Code/Code';
+import { Link } from 'components/Link/Link';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import React, { useEffect, useState } from 'react';
@@ -23,9 +25,23 @@ export default function DS() {
         </Button>
       </Box>
 
-      <h1>Button</h1>
+      <Text as="h1" variant="titleLarge">
+        Design System
+      </Text>
 
-      <h3>Gray</h3>
+      <Text as="h2" variant="title1" marginTop="11" marginBottom="8">
+        Button
+      </Text>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Gray
+      </Text>
       <Box display="flex" alignItems="center" gap="4">
         <Button size="xs">Button</Button>
         <Button size="s">Button</Button>
@@ -34,7 +50,15 @@ export default function DS() {
         <Button size="xl">Button</Button>
       </Box>
 
-      <h3>Blue</h3>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Blue
+      </Text>
       <Box display="flex" alignItems="center" gap="4">
         <Button variant="blue" size="xs">
           Button
@@ -53,7 +77,15 @@ export default function DS() {
         </Button>
       </Box>
 
-      <h3>Outline</h3>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Outline
+      </Text>
       <Box display="flex" alignItems="center" gap="4">
         <Button variant="outline" size="xs">
           Button
@@ -71,7 +103,15 @@ export default function DS() {
           Button
         </Button>
       </Box>
-      <h3>Raised</h3>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Raised
+      </Text>
       <Box display="flex" alignItems="center" gap="4">
         <Button variant="raised" size="xs">
           Button
@@ -90,7 +130,15 @@ export default function DS() {
         </Button>
       </Box>
 
-      <h3>Ghost</h3>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Ghost
+      </Text>
       <Box display="flex" alignItems="center" gap="4">
         <Button variant="ghost" size="xs">
           Button
@@ -109,7 +157,15 @@ export default function DS() {
         </Button>
       </Box>
 
-      <h3>With prefix/suffix combinations</h3>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        With prefix/suffix combinations
+      </Text>
       <Box display="flex" alignItems="center" gap="4" marginY="4">
         <Button size="xs" prefix={<IconTag />}>
           Button
@@ -166,32 +222,202 @@ export default function DS() {
         </Button>
       </Box>
 
-      <h2>Text</h2>
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Shape Circle
+      </Text>
+
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="circle" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="circle" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="circle" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="circle" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="circle" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="circle" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="circle" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="circle" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="circle" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="circle" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="circle" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="circle" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="circle" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="circle" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="circle" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="circle" variant="raised" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="circle" variant="raised" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="circle" variant="raised" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="circle" variant="raised" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="circle" variant="raised" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+
+      <Text as="h2" variant="title1" marginTop="11" marginBottom="8">
+        Text
+      </Text>
 
       <Text marginBottom="4" variant="titleLarge">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="titleLarge" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="titleLarge" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="titleLarge" weight="heavy">
         Explore the new world of Ethereum
       </Text>
       <Text marginBottom="4" variant="title1">
         Explore the new world of Ethereum
       </Text>
+      <Text marginBottom="4" variant="title1" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title1" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title1" weight="heavy">
+        Explore the new world of Ethereum
+      </Text>
       <Text marginBottom="4" variant="title2">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title2" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title2" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title2" weight="heavy">
         Explore the new world of Ethereum
       </Text>
       <Text marginBottom="4" variant="title3">
         Explore the new world of Ethereum
       </Text>
+      <Text marginBottom="4" variant="title3" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title3" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="title3" weight="heavy">
+        Explore the new world of Ethereum
+      </Text>
       <Text marginBottom="4" variant="headline">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="headline" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="headline" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="headline" weight="heavy">
         Explore the new world of Ethereum
       </Text>
       <Text marginBottom="4" variant="body">
         Explore the new world of Ethereum
       </Text>
+      <Text marginBottom="4" variant="body" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="body" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="body" weight="heavy">
+        Explore the new world of Ethereum
+      </Text>
       <Text marginBottom="4" variant="subhead">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="subhead" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="subhead" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="subhead" weight="heavy">
         Explore the new world of Ethereum
       </Text>
       <Text marginBottom="4" variant="footnote">
         Explore the new world of Ethereum
       </Text>
+      <Text marginBottom="4" variant="footnote" weight="medium">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="footnote" weight="bold">
+        Explore the new world of Ethereum
+      </Text>
+      <Text marginBottom="4" variant="footnote" weight="heavy">
+        Explore the new world of Ethereum
+      </Text>
+
+      <Text as="h2" variant="title1" marginTop="11" marginBottom="8">
+        Link
+      </Text>
+
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Link href="#">click here</Link>
+      </Box>
+
+      <Text as="h2" variant="title1" marginTop="11" marginBottom="8">
+        Code
+      </Text>
+
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Code>RainbowKitProvider</Code>
+        <Code variant="secondary">RainbowKitProvider</Code>
+      </Box>
     </Wrapper>
   );
 }

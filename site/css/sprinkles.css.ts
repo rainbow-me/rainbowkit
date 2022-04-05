@@ -26,6 +26,7 @@ const extendedSpace = {
   '1/2': '50%',
   '2/3': '66.666667%',
   '3/4': '75%',
+  'full': '100%',
   'screenSm': breakpoints.sm,
   'screenMd': breakpoints.md,
   'screenLg': breakpoints.lg,

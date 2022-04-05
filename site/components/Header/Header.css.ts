@@ -1,18 +1,20 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
-import { responsiveStyle } from 'css/responsiveStyle';
-import { vars } from 'css/vars.css';
 
-export const header = style({
-  backdropFilter: 'blur(8px)',
-  backgroundColor: vars.colors.backgroundElevated,
-  position: 'sticky',
-  left: 0,
-  top: 0,
-  zIndex: 10,
-  width: '100%',
-});
+export const header = [
+  atoms({
+    backgroundColor: 'backgroundElevated',
+    position: 'sticky',
+    top: '0',
+    left: '0',
+    width: 'full',
+  }),
+  style({
+    backdropFilter: 'blur(8px)',
+    zIndex: 10,
+  }),
+];
 
 export const row = style([
   atoms({
@@ -23,11 +25,6 @@ export const row = style([
     alignItems: 'center',
     justifyContent: 'space-between',
   }),
-]);
-
-export const docsMobileMenuRow = style([
-  row,
-  responsiveStyle({ lg: { display: 'none' } }),
 ]);
 
 export const logo = style([

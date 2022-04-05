@@ -1,6 +1,7 @@
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable sort-destructure-keys/sort-destructure-keys */
 /* eslint-disable react/jsx-sort-props */
+import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
 import {
@@ -29,11 +30,10 @@ export function PropsTable({
   'aria-label'?: string;
 }) {
   return (
-    <div
+    <Box
       className={regionWrapper}
       role="region"
       aria-label={ariaLabel}
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       tabIndex={0}
     >
       <table className={table}>
@@ -97,7 +97,7 @@ export function PropsTable({
           )}
         </tbody>
       </table>
-    </div>
+    </Box>
   );
 }
 

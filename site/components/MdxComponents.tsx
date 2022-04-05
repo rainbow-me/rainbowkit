@@ -3,12 +3,13 @@
 import { pre } from 'css/pre.css';
 import React from 'react';
 import { Box } from './Box/Box';
+import { Code } from './Code/Code';
 import { Link } from './Link/Link';
 import { PropsTable } from './PropsTable/PropsTable';
 import { Text } from './Text/Text';
 
 export const components = {
-  h1: props => <Text as="h1" variant="titleLarge" {...props} />,
+  h1: props => <Text as="h1" variant="titleLarge" weight="bold" {...props} />,
   h2: props => (
     <Text
       as="h2"
@@ -17,23 +18,30 @@ export const components = {
       color="labelSecondary"
       marginTop="2"
       marginBottom="6"
-      style={{ fontWeight: '500' }}
+      weight="bold"
     />
   ),
-  h3: props => <Text as="h3" variant="title2" marginTop="11" {...props} />,
+  h3: props => (
+    <Text
+      as="h3"
+      variant="title2"
+      weight="semibold"
+      marginTop="11"
+      marginBottom="4"
+      {...props}
+    />
+  ),
   p: props => (
     <Text
       as="p"
       color="labelSecondary"
+      marginBottom="4"
       style={{ fontWeight: 500 }}
       {...props}
     />
   ),
   a: props => <Link {...props} />,
-  Img: props => (
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <img {...props} style={{ display: 'block', maxWidth: '100%' }} />
-  ),
+  Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
   ol: props => <Box as="ol" paddingLeft="4" {...props} />,
   li: props => (
     <Text
@@ -48,6 +56,14 @@ export const components = {
       <Box as="pre" className={pre} marginY="9" {...props}>
         {children}
       </Box>
+    );
+  },
+  code: ({ children, ...props }) => {
+    const isInline = typeof children === 'string';
+    return isInline ? (
+      <Code {...props}>{children}</Code>
+    ) : (
+      <code>{children}</code>
     );
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,

@@ -52,6 +52,7 @@ export const Text = React.forwardRef(
       style,
       transform,
       variant = 'body',
+      weight = 'normal',
       whiteSpace,
       wordBreak,
     }: Props,
@@ -62,6 +63,7 @@ export const Text = React.forwardRef(
         as={as}
         className={styles.variants({
           variant,
+          weight,
         })}
         color={color}
         fontFamily={font}

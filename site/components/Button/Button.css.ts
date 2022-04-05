@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { Sprinkles } from 'css/sprinkles.css';
 import { atoms } from '../../css/atoms';
 import { vars } from '../../css/vars.css';
 
@@ -85,6 +86,34 @@ const variant = {
 
 export type Variant = keyof typeof variant;
 
+const shape = {
+  circle: {},
+};
+
+export type Shape = keyof typeof shape;
+
+const getShapeSizeCompoundVariant = (
+  size: Size,
+  width: Sprinkles['size'] | number
+) => ({
+  variants: {
+    size,
+    shape: 'circle' as const,
+  },
+  style: [
+    atoms({
+      width: typeof width === 'string' ? (width as any) : undefined,
+      textAlign: 'center',
+      justifyContent: 'center',
+    }),
+    style({
+      width: Number(width) && (width as any),
+      paddingLeft: '0',
+      paddingRight: '0',
+    }),
+  ],
+});
+
 export const variants = recipe({
   base: style([
     atoms({
@@ -110,7 +139,15 @@ export const variants = recipe({
   variants: {
     size,
     variant,
+    shape,
   },
+  compoundVariants: [
+    getShapeSizeCompoundVariant('xs', '7'),
+    getShapeSizeCompoundVariant('s', '8'),
+    getShapeSizeCompoundVariant('m', '9'),
+    getShapeSizeCompoundVariant('l', 36),
+    getShapeSizeCompoundVariant('xl', 44),
+  ],
 });
 
 export type Variants = RecipeVariants<typeof variants>;

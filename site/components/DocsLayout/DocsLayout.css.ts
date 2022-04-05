@@ -1,13 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { link } from 'components/Link/Link.css';
 import { responsiveStyle } from 'css/responsiveStyle';
 import { vars } from 'css/vars.css';
-
-export const modalTriggerWrapper = style([
-  {},
-  responsiveStyle({ lg: { display: 'none' } }),
-]);
 
 export const navigationSidebar = style([
   {
@@ -22,8 +16,10 @@ export const navigationSidebar = style([
       left: 'calc(50% - 512px)',
       paddingRight: 0,
       position: 'fixed',
-      top: 120,
+      top: 89,
+      paddingTop: vars.space[11],
       width: 250,
+      overflow: 'auto',
     },
   }),
 ]);
@@ -49,7 +45,6 @@ export const pagination = style({
 });
 
 export const paginationItem = style([
-  link,
   {
     display: 'inline-flex',
     alignItems: 'center',
