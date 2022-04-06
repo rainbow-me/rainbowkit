@@ -19,6 +19,7 @@ import { Playground } from 'components/Playground/Playground';
 import { chains, Provider } from 'components/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
+import NextLink from 'next/link';
 import React from 'react';
 
 const Home = () => {
@@ -65,9 +66,16 @@ const Home = () => {
               <Text as="h3" variant="title2" weight="bold" marginBottom="10">
                 Designed for everyone. Built for developers.
               </Text>
-              <Button variant="purpleGradient" size="l" marginBottom="11">
-                View the Docs
-              </Button>
+              <NextLink passHref href="/docs/introduction">
+                <Button
+                  as="a"
+                  variant="purpleGradient"
+                  size="l"
+                  marginBottom="11"
+                >
+                  View the Docs
+                </Button>
+              </NextLink>
             </Box>
 
             <Box
