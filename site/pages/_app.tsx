@@ -4,6 +4,7 @@ import { DocsLayout } from 'components/DocsLayout/DocsLayout';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React from 'react';
+import 'focus-visible';
 import 'css/global.css';
 
 function App({ Component, pageProps }: AppProps) {

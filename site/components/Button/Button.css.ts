@@ -55,11 +55,8 @@ const variant = {
   ]),
   gray: style([
     atoms({
+      backgroundColor: 'fillSecondary',
       color: 'label',
-      backgroundColor: {
-        base: 'fillSecondary',
-        hover: 'fill',
-      },
     }),
   ]),
   blue: style([
