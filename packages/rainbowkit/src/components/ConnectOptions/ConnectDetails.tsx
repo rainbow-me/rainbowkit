@@ -356,6 +356,8 @@ const stepIcons: Record<
   install: wallet => (
     <AsyncImage
       background={wallet.iconBackground}
+      borderColor="generalBorder"
+      borderRadius="10"
       height="48"
       src={wallet.iconUrl}
       width="48"
