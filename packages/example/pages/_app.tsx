@@ -107,7 +107,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>RainbowKit Example</title>
       </Head>
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
         <RainbowKitProvider
