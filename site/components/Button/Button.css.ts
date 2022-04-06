@@ -81,6 +81,24 @@ const variant = {
       backgroundColor: 'transparent',
     }),
   ]),
+  purpleGradient: style([
+    atoms({ color: 'white100' }),
+    style({
+      backgroundImage: `linear-gradient(to right, ${vars.colors.blue50}, ${vars.colors.purple50})`,
+    }),
+  ]),
+  blueGradient: style([
+    atoms({ color: 'white100' }),
+    style({
+      backgroundImage: `linear-gradient(270deg, #1DA1F2, #1D7DF2)`,
+    }),
+  ]),
+  pinkGradient: style([
+    atoms({ color: 'white100' }),
+    style({
+      backgroundImage: `linear-gradient(270deg, ${vars.colors.red50}, ${vars.colors.pink60})`,
+    }),
+  ]),
 };
 
 export type Variant = keyof typeof variant;

@@ -12,6 +12,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
+import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
 import { Playground } from 'components/Playground/Playground';
 // import { PlaygroundWallets } from 'components/PlaygroundWallets';
@@ -61,9 +62,12 @@ const Home = () => {
               >
                 The best way to connect a wallet
               </Text>
-              <Text as="h3" variant="title2" weight="bold" marginBottom="11">
+              <Text as="h3" variant="title2" weight="bold" marginBottom="10">
                 Designed for everyone. Built for developers.
               </Text>
+              <Button variant="purpleGradient" size="l" marginBottom="11">
+                View the Docs
+              </Button>
             </Box>
 
             <Box

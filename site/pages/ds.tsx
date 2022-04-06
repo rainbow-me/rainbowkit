@@ -122,6 +122,90 @@ export default function DS() {
         marginTop="8"
         marginBottom="4"
       >
+        Purple Gradient
+      </Text>
+      <Box display="flex" alignItems="center" gap="4">
+        <Button variant="purpleGradient" size="xs">
+          Button
+        </Button>
+
+        <Button variant="purpleGradient" size="s">
+          Button
+        </Button>
+        <Button variant="purpleGradient" size="m">
+          Button
+        </Button>
+        <Button variant="purpleGradient" size="l">
+          Button
+        </Button>
+        <Button variant="purpleGradient" size="xl">
+          Button
+        </Button>
+      </Box>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Blue Gradient
+      </Text>
+      <Box display="flex" alignItems="center" gap="4">
+        <Button variant="blueGradient" size="xs">
+          Button
+        </Button>
+
+        <Button variant="blueGradient" size="s">
+          Button
+        </Button>
+        <Button variant="blueGradient" size="m">
+          Button
+        </Button>
+        <Button variant="blueGradient" size="l">
+          Button
+        </Button>
+        <Button variant="blueGradient" size="xl">
+          Button
+        </Button>
+      </Box>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Pink Gradient
+      </Text>
+      <Box display="flex" alignItems="center" gap="4">
+        <Button variant="pinkGradient" size="xs">
+          Button
+        </Button>
+
+        <Button variant="pinkGradient" size="s">
+          Button
+        </Button>
+        <Button variant="pinkGradient" size="m">
+          Button
+        </Button>
+        <Button variant="pinkGradient" size="l">
+          Button
+        </Button>
+        <Button variant="pinkGradient" size="xl">
+          Button
+        </Button>
+      </Box>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
         Outline
       </Text>
       <Box display="flex" alignItems="center" gap="4">
