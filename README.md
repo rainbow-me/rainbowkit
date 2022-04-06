@@ -779,7 +779,7 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 const App = () => {
   return (
-    <RainbowKitProvider coolMode {...etc}>
+    <RainbowKitProvider coolMode={true} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );
