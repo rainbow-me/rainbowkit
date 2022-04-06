@@ -1003,6 +1003,11 @@ The following properties are defined on the return value of the `createConnector
       <td>Instance of a <a href="https://wagmi.sh/guides/connectors">wagmi connector</a></td>
     </tr>
     <tr>
+      <td><code>desktop</code></td>
+      <td><code>{ getUri?: () => string } | undefined</code></td>
+      <td>Function for resolving a desktop wallet connection URI</td>
+    </tr>
+    <tr>
       <td><code>mobile</code></td>
       <td><code>{ getUri?: () => string } | undefined</code></td>
       <td>Function for resolving a mobile wallet connection URI</td>
