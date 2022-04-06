@@ -6,21 +6,19 @@ import * as styles from './Button.css';
 
 type BaseProps = {
   prefix?: React.ReactElement;
-  shape?: styles.Shape;
-  size?: styles.Size;
   suffix?: React.ReactElement;
-  variant?: styles.Variant;
   style?: React.CSSProperties;
-} & Pick<
-  JSX.IntrinsicElements['button'],
-  | 'onClick'
-  | 'onMouseEnter'
-  | 'onMouseLeave'
-  | 'children'
-  | 'disabled'
-  | 'type'
-  | 'tabIndex'
-> &
+} & styles.Variants &
+  Pick<
+    JSX.IntrinsicElements['button'],
+    | 'onClick'
+    | 'onMouseEnter'
+    | 'onMouseLeave'
+    | 'children'
+    | 'disabled'
+    | 'type'
+    | 'tabIndex'
+  > &
   Pick<
     BoxProps,
     | 'width'
@@ -57,11 +55,12 @@ export const Button = React.forwardRef(
     {
       children,
       prefix,
+      shadow,
       shape,
       size = 'm',
       style,
       suffix,
-      variant = 'gray',
+      variant = 'contrast',
       ...boxProps
     }: Props,
     ref: React.Ref<HTMLButtonElement>
@@ -72,6 +71,7 @@ export const Button = React.forwardRef(
           size,
           variant,
           shape,
+          shadow,
         })}
         ref={ref}
         {...boxProps}

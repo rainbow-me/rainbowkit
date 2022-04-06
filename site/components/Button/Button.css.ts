@@ -44,7 +44,15 @@ const size = {
 
 export type Size = keyof typeof size;
 
+const outlineValue = `inset 0 0 0 2px ${vars.colors.blue}`;
+
 const variant = {
+  contrast: style([
+    atoms({
+      backgroundColor: 'fillElevated',
+      color: 'label',
+    }),
+  ]),
   gray: style([
     atoms({
       color: 'label',
@@ -62,19 +70,12 @@ const variant = {
     atoms({ color: 'label' }),
     style({
       backgroundColor: 'transparent',
-      boxShadow: `inset 0 0 0 2px ${vars.colors.blue}`,
+      boxShadow: outlineValue,
       selectors: {
         '&:focus': {
           boxShadow: `0 0 0 2px ${vars.colors.blue}, 0 0 0 4px ${vars.colors.purple}`,
         },
       },
-    }),
-  ]),
-  raised: style([
-    atoms({ color: 'label' }),
-    style({
-      backgroundColor: 'transparent',
-      boxShadow: `0 10px 30px rgba(27, 29, 31, 0.1), 0 5px 15px rgba(27, 29, 31, 0.04)`,
     }),
   ]),
   ghost: style([
@@ -92,6 +93,20 @@ const shape = {
 };
 
 export type Shape = keyof typeof shape;
+
+const shadowValue =
+  '0 10px 30px rgba(27, 29, 31, 0.1), 0 5px 15px rgba(27, 29, 31, 0.04)';
+
+const shadow = {
+  true: style([
+    style({
+      boxShadow: shadowValue,
+    }),
+  ]),
+  false: {},
+};
+
+export type Shadow = keyof typeof shadow;
 
 const getShapeSizeCompoundVariant = (
   size: Size,
@@ -153,6 +168,7 @@ export const variants = recipe({
     size,
     variant,
     shape,
+    shadow,
   },
   compoundVariants: [
     getShapeSizeCompoundVariant('xs', '7'),
@@ -160,6 +176,15 @@ export const variants = recipe({
     getShapeSizeCompoundVariant('m', '9'),
     getShapeSizeCompoundVariant('l', 36),
     getShapeSizeCompoundVariant('xl', 44),
+    {
+      variants: {
+        variant: 'outline',
+        shadow: true,
+      },
+      style: {
+        boxShadow: `${outlineValue}, ${shadowValue}`,
+      },
+    },
   ],
 });
 

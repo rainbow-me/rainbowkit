@@ -40,14 +40,51 @@ export default function DS() {
         marginTop="8"
         marginBottom="4"
       >
+        Contrast
+      </Text>
+      <Box display="flex" alignItems="center" gap="4">
+        <Button variant="contrast" size="xs">
+          Button
+        </Button>
+        <Button variant="contrast" size="s">
+          Button
+        </Button>
+        <Button variant="contrast" size="m">
+          Button
+        </Button>
+        <Button variant="contrast" size="l">
+          Button
+        </Button>
+        <Button variant="contrast" size="xl">
+          Button
+        </Button>
+      </Box>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
         Gray
       </Text>
       <Box display="flex" alignItems="center" gap="4">
-        <Button size="xs">Button</Button>
-        <Button size="s">Button</Button>
-        <Button size="m">Button</Button>
-        <Button size="l">Button</Button>
-        <Button size="xl">Button</Button>
+        <Button variant="gray" size="xs">
+          Button
+        </Button>
+        <Button variant="gray" size="s">
+          Button
+        </Button>
+        <Button variant="gray" size="m">
+          Button
+        </Button>
+        <Button variant="gray" size="l">
+          Button
+        </Button>
+        <Button variant="gray" size="xl">
+          Button
+        </Button>
       </Box>
 
       <Text
@@ -104,32 +141,6 @@ export default function DS() {
           Button
         </Button>
       </Box>
-      <Text
-        as="h3"
-        variant="headline"
-        color="labelSecondary"
-        marginTop="8"
-        marginBottom="4"
-      >
-        Raised
-      </Text>
-      <Box display="flex" alignItems="center" gap="4">
-        <Button variant="raised" size="xs">
-          Button
-        </Button>
-        <Button variant="raised" size="s">
-          Button
-        </Button>
-        <Button variant="raised" size="m">
-          Button
-        </Button>
-        <Button variant="raised" size="l">
-          Button
-        </Button>
-        <Button variant="raised" size="xl">
-          Button
-        </Button>
-      </Box>
 
       <Text
         as="h3"
@@ -154,6 +165,101 @@ export default function DS() {
           Button
         </Button>
         <Button variant="ghost" size="xl">
+          Button
+        </Button>
+      </Box>
+
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        With Shadow
+      </Text>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button shadow variant="contrast" size="xs">
+          Button
+        </Button>
+        <Button shadow variant="gray" size="xs">
+          Button
+        </Button>
+        <Button shadow size="xs" variant="blue">
+          Button
+        </Button>
+        <Button shadow size="xs" variant="outline">
+          Button
+        </Button>
+        <Button shadow size="xs" variant="ghost">
+          Button
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button shadow variant="contrast" size="s">
+          Button
+        </Button>
+        <Button shadow variant="gray" size="s">
+          Button
+        </Button>
+        <Button shadow size="s" variant="blue">
+          Button
+        </Button>
+        <Button shadow size="s" variant="outline">
+          Button
+        </Button>
+        <Button shadow size="s" variant="ghost">
+          Button
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button shadow variant="contrast" size="m">
+          Button
+        </Button>
+        <Button shadow variant="gray" size="m">
+          Button
+        </Button>
+        <Button shadow size="m" variant="blue">
+          Button
+        </Button>
+        <Button shadow size="m" variant="outline">
+          Button
+        </Button>
+        <Button shadow size="m" variant="ghost">
+          Button
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button shadow variant="contrast" size="l">
+          Button
+        </Button>
+        <Button shadow variant="gray" size="l">
+          Button
+        </Button>
+        <Button shadow size="l" variant="blue">
+          Button
+        </Button>
+        <Button shadow size="l" variant="outline">
+          Button
+        </Button>
+        <Button shadow size="l" variant="ghost">
+          Button
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button shadow variant="contrast" size="xl">
+          Button
+        </Button>
+        <Button shadow variant="gray" size="xl">
+          Button
+        </Button>
+        <Button shadow size="xl" variant="blue">
+          Button
+        </Button>
+        <Button shadow size="xl" variant="outline">
+          Button
+        </Button>
+        <Button shadow size="xl" variant="ghost">
           Button
         </Button>
       </Box>
@@ -285,19 +391,19 @@ export default function DS() {
         </Button>
       </Box>
       <Box display="flex" alignItems="center" gap="4" marginY="4">
-        <Button size="xs" shape="circle" variant="raised" aria-label="action">
+        <Button size="xs" shape="circle" shadow aria-label="action">
           <IconTag />
         </Button>
-        <Button size="s" shape="circle" variant="raised" aria-label="action">
+        <Button size="s" shape="circle" shadow aria-label="action">
           <IconTag />
         </Button>
-        <Button size="m" shape="circle" variant="raised" aria-label="action">
+        <Button size="m" shape="circle" shadow aria-label="action">
           <IconTag />
         </Button>
-        <Button size="l" shape="circle" variant="raised" aria-label="action">
+        <Button size="l" shape="circle" shadow aria-label="action">
           <IconTag />
         </Button>
-        <Button size="xl" shape="circle" variant="raised" aria-label="action">
+        <Button size="xl" shape="circle" shadow aria-label="action">
           <IconTag />
         </Button>
       </Box>
