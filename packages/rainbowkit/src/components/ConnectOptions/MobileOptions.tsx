@@ -10,6 +10,7 @@ import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
 import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
+import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -25,6 +26,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
     shortName,
   } = wallet;
   const getMobileUri = mobile?.getUri;
+  const coolModeRef = useCoolMode(iconUrl);
 
   return (
     <Box
@@ -43,6 +45,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
           }, 0);
         }
       }, [connect, getMobileUri])}
+      ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
