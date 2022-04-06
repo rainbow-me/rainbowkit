@@ -5,7 +5,6 @@ import * as styles from './Link.css';
 
 type Props = {
   children?: React.ReactNode;
-
   color?: BoxProps['color'];
   margin?: BoxProps['margin'];
   marginBottom?: BoxProps['marginBottom'];
@@ -14,6 +13,7 @@ type Props = {
   marginTop?: BoxProps['marginTop'];
   marginY?: BoxProps['marginY'];
   marginX?: BoxProps['marginX'];
+  display?: BoxProps['display'];
   style?: React.CSSProperties;
 } & Pick<JSX.IntrinsicElements['a'], 'href' | 'className'> &
   styles.Variants;
@@ -24,6 +24,7 @@ export const Link = React.forwardRef(
       children,
       className,
       color,
+      display,
       margin,
       marginBottom,
       marginLeft,
@@ -47,6 +48,7 @@ export const Link = React.forwardRef(
           className
         )}
         color={color}
+        display={display}
         margin={margin}
         marginBottom={marginBottom}
         marginLeft={marginLeft}

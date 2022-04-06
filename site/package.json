@@ -23,6 +23,7 @@
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
     "ethers": "5.0.0",
+    "focus-visible": "^5.2.0",
     "framer-motion": "^6.2.8",
     "hast-util-to-html": "8.0.3",
     "hast-util-to-string": "2.0.0",

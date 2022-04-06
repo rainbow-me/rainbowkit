@@ -11,5 +11,11 @@ export { midnightTheme } from './themes/midnightTheme';
 export { cssStringFromTheme } from './css/cssStringFromTheme';
 export { cssObjectFromTheme } from './css/cssObjectFromTheme';
 export { DesktopOptions } from './components/ConnectOptions/DesktopOptions';
-export { dialogContent } from './components/Dialog/DialogContent.css';
+export { MobileOptions } from './components/ConnectOptions/MobileOptions';
+export {
+  dialogContent,
+  dialogContentMobile,
+  dialogContentWideMobile,
+  bottomSheetOverrides,
+} from './components/Dialog/DialogContent.css';
 export { ConnectButtonRenderer } from './components/ConnectButton/ConnectButtonRenderer';

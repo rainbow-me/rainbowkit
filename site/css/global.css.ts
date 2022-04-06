@@ -18,7 +18,7 @@ globalStyle('body', {
 
 globalStyle('code, pre', {
   fontFamily: 'SFMono, ui-monospace, monospace',
-  fontWeight: 600,
+  fontWeight: 400,
 });
 
 globalStyle('button', {

@@ -36,14 +36,6 @@ export const content = style([
   }),
 ]);
 
-export const pagination = style({
-  display: 'flex',
-  justifyContent: 'space-between',
-  marginTop: vars.space[11],
-  paddingTop: vars.space[8],
-  borderTop: `1px solid ${vars.colors.separator}`,
-});
-
 export const paginationItem = style([
   {
     display: 'inline-flex',

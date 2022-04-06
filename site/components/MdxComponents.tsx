@@ -14,11 +14,11 @@ export const components = {
     <Text
       as="h2"
       variant="title3"
-      {...props}
       color="labelSecondary"
       marginTop="2"
       marginBottom="6"
       weight="bold"
+      {...props}
     />
   ),
   h3: props => (

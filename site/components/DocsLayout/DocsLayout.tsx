@@ -15,12 +15,7 @@ import React, { useEffect } from 'react';
 import { allDocsRoutes, docsRoutes } from '../../lib/docsRoutes';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Wrapper } from '../Wrapper/Wrapper';
-import {
-  content,
-  navigationSidebar,
-  pagination,
-  paginationItem,
-} from './DocsLayout.css';
+import { content, navigationSidebar, paginationItem } from './DocsLayout.css';
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -101,7 +96,13 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           <Box paddingLeft={{ lg: '10' }}>
             <>{children}</>
 
-            <div className={pagination}>
+            <Box
+              borderTopWidth="1"
+              display="flex"
+              justifyContent="space-between"
+              marginTop="11"
+              paddingTop="8"
+            >
               {previous && (
                 <NextLink href={`/docs/${previous.slug}`} passHref>
                   <Link className={paginationItem}>
@@ -119,7 +120,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   </Link>
                 </NextLink>
               )}
-            </div>
+            </Box>
           </Box>
         </Box>
       </Wrapper>

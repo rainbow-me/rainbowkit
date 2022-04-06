@@ -15,7 +15,7 @@ export default function DS() {
   }, [mode]);
 
   return (
-    <Wrapper marginY="10" position="relative">
+    <Wrapper marginY="11" position="relative">
       <Box position="absolute" top="4" right="4">
         <Button
           onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
@@ -63,6 +63,7 @@ export default function DS() {
         <Button variant="blue" size="xs">
           Button
         </Button>
+
         <Button variant="blue" size="s">
           Button
         </Button>

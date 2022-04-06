@@ -10,7 +10,11 @@ function safeParseJsonArray<T>(string: string | null): T[] {
 }
 
 export function getRecentWalletIds(): string[] {
-  return safeParseJsonArray(localStorage.getItem(storageKey));
+  if (typeof window !== 'undefined') {
+    return safeParseJsonArray(localStorage.getItem(storageKey));
+  } else {
+    return [];
+  }
 }
 
 function dedupe<T>(array: T[]): T[] {

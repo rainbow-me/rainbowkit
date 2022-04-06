@@ -2,6 +2,11 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
+import 'focus-visible';
+
+const hideFocusRingsDataAttribute =
+  '[data-js-focus-visible] &:focus:not([data-focus-visible-added])';
+
 export const base = style({
   border: 0,
   boxSizing: 'border-box',
@@ -14,6 +19,11 @@ export const base = style({
   verticalAlign: 'baseline',
   WebkitFontSmoothing: 'antialiased',
   WebkitTapHighlightColor: 'transparent',
+  selectors: {
+    [`${hideFocusRingsDataAttribute}`]: {
+      outline: 'none',
+    },
+  },
 });
 
 const list = style({

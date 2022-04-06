@@ -63,6 +63,11 @@ const variant = {
     style({
       backgroundColor: 'transparent',
       boxShadow: `inset 0 0 0 2px ${vars.colors.blue}`,
+      selectors: {
+        '&:focus': {
+          boxShadow: `0 0 0 2px ${vars.colors.blue}, 0 0 0 4px ${vars.colors.purple}`,
+        },
+      },
     }),
   ]),
   raised: style([
@@ -131,7 +136,10 @@ export const variants = recipe({
       fontWeight: 600,
       lineHeight: 1,
       selectors: {
-        '&:focus': { outline: 'none' },
+        '&:focus': {
+          outline: 'none',
+          boxShadow: `0 0 0 2px ${vars.colors.background}, 0 0 0 4px ${vars.colors.purple}`,
+        },
         '&:disabled': {
           backgroundColor: vars.colors.fill,
           color: vars.colors.gray30,
