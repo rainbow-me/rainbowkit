@@ -772,6 +772,20 @@ const App = () => {
 };
 ```
 
+### Enable cool mode
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider coolMode={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
 ## License
 
 [MIT.](./LICENSE.md)

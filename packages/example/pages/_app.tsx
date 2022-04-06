@@ -83,6 +83,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
   const selectedTheme = themes
     .find(({ name }) => name === selectedThemeName)
@@ -94,7 +95,11 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      <RainbowKitProvider chains={chains} theme={selectedTheme}>
+      <RainbowKitProvider
+        chains={chains}
+        coolMode={coolModeEnabled}
+        theme={selectedTheme}
+      >
         <Component {...pageProps} />
 
         <div
@@ -209,6 +214,18 @@ function App({ Component, pageProps }: AppProps) {
                 ))}
               </div>
             </div>
+          </div>
+          <div>
+            <h4>Cool mode</h4>
+            <label style={{ userSelect: 'none' }}>
+              <input
+                checked={coolModeEnabled}
+                name="coolMode"
+                onChange={e => setCoolModeEnabled(e.target.checked)}
+                type="checkbox"
+              />{' '}
+              Enabled
+            </label>
           </div>
         </div>
       </RainbowKitProvider>

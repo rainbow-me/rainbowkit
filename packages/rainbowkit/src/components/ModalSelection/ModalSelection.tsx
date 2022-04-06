@@ -1,6 +1,7 @@
 import React from 'react';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
+import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { HoverClassName, SelectedClassName } from './ModalSelection.css';
 
 type Props = {
@@ -13,27 +14,25 @@ type Props = {
   iconBackground?: string;
 };
 
-export const ModalSelection = React.forwardRef(
-  (
-    {
-      as = 'button',
-      currentlySelected = false,
-      iconBackground,
-      iconUrl,
-      name,
-      onClick,
-      ready,
-      ...urlProps
-    }: Props,
-    ref: React.Ref<HTMLElement>
-  ) => {
-    return (
+export const ModalSelection = ({
+  as = 'button',
+  currentlySelected = false,
+  iconBackground,
+  iconUrl,
+  name,
+  onClick,
+  ready,
+  ...urlProps
+}: Props) => {
+  const coolModeRef = useCoolMode(iconUrl);
+
+  return (
+    <Box display="flex" flexDirection="column" ref={coolModeRef}>
       <Box
         as={as}
         className={currentlySelected ? SelectedClassName : HoverClassName}
         disabled={currentlySelected}
         onClick={onClick}
-        ref={ref}
         style={{ willChange: 'transform' }}
         {...urlProps}
       >
@@ -58,8 +57,8 @@ export const ModalSelection = React.forwardRef(
           </Box>
         </Box>
       </Box>
-    );
-  }
-);
+    </Box>
+  );
+};
 
 ModalSelection.displayName = 'ModalSelection';
