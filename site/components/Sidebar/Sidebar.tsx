@@ -13,7 +13,9 @@ export function Sidebar({ routes }) {
         <Box key={route.label} marginBottom="7">
           <Text
             as="h3"
+            variant="subhead"
             color="labelTertiary"
+            marginTop="2"
             marginBottom="4"
             marginLeft="5"
             weight="semibold"

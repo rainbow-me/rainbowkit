@@ -15,9 +15,9 @@ export const components = {
       as="h2"
       variant="title3"
       color="labelSecondary"
-      marginTop="2"
+      marginTop="1"
       marginBottom="6"
-      weight="bold"
+      weight="medium"
       {...props}
     />
   ),
@@ -26,8 +26,8 @@ export const components = {
       as="h3"
       variant="title2"
       weight="semibold"
-      marginTop="11"
-      marginBottom="4"
+      marginTop="10"
+      marginBottom="2"
       {...props}
     />
   ),
@@ -35,13 +35,14 @@ export const components = {
     <Text
       as="p"
       color="labelSecondary"
-      marginBottom="4"
-      style={{ fontWeight: 500 }}
+      marginBottom="5"
+      style={{ fontWeight: 500, lineHeight: '25px' }}
       {...props}
     />
   ),
   a: props => <Link {...props} />,
   Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
+  ul: props => <Box as="ul" paddingLeft="3" paddingBottom="6" {...props} />,
   ol: props => <Box as="ol" paddingLeft="4" {...props} />,
   li: props => (
     <Text
@@ -53,7 +54,8 @@ export const components = {
   ),
   pre: ({ children, ...props }) => {
     return (
-      <Box as="pre" className={pre} marginY="9" {...props}>
+      // <Box as="pre" className={pre} marginY="9" {...props}>
+      <Box as="pre" className={pre} marginTop="5" marginBottom="9" {...props}>
         {children}
       </Box>
     );

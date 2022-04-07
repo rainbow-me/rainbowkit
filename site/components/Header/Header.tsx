@@ -30,7 +30,7 @@ export function Header({
           <img alt="Rainbow logo" className={logo} src="/rainbow-avatar.png" />
         </NextLink>
         <span className={title}>RainbowKit</span>
-        <Badge>0.0.1</Badge>
+        <Badge>0.0.2</Badge>
 
         <button
           onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}

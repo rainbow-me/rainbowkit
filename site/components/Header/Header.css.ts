@@ -34,7 +34,8 @@ export const logo = style([
   style({
     height: 38,
     width: 38,
-    boxShadow: '0 12px 16px rgba(0, 0, 0, 0.2)',
+    boxShadow:
+      '0 4px 10px rgba(3, 35, 98, 0.4), inset 0 0 1px rgba(0, 0, 0, 0.1)',
   }),
 ]);
 

@@ -7,12 +7,13 @@ export const variants = recipe({
   base: [
     atoms({
       fontFamily: 'mono',
+      fontSize: '2',
+      paddingX: '2',
+      paddingBottom: 'px',
     }),
     style({
-      fontSize: 'max(13px, 85%)',
       fontWeight: '400',
       whiteSpace: 'nowrap',
-      padding: '0 3px 2px 3px',
     }),
   ],
   variants: {
