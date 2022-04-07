@@ -8,4 +8,5 @@ export const scroll = style({
       display: 'none',
     },
   },
+  transform: 'translateZ(0)',
 });
