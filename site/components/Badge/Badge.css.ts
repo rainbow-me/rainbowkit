@@ -17,7 +17,7 @@ export const badge = style([
     fontWeight: 600,
     color: vars.colors.labelTertiary,
     backgroundColor: vars.colors.fillSecondary,
-    backgroundImage: `linear-gradient(to right, ${vars.colors.fillSecondary}, ${vars.colors.backgroundElevated})`,
+    backgroundImage: `linear-gradient(to right, ${vars.colors.backgroundElevated}, ${vars.colors.background})`,
     height: 18,
     borderRadius: vars.radii.round,
     paddingLeft: vars.space[3],

@@ -70,6 +70,8 @@ export function PropsTable({
                         <Button
                           size="xs"
                           marginLeft="2"
+                          shape="circle"
+                          variant="ghost"
                           style={{ verticalAlign: 'middle' }}
                         >
                           <InfoIcon />
@@ -87,6 +89,8 @@ export function PropsTable({
                         <Button
                           size="xs"
                           marginLeft="2"
+                          shape="circle"
+                          variant="ghost"
                           style={{ verticalAlign: 'middle' }}
                         >
                           <InfoIcon />

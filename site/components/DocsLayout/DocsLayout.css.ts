@@ -16,8 +16,9 @@ export const navigationSidebar = style([
       left: 'calc(50% - 512px)',
       paddingRight: 0,
       position: 'fixed',
-      top: 89,
+      top: vars.space[11],
       paddingTop: vars.space[11],
+      paddingBottom: vars.space[4],
       width: 250,
       overflow: 'auto',
     },
@@ -26,8 +27,8 @@ export const navigationSidebar = style([
 
 export const content = style([
   {
-    paddingBottom: 80,
-    paddingTop: 60,
+    paddingBottom: vars.space[10],
+    paddingTop: vars.space[10],
   },
   responsiveStyle({
     lg: {

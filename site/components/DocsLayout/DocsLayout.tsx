@@ -100,8 +100,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
               borderTopWidth="1"
               display="flex"
               justifyContent="space-between"
-              marginTop="11"
+              marginTop="9"
               paddingTop="8"
+              style={{ fontWeight: '600' }}
             >
               {previous && (
                 <NextLink href={`/docs/${previous.slug}`} passHref>
