@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { hideFocusRingsDataAttribute } from 'css/reset.css';
 import { Sprinkles } from 'css/sprinkles.css';
 import { atoms } from '../../css/atoms';
 import { vars } from '../../css/vars.css';
@@ -169,6 +170,10 @@ export const variants = recipe({
         '&:focus': {
           outline: 'none',
           boxShadow: `0 0 0 2px ${vars.colors.background}, 0 0 0 4px ${vars.colors.purple}`,
+        },
+        [hideFocusRingsDataAttribute]: {
+          outline: 'none',
+          boxShadow: shadowValue,
         },
         '&:disabled': {
           backgroundColor: vars.colors.fill,

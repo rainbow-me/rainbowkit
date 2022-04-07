@@ -2,7 +2,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
-const hideFocusRingsDataAttribute =
+export const hideFocusRingsDataAttribute =
   '[data-js-focus-visible] &:focus:not([data-focus-visible-added])';
 
 export const base = style({
@@ -20,7 +20,6 @@ export const base = style({
   selectors: {
     [`${hideFocusRingsDataAttribute}`]: {
       outline: 'none',
-      boxShadow: 'none !important',
     },
   },
 });
