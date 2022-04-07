@@ -1,5 +1,10 @@
 import React from 'react';
-import { mapResponsiveValue, ResponsiveValue } from '../../css/sprinkles.css';
+import {
+  mapResponsiveValue,
+  normalizeResponsiveValue,
+  ResponsiveValue,
+} from '../../css/sprinkles.css';
+import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -39,7 +44,10 @@ export function ConnectButton({
         if (!mounted) {
           return null;
         }
-
+        const showBalanceNormalized = normalizeResponsiveValue(showBalance);
+        const showAccountButtonBackground = isMobile()
+          ? showBalanceNormalized.smallScreen
+          : showBalanceNormalized.largeScreen;
         return account ? (
           <Box display="flex" gap="12">
             {chain && (
@@ -141,7 +149,11 @@ export function ConnectButton({
                 </Box>
               )}
               <Box
-                background="connectButtonInnerBackground"
+                background={
+                  showAccountButtonBackground
+                    ? 'connectButtonInnerBackground'
+                    : 'connectButtonBackground'
+                }
                 borderColor="connectButtonBackground"
                 borderRadius="connectButton"
                 borderStyle="solid"

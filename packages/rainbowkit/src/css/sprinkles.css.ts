@@ -2,6 +2,7 @@
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
   createMapValueFn,
+  createNormalizeValueFn,
   createSprinkles,
   defineProperties,
   RequiredConditionalValue,
@@ -154,6 +155,8 @@ export type ResponsiveValue<Value extends string | number | boolean> =
   RequiredConditionalValue<typeof responsiveProperties, Value>;
 
 export const mapResponsiveValue = createMapValueFn(responsiveProperties);
+export const normalizeResponsiveValue =
+  createNormalizeValueFn(responsiveProperties);
 
 const unresponsiveProperties = defineProperties({
   properties: {
