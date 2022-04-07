@@ -1,5 +1,6 @@
 import QRCodeUtil from 'qrcode';
 import React, { ReactElement, useMemo } from 'react';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
@@ -23,7 +24,8 @@ const generateMatrix = (
 
 type Props = {
   ecl?: QRCodeUtil.QRCodeErrorCorrectionLevel;
-  logoUri?: string;
+  logoBackground?: string;
+  logoUrl?: string | (() => Promise<string>);
   logoMargin?: number;
   logoSize?: number;
   size?: number;
@@ -32,9 +34,10 @@ type Props = {
 
 export function QRCode({
   ecl = 'M',
+  logoBackground,
   logoMargin = 10,
   logoSize = 50,
-  logoUri,
+  logoUrl,
   size: sizeProp = 200,
   uri,
 }: Props) {
@@ -131,28 +134,25 @@ export function QRCode({
         }}
         userSelect="none"
       >
-        <div
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="relative"
           style={{
             height: 0,
-            position: 'relative',
-            textAlign: 'center',
             top: logoPosition,
             width: size,
           }}
+          width="full"
         >
-          <img
-            alt=""
+          <AsyncImage
+            background={logoBackground}
+            borderRadius="25%"
             height={logoSize}
-            src={logoUri}
-            style={{
-              all: 'revert',
-              borderRadius: '25%',
-              height: logoSize,
-              width: logoSize,
-            }}
+            src={logoUrl}
             width={logoSize}
           />
-        </div>
+        </Box>
         <svg height={size} style={{ all: 'revert' }} width={size}>
           <defs>
             <clipPath id="clip-wrapper">

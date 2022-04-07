@@ -18,7 +18,7 @@ RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wa
 
 Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
 
-`npm install @rainbow-me/rainbowkit wagmi ethers`
+`npm install @rainbow-me/rainbowkit wagmi@0.2 ethers`
 
 ## Getting started
 
@@ -262,11 +262,13 @@ const chains: Chain[] = [
     ...chain.mainnet,
     name: 'Ethereum',
     iconUrl: 'https://example.com/icons/ethereum.png',
+    iconBackground: 'grey',
   },
   {
     ...chain.polygonMainnet,
     name: 'Polygon',
     iconUrl: 'https://example.com/icons/polygon.png',
+    iconBackground: '#7b3fe4',
   },
 ];
 ```
@@ -292,8 +294,13 @@ export const YourApp = () => {
           openAccountModal,
           openChainModal,
           openConnectModal,
-        }) =>
-          !account ? (
+          mounted,
+        }) => {
+          if (!mounted) {
+            return null;
+          }
+
+          return !account ? (
             <button onClick={openConnectModal} type="button">
               Connect Wallet
             </button>
@@ -305,12 +312,25 @@ export const YourApp = () => {
                   style={{ display: 'flex', alignItems: 'center' }}
                   type="button"
                 >
-                  {chain.iconUrl && (
-                    <img
-                      alt={chain.name ?? 'Chain icon'}
-                      src={chain.iconUrl}
-                      style={{ width: 12, height: 12, marginRight: 4 }}
-                    />
+                  {chain.hasIcon && (
+                    <div
+                      style={{
+                        background: chain.iconBackground,
+                        width: 12,
+                        height: 12,
+                        borderRadius: 999,
+                        overflow: 'hidden',
+                        marginRight: 4,
+                      }}
+                    >
+                      {chain.iconUrl && (
+                        <img
+                          alt={chain.name ?? 'Chain icon'}
+                          src={chain.iconUrl}
+                          style={{ width: 12, height: 12 }}
+                        />
+                      )}
+                    </div>
                   )}
                   {chain.name ?? chain.id}
                   {chain.unsupported && ' (unsupported)'}
@@ -321,8 +341,8 @@ export const YourApp = () => {
                 {account.displayBalance ? ` (${account.displayBalance})` : ''}
               </button>
             </div>
-          )
-        }
+          );
+        }}
       </ConnectButton.Custom>
     </>
   );
@@ -408,9 +428,19 @@ The following props are passed to your render function.
       <td>Object containing details about the current chain, described below</code></td>
     </tr>
     <tr>
+      <td><code>chain.hasIcon</code></td>
+      <td><code>boolean</code></td>
+      <td>Whether the chain as an icon specified</td>
+    </tr>
+    <tr>
       <td><code>chain.iconUrl</code></td>
       <td><code>string | undefined</code></td>
-      <td>The chain icon URL</td>
+      <td>The chain icon URL (which may be also be undefined while downloading Base64 data URLs)</td>
+    </tr>
+    <tr>
+      <td><code>chain.iconBackground</code></td>
+      <td><code>string | undefined</code></td>
+      <td>The chain icon background which will be visible while images are loading</td>
     </tr>
     <tr>
       <td><code>chain.id</code></td>
@@ -460,6 +490,11 @@ The following props are passed to your render function.
       <td><code>accountModalOpen</code></td>
       <td><code>boolean</code></td>
       <td>Boolean indicating whether the account modal is open</td>
+    </tr>
+    <tr>
+      <td><code>mounted</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the component has mounted</td>
     </tr>
     <tr>
       <td><code>chainModalOpen</code></td>
@@ -666,8 +701,8 @@ The `Wallet` type is provided to help you define your own custom wallets. If you
     </tr>
     <tr>
       <td><code>iconUrl</code></td>
-      <td><code>string</code></td>
-      <td>URL for wallet icon</td>
+      <td><code>string | (() => Promise&lt;string>)</code></td>
+      <td>URL for wallet icon, or a promise that resolves to a Base64 data URL (to support bundling lazy-loadable images in JavaScript when publishing to npm)</td>
     </tr>
     <tr>
       <td><code>installed</code></td>
@@ -712,7 +747,7 @@ The following properties are defined on the return value of the `createConnector
     </tr>
     <tr>
       <td><code>qrCode</code></td>
-      <td><code>{ getUri: () => string, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
+      <td><code>{ getUri: () => string, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
       <td>Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon</td>
     </tr>
   </tbody>
@@ -731,6 +766,20 @@ const App = () => {
       learnMoreUrl="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
       {...etc}
     >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Enable cool mode
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider coolMode={true} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );

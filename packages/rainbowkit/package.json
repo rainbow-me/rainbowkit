@@ -22,7 +22,7 @@
     "build": "node build.js",
     "build:watch": "node build.js --watch",
     "dev": "pnpm build:watch & pnpm typegen:watch",
-    "prepare": "pnpm build",
+    "prepare": "MINIFY_CSS=true pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true",
@@ -41,7 +41,7 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": "<1"
+    "wagmi": "^0.2.0"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",

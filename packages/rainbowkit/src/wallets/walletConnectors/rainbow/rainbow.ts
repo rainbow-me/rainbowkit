@@ -3,7 +3,6 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './rainbow.svg';
 
 export interface RainbowOptions {
   chains: Chain[];
@@ -13,7 +12,8 @@ export interface RainbowOptions {
 export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
-  iconUrl: iconDataUrl,
+  iconUrl: async () => (await import('./rainbow.svg')).default,
+  iconBackground: '#0c2f78',
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=me.rainbow',
     ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',

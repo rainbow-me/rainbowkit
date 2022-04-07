@@ -3,7 +3,6 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './argent.svg';
 
 export interface ArgentOptions {
   chains: Chain[];
@@ -13,7 +12,8 @@ export interface ArgentOptions {
 export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
-  iconUrl: iconDataUrl,
+  iconUrl: async () => (await import('./argent.svg')).default,
+  iconBackground: '#fff',
   downloadUrls: {
     android:
       'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient',

@@ -3,7 +3,6 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
-import iconDataUrl from './coinbase.svg';
 
 export interface CoinbaseOptions {
   chains: Chain[];
@@ -19,7 +18,8 @@ export const coinbase = ({
   id: 'coinbase',
   name: 'Coinbase Wallet',
   shortName: 'Coinbase',
-  iconUrl: iconDataUrl,
+  iconUrl: async () => (await import('./coinbase.svg')).default,
+  iconBackground: '#2c5ff6',
   downloadUrls: {
     browserExtension:
       'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
