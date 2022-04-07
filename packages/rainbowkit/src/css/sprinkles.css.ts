@@ -53,6 +53,7 @@ const themeContractValues = {
   shadows: {
     connectButton: '',
     dialog: '',
+    walletLogo: '',
     profileDetailsAction: '',
     selectedOption: '',
     selectedWallet: '',

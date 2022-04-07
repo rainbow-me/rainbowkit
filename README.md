@@ -539,7 +539,7 @@ const myCustomTheme: Theme = {
     profileActionHover: '...',
     profileForeground: '...',
     selectedOptionBorder: '...',
-    standby: '',
+    standby: '...',
   },
   fonts: {
     body: '...',
@@ -557,6 +557,7 @@ const myCustomTheme: Theme = {
     profileDetailsAction: '...',
     selectedOption: '...',
     selectedWallet: '...',
+    walletLogo: '...',
   },
 };
 
