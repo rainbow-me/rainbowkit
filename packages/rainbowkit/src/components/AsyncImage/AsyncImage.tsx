@@ -9,7 +9,7 @@ interface AsyncImageProps {
   height: BoxProps['height'] | number;
   background?: string;
   borderRadius?: BoxProps['borderRadius'];
-  borderColor?: BoxProps['borderColor'];
+  borderColor?: BoxProps['borderColor'] | { borderColor: string };
   boxShadow?: BoxProps['boxShadow'];
 }
 
@@ -24,6 +24,7 @@ export function AsyncImage({
   width,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
+  const borderColorIsObject = typeof borderColor === 'object';
 
   return (
     <Box
@@ -56,7 +57,7 @@ export function AsyncImage({
       />
       {borderColor ? (
         <Box
-          borderColor={borderColor}
+          {...(borderColorIsObject ? { style: borderColor } : { borderColor })}
           borderRadius={borderRadius}
           borderStyle="solid"
           borderWidth="1"
