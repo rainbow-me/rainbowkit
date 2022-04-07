@@ -56,11 +56,11 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         flexDirection="column"
         justifyContent="center"
       >
-        <Box paddingBottom="8">
+        <Box paddingBottom="8" paddingTop="10">
           <AsyncImage
             background={iconBackground}
-            borderColor="actionButtonBorder"
             borderRadius="13"
+            boxShadow="walletLogo"
             height="60"
             src={iconUrl}
             width="60"
@@ -198,7 +198,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             height="full"
             marginBottom="36"
             marginTop="5"
-            paddingTop="2"
+            paddingTop="12"
             width="full"
           >
             {mobileWallets.map((wallet, index) => {
@@ -300,7 +300,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         }
         display="flex"
         flexDirection="column"
-        paddingBottom="14"
+        paddingBottom="4"
         paddingTop="14"
       >
         <Box

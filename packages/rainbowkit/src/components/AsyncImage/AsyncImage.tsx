@@ -10,6 +10,7 @@ interface AsyncImageProps {
   background?: string;
   borderRadius?: BoxProps['borderRadius'];
   borderColor?: BoxProps['borderColor'];
+  boxShadow?: BoxProps['boxShadow'];
 }
 
 export function AsyncImage({
@@ -17,6 +18,7 @@ export function AsyncImage({
   background,
   borderColor,
   borderRadius,
+  boxShadow,
   height,
   src: srcProp,
   width,
@@ -27,6 +29,7 @@ export function AsyncImage({
     <Box
       aria-label={alt}
       borderRadius={borderRadius}
+      boxShadow={boxShadow}
       height={typeof height === 'string' ? height : undefined}
       overflow="hidden"
       position="relative"

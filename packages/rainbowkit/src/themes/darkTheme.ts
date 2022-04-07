@@ -55,5 +55,6 @@ export const darkTheme = ({
     profileDetailsAction: '0px 2px 6px rgba(37, 41, 46, 0.04)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
     selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.24)',
+    walletLogo: '0px 2px 16px rgba(0, 0, 0, 0.16)',
   },
 });

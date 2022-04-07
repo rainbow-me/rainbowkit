@@ -46,6 +46,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-profileDetailsAction": "0px 2px 6px rgba(37, 41, 46, 0.04)",
         "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
         "--rk-shadows-selectedWallet": "0px 2px 6px rgba(0, 0, 0, 0.12)",
+        "--rk-shadows-walletLogo": "0px 2px 16px rgba(0, 0, 0, 0.16)",
       }
     `);
   });
