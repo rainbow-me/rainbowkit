@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  mapNormalizeValue,
   mapResponsiveValue,
+  normalizeResponsiveValue,
   ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { isMobile } from '../../utils/isMobile';
@@ -44,7 +44,7 @@ export function ConnectButton({
         if (!mounted) {
           return null;
         }
-        const showBalanceNormalized = mapNormalizeValue(showBalance);
+        const showBalanceNormalized = normalizeResponsiveValue(showBalance);
         const showAccountButtonBackground = isMobile()
           ? showBalanceNormalized.smallScreen
           : showBalanceNormalized.largeScreen;
