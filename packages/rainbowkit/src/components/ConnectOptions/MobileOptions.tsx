@@ -202,7 +202,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             width="full"
           >
             {mobileWallets.map((wallet, index) => {
-              const { downloadUrls, iconUrl, name } = wallet;
+              const { downloadUrls, iconBackground, iconUrl, name } = wallet;
 
               if (!downloadUrls?.ios && !downloadUrls?.android) {
                 return null;
@@ -216,26 +216,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   paddingX="20"
                   width="full"
                 >
-                  <Box
-                    borderRadius="10"
-                    height="48"
-                    minWidth="48"
-                    style={{
-                      background: `url(${iconUrl})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                      touchCallout: 'none',
-                      userSelect: 'none',
-                    }}
-                    width="48"
-                  >
-                    <Box
-                      borderColor="actionButtonBorder"
+                  <Box style={{ minHeight: 48, minWidth: 48 }}>
+                    <AsyncImage
+                      background={iconBackground}
+                      borderColor="generalBorder"
                       borderRadius="10"
-                      borderStyle="solid"
-                      borderWidth="1"
-                      height="full"
-                      width="full"
+                      height="48"
+                      src={iconUrl}
+                      width="48"
                     />
                   </Box>
                   <Box display="flex" flexDirection="column" width="full">
