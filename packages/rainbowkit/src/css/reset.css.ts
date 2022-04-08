@@ -17,6 +17,7 @@ export const base = style({
       outline: 'none',
     },
   },
+  textAlign: 'left',
   verticalAlign: 'baseline',
   WebkitTapHighlightColor: 'transparent',
 });
