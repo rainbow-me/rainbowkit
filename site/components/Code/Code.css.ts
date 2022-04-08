@@ -14,6 +14,8 @@ export const variants = recipe({
     style({
       fontWeight: '400',
       whiteSpace: 'nowrap',
+      MozOsxFontSmoothing: 'subpixel-antialiased',
+      WebkitFontSmoothing: 'subpixel-antialiased',
     }),
   ],
   variants: {

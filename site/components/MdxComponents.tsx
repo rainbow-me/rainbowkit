@@ -10,7 +10,15 @@ import { PropsTable } from './PropsTable/PropsTable';
 import { Text } from './Text/Text';
 
 export const components = {
-  h1: props => <Text as="h1" variant="titleLarge" weight="heavy" {...props} />,
+  h1: props => (
+    <Text
+      as="h1"
+      variant="titleLarge"
+      weight="heavy"
+      marginBottom="1"
+      {...props}
+    />
+  ),
   h2: props => (
     <Text
       as="h2"
@@ -74,7 +82,18 @@ export const components = {
   code: ({ children, ...props }) => {
     const isInline = typeof children === 'string';
     return isInline ? (
-      <Code {...props}>{children}</Code>
+      <Code
+        style={{
+          backgroundColor: vars.colors.fillElevated,
+          paddingLeft: vars.space[2],
+          paddingRight: vars.space[2],
+          borderRadius: vars.radii[1],
+          boxShadow: `inset 0 0 1px ${vars.colors.separator}, 0px 2px 8px rgba(27, 29, 31, 0.02)`,
+        }}
+        {...props}
+      >
+        {children}
+      </Code>
     ) : (
       <code>{children}</code>
     );

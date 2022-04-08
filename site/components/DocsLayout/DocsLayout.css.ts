@@ -20,7 +20,6 @@ export const navigationSidebar = style([
       paddingTop: vars.space[11],
       paddingBottom: vars.space[4],
       width: 250,
-      overflow: 'auto',
     },
   }),
 ]);

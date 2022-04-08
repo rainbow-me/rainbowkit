@@ -5,12 +5,12 @@ import { vars } from './vars.css';
 export const pre = style({
   vars: {
     '--background': vars.colors.fillElevated,
-    '--text': vars.colors.label,
+    '--text': vars.colors.blue,
     '--outline': 'inset 0 0 0 1px transparent',
     '--syntax1': vars.colors.purple,
-    '--syntax2': vars.colors.blue,
-    '--syntax3': vars.colors.purple,
-    '--syntax4': vars.colors.blue,
+    '--syntax2': vars.colors.orange,
+    '--syntax3': vars.colors.pink,
+    '--syntax4': vars.colors.label,
     '--comment': vars.colors.labelQuaternary,
     '--removed': 'rgb(205, 43, 49)',
     '--added': '$rgb(24, 121, 78)',
