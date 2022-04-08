@@ -6,6 +6,24 @@ globalStyle('*, ::before, ::after', {
   boxSizing: 'border-box',
 });
 
+const highlightColors = [
+  vars.colors.orange,
+  vars.colors.blue,
+  vars.colors.pink,
+  vars.colors.purple,
+  vars.colors.red,
+  vars.colors.green,
+];
+
+function getColor() {
+  return Math.floor(Math.random() * highlightColors.length);
+}
+
+globalStyle('::selection', {
+  backgroundColor: `${highlightColors[getColor()]}`,
+  color: vars.colors.labelWhite,
+});
+
 globalStyle('body', {
   backgroundColor: vars.colors.backgroundElevated,
   color: vars.colors.label,

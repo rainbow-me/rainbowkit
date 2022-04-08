@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-sort-props */
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { pre } from 'css/pre.css';
+import { vars } from 'css/vars.css';
 import React from 'react';
 import { Box } from './Box/Box';
 import { Code } from './Code/Code';
@@ -9,7 +10,7 @@ import { PropsTable } from './PropsTable/PropsTable';
 import { Text } from './Text/Text';
 
 export const components = {
-  h1: props => <Text as="h1" variant="titleLarge" weight="bold" {...props} />,
+  h1: props => <Text as="h1" variant="titleLarge" weight="heavy" {...props} />,
   h2: props => (
     <Text
       as="h2"
@@ -48,6 +49,7 @@ export const components = {
     <Text
       as="li"
       variant="base"
+      marginBottom="2"
       {...props}
       style={{ listStyle: 'none', display: 'flex', alignItems: 'center' }}
     />
@@ -55,7 +57,16 @@ export const components = {
   pre: ({ children, ...props }) => {
     return (
       // <Box as="pre" className={pre} marginY="9" {...props}>
-      <Box as="pre" className={pre} marginTop="5" marginBottom="9" {...props}>
+      <Box
+        as="pre"
+        className={pre}
+        marginTop="5"
+        marginBottom="9"
+        style={{
+          boxShadow: `inset 0 0 1px ${vars.colors.separator}, 0px 2px 8px rgba(27, 29, 31, 0.02), 0px 8px 20px rgba(27, 29, 31, 0.02)`,
+        }}
+        {...props}
+      >
         {children}
       </Box>
     );

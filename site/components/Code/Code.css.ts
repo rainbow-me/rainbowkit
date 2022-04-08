@@ -8,7 +8,7 @@ export const variants = recipe({
     atoms({
       fontFamily: 'mono',
       fontSize: '2',
-      paddingX: '2',
+      paddingX: '1',
       paddingBottom: 'px',
     }),
     style({
