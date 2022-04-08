@@ -7,7 +7,6 @@ export const MenuButtonClassName = style([
       hover: 'menuItemBackground',
     },
     borderRadius: 'menuButton',
-
     color: 'modalText',
     padding: '6',
     transform: {
@@ -21,6 +20,13 @@ export const MobileMenuButtonClassName = style([
   sprinkles({
     padding: '8',
   }),
+  {
+    selectors: {
+      '&:hover': {
+        background: 'unset',
+      },
+    },
+  },
 ]);
 
 export const SelectedMenuButtonClassName = style([
