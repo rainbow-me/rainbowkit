@@ -4,7 +4,6 @@ import { atoms } from 'css/atoms';
 
 export const header = [
   atoms({
-    backgroundColor: 'backgroundElevated',
     position: 'sticky',
     top: '0',
     left: '0',
