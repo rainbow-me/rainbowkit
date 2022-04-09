@@ -102,8 +102,8 @@ export const components = {
   blockquote: props => (
     <Box
       as="blockquote"
-      padding="5"
-      paddingBottom="px"
+      paddingTop="5"
+      paddingX="5"
       borderRadius="4"
       marginBottom="4"
       borderColor="yellow"
