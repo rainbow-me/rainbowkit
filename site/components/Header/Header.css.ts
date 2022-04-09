@@ -11,15 +11,14 @@ export const header = [
     width: 'full',
   }),
   style({
-    backdropFilter: 'blur(8px)',
+    backdropFilter: 'blur(16px)',
     zIndex: 10,
   }),
 ];
 
 export const row = style([
   atoms({
-    borderBottomWidth: '1',
-    paddingY: '7',
+    paddingY: '4',
     paddingX: '10',
     display: 'flex',
     alignItems: 'center',

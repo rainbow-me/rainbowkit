@@ -99,5 +99,17 @@ export const components = {
     );
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
-  blockquote: props => <Box as="blockquote" {...props} />,
+  blockquote: props => (
+    <Box
+      as="blockquote"
+      padding="5"
+      paddingBottom="px"
+      borderRadius="4"
+      marginBottom="4"
+      borderColor="yellow"
+      borderWidth="2"
+      style={{ backgroundColor: `${vars.colors.yellow10}` }}
+      {...props}
+    />
+  ),
 };

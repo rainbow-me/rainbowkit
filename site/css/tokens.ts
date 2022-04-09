@@ -139,7 +139,7 @@ export const tokens = {
       fillElevated: colors.white100,
 
       background: colors.white100,
-      backgroundElevated: `${colors.blueGray10}99`,
+      backgroundElevated: colors.blueGray10,
 
       separator: colors.gray20,
     },
