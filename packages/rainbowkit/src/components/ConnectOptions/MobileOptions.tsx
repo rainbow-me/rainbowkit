@@ -66,7 +66,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             width="60"
           />
         </Box>
-        <Box display="flex" flexDirection="column" gap="1">
+        <Box display="flex" flexDirection="column" gap="1" textAlign="center">
           <Text
             as="h2"
             color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
@@ -150,7 +150,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             paddingX="32"
             style={{ textAlign: 'center' }}
           >
-            <Box display="flex" flexDirection="column" gap="8">
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="8"
+              textAlign="center"
+            >
               <Text color="modalText" size="16" weight="bold">
                 What is a Wallet?
               </Text>
@@ -263,7 +268,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             paddingX="36"
             style={{ textAlign: 'center' }}
           >
-            <Box display="flex" flexDirection="column" gap="12">
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="12"
+              textAlign="center"
+            >
               <Text color="modalText" size="16" weight="bold">
                 Not what you&rsquo;re looking for?
               </Text>
@@ -326,7 +336,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           )}
 
-          <Box marginTop="4" style={{ textAlign: 'center' }} width="full">
+          <Box marginTop="4" textAlign="center" width="full">
             <Text
               as="h1"
               color="modalText"
