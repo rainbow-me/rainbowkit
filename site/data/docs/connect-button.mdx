@@ -7,9 +7,21 @@ description: Using and customising the ConnectButton
 
 ## Using and customising the ConnectButton
 
-The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+This is the main component. It is responsible for rendering the connect/disconnect button, as well as chain-swapping UI.
 
-These props can also be defined in a responsive format, e.g. `showBalance={{ smallScreen: false, largeScreen: true }}`, allowing you to customize its appearance across different screen sizes. Note that the built-in `"largeScreen"` breakpoint is `768px`.
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+> Note: Make sure rour app must is wrapped in the necessary providers. [Read more](/docs/installation#wrap-providers).
+
+### Customising
+
+The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
 
 <PropsTable
   data={[
@@ -41,3 +53,71 @@ These props can also be defined in a responsive format, e.g. `showBalance={{ sma
     },
   ]}
 />
+
+> Note: the built-in `largeScreen` breakpoint is `768px`.
+
+### Examples
+
+#### Account status
+
+Here are a few different ways you can use the `accountStatus` prop.
+
+Only show the account's avatar.
+
+```tsx
+<ConnectButton accountStatus="avatar" />
+```
+
+Only show the account's address.
+
+```tsx
+<ConnectButton accountStatus="address" />
+```
+
+#### Chain status
+
+Here are a few different ways you can use the `chainStatus` prop.
+
+Only show the current chain's icon.
+
+```tsx
+<ConnectButton chainStatus="icon" />
+```
+
+Only show the current chain's name.
+
+```tsx
+<ConnectButton chainStatus="name" />
+```
+
+Hide the chain UI entirely.
+
+```tsx
+<ConnectButton chainStatus="none" />
+```
+
+#### Balance status
+
+Here are a few different ways you can use the `balanceStatus` prop.
+
+Hide the balance.
+
+```tsx
+<ConnectButton balanceStatus={false} />
+```
+
+#### Responsive
+
+These props can also be defined in a responsive format.
+
+On small screens, only show account icon. But on large screens, show icon and address.
+
+```tsx
+<ConnectButton accountStatus={{ smallScreen: "icon", largeScreen: "full" }}>
+```
+
+On small screens, hide balance. But on large screens, show it.
+
+```tsx
+<ConnectButton showBalance={{ smallScreen: false, largeScreen: true }}>
+```

@@ -21,16 +21,20 @@ export const components = {
       {...props}
     />
   ),
-  h3: props => (
-    <Text
-      as="h3"
-      variant="title2"
-      weight="semibold"
-      marginTop="11"
-      marginBottom="2"
-      {...props}
-    />
-  ),
+  h3: ({ id, ...props }) => {
+    return (
+      <span id={id} style={{ scrollMarginTop: 100 }}>
+        <Text
+          as="h3"
+          variant="title2"
+          weight="semibold"
+          marginTop="11"
+          marginBottom="2"
+          {...props}
+        />
+      </span>
+    );
+  },
   h4: props => (
     <Text
       as="h4"
@@ -66,7 +70,6 @@ export const components = {
   ),
   pre: ({ children, ...props }) => {
     return (
-      // <Box as="pre" className={pre} marginY="9" {...props}>
       <Box as="pre" className={pre} marginTop="5" marginBottom="9" {...props}>
         {children}
       </Box>
@@ -81,5 +84,16 @@ export const components = {
     );
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
-  blockquote: props => <Box as="blockquote" {...props} />,
+  blockquote: props => (
+    <Box
+      as="blockquote"
+      backgroundColor="fillSecondary"
+      borderRadius="3"
+      paddingTop="5"
+      paddingX="5"
+      marginBottom="5"
+      style={{ overflow: 'hidden' }}
+      {...props}
+    />
+  ),
 };
