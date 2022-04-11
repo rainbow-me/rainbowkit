@@ -4,22 +4,20 @@ import { atoms } from 'css/atoms';
 
 export const header = [
   atoms({
-    backgroundColor: 'backgroundElevated',
     position: 'sticky',
     top: '0',
     left: '0',
     width: 'full',
   }),
   style({
-    backdropFilter: 'blur(8px)',
+    backdropFilter: 'blur(16px)',
     zIndex: 10,
   }),
 ];
 
 export const row = style([
   atoms({
-    borderBottomWidth: '1',
-    paddingY: '7',
+    paddingY: '4',
     paddingX: '10',
     display: 'flex',
     alignItems: 'center',

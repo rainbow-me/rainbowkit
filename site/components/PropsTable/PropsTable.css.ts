@@ -22,10 +22,13 @@ const cell = style({
   paddingTop: vars.space[6],
   paddingRight: vars.space[5],
   paddingBottom: vars.space[6],
-  paddingLeft: vars.space[5],
 });
 
-export const th = style([cell, atoms({ fontSize: '3' })]);
+export const th = style([
+  cell,
+  atoms({ fontSize: '3' }),
+  { fontWeight: '800' },
+]);
 export const td = style([
   cell,
   atoms({ fontSize: '2' }),
