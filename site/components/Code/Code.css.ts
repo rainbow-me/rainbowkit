@@ -8,12 +8,14 @@ export const variants = recipe({
     atoms({
       fontFamily: 'mono',
       fontSize: '2',
-      paddingX: '2',
+      paddingX: '1',
       paddingBottom: 'px',
     }),
     style({
       fontWeight: '400',
       whiteSpace: 'nowrap',
+      MozOsxFontSmoothing: 'subpixel-antialiased',
+      WebkitFontSmoothing: 'subpixel-antialiased',
     }),
   ],
   variants: {

@@ -1,9 +1,26 @@
 import { globalStyle } from '@vanilla-extract/css';
-
 import { vars } from './vars.css';
 
 globalStyle('*, ::before, ::after', {
   boxSizing: 'border-box',
+});
+
+const highlightColors = [
+  vars.colors.orange,
+  vars.colors.blue,
+  vars.colors.pink,
+  vars.colors.purple,
+  vars.colors.red,
+  vars.colors.green,
+];
+
+function getColor() {
+  return Math.floor(Math.random() * highlightColors.length);
+}
+
+globalStyle('::selection', {
+  backgroundColor: `${highlightColors[getColor()]}`,
+  color: vars.colors.labelWhite,
 });
 
 globalStyle('body', {
@@ -19,6 +36,8 @@ globalStyle('body', {
 globalStyle('code, pre', {
   fontFamily: 'SFMono, ui-monospace, monospace',
   fontWeight: 400,
+  MozOsxFontSmoothing: 'subpixel-antialiased',
+  WebkitFontSmoothing: 'subpixel-antialiased',
 });
 
 globalStyle('button', {

@@ -5,12 +5,12 @@ import { vars } from './vars.css';
 export const pre = style({
   vars: {
     '--background': vars.colors.fillElevated,
-    '--text': vars.colors.label,
+    '--text': vars.colors.blue,
     '--outline': 'inset 0 0 0 1px transparent',
     '--syntax1': vars.colors.purple,
-    '--syntax2': vars.colors.blue,
-    '--syntax3': vars.colors.purple,
-    '--syntax4': vars.colors.blue,
+    '--syntax2': vars.colors.orange,
+    '--syntax3': vars.colors.pink,
+    '--syntax4': vars.colors.labelSecondary,
     '--comment': vars.colors.labelQuaternary,
     '--removed': 'rgb(205, 43, 49)',
     '--added': '$rgb(24, 121, 78)',
@@ -52,7 +52,6 @@ globalStyle(`${pre} .token.parameter`, {
 
 const syntax1 = [
   '.token.tag',
-  '.token.class-name',
   '.token.selector',
   '.token.selector .class',
   '.token.function',
@@ -92,6 +91,10 @@ globalStyle(syntax4.map(s => `${pre} ${s}`).join(`, `), {
 
 globalStyle(`${pre} .token.comment`, {
   color: 'var(--comment)',
+});
+
+globalStyle(`${pre} .token.class-name`, {
+  color: vars.colors.green,
 });
 
 const inherit = [
