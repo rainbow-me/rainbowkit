@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
 import { TransactionsMap, useTxHistory } from '../../hooks/useTxHistory';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
@@ -67,6 +68,7 @@ export function TxList({ accountData }: TxListProps) {
   const visibleTxs = txs?.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs?.length > 0;
   const mobile = isMobile();
+  const { appName } = useContext(AppContext);
 
   return (
     <>
@@ -104,7 +106,7 @@ export function TxList({ accountData }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  Your transactions will appear here...
+                  {appName} transactions will appear here...
                 </Text>
               </Box>
               {mobile && (
