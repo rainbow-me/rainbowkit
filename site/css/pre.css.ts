@@ -128,3 +128,16 @@ const tokensModifiersPrefixed = [
 globalStyle(tokensModifiersPrefixed.map(s => `${pre} ${s}`).join(`, `), {
   userSelect: 'none',
 });
+
+globalStyle(
+  `${pre} [data-highlighted=false], ${pre} [data-highlighted=false] .token`,
+  {
+    color: vars.colors.gray50,
+  }
+);
+
+globalStyle(`${pre} .highlight-word`, {
+  backgroundColor: vars.colors.fillSecondary,
+  borderRadius: vars.radii[1],
+  padding: '0 3px',
+});

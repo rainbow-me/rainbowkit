@@ -9,15 +9,15 @@ description: Get up and running with RainbowKit
 
 ### Install
 
-Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
+Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi ethers
+npm install @rainbow-me/rainbowkit wagmi@0.2 ethers
 ```
 
-### Getting started
+### Import
 
-To start, import RainbowKit’s base styles, configure your wallets and desired chains, generate the required connectors, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+Import RainbowKit, wagmi, and ethers.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -29,6 +29,15 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
+import { providers } from 'ethers';
+```
+
+### Configure
+
+Configure your wallets, desired chains and generate the required connectors.
+
+```tsx line=3-99
+...
 import { providers } from 'ethers';
 
 const infuraId = process.env.INFURA_ID;
@@ -53,6 +62,15 @@ const wallets = getDefaultWallets({
 });
 
 const connectors = connectorsForWallets(wallets);
+```
+
+### Wrap providers
+
+Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+
+```tsx line=3-99
+...
+const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
@@ -65,17 +83,15 @@ const App = () => {
 };
 ```
 
-Then, in your app, import RainbowKit’s `ConnectButton` component.
+### Use it
+
+Then, in your app, import and render the `ConnectButton` component.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const YourApp = () => {
-  return (
-    <>
-      <ConnectButton />
-    </>
-  );
+  return <ConnectButton />;
 };
 ```
 
