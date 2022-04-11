@@ -70,8 +70,8 @@ const variant = {
       backgroundColor: 'transparent',
       boxShadow: outlineValue,
       selectors: {
-        '&:focus': {
-          boxShadow: `0 0 0 2px ${vars.colors.blue}, 0 0 0 4px ${vars.colors.purple}`,
+        [hideFocusRingsDataAttribute]: {
+          boxShadow: outlineValue,
         },
       },
     }),
@@ -114,11 +114,14 @@ const shadowValue =
   '0 10px 30px rgba(27, 29, 31, 0.1), 0 5px 15px rgba(27, 29, 31, 0.04)';
 
 const shadow = {
-  true: style([
-    style({
-      boxShadow: shadowValue,
-    }),
-  ]),
+  true: style({
+    boxShadow: shadowValue,
+    selectors: {
+      [hideFocusRingsDataAttribute]: {
+        boxShadow: shadowValue,
+      },
+    },
+  }),
   false: {},
 };
 
@@ -171,10 +174,6 @@ export const variants = recipe({
           outline: 'none',
           boxShadow: `0 0 0 2px ${vars.colors.background}, 0 0 0 4px ${vars.colors.purple}`,
         },
-        [hideFocusRingsDataAttribute]: {
-          outline: 'none',
-          boxShadow: shadowValue,
-        },
         '&:disabled': {
           backgroundColor: vars.colors.fill,
           color: vars.colors.gray30,
@@ -203,6 +202,11 @@ export const variants = recipe({
       },
       style: {
         boxShadow: `${outlineValue}, ${shadowValue}`,
+        selectors: {
+          [hideFocusRingsDataAttribute]: {
+            boxShadow: `${outlineValue}, ${shadowValue}`,
+          },
+        },
       },
     },
   ],
