@@ -13,7 +13,7 @@ export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   name: 'Ledger Live',
-  iconUrl: async () => (await import('./ledger.png')).default,
+  iconUrl: async () => (await import('./ledger.svg')).default,
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
     ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
