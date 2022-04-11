@@ -1,5 +1,10 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {
+  ConnectButton,
+  useAddRecentTransaction,
+  useClearRecentTransactions,
+} from '@rainbow-me/rainbowkit';
 import React, { ComponentProps, useState } from 'react';
+import { useAccount } from 'wagmi';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
@@ -25,6 +30,8 @@ const Example = () => {
   const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
     defaultProps.showBalance.largeScreen
   );
+
+  const [{ data: accountData }] = useAccount();
 
   return (
     <div
@@ -225,8 +232,81 @@ const Example = () => {
           </tbody>
         </table>
       </div>
+      {accountData ? <ManageTransactions /> : null}
     </div>
   );
 };
+
+function ManageTransactions() {
+  const addRecentTransaction = useAddRecentTransaction();
+  const clearRecentTransactions = useClearRecentTransactions();
+
+  const [hash, setHash] = useState('');
+  const [description, setDescription] = useState('');
+  const [confirmations, setConfirmations] = useState(1);
+
+  return (
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+
+        addRecentTransaction({
+          confirmations: confirmations === 1 ? undefined : confirmations,
+          description: description.trim() || 'Transaction',
+          hash: hash.trim(),
+        });
+
+        setHash('');
+        setDescription('');
+      }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        fontFamily: 'sans-serif',
+        gap: 12,
+      }}
+    >
+      <h3>Add recent transaction</h3>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txHash">Hash</label>
+        <input
+          id="txHash"
+          onChange={e => setHash(e.currentTarget.value)}
+          type="text"
+          value={hash}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txDescription">Description</label>
+        <input
+          id="txDescription"
+          onChange={e => setDescription(e.currentTarget.value)}
+          type="text"
+          value={description}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txConfirmations">Confirmations</label>
+        <input
+          id="txConfirmations"
+          onChange={e => setConfirmations(e.currentTarget.valueAsNumber)}
+          type="number"
+          value={confirmations}
+        />
+      </div>
+      <div>
+        <button disabled={hash.trim().length === 0} type="submit">
+          Add recent transaction
+        </button>
+      </div>
+      <h3>Clear recent transactions</h3>
+      <div>
+        <button onClick={clearRecentTransactions} type="button">
+          Clear recent transactions
+        </button>
+      </div>
+    </form>
+  );
+}
 
 export default Example;
