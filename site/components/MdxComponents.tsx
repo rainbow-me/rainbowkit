@@ -99,7 +99,12 @@ export const components = {
     }, [requestCopy, code]);
 
     return (
-      <Box position="relative">
+      <Box
+        position="relative"
+        borderRadius="5"
+        marginY="5"
+        style={{ overflow: 'hidden' }}
+      >
         <Box
           as="pre"
           ref={preRef}
@@ -110,16 +115,18 @@ export const components = {
         >
           {children}
         </Box>
-        <Box position="absolute" top="3" right="3">
+        <Box position="absolute" top="3" right="3" data-copy>
           <Button
             shape="square"
             variant="blue"
-            onClick={() => setRequestCopy(true)}
             size="xl"
+            onClick={() => setRequestCopy(true)}
+            tabIndex={-1}
           >
             {requestCopy ? <CheckIcon /> : <CopyIcon />}
           </Button>
         </Box>
+        <div data-pre-gradient />
       </Box>
     );
   },

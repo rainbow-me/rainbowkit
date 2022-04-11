@@ -54,7 +54,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   position: 'fixed',
                   inset: 0,
                   zIndex: 11,
-                  backgroundColor: vars.colors.backgroundElevated,
+                  backgroundColor: vars.colors.backgroundScrim,
                 }}
               />
               <DialogPrimitive.Content

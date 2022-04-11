@@ -29,9 +29,10 @@ export const pre = style({
   },
 
   boxSizing: 'border-box',
-  borderRadius: '18px',
-  padding: '20px 25px',
-  overflow: 'auto',
+  margin: 0,
+  borderRadius: vars.radii[5],
+  padding: `${vars.space[6]} ${vars.space[11]} ${vars.space[6]} ${vars.space[6]}`,
+  overflowX: 'auto',
   fontSize: '14px',
   lineHeight: '22px',
   whiteSpace: 'pre',
@@ -39,11 +40,12 @@ export const pre = style({
   backgroundColor: 'var(--background)',
   color: 'var(--text)',
   boxShadow: 'var(--outline)',
-  display: 'block',
+  display: 'flex',
 });
 
 globalStyle(`${pre} code`, {
-  display: 'block',
+  minWidth: '100%',
+  marginRight: 100,
 });
 
 globalStyle(`${pre} .token.parameter`, {
@@ -143,4 +145,24 @@ globalStyle(`${pre} .highlight-word`, {
   backgroundColor: vars.colors.fillSecondary,
   borderRadius: vars.radii[1],
   padding: '0 3px',
+});
+
+globalStyle(`${pre} + [data-copy]`, {
+  opacity: 0,
+  transition: 'opacity 100ms ease',
+  zIndex: 2,
+});
+
+globalStyle(`${pre}:hover + [data-copy], [data-copy]:hover`, {
+  opacity: 1,
+});
+
+globalStyle(`${pre} ~ [data-pre-gradient]`, {
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  backgroundImage: `linear-gradient(to right, transparent, ${vars.colors.fillElevated})`,
+  width: 30,
+  height: '100%',
+  zIndex: 1,
 });

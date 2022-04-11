@@ -19,7 +19,7 @@ export const YourApp = () => {
 
 > Note: Make sure rour app must is wrapped in the necessary providers. [Read more](/docs/installation#wrap-providers).
 
-### Customising
+### Props
 
 The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
 
@@ -98,12 +98,12 @@ Hide the chain UI entirely.
 
 #### Balance status
 
-Here are a few different ways you can use the `balanceStatus` prop.
+Here are a few different ways you can use the `showBalance` prop.
 
 Hide the balance.
 
 ```tsx
-<ConnectButton balanceStatus={false} />
+<ConnectButton showBalance={false} />
 ```
 
 #### Responsive
@@ -113,11 +113,21 @@ These props can also be defined in a responsive format.
 On small screens, only show account icon. But on large screens, show icon and address.
 
 ```tsx
-<ConnectButton accountStatus={{ smallScreen: "icon", largeScreen: "full" }}>
+<ConnectButton
+  accountStatus={{
+    smallScreen: 'icon',
+    largeScreen: 'full',
+  }}
+/>
 ```
 
 On small screens, hide balance. But on large screens, show it.
 
 ```tsx
-<ConnectButton showBalance={{ smallScreen: false, largeScreen: true }}>
+<ConnectButton
+  showBalance={{
+    smallScreen: false,
+    largeScreen: true,
+  }}
+/>
 ```

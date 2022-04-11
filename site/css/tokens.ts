@@ -140,6 +140,7 @@ export const tokens = {
 
       background: colors.white100,
       backgroundElevated: colors.blueGray10,
+      backgroundScrim: 'rgba(0, 0, 0, .2)',
 
       separator: colors.gray20,
     },
@@ -168,6 +169,7 @@ export const tokens = {
 
       background: colors.black100,
       backgroundElevated: colors.white10,
+      backgroundScrim: 'rgba(0, 0, 0, .4)',
 
       separator: colors.white20,
     },
