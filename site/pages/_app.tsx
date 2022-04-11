@@ -1,16 +1,34 @@
 /* eslint-disable react/no-danger */
 import '@rainbow-me/rainbowkit/styles.css';
 import { DocsLayout } from 'components/DocsLayout/DocsLayout';
+import { vars } from 'css/vars.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'focus-visible';
 import 'css/global.css';
+
+const highlightColors = [
+  vars.colors.orange,
+  vars.colors.blue,
+  vars.colors.pink,
+  vars.colors.purple,
+  vars.colors.red,
+  vars.colors.green,
+];
+
+function getColor() {
+  return highlightColors[Math.floor(Math.random() * highlightColors.length)];
+}
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const isDocs = router.pathname.includes('/docs');
+
+  useEffect(() => {
+    document.body.style.setProperty('--selectionColor', getColor());
+  }, []);
 
   return (
     <>
