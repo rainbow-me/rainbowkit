@@ -26,6 +26,16 @@ export const components = {
       as="h3"
       variant="title2"
       weight="semibold"
+      marginTop="11"
+      marginBottom="2"
+      {...props}
+    />
+  ),
+  h4: props => (
+    <Text
+      as="h4"
+      variant="title3"
+      weight="semibold"
       marginTop="10"
       marginBottom="2"
       {...props}
@@ -44,13 +54,15 @@ export const components = {
   Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
   ul: props => <Box as="ul" paddingLeft="3" paddingBottom="6" {...props} />,
   ol: props => <Box as="ol" paddingLeft="4" {...props} />,
-  li: props => (
-    <Text
-      as="li"
-      variant="base"
+  li: ({ children, ...props }) => (
+    <li
       {...props}
       style={{ listStyle: 'none', display: 'flex', alignItems: 'center' }}
-    />
+    >
+      <Text variant="body" style={{ fontWeight: 500, lineHeight: '25px' }}>
+        {children}
+      </Text>
+    </li>
   ),
   pre: ({ children, ...props }) => {
     return (

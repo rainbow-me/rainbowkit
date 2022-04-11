@@ -40,3 +40,8 @@ globalStyle('li:before', {
 globalStyle('svg', {
   verticalAlign: 'middle',
 });
+
+globalStyle('[data-emoji]', {
+  fontFamily: 'system-ui',
+  fontWeight: 400,
+});
