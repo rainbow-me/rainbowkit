@@ -21,6 +21,7 @@
     "@web3-react/walletconnect-connector": "6.2.4",
     "@web3-react/walletlink-connector": "6.2.8",
     "clsx": "^1.1.1",
+    "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
     "ethers": "5.0.0",
     "focus-visible": "^5.2.0",

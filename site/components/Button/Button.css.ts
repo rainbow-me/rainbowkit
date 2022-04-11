@@ -70,8 +70,8 @@ const variant = {
       backgroundColor: 'transparent',
       boxShadow: outlineValue,
       selectors: {
-        '&:focus': {
-          boxShadow: `0 0 0 2px ${vars.colors.blue}, 0 0 0 4px ${vars.colors.purple}`,
+        [hideFocusRingsDataAttribute]: {
+          boxShadow: outlineValue,
         },
       },
     }),
@@ -105,7 +105,9 @@ const variant = {
 export type Variant = keyof typeof variant;
 
 const shape = {
-  circle: {},
+  base: style([atoms({ borderRadius: 'round' })]),
+  circle: style([atoms({ borderRadius: 'round' })]),
+  square: {},
 };
 
 export type Shape = keyof typeof shape;
@@ -114,11 +116,14 @@ const shadowValue =
   '0 10px 30px rgba(27, 29, 31, 0.1), 0 5px 15px rgba(27, 29, 31, 0.04)';
 
 const shadow = {
-  true: style([
-    style({
-      boxShadow: shadowValue,
-    }),
-  ]),
+  true: style({
+    boxShadow: shadowValue,
+    selectors: {
+      [hideFocusRingsDataAttribute]: {
+        boxShadow: shadowValue,
+      },
+    },
+  }),
   false: {},
 };
 
@@ -126,20 +131,27 @@ export type Shadow = keyof typeof shadow;
 
 const getShapeSizeCompoundVariant = (
   size: Size,
+  shape: Shape,
   width: Sprinkles['size'] | number
 ) => ({
   variants: {
     size,
-    shape: 'circle' as const,
+    shape,
   },
   style: [
     atoms({
       width: typeof width === 'string' ? (width as any) : undefined,
       textAlign: 'center',
       justifyContent: 'center',
+      borderRadius:
+        shape === 'square'
+          ? size === 'xs' || size === 's' || size === 'm'
+            ? '2'
+            : '3'
+          : undefined,
     }),
     style({
-      width: Number(width) && (width as any),
+      ...(typeof width === 'number' ? { width } : {}),
       paddingLeft: '0',
       paddingRight: '0',
     }),
@@ -152,7 +164,6 @@ export const variants = recipe({
       alignItems: 'center',
       cursor: 'pointer',
       display: 'inline-flex',
-      borderRadius: 'round',
       fontFamily: 'normal',
       transitionProperty: 'transform',
       transitionTimingFunction: 'ease',
@@ -171,10 +182,6 @@ export const variants = recipe({
           outline: 'none',
           boxShadow: `0 0 0 2px ${vars.colors.background}, 0 0 0 4px ${vars.colors.purple}`,
         },
-        [hideFocusRingsDataAttribute]: {
-          outline: 'none',
-          boxShadow: shadowValue,
-        },
         '&:disabled': {
           backgroundColor: vars.colors.fill,
           color: vars.colors.gray30,
@@ -191,11 +198,16 @@ export const variants = recipe({
     shadow,
   },
   compoundVariants: [
-    getShapeSizeCompoundVariant('xs', '7'),
-    getShapeSizeCompoundVariant('s', '8'),
-    getShapeSizeCompoundVariant('m', '9'),
-    getShapeSizeCompoundVariant('l', 36),
-    getShapeSizeCompoundVariant('xl', 44),
+    getShapeSizeCompoundVariant('xs', 'circle', '7'),
+    getShapeSizeCompoundVariant('s', 'circle', '8'),
+    getShapeSizeCompoundVariant('m', 'circle', '9'),
+    getShapeSizeCompoundVariant('l', 'circle', 36),
+    getShapeSizeCompoundVariant('xl', 'circle', 44),
+    getShapeSizeCompoundVariant('xs', 'square', '7'),
+    getShapeSizeCompoundVariant('s', 'square', '8'),
+    getShapeSizeCompoundVariant('m', 'square', '9'),
+    getShapeSizeCompoundVariant('l', 'square', 36),
+    getShapeSizeCompoundVariant('xl', 'square', 44),
     {
       variants: {
         variant: 'outline',
@@ -203,6 +215,11 @@ export const variants = recipe({
       },
       style: {
         boxShadow: `${outlineValue}, ${shadowValue}`,
+        selectors: {
+          [hideFocusRingsDataAttribute]: {
+            boxShadow: `${outlineValue}, ${shadowValue}`,
+          },
+        },
       },
     },
   ],

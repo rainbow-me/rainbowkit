@@ -20,6 +20,7 @@ export const base = style({
   selectors: {
     [`${hideFocusRingsDataAttribute}`]: {
       outline: 'none',
+      boxShadow: 'inherit',
     },
   },
 });

@@ -492,6 +492,85 @@ export default function DS() {
         </Button>
       </Box>
 
+      <Text
+        as="h3"
+        variant="headline"
+        color="labelSecondary"
+        marginTop="8"
+        marginBottom="4"
+      >
+        Shape Square
+      </Text>
+
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="square" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="square" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="square" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="square" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="square" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="square" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="square" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="square" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="square" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="square" variant="blue" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="square" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="square" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="square" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="square" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="square" variant="outline" aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+      <Box display="flex" alignItems="center" gap="4" marginY="4">
+        <Button size="xs" shape="square" shadow aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="s" shape="square" shadow aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="m" shape="square" shadow aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="l" shape="square" shadow aria-label="action">
+          <IconTag />
+        </Button>
+        <Button size="xl" shape="square" shadow aria-label="action">
+          <IconTag />
+        </Button>
+      </Box>
+
       <Text as="h2" variant="title1" marginTop="11" marginBottom="8">
         Text
       </Text>

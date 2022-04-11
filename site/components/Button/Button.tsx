@@ -56,7 +56,7 @@ export const Button = React.forwardRef(
       children,
       prefix,
       shadow,
-      shape,
+      shape = 'base',
       size = 'm',
       style,
       suffix,
