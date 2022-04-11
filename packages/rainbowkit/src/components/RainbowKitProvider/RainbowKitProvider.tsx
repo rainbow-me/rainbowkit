@@ -2,11 +2,8 @@ import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
+import { AppContext, defaultAppContext } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
-import {
-  defaultLearnMoreUrl,
-  LearnMoreUrlContext,
-} from './LearnMoreUrlContext';
 import {
   RainbowKitChain,
   RainbowKitChainContext,
@@ -41,7 +38,7 @@ export interface RainbowKitProviderProps {
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
-  learnMoreUrl?: string;
+  appContext?: { appName?: string; learnMoreUrl?: string };
   coolMode?: boolean;
 }
 
@@ -52,7 +49,7 @@ export function RainbowKitProvider({
   id,
   theme = defaultTheme,
   children,
-  learnMoreUrl = defaultLearnMoreUrl,
+  appContext = defaultAppContext,
   coolMode = false,
 }: RainbowKitProviderProps) {
   const rainbowkitChains = useMemo(
@@ -71,7 +68,7 @@ export function RainbowKitProvider({
   return (
     <RainbowKitChainContext.Provider value={rainbowkitChains}>
       <CoolModeContext.Provider value={coolMode}>
-        <LearnMoreUrlContext.Provider value={learnMoreUrl}>
+        <AppContext.Provider value={appContext}>
           <ThemeIdContext.Provider value={id}>
             {theme ? (
               <div {...createThemeRootProps(id)}>
@@ -95,7 +92,7 @@ export function RainbowKitProvider({
               children
             )}
           </ThemeIdContext.Provider>
-        </LearnMoreUrlContext.Provider>
+        </AppContext.Provider>
       </CoolModeContext.Provider>
     </RainbowKitChainContext.Provider>
   );
