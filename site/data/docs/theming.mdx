@@ -7,28 +7,41 @@ description: Using and customizing the themes
 
 ## Using and customizing the themes
 
-RainbowKit ships with a static CSS file that can be themed via CSS variables, which RainbowKitProvider provides as inline styles by default.
+You can tweak the RainbowKit UI to match your branding. You can pick from a few pre-defined accent colors and border radius configurations.
 
-### Built-in themes
-
-There are 3 built-in themes:
+There are 3 built-in theme functions:
 
 - `lightTheme` &nbsp; (default)
 - `darkTheme`
 - `midnightTheme`
 
-These themes are implemented as functions where the resulting theme object can be passed to the theme prop on `RainbowKitProvider`.
+A theme function returns a theme object. You can pass the object to the `RainbowKitProvider`'s `theme` prop.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 
-const App = () => {
-  return (
-    <RainbowKitProvider theme={darkTheme()} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+If you want, You can pass in `accentColor` and `borderRadius` to customize them.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: 'purple',
+      __borderRadius__: 'small',
+    })}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
 ```
 
 ### Customizing the built-in themes
@@ -43,7 +56,8 @@ The built-in theme functions also accept an options object, allowing you to sele
       default: 'blue',
       type: '"blue" | "green" | "pink" | "purple"',
       typeSimple: 'enum',
-      description: 'The background/text color of various interactive elements',
+      description:
+        'The background/text color of various interactive elements',
     },
     {
       name: 'borderRadius',
@@ -56,7 +70,44 @@ The built-in theme functions also accept an options object, allowing you to sele
   ]}
 />
 
-For example, to customize the dark theme with a purple accent color and a medium border radius scale:
+### Examples
+
+#### Theme function
+
+Here are a few different ways you can use the `theme` prop.
+
+Use the `darkTheme` theme.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Use the `midnightTheme` theme.
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### Accent color
+
+Here are a few different ways you can use the `accentColor` config.
+
+Set the accent color to `purple`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -66,17 +117,118 @@ const App = () => {
     <RainbowKitProvider
       theme={darkTheme({
         accentColor: 'purple',
-        borderRadius: 'medium',
       })}
-      {...etc}
     >
-      {/* ... */}
+      {/* Your App */}
     </RainbowKitProvider>
   );
 };
 ```
 
-### Dark mode support
+Set the accent color to `green`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: 'green',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Border radius
+
+Here are a few different ways you can use the `borderRadius` config.
+
+Set the border radius to `medium`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Set the border radius to `none`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Mix and match
+
+Here are a few different ways you can use different themes, with `accentColor` and `borderRadius` props together.
+
+Use the `lightTheme` theme, set the accent color to `green` and the border radius to `medium`.
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: 'green',
+        borderRadius: 'medium',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Use the `midnightTheme` theme, set the accent color to `pink` and the border radius to `small`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        accentColor: 'pink',
+        borderRadius: 'small',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Dark mode support
 
 If your app uses the standard `prefers-color-mode: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
@@ -87,17 +239,14 @@ import {
   darkTheme,
 } from '@rainbow-me/rainbowkit';
 
-const App = () => {
-  return (
-    <RainbowKitProvider
-      theme={{
-        lightMode: lightTheme(),
-        darkMode: darkTheme(),
-      }}
-      {...etc}
-    >
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
 ```
