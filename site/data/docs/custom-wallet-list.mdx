@@ -1,26 +1,142 @@
 ---
 title: Custom Wallet List
-description: Customising the wallet list
+description: Customizing the wallet list
 ---
 
 # Custom Wallet List
 
-## Customising the wallet list
+## Customizing the wallet list
 
-> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
+> Note: This API is unstable and likely to change in the near future. We recommend avoiding changes to the wallet list for now.
 
-The following wallet options are presented by default via the getDefaultWallets function:
+You can use the `wallet` object and the `Wallet` TypeScript type to build your own list of wallets. This way you have full control over which wallets to display, and in which order.
 
-- Rainbow
-- WalletConnect
-- Coinbase Wallet
-- MetaMask
+For example, only show Rainbow and WalletConnect.
+
+```tsx
+import { wallet, Wallets } from '@rainbow-me/rainbowkit';
+
+const wallets: Wallets = [
+  {
+    groupName: 'Recommended',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+    ],
+  },
+];
+```
+
+You can then use your `wallets` object to create the neccessary connectors by using the `connectorsForWallets` function.
+
+```tsx line=5
+import { wallet, Wallets, __connectorsForWallets__ } from '@rainbow-me/rainbowkit';
+
+const wallets: Wallets = [...];
+
+const connectors = connectorsForWallets(wallets);
+```
+
+Finally, you can now pass your custom wallets to `RainbowKitProvider`'s `connectors` prop.
+
+```tsx line=3-10
+...
+const connectors = connectorsForWallets(wallets);
+
+const App = () => (
+  <RainbowKitProvider connectors={connectors}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Examples
+
+#### Ordering
+
+Here are a few examples of displaying different wallets, in different order.
+
+Show MetaMask and WalletConnect.
+
+```tsx
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const wallets: WalletList = [
+  {
+    groupName: 'Recommended',
+    wallets: [
+      wallet.metaMask({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+    ],
+  },
+];
+```
+
+Show MetaMask, Rainbow and Coinbase.
+
+```tsx
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const wallets: WalletList = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.metaMask({ chains, infuraId }),
+      wallet.rainbow({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+    ],
+  },
+];
+```
+
+> Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
+
+#### Multiple groups
+
+You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possibile wallets.
+
+Recommend Rainbow and MetaMask, but also offer WalletConnect and Coinbase.
+
+```tsx
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const wallets: WalletList = [
+  {
+    groupName: 'Recommended',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.metaMask({ chains, infuraId }),
+    ],
+  },
+  {
+    groupName: 'Others',
+    wallets: [
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+    ],
+  },
+];
+```
+
+#### Injected fallback
 
 An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn't been provided by another wallet.
 
 All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
 
-```tsx
+```tsx line=3-7,23-25
 import { wallet, Wallets } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
