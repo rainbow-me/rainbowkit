@@ -37,17 +37,20 @@ const wallets: Wallets = [...];
 const connectors = connectorsForWallets(wallets);
 ```
 
-Finally, you can now pass your custom wallets to `RainbowKitProvider`'s `connectors` prop.
+Finally, you can now pass your custom wallets to `WagmiProvider`'s `connectors` prop.
 
-```tsx line=3-10
+```tsx line=1,4-11
+import { WagmiProvider, chain } from 'wagmi';
 ...
 const connectors = connectorsForWallets(wallets);
 
 const App = () => (
-  <RainbowKitProvider connectors={connectors}>
-    {/* Your App */}
-  </RainbowKitProvider>;
-)
+  <RainbowKitProvider>
+    <WagmiProvider connectors={connectors}>
+      {/* Your App */}
+    </WagmiProvider>
+  </RainbowKitProvider>
+);
 ```
 
 ### Examples
