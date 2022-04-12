@@ -6,7 +6,9 @@ import React from 'react';
 
 export function CoolMode() {
   // TODO: change this after upload the image to rainbow
-  const coolModeRef = useCoolMode('https://ped.ro/rainbow.png');
+  const coolModeRef = useCoolMode(
+    'https://rainbowkit-site-git-peduarte-marketing-playground-rainbowdotme.vercel.app/rainbow-avatar.png'
+  );
   return (
     <Box
       backgroundColor="pink"
