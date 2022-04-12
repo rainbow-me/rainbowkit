@@ -12,10 +12,7 @@ export type RouteProps = {
 export const docsRoutes: RouteProps[] = [
   {
     label: 'Overview',
-    pages: [
-      { title: 'Introduction', slug: 'introduction' },
-      { title: 'API', slug: 'api' },
-    ],
+    pages: [{ title: 'Introduction', slug: 'introduction' }],
   },
 
   {
@@ -35,7 +32,8 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Custom Theme', slug: 'custom-theme' },
       { title: 'Custom Wallet List', slug: 'custom-wallet-list' },
       { title: 'Custom Wallets', slug: 'custom-wallets' },
-      { title: 'Custom "Learn More" link', slug: 'custom-learn-more-link' },
+      { title: '"Learn More" link', slug: 'custom-learn-more-link' },
+      { title: 'Cool mode', slug: 'cool-mode' },
     ],
   },
 ];

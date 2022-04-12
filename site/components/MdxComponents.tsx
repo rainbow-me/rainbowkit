@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { Box } from './Box/Box';
 import { Button } from './Button/Button';
 import { Code } from './Code/Code';
+import { CoolMode } from './CoolMode/CoolMode';
 import { Link } from './Link/Link';
 import { PropsTable } from './PropsTable/PropsTable';
 import { Text } from './Text/Text';
@@ -177,6 +178,7 @@ export const components = {
       {...props}
     />
   ),
+  CoolMode,
 };
 
 const CopyIcon = () => (

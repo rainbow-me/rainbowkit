@@ -167,4 +167,5 @@ globalStyle(`${pre} ~ [data-pre-gradient]`, {
   width: 30,
   height: 'calc(100% - 2px)',
   zIndex: 1,
+  pointerEvents: 'none',
 });
