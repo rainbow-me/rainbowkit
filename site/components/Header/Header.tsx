@@ -52,7 +52,7 @@ export function Header({
           borderBottomWidth="1"
           borderColor="separator"
           display={{ lg: 'none' }}
-          paddingX="10"
+          paddingX={{ lg: '10', md: '10', sm: '6', xs: '6' }}
           paddingY="4"
           ref={docsMobileMenuRef}
         />

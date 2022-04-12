@@ -160,7 +160,7 @@ globalStyle(`${pre}:hover + [data-copy], [data-copy]:hover`, {
 globalStyle(`${pre} ~ [data-pre-gradient]`, {
   position: 'absolute',
   top: 1,
-  right: 1,
+  right: 0,
   borderTopRightRadius: '15px',
   borderBottomRightRadius: '15px',
   backgroundImage: `linear-gradient(to right, transparent, ${vars.colors.fillElevated})`,

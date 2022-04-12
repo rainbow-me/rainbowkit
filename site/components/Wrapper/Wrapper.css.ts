@@ -12,9 +12,17 @@ export const wrapper = style([
     maxWidth: 1024,
   }),
   responsiveStyle({
-    lg: {
-      paddingLeft: vars.space[11],
-      paddingRight: vars.space[11],
+    md: {
+      paddingLeft: vars.space[10],
+      paddingRight: vars.space[10],
+    },
+    sm: {
+      paddingLeft: vars.space[6],
+      paddingRight: vars.space[6],
+    },
+    xs: {
+      paddingLeft: vars.space[6],
+      paddingRight: vars.space[6],
     },
   }),
 ]);

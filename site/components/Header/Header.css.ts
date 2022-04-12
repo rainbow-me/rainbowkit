@@ -1,6 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
+import { responsiveStyle } from 'css/responsiveStyle';
+import { vars } from 'css/vars.css';
 
 export const header = [
   atoms({
@@ -22,6 +24,20 @@ export const row = style([
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+  }),
+  responsiveStyle({
+    md: {
+      paddingLeft: vars.space[10],
+      paddingRight: vars.space[10],
+    },
+    sm: {
+      paddingLeft: vars.space[6],
+      paddingRight: vars.space[6],
+    },
+    xs: {
+      paddingLeft: vars.space[6],
+      paddingRight: vars.space[6],
+    },
   }),
 ]);
 

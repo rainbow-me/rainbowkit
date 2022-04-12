@@ -125,6 +125,10 @@ export const components = {
             size="xl"
             onClick={() => setRequestCopy(true)}
             tabIndex={-1}
+            style={{
+              backgroundColor: `${vars.colors.lightBlue}`,
+              boxShadow: `0 0 8px ${vars.colors.fillElevated}`,
+            }}
           >
             {requestCopy ? <CheckIcon /> : <CopyIcon />}
           </Button>
