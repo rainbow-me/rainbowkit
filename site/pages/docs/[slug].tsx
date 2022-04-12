@@ -1,6 +1,6 @@
 import { components } from 'components/MdxComponents';
+import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { useMDXComponent } from 'next-contentlayer/hooks';
-import Head from 'next/head';
 import React from 'react';
 import { allDocs, Doc } from '.contentlayer/generated';
 
@@ -9,9 +9,10 @@ export default function DocPage({ doc }: { doc: Doc }) {
 
   return (
     <>
-      <Head>
-        <title>{doc.title}</title>
-      </Head>
+      <TitleAndMetaTags
+        description={doc.description}
+        title={`${doc.title} — RainbowKit`}
+      />
       <article>
         <Component components={components} />
       </article>
