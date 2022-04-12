@@ -126,6 +126,7 @@ export const tokens = {
       yellow: colors.yellow60,
 
       accent: colors.white100,
+      lightBlue: '#EFF4FE',
 
       label: colors.gray100,
       labelSecondary: colors.gray80,
@@ -155,6 +156,7 @@ export const tokens = {
       yellow: colors.yellow50,
 
       accent: colors.black100,
+      lightBlue: '#252C39',
 
       label: colors.white100,
       labelSecondary: colors.white80,
