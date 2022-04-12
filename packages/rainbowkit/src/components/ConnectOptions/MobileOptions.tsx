@@ -9,7 +9,7 @@ import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
-import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
@@ -99,7 +99,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const learnMoreUrl = useContext(LearnMoreUrlContext);
+  const { learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;

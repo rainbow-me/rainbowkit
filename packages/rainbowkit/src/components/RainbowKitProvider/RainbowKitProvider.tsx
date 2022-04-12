@@ -3,11 +3,8 @@ import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
+import { AppContext, defaultAppContext } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
-import {
-  defaultLearnMoreUrl,
-  LearnMoreUrlContext,
-} from './LearnMoreUrlContext';
 import {
   RainbowKitChain,
   RainbowKitChainContext,
@@ -43,8 +40,8 @@ export interface RainbowKitProviderProps {
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
-  learnMoreUrl?: string;
   showRecentTransactions?: boolean;
+  appContext?: { appName?: string; learnMoreUrl?: string };
   coolMode?: boolean;
 }
 
@@ -55,7 +52,7 @@ export function RainbowKitProvider({
   id,
   theme = defaultTheme,
   children,
-  learnMoreUrl = defaultLearnMoreUrl,
+  appContext = defaultAppContext,
   showRecentTransactions = false,
   coolMode = false,
 }: RainbowKitProviderProps) {
@@ -74,10 +71,10 @@ export function RainbowKitProvider({
 
   return (
     <RainbowKitChainContext.Provider value={rainbowkitChains}>
-      <TransactionStoreProvider>
+      <CoolModeContext.Provider value={coolMode}>
         <ShowRecentTransactionsContext.Provider value={showRecentTransactions}>
-          <CoolModeContext.Provider value={coolMode}>
-            <LearnMoreUrlContext.Provider value={learnMoreUrl}>
+          <TransactionStoreProvider>
+            <AppContext.Provider value={appContext}>
               <ThemeIdContext.Provider value={id}>
                 {theme ? (
                   <div {...createThemeRootProps(id)}>
@@ -101,10 +98,10 @@ export function RainbowKitProvider({
                   children
                 )}
               </ThemeIdContext.Provider>
-            </LearnMoreUrlContext.Provider>
-          </CoolModeContext.Provider>
+            </AppContext.Provider>
+          </TransactionStoreProvider>
         </ShowRecentTransactionsContext.Provider>
-      </TransactionStoreProvider>
+      </CoolModeContext.Provider>
     </RainbowKitChainContext.Provider>
   );
 }
