@@ -116,7 +116,7 @@ const dimensions = {
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
-const textAlignments = ['left', 'center', 'inherit'];
+const textAlignments = ['left', 'center', 'inherit'] as const;
 
 const interactionProperties = defineProperties({
   conditions: {
