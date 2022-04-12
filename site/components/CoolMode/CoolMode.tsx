@@ -5,6 +5,7 @@ import { useCoolMode } from 'lib/useCoolMode';
 import React from 'react';
 
 export function CoolMode() {
+  // TODO: change this after upload the image to rainbow
   const coolModeRef = useCoolMode('https://ped.ro/rainbow.png');
   return (
     <Box
