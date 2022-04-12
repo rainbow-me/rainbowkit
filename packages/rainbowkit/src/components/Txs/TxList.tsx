@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAccount, useNetwork } from 'wagmi';
+import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
@@ -17,6 +18,7 @@ interface TxListProps {
 
 export function TxList({ accountData }: TxListProps) {
   const recentTransactions = useRecentTransactions();
+  const clearRecentTransactions = useClearRecentTransactions();
   const [{ data: networkData }] = useNetwork();
   const chain = networkData?.chain;
   const address = accountData?.address;
@@ -41,13 +43,45 @@ export function TxList({ accountData }: TxListProps) {
             paddingTop={mobile ? '0' : '8'}
             paddingX={mobile ? '12' : '6'}
           >
-            <Text
-              color="modalTextSecondary"
-              size={mobile ? '16' : '14'}
-              weight="semibold"
-            >
-              Recent Transactions
-            </Text>
+            <Box display="flex" gap="4" justifyContent="space-between">
+              <Text
+                color="modalTextSecondary"
+                size={mobile ? '16' : '14'}
+                weight="semibold"
+              >
+                Recent Transactions
+              </Text>
+              <Box
+                as="button"
+                background={{
+                  hover: 'profileForeground',
+                }}
+                borderRadius="actionButton"
+                onClick={clearRecentTransactions}
+                padding="6"
+                paddingX="10"
+                style={{
+                  marginBottom: -6,
+                  marginLeft: -10,
+                  marginRight: -10,
+                  marginTop: -6,
+                }}
+                transform={{
+                  active: 'shrink',
+                  hover: 'grow',
+                }}
+                transition="default"
+                type="button"
+              >
+                <Text
+                  color="modalTextSecondary"
+                  size={mobile ? '16' : '14'}
+                  weight="semibold"
+                >
+                  Clear All
+                </Text>
+              </Box>
+            </Box>
           </Box>
         )}
         <Box display="flex" flexDirection="column" gap="4">

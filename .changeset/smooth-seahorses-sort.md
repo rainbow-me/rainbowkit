@@ -68,17 +68,3 @@ export default () => {
   );
 };
 ```
-
-Recent transactions can also be cleared using the `useClearRecentTransactions` hook.
-
-```tsx
-import { useClearRecentTransactions } from '@rainbow-me/rainbowkit';
-
-export default () => {
-  const clearRecentTransactions = useClearRecentTransactions();
-
-  return (
-    <button onClick={clearRecentTransactions}>Clear recent transactions</button>
-  );
-};
-```

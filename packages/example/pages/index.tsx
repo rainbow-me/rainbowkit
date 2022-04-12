@@ -1,8 +1,4 @@
-import {
-  ConnectButton,
-  useAddRecentTransaction,
-  useClearRecentTransactions,
-} from '@rainbow-me/rainbowkit';
+import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
 import React, { ComponentProps, useState } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -239,7 +235,6 @@ const Example = () => {
 
 function ManageTransactions() {
   const addRecentTransaction = useAddRecentTransaction();
-  const clearRecentTransactions = useClearRecentTransactions();
 
   const [hash, setHash] = useState('');
   const [description, setDescription] = useState('');
@@ -297,12 +292,6 @@ function ManageTransactions() {
       <div>
         <button disabled={hash.trim().length === 0} type="submit">
           Add recent transaction
-        </button>
-      </div>
-      <h3>Clear recent transactions</h3>
-      <div>
-        <button onClick={clearRecentTransactions} type="button">
-          Clear recent transactions
         </button>
       </div>
     </form>
