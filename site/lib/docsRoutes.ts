@@ -29,7 +29,7 @@ export const docsRoutes: RouteProps[] = [
   },
 
   {
-    label: 'Customization',
+    label: 'Advanced',
     pages: [
       { title: 'Custom ConnectButton', slug: 'custom-connect-button' },
       { title: 'Custom Theme', slug: 'custom-theme' },

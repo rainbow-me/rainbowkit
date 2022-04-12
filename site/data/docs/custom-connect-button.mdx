@@ -7,7 +7,7 @@ description: Creating a custom ConnectButton
 
 ## Creating a custom ConnectButton
 
-If you want to create your own custom connection buttons, the low-level `ConnectButton.Custom` component is also provided which accepts a render prop, i.e. a function as a child. This function is passed everything needed to re-implement the built-in buttons.
+You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
 
 A minimal re-implementation of the built-in buttons would look something like this:
 
@@ -16,84 +16,42 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const YourApp = () => {
   return (
-    <>
-      <ConnectButton.Custom>
-        {({
-          account,
-          chain,
-          openAccountModal,
-          openChainModal,
-          openConnectModal,
-        }) =>
-          !account ? (
-            <button onClick={openConnectModal} type="button">
-              Connect Wallet
-            </button>
-          ) : (
-            <div style={{ display: 'flex', gap: 12 }}>
-              {chain && (
-                <button
-                  onClick={openChainModal}
-                  style={{ display: 'flex', alignItems: 'center' }}
-                  type="button"
-                >
-                  {chain.iconUrl && (
-                    <img
-                      alt={chain.name ?? 'Chain icon'}
-                      src={chain.iconUrl}
-                      style={{ width: 12, height: 12, marginRight: 4 }}
-                    />
-                  )}
-                  {chain.name ?? chain.id}
-                  {chain.unsupported && ' (unsupported)'}
-                </button>
-              )}
-              <button onClick={openAccountModal} type="button">
-                {account.displayName}
-                {account.displayBalance ? ` (${account.displayBalance})` : ''}
+    <ConnectButton.Custom>
+      {({
+        account,
+        chain,
+        openAccountModal,
+        openChainModal,
+        openConnectModal,
+      }) =>
+        !account ? (
+          <button onClick={openConnectModal}>Connect Wallet</button>
+        ) : (
+          <div>
+            {chain && (
+              <button onClick={openChainModal}>
+                {chain.iconUrl && (
+                  <img
+                    alt={chain.name ?? 'Chain icon'}
+                    src={chain.iconUrl}
+                  />
+                )}
+                {chain.name ?? chain.id}
+                {chain.unsupported && ' (unsupported)'}
               </button>
-            </div>
-          )
-        }
-      </ConnectButton.Custom>
-    </>
+            )}
+            <button onClick={openAccountModal}>
+              {account.displayName}
+              {account.displayBalance
+                ? ` (${account.displayBalance})`
+                : ''}
+            </button>
+          </div>
+        )
+      }
+    </ConnectButton.Custom>
   );
 };
-```
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
-
-```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    name: 'Ethereum',
-    iconUrl: 'https://example.com/icons/ethereum.png',
-  },
-  {
-    ...chain.polygonMainnet,
-    name: 'Polygon',
-    iconUrl: 'https://example.com/icons/polygon.png',
-  },
-];
 ```
 
 The following props are passed to your render function.
@@ -116,7 +74,7 @@ The following props are passed to your render function.
       description: (
         <>
           The full account address, e.g.
-          <code>0x7a3d05c70581bD345fe117c06e45f9669205384f</code>
+          "0x7a3d05c70581bD345fe117c06e45f9669205384f"
         </>
       ),
     },
@@ -153,8 +111,8 @@ The following props are passed to your render function.
       type: 'string | undefined	',
       description: (
         <>
-          The balance formatted to 3 significant digits, plus the symbol, e.g.{' '}
-          <code>1.23 ETH</code>
+          The balance formatted to 3 significant digits, plus the
+          symbol, e.g. <code>1.23 ETH</code>
         </>
       ),
     },
@@ -165,7 +123,8 @@ The following props are passed to your render function.
       description: (
         <>
           The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or <code>"0x7a3d...384f"</code>
+          <code>"rainbowwallet.eth"</code> or{' '}
+          <code>"0x7a3d...384f"</code>
         </>
       ),
     },
@@ -200,15 +159,29 @@ The following props are passed to your render function.
         'Object containing details about the current chain, described below',
     },
     {
+      name: 'chain.hasIcon',
+      required: false,
+      type: 'boolean',
+      description: 'Whether the chain as an icon specified',
+    },
+    {
       name: 'chain.iconUrl',
       required: false,
       type: 'string | undefined',
-      description: 'The chain icon URL',
+      description:
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+    },
+    {
+      name: 'chain.iconBackground',
+      required: false,
+      type: 'string | undefined',
+      description:
+        'The chain icon background which will be visible while images are loading',
     },
     {
       name: 'chain.id',
       required: false,
-      type: 'numer',
+      type: 'number',
       description: (
         <>
           The chain ID, e.g. <code>1</code>
@@ -261,7 +234,8 @@ The following props are passed to your render function.
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the account modal is open',
+      description:
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
@@ -273,7 +247,8 @@ The following props are passed to your render function.
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the connect modal is open',
+      description:
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />

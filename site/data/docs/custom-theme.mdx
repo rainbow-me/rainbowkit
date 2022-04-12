@@ -7,9 +7,11 @@ description: Creating a custom theme
 
 ## Creating a custom theme
 
-> ⚠️ Note: This API is unstable and likely to change in the near future. We recommend sticking with the built-in themes for now.
+> Note: This API is unstable and likely to change
+> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
+> now.
 
-While the built-in themes provide some level of customization, the Theme type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -21,6 +23,7 @@ const myCustomTheme: Theme = {
   colors: {
     accentColor: '...',
     actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',
     actionButtonText: '...',
     closeButton: '...',
@@ -44,7 +47,7 @@ const myCustomTheme: Theme = {
     profileActionHover: '...',
     profileForeground: '...',
     selectedOptionBorder: '...',
-    standby: '',
+    standby: '...',
   },
   fonts: {
     body: '...',
@@ -54,6 +57,7 @@ const myCustomTheme: Theme = {
     connectButton: '...',
     menuButton: '...',
     modal: '...',
+    modalMobile: '...',
   },
   shadows: {
     connectButton: '...',
@@ -61,13 +65,55 @@ const myCustomTheme: Theme = {
     profileDetailsAction: '...',
     selectedOption: '...',
     selectedWallet: '...',
+    walletLogo: '...',
   },
 };
 
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Extending a built-in theme
+
+You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+
+To do that, install `lodash.merge` (or equivalent):
+
+```bash
+npm install lodash.merge
+```
+
+Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+
+```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myCustomTheme} {...etc}>
-      {/* ... */}
+    <RainbowKitProvider theme={myTheme}>
+      {/* Your App */}
     </RainbowKitProvider>
   );
 };
