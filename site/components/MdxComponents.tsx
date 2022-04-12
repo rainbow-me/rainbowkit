@@ -68,14 +68,18 @@ export const components = {
   ),
   a: props => <Link {...props} />,
   Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
-  ul: props => <Box as="ul" paddingLeft="3" paddingBottom="6" {...props} />,
-  ol: props => <Box as="ol" paddingLeft="4" {...props} />,
+  ul: props => <Box as="ul" paddingLeft="3" marginBottom="5" {...props} />,
+  ol: props => <Box as="ol" paddingLeft="4" marginBottom="5" {...props} />,
   li: ({ children, ...props }) => (
     <li
       {...props}
       style={{ listStyle: 'none', display: 'flex', alignItems: 'center' }}
     >
-      <Text variant="body" style={{ fontWeight: 500, lineHeight: '25px' }}>
+      <Text
+        variant="body"
+        color="labelSecondary"
+        style={{ fontWeight: 500, lineHeight: '25px' }}
+      >
         {children}
       </Text>
     </li>
