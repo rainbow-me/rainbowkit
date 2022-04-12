@@ -85,7 +85,7 @@ export function createTransactionStore({
     const errors = validateTransaction(transaction);
 
     if (errors.length > 0) {
-      throw new Error('Unable to add transaction\n' + errors.join('\n'));
+      throw new Error(['Unable to add transaction', ...errors].join('\n'));
     }
 
     updateTransactions(account, chainId, transactions => {

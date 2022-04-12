@@ -115,7 +115,6 @@ function App({ Component, pageProps }: AppProps) {
         >
           <div>
             <h3>RainbowKitProvider props</h3>
-
             <div
               style={{
                 alignItems: 'flex-start',

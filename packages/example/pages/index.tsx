@@ -8,6 +8,7 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
+  const [{ data: accountData }] = useAccount();
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -26,8 +27,6 @@ const Example = () => {
   const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
     defaultProps.showBalance.largeScreen
   );
-
-  const [{ data: accountData }] = useAccount();
 
   return (
     <div
