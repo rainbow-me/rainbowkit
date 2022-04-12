@@ -14,7 +14,7 @@ const getTxStatusIcon = (status: Transaction['status']) => {
   switch (status) {
     case 'pending':
       return SpinnerIcon;
-    case 'completed':
+    case 'confirmed':
       return SuccessIcon;
     case 'failed':
       return CancelIcon;
@@ -34,8 +34,8 @@ export function TxItem({ tx }: TxProps) {
   const [{ data: networkData }] = useNetwork();
 
   const confirmationStatus =
-    tx.status === 'completed'
-      ? 'Completed'
+    tx.status === 'confirmed'
+      ? 'Confirmed'
       : tx.status === 'failed'
       ? 'Failed'
       : 'Pending';

@@ -2,7 +2,7 @@ import type { BaseProvider } from '@ethersproject/providers';
 
 const storageKey = 'rk-transactions';
 
-type TransactionStatus = 'pending' | 'completed' | 'failed';
+type TransactionStatus = 'pending' | 'confirmed' | 'failed';
 
 export interface Transaction {
   hash: string;
@@ -147,7 +147,7 @@ export function createTransactionStore({
                 account,
                 chainId,
                 hash,
-                status === 0 ? 'failed' : 'completed'
+                status === 0 ? 'failed' : 'confirmed'
               );
             });
 
