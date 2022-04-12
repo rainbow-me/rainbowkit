@@ -32,6 +32,32 @@ function loadData(): Data {
   );
 }
 
+const transactionHashRegex = /^0x([A-Fa-f0-9]{64})$/;
+
+function validateTransaction(
+  transaction: Transaction | NewTransaction
+): string[] {
+  const errors: string[] = [];
+
+  if (!transactionHashRegex.test(transaction.hash)) {
+    errors.push('Invalid transaction hash');
+  }
+
+  if (typeof transaction.description !== 'string') {
+    errors.push('Transaction must have a description');
+  }
+
+  if (
+    typeof transaction.confirmations !== 'undefined' &&
+    (!Number.isInteger(transaction.confirmations) ||
+      transaction.confirmations < 1)
+  ) {
+    errors.push('Transaction confirmations must be a positiver integer');
+  }
+
+  return errors;
+}
+
 export function createTransactionStore({
   provider: initialProvider,
 }: {
@@ -56,23 +82,20 @@ export function createTransactionStore({
     chainId: number,
     transaction: NewTransaction
   ): void {
+    const errors = validateTransaction(transaction);
+
+    if (errors.length > 0) {
+      throw new Error('Unable to add transaction\n' + errors.join('\n'));
+    }
+
     updateTransactions(account, chainId, transactions => {
-      return (
-        [
-          {
-            ...transaction,
-            status: 'pending',
-          } as const,
-          ...transactions.filter(({ hash }) => {
-            // Omit any duplicate transactions
-            return hash !== transaction.hash;
-          }),
-        ]
-          // Limit transactions we keep in local storage to 10.
-          // This number is higher than the UI for now (3) so we have some room
-          // to make changes to the UI later.
-          .slice(0, 10)
-      );
+      return [
+        { ...transaction, status: 'pending' },
+        ...transactions.filter(({ hash }) => {
+          // Omit any duplicate transactions
+          return hash !== transaction.hash;
+        }),
+      ];
     });
   }
 
@@ -146,10 +169,18 @@ export function createTransactionStore({
     data = loadData();
 
     data[account] = data[account] ?? {};
-    const newTransactions = updateFn(data[account][chainId] ?? []);
 
-    data[account][chainId] =
-      newTransactions.length > 0 ? newTransactions : undefined;
+    let completedTransactionCount = 0;
+    const MAX_COMPLETED_TRANSACTIONS = 10;
+    const transactions = updateFn(data[account][chainId] ?? [])
+      // Keep the list of completed transactions from growing indefinitely
+      .filter(({ status }) => {
+        return status === 'pending'
+          ? true
+          : completedTransactionCount++ <= MAX_COMPLETED_TRANSACTIONS;
+      });
+
+    data[account][chainId] = transactions.length > 0 ? transactions : undefined;
 
     persistData();
     notifyListeners();
