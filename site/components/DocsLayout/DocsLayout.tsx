@@ -68,13 +68,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   right: 0,
                   zIndex: 12,
                   overflow: 'auto',
-                  pointerEvents: 'none',
                 }}
               >
                 <Box
                   backgroundColor="fillElevated"
                   padding="6"
-                  pointerEvents="none"
                   style={{
                     width: `calc(250px + ${vars.space[6]})`,
                     height: '100%',
