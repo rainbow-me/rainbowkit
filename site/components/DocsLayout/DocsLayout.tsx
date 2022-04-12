@@ -55,6 +55,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   inset: 0,
                   zIndex: 11,
                   backgroundColor: vars.colors.backgroundScrim,
+                  backdropFilter: 'blur(4px)',
                 }}
               />
               <DialogPrimitive.Content

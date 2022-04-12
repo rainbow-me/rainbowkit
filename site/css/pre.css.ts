@@ -137,12 +137,12 @@ globalStyle(tokensModifiersPrefixed.map(s => `${pre} ${s}`).join(`, `), {
 globalStyle(
   `${pre} [data-highlighted=false], ${pre} [data-highlighted=false] .token`,
   {
-    color: vars.colors.gray50,
+    color: vars.colors.labelQuaternary,
   }
 );
 
 globalStyle(`${pre} .highlight-word`, {
-  backgroundColor: vars.colors.fillSecondary,
+  backgroundColor: vars.colors.red,
   borderRadius: vars.radii[1],
   padding: '0 3px',
 });
@@ -159,10 +159,12 @@ globalStyle(`${pre}:hover + [data-copy], [data-copy]:hover`, {
 
 globalStyle(`${pre} ~ [data-pre-gradient]`, {
   position: 'absolute',
-  top: 0,
-  right: 0,
+  top: 1,
+  right: 1,
+  borderTopRightRadius: '15px',
+  borderBottomRightRadius: '15px',
   backgroundImage: `linear-gradient(to right, transparent, ${vars.colors.fillElevated})`,
   width: 30,
-  height: '100%',
+  height: 'calc(100% - 2px)',
   zIndex: 1,
 });

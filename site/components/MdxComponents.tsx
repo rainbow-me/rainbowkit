@@ -111,6 +111,9 @@ export const components = {
           className={pre}
           marginTop="5"
           marginBottom="9"
+          style={{
+            boxShadow: `inset 0 0 1px ${vars.colors.separator}, 0px 2px 8px rgba(27, 29, 31, 0.02)`,
+          }}
           {...props}
         >
           {children}
@@ -153,12 +156,16 @@ export const components = {
   blockquote: props => (
     <Box
       as="blockquote"
-      backgroundColor="fillSecondary"
       borderRadius="3"
       paddingTop="5"
       paddingX="5"
       marginBottom="5"
-      style={{ overflow: 'hidden' }}
+      borderWidth="1"
+      borderColor="fillElevated"
+      style={{
+        overflow: 'hidden',
+        backgroundImage: `radial-gradient(circle at 240px -80px, ${vars.colors.backgroundElevated} 0%, ${vars.colors.fillElevated} 100%)`,
+      }}
       {...props}
     />
   ),
