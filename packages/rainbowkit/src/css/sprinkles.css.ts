@@ -116,6 +116,8 @@ const dimensions = {
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
+const textAlignments = ['left', 'center', 'inherit'] as const;
+
 const interactionProperties = defineProperties({
   conditions: {
     base: {},
@@ -204,6 +206,7 @@ const unresponsiveProperties = defineProperties({
     gap: spacing,
     height: dimensions,
     justifyContent: [...flexAlignment, 'space-between'],
+    textAlign: textAlignments,
     marginBottom: spacing,
     marginLeft: spacing,
     marginRight: spacing,

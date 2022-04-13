@@ -85,8 +85,13 @@ export function ProfileDetails({
                 size={mobile ? 82 : 74}
               />
             </Box>
-            <Box display="flex" flexDirection="column" gap={mobile ? '4' : '0'}>
-              <Box>
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap={mobile ? '4' : '0'}
+              textAlign="center"
+            >
+              <Box textAlign="center">
                 <Text
                   as="h1"
                   color="modalText"
@@ -97,21 +102,19 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              <Box>
-                {balanceData && (
-                  <Box>
-                    <Text
-                      as="h1"
-                      color="modalTextSecondary"
-                      id={titleId}
-                      size={mobile ? '16' : '14'}
-                      weight="semibold"
-                    >
-                      {balance} {balanceData.symbol}
-                    </Text>
-                  </Box>
-                )}
-              </Box>
+              {balanceData && (
+                <Box textAlign="center">
+                  <Text
+                    as="h1"
+                    color="modalTextSecondary"
+                    id={titleId}
+                    size={mobile ? '16' : '14'}
+                    weight="semibold"
+                  >
+                    {balance} {balanceData.symbol}
+                  </Text>
+                </Box>
+              )}
             </Box>
           </Box>
           <Box
