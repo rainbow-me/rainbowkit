@@ -70,7 +70,11 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
           }}
           width="full"
         >
-          <SpinnerIcon height="100%" width="100%" />
+          <SpinnerIcon
+            forceRegularRenderInSafari={loading}
+            height="100%"
+            width="100%"
+          />
         </Box>
       )}
     </Box>
