@@ -142,7 +142,7 @@ globalStyle(
 );
 
 globalStyle(`${pre} .highlight-word`, {
-  backgroundColor: vars.colors.red,
+  backgroundColor: vars.colors.fillSecondary,
   borderRadius: vars.radii[1],
   padding: '0 3px',
 });

@@ -32,7 +32,7 @@ The `ConnectButton` component exposes several props to customize its appearance 
       type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
       typeSimple: 'enum',
       description:
-        'Whether the active account’s avatar and/or address is displayed',
+        "Whether the active account's avatar and/or address is displayed",
     },
     {
       name: 'chainStatus',
@@ -41,7 +41,7 @@ The `ConnectButton` component exposes several props to customize its appearance 
       type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
       typeSimple: 'enum',
       description:
-        'Whether the current chain’s icon and/or name is displayed, or hidden entirely',
+        "Whether the current chain's icon and/or name is displayed, or hidden entirely",
     },
     {
       name: 'showBalance',
@@ -49,7 +49,8 @@ The `ConnectButton` component exposes several props to customize its appearance 
       default: '{ smallScreen: false, largeScreen: true }',
       type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
       typeSimple: 'enum',
-      description: 'Whether the balance is visible next to the account name',
+      description:
+        'Whether the balance is visible next to the account name',
     },
   ]}
 />
@@ -65,13 +66,13 @@ Here are a few different ways you can use the `accountStatus` prop.
 Only show the account's avatar.
 
 ```tsx
-<ConnectButton accountStatus="avatar" />
+<ConnectButton accountStatus="__avatar__" />
 ```
 
 Only show the account's address.
 
 ```tsx
-<ConnectButton accountStatus="address" />
+<ConnectButton accountStatus="__address__" />
 ```
 
 #### Chain status
@@ -81,19 +82,19 @@ Here are a few different ways you can use the `chainStatus` prop.
 Only show the current chain's icon.
 
 ```tsx
-<ConnectButton chainStatus="icon" />
+<ConnectButton chainStatus="__icon__" />
 ```
 
 Only show the current chain's name.
 
 ```tsx
-<ConnectButton chainStatus="name" />
+<ConnectButton chainStatus="__name__" />
 ```
 
 Hide the chain UI entirely.
 
 ```tsx
-<ConnectButton chainStatus="none" />
+<ConnectButton chainStatus="__none__" />
 ```
 
 #### Show balance
@@ -103,7 +104,7 @@ Use the `showBalance` prop to hide/show the balance.
 Hide the balance.
 
 ```tsx
-<ConnectButton showBalance={false} />
+<ConnectButton showBalance={__false__} />
 ```
 
 #### Responsive

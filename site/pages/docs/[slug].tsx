@@ -1,11 +1,12 @@
 import { components } from 'components/MdxComponents';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import React from 'react';
 import { allDocs, Doc } from '.contentlayer/generated';
 
 export default function DocPage({ doc }: { doc: Doc }) {
   const Component = useMDXComponent(doc.body.code);
+  useLiveReload();
 
   return (
     <>
