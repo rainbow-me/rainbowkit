@@ -27,7 +27,12 @@ function App({ Component, pageProps }: AppProps) {
   const isDocs = router.pathname.includes('/docs');
 
   useEffect(() => {
-    document.body.style.setProperty('--selectionColor', getColor());
+    function tasteTheRainbow() {
+      document.body.style.setProperty('--selectionColor', getColor());
+    }
+    document.body.addEventListener('mousedown', tasteTheRainbow);
+    return () =>
+      document.body.removeEventListener('mousedown', tasteTheRainbow);
   }, []);
 
   return (
