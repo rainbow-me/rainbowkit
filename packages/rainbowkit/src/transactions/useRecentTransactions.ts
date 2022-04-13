@@ -14,13 +14,13 @@ export function useRecentTransactions(): Transaction[] {
   );
 
   useEffect(() => {
-    return store.onChange(() => {
-      if (!address || !chainId) {
-        return;
-      }
-
+    if (store && address && chainId) {
       setTransactions(store.getTransactions(address, chainId));
-    });
+
+      return store.onChange(() => {
+        setTransactions(store.getTransactions(address, chainId));
+      });
+    }
   }, [store, address, chainId]);
 
   return transactions;

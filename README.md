@@ -475,6 +475,11 @@ The following props are passed to your render function.
       <td><code>string | undefined</code></td>
       <td>The ENS name, e.g. <code>"rainbowwallet.eth"</code></td>
     </tr>
+    <tr>
+      <td><code>account.hasPendingTransactions</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the account has pending transactions for the current chain</td>
+    </tr>
   </tbody>
 </table>
 

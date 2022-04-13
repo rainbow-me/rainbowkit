@@ -1,13 +1,19 @@
 import React from 'react';
 import { SpinnerIconClassName, SpinnerIconPathClassName } from './Icons.css';
 
-export const SpinnerIcon = () => (
+export const SpinnerIcon = ({
+  height = 21,
+  width = 21,
+}: {
+  width?: string | number;
+  height?: string | number;
+}) => (
   <svg
     className={SpinnerIconClassName}
     fill="none"
-    height="21"
+    height={height}
     viewBox="0 0 21 21"
-    width="21"
+    width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
     <clipPath id="spinnerPath">
