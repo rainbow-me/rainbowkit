@@ -46,16 +46,14 @@ export function ConnectButton({
             display="flex"
             gap="12"
             transition="default"
-            {...(!mounted
-              ? {
-                  'aria-hidden': true,
-                  'style': {
-                    opacity: 0,
-                    pointerEvents: 'none',
-                  },
-                  'userSelect': 'none',
-                }
-              : null)}
+            {...(!mounted && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
           >
             {account ? (
               <>
