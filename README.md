@@ -300,42 +300,52 @@ export const YourApp = () => {
             return null;
           }
 
-          return !account ? (
-            <button onClick={openConnectModal} type="button">
-              Connect Wallet
-            </button>
-          ) : (
+          if (!account || !chain) {
+            return (
+              <button onClick={openConnectModal} type="button">
+                Connect Wallet
+              </button>
+            );
+          }
+
+          if (chain.unsupported) {
+            return (
+              <button onClick={openChainModal} type="button">
+                Wrong network
+              </button>
+            );
+          }
+
+          return (
             <div style={{ display: 'flex', gap: 12 }}>
-              {chain && (
-                <button
-                  onClick={openChainModal}
-                  style={{ display: 'flex', alignItems: 'center' }}
-                  type="button"
-                >
-                  {chain.hasIcon && (
-                    <div
-                      style={{
-                        background: chain.iconBackground,
-                        width: 12,
-                        height: 12,
-                        borderRadius: 999,
-                        overflow: 'hidden',
-                        marginRight: 4,
-                      }}
-                    >
-                      {chain.iconUrl && (
-                        <img
-                          alt={chain.name ?? 'Chain icon'}
-                          src={chain.iconUrl}
-                          style={{ width: 12, height: 12 }}
-                        />
-                      )}
-                    </div>
-                  )}
-                  {chain.name ?? chain.id}
-                  {chain.unsupported && ' (unsupported)'}
-                </button>
-              )}
+              <button
+                onClick={openChainModal}
+                style={{ display: 'flex', alignItems: 'center' }}
+                type="button"
+              >
+                {chain.hasIcon && (
+                  <div
+                    style={{
+                      background: chain.iconBackground,
+                      width: 12,
+                      height: 12,
+                      borderRadius: 999,
+                      overflow: 'hidden',
+                      marginRight: 4,
+                    }}
+                  >
+                    {chain.iconUrl && (
+                      <img
+                        alt={chain.name ?? 'Chain icon'}
+                        src={chain.iconUrl}
+                        style={{ width: 12, height: 12 }}
+                      />
+                    )}
+                  </div>
+                )}
+                {chain.name}
+              </button>
+
               <button onClick={openAccountModal} type="button">
                 {account.displayName}
                 {account.displayBalance ? ` (${account.displayBalance})` : ''}
