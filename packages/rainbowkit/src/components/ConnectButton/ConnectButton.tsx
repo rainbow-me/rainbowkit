@@ -41,11 +41,6 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
-        const showBalanceNormalized = normalizeResponsiveValue(showBalance);
-        const showAccountButtonBackground = isMobile()
-          ? showBalanceNormalized.smallScreen
-          : showBalanceNormalized.largeScreen;
-
         return (
           <Box
             display="flex"
@@ -164,7 +159,9 @@ export function ConnectButton({
                   )}
                   <Box
                     background={
-                      showAccountButtonBackground
+                      normalizeResponsiveValue(showBalance)[
+                        isMobile() ? 'smallScreen' : 'largeScreen'
+                      ]
                         ? 'connectButtonInnerBackground'
                         : 'connectButtonBackground'
                     }
