@@ -1,42 +1,26 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useMemo } from 'react';
 import { SpinnerIconClassName, SpinnerIconPathClassName } from './Icons.css';
 
-// No idea why, but we have a rendering bug in Safari that seems to be related
-// to our use of clipPath and foreignObject. When closing the modal, the
-// clipPath attribute stops being honored by the browser and the spinner icon
-// is no longer cropped, showing a square with a conic gradient. Dynamically
-// updating the clipPath ID seems to correct the issue.
-const useClipPathId = (enabled: boolean) => {
-  const [counter, increment] = useReducer(x => x + 1, 0);
-  const id = `id_${counter}`;
-
-  useEffect(() => {
-    if ('safari' in window && enabled) {
-      const interval = setInterval(increment, 500);
-      return () => clearInterval(interval);
-    }
-  }, [increment, enabled]);
-
-  return id;
-};
+const useRandomId = (prefix: string) =>
+  useMemo(
+    () => `${prefix}_${Math.round(Math.random() * 1_000_000_000)}`,
+    [prefix]
+  );
 
 export const SpinnerIcon = ({
-  forceRegularRenderInSafari = false,
   height = 21,
   width = 21,
 }: {
   width?: string | number;
   height?: string | number;
-  forceRegularRenderInSafari?: boolean;
 }) => {
-  const id = useClipPathId(forceRegularRenderInSafari);
+  const id = useRandomId('spinner');
 
   return (
     <svg
       className={SpinnerIconClassName}
       fill="none"
       height={height}
-      id={id}
       viewBox="0 0 21 21"
       width={width}
       xmlns="http://www.w3.org/2000/svg"
