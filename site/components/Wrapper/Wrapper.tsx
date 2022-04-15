@@ -1,17 +1,7 @@
-import React, { ReactNode } from 'react';
-
+import { Box, BoxProps } from 'components/Box/Box';
+import React from 'react';
 import { wrapper } from './Wrapper.css';
 
-export function Wrapper({
-  children,
-  style,
-}: {
-  children: ReactNode;
-  style: React.CSSProperties;
-}) {
-  return (
-    <div className={wrapper} style={style}>
-      {children}
-    </div>
-  );
+export function Wrapper(props: BoxProps) {
+  return <Box className={wrapper} {...props} />;
 }

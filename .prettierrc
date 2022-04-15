@@ -4,5 +4,13 @@
   "bracketSameLine": false,
   "quoteProps": "consistent",
   "singleQuote": true,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "overrides": [
+    {
+      "files": "site/**/*.mdx",
+      "options": {
+        "printWidth": 72
+      }
+    }
+  ]
 }

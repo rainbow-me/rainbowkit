@@ -105,3 +105,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Content layer
+.contentlayer
+
+# Others
+.DS_Store
