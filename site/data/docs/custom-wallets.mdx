@@ -1,0 +1,178 @@
+---
+title: Custom Wallets
+description: Create a custom wallet
+---
+
+# Custom Wallets
+
+## Create a custom wallet
+
+> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
+
+The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
+
+### Wallet Properties
+
+<PropsTable
+  data={[
+    {
+      name: 'id',
+      required: true,
+      type: 'string',
+      description: 'Unique ID per wallet',
+    },
+    {
+      name: 'name',
+      required: true,
+      type: 'string',
+      description: 'Human-readable wallet name',
+    },
+    {
+      name: 'shortName',
+      required: false,
+      type: 'string',
+      description: 'Optional short name for mobile use',
+    },
+    {
+      name: 'iconUrl',
+      required: true,
+      type: 'string | (() => Promise<string>)',
+      description:
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+    },
+    {
+      name: 'iconBackground',
+      required: true,
+      type: 'string',
+      description: 'Background color while the wallet loads',
+    },
+    {
+      name: 'installed',
+      required: false,
+      type: 'boolean | undefined',
+      description: (
+        <>
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
+        </>
+      ),
+    },
+    {
+      name: 'downloadUrls',
+      required: false,
+      type: '{ android?: string, ios?: string, browserExtension?: string, qrCode?: string } | undefined',
+      typeSimple: 'DownloadUrls | undefined',
+      description: 'Object containing download URLs',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: '(connectorArgs: { chainId? number }) => RainbowKitConnector',
+      typeSimple: 'Connector',
+      description:
+        'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+  ]}
+/>
+
+### RainbowKitConnector properties
+
+The following properties are defined on the return value of the `createConnector` function.
+
+<PropsTable
+  data={[
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: () => string }',
+      typeSimple: 'object',
+      description:
+        'Function for resolving a mobile wallet connection URI',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: () => string, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}} ",
+      typeSimple: 'object',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon',
+    },
+    {
+      name: 'downloadUrls',
+      required: false,
+      type: '{ mobile?: string, browserExtension?: string }',
+      typeSimple: 'object',
+      description: 'Object containing download URLs',
+    },
+  ]}
+/>
+
+### Examples
+
+For example, to create a custom wallet using WalletConnect:
+
+```tsx
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain, Wallet } from '@rainbow-me/rainbowkit';
+
+export interface MyWalletOptions {
+  chains: Chain[];
+  infuraId?: string;
+}
+
+export const rainbow = ({
+  chains,
+  infuraId,
+}: MyWalletOptions): Wallet => ({
+  id: 'my-wallet',
+  name: 'My Wallet',
+  iconUrl: 'https://my-image.xyz',
+  iconBackground: '#0c2f78',
+  downloadUrls: {
+    android: 'https://my-wallet/android',
+    ios: 'https://my-wallet/ios',
+    qrCode: 'https://my-wallet/qr',
+  },
+  createConnector: () => {
+    const connector = new WalletConnectConnector({
+      chains,
+      options: {
+        infuraId,
+        qrcode: false,
+      },
+    });
+
+    return {
+      connector,
+      mobile: {
+        getUri: () => {
+          const { uri } = connector.getProvider().connector;
+          return uri;
+        },
+      },
+      qrCode: {
+        getUri: () => connector.getProvider().connector.uri,
+        instructions: {
+          learnMoreUrl: 'https://my-wallet/learn-more',
+          steps: [
+            {
+              description:
+                'We recommend putting My Wallet on your home screen for faster access to your wallet.',
+              step: 'install',
+              title: 'Open the My Wallet app',
+            },
+            {
+              description:
+                'After you scan, a connection prompt will appear for you to connect your wallet.',
+              step: 'scan',
+              title: 'Tap the scan button',
+            },
+          ],
+        },
+      },
+    };
+  },
+});
+```
+
+You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).

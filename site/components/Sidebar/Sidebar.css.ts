@@ -1,0 +1,43 @@
+import { style } from '@vanilla-extract/css';
+import { recipe } from '@vanilla-extract/recipes';
+import { atoms } from 'css/atoms';
+import { vars } from 'css/vars.css';
+
+export const link = recipe({
+  base: style([
+    atoms({
+      borderRadius: '3',
+      color: 'label',
+      display: 'block',
+      fontSize: '3',
+      marginBottom: '2',
+      paddingX: '5',
+      paddingY: '3',
+    }),
+    style({
+      fontWeight: 600,
+      textDecoration: 'none',
+    }),
+  ]),
+  variants: {
+    active: {
+      false: style([
+        atoms({ backgroundColor: { hover: 'fillSecondary' } }),
+        style({
+          selectors: {
+            '&:hover': {
+              transition: 'background 200ms ease-in-out',
+            },
+          },
+        }),
+      ]),
+      true: style([
+        atoms({ backgroundColor: 'blue' }),
+        style({
+          boxShadow: `0px 2px 8px rgba(0, 0, 0, 0.2)`,
+          color: vars.colors.labelWhite,
+        }),
+      ]),
+    },
+  },
+});
