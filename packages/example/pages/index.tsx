@@ -1,11 +1,51 @@
-import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 import React, { ComponentProps, useState } from 'react';
-import { useAccount } from 'wagmi';
+import {
+  useAccount,
+  useNetwork,
+  useSignMessage,
+  useSignTypedData,
+  useTransaction,
+} from 'wagmi';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
 type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
+
+// All properties on a domain are optional
+const domain = {
+  chainId: 1,
+  name: 'Ether Mail',
+  verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
+  version: '1',
+};
+
+// The named list of all type definitions
+const types = {
+  Mail: [
+    { name: 'from', type: 'Person' },
+    { name: 'to', type: 'Person' },
+    { name: 'contents', type: 'string' },
+  ],
+  Person: [
+    { name: 'name', type: 'string' },
+    { name: 'wallet', type: 'address' },
+  ],
+};
+
+const value = {
+  contents: 'Hello, Bob!',
+  from: {
+    name: 'Cow',
+    wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+  },
+  to: {
+    name: 'Bob',
+    wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+  },
+};
 
 const Example = () => {
   const [{ data: accountData }] = useAccount();
@@ -27,6 +67,28 @@ const Example = () => {
   const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
     defaultProps.showBalance.largeScreen
   );
+
+  const [{ data: networkData }] = useNetwork();
+
+  const [{ data: transactionData, error: transactionError }, sendTransaction] =
+    useTransaction({
+      request: {
+        to: accountData?.address,
+        value: 0,
+      },
+    });
+
+  const [{ data: signingData, error: signingError }, signMessage] =
+    useSignMessage({
+      message: 'wen token',
+    });
+
+  const [{ data: typedData, error: typedError }, signTypedData] =
+    useSignTypedData({
+      domain,
+      types,
+      value,
+    });
 
   return (
     <div
@@ -141,6 +203,43 @@ const Example = () => {
             );
           }}
         </ConnectButton.Custom>
+      </div>
+
+      <div style={{ fontFamily: 'sans-serif' }}>
+        <h3>Example Actions {!accountData && <span>(not connected)</span>}</h3>
+        <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
+          <button
+            disabled={!accountData}
+            onClick={() => sendTransaction()}
+            type="button"
+          >
+            Send Transaction
+          </button>
+          <button
+            disabled={!accountData}
+            onClick={() => signMessage()}
+            type="button"
+          >
+            Sign Message
+          </button>
+          <button
+            disabled={!accountData || networkData.chain?.id !== 1}
+            onClick={() => signTypedData()}
+            type="button"
+          >
+            Sign Typed Data
+          </button>
+        </div>
+        <div>
+          {transactionData && (
+            <div>Transaction: {JSON.stringify(transactionData)}</div>
+          )}
+          {transactionError && <div>Error sending transaction</div>}
+          {signingData && <div>Data Signature: {signingData}</div>}
+          {signingError && <div>Error signing message</div>}
+          {typedData && <div>Typed Data Signature: {typedData}</div>}
+          {typedError && <div>Error signing typed message</div>}
+        </div>
       </div>
 
       <div style={{ fontFamily: 'sans-serif' }}>
