@@ -2,12 +2,14 @@ import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
+import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, defaultAppContext } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
 import {
   RainbowKitChain,
   RainbowKitChainContext,
 } from './RainbowKitChainContext';
+import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
@@ -38,6 +40,7 @@ export interface RainbowKitProviderProps {
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
+  showRecentTransactions?: boolean;
   appContext?: { appName?: string; learnMoreUrl?: string };
   coolMode?: boolean;
 }
@@ -50,6 +53,7 @@ export function RainbowKitProvider({
   theme = defaultTheme,
   children,
   appContext = defaultAppContext,
+  showRecentTransactions = false,
   coolMode = false,
 }: RainbowKitProviderProps) {
   const rainbowkitChains = useMemo(
@@ -68,31 +72,35 @@ export function RainbowKitProvider({
   return (
     <RainbowKitChainContext.Provider value={rainbowkitChains}>
       <CoolModeContext.Provider value={coolMode}>
-        <AppContext.Provider value={appContext}>
-          <ThemeIdContext.Provider value={id}>
-            {theme ? (
-              <div {...createThemeRootProps(id)}>
-                <style>
-                  {[
-                    `${selector}{${cssStringFromTheme(
-                      'lightMode' in theme ? theme.lightMode : theme
-                    )}}`,
+        <ShowRecentTransactionsContext.Provider value={showRecentTransactions}>
+          <TransactionStoreProvider>
+            <AppContext.Provider value={appContext}>
+              <ThemeIdContext.Provider value={id}>
+                {theme ? (
+                  <div {...createThemeRootProps(id)}>
+                    <style>
+                      {[
+                        `${selector}{${cssStringFromTheme(
+                          'lightMode' in theme ? theme.lightMode : theme
+                        )}}`,
 
-                    'darkMode' in theme
-                      ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
-                          theme.darkMode,
-                          { extends: theme.lightMode }
-                        )}}}`
-                      : null,
-                  ].join('')}
-                </style>
-                {children}
-              </div>
-            ) : (
-              children
-            )}
-          </ThemeIdContext.Provider>
-        </AppContext.Provider>
+                        'darkMode' in theme
+                          ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
+                              theme.darkMode,
+                              { extends: theme.lightMode }
+                            )}}}`
+                          : null,
+                      ].join('')}
+                    </style>
+                    {children}
+                  </div>
+                ) : (
+                  children
+                )}
+              </ThemeIdContext.Provider>
+            </AppContext.Provider>
+          </TransactionStoreProvider>
+        </ShowRecentTransactionsContext.Provider>
       </CoolModeContext.Provider>
     </RainbowKitChainContext.Provider>
   );

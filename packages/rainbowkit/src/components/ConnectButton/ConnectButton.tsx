@@ -44,16 +44,22 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
-        if (!mounted) {
-          return null;
-        }
         const unsupportedChain = chain?.unsupported ?? false;
-        const showBalanceNormalized = normalizeResponsiveValue(showBalance);
-        const showAccountButtonBackground = isMobile()
-          ? showBalanceNormalized.smallScreen
-          : showBalanceNormalized.largeScreen;
+
         return (
-          <Box display="flex" gap="12">
+          <Box
+            display="flex"
+            gap="12"
+            transition="default"
+            {...(!mounted && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
+          >
             {account ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
@@ -165,7 +171,9 @@ export function ConnectButton({
                     )}
                     <Box
                       background={
-                        showAccountButtonBackground
+                        normalizeResponsiveValue(showBalance)[
+                          isMobile() ? 'smallScreen' : 'largeScreen'
+                        ]
                           ? 'connectButtonInnerBackground'
                           : 'connectButtonBackground'
                       }

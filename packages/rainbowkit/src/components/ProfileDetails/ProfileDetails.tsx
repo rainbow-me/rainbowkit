@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useAccount, useBalance } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
@@ -8,7 +8,9 @@ import { formatAddress } from '../ConnectButton/formatAddress';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
+import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { Text } from '../Text/Text';
+import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
@@ -24,6 +26,7 @@ export function ProfileDetails({
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
+  const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {
@@ -133,6 +136,14 @@ export function ProfileDetails({
             />
           </Box>
         </Box>
+        {showRecentTransactions && (
+          <>
+            <Box background="generalBorder" height="1" />
+            <Box>
+              <TxList accountData={accountData} />
+            </Box>
+          </>
+        )}
       </Box>
     </>
   );

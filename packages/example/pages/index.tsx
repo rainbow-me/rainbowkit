@@ -1,5 +1,6 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
 import React, { ComponentProps, useState } from 'react';
+import { useAccount } from 'wagmi';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
@@ -7,6 +8,7 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
+  const [{ data: accountData }] = useAccount();
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -63,60 +65,78 @@ const Example = () => {
           {({
             account,
             chain,
+            mounted,
             openAccountModal,
             openChainModal,
             openConnectModal,
           }) => {
-            if (!chain || !account) {
-              return (
-                <button onClick={openConnectModal} type="button">
-                  Connect Wallet
-                </button>
-              );
-            }
-
-            if (chain.unsupported) {
-              return (
-                <button onClick={openChainModal} type="button">
-                  Wrong network
-                </button>
-              );
-            }
-
             return (
-              <div style={{ display: 'flex', gap: 12 }}>
-                <button
-                  onClick={openChainModal}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                  type="button"
-                >
-                  {chain.hasIcon && (
-                    <div
-                      style={{
-                        background: chain.iconBackground,
-                        borderRadius: 999,
-                        height: 12,
-                        marginRight: 4,
-                        overflow: 'hidden',
-                        width: 12,
-                      }}
-                    >
-                      {chain.iconUrl && (
-                        <img
-                          alt={chain.name ?? 'Chain icon'}
-                          src={chain.iconUrl}
-                          style={{ height: 12, width: 12 }}
-                        />
-                      )}
-                    </div>
-                  )}
-                  {chain.name ?? chain.id}
-                </button>
+              <div
+                {...(!mounted && {
+                  'aria-hidden': true,
+                  'style': {
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  },
+                })}
+              >
+                {(() => {
+                  if (!chain || !account) {
+                    return (
+                      <button onClick={openConnectModal} type="button">
+                        Connect Wallet
+                      </button>
+                    );
+                  }
 
-                <button onClick={openAccountModal} type="button">
-                  {account.displayName}
-                  {account.displayBalance ? ` (${account.displayBalance})` : ''}
-                </button>
+                  if (chain.unsupported) {
+                    return (
+                      <button onClick={openChainModal} type="button">
+                        Wrong network
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <div style={{ display: 'flex', gap: 12 }}>
+                      <button
+                        onClick={openChainModal}
+                        style={{ alignItems: 'center', display: 'flex' }}
+                        type="button"
+                      >
+                        {chain.hasIcon && (
+                          <div
+                            style={{
+                              background: chain.iconBackground,
+                              borderRadius: 999,
+                              height: 12,
+                              marginRight: 4,
+                              overflow: 'hidden',
+                              width: 12,
+                            }}
+                          >
+                            {chain.iconUrl && (
+                              <img
+                                alt={chain.name ?? 'Chain icon'}
+                                src={chain.iconUrl}
+                                style={{ height: 12, width: 12 }}
+                              />
+                            )}
+                          </div>
+                        )}
+                        {chain.name ?? chain.id}
+                      </button>
+
+                      <button onClick={openAccountModal} type="button">
+                        {account.displayName}
+                        {account.displayBalance
+                          ? ` (${account.displayBalance})`
+                          : ''}
+                      </button>
+                    </div>
+                  );
+                })()}
               </div>
             );
           }}
@@ -234,8 +254,74 @@ const Example = () => {
           </tbody>
         </table>
       </div>
+      {accountData ? <ManageTransactions /> : null}
     </div>
   );
 };
+
+function ManageTransactions() {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  const [hash, setHash] = useState('');
+  const [description, setDescription] = useState('');
+  const [confirmations, setConfirmations] = useState(1);
+
+  return (
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+
+        addRecentTransaction({
+          confirmations: confirmations === 1 ? undefined : confirmations,
+          description: description.trim() || 'Transaction',
+          hash: hash.trim(),
+        });
+
+        setHash('');
+        setDescription('');
+      }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        fontFamily: 'sans-serif',
+        gap: 12,
+      }}
+    >
+      <h3>Add recent transaction</h3>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txHash">Hash</label>
+        <input
+          id="txHash"
+          onChange={e => setHash(e.currentTarget.value)}
+          type="text"
+          value={hash}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txDescription">Description</label>
+        <input
+          id="txDescription"
+          onChange={e => setDescription(e.currentTarget.value)}
+          type="text"
+          value={description}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: 12 }}>
+        <label htmlFor="txConfirmations">Confirmations</label>
+        <input
+          id="txConfirmations"
+          onChange={e => setConfirmations(e.currentTarget.valueAsNumber)}
+          type="number"
+          value={confirmations}
+        />
+      </div>
+      <div>
+        <button disabled={hash.trim().length === 0} type="submit">
+          Add recent transaction
+        </button>
+      </div>
+    </form>
+  );
+}
 
 export default Example;

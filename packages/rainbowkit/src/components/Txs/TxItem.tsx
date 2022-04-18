@@ -1,11 +1,6 @@
 import React from 'react';
 import { useNetwork } from 'wagmi';
-import {
-  FAIL_TX_STATUS,
-  PENDING_TX_STATUS,
-  SUCCESS_TX_STATUS,
-  TransactionWithInfo,
-} from '../../hooks/useTxHistory';
+import { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
@@ -13,16 +8,15 @@ import { CancelIcon } from '../Icons/Cancel';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { SuccessIcon } from '../Icons/Success';
-
 import { Text } from '../Text/Text';
 
-const getTxStatusIcon = (status: string) => {
+const getTxStatusIcon = (status: Transaction['status']) => {
   switch (status) {
-    case PENDING_TX_STATUS:
+    case 'pending':
       return SpinnerIcon;
-    case SUCCESS_TX_STATUS:
+    case 'confirmed':
       return SuccessIcon;
-    case FAIL_TX_STATUS:
+    case 'failed':
       return CancelIcon;
     default:
       return SpinnerIcon;
@@ -30,19 +24,19 @@ const getTxStatusIcon = (status: string) => {
 };
 
 interface TxProps {
-  tx: TransactionWithInfo;
+  tx: Transaction;
 }
 
 export function TxItem({ tx }: TxProps) {
   const mobile = isMobile();
   const Icon = getTxStatusIcon(tx.status);
-  const color = tx.status === FAIL_TX_STATUS ? 'error' : 'accentColor';
+  const color = tx.status === 'failed' ? 'error' : 'accentColor';
   const [{ data: networkData }] = useNetwork();
 
   const confirmationStatus =
-    tx.status === SUCCESS_TX_STATUS
-      ? 'Completed'
-      : tx.status === FAIL_TX_STATUS
+    tx.status === 'confirmed'
+      ? 'Confirmed'
+      : tx.status === 'failed'
       ? 'Failed'
       : 'Pending';
 
@@ -86,14 +80,12 @@ export function TxItem({ tx }: TxProps) {
                 size={mobile ? '16' : '14'}
                 weight="bold"
               >
-                {tx?.info}
+                {tx?.description}
               </Text>
             </Box>
             <Box>
               <Text
-                color={
-                  tx.status === PENDING_TX_STATUS ? 'modalTextSecondary' : color
-                }
+                color={tx.status === 'pending' ? 'modalTextSecondary' : color}
                 font="body"
                 size="14"
                 weight={mobile ? 'medium' : 'regular'}
