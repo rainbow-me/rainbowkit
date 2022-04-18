@@ -83,6 +83,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
   const selectedTheme = themes
@@ -98,16 +99,50 @@ function App({ Component, pageProps }: AppProps) {
       <RainbowKitProvider
         chains={chains}
         coolMode={coolModeEnabled}
+        showRecentTransactions={showRecentTransactions}
         theme={selectedTheme}
       >
         <Component {...pageProps} />
 
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
             fontFamily: 'sans-serif',
+            gap: 24,
             paddingBottom: 200, // Allow the page to scroll on mobile
           }}
         >
+          <div>
+            <h3>RainbowKitProvider props</h3>
+            <div
+              style={{
+                alignItems: 'flex-start',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 12,
+              }}
+            >
+              <label style={{ userSelect: 'none' }}>
+                <input
+                  checked={showRecentTransactions}
+                  name="showRecentTransactions"
+                  onChange={e => setShowRecentTransactions(e.target.checked)}
+                  type="checkbox"
+                />{' '}
+                showRecentTransactions
+              </label>
+              <label style={{ userSelect: 'none' }}>
+                <input
+                  checked={coolModeEnabled}
+                  name="coolMode"
+                  onChange={e => setCoolModeEnabled(e.target.checked)}
+                  type="checkbox"
+                />{' '}
+                coolMode
+              </label>
+            </div>
+          </div>
           <div
             style={{
               display: 'flex',
@@ -214,18 +249,6 @@ function App({ Component, pageProps }: AppProps) {
                 ))}
               </div>
             </div>
-          </div>
-          <div>
-            <h4>Cool mode</h4>
-            <label style={{ userSelect: 'none' }}>
-              <input
-                checked={coolModeEnabled}
-                name="coolMode"
-                onChange={e => setCoolModeEnabled(e.target.checked)}
-                type="checkbox"
-              />{' '}
-              Enabled
-            </label>
           </div>
         </div>
       </RainbowKitProvider>

@@ -61,11 +61,11 @@ const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+    <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+      <RainbowKitProvider chains={chains}>
         <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
+      </RainbowKitProvider>
+    </WagmiProvider>
   );
 };
 ```
@@ -273,6 +273,73 @@ const chains: Chain[] = [
 ];
 ```
 
+### Showing recent transactions
+
+You can opt in to displaying recent transactions within RainbowKit’s account modal. Note that all transactions must be manually registered with RainbowKit in order to be displayed.
+
+First enable the `showRecentTransactions` option on `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+
+By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
 ## Advanced usage
 
 ### Creating a custom `ConnectButton`
@@ -407,6 +474,11 @@ The following props are passed to your render function.
       <td><code>account.ensName</code></td>
       <td><code>string | undefined</code></td>
       <td>The ENS name, e.g. <code>"rainbowwallet.eth"</code></td>
+    </tr>
+    <tr>
+      <td><code>account.hasPendingTransactions</code></td>
+      <td><code>boolean</code></td>
+      <td>Boolean indicating whether the account has pending transactions for the current chain</td>
     </tr>
   </tbody>
 </table>

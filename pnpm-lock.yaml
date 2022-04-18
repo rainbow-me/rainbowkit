@@ -97,6 +97,8 @@ importers:
 
   packages/rainbowkit:
     specifiers:
+      '@ethersproject/abstract-provider': ^5.5.1
+      '@ethersproject/providers': ^5.5.1
       '@types/qrcode': ^1.4.2
       '@vanilla-extract/css': ^1.6.6
       '@vanilla-extract/dynamic': ^2.0.2
@@ -121,6 +123,8 @@ importers:
       qrcode: 1.5.0
       react-remove-scroll: 2.4.4_a0c521d4794c7ad97f5f4c1c4a7d5818
     devDependencies:
+      '@ethersproject/abstract-provider': 5.5.1
+      '@ethersproject/providers': 5.5.3
       '@types/qrcode': 1.4.2
       '@vanilla-extract/private': 1.0.3
       autoprefixer: 10.4.2_postcss@8.4.6

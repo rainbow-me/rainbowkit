@@ -1,6 +1,13 @@
-import React, { ReactNode, useCallback, useEffect, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
+import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { isNotNullish } from '../../utils/isNotNullish';
 import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { AccountModal } from '../AccountModal/AccountModal';
@@ -11,6 +18,7 @@ import {
   useRainbowKitChains,
   useRainbowKitChainsById,
 } from '../RainbowKitProvider/RainbowKitChainContext';
+import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { formatAddress } from './formatAddress';
 
 const useBooleanState = (initialValue: boolean) => {
@@ -32,6 +40,7 @@ export interface ConnectButtonRendererProps {
       displayName: string;
       ensAvatar?: string;
       ensName?: string;
+      hasPendingTransactions: boolean;
     };
     chain?: {
       hasIcon: boolean;
@@ -76,6 +85,11 @@ export function ConnectButtonRenderer({
   const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
 
   const resolvedChainIconUrl = useAsyncImage(chainIconUrl);
+
+  const showRecentTransactions = useContext(ShowRecentTransactionsContext);
+  const hasPendingTransactions =
+    useRecentTransactions().some(({ status }) => status === 'pending') &&
+    showRecentTransactions;
 
   const {
     setFalse: closeConnectModal,
@@ -135,6 +149,7 @@ export function ConnectButtonRenderer({
                 accountData.ens?.name ?? formatAddress(accountData.address),
               ensAvatar: accountData.ens?.avatar ?? undefined,
               ensName: accountData.ens?.name,
+              hasPendingTransactions,
             }
           : undefined,
         accountModalOpen,
