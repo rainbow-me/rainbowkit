@@ -363,50 +363,61 @@ export const YourApp = () => {
           openConnectModal,
           mounted,
         }) => {
-          if (!mounted) {
-            return null;
-          }
-
-          return !account ? (
-            <button onClick={openConnectModal} type="button">
-              Connect Wallet
-            </button>
-          ) : (
-            <div style={{ display: 'flex', gap: 12 }}>
-              {chain && (
-                <button
-                  onClick={openChainModal}
-                  style={{ display: 'flex', alignItems: 'center' }}
-                  type="button"
-                >
-                  {chain.hasIcon && (
-                    <div
-                      style={{
-                        background: chain.iconBackground,
-                        width: 12,
-                        height: 12,
-                        borderRadius: 999,
-                        overflow: 'hidden',
-                        marginRight: 4,
-                      }}
-                    >
-                      {chain.iconUrl && (
-                        <img
-                          alt={chain.name ?? 'Chain icon'}
-                          src={chain.iconUrl}
-                          style={{ width: 12, height: 12 }}
-                        />
-                      )}
-                    </div>
-                  )}
-                  {chain.name ?? chain.id}
-                  {chain.unsupported && ' (unsupported)'}
+          return (
+            <div
+              {...(!mounted && {
+                'aria-hidden': true,
+                'style': {
+                  opacity: 0,
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                },
+              })}
+            >
+              {!account ? (
+                <button onClick={openConnectModal} type="button">
+                  Connect Wallet
                 </button>
+              ) : (
+                <div style={{ display: 'flex', gap: 12 }}>
+                  {chain && (
+                    <button
+                      onClick={openChainModal}
+                      style={{ display: 'flex', alignItems: 'center' }}
+                      type="button"
+                    >
+                      {chain.hasIcon && (
+                        <div
+                          style={{
+                            background: chain.iconBackground,
+                            width: 12,
+                            height: 12,
+                            borderRadius: 999,
+                            overflow: 'hidden',
+                            marginRight: 4,
+                          }}
+                        >
+                          {chain.iconUrl && (
+                            <img
+                              alt={chain.name ?? 'Chain icon'}
+                              src={chain.iconUrl}
+                              style={{ width: 12, height: 12 }}
+                            />
+                          )}
+                        </div>
+                      )}
+                      {chain.name ?? chain.id}
+                      {chain.unsupported && ' (unsupported)'}
+                    </button>
+                  )}
+                  <button onClick={openAccountModal} type="button">
+                    {account.displayName}
+                    {account.displayBalance
+                      ? ` (${account.displayBalance})`
+                      : ''}
+                  </button>
+                </div>
               )}
-              <button onClick={openAccountModal} type="button">
-                {account.displayName}
-                {account.displayBalance ? ` (${account.displayBalance})` : ''}
-              </button>
             </div>
           );
         }}

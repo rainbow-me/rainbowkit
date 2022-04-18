@@ -65,54 +65,66 @@ const Example = () => {
           {({
             account,
             chain,
+            mounted,
             openAccountModal,
             openChainModal,
             openConnectModal,
-          }) =>
-            !account ? (
-              <button onClick={openConnectModal} type="button">
-                Connect Wallet
-              </button>
-            ) : (
-              <div style={{ display: 'flex', gap: 12 }}>
-                {chain && (
-                  <button
-                    onClick={openChainModal}
-                    style={{ alignItems: 'center', display: 'flex' }}
-                    type="button"
-                  >
-                    {chain.hasIcon && (
-                      <div
-                        style={{
-                          background: chain.iconBackground,
-                          borderRadius: 999,
-                          height: 12,
-                          marginRight: 4,
-                          overflow: 'hidden',
-                          width: 12,
-                        }}
-                      >
-                        {chain.iconUrl && (
-                          <img
-                            alt={chain.name ?? 'Chain icon'}
-                            src={chain.iconUrl}
-                            style={{ height: 12, width: 12 }}
-                          />
-                        )}
-                      </div>
-                    )}
-                    {chain.name ?? chain.id}
-                  </button>
-                )}
-                <button onClick={openAccountModal} type="button">
-                  {account.displayName}
-                  {account.balanceFormatted
-                    ? ` (${account.balanceFormatted})`
-                    : ''}
+          }) => (
+            <div
+              {...(!mounted && {
+                'aria-hidden': true,
+                'style': {
+                  opacity: 0,
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                },
+              })}
+            >
+              {!account ? (
+                <button onClick={openConnectModal} type="button">
+                  Connect Wallet
                 </button>
-              </div>
-            )
-          }
+              ) : (
+                <div style={{ display: 'flex', gap: 12 }}>
+                  {chain && (
+                    <button
+                      onClick={openChainModal}
+                      style={{ alignItems: 'center', display: 'flex' }}
+                      type="button"
+                    >
+                      {chain.hasIcon && (
+                        <div
+                          style={{
+                            background: chain.iconBackground,
+                            borderRadius: 999,
+                            height: 12,
+                            marginRight: 4,
+                            overflow: 'hidden',
+                            width: 12,
+                          }}
+                        >
+                          {chain.iconUrl && (
+                            <img
+                              alt={chain.name ?? 'Chain icon'}
+                              src={chain.iconUrl}
+                              style={{ height: 12, width: 12 }}
+                            />
+                          )}
+                        </div>
+                      )}
+                      {chain.name ?? chain.id}
+                    </button>
+                  )}
+                  <button onClick={openAccountModal} type="button">
+                    {account.displayName}
+                    {account.balanceFormatted
+                      ? ` (${account.balanceFormatted})`
+                      : ''}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </ConnectButton.Custom>
       </div>
 
