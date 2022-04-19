@@ -20,56 +20,61 @@ type ChainName =
   | 'rinkeby'
   | 'ropsten';
 
-type ChainMetadata = {
-  chainId: number;
+type IconMetadata = {
   iconUrl: () => Promise<string>;
   iconBackground: string;
 };
 
-const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
-  arbitrumOne: {
-    chainId: 42_161,
-    iconBackground: '#96bedc',
-    iconUrl: async () => (await import('./chainIcons/arbitrum.svg')).default,
-  },
-  avalanche: {
-    chainId: 43_114,
-    iconBackground: '#e84141',
-    iconUrl: async () => (await import('./chainIcons/avalanche.svg')).default,
-  },
-  hardhat: {
-    chainId: 31_337,
-    iconBackground: '#f9f7ec',
-    iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
-  },
-  mainnet: {
-    chainId: 1,
-    iconBackground: '#484c50',
-    iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
-  },
-  optimism: {
-    chainId: 10,
-    iconBackground: '#ff5a57',
-    iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
-  },
-  polygonMainnet: {
-    chainId: 137,
-    iconBackground: '#9f71ec',
-    iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
-  },
+type ChainMetadata = {
+  chainId: number;
+} & IconMetadata;
 
-  // Omitted icons are set to 'null' so we know they've been explicitly excluded from the complete wagmi set (for now)
-  ...{
-    arbitrumRinkeby: null,
-    avalancheFuji: null,
-    goerli: null,
-    kovan: null,
-    localhost: null,
-    optimismKovan: null,
-    polygonTestnetMumbai: null,
-    rinkeby: null,
-    ropsten: null,
-  },
+const arbitrumIcon: IconMetadata = {
+  iconBackground: '#96bedc',
+  iconUrl: async () => (await import('./chainIcons/arbitrum.svg')).default,
+};
+
+const avalancheIcon: IconMetadata = {
+  iconBackground: '#e84141',
+  iconUrl: async () => (await import('./chainIcons/avalanche.svg')).default,
+};
+
+const ethereumIcon: IconMetadata = {
+  iconBackground: '#484c50',
+  iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
+};
+
+const hardhatIcon: IconMetadata = {
+  iconBackground: '#f9f7ec',
+  iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
+};
+
+const optimismIcon: IconMetadata = {
+  iconBackground: '#ff5a57',
+  iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
+};
+
+const polygonIcon: IconMetadata = {
+  iconBackground: '#9f71ec',
+  iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
+};
+
+const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
+  arbitrumOne: { chainId: 42_161, ...arbitrumIcon },
+  arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
+  avalanche: { chainId: 43_114, ...avalancheIcon },
+  avalancheFuji: { chainId: 43_113, ...avalancheIcon },
+  goerli: { chainId: 5, ...ethereumIcon },
+  hardhat: { chainId: 31_337, ...hardhatIcon },
+  kovan: { chainId: 42, ...ethereumIcon },
+  localhost: { chainId: 1_337, ...ethereumIcon },
+  mainnet: { chainId: 1, ...ethereumIcon },
+  optimism: { chainId: 10, ...optimismIcon },
+  optimismKovan: { chainId: 69, ...optimismIcon },
+  polygonMainnet: { chainId: 137, ...polygonIcon },
+  polygonTestnetMumbai: { chainId: 80_001, ...polygonIcon },
+  rinkeby: { chainId: 4, ...ethereumIcon },
+  ropsten: { chainId: 3, ...ethereumIcon },
 };
 
 const chainMetadataById = Object.fromEntries(

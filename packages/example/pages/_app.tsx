@@ -30,6 +30,9 @@ const chains: Chain[] = [
   { ...chain.polygonMainnet, name: 'Polygon' },
   { ...chain.optimism, name: 'Optimism' },
   { ...chain.arbitrumOne, name: 'Arbitrum' },
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+    ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+    : []),
 ];
 
 const wallets = getDefaultWallets({
