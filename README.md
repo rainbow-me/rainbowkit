@@ -254,6 +254,29 @@ const App = () => {
 };
 ```
 
+You can optionally configure different chains depending on the current environment. For example, to enable testnets based on an environment variable while using [Next.js](https://nextjs.org/):
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+    ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+    : []),
+];
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
 Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
 
 ```tsx
