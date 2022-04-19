@@ -9,6 +9,7 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -31,6 +32,8 @@ export function ConnectButton({
   chainStatus = defaultProps.chainStatus,
   showBalance = defaultProps.showBalance,
 }: ConnectButtonProps) {
+  const chains = useRainbowKitChains();
+
   return (
     <ConnectButtonRenderer>
       {({
@@ -41,6 +44,8 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
+        const unsupportedChain = chain?.unsupported ?? false;
+
         return (
           <Box
             display="flex"
@@ -57,19 +62,19 @@ export function ConnectButton({
           >
             {account ? (
               <>
-                {chain && (
+                {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
                     alignItems="center"
                     as="button"
                     background={
-                      chain.unsupported
+                      unsupportedChain
                         ? 'connectButtonBackgroundError'
                         : 'connectButtonBackground'
                     }
                     borderRadius="connectButton"
                     boxShadow="connectButton"
                     color={
-                      chain.unsupported
+                      unsupportedChain
                         ? 'connectButtonTextError'
                         : 'connectButtonText'
                     }
@@ -79,6 +84,7 @@ export function ConnectButton({
                     fontFamily="body"
                     fontWeight="bold"
                     gap="6"
+                    key={unsupportedChain ? 'unsupported' : 'supported'} // Force re-mount to prevent CSS transition
                     onClick={openChainModal}
                     paddingX="10"
                     paddingY="8"
@@ -86,8 +92,15 @@ export function ConnectButton({
                     transition="default"
                     type="button"
                   >
-                    {chain.unsupported ? (
-                      <Box>Invalid network</Box>
+                    {unsupportedChain ? (
+                      <Box
+                        alignItems="center"
+                        display="flex"
+                        height="24"
+                        paddingX="4"
+                      >
+                        Wrong network
+                      </Box>
                     ) : (
                       <Box alignItems="center" display="flex" gap="6">
                         {chain.hasIcon ? (
@@ -129,82 +142,88 @@ export function ConnectButton({
                   </Box>
                 )}
 
-                <Box
-                  alignItems="center"
-                  as="button"
-                  background="connectButtonBackground"
-                  borderRadius="connectButton"
-                  boxShadow="connectButton"
-                  color="connectButtonText"
-                  display="flex"
-                  fontFamily="body"
-                  fontWeight="bold"
-                  onClick={openAccountModal}
-                  transform={{ active: 'shrink', hover: 'grow' }}
-                  transition="default"
-                  type="button"
-                >
-                  {account.displayBalance && (
-                    <Box
-                      display={mapResponsiveValue(showBalance, value =>
-                        value ? 'block' : 'none'
-                      )}
-                      padding="8"
-                      paddingLeft="12"
-                    >
-                      {account.displayBalance}
-                    </Box>
-                  )}
+                {!unsupportedChain && (
                   <Box
-                    background={
-                      normalizeResponsiveValue(showBalance)[
-                        isMobile() ? 'smallScreen' : 'largeScreen'
-                      ]
-                        ? 'connectButtonInnerBackground'
-                        : 'connectButtonBackground'
-                    }
-                    borderColor="connectButtonBackground"
+                    alignItems="center"
+                    as="button"
+                    background="connectButtonBackground"
                     borderRadius="connectButton"
-                    borderStyle="solid"
-                    borderWidth="2"
+                    boxShadow="connectButton"
                     color="connectButtonText"
+                    display="flex"
                     fontFamily="body"
                     fontWeight="bold"
-                    paddingX="8"
-                    paddingY="6"
+                    onClick={openAccountModal}
+                    transform={{ active: 'shrink', hover: 'grow' }}
                     transition="default"
+                    type="button"
                   >
-                    <Box alignItems="center" display="flex" gap="6" height="24">
+                    {account.displayBalance && (
                       <Box
-                        display={mapResponsiveValue(accountStatus, value =>
-                          value === 'full' || value === 'avatar'
-                            ? 'block'
-                            : 'none'
+                        display={mapResponsiveValue(showBalance, value =>
+                          value ? 'block' : 'none'
                         )}
+                        padding="8"
+                        paddingLeft="12"
                       >
-                        <Avatar
-                          address={account.address}
-                          imageUrl={account.ensAvatar}
-                          loading={account.hasPendingTransactions}
-                          size={24}
-                        />
+                        {account.displayBalance}
                       </Box>
-
-                      <Box alignItems="center" display="flex" gap="6">
+                    )}
+                    <Box
+                      background={
+                        normalizeResponsiveValue(showBalance)[
+                          isMobile() ? 'smallScreen' : 'largeScreen'
+                        ]
+                          ? 'connectButtonInnerBackground'
+                          : 'connectButtonBackground'
+                      }
+                      borderColor="connectButtonBackground"
+                      borderRadius="connectButton"
+                      borderStyle="solid"
+                      borderWidth="2"
+                      color="connectButtonText"
+                      fontFamily="body"
+                      fontWeight="bold"
+                      paddingX="8"
+                      paddingY="6"
+                      transition="default"
+                    >
+                      <Box
+                        alignItems="center"
+                        display="flex"
+                        gap="6"
+                        height="24"
+                      >
                         <Box
                           display={mapResponsiveValue(accountStatus, value =>
-                            value === 'full' || value === 'address'
+                            value === 'full' || value === 'avatar'
                               ? 'block'
                               : 'none'
                           )}
                         >
-                          {account.displayName}
+                          <Avatar
+                            address={account.address}
+                            imageUrl={account.ensAvatar}
+                            size={24}
+                          />
                         </Box>
-                        <DropdownIcon />
+
+                        <Box alignItems="center" display="flex" gap="6">
+                          <Box
+                            display={mapResponsiveValue(accountStatus, value =>
+                              value === 'full' || value === 'address'
+                                ? 'block'
+                                : 'none'
+                            )}
+                          >
+                            {account.displayName}
+                          </Box>
+                          <DropdownIcon />
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
-                </Box>
+                )}
               </>
             ) : (
               <Box

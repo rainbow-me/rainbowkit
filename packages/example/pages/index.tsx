@@ -69,62 +69,77 @@ const Example = () => {
             openAccountModal,
             openChainModal,
             openConnectModal,
-          }) => (
-            <div
-              {...(!mounted && {
-                'aria-hidden': true,
-                'style': {
-                  opacity: 0,
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                },
-              })}
-            >
-              {!account ? (
-                <button onClick={openConnectModal} type="button">
-                  Connect Wallet
-                </button>
-              ) : (
-                <div style={{ display: 'flex', gap: 12 }}>
-                  {chain && (
-                    <button
-                      onClick={openChainModal}
-                      style={{ alignItems: 'center', display: 'flex' }}
-                      type="button"
-                    >
-                      {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            borderRadius: 999,
-                            height: 12,
-                            marginRight: 4,
-                            overflow: 'hidden',
-                            width: 12,
-                          }}
-                        >
-                          {chain.iconUrl && (
-                            <img
-                              alt={chain.name ?? 'Chain icon'}
-                              src={chain.iconUrl}
-                              style={{ height: 12, width: 12 }}
-                            />
-                          )}
-                        </div>
-                      )}
-                      {chain.name ?? chain.id}
-                    </button>
-                  )}
-                  <button onClick={openAccountModal} type="button">
-                    {account.displayName}
-                    {account.balanceFormatted
-                      ? ` (${account.balanceFormatted})`
-                      : ''}
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
+          }) => {
+            return (
+              <div
+                {...(!mounted && {
+                  'aria-hidden': true,
+                  'style': {
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  },
+                })}
+              >
+                {(() => {
+                  if (!chain || !account) {
+                    return (
+                      <button onClick={openConnectModal} type="button">
+                        Connect Wallet
+                      </button>
+                    );
+                  }
+
+                  if (chain.unsupported) {
+                    return (
+                      <button onClick={openChainModal} type="button">
+                        Wrong network
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <div style={{ display: 'flex', gap: 12 }}>
+                      <button
+                        onClick={openChainModal}
+                        style={{ alignItems: 'center', display: 'flex' }}
+                        type="button"
+                      >
+                        {chain.hasIcon && (
+                          <div
+                            style={{
+                              background: chain.iconBackground,
+                              borderRadius: 999,
+                              height: 12,
+                              marginRight: 4,
+                              overflow: 'hidden',
+                              width: 12,
+                            }}
+                          >
+                            {chain.iconUrl && (
+                              <img
+                                alt={chain.name ?? 'Chain icon'}
+                                src={chain.iconUrl}
+                                style={{ height: 12, width: 12 }}
+                              />
+                            )}
+                          </div>
+                        )}
+                        {chain.name ?? chain.id}
+                      </button>
+
+                      <button onClick={openAccountModal} type="button">
+                        {account.displayName}
+                        {account.displayBalance
+                          ? ` (${account.displayBalance})`
+                          : ''}
+                      </button>
+                    </div>
+                  );
+                })()}
+              </div>
+            );
+          }}
         </ConnectButton.Custom>
       </div>
 

@@ -374,13 +374,25 @@ export const YourApp = () => {
                 },
               })}
             >
-              {!account ? (
-                <button onClick={openConnectModal} type="button">
-                  Connect Wallet
-                </button>
-              ) : (
-                <div style={{ display: 'flex', gap: 12 }}>
-                  {chain && (
+              {(() => {
+                if (!account || !chain) {
+                  return (
+                    <button onClick={openConnectModal} type="button">
+                      Connect Wallet
+                    </button>
+                  );
+                }
+
+                if (chain.unsupported) {
+                  return (
+                    <button onClick={openChainModal} type="button">
+                      Wrong network
+                    </button>
+                  );
+                }
+
+                return (
+                  <div style={{ display: 'flex', gap: 12 }}>
                     <button
                       onClick={openChainModal}
                       style={{ display: 'flex', alignItems: 'center' }}
@@ -406,18 +418,18 @@ export const YourApp = () => {
                           )}
                         </div>
                       )}
-                      {chain.name ?? chain.id}
-                      {chain.unsupported && ' (unsupported)'}
+                      {chain.name}
                     </button>
-                  )}
-                  <button onClick={openAccountModal} type="button">
-                    {account.displayName}
-                    {account.displayBalance
-                      ? ` (${account.displayBalance})`
-                      : ''}
-                  </button>
-                </div>
-              )}
+
+                    <button onClick={openAccountModal} type="button">
+                      {account.displayName}
+                      {account.displayBalance
+                        ? ` (${account.displayBalance})`
+                        : ''}
+                    </button>
+                  </div>
+                );
+              })()}
             </div>
           );
         }}
