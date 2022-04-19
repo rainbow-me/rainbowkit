@@ -138,7 +138,7 @@ export function ProfileDetails({
         </Box>
         {showRecentTransactions && (
           <>
-            <Box background="generalBorder" height="1" />
+            <Box background="generalBorder" height="1" marginTop="-1" />
             <Box>
               <TxList accountData={accountData} />
             </Box>
