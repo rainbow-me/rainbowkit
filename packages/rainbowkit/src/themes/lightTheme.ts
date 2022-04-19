@@ -45,7 +45,7 @@ export const lightTheme = ({
     modalTextSecondary: 'rgba(60, 66, 66, 0.6)',
     profileAction: '#FFF',
     profileActionHover: 'rgba(255, 255, 255, 0.5)',
-    profileForeground: 'rgba(60, 66, 66, 0.1)',
+    profileForeground: 'rgba(60, 66, 66, 0.06)',
     selectedOptionBorder: 'rgba(60, 66, 66, 0.1)',
     standby: '#FFD641',
   },
