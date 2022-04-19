@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { formatENS } from './formatENS';
 
 describe('formatENS', () => {
-  it('trucates ENS name over 16 characters', () => {
+  it('truncates ENS name over 16 characters', () => {
     expect(formatENS('reallylongensnameheretotest.eth')).toEqual(
       'reallylongensnam...'
     );
