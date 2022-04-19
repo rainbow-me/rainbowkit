@@ -76,11 +76,15 @@ const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
-    <RainbowKitProvider chains={chains}>
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+    <WagmiProvider
+      autoConnect
+      connectors={connectors}
+      provider={provider}
+    >
+      <RainbowKitProvider chains={chains}>
         <YourApp />
-      </WagmiProvider>
-    </RainbowKitProvider>
+      </RainbowKitProvider>
+    </WagmiProvider>
   );
 };
 ```
