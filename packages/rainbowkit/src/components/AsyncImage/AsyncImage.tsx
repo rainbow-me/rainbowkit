@@ -27,14 +27,6 @@ export function AsyncImage({
   width,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
-  const customBorderColor = typeof borderColor === 'object' &&
-    Object.keys(borderColor).includes('custom') && {
-      style: { borderColor: (borderColor as CustomBorderColor).custom },
-    };
-  const renderedBorderColor = customBorderColor || {
-    borderColor: borderColor as BoxProps['borderColor'],
-  };
-
   return (
     <Box
       aria-label={alt}
@@ -66,7 +58,9 @@ export function AsyncImage({
       />
       {borderColor ? (
         <Box
-          {...renderedBorderColor}
+          {...(typeof borderColor === 'object' && 'custom' in borderColor
+            ? { style: { borderColor: borderColor.custom } }
+            : { borderColor })}
           borderRadius={borderRadius}
           borderStyle="solid"
           borderWidth="1"
