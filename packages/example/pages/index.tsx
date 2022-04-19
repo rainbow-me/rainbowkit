@@ -1,4 +1,4 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
 
 import React, { ComponentProps, useState } from 'react';
 import {
