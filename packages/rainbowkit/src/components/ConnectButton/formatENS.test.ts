@@ -11,4 +11,8 @@ describe('formatENS', () => {
   it(`doesn't do anything to ENS names 16 characters or less`, () => {
     expect(formatENS('rainbow.eth')).toEqual('rainbow.eth');
   });
+
+  it(`bong`, () => {
+    expect(formatENS('markdalgleish.eth')).toEqual('markdalgleish.eth');
+  });
 });
