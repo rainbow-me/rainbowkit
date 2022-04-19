@@ -48,7 +48,7 @@
   "scripts": {
     "dev": "next dev --port 3001",
     "build": "INIT_CWD=$PWD next build",
-    "typecheck": "pnpm tsc --noEmit"
+    "typecheck": "INIT_CWD=$PWD contentlayer build && pnpm tsc --noEmit"
   },
   "keywords": [],
   "author": "",
