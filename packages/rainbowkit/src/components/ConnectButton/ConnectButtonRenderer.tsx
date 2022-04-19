@@ -73,7 +73,8 @@ export function ConnectButtonRenderer({
     addressOrName: accountData?.address,
   });
 
-  const [{ data: networkData }, switchNetwork] = useNetwork();
+  const [{ data: networkData, error: networkError }, switchNetwork] =
+    useNetwork();
 
   const rainbowKitChains = useRainbowKitChains();
   const rainbowkitChainsById = useRainbowKitChainsById();
@@ -181,6 +182,7 @@ export function ConnectButtonRenderer({
       />
       <ChainModal
         networkData={networkData}
+        networkError={networkError}
         onClose={closeChainModal}
         onSwitchNetwork={switchNetwork}
         open={chainModalOpen}

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -14,11 +14,13 @@ export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
   networkData: ReturnType<typeof useNetwork>[0]['data'];
+  networkError: ReturnType<typeof useNetwork>[0]['error'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
 export function ChainModal({
   networkData,
+  networkError,
   onClose,
   onSwitchNetwork,
   open,
@@ -29,24 +31,27 @@ export function ChainModal({
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
 
+  const stopSwitching = useCallback(() => {
+    setSwitchingToChain(null);
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
     if (!connectData.connector) {
       return;
     }
-
-    const stopSwitching = () => {
-      setSwitchingToChain(null);
-      onClose();
-    };
-
     const provider = connectData.connector.getProvider();
-
     provider.on('chainChanged', stopSwitching);
-
     return () => {
       provider.removeListener('chainChanged', stopSwitching);
     };
-  }, [connectData.connector, setSwitchingToChain, onClose]);
+  }, [connectData.connector, onClose, stopSwitching]);
+
+  useEffect(() => {
+    if (networkError && networkError.name === 'UserRejectedRequestError') {
+      stopSwitching();
+    }
+  }, [networkError, stopSwitching]);
 
   if (!networkData || !networkData.chain) {
     return null;
