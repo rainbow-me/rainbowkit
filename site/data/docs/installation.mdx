@@ -1,0 +1,104 @@
+---
+title: Installation
+description: Get up and running with RainbowKit
+---
+
+# Installation
+
+## Get up and running with RainbowKit
+
+### Install
+
+Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi@0.2 ethers
+```
+
+### Import
+
+Import RainbowKit, wagmi, and ethers.
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  RainbowKitProvider,
+  Chain,
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider, chain } from 'wagmi';
+import { providers } from 'ethers';
+```
+
+### Configure
+
+Configure your wallets, desired chains and generate the required connectors.
+
+```tsx line=3-99
+...
+import { providers } from 'ethers';
+
+const infuraId = process.env.INFURA_ID;
+
+const provider = ({ chainId }) =>
+  new providers.InfuraProvider(chainId, infuraId);
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimism, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
+
+const wallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
+
+const connectors = connectorsForWallets(wallets);
+```
+
+> We recommend using custom providers such as `InfuraProvider` and `AlchemyProvider`. For help generating provider ID's, see the [Infura docs](https://docs.infura.io/infura/create-a-project) and the [Alchemy docs](https://docs.alchemy.com/alchemy/introduction/getting-started).
+
+### Wrap providers
+
+Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+
+```tsx line=3-99
+...
+const connectors = connectorsForWallets(wallets);
+
+const App = () => {
+  return (
+    <WagmiProvider
+      autoConnect
+      connectors={connectors}
+      provider={provider}
+    >
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiProvider>
+  );
+};
+```
+
+### Use it
+
+Then, in your app, import and render the `ConnectButton` component.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+You're done! RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.

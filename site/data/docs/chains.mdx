@@ -1,0 +1,47 @@
+---
+title: Chains
+description: Customizing chains
+---
+
+# Chains
+
+## Customizing chains
+
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
+
+Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+];
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
+
+```tsx
+const chains: Chain[] = [
+  {
+    ...chain.mainnet,
+    name: 'Ethereum',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...chain.polygonMainnet,
+    name: 'Polygon',
+    iconUrl: 'https://example.com/icons/polygon.png',
+  },
+];
+```

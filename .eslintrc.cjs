@@ -48,6 +48,7 @@ module.exports = {
             js: 'never',
           },
         ],
+        'import/no-unresolved': 'off',
       },
     },
   ],

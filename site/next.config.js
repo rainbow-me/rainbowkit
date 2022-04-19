@@ -1,11 +1,32 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
+const withPlugins = require('next-compose-plugins');
+// TODO: update import https://github.com/contentlayerdev/contentlayer/issues/140
+const { withContentlayer } = require('next-contentlayer');
 const withTM = require('next-transpile-modules')(['@rainbow-me/rainbowkit']);
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
-module.exports = withTM(
-  withVanillaExtract({
-    reactStrictMode: true,
-  })
+const nextConfig = {
+  reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/docs/introduction',
+        permanent: false,
+      },
+      {
+        source: '/docs',
+        destination: '/docs/introduction',
+        permanent: false,
+      },
+    ];
+  },
+};
+
+module.exports = withPlugins(
+  [withVanillaExtract, withContentlayer, withTM],
+  nextConfig
 );
