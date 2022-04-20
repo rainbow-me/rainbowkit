@@ -72,6 +72,7 @@ export const themeVars = createGlobalThemeContract(
 );
 
 const spacing = {
+  '-1': '-1px',
   '0': '0',
   '1': '1px',
   '2': '2px',
