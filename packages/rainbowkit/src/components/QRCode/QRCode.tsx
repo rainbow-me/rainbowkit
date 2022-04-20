@@ -147,7 +147,8 @@ export function QRCode({
         >
           <AsyncImage
             background={logoBackground}
-            borderRadius="25%"
+            borderColor={{ custom: 'rgba(0, 0, 0, 0.06)' }}
+            borderRadius="13"
             height={logoSize}
             src={logoUrl}
             width={logoSize}

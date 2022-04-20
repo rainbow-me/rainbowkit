@@ -2,6 +2,9 @@ import React from 'react';
 import { Box, BoxProps } from '../Box/Box';
 import { AsyncImageSrc, useAsyncImage } from './useAsyncImage';
 
+type CustomBorderColor = {
+  custom: string;
+};
 interface AsyncImageProps {
   alt?: string;
   src: string | AsyncImageSrc | undefined;
@@ -9,7 +12,7 @@ interface AsyncImageProps {
   height: BoxProps['height'] | number;
   background?: string;
   borderRadius?: BoxProps['borderRadius'];
-  borderColor?: BoxProps['borderColor'];
+  borderColor?: BoxProps['borderColor'] | CustomBorderColor;
   boxShadow?: BoxProps['boxShadow'];
 }
 
@@ -24,7 +27,6 @@ export function AsyncImage({
   width,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
-
   return (
     <Box
       aria-label={alt}
@@ -56,7 +58,9 @@ export function AsyncImage({
       />
       {borderColor ? (
         <Box
-          borderColor={borderColor}
+          {...(typeof borderColor === 'object' && 'custom' in borderColor
+            ? { style: { borderColor: borderColor.custom } }
+            : { borderColor })}
           borderRadius={borderRadius}
           borderStyle="solid"
           borderWidth="1"
