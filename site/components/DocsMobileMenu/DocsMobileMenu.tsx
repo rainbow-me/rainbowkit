@@ -5,7 +5,7 @@ export const DocsMobileMenuContext = React.createContext<
   React.RefObject<HTMLDivElement>
 >({} as any);
 
-function useMounted() {
+export function useMounted() {
   const [mounted, mount] = useReducer(() => true, false);
   useEffect(mount, [mount]);
   return mounted;
