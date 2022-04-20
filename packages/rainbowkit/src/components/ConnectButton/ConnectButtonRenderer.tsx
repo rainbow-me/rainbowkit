@@ -8,12 +8,15 @@ import React, {
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
+import { isMobile } from '../../utils/isMobile';
 import { isNotNullish } from '../../utils/isNotNullish';
 import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { loadImages, useAsyncImage } from '../AsyncImage/useAsyncImage';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
+import { preloadAssetsIcon } from '../Icons/Assets';
+import { preloadLoginIcon } from '../Icons/Login';
 import {
   useRainbowKitChains,
   useRainbowKitChainsById,
@@ -119,14 +122,18 @@ export function ConnectButtonRenderer({
 
   const walletConnectors = useWalletConnectors();
 
-  const preloadImages = useCallback(
-    () =>
-      loadImages(
-        ...walletConnectors.map(wallet => wallet.iconUrl),
-        ...rainbowKitChains.map(chain => chain.iconUrl).filter(isNotNullish)
-      ),
-    [walletConnectors, rainbowKitChains]
-  );
+  const preloadImages = useCallback(() => {
+    loadImages(
+      ...walletConnectors.map(wallet => wallet.iconUrl),
+      ...rainbowKitChains.map(chain => chain.iconUrl).filter(isNotNullish)
+    );
+
+    // Preload illustrations used on desktop
+    if (!isMobile()) {
+      preloadAssetsIcon();
+      preloadLoginIcon();
+    }
+  }, [walletConnectors, rainbowKitChains]);
 
   useEffect(() => {
     preloadImages();
