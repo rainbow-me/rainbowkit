@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode } from 'react';
+import React, { ElementType, ReactNode, useEffect } from 'react';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -7,8 +7,8 @@ import {
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
-import { CreateIcon } from '../Icons/Create';
-import { ScanIcon } from '../Icons/Scan';
+import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
+import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { Text } from '../Text/Text';
@@ -302,6 +302,13 @@ export function DownloadDetail({
   wallet: WalletConnector;
 }) {
   const { downloadUrls, qrCode } = wallet;
+
+  useEffect(() => {
+    // Preload icons used on next screen
+    preloadCreateIcon();
+    preloadScanIcon();
+  }, []);
+
   return (
     <Box
       alignItems="center"
