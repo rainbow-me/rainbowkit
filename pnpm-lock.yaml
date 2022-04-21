@@ -38,7 +38,7 @@ importers:
       recursive-readdir-files: ^2.0.7
       typescript: ~4.5.2
       vitest: ^0.5.0
-      wagmi: ^0.2.24
+      wagmi: ^0.2.28
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -71,7 +71,7 @@ importers:
       recursive-readdir-files: 2.0.7
       typescript: 4.5.5
       vitest: 0.5.0
-      wagmi: 0.2.24_@babel+core@7.17.2+react@18.0.0
+      wagmi: 0.2.28_@babel+core@7.17.2+react@18.0.0
 
   packages/example:
     specifiers:
@@ -1640,6 +1640,30 @@ packages:
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 1.19.1
+    dev: true
+
+  /@coinbase/wallet-sdk/3.0.8_@babel+core@7.17.2:
+    resolution: {integrity: sha512-yqnId5BIPeDbHks/DzAeSIvk68r5wvhoTpVnGHSZGWOgRx3h7K8y124WYCD+ketbKCdwoeOd8CLgXdc3H6VRug==}
+    engines: {node: '>= 10.0.0'}
+    dependencies:
+      '@metamask/safe-event-emitter': 2.0.0
+      bind-decorator: 1.0.11
+      bn.js: 5.2.0
+      clsx: 1.1.1
+      eth-block-tracker: 4.4.3_@babel+core@7.17.2
+      eth-json-rpc-filters: 4.2.2
+      eth-rpc-errors: 4.0.2
+      js-sha256: 0.9.0
+      json-rpc-engine: 6.1.0
+      keccak: 3.0.2
+      preact: 10.6.5
+      qs: 6.10.3
+      rxjs: 6.6.7
+      stream-browserify: 3.0.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - encoding
+      - supports-color
     dev: true
 
   /@commitlint/cli/15.0.0:
@@ -8629,6 +8653,13 @@ packages:
       yargs: 15.4.1
     dev: false
 
+  /qs/6.10.3:
+    resolution: {integrity: sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
+    dev: true
+
   /qs/6.5.3:
     resolution: {integrity: sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==}
     engines: {node: '>=0.6'}
@@ -10045,18 +10076,22 @@ packages:
       - stylus
     dev: true
 
-  /wagmi-core/0.1.18_8adebb6d1a768ce096a0a30ba29c2c1b:
-    resolution: {integrity: sha512-83hFh9YbIBYxStzbUdpahQbwvXUAeMJl5ChUNX9QpqjyDjJt0HbGKQ39FWHGre168Pcm4fYh6Ud99PN+x44gDw==}
+  /wagmi-core/0.1.22_ce41b4bca3a7443571d5e80eccd1e452:
+    resolution: {integrity: sha512-Q/MjVVC31SOks6ynTxp+RQFgA1pMWUAz8g3XBZzFSMB59UUpwCpC3mjVTM5bix63HZ1CNIngo+MT2ax7HItZow==}
     peerDependencies:
+      '@coinbase/wallet-sdk': ^3.0.8
       '@walletconnect/ethereum-provider': 1.7.5
       ethers: ^5.5.1
       walletlink: ^2.5.0
     peerDependenciesMeta:
+      '@coinbase/wallet-sdk':
+        optional: true
       '@walletconnect/ethereum-provider':
         optional: true
       walletlink:
         optional: true
     dependencies:
+      '@coinbase/wallet-sdk': 3.0.8_@babel+core@7.17.2
       '@ethersproject/providers': 5.5.3
       '@walletconnect/ethereum-provider': 1.7.5
       eventemitter3: 4.0.7
@@ -10066,16 +10101,17 @@ packages:
       - utf-8-validate
     dev: true
 
-  /wagmi/0.2.24_@babel+core@7.17.2+react@18.0.0:
-    resolution: {integrity: sha512-iTs37Fewu4vu4sGHWKsy36vkfT797/gsheY7b0ufcQdghoOMbDb06cBZfOuvlwgVSHgekt6cUU9x1q8Z3NUC+w==}
+  /wagmi/0.2.28_@babel+core@7.17.2+react@18.0.0:
+    resolution: {integrity: sha512-ovB/3ULocxt4IojC7t2aqb1tPNk3Or9+hrUiLkf15yDLeUdn4murot1lpunKZHrlaIsCGwNknW8hsGY+47btCw==}
     peerDependencies:
       ethers: ^5.5.1
       react: ^17.0.0
     dependencies:
+      '@coinbase/wallet-sdk': 3.0.8_@babel+core@7.17.2
       '@ethersproject/providers': 5.5.3
       '@walletconnect/ethereum-provider': 1.7.5
       react: 18.0.0
-      wagmi-core: 0.1.18_8adebb6d1a768ce096a0a30ba29c2c1b
+      wagmi-core: 0.1.22_ce41b4bca3a7443571d5e80eccd1e452
       walletlink: 2.5.0_@babel+core@7.17.2
     transitivePeerDependencies:
       - '@babel/core'

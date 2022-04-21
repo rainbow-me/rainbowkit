@@ -1,7 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { WalletLinkConnector } from 'wagmi/connectors/walletLink';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface CoinbaseOptions {
@@ -26,21 +27,36 @@ export const coinbase = ({
     android: 'https://play.google.com/store/apps/details?id=org.toshi',
     ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
   },
-  createConnector: ({ chainId }) => ({
-    connector:
-      typeof window !== 'undefined' &&
-      // @ts-expect-error
-      window.ethereum?.isCoinbaseWallet
-        ? new InjectedConnector({ chains })
-        : new WalletLinkConnector({
-            chains,
-            options: {
-              appName,
-              jsonRpcUrl:
-                typeof jsonRpcUrl === 'function'
-                  ? jsonRpcUrl({ chainId })
-                  : jsonRpcUrl,
-            },
+  createConnector: ({ chainId }) => {
+    const ios = isIOS();
+
+    const connector = new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName,
+        headlessMode: true,
+        jsonRpcUrl:
+          typeof jsonRpcUrl === 'function'
+            ? jsonRpcUrl({ chainId })
+            : jsonRpcUrl,
+      },
+    });
+
+    const getUri = () => connector.getProvider().qrUrl;
+
+    return {
+      connector:
+        typeof window !== 'undefined' &&
+        // @ts-expect-error
+        window.ethereum?.isCoinbaseWallet
+          ? new InjectedConnector({ chains })
+          : connector,
+      ...(ios
+        ? {}
+        : {
+            mobile: { getUri },
+            qrCode: { getUri },
           }),
-  }),
+    };
+  },
 });
