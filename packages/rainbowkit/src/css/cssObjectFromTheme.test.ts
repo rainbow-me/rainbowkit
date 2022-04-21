@@ -6,7 +6,7 @@ describe('cssObjectFromTheme', () => {
   it('converts themes to CSS-in-JS objects', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
-        "--rk-borders-modalBorderWidth": "0px",
+        "--rk-borders-modalBorderWidth": "1px",
         "--rk-colors-accentColor": "#0E76FD",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0)",

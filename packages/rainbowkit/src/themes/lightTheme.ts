@@ -16,7 +16,7 @@ export const lightTheme = ({
 }: ThemeOptions = {}) => ({
   ...baseTheme(baseThemeOptions),
   borders: {
-    modalBorderWidth: '0px',
+    modalBorderWidth: '1px',
   },
   colors: {
     accentColor: accents[accentColor],
