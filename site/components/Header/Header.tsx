@@ -7,6 +7,7 @@ import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { chains, Provider } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
+import NextLink from 'next/link';
 import React from 'react';
 import { header, logo, row } from './Header.css';
 
@@ -19,13 +20,15 @@ export function Header({
   return (
     <Box className={header} {...props}>
       <Box className={row}>
-        <Box
-          alt="Rainbow logo"
-          as="img"
-          className={logo}
-          marginRight="4"
-          src="/rainbow-avatar.png"
-        />
+        <NextLink href="/">
+          <Box
+            alt="Rainbow logo"
+            as="img"
+            className={logo}
+            marginRight="4"
+            src="/rainbow-avatar.png"
+          />
+        </NextLink>
 
         <Box
           // eslint-disable-next-line sort-keys-fix/sort-keys-fix

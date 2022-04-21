@@ -1,6 +1,8 @@
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
+import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import { Header } from 'components/Header/Header';
+import { TickIcon } from 'components/Icons/Tick';
 import { Link } from 'components/Link/Link';
 import { Playground } from 'components/Playground/Playground';
 import { Text } from 'components/Text/Text';
@@ -8,7 +10,26 @@ import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { vars } from 'css/vars.css';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import React from 'react';
+
+const code = `import '@rainbow-me/rainbowkit/styles.css';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+
+const App = () => {
+  return (
+    <WagmiProvider
+      autoConnect
+      connectors={connectors}
+      provider={provider}
+    >
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiProvider>
+  );
+};`;
 
 export default function Home() {
   return (
@@ -53,9 +74,11 @@ export default function Home() {
           >
             Designed for everyone. Built for developers.
           </Text>
-          <Button marginBottom="11" size="xl" variant="purpleGradient">
-            View the Docs
-          </Button>
+          <NextLink href="/docs" passHref>
+            <Button as="a" marginBottom="11" size="xl" variant="purpleGradient">
+              View the Docs
+            </Button>
+          </NextLink>
         </Box>
       </Wrapper>
       <Box position="relative">
@@ -131,6 +154,55 @@ export default function Home() {
             handle the hard stuff so developers and teams can focus on building
             amazing products and communities for their users.
           </Text>
+
+          <Box display="flex" gap="10" marginY="11">
+            <Box>
+              <Box
+                as="ul"
+                display="flex"
+                flexDirection="column"
+                gap="5"
+                marginTop="7"
+              >
+                {[
+                  'Easy Installation',
+                  'Built-in Themes',
+                  'Light and Dark Mode',
+                  'App Store and Google Play Integration',
+                  'Custom Themes',
+                  'Custom Wallet Lists',
+                  'Custom Chains',
+                  'Custom Connect Button',
+                ].map(value => (
+                  <Box
+                    alignItems="center"
+                    as="li"
+                    display="flex"
+                    gap="3"
+                    key={value}
+                  >
+                    <TickIcon />
+                    <Text weight="bold">{value}</Text>
+                  </Box>
+                ))}
+                <NextLink href="/docs" passHref>
+                  <Button
+                    as="a"
+                    marginBottom="11"
+                    marginTop="9"
+                    size="xl"
+                    style={{ alignSelf: 'flex-start' }}
+                    variant="purpleGradient"
+                  >
+                    View the Docs
+                  </Button>
+                </NextLink>
+              </Box>
+            </Box>
+            <Box flex="auto" width="1/3">
+              <CodeBlock value={code} />
+            </Box>
+          </Box>
         </Wrapper>
       </Box>
 
