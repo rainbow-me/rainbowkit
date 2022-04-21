@@ -15,9 +15,6 @@ export const darkTheme = ({
   ...baseThemeOptions
 }: ThemeOptions = {}) => ({
   ...baseTheme(baseThemeOptions),
-  borders: {
-    modalBorderWidth: '1px',
-  },
   colors: {
     accentColor: accents[accentColor],
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
