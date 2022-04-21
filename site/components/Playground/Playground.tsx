@@ -60,7 +60,11 @@ const gradientColors: Record<Accents, any> = {
     [172, 22, 52],
     [189, 38, 13],
   ],
-  yellow: [],
+  yellow: [
+    [83, 10, 6],
+    [172, 22, 52],
+    [189, 38, 13],
+  ],
 };
 
 export function Playground() {
@@ -146,10 +150,14 @@ export function Playground() {
           </RainbowKitProvider>
         </Provider>
 
-        <Wrapper>
+        <Wrapper style={{ maxWidth: 'fit-content' }}>
           <div style={{ display: 'flex', gap: 60 }}>
             <div>
-              <Text variant="title3" weight="bold">
+              <Text
+                style={{ mixBlendMode: 'overlay' }}
+                variant="title3"
+                weight="bold"
+              >
                 Mode
               </Text>
               <ControlBox>
@@ -168,20 +176,24 @@ export function Playground() {
                   <Radio
                     activeValue={mode}
                     id="mode"
-                    style={{ backgroundColor: 'black' }}
-                    value="dark"
+                    style={{ backgroundColor: '#1A1B1F' }}
+                    value="midnight"
                   />
                   <Radio
                     activeValue={mode}
                     id="mode"
-                    style={{ backgroundColor: '#333' }}
-                    value="midnight"
+                    style={{ backgroundColor: 'black' }}
+                    value="dark"
                   />
                 </RadioGroup.Root>
               </ControlBox>
             </div>
             <div>
-              <Text variant="title3" weight="bold">
+              <Text
+                style={{ mixBlendMode: 'overlay' }}
+                variant="title3"
+                weight="bold"
+              >
                 Accent
               </Text>
               <ControlBox>
@@ -191,35 +203,27 @@ export function Playground() {
                   style={{ display: 'inline-flex', gap: 22 }}
                   value={accent}
                 >
-                  <Radio
-                    activeValue={accent}
-                    id="accent"
-                    style={{ backgroundColor: '#6F55F2' }}
-                    value="purple"
-                  />
-                  <Radio
-                    activeValue={accent}
-                    id="accent"
-                    style={{ backgroundColor: '#0077FF' }}
-                    value="blue"
-                  />
-                  <Radio
-                    activeValue={accent}
-                    id="accent"
-                    style={{ backgroundColor: '#00B34A' }}
-                    value="green"
-                  />
-                  <Radio
-                    activeValue={accent}
-                    id="accent"
-                    style={{ backgroundColor: '#FA4B85' }}
-                    value="pink"
-                  />
+                  {(Object.keys(gradientColors) as Accents[]).map(color => (
+                    <Radio
+                      activeValue={accent}
+                      id="accent"
+                      key={color}
+                      style={{
+                        backgroundColor: THEMES[mode]({ accentColor: color })
+                          .colors.accentColor,
+                      }}
+                      value={color}
+                    />
+                  ))}
                 </RadioGroup.Root>
               </ControlBox>
             </div>
             <div>
-              <Text variant="title3" weight="bold">
+              <Text
+                style={{ mixBlendMode: 'overlay' }}
+                variant="title3"
+                weight="bold"
+              >
                 Radius
               </Text>
               <ControlBox>

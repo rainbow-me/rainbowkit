@@ -24,6 +24,8 @@ export const radio = style({
       justifyContent: 'center',
       position: 'absolute',
       width: '100%',
+      fontWeight: '700',
+      fontFamily: vars.fonts.normal,
     },
   },
 });

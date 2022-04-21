@@ -1,6 +1,7 @@
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
+import { Link } from 'components/Link/Link';
 import { Playground } from 'components/Playground/Playground';
 import { Text } from 'components/Text/Text';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
@@ -130,6 +131,96 @@ export default function Home() {
             handle the hard stuff so developers and teams can focus on building
             amazing products and communities for their users.
           </Text>
+        </Wrapper>
+      </Box>
+
+      <Box
+        backgroundColor="backgroundElevated"
+        data-mode="light"
+        style={{ padding: '128px 0' }}
+      >
+        <Wrapper>
+          <Text
+            as="h2"
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              fontSize: 52,
+              gap: '4px',
+              justifyContent: 'center',
+              justifyItems: 'center',
+              lineHeight: '56px',
+              textAlign: 'center',
+            }}
+            weight="bold"
+          >
+            Made with ❤️ by your frens at{' '}
+            <Box
+              alt="Rainbow logo"
+              as="img"
+              borderRadius="3"
+              src="/rainbow-avatar.png"
+              style={{
+                height: 56,
+                verticalAlign: 'middle',
+                width: 56,
+              }}
+            />
+          </Text>
+          <Text
+            as="p"
+            marginX="auto"
+            marginY="9"
+            style={{
+              maxWidth: 760,
+              textAlign: 'center',
+            }}
+            variant="title2"
+          >
+            Building RainbowKit has been an incredibly fun effort across many
+            people at Rainbow and our frens at other companies. We$apos;re
+            always looking to make RainbowKit better, so please let us know how
+            we can improve.
+          </Text>
+
+          <Box display="flex" gap="8" justifyContent="center">
+            <Button
+              as="a"
+              href="https://twitter.com/rainbowdotme"
+              size="xl"
+              variant="blueGradient"
+            >
+              Follow us on Twitter
+            </Button>
+            <Button as="a" href="" size="xl" variant="pinkGradient">
+              Share feedback with us
+            </Button>
+          </Box>
+
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="6"
+            justifyContent="center"
+            style={{ marginTop: 128 }}
+            textAlign="center"
+          >
+            <Text weight="bold">
+              <Link variant="gray">GitHub</Link>
+            </Text>
+            <Text weight="bold">
+              <Link variant="gray">media kit</Link>
+            </Text>
+            <Text weight="bold">
+              <Link variant="gray">terms of use</Link>
+            </Text>
+            <Text weight="bold">
+              <Link variant="gray">privacy policy</Link>
+            </Text>
+            <Text color="labelTertiary" weight="bold">
+              © Rainbow
+            </Text>
+          </Box>
         </Wrapper>
       </Box>
     </Box>
