@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -45,12 +44,7 @@ export const coinbase = ({
     const getUri = () => connector.getProvider().qrUrl;
 
     return {
-      connector:
-        typeof window !== 'undefined' &&
-        // @ts-expect-error
-        window.ethereum?.isCoinbaseWallet
-          ? new InjectedConnector({ chains })
-          : connector,
+      connector: connector,
       ...(ios
         ? {}
         : {
