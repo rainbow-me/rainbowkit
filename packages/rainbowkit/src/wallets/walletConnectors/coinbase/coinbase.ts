@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { InjectedConnector } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -15,11 +14,6 @@ export const coinbase = ({
   chains,
   jsonRpcUrl,
 }: CoinbaseOptions): Wallet => {
-  const isCoinbaseInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    window.ethereum?.isCoinbaseWallet;
-
   const isExtensionInstalled =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -39,21 +33,17 @@ export const coinbase = ({
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
     },
     createConnector: ({ chainId }) => {
-      const connector =
-        // @ts-ignore
-        isCoinbaseInjected || isExtensionInstalled
-          ? new InjectedConnector({ chains })
-          : new CoinbaseWalletConnector({
-              chains,
-              options: {
-                appName,
-                headlessMode: true,
-                jsonRpcUrl:
-                  typeof jsonRpcUrl === 'function'
-                    ? jsonRpcUrl({ chainId })
-                    : jsonRpcUrl,
-              },
-            });
+      const connector = new CoinbaseWalletConnector({
+        chains,
+        options: {
+          appName,
+          headlessMode: true,
+          jsonRpcUrl:
+            typeof jsonRpcUrl === 'function'
+              ? jsonRpcUrl({ chainId })
+              : jsonRpcUrl,
+        },
+      });
 
       const getUri = () => connector.getProvider().qrUrl;
 
