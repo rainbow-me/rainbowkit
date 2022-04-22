@@ -2,7 +2,6 @@
 import { InjectedConnector } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface CoinbaseOptions {
@@ -21,12 +20,18 @@ export const coinbase = ({
     // @ts-expect-error
     window.ethereum?.isCoinbaseWallet;
 
+  const isExtensionInstalled =
+    typeof window !== 'undefined' &&
+    // @ts-expect-error
+    window.walletLinkExtension?.isCoinbaseWallet;
+
   return {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
     iconBackground: '#2c5ff6',
+    installed: isExtensionInstalled ? true : undefined,
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
@@ -34,32 +39,28 @@ export const coinbase = ({
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
     },
     createConnector: ({ chainId }) => {
-      const ios = isIOS();
-
-      const connector = isCoinbaseInjected
-        ? new InjectedConnector({ chains })
-        : new CoinbaseWalletConnector({
-            chains,
-            options: {
-              appName,
-              headlessMode: true,
-              jsonRpcUrl:
-                typeof jsonRpcUrl === 'function'
-                  ? jsonRpcUrl({ chainId })
-                  : jsonRpcUrl,
-            },
-          });
+      const connector =
+        // @ts-ignore
+        isCoinbaseInjected || isExtensionInstalled
+          ? new InjectedConnector({ chains })
+          : new CoinbaseWalletConnector({
+              chains,
+              options: {
+                appName,
+                headlessMode: true,
+                jsonRpcUrl:
+                  typeof jsonRpcUrl === 'function'
+                    ? jsonRpcUrl({ chainId })
+                    : jsonRpcUrl,
+              },
+            });
 
       const getUri = () => connector.getProvider().qrUrl;
 
       return {
         connector,
-        ...(ios
-          ? {}
-          : {
-              mobile: { getUri },
-              qrCode: { getUri },
-            }),
+        mobile: { getUri },
+        qrCode: isExtensionInstalled ? undefined : { getUri },
       };
     },
   };
