@@ -29,11 +29,13 @@ const wallets = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
   infuraId,
-  jsonRpcUrl: ({ chainId }) =>
-    `${
-      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-      chain.mainnet.rpcUrls[0]
-    }/${infuraId}`,
+  jsonRpcUrl: ({ chainId }) => {
+    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
+      .rpcUrls;
+    return typeof rpcUrls.default === 'string'
+      ? rpcUrls.default
+      : rpcUrls.default[0];
+  },
 });
 
 const connectors = connectorsForWallets(wallets);

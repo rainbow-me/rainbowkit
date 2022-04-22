@@ -42,11 +42,9 @@ const wallets = getDefaultWallets({
   jsonRpcUrl: ({ chainId }) => {
     const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
       .rpcUrls;
-    const rpcUrl =
-      typeof rpcUrls.default === 'string'
-        ? rpcUrls.default
-        : rpcUrls.default[0];
-    return `${rpcUrl}/${infuraId}`;
+    return typeof rpcUrls.default === 'string'
+      ? rpcUrls.default
+      : rpcUrls.default[0];
   },
 });
 

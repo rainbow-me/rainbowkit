@@ -52,9 +52,13 @@ const wallets = getDefaultWallets({
   chains,
   infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
+  jsonRpcUrl: ({ chainId }) => {
+    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
+      .rpcUrls;
+    return typeof rpcUrls.default === 'string'
+      ? rpcUrls.default
+      : rpcUrls.default[0];
+  },
 });
 
 const connectors = connectorsForWallets(wallets);
@@ -779,9 +783,13 @@ const wallets: WalletList = [
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) =>
-          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-          chain.mainnet.rpcUrls[0],
+        jsonRpcUrl: ({ chainId }) => {
+          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
+            .rpcUrls;
+          return typeof rpcUrls.default === 'string'
+            ? rpcUrls.default
+            : rpcUrls.default[0];
+        },
       }),
       wallet.metaMask({ chains, infuraId }),
       ...(needsInjectedWalletFallback
