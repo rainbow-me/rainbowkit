@@ -260,6 +260,8 @@ export function ConnectDetail({
                 flexDirection="row"
                 gap="6"
                 height="24"
+                paddingX="28"
+                textAlign="center"
               >
                 {connectionError ? (
                   <Text

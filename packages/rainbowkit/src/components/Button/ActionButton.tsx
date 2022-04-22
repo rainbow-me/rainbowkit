@@ -37,6 +37,7 @@ export function ActionButton({
   label,
   onClick,
   size = 'medium',
+  stretch,
   target = '_blank',
   type = 'primary',
 }: {
@@ -44,6 +45,7 @@ export function ActionButton({
   label: string;
   onClick?: () => void;
   size?: Size;
+  stretch?: boolean;
   target?: string;
   type?: 'primary' | 'secondary';
 }) {
@@ -68,6 +70,7 @@ export function ActionButton({
       borderStyle="solid"
       borderWidth="1"
       display="block"
+      justifyContent="center"
       onClick={onClick}
       paddingX={paddingX}
       paddingY={paddingY}
@@ -77,10 +80,12 @@ export function ActionButton({
       transition="default"
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
+      {...(stretch ? { marginX: '20', width: 'full' } : {})}
     >
       <Text
         color={isPrimary ? 'accentColorForeground' : 'accentColor'}
         size={fontSize}
+        textAlign="center"
         weight="bold"
       >
         {label}
