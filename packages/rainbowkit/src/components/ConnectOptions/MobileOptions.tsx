@@ -1,19 +1,33 @@
 import React, { useCallback, useContext, useState } from 'react';
+import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
-import { LearnMoreUrlContext } from '../RainbowKitProvider/LearnMoreUrlContext';
+import { AppContext } from '../RainbowKitProvider/AppContext';
+import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
-  const { connect, iconUrl, id, mobile, name, onConnecting, ready } = wallet;
+  const {
+    connect,
+    iconBackground,
+    iconUrl,
+    id,
+    mobile,
+    name,
+    onConnecting,
+    ready,
+    shortName,
+  } = wallet;
   const getMobileUri = mobile?.getUri;
+  const coolModeRef = useCoolMode(iconUrl);
 
   return (
     <Box
@@ -31,6 +45,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
           }
         });
       }, [connect, getMobileUri, onConnecting])}
+      ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
@@ -41,41 +56,36 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         flexDirection="column"
         justifyContent="center"
       >
-        <Box
-          borderRadius="13"
-          display="block"
-          height="60"
-          marginBottom="8"
-          style={{
-            background: `url(${iconUrl})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            touchCallout: 'none',
-            userSelect: 'none',
-          }}
-          width="60"
-        >
-          <Box
-            borderColor="actionButtonBorder"
+        <Box paddingBottom="8" paddingTop="10">
+          <AsyncImage
+            background={iconBackground}
             borderRadius="13"
-            borderStyle="solid"
-            borderWidth="1"
-            height="full"
-            width="full"
+            boxShadow="walletLogo"
+            height="60"
+            src={iconUrl}
+            width="60"
           />
         </Box>
-        <Text
-          as="h2"
-          color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-          size="13"
-          weight="medium"
-        >
-          {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
-          <Box as="span" position="relative">
-            {name}
-            {!wallet.ready && ' (unsupported)'}
-          </Box>
-        </Text>
+        <Box display="flex" flexDirection="column" gap="1" textAlign="center">
+          <Text
+            as="h2"
+            color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+            size="13"
+            weight="medium"
+          >
+            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+            <Box as="span" position="relative">
+              {shortName ?? name}
+              {!wallet.ready && ' (unsupported)'}
+            </Box>
+          </Text>
+
+          {wallet.recent && (
+            <Text color="accentColor" size="12" weight="medium">
+              Recent
+            </Text>
+          )}
+        </Box>
       </Box>
     </Box>
   );
@@ -89,7 +99,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const learnMoreUrl = useContext(LearnMoreUrlContext);
+  const { learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -99,6 +109,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
     MobileWalletStep.Connect
   );
+
+  const ios = isIOS();
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
@@ -128,7 +140,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="generalBorder" height="1" marginBottom="32" />
+          <Box
+            background="generalBorder"
+            height="1"
+            marginBottom="32"
+            marginTop="-1"
+          />
 
           <Box
             alignItems="center"
@@ -138,7 +155,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             paddingX="32"
             style={{ textAlign: 'center' }}
           >
-            <Box display="flex" flexDirection="column" gap="8">
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="8"
+              textAlign="center"
+            >
               <Text color="modalText" size="16" weight="bold">
                 What is a Wallet?
               </Text>
@@ -171,9 +193,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = MobileWalletStep.Connect;
 
-      const mobileWallets = wallets?.filter(
-        wallet => wallet.downloadUrls?.mobile
-      );
+      const mobileWallets = wallets
+        ?.filter(
+          wallet => wallet.downloadUrls?.ios || wallet.downloadUrls?.android
+        )
+        ?.splice(0, 3);
 
       walletContent = (
         <>
@@ -184,13 +208,13 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             height="full"
             marginBottom="36"
             marginTop="5"
-            paddingTop="2"
+            paddingTop="12"
             width="full"
           >
             {mobileWallets.map((wallet, index) => {
-              const { downloadUrls, iconUrl, name } = wallet;
+              const { downloadUrls, iconBackground, iconUrl, name } = wallet;
 
-              if (!downloadUrls?.mobile) {
+              if (!downloadUrls?.ios && !downloadUrls?.android) {
                 return null;
               }
 
@@ -202,26 +226,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   paddingX="20"
                   width="full"
                 >
-                  <Box
-                    borderRadius="10"
-                    height="48"
-                    minWidth="48"
-                    style={{
-                      background: `url(${iconUrl})`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                      touchCallout: 'none',
-                      userSelect: 'none',
-                    }}
-                    width="48"
-                  >
-                    <Box
-                      borderColor="actionButtonBorder"
+                  <Box style={{ minHeight: 48, minWidth: 48 }}>
+                    <AsyncImage
+                      background={iconBackground}
+                      borderColor="generalBorder"
                       borderRadius="10"
-                      borderStyle="solid"
-                      borderWidth="1"
-                      height="full"
-                      width="full"
+                      height="48"
+                      src={iconUrl}
+                      width="48"
                     />
                   </Box>
                   <Box display="flex" flexDirection="column" width="full">
@@ -232,7 +244,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                         </Text>
                       </Box>
                       <ActionButton
-                        href={downloadUrls.mobile}
+                        href={ios ? downloadUrls?.ios : downloadUrls?.android}
                         label="GET"
                         size="small"
                         type="secondary"
@@ -261,7 +273,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             paddingX="36"
             style={{ textAlign: 'center' }}
           >
-            <Box display="flex" flexDirection="column" gap="12">
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap="12"
+              textAlign="center"
+            >
               <Text color="modalText" size="16" weight="bold">
                 Not what you&rsquo;re looking for?
               </Text>
@@ -286,7 +303,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         }
         display="flex"
         flexDirection="column"
-        paddingBottom="14"
+        paddingBottom="4"
         paddingTop="14"
       >
         <Box
@@ -324,7 +341,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           )}
 
-          <Box marginTop="4" style={{ textAlign: 'center' }} width="full">
+          <Box marginTop="4" textAlign="center" width="full">
             <Text
               as="h1"
               color="modalText"

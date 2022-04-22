@@ -2,6 +2,7 @@
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
   createMapValueFn,
+  createNormalizeValueFn,
   createSprinkles,
   defineProperties,
   RequiredConditionalValue,
@@ -53,6 +54,7 @@ const themeContractValues = {
   shadows: {
     connectButton: '',
     dialog: '',
+    walletLogo: '',
     profileDetailsAction: '',
     selectedOption: '',
     selectedWallet: '',
@@ -70,7 +72,9 @@ export const themeVars = createGlobalThemeContract(
 );
 
 const spacing = {
+  '-1': '-1px',
   '0': '0',
+  '1': '1px',
   '2': '2px',
   '4': '4px',
   '5': '5px',
@@ -99,6 +103,7 @@ const dimensions = {
   '20': '20px',
   '24': '24px',
   '28': '28px',
+  '30': '30px',
   '32': '32px',
   '34': '34px',
   '36': '36px',
@@ -111,6 +116,8 @@ const dimensions = {
 };
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
+
+const textAlignments = ['left', 'center', 'inherit'] as const;
 
 const interactionProperties = defineProperties({
   conditions: {
@@ -152,6 +159,8 @@ export type ResponsiveValue<Value extends string | number | boolean> =
   RequiredConditionalValue<typeof responsiveProperties, Value>;
 
 export const mapResponsiveValue = createMapValueFn(responsiveProperties);
+export const normalizeResponsiveValue =
+  createNormalizeValueFn(responsiveProperties);
 
 const unresponsiveProperties = defineProperties({
   properties: {
@@ -163,6 +172,7 @@ const unresponsiveProperties = defineProperties({
       '6': '6px',
       '10': '10px',
       '13': '13px',
+      '25%': '25%',
       'full': '9999px',
     },
     borderStyle: {
@@ -197,6 +207,7 @@ const unresponsiveProperties = defineProperties({
     gap: spacing,
     height: dimensions,
     justifyContent: [...flexAlignment, 'space-between'],
+    textAlign: textAlignments,
     marginBottom: spacing,
     marginLeft: spacing,
     marginRight: spacing,

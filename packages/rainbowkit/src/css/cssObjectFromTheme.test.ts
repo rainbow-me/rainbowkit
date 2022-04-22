@@ -7,7 +7,7 @@ describe('cssObjectFromTheme', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
         "--rk-borders-modalBorderWidth": "0px",
-        "--rk-colors-accentColor": "#1A85FF",
+        "--rk-colors-accentColor": "#0E76FD",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
@@ -32,10 +32,10 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-modalTextSecondary": "rgba(60, 66, 66, 0.6)",
         "--rk-colors-profileAction": "#FFF",
         "--rk-colors-profileActionHover": "rgba(255, 255, 255, 0.5)",
-        "--rk-colors-profileForeground": "rgba(60, 66, 66, 0.1)",
+        "--rk-colors-profileForeground": "rgba(60, 66, 66, 0.06)",
         "--rk-colors-selectedOptionBorder": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-standby": "#FFD641",
-        "--rk-fonts-body": "SFRounded,ui-rounded,SF Pro Rounded,system-ui,Helvetica Neue,Arial,Helvetica,sans-serif",
+        "--rk-fonts-body": "SFRounded, ui-rounded, SF Pro Rounded, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
         "--rk-radii-actionButton": "9999px",
         "--rk-radii-connectButton": "12px",
         "--rk-radii-menuButton": "12px",
@@ -46,6 +46,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-profileDetailsAction": "0px 2px 6px rgba(37, 41, 46, 0.04)",
         "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
         "--rk-shadows-selectedWallet": "0px 2px 6px rgba(0, 0, 0, 0.12)",
+        "--rk-shadows-walletLogo": "0px 2px 16px rgba(0, 0, 0, 0.16)",
       }
     `);
   });

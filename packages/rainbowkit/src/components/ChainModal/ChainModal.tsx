@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import { useConnect, useNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
-import { Box } from '../Box/Box';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { Box, BoxProps } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
@@ -14,24 +15,31 @@ export interface ChainModalProps {
   chains: ReturnType<typeof useNetwork>['chains'];
   open: boolean;
   onClose: () => void;
+  networkError: ReturnType<typeof useNetwork>['error'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
 export function ChainModal({
   activeChain,
   chains,
+  networkError,
   onClose,
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
-  const { data: accountData } = useAccount();
+  const { activeConnector } = useConnect();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
 
+  const stopSwitching = useCallback(() => {
+    setSwitchingToChain(null);
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
-    if (!accountData?.connector) {
+    if (!activeConnector) {
       return;
     }
 
@@ -41,7 +49,7 @@ export function ChainModal({
     };
 
     let provider: any;
-    accountData?.connector?.getProvider?.().then(provider_ => {
+    activeConnector?.getProvider?.().then(provider_ => {
       provider = provider_;
       provider.on('chainChanged', stopSwitching);
     });
@@ -49,7 +57,13 @@ export function ChainModal({
     return () => {
       provider?.removeListener('chainChanged', stopSwitching);
     };
-  }, [setSwitchingToChain, onClose, accountData?.connector]);
+  }, [activeConnector, onClose, stopSwitching]);
+
+  useEffect(() => {
+    if (networkError && networkError.name === 'UserRejectedRequestError') {
+      stopSwitching();
+    }
+  }, [networkError, stopSwitching]);
 
   if (!activeChain || !activeChain?.id) {
     return null;
@@ -83,13 +97,15 @@ export function ChainModal({
               chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === activeChain?.id;
                 const switching = chain.id === switchingToChain;
-                const chainIconUrl = rainbowkitChainsById[chain.id]?.iconUrl;
+                const rainbowKitChain = rainbowkitChainsById[chain.id];
+                const chainIconSize: BoxProps['width'] = mobile ? '36' : '28';
+                const chainIconUrl = rainbowKitChain?.iconUrl;
+                const chainIconBackground = rainbowKitChain?.iconBackground;
 
                 return (
-                  <>
+                  <Fragment key={chain.id}>
                     <MenuButton
                       currentlySelected={isCurrentChain}
-                      key={chain.id}
                       onClick={
                         isCurrentChain
                           ? undefined
@@ -111,14 +127,17 @@ export function ChainModal({
                             display="flex"
                             flexDirection="row"
                             gap="4"
-                            height={mobile ? '36' : '28'}
+                            height={chainIconSize}
                           >
                             {chainIconUrl ? (
                               <Box height="full" marginRight="8">
-                                <img
+                                <AsyncImage
                                   alt={chain.name}
+                                  background={chainIconBackground}
+                                  borderRadius="full"
+                                  height={chainIconSize}
                                   src={chainIconUrl}
-                                  width={mobile ? '36' : '28'}
+                                  width={chainIconSize}
                                 />
                               </Box>
                             ) : null}
@@ -143,7 +162,7 @@ export function ChainModal({
                                 borderColor="selectedOptionBorder"
                                 borderRadius="full"
                                 borderStyle="solid"
-                                borderWidth="2"
+                                borderWidth="1"
                                 height="8"
                                 marginLeft="8"
                                 width="8"
@@ -162,10 +181,7 @@ export function ChainModal({
                               </Text>
                               <Box
                                 background="standby"
-                                borderColor="selectedOptionBorder"
                                 borderRadius="full"
-                                borderStyle="solid"
-                                borderWidth="2"
                                 height="8"
                                 marginLeft="8"
                                 width="8"
@@ -182,7 +198,7 @@ export function ChainModal({
                         marginX="8"
                       />
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
           </Box>

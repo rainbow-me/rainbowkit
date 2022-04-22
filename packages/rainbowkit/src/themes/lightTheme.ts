@@ -1,17 +1,20 @@
 import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
 
 const accents: Record<AccentValues, string> = {
-  blue: '#1A85FF',
-  green: '#3ddc84',
-  pink: '#EA33AE',
-  purple: '#575cff',
+  blue: '#0E76FD',
+  green: '#1DB847',
+  orange: '#FF801F',
+  pink: '#FF5CA0',
+  purple: '#5F5AFA',
+  red: '#FA423C',
+  yellow: '#FFD014',
 };
 
 export const lightTheme = ({
   accentColor = 'blue',
-  borderRadius,
+  ...baseThemeOptions
 }: ThemeOptions = {}) => ({
-  ...baseTheme({ borderRadius }),
+  ...baseTheme(baseThemeOptions),
   borders: {
     modalBorderWidth: '0px',
   },
@@ -42,7 +45,7 @@ export const lightTheme = ({
     modalTextSecondary: 'rgba(60, 66, 66, 0.6)',
     profileAction: '#FFF',
     profileActionHover: 'rgba(255, 255, 255, 0.5)',
-    profileForeground: 'rgba(60, 66, 66, 0.1)',
+    profileForeground: 'rgba(60, 66, 66, 0.06)',
     selectedOptionBorder: 'rgba(60, 66, 66, 0.1)',
     standby: '#FFD641',
   },
@@ -52,5 +55,6 @@ export const lightTheme = ({
     profileDetailsAction: '0px 2px 6px rgba(37, 41, 46, 0.04)',
     selectedOption: '0px 2px 6px rgba(0, 0, 0, 0.24)',
     selectedWallet: '0px 2px 6px rgba(0, 0, 0, 0.12)',
+    walletLogo: '0px 2px 16px rgba(0, 0, 0, 0.16)',
   },
 });

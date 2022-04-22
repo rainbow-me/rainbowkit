@@ -1,17 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useAccount, useBalance } from 'wagmi';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { formatAddress } from '../ConnectButton/formatAddress';
-import ConnectOptions from '../ConnectOptions/ConnectOptions';
-import { Dialog } from '../Dialog/Dialog';
-import { DialogContent } from '../Dialog/DialogContent';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
-import { SwitchAccountIcon } from '../Icons/SwitchAccount';
+import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
@@ -19,6 +16,8 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 interface ProfileDetailsProps {
   accountData: ReturnType<typeof useAccount>['data'];
   balanceData: ReturnType<typeof useBalance>['data'];
+  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
+  ensName: ReturnType<typeof useEnsName>['data'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -26,9 +25,12 @@ interface ProfileDetailsProps {
 export function ProfileDetails({
   accountData,
   balanceData,
+  ensAvatar,
+  ensName,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
+  const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {
@@ -37,8 +39,6 @@ export function ProfileDetails({
       setCopiedAddress(true);
     }
   }, [accountData?.address]);
-
-  const [switchWalletOpen, setSwitchWalletOpen] = useState(false);
 
   useEffect(() => {
     if (copiedAddress) {
@@ -49,16 +49,11 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
-  useEffect(() => {
-    setSwitchWalletOpen(false);
-  }, [accountData?.address]);
-
-  if (!accountData) {
+  if (!accountData?.address) {
     return null;
   }
 
-  const accountName =
-    accountData.ens?.name ?? formatAddress(accountData.address);
+  const accountName = ensName ?? formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
@@ -89,12 +84,17 @@ export function ProfileDetails({
             <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
                 address={accountData.address}
-                imageUrl={accountData.ens?.avatar}
+                imageUrl={ensAvatar}
                 size={mobile ? 82 : 74}
               />
             </Box>
-            <Box display="flex" flexDirection="column" gap={mobile ? '4' : '0'}>
-              <Box>
+            <Box
+              display="flex"
+              flexDirection="column"
+              gap={mobile ? '4' : '0'}
+              textAlign="center"
+            >
+              <Box textAlign="center">
                 <Text
                   as="h1"
                   color="modalText"
@@ -105,21 +105,19 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              <Box>
-                {balanceData && (
-                  <Box>
-                    <Text
-                      as="h1"
-                      color="modalTextSecondary"
-                      id={titleId}
-                      size={mobile ? '16' : '14'}
-                      weight="semibold"
-                    >
-                      {balance} {balanceData.symbol}
-                    </Text>
-                  </Box>
-                )}
-              </Box>
+              {balanceData && (
+                <Box textAlign="center">
+                  <Text
+                    as="h1"
+                    color="modalTextSecondary"
+                    id={titleId}
+                    size={mobile ? '16' : '14'}
+                    weight="semibold"
+                  >
+                    {balance} {balanceData.symbol}
+                  </Text>
+                </Box>
+              )}
             </Box>
           </Box>
           <Box
@@ -132,12 +130,7 @@ export function ProfileDetails({
             <ProfileDetailsAction
               action={copyAddressAction}
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
-              label={copiedAddress ? 'Copied!' : 'Copy'}
-            />
-            <ProfileDetailsAction
-              action={() => setSwitchWalletOpen(true)}
-              icon={<SwitchAccountIcon />}
-              label="Switch"
+              label={copiedAddress ? 'Copied!' : 'Copy Address'}
             />
             <ProfileDetailsAction
               action={onDisconnect}
@@ -146,20 +139,15 @@ export function ProfileDetails({
             />
           </Box>
         </Box>
-        <Box background="generalBorder" height="1" />
-        <Box>
-          <TxList accountData={accountData} />
-        </Box>
+        {showRecentTransactions && (
+          <>
+            <Box background="generalBorder" height="1" marginTop="-1" />
+            <Box>
+              <TxList accountData={accountData} />
+            </Box>
+          </>
+        )}
       </Box>
-      <Dialog
-        onClose={() => setSwitchWalletOpen(false)}
-        open={switchWalletOpen}
-        titleId={titleId}
-      >
-        <DialogContent bottomSheetOnMobile padding="0" wide>
-          <ConnectOptions onClose={() => setSwitchWalletOpen(false)} />
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

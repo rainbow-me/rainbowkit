@@ -29,9 +29,9 @@ jobs:
         run: npm i -g pnpm@${{env.pnpm}}
       - name: Install dependencies
         run: pnpm install
-      - name: Lint and format
-        run: pnpm lint && pnpm format
       - name: Build packages
         run: pnpm build --recursive
+      - name: Lint and format
+        run: pnpm lint && pnpm format
       - name: Run tests
         run: pnpm test
