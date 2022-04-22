@@ -59,6 +59,10 @@ export function useWalletConnectors(): WalletConnector[] {
         ...wallet,
         connect: () => connectWallet(wallet.id, connector),
         groupName: recent ? 'Recent' : wallet.groupName,
+        onConnecting: (fn: () => void) =>
+          connector.on('message', ({ type }) =>
+            type === 'connecting' ? fn() : undefined
+          ),
         ready: (wallet.installed ?? true) && connector.ready,
         recent,
         showWalletConnectModal: wallet.walletConnectModalConnector
