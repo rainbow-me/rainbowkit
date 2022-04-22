@@ -1,5 +1,5 @@
-import React, { useCallback, useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -17,6 +17,31 @@ import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
+const parseAndStoreWallets: (
+  data: any,
+  wallets: WalletConnector[],
+  setOtherWallets: (otherWallets: WalletConnector[]) => void
+) => void = (data, wallets, setOtherWallets) => {
+  const defaultWalletNames = wallets.map(w => w.name);
+  if (data?.listings) {
+    const rawWallets: any[] = Object.values(data.listings);
+    const cleanWallets: WalletConnector[] = rawWallets
+      .map(raw => ({
+        connector: undefined,
+        groupName: 'more',
+        iconBackground: 'transparent',
+        iconUrl: raw.image_url.md,
+        id: raw.id,
+        name: raw.name,
+        ready: true,
+        recent: false,
+        shortName: raw.metadata.shortName,
+      }))
+      .filter(w => !defaultWalletNames.includes(w.name));
+    setOtherWallets(cleanWallets);
+  }
+};
+
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
   const {
     connect,
@@ -31,7 +56,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
-
   return (
     <Box
       as="button"
@@ -94,6 +118,70 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
   );
 }
 
+function OtherWalletsButton({
+  action,
+  wallets,
+}: {
+  action: () => void;
+  wallets: {
+    iconBackground: string;
+    iconUrl: string | (() => Promise<string>);
+  }[];
+}) {
+  return (
+    <Box
+      as="button"
+      color="modalText"
+      fontFamily="body"
+      key="other-wallets"
+      onClick={action}
+      style={{ overflow: 'visible', textAlign: 'center' }}
+      type="button"
+      width="full"
+    >
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+      >
+        <Box paddingBottom="8" paddingTop="10">
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            gap="4"
+            height="60"
+            justifyContent="center"
+            style={{ flexWrap: 'wrap' }}
+            width="60"
+          >
+            {wallets.map((w, i) => (
+              <AsyncImage
+                background={w.iconBackground}
+                borderRadius="6"
+                boxShadow="walletLogo"
+                height="28"
+                key={i}
+                src={w.iconUrl}
+                width="28"
+              />
+            ))}
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" gap="1" textAlign="center">
+          <Text as="h2" color="modalText" size="13" weight="medium">
+            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+            <Box as="span" position="relative">
+              More ↓
+            </Box>
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
 enum MobileWalletStep {
   Connect = 'CONNECT',
   Get = 'GET',
@@ -113,6 +201,16 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
     MobileWalletStep.Connect
   );
 
+  const [showOtherWallets, setShowOtherWallets] = useState<boolean>(false);
+
+  const [otherWallets, setOtherWallets] = useState<WalletConnector[]>([]);
+
+  useEffect(() => {
+    fetch('https://registry.walletconnect.com/api/v2/wallets')
+      .then(response => response.json())
+      .then(data => parseAndStoreWallets(data, wallets, setOtherWallets));
+  }, [wallets]);
+
   const ios = isIOS();
 
   switch (walletStep) {
@@ -123,24 +221,47 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         <Box>
           <Box
             background="profileForeground"
-            className={styles.scroll}
+            className={styles.walletsContainer}
             display="flex"
+            justifyContent="center"
             paddingBottom="20"
             paddingTop="6"
           >
-            <Box display="flex" style={{ margin: '0 auto' }}>
-              {wallets
-                .filter(wallet => wallet.ready)
-                .map(wallet => {
-                  return (
-                    <Box key={wallet.id} paddingX="20">
-                      <Box width="60">
-                        <WalletButton wallet={wallet} />
-                      </Box>
+            {[...wallets, ...(showOtherWallets ? otherWallets : [])]
+              .filter(wallet => wallet.ready)
+              .map(wallet => {
+                return (
+                  <Box key={wallet.id} paddingX="14">
+                    <Box width="60">
+                      <WalletButton wallet={wallet} />
                     </Box>
-                  );
-                })}
-            </Box>
+                  </Box>
+                );
+              })}
+            {!showOtherWallets && (
+              <Box key="more-wallets" paddingX="14">
+                <Box height="60" width="60">
+                  <OtherWalletsButton
+                    action={() => setShowOtherWallets(true)}
+                    wallets={otherWallets.slice(0, 4).map(w => ({
+                      iconBackground: w.iconBackground,
+                      iconUrl: w.iconUrl,
+                    }))}
+                  />
+                </Box>
+              </Box>
+            )}
+            {showOtherWallets && (
+              <Box display="flex" justifyContent="center" width="full">
+                <ActionButton
+                  label="Show Less"
+                  onClick={() => setShowOtherWallets(false)}
+                  size="large"
+                  stretch
+                  type="secondary"
+                />
+              </Box>
+            )}
           </Box>
 
           <Box

@@ -39,6 +39,7 @@ export function ActionButton({
   onClick,
   rel = 'noreferrer noopener',
   size = 'medium',
+  stretch,
   target = '_blank',
   type = 'primary',
 }: {
@@ -47,6 +48,7 @@ export function ActionButton({
   onClick?: () => void;
   rel?: string;
   size?: Size;
+  stretch?: boolean;
   target?: string;
   type?: 'primary' | 'secondary';
 }) {
@@ -79,6 +81,7 @@ export function ActionButton({
       borderRadius="actionButton"
       className={touchableStyles({ active: 'shrinkSm', hover: 'grow' })}
       display="block"
+      justifyContent="center"
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
@@ -86,10 +89,12 @@ export function ActionButton({
       transition="default"
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
+      {...(stretch ? { marginX: '20', width: 'full' } : {})}
     >
       <Text
         color={isPrimary ? 'accentColorForeground' : 'accentColor'}
         size={fontSize}
+        textAlign="center"
         weight="bold"
       >
         {label}
