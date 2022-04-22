@@ -13,9 +13,53 @@ import Image from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
 
+// const code = `import '@rainbow-me/rainbowkit/styles.css';
+// import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+// import { WagmiProvider, chain } from 'wagmi';
+
+// const App = () => {
+//   return (
+//     <WagmiProvider autoConnect connectors={connectors}>
+//       <RainbowKitProvider chains={[chain.mainnet]}>
+//         <YourApp />
+//       </RainbowKitProvider>
+//     </WagmiProvider>
+//   );
+// };`;
+
 const code = `import '@rainbow-me/rainbowkit/styles.css';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
+
+import {
+  RainbowKitProvider,
+  Chain,
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider, chain } from 'wagmi';
+import { providers } from 'ethers';
+
+const infuraId = process.env.INFURA_ID;
+
+const provider = ({ chainId }) =>
+  new providers.InfuraProvider(chainId, infuraId);
+
+const chains: Chain[] = [
+  { ...chain.mainnet, name: 'Ethereum' },
+  { ...chain.polygonMainnet, name: 'Polygon' },
+  { ...chain.optimism, name: 'Optimism' },
+  { ...chain.arbitrumOne, name: 'Arbitrum' },
+];
+
+const wallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'My RainbowKit App',
+  jsonRpcUrl: ({ chainId }) =>
+    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+    chain.mainnet.rpcUrls[0],
+});
+
+const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
@@ -130,7 +174,7 @@ export default function Home() {
 
       <Playground />
 
-      <Box style={{ padding: '128px 0' }}>
+      <Box backgroundColor="backgroundElevated" style={{ padding: '128px 0' }}>
         <Wrapper>
           <Text
             as="h2"
@@ -200,7 +244,21 @@ export default function Home() {
               </Box>
             </Box>
             <Box flex="auto" width="1/3">
-              <CodeBlock value={code} />
+              <Box
+                backgroundColor="fillElevated"
+                borderRadius="4"
+                style={{
+                  boxShadow:
+                    'rgba(22, 31, 39, 0.62) 0px 60px 123px -25px, rgba(19, 26, 32, 0.28) 0px 35px 75px -35px',
+                  height: 420,
+                  overflow: 'hidden',
+                  transform: 'perspective(75em) rotateX(18deg)',
+                }}
+              >
+                <Box className="codeblock">
+                  <CodeBlock value={code} />
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Wrapper>

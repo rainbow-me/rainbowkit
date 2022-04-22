@@ -113,7 +113,7 @@ export function Playground() {
             marginTop="9"
             marginX="auto"
             style={{
-              maxWidth: 760,
+              maxWidth: 720,
               textAlign: 'center',
             }}
             variant="title2"
@@ -136,6 +136,7 @@ export function Playground() {
                 marginBottom: vars.space[11],
                 marginTop: vars.space[11],
                 maxWidth: 'fit-content',
+                pointerEvents: 'none',
               }}
             >
               <div
