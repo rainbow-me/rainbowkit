@@ -2,7 +2,7 @@
 import { InjectedConnector } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isIOS, isMobile } from '../../../utils/isMobile';
+import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface CoinbaseOptions {
@@ -21,15 +21,12 @@ export const coinbase = ({
     // @ts-expect-error
     window.ethereum?.isCoinbaseWallet;
 
-  const shouldUseQRCode = isMobile() && !isCoinbaseInjected;
-
   return {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
     iconBackground: '#2c5ff6',
-    installed: !shouldUseQRCode ? isCoinbaseInjected : undefined,
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
@@ -39,8 +36,9 @@ export const coinbase = ({
     createConnector: ({ chainId }) => {
       const ios = isIOS();
 
-      const connector = shouldUseQRCode
-        ? new CoinbaseWalletConnector({
+      const connector = isCoinbaseInjected
+        ? new InjectedConnector({ chains })
+        : new CoinbaseWalletConnector({
             chains,
             options: {
               appName,
@@ -50,8 +48,7 @@ export const coinbase = ({
                   ? jsonRpcUrl({ chainId })
                   : jsonRpcUrl,
             },
-          })
-        : new InjectedConnector({ chains });
+          });
 
       const getUri = () => connector.getProvider().qrUrl;
 
