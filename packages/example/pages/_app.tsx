@@ -107,8 +107,8 @@ function App({ Component, pageProps }: AppProps) {
       fontStack: selectedFontStack,
     });
 
-  const [isHydrated, setIsHydrated] = useState(false);
-  useEffect(() => setIsHydrated(true), []);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
 
   return (
     <WagmiProvider client={wagmiClient}>
@@ -120,7 +120,7 @@ function App({ Component, pageProps }: AppProps) {
       >
         <Component {...pageProps} />
 
-        {isHydrated && (
+        {isMounted && (
           <div
             style={{
               display: 'flex',

@@ -13,7 +13,6 @@ import {
   useEnsName,
   useNetwork,
 } from 'wagmi';
-import { useIsMounted } from '../../hooks/useIsMounted';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { isMobile } from '../../utils/isMobile';
 import { isNotNullish } from '../../utils/isNotNullish';
@@ -60,7 +59,6 @@ export interface ConnectButtonRendererProps {
       name?: string;
       unsupported?: boolean;
     };
-    mounted: boolean;
     openAccountModal: () => void;
     openChainModal: () => void;
     openConnectModal: () => void;
@@ -73,8 +71,6 @@ export interface ConnectButtonRendererProps {
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const mounted = useIsMounted();
-
   const { data: accountData } = useAccount();
 
   const { data: ensAvatar } = useEnsAvatar();
@@ -187,7 +183,6 @@ export function ConnectButtonRenderer({
           : undefined,
         chainModalOpen,
         connectModalOpen,
-        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,

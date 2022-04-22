@@ -4,7 +4,7 @@ import {
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
 
 export const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
@@ -45,5 +45,9 @@ const wagmiClient = createClient({
 });
 
 export function Provider({ children }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
+
+  if (!isMounted) return null;
   return <WagmiProvider client={wagmiClient}>{children}</WagmiProvider>;
 }
