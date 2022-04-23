@@ -51,7 +51,7 @@ const connectors = connectorsForWallets([
         chains,
       }),
       wallet.trust({
-        apiConfig: { infuraId },
+        apiConfig: { alchemyId },
         chains,
       }),
     ],
