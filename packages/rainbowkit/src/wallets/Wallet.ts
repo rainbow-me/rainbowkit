@@ -1,4 +1,5 @@
 import { Connector } from 'wagmi';
+import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 
 export type InstructionStepName = 'install' | 'create' | 'scan';
 
@@ -49,3 +50,13 @@ export type WalletInstance = Omit<Wallet, 'createConnector'> &
     groupName: string;
     walletConnectModalConnector?: Connector;
   };
+
+export type WalletConfig = {
+  appName: string;
+  chains: Chain[];
+  providerConfig?: {
+    alchemy?: { apiKey: string };
+    infura?: { apiKey: string };
+    custom?: { jsonRpcUrl: string | ((args: { chainId?: number }) => string) };
+  };
+};

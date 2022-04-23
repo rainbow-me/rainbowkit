@@ -7,35 +7,28 @@ import { providers } from 'ethers';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
 
-export const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
+const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
 const isChainSupported = (chainId?: number) =>
   chains.some(x => x.id === chainId);
 
 const provider = ({ chainId }) =>
-  new providers.InfuraProvider(
+  new providers.AlchemyProvider(
     isChainSupported(chainId) ? chainId : chain.mainnet.id,
-    infuraId
+    alchemyId
   );
 
 export const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrum, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
 ];
 
 const wallets = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
-  infuraId,
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
+  providerConfig: { alchemy: { apiKey: alchemyId } },
 });
 
 const connectors = connectorsForWallets(wallets);

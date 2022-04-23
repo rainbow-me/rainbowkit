@@ -36,29 +36,22 @@ import {
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const infuraId = process.env.INFURA_ID;
+const alchemyId = process.env.ALCHEMY_ID;
 
 const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.InfuraProvider(chainId, infuraId);
+  new providers.AlchemyProvider(chainId, alchemyId);
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrum, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
 ];
 
 const wallets = getDefaultWallets({
+  providerConfig: { alchemy: { apiKey: alchemyId } },
   chains,
-  infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
 });
 
 const connectors = connectorsForWallets(wallets);
@@ -250,10 +243,7 @@ Your chain config can be defined in a single array using RainbowKit’s `Chain` 
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-];
+const chains: Chain[] = [chain.mainnet, chain.polygon];
 
 const App = () => {
   return (
@@ -271,8 +261,8 @@ import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
+  chain.mainnet,
+  chain.polygon,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
     ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
     : []),
@@ -293,13 +283,11 @@ Several chain icons are provided by default, but you can customize the icon for 
 const chains: Chain[] = [
   {
     ...chain.mainnet,
-    name: 'Ethereum',
     iconUrl: 'https://example.com/icons/ethereum.png',
     iconBackground: 'grey',
   },
   {
     ...chain.polygon,
-    name: 'Polygon',
     iconUrl: 'https://example.com/icons/polygon.png',
     iconBackground: '#7b3fe4',
   },
@@ -778,23 +766,24 @@ const wallets: WalletList = [
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
-      wallet.coinbase({
+      wallet.rainbow({
+        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
         chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
       }),
-      wallet.metaMask({ chains, infuraId }),
-      ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, infuraId })]
-        : []),
+      wallet.walletConnect({
+        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        chains,
+      }),
+      wallet.coinbase({
+        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        appName: 'My RainbowKit App',
+        chains,
+      }),
+      wallet.metaMask({
+        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        chains,
+      }),
+      ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
 ];

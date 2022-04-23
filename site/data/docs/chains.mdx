@@ -16,8 +16,8 @@ import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
+  chain.mainnet,
+  chain.polygon,
 ];
 
 const App = () => {

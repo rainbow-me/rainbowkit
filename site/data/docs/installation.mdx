@@ -40,29 +40,22 @@ Configure your wallets, desired chains and generate the required connectors.
 ...
 import { providers } from 'ethers';
 
-const infuraId = process.env.INFURA_ID;
+const alchemyId = process.env.ALCHEMY_ID;
 
 const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
+  new providers.AlchemyProvider(chainId, alchemyId);
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrumOne,
 ];
 
 const wallets = getDefaultWallets({
+  providerConfig: { alchemy: { apiKey: alchemyId } },
   chains,
-  infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
 });
 
 const connectors = connectorsForWallets(wallets);

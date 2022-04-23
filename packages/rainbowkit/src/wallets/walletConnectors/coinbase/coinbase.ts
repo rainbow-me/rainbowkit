@@ -1,20 +1,20 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { Wallet, WalletConfig } from '../../Wallet';
+import { getWalletProviderConfig } from '../../getWalletProviderConfig';
 
 export interface CoinbaseOptions {
-  chains: Chain[];
-  appName: string;
-  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+  providerConfig?: WalletConfig['providerConfig'];
+  appName: WalletConfig['appName'];
+  chains: WalletConfig['chains'];
 }
 
 export const coinbase = ({
   appName,
   chains,
-  jsonRpcUrl,
+  providerConfig,
 }: CoinbaseOptions): Wallet => {
   const isCoinbaseInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet;
@@ -33,6 +33,11 @@ export const coinbase = ({
     },
     createConnector: ({ chainId }) => {
       const ios = isIOS();
+
+      const { jsonRpcUrl } = getWalletProviderConfig({
+        providerConfig,
+        chains,
+      });
 
       const connector = isCoinbaseInjected
         ? new InjectedConnector({ chains })
