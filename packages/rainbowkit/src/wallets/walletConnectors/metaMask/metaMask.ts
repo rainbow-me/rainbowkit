@@ -4,17 +4,17 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
 import { Wallet, WalletConfig } from '../../Wallet';
-import { getWalletProviderConfig } from '../../getWalletProviderConfig';
+import { getJsonRpcUrl } from '../../getJsonRpcUrl';
 
 export interface MetaMaskOptions {
-  providerConfig?: WalletConfig['providerConfig'];
+  apiConfig?: WalletConfig['apiConfig'];
   chains: WalletConfig['chains'];
   shimDisconnect?: boolean;
 }
 
 export const metaMask = ({
+  apiConfig,
   chains,
-  providerConfig,
   shimDisconnect,
 }: MetaMaskOptions): Wallet => {
   const isMetaMaskInjected =
@@ -35,8 +35,8 @@ export const metaMask = ({
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
     createConnector: ({ chainId = chain.mainnet.id }) => {
-      const { infuraId, jsonRpcUrl } = getWalletProviderConfig({
-        providerConfig,
+      const jsonRpcUrl = getJsonRpcUrl({
+        apiConfig,
         chains,
       });
 
@@ -45,8 +45,8 @@ export const metaMask = ({
             chains,
             options: {
               qrcode: false,
-              ...(infuraId
-                ? { infuraId }
+              ...(apiConfig?.infuraId
+                ? { infuraId: apiConfig?.infuraId }
                 : {
                     rpc: {
                       [chainId]:

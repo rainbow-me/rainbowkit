@@ -53,7 +53,7 @@ const chains: Chain[] = [
 ];
 
 const wallets = getDefaultWallets({
-  providerConfig: { alchemy: { apiKey: alchemyId } },
+  apiConfig: { alchemyId },
   chains,
   appName: 'My RainbowKit App',
 });

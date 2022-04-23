@@ -3,16 +3,16 @@ import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet, WalletConfig } from '../../Wallet';
-import { getWalletProviderConfig } from '../../getWalletProviderConfig';
+import { getJsonRpcUrl } from '../../getJsonRpcUrl';
 
 export interface WalletConnectOptions {
-  providerConfig?: WalletConfig['providerConfig'];
+  apiConfig?: WalletConfig['apiConfig'];
   chains: WalletConfig['chains'];
 }
 
 export const walletConnect = ({
+  apiConfig,
   chains,
-  providerConfig,
 }: WalletConnectOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
@@ -21,8 +21,8 @@ export const walletConnect = ({
   createConnector: ({ chainId = chain.mainnet.id }) => {
     const ios = isIOS();
 
-    const { infuraId, jsonRpcUrl } = getWalletProviderConfig({
-      providerConfig,
+    const jsonRpcUrl = getJsonRpcUrl({
+      apiConfig,
       chains,
     });
 
@@ -30,8 +30,8 @@ export const walletConnect = ({
       chains,
       options: {
         qrcode: ios,
-        ...(infuraId
-          ? { infuraId }
+        ...(apiConfig?.infuraId
+          ? { infuraId: apiConfig.infuraId }
           : {
               rpc: {
                 [chainId]:

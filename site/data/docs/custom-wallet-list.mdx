@@ -20,8 +20,8 @@ const wallets: Wallets = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
-      wallet.walletConnect({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
+      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
     ],
   },
 ];
@@ -68,8 +68,8 @@ const wallets: WalletList = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.metaMask({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
-      wallet.walletConnect({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
+      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
     ],
   },
 ];
@@ -84,8 +84,8 @@ const wallets: WalletList = [
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.metaMask({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
-      wallet.rainbow({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
+      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
@@ -117,14 +117,14 @@ const wallets: WalletList = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
-      wallet.metaMask({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
+      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.walletConnect({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
@@ -160,8 +160,8 @@ const wallets: Wallets = [
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
-      wallet.walletConnect({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
+      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
@@ -173,9 +173,9 @@ const wallets: Wallets = [
             : rpcUrls.default[0];
         },
       }),
-      wallet.metaMask({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } }),
+      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
       ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, providerConfig: { alchemy: { apiKey: alchemyId } } })]
+        ? [wallet.injected({ chains, apiConfig: { alchemyId } })]
         : []),
     ],
   },

@@ -49,7 +49,7 @@ const chains: Chain[] = [
 ];
 
 const wallets = getDefaultWallets({
-  providerConfig: { alchemy: { apiKey: alchemyId } },
+  apiConfig: { alchemyId },
   chains,
   appName: 'My RainbowKit App',
 });
@@ -767,20 +767,20 @@ const wallets: WalletList = [
     groupName: 'Suggested',
     wallets: [
       wallet.rainbow({
-        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        apiConfig: { alchemyId },
         chains,
       }),
       wallet.walletConnect({
-        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        apiConfig: { alchemyId },
         chains,
       }),
       wallet.coinbase({
-        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        apiConfig: { alchemyId },
         appName: 'My RainbowKit App',
         chains,
       }),
       wallet.metaMask({
-        providerConfig: { apiKey: alchemyId, type: 'alchemy' },
+        apiConfig: { alchemyId },
         chains,
       }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),

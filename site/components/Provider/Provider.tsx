@@ -26,9 +26,9 @@ export const chains: Chain[] = [
 ];
 
 const wallets = getDefaultWallets({
+  apiConfig: { alchemyId },
   appName: 'RainbowKit site',
   chains,
-  providerConfig: { alchemy: { apiKey: alchemyId } },
 });
 
 const connectors = connectorsForWallets(wallets);

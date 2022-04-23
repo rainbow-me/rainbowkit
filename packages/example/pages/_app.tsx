@@ -7,6 +7,7 @@ import {
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
+  wallet,
 } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
@@ -35,34 +36,26 @@ const chains: Chain[] = [
 ];
 
 const wallets = getDefaultWallets({
+  apiConfig: { alchemyId },
   appName: 'RainbowKit demo',
   chains,
-  providerConfig: {
-    alchemy: { apiKey: alchemyId },
-  },
 });
 
 const connectors = connectorsForWallets([
   ...wallets,
-  // {
-  //   groupName: 'Other',
-  //   wallets: [
-  //     wallet.argent({
-  //       providerConfig: {
-  //         apiKey: alchemyId,
-  //         type: 'alchemy',
-  //       },
-  //       chains,
-  //     }),
-  //     wallet.trust({
-  //       providerConfig: {
-  //         apiKey: alchemyId,
-  //         type: 'alchemy',
-  //       },
-  //       chains,
-  //     }),
-  //   ],
-  // },
+  {
+    groupName: 'Other',
+    wallets: [
+      wallet.argent({
+        apiConfig: { alchemyId },
+        chains,
+      }),
+      wallet.trust({
+        apiConfig: { infuraId },
+        chains,
+      }),
+    ],
+  },
 ]);
 
 const wagmiClient = createClient({

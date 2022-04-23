@@ -1,7 +1,7 @@
 import { Chain as WagmiChain } from 'wagmi';
 import { WalletConfig } from './Wallet';
 
-const getJsonRpcUrl = ({
+const getUrl = ({
   apiKey,
   chains,
   type,
@@ -20,34 +20,32 @@ const getJsonRpcUrl = ({
   };
 };
 
-export const getWalletProviderConfig = ({
+export const getJsonRpcUrl = ({
+  apiConfig,
   chains,
-  providerConfig,
 }: {
-  providerConfig?: WalletConfig['providerConfig'];
-  chains: WagmiChain[];
+  apiConfig?: WalletConfig['apiConfig'];
+  chains: WalletConfig['chains'];
 }) => {
-  let infuraId;
   let jsonRpcUrl;
-  if (providerConfig?.alchemy) {
-    jsonRpcUrl = getJsonRpcUrl({
-      apiKey: providerConfig.alchemy.apiKey,
+  if (apiConfig?.alchemyId) {
+    jsonRpcUrl = getUrl({
+      apiKey: apiConfig.alchemyId as string,
       chains,
       type: 'alchemy',
     });
-  } else if (providerConfig?.infura) {
-    infuraId = providerConfig.infura.apiKey;
-    jsonRpcUrl = getJsonRpcUrl({
-      apiKey: infuraId,
+  } else if (apiConfig?.infuraId) {
+    jsonRpcUrl = getUrl({
+      apiKey: apiConfig.infuraId as string,
       chains,
       type: 'infura',
     });
-  } else if (providerConfig?.custom) {
-    jsonRpcUrl = providerConfig.custom.jsonRpcUrl;
+  } else if (apiConfig?.jsonRpcUrl) {
+    jsonRpcUrl = apiConfig.jsonRpcUrl;
   } else {
-    jsonRpcUrl = getJsonRpcUrl({
+    jsonRpcUrl = getUrl({
       chains,
     });
   }
-  return { infuraId, jsonRpcUrl };
+  return jsonRpcUrl;
 };

@@ -54,9 +54,20 @@ export type WalletInstance = Omit<Wallet, 'createConnector'> &
 export type WalletConfig = {
   appName: string;
   chains: Chain[];
-  providerConfig?: {
-    alchemy?: { apiKey: string };
-    infura?: { apiKey: string };
-    custom?: { jsonRpcUrl: string | ((args: { chainId?: number }) => string) };
-  };
+  apiConfig?:
+    | {
+        alchemyId: string;
+        infuraId?: unknown;
+        jsonRpcUrl?: unknown;
+      }
+    | {
+        alchemyId?: unknown;
+        infuraId: string;
+        jsonRpcUrl?: unknown;
+      }
+    | {
+        alchemyId?: unknown;
+        infuraId?: unknown;
+        jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+      };
 };

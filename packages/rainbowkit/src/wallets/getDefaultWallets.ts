@@ -6,9 +6,9 @@ import { rainbow } from './walletConnectors/rainbow/rainbow';
 import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 
 export const getDefaultWallets = ({
+  apiConfig,
   appName,
   chains,
-  providerConfig,
 }: WalletConfig): WalletList => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
@@ -20,13 +20,17 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
-        rainbow({ chains, providerConfig }),
-        coinbase({ appName, chains, providerConfig }),
-        metaMask({ chains, providerConfig, shimDisconnect: true }),
+        rainbow({ apiConfig, chains }),
+        coinbase({ apiConfig, appName, chains }),
+        metaMask({
+          apiConfig,
+          chains,
+          shimDisconnect: true,
+        }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
-        walletConnect({ chains, providerConfig }),
+        walletConnect({ chains }),
       ],
     },
   ];
