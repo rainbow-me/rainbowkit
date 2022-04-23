@@ -30,7 +30,7 @@ export const getDefaultWallets = ({
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
-        walletConnect({ chains }),
+        walletConnect({ apiConfig, chains }),
       ],
     },
   ];
