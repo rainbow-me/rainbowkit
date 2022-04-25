@@ -2,16 +2,20 @@ import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import { Header } from 'components/Header/Header';
+import { CheckIcon } from 'components/Icons/Check';
+import { CopyIcon } from 'components/Icons/Copy';
 import { TickIcon } from 'components/Icons/Tick';
 import { Link } from 'components/Link/Link';
 import { Playground } from 'components/Playground/Playground';
 import { Text } from 'components/Text/Text';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { Wrapper } from 'components/Wrapper/Wrapper';
+import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
+import { useCoolMode } from 'lib/useCoolMode';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import React from 'react';
+import React, { Ref, useState } from 'react';
 
 // const code = `import '@rainbow-me/rainbowkit/styles.css';
 // import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -119,10 +123,13 @@ export default function Home() {
             Designed for everyone. Built for developers.
           </Text>
           <NextLink href="/docs" passHref>
-            <Button as="a" marginBottom="11" size="xl" variant="purpleGradient">
+            <Button as="a" marginBottom="8" size="xl" variant="purpleGradient">
               View the Docs
             </Button>
           </NextLink>
+          <Box marginBottom="11">
+            <InstallScript />
+          </Box>
         </Box>
       </Wrapper>
       <Box position="relative">
@@ -353,6 +360,46 @@ export default function Home() {
           </Box>
         </Wrapper>
       </Box>
+    </Box>
+  );
+}
+
+function InstallScript() {
+  const [requestCopy, setRequestCopy] = useState(false);
+  const code = 'npm i @rainbow-me/rainbowkit wagmi ethers';
+  const ref = useCoolMode('/rainbow.svg') as Ref<HTMLButtonElement>;
+
+  React.useEffect(() => {
+    if (requestCopy) copy(code);
+    setTimeout(() => setRequestCopy(false), 3000);
+  }, [requestCopy]);
+
+  return (
+    <Box
+      alignItems="center"
+      backgroundColor="fillElevated"
+      borderRadius="round"
+      color="label"
+      display="inline-flex"
+      fontSize="2"
+      paddingX="7"
+      style={{ height: 44, lineHeight: 1 }}
+    >
+      <code>{code}</code>
+      <Button
+        marginLeft="7"
+        onClick={() => setRequestCopy(true)}
+        ref={ref}
+        shape="circle"
+        size="xs"
+        style={{
+          color: requestCopy ? vars.colors.green : vars.colors.labelTertiary,
+        }}
+        tabIndex={-1}
+        variant="ghost"
+      >
+        {requestCopy ? <CheckIcon /> : <CopyIcon />}
+      </Button>
     </Box>
   );
 }
