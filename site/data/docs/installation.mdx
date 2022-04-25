@@ -46,10 +46,10 @@ const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrumOne,
 ];
 
 const wallets = getDefaultWallets({

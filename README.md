@@ -42,10 +42,10 @@ const provider = ({ chainId }: { chainId?: number }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrum, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
 ];
 
 const wallets = getDefaultWallets({
@@ -250,10 +250,7 @@ Your chain config can be defined in a single array using RainbowKit’s `Chain` 
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-];
+const chains: Chain[] = [chain.mainnet, chain.polygon];
 
 const App = () => {
   return (
@@ -271,8 +268,8 @@ import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
+  chain.mainnet,
+  chain.polygon,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
     ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
     : []),
@@ -293,13 +290,11 @@ Several chain icons are provided by default, but you can customize the icon for 
 const chains: Chain[] = [
   {
     ...chain.mainnet,
-    name: 'Ethereum',
     iconUrl: 'https://example.com/icons/ethereum.png',
     iconBackground: 'grey',
   },
   {
     ...chain.polygon,
-    name: 'Polygon',
     iconUrl: 'https://example.com/icons/polygon.png',
     iconBackground: '#7b3fe4',
   },

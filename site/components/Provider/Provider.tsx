@@ -19,10 +19,10 @@ const provider = ({ chainId }) =>
   );
 
 export const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrum, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
 ];
 
 const wallets = getDefaultWallets({

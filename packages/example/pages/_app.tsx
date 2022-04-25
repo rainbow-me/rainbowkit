@@ -26,10 +26,10 @@ const provider = ({ chainId }: { chainId?: number }) =>
   );
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygon, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrum, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
     ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
     : []),
