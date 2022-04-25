@@ -9,6 +9,7 @@ import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
+import { SpinnerIcon } from '../Icons/Spinner';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
@@ -125,13 +126,14 @@ function OtherWalletsButton({
     iconUrl: string | (() => Promise<string>);
   }[];
 }) {
+  const loadingWallets = !wallets?.length;
   return (
     <Box
       as="button"
       color="modalText"
       fontFamily="body"
       key="other-wallets"
-      onClick={action}
+      {...(!loadingWallets ? { onClick: action } : {})}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
       width="full"
@@ -145,6 +147,7 @@ function OtherWalletsButton({
         <Box paddingBottom="8" paddingTop="10">
           <Box
             alignItems="center"
+            color="generalBorder"
             display="flex"
             flexDirection="row"
             gap="4"
@@ -152,7 +155,11 @@ function OtherWalletsButton({
             justifyContent="center"
             style={{ flexWrap: 'wrap' }}
             width="60"
+            {...(loadingWallets
+              ? { background: 'generalBorderDim', borderRadius: '6' }
+              : {})}
           >
+            {loadingWallets && <SpinnerIcon />}
             {wallets.map((w, i) => (
               <AsyncImage
                 background={w.iconBackground}
@@ -199,13 +206,17 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   );
 
   const [showOtherWallets, setShowOtherWallets] = useState<boolean>(false);
-
   const [otherWallets, setOtherWallets] = useState<WalletConnector[]>([]);
 
   useEffect(() => {
-    fetch('https://registry.walletconnect.com/api/v2/wallets')
-      .then(response => response.json())
-      .then(data => parseAndStoreWallets(data, wallets, setOtherWallets));
+    const fetchOtherWallets = async () => {
+      const res = await fetch(
+        'https://registry.walletconnect.com/api/v2/wallets'
+      );
+      const resJson = await res.json();
+      parseAndStoreWallets(resJson, wallets, setOtherWallets);
+    };
+    fetchOtherWallets();
   }, [wallets]);
 
   const ios = isIOS();
