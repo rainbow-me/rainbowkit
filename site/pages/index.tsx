@@ -1,6 +1,5 @@
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
-import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import { Header } from 'components/Header/Header';
 import { CheckIcon } from 'components/Icons/Check';
 import { CopyIcon } from 'components/Icons/Copy';
@@ -16,68 +15,6 @@ import { useCoolMode } from 'lib/useCoolMode';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
-
-// const code = `import '@rainbow-me/rainbowkit/styles.css';
-// import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-// import { WagmiProvider, chain } from 'wagmi';
-
-// const App = () => {
-//   return (
-//     <WagmiProvider autoConnect connectors={connectors}>
-//       <RainbowKitProvider chains={[chain.mainnet]}>
-//         <YourApp />
-//       </RainbowKitProvider>
-//     </WagmiProvider>
-//   );
-// };`;
-
-const code = `import '@rainbow-me/rainbowkit/styles.css';
-
-import {
-  RainbowKitProvider,
-  Chain,
-  getDefaultWallets,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
-import { providers } from 'ethers';
-
-const infuraId = process.env.INFURA_ID;
-
-const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
-
-const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
-];
-
-const wallets = getDefaultWallets({
-  chains,
-  infuraId,
-  appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
-});
-
-const connectors = connectorsForWallets(wallets);
-
-const App = () => {
-  return (
-    <WagmiProvider
-      autoConnect
-      connectors={connectors}
-      provider={provider}
-    >
-      <RainbowKitProvider chains={chains}>
-        <YourApp />
-      </RainbowKitProvider>
-    </WagmiProvider>
-  );
-};`;
 
 export default function Home() {
   return (
@@ -212,79 +149,48 @@ export default function Home() {
             amazing products and communities for their users.
           </Text>
 
-          <Box display="flex" flexWrap="wrap" gap="10" marginY="11">
-            {/* eslint-disable-next-line sort-keys-fix/sort-keys-fix */}
-            <Box flexShrink={0} width={{ xs: 'full', lg: 'auto' }}>
-              <Box
-                as="ul"
-                display="flex"
-                flexDirection={{ lg: 'column' }}
-                // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-                flexWrap={{ xs: 'wrap', lg: 'nowrap' }}
-                gap={{ lg: '5' }}
-                marginTop="7"
-              >
-                {[
-                  'Easy Installation',
-                  'Built-in Themes',
-                  'Light and Dark Mode',
-                  'App Store and Google Play Integration',
-                  'Custom Themes',
-                  'Custom Wallet Lists',
-                  'Custom Chains',
-                  'Custom Connect Button',
-                ].map(value => (
-                  <Box
-                    alignItems="center"
-                    as="li"
-                    display="flex"
-                    gap="3"
-                    key={value}
-                    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-                    marginBottom={{ xs: '5', lg: '0' }}
-                    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-                    width={{ xs: 'full', sm: '1/2', lg: 'full' }}
-                  >
-                    <TickIcon />
-                    <Text weight="bold">{value}</Text>
-                  </Box>
-                ))}
-              </Box>
-              <Box
-                marginBottom="11"
-                marginTop="9"
-                // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-                textAlign={{ xs: 'center', lg: 'left' }}
-              >
-                <NextLink href="/docs" passHref>
-                  <Button
-                    as="a"
-                    size="xl"
-                    style={{ alignSelf: 'flex-start' }}
-                    variant="purpleGradient"
-                  >
-                    View the Docs
-                  </Button>
-                </NextLink>
-              </Box>
-            </Box>
-            <Box flex="auto" style={{ minWidth: 500 }} width="1/3">
-              <Box
-                backgroundColor="fillElevated"
-                borderRadius="4"
-                style={{
-                  boxShadow:
-                    'rgba(22, 31, 39, 0.62) 0px 60px 123px -25px, rgba(19, 26, 32, 0.28) 0px 35px 75px -35px',
-                  height: 420,
-                  overflow: 'hidden',
-                  pointerEvents: 'none',
-                  transform: 'perspective(75em) rotateX(18deg)',
-                }}
-              >
-                <Box className="codeblock">
-                  <CodeBlock value={code} />
+          <Box marginTop="11" marginX="auto" style={{ maxWidth: 720 }}>
+            <Box as="ul" display="flex" flexWrap="wrap" paddingY="5">
+              {[
+                'Easy Installation',
+                'Custom Themes',
+                'Built-in Themes',
+                'Custom Wallets List',
+                'Light and Dark Mode',
+                'Custom Chains',
+                'App Store and Google Play Integration',
+                'Custom Connect Button',
+              ].map(value => (
+                <Box
+                  alignItems="center"
+                  as="li"
+                  display="flex"
+                  gap="3"
+                  key={value}
+                  marginBottom="5"
+                  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+                  width={{ xs: 'full', md: '1/2' }}
+                >
+                  <TickIcon />
+                  <Text weight="bold">{value}</Text>
                 </Box>
-              </Box>
+              ))}
+            </Box>
+            <Box
+              marginTop="11"
+              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+              textAlign={{ xs: 'left', md: 'center' }}
+            >
+              <NextLink href="/docs" passHref>
+                <Button
+                  as="a"
+                  size="xl"
+                  style={{ alignSelf: 'flex-start' }}
+                  variant="purpleGradient"
+                >
+                  View the Docs
+                </Button>
+              </NextLink>
             </Box>
           </Box>
         </Wrapper>
