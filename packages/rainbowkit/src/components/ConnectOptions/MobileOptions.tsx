@@ -31,7 +31,7 @@ const parseAndStoreWallets: (
     const cleanWallets: WalletConnector[] = rawWallets
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
-          wcUrl: raw.mobile.universal || raw.mobile.native,
+          wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
         });
         return {
           ...MoreWalletsConnector,
