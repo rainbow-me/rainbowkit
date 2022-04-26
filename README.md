@@ -165,9 +165,15 @@ The built-in theme functions also accept an options object, allowing you to sele
   <tbody>
     <tr>
       <td><code>accentColor</code></td>
-      <td><code>"blue" | "green" | "orange" | "pink" | "purple" | "red" | { color: string, foregroundTextColor: string }</code></td>
-      <td><code>"blue"</code></td>
-      <td>The background/text color of various interactive elements. Accepts either a built-in preset color, or a custom value defined as an object with ‘color’ and ‘foregroundTextColor’ properties.</td>
+      <td><code>string</code></td>
+      <td><code>"#0E76FD"</code></td>
+      <td>The background/text color of various interactive elements.</td>
+    </tr>
+    <tr>
+      <td><code>accentColorForeground</code></td>
+      <td><code>string</code></td>
+      <td><code>"white"</code></td>
+      <td>The color used for foreground elements rendered on top of the accent color.</td>
     </tr>
     <tr>
       <td><code>borderRadius</code></td>
@@ -184,7 +190,7 @@ The built-in theme functions also accept an options object, allowing you to sele
   </tbody>
 </table>
 
-For example, to customize the dark theme with the `purple` accent color preset and a `medium` border radius scale:
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -193,7 +199,8 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        accentColor: 'purple',
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
         borderRadius: 'medium',
       })}
       {...etc}
@@ -204,7 +211,7 @@ const App = () => {
 };
 ```
 
-Or, to use a custom accent color:
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -213,10 +220,7 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        accentColor: {
-          color: '#FFFF00',
-          foregroundTextColor: '#000', // Used for text on top of the accent color
-        },
+        ...darkTheme.accentColors.pink,
       })}
     >
       {/* Your App */}
@@ -660,7 +664,7 @@ import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 const myCustomTheme: Theme = {
   colors: {
     accentColor: '...',
-    accentColorForegroundText: '...',
+    accentColorForeground: '...',
     actionButtonBorder: '...',
     actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',

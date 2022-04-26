@@ -68,8 +68,8 @@ export const baseTheme = ({
 });
 
 export interface AccentColor {
-  color: string;
-  foregroundTextColor: string;
+  accentColor: string;
+  accentColorForeground: string;
 }
 
 export type AccentColorPreset =
@@ -81,5 +81,6 @@ export type AccentColorPreset =
   | 'orange';
 
 export interface ThemeOptions extends BaseThemeOptions {
-  accentColor?: AccentColorPreset | AccentColor;
+  accentColor?: string;
+  accentColorForeground?: string;
 }

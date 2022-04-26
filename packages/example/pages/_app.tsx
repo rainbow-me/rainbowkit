@@ -78,6 +78,17 @@ const accentColors = [
 ] as const;
 type AccentColor = typeof accentColors[number];
 
+const customAccentColor = {
+  dark: {
+    accentColor: 'yellow',
+    accentColorForeground: 'black',
+  },
+  light: {
+    accentColor: 'black',
+    accentColorForeground: 'yellow',
+  },
+} as const;
+
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
@@ -89,24 +100,14 @@ function App({ Component, pageProps }: AppProps) {
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
-  const selectedTheme = themes
-    .find(({ name }) => name === selectedThemeName)
-    ?.theme({
-      accentColor:
-        selectedAccentColor === 'custom'
-          ? selectedThemeName === 'light'
-            ? {
-                color: 'black',
-                foregroundTextColor: 'yellow',
-              }
-            : {
-                color: 'yellow',
-                foregroundTextColor: 'black',
-              }
-          : selectedAccentColor,
-      borderRadius: selectedRadiusScale,
-      fontStack: selectedFontStack,
-    });
+  const currentTheme = (
+    themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
+  ).theme;
+
+  const accentColor =
+    selectedAccentColor === 'custom'
+      ? customAccentColor[selectedThemeName === 'light' ? 'light' : 'dark']
+      : currentTheme.accentColors[selectedAccentColor];
 
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
@@ -114,7 +115,11 @@ function App({ Component, pageProps }: AppProps) {
         chains={chains}
         coolMode={coolModeEnabled}
         showRecentTransactions={showRecentTransactions}
-        theme={selectedTheme}
+        theme={currentTheme({
+          ...accentColor,
+          borderRadius: selectedRadiusScale,
+          fontStack: selectedFontStack,
+        })}
       >
         <Component {...pageProps} />
 

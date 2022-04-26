@@ -10,7 +10,7 @@ Added:
 
 Renamed:
 
-- `colors.actionButtonText` is now `colors.accentColorForegroundText`
+- `colors.actionButtonText` is now `colors.accentColorForeground`
 
 Removed:
 
