@@ -24,7 +24,11 @@ export const row = style([
       // eslint-disable-next-line sort-keys-fix/sort-keys-fix
       md: '10',
     },
-    paddingY: '4',
+    paddingY: {
+      xs: '4',
+      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+      lg: '7',
+    },
   }),
 ]);
 

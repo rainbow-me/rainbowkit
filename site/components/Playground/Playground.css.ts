@@ -3,8 +3,8 @@ import { style } from '@vanilla-extract/css';
 import { responsiveStyle } from 'css/responsiveStyle';
 import { vars } from 'css/vars.css';
 
-export const RADIO_SIZE = 32;
-export const RADIO_SIZE_LG = 40;
+export const RADIO_SIZE = 33;
+export const RADIO_SIZE_LG = 39;
 
 export const radio = style([
   style({
@@ -19,7 +19,7 @@ export const radio = style([
     transition: 'transform 100ms',
     boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, .12)',
     selectors: {
-      '&:hover:not(:focus)': {
+      '&:hover:not(:focus):not([data-state="checked"])': {
         transform: 'scale(1.2)',
       },
       '&::after': {
@@ -33,6 +33,7 @@ export const radio = style([
         position: 'absolute',
         width: '100%',
         fontWeight: '700',
+        fontSize: 15,
         fontFamily: vars.fonts.normal,
       },
     },

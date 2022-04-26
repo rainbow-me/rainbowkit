@@ -12,7 +12,7 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
 
@@ -59,13 +59,15 @@ export default function Home() {
           >
             Designed for everyone. Built for developers.
           </Text>
-          <NextLink href="/docs" passHref>
-            <Button as="a" marginBottom="8" size="xl" variant="purpleGradient">
-              View the Docs
-            </Button>
-          </NextLink>
-          <Box marginBottom="11">
+          <Box marginBottom="8">
             <InstallScript />
+          </Box>
+          <Box marginBottom="11">
+            <NextLink href="/docs" passHref>
+              <Button as="a" size="xl" variant="purpleGradient">
+                View the Docs
+              </Button>
+            </NextLink>
           </Box>
         </Box>
       </Wrapper>
@@ -79,7 +81,7 @@ export default function Home() {
             height: '80%',
             left: '50%',
             top: '50%',
-            transform: 'translate(-50%, -50%)',
+            transform: 'translate3d(-50%, -50%, 0)',
             width: '50vw',
             zIndex: '1',
           }}
@@ -97,7 +99,7 @@ export default function Home() {
               }}
               style={{ maxWidth: 1568 / 2 }}
             >
-              <Image height="1136" src="/hero-modal.png" width="1568" />
+              <NextImage height="1136" src="/hero-modal.png" width="1568" />
             </Box>
             <Box
               bottom="0"
@@ -110,7 +112,7 @@ export default function Home() {
               }}
               style={{ maxWidth: 580 / 2 }}
             >
-              <Image height="1064" src="/hero-iphone.png" width="580" />
+              <NextImage height="1064" src="/hero-iphone.png" width="580" />
             </Box>
           </Box>
         </Wrapper>
@@ -142,6 +144,7 @@ export default function Home() {
               textAlign: 'center',
             }}
             variant="title2"
+            weight="semibold"
           >
             RainbowKit provides a fast, easy and highly customizable way for
             developers to add a great wallet experience to their application. We
@@ -149,8 +152,16 @@ export default function Home() {
             amazing products and communities for their users.
           </Text>
 
-          <Box marginTop="11" marginX="auto" style={{ maxWidth: 720 }}>
-            <Box as="ul" display="flex" flexWrap="wrap" paddingY="5">
+          <Box marginTop="11" marginX="auto">
+            <Box
+              as="ul"
+              display="flex"
+              flexWrap="wrap"
+              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+              marginLeft={{ md: '10', lg: '11' }}
+              paddingLeft={{ lg: '11' }}
+              paddingY="5"
+            >
               {[
                 'Easy Installation',
                 'Custom Themes',
@@ -165,13 +176,16 @@ export default function Home() {
                   alignItems="center"
                   as="li"
                   display="flex"
-                  gap="3"
+                  gap="4"
                   key={value}
                   marginBottom="5"
+                  whiteSpace="nowrap"
                   // eslint-disable-next-line sort-keys-fix/sort-keys-fix
                   width={{ xs: 'full', md: '1/2' }}
                 >
-                  <TickIcon />
+                  <Box as="span" flexShrink={0}>
+                    <TickIcon />
+                  </Box>
                   <Text weight="bold">{value}</Text>
                 </Box>
               ))}
@@ -213,16 +227,19 @@ export default function Home() {
           >
             Made with ❤️ by your frens at{' '}
             <Box
-              alt="Rainbow logo"
-              as="img"
-              borderRadius="3"
-              src="/rainbow-avatar.png"
+              as="span"
+              marginLeft="2"
               style={{
-                height: 56,
                 verticalAlign: 'middle',
-                width: 56,
               }}
-            />
+            >
+              <NextImage
+                alt="Rainbow logo"
+                height={56}
+                src="/rainbow-logo.png"
+                width={56}
+              />
+            </Box>
           </Text>
           <Text
             as="p"
@@ -233,6 +250,7 @@ export default function Home() {
               textAlign: 'center',
             }}
             variant="title2"
+            weight="semibold"
           >
             Building RainbowKit has been an incredibly fun effort across many
             people at Rainbow and our frens at other companies. We&apos;re
@@ -240,17 +258,32 @@ export default function Home() {
             we can improve.
           </Text>
 
-          <Box display="flex" gap="8" justifyContent="center">
+          <Box
+            display="flex"
+            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+            flexDirection={{ xs: 'column', sm: 'row' }}
+            gap="8"
+            justifyContent="center"
+          >
             <Button
               as="a"
               href="https://twitter.com/rainbowdotme"
               size="xl"
               variant="blueGradient"
             >
-              Follow us on Twitter
+              <Box
+                as="span"
+                marginX={{ sm: '4' }}
+                textAlign="center"
+                width="full"
+              >
+                Follow us on Twitter
+              </Box>
             </Button>
             <Button as="a" href="" size="xl" variant="pinkGradient">
-              Share feedback with us
+              <Box as="span" textAlign="center" width="full">
+                Share feedback with us
+              </Box>
             </Button>
           </Box>
 
@@ -262,7 +295,7 @@ export default function Home() {
             style={{ marginTop: 128 }}
             textAlign="center"
           >
-            <Text weight="bold">
+            <Text size="4" weight="bold">
               <Link
                 href="https://github.com/rainbow-me/rainbowkit"
                 variant="gray"
@@ -270,22 +303,22 @@ export default function Home() {
                 <span>👾</span> github
               </Link>
             </Text>
-            <Text weight="bold">
+            <Text size="4" weight="bold">
               <Link href="https://rainbow.me/media-kit.zip" variant="gray">
                 <span>⬇️</span> media kit
               </Link>
             </Text>
-            <Text weight="bold">
+            <Text size="4" weight="bold">
               <Link href="https://rainbow.me/terms-of-use" variant="gray">
                 <span>📜</span> terms of use
               </Link>
             </Text>
-            <Text weight="bold">
+            <Text size="4" weight="bold">
               <Link href="https://rainbow.me/privacy" variant="gray">
                 <span>🔒</span> privacy policy
               </Link>
             </Text>
-            <Text color="labelTertiary" weight="bold">
+            <Text color="labelTertiary" size="4" weight="bold">
               © Rainbow
             </Text>
           </Box>

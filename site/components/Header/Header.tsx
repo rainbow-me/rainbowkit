@@ -11,6 +11,8 @@ import NextLink from 'next/link';
 import React from 'react';
 import { header, logo, row } from './Header.css';
 
+const RAINBOWKIT_VERSION = '0.0.2';
+
 export function Header({
   docsMobileMenuRef,
   ...props
@@ -26,7 +28,7 @@ export function Header({
             as="img"
             className={logo}
             marginRight="4"
-            src="/rainbow-avatar.png"
+            src="/rainbow.svg"
           />
         </NextLink>
 
@@ -42,7 +44,7 @@ export function Header({
           <Text style={{ lineHeight: 1 }} variant="title3" weight="bold">
             RainbowKit
           </Text>
-          <Badge>0.0.2</Badge>
+          <Badge>{RAINBOWKIT_VERSION}</Badge>
         </Box>
 
         <Box style={{ marginLeft: 'auto' }}>

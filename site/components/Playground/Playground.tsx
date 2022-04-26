@@ -10,7 +10,6 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
-
 import { Box } from 'components/Box/Box';
 import { useMounted } from 'components/DocsMobileMenu/DocsMobileMenu';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
@@ -32,41 +31,40 @@ type ThemeOptions = Parameters<typeof lightTheme>[0];
 type Accents = ThemeOptions['accentColor'];
 type Radii = ThemeOptions['borderRadius'];
 
-const gradientColors: Record<Accents, any> = {
+type AccentsWithoutYellow = Exclude<Accents, 'yellow'>;
+const gradientColors: Record<AccentsWithoutYellow, any> = {
   blue: [
     [29, 100, 192],
     [47, 9, 148],
     [14, 116, 253],
-  ],
-  green: [
-    [10, 80, 28],
-    [42, 150, 140],
-    [22, 160, 59],
-  ],
-  orange: [
-    [255, 151, 31],
-    [112, 0, 0],
-    [250, 137, 51],
-  ],
-  pink: [
-    [116, 6, 116],
-    [238, 103, 176],
-    [144, 12, 125],
   ],
   purple: [
     [150, 69, 235],
     [11, 21, 136],
     [106, 57, 224],
   ],
+  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+  pink: [
+    [116, 6, 116],
+    [238, 103, 176],
+    [144, 12, 125],
+  ],
   red: [
     [83, 10, 6],
     [172, 22, 52],
     [189, 38, 13],
   ],
-  yellow: [
-    [83, 10, 6],
-    [172, 22, 52],
-    [189, 38, 13],
+  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+  orange: [
+    [255, 151, 31],
+    [112, 0, 0],
+    [250, 137, 51],
+  ],
+  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+  green: [
+    [10, 80, 28],
+    [42, 150, 140],
+    [22, 160, 59],
   ],
 };
 
@@ -120,6 +118,7 @@ export function Playground() {
               textAlign: 'center',
             }}
             variant="title2"
+            weight="semibold"
           >
             Make your Ethereum login experience feel right at home on your
             website. RainbowKit allows you to fully customize color, corner
@@ -200,13 +199,13 @@ export function Playground() {
                     activeValue={mode}
                     id="mode"
                     style={{ backgroundColor: '#1A1B1F' }}
-                    value="midnight"
+                    value="dark"
                   />
                   <Radio
                     activeValue={mode}
                     id="mode"
                     style={{ backgroundColor: 'black' }}
-                    value="dark"
+                    value="midnight"
                   />
                 </RadioGroup.Root>
               </ControlBox>
