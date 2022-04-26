@@ -1,10 +1,12 @@
 import { touchableStyles } from '../../css/touchableStyles';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { Connector, useConnect } from 'wagmi';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
+import { MoreWallets } from '../../wallets/walletConnectors/more/more';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
@@ -17,27 +19,33 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
-
 const parseAndStoreWallets: (
   data: any,
   wallets: WalletConnector[],
-  setOtherWallets: (otherWallets: WalletConnector[]) => void
-) => void = (data, wallets, setOtherWallets) => {
+  setOtherWallets: (otherWallets: WalletConnector[]) => void,
+  connect: (connector_?: Connector<any, any> | undefined) => void
+) => void = (data, wallets, setOtherWallets, connect) => {
   const defaultWalletNames = wallets.map(w => w.name);
   if (data?.listings) {
     const rawWallets: any[] = Object.values(data.listings);
     const cleanWallets: WalletConnector[] = rawWallets
-      .map(raw => ({
-        connector: undefined,
-        groupName: 'more',
-        iconBackground: 'transparent',
-        iconUrl: raw.image_url.md,
-        id: raw.id,
-        name: raw.name,
-        ready: true,
-        recent: false,
-        shortName: raw.metadata.shortName,
-      }))
+      .map(raw => {
+        const MoreWalletsConnector = MoreWallets({
+          wcUrl: raw.mobile.universal,
+        });
+        return {
+          ...MoreWalletsConnector,
+          connect: () => connect(MoreWalletsConnector?.connector),
+          groupName: 'more',
+          iconBackground: 'transparent',
+          iconUrl: raw.image_url.md,
+          id: raw.id,
+          name: raw.name,
+          ready: true,
+          recent: false,
+          shortName: raw.metadata.shortName,
+        };
+      })
       .filter(w => !defaultWalletNames.includes(w.name));
     setOtherWallets(cleanWallets);
   }
@@ -198,6 +206,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
+  const { connect } = useConnect();
 
   let headerLabel = null;
   let walletContent = null;
@@ -217,10 +226,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         'https://registry.walletconnect.com/api/v2/wallets'
       );
       const resJson = await res.json();
-      parseAndStoreWallets(resJson, wallets, setOtherWallets);
+      parseAndStoreWallets(resJson, wallets, setOtherWallets, connect);
     };
     fetchOtherWallets();
-  }, [wallets]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const ios = isIOS();
 
