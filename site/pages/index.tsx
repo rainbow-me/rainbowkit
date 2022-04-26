@@ -181,7 +181,13 @@ export default function Home() {
 
       <Playground />
 
-      <Box backgroundColor="backgroundElevated" style={{ padding: '128px 0' }}>
+      <Box
+        backgroundColor="backgroundElevated"
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
+          padding: '128px 0',
+        }}
+      >
         <Wrapper>
           <Text
             as="h2"
@@ -195,7 +201,7 @@ export default function Home() {
             marginTop="9"
             marginX="auto"
             style={{
-              maxWidth: 760,
+              maxWidth: 720,
               textAlign: 'center',
             }}
             variant="title2"
@@ -206,13 +212,16 @@ export default function Home() {
             amazing products and communities for their users.
           </Text>
 
-          <Box display="flex" gap="10" marginY="11">
-            <Box>
+          <Box display="flex" flexWrap="wrap" gap="10" marginY="11">
+            {/* eslint-disable-next-line sort-keys-fix/sort-keys-fix */}
+            <Box flexShrink={0} width={{ xs: 'full', lg: 'auto' }}>
               <Box
                 as="ul"
                 display="flex"
-                flexDirection="column"
-                gap="5"
+                flexDirection={{ lg: 'column' }}
+                // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+                flexWrap={{ xs: 'wrap', lg: 'nowrap' }}
+                gap={{ lg: '5' }}
                 marginTop="7"
               >
                 {[
@@ -231,16 +240,25 @@ export default function Home() {
                     display="flex"
                     gap="3"
                     key={value}
+                    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+                    marginBottom={{ xs: '5', lg: '0' }}
+                    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+                    width={{ xs: 'full', sm: '1/2', lg: 'full' }}
                   >
                     <TickIcon />
                     <Text weight="bold">{value}</Text>
                   </Box>
                 ))}
+              </Box>
+              <Box
+                marginBottom="11"
+                marginTop="9"
+                // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+                textAlign={{ xs: 'center', lg: 'left' }}
+              >
                 <NextLink href="/docs" passHref>
                   <Button
                     as="a"
-                    marginBottom="11"
-                    marginTop="9"
                     size="xl"
                     style={{ alignSelf: 'flex-start' }}
                     variant="purpleGradient"
@@ -250,7 +268,7 @@ export default function Home() {
                 </NextLink>
               </Box>
             </Box>
-            <Box flex="auto" width="1/3">
+            <Box flex="auto" style={{ minWidth: 500 }} width="1/3">
               <Box
                 backgroundColor="fillElevated"
                 borderRadius="4"
@@ -259,6 +277,7 @@ export default function Home() {
                     'rgba(22, 31, 39, 0.62) 0px 60px 123px -25px, rgba(19, 26, 32, 0.28) 0px 35px 75px -35px',
                   height: 420,
                   overflow: 'hidden',
+                  pointerEvents: 'none',
                   transform: 'perspective(75em) rotateX(18deg)',
                 }}
               >
@@ -280,12 +299,7 @@ export default function Home() {
           <Text
             as="h2"
             style={{
-              alignItems: 'center',
-              display: 'flex',
               fontSize: 52,
-              gap: '4px',
-              justifyContent: 'center',
-              justifyItems: 'center',
               lineHeight: '56px',
               textAlign: 'center',
             }}
@@ -309,13 +323,13 @@ export default function Home() {
             marginX="auto"
             marginY="9"
             style={{
-              maxWidth: 760,
+              maxWidth: 720,
               textAlign: 'center',
             }}
             variant="title2"
           >
             Building RainbowKit has been an incredibly fun effort across many
-            people at Rainbow and our frens at other companies. We$apos;re
+            people at Rainbow and our frens at other companies. We&apos;re
             always looking to make RainbowKit better, so please let us know how
             we can improve.
           </Text>
@@ -343,16 +357,27 @@ export default function Home() {
             textAlign="center"
           >
             <Text weight="bold">
-              <Link variant="gray">GitHub</Link>
+              <Link
+                href="https://github.com/rainbow-me/rainbowkit"
+                variant="gray"
+              >
+                <span>👾</span> github
+              </Link>
             </Text>
             <Text weight="bold">
-              <Link variant="gray">media kit</Link>
+              <Link href="https://rainbow.me/media-kit.zip" variant="gray">
+                <span>⬇️</span> media kit
+              </Link>
             </Text>
             <Text weight="bold">
-              <Link variant="gray">terms of use</Link>
+              <Link href="https://rainbow.me/terms-of-use" variant="gray">
+                <span>📜</span> terms of use
+              </Link>
             </Text>
             <Text weight="bold">
-              <Link variant="gray">privacy policy</Link>
+              <Link href="https://rainbow.me/privacy" variant="gray">
+                <span>🔒</span> privacy policy
+              </Link>
             </Text>
             <Text color="labelTertiary" weight="bold">
               © Rainbow
@@ -380,7 +405,8 @@ function InstallScript() {
       backgroundColor="fillElevated"
       borderRadius="round"
       color="label"
-      display="inline-flex"
+      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+      display={{ xs: 'none', md: 'inline-flex' }}
       fontSize="2"
       paddingX="7"
       style={{ height: 44, lineHeight: 1 }}
