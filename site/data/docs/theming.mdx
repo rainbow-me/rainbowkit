@@ -55,10 +55,10 @@ The built-in theme functions also accept an options object, allowing you to sele
       name: 'accentColor',
       required: false,
       default: 'blue',
-      type: '"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"',
+      type: '"blue" | "green" | "orange" | "pink" | "purple" | "red" | { color: string, foregroundTextColor: string }',
       typeSimple: 'enum',
       description:
-        'The background/text color of various interactive elements',
+        'The background/text color of various interactive elements. Accepts either a built-in preset color, or a custom value defined as an object with `color` and `foregroundTextColor` properties.',
     },
     {
       name: 'borderRadius',
@@ -145,6 +145,27 @@ const App = () => {
     <RainbowKitProvider
       theme={darkTheme({
         accentColor: 'green',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Set the accent color to a custom value.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: {
+          color: '#FFFF00',
+          foregroundTextColor: '#000', // Used for text on top of the accent color
+        },
       })}
     >
       {/* Your App */}

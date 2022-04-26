@@ -74,7 +74,7 @@ const accentColors = [
   'pink',
   'purple',
   'red',
-  'yellow',
+  'custom',
 ] as const;
 type AccentColor = typeof accentColors[number];
 
@@ -92,7 +92,18 @@ function App({ Component, pageProps }: AppProps) {
   const selectedTheme = themes
     .find(({ name }) => name === selectedThemeName)
     ?.theme({
-      accentColor: selectedAccentColor,
+      accentColor:
+        selectedAccentColor === 'custom'
+          ? selectedThemeName === 'light'
+            ? {
+                color: 'black',
+                foregroundTextColor: 'yellow',
+              }
+            : {
+                color: 'yellow',
+                foregroundTextColor: 'black',
+              }
+          : selectedAccentColor,
       borderRadius: selectedRadiusScale,
       fontStack: selectedFontStack,
     });

@@ -165,9 +165,9 @@ The built-in theme functions also accept an options object, allowing you to sele
   <tbody>
     <tr>
       <td><code>accentColor</code></td>
-      <td><code>"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"</code></td>
+      <td><code>"blue" | "green" | "orange" | "pink" | "purple" | "red" | { color: string, foregroundTextColor: string }</code></td>
       <td><code>"blue"</code></td>
-      <td>The background/text color of various interactive elements</td>
+      <td>The background/text color of various interactive elements. Accepts either a built-in preset color, or a custom value defined as an object with ‘color’ and ‘foregroundTextColor’ properties.</td>
     </tr>
     <tr>
       <td><code>borderRadius</code></td>
@@ -184,7 +184,7 @@ The built-in theme functions also accept an options object, allowing you to sele
   </tbody>
 </table>
 
-For example, to customize the dark theme with a `purple` accent color and a `medium` border radius scale:
+For example, to customize the dark theme with the `purple` accent color preset and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -199,6 +199,27 @@ const App = () => {
       {...etc}
     >
       {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Or, to use a custom accent color:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: {
+          color: '#FFFF00',
+          foregroundTextColor: '#000', // Used for text on top of the accent color
+        },
+      })}
+    >
+      {/* Your App */}
     </RainbowKitProvider>
   );
 };
@@ -642,10 +663,10 @@ const myCustomTheme: Theme = {
   },
   colors: {
     accentColor: '...',
+    accentColorForegroundText: '...',
     actionButtonBorder: '...',
     actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',
-    actionButtonText: '...',
     closeButton: '...',
     closeButtonBackground: '...',
     connectButtonBackground: '...',

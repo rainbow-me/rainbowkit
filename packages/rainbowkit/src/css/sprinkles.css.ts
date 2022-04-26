@@ -13,10 +13,10 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
+    accentColorForegroundText: '',
     actionButtonBorder: '',
     actionButtonBorderMobile: '',
     actionButtonSecondaryBackground: '',
-    actionButtonText: '',
     closeButton: '',
     closeButtonBackground: '',
     connectButtonBackground: '',

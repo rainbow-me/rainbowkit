@@ -67,15 +67,19 @@ export const baseTheme = ({
   },
 });
 
-export type AccentValues =
+export interface AccentColor {
+  color: string;
+  foregroundTextColor: string;
+}
+
+export type AccentColorPreset =
   | 'blue'
   | 'green'
   | 'red'
   | 'purple'
   | 'pink'
-  | 'orange'
-  | 'yellow';
+  | 'orange';
 
 export interface ThemeOptions extends BaseThemeOptions {
-  accentColor?: AccentValues;
+  accentColor?: AccentColorPreset | AccentColor;
 }
