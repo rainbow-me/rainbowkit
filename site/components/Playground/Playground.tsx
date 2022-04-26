@@ -3,17 +3,20 @@ import {
   darkTheme,
   DesktopOptions,
   dialogContent,
+  dialogContentMobile,
   lightTheme,
   midnightTheme,
+  MobileOptions,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
+import clsx from 'clsx';
+
 import { Box } from 'components/Box/Box';
 import { useMounted } from 'components/DocsMobileMenu/DocsMobileMenu';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
 import { chains, Provider } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
-import { vars } from 'css/vars.css';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { radio, ring } from './Playground.css';
@@ -132,27 +135,46 @@ export function Playground() {
             theme={selectedTheme}
           >
             <Wrapper
-              style={{
-                marginBottom: vars.space[11],
-                marginTop: vars.space[11],
-                maxWidth: 'fit-content',
-                pointerEvents: 'none',
-              }}
+              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+              marginY={{ xs: '9', md: '11' }}
+              style={{ maxWidth: 'fit-content', pointerEvents: 'none' }}
             >
-              <div
-                className={dialogContent}
-                style={{
-                  width: 712,
-                }}
-              >
-                <DesktopOptions onClose={() => {}} />
-              </div>
+              {/* eslint-disable-next-line sort-keys-fix/sort-keys-fix */}
+              <Box display={{ xs: 'none', md: 'block' }}>
+                <div
+                  className={dialogContent}
+                  style={{
+                    width: 712,
+                  }}
+                >
+                  <DesktopOptions onClose={() => {}} />
+                </div>
+              </Box>
+
+              <Box display={{ md: 'none' }}>
+                <div
+                  className={clsx(dialogContent, dialogContentMobile)}
+                  style={{
+                    maxWidth: 355,
+                    width: '100%',
+                  }}
+                >
+                  <MobileOptions onClose={() => {}} />
+                </div>
+              </Box>
             </Wrapper>
           </RainbowKitProvider>
         </Provider>
 
         <Wrapper style={{ maxWidth: 'fit-content' }}>
-          <div style={{ display: 'flex', gap: 60 }}>
+          <Box
+            display="flex"
+            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+            flexDirection={{ xs: 'column', sm: 'column', md: 'row' }}
+            flexWrap="wrap"
+            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+            gap={{ xs: '8', md: '10' }}
+          >
             <div>
               <Text
                 style={{ mixBlendMode: 'overlay' }}
@@ -261,7 +283,7 @@ export function Playground() {
                 </RadioGroup.Root>
               </ControlBox>
             </div>
-          </div>
+          </Box>
         </Wrapper>
       </Box>
     </Box>
@@ -270,14 +292,12 @@ export function Playground() {
 
 function ControlBox(props) {
   return (
-    <div
-      style={{
-        alignItems: 'flex-start',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 12,
-        marginTop: 22,
-      }}
+    <Box
+      alignItems="flex-start"
+      display="flex"
+      flexDirection="column"
+      gap="4"
+      marginTop={{ md: '5', xs: '3' }}
       {...props}
     />
   );
