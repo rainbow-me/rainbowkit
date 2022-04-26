@@ -6,4 +6,8 @@ update Rainbowkit `Theme` object.
 
 Added:
 
-- `colors.shadows.walletLogo`
+- `shadows.walletLogo`
+
+Removed:
+
+- `borders.modalBorderWidth`
