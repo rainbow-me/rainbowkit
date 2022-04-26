@@ -226,13 +226,7 @@ export default function Home() {
             weight="bold"
           >
             Made with ❤️ by your frens at{' '}
-            <Box
-              as="span"
-              marginLeft="2"
-              style={{
-                verticalAlign: 'middle',
-              }}
-            >
+            <Box as="span" marginLeft="2" position="relative" top="3">
               <NextImage
                 alt="Rainbow logo"
                 height={56}
