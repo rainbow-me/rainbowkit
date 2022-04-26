@@ -25,9 +25,6 @@ export const lightTheme = ({
 
   return {
     ...baseTheme(baseThemeOptions),
-    borders: {
-      modalBorderWidth: '0px',
-    },
     colors: {
       accentColor: accentColor.color,
       accentColorForegroundText: accentColor.foregroundTextColor,
@@ -49,7 +46,7 @@ export const lightTheme = ({
       menuItemBackground: 'rgba(60, 66, 66, 0.1)',
       modalBackdrop: 'rgba(0, 0, 0, 0.3)',
       modalBackground: '#FFF',
-      modalBorder: 'rgba(255, 255, 255, 0)',
+      modalBorder: 'transparent',
       modalText: '#25292E',
       modalTextDim: 'rgba(60, 66, 66, 0.3)',
       modalTextSecondary: 'rgba(60, 66, 66, 0.6)',

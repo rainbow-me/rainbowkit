@@ -27,9 +27,6 @@ export const darkTheme = ({
 
   return {
     ...baseTheme(baseThemeOptions),
-    borders: {
-      modalBorderWidth: '1px',
-    },
     colors: {
       accentColor: accentColor.color,
       accentColorForegroundText: accentColor.foregroundTextColor,

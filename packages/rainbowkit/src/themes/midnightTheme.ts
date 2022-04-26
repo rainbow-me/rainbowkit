@@ -25,9 +25,6 @@ export const midnightTheme = ({
 
   return {
     ...baseTheme(baseThemeOptions),
-    borders: {
-      modalBorderWidth: '1px',
-    },
     colors: {
       accentColor: accentColor.color,
       accentColorForegroundText: accentColor.foregroundTextColor,

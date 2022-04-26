@@ -6,8 +6,12 @@ Update Rainbowkit `Theme` object.
 
 Added:
 
-- `colors.shadows.walletLogo`
+- `shadows.walletLogo`
 
 Renamed:
 
 - `colors.actionButtonText` is now `colors.accentColorForegroundText`
+
+Removed:
+
+- `borders.modalBorderWidth`
