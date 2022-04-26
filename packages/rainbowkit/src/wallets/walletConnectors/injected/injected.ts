@@ -5,7 +5,6 @@ import { Wallet } from '../../Wallet';
 
 export interface InjectedOptions {
   chains: Chain[];
-  infuraId?: string;
   shimDisconnect?: boolean;
 }
 
