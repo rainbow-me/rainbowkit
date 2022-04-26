@@ -778,12 +778,136 @@ const wallets: WalletList = [
           chain.mainnet.rpcUrls[0],
       }),
       wallet.metaMask({ chains, infuraId }),
-      ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, infuraId })]
-        : []),
+      ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
 ];
+```
+
+### Built-in wallets
+
+The following wallets are provided via the `wallet` object (in alphabetical order).
+
+- [Argent](#argent)
+- [Coinbase Wallet](#coinbase-wallet)
+- [Injected Wallet](#injected-wallet)
+- [MetaMask](#metamask)
+- [Rainbow](#rainbow)
+- [Trust Wallet](#trust-wallet)
+- [WalletConnect](#walletconnect)
+
+#### Argent
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.argent(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Coinbase Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.coinbase(options: {
+  appName: string;
+  chains: Chain[];
+  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+});
+```
+
+#### Injected Wallet
+
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.injected(options: {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+});
+```
+
+This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
+
+```tsx
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: WalletList = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+      wallet.metaMask({ chains, infuraId }),
+      ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
+    ],
+  },
+];
+```
+
+#### MetaMask
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.metaMask(options: {
+  chains: Chain[];
+  infuraId?: string;
+  shimDisconnect?: boolean;
+});
+```
+
+#### Rainbow
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.rainbow(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Trust Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.trust(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### WalletConnect
+
+This is a fallback wallet option designed for other WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.walletConnect(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
 ```
 
 ### Creating custom wallets
