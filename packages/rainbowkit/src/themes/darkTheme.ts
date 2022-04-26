@@ -5,11 +5,13 @@ import {
   ThemeOptions,
 } from './baseTheme';
 
+const darkGrey = '#1A1B1F';
+
 const accentColorPresets: Record<AccentColorPreset, AccentColor> = {
   blue: { color: '#3898FF', foregroundTextColor: '#FFF' },
-  green: { color: '#4BD166', foregroundTextColor: '#000' },
-  orange: { color: '#FF983D', foregroundTextColor: '#000' },
-  pink: { color: '#FF7AB8', foregroundTextColor: '#000' },
+  green: { color: '#4BD166', foregroundTextColor: darkGrey },
+  orange: { color: '#FF983D', foregroundTextColor: darkGrey },
+  pink: { color: '#FF7AB8', foregroundTextColor: darkGrey },
   purple: { color: '#7A70FF', foregroundTextColor: '#FFF' },
   red: { color: '#FF6257', foregroundTextColor: '#FFF' },
 };
@@ -36,7 +38,7 @@ export const darkTheme = ({
       actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
       closeButton: 'rgba(224, 232, 255, 0.6)',
       closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
-      connectButtonBackground: '#1A1B1F',
+      connectButtonBackground: darkGrey,
       connectButtonBackgroundError: '#FF494A',
       connectButtonInnerBackground:
         'linear-gradient(0deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.15))',
