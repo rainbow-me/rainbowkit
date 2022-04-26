@@ -1,15 +1,16 @@
-import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { RainbowKitChain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 // import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 
 export interface Options {
   wcUrl: string;
+  chains?: RainbowKitChain[];
 }
 
-export const MoreWallets = ({ wcUrl }: Options) => {
+export const MoreWallets = ({ chains, wcUrl }: Options) => {
   const connector = new WalletConnectConnector({
-    chains: [{ ...chain.mainnet, name: 'Ethereum' }],
+    chains,
     options: {
       infuraId: process.env.INFURA_ID,
       qrcode: false,

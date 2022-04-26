@@ -16,6 +16,10 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import {
+  RainbowKitChain,
+  useRainbowKitChains,
+} from '../RainbowKitProvider/RainbowKitChainContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
@@ -23,14 +27,16 @@ const parseAndStoreWallets: (
   data: any,
   wallets: WalletConnector[],
   setOtherWallets: (otherWallets: WalletConnector[]) => void,
-  connect: (connector_?: Connector<any, any> | undefined) => void
-) => void = (data, wallets, setOtherWallets, connect) => {
+  connect: (connector_?: Connector<any, any> | undefined) => void,
+  chains?: RainbowKitChain[]
+) => void = (data, wallets, setOtherWallets, connect, chains) => {
   const defaultWalletNames = wallets.map(w => w.name);
   if (data?.listings) {
     const rawWallets: any[] = Object.values(data.listings);
     const cleanWallets: WalletConnector[] = rawWallets
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
+          chains,
           wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
         });
         return {
@@ -207,6 +213,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors();
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
   const { connect } = useConnect();
+  const chains = useRainbowKitChains();
 
   let headerLabel = null;
   let walletContent = null;
@@ -226,7 +233,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         'https://registry.walletconnect.com/api/v2/wallets'
       );
       const resJson = await res.json();
-      parseAndStoreWallets(resJson, wallets, setOtherWallets, connect);
+      parseAndStoreWallets(resJson, wallets, setOtherWallets, connect, chains);
     };
     fetchOtherWallets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
