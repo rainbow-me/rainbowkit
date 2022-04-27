@@ -1032,7 +1032,7 @@ const App = () => {
     <tr>
       <td><code>appName?</code></td>
       <td><code>string | undefined</code></td>
-      <td>Name of your app. Will be displayed in certain placed in the Rainbowkit UI to refer to your site. Defaults to `"Your App"`.</td>
+      <td>Name of your app. Will be displayed in certain places in the RainbowKit UI to refer to your site. Defaults to `"Your App"`.</td>
     </tr>
   </tbody>
 </table>
