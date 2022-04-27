@@ -15,7 +15,7 @@ export interface ChainModalProps {
   onClose: () => void;
   networkData: ReturnType<typeof useNetwork>[0]['data'];
   networkError: ReturnType<typeof useNetwork>[0]['error'];
-  onSwitchNetwork?: any;
+  onSwitchNetwork?: (chainId: number) => unknown | undefined;
 }
 
 export function ChainModal({
@@ -57,8 +57,6 @@ export function ChainModal({
     return null;
   }
 
-  console.log('onSwitchNetwork', onSwitchNetwork);
-
   return (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
       <DialogContent bottomSheetOnMobile>
@@ -83,7 +81,7 @@ export function ChainModal({
             <CloseButton onClose={onClose} />
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
-            {true &&
+            {onSwitchNetwork ? (
               networkData.chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const switching = chain.id === switchingToChain;
@@ -190,7 +188,12 @@ export function ChainModal({
                     )}
                   </Fragment>
                 );
-              })}
+              })
+            ) : (
+              <Text color="modalText" size="14" weight="medium">
+                Your wallet doesn&apos;t support switching networks.
+              </Text>
+            )}
           </Box>
         </Box>
       </DialogContent>
