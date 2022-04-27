@@ -23,6 +23,7 @@ import {
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { formatAddress } from './formatAddress';
+import { formatENS } from './formatENS';
 
 const useBooleanState = (initialValue: boolean) => {
   const [value, setValue] = useState(initialValue);
@@ -153,8 +154,9 @@ export function ConnectButtonRenderer({
               balanceFormatted: balanceData?.formatted,
               balanceSymbol: balanceData?.symbol,
               displayBalance,
-              displayName:
-                accountData.ens?.name ?? formatAddress(accountData.address),
+              displayName: accountData.ens?.name
+                ? formatENS(accountData.ens?.name)
+                : formatAddress(accountData.address),
               ensAvatar: accountData.ens?.avatar ?? undefined,
               ensName: accountData.ens?.name,
               hasPendingTransactions,

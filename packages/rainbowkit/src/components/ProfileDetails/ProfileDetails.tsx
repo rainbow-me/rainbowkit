@@ -5,6 +5,7 @@ import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { formatAddress } from '../ConnectButton/formatAddress';
+import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
@@ -49,8 +50,9 @@ export function ProfileDetails({
     return null;
   }
 
-  const accountName =
-    accountData.ens?.name ?? formatAddress(accountData.address);
+  const accountName = accountData.ens?.name
+    ? formatENS(accountData.ens?.name)
+    : formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
