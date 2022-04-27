@@ -264,7 +264,8 @@ export default function Home() {
             display="flex"
             // eslint-disable-next-line sort-keys-fix/sort-keys-fix
             flexDirection={{ xs: 'column', sm: 'row' }}
-            gap="8"
+            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+            gap={{ xs: '5', sm: '8' }}
             justifyContent="center"
           >
             <Button
@@ -294,7 +295,8 @@ export default function Home() {
             flexDirection="column"
             gap="6"
             justifyContent="center"
-            style={{ marginTop: 128 }}
+            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+            marginTop={{ xs: '11', lg: '12' }}
             textAlign="center"
           >
             <Text size="4" weight="bold">
