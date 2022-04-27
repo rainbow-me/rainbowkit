@@ -17,7 +17,7 @@ import { BackIcon } from '../Icons/Back';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import {
-  RainbowKitChain,
+  Chain,
   useRainbowKitChains,
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
@@ -28,7 +28,7 @@ const parseAndStoreWallets: (
   wallets: WalletConnector[],
   setOtherWallets: (otherWallets: WalletConnector[]) => void,
   connect: (connector_?: Connector<any, any> | undefined) => void,
-  chains?: RainbowKitChain[]
+  chains: Chain[]
 ) => void = (data, wallets, setOtherWallets, connect, chains) => {
   const defaultWalletNames = wallets.map(w => w.name);
   if (data?.listings) {
