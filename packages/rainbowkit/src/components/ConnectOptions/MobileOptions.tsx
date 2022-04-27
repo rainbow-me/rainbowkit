@@ -37,11 +37,7 @@ const parseAndStoreWallets: (
     const cleanWallets: WalletConnector[] = rawWallets
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
-          chains: chains.map(c => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { iconBackground, iconUrl, ...omittedChain } = c;
-            return omittedChain;
-          }),
+          chains,
           wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
         });
         return {
