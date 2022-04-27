@@ -290,7 +290,7 @@ export function ConnectDetail({
               label={secondaryAction.label}
               type="secondary"
               {...(secondaryAction.href
-                ? { href: secondaryAction.href }
+                ? { href: secondaryAction.href, target: '_self' }
                 : {
                     onClick: secondaryAction.onClick,
                   })}
