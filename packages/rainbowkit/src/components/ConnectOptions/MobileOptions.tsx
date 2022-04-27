@@ -35,6 +35,7 @@ const parseAndStoreWallets: (
   if (data?.listings) {
     const rawWallets: any[] = Object.values(data.listings);
     const cleanWallets: WalletConnector[] = rawWallets
+      .filter(raw => raw.mobile.universal || raw.mobile.native) // filter out wallets we can't connect to
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
           chains,
