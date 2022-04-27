@@ -53,15 +53,20 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const onSelectWallet = (wallet: WalletConnector) => {
     connectToWallet(wallet);
+    setSelectedOptionId(wallet.id);
 
-    wallet?.onConnecting?.(async () => {
-      setSelectedOptionId(wallet.id);
-      const sWallet = wallets.find(w => wallet.id === w.id);
-      const uri = await sWallet?.qrCode?.getUri();
-      setQrCodeUri(uri);
-      setSelectedWallet(sWallet);
+    if (wallet.ready) {
+      wallet?.onConnecting?.(async () => {
+        const sWallet = wallets.find(w => wallet.id === w.id);
+        const uri = await sWallet?.qrCode?.getUri();
+        setQrCodeUri(uri);
+        setSelectedWallet(sWallet);
+        setWalletStep(WalletStep.Connect);
+      });
+    } else {
+      setSelectedWallet(wallet);
       setWalletStep(WalletStep.Connect);
-    });
+    }
   };
 
   const getMobileWallet = (id: string) => {
