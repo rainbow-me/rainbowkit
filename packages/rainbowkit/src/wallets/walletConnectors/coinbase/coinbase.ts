@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import { InjectedConnector } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -18,6 +19,11 @@ export const coinbase = ({
     typeof window !== 'undefined' &&
     // @ts-expect-error
     window.walletLinkExtension?.isCoinbaseWallet;
+
+  const isCoinbaseDappBrowser =
+    typeof window !== 'undefined' &&
+    // @ts-expect-error
+    window.ethereum?.isCoinbaseWallet;
 
   return {
     id: 'coinbase',
@@ -48,7 +54,9 @@ export const coinbase = ({
       const getUri = () => connector.getProvider().qrUrl;
 
       return {
-        connector,
+        connector: isCoinbaseDappBrowser
+          ? new InjectedConnector({ chains })
+          : connector,
         mobile: { getUri },
         qrCode: isExtensionInstalled ? undefined : { getUri },
       };
