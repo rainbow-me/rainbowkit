@@ -1,14 +1,13 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { RainbowKitChain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-// import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 
-export interface Options {
+export interface MoreOptions {
   wcUrl: string;
-  chains?: RainbowKitChain[];
+  chains: Chain[];
 }
 
-export const MoreWallets = ({ chains, wcUrl }: Options) => {
+export const MoreWallets = ({ chains, wcUrl }: MoreOptions) => {
   const connector = new WalletConnectConnector({
     chains,
     options: {
