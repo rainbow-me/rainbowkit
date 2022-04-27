@@ -1,4 +1,8 @@
 export function formatENS(name: string): string {
-  const beforePeriod = name.split('.')[0];
-  return name.length <= 24 ? name : `${name.substring(0, 16)}...`;
+  const parts = name.split('.');
+  const last = parts.pop();
+  if (parts.join('.').length > 24) {
+    return `${parts.join('.').substring(0, 24)}...`;
+  }
+  return `${parts.join('.')}.${last}`;
 }
