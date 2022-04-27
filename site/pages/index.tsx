@@ -62,7 +62,8 @@ export default function Home() {
           <Box marginBottom="8">
             <InstallScript />
           </Box>
-          <Box marginBottom="11">
+          {/* eslint-disable-next-line sort-keys-fix/sort-keys-fix */}
+          <Box marginBottom={{ xs: '10', md: '11' }}>
             <NextLink href="/docs" passHref>
               <Button as="a" size="xl" variant="purpleGradient">
                 View the Docs
@@ -71,9 +72,10 @@ export default function Home() {
           </Box>
         </Box>
       </Wrapper>
+
       <Box position="relative">
         <Box
-          backgroundColor="purple50"
+          backgroundColor="purple90"
           position="absolute"
           style={{
             borderRadius: '100%',
@@ -122,9 +124,10 @@ export default function Home() {
 
       <Box
         backgroundColor="backgroundElevated"
+        // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+        paddingY={{ xs: '11', lg: '12' }}
         style={{
           backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
-          padding: '128px 0',
         }}
       >
         <Wrapper>
@@ -157,10 +160,13 @@ export default function Home() {
               as="ul"
               display="flex"
               flexWrap="wrap"
+              left={{ lg: '9' }}
               // eslint-disable-next-line sort-keys-fix/sort-keys-fix
               marginLeft={{ md: '10', lg: '11' }}
-              paddingLeft={{ lg: '11' }}
+              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+              paddingLeft={{ md: '3', lg: '11' }}
               paddingY="5"
+              position="relative"
             >
               {[
                 'Easy Installation',
@@ -191,7 +197,8 @@ export default function Home() {
               ))}
             </Box>
             <Box
-              marginTop="11"
+              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+              marginTop={{ xs: '5', md: '11' }}
               // eslint-disable-next-line sort-keys-fix/sort-keys-fix
               textAlign={{ xs: 'left', md: 'center' }}
             >
@@ -213,7 +220,8 @@ export default function Home() {
       <Box
         backgroundColor="backgroundElevated"
         data-mode="light"
-        style={{ padding: '128px 0' }}
+        // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+        paddingY={{ xs: '11', lg: '12' }}
       >
         <Wrapper>
           <Text

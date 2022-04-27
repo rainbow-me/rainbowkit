@@ -32,8 +32,8 @@ const negativeSpace = {
   '-7': `${calc(vars.space['7']).negate()}`,
   '-8': `${calc(vars.space['8']).negate()}`,
   '-9': `${calc(vars.space['9']).negate()}`,
-  '-10': `${calc(vars.space['-10']).negate()}`,
-  '-11': `${calc(vars.space['-11']).negate()}`,
+  '-10': `${calc(vars.space['10']).negate()}`,
+  '-11': `${calc(vars.space['11']).negate()}`,
 };
 
 const extendedSpace = {

@@ -86,8 +86,12 @@ export function Playground() {
 
   return useMounted() ? (
     <Box
+      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+      marginTop={{ md: '11', lg: '12' }}
+      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+      paddingY={{ xs: '11', lg: '12' }}
       position="relative"
-      style={{ marginTop: '128px ', padding: '128px 0' }}
+      zIndex="10"
     >
       <Box
         inset="0"
@@ -275,7 +279,7 @@ export function Playground() {
                   />
                   <Radio
                     activeValue={radii}
-                    data-label="-"
+                    data-label="—"
                     id="radii"
                     value="none"
                   />
