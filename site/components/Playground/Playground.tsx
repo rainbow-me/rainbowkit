@@ -11,12 +11,12 @@ import {
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
-import { useMounted } from 'components/DocsMobileMenu/DocsMobileMenu';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
 import { chains, Provider } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
+import { useMounted } from 'lib/useMounted';
 import React, { useState } from 'react';
 import { radio, ring } from './Playground.css';
 
