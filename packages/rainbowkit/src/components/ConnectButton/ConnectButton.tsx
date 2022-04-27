@@ -50,7 +50,6 @@ export function ConnectButton({
           <Box
             display="flex"
             gap="12"
-            transition="default"
             {...(!mounted && {
               'aria-hidden': true,
               'style': {
