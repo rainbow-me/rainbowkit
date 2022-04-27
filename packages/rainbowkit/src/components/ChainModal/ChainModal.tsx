@@ -139,7 +139,7 @@ export function ChainModal({
                               marginRight="6"
                             >
                               <Text
-                                color="actionButtonText"
+                                color="accentColorForeground"
                                 size="14"
                                 weight="medium"
                               >

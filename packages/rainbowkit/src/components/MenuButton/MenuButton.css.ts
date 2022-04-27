@@ -37,7 +37,7 @@ export const SelectedMenuButtonClassName = style([
     borderStyle: 'solid',
     borderWidth: '1',
     boxShadow: 'selectedOption',
-    color: 'actionButtonText',
+    color: 'accentColorForeground',
     padding: '6',
   }),
 ]);

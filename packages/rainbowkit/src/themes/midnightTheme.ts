@@ -1,26 +1,33 @@
-import { AccentValues, baseTheme, ThemeOptions } from './baseTheme';
+import {
+  AccentColor,
+  AccentColorPreset,
+  baseTheme,
+  ThemeOptions,
+} from './baseTheme';
 
-const accents: Record<AccentValues, string> = {
-  blue: '#3898FF',
-  green: '#4BD166',
-  orange: '#FF983D',
-  pink: '#FF7AB8',
-  purple: '#7A70FF',
-  red: '#FF6257',
-  yellow: '#FFDF3D',
+const accentColors: Record<AccentColorPreset, AccentColor> = {
+  blue: { accentColor: '#3898FF', accentColorForeground: '#FFF' },
+  green: { accentColor: '#4BD166', accentColorForeground: '#000' },
+  orange: { accentColor: '#FF983D', accentColorForeground: '#000' },
+  pink: { accentColor: '#FF7AB8', accentColorForeground: '#000' },
+  purple: { accentColor: '#7A70FF', accentColorForeground: '#FFF' },
+  red: { accentColor: '#FF6257', accentColorForeground: '#FFF' },
 };
 
+const defaultAccentColor = accentColors.blue;
+
 export const midnightTheme = ({
-  accentColor = 'blue',
+  accentColor = defaultAccentColor.accentColor,
+  accentColorForeground = defaultAccentColor.accentColorForeground,
   ...baseThemeOptions
 }: ThemeOptions = {}) => ({
   ...baseTheme(baseThemeOptions),
   colors: {
-    accentColor: accents[accentColor],
+    accentColor,
+    accentColorForeground,
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
     actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
-    actionButtonText: '#FFF',
     closeButton: 'rgba(255, 255, 255, 0.7)',
     closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
     connectButtonBackground: '#000',
@@ -55,3 +62,5 @@ export const midnightTheme = ({
     walletLogo: '0px 2px 16px rgba(0, 0, 0, 0.16)',
   },
 });
+
+midnightTheme.accentColors = accentColors;
