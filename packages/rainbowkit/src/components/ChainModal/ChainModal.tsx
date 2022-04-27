@@ -57,6 +57,8 @@ export function ChainModal({
     return null;
   }
 
+  console.log('onSwitchNetwork', onSwitchNetwork);
+
   return (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
       <DialogContent bottomSheetOnMobile>
