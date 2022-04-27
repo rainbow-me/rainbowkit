@@ -1,8 +1,4 @@
-import {
-  globalFontFace,
-  globalKeyframes,
-  globalStyle,
-} from '@vanilla-extract/css';
+import { globalFontFace, globalStyle } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
 globalFontFace('SFRounded', {
@@ -85,13 +81,4 @@ globalStyle('svg', {
 globalStyle('[data-emoji]', {
   fontFamily: 'system-ui',
   fontWeight: 400,
-});
-
-globalKeyframes('code', {
-  '0%': { transform: 'translateY(0)' },
-  '100%': { transform: 'translateY(calc(-100% + 420px))' },
-});
-
-globalStyle('.codeblock', {
-  animation: 'code linear 50000ms alternate infinite ',
 });
