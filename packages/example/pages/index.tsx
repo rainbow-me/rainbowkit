@@ -94,7 +94,6 @@ const Example = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  if (!isMounted) return null;
   return (
     <div
       style={{
@@ -132,14 +131,24 @@ const Example = () => {
           {({
             account,
             chain,
+            mounted,
             openAccountModal,
             openChainModal,
             openConnectModal,
           }) => {
             return (
-              <div>
+              <div
+                {...(!mounted && {
+                  'aria-hidden': true,
+                  'style': {
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  },
+                })}
+              >
                 {(() => {
-                  if (!chain || !account) {
+                  if (!mounted || !chain || !account) {
                     return (
                       <button onClick={openConnectModal} type="button">
                         Connect Wallet
@@ -200,155 +209,161 @@ const Example = () => {
         </ConnectButton.Custom>
       </div>
 
-      <div style={{ fontFamily: 'sans-serif' }}>
-        <h3>Example Actions {!accountData && <span>(not connected)</span>}</h3>
-        <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
-          <button
-            disabled={!accountData}
-            onClick={() => sendTransaction()}
-            type="button"
-          >
-            Send Transaction
-          </button>
-          <button
-            disabled={!accountData}
-            onClick={() => signMessage()}
-            type="button"
-          >
-            Sign Message
-          </button>
-          <button
-            disabled={!accountData || activeChain?.id !== 1}
-            onClick={() => signTypedData()}
-            type="button"
-          >
-            Sign Typed Data
-          </button>
-        </div>
-        <div>
-          {transactionData && (
-            <div>Transaction: {JSON.stringify(transactionData)}</div>
-          )}
-          {transactionError && <div>Error sending transaction</div>}
-          {signingData && <div>Data Signature: {signingData}</div>}
-          {signingError && <div>Error signing message</div>}
-          {typedData && <div>Typed Data Signature: {typedData}</div>}
-          {typedError && <div>Error signing typed message</div>}
-        </div>
-      </div>
+      {isMounted && (
+        <>
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <h3>
+              Example Actions {!accountData && <span>(not connected)</span>}
+            </h3>
+            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
+              <button
+                disabled={!accountData}
+                onClick={() => sendTransaction()}
+                type="button"
+              >
+                Send Transaction
+              </button>
+              <button
+                disabled={!accountData}
+                onClick={() => signMessage()}
+                type="button"
+              >
+                Sign Message
+              </button>
+              <button
+                disabled={!accountData || activeChain?.id !== 1}
+                onClick={() => signTypedData()}
+                type="button"
+              >
+                Sign Typed Data
+              </button>
+            </div>
+            <div>
+              {transactionData && (
+                <div>Transaction: {JSON.stringify(transactionData)}</div>
+              )}
+              {transactionError && <div>Error sending transaction</div>}
+              {signingData && <div>Data Signature: {signingData}</div>}
+              {signingError && <div>Error signing message</div>}
+              {typedData && <div>Typed Data Signature: {typedData}</div>}
+              {typedError && <div>Error signing typed message</div>}
+            </div>
+          </div>
 
-      <div style={{ fontFamily: 'sans-serif' }}>
-        <h3>ConnectButton props</h3>
-        <table cellSpacing={12}>
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>smallScreen</th>
-              <th>largeScreen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <label htmlFor="accountStatus">accountStatus</label>
-              </td>
-              <td>
-                <select
-                  id="accountStatus"
-                  onChange={event =>
-                    setAccountStatusSmallScreen(
-                      event.currentTarget.value as AccountStatus
-                    )
-                  }
-                  value={accountStatusSmallScreen}
-                >
-                  <option>full</option>
-                  <option>avatar</option>
-                  <option>address</option>
-                </select>
-              </td>
-              <td>
-                <select
-                  id="accountStatus"
-                  onChange={event =>
-                    setAccountStatusLargeScreen(
-                      event.currentTarget.value as AccountStatus
-                    )
-                  }
-                  value={accountStatusLargeScreen}
-                >
-                  <option>full</option>
-                  <option>avatar</option>
-                  <option>address</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="showBalance">showBalance</label>
-              </td>
-              <td>
-                <input
-                  checked={showBalanceSmallScreen}
-                  id="showBalance"
-                  onChange={event => {
-                    setShowBalanceSmallScreen(event.currentTarget.checked);
-                  }}
-                  type="checkbox"
-                />
-              </td>
-              <td>
-                <input
-                  checked={showBalanceLargeScreen}
-                  id="showBalance"
-                  onChange={event => {
-                    setShowBalanceLargeScreen(event.currentTarget.checked);
-                  }}
-                  type="checkbox"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="chainStatus">chainStatus</label>
-              </td>
-              <td>
-                <select
-                  id="chainStatus"
-                  onChange={event =>
-                    setChainStatusSmallScreen(
-                      event.currentTarget.value as ChainStatus
-                    )
-                  }
-                  value={chainStatusSmallScreen}
-                >
-                  <option>full</option>
-                  <option>icon</option>
-                  <option>name</option>
-                  <option>none</option>
-                </select>
-              </td>
-              <td>
-                <select
-                  id="chainStatus"
-                  onChange={event =>
-                    setChainStatusLargeScreen(
-                      event.currentTarget.value as ChainStatus
-                    )
-                  }
-                  value={chainStatusLargeScreen}
-                >
-                  <option>full</option>
-                  <option>icon</option>
-                  <option>name</option>
-                  <option>none</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      {accountData ? <ManageTransactions /> : null}
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <h3>ConnectButton props</h3>
+            <table cellSpacing={12}>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>smallScreen</th>
+                  <th>largeScreen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="accountStatus">accountStatus</label>
+                  </td>
+                  <td>
+                    <select
+                      id="accountStatus"
+                      onChange={event =>
+                        setAccountStatusSmallScreen(
+                          event.currentTarget.value as AccountStatus
+                        )
+                      }
+                      value={accountStatusSmallScreen}
+                    >
+                      <option>full</option>
+                      <option>avatar</option>
+                      <option>address</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      id="accountStatus"
+                      onChange={event =>
+                        setAccountStatusLargeScreen(
+                          event.currentTarget.value as AccountStatus
+                        )
+                      }
+                      value={accountStatusLargeScreen}
+                    >
+                      <option>full</option>
+                      <option>avatar</option>
+                      <option>address</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="showBalance">showBalance</label>
+                  </td>
+                  <td>
+                    <input
+                      checked={showBalanceSmallScreen}
+                      id="showBalance"
+                      onChange={event => {
+                        setShowBalanceSmallScreen(event.currentTarget.checked);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      checked={showBalanceLargeScreen}
+                      id="showBalance"
+                      onChange={event => {
+                        setShowBalanceLargeScreen(event.currentTarget.checked);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="chainStatus">chainStatus</label>
+                  </td>
+                  <td>
+                    <select
+                      id="chainStatus"
+                      onChange={event =>
+                        setChainStatusSmallScreen(
+                          event.currentTarget.value as ChainStatus
+                        )
+                      }
+                      value={chainStatusSmallScreen}
+                    >
+                      <option>full</option>
+                      <option>icon</option>
+                      <option>name</option>
+                      <option>none</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      id="chainStatus"
+                      onChange={event =>
+                        setChainStatusLargeScreen(
+                          event.currentTarget.value as ChainStatus
+                        )
+                      }
+                      value={chainStatusLargeScreen}
+                    >
+                      <option>full</option>
+                      <option>icon</option>
+                      <option>name</option>
+                      <option>none</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {accountData ? <ManageTransactions /> : null}
+        </>
+      )}
     </div>
   );
 };
