@@ -78,17 +78,6 @@ const accentColors = [
 ] as const;
 type AccentColor = typeof accentColors[number];
 
-const customAccentColor = {
-  dark: {
-    accentColor: 'yellow',
-    accentColorForeground: 'black',
-  },
-  light: {
-    accentColor: 'black',
-    accentColorForeground: 'yellow',
-  },
-} as const;
-
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
@@ -106,7 +95,7 @@ function App({ Component, pageProps }: AppProps) {
 
   const accentColor =
     selectedAccentColor === 'custom'
-      ? customAccentColor[selectedThemeName === 'light' ? 'light' : 'dark']
+      ? { accentColor: 'red', accentColorForeground: 'yellow' } // https://blog.codinghorror.com/a-tribute-to-the-windows-31-hot-dog-stand-color-scheme
       : currentTheme.accentColors[selectedAccentColor];
 
   return (
