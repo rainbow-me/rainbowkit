@@ -39,6 +39,7 @@ export function ConnectButton({
       {({
         account,
         chain,
+        mounted,
         openAccountModal,
         openChainModal,
         openConnectModal,
@@ -46,8 +47,20 @@ export function ConnectButton({
         const unsupportedChain = chain?.unsupported ?? false;
 
         return (
-          <Box display="flex" gap="12" transition="default">
-            {account ? (
+          <Box
+            display="flex"
+            gap="12"
+            transition="default"
+            {...(!mounted && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
+          >
+            {mounted && account ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box

@@ -403,7 +403,7 @@ export const YourApp = () => {
               })}
             >
               {(() => {
-                if (!account || !chain) {
+                if (!mounted || !account || !chain) {
                   return (
                     <button onClick={openConnectModal} type="button">
                       Connect Wallet
