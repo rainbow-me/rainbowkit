@@ -191,7 +191,7 @@ export function ChainModal({
               })
             ) : (
               <Text color="modalText" size="14" weight="medium">
-                Your wallet doesn&apos;t support switching networks.
+                Your wallet does not support switching networks.
               </Text>
             )}
           </Box>
