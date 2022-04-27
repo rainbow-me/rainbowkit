@@ -15,7 +15,7 @@ export interface ChainModalProps {
   onClose: () => void;
   networkData: ReturnType<typeof useNetwork>[0]['data'];
   networkError: ReturnType<typeof useNetwork>[0]['error'];
-  onSwitchNetwork?: (chainId: number) => unknown;
+  onSwitchNetwork?: any;
 }
 
 export function ChainModal({
@@ -83,7 +83,7 @@ export function ChainModal({
             <CloseButton onClose={onClose} />
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
-            {onSwitchNetwork &&
+            {true &&
               networkData.chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const switching = chain.id === switchingToChain;
