@@ -23,6 +23,7 @@ import {
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
+
 const parseAndStoreWallets: (
   data: any,
   wallets: WalletConnector[],
@@ -36,7 +37,11 @@ const parseAndStoreWallets: (
     const cleanWallets: WalletConnector[] = rawWallets
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
-          chains,
+          chains: chains.map(c => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { iconBackground, iconUrl, ...omittedChain } = c;
+            return omittedChain;
+          }),
           wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
         });
         return {
