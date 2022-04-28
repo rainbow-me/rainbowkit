@@ -137,7 +137,11 @@ export function Playground() {
               marginX={{ xs: '0', md: 'auto' }}
               marginY={{ xs: '9', md: '11' }}
               paddingX="10"
-              style={{ maxWidth: 'fit-content', pointerEvents: 'none' }}
+              style={{
+                maxWidth: 'fit-content',
+                pointerEvents: 'none',
+                userSelect: 'none',
+              }}
             >
               <Box display={{ xs: 'none', md: 'block' }}>
                 <div
