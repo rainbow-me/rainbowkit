@@ -2,21 +2,12 @@ import {
   Chain,
   connectorsForWallets,
   getDefaultWallets,
+  rpcProvider,
 } from '@rainbow-me/rainbowkit';
-import { providers } from 'ethers';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
-
-const isChainSupported = (chainId?: number) =>
-  chains.some(x => x.id === chainId);
-
-const provider = ({ chainId }) =>
-  new providers.AlchemyProvider(
-    isChainSupported(chainId) ? chainId : chain.mainnet.id,
-    alchemyId
-  );
 
 export const chains: Chain[] = [
   chain.mainnet,
@@ -25,10 +16,12 @@ export const chains: Chain[] = [
   chain.arbitrum,
 ];
 
+const { provider, rpcUrls } = rpcProvider.alchemy(alchemyId, { chains });
+
 const wallets = getDefaultWallets({
-  apiConfig: { alchemyId },
   appName: 'RainbowKit site',
   chains,
+  rpcUrls,
 });
 
 const connectors = connectorsForWallets(wallets);

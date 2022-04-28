@@ -27,9 +27,9 @@ import {
   Chain,
   getDefaultWallets,
   connectorsForWallets,
+  rpcProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
-import { providers } from 'ethers';
 ```
 
 ### Configure
@@ -38,12 +38,7 @@ Configure your wallets, desired chains and generate the required connectors.
 
 ```tsx line=3-99
 ...
-import { providers } from 'ethers';
-
-const alchemyId = process.env.ALCHEMY_ID;
-
-const provider = ({ chainId }) =>
-  new providers.AlchemyProvider(chainId, alchemyId);
+import { WagmiProvider, chain } from 'wagmi';
 
 const chains: Chain[] = [
   chain.mainnet,
@@ -52,16 +47,19 @@ const chains: Chain[] = [
   chain.arbitrumOne,
 ];
 
+const { provider, rpcUrls } = rpcProvider.alchemy(
+  process.env.ALCHEMY_ID,
+  { chains }
+);
+
 const wallets = getDefaultWallets({
-  apiConfig: { alchemyId },
-  chains,
   appName: 'My RainbowKit App',
+  chains,
+  rpcUrls
 });
 
 const connectors = connectorsForWallets(wallets);
 ```
-
-> We recommend using custom providers such as `InfuraProvider` and `AlchemyProvider`. For help generating provider ID's, see the [Infura docs](https://docs.infura.io/infura/create-a-project) and the [Alchemy docs](https://docs.alchemy.com/alchemy/introduction/getting-started).
 
 ### Wrap providers
 
@@ -71,13 +69,15 @@ Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wa
 ...
 const connectors = connectorsForWallets(wallets);
 
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider
+})
+
 const App = () => {
   return (
-    <WagmiProvider
-      autoConnect
-      connectors={connectors}
-      provider={provider}
-    >
+    <WagmiProvider client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>

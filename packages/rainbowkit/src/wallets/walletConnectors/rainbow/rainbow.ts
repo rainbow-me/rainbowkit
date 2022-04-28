@@ -1,16 +1,15 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface RainbowOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  chains: WalletConfig['chains'];
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
 }
 
-export const rainbow = ({ apiConfig, chains }: RainbowOptions): Wallet => ({
+export const rainbow = ({ chains, rpcUrls }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
   iconUrl: async () => (await import('./rainbow.svg')).default,
@@ -20,25 +19,12 @@ export const rainbow = ({ apiConfig, chains }: RainbowOptions): Wallet => ({
     ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
     qrCode: 'https://rainbow.download',
   },
-  createConnector: ({ chainId = chain.mainnet.id }) => {
-    const jsonRpcUrl = getJsonRpcUrl({
-      apiConfig,
-      chains,
-    });
+  createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: false,
-        ...(apiConfig?.infuraId
-          ? { infuraId: apiConfig?.infuraId }
-          : {
-              rpc: {
-                [chainId]:
-                  typeof jsonRpcUrl === 'function'
-                    ? jsonRpcUrl({ chainId })
-                    : jsonRpcUrl,
-              },
-            }),
+        rpc: rpcUrls,
       },
     });
 

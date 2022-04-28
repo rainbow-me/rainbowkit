@@ -20,6 +20,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Installation', slug: 'installation' },
       { title: 'ConnectButton', slug: 'connect-button' },
       { title: 'Theming', slug: 'theming' },
+      { title: 'RPC Providers', slug: 'rpc-providers' },
       { title: 'Chains', slug: 'chains' },
     ],
   },

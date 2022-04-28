@@ -1,7 +1,8 @@
 export * from './components';
+export { rpcProvider } from './rpcProviders';
+export type { RpcProvider } from './rpcProviders/RpcProvider';
 export { wallet } from './wallets/walletConnectors';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
-export { getJsonRpcUrl } from './wallets/getJsonRpcUrl';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
 export type { Wallet, WalletList } from './wallets/Wallet';

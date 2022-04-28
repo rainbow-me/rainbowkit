@@ -1,4 +1,5 @@
-import { WalletConfig, WalletList } from './Wallet';
+import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import { WalletList } from './Wallet';
 import { coinbase } from './walletConnectors/coinbase/coinbase';
 import { injected } from './walletConnectors/injected/injected';
 import { metaMask } from './walletConnectors/metaMask/metaMask';
@@ -6,10 +7,14 @@ import { rainbow } from './walletConnectors/rainbow/rainbow';
 import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 
 export const getDefaultWallets = ({
-  apiConfig,
   appName,
   chains,
-}: WalletConfig): WalletList => {
+  rpcUrls,
+}: {
+  appName: string;
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
+}): WalletList => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
     window.ethereum &&
@@ -20,17 +25,17 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
-        rainbow({ apiConfig, chains }),
-        coinbase({ apiConfig, appName, chains }),
+        rainbow({ chains, rpcUrls }),
+        coinbase({ appName, chains, rpcUrls }),
         metaMask({
-          apiConfig,
           chains,
+          rpcUrls,
           shimDisconnect: true,
         }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
-        walletConnect({ apiConfig, chains }),
+        walletConnect({ chains, rpcUrls }),
       ],
     },
   ];

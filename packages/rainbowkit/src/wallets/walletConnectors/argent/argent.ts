@@ -1,16 +1,15 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface ArgentOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  chains: WalletConfig['chains'];
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
 }
 
-export const argent = ({ apiConfig, chains }: ArgentOptions): Wallet => ({
+export const argent = ({ chains, rpcUrls }: ArgentOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argent.svg')).default,
@@ -21,27 +20,14 @@ export const argent = ({ apiConfig, chains }: ArgentOptions): Wallet => ({
     ios: 'https://apps.apple.com/us/app/argent/id1358741926',
     qrCode: 'https://argent.link/app',
   },
-  createConnector: ({ chainId = chain.mainnet.id }) => {
-    const jsonRpcUrl = getJsonRpcUrl({
-      apiConfig,
-      chains,
-    });
+  createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: false,
         options: {
           qrcode: false,
-          ...(apiConfig?.infuraId
-            ? { infuraId: apiConfig?.infuraId }
-            : {
-                rpc: {
-                  [chainId]:
-                    typeof jsonRpcUrl === 'function'
-                      ? jsonRpcUrl({ chainId })
-                      : jsonRpcUrl,
-                },
-              }),
+          rpc: rpcUrls,
         },
       },
     });

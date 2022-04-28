@@ -1,45 +1,30 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface WalletConnectOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  chains: WalletConfig['chains'];
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
 }
 
 export const walletConnect = ({
-  apiConfig,
   chains,
+  rpcUrls,
 }: WalletConnectOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
   iconUrl: async () => (await import('./walletConnect.svg')).default,
   iconBackground: '#3b99fc',
-  createConnector: ({ chainId = chain.mainnet.id }) => {
+  createConnector: () => {
     const ios = isIOS();
-
-    const jsonRpcUrl = getJsonRpcUrl({
-      apiConfig,
-      chains,
-    });
 
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: ios,
-        ...(apiConfig?.infuraId
-          ? { infuraId: apiConfig.infuraId }
-          : {
-              rpc: {
-                [chainId]:
-                  typeof jsonRpcUrl === 'function'
-                    ? jsonRpcUrl({ chainId })
-                    : jsonRpcUrl,
-              },
-            }),
+        rpc: rpcUrls,
       },
     });
 

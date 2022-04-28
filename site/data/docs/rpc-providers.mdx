@@ -1,0 +1,116 @@
+---
+title: RPC Providers
+description: Customizing RPC providers
+---
+
+# RPC Providers
+
+## Customizing RPC providers
+
+RainbowKit has built-in RPC provider support so you don't have to worry about defining RPC URLs & a provider instance.
+
+RainbowKit exports `rpcProvider` that you can use to instantiate your RPC provider.
+
+#### Alchemy
+
+To use the built-in Alchemy RPC provider, you will need to pass through your **Alchemy ID** and your **`chains`**
+
+```tsx line=1,6-9,14,22
+import { rpcProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [chain.mainnet];
+
+const { provider, rpcUrls } = rpcProvider.alchemy(
+  process.env.ALCHEMY_ID,
+  { chains }
+);
+
+const wallets = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+  rpcUrls,
+});
+
+const connectors = connectorsForWallets(wallets);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```
+
+#### Infura
+
+To use the built-in Infura RPC provider, you will need to pass through your **Infura ID** and your **`chains`**
+
+```tsx line=1,6-9,14,22
+import { rpcProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [chain.mainnet];
+
+const { provider, rpcUrls } = rpcProvider.infura(
+  process.env.INFURA_ID,
+  { chains }
+);
+
+const wallets = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+  rpcUrls,
+});
+
+const connectors = connectorsForWallets(wallets);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```
+
+#### Custom
+
+To use a custom RPC provider, you will need to pass through a map of RPC URLs (`rpcUrls`) of the chains you want to support & a default chain ID (`defaultChainId`).
+
+```tsx line=1,9-17,22,30
+import { rpcProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const chains: Chain[] = [
+  chain.mainnet,
+  chain.ropsten,
+  chain.rinkeby
+];
+
+const { provider, rpcUrls } = rpcProvider.custom({
+  defaultChainId: 1,
+  rpcUrls: {
+    [chain.mainnet.id]: 'https://mainnet.example.com'
+    [chain.ropsten.id]: 'https://ropsten.example.com'
+    [chain.rinkeby.id]: 'https://rinkeby.example.com'
+  }
+});
+
+const wallets = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+  rpcUrls,
+});
+
+const connectors = connectorsForWallets(wallets);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```

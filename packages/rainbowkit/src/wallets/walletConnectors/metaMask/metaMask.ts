@@ -1,20 +1,19 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { chain } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface MetaMaskOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  chains: WalletConfig['chains'];
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
   shimDisconnect?: boolean;
 }
 
 export const metaMask = ({
-  apiConfig,
   chains,
+  rpcUrls,
   shimDisconnect,
 }: MetaMaskOptions): Wallet => {
   const isMetaMaskInjected =
@@ -34,27 +33,13 @@ export const metaMask = ({
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
-    createConnector: ({ chainId = chain.mainnet.id }) => {
-      const jsonRpcUrl = getJsonRpcUrl({
-        apiConfig,
-        chains,
-      });
-
+    createConnector: () => {
       const connector = shouldUseWalletConnect
         ? new WalletConnectConnector({
             chains,
             options: {
               qrcode: false,
-              ...(apiConfig?.infuraId
-                ? { infuraId: apiConfig?.infuraId }
-                : {
-                    rpc: {
-                      [chainId]:
-                        typeof jsonRpcUrl === 'function'
-                          ? jsonRpcUrl({ chainId })
-                          : jsonRpcUrl,
-                    },
-                  }),
+              rpc: rpcUrls,
             },
           })
         : new InjectedConnector({

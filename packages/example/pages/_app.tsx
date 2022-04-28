@@ -7,23 +7,14 @@ import {
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
+  rpcProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, WagmiProvider } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
-
-const isChainSupported = (chainId?: number) =>
-  chains.some(x => x.id === chainId);
-
-const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.AlchemyProvider(
-    isChainSupported(chainId) ? chainId : chain.mainnet.id,
-    alchemyId
-  );
 
 const chains: Chain[] = [
   chain.mainnet,
@@ -35,10 +26,15 @@ const chains: Chain[] = [
     : []),
 ];
 
+const { provider, rpcUrls, webSocketProvider } = rpcProvider.alchemy(
+  alchemyId,
+  { chains }
+);
+
 const wallets = getDefaultWallets({
-  apiConfig: { alchemyId },
   appName: 'RainbowKit demo',
   chains,
+  rpcUrls,
 });
 
 const connectors = connectorsForWallets([
@@ -47,12 +43,12 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       wallet.argent({
-        apiConfig: { alchemyId },
         chains,
+        rpcUrls,
       }),
       wallet.trust({
-        apiConfig: { alchemyId },
         chains,
+        rpcUrls,
       }),
     ],
   },
@@ -62,6 +58,7 @@ const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider,
+  webSocketProvider,
 });
 
 const themes = [

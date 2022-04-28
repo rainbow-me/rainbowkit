@@ -1,20 +1,20 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface CoinbaseOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  appName: WalletConfig['appName'];
-  chains: WalletConfig['chains'];
+  appName: string;
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
 }
 
 export const coinbase = ({
-  apiConfig,
   appName,
   chains,
+  rpcUrls,
 }: CoinbaseOptions): Wallet => {
   const isCoinbaseInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet;
@@ -31,13 +31,8 @@ export const coinbase = ({
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
     },
-    createConnector: ({ chainId }) => {
+    createConnector: ({ chainId = chains[0].id }) => {
       const ios = isIOS();
-
-      const jsonRpcUrl = getJsonRpcUrl({
-        apiConfig,
-        chains,
-      });
 
       const connector = isCoinbaseInjected
         ? new InjectedConnector({ chains })
@@ -46,10 +41,7 @@ export const coinbase = ({
             options: {
               appName,
               headlessMode: true,
-              jsonRpcUrl:
-                typeof jsonRpcUrl === 'function'
-                  ? jsonRpcUrl({ chainId })
-                  : jsonRpcUrl,
+              jsonRpcUrl: rpcUrls[chainId],
             },
           });
 

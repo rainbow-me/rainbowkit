@@ -20,8 +20,8 @@ const wallets: Wallets = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
-      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
+      wallet.rainbow({ chains, rpcUrls }),
+      wallet.walletConnect({ chains, rpcUrls }),
     ],
   },
 ];
@@ -68,8 +68,8 @@ const wallets: WalletList = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
-      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
+      wallet.metaMask({ chains, rpcUrls }),
+      wallet.walletConnect({ chains, rpcUrls }),
     ],
   },
 ];
@@ -84,18 +84,12 @@ const wallets: WalletList = [
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
-      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
+      wallet.metaMask({ chains, rpcUrls }),
+      wallet.rainbow({ chains, rpcUrls }),
       wallet.coinbase({
-        chains,
         appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
+        chains,
+        rpcUrls,
       }),
     ],
   },
@@ -117,24 +111,18 @@ const wallets: WalletList = [
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
-      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
+      wallet.rainbow({ chains, rpcUrls }),
+      wallet.metaMask({ chains, rpcUrls }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
+      wallet.walletConnect({ chains, rpcUrls }),
       wallet.coinbase({
-        chains,
         appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
+        chains,
+        rpcUrls,
       }),
     ],
   },
@@ -147,7 +135,7 @@ An "Injected Wallet" fallback is also provided if `window.ethereum` exists and h
 
 All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
 
-```tsx line=3-7,23-25
+```tsx line=3-7,21-23
 import { wallet, Wallets } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
@@ -160,22 +148,16 @@ const wallets: Wallets = [
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, apiConfig: { alchemyId } }),
-      wallet.walletConnect({ chains, apiConfig: { alchemyId } }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
+      wallet.rainbow({ chains, rpcUrls }),
+      wallet.walletConnect({ chains, rpcUrls }),
+      wallet.coinbase({ 
+        appName: 'My RainbowKit App', 
+        chains, 
+        rpcUrls 
       }),
-      wallet.metaMask({ chains, apiConfig: { alchemyId } }),
+      wallet.metaMask({ chains, rpcUrls }),
       ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, apiConfig: { alchemyId } })]
+        ? [wallet.injected({ chains, rpcUrls })]
         : []),
     ],
   },

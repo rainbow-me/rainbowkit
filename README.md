@@ -36,22 +36,16 @@ import {
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const alchemyId = process.env.ALCHEMY_ID;
+const chains: Chain[] = [chain.mainnet];
 
-const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.AlchemyProvider(chainId, alchemyId);
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrum,
-];
+const { provider, rpcUrls } = rpcProvider.alchemy(process.env.ALCHEMY_ID, {
+  chains,
+});
 
 const wallets = getDefaultWallets({
-  apiConfig: { alchemyId },
-  chains,
   appName: 'My RainbowKit App',
+  chains,
+  rpcUrls,
 });
 
 const connectors = connectorsForWallets(wallets);
@@ -150,6 +144,53 @@ const App = () => {
     </RainbowKitProvider>
   );
 };
+```
+
+### Choosing an RPC provider
+
+RainbowKit has built-in RPC provider support so you don't have to worry about defining RPC URLs & a provider instance.
+
+#### Alchemy
+
+```tsx
+import { rpcProvider } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, rpcUrls } = rpcProvider.alchemy(
+  process.env.ALCHEMY_ID,
+  { chains }
+);
+```
+
+#### Infura
+
+```tsx
+import { rpcProvider } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, rpcUrls } = rpcProvider.infura(
+  process.env.INFURA_ID,
+  { chains }
+);
+```
+
+#### Custom
+
+```tsx
+import { rpcProvider } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, rpcUrls } = rpcProvider.custom({
+  defaultChainId: 1,
+  rpcUrls: {
+    1: 'https://mainnet.example.com'
+    3: 'https://ropsten.example.com'
+    4: 'https://rinkeby.example.com'
+  }
+});
 ```
 
 #### Customizing the built-in themes
@@ -767,21 +808,21 @@ const wallets: WalletList = [
     groupName: 'Suggested',
     wallets: [
       wallet.rainbow({
-        apiConfig: { alchemyId },
         chains,
+        rpcUrls,
       }),
       wallet.walletConnect({
-        apiConfig: { alchemyId },
         chains,
+        rpcUrls,
       }),
       wallet.coinbase({
-        apiConfig: { alchemyId },
         appName: 'My RainbowKit App',
         chains,
+        rpcUrls,
       }),
       wallet.metaMask({
-        apiConfig: { alchemyId },
         chains,
+        rpcUrls,
       }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],

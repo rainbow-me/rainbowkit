@@ -1,16 +1,15 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { chain } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet, WalletConfig } from '../../Wallet';
-import { getJsonRpcUrl } from '../../getJsonRpcUrl';
+import { Wallet } from '../../Wallet';
 
 export interface TrustOptions {
-  apiConfig?: WalletConfig['apiConfig'];
-  chains: WalletConfig['chains'];
+  chains: Chain[];
+  rpcUrls: { [chainId: number]: string };
 }
 
-export const trust = ({ apiConfig, chains }: TrustOptions): Wallet => ({
+export const trust = ({ chains, rpcUrls }: TrustOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
   iconUrl: async () => (await import('./trust.svg')).default,
@@ -21,25 +20,12 @@ export const trust = ({ apiConfig, chains }: TrustOptions): Wallet => ({
     ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
     qrCode: 'https://link.trustwallet.com',
   },
-  createConnector: ({ chainId = chain.mainnet.id }) => {
-    const jsonRpcUrl = getJsonRpcUrl({
-      apiConfig,
-      chains,
-    });
+  createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: false,
-        ...(apiConfig?.infuraId
-          ? { infuraId: apiConfig?.infuraId }
-          : {
-              rpc: {
-                [chainId]:
-                  typeof jsonRpcUrl === 'function'
-                    ? jsonRpcUrl({ chainId })
-                    : jsonRpcUrl,
-              },
-            }),
+        rpc: rpcUrls,
       },
     });
     return {

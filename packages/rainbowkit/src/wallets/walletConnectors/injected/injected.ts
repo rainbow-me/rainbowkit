@@ -1,9 +1,10 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Wallet, WalletConfig } from '../../Wallet';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { Wallet } from '../../Wallet';
 
 export interface InjectedOptions {
-  chains: WalletConfig['chains'];
+  chains: Chain[];
   shimDisconnect?: boolean;
 }
 
