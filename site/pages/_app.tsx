@@ -32,11 +32,12 @@ function App({ Component, pageProps }: AppProps) {
 
     body.addEventListener('mousedown', tasteTheRainbow);
 
-    body.setAttribute('data-mode', isDocs ? 'light' : 'dark');
-    return () => {
-      body.removeEventListener('mousedown', tasteTheRainbow);
-    };
+    return () => body.removeEventListener('mousedown', tasteTheRainbow);
   }, []);
+
+  useEffect(() => {
+    document.body.setAttribute('data-mode', isDocs ? 'light' : 'dark');
+  }, [isDocs]);
 
   return (
     <>

@@ -8,9 +8,11 @@ type TitleAndMetaTagsProps = {
   pathname?: string;
   title?: string;
   url?: string;
+  color?: string;
 };
 
 export function TitleAndMetaTags({
+  color = 'white',
   description = 'The best way to connect a wallet 🌈',
   image,
   pathname,
@@ -37,6 +39,8 @@ export function TitleAndMetaTags({
       <meta content="summary_large_image" name="twitter:card" />
 
       <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+      <meta content={color} name="theme-color" />
     </Head>
   );
 }
