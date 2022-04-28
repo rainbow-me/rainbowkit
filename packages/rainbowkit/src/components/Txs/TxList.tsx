@@ -20,9 +20,9 @@ interface TxListProps {
 export function TxList({ accountData }: TxListProps) {
   const recentTransactions = useRecentTransactions();
   const clearRecentTransactions = useClearRecentTransactions();
-  const { activeChain: chain } = useNetwork();
+  const { activeChain } = useNetwork();
   const address = accountData?.address;
-  const explorerLink = chainToExplorerUrl(chain);
+  const explorerLink = chainToExplorerUrl(activeChain);
   const visibleTxs = recentTransactions.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs.length > 0;
   const mobile = isMobile();
