@@ -165,9 +165,15 @@ The built-in theme functions also accept an options object, allowing you to sele
   <tbody>
     <tr>
       <td><code>accentColor</code></td>
-      <td><code>"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"</code></td>
-      <td><code>"blue"</code></td>
-      <td>The background/text color of various interactive elements</td>
+      <td><code>string</code></td>
+      <td><code>"#0E76FD"</code></td>
+      <td>The background/text color of various interactive elements.</td>
+    </tr>
+    <tr>
+      <td><code>accentColorForeground</code></td>
+      <td><code>string</code></td>
+      <td><code>"white"</code></td>
+      <td>The color used for foreground elements rendered on top of the accent color.</td>
     </tr>
     <tr>
       <td><code>borderRadius</code></td>
@@ -184,7 +190,7 @@ The built-in theme functions also accept an options object, allowing you to sele
   </tbody>
 </table>
 
-For example, to customize the dark theme with a `purple` accent color and a `medium` border radius scale:
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -193,12 +199,31 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        accentColor: 'purple',
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
         borderRadius: 'medium',
       })}
       {...etc}
     >
       {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+    >
+      {/* Your App */}
     </RainbowKitProvider>
   );
 };
@@ -637,15 +662,12 @@ While the built-in themes provide some level of customization, the `Theme` type 
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
-  borders: {
-    modalBorderWidth: '...',
-  },
   colors: {
     accentColor: '...',
+    accentColorForeground: '...',
     actionButtonBorder: '...',
     actionButtonBorderMobile: '...',
     actionButtonSecondaryBackground: '...',
-    actionButtonText: '...',
     closeButton: '...',
     closeButtonBackground: '...',
     connectButtonBackground: '...',
@@ -778,12 +800,136 @@ const wallets: WalletList = [
           chain.mainnet.rpcUrls[0],
       }),
       wallet.metaMask({ chains, infuraId }),
-      ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, infuraId })]
-        : []),
+      ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
 ];
+```
+
+### Built-in wallets
+
+The following wallets are provided via the `wallet` object (in alphabetical order).
+
+- [Argent](#argent)
+- [Coinbase Wallet](#coinbase-wallet)
+- [Injected Wallet](#injected-wallet)
+- [MetaMask](#metamask)
+- [Rainbow](#rainbow)
+- [Trust Wallet](#trust-wallet)
+- [WalletConnect](#walletconnect)
+
+#### Argent
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.argent(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Coinbase Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.coinbase(options: {
+  appName: string;
+  chains: Chain[];
+  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+});
+```
+
+#### Injected Wallet
+
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.injected(options: {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+});
+```
+
+This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
+
+```tsx
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: WalletList = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+      wallet.metaMask({ chains, infuraId }),
+      ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
+    ],
+  },
+];
+```
+
+#### MetaMask
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.metaMask(options: {
+  chains: Chain[];
+  infuraId?: string;
+  shimDisconnect?: boolean;
+});
+```
+
+#### Rainbow
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.rainbow(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Trust Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.trust(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### WalletConnect
+
+This is a fallback wallet option designed for other WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.walletConnect(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
 ```
 
 ### Creating custom wallets
@@ -872,9 +1018,9 @@ The following properties are defined on the return value of the `createConnector
   </tbody>
 </table>
 
-### Customizing the “Learn more” link
+### Customizing your App's Info
 
-By default, the introductory “Learn more” link within the “What is a wallet?” section points to https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually, but you can override this via the `learnMoreUrl` prop on `RainbowKitProvider`.
+You can pass your app's info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your App's name (`appName`) and the link where the "Learn More" button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -882,7 +1028,10 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 const App = () => {
   return (
     <RainbowKitProvider
-      learnMoreUrl="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
       {...etc}
     >
       {/* ... */}
@@ -890,6 +1039,28 @@ const App = () => {
   );
 };
 ```
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>learnMoreUrl?</code></td>
+      <td><code>string | undefined</code></td>
+      <td>Introductory “Learn more” link within the “What is a wallet?” button on the connection modal. Defaults to `https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually`.</td>
+    </tr>
+    <tr>
+      <td><code>appName?</code></td>
+      <td><code>string | undefined</code></td>
+      <td>Name of your app. Will be displayed in certain places in the RainbowKit UI to refer to your site. Defaults to `undefined`, if left this way we will refer to your site as `"Your App"`.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Enable cool mode
 

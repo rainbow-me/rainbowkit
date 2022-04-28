@@ -11,12 +11,12 @@ description: Customizing the wallet list
 
 You can use the `wallet` object and the `Wallet` TypeScript type to build your own list of wallets. This way you have full control over which wallets to display, and in which order.
 
-For example, only show Rainbow and WalletConnect.
+For example, you can choose to only show Rainbow and WalletConnect.
 
 ```tsx
-import { wallet, Wallets } from '@rainbow-me/rainbowkit';
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
 
-const wallets: Wallets = [
+const wallets: WalletList = [
   {
     groupName: 'Recommended',
     wallets: [
@@ -30,9 +30,9 @@ const wallets: Wallets = [
 You can then use your `wallets` object to create the neccessary connectors by using the `connectorsForWallets` function.
 
 ```tsx line=5
-import { wallet, Wallets, __connectorsForWallets__ } from '@rainbow-me/rainbowkit';
+import { wallet, WalletList, __connectorsForWallets__ } from '@rainbow-me/rainbowkit';
 
-const wallets: Wallets = [...];
+const wallets: WalletList = [...];
 
 const connectors = connectorsForWallets(wallets);
 ```
@@ -45,12 +45,132 @@ import { WagmiProvider, chain } from 'wagmi';
 const connectors = connectorsForWallets(wallets);
 
 const App = () => (
-  <RainbowKitProvider>
-    <WagmiProvider connectors={connectors}>
+  <WagmiProvider connectors={connectors}>
+    <RainbowKitProvider>
       {/* Your App */}
-    </WagmiProvider>
-  </RainbowKitProvider>
+    </RainbowKitProvider>
+  </WagmiProvider>
 );
+```
+
+### Built-in wallets
+
+The following wallets are provided via the `wallet` object (in alphabetical order).
+
+#### Argent
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.argent(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Coinbase Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.coinbase(options: {
+  appName: string;
+  chains: Chain[];
+  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+});
+```
+
+#### Injected Wallet
+
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.injected(options: {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+});
+```
+
+This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
+
+```tsx line=3-7,23-25
+import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+
+const needsInjectedWalletFallback =
+  typeof window !== 'undefined' &&
+  window.ethereum &&
+  !window.ethereum.isMetaMask &&
+  !window.ethereum.isCoinbaseWallet;
+
+const wallets: WalletList = [
+  {
+    groupName: 'Suggested',
+    wallets: [
+      wallet.rainbow({ chains, infuraId }),
+      wallet.walletConnect({ chains, infuraId }),
+      wallet.coinbase({
+        chains,
+        appName: 'My RainbowKit App',
+        jsonRpcUrl: ({ chainId }) =>
+          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
+          chain.mainnet.rpcUrls[0],
+      }),
+      wallet.metaMask({ chains, infuraId }),
+      ...(needsInjectedWalletFallback
+        ? [wallet.injected({ chains })]
+        : []),
+    ],
+  },
+];
+```
+
+#### MetaMask
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.metaMask(options: {
+  chains: Chain[];
+  infuraId?: string;
+  shimDisconnect?: boolean;
+});
+```
+
+#### Rainbow
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.rainbow(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### Trust Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.trust(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
+#### WalletConnect
+
+This is a fallback wallet option designed for other WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.walletConnect(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
 ```
 
 ### Examples
@@ -128,43 +248,6 @@ const wallets: WalletList = [
           chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
           chain.mainnet.rpcUrls[0],
       }),
-    ],
-  },
-];
-```
-
-#### Injected fallback
-
-An "Injected Wallet" fallback is also provided if `window.ethereum` exists and hasn't been provided by another wallet.
-
-All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
-
-```tsx line=3-7,23-25
-import { wallet, Wallets } from '@rainbow-me/rainbowkit';
-
-const needsInjectedWalletFallback =
-  typeof window !== 'undefined' &&
-  window.ethereum &&
-  !window.ethereum.isMetaMask &&
-  !window.ethereum.isCoinbaseWallet;
-
-const wallets: Wallets = [
-  {
-    groupName: 'Suggested',
-    wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) =>
-          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-          chain.mainnet.rpcUrls[0],
-      }),
-      wallet.metaMask({ chains, infuraId }),
-      ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains, infuraId })]
-        : []),
     ],
   },
 ];

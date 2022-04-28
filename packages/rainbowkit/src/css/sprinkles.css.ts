@@ -13,10 +13,10 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
+    accentColorForeground: '',
     actionButtonBorder: '',
     actionButtonBorderMobile: '',
     actionButtonSecondaryBackground: '',
-    actionButtonText: '',
     closeButton: '',
     closeButtonBackground: '',
     connectButtonBackground: '',
@@ -59,9 +59,6 @@ const themeContractValues = {
     selectedOption: '',
     selectedWallet: '',
   },
-  borders: {
-    modalBorderWidth: '',
-  },
 };
 
 export type ThemeVars = typeof themeContractValues;
@@ -72,6 +69,7 @@ export const themeVars = createGlobalThemeContract(
 );
 
 const spacing = {
+  '-1': '-1px',
   '0': '0',
   '1': '1px',
   '2': '2px',
@@ -178,7 +176,6 @@ const unresponsiveProperties = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
-      ...themeVars.borders,
       '0': '0px',
       '1': '1px',
       '2': '2px',

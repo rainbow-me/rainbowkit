@@ -140,7 +140,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
           </Box>
 
-          <Box background="generalBorder" height="1" marginBottom="32" />
+          <Box
+            background="generalBorder"
+            height="1"
+            marginBottom="32"
+            marginTop="-1"
+          />
 
           <Box
             alignItems="center"

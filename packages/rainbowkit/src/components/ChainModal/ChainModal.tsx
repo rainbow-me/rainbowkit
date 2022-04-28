@@ -1,4 +1,10 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -7,15 +13,15 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { MenuButton } from '../MenuButton/MenuButton';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
-
 export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
   networkData: ReturnType<typeof useNetwork>[0]['data'];
   networkError: ReturnType<typeof useNetwork>[0]['error'];
-  onSwitchNetwork?: (chainId: number) => unknown;
+  onSwitchNetwork?: (chainId: number) => unknown | undefined;
 }
 
 export function ChainModal({
@@ -53,6 +59,8 @@ export function ChainModal({
     }
   }, [networkError, stopSwitching]);
 
+  const { appName } = useContext(AppContext);
+
   if (!networkData || !networkData.chain) {
     return null;
   }
@@ -81,7 +89,7 @@ export function ChainModal({
             <CloseButton onClose={onClose} />
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
-            {onSwitchNetwork &&
+            {onSwitchNetwork ? (
               networkData.chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === networkData.chain?.id;
                 const switching = chain.id === switchingToChain;
@@ -139,7 +147,7 @@ export function ChainModal({
                               marginRight="6"
                             >
                               <Text
-                                color="actionButtonText"
+                                color="accentColorForeground"
                                 size="14"
                                 weight="medium"
                               >
@@ -188,7 +196,21 @@ export function ChainModal({
                     )}
                   </Fragment>
                 );
-              })}
+              })
+            ) : (
+              <Box
+                background="generalBorder"
+                borderRadius="menuButton"
+                paddingX="18"
+                paddingY="12"
+              >
+                <Text color="modalText" size="14" weight="medium">
+                  Your wallet does not support switching networks from{' '}
+                  {appName ?? 'this app'}. Try switching networks from within
+                  your wallet instead.
+                </Text>
+              </Box>
+            )}
           </Box>
         </Box>
       </DialogContent>
