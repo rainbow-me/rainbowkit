@@ -1,8 +1,4 @@
-import {
-  Chain,
-  connectorsForWallets,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import React from 'react';
 import { chain, Provider as WagmiProvider } from 'wagmi';
@@ -25,7 +21,7 @@ export const chains: Chain[] = [
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 
-const wallets = getDefaultWallets({
+const { connectors: defaultConnectors } = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
   infuraId,
@@ -35,8 +31,6 @@ const wallets = getDefaultWallets({
       chain.mainnet.rpcUrls[0]
     }/${infuraId}`,
 });
-
-const defaultConnectors = connectorsForWallets(wallets);
 
 export function Provider({ children, connectors = defaultConnectors }) {
   return (

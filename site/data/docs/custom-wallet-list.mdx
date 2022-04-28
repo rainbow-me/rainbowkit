@@ -9,14 +9,14 @@ description: Customizing the wallet list
 
 > Note: This API is unstable and likely to change in the near future. We recommend avoiding changes to the wallet list for now.
 
-You can use the `wallet` object and the `Wallet` TypeScript type to build your own list of wallets. This way you have full control over which wallets to display, and in which order.
+You can use the `wallet` object and the `connectorsForWallets` function to build your own list of wallets and generate the necessary connectors. This way you have full control over which wallets to display, and in which order.
 
 For example, you can choose to only show Rainbow and WalletConnect.
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
@@ -24,25 +24,15 @@ const wallets: WalletList = [
       wallet.walletConnect({ chains, infuraId }),
     ],
   },
-];
+]);
 ```
 
-You can then use your `wallets` object to create the neccessary connectors by using the `connectorsForWallets` function.
-
-```tsx line=5
-import { wallet, WalletList, __connectorsForWallets__ } from '@rainbow-me/rainbowkit';
-
-const wallets: WalletList = [...];
-
-const connectors = connectorsForWallets(wallets);
-```
-
-Finally, you can now pass your custom wallets to `WagmiProvider`'s `connectors` prop.
+You can then pass your connectors to `WagmiProvider`'s `connectors` prop.
 
 ```tsx line=1,4-11
-import { WagmiProvider, chain } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 ...
-const connectors = connectorsForWallets(wallets);
+const connectors = connectorsForWallets([ /* ... */ ]);
 
 const App = () => (
   <WagmiProvider connectors={connectors}>
@@ -96,7 +86,7 @@ wallet.injected(options: {
 This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
 
 ```tsx line=3-7,23-25
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
   typeof window !== 'undefined' &&
@@ -104,7 +94,7 @@ const needsInjectedWalletFallback =
   !window.ethereum.isMetaMask &&
   !window.ethereum.isCoinbaseWallet;
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
@@ -123,7 +113,7 @@ const wallets: WalletList = [
         : []),
     ],
   },
-];
+]);
 ```
 
 #### MetaMask
@@ -182,9 +172,9 @@ Here are a few examples of displaying different wallets, in different order.
 Show MetaMask and WalletConnect.
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
@@ -192,15 +182,15 @@ const wallets: WalletList = [
       wallet.walletConnect({ chains, infuraId }),
     ],
   },
-];
+]);
 ```
 
 Show MetaMask, Rainbow and Coinbase.
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
@@ -215,7 +205,7 @@ const wallets: WalletList = [
       }),
     ],
   },
-];
+]);
 ```
 
 > Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
@@ -227,9 +217,9 @@ You can use the `groupName` key to name different wallet groups. This is useful 
 Recommend Rainbow and MetaMask, but also offer WalletConnect and Coinbase.
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
@@ -250,5 +240,5 @@ const wallets: WalletList = [
       }),
     ],
   },
-];
+]);
 ```

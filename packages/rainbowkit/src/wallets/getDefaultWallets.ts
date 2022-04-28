@@ -1,5 +1,6 @@
 import { Chain as WagmiChain } from 'wagmi';
 import { WalletList } from './Wallet';
+import { connectorsForWallets } from './connectorsForWallets';
 import {
   coinbase,
   CoinbaseOptions,
@@ -19,7 +20,10 @@ export const getDefaultWallets = ({
   infuraId?: string;
   appName: CoinbaseOptions['appName'];
   jsonRpcUrl: CoinbaseOptions['jsonRpcUrl'];
-}): WalletList => {
+}): {
+  connectors: ReturnType<typeof connectorsForWallets>;
+  wallets: WalletList;
+} => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -29,7 +33,7 @@ export const getDefaultWallets = ({
     // @ts-expect-error
     !window.ethereum.isCoinbaseWallet;
 
-  return [
+  const wallets: WalletList = [
     {
       groupName: 'Popular',
       wallets: [
@@ -43,4 +47,9 @@ export const getDefaultWallets = ({
       ],
     },
   ];
+
+  return {
+    connectors: connectorsForWallets(wallets),
+    wallets,
+  };
 };

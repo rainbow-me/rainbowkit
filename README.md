@@ -31,7 +31,6 @@ import {
   RainbowKitProvider,
   Chain,
   getDefaultWallets,
-  connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
@@ -48,7 +47,7 @@ const chains: Chain[] = [
   { ...chain.arbitrumOne, name: 'Arbitrum' },
 ];
 
-const wallets = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   chains,
   infuraId,
   appName: 'My RainbowKit App',
@@ -56,8 +55,6 @@ const wallets = getDefaultWallets({
     chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
     chain.mainnet.rpcUrls[0],
 });
-
-const connectors = connectorsForWallets(wallets);
 
 const App = () => {
   return (
@@ -778,7 +775,7 @@ An "Injected Wallet" fallback is also provided if `window.ethereum` exists and h
 All built-in wallets are available via the `wallet` object which allows you to rearrange/omit wallets as needed.
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
   typeof window !== 'undefined' &&
@@ -786,7 +783,7 @@ const needsInjectedWalletFallback =
   !window.ethereum.isMetaMask &&
   !window.ethereum.isCoinbaseWallet;
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
@@ -803,7 +800,7 @@ const wallets: WalletList = [
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
-];
+]);
 ```
 
 ### Built-in wallets
@@ -857,7 +854,7 @@ wallet.injected(options: {
 This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
 
 ```tsx
-import { wallet, WalletList } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 
 const needsInjectedWalletFallback =
   typeof window !== 'undefined' &&
@@ -865,7 +862,7 @@ const needsInjectedWalletFallback =
   !window.ethereum.isMetaMask &&
   !window.ethereum.isCoinbaseWallet;
 
-const wallets: WalletList = [
+const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
@@ -882,7 +879,7 @@ const wallets: WalletList = [
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
-];
+]);
 ```
 
 #### MetaMask
