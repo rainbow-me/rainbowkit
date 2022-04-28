@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import { calc } from '@vanilla-extract/css-utils';
 import {
   ConditionalValue,
   createMapValueFn,
@@ -20,6 +21,21 @@ const flexAlignment = ['flex-start', 'center', 'flex-end', 'stretch'] as const;
 
 const flexibility = [0, 1, 2, 3, 4] as const;
 
+const negativeSpace = {
+  '-px': `${calc(vars.space.px).negate()}`,
+  '-1': `${calc(vars.space['1']).negate()}`,
+  '-2': `${calc(vars.space['2']).negate()}`,
+  '-3': `${calc(vars.space['3']).negate()}`,
+  '-4': `${calc(vars.space['4']).negate()}`,
+  '-5': `${calc(vars.space['5']).negate()}`,
+  '-6': `${calc(vars.space['6']).negate()}`,
+  '-7': `${calc(vars.space['7']).negate()}`,
+  '-8': `${calc(vars.space['8']).negate()}`,
+  '-9': `${calc(vars.space['9']).negate()}`,
+  '-10': `${calc(vars.space['10']).negate()}`,
+  '-11': `${calc(vars.space['11']).negate()}`,
+};
+
 const extendedSpace = {
   '1/4': '25%',
   '1/3': '33.333333%',
@@ -27,6 +43,7 @@ const extendedSpace = {
   '2/3': '66.666667%',
   '3/4': '75%',
   'full': '100%',
+  'auto': 'auto',
   'screenSm': breakpoints.sm,
   'screenMd': breakpoints.md,
   'screenLg': breakpoints.lg,
@@ -57,11 +74,12 @@ const responsiveProperties = defineProperties({
     borderBottomRightRadius: vars.radii,
     borderTopLeftRadius: vars.radii,
     borderTopRightRadius: vars.radii,
-    bottom: vars.space,
+    bottom: { ...vars.space, ...negativeSpace },
     display: [
       'block',
       'flex',
       'grid',
+      'inline',
       'inline-flex',
       'inline-block',
       'none',
@@ -87,14 +105,14 @@ const responsiveProperties = defineProperties({
     },
     gap: vars.space,
     height: vars.space,
-    inset: vars.space,
+    inset: { ...vars.space, ...negativeSpace },
     justifyContent: [...flexAlignment, 'space-around', 'space-between'],
     justifySelf: flexAlignment,
-    left: vars.space,
-    marginBottom: margin,
-    marginLeft: margin,
-    marginRight: margin,
-    marginTop: margin,
+    left: { ...vars.space, ...negativeSpace },
+    marginBottom: { ...margin, ...negativeSpace },
+    marginLeft: { ...margin, ...negativeSpace },
+    marginRight: { ...margin, ...negativeSpace },
+    marginTop: { ...margin, ...negativeSpace },
     maxHeight: vars.space,
     maxWidth: {
       ...vars.space,
@@ -109,9 +127,9 @@ const responsiveProperties = defineProperties({
     paddingRight: vars.space,
     paddingTop: vars.space,
     position: ['absolute', 'fixed', 'relative', 'sticky'],
-    right: vars.space,
+    right: { ...vars.space, ...negativeSpace },
     textAlign: ['center', 'left', 'right'],
-    top: vars.space,
+    top: { ...vars.space, ...negativeSpace },
     width: {
       ...vars.space,
       ...extendedSpace,

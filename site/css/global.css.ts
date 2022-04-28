@@ -74,17 +74,6 @@ globalStyle('button', {
   background: 'transparent',
 });
 
-globalStyle('li:before', {
-  backgroundColor: vars.colors.fill,
-  borderRadius: vars.radii[1],
-  content: '',
-  display: 'inline-block',
-  height: vars.space[1],
-  marginRight: vars.space[4],
-  verticalAlign: 'middle',
-  width: vars.space[4],
-});
-
 globalStyle('svg', {
   verticalAlign: 'middle',
 });

@@ -7,8 +7,11 @@ import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { chains, Provider } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
+import NextLink from 'next/link';
 import React from 'react';
 import { header, logo, row } from './Header.css';
+
+const RAINBOWKIT_VERSION = '0.0.2';
 
 export function Header({
   docsMobileMenuRef,
@@ -19,13 +22,15 @@ export function Header({
   return (
     <Box className={header} {...props}>
       <Box className={row}>
-        <Box
-          alt="Rainbow logo"
-          as="img"
-          className={logo}
-          marginRight="4"
-          src="/rainbow-avatar.png"
-        />
+        <NextLink href="/">
+          <Box
+            alt="Rainbow logo"
+            as="img"
+            className={logo}
+            marginRight="4"
+            src="/rainbow.svg"
+          />
+        </NextLink>
 
         <Box
           // eslint-disable-next-line sort-keys-fix/sort-keys-fix
@@ -39,7 +44,7 @@ export function Header({
           <Text style={{ lineHeight: 1 }} variant="title3" weight="bold">
             RainbowKit
           </Text>
-          <Badge>0.0.2</Badge>
+          <Badge>{RAINBOWKIT_VERSION}</Badge>
         </Box>
 
         <Box style={{ marginLeft: 'auto' }}>
