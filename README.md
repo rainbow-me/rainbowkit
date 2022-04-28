@@ -1018,9 +1018,9 @@ The following properties are defined on the return value of the `createConnector
   </tbody>
 </table>
 
-### Customizing the “Learn more” link
+### Customizing your App's Info
 
-By default, the introductory “Learn more” link within the “What is a wallet?” section points to https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually, but you can override this via the `learnMoreUrl` prop on `RainbowKitProvider`.
+You can pass your app's info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your App's name (`appName`) and the link where the "Learn More" button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -1028,7 +1028,10 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 const App = () => {
   return (
     <RainbowKitProvider
-      learnMoreUrl="https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually"
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
       {...etc}
     >
       {/* ... */}
@@ -1036,6 +1039,28 @@ const App = () => {
   );
 };
 ```
+
+<table>
+  <thead>
+    <tr>
+    <th>Property</th>
+    <th width="150">Type</th>
+    <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>learnMoreUrl?</code></td>
+      <td><code>string | undefined</code></td>
+      <td>Introductory “Learn more” link within the “What is a wallet?” button on the connection modal. Defaults to `https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually`.</td>
+    </tr>
+    <tr>
+      <td><code>appName?</code></td>
+      <td><code>string | undefined</code></td>
+      <td>Name of your app. Will be displayed in certain places in the RainbowKit UI to refer to your site. Defaults to `undefined`, if left this way we will refer to your site as `"Your App"`.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Enable cool mode
 

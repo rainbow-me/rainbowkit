@@ -1,4 +1,10 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useConnect, useNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -7,9 +13,9 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { MenuButton } from '../MenuButton/MenuButton';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
-
 export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
@@ -52,6 +58,8 @@ export function ChainModal({
       stopSwitching();
     }
   }, [networkError, stopSwitching]);
+
+  const { appName } = useContext(AppContext);
 
   if (!networkData || !networkData.chain) {
     return null;
@@ -190,9 +198,18 @@ export function ChainModal({
                 );
               })
             ) : (
-              <Text color="modalText" size="14" weight="medium">
-                Your wallet does not support switching networks.
-              </Text>
+              <Box
+                background="generalBorder"
+                borderRadius="menuButton"
+                paddingX="18"
+                paddingY="12"
+              >
+                <Text color="modalText" size="14" weight="medium">
+                  Your wallet does not support switching networks from{' '}
+                  {appName ?? 'this app'}. Try switching networks from within
+                  your wallet instead.
+                </Text>
+              </Box>
             )}
           </Box>
         </Box>

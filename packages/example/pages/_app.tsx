@@ -46,6 +46,10 @@ const wallets = getDefaultWallets({
     }/${infuraId}`,
 });
 
+const demoAppInfo = {
+  appName: 'Rainbowkit Demo',
+};
+
 const connectors = connectorsForWallets([
   ...wallets,
   {
@@ -101,6 +105,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
       <RainbowKitProvider
+        appInfo={demoAppInfo}
         chains={chains}
         coolMode={coolModeEnabled}
         showRecentTransactions={showRecentTransactions}

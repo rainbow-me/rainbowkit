@@ -97,7 +97,7 @@ export function TxList({ accountData }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  {appName} transactions will appear here...
+                  {appName ?? 'Your'} transactions will appear here...
                 </Text>
               </Box>
               {mobile && (
