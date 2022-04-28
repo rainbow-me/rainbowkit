@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-If you want, You can pass in `accentColor`, `borderRadius` and `fontStack` to customize them.
+If you want, You can pass in `accentColor`, `accentColorForeground`, `borderRadius` and `fontStack` to customize them.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -35,7 +35,8 @@ import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 export const App = () => (
   <RainbowKitProvider
     theme={darkTheme({
-      __accentColor__: 'purple',
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
       __borderRadius__: 'small',
       __fontStack__: 'system',
     })}
@@ -54,11 +55,18 @@ The built-in theme functions also accept an options object, allowing you to sele
     {
       name: 'accentColor',
       required: false,
-      default: 'blue',
-      type: '"blue" | "green" | "orange" | "pink" | "purple" | "red" | "yellow"',
-      typeSimple: 'enum',
+      default: '"#0E76FD"',
+      type: 'string',
       description:
-        'The background/text color of various interactive elements',
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
     },
     {
       name: 'borderRadius',
@@ -79,6 +87,45 @@ The built-in theme functions also accept an options object, allowing you to sele
     },
   ]}
 />
+
+For example, to customize the dark theme with a purple accent color and a `medium` border radius scale:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Each theme also provides several accent color presets (`blue`, `green`, `orange`, `pink`, `purple`, `red`) that can be spread into the options object. For example, to use the `pink` accent color preset:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
 
 ### Examples
 
@@ -117,7 +164,7 @@ export const App = () => (
 
 Here are a few different ways you can use the `accentColor` config.
 
-Set the accent color to `purple`.
+Set the accent color to a custom purple value.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -126,7 +173,8 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        accentColor: 'purple',
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
       })}
     >
       {/* Your App */}
@@ -135,7 +183,7 @@ const App = () => {
 };
 ```
 
-Set the accent color to `green`.
+Set the accent color to the built-in `green` preset.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -144,7 +192,7 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        accentColor: 'green',
+        ...darkTheme.accentColors.green,
       })}
     >
       {/* Your App */}
@@ -152,8 +200,6 @@ const App = () => {
   );
 };
 ```
-
-> Reminder: the available accent colors are: `blue` (default), `green`, `orange`, `pink`, `purple`, `red` and `yellow`.
 
 #### Border radius
 
@@ -224,7 +270,7 @@ const App = () => {
 Here are a few different ways you can use different themes, with `accentColor`, `borderRadius` and `fontStack` props together.
 
 - Use the `lightTheme` theme
-- Set the accent color to `orange`
+- Set the accent color to a custom purple value
 - Set the border radius to `medium`
 - Set the font stack to `system`
 
@@ -235,7 +281,8 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={lightTheme({
-        accentColor: 'orange',
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
         borderRadius: 'medium',
         fontStack: 'system',
       })}
@@ -247,7 +294,7 @@ const App = () => {
 ```
 
 - Use the `midnightTheme` theme
-- Set the accent color to `pink`
+- Set the accent color to the built-in `pink` preset.
 - Set the border radius to `small`
 - Set the font stack to `system`
 
@@ -261,7 +308,7 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={midnightTheme({
-        accentColor: 'pink',
+        ...midnightTheme.accentColors.pink,
         borderRadius: 'small',
         fontStack: 'system',
       })}

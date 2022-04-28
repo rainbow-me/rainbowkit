@@ -26,7 +26,6 @@ import {
   RainbowKitProvider,
   Chain,
   getDefaultWallets,
-  connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
@@ -52,7 +51,7 @@ const chains: Chain[] = [
   chain.arbitrumOne,
 ];
 
-const wallets = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   chains,
   infuraId,
   appName: 'My RainbowKit App',
@@ -64,8 +63,6 @@ const wallets = getDefaultWallets({
       : rpcUrls.default[0];
   },
 });
-
-const connectors = connectorsForWallets(wallets);
 ```
 
 > We recommend using custom providers such as `InfuraProvider` and `AlchemyProvider`. For help generating provider ID's, see the [Infura docs](https://docs.infura.io/infura/create-a-project) and the [Alchemy docs](https://docs.alchemy.com/alchemy/introduction/getting-started).
@@ -74,10 +71,7 @@ const connectors = connectorsForWallets(wallets);
 
 Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
 
-```tsx line=3-99
-...
-const connectors = connectorsForWallets(wallets);
-
+```tsx
 const App = () => {
   return (
     <WagmiProvider

@@ -1,8 +1,4 @@
-import {
-  Chain,
-  connectorsForWallets,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
@@ -25,7 +21,7 @@ export const chains: Chain[] = [
   chain.arbitrum,
 ];
 
-const wallets = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
   infuraId,
@@ -37,8 +33,6 @@ const wallets = getDefaultWallets({
       : rpcUrls.default[0];
   },
 });
-
-const connectors = connectorsForWallets(wallets);
 
 const wagmiClient = createClient({
   autoConnect: true,

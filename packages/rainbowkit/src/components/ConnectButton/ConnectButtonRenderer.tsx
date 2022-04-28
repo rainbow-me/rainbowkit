@@ -30,6 +30,7 @@ import {
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { formatAddress } from './formatAddress';
+import { formatENS } from './formatENS';
 
 const useBooleanState = (initialValue: boolean) => {
   const [value, setValue] = useState(initialValue);
@@ -77,9 +78,11 @@ export function ConnectButtonRenderer({
 
   const { data: accountData } = useAccount();
 
-  const { data: ensAvatar } = useEnsAvatar();
+  const { data: ensAvatar } = useEnsAvatar({
+    addressOrName: accountData?.address,
+  });
 
-  const { data: ensName } = useEnsName();
+  const { data: ensName } = useEnsName({ address: accountData?.address });
 
   const { data: balanceData } = useBalance({
     addressOrName: accountData?.address,
@@ -168,7 +171,9 @@ export function ConnectButtonRenderer({
               balanceFormatted: balanceData?.formatted,
               balanceSymbol: balanceData?.symbol,
               displayBalance,
-              displayName: ensName ?? formatAddress(accountData.address),
+              displayName: ensName
+                ? formatENS(ensName)
+                : formatAddress(accountData.address),
               ensAvatar: ensAvatar ?? undefined,
               ensName: ensName ?? undefined,
               hasPendingTransactions,

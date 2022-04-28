@@ -175,7 +175,7 @@ export const variants = recipe({
     }),
     style({
       willChange: 'transform',
-      fontWeight: 600,
+      fontWeight: 700,
       lineHeight: 1,
       selectors: {
         '&:focus': {

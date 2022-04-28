@@ -14,7 +14,7 @@ export const badge = style([
   style({
     backgroundImage: `radial-gradient(circle at 8px 4px, ${vars.colors.backgroundElevated} 0%, ${vars.colors.fillElevated} 100%)`,
     fontWeight: 600,
-    height: 18,
+    height: 22,
     lineHeight: 1,
   }),
 ]);
