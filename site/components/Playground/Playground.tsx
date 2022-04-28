@@ -178,8 +178,8 @@ export function Playground() {
           >
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Mode
@@ -214,8 +214,8 @@ export function Playground() {
             </div>
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Accent
@@ -245,8 +245,8 @@ export function Playground() {
             </div>
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Radius
