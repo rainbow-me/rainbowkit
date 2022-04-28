@@ -19,8 +19,12 @@ import React, { Ref, useState } from 'react';
 
 export default function Home() {
   return (
-    <>
-      <TitleAndMetaTags />
+    <Box
+      backgroundColor="background"
+      data-mode="dark"
+      style={{ minHeight: '100vh', overflow: 'hidden' }}
+    >
+      <TitleAndMetaTags color="black" />
       <Header />
       <Wrapper>
         <Box marginTop="11" textAlign="center">
@@ -330,7 +334,7 @@ export default function Home() {
           </Box>
         </Wrapper>
       </Box>
-    </>
+    </Box>
   );
 }
 
