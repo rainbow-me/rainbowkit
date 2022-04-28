@@ -1,4 +1,5 @@
 import React, { ElementType, ReactNode, useEffect } from 'react';
+import { isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -158,7 +159,7 @@ export function ConnectDetail({
     showWalletConnectModal,
   } = wallet;
   const desktopDeeplink = wallet.desktop?.getUri?.();
-
+  const safari = isSafari();
   let readyMsg;
   if (ready) {
     readyMsg = 'Waiting for connection';
@@ -188,9 +189,11 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        ...(desktopDeeplink
-          ? { href: desktopDeeplink }
-          : { onClick: () => reconnect(wallet) }),
+        onClick: desktopDeeplink
+          ? () => {
+              window.open(desktopDeeplink, safari ? '_blank' : '_self');
+            }
+          : () => reconnect(wallet),
       };
 
   return (
@@ -288,12 +291,8 @@ export function ConnectDetail({
             </Text>
             <ActionButton
               label={secondaryAction.label}
+              onClick={secondaryAction.onClick}
               type="secondary"
-              {...(secondaryAction.href
-                ? { href: secondaryAction.href, target: '_self' }
-                : {
-                    onClick: secondaryAction.onClick,
-                  })}
             />
           </>
         )}
