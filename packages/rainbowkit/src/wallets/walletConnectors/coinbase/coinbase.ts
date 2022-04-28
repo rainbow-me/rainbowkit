@@ -57,7 +57,6 @@ export const coinbase = ({
         connector: isCoinbaseDappBrowser
           ? new InjectedConnector({ chains })
           : connector,
-        mobile: { getUri },
         qrCode: isExtensionInstalled ? undefined : { getUri },
       };
     },
