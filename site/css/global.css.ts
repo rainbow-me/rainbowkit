@@ -50,6 +50,7 @@ globalStyle('*, ::before, ::after', {
 globalStyle('::selection', {
   backgroundColor: 'var(--selectionColor)',
   color: vars.colors.labelWhite,
+  WebkitTextFillColor: vars.colors.labelWhite,
 });
 
 globalStyle('body', {
