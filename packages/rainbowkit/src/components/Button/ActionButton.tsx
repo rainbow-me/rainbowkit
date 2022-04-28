@@ -70,6 +70,7 @@ export function ActionButton({
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
+      textAlign="center"
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
       {...(background ? { background } : {})}
