@@ -224,7 +224,7 @@ export function Playground() {
                 <RadioGroup.Root
                   name="mode"
                   onValueChange={handleAccentChange}
-                  style={{ display: 'inline-flex', gap: 22 }}
+                  style={{ display: 'inline-flex', gap: 22, flexWrap: 'wrap' }}
                   value={accent}
                 >
                   {(Object.keys(gradientColors) as Accents[]).map(color => (

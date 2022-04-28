@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 
-export const header = [
+export const header = style([
   atoms({
     left: '0',
     position: 'sticky',
@@ -12,7 +12,7 @@ export const header = [
     backdropFilter: 'blur(16px)',
     zIndex: 10,
   }),
-];
+]);
 
 export const row = style([
   atoms({

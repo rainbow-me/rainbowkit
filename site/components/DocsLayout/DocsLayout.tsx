@@ -40,7 +40,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Header docsMobileMenuRef={docsMobileMenuRef} />
+      <Header docsMobileMenuRef={docsMobileMenuRef} sticky />
 
       <DocsMobileMenuContext.Provider value={docsMobileMenuRef}>
         <DocsMobileMenuSlot>

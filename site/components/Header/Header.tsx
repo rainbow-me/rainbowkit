@@ -15,12 +15,14 @@ const RAINBOWKIT_VERSION = '0.0.2';
 
 export function Header({
   docsMobileMenuRef,
+  sticky,
   ...props
 }: {
   docsMobileMenuRef?: React.RefObject<HTMLDivElement>;
+  sticky?: boolean;
 }) {
   return (
-    <Box className={header} {...props}>
+    <Box className={sticky ? header : undefined} {...props}>
       <Box className={row}>
         <NextLink href="/">
           <Box

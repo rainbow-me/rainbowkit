@@ -31,7 +31,11 @@ function App({ Component, pageProps }: AppProps) {
       body.style.setProperty('--selectionColor', getColor());
 
     body.addEventListener('mousedown', tasteTheRainbow);
-    return () => body.removeEventListener('mousedown', tasteTheRainbow);
+
+    body.setAttribute('data-mode', isDocs ? 'light' : 'dark');
+    return () => {
+      body.removeEventListener('mousedown', tasteTheRainbow);
+    };
   }, []);
 
   return (
