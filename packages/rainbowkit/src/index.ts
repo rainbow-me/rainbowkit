@@ -11,9 +11,4 @@ export { darkTheme } from './themes/darkTheme';
 export { midnightTheme } from './themes/midnightTheme';
 export { cssStringFromTheme } from './css/cssStringFromTheme';
 export { cssObjectFromTheme } from './css/cssObjectFromTheme';
-export { DesktopOptions } from './components/ConnectOptions/DesktopOptions';
-export { MobileOptions } from './components/ConnectOptions/MobileOptions';
-export {
-  dialogContent,
-  dialogContentMobile,
-} from './components/Dialog/DialogContent.css';
+export { __private__ } from './__private__';

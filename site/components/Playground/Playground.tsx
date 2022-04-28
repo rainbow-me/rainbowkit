@@ -1,12 +1,10 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
+  __private__,
   darkTheme,
-  DesktopOptions,
-  dialogContent,
-  dialogContentMobile,
   lightTheme,
   midnightTheme,
-  MobileOptions,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
@@ -19,6 +17,9 @@ import { motion } from 'framer-motion';
 import { useMounted } from 'lib/useMounted';
 import React, { useState } from 'react';
 import { radio, ring } from './Playground.css';
+
+const { DesktopOptions, MobileOptions, dialogContent, dialogContentMobile } =
+  __private__;
 
 const THEMES = {
   dark: darkTheme,
@@ -43,7 +44,6 @@ const gradientColors: Record<AccentsWithoutYellow, any> = {
     [11, 21, 136],
     [106, 57, 224],
   ],
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   pink: [
     [116, 6, 116],
     [238, 103, 176],
@@ -54,13 +54,11 @@ const gradientColors: Record<AccentsWithoutYellow, any> = {
     [172, 22, 52],
     [189, 38, 13],
   ],
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   orange: [
     [255, 151, 31],
     [112, 0, 0],
     [250, 137, 51],
   ],
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   green: [
     [10, 80, 28],
     [42, 150, 140],
@@ -70,7 +68,7 @@ const gradientColors: Record<AccentsWithoutYellow, any> = {
 
 export function Playground() {
   const [mode, setMode] = useState<Modes>('light');
-  const [accent, setAccent] = useState<Accents>('purple');
+  const [accent, setAccent] = useState<Accents>('blue');
   const [radii, setRadii] = useState<Radii>('large');
 
   const handleModeChange = value => setMode(value);
@@ -78,7 +76,7 @@ export function Playground() {
   const handleRadiiChange = value => setRadii(value);
 
   const selectedTheme = THEMES[mode]({
-    accentColor: accent,
+    ...THEMES[mode].accentColors[accent],
     borderRadius: radii,
   });
 
@@ -86,9 +84,7 @@ export function Playground() {
 
   return useMounted() ? (
     <Box
-      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
       marginTop={{ md: '11', lg: '12' }}
-      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
       paddingY={{ xs: '11', lg: '12' }}
       position="relative"
       zIndex="10"
@@ -125,7 +121,7 @@ export function Playground() {
             weight="semibold"
           >
             Make your Ethereum login experience feel right at home on your
-            website. RainbowKit allows you to fully customize color, corner
+            website. RainbowKit allows you to fully customize color, border
             radius, wallet providers and a lot more — all through an easy-to-use
             API. Get a feel for it below!
           </Text>
@@ -138,11 +134,9 @@ export function Playground() {
             theme={selectedTheme}
           >
             <Wrapper
-              // eslint-disable-next-line sort-keys-fix/sort-keys-fix
               marginY={{ xs: '9', md: '11' }}
               style={{ maxWidth: 'fit-content', pointerEvents: 'none' }}
             >
-              {/* eslint-disable-next-line sort-keys-fix/sort-keys-fix */}
               <Box display={{ xs: 'none', md: 'block' }}>
                 <div
                   className={dialogContent}
@@ -172,10 +166,8 @@ export function Playground() {
         <Wrapper style={{ maxWidth: 'fit-content' }}>
           <Box
             display="flex"
-            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
             flexDirection={{ xs: 'column', sm: 'column', md: 'row' }}
             flexWrap="wrap"
-            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
             gap={{ xs: '8', md: '10' }}
           >
             <div>
@@ -235,8 +227,9 @@ export function Playground() {
                       id="accent"
                       key={color}
                       style={{
-                        backgroundColor: THEMES[mode]({ accentColor: color })
-                          .colors.accentColor,
+                        backgroundColor: THEMES[mode]({
+                          ...THEMES[mode].accentColors[color],
+                        }).colors.accentColor,
                       }}
                       value={color}
                     />
