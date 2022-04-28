@@ -13,23 +13,22 @@ RainbowKit exports `rpcProvider` that you can use to instantiate your RPC provid
 
 #### Alchemy
 
-To use the built-in Alchemy RPC provider, you will need to pass through your **Alchemy ID** and your **`chains`**
+To use the built-in Alchemy RPC provider, you will need to pass through your **chains** & **Alchemy ID**.
 
-```tsx line=1,6-9,14,22
-import { rpcProvider, Chain } from '@rainbow-me/rainbowkit';
+```tsx line=1,4-9,13,21
+import { rpcProvider } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const chains: Chain[] = [chain.mainnet];
-
-const { provider, rpcUrls } = rpcProvider.alchemy(
-  process.env.ALCHEMY_ID,
-  { chains }
-);
+const { provider, chains } = rpcProvider.alchemy([
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
+], process.env.ALCHEMY_ID);
 
 const wallets = getDefaultWallets({
   appName: 'RainbowKit demo',
-  chains,
-  rpcUrls,
+  chains
 });
 
 const connectors = connectorsForWallets(wallets);
