@@ -68,7 +68,10 @@ export function RainbowKitProvider({
   }
 
   const selector = createThemeRootSelector(id);
-  const appContext = { ...defaultAppInfo, ...(appInfo || {}) };
+  const appContext = {
+    ...defaultAppInfo,
+    ...appInfo,
+  };
 
   return (
     <RainbowKitChainContext.Provider value={rainbowkitChains}>

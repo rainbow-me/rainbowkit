@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 export const defaultAppInfo = {
-  appName: 'Your App',
+  appName: undefined,
   learnMoreUrl: 'https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually',
 };
 

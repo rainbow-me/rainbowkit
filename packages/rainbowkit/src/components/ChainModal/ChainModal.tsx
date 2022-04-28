@@ -206,8 +206,8 @@ export function ChainModal({
               >
                 <Text color="modalText" size="14" weight="medium">
                   Your wallet does not support switching networks from{' '}
-                  {appName === 'Your App' ? 'this app' : appName}. Try switching
-                  networks from within your wallet instead.
+                  {appName ?? 'this app'}. Try switching networks from within
+                  your wallet instead.
                 </Text>
               </Box>
             )}
