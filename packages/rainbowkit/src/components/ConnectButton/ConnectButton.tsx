@@ -242,7 +242,8 @@ export function ConnectButton({
                   fontFamily="body"
                   fontWeight="bold"
                   onClick={openConnectModal}
-                  padding="10"
+                  paddingX="16"
+                  paddingY="10"
                   type="button"
                 >
                   Connect Wallet
