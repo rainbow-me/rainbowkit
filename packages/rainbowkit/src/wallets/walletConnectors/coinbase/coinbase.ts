@@ -15,23 +15,16 @@ export const coinbase = ({
   chains,
   jsonRpcUrl,
 }: CoinbaseOptions): Wallet => {
-  const isExtensionInstalled =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    window.walletLinkExtension?.isCoinbaseWallet;
-
-  const isCoinbaseDappBrowser =
+  const isCoinbaseInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
     window.ethereum?.isCoinbaseWallet;
-
   return {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
     iconBackground: '#2c5ff6',
-    installed: isExtensionInstalled ? true : undefined,
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
@@ -54,10 +47,10 @@ export const coinbase = ({
       const getUri = () => connector.getProvider().qrUrl;
 
       return {
-        connector: isCoinbaseDappBrowser
+        connector: isCoinbaseInjected
           ? new InjectedConnector({ chains })
           : connector,
-        qrCode: isExtensionInstalled ? undefined : { getUri },
+        qrCode: isCoinbaseInjected ? undefined : { getUri },
       };
     },
   };
