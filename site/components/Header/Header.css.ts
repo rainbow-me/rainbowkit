@@ -19,6 +19,7 @@ export const row = style([
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
+    marginX: 'auto',
     paddingX: {
       xs: '6',
       // eslint-disable-next-line sort-keys-fix/sort-keys-fix
@@ -30,6 +31,9 @@ export const row = style([
       lg: '7',
     },
   }),
+  {
+    maxWidth: 1600,
+  },
 ]);
 
 export const logo = style([
