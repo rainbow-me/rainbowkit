@@ -31,6 +31,13 @@ export function Header({
             className={logo}
             marginRight="4"
             src="/rainbow.svg"
+            transform={{
+              active: 'shrink',
+              hover: 'grow',
+            }}
+            transitionDuration="100"
+            transitionProperty="transform"
+            transitionTimingFunction="ease"
           />
         </NextLink>
 
