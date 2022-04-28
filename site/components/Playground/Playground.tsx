@@ -103,21 +103,21 @@ export function Playground() {
       <Box position="relative">
         <Wrapper>
           <Text
+            align={{ xs: 'left', md: 'center' }}
             as="h2"
-            style={{ fontSize: 52, lineHeight: 1, textAlign: 'center' }}
+            size={{ xs: '7', md: '9' }}
+            style={{ lineHeight: 1 }}
             weight="bold"
           >
             Give RainbowKit a spin
           </Text>
           <Text
+            align={{ xs: 'left', md: 'center' }}
             as="p"
-            marginTop="9"
+            marginTop={{ xs: '7', md: '9' }}
             marginX="auto"
-            style={{
-              maxWidth: 720,
-              textAlign: 'center',
-            }}
-            variant="title2"
+            size={{ xs: '4', md: '5' }}
+            style={{ lineHeight: '28px', maxWidth: 720 }}
             weight="semibold"
           >
             Make your Ethereum login experience feel right at home on your

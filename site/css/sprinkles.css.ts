@@ -79,6 +79,7 @@ const responsiveProperties = defineProperties({
       'block',
       'flex',
       'grid',
+      'inline',
       'inline-flex',
       'inline-block',
       'none',
