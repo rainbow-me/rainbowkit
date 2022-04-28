@@ -133,9 +133,15 @@ export function Playground() {
             id="playground"
             theme={selectedTheme}
           >
-            <Wrapper
+            <Box
+              marginX={{ xs: '0', md: 'auto' }}
               marginY={{ xs: '9', md: '11' }}
-              style={{ maxWidth: 'fit-content', pointerEvents: 'none' }}
+              paddingX="10"
+              style={{
+                maxWidth: 'fit-content',
+                pointerEvents: 'none',
+                userSelect: 'none',
+              }}
             >
               <Box display={{ xs: 'none', md: 'block' }}>
                 <div
@@ -152,18 +158,22 @@ export function Playground() {
                 <div
                   className={clsx(dialogContent, dialogContentMobile)}
                   style={{
-                    maxWidth: 355,
+                    maxWidth: 420,
                     width: '100%',
                   }}
                 >
                   <MobileOptions onClose={() => {}} />
                 </div>
               </Box>
-            </Wrapper>
+            </Box>
           </RainbowKitProvider>
         </Provider>
 
-        <Wrapper style={{ maxWidth: 'fit-content' }}>
+        <Box
+          marginX={{ xs: '0', md: 'auto' }}
+          paddingX="10"
+          style={{ maxWidth: 'fit-content' }}
+        >
           <Box
             display="flex"
             flexDirection={{ xs: 'column', sm: 'column', md: 'row' }}
@@ -172,8 +182,8 @@ export function Playground() {
           >
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Mode
@@ -208,8 +218,8 @@ export function Playground() {
             </div>
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Accent
@@ -218,7 +228,7 @@ export function Playground() {
                 <RadioGroup.Root
                   name="mode"
                   onValueChange={handleAccentChange}
-                  style={{ display: 'inline-flex', gap: 22 }}
+                  style={{ display: 'inline-flex', gap: 22, flexWrap: 'wrap' }}
                   value={accent}
                 >
                   {(Object.keys(gradientColors) as Accents[]).map(color => (
@@ -239,8 +249,8 @@ export function Playground() {
             </div>
             <div>
               <Text
+                size={{ xs: '3', md: '4' }}
                 style={{ mixBlendMode: 'overlay' }}
-                variant="title3"
                 weight="bold"
               >
                 Radius
@@ -280,7 +290,7 @@ export function Playground() {
               </ControlBox>
             </div>
           </Box>
-        </Wrapper>
+        </Box>
       </Box>
     </Box>
   ) : null;

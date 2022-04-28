@@ -19,11 +19,7 @@ import React, { Ref, useState } from 'react';
 
 export default function Home() {
   return (
-    <Box
-      backgroundColor="background"
-      data-mode="dark"
-      style={{ minHeight: '100vh', overflow: 'hidden' }}
-    >
+    <>
       <TitleAndMetaTags />
       <Header />
       <Wrapper>
@@ -182,7 +178,6 @@ export default function Home() {
                   gap="4"
                   key={value}
                   marginBottom="5"
-                  whiteSpace="nowrap"
                   width={{ xs: 'full', md: '1/2' }}
                 >
                   <Box as="span" flexShrink={0}>
@@ -335,7 +330,7 @@ export default function Home() {
           </Box>
         </Wrapper>
       </Box>
-    </Box>
+    </>
   );
 }
 

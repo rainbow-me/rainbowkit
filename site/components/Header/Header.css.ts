@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 
-export const header = [
+export const header = style([
   atoms({
     left: '0',
     position: 'sticky',
@@ -12,13 +12,14 @@ export const header = [
     backdropFilter: 'blur(16px)',
     zIndex: 10,
   }),
-];
+]);
 
 export const row = style([
   atoms({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
+    marginX: 'auto',
     paddingX: {
       xs: '6',
       // eslint-disable-next-line sort-keys-fix/sort-keys-fix
@@ -30,6 +31,9 @@ export const row = style([
       lg: '7',
     },
   }),
+  {
+    maxWidth: 1600,
+  },
 ]);
 
 export const logo = style([
