@@ -35,7 +35,7 @@ const chains: Chain[] = [
     : []),
 ];
 
-const wallets = getDefaultWallets({
+const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
   infuraId,
