@@ -170,6 +170,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 create new accounts and passwords on&nbsp;every&nbsp;website.
               </Text>
             </Box>
+          </Box>
+
+          <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
                 label="Get a Wallet"

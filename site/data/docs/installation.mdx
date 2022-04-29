@@ -26,7 +26,6 @@ import {
   RainbowKitProvider,
   Chain,
   getDefaultWallets,
-  connectorsForWallets,
   rpcProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
@@ -34,7 +33,7 @@ import { WagmiProvider, chain } from 'wagmi';
 
 ### Configure
 
-Configure your wallets, desired chains and generate the required connectors.
+Configure your wallets, desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
 ```tsx line=3-99
 ...
@@ -52,29 +51,24 @@ const { provider, rpcUrls } = rpcProvider.alchemy(
   { chains }
 );
 
-const wallets = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
   chains,
   rpcUrls
 });
-
-const connectors = connectorsForWallets(wallets);
-```
-
-### Wrap providers
-
-Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
-
-```tsx line=3-99
-...
-const connectors = connectorsForWallets(wallets);
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider
 })
+```
 
+### Wrap providers
+
+Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+
+```tsx
 const App = () => {
   return (
     <WagmiProvider client={wagmiClient}>

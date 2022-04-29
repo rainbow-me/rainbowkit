@@ -2,11 +2,11 @@
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
-import { CodeBlock } from 'components/CodeBlock/CodeBlock';
 import { CoolMode } from 'components/CoolMode/CoolMode';
 import { CheckIcon } from 'components/Icons/Check';
 import { CopyIcon } from 'components/Icons/Copy';
 import { Link } from 'components/Link/Link';
+import { Pre } from 'components/Pre/Pre';
 import { PropsTable } from 'components/PropsTable/PropsTable';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
@@ -86,10 +86,16 @@ export const components = {
   ),
   Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
   li: ({ children, ...props }) => (
-    <li
-      {...props}
-      style={{ alignItems: 'center', display: 'flex', listStyle: 'none' }}
-    >
+    <Box alignItems="center" as="li" display="flex" {...props}>
+      <Box
+        as="span"
+        backgroundColor="fill"
+        borderRadius="1"
+        display="inline-block"
+        height="1"
+        marginRight="4"
+        width="4"
+      />
       <Text
         color="labelSecondary"
         style={{ fontWeight: 500, lineHeight: '25px' }}
@@ -97,9 +103,8 @@ export const components = {
       >
         {children}
       </Text>
-    </li>
+    </Box>
   ),
-  ol: props => <Box as="ol" marginBottom="5" paddingLeft="4" {...props} />,
   p: props => (
     <Text
       as="p"
@@ -134,9 +139,9 @@ export const components = {
         position="relative"
         style={{ overflow: 'hidden' }}
       >
-        <CodeBlock marginBottom="9" marginTop="5" ref={preRef} {...props}>
+        <Pre marginBottom="9" marginTop="5" ref={preRef} {...props}>
           {children}
-        </CodeBlock>
+        </Pre>
         <Box data-copy position="absolute" right="3" top="3">
           <Button
             onClick={() => setRequestCopy(true)}

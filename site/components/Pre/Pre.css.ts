@@ -1,7 +1,7 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 import { vars } from 'css/vars.css';
 
-export const codeBlock = style({
+export const pre = style({
   vars: {
     '--added': '$rgb(24, 121, 78)',
     '--background': vars.colors.fillElevated,
@@ -42,12 +42,12 @@ export const codeBlock = style({
   whiteSpace: 'pre',
 });
 
-globalStyle(`${codeBlock} code`, {
+globalStyle(`${pre} code`, {
   marginRight: 100,
   minWidth: '100%',
 });
 
-globalStyle(`${codeBlock} .token.parameter`, {
+globalStyle(`${pre} .token.parameter`, {
   color: 'var(--text)',
 });
 
@@ -57,7 +57,7 @@ const syntax1 = [
   '.token.selector .class',
   '.token.function',
 ];
-globalStyle(syntax1.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(syntax1.map(s => `${pre} ${s}`).join(`, `), {
   color: 'var(--syntax1)',
 });
 
@@ -69,7 +69,7 @@ const syntax2 = [
   '.token.unit',
   '.token.color',
 ];
-globalStyle(syntax2.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(syntax2.map(s => `${pre} ${s}`).join(`, `), {
   color: 'var(--syntax2)',
 });
 
@@ -81,20 +81,20 @@ const syntax3 = [
   '.token.pseudo-class',
   '.token.important',
 ];
-globalStyle(syntax3.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(syntax3.map(s => `${pre} ${s}`).join(`, `), {
   color: 'var(--syntax3)',
 });
 
 const syntax4 = ['.token.punctuation', '.token.module', '.token.property'];
-globalStyle(syntax4.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(syntax4.map(s => `${pre} ${s}`).join(`, `), {
   color: 'var(--syntax4)',
 });
 
-globalStyle(`${codeBlock} .token.comment`, {
+globalStyle(`${pre} .token.comment`, {
   color: 'var(--comment)',
 });
 
-globalStyle(`${codeBlock} .token.class-name`, {
+globalStyle(`${pre} .token.class-name`, {
   color: vars.colors.green,
 });
 
@@ -103,7 +103,7 @@ const inherit = [
   ' .language-shell .token:not(.comment)',
   ' .language-css .token.function',
 ];
-globalStyle(inherit.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(inherit.map(s => `${pre} ${s}`).join(`, `), {
   color: 'var(--inherit)',
 });
 
@@ -111,17 +111,17 @@ const tokensModifiers = [
   '.token.deleted:not(.prefix)',
   '.token.inserted:not(.prefix)',
 ];
-globalStyle(tokensModifiers.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(tokensModifiers.map(s => `${pre} ${s}`).join(`, `), {
   display: 'block',
   margin: '0 -20px',
   padding: '0 20px',
 });
 
-globalStyle(`${codeBlock} .token.deleted:not(.prefix)`, {
+globalStyle(`${pre} .token.deleted:not(.prefix)`, {
   color: 'var(--removed)',
 });
 
-globalStyle(`${codeBlock} .token.inserted:not(.prefix)`, {
+globalStyle(`${pre} .token.inserted:not(.prefix)`, {
   color: 'var(--added)',
 });
 
@@ -129,34 +129,34 @@ const tokensModifiersPrefixed = [
   '.token.deleted.prefix',
   '.token.inserted.prefix',
 ];
-globalStyle(tokensModifiersPrefixed.map(s => `${codeBlock} ${s}`).join(`, `), {
+globalStyle(tokensModifiersPrefixed.map(s => `${pre} ${s}`).join(`, `), {
   userSelect: 'none',
 });
 
 globalStyle(
-  `${codeBlock} [data-highlighted=false], ${codeBlock} [data-highlighted=false] .token`,
+  `${pre} [data-highlighted=false], ${pre} [data-highlighted=false] .token`,
   {
     color: vars.colors.labelQuaternary,
   }
 );
 
-globalStyle(`${codeBlock} .highlight-word`, {
+globalStyle(`${pre} .highlight-word`, {
   backgroundColor: vars.colors.fillSecondary,
   borderRadius: vars.radii[1],
   padding: '0 3px',
 });
 
-globalStyle(`${codeBlock} + [data-copy]`, {
+globalStyle(`${pre} + [data-copy]`, {
   opacity: 0,
   transition: 'opacity 100ms ease',
   zIndex: 2,
 });
 
-globalStyle(`${codeBlock}:hover + [data-copy], [data-copy]:hover`, {
+globalStyle(`${pre}:hover + [data-copy], [data-copy]:hover`, {
   opacity: 1,
 });
 
-globalStyle(`${codeBlock} ~ [data-pre-gradient]`, {
+globalStyle(`${pre} ~ [data-pre-gradient]`, {
   backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0), ${vars.colors.fillElevated})`,
   borderBottomRightRadius: '15px',
   borderTopRightRadius: '15px',

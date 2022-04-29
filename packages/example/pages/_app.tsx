@@ -31,11 +31,15 @@ const { provider, rpcUrls, webSocketProvider } = rpcProvider.alchemy(
   { chains }
 );
 
-const wallets = getDefaultWallets({
+const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
   rpcUrls,
 });
+
+const demoAppInfo = {
+  appName: 'Rainbowkit Demo',
+};
 
 const connectors = connectorsForWallets([
   ...wallets,
@@ -78,7 +82,7 @@ const accentColors = [
   'pink',
   'purple',
   'red',
-  'yellow',
+  'custom',
 ] as const;
 type AccentColor = typeof accentColors[number];
 
@@ -93,13 +97,14 @@ function App({ Component, pageProps }: AppProps) {
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
-  const selectedTheme = themes
-    .find(({ name }) => name === selectedThemeName)
-    ?.theme({
-      accentColor: selectedAccentColor,
-      borderRadius: selectedRadiusScale,
-      fontStack: selectedFontStack,
-    });
+  const currentTheme = (
+    themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
+  ).theme;
+
+  const accentColor =
+    selectedAccentColor === 'custom'
+      ? { accentColor: 'red', accentColorForeground: 'yellow' } // https://blog.codinghorror.com/a-tribute-to-the-windows-31-hot-dog-stand-color-scheme
+      : currentTheme.accentColors[selectedAccentColor];
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
@@ -107,10 +112,15 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider client={wagmiClient}>
       <RainbowKitProvider
+        appInfo={demoAppInfo}
         chains={chains}
         coolMode={coolModeEnabled}
         showRecentTransactions={showRecentTransactions}
-        theme={selectedTheme}
+        theme={currentTheme({
+          ...accentColor,
+          borderRadius: selectedRadiusScale,
+          fontStack: selectedFontStack,
+        })}
       >
         <Component {...pageProps} />
 

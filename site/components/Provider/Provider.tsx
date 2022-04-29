@@ -1,9 +1,4 @@
-import {
-  Chain,
-  connectorsForWallets,
-  getDefaultWallets,
-  rpcProvider,
-} from '@rainbow-me/rainbowkit';
+import { Chain, getDefaultWallets, rpcProvider } from '@rainbow-me/rainbowkit';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
 
@@ -18,13 +13,11 @@ export const chains: Chain[] = [
 
 const { provider, rpcUrls } = rpcProvider.alchemy(alchemyId, { chains });
 
-const wallets = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
   rpcUrls,
 });
-
-const connectors = connectorsForWallets(wallets);
 
 const wagmiClient = createClient({
   autoConnect: true,

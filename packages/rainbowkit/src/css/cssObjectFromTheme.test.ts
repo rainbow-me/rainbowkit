@@ -6,12 +6,11 @@ describe('cssObjectFromTheme', () => {
   it('converts themes to CSS-in-JS objects', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
-        "--rk-borders-modalBorderWidth": "0px",
         "--rk-colors-accentColor": "#0E76FD",
+        "--rk-colors-accentColorForeground": "#FFF",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
         "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
-        "--rk-colors-actionButtonText": "#FFF",
         "--rk-colors-closeButton": "rgba(60, 66, 66, 0.8)",
         "--rk-colors-closeButtonBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-connectButtonBackground": "#FFF",
@@ -26,7 +25,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-menuItemBackground": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-modalBackdrop": "rgba(0, 0, 0, 0.3)",
         "--rk-colors-modalBackground": "#FFF",
-        "--rk-colors-modalBorder": "rgba(255, 255, 255, 0)",
+        "--rk-colors-modalBorder": "transparent",
         "--rk-colors-modalText": "#25292E",
         "--rk-colors-modalTextDim": "rgba(60, 66, 66, 0.3)",
         "--rk-colors-modalTextSecondary": "rgba(60, 66, 66, 0.6)",

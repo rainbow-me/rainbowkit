@@ -70,13 +70,14 @@ export function ActionButton({
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
+      textAlign="center"
       transform={{ active: 'shrinkSm', hover: 'grow' }}
       transition="default"
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
       <Text
-        color={isPrimary ? 'actionButtonText' : 'accentColor'}
+        color={isPrimary ? 'accentColorForeground' : 'accentColor'}
         size={fontSize}
         weight="bold"
       >

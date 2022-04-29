@@ -13,10 +13,10 @@ import './reset.css';
 const themeContractValues = {
   colors: {
     accentColor: '',
+    accentColorForeground: '',
     actionButtonBorder: '',
     actionButtonBorderMobile: '',
     actionButtonSecondaryBackground: '',
-    actionButtonText: '',
     closeButton: '',
     closeButtonBackground: '',
     connectButtonBackground: '',
@@ -58,9 +58,6 @@ const themeContractValues = {
     profileDetailsAction: '',
     selectedOption: '',
     selectedWallet: '',
-  },
-  borders: {
-    modalBorderWidth: '',
   },
 };
 
@@ -179,7 +176,6 @@ const unresponsiveProperties = defineProperties({
       solid: 'solid',
     },
     borderWidth: {
-      ...themeVars.borders,
       '0': '0px',
       '1': '1px',
       '2': '2px',

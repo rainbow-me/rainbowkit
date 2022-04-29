@@ -44,7 +44,7 @@ export const ModalSelection = ({
         {...urlProps}
       >
         <Box
-          color={currentlySelected ? 'actionButtonText' : 'modalText'}
+          color={currentlySelected ? 'accentColorForeground' : 'modalText'}
           disabled={!ready}
           fontFamily="body"
           fontSize="16"
