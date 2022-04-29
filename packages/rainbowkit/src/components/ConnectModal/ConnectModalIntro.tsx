@@ -29,7 +29,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           gap="32"
           height="full"
           justifyContent="center"
-          paddingX="36"
+          style={{ maxWidth: 312 }}
         >
           <Box alignItems="center" display="flex" flexDirection="row" gap="16">
             <Box borderRadius="6" height="48" minWidth="48" width="48">

@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { sprinkles } from '../../css/sprinkles.css';
-
+import { largeScreenMinWidth, sprinkles } from '../../css/sprinkles.css';
 export const QRCodeBackgroundClassName = style([
   {
     background: 'white',
@@ -16,3 +15,12 @@ export const ScrollClassName = style([
     overflowY: 'auto',
   },
 ]);
+
+export const sidebar = style({
+  '@media': {
+    [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+      minWidth: '287px',
+    },
+  },
+  'minWidth': '246px',
+});
