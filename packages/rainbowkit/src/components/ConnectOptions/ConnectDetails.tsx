@@ -217,7 +217,7 @@ export function ConnectDetail({
             logoUrl={iconUrl}
             size={
               smallWindow
-                ? Math.max(312, Math.min(windowWidth - 308, 382))
+                ? Math.max(280, Math.min(windowWidth - 308, 382))
                 : 382
             }
             uri={qrCodeUri}
@@ -273,7 +273,12 @@ export function ConnectDetail({
                 ) : (
                   <>
                     {ready ? <SpinnerIcon /> : null}
-                    <Text color="modalTextSecondary" size="16" weight="bold">
+                    <Text
+                      color="modalTextSecondary"
+                      size="16"
+                      textAlign="center"
+                      weight="bold"
+                    >
                       {readyMsg}
                     </Text>
                   </>
