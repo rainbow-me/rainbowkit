@@ -16,7 +16,15 @@ export const custom = (
   }
 ): RpcProvider<StaticJsonRpcProvider, WebSocketProvider> => {
   const chains = defaultChains.map(chain => {
-    if (rpcUrls[chain.id]) chain.rpcUrls.default = rpcUrls[chain.id];
+    if (rpcUrls[chain.id]) {
+      return {
+        ...chain,
+        rpcUrls: {
+          ...chain.rpcUrls,
+          default: rpcUrls[chain.id],
+        },
+      };
+    }
     return chain;
   });
 
@@ -28,14 +36,14 @@ export const custom = (
     return new StaticJsonRpcProvider(rpcUrls[chainId], chainId);
   };
 
-  const webSocketProvider = ({
-    chainId = defaultChains[0].id,
-  }: {
-    chainId?: number;
-  }) => {
-    if (!wsRpcUrls) return new WebSocketProvider('');
-    return new WebSocketProvider(wsRpcUrls[chainId], chainId);
+  return {
+    chains,
+    provider,
+    ...(wsRpcUrls
+      ? {
+          webSocketProvider: ({ chainId = defaultChains[0].id }) =>
+            new WebSocketProvider(wsRpcUrls[chainId], chainId),
+        }
+      : {}),
   };
-
-  return { chains, provider, ...(wsRpcUrls ? { webSocketProvider } : {}) };
 };

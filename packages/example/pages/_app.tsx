@@ -41,14 +41,7 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [
-      wallet.argent({
-        chains,
-      }),
-      wallet.trust({
-        chains,
-      }),
-    ],
+    wallets: [wallet.argent({ chains }), wallet.trust({ chains })],
   },
 ]);
 

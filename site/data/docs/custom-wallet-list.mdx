@@ -32,7 +32,7 @@ const connectors = connectorsForWallets([
 You can then pass your connectors to `wagmi`'s `createClient`.
 
 ```tsx line=1,4-99
-import { createClient } from 'wagmi';
+import { createClient, WagmiProvider } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 

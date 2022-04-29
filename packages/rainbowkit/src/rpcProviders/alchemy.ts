@@ -8,10 +8,16 @@ import { RpcProvider } from './RpcProvider';
 export const alchemy = (
   defaultChains: Chain[],
   alchemyId: string
-): RpcProvider<AlchemyProvider, AlchemyWebSocketProvider> => {
+): Required<RpcProvider<AlchemyProvider, AlchemyWebSocketProvider>> => {
   const chains = defaultChains.map(chain => {
     if (chain.rpcUrls.alchemy) {
-      chain.rpcUrls.default = `${chain.rpcUrls.alchemy}/${alchemyId}`;
+      return {
+        ...chain,
+        rpcUrls: {
+          ...chain.rpcUrls,
+          default: `${chain.rpcUrls.alchemy}/${alchemyId}`,
+        },
+      };
     }
     return chain;
   });

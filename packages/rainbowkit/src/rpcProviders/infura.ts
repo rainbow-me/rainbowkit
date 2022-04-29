@@ -8,10 +8,16 @@ import { RpcProvider } from './RpcProvider';
 export const infura = (
   defaultChains: Chain[],
   infuraId: string
-): RpcProvider<InfuraProvider, InfuraWebSocketProvider> => {
+): Required<RpcProvider<InfuraProvider, InfuraWebSocketProvider>> => {
   const chains = defaultChains.map(chain => {
     if (chain.rpcUrls.infura) {
-      chain.rpcUrls.default = `${chain.rpcUrls.infura}/${infuraId}`;
+      return {
+        ...chain,
+        rpcUrls: {
+          ...chain.rpcUrls,
+          default: `${chain.rpcUrls.infura}/${infuraId}`,
+        },
+      };
     }
     return chain;
   });
