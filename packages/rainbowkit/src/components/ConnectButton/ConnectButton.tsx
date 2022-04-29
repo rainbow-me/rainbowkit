@@ -235,17 +235,15 @@ export function ConnectButton({
               >
                 <Box
                   as="button"
-                  background="connectButtonInnerBackground"
-                  borderColor="connectButtonBackground"
+                  background="accentColor"
                   borderRadius="connectButton"
-                  borderStyle="solid"
-                  borderWidth="2"
                   boxShadow="connectButton"
-                  color="connectButtonText"
+                  color="accentColorForeground"
                   fontFamily="body"
                   fontWeight="bold"
                   onClick={openConnectModal}
-                  padding="8"
+                  paddingX="16"
+                  paddingY="10"
                   type="button"
                 >
                   Connect Wallet
