@@ -39,22 +39,14 @@ Configure your wallets, desired chains and generate the required connectors. You
 ...
 import { WagmiProvider, chain } from 'wagmi';
 
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrumOne,
-];
-
-const { provider, rpcUrls } = rpcProvider.alchemy(
-  process.env.ALCHEMY_ID,
-  { chains }
+const { provider, chains } = rpcProvider.alchemy(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  process.env.ALCHEMY_ID
 );
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
-  chains,
-  rpcUrls
+  chains
 });
 
 const wagmiClient = createClient({

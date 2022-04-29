@@ -2,23 +2,34 @@ import {
   StaticJsonRpcProvider,
   WebSocketProvider,
 } from '@ethersproject/providers';
+import { Chain } from 'wagmi';
 import { RpcProvider } from './RpcProvider';
 
-export const custom = ({
-  defaultChainId,
-  rpcUrls,
-  wsRpcUrls,
-}: {
-  defaultChainId: number;
-  rpcUrls: { [chainId: number]: string };
-  wsRpcUrls?: { [chainId: number]: string };
-}): RpcProvider<StaticJsonRpcProvider, WebSocketProvider> => {
-  const provider = ({ chainId = defaultChainId }: { chainId?: number }) => {
+export const custom = (
+  defaultChains: Chain[],
+  {
+    rpcUrls,
+    wsRpcUrls,
+  }: {
+    rpcUrls: { [chainId: number]: string };
+    wsRpcUrls?: { [chainId: number]: string };
+  }
+): RpcProvider<StaticJsonRpcProvider, WebSocketProvider> => {
+  const chains = defaultChains.map(chain => {
+    if (rpcUrls[chain.id]) chain.rpcUrls.default = rpcUrls[chain.id];
+    return chain;
+  });
+
+  const provider = ({
+    chainId = defaultChains[0].id,
+  }: {
+    chainId?: number;
+  }) => {
     return new StaticJsonRpcProvider(rpcUrls[chainId], chainId);
   };
 
   const webSocketProvider = ({
-    chainId = defaultChainId,
+    chainId = defaultChains[0].id,
   }: {
     chainId?: number;
   }) => {
@@ -26,5 +37,5 @@ export const custom = ({
     return new WebSocketProvider(wsRpcUrls[chainId], chainId);
   };
 
-  return { provider, rpcUrls, ...(wsRpcUrls ? { webSocketProvider } : {}) };
+  return { chains, provider, ...(wsRpcUrls ? { webSocketProvider } : {}) };
 };

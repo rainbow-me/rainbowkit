@@ -1,15 +1,15 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { createRpcUrlMap } from '../../../utils/createRpcUrlMap';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface RainbowOptions {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 }
 
-export const rainbow = ({ chains, rpcUrls }: RainbowOptions): Wallet => ({
+export const rainbow = ({ chains }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
   iconUrl: async () => (await import('./rainbow.svg')).default,
@@ -20,11 +20,12 @@ export const rainbow = ({ chains, rpcUrls }: RainbowOptions): Wallet => ({
     qrCode: 'https://rainbow.download',
   },
   createConnector: () => {
+    const rpc = createRpcUrlMap(chains);
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: false,
-        rpc: rpcUrls,
+        rpc,
       },
     });
 

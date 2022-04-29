@@ -1,18 +1,15 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { createRpcUrlMap } from '../../../utils/createRpcUrlMap';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface WalletConnectOptions {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 }
 
-export const walletConnect = ({
-  chains,
-  rpcUrls,
-}: WalletConnectOptions): Wallet => ({
+export const walletConnect = ({ chains }: WalletConnectOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
   iconUrl: async () => (await import('./walletConnect.svg')).default,
@@ -20,11 +17,13 @@ export const walletConnect = ({
   createConnector: () => {
     const ios = isIOS();
 
+    const rpc = createRpcUrlMap(chains);
+
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: ios,
-        rpc: rpcUrls,
+        rpc,
       },
     });
 

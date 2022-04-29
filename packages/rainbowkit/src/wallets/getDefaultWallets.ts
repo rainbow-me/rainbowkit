@@ -10,11 +10,9 @@ import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 export const getDefaultWallets = ({
   appName,
   chains,
-  rpcUrls,
 }: {
   appName: string;
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 }): {
   connectors: ReturnType<typeof connectorsForWallets>;
   wallets: WalletList;
@@ -29,17 +27,16 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
-        rainbow({ chains, rpcUrls }),
-        coinbase({ appName, chains, rpcUrls }),
+        rainbow({ chains }),
+        coinbase({ appName, chains }),
         metaMask({
           chains,
-          rpcUrls,
           shimDisconnect: true,
         }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
           : []),
-        walletConnect({ chains, rpcUrls }),
+        walletConnect({ chains }),
       ],
     },
   ];

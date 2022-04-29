@@ -27,24 +27,15 @@ To start, import RainbowKit’s base styles, configure your wallets and desired 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
-import {
-  RainbowKitProvider,
-  Chain,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const chains: Chain[] = [chain.mainnet];
-
-const { provider, rpcUrls } = rpcProvider.alchemy(process.env.ALCHEMY_ID, {
-  chains,
-});
+const { provider, chains } = rpcProvider.alchemy([chain.mainnet], alchemyId);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
   chains,
-  rpcUrls,
 });
 
 const wagmiClient = createClient({
@@ -154,9 +145,9 @@ import { rpcProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, rpcUrls } = rpcProvider.alchemy(
+const { provider, chains } = rpcProvider.alchemy(
+  [chain.mainnet, chain.polygon],
   process.env.ALCHEMY_ID,
-  { chains }
 );
 ```
 
@@ -167,9 +158,9 @@ import { rpcProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, rpcUrls } = rpcProvider.infura(
+const { provider, chains } = rpcProvider.infura(
+  [chain.mainnet, chain.polygon],
   process.env.INFURA_ID,
-  { chains }
 );
 ```
 
@@ -180,14 +171,15 @@ import { rpcProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, rpcUrls } = rpcProvider.custom({
-  defaultChainId: 1,
-  rpcUrls: {
-    1: 'https://mainnet.example.com'
-    3: 'https://ropsten.example.com'
-    4: 'https://rinkeby.example.com'
+const { provider, chains } = rpcProvider.custom(
+  [chain.mainnet, chain.polygon],
+  {
+    rpcUrls: {
+      [chain.mainnet.id]: 'https://mainnet.example.com',
+      [chain.polygon.id]: 'https://polygon.example.com',
+    }
   }
-});
+);
 ```
 
 #### Customizing the built-in themes
@@ -826,24 +818,13 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({
-        chains,
-        rpcUrls,
-      }),
-      wallet.walletConnect({
-        chains,
-        rpcUrls,
-      }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
       wallet.coinbase({
         appName: 'My RainbowKit App',
         chains,
-        rpcUrls,
       }),
-      wallet.metaMask({
-        chains,
-        rpcUrls,
-      }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
@@ -869,7 +850,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.argent(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -881,7 +861,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 wallet.coinbase(options: {
   appName: string;
   chains: Chain[];
-  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
 });
 ```
 
@@ -913,16 +892,13 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) =>
-          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-          chain.mainnet.rpcUrls[0],
       }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
@@ -936,7 +912,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.metaMask(options: {
   chains: Chain[];
-  infuraId?: string;
   shimDisconnect?: boolean;
 });
 ```
@@ -948,7 +923,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.rainbow(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -959,7 +933,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.trust(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -972,7 +945,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.walletConnect(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 

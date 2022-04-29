@@ -20,8 +20,8 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, rpcUrls }),
-      wallet.walletConnect({ chains, rpcUrls }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);
@@ -54,7 +54,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.argent(options: {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 });
 ```
 
@@ -66,7 +65,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 wallet.coinbase(options: {
   appName: string;
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 });
 ```
 
@@ -98,14 +96,13 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, rpcUrls }),
-      wallet.metaMask({ chains, rpcUrls }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
       wallet.coinbase({
         appName: 'My RainbowKit App',
         chains,
-        rpcUrls,
       }),
-      wallet.metaMask({ chains, rpcUrls }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback
         ? [wallet.injected({ chains })]
         : []),
@@ -121,7 +118,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.metaMask(options: {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
   shimDisconnect?: boolean;
 });
 ```
@@ -133,7 +129,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.rainbow(options: {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 });
 ```
 
@@ -144,7 +139,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.trust(options: {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 });
 ```
 
@@ -157,7 +151,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.walletConnect(options: {
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 });
 ```
 
@@ -176,8 +169,8 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.metaMask({ chains, rpcUrls }),
-      wallet.walletConnect({ chains, rpcUrls }),
+      wallet.metaMask({ chains }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);
@@ -192,12 +185,11 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.metaMask({ chains, rpcUrls }),
-      wallet.rainbow({ chains, rpcUrls }),
+      wallet.metaMask({ chains }),
+      wallet.rainbow({ chains }),
       wallet.coinbase({
         appName: 'My RainbowKit App',
         chains,
-        rpcUrls,
       }),
     ],
   },
@@ -219,18 +211,17 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.walletConnect({ chains, infuraId }),
+      wallet.walletConnect({ chains }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
-        rpcUrls,
       }),
     ],
   },

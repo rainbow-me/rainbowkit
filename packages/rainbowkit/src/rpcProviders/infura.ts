@@ -6,9 +6,16 @@ import { Chain } from 'wagmi';
 import { RpcProvider } from './RpcProvider';
 
 export const infura = (
-  infuraId: string,
-  { chains }: { chains: Chain[] }
+  defaultChains: Chain[],
+  infuraId: string
 ): RpcProvider<InfuraProvider, InfuraWebSocketProvider> => {
+  const chains = defaultChains.map(chain => {
+    if (chain.rpcUrls.infura) {
+      chain.rpcUrls.default = `${chain.rpcUrls.infura}/${infuraId}`;
+    }
+    return chain;
+  });
+
   const provider = ({ chainId }: { chainId?: number }) => {
     return new InfuraProvider(
       chains.some(x => x.id === chainId) ? chainId : chains[0].id,
@@ -16,19 +23,12 @@ export const infura = (
     );
   };
 
-  const rpcUrls: { [chainId: number]: string } = {};
-  for (const chain of chains) {
-    rpcUrls[chain.id] = chain.rpcUrls.infura
-      ? `${chain.rpcUrls.infura}/${infuraId}`
-      : chain.rpcUrls.default;
-  }
-
   const webSocketProvider = ({ chainId }: { chainId?: number }) => {
     return new InfuraWebSocketProvider(
       chains.some(x => x.id === chainId) ? chainId : chains[0].id,
-      infura
+      infuraId
     );
   };
 
-  return { provider, rpcUrls, webSocketProvider };
+  return { chains, provider, webSocketProvider };
 };

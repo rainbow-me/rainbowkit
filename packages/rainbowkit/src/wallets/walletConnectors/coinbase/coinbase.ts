@@ -8,14 +8,9 @@ import { Wallet } from '../../Wallet';
 export interface CoinbaseOptions {
   appName: string;
   chains: Chain[];
-  rpcUrls: { [chainId: number]: string };
 }
 
-export const coinbase = ({
-  appName,
-  chains,
-  rpcUrls,
-}: CoinbaseOptions): Wallet => {
+export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
   const isCoinbaseInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet;
 
@@ -34,6 +29,9 @@ export const coinbase = ({
     createConnector: ({ chainId = chains[0].id }) => {
       const ios = isIOS();
 
+      const chain = chains.find(chain => chain.id === chainId);
+      const jsonRpcUrl = chain?.rpcUrls.default;
+
       const connector = isCoinbaseInjected
         ? new InjectedConnector({ chains })
         : new CoinbaseWalletConnector({
@@ -41,7 +39,7 @@ export const coinbase = ({
             options: {
               appName,
               headlessMode: true,
-              jsonRpcUrl: rpcUrls[chainId],
+              jsonRpcUrl,
             },
           });
 
