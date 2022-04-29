@@ -16,7 +16,7 @@ RainbowKit exports `rpcProvider` that you can use to instantiate your RPC provid
 To use the built-in Alchemy RPC provider, you will need to pass through your **chains** & **Alchemy ID**.
 
 ```tsx line=1,4-7,11,17
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider } = rpcProvider.alchemy(
@@ -41,7 +41,7 @@ const wagmiClient = createClient({
 If you wish to use a WebSocket provider, the RPC Provider also returns a `webSocketProvider`.
 
 ```tsx line=4,18
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider, webSocketProvider } = rpcProvider.alchemy(
@@ -69,7 +69,7 @@ const wagmiClient = createClient({
 To use the built-in Infura RPC provider, you will need to pass through your **chains** & **Infura ID**.
 
 ```tsx line=1,4-7,11,17
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider } = rpcProvider.infura(
@@ -94,7 +94,7 @@ const wagmiClient = createClient({
 If you wish to use a WebSocket provider, the RPC Provider also returns a `webSocketProvider`.
 
 ```tsx line=4,18
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider, webSocketProvider } = rpcProvider.infura(
@@ -122,7 +122,7 @@ const wagmiClient = createClient({
 To use a custom RPC provider, you will need to pass through your **chains** and a map of **RPC URLs** (`rpcUrls`) of the chains you want to support.
 
 ```tsx line=1,4-12,16,22
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider } = rpcProvider.custom(
@@ -149,10 +149,10 @@ const wagmiClient = createClient({
 ...
 ```
 
-If you want to use a WebSocket provider, you can pass through your WebSocket RPC URLs using the `wsRpcUrls` option.
+If you want to use a WebSocket provider, you can pass through your WebSocket RPC URLs using the `webSocketRpcUrls` option.
 
 ```tsx line=4,11-14,27
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { rpcProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains, provider, webSocketProvider } = rpcProvider.custom(
@@ -162,7 +162,7 @@ const { chains, provider, webSocketProvider } = rpcProvider.custom(
       [chain.mainnet.id]: 'https://mainnet.example.com',
       [chain.polygon.id]: 'https://polygon.example.com',
     },
-    wsRpcUrls: {
+    webSocketRpcUrls: {
       [chain.mainnet.id]: 'wss://mainnet.example.com',
       [chain.polygon.id]: 'wss://polygon.example.com',
     }

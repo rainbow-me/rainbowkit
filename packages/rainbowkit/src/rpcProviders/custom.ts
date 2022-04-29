@@ -9,10 +9,10 @@ export const custom = (
   defaultChains: Chain[],
   {
     rpcUrls,
-    wsRpcUrls,
+    webSocketRpcUrls,
   }: {
     rpcUrls: { [chainId: number]: string };
-    wsRpcUrls?: { [chainId: number]: string };
+    webSocketRpcUrls?: { [chainId: number]: string };
   }
 ): RpcProvider<StaticJsonRpcProvider, WebSocketProvider> => {
   const chains = defaultChains.map(chain => {
@@ -39,10 +39,10 @@ export const custom = (
   return {
     chains,
     provider,
-    ...(wsRpcUrls
+    ...(webSocketRpcUrls
       ? {
           webSocketProvider: ({ chainId = defaultChains[0].id }) =>
-            new WebSocketProvider(wsRpcUrls[chainId], chainId),
+            new WebSocketProvider(webSocketRpcUrls[chainId], chainId),
         }
       : {}),
   };
