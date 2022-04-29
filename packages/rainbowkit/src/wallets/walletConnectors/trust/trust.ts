@@ -1,8 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { createRpcUrlMap } from '../../../utils/createRpcUrlMap';
 import { isAndroid } from '../../../utils/isMobile';
+import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
 
 export interface TrustOptions {
@@ -21,7 +21,7 @@ export const trust = ({ chains }: TrustOptions): Wallet => ({
     qrCode: 'https://link.trustwallet.com',
   },
   createConnector: () => {
-    const rpc = createRpcUrlMap(chains);
+    const rpc = rpcUrlsForChains(chains);
     const connector = new WalletConnectConnector({
       chains,
       options: {

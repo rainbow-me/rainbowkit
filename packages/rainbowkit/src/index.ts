@@ -1,5 +1,4 @@
 export * from './components';
-export { createRpcUrlMap } from './utils/createRpcUrlMap';
 export { rpcProvider } from './rpcProviders';
 export type { RpcProvider } from './rpcProviders/RpcProvider';
 export { wallet } from './wallets/walletConnectors';

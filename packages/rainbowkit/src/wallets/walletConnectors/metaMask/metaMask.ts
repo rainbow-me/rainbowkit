@@ -2,8 +2,8 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { createRpcUrlMap } from '../../../utils/createRpcUrlMap';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
+import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
 
 export interface MetaMaskOptions {
@@ -33,7 +33,7 @@ export const metaMask = ({
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
     createConnector: () => {
-      const rpc = createRpcUrlMap(chains);
+      const rpc = rpcUrlsForChains(chains);
       const connector = shouldUseWalletConnect
         ? new WalletConnectConnector({
             chains,
