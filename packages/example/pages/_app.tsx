@@ -1,12 +1,12 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  apiProvider,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
-  rpcProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
 import type { AppProps } from 'next/app';
@@ -15,7 +15,7 @@ import { chain, createClient, WagmiProvider } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
-const { chains, provider, webSocketProvider } = rpcProvider.alchemy(
+const { chains, provider, webSocketProvider } = apiProvider.alchemy(
   [
     chain.mainnet,
     chain.polygon,

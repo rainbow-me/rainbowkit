@@ -3,7 +3,7 @@ import {
   WebSocketProvider,
 } from '@ethersproject/providers';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import { RpcProvider } from './RpcProvider';
+import { ApiProvider } from './ApiProvider';
 
 export const custom = (
   defaultChains: Chain[],
@@ -14,7 +14,7 @@ export const custom = (
     rpcUrls: { [chainId: number]: string };
     webSocketRpcUrls?: { [chainId: number]: string };
   }
-): RpcProvider<StaticJsonRpcProvider, WebSocketProvider> => {
+): ApiProvider<StaticJsonRpcProvider, WebSocketProvider> => {
   const chains = defaultChains.map(chain => {
     if (rpcUrls[chain.id]) {
       return {

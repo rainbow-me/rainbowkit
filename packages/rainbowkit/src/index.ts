@@ -1,6 +1,6 @@
 export * from './components';
-export { rpcProvider } from './rpcProviders';
-export type { RpcProvider } from './rpcProviders/RpcProvider';
+export { apiProvider } from './apiProviders';
+export type { ApiProvider } from './apiProviders/ApiProvider';
 export { wallet } from './wallets/walletConnectors';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { connectorsForWallets } from './wallets/connectorsForWallets';

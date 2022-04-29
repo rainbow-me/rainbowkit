@@ -4,7 +4,7 @@ import {
 } from '@ethersproject/providers';
 import { Chain } from 'wagmi';
 
-export type RpcProvider<
+export type ApiProvider<
   Provider extends BaseProvider = BaseProvider,
   WebSocketProvider extends BaseWebSocketProvider = BaseWebSocketProvider
 > = {

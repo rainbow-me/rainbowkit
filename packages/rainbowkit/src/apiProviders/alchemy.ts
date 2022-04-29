@@ -1,21 +1,21 @@
 import {
-  InfuraProvider,
-  InfuraWebSocketProvider,
+  AlchemyProvider,
+  AlchemyWebSocketProvider,
 } from '@ethersproject/providers';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import { RpcProvider } from './RpcProvider';
+import { ApiProvider } from './ApiProvider';
 
-export const infura = (
+export const alchemy = (
   defaultChains: Chain[],
-  infuraId: string
-): Required<RpcProvider<InfuraProvider, InfuraWebSocketProvider>> => {
+  alchemyId: string
+): Required<ApiProvider<AlchemyProvider, AlchemyWebSocketProvider>> => {
   const chains = defaultChains.map(chain => {
-    if (chain.rpcUrls.infura) {
+    if (chain.rpcUrls.alchemy) {
       return {
         ...chain,
         rpcUrls: {
           ...chain.rpcUrls,
-          default: `${chain.rpcUrls.infura}/${infuraId}`,
+          default: `${chain.rpcUrls.alchemy}/${alchemyId}`,
         },
       };
     }
@@ -23,16 +23,16 @@ export const infura = (
   });
 
   const provider = ({ chainId }: { chainId?: number }) => {
-    return new InfuraProvider(
+    return new AlchemyProvider(
       chains.some(x => x.id === chainId) ? chainId : chains[0].id,
-      infuraId
+      alchemyId
     );
   };
 
   const webSocketProvider = ({ chainId }: { chainId?: number }) => {
-    return new InfuraWebSocketProvider(
+    return new AlchemyWebSocketProvider(
       chains.some(x => x.id === chainId) ? chainId : chains[0].id,
-      infuraId
+      alchemyId
     );
   };
 

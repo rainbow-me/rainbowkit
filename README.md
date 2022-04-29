@@ -31,7 +31,7 @@ import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const { provider, chains } = rpcProvider.alchemy([chain.mainnet], alchemyId);
+const { provider, chains } = apiProvider.alchemy([chain.mainnet], alchemyId);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
@@ -134,18 +134,18 @@ const App = () => {
 };
 ```
 
-### Choosing an RPC provider
+### Choosing an API provider
 
-RainbowKit has built-in RPC provider support so you don't have to worry about defining RPC URLs & a provider instance.
+RainbowKit has built-in Ethereum API provider support so you don't have to worry about defining RPC URLs & a provider instance to pass to `wagmi`.
 
 #### Alchemy
 
 ```tsx
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { apiProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, chains } = rpcProvider.alchemy(
+const { provider, chains } = apiProvider.alchemy(
   [chain.mainnet, chain.polygon],
   process.env.ALCHEMY_ID,
 );
@@ -154,11 +154,11 @@ const { provider, chains } = rpcProvider.alchemy(
 #### Infura
 
 ```tsx
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { apiProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, chains } = rpcProvider.infura(
+const { provider, chains } = apiProvider.infura(
   [chain.mainnet, chain.polygon],
   process.env.INFURA_ID,
 );
@@ -167,11 +167,11 @@ const { provider, chains } = rpcProvider.infura(
 #### Custom
 
 ```tsx
-import { rpcProvider } from '@rainbow-me/rainbowkit';
+import { apiProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, chains } = rpcProvider.custom(
+const { provider, chains } = apiProvider.custom(
   [chain.mainnet, chain.polygon],
   {
     rpcUrls: {

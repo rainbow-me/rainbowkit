@@ -26,7 +26,7 @@ import {
   RainbowKitProvider,
   Chain,
   getDefaultWallets,
-  rpcProvider,
+  apiProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 ```
@@ -39,7 +39,7 @@ Configure your wallets, desired chains and generate the required connectors. You
 ...
 import { WagmiProvider, chain } from 'wagmi';
 
-const { provider, chains } = rpcProvider.alchemy(
+const { provider, chains } = apiProvider.alchemy(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   process.env.ALCHEMY_ID
 );
