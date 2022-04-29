@@ -15,16 +15,14 @@ RainbowKit exports `rpcProvider` that you can use to instantiate your RPC provid
 
 To use the built-in Alchemy RPC provider, you will need to pass through your **chains** & **Alchemy ID**.
 
-```tsx line=1,4-9,13,21
+```tsx line=1,4-7,11,17
 import { rpcProvider } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const { provider, chains } = rpcProvider.alchemy([
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrum,
-], process.env.ALCHEMY_ID);
+const { provider, chains } = rpcProvider.alchemy(
+  [chain.mainnet, chain.polygon], 
+  process.env.ALCHEMY_ID
+);
 
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit demo',
@@ -44,7 +42,7 @@ const wagmiClient = createClient({
 
 To use the built-in Infura RPC provider, you will need to pass through your **chains** & **Infura ID**.
 
-```tsx line=1,6-9,14,22
+```tsx line=1,4-7,11,17
 import { rpcProvider } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
@@ -71,7 +69,7 @@ const wagmiClient = createClient({
 
 To use a custom RPC provider, you will need to pass through your **chains** and a map of **RPC URLs** (`rpcUrls`) of the chains you want to support.
 
-```tsx line=1,9-17,22,30
+```tsx line=1,4-12,16,22
 import { rpcProvider } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 

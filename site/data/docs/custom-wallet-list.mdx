@@ -13,8 +13,10 @@ You can use the `wallet` object and the `connectorsForWallets` function to build
 
 For example, you can choose to only show Rainbow and WalletConnect.
 
-```tsx
+```tsx line=1,5-99
 import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+
+const { chains } = rpcProvider.alchemy([chain.mainnet], process.env.ALCHEMY_ID);
 
 const connectors = connectorsForWallets([
   {
@@ -27,15 +29,19 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-You can then pass your connectors to `WagmiProvider`'s `connectors` prop.
+You can then pass your connectors to `wagmi`'s `createClient`.
 
-```tsx line=1,4-11
-import { WagmiProvider } from 'wagmi';
+```tsx line=1,4-99
+import { createClient } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 
+const wagmiClient = createClient({
+  connectors,
+});
+
 const App = () => (
-  <WagmiProvider connectors={connectors}>
+  <WagmiProvider client={wagmiClient}>
     <RainbowKitProvider>
       {/* Your App */}
     </RainbowKitProvider>

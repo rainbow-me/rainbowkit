@@ -9,16 +9,18 @@ description: Customizing chains
 
 The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
-Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
+Your chain config is defined in your [RPC Provider](/docs/rpc-providers) which gives you back a set of `chains` to pass through to `RainbowKitProvider`.
+
+In the example below, we are using the Alchemy RPC Provider, but you can choose [another one](/docs/rpc-providers) if you prefer.
 
 ```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-];
+const { chains } = rpcProvider.alchemy(
+  [chain.mainnet, chain.polygon],
+  process.env.ALCHEMY_ID,
+);
 
 const App = () => {
   return (
@@ -32,14 +34,17 @@ const App = () => {
 Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
 
 ```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    iconUrl: 'https://example.com/icons/ethereum.png',
-  },
-  {
-    ...chain.polygon,
-    iconUrl: 'https://example.com/icons/polygon.png',
-  },
-];
+const { chains } = rpcProvider.alchemy(
+  [
+    {
+      ...chain.mainnet,
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...chain.polygon,
+      iconUrl: 'https://example.com/icons/polygon.png',
+    },
+  ],
+  process.env.ALCHEMY_ID,
+);
 ```

@@ -2,7 +2,7 @@ import {
   StaticJsonRpcProvider,
   WebSocketProvider,
 } from '@ethersproject/providers';
-import { Chain } from 'wagmi';
+import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { RpcProvider } from './RpcProvider';
 
 export const custom = (
