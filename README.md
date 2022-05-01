@@ -18,7 +18,7 @@ RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wa
 
 Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
 
-`npm install @rainbow-me/rainbowkit wagmi@0.2 ethers`
+`npm install @rainbow-me/rainbowkit wagmi ethers`
 
 ## Getting started
 
@@ -32,7 +32,7 @@ import {
   Chain,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
+import { createClient, WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
 const infuraId = process.env.INFURA_ID;
@@ -1013,17 +1013,17 @@ The following properties are defined on the return value of the `createConnector
     </tr>
     <tr>
       <td><code>desktop</code></td>
-      <td><code>{ getUri?: () => string } | undefined</code></td>
+      <td><code>{ getUri?: () => Promise&lt;string> } | undefined</code></td>
       <td>Function for resolving a desktop wallet connection URI</td>
     </tr>
     <tr>
       <td><code>mobile</code></td>
-      <td><code>{ getUri?: () => string } | undefined</code></td>
+      <td><code>{ getUri?: () => Promise&lt;string> } | undefined</code></td>
       <td>Function for resolving a mobile wallet connection URI</td>
     </tr>
     <tr>
       <td><code>qrCode</code></td>
-      <td><code>{ getUri: () => string, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
+      <td><code>{ getUri: () => Promise&lt;string>, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
       <td>Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon</td>
     </tr>
   </tbody>

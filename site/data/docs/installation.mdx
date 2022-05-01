@@ -12,7 +12,7 @@ description: Get up and running with RainbowKit
 Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@0.2 ethers
+npm install @rainbow-me/rainbowkit wagmi ethers
 ```
 
 ### Import
@@ -27,13 +27,13 @@ import {
   Chain,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
+import { createClient, WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 ```
 
 ### Configure
 
-Configure your wallets, desired chains and generate the required connectors.
+Configure your wallets and desired chains, and create the wagmi client.
 
 ```tsx line=3-99
 ...
@@ -63,6 +63,12 @@ const { connectors } = getDefaultWallets({
       : rpcUrls.default[0];
   },
 });
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
 ```
 
 > We recommend using custom providers such as `InfuraProvider` and `AlchemyProvider`. For help generating provider ID's, see the [Infura docs](https://docs.infura.io/infura/create-a-project) and the [Alchemy docs](https://docs.alchemy.com/alchemy/introduction/getting-started).
@@ -74,11 +80,7 @@ Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wa
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider
-      autoConnect
-      connectors={connectors}
-      provider={provider}
-    >
+    <WagmiProvider client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>

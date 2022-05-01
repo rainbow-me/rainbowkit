@@ -11,6 +11,8 @@ In order to use `wagmi` with RainbowKit, you will now need to create a wagmi cli
 Before:
 
 ```tsx
+import { WagmiProvider } from 'wagmi';
+
 const App = () => {
   return (
     <WagmiProvider autoConnect connectors={connectors} provider={provider}>
@@ -25,6 +27,8 @@ const App = () => {
 After:
 
 ```tsx
+import { createClient, WagmiProvider } from 'wagmi';
+
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
@@ -42,7 +46,7 @@ const App = () => {
 };
 ```
 
-Note: if you are using `chains` from wagmi, the network names are now built in.
+Note: if you are using `chains` from wagmi, the default network names are now designed to suitable for usage within the UI.
 
 Before:
 
@@ -56,5 +60,5 @@ const chains: Chain[] = [
 After:
 
 ```tsx
-const chains: Chain[] = [chain.mainnet, chain.polygon];
+const chains = [chain.mainnet, chain.polygon];
 ```
