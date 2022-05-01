@@ -32,7 +32,7 @@ export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = (await connector.getProvider()).connector.uri;
+          const { uri } = (await connector.getProvider()).connector;
           return isAndroid()
             ? uri
             : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
@@ -40,7 +40,7 @@ export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
       },
       desktop: {
         getUri: async () => {
-          const uri = (await connector.getProvider()).connector.uri;
+          const { uri } = (await connector.getProvider()).connector;
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
