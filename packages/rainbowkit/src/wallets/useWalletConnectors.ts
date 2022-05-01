@@ -66,7 +66,21 @@ export function useWalletConnectors(): WalletConnector[] {
         ready: (wallet.installed ?? true) && connector.ready,
         recent,
         showWalletConnectModal: wallet.walletConnectModalConnector
-          ? () => connectWallet(wallet.id, wallet.walletConnectModalConnector!)
+          ? async () => {
+              try {
+                await connectWallet(
+                  wallet.id,
+                  wallet.walletConnectModalConnector!
+                );
+              } catch (err) {
+                // @ts-expect-error
+                const isUserRejection = err.name === 'UserRejectedRequestError';
+
+                if (!isUserRejection) {
+                  throw err;
+                }
+              }
+            }
           : undefined,
       };
     })
