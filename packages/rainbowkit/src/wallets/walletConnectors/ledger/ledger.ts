@@ -31,16 +31,16 @@ export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
     return {
       connector,
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
           return isAndroid()
             ? uri
             : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       desktop: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
       },

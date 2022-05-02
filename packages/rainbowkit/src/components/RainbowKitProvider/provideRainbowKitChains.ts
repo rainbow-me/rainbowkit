@@ -4,7 +4,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
-  | 'arbitrumOne'
+  | 'arbitrum'
   | 'arbitrumRinkeby'
   | 'avalanche'
   | 'avalancheFuji'
@@ -15,8 +15,8 @@ type ChainName =
   | 'mainnet'
   | 'optimism'
   | 'optimismKovan'
-  | 'polygonMainnet'
-  | 'polygonTestnetMumbai'
+  | 'polygon'
+  | 'polygonMumbai'
   | 'rinkeby'
   | 'ropsten';
 
@@ -60,7 +60,7 @@ const polygonIcon: IconMetadata = {
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
-  arbitrumOne: { chainId: 42_161, ...arbitrumIcon },
+  arbitrum: { chainId: 42_161, ...arbitrumIcon },
   arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
@@ -71,8 +71,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   mainnet: { chainId: 1, ...ethereumIcon },
   optimism: { chainId: 10, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
-  polygonMainnet: { chainId: 137, ...polygonIcon },
-  polygonTestnetMumbai: { chainId: 80_001, ...polygonIcon },
+  polygon: { chainId: 137, ...polygonIcon },
+  polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
 };

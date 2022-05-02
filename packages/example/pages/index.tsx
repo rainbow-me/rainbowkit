@@ -1,12 +1,12 @@
 import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
 
-import React, { ComponentProps, useState } from 'react';
+import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
   useNetwork,
+  useSendTransaction,
   useSignMessage,
   useSignTypedData,
-  useTransaction,
 } from 'wagmi';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
@@ -15,7 +15,7 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
-  const [{ data: accountData }] = useAccount();
+  const { data: accountData } = useAccount();
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -35,52 +35,64 @@ const Example = () => {
     defaultProps.showBalance.largeScreen
   );
 
-  const [{ data: networkData }] = useNetwork();
+  const { activeChain } = useNetwork();
 
-  const [{ data: transactionData, error: transactionError }, sendTransaction] =
-    useTransaction({
-      request: {
-        to: accountData?.address,
-        value: 0,
-      },
-    });
+  const {
+    data: transactionData,
+    error: transactionError,
+    sendTransaction,
+  } = useSendTransaction({
+    request: {
+      to: accountData?.address,
+      value: 0,
+    },
+  });
 
-  const [{ data: signingData, error: signingError }, signMessage] =
-    useSignMessage({
-      message: 'wen token',
-    });
+  const {
+    data: signingData,
+    error: signingError,
+    signMessage,
+  } = useSignMessage({
+    message: 'wen token',
+  });
 
-  const [{ data: typedData, error: typedError }, signTypedData] =
-    useSignTypedData({
-      domain: {
-        chainId: 1,
-        name: 'Ether Mail',
-        verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
-        version: '1',
+  const {
+    data: typedData,
+    error: typedError,
+    signTypedData,
+  } = useSignTypedData({
+    domain: {
+      chainId: 1,
+      name: 'Ether Mail',
+      verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
+      version: '1',
+    },
+    types: {
+      Mail: [
+        { name: 'from', type: 'Person' },
+        { name: 'to', type: 'Person' },
+        { name: 'contents', type: 'string' },
+      ],
+      Person: [
+        { name: 'name', type: 'string' },
+        { name: 'wallet', type: 'address' },
+      ],
+    },
+    value: {
+      contents: 'Hello, Bob!',
+      from: {
+        name: 'Cow',
+        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
       },
-      types: {
-        Mail: [
-          { name: 'from', type: 'Person' },
-          { name: 'to', type: 'Person' },
-          { name: 'contents', type: 'string' },
-        ],
-        Person: [
-          { name: 'name', type: 'string' },
-          { name: 'wallet', type: 'address' },
-        ],
+      to: {
+        name: 'Bob',
+        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
       },
-      value: {
-        contents: 'Hello, Bob!',
-        from: {
-          name: 'Cow',
-          wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
-        },
-        to: {
-          name: 'Bob',
-          wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-        },
-      },
-    });
+    },
+  });
+
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
 
   return (
     <div
@@ -136,7 +148,7 @@ const Example = () => {
                 })}
               >
                 {(() => {
-                  if (!chain || !account) {
+                  if (!mounted || !chain || !account) {
                     return (
                       <button onClick={openConnectModal} type="button">
                         Connect Wallet
@@ -197,155 +209,161 @@ const Example = () => {
         </ConnectButton.Custom>
       </div>
 
-      <div style={{ fontFamily: 'sans-serif' }}>
-        <h3>Example Actions {!accountData && <span>(not connected)</span>}</h3>
-        <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
-          <button
-            disabled={!accountData}
-            onClick={() => sendTransaction()}
-            type="button"
-          >
-            Send Transaction
-          </button>
-          <button
-            disabled={!accountData}
-            onClick={() => signMessage()}
-            type="button"
-          >
-            Sign Message
-          </button>
-          <button
-            disabled={!accountData || networkData.chain?.id !== 1}
-            onClick={() => signTypedData()}
-            type="button"
-          >
-            Sign Typed Data
-          </button>
-        </div>
-        <div>
-          {transactionData && (
-            <div>Transaction: {JSON.stringify(transactionData)}</div>
-          )}
-          {transactionError && <div>Error sending transaction</div>}
-          {signingData && <div>Data Signature: {signingData}</div>}
-          {signingError && <div>Error signing message</div>}
-          {typedData && <div>Typed Data Signature: {typedData}</div>}
-          {typedError && <div>Error signing typed message</div>}
-        </div>
-      </div>
+      {isMounted && (
+        <>
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <h3>
+              Example Actions {!accountData && <span>(not connected)</span>}
+            </h3>
+            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
+              <button
+                disabled={!accountData}
+                onClick={() => sendTransaction()}
+                type="button"
+              >
+                Send Transaction
+              </button>
+              <button
+                disabled={!accountData}
+                onClick={() => signMessage()}
+                type="button"
+              >
+                Sign Message
+              </button>
+              <button
+                disabled={!accountData || activeChain?.id !== 1}
+                onClick={() => signTypedData()}
+                type="button"
+              >
+                Sign Typed Data
+              </button>
+            </div>
+            <div>
+              {transactionData && (
+                <div>Transaction: {JSON.stringify(transactionData)}</div>
+              )}
+              {transactionError && <div>Error sending transaction</div>}
+              {signingData && <div>Data Signature: {signingData}</div>}
+              {signingError && <div>Error signing message</div>}
+              {typedData && <div>Typed Data Signature: {typedData}</div>}
+              {typedError && <div>Error signing typed message</div>}
+            </div>
+          </div>
 
-      <div style={{ fontFamily: 'sans-serif' }}>
-        <h3>ConnectButton props</h3>
-        <table cellSpacing={12}>
-          <thead>
-            <tr>
-              <th>Prop</th>
-              <th>smallScreen</th>
-              <th>largeScreen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <label htmlFor="accountStatus">accountStatus</label>
-              </td>
-              <td>
-                <select
-                  id="accountStatus"
-                  onChange={event =>
-                    setAccountStatusSmallScreen(
-                      event.currentTarget.value as AccountStatus
-                    )
-                  }
-                  value={accountStatusSmallScreen}
-                >
-                  <option>full</option>
-                  <option>avatar</option>
-                  <option>address</option>
-                </select>
-              </td>
-              <td>
-                <select
-                  id="accountStatus"
-                  onChange={event =>
-                    setAccountStatusLargeScreen(
-                      event.currentTarget.value as AccountStatus
-                    )
-                  }
-                  value={accountStatusLargeScreen}
-                >
-                  <option>full</option>
-                  <option>avatar</option>
-                  <option>address</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="showBalance">showBalance</label>
-              </td>
-              <td>
-                <input
-                  checked={showBalanceSmallScreen}
-                  id="showBalance"
-                  onChange={event => {
-                    setShowBalanceSmallScreen(event.currentTarget.checked);
-                  }}
-                  type="checkbox"
-                />
-              </td>
-              <td>
-                <input
-                  checked={showBalanceLargeScreen}
-                  id="showBalance"
-                  onChange={event => {
-                    setShowBalanceLargeScreen(event.currentTarget.checked);
-                  }}
-                  type="checkbox"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label htmlFor="chainStatus">chainStatus</label>
-              </td>
-              <td>
-                <select
-                  id="chainStatus"
-                  onChange={event =>
-                    setChainStatusSmallScreen(
-                      event.currentTarget.value as ChainStatus
-                    )
-                  }
-                  value={chainStatusSmallScreen}
-                >
-                  <option>full</option>
-                  <option>icon</option>
-                  <option>name</option>
-                  <option>none</option>
-                </select>
-              </td>
-              <td>
-                <select
-                  id="chainStatus"
-                  onChange={event =>
-                    setChainStatusLargeScreen(
-                      event.currentTarget.value as ChainStatus
-                    )
-                  }
-                  value={chainStatusLargeScreen}
-                >
-                  <option>full</option>
-                  <option>icon</option>
-                  <option>name</option>
-                  <option>none</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      {accountData ? <ManageTransactions /> : null}
+          <div style={{ fontFamily: 'sans-serif' }}>
+            <h3>ConnectButton props</h3>
+            <table cellSpacing={12}>
+              <thead>
+                <tr>
+                  <th>Prop</th>
+                  <th>smallScreen</th>
+                  <th>largeScreen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="accountStatus">accountStatus</label>
+                  </td>
+                  <td>
+                    <select
+                      id="accountStatus"
+                      onChange={event =>
+                        setAccountStatusSmallScreen(
+                          event.currentTarget.value as AccountStatus
+                        )
+                      }
+                      value={accountStatusSmallScreen}
+                    >
+                      <option>full</option>
+                      <option>avatar</option>
+                      <option>address</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      id="accountStatus"
+                      onChange={event =>
+                        setAccountStatusLargeScreen(
+                          event.currentTarget.value as AccountStatus
+                        )
+                      }
+                      value={accountStatusLargeScreen}
+                    >
+                      <option>full</option>
+                      <option>avatar</option>
+                      <option>address</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="showBalance">showBalance</label>
+                  </td>
+                  <td>
+                    <input
+                      checked={showBalanceSmallScreen}
+                      id="showBalance"
+                      onChange={event => {
+                        setShowBalanceSmallScreen(event.currentTarget.checked);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      checked={showBalanceLargeScreen}
+                      id="showBalance"
+                      onChange={event => {
+                        setShowBalanceLargeScreen(event.currentTarget.checked);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="chainStatus">chainStatus</label>
+                  </td>
+                  <td>
+                    <select
+                      id="chainStatus"
+                      onChange={event =>
+                        setChainStatusSmallScreen(
+                          event.currentTarget.value as ChainStatus
+                        )
+                      }
+                      value={chainStatusSmallScreen}
+                    >
+                      <option>full</option>
+                      <option>icon</option>
+                      <option>name</option>
+                      <option>none</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      id="chainStatus"
+                      onChange={event =>
+                        setChainStatusLargeScreen(
+                          event.currentTarget.value as ChainStatus
+                        )
+                      }
+                      value={chainStatusLargeScreen}
+                    >
+                      <option>full</option>
+                      <option>icon</option>
+                      <option>name</option>
+                      <option>none</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {accountData ? <ManageTransactions /> : null}
+        </>
+      )}
     </div>
   );
 };

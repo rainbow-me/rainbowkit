@@ -5,7 +5,14 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useAccount, useBalance, useNetwork } from 'wagmi';
+import {
+  useAccount,
+  useBalance,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+  useNetwork,
+} from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { isMobile } from '../../utils/isMobile';
@@ -69,22 +76,32 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
 
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: true,
-  });
+  const { data: accountData } = useAccount();
 
-  const [{ data: balanceData }] = useBalance({
+  const { data: ensAvatar } = useEnsAvatar({
     addressOrName: accountData?.address,
   });
 
-  const [{ data: networkData, error: networkError }, switchNetwork] =
-    useNetwork();
+  const { data: ensName } = useEnsName({ address: accountData?.address });
+
+  const { data: balanceData } = useBalance({
+    addressOrName: accountData?.address,
+  });
+
+  const {
+    activeChain,
+    chains,
+    error: networkError,
+    switchNetwork,
+  } = useNetwork();
+
+  const { disconnect } = useDisconnect();
 
   const rainbowKitChains = useRainbowKitChains();
   const rainbowkitChainsById = useRainbowKitChainsById();
 
-  const rainbowKitChain = networkData.chain
-    ? rainbowkitChainsById[networkData.chain.id]
+  const rainbowKitChain = activeChain
+    ? rainbowkitChainsById[activeChain.id]
     : undefined;
   const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
   const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
@@ -147,30 +164,30 @@ export function ConnectButtonRenderer({
   return (
     <>
       {children({
-        account: accountData
+        account: accountData?.address
           ? {
               address: accountData.address,
               balanceDecimals: balanceData?.decimals,
               balanceFormatted: balanceData?.formatted,
               balanceSymbol: balanceData?.symbol,
               displayBalance,
-              displayName: accountData.ens?.name
-                ? formatENS(accountData.ens?.name)
+              displayName: ensName
+                ? formatENS(ensName)
                 : formatAddress(accountData.address),
-              ensAvatar: accountData.ens?.avatar ?? undefined,
-              ensName: accountData.ens?.name,
+              ensAvatar: ensAvatar ?? undefined,
+              ensName: ensName ?? undefined,
               hasPendingTransactions,
             }
           : undefined,
         accountModalOpen,
-        chain: networkData?.chain
+        chain: activeChain
           ? {
               hasIcon: Boolean(chainIconUrl),
               iconBackground: chainIconBackground,
               iconUrl: resolvedChainIconUrl,
-              id: networkData.chain.id,
-              name: networkData.chain.name,
-              unsupported: networkData.chain.unsupported,
+              id: activeChain.id,
+              name: activeChain.name,
+              unsupported: activeChain.unsupported,
             }
           : undefined,
         chainModalOpen,
@@ -185,12 +202,15 @@ export function ConnectButtonRenderer({
       <AccountModal
         accountData={accountData}
         balanceData={balanceData}
+        ensAvatar={ensAvatar}
+        ensName={ensName}
         onClose={closeAccountModal}
         onDisconnect={disconnect}
         open={accountModalOpen}
       />
       <ChainModal
-        networkData={networkData}
+        activeChain={activeChain}
+        chains={chains}
         networkError={networkError}
         onClose={closeChainModal}
         onSwitchNetwork={switchNetwork}

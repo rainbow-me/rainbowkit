@@ -32,8 +32,8 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => ({
     return {
       connector,
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
 
           return isAndroid()
             ? uri
@@ -41,7 +41,7 @@ export const argent = ({ chains, infuraId }: ArgentOptions): Wallet => ({
         },
       },
       qrCode: {
-        getUri: () => connector.getProvider().connector.uri,
+        getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl: 'https://www.argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [

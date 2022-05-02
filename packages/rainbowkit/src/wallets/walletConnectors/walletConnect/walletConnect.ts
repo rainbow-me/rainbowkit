@@ -28,7 +28,7 @@ export const walletConnect = ({
       },
     });
 
-    const getUri = () => connector.getProvider().connector.uri;
+    const getUri = async () => (await connector.getProvider()).connector.uri;
 
     return {
       connector,

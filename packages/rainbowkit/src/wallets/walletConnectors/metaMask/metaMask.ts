@@ -17,9 +17,7 @@ export const metaMask = ({
   shimDisconnect,
 }: MetaMaskOptions): Wallet => {
   const isMetaMaskInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    window.ethereum?.isMetaMask;
+    typeof window !== 'undefined' && window.ethereum?.isMetaMask;
 
   const shouldUseWalletConnect = isMobile() && !isMetaMaskInjected;
 
@@ -53,8 +51,8 @@ export const metaMask = ({
         connector,
         mobile: {
           getUri: shouldUseWalletConnect
-            ? () => {
-                const { uri } = connector.getProvider().connector;
+            ? async () => {
+                const { uri } = (await connector.getProvider()).connector;
 
                 return isAndroid()
                   ? uri

@@ -17,22 +17,24 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 export interface ChainModalProps {
+  activeChain: ReturnType<typeof useNetwork>['activeChain'];
+  chains: ReturnType<typeof useNetwork>['chains'];
   open: boolean;
   onClose: () => void;
-  networkData: ReturnType<typeof useNetwork>[0]['data'];
-  networkError: ReturnType<typeof useNetwork>[0]['error'];
-  onSwitchNetwork?: (chainId: number) => unknown | undefined;
+  networkError: ReturnType<typeof useNetwork>['error'];
+  onSwitchNetwork?: (chainId: number) => unknown;
 }
 
 export function ChainModal({
-  networkData,
+  activeChain,
+  chains,
   networkError,
   onClose,
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
+  const { activeConnector } = useConnect();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
-  const [{ data: connectData }] = useConnect();
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
@@ -43,15 +45,25 @@ export function ChainModal({
   }, [onClose]);
 
   useEffect(() => {
-    if (!connectData.connector) {
+    if (!activeConnector) {
       return;
     }
-    const provider = connectData.connector.getProvider();
-    provider.on('chainChanged', stopSwitching);
-    return () => {
-      provider.removeListener('chainChanged', stopSwitching);
+
+    const stopSwitching = () => {
+      setSwitchingToChain(null);
+      onClose();
     };
-  }, [connectData.connector, onClose, stopSwitching]);
+
+    let provider: any;
+    activeConnector?.getProvider?.().then(provider_ => {
+      provider = provider_;
+      provider.on('chainChanged', stopSwitching);
+    });
+
+    return () => {
+      provider?.removeListener('chainChanged', stopSwitching);
+    };
+  }, [activeConnector, onClose, stopSwitching]);
 
   useEffect(() => {
     if (networkError && networkError.name === 'UserRejectedRequestError') {
@@ -61,7 +73,7 @@ export function ChainModal({
 
   const { appName } = useContext(AppContext);
 
-  if (!networkData || !networkData.chain) {
+  if (!activeChain || !activeChain?.id) {
     return null;
   }
 
@@ -90,8 +102,8 @@ export function ChainModal({
           </Box>
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork ? (
-              networkData.chains.map((chain, idx) => {
-                const isCurrentChain = chain.id === networkData.chain?.id;
+              chains.map((chain, idx) => {
+                const isCurrentChain = chain.id === activeChain?.id;
                 const switching = chain.id === switchingToChain;
                 const rainbowKitChain = rainbowkitChainsById[chain.id];
                 const chainIconSize: BoxProps['width'] = mobile ? '36' : '28';
@@ -187,7 +199,7 @@ export function ChainModal({
                         </Box>
                       </Box>
                     </MenuButton>
-                    {mobile && idx < networkData?.chains?.length - 1 && (
+                    {mobile && idx < chains?.length - 1 && (
                       <Box
                         background="generalBorderDim"
                         height="1"

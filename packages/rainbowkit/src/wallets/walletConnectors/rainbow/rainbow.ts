@@ -31,8 +31,8 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
     return {
       connector,
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
 
           return isAndroid()
             ? uri
@@ -40,7 +40,7 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
         },
       },
       qrCode: {
-        getUri: () => connector.getProvider().connector.uri,
+        getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl:
             'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',

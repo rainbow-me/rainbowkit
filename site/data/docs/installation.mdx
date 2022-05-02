@@ -12,7 +12,7 @@ description: Get up and running with RainbowKit
 Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@0.2 ethers
+npm install @rainbow-me/rainbowkit wagmi ethers
 ```
 
 ### Import
@@ -27,13 +27,13 @@ import {
   Chain,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
+import { createClient, WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 ```
 
 ### Configure
 
-Configure your wallets, desired chains and generate the required connectors.
+Configure your wallets and desired chains, and create the wagmi client.
 
 ```tsx line=3-99
 ...
@@ -45,19 +45,29 @@ const provider = ({ chainId }) =>
   new providers.InfuraProvider(chainId, infuraId);
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrumOne,
 ];
 
 const { connectors } = getDefaultWallets({
   chains,
   infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) =>
-    chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-    chain.mainnet.rpcUrls[0],
+  jsonRpcUrl: ({ chainId }) => {
+    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
+      .rpcUrls;
+    return typeof rpcUrls.default === 'string'
+      ? rpcUrls.default
+      : rpcUrls.default[0];
+  },
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
 });
 ```
 
@@ -70,11 +80,7 @@ Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wa
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider
-      autoConnect
-      connectors={connectors}
-      provider={provider}
-    >
+    <WagmiProvider client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>

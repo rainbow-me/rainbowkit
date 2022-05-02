@@ -140,11 +140,13 @@ export function GetDetail({
 const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   connectionError,
+  qrCodeUri,
   reconnect,
   setWalletStep,
   wallet,
 }: {
   connectionError: boolean;
+  qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   setWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
@@ -158,7 +160,7 @@ export function ConnectDetail({
     ready,
     showWalletConnectModal,
   } = wallet;
-  const desktopDeeplink = wallet.desktop?.getUri?.();
+  const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
   let readyMsg;
   if (ready) {
@@ -189,23 +191,24 @@ export function ConnectDetail({
     : {
         description: `Confirm the connection in ${name}`,
         label: 'RETRY',
-        onClick: desktopDeeplink
-          ? () => {
-              window.open(desktopDeeplink, safari ? '_blank' : '_self');
+        onClick: getDesktopDeepLink
+          ? async () => {
+              const uri = await getDesktopDeepLink();
+              window.open(uri, safari ? '_blank' : '_self');
             }
           : () => reconnect(wallet),
       };
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
-      {qrCode ? (
+      {qrCode && qrCodeUri ? (
         <Box height="full">
           <QRCode
             logoBackground={iconBackground}
             logoSize={72}
             logoUrl={iconUrl}
             size={382}
-            uri={qrCode.getUri()}
+            uri={qrCodeUri}
           />
         </Box>
       ) : (

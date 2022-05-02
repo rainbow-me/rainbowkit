@@ -31,15 +31,15 @@ export const trust = ({ chains, infuraId }: TrustOptions): Wallet => ({
     return {
       connector,
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
           return isAndroid()
             ? uri
             : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: () => connector.getProvider().connector.uri,
+        getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl:
             'https://trustwallet.com/blog/an-introduction-to-trustwallet',

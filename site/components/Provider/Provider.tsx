@@ -1,7 +1,7 @@
 import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { providers } from 'ethers';
-import React from 'react';
-import { chain, Provider as WagmiProvider } from 'wagmi';
+import React, { useEffect, useState } from 'react';
+import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
 
 export const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
 
@@ -15,27 +15,35 @@ const provider = ({ chainId }) =>
   );
 
 export const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
-  { ...chain.optimism, name: 'Optimism' },
-  { ...chain.arbitrumOne, name: 'Arbitrum' },
+  chain.mainnet,
+  chain.polygon,
+  chain.optimism,
+  chain.arbitrum,
 ];
 
-const { connectors: defaultConnectors } = getDefaultWallets({
+const { connectors } = getDefaultWallets({
   appName: 'RainbowKit site',
   chains,
   infuraId,
-  jsonRpcUrl: ({ chainId }) =>
-    `${
-      chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-      chain.mainnet.rpcUrls[0]
-    }/${infuraId}`,
+  jsonRpcUrl: ({ chainId }) => {
+    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
+      .rpcUrls;
+    return typeof rpcUrls.default === 'string'
+      ? rpcUrls.default
+      : rpcUrls.default[0];
+  },
 });
 
-export function Provider({ children, connectors = defaultConnectors }) {
-  return (
-    <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-      {children}
-    </WagmiProvider>
-  );
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+export function Provider({ children }) {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
+
+  if (!isMounted) return null;
+  return <WagmiProvider client={wagmiClient}>{children}</WagmiProvider>;
 }

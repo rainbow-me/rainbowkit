@@ -26,11 +26,8 @@ export const getDefaultWallets = ({
 } => {
   const needsInjectedWalletFallback =
     typeof window !== 'undefined' &&
-    // @ts-expect-error
     window.ethereum &&
-    // @ts-expect-error
     !window.ethereum.isMetaMask &&
-    // @ts-expect-error
     !window.ethereum.isCoinbaseWallet;
 
   const wallets: WalletList = [

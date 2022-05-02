@@ -31,7 +31,7 @@ export function TxItem({ tx }: TxProps) {
   const mobile = isMobile();
   const Icon = getTxStatusIcon(tx.status);
   const color = tx.status === 'failed' ? 'error' : 'accentColor';
-  const [{ data: networkData }] = useNetwork();
+  const { activeChain } = useNetwork();
 
   const confirmationStatus =
     tx.status === 'confirmed'
@@ -40,7 +40,7 @@ export function TxItem({ tx }: TxProps) {
       ? 'Failed'
       : 'Pending';
 
-  const explorerLink = chainToExplorerUrl(networkData?.chain);
+  const explorerLink = chainToExplorerUrl(activeChain);
 
   return (
     <>

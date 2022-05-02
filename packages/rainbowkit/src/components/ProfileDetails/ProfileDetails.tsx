@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useAccount, useBalance } from 'wagmi';
+import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -15,8 +15,10 @@ import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  accountData: ReturnType<typeof useAccount>[0]['data'];
-  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  accountData: ReturnType<typeof useAccount>['data'];
+  balanceData: ReturnType<typeof useBalance>['data'];
+  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
+  ensName: ReturnType<typeof useEnsName>['data'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -24,6 +26,8 @@ interface ProfileDetailsProps {
 export function ProfileDetails({
   accountData,
   balanceData,
+  ensAvatar,
+  ensName,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
@@ -46,12 +50,12 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
-  if (!accountData) {
+  if (!accountData?.address) {
     return null;
   }
 
-  const accountName = accountData.ens?.name
-    ? formatENS(accountData.ens?.name)
+  const accountName = ensName
+    ? formatENS(ensName)
     : formatAddress(accountData.address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
@@ -83,7 +87,7 @@ export function ProfileDetails({
             <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
                 address={accountData.address}
-                imageUrl={accountData.ens?.avatar}
+                imageUrl={ensAvatar}
                 size={mobile ? 82 : 74}
               />
             </Box>

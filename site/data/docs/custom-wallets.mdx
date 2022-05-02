@@ -84,15 +84,22 @@ The following properties are defined on the return value of the `createConnector
     {
       name: 'mobile',
       required: false,
-      type: '{ getUri?: () => string }',
+      type: '{ getUri?: () => Promise<string> }',
       typeSimple: 'object',
       description:
         'Function for resolving a mobile wallet connection URI',
     },
     {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: () => Promise<string> }',
+      typeSimple: 'object',
+      description: 'Function for resolving a desktop app deep link',
+    },
+    {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => string, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}} ",
+      type: "{ getUri: () => Promise<string>, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}} ",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon',
@@ -145,13 +152,14 @@ export const rainbow = ({
     return {
       connector,
       mobile: {
-        getUri: () => {
-          const { uri } = connector.getProvider().connector;
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
           return uri;
         },
       },
       qrCode: {
-        getUri: () => connector.getProvider().connector.uri,
+        getUri: async () =>
+          (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl: 'https://my-wallet/learn-more',
           steps: [

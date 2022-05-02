@@ -35,6 +35,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     string | undefined
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
+  const [qrCodeUri, setQrCodeUri] = useState<string>();
   const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
   const wallets = useWalletConnectors().filter(
@@ -46,15 +47,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
     if (wallet.ready) {
-      wallet?.connect?.().then(x => {
-        if (x.error) {
-          setConnectionError(true);
-        }
+      wallet?.connect?.()?.catch(() => {
+        setConnectionError(true);
       });
-      if (wallet.desktop) {
-        // if desktop deeplink, wait for uri
-        setTimeout(() => {
-          const uri = wallet.desktop?.getUri?.();
+
+      const getDesktopDeepLink = wallet.desktop?.getUri;
+      if (getDesktopDeepLink) {
+        // if desktop deep link, wait for uri
+        setTimeout(async () => {
+          const uri = await getDesktopDeepLink();
           window.open(uri, safari ? '_blank' : '_self');
         }, 0);
       }
@@ -63,13 +64,20 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const onSelectWallet = (wallet: WalletConnector) => {
     connectToWallet(wallet);
-    // Update selected wallet state on next tick so QR code URIs are ready to render
-    setTimeout(() => {
-      setSelectedOptionId(wallet.id);
-      const sWallet = wallets.find(w => wallet.id === w.id);
-      setSelectedWallet(sWallet);
+    setSelectedOptionId(wallet.id);
+
+    if (wallet.ready) {
+      wallet?.onConnecting?.(async () => {
+        const sWallet = wallets.find(w => wallet.id === w.id);
+        const uri = await sWallet?.qrCode?.getUri();
+        setQrCodeUri(uri);
+        setSelectedWallet(sWallet);
+        setWalletStep(WalletStep.Connect);
+      });
+    } else {
+      setSelectedWallet(wallet);
       setWalletStep(WalletStep.Connect);
-    }, 0);
+    }
   };
 
   const getMobileWallet = (id: string) => {
@@ -104,6 +112,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <ConnectDetail
           connectionError={connectionError}
+          qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
           setWalletStep={setWalletStep}
           wallet={selectedWallet}

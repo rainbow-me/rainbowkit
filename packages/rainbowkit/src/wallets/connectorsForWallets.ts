@@ -13,11 +13,13 @@ export const connectorsForWallets = (walletList: WalletList) => {
           createConnector(connectorArgs)
         );
 
+        // @ts-expect-error
         if (connector._wallet) {
           throw new Error(
             `Can't connect wallet "${walletMeta.name}" to connector "${
               connector.name ?? connector.id
             }" as it's already connected to wallet "${
+              // @ts-expect-error
               connector._wallet.name
             }". Each wallet must have its own connector instance.`
           );
@@ -47,6 +49,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         };
 
         // Mutate connector instance to add wallet instance
+        // @ts-expect-error
         connector._wallet = walletInstance;
 
         connectors.push(connector);

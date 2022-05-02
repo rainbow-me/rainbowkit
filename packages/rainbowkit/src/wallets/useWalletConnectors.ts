@@ -6,21 +6,19 @@ import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
-  connect?: () => Promise<{
-    data?: any;
-    error?: Error | undefined;
-  }>;
+  connect?: ReturnType<typeof useConnect>['connectAsync'];
+  onConnecting?: (fn: () => void) => void;
   showWalletConnectModal?: () => void;
   recent: boolean;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const [{ data: connectData }, connect] = useConnect();
+  const { connectAsync, connectors: defaultConnectors } = useConnect();
 
   async function connectWallet(walletId: string, connector: Connector) {
-    const result = await connect(connector);
+    const result = await connectAsync(connector);
 
-    if (result.data) {
+    if (result) {
       addRecentWalletId(walletId);
     }
 
@@ -28,7 +26,8 @@ export function useWalletConnectors(): WalletConnector[] {
   }
 
   const connectorByWalletId = indexBy(
-    connectData.connectors,
+    defaultConnectors,
+    // @ts-expect-error
     connector => (connector._wallet as WalletInstance)?.id
   );
 
@@ -40,13 +39,14 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const connectors: Connector[] = [
     ...recentConnectors,
-    ...connectData.connectors.filter(
+    ...defaultConnectors.filter(
       connector => !recentConnectors.includes(connector)
     ),
   ];
 
   return connectors
     .map((connector: Connector) => {
+      // @ts-expect-error
       const wallet = connector._wallet as WalletInstance;
 
       if (!wallet) {
@@ -59,10 +59,28 @@ export function useWalletConnectors(): WalletConnector[] {
         ...wallet,
         connect: () => connectWallet(wallet.id, connector),
         groupName: recent ? 'Recent' : wallet.groupName,
+        onConnecting: (fn: () => void) =>
+          connector.on('message', ({ type }) =>
+            type === 'connecting' ? fn() : undefined
+          ),
         ready: (wallet.installed ?? true) && connector.ready,
         recent,
         showWalletConnectModal: wallet.walletConnectModalConnector
-          ? () => connectWallet(wallet.id, wallet.walletConnectModalConnector)
+          ? async () => {
+              try {
+                await connectWallet(
+                  wallet.id,
+                  wallet.walletConnectModalConnector!
+                );
+              } catch (err) {
+                // @ts-expect-error
+                const isUserRejection = err.name === 'UserRejectedRequestError';
+
+                if (!isUserRejection) {
+                  throw err;
+                }
+              }
+            }
           : undefined,
       };
     })

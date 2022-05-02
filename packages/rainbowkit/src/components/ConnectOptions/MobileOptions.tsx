@@ -22,6 +22,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
     id,
     mobile,
     name,
+    onConnecting,
     ready,
     shortName,
   } = wallet;
@@ -35,16 +36,15 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       disabled={!ready}
       fontFamily="body"
       key={id}
-      onClick={useCallback(() => {
+      onClick={useCallback(async () => {
         connect?.();
 
-        if (getMobileUri) {
-          // Get URI on next tick after connecting to ensure it's available
-          setTimeout(() => {
-            window.location.href = getMobileUri();
-          }, 0);
-        }
-      }, [connect, getMobileUri])}
+        onConnecting?.(async () => {
+          if (getMobileUri) {
+            window.location.href = await getMobileUri();
+          }
+        });
+      }, [connect, getMobileUri, onConnecting])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"

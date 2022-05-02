@@ -1,12 +1,14 @@
 import React from 'react';
-import { useAccount, useBalance } from 'wagmi';
+import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 
 export interface AccountModalProps {
-  accountData: ReturnType<typeof useAccount>[0]['data'];
-  balanceData: ReturnType<typeof useBalance>[0]['data'];
+  accountData: ReturnType<typeof useAccount>['data'];
+  balanceData: ReturnType<typeof useBalance>['data'];
+  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
+  ensName: ReturnType<typeof useEnsName>['data'];
   open: boolean;
   onClose: () => void;
   onDisconnect: () => void;
@@ -15,6 +17,8 @@ export interface AccountModalProps {
 export function AccountModal({
   accountData,
   balanceData,
+  ensAvatar,
+  ensName,
   onClose,
   onDisconnect,
   open,
@@ -33,6 +37,8 @@ export function AccountModal({
             <ProfileDetails
               accountData={accountData}
               balanceData={balanceData}
+              ensAvatar={ensAvatar}
+              ensName={ensName}
               onClose={onClose}
               onDisconnect={onDisconnect}
             />

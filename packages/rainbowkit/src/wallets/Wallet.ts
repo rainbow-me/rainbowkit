@@ -9,13 +9,13 @@ export type ConnectorArgs = {
 type RainbowKitConnector<C extends Connector = Connector> = {
   connector: C;
   mobile?: {
-    getUri?: () => string;
+    getUri?: () => Promise<string>;
   };
   desktop?: {
-    getUri?: () => string;
+    getUri?: () => Promise<string>;
   };
   qrCode?: {
-    getUri: () => string;
+    getUri: () => Promise<string>;
     instructions?: {
       learnMoreUrl: string;
       steps: {

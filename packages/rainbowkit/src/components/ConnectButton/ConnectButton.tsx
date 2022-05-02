@@ -50,7 +50,6 @@ export function ConnectButton({
           <Box
             display="flex"
             gap="12"
-            transition="default"
             {...(!mounted && {
               'aria-hidden': true,
               'style': {
@@ -60,7 +59,7 @@ export function ConnectButton({
               },
             })}
           >
-            {account ? (
+            {mounted && account ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box

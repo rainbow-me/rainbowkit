@@ -16,8 +16,8 @@ import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const chains: Chain[] = [
-  { ...chain.mainnet, name: 'Ethereum' },
-  { ...chain.polygonMainnet, name: 'Polygon' },
+  chain.mainnet,
+  chain.polygon,
 ];
 
 const App = () => {
@@ -35,12 +35,10 @@ Several chain icons are provided by default, but you can customize the icon for 
 const chains: Chain[] = [
   {
     ...chain.mainnet,
-    name: 'Ethereum',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
-    ...chain.polygonMainnet,
-    name: 'Polygon',
+    ...chain.polygon,
     iconUrl: 'https://example.com/icons/polygon.png',
   },
 ];
