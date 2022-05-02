@@ -25,10 +25,7 @@ const parseAndStoreWallets: (
   data: any,
   wallets: WalletConnector[],
   setOtherWallets: (otherWallets: WalletConnector[]) => void,
-  connect: (connector: Connector) => Promise<{
-    data?: any;
-    error?: Error | undefined;
-  }>,
+  connect: (connector: Connector) => Promise<any>,
   chains: Chain[]
 ) => void = (data, wallets, setOtherWallets, connect, chains) => {
   const defaultWalletNames = wallets.map(w => w.name);
@@ -214,7 +211,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
   const { learnMoreUrl } = useContext(AppContext);
-  const [, connect] = useConnect();
+  const { connectAsync } = useConnect();
   const chains = useRainbowKitChains();
 
   let headerLabel = null;
@@ -235,7 +232,13 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         'https://registry.walletconnect.com/api/v2/wallets'
       );
       const resJson = await res.json();
-      parseAndStoreWallets(resJson, wallets, setOtherWallets, connect, chains);
+      parseAndStoreWallets(
+        resJson,
+        wallets,
+        setOtherWallets,
+        connectAsync,
+        chains as Chain[]
+      );
     };
     fetchOtherWallets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
