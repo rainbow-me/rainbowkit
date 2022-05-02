@@ -9,16 +9,31 @@ description: Customizing chains
 
 The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/docs/constants/chains#chain) which currently provides the following chains:
+
+- `chain.mainnet`
+- `chain.ropsten`
+- `chain.rinkeby`
+- `chain.goerli`
+- `chain.kovan`
+- `chain.optimism`
+- `chain.optimismKovan`
+- `chain.polygon`
+- `chain.polygonMumbai`
+- `chain.arbitrum`
+- `chain.arbitrumRinkeby`
+- `chain.localhost`
+- `chain.hardhat`
+
+> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi’s `chain` object](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts).
+
 Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
 
 ```tsx
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-];
+const chains: Chain[] = [chain.mainnet, chain.polygon];
 
 const App = () => {
   return (

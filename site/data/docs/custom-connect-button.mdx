@@ -23,32 +23,78 @@ export const YourApp = () => {
         openAccountModal,
         openChainModal,
         openConnectModal,
-      }) =>
-        !account ? (
-          <button onClick={openConnectModal}>Connect Wallet</button>
-        ) : (
-          <div>
-            {chain && (
-              <button onClick={openChainModal}>
-                {chain.iconUrl && (
-                  <img
-                    alt={chain.name ?? 'Chain icon'}
-                    src={chain.iconUrl}
-                  />
-                )}
-                {chain.name ?? chain.id}
-                {chain.unsupported && ' (unsupported)'}
-              </button>
-            )}
-            <button onClick={openAccountModal}>
-              {account.displayName}
-              {account.displayBalance
-                ? ` (${account.displayBalance})`
-                : ''}
-            </button>
+        mounted,
+      }) => {
+        return (
+          <div
+            {...(!mounted && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
+          >
+            {(() => {
+              if (!mounted || !account || !chain) {
+                return (
+                  <button onClick={openConnectModal} type="button">
+                    Connect Wallet
+                  </button>
+                );
+              }
+
+              if (chain.unsupported) {
+                return (
+                  <button onClick={openChainModal} type="button">
+                    Wrong network
+                  </button>
+                );
+              }
+
+              return (
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <button
+                    onClick={openChainModal}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                    type="button"
+                  >
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          background: chain.iconBackground,
+                          width: 12,
+                          height: 12,
+                          borderRadius: 999,
+                          overflow: 'hidden',
+                          marginRight: 4,
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? 'Chain icon'}
+                            src={chain.iconUrl}
+                            style={{ width: 12, height: 12 }}
+                          />
+                        )}
+                      </div>
+                    )}
+                    {chain.name}
+                  </button>
+
+                  <button onClick={openAccountModal} type="button">
+                    {account.displayName}
+                    {account.displayBalance
+                      ? ` (${account.displayBalance})`
+                      : ''}
+                  </button>
+                </div>
+              );
+            })()}
           </div>
-        )
-      }
+        );
+      }}
     </ConnectButton.Custom>
   );
 };
@@ -123,8 +169,7 @@ The following props are passed to your render function.
       description: (
         <>
           The ENS name, or a truncated version of the address, e.g.{' '}
-          <code>"rainbowwallet.eth"</code> or{' '}
-          <code>"0x7a3d...384f"</code>
+          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
         </>
       ),
     },
@@ -143,6 +188,13 @@ The following props are passed to your render function.
           The ENS name, e.g. <code>rainbowwallet.eth</code>
         </>
       ),
+    },
+    {
+      name: 'account.hasPendingTransactions',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the account has pending transactions for the current chain',
     },
   ]}
 />
@@ -229,6 +281,13 @@ The following props are passed to your render function.
       required: false,
       type: '() => void',
       description: 'Function to open the connect modal',
+    },
+    {
+      name: 'mounted',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the component has mounted',
     },
     {
       name: 'accountModalOpen',

@@ -30,7 +30,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
     {
       name: 'shortName',
       required: false,
-      type: 'string',
+      type: 'string | undefined',
       description: 'Optional short name for mobile use',
     },
     {
@@ -44,7 +44,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet loads',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -99,17 +99,10 @@ The following properties are defined on the return value of the `createConnector
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, iconUrl?: string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}} ",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon',
-    },
-    {
-      name: 'downloadUrls',
-      required: false,
-      type: '{ mobile?: string, browserExtension?: string }',
-      typeSimple: 'object',
-      description: 'Object containing download URLs',
     },
   ]}
 />
