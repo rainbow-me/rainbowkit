@@ -19,10 +19,6 @@ const nestedModalZIndexes: Record<string, number> = {
 const bleed = 200;
 export const overlay = style([
   sprinkles({
-    alignItems: {
-      largeScreen: 'center',
-      smallScreen: 'flex-end',
-    },
     background: 'modalBackdrop',
     display: 'flex',
     justifyContent: 'center',

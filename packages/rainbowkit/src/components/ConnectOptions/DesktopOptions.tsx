@@ -18,7 +18,7 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { ScrollClassName } from './DesktopOptions.css';
+import { ScrollClassName, sidebar } from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -150,12 +150,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   return (
     <Box display="flex" flexDirection="row">
       <Box
+        className={sidebar}
         display="flex"
         flexDirection="column"
         marginTop="18"
-        style={{
-          minWidth: isMobile() ? 'full' : '287px',
-        }}
       >
         <Box marginLeft="6" paddingBottom="10" paddingX="18">
           <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
@@ -238,7 +236,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 style={{ flexGrow: 1 }}
               >
                 {headerLabel && (
-                  <Text color="modalText" size="18" weight="heavy">
+                  <Text
+                    color="modalText"
+                    size="18"
+                    textAlign="center"
+                    weight="heavy"
+                  >
                     {headerLabel}
                   </Text>
                 )}

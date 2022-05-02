@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
+import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
@@ -34,6 +35,7 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
 
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
   const themeRootProps = useThemeRootProps();
+  const mobile = isMobile();
   return (
     <>
       {open
@@ -41,6 +43,7 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
             <RemoveScroll>
               <Box
                 {...themeRootProps}
+                alignItems={mobile ? 'flex-end' : 'center'}
                 aria-labelledby={titleId}
                 aria-modal
                 className={styles.overlay}
