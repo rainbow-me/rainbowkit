@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
 import {
@@ -29,6 +30,7 @@ export enum WalletStep {
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
+  const safari = isSafari();
   const [selectedOptionId, setSelectedOptionId] = useState<
     string | undefined
   >();
@@ -48,6 +50,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
       });
+
+      const getDesktopDeepLink = wallet.desktop?.getUri;
+      if (getDesktopDeepLink) {
+        // if desktop deep link, wait for uri
+        setTimeout(async () => {
+          const uri = await getDesktopDeepLink();
+          window.open(uri, safari ? '_blank' : '_self');
+        }, 0);
+      }
     }
   };
 

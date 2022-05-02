@@ -104,10 +104,7 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.rainbow({ chains }),
       wallet.metaMask({ chains }),
-      wallet.coinbase({
-        appName: 'My RainbowKit App',
-        chains,
-      }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
       wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback
         ? [wallet.injected({ chains })]
@@ -193,10 +190,7 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.metaMask({ chains }),
       wallet.rainbow({ chains }),
-      wallet.coinbase({
-        appName: 'My RainbowKit App',
-        chains,
-      }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
     ],
   },
 ]);
@@ -225,10 +219,7 @@ const connectors = connectorsForWallets([
     groupName: 'Others',
     wallets: [
       wallet.walletConnect({ chains }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-      }),
+      wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
     ],
   },
 ]);

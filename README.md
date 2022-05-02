@@ -18,7 +18,7 @@ RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wa
 
 Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
 
-`npm install @rainbow-me/rainbowkit wagmi@0.3 ethers`
+`npm install @rainbow-me/rainbowkit wagmi ethers`
 
 ## Getting started
 
@@ -31,7 +31,10 @@ import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const { provider, chains } = apiProvider.alchemy([chain.mainnet], alchemyId);
+const { provider, chains } = apiProvider.alchemy(
+  [chain.mainnet],
+  process.env.ALCHEMY_ID
+);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
@@ -820,10 +823,7 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.rainbow({ chains }),
       wallet.walletConnect({ chains }),
-      wallet.coinbase({
-        appName: 'My RainbowKit App',
-        chains,
-      }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
       wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
@@ -1022,13 +1022,18 @@ The following properties are defined on the return value of the `createConnector
       <td>Instance of a <a href="https://wagmi.sh/guides/connectors">wagmi connector</a></td>
     </tr>
     <tr>
+      <td><code>desktop</code></td>
+      <td><code>{ getUri?: () => Promise&lt;string> } | undefined</code></td>
+      <td>Function for resolving a desktop wallet connection URI</td>
+    </tr>
+    <tr>
       <td><code>mobile</code></td>
-      <td><code>{ getUri?: () => string } | undefined</code></td>
+      <td><code>{ getUri?: () => Promise&lt;string> } | undefined</code></td>
       <td>Function for resolving a mobile wallet connection URI</td>
     </tr>
     <tr>
       <td><code>qrCode</code></td>
-      <td><code>{ getUri: () => string, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
+      <td><code>{ getUri: () => Promise&lt;string>, instructions?: { learnMoreUrl: string, steps: Array&lt;{ step: 'install' | 'create' | 'scan', title: string, description: string }&gt; }}} | undefined</code></td>
       <td>Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon</td>
     </tr>
   </tbody>

@@ -11,6 +11,9 @@ type RainbowKitConnector<C extends Connector = Connector> = {
   mobile?: {
     getUri?: () => Promise<string>;
   };
+  desktop?: {
+    getUri?: () => Promise<string>;
+  };
   qrCode?: {
     getUri: () => Promise<string>;
     instructions?: {

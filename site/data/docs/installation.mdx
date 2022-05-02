@@ -12,7 +12,7 @@ description: Get up and running with RainbowKit
 Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@0.3 ethers
+npm install @rainbow-me/rainbowkit wagmi ethers
 ```
 
 ### Import
@@ -28,7 +28,7 @@ import {
   getDefaultWallets,
   apiProvider,
 } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
+import { createClient, WagmiProvider, chain } from 'wagmi';
 ```
 
 ### Configure

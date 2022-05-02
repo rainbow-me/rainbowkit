@@ -37,12 +37,14 @@ export function ActionButton({
   label,
   onClick,
   size = 'medium',
+  target = '_blank',
   type = 'primary',
 }: {
   href?: string;
   label: string;
   onClick?: () => void;
   size?: Size;
+  target?: string;
   type?: 'primary' | 'secondary';
 }) {
   const isPrimary = type === 'primary';
@@ -57,7 +59,7 @@ export function ActionButton({
   return (
     <Box
       {...(href
-        ? { as: 'a', href, rel: 'noreferrer noopener', target: '_blank' }
+        ? { as: 'a', href, rel: 'noreferrer noopener', target }
         : { as: 'button', type: 'button' })}
       borderColor={
         mobile && isNotLarge ? 'actionButtonBorderMobile' : 'actionButtonBorder'
