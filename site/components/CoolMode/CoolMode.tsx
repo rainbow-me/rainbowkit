@@ -41,11 +41,20 @@ type CoolButtonProps = ButtonProps & { src: string };
 function CoolButton(props: CoolButtonProps) {
   return (
     <Button
-      prefix={<Box as="img" borderRadius="2" size="7" src={props.src} />}
+      prefix={
+        <Box
+          as="img"
+          borderRadius="2"
+          size="7"
+          src={props.src}
+          style={{ pointerEvents: 'none' }}
+        />
+      }
       size="xl"
       {...props}
       style={{
         justifyContent: 'center',
+        userSelect: 'none',
         width: '100%',
       }}
     />

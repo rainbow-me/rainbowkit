@@ -104,8 +104,9 @@ const connectors = connectorsForWallets([
         chains,
         appName: 'My RainbowKit App',
         jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
+          const rpcUrls = (
+            chains.find(x => x.id === chainId) || chain.mainnet
+          ).rpcUrls;
           return typeof rpcUrls.default === 'string'
             ? rpcUrls.default
             : rpcUrls.default[0];
@@ -118,6 +119,17 @@ const connectors = connectorsForWallets([
     ],
   },
 ]);
+```
+
+#### Ledger Live
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.ledger(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
 ```
 
 #### MetaMask
@@ -204,8 +216,9 @@ const connectors = connectorsForWallets([
         chains,
         appName: 'My RainbowKit App',
         jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
+          const rpcUrls = (
+            chains.find(x => x.id === chainId) || chain.mainnet
+          ).rpcUrls;
           return typeof rpcUrls.default === 'string'
             ? rpcUrls.default
             : rpcUrls.default[0];
@@ -243,8 +256,9 @@ const connectors = connectorsForWallets([
         chains,
         appName: 'My RainbowKit App',
         jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
+          const rpcUrls = (
+            chains.find(x => x.id === chainId) || chain.mainnet
+          ).rpcUrls;
           return typeof rpcUrls.default === 'string'
             ? rpcUrls.default
             : rpcUrls.default[0];
