@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { InjectedConnector } from 'wagmi/connectors/injected';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
@@ -42,7 +42,7 @@ export const metaMask = ({
               qrcode: false,
             },
           })
-        : new InjectedConnector({
+        : new MetaMaskConnector({
             chains,
             options: { shimDisconnect },
           });
