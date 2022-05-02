@@ -1,6 +1,7 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   apiProvider,
+  configureChains,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
@@ -16,7 +17,7 @@ import { chain, createClient, WagmiProvider } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
-const { chains, provider, webSocketProvider } = apiProvider.alchemy(
+const { chains, provider, webSocketProvider } = configureChains(
   [
     chain.mainnet,
     chain.polygon,
@@ -26,7 +27,10 @@ const { chains, provider, webSocketProvider } = apiProvider.alchemy(
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  alchemyId
+  [
+    apiProvider.alchemy(alchemyId),
+    apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default })),
+  ]
 );
 
 const { wallets } = getDefaultWallets({

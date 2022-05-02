@@ -2,13 +2,13 @@ import {
   BaseProvider,
   WebSocketProvider as BaseWebSocketProvider,
 } from '@ethersproject/providers';
-import { Chain } from 'wagmi';
+import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 
 export type ApiProvider<
   Provider extends BaseProvider = BaseProvider,
   WebSocketProvider extends BaseWebSocketProvider = BaseWebSocketProvider
-> = {
-  chains: Chain[];
-  provider: ({ chainId }: { chainId?: number }) => Provider;
-  webSocketProvider?: ({ chainId }: { chainId?: number }) => WebSocketProvider;
-};
+> = (chain: Chain) => {
+  chain: Chain;
+  provider: () => Provider;
+  webSocketProvider?: () => WebSocketProvider;
+} | null;

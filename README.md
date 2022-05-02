@@ -27,13 +27,18 @@ To start, import RainbowKit’s base styles, configure your wallets and desired 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import {
+  apiProvider,
+  configureChains,
+  RainbowKitProvider,
+  getDefaultWallets,
+} from '@rainbow-me/rainbowkit';
 import { WagmiProvider, chain } from 'wagmi';
 import { providers } from 'ethers';
 
-const { provider, chains } = apiProvider.alchemy(
+const { provider, chains } = configureChains(
   [chain.mainnet],
-  process.env.ALCHEMY_ID
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
 );
 
 const { connectors } = getDefaultWallets({
