@@ -18,8 +18,8 @@ export const MoreWallets = ({ chains, wcUrl }: MoreOptions) => {
   return {
     connector,
     mobile: {
-      getUri: () => {
-        const { uri } = connector.getProvider().connector;
+      getUri: async () => {
+        const { uri } = (await connector.getProvider()).connector;
         return isAndroid() ? uri : `${wcUrl}/wc?uri=${encodeURIComponent(uri)}`;
       },
     },
