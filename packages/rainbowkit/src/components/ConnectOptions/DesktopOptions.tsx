@@ -236,7 +236,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 style={{ flexGrow: 1 }}
               >
                 {headerLabel && (
-                  <Text color="modalText" size="18" weight="heavy">
+                  <Text
+                    color="modalText"
+                    size="18"
+                    textAlign="center"
+                    weight="heavy"
+                  >
                     {headerLabel}
                   </Text>
                 )}
