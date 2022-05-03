@@ -31,7 +31,7 @@ export default function Home() {
       style={{ minHeight: '100vh', overflow: 'hidden' }}
     >
       <TitleAndMetaTags color="black" />
-      <Header />
+      <Header darkMode />
       <Wrapper>
         <Box marginTop="11" textAlign="center">
           <Text
