@@ -17,7 +17,7 @@ export function TitleAndMetaTags({
   image,
   pathname,
   title = 'RainbowKit',
-  url = 'https://rainbowkit.vercel.app',
+  url = 'https://rainbowkit.com',
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
 

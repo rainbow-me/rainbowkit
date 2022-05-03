@@ -83,7 +83,7 @@ describe('configureChains', () => {
           "Could not find valid API provider configuration for chain \\"Localhost\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/api-providers"
+Read more: https://rainbowkit.com/docs/api-providers"
         `);
       });
     });
@@ -140,7 +140,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
           "Could not find valid API provider configuration for chain \\"Localhost\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/api-providers"
+Read more: https://rainbowkit.com/docs/api-providers"
         `);
       });
     });
@@ -190,7 +190,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
           "Could not find valid API provider configuration for chain \\"Polygon\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/api-providers"
+Read more: https://rainbowkit.com/docs/api-providers"
         `);
       });
     });
@@ -252,7 +252,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
         "Could not find valid API provider configuration for chain \\"Ethereum\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/api-providers"
+Read more: https://rainbowkit.com/docs/api-providers"
       `);
       });
     });
@@ -326,7 +326,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
       "Could not find valid API provider configuration for chain \\"Avalanche\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/api-providers"
+Read more: https://rainbowkit.com/docs/api-providers"
     `);
     });
   });

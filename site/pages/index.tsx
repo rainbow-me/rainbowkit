@@ -246,7 +246,14 @@ export default function Home() {
                 Follow us on Twitter
               </Box>
             </Button>
-            <Button as="a" href="" shadow size="xl" variant="pinkGradient">
+            <Button
+              as="a"
+              href="https://github.com/rainbow-me/rainbowkit/discussions/new?category=feedback"
+              shadow
+              size="xl"
+              target="_blank"
+              variant="pinkGradient"
+            >
               <Box as="span" textAlign="center" width="full">
                 Share feedback with us
               </Box>

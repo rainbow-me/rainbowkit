@@ -6,9 +6,9 @@ Add `configureChains` API.
 
 The `configureChains` function allows you to configure your chains with a selected API provider (Alchemy, Infura, JSON RPC). This means you don't have to worry about deriving your own RPC URLs for each chain, and instantiating a Ethereum Provider.
 
-`configureChains` accepts 2 parameters: an array of `chains`, and an [array of API providers](https://rainbowkit.vercel.app/docs/api-providers).
+`configureChains` accepts 2 parameters: an array of `chains`, and an [array of API providers](https://rainbowkit.com/docs/api-providers).
 
-[Learn more about configuring chains & API providers.](https://rainbowkit.vercel.app/docs/api-providers)
+[Learn more about configuring chains & API providers.](https://rainbowkit.com/docs/api-providers)
 
 Before:
 
