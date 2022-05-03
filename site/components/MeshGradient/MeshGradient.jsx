@@ -219,7 +219,7 @@ function Mesh(props) {
   );
 }
 
-export function MeshGradient({ u_c1, u_c2, u_c3 }) {
+export function MeshGradient({ backgroundColor, u_c1, u_c2, u_c3 }) {
   const [devicePixelRatio, setDevicePixelRatio] = useState(null);
 
   useEffect(() => {
@@ -229,12 +229,31 @@ export function MeshGradient({ u_c1, u_c2, u_c3 }) {
     }
   }, []);
 
-  return devicePixelRatio ? (
-    <Canvas
-      camera={{ fov: 90, near: 0.1, position: [0, 0, 0] }}
-      dpr={devicePixelRatio}
+  return (
+    <div
+      style={{
+        backgroundColor,
+        height: '100%',
+        width: '100%',
+      }}
     >
-      <Mesh transitionSpeed={0.025} u_c1={u_c1} u_c2={u_c2} u_c3={u_c3} />
-    </Canvas>
-  ) : null;
+      <div
+        style={{
+          height: '100%',
+          opacity: devicePixelRatio ? 1 : 0,
+          transition: 'opacity 5s ease',
+          width: '100%',
+        }}
+      >
+        {devicePixelRatio ? (
+          <Canvas
+            camera={{ fov: 90, near: 0.1, position: [0, 0, 0] }}
+            dpr={devicePixelRatio}
+          >
+            <Mesh transitionSpeed={0.025} u_c1={u_c1} u_c2={u_c2} u_c3={u_c3} />
+          </Canvas>
+        ) : null}
+      </div>
+    </div>
+  );
 }
