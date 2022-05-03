@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Removes injected connector from Coinbase wallet
+wagmi's CoinbaseWalletConnector handles injected and mobile/non-injected use cases now.
