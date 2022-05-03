@@ -1,4 +1,5 @@
 import React, { ElementType, ReactNode, useEffect } from 'react';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import { isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
@@ -198,16 +199,27 @@ export function ConnectDetail({
             }
           : () => reconnect(wallet),
       };
+  const { width: windowWidth } = useWindowSize();
+  const smallWindow = windowWidth && windowWidth < 768;
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
       {qrCode && qrCodeUri ? (
-        <Box height="full">
+        <Box
+          alignItems="center"
+          display="flex"
+          height="full"
+          justifyContent="center"
+        >
           <QRCode
             logoBackground={iconBackground}
-            logoSize={72}
+            logoSize={smallWindow ? 60 : 72}
             logoUrl={iconUrl}
-            size={382}
+            size={
+              smallWindow
+                ? Math.max(280, Math.min(windowWidth - 308, 382))
+                : 382
+            }
             uri={qrCodeUri}
           />
         </Box>
@@ -248,16 +260,25 @@ export function ConnectDetail({
                 flexDirection="row"
                 gap="6"
                 height="24"
-                paddingX="28"
               >
                 {connectionError ? (
-                  <Text color="error" size="16" weight="bold">
+                  <Text
+                    color="error"
+                    size="16"
+                    textAlign="center"
+                    weight="bold"
+                  >
                     Error connecting, please retry!
                   </Text>
                 ) : (
                   <>
                     {ready ? <SpinnerIcon /> : null}
-                    <Text color="modalTextSecondary" size="16" weight="bold">
+                    <Text
+                      color="modalTextSecondary"
+                      size="16"
+                      textAlign="center"
+                      weight="bold"
+                    >
                       {readyMsg}
                     </Text>
                   </>
@@ -391,14 +412,21 @@ export function InstructionDetail({
   wallet: WalletConnector;
 }) {
   return (
-    <Box display="flex" flexDirection="column" height="full" width="full">
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      height="full"
+      width="full"
+    >
       <Box
         display="flex"
         flexDirection="column"
         gap="28"
         height="full"
         justifyContent="center"
-        padding="32"
+        paddingY="32"
+        style={{ maxWidth: 320 }}
       >
         {wallet?.qrCode?.instructions?.steps.map((d, idx) => (
           <Box

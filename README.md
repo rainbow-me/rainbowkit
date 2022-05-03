@@ -2,17 +2,13 @@
 
 **The best way to connect a wallet 🌈**
 
+- 🔥 Out-of-the-box wallet management
+- ✅ Easily customizable
+- 🦄 Built on top of [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io)
+
 ## ⚠️ Please note
 
 RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wagmi-xyz.vercel.app/) which is currently `v0.x`. The APIs are not stable and likely to change in the near future. At this stage we’re looking for early adopters to provide feedback and help us improve the library.
-
-## Features
-
-- 🔥 Out-of-the-box wallet management
-- 👟 Easily customizable
-- 🕊 Lightweight
-- ✅ Accessible
-- 🦄 Built on top of [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io)
 
 ## Installation
 
@@ -234,19 +230,40 @@ const { provider, chains } = configureChains(
 
 The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
 
-Your chain config can be defined in a single array provided to `configureChains`.
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/docs/constants/chains#chain) which currently provides the following chains:
+
+- `chain.mainnet`
+- `chain.ropsten`
+- `chain.rinkeby`
+- `chain.goerli`
+- `chain.kovan`
+- `chain.optimism`
+- `chain.optimismKovan`
+- `chain.polygon`
+- `chain.polygonMumbai`
+- `chain.arbitrum`
+- `chain.arbitrumRinkeby`
+- `chain.localhost`
+- `chain.hardhat`
+
+> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi’s `chain` object](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts).
+
+Your chain config can be defined in a single array provided to [`configureChains`](/docs/configure-chains).
 
 ```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import {
+  apiProvider,
+  configureChains,
+  RainbowKitProvider,
+  Chain,
+} from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
-const { provider, chains } = configureChains(
+const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
   [apiProvider.alchemy(process.env.ALCHEMY_ID)]
 );
 
-...
-
 const App = () => {
   return (
     <RainbowKitProvider chains={chains} {...etc}>
@@ -256,38 +273,10 @@ const App = () => {
 };
 ```
 
-You can optionally configure different chains depending on the current environment. For example, to enable testnets based on an environment variable while using [Next.js](https://nextjs.org/):
+Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
 
 ```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const { provider, chains } = configureChains(
-  [
-    chain.mainnet,
-    chain.polygon,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
-  ],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
-);
-
-...
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
-
-```tsx
-const { provider, chains } = configureChains(
+const { chains } = configureChains(
   [
     {
       ...chain.mainnet,
@@ -490,88 +479,86 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const YourApp = () => {
   return (
-    <>
-      <ConnectButton.Custom>
-        {({
-          account,
-          chain,
-          openAccountModal,
-          openChainModal,
-          openConnectModal,
-          mounted,
-        }) => {
-          return (
-            <div
-              {...(!mounted && {
-                'aria-hidden': true,
-                'style': {
-                  opacity: 0,
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                },
-              })}
-            >
-              {(() => {
-                if (!mounted || !account || !chain) {
-                  return (
-                    <button onClick={openConnectModal} type="button">
-                      Connect Wallet
-                    </button>
-                  );
-                }
-
-                if (chain.unsupported) {
-                  return (
-                    <button onClick={openChainModal} type="button">
-                      Wrong network
-                    </button>
-                  );
-                }
-
+    <ConnectButton.Custom>
+      {({
+        account,
+        chain,
+        openAccountModal,
+        openChainModal,
+        openConnectModal,
+        mounted,
+      }) => {
+        return (
+          <div
+            {...(!mounted && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
+          >
+            {(() => {
+              if (!mounted || !account || !chain) {
                 return (
-                  <div style={{ display: 'flex', gap: 12 }}>
-                    <button
-                      onClick={openChainModal}
-                      style={{ display: 'flex', alignItems: 'center' }}
-                      type="button"
-                    >
-                      {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            width: 12,
-                            height: 12,
-                            borderRadius: 999,
-                            overflow: 'hidden',
-                            marginRight: 4,
-                          }}
-                        >
-                          {chain.iconUrl && (
-                            <img
-                              alt={chain.name ?? 'Chain icon'}
-                              src={chain.iconUrl}
-                              style={{ width: 12, height: 12 }}
-                            />
-                          )}
-                        </div>
-                      )}
-                      {chain.name}
-                    </button>
-
-                    <button onClick={openAccountModal} type="button">
-                      {account.displayName}
-                      {account.displayBalance
-                        ? ` (${account.displayBalance})`
-                        : ''}
-                    </button>
-                  </div>
+                  <button onClick={openConnectModal} type="button">
+                    Connect Wallet
+                  </button>
                 );
-              })()}
-            </div>
-          );
-        }}
-      </ConnectButton.Custom>
-    </>
+              }
+
+              if (chain.unsupported) {
+                return (
+                  <button onClick={openChainModal} type="button">
+                    Wrong network
+                  </button>
+                );
+              }
+
+              return (
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <button
+                    onClick={openChainModal}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                    type="button"
+                  >
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          background: chain.iconBackground,
+                          width: 12,
+                          height: 12,
+                          borderRadius: 999,
+                          overflow: 'hidden',
+                          marginRight: 4,
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? 'Chain icon'}
+                            src={chain.iconUrl}
+                            style={{ width: 12, height: 12 }}
+                          />
+                        )}
+                      </div>
+                    )}
+                    {chain.name}
+                  </button>
+
+                  <button onClick={openAccountModal} type="button">
+                    {account.displayName}
+                    {account.displayBalance
+                      ? ` (${account.displayBalance})`
+                      : ''}
+                  </button>
+                </div>
+              );
+            })()}
+          </div>
+        );
+      }}
+    </ConnectButton.Custom>
   );
 };
 ```
@@ -623,7 +610,7 @@ The following props are passed to your render function.
       <td><code>account.displayName</code></td>
       <td><code>string</code></td>
       <td>The ENS name, or a truncated version of the address, e.g. 
-      <code>"rainbowwallet.eth"</code> or <code>"0x7a3d...384f"</code></td>
+      <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code></td>
     </tr>
     <tr>
       <td><code>account.ensAvatar</code></td>
@@ -767,6 +754,7 @@ const myCustomTheme: Theme = {
     connectionIndicator: '...',
     error: '...',
     generalBorder: '...',
+    generalBorderDim: '...',
     menuItemBackground: '...',
     modalBackdrop: '...',
     modalBackground: '...',
@@ -793,10 +781,10 @@ const myCustomTheme: Theme = {
   shadows: {
     connectButton: '...',
     dialog: '...',
+    walletLogo: '...',
     profileDetailsAction: '...',
     selectedOption: '...',
     selectedWallet: '...',
-    walletLogo: '...',
   },
 };
 
@@ -896,6 +884,7 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 - [Argent](#argent)
 - [Coinbase Wallet](#coinbase-wallet)
 - [Injected Wallet](#injected-wallet)
+- [Ledger Live](#ledger)
 - [MetaMask](#metamask)
 - [Rainbow](#rainbow)
 - [Trust Wallet](#trust-wallet)
@@ -961,6 +950,17 @@ const connectors = connectorsForWallets([
     ],
   },
 ]);
+```
+
+#### Ledger Live
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.ledger(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
 ```
 
 #### MetaMask
@@ -1044,6 +1044,11 @@ The `Wallet` type is provided to help you define your own custom wallets. If you
       <td>URL for wallet icon, or a promise that resolves to a Base64 data URL (to support bundling lazy-loadable images in JavaScript when publishing to npm)</td>
     </tr>
     <tr>
+      <td><code>iconBackground</code></td>
+      <td><code>string</code></td>
+      <td>Background color while the wallet icon loads</td>
+    </tr>
+    <tr>
       <td><code>installed</code></td>
       <td><code>boolean | undefined</code></td>
       <td>Whether the wallet is known to be installed, or <code>undefined</code> if indeterminate</td>
@@ -1097,9 +1102,9 @@ The following properties are defined on the return value of the `createConnector
   </tbody>
 </table>
 
-### Customizing your App's Info
+### Customizing your app’s info
 
-You can pass your app's info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your App's name (`appName`) and the link where the "Learn More" button in the connection modal redirects to (`learnMoreUrl`):
+You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';

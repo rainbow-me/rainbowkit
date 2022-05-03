@@ -22,12 +22,13 @@ export const dialogContent = style([
     },
     'boxSizing': 'content-box',
     'maxWidth': '100vw',
-    'width': '100vw',
+    'width': '360px',
   },
 ]);
 
 export const dialogContentWideMobile = style([
   dialogContent,
+  { width: '100vw' },
   {
     '@media': {
       [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
@@ -39,6 +40,9 @@ export const dialogContentWideMobile = style([
 
 export const dialogContentWideDesktop = style([
   dialogContent,
+  {
+    width: largeScreenMinWidth,
+  },
   {
     '@media': {
       [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
@@ -55,6 +59,7 @@ export const dialogContentMobile = style([
   {
     borderWidth: '0px',
     boxSizing: 'border-box',
+    width: '100vw',
   },
 ]);
 

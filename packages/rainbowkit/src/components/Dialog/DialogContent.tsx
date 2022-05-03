@@ -29,7 +29,7 @@ export function DialogContent({
               : styles.dialogContentWideDesktop
             : styles.dialogContent,
           mobile ? styles.dialogContentMobile : null,
-          bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
+          mobile && bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
         ].join(' ')}
       >
         <Box padding={padding}>{children}</Box>

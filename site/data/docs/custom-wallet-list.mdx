@@ -123,6 +123,17 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
+#### Ledger Live
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.ledger(options: {
+  chains: Chain[];
+  infuraId?: string;
+});
+```
+
 #### MetaMask
 
 ```tsx
