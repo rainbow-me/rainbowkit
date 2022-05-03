@@ -232,7 +232,7 @@ const avalancheChain: Chain = {
 };
 
 const { provider, chains } = configureChains(
-  [chain.mainnet, chain.polygon],
+  [chain.mainnet, avalancheChain],
   [
     apiProvider.alchemy(process.env.ALCHEMY_ID),
     apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default }))
