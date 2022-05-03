@@ -80,7 +80,7 @@ describe('configureChains', () => {
             [apiProvider.alchemy(alchemyId)]
           )
         ).toThrowErrorMatchingInlineSnapshot(`
-          "Could not find valid API provider configuration for \`chain.localhost\`.
+          "Could not find valid API provider configuration for chain \\"Localhost\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
 Read more: https://rainbowkit.vercel.app/docs/api-providers"
@@ -137,7 +137,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
             [apiProvider.infura(infuraId)]
           )
         ).toThrowErrorMatchingInlineSnapshot(`
-          "Could not find valid API provider configuration for \`chain.localhost\`.
+          "Could not find valid API provider configuration for chain \\"Localhost\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
 Read more: https://rainbowkit.vercel.app/docs/api-providers"
@@ -187,7 +187,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
             [apiProvider.fallback()]
           )
         ).toThrowErrorMatchingInlineSnapshot(`
-          "Could not find valid API provider configuration for \`chain.polygon\`.
+          "Could not find valid API provider configuration for chain \\"Polygon\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
 Read more: https://rainbowkit.vercel.app/docs/api-providers"
@@ -199,9 +199,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
       beforeAll(() => {
         [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum].forEach(
           chain => {
-            nock(`https://${chain.name.toLowerCase()}.example.com`)
-              .get('/')
-              .reply(200, {});
+            nock(`https://${chain.id}.example.com`).get('/').reply(200, {});
           }
         );
       });
@@ -215,8 +213,8 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
           [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
           [
             apiProvider.jsonRpc(chain => ({
-              rpcUrl: `https://${chain.name.toLowerCase()}.example.com`,
-              webSocketRpcUrl: `wss://${chain.name.toLowerCase()}.example.com`,
+              rpcUrl: `https://${chain.id}.example.com`,
+              webSocketRpcUrl: `wss://${chain.id}.example.com`,
             })),
           ]
         );
@@ -224,26 +222,26 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
         expect(chains.map(chain => chain.rpcUrls.default))
           .toMatchInlineSnapshot(`
           [
-            "https://ethereum.example.com",
-            "https://polygon.example.com",
-            "https://optimism.example.com",
-            "https://arbitrum.example.com",
+            "https://1.example.com",
+            "https://137.example.com",
+            "https://10.example.com",
+            "https://42161.example.com",
           ]
         `);
 
         expect(
           provider({ chainId: chain.mainnet.id }).connection.url
-        ).toMatchInlineSnapshot('"https://ethereum.example.com"');
+        ).toMatchInlineSnapshot('"https://1.example.com"');
         expect(
           provider({ chainId: chain.polygon.id }).connection.url
-        ).toMatchInlineSnapshot('"https://polygon.example.com"');
+        ).toMatchInlineSnapshot('"https://137.example.com"');
 
         expect(
           webSocketProvider({ chainId: chain.mainnet.id }).connection.url
-        ).toMatchInlineSnapshot('"wss://ethereum.example.com"');
+        ).toMatchInlineSnapshot('"wss://1.example.com"');
         expect(
           webSocketProvider({ chainId: chain.polygon.id }).connection.url
-        ).toMatchInlineSnapshot('"wss://polygon.example.com"');
+        ).toMatchInlineSnapshot('"wss://137.example.com"');
       });
 
       it('throws an error if rpcUrl returns empty string for a chain', () => {
@@ -252,16 +250,13 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
             [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
             [
               apiProvider.jsonRpc(chain => ({
-                rpcUrl:
-                  chain.id === 1
-                    ? ''
-                    : `https://${chain.name.toLowerCase()}.example.com`,
-                webSocketRpcUrl: `wss://${chain.name.toLowerCase()}.example.com`,
+                rpcUrl: chain.id === 1 ? '' : `https://${chain.id}.example.com`,
+                webSocketRpcUrl: `wss://${chain.id}.example.com`,
               })),
             ]
           )
         ).toThrowErrorMatchingInlineSnapshot(`
-        "Could not find valid API provider configuration for \`chain.ethereum\`.
+        "Could not find valid API provider configuration for chain \\"Ethereum\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
 Read more: https://rainbowkit.vercel.app/docs/api-providers"
@@ -335,7 +330,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
           ]
         )
       ).toThrowErrorMatchingInlineSnapshot(`
-      "Could not find valid API provider configuration for \`chain.avalanche\`.
+      "Could not find valid API provider configuration for chain \\"Avalanche\\".
 
 You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
 Read more: https://rainbowkit.vercel.app/docs/api-providers"

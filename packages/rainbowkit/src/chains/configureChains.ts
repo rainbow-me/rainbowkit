@@ -41,7 +41,7 @@ export const configureChains = <
     if (!apiConfig) {
       throw new Error(
         [
-          `Could not find valid API provider configuration for \`chain.${chain.name.toLowerCase()}\`.\n`,
+          `Could not find valid API provider configuration for chain "${chain.name}".\n`,
           'You may need to add `apiProvider.fallback` to `configureChains` so that the chain can fall back to the public RPC URL.',
           'Read more: https://rainbowkit.vercel.app/docs/api-providers',
         ].join('\n')
