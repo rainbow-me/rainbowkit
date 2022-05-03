@@ -10,6 +10,7 @@ export const jsonRpc = (
 ): ApiProvider<StaticJsonRpcProvider, WebSocketProvider> => {
   return function (chain) {
     const { rpcUrl, webSocketRpcUrl } = getRpcUrls(chain);
+    if (rpcUrl === '') return null;
     return {
       chain: {
         ...chain,

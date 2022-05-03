@@ -23,12 +23,13 @@ Import RainbowKit, wagmi, and ethers.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  RainbowKitProvider,
-  Chain,
-  getDefaultWallets,
   apiProvider,
+  Chain,
+  configureChains,
+  getDefaultWallets,
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { createClient, WagmiProvider, chain } from 'wagmi';
+import { chain, createClient, WagmiProvider } from 'wagmi';
 ```
 
 ### Configure
@@ -37,11 +38,11 @@ Configure your wallets, desired chains and generate the required connectors. You
 
 ```tsx line=3-99
 ...
-import { WagmiProvider, chain } from 'wagmi';
+import { chain, createClient, WagmiProvider } from 'wagmi';
 
-const { provider, chains } = apiProvider.alchemy(
+const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
-  process.env.ALCHEMY_ID
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
 );
 
 const { connectors } = getDefaultWallets({

@@ -4,8 +4,10 @@ import {
 } from '@ethersproject/providers';
 import { ApiProvider } from './ApiProvider';
 
+export const defaultInfuraId = '84842078b09946638c03157f83405213';
+
 export const infura = (
-  infuraId: string
+  infuraId: string = defaultInfuraId
 ): ApiProvider<InfuraProvider, InfuraWebSocketProvider> => {
   return function (chain) {
     if (!chain.rpcUrls.infura) return null;

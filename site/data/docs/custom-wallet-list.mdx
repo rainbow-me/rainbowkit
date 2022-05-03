@@ -13,10 +13,19 @@ You can use the `wallet` object and the `connectorsForWallets` function to build
 
 For example, you can choose to only show Rainbow and WalletConnect.
 
-```tsx line=1,5-99
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+```tsx
+import { 
+  apiProvider, 
+  configureChains, 
+  connectorsForWallets, 
+  wallet 
+} from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
 
-const { chains } = apiProvider.alchemy([chain.mainnet], process.env.ALCHEMY_ID);
+const { chains } = configureChains(
+  [chain.mainnet],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+)
 
 const connectors = connectorsForWallets([
   {

@@ -142,55 +142,169 @@ const App = () => {
 };
 ```
 
-### Choosing an API provider
+### Configuring chains
 
 RainbowKit has built-in Ethereum API provider support so you don't have to worry about defining RPC URLs & a provider instance to pass to `wagmi`.
 
 #### Alchemy
 
+To configure the chains with Alchemy configuration, provide `apiProvider.alchemy` to `configureChains`.
+
 ```tsx
-import { apiProvider } from '@rainbow-me/rainbowkit';
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, chains } = apiProvider.alchemy(
+const { provider, chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  process.env.ALCHEMY_ID,
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
 );
 ```
 
 #### Infura
 
+To configure the chains with Infura configuration, provide `apiProvider.infura` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.infura(process.env.INFURA_ID)]
+);
+```
+
+#### JSON RPC
+
+To configure the chains with your own RPC URLs, provide `apiProvider.jsonRpc` to `configureChains` with the chain's RPC URLs.
+
 ```tsx
 import { apiProvider } from '@rainbow-me/rainbowkit';
 
 ...
 
-const { provider, chains } = apiProvider.infura(
+const { provider, chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  process.env.INFURA_ID,
+  [apiProvider.jsonRpc(chain => ({
+    rpcUrl: `https://${chain.id}.example.com`
+  }))]
 );
 ```
 
-#### Custom
+#### Multiple API providers
+
+You can also pass through more than one API provider to `configureChains`. This is useful if not all your chains support a single API provider. For instance, you may want to use Alchemy for Ethereum, and `avax.network` for Avalanche.
 
 ```tsx
-import { apiProvider } from '@rainbow-me/rainbowkit';
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+import { Chain } from 'wagmi';
 
 ...
 
-const { provider, chains } = apiProvider.custom(
+const avalancheChain: Chain = {
+  id: 43_114,
+  name: 'Avalanche',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  rpcUrls: {
+    default: 'https://api.avax.network/ext/bc/C/rpc',
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    snowtrace: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  testnet: false,
+};
+
+const { provider, chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  {
-    rpcUrls: {
-      [chain.mainnet.id]: 'https://mainnet.example.com',
-      [chain.polygon.id]: 'https://polygon.example.com',
-    }
-  }
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default }))
+  ]
 );
 ```
 
-#### Customizing the built-in themes
+### Customizing chains
+
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
+
+Your chain config can be defined in a single array provided to `configureChains`.
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+);
+
+...
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+You can optionally configure different chains depending on the current environment. For example, to enable testnets based on an environment variable while using [Next.js](https://nextjs.org/):
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { provider, chains } = configureChains(
+  [
+    chain.mainnet,
+    chain.polygon,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+      : []),
+  ],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+);
+
+...
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
+
+```tsx
+const { provider, chains } = configureChains(
+  [
+    {
+      ...chain.mainnet,
+      iconUrl: 'https://example.com/icons/ethereum.png',
+      iconBackground: 'grey',
+    },
+    {
+      ...chain.polygon,
+      iconUrl: 'https://example.com/icons/polygon.png',
+      iconBackground: '#7b3fe4',
+    },
+  ],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+);
+```
+
+### Customizing the built-in themes
 
 The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
@@ -294,67 +408,6 @@ const App = () => {
     </RainbowKitProvider>
   );
 };
-```
-
-### Customizing chains
-
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
-Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [chain.mainnet, chain.polygon];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-You can optionally configure different chains depending on the current environment. For example, to enable testnets based on an environment variable while using [Next.js](https://nextjs.org/):
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-    : []),
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
-
-```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    iconUrl: 'https://example.com/icons/ethereum.png',
-    iconBackground: 'grey',
-  },
-  {
-    ...chain.polygon,
-    iconUrl: 'https://example.com/icons/polygon.png',
-    iconBackground: '#7b3fe4',
-  },
-];
 ```
 
 ### Showing recent transactions

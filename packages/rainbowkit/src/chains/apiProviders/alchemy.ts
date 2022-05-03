@@ -4,8 +4,10 @@ import {
 } from '@ethersproject/providers';
 import { ApiProvider } from './ApiProvider';
 
+export const defaultAlchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+
 export const alchemy = (
-  alchemyId: string
+  alchemyId: string = defaultAlchemyId
 ): ApiProvider<AlchemyProvider, AlchemyWebSocketProvider> => {
   return function (chain) {
     if (!chain.rpcUrls.alchemy) return null;
