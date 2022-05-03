@@ -241,7 +241,7 @@ export function ConnectButton({
                   fontFamily="body"
                   fontWeight="bold"
                   onClick={openConnectModal}
-                  paddingX="16"
+                  paddingX="14"
                   paddingY="10"
                   type="button"
                 >
