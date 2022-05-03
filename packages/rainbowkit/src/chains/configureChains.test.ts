@@ -173,18 +173,16 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
       });
 
       it('throws an error if a chain does not have a default RPC URL', () => {
-        const chain_ = { ...chain };
-        // @ts-expect-error
-        delete chain_.polygon.rpcUrls.default;
+        const polygon = { ...chain.polygon, rpcUrls: { default: '' } };
 
         expect(() =>
           configureChains(
             [
-              chain_.mainnet,
-              chain_.polygon,
-              chain_.optimism,
-              chain_.arbitrum,
-              chain_.localhost,
+              chain.mainnet,
+              polygon,
+              chain.optimism,
+              chain.arbitrum,
+              chain.localhost,
             ],
             [apiProvider.fallback()]
           )
@@ -274,18 +272,17 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
 
   describe('multiple API providers', () => {
     it('falls back and finds RPC URL in next provider if previous provider does not support a chain', () => {
-      const chain_ = { ...chain };
-      delete chain_.polygon.rpcUrls.alchemy;
-      delete chain_.arbitrum.rpcUrls.alchemy;
+      const polygon = {
+        ...chain.polygon,
+        rpcUrls: { ...chain.polygon.rpcUrls, alchemy: '' },
+      };
+      const arbitrum = {
+        ...chain.arbitrum,
+        rpcUrls: { ...chain.arbitrum.rpcUrls, alchemy: '' },
+      };
 
       const { chains, provider } = configureChains(
-        [
-          chain_.mainnet,
-          chain_.polygon,
-          chain_.optimism,
-          chain_.arbitrum,
-          avalancheChain,
-        ],
+        [chain.mainnet, polygon, chain.optimism, arbitrum, avalancheChain],
         [
           apiProvider.alchemy(alchemyId),
           apiProvider.infura(infuraId),
@@ -304,12 +301,12 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
       `);
 
       expect(
-        provider({ chainId: chain_.mainnet.id }).connection.url
+        provider({ chainId: chain.mainnet.id }).connection.url
       ).toMatchInlineSnapshot(
         '"https://eth-mainnet.alchemyapi.io/v2/alchemyId"'
       );
       expect(
-        provider({ chainId: chain_.polygon.id }).connection.url
+        provider({ chainId: chain.polygon.id }).connection.url
       ).toMatchInlineSnapshot(
         '"https://polygon-mainnet.infura.io/v3/infuraId"'
       );
