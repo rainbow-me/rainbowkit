@@ -5,15 +5,18 @@ import { isAndroid } from '../../../utils/isMobile';
 export interface MoreOptions {
   wcUrl: string;
   chains: Chain[];
+  options: {
+    rpc: {
+      [chainId: number]: string;
+    };
+    qrCode: boolean;
+  };
 }
 
-export const MoreWallets = ({ chains, wcUrl }: MoreOptions) => {
+export const MoreWallets = ({ chains, options, wcUrl }: MoreOptions) => {
   const connector = new WalletConnectConnector({
     chains,
-    options: {
-      infuraId: process.env.INFURA_ID,
-      qrcode: false,
-    },
+    options,
   });
   return {
     connector,
