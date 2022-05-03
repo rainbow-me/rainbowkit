@@ -6,16 +6,11 @@ import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface CoinbaseOptions {
-  chains: Chain[];
   appName: string;
-  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
+  chains: Chain[];
 }
 
-export const coinbase = ({
-  appName,
-  chains,
-  jsonRpcUrl,
-}: CoinbaseOptions): Wallet => {
+export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
   const isCoinbaseInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet;
 
@@ -32,8 +27,11 @@ export const coinbase = ({
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
       qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
     },
-    createConnector: ({ chainId }) => {
+    createConnector: ({ chainId = chains[0].id }) => {
       const ios = isIOS();
+
+      const chain = chains.find(chain => chain.id === chainId);
+      const jsonRpcUrl = chain?.rpcUrls.default;
 
       const connector = isCoinbaseInjected
         ? new InjectedConnector({ chains })
@@ -42,10 +40,7 @@ export const coinbase = ({
             options: {
               appName,
               headlessMode: true,
-              jsonRpcUrl:
-                typeof jsonRpcUrl === 'function'
-                  ? jsonRpcUrl({ chainId })
-                  : jsonRpcUrl,
+              jsonRpcUrl,
             },
           });
 

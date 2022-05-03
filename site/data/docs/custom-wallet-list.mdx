@@ -14,28 +14,46 @@ You can use the `wallet` object and the `connectorsForWallets` function to build
 For example, you can choose to only show Rainbow and WalletConnect.
 
 ```tsx
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { 
+  apiProvider, 
+  configureChains, 
+  connectorsForWallets, 
+  wallet 
+} from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains } = configureChains(
+  [chain.mainnet],
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
+)
 
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);
 ```
 
-You can then pass your connectors to `WagmiProvider`'s `connectors` prop.
+You can then pass your connectors to `wagmi`'s `createClient`.
 
-```tsx line=1,4-11
-import { WagmiProvider } from 'wagmi';
+```tsx line=1,4-99
+import { createClient, WagmiProvider } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 
+const wagmiClient = createClient({
+  connectors,
+});
+
 const App = () => (
-  <WagmiProvider connectors={connectors}>
+  <WagmiProvider client={wagmiClient}>
     <RainbowKitProvider>
       {/* Your App */}
     </RainbowKitProvider>
@@ -54,7 +72,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.argent(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -66,7 +83,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 wallet.coinbase(options: {
   appName: string;
   chains: Chain[];
-  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
 });
 ```
 
@@ -98,21 +114,10 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (
-            chains.find(x => x.id === chainId) || chain.mainnet
-          ).rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
-      }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback
         ? [wallet.injected({ chains })]
         : []),
@@ -139,7 +144,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.metaMask(options: {
   chains: Chain[];
-  infuraId?: string;
   shimDisconnect?: boolean;
 });
 ```
@@ -151,7 +155,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.rainbow(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -162,7 +165,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.trust(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -175,7 +177,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.walletConnect(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -194,8 +195,8 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.metaMask({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
+      wallet.metaMask({ chains }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);
@@ -210,20 +211,9 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.metaMask({ chains, infuraId }),
-      wallet.rainbow({ chains, infuraId }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (
-            chains.find(x => x.id === chainId) || chain.mainnet
-          ).rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
-      }),
+      wallet.metaMask({ chains }),
+      wallet.rainbow({ chains }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
     ],
   },
 ]);
@@ -244,26 +234,15 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.walletConnect({ chains, infuraId }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (
-            chains.find(x => x.id === chainId) || chain.mainnet
-          ).rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
-      }),
+      wallet.walletConnect({ chains }),
+      wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
     ],
   },
 ]);

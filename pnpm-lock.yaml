@@ -24,7 +24,7 @@ importers:
       '@typescript-eslint/parser': ^5.5.0
       '@vanilla-extract/esbuild-plugin': ^2.0.0
       '@vanilla-extract/vite-plugin': ^3.1.2
-      '@wagmi/core': ^0.2.0
+      '@wagmi/core': ^0.2.1
       autoprefixer: ^10.4.0
       esbuild: ^0.14.1
       eslint: 7.32.0
@@ -60,7 +60,7 @@ importers:
       '@typescript-eslint/parser': 5.11.0_eslint@7.32.0+typescript@4.5.5
       '@vanilla-extract/esbuild-plugin': 2.0.2
       '@vanilla-extract/vite-plugin': 3.1.2
-      '@wagmi/core': 0.2.0_react@18.0.0
+      '@wagmi/core': 0.2.2_react@18.0.0
       autoprefixer: 10.4.2_postcss@8.4.6
       esbuild: 0.14.21
       eslint: 7.32.0
@@ -106,6 +106,7 @@ importers:
       clsx: ^1.1.1
       detect-browser: ^5.3.0
       focus-visible: ^5.2.0
+      nock: ^13.2.4
       postcss: ^8.4.4
       qrcode: ^1.5.0
       react: ^18.0.0
@@ -126,6 +127,7 @@ importers:
       '@types/qrcode': 1.4.2
       '@vanilla-extract/private': 1.0.3
       autoprefixer: 10.4.2_postcss@8.4.6
+      nock: 13.2.4
       postcss: 8.4.6
       react: 18.0.0
       vitest: 0.5.0
@@ -4015,25 +4017,6 @@ packages:
       - supports-color
     dev: false
 
-  /@wagmi/core/0.2.0_react@18.0.0:
-    resolution: {integrity: sha512-CbMeNR533K/SZunHEysExtwmJvpXXgE8B2aFec/ULJhwKcXEZfQExh87h7OXi2tSPwP5sYL/RM2o9zjJkSQCyA==}
-    peerDependencies:
-      '@coinbase/wallet-sdk': '>=3.0.6'
-      '@walletconnect/ethereum-provider': '>=1.7.5'
-      ethers: '>=5.5.1'
-    peerDependenciesMeta:
-      '@coinbase/wallet-sdk':
-        optional: true
-      '@walletconnect/ethereum-provider':
-        optional: true
-    dependencies:
-      eventemitter3: 4.0.7
-      zustand: 4.0.0-rc.0_react@18.0.0
-    transitivePeerDependencies:
-      - immer
-      - react
-    dev: true
-
   /@wagmi/core/0.2.2_eb4e1304878d0f7e25d7d9612cf63a3a:
     resolution: {integrity: sha512-bPfjALwf7XWesYGMVqQ2B9BXZKSull6iszDWWfNmY5SYraN8BAzI9VfzPqDyh9WawrlcTSUh4QmVwNxmeplluA==}
     peerDependencies:
@@ -4048,6 +4031,25 @@ packages:
     dependencies:
       '@coinbase/wallet-sdk': 3.0.11_@babel+core@7.17.2
       '@walletconnect/ethereum-provider': 1.7.5
+      eventemitter3: 4.0.7
+      zustand: 4.0.0-rc.1_react@18.0.0
+    transitivePeerDependencies:
+      - immer
+      - react
+    dev: true
+
+  /@wagmi/core/0.2.2_react@18.0.0:
+    resolution: {integrity: sha512-bPfjALwf7XWesYGMVqQ2B9BXZKSull6iszDWWfNmY5SYraN8BAzI9VfzPqDyh9WawrlcTSUh4QmVwNxmeplluA==}
+    peerDependencies:
+      '@coinbase/wallet-sdk': '>=3.0.6'
+      '@walletconnect/ethereum-provider': '>=1.7.5'
+      ethers: '>=5.5.1'
+    peerDependenciesMeta:
+      '@coinbase/wallet-sdk':
+        optional: true
+      '@walletconnect/ethereum-provider':
+        optional: true
+    dependencies:
       eventemitter3: 4.0.7
       zustand: 4.0.0-rc.1_react@18.0.0
     transitivePeerDependencies:
@@ -7564,7 +7566,6 @@ packages:
 
   /json-stringify-safe/5.0.1:
     resolution: {integrity: sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=}
-    dev: false
 
   /json5/1.0.1:
     resolution: {integrity: sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow==}
@@ -7770,6 +7771,10 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: true
+
+  /lodash.set/4.3.2:
+    resolution: {integrity: sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=}
     dev: true
 
   /lodash.startcase/4.4.0:
@@ -8560,6 +8565,18 @@ packages:
       tslib: 2.3.1
     dev: true
 
+  /nock/13.2.4:
+    resolution: {integrity: sha512-8GPznwxcPNCH/h8B+XZcKjYPXnUV5clOKCjAqyjsiqA++MpNx9E9+t8YPp0MbThO+KauRo7aZJ1WuIZmOrT2Ug==}
+    engines: {node: '>= 10.13'}
+    dependencies:
+      debug: 4.3.3
+      json-stringify-safe: 5.0.1
+      lodash.set: 4.3.2
+      propagate: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /node-addon-api/1.7.2:
     resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
     dev: true
@@ -9104,6 +9121,11 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+    dev: true
+
+  /propagate/2.0.1:
+    resolution: {integrity: sha512-vGrhOavPSTz4QVNuBNdcNXePNdNMaO1xj9yBeH1ScQPjk/rhg9sSlCXPhMkFuaNNW/syTvYqsnbIJxMBfRbbag==}
+    engines: {node: '>= 8'}
     dev: true
 
   /property-information/6.1.1:
@@ -11113,22 +11135,6 @@ packages:
     dependencies:
       react: 18.0.0
     dev: false
-
-  /zustand/4.0.0-rc.0_react@18.0.0:
-    resolution: {integrity: sha512-jMimx6EIlLb/hwgnkVZ4Wd/UI73wXedUB6L/kcdIYbOYHcjIFRc7JEB8IXFZt+1rQq2qwuts7kN6kuHhFss47A==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      immer: '>=9.0'
-      react: '>=16.8'
-    peerDependenciesMeta:
-      immer:
-        optional: true
-      react:
-        optional: true
-    dependencies:
-      react: 18.0.0
-      use-sync-external-store: 1.0.0_react@18.0.0
-    dev: true
 
   /zustand/4.0.0-rc.1_react@18.0.0:
     resolution: {integrity: sha512-qgcs7zLqBdHu0PuT3GW4WCIY5SgXdsv30GQMu9Qpp1BA2aS+sNS8l4x0hWuyEhjXkN+701aGWawhKDv6oWJAcw==}

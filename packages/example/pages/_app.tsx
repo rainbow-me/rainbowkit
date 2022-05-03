@@ -1,6 +1,7 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
-  Chain,
+  apiProvider,
+  configureChains,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
@@ -9,44 +10,29 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import { providers } from 'ethers';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { chain, createClient, WagmiProvider } from 'wagmi';
 
-const infuraId = '0c8c992691dc4bfe97b4365a27fb2ce4';
+const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
-const isChainSupported = (chainId?: number) =>
-  chains.some(x => x.id === chainId);
-
-const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.InfuraProvider(
-    isChainSupported(chainId) ? chainId : chain.mainnet.id,
-    infuraId
-  );
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrum,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-    : []),
-];
+const { chains, provider, webSocketProvider } = configureChains(
+  [
+    chain.mainnet,
+    chain.polygon,
+    chain.optimism,
+    chain.arbitrum,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+      : []),
+  ],
+  [apiProvider.alchemy(alchemyId), apiProvider.fallback()]
+);
 
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
-  infuraId,
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
 });
 
 const demoAppInfo = {
@@ -58,9 +44,9 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      wallet.argent({ chains, infuraId }),
-      wallet.trust({ chains, infuraId }),
-      wallet.ledger({ chains, infuraId }),
+      wallet.argent({ chains }),
+      wallet.trust({ chains }),
+      wallet.ledger({ chains }),
     ],
   },
 ]);
@@ -69,6 +55,7 @@ const wagmiClient = createClient({
   autoConnect: true,
   connectors,
   provider,
+  webSocketProvider,
 });
 
 const themes = [

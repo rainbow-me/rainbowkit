@@ -2,14 +2,14 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
+import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
 
 export interface RainbowOptions {
   chains: Chain[];
-  infuraId?: string;
 }
 
-export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
+export const rainbow = ({ chains }: RainbowOptions): Wallet => ({
   id: 'rainbow',
   name: 'Rainbow',
   iconUrl: async () => (await import('./rainbow.svg')).default,
@@ -20,11 +20,12 @@ export const rainbow = ({ chains, infuraId }: RainbowOptions): Wallet => ({
     qrCode: 'https://rainbow.download',
   },
   createConnector: () => {
+    const rpc = rpcUrlsForChains(chains);
     const connector = new WalletConnectConnector({
       chains,
       options: {
-        infuraId,
         qrcode: false,
+        rpc,
       },
     });
 

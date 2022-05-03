@@ -23,55 +23,41 @@ Import RainbowKit, wagmi, and ethers.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  RainbowKitProvider,
-  Chain,
+  apiProvider,
+  configureChains,
   getDefaultWallets,
+  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { createClient, WagmiProvider, chain } from 'wagmi';
-import { providers } from 'ethers';
+import { chain, createClient, WagmiProvider } from 'wagmi';
 ```
 
 ### Configure
 
-Configure your wallets and desired chains, and create the wagmi client.
+Configure your wallets, desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
 ```tsx line=3-99
 ...
-import { providers } from 'ethers';
+import { chain, createClient, WagmiProvider } from 'wagmi';
 
-const infuraId = process.env.INFURA_ID;
-
-const provider = ({ chainId }) =>
-  new providers.InfuraProvider(chainId, infuraId);
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrumOne,
-];
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
+);
 
 const { connectors } = getDefaultWallets({
-  chains,
-  infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
+  chains
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider,
-});
+  provider
+})
 ```
-
-> We recommend using custom providers such as `InfuraProvider` and `AlchemyProvider`. For help generating provider ID's, see the [Infura docs](https://docs.infura.io/infura/create-a-project) and the [Alchemy docs](https://docs.alchemy.com/alchemy/introduction/getting-started).
 
 ### Wrap providers
 

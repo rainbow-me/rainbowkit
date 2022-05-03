@@ -1,0 +1,241 @@
+---
+title: API Providers
+description: Configure your chains with API providers
+---
+
+# API Providers
+
+## Configure your chains with API providers
+
+RainbowKit has built-in Ethereum API provider support so you don't have to worry about defining RPC URLs & a provider instance to pass to `wagmi`.
+
+RainbowKit exports `configureChains` that you can use to configure your chains.
+
+### Alchemy
+
+To configure the chains with Alchemy configuration, provide `apiProvider.alchemy` with an **Alchemy ID** to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```
+
+If you wish to use a WebSocket provider, the `configureChains` also returns a `webSocketProvider`.
+
+```tsx line=4,18
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider, webSocketProvider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
+});
+
+...
+```
+
+### Infura
+
+To configure the chains with Infura configuration, provide `apiProvider.infura` with an **Infura ID** to `configureChains`.
+
+```tsx line=1,4-7,11,17
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.infura(process.env.INFURA_ID)]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```
+
+If you wish to use a WebSocket provider, the API Provider also returns a `webSocketProvider`.
+
+```tsx line=4,18
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider, webSocketProvider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.infura(process.env.INFURA_ID)]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
+});
+
+...
+```
+
+### JSON RPC
+
+To configure the chains with your own RPC URLs, provide `apiProvider.jsonRpc`  to `configureChains` with the chain's RPC URLs.
+
+```tsx
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+    apiProvider.jsonRpc(chain => ({ 
+      rpcUrl: `https://${chain.id}.example.com`
+    }))
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+...
+```
+
+If you want to use a WebSocket provider, you can pass through your WebSocket RPC URLs using the `webSocketRpcUrl` option.
+
+```tsx line=4,9,23
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider, webSocketProvider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+    apiProvider.jsonRpc(chain => ({ 
+      rpcUrl: `https://${chain.id}.example.com`,
+      webSocketRpcUrl: `wss://${chain.id}.example.com`
+    }))
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
+});
+
+...
+```
+
+#### Fallback RPC
+
+To configure the chains with their respective [**fallback (public) RPC URLs**](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts#L44), provide `apiProvider.fallback` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.fallback()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  chains,
+});
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+```
+
+> Note: Only having `apiProvider.fallback` in your API providers will make the chain use the public RPC URL which could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
+
+### Multiple API providers
+
+You can also pass through more than one API provider to `configureChains`. This is useful if not all your chains support a single API provider. For instance, you may want to use [Alchemy](https://alchemy.com) for Ethereum, and [avax.network](https://avax.network) for Avalanche.
+
+```tsx line=3,11-13,23-26
+import { apiProvider, Chain, configureChains } from '@rainbow-me/rainbowkit';
+
+const avalancheChain: Chain = {
+  id: 43_114,
+  name: 'Avalanche',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  rpcUrls: {
+    default: 'https://api.avax.network/ext/bc/C/rpc',
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    snowtrace: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  testnet: false,
+};
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default }))
+  ]
+);
+```

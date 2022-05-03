@@ -100,7 +100,7 @@
   const wallets: WalletList = [
     {
       groupName: 'Suggested',
-      wallets: [wallet.rainbow({ chains, infuraId })],
+      wallets: [wallet.rainbow({ chains })],
     },
   ];
   ```

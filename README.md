@@ -24,36 +24,22 @@ To start, import RainbowKit’s base styles, configure your wallets and desired 
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
+  apiProvider,
+  configureChains,
   RainbowKitProvider,
-  Chain,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
-import { createClient, WagmiProvider, chain } from 'wagmi';
+import { createClient, chain, WagmiProvider } from 'wagmi';
 import { providers } from 'ethers';
 
-const infuraId = process.env.INFURA_ID;
-
-const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.InfuraProvider(chainId, infuraId);
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  chain.optimism,
-  chain.arbitrum,
-];
+const { provider, chains } = configureChains(
+  [chain.mainnet],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
 
 const { connectors } = getDefaultWallets({
-  chains,
-  infuraId,
   appName: 'My RainbowKit App',
-  jsonRpcUrl: ({ chainId }) => {
-    const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-      .rpcUrls;
-    return typeof rpcUrls.default === 'string'
-      ? rpcUrls.default
-      : rpcUrls.default[0];
-  },
+  chains,
 });
 
 const wagmiClient = createClient({
@@ -152,7 +138,185 @@ const App = () => {
 };
 ```
 
-#### Customizing the built-in themes
+### Configuring chains
+
+RainbowKit has built-in Ethereum API provider support so you don't have to worry about defining RPC URLs & a provider instance to pass to `wagmi`.
+
+#### Alchemy
+
+To configure the chains with Alchemy configuration, provide `apiProvider.alchemy` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
+);
+```
+
+#### Infura
+
+To configure the chains with Infura configuration, provide `apiProvider.infura` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+    apiProvider.infura(process.env.INFURA_ID),
+    apiProvider.fallback()
+  ]
+);
+```
+
+#### JSON RPC
+
+To configure the chains with your own RPC URLs, provide `apiProvider.jsonRpc` to `configureChains` with the chain's RPC URLs.
+
+```tsx
+import { apiProvider } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.jsonRpc(chain => ({
+    rpcUrl: `https://${chain.id}.example.com`
+  }))]
+);
+```
+
+#### Fallback RPC
+
+To configure the chains with their respective [**fallback (public) RPC URLs**](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts#L44), provide `apiProvider.fallback` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.fallback()]
+);
+```
+
+> Note: Only having `apiProvider.fallback` in your API providers could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
+
+#### Multiple API providers
+
+You can also pass through more than one API provider to `configureChains`. This is useful if not all your chains support a single API provider. For instance, you may want to use Alchemy for Ethereum, and `avax.network` for Avalanche.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+import { Chain } from 'wagmi';
+
+...
+
+const avalancheChain: Chain = {
+  id: 43_114,
+  name: 'Avalanche',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  rpcUrls: {
+    default: 'https://api.avax.network/ext/bc/C/rpc',
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    snowtrace: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  testnet: false,
+};
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, avalancheChain],
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default }))
+  ]
+);
+```
+
+### Customizing chains
+
+The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
+
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/docs/constants/chains#chain) which currently provides the following chains:
+
+- `chain.mainnet`
+- `chain.ropsten`
+- `chain.rinkeby`
+- `chain.goerli`
+- `chain.kovan`
+- `chain.optimism`
+- `chain.optimismKovan`
+- `chain.polygon`
+- `chain.polygonMumbai`
+- `chain.arbitrum`
+- `chain.arbitrumRinkeby`
+- `chain.localhost`
+- `chain.hardhat`
+
+> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi’s `chain` object](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts).
+
+Your chain config can be defined in a single array provided to [`configureChains`](/docs/configure-chains).
+
+```tsx
+import {
+  apiProvider,
+  configureChains,
+  RainbowKitProvider,
+  Chain,
+} from '@rainbow-me/rainbowkit';
+import { chain } from 'wagmi';
+
+const { chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
+
+```tsx
+const { chains } = configureChains(
+  [
+    {
+      ...chain.mainnet,
+      iconUrl: 'https://example.com/icons/ethereum.png',
+      iconBackground: 'grey',
+    },
+    {
+      ...chain.polygon,
+      iconUrl: 'https://example.com/icons/polygon.png',
+      iconBackground: '#7b3fe4',
+    },
+  ],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
+```
+
+### Customizing the built-in themes
 
 The built-in theme functions also accept an options object, allowing you to select from several different visual styles.
 
@@ -256,85 +420,6 @@ const App = () => {
     </RainbowKitProvider>
   );
 };
-```
-
-### Customizing chains
-
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
-RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/docs/constants/chains#chain) which currently provides the following chains:
-
-- `chain.mainnet`
-- `chain.ropsten`
-- `chain.rinkeby`
-- `chain.goerli`
-- `chain.kovan`
-- `chain.optimism`
-- `chain.optimismKovan`
-- `chain.polygon`
-- `chain.polygonMumbai`
-- `chain.arbitrum`
-- `chain.arbitrumRinkeby`
-- `chain.localhost`
-- `chain.hardhat`
-
-> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi’s `chain` object](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts).
-
-Your chain config can be defined in a single array using RainbowKit’s `Chain` type, which is a combination of wagmi’s `Chain` type and the chain metadata used by RainbowKit.
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [chain.mainnet, chain.polygon];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-You can optionally configure different chains depending on the current environment. For example, to enable testnets based on an environment variable while using [Next.js](https://nextjs.org/):
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
-
-const chains: Chain[] = [
-  chain.mainnet,
-  chain.polygon,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-    : []),
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the `iconUrl` property.
-
-```tsx
-const chains: Chain[] = [
-  {
-    ...chain.mainnet,
-    iconUrl: 'https://example.com/icons/ethereum.png',
-    iconBackground: 'grey',
-  },
-  {
-    ...chain.polygon,
-    iconUrl: 'https://example.com/icons/polygon.png',
-    iconBackground: '#7b3fe4',
-  },
-];
 ```
 
 ### Showing recent transactions
@@ -807,20 +892,10 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
-      wallet.coinbase({
-        chains,
-        appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) => {
-          const rpcUrls = (chains.find(x => x.id === chainId) || chain.mainnet)
-            .rpcUrls;
-          return typeof rpcUrls.default === 'string'
-            ? rpcUrls.default
-            : rpcUrls.default[0];
-        },
-      }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
+      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
@@ -847,7 +922,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.argent(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -859,7 +933,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 wallet.coinbase(options: {
   appName: string;
   chains: Chain[];
-  jsonRpcUrl: string | ((args: { chainId?: number }) => string);
 });
 ```
 
@@ -891,16 +964,13 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.rainbow({ chains, infuraId }),
-      wallet.walletConnect({ chains, infuraId }),
+      wallet.rainbow({ chains }),
+      wallet.walletConnect({ chains }),
       wallet.coinbase({
         chains,
         appName: 'My RainbowKit App',
-        jsonRpcUrl: ({ chainId }) =>
-          chains.find(x => x.id === chainId)?.rpcUrls?.[0] ??
-          chain.mainnet.rpcUrls[0],
       }),
-      wallet.metaMask({ chains, infuraId }),
+      wallet.metaMask({ chains }),
       ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
     ],
   },
@@ -925,7 +995,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.metaMask(options: {
   chains: Chain[];
-  infuraId?: string;
   shimDisconnect?: boolean;
 });
 ```
@@ -937,7 +1006,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.rainbow(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -948,7 +1016,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.trust(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -961,7 +1028,6 @@ import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.walletConnect(options: {
   chains: Chain[];
-  infuraId?: string;
 });
 ```
 

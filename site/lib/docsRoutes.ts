@@ -21,6 +21,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'ConnectButton', slug: 'connect-button' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
+      { title: 'API Providers', slug: 'api-providers' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],
   },

@@ -2,14 +2,14 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
+import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
 
 export interface LedgerOptions {
   chains: Chain[];
-  infuraId?: string;
 }
 
-export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
+export const ledger = ({ chains }: LedgerOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   name: 'Ledger Live',
@@ -20,11 +20,12 @@ export const ledger = ({ chains, infuraId }: LedgerOptions): Wallet => ({
     qrCode: 'https://www.ledger.com/ledger-live/download#download-device-2',
   },
   createConnector: () => {
+    const rpc = rpcUrlsForChains(chains);
     const connector = new WalletConnectConnector({
       chains,
       options: {
-        infuraId,
         qrcode: false,
+        rpc,
       },
     });
 

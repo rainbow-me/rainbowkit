@@ -117,12 +117,10 @@ import { Chain, Wallet } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
   chains: Chain[];
-  infuraId?: string;
 }
 
 export const rainbow = ({
   chains,
-  infuraId,
 }: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
@@ -134,11 +132,15 @@ export const rainbow = ({
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
+    const rpc = chains.reduce(
+      (rpcUrlMap, chain) => ({ ...rpcUrlMap, [chain.id]: chain.rpcUrls.default }),
+      {}
+    );
     const connector = new WalletConnectConnector({
       chains,
       options: {
-        infuraId,
         qrcode: false,
+        rpc,
       },
     });
 
