@@ -16,10 +16,7 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import {
-  Chain,
-  useRainbowKitChains,
-} from '../RainbowKitProvider/RainbowKitChainContext';
+import { Chain } from '../RainbowKitProvider/RainbowKitChainContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
@@ -29,8 +26,14 @@ const parseAndStoreWallets: (
   wallets: WalletConnector[],
   setOtherWallets: (otherWallets: WalletConnector[]) => void,
   connect: (connector: Connector) => Promise<any>,
-  chains: Chain[]
-) => void = (data, wallets, setOtherWallets, connect, chains) => {
+  chains: Chain[],
+  options: {
+    rpc: {
+      [chainId: number]: string;
+    };
+    qrCode: boolean;
+  }
+) => void = (data, wallets, setOtherWallets, connect, chains, options) => {
   const defaultWalletNames = wallets.map(w => w.name);
   if (data?.listings) {
     const rawWallets: any[] = Object.values(data.listings);
@@ -39,6 +42,7 @@ const parseAndStoreWallets: (
       .map(raw => {
         const MoreWalletsConnector = MoreWallets({
           chains,
+          options,
           wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
         });
         return {
@@ -49,6 +53,10 @@ const parseAndStoreWallets: (
           iconUrl: raw.image_url.md,
           id: raw.id,
           name: raw.name,
+          onConnecting: (fn: () => void) =>
+            MoreWalletsConnector.connector.on('message', ({ type }) =>
+              type === 'connecting' ? fn() : undefined
+            ),
           ready: true,
           recent: false,
           shortName: raw.metadata.shortName,
@@ -82,7 +90,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       key={id}
       onClick={useCallback(async () => {
         connect?.();
-
         onConnecting?.(async () => {
           if (getMobileUri) {
             window.location.href = await getMobileUri();
@@ -215,12 +222,26 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors();
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
   const { connectAsync } = useConnect();
-  const chains = useRainbowKitChains();
 
   let headerLabel = null;
   let walletContent = null;
   let headerBackgroundContrast = false;
   let headerBackButtonLink: MobileWalletStep | null = null;
+
+  let walletConnectOptions: {
+    rpc: {
+      [chainId: number]: string;
+    };
+    qrCode: boolean;
+  };
+  let walletConnectChains: Chain[];
+  const walletConnectConnector = wallets.find(
+    w => w.id === 'walletConnect'
+  )?.connector;
+  if (walletConnectConnector) {
+    walletConnectOptions = walletConnectConnector.options;
+    walletConnectChains = walletConnectConnector.chains;
+  }
 
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
     MobileWalletStep.Connect
@@ -240,10 +261,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         wallets,
         setOtherWallets,
         connectAsync,
-        chains as Chain[]
+        walletConnectChains,
+        walletConnectOptions
       );
     };
-    fetchOtherWallets();
+    walletConnectConnector && fetchOtherWallets();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -274,7 +296,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   </Box>
                 );
               })}
-            {!showOtherWallets && (
+            {walletConnectConnector && !showOtherWallets && (
               <Box key="more-wallets" paddingX="14">
                 <Box height="60" width="60">
                   <OtherWalletsButton
