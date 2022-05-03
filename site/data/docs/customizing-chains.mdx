@@ -40,7 +40,10 @@ import { chain } from 'wagmi';
 
 const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
 )
 
 const App = () => {
@@ -66,6 +69,9 @@ const { chains } = configureChains(
       iconUrl: 'https://example.com/icons/polygon.png',
     },
   ], 
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
 );
 ```

@@ -2,7 +2,6 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-
 Add `configureChains` API.
 
 The `configureChains` function allows you to configure your chains with a selected API provider (Alchemy, Infura, JSON RPC). This means you don't have to worry about deriving your own RPC URLs for each chain, and instantiating a Ethereum Provider.
@@ -80,7 +79,7 @@ import { providers } from 'ethers';
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [apiProvider.infura(process.env.INFURA_ID)]
-)
+);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',

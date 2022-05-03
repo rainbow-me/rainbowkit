@@ -27,10 +27,7 @@ const { chains, provider, webSocketProvider } = configureChains(
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  [
-    apiProvider.alchemy(alchemyId),
-    apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default })),
-  ]
+  [apiProvider.alchemy(alchemyId), apiProvider.fallback()]
 );
 
 const { wallets } = getDefaultWallets({

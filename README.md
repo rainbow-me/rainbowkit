@@ -34,7 +34,7 @@ import { providers } from 'ethers';
 
 const { provider, chains } = configureChains(
   [chain.mainnet],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 
 const { connectors } = getDefaultWallets({
@@ -153,7 +153,10 @@ import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
 
 const { provider, chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [
+    apiProvider.alchemy(process.env.ALCHEMY_ID),
+    apiProvider.fallback()
+  ]
 );
 ```
 
@@ -168,7 +171,10 @@ import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
 
 const { provider, chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  [apiProvider.infura(process.env.INFURA_ID)]
+  [
+    apiProvider.infura(process.env.INFURA_ID),
+    apiProvider.fallback()
+  ]
 );
 ```
 
@@ -188,6 +194,23 @@ const { provider, chains } = configureChains(
   }))]
 );
 ```
+
+#### Fallback RPC
+
+To configure the chains with their respective [**fallback (public) RPC URLs**](https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts#L44), provide `apiProvider.fallback` to `configureChains`.
+
+```tsx
+import { apiProvider, configureChains } from '@rainbow-me/rainbowkit';
+
+...
+
+const { provider, chains } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [apiProvider.fallback()]
+);
+```
+
+> Note: only having `apiProvider.fallback` in your API providers could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
 
 #### Multiple API providers
 
@@ -261,7 +284,7 @@ import { chain } from 'wagmi';
 
 const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 
 const App = () => {
@@ -289,7 +312,7 @@ const { chains } = configureChains(
       iconBackground: '#7b3fe4',
     },
   ],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID)]
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 ```
 

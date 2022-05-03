@@ -145,6 +145,57 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
       });
     });
 
+    describe('fallback', () => {
+      it('populate with fallback configuration if all chains have a default RPC URL', () => {
+        const { chains, provider } = configureChains(
+          [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+          [apiProvider.fallback()]
+        );
+
+        expect(chains.map(chain => chain.rpcUrls.default))
+          .toMatchInlineSnapshot(`
+          [
+            "https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC",
+            "https://polygon-rpc.com",
+            "https://mainnet.optimism.io",
+            "https://arb1.arbitrum.io/rpc",
+          ]
+        `);
+
+        expect(
+          provider({ chainId: chain.mainnet.id }).connection.url
+        ).toMatchInlineSnapshot(
+          '"https://eth-mainnet.alchemyapi.io/v2/_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC"'
+        );
+        expect(
+          provider({ chainId: chain.polygon.id }).connection.url
+        ).toMatchInlineSnapshot('"https://polygon-rpc.com"');
+      });
+
+      it('throws an error if a chain does not have a default RPC URL', () => {
+        // @ts-expect-error
+        delete chain.polygon.rpcUrls.default;
+
+        expect(() =>
+          configureChains(
+            [
+              chain.mainnet,
+              chain.polygon,
+              chain.optimism,
+              chain.arbitrum,
+              chain.localhost,
+            ],
+            [apiProvider.fallback()]
+          )
+        ).toThrowErrorMatchingInlineSnapshot(`
+          "Could not find valid API provider configuration for \`chain.polygon\`.
+
+You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/TODO"
+        `);
+      });
+    });
+
     describe('jsonRpc', () => {
       beforeAll(() => {
         [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum].forEach(
