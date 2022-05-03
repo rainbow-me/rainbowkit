@@ -1,8 +1,9 @@
 ---
-title: Configuring chains
+title: API Providers
+description: Configure your chains with API providers
 ---
 
-# Configuring chains
+# API Providers
 
 ## Configure your chains with API providers
 
@@ -203,7 +204,7 @@ const wagmiClient = createClient({
 });
 ```
 
-> Note: only having `apiProvider.fallback` in your API providers could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
+> Note: Only having `apiProvider.fallback` in your API providers will make the chain use the public RPC URL which could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
 
 ### Multiple API providers
 

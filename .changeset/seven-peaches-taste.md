@@ -51,7 +51,7 @@ Note: if you are using `chains` from wagmi, the default network names are now de
 Before:
 
 ```tsx
-const chains: Chain[] = [
+const chains = [
   { ...chain.mainnet, name: 'Ethereum' },
   { ...chain.polygonMainnet, name: 'Polygon' },
 ];
@@ -60,5 +60,5 @@ const chains: Chain[] = [
 After:
 
 ```tsx
-const chains: Chain[] = [chain.mainnet, chain.polygon];
+const chains = [chain.mainnet, chain.polygon];
 ```

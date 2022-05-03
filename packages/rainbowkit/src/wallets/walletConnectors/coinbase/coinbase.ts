@@ -25,6 +25,7 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
+      qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
     },
     createConnector: ({ chainId = chains[0].id }) => {
       const ios = isIOS();

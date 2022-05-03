@@ -2,7 +2,6 @@ import {
   BaseProvider,
   WebSocketProvider as BaseWebSocketProvider,
 } from '@ethersproject/providers';
-import dedent from 'dedent';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { ApiProvider } from './apiProviders/ApiProvider';
 
@@ -40,12 +39,13 @@ export const configureChains = <
     // If no API configuration was found across the API providers
     // then we throw an error to the consumer.
     if (!apiConfig) {
-      throw new Error(dedent`
-        Could not find valid API provider configuration for \`chain.${chain.name.toLowerCase()}\`.
-
-        You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-        Read more: https://rainbowkit.vercel.app/docs/TODO
-      `);
+      throw new Error(
+        [
+          `Could not find valid API provider configuration for \`chain.${chain.name.toLowerCase()}\`.\n`,
+          'You may need to add `apiProvider.fallback` to `configureChains` so that the chain can fall back to the public RPC URL.',
+          'Read more: https://rainbowkit.vercel.app/docs/api-providers',
+        ].join('\n')
+      );
     }
   }
 

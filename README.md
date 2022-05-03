@@ -29,7 +29,7 @@ import {
   RainbowKitProvider,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, chain } from 'wagmi';
+import { createClient, chain, WagmiProvider } from 'wagmi';
 import { providers } from 'ethers';
 
 const { provider, chains } = configureChains(
@@ -210,7 +210,7 @@ const { provider, chains } = configureChains(
 );
 ```
 
-> Note: only having `apiProvider.fallback` in your API providers could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
+> Note: Only having `apiProvider.fallback` in your API providers could lead to rate-limiting. It is recommended to also include `apiProvider.alchemy`, `apiProvider.infura` or `apiProvider.jsonRpc`.
 
 #### Multiple API providers
 
@@ -241,7 +241,7 @@ const avalancheChain: Chain = {
 };
 
 const { provider, chains } = configureChains(
-  [chain.mainnet, chain.polygon],
+  [chain.mainnet, avalancheChain],
   [
     apiProvider.alchemy(process.env.ALCHEMY_ID),
     apiProvider.jsonRpc(chain => ({ rpcUrl: chain.rpcUrls.default }))

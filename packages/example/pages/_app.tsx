@@ -122,16 +122,12 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
 
           {isMounted && (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                fontFamily: 'sans-serif',
-                gap: 24,
-                paddingBottom: 200, // Allow the page to scroll on mobile
-              }}
-            >
-              <div>
+            <>
+              <div
+                style={{
+                  fontFamily: 'sans-serif',
+                }}
+              >
                 <h3>RainbowKitProvider props</h3>
                 <div
                   style={{
@@ -165,116 +161,123 @@ function App({ Component, pageProps }: AppProps) {
               </div>
               <div
                 style={{
-                  display: 'flex',
-                  gap: 24,
+                  fontFamily: 'sans-serif',
+                  paddingBottom: 200, // Allow the page to scroll on mobile
                 }}
               >
-                <div>
-                  <h4>Theme</h4>
-                  <div
-                    style={{
-                      alignItems: 'flex-start',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 12,
-                    }}
-                  >
-                    {themes.map(({ name: themeName }) => (
-                      <label key={themeName} style={{ userSelect: 'none' }}>
-                        <input
-                          checked={themeName === selectedThemeName}
-                          name="theme"
-                          onChange={e =>
-                            setThemeName(e.target.value as ThemeName)
-                          }
-                          type="radio"
-                          value={themeName}
-                        />{' '}
-                        {themeName}
-                      </label>
-                    ))}
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: 24,
+                  }}
+                >
+                  <div>
+                    <h4>Theme</h4>
+                    <div
+                      style={{
+                        alignItems: 'flex-start',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                      }}
+                    >
+                      {themes.map(({ name: themeName }) => (
+                        <label key={themeName} style={{ userSelect: 'none' }}>
+                          <input
+                            checked={themeName === selectedThemeName}
+                            name="theme"
+                            onChange={e =>
+                              setThemeName(e.target.value as ThemeName)
+                            }
+                            type="radio"
+                            value={themeName}
+                          />{' '}
+                          {themeName}
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h4>Font stack</h4>
-                  <div
-                    style={{
-                      alignItems: 'flex-start',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 12,
-                    }}
-                  >
-                    {fontStacks.map(fontStack => (
-                      <label key={fontStack} style={{ userSelect: 'none' }}>
-                        <input
-                          checked={fontStack === selectedFontStack}
-                          name="fontStack"
-                          onChange={e =>
-                            setFontStack(e.target.value as FontStack)
-                          }
-                          type="radio"
-                          value={fontStack}
-                        />{' '}
-                        {fontStack}
-                      </label>
-                    ))}
+                  <div>
+                    <h4>Font stack</h4>
+                    <div
+                      style={{
+                        alignItems: 'flex-start',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                      }}
+                    >
+                      {fontStacks.map(fontStack => (
+                        <label key={fontStack} style={{ userSelect: 'none' }}>
+                          <input
+                            checked={fontStack === selectedFontStack}
+                            name="fontStack"
+                            onChange={e =>
+                              setFontStack(e.target.value as FontStack)
+                            }
+                            type="radio"
+                            value={fontStack}
+                          />{' '}
+                          {fontStack}
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h4>Accent</h4>
-                  <div
-                    style={{
-                      alignItems: 'flex-start',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 12,
-                    }}
-                  >
-                    {accentColors.map(accentColor => (
-                      <label key={accentColor} style={{ userSelect: 'none' }}>
-                        <input
-                          checked={accentColor === selectedAccentColor}
-                          name="accentColor"
-                          onChange={e =>
-                            setAccentColor(e.target.value as AccentColor)
-                          }
-                          type="radio"
-                          value={accentColor}
-                        />{' '}
-                        {accentColor}
-                      </label>
-                    ))}
+                  <div>
+                    <h4>Accent</h4>
+                    <div
+                      style={{
+                        alignItems: 'flex-start',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                      }}
+                    >
+                      {accentColors.map(accentColor => (
+                        <label key={accentColor} style={{ userSelect: 'none' }}>
+                          <input
+                            checked={accentColor === selectedAccentColor}
+                            name="accentColor"
+                            onChange={e =>
+                              setAccentColor(e.target.value as AccentColor)
+                            }
+                            type="radio"
+                            value={accentColor}
+                          />{' '}
+                          {accentColor}
+                        </label>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h4>Border radius</h4>
-                  <div
-                    style={{
-                      alignItems: 'flex-start',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 12,
-                    }}
-                  >
-                    {radiusScales.map(radiusScale => (
-                      <label key={radiusScale} style={{ userSelect: 'none' }}>
-                        <input
-                          checked={radiusScale === selectedRadiusScale}
-                          name="radiusScale"
-                          onChange={e =>
-                            setRadiusScale(e.target.value as RadiusScale)
-                          }
-                          type="radio"
-                          value={radiusScale}
-                        />{' '}
-                        {radiusScale}
-                      </label>
-                    ))}
+                  <div>
+                    <h4>Border radius</h4>
+                    <div
+                      style={{
+                        alignItems: 'flex-start',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                      }}
+                    >
+                      {radiusScales.map(radiusScale => (
+                        <label key={radiusScale} style={{ userSelect: 'none' }}>
+                          <input
+                            checked={radiusScale === selectedRadiusScale}
+                            name="radiusScale"
+                            onChange={e =>
+                              setRadiusScale(e.target.value as RadiusScale)
+                            }
+                            type="radio"
+                            value={radiusScale}
+                          />{' '}
+                          {radiusScale}
+                        </label>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
         </RainbowKitProvider>
       </WagmiProvider>

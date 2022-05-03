@@ -82,8 +82,8 @@ describe('configureChains', () => {
         ).toThrowErrorMatchingInlineSnapshot(`
           "Could not find valid API provider configuration for \`chain.localhost\`.
 
-You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/TODO"
+You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/api-providers"
         `);
       });
     });
@@ -139,8 +139,8 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
         ).toThrowErrorMatchingInlineSnapshot(`
           "Could not find valid API provider configuration for \`chain.localhost\`.
 
-You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/TODO"
+You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/api-providers"
         `);
       });
     });
@@ -173,25 +173,26 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
       });
 
       it('throws an error if a chain does not have a default RPC URL', () => {
+        const chain_ = { ...chain };
         // @ts-expect-error
-        delete chain.polygon.rpcUrls.default;
+        delete chain_.polygon.rpcUrls.default;
 
         expect(() =>
           configureChains(
             [
-              chain.mainnet,
-              chain.polygon,
-              chain.optimism,
-              chain.arbitrum,
-              chain.localhost,
+              chain_.mainnet,
+              chain_.polygon,
+              chain_.optimism,
+              chain_.arbitrum,
+              chain_.localhost,
             ],
             [apiProvider.fallback()]
           )
         ).toThrowErrorMatchingInlineSnapshot(`
           "Could not find valid API provider configuration for \`chain.polygon\`.
 
-You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/TODO"
+You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/api-providers"
         `);
       });
     });
@@ -264,8 +265,8 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
         ).toThrowErrorMatchingInlineSnapshot(`
         "Could not find valid API provider configuration for \`chain.ethereum\`.
 
-You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/TODO"
+You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/api-providers"
       `);
       });
     });
@@ -273,15 +274,16 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
 
   describe('multiple API providers', () => {
     it('falls back and finds RPC URL in next provider if previous provider does not support a chain', () => {
-      delete chain.polygon.rpcUrls.alchemy;
-      delete chain.arbitrum.rpcUrls.alchemy;
+      const chain_ = { ...chain };
+      delete chain_.polygon.rpcUrls.alchemy;
+      delete chain_.arbitrum.rpcUrls.alchemy;
 
       const { chains, provider } = configureChains(
         [
-          chain.mainnet,
-          chain.polygon,
-          chain.optimism,
-          chain.arbitrum,
+          chain_.mainnet,
+          chain_.polygon,
+          chain_.optimism,
+          chain_.arbitrum,
           avalancheChain,
         ],
         [
@@ -302,12 +304,12 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
       `);
 
       expect(
-        provider({ chainId: chain.mainnet.id }).connection.url
+        provider({ chainId: chain_.mainnet.id }).connection.url
       ).toMatchInlineSnapshot(
         '"https://eth-mainnet.alchemyapi.io/v2/alchemyId"'
       );
       expect(
-        provider({ chainId: chain.polygon.id }).connection.url
+        provider({ chainId: chain_.polygon.id }).connection.url
       ).toMatchInlineSnapshot(
         '"https://polygon-mainnet.infura.io/v3/infuraId"'
       );
@@ -338,8 +340,8 @@ Read more: https://rainbowkit.vercel.app/docs/TODO"
       ).toThrowErrorMatchingInlineSnapshot(`
       "Could not find valid API provider configuration for \`chain.avalanche\`.
 
-You may need to add \`apiProvider.jsonRpc\` to \`configureChains\` with the chain's RPC URL.
-Read more: https://rainbowkit.vercel.app/docs/TODO"
+You may need to add \`apiProvider.fallback\` to \`configureChains\` so that the chain can fall back to the public RPC URL.
+Read more: https://rainbowkit.vercel.app/docs/api-providers"
     `);
     });
   });
