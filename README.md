@@ -339,9 +339,11 @@ const chains: Chain[] = [
 
 ### Showing recent transactions
 
-You can opt in to displaying recent transactions within RainbowKit’s account modal. Note that all transactions must be manually registered with RainbowKit in order to be displayed.
+You can opt in to displaying recent transactions within RainbowKit’s account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
 
-First enable the `showRecentTransactions` option on `RainbowKitProvider`.
+The default `ConnectButton` implementation will also display a loading indicator around the user’s avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
+
+To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
