@@ -4,21 +4,21 @@
 
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
-- 🦄 Built on top of [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io)
+- 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
 
 ## ⚠️ Please note
 
-RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wagmi-xyz.vercel.app/) which is currently `v0.x`. The APIs are not stable and likely to change in the near future. At this stage we’re looking for early adopters to provide feedback and help us improve the library.
+RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wagmi.sh) which is currently `v0.x`. The APIs are not stable and likely to change in the near future. At this stage we’re looking for early adopters to provide feedback and help us improve the library.
 
 ## Installation
 
-Install RainbowKit along with [wagmi](https://wagmi-xyz.vercel.app/) and its [ethers](https://docs.ethers.io) peer dependency.
+Install RainbowKit along with [wagmi](https://wagmi.sh) and its [ethers](https://docs.ethers.io) peer dependency.
 
 `npm install @rainbow-me/rainbowkit wagmi ethers`
 
 ## Getting started
 
-To start, import RainbowKit’s base styles, configure your wallets and desired chains, generate the required connectors, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+To start, import RainbowKit’s base styles, configure your wallets and desired chains, generate the required connectors, then wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi.sh/docs/provider).
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
