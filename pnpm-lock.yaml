@@ -156,6 +156,7 @@ importers:
       contentlayer: 0.2.2
       copy-to-clipboard: ^3.3.1
       deepmerge: ^4.2.2
+      detect-browser: ^5.3.0
       ethers: ^5.0.0
       focus-visible: ^5.2.0
       framer-motion: ^6.3.0
@@ -195,6 +196,7 @@ importers:
       clsx: 1.1.1
       copy-to-clipboard: 3.3.1
       deepmerge: 4.2.2
+      detect-browser: 5.3.0
       ethers: 5.6.2
       focus-visible: 5.2.0
       framer-motion: 6.3.0_react-dom@18.0.0+react@18.0.0

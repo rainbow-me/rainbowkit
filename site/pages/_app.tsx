@@ -1,4 +1,5 @@
 import '@rainbow-me/rainbowkit/styles.css';
+import { Provider } from 'components/Provider/Provider';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -24,7 +25,6 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const isDocs = router.pathname.includes('/docs');
-
   useEffect(() => {
     const body = document.body;
     const tasteTheRainbow = () =>
@@ -41,13 +41,15 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {isDocs ? (
-        <DocsLayout>
+      <Provider>
+        {isDocs ? (
+          <DocsLayout>
+            <Component {...pageProps} />
+          </DocsLayout>
+        ) : (
           <Component {...pageProps} />
-        </DocsLayout>
-      ) : (
-        <Component {...pageProps} />
-      )}
+        )}
+      </Provider>
     </>
   );
 }

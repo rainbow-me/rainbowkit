@@ -13,7 +13,7 @@ export function CoolMode() {
   const coolTrustRef = useCoolMode('/trust.svg');
 
   return (
-    <Box className={cool}>
+    <Box className={cool} id="cool-mode-demo">
       <Box ref={coolRainbowRef}>
         <CoolButton src="/rainbow.svg">Rainbow</CoolButton>
       </Box>

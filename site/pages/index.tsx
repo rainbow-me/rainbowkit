@@ -17,12 +17,17 @@ import { useCoolMode } from 'lib/useCoolMode';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
+import { useConnect } from 'wagmi';
 
 export default function Home() {
+  const { isConnected } = useConnect();
+  const ref = useCoolMode('/rainbow.svg', !isConnected) as Ref<HTMLDivElement>;
+
   return (
     <Box
       backgroundColor="background"
       data-mode="dark"
+      ref={ref}
       style={{ minHeight: '100vh', overflow: 'hidden' }}
     >
       <TitleAndMetaTags color="black" />

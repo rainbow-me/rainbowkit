@@ -14,6 +14,7 @@ import { chains, Provider } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
+import { isAndroid } from 'lib/isMobile';
 import { useMounted } from 'lib/useMounted';
 import React, { useState } from 'react';
 import { radio, ring } from './Playground.css';
@@ -93,12 +94,25 @@ export function Playground() {
         position="absolute"
         style={{ height: '100%', width: '100%' }}
       >
-        <MeshGradient
-          backgroundColor="#1f4fcc"
-          u_c1={gradient[0]}
-          u_c2={gradient[1]}
-          u_c3={gradient[2]}
-        />
+        {isAndroid() && (
+          <motion.div
+            animate={{
+              backgroundImage: `linear-gradient(136deg, rgb(${gradient[2]}) 0%, rgb(${gradient[0]}) 100%)`,
+            }}
+            initial={false}
+            style={{ width: '100%', height: '100%' }}
+            transition={{ duration: 1.5 }}
+          />
+        )}
+
+        {!isAndroid() && (
+          <MeshGradient
+            backgroundColor="#1f4fcc"
+            u_c1={gradient[0]}
+            u_c2={gradient[1]}
+            u_c3={gradient[2]}
+          />
+        )}
       </Box>
       <Box position="relative">
         <Wrapper>

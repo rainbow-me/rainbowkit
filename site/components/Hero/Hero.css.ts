@@ -29,13 +29,8 @@ export const modalWrapper = style([
     maxWidth: 800,
   },
 ]);
-// export const modalImage = style({});
 
 export const phoneWrapper = style([
-  atoms({
-    // marginX: 'auto',
-    // position: { md: 'absolute' },
-  }),
   responsiveStyle({
     xs: { maxWidth: PHONE_SIZE.width / 2 },
     md: { display: 'none' },
@@ -48,4 +43,3 @@ export const phoneWrapper = style([
     },
   }),
 ]);
-// export const phoneImage = style({});
