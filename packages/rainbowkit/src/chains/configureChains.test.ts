@@ -209,7 +209,7 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
       });
 
       it('populate with provided RPC URLs for JSON RPC API provider', () => {
-        const { chains, provider, webSocketProvider } = configureChains(
+        const { chains, provider } = configureChains(
           [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
           [
             apiProvider.jsonRpc(chain => ({
@@ -221,13 +221,13 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
 
         expect(chains.map(chain => chain.rpcUrls.default))
           .toMatchInlineSnapshot(`
-          [
-            "https://1.example.com",
-            "https://137.example.com",
-            "https://10.example.com",
-            "https://42161.example.com",
-          ]
-        `);
+            [
+              "https://1.example.com",
+              "https://137.example.com",
+              "https://10.example.com",
+              "https://42161.example.com",
+            ]
+          `);
 
         expect(
           provider({ chainId: chain.mainnet.id }).connection.url
@@ -235,13 +235,6 @@ Read more: https://rainbowkit.vercel.app/docs/api-providers"
         expect(
           provider({ chainId: chain.polygon.id }).connection.url
         ).toMatchInlineSnapshot('"https://137.example.com"');
-
-        expect(
-          webSocketProvider({ chainId: chain.mainnet.id }).connection.url
-        ).toMatchInlineSnapshot('"wss://1.example.com"');
-        expect(
-          webSocketProvider({ chainId: chain.polygon.id }).connection.url
-        ).toMatchInlineSnapshot('"wss://137.example.com"');
       });
 
       it('throws an error if rpcUrl returns empty string for a chain', () => {
