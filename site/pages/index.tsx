@@ -2,6 +2,7 @@
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
+import { Hero } from 'components/Hero/Hero';
 import { CheckIcon } from 'components/Icons/Check';
 import { CopyIcon } from 'components/Icons/Copy';
 import { TickIcon } from 'components/Icons/Tick';
@@ -64,7 +65,7 @@ export default function Home() {
           <Box marginBottom="8">
             <InstallScript />
           </Box>
-          <Box marginBottom={{ xs: '10', md: '11' }}>
+          <Box marginBottom={{ xs: '0', md: '11' }}>
             <NextLink href="/docs" passHref>
               <Button as="a" size="xl" variant="purpleGradient">
                 View the Docs
@@ -74,52 +75,7 @@ export default function Home() {
         </Box>
       </Wrapper>
 
-      <Box position="relative">
-        <Box
-          backgroundColor="purple90"
-          position="absolute"
-          style={{
-            borderRadius: '100%',
-            filter: 'blur(150px)',
-            height: '80%',
-            left: '50%',
-            top: '50%',
-            transform: 'translate3d(-50%, -50%, 0)',
-            width: '50vw',
-            zIndex: '1',
-          }}
-        />
-        <Wrapper position="relative" style={{ zIndex: '2' }}>
-          <Box
-            position="relative"
-            style={{ pointerEvents: 'none', userSelect: 'none' }}
-          >
-            <Box
-              display={{
-                xs: 'none',
-
-                md: 'block',
-              }}
-              style={{ maxWidth: 1568 / 2 }}
-            >
-              <NextImage height="1136" src="/hero-modal.png" width="1568" />
-            </Box>
-            <Box
-              bottom="0"
-              marginX="auto"
-              position={{ md: 'absolute' }}
-              right={{
-                md: '0',
-
-                lg: '-7',
-              }}
-              style={{ maxWidth: 580 / 2 }}
-            >
-              <NextImage height="1064" src="/hero-iphone.png" width="580" />
-            </Box>
-          </Box>
-        </Wrapper>
-      </Box>
+      <Hero />
 
       <Playground />
 
