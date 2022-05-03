@@ -191,7 +191,7 @@ function makeElementCool(
     // added to the CoolMode.tsx Component - otherwise we get double emoji showers!
     if (ignoreCoolModeDocsDemo) {
       var element = document.getElementById('cool-mode-demo');
-      if (element.contains(e.target as any)) return;
+      if (element?.contains(e.target as any)) return;
     }
 
     updateMousePosition(e);
