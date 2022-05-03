@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { Box, BoxProps } from '../Box/Box';
 import { AsyncImageSrc, useAsyncImage } from './useAsyncImage';
 
@@ -27,6 +27,12 @@ export function AsyncImage({
   width,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
+  const isRemoteImage = src && /^http/.test(src);
+  const [isRemoteImageLoaded, setRemoteImageLoaded] = useReducer(
+    () => true,
+    false
+  );
+
   return (
     <Box
       aria-label={alt}
@@ -43,16 +49,31 @@ export function AsyncImage({
       width={typeof width === 'string' ? width : undefined}
     >
       <Box
-        backgroundSize="cover"
+        {...(isRemoteImage
+          ? {
+              'aria-hidden': true,
+              'as': 'img',
+              'onLoad': setRemoteImageLoaded,
+              'src': src,
+            }
+          : {
+              backgroundSize: 'cover',
+            })}
         height="full"
         position="absolute"
         style={{
-          backgroundImage: typeof src === 'string' ? `url(${src})` : undefined,
-          backgroundRepeat: 'no-repeat',
-          opacity: typeof src === 'string' ? 1 : 0,
           touchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',
+          ...(isRemoteImage
+            ? {
+                opacity: isRemoteImageLoaded ? 1 : 0,
+              }
+            : {
+                backgroundImage: src ? `url(${src})` : undefined,
+                backgroundRepeat: 'no-repeat',
+                opacity: src ? 1 : 0,
+              }),
         }}
         width="full"
       />

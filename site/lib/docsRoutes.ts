@@ -22,6 +22,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Theming', slug: 'theming' },
       { title: 'Configuring chains', slug: 'configuring-chains' },
       { title: 'Customizing chains', slug: 'customizing-chains' },
+      { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],
   },
 

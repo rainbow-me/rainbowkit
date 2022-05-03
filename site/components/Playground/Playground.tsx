@@ -32,8 +32,7 @@ type ThemeOptions = Parameters<typeof lightTheme>[0];
 type Accents = ThemeOptions['accentColor'];
 type Radii = ThemeOptions['borderRadius'];
 
-type AccentsWithoutYellow = Exclude<Accents, 'yellow'>;
-const gradientColors: Record<AccentsWithoutYellow, any> = {
+const gradientColors: Record<Accents, any> = {
   blue: [
     [29, 100, 192],
     [47, 9, 148],
@@ -95,6 +94,7 @@ export function Playground() {
         style={{ height: '100%', width: '100%' }}
       >
         <MeshGradient
+          backgroundColor="#1f4fcc"
           u_c1={gradient[0]}
           u_c2={gradient[1]}
           u_c3={gradient[2]}
