@@ -97,7 +97,6 @@ importers:
     specifiers:
       '@ethersproject/abstract-provider': ^5.5.1
       '@ethersproject/providers': ^5.5.1
-      '@types/dedent': ^0.7.0
       '@types/qrcode': ^1.4.2
       '@vanilla-extract/css': ^1.6.6
       '@vanilla-extract/dynamic': ^2.0.2
@@ -105,7 +104,6 @@ importers:
       '@vanilla-extract/sprinkles': ^1.4.0
       autoprefixer: ^10.4.0
       clsx: ^1.1.1
-      dedent: ^0.7.0
       detect-browser: ^5.3.0
       focus-visible: ^5.2.0
       nock: ^13.2.4
@@ -119,7 +117,6 @@ importers:
       '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
       clsx: 1.1.1
-      dedent: 0.7.0
       detect-browser: 5.3.0
       focus-visible: 5.2.0
       qrcode: 1.5.0
@@ -127,7 +124,6 @@ importers:
     devDependencies:
       '@ethersproject/abstract-provider': 5.5.1
       '@ethersproject/providers': 5.5.3
-      '@types/dedent': 0.7.0
       '@types/qrcode': 1.4.2
       '@vanilla-extract/private': 1.0.3
       autoprefixer: 10.4.2_postcss@8.4.6
@@ -3528,10 +3524,6 @@ packages:
       '@types/ms': 0.7.31
     dev: true
 
-  /@types/dedent/0.7.0:
-    resolution: {integrity: sha512-EGlKlgMhnLt/cM4DbUSafFdrkeJoC9Mvnj0PUCU7tFmTjMjNRT957kXCx0wYm3JuEq4o4ZsS5vG+NlkM2DMd2A==}
-    dev: true
-
   /@types/estree-jsx/0.0.1:
     resolution: {integrity: sha512-gcLAYiMfQklDCPjQegGn0TBAn9it05ISEsEhlKQUddIk7o2XDokOcTN7HBO8tznM0D9dGezvHEfRZBfZf6me0A==}
     dependencies:
@@ -5445,10 +5437,6 @@ packages:
   /decode-uri-component/0.2.0:
     resolution: {integrity: sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=}
     engines: {node: '>=0.10'}
-
-  /dedent/0.7.0:
-    resolution: {integrity: sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=}
-    dev: false
 
   /deep-eql/3.0.1:
     resolution: {integrity: sha512-+QeIQyN5ZuO+3Uk5DYh6/1eKO0m0YmJFGNmFHGACpf1ClL1nmlV/p4gNgbl2pJGxgXb4faqo6UE+M5ACEMyVcw==}
