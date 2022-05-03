@@ -102,7 +102,7 @@ export default function Home() {
               }}
               style={{ maxWidth: 1568 / 2 }}
             >
-              <NextImage height="1136" src="/hero-modal.png" width="1568" />
+              <NextImage height="1704" src="/hero-modal.png" width="2352" />
             </Box>
             <Box
               bottom="0"
@@ -115,7 +115,7 @@ export default function Home() {
               }}
               style={{ maxWidth: 580 / 2 }}
             >
-              <NextImage height="1064" src="/hero-iphone.png" width="580" />
+              <NextImage height="1596" src="/hero-iphone.png" width="870" />
             </Box>
           </Box>
         </Wrapper>

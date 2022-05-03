@@ -11,6 +11,7 @@ import { PropsTable } from 'components/PropsTable/PropsTable';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
+import NextImage from 'next/image';
 import React, { useState } from 'react';
 
 export const components = {
@@ -84,7 +85,7 @@ export const components = {
       {...props}
     />
   ),
-  Img: props => <Box as="img" {...props} display="block" maxWidth="full" />,
+  Img: props => <NextImage {...props} />,
   li: ({ children, ...props }) => (
     <Box alignItems="center" as="li" display="flex" {...props}>
       <Box
