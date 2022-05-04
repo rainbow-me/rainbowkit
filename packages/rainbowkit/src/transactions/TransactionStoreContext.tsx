@@ -1,3 +1,4 @@
+import { BaseProvider } from '@ethersproject/providers';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useProvider } from 'wagmi';
 import { useAddress } from '../hooks/useAddress';
@@ -17,7 +18,7 @@ export function TransactionStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const provider = useProvider();
+  const provider = useProvider<BaseProvider>();
   const address = useAddress();
   const chainId = useChainId();
 
