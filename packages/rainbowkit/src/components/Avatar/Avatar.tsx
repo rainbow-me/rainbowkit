@@ -47,14 +47,16 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         }}
         userSelect="none"
       >
-        <Box
-          backgroundSize="cover"
-          borderRadius="full"
-          height="full"
-          position="absolute"
-          style={{ backgroundImage: `url(${imageUrl})` }}
-          width="full"
-        />
+        {imageUrl ? (
+          <Box
+            backgroundSize="cover"
+            borderRadius="full"
+            height="full"
+            position="absolute"
+            style={{ backgroundImage: `url(${imageUrl})` }}
+            width="full"
+          />
+        ) : null}
         {emoji}
       </Box>
       {typeof loading === 'boolean' && (

@@ -69,7 +69,9 @@ export function Header({
                 : lightTheme({ accentColor: vars.colors.blue })
             }
           >
-            <ConnectButton />
+            <ConnectButton
+              accountStatus={{ largeScreen: 'full', smallScreen: 'avatar' }}
+            />
           </RainbowKitProvider>{' '}
         </Box>
       </Box>

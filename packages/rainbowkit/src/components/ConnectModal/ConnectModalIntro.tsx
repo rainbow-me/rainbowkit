@@ -55,7 +55,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
                 Instead of creating new accounts and passwords on every website,
-                just connect your wallet instead.
+                just connect your wallet.
               </Text>
             </Box>
           </Box>
