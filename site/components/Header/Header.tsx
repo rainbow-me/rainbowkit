@@ -59,7 +59,9 @@ export function Header({
         <Box style={{ marginLeft: 'auto' }}>
           <Provider>
             <RainbowKitProvider chains={chains} theme={darkTheme()}>
-              <ConnectButton />
+              <ConnectButton
+                accountStatus={{ largeScreen: 'full', smallScreen: 'avatar' }}
+              />
             </RainbowKitProvider>{' '}
           </Provider>
         </Box>
