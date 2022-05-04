@@ -79,7 +79,6 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   bottom: 0,
                   left: 0,
                   outline: 'none',
-                  overflow: 'auto',
                   position: 'fixed',
                   top: 0,
                   width: `calc(250px + ${vars.space[6]})`,
@@ -89,7 +88,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                 <Box
                   backgroundColor="fillElevated"
                   padding="6"
-                  style={{ height: '100%' }}
+                  style={{ height: '100%', overflow: 'auto' }}
                 >
                   <Sidebar routes={docsRoutes} />
                 </Box>
