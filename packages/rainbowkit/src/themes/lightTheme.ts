@@ -26,7 +26,7 @@ export const lightTheme = ({
     accentColor,
     accentColorForeground,
     actionButtonBorder: 'rgba(0, 0, 0, 0.04)',
-    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
+    actionButtonBorderMobile: 'rgba(0, 0, 0, 0.06)',
     actionButtonSecondaryBackground: 'rgba(0, 0, 0, 0.06)',
     closeButton: 'rgba(60, 66, 66, 0.8)',
     closeButtonBackground: 'rgba(0, 0, 0, 0.06)',

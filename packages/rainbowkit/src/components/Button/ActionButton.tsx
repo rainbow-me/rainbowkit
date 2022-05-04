@@ -28,7 +28,7 @@ const sizeVariants: Record<
   small: {
     fontSize: '14',
     paddingX: '10',
-    paddingY: '4',
+    paddingY: '5',
   },
 };
 
@@ -56,17 +56,23 @@ export function ActionButton({
     ? 'actionButtonSecondaryBackground'
     : null;
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
+  const hasBorder = !mobile || !isNotLarge;
   return (
     <Box
       {...(href
         ? { as: 'a', href, rel: 'noreferrer noopener', target }
         : { as: 'button', type: 'button' })}
-      borderColor={
-        mobile && isNotLarge ? 'actionButtonBorderMobile' : 'actionButtonBorder'
-      }
+      {...(hasBorder
+        ? {
+            borderColor:
+              mobile && !isNotLarge && !isPrimary
+                ? 'actionButtonBorderMobile'
+                : 'actionButtonBorder',
+            borderStyle: 'solid',
+            borderWidth: '1',
+          }
+        : {})}
       borderRadius="actionButton"
-      borderStyle="solid"
-      borderWidth="1"
       display="block"
       onClick={onClick}
       paddingX={paddingX}

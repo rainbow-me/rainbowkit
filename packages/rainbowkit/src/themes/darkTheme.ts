@@ -28,7 +28,7 @@ export const darkTheme = ({
     accentColor,
     accentColorForeground,
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
-    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
+    actionButtonBorderMobile: 'rgba(255, 255, 255, 0.08)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     closeButton: 'rgba(224, 232, 255, 0.6)',
     closeButtonBackground: 'rgba(255, 255, 255, 0.08)',

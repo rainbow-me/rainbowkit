@@ -26,7 +26,7 @@ export const midnightTheme = ({
     accentColor,
     accentColorForeground,
     actionButtonBorder: 'rgba(255, 255, 255, 0.04)',
-    actionButtonBorderMobile: 'rgba(0, 0, 0, 0)',
+    actionButtonBorderMobile: 'rgba(255, 255, 255, 0.1)',
     actionButtonSecondaryBackground: 'rgba(255, 255, 255, 0.08)',
     closeButton: 'rgba(255, 255, 255, 0.7)',
     closeButtonBackground: 'rgba(255, 255, 255, 0.08)',
