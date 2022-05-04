@@ -1,7 +1,9 @@
 import {
   apiProvider,
   configureChains,
+  connectorsForWallets,
   getDefaultWallets,
+  wallet,
 } from '@rainbow-me/rainbowkit';
 import React from 'react';
 import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
@@ -13,10 +15,22 @@ export const { chains, provider } = configureChains(
   [apiProvider.alchemy(alchemyId), apiProvider.fallback()]
 );
 
-const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit site',
+const { wallets } = getDefaultWallets({
+  appName: 'rainbowkit.com',
   chains,
 });
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'More',
+    wallets: [
+      wallet.argent({ chains }),
+      wallet.trust({ chains }),
+      wallet.ledger({ chains }),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
