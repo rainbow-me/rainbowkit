@@ -8,7 +8,7 @@ Each changeset defines which package(s) should be published and whether the chan
 
 To create a new changeset, run `pnpm changeset`. This will run the Changesets CLI, prompting you for details about the change. You’ll be able to edit the file after it’s created — don’t worry about getting everything perfect up front.
 
-Since we’re currently in limited beta, all changes should be marked as a patch release to keep us within the `v0.0.x` range.
+Since we’re currently in beta, all changes should be marked as a minor/patch release to keep us within the `v0.x` range.
 
 Even though you can technically use any markdown formatting you like, headings should be avoided since each changeset will ultimately be nested within a bullet list. Instead, bold text should be used as section headings.
 
@@ -18,7 +18,7 @@ The first time a PR with a changeset is merged after a release, a new PR will au
 
 ## Releasing to npm
 
-When you’re ready to publish, the `chore: version packages` PR should be reviewed to double check that the version number(s) are correct and that the release notes are correct. Since we’re in limited beta, version numbers should remain within the `v0.0.x` range.
+When you’re ready to publish, the `chore: version packages` PR should be reviewed to double check that the version number(s) are correct and that the release notes are correct. Since we’re currently in beta, version numbers should remain within the `v0.x` range.
 
 Once you’ve merged the version packages PR, you’ll need to run the release step locally. First ensure you’re in the main branch with the latest changes.
 
