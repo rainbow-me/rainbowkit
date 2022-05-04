@@ -6,10 +6,6 @@
 - ✅ Easily customizable
 - 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
 
-## ⚠️ Please note
-
-RainbowKit is currently `v0.0.x` and has a peer dependency on [wagmi](https://wagmi.sh) which is currently `v0.x`. The APIs are not stable and likely to change in the near future. At this stage we’re looking for early adopters to provide feedback and help us improve the library.
-
 ## Installation
 
 Install RainbowKit along with [wagmi](https://wagmi.sh) and its [ethers](https://docs.ethers.io) peer dependency.
