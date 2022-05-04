@@ -9,7 +9,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-accentColor": "#0E76FD",
         "--rk-colors-accentColorForeground": "#FFF",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",
-        "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0)",
+        "--rk-colors-actionButtonBorderMobile": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-actionButtonSecondaryBackground": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-closeButton": "rgba(60, 66, 66, 0.8)",
         "--rk-colors-closeButtonBackground": "rgba(0, 0, 0, 0.06)",
