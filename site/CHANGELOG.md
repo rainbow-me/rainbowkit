@@ -1,5 +1,39 @@
 # site
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [b785e31]
+- Updated dependencies [0cad1ad]
+- Updated dependencies [5f20dc0]
+- Updated dependencies [353d2ef]
+- Updated dependencies [e9a374e]
+- Updated dependencies [2c79870]
+- Updated dependencies [e570773]
+- Updated dependencies [7ac6f61]
+- Updated dependencies [353d2ef]
+- Updated dependencies [353d2ef]
+- Updated dependencies [5444298]
+- Updated dependencies [77e74be]
+- Updated dependencies [9e17b07]
+- Updated dependencies [8a4b3fe]
+- Updated dependencies [c927bd7]
+- Updated dependencies [5444298]
+- Updated dependencies [9d351d0]
+- Updated dependencies [df6c310]
+- Updated dependencies [792fd03]
+- Updated dependencies [13fa857]
+- Updated dependencies [a1633cf]
+- Updated dependencies [13fa857]
+- Updated dependencies [9d351d0]
+- Updated dependencies [fb7c8ae]
+- Updated dependencies [26247ea]
+- Updated dependencies [3295746]
+- Updated dependencies [9d351d0]
+- Updated dependencies [13fa857]
+  - @rainbow-me/rainbowkit@0.1.0
+
 ## 0.0.2
 
 ### Patch Changes
