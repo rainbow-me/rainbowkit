@@ -14,10 +14,17 @@ import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { vars } from 'css/vars.css';
 import { allDocsRoutes, docsRoutes } from 'lib/docsRoutes';
+import { useCoolMode } from 'lib/useCoolMode';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
-import { content, navigationSidebar, paginationItem } from './DocsLayout.css';
+import React, { Ref, useEffect } from 'react';
+import { useConnect } from 'wagmi';
+import {
+  content,
+  navigationSidebar,
+  navigationSidebarScroller,
+  paginationItem,
+} from './DocsLayout.css';
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -30,6 +37,13 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const next = allDocsRoutes[currentPageIndex + 1];
   const docsMobileMenuRef = React.useRef<HTMLDivElement>(null);
 
+  const { isConnected } = useConnect();
+  const ref = useCoolMode(
+    '/rainbow.svg',
+    !isConnected,
+    true
+  ) as Ref<HTMLDivElement>;
+
   // Listen to route change so we can programatically close
   // the docs mobile menu when changing routes.
   useEffect(() => {
@@ -39,7 +53,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
+    <div ref={ref}>
       <Header docsMobileMenuRef={docsMobileMenuRef} sticky />
 
       <DocsMobileMenuContext.Provider value={docsMobileMenuRef}>
@@ -65,7 +79,6 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                   bottom: 0,
                   left: 0,
                   outline: 'none',
-                  overflow: 'auto',
                   position: 'fixed',
                   top: 0,
                   width: `calc(250px + ${vars.space[6]})`,
@@ -75,7 +88,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
                 <Box
                   backgroundColor="fillElevated"
                   padding="6"
-                  style={{ height: '100%' }}
+                  style={{ height: '100%', overflow: 'auto' }}
                 >
                   <Sidebar routes={docsRoutes} />
                 </Box>
@@ -87,7 +100,9 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
       <Wrapper>
         <Box className={navigationSidebar}>
-          <Sidebar routes={docsRoutes} />
+          <Box className={navigationSidebarScroller}>
+            <Sidebar routes={docsRoutes} />
+          </Box>
         </Box>
 
         <Box className={content}>
@@ -126,6 +141,6 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           </Box>
         </Box>
       </Wrapper>
-    </>
+    </div>
   );
 }

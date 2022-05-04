@@ -1,18 +1,13 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Box } from 'components/Box/Box';
 import NextImage from 'next/image';
 import React from 'react';
-import { heroWrapper, modalWrapper, phoneWrapper } from './Hero.css';
-
-export const MODAL_SIZE = {
-  width: 2352,
-  height: 1704,
-};
-
-export const PHONE_SIZE = {
-  width: 780,
-  height: 1560,
-};
+import {
+  heroWrapper,
+  MODAL_SIZE,
+  modalWrapper,
+  PHONE_SIZE,
+  phoneWrapper,
+} from './Hero.css';
 
 export function Hero() {
   return (

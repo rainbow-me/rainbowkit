@@ -22,13 +22,14 @@ export const link = recipe({
   variants: {
     active: {
       false: style([
-        atoms({ backgroundColor: { hover: 'fillSecondary' } }),
-        style({
-          selectors: {
-            '&:hover': {
-              transition: 'background 200ms ease-in-out',
-            },
+        atoms({
+          backgroundColor: { hover: 'fillSecondary' },
+          transform: {
+            active: 'shrink',
           },
+          transitionDuration: '100',
+          transitionProperty: 'all',
+          transitionTimingFunction: 'ease',
         }),
       ]),
       true: style([

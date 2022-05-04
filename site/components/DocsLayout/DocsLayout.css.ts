@@ -25,6 +25,13 @@ export const navigationSidebar = style([
   }),
 ]);
 
+export const navigationSidebarScroller = style([
+  {
+    height: '100%',
+    overflow: 'auto',
+  },
+]);
+
 export const content = style([
   {
     paddingBottom: vars.space[10],

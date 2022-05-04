@@ -1,12 +1,14 @@
 import {
   ConnectButton,
   darkTheme,
+  lightTheme,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
-import { chains, Provider } from 'components/Provider/Provider';
+import { chains } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
+import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import React from 'react';
 import { header, logo, row } from './Header.css';
@@ -14,10 +16,12 @@ import { header, logo, row } from './Header.css';
 const RAINBOWKIT_VERSION = '0.0.2';
 
 export function Header({
+  darkMode,
   docsMobileMenuRef,
   sticky,
   ...props
 }: {
+  darkMode?: boolean;
   docsMobileMenuRef?: React.RefObject<HTMLDivElement>;
   sticky?: boolean;
 }) {
@@ -57,13 +61,18 @@ export function Header({
         </Box>
 
         <Box style={{ marginLeft: 'auto' }}>
-          <Provider>
-            <RainbowKitProvider chains={chains} theme={darkTheme()}>
-              <ConnectButton
-                accountStatus={{ largeScreen: 'full', smallScreen: 'avatar' }}
-              />
-            </RainbowKitProvider>{' '}
-          </Provider>
+          <RainbowKitProvider
+            chains={chains}
+            theme={
+              darkMode
+                ? darkTheme({ accentColor: vars.colors.blue })
+                : lightTheme({ accentColor: vars.colors.blue })
+            }
+          >
+            <ConnectButton
+              accountStatus={{ largeScreen: 'full', smallScreen: 'avatar' }}
+            />
+          </RainbowKitProvider>{' '}
         </Box>
       </Box>
       {docsMobileMenuRef && (

@@ -12,21 +12,30 @@ interface Particle {
   top: number;
 }
 
-export const useCoolMode = (imageUrl: string) => {
+export const useCoolMode = (
+  imageUrl: string,
+  disabled?: boolean,
+  ignoreCoolModeDocsDemo?: boolean
+) => {
   const ref = useRef<HTMLElement>(null);
   const resolvedImageUrl = imageUrl;
 
   useEffect(() => {
     if (ref.current && resolvedImageUrl) {
-      return makeElementCool(ref.current, resolvedImageUrl);
+      return makeElementCool(
+        ref.current,
+        resolvedImageUrl,
+        disabled,
+        ignoreCoolModeDocsDemo
+      );
     }
-  }, [resolvedImageUrl]);
+  }, [resolvedImageUrl, disabled, ignoreCoolModeDocsDemo]);
 
   return ref;
 };
 
 const getContainer = () => {
-  const id = '_rk_coolMode';
+  const id = '_rk_site_coolMode';
   const existingContainer = document.getElementById(id);
 
   if (existingContainer) {
@@ -57,7 +66,12 @@ const getContainer = () => {
 
 let instanceCounter = 0;
 
-function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
+function makeElementCool(
+  element: HTMLElement,
+  imageUrl: string,
+  disabled: boolean,
+  ignoreCoolModeDocsDemo: boolean
+): () => void {
   instanceCounter++;
 
   const sizes = [15, 20, 25, 35, 45];
@@ -169,6 +183,17 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
   };
 
   const tapHandler = (e: MouseEvent | TouchEvent) => {
+    if (disabled) return;
+
+    // HACK: sorry, bit short on time here to find a more elegant solution
+    // but if this option is true, we don't wanna show particles if users
+    // are tapping on the buttons in #cool-mode-demo which is an `id`
+    // added to the CoolMode.tsx Component - otherwise we get double emoji showers!
+    if (ignoreCoolModeDocsDemo) {
+      var element = document.getElementById('cool-mode-demo');
+      if (element?.contains(e.target as any)) return;
+    }
+
     updateMousePosition(e);
     autoAddParticle = true;
   };
