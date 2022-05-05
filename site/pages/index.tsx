@@ -278,22 +278,22 @@ export default function Home() {
                 href="https://github.com/rainbow-me/rainbowkit"
                 variant="gray"
               >
-                <span>👾</span> github
+                <span data-emoji>👾</span> github
               </Link>
             </Text>
             <Text size="4" weight="bold">
               <Link href="https://rainbow.me/media-kit.zip" variant="gray">
-                <span>⬇️</span> media kit
+                <span data-emoji>⬇️</span> media kit
               </Link>
             </Text>
             <Text size="4" weight="bold">
               <Link href="https://rainbow.me/terms-of-use" variant="gray">
-                <span>📜</span> terms of use
+                <span data-emoji>📜</span> terms of use
               </Link>
             </Text>
             <Text size="4" weight="bold">
               <Link href="https://rainbow.me/privacy" variant="gray">
-                <span>🔒</span> privacy policy
+                <span data-emoji>🔒</span> privacy policy
               </Link>
             </Text>
             <Text color="labelTertiary" size="4" weight="bold">

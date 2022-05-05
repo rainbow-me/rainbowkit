@@ -13,7 +13,7 @@ import NextLink from 'next/link';
 import React from 'react';
 import { header, logo, row } from './Header.css';
 
-const RAINBOWKIT_VERSION = '0.1.0';
+const RAINBOWKIT_VERSION = '0.1.1';
 
 export function Header({
   darkMode,

@@ -138,9 +138,10 @@ export const components = {
         borderRadius="5"
         marginY="5"
         position="relative"
+        ref={preRef}
         style={{ overflow: 'hidden' }}
       >
-        <Pre marginBottom="9" marginTop="5" ref={preRef} {...props}>
+        <Pre marginBottom="9" marginTop="5" {...props}>
           {children}
         </Pre>
         <Box data-copy position="absolute" right="3" top="3">

@@ -1,13 +1,18 @@
+import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { atoms } from 'css/atoms';
 
 export const variants = recipe({
+  base: style({
+    outline: 'none',
+  }),
   variants: {
     variant: {
-      blue: atoms({ color: 'blue' }),
+      blue: atoms({ color: { base: 'blue', focus: 'label' } }),
       gray: atoms({
         color: {
           base: 'labelSecondary',
+          focus: 'label',
           hover: 'purple',
         },
       }),

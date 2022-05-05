@@ -16,6 +16,7 @@ export const link = recipe({
     }),
     style({
       fontWeight: 600,
+      outline: 'none',
       textDecoration: 'none',
     }),
   ]),
@@ -23,7 +24,7 @@ export const link = recipe({
     active: {
       false: style([
         atoms({
-          backgroundColor: { hover: 'fillSecondary' },
+          backgroundColor: { focus: 'fillElevated', hover: 'fillSecondary' },
           transform: {
             active: 'shrink',
           },
@@ -33,7 +34,7 @@ export const link = recipe({
         }),
       ]),
       true: style([
-        atoms({ backgroundColor: 'blue' }),
+        atoms({ backgroundColor: { base: 'blue' } }),
         style({
           boxShadow: `0px 2px 8px rgba(0, 0, 0, 0.2)`,
           color: vars.colors.labelWhite,
