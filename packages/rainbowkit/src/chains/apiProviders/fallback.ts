@@ -1,19 +1,19 @@
-import {
-  StaticJsonRpcProvider,
-  WebSocketProvider,
-} from '@ethersproject/providers';
+import { providers } from 'ethers';
 import { ApiProvider } from './ApiProvider';
 
 export const fallback = (): ApiProvider<
-  StaticJsonRpcProvider,
-  WebSocketProvider
+  providers.StaticJsonRpcProvider,
+  providers.WebSocketProvider
 > => {
   return function (chain) {
-    if (!chain.rpcUrls.default) return null;
+    if (!chain.rpcUrls.default) {
+      return null;
+    }
+
     return {
       chain,
       provider: () =>
-        new StaticJsonRpcProvider(chain.rpcUrls.default, chain.id),
+        new providers.StaticJsonRpcProvider(chain.rpcUrls.default, chain.id),
     };
   };
 };

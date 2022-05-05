@@ -1,4 +1,4 @@
-import type { BaseProvider } from '@ethersproject/providers';
+import { providers } from 'ethers';
 
 const storageKey = 'rk-transactions';
 
@@ -61,7 +61,7 @@ function validateTransaction(
 export function createTransactionStore({
   provider: initialProvider,
 }: {
-  provider: BaseProvider;
+  provider: providers.BaseProvider;
 }) {
   let data: Data = loadData();
 
@@ -69,7 +69,7 @@ export function createTransactionStore({
   const listeners: Set<() => void> = new Set();
   const transactionRequestCache: Map<string, Promise<void>> = new Map();
 
-  function setProvider(newProvider: BaseProvider): void {
+  function setProvider(newProvider: providers.BaseProvider): void {
     provider = newProvider;
   }
 

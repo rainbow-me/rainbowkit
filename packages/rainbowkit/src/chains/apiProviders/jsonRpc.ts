@@ -1,16 +1,20 @@
-import {
-  StaticJsonRpcProvider,
-  WebSocketProvider,
-} from '@ethersproject/providers';
+import { providers } from 'ethers';
 import { Chain } from '../../components/RainbowKitProvider/RainbowKitChainContext';
 import { ApiProvider } from './ApiProvider';
 
 export const jsonRpc = (
   getRpcUrls: (chain: Chain) => { rpcUrl: string; webSocketRpcUrl?: string }
-): ApiProvider<StaticJsonRpcProvider, WebSocketProvider> => {
+): ApiProvider<
+  providers.StaticJsonRpcProvider,
+  providers.WebSocketProvider
+> => {
   return function (chain) {
     const { rpcUrl, webSocketRpcUrl } = getRpcUrls(chain);
-    if (rpcUrl === '') return null;
+
+    if (rpcUrl === '') {
+      return null;
+    }
+
     return {
       chain: {
         ...chain,
@@ -19,10 +23,10 @@ export const jsonRpc = (
           default: rpcUrl,
         },
       },
-      provider: () => new StaticJsonRpcProvider(rpcUrl, chain.id),
+      provider: () => new providers.StaticJsonRpcProvider(rpcUrl, chain.id),
       ...(webSocketRpcUrl && {
         webSocketProvider: () =>
-          new WebSocketProvider(webSocketRpcUrl, chain.id),
+          new providers.WebSocketProvider(webSocketRpcUrl, chain.id),
       }),
     };
   };
