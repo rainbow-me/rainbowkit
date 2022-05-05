@@ -15,7 +15,6 @@ export const navigationSidebar = style([
       bottom: 0,
       display: 'block',
       left: 'calc(50% - 512px)',
-      paddingBottom: vars.space[4],
       paddingRight: 0,
       paddingTop: vars.space[11],
       position: 'fixed',
