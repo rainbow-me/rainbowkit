@@ -9,15 +9,15 @@ export const CloseButton = ({
   style,
 }: {
   'aria-label'?: string;
-  onClose: () => void;
-  style?: React.CSSProperties;
+  'onClose': () => void;
+  'style'?: React.CSSProperties;
 }) => {
   const mobile = isMobile();
   return (
     <Box
       alignItems="center"
-      as="button"
       aria-label={ariaLabel}
+      as="button"
       background="closeButtonBackground"
       borderColor="actionButtonBorder"
       borderRadius="full"
