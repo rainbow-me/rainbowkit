@@ -909,6 +909,7 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 - [MetaMask](#metamask)
 - [Rainbow](#rainbow)
 - [Trust Wallet](#trust-wallet)
+- [imToken](#imtoken)
 - [WalletConnect](#walletconnect)
 
 #### Argent
@@ -1011,6 +1012,16 @@ wallet.rainbow(options: {
 import { wallet } from '@rainbow-me/rainbowkit';
 
 wallet.trust(options: {
+  chains: Chain[];
+});
+```
+
+#### imToken
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.imToken(options: {
   chains: Chain[];
 });
 ```
