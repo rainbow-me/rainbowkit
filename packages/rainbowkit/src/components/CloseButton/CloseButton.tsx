@@ -4,9 +4,11 @@ import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
 
 export const CloseButton = ({
+  'aria-label': ariaLabel = 'Close',
   onClose,
   style,
 }: {
+  'aria-label'?: string;
   onClose: () => void;
   style?: React.CSSProperties;
 }) => {
@@ -15,6 +17,7 @@ export const CloseButton = ({
     <Box
       alignItems="center"
       as="button"
+      aria-label={ariaLabel}
       background="closeButtonBackground"
       borderColor="actionButtonBorder"
       borderRadius="full"
