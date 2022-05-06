@@ -6,6 +6,6 @@ export function cssStringFromTheme(
   options: { extends?: ThemeVars | (() => ThemeVars) } = {}
 ) {
   return Object.entries(cssObjectFromTheme(theme, options))
-    .map(([key, value]) => `${key}:${value};`)
+    .map(([key, value]) => `${key}:${value.replace(/[:;{}</>]/g, '')};`)
     .join('');
 }
