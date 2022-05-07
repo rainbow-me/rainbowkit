@@ -176,7 +176,7 @@ const { provider, chains } = configureChains(
 
 #### Ankr
 
-To use Ankr, use the `apiProvider.jsonRpc` provider with an [Ankr Public RPC](https://ankr.com/protocol/public).
+To configure the chains with Ankr configuration, use the `apiProvider.jsonRpc` provider with an [Ankr Public RPC](https://ankr.com/protocol/public).
 
 ```tsx
 const { chains, provider } = configureChains(
