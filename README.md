@@ -174,6 +174,32 @@ const { provider, chains } = configureChains(
 );
 ```
 
+#### Ankr
+
+To use Ankr, use the `apiProvider.jsonRpc` provider with an Ankr Public RPC.
+
+```tsx
+const { chains, provider } = configureChains(
+  [chain.mainnet],
+  [
+    __apiProvider.jsonRpc__(chain => ({
+      rpcUrl: `https://rpc.ankr.com/eth`,
+    })),
+  ]
+);
+```
+
+```tsx
+const { chains, provider } = configureChains(
+  [chain.polygon],
+  [
+    __apiProvider.jsonRpc__(chain => ({
+      rpcUrl: `https://rpc.ankr.com/polygon`,
+    })),
+  ]
+);
+```
+
 #### JSON RPC
 
 To configure the chains with your own RPC URLs, provide `apiProvider.jsonRpc` to `configureChains` with the chain's RPC URLs.
