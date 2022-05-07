@@ -182,7 +182,7 @@ To use Ankr, use the `apiProvider.jsonRpc` provider with an Ankr Public RPC.
 const { chains, provider } = configureChains(
   [chain.mainnet],
   [
-    __apiProvider.jsonRpc__(chain => ({
+    apiProvider.jsonRpc(chain => ({
       rpcUrl: `https://rpc.ankr.com/eth`,
     })),
   ]
@@ -193,7 +193,7 @@ const { chains, provider } = configureChains(
 const { chains, provider } = configureChains(
   [chain.polygon],
   [
-    __apiProvider.jsonRpc__(chain => ({
+    apiProvider.jsonRpc(chain => ({
       rpcUrl: `https://rpc.ankr.com/polygon`,
     })),
   ]
