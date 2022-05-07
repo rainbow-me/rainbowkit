@@ -176,27 +176,23 @@ const { provider, chains } = configureChains(
 
 #### Ankr
 
-To use Ankr, use the `apiProvider.jsonRpc` provider with an Ankr Public RPC.
+To use Ankr, use the `apiProvider.jsonRpc` provider with an [Ankr Public RPC](https://ankr.com/protocol/public).
 
 ```tsx
 const { chains, provider } = configureChains(
   [chain.mainnet],
-  [
-    apiProvider.jsonRpc(chain => ({
+  [apiProvider.jsonRpc(chain => ({
       rpcUrl: `https://rpc.ankr.com/eth`,
-    })),
-  ]
+    }))]
 );
 ```
 
 ```tsx
 const { chains, provider } = configureChains(
   [chain.polygon],
-  [
-    apiProvider.jsonRpc(chain => ({
+  [apiProvider.jsonRpc(chain => ({
       rpcUrl: `https://rpc.ankr.com/polygon`,
-    })),
-  ]
+    }))]
 );
 ```
 
