@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -28,7 +28,7 @@ export function ProfileDetailsAction({
   return (
     <Box
       as={url ? 'a' : 'button'}
-      className={!mobile ? increaseHitAreaOnActive.grow : undefined}
+      className={!mobile ? increaseHitAreaForHoverTransform.grow : undefined}
       display="block"
       onClick={action}
       style={{ flexBasis: 0, flexGrow: 1 }}

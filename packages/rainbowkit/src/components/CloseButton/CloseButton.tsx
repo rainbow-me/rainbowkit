@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
@@ -9,7 +9,7 @@ export const CloseButton = ({ onClose }: { onClose: () => void }) => {
   return (
     <Box
       as="button"
-      className={increaseHitAreaOnActive.growLg}
+      className={increaseHitAreaForHoverTransform.growLg}
       height={mobile ? '30' : '28'}
       onClick={onClose}
       type="button"

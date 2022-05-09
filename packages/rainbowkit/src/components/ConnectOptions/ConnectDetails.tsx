@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect } from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
@@ -459,7 +459,7 @@ export function InstructionDetail({
         />
         <Box
           as="a"
-          className={increaseHitAreaOnActive.grow}
+          className={increaseHitAreaForHoverTransform.grow}
           display="block"
           href={wallet?.qrCode?.instructions?.learnMoreUrl}
           rel="noreferrer"

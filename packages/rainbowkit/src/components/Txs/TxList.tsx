@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -63,7 +63,7 @@ export function TxList({ accountData }: TxListProps) {
               >
                 <Box
                   as="button"
-                  className={increaseHitAreaOnActive.grow}
+                  className={increaseHitAreaForHoverTransform.grow}
                   onClick={clearRecentTransactions}
                   type="button"
                 >
@@ -123,7 +123,7 @@ export function TxList({ accountData }: TxListProps) {
         <Box paddingBottom="18" paddingX={mobile ? '8' : '18'}>
           <Box
             as="a"
-            className={increaseHitAreaOnActive.grow}
+            className={increaseHitAreaForHoverTransform.grow}
             display="block"
             href={`${explorerLink}/address/${address}`}
             rel="noreferrer"

@@ -18,7 +18,7 @@ const base = style({
   },
 });
 
-export const increaseHitAreaOnActive = styleVariants(
+export const increaseHitAreaForHoverTransform = styleVariants(
   growTransforms,
   transform => [base, { selectors: { [activePseudo]: { transform } } }]
 );

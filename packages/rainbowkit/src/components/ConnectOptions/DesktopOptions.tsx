@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
@@ -212,7 +212,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 {headerBackButtonLink && (
                   <Box
                     as="button"
-                    className={increaseHitAreaOnActive.growLg}
+                    className={increaseHitAreaForHoverTransform.growLg}
                     onClick={() =>
                       headerBackButtonLink &&
                       setWalletStep(headerBackButtonLink)

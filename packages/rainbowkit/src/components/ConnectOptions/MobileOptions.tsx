@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -329,7 +329,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             >
               <Box
                 as="button"
-                className={increaseHitAreaOnActive.growLg}
+                className={increaseHitAreaForHoverTransform.growLg}
                 onClick={() => setWalletStep(headerBackButtonLink!)}
                 type="button"
               >

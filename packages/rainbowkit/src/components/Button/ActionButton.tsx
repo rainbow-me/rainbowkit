@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
@@ -65,7 +65,7 @@ export function ActionButton({
       {...(href
         ? { as: 'a', href, rel, target }
         : { as: 'button', type: 'button' })}
-      className={increaseHitAreaOnActive.grow}
+      className={increaseHitAreaForHoverTransform.grow}
       display="block"
       onClick={onClick}
     >

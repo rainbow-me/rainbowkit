@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNetwork } from 'wagmi';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
@@ -49,7 +49,7 @@ export function TxItem({ tx }: TxProps) {
         {...(explorerLink
           ? {
               as: 'a',
-              className: increaseHitAreaOnActive.grow,
+              className: increaseHitAreaForHoverTransform.grow,
               href: `${explorerLink}/tx/${tx.hash}`,
               rel: 'noreferrer',
               target: '_blank',

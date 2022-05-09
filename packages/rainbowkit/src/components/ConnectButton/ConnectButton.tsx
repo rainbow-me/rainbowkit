@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import {
   mapResponsiveValue,
   normalizeResponsiveValue,
@@ -65,7 +65,7 @@ export function ConnectButton({
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
                     as="button"
-                    className={increaseHitAreaOnActive.grow}
+                    className={increaseHitAreaForHoverTransform.grow}
                     key={unsupportedChain ? 'unsupported' : 'supported'} // Force re-mount to prevent CSS transition
                     onClick={openChainModal}
                     type="button"
@@ -149,7 +149,7 @@ export function ConnectButton({
                 {!unsupportedChain && (
                   <Box
                     as="button"
-                    className={increaseHitAreaOnActive.grow}
+                    className={increaseHitAreaForHoverTransform.grow}
                     onClick={openAccountModal}
                     type="button"
                   >
@@ -239,7 +239,7 @@ export function ConnectButton({
             ) : (
               <Box
                 as="button"
-                className={increaseHitAreaOnActive.grow}
+                className={increaseHitAreaForHoverTransform.grow}
                 key="connect"
                 onClick={openConnectModal}
                 type="button"

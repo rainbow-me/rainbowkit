@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { increaseHitAreaOnActive } from '../../css/increaseHitAreaOnActive.css';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { AssetsIcon } from '../Icons/Assets';
@@ -72,7 +72,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
             as="a"
-            className={increaseHitAreaOnActive.grow}
+            className={increaseHitAreaForHoverTransform.grow}
             display="block"
             href={learnMoreUrl}
             rel="noreferrer"
