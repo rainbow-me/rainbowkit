@@ -205,7 +205,9 @@ function makeElementCool(
   element.addEventListener(move, updateMousePosition, { passive: true });
   element.addEventListener(tap, tapHandler, { passive: true });
   element.addEventListener(tapEnd, disableAutoAddParticle, { passive: true });
-  element.addEventListener('mouseleave', disableAutoAddParticle, { passive: true });
+  element.addEventListener('mouseleave', disableAutoAddParticle, {
+    passive: true,
+  });
 
   return () => {
     element.removeEventListener(move, updateMousePosition);
