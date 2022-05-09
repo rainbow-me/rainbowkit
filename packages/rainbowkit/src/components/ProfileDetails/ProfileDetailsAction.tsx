@@ -1,4 +1,5 @@
 import React from 'react';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -27,36 +28,49 @@ export function ProfileDetailsAction({
   return (
     <Box
       as={url ? 'a' : 'button'}
-      onClick={action}
-      {...urlProps}
-      background={{
-        base: 'profileAction',
-        ...(!mobile ? { hover: 'profileActionHover' } : {}),
-      }}
       borderRadius="menuButton"
-      boxShadow="profileDetailsAction"
-      padding={mobile ? '8' : '10'}
-      style={{ flexBasis: 0, flexGrow: 1, willChange: 'transform' }}
-      transform={{
-        active: 'shrinkSm',
-        ...(!mobile ? { hover: 'grow' } : {}),
-      }}
-      transition="default"
+      className={!mobile ? increaseHitAreaForHoverTransform.grow : undefined}
+      display="flex"
+      onClick={action}
+      style={{ flexBasis: 0, flexGrow: 1 }}
+      type={!url ? 'button' : undefined}
     >
       <Box
-        alignItems="center"
-        display="flex"
-        flexDirection="column"
-        gap="2"
-        justifyContent="center"
+        {...urlProps}
+        background={{
+          base: 'profileAction',
+          ...(!mobile ? { hover: 'profileActionHover' } : {}),
+        }}
+        borderRadius="menuButton"
+        boxShadow="profileDetailsAction"
+        padding={mobile ? '8' : '10'}
+        style={{ willChange: 'transform' }}
+        transform={{
+          active: 'shrinkSm',
+          ...(!mobile ? { hover: 'grow' } : {}),
+        }}
+        transition="default"
+        width="full"
       >
-        <Box color="modalText" height="max">
-          {icon}
-        </Box>
-        <Box>
-          <Text color="modalText" size={mobile ? '12' : '13'} weight="semibold">
-            {label}
-          </Text>
+        <Box
+          alignItems="center"
+          display="flex"
+          flexDirection="column"
+          gap="2"
+          justifyContent="center"
+        >
+          <Box color="modalText" height="max">
+            {icon}
+          </Box>
+          <Box>
+            <Text
+              color="modalText"
+              size={mobile ? '12' : '13'}
+              weight="semibold"
+            >
+              {label}
+            </Text>
+          </Box>
         </Box>
       </Box>
     </Box>

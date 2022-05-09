@@ -1,36 +1,40 @@
 import React from 'react';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
 
-export const CloseButton = ({
-  onClose,
-  style,
-}: {
-  onClose: () => void;
-  style?: React.CSSProperties;
-}) => {
+export const CloseButton = ({ onClose }: { onClose: () => void }) => {
   const mobile = isMobile();
   return (
     <Box
-      alignItems="center"
       as="button"
-      background="closeButtonBackground"
-      borderColor="actionButtonBorder"
       borderRadius="full"
-      borderStyle="solid"
-      borderWidth={mobile ? '0' : '1'}
-      color="closeButton"
+      className={increaseHitAreaForHoverTransform.growLg}
       display="flex"
       height={mobile ? '30' : '28'}
-      justifyContent="center"
       onClick={onClose}
-      style={{ willChange: 'transform', ...(style ?? {}) }}
-      transform={{ active: 'shrinkSm', hover: 'growLg' }}
-      transition="default"
+      type="button"
       width={mobile ? '30' : '28'}
     >
-      <CloseIcon />
+      <Box
+        alignItems="center"
+        background="closeButtonBackground"
+        borderColor="actionButtonBorder"
+        borderRadius="full"
+        borderStyle="solid"
+        borderWidth={mobile ? '0' : '1'}
+        color="closeButton"
+        display="flex"
+        height="full"
+        justifyContent="center"
+        style={{ willChange: 'transform' }}
+        transform={{ active: 'shrinkSm', hover: 'growLg' }}
+        transition="default"
+        width="full"
+      >
+        <CloseIcon />
+      </Box>
     </Box>
   );
 };
