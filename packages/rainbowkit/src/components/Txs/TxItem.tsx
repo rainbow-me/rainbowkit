@@ -46,7 +46,6 @@ export function TxItem({ tx }: TxProps) {
   return (
     <>
       <Box
-        display="flex"
         {...(explorerLink
           ? {
               as: 'a',
@@ -57,6 +56,7 @@ export function TxItem({ tx }: TxProps) {
               target: '_blank',
             }
           : {})}
+        display="flex"
       >
         <Box
           {...(explorerLink
