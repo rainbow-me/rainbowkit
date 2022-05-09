@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -53,34 +54,43 @@ export function TxList({ accountData }: TxListProps) {
                 Recent Transactions
               </Text>
               <Box
-                as="button"
-                background={{
-                  hover: 'profileForeground',
-                }}
-                borderRadius="actionButton"
-                onClick={clearRecentTransactions}
-                padding="6"
-                paddingX="10"
                 style={{
                   marginBottom: -6,
                   marginLeft: -10,
                   marginRight: -10,
                   marginTop: -6,
                 }}
-                transform={{
-                  active: 'shrink',
-                  hover: 'grow',
-                }}
-                transition="default"
-                type="button"
               >
-                <Text
-                  color="modalTextSecondary"
-                  size={mobile ? '16' : '14'}
-                  weight="semibold"
+                <Box
+                  as="button"
+                  borderRadius="actionButton"
+                  className={increaseHitAreaForHoverTransform.grow}
+                  display="flex"
+                  onClick={clearRecentTransactions}
+                  type="button"
                 >
-                  Clear All
-                </Text>
+                  <Box
+                    background={{
+                      hover: 'profileForeground',
+                    }}
+                    borderRadius="actionButton"
+                    padding="6"
+                    paddingX="10"
+                    transform={{
+                      active: 'shrink',
+                      hover: 'grow',
+                    }}
+                    transition="default"
+                  >
+                    <Text
+                      color="modalTextSecondary"
+                      size={mobile ? '16' : '14'}
+                      weight="semibold"
+                    >
+                      Clear All
+                    </Text>
+                  </Box>
+                </Box>
               </Box>
             </Box>
           </Box>
@@ -114,36 +124,43 @@ export function TxList({ accountData }: TxListProps) {
       {explorerLink && (
         <Box paddingBottom="18" paddingX={mobile ? '8' : '18'}>
           <Box
-            alignItems="center"
             as="a"
-            background={{ hover: 'profileForeground' }}
             borderRadius="menuButton"
-            color="modalTextDim"
+            className={increaseHitAreaForHoverTransform.grow}
             display="flex"
-            flexDirection="row"
             href={`${explorerLink}/address/${address}`}
-            justifyContent="space-between"
-            paddingX="8"
-            paddingY="12"
             rel="noreferrer"
-            style={{ willChange: 'transform' }}
             target="_blank"
-            transform={{
-              active: 'shrink',
-              hover: 'grow',
-            }}
-            transition="default"
-            {...(mobile ? { paddingLeft: '12' } : {})}
           >
-            <Text
-              color="modalText"
-              font="body"
-              size={mobile ? '16' : '14'}
-              weight={mobile ? 'semibold' : 'bold'}
+            <Box
+              alignItems="center"
+              background={{ hover: 'profileForeground' }}
+              borderRadius="menuButton"
+              color="modalTextDim"
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+              paddingX="8"
+              paddingY="12"
+              style={{ willChange: 'transform' }}
+              transform={{
+                active: 'shrink',
+                hover: 'grow',
+              }}
+              transition="default"
+              width="full"
+              {...(mobile ? { paddingLeft: '12' } : {})}
             >
-              View more on Explorer
-            </Text>
-            <ExternalLinkIcon />
+              <Text
+                color="modalText"
+                font="body"
+                size={mobile ? '16' : '14'}
+                weight={mobile ? 'semibold' : 'bold'}
+              >
+                View more on Explorer
+              </Text>
+              <ExternalLinkIcon />
+            </Box>
           </Box>
         </Box>
       )}

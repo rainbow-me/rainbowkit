@@ -1,4 +1,5 @@
-import React, { ElementType, ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
@@ -23,15 +24,6 @@ export function GetDetail({
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
-
-  const linkProps = (
-    link: string
-  ): { as: ElementType; href: string; rel: string; target: string } => ({
-    as: 'a',
-    href: link,
-    rel: 'noreferrer',
-    target: '_blank',
-  });
 
   return (
     <Box
@@ -96,18 +88,14 @@ export function GetDetail({
                     </Text>
                   </Box>
                 </Box>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  gap="4"
-                  onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
-                  {...(!hasMobileCompanionApp && downloadUrls?.browserExtension
-                    ? linkProps(downloadUrls.browserExtension)
-                    : {})}
-                >
+                <Box display="flex" flexDirection="column" gap="4">
                   <ActionButton
                     label="GET"
-                    onClick={() => {}}
+                    onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
+                    {...(!hasMobileCompanionApp &&
+                    downloadUrls?.browserExtension
+                      ? { as: 'a', href: downloadUrls.browserExtension }
+                      : {})}
                     type="secondary"
                   />
                 </Box>
@@ -471,18 +459,23 @@ export function InstructionDetail({
         />
         <Box
           as="a"
+          className={increaseHitAreaForHoverTransform.grow}
+          display="block"
           href={wallet?.qrCode?.instructions?.learnMoreUrl}
-          paddingX="12"
-          paddingY="4"
           rel="noreferrer"
-          style={{ willChange: 'transform' }}
           target="_blank"
-          transform={{ active: 'shrink', hover: 'grow' }}
-          transition="default"
         >
-          <Text color="accentColor" size="14" weight="bold">
-            Learn More
-          </Text>
+          <Box
+            paddingX="12"
+            paddingY="4"
+            style={{ willChange: 'transform' }}
+            transform={{ active: 'shrink', hover: 'grow' }}
+            transition="default"
+          >
+            <Text color="accentColor" size="14" weight="bold">
+              Learn More
+            </Text>
+          </Box>
         </Box>
       </Box>
     </Box>

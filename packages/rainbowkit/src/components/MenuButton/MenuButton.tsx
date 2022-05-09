@@ -1,44 +1,55 @@
 import React from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
-import {
-  MenuButtonClassName,
-  MobileMenuButtonClassName,
-  SelectedMenuButtonClassName,
-} from './MenuButton.css';
+import * as styles from './MenuButton.css';
 
 type Props = {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
-  as?: React.ElementType<any>;
   currentlySelected?: boolean;
 };
 
 export const MenuButton = React.forwardRef(
   (
-    {
-      as = 'button',
-      children,
-      currentlySelected = false,
-      onClick,
-      ...urlProps
-    }: Props,
+    { children, currentlySelected = false, onClick, ...urlProps }: Props,
     ref: React.Ref<HTMLElement>
   ) => {
     const mobile = isMobile();
     return (
       <Box
-        as={as}
-        className={[
-          currentlySelected ? SelectedMenuButtonClassName : MenuButtonClassName,
-          mobile ? MobileMenuButtonClassName : null,
-        ]}
+        as="button"
+        borderRadius="menuButton"
         disabled={currentlySelected}
+        display="flex"
         onClick={onClick}
         ref={ref}
-        {...urlProps}
+        type="button"
       >
-        {children}
+        <Box
+          borderRadius="menuButton"
+          className={mobile ? styles.unsetBackgroundOnHover : undefined}
+          padding={mobile ? '8' : '6'}
+          transition="default"
+          width="full"
+          {...(currentlySelected
+            ? {
+                background: 'accentColor',
+                borderColor: 'selectedOptionBorder',
+                borderStyle: 'solid',
+                borderWidth: '1',
+                boxShadow: 'selectedOption',
+                color: 'accentColorForeground',
+              }
+            : {
+                background: { hover: 'menuItemBackground' },
+                color: 'modalText',
+                transform: { active: 'shrink' },
+                transition: 'default',
+              })}
+          {...urlProps}
+        >
+          {children}
+        </Box>
       </Box>
     );
   }

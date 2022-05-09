@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNetwork } from 'wagmi';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
 import { isMobile } from '../../utils/isMobile';
@@ -48,68 +49,79 @@ export function TxItem({ tx }: TxProps) {
         {...(explorerLink
           ? {
               as: 'a',
-              background: { hover: 'profileForeground' },
               borderRadius: 'menuButton',
+              className: increaseHitAreaForHoverTransform.grow,
               href: `${explorerLink}/tx/${tx.hash}`,
               rel: 'noreferrer',
               target: '_blank',
-              transform: { active: 'shrink', hover: 'grow' },
-              transition: 'default',
             }
           : {})}
-        color="modalText"
         display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        padding="8"
       >
         <Box
-          alignItems="center"
+          {...(explorerLink
+            ? {
+                background: { hover: 'profileForeground' },
+                borderRadius: 'menuButton',
+                transform: { active: 'shrink', hover: 'grow' },
+                transition: 'default',
+              }
+            : {})}
+          color="modalText"
           display="flex"
           flexDirection="row"
-          gap={mobile ? '16' : '14'}
+          justifyContent="space-between"
+          padding="8"
+          width="full"
         >
-          <Box color={color}>
-            <Icon />
-          </Box>
-          <Box display="flex" flexDirection="column" gap={mobile ? '4' : '2'}>
-            <Box>
-              <Text
-                color="modalText"
-                font="body"
-                size={mobile ? '16' : '14'}
-                weight="bold"
-              >
-                {tx?.description}
-              </Text>
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            gap={mobile ? '16' : '14'}
+          >
+            <Box color={color}>
+              <Icon />
             </Box>
-            <Box>
-              <Text
-                color={tx.status === 'pending' ? 'modalTextSecondary' : color}
-                font="body"
-                size="14"
-                weight={mobile ? 'medium' : 'regular'}
-              >
-                {confirmationStatus}
-              </Text>
+            <Box display="flex" flexDirection="column" gap={mobile ? '4' : '2'}>
+              <Box>
+                <Text
+                  color="modalText"
+                  font="body"
+                  size={mobile ? '16' : '14'}
+                  weight="bold"
+                >
+                  {tx?.description}
+                </Text>
+              </Box>
+              <Box>
+                <Text
+                  color={tx.status === 'pending' ? 'modalTextSecondary' : color}
+                  font="body"
+                  size="14"
+                  weight={mobile ? 'medium' : 'regular'}
+                >
+                  {confirmationStatus}
+                </Text>
+              </Box>
             </Box>
           </Box>
+          {explorerLink && (
+            <Box alignItems="center" color="modalTextDim" display="flex">
+              <ExternalLinkIcon />
+            </Box>
+          )}
         </Box>
-        {explorerLink && (
-          <Box alignItems="center" color="modalTextDim" display="flex">
-            <ExternalLinkIcon />
-          </Box>
+        {mobile && (
+          <Box
+            background="generalBorderDim"
+            height="1"
+            marginLeft="44"
+            marginRight="8"
+            marginY="2"
+          />
         )}
       </Box>
-      {mobile && (
-        <Box
-          background="generalBorderDim"
-          height="1"
-          marginLeft="44"
-          marginRight="8"
-          marginY="2"
-        />
-      )}
     </>
   );
 }

@@ -75,15 +75,16 @@ export function ProfileDetails({
             margin="8"
             style={{ textAlign: 'center' }}
           >
-            <CloseButton
-              onClose={onClose}
+            <Box
               style={{
                 position: 'absolute',
                 right: 16,
                 top: 16,
                 willChange: 'transform',
               }}
-            />{' '}
+            >
+              <CloseButton onClose={onClose} />
+            </Box>{' '}
             <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
                 address={accountData.address}
