@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
-import { HoverClassName, SelectedClassName } from './ModalSelection.css';
+import * as styles from './ModalSelection.css';
 
 type Props = {
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
@@ -35,32 +35,51 @@ export const ModalSelection = ({
       onMouseLeave={() => setIsMouseOver(false)}
       ref={coolModeRef}
     >
-      <Box
-        as={as}
-        className={currentlySelected ? SelectedClassName : HoverClassName}
-        disabled={currentlySelected}
-        onClick={onClick}
-        style={{ willChange: 'transform' }}
-        {...urlProps}
-      >
+      <Box as={as} disabled={currentlySelected} onClick={onClick}>
         <Box
-          color={currentlySelected ? 'accentColorForeground' : 'modalText'}
-          disabled={!ready}
-          fontFamily="body"
-          fontSize="16"
-          fontWeight="bold"
+          borderRadius="menuButton"
+          borderStyle="solid"
+          borderWidth="1"
+          padding="5"
+          style={{ willChange: 'transform' }}
           transition="default"
+          {...(currentlySelected
+            ? {
+                background: 'accentColor',
+                borderColor: 'selectedOptionBorder',
+                boxShadow: 'selectedWallet',
+              }
+            : {
+                background: { hover: 'menuItemBackground' },
+                className: styles.transparentBorder,
+                transform: { active: 'shrink' },
+              })}
+          {...urlProps}
         >
-          <Box alignItems="center" display="flex" flexDirection="row" gap="12">
-            <AsyncImage
-              background={iconBackground}
-              {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
-              borderRadius="6"
-              height="28"
-              src={iconUrl}
-              width="28"
-            />
-            <div>{name}</div>
+          <Box
+            color={currentlySelected ? 'accentColorForeground' : 'modalText'}
+            disabled={!ready}
+            fontFamily="body"
+            fontSize="16"
+            fontWeight="bold"
+            transition="default"
+          >
+            <Box
+              alignItems="center"
+              display="flex"
+              flexDirection="row"
+              gap="12"
+            >
+              <AsyncImage
+                background={iconBackground}
+                {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
+                borderRadius="6"
+                height="28"
+                src={iconUrl}
+                width="28"
+              />
+              <div>{name}</div>
+            </Box>
           </Box>
         </Box>
       </Box>
