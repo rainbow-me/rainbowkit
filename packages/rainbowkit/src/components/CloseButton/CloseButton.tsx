@@ -4,10 +4,17 @@ import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
 
-export const CloseButton = ({ onClose }: { onClose: () => void }) => {
+export const CloseButton = ({
+  'aria-label': ariaLabel = 'Close',
+  onClose,
+}: {
+  'aria-label'?: string;
+  'onClose': () => void;
+}) => {
   const mobile = isMobile();
   return (
     <Box
+      aria-label={ariaLabel}
       as="button"
       borderRadius="full"
       className={increaseHitAreaForHoverTransform.growLg}
