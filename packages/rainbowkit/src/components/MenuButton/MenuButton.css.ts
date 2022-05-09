@@ -1,11 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-export const unsetBackgroundOnHover = style([
-  {
-    selectors: {
-      '&:hover': {
-        background: 'unset',
-      },
-    },
+export const unsetBackgroundOnHover = style({
+  ':hover': {
+    background: 'unset',
   },
-]);
+});
