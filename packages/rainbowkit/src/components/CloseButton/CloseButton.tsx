@@ -14,6 +14,7 @@ export const CloseButton = ({
   const mobile = isMobile();
   return (
     <Box
+      aria-label={ariaLabel}
       as="button"
       borderRadius="full"
       className={increaseHitAreaForHoverTransform.growLg}
@@ -25,7 +26,6 @@ export const CloseButton = ({
     >
       <Box
         alignItems="center"
-        aria-label={ariaLabel}
         background="closeButtonBackground"
         borderColor="actionButtonBorder"
         borderRadius="full"
