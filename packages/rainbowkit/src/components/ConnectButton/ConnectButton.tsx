@@ -65,7 +65,9 @@ export function ConnectButton({
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
                     as="button"
+                    borderRadius="connectButton"
                     className={increaseHitAreaForHoverTransform.grow}
+                    display="flex"
                     key={unsupportedChain ? 'unsupported' : 'supported'} // Force re-mount to prevent CSS transition
                     onClick={openChainModal}
                     type="button"
@@ -149,7 +151,9 @@ export function ConnectButton({
                 {!unsupportedChain && (
                   <Box
                     as="button"
+                    borderRadius="connectButton"
                     className={increaseHitAreaForHoverTransform.grow}
+                    display="flex"
                     onClick={openAccountModal}
                     type="button"
                   >
@@ -239,7 +243,9 @@ export function ConnectButton({
             ) : (
               <Box
                 as="button"
+                borderRadius="connectButton"
                 className={increaseHitAreaForHoverTransform.grow}
+                display="flex"
                 key="connect"
                 onClick={openConnectModal}
                 type="button"

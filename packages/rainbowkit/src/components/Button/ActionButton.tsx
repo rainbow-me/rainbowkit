@@ -65,8 +65,9 @@ export function ActionButton({
       {...(href
         ? { as: 'a', href, rel, target }
         : { as: 'button', type: 'button' })}
+      borderRadius="actionButton"
       className={increaseHitAreaForHoverTransform.grow}
-      display="block"
+      display="flex"
       onClick={onClick}
     >
       <Box

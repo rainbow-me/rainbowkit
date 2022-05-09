@@ -63,7 +63,9 @@ export function TxList({ accountData }: TxListProps) {
               >
                 <Box
                   as="button"
+                  borderRadius="actionButton"
                   className={increaseHitAreaForHoverTransform.grow}
+                  display="flex"
                   onClick={clearRecentTransactions}
                   type="button"
                 >
@@ -123,8 +125,9 @@ export function TxList({ accountData }: TxListProps) {
         <Box paddingBottom="18" paddingX={mobile ? '8' : '18'}>
           <Box
             as="a"
+            borderRadius="menuButton"
             className={increaseHitAreaForHoverTransform.grow}
-            display="block"
+            display="flex"
             href={`${explorerLink}/address/${address}`}
             rel="noreferrer"
             target="_blank"
@@ -145,6 +148,7 @@ export function TxList({ accountData }: TxListProps) {
                 hover: 'grow',
               }}
               transition="default"
+              width="full"
               {...(mobile ? { paddingLeft: '12' } : {})}
             >
               <Text

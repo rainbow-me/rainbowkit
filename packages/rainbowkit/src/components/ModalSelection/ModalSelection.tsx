@@ -35,7 +35,13 @@ export const ModalSelection = ({
       onMouseLeave={() => setIsMouseOver(false)}
       ref={coolModeRef}
     >
-      <Box as={as} disabled={currentlySelected} onClick={onClick}>
+      <Box
+        as={as}
+        borderRadius="menuButton"
+        disabled={currentlySelected}
+        display="flex"
+        onClick={onClick}
+      >
         <Box
           borderRadius="menuButton"
           borderStyle="solid"
@@ -43,6 +49,7 @@ export const ModalSelection = ({
           padding="5"
           style={{ willChange: 'transform' }}
           transition="default"
+          width="full"
           {...(currentlySelected
             ? {
                 background: 'accentColor',

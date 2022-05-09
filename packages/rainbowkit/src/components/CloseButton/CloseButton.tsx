@@ -9,7 +9,9 @@ export const CloseButton = ({ onClose }: { onClose: () => void }) => {
   return (
     <Box
       as="button"
+      borderRadius="full"
       className={increaseHitAreaForHoverTransform.growLg}
+      display="flex"
       height={mobile ? '30' : '28'}
       onClick={onClose}
       type="button"

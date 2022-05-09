@@ -18,7 +18,9 @@ export const MenuButton = React.forwardRef(
     return (
       <Box
         as="button"
+        borderRadius="menuButton"
         disabled={currentlySelected}
+        display="flex"
         onClick={onClick}
         ref={ref}
         type="button"
@@ -28,6 +30,7 @@ export const MenuButton = React.forwardRef(
           className={mobile ? styles.unsetBackgroundOnHover : undefined}
           padding={mobile ? '8' : '6'}
           transition="default"
+          width="full"
           {...(currentlySelected
             ? {
                 background: 'accentColor',

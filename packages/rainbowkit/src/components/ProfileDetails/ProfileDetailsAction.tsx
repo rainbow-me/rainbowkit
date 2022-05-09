@@ -28,8 +28,9 @@ export function ProfileDetailsAction({
   return (
     <Box
       as={url ? 'a' : 'button'}
+      borderRadius="menuButton"
       className={!mobile ? increaseHitAreaForHoverTransform.grow : undefined}
-      display="block"
+      display="flex"
       onClick={action}
       style={{ flexBasis: 0, flexGrow: 1 }}
       type={!url ? 'button' : undefined}
@@ -49,6 +50,7 @@ export function ProfileDetailsAction({
           ...(!mobile ? { hover: 'grow' } : {}),
         }}
         transition="default"
+        width="full"
       >
         <Box
           alignItems="center"

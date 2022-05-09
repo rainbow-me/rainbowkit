@@ -46,9 +46,11 @@ export function TxItem({ tx }: TxProps) {
   return (
     <>
       <Box
+        display="flex"
         {...(explorerLink
           ? {
               as: 'a',
+              borderRadius: 'menuButton',
               className: increaseHitAreaForHoverTransform.grow,
               href: `${explorerLink}/tx/${tx.hash}`,
               rel: 'noreferrer',
@@ -70,6 +72,7 @@ export function TxItem({ tx }: TxProps) {
           flexDirection="row"
           justifyContent="space-between"
           padding="8"
+          width="full"
         >
           <Box
             alignItems="center"
