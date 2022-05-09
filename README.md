@@ -840,19 +840,21 @@ import {
 const App = () => {
   return (
     <RainbowKitProvider theme={null} {...etc}>
-      <style>
-        {`
-          :root {
-            ${cssStringFromTheme(lightTheme)}
-          }
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
 
-          html[data-dark] {
-            ${cssStringFromTheme(darkTheme, {
-              extends: lightTheme,
-            })}
-          }
-        `}
-      </style>
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
 
       {/* ... */}
     </RainbowKitProvider>

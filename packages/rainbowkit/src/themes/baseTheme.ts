@@ -3,9 +3,9 @@ import { ThemeVars } from '../css/sprinkles.css';
 // Source: https://css-tricks.com/snippets/css/system-font-stack
 // Note that quotes have been removed to avoid escaping and server/client mismatch issues
 const systemFontStack =
-  '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol';
+  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 const fontStacks = {
-  rounded: `SFRounded, ui-rounded, SF Pro Rounded, ${systemFontStack}`,
+  rounded: `SFRounded, ui-rounded, "SF Pro Rounded", ${systemFontStack}`,
   system: systemFontStack,
 } as const;
 type FontStack = keyof typeof fontStacks;
