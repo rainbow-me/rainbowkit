@@ -2,7 +2,6 @@
 import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { atoms } from 'css/atoms';
-import { hideFocusRingsDataAttribute } from 'css/reset.css';
 import { Sprinkles } from 'css/sprinkles.css';
 import { vars } from 'css/vars.css';
 
@@ -69,11 +68,6 @@ const variant = {
     style({
       backgroundColor: 'transparent',
       boxShadow: outlineValue,
-      selectors: {
-        [hideFocusRingsDataAttribute]: {
-          boxShadow: outlineValue,
-        },
-      },
     }),
   ]),
   ghost: style([
@@ -118,11 +112,6 @@ const shadowValue =
 const shadow = {
   true: style({
     boxShadow: shadowValue,
-    selectors: {
-      [hideFocusRingsDataAttribute]: {
-        boxShadow: shadowValue,
-      },
-    },
   }),
   false: {},
 };
@@ -215,11 +204,6 @@ export const variants = recipe({
       },
       style: {
         boxShadow: `${outlineValue}, ${shadowValue}`,
-        selectors: {
-          [hideFocusRingsDataAttribute]: {
-            boxShadow: `${outlineValue}, ${shadowValue}`,
-          },
-        },
       },
     },
   ],

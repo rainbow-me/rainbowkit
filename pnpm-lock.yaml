@@ -98,30 +98,26 @@ importers:
       '@ethersproject/abstract-provider': ^5.5.1
       '@ethersproject/providers': ^5.5.1
       '@types/qrcode': ^1.4.2
-      '@vanilla-extract/css': ^1.6.6
-      '@vanilla-extract/dynamic': ^2.0.2
+      '@vanilla-extract/css': 1.7.0
+      '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/private': ^1.0.2
-      '@vanilla-extract/sprinkles': ^1.4.0
+      '@vanilla-extract/sprinkles': 1.4.1
       autoprefixer: ^10.4.0
-      clsx: ^1.1.1
-      detect-browser: ^5.3.0
+      clsx: 1.1.1
       ethers: ^5.0.0
-      focus-visible: ^5.2.0
       nock: ^13.2.4
       postcss: ^8.4.4
-      qrcode: ^1.5.0
+      qrcode: 1.5.0
       react: ^18.0.0
-      react-remove-scroll: ^2.4.4
+      react-remove-scroll: 2.5.3
       vitest: ^0.5.0
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
       '@vanilla-extract/dynamic': 2.0.2
-      '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
+      '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.0
       clsx: 1.1.1
-      detect-browser: 5.3.0
-      focus-visible: 5.2.0
       qrcode: 1.5.0
-      react-remove-scroll: 2.4.4_@types+react@18.0.5+react@18.0.0
+      react-remove-scroll: 2.5.3_@types+react@18.0.5+react@18.0.0
     devDependencies:
       '@ethersproject/abstract-provider': 5.6.0
       '@ethersproject/providers': 5.6.2
@@ -146,18 +142,16 @@ importers:
       '@react-spring/three': ^9.4.4
       '@react-three/fiber': ^8.0.12
       '@vanilla-extract/babel-plugin': 1.1.4
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
       '@vanilla-extract/css-utils': ^0.1.2
       '@vanilla-extract/next-plugin': 2.0.1
       '@vanilla-extract/recipes': ^0.2.4
-      '@vanilla-extract/sprinkles': ^1.4.0
-      clsx: ^1.1.1
+      '@vanilla-extract/sprinkles': 1.4.1
+      clsx: 1.1.1
       contentlayer: 0.2.2
       copy-to-clipboard: ^3.3.1
       deepmerge: ^4.2.2
-      detect-browser: ^5.3.0
       ethers: ^5.0.0
-      focus-visible: ^5.2.0
       framer-motion: ^6.3.0
       hast-util-to-html: 8.0.3
       hast-util-to-string: 2.0.0
@@ -184,17 +178,15 @@ importers:
       '@react-spring/three': 9.4.4_7c1f1f6dcc0ec254740e65024013f9a4
       '@react-three/fiber': 8.0.12_a827855060b62e17a14992b3e241cec5
       '@vanilla-extract/babel-plugin': 1.1.4
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/next-plugin': 2.0.1_next@12.1.5
-      '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.6.8
-      '@vanilla-extract/sprinkles': 1.4.0_@vanilla-extract+css@1.6.8
+      '@vanilla-extract/recipes': 0.2.4_@vanilla-extract+css@1.7.0
+      '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.0
       clsx: 1.1.1
       copy-to-clipboard: 3.3.1
       deepmerge: 4.2.2
-      detect-browser: 5.3.0
       ethers: 5.6.2
-      focus-visible: 5.2.0
       framer-motion: 6.3.0_react-dom@18.0.0+react@18.0.0
       hast-util-to-html: 8.0.3
       hast-util-to-string: 2.0.0
@@ -3696,12 +3688,13 @@ packages:
     resolution: {integrity: sha512-qoxIu5E/UhJtoKsPL1JaU9nhTN0Xl5zYV0pScOgsvc3JN46TvTTt0L3GV8x3PQpZP7x3elw8BsC9czYbhJy9Gg==}
     dev: false
 
-  /@vanilla-extract/css/1.6.8:
-    resolution: {integrity: sha512-wkZay2jWe9a3Dt30j+WTJicK4+YV7i65lr+QnpkigVY9uU2KPzaiASEyUV8AouT2cZm7AOhteBBVKI8cYeWnVQ==}
+  /@vanilla-extract/css/1.7.0:
+    resolution: {integrity: sha512-2Abpr5aJskwKS+waMWxWnTBqq/rj4J93KtGteW0VSORMUsijrupwjOXECd7Llh+nSFfx/Y6usuexF5/ffyDF8A==}
     dependencies:
       '@emotion/hash': 0.8.0
       '@vanilla-extract/private': 1.0.3
       chalk: 4.1.2
+      css-mediaquery: 0.1.2
       css-what: 5.1.0
       cssesc: 3.0.0
       csstype: 3.0.10
@@ -3725,7 +3718,7 @@ packages:
   /@vanilla-extract/integration/2.0.1:
     resolution: {integrity: sha512-OT0WLxmfDengj63NJAnb3noJmy2Yg9W8FbvGjvGe7c8GMKKMuwRJdW1fV5MeL3tPvZwIeh3YQPsUwCD1mIWS+g==}
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
       chalk: 4.1.2
       esbuild: 0.11.23
       eval: 0.1.6
@@ -3750,20 +3743,20 @@ packages:
   /@vanilla-extract/private/1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
 
-  /@vanilla-extract/recipes/0.2.4_@vanilla-extract+css@1.6.8:
+  /@vanilla-extract/recipes/0.2.4_@vanilla-extract+css@1.7.0:
     resolution: {integrity: sha512-UwRR3IbxYmKOBSML8oze77T2ZuAGyCmIYqhzRW7kk+AmVNqPwtfDtnf3z6quf+E/B4an5g1TlSGJwHvq9QaVTQ==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
     dev: false
 
-  /@vanilla-extract/sprinkles/1.4.0_@vanilla-extract+css@1.6.8:
-    resolution: {integrity: sha512-q9Tu5bHkN/fT0IFkBDEsNeTKN/8CFYkgGVDw0iZ+wM/n9IKhWrKLnOjDk1v9NpCXD3rUQqDipl0pdGCEcBe4RQ==}
+  /@vanilla-extract/sprinkles/1.4.1_@vanilla-extract+css@1.7.0:
+    resolution: {integrity: sha512-aW6CfMMToX4a+baLuVxwcT0FSACjX3xrNt8wdi/3LLRlLAfhyue8OK7kJxhcYNZfydBeWTP59aRy8p5FUTIeew==}
     peerDependencies:
       '@vanilla-extract/css': ^1.0.0
     dependencies:
-      '@vanilla-extract/css': 1.6.8
+      '@vanilla-extract/css': 1.7.0
     dev: false
 
   /@vanilla-extract/vite-plugin/3.1.2:
@@ -4852,6 +4845,9 @@ packages:
       which: 2.0.2
     dev: true
 
+  /css-mediaquery/0.1.2:
+    resolution: {integrity: sha1-aiw3NEkoYYYxxUvTPO3TAdoYvqA=}
+
   /css-what/5.1.0:
     resolution: {integrity: sha512-arSMRWIIFY0hV8pIxZMEfmMI47Wj3R/aWpZDDxWYCPEiOMv6tfOrnpDtgxBYPEQD4V0Y/958+1TdC3iWTFcUPw==}
     engines: {node: '>= 6'}
@@ -5008,10 +5004,6 @@ packages:
   /detect-browser/5.2.0:
     resolution: {integrity: sha512-tr7XntDAu50BVENgQfajMLzacmSe34D+qZc4zjnniz0ZVuw/TZcLcyxHQjYpJTM36sGEkZZlYLnIM1hH7alTMA==}
     dev: true
-
-  /detect-browser/5.3.0:
-    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
-    dev: false
 
   /detect-indent/6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
@@ -6124,10 +6116,6 @@ packages:
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
     dev: true
-
-  /focus-visible/5.2.0:
-    resolution: {integrity: sha512-Rwix9pBtC1Nuy5wysTmKy+UjbDJpIfg8eHjw0rjZ1mX4GNLz1Bmd16uDpI3Gk1i70Fgcs8Csg2lPm8HULFg9DQ==}
-    dev: false
 
   /follow-redirects/1.14.8:
     resolution: {integrity: sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==}
@@ -8545,6 +8533,22 @@ packages:
       tslib: 1.14.1
     dev: false
 
+  /react-remove-scroll-bar/2.3.1_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-IvGX3mJclEF7+hga8APZczve1UyGMkMG+tjS0o/U1iLgvZRpjFAQEUBJ4JETfvbNlfNnZnoDyWJCICkA15Mghg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      react: 18.0.0
+      react-style-singleton: 2.2.0_@types+react@18.0.5+react@18.0.0
+      tslib: 2.3.1
+    dev: false
+
   /react-remove-scroll/2.4.4_@types+react@18.0.5+react@18.0.0:
     resolution: {integrity: sha512-EyC5ohYhaeKbThMSQxuN2i+QC5HqV3AJvNZKEdiATITexu0gHm00+5ko0ltNS1ajYJVeDgVG2baRSCei0AUWlQ==}
     engines: {node: '>=8.5.0'}
@@ -8564,6 +8568,25 @@ packages:
       use-sidecar: 1.0.5_react@18.0.0
     dev: false
 
+  /react-remove-scroll/2.5.3_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-NQ1bXrxKrnK5pFo/GhLkXeo3CrK5steI+5L+jynwwIemvZyfXqaL0L5BzwJd7CSwNCU723DZaccvjuyOdoy3Xw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      react: 18.0.0
+      react-remove-scroll-bar: 2.3.1_@types+react@18.0.5+react@18.0.0
+      react-style-singleton: 2.2.0_@types+react@18.0.5+react@18.0.0
+      tslib: 2.3.1
+      use-callback-ref: 1.3.0_@types+react@18.0.5+react@18.0.0
+      use-sidecar: 1.1.2_@types+react@18.0.5+react@18.0.0
+    dev: false
+
   /react-style-singleton/2.1.1_@types+react@18.0.5+react@18.0.0:
     resolution: {integrity: sha512-jNRp07Jza6CBqdRKNgGhT3u9umWvils1xsuMOjZlghBDH2MU0PL2WZor4PGYjXpnRCa9DQSlHMs/xnABWOwYbA==}
     engines: {node: '>=8.5.0'}
@@ -8579,6 +8602,23 @@ packages:
       invariant: 2.2.4
       react: 18.0.0
       tslib: 1.14.1
+    dev: false
+
+  /react-style-singleton/2.2.0_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-nK7mN92DMYZEu3cQcAhfwE48NpzO5RpxjG4okbSqRRbfal9Pk+fG2RdQXTMp+f6all1hB9LIJSt+j7dCYrU11g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      get-nonce: 1.0.1
+      invariant: 2.2.4
+      react: 18.0.0
+      tslib: 2.3.1
     dev: false
 
   /react-use-measure/2.1.1_react-dom@18.0.0+react@18.0.0:
@@ -9702,6 +9742,21 @@ packages:
       react: 18.0.0
     dev: false
 
+  /use-callback-ref/1.3.0_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-3FT9PRuRdbB9HfXhEq35u4oZkvpJ5kuYbpqhCfmiZyReuRgpnhDlbr2ZEnnuS0RrJAPn6l23xjFg9kpDM+Ms7w==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      react: 18.0.0
+      tslib: 2.3.1
+    dev: false
+
   /use-sidecar/1.0.5_react@18.0.0:
     resolution: {integrity: sha512-k9jnrjYNwN6xYLj1iaGhonDghfvmeTmYjAiGvOr7clwKfPjMXJf4/HOr7oT5tJwYafgp2tG2l3eZEOfoELiMcA==}
     engines: {node: '>=8.5.0'}
@@ -9711,6 +9766,22 @@ packages:
       detect-node-es: 1.1.0
       react: 18.0.0
       tslib: 1.14.1
+    dev: false
+
+  /use-sidecar/1.1.2_@types+react@18.0.5+react@18.0.0:
+    resolution: {integrity: sha512-epTbsLuzZ7lPClpz2TyryBfztm7m+28DlEv2ZCQ3MDr5ssiwyOwGH/e5F9CkfWjJ1t4clvI58yF822/GUkjjhw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      '@types/react': ^16.9.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.5
+      detect-node-es: 1.1.0
+      react: 18.0.0
+      tslib: 2.3.1
     dev: false
 
   /use-subscription/1.5.1_react@18.0.0:
