@@ -1,5 +1,64 @@
 # RainbowKit Contribution Guide
 
+Thanks for your interest in contributing to RainbowKit! Please take a moment to review this document **before submitting a pull request.**
+
+If you want to contribute but aren't sure where to start, you can create a [new discussion](https://github.com/rainbow-me/rainbowkit/discussions).
+
+## Pull requests
+
+**Please ask first before starting work on any significant new features. This includes things like adding new wallets, chains, API providers, components, etc.**
+
+It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) to first discuss any API changes or significant new ideas.
+
+## Prerequisites
+
+This project uses [`pnpm`](https://pnpm.io) as a package manager.
+
+## Development environment
+
+To play around with code while making changes, you can run the local development environment:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+This will run an example app on [localhost:3000](http://localhost:3000) and the documentation site on [localhost:3001](http://localhost:3001).
+
+The example app code is located in [`packages/example`](../packages/example). The documentation site code is located in [`site`](../site). Make sure you clean up after yourself before pushing up any changes.
+
+All API changes should also include updates to [`README.md`](../README.md) and the documentation site. Documentation is crucial to helping developers of all experience levels use RainbowKit.
+
+## Coding standards
+
+Our code formatting rules are defined in [`.eslintrc.cjs`](../.eslintrc.cjs). You can check your code against these standards by running:
+
+```bash
+pnpm lint
+```
+
+To automatically fix any errors in your code, you can run:
+
+```bash
+pnpm lint:fix
+```
+
+## Running tests
+
+RainbowKit has a suite of unit tests that can be run with the following command:
+
+```bash
+pnpm test
+```
+
+If snapshot tests fail, you can run the following command to update the snapshots:
+
+```bash
+pnpm test:update
+```
+
+## Release notes
+
 RainbowKit uses [Changesets](https://github.com/changesets/changesets) to manage versioning and publishing.
 
 Each PR with a user-facing change (API change, bug fix, notable UI update, etc.) should include a “changeset”, which is a markdown file in the `.changeset` directory. This directory acts as a release queue and is automatically cleared out after each release.
@@ -17,6 +76,8 @@ If your PR is making changes to an area that already has a changeset (e.g. there
 The first time a PR with a changeset is merged after a release, a new PR will automatically be created called `chore: version packages`. Any subsequent PRs with changesets will automatically update this existing version packages PR. Merging this PR is the first step of the release process.
 
 ## Releasing to npm
+
+**This section is only relevant for library maintainers who are releasing new versions of the library.**
 
 When you’re ready to publish, the `chore: version packages` PR should be reviewed to double check that the version number(s) are correct and that the release notes are correct. Since we’re currently in beta, version numbers should remain within the `v0.x` range.
 
