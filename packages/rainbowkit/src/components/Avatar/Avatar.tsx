@@ -63,7 +63,7 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
           emoji
         )}
       </Box>
-      {typeof loading === 'boolean' && (
+      {typeof loading === 'boolean' && loading && (
         <Box
           color="accentColor"
           display="flex"
