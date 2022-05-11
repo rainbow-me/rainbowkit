@@ -17,7 +17,7 @@ export const steak = ({ chains }: SteakOptions): Wallet => ({
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
     ios: 'https://apps.apple.com/np/app/steakwallet/id1569375204',
-    qrCode: 'https://links.steakwallet.fi/wc',
+    qrCode: 'https://steakwallet.fi/download',
   },
   createConnector: () => {
     const rpc = rpcUrlsForChains(chains);
