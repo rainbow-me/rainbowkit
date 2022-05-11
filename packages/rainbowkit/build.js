@@ -1,7 +1,10 @@
 /* eslint-disable no-console, import/no-unresolved, import/no-extraneous-dependencies */
+import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
+import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
+import postcss from 'postcss';
+import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
-import { externals, vanillaExtract } from '../../esbuild/plugins.js';
 
 const isWatching = process.argv.includes('--watch');
 const isCssMinified = process.env.MINIFY_CSS === 'true';
@@ -32,10 +35,29 @@ esbuild
     outdir: 'dist',
     platform: 'browser',
     plugins: [
-      vanillaExtract({
+      vanillaExtractPlugin({
         identifiers: isCssMinified ? 'short' : 'debug',
+        processCss: async css => {
+          const result = await postcss([
+            autoprefixer,
+            prefixSelector({ prefix: '[data-rk]' }),
+          ]).process(css, {
+            from: undefined, // suppress source map warning
+          });
+
+          return result.css;
+        },
       }),
-      externals,
+      {
+        name: 'make-all-packages-external',
+        setup(build) {
+          let filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
+          build.onResolve({ filter }, args => ({
+            external: true,
+            path: args.path,
+          }));
+        },
+      },
     ],
     splitting: true, // Required for tree shaking
     watch: isWatching
