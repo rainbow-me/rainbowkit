@@ -2,6 +2,8 @@
 
 **The best way to connect a wallet 🌈**
 
+RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
+
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
 - 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
