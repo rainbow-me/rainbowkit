@@ -1,43 +1,17 @@
-import {
-  BotInfo,
-  BrowserInfo,
-  detect,
-  NodeInfo,
-  ReactNativeInfo,
-  SearchBotDeviceInfo,
-} from 'detect-browser';
-
-function detectEnv(
-  userAgent?: string
-):
-  | BrowserInfo
-  | BotInfo
-  | NodeInfo
-  | SearchBotDeviceInfo
-  | ReactNativeInfo
-  | null {
-  return detect(userAgent);
-}
-
 export function isAndroid(): boolean {
-  const os = detectOS();
-  return os ? os.toLowerCase().includes('android') : false;
+  return (
+    typeof navigator !== 'undefined' &&
+    /Android\s([0-9.]+)/.test(navigator.userAgent) // Source: https://github.com/DamonOehlman/detect-browser/blob/master/src/index.ts
+  );
 }
 
 export function isIOS(): boolean {
-  const os = detectOS();
-  return os
-    ? os.toLowerCase().includes('ios') ||
-        (os.toLowerCase().includes('mac') && navigator.maxTouchPoints > 1)
-    : false;
-}
-
-function detectOS() {
-  const env = detectEnv();
-  return env?.os ? env.os : undefined;
+  return (
+    typeof navigator !== 'undefined' &&
+    /Version\/([0-9._]+).*Mobile.*Safari.*/.test(navigator.userAgent) // Source: https://github.com/DamonOehlman/detect-browser/blob/master/src/index.ts
+  );
 }
 
 export function isMobile(): boolean {
-  const os = detectOS();
-  return os ? isAndroid() || isIOS() : false;
+  return isAndroid() || isIOS();
 }

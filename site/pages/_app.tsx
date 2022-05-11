@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { vars } from '../css/vars.css';
-import 'focus-visible';
 import '../css/global.css';
 
 const highlightColors = [
