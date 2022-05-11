@@ -12,6 +12,7 @@
     "format": "prettier --check \"./**/*.{ts,js,jsx,mjs,cjs,md,tsx}\"",
     "format:fix": "prettier --write \"./**/*.{ts,js,jsx,mjs,cjs,md,tsx}\"",
     "test": "vitest",
+    "test:update": "vitest --update",
     "test:watch": "vitest --watch",
     "changeset": "changeset",
     "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules && pnpm install",
