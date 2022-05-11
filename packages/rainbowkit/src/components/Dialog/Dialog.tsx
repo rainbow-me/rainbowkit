@@ -41,23 +41,25 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
       {open
         ? createPortal(
             <RemoveScroll>
-              <Box
-                {...themeRootProps}
-                alignItems={mobile ? 'flex-end' : 'center'}
-                aria-labelledby={titleId}
-                aria-modal
-                className={styles.overlay}
-                onClick={handleBackdropClick}
-                position="fixed"
-                role="dialog"
-              >
-                <FocusTrap
-                  className={styles.content}
-                  onClick={stopPropagation}
-                  role="document"
+              <Box {...themeRootProps}>
+                <Box
+                  {...themeRootProps}
+                  alignItems={mobile ? 'flex-end' : 'center'}
+                  aria-labelledby={titleId}
+                  aria-modal
+                  className={styles.overlay}
+                  onClick={handleBackdropClick}
+                  position="fixed"
+                  role="dialog"
                 >
-                  {children}
-                </FocusTrap>
+                  <FocusTrap
+                    className={styles.content}
+                    onClick={stopPropagation}
+                    role="document"
+                  >
+                    {children}
+                  </FocusTrap>
+                </Box>
               </Box>
             </RemoveScroll>,
             document.body

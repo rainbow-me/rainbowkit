@@ -33,7 +33,8 @@ importers:
       eventemitter3: ^4.0.7
       husky: ^7.0.4
       next: ^12.0.4
-      postcss: ^8.4.4
+      postcss: ^8.4.6
+      postcss-prefix-selector: ^1.15.0
       prettier: ^2.5.0
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -70,6 +71,7 @@ importers:
       husky: 7.0.4
       next: 12.0.10_116c5c1146fd78f56c26483f85b71837
       postcss: 8.4.6
+      postcss-prefix-selector: 1.15.0_postcss@8.4.6
       prettier: 2.5.1
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
@@ -8267,6 +8269,14 @@ packages:
     dependencies:
       lilconfig: 2.0.4
       yaml: 1.10.2
+    dev: true
+
+  /postcss-prefix-selector/1.15.0_postcss@8.4.6:
+    resolution: {integrity: sha512-9taaTPs6I4906QC03zBBt0LfTWAhrqEWlKSj0jRlxrg1yV+O91h0wcquu6krcA5L6aEv3QnCeG8B1vZ5WT4ecQ==}
+    peerDependencies:
+      postcss: '>4 <9'
+    dependencies:
+      postcss: 8.4.6
     dev: true
 
   /postcss-value-parser/4.2.0:
