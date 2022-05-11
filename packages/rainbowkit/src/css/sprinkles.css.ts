@@ -59,6 +59,20 @@ const themeContractValues = {
     selectedWallet: '',
     walletLogo: '',
   },
+  transitions: {
+    modalEntrance: {
+      fadeDuration: '',
+      slideDistance: '',
+      slideDuration: '',
+      slideEasing: '',
+    },
+    modalEntranceMobile: {
+      fadeDuration: '',
+      slideDistance: '',
+      slideDuration: '',
+      slideEasing: '',
+    },
+  },
 };
 
 export type ThemeVars = typeof themeContractValues;

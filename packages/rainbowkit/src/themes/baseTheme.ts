@@ -46,15 +46,79 @@ const radiusScales: Record<
   },
 };
 
+const fadeDuration = '150ms';
+const slideEasing = 'cubic-bezier(.15,1.15,0.6,1.00)';
+
+type TransitionScale = 'large' | 'small' | 'fade' | 'none';
+const transitionScales: Record<TransitionScale, ThemeVars['transitions']> = {
+  fade: {
+    modalEntrance: {
+      fadeDuration,
+      slideDistance: '0%',
+      slideDuration: '0ms',
+      slideEasing,
+    },
+    modalEntranceMobile: {
+      fadeDuration,
+      slideDistance: '0%',
+      slideDuration: '0ms',
+      slideEasing,
+    },
+  },
+  large: {
+    modalEntrance: {
+      fadeDuration,
+      slideDistance: '100%',
+      slideDuration: '350ms',
+      slideEasing,
+    },
+    modalEntranceMobile: {
+      fadeDuration,
+      slideDistance: '100%',
+      slideDuration: '350ms',
+      slideEasing,
+    },
+  },
+  none: {
+    modalEntrance: {
+      fadeDuration: '0ms',
+      slideDistance: '0',
+      slideDuration: '0ms',
+      slideEasing,
+    },
+    modalEntranceMobile: {
+      fadeDuration: '0ms',
+      slideDistance: '0',
+      slideDuration: '0ms',
+      slideEasing,
+    },
+  },
+  small: {
+    modalEntrance: {
+      fadeDuration,
+      slideDistance: '20%',
+      slideDuration: '250ms',
+      slideEasing,
+    },
+    modalEntranceMobile: {
+      fadeDuration,
+      slideDistance: '20%',
+      slideDuration: '250ms',
+      slideEasing,
+    },
+  },
+};
 interface BaseThemeOptions {
   borderRadius?: RadiusScale;
   fontStack?: FontStack;
+  transitions?: TransitionScale;
 }
 
 export const baseTheme = ({
   borderRadius = 'large',
   fontStack = 'rounded',
-}: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts'> => ({
+  transitions = 'large',
+}: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts' | 'transitions'> => ({
   fonts: {
     body: fontStacks[fontStack],
   },
@@ -65,6 +129,7 @@ export const baseTheme = ({
     modal: radiusScales[borderRadius].modal,
     modalMobile: radiusScales[borderRadius].modalMobile,
   },
+  transitions: transitionScales[transitions],
 });
 
 export interface AccentColor {

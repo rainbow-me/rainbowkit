@@ -46,6 +46,14 @@ describe('cssObjectFromTheme', () => {
         "--rk-shadows-selectedOption": "0px 2px 6px rgba(0, 0, 0, 0.24)",
         "--rk-shadows-selectedWallet": "0px 2px 6px rgba(0, 0, 0, 0.12)",
         "--rk-shadows-walletLogo": "0px 2px 16px rgba(0, 0, 0, 0.16)",
+        "--rk-transitions-modalEntrance-fadeDuration": "150ms",
+        "--rk-transitions-modalEntrance-slideDistance": "100%",
+        "--rk-transitions-modalEntrance-slideDuration": "350ms",
+        "--rk-transitions-modalEntrance-slideEasing": "cubic-bezier(.15,1.15,0.6,1.00)",
+        "--rk-transitions-modalEntranceMobile-fadeDuration": "150ms",
+        "--rk-transitions-modalEntranceMobile-slideDistance": "100%",
+        "--rk-transitions-modalEntranceMobile-slideDuration": "350ms",
+        "--rk-transitions-modalEntranceMobile-slideEasing": "cubic-bezier(.15,1.15,0.6,1.00)",
       }
     `);
   });

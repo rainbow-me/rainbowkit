@@ -83,11 +83,16 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
+const transitionScales = ['large', 'small', 'fade', 'none'] as const;
+type TransitionScale = typeof transitionScales[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedTransitionScale, setTransitionScale] =
+    useState<TransitionScale>('large');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
@@ -118,6 +123,7 @@ function App({ Component, pageProps }: AppProps) {
             ...accentColor,
             borderRadius: selectedRadiusScale,
             fontStack: selectedFontStack,
+            transitions: selectedTransitionScale,
           })}
         >
           <div style={{ padding: 8 }}>
@@ -170,6 +176,7 @@ function App({ Component, pageProps }: AppProps) {
                   <div
                     style={{
                       display: 'flex',
+                      flexWrap: 'wrap',
                       gap: 24,
                     }}
                   >
@@ -195,6 +202,39 @@ function App({ Component, pageProps }: AppProps) {
                               value={themeName}
                             />{' '}
                             {themeName}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Transitions</h4>
+                      <div
+                        style={{
+                          alignItems: 'flex-start',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 12,
+                        }}
+                      >
+                        {transitionScales.map(transitionScale => (
+                          <label
+                            key={transitionScale}
+                            style={{ userSelect: 'none' }}
+                          >
+                            <input
+                              checked={
+                                transitionScale === selectedTransitionScale
+                              }
+                              name="transitionScale"
+                              onChange={e =>
+                                setTransitionScale(
+                                  e.target.value as TransitionScale
+                                )
+                              }
+                              type="radio"
+                              value={transitionScale}
+                            />{' '}
+                            {transitionScale}
                           </label>
                         ))}
                       </div>
