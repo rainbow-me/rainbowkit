@@ -1,5 +1,5 @@
 <a href="https://rainbowkit.com">
-  <img alt="rainbowkit" src="https://user-images.githubusercontent.com/372831/168050046-37214f66-4e71-4f57-b0e0-fae0a83e6e24.png" />
+  <img alt="rainbowkit" src="https://user-images.githubusercontent.com/372831/168174718-685980e0-391e-4621-94a1-29bf83979fa5.png" />
 </a>
 
 # RainbowKit
