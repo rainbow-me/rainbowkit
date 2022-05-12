@@ -38,4 +38,4 @@ Please follow our [contributing guidelines](./.github/CONTRIBUTING.md).
 
 Licensed under the MIT License, Copyright © 2022-present [Rainbow](https://rainbow.me).
 
-See [LICENSE](./LICENSE.md) for more information.
+See [LICENSE](./LICENSE) for more information.
