@@ -36,7 +36,7 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         overflow="hidden"
         position="absolute"
         style={{
-          backgroundColor,
+          ...(!imageUrl && { backgroundColor }),
           fontSize: `${Math.round(size * 0.55)}px`,
           height: `${size}px`,
           transform: loading ? 'scale(0.72)' : undefined,
@@ -53,11 +53,15 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
             borderRadius="full"
             height="full"
             position="absolute"
-            style={{ backgroundImage: `url(${imageUrl})` }}
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              backgroundPosition: 'center',
+            }}
             width="full"
           />
-        ) : null}
-        {emoji}
+        ) : (
+          emoji
+        )}
       </Box>
       {typeof loading === 'boolean' && (
         <Box

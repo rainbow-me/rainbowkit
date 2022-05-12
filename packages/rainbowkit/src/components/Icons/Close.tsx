@@ -4,6 +4,7 @@ import { isMobile } from '../../utils/isMobile';
 export const CloseIcon = () => {
   return isMobile() ? (
     <svg
+      aria-hidden
       fill="none"
       height="11.5"
       viewBox="0 0 11.5 11.5"
@@ -17,6 +18,7 @@ export const CloseIcon = () => {
     </svg>
   ) : (
     <svg
+      aria-hidden
       fill="none"
       height="10"
       viewBox="0 0 10 10"

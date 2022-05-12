@@ -1,4 +1,5 @@
 import React from 'react';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
@@ -36,6 +37,7 @@ export function ActionButton({
   href,
   label,
   onClick,
+  rel = 'noreferrer noopener',
   size = 'medium',
   target = '_blank',
   type = 'primary',
@@ -43,6 +45,7 @@ export function ActionButton({
   href?: string;
   label: string;
   onClick?: () => void;
+  rel?: string;
   size?: Size;
   target?: string;
   type?: 'primary' | 'secondary';
@@ -60,37 +63,42 @@ export function ActionButton({
   return (
     <Box
       {...(href
-        ? { as: 'a', href, rel: 'noreferrer noopener', target }
+        ? { as: 'a', href, rel, target }
         : { as: 'button', type: 'button' })}
-      {...(hasBorder
-        ? {
-            borderColor:
-              mobile && !isNotLarge && !isPrimary
-                ? 'actionButtonBorderMobile'
-                : 'actionButtonBorder',
-            borderStyle: 'solid',
-            borderWidth: '1',
-          }
-        : {})}
       borderRadius="actionButton"
-      display="block"
+      className={increaseHitAreaForHoverTransform.grow}
+      display="flex"
       onClick={onClick}
-      paddingX={paddingX}
-      paddingY={paddingY}
-      style={{ willChange: 'transform' }}
-      textAlign="center"
-      transform={{ active: 'shrinkSm', hover: 'grow' }}
-      transition="default"
-      {...(background ? { background } : {})}
-      {...(height ? { height } : {})}
     >
-      <Text
-        color={isPrimary ? 'accentColorForeground' : 'accentColor'}
-        size={fontSize}
-        weight="bold"
+      <Box
+        {...(hasBorder
+          ? {
+              borderColor:
+                mobile && !isNotLarge && !isPrimary
+                  ? 'actionButtonBorderMobile'
+                  : 'actionButtonBorder',
+              borderStyle: 'solid',
+              borderWidth: '1',
+            }
+          : {})}
+        borderRadius="actionButton"
+        paddingX={paddingX}
+        paddingY={paddingY}
+        style={{ willChange: 'transform' }}
+        textAlign="center"
+        transform={{ active: 'shrinkSm', hover: 'grow' }}
+        transition="default"
+        {...(background ? { background } : {})}
+        {...(height ? { height } : {})}
       >
-        {label}
-      </Text>
+        <Text
+          color={isPrimary ? 'accentColorForeground' : 'accentColor'}
+          size={fontSize}
+          weight="bold"
+        >
+          {label}
+        </Text>
+      </Box>
     </Box>
   );
 }

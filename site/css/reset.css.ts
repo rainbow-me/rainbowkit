@@ -1,9 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from './vars.css';
 
-export const hideFocusRingsDataAttribute =
-  '[data-js-focus-visible] &:focus:not([data-focus-visible-added])';
-
 export const base = style({
   border: 0,
   borderColor: vars.colors.separator,
@@ -16,13 +13,6 @@ export const base = style({
   verticalAlign: 'baseline',
   WebkitFontSmoothing: 'antialiased',
   WebkitTapHighlightColor: 'transparent',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-  selectors: {
-    [`${hideFocusRingsDataAttribute}`]: {
-      boxShadow: 'inherit',
-      outline: 'none',
-    },
-  },
 });
 
 const list = style({

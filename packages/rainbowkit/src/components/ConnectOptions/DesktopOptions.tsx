@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
@@ -211,22 +212,30 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 {headerBackButtonLink && (
                   <Box
                     as="button"
-                    color="accentColor"
+                    className={increaseHitAreaForHoverTransform.growLg}
                     onClick={() =>
                       headerBackButtonLink &&
                       setWalletStep(headerBackButtonLink)
                     }
-                    paddingX="8"
-                    paddingY="4"
-                    style={{
-                      boxSizing: 'content-box',
-                      height: 17,
-                      willChange: 'transform',
-                    }}
-                    transform={{ active: 'shrinkSm', hover: 'growLg' }}
-                    transition="default"
+                    type="button"
                   >
-                    <BackIcon />
+                    <Box
+                      color="accentColor"
+                      paddingX="8"
+                      paddingY="4"
+                      style={{
+                        boxSizing: 'content-box',
+                        height: 17,
+                        willChange: 'transform',
+                      }}
+                      transform={{
+                        active: 'shrinkSm',
+                        hover: 'growLg',
+                      }}
+                      transition="default"
+                    >
+                      <BackIcon />
+                    </Box>
                   </Box>
                 )}
               </Box>

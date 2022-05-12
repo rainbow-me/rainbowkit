@@ -1,6 +1,6 @@
-import { detect } from 'detect-browser';
-
 export function isSafari(): boolean {
-  const browser = detect();
-  return !!browser && browser.name === 'safari';
+  return (
+    typeof navigator !== 'undefined' &&
+    /Version\/([0-9._]+).*Safari/.test(navigator.userAgent) // Source: https://github.com/DamonOehlman/detect-browser/blob/master/src/index.ts
+  );
 }

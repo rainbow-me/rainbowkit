@@ -116,6 +116,21 @@ const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
 const textAlignments = ['left', 'center', 'inherit'] as const;
 
+export const growTransforms = {
+  grow: 'scale(1.025)',
+  growLg: 'scale(1.1)',
+} as const;
+
+const shrinkTransforms = {
+  shrink: 'scale(0.95)',
+  shrinkSm: 'scale(0.9)',
+} as const;
+
+const transforms = {
+  ...growTransforms,
+  ...shrinkTransforms,
+} as const;
+
 const interactionProperties = defineProperties({
   conditions: {
     base: {},
@@ -124,12 +139,7 @@ const interactionProperties = defineProperties({
   },
   defaultCondition: 'base',
   properties: {
-    transform: {
-      grow: 'scale(1.025)',
-      growLg: 'scale(1.1)',
-      shrink: 'scale(0.95)',
-      shrinkSm: 'scale(0.9)',
-    },
+    transform: transforms,
     transition: {
       default: '0.125s ease',
     },
