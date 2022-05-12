@@ -77,7 +77,7 @@ const App = () => {
 };
 ```
 
-### Use it
+### Add the connect button
 
 Then, in your app, import and render the `ConnectButton` component.
 
@@ -91,11 +91,21 @@ export const YourApp = () => {
 
 You're done! RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
 
-> Note if you're using Remix remember to [add RainbowKit to its server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages).
+> Note: If you're using [Remix,](https://remix.run) remember to [add RainbowKit to its server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages).
 
-### Try it out
+### Add your own functionality
 
-You can use the codesanboxes below try out RainbowKit:
+Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)
+
+Send transactions, interact with contracts, resolve ENS details and much more with wagmi’s comprehensive suite of React Hooks.
+
+For more detail, view the [wagmi documentation.](https://wagmi.sh)
+
+### Further examples
+
+To see some running examples of RainbowKit, or even use them to automatically scaffold a new project, check out the official [rainbowkit-examples](https://github.com/rainbow-me/rainbowkit-examples) repository.
+
+To try RainbowKit directly in your browser, check out the CodeSandbox links below:
 
 - with [Create React App](https://codesandbox.io/s/dn3rho)
 - with [Create React App](https://codesandbox.io/s/ilfuoy) (TypeScript)
