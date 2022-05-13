@@ -35,7 +35,7 @@ export function TxList({ accountData }: TxListProps) {
         display="flex"
         flexDirection="column"
         gap="10"
-        paddingBottom="4"
+        paddingBottom="2"
         paddingTop="16"
         paddingX={mobile ? '8' : '18'}
       >
@@ -45,7 +45,7 @@ export function TxList({ accountData }: TxListProps) {
             paddingTop={mobile ? '0' : '8'}
             paddingX={mobile ? '12' : '6'}
           >
-            <Box display="flex" gap="4" justifyContent="space-between">
+            <Box display="flex" justifyContent="space-between">
               <Text
                 color="modalTextSecondary"
                 size={mobile ? '16' : '14'}
