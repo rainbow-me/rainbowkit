@@ -43,7 +43,7 @@ export function ProfileDetailsAction({
         }}
         borderRadius="menuButton"
         boxShadow="profileDetailsAction"
-        padding={mobile ? '8' : '10'}
+        padding={mobile ? '6' : '8'}
         style={{ willChange: 'transform' }}
         transform={{
           active: 'shrinkSm',
@@ -56,8 +56,9 @@ export function ProfileDetailsAction({
           alignItems="center"
           display="flex"
           flexDirection="column"
-          gap="2"
+          gap="1"
           justifyContent="center"
+          paddingTop="2"
         >
           <Box color="modalText" height="max">
             {icon}

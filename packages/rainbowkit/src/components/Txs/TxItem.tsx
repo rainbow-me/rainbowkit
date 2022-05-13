@@ -83,7 +83,7 @@ export function TxItem({ tx }: TxProps) {
             <Box color={color}>
               <Icon />
             </Box>
-            <Box display="flex" flexDirection="column" gap={mobile ? '4' : '2'}>
+            <Box display="flex" flexDirection="column" gap={mobile ? '3' : '1'}>
               <Box>
                 <Text
                   color="modalText"
