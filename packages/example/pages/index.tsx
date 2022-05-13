@@ -118,6 +118,7 @@ const Example = () => {
             largeScreen: chainStatusLargeScreen,
             smallScreen: chainStatusSmallScreen,
           }}
+          label="Hello"
           showBalance={{
             largeScreen: showBalanceLargeScreen,
             smallScreen: showBalanceSmallScreen,
