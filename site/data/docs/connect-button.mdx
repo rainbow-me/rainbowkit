@@ -59,6 +59,19 @@ The `ConnectButton` component exposes several props to customize its appearance,
       description:
         'Whether the balance is visible next to the account name',
     },
+    {
+      name: 'onConnect',
+      required: false,
+      type: '() => void',
+      description: 'Set a callback that executes when wallet connects',
+    },
+    {
+      name: 'onDisconnect',
+      required: false,
+      type: '() => void',
+      description:
+        'Set a callback that executes when wallet disconnect',
+    },
   ]}
 />
 
@@ -72,6 +85,22 @@ Use the `label` prop to set a custom `ConnectButton` text.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
+```
+
+#### onConnect and onDisconnect
+
+Use the `onConnect` and `onDisconnect` props to set callbacks executed when wallet connects or disconnects.
+
+When wallet connects.
+
+```tsx
+<ConnectButton onConnect={() => console.log('gm!')} />
+```
+
+When wallet disconnects.
+
+```tsx
+<ConnectButton onDisconnect={() => console.log('gn!')} />
 ```
 
 #### Account status

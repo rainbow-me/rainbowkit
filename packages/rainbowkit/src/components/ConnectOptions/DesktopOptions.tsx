@@ -29,7 +29,13 @@ export enum WalletStep {
   Instructions = 'INSTRUCTIONS',
 }
 
-export function DesktopOptions({ onClose }: { onClose: () => void }) {
+export function DesktopOptions({
+  onClose,
+  onConnect,
+}: {
+  onClose: () => void;
+  onConnect?: () => void;
+}) {
   const titleId = 'rk_connect_title';
   const safari = isSafari();
   const [selectedOptionId, setSelectedOptionId] = useState<
@@ -48,9 +54,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
     if (wallet.ready) {
-      wallet?.connect?.()?.catch(() => {
-        setConnectionError(true);
-      });
+      wallet
+        ?.connect?.()
+        ?.then(() => onConnect?.())
+        .catch(() => {
+          setConnectionError(true);
+        });
 
       const getDesktopDeepLink = wallet.desktop?.getUri;
       if (getDesktopDeepLink) {

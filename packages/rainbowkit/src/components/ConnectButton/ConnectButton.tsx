@@ -21,12 +21,16 @@ export interface ConnectButtonProps {
   showBalance?: ResponsiveValue<boolean>;
   chainStatus?: ResponsiveValue<ChainStatus>;
   label?: string;
+  onConnect?: () => void;
+  onDisconnect?: () => void;
 }
 
 const defaultProps = {
   accountStatus: 'full',
   chainStatus: { largeScreen: 'full', smallScreen: 'icon' },
   label: 'Connect Wallet',
+  onConnect: () => {},
+  onDisconnect: () => {},
   showBalance: { largeScreen: true, smallScreen: false },
 } as const;
 
@@ -35,11 +39,13 @@ export function ConnectButton({
   chainStatus = defaultProps.chainStatus,
   label = defaultProps.label,
   showBalance = defaultProps.showBalance,
+  onConnect = defaultProps.onConnect,
+  onDisconnect = defaultProps.onDisconnect,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
 
   return (
-    <ConnectButtonRenderer>
+    <ConnectButtonRenderer onConnect={onConnect} onDisconnect={onDisconnect}>
       {({
         account,
         chain,

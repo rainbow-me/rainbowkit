@@ -15,7 +15,13 @@ import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
-function WalletButton({ wallet }: { wallet: WalletConnector }) {
+function WalletButton({
+  onConnect,
+  wallet,
+}: {
+  wallet: WalletConnector;
+  onConnect?: () => void;
+}) {
   const {
     connect,
     iconBackground,
@@ -39,13 +45,14 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       key={id}
       onClick={useCallback(async () => {
         connect?.();
+        onConnect?.();
 
         onConnecting?.(async () => {
           if (getMobileUri) {
             window.location.href = await getMobileUri();
           }
         });
-      }, [connect, getMobileUri, onConnecting])}
+      }, [connect, getMobileUri, onConnecting, onConnect])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
@@ -97,7 +104,13 @@ enum MobileWalletStep {
   Get = 'GET',
 }
 
-export function MobileOptions({ onClose }: { onClose: () => void }) {
+export function MobileOptions({
+  onClose,
+  onConnect,
+}: {
+  onClose: () => void;
+  onConnect?: () => void;
+}) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
   const { learnMoreUrl } = useContext(AppContext);
@@ -133,7 +146,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   return (
                     <Box key={wallet.id} paddingX="20">
                       <Box width="60">
-                        <WalletButton wallet={wallet} />
+                        <WalletButton onConnect={onConnect} wallet={wallet} />
                       </Box>
                     </Box>
                   );
