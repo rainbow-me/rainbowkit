@@ -12,7 +12,7 @@ It's never a fun experience to have your pull request declined after investing a
 
 ## Prerequisites
 
-This project uses [`pnpm`](https://pnpm.io) as a package manager.
+This project uses [`pnpm`](https://pnpm.io) version 6 as a package manager.
 
 ## Development environment
 
