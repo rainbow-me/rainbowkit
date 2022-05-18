@@ -46,7 +46,33 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
           ? {}
           : {
               mobile: { getUri },
-              qrCode: { getUri },
+              qrCode: {
+                getUri,
+                instructions: {
+                  learnMoreUrl:
+                    'https://www.coinbase.com/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet',
+                  steps: [
+                    {
+                      description:
+                        'We recommend putting Coinbase Wallet on your home screen for quicker access.',
+                      step: 'install',
+                      title: 'Open the Coinbase Wallet app',
+                    },
+                    {
+                      description:
+                        'You can easily backup your wallet using the cloud backup feature.',
+                      step: 'create',
+                      title: 'Create or Import a Wallet',
+                    },
+                    {
+                      description:
+                        'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      step: 'scan',
+                      title: 'Tap the scan button',
+                    },
+                  ],
+                },
+              },
             }),
       };
     },

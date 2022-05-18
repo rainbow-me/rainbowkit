@@ -128,16 +128,16 @@ export function GetDetail({
 
 const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
+  changeWalletStep,
   connectionError,
   qrCodeUri,
   reconnect,
-  setWalletStep,
   wallet,
 }: {
   connectionError: boolean;
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
-  setWalletStep: (newWalletStep: WalletStep) => void;
+  changeWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
   const {
@@ -175,7 +175,7 @@ export function ConnectDetail({
     ? {
         description: `Don\u2019t have the ${name} app?`,
         label: 'GET',
-        onClick: () => setWalletStep(WalletStep.Download),
+        onClick: () => changeWalletStep(WalletStep.Download),
       }
     : {
         description: `Confirm the connection in ${name}`,
@@ -314,10 +314,10 @@ export function ConnectDetail({
 }
 
 export function DownloadDetail({
-  setWalletStep,
+  changeWalletStep,
   wallet,
 }: {
-  setWalletStep: (newWalletStep: WalletStep) => void;
+  changeWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
   const { downloadUrls, qrCode } = wallet;
@@ -362,7 +362,7 @@ export function DownloadDetail({
         <ActionButton
           label="Continue"
           onClick={() =>
-            setWalletStep(
+            changeWalletStep(
               qrCode?.instructions
                 ? WalletStep.Instructions
                 : WalletStep.Connect
@@ -393,10 +393,10 @@ const stepIcons: Record<
 };
 
 export function InstructionDetail({
-  setWalletStep,
+  connectWallet,
   wallet,
 }: {
-  setWalletStep: (newWalletStep: WalletStep) => void;
+  connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
   return (
@@ -453,10 +453,7 @@ export function InstructionDetail({
         justifyContent="center"
         marginBottom="16"
       >
-        <ActionButton
-          label="Connect"
-          onClick={() => setWalletStep(WalletStep.Connect)}
-        />
+        <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
         <Box
           as="a"
           className={increaseHitAreaForHoverTransform.grow}
