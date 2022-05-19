@@ -190,65 +190,63 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          <Box>
-            {termsOfServiceUrl && (
-              <Box marginBottom="8" marginTop="28" marginX="16">
+          {termsOfServiceUrl && (
+            <Box marginBottom="8" marginTop="28" marginX="32">
+              <Text
+                color="modalTextSecondary"
+                size="12"
+                textAlign="center"
+                weight="medium"
+              >
+                By connecting, you agree to {appName}&apos;s{' '}
                 <Text
-                  color="modalTextSecondary"
+                  color="accentColor"
+                  display="inline"
                   size="12"
-                  textAlign="center"
                   weight="medium"
                 >
-                  By connecting, you agree to {appName}&apos;s{' '}
-                  <Text
-                    color="accentColor"
-                    display="inline"
-                    size="12"
-                    weight="medium"
+                  <a
+                    href={termsOfServiceUrl}
+                    rel="noreferrer"
+                    style={{
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      width: 'fit-content',
+                    }}
+                    target="_blank"
                   >
-                    <a
-                      href={termsOfServiceUrl}
-                      rel="noreferrer"
-                      style={{
-                        color: 'inherit',
-                        textDecoration: 'none',
-                        width: 'fit-content',
-                      }}
-                      target="_blank"
-                    >
-                      Terms of Service
-                    </a>
-                  </Text>
-                  {disclaimerUrl && (
-                    <>
-                      {' '}
-                      and acknowledge that you have read and understand the{' '}
-                      {appName}{' '}
-                      <Text
-                        color="accentColor"
-                        display="inline"
-                        size="12"
-                        weight="medium"
-                      >
-                        <a
-                          href={disclaimerUrl}
-                          rel="noreferrer"
-                          style={{
-                            color: 'inherit',
-                            textDecoration: 'none',
-                            width: 'fit-content',
-                          }}
-                          target="_blank"
-                        >
-                          Disclaimer
-                        </a>
-                      </Text>
-                    </>
-                  )}
+                    Terms of Service
+                  </a>
                 </Text>
-              </Box>
-            )}
-          </Box>
+                {disclaimerUrl && (
+                  <>
+                    {' '}
+                    and acknowledge that you have read and understand the{' '}
+                    {appName}{' '}
+                    <Text
+                      color="accentColor"
+                      display="inline"
+                      size="12"
+                      weight="medium"
+                    >
+                      <a
+                        href={disclaimerUrl}
+                        rel="noreferrer"
+                        style={{
+                          color: 'inherit',
+                          textDecoration: 'none',
+                          width: 'fit-content',
+                        }}
+                        target="_blank"
+                      >
+                        Disclaimer
+                      </a>
+                    </Text>
+                  </>
+                )}
+              </Text>
+            </Box>
+          )}
         </Box>
       );
       break;
