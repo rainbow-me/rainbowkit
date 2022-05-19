@@ -1,6 +1,6 @@
 {
   "name": "site",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Site and docs for RainbowKit.",
   "private": true,
   "dependencies": {
