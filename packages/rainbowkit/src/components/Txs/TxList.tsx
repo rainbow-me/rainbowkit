@@ -42,7 +42,7 @@ export function TxList({ accountData }: TxListProps) {
         {hasTransactions && (
           <Box
             paddingBottom={mobile ? '4' : '0'}
-            paddingTop={mobile ? '0' : '8'}
+            paddingTop="8"
             paddingX={mobile ? '12' : '6'}
           >
             <Box display="flex" justifyContent="space-between">
@@ -74,11 +74,10 @@ export function TxList({ accountData }: TxListProps) {
                       hover: 'profileForeground',
                     }}
                     borderRadius="actionButton"
-                    padding="6"
-                    paddingX="10"
+                    paddingX={mobile ? '8' : '12'}
+                    paddingY={mobile ? '4' : '5'}
                     transform={{
                       active: 'shrink',
-                      hover: 'grow',
                     }}
                     transition="default"
                   >
@@ -145,7 +144,6 @@ export function TxList({ accountData }: TxListProps) {
               style={{ willChange: 'transform' }}
               transform={{
                 active: 'shrink',
-                hover: 'grow',
               }}
               transition="default"
               width="full"

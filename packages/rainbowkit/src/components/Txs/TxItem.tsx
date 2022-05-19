@@ -63,7 +63,7 @@ export function TxItem({ tx }: TxProps) {
             ? {
                 background: { hover: 'profileForeground' },
                 borderRadius: 'menuButton',
-                transform: { active: 'shrink', hover: 'grow' },
+                transform: { active: 'shrink' },
                 transition: 'default',
               }
             : {})}
@@ -112,15 +112,6 @@ export function TxItem({ tx }: TxProps) {
             </Box>
           )}
         </Box>
-        {mobile && (
-          <Box
-            background="generalBorderDim"
-            height="1"
-            marginLeft="44"
-            marginRight="8"
-            marginY="2"
-          />
-        )}
       </Box>
     </>
   );
