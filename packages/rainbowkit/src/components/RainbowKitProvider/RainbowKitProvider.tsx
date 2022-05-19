@@ -47,6 +47,7 @@ export interface RainbowKitProviderProps {
   appInfo?: {
     appName?: string;
     learnMoreUrl?: string;
+    disclaimerUrl?: string;
     termsOfServiceUrl?: string;
   };
   coolMode?: boolean;

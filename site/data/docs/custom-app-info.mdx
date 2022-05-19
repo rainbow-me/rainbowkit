@@ -26,3 +26,26 @@ const App = () => {
   );
 };
 ```
+
+You can also provide your dapp's Terms of Service `termsOfServiceUrl` and Disclaimer `disclaimerUrl`, which will be displayed at the bottom of the connect modal:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        termsOfServiceUrl: 'yourtermsofservice.com',
+        disclaimerUrl: 'yourtermsofservice.com',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Note: your Disclaimer will not be displayed without you also specifying your Terms of Service.

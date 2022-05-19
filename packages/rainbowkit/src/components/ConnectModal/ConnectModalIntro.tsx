@@ -9,8 +9,13 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { appName, learnMoreUrl, termsOfServiceUrl } = useContext(AppContext);
-
+  const { appName, disclaimerUrl, learnMoreUrl, termsOfServiceUrl } =
+    useContext(AppContext);
+  const termsOfServiceState = !termsOfServiceUrl
+    ? 0
+    : termsOfServiceUrl && !disclaimerUrl
+    ? 1
+    : 2;
   return (
     <>
       <Box
@@ -19,7 +24,14 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         display="flex"
         flexDirection="column"
         justifyContent="center"
-        style={{ gap: termsOfServiceUrl ? 50 : 62 }}
+        style={{
+          gap:
+            termsOfServiceState === 0
+              ? 62
+              : termsOfServiceState === 1
+              ? 50
+              : 30,
+        }}
       >
         <Text color="modalText" size="18" weight="heavy">
           What is a Wallet?
@@ -119,6 +131,33 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
                 Terms of Service
               </a>
             </Text>
+            {disclaimerUrl && (
+              <>
+                {' '}
+                and acknowledge that you have read and understand the {
+                  appName
+                }{' '}
+                <Text
+                  color="accentColor"
+                  display="inline"
+                  size="12"
+                  weight="medium"
+                >
+                  <a
+                    href={disclaimerUrl}
+                    rel="noreferrer"
+                    style={{
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      width: 'fit-content',
+                    }}
+                    target="_blank"
+                  >
+                    Disclaimer
+                  </a>
+                </Text>
+              </>
+            )}
           </Text>
         </Box>
       )}

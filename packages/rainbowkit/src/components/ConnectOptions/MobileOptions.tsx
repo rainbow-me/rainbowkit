@@ -100,7 +100,8 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { appName, learnMoreUrl, termsOfServiceUrl } = useContext(AppContext);
+  const { appName, disclaimerUrl, learnMoreUrl, termsOfServiceUrl } =
+    useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -218,6 +219,32 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                       Terms of Service
                     </a>
                   </Text>
+                  {disclaimerUrl && (
+                    <>
+                      {' '}
+                      and acknowledge that you have read and understand the{' '}
+                      {appName}{' '}
+                      <Text
+                        color="accentColor"
+                        display="inline"
+                        size="12"
+                        weight="medium"
+                      >
+                        <a
+                          href={disclaimerUrl}
+                          rel="noreferrer"
+                          style={{
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            width: 'fit-content',
+                          }}
+                          target="_blank"
+                        >
+                          Disclaimer
+                        </a>
+                      </Text>
+                    </>
+                  )}
                 </Text>
               </Box>
             )}
