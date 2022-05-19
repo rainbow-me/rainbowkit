@@ -84,12 +84,16 @@ type AccentColor = typeof accentColors[number];
 
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
+const tosScales = ['none', 'tos', 'disclaimer'] as const;
+type TosScale = typeof tosScales[number];
 
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedTermsOfService, setSelectedTermsOfService] =
+    useState<TosScale>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
 
@@ -105,6 +109,13 @@ function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
+  const termsOfServiceObj =
+    selectedTermsOfService === 'none'
+      ? {}
+      : selectedTermsOfService === 'tos'
+      ? { termsOfServiceUrl: 'example.com' }
+      : { disclaimerUrl: 'example.com', termsOfServiceUrl: 'example.com' };
+
   return (
     <>
       <Head>
@@ -112,7 +123,7 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
-          appInfo={demoAppInfo}
+          appInfo={{ ...demoAppInfo, ...termsOfServiceObj }}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -172,6 +183,7 @@ function App({ Component, pageProps }: AppProps) {
                   <div
                     style={{
                       display: 'flex',
+                      flexWrap: 'wrap',
                       gap: 24,
                     }}
                   >
@@ -281,6 +293,34 @@ function App({ Component, pageProps }: AppProps) {
                               value={radiusScale}
                             />{' '}
                             {radiusScale}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Terms of Service</h4>
+                      <div
+                        style={{
+                          alignItems: 'flex-start',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 12,
+                        }}
+                      >
+                        {tosScales.map(tos => (
+                          <label key={tos} style={{ userSelect: 'none' }}>
+                            <input
+                              checked={tos === selectedTermsOfService}
+                              name="tosScale"
+                              onChange={e =>
+                                setSelectedTermsOfService(
+                                  e.target.value as TosScale
+                                )
+                              }
+                              type="radio"
+                              value={tos}
+                            />{' '}
+                            {tos}
                           </label>
                         ))}
                       </div>
