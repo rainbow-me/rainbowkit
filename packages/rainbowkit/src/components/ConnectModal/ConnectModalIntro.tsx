@@ -9,7 +9,7 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { learnMoreUrl } = useContext(AppContext);
+  const { appName, learnMoreUrl, termsOfServiceUrl } = useContext(AppContext);
 
   return (
     <>
@@ -19,7 +19,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         display="flex"
         flexDirection="column"
         justifyContent="center"
-        style={{ gap: 62 }}
+        style={{ gap: termsOfServiceUrl ? 50 : 62 }}
       >
         <Text color="modalText" size="18" weight="heavy">
           What is a Wallet?
@@ -67,7 +67,6 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           flexDirection="column"
           gap="12"
           justifyContent="center"
-          marginTop="8"
         >
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
@@ -92,6 +91,37 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           </Box>
         </Box>
       </Box>
+      {termsOfServiceUrl && (
+        <Box marginBottom="8" marginTop="20">
+          <Text
+            color="modalTextSecondary"
+            size="12"
+            textAlign="center"
+            weight="medium"
+          >
+            By connecting, you agree to {appName}&apos;s{' '}
+            <Text
+              color="accentColor"
+              display="inline"
+              size="12"
+              weight="medium"
+            >
+              <a
+                href={termsOfServiceUrl}
+                rel="noreferrer"
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  width: 'fit-content',
+                }}
+                target="_blank"
+              >
+                Terms of Service
+              </a>
+            </Text>
+          </Text>
+        </Box>
+      )}
     </>
   );
 }

@@ -159,7 +159,7 @@ const responsiveProperties = defineProperties({
   defaultCondition: 'smallScreen',
   properties: {
     alignItems: flexAlignment,
-    display: ['none', 'block', 'flex'],
+    display: ['none', 'block', 'flex', 'inline'],
   },
 });
 

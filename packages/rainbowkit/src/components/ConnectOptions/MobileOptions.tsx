@@ -100,7 +100,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { learnMoreUrl } = useContext(AppContext);
+  const { appName, learnMoreUrl, termsOfServiceUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -118,7 +118,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <>
+        <Box paddingBottom={termsOfServiceUrl ? '20' : '36'}>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -189,7 +189,40 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-        </>
+          <Box>
+            {termsOfServiceUrl && (
+              <Box marginBottom="8" marginTop="28" marginX="16">
+                <Text
+                  color="modalTextSecondary"
+                  size="12"
+                  textAlign="center"
+                  weight="medium"
+                >
+                  By connecting, you agree to {appName}&apos;s{' '}
+                  <Text
+                    color="accentColor"
+                    display="inline"
+                    size="12"
+                    weight="medium"
+                  >
+                    <a
+                      href={termsOfServiceUrl}
+                      rel="noreferrer"
+                      style={{
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        width: 'fit-content',
+                      }}
+                      target="_blank"
+                    >
+                      Terms of Service
+                    </a>
+                  </Text>
+                </Text>
+              </Box>
+            )}
+          </Box>
+        </Box>
       );
       break;
     }
@@ -204,7 +237,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         ?.splice(0, 3);
 
       walletContent = (
-        <>
+        <Box paddingBottom="36">
           <Box
             alignItems="center"
             display="flex"
@@ -292,14 +325,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               </Text>
             </Box>
           </Box>
-        </>
+        </Box>
       );
       break;
     }
   }
 
   return (
-    <Box display="flex" flexDirection="column" paddingBottom="36">
+    <Box display="flex" flexDirection="column">
       {/* header section */}
       <Box
         background={

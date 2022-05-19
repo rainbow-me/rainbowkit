@@ -44,7 +44,11 @@ export interface RainbowKitProviderProps {
   children: ReactNode;
   theme?: Theme | null;
   showRecentTransactions?: boolean;
-  appInfo?: { appName?: string; learnMoreUrl?: string };
+  appInfo?: {
+    appName?: string;
+    learnMoreUrl?: string;
+    termsOfServiceUrl?: string;
+  };
   coolMode?: boolean;
 }
 
