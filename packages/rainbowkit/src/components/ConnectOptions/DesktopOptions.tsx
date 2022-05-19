@@ -73,11 +73,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         const uri = await sWallet?.qrCode?.getUri();
         setQrCodeUri(uri);
         setSelectedWallet(sWallet);
-        setWalletStep(WalletStep.Connect);
+        changeWalletStep(WalletStep.Connect);
       });
     } else {
       setSelectedWallet(wallet);
-      setWalletStep(WalletStep.Connect);
+      changeWalletStep(WalletStep.Connect);
     }
   };
 
@@ -85,9 +85,30 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
     setSelectedWallet(sWallet);
-    setWalletStep(WalletStep.Download);
+    changeWalletStep(WalletStep.Download);
   };
-
+  const changeWalletStep = (
+    newWalletStep: WalletStep,
+    isBack: boolean = false
+  ) => {
+    if (
+      isBack &&
+      newWalletStep === WalletStep.Get &&
+      initialWalletStep === WalletStep.Get
+    ) {
+      setSelectedOptionId(undefined);
+      setSelectedWallet(undefined);
+      setQrCodeUri(undefined);
+    } else if (!isBack && newWalletStep === WalletStep.Get) {
+      setInitialWalletStep(WalletStep.Get);
+    } else if (!isBack && newWalletStep === WalletStep.Connect) {
+      setInitialWalletStep(WalletStep.Connect);
+    }
+    setWalletStep(newWalletStep);
+  };
+  const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
+    WalletStep.None
+  );
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
 
   let walletContent = null;
@@ -101,7 +122,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   switch (walletStep) {
     case WalletStep.None:
       walletContent = (
-        <ConnectModalIntro getWallet={() => setWalletStep(WalletStep.Get)} />
+        <ConnectModalIntro getWallet={() => changeWalletStep(WalletStep.Get)} />
       );
       break;
     case WalletStep.Get:
@@ -112,10 +133,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     case WalletStep.Connect:
       walletContent = selectedWallet && (
         <ConnectDetail
+          changeWalletStep={changeWalletStep}
           connectionError={connectionError}
           qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
-          setWalletStep={setWalletStep}
           wallet={selectedWallet}
         />
       );
@@ -129,15 +150,18 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
-        <DownloadDetail setWalletStep={setWalletStep} wallet={selectedWallet} />
+        <DownloadDetail
+          changeWalletStep={changeWalletStep}
+          wallet={selectedWallet}
+        />
       );
       headerLabel = hasQrCode && `Install ${selectedWallet.name}`;
-      headerBackButtonLink = WalletStep.Connect;
+      headerBackButtonLink = initialWalletStep;
       break;
     case WalletStep.Instructions:
       walletContent = selectedWallet && (
         <InstructionDetail
-          setWalletStep={setWalletStep}
+          connectWallet={onSelectWallet}
           wallet={selectedWallet}
         />
       );
@@ -215,7 +239,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     className={increaseHitAreaForHoverTransform.growLg}
                     onClick={() =>
                       headerBackButtonLink &&
-                      setWalletStep(headerBackButtonLink)
+                      changeWalletStep(headerBackButtonLink, true)
                     }
                     type="button"
                   >
