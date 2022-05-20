@@ -5,7 +5,6 @@ import { coinbase } from './walletConnectors/coinbase/coinbase';
 import { injected } from './walletConnectors/injected/injected';
 import { metaMask } from './walletConnectors/metaMask/metaMask';
 import { rainbow } from './walletConnectors/rainbow/rainbow';
-import { steak } from './walletConnectors/steak';
 import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 
 export const getDefaultWallets = ({
@@ -38,7 +37,6 @@ export const getDefaultWallets = ({
           ? [injected({ chains, shimDisconnect: true })]
           : []),
         walletConnect({ chains }),
-        steak({ chains }),
       ],
     },
   ];
