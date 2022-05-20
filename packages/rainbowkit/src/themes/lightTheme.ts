@@ -35,7 +35,7 @@ export const lightTheme = ({
     connectButtonInnerBackground:
       'linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))',
     connectButtonText: '#25292E',
-    connectButtonTextError: '#FFF',
+    connectButtonTextError: '#FF494A',
     connectionIndicator: '#30E000',
     error: '#FF494A',
     generalBorder: 'rgba(0, 0, 0, 0.06)',
