@@ -134,9 +134,8 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             {disclaimerUrl && (
               <>
                 {' '}
-                and acknowledge that you have read and understand the {
-                  appName
-                }{' '}
+                and acknowledge that you have read and understand {appName}
+                &apos;s{' '}
                 <Text
                   color="accentColor"
                   display="inline"
