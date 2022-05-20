@@ -21,10 +21,17 @@ export const YourApp = () => {
 
 ### Props
 
-The `ConnectButton` component exposes several props to customize its appearance by toggling the visibility of different elements.
+The `ConnectButton` component exposes several props to customize its appearance, including toggling the visibility of different elements.
 
 <PropsTable
   data={[
+    {
+      name: 'label',
+      required: false,
+      default: 'Connect Wallet',
+      type: 'string',
+      description: 'The text label displayed on the Connect button',
+    },
     {
       name: 'accountStatus',
       required: false,
@@ -58,6 +65,14 @@ The `ConnectButton` component exposes several props to customize its appearance 
 > Note: the built-in `largeScreen` breakpoint is `768px`.
 
 ### Examples
+
+#### Label
+
+Use the `label` prop to set a custom `ConnectButton` text.
+
+```tsx
+<ConnectButton label="__Sign in__" />
+```
 
 #### Account status
 

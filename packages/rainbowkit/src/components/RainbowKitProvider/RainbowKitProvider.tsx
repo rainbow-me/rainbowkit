@@ -14,18 +14,16 @@ import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
-const anonymousDataAttribute = 'data-rk';
-const idDataAttribute = 'data-rk-id';
+const attr = 'data-rk';
 
-const createThemeRootProps = (id: string | undefined) =>
-  id ? { [idDataAttribute]: id } : { [anonymousDataAttribute]: '' };
+const createThemeRootProps = (id: string | undefined) => ({ [attr]: id || '' });
 
 const createThemeRootSelector = (id: string | undefined) => {
   if (id && !/^[a-zA-Z0-9_]+$/.test(id)) {
     throw new Error(`Invalid ID: ${id}`);
   }
 
-  return id ? `[${idDataAttribute}="${id}"]` : `[${anonymousDataAttribute}]`;
+  return id ? `[${attr}="${id}"]` : `[${attr}]`;
 };
 
 export const useThemeRootProps = () => {

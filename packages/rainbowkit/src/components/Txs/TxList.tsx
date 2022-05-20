@@ -35,17 +35,17 @@ export function TxList({ accountData }: TxListProps) {
         display="flex"
         flexDirection="column"
         gap="10"
-        paddingBottom="4"
+        paddingBottom="2"
         paddingTop="16"
         paddingX={mobile ? '8' : '18'}
       >
         {hasTransactions && (
           <Box
             paddingBottom={mobile ? '4' : '0'}
-            paddingTop={mobile ? '0' : '8'}
+            paddingTop="8"
             paddingX={mobile ? '12' : '6'}
           >
-            <Box display="flex" gap="4" justifyContent="space-between">
+            <Box display="flex" justifyContent="space-between">
               <Text
                 color="modalTextSecondary"
                 size={mobile ? '16' : '14'}
@@ -74,11 +74,10 @@ export function TxList({ accountData }: TxListProps) {
                       hover: 'profileForeground',
                     }}
                     borderRadius="actionButton"
-                    padding="6"
-                    paddingX="10"
+                    paddingX={mobile ? '8' : '12'}
+                    paddingY={mobile ? '4' : '5'}
                     transform={{
                       active: 'shrink',
-                      hover: 'grow',
                     }}
                     transition="default"
                   >
@@ -145,7 +144,6 @@ export function TxList({ accountData }: TxListProps) {
               style={{ willChange: 'transform' }}
               transform={{
                 active: 'shrink',
-                hover: 'grow',
               }}
               transition="default"
               width="full"

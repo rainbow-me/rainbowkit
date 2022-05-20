@@ -67,7 +67,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             width="60"
           />
         </Box>
-        <Box display="flex" flexDirection="column" gap="1" textAlign="center">
+        <Box display="flex" flexDirection="column" textAlign="center">
           <Text
             as="h2"
             color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
