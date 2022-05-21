@@ -30,7 +30,7 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, createClient, WagmiConfig } from 'wagmi';
 ```
 
 ### Configure
@@ -39,7 +39,7 @@ Configure your wallets, desired chains and generate the required connectors. You
 
 ```tsx line=3-99
 ...
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, createClient, WagmiConfig } from 'wagmi';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -63,16 +63,16 @@ const wagmiClient = createClient({
 
 ### Wrap providers
 
-Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagmi-xyz.vercel.app/docs/provider).
 
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider client={wagmiClient}>
+    <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 ```

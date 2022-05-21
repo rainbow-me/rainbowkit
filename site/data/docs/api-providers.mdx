@@ -41,11 +41,11 @@ const wagmiClient = createClient({
 
 const App = () => {
   return (
-    <WagmiProvider client={wagmiClient}>
+    <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 ```

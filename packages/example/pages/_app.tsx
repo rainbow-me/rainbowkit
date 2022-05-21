@@ -14,7 +14,7 @@ import {
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, createClient, WagmiConfig } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
@@ -109,7 +109,7 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>RainbowKit Example</title>
       </Head>
-      <WagmiProvider client={wagmiClient}>
+      <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           appInfo={demoAppInfo}
           chains={chains}
@@ -290,7 +290,7 @@ function App({ Component, pageProps }: AppProps) {
             )}
           </div>
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     </>
   );
 }

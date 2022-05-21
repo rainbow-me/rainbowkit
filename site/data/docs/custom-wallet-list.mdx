@@ -44,7 +44,7 @@ const connectors = connectorsForWallets([
 You can then pass your connectors to `wagmi`'s `createClient`.
 
 ```tsx line=1,4-99
-import { createClient, WagmiProvider } from 'wagmi';
+import { createClient, WagmiConfig } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 
@@ -53,11 +53,11 @@ const wagmiClient = createClient({
 });
 
 const App = () => (
-  <WagmiProvider client={wagmiClient}>
+  <WagmiConfig client={wagmiClient}>
     <RainbowKitProvider>
       {/* Your App */}
     </RainbowKitProvider>
-  </WagmiProvider>
+  </WagmiConfig>
 );
 ```
 

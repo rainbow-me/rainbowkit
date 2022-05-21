@@ -6,7 +6,7 @@ import {
   wallet,
 } from '@rainbow-me/rainbowkit';
 import React from 'react';
-import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
+import { chain, createClient, Provider as WagmiConfig } from 'wagmi';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
@@ -40,5 +40,5 @@ const wagmiClient = createClient({
 });
 
 export function Provider({ children }) {
-  return <WagmiProvider client={wagmiClient}>{children}</WagmiProvider>;
+  return <WagmiConfig client={wagmiClient}>{children}</WagmiConfig>;
 }

@@ -186,20 +186,20 @@
 
   `wagmi@0.3.x` has introduced breaking changes from `0.2.x` that you will need to be aware of when upgrading. [See the migration guide to `wagmi@0.3.x` here](https://wagmi.sh/docs/migrating-to-03).
 
-  In order to use `wagmi` with RainbowKit, you will now need to create a wagmi client that you will pass to `WagmiProvider` (instead of passing configuration directly).
+  In order to use `wagmi` with RainbowKit, you will now need to create a wagmi client that you will pass to `WagmiConfig` (instead of passing configuration directly).
 
   Before:
 
   ```tsx
-  import { WagmiProvider } from 'wagmi';
+  import { WagmiConfig } from 'wagmi';
 
   const App = () => {
     return (
-      <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+      <WagmiConfig autoConnect connectors={connectors} provider={provider}>
         <RainbowKitProvider chains={chains}>
           <YourApp />
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     );
   };
   ```
@@ -207,7 +207,7 @@
   After:
 
   ```tsx
-  import { createClient, WagmiProvider } from 'wagmi';
+  import { createClient, WagmiConfig } from 'wagmi';
 
   const wagmiClient = createClient({
     autoConnect: true,
@@ -217,11 +217,11 @@
 
   const App = () => {
     return (
-      <WagmiProvider client={wagmiClient}>
+      <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <YourApp />
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     );
   };
   ```
@@ -346,7 +346,7 @@
     Chain,
     getDefaultWallets,
   } from '@rainbow-me/rainbowkit';
-  import { createClient, WagmiProvider, chain } from 'wagmi';
+  import { createClient, WagmiConfig, chain } from 'wagmi';
   import { providers } from 'ethers';
 
   const infuraId = process.env.INFURA_ID;
@@ -382,11 +382,11 @@
 
   const App = () => {
     return (
-      <WagmiProvider client={wagmiClient}>
+      <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <YourApp />
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     );
   };
   ```
@@ -401,7 +401,7 @@
     getDefaultWallets,
     RainbowKitProvider,
   } from '@rainbow-me/rainbowkit';
-  import { createClient, WagmiProvider, chain } from 'wagmi';
+  import { createClient, WagmiConfig, chain } from 'wagmi';
   import { providers } from 'ethers';
 
   const { chains, provider } = configureChains(
@@ -422,11 +422,11 @@
 
   const App = () => {
     return (
-      <WagmiProvider client={wagmiClient}>
+      <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <YourApp />
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     );
   };
   ```
@@ -455,7 +455,7 @@
   - The `iconUrl` property now optionally accepts an async function that returns a string (`() => Promise<string>`). This is to support bundling lazy-loadable Base64 images in JavaScript when publishing to npm. All built-in chains are now using this feature to delay loading of images until after app hydration.
   - The `iconBackground` property has been added to improve the visual appearance of chain icons while loading.
 
-- 13fa857: `RainbowKitProvider` must now be nested inside `WagmiProvider` since it now makes use of wagmi hooks internally.
+- 13fa857: `RainbowKitProvider` must now be nested inside `WagmiConfig` since it now makes use of wagmi hooks internally.
 
 ## 0.0.2
 
