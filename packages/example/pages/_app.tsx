@@ -47,6 +47,7 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.argent({ chains }),
       wallet.trust({ chains }),
+      wallet.steak({ chains }),
       wallet.imToken({ chains }),
       wallet.ledger({ chains }),
     ],
