@@ -13,7 +13,7 @@ export const steak = ({ chains }: SteakOptions): Wallet => ({
   id: 'steak',
   name: 'Steakwallet',
   iconUrl: async () => (await import('./steak.svg')).default,
-  iconBackground: '#fff',
+  iconBackground: '#000',
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
     ios: 'https://apps.apple.com/np/app/steakwallet/id1569375204',
