@@ -29,7 +29,12 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
       open && event.key === 'Escape' && onClose();
 
     document.addEventListener('keydown', handleEscape);
-
+    /**
+     * Todo: update react-remove-scroll
+     * react-remove-scroll-bar issue temporary solution.
+     * https://github.com/theKashey/react-remove-scroll-bar/issues/31
+     */
+    document.body.style.paddingRight = open ? '0px' : '';
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, onClose]);
 
