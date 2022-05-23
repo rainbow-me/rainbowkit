@@ -1,6 +1,4 @@
 export * from './components';
-export { apiProvider } from './chains/apiProviders';
-export type { ApiProvider } from './chains/apiProviders/ApiProvider';
 export { configureChains } from './chains/configureChains';
 export { wallet } from './wallets/walletConnectors';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
