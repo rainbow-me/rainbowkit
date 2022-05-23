@@ -12,7 +12,10 @@ You can use the `Chain` type to help you create a custom chain. Then, pass that 
 For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
-import { configureChains, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import {
+  configureChains,
+  getDefaultWallets,
+} from '@rainbow-me/rainbowkit';
 import { chain, createClient, WagmiConfig } from 'wagmi';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
