@@ -14,21 +14,18 @@ You can use the `wallet` object and the `connectorsForWallets` function to build
 For example, you can choose to only show Rainbow and WalletConnect.
 
 ```tsx
-import { 
-  apiProvider, 
-  configureChains, 
-  connectorsForWallets, 
-  wallet 
+import {
+  apiProvider,
+  configureChains,
+  connectorsForWallets,
+  wallet,
 } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains } = configureChains(
   [chain.mainnet],
-  [
-    apiProvider.alchemy(process.env.ALCHEMY_ID),
-    apiProvider.fallback()
-  ]
-)
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
 
 const connectors = connectorsForWallets([
   {
@@ -243,10 +240,7 @@ import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
-    wallets: [
-      wallet.rainbow({ chains }),
-      wallet.metaMask({ chains }),
-    ],
+    wallets: [wallet.rainbow({ chains }), wallet.metaMask({ chains })],
   },
   {
     groupName: 'Others',
