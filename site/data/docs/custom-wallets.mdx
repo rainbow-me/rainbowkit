@@ -119,9 +119,7 @@ export interface MyWalletOptions {
   chains: Chain[];
 }
 
-export const rainbow = ({
-  chains,
-}: MyWalletOptions): Wallet => ({
+export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -133,7 +131,10 @@ export const rainbow = ({
   },
   createConnector: () => {
     const rpc = chains.reduce(
-      (rpcUrlMap, chain) => ({ ...rpcUrlMap, [chain.id]: chain.rpcUrls.default }),
+      (rpcUrlMap, chain) => ({
+        ...rpcUrlMap,
+        [chain.id]: chain.rpcUrls.default,
+      }),
       {}
     );
     const connector = new WalletConnectConnector({
