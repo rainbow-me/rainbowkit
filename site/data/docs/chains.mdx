@@ -30,21 +30,18 @@ RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagm
 Your chain config can be defined in a single array provided to [`configureChains`](/docs/configure-chains).
 
 ```tsx
-import { 
-  apiProvider, 
-  configureChains, 
-  RainbowKitProvider, 
-  Chain 
+import {
+  apiProvider,
+  configureChains,
+  RainbowKitProvider,
+  Chain,
 } from '@rainbow-me/rainbowkit';
 import { chain } from 'wagmi';
 
 const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
-  [
-    apiProvider.alchemy(process.env.ALCHEMY_ID),
-    apiProvider.fallback()
-  ]
-)
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+);
 
 const App = () => {
   return (
@@ -68,10 +65,7 @@ const { chains } = configureChains(
       ...chain.polygon,
       iconUrl: 'https://example.com/icons/polygon.png',
     },
-  ], 
-  [
-    apiProvider.alchemy(process.env.ALCHEMY_ID),
-    apiProvider.fallback()
-  ]
+  ],
+  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
 );
 ```
