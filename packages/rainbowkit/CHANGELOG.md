@@ -1,5 +1,19 @@
 # @rainbow-me/rainbowkit
 
+## 0.1.2
+
+### Patch Changes
+
+- 0b98497: Add Steakwallet to list of available wallets
+
+  Example usage:
+
+  ```tsx
+  import { wallet } from '@rainbow-me/rainbowkit';
+
+  const steakwallet = wallet.steak({ chains });
+  ```
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # example
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [0b98497]
+  - @rainbow-me/rainbowkit@0.1.2
+
 ## 0.0.4
 
 ### Patch Changes
