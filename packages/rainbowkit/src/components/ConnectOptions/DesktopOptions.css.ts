@@ -11,7 +11,7 @@ export const ScrollClassName = style([
     paddingX: '18',
   }),
   {
-    maxHeight: 464,
+    maxHeight: 454,
     overflowY: 'auto',
   },
 ]);
