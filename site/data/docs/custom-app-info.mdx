@@ -29,7 +29,7 @@ const App = () => {
 
 ## Terms of Service
 
-You can also provide your own's Terms of Service (`termsOfServiceUrl`) and Disclaimer (`disclaimerUrl`):
+You can also provide your own Terms of Service (`termsOfService`), which constitutes the terms (`url`) and an (optional) disclaimer (`disclaimerUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -39,8 +39,10 @@ const App = () => {
     <RainbowKitProvider
       appInfo={{
         appName: 'Rainbowkit Demo',
-        termsOfServiceUrl: 'yourtermsofservice.com',
-        disclaimerUrl: 'yourtermsofservice.com',
+        termsOfService: {
+          url: 'yourtermsofservice.com',
+          disclaimerUrl: 'yourdisclaimer.com',
+        },
       }}
       {...etc}
     >
@@ -50,4 +52,4 @@ const App = () => {
 };
 ```
 
-Note: your Disclaimer will not be displayed without you also specifying your Terms of Service.
+Note: your Disclaimer will not be displayed without you also specifying your Terms of Service url.

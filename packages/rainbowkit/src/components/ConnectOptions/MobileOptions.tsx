@@ -100,8 +100,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { appName, disclaimerUrl, learnMoreUrl, termsOfServiceUrl } =
-    useContext(AppContext);
+  const { appName, learnMoreUrl, termsOfService } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -119,7 +118,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <Box paddingBottom={termsOfServiceUrl ? '20' : '36'}>
+        <Box paddingBottom={termsOfService?.url ? '20' : '36'}>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -190,7 +189,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          {termsOfServiceUrl && (
+          {termsOfService?.url && (
             <Box marginBottom="8" marginTop="28" marginX="32">
               <Text
                 color="modalTextSecondary"
@@ -206,7 +205,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                   weight="medium"
                 >
                   <a
-                    href={termsOfServiceUrl}
+                    href={termsOfService.url}
                     rel="noreferrer"
                     style={{
                       color: 'inherit',
@@ -218,7 +217,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                     Terms of Service
                   </a>
                 </Text>
-                {disclaimerUrl && (
+                {termsOfService?.disclaimerUrl && (
                   <>
                     {' '}
                     and acknowledge that you have read and understand the{' '}
@@ -230,7 +229,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                       weight="medium"
                     >
                       <a
-                        href={disclaimerUrl}
+                        href={termsOfService.disclaimerUrl}
                         rel="noreferrer"
                         style={{
                           color: 'inherit',

@@ -1,15 +1,17 @@
 import { createContext } from 'react';
 
+export interface TermsOfService {
+  url?: string;
+  disclaimerUrl?: string;
+}
 export const defaultAppInfo = {
   appName: undefined,
   disclaimerUrl: undefined,
-  learnMoreUrl: 'https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually',
-  termsOfServiceUrl: undefined,
+  termsOfService: undefined,
 };
 
 export const AppContext = createContext<{
   appName?: string;
   learnMoreUrl?: string;
-  termsOfServiceUrl?: string;
-  disclaimerUrl?: string;
+  termsOfService?: TermsOfService;
 }>(defaultAppInfo);

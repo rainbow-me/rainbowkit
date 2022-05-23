@@ -3,7 +3,7 @@ import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
-import { AppContext, defaultAppInfo } from './AppContext';
+import { AppContext, defaultAppInfo, TermsOfService } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
 import {
   RainbowKitChain,
@@ -47,8 +47,7 @@ export interface RainbowKitProviderProps {
   appInfo?: {
     appName?: string;
     learnMoreUrl?: string;
-    disclaimerUrl?: string;
-    termsOfServiceUrl?: string;
+    termsOfService?: TermsOfService;
   };
   coolMode?: boolean;
 }
@@ -76,6 +75,14 @@ export function RainbowKitProvider({
   }
 
   const selector = createThemeRootSelector(id);
+
+  if (!appInfo?.termsOfService?.url && appInfo?.termsOfService?.disclaimerUrl) {
+    // eslint-disable-next-line no-console
+    console?.warn(
+      'A `disclaimerUrl` was provided to the `termsOfService` prop without first providing the terms of service `url`. The disclaimer will not be displayed.'
+    );
+  }
+
   const appContext = {
     ...defaultAppInfo,
     ...appInfo,

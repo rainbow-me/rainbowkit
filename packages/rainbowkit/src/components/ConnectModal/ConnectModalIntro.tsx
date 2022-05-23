@@ -9,11 +9,10 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { appName, disclaimerUrl, learnMoreUrl, termsOfServiceUrl } =
-    useContext(AppContext);
-  const termsOfServiceState = !termsOfServiceUrl
+  const { appName, learnMoreUrl, termsOfService } = useContext(AppContext);
+  const termsOfServiceState = !termsOfService
     ? 0
-    : termsOfServiceUrl && !disclaimerUrl
+    : termsOfService?.url && !termsOfService?.disclaimerUrl
     ? 1
     : 2;
   return (
@@ -103,7 +102,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           </Box>
         </Box>
       </Box>
-      {termsOfServiceUrl && (
+      {termsOfService?.url && (
         <Box marginBottom="8" marginTop="20">
           <Text
             color="modalTextSecondary"
@@ -119,7 +118,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
               weight="medium"
             >
               <a
-                href={termsOfServiceUrl}
+                href={termsOfService.url}
                 rel="noreferrer"
                 style={{
                   color: 'inherit',
@@ -131,7 +130,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
                 Terms of Service
               </a>
             </Text>
-            {disclaimerUrl && (
+            {termsOfService?.disclaimerUrl && (
               <>
                 {' '}
                 and acknowledge that you have read and understand {appName}
@@ -143,7 +142,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
                   weight="medium"
                 >
                   <a
-                    href={disclaimerUrl}
+                    href={termsOfService.disclaimerUrl}
                     rel="noreferrer"
                     style={{
                       color: 'inherit',

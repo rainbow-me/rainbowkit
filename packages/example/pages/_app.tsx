@@ -114,10 +114,12 @@ function App({ Component, pageProps }: AppProps) {
     selectedTermsOfService === 'none'
       ? {}
       : selectedTermsOfService === 'tos'
-      ? { termsOfServiceUrl: RAINBOW_TERMS }
+      ? { termsOfService: { url: RAINBOW_TERMS } }
       : {
-          disclaimerUrl: RAINBOW_TERMS,
-          termsOfServiceUrl: RAINBOW_TERMS,
+          termsOfService: {
+            disclaimerUrl: RAINBOW_TERMS,
+            url: RAINBOW_TERMS,
+          },
         };
 
   return (
