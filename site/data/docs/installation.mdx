@@ -40,7 +40,7 @@ import { publicProvider } from 'wagmi/providers/public';
 
 ### Configure
 
-[Configure your desired chains](https://wagmi.sh/docs/providers/configuring-chains) and generate the required connectors. You will also need to [setup a `wagmi` client](https://wagmi.sh/docs/WagmiConfig#client-optional).
+Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
 ```tsx line=4-99
 ...
@@ -66,6 +66,8 @@ const wagmiClient = createClient({
   provider
 })
 ```
+
+[Read more about configuring chains & providers with `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
 
 ### Wrap providers
 
