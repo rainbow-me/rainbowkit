@@ -3,7 +3,7 @@ name: CI
 on: [pull_request, push]
 
 env:
-  pnpm: 6
+  pnpm: 7
 
 jobs:
   tests:
@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build packages
-        run: pnpm build --recursive
+        run: pnpm --recursive build
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
