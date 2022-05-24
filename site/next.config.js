@@ -16,11 +16,6 @@ const nextConfig = {
         destination: '/docs/introduction',
         permanent: false,
       },
-      {
-        source: '/docs/api-providers',
-        destination: '/docs/providers',
-        permanent: false,
-      },
     ];
   },
 };

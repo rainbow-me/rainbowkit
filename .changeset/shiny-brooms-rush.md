@@ -2,9 +2,9 @@
 '@rainbow-me/rainbowkit': minor
 ---
 
-**Breaking:** Updated the `wagmi` peer dependency to `^0.4` & removed the `apiProvider` export.
+**Breaking:** Updated the `wagmi` peer dependency to `^0.4` & removed the `configureChains` & `apiProvider` exports.
 
-You now need to pass one of [wagmi's providers](https://wagmi.sh/docs/providers/configuring-chains) to the `configureChains` function.
+You now need to use [wagmi's configureChains](https://wagmi.sh/docs/providers/configuring-chains) function and providers.
 
 ## Migration guide
 
