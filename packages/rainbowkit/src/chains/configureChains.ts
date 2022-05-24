@@ -16,21 +16,17 @@ type ConfigureChainsConfig = {
 );
 
 export const configureChains = <
-  Provider extends providers.BaseProvider,
-  WebSocketProvider extends providers.WebSocketProvider
+  TProvider extends providers.BaseProvider,
+  TWebSocketProvider extends providers.WebSocketProvider,
+  TChain extends Chain = Chain
 >(
-  defaultChains: Chain[],
-  providers: ChainProvider<Provider, WebSocketProvider>[],
+  defaultChains: TChain[],
+  providers: ChainProvider<TProvider, TWebSocketProvider, TChain>[],
   { minQuorum = 1, stallTimeout, targetQuorum = 1 }: ConfigureChainsConfig = {}
 ) => {
-  const { chains, provider, webSocketProvider } = wagmiConfigureChains(
-    defaultChains,
-    providers,
-    {
-      minQuorum,
-      stallTimeout,
-      targetQuorum,
-    }
-  );
-  return { chains: chains as Chain[], provider, webSocketProvider };
+  return wagmiConfigureChains(defaultChains, providers, {
+    minQuorum,
+    stallTimeout,
+    targetQuorum,
+  });
 };
