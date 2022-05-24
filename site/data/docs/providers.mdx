@@ -18,11 +18,8 @@ The `configureChains` function allows you to configure your chains with provider
 [Read more about configuring chains here](https://wagmi.sh/docs/providers/configuring-chains).
 
 ```tsx
-import {
-  configureChains,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
-import { chain, createClient } from 'wagmi';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain, configureChains, createClient } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -122,7 +119,8 @@ const { chains, provider } = configureChains(
 The `configureChains` function accepts multiple providers. This is useful if not all your chains support a single provider. For example, you may want to use [Alchemy](https://alchemy.com) for Ethereum, and [avax.network](https://avax.network) for Avalanche.
 
 ```tsx
-import { Chain, configureChains } from '@rainbow-me/rainbowkit';
+import { Chain } from '@rainbow-me/rainbowkit';
+import { configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
@@ -165,11 +163,8 @@ const { provider, chains } = configureChains(
 If you wish to use a WebSocket provider, the `configureChains` also returns a `webSocketProvider`. You need to pass that to the `createClient` function.
 
 ```tsx
-import {
-  configureChains,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
-import { chain, createClient } from 'wagmi';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain, configureChains, createClient } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 
 const { chains, provider, __webSocketProvider__ } = configureChains(

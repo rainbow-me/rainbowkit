@@ -1,7 +1,6 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
-  configureChains,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
@@ -13,7 +12,7 @@ import {
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { chain, createClient, WagmiConfig } from 'wagmi';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 

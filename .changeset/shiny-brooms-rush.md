@@ -19,10 +19,11 @@ npm i wagmi@^0.4
 #### `apiProvider.alchemy` to `alchemyProvider`
 
 ```diff
-import {
-- apiProvider,
-  configureChains
-} from '@rainbow-me/rainbowkit';
+-import {
+-  apiProvider,
+-  configureChains
+-} from '@rainbow-me/rainbowkit';
++import { configureChains } from 'wagmi';
 +import { alchemyProvider } from 'wagmi/providers/alchemy';
 
 const { chains, provider } = configureChains(
@@ -35,10 +36,11 @@ const { chains, provider } = configureChains(
 #### `apiProvider.infura` to `infuraProvider`
 
 ```diff
-import {
-- apiProvider,
-  configureChains
-} from '@rainbow-me/rainbowkit';
+-import {
+-  apiProvider,
+-  configureChains
+-} from '@rainbow-me/rainbowkit';
++import { configureChains } from 'wagmi';
 +import { infuraProvider } from 'wagmi/providers/infura';
 
 const { chains, provider } = configureChains(
@@ -51,10 +53,11 @@ const { chains, provider } = configureChains(
 #### `apiProvider.jsonRpc` to `jsonRpcProvider`
 
 ```diff
-import {
-- apiProvider,
-  configureChains
-} from '@rainbow-me/rainbowkit';
+-import {
+-  apiProvider,
+-  configureChains
+-} from '@rainbow-me/rainbowkit';
++import { configureChains } from 'wagmi';
 +import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const { chains, provider } = configureChains(
@@ -75,10 +78,11 @@ const { chains, provider } = configureChains(
 #### `apiProvider.fallback` to `publicProvider`
 
 ```diff
-import {
-- apiProvider,
-  configureChains
-} from '@rainbow-me/rainbowkit';
+-import {
+-  apiProvider,
+-  configureChains
+-} from '@rainbow-me/rainbowkit';
++import { configureChains } from 'wagmi';
 +import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(

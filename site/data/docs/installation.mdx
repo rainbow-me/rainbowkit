@@ -25,11 +25,15 @@ Import RainbowKit, wagmi, and ethers.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  configureChains,
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chain, createClient, WagmiConfig } from 'wagmi';
+import {
+  chain,
+  configureChains,
+  createClient,
+  WagmiConfig,
+} from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 ```
@@ -38,9 +42,8 @@ import { publicProvider } from 'wagmi/providers/public';
 
 Configure your wallets, desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
-```tsx line=5-99
+```tsx line=4-99
 ...
-import { chain, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 

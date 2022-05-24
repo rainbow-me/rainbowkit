@@ -1,5 +1,4 @@
 export * from './components';
-export { configureChains } from './chains/configureChains';
 export { wallet } from './wallets/walletConnectors';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
