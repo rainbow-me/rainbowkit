@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  pnpm: 6
+  pnpm: 7
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
