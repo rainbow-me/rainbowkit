@@ -153,30 +153,41 @@ export function Playground() {
               paddingX="10"
               style={{
                 maxWidth: 'fit-content',
-                pointerEvents: 'none',
                 userSelect: 'none',
               }}
             >
               <Box display={{ xs: 'none', md: 'block' }}>
-                <div
-                  className={dialogContent}
-                  style={{
-                    width: 712,
-                  }}
-                >
-                  <DesktopOptions onClose={() => {}} />
+                <div style={{ position: 'relative' }}>
+                  <div
+                    className={dialogContent}
+                    style={{
+                      width: 712,
+                    }}
+                  >
+                    <DesktopOptions onClose={() => {}} />
+                  </div>
+                  {/* This div is placed on top of rainbowkit to make it non-interactive.
+                  pointer-events: none; was forcing scrollbar to show:
+                  https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
+                  <div style={{ position: 'absolute', inset: 0 }} />
                 </div>
               </Box>
 
               <Box display={{ md: 'none' }}>
-                <div
-                  className={clsx(dialogContent, dialogContentMobile)}
-                  style={{
-                    maxWidth: 420,
-                    width: '100%',
-                  }}
-                >
-                  <MobileOptions onClose={() => {}} />
+                <div style={{ position: 'relative' }}>
+                  <div
+                    className={clsx(dialogContent, dialogContentMobile)}
+                    style={{
+                      maxWidth: 420,
+                      width: '100%',
+                    }}
+                  >
+                    <MobileOptions onClose={() => {}} />
+                  </div>
+                  {/* This div is placed on top of rainbowkit to make it non-interactive.
+                  pointer-events: none; was forcing scrollbar to show:
+                  https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
+                  <div style={{ position: 'absolute', inset: 0 }} />
                 </div>
               </Box>
             </Box>
@@ -206,7 +217,7 @@ export function Playground() {
                 <RadioGroup.Root
                   name="mode"
                   onValueChange={handleModeChange}
-                  style={{ display: 'inline-flex', gap: 22 }}
+                  style={{ display: 'inline-flex', gap: 19 }}
                   value={mode}
                 >
                   <Radio
@@ -242,7 +253,7 @@ export function Playground() {
                 <RadioGroup.Root
                   name="mode"
                   onValueChange={handleAccentChange}
-                  style={{ display: 'inline-flex', gap: 22, flexWrap: 'wrap' }}
+                  style={{ display: 'inline-flex', gap: 19, flexWrap: 'wrap' }}
                   value={accent}
                 >
                   {(Object.keys(gradientColors) as Accents[]).map(color => (
@@ -273,7 +284,7 @@ export function Playground() {
                 <RadioGroup.Root
                   name="mode"
                   onValueChange={handleRadiiChange}
-                  style={{ display: 'inline-flex', gap: 22 }}
+                  style={{ display: 'inline-flex', gap: 19 }}
                   value={radii}
                 >
                   <Radio
