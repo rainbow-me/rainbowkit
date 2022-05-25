@@ -29,25 +29,28 @@ const App = () => {
 
 ## Disclaimer
 
-You can provide your own disclaimer. The (`disclaimer`) prop takes a function with args `Text` and `Link` that you can use to build your own disclaimer that inherits the theming system:
+You can provide your own disclaimer. The (`disclaimer`) property in `appInfo` takes a `DisclaimerComponent` with args `Text` and `Link` that you can use to build your own disclaimer that inherits the theming system. We export the `DisclaimerComponent` type for TypeScript users:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
 
 const App = () => {
+  const disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+    <Text>
+      By connecting your wallet, you agree to the{' '}
+      <Link href="https://termsofservice.xyz">Terms of Service</Link>{' '}
+      and acknowledge you have read and understand the protocol{' '}
+      <Link href="https://disclaimer.xyz">Disclaimer</Link>
+    </Text>
+  );
   return (
     <RainbowKitProvider
       appInfo={{
-        disclaimer: ({ Text, Link }) => (
-          <Text>
-            By connecting your wallet, you agree to the{' '}
-            <Link href="https://termsofservice.xyz">
-              Terms of Service
-            </Link>{' '}
-            and acknowledge you have read and understand the protocol{' '}
-            <Link href="https://disclaimer.xyz">Disclaimer</Link>
-          </Text>
-        ),
+        appName: 'RainbowKit Demo',
+        disclaimer,
       }}
       {...etc}
     >
