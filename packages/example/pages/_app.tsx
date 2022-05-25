@@ -45,7 +45,8 @@ const termsOfServiceDemo = ({ Link, Text }: any) => {
   return (
     <Text>
       By connecting, you agree to this demo&apos;s{' '}
-      <Link href={RAINBOW_TERMS}>Terms of Service</Link>
+      <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
+      have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
     </Text>
   );
 };
@@ -182,7 +183,7 @@ function App({ Component, pageProps }: AppProps) {
                         onChange={e => setShowTermsOfService(e.target.checked)}
                         type="checkbox"
                       />{' '}
-                      terms of service
+                      termsOfService
                     </label>
                   </div>
                 </div>

@@ -213,7 +213,7 @@ const unresponsiveProperties = defineProperties({
     },
     gap: spacing,
     height: dimensions,
-    justifyContent: [...flexAlignment, 'space-between'],
+    justifyContent: [...flexAlignment, 'space-between', 'space-around'],
     textAlign: textAlignments,
     marginBottom: spacing,
     marginLeft: spacing,

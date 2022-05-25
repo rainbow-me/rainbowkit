@@ -21,20 +21,20 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         color="accentColor"
         display="flex"
         flexDirection="column"
-        justifyContent="center"
-        style={{
-          gap: 62,
-        }}
+        height="full"
+        justifyContent="space-around"
       >
-        <Text color="modalText" size="18" weight="heavy">
-          What is a Wallet?
-        </Text>
+        <Box marginBottom="10">
+          <Text color="modalText" size="18" weight="heavy">
+            What is a Wallet?
+          </Text>
+        </Box>
         <Box
           display="flex"
           flexDirection="column"
           gap="32"
-          height="full"
           justifyContent="center"
+          marginY="20"
           style={{ maxWidth: 312 }}
         >
           <Box alignItems="center" display="flex" flexDirection="row" gap="16">
@@ -72,6 +72,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           flexDirection="column"
           gap="12"
           justifyContent="center"
+          margin="10"
         >
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
@@ -95,12 +96,12 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Box>
           </Box>
         </Box>
+        {TosComponent && (
+          <Box marginBottom="8" marginTop="12" textAlign="center">
+            {TosComponent}
+          </Box>
+        )}
       </Box>
-      {TosComponent && (
-        <Box marginBottom="8" marginTop="12" textAlign="center">
-          {TosComponent}
-        </Box>
-      )}
     </>
   );
 }
