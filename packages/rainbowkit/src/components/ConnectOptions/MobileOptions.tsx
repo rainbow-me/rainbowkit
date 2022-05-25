@@ -124,7 +124,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <Box paddingBottom={disclaimer ? '32' : '8'}>
+        <Box>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -195,7 +195,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          <Box marginTop="28" marginX="32" textAlign="center">
+          <Box marginBottom="32" marginTop="28" marginX="32" textAlign="center">
             {TosComponent}
           </Box>
         </Box>
