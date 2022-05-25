@@ -1,8 +1,6 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
-  apiProvider,
-  configureChains,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
@@ -14,7 +12,9 @@ import {
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
@@ -28,7 +28,7 @@ const { chains, provider, webSocketProvider } = configureChains(
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
   ],
-  [apiProvider.alchemy(alchemyId), apiProvider.fallback()]
+  [alchemyProvider({ alchemyId }), publicProvider()]
 );
 
 const { wallets } = getDefaultWallets({
@@ -110,7 +110,7 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>RainbowKit Example</title>
       </Head>
-      <WagmiProvider client={wagmiClient}>
+      <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           appInfo={demoAppInfo}
           chains={chains}
@@ -291,7 +291,7 @@ function App({ Component, pageProps }: AppProps) {
             )}
           </div>
         </RainbowKitProvider>
-      </WagmiProvider>
+      </WagmiConfig>
     </>
   );
 }

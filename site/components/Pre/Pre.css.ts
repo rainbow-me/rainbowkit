@@ -3,7 +3,7 @@ import { vars } from 'css/vars.css';
 
 export const pre = style({
   vars: {
-    '--added': '$rgb(24, 121, 78)',
+    '--added': 'rgb(24, 121, 78)',
     '--background': vars.colors.fillElevated,
     '--comment': vars.colors.labelQuaternary,
     '--fadedLines': 'rgb(126, 134, 140)',

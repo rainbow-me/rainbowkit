@@ -14,17 +14,17 @@ You can use the `wallet` object and the `connectorsForWallets` function to build
 For example, you can choose to only show Rainbow and WalletConnect.
 
 ```tsx
-import {
-  apiProvider,
-  configureChains,
-  connectorsForWallets,
-  wallet,
-} from '@rainbow-me/rainbowkit';
-import { chain } from 'wagmi';
+import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { chain, configureChains } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 const { chains } = configureChains(
   [chain.mainnet],
-  [apiProvider.alchemy(process.env.ALCHEMY_ID), apiProvider.fallback()]
+  [
+    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+    publicProvider(),
+  ]
 );
 
 const connectors = connectorsForWallets([
@@ -41,7 +41,7 @@ const connectors = connectorsForWallets([
 You can then pass your connectors to `wagmi`'s `createClient`.
 
 ```tsx line=1,4-99
-import { createClient, WagmiProvider } from 'wagmi';
+import { createClient, WagmiConfig } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 
@@ -50,11 +50,11 @@ const wagmiClient = createClient({
 });
 
 const App = () => (
-  <WagmiProvider client={wagmiClient}>
+  <WagmiConfig client={wagmiClient}>
     <RainbowKitProvider>
       {/* Your App */}
     </RainbowKitProvider>
-  </WagmiProvider>
+  </WagmiConfig>
 );
 ```
 

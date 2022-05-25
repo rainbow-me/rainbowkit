@@ -11,7 +11,10 @@ export type RouteProps = {
 export const docsRoutes: RouteProps[] = [
   {
     label: 'Overview',
-    pages: [{ title: 'Introduction', slug: 'introduction' }],
+    pages: [
+      { title: 'Introduction', slug: 'introduction' },
+      { title: 'Migrating to 0.2', slug: 'migrating-to-02' },
+    ],
   },
 
   {
@@ -21,7 +24,6 @@ export const docsRoutes: RouteProps[] = [
       { title: 'ConnectButton', slug: 'connect-button' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
-      { title: 'API Providers', slug: 'api-providers' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],
   },
