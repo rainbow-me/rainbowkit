@@ -29,7 +29,7 @@ const App = () => {
 
 ## Terms of Service
 
-You can also provide your own Terms of Service (`termsOfService`), which constitutes the terms (`url`) and an (optional) disclaimer (`disclaimerUrl`):
+You can provide your own Terms of Service. The (`termsOfService`) prop takes a function with args `Text` and `Link` that you can use to build your own disclaimer that inherits the theming system:
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -38,11 +38,16 @@ const App = () => {
   return (
     <RainbowKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
-        termsOfService: {
-          url: 'yourtermsofservice.com',
-          disclaimerUrl: 'yourdisclaimer.com',
-        },
+        termsOfService: ({ Text, Link }) => (
+          <Text>
+            By connecting your wallet, you agree to the{' '}
+            <Link href="https://termsofservice.com">
+              Terms of Service
+            </Link>{' '}
+            and acknowledge you have read and understand the
+            <Link href="https://disclaimer.com">Disclaimer</Link>
+          </Text>
+        ),
       }}
       {...etc}
     >
@@ -51,5 +56,3 @@ const App = () => {
   );
 };
 ```
-
-Note: your Disclaimer will not be displayed without you also specifying your Terms of Service url.

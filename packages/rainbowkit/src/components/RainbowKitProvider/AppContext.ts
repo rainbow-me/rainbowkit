@@ -1,9 +1,13 @@
-import { createContext } from 'react';
+import { createContext, ReactNode } from 'react';
 
-export interface TermsOfService {
-  url?: string;
-  disclaimerUrl?: string;
-}
+export type TermsOfService = ({
+  Link,
+  Text,
+}: {
+  Text: any;
+  Link: any;
+}) => ReactNode;
+
 export const defaultAppInfo = {
   appName: undefined,
   disclaimerUrl: undefined,

@@ -5,16 +5,15 @@ import { ActionButton } from '../Button/ActionButton';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-
+import { TosLink } from '../TermsOfService/TosLink';
+import { TosText } from '../TermsOfService/TosText';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { appName, learnMoreUrl, termsOfService } = useContext(AppContext);
-  const termsOfServiceState = !termsOfService
-    ? 0
-    : termsOfService?.url && !termsOfService?.disclaimerUrl
-    ? 1
-    : 2;
+  const { learnMoreUrl, termsOfService } = useContext(AppContext);
+
+  const TosComponent = termsOfService?.({ Link: TosLink, Text: TosText });
+
   return (
     <>
       <Box
@@ -24,12 +23,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         flexDirection="column"
         justifyContent="center"
         style={{
-          gap:
-            termsOfServiceState === 0
-              ? 62
-              : termsOfServiceState === 1
-              ? 50
-              : 30,
+          gap: 62,
         }}
       >
         <Text color="modalText" size="18" weight="heavy">
@@ -102,61 +96,9 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           </Box>
         </Box>
       </Box>
-      {termsOfService?.url && (
-        <Box marginBottom="8" marginTop="20">
-          <Text
-            color="modalTextSecondary"
-            size="12"
-            textAlign="center"
-            weight="medium"
-          >
-            By connecting, you agree to {appName}&apos;s{' '}
-            <Text
-              color="accentColor"
-              display="inline"
-              size="12"
-              weight="medium"
-            >
-              <a
-                href={termsOfService.url}
-                rel="noreferrer"
-                style={{
-                  color: 'inherit',
-                  textDecoration: 'none',
-                  width: 'fit-content',
-                }}
-                target="_blank"
-              >
-                Terms of Service
-              </a>
-            </Text>
-            {termsOfService?.disclaimerUrl && (
-              <>
-                {' '}
-                and acknowledge that you have read and understand {appName}
-                &apos;s{' '}
-                <Text
-                  color="accentColor"
-                  display="inline"
-                  size="12"
-                  weight="medium"
-                >
-                  <a
-                    href={termsOfService.disclaimerUrl}
-                    rel="noreferrer"
-                    style={{
-                      color: 'inherit',
-                      textDecoration: 'none',
-                      width: 'fit-content',
-                    }}
-                    target="_blank"
-                  >
-                    Disclaimer
-                  </a>
-                </Text>
-              </>
-            )}
-          </Text>
+      {TosComponent && (
+        <Box marginBottom="8" marginTop="12" textAlign="center">
+          {TosComponent}
         </Box>
       )}
     </>

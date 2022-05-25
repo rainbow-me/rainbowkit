@@ -41,6 +41,15 @@ const demoAppInfo = {
   appName: 'Rainbowkit Demo',
 };
 
+const termsOfServiceDemo = ({ Link, Text }: any) => {
+  return (
+    <Text>
+      By connecting, you agree to this demo&apos;s{' '}
+      <Link href={RAINBOW_TERMS}>Terms of Service</Link>
+    </Text>
+  );
+};
+
 const connectors = connectorsForWallets([
   ...wallets,
   {
@@ -85,18 +94,15 @@ type AccentColor = typeof accentColors[number];
 
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
-const tosScales = ['none', 'tos', 'disclaimer'] as const;
-type TosScale = typeof tosScales[number];
 
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
-  const [selectedTermsOfService, setSelectedTermsOfService] =
-    useState<TosScale>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
+  const [showTermsOfService, setShowTermsOfService] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -110,18 +116,6 @@ function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  const termsOfServiceObj =
-    selectedTermsOfService === 'none'
-      ? {}
-      : selectedTermsOfService === 'tos'
-      ? { termsOfService: { url: RAINBOW_TERMS } }
-      : {
-          termsOfService: {
-            disclaimerUrl: RAINBOW_TERMS,
-            url: RAINBOW_TERMS,
-          },
-        };
-
   return (
     <>
       <Head>
@@ -129,7 +123,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
-          appInfo={{ ...demoAppInfo, ...termsOfServiceObj }}
+          appInfo={{
+            ...demoAppInfo,
+            ...(showTermsOfService && { termsOfService: termsOfServiceDemo }),
+          }}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -177,6 +174,15 @@ function App({ Component, pageProps }: AppProps) {
                         type="checkbox"
                       />{' '}
                       coolMode
+                    </label>
+                    <label style={{ userSelect: 'none' }}>
+                      <input
+                        checked={showTermsOfService}
+                        name="showTermsOfService"
+                        onChange={e => setShowTermsOfService(e.target.checked)}
+                        type="checkbox"
+                      />{' '}
+                      terms of service
                     </label>
                   </div>
                 </div>
@@ -299,34 +305,6 @@ function App({ Component, pageProps }: AppProps) {
                               value={radiusScale}
                             />{' '}
                             {radiusScale}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Terms of Service</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {tosScales.map(tos => (
-                          <label key={tos} style={{ userSelect: 'none' }}>
-                            <input
-                              checked={tos === selectedTermsOfService}
-                              name="tosScale"
-                              onChange={e =>
-                                setSelectedTermsOfService(
-                                  e.target.value as TosScale
-                                )
-                              }
-                              type="radio"
-                              value={tos}
-                            />{' '}
-                            {tos}
                           </label>
                         ))}
                       </div>

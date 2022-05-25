@@ -76,13 +76,6 @@ export function RainbowKitProvider({
 
   const selector = createThemeRootSelector(id);
 
-  if (!appInfo?.termsOfService?.url && appInfo?.termsOfService?.disclaimerUrl) {
-    // eslint-disable-next-line no-console
-    console?.warn(
-      'A `disclaimerUrl` was provided to the `termsOfService` prop without first providing the terms of service `url`. The disclaimer will not be displayed.'
-    );
-  }
-
   const appContext = {
     ...defaultAppInfo,
     ...appInfo,

@@ -12,6 +12,8 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
+import { TosLink } from '../TermsOfService/TosLink';
+import { TosText } from '../TermsOfService/TosText';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -100,7 +102,8 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { appName, learnMoreUrl, termsOfService } = useContext(AppContext);
+  const { learnMoreUrl, termsOfService } = useContext(AppContext);
+  const TosComponent = termsOfService?.({ Link: TosLink, Text: TosText });
 
   let headerLabel = null;
   let walletContent = null;
@@ -118,7 +121,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <Box paddingBottom={termsOfService?.url ? '20' : '36'}>
+        <Box paddingBottom={termsOfService ? '32' : '36'}>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -189,63 +192,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          {termsOfService?.url && (
-            <Box marginBottom="8" marginTop="28" marginX="32">
-              <Text
-                color="modalTextSecondary"
-                size="12"
-                textAlign="center"
-                weight="medium"
-              >
-                By connecting, you agree to {appName}&apos;s{' '}
-                <Text
-                  color="accentColor"
-                  display="inline"
-                  size="12"
-                  weight="medium"
-                >
-                  <a
-                    href={termsOfService.url}
-                    rel="noreferrer"
-                    style={{
-                      color: 'inherit',
-                      textDecoration: 'none',
-                      width: 'fit-content',
-                    }}
-                    target="_blank"
-                  >
-                    Terms of Service
-                  </a>
-                </Text>
-                {termsOfService?.disclaimerUrl && (
-                  <>
-                    {' '}
-                    and acknowledge that you have read and understand the{' '}
-                    {appName}{' '}
-                    <Text
-                      color="accentColor"
-                      display="inline"
-                      size="12"
-                      weight="medium"
-                    >
-                      <a
-                        href={termsOfService.disclaimerUrl}
-                        rel="noreferrer"
-                        style={{
-                          color: 'inherit',
-                          textDecoration: 'none',
-                          width: 'fit-content',
-                        }}
-                        target="_blank"
-                      >
-                        Disclaimer
-                      </a>
-                    </Text>
-                  </>
-                )}
-              </Text>
-            </Box>
-          )}
+          <Box marginTop="28" marginX="32" textAlign="center">
+            {TosComponent}
+          </Box>
         </Box>
       );
       break;
