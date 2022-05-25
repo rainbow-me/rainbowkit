@@ -121,7 +121,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <Box paddingBottom={termsOfService ? '32' : '36'}>
+        <Box paddingBottom={termsOfService ? '32' : '8'}>
           <Box
             background="profileForeground"
             className={styles.scroll}
