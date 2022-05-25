@@ -1,21 +1,27 @@
 import { createContext, ReactNode } from 'react';
 
-export type TermsOfService = ({
+export type DisclaimerComponent = ({
   Link,
   Text,
 }: {
-  Text: any;
-  Link: any;
+  Text: ({ children }: { children: ReactNode }) => JSX.Element;
+  Link: ({
+    children,
+    href,
+  }: {
+    children: ReactNode;
+    href: string;
+  }) => JSX.Element;
 }) => ReactNode;
 
 export const defaultAppInfo = {
   appName: undefined,
-  disclaimerUrl: undefined,
-  termsOfService: undefined,
+  disclaimer: undefined,
+  learnMoreUrl: 'https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually',
 };
 
 export const AppContext = createContext<{
   appName?: string;
   learnMoreUrl?: string;
-  termsOfService?: TermsOfService;
+  disclaimer?: DisclaimerComponent;
 }>(defaultAppInfo);

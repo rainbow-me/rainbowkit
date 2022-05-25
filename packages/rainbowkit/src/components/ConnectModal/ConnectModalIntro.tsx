@@ -2,17 +2,20 @@ import React, { useContext } from 'react';
 import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { TosLink } from '../TermsOfService/TosLink';
-import { TosText } from '../TermsOfService/TosText';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { learnMoreUrl, termsOfService } = useContext(AppContext);
+  const { disclaimer, learnMoreUrl } = useContext(AppContext);
 
-  const TosComponent = termsOfService?.({ Link: TosLink, Text: TosText });
+  const TosComponent = disclaimer?.({
+    Link: DisclaimerLink,
+    Text: DisclaimerText,
+  });
 
   return (
     <>

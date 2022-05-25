@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-## Terms of Service
+## Disclaimer
 
-You can provide your own Terms of Service. The (`termsOfService`) prop takes a function with args `Text` and `Link` that you can use to build your own disclaimer that inherits the theming system:
+You can provide your own disclaimer. The (`disclaimer`) prop takes a function with args `Text` and `Link` that you can use to build your own disclaimer that inherits the theming system:
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -38,14 +38,14 @@ const App = () => {
   return (
     <RainbowKitProvider
       appInfo={{
-        termsOfService: ({ Text, Link }) => (
+        disclaimer: ({ Text, Link }) => (
           <Text>
             By connecting your wallet, you agree to the{' '}
-            <Link href="https://termsofservice.com">
+            <Link href="https://termsofservice.xyz">
               Terms of Service
             </Link>{' '}
-            and acknowledge you have read and understand the
-            <Link href="https://disclaimer.com">Disclaimer</Link>
+            and acknowledge you have read and understand the protocol{' '}
+            <Link href="https://disclaimer.xyz">Disclaimer</Link>
           </Text>
         ),
       }}

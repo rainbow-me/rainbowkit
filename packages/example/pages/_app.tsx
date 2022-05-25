@@ -3,6 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   connectorsForWallets,
   darkTheme,
+  DisclaimerComponent,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -39,9 +40,11 @@ const { wallets } = getDefaultWallets({
 
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
+  // learnMoreUrl:
+  //   'https://learn.rainbow.me/create-backup-your-first-ethereum-web3-wallet',
 };
 
-const termsOfServiceDemo = ({ Link, Text }: any) => {
+const disclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
   return (
     <Text>
       By connecting, you agree to this demo&apos;s{' '}
@@ -103,7 +106,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
-  const [showTermsOfService, setShowTermsOfService] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -126,7 +129,7 @@ function App({ Component, pageProps }: AppProps) {
         <RainbowKitProvider
           appInfo={{
             ...demoAppInfo,
-            ...(showTermsOfService && { termsOfService: termsOfServiceDemo }),
+            ...(showDisclaimer && { disclaimer: disclaimerDemo }),
           }}
           chains={chains}
           coolMode={coolModeEnabled}
@@ -178,12 +181,12 @@ function App({ Component, pageProps }: AppProps) {
                     </label>
                     <label style={{ userSelect: 'none' }}>
                       <input
-                        checked={showTermsOfService}
-                        name="showTermsOfService"
-                        onChange={e => setShowTermsOfService(e.target.checked)}
+                        checked={showDisclaimer}
+                        name="showDisclaimer"
+                        onChange={e => setShowDisclaimer(e.target.checked)}
                         type="checkbox"
                       />{' '}
-                      termsOfService
+                      disclaimer
                     </label>
                   </div>
                 </div>

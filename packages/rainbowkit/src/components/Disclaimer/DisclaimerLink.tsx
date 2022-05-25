@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Text } from '../Text/Text';
 
-export const TosLink = ({
+export const DisclaimerLink = ({
   children,
   href,
 }: {

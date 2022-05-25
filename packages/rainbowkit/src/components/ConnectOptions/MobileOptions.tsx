@@ -9,11 +9,11 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
-import { TosLink } from '../TermsOfService/TosLink';
-import { TosText } from '../TermsOfService/TosText';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -102,8 +102,11 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { learnMoreUrl, termsOfService } = useContext(AppContext);
-  const TosComponent = termsOfService?.({ Link: TosLink, Text: TosText });
+  const { disclaimer, learnMoreUrl } = useContext(AppContext);
+  const TosComponent = disclaimer?.({
+    Link: DisclaimerLink,
+    Text: DisclaimerText,
+  });
 
   let headerLabel = null;
   let walletContent = null;
@@ -121,7 +124,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <Box paddingBottom={termsOfService ? '32' : '8'}>
+        <Box paddingBottom={disclaimer ? '32' : '8'}>
           <Box
             background="profileForeground"
             className={styles.scroll}

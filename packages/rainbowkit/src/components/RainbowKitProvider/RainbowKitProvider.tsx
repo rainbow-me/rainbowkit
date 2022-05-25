@@ -3,7 +3,7 @@ import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
-import { AppContext, defaultAppInfo, TermsOfService } from './AppContext';
+import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
 import {
   RainbowKitChain,
@@ -47,7 +47,7 @@ export interface RainbowKitProviderProps {
   appInfo?: {
     appName?: string;
     learnMoreUrl?: string;
-    termsOfService?: TermsOfService;
+    disclaimer?: DisclaimerComponent;
   };
   coolMode?: boolean;
 }
