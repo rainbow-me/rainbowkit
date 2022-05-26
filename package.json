@@ -19,9 +19,9 @@
     "release": "pnpm release:verify-git && pnpm release:build && changeset publish",
     "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
     "release:build": "pnpm clean && pnpm lint && pnpm test && MINIFY_CSS=true pnpm --recursive build && cp README.md packages/rainbowkit/README.md",
-    "release:test": "pnpm release:build && pnpm dev --filter example",
-    "ci:example": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=example",
-    "ci:site": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm build --filter=site"
+    "release:test": "pnpm release:build && pnpm --filter example dev",
+    "ci:example": "pnpm prepare --filter=@rainbow-me/rainbowkit && pnpm --filter=example build",
+    "ci:site": "pnpm --filter=@rainbow-me/rainbowkit prepare && pnpm --filter=site build"
   },
   "repository": {
     "type": "git",
