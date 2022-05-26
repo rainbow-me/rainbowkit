@@ -85,6 +85,14 @@ The built-in theme functions also accept an options object, allowing you to sele
       description:
         "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"xlarge" | "large" | "medium" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The backdrop blur of the all modals.',
+    },
   ]}
 />
 
@@ -257,6 +265,28 @@ const App = () => {
     <RainbowKitProvider
       theme={darkTheme({
         fontStack: 'system',
+      })}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Overlay blur
+
+By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
+
+Set the overlay blur to `medium`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'medium',
       })}
     >
       {/* Your App */}
