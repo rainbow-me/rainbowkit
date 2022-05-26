@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Text } from '../Text/Text';
+import { Box } from '../Box/Box';
 
 export const DisclaimerLink = ({
   children,
@@ -9,19 +9,14 @@ export const DisclaimerLink = ({
   href: string;
 }) => {
   return (
-    <Text color="accentColor" display="inline" size="12" weight="medium">
-      <a
-        href={href}
-        rel="noreferrer"
-        style={{
-          color: 'inherit',
-          textDecoration: 'none',
-          width: 'fit-content',
-        }}
-        target="_blank"
-      >
-        {children}
-      </a>
-    </Text>
+    <Box
+      as="a"
+      color="accentColor"
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+    >
+      {children}
+    </Box>
   );
 };
