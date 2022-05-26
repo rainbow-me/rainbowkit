@@ -102,11 +102,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { disclaimer, learnMoreUrl } = useContext(AppContext);
-  const disclaimerComponent = disclaimer?.({
-    Link: DisclaimerLink,
-    Text: DisclaimerText,
-  });
+  const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -195,9 +191,9 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          {disclaimerComponent && (
+          {Disclaimer && (
             <Box marginTop="28" marginX="32" textAlign="center">
-              {disclaimerComponent}
+              <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
             </Box>
           )}
         </Box>

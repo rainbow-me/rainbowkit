@@ -10,12 +10,7 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { disclaimer, learnMoreUrl } = useContext(AppContext);
-
-  const disclaimerComponent = disclaimer?.({
-    Link: DisclaimerLink,
-    Text: DisclaimerText,
-  });
+  const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   return (
     <>
@@ -99,9 +94,9 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Box>
           </Box>
         </Box>
-        {disclaimerComponent && (
+        {Disclaimer && (
           <Box marginBottom="8" marginTop="12" textAlign="center">
-            {disclaimerComponent}
+            <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
           </Box>
         )}
       </Box>

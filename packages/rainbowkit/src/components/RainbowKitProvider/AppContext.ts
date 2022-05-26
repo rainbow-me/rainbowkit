@@ -1,18 +1,9 @@
-import { createContext, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
 
-export type DisclaimerComponent = ({
-  Link,
-  Text,
-}: {
-  Text: ({ children }: { children: ReactNode }) => JSX.Element;
-  Link: ({
-    children,
-    href,
-  }: {
-    children: ReactNode;
-    href: string;
-  }) => JSX.Element;
-}) => ReactNode;
+export type DisclaimerComponent = React.FunctionComponent<{
+  Text: React.FunctionComponent<{ children: ReactNode }>;
+  Link: React.FunctionComponent<{ children: ReactNode; href: string }>;
+}>;
 
 export const defaultAppInfo = {
   appName: undefined,
