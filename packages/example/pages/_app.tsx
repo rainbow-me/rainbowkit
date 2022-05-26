@@ -42,7 +42,7 @@ const demoAppInfo = {
   appName: 'Rainbowkit Demo',
 };
 
-const disclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
+const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
   return (
     <Text>
       By connecting, you agree to this demo&apos;s{' '}
@@ -127,7 +127,7 @@ function App({ Component, pageProps }: AppProps) {
         <RainbowKitProvider
           appInfo={{
             ...demoAppInfo,
-            ...(showDisclaimer && { disclaimer: disclaimerDemo }),
+            ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
           chains={chains}
           coolMode={coolModeEnabled}
