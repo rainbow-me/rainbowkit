@@ -12,7 +12,7 @@ import { Text } from '../Text/Text';
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
   const { disclaimer, learnMoreUrl } = useContext(AppContext);
 
-  const TosComponent = disclaimer?.({
+  const disclaimerComponent = disclaimer?.({
     Link: DisclaimerLink,
     Text: DisclaimerText,
   });
@@ -99,9 +99,9 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Box>
           </Box>
         </Box>
-        {TosComponent && (
+        {disclaimerComponent && (
           <Box marginBottom="8" marginTop="12" textAlign="center">
-            {TosComponent}
+            {disclaimerComponent}
           </Box>
         )}
       </Box>

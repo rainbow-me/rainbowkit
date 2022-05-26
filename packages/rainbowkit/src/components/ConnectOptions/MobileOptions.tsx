@@ -103,7 +103,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
   const { disclaimer, learnMoreUrl } = useContext(AppContext);
-  const TosComponent = disclaimer?.({
+  const disclaimerComponent = disclaimer?.({
     Link: DisclaimerLink,
     Text: DisclaimerText,
   });
@@ -195,9 +195,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-          <Box marginBottom="32" marginTop="28" marginX="32" textAlign="center">
-            {TosComponent}
-          </Box>
+          {disclaimerComponent && (
+            <Box marginTop="28" marginX="32" textAlign="center">
+              {disclaimerComponent}
+            </Box>
+          )}
         </Box>
       );
       break;
@@ -213,7 +215,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         ?.splice(0, 3);
 
       walletContent = (
-        <Box paddingBottom="36">
+        <Box>
           <Box
             alignItems="center"
             display="flex"
@@ -308,7 +310,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" paddingBottom="36">
       {/* header section */}
       <Box
         background={

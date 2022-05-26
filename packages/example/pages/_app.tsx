@@ -40,8 +40,6 @@ const { wallets } = getDefaultWallets({
 
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
-  // learnMoreUrl:
-  //   'https://learn.rainbow.me/create-backup-your-first-ethereum-web3-wallet',
 };
 
 const disclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
