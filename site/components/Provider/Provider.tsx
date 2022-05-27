@@ -1,18 +1,18 @@
 import {
-  apiProvider,
-  configureChains,
   connectorsForWallets,
   getDefaultWallets,
   wallet,
 } from '@rainbow-me/rainbowkit';
 import React from 'react';
-import { chain, createClient, Provider as WagmiProvider } from 'wagmi';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 
 export const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
-  [apiProvider.alchemy(alchemyId), apiProvider.fallback()]
+  [alchemyProvider({ alchemyId }), publicProvider()]
 );
 
 const { wallets } = getDefaultWallets({
@@ -27,6 +27,8 @@ const connectors = connectorsForWallets([
     wallets: [
       wallet.argent({ chains }),
       wallet.trust({ chains }),
+      wallet.steak({ chains }),
+      wallet.imToken({ chains }),
       wallet.ledger({ chains }),
     ],
   },
@@ -39,5 +41,5 @@ const wagmiClient = createClient({
 });
 
 export function Provider({ children }) {
-  return <WagmiProvider client={wagmiClient}>{children}</WagmiProvider>;
+  return <WagmiConfig client={wagmiClient}>{children}</WagmiConfig>;
 }

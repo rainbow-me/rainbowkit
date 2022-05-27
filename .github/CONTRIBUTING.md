@@ -6,7 +6,7 @@ If you want to contribute but aren't sure where to start, you can create a [new 
 
 ## Pull requests
 
-**Please ask first before starting work on any significant new features. This includes things like adding new wallets, chains, API providers, components, etc.**
+**Please ask first before starting work on any significant new features. This includes things like adding new wallets, chains, components, etc.**
 
 It's never a fun experience to have your pull request declined after investing a lot of time and effort into a new feature. To avoid this from happening, we request that contributors create [a feature request](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) to first discuss any API changes or significant new ideas.
 

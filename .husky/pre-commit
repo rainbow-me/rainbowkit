@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pnpm format && pnpm lint && pnpm test
+pnpm lint && pnpm test

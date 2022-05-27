@@ -25,27 +25,33 @@ Import RainbowKit, wagmi, and ethers.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  apiProvider,
-  configureChains,
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import {
+  chain,
+  configureChains,
+  createClient,
+  WagmiConfig,
+} from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 ```
 
 ### Configure
 
-Configure your wallets, desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
+Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
-```tsx line=3-99
+```tsx line=4-99
 ...
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    apiProvider.alchemy(process.env.ALCHEMY_ID),
-    apiProvider.fallback()
+    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+    publicProvider()
   ]
 );
 
@@ -61,18 +67,20 @@ const wagmiClient = createClient({
 })
 ```
 
+[Read more about configuring chains & providers with `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
+
 ### Wrap providers
 
-Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi-xyz.vercel.app/docs/provider).
+Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagmi.sh/docs/provider).
 
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider client={wagmiClient}>
+    <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 ```
