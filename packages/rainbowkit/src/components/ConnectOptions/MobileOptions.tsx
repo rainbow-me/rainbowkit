@@ -10,6 +10,8 @@ import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectionInfo } from '../ConnectButton/ConnectButton';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
@@ -115,7 +117,7 @@ export function MobileOptions({
 }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { learnMoreUrl } = useContext(AppContext);
+  const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -133,7 +135,7 @@ export function MobileOptions({
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <>
+        <Box>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -207,7 +209,12 @@ export function MobileOptions({
               />
             </Box>
           </Box>
-        </>
+          {Disclaimer && (
+            <Box marginTop="28" marginX="32" textAlign="center">
+              <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
+            </Box>
+          )}
+        </Box>
       );
       break;
     }
@@ -222,7 +229,7 @@ export function MobileOptions({
         ?.splice(0, 3);
 
       walletContent = (
-        <>
+        <Box>
           <Box
             alignItems="center"
             display="flex"
@@ -310,7 +317,7 @@ export function MobileOptions({
               </Text>
             </Box>
           </Box>
-        </>
+        </Box>
       );
       break;
     }

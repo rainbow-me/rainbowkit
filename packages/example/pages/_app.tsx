@@ -3,6 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   connectorsForWallets,
   darkTheme,
+  DisclaimerComponent,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -17,6 +18,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -38,6 +40,16 @@ const { wallets } = getDefaultWallets({
 
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
+};
+
+const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
+  return (
+    <Text>
+      By connecting, you agree to this demo&apos;s{' '}
+      <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
+      have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
+    </Text>
+  );
 };
 
 const connectors = connectorsForWallets([
@@ -92,6 +104,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -112,7 +125,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
-          appInfo={demoAppInfo}
+          appInfo={{
+            ...demoAppInfo,
+            ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
+          }}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -161,6 +177,15 @@ function App({ Component, pageProps }: AppProps) {
                       />{' '}
                       coolMode
                     </label>
+                    <label style={{ userSelect: 'none' }}>
+                      <input
+                        checked={showDisclaimer}
+                        name="showDisclaimer"
+                        onChange={e => setShowDisclaimer(e.target.checked)}
+                        type="checkbox"
+                      />{' '}
+                      disclaimer
+                    </label>
                   </div>
                 </div>
                 <div
@@ -172,6 +197,7 @@ function App({ Component, pageProps }: AppProps) {
                   <div
                     style={{
                       display: 'flex',
+                      flexWrap: 'wrap',
                       gap: 24,
                     }}
                   >

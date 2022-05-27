@@ -3,7 +3,7 @@ import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
-import { AppContext, defaultAppInfo } from './AppContext';
+import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
 import { CoolModeContext } from './CoolModeContext';
 import {
   RainbowKitChain,
@@ -44,7 +44,11 @@ export interface RainbowKitProviderProps {
   children: ReactNode;
   theme?: Theme | null;
   showRecentTransactions?: boolean;
-  appInfo?: { appName?: string; learnMoreUrl?: string };
+  appInfo?: {
+    appName?: string;
+    learnMoreUrl?: string;
+    disclaimer?: DisclaimerComponent;
+  };
   coolMode?: boolean;
 }
 
@@ -71,6 +75,7 @@ export function RainbowKitProvider({
   }
 
   const selector = createThemeRootSelector(id);
+
   const appContext = {
     ...defaultAppInfo,
     ...appInfo,

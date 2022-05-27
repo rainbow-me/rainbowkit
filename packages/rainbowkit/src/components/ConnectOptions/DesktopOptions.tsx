@@ -188,7 +188,7 @@ export function DesktopOptions({
   }
 
   return (
-    <Box display="flex" flexDirection="row">
+    <Box display="flex" flexDirection="row" style={{ maxHeight: 504 }}>
       <Box
         className={sidebar}
         display="flex"
