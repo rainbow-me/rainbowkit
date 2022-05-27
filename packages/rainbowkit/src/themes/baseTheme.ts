@@ -46,7 +46,7 @@ const radiusScales: Record<
   },
 };
 
-type Blurs = 'xlarge' | 'large' | 'medium' | 'small' | 'none';
+type Blurs = 'large' | 'small' | 'none';
 const blurs: Record<
   Blurs,
   {
@@ -54,19 +54,13 @@ const blurs: Record<
   }
 > = {
   large: {
-    modalOverlay: 'blur(12px)',
-  },
-  medium: {
-    modalOverlay: 'blur(8px)',
+    modalOverlay: 'blur(20px)',
   },
   none: {
     modalOverlay: 'blur(0px)',
   },
   small: {
     modalOverlay: 'blur(4px)',
-  },
-  xlarge: {
-    modalOverlay: 'blur(16px)',
   },
 };
 

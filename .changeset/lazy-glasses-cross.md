@@ -4,4 +4,4 @@
 'site': patch
 ---
 
-Add overlay blur support to all dialogs
+Add dialog overlay blurs to the theme

@@ -74,7 +74,7 @@ The built-in theme functions also accept an options object, allowing you to sele
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'The size of the entire border radius scale',
+      description: 'The size of the entire border radius scale.',
     },
     {
       name: 'fontStack',
@@ -89,9 +89,9 @@ The built-in theme functions also accept an options object, allowing you to sele
       name: 'overlayBlur',
       required: false,
       default: 'none',
-      type: '"xlarge" | "large" | "medium" | "small" | "none"',
+      type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The backdrop blur of the all modals.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />
@@ -277,7 +277,7 @@ const App = () => {
 
 By default, the `overlayBlur` is set to `none`. But here's how you can use the `overlayBlur` config.
 
-Set the overlay blur to `medium`.
+Set the overlay blur to `small`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -286,7 +286,7 @@ const App = () => {
   return (
     <RainbowKitProvider
       theme={darkTheme({
-        overlayBlur: 'medium',
+        overlayBlur: 'small',
       })}
     >
       {/* Your App */}

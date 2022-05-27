@@ -85,7 +85,7 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
-const overlayBlurs = ['xlarge', 'large', 'medium', 'small', 'none'] as const;
+const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function App({ Component, pageProps }: AppProps) {
