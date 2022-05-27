@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Add `onConnect` and `onDisconnect` as props in ConnectButton to allow for callbacks when wallet connects or disconnects.
+Add `onConnectChange` as props in ConnectButton to execute callback when wallet connects or disconnects.

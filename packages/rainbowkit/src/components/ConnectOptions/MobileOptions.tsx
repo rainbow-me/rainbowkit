@@ -9,6 +9,7 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { ConnectionInfo } from '../ConnectButton/ConnectButton';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
@@ -16,11 +17,11 @@ import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
 function WalletButton({
-  onConnect,
+  onConnectChange,
   wallet,
 }: {
   wallet: WalletConnector;
-  onConnect?: () => void;
+  onConnectChange?: (connection: ConnectionInfo) => void;
 }) {
   const {
     connect,
@@ -44,15 +45,16 @@ function WalletButton({
       fontFamily="body"
       key={id}
       onClick={useCallback(async () => {
-        connect?.();
-        onConnect?.();
+        connect?.().then(connectorData =>
+          onConnectChange?.({ data: connectorData, isConnected: true })
+        );
 
         onConnecting?.(async () => {
           if (getMobileUri) {
             window.location.href = await getMobileUri();
           }
         });
-      }, [connect, getMobileUri, onConnecting, onConnect])}
+      }, [connect, getMobileUri, onConnectChange, onConnecting])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
@@ -106,10 +108,10 @@ enum MobileWalletStep {
 
 export function MobileOptions({
   onClose,
-  onConnect,
+  onConnectChange,
 }: {
   onClose: () => void;
-  onConnect?: () => void;
+  onConnectChange?: (connection: ConnectionInfo) => void;
 }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
@@ -146,7 +148,10 @@ export function MobileOptions({
                   return (
                     <Box key={wallet.id} paddingX="20">
                       <Box width="60">
-                        <WalletButton onConnect={onConnect} wallet={wallet} />
+                        <WalletButton
+                          onConnectChange={onConnectChange}
+                          wallet={wallet}
+                        />
                       </Box>
                     </Box>
                   );

@@ -9,6 +9,7 @@ import {
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { ConnectionInfo } from '../ConnectButton/ConnectButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
 import { BackIcon } from '../Icons/Back';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
@@ -31,10 +32,10 @@ export enum WalletStep {
 
 export function DesktopOptions({
   onClose,
-  onConnect,
+  onConnectChange,
 }: {
   onClose: () => void;
-  onConnect?: () => void;
+  onConnectChange?: (connection: ConnectionInfo) => void;
 }) {
   const titleId = 'rk_connect_title';
   const safari = isSafari();
@@ -56,7 +57,12 @@ export function DesktopOptions({
     if (wallet.ready) {
       wallet
         ?.connect?.()
-        ?.then(() => onConnect?.())
+        ?.then(connectorData => {
+          onConnectChange?.({
+            data: connectorData,
+            isConnected: true,
+          });
+        })
         .catch(() => {
           setConnectionError(true);
         });

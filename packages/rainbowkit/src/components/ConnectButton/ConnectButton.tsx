@@ -1,4 +1,5 @@
 import React from 'react';
+import { ConnectorData } from 'wagmi';
 import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import {
   mapResponsiveValue,
@@ -16,21 +17,24 @@ import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 type AccountStatus = 'full' | 'avatar' | 'address';
 type ChainStatus = 'full' | 'icon' | 'name' | 'none';
 
+export type ConnectionInfo = {
+  isConnected: boolean;
+  data?: ConnectorData | undefined;
+};
+
 export interface ConnectButtonProps {
   accountStatus?: ResponsiveValue<AccountStatus>;
   showBalance?: ResponsiveValue<boolean>;
   chainStatus?: ResponsiveValue<ChainStatus>;
   label?: string;
-  onConnect?: () => void;
-  onDisconnect?: () => void;
+  onConnectChange?: (connection: ConnectionInfo) => void;
 }
 
 const defaultProps = {
   accountStatus: 'full',
   chainStatus: { largeScreen: 'full', smallScreen: 'icon' },
   label: 'Connect Wallet',
-  onConnect: () => {},
-  onDisconnect: () => {},
+  onConnectChange: () => {},
   showBalance: { largeScreen: true, smallScreen: false },
 } as const;
 
@@ -39,13 +43,12 @@ export function ConnectButton({
   chainStatus = defaultProps.chainStatus,
   label = defaultProps.label,
   showBalance = defaultProps.showBalance,
-  onConnect = defaultProps.onConnect,
-  onDisconnect = defaultProps.onDisconnect,
+  onConnectChange = defaultProps.onConnectChange,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
 
   return (
-    <ConnectButtonRenderer onConnect={onConnect} onDisconnect={onDisconnect}>
+    <ConnectButtonRenderer onConnectChange={onConnectChange}>
       {({
         account,
         chain,

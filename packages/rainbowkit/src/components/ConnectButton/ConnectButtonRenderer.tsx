@@ -29,6 +29,7 @@ import {
   useRainbowKitChainsById,
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
+import { ConnectionInfo } from './ConnectButton';
 import { formatAddress } from './formatAddress';
 import { formatENS } from './formatENS';
 
@@ -69,14 +70,12 @@ export interface ConnectButtonRendererProps {
     chainModalOpen: boolean;
     connectModalOpen: boolean;
   }) => ReactNode;
-  onConnect?: () => void;
-  onDisconnect?: () => void;
+  onConnectChange?: (connection: ConnectionInfo) => void;
 }
 
 export function ConnectButtonRenderer({
   children,
-  onConnect,
-  onDisconnect,
+  onConnectChange,
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
 
@@ -204,7 +203,7 @@ export function ConnectButtonRenderer({
 
       <ConnectModal
         onClose={closeConnectModal}
-        onConnect={onConnect}
+        onConnectChange={onConnectChange}
         open={connectModalOpen}
       />
       <AccountModal
@@ -215,7 +214,10 @@ export function ConnectButtonRenderer({
         onClose={closeAccountModal}
         onDisconnect={() => {
           disconnect();
-          onDisconnect?.();
+          onConnectChange?.({
+            data: undefined,
+            isConnected: false,
+          });
         }}
         open={accountModalOpen}
       />
