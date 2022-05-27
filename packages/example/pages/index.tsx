@@ -218,7 +218,9 @@ const Example = () => {
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
                 disabled={!accountData}
-                onClick={() => sendTransaction()}
+                onClick={() => {
+                  sendTransaction();
+                }}
                 type="button"
               >
                 Send Transaction
