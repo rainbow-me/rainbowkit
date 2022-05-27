@@ -6,40 +6,41 @@ title: Migrating to 0.2
 
 ## Migrating RainbowKit
 
-If you are coming from an earlier version of RainbowKit, in order to update to `0.2`, you will need to make sure to update the APIs listed below.
+RainbowKit has updated the `wagmi` peer dependency to `^0.4` which comes with a few [breaking changes](https://wagmi.sh/docs/migrating-to-03#04x-breaking-changes).
 
-### Removed the configureChains & apiProvider exports
+Follow the steps below to migrate.
 
-RainbowKit has updated the `wagmi` peer dependency to `^0.4` which comes with configuring chains & providers built-in. You no longer need to use RainbowKit's `configureChains` and `apiProvider` API.
+#### 1. Upgrade dependencies
 
-Follow the steps below to migrate:
+Upgrade RainbowKit and wagmi to their latest version:
 
-#### 1. Upgrade wagmi
-
-```
-npm i wagmi@^0.4.2
+```bash
+npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2. Migrate configureChains
+#### 2. Replace configureChains import
+
+Import `configureChains` from wagmi instead of RainbowKit:
 
 ```diff
-import {
-  apiProvider,
--  configureChains
-} from '@rainbow-me/rainbowkit';
-+import { configureChains } from 'wagmi';
+- import { configureChains } from '@rainbow-me/rainbowkit';
++ import { configureChains } from 'wagmi';
 ```
 
 #### 3. Migrate providers
 
-##### `apiProvider.alchemy` to `alchemyProvider`
+RainbowKit no longer exports an `apiProvider` API. Replace it with your desired provider from wagmi.
 
 ```diff
--import {
--  apiProvider,
--} from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-+import { alchemyProvider } from 'wagmi/providers/alchemy';
+- import { apiProvider } from '@rainbow-me/rainbowkit';
+```
+
+#### Alchemy
+
+Import `alchemyProvider` from `wagmi/providers/alchemy`.
+
+```diff
++ import { alchemyProvider } from 'wagmi/providers/alchemy';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
@@ -48,13 +49,11 @@ const { chains, provider } = configureChains(
 );
 ```
 
-##### `apiProvider.infura` to `infuraProvider`
+#### Infura
+
+Import `infuraProvider` from `wagmi/providers/infura`.
 
 ```diff
--import {
--  apiProvider,
--} from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
 +import { infuraProvider } from 'wagmi/providers/infura';
 
 const { chains, provider } = configureChains(
@@ -64,14 +63,12 @@ const { chains, provider } = configureChains(
 );
 ```
 
-##### `apiProvider.jsonRpc` to `jsonRpcProvider`
+#### JSON RPC
+
+Import `jsonRpcProvider` from `wagmi/providers/jsonRpc`.
 
 ```diff
--import {
--  apiProvider,
--} from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
++ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon],
@@ -88,14 +85,12 @@ const { chains, provider } = configureChains(
 );
 ```
 
-##### `apiProvider.fallback` to `publicProvider`
+#### Public provider
+
+Import `publicProvider` from `wagmi/providers/public`.
 
 ```diff
--import {
--  apiProvider,
--} from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-+import { publicProvider } from 'wagmi/providers/public';
++ import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon],
@@ -103,3 +98,23 @@ const { chains, provider } = configureChains(
 + [publicProvider()]
 );
 ```
+
+#### 4. Rename wagmi's provider
+
+Rename `WamgiProvider` to `WagmiConfig`.
+
+```diff
+import {
+- WagmiProvider
++ WagmiConfig
+} from 'wagmi'
+
+const App = () => {
+  return (
+-   <WagmiProvider client={wagmiClient}>...</WagmiProvider>
++   <WagmiConfig client={wagmiClient}>...</WagmiConfig>
+  );
+};
+```
+
+And you're done! 🌈
