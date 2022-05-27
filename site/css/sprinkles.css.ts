@@ -129,6 +129,7 @@ const responsiveProperties = defineProperties({
     paddingTop: vars.space,
     position: ['absolute', 'fixed', 'relative', 'sticky'],
     right: { ...vars.space, ...negativeSpace },
+    scrollMarginTop: { ...vars.space },
     textAlign: ['center', 'left', 'right'],
     top: { ...vars.space, ...negativeSpace },
     width: {

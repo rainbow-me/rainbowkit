@@ -196,6 +196,9 @@ export const tokens = {
     '10': '40px',
     '11': '64px',
     '12': '128px',
+    'scrollTop1': '100px',
+    'scrollTop2': '133px',
+    'scrollTop3': '137px',
   },
   borderWidths: {
     '0': '0px',
