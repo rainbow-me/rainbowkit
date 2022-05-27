@@ -9,6 +9,8 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
@@ -100,7 +102,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
-  const { learnMoreUrl } = useContext(AppContext);
+  const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;
   let walletContent = null;
@@ -118,7 +120,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       headerLabel = 'Connect a Wallet';
       headerBackgroundContrast = true;
       walletContent = (
-        <>
+        <Box>
           <Box
             background="profileForeground"
             className={styles.scroll}
@@ -189,7 +191,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
             </Box>
           </Box>
-        </>
+          {Disclaimer && (
+            <Box marginTop="28" marginX="32" textAlign="center">
+              <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
+            </Box>
+          )}
+        </Box>
       );
       break;
     }
@@ -204,7 +211,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         ?.splice(0, 3);
 
       walletContent = (
-        <>
+        <Box>
           <Box
             alignItems="center"
             display="flex"
@@ -292,7 +299,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               </Text>
             </Box>
           </Box>
-        </>
+        </Box>
       );
       break;
     }

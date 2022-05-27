@@ -2,14 +2,15 @@ import React, { useContext } from 'react';
 import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
-  const { learnMoreUrl } = useContext(AppContext);
+  const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   return (
     <>
@@ -18,18 +19,20 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         color="accentColor"
         display="flex"
         flexDirection="column"
-        justifyContent="center"
-        style={{ gap: 62 }}
+        height="full"
+        justifyContent="space-around"
       >
-        <Text color="modalText" size="18" weight="heavy">
-          What is a Wallet?
-        </Text>
+        <Box marginBottom="10">
+          <Text color="modalText" size="18" weight="heavy">
+            What is a Wallet?
+          </Text>
+        </Box>
         <Box
           display="flex"
           flexDirection="column"
           gap="32"
-          height="full"
           justifyContent="center"
+          marginY="20"
           style={{ maxWidth: 312 }}
         >
           <Box alignItems="center" display="flex" flexDirection="row" gap="16">
@@ -67,7 +70,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           flexDirection="column"
           gap="12"
           justifyContent="center"
-          marginTop="8"
+          margin="10"
         >
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
@@ -91,6 +94,11 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Box>
           </Box>
         </Box>
+        {Disclaimer && (
+          <Box marginBottom="8" marginTop="12" textAlign="center">
+            <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
+          </Box>
+        )}
       </Box>
     </>
   );

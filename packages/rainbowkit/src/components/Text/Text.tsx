@@ -25,6 +25,7 @@ export type TextProps = {
   className?: string;
   tabIndex?: number;
   textAlign?: BoxProps['textAlign'];
+  display?: BoxProps['display'];
 };
 
 export const Text = React.forwardRef(
@@ -34,6 +35,7 @@ export const Text = React.forwardRef(
       children,
       className,
       color,
+      display,
       font = 'body',
       id,
       size = '16',
@@ -48,6 +50,7 @@ export const Text = React.forwardRef(
         as={as}
         className={className}
         color={color}
+        display={display}
         fontFamily={font}
         fontSize={size}
         fontWeight={weight}
