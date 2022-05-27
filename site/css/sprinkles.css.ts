@@ -129,7 +129,6 @@ const responsiveProperties = defineProperties({
     paddingTop: vars.space,
     position: ['absolute', 'fixed', 'relative', 'sticky'],
     right: { ...vars.space, ...negativeSpace },
-    scrollMarginTop: { ...vars.space },
     textAlign: ['center', 'left', 'right'],
     top: { ...vars.space, ...negativeSpace },
     width: {
@@ -167,6 +166,7 @@ const unresponsiveProperties = defineProperties({
     isolation: ['isolate'],
     objectFit: ['contain', 'cover'],
     pointerEvents: ['none'],
+    scrollMarginTop: vars.space,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     transitionProperty: {
       none: 'none',

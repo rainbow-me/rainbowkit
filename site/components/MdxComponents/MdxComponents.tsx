@@ -63,17 +63,7 @@ export const components = {
   ),
   h3: ({ id, ...props }) => {
     return (
-      <Box
-        id={id}
-        marginBottom="2"
-        marginTop="11"
-        scrollMarginTop={{
-          lg: 'scrollTop1',
-          md: 'scrollTop2',
-          sm: 'scrollTop3',
-          xs: 'scrollTop3',
-        }}
-      >
+      <Box id={id} marginBottom="2" marginTop="11" scrollMarginTop="12">
         <Link href={`#${id}`}>
           <Text
             as="h3"
@@ -87,17 +77,7 @@ export const components = {
     );
   },
   h4: ({ id, ...props }) => (
-    <Box
-      id={id}
-      marginBottom="2"
-      marginTop="10"
-      scrollMarginTop={{
-        lg: 'scrollTop1',
-        md: 'scrollTop2',
-        sm: 'scrollTop3',
-        xs: 'scrollTop3',
-      }}
-    >
+    <Box id={id} marginBottom="2" marginTop="10" scrollMarginTop="12">
       <Link href={`#${id}`}>
         <Text
           as="h4"
