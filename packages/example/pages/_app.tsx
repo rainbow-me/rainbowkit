@@ -97,11 +97,15 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
+const overlayBlurs = ['large', 'small', 'none'] as const;
+type OverlayBlur = typeof overlayBlurs[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
@@ -136,6 +140,7 @@ function App({ Component, pageProps }: AppProps) {
             ...accentColor,
             borderRadius: selectedRadiusScale,
             fontStack: selectedFontStack,
+            overlayBlur: selectedOverlayBlur,
           })}
         >
           <div style={{ padding: 8 }}>
@@ -307,6 +312,35 @@ function App({ Component, pageProps }: AppProps) {
                               value={radiusScale}
                             />{' '}
                             {radiusScale}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Overlay blurs</h4>
+                      <div
+                        style={{
+                          alignItems: 'flex-start',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 12,
+                        }}
+                      >
+                        {overlayBlurs.map(overlayBlur => (
+                          <label
+                            key={overlayBlur}
+                            style={{ userSelect: 'none' }}
+                          >
+                            <input
+                              checked={overlayBlur === selectedOverlayBlur}
+                              name="overlayBlur"
+                              onChange={e =>
+                                setOverlayBlur(e.target.value as OverlayBlur)
+                              }
+                              type="radio"
+                              value={overlayBlur}
+                            />{' '}
+                            {overlayBlur}
                           </label>
                         ))}
                       </div>

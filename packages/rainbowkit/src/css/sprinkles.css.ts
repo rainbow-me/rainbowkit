@@ -59,6 +59,9 @@ const themeContractValues = {
     selectedWallet: '',
     walletLogo: '',
   },
+  blurs: {
+    modalOverlay: '',
+  },
 };
 
 export type ThemeVars = typeof themeContractValues;
@@ -232,6 +235,9 @@ const unresponsiveProperties = defineProperties({
     },
     userSelect: ['none'] as const,
     width: dimensions,
+    backdropFilter: {
+      ...themeVars.blurs,
+    },
   } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
