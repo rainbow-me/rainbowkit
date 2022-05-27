@@ -63,27 +63,31 @@ export const components = {
   ),
   h3: ({ id, ...props }) => {
     return (
-      <span id={id} style={{ scrollMarginTop: 100 }}>
+      <Box id={id} marginBottom="2" marginTop="11" scrollMarginTop="12">
+        <Link href={`#${id}`}>
+          <Text
+            as="h3"
+            display="inline"
+            variant="title2"
+            weight="semibold"
+            {...props}
+          />
+        </Link>
+      </Box>
+    );
+  },
+  h4: ({ id, ...props }) => (
+    <Box id={id} marginBottom="2" marginTop="10" scrollMarginTop="12">
+      <Link href={`#${id}`}>
         <Text
-          as="h3"
-          marginBottom="2"
-          marginTop="11"
-          variant="title2"
+          as="h4"
+          display="inline"
+          variant="title3"
           weight="semibold"
           {...props}
         />
-      </span>
-    );
-  },
-  h4: props => (
-    <Text
-      as="h4"
-      marginBottom="2"
-      marginTop="10"
-      variant="title3"
-      weight="semibold"
-      {...props}
-    />
+      </Link>
+    </Box>
   ),
   Img: props => <NextImage {...props} />,
   li: ({ children, ...props }) => (
