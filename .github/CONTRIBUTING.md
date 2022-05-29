@@ -57,6 +57,42 @@ If snapshot tests fail, you can run the following command to update the snapshot
 pnpm test:update
 ```
 
+## Working on create-rainbowkit
+
+### Template
+
+To run the Next.js app template directly without any scaffolding:
+
+```bash
+pnpm dev:template:next-app
+```
+
+### CLI
+
+To build the CLI in watch mode:
+
+```bash
+pnpm dev:cli
+```
+
+To scaffold a template with the CLI and start a local dev server:
+
+```bash
+pnpm test:cli:dev
+```
+
+**Before committing any work, please ensure the lock file is cleaned up. This is necessary because running the CLI tests installs dependencies that get added to the repo's lock file.**
+
+```bash
+pnpm clean
+```
+
+You can also link the create-rainbowkit command globally. This allows you to try out create-rainbowkit elsewhere on your machine. Note that it will install the latest version of RainbowKit from npm so it's possible the template will be using APIs that haven't been released yet. This is most useful for seeing what the CLI looks like for a typical consumer.
+
+```bash
+pnpm link:cli
+```
+
 ## Release notes
 
 RainbowKit uses [Changesets](https://github.com/changesets/changesets) to manage versioning and publishing.
