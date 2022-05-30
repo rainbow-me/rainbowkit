@@ -34,4 +34,4 @@ jobs:
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
-        run: git config --global user.email "bot@example.com" && git config --global user.name "Test Bot" && pnpm test && pnpm test:cli
+        run: pnpm test && pnpm test:cli

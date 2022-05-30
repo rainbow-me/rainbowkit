@@ -37,7 +37,7 @@ function omitRootDependencies(packageName, dependencies) {
         [
           `Dependency ${dep} has different version in root package.json. Root: ${rootDependencies[dep]}, ${packageName}: ${dependencies[dep]}`,
           packageName === 'test-app' &&
-            'You might have stale files left over from a past create-rainbowkit run. Try running "pnpm clean".',
+            'You might have stale files left over from a past create-rainbowkit run. Try running "pnpm test:cli:clean" and then "pnpm test:cli:dev" after install to regenerate test app.',
         ]
           .filter(Boolean)
           .join('\n')

@@ -67,6 +67,12 @@ To run the Next.js app template directly without any scaffolding:
 pnpm dev:template:next-app
 ```
 
+If you make any template changes, commit the result of running the test script. This ensures that the lock file is up to date since the test app is part of the monorepo.
+
+```bash
+pnpm test:cli:dev
+```
+
 ### CLI
 
 To build the CLI in watch mode:
@@ -79,12 +85,6 @@ To scaffold a template with the CLI and start a local dev server:
 
 ```bash
 pnpm test:cli:dev
-```
-
-**Before committing any work, please ensure the lock file is cleaned up. This is necessary because running the CLI tests installs dependencies that get added to the repo's lock file.**
-
-```bash
-pnpm clean
 ```
 
 You can also link the create-rainbowkit command globally. This allows you to try out create-rainbowkit elsewhere on your machine. Note that it will install the latest version of RainbowKit from npm so it's possible the template will be using APIs that haven't been released yet. This is most useful for seeing what the CLI looks like for a typical consumer.

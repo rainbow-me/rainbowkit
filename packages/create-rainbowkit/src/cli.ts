@@ -40,6 +40,7 @@ async function run() {
         '--use-pnpm',
         'Explicitly tell the CLI to bootstrap the app using pnpm'
       )
+      .option('--skip-git', 'Skip initializing a git repository')
       .allowUnknownOption()
       .parse(process.argv);
 
@@ -191,15 +192,22 @@ async function run() {
       });
     }
 
-    log(chalk.cyan(`📚 Initializing git repository`));
-    await execa('git', ['init'], { cwd: targetPath });
-    await execa('git', ['branch', '-m', 'main'], { cwd: targetPath });
-    await execa('git', ['add', '.'], { cwd: targetPath });
-    await execa(
-      'git',
-      ['commit', '--no-verify', '-am', 'Initial commit from create-rainbowkit'],
-      { cwd: targetPath }
-    );
+    if (!options.skipGit) {
+      log(chalk.cyan(`📚 Initializing git repository`));
+      await execa('git', ['init'], { cwd: targetPath });
+      await execa('git', ['branch', '-m', 'main'], { cwd: targetPath });
+      await execa('git', ['add', '.'], { cwd: targetPath });
+      await execa(
+        'git',
+        [
+          'commit',
+          '--no-verify',
+          '-am',
+          'Initial commit from create-rainbowkit',
+        ],
+        { cwd: targetPath }
+      );
+    }
 
     log(chalk.green(`🌈 Done! Thanks for using RainbowKit 🙏`));
     log();

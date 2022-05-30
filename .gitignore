@@ -1,9 +1,6 @@
 # The readme is copied from the root before release
 packages/rainbowkit/README.md
 
-# CLI test output
-test-app
-
 # Logs
 logs
 *.log
