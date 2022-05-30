@@ -46,15 +46,38 @@ const radiusScales: Record<
   },
 };
 
+type Blurs = 'large' | 'small' | 'none';
+const blurs: Record<
+  Blurs,
+  {
+    modalOverlay: string;
+  }
+> = {
+  large: {
+    modalOverlay: 'blur(20px)',
+  },
+  none: {
+    modalOverlay: 'blur(0px)',
+  },
+  small: {
+    modalOverlay: 'blur(4px)',
+  },
+};
+
 interface BaseThemeOptions {
   borderRadius?: RadiusScale;
   fontStack?: FontStack;
+  overlayBlur?: Blurs;
 }
 
 export const baseTheme = ({
   borderRadius = 'large',
   fontStack = 'rounded',
-}: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts'> => ({
+  overlayBlur = 'none',
+}: BaseThemeOptions): Pick<ThemeVars, 'radii' | 'fonts' | 'blurs'> => ({
+  blurs: {
+    modalOverlay: blurs[overlayBlur].modalOverlay,
+  },
   fonts: {
     body: fontStacks[fontStack],
   },

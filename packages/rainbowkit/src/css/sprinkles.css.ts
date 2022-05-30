@@ -59,6 +59,9 @@ const themeContractValues = {
     selectedWallet: '',
     walletLogo: '',
   },
+  blurs: {
+    modalOverlay: '',
+  },
 };
 
 export type ThemeVars = typeof themeContractValues;
@@ -159,7 +162,7 @@ const responsiveProperties = defineProperties({
   defaultCondition: 'smallScreen',
   properties: {
     alignItems: flexAlignment,
-    display: ['none', 'block', 'flex'],
+    display: ['none', 'block', 'flex', 'inline'],
   },
 });
 
@@ -213,7 +216,7 @@ const unresponsiveProperties = defineProperties({
     },
     gap: spacing,
     height: dimensions,
-    justifyContent: [...flexAlignment, 'space-between'],
+    justifyContent: [...flexAlignment, 'space-between', 'space-around'],
     textAlign: textAlignments,
     marginBottom: spacing,
     marginLeft: spacing,
@@ -232,6 +235,9 @@ const unresponsiveProperties = defineProperties({
     },
     userSelect: ['none'] as const,
     width: dimensions,
+    backdropFilter: {
+      ...themeVars.blurs,
+    },
   } as const,
   shorthands: {
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],

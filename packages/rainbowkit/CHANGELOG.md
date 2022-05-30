@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.2.1
+
+### Patch Changes
+
+- a921853: Add `disclaimer` to the `appInfo` property in `RainbowKitProvider`, which displays a custom disclaimer at the bottom of the connection modal's welcome screen
+
 ## 0.2.0
 
 ### Minor Changes

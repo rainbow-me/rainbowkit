@@ -18,6 +18,7 @@ type Props = {
     | 'span';
   children?: React.ReactNode;
   color?: BoxProps['color'];
+  display?: BoxProps['display'];
   font?: BoxProps['fontFamily'];
   margin?: BoxProps['margin'];
   marginBottom?: BoxProps['marginBottom'];
@@ -40,6 +41,7 @@ export const Text = React.forwardRef(
       as = 'div',
       children,
       color = 'label',
+      display,
       font = 'normal',
       margin,
       marginBottom,
@@ -66,6 +68,7 @@ export const Text = React.forwardRef(
           weight,
         })}
         color={color}
+        display={display}
         fontFamily={font}
         fontSize={size}
         margin={margin}

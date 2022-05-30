@@ -3,6 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import {
   connectorsForWallets,
   darkTheme,
+  DisclaimerComponent,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -17,6 +18,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
+const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -38,6 +40,16 @@ const { wallets } = getDefaultWallets({
 
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
+};
+
+const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
+  return (
+    <Text>
+      By connecting, you agree to this demo&apos;s{' '}
+      <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
+      have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
+    </Text>
+  );
 };
 
 const connectors = connectorsForWallets([
@@ -85,13 +97,18 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
+const overlayBlurs = ['large', 'small', 'none'] as const;
+type OverlayBlur = typeof overlayBlurs[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -112,7 +129,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
-          appInfo={demoAppInfo}
+          appInfo={{
+            ...demoAppInfo,
+            ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
+          }}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -120,6 +140,7 @@ function App({ Component, pageProps }: AppProps) {
             ...accentColor,
             borderRadius: selectedRadiusScale,
             fontStack: selectedFontStack,
+            overlayBlur: selectedOverlayBlur,
           })}
         >
           <div style={{ padding: 8 }}>
@@ -161,6 +182,15 @@ function App({ Component, pageProps }: AppProps) {
                       />{' '}
                       coolMode
                     </label>
+                    <label style={{ userSelect: 'none' }}>
+                      <input
+                        checked={showDisclaimer}
+                        name="showDisclaimer"
+                        onChange={e => setShowDisclaimer(e.target.checked)}
+                        type="checkbox"
+                      />{' '}
+                      disclaimer
+                    </label>
                   </div>
                 </div>
                 <div
@@ -172,6 +202,7 @@ function App({ Component, pageProps }: AppProps) {
                   <div
                     style={{
                       display: 'flex',
+                      flexWrap: 'wrap',
                       gap: 24,
                     }}
                   >
@@ -281,6 +312,35 @@ function App({ Component, pageProps }: AppProps) {
                               value={radiusScale}
                             />{' '}
                             {radiusScale}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Overlay blurs</h4>
+                      <div
+                        style={{
+                          alignItems: 'flex-start',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 12,
+                        }}
+                      >
+                        {overlayBlurs.map(overlayBlur => (
+                          <label
+                            key={overlayBlur}
+                            style={{ userSelect: 'none' }}
+                          >
+                            <input
+                              checked={overlayBlur === selectedOverlayBlur}
+                              name="overlayBlur"
+                              onChange={e =>
+                                setOverlayBlur(e.target.value as OverlayBlur)
+                              }
+                              type="radio"
+                              value={overlayBlur}
+                            />{' '}
+                            {overlayBlur}
                           </label>
                         ))}
                       </div>
