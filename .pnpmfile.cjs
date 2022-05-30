@@ -31,6 +31,8 @@ function omitRootDependencies(packageName, dependencies) {
 
   Object.keys(dependencies).forEach(dep => {
     if (!rootDependencies[dep] || allowedDuplicatePackages.includes(dep)) {
+      // Keep the dependency in the app template's package.json since it's not in the
+      // root package.json (or in the list of allowed duplicate packages).
       filteredDependencies[dep] = dependencies[dep];
     } else if (rootDependencies[dep] !== dependencies[dep]) {
       throw new Error(
