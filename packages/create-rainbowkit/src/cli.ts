@@ -154,6 +154,7 @@ async function run() {
     // Update package name
     const pkgJson = await fs.readJson(path.join(targetPath, 'package.json'));
     pkgJson.name = projectPath;
+    pkgJson.version = '0.1.0';
 
     if (process.env.INSTALL_WORKSPACE_RAINBOWKIT !== 'true') {
       // Remove RainbowKit workspace dependency so we can install latest
