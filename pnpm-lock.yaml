@@ -106,6 +106,19 @@ importers:
       '@types/validate-npm-package-name': 3.0.3
       chalk: 5.0.1
 
+  packages/create-rainbowkit/generated-test-app:
+    specifiers:
+      '@rainbow-me/rainbowkit': workspace:*
+      eslint: ^8.15.0
+      eslint-config-next: ^12.1.6
+      ethers: ^5.6.8
+    dependencies:
+      '@rainbow-me/rainbowkit': link:../../rainbowkit
+      ethers: 5.6.8
+    devDependencies:
+      eslint: 8.15.0
+      eslint-config-next: 12.1.6_eslint@8.15.0
+
   packages/create-rainbowkit/templates/next-app:
     specifiers:
       '@rainbow-me/rainbowkit': workspace:*
@@ -114,19 +127,6 @@ importers:
       ethers: ^5.6.8
     dependencies:
       '@rainbow-me/rainbowkit': link:../../../rainbowkit
-      ethers: 5.6.8
-    devDependencies:
-      eslint: 8.15.0
-      eslint-config-next: 12.1.6_eslint@8.15.0
-
-  packages/create-rainbowkit/test-app:
-    specifiers:
-      '@rainbow-me/rainbowkit': workspace:*
-      eslint: ^8.15.0
-      eslint-config-next: ^12.1.6
-      ethers: ^5.6.8
-    dependencies:
-      '@rainbow-me/rainbowkit': link:../../rainbowkit
       ethers: 5.6.8
     devDependencies:
       eslint: 8.15.0
@@ -4438,7 +4438,7 @@ packages:
     dev: true
 
   /aes-js/3.0.0:
-    resolution: {integrity: sha1-4h3xCtbCBTKVvLuNq0Cwnb6ofk0=}
+    resolution: {integrity: sha512-H7wUZRn8WpTq9jocdxQ2c8x2sKo9ZVmzfRE13GiNJXfp7NcKYEdvl3vspKjXox6RIG2VtaRe4JFvxG4rqp2Zuw==}
 
   /aes-js/3.1.2:
     resolution: {integrity: sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==}
@@ -7177,7 +7177,7 @@ packages:
     dev: true
 
   /fs.realpath/1.0.0:
-    resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=}
+    resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
   /fsevents/2.3.2:
@@ -7596,7 +7596,7 @@ packages:
     dev: true
 
   /inflight/1.0.6:
-    resolution: {integrity: sha1-Sb1jMdfQLQwJvJEKEHW6gWW1bfk=}
+    resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2

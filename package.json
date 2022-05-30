@@ -21,7 +21,7 @@
     "test:watch": "vitest --watch",
     "test:cli": "pnpm --filter @rainbow-me/create-rainbowkit test:build",
     "test:cli:dev": "pnpm --filter @rainbow-me/create-rainbowkit test:dev",
-    "test:cli:clean": "rm -rf ./packages/create-rainbowkit/test-app",
+    "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
     "changeset": "changeset",
     "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules && rm -rf ./packages/create-rainbowkit/dist && pnpm install",
     "release": "pnpm release:verify-git && pnpm release:build && changeset publish",

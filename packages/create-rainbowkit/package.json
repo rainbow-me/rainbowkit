@@ -15,9 +15,9 @@
     "build": "node build.js",
     "dev": "node build.js --watch",
     "typecheck": "tsc --noEmit",
-    "test:setup": "rm -rf test-app && INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli test-app --skip-git && cd test-app",
-    "test:dev": "pnpm test:setup && cd test-app && pnpm dev",
-    "test:build": "pnpm test:setup && cd test-app && pnpm build",
+    "test:setup": "rm -rf generated-test-app && INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli generated-test-app --skip-git && cd generated-test-app",
+    "test:dev": "pnpm test:setup && cd generated-test-app && pnpm dev",
+    "test:build": "pnpm test:setup && cd generated-test-app && pnpm build",
     "test": "pnpm test:build"
   },
   "dependencies": {
