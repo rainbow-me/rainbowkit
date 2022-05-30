@@ -203,7 +203,7 @@ async function run() {
         [
           'commit',
           '--no-verify',
-          '-am',
+          '--message',
           'Initial commit from create-rainbowkit',
         ],
         { cwd: targetPath }
