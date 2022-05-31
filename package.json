@@ -6,6 +6,9 @@
   "scripts": {
     "postinstall": "husky install",
     "dev": "pnpm --recursive --parallel dev",
+    "dev:lib": "pnpm --filter @rainbow-me/rainbowkit dev",
+    "dev:example": "pnpm dev:lib & pnpm --filter example dev",
+    "dev:site": "pnpm dev:lib & pnpm --filter site dev",
     "start": "pnpm dev",
     "lint": "eslint . --ext=js,jsx,mjs,ts,cjs,tsx && pnpm format:check && pnpm --recursive typecheck",
     "lint:fix": "eslint . --ext=js,jsx,mjs,ts,cjs,tsx --fix && pnpm format:fix",
