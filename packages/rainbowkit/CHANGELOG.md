@@ -1,5 +1,20 @@
 # @rainbow-me/rainbowkit
 
+## 0.2.2
+
+### Patch Changes
+
+- 4be196e: Ensure Brave Wallet and Tokenary aren’t detected as MetaMask
+
+  Both Brave Wallet and Tokenary set `window.ethereum.isMetaMask` to `true` which causes issues with the logic for providing the fallback "Injected Wallet" option. Similar to wagmi, we now detect when MetaMask is being impersonated by these wallets.
+
+- 7403fab: Add dialog overlay blurs to the theme
+- 4be196e: Add Brave Wallet support
+
+  Brave Wallet is now included as part of the default set of wallets returned from `getDefaultWallets`, but note that is only visible within the Brave browser to avoid prompting users to download an entirely different web browser.
+
+  Brave Wallet is also included as part of the `wallet` object to support its usage in [custom wallet lists,](https://www.rainbowkit.com/docs/custom-wallet-list) e.g. `wallet.brave({ chains, shimDisconnect: true })`.
+
 ## 0.2.1
 
 ### Patch Changes
