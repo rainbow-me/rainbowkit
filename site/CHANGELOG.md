@@ -1,5 +1,16 @@
 # site
 
+## 0.0.8
+
+### Patch Changes
+
+- 7403fab: Add dialog overlay blurs to the theme
+- 10c09d3: Add anchor scrolling for documentation site
+- Updated dependencies [4be196e]
+- Updated dependencies [7403fab]
+- Updated dependencies [4be196e]
+  - @rainbow-me/rainbowkit@0.2.2
+
 ## 0.0.7
 
 ### Patch Changes
