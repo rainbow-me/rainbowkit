@@ -1,13 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
+import { AvatarContext } from '../RainbowKitProvider/AvatarContext';
 import { emojiAvatarForAddress } from './emojiAvatarForAddress';
 
 interface AvatarProps {
-  size: number;
-  imageUrl?: string | null;
   address: string;
   loading?: boolean;
+  imageUrl?: string | null;
+  size: number;
 }
 
 export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
@@ -15,6 +16,9 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
     () => emojiAvatarForAddress(address),
     [address]
   );
+
+  const { component: CustomAvatar, overrideEnsImage } =
+    useContext(AvatarContext);
 
   return (
     <Box
@@ -47,7 +51,7 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         }}
         userSelect="none"
       >
-        {imageUrl ? (
+        {imageUrl && !overrideEnsImage ? (
           <Box
             backgroundSize="cover"
             borderRadius="full"
@@ -59,6 +63,8 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
             }}
             width="full"
           />
+        ) : CustomAvatar ? (
+          <CustomAvatar address={address} ensImage={imageUrl} size={size} />
         ) : (
           emoji
         )}
