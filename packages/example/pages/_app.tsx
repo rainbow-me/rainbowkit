@@ -1,6 +1,7 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  Chain,
   connectorsForWallets,
   darkTheme,
   DisclaimerComponent,
@@ -20,12 +21,32 @@ import { publicProvider } from 'wagmi/providers/public';
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
+const avalancheChain: Chain = {
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  id: 43_114,
+  name: 'Avalanche',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  network: 'avalanche',
+  rpcUrls: {
+    default: 'https://api.avax.network/ext/bc/C/rpc',
+  },
+  testnet: false,
+};
+
 const { chains, provider, webSocketProvider } = configureChains(
   [
     chain.mainnet,
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
+    avalancheChain,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
