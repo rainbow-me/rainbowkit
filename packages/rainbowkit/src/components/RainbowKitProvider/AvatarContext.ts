@@ -8,12 +8,6 @@ export type AvatarComponentProps = {
 };
 export type AvatarComponent = React.FunctionComponent<AvatarComponentProps>;
 
-export const defaultAvatar = {
-  component: EmojiAvatar,
-  overrideEnsImage: false,
-};
+export const defaultAvatar = EmojiAvatar;
 
-export const AvatarContext =
-  createContext<{ component: AvatarComponent; overrideEnsImage: boolean }>(
-    defaultAvatar
-  );
+export const AvatarContext = createContext<AvatarComponent>(defaultAvatar);

@@ -174,7 +174,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
-          avatar={customAvatar ? { component: CustomAvatar } : undefined}
+          avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}

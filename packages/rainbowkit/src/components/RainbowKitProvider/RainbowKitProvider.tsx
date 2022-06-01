@@ -50,9 +50,7 @@ export interface RainbowKitProviderProps {
     disclaimer?: DisclaimerComponent;
   };
   coolMode?: boolean;
-  avatar?: {
-    component?: AvatarComponent;
-  };
+  avatar?: AvatarComponent;
 }
 
 const defaultTheme = lightTheme();
@@ -85,10 +83,7 @@ export function RainbowKitProvider({
     ...appInfo,
   };
 
-  const avatarContext = {
-    ...defaultAvatar,
-    ...avatar,
-  };
+  const avatarContext = avatar ?? defaultAvatar;
 
   return (
     <RainbowKitChainContext.Provider value={rainbowkitChains}>

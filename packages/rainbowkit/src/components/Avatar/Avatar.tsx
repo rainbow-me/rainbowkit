@@ -11,7 +11,7 @@ interface AvatarProps {
 }
 
 export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
-  const { component: AvatarComponent } = useContext(AvatarContext);
+  const AvatarComponent = useContext(AvatarContext);
 
   return (
     <Box
