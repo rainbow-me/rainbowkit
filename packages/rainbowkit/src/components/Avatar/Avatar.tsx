@@ -1,8 +1,7 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { AvatarContext } from '../RainbowKitProvider/AvatarContext';
-import { emojiAvatarForAddress } from './emojiAvatarForAddress';
 
 interface AvatarProps {
   address: string;
@@ -12,13 +11,7 @@ interface AvatarProps {
 }
 
 export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
-  const { color: backgroundColor, emoji } = useMemo(
-    () => emojiAvatarForAddress(address),
-    [address]
-  );
-
-  const { component: CustomAvatar, overrideEnsImage } =
-    useContext(AvatarContext);
+  const { component: AvatarComponent } = useContext(AvatarContext);
 
   return (
     <Box
@@ -40,7 +33,6 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         overflow="hidden"
         position="absolute"
         style={{
-          ...(!imageUrl && { backgroundColor }),
           fontSize: `${Math.round(size * 0.55)}px`,
           height: `${size}px`,
           transform: loading ? 'scale(0.72)' : undefined,
@@ -51,23 +43,7 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         }}
         userSelect="none"
       >
-        {imageUrl && !overrideEnsImage ? (
-          <Box
-            backgroundSize="cover"
-            borderRadius="full"
-            height="full"
-            position="absolute"
-            style={{
-              backgroundImage: `url(${imageUrl})`,
-              backgroundPosition: 'center',
-            }}
-            width="full"
-          />
-        ) : CustomAvatar ? (
-          <CustomAvatar address={address} ensImage={imageUrl} size={size} />
-        ) : (
-          emoji
-        )}
+        <AvatarComponent address={address} ensImage={imageUrl} size={size} />
       </Box>
       {typeof loading === 'boolean' && (
         <Box

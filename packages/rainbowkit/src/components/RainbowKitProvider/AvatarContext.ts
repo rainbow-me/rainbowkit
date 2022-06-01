@@ -1,4 +1,5 @@
 import React, { createContext } from 'react';
+import { EmojiAvatar } from '../Avatar/EmojiAvatar';
 
 export type AvatarComponentProps = {
   address: string;
@@ -8,11 +9,11 @@ export type AvatarComponentProps = {
 export type AvatarComponent = React.FunctionComponent<AvatarComponentProps>;
 
 export const defaultAvatar = {
-  component: undefined,
+  component: EmojiAvatar,
   overrideEnsImage: false,
 };
 
 export const AvatarContext =
-  createContext<{ component?: AvatarComponent; overrideEnsImage: boolean }>(
+  createContext<{ component: AvatarComponent; overrideEnsImage: boolean }>(
     defaultAvatar
   );
