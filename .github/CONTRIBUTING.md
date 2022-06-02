@@ -146,10 +146,16 @@ git push --tags
 
 Once you’ve pushed the tag, you can create a new release on GitHub.
 
-- Navigate to the [new release form on GitHub.](https://github.com/rainbow-me/rainbowkit/releases/new)
-- From the dropdown labelled “Choose a tag”, select the latest version tag for `@rainbow-me/rainbowkit`.
-- Set the title to `@rainbow-me/rainbowkit@x.x.x`, substituting the latest version number.
-- Copy the Markdown content below the latest version heading from the [RainbowKit changelog.](../packages/rainbowkit/CHANGELOG.md)
+- If you published `rainbowkit`:
+  - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
+  - Select the latest version tag for `@rainbow-me/rainbowkit`.
+  - Set the title to `@rainbow-me/rainbowkit@x.x.x` (substituting the latest version)
+  - Copy the Markdown content below the latest version heading from [RainbowKit’s `CHANGELOG.md`](../packages/rainbowkit/CHANGELOG.md)
+- If you published `create-rainbowkit`:
+  - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
+  - Select the latest version tag for `@rainbow-me/create-rainbowkit`.
+  - Set the title to `@rainbow-me/create-rainbowkit@x.x.x` (substituting the latest version)
+  - Copy the Markdown content below the latest version heading from [create-rainbowkit’s `CHANGELOG.md`](../packages/create-rainbowkit/CHANGELOG.md)
 
 If at any stage you’re unsure of the formatting, you can [reference past RainbowKit releases.](https://github.com/rainbow-me/rainbowkit/releases)
 
