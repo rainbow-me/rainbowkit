@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
@@ -38,55 +39,53 @@ export const ModalSelection = ({
       <Box
         as={as}
         borderRadius="menuButton"
+        borderStyle="solid"
+        borderWidth="1"
+        className={
+          !currentlySelected
+            ? [
+                styles.transparentBorder,
+                touchableStyles({
+                  active: 'shrink',
+                }),
+              ]
+            : undefined
+        }
         disabled={currentlySelected}
-        display="flex"
         onClick={onClick}
+        padding="5"
+        style={{ willChange: 'transform' }}
+        transition="default"
+        width="full"
+        {...(currentlySelected
+          ? {
+              background: 'accentColor',
+              borderColor: 'selectedOptionBorder',
+              boxShadow: 'selectedWallet',
+            }
+          : {
+              background: { hover: 'menuItemBackground' },
+            })}
+        {...urlProps}
       >
         <Box
-          borderRadius="menuButton"
-          borderStyle="solid"
-          borderWidth="1"
-          padding="5"
-          style={{ willChange: 'transform' }}
+          color={currentlySelected ? 'accentColorForeground' : 'modalText'}
+          disabled={!ready}
+          fontFamily="body"
+          fontSize="16"
+          fontWeight="bold"
           transition="default"
-          width="full"
-          {...(currentlySelected
-            ? {
-                background: 'accentColor',
-                borderColor: 'selectedOptionBorder',
-                boxShadow: 'selectedWallet',
-              }
-            : {
-                background: { hover: 'menuItemBackground' },
-                className: styles.transparentBorder,
-                transform: { active: 'shrink' },
-              })}
-          {...urlProps}
         >
-          <Box
-            color={currentlySelected ? 'accentColorForeground' : 'modalText'}
-            disabled={!ready}
-            fontFamily="body"
-            fontSize="16"
-            fontWeight="bold"
-            transition="default"
-          >
-            <Box
-              alignItems="center"
-              display="flex"
-              flexDirection="row"
-              gap="12"
-            >
-              <AsyncImage
-                background={iconBackground}
-                {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
-                borderRadius="6"
-                height="28"
-                src={iconUrl}
-                width="28"
-              />
-              <div>{name}</div>
-            </Box>
+          <Box alignItems="center" display="flex" flexDirection="row" gap="12">
+            <AsyncImage
+              background={iconBackground}
+              {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
+              borderRadius="6"
+              height="28"
+              src={iconUrl}
+              width="28"
+            />
+            <div>{name}</div>
           </Box>
         </Box>
       </Box>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { Text, TextProps } from '../Text/Text';
@@ -65,40 +65,35 @@ export function ActionButton({
       {...(href
         ? { as: 'a', href, rel, target }
         : { as: 'button', type: 'button' })}
-      borderRadius="actionButton"
-      className={increaseHitAreaForHoverTransform.grow}
-      display="flex"
       onClick={onClick}
+      {...(hasBorder
+        ? {
+            borderColor:
+              mobile && !isNotLarge && !isPrimary
+                ? 'actionButtonBorderMobile'
+                : 'actionButtonBorder',
+            borderStyle: 'solid',
+            borderWidth: '1',
+          }
+        : {})}
+      borderRadius="actionButton"
+      className={touchableStyles({ active: 'shrinkSm', hover: 'grow' })}
+      display="block"
+      paddingX={paddingX}
+      paddingY={paddingY}
+      style={{ willChange: 'transform' }}
+      textAlign="center"
+      transition="default"
+      {...(background ? { background } : {})}
+      {...(height ? { height } : {})}
     >
-      <Box
-        {...(hasBorder
-          ? {
-              borderColor:
-                mobile && !isNotLarge && !isPrimary
-                  ? 'actionButtonBorderMobile'
-                  : 'actionButtonBorder',
-              borderStyle: 'solid',
-              borderWidth: '1',
-            }
-          : {})}
-        borderRadius="actionButton"
-        paddingX={paddingX}
-        paddingY={paddingY}
-        style={{ willChange: 'transform' }}
-        textAlign="center"
-        transform={{ active: 'shrinkSm', hover: 'grow' }}
-        transition="default"
-        {...(background ? { background } : {})}
-        {...(height ? { height } : {})}
+      <Text
+        color={isPrimary ? 'accentColorForeground' : 'accentColor'}
+        size={fontSize}
+        weight="bold"
       >
-        <Text
-          color={isPrimary ? 'accentColorForeground' : 'accentColor'}
-          size={fontSize}
-          weight="bold"
-        >
-          {label}
-        </Text>
-      </Box>
+        {label}
+      </Text>
     </Box>
   );
 }

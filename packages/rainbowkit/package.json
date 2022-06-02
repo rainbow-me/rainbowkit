@@ -49,6 +49,7 @@
     "@ethersproject/providers": "^5.5.1",
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.2",
+    "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
     "ethers": "^5.0.0",
     "nock": "^13.2.4",
