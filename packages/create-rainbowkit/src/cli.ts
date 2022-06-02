@@ -144,7 +144,7 @@ async function run() {
       )
     );
 
-    const ignore: string[] = ['node_modules', '.next'];
+    const ignore: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
 
     await cpy(path.join(selectedTemplatePath, '**', '*'), targetPath, {
       filter: src => ignore.every(i => !src.path.includes(i)),
