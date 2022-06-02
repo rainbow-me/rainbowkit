@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
@@ -75,23 +75,19 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
           <ActionButton label="Get a Wallet" onClick={getWallet} />
           <Box
             as="a"
-            className={increaseHitAreaForHoverTransform.grow}
+            className={touchableStyles({ active: 'shrink', hover: 'grow' })}
             display="block"
             href={learnMoreUrl}
+            paddingX="12"
+            paddingY="4"
             rel="noreferrer"
+            style={{ willChange: 'transform' }}
             target="_blank"
+            transition="default"
           >
-            <Box
-              paddingX="12"
-              paddingY="4"
-              style={{ willChange: 'transform' }}
-              transform={{ active: 'shrink', hover: 'grow' }}
-              transition="default"
-            >
-              <Text color="accentColor" size="14" weight="bold">
-                Learn More
-              </Text>
-            </Box>
+            <Text color="accentColor" size="14" weight="bold">
+              Learn More
+            </Text>
           </Box>
         </Box>
         {Disclaimer && (

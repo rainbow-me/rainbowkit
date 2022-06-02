@@ -1,6 +1,7 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  AvatarComponent,
   Chain,
   connectorsForWallets,
   darkTheme,
@@ -73,6 +74,24 @@ const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
   );
 };
 
+const CustomAvatar: AvatarComponent = ({ size }) => {
+  return (
+    <div
+      style={{
+        alignItems: 'center',
+        backgroundColor: 'lightpink',
+        color: 'black',
+        display: 'flex',
+        height: size,
+        justifyContent: 'center',
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
 const connectors = connectorsForWallets([
   ...wallets,
   {
@@ -130,6 +149,7 @@ function App({ Component, pageProps }: AppProps) {
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [customAvatar, setCustomAvatar] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -154,6 +174,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
+          avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -211,6 +232,15 @@ function App({ Component, pageProps }: AppProps) {
                         type="checkbox"
                       />{' '}
                       disclaimer
+                    </label>
+                    <label style={{ userSelect: 'none' }}>
+                      <input
+                        checked={customAvatar}
+                        name="customAvatar"
+                        onChange={e => setCustomAvatar(e.target.checked)}
+                        type="checkbox"
+                      />{' '}
+                      avatar
                     </label>
                   </div>
                 </div>

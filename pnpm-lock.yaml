@@ -152,6 +152,7 @@ importers:
       '@ethersproject/providers': ^5.5.1
       '@types/qrcode': ^1.4.2
       '@vanilla-extract/css': 1.7.0
+      '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/private': ^1.0.2
       '@vanilla-extract/sprinkles': 1.4.1
@@ -175,6 +176,7 @@ importers:
       '@ethersproject/abstract-provider': 5.6.0
       '@ethersproject/providers': 5.6.2
       '@types/qrcode': 1.4.2
+      '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/private': 1.0.3
       autoprefixer: 10.4.2_postcss@8.4.6
       ethers: 5.6.2
@@ -4058,7 +4060,6 @@ packages:
 
   /@vanilla-extract/css-utils/0.1.2:
     resolution: {integrity: sha512-qoxIu5E/UhJtoKsPL1JaU9nhTN0Xl5zYV0pScOgsvc3JN46TvTTt0L3GV8x3PQpZP7x3elw8BsC9czYbhJy9Gg==}
-    dev: false
 
   /@vanilla-extract/css/1.7.0:
     resolution: {integrity: sha512-2Abpr5aJskwKS+waMWxWnTBqq/rj4J93KtGteW0VSORMUsijrupwjOXECd7Llh+nSFfx/Y6usuexF5/ffyDF8A==}

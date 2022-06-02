@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import { isMobile } from '../../utils/isMobile';
@@ -236,30 +236,26 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 {headerBackButtonLink && (
                   <Box
                     as="button"
-                    className={increaseHitAreaForHoverTransform.growLg}
+                    className={touchableStyles({
+                      active: 'shrinkSm',
+                      hover: 'growLg',
+                    })}
+                    color="accentColor"
                     onClick={() =>
                       headerBackButtonLink &&
                       changeWalletStep(headerBackButtonLink, true)
                     }
+                    paddingX="8"
+                    paddingY="4"
+                    style={{
+                      boxSizing: 'content-box',
+                      height: 17,
+                      willChange: 'transform',
+                    }}
+                    transition="default"
                     type="button"
                   >
-                    <Box
-                      color="accentColor"
-                      paddingX="8"
-                      paddingY="4"
-                      style={{
-                        boxSizing: 'content-box',
-                        height: 17,
-                        willChange: 'transform',
-                      }}
-                      transform={{
-                        active: 'shrinkSm',
-                        hover: 'growLg',
-                      }}
-                      transition="default"
-                    >
-                      <BackIcon />
-                    </Box>
+                    <BackIcon />
                   </Box>
                 )}
               </Box>

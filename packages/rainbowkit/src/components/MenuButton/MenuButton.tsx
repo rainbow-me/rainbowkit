@@ -1,4 +1,5 @@
 import React from 'react';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import * as styles from './MenuButton.css';
@@ -27,7 +28,10 @@ export const MenuButton = React.forwardRef(
       >
         <Box
           borderRadius="menuButton"
-          className={mobile ? styles.unsetBackgroundOnHover : undefined}
+          className={[
+            mobile ? styles.unsetBackgroundOnHover : undefined,
+            !currentlySelected && touchableStyles({ active: 'shrink' }),
+          ]}
           padding={mobile ? '8' : '6'}
           transition="default"
           width="full"
@@ -43,7 +47,6 @@ export const MenuButton = React.forwardRef(
             : {
                 background: { hover: 'menuItemBackground' },
                 color: 'modalText',
-                transform: { active: 'shrink' },
                 transition: 'default',
               })}
           {...urlProps}

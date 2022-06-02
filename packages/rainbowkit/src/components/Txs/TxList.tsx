@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -63,32 +63,24 @@ export function TxList({ accountData }: TxListProps) {
               >
                 <Box
                   as="button"
+                  background={{
+                    hover: 'profileForeground',
+                  }}
                   borderRadius="actionButton"
-                  className={increaseHitAreaForHoverTransform.grow}
-                  display="flex"
+                  className={touchableStyles({ active: 'shrink' })}
                   onClick={clearRecentTransactions}
+                  paddingX={mobile ? '8' : '12'}
+                  paddingY={mobile ? '4' : '5'}
+                  transition="default"
                   type="button"
                 >
-                  <Box
-                    background={{
-                      hover: 'profileForeground',
-                    }}
-                    borderRadius="actionButton"
-                    paddingX={mobile ? '8' : '12'}
-                    paddingY={mobile ? '4' : '5'}
-                    transform={{
-                      active: 'shrink',
-                    }}
-                    transition="default"
+                  <Text
+                    color="modalTextSecondary"
+                    size={mobile ? '16' : '14'}
+                    weight="semibold"
                   >
-                    <Text
-                      color="modalTextSecondary"
-                      size={mobile ? '16' : '14'}
-                      weight="semibold"
-                    >
-                      Clear All
-                    </Text>
-                  </Box>
+                    Clear All
+                  </Text>
                 </Box>
               </Box>
             </Box>
@@ -123,42 +115,34 @@ export function TxList({ accountData }: TxListProps) {
       {explorerLink && (
         <Box paddingBottom="18" paddingX={mobile ? '8' : '18'}>
           <Box
+            alignItems="center"
             as="a"
+            background={{ hover: 'profileForeground' }}
             borderRadius="menuButton"
-            className={increaseHitAreaForHoverTransform.grow}
+            className={touchableStyles({ active: 'shrink' })}
+            color="modalTextDim"
             display="flex"
+            flexDirection="row"
             href={`${explorerLink}/address/${address}`}
-            rel="noreferrer"
+            justifyContent="space-between"
+            paddingX="8"
+            paddingY="12"
+            rel="noreferrer noopener"
+            style={{ willChange: 'transform' }}
             target="_blank"
+            transition="default"
+            width="full"
+            {...(mobile ? { paddingLeft: '12' } : {})}
           >
-            <Box
-              alignItems="center"
-              background={{ hover: 'profileForeground' }}
-              borderRadius="menuButton"
-              color="modalTextDim"
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
-              paddingX="8"
-              paddingY="12"
-              style={{ willChange: 'transform' }}
-              transform={{
-                active: 'shrink',
-              }}
-              transition="default"
-              width="full"
-              {...(mobile ? { paddingLeft: '12' } : {})}
+            <Text
+              color="modalText"
+              font="body"
+              size={mobile ? '16' : '14'}
+              weight={mobile ? 'semibold' : 'bold'}
             >
-              <Text
-                color="modalText"
-                font="body"
-                size={mobile ? '16' : '14'}
-                weight={mobile ? 'semibold' : 'bold'}
-              >
-                View more on Explorer
-              </Text>
-              <ExternalLinkIcon />
-            </Box>
+              View more on Explorer
+            </Text>
+            <ExternalLinkIcon />
           </Box>
         </Box>
       )}

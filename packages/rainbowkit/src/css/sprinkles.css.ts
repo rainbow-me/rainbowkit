@@ -120,36 +120,6 @@ const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
 
 const textAlignments = ['left', 'center', 'inherit'] as const;
 
-export const growTransforms = {
-  grow: 'scale(1.025)',
-  growLg: 'scale(1.1)',
-} as const;
-
-const shrinkTransforms = {
-  shrink: 'scale(0.95)',
-  shrinkSm: 'scale(0.9)',
-} as const;
-
-const transforms = {
-  ...growTransforms,
-  ...shrinkTransforms,
-} as const;
-
-const interactionProperties = defineProperties({
-  conditions: {
-    base: {},
-    hover: { selector: '&:hover' },
-    active: { selector: '&:active' },
-  },
-  defaultCondition: 'base',
-  properties: {
-    transform: transforms,
-    transition: {
-      default: '0.125s ease',
-    },
-  },
-});
-
 export const largeScreenMinWidth = 768;
 
 const responsiveProperties = defineProperties({
@@ -233,6 +203,9 @@ const unresponsiveProperties = defineProperties({
     right: {
       '0': '0',
     },
+    transition: {
+      default: '0.125s ease',
+    },
     userSelect: ['none'] as const,
     width: dimensions,
     backdropFilter: {
@@ -266,7 +239,6 @@ const colorProperties = defineProperties({
 
 export const sprinkles = createSprinkles(
   colorProperties,
-  interactionProperties,
   responsiveProperties,
   unresponsiveProperties
 );
