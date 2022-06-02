@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
@@ -17,61 +17,45 @@ export function ProfileDetailsAction({
   label,
   url,
 }: ProfileDetailsActionProps) {
-  const urlProps = url
-    ? {
-        href: url,
-        rel: 'noreferrer',
-        target: '_blank',
-      }
-    : {};
   const mobile = isMobile();
   return (
     <Box
-      as={url ? 'a' : 'button'}
+      {...(url
+        ? { as: 'a', href: url, rel: 'noreferrer noopener', target: '_blank' }
+        : { as: 'button', type: 'button' })}
+      background={{
+        base: 'profileAction',
+        ...(!mobile ? { hover: 'profileActionHover' } : {}),
+      }}
       borderRadius="menuButton"
-      className={!mobile ? increaseHitAreaForHoverTransform.grow : undefined}
+      boxShadow="profileDetailsAction"
+      className={touchableStyles({
+        active: 'shrinkSm',
+        hover: !mobile ? 'grow' : undefined,
+      })}
       display="flex"
       onClick={action}
-      style={{ flexBasis: 0, flexGrow: 1 }}
-      type={!url ? 'button' : undefined}
+      padding={mobile ? '6' : '8'}
+      style={{ willChange: 'transform' }}
+      transition="default"
+      width="full"
     >
       <Box
-        {...urlProps}
-        background={{
-          base: 'profileAction',
-          ...(!mobile ? { hover: 'profileActionHover' } : {}),
-        }}
-        borderRadius="menuButton"
-        boxShadow="profileDetailsAction"
-        padding={mobile ? '6' : '8'}
-        style={{ willChange: 'transform' }}
-        transform={{
-          active: 'shrinkSm',
-          ...(!mobile ? { hover: 'grow' } : {}),
-        }}
-        transition="default"
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        gap="1"
+        justifyContent="center"
+        paddingTop="2"
         width="full"
       >
-        <Box
-          alignItems="center"
-          display="flex"
-          flexDirection="column"
-          gap="1"
-          justifyContent="center"
-          paddingTop="2"
-        >
-          <Box color="modalText" height="max">
-            {icon}
-          </Box>
-          <Box>
-            <Text
-              color="modalText"
-              size={mobile ? '12' : '13'}
-              weight="semibold"
-            >
-              {label}
-            </Text>
-          </Box>
+        <Box color="modalText" height="max">
+          {icon}
+        </Box>
+        <Box>
+          <Text color="modalText" size={mobile ? '12' : '13'} weight="semibold">
+            {label}
+          </Text>
         </Box>
       </Box>
     </Box>

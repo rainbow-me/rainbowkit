@@ -1,5 +1,5 @@
 import React from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { CloseIcon } from '../Icons/Close';
@@ -14,34 +14,26 @@ export const CloseButton = ({
   const mobile = isMobile();
   return (
     <Box
+      alignItems="center"
       aria-label={ariaLabel}
       as="button"
+      background="closeButtonBackground"
+      borderColor="actionButtonBorder"
       borderRadius="full"
-      className={increaseHitAreaForHoverTransform.growLg}
+      borderStyle="solid"
+      borderWidth={mobile ? '0' : '1'}
+      className={touchableStyles({ active: 'shrinkSm', hover: 'growLg' })}
+      color="closeButton"
       display="flex"
       height={mobile ? '30' : '28'}
+      justifyContent="center"
       onClick={onClose}
+      style={{ willChange: 'transform' }}
+      transition="default"
       type="button"
       width={mobile ? '30' : '28'}
     >
-      <Box
-        alignItems="center"
-        background="closeButtonBackground"
-        borderColor="actionButtonBorder"
-        borderRadius="full"
-        borderStyle="solid"
-        borderWidth={mobile ? '0' : '1'}
-        color="closeButton"
-        display="flex"
-        height="full"
-        justifyContent="center"
-        style={{ willChange: 'transform' }}
-        transform={{ active: 'shrinkSm', hover: 'growLg' }}
-        transition="default"
-        width="full"
-      >
-        <CloseIcon />
-      </Box>
+      <CloseIcon />
     </Box>
   );
 };
