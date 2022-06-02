@@ -1,7 +1,6 @@
 coverage
 .next
 dist
-packages/*/CHANGELOG.md
-site/CHANGELOG.md
+CHANGELOG.md
 .contentlayer
 generated-test-app
