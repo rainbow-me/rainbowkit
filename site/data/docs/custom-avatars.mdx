@@ -19,7 +19,12 @@ import { generateColorFromAddress } from './utils';
 const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
   const color = generateColorFromAddress(address);
   return ensImage ? (
-    <img src={ensImage} width={size} height={size} style={{ borderRadius: 999 }} />
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
   ) : (
     <div
       style={{
