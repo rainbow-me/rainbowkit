@@ -94,7 +94,7 @@ export function GetDetail({
                     onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
                     {...(!hasMobileCompanionApp &&
                     downloadUrls?.browserExtension
-                      ? { as: 'a', href: downloadUrls.browserExtension }
+                      ? { href: downloadUrls.browserExtension }
                       : {})}
                     type="secondary"
                   />

@@ -78,6 +78,7 @@ export function ActionButton({
         : {})}
       borderRadius="actionButton"
       className={touchableStyles({ active: 'shrinkSm', hover: 'grow' })}
+      display="block"
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
