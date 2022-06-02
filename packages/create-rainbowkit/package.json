@@ -1,0 +1,38 @@
+{
+  "name": "@rainbow-me/create-rainbowkit",
+  "description": "Scaffold a new RainbowKit project",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-rainbowkit": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "typecheck": "tsc --noEmit",
+    "test:setup": "rm -rf generated-test-app && INSTALL_WORKSPACE_RAINBOWKIT=true node ./dist/cli generated-test-app --skip-git",
+    "test:dev": "pnpm test:setup && cd generated-test-app && pnpm dev",
+    "test:build": "pnpm test:setup && cd generated-test-app && pnpm build",
+    "test": "pnpm test:build"
+  },
+  "dependencies": {
+    "commander": "9.2.0",
+    "cpy": "9.0.1",
+    "execa": "6.1.0",
+    "fs-extra": "10.1.0",
+    "prompts": "2.4.2",
+    "validate-npm-package-name": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "9.0.13",
+    "@types/prompts": "2.0.14",
+    "@types/validate-npm-package-name": "3.0.3",
+    "chalk": "5.0.1",
+    "prompts": "2.4.2"
+  }
+}
