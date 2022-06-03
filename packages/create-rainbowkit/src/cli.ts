@@ -144,10 +144,14 @@ async function run() {
       )
     );
 
-    const ignore: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
+    const ignoreList: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
 
     await cpy(path.join(selectedTemplatePath, '**', '*'), targetPath, {
-      filter: src => ignore.every(i => !src.path.includes(i)),
+      filter: src =>
+        ignoreList.every(ignore => {
+          const relativePath = path.relative(selectedTemplatePath, src.path);
+          return !relativePath.includes(ignore);
+        }),
       rename: name => name.replace(/^_dot_/, '.'),
     });
 
