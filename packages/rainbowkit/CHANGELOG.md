@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.2.3
+
+### Patch Changes
+
+- 0686c2f: Fix visual bug where focus outlines were out of sync with buttons/links on click when toggling between keyboard and mouse usage
+- dfc7d13: Add the `avatar` prop to `RainbowKitProvider` to allow developers to provide their own custom avatar component.
+
 ## 0.2.2
 
 ### Patch Changes
