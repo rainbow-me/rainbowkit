@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect } from 'react';
-import { increaseHitAreaForHoverTransform } from '../../css/increaseHitAreaForHoverTransform.css';
+import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
@@ -94,7 +94,7 @@ export function GetDetail({
                     onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
                     {...(!hasMobileCompanionApp &&
                     downloadUrls?.browserExtension
-                      ? { as: 'a', href: downloadUrls.browserExtension }
+                      ? { href: downloadUrls.browserExtension }
                       : {})}
                     type="secondary"
                   />
@@ -456,23 +456,19 @@ export function InstructionDetail({
         <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
         <Box
           as="a"
-          className={increaseHitAreaForHoverTransform.grow}
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
           display="block"
           href={wallet?.qrCode?.instructions?.learnMoreUrl}
+          paddingX="12"
+          paddingY="4"
           rel="noreferrer"
+          style={{ willChange: 'transform' }}
           target="_blank"
+          transition="default"
         >
-          <Box
-            paddingX="12"
-            paddingY="4"
-            style={{ willChange: 'transform' }}
-            transform={{ active: 'shrink', hover: 'grow' }}
-            transition="default"
-          >
-            <Text color="accentColor" size="14" weight="bold">
-              Learn More
-            </Text>
-          </Box>
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
         </Box>
       </Box>
     </Box>

@@ -6,6 +6,7 @@ describe('cssObjectFromTheme', () => {
   it('converts themes to CSS-in-JS objects', () => {
     expect(cssObjectFromTheme(lightTheme)).toMatchInlineSnapshot(`
       {
+        "--rk-blurs-modalOverlay": "blur(0px)",
         "--rk-colors-accentColor": "#0E76FD",
         "--rk-colors-accentColorForeground": "#FFF",
         "--rk-colors-actionButtonBorder": "rgba(0, 0, 0, 0.04)",

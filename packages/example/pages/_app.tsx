@@ -1,6 +1,8 @@
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  AvatarComponent,
+  Chain,
   connectorsForWallets,
   darkTheme,
   DisclaimerComponent,
@@ -20,12 +22,32 @@ import { publicProvider } from 'wagmi/providers/public';
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
+const avalancheChain: Chain = {
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  id: 43_114,
+  name: 'Avalanche',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  network: 'avalanche',
+  rpcUrls: {
+    default: 'https://api.avax.network/ext/bc/C/rpc',
+  },
+  testnet: false,
+};
+
 const { chains, provider, webSocketProvider } = configureChains(
   [
     chain.mainnet,
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
+    avalancheChain,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
       : []),
@@ -49,6 +71,24 @@ const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
       <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
       have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
     </Text>
+  );
+};
+
+const CustomAvatar: AvatarComponent = ({ size }) => {
+  return (
+    <div
+      style={{
+        alignItems: 'center',
+        backgroundColor: 'lightpink',
+        color: 'black',
+        display: 'flex',
+        height: size,
+        justifyContent: 'center',
+        width: size,
+      }}
+    >
+      :^)
+    </div>
   );
 };
 
@@ -97,14 +137,19 @@ type AccentColor = typeof accentColors[number];
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
 type RadiusScale = typeof radiusScales[number];
 
+const overlayBlurs = ['large', 'small', 'none'] as const;
+type OverlayBlur = typeof overlayBlurs[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
+  const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [customAvatar, setCustomAvatar] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -129,6 +174,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
+          avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
           showRecentTransactions={showRecentTransactions}
@@ -136,6 +182,7 @@ function App({ Component, pageProps }: AppProps) {
             ...accentColor,
             borderRadius: selectedRadiusScale,
             fontStack: selectedFontStack,
+            overlayBlur: selectedOverlayBlur,
           })}
         >
           <div style={{ padding: 8 }}>
@@ -185,6 +232,15 @@ function App({ Component, pageProps }: AppProps) {
                         type="checkbox"
                       />{' '}
                       disclaimer
+                    </label>
+                    <label style={{ userSelect: 'none' }}>
+                      <input
+                        checked={customAvatar}
+                        name="customAvatar"
+                        onChange={e => setCustomAvatar(e.target.checked)}
+                        type="checkbox"
+                      />{' '}
+                      avatar
                     </label>
                   </div>
                 </div>
@@ -307,6 +363,35 @@ function App({ Component, pageProps }: AppProps) {
                               value={radiusScale}
                             />{' '}
                             {radiusScale}
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h4>Overlay blurs</h4>
+                      <div
+                        style={{
+                          alignItems: 'flex-start',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 12,
+                        }}
+                      >
+                        {overlayBlurs.map(overlayBlur => (
+                          <label
+                            key={overlayBlur}
+                            style={{ userSelect: 'none' }}
+                          >
+                            <input
+                              checked={overlayBlur === selectedOverlayBlur}
+                              name="overlayBlur"
+                              onChange={e =>
+                                setOverlayBlur(e.target.value as OverlayBlur)
+                              }
+                              type="radio"
+                              value={overlayBlur}
+                            />{' '}
+                            {overlayBlur}
                           </label>
                         ))}
                       </div>

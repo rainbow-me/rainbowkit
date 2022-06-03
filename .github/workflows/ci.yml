@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build packages
-        run: pnpm --recursive build
+        run: pnpm build
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
-        run: pnpm test
+        run: pnpm test && pnpm test:cli

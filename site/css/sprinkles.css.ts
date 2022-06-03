@@ -166,6 +166,7 @@ const unresponsiveProperties = defineProperties({
     isolation: ['isolate'],
     objectFit: ['contain', 'cover'],
     pointerEvents: ['none'],
+    scrollMarginTop: vars.space,
     textTransform: ['capitalize', 'lowercase', 'uppercase'],
     transitionProperty: {
       none: 'none',

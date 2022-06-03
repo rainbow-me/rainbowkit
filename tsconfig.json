@@ -10,6 +10,7 @@
     "declarationDir": "dist",
     "jsx": "preserve",
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true
   }
 }

@@ -57,6 +57,44 @@ If snapshot tests fail, you can run the following command to update the snapshot
 pnpm test:update
 ```
 
+## Working on create-rainbowkit
+
+### Template
+
+To run the Next.js app template directly without any scaffolding:
+
+```bash
+pnpm dev:template:next-app
+```
+
+If you make any template changes, please be sure to commit the result of running the CLI test script. This keeps the lock file is up to date since the scaffolded test app is part of the monorepo.
+
+```bash
+pnpm test:cli:dev
+```
+
+### CLI
+
+To build the CLI in watch mode:
+
+```bash
+pnpm dev:cli
+```
+
+To scaffold a template with the CLI and start a local dev server:
+
+```bash
+pnpm test:cli:dev
+```
+
+### Linking CLI globally
+
+You can also link the create-rainbowkit command globally. This allows you to try out create-rainbowkit elsewhere on your machine. Note that it will install the latest version of RainbowKit from npm so it's possible the template will be using APIs that haven't been released yet. This is most useful for seeing what the CLI looks like for a typical consumer.
+
+```bash
+pnpm link:cli
+```
+
 ## Release notes
 
 RainbowKit uses [Changesets](https://github.com/changesets/changesets) to manage versioning and publishing.
@@ -108,10 +146,16 @@ git push --tags
 
 Once you’ve pushed the tag, you can create a new release on GitHub.
 
-- Navigate to the [new release form on GitHub.](https://github.com/rainbow-me/rainbowkit/releases/new)
-- From the dropdown labelled “Choose a tag”, select the latest version tag for `@rainbow-me/rainbowkit`.
-- Set the title to `@rainbow-me/rainbowkit@x.x.x`, substituting the latest version number.
-- Copy the Markdown content below the latest version heading from the [RainbowKit changelog.](../packages/rainbowkit/CHANGELOG.md)
+- If you published `rainbowkit`:
+  - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
+  - Select the latest version tag for `@rainbow-me/rainbowkit`.
+  - Set the title to `@rainbow-me/rainbowkit@x.x.x` (substituting the latest version)
+  - Copy the Markdown content below the latest version heading from [RainbowKit’s `CHANGELOG.md`](../packages/rainbowkit/CHANGELOG.md)
+- If you published `create-rainbowkit`:
+  - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
+  - Select the latest version tag for `@rainbow-me/create-rainbowkit`.
+  - Set the title to `@rainbow-me/create-rainbowkit@x.x.x` (substituting the latest version)
+  - Copy the Markdown content below the latest version heading from [create-rainbowkit’s `CHANGELOG.md`](../packages/create-rainbowkit/CHANGELOG.md)
 
 If at any stage you’re unsure of the formatting, you can [reference past RainbowKit releases.](https://github.com/rainbow-me/rainbowkit/releases)
 
