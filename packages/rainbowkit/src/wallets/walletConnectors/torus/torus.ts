@@ -24,7 +24,7 @@ export const torus = (chains: Chain[]): Wallet => {
               rpc,
             },
           })
-        : new TorusConnector();
+        : new TorusConnector(chains);
 
       return {
         connector,
@@ -44,7 +44,7 @@ export const torus = (chains: Chain[]): Wallet => {
     downloadUrls: {
       browserExtension: 'https://app.tor.us/',
     },
-    iconBackground: '#fff',
+    iconBackground: '#0c64fc',
     iconUrl: async () => (await import('./torus.svg')).default,
     id: 'torus',
     installed: !shouldUseWalletConnect,
@@ -54,14 +54,22 @@ export const torus = (chains: Chain[]): Wallet => {
 
 export class TorusConnector extends InjectedConnector {
   private provider: any = undefined;
-
+  chains: any = undefined;
+  constructor(chains: any) {
+    super();
+    this.chains = chains;
+  }
   async getProvider(): Promise<Ethereum | undefined> {
     return this.provider;
   }
 
   connect = async () => {
     const torus = new Torus();
-    await torus.init();
+    await torus.init({
+      network: {
+        host: this.chains[0].network,
+      },
+    });
     torus.ethereum.enable();
     this.provider = torus.ethereum;
     const accounts: string[] = await this.provider.request({
