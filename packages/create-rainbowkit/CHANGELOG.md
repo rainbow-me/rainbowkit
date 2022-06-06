@@ -1,5 +1,12 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.0.3
+
+### Patch Changes
+
+- ac37201: Ensure files are copied correctly when template source directory is nested within a path containing `node_modules`
+- 9e06333: Add missing Node shebang to CLI
+
 ## 0.0.2
 
 ### Patch Changes
