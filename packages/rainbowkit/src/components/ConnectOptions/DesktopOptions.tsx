@@ -47,6 +47,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
+
     if (wallet.ready) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
@@ -79,6 +80,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       setSelectedWallet(wallet);
       changeWalletStep(WalletStep.Connect);
     }
+    if (wallet.id === 'torus') onClose();
   };
 
   const getMobileWallet = (id: string) => {

@@ -55,6 +55,7 @@ export function ChainModal({
     };
 
     let provider: any;
+
     activeConnector?.getProvider?.().then(provider_ => {
       provider = provider_;
       provider.on('chainChanged', stopSwitching);

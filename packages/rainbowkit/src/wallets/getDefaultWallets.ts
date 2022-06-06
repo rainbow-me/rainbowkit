@@ -6,6 +6,7 @@ import { coinbase } from './walletConnectors/coinbase/coinbase';
 import { injected } from './walletConnectors/injected/injected';
 import { isMetaMask, metaMask } from './walletConnectors/metaMask/metaMask';
 import { rainbow } from './walletConnectors/rainbow/rainbow';
+import { torus } from './walletConnectors/torus/torus';
 import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
 
 export const getDefaultWallets = ({
@@ -33,6 +34,7 @@ export const getDefaultWallets = ({
         coinbase({ appName, chains }),
         metaMask({ chains, shimDisconnect: true }),
         walletConnect({ chains }),
+        torus(chains),
         brave({ chains, shimDisconnect: true }),
         ...(needsInjectedWalletFallback
           ? [injected({ chains, shimDisconnect: true })]
