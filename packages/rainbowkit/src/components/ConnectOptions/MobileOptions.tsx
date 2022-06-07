@@ -44,10 +44,26 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
 
         onConnecting?.(async () => {
           if (getMobileUri) {
-            window.location.href = await getMobileUri();
+            const mobileUri = await getMobileUri();
+
+            if (mobileUri.startsWith('http') && mobileUri.includes('?uri=')) {
+              window.localStorage.setItem(
+                'WALLETCONNECT_DEEPLINK_CHOICE',
+                JSON.stringify({
+                  href: mobileUri.split('?')[0],
+                  name,
+                })
+              );
+            }
+
+            if (mobileUri.startsWith('http')) {
+              window.open(mobileUri, '_blank', 'noreferrer,noopener');
+            } else {
+              window.location.href = mobileUri;
+            }
           }
         });
-      }, [connect, getMobileUri, onConnecting])}
+      }, [connect, getMobileUri, onConnecting, name])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"
