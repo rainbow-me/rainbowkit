@@ -192,10 +192,17 @@ async function run() {
     });
 
     if (process.env.INSTALL_WORKSPACE_RAINBOWKIT !== 'true') {
-      await execa(packageManager, ['install', '@rainbow-me/rainbowkit'], {
-        cwd: targetPath,
-        stdio: 'inherit',
-      });
+      await execa(
+        packageManager,
+        [
+          packageManager === 'yarn' ? 'add' : 'install',
+          '@rainbow-me/rainbowkit',
+        ],
+        {
+          cwd: targetPath,
+          stdio: 'inherit',
+        }
+      );
     }
 
     if (!options.skipGit) {
