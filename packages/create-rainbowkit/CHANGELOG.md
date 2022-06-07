@@ -1,5 +1,17 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.0.4
+
+### Patch Changes
+
+- fd5e8e7: Fix npm user agent detection
+
+  We try to detect the package manager being used for the init/create script but we were failing to detect npm correctly, instead falling through to using `pnpm`, `yarn` or `npm` (in that order) depending on availability. The logic for detecting npm has now been fixed.
+
+- fd5e8e7: Fix install step in Yarn
+
+  The `install` command for `@rainbow-me/create-rainbowkit` was failing when using `yarn create` because Yarn uses `add` instead of `install`, so we now use the correct command when Yarn is detected.
+
 ## 0.0.3
 
 ### Patch Changes
