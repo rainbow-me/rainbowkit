@@ -67,10 +67,11 @@ export class TorusConnector extends InjectedConnector {
     const torus = new Torus();
     await torus.init({
       network: {
+        chainId: this.chains[0].id,
         host: this.chains[0].network,
       },
     });
-    torus.ethereum.enable();
+    await torus.ethereum.enable();
     this.provider = torus.ethereum;
     const accounts: string[] = await this.provider.request({
       method: 'eth_accounts',
