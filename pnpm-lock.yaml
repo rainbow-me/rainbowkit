@@ -82,6 +82,7 @@ importers:
       typescript: 4.7.2
       vitest: 0.5.0
       wagmi: 0.4.2_2ysdzk2vllwi7dl6z45r5ylxcu
+<<<<<<< HEAD
 
   examples/with-create-react-app:
     specifiers:
@@ -168,6 +169,8 @@ importers:
       '@remix-run/dev': 1.5.1
       '@remix-run/eslint-config': 1.5.1_eslint@8.15.0
       eslint: 8.15.0
+=======
+>>>>>>> 5016a97 (fix: pr review)
 
   packages/create-rainbowkit:
     specifiers:
@@ -199,7 +202,11 @@ importers:
       '@rainbow-me/rainbowkit': workspace:*
       eslint: ^8.15.0
       eslint-config-next: ^12.1.6
+<<<<<<< HEAD
       ethers: ^5.0.0
+=======
+      ethers: ^5.6.8
+>>>>>>> 5016a97 (fix: pr review)
     dependencies:
       '@rainbow-me/rainbowkit': link:../../rainbowkit
       ethers: 5.6.8
@@ -212,7 +219,11 @@ importers:
       '@rainbow-me/rainbowkit': workspace:*
       eslint: ^8.15.0
       eslint-config-next: ^12.1.6
+<<<<<<< HEAD
       ethers: ^5.0.0
+=======
+      ethers: ^5.6.8
+>>>>>>> 5016a97 (fix: pr review)
     dependencies:
       '@rainbow-me/rainbowkit': link:../../../rainbowkit
       ethers: 5.6.8
@@ -249,7 +260,6 @@ importers:
       clsx: 1.1.1
       ethers: ^5.0.0
       nock: ^13.2.4
-      pnpm: ^7.1.7
       postcss: ^8.4.4
       qrcode: 1.5.0
       react: ^18.1.0
@@ -261,7 +271,6 @@ importers:
       '@vanilla-extract/dynamic': 2.0.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.0
       clsx: 1.1.1
-      pnpm: 7.1.7
       qrcode: 1.5.0
       react-remove-scroll: 2.5.3_react@18.1.0
     devDependencies:
@@ -2962,6 +2971,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+    dev: true
 
   /@babel/template/7.16.7:
     resolution: {integrity: sha512-I8j/x8kHUrbYRTUxXrrMbfCa7jxkE7tZre39x3kjr9hvI82cK1FfqLygotcWN5kdPGWcLdWMHpSBavse5tWw3w==}
@@ -6047,11 +6057,14 @@ packages:
       keccak: 3.0.2
       loglevel: 1.8.0
       web3-utils: 1.7.3
+<<<<<<< HEAD
 
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
     dev: false
+=======
+>>>>>>> 5016a97 (fix: pr review)
 
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -12446,6 +12459,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    dev: true
     optional: true
 
   /function-bind/1.1.1:
@@ -13358,6 +13372,7 @@ packages:
     resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==}
     dependencies:
       has: 1.0.3
+    dev: true
 
   /is-data-descriptor/0.1.4:
     resolution: {integrity: sha512-+w9D5ulSoBNlmw9OHn3U2v51SyoCd0he+bB3xMl62oijhrspxowjU+AIcDY0N3iEJbUEkB15IlMASQsxYigvXg==}
@@ -16275,6 +16290,7 @@ packages:
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: true
 
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
@@ -16379,12 +16395,6 @@ packages:
   /pngjs/5.0.0:
     resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}
     engines: {node: '>=10.13.0'}
-    dev: false
-
-  /pnpm/7.1.7:
-    resolution: {integrity: sha512-8+IAfyunrOHfNmVu03E9rSBVUgypFGMKeyhVif0Drv/gcWgXuzxSBkCxrfNJbEf0cHtA+ftTqMQ20uSlrtnSEg==}
-    engines: {node: '>=14.19'}
-    hasBin: true
     dev: false
 
   /popmotion/11.0.3:
@@ -17189,6 +17199,7 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
 
   /postcss/8.4.5:
     resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
@@ -18211,6 +18222,7 @@ packages:
       is-core-module: 2.8.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
 
   /resolve/2.0.0-next.3:
     resolution: {integrity: sha512-W8LucSynKUIDu9ylraa7ueVZ7hc0uAgJBxVsQSKOXOyle8a93qXhcz+XAXZ8bIq2d6i4Ehddn6Evt+0/UwKk6Q==}
@@ -18310,6 +18322,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /run-async/2.4.1:
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
@@ -19267,6 +19280,7 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
 
   /suspend-react/0.0.8_react@18.1.0:
     resolution: {integrity: sha512-ZC3r8Hu1y0dIThzsGw0RLZplnX9yXwfItcvaIzJc2VQVi8TGyGDlu92syMB5ulybfvGLHAI5Ghzlk23UBPF8xg==}
