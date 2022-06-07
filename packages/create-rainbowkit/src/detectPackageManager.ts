@@ -11,6 +11,8 @@ export function detectPackageManager(): PackageManager {
         return 'pnpm';
       } else if (userAgent.startsWith('yarn')) {
         return 'yarn';
+      } else if (userAgent.startsWith('npm')) {
+        return 'npm';
       }
     }
     try {
