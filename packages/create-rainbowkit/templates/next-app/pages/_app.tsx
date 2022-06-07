@@ -12,11 +12,9 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
-    chain.goerli,
-    chain.kovan,
-    chain.rinkeby,
-    chain.ropsten,
-    chain.polygonMumbai,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+      : []),
   ],
   [
     alchemyProvider({
