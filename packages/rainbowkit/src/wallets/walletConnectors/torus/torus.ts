@@ -42,7 +42,9 @@ export const torus = (chains: Chain[]): Wallet => {
       };
     },
     downloadUrls: {
+      android: 'https://app.tor.us/',
       browserExtension: 'https://app.tor.us/',
+      ios: 'https://app.tor.us/',
     },
     iconBackground: '#0c64fc',
     iconUrl: async () => (await import('./torus.svg')).default,
@@ -54,6 +56,7 @@ export const torus = (chains: Chain[]): Wallet => {
 
 export class TorusConnector extends InjectedConnector {
   private provider: any = undefined;
+  private torus: any = undefined;
   chains: any = undefined;
   constructor(chains: any) {
     super();
@@ -64,15 +67,15 @@ export class TorusConnector extends InjectedConnector {
   }
 
   connect = async () => {
-    const torus = new Torus();
-    await torus.init({
+    if (this.torus === undefined) this.torus = new Torus();
+    await this.torus.init({
       network: {
         chainId: this.chains[0].id,
         host: this.chains[0].network,
       },
     });
-    await torus.ethereum.enable();
-    this.provider = torus.ethereum;
+    await this.torus.ethereum.enable();
+    this.provider = this.torus.ethereum;
     const accounts: string[] = await this.provider.request({
       method: 'eth_accounts',
     });
@@ -86,4 +89,8 @@ export class TorusConnector extends InjectedConnector {
       provider: this.provider,
     };
   };
+
+  async disconnect(): Promise<void> {
+    return await this.torus.logout();
+  }
 }
