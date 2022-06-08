@@ -19,9 +19,5 @@ export function setWalletConnectDeepLink({
 }
 
 export function clearWalletConnectDeepLink() {
-  if (localStorage.getItem(storageKey)) {
-    alert('cleaning wallet connect deep link');
-  }
-
   localStorage.removeItem(storageKey);
 }
