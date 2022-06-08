@@ -1,4 +1,11 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
@@ -73,6 +80,15 @@ export function RainbowKitProvider({
   );
 
   useOnDisconnected(clearWalletConnectDeepLink);
+
+  // Debug
+  const onceRef = useRef(false);
+  useEffect(() => {
+    if (!onceRef.current) {
+      alert(localStorage.getItem('WALLETCONNECT_DEEPLINK_CHOICE'));
+      onceRef.current = true;
+    }
+  }, []);
 
   if (typeof theme === 'function') {
     throw new Error(
