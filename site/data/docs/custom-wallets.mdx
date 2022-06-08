@@ -130,18 +130,10 @@ export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
-    const rpc = chains.reduce(
-      (rpcUrlMap, chain) => ({
-        ...rpcUrlMap,
-        [chain.id]: chain.rpcUrls.default,
-      }),
-      {}
-    );
     const connector = new WalletConnectConnector({
       chains,
       options: {
         qrcode: false,
-        rpc,
       },
     });
 
