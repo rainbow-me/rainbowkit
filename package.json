@@ -32,7 +32,6 @@
     "release:build": "pnpm clean && pnpm lint && pnpm test && MINIFY_CSS=true pnpm --recursive --parallel --filter \"!*-app\" build && cp README.md packages/rainbowkit/README.md",
     "release:test": "pnpm release:build && pnpm --filter example dev",
     "ci:example": "pnpm --filter=@rainbow-me/rainbowkit prepare && pnpm --filter=example build",
-    "ci:example:mint-nft": "pnpm --filter=@rainbow-me/rainbowkit prepare && pnpm --filter=with-next-mint-nft build",
     "ci:site": "pnpm --filter=@rainbow-me/rainbowkit prepare && pnpm --filter=site build"
   },
   "repository": {
