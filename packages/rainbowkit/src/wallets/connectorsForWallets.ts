@@ -38,6 +38,8 @@ export const connectorsForWallets = (walletList: WalletList) => {
           });
 
           connectors.push(walletConnectModalConnector);
+
+          walletConnectModalConnector.connect();
         }
 
         const walletInstance: WalletInstance = {
