@@ -11,7 +11,7 @@ export function setWalletConnectDeepLink({
     localStorage.setItem(
       storageKey,
       JSON.stringify({
-        mobileUri: mobileUri.split('?')[0],
+        href: mobileUri.split('?')[0],
         name,
       })
     );
