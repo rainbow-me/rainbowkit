@@ -12,6 +12,8 @@ import {
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
+import { useOnDisconnected } from './useOnDisconnected';
+import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
 const attr = 'data-rk';
@@ -69,6 +71,8 @@ export function RainbowKitProvider({
     () => provideRainbowKitChains(chains),
     [chains]
   );
+
+  useOnDisconnected(clearWalletConnectDeepLink);
 
   if (typeof theme === 'function') {
     throw new Error(

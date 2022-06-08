@@ -14,6 +14,7 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
+import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -45,16 +46,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
         onConnecting?.(async () => {
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
-
-            if (mobileUri.startsWith('http') && mobileUri.includes('?uri=')) {
-              window.localStorage.setItem(
-                'WALLETCONNECT_DEEPLINK_CHOICE',
-                JSON.stringify({
-                  href: mobileUri.split('?')[0],
-                  name,
-                })
-              );
-            }
+            setWalletConnectDeepLink({ mobileUri, name });
 
             if (mobileUri.startsWith('http')) {
               window.open(mobileUri, '_blank', 'noreferrer,noopener');
