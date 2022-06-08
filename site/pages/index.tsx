@@ -308,7 +308,7 @@ export default function Home() {
 
 function InstallScript() {
   const [requestCopy, setRequestCopy] = useState(false);
-  const code = 'npm i @rainbow-me/rainbowkit wagmi ethers';
+  const code = 'npm init @rainbow-me/rainbowkit';
   const ref = useCoolMode('/rainbow.svg') as Ref<HTMLButtonElement>;
 
   React.useEffect(() => {
