@@ -18,8 +18,8 @@ export function useOnDisconnected(callback: () => void) {
         return;
       }
 
-      callback();
       callbackAlreadyExecutedRef.current = true;
+      callback();
     } else {
       callbackAlreadyExecutedRef.current = false;
     }
