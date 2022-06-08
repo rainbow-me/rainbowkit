@@ -1,19 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { useAccount } from 'wagmi';
+import { useConnect } from 'wagmi';
 
 export function useOnDisconnected(callback: () => void) {
-  const { data, isError, isLoading } = useAccount();
-  const disconnected = !data;
+  const { isDisconnected } = useConnect();
 
   // Ensure callback is executed once on disconnect
   const callbackAlreadyExecutedRef = useRef(false);
 
   useEffect(() => {
-    if (isLoading || isError) {
-      return;
-    }
-
-    if (disconnected) {
+    if (isDisconnected) {
       if (callbackAlreadyExecutedRef.current) {
         return;
       }
@@ -23,5 +18,5 @@ export function useOnDisconnected(callback: () => void) {
     } else {
       callbackAlreadyExecutedRef.current = false;
     }
-  }, [isLoading, isError, disconnected, callback]);
+  }, [isDisconnected, callback]);
 }
