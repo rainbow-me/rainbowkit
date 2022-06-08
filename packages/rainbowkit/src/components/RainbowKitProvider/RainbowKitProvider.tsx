@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
