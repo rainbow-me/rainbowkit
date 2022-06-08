@@ -81,15 +81,6 @@ export function RainbowKitProvider({
 
   useOnDisconnected(clearWalletConnectDeepLink);
 
-  // Debug
-  const onceRef = useRef(false);
-  useEffect(() => {
-    if (!onceRef.current) {
-      alert(localStorage.getItem('WALLETCONNECT_DEEPLINK_CHOICE'));
-      onceRef.current = true;
-    }
-  }, []);
-
   if (typeof theme === 'function') {
     throw new Error(
       'A theme function was provided to the "theme" prop instead of a theme object. You must execute this function to get the resulting theme object.'
