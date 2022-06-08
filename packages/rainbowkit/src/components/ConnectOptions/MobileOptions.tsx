@@ -1,6 +1,6 @@
-import { touchableStyles } from '../../css/touchableStyles';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Connector, useConnect } from 'wagmi';
+import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
