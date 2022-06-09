@@ -243,9 +243,17 @@ const Example = () => {
                 <div>Transaction: {JSON.stringify(transactionData)}</div>
               )}
               {transactionError && <div>Error sending transaction</div>}
-              {signingData && <div>Data Signature: {signingData}</div>}
+              {signingData && (
+                <div style={{ wordBreak: 'break-all' }}>
+                  Data Signature: {signingData}
+                </div>
+              )}
               {signingError && <div>Error signing message</div>}
-              {typedData && <div>Typed Data Signature: {typedData}</div>}
+              {typedData && (
+                <div style={{ wordBreak: 'break-all' }}>
+                  Typed Data Signature: {typedData}
+                </div>
+              )}
               {typedError && <div>Error signing typed message</div>}
             </div>
           </div>
