@@ -36,6 +36,36 @@ You can use the CodeSandbox links below try out RainbowKit:
 - with [Create React App (TypeScript)](https://codesandbox.io/s/ilfuoy)
 - with [Next.js](https://codesandbox.io/s/tmxcc0)
 
+## Examples
+
+The following examples are provided in the [examples](./examples/) folder of this repo.
+
+- `with-create-react-app`
+- `with-next`
+- `with-next-custom-button`
+- `with-next-mint-nft`
+- `with-remix`
+
+### Running examples
+
+To run an example locally, install dependencies.
+
+```bash
+pnpm install
+```
+
+Then go into an example directory, eg: `with-next`.
+
+```bash
+cd examples/with-next
+```
+
+Then run the dev script.
+
+```bash
+pnpm run dev
+```
+
 ## Contributing
 
 Please follow our [contributing guidelines](./.github/CONTRIBUTING.md).
