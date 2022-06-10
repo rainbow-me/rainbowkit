@@ -1,10 +1,9 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid, isMobile } from '../../../utils/isMobile';
-import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskOptions {
   chains: Chain[];
@@ -57,15 +56,8 @@ export const metaMask = ({
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
     },
     createConnector: () => {
-      const rpc = rpcUrlsForChains(chains);
       const connector = shouldUseWalletConnect
-        ? new WalletConnectConnector({
-            chains,
-            options: {
-              qrcode: false,
-              rpc,
-            },
-          })
+        ? getWalletConnectConnector({ chains })
         : new MetaMaskConnector({
             chains,
             options: { shimDisconnect },

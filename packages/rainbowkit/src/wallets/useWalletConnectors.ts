@@ -1,4 +1,5 @@
 import { Connector, useConnect } from 'wagmi';
+import { flatten } from '../utils/flatten';
 import { indexBy } from '../utils/indexBy';
 import { isNotNullish } from '../utils/isNotNullish';
 import { WalletInstance } from './Wallet';
@@ -25,64 +26,69 @@ export function useWalletConnectors(): WalletConnector[] {
     return result;
   }
 
-  const connectorByWalletId = indexBy(
-    defaultConnectors,
-    // @ts-expect-error
-    connector => (connector._wallet as WalletInstance)?.id
+  const walletInstances = flatten(
+    defaultConnectors.map(connector => {
+      // @ts-expect-error
+      return (connector._wallets as WalletInstance[]) ?? [];
+    })
+  ).sort((a, b) => a.index - b.index);
+
+  const walletInstanceById = indexBy(
+    walletInstances,
+    walletInstance => walletInstance.id
   );
 
   const MAX_RECENT_WALLETS = 3;
-  const recentConnectors: Connector[] = getRecentWalletIds()
-    .map(walletId => connectorByWalletId[walletId])
+  const recentWallets: WalletInstance[] = getRecentWalletIds()
+    .map(walletId => walletInstanceById[walletId])
     .filter(isNotNullish)
     .slice(0, MAX_RECENT_WALLETS);
 
-  const connectors: Connector[] = [
-    ...recentConnectors,
-    ...defaultConnectors.filter(
-      connector => !recentConnectors.includes(connector)
+  const groupedWallets: WalletInstance[] = [
+    ...recentWallets,
+    ...walletInstances.filter(
+      walletInstance => !recentWallets.includes(walletInstance)
     ),
   ];
 
-  return connectors
-    .map((connector: Connector) => {
-      // @ts-expect-error
-      const wallet = connector._wallet as WalletInstance;
+  const walletConnectors: WalletConnector[] = [];
 
-      if (!wallet) {
-        return null;
-      }
+  groupedWallets.forEach((wallet: WalletInstance) => {
+    if (!wallet) {
+      return;
+    }
 
-      const recent = recentConnectors.includes(connector);
+    const recent = recentWallets.includes(wallet);
 
-      return {
-        ...wallet,
-        connect: () => connectWallet(wallet.id, connector),
-        groupName: recent ? 'Recent' : wallet.groupName,
-        onConnecting: (fn: () => void) =>
-          connector.on('message', ({ type }) =>
-            type === 'connecting' ? fn() : undefined
-          ),
-        ready: (wallet.installed ?? true) && connector.ready,
-        recent,
-        showWalletConnectModal: wallet.walletConnectModalConnector
-          ? async () => {
-              try {
-                await connectWallet(
-                  wallet.id,
-                  wallet.walletConnectModalConnector!
-                );
-              } catch (err) {
-                // @ts-expect-error
-                const isUserRejection = err.name === 'UserRejectedRequestError';
+    walletConnectors.push({
+      ...wallet,
+      connect: () => connectWallet(wallet.id, wallet.connector),
+      groupName: recent ? 'Recent' : wallet.groupName,
+      onConnecting: (fn: () => void) =>
+        wallet.connector.on('message', ({ type }) =>
+          type === 'connecting' ? fn() : undefined
+        ),
+      ready: (wallet.installed ?? true) && wallet.connector.ready,
+      recent,
+      showWalletConnectModal: wallet.walletConnectModalConnector
+        ? async () => {
+            try {
+              await connectWallet(
+                wallet.id,
+                wallet.walletConnectModalConnector!
+              );
+            } catch (err) {
+              // @ts-expect-error
+              const isUserRejection = err.name === 'UserRejectedRequestError';
 
-                if (!isUserRejection) {
-                  throw err;
-                }
+              if (!isUserRejection) {
+                throw err;
               }
             }
-          : undefined,
-      };
-    })
-    .filter(isNotNullish);
+          }
+        : undefined,
+    });
+  });
+
+  return walletConnectors;
 }
