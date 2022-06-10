@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { createRequire } from 'module';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -144,10 +145,14 @@ async function run() {
       )
     );
 
-    const ignore: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
+    const ignoreList: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
 
     await cpy(path.join(selectedTemplatePath, '**', '*'), targetPath, {
-      filter: src => ignore.every(i => !src.path.includes(i)),
+      filter: src =>
+        ignoreList.every(ignore => {
+          const relativePath = path.relative(selectedTemplatePath, src.path);
+          return !relativePath.includes(ignore);
+        }),
       rename: name => name.replace(/^_dot_/, '.'),
     });
 
@@ -187,10 +192,17 @@ async function run() {
     });
 
     if (process.env.INSTALL_WORKSPACE_RAINBOWKIT !== 'true') {
-      await execa(packageManager, ['install', '@rainbow-me/rainbowkit'], {
-        cwd: targetPath,
-        stdio: 'inherit',
-      });
+      await execa(
+        packageManager,
+        [
+          packageManager === 'yarn' ? 'add' : 'install',
+          '@rainbow-me/rainbowkit',
+        ],
+        {
+          cwd: targetPath,
+          stdio: 'inherit',
+        }
+      );
     }
 
     if (!options.skipGit) {
