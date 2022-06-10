@@ -82,7 +82,6 @@ importers:
       typescript: 4.7.2
       vitest: 0.5.0
       wagmi: 0.4.2_2ysdzk2vllwi7dl6z45r5ylxcu
-<<<<<<< HEAD
 
   examples/with-create-react-app:
     specifiers:
@@ -169,8 +168,6 @@ importers:
       '@remix-run/dev': 1.5.1
       '@remix-run/eslint-config': 1.5.1_eslint@8.15.0
       eslint: 8.15.0
-=======
->>>>>>> 5016a97 (fix: pr review)
 
   packages/create-rainbowkit:
     specifiers:
@@ -6057,14 +6054,11 @@ packages:
       keccak: 3.0.2
       loglevel: 1.8.0
       web3-utils: 1.7.3
-<<<<<<< HEAD
 
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
     dev: false
-=======
->>>>>>> 5016a97 (fix: pr review)
 
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
