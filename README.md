@@ -12,11 +12,17 @@ RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add 
 - ✅ Easily customizable
 - 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
 
-## Installation
+## Quick start
 
-Install RainbowKit along with [wagmi](https://wagmi.sh) and its [ethers](https://docs.ethers.io) peer dependency.
+You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
 
-`npm install @rainbow-me/rainbowkit wagmi ethers`
+```bash
+npm init @rainbow-me/rainbowkit
+# or
+yarn create @rainbow-me/rainbowkit
+# or
+pnpm create @rainbow-me/rainbowkit
+```
 
 ## Documentation
 

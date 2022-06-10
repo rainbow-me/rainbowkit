@@ -7,7 +7,23 @@ description: Get up and running with RainbowKit
 
 ## Get up and running with RainbowKit
 
-### Install
+### Quick start
+
+You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+
+```bash
+npm init @rainbow-me/rainbowkit
+# or
+yarn create @rainbow-me/rainbowkit
+# or
+pnpm create @rainbow-me/rainbowkit
+```
+
+This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
+
+Alternatively, you can manually integrate RainbowKit into your existing project.
+
+### Manual setup
 
 Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
 
@@ -17,7 +33,7 @@ npm install @rainbow-me/rainbowkit wagmi ethers
 
 > Note: RainbowKit is a [React](https://reactjs.org/) library.
 
-### Import
+#### Import
 
 Import RainbowKit, wagmi, and ethers.
 
@@ -38,7 +54,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 ```
 
-### Configure
+#### Configure
 
 Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
@@ -69,7 +85,7 @@ const wagmiClient = createClient({
 
 [Read more about configuring chains & providers with `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
 
-### Wrap providers
+#### Wrap providers
 
 Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagmi.sh/docs/provider).
 
@@ -85,7 +101,7 @@ const App = () => {
 };
 ```
 
-### Add the connect button
+#### Add the connect button
 
 Then, in your app, import and render the `ConnectButton` component.
 

@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 0.2.4
+
+### Patch Changes
+
+- 867067c: Improve deep linking support for WalletConnect-based wallets on iOS
+
+  We now store the wallet’s universal link URL in local storage so that WalletConnect can use it for deep linking. This is typically handled by the official WalletConnect modal, but we need to handle it ourselves when rendering custom QR codes within RainbowKit.
+
 ## 0.2.3
 
 ### Patch Changes
