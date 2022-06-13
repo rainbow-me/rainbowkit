@@ -1,0 +1,47 @@
+{
+  "name": "with-create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.35",
+    "@types/react": "^18.0.9",
+    "ethers": "^5.0.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1",
+    "react": "^18.1.0",
+    "typescript": "^4.7.2",
+    "util": "0.12.4",
+    "wagmi": "^0.4.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "npm run start",
+    "start": "PORT=3030 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
