@@ -30,6 +30,7 @@ import {
   useRainbowKitChainsById,
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
+import { chainMetadataByName } from '../RainbowKitProvider/provideRainbowKitChains';
 import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
 import { formatENS } from './formatENS';
@@ -82,9 +83,13 @@ export function ConnectButtonRenderer({
 
   const { data: ensAvatar } = useEnsAvatar({
     addressOrName: address,
+    chainId: chainMetadataByName.mainnet?.chainId,
   });
 
-  const { data: ensName } = useEnsName({ address });
+  const { data: ensName } = useEnsName({
+    address,
+    chainId: chainMetadataByName.mainnet?.chainId,
+  });
 
   const { data: balanceData } = useBalance({
     addressOrName: address,
