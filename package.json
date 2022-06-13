@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "postinstall": "husky install",
-    "dev": "pnpm --recursive --parallel --filter \"!*-app\" dev",
+    "dev": "pnpm dev:lib && pnpm dev:example",
     "dev:lib": "pnpm --filter @rainbow-me/rainbowkit dev",
     "dev:example": "pnpm dev:lib & pnpm --filter example dev",
     "dev:site": "pnpm dev:lib & pnpm --filter site dev",
