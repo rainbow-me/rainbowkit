@@ -59,7 +59,7 @@ const polygonIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
-export const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
+const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, ...arbitrumIcon },
   arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
