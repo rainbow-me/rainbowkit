@@ -1,5 +1,6 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import { rpcUrlsForChains } from './../utils/rpcUrlsForChains';
 
 type SerializedOptions = string;
 const sharedConnectors = new Map<SerializedOptions, WalletConnectConnector>();
@@ -21,10 +22,12 @@ export function getWalletConnectConnector({
   chains: Chain[];
   qrcode?: boolean;
 }) {
+  const rpc = rpcUrlsForChains(chains);
   const options: WalletConnectConnectorOptions = {
     chains,
     options: {
       qrcode,
+      rpc,
     },
   };
 
