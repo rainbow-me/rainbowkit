@@ -8,30 +8,35 @@ const B = 1000 * M;
 describe('abbreviateETHBalance', () => {
   it('handles numbers less than 1', () => {
     expect(abbreviateETHBalance(0.002)).toEqual('0.002');
+    expect(abbreviateETHBalance(0.9009)).toEqual('0.9');
     expect(abbreviateETHBalance(0.5194)).toEqual('0.519');
-    expect(abbreviateETHBalance(0.5199)).toEqual('0.52');
-    expect(abbreviateETHBalance(0.5499)).toEqual('0.55');
-    expect(abbreviateETHBalance(0.5999)).toEqual('0.6');
+    expect(abbreviateETHBalance(0.5199)).toEqual('0.519'); // no round
+    expect(abbreviateETHBalance(0.5499)).toEqual('0.549');
+    expect(abbreviateETHBalance(0.5999)).toEqual('0.599');
   });
 
   it('passes through small numbers', () => {
     expect(abbreviateETHBalance(1)).toEqual('1');
+    expect(abbreviateETHBalance(10)).toEqual('10');
+    expect(abbreviateETHBalance(10.0)).toEqual('10');
     expect(abbreviateETHBalance(12)).toEqual('12');
     expect(abbreviateETHBalance(123)).toEqual('123');
     expect(abbreviateETHBalance(1234)).toEqual('1,234');
     expect(abbreviateETHBalance(9999)).toEqual('9,999');
     expect(abbreviateETHBalance(9999.1)).toEqual('9,999.1');
+    expect(abbreviateETHBalance(9999.99)).toEqual('9,999.9'); // no round
     expect(abbreviateETHBalance(1.002)).toEqual('1');
+    expect(abbreviateETHBalance(1.04)).toEqual('1.04');
+    expect(abbreviateETHBalance(1.09)).toEqual('1.09');
     expect(abbreviateETHBalance(1.1)).toEqual('1.1');
-    expect(abbreviateETHBalance(1.09)).toEqual('1.1');
-    expect(abbreviateETHBalance(1.04)).toEqual('1');
+    expect(abbreviateETHBalance(10)).toEqual('10');
   });
 
   it('abbreviates past 10k', () => {
     expect(abbreviateETHBalance(10 * K)).toEqual('10k');
     expect(abbreviateETHBalance(12.3 * K)).toEqual('12.3k');
     expect(abbreviateETHBalance(123.4 * K)).toEqual('123.4k');
-    expect(abbreviateETHBalance(999.99 * K)).toEqual('1m'); // rounds
+    expect(abbreviateETHBalance(999.99 * K)).toEqual('999.9k'); // no rounds
   });
 
   it('abbreviates past 1m', () => {
@@ -40,7 +45,7 @@ describe('abbreviateETHBalance', () => {
     expect(abbreviateETHBalance(10 * M)).toEqual('10m');
     expect(abbreviateETHBalance(12.3 * M)).toEqual('12.3m');
     expect(abbreviateETHBalance(123.4 * M)).toEqual('123.4m');
-    expect(abbreviateETHBalance(999.99 * M)).toEqual('1b'); // rounds
+    expect(abbreviateETHBalance(999.99 * M)).toEqual('999.9m'); // no rounds
   });
 
   it('abbreviates past 1b', () => {
@@ -49,6 +54,6 @@ describe('abbreviateETHBalance', () => {
     expect(abbreviateETHBalance(10 * B)).toEqual('10b');
     expect(abbreviateETHBalance(12.3 * B)).toEqual('12.3b');
     expect(abbreviateETHBalance(123.4 * B)).toEqual('123.4b');
-    expect(abbreviateETHBalance(999.99 * B)).toEqual('1t'); // rounds
+    expect(abbreviateETHBalance(999.99 * B)).toEqual('999.9b'); // no rounds
   });
 });

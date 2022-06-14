@@ -3,13 +3,19 @@
  */
 const units = ['k', 'm', 'b', 't'];
 
-export function abbreviateETHBalance(number: number): string {
-  if (number < 1) return number.toFixed(3).replace(/0+$/, '');
+export function toPrecision(number: number, precision: number = 1) {
+  return number
+    .toString()
+    .replace(new RegExp(`(.+\\.\\d{${precision}})\\d+`), '$1')
+    .replace(/(\.[1-9]*)0+$/, '$1')
+    .replace(/\.$/, '');
+}
 
+export function abbreviateETHBalance(number: number): string {
+  if (number < 1) return toPrecision(number, 3);
+  if (number < 10 ** 2) return toPrecision(number, 2);
   if (number < 10 ** 4)
-    return new Intl.NumberFormat()
-      .format(parseFloat(number.toFixed(1)))
-      .replace(/\.0$/, '');
+    return new Intl.NumberFormat().format(parseFloat(toPrecision(number, 1)));
 
   const decimalsDivisor = 10 ** 1; // 1 decimal place
 
@@ -19,15 +25,9 @@ export function abbreviateETHBalance(number: number): string {
     const size = 10 ** ((i + 1) * 3);
 
     if (size <= number) {
-      number = Math.round((number * decimalsDivisor) / size) / decimalsDivisor;
+      number = (number * decimalsDivisor) / size / decimalsDivisor;
 
-      // round up
-      if (number === 1000 && i < units.length - 1) {
-        number = 1;
-        i++;
-      }
-
-      result = number + units[i];
+      result = toPrecision(number, 1) + units[i];
 
       break;
     }
