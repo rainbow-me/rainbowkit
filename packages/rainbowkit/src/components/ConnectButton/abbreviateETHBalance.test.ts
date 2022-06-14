@@ -9,6 +9,7 @@ describe('abbreviateETHBalance', () => {
   it('truncates to 3 decimal places for numbers under 1', () => {
     expect(abbreviateETHBalance(0.002)).toEqual('0.002');
     expect(abbreviateETHBalance(0.9009)).toEqual('0.9');
+    expect(abbreviateETHBalance(0.0009)).toEqual('0');
     expect(abbreviateETHBalance(0.5194)).toEqual('0.519');
     expect(abbreviateETHBalance(0.5199)).toEqual('0.519');
     expect(abbreviateETHBalance(0.5499)).toEqual('0.549');
@@ -24,7 +25,6 @@ describe('abbreviateETHBalance', () => {
     expect(abbreviateETHBalance(10)).toEqual('10');
     expect(abbreviateETHBalance(10.0)).toEqual('10');
     expect(abbreviateETHBalance(12)).toEqual('12');
-    expect(abbreviateETHBalance(10)).toEqual('10');
   });
 
   it('truncates to 1 decimal place and adds commas for numbers under 10k', () => {
