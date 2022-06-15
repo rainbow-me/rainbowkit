@@ -40,7 +40,7 @@ const Home: NextPage = () => {
           </a>
 
           <a
-            href="https://github.com/rainbow-me/rainbowkit-examples"
+            href="https://github.com/rainbow-me/rainbowkit/tree/main/examples"
             className={styles.card}
           >
             <h2>RainbowKit Examples &rarr;</h2>

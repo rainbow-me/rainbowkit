@@ -1,6 +1,7 @@
 export * from './components';
 export { wallet } from './wallets/walletConnectors';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
+export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
 export type { Wallet, WalletList } from './wallets/Wallet';
