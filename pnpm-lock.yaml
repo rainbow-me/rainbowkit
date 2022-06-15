@@ -249,7 +249,7 @@ importers:
       postcss: ^8.4.4
       qrcode: 1.5.0
       react: ^18.1.0
-      react-remove-scroll: 2.5.3
+      react-remove-scroll: 2.5.4
       vitest: ^0.5.0
     dependencies:
       '@vanilla-extract/css': 1.7.0
@@ -257,7 +257,7 @@ importers:
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.0
       clsx: 1.1.1
       qrcode: 1.5.0
-      react-remove-scroll: 2.5.3_react@18.1.0
+      react-remove-scroll: 2.5.4_react@18.1.0
     devDependencies:
       '@ethersproject/abstract-provider': 5.6.0
       '@ethersproject/providers': 5.6.2
@@ -17437,8 +17437,8 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /react-remove-scroll-bar/2.3.1_react@18.1.0:
-    resolution: {integrity: sha512-IvGX3mJclEF7+hga8APZczve1UyGMkMG+tjS0o/U1iLgvZRpjFAQEUBJ4JETfvbNlfNnZnoDyWJCICkA15Mghg==}
+  /react-remove-scroll-bar/2.3.3_react@18.1.0:
+    resolution: {integrity: sha512-i9GMNWwpz8XpUpQ6QlevUtFjHGqnPG4Hxs+wlIJntu/xcsZVEpJcIV71K3ZkqNy2q3GfgvkD7y6t/Sv8ofYSbw==}
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -17448,7 +17448,7 @@ packages:
         optional: true
     dependencies:
       react: 18.1.0
-      react-style-singleton: 2.2.0_react@18.1.0
+      react-style-singleton: 2.2.1_react@18.1.0
       tslib: 2.3.1
     dev: false
 
@@ -17470,8 +17470,8 @@ packages:
       use-sidecar: 1.0.5_react@18.1.0
     dev: false
 
-  /react-remove-scroll/2.5.3_react@18.1.0:
-    resolution: {integrity: sha512-NQ1bXrxKrnK5pFo/GhLkXeo3CrK5steI+5L+jynwwIemvZyfXqaL0L5BzwJd7CSwNCU723DZaccvjuyOdoy3Xw==}
+  /react-remove-scroll/2.5.4_react@18.1.0:
+    resolution: {integrity: sha512-xGVKJJr0SJGQVirVFAUZ2k1QLyO6m+2fy0l8Qawbp5Jgrv3DeLalrfMNBFSlmz5kriGGzsVBtGVnf4pTKIhhWA==}
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -17481,8 +17481,8 @@ packages:
         optional: true
     dependencies:
       react: 18.1.0
-      react-remove-scroll-bar: 2.3.1_react@18.1.0
-      react-style-singleton: 2.2.0_react@18.1.0
+      react-remove-scroll-bar: 2.3.3_react@18.1.0
+      react-style-singleton: 2.2.1_react@18.1.0
       tslib: 2.3.1
       use-callback-ref: 1.3.0_react@18.1.0
       use-sidecar: 1.1.2_react@18.1.0
@@ -17616,8 +17616,8 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /react-style-singleton/2.2.0_react@18.1.0:
-    resolution: {integrity: sha512-nK7mN92DMYZEu3cQcAhfwE48NpzO5RpxjG4okbSqRRbfal9Pk+fG2RdQXTMp+f6all1hB9LIJSt+j7dCYrU11g==}
+  /react-style-singleton/2.2.1_react@18.1.0:
+    resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -18413,7 +18413,7 @@ packages:
     dev: true
 
   /setimmediate/1.0.5:
-    resolution: {integrity: sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=}
+    resolution: {integrity: sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==}
     dev: true
 
   /setprototypeof/1.1.0:
