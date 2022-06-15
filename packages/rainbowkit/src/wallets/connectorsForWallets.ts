@@ -2,12 +2,12 @@ import { Connector } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { ConnectorArgs, WalletInstance, WalletList } from './Wallet';
+import { WalletInstance, WalletList } from './Wallet';
 
 export const connectorsForWallets = (walletList: WalletList) => {
-  let index = -1;
+  return () => {
+    let index = -1;
 
-  return function (connectorArgs: ConnectorArgs) {
     const connectors: Connector[] = [];
 
     walletList.forEach(({ groupName, wallets }) => {
@@ -15,7 +15,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         index++;
 
         const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector(connectorArgs)
+          createConnector()
         );
 
         let walletConnectModalConnector: Connector | undefined;

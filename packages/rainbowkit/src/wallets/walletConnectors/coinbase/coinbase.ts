@@ -23,18 +23,14 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
       qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
     },
-    createConnector: ({ chainId = chains[0].id }) => {
+    createConnector: () => {
       const ios = isIOS();
-
-      const chain = chains.find(chain => chain.id === chainId);
-      const jsonRpcUrl = chain?.rpcUrls.default;
 
       const connector = new CoinbaseWalletConnector({
         chains,
         options: {
           appName,
           headlessMode: true,
-          jsonRpcUrl,
         },
       });
 

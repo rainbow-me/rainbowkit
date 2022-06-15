@@ -67,7 +67,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
     {
       name: 'createConnector',
       required: true,
-      type: '(connectorArgs: { chainId? number }) => RainbowKitConnector',
+      type: '() => RainbowKitConnector',
       typeSimple: 'Connector',
       description:
         'Function for providing the connector instance and configuration for different connection methods, described below',
