@@ -112,8 +112,11 @@ The following properties are defined on the return value of the `createConnector
 For example, to create a custom wallet using WalletConnect:
 
 ```tsx
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Chain, Wallet } from '@rainbow-me/rainbowkit';
+import {
+  Chain,
+  Wallet,
+  getWalletConnectConnector,
+} from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
   chains: Chain[];
@@ -130,20 +133,7 @@ export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
-    const rpc = chains.reduce(
-      (rpcUrlMap, chain) => ({
-        ...rpcUrlMap,
-        [chain.id]: chain.rpcUrls.default,
-      }),
-      {}
-    );
-    const connector = new WalletConnectConnector({
-      chains,
-      options: {
-        qrcode: false,
-        rpc,
-      },
-    });
+    const connector = getWalletConnectConnector({ chains });
 
     return {
       connector,

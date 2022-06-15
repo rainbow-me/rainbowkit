@@ -1,9 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
-import { rpcUrlsForChains } from '../../../utils/rpcUrlsForChains';
 import { Wallet } from '../../Wallet';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface SteakOptions {
   chains: Chain[];
@@ -20,14 +19,8 @@ export const steak = ({ chains }: SteakOptions): Wallet => ({
     qrCode: 'https://steakwallet.fi/download',
   },
   createConnector: () => {
-    const rpc = rpcUrlsForChains(chains);
-    const connector = new WalletConnectConnector({
-      chains,
-      options: {
-        qrcode: false,
-        rpc,
-      },
-    });
+    const connector = getWalletConnectConnector({ chains });
+
     return {
       connector,
       mobile: {
