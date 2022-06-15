@@ -29,6 +29,7 @@ import {
   useRainbowKitChainsById,
 } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
+import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
 import { formatENS } from './formatENS';
 
@@ -158,7 +159,9 @@ export function ConnectButtonRenderer({
   }, [preloadImages]);
 
   const displayBalance = balanceData
-    ? `${Number(balanceData.formatted).toPrecision(3)} ${balanceData.symbol}`
+    ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
+        balanceData.symbol
+      }`
     : undefined;
 
   return (
