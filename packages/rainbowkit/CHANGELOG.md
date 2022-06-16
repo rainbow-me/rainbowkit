@@ -1,5 +1,15 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.1
+
+### Patch Changes
+
+- 9d431fb: Update [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) to v2.5.4 to fix an issue with scrollbar space preservation when the modal is opened.
+
+  More detail: https://github.com/theKashey/react-remove-scroll/issues/71.
+
+- 11ed088: Abbreviate large account balances using standard k/m/b units, fixes cases where balances appeared in exponential notation.
+
 ## 0.3.0
 
 ### Minor Changes
