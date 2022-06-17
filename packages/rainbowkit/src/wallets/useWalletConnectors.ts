@@ -2,6 +2,7 @@ import { Connector, useConnect } from 'wagmi';
 import { flatten } from '../utils/flatten';
 import { indexBy } from '../utils/indexBy';
 import { isNotNullish } from '../utils/isNotNullish';
+import { useRainbowKitChains } from './../components/RainbowKitProvider/RainbowKitChainContext';
 import { WalletInstance } from './Wallet';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
@@ -14,7 +15,10 @@ export interface WalletConnector extends WalletInstance {
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const { connectAsync, connectors: defaultConnectors } = useConnect();
+  const chains = useRainbowKitChains();
+  const { connectAsync, connectors: defaultConnectors } = useConnect({
+    chainId: chains[0]?.id,
+  });
 
   async function connectWallet(walletId: string, connector: Connector) {
     const result = await connectAsync(connector);
