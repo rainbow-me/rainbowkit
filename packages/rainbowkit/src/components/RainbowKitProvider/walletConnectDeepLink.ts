@@ -7,7 +7,10 @@ export function setWalletConnectDeepLink({
   mobileUri: string;
   name: string;
 }) {
-  if (mobileUri.startsWith('http') && mobileUri.includes('?uri=')) {
+  if (
+    mobileUri.startsWith('wc:') || // Android
+    (mobileUri.startsWith('http') && mobileUri.includes('?uri=')) // iOS
+  ) {
     localStorage.setItem(
       storageKey,
       JSON.stringify({
