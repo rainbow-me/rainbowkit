@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.2
+
+### Patch Changes
+
+- 33a2dd7: Automatically connect to the first chain in the `chains` array to avoid presenting the "Wrong network" state immediately after connecting
+
 ## 0.3.1
 
 ### Patch Changes
