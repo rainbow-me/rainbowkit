@@ -1,5 +1,12 @@
 # with-next
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [33a2dd7]
+  - @rainbow-me/rainbowkit@0.3.2
+
 ## 0.0.3
 
 ### Patch Changes
