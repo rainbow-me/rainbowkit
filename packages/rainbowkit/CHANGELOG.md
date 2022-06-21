@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.3
+
+### Patch Changes
+
+- ee81177: Support deep linking of wallet interactions for WalletConnect on Android
+
 ## 0.3.2
 
 ### Patch Changes
