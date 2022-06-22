@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.4
+
+### Patch Changes
+
+- ac63f9a: Detect Trust Wallet in-app browser
+
 ## 0.3.3
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "private": true,
   "main": "index.js",
