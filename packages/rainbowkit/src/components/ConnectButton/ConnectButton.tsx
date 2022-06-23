@@ -248,10 +248,10 @@ export function ConnectButton({
                 color="accentColorForeground"
                 fontFamily="body"
                 fontWeight="bold"
+                height="40"
                 key="connect"
                 onClick={openConnectModal}
                 paddingX="14"
-                paddingY="10"
                 transition="default"
                 type="button"
               >
