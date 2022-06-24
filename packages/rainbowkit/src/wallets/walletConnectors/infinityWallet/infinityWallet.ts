@@ -23,7 +23,7 @@ export const infinityWallet = ({
     id: 'infinityWallet',
     name: 'Infinity Wallet',
     iconUrl: async () => (await import('./infinityWallet.svg')).default,
-    iconBackground: '#fff',
+    iconBackground: '#1d2643',
     installed: !shouldUseWalletConnect ? isInfinityWalletInjected : undefined,
     downloadUrls: {
       browserExtension: 'https://infinitywallet.io/download/',
@@ -47,13 +47,35 @@ export const infinityWallet = ({
           getUri: undefined,
         },
         desktop: {
-          getUri: shouldUseWalletConnect
-            ? async () => {
-                openInfinityWallet(window.location.href, chains);
-              }
-            : undefined,
+          getUri: async () => {
+            openInfinityWallet(window.location.href, chains);
+          },
+        },
+        qrCode: {
+          getUri: async () => (await connector.getProvider()).connector.uri,
+          instructions: {
+            learnMoreUrl: 'https://infinitywallet.io/',
+            steps: [
+              {
+                description: 'Open or install the Infinity Wallet, make a shortcut for faster access to your wallet.',
+                step: 'install',
+                title: 'Open the Infinity Wallet',
+              },
+              {
+                description: 'Create a new wallet or import an existing one.',
+                step: 'create',
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description: 'Accept the prompt to open in Infinity Wallet or Scan the QR code. A connection prompt will appear for you to connect your wallet.',
+                step: 'scan',
+                title: 'Click WalletConnect to scan',
+              },
+            ],
+          },
         },
       };
     },
   };
 };
+
