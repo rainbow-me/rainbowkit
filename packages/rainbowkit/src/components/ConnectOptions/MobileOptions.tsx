@@ -1,10 +1,12 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { Connector, useConnect } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
+import { MoreWallets } from '../../wallets/walletConnectors/more/more';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
@@ -12,11 +14,59 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
 import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
+import { SpinnerIcon } from '../Icons/Spinner';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { Chain } from '../RainbowKitProvider/RainbowKitChainContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
+
+const parseAndStoreWallets: (
+  data: any,
+  wallets: WalletConnector[],
+  setOtherWallets: (otherWallets: WalletConnector[]) => void,
+  connect: (connector: Connector) => Promise<any>,
+  chains: Chain[],
+  options: {
+    rpc: {
+      [chainId: number]: string;
+    };
+    qrCode: boolean;
+  }
+) => void = (data, wallets, setOtherWallets, connect, chains, options) => {
+  const defaultWalletNames = wallets.map(w => w.name);
+  if (data?.listings) {
+    const rawWallets: any[] = Object.values(data.listings);
+    const cleanWallets: WalletConnector[] = rawWallets
+      .filter(raw => raw.mobile.universal || raw.mobile.native) // filter out wallets we can't connect to
+      .map(raw => {
+        const MoreWalletsConnector = MoreWallets({
+          chains,
+          options,
+          wcUrl: raw.mobile.universal || `${raw.mobile.native}/`,
+        });
+        return {
+          ...MoreWalletsConnector,
+          connect: () => connect(MoreWalletsConnector?.connector),
+          groupName: 'more',
+          iconBackground: 'transparent',
+          iconUrl: raw.image_url.md,
+          id: raw.id,
+          name: raw.name,
+          onConnecting: (fn: () => void) =>
+            MoreWalletsConnector.connector.on('message', ({ type }) =>
+              type === 'connecting' ? fn() : undefined
+            ),
+          ready: true,
+          recent: false,
+          shortName: raw.metadata.shortName,
+        };
+      })
+      .filter(w => !defaultWalletNames.includes(w.name));
+    setOtherWallets(cleanWallets);
+  }
+};
 
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
   const {
@@ -32,7 +82,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
-
   return (
     <Box
       as="button"
@@ -42,7 +91,6 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       key={id}
       onClick={useCallback(async () => {
         connect?.();
-
         onConnecting?.(async () => {
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
@@ -102,6 +150,76 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
   );
 }
 
+function OtherWalletsButton({
+  action,
+  wallets,
+}: {
+  action: () => void;
+  wallets: {
+    iconBackground: string;
+    iconUrl: string | (() => Promise<string>);
+  }[];
+}) {
+  const loadingWallets = !wallets?.length;
+  return (
+    <Box
+      as="button"
+      color="modalText"
+      fontFamily="body"
+      key="other-wallets"
+      {...(!loadingWallets ? { onClick: action } : {})}
+      style={{ overflow: 'visible', textAlign: 'center' }}
+      type="button"
+      width="full"
+    >
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+      >
+        <Box paddingBottom="8" paddingTop="10">
+          <Box
+            alignItems="center"
+            color="generalBorder"
+            display="flex"
+            flexDirection="row"
+            gap="4"
+            height="60"
+            justifyContent="center"
+            style={{ flexWrap: 'wrap' }}
+            width="60"
+            {...(loadingWallets
+              ? { background: 'generalBorderDim', borderRadius: '6' }
+              : {})}
+          >
+            {loadingWallets && <SpinnerIcon />}
+            {wallets.map((w, i) => (
+              <AsyncImage
+                background={w.iconBackground}
+                borderRadius="6"
+                boxShadow="walletLogo"
+                height="28"
+                key={i}
+                src={w.iconUrl}
+                width="28"
+              />
+            ))}
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="column" gap="1" textAlign="center">
+          <Text as="h2" color="modalText" size="13" weight="medium">
+            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+            <Box as="span" position="relative">
+              More ↓
+            </Box>
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
 enum MobileWalletStep {
   Connect = 'CONNECT',
   Get = 'GET',
@@ -111,15 +229,53 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors();
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
+  const { connectAsync } = useConnect();
 
   let headerLabel = null;
   let walletContent = null;
   let headerBackgroundContrast = false;
   let headerBackButtonLink: MobileWalletStep | null = null;
 
+  let walletConnectOptions: {
+    rpc: {
+      [chainId: number]: string;
+    };
+    qrCode: boolean;
+  };
+  let walletConnectChains: Chain[];
+  const walletConnectConnector = wallets.find(
+    w => w.id === 'walletConnect'
+  )?.connector;
+  if (walletConnectConnector) {
+    walletConnectOptions = walletConnectConnector.options;
+    walletConnectChains = walletConnectConnector.chains;
+  }
+
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
     MobileWalletStep.Connect
   );
+
+  const [showOtherWallets, setShowOtherWallets] = useState<boolean>(false);
+  const [otherWallets, setOtherWallets] = useState<WalletConnector[]>([]);
+
+  useEffect(() => {
+    const fetchOtherWallets = async () => {
+      const res = await fetch(
+        'https://registry.walletconnect.com/api/v2/wallets'
+      );
+      const resJson = await res.json();
+      parseAndStoreWallets(
+        resJson,
+        wallets,
+        setOtherWallets,
+        connectAsync,
+        walletConnectChains,
+        walletConnectOptions
+      );
+    };
+    walletConnectConnector && fetchOtherWallets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const ios = isIOS();
 
@@ -131,24 +287,47 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         <Box>
           <Box
             background="profileForeground"
-            className={styles.scroll}
+            className={styles.walletsContainer}
             display="flex"
+            justifyContent="center"
             paddingBottom="20"
             paddingTop="6"
           >
-            <Box display="flex" style={{ margin: '0 auto' }}>
-              {wallets
-                .filter(wallet => wallet.ready)
-                .map(wallet => {
-                  return (
-                    <Box key={wallet.id} paddingX="20">
-                      <Box width="60">
-                        <WalletButton wallet={wallet} />
-                      </Box>
+            {[...wallets, ...(showOtherWallets ? otherWallets : [])]
+              .filter(wallet => wallet.ready)
+              .map(wallet => {
+                return (
+                  <Box key={wallet.id} paddingX="14">
+                    <Box width="60">
+                      <WalletButton wallet={wallet} />
                     </Box>
-                  );
-                })}
-            </Box>
+                  </Box>
+                );
+              })}
+            {walletConnectConnector && !showOtherWallets && (
+              <Box key="more-wallets" paddingX="14">
+                <Box height="60" width="60">
+                  <OtherWalletsButton
+                    action={() => setShowOtherWallets(true)}
+                    wallets={otherWallets.slice(0, 4).map(w => ({
+                      iconBackground: w.iconBackground,
+                      iconUrl: w.iconUrl,
+                    }))}
+                  />
+                </Box>
+              </Box>
+            )}
+            {showOtherWallets && (
+              <Box display="flex" justifyContent="center" width="full">
+                <ActionButton
+                  label="Show Less"
+                  onClick={() => setShowOtherWallets(false)}
+                  size="large"
+                  stretch
+                  type="secondary"
+                />
+              </Box>
+            )}
           </Box>
 
           <Box
