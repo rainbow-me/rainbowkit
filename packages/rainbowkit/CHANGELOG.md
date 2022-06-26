@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.5
+
+### Patch Changes
+
+- 40d838e: Pinned the `wagmi` peer dependency to `0.4.x`
+- 1ab9c07: Fix bug where "onConnecting" callbacks were fired multiple times when toggling between WalletConnect-based wallets
+- 1a7d50c: Update connect button height to be consistent between states.
+
 ## 0.3.4
 
 ### Patch Changes

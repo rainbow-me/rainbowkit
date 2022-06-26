@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/rainbowkit",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "The best way to connect a wallet",
   "files": [
     "dist"
