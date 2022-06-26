@@ -43,7 +43,16 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       onClick={useCallback(async () => {
         connect?.();
 
+        // We need to guard against "onConnecting" callbacks being fired
+        // multiple times since connector instances can be shared between
+        // wallets. Ideally wagmi would let us scope the callback to the
+        // specific "connect" call, but this will work in the meantime.
+        let callbackFired = false;
+
         onConnecting?.(async () => {
+          if (callbackFired) return;
+          callbackFired = true;
+
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
             setWalletConnectDeepLink({ mobileUri, name });
