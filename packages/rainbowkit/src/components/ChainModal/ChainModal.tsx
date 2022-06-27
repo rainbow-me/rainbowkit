@@ -5,13 +5,14 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
+import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { DisconnectIcon } from '../Icons/Disconnect';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
@@ -22,6 +23,7 @@ export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
   networkError: ReturnType<typeof useSwitchNetwork>['error'];
+  onDisconnect: ReturnType<typeof useDisconnect>['disconnect'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
@@ -30,6 +32,7 @@ export function ChainModal({
   chains,
   networkError,
   onClose,
+  onDisconnect,
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
@@ -38,6 +41,7 @@ export function ChainModal({
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
+  const unsupportedChain = activeChain?.unsupported ?? false;
 
   const stopSwitching = useCallback(() => {
     setSwitchingToChain(null);
@@ -222,6 +226,42 @@ export function ChainModal({
                   your wallet instead.
                 </Text>
               </Box>
+            )}
+            {unsupportedChain && (
+              <>
+                <Box background="generalBorderDim" height="1" marginX="8" />
+                <MenuButton onClick={() => onDisconnect()}>
+                  <Box fontFamily="body" fontSize="16" fontWeight="bold">
+                    <Box
+                      alignItems="center"
+                      display="flex"
+                      flexDirection="row"
+                      justifyContent="space-between"
+                    >
+                      <Box
+                        alignItems="center"
+                        display="flex"
+                        flexDirection="row"
+                        gap="4"
+                        height="28"
+                      >
+                        <Box
+                          alignItems="center"
+                          color="error"
+                          height="max"
+                          justifyContent="center"
+                          marginLeft="6"
+                          marginRight="10"
+                          style={{ height: 16 }}
+                        >
+                          <DisconnectIcon />
+                        </Box>
+                        <div>Disconnect</div>
+                      </Box>
+                    </Box>
+                  </Box>
+                </MenuButton>
+              </>
             )}
           </Box>
         </Box>
