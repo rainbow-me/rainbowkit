@@ -47,6 +47,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
+
     if (wallet.ready) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
@@ -60,6 +61,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           window.open(uri, safari ? '_blank' : '_self');
         }, 0);
       }
+      wallet?.shouldCloseModalOnConnecting && onClose();
     }
   };
 
