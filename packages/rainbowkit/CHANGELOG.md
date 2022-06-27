@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.6
+
+### Patch Changes
+
+- d905271: Fix issue on iOS in non-Safari browsers and WebViews where a blank tab is left behind after connecting via WalletConnect
+
 ## 0.3.5
 
 ### Patch Changes
