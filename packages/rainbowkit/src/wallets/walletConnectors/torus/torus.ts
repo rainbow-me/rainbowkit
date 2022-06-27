@@ -40,13 +40,6 @@ export const torus = ({ chains }: ToruOptions): Wallet => {
 export class TorusConnector extends InjectedConnector {
   private provider: any = undefined;
   private torus: any = undefined;
-  private onCloseInjectModal: Function = () => {
-    return null;
-  };
-  setCloseAction: Function = (onClose: Function) => {
-    debugger;
-    this.onCloseInjectModal = onClose;
-  };
   readonly id: string = 'torus';
   readonly name: string = 'Torus';
   chains: any = undefined;
@@ -60,7 +53,6 @@ export class TorusConnector extends InjectedConnector {
   }
 
   connect = async () => {
-    this.onCloseInjectModal();
     if (this.torus === undefined) this.torus = new Torus();
     const chain = this.chains[0];
     const { id, network } = chain;
@@ -78,7 +70,6 @@ export class TorusConnector extends InjectedConnector {
     const chainId = await this.provider.request({
       method: 'eth_chainId',
     });
-    debugger;
     return {
       account: accounts[0],
       chain: {
