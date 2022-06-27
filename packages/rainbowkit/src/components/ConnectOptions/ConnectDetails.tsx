@@ -429,6 +429,7 @@ export function InstructionDetail({
               height="48"
               minWidth="48"
               overflow="hidden"
+              position="relative"
               width="48"
             >
               {stepIcons[d.step]?.(wallet)}
