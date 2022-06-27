@@ -47,7 +47,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
-
     if (wallet.ready) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
