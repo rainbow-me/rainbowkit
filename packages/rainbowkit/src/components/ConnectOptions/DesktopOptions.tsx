@@ -61,6 +61,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           window.open(uri, safari ? '_blank' : '_self');
         }, 0);
       }
+      wallet?.shouldCloseModalOnConnecting && onClose();
     }
   };
 
@@ -80,7 +81,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       setSelectedWallet(wallet);
       changeWalletStep(WalletStep.Connect);
     }
-    if (wallet.id === 'torus') onClose();
   };
 
   const getMobileWallet = (id: string) => {

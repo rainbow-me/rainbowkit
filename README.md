@@ -6,10 +6,6 @@
 
 **The best way to connect a wallet 🌈**
 
-
-**_ This is a rainbow fork to add Torus connector to our platform. A PR is in process on the official rainbow repository. I advice you to use the official if you don't especially need Torus connector._**
-
-
 RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
 
 - 🔥 Out-of-the-box wallet management

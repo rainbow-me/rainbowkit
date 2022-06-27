@@ -43,6 +43,7 @@ export type Wallet<C extends Connector = Connector> = {
   createConnector: (connectorArgs: {
     chainId?: number;
   }) => RainbowKitConnector<C>;
+  shouldCloseModalOnConnecting?: boolean;
 };
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
