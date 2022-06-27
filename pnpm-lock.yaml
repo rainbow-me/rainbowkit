@@ -25,7 +25,7 @@ importers:
       '@typescript-eslint/parser': ^5.5.0
       '@vanilla-extract/esbuild-plugin': ^2.0.0
       '@vanilla-extract/vite-plugin': ^3.1.2
-      '@wagmi/core': ^0.3.7
+      '@wagmi/core': ^0.3.2
       autoprefixer: ^10.4.0
       esbuild: ^0.14.39
       eslint: 7.32.0
