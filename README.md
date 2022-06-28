@@ -35,6 +35,7 @@ You can use the CodeSandbox links below try out RainbowKit:
 - with [Create React App](https://codesandbox.io/s/dn3rho)
 - with [Create React App (TypeScript)](https://codesandbox.io/s/ilfuoy)
 - with [Next.js](https://codesandbox.io/s/tmxcc0)
+- with [Vite](https://stackblitz.com/edit/rainbowkit-vite)
 
 ## Examples
 
