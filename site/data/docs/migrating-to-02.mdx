@@ -6,6 +6,26 @@ title: Migrating to >=0.2
 
 ## Migrating RainbowKit
 
+### 0.4.x Breaking changes
+
+RainbowKit has updated the `wagmi` peer dependency to `0.5.x`.
+
+Follow the steps below to migrate.
+
+#### 1. Upgrade dependencies
+
+Upgrade RainbowKit and wagmi to their latest version:
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
+```
+
+#### 2. Check for breaking changes in `wagmi`
+
+If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+
+[You can see their migration guide here](https://wagmi.sh/docs/migrating-to-03#05x-breaking-changes).
+
 ### 0.3.x Breaking changes
 
 Removed the `chainId` parameter from `createConnector` on the `Wallet` type.
