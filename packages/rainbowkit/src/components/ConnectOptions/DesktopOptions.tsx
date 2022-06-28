@@ -60,6 +60,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           window.open(uri, safari ? '_blank' : '_self');
         }, 0);
       }
+      wallet?.shouldCloseModalOnConnecting && onClose();
     }
   };
 

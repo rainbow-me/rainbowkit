@@ -58,6 +58,7 @@
     "vitest": "^0.5.0"
   },
   "dependencies": {
+    "@toruslabs/torus-embed": "^1.23.2",
     "@vanilla-extract/css": "1.7.0",
     "@vanilla-extract/dynamic": "2.0.2",
     "@vanilla-extract/sprinkles": "1.4.1",

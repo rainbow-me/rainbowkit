@@ -37,6 +37,7 @@ export type Wallet<C extends Connector = Connector> = {
     qrCode?: string;
   };
   createConnector: () => RainbowKitConnector<C>;
+  shouldCloseModalOnConnecting?: boolean;
 };
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
