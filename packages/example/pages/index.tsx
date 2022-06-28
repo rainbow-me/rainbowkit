@@ -15,7 +15,7 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
-  const { data: accountData } = useAccount();
+  const { address, isConnected } = useAccount();
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -35,7 +35,7 @@ const Example = () => {
     defaultProps.showBalance.largeScreen
   );
 
-  const { activeChain } = useNetwork();
+  const { chain: activeChain } = useNetwork();
 
   const {
     data: transactionData,
@@ -43,7 +43,7 @@ const Example = () => {
     sendTransaction,
   } = useSendTransaction({
     request: {
-      to: accountData?.address,
+      to: address,
       value: 0,
     },
   });
@@ -213,25 +213,25 @@ const Example = () => {
         <>
           <div style={{ fontFamily: 'sans-serif' }}>
             <h3>
-              Example Actions {!accountData && <span>(not connected)</span>}
+              Example Actions {!isConnected && <span>(not connected)</span>}
             </h3>
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
-                disabled={!accountData}
+                disabled={!isConnected}
                 onClick={() => sendTransaction()}
                 type="button"
               >
                 Send Transaction
               </button>
               <button
-                disabled={!accountData}
+                disabled={!isConnected}
                 onClick={() => signMessage()}
                 type="button"
               >
                 Sign Message
               </button>
               <button
-                disabled={!accountData || activeChain?.id !== 1}
+                disabled={!isConnected || activeChain?.id !== 1}
                 onClick={() => signTypedData()}
                 type="button"
               >
@@ -369,7 +369,7 @@ const Example = () => {
               </tbody>
             </table>
           </div>
-          {accountData ? <ManageTransactions /> : null}
+          {isConnected ? <ManageTransactions /> : null}
         </>
       )}
     </div>

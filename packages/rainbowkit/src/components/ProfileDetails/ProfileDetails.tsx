@@ -15,7 +15,7 @@ import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  accountData: ReturnType<typeof useAccount>['data'];
+  address: ReturnType<typeof useAccount>['address'];
   balanceData: ReturnType<typeof useBalance>['data'];
   ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
   ensName: ReturnType<typeof useEnsName>['data'];
@@ -24,7 +24,7 @@ interface ProfileDetailsProps {
 }
 
 export function ProfileDetails({
-  accountData,
+  address,
   balanceData,
   ensAvatar,
   ensName,
@@ -35,11 +35,11 @@ export function ProfileDetails({
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {
-    if (accountData?.address) {
-      navigator.clipboard.writeText(accountData?.address);
+    if (address) {
+      navigator.clipboard.writeText(address);
       setCopiedAddress(true);
     }
-  }, [accountData?.address]);
+  }, [address]);
 
   useEffect(() => {
     if (copiedAddress) {
@@ -50,13 +50,11 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
-  if (!accountData?.address) {
+  if (!address) {
     return null;
   }
 
-  const accountName = ensName
-    ? formatENS(ensName)
-    : formatAddress(accountData.address);
+  const accountName = ensName ? formatENS(ensName) : formatAddress(address);
   const ethBalance = balanceData?.formatted;
   const balance = Number(ethBalance).toPrecision(3);
   const titleId = 'rk_profile_title';
@@ -87,7 +85,7 @@ export function ProfileDetails({
             </Box>{' '}
             <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
-                address={accountData.address}
+                address={address}
                 imageUrl={ensAvatar}
                 size={mobile ? 82 : 74}
               />
@@ -147,7 +145,7 @@ export function ProfileDetails({
           <>
             <Box background="generalBorder" height="1" marginTop="-1" />
             <Box>
-              <TxList accountData={accountData} />
+              <TxList address={address} />
             </Box>
           </>
         )}

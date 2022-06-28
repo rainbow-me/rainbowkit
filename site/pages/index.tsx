@@ -17,10 +17,10 @@ import { useCoolMode } from 'lib/useCoolMode';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
-import { useConnect } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 export default function Home() {
-  const { isConnected } = useConnect();
+  const { isConnected } = useAccount();
   const ref = useCoolMode('/rainbow.svg', !isConnected) as Ref<HTMLDivElement>;
 
   return (

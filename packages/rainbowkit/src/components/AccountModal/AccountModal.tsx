@@ -5,7 +5,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 
 export interface AccountModalProps {
-  accountData: ReturnType<typeof useAccount>['data'];
+  address: ReturnType<typeof useAccount>['address'];
   balanceData: ReturnType<typeof useBalance>['data'];
   ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
   ensName: ReturnType<typeof useEnsName>['data'];
@@ -15,7 +15,7 @@ export interface AccountModalProps {
 }
 
 export function AccountModal({
-  accountData,
+  address,
   balanceData,
   ensAvatar,
   ensName,
@@ -23,7 +23,7 @@ export function AccountModal({
   onDisconnect,
   open,
 }: AccountModalProps) {
-  if (!accountData) {
+  if (!address) {
     return null;
   }
 
@@ -31,11 +31,11 @@ export function AccountModal({
 
   return (
     <>
-      {accountData && (
+      {address && (
         <Dialog onClose={onClose} open={open} titleId={titleId}>
           <DialogContent bottomSheetOnMobile padding="0">
             <ProfileDetails
-              accountData={accountData}
+              address={address}
               balanceData={balanceData}
               ensAvatar={ensAvatar}
               ensName={ensName}

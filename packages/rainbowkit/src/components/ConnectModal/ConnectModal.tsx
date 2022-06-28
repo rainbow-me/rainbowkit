@@ -10,9 +10,9 @@ export interface ConnectModalProps {
 
 export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
-  const { data: connectData } = useAccount();
+  const { isDisconnected } = useAccount();
 
-  return !connectData ? (
+  return isDisconnected ? (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
       <DialogContent bottomSheetOnMobile padding="0" wide>
         <ConnectOptions onClose={onClose} />
