@@ -298,7 +298,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 gap="6"
                 height="full"
                 justifyContent="center"
-                marginTop="6"
                 marginX="8"
               >
                 {walletContent}

@@ -294,7 +294,7 @@ export function ConnectDetail({
         gap="8"
         height="28"
         justifyContent="space-between"
-        marginTop="6"
+        marginTop="12"
       >
         {!ready ? null : (
           <>
