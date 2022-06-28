@@ -7,6 +7,7 @@ import { ledger } from './ledger/ledger';
 import { metaMask } from './metaMask/metaMask';
 import { rainbow } from './rainbow/rainbow';
 import { steak } from './steak/steak';
+import { tokenpocket } from './tokenpocket/tokenpocket';
 import { trust } from './trust/trust';
 import { walletConnect } from './walletConnect/walletConnect';
 
@@ -20,6 +21,7 @@ export const wallet = {
   metaMask,
   rainbow,
   steak,
+  tokenpocket,
   trust,
   walletConnect,
 };

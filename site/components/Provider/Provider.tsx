@@ -30,6 +30,7 @@ const connectors = connectorsForWallets([
       wallet.steak({ chains }),
       wallet.imToken({ chains }),
       wallet.ledger({ chains }),
+      wallet.tokenpocket({ chains }),
     ],
   },
 ]);
