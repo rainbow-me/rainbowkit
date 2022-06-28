@@ -42,7 +42,7 @@ importers:
       recursive-readdir-files: ^2.0.7
       typescript: ^4.7.2
       vitest: ^0.5.0
-      wagmi: ^0.5.2
+      wagmi: ^0.5.3
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -79,7 +79,7 @@ importers:
       recursive-readdir-files: 2.0.7
       typescript: 4.7.2
       vitest: 0.5.0
-      wagmi: 0.5.2_2ysdzk2vllwi7dl6z45r5ylxcu
+      wagmi: 0.5.3_2ysdzk2vllwi7dl6z45r5ylxcu
 
   examples/with-create-react-app:
     specifiers:
@@ -20024,8 +20024,8 @@ packages:
       xml-name-validator: 3.0.0
     dev: false
 
-  /wagmi/0.5.2_2ysdzk2vllwi7dl6z45r5ylxcu:
-    resolution: {integrity: sha512-SfjsJnh1qkLSHvwgKjQmnA5SgRR7WfEgFOxYazVmFHGn5u4ci4J32RynOxyCS8meDES2vUDW7Odqz91irB0IPA==}
+  /wagmi/0.5.3_2ysdzk2vllwi7dl6z45r5ylxcu:
+    resolution: {integrity: sha512-KPdN58GQhIBe/ciyxeKtJxkHFa81Ag33I5NHm3c7YWa12rrEci8esjmOn4TOfnn/9/hKgFEYtmYDt/P7pB04Lg==}
     peerDependencies:
       ethers: '>=5.5.1'
       react: '>=17.0.0'
