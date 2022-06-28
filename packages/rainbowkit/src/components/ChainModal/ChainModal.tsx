@@ -12,7 +12,7 @@ import { Box, BoxProps } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { DisconnectIcon } from '../Icons/Disconnect';
+import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
@@ -42,6 +42,7 @@ export function ChainModal({
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const unsupportedChain = activeChain?.unsupported ?? false;
+  const chainIconSize = mobile ? '36' : '28';
 
   const stopSwitching = useCallback(() => {
     setSwitchingToChain(null);
@@ -90,8 +91,8 @@ export function ChainModal({
             flexDirection="row"
             justifyContent="space-between"
           >
-            {mobile && <div />}
-            <Box paddingBottom="0" paddingLeft="10" paddingTop="4">
+            {mobile && <Box width="30" />}
+            <Box paddingBottom="0" paddingLeft="8" paddingTop="4">
               <Text
                 as="h1"
                 color="modalText"
@@ -104,6 +105,13 @@ export function ChainModal({
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
+          {unsupportedChain && (
+            <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                Wrong network detected, switch or disconnect to continue.
+              </Text>
+            </Box>
+          )}
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork ? (
               chains.map((chain, idx) => {
@@ -231,7 +239,12 @@ export function ChainModal({
               <>
                 <Box background="generalBorderDim" height="1" marginX="8" />
                 <MenuButton onClick={() => onDisconnect()}>
-                  <Box fontFamily="body" fontSize="16" fontWeight="bold">
+                  <Box
+                    color="error"
+                    fontFamily="body"
+                    fontSize="16"
+                    fontWeight="bold"
+                  >
                     <Box
                       alignItems="center"
                       display="flex"
@@ -243,18 +256,16 @@ export function ChainModal({
                         display="flex"
                         flexDirection="row"
                         gap="4"
-                        height="28"
+                        height={chainIconSize}
                       >
                         <Box
                           alignItems="center"
                           color="error"
-                          height="max"
+                          height={chainIconSize}
                           justifyContent="center"
-                          marginLeft="6"
-                          marginRight="10"
-                          style={{ height: 16 }}
+                          marginRight="8"
                         >
-                          <DisconnectIcon />
+                          <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
                         <div>Disconnect</div>
                       </Box>
