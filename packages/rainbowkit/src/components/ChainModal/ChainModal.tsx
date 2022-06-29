@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useConnect, useNetwork } from 'wagmi';
+import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
@@ -17,11 +17,11 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 export interface ChainModalProps {
-  activeChain: ReturnType<typeof useNetwork>['activeChain'];
-  chains: ReturnType<typeof useNetwork>['chains'];
+  activeChain: ReturnType<typeof useNetwork>['chain'];
+  chains: ReturnType<typeof useSwitchNetwork>['chains'];
   open: boolean;
   onClose: () => void;
-  networkError: ReturnType<typeof useNetwork>['error'];
+  networkError: ReturnType<typeof useSwitchNetwork>['error'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
@@ -33,7 +33,7 @@ export function ChainModal({
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
-  const { activeConnector } = useConnect();
+  const { connector: activeConnector } = useAccount();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();

@@ -1,4 +1,5 @@
 import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import { useAccount } from 'wagmi';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
@@ -12,7 +13,6 @@ import {
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
-import { useOnDisconnected } from './useOnDisconnected';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
@@ -72,7 +72,7 @@ export function RainbowKitProvider({
     [chains]
   );
 
-  useOnDisconnected(clearWalletConnectDeepLink);
+  useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
     throw new Error(

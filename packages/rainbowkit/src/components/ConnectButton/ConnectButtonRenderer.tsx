@@ -12,6 +12,7 @@ import {
   useEnsAvatar,
   useEnsName,
   useNetwork,
+  useSwitchNetwork,
 } from 'wagmi';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
@@ -77,24 +78,20 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
 
-  const { data: accountData } = useAccount();
+  const { address, isConnected } = useAccount();
 
   const { data: ensAvatar } = useEnsAvatar({
-    addressOrName: accountData?.address,
+    addressOrName: address,
   });
 
-  const { data: ensName } = useEnsName({ address: accountData?.address });
+  const { data: ensName } = useEnsName({ address });
 
   const { data: balanceData } = useBalance({
-    addressOrName: accountData?.address,
+    addressOrName: address,
   });
 
-  const {
-    activeChain,
-    chains,
-    error: networkError,
-    switchNetwork,
-  } = useNetwork();
+  const { chain: activeChain } = useNetwork();
+  const { chains, error: networkError, switchNetwork } = useSwitchNetwork();
 
   const { disconnect } = useDisconnect();
 
@@ -132,12 +129,11 @@ export function ConnectButtonRenderer({
     value: chainModalOpen,
   } = useBooleanState(false);
 
-  const hasAccountData = Boolean(accountData);
   useEffect(() => {
     closeConnectModal();
     closeAccountModal();
     closeChainModal();
-  }, [hasAccountData, closeConnectModal, closeAccountModal, closeChainModal]);
+  }, [isConnected, closeConnectModal, closeAccountModal, closeChainModal]);
 
   const walletConnectors = useWalletConnectors();
 
@@ -167,16 +163,16 @@ export function ConnectButtonRenderer({
   return (
     <>
       {children({
-        account: accountData?.address
+        account: address
           ? {
-              address: accountData.address,
+              address,
               balanceDecimals: balanceData?.decimals,
               balanceFormatted: balanceData?.formatted,
               balanceSymbol: balanceData?.symbol,
               displayBalance,
               displayName: ensName
                 ? formatENS(ensName)
-                : formatAddress(accountData.address),
+                : formatAddress(address),
               ensAvatar: ensAvatar ?? undefined,
               ensName: ensName ?? undefined,
               hasPendingTransactions,
@@ -203,7 +199,7 @@ export function ConnectButtonRenderer({
 
       <ConnectModal onClose={closeConnectModal} open={connectModalOpen} />
       <AccountModal
-        accountData={accountData}
+        address={address}
         balanceData={balanceData}
         ensAvatar={ensAvatar}
         ensName={ensName}

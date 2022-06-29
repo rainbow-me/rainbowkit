@@ -21,7 +21,7 @@ export function useWalletConnectors(): WalletConnector[] {
   });
 
   async function connectWallet(walletId: string, connector: Connector) {
-    const result = await connectAsync(connector);
+    const result = await connectAsync({ connector });
 
     if (result) {
       addRecentWalletId(walletId);

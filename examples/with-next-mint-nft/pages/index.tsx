@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
-  useConnect,
+  useAccount,
   useContractRead,
   useContractWrite,
   useWaitForTransaction,
@@ -18,7 +18,7 @@ const contractConfig = {
 
 const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0);
-  const { isConnected } = useConnect();
+  const { isConnected } = useAccount();
 
   const {
     data: mintData,
@@ -26,13 +26,13 @@ const Home: NextPage = () => {
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useContractWrite(contractConfig, 'mint');
+  } = useContractWrite({ ...contractConfig, functionName: 'mint' });
 
-  const { data: totalSupplyData } = useContractRead(
-    contractConfig,
-    'totalSupply',
-    { watch: true }
-  );
+  const { data: totalSupplyData } = useContractRead({
+    ...contractConfig,
+    functionName: 'totalSupply',
+    watch: true,
+  });
 
   const { isSuccess: txSuccess, error: txError } = useWaitForTransaction({
     hash: mintData?.hash,
