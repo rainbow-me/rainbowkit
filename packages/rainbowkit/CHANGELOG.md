@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.3.7
+
+### Patch Changes
+
+- b2b46ef: Fix WalletConnect deep linking for wallets with custom URL schemes
+
 ## 0.3.6
 
 ### Patch Changes
