@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.0
+
+### Minor Changes
+
+- 08d189b: Updated `wagmi` peer dependency to `0.5.x`
+
 ## 0.3.7
 
 ### Patch Changes

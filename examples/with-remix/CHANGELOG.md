@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [08d189b]
+  - @rainbow-me/rainbowkit@0.4.0
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [b2b46ef]
   - @rainbow-me/rainbowkit@0.3.7
 
