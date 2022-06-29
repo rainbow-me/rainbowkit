@@ -1,5 +1,12 @@
 # with-next-mint-nft
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [08d189b]
+  - @rainbow-me/rainbowkit@0.4.0
+
 ## 0.0.9
 
 ### Patch Changes
