@@ -5,13 +5,14 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
+import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
@@ -22,6 +23,7 @@ export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
   networkError: ReturnType<typeof useSwitchNetwork>['error'];
+  onDisconnect: ReturnType<typeof useDisconnect>['disconnect'];
   onSwitchNetwork?: (chainId: number) => unknown;
 }
 
@@ -30,6 +32,7 @@ export function ChainModal({
   chains,
   networkError,
   onClose,
+  onDisconnect,
   onSwitchNetwork,
   open,
 }: ChainModalProps) {
@@ -38,6 +41,8 @@ export function ChainModal({
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
   const rainbowkitChainsById = useRainbowKitChainsById();
+  const unsupportedChain = activeChain?.unsupported ?? false;
+  const chainIconSize = mobile ? '36' : '28';
 
   const stopSwitching = useCallback(() => {
     setSwitchingToChain(null);
@@ -86,8 +91,8 @@ export function ChainModal({
             flexDirection="row"
             justifyContent="space-between"
           >
-            {mobile && <div />}
-            <Box paddingBottom="0" paddingLeft="10" paddingTop="4">
+            {mobile && <Box width="30" />}
+            <Box paddingBottom="0" paddingLeft="8" paddingTop="4">
               <Text
                 as="h1"
                 color="modalText"
@@ -100,6 +105,13 @@ export function ChainModal({
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
+          {unsupportedChain && (
+            <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                Wrong network detected, switch or disconnect to continue.
+              </Text>
+            </Box>
+          )}
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {onSwitchNetwork ? (
               chains.map((chain, idx) => {
@@ -222,6 +234,45 @@ export function ChainModal({
                   your wallet instead.
                 </Text>
               </Box>
+            )}
+            {unsupportedChain && (
+              <>
+                <Box background="generalBorderDim" height="1" marginX="8" />
+                <MenuButton onClick={() => onDisconnect()}>
+                  <Box
+                    color="error"
+                    fontFamily="body"
+                    fontSize="16"
+                    fontWeight="bold"
+                  >
+                    <Box
+                      alignItems="center"
+                      display="flex"
+                      flexDirection="row"
+                      justifyContent="space-between"
+                    >
+                      <Box
+                        alignItems="center"
+                        display="flex"
+                        flexDirection="row"
+                        gap="4"
+                        height={chainIconSize}
+                      >
+                        <Box
+                          alignItems="center"
+                          color="error"
+                          height={chainIconSize}
+                          justifyContent="center"
+                          marginRight="8"
+                        >
+                          <DisconnectSqIcon size={Number(chainIconSize)} />
+                        </Box>
+                        <div>Disconnect</div>
+                      </Box>
+                    </Box>
+                  </Box>
+                </MenuButton>
+              </>
             )}
           </Box>
         </Box>
