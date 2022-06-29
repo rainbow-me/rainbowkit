@@ -82,9 +82,13 @@ export function ConnectButtonRenderer({
 
   const { data: ensAvatar } = useEnsAvatar({
     addressOrName: address,
+    chainId: 1,
   });
 
-  const { data: ensName } = useEnsName({ address });
+  const { data: ensName } = useEnsName({
+    address,
+    chainId: 1,
+  });
 
   const { data: balanceData } = useBalance({
     addressOrName: address,
