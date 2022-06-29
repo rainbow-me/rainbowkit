@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.0
+
+### Minor Changes
+
+- 6e25576: Update `wagmi` dependency to `^0.5.3`
+
 ## 0.0.4
 
 ### Patch Changes
