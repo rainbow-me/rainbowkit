@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.1
+
+### Patch Changes
+
+- 3637bbb: Use Mainnet ENS name / avatar on other networks if available
+- 3637bbb: Add a disconnect option to the switch network modal when connected to unsupported network
+
 ## 0.4.0
 
 ### Minor Changes
