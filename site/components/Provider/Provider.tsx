@@ -34,6 +34,7 @@ const connectors = connectorsForWallets([
     groupName: 'More',
     wallets: [
       argentWallet({ chains }),
+      exodusWallet({ chains }),
       trustWallet({ chains }),
       omniWallet({ chains }),
       imTokenWallet({ chains }),
