@@ -4,6 +4,7 @@ import { coinbase } from './coinbase/coinbase';
 import { imToken } from './imToken/imToken';
 import { injected } from './injected/injected';
 import { ledger } from './ledger/ledger';
+import { mathwallet } from './mathwallet/mathwallet';
 import { metaMask } from './metaMask/metaMask';
 import { rainbow } from './rainbow/rainbow';
 import { steak } from './steak/steak';
@@ -17,6 +18,7 @@ export const wallet = {
   imToken,
   injected,
   ledger,
+  mathwallet,
   metaMask,
   rainbow,
   steak,
