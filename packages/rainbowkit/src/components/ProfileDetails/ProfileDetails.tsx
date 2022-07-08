@@ -4,6 +4,7 @@ import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { abbreviateETHBalance } from '../ConnectButton/abbreviateETHBalance';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
@@ -56,7 +57,9 @@ export function ProfileDetails({
 
   const accountName = ensName ? formatENS(ensName) : formatAddress(address);
   const ethBalance = balanceData?.formatted;
-  const balance = Number(ethBalance).toPrecision(3);
+  const displayBalance = ethBalance
+    ? abbreviateETHBalance(parseFloat(ethBalance))
+    : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();
 
@@ -116,7 +119,7 @@ export function ProfileDetails({
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {balance} {balanceData.symbol}
+                    {displayBalance} {balanceData.symbol}
                   </Text>
                 </Box>
               )}
