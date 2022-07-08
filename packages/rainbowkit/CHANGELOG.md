@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.2
+
+### Patch Changes
+
+- 0213b52: Use consistent balance rounding logic between account button and modal
+
 ## 0.4.1
 
 ### Patch Changes
