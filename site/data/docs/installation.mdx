@@ -113,9 +113,19 @@ export const YourApp = () => {
 };
 ```
 
-You're done! RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
 
-> Note: If you're using [Remix,](https://remix.run) remember to [add RainbowKit to its server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages).
+#### Additional build tooling setup
+
+Some build tools will require additional setup.
+
+##### Node polyfills
+
+If your bundler doesn't provide Node polyfills (e.g. [Vite](https://vitejs.dev)), you'll need to include polyfills for `global`, `Buffer` and `process.env`. As an example, you can reference the [polyfills in our sample Vite project.](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)
+
+##### Remix
+
+When using [Remix](https://remix.run), RainbowKit must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) since it's published as an ESM package.
 
 ### Add your own functionality
 
