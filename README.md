@@ -32,9 +32,9 @@ For full documentation, visit [rainbowkit.com](https://rainbowkit.com).
 
 You can use the CodeSandbox links below try out RainbowKit:
 
-- with [Create React App](https://codesandbox.io/s/dn3rho)
-- with [Create React App (TypeScript)](https://codesandbox.io/s/ilfuoy)
-- with [Next.js](https://codesandbox.io/s/tmxcc0)
+- with [Create React App](https://codesandbox.io/s/rainbowkit-nextjs-gz890p)
+- with [Create React App (TypeScript)](https://codesandbox.io/s/rainbowkit-create-typescript-app-xuxnqy)
+- with [Next.js](https://codesandbox.io/s/rainbowkit-nextjs-gz890p)
 
 ## Examples
 
