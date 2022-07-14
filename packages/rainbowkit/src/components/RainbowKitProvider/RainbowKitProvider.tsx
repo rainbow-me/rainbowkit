@@ -42,7 +42,7 @@ export type Theme =
 
 export interface RainbowKitProviderProps {
   chains: RainbowKitChain[];
-  initialChain: { id: number } | number;
+  initialChain: RainbowKitChain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
