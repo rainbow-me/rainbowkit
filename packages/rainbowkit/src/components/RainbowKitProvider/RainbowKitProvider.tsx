@@ -42,6 +42,7 @@ export type Theme =
 
 export interface RainbowKitProviderProps {
   chains: RainbowKitChain[];
+  initialChain: { id: number } | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
@@ -59,6 +60,7 @@ const defaultTheme = lightTheme();
 
 export function RainbowKitProvider({
   chains,
+  initialChain,
   id,
   theme = defaultTheme,
   children,
@@ -67,9 +69,13 @@ export function RainbowKitProvider({
   coolMode = false,
   avatar,
 }: RainbowKitProviderProps) {
-  const rainbowkitChains = useMemo(
-    () => provideRainbowKitChains(chains),
-    [chains]
+  const chainOptions = useMemo(
+    () => ({
+      chains: provideRainbowKitChains(chains),
+      initialChainId:
+        typeof initialChain === 'number' ? initialChain : initialChain?.id,
+    }),
+    [chains, initialChain]
   );
 
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
@@ -90,7 +96,7 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainContext.Provider value={rainbowkitChains}>
+    <RainbowKitChainContext.Provider value={chainOptions}>
       <CoolModeContext.Provider value={coolMode}>
         <ShowRecentTransactionsContext.Provider value={showRecentTransactions}>
           <TransactionStoreProvider>

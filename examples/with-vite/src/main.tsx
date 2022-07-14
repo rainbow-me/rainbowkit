@@ -31,7 +31,7 @@ const wagmiClient = createClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} initialChain={chains[0]}>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>

@@ -7,13 +7,23 @@ export interface RainbowKitChain {
   iconBackground?: string;
 }
 
+interface RainbowKitChainContextValue {
+  chains: RainbowKitChain[];
+  initialChainId?: number;
+}
+
 // This type is a combination of wagmi and RainbowKit chain types to make
 // it easier for consumers to define their chain config in a single place.
 export type Chain = WagmiChain & RainbowKitChain;
 
-export const RainbowKitChainContext = createContext<RainbowKitChain[]>([]);
+export const RainbowKitChainContext =
+  createContext<RainbowKitChainContextValue>({ chains: [] });
 
-export const useRainbowKitChains = () => useContext(RainbowKitChainContext);
+export const useRainbowKitChains = () =>
+  useContext(RainbowKitChainContext).chains;
+
+export const useInitialChainId = () =>
+  useContext(RainbowKitChainContext).initialChainId;
 
 export const useRainbowKitChainsById = () => {
   const rainbowkitChains = useRainbowKitChains();

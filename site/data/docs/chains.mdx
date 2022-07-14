@@ -45,7 +45,11 @@ const { chains } = configureChains(
 
 const App = () => {
   return (
-    <RainbowKitProvider chains={chains} {...etc}>
+    <RainbowKitProvider
+      chains={chains}
+      initialChain={chains[0]}
+      {...etc}
+    >
       {/* ... */}
     </RainbowKitProvider>
   );

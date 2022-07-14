@@ -177,6 +177,7 @@ function App({ Component, pageProps }: AppProps) {
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
+          initialChain={chains[0]}
           showRecentTransactions={showRecentTransactions}
           theme={currentTheme({
             ...accentColor,
