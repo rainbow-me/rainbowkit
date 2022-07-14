@@ -89,6 +89,19 @@ export const components = {
       </Link>
     </Box>
   ),
+  h5: ({ id, ...props }) => (
+    <Box id={id} marginBottom="2" scrollMarginTop="2">
+      <Link href={`#${id}`}>
+        <Text
+          as="h5"
+          display="inline"
+          variant="body"
+          weight="semibold"
+          {...props}
+        />
+      </Link>
+    </Box>
+  ),
   Img: props => <NextImage {...props} />,
   li: ({ children, ...props }) => (
     <Box alignItems="center" as="li" display="flex" {...props}>
