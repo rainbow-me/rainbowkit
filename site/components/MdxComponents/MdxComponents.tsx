@@ -182,4 +182,16 @@ export const components = {
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
   ul: props => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
+  Video: props => (
+    <Box
+      as="video"
+      autoPlay
+      controls
+      marginBottom="5"
+      muted
+      playsInline
+      style={{ display: 'block', width: '100%' }}
+      {...props}
+    />
+  ),
 };
