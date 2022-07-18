@@ -1,28 +1,39 @@
 import React from 'react';
-import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import {
+  useAccount,
+  useBalance,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+} from 'wagmi';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 
 export interface AccountModalProps {
-  address: ReturnType<typeof useAccount>['address'];
-  balanceData: ReturnType<typeof useBalance>['data'];
-  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
-  ensName: ReturnType<typeof useEnsName>['data'];
   open: boolean;
   onClose: () => void;
-  onDisconnect: () => void;
 }
 
-export function AccountModal({
-  address,
-  balanceData,
-  ensAvatar,
-  ensName,
-  onClose,
-  onDisconnect,
-  open,
-}: AccountModalProps) {
+export function AccountModal({ onClose, open }: AccountModalProps) {
+  const { address } = useAccount();
+
+  const { data: balanceData } = useBalance({
+    addressOrName: address,
+  });
+
+  const { data: ensAvatar } = useEnsAvatar({
+    addressOrName: address,
+    chainId: 1,
+  });
+
+  const { data: ensName } = useEnsName({
+    address,
+    chainId: 1,
+  });
+
+  const { disconnect } = useDisconnect();
+
   if (!address) {
     return null;
   }
@@ -40,7 +51,7 @@ export function AccountModal({
               ensAvatar={ensAvatar}
               ensName={ensName}
               onClose={onClose}
-              onDisconnect={onDisconnect}
+              onDisconnect={disconnect}
             />
           </DialogContent>
         </Dialog>

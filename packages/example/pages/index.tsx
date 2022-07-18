@@ -1,4 +1,10 @@
-import { ConnectButton, useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import {
+  ConnectButton,
+  useAccountModal,
+  useAddRecentTransaction,
+  useChainModal,
+  useConnectModal,
+} from '@rainbow-me/rainbowkit';
 
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
@@ -15,6 +21,10 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = () => {
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+  const { openConnectModal } = useConnectModal();
+
   const { address, isConnected } = useAccount();
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -211,6 +221,33 @@ const Example = () => {
 
       {isMounted && (
         <>
+          <div>
+            <h3 style={{ fontFamily: 'sans-serif' }}>Modal hooks</h3>
+            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
+              <button
+                disabled={!openConnectModal}
+                onClick={openConnectModal}
+                type="button"
+              >
+                Open connect modal
+              </button>
+              <button
+                disabled={!openChainModal}
+                onClick={openChainModal}
+                type="button"
+              >
+                Open chain modal
+              </button>
+              <button
+                disabled={!openAccountModal}
+                onClick={openAccountModal}
+                type="button"
+              >
+                Open account modal
+              </button>
+            </div>
+          </div>
+
           <div style={{ fontFamily: 'sans-serif' }}>
             <h3>
               Example Actions {!isConnected && <span>(not connected)</span>}
