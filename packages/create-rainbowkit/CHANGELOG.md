@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.1
+
+### Patch Changes
+
+- a701580: Update codesandbox examples to latest Rainbowkit version.
+
 ## 0.1.0
 
 ### Minor Changes
