@@ -45,16 +45,30 @@ const { chains } = configureChains(
 
 const App = () => {
   return (
-    <RainbowKitProvider
-      chains={chains}
-      initialChain={chains[0]}
-      {...etc}
-    >
+    <RainbowKitProvider chains={chains} {...etc}>
       {/* ... */}
     </RainbowKitProvider>
   );
 };
 ```
+
+## Customizing the initial chain
+
+By default, RainbowKit will connect to the first chain in your `chains` array to ensure users aren't immediately presented with the "Wrong network" state. This behavior can be customized via the `initialChain` prop.
+
+The initial chain can be configured using a chain ID.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
+
+As a convenience, you can also pass a chain object.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
+```
+
+## Custom chain icons
 
 Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
 

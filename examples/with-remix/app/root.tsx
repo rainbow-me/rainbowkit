@@ -70,10 +70,7 @@ export default function App() {
       <body>
         {client && chains ? (
           <WagmiConfig client={client}>
-            <RainbowKitProvider
-              chains={chains as Chain[]}
-              initialChain={chains[0]}
-            >
+            <RainbowKitProvider chains={chains as Chain[]}>
               <div
                 style={{
                   display: 'flex',

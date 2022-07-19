@@ -93,7 +93,7 @@ Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagm
 const App = () => {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} initialChain={chains[0]}>
+      <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>
     </WagmiConfig>

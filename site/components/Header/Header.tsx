@@ -64,7 +64,6 @@ export function Header({
         <Box style={{ marginLeft: 'auto' }}>
           <RainbowKitProvider
             chains={chains}
-            initialChain={chains[0]}
             theme={
               darkMode
                 ? darkTheme({ accentColor: vars.colors.blue })

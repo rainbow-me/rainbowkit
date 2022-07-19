@@ -145,7 +145,6 @@ export function Playground() {
           <RainbowKitProvider
             chains={chains}
             id="playground"
-            initialChain={chains[0]}
             theme={selectedTheme}
           >
             <Box

@@ -45,7 +45,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} initialChain={chains[0]}>
+      <RainbowKitProvider chains={chains}>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>

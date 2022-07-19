@@ -1,5 +1,6 @@
-import { createContext, useContext, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import { Chain as WagmiChain } from 'wagmi';
+import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain {
   id: number;
@@ -16,8 +17,38 @@ interface RainbowKitChainContextValue {
 // it easier for consumers to define their chain config in a single place.
 export type Chain = WagmiChain & RainbowKitChain;
 
-export const RainbowKitChainContext =
-  createContext<RainbowKitChainContextValue>({ chains: [] });
+const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
+  chains: [],
+});
+
+interface RainbowKitChainProviderProps {
+  chains: RainbowKitChain[];
+  initialChain?: RainbowKitChain | number;
+  children: ReactNode;
+}
+
+export function RainbowKitChainProvider({
+  chains,
+  children,
+  initialChain,
+}: RainbowKitChainProviderProps) {
+  return (
+    <RainbowKitChainContext.Provider
+      value={useMemo(
+        () => ({
+          chains: provideRainbowKitChains(chains),
+          initialChainId:
+            typeof initialChain === 'number'
+              ? initialChain
+              : initialChain?.id ?? chains[0]?.id,
+        }),
+        [chains, initialChain]
+      )}
+    >
+      {children}
+    </RainbowKitChainContext.Provider>
+  );
+}
 
 export const useRainbowKitChains = () =>
   useContext(RainbowKitChainContext).chains;

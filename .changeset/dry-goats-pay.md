@@ -1,16 +1,19 @@
 ---
-'@rainbow-me/rainbowkit': minor
+'@rainbow-me/rainbowkit': patch
 ---
 
-**Breaking:** Added new required `initialChain` prop to `RainbowKitProvider`
+Added `initialChain` prop to `RainbowKitProvider`
 
-RainbowKit previously (as of v0.3.2) automatically connected to the first chain in the `chains` prop on `RainbowKitProvider`. This behavior no longer provided by default. Instead, you must now explicitly specify which chain you want users to initially connect to.
+RainbowKit (as of v0.3.2) automatically connects to the first chain in the `chains` array passed to `RainbowKitProvider`. This behavior can now be customized via the `initialChain` prop.
 
-**Migration guide**
+The initial chain can be configured using a chain ID.
 
-If you want to keep the existing behavior, set the `initialChain` prop to `chains[0]`.
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
 
-```diff
--<RainbowKitProvider chains={chains}>
-+<RainbowKitProvider chains={chains} initialChain={chains[0]}>
+As a convenience, you can also pass a chain object.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
 ```
