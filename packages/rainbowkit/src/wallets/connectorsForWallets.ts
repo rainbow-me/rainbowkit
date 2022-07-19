@@ -46,15 +46,22 @@ export const connectorsForWallets = (walletList: WalletList) => {
           ...connectionMethods,
         };
 
-        // Mutate connector instance to add wallet instance
-        // @ts-expect-error
-        connector._wallets = connector._wallets ?? [];
-        // @ts-expect-error
-        connector._wallets.push(walletInstance);
-
         if (!connectors.includes(connector)) {
           connectors.push(connector);
+
+          // Reset private wallet list the first time we see
+          // a connector to avoid duplicates after HMR,
+          // otherwise we'll keep pushing wallets into
+          // the old list. This is happening because we're
+          // re-using the WalletConnectConnector instance
+          // so the wallet list already exists after HMR.
+          // @ts-expect-error
+          connector._wallets = [];
         }
+
+        // Add wallet to connector's list of associated wallets
+        // @ts-expect-error
+        connector._wallets.push(walletInstance);
       });
     });
 
