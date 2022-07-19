@@ -8,14 +8,14 @@ export interface RainbowKitChain {
   iconBackground?: string;
 }
 
+// This type is a combination of wagmi and RainbowKit chain types to make
+// it easier for consumers to define their chain config in a single place.
+export type Chain = WagmiChain & RainbowKitChain;
+
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
   initialChainId?: number;
 }
-
-// This type is a combination of wagmi and RainbowKit chain types to make
-// it easier for consumers to define their chain config in a single place.
-export type Chain = WagmiChain & RainbowKitChain;
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
   chains: [],
