@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, { createContext, ReactNode, useContext } from 'react';
 import { useAccount } from 'wagmi';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
@@ -9,10 +9,9 @@ import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
 import {
   RainbowKitChain,
-  RainbowKitChainContext,
+  RainbowKitChainProvider,
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
-import { provideRainbowKitChains } from './provideRainbowKitChains';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
@@ -42,6 +41,7 @@ export type Theme =
 
 export interface RainbowKitProviderProps {
   chains: RainbowKitChain[];
+  initialChain?: RainbowKitChain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
@@ -59,6 +59,7 @@ const defaultTheme = lightTheme();
 
 export function RainbowKitProvider({
   chains,
+  initialChain,
   id,
   theme = defaultTheme,
   children,
@@ -67,11 +68,6 @@ export function RainbowKitProvider({
   coolMode = false,
   avatar,
 }: RainbowKitProviderProps) {
-  const rainbowkitChains = useMemo(
-    () => provideRainbowKitChains(chains),
-    [chains]
-  );
-
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
@@ -90,7 +86,7 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainContext.Provider value={rainbowkitChains}>
+    <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
       <CoolModeContext.Provider value={coolMode}>
         <ShowRecentTransactionsContext.Provider value={showRecentTransactions}>
           <TransactionStoreProvider>
@@ -131,6 +127,6 @@ export function RainbowKitProvider({
           </TransactionStoreProvider>
         </ShowRecentTransactionsContext.Provider>
       </CoolModeContext.Provider>
-    </RainbowKitChainContext.Provider>
+    </RainbowKitChainProvider>
   );
 }

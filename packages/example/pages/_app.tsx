@@ -141,6 +141,7 @@ const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function App({ Component, pageProps }: AppProps) {
+  const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
@@ -177,6 +178,7 @@ function App({ Component, pageProps }: AppProps) {
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
+          initialChain={selectedInitialChainId}
           showRecentTransactions={showRecentTransactions}
           theme={currentTheme({
             ...accentColor,
@@ -196,60 +198,112 @@ function App({ Component, pageProps }: AppProps) {
                   }}
                 >
                   <h3>RainbowKitProvider props</h3>
-                  <div
-                    style={{
-                      alignItems: 'flex-start',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 12,
-                    }}
-                  >
-                    <label style={{ userSelect: 'none' }}>
-                      <input
-                        checked={showRecentTransactions}
-                        name="showRecentTransactions"
-                        onChange={e =>
-                          setShowRecentTransactions(e.target.checked)
-                        }
-                        type="checkbox"
-                      />{' '}
-                      showRecentTransactions
-                    </label>
-                    <label style={{ userSelect: 'none' }}>
-                      <input
-                        checked={coolModeEnabled}
-                        name="coolMode"
-                        onChange={e => setCoolModeEnabled(e.target.checked)}
-                        type="checkbox"
-                      />{' '}
-                      coolMode
-                    </label>
-                    <label style={{ userSelect: 'none' }}>
-                      <input
-                        checked={showDisclaimer}
-                        name="showDisclaimer"
-                        onChange={e => setShowDisclaimer(e.target.checked)}
-                        type="checkbox"
-                      />{' '}
-                      disclaimer
-                    </label>
-                    <label style={{ userSelect: 'none' }}>
-                      <input
-                        checked={customAvatar}
-                        name="customAvatar"
-                        onChange={e => setCustomAvatar(e.target.checked)}
-                        type="checkbox"
-                      />{' '}
-                      avatar
-                    </label>
-                  </div>
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'sans-serif',
-                    paddingBottom: 200, // Allow the page to scroll on mobile
-                  }}
-                >
+                  <table cellSpacing={12}>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="showRecentTransactions"
+                            style={{ userSelect: 'none' }}
+                          >
+                            showRecentTransactions
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={showRecentTransactions}
+                            id="showRecentTransactions"
+                            name="showRecentTransactions"
+                            onChange={e =>
+                              setShowRecentTransactions(e.target.checked)
+                            }
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="coolModeEnabled"
+                            style={{ userSelect: 'none' }}
+                          >
+                            coolMode
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={coolModeEnabled}
+                            id="coolModeEnabled"
+                            name="coolModeEnabled"
+                            onChange={e => setCoolModeEnabled(e.target.checked)}
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="showDisclaimer"
+                            style={{ userSelect: 'none' }}
+                          >
+                            disclaimer
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={showDisclaimer}
+                            id="showDisclaimer"
+                            name="showDisclaimer"
+                            onChange={e => setShowDisclaimer(e.target.checked)}
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="customAvatar"
+                            style={{ userSelect: 'none' }}
+                          >
+                            avatar
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={customAvatar}
+                            id="customAvatar"
+                            name="customAvatar"
+                            onChange={e => setCustomAvatar(e.target.checked)}
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>initialChain</td>
+                        <td>
+                          <select
+                            onChange={e =>
+                              setInitialChainId(
+                                e.target.value
+                                  ? parseInt(e.target.value, 10)
+                                  : undefined
+                              )
+                            }
+                            value={selectedInitialChainId ?? 'default'}
+                          >
+                            {[undefined, ...chains].map(chain => (
+                              <option
+                                key={chain?.id ?? 'default'}
+                                value={chain?.id ?? 'default'}
+                              >
+                                {chain?.name ?? 'Default'}
+                              </option>
+                            ))}
+                          </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <div
                     style={{
                       display: 'flex',

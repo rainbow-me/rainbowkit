@@ -51,7 +51,7 @@ const wagmiClient = createClient({
 
 const App = () => (
   <WagmiConfig client={wagmiClient}>
-    <RainbowKitProvider>
+    <RainbowKitProvider {...etc}>
       {/* Your App */}
     </RainbowKitProvider>
   </WagmiConfig>

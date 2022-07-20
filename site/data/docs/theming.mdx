@@ -21,7 +21,7 @@ A theme function returns a theme object. You can pass the object to the `Rainbow
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()}>
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
   </RainbowKitProvider>
 );
@@ -40,6 +40,7 @@ export const App = () => (
       __borderRadius__: 'small',
       __fontStack__: 'system',
     })}
+    {...etc}
   >
     {/* Your App */}
   </RainbowKitProvider>
@@ -128,6 +129,7 @@ const App = () => {
       theme={darkTheme({
         ...darkTheme.accentColors.pink,
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -147,7 +149,7 @@ Use the `darkTheme` theme.
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()}>
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
   </RainbowKitProvider>
 );
@@ -162,7 +164,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 
 export const App = () => (
-  <RainbowKitProvider theme={midnightTheme()}>
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
     {/* Your App */}
   </RainbowKitProvider>
 );
@@ -184,6 +186,7 @@ const App = () => {
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -202,6 +205,7 @@ const App = () => {
       theme={darkTheme({
         ...darkTheme.accentColors.green,
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -224,6 +228,7 @@ const App = () => {
       theme={darkTheme({
         borderRadius: 'medium',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -242,6 +247,7 @@ const App = () => {
       theme={darkTheme({
         borderRadius: 'none',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -266,6 +272,7 @@ const App = () => {
       theme={darkTheme({
         fontStack: 'system',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -288,6 +295,7 @@ const App = () => {
       theme={darkTheme({
         overlayBlur: 'small',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -316,6 +324,7 @@ const App = () => {
         borderRadius: 'medium',
         fontStack: 'system',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -342,6 +351,7 @@ const App = () => {
         borderRadius: 'small',
         fontStack: 'system',
       })}
+      {...etc}
     >
       {/* Your App */}
     </RainbowKitProvider>
@@ -366,6 +376,7 @@ const App = () => (
       lightMode: lightTheme(),
       darkMode: darkTheme(),
     }}
+    {...etc}
   >
     {/* Your App */}
   </RainbowKitProvider>
