@@ -13,6 +13,7 @@ import {
   RainbowKitChainProvider,
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
+import { usePreloadImages } from './usePreloadImages';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
@@ -70,6 +71,8 @@ export function RainbowKitProvider({
   coolMode = false,
   avatar,
 }: RainbowKitProviderProps) {
+  usePreloadImages();
+
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
