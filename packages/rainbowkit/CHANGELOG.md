@@ -1,5 +1,74 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.3
+
+### Patch Changes
+
+- 4857e75: Fix duplicate wallets in connect modal after hot module reloading
+- c6a1033: Added `initialChain` prop to `RainbowKitProvider`
+
+  RainbowKit (as of v0.3.2) automatically connects to the first chain in the `chains` array passed to `RainbowKitProvider`. This behavior can now be customized via the `initialChain` prop.
+
+  The initial chain can be configured using a chain ID.
+
+  ```tsx
+  <RainbowKitProvider chains={chains} initialChain={1}>
+  ```
+
+  As a convenience, you can also pass a chain object.
+
+  ```tsx
+  <RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
+  ```
+
+- 396308f: Added Hooks for programmatically opening modals
+
+  The following Hooks are now provided to allow the programmatic opening of modals anywhere in your application.
+
+  - `useConnectModal`
+  - `useAccountModal`
+  - `useChainModal`
+
+  Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+
+  **Example usage**
+
+  ```tsx
+  import {
+    useConnectModal,
+    useAccountModal,
+    useChainModal,
+  } from '@rainbow-me/rainbowkit';
+
+  export const YourApp = () => {
+    const { openConnectModal } = useConnectModal();
+    const { openAccountModal } = useAccountModal();
+    const { openChainModal } = useChainModal();
+
+    return (
+      <>
+        {openConnectModal && (
+          <button onClick={openConnectModal} type="button">
+            Open Connect Modal
+          </button>
+        )}
+
+        {openAccountModal && (
+          <button onClick={openAccountModal} type="button">
+            Open Account Modal
+          </button>
+        )}
+
+        {openChainModal && (
+          <button onClick={openChainModal} type="button">
+            Open Chain Modal
+          </button>
+        )}
+      </>
+    );
+  };
+  ```
+
 ## 0.4.2
 
 ### Patch Changes
