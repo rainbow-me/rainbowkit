@@ -31,6 +31,7 @@ export const docsRoutes: RouteProps[] = [
   {
     label: 'Advanced',
     pages: [
+      { title: 'Modal Hooks', slug: 'modal-hooks' },
       { title: 'Custom ConnectButton', slug: 'custom-connect-button' },
       { title: 'Custom Theme', slug: 'custom-theme' },
       { title: 'Custom Wallet List', slug: 'custom-wallet-list' },

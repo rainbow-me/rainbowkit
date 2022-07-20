@@ -18,24 +18,14 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 export interface ChainModalProps {
-  activeChain: ReturnType<typeof useNetwork>['chain'];
-  chains: ReturnType<typeof useSwitchNetwork>['chains'];
   open: boolean;
   onClose: () => void;
-  networkError: ReturnType<typeof useSwitchNetwork>['error'];
-  onDisconnect: ReturnType<typeof useDisconnect>['disconnect'];
-  onSwitchNetwork?: (chainId: number) => unknown;
 }
 
-export function ChainModal({
-  activeChain,
-  chains,
-  networkError,
-  onClose,
-  onDisconnect,
-  onSwitchNetwork,
-  open,
-}: ChainModalProps) {
+export function ChainModal({ onClose, open }: ChainModalProps) {
+  const { chain: activeChain } = useNetwork();
+  const { chains, error: networkError, switchNetwork } = useSwitchNetwork();
+  const { disconnect } = useDisconnect();
   const { connector: activeConnector } = useAccount();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const titleId = 'rk_chain_modal_title';
@@ -113,7 +103,7 @@ export function ChainModal({
             </Box>
           )}
           <Box display="flex" flexDirection="column" gap="4" padding="2">
-            {onSwitchNetwork ? (
+            {switchNetwork ? (
               chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === activeChain?.id;
                 const switching = chain.id === switchingToChain;
@@ -131,7 +121,7 @@ export function ChainModal({
                           ? undefined
                           : () => {
                               setSwitchingToChain(chain.id);
-                              onSwitchNetwork(chain.id);
+                              switchNetwork(chain.id);
                             }
                       }
                     >
@@ -238,7 +228,7 @@ export function ChainModal({
             {unsupportedChain && (
               <>
                 <Box background="generalBorderDim" height="1" marginX="8" />
-                <MenuButton onClick={() => onDisconnect()}>
+                <MenuButton onClick={() => disconnect()}>
                   <Box
                     color="error"
                     fontFamily="body"
