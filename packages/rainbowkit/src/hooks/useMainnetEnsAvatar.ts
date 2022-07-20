@@ -1,8 +1,8 @@
 import { useEnsAvatar } from 'wagmi';
-import { useEnsChain } from './useEnsChain';
+import { useMainnet } from './useMainnet';
 
 export function useMainnetEnsAvatar(addressOrName: string | undefined) {
-  const { chainId, enabled } = useEnsChain();
+  const { chainId, enabled } = useMainnet();
 
   const { data: ensAvatar } = useEnsAvatar({
     addressOrName,

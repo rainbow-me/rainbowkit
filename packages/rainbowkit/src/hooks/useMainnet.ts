@@ -1,7 +1,7 @@
 import { chain } from 'wagmi';
-import { useRainbowKitChains } from './../components/RainbowKitProvider/RainbowKitChainContext';
+import { useRainbowKitChains } from '../components/RainbowKitProvider/RainbowKitChainContext';
 
-export function useEnsChain() {
+export function useMainnet() {
   const rainbowKitChains = useRainbowKitChains();
 
   const chainId = chain.mainnet.id;

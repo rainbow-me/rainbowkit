@@ -1,8 +1,8 @@
 import { useEnsName } from 'wagmi';
-import { useEnsChain } from './useEnsChain';
+import { useMainnet } from './useMainnet';
 
 export function useMainnetEnsName(address: string | undefined) {
-  const { chainId, enabled } = useEnsChain();
+  const { chainId, enabled } = useMainnet();
 
   const { data: ensName } = useEnsName({
     address,
