@@ -1,5 +1,12 @@
 # generated-test-app
 
+## 0.1.16
+
+### Patch Changes
+
+- Updated dependencies [fd08aa1]
+  - @rainbow-me/rainbowkit@0.4.4
+
 ## 0.1.15
 
 ### Patch Changes

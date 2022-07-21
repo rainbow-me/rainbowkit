@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.4
+
+### Patch Changes
+
+- fd08aa1: Avoid ENS requests when mainnet isn't in list of configured chains
+
 ## 0.4.3
 
 ### Patch Changes
