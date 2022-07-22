@@ -192,7 +192,7 @@ export const components = {
       marginBottom="5"
       muted
       playsInline
-      width="100%"
+      style={{ width: '100%' }}
       {...props}
     />
   ),
