@@ -92,8 +92,9 @@ export function AuthenticationProvider<Message = unknown>({
         const authenticated = await authenticator?.checkStatus();
 
         if (!authenticated) {
-          setStatus('unauthenticated');
-          disconnect();
+          // DISABLED FOR NOW DUE TO MOBILE ISSUES
+          // setStatus('unauthenticated');
+          // disconnect();
         }
       }
     }
