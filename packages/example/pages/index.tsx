@@ -2,6 +2,7 @@ import {
   ConnectButton,
   useAccountModal,
   useAddRecentTransaction,
+  useAuthenticationStatus,
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
@@ -25,7 +26,12 @@ const Example = () => {
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
 
-  const { address, isConnected } = useAccount();
+  const { address, isConnected: isWagmiConnected } = useAccount();
+  const authenticationStatus = useAuthenticationStatus();
+  const isConnected =
+    isWagmiConnected &&
+    (!authenticationStatus || authenticationStatus === 'authenticated');
+
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -140,15 +146,18 @@ const Example = () => {
         <ConnectButton.Custom>
           {({
             account,
+            authenticationStatus,
             chain,
             mounted,
             openAccountModal,
             openChainModal,
             openConnectModal,
           }) => {
+            const ready = mounted && authenticationStatus !== 'pending';
+
             return (
               <div
-                {...(!mounted && {
+                {...(!ready && {
                   'aria-hidden': true,
                   'style': {
                     opacity: 0,
@@ -158,7 +167,12 @@ const Example = () => {
                 })}
               >
                 {(() => {
-                  if (!mounted || !chain || !account) {
+                  if (
+                    !ready ||
+                    !chain ||
+                    !account ||
+                    authenticationStatus === 'unauthenticated'
+                  ) {
                     return (
                       <button onClick={openConnectModal} type="button">
                         Connect Wallet

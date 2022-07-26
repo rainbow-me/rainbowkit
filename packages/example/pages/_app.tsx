@@ -1,9 +1,11 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   AvatarComponent,
   Chain,
   connectorsForWallets,
+  createAuthenticator,
   darkTheme,
   DisclaimerComponent,
   getDefaultWallets,
@@ -15,6 +17,7 @@ import {
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import { SiweMessage } from 'siwe';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -40,6 +43,48 @@ const avalancheChain: Chain = {
   },
   testnet: false,
 };
+
+const authenticator = createAuthenticator({
+  async fetchNonce() {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage({ address, chainId, nonce }) {
+    return new SiweMessage({
+      address,
+      chainId,
+      domain: window.location.host,
+      nonce,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+    });
+  },
+
+  prepareMessage({ message }) {
+    return message.prepareMessage();
+  },
+
+  async verify({ message, signature }) {
+    const response = await fetch('/api/verify', {
+      body: JSON.stringify({ message, signature }),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+    });
+
+    return response.ok;
+  },
+
+  async checkStatus() {
+    const response = await fetch('/api/me');
+    return Boolean((await response.json()).address);
+  },
+
+  async logout() {
+    await fetch('/api/logout');
+  },
+});
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -175,6 +220,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
+          authenticator={authenticator}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}

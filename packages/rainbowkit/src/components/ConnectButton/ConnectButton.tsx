@@ -42,6 +42,7 @@ export function ConnectButton({
     <ConnectButtonRenderer>
       {({
         account,
+        authenticationStatus,
         chain,
         mounted,
         openAccountModal,
@@ -49,12 +50,13 @@ export function ConnectButton({
         openConnectModal,
       }) => {
         const unsupportedChain = chain?.unsupported ?? false;
+        const ready = mounted && authenticationStatus !== 'pending';
 
         return (
           <Box
             display="flex"
             gap="12"
-            {...(!mounted && {
+            {...(!ready && {
               'aria-hidden': true,
               'style': {
                 opacity: 0,
@@ -63,7 +65,7 @@ export function ConnectButton({
               },
             })}
           >
-            {mounted && account ? (
+            {ready && account && authenticationStatus !== 'unauthenticated' ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box

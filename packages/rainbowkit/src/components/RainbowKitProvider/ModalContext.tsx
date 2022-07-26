@@ -11,6 +11,7 @@ import { useAccount, useNetwork } from 'wagmi';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
+import { useAuthenticationStatus } from './AuthenticationContext';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -60,21 +61,35 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
-  const { isConnected } = useAccount();
+  const { isConnected: isWagmiConnected } = useAccount();
+  const authenticationStatus = useAuthenticationStatus();
   const { chain } = useNetwork();
   const isChainSupported = !chain?.unsupported;
 
+  const isRainbowKitConnected =
+    isWagmiConnected &&
+    (!authenticationStatus || authenticationStatus === 'authenticated');
+
   useEffect(() => {
-    closeConnectModal();
+    if (isRainbowKitConnected) {
+      closeConnectModal();
+    }
+
     closeAccountModal();
     closeChainModal();
-  }, [isConnected, closeConnectModal, closeAccountModal, closeChainModal]);
+  }, [
+    isRainbowKitConnected,
+    authenticationStatus,
+    closeConnectModal,
+    closeAccountModal,
+    closeChainModal,
+  ]);
 
   return (
     <ModalContext.Provider
       value={useMemo(
         () => ({
-          ...(isConnected
+          ...(isRainbowKitConnected
             ? {
                 ...(isChainSupported ? { openAccountModal } : {}),
                 openChainModal,
@@ -86,7 +101,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
         }),
         [
           isChainSupported,
-          isConnected,
+          isRainbowKitConnected,
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,
