@@ -110,15 +110,23 @@ export function UsedBy() {
               padding="7"
               textAlign="center"
             >
-              <NextImage
-                alt={fren.name}
-                height={96}
-                src={`/frens/${fren.asset}.png`}
+              <Box
+                as="span"
+                borderRadius="round"
+                display="inline-block"
                 style={{
                   boxShadow: '0px 12px 36px rgba(0, 0, 0, 0.4)',
+                  height: 96,
+                  width: 96,
                 }}
-                width={96}
-              />
+              >
+                <NextImage
+                  alt={fren.name}
+                  height={96}
+                  src={`/frens/${fren.asset}.png`}
+                  width={96}
+                />
+              </Box>
               <Text
                 marginBottom="2"
                 marginTop="4"
