@@ -114,9 +114,17 @@ export function UsedBy() {
                 alt={fren.name}
                 height={96}
                 src={`/frens/${fren.asset}.png`}
+                style={{
+                  boxShadow: '0px 12px 36px rgba(0, 0, 0, 0.4)',
+                }}
                 width={96}
               />
-              <Text marginBottom="2" marginTop="4" weight="bold">
+              <Text
+                marginBottom="2"
+                marginTop="4"
+                variant="title3"
+                weight="bold"
+              >
                 {fren.name}
               </Text>
               <Text color="labelTertiary">{fren.description}</Text>
