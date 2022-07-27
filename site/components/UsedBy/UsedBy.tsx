@@ -26,7 +26,7 @@ export function UsedBy() {
         weight="semibold"
       >
         World-class Web3 products are using RainbowKit to power their login
-        experience, save time, and boost quality.
+        experience, save time and boost quality.
       </Text>
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">
@@ -79,10 +79,9 @@ export function UsedBy() {
               name: 'Interface',
             },
             {
-              asset: 'mintfun',
-              description:
-                'Discover and mint trending NFT projects in one simple interface.',
-              name: 'mint.fun',
+              asset: 'invisiblefriends',
+              description: 'Hiding in the metaverse.',
+              name: 'Invisible Friends',
             },
             {
               asset: 'tinyfaces',
