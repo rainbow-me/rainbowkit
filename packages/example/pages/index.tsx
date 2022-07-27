@@ -10,6 +10,7 @@ import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
   useNetwork,
+  usePrepareSendTransaction,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
@@ -47,16 +48,18 @@ const Example = () => {
 
   const { chain: activeChain } = useNetwork();
 
-  const {
-    data: transactionData,
-    error: transactionError,
-    sendTransaction,
-  } = useSendTransaction({
+  const { config: sendTransactionConfig } = usePrepareSendTransaction({
     request: {
       to: address,
       value: 0,
     },
   });
+
+  const {
+    data: transactionData,
+    error: transactionError,
+    sendTransaction,
+  } = useSendTransaction(sendTransactionConfig);
 
   const {
     data: signingData,
@@ -254,8 +257,8 @@ const Example = () => {
             </h3>
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
-                disabled={!isConnected}
-                onClick={() => sendTransaction()}
+                disabled={!isConnected && !sendTransaction}
+                onClick={() => sendTransaction?.()}
                 type="button"
               >
                 Send Transaction
