@@ -86,10 +86,8 @@ export default function Home() {
 
       <Box
         backgroundColor="backgroundElevated"
+        data-mode="light"
         paddingY={{ xs: '11', lg: '12' }}
-        style={{
-          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
-        }}
       >
         <Wrapper>
           <Text
@@ -166,6 +164,138 @@ export default function Home() {
                   View the Docs
                 </Button>
               </NextLink>
+            </Box>
+          </Box>
+        </Wrapper>
+      </Box>
+
+      <Box
+        backgroundColor="backgroundElevated"
+        paddingY={{ xs: '11', lg: '12' }}
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
+        }}
+      >
+        <Wrapper>
+          <Text
+            align={{ xs: 'left', md: 'center' }}
+            as="h2"
+            size={{ xs: '7', md: '9' }}
+            style={{ lineHeight: 1 }}
+            weight="bold"
+          >
+            Real frens use RainbowKit
+          </Text>
+          <Text
+            align={{ xs: 'left', md: 'center' }}
+            as="p"
+            marginTop={{ xs: '7', md: '9' }}
+            marginX="auto"
+            size={{ xs: '4', md: '5' }}
+            style={{ lineHeight: '28px', maxWidth: 720 }}
+            weight="semibold"
+          >
+            World-class Web3 products are using RainbowKit to power their login
+            experience, save time, and boost quality.
+          </Text>
+
+          <Box marginTop={{ xs: '10', md: '11' }} marginX="auto">
+            <Box
+              display="grid"
+              gap="6"
+              style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}
+            >
+              {[
+                {
+                  name: 'Zora',
+                  asset: 'zora',
+                  description:
+                    'Built to be built on: the NFT marketplace protocol.',
+                },
+                {
+                  name: 'ENS',
+                  asset: 'ens',
+                  description:
+                    'Your identity across web3, one name to rule them all.',
+                },
+                {
+                  name: 'NFTX Yield',
+                  asset: 'nftx-yield',
+                  description:
+                    'Stake and earn yield on the our decentralized NFT marketplace.',
+                },
+                {
+                  name: 'Showtime',
+                  asset: 'showtime',
+                  description:
+                    'Web3 social network. Drop free NFTs to your community.',
+                },
+                {
+                  name: 'Beyond',
+                  asset: 'beyond',
+                  description: 'Focus on growing your community and business.',
+                },
+                {
+                  name: 'PartyBid',
+                  asset: 'partybid',
+                  description:
+                    'PartyBid is the protocol for buying NFTs as a team.',
+                },
+                {
+                  name: 'Joinlist',
+                  asset: 'joinlist',
+                  description:
+                    'Joinlist makes it simple, fast and delightful to collect wallets.',
+                },
+                {
+                  name: 'Interface',
+                  asset: 'interface',
+                  description: 'Explore web3 thru a readable mobile feed.',
+                },
+                {
+                  name: 'mint.fun',
+                  asset: 'mintfun',
+                  description:
+                    'Discover and mint trending NFT projects in one simple interface.',
+                },
+                {
+                  name: 'Tinyfaces',
+                  asset: 'tinyfaces',
+                  description:
+                    'NFTs with soft lighting, vintage colours and quirky costumes.',
+                },
+                {
+                  name: 'Mannys',
+                  asset: 'mannys',
+                  description:
+                    'Browser based 3D NFT video game manifesting across the blockchain.',
+                },
+                {
+                  name: 'Allstarz',
+                  asset: 'allstarz',
+                  description:
+                    'NFT collections celebrating music, art, and fashion cycles.',
+                },
+              ].map(fren => (
+                <Box
+                  backgroundColor="backgroundElevated"
+                  borderRadius="3"
+                  key={fren.name}
+                  padding="7"
+                  textAlign="center"
+                >
+                  <NextImage
+                    alt={fren.name}
+                    height={96}
+                    src={`/frens/${fren.asset}.png`}
+                    width={96}
+                  />
+                  <Text marginBottom="2" marginTop="4" weight="bold">
+                    {fren.name}
+                  </Text>
+                  <Text color="labelTertiary">{fren.description}</Text>
+                </Box>
+              ))}
             </Box>
           </Box>
         </Wrapper>
