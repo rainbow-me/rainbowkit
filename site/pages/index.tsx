@@ -83,11 +83,22 @@ export default function Home() {
 
       <Hero />
 
+      <Box
+        backgroundColor="backgroundElevated"
+        paddingY={{ xs: '11', lg: '12' }}
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
+        }}
+      >
+        <Wrapper>
+          <UsedBy />
+        </Wrapper>
+      </Box>
+
       <Playground />
 
       <Box
         backgroundColor="backgroundElevated"
-        data-mode="light"
         paddingY={{ xs: '11', lg: '12' }}
       >
         <Wrapper>
@@ -167,18 +178,6 @@ export default function Home() {
               </NextLink>
             </Box>
           </Box>
-        </Wrapper>
-      </Box>
-
-      <Box
-        backgroundColor="backgroundElevated"
-        paddingY={{ xs: '11', lg: '12' }}
-        style={{
-          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
-        }}
-      >
-        <Wrapper>
-          <UsedBy />
         </Wrapper>
       </Box>
 

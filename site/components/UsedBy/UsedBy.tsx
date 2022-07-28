@@ -4,6 +4,73 @@ import NextImage from 'next/image';
 import React from 'react';
 import { grid } from './UsedBy.css';
 
+const frens = [
+  {
+    asset: 'zora',
+    description: 'Built to be built on: the NFT marketplace protocol.',
+    name: 'Zora',
+  },
+  {
+    asset: 'ens',
+    description: 'Your identity across web3, one name to rule them all.',
+    name: 'ENS',
+  },
+  {
+    asset: 'nftx-yield',
+    description:
+      'Stake and earn yield on the our decentralized NFT marketplace.',
+    name: 'NFTX Yield',
+  },
+  {
+    asset: 'showtime',
+    description: 'Web3 social network. Drop free NFTs to your community.',
+    name: 'Showtime',
+  },
+  {
+    asset: 'beyond',
+    description: 'Focus on growing your community and business.',
+    name: 'Beyond',
+  },
+  {
+    asset: 'partybid',
+    description: 'PartyBid is the protocol for buying NFTs as a team.',
+    name: 'PartyBid',
+  },
+  {
+    asset: 'joinlist',
+    description:
+      'Joinlist makes it simple, fast and delightful to collect wallets.',
+    name: 'Joinlist',
+  },
+  {
+    asset: 'interface',
+    description: 'Explore web3 thru a readable mobile feed.',
+    name: 'Interface',
+  },
+  {
+    asset: 'invisiblefriends',
+    description: '5000 animated invisible characters by Markus Magnusson.',
+    name: 'Invisible Friends',
+  },
+  {
+    asset: 'tinyfaces',
+    description:
+      'NFTs with soft lighting, vintage colours and quirky costumes.',
+    name: 'Tinyfaces',
+  },
+  {
+    asset: 'mannys',
+    description:
+      'Browser based 3D NFT video game manifesting across the blockchain.',
+    name: 'Mannys',
+  },
+  {
+    asset: 'allstarz',
+    description: 'NFT collections celebrating music, art, and fashion cycles.',
+    name: 'Allstarz',
+  },
+];
+
 export function UsedBy() {
   return (
     <>
@@ -31,78 +98,7 @@ export function UsedBy() {
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">
         <Box className={grid}>
-          {[
-            {
-              asset: 'zora',
-              description:
-                'Built to be built on: the NFT marketplace protocol.',
-              name: 'Zora',
-            },
-            {
-              asset: 'ens',
-              description:
-                'Your identity across web3, one name to rule them all.',
-              name: 'ENS',
-            },
-            {
-              asset: 'nftx-yield',
-              description:
-                'Stake and earn yield on the our decentralized NFT marketplace.',
-              name: 'NFTX Yield',
-            },
-            {
-              asset: 'showtime',
-              description:
-                'Web3 social network. Drop free NFTs to your community.',
-              name: 'Showtime',
-            },
-            {
-              asset: 'beyond',
-              description: 'Focus on growing your community and business.',
-              name: 'Beyond',
-            },
-            {
-              asset: 'partybid',
-              description:
-                'PartyBid is the protocol for buying NFTs as a team.',
-              name: 'PartyBid',
-            },
-            {
-              asset: 'joinlist',
-              description:
-                'Joinlist makes it simple, fast and delightful to collect wallets.',
-              name: 'Joinlist',
-            },
-            {
-              asset: 'interface',
-              description: 'Explore web3 thru a readable mobile feed.',
-              name: 'Interface',
-            },
-            {
-              asset: 'invisiblefriends',
-              description:
-                '5000 animated invisible characters by Markus Magnusson.',
-              name: 'Invisible Friends',
-            },
-            {
-              asset: 'tinyfaces',
-              description:
-                'NFTs with soft lighting, vintage colours and quirky costumes.',
-              name: 'Tinyfaces',
-            },
-            {
-              asset: 'mannys',
-              description:
-                'Browser based 3D NFT video game manifesting across the blockchain.',
-              name: 'Mannys',
-            },
-            {
-              asset: 'allstarz',
-              description:
-                'NFT collections celebrating music, art, and fashion cycles.',
-              name: 'Allstarz',
-            },
-          ].map(fren => (
+          {frens.map(fren => (
             <Box
               backgroundColor="backgroundElevated"
               borderRadius="3"
