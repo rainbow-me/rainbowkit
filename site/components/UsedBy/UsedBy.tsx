@@ -59,7 +59,7 @@ export function UsedBy() {
   return (
     <>
       <Text
-        align={{ md: 'center', xs: 'left' }}
+        align="center"
         as="p"
         marginTop={{ md: '0', xs: '11' }}
         marginX="auto"
