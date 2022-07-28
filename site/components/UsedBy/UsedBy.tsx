@@ -27,7 +27,7 @@ const frens = [
   },
   {
     asset: 'tinyfaces',
-    name: 'Tinyfaces',
+    name: 'TinyFaces',
   },
   {
     asset: 'beyond',
