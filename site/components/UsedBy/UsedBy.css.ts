@@ -6,17 +6,15 @@ import { vars } from 'css/vars.css';
 export const grid = style([
   style({
     display: 'grid',
-    gap: vars.space[6],
+    gap: vars.space[8],
+    gridTemplateColumns: 'repeat(3, 1fr)',
   }),
   responsiveStyle({
-    sm: {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-    },
     md: {
-      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateColumns: 'repeat(4, 1fr)',
     },
     lg: {
-      gridTemplateColumns: 'repeat(4, 1fr)',
+      gridTemplateColumns: 'repeat(6, 1fr)',
     },
   }),
 ]);

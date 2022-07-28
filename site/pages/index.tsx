@@ -85,7 +85,8 @@ export default function Home() {
 
       <Box
         backgroundColor="backgroundElevated"
-        paddingY={{ xs: '11', lg: '12' }}
+        paddingBottom="12"
+        paddingTop={{ xs: '12', md: '10', lg: '0' }}
         style={{
           backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
         }}
