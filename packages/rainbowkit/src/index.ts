@@ -9,10 +9,7 @@ export {
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
-export {
-  createAuthenticator,
-  useAuthenticationStatus,
-} from './components/RainbowKitProvider/AuthenticationContext';
+export { createAuthenticator } from './components/RainbowKitProvider/AuthenticationContext';
 export type { Wallet, WalletList } from './wallets/Wallet';
 export type { Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';

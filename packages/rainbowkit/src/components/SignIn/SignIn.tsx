@@ -3,10 +3,7 @@ import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
-import {
-  useAuthenticator,
-  useSetAuthenticationStatus,
-} from '../RainbowKitProvider/AuthenticationContext';
+import { useAuthenticator } from '../RainbowKitProvider/AuthenticationContext';
 import { Text } from '../Text/Text';
 
 export function SignIn() {
@@ -40,12 +37,7 @@ export function SignIn() {
   const { address } = useAccount();
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
-  const setAuthenticationStatus = useSetAuthenticationStatus();
   const { disconnect } = useDisconnect();
-
-  if (!setAuthenticationStatus) {
-    throw new Error();
-  }
 
   const signIn = async () => {
     try {
@@ -68,10 +60,8 @@ export function SignIn() {
       }
 
       setState(x => ({ ...x, signing: false }));
-      setAuthenticationStatus('authenticated');
     } catch (error) {
       setState(x => ({ ...x, nonce: undefined, signing: false }));
-      setAuthenticationStatus('unauthenticated');
       fetchNonce();
     }
   };

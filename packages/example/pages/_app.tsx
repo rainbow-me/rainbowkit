@@ -14,9 +14,16 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
+import {
+  getCsrfToken,
+  SessionProvider,
+  signIn,
+  signOut,
+  useSession,
+} from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
+import React, { ComponentType, useEffect, useState } from 'react';
 import { SiweMessage } from 'siwe';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -44,10 +51,11 @@ const avalancheChain: Chain = {
   testnet: false,
 };
 
-const authenticator = createAuthenticator({
+const nextAuthenticator = createAuthenticator({
   async fetchNonce() {
-    const response = await fetch('/api/nonce');
-    return await response.text();
+    const nonce = await getCsrfToken();
+    if (!nonce) throw new Error();
+    return nonce;
   },
 
   createMessage({ address, chainId, nonce }) {
@@ -67,22 +75,17 @@ const authenticator = createAuthenticator({
   },
 
   async verify({ message, signature }) {
-    const response = await fetch('/api/verify', {
-      body: JSON.stringify({ message, signature }),
-      headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
+    const response = await signIn('credentials', {
+      message: JSON.stringify(message),
+      redirect: false,
+      signature,
     });
 
-    return response.ok;
-  },
-
-  async checkStatus() {
-    const response = await fetch('/api/me');
-    return Boolean((await response.json()).address);
+    return response?.ok ?? false;
   },
 
   async logout() {
-    await fetch('/api/logout');
+    await signOut({ redirect: false });
   },
 });
 
@@ -186,6 +189,8 @@ const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function App({ Component, pageProps }: AppProps) {
+  const session = useSession();
+
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
@@ -214,13 +219,15 @@ function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>RainbowKit Example</title>
       </Head>
+
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           appInfo={{
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
-          authenticator={authenticator}
+          authenticationStatus={session.status}
+          authenticator={nextAuthenticator}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
@@ -507,4 +514,13 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default App;
+const withSession = (AppConnent: ComponentType<AppProps>) =>
+  function AppWithSession(appProps: AppProps) {
+    return (
+      <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
+        <AppConnent {...appProps} />
+      </SessionProvider>
+    );
+  };
+
+export default withSession(App);

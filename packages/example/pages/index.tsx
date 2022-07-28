@@ -2,11 +2,10 @@ import {
   ConnectButton,
   useAccountModal,
   useAddRecentTransaction,
-  useAuthenticationStatus,
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
-
+import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
@@ -27,10 +26,8 @@ const Example = () => {
   const { openConnectModal } = useConnectModal();
 
   const { address, isConnected: isWagmiConnected } = useAccount();
-  const authenticationStatus = useAuthenticationStatus();
-  const isConnected =
-    isWagmiConnected &&
-    (!authenticationStatus || authenticationStatus === 'authenticated');
+  const { status: nextAuthStatus } = useSession();
+  const isConnected = isWagmiConnected && nextAuthStatus === 'authenticated';
 
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -153,7 +150,7 @@ const Example = () => {
             openChainModal,
             openConnectModal,
           }) => {
-            const ready = mounted && authenticationStatus !== 'pending';
+            const ready = mounted && authenticationStatus !== 'loading';
 
             return (
               <div

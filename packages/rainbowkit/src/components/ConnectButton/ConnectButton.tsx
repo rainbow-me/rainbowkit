@@ -50,7 +50,7 @@ export function ConnectButton({
         openConnectModal,
       }) => {
         const unsupportedChain = chain?.unsupported ?? false;
-        const ready = mounted && authenticationStatus !== 'pending';
+        const ready = mounted && authenticationStatus !== 'loading';
 
         return (
           <Box

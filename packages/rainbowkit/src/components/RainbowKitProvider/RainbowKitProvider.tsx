@@ -5,7 +5,11 @@ import { ThemeVars } from '../../css/sprinkles.css';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
-import { AuthenticationProvider, Authenticator } from './AuthenticationContext';
+import {
+  AuthenticationProvider,
+  AuthenticationStatus,
+  Authenticator,
+} from './AuthenticationContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
 import { ModalProvider } from './ModalContext';
@@ -52,6 +56,7 @@ export interface RainbowKitProviderProps<
   children: ReactNode;
   theme?: Theme | null;
   authenticator?: TAuthenticator;
+  authenticationStatus?: AuthenticationStatus;
   showRecentTransactions?: boolean;
   appInfo?: {
     appName?: string;
@@ -72,6 +77,7 @@ export function RainbowKitProvider<Message = unknown>({
   children,
   appInfo,
   authenticator,
+  authenticationStatus,
   showRecentTransactions = false,
   coolMode = false,
   avatar,
@@ -97,7 +103,10 @@ export function RainbowKitProvider<Message = unknown>({
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <AuthenticationProvider authenticator={authenticator}>
+      <AuthenticationProvider
+        authenticationStatus={authenticationStatus}
+        authenticator={authenticator}
+      >
         <CoolModeContext.Provider value={coolMode}>
           <ShowRecentTransactionsContext.Provider
             value={showRecentTransactions}
