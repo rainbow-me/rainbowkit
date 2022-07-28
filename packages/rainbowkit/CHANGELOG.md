@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.5
+
+### Patch Changes
+
+- 8dd5a74: Update wagmi peer dependency to include v0.6
+
 ## 0.4.4
 
 ### Patch Changes

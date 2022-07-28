@@ -1,6 +1,6 @@
 {
   "name": "with-create-react-app",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "private": true,
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
