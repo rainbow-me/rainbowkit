@@ -80,7 +80,8 @@ export function UsedBy() {
             },
             {
               asset: 'invisiblefriends',
-              description: 'Hiding in the metaverse.',
+              description:
+                '5000 animated invisible characters by Markus Magnusson.',
               name: 'Invisible Friends',
             },
             {
