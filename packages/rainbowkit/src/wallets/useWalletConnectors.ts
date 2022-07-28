@@ -16,9 +16,11 @@ export interface WalletConnector extends WalletInstance {
 
 export function useWalletConnectors(): WalletConnector[] {
   const intialChainId = useInitialChainId();
-  const { connectAsync, connectors: defaultConnectors } = useConnect({
+  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect({
     chainId: intialChainId,
   });
+
+  const defaultConnectors = defaultConnectors_untyped as Connector[];
 
   async function connectWallet(walletId: string, connector: Connector) {
     const result = await connectAsync({ connector });

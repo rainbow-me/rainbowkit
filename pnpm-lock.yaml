@@ -42,7 +42,7 @@ importers:
       recursive-readdir-files: ^2.0.7
       typescript: ^4.7.2
       vitest: ^0.5.0
-      wagmi: ^0.5.3
+      wagmi: ^0.6.0
     devDependencies:
       '@babel/core': 7.17.2
       '@babel/preset-env': 7.16.11_@babel+core@7.17.2
@@ -79,7 +79,7 @@ importers:
       recursive-readdir-files: 2.0.7
       typescript: 4.7.2
       vitest: 0.5.0
-      wagmi: 0.5.3_2ysdzk2vllwi7dl6z45r5ylxcu
+      wagmi: 0.6.0_2ysdzk2vllwi7dl6z45r5ylxcu
 
   examples/with-create-react-app:
     specifiers:
@@ -7037,27 +7037,6 @@ packages:
       - supports-color
     dev: true
 
-  /@wagmi/core/0.4.2_7zlxuwwdmng4gpy3cw52h3fypy:
-    resolution: {integrity: sha512-fd9niO/Wwr6MhaNeIjgHP3ToULAWKQ8neITgU7gAN5Q4uxbizKM8e6+i4EiffTKyaqvauMHa32Xz5zY7N+WAKA==}
-    peerDependencies:
-      '@coinbase/wallet-sdk': '>=3.3.0'
-      '@walletconnect/ethereum-provider': '>=1.7.5'
-      ethers: '>=5.5.1'
-    peerDependenciesMeta:
-      '@coinbase/wallet-sdk':
-        optional: true
-      '@walletconnect/ethereum-provider':
-        optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.3.0_@babel+core@7.17.2
-      '@walletconnect/ethereum-provider': 1.7.8
-      eventemitter3: 4.0.7
-      zustand: 4.0.0-rc.1_react@18.1.0
-    transitivePeerDependencies:
-      - immer
-      - react
-    dev: true
-
   /@wagmi/core/0.4.2_react@18.1.0:
     resolution: {integrity: sha512-fd9niO/Wwr6MhaNeIjgHP3ToULAWKQ8neITgU7gAN5Q4uxbizKM8e6+i4EiffTKyaqvauMHa32Xz5zY7N+WAKA==}
     peerDependencies:
@@ -7070,6 +7049,27 @@ packages:
       '@walletconnect/ethereum-provider':
         optional: true
     dependencies:
+      eventemitter3: 4.0.7
+      zustand: 4.0.0-rc.1_react@18.1.0
+    transitivePeerDependencies:
+      - immer
+      - react
+    dev: true
+
+  /@wagmi/core/0.5.0_7zlxuwwdmng4gpy3cw52h3fypy:
+    resolution: {integrity: sha512-bh4cI7WaBDtEM8E7KPCLnK5PfmBPg5iIUydTw5DTX2yo6BiRhcFIflRn/Bg9IJCFq3SGhW6Zmpu+jHHeH9ZELQ==}
+    peerDependencies:
+      '@coinbase/wallet-sdk': '>=3.3.0'
+      '@walletconnect/ethereum-provider': '>=1.7.5'
+      ethers: '>=5.5.1'
+    peerDependenciesMeta:
+      '@coinbase/wallet-sdk':
+        optional: true
+      '@walletconnect/ethereum-provider':
+        optional: true
+    dependencies:
+      '@coinbase/wallet-sdk': 3.3.0_@babel+core@7.17.2
+      '@walletconnect/ethereum-provider': 1.7.8
       eventemitter3: 4.0.7
       zustand: 4.0.0-rc.1_react@18.1.0
     transitivePeerDependencies:
@@ -17514,7 +17514,7 @@ packages:
       match-sorter: 6.3.1
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
-      use-sync-external-store: 1.1.0_react@18.1.0
+      use-sync-external-store: 1.2.0_react@18.1.0
     dev: true
 
   /react-query/4.0.0-beta.5_ef5jwxihqo6n7gxfmzogljlgcm:
@@ -19973,6 +19973,14 @@ packages:
       react: 18.1.0
     dev: true
 
+  /use-sync-external-store/1.2.0_react@18.1.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.1.0
+    dev: true
+
   /use/3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
     engines: {node: '>=0.10.0'}
@@ -20173,18 +20181,18 @@ packages:
       xml-name-validator: 3.0.0
     dev: false
 
-  /wagmi/0.5.3_2ysdzk2vllwi7dl6z45r5ylxcu:
-    resolution: {integrity: sha512-KPdN58GQhIBe/ciyxeKtJxkHFa81Ag33I5NHm3c7YWa12rrEci8esjmOn4TOfnn/9/hKgFEYtmYDt/P7pB04Lg==}
+  /wagmi/0.6.0_2ysdzk2vllwi7dl6z45r5ylxcu:
+    resolution: {integrity: sha512-Jyj22eQNoNcs9DoLDhD+foF5skEc7XPAZjqZ7GK+rVzxWVlA6Vx+qrcAALNGnxayE6H+CYVKWGtTK8PPN/WHOw==}
     peerDependencies:
       ethers: '>=5.5.1'
       react: '>=17.0.0'
     dependencies:
       '@coinbase/wallet-sdk': 3.3.0_@babel+core@7.17.2
-      '@wagmi/core': 0.4.2_7zlxuwwdmng4gpy3cw52h3fypy
+      '@wagmi/core': 0.5.0_7zlxuwwdmng4gpy3cw52h3fypy
       '@walletconnect/ethereum-provider': 1.7.8
       react: 18.1.0
       react-query: 4.0.0-beta.23_ef5jwxihqo6n7gxfmzogljlgcm
-      use-sync-external-store: 1.1.0_react@18.1.0
+      use-sync-external-store: 1.2.0_react@18.1.0
     transitivePeerDependencies:
       - '@babel/core'
       - bufferutil
