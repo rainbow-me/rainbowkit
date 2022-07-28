@@ -12,9 +12,9 @@ export const grid = style([
   responsiveStyle({
     md: {
       gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: vars.space[8],
     },
     lg: {
+      gap: vars.space[8],
       gridTemplateColumns: 'repeat(6, 1fr)',
     },
   }),
