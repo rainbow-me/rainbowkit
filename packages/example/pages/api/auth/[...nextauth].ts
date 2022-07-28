@@ -14,8 +14,18 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
           const siwe = new SiweMessage(
             JSON.parse(credentials?.message || '{}')
           );
-          const nextAuthUrl = new URL(process.env.NEXTAUTH_URL!);
-          if (siwe.domain !== nextAuthUrl.host) {
+
+          const nextAuthUrl =
+            process.env.NEXTAUTH_URL ||
+            (process.env.VERCEL_URL
+              ? `https://${process.env.VERCEL_URL}`
+              : null);
+          if (!nextAuthUrl) {
+            return null;
+          }
+
+          const nextAuthHost = new URL(nextAuthUrl).host;
+          if (siwe.domain !== nextAuthHost) {
             return null;
           }
 
