@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -14,7 +14,7 @@
     "siwe": "^1.1.6"
   },
   "peerDependencies": {
-    "wagmi": "^0.5.3"
+    "wagmi": "^0.6.0"
   },
   "scripts": {
     "dev": "next dev",

@@ -10,6 +10,7 @@ import { Link } from 'components/Link/Link';
 import { Playground } from 'components/Playground/Playground';
 import { Text } from 'components/Text/Text';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
+import { UsedBy } from 'components/UsedBy/UsedBy';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
@@ -82,14 +83,24 @@ export default function Home() {
 
       <Hero />
 
+      <Box
+        backgroundColor="backgroundElevated"
+        paddingBottom={{ xs: '11', md: '12' }}
+        paddingTop={{ xs: '12', md: '10', lg: '0' }}
+        style={{
+          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
+        }}
+      >
+        <Wrapper>
+          <UsedBy />
+        </Wrapper>
+      </Box>
+
       <Playground />
 
       <Box
         backgroundColor="backgroundElevated"
         paddingY={{ xs: '11', lg: '12' }}
-        style={{
-          backgroundImage: 'linear-gradient(to bottom, #000, #1C1D1F)',
-        }}
       >
         <Wrapper>
           <Text

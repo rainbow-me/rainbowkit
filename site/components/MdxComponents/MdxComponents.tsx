@@ -186,11 +186,13 @@ export const components = {
     <Box
       as="video"
       autoPlay
+      borderRadius="3"
       controls
+      display="block"
       marginBottom="5"
       muted
       playsInline
-      style={{ display: 'block', width: '100%' }}
+      style={{ width: '100%' }}
       {...props}
     />
   ),

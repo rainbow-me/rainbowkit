@@ -83,12 +83,7 @@ export function Playground() {
   const gradient = gradientColors[accent];
 
   return useMounted() ? (
-    <Box
-      marginTop={{ md: '11', lg: '12' }}
-      paddingY={{ xs: '11', lg: '12' }}
-      position="relative"
-      zIndex="10"
-    >
+    <Box paddingY={{ xs: '11', lg: '12' }} position="relative" zIndex="10">
       <Box
         inset="0"
         position="absolute"

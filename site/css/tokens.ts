@@ -196,6 +196,7 @@ export const tokens = {
     '10': '40px',
     '11': '64px',
     '12': '128px',
+    '_48': '48px',
   },
   borderWidths: {
     '0': '0px',
