@@ -14,20 +14,22 @@ import {
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
+import { AppStateProps } from '../lib/AppStateProps';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
 type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
-const Example = () => {
+const Example = ({ authEnabled }: AppStateProps) => {
   const { openAccountModal } = useAccountModal();
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
 
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status: nextAuthStatus } = useSession();
-  const isConnected = isWagmiConnected && nextAuthStatus === 'authenticated';
+  const isConnected =
+    isWagmiConnected && (!authEnabled || nextAuthStatus === 'authenticated');
 
   const defaultProps = ConnectButton.__defaultProps;
 

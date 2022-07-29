@@ -6,9 +6,9 @@ import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
 import {
+  AuthenticationAdapter,
   AuthenticationProvider,
   AuthenticationStatus,
-  Authenticator,
 } from './AuthenticationContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
@@ -48,15 +48,17 @@ export type Theme =
     };
 
 export interface RainbowKitProviderProps<
-  TAuthenticator extends Authenticator<any>
+  TAuthenticationAdapter extends AuthenticationAdapter<any>
 > {
   chains: RainbowKitChain[];
   initialChain?: RainbowKitChain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
-  authenticator?: TAuthenticator;
-  authenticationStatus?: AuthenticationStatus;
+  authentication?: {
+    adapter: TAuthenticationAdapter;
+    status: AuthenticationStatus;
+  };
   showRecentTransactions?: boolean;
   appInfo?: {
     appName?: string;
@@ -76,12 +78,11 @@ export function RainbowKitProvider<Message = unknown>({
   theme = defaultTheme,
   children,
   appInfo,
-  authenticator,
-  authenticationStatus,
+  authentication,
   showRecentTransactions = false,
   coolMode = false,
   avatar,
-}: RainbowKitProviderProps<Authenticator<Message>>) {
+}: RainbowKitProviderProps<AuthenticationAdapter<Message>>) {
   usePreloadImages();
 
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
@@ -103,10 +104,7 @@ export function RainbowKitProvider<Message = unknown>({
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <AuthenticationProvider
-        authenticationStatus={authenticationStatus}
-        authenticator={authenticator}
-      >
+      <AuthenticationProvider authentication={authentication}>
         <CoolModeContext.Provider value={coolMode}>
           <ShowRecentTransactionsContext.Provider
             value={showRecentTransactions}

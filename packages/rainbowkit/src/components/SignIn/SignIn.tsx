@@ -3,7 +3,7 @@ import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
-import { useAuthenticator } from '../RainbowKitProvider/AuthenticationContext';
+import { useAuthenticationAdapter } from '../RainbowKitProvider/AuthenticationContext';
 import { Text } from '../Text/Text';
 
 export function SignIn() {
@@ -12,16 +12,16 @@ export function SignIn() {
     nonce?: string;
   }>({});
 
-  const authenticator = useAuthenticator();
+  const authAdapter = useAuthenticationAdapter();
 
   const fetchNonce = useCallback(async () => {
     try {
-      const nonce = await authenticator.fetchNonce();
+      const nonce = await authAdapter.fetchNonce();
       setState(x => ({ ...x, nonce }));
     } catch (error) {
       setState(x => ({ ...x, error: error as Error }));
     }
-  }, [authenticator]);
+  }, [authAdapter]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect
@@ -32,7 +32,7 @@ export function SignIn() {
     onceRef.current = true;
 
     fetchNonce();
-  }, [authenticator, fetchNonce]);
+  }, [fetchNonce]);
 
   const { address } = useAccount();
   const { chain: activeChain } = useNetwork();
@@ -49,12 +49,12 @@ export function SignIn() {
       }
 
       setState(x => ({ ...x, signing: true }));
-      const message = authenticator.createMessage({ address, chainId, nonce });
+      const message = authAdapter.createMessage({ address, chainId, nonce });
       const signature = await signMessageAsync({
-        message: authenticator.prepareMessage({ message }),
+        message: authAdapter.prepareMessage({ message }),
       });
 
-      const verified = await authenticator.verify({ message, signature });
+      const verified = await authAdapter.verify({ message, signature });
       if (!verified) {
         throw new Error();
       }

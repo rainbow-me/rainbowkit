@@ -1,36 +1,26 @@
-import { withIronSessionSsr } from 'iron-session/next';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getToken } from 'next-auth/jwt';
 import React from 'react';
-import { ironOptions } from '../lib/iron';
 
-export const getServerSideProps: GetServerSideProps = withIronSessionSsr(
-  async context => {
-    const address = context.req.session?.siwe?.address;
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const token = await getToken({ req });
+  const address = token?.sub;
 
-    if (!address) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      };
-    }
-
-    return {
-      props: {
-        address,
-      },
-    };
-  },
-  ironOptions
-);
+  return {
+    props: {
+      address,
+    },
+  };
+};
 
 type MeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const Me = ({ address }: MeProps) => {
   return (
     <div style={{ marginBottom: '100vh' }}>
-      {address !== '0x2896d64dB515686DB0CB8D8F084eF67e492687B8' ? (
+      {!address ? (
+        'Not authenticated'
+      ) : address !== '0x2896d64dB515686DB0CB8D8F084eF67e492687B8' ? (
         <h1 style={{ fontFamily: 'sans-serif' }}>✅ Signed in as {address}</h1>
       ) : (
         <div

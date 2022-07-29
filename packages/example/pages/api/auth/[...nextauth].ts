@@ -69,8 +69,6 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     callbacks: {
       async session({ session, token }) {
         session.address = token.sub;
-        // session.user.name = token.sub;
-        // session.user.image = 'https://www.fillmurray.com/128/128';
         return session;
       },
     },

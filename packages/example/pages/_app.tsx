@@ -1,11 +1,9 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   AvatarComponent,
   Chain,
   connectorsForWallets,
-  createAuthenticator,
   darkTheme,
   DisclaimerComponent,
   getDefaultWallets,
@@ -14,20 +12,14 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import {
-  getCsrfToken,
-  SessionProvider,
-  signIn,
-  signOut,
-  useSession,
-} from 'next-auth/react';
+import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { ComponentType, useEffect, useState } from 'react';
-import { SiweMessage } from 'siwe';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import { configureSiweNextAuth } from '../lib/siweNextAuth';
 
 const alchemyId = '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC';
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
@@ -51,43 +43,7 @@ const avalancheChain: Chain = {
   testnet: false,
 };
 
-const nextAuthenticator = createAuthenticator({
-  async fetchNonce() {
-    const nonce = await getCsrfToken();
-    if (!nonce) throw new Error();
-    return nonce;
-  },
-
-  createMessage({ address, chainId, nonce }) {
-    return new SiweMessage({
-      address,
-      chainId,
-      domain: window.location.host,
-      nonce,
-      statement: 'Sign in with Ethereum to the app.',
-      uri: window.location.origin,
-      version: '1',
-    });
-  },
-
-  prepareMessage({ message }) {
-    return message.prepareMessage();
-  },
-
-  async verify({ message, signature }) {
-    const response = await signIn('credentials', {
-      message: JSON.stringify(message),
-      redirect: false,
-      signature,
-    });
-
-    return response?.ok ?? false;
-  },
-
-  async logout() {
-    await signOut({ redirect: false });
-  },
-});
+const { useSiweNextAuth } = configureSiweNextAuth();
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -189,18 +145,19 @@ const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function App({ Component, pageProps }: AppProps) {
-  const session = useSession();
-
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
+  const [authEnabled, setAuthEnabled] = useState(true);
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+
+  const siweNextAuth = useSiweNextAuth();
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -214,6 +171,10 @@ function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
+  const appStateProps = {
+    authEnabled,
+  };
+
   return (
     <>
       <Head>
@@ -226,8 +187,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
-          authenticationStatus={session.status}
-          authenticator={nextAuthenticator}
+          authentication={authEnabled ? siweNextAuth : undefined}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
@@ -241,7 +201,7 @@ function App({ Component, pageProps }: AppProps) {
           })}
         >
           <div style={{ padding: 8 }}>
-            <Component {...pageProps} />
+            <Component {...pageProps} {...appStateProps} />
 
             {isMounted && (
               <>
@@ -253,6 +213,25 @@ function App({ Component, pageProps }: AppProps) {
                   <h3>RainbowKitProvider props</h3>
                   <table cellSpacing={12}>
                     <tbody>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="authEnabled"
+                            style={{ userSelect: 'none' }}
+                          >
+                            authentication
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={authEnabled}
+                            id="authEnabled"
+                            name="authEnabled"
+                            onChange={e => setAuthEnabled(e.target.checked)}
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
                       <tr>
                         <td>
                           <label
@@ -514,11 +493,11 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-const withSession = (AppConnent: ComponentType<AppProps>) =>
+const withSession = (AppComponent: ComponentType<AppProps>) =>
   function AppWithSession(appProps: AppProps) {
     return (
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <AppConnent {...appProps} />
+        <AppComponent {...appProps} />
       </SessionProvider>
     );
   };

@@ -6,7 +6,7 @@ export type AuthenticationStatus =
   | 'unauthenticated'
   | 'authenticated';
 
-export interface Authenticator<Message> {
+export interface AuthenticationAdapter<Message> {
   fetchNonce: () => Promise<string>;
   createMessage: (args: {
     nonce: string;
@@ -18,41 +18,42 @@ export interface Authenticator<Message> {
   logout: () => Promise<void>;
 }
 
-export function createAuthenticator<Message>(
-  authenticator: Authenticator<Message>
+export function configureAuthenticationAdapter<Message>(
+  adapter: AuthenticationAdapter<Message>
 ) {
-  return authenticator;
+  return adapter;
 }
 
 const AuthenticationContext = createContext<{
-  authenticator: Authenticator<any>;
+  adapter: AuthenticationAdapter<any>;
   status?: AuthenticationStatus;
 } | null>(null);
 
 interface AuthenticationProviderProps<Message = unknown> {
-  authenticator?: Authenticator<Message>;
-  authenticationStatus?: AuthenticationStatus;
+  authentication?: {
+    adapter: AuthenticationAdapter<Message>;
+    status: AuthenticationStatus;
+  };
   children: ReactNode;
 }
 
 export function AuthenticationProvider<Message = unknown>({
-  authenticationStatus,
-  authenticator,
+  authentication,
   children,
 }: AuthenticationProviderProps<Message>) {
-  const status = authenticationStatus;
+  const { adapter, status } = authentication ?? {};
 
   useAccount({
     onDisconnect: () => {
-      authenticator?.logout();
+      adapter?.logout();
     },
   });
 
   return (
     <AuthenticationContext.Provider
       value={useMemo(
-        () => (authenticator ? { authenticator, status } : null),
-        [authenticator, status]
+        () => (adapter && status ? { adapter, status } : null),
+        [adapter, status]
       )}
     >
       {children}
@@ -60,16 +61,16 @@ export function AuthenticationProvider<Message = unknown>({
   );
 }
 
-export function useAuthenticator() {
+export function useAuthenticationAdapter() {
   const contextValue = useContext(AuthenticationContext);
 
   if (!contextValue) {
-    throw new Error('No authenticator found');
+    throw new Error('No authentication adapter found');
   }
 
-  const { authenticator } = contextValue;
+  const { adapter } = contextValue;
 
-  return authenticator;
+  return adapter;
 }
 
 export function useAuthenticationStatus() {
