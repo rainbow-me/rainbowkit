@@ -4,7 +4,7 @@ import React from 'react';
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const token = await getToken({ req });
-  const address = token?.sub;
+  const address = token?.sub ?? null;
 
   return {
     props: {
@@ -18,10 +18,10 @@ type MeProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 const Me = ({ address }: MeProps) => {
   return (
     <div style={{ marginBottom: '100vh' }}>
-      {!address ? (
-        'Not authenticated'
-      ) : address !== '0x2896d64dB515686DB0CB8D8F084eF67e492687B8' ? (
-        <h1 style={{ fontFamily: 'sans-serif' }}>✅ Signed in as {address}</h1>
+      {address !== '0x2896d64dB515686DB0CB8D8F084eF67e492687B8' ? (
+        <h1 style={{ fontFamily: 'sans-serif' }}>
+          {address ? `✅ Signed in as ${address}` : '❌ Signed out'}
+        </h1>
       ) : (
         <div
           style={{
