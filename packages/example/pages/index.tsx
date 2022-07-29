@@ -155,7 +155,9 @@ const Example = ({ authEnabled }: AppStateProps) => {
             openChainModal,
             openConnectModal,
           }) => {
-            const ready = mounted && authenticationStatus !== 'loading';
+            const ready =
+              mounted &&
+              (!account || (account && authenticationStatus !== 'loading'));
 
             return (
               <div
