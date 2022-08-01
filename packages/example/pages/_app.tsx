@@ -172,7 +172,6 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   useEffect(() => setIsMounted(true), []);
 
   const siweNextAuthAdapter = useSiweNextAuthAdapter();
-  const appStateProps = { authEnabled };
 
   return (
     <>
@@ -200,7 +199,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
           })}
         >
           <div style={{ padding: 8 }}>
-            <Component {...pageProps} {...appStateProps} />
+            <Component {...pageProps} />
 
             {isMounted && (
               <>

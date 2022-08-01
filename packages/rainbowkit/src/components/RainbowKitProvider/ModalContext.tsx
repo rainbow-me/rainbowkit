@@ -7,11 +7,11 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import { useNetwork } from 'wagmi';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
-import { useAuthenticationStatus } from './AuthenticationContext';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -61,47 +61,41 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
-  const { isConnected: isWagmiConnected } = useAccount();
-  const authenticationStatus = useAuthenticationStatus();
+  const connectionStatus = useConnectionStatus();
   const { chain } = useNetwork();
-  const isChainSupported = !chain?.unsupported;
-
-  const isRainbowKitConnected =
-    isWagmiConnected &&
-    (!authenticationStatus || authenticationStatus === 'authenticated');
+  const chainSupported = !chain?.unsupported;
 
   useEffect(() => {
-    if (isRainbowKitConnected) {
+    if (connectionStatus === 'connected') {
       closeConnectModal();
     }
 
     closeAccountModal();
     closeChainModal();
-  }, [
-    isRainbowKitConnected,
-    authenticationStatus,
-    closeConnectModal,
-    closeAccountModal,
-    closeChainModal,
-  ]);
+  }, [connectionStatus, closeConnectModal, closeAccountModal, closeChainModal]);
 
   return (
     <ModalContext.Provider
       value={useMemo(
         () => ({
-          ...(isRainbowKitConnected
-            ? {
-                ...(isChainSupported ? { openAccountModal } : {}),
-                openChainModal,
-              }
-            : { openConnectModal }),
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,
+          openAccountModal:
+            chainSupported && connectionStatus === 'connected'
+              ? openAccountModal
+              : undefined,
+          openChainModal:
+            connectionStatus === 'connected' ? openChainModal : undefined,
+          openConnectModal:
+            connectionStatus === 'disconnected' ||
+            connectionStatus === 'unauthenticated'
+              ? openConnectModal
+              : undefined,
         }),
         [
-          isChainSupported,
-          isRainbowKitConnected,
+          connectionStatus,
+          chainSupported,
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,

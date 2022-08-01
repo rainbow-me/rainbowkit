@@ -3,9 +3,9 @@ import {
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
+  useConnectionStatus,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
-import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
@@ -15,22 +15,25 @@ import {
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
-import { AppStateProps } from '../lib/AppStateProps';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
 type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
-const Example = ({ authEnabled }: AppStateProps) => {
+const Example = () => {
   const { openAccountModal } = useAccountModal();
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
 
-  const { address, isConnected: isWagmiConnected } = useAccount();
-  const { status: nextAuthStatus } = useSession();
-  const isConnected =
-    isWagmiConnected && (!authEnabled || nextAuthStatus === 'authenticated');
+  const { address } = useAccount();
+  const connectionStatus = useConnectionStatus();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const ready = mounted && connectionStatus !== 'loading';
+  const connected = connectionStatus === 'connected';
 
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -109,9 +112,6 @@ const Example = ({ authEnabled }: AppStateProps) => {
     },
   });
 
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
-
   return (
     <div
       style={{
@@ -148,17 +148,13 @@ const Example = ({ authEnabled }: AppStateProps) => {
         <ConnectButton.Custom>
           {({
             account,
-            authenticationStatus,
             chain,
-            mounted,
+            connectionStatus,
             openAccountModal,
             openChainModal,
             openConnectModal,
+            ready,
           }) => {
-            const ready =
-              mounted &&
-              (!account || (account && authenticationStatus !== 'loading'));
-
             return (
               <div
                 {...(!ready && {
@@ -175,7 +171,7 @@ const Example = ({ authEnabled }: AppStateProps) => {
                     !ready ||
                     !chain ||
                     !account ||
-                    authenticationStatus === 'unauthenticated'
+                    connectionStatus !== 'connected'
                   ) {
                     return (
                       <button onClick={openConnectModal} type="button">
@@ -237,7 +233,7 @@ const Example = ({ authEnabled }: AppStateProps) => {
         </ConnectButton.Custom>
       </div>
 
-      {isMounted && (
+      {ready && (
         <>
           <div>
             <h3 style={{ fontFamily: 'sans-serif' }}>Modal hooks</h3>
@@ -268,25 +264,25 @@ const Example = ({ authEnabled }: AppStateProps) => {
 
           <div style={{ fontFamily: 'sans-serif' }}>
             <h3>
-              Example Actions {!isConnected && <span>(not connected)</span>}
+              Example Actions {!connected && <span>(not connected)</span>}
             </h3>
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
-                disabled={!isConnected && !sendTransaction}
+                disabled={!connected || !sendTransaction}
                 onClick={() => sendTransaction?.()}
                 type="button"
               >
                 Send Transaction
               </button>
               <button
-                disabled={!isConnected}
+                disabled={!connected}
                 onClick={() => signMessage()}
                 type="button"
               >
                 Sign Message
               </button>
               <button
-                disabled={!isConnected || activeChain?.id !== 1}
+                disabled={!connected || activeChain?.id !== 1}
                 onClick={() => signTypedData()}
                 type="button"
               >
@@ -424,7 +420,7 @@ const Example = ({ authEnabled }: AppStateProps) => {
               </tbody>
             </table>
           </div>
-          {isConnected ? <ManageTransactions /> : null}
+          {connected ? <ManageTransactions /> : null}
         </>
       )}
     </div>

@@ -19,15 +19,16 @@ export const YourApp = () => {
     <ConnectButton.Custom>
       {({
         account,
+        connectionStatus,
         chain,
         openAccountModal,
         openChainModal,
         openConnectModal,
-        mounted,
+        ready,
       }) => {
         return (
           <div
-            {...(!mounted && {
+            {...(!ready && {
               'aria-hidden': true,
               'style': {
                 opacity: 0,
@@ -37,7 +38,12 @@ export const YourApp = () => {
             })}
           >
             {(() => {
-              if (!mounted || !account || !chain) {
+              if (
+                !ready ||
+                !account ||
+                !chain ||
+                connectionStatus !== 'connected'
+              ) {
                 return (
                   <button onClick={openConnectModal} type="button">
                     Connect Wallet
@@ -288,6 +294,20 @@ The following props are passed to your render function.
       type: 'boolean',
       description:
         'Boolean indicating whether the component has mounted',
+    },
+    {
+      name: 'ready',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the component is ready to render to the user',
+    },
+    {
+      name: 'connectionStatus',
+      required: false,
+      type: '"loading" | "disconnected" | "unauthenticated" | "connected"',
+      description:
+        'The status of the connection, including an additional "unauthenticated" status if authentication is required but has not been completed by the user',
     },
     {
       name: 'accountModalOpen',

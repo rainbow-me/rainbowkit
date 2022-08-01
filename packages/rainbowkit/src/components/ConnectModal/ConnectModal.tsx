@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAccount } from 'wagmi';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
-import { useAuthenticationStatus } from '../RainbowKitProvider/AuthenticationContext';
 import { SignIn } from '../SignIn/SignIn';
 export interface ConnectModalProps {
   open: boolean;
@@ -13,7 +13,7 @@ export interface ConnectModalProps {
 export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const { isConnected } = useAccount();
-  const authenticationStatus = useAuthenticationStatus();
+  const connectionStatus = useConnectionStatus();
 
   return !isConnected ? (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
@@ -21,7 +21,7 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
         <ConnectOptions onClose={onClose} />
       </DialogContent>
     </Dialog>
-  ) : authenticationStatus === 'unauthenticated' ? (
+  ) : connectionStatus === 'unauthenticated' ? (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
       <DialogContent bottomSheetOnMobile padding="0">
         <SignIn />
