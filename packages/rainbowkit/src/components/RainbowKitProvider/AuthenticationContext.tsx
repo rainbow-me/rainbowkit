@@ -18,16 +18,20 @@ export interface AuthenticationAdapter<Message> {
   logout: () => Promise<void>;
 }
 
-export function configureAuthenticationAdapter<Message>(
+export interface AuthenticationProp<Message> {
+  adapter: AuthenticationAdapter<Message>;
+  status: AuthenticationStatus;
+}
+
+export function createAuthenticationAdapter<Message>(
   adapter: AuthenticationAdapter<Message>
 ) {
   return adapter;
 }
 
-const AuthenticationContext = createContext<{
-  adapter: AuthenticationAdapter<any>;
-  status?: AuthenticationStatus;
-} | null>(null);
+const AuthenticationContext = createContext<AuthenticationProp<any> | null>(
+  null
+);
 
 interface AuthenticationProviderProps<Message = unknown> {
   authentication?: {

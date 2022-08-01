@@ -9,11 +9,11 @@ export {
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
-export { configureAuthenticationAdapter } from './components/RainbowKitProvider/AuthenticationContext';
+export { createAuthenticationAdapter } from './components/RainbowKitProvider/AuthenticationContext';
 export type { Wallet, WalletList } from './wallets/Wallet';
 export type { Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';
-export type { AuthenticationAdapter } from './components/RainbowKitProvider/AuthenticationContext';
+export type { AuthenticationProp } from './components/RainbowKitProvider/AuthenticationContext';
 export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
 export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
 export { lightTheme } from './themes/lightTheme';

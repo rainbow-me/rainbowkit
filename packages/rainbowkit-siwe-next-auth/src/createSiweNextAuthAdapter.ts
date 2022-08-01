@@ -1,16 +1,18 @@
-import { configureAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import {
+  AuthenticationProp,
+  createAuthenticationAdapter,
+} from '@rainbow-me/rainbowkit';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
 
-interface SiweNextAuthOptions {
+interface CreateSiweNextAuthAdapterOptions {
   statement?: string;
 }
 
-export function configureSiweNextAuth({
+export function createSiweNextAuthAdapter({
   statement = 'Sign in with Ethereum to the app.',
-}: SiweNextAuthOptions = {}) {
-  // This adapter is designed to integrate with the code from https://docs.login.xyz/integrations/nextauth.js
-  const adapter = configureAuthenticationAdapter({
+}: CreateSiweNextAuthAdapterOptions = {}) {
+  const adapter = createAuthenticationAdapter({
     createMessage: ({ address, chainId, nonce }) =>
       new SiweMessage({
         address,
@@ -45,12 +47,12 @@ export function configureSiweNextAuth({
     },
   });
 
-  function useSiweNextAuth() {
+  function useSiweNextAuthAdapter(): AuthenticationProp<SiweMessage> {
     const { status } = useSession();
     return { adapter, status };
   }
 
   return {
-    useSiweNextAuth,
+    useSiweNextAuthAdapter,
   };
 }

@@ -33,6 +33,7 @@ importers:
       eventemitter3: ^4.0.7
       husky: ^7.0.4
       next: ^12.1.6
+      next-auth: ^4.10.2
       postcss: ^8.4.6
       postcss-prefix-selector: ^1.15.0
       prettier: ^2.5.0
@@ -70,6 +71,7 @@ importers:
       eventemitter3: 4.0.7
       husky: 7.0.4
       next: 12.1.6_2ysdzk2vllwi7dl6z45r5ylxcu
+      next-auth: 4.10.2_ef5jwxihqo6n7gxfmzogljlgcm
       postcss: 8.4.6
       postcss-prefix-selector: 1.15.0_postcss@8.4.6
       prettier: 2.5.1
@@ -236,6 +238,7 @@ importers:
   packages/example:
     specifiers:
       '@rainbow-me/rainbowkit': workspace:*
+      '@rainbow-me/rainbowkit-siwe-next-auth': workspace:*
       ethers: ^5.0.0
       next: ^12.1.6
       next-auth: ^4.10.2
@@ -244,6 +247,7 @@ importers:
       siwe: ^1.1.6
     dependencies:
       '@rainbow-me/rainbowkit': link:../rainbowkit
+      '@rainbow-me/rainbowkit-siwe-next-auth': link:../rainbowkit-siwe-next-auth
       ethers: 5.6.2
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
       next-auth: 4.10.2_ef5jwxihqo6n7gxfmzogljlgcm
@@ -291,6 +295,15 @@ importers:
       postcss: 8.4.6
       react: 18.1.0
       vitest: 0.5.0
+
+  packages/rainbowkit-siwe-next-auth:
+    specifiers:
+      '@rainbow-me/rainbowkit': workspace:*
+      siwe: ^1.1.6
+    dependencies:
+      siwe: 1.1.6
+    devDependencies:
+      '@rainbow-me/rainbowkit': link:../rainbowkit
 
   site:
     specifiers:
@@ -5062,7 +5075,6 @@ packages:
 
   /@panva/hkdf/1.0.2:
     resolution: {integrity: sha512-MSAs9t3Go7GUkMhpKC44T58DJ5KGk2vBo+h1cqQeqlMfdGkxaVB78ZWpv9gYi/g2fa4sopag9gJsNvS8XGgWJA==}
-    dev: false
 
   /@pedrouid/environment/1.0.1:
     resolution: {integrity: sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==}
@@ -14246,7 +14258,6 @@ packages:
 
   /jose/4.8.3:
     resolution: {integrity: sha512-7rySkpW78d8LBp4YU70Wb7+OTgE3OwAALNVZxhoIhp4Kscp+p/fBkdpxGAMKxvCAMV4QfXBU9m6l9nX/vGwd2g==}
-    dev: false
 
   /js-sha256/0.9.0:
     resolution: {integrity: sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==}
@@ -15622,7 +15633,6 @@ packages:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       uuid: 8.3.2
-    dev: false
 
   /next-compose-plugins/2.2.1:
     resolution: {integrity: sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==}
@@ -15879,7 +15889,6 @@ packages:
 
   /oauth/0.9.15:
     resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
-    dev: false
 
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -15897,7 +15906,6 @@ packages:
   /object-hash/2.2.0:
     resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
     engines: {node: '>= 6'}
-    dev: false
 
   /object-hash/3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
@@ -15988,7 +15996,6 @@ packages:
   /oidc-token-hash/5.0.1:
     resolution: {integrity: sha512-EvoOtz6FIEBzE+9q253HsLCVRiK/0doEJ2HCvvqMQb3dHZrP3WlJKYtJ55CRTw4jmYomzH4wkPuCj/I3ZvpKxQ==}
     engines: {node: ^10.13.0 || >=12.0.0}
-    dev: false
 
   /on-finished/2.3.0:
     resolution: {integrity: sha512-ikqdkGAAyf/X/gPhXGvfgAytDZtDbr+bkNUJ0N9h5MI/dmdgCs3l6hoHrcUv41sRKew3jIwrp4qQDXiK99Utww==}
@@ -16048,7 +16055,6 @@ packages:
       lru-cache: 6.0.0
       object-hash: 2.2.0
       oidc-token-hash: 5.0.1
-    dev: false
 
   /optionator/0.8.3:
     resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
@@ -17224,7 +17230,6 @@ packages:
     dependencies:
       preact: 10.6.5
       pretty-format: 3.8.0
-    dev: false
 
   /preact/10.4.1:
     resolution: {integrity: sha512-WKrRpCSwL2t3tpOOGhf2WfTpcmbpxaWtDbdJdKdjd0aEiTkvOmS4NBkG6kzlaAHI9AkQ3iVqbFWM3Ei7mZ4o1Q==}
@@ -17309,7 +17314,6 @@ packages:
 
   /pretty-format/3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
-    dev: false
 
   /pretty-ms/7.0.1:
     resolution: {integrity: sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==}
@@ -18716,6 +18720,16 @@ packages:
 
   /sisteransi/1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+    dev: false
+
+  /siwe/1.1.6:
+    resolution: {integrity: sha512-3WRdEil32Tc2vuNzqJ2/Z/MIvsvy0Nkzc2ov+QujmpHO7tM83dgcb47z0Pu236T4JQkOQCqQkq3AJ/rVIezniA==}
+    peerDependencies:
+      ethers: 5.5.1
+    dependencies:
+      '@spruceid/siwe-parser': 1.1.3
+      '@stablelib/random': 1.0.1
+      apg-js: 4.1.2
     dev: false
 
   /siwe/1.1.6_ethers@5.6.2:

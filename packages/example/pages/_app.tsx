@@ -12,14 +12,14 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
+import { createSiweNextAuthAdapter } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React, { ComponentType, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import { configureSiweNextAuth } from '../lib/siweNextAuth';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
@@ -42,7 +42,7 @@ const avalancheChain: Chain = {
   testnet: false,
 };
 
-const { useSiweNextAuth } = configureSiweNextAuth();
+const { useSiweNextAuthAdapter } = createSiweNextAuthAdapter();
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -146,7 +146,7 @@ type RadiusScale = typeof radiusScales[number];
 const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
-function App({ Component, pageProps }: AppProps) {
+function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
@@ -158,8 +158,6 @@ function App({ Component, pageProps }: AppProps) {
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-
-  const siweNextAuth = useSiweNextAuth();
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -173,9 +171,8 @@ function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  const appStateProps = {
-    authEnabled,
-  };
+  const siweNextAuthAdapter = useSiweNextAuthAdapter();
+  const appStateProps = { authEnabled };
 
   return (
     <>
@@ -189,7 +186,7 @@ function App({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
-          authentication={authEnabled ? siweNextAuth : undefined}
+          authentication={authEnabled ? siweNextAuthAdapter : undefined}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}
@@ -495,13 +492,10 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-const withSession = (AppComponent: ComponentType<AppProps>) =>
-  function AppWithSession(appProps: AppProps) {
-    return (
-      <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <AppComponent {...appProps} />
-      </SessionProvider>
-    );
-  };
-
-export default withSession(App);
+export default function App(appProps: AppProps) {
+  return (
+    <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
+      <RainbowKitApp {...appProps} />
+    </SessionProvider>
+  );
+}
