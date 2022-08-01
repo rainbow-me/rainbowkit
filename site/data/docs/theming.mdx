@@ -27,7 +27,7 @@ export const App = () => (
 );
 ```
 
-If you want, You can pass in `accentColor`, `accentColorForeground`, `borderRadius` and `fontStack` to customize them.
+If you want, you can pass in `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` and `overlayBlur` to customize them.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -39,6 +39,7 @@ export const App = () => (
       __accentColorForeground__: 'white',
       __borderRadius__: 'small',
       __fontStack__: 'system',
+      __overlayBlur__: 'small',
     })}
     {...etc}
   >
@@ -361,7 +362,7 @@ const App = () => {
 
 #### Dark mode support
 
-If your app uses the standard `prefers-color-mode: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
+If your app uses the standard `prefers-color-scheme: dark` media query to swap between light and dark modes, you can optionally provide a dynamic theme object containing `lightMode` and `darkMode` values.
 
 ```tsx
 import {
