@@ -23,6 +23,7 @@ export interface AuthenticationProp<Message> {
   status: AuthenticationStatus;
 }
 
+// Right now this function only serves to infer the generic Message type
 export function createAuthenticationAdapter<Message>(
   adapter: AuthenticationAdapter<Message>
 ) {
@@ -66,13 +67,11 @@ export function AuthenticationProvider<Message = unknown>({
 }
 
 export function useAuthenticationAdapter() {
-  const contextValue = useContext(AuthenticationContext);
+  const { adapter } = useContext(AuthenticationContext) ?? {};
 
-  if (!contextValue) {
+  if (!adapter) {
     throw new Error('No authentication adapter found');
   }
-
-  const { adapter } = contextValue;
 
   return adapter;
 }

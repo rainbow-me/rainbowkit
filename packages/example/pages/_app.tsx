@@ -147,6 +147,8 @@ const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function RainbowKitApp({ Component, pageProps }: AppProps) {
+  const siweNextAuthAdapter = useSiweNextAuthAdapter();
+
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
@@ -171,14 +173,11 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  const siweNextAuthAdapter = useSiweNextAuthAdapter();
-
   return (
     <>
       <Head>
         <title>RainbowKit Example</title>
       </Head>
-
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           appInfo={{

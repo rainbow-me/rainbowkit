@@ -25,9 +25,8 @@ const Example = () => {
   const { openAccountModal } = useAccountModal();
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
-
-  const { address } = useAccount();
   const connectionStatus = useConnectionStatus();
+  const { address } = useAccount();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);

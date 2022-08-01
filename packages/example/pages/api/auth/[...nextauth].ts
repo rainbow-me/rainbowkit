@@ -1,3 +1,6 @@
+// Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
+// with added process.env.VERCEL_URL detection to support preview deployments
+
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';

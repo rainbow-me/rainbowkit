@@ -67,6 +67,7 @@ export function ConnectButtonRenderer({
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const connectionStatus = useConnectionStatus();
+  const ready = mounted && connectionStatus !== 'loading';
 
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
@@ -92,8 +93,6 @@ export function ConnectButtonRenderer({
   const { openAccountModal } = useAccountModal();
   const { accountModalOpen, chainModalOpen, connectModalOpen } =
     useModalState();
-
-  const ready = mounted && connectionStatus !== 'loading';
 
   return (
     <>
