@@ -9,7 +9,6 @@ export {
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
-export { useConnectionStatus } from './hooks/useConnectionStatus';
 export { createAuthenticationAdapter } from './components/RainbowKitProvider/AuthenticationContext';
 export type { Wallet, WalletList } from './wallets/Wallet';
 export type { Chain } from './components/RainbowKitProvider/RainbowKitChainContext';

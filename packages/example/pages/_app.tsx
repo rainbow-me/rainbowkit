@@ -20,6 +20,7 @@ import React, { useEffect, useState } from 'react';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
@@ -171,6 +172,10 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
 
   const siweNextAuth = useSiweNextAuth();
 
+  const AppContextProps: AppContextProps = {
+    authEnabled,
+  };
+
   return (
     <>
       <Head>
@@ -196,7 +201,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
           })}
         >
           <div style={{ padding: 8 }}>
-            <Component {...pageProps} />
+            <Component {...pageProps} {...AppContextProps} />
 
             {isMounted && (
               <>

@@ -1,14 +1,14 @@
 import React, { ReactNode, useContext } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
-import {
-  ConnectionStatus,
-  useConnectionStatus,
-} from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
 import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
+import {
+  AuthenticationStatus,
+  useAuthenticationStatus,
+} from '../RainbowKitProvider/AuthenticationContext';
 import {
   useAccountModal,
   useChainModal,
@@ -45,8 +45,7 @@ export interface ConnectButtonRendererProps {
       unsupported?: boolean;
     };
     mounted: boolean;
-    ready: boolean;
-    connectionStatus: ConnectionStatus;
+    authenticationStatus?: AuthenticationStatus;
     openAccountModal: () => void;
     openChainModal: () => void;
     openConnectModal: () => void;
@@ -66,8 +65,7 @@ export function ConnectButtonRenderer({
   const { data: balanceData } = useBalance({ addressOrName: address });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();
-  const connectionStatus = useConnectionStatus();
-  const ready = mounted && connectionStatus !== 'loading';
+  const authenticationStatus = useAuthenticationStatus() ?? undefined;
 
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
@@ -113,6 +111,7 @@ export function ConnectButtonRenderer({
             }
           : undefined,
         accountModalOpen,
+        authenticationStatus,
         chain: activeChain
           ? {
               hasIcon: Boolean(chainIconUrl),
@@ -124,13 +123,11 @@ export function ConnectButtonRenderer({
             }
           : undefined,
         chainModalOpen,
-        connectionStatus,
         connectModalOpen,
         mounted,
         openAccountModal: openAccountModal ?? noop,
         openChainModal: openChainModal ?? noop,
         openConnectModal: openConnectModal ?? noop,
-        ready,
       })}
     </>
   );

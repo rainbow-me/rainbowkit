@@ -19,13 +19,21 @@ export const YourApp = () => {
     <ConnectButton.Custom>
       {({
         account,
-        connectionStatus,
         chain,
         openAccountModal,
         openChainModal,
         openConnectModal,
-        ready,
+        authenticationStatus,
+        mounted,
       }) => {
+        // Note: If your app doesn't use authentication, you
+        // can remove all 'authenticationStatus' checks
+        const ready = mounted && authenticationStatus !== 'loading';
+        const connected =
+          account &&
+          (!authenticationStatus ||
+            authenticationStatus === 'authenticated');
+
         return (
           <div
             {...(!ready && {
@@ -38,12 +46,7 @@ export const YourApp = () => {
             })}
           >
             {(() => {
-              if (
-                !ready ||
-                !account ||
-                !chain ||
-                connectionStatus !== 'connected'
-              ) {
+              if (!ready || !connected || !chain) {
                 return (
                   <button onClick={openConnectModal} type="button">
                     Connect Wallet
@@ -289,27 +292,6 @@ The following props are passed to your render function.
       description: 'Function to open the connect modal',
     },
     {
-      name: 'mounted',
-      required: false,
-      type: 'boolean',
-      description:
-        'Boolean indicating whether the component has mounted',
-    },
-    {
-      name: 'ready',
-      required: false,
-      type: 'boolean',
-      description:
-        'Boolean indicating whether the component is ready to render to the user',
-    },
-    {
-      name: 'connectionStatus',
-      required: false,
-      type: '"loading" | "disconnected" | "unauthenticated" | "connected"',
-      description:
-        'The status of the connection, including an additional "unauthenticated" status if authentication is required but has not been completed by the user',
-    },
-    {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
@@ -328,6 +310,27 @@ The following props are passed to your render function.
       type: 'boolean',
       description:
         'Boolean indicating whether the connect modal is open',
+    },
+  ]}
+/>
+
+### General state properties
+
+<PropsTable
+  data={[
+    {
+      name: 'mounted',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the component has mounted',
+    },
+    {
+      name: 'authenticationStatus',
+      required: false,
+      type: '"loading" | "unauthenticated" | "authenticated" | undefined',
+      description:
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />

@@ -3,7 +3,6 @@ import {
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
-  useConnectionStatus,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
 import React, { ComponentProps, useEffect, useState } from 'react';
@@ -15,17 +14,19 @@ import {
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
+import { AppContextProps } from '../lib/AppContextProps';
+import { useConnectionStatus } from '../lib/useConnectionStatus';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
 type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
-const Example = () => {
+const Example = ({ authEnabled }: AppContextProps) => {
   const { openAccountModal } = useAccountModal();
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
-  const connectionStatus = useConnectionStatus();
+  const connectionStatus = useConnectionStatus({ authEnabled });
   const { address } = useAccount();
 
   const [mounted, setMounted] = useState(false);
@@ -147,13 +148,18 @@ const Example = () => {
         <ConnectButton.Custom>
           {({
             account,
+            authenticationStatus,
             chain,
-            connectionStatus,
             openAccountModal,
             openChainModal,
             openConnectModal,
-            ready,
           }) => {
+            const ready = mounted && authenticationStatus !== 'loading';
+            const connected =
+              account &&
+              (!authenticationStatus ||
+                authenticationStatus === 'authenticated');
+
             return (
               <div
                 {...(!ready && {
@@ -166,12 +172,7 @@ const Example = () => {
                 })}
               >
                 {(() => {
-                  if (
-                    !ready ||
-                    !chain ||
-                    !account ||
-                    connectionStatus !== 'connected'
-                  ) {
+                  if (!ready || !connected || !chain) {
                     return (
                       <button onClick={openConnectModal} type="button">
                         Connect Wallet
