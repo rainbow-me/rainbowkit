@@ -18,7 +18,7 @@ export interface AuthenticationAdapter<Message> {
   logout: () => Promise<void>;
 }
 
-export interface AuthenticationProp<Message> {
+export interface AuthenticationConfig<Message> {
   adapter: AuthenticationAdapter<Message>;
   status: AuthenticationStatus;
 }
@@ -30,7 +30,7 @@ export function createAuthenticationAdapter<Message>(
   return adapter;
 }
 
-const AuthenticationContext = createContext<AuthenticationProp<any> | null>(
+const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
   null
 );
 

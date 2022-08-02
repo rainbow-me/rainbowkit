@@ -12,7 +12,7 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import { createSiweNextAuthAdapter } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -41,8 +41,6 @@ const avalancheChain: Chain = {
   },
   testnet: false,
 };
-
-const { useSiweNextAuthAdapter } = createSiweNextAuthAdapter();
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -147,8 +145,6 @@ const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
 function RainbowKitApp({ Component, pageProps }: AppProps) {
-  const siweNextAuthAdapter = useSiweNextAuthAdapter();
-
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
@@ -173,6 +169,8 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
+  const siweNextAuth = useSiweNextAuth();
+
   return (
     <>
       <Head>
@@ -184,7 +182,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
             ...demoAppInfo,
             ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
           }}
-          authentication={authEnabled ? siweNextAuthAdapter : undefined}
+          authentication={authEnabled ? siweNextAuth : undefined}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
           coolMode={coolModeEnabled}

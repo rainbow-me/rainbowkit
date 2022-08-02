@@ -1,1 +1,1 @@
-export { createSiweNextAuthAdapter } from './createSiweNextAuthAdapter';
+export { useSiweNextAuth } from './useSiweNextAuth';

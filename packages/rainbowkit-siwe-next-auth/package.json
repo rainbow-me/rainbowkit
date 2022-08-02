@@ -30,7 +30,8 @@
   "license": "MIT",
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "workspace:^",
-    "next-auth": "^4.10.2"
+    "next-auth": "^4.10.2",
+    "react": ">=17"
   },
   "devDependencies": {
     "@rainbow-me/rainbowkit": "workspace:*"

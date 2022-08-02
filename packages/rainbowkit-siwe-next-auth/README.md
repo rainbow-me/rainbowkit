@@ -18,18 +18,13 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 If you haven't already, set up your [Next.js](https://nextjs.org) project with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
 
-First create a `useSiweNextAuthAdapter` Hook using the `createSiweNextAuthAdapter` function.
+Then pass the result of the `useSiweNextAuth` Hook to the `authentication` prop on `RainbowKitProvider`.
 
 ```tsx
-import { createSiweNextAuthAdapter } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
 
-const { useSiweNextAuthAdapter } = createSiweNextAuthAdapter();
-```
-
-Then pass the result of the `useSiweNextAuthAdapter` Hook to the `authentication` prop on `RainbowKitProvider`.
-
-```tsx
-<RainbowKitProvider authentication={useSiweNextAuthAdapter()} {...etc}>
+<RainbowKitProvider authentication={useSiweNextAuth()} {...etc}>
 ```
 
 💡 Note that `useSiweNextAuthAdapter` and `SessionProvider` cannot be used in the same component since the Hook needs access to the session context. You will need to split your App component into multiple components to achieve this, for example:
@@ -37,16 +32,14 @@ Then pass the result of the `useSiweNextAuthAdapter` Hook to the `authentication
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiConfig } from 'wagmi';
-import { createSiweNextAuthAdapter } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next';
-
-const { useSiweNextAuthAdapter } = createSiweNextAuthAdapter();
 
 function RainbowKitApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig {...etc}>
-      <RainbowKitProvider authentication={useSiweNextAuthAdapter()} {...etc}>
+      <RainbowKitProvider authentication={useSiweNextAuth()} {...etc}>
         <Component {...pageProps} />
       </RainbowKit>
     </WagmiConfig>
