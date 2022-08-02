@@ -38,7 +38,7 @@ import { publicProvider } from 'wagmi/providers/public';
 const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
   [
-    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider(),
   ]
 );
@@ -85,7 +85,7 @@ const defaultChains: Chain[] = [
 ];
 
 const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
   publicProvider(),
 ]);
 ```
