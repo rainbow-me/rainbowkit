@@ -27,6 +27,7 @@ const connectors = connectorsForWallets([
     groupName: 'More',
     wallets: [
       wallet.argent({ chains }),
+      wallet.exodus({ chains }),
       wallet.trust({ chains }),
       wallet.steak({ chains }),
       wallet.imToken({ chains }),

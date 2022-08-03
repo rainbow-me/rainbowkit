@@ -94,6 +94,17 @@ wallet.coinbase(options: {
 });
 ```
 
+#### Exodus Wallet
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.exodus(options: {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+});
+```
+
 #### Injected Wallet
 
 This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list.
