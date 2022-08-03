@@ -5,17 +5,12 @@ import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { preloadAssetsIcon } from '../Icons/Assets';
 import { preloadLoginIcon } from '../Icons/Login';
-import { AuthenticationStatus } from '../RainbowKitProvider/AuthenticationContext';
+import { useAuthenticationStatus } from '../RainbowKitProvider/AuthenticationContext';
 import { signInIcon } from './../SignIn/SignIn';
 import { useRainbowKitChains } from './RainbowKitChainContext';
 
-interface UsePreloadImagesOptions {
-  authenticationStatus: AuthenticationStatus | null;
-}
-
-export function usePreloadImages({
-  authenticationStatus,
-}: UsePreloadImagesOptions) {
+export function usePreloadImages() {
+  const authenticationStatus = useAuthenticationStatus();
   const rainbowKitChains = useRainbowKitChains();
   const walletConnectors = useWalletConnectors();
 

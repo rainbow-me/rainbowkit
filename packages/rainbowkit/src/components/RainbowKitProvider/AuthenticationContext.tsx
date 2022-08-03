@@ -42,6 +42,36 @@ interface AuthenticationProviderProps<Message = unknown> {
   children: ReactNode;
 }
 
+interface RainbowKitAuthenticationProviderProps<Message>
+  extends AuthenticationConfig<Message> {
+  enabled?: boolean;
+  children: ReactNode;
+}
+
+export function RainbowKitAuthenticationProvider<Message = unknown>({
+  adapter,
+  children,
+  enabled = true,
+  status,
+}: RainbowKitAuthenticationProviderProps<Message>) {
+  useAccount({
+    onDisconnect: () => {
+      adapter.logout();
+    },
+  });
+
+  return (
+    <AuthenticationContext.Provider
+      value={useMemo(
+        () => (enabled ? { adapter, status } : null),
+        [enabled, adapter, status]
+      )}
+    >
+      {children}
+    </AuthenticationContext.Provider>
+  );
+}
+
 export function AuthenticationProvider<Message = unknown>({
   authentication,
   children,

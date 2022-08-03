@@ -6,7 +6,7 @@ import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import { useMemo } from 'react';
 import { SiweMessage } from 'siwe';
 
-interface UseSiweNextAuthOptions {
+export interface UseSiweNextAuthOptions {
   statement?: string;
 }
 

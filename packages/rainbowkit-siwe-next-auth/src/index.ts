@@ -1,1 +1,1 @@
-export { useSiweNextAuth } from './useSiweNextAuth';
+export { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';

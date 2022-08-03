@@ -4,9 +4,9 @@
 
 # rainbowkit-siwe-next-auth
 
-[RainbowKit](https://www.rainbowkit.com) authentication adapter for [Sign-In with Ethereum](https://login.xyz) + [NextAuth.js.](https://next-auth.js.org)
+[Sign-In with Ethereum](https://login.xyz) + [NextAuth.js](https://next-auth.js.org) authentication for [RainbowKit](https://www.rainbowkit.com).
 
-Note that this adapter is designed to work with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+This package is designed to work with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
 
 ## Install
 
@@ -16,46 +16,35 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 ## Usage
 
-If you haven't already, set up your [Next.js](https://nextjs.org) project with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+> 💡 If you haven't already, set up your [Next.js](https://nextjs.org) app with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
 
-Then pass the result of the `useSiweNextAuth` Hook to the `authentication` prop on `RainbowKitProvider`.
-
-```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
-
-<RainbowKitProvider authentication={useSiweNextAuth()} {...etc}>
-```
-
-💡 Note that `useSiweNextAuthAdapter` and `SessionProvider` cannot be used in the same component since the Hook needs access to the session context. You will need to split your App component into multiple components to achieve this, for example:
+Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
 
 ```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { WagmiConfig } from 'wagmi';
-import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
-import type { AppProps } from 'next';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
 
-function RainbowKitApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig {...etc}>
-      <RainbowKitProvider authentication={useSiweNextAuth()} {...etc}>
-        <Component {...pageProps} />
-      </RainbowKit>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider>
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        <RainbowKitSiweNextAuthProvider />
+      </SessionProvider>
     </WagmiConfig>
-  );
-}
-
-export default function App(appProps: AppProps) {
-  const { session } = appProps.pageProps;
-
-  return (
-    <SessionProvider refetchInterval={0} session={session}>
-      <RainbowKitApp {...appProps}>
-    </SessionProvider>
   );
 };
 ```
+
+That's it! You're done!
+
+Your users will now be prompted to authenticate by signing a message once they've connected their wallet via [RainbowKit](https://www.rainbowkit.com).
 
 ## Contributing
 

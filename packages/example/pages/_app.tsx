@@ -12,7 +12,7 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
-import { useSiweNextAuth } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -145,7 +145,7 @@ type RadiusScale = typeof radiusScales[number];
 const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
-function RainbowKitApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
@@ -170,8 +170,6 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  const siweNextAuth = useSiweNextAuth();
-
   const AppContextProps: AppContextProps = {
     authEnabled,
   };
@@ -181,322 +179,337 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>RainbowKit Example</title>
       </Head>
-      <WagmiConfig client={wagmiClient}>
-        <RainbowKitProvider
-          appInfo={{
-            ...demoAppInfo,
-            ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
-          }}
-          authentication={authEnabled ? siweNextAuth : undefined}
-          avatar={customAvatar ? CustomAvatar : undefined}
-          chains={chains}
-          coolMode={coolModeEnabled}
-          initialChain={selectedInitialChainId}
-          showRecentTransactions={showRecentTransactions}
-          theme={currentTheme({
-            ...accentColor,
-            borderRadius: selectedRadiusScale,
-            fontStack: selectedFontStack,
-            overlayBlur: selectedOverlayBlur,
-          })}
-        >
-          <div style={{ padding: 8 }}>
-            <Component {...pageProps} {...AppContextProps} />
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <WagmiConfig client={wagmiClient}>
+          <RainbowKitSiweNextAuthProvider enabled={authEnabled}>
+            <RainbowKitProvider
+              appInfo={{
+                ...demoAppInfo,
+                ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
+              }}
+              avatar={customAvatar ? CustomAvatar : undefined}
+              chains={chains}
+              coolMode={coolModeEnabled}
+              initialChain={selectedInitialChainId}
+              showRecentTransactions={showRecentTransactions}
+              theme={currentTheme({
+                ...accentColor,
+                borderRadius: selectedRadiusScale,
+                fontStack: selectedFontStack,
+                overlayBlur: selectedOverlayBlur,
+              })}
+            >
+              <div style={{ padding: 8 }}>
+                <Component {...pageProps} {...AppContextProps} />
 
-            {isMounted && (
-              <>
-                <div
-                  style={{
-                    fontFamily: 'sans-serif',
-                  }}
-                >
-                  <h3>RainbowKitProvider props</h3>
-                  <table cellSpacing={12}>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <label
-                            htmlFor="authEnabled"
-                            style={{ userSelect: 'none' }}
-                          >
-                            authentication
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={authEnabled}
-                            id="authEnabled"
-                            name="authEnabled"
-                            onChange={e => setAuthEnabled(e.target.checked)}
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label
-                            htmlFor="showRecentTransactions"
-                            style={{ userSelect: 'none' }}
-                          >
-                            showRecentTransactions
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={showRecentTransactions}
-                            id="showRecentTransactions"
-                            name="showRecentTransactions"
-                            onChange={e =>
-                              setShowRecentTransactions(e.target.checked)
-                            }
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label
-                            htmlFor="coolModeEnabled"
-                            style={{ userSelect: 'none' }}
-                          >
-                            coolMode
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={coolModeEnabled}
-                            id="coolModeEnabled"
-                            name="coolModeEnabled"
-                            onChange={e => setCoolModeEnabled(e.target.checked)}
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label
-                            htmlFor="showDisclaimer"
-                            style={{ userSelect: 'none' }}
-                          >
-                            disclaimer
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={showDisclaimer}
-                            id="showDisclaimer"
-                            name="showDisclaimer"
-                            onChange={e => setShowDisclaimer(e.target.checked)}
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label
-                            htmlFor="customAvatar"
-                            style={{ userSelect: 'none' }}
-                          >
-                            avatar
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={customAvatar}
-                            id="customAvatar"
-                            name="customAvatar"
-                            onChange={e => setCustomAvatar(e.target.checked)}
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>initialChain</td>
-                        <td>
-                          <select
-                            onChange={e =>
-                              setInitialChainId(
-                                e.target.value
-                                  ? parseInt(e.target.value, 10)
-                                  : undefined
-                              )
-                            }
-                            value={selectedInitialChainId ?? 'default'}
-                          >
-                            {[undefined, ...chains].map(chain => (
-                              <option
-                                key={chain?.id ?? 'default'}
-                                value={chain?.id ?? 'default'}
+                {isMounted && (
+                  <>
+                    <div
+                      style={{
+                        fontFamily: 'sans-serif',
+                      }}
+                    >
+                      <h3>RainbowKitProvider props</h3>
+                      <table cellSpacing={12}>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <label
+                                htmlFor="authEnabled"
+                                style={{ userSelect: 'none' }}
                               >
-                                {chain?.name ?? 'Default'}
-                              </option>
+                                authentication
+                              </label>
+                            </td>
+                            <td>
+                              <input
+                                checked={authEnabled}
+                                id="authEnabled"
+                                name="authEnabled"
+                                onChange={e => setAuthEnabled(e.target.checked)}
+                                type="checkbox"
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label
+                                htmlFor="showRecentTransactions"
+                                style={{ userSelect: 'none' }}
+                              >
+                                showRecentTransactions
+                              </label>
+                            </td>
+                            <td>
+                              <input
+                                checked={showRecentTransactions}
+                                id="showRecentTransactions"
+                                name="showRecentTransactions"
+                                onChange={e =>
+                                  setShowRecentTransactions(e.target.checked)
+                                }
+                                type="checkbox"
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label
+                                htmlFor="coolModeEnabled"
+                                style={{ userSelect: 'none' }}
+                              >
+                                coolMode
+                              </label>
+                            </td>
+                            <td>
+                              <input
+                                checked={coolModeEnabled}
+                                id="coolModeEnabled"
+                                name="coolModeEnabled"
+                                onChange={e =>
+                                  setCoolModeEnabled(e.target.checked)
+                                }
+                                type="checkbox"
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label
+                                htmlFor="showDisclaimer"
+                                style={{ userSelect: 'none' }}
+                              >
+                                disclaimer
+                              </label>
+                            </td>
+                            <td>
+                              <input
+                                checked={showDisclaimer}
+                                id="showDisclaimer"
+                                name="showDisclaimer"
+                                onChange={e =>
+                                  setShowDisclaimer(e.target.checked)
+                                }
+                                type="checkbox"
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label
+                                htmlFor="customAvatar"
+                                style={{ userSelect: 'none' }}
+                              >
+                                avatar
+                              </label>
+                            </td>
+                            <td>
+                              <input
+                                checked={customAvatar}
+                                id="customAvatar"
+                                name="customAvatar"
+                                onChange={e =>
+                                  setCustomAvatar(e.target.checked)
+                                }
+                                type="checkbox"
+                              />
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>initialChain</td>
+                            <td>
+                              <select
+                                onChange={e =>
+                                  setInitialChainId(
+                                    e.target.value
+                                      ? parseInt(e.target.value, 10)
+                                      : undefined
+                                  )
+                                }
+                                value={selectedInitialChainId ?? 'default'}
+                              >
+                                {[undefined, ...chains].map(chain => (
+                                  <option
+                                    key={chain?.id ?? 'default'}
+                                    value={chain?.id ?? 'default'}
+                                  >
+                                    {chain?.name ?? 'Default'}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: 24,
+                        }}
+                      >
+                        <div>
+                          <h4>Theme</h4>
+                          <div
+                            style={{
+                              alignItems: 'flex-start',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 12,
+                            }}
+                          >
+                            {themes.map(({ name: themeName }) => (
+                              <label
+                                key={themeName}
+                                style={{ userSelect: 'none' }}
+                              >
+                                <input
+                                  checked={themeName === selectedThemeName}
+                                  name="theme"
+                                  onChange={e =>
+                                    setThemeName(e.target.value as ThemeName)
+                                  }
+                                  type="radio"
+                                  value={themeName}
+                                />{' '}
+                                {themeName}
+                              </label>
                             ))}
-                          </select>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: 24,
-                    }}
-                  >
-                    <div>
-                      <h4>Theme</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {themes.map(({ name: themeName }) => (
-                          <label key={themeName} style={{ userSelect: 'none' }}>
-                            <input
-                              checked={themeName === selectedThemeName}
-                              name="theme"
-                              onChange={e =>
-                                setThemeName(e.target.value as ThemeName)
-                              }
-                              type="radio"
-                              value={themeName}
-                            />{' '}
-                            {themeName}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Font stack</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {fontStacks.map(fontStack => (
-                          <label key={fontStack} style={{ userSelect: 'none' }}>
-                            <input
-                              checked={fontStack === selectedFontStack}
-                              name="fontStack"
-                              onChange={e =>
-                                setFontStack(e.target.value as FontStack)
-                              }
-                              type="radio"
-                              value={fontStack}
-                            />{' '}
-                            {fontStack}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Accent</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {accentColors.map(accentColor => (
-                          <label
-                            key={accentColor}
-                            style={{ userSelect: 'none' }}
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Font stack</h4>
+                          <div
+                            style={{
+                              alignItems: 'flex-start',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 12,
+                            }}
                           >
-                            <input
-                              checked={accentColor === selectedAccentColor}
-                              name="accentColor"
-                              onChange={e =>
-                                setAccentColor(e.target.value as AccentColor)
-                              }
-                              type="radio"
-                              value={accentColor}
-                            />{' '}
-                            {accentColor}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Border radius</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {radiusScales.map(radiusScale => (
-                          <label
-                            key={radiusScale}
-                            style={{ userSelect: 'none' }}
+                            {fontStacks.map(fontStack => (
+                              <label
+                                key={fontStack}
+                                style={{ userSelect: 'none' }}
+                              >
+                                <input
+                                  checked={fontStack === selectedFontStack}
+                                  name="fontStack"
+                                  onChange={e =>
+                                    setFontStack(e.target.value as FontStack)
+                                  }
+                                  type="radio"
+                                  value={fontStack}
+                                />{' '}
+                                {fontStack}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Accent</h4>
+                          <div
+                            style={{
+                              alignItems: 'flex-start',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 12,
+                            }}
                           >
-                            <input
-                              checked={radiusScale === selectedRadiusScale}
-                              name="radiusScale"
-                              onChange={e =>
-                                setRadiusScale(e.target.value as RadiusScale)
-                              }
-                              type="radio"
-                              value={radiusScale}
-                            />{' '}
-                            {radiusScale}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4>Overlay blurs</h4>
-                      <div
-                        style={{
-                          alignItems: 'flex-start',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: 12,
-                        }}
-                      >
-                        {overlayBlurs.map(overlayBlur => (
-                          <label
-                            key={overlayBlur}
-                            style={{ userSelect: 'none' }}
+                            {accentColors.map(accentColor => (
+                              <label
+                                key={accentColor}
+                                style={{ userSelect: 'none' }}
+                              >
+                                <input
+                                  checked={accentColor === selectedAccentColor}
+                                  name="accentColor"
+                                  onChange={e =>
+                                    setAccentColor(
+                                      e.target.value as AccentColor
+                                    )
+                                  }
+                                  type="radio"
+                                  value={accentColor}
+                                />{' '}
+                                {accentColor}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Border radius</h4>
+                          <div
+                            style={{
+                              alignItems: 'flex-start',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 12,
+                            }}
                           >
-                            <input
-                              checked={overlayBlur === selectedOverlayBlur}
-                              name="overlayBlur"
-                              onChange={e =>
-                                setOverlayBlur(e.target.value as OverlayBlur)
-                              }
-                              type="radio"
-                              value={overlayBlur}
-                            />{' '}
-                            {overlayBlur}
-                          </label>
-                        ))}
+                            {radiusScales.map(radiusScale => (
+                              <label
+                                key={radiusScale}
+                                style={{ userSelect: 'none' }}
+                              >
+                                <input
+                                  checked={radiusScale === selectedRadiusScale}
+                                  name="radiusScale"
+                                  onChange={e =>
+                                    setRadiusScale(
+                                      e.target.value as RadiusScale
+                                    )
+                                  }
+                                  type="radio"
+                                  value={radiusScale}
+                                />{' '}
+                                {radiusScale}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Overlay blurs</h4>
+                          <div
+                            style={{
+                              alignItems: 'flex-start',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 12,
+                            }}
+                          >
+                            {overlayBlurs.map(overlayBlur => (
+                              <label
+                                key={overlayBlur}
+                                style={{ userSelect: 'none' }}
+                              >
+                                <input
+                                  checked={overlayBlur === selectedOverlayBlur}
+                                  name="overlayBlur"
+                                  onChange={e =>
+                                    setOverlayBlur(
+                                      e.target.value as OverlayBlur
+                                    )
+                                  }
+                                  type="radio"
+                                  value={overlayBlur}
+                                />{' '}
+                                {overlayBlur}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </RainbowKitProvider>
-      </WagmiConfig>
+                  </>
+                )}
+              </div>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </WagmiConfig>
+      </SessionProvider>
     </>
   );
 }
 
-export default function App(appProps: AppProps) {
-  return (
-    <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-      <RainbowKitApp {...appProps} />
-    </SessionProvider>
-  );
-}
+export default App;
