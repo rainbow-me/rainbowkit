@@ -45,6 +45,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
   const { disconnect } = useDisconnect();
+  const cancel = () => disconnect();
 
   const signIn = async () => {
     try {
@@ -94,23 +95,23 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         alignItems="center"
         display="flex"
         flexDirection="column"
-        gap="24"
+        gap={mobile ? '32' : '24'}
         padding="24"
-        paddingTop="36"
         paddingX="18"
+        style={{ paddingTop: mobile ? '60px' : '36px' }}
       >
         <Box
           alignItems="center"
           display="flex"
           flexDirection="column"
           gap={mobile ? '6' : '4'}
-          style={{ maxWidth: 280 }}
+          style={{ maxWidth: mobile ? 320 : 280 }}
         >
           <Box
             alignItems="center"
             display="flex"
             flexDirection="column"
-            gap="16"
+            gap={mobile ? '32' : '16'}
           >
             <AsyncImage height={40} src={signInIcon} width={40} />
             <Text
@@ -131,7 +132,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             verify that you are the owner of this account.
           </Text>
         </Box>
-        <Box alignItems="center" display="flex" flexDirection="column" gap="8">
+        <Box
+          alignItems={!mobile ? 'center' : undefined}
+          display="flex"
+          flexDirection="column"
+          gap="8"
+          width="full"
+        >
           <ActionButton
             disabled={state.signing || state.verifying}
             label={
@@ -144,23 +151,36 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}
           />
-          <Box
-            as="button"
-            borderRadius="full"
-            className={touchableStyles({ active: 'shrink', hover: 'grow' })}
-            display="block"
-            onClick={() => disconnect()}
-            paddingX="10"
-            paddingY="5"
-            rel="noreferrer"
-            style={{ willChange: 'transform' }}
-            target="_blank"
-            transition="default"
-          >
-            <Text color="closeButton" size={mobile ? '16' : '14'} weight="bold">
-              Cancel
-            </Text>
-          </Box>
+          {mobile ? (
+            <ActionButton
+              label="Cancel"
+              onClick={cancel}
+              size="large"
+              type="secondary"
+            />
+          ) : (
+            <Box
+              as="button"
+              borderRadius="full"
+              className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+              display="block"
+              onClick={cancel}
+              paddingX="10"
+              paddingY="5"
+              rel="noreferrer"
+              style={{ willChange: 'transform' }}
+              target="_blank"
+              transition="default"
+            >
+              <Text
+                color="closeButton"
+                size={mobile ? '16' : '14'}
+                weight="bold"
+              >
+                Cancel
+              </Text>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>
