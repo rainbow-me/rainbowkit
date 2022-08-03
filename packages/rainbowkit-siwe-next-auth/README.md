@@ -18,7 +18,13 @@ npm install @rainbow-me/rainbowkit-siwe-next-auth
 
 > 💡 If you haven't already, set up your [Next.js](https://nextjs.org) app with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
 
-Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+First import the authentication provider.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+Then wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
@@ -35,16 +41,14 @@ export default function App({ Component, pageProps }: AppProps) {
           <RainbowKitProvider {...etc}>
             <Component {...pageProps} />
           </RainbowKitProvider>
-        <RainbowKitSiweNextAuthProvider />
+        </RainbowKitSiweNextAuthProvider>
       </SessionProvider>
     </WagmiConfig>
   );
-};
+}
 ```
 
-That's it! You're done!
-
-Your users will now be prompted to authenticate by signing a message once they've connected their wallet via [RainbowKit](https://www.rainbowkit.com).
+You're done! Your users will now be prompted to authenticate by signing a message once they've connected their wallet.
 
 ## Contributing
 

@@ -24,6 +24,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'ConnectButton', slug: 'connect-button' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
+      { title: 'Authentication', slug: 'authentication' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],
   },
@@ -39,7 +40,8 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Custom Chains', slug: 'custom-chains' },
       { title: 'Custom App Info', slug: 'custom-app-info' },
       { title: 'Custom Avatars', slug: 'custom-avatars' },
-      { title: 'Cool mode', slug: 'cool-mode' },
+      { title: 'Custom Authentication', slug: 'custom-authentication' },
+      { title: 'Cool Mode', slug: 'cool-mode' },
     ],
   },
 ];

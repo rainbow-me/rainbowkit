@@ -1,0 +1,62 @@
+---
+title: Authentication
+description: Authenticating your users
+---
+
+# Authentication
+
+## Providing authenticated access to your application
+
+You can optionally enforce that users sign a message with their wallet during the connection process, proving that they own the connected account and allowing you to create an authenticated user session with privileged access to your application.
+
+While it's possible to [integrate with custom back-ends and message formats,](/docs/custom-authentication) RainbowKit provides first-class support for [Sign-In with Ethereum](https://login.xyz) and [NextAuth.js.](https://next-auth.js.org)
+
+### Set up Sign-In with Ethereum and NextAuth.js
+
+If you haven't already, first set up your [Next.js](https://nextjs.org) project with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+
+#### Install
+
+Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth
+```
+
+#### Import
+
+Import the `RainbowKitSiweNextAuthProvider` component.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+#### Render the provider
+
+Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider>
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+You're done! Your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+
+For more information about managing the session, visit the [NextAuth.js documentation.](https://next-auth.js.org)
