@@ -27,7 +27,7 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
     return (
       <Dialog onClose={onClose} open={open} titleId={titleId}>
         <DialogContent bottomSheetOnMobile padding="0">
-          <SignIn />
+          <SignIn onClose={onClose} />
         </DialogContent>
       </Dialog>
     );

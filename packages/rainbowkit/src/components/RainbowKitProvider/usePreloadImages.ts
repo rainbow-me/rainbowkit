@@ -5,9 +5,17 @@ import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { preloadAssetsIcon } from '../Icons/Assets';
 import { preloadLoginIcon } from '../Icons/Login';
+import { AuthenticationStatus } from '../RainbowKitProvider/AuthenticationContext';
+import { signInIcon } from './../SignIn/SignIn';
 import { useRainbowKitChains } from './RainbowKitChainContext';
 
-export function usePreloadImages() {
+interface UsePreloadImagesOptions {
+  authenticationStatus: AuthenticationStatus | null;
+}
+
+export function usePreloadImages({
+  authenticationStatus,
+}: UsePreloadImagesOptions) {
   const rainbowKitChains = useRainbowKitChains();
   const walletConnectors = useWalletConnectors();
 
@@ -22,7 +30,11 @@ export function usePreloadImages() {
       preloadAssetsIcon();
       preloadLoginIcon();
     }
-  }, [walletConnectors, rainbowKitChains]);
+
+    if (authenticationStatus === 'unauthenticated') {
+      loadImages(signInIcon);
+    }
+  }, [walletConnectors, rainbowKitChains, authenticationStatus]);
 
   useEffect(() => {
     preloadImages();

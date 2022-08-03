@@ -83,7 +83,7 @@ export function RainbowKitProvider<Message = unknown>({
   coolMode = false,
   avatar,
 }: RainbowKitProviderProps<AuthenticationAdapter<Message>>) {
-  usePreloadImages();
+  usePreloadImages({ authenticationStatus: authentication?.status ?? null });
 
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
