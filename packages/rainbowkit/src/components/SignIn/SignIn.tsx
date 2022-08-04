@@ -1,5 +1,11 @@
 import React, { useCallback, useRef } from 'react';
-import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
+import {
+  useAccount,
+  useDisconnect,
+  useNetwork,
+  UserRejectedRequestError,
+  useSignMessage,
+} from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -12,11 +18,11 @@ import { Text } from '../Text/Text';
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
-  const [state, setState] = React.useState<{
-    signing?: boolean;
-    verifying?: boolean;
+  const [{ status, ...state }, setState] = React.useState<{
+    status: 'idle' | 'signing' | 'verifying';
+    errorMessage?: string;
     nonce?: string;
-  }>({});
+  }>({ status: 'idle' });
 
   const authAdapter = useAuthenticationAdapter();
 
@@ -25,7 +31,11 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       const nonce = await authAdapter.fetchNonce();
       setState(x => ({ ...x, nonce }));
     } catch (error) {
-      setState(x => ({ ...x, error: error as Error }));
+      setState(x => ({
+        ...x,
+        errorMessage: 'Error preparing message, please retry!',
+        status: 'idle',
+      }));
     }
   }, [authAdapter]);
 
@@ -56,26 +66,57 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         return;
       }
 
-      setState(x => ({ ...x, signing: true }));
-      const message = authAdapter.createMessage({ address, chainId, nonce });
-      const signature = await signMessageAsync({
-        message: authAdapter.prepareMessage({ message }),
-      });
-
-      setState(x => ({ ...x, signing: false, verifying: true }));
-      const verified = await authAdapter.verify({ message, signature });
-      if (!verified) {
-        throw new Error();
-      }
-
-      setState(x => ({ ...x, verifying: false }));
-    } catch (error) {
       setState(x => ({
         ...x,
-        nonce: undefined,
-        signing: false,
-        verifying: false,
+        errorMessage: undefined,
+        status: 'signing',
       }));
+
+      const message = authAdapter.createMessage({ address, chainId, nonce });
+      let signature: string;
+
+      try {
+        signature = await signMessageAsync({
+          message: authAdapter.prepareMessage({ message }),
+        });
+      } catch (error) {
+        if (error instanceof UserRejectedRequestError) {
+          // It's not really an "error" so we silently ignore and reset to idle state
+          return setState(x => ({
+            ...x,
+            status: 'idle',
+          }));
+        }
+
+        return setState(x => ({
+          ...x,
+          errorMessage: 'Error signing message, please retry!',
+          status: 'idle',
+        }));
+      }
+
+      setState(x => ({ ...x, status: 'verifying' }));
+
+      try {
+        const verified = await authAdapter.verify({ message, signature });
+
+        if (verified) {
+          return;
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        return setState(x => ({
+          ...x,
+          errorMessage: 'Error verifying signature, please retry!',
+          status: 'idle',
+        }));
+      }
+    } catch (error) {
+      setState({
+        errorMessage: 'Oops, something went wrong!',
+        status: 'idle',
+      });
       fetchNonce();
     }
   };
@@ -123,15 +164,33 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               Verify your account
             </Text>
           </Box>
-          <Text
-            color="modalTextSecondary"
-            size={mobile ? '16' : '14'}
-            textAlign="center"
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="column"
+            gap={mobile ? '16' : '12'}
           >
-            To finish connecting, you must sign a message in your wallet to
-            verify that you are the owner of this account.
-          </Text>
+            <Text
+              color="modalTextSecondary"
+              size={mobile ? '16' : '14'}
+              textAlign="center"
+            >
+              To finish connecting, you must sign a message in your wallet to
+              verify that you are the owner of this account.
+            </Text>
+            {status === 'idle' && state.errorMessage ? (
+              <Text
+                color="error"
+                size={mobile ? '16' : '14'}
+                textAlign="center"
+                weight="bold"
+              >
+                {state.errorMessage}
+              </Text>
+            ) : null}
+          </Box>
         </Box>
+
         <Box
           alignItems={!mobile ? 'center' : undefined}
           display="flex"
@@ -140,11 +199,15 @@ export function SignIn({ onClose }: { onClose: () => void }) {
           width="full"
         >
           <ActionButton
-            disabled={state.signing || state.verifying}
+            disabled={
+              !state.nonce || status === 'signing' || status === 'verifying'
+            }
             label={
-              state.signing
+              !state.nonce
+                ? 'Preparing message...'
+                : status === 'signing'
                 ? 'Waiting for signature...'
-                : state.verifying
+                : status === 'verifying'
                 ? 'Verifying signature...'
                 : 'Send message'
             }
