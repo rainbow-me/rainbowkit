@@ -117,7 +117,6 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         errorMessage: 'Oops, something went wrong!',
         status: 'idle',
       });
-      fetchNonce();
     }
   };
 
