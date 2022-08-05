@@ -157,7 +157,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
           }) => {
             const ready = mounted && authenticationStatus !== 'loading';
             const connected =
+              ready &&
               account &&
+              chain &&
               (!authenticationStatus ||
                 authenticationStatus === 'authenticated');
 
@@ -173,7 +175,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 })}
               >
                 {(() => {
-                  if (!ready || !connected || !chain) {
+                  if (!connected) {
                     return (
                       <button onClick={openConnectModal} type="button">
                         Connect Wallet

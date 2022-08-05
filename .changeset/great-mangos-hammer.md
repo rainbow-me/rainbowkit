@@ -27,7 +27,9 @@ For example, if you wanted to display the "Connect Wallet" state when the user h
   }) => {
     const ready = mounted && authenticationStatus !== 'loading';
     const connected =
+      ready &&
       account &&
+      chain &&
       (!authenticationStatus || authenticationStatus === 'authenticated');
 
     return (

@@ -30,7 +30,9 @@ export const YourApp = () => {
         // can remove all 'authenticationStatus' checks
         const ready = mounted && authenticationStatus !== 'loading';
         const connected =
+          ready &&
           account &&
+          chain &&
           (!authenticationStatus ||
             authenticationStatus === 'authenticated');
 
@@ -46,7 +48,7 @@ export const YourApp = () => {
             })}
           >
             {(() => {
-              if (!ready || !connected || !chain) {
+              if (!connected) {
                 return (
                   <button onClick={openConnectModal} type="button">
                     Connect Wallet
