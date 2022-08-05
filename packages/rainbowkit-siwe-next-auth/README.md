@@ -63,6 +63,7 @@ You can access the session token with NextAuth's `getToken` function imported fr
 For example, you can access their address within `getServerSideProps`.
 
 ```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { getToken } from 'next-auth/jwt';
 import React from 'react';
 
