@@ -26,9 +26,9 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
   const authAdapter = useAuthenticationAdapter();
 
-  const fetchNonce = useCallback(async () => {
+  const getNonce = useCallback(async () => {
     try {
-      const nonce = await authAdapter.fetchNonce();
+      const nonce = await authAdapter.getNonce();
       setState(x => ({ ...x, nonce }));
     } catch (error) {
       setState(x => ({
@@ -47,8 +47,8 @@ export function SignIn({ onClose }: { onClose: () => void }) {
     if (onceRef.current) return;
     onceRef.current = true;
 
-    fetchNonce();
-  }, [fetchNonce]);
+    getNonce();
+  }, [getNonce]);
 
   const mobile = isMobile();
   const { address } = useAccount();
@@ -77,7 +77,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
       try {
         signature = await signMessageAsync({
-          message: authAdapter.prepareMessage({ message }),
+          message: authAdapter.getMessageBody({ message }),
         });
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {

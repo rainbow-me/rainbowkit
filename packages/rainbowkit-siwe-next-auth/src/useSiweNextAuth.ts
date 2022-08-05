@@ -28,7 +28,9 @@ export function useSiweNextAuth({
             version: '1',
           }),
 
-        fetchNonce: async () => {
+        getMessageBody: ({ message }) => message.prepareMessage(),
+
+        getNonce: async () => {
           const nonce = await getCsrfToken();
           if (!nonce) throw new Error();
           return nonce;
@@ -37,8 +39,6 @@ export function useSiweNextAuth({
         logout: async () => {
           await signOut({ redirect: false });
         },
-
-        prepareMessage: ({ message }) => message.prepareMessage(),
 
         verify: async ({ message, signature }) => {
           const response = await signIn('credentials', {

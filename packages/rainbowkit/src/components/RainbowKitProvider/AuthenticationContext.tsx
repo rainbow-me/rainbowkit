@@ -7,13 +7,13 @@ export type AuthenticationStatus =
   | 'authenticated';
 
 export interface AuthenticationAdapter<Message> {
-  fetchNonce: () => Promise<string>;
+  getNonce: () => Promise<string>;
   createMessage: (args: {
     nonce: string;
     address: string;
     chainId: number;
   }) => Message;
-  prepareMessage: (args: { message: Message }) => string;
+  getMessageBody: (args: { message: Message }) => string;
   verify: (args: { message: Message; signature: string }) => Promise<boolean>;
   logout: () => Promise<void>;
 }

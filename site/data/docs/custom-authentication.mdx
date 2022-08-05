@@ -13,17 +13,18 @@ While RainbowKit provides [first-class support for Sign-In with Ethereum and Nex
 
 First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
 
-As an example, we could make an authentication adapter for using [Sign-In with Ethereum](https://login.xyz) against some [custom API endpoints.](https://wagmi.sh/examples/sign-in-with-ethereum)
+As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some [custom API endpoints.](https://wagmi.sh/examples/sign-in-with-ethereum)
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
 import { SiweMessage } from 'siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
-  fetchNonce: async () => {
+  getNonce: async () => {
     const response = await fetch('/api/nonce');
     return await response.text();
   },
+
   createMessage: ({ nonce, address, chainId }) => {
     return new SiweMessage({
       domain: window.location.host,
@@ -32,12 +33,14 @@ const authenticationAdapter = createAuthenticationAdapter({
       uri: window.location.origin,
       version: '1',
       chainId,
-      nonce: state.nonce,
+      nonce,
     });
   },
-  prepareMessage: ({ message }) => {
+
+  getMessageBody: ({ message }) => {
     return message.prepareMessage();
   },
+
   verify: ({ message, signature }) => {
     const verifyRes = await fetch('/api/verify', {
       method: 'POST',
@@ -47,6 +50,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
     return !verifyRes.ok;
   },
+
   logout: async () => {
     await fetch('/api/logout');
   },

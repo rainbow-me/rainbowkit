@@ -23,15 +23,13 @@ Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
 npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
 
-#### Import
+#### Set up the provider
 
-Import the `RainbowKitSiweNextAuthProvider` component.
+In your `App` component, import `RainbowKitSiweNextAuthProvider`.
 
 ```tsx
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 ```
-
-#### Render the provider
 
 Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's nested within NextAuth's `SessionProvider` so that it has access to the session.
 
@@ -57,6 +55,52 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-You're done! Your users will now be prompted to authenticate by signing a message once they've connected their wallet.
+With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted to authenticate by signing a message once they've connected their wallet.
 
-For more information about managing the session, visit the [NextAuth.js documentation.](https://next-auth.js.org)
+#### Access the session server-side
+
+You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
+
+For example, you can access their address within `getServerSideProps`.
+
+```tsx
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+}) => {
+  const token = await getToken({ req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+For more information about managing the session, you can refer to the following documentation:
+
+- [Next.js authentication guide](https://nextjs.org/docs/authentication)
+- [NextAuth.js documentation](https://next-auth.js.org)
