@@ -89,7 +89,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             setSelectedWallet(sWallet);
             changeWalletStep(WalletStep.Connect);
           },
-          uri ? 0 : 20
+          uri ? 0 : 50
         );
       });
     } else {

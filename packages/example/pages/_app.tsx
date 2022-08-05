@@ -12,6 +12,7 @@ import {
   RainbowKitProvider,
   wallet,
 } from '@rainbow-me/rainbowkit';
+
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
@@ -170,9 +171,7 @@ function App({ Component, pageProps }: AppProps) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  const AppContextProps: AppContextProps = {
-    authEnabled,
-  };
+  const appContextProps: AppContextProps = { authEnabled };
 
   return (
     <>
@@ -200,7 +199,7 @@ function App({ Component, pageProps }: AppProps) {
               })}
             >
               <div style={{ padding: 8 }}>
-                <Component {...pageProps} {...AppContextProps} />
+                <Component {...pageProps} {...appContextProps} />
 
                 {isMounted && (
                   <>

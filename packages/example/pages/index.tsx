@@ -29,12 +29,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const connectionStatus = useConnectionStatus({ authEnabled });
   const { address } = useAccount();
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  const ready = mounted && connectionStatus !== 'loading';
-  const connected = connectionStatus === 'connected';
-
   const defaultProps = ConnectButton.__defaultProps;
 
   const [accountStatusSmallScreen, setAccountStatusSmallScreen] =
@@ -112,6 +106,12 @@ const Example = ({ authEnabled }: AppContextProps) => {
     },
   });
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const ready = mounted && connectionStatus !== 'loading';
+  const connected = connectionStatus === 'connected';
+
   return (
     <div
       style={{
@@ -150,6 +150,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             account,
             authenticationStatus,
             chain,
+            mounted,
             openAccountModal,
             openChainModal,
             openConnectModal,
