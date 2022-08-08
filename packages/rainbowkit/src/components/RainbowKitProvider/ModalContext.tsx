@@ -61,25 +61,28 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
-  const authenticationStatus = useAuthenticationStatus();
   const connectionStatus = useConnectionStatus();
   const { chain } = useNetwork();
   const chainSupported = !chain?.unsupported;
 
-  useAccount({
-    onConnect: () => {
-      if (!authenticationStatus || authenticationStatus === 'authenticated') {
-        closeConnectModal();
-      }
+  interface CloseModalsOptions {
+    keepConnectModalOpen?: boolean;
+  }
 
-      closeAccountModal();
-      closeChainModal();
-    },
-    onDisconnect: () => {
+  function closeModals({
+    keepConnectModalOpen = false,
+  }: CloseModalsOptions = {}) {
+    if (!keepConnectModalOpen) {
       closeConnectModal();
-      closeAccountModal();
-      closeChainModal();
-    },
+    }
+    closeAccountModal();
+    closeChainModal();
+  }
+
+  const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
+  useAccount({
+    onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
+    onDisconnect: () => closeModals(),
   });
 
   return (
