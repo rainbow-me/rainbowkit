@@ -10,9 +10,9 @@ import { signInIcon } from './../SignIn/SignIn';
 import { useRainbowKitChains } from './RainbowKitChainContext';
 
 export function usePreloadImages() {
-  const authenticationStatus = useAuthenticationStatus();
   const rainbowKitChains = useRainbowKitChains();
   const walletConnectors = useWalletConnectors();
+  const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
 
   const preloadImages = useCallback(() => {
     loadImages(
@@ -26,10 +26,10 @@ export function usePreloadImages() {
       preloadLoginIcon();
     }
 
-    if (authenticationStatus === 'unauthenticated') {
+    if (isUnauthenticated) {
       loadImages(signInIcon);
     }
-  }, [walletConnectors, rainbowKitChains, authenticationStatus]);
+  }, [walletConnectors, rainbowKitChains, isUnauthenticated]);
 
   useEffect(() => {
     preloadImages();
