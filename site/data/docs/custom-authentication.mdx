@@ -41,14 +41,14 @@ const authenticationAdapter = createAuthenticationAdapter({
     return message.prepareMessage();
   },
 
-  verify: ({ message, signature }) => {
+  verify: async ({ message, signature }) => {
     const verifyRes = await fetch('/api/verify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, signature }),
     });
 
-    return !verifyRes.ok;
+    return Boolean(verifyRes.ok);
   },
 
   signOut: async () => {
