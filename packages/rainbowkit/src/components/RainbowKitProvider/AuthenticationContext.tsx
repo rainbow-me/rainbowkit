@@ -15,7 +15,7 @@ export interface AuthenticationAdapter<Message> {
   }) => Message;
   getMessageBody: (args: { message: Message }) => string;
   verify: (args: { message: Message; signature: string }) => Promise<boolean>;
-  logout: () => Promise<void>;
+  signOut: () => Promise<void>;
 }
 
 export interface AuthenticationConfig<Message> {
@@ -48,7 +48,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   useAccount({
     onDisconnect: () => {
-      adapter.logout();
+      adapter.signOut();
     },
   });
 

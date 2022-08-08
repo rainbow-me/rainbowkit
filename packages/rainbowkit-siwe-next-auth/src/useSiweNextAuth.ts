@@ -36,7 +36,7 @@ export function useSiweNextAuth({
           return nonce;
         },
 
-        logout: async () => {
+        signOut: async () => {
           await signOut({ redirect: false });
         },
 

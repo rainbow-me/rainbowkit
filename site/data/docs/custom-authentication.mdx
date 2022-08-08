@@ -51,7 +51,7 @@ const authenticationAdapter = createAuthenticationAdapter({
     return !verifyRes.ok;
   },
 
-  logout: async () => {
+  signOut: async () => {
     await fetch('/api/logout');
   },
 });
