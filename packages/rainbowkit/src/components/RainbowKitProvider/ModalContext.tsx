@@ -3,15 +3,15 @@ import React, {
   ReactNode,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
-import { useNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
+import { useAuthenticationStatus } from './AuthenticationContext';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -61,18 +61,26 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
+  const authenticationStatus = useAuthenticationStatus();
   const connectionStatus = useConnectionStatus();
   const { chain } = useNetwork();
   const chainSupported = !chain?.unsupported;
 
-  useEffect(() => {
-    if (connectionStatus === 'connected') {
-      closeConnectModal();
-    }
+  useAccount({
+    onConnect: () => {
+      if (!authenticationStatus || authenticationStatus === 'authenticated') {
+        closeConnectModal();
+      }
 
-    closeAccountModal();
-    closeChainModal();
-  }, [connectionStatus, closeConnectModal, closeAccountModal, closeChainModal]);
+      closeAccountModal();
+      closeChainModal();
+    },
+    onDisconnect: () => {
+      closeConnectModal();
+      closeAccountModal();
+      closeChainModal();
+    },
+  });
 
   return (
     <ModalContext.Provider
