@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useState,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { RemoveScroll } from 'react-remove-scroll';
@@ -33,14 +34,22 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, onClose]);
 
+  const [bodyScrollable, setBodyScrollable] = useState(true);
+  useEffect(() => {
+    setBodyScrollable(
+      getComputedStyle(window.document.body).overflow !== 'hidden'
+    );
+  }, []);
+
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
   const themeRootProps = useThemeRootProps();
   const mobile = isMobile();
+
   return (
     <>
       {open
         ? createPortal(
-            <RemoveScroll>
+            <RemoveScroll enabled={bodyScrollable}>
               <Box {...themeRootProps}>
                 <Box
                   {...themeRootProps}
