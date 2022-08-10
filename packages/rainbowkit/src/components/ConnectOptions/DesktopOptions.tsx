@@ -211,7 +211,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         hasQrCode &&
-        `Get started with ${selectedWallet.shortName || selectedWallet.name}`;
+        `Get started with ${
+          compactModeEnabled
+            ? selectedWallet.shortName || selectedWallet.name
+            : selectedWallet.name
+        }`;
       headerBackButtonLink = WalletStep.Download;
       break;
     default:
