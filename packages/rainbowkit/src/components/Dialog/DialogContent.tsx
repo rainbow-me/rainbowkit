@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
+import { ProModeContext } from '../RainbowKitProvider/ProModeContext';
 import * as styles from './DialogContent.css';
 
 interface DialogContentProps {
@@ -19,6 +20,7 @@ export function DialogContent({
   wide = false,
 }: DialogContentProps) {
   const mobile = isMobile();
+  const proModeEnabled = useContext(ProModeContext);
   return (
     <Box marginTop={marginTop}>
       <Box
@@ -26,6 +28,8 @@ export function DialogContent({
           wide
             ? mobile
               ? styles.dialogContentWideMobile
+              : proModeEnabled
+              ? styles.dialogContentProMode
               : styles.dialogContentWideDesktop
             : styles.dialogContent,
           mobile ? styles.dialogContentMobile : null,

@@ -151,6 +151,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
+  const [proModeEnabled, setProModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
@@ -181,6 +182,7 @@ function App({ Component, pageProps }: AppProps) {
           chains={chains}
           coolMode={coolModeEnabled}
           initialChain={selectedInitialChainId}
+          proMode={proModeEnabled}
           showRecentTransactions={showRecentTransactions}
           theme={currentTheme({
             ...accentColor,
@@ -238,6 +240,25 @@ function App({ Component, pageProps }: AppProps) {
                             id="coolModeEnabled"
                             name="coolModeEnabled"
                             onChange={e => setCoolModeEnabled(e.target.checked)}
+                            type="checkbox"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label
+                            htmlFor="coolModeEnabled"
+                            style={{ userSelect: 'none' }}
+                          >
+                            proMode
+                          </label>
+                        </td>
+                        <td>
+                          <input
+                            checked={proModeEnabled}
+                            id="proModeEnabled"
+                            name="proModeEnabled"
+                            onChange={e => setProModeEnabled(e.target.checked)}
                             type="checkbox"
                           />
                         </td>

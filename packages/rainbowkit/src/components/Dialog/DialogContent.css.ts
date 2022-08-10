@@ -52,6 +52,22 @@ export const dialogContentWideDesktop = style([
   },
 ]);
 
+export const dialogContentProMode = style([
+  dialogContent,
+  {
+    minWidth: '368px',
+    width: '368px',
+  },
+  {
+    '@media': {
+      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
+        minWidth: '368px',
+        width: '368px',
+      },
+    },
+  },
+]);
+
 export const dialogContentMobile = style([
   sprinkles({
     borderRadius: 'modalMobile',

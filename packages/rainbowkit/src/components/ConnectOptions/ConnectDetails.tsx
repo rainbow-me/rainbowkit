@@ -130,14 +130,16 @@ const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect ta
 export function ConnectDetail({
   changeWalletStep,
   connectionError,
+  proModeEnabled,
   qrCodeUri,
   reconnect,
   wallet,
 }: {
+  changeWalletStep: (newWalletStep: WalletStep) => void;
   connectionError: boolean;
+  proModeEnabled: boolean;
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
-  changeWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
   const {
@@ -167,7 +169,7 @@ export function ConnectDetail({
     href?: string;
   } = showWalletConnectModal
     ? {
-        description: 'Need the official WalletConnect modal?',
+        description: 'Need the WalletConnect modal?',
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }
@@ -178,7 +180,7 @@ export function ConnectDetail({
         onClick: () => changeWalletStep(WalletStep.Download),
       }
     : {
-        description: `Confirm the connection in ${name}`,
+        description: `Confirm connection in ${name}`,
         label: 'RETRY',
         onClick: getDesktopDeepLink
           ? async () => {
@@ -206,6 +208,8 @@ export function ConnectDetail({
             size={
               smallWindow
                 ? Math.max(280, Math.min(windowWidth - 308, 382))
+                : proModeEnabled
+                ? 318
                 : 382
             }
             uri={qrCodeUri}
