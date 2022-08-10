@@ -52,7 +52,7 @@ export const dialogContentWideDesktop = style([
   },
 ]);
 
-export const dialogContentProMode = style([
+export const dialogContentCompactMode = style([
   dialogContent,
   {
     minWidth: '368px',

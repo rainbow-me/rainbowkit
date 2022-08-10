@@ -6,9 +6,9 @@ import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
+import { CompactModeContext } from './CompactModeContext';
 import { CoolModeContext } from './CoolModeContext';
 import { ModalProvider } from './ModalContext';
-import { ProModeContext } from './ProModeContext';
 import {
   RainbowKitChain,
   RainbowKitChainProvider,
@@ -57,7 +57,7 @@ export interface RainbowKitProviderProps {
   };
   coolMode?: boolean;
   avatar?: AvatarComponent;
-  proMode?: boolean;
+  compactMode?: boolean;
 }
 
 const defaultTheme = lightTheme();
@@ -72,7 +72,7 @@ export function RainbowKitProvider({
   showRecentTransactions = false,
   coolMode = false,
   avatar,
-  proMode = false,
+  compactMode = false,
 }: RainbowKitProviderProps) {
   usePreloadImages();
 
@@ -96,7 +96,7 @@ export function RainbowKitProvider({
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
       <CoolModeContext.Provider value={coolMode}>
-        <ProModeContext.Provider value={proMode}>
+        <CompactModeContext.Provider value={compactMode}>
           <ShowRecentTransactionsContext.Provider
             value={showRecentTransactions}
           >
@@ -139,7 +139,7 @@ export function RainbowKitProvider({
               </AvatarContext.Provider>
             </TransactionStoreProvider>
           </ShowRecentTransactionsContext.Provider>
-        </ProModeContext.Provider>
+        </CompactModeContext.Provider>
       </CoolModeContext.Provider>
     </RainbowKitChainProvider>
   );

@@ -10,11 +10,11 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({
+  compactModeEnabled = false,
   getWallet,
-  proModeEnabled = false,
 }: {
+  compactModeEnabled?: boolean;
   getWallet: () => void;
-  proModeEnabled?: boolean;
 }) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
@@ -29,7 +29,7 @@ export function ConnectModalIntro({
         justifyContent="space-around"
       >
         <Box marginBottom="10">
-          {!proModeEnabled && (
+          {!compactModeEnabled && (
             <Text color="modalText" size="18" weight="heavy">
               What is a Wallet?
             </Text>
@@ -98,7 +98,7 @@ export function ConnectModalIntro({
             </Text>
           </Box>
         </Box>
-        {Disclaimer && !proModeEnabled && (
+        {Disclaimer && !compactModeEnabled && (
           <Box marginBottom="8" marginTop="12" textAlign="center">
             <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
           </Box>

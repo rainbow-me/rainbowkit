@@ -15,7 +15,7 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { ProModeContext } from '../RainbowKitProvider/ProModeContext';
+import { CompactModeContext } from '../RainbowKitProvider/CompactModeContext';
 import { Text } from '../Text/Text';
 
 import {
@@ -24,7 +24,11 @@ import {
   GetDetail,
   InstructionDetail,
 } from './ConnectDetails';
-import { ScrollClassName, sidebar, sidebarProMode } from './DesktopOptions.css';
+import {
+  ScrollClassName,
+  sidebar,
+  sidebarCompactMode,
+} from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
@@ -45,7 +49,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const [qrCodeUri, setQrCodeUri] = useState<string>();
   const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
-  const proModeEnabled = useContext(ProModeContext);
+  const compactModeEnabled = useContext(CompactModeContext);
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
   const wallets = useWalletConnectors().filter(
@@ -151,8 +155,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     case WalletStep.ProLearn:
       walletContent = (
         <ConnectModalIntro
+          compactModeEnabled={compactModeEnabled}
           getWallet={() => changeWalletStep(WalletStep.Get)}
-          proModeEnabled={proModeEnabled}
         />
       );
       headerLabel = 'What is a Wallet?';
@@ -161,7 +165,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     case WalletStep.Get:
       walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
       headerLabel = 'Get a Wallet';
-      headerBackButtonLink = proModeEnabled
+      headerBackButtonLink = compactModeEnabled
         ? WalletStep.ProLearn
         : WalletStep.None;
       break;
@@ -169,8 +173,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = selectedWallet && (
         <ConnectDetail
           changeWalletStep={changeWalletStep}
+          compactModeEnabled={compactModeEnabled}
           connectionError={connectionError}
-          proModeEnabled={proModeEnabled}
           qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
           wallet={selectedWallet}
@@ -183,8 +187,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             ? 'your phone'
             : selectedWallet.name
         }`;
-      headerBackButtonLink = proModeEnabled ? WalletStep.None : null;
-      headerBackButtonCallback = proModeEnabled
+      headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
+      headerBackButtonCallback = compactModeEnabled
         ? clearSelectedWallet
         : () => {};
       break;
@@ -217,28 +221,28 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     <Box
       display="flex"
       flexDirection="row"
-      style={{ maxHeight: proModeEnabled ? 468 : 504 }}
+      style={{ maxHeight: compactModeEnabled ? 468 : 504 }}
     >
-      {(proModeEnabled ? walletStep === WalletStep.None : true) && (
+      {(compactModeEnabled ? walletStep === WalletStep.None : true) && (
         <Box
-          className={proModeEnabled ? sidebarProMode : sidebar}
+          className={compactModeEnabled ? sidebarCompactMode : sidebar}
           display="flex"
           flexDirection="column"
           marginTop="16"
         >
           <Box display="flex" justifyContent="space-between">
-            {proModeEnabled && Disclaimer && (
+            {compactModeEnabled && Disclaimer && (
               <Box marginLeft="16" width="28">
                 <InfoButton
                   onClick={() => changeWalletStep(WalletStep.ProLearn)}
                 />
               </Box>
             )}
-            {proModeEnabled && !Disclaimer && (
+            {compactModeEnabled && !Disclaimer && (
               <Box marginLeft="16" width="28" />
             )}
             <Box
-              marginLeft={proModeEnabled ? '0' : '6'}
+              marginLeft={compactModeEnabled ? '0' : '6'}
               paddingBottom="8"
               paddingTop="2"
               paddingX="18"
@@ -253,7 +257,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 Connect a Wallet
               </Text>
             </Box>
-            {proModeEnabled && (
+            {compactModeEnabled && (
               <Box marginRight="16">
                 <CloseButton onClose={onClose} />
               </Box>
@@ -294,7 +298,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 )
             )}
           </Box>
-          {proModeEnabled && (
+          {compactModeEnabled && (
             <>
               <Box background="generalBorder" height="1" marginTop="-1" />
               {Disclaimer ? (
@@ -343,9 +347,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           )}
         </Box>
       )}
-      {(proModeEnabled ? walletStep !== WalletStep.None : true) && (
+      {(compactModeEnabled ? walletStep !== WalletStep.None : true) && (
         <>
-          {!proModeEnabled && (
+          {!compactModeEnabled && (
             <Box background="generalBorder" minWidth="1" width="1" />
           )}
           <Box
@@ -409,7 +413,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: proModeEnabled ? 396 : 432 }}
+              style={{ minHeight: compactModeEnabled ? 396 : 432 }}
             >
               <Box
                 alignItems="center"

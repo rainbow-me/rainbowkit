@@ -151,7 +151,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
-  const [proModeEnabled, setProModeEnabled] = useState(false);
+  const [compactModeEnabled, setCompactModeEnabled] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
@@ -180,9 +180,9 @@ function App({ Component, pageProps }: AppProps) {
           }}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
+          compactMode={compactModeEnabled}
           coolMode={coolModeEnabled}
           initialChain={selectedInitialChainId}
-          proMode={proModeEnabled}
           showRecentTransactions={showRecentTransactions}
           theme={currentTheme({
             ...accentColor,
@@ -250,15 +250,17 @@ function App({ Component, pageProps }: AppProps) {
                             htmlFor="coolModeEnabled"
                             style={{ userSelect: 'none' }}
                           >
-                            proMode
+                            compactMode
                           </label>
                         </td>
                         <td>
                           <input
-                            checked={proModeEnabled}
-                            id="proModeEnabled"
-                            name="proModeEnabled"
-                            onChange={e => setProModeEnabled(e.target.checked)}
+                            checked={compactModeEnabled}
+                            id="compactModeEnabled"
+                            name="compactModeEnabled"
+                            onChange={e =>
+                              setCompactModeEnabled(e.target.checked)
+                            }
                             type="checkbox"
                           />
                         </td>

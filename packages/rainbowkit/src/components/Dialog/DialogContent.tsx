@@ -1,7 +1,7 @@
 import React, { ReactNode, useContext } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
-import { ProModeContext } from '../RainbowKitProvider/ProModeContext';
+import { CompactModeContext } from '../RainbowKitProvider/CompactModeContext';
 import * as styles from './DialogContent.css';
 
 interface DialogContentProps {
@@ -20,7 +20,7 @@ export function DialogContent({
   wide = false,
 }: DialogContentProps) {
   const mobile = isMobile();
-  const proModeEnabled = useContext(ProModeContext);
+  const compactModeEnabled = useContext(CompactModeContext);
   return (
     <Box marginTop={marginTop}>
       <Box
@@ -28,8 +28,8 @@ export function DialogContent({
           wide
             ? mobile
               ? styles.dialogContentWideMobile
-              : proModeEnabled
-              ? styles.dialogContentProMode
+              : compactModeEnabled
+              ? styles.dialogContentCompactMode
               : styles.dialogContentWideDesktop
             : styles.dialogContent,
           mobile ? styles.dialogContentMobile : null,
