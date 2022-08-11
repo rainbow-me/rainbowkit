@@ -5,6 +5,7 @@ import {
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
+import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
@@ -15,7 +16,6 @@ import {
   useSignTypedData,
 } from 'wagmi';
 import { AppContextProps } from '../lib/AppContextProps';
-import { useConnectionStatus } from '../lib/useConnectionStatus';
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
@@ -26,8 +26,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openAccountModal } = useAccountModal();
   const { openChainModal } = useChainModal();
   const { openConnectModal } = useConnectModal();
-  const connectionStatus = useConnectionStatus({ authEnabled });
-  const { address } = useAccount();
+  const { address, isConnected: isWagmiConnected } = useAccount();
+  const { status } = useSession();
 
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -109,8 +109,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const ready = mounted && connectionStatus !== 'loading';
-  const connected = connectionStatus === 'connected';
+  const ready = mounted && (!authEnabled || status !== 'loading');
+  const connected =
+    isWagmiConnected && (!authEnabled || status === 'authenticated');
 
   return (
     <div
