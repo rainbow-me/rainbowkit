@@ -9,6 +9,11 @@ export {
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
+export { useRecentTransactions } from './transactions/useRecentTransactions';
+export type {
+  Transaction,
+  TransactionStatus,
+} from './transactions/transactionStore';
 export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,

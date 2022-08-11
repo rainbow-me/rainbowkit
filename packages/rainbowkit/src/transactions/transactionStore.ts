@@ -2,7 +2,7 @@ import { providers } from 'ethers';
 
 const storageKey = 'rk-transactions';
 
-type TransactionStatus = 'pending' | 'confirmed' | 'failed';
+export type TransactionStatus = 'pending' | 'confirmed' | 'failed';
 
 export interface Transaction {
   hash: string;
