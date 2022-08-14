@@ -339,8 +339,8 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
                         >
                           {[undefined, ...chains].map(chain => (
                             <option
-                              key={chain?.id ?? 'default'}
-                              value={chain?.id ?? 'default'}
+                              key={chain?.id ?? ''}
+                              value={chain?.id ?? ''}
                             >
                               {chain?.name ?? 'Default'}
                             </option>

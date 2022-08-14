@@ -38,9 +38,7 @@ export function RainbowKitChainProvider({
         () => ({
           chains: provideRainbowKitChains(chains),
           initialChainId:
-            typeof initialChain === 'number'
-              ? initialChain
-              : initialChain?.id ?? chains[0]?.id,
+            typeof initialChain === 'number' ? initialChain : initialChain?.id,
         }),
         [chains, initialChain]
       )}

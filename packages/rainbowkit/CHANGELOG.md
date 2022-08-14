@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.6
+
+### Patch Changes
+
+- aae3163: Fix error caused by attempting to prevent page scrolling when the body element's overflow is set to hidden.
+- 948c036: Avoid switching chains after connecting if the user's wallet is already on a supported chain
+
 ## 0.4.5
 
 ### Patch Changes
