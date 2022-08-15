@@ -15,7 +15,10 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { CompactModeContext } from '../RainbowKitProvider/CompactModeContext';
+import {
+  ModalSizeContext,
+  ModalSizeOptions,
+} from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 
 import {
@@ -32,7 +35,7 @@ import {
 
 export enum WalletStep {
   None = 'NONE',
-  ProLearn = 'PRO_LEARN',
+  LearnCompact = 'LEARN_COMPACT',
   Get = 'GET',
   Connect = 'CONNECT',
   Download = 'DOWNLOAD',
@@ -49,7 +52,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const [qrCodeUri, setQrCodeUri] = useState<string>();
   const hasQrCode = !!selectedWallet?.qrCode;
   const [connectionError, setConnectionError] = useState(false);
-  const compactModeEnabled = useContext(CompactModeContext);
+  const modalSize = useContext(ModalSizeContext);
+  const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
   const wallets = useWalletConnectors().filter(
@@ -152,7 +156,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         <ConnectModalIntro getWallet={() => changeWalletStep(WalletStep.Get)} />
       );
       break;
-    case WalletStep.ProLearn:
+    case WalletStep.LearnCompact:
       walletContent = (
         <ConnectModalIntro
           compactModeEnabled={compactModeEnabled}
@@ -166,7 +170,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = compactModeEnabled
-        ? WalletStep.ProLearn
+        ? WalletStep.LearnCompact
         : WalletStep.None;
       break;
     case WalletStep.Connect:
@@ -238,7 +242,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             {compactModeEnabled && Disclaimer && (
               <Box marginLeft="16" width="28">
                 <InfoButton
-                  onClick={() => changeWalletStep(WalletStep.ProLearn)}
+                  onClick={() => changeWalletStep(WalletStep.LearnCompact)}
                 />
               </Box>
             )}
@@ -335,7 +339,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                         hover: 'grow',
                       })}
                       cursor="pointer"
-                      onClick={() => changeWalletStep(WalletStep.ProLearn)}
+                      onClick={() => changeWalletStep(WalletStep.LearnCompact)}
                       paddingY="4"
                       style={{ willChange: 'transform' }}
                       transition="default"

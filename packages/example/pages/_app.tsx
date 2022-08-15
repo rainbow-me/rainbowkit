@@ -142,6 +142,9 @@ type RadiusScale = typeof radiusScales[number];
 const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
+const modalSizes = ['wide', 'compact'] as const;
+type ModalSize = typeof modalSizes[number];
+
 function App({ Component, pageProps }: AppProps) {
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -151,7 +154,7 @@ function App({ Component, pageProps }: AppProps) {
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
-  const [compactModeEnabled, setCompactModeEnabled] = useState(false);
+  const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
@@ -180,9 +183,9 @@ function App({ Component, pageProps }: AppProps) {
           }}
           avatar={customAvatar ? CustomAvatar : undefined}
           chains={chains}
-          compactMode={compactModeEnabled}
           coolMode={coolModeEnabled}
           initialChain={selectedInitialChainId}
+          modalSize={modalSize}
           showRecentTransactions={showRecentTransactions}
           theme={currentTheme({
             ...accentColor,
@@ -247,27 +250,6 @@ function App({ Component, pageProps }: AppProps) {
                       <tr>
                         <td>
                           <label
-                            htmlFor="coolModeEnabled"
-                            style={{ userSelect: 'none' }}
-                          >
-                            compactMode
-                          </label>
-                        </td>
-                        <td>
-                          <input
-                            checked={compactModeEnabled}
-                            id="compactModeEnabled"
-                            name="compactModeEnabled"
-                            onChange={e =>
-                              setCompactModeEnabled(e.target.checked)
-                            }
-                            type="checkbox"
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label
                             htmlFor="showDisclaimer"
                             style={{ userSelect: 'none' }}
                           >
@@ -301,6 +283,23 @@ function App({ Component, pageProps }: AppProps) {
                             onChange={e => setCustomAvatar(e.target.checked)}
                             type="checkbox"
                           />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>modalSize</td>
+                        <td>
+                          <select
+                            onChange={e =>
+                              setModalSize(e.target.value as ModalSize)
+                            }
+                            value={modalSize}
+                          >
+                            {modalSizes.map(size => (
+                              <option key={size} value={size}>
+                                {size}
+                              </option>
+                            ))}
+                          </select>
                         </td>
                       </tr>
                       <tr>

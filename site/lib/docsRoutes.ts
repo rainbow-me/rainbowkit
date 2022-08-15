@@ -22,7 +22,7 @@ export const docsRoutes: RouteProps[] = [
     pages: [
       { title: 'Installation', slug: 'installation' },
       { title: 'ConnectButton', slug: 'connect-button' },
-      { title: 'Compact Mode', slug: 'compact-mode' },
+      { title: 'Modal Sizes', slug: 'modal-sizes' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },

@@ -170,7 +170,9 @@ export function ConnectDetail({
     href?: string;
   } = showWalletConnectModal
     ? {
-        description: 'Need the WalletConnect modal?',
+        description: `Need the ${
+          compactModeEnabled ? '' : 'offical'
+        } WalletConnect modal?`,
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }

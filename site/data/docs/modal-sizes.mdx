@@ -1,27 +1,27 @@
 ---
-title: Compact Mode
-description: Default vs. Compact mode
+title: Modal Sizes
+description: Wide vs. Compact
 ---
 
 # Compact Mode
 
-## Default vs. Compact Mode
+## Wide vs. Compact Mode
 
 By default, Rainbowkit's layout looks like this:
 
 {/* <Img src="/hero-modal.png" layout="fill" objectFit="contain" /> */}
 
-We also provide a `compactMode` option, which looks like this:
+We also provide a `compact` modal size, which looks like this:
 
 {/* <Img src="/hero-modal.png" layout="fill" objectFit="contain" /> */}
 
-To enable Compact Mode, just include the `compactMode` prop in your `RainbowKitProvider`:
+To set your modal size to `compact`, just add `modalSize="compact"` as a prop in your `RainbowKitProvider`:
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 export const App = () => (
-  <RainbowKitProvider compactMode {...etc}>
+  <RainbowKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
   </RainbowKitProvider>
 );
