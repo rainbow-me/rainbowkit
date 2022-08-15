@@ -1,5 +1,14 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  return {
+    props: {
+      session: await getSession(context),
+    },
+  };
+};
 
 const Home: NextPage = () => {
   return (

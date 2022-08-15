@@ -60,15 +60,19 @@ With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted 
 
 You can access the session token with NextAuth's `getToken` function imported from `next-auth/jwt`. If the user has successfully authenticated, the session token's `sub` property (the "subject" of the token, i.e. the user) will be the user's address.
 
-For example, you can access their address within `getServerSideProps`.
+You can also pass down the resolved session object from the server via `getServerSideProps` so that NextAuth doesn't need to resolve it again on the client.
+
+For example:
 
 ```tsx
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 import React from 'react';
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const token = await getToken({ req });
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
 
   const address = token?.sub ?? null;
   // If you have a value for "address" here, your
@@ -79,6 +83,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   return {
     props: {
       address,
+      session,
     },
   };
 };
