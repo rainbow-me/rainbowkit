@@ -6,19 +6,19 @@ import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import { useMemo } from 'react';
 import { SiweMessage } from 'siwe';
 
-type UnconfigurableSiweMessageOptions = {
+type UnconfigurableMessageOptions = {
   address: string;
   chainId: number;
   nonce: string;
 };
 
-type ConfigurableSiweMessageOptions = Partial<
-  Omit<SiweMessage, keyof UnconfigurableSiweMessageOptions>
+type ConfigurableMessageOptions = Partial<
+  Omit<SiweMessage, keyof UnconfigurableMessageOptions>
 > & {
-  [Key in keyof UnconfigurableSiweMessageOptions]?: never;
+  [Key in keyof UnconfigurableMessageOptions]?: never;
 };
 
-export type GetSiweMessageOptions = () => ConfigurableSiweMessageOptions;
+export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
 
 export interface UseSiweNextAuthOptions {
   getSiweMessageOptions?: GetSiweMessageOptions;
@@ -32,29 +32,27 @@ export function useSiweNextAuth({
     () =>
       createAuthenticationAdapter({
         createMessage: ({ address, chainId, nonce }) => {
-          const configurableSiweMessageOptions: ConfigurableSiweMessageOptions =
-            {
-              domain: window.location.host,
-              statement: 'Sign in with Ethereum to the app.',
-              uri: window.location.origin,
-              version: '1',
-            };
+          const defaultConfigurableOptions: ConfigurableMessageOptions = {
+            domain: window.location.host,
+            statement: 'Sign in with Ethereum to the app.',
+            uri: window.location.origin,
+            version: '1',
+          };
 
-          const unconfigurableSiweMessageOptions: UnconfigurableSiweMessageOptions =
-            {
-              address,
-              chainId,
-              nonce,
-            };
+          const unconfigurableOptions: UnconfigurableMessageOptions = {
+            address,
+            chainId,
+            nonce,
+          };
 
           return new SiweMessage({
-            ...configurableSiweMessageOptions,
+            ...defaultConfigurableOptions,
 
             // Spread custom SIWE message options provided by the consumer
             ...getSiweMessageOptions?.(),
 
             // Spread unconfigurable options last so they can't be overridden
-            ...unconfigurableSiweMessageOptions,
+            ...unconfigurableOptions,
           });
         },
 
