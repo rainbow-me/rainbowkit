@@ -12,13 +12,10 @@ type UnconfigurableSiweMessageOptions = {
   nonce: string;
 };
 
-type UnconfigurableSiweMessageOption = keyof UnconfigurableSiweMessageOptions;
-
-type ConfigurableSiweMessageOptions = Omit<
-  Partial<SiweMessage>,
-  UnconfigurableSiweMessageOption
+type ConfigurableSiweMessageOptions = Partial<
+  Omit<SiweMessage, keyof UnconfigurableSiweMessageOptions>
 > & {
-  [Key in UnconfigurableSiweMessageOption]?: never;
+  [Key in keyof UnconfigurableSiweMessageOptions]?: never;
 };
 
 export type GetSiweMessageOptions = () => ConfigurableSiweMessageOptions;
