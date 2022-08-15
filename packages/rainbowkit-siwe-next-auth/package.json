@@ -31,12 +31,11 @@
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "workspace:^",
     "next-auth": "^4.10.2",
-    "react": ">=17"
+    "react": ">=17",
+    "siwe": "^1.1.6"
   },
   "devDependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*"
-  },
-  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
     "siwe": "^1.1.6"
   },
   "repository": {
