@@ -13,7 +13,10 @@ import {
   wallet,
 } from '@rainbow-me/rainbowkit';
 
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import {
+  GetSiweMessageOptions,
+  RainbowKitSiweNextAuthProvider,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -125,6 +128,10 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to the RainbowKit Demo',
+});
+
 const themes = [
   { name: 'light', theme: lightTheme },
   { name: 'dark', theme: darkTheme },
@@ -184,7 +191,10 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
   return (
-    <RainbowKitSiweNextAuthProvider enabled={authEnabled}>
+    <RainbowKitSiweNextAuthProvider
+      enabled={authEnabled}
+      getSiweMessageOptions={getSiweMessageOptions}
+    >
       <RainbowKitProvider
         appInfo={{
           ...demoAppInfo,

@@ -6,27 +6,57 @@ import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import { useMemo } from 'react';
 import { SiweMessage } from 'siwe';
 
+type ImmutableSiweOptions = {
+  address: string;
+  chainId: number;
+  nonce: string;
+};
+
+type ImmutableSiweOption = keyof ImmutableSiweOptions;
+
+export type GetSiweMessageOptions = () => Omit<
+  Partial<SiweMessage>,
+  ImmutableSiweOption
+> & {
+  [Key in ImmutableSiweOption]?: never;
+};
+
 export interface UseSiweNextAuthOptions {
-  statement?: string;
+  getSiweMessageOptions?: GetSiweMessageOptions;
 }
 
 export function useSiweNextAuth({
-  statement = 'Sign in with Ethereum to the app.',
+  getSiweMessageOptions,
 }: UseSiweNextAuthOptions = {}): AuthenticationConfig<SiweMessage> {
   const { status } = useSession();
   const adapter = useMemo(
     () =>
       createAuthenticationAdapter({
-        createMessage: ({ address, chainId, nonce }) =>
-          new SiweMessage({
+        createMessage: ({ address, chainId, nonce }) => {
+          const immutableOptions = {
             address,
             chainId,
-            domain: window.location.host,
             nonce,
-            statement,
+          };
+
+          const defaultOptions = {
+            ...immutableOptions,
+            domain: window.location.host,
+            statement: 'Sign in with Ethereum to the app.',
             uri: window.location.origin,
             version: '1',
-          }),
+          };
+
+          return new SiweMessage({
+            ...defaultOptions,
+
+            // Resolve any custom SIWE message options
+            ...getSiweMessageOptions?.(),
+
+            // Spread the immutable options last so they can't be overridden
+            ...immutableOptions,
+          });
+        },
 
         getMessageBody: ({ message }) => message.prepareMessage(),
 
@@ -50,7 +80,7 @@ export function useSiweNextAuth({
           return response?.ok ?? false;
         },
       }),
-    [statement]
+    [getSiweMessageOptions]
   );
 
   return { adapter, status };
