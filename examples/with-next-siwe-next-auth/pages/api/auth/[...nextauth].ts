@@ -1,19 +1,15 @@
 // Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
 // with added process.env.VERCEL_URL detection to support preview deployments
-
-import {
-  GetServerSidePropsContext,
-  NextApiRequest,
-  NextApiResponse,
-} from 'next';
+// and with auth option logic extracted into a 'getAuthOptions' function so it
+// can be used to get the session server-side with 'unstable_getServerSession'
+import { IncomingMessage } from 'http';
+import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
 
-export function getAuthOptions(
-  req: NextApiRequest | GetServerSidePropsContext['req']
-): NextAuthOptions {
+export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
     CredentialsProvider({
       async authorize(credentials) {
