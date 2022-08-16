@@ -9,7 +9,13 @@ import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { Text } from '../Text/Text';
 
-export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
+export function ConnectModalIntro({
+  compactModeEnabled = false,
+  getWallet,
+}: {
+  compactModeEnabled?: boolean;
+  getWallet: () => void;
+}) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   return (
@@ -23,9 +29,11 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
         justifyContent="space-around"
       >
         <Box marginBottom="10">
-          <Text color="modalText" size="18" weight="heavy">
-            What is a Wallet?
-          </Text>
+          {!compactModeEnabled && (
+            <Text color="modalText" size="18" weight="heavy">
+              What is a Wallet?
+            </Text>
+          )}
         </Box>
         <Box
           display="flex"
@@ -90,7 +98,7 @@ export function ConnectModalIntro({ getWallet }: { getWallet: () => void }) {
             </Text>
           </Box>
         </Box>
-        {Disclaimer && (
+        {Disclaimer && !compactModeEnabled && (
           <Box marginBottom="8" marginTop="12" textAlign="center">
             <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
           </Box>
