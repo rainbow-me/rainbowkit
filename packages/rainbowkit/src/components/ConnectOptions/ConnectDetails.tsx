@@ -176,14 +176,16 @@ export function ConnectDetail({
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }
-    : qrCode
+    : qrCode && qrCodeUri
     ? {
         description: `Don\u2019t have the ${name} app?`,
         label: 'GET',
         onClick: () => changeWalletStep(WalletStep.Download),
       }
     : {
-        description: `Confirm connection in ${shortName || name}`,
+        description: `Confirm connection in ${
+          compactModeEnabled ? shortName || name : name
+        }`,
         label: 'RETRY',
         onClick: getDesktopDeepLink
           ? async () => {

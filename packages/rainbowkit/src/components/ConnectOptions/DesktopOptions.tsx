@@ -50,7 +50,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const [qrCodeUri, setQrCodeUri] = useState<string>();
-  const hasQrCode = !!selectedWallet?.qrCode;
+  const hasQrCode = !!selectedWallet?.qrCode && qrCodeUri;
   const [connectionError, setConnectionError] = useState(false);
   const modalSize = useContext(ModalSizeContext);
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
