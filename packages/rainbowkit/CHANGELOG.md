@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.4.7
+
+### Patch Changes
+
+- 1a4f2f7: Add a 'compact' modal size option for developers looking to use a simpler version of RainbowKit, available by setting the `modalSize` prop to `"compact"` on `RainbowKitProvider`.
+
 ## 0.4.6
 
 ### Patch Changes
