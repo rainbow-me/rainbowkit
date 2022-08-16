@@ -182,7 +182,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box display="flex" flexDirection="row" style={{ maxHeight: 504 }}>
+    <Box
+      display="flex"
+      flexDirection="row"
+      style={{ maxHeight: '100vh', overflowY: 'auto' }}
+    >
       <Box
         className={sidebar}
         display="flex"
@@ -287,16 +291,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               <CloseButton onClose={onClose} />
             </Box>
             <Box
+              className={ScrollClassName}
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 432 }}
+              marginTop="16"
             >
               <Box
                 alignItems="center"
                 display="flex"
                 flexDirection="column"
                 gap="6"
-                height="full"
                 justifyContent="center"
                 marginX="8"
               >
