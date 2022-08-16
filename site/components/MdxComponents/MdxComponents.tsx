@@ -102,7 +102,11 @@ export const components = {
       </Link>
     </Box>
   ),
-  Img: props => <NextImage {...props} />,
+  Img: ({ id, src, ...props }) => (
+    <Box id={id} marginBottom="8">
+      <NextImage layout="responsive" loading="lazy" src={src} {...props} />
+    </Box>
+  ),
   li: ({ children, ...props }) => (
     <Box alignItems="center" as="li" display="flex" {...props}>
       <Box
