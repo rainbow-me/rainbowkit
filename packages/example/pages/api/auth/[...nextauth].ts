@@ -1,15 +1,19 @@
 // Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
 // with added process.env.VERCEL_URL detection to support preview deployments
 
-import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth from 'next-auth';
+import {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
 
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
-export default async function auth(req: NextApiRequest, res: NextApiResponse) {
+export function getAuthOptions(
+  req: NextApiRequest | GetServerSidePropsContext['req']
+): NextAuthOptions {
   const providers = [
     CredentialsProvider({
       async authorize(credentials) {
@@ -60,6 +64,30 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     }),
   ];
 
+  return {
+    callbacks: {
+      async session({ session, token }) {
+        session.address = token.sub;
+        session.user = {
+          name: token.sub,
+        };
+        return session;
+      },
+    },
+    // https://next-auth.js.org/configuration/providers/oauth
+    providers,
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+      strategy: 'jwt',
+    },
+  };
+}
+
+// For more information on each option (and a full list of options) go to
+// https://next-auth.js.org/configuration/options
+export default async function auth(req: NextApiRequest, res: NextApiResponse) {
+  const authOptions = getAuthOptions(req);
+
   if (!Array.isArray(req.query.nextauth)) {
     res.status(400).send('Bad request');
     return;
@@ -71,21 +99,8 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
 
   // Hide Sign-In with Ethereum from default sign page
   if (isDefaultSigninPage) {
-    providers.pop();
+    authOptions.providers.pop();
   }
 
-  return await NextAuth(req, res, {
-    callbacks: {
-      async session({ session, token }) {
-        session.address = token.sub;
-        return session;
-      },
-    },
-    // https://next-auth.js.org/configuration/providers/oauth
-    providers,
-    secret: process.env.NEXTAUTH_SECRET,
-    session: {
-      strategy: 'jwt',
-    },
-  });
+  return await NextAuth(req, res, authOptions);
 }

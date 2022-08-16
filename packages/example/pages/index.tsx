@@ -6,7 +6,8 @@ import {
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
-import { getSession, useSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
@@ -17,11 +18,12 @@ import {
   useSignTypedData,
 } from 'wagmi';
 import { AppContextProps } from '../lib/AppContextProps';
+import { getAuthOptions } from './api/auth/[...nextauth]';
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
-      session: await getSession(context),
+      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
     },
   };
 };
