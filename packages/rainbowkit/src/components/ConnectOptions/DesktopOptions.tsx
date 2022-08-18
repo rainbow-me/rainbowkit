@@ -98,8 +98,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         const sWallet = wallets.find(w => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
         setQrCodeUri(uri);
-        setSelectedWallet(sWallet);
-        changeWalletStep(WalletStep.Connect);
+
+        // This timeout prevents the UI from flickering if connection is instant,
+        // otherwise users will see a flash of the "connecting" state.
+        setTimeout(
+          () => {
+            setSelectedWallet(sWallet);
+            changeWalletStep(WalletStep.Connect);
+          },
+          uri ? 0 : 50
+        );
       });
     } else {
       setSelectedWallet(wallet);
