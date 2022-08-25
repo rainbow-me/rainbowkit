@@ -6,6 +6,10 @@ import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
+  AuthenticationStatus,
+  useAuthenticationStatus,
+} from '../RainbowKitProvider/AuthenticationContext';
+import {
   useAccountModal,
   useChainModal,
   useConnectModal,
@@ -41,6 +45,7 @@ export interface ConnectButtonRendererProps {
       unsupported?: boolean;
     };
     mounted: boolean;
+    authenticationStatus?: AuthenticationStatus;
     openAccountModal: () => void;
     openChainModal: () => void;
     openConnectModal: () => void;
@@ -60,6 +65,7 @@ export function ConnectButtonRenderer({
   const { data: balanceData } = useBalance({ addressOrName: address });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();
+  const authenticationStatus = useAuthenticationStatus() ?? undefined;
 
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
@@ -105,6 +111,7 @@ export function ConnectButtonRenderer({
             }
           : undefined,
         accountModalOpen,
+        authenticationStatus,
         chain: activeChain
           ? {
               hasIcon: Boolean(chainIconUrl),

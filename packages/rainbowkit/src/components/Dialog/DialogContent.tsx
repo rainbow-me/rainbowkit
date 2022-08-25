@@ -1,6 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { isMobile } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
+import {
+  ModalSizeContext,
+  ModalSizeOptions,
+} from '../RainbowKitProvider/ModalSizeContext';
 import * as styles from './DialogContent.css';
 
 interface DialogContentProps {
@@ -19,6 +23,8 @@ export function DialogContent({
   wide = false,
 }: DialogContentProps) {
   const mobile = isMobile();
+  const modalSize = useContext(ModalSizeContext);
+  const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   return (
     <Box marginTop={marginTop}>
       <Box
@@ -26,6 +32,8 @@ export function DialogContent({
           wide
             ? mobile
               ? styles.dialogContentWideMobile
+              : compactModeEnabled
+              ? styles.dialogContentCompactMode
               : styles.dialogContentWideDesktop
             : styles.dialogContent,
           mobile ? styles.dialogContentMobile : null,

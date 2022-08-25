@@ -129,15 +129,17 @@ export function GetDetail({
 const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   changeWalletStep,
+  compactModeEnabled,
   connectionError,
   qrCodeUri,
   reconnect,
   wallet,
 }: {
+  changeWalletStep: (newWalletStep: WalletStep) => void;
+  compactModeEnabled: boolean;
   connectionError: boolean;
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
-  changeWalletStep: (newWalletStep: WalletStep) => void;
   wallet: WalletConnector;
 }) {
   const {
@@ -147,6 +149,7 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
+    shortName,
     showWalletConnectModal,
   } = wallet;
   const getDesktopDeepLink = wallet.desktop?.getUri;
@@ -167,18 +170,22 @@ export function ConnectDetail({
     href?: string;
   } = showWalletConnectModal
     ? {
-        description: 'Need the official WalletConnect modal?',
+        description: `Need the ${
+          compactModeEnabled ? '' : 'offical'
+        } WalletConnect modal?`,
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }
-    : qrCode
+    : qrCode && qrCodeUri
     ? {
         description: `Don\u2019t have the ${name} app?`,
         label: 'GET',
         onClick: () => changeWalletStep(WalletStep.Download),
       }
     : {
-        description: `Confirm the connection in ${name}`,
+        description: `Confirm connection in ${
+          compactModeEnabled ? shortName || name : name
+        }`,
         label: 'RETRY',
         onClick: getDesktopDeepLink
           ? async () => {
@@ -206,6 +213,8 @@ export function ConnectDetail({
             size={
               smallWindow
                 ? Math.max(280, Math.min(windowWidth - 308, 382))
+                : compactModeEnabled
+                ? 318
                 : 382
             }
             uri={qrCodeUri}
