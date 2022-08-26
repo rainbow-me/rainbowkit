@@ -1,7 +1,7 @@
 import React, { ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
-import { getBrowser, isSafari } from '../../utils/browsers';
+import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -21,13 +21,13 @@ import { WalletStep } from './DesktopOptions';
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
-    case 'Chrome':
+    case BrowserType.Chrome:
       return (await import(`../Icons/Chrome.svg`)).default;
-    case 'Brave':
+    case BrowserType.Brave:
       return (await import(`../Icons/Brave.svg`)).default;
-    case 'Edge':
+    case BrowserType.Edge:
       return (await import(`../Icons/Edge.svg`)).default;
-    case 'Firefox':
+    case BrowserType.Firefox:
       return (await import(`../Icons/Firefox.svg`)).default;
     default:
       return (await import(`../Icons/Browser.svg`)).default;
