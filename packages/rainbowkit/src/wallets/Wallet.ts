@@ -1,6 +1,6 @@
 import { Connector } from 'wagmi';
 
-export type InstructionStepName = 'install' | 'create' | 'scan';
+export type InstructionStepName = 'install' | 'create' | 'scan' | 'refresh';
 
 type RainbowKitConnector<C extends Connector = Connector> = {
   connector: C;
@@ -14,6 +14,15 @@ type RainbowKitConnector<C extends Connector = Connector> = {
     getUri: () => Promise<string>;
     instructions?: {
       learnMoreUrl: string;
+      steps: {
+        step: InstructionStepName;
+        title: string;
+        description: string;
+      }[];
+    };
+  };
+  extension?: {
+    instructions?: {
       steps: {
         step: InstructionStepName;
         title: string;
