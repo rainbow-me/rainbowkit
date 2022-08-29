@@ -12,6 +12,7 @@ import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
+import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { QRCode } from '../QRCode/QRCode';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -475,6 +476,13 @@ export function DownloadOptionsDetail({
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
 
+  useEffect(() => {
+    // Preload icons used on next screen
+    preloadCreateIcon();
+    preloadScanIcon();
+    preloadRefreshIcon();
+  }, []);
+
   return (
     <Box
       alignItems="center"
@@ -596,7 +604,7 @@ const stepIcons: Record<
       width="48"
     />
   ),
-  refresh: () => <ScanIcon />,
+  refresh: () => <RefreshIcon />,
   scan: () => <ScanIcon />,
 };
 

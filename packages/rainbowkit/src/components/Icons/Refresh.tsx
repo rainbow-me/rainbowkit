@@ -2,11 +2,11 @@ import React from 'react';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 
-const src = async () => (await import('./scan.svg')).default;
+const src = async () => (await import('./refresh.svg')).default;
 
-export const preloadScanIcon = () => loadImages(src);
+export const preloadRefreshIcon = () => loadImages(src);
 
-export const ScanIcon = () => (
+export const RefreshIcon = () => (
   <AsyncImage
     background="#515a70"
     borderColor="generalBorder"
