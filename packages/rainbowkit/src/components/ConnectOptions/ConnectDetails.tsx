@@ -222,13 +222,13 @@ export function ConnectDetail({
         >
           <QRCode
             logoBackground={iconBackground}
-            logoSize={smallWindow ? 60 : 72}
+            logoSize={compactModeEnabled ? 60 : 72}
             logoUrl={iconUrl}
             size={
-              smallWindow
-                ? Math.max(280, Math.min(windowWidth - 308, 382))
-                : compactModeEnabled
+              compactModeEnabled
                 ? 318
+                : smallWindow
+                ? Math.max(280, Math.min(windowWidth - 308, 382))
                 : 382
             }
             uri={qrCodeUri}

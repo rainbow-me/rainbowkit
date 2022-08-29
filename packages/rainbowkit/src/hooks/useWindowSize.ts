@@ -5,8 +5,8 @@ export const useWindowSize = () => {
     width: number | undefined;
     height: number | undefined;
   }>({
-    height: window.innerHeight,
-    width: window.innerWidth,
+    height: undefined,
+    width: undefined,
   });
   useEffect(() => {
     function handleResize() {
