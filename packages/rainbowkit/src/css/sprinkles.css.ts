@@ -113,7 +113,7 @@ const dimensions = {
   '48': '48px',
   '54': '54px',
   '60': '60px',
-  '240': '240px',
+  '360': '360px',
   'full': '100%',
   'max': 'max-content',
 };

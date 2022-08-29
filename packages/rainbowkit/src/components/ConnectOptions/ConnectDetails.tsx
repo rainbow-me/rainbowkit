@@ -386,7 +386,7 @@ const DownloadOptionsBox = ({
         height="full"
         position="absolute"
         style={{
-          filter: 'blur(50px) opacity(40%)',
+          filter: 'blur(100px)',
           zIndex: 0,
         }}
         width="full"
@@ -397,26 +397,19 @@ const DownloadOptionsBox = ({
           justifyContent="space-between"
           style={{
             bottom: '0',
+            filter: 'opacity(30%)',
             left: '0',
             position: 'absolute',
             right: '0',
             top: '0',
           }}
         >
-          <Box style={{ marginLeft: -55, marginTop: -55 }}>
+          <Box style={{ marginLeft: -100, marginTop: -100 }}>
             <AsyncImage
               borderRadius="full"
-              height="240"
+              height="360"
               src={iconUrl}
-              width="240"
-            />
-          </Box>
-          <Box style={{ marginRight: -110, marginTop: 55 }}>
-            <AsyncImage
-              borderRadius="full"
-              height="240"
-              src={iconUrl}
-              width="240"
+              width="360"
             />
           </Box>
         </Box>
