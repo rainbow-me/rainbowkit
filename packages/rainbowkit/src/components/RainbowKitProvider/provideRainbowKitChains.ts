@@ -19,7 +19,8 @@ type ChainName =
   | 'polygon'
   | 'polygonMumbai'
   | 'rinkeby'
-  | 'ropsten';
+  | 'ropsten'
+  | 'sepolia';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -77,6 +78,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
+  sepolia: { chainId: 11_155_111, ...ethereumIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
