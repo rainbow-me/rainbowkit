@@ -379,7 +379,7 @@ const DownloadOptionsBox = ({
       overflow="hidden"
       paddingX={isCompact ? '18' : '44'}
       position="relative"
-      style={{ flex: 1 }}
+      style={{ flex: 1, isolation: 'isolate' }}
       width="full"
     >
       <Box
@@ -388,6 +388,7 @@ const DownloadOptionsBox = ({
         position="absolute"
         style={{
           filter: 'blur(100px)',
+          transform: 'translate3d(0, 0, 0)',
           zIndex: 0,
         }}
         width="full"
@@ -403,6 +404,7 @@ const DownloadOptionsBox = ({
             position: 'absolute',
             right: '0',
             top: '0',
+            transform: 'translate3d(0, 0, 0)',
           }}
         >
           <Box style={{ marginLeft: -100, marginTop: -100 }}>
