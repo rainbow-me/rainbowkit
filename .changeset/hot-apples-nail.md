@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Add Optimism Goerli chain information now that it is a first-class chain in Wagmi.
+Add Optimism Goerli and Sepolia chain information now that they are first-class chains in Wagmi.
