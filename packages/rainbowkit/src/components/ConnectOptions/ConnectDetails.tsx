@@ -14,6 +14,7 @@ import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
 import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
+import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
@@ -177,13 +178,14 @@ export function ConnectDetail({
 
   const hasQrCodeAndExtension =
     downloadUrls?.qrCode && downloadUrls?.browserExtension;
+  const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
     description: string;
     label: string;
     onClick?: () => void;
     href?: string;
-  } = showWalletConnectModal
+  } | null = showWalletConnectModal
     ? {
         description: `Need the ${
           compactModeEnabled ? '' : 'offical'
@@ -191,7 +193,8 @@ export function ConnectDetail({
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }
-    : {
+    : hasQrCode
+    ? {
         description: `Don\u2019t have ${name}?`,
         label: 'GET',
         onClick: () =>
@@ -200,11 +203,11 @@ export function ConnectDetail({
               ? WalletStep.DownloadOptions
               : WalletStep.Download
           ),
-      };
+      }
+    : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
-  const hasQrCode = qrCode && qrCodeUri;
 
   useEffect(() => {
     // Preload icon used on next screen
@@ -213,7 +216,7 @@ export function ConnectDetail({
 
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
-      {qrCode && qrCodeUri ? (
+      {hasQrCode ? (
         <Box
           alignItems="center"
           display="flex"
@@ -288,7 +291,6 @@ export function ConnectDetail({
                     weight="medium"
                   >
                     Confirm connection in the extension
-                    {hasQrCode && ' or'}
                   </Text>
                 </Box>
               )}
@@ -300,7 +302,7 @@ export function ConnectDetail({
                 height="32"
                 marginTop="8"
               >
-                {connectionError && (
+                {connectionError ? (
                   <ActionButton
                     label="RETRY"
                     onClick={
@@ -314,6 +316,10 @@ export function ConnectDetail({
                           }
                     }
                   />
+                ) : (
+                  <Box color="modalTextSecondary">
+                    <SpinnerIcon />
+                  </Box>
                 )}
               </Box>
             </Box>
@@ -331,7 +337,7 @@ export function ConnectDetail({
         justifyContent="space-between"
         marginTop="12"
       >
-        {!ready ? null : (
+        {ready && secondaryAction && (
           <>
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
