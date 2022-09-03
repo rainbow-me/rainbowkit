@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 0.5.1
+
+### Patch Changes
+
+- 8060ccd: Add Optimism Goerli and Sepolia chain information now that they are first-class chains in Wagmi.
+- 4dfe834: Provide download options for wallets with both browser extensions and mobile apps.
+- 8060ccd: Fix small spelling mistake in the WalletConnect modal flow.
+
 ## 0.5.0
 
 ### Minor Changes
