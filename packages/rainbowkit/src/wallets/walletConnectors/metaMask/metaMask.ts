@@ -41,7 +41,7 @@ export const metaMask = ({
     typeof window.ethereum !== 'undefined' &&
     isMetaMask(window.ethereum);
 
-  const shouldUseWalletConnect = isMobile() && !isMetaMaskInjected;
+  const shouldUseWalletConnect = isMobile() || !isMetaMaskInjected;
 
   return {
     id: 'metaMask',
@@ -54,6 +54,7 @@ export const metaMask = ({
         'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
+      qrCode: 'https://metamask.io/download/',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
@@ -63,20 +64,71 @@ export const metaMask = ({
             options: { shimDisconnect },
           });
 
+      const getUri = async () => {
+        const { uri } = (await connector.getProvider()).connector;
+
+        return isAndroid()
+          ? uri
+          : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
+      };
+
       return {
         connector,
         mobile: {
-          getUri: shouldUseWalletConnect
-            ? async () => {
-                const { uri } = (await connector.getProvider()).connector;
-
-                return isAndroid()
-                  ? uri
-                  : `https://metamask.app.link/wc?uri=${encodeURIComponent(
-                      uri
-                    )}`;
-              }
-            : undefined,
+          getUri: shouldUseWalletConnect ? getUri : undefined,
+        },
+        qrCode: shouldUseWalletConnect
+          ? {
+              getUri,
+              instructions: {
+                learnMoreUrl: 'https://metamask.io/faqs/',
+                steps: [
+                  {
+                    description:
+                      'We recommend putting Coinbase Wallet on your home screen for quicker access.',
+                    step: 'install',
+                    title: 'Open the Coinbase Wallet app',
+                  },
+                  {
+                    description:
+                      'You can easily backup your wallet using the cloud backup feature.',
+                    step: 'create',
+                    title: 'Create or Import a Wallet',
+                  },
+                  {
+                    description:
+                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    step: 'scan',
+                    title: 'Tap the scan button',
+                  },
+                ],
+              },
+            }
+          : undefined,
+        extension: {
+          learnMoreUrl: 'https://metamask.io/faqs/',
+          instructions: {
+            steps: [
+              {
+                description:
+                  'We recommend pinning MetaMask to your taskbar for quicker access to your wallet.',
+                step: 'install',
+                title: 'Install the MetaMask extension',
+              },
+              {
+                description:
+                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                step: 'create',
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description:
+                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                step: 'refresh',
+                title: 'Refresh your browser',
+              },
+            ],
+          },
         },
       };
     },

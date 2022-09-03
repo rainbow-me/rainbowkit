@@ -24,8 +24,10 @@ import { Text } from '../Text/Text';
 import {
   ConnectDetail,
   DownloadDetail,
+  DownloadOptionsDetail,
   GetDetail,
-  InstructionDetail,
+  InstructionExtensionDetail,
+  InstructionMobileDetail,
 } from './ConnectDetails';
 import {
   ScrollClassName,
@@ -38,8 +40,10 @@ export enum WalletStep {
   LearnCompact = 'LEARN_COMPACT',
   Get = 'GET',
   Connect = 'CONNECT',
+  DownloadOptions = 'DOWNLOAD_OPTIONS',
   Download = 'DOWNLOAD',
-  Instructions = 'INSTRUCTIONS',
+  InstructionsMobile = 'INSTRUCTIONS_MOBILE',
+  InstructionsExtension = 'INSTRUCTIONS_EXTENSION',
 }
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
@@ -115,11 +119,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const getMobileWallet = (id: string) => {
+  const getWalletDownload = (id: string) => {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
+    const isMobile = sWallet?.downloadUrls?.qrCode;
+    const isExtension = sWallet?.downloadUrls?.browserExtension;
     setSelectedWallet(sWallet);
-    changeWalletStep(WalletStep.Download);
+    if (isMobile && isExtension) {
+      changeWalletStep(WalletStep.DownloadOptions);
+    } else if (isMobile) {
+      changeWalletStep(WalletStep.Download);
+    } else {
+      changeWalletStep(WalletStep.InstructionsExtension);
+    }
   };
 
   const clearSelectedWallet = () => {
@@ -158,6 +170,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
 
+  const hasExtensionAndMobile = !!(
+    selectedWallet?.downloadUrls?.browserExtension &&
+    (selectedWallet?.downloadUrls?.android || selectedWallet?.downloadUrls?.ios)
+  );
+
   switch (walletStep) {
     case WalletStep.None:
       walletContent = (
@@ -175,7 +192,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Get:
-      walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
+      walletContent = <GetDetail getWalletDownload={getWalletDownload} />;
       headerLabel = 'Get a Wallet';
       headerBackButtonLink = compactModeEnabled
         ? WalletStep.LearnCompact
@@ -204,6 +221,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         ? clearSelectedWallet
         : () => {};
       break;
+    case WalletStep.DownloadOptions:
+      walletContent = selectedWallet && (
+        <DownloadOptionsDetail
+          changeWalletStep={changeWalletStep}
+          wallet={selectedWallet}
+        />
+      );
+      headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
+      headerBackButtonLink = initialWalletStep;
+      break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
         <DownloadDetail
@@ -211,24 +238,39 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = hasQrCode && `Install ${selectedWallet.name}`;
-      headerBackButtonLink = initialWalletStep;
+      headerLabel = selectedWallet && `Install ${selectedWallet.name}`;
+      headerBackButtonLink = hasExtensionAndMobile
+        ? WalletStep.DownloadOptions
+        : initialWalletStep;
       break;
-    case WalletStep.Instructions:
+    case WalletStep.InstructionsMobile:
       walletContent = selectedWallet && (
-        <InstructionDetail
+        <InstructionMobileDetail
           connectWallet={onSelectWallet}
           wallet={selectedWallet}
         />
       );
       headerLabel =
-        hasQrCode &&
+        selectedWallet &&
         `Get started with ${
           compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name
         }`;
       headerBackButtonLink = WalletStep.Download;
+      break;
+    case WalletStep.InstructionsExtension:
+      walletContent = selectedWallet && (
+        <InstructionExtensionDetail wallet={selectedWallet} />
+      );
+      headerLabel =
+        selectedWallet &&
+        `Get started with ${
+          compactModeEnabled
+            ? selectedWallet.shortName || selectedWallet.name
+            : selectedWallet.name
+        }`;
+      headerBackButtonLink = WalletStep.DownloadOptions;
       break;
     default:
       break;

@@ -1,26 +1,47 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
-import { isSafari } from '../../utils/browsers';
+import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
   WalletConnector,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
+import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
+import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 
+const getBrowserSrc: () => Promise<string> = async () => {
+  const browser = getBrowser();
+  switch (browser) {
+    case BrowserType.Chrome:
+      return (await import(`../Icons/Chrome.svg`)).default;
+    case BrowserType.Brave:
+      return (await import(`../Icons/Brave.svg`)).default;
+    case BrowserType.Edge:
+      return (await import(`../Icons/Edge.svg`)).default;
+    case BrowserType.Firefox:
+      return (await import(`../Icons/Firefox.svg`)).default;
+    default:
+      return (await import(`../Icons/Browser.svg`)).default;
+  }
+};
+
+const preloadBrowserIcon = () => loadImages(getBrowserSrc);
+
 export function GetDetail({
-  getMobileWallet,
+  getWalletDownload,
 }: {
-  getMobileWallet: (walletId: string) => void;
+  getWalletDownload: (walletId: string) => void;
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
@@ -52,6 +73,9 @@ export function GetDetail({
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
               wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
+            const hasMobileAndExtension =
+              downloadUrls?.qrCode && downloadUrls?.browserExtension;
+
             return (
               <Box
                 alignItems="center"
@@ -80,7 +104,9 @@ export function GetDetail({
                       {name}
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {hasMobileCompanionApp
+                      {hasMobileAndExtension
+                        ? 'Mobile Wallet and Extension'
+                        : hasMobileCompanionApp
                         ? 'Mobile Wallet'
                         : downloadUrls?.browserExtension
                         ? 'Browser Extension'
@@ -91,11 +117,7 @@ export function GetDetail({
                 <Box display="flex" flexDirection="column" gap="4">
                   <ActionButton
                     label="GET"
-                    onClick={() => hasMobileCompanionApp && getMobileWallet(id)}
-                    {...(!hasMobileCompanionApp &&
-                    downloadUrls?.browserExtension
-                      ? { href: downloadUrls.browserExtension }
-                      : {})}
+                    onClick={() => getWalletDownload(id)}
                     type="secondary"
                   />
                 </Box>
@@ -126,7 +148,7 @@ export function GetDetail({
   );
 }
 
-const LOGO_SIZE: BoxProps['height'] = '60'; // size of wallet logo in Connect tab
+const LOGO_SIZE: BoxProps['height'] = '44'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
@@ -149,26 +171,21 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
-    shortName,
     showWalletConnectModal,
   } = wallet;
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
-  let readyMsg;
-  if (ready) {
-    readyMsg = 'Waiting for connection';
-  } else if (downloadUrls?.browserExtension) {
-    readyMsg = `The ${name} extension is not installed in your browser`;
-  } else {
-    readyMsg = `${name} is not available on this device`;
-  }
+
+  const hasQrCodeAndExtension =
+    downloadUrls?.qrCode && downloadUrls?.browserExtension;
+  const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
     description: string;
     label: string;
     onClick?: () => void;
     href?: string;
-  } = showWalletConnectModal
+  } | null = showWalletConnectModal
     ? {
         description: `Need the ${
           compactModeEnabled ? '' : 'official'
@@ -176,30 +193,30 @@ export function ConnectDetail({
         label: 'OPEN',
         onClick: showWalletConnectModal,
       }
-    : qrCode && qrCodeUri
+    : hasQrCode
     ? {
-        description: `Don\u2019t have the ${name} app?`,
+        description: `Don\u2019t have ${name}?`,
         label: 'GET',
-        onClick: () => changeWalletStep(WalletStep.Download),
+        onClick: () =>
+          changeWalletStep(
+            hasQrCodeAndExtension
+              ? WalletStep.DownloadOptions
+              : WalletStep.Download
+          ),
       }
-    : {
-        description: `Confirm connection in ${
-          compactModeEnabled ? shortName || name : name
-        }`,
-        label: 'RETRY',
-        onClick: getDesktopDeepLink
-          ? async () => {
-              const uri = await getDesktopDeepLink();
-              window.open(uri, safari ? '_blank' : '_self');
-            }
-          : () => reconnect(wallet),
-      };
+    : null;
+
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
 
+  useEffect(() => {
+    // Preload icon used on next screen
+    preloadBrowserIcon();
+  }, []);
+
   return (
     <Box display="flex" flexDirection="column" height="full" width="full">
-      {qrCode && qrCodeUri ? (
+      {hasQrCode ? (
         <Box
           alignItems="center"
           display="flex"
@@ -208,13 +225,13 @@ export function ConnectDetail({
         >
           <QRCode
             logoBackground={iconBackground}
-            logoSize={smallWindow ? 60 : 72}
+            logoSize={compactModeEnabled ? 60 : 72}
             logoUrl={iconUrl}
             size={
-              smallWindow
-                ? Math.max(280, Math.min(windowWidth - 308, 382))
-                : compactModeEnabled
+              compactModeEnabled
                 ? 318
+                : smallWindow
+                ? Math.max(280, Math.min(windowWidth - 308, 382))
                 : 382
             }
             uri={qrCodeUri}
@@ -231,7 +248,7 @@ export function ConnectDetail({
             alignItems="center"
             display="flex"
             flexDirection="column"
-            gap="20"
+            gap="8"
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
               <AsyncImage height={LOGO_SIZE} src={iconUrl} width={LOGO_SIZE} />
@@ -240,47 +257,17 @@ export function ConnectDetail({
               alignItems="center"
               display="flex"
               flexDirection="column"
-              gap="10"
+              gap="4"
               paddingX="32"
               style={{ textAlign: 'center' }}
             >
-              <Text color="modalText" size="20" weight="bold">
+              <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? `Opening ${name}`
+                  ? `Opening ${name}...`
                   : downloadUrls?.browserExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
-              <Box
-                color="modalTextSecondary"
-                display="flex"
-                flexDirection="row"
-                gap="6"
-                height="24"
-              >
-                {connectionError ? (
-                  <Text
-                    color="error"
-                    size="16"
-                    textAlign="center"
-                    weight="bold"
-                  >
-                    Error connecting, please retry!
-                  </Text>
-                ) : (
-                  <>
-                    {ready ? <SpinnerIcon /> : null}
-                    <Text
-                      color="modalTextSecondary"
-                      size="16"
-                      textAlign="center"
-                      weight="bold"
-                    >
-                      {readyMsg}
-                    </Text>
-                  </>
-                )}
-              </Box>
               {!ready && downloadUrls?.browserExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
@@ -290,6 +277,51 @@ export function ConnectDetail({
                   />
                 </Box>
               ) : null}
+              {ready && !hasQrCode && (
+                <Box
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                >
+                  <Text
+                    color="modalTextSecondary"
+                    size="14"
+                    textAlign="center"
+                    weight="medium"
+                  >
+                    Confirm connection in the extension
+                  </Text>
+                </Box>
+              )}
+              <Box
+                alignItems="center"
+                color="modalText"
+                display="flex"
+                flexDirection="row"
+                height="32"
+                marginTop="8"
+              >
+                {connectionError ? (
+                  <ActionButton
+                    label="RETRY"
+                    onClick={
+                      getDesktopDeepLink
+                        ? async () => {
+                            const uri = await getDesktopDeepLink();
+                            window.open(uri, safari ? '_blank' : '_self');
+                          }
+                        : () => {
+                            reconnect(wallet);
+                          }
+                    }
+                  />
+                ) : (
+                  <Box color="modalTextSecondary">
+                    <SpinnerIcon />
+                  </Box>
+                )}
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -305,7 +337,7 @@ export function ConnectDetail({
         justifyContent="space-between"
         marginTop="12"
       >
-        {!ready ? null : (
+        {ready && secondaryAction && (
           <>
             <Text color="modalTextSecondary" size="14" weight="medium">
               {secondaryAction.description}
@@ -317,6 +349,188 @@ export function ConnectDetail({
             />
           </>
         )}
+      </Box>
+    </Box>
+  );
+}
+
+const DownloadOptionsBox = ({
+  actionLabel,
+  description,
+  iconBackground,
+  iconUrl,
+  isCompact,
+  onAction,
+  title,
+  url,
+}: {
+  title: string;
+  description: string;
+  onAction?: () => void;
+  actionLabel: string;
+  url?: string;
+  isCompact: boolean;
+  iconUrl: string | (() => Promise<string>);
+  iconBackground?: string;
+}) => {
+  return (
+    <Box
+      alignItems="center"
+      borderColor="generalBorder"
+      borderRadius="13"
+      borderStyle="solid"
+      borderWidth="1"
+      display="flex"
+      justifyContent="center"
+      overflow="hidden"
+      paddingX={isCompact ? '18' : '44'}
+      position="relative"
+      style={{ flex: 1, isolation: 'isolate' }}
+      width="full"
+    >
+      <Box
+        background="generalBorder"
+        height="full"
+        position="absolute"
+        style={{
+          filter: 'blur(100px)',
+          transform: 'translate3d(0, 0, 0)',
+          zIndex: 0,
+        }}
+        width="full"
+      >
+        <Box
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          style={{
+            bottom: '0',
+            filter: 'opacity(30%)',
+            left: '0',
+            position: 'absolute',
+            right: '0',
+            top: '0',
+            transform: 'translate3d(0, 0, 0)',
+          }}
+        >
+          <Box style={{ marginLeft: -100, marginTop: -100 }}>
+            <AsyncImage
+              borderRadius="full"
+              height="360"
+              src={iconUrl}
+              width="360"
+            />
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        alignItems="flex-start"
+        display="flex"
+        flexDirection="row"
+        gap="24"
+        height="max"
+        justifyContent="center"
+        style={{ zIndex: 1 }}
+      >
+        <Box>
+          <AsyncImage
+            height="60"
+            src={iconUrl}
+            width="60"
+            {...(iconBackground
+              ? {
+                  background: iconBackground,
+                  borderColor: 'generalBorder',
+                  borderRadius: '10',
+                }
+              : null)}
+          />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap="4"
+          style={{ flex: 1 }}
+          width="full"
+        >
+          <Text color="modalText" size="14" weight="bold">
+            {title}
+          </Text>
+          <Text color="modalTextSecondary" size="14" weight="medium">
+            {description}
+          </Text>
+          <Box marginTop="14" width="max">
+            <ActionButton
+              href={url}
+              label={actionLabel}
+              onClick={onAction}
+              size="medium"
+            />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export function DownloadOptionsDetail({
+  changeWalletStep,
+  wallet,
+}: {
+  changeWalletStep: (newWalletStep: WalletStep) => void;
+  wallet: WalletConnector;
+}) {
+  const browser = getBrowser();
+  const modalSize = useContext(ModalSizeContext);
+  const isCompact = modalSize === 'compact';
+
+  useEffect(() => {
+    // Preload icons used on next screen
+    preloadCreateIcon();
+    preloadScanIcon();
+    preloadRefreshIcon();
+  }, []);
+
+  return (
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      gap="24"
+      height="full"
+      marginBottom="8"
+      marginTop="4"
+      width="full"
+    >
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        gap="8"
+        height="full"
+        justifyContent="center"
+        width="full"
+      >
+        <DownloadOptionsBox
+          actionLabel={`Add to ${browser}`}
+          description="Access your wallet right from your favorite web browser."
+          iconUrl={getBrowserSrc}
+          isCompact={isCompact}
+          onAction={() => changeWalletStep(WalletStep.InstructionsExtension)}
+          title={`${wallet.name} for ${browser}`}
+          url={wallet?.downloadUrls?.browserExtension}
+        />
+        <DownloadOptionsBox
+          actionLabel="Get the app"
+          description="Use the mobile wallet to explore the world of Ethereum."
+          iconBackground={wallet.iconBackground}
+          iconUrl={wallet.iconUrl}
+          isCompact={isCompact}
+          onAction={() => {
+            changeWalletStep(WalletStep.Download);
+          }}
+          title={`${wallet.name} for Mobile`}
+        />
       </Box>
     </Box>
   );
@@ -373,7 +587,7 @@ export function DownloadDetail({
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions
-                ? WalletStep.Instructions
+                ? WalletStep.InstructionsMobile
                 : WalletStep.Connect
             )
           }
@@ -398,10 +612,11 @@ const stepIcons: Record<
       width="48"
     />
   ),
+  refresh: () => <RefreshIcon />,
   scan: () => <ScanIcon />,
 };
 
-export function InstructionDetail({
+export function InstructionMobileDetail({
   connectWallet,
   wallet,
 }: {
@@ -480,6 +695,75 @@ export function InstructionDetail({
             Learn More
           </Text>
         </Box>
+      </Box>
+    </Box>
+  );
+}
+
+export function InstructionExtensionDetail({
+  wallet,
+}: {
+  wallet: WalletConnector;
+}) {
+  return (
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      height="full"
+      width="full"
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="28"
+        height="full"
+        justifyContent="center"
+        paddingY="32"
+        style={{ maxWidth: 320 }}
+      >
+        {wallet?.extension?.instructions?.steps.map((d, idx) => (
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            gap="16"
+            key={idx}
+          >
+            <Box
+              borderRadius="10"
+              height="48"
+              minWidth="48"
+              overflow="hidden"
+              position="relative"
+              width="48"
+            >
+              {stepIcons[d.step]?.(wallet)}
+            </Box>
+            <Box display="flex" flexDirection="column" gap="4">
+              <Text color="modalText" size="14" weight="bold">
+                {d.title}
+              </Text>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                {d.description}
+              </Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        gap="12"
+        justifyContent="center"
+        marginBottom="16"
+      >
+        <ActionButton
+          label="Refresh"
+          onClick={window.location.reload.bind(window.location)}
+        />
       </Box>
     </Box>
   );
