@@ -10,7 +10,7 @@ export interface OmniOptions {
 
 export const omni = ({ chains }: OmniOptions): Wallet => ({
   id: 'omni',
-  name: 'OMNI',
+  name: 'Omni',
   iconUrl: async () => (await import('./omni.svg')).default,
   iconBackground: '#000',
   downloadUrls: {
@@ -38,9 +38,9 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
           steps: [
             {
               description:
-                'Add OMNI to your home screen for faster access to your wallet.',
+                'Add Omni to your home screen for faster access to your wallet.',
               step: 'install',
-              title: 'Open the OMNI app',
+              title: 'Open the Omni app',
             },
             {
               description: 'Create a new wallet or import an existing one.',
