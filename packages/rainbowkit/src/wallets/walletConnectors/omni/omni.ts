@@ -34,7 +34,7 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl: 'https://omni.app/learn/what-is-walletconnect',
+          learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
               description:
