@@ -20,7 +20,8 @@ export const wallet = {
   metaMask,
   omni,
   rainbow,
-  steak, // backwards compatibility
+  /** @deprecated */
+  steak,
   trust,
   walletConnect,
 };

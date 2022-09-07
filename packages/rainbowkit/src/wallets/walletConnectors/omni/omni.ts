@@ -60,5 +60,5 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
   },
 });
 
-// backwards compatibility
+/** @deprecated */
 export const steak = omni;
