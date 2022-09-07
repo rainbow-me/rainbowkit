@@ -62,3 +62,5 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
 
 /** @deprecated */
 export const steak = omni;
+/** @deprecated */
+export interface SteakOptions extends OmniOptions {}
