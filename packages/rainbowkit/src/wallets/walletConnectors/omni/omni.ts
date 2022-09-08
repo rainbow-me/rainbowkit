@@ -28,7 +28,7 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
           const { uri } = (await connector.getProvider()).connector;
           return isAndroid()
             ? uri
-            : `https://links.omni.app/wc?uri=${encodeURIComponent(uri)}`;
+            : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
