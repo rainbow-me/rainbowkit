@@ -15,7 +15,7 @@ export const omni = ({ chains }: OmniOptions): Wallet => ({
   iconBackground: '#000',
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
-    ios: 'https://apps.apple.com/np/app/steakwallet/id1569375204',
+    ios: 'https://itunes.apple.com/us/app/id1569375204',
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
