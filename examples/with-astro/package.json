@@ -1,0 +1,24 @@
+{
+  "name": "@example/basics",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^0.5.1",
+    "astro": "^1.1.7",
+    "ethers": "^5.7.0",
+    "wagmi": "^0.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^1.1.1",
+    "@types/react": "^18.0.18",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
