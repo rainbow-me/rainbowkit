@@ -165,11 +165,7 @@ export function Playground() {
                   justifyContent: 'center',
                 }}
               >
-                <div
-                  style={{
-                    position: 'relative',
-                  }}
-                >
+                <div style={{ position: 'relative' }}>
                   <div
                     className={dialogContent}
                     style={
@@ -195,7 +191,6 @@ export function Playground() {
                     className={clsx(dialogContent)}
                     style={{ maxWidth: '100%' }}
                   >
-                    {/* <MobileOptions onClose={() => {}} /> */}
                     <DesktopOptions onClose={() => {}} />
                   </div>
                   {/* This div is placed on top of rainbowkit to make it non-interactive.
