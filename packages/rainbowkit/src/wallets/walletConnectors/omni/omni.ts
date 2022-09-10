@@ -4,19 +4,19 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface SteakOptions {
+export interface OmniOptions {
   chains: Chain[];
 }
 
-export const steak = ({ chains }: SteakOptions): Wallet => ({
-  id: 'steak',
-  name: 'Steakwallet',
-  iconUrl: async () => (await import('./steak.svg')).default,
+export const omni = ({ chains }: OmniOptions): Wallet => ({
+  id: 'omni',
+  name: 'Omni',
+  iconUrl: async () => (await import('./omni.svg')).default,
   iconBackground: '#000',
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
-    ios: 'https://apps.apple.com/np/app/steakwallet/id1569375204',
-    qrCode: 'https://steakwallet.fi/download',
+    ios: 'https://itunes.apple.com/us/app/id1569375204',
+    qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({ chains });
@@ -34,14 +34,13 @@ export const steak = ({ chains }: SteakOptions): Wallet => ({
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl:
-            'https://blog.steakwallet.fi/introducing-the-steakwallet-beta/',
+          learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
               description:
-                'Add Steakwallet to your home screen for faster access to your wallet.',
+                'Add Omni to your home screen for faster access to your wallet.',
               step: 'install',
-              title: 'Open the Steakwallet app',
+              title: 'Open the Omni app',
             },
             {
               description: 'Create a new wallet or import an existing one.',
@@ -60,3 +59,8 @@ export const steak = ({ chains }: SteakOptions): Wallet => ({
     };
   },
 });
+
+/** @deprecated */
+export const steak = omni;
+/** @deprecated */
+export interface SteakOptions extends OmniOptions {}
