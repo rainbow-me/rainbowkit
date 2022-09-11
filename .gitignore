@@ -1,9 +1,6 @@
 # The readme is copied from the root before release
 packages/rainbowkit/README.md
 
-# The styles are copied from dist/index.css after build
-packages/rainbowkit/styles.css
-
 # Logs
 logs
 *.log

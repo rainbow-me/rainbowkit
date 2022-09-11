@@ -1,5 +1,4 @@
 /* eslint-disable no-console, import/no-unresolved, import/no-extraneous-dependencies */
-import fs from 'fs/promises';
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
@@ -9,8 +8,6 @@ import readdir from 'recursive-readdir-files';
 
 const isWatching = process.argv.includes('--watch');
 const isCssMinified = process.env.MINIFY_CSS === 'true';
-
-const copyCss = () => fs.copyFile('dist/index.css', 'styles.css');
 
 const getRecursivePaths = async rootPath =>
   (await readdir(rootPath))
@@ -65,14 +62,9 @@ esbuild
     splitting: true, // Required for tree shaking
     watch: isWatching
       ? {
-          async onRebuild(rebuildError, result) {
-            try {
-              if (rebuildError) throw rebuildError;
-              await copyCss();
-              console.log('watch build succeeded:', result);
-            } catch (error) {
-              console.error('watch build failed:', error);
-            }
+          onRebuild(error, result) {
+            if (error) console.error('watch build failed:', error);
+            else console.log('watch build succeeded:', result);
           },
         }
       : undefined,
@@ -81,6 +73,5 @@ esbuild
     if (isWatching) {
       console.log('watching...');
     }
-    return copyCss();
   })
   .catch(() => process.exit(1));
