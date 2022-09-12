@@ -2,6 +2,7 @@ import React, { ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
+import { getGradientRGBAs } from '../../utils/colors';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -355,6 +356,7 @@ export function ConnectDetail({
 }
 
 const DownloadOptionsBox = ({
+  accentColor,
   actionLabel,
   description,
   iconBackground,
@@ -364,6 +366,7 @@ const DownloadOptionsBox = ({
   title,
   url,
 }: {
+  accentColor?: string;
   title: string;
   description: string;
   onAction?: () => void;
@@ -373,10 +376,13 @@ const DownloadOptionsBox = ({
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
 }) => {
+  const isBrowserCard = !accentColor;
+  const gradientRgbas =
+    !isBrowserCard && getGradientRGBAs(accentColor || iconBackground);
   return (
     <Box
       alignItems="center"
-      borderColor="generalBorder"
+      borderColor="actionButtonBorder"
       borderRadius="13"
       borderStyle="solid"
       borderWidth="1"
@@ -388,41 +394,98 @@ const DownloadOptionsBox = ({
       style={{ flex: 1, isolation: 'isolate' }}
       width="full"
     >
-      <Box
-        background="generalBorder"
-        height="full"
-        position="absolute"
-        style={{
-          filter: 'blur(100px)',
-          transform: 'translate3d(0, 0, 0)',
-          zIndex: 0,
-        }}
-        width="full"
-      >
+      {isBrowserCard && (
         <Box
-          display="flex"
-          flexDirection="row"
-          justifyContent="space-between"
+          background="downloadTopCardBackground"
+          height="full"
+          position="absolute"
+          style={{
+            zIndex: 0,
+          }}
+          width="full"
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            style={{
+              bottom: '0',
+              filter: 'blur(10px)',
+              left: '0',
+              position: 'absolute',
+              right: '0',
+              top: '0',
+              transform: 'translate3d(0, 0, 0)',
+            }}
+          >
+            <Box
+              style={{
+                filter: 'blur(100px)',
+                marginLeft: -27,
+                marginTop: -20,
+                opacity: 0.6,
+              }}
+            >
+              <AsyncImage
+                borderRadius="full"
+                height="200"
+                src={iconUrl}
+                width="200"
+              />
+            </Box>
+            <Box
+              style={{
+                filter: 'blur(100px)',
+                marginRight: 0,
+                marginTop: 105,
+                opacity: 0.6,
+              }}
+            >
+              <AsyncImage
+                borderRadius="full"
+                height="200"
+                src={iconUrl}
+                width="200"
+              />
+            </Box>
+          </Box>
+        </Box>
+      )}
+      {!isBrowserCard && gradientRgbas && (
+        <Box
+          background="downloadBottomCardBackground"
           style={{
             bottom: '0',
-            filter: 'opacity(30%)',
             left: '0',
             position: 'absolute',
             right: '0',
             top: '0',
-            transform: 'translate3d(0, 0, 0)',
           }}
         >
-          <Box style={{ marginLeft: -100, marginTop: -100 }}>
-            <AsyncImage
-              borderRadius="full"
-              height="360"
-              src={iconUrl}
-              width="360"
-            />
-          </Box>
+          <Box
+            position="absolute"
+            style={{
+              background: `radial-gradient(50% 50% at 50% 50%, ${gradientRgbas[0]} 0%, ${gradientRgbas[1]} 25%, rgba(0,0,0,0) 100%)`,
+              height: 564,
+              left: -215,
+              top: -197,
+              transform: 'translate3d(0, 0, 0)',
+              width: 564,
+            }}
+          />
+          <Box
+            position="absolute"
+            style={{
+              background: `radial-gradient(50% 50% at 50% 50%, ${gradientRgbas[2]} 0%, rgba(0, 0, 0, 0) 100%)`,
+              height: 564,
+              left: -1,
+              top: -76,
+              transform: 'translate3d(0, 0, 0)',
+              width: 564,
+            }}
+          />
         </Box>
-      </Box>
+      )}
       <Box
         alignItems="flex-start"
         display="flex"
@@ -521,6 +584,7 @@ export function DownloadOptionsDetail({
           url={wallet?.downloadUrls?.browserExtension}
         />
         <DownloadOptionsBox
+          accentColor={wallet.accentColor}
           actionLabel="Get the app"
           description="Use the mobile wallet to explore the world of Ethereum."
           iconBackground={wallet.iconBackground}

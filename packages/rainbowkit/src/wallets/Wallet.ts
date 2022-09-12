@@ -33,6 +33,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
 };
 
 export type Wallet<C extends Connector = Connector> = {
+  accentColor?: string;
   id: string;
   name: string;
   shortName?: string;

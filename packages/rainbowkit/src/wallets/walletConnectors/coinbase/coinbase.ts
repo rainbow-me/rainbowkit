@@ -14,6 +14,7 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
 
   return {
+    accentColor: '#2c5ff6',
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
