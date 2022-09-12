@@ -21,8 +21,7 @@ import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
 import { WideIcon } from './WideIcon';
 
-const { DesktopOptions, MobileOptions, dialogContent, dialogContentMobile } =
-  __private__;
+const { DesktopOptions, dialogContent } = __private__;
 
 const THEMES = {
   dark: darkTheme,
@@ -166,11 +165,7 @@ export function Playground() {
                   justifyContent: 'center',
                 }}
               >
-                <div
-                  style={{
-                    position: 'relative',
-                  }}
-                >
+                <div style={{ position: 'relative' }}>
                   <div
                     className={dialogContent}
                     style={
@@ -193,13 +188,10 @@ export function Playground() {
               <Box display={{ md: 'none' }}>
                 <div style={{ position: 'relative' }}>
                   <div
-                    className={clsx(dialogContent, dialogContentMobile)}
-                    style={{
-                      maxWidth: 420,
-                      width: '100%',
-                    }}
+                    className={clsx(dialogContent)}
+                    style={{ maxWidth: '100%' }}
                   >
-                    <MobileOptions onClose={() => {}} />
+                    <DesktopOptions onClose={() => {}} />
                   </div>
                   {/* This div is placed on top of rainbowkit to make it non-interactive.
                   pointer-events: none; was forcing scrollbar to show:
