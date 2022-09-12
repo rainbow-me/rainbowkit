@@ -71,6 +71,7 @@ export function ConnectButton({
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
                     alignItems="center"
+                    aria-label="Chain Selector"
                     as="button"
                     background={
                       unsupportedChain
