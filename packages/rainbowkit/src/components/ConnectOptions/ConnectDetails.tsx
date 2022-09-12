@@ -410,7 +410,7 @@ const DownloadOptionsBox = ({
             justifyContent="space-between"
             style={{
               bottom: '0',
-              filter: 'blur(10px)',
+              filter: 'blur(20px)',
               left: '0',
               position: 'absolute',
               right: '0',
@@ -424,6 +424,7 @@ const DownloadOptionsBox = ({
                 marginLeft: -27,
                 marginTop: -20,
                 opacity: 0.6,
+                transform: 'translate3d(0, 0, 0)',
               }}
             >
               <AsyncImage
@@ -439,6 +440,8 @@ const DownloadOptionsBox = ({
                 marginRight: 0,
                 marginTop: 105,
                 opacity: 0.6,
+                overflow: 'auto',
+                transform: 'translate3d(0, 0, 0)',
               }}
             >
               <AsyncImage
