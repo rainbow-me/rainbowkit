@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Connector, useConnect } from 'wagmi';
+import { DisableRecentWalletsContext } from '../components/RainbowKitProvider/DisableRecentWalletsContext';
 import { flatten } from '../utils/flatten';
 import { indexBy } from '../utils/indexBy';
 import { isNotNullish } from '../utils/isNotNullish';
@@ -21,6 +23,7 @@ export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
+  const disableRecentWallets = useContext(DisableRecentWalletsContext);
   const defaultConnectors = defaultConnectors_untyped as Connector[];
 
   async function connectWallet(walletId: string, connector: Connector) {
@@ -56,7 +59,7 @@ export function useWalletConnectors(): WalletConnector[] {
     walletInstance => walletInstance.id
   );
 
-  const MAX_RECENT_WALLETS = 3;
+  const MAX_RECENT_WALLETS = disableRecentWallets ? 0 : 3;
   const recentWallets: WalletInstance[] = getRecentWalletIds()
     .map(walletId => walletInstanceById[walletId])
     .filter(isNotNullish)
@@ -107,6 +110,5 @@ export function useWalletConnectors(): WalletConnector[] {
         : undefined,
     });
   });
-
   return walletConnectors;
 }
