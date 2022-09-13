@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.5.3
+
+### Patch Changes
+
+- 52e2ad6: Fix MetaMask mobile browser detection and app installation instructions
+
 ## 0.5.2
 
 ### Patch Changes
