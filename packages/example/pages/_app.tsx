@@ -181,6 +181,14 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
   ).theme;
 
+  const backgroundStyles = {
+    dark: { background: '#1A1B1F', color: '#FFF' },
+    light: null,
+    midnight: { background: '#000', color: '#FFF' },
+  };
+
+  const selectedBackgroundStyles = backgroundStyles[selectedThemeName];
+
   const accentColor =
     selectedAccentColor === 'custom'
       ? { accentColor: 'red', accentColorForeground: 'yellow' } // https://blog.codinghorror.com/a-tribute-to-the-windows-31-hot-dog-stand-color-scheme
@@ -217,7 +225,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
           overlayBlur: selectedOverlayBlur,
         })}
       >
-        <div style={{ padding: 8 }}>
+        <div style={{ padding: 8, ...selectedBackgroundStyles }}>
           <Component {...pageProps} {...appContextProps} />
 
           {isMounted && (

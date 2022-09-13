@@ -137,6 +137,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
         style={{
           display: 'flex',
           justifyContent: 'flex-end',
+          position: 'sticky',
+          top: 8,
         }}
       >
         <ConnectButton
