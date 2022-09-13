@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid, isMobile } from '../../../utils/isMobile';
+import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
@@ -41,7 +41,7 @@ export const metaMask = ({
     typeof window.ethereum !== 'undefined' &&
     isMetaMask(window.ethereum);
 
-  const shouldUseWalletConnect = isMobile() || !isMetaMaskInjected;
+  const shouldUseWalletConnect = !isMetaMaskInjected;
 
   return {
     id: 'metaMask',
@@ -85,13 +85,13 @@ export const metaMask = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Coinbase Wallet on your home screen for quicker access.',
+                      'We recommend putting MetaMask on your home screen for quicker access.',
                     step: 'install',
-                    title: 'Open the Coinbase Wallet app',
+                    title: 'Open the MetaMask app',
                   },
                   {
                     description:
-                      'You can easily backup your wallet using the cloud backup feature.',
+                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
                     step: 'create',
                     title: 'Create or Import a Wallet',
                   },
