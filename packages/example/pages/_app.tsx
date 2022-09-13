@@ -182,9 +182,9 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   ).theme;
 
   const backgroundStyles = {
-    dark: { background: '#1A1B1F', color: '#FFF' },
+    dark: { background: '#090913', color: '#FFF' },
     light: null,
-    midnight: { background: '#000', color: '#FFF' },
+    midnight: { background: '#0B0E17', color: '#FFF' },
   };
 
   const selectedBackgroundStyles = backgroundStyles[selectedThemeName];
