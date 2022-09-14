@@ -165,6 +165,7 @@ type ModalSize = typeof modalSizes[number];
 function RainbowKitApp({ Component, pageProps }: AppProps) {
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
+  const [selectedEnsChainId, setEnsChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
   const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
@@ -207,6 +208,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
         coolMode={coolModeEnabled}
+        ensChain={selectedEnsChainId}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
         showRecentTransactions={showRecentTransactions}
@@ -368,6 +370,30 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
                             )
                           }
                           value={selectedInitialChainId ?? 'default'}
+                        >
+                          {[undefined, ...chains].map(chain => (
+                            <option
+                              key={chain?.id ?? ''}
+                              value={chain?.id ?? ''}
+                            >
+                              {chain?.name ?? 'Default'}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ensChain</td>
+                      <td>
+                        <select
+                          onChange={e =>
+                            setEnsChainId(
+                              e.target.value
+                                ? parseInt(e.target.value, 10)
+                                : undefined
+                            )
+                          }
+                          value={selectedEnsChainId ?? 'default'}
                         >
                           {[undefined, ...chains].map(chain => (
                             <option

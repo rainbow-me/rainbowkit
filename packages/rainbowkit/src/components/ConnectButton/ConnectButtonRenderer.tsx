@@ -1,8 +1,8 @@
 import React, { ReactNode, useContext } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { useChainEnsAvatar } from '../../hooks/useChainEnsAvatar';
+import { useChainEnsName } from '../../hooks/useChainEnsName';
 import { useIsMounted } from '../../hooks/useIsMounted';
-import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
-import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
@@ -60,8 +60,8 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
   const { address } = useAccount();
-  const ensAvatar = useMainnetEnsAvatar(address);
-  const ensName = useMainnetEnsName(address);
+  const ensAvatar = useChainEnsAvatar(address);
+  const ensName = useChainEnsName(address);
   const { data: balanceData } = useBalance({ addressOrName: address });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();

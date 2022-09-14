@@ -51,6 +51,7 @@ export type Theme =
 export interface RainbowKitProviderProps {
   chains: RainbowKitChain[];
   initialChain?: RainbowKitChain | number;
+  ensChain?: RainbowKitChain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
@@ -70,6 +71,7 @@ const defaultTheme = lightTheme();
 export function RainbowKitProvider({
   chains,
   initialChain,
+  ensChain,
   id,
   theme = defaultTheme,
   children,
@@ -102,7 +104,11 @@ export function RainbowKitProvider({
   const isSmallScreen = width && width < largeScreenMinWidth;
 
   return (
-    <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
+    <RainbowKitChainProvider
+      chains={chains}
+      ensChain={ensChain}
+      initialChain={initialChain}
+    >
       <CoolModeContext.Provider value={coolMode}>
         <ModalSizeContext.Provider
           value={isSmallScreen ? ModalSizeOptions.COMPACT : modalSize}

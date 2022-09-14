@@ -15,6 +15,7 @@ export type Chain = WagmiChain & RainbowKitChain;
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
   initialChainId?: number;
+  ensChainId?: number;
 }
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
@@ -24,12 +25,14 @@ const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
 interface RainbowKitChainProviderProps {
   chains: RainbowKitChain[];
   initialChain?: RainbowKitChain | number;
+  ensChain?: RainbowKitChain | number;
   children: ReactNode;
 }
 
 export function RainbowKitChainProvider({
   chains,
   children,
+  ensChain,
   initialChain,
 }: RainbowKitChainProviderProps) {
   return (
@@ -37,10 +40,11 @@ export function RainbowKitChainProvider({
       value={useMemo(
         () => ({
           chains: provideRainbowKitChains(chains),
+          ensChainId: typeof ensChain === 'number' ? ensChain : ensChain?.id,
           initialChainId:
             typeof initialChain === 'number' ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain]
+        [chains, initialChain, ensChain]
       )}
     >
       {children}
@@ -53,6 +57,9 @@ export const useRainbowKitChains = () =>
 
 export const useInitialChainId = () =>
   useContext(RainbowKitChainContext).initialChainId;
+
+export const useEnsChainId = () =>
+  useContext(RainbowKitChainContext).ensChainId;
 
 export const useRainbowKitChainsById = () => {
   const rainbowkitChains = useRainbowKitChains();
