@@ -2,7 +2,7 @@ import { Chain, useProvider, chain as wagmiChains } from 'wagmi';
 import { useEnsChainId } from '../components/RainbowKitProvider/RainbowKitChainContext';
 
 export function useEnsChain() {
-  const chainId = useEnsChainId();
+  const chainId = useEnsChainId() ?? wagmiChains.mainnet.id;
 
   // Because the generic for 'useProvider' is defaulting to 'unknown'
   // and the return type is being resolved as 'any', we're having to
@@ -12,11 +12,7 @@ export function useEnsChain() {
   // an invalid type, we'll silently bail out.
   const provider = useProvider<{ chains?: Chain[] }>();
   const chains = Array.isArray(provider.chains) ? provider.chains : [];
-  const defaulChainId = wagmiChains.mainnet.id;
-  // Enable ENS when ensChain is set in RainbowKitProvider or
-  // when mainnet is in the list of configured chains
-  const enabled =
-    chainId !== undefined || chains?.some(chain => chain?.id === defaulChainId);
+  const enabled = chains?.some(chain => chain?.id === chainId);
 
-  return { chainId: chainId ?? defaulChainId, enabled };
+  return { chainId, enabled };
 }
