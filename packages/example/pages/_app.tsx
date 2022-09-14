@@ -225,7 +225,13 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
           overlayBlur: selectedOverlayBlur,
         })}
       >
-        <div style={{ padding: 8, ...selectedBackgroundStyles }}>
+        <div
+          style={{
+            minHeight: '100vh',
+            padding: 8,
+            ...selectedBackgroundStyles,
+          }}
+        >
           <Component {...pageProps} {...appContextProps} />
 
           {isMounted && (
