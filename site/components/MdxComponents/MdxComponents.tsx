@@ -89,7 +89,24 @@ export const components = {
       </Link>
     </Box>
   ),
-  Img: props => <NextImage {...props} />,
+  h5: ({ id, ...props }) => (
+    <Box id={id} marginBottom="2" scrollMarginTop="2">
+      <Link href={`#${id}`}>
+        <Text
+          as="h5"
+          display="inline"
+          variant="body"
+          weight="semibold"
+          {...props}
+        />
+      </Link>
+    </Box>
+  ),
+  Img: ({ id, src, ...props }) => (
+    <Box id={id} marginBottom="8">
+      <NextImage layout="responsive" loading="lazy" src={src} {...props} />
+    </Box>
+  ),
   li: ({ children, ...props }) => (
     <Box alignItems="center" as="li" display="flex" {...props}>
       <Box
@@ -169,4 +186,18 @@ export const components = {
   },
   PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
   ul: props => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
+  Video: props => (
+    <Box
+      as="video"
+      autoPlay
+      borderRadius="3"
+      controls
+      display="block"
+      marginBottom="5"
+      muted
+      playsInline
+      style={{ width: '100%' }}
+      {...props}
+    />
+  ),
 };

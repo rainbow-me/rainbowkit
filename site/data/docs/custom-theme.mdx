@@ -17,6 +17,9 @@ While the built-in themes provide some level of customization, the `Theme` type 
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
 
 const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
   colors: {
     accentColor: '...',
     accentColorForeground: '...',
@@ -68,7 +71,7 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme}>
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
   </RainbowKitProvider>;
 )
@@ -110,7 +113,7 @@ Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` pr
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme}>
+    <RainbowKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
     </RainbowKitProvider>
   );

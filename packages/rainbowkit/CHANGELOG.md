@@ -1,5 +1,251 @@
 # @rainbow-me/rainbowkit
 
+## 0.5.3
+
+### Patch Changes
+
+- 52e2ad6: Fix MetaMask mobile browser detection and app installation instructions
+
+## 0.5.2
+
+### Patch Changes
+
+- 12912b3: Fix the `@rainbow-me/rainbowkit/styles.css` import for Jest, and other tooling that doesn't support the `exports` field in `package.json`.
+
+  Jest currently has issues when importing RainbowKit styles due to lack of support for the `exports` field, which we use to publicly alias `@rainbow-me/rainbowkit/dist/index.css` as `@rainbow-me/rainbowkit/styles.css`. To fix this, we now include a `styles.css` _directory_ in the RainbowKit package containing a `package.json` file whose `main` field points to `"../dist/index.css"`.
+
+- fcfc13d: Improve accessibility in Chain switcher button
+- 3f9013f: Rename Steakwallet to Omni and leave `steak` as a deprecated wallet.
+
+  ```
+  import { wallet } from '@rainbow-me/rainbowkit';
+
+  const omni = wallet.omni({ chains });
+  ```
+
+## 0.5.1
+
+### Patch Changes
+
+- 8060ccd: Add Optimism Goerli and Sepolia chain information now that they are first-class chains in Wagmi.
+- 4dfe834: Provide download options for wallets with both browser extensions and mobile apps.
+- 8060ccd: Fix small spelling mistake in the WalletConnect modal flow.
+
+## 0.5.0
+
+### Minor Changes
+
+- 737a1d6: Added support for authentication.
+
+  RainbowKit now provides first-class support for [Sign-In with Ethereum](https://login.xyz) and [NextAuth.js](https://next-auth.js.org) via the `@rainbow-me/rainbowkit-siwe-next-auth` package, as well as lower-level APIs for integrating with custom back-ends and message formats.
+
+  For more information on how to integrate this feature into your application, check out the full [RainbowKit authentication guide.](https://www.rainbowkit.com/docs/authentication)
+
+  **Migration guide for custom ConnectButton implementations**
+
+  If you're using `ConnectButton.Custom` and want to make use of authentication, you'll want to update the logic in your render prop to use the new `authenticationStatus` property, which is either `"loading"` (during initial page load), `"unauthenticated"` or `"authenticated"`.
+
+  For example, if you wanted to display the "Connect Wallet" state when the user has connected their wallet but haven't authenticated, you can calculate the state in the following way:
+
+  ```tsx
+  <ConnectButton.Custom>
+    {({
+      account,
+      chain,
+      openAccountModal,
+      openChainModal,
+      openConnectModal,
+      authenticationStatus,
+      mounted,
+    }) => {
+      const ready = mounted && authenticationStatus !== 'loading';
+      const connected =
+        ready &&
+        account &&
+        chain &&
+        (!authenticationStatus || authenticationStatus === 'authenticated');
+
+      return (
+        <div
+          {...(!ready && {
+            'aria-hidden': true,
+            'style': {
+              opacity: 0,
+            },
+          })}
+        >
+          {/* etc... */}
+        </div>
+      );
+    }}
+  </ConnectButton.Custom>
+  ```
+
+  For a more complete example and API documentation, check out the [custom ConnectButton documentation.](https://www.rainbowkit.com/docs/custom-connect-button)
+
+### Patch Changes
+
+- 488c5a1: Fix error on desktop where selecting Coinbase Wallet while extension was installed would show you the wrong copy.
+
+## 0.4.8
+
+### Patch Changes
+
+- 4333995: Support filtering chains before passing them to `RainbowKitProvider`.
+
+  This is particularly useful if you're building an L2-only project and you want mainnet to be available for resolving ENS details but you don't want it to be listed in the chain selector.
+
+  **Example usage**
+
+  This example uses Polygon while supporting ENS from mainnet.
+
+  ```tsx
+  const {
+    chains: [, ...chains], // Omit first chain (mainnet), get the rest
+    provider,
+    webSocketProvider,
+  } = configureChains(
+    [chain.mainnet, chain.polygon],
+    [
+      alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),
+      publicProvider(),
+    ]
+  );
+  ```
+
+## 0.4.7
+
+### Patch Changes
+
+- 1a4f2f7: Add a 'compact' modal size option for developers looking to use a simpler version of RainbowKit, available by setting the `modalSize` prop to `"compact"` on `RainbowKitProvider`.
+
+## 0.4.6
+
+### Patch Changes
+
+- aae3163: Fix error caused by attempting to prevent page scrolling when the body element's overflow is set to hidden.
+- 948c036: Avoid switching chains after connecting if the user's wallet is already on a supported chain
+
+## 0.4.5
+
+### Patch Changes
+
+- 8dd5a74: Update wagmi peer dependency to include v0.6
+
+## 0.4.4
+
+### Patch Changes
+
+- fd08aa1: Avoid ENS requests when mainnet isn't in list of configured chains
+
+## 0.4.3
+
+### Patch Changes
+
+- 4857e75: Fix duplicate wallets in connect modal after hot module reloading
+- c6a1033: Added `initialChain` prop to `RainbowKitProvider`
+
+  RainbowKit (as of v0.3.2) automatically connects to the first chain in the `chains` array passed to `RainbowKitProvider`. This behavior can now be customized via the `initialChain` prop.
+
+  The initial chain can be configured using a chain ID.
+
+  ```tsx
+  <RainbowKitProvider chains={chains} initialChain={1}>
+  ```
+
+  As a convenience, you can also pass a chain object.
+
+  ```tsx
+  <RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
+  ```
+
+- 396308f: Added Hooks for programmatically opening modals
+
+  The following Hooks are now provided to allow the programmatic opening of modals anywhere in your application.
+
+  - `useConnectModal`
+  - `useAccountModal`
+  - `useChainModal`
+
+  Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+
+  **Example usage**
+
+  ```tsx
+  import {
+    useConnectModal,
+    useAccountModal,
+    useChainModal,
+  } from '@rainbow-me/rainbowkit';
+
+  export const YourApp = () => {
+    const { openConnectModal } = useConnectModal();
+    const { openAccountModal } = useAccountModal();
+    const { openChainModal } = useChainModal();
+
+    return (
+      <>
+        {openConnectModal && (
+          <button onClick={openConnectModal} type="button">
+            Open Connect Modal
+          </button>
+        )}
+
+        {openAccountModal && (
+          <button onClick={openAccountModal} type="button">
+            Open Account Modal
+          </button>
+        )}
+
+        {openChainModal && (
+          <button onClick={openChainModal} type="button">
+            Open Chain Modal
+          </button>
+        )}
+      </>
+    );
+  };
+  ```
+
+## 0.4.2
+
+### Patch Changes
+
+- 0213b52: Use consistent balance rounding logic between account button and modal
+
+## 0.4.1
+
+### Patch Changes
+
+- 3637bbb: Use Mainnet ENS name / avatar on other networks if available
+- 3637bbb: Add a disconnect option to the switch network modal when connected to unsupported network
+
+## 0.4.0
+
+### Minor Changes
+
+- 08d189b: Updated `wagmi` peer dependency to `0.5.x`
+
+## 0.3.7
+
+### Patch Changes
+
+- b2b46ef: Fix WalletConnect deep linking for wallets with custom URL schemes
+
+## 0.3.6
+
+### Patch Changes
+
+- d905271: Fix issue on iOS in non-Safari browsers and WebViews where a blank tab is left behind after connecting via WalletConnect
+
+## 0.3.5
+
+### Patch Changes
+
+- 40d838e: Pinned the `wagmi` peer dependency to `0.4.x`
+- 1ab9c07: Fix bug where "onConnecting" callbacks were fired multiple times when toggling between WalletConnect-based wallets
+- 1a7d50c: Update connect button height to be consistent between states.
+
 ## 0.3.4
 
 ### Patch Changes

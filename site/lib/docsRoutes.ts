@@ -13,7 +13,7 @@ export const docsRoutes: RouteProps[] = [
     label: 'Overview',
     pages: [
       { title: 'Introduction', slug: 'introduction' },
-      { title: 'Migrating to >=0.2', slug: 'migrating-to-02' },
+      { title: 'Migration Guide', slug: 'migration-guide' },
     ],
   },
 
@@ -22,8 +22,10 @@ export const docsRoutes: RouteProps[] = [
     pages: [
       { title: 'Installation', slug: 'installation' },
       { title: 'ConnectButton', slug: 'connect-button' },
+      { title: 'Modal Sizes', slug: 'modal-sizes' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
+      { title: 'Authentication', slug: 'authentication' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],
   },
@@ -31,6 +33,7 @@ export const docsRoutes: RouteProps[] = [
   {
     label: 'Advanced',
     pages: [
+      { title: 'Modal Hooks', slug: 'modal-hooks' },
       { title: 'Custom ConnectButton', slug: 'custom-connect-button' },
       { title: 'Custom Theme', slug: 'custom-theme' },
       { title: 'Custom Wallet List', slug: 'custom-wallet-list' },
@@ -38,7 +41,8 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Custom Chains', slug: 'custom-chains' },
       { title: 'Custom App Info', slug: 'custom-app-info' },
       { title: 'Custom Avatars', slug: 'custom-avatars' },
-      { title: 'Cool mode', slug: 'cool-mode' },
+      { title: 'Custom Authentication', slug: 'custom-authentication' },
+      { title: 'Cool Mode', slug: 'cool-mode' },
     ],
   },
 ];

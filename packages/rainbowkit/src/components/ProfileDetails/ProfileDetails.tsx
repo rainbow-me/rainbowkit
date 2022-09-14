@@ -4,6 +4,7 @@ import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { abbreviateETHBalance } from '../ConnectButton/abbreviateETHBalance';
 import { formatAddress } from '../ConnectButton/formatAddress';
 import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
@@ -15,7 +16,7 @@ import { TxList } from '../Txs/TxList';
 import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
-  accountData: ReturnType<typeof useAccount>['data'];
+  address: ReturnType<typeof useAccount>['address'];
   balanceData: ReturnType<typeof useBalance>['data'];
   ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
   ensName: ReturnType<typeof useEnsName>['data'];
@@ -24,7 +25,7 @@ interface ProfileDetailsProps {
 }
 
 export function ProfileDetails({
-  accountData,
+  address,
   balanceData,
   ensAvatar,
   ensName,
@@ -35,11 +36,11 @@ export function ProfileDetails({
   const [copiedAddress, setCopiedAddress] = useState(false);
 
   const copyAddressAction = useCallback(() => {
-    if (accountData?.address) {
-      navigator.clipboard.writeText(accountData?.address);
+    if (address) {
+      navigator.clipboard.writeText(address);
       setCopiedAddress(true);
     }
-  }, [accountData?.address]);
+  }, [address]);
 
   useEffect(() => {
     if (copiedAddress) {
@@ -50,15 +51,15 @@ export function ProfileDetails({
     }
   }, [copiedAddress]);
 
-  if (!accountData?.address) {
+  if (!address) {
     return null;
   }
 
-  const accountName = ensName
-    ? formatENS(ensName)
-    : formatAddress(accountData.address);
+  const accountName = ensName ? formatENS(ensName) : formatAddress(address);
   const ethBalance = balanceData?.formatted;
-  const balance = Number(ethBalance).toPrecision(3);
+  const displayBalance = ethBalance
+    ? abbreviateETHBalance(parseFloat(ethBalance))
+    : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();
 
@@ -87,7 +88,7 @@ export function ProfileDetails({
             </Box>{' '}
             <Box marginTop={mobile ? '24' : '0'}>
               <Avatar
-                address={accountData.address}
+                address={address}
                 imageUrl={ensAvatar}
                 size={mobile ? 82 : 74}
               />
@@ -118,7 +119,7 @@ export function ProfileDetails({
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {balance} {balanceData.symbol}
+                    {displayBalance} {balanceData.symbol}
                   </Text>
                 </Box>
               )}
@@ -147,7 +148,7 @@ export function ProfileDetails({
           <>
             <Box background="generalBorder" height="1" marginTop="-1" />
             <Box>
-              <TxList accountData={accountData} />
+              <TxList address={address} />
             </Box>
           </>
         )}

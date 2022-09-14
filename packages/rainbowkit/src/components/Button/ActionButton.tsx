@@ -34,6 +34,7 @@ const sizeVariants: Record<
 };
 
 export function ActionButton({
+  disabled = false,
   href,
   label,
   onClick,
@@ -49,23 +50,28 @@ export function ActionButton({
   size?: Size;
   target?: string;
   type?: 'primary' | 'secondary';
+  disabled?: boolean;
 }) {
   const isPrimary = type === 'primary';
   const isNotLarge = size !== 'large';
   const mobile = isMobile();
-  const background = isPrimary
-    ? 'accentColor'
-    : isNotLarge
-    ? 'actionButtonSecondaryBackground'
-    : null;
+  const background = !disabled
+    ? isPrimary
+      ? 'accentColor'
+      : isNotLarge
+      ? 'actionButtonSecondaryBackground'
+      : null
+    : 'actionButtonSecondaryBackground';
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   const hasBorder = !mobile || !isNotLarge;
   return (
     <Box
       {...(href
-        ? { as: 'a', href, rel, target }
+        ? !disabled
+          ? { as: 'a', href, rel, target }
+          : {}
         : { as: 'button', type: 'button' })}
-      onClick={onClick}
+      onClick={!disabled ? onClick : undefined}
       {...(hasBorder
         ? {
             borderColor:
@@ -77,18 +83,26 @@ export function ActionButton({
           }
         : {})}
       borderRadius="actionButton"
-      className={touchableStyles({ active: 'shrinkSm', hover: 'grow' })}
+      className={
+        !disabled && touchableStyles({ active: 'shrinkSm', hover: 'grow' })
+      }
       display="block"
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
       textAlign="center"
-      transition="default"
+      transition="transform"
       {...(background ? { background } : {})}
       {...(height ? { height } : {})}
     >
       <Text
-        color={isPrimary ? 'accentColorForeground' : 'accentColor'}
+        color={
+          !disabled
+            ? isPrimary
+              ? 'accentColorForeground'
+              : 'accentColor'
+            : 'modalTextSecondary'
+        }
         size={fontSize}
         weight="bold"
       >

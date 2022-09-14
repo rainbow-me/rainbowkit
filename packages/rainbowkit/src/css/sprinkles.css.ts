@@ -109,9 +109,11 @@ const dimensions = {
   '34': '34px',
   '36': '36px',
   '40': '40px',
+  '44': '44px',
   '48': '48px',
   '54': '54px',
   '60': '60px',
+  '360': '360px',
   'full': '100%',
   'max': 'max-content',
 };
@@ -205,6 +207,7 @@ const unresponsiveProperties = defineProperties({
     },
     transition: {
       default: '0.125s ease',
+      transform: 'transform 0.125s ease',
     },
     userSelect: ['none'] as const,
     width: dimensions,

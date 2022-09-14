@@ -1,5 +1,128 @@
 # site
 
+## 0.0.32
+
+### Patch Changes
+
+- Updated dependencies [52e2ad6]
+  - @rainbow-me/rainbowkit@0.5.3
+
+## 0.0.31
+
+### Patch Changes
+
+- Updated dependencies [12912b3]
+- Updated dependencies [fcfc13d]
+- Updated dependencies [3f9013f]
+  - @rainbow-me/rainbowkit@0.5.2
+
+## 0.0.30
+
+### Patch Changes
+
+- Updated dependencies [8060ccd]
+- Updated dependencies [4dfe834]
+- Updated dependencies [8060ccd]
+  - @rainbow-me/rainbowkit@0.5.1
+
+## 0.0.29
+
+### Patch Changes
+
+- Updated dependencies [737a1d6]
+- Updated dependencies [488c5a1]
+  - @rainbow-me/rainbowkit@0.5.0
+
+## 0.0.28
+
+### Patch Changes
+
+- Updated dependencies [4333995]
+  - @rainbow-me/rainbowkit@0.4.8
+
+## 0.0.27
+
+### Patch Changes
+
+- Updated dependencies [1a4f2f7]
+  - @rainbow-me/rainbowkit@0.4.7
+
+## 0.0.26
+
+### Patch Changes
+
+- Updated dependencies [aae3163]
+- Updated dependencies [948c036]
+  - @rainbow-me/rainbowkit@0.4.6
+
+## 0.0.25
+
+### Patch Changes
+
+- Updated dependencies [8dd5a74]
+  - @rainbow-me/rainbowkit@0.4.5
+
+## 0.0.24
+
+### Patch Changes
+
+- Updated dependencies [fd08aa1]
+  - @rainbow-me/rainbowkit@0.4.4
+
+## 0.0.23
+
+### Patch Changes
+
+- Updated dependencies [4857e75]
+- Updated dependencies [c6a1033]
+- Updated dependencies [396308f]
+  - @rainbow-me/rainbowkit@0.4.3
+
+## 0.0.22
+
+### Patch Changes
+
+- Updated dependencies [0213b52]
+  - @rainbow-me/rainbowkit@0.4.2
+
+## 0.0.21
+
+### Patch Changes
+
+- Updated dependencies [3637bbb]
+- Updated dependencies [3637bbb]
+  - @rainbow-me/rainbowkit@0.4.1
+
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies [08d189b]
+  - @rainbow-me/rainbowkit@0.4.0
+
+## 0.0.19
+
+### Patch Changes
+
+- Updated dependencies [b2b46ef]
+  - @rainbow-me/rainbowkit@0.3.7
+
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies [d905271]
+  - @rainbow-me/rainbowkit@0.3.6
+
+## 0.0.17
+
+### Patch Changes
+
+- Updated dependencies [40d838e]
+- Updated dependencies [1ab9c07]
+- Updated dependencies [1a7d50c]
+  - @rainbow-me/rainbowkit@0.3.5
+
 ## 0.0.16
 
 ### Patch Changes

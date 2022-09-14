@@ -69,6 +69,30 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
                   ],
                 },
               },
+              extension: {
+                instructions: {
+                  steps: [
+                    {
+                      description:
+                        'We recommend pinning Coinbase Wallet to your taskbar for quicker access to your wallet.',
+                      step: 'install',
+                      title: 'Install the Coinbase Wallet extension',
+                    },
+                    {
+                      description:
+                        'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      step: 'create',
+                      title: 'Create or Import a Wallet',
+                    },
+                    {
+                      description:
+                        'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                      step: 'refresh',
+                      title: 'Refresh your browser',
+                    },
+                  ],
+                },
+              },
             }),
       };
     },

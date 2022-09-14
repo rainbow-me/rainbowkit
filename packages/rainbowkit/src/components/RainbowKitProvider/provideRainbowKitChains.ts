@@ -15,10 +15,12 @@ type ChainName =
   | 'mainnet'
   | 'optimism'
   | 'optimismKovan'
+  | 'optimismGoerli'
   | 'polygon'
   | 'polygonMumbai'
   | 'rinkeby'
-  | 'ropsten';
+  | 'ropsten'
+  | 'sepolia';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -70,11 +72,13 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, ...ethereumIcon },
   optimism: { chainId: 10, ...optimismIcon },
+  optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
   polygon: { chainId: 137, ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
+  sepolia: { chainId: 11_155_111, ...ethereumIcon },
 };
 
 const chainMetadataById = Object.fromEntries(

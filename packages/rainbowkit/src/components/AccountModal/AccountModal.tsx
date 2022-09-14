@@ -1,29 +1,24 @@
 import React from 'react';
-import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import { useAccount, useBalance, useDisconnect } from 'wagmi';
+import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
+import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
 
 export interface AccountModalProps {
-  accountData: ReturnType<typeof useAccount>['data'];
-  balanceData: ReturnType<typeof useBalance>['data'];
-  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
-  ensName: ReturnType<typeof useEnsName>['data'];
   open: boolean;
   onClose: () => void;
-  onDisconnect: () => void;
 }
 
-export function AccountModal({
-  accountData,
-  balanceData,
-  ensAvatar,
-  ensName,
-  onClose,
-  onDisconnect,
-  open,
-}: AccountModalProps) {
-  if (!accountData) {
+export function AccountModal({ onClose, open }: AccountModalProps) {
+  const { address } = useAccount();
+  const { data: balanceData } = useBalance({ addressOrName: address });
+  const ensAvatar = useMainnetEnsAvatar(address);
+  const ensName = useMainnetEnsName(address);
+  const { disconnect } = useDisconnect();
+
+  if (!address) {
     return null;
   }
 
@@ -31,16 +26,16 @@ export function AccountModal({
 
   return (
     <>
-      {accountData && (
+      {address && (
         <Dialog onClose={onClose} open={open} titleId={titleId}>
           <DialogContent bottomSheetOnMobile padding="0">
             <ProfileDetails
-              accountData={accountData}
+              address={address}
               balanceData={balanceData}
               ensAvatar={ensAvatar}
               ensName={ensName}
               onClose={onClose}
-              onDisconnect={onDisconnect}
+              onDisconnect={disconnect}
             />
           </DialogContent>
         </Dialog>

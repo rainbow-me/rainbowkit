@@ -16,7 +16,9 @@ RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagm
 - `chain.rinkeby`
 - `chain.goerli`
 - `chain.kovan`
+- `chain.sepolia`
 - `chain.optimism`
+- `chain.optimismGoerli`
 - `chain.optimismKovan`
 - `chain.polygon`
 - `chain.polygonMumbai`
@@ -38,7 +40,7 @@ import { publicProvider } from 'wagmi/providers/public';
 const { chains } = configureChains(
   [chain.mainnet, chain.polygon],
   [
-    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider(),
   ]
 );
@@ -51,6 +53,24 @@ const App = () => {
   );
 };
 ```
+
+### Customizing the initial chain
+
+By default, RainbowKit will connect to the first chain in your `chains` array to ensure users aren't immediately presented with the "Wrong network" state. This behavior can be customized via the `initialChain` prop.
+
+The initial chain can be configured using a chain ID.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
+
+As a convenience, you can also pass a chain object.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
+```
+
+### Custom chain icons
 
 Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
 
@@ -67,7 +87,7 @@ const defaultChains: Chain[] = [
 ];
 
 const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
   publicProvider(),
 ]);
 ```

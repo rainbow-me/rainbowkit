@@ -6,8 +6,8 @@ import { infinityWallet } from './infinityWallet/infinityWallet';
 import { injected } from './injected/injected';
 import { ledger } from './ledger/ledger';
 import { metaMask } from './metaMask/metaMask';
+import { omni, steak } from './omni/omni';
 import { rainbow } from './rainbow/rainbow';
-import { steak } from './steak/steak';
 import { trust } from './trust/trust';
 import { walletConnect } from './walletConnect/walletConnect';
 
@@ -20,7 +20,9 @@ export const wallet = {
   injected,
   ledger,
   metaMask,
+  omni,
   rainbow,
+  /** @deprecated */
   steak,
   trust,
   walletConnect,
