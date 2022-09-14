@@ -382,10 +382,7 @@ const DownloadOptionsBox = ({
   return (
     <Box
       alignItems="center"
-      borderColor="actionButtonBorder"
       borderRadius="13"
-      borderStyle="solid"
-      borderWidth="1"
       display="flex"
       justifyContent="center"
       overflow="hidden"
@@ -394,6 +391,20 @@ const DownloadOptionsBox = ({
       style={{ flex: 1, isolation: 'isolate' }}
       width="full"
     >
+      <Box
+        borderColor="actionButtonBorder"
+        borderRadius="13"
+        borderStyle="solid"
+        borderWidth="1"
+        style={{
+          bottom: '0',
+          left: '0',
+          position: 'absolute',
+          right: '0',
+          top: '0',
+          zIndex: 1,
+        }}
+      />
       {isBrowserCard && (
         <Box
           background="downloadTopCardBackground"
