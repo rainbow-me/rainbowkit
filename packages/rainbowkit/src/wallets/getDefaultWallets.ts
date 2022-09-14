@@ -3,6 +3,7 @@ import { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
 import { brave } from './walletConnectors/brave/brave';
 import { coinbase } from './walletConnectors/coinbase/coinbase';
+import { isInfinityWallet, infinityWallet } from './walletConnectors/infinityWallet/infinityWallet';
 import { injected } from './walletConnectors/injected/injected';
 import { isMetaMask, metaMask } from './walletConnectors/metaMask/metaMask';
 import { rainbow } from './walletConnectors/rainbow/rainbow';
@@ -22,6 +23,7 @@ export const getDefaultWallets = ({
     typeof window !== 'undefined' &&
     window.ethereum &&
     !isMetaMask(window.ethereum) &&
+    !isInfinityWallet(window.ethereum) &&
     !window.ethereum.isCoinbaseWallet &&
     !window.ethereum.isBraveWallet;
 
@@ -30,6 +32,7 @@ export const getDefaultWallets = ({
       groupName: 'Popular',
       wallets: [
         rainbow({ chains }),
+        infinityWallet({ chains, shimDisconnect: true }),
         coinbase({ appName, chains }),
         metaMask({ chains, shimDisconnect: true }),
         walletConnect({ chains }),

@@ -26,6 +26,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'More',
     wallets: [
+      wallet.infinityWallet({ chains }),
       wallet.argent({ chains }),
       wallet.trust({ chains }),
       wallet.omni({ chains }),
