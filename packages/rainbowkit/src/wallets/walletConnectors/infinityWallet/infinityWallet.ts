@@ -10,12 +10,29 @@ export interface InfinityWalletOptions {
   shimDisconnect?: boolean;
 }
 
+export interface InfinityWalletEthereum extends Ethereum {
+  isInfinityWallet?: true;
+}
+
+export function isInfinityWallet(ethereum: NonNullable<typeof window['ethereum']>) {
+
+  let iwEtheruem: InfinityWalletEthereum | undefined = typeof ethereum !== 'undefined' ? ethereum : undefined;
+
+  const isInfinityWallet = Boolean(iwEtheruem?.isInfinityWallet);
+
+  if (!isInfinityWallet) {
+    return false;
+  }
+
+  return true;
+}
+
 export const infinityWallet = ({
   chains,
   shimDisconnect,
 }: InfinityWalletOptions): Wallet => {
 
-  const isInfinityWalletInjected = typeof window !== 'undefined' && typeof window.ethereum !== 'undefined' && window.ethereum?.isInfinityWallet;
+  const isInfinityWalletInjected = typeof window !== 'undefined' && typeof window.ethereum !== 'undefined' && isInfinityWallet(window.ethereum);
 
   const shouldUseWalletConnect = !isInfinityWalletInjected;
 
@@ -49,6 +66,7 @@ export const infinityWallet = ({
         desktop: {
           getUri: async () => {
             openInfinityWallet(window.location.href, chains);
+            return '';
           },
         },
         qrCode: {
@@ -78,4 +96,3 @@ export const infinityWallet = ({
     },
   };
 };
-
