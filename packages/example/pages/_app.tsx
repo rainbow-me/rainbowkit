@@ -176,7 +176,6 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-  const [disableRecentWallets, setDisableRecentWallets] = useState(false);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -208,7 +207,6 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
         coolMode={coolModeEnabled}
-        disableRecentWallets={disableRecentWallets}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
         showRecentTransactions={showRecentTransactions}
@@ -259,27 +257,6 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
                             signOut({ redirect: false });
                             disconnect();
                           }}
-                          type="checkbox"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label
-                          htmlFor="disableRecent"
-                          style={{ userSelect: 'none' }}
-                        >
-                          disableRecentWallets
-                        </label>
-                      </td>
-                      <td>
-                        <input
-                          checked={disableRecentWallets}
-                          id="disableRecent"
-                          name="authEnabled"
-                          onChange={e =>
-                            setDisableRecentWallets(e.target.checked)
-                          }
                           type="checkbox"
                         />
                       </td>
