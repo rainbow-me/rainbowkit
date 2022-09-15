@@ -348,6 +348,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             name={wallet.name}
                             onClick={() => onSelectWallet(wallet)}
                             ready={wallet.ready}
+                            recent={wallet.recent}
                           />
                         );
                       })}
