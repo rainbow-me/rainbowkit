@@ -1,5 +1,16 @@
 # with-next-siwe-iron-session
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+  - @rainbow-me/rainbowkit@0.6.0
+
 ## 0.0.4
 
 ### Patch Changes

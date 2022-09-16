@@ -1,5 +1,103 @@
 # @rainbow-me/rainbowkit
 
+## 0.6.0
+
+### Minor Changes
+
+- c944ddc: Allow custom wallets to automatically hide themselves based on the availability of other wallets in the list. This can be achieved via the new optional `hidden` function on the `Wallet` type.
+
+  **Example usage**
+
+  This is an example of a custom wallet that hides itself if another injected connector is available.
+
+  ```ts
+  import type Wallet from '@rainbow-me/rainbowkit';
+  import { InjectedConnector } from 'wagmi/connectors/injected';
+
+  const myCustomWallet: Wallet = {
+    hidden: ({ wallets }) => {
+      return wallets.some(
+        wallet =>
+          wallet.installed &&
+          (wallet.connector instanceof InjectedConnector ||
+            wallet.id === 'coinbase')
+      );
+    },
+    ...etc,
+  };
+  ```
+
+- c944ddc: Add `installed` property to `wallet.coinbase` to support detecting whether Coinbase Wallet SDK's injected connector is available
+
+### Patch Changes
+
+- c944ddc: Automatically hide "Injected Wallet" option if another injected wallet in the list is available
+
+  **Migration guide**
+
+  Previously we provided instructions for manually calculating whether the "Injected Wallet" option should be visible.
+
+  ```ts
+  const needsInjectedWalletFallback =
+    typeof window !== 'undefined' &&
+    window.ethereum &&
+    !window.ethereum.isMetaMask &&
+    !window.ethereum.isCoinbaseWallet;
+
+  const connectors = connectorsForWallets([
+    {
+      groupName: 'Suggested',
+      wallets: [
+        wallet.rainbow({ chains }),
+        wallet.metaMask({ chains }),
+        wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+        wallet.metaMask({ chains }),
+        ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
+      ],
+    },
+  ]);
+  ```
+
+  This manual logic should no longer be needed since it's now handled automatically, meaning that the previous example could be simplified in the following way.
+
+  ```ts
+  const connectors = connectorsForWallets([
+    {
+      groupName: 'Suggested',
+      wallets: [
+        wallet.rainbow({ chains }),
+        wallet.metaMask({ chains }),
+        wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+        wallet.metaMask({ chains }),
+        wallet.injected({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+  In addition, since the "Injected Wallet" option is only rendered when necessary based on the end user's browser environment, it's recommended that you place it at the start of the list to ensure it's visible.
+
+  ```ts
+  const connectors = connectorsForWallets([
+    {
+      groupName: 'Suggested',
+      wallets: [
+        wallet.injected({ chains }),
+        wallet.rainbow({ chains }),
+        wallet.metaMask({ chains }),
+        wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+        wallet.metaMask({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+- c944ddc: Move the "Injected Wallet" fallback option to the start of the default wallet list when present
+
+  This option is only presented when an injected wallet is available that isn't handled by another wallet in the list, which means that it's the option most likely to be selected by the end user. As a result, we now give it the highest priority in the list returned from `getDefaultWallets`.
+
+- c944ddc: Ensure TokenPocket is not detected as MetaMask
+
 ## 0.5.3
 
 ### Patch Changes
