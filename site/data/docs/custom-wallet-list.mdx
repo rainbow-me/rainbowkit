@@ -31,7 +31,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.injected({ chains, shimDisconnect: true }),
+      wallet.injected({ chains }),
       wallet.rainbow({ chains }),
       wallet.walletConnect({ chains }),
     ],
@@ -210,7 +210,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.injected({ chains, shimDisconnect: true }),
+      wallet.injected({ chains }),
       wallet.metaMask({ chains }),
       wallet.walletConnect({ chains }),
     ],
@@ -227,7 +227,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.injected({ chains, shimDisconnect: true }),
+      wallet.injected({ chains }),
       wallet.metaMask({ chains }),
       wallet.rainbow({ chains }),
       wallet.coinbase({ appName: 'My RainbowKit App', chains }),
@@ -256,7 +256,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Others',
     wallets: [
-      wallet.injected({ chains, shimDisconnect: true }),
+      wallet.injected({ chains }),
       wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
       wallet.walletConnect({ chains }),
     ],

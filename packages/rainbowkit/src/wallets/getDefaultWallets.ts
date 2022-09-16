@@ -22,12 +22,12 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
-        injected({ chains, shimDisconnect: true }),
+        injected({ chains }),
         rainbow({ chains }),
         coinbase({ appName, chains }),
-        metaMask({ chains, shimDisconnect: true }),
+        metaMask({ chains }),
         walletConnect({ chains }),
-        brave({ chains, shimDisconnect: true }),
+        brave({ chains }),
       ],
     },
   ];
