@@ -1,5 +1,16 @@
 # with-vite
 
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+- Updated dependencies [c944ddc]
+  - @rainbow-me/rainbowkit@0.6.0
+
 ## 0.0.10
 
 ### Patch Changes
