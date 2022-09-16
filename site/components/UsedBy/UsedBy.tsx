@@ -26,8 +26,8 @@ const frens = [
     name: 'Showtime',
   },
   {
-    asset: 'invisiblefriends',
-    name: 'Invisible Friends',
+    asset: 'tinyfaces',
+    name: 'TinyFaces',
   },
   {
     asset: 'beyond',
@@ -38,8 +38,8 @@ const frens = [
     name: 'PartyBid',
   },
   {
-    asset: 'joinlist',
-    name: 'Joinlist',
+    asset: 'invisiblefriends',
+    name: 'Invisible Friends',
   },
   {
     asset: 'mannys',
