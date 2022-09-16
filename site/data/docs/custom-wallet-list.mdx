@@ -11,7 +11,7 @@ description: Customizing the wallet list
 
 You can use the `wallet` object and the `connectorsForWallets` function to build your own list of wallets and generate the necessary connectors. This way you have full control over which wallets to display, and in which order.
 
-For example, you can choose to only show Rainbow and WalletConnect.
+For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -31,6 +31,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
+      wallet.injected({ chains }),
       wallet.rainbow({ chains }),
       wallet.walletConnect({ chains }),
     ],
@@ -59,6 +60,43 @@ const App = () => (
 ```
 
 ### Built-in wallets
+
+The following wallets are provided via the `wallet` object.
+
+#### Generic Wallets
+
+The following wallets are scoped to generic connection methods rather than specific apps. As a result, it’s recommended that these wallets are always included.
+
+##### WalletConnect
+
+This is a fallback wallet option designed for WalletConnect-based wallets that haven’t been provided by another wallet in the list.
+
+**It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.walletConnect(options: {
+  chains: Chain[];
+});
+```
+
+##### Injected Wallet
+
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
+
+**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
+
+```tsx
+import { wallet } from '@rainbow-me/rainbowkit';
+
+wallet.injected(options: {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+});
+```
+
+### Specific Wallets
 
 The following wallets are provided via the `wallet` object (in alphabetical order).
 
@@ -92,46 +130,6 @@ wallet.coinbase(options: {
   appName: string;
   chains: Chain[];
 });
-```
-
-#### Injected Wallet
-
-This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list.
-
-```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
-
-wallet.injected(options: {
-  chains: Chain[];
-  shimDisconnect?: boolean;
-});
-```
-
-This shouldn’t be used if another injected wallet is available. For example, when combined with MetaMask and Coinbase Wallet:
-
-```tsx line=3-7,23-25
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
-
-const needsInjectedWalletFallback =
-  typeof window !== 'undefined' &&
-  window.ethereum &&
-  !window.ethereum.isMetaMask &&
-  !window.ethereum.isCoinbaseWallet;
-
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Suggested',
-    wallets: [
-      wallet.rainbow({ chains }),
-      wallet.metaMask({ chains }),
-      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
-      wallet.metaMask({ chains }),
-      ...(needsInjectedWalletFallback
-        ? [wallet.injected({ chains })]
-        : []),
-    ],
-  },
-]);
 ```
 
 #### Ledger Live
@@ -197,25 +195,13 @@ wallet.imToken(options: {
 });
 ```
 
-#### WalletConnect
-
-This is a fallback wallet option designed for other WalletConnect-based wallets that haven’t been provided by another wallet in the list.
-
-```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
-
-wallet.walletConnect(options: {
-  chains: Chain[];
-});
-```
-
 ### Examples
 
 #### Ordering
 
 Here are a few examples of displaying different wallets, in different order.
 
-Show MetaMask and WalletConnect.
+Show MetaMask along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -224,6 +210,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
+      wallet.injected({ chains }),
       wallet.metaMask({ chains }),
       wallet.walletConnect({ chains }),
     ],
@@ -231,7 +218,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-Show MetaMask, Rainbow and Coinbase.
+Show MetaMask, Rainbow and Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -240,9 +227,11 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
+      wallet.injected({ chains }),
       wallet.metaMask({ chains }),
       wallet.rainbow({ chains }),
       wallet.coinbase({ appName: 'My RainbowKit App', chains }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);
@@ -254,7 +243,7 @@ const connectors = connectorsForWallets([
 
 You can use the `groupName` key to name different wallet groups. This is useful if you want to communicate to your users which wallets you recommend, as well as other possibile wallets.
 
-Recommend Rainbow and MetaMask, but also offer WalletConnect and Coinbase.
+Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
 import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -262,13 +251,17 @@ import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
-    wallets: [wallet.rainbow({ chains }), wallet.metaMask({ chains })],
+    wallets: [
+      wallet.injected({ chains }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
+    ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.walletConnect({ chains }),
       wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
+      wallet.walletConnect({ chains }),
     ],
   },
 ]);

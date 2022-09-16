@@ -10,7 +10,7 @@ export interface MetaMaskOptions {
   shimDisconnect?: boolean;
 }
 
-export function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
+function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/tmm/wagmi/blob/main/packages/core/src/connectors/metaMask.ts
   const isMetaMask = Boolean(ethereum.isMetaMask);
@@ -22,6 +22,10 @@ export function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   // Brave tries to make itself look like MetaMask
   // Could also try RPC `web3_clientVersion` if following is unreliable
   if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state) {
+    return false;
+  }
+
+  if (ethereum.isTokenPocket) {
     return false;
   }
 

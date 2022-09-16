@@ -16,6 +16,13 @@ export const injected = ({
   name: 'Injected Wallet',
   iconUrl: async () => (await import('./injected.png')).default,
   iconBackground: '#fff',
+  hidden: ({ wallets }) =>
+    wallets.some(
+      wallet =>
+        wallet.installed &&
+        (wallet.connector instanceof InjectedConnector ||
+          wallet.id === 'coinbase')
+    ),
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,

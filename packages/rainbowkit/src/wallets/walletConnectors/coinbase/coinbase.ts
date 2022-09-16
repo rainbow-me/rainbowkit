@@ -10,12 +10,19 @@ export interface CoinbaseOptions {
 }
 
 export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
+  const isCoinbaseWalletInjected =
+    typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
+
   return {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
     iconBackground: '#2c5ff6',
+    // Note that we never resolve `installed` to `false` because the
+    // Coinbase Wallet SDK falls back to other connection methods if
+    // the injected connector isn't available
+    installed: isCoinbaseWalletInjected || undefined,
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
