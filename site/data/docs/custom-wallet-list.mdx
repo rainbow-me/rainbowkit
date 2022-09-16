@@ -251,12 +251,15 @@ import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
-    wallets: [wallet.rainbow({ chains }), wallet.metaMask({ chains })],
+    wallets: [
+      wallet.injected({ chains }),
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
+    ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.injected({ chains }),
       wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
       wallet.walletConnect({ chains }),
     ],
