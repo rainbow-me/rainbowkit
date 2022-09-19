@@ -92,7 +92,9 @@ export const ModalSelection = ({
               <Box style={{ marginTop: recent ? -2 : undefined }}>{name}</Box>
               {recent && (
                 <Text
-                  color="accentColor"
+                  color={
+                    currentlySelected ? 'accentColorForeground' : 'accentColor'
+                  }
                   size="12"
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
