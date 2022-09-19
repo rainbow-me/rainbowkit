@@ -10,7 +10,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
 
     const connectors: Connector[] = [];
 
-    walletList.forEach(({ groupName, wallets }) => {
+    walletList.forEach(({ groupName, wallets }, groupIndex) => {
       wallets.forEach(({ createConnector, ...walletMeta }) => {
         index++;
 
@@ -39,6 +39,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
 
         const walletInstance: WalletInstance = {
           connector,
+          groupIndex,
           groupName,
           index,
           walletConnectModalConnector,

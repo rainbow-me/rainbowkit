@@ -53,6 +53,7 @@ export type WalletList = { groupName: string; wallets: Wallet[] }[];
 export type WalletInstance = Omit<Wallet, 'createConnector'> &
   ReturnType<Wallet['createConnector']> & {
     index: number;
+    groupIndex: number;
     groupName: string;
     walletConnectModalConnector?: Connector;
   };
