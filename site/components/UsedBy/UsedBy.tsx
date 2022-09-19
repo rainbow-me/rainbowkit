@@ -6,6 +6,10 @@ import { grid } from './UsedBy.css';
 
 const frens = [
   {
+    asset: 'optimism',
+    name: 'Optimism Bridge',
+  },
+  {
     asset: 'zora',
     name: 'Zora',
   },
@@ -22,10 +26,6 @@ const frens = [
     name: 'Showtime',
   },
   {
-    asset: 'invisiblefriends',
-    name: 'Invisible Friends',
-  },
-  {
     asset: 'tinyfaces',
     name: 'TinyFaces',
   },
@@ -38,8 +38,8 @@ const frens = [
     name: 'PartyBid',
   },
   {
-    asset: 'joinlist',
-    name: 'Joinlist',
+    asset: 'invisiblefriends',
+    name: 'Invisible Friends',
   },
   {
     asset: 'mannys',

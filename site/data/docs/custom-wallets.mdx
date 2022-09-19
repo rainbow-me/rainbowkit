@@ -65,6 +65,14 @@ The `Wallet` function type is provided to help you define your own custom wallet
       description: 'Object containing download URLs',
     },
     {
+      name: 'hidden',
+      required: false,
+      type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
+      typeSimple: '(args) => boolean | undefined',
+      description:
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+    },
+    {
       name: 'createConnector',
       required: true,
       type: '() => RainbowKitConnector',
