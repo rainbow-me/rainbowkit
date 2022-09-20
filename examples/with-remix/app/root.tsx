@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Meta,
   Links,
@@ -8,20 +9,25 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 import { json } from '@remix-run/node';
-import { WagmiConfig } from 'wagmi';
-import { RainbowKitProvider, ConnectButton } from '@rainbow-me/rainbowkit';
-import { useSetupWagmi } from './hooks/useSetupWagmi';
 import type {
   MetaFunction,
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 import type { Chain } from 'wagmi';
+import {
+  RainbowKitProvider,
+  ConnectButton,
+  getDefaultWallets,
+} from '@rainbow-me/rainbowkit';
 
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
 
-type Env = { ALCHEMY_ID?: string; PUBLIC_ENABLE_TESTNETS?: string };
+type Env = { ALCHEMY_API_KEY?: string; PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
@@ -41,7 +47,8 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
-      ALCHEMY_ID: process.env.ALCHEMY_ID || '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
+      ALCHEMY_API_KEY:
+        process.env.ALCHEMY_API_KEY || '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
       PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
@@ -53,12 +60,41 @@ export default function App() {
   const { ENV } = useLoaderData<LoaderData>();
 
   // Remix modules cannot have side effects so the initialization of `wagmi`
-  // client is abstracted away in a `useEffect`.
+  // client happens during render, but the result is cached via `useState`
+  // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
-  const { client, chains } = useSetupWagmi({
-    appName: 'RainbowKit Remix Example',
-    alchemyId: ENV.ALCHEMY_ID,
-    enablePublicTestnets: ENV.PUBLIC_ENABLE_TESTNETS,
+  const [{ client, chains }] = useState(() => {
+    const testChains =
+      ENV.PUBLIC_ENABLE_TESTNETS === 'true'
+        ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+        : [];
+
+    const { chains, provider } = configureChains(
+      [
+        chain.mainnet,
+        chain.polygon,
+        chain.optimism,
+        chain.arbitrum,
+        ...testChains,
+      ],
+      [alchemyProvider({ apiKey: ENV.ALCHEMY_API_KEY }), publicProvider()]
+    );
+
+    const { connectors } = getDefaultWallets({
+      appName: 'RainbowKit Remix Example',
+      chains,
+    });
+
+    const client = createClient({
+      provider,
+      connectors,
+      autoConnect: true,
+    });
+
+    return {
+      client,
+      chains,
+    };
   });
 
   return (
