@@ -81,7 +81,7 @@ export function useWalletConnectors(): WalletConnector[] {
     walletConnectors.push({
       ...wallet,
       connect: () => connectWallet(wallet.id, wallet.connector),
-      groupName: recent ? 'Recent' : wallet.groupName,
+      groupName: wallet.groupName,
       onConnecting: (fn: () => void) =>
         wallet.connector.on('message', ({ type }) =>
           type === 'connecting' ? fn() : undefined
@@ -107,6 +107,5 @@ export function useWalletConnectors(): WalletConnector[] {
         : undefined,
     });
   });
-
   return walletConnectors;
 }

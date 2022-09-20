@@ -3,6 +3,7 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
+import { Text } from '../Text/Text';
 import * as styles from './ModalSelection.css';
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
   as?: React.ElementType<any>;
   currentlySelected?: boolean;
   ready?: boolean;
+  recent?: boolean;
   name: string;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
@@ -23,6 +25,7 @@ export const ModalSelection = ({
   name,
   onClick,
   ready,
+  recent,
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
@@ -85,7 +88,21 @@ export const ModalSelection = ({
               src={iconUrl}
               width="28"
             />
-            <div>{name}</div>
+            <Box>
+              <Box style={{ marginTop: recent ? -2 : undefined }}>{name}</Box>
+              {recent && (
+                <Text
+                  color={
+                    currentlySelected ? 'accentColorForeground' : 'accentColor'
+                  }
+                  size="12"
+                  style={{ lineHeight: 1, marginTop: -1 }}
+                  weight="medium"
+                >
+                  Recent
+                </Text>
+              )}
+            </Box>
           </Box>
         </Box>
       </Box>

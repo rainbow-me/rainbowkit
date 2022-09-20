@@ -60,9 +60,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
-  const wallets = useWalletConnectors().filter(
-    wallet => wallet.ready || wallet.downloadUrls?.browserExtension
-  );
+  const wallets = useWalletConnectors()
+    .filter(wallet => wallet.ready || wallet.downloadUrls?.browserExtension)
+    .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
@@ -348,6 +348,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             name={wallet.name}
                             onClick={() => onSelectWallet(wallet)}
                             ready={wallet.ready}
+                            recent={wallet.recent}
                           />
                         );
                       })}

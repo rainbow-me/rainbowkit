@@ -6,6 +6,7 @@ import { Wallet, WalletInstance, WalletList } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
+  groupIndex: number;
   groupName: string;
 }
 
@@ -26,12 +27,13 @@ export const connectorsForWallets = (walletList: WalletList) => {
     // they can decide whether or not they should be hidden,
     // e.g. the "Injected Wallet" option hides itself if another
     // injected wallet is available.
-    walletList.forEach(({ groupName, wallets }) => {
+    walletList.forEach(({ groupName, wallets }, groupIndex) => {
       wallets.forEach(wallet => {
         index++;
 
         const walletListItem = {
           ...wallet,
+          groupIndex,
           groupName,
           index,
         };
@@ -52,7 +54,14 @@ export const connectorsForWallets = (walletList: WalletList) => {
     ];
 
     walletListItems.forEach(
-      ({ createConnector, groupName, hidden, index, ...walletMeta }) => {
+      ({
+        createConnector,
+        groupIndex,
+        groupName,
+        hidden,
+        index,
+        ...walletMeta
+      }) => {
         if (typeof hidden === 'function') {
           // Run the function to check if the wallet needs to be hidden
           const isHidden = hidden({
@@ -98,6 +107,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
 
         const walletInstance: WalletInstance = {
           connector,
+          groupIndex,
           groupName,
           index,
           walletConnectModalConnector,

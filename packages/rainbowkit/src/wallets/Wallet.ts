@@ -60,6 +60,7 @@ export type WalletList = { groupName: string; wallets: Wallet[] }[];
 export type WalletInstance = Omit<Wallet, 'createConnector' | 'hidden'> &
   ReturnType<Wallet['createConnector']> & {
     index: number;
+    groupIndex: number;
     groupName: string;
     walletConnectModalConnector?: Connector;
   };
