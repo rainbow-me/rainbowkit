@@ -3,7 +3,8 @@
   "version": "0.6.0",
   "description": "The best way to connect a wallet",
   "files": [
-    "dist"
+    "dist",
+    "styles.css"
   ],
   "type": "module",
   "exports": {
