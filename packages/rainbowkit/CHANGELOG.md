@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 0.6.1
+
+### Patch Changes
+
+- 85eb3bd: Update the desktop Connect Modal to show "Recently Connected Wallets" within their respective group. Previously, they were being plucked into their own "Recent" group.
+- fbf9d82: Ensure `styles.css` directory is included in npm bundle
+
+  This is a follow-up to a fix released in v0.5.2 which added a compatibility layer for Jest's module resolver.
+
 ## 0.6.0
 
 ### Minor Changes
