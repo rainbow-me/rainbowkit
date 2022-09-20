@@ -17,6 +17,8 @@ importers:
       '@commitlint/config-conventional': ^15.0.0
       '@lavamoat/preinstall-always-fail': ^1.0.0
       '@rushstack/eslint-patch': ^1.1.0
+      '@tanstack/query-core': ^4.3.8
+      '@tanstack/react-query': ^4.3.9
       '@types/node': ^17.0.35
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.1
@@ -24,7 +26,7 @@ importers:
       '@typescript-eslint/parser': ^5.5.0
       '@vanilla-extract/esbuild-plugin': ^2.0.0
       '@vanilla-extract/vite-plugin': ^3.1.2
-      '@wagmi/core': ^0.4.2
+      '@wagmi/core': ^0.5.6
       autoprefixer: ^10.4.0
       esbuild: ^0.14.39
       eslint: 7.32.0
@@ -55,6 +57,8 @@ importers:
       '@commitlint/config-conventional': 15.0.0
       '@lavamoat/preinstall-always-fail': 1.0.0
       '@rushstack/eslint-patch': 1.1.0
+      '@tanstack/query-core': 4.3.8
+      '@tanstack/react-query': 4.3.9_ef5jwxihqo6n7gxfmzogljlgcm
       '@types/node': 17.0.35
       '@types/react': 18.0.9
       '@types/react-dom': 18.0.5
@@ -62,7 +66,7 @@ importers:
       '@typescript-eslint/parser': 5.11.0_r6wgjs2cmdapk4bysm6dglulo4
       '@vanilla-extract/esbuild-plugin': 2.0.2
       '@vanilla-extract/vite-plugin': 3.1.2
-      '@wagmi/core': 0.4.2_react@18.1.0
+      '@wagmi/core': 0.5.6_react@18.1.0
       autoprefixer: 10.4.2_postcss@8.4.6
       esbuild: 0.14.39
       eslint: 7.32.0
@@ -81,7 +85,7 @@ importers:
       recursive-readdir-files: 2.0.7
       typescript: 4.7.2
       vitest: 0.5.0
-      wagmi: 0.6.6_2ysdzk2vllwi7dl6z45r5ylxcu
+      wagmi: 0.6.6_vmjhobsta57bwpqzn37o67o4s4
 
   examples/with-create-react-app:
     specifiers:
@@ -6113,21 +6117,22 @@ packages:
     resolution: {integrity: sha512-AEUWtCNBIImFZ9tMt/P8V86kIhMHpfoJqAI1auGOLR8Wzeq7Ymiue789PJG0rKYcyViUicBZeHjggMqyEQVMfQ==}
     dev: true
 
-  /@tanstack/query-sync-storage-persister/4.3.9_6uncd2226qyijsmi7v5izkluli:
+  /@tanstack/query-sync-storage-persister/4.3.9_pugmgiqg2flj5wugh46j2i4cni:
     resolution: {integrity: sha512-bp2ISPlrUUOio8p3ll6bQfu/jpIIgsgZlVjeuSDoucYYGpBn5YTYRpJ0vAL+5iMpJxp2Eb9LZky6SJJDjvXAqA==}
     dependencies:
-      '@tanstack/react-query-persist-client': 4.3.9_6uncd2226qyijsmi7v5izkluli
+      '@tanstack/react-query-persist-client': 4.3.9_pugmgiqg2flj5wugh46j2i4cni
     transitivePeerDependencies:
       - '@tanstack/query-core'
       - '@tanstack/react-query'
     dev: true
 
-  /@tanstack/react-query-persist-client/4.3.9_6uncd2226qyijsmi7v5izkluli:
+  /@tanstack/react-query-persist-client/4.3.9_pugmgiqg2flj5wugh46j2i4cni:
     resolution: {integrity: sha512-oFZA8bo6BQHoQqJSHXTtIDaIAxbF46cQHwhF72FwiMvBhm6eEbySUIPhGAWah7Jys2t2RJIhJ1T+q9P0RRIjwg==}
     peerDependencies:
       '@tanstack/query-core': 4.3.8
       '@tanstack/react-query': 4.3.9
     dependencies:
+      '@tanstack/query-core': 4.3.8
       '@tanstack/react-query': 4.3.9_ef5jwxihqo6n7gxfmzogljlgcm
     dev: true
 
@@ -7208,25 +7213,6 @@ packages:
       - supports-color
     dev: true
 
-  /@wagmi/core/0.4.2_react@18.1.0:
-    resolution: {integrity: sha512-fd9niO/Wwr6MhaNeIjgHP3ToULAWKQ8neITgU7gAN5Q4uxbizKM8e6+i4EiffTKyaqvauMHa32Xz5zY7N+WAKA==}
-    peerDependencies:
-      '@coinbase/wallet-sdk': '>=3.3.0'
-      '@walletconnect/ethereum-provider': '>=1.7.5'
-      ethers: '>=5.5.1'
-    peerDependenciesMeta:
-      '@coinbase/wallet-sdk':
-        optional: true
-      '@walletconnect/ethereum-provider':
-        optional: true
-    dependencies:
-      eventemitter3: 4.0.7
-      zustand: 4.0.0-rc.1_react@18.1.0
-    transitivePeerDependencies:
-      - immer
-      - react
-    dev: true
-
   /@wagmi/core/0.5.6_7zlxuwwdmng4gpy3cw52h3fypy:
     resolution: {integrity: sha512-ZGvMVpcl5iN/fXqYxh+lngs980I4R/bMEMVcYjXw5PA67PB1I53paapsPUBt+0ID2QIShyyxZ/qKmhg7FstNWA==}
     peerDependencies:
@@ -7241,6 +7227,25 @@ packages:
     dependencies:
       '@coinbase/wallet-sdk': 3.3.0_@babel+core@7.17.2
       '@walletconnect/ethereum-provider': 1.7.8
+      eventemitter3: 4.0.7
+      zustand: 4.1.1_react@18.1.0
+    transitivePeerDependencies:
+      - immer
+      - react
+    dev: true
+
+  /@wagmi/core/0.5.6_react@18.1.0:
+    resolution: {integrity: sha512-ZGvMVpcl5iN/fXqYxh+lngs980I4R/bMEMVcYjXw5PA67PB1I53paapsPUBt+0ID2QIShyyxZ/qKmhg7FstNWA==}
+    peerDependencies:
+      '@coinbase/wallet-sdk': '>=3.3.0'
+      '@walletconnect/ethereum-provider': '>=1.7.5'
+      ethers: '>=5.5.1'
+    peerDependenciesMeta:
+      '@coinbase/wallet-sdk':
+        optional: true
+      '@walletconnect/ethereum-provider':
+        optional: true
+    dependencies:
       eventemitter3: 4.0.7
       zustand: 4.1.1_react@18.1.0
     transitivePeerDependencies:
@@ -20222,14 +20227,6 @@ packages:
       react: 18.1.0
     dev: true
 
-  /use-sync-external-store/1.1.0_react@18.1.0:
-    resolution: {integrity: sha512-SEnieB2FPKEVne66NpXPd1Np4R1lTNKfjuy3XdIoPQKYBAFdzbzSZlSn1KJZUiihQLQC5Znot4SBz1EOTBwQAQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.1.0
-    dev: true
-
   /use-sync-external-store/1.2.0_react@18.1.0:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
@@ -20438,16 +20435,16 @@ packages:
       xml-name-validator: 3.0.0
     dev: false
 
-  /wagmi/0.6.6_2ysdzk2vllwi7dl6z45r5ylxcu:
+  /wagmi/0.6.6_vmjhobsta57bwpqzn37o67o4s4:
     resolution: {integrity: sha512-bLocnHhqmhzbkx5kSbMSIx2Y61NxylQfV+aM7HCtFKV9S+F3+hrGB4QrkD6/fjTCQVsBqdddLHjlrIYmYfCvYg==}
     peerDependencies:
       ethers: '>=5.5.1'
       react: '>=17.0.0'
     dependencies:
       '@coinbase/wallet-sdk': 3.3.0_@babel+core@7.17.2
-      '@tanstack/query-sync-storage-persister': 4.3.9_6uncd2226qyijsmi7v5izkluli
+      '@tanstack/query-sync-storage-persister': 4.3.9_pugmgiqg2flj5wugh46j2i4cni
       '@tanstack/react-query': 4.3.9_ef5jwxihqo6n7gxfmzogljlgcm
-      '@tanstack/react-query-persist-client': 4.3.9_6uncd2226qyijsmi7v5izkluli
+      '@tanstack/react-query-persist-client': 4.3.9_pugmgiqg2flj5wugh46j2i4cni
       '@wagmi/core': 0.5.6_7zlxuwwdmng4gpy3cw52h3fypy
       '@walletconnect/ethereum-provider': 1.7.8
       react: 18.1.0
@@ -21216,22 +21213,6 @@ packages:
     dependencies:
       react: 18.1.0
     dev: false
-
-  /zustand/4.0.0-rc.1_react@18.1.0:
-    resolution: {integrity: sha512-qgcs7zLqBdHu0PuT3GW4WCIY5SgXdsv30GQMu9Qpp1BA2aS+sNS8l4x0hWuyEhjXkN+701aGWawhKDv6oWJAcw==}
-    engines: {node: '>=12.7.0'}
-    peerDependencies:
-      immer: '>=9.0'
-      react: '>=16.8'
-    peerDependenciesMeta:
-      immer:
-        optional: true
-      react:
-        optional: true
-    dependencies:
-      react: 18.1.0
-      use-sync-external-store: 1.1.0_react@18.1.0
-    dev: true
 
   /zustand/4.1.1_react@18.1.0:
     resolution: {integrity: sha512-h4F3WMqsZgvvaE0n3lThx4MM81Ls9xebjvrABNzf5+jb3/03YjNTSgZXeyrvXDArMeV9untvWXRw1tY+ntPYbA==}
