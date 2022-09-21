@@ -117,15 +117,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         // selection flow to create a new connection with a new QR code
         const provider = await sWallet?.connector.getProvider();
         const connection = provider?.signer?.connection;
-        if (connection && connection.on && connection.off) {
-          function handleConnectionClose() {
+        if (connection?.on && connection?.off) {
+          const handleConnectionClose = () => {
             removeHandlers();
             selectWallet(wallet);
-          }
-          function removeHandlers() {
+          };
+          const removeHandlers = () => {
             connection.off('close', handleConnectionClose);
             connection.off('open', removeHandlers);
-          }
+          };
           connection.on('close', handleConnectionClose);
           connection.on('open', removeHandlers);
         }
