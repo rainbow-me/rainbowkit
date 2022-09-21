@@ -70,6 +70,22 @@ As a convenience, you can also pass a chain object.
 <RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
 ```
 
+### Customizing the ENS chain
+
+By default, RainbowKit will resolve ENS details from the mainnet chain if it's in your `chains` array. This chain can be customized via the `ensChain` prop.
+
+The ENS chain can be configured using a chain ID.
+
+```tsx
+<RainbowKitProvider chains={chains} ensChain={5}>
+```
+
+As a convenience, you can also pass a chain object.
+
+```tsx
+<RainbowKitProvider chains={chains} ensChain={chain.goerli}>
+```
+
 ### Custom chain icons
 
 Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
