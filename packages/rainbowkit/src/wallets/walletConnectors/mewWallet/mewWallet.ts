@@ -42,7 +42,7 @@ export const mewWallet = ({
       connector,
       desktop: {
         getUri: async () => {
-          return 'https://download.mewwallet.com';
+          return 'https://download.mewwallet.com?source=rainbow';
         },
       },
       mobile: {
