@@ -1,6 +1,7 @@
 import { argent } from './argent/argent';
 import { brave } from './brave/brave';
 import { coinbase } from './coinbase/coinbase';
+import { enkrypt } from './enkrypt/enkrypt';
 import { imToken } from './imToken/imToken';
 import { injected } from './injected/injected';
 import { ledger } from './ledger/ledger';
@@ -14,6 +15,7 @@ export const wallet = {
   argent,
   brave,
   coinbase,
+  enkrypt,
   imToken,
   injected,
   ledger,

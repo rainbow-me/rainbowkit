@@ -3,6 +3,7 @@ import { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
 import { brave } from './walletConnectors/brave/brave';
 import { coinbase } from './walletConnectors/coinbase/coinbase';
+import { enkrypt } from './walletConnectors/enkrypt/enkrypt';
 import { injected } from './walletConnectors/injected/injected';
 import { metaMask } from './walletConnectors/metaMask/metaMask';
 import { rainbow } from './walletConnectors/rainbow/rainbow';
@@ -28,6 +29,7 @@ export const getDefaultWallets = ({
         metaMask({ chains }),
         walletConnect({ chains }),
         brave({ chains }),
+        enkrypt({ chains }),
       ],
     },
   ];

@@ -31,6 +31,7 @@ const connectors = connectorsForWallets([
       wallet.omni({ chains }),
       wallet.imToken({ chains }),
       wallet.ledger({ chains }),
+      wallet.enkrypt({ chains }),
     ],
   },
 ]);
