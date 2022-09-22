@@ -14,13 +14,13 @@ export const mewWallet = ({
   shimDisconnect,
 }: MewWalletOptions): Wallet => ({
   id: 'mewWallet',
-  name: 'MEW Wallet',
+  name: 'MEW wallet',
   iconUrl: async () => (await import('./mewWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
     android:
-      'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&hl=en_US&gl=US',
-    ios: 'https://apps.apple.com/us/app/mew-wallet-ethereum-defi-web3/id1464614025',
+      'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
+    ios: 'https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&mt=8&ct=rainbow',
   },
   createConnector: () => {
     const inAppBrowser = Boolean(
@@ -40,6 +40,16 @@ export const mewWallet = ({
 
     return {
       connector,
+      desktop: {
+        getUri: async () => {
+          return 'https://download.mewwallet.com';
+        },
+      },
+      mobile: {
+        getUri: async () => {
+          return 'https://download.mewwallet.com?source=rainbow';
+        },
+      },
     };
   },
 });
