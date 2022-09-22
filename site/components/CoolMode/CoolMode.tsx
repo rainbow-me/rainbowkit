@@ -11,6 +11,7 @@ export function CoolMode() {
   const coolArgentRef = useCoolMode('/argent.svg');
   const coolWalletConnectRef = useCoolMode('/walletConnect.svg');
   const coolTrustRef = useCoolMode('/trust.svg');
+  const coolMEWwalletRef = useCoolMode('/mewWallet.svg');
 
   return (
     <Box className={cool} id="cool-mode-demo">
@@ -31,6 +32,9 @@ export function CoolMode() {
       </Box>
       <Box ref={coolTrustRef}>
         <CoolButton src="/trust.svg">Trust</CoolButton>
+      </Box>
+      <Box ref={coolMEWwalletRef}>
+        <CoolButton src="/mewWallet.svg">MEW wallet</CoolButton>
       </Box>
     </Box>
   );

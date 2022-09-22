@@ -7,6 +7,7 @@ import { injected } from './walletConnectors/injected/injected';
 import { metaMask } from './walletConnectors/metaMask/metaMask';
 import { rainbow } from './walletConnectors/rainbow/rainbow';
 import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
+import { mewWallet } from './walletConnectors/mewWallet/mewWallet';
 
 export const getDefaultWallets = ({
   appName,
@@ -28,6 +29,7 @@ export const getDefaultWallets = ({
         metaMask({ chains }),
         walletConnect({ chains }),
         brave({ chains }),
+        mewWallet({ chains }),
       ],
     },
   ];
