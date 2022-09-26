@@ -48,10 +48,10 @@ export const metaMask = ({
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
   return {
-    accentColor: '#f6851a',
     id: 'metaMask',
     name: 'MetaMask',
     iconUrl: async () => (await import('./metaMask.svg')).default,
+    iconAccent: '#f6851a',
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {

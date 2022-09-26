@@ -356,17 +356,18 @@ export function ConnectDetail({
 }
 
 const DownloadOptionsBox = ({
-  accentColor,
   actionLabel,
   description,
+  iconAccent,
   iconBackground,
   iconUrl,
   isCompact,
   onAction,
   title,
   url,
+  variant,
 }: {
-  accentColor?: string;
+  iconAccent?: string;
   title: string;
   description: string;
   onAction?: () => void;
@@ -375,10 +376,11 @@ const DownloadOptionsBox = ({
   isCompact: boolean;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
+  variant: 'browser' | 'app';
 }) => {
-  const isBrowserCard = !accentColor;
+  const isBrowserCard = variant === 'browser';
   const gradientRgbas =
-    !isBrowserCard && getGradientRGBAs(accentColor || iconBackground);
+    !isBrowserCard && getGradientRGBAs(iconAccent || iconBackground);
   return (
     <Box
       alignItems="center"
@@ -596,11 +598,12 @@ export function DownloadOptionsDetail({
           onAction={() => changeWalletStep(WalletStep.InstructionsExtension)}
           title={`${wallet.name} for ${browser}`}
           url={wallet?.downloadUrls?.browserExtension}
+          variant="browser"
         />
         <DownloadOptionsBox
-          accentColor={wallet.accentColor}
           actionLabel="Get the app"
           description="Use the mobile wallet to explore the world of Ethereum."
+          iconAccent={wallet.iconAccent}
           iconBackground={wallet.iconBackground}
           iconUrl={wallet.iconUrl}
           isCompact={isCompact}
@@ -608,6 +611,7 @@ export function DownloadOptionsDetail({
             changeWalletStep(WalletStep.Download);
           }}
           title={`${wallet.name} for Mobile`}
+          variant="app"
         />
       </Box>
     </Box>

@@ -14,11 +14,11 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
 
   return {
-    accentColor: '#2c5ff6',
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
+    iconAccent: '#2c5ff6',
     iconBackground: '#2c5ff6',
     // Note that we never resolve `installed` to `false` because the
     // Coinbase Wallet SDK falls back to other connection methods if
