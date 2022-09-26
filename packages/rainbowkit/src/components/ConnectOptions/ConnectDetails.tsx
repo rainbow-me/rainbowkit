@@ -380,7 +380,7 @@ const DownloadOptionsBox = ({
 }) => {
   const isBrowserCard = variant === 'browser';
   const gradientRgbas =
-    !isBrowserCard && getGradientRGBAs(iconAccent || iconBackground);
+    !isBrowserCard && iconAccent && getGradientRGBAs(iconAccent);
   return (
     <Box
       alignItems="center"
