@@ -18,6 +18,7 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
     iconUrl: async () => (await import('./coinbase.svg')).default,
+    iconAccent: '#2c5ff6',
     iconBackground: '#2c5ff6',
     // Note that we never resolve `installed` to `false` because the
     // Coinbase Wallet SDK falls back to other connection methods if

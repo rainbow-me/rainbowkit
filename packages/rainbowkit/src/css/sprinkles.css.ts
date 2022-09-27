@@ -25,6 +25,8 @@ const themeContractValues = {
     connectButtonText: '',
     connectButtonTextError: '',
     connectionIndicator: '',
+    downloadBottomCardBackground: '',
+    downloadTopCardBackground: '',
     error: '',
     generalBorder: '',
     generalBorderDim: '',
@@ -113,7 +115,7 @@ const dimensions = {
   '48': '48px',
   '54': '54px',
   '60': '60px',
-  '360': '360px',
+  '200': '200px',
   'full': '100%',
   'max': 'max-content',
 };

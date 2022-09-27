@@ -1,5 +1,6 @@
 import { Connector } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { isHexString } from '../utils/colors';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { Wallet, WalletInstance, WalletList } from './Wallet';
@@ -30,6 +31,13 @@ export const connectorsForWallets = (walletList: WalletList) => {
     walletList.forEach(({ groupName, wallets }, groupIndex) => {
       wallets.forEach(wallet => {
         index++;
+
+        // guard against non-hex values for `iconAccent`
+        if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
+          throw new Error(
+            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
+          );
+        }
 
         const walletListItem = {
           ...wallet,

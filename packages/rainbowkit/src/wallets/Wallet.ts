@@ -37,6 +37,7 @@ export type Wallet<C extends Connector = Connector> = {
   name: string;
   shortName?: string;
   iconUrl: string | (() => Promise<string>);
+  iconAccent?: string;
   iconBackground: string;
   installed?: boolean;
   downloadUrls?: {
