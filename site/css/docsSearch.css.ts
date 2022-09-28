@@ -19,6 +19,7 @@ globalStyle('.DocSearch-Container', {
   backgroundColor: vars.colors.backgroundScrim,
   height: '100vh',
   left: 0,
+  padding: `0 ${vars.space[4]}`,
   position: 'fixed',
   top: 0,
   width: '100vw',
