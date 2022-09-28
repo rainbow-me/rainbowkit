@@ -32,7 +32,7 @@ type BaseProps = {
   >;
 
 type WithAnchor = {
-  as?: 'a';
+  as?: 'a' | 'span';
 } & Pick<JSX.IntrinsicElements['a'], 'href' | 'rel' | 'target'>;
 
 type WithoutAnchor = {

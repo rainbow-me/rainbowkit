@@ -4,6 +4,7 @@
   "description": "Site and docs for RainbowKit.",
   "private": true,
   "dependencies": {
+    "@docsearch/react": "3",
     "@ethersproject/bignumber": "^5.5.1",
     "@ethersproject/providers": "^5.5.1",
     "@radix-ui/react-dialog": "^0.1.7",
