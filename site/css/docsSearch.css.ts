@@ -29,8 +29,10 @@ globalStyle('.DocSearch-Container', {
 globalStyle('.DocSearch-Modal', {
   backgroundColor: vars.colors.accent,
   borderRadius: vars.radii[3],
-  margin: `${vars.space[12]} auto 0`,
+  margin: `8vh auto`,
+  maxHeight: `calc(100vh - 16vh)`,
   maxWidth: '640px',
+  overflow: 'auto',
 });
 
 globalStyle('.DocSearch-Modal, .DocSearch-Modal button', {
@@ -110,6 +112,7 @@ globalStyle('.DocSearch-Cancel', {
   backgroundSize: '24px 12px',
   border: 'none',
   borderRadius: vars.radii[1],
+  boxShadow: '0 0 0 1px #e3e3e9, 0px 1px 5px rgb(0 0 0 / 8%)',
   cursor: 'pointer',
   fontSize: 0,
   height: 20,
@@ -133,7 +136,7 @@ globalStyle('.DocSearch-Logo', {
 
 globalStyle('.DocSearch-Logo a', {
   alignItems: 'center',
-  color: vars.colors.blueGray30,
+  color: vars.colors.labelQuaternary,
   display: 'flex',
   fontFamily: vars.fonts.normal,
   fontSize: vars.fontSizes[2],
@@ -192,8 +195,16 @@ globalStyle('.DocSearch-Hit--Result .DocSearch-Hit-action', {
   backgroundSize: '7px 12px',
   display: 'flex',
   height: 28,
+  opacity: 0.5,
   width: 28,
 });
+
+globalStyle(
+  '.DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result .DocSearch-Hit-action',
+  {
+    opacity: 1,
+  }
+);
 
 globalStyle('.DocSearch-Hit--Result .DocSearch-Hit-action svg', {
   display: 'none',
@@ -267,17 +278,14 @@ globalStyle('.DocSearch-Hit-content-wrapper .DocSearch-Hit-path:empty', {
 });
 
 globalStyle('.DocSearch-Hit-content-wrapper .DocSearch-Hit-path', {
-  backgroundColor: vars.colors.blueGray10,
   borderRadius: vars.radii.round,
-  color: vars.colors.blueGray70,
-  fontSize: vars.fontSizes[1],
+  color: vars.colors.labelTertiary,
+  fontSize: vars.fontSizes[2],
   marginTop: vars.space[2],
-  padding: `${vars.space[1]} ${vars.space[3]}`,
   whiteSpace: 'nowrap',
 });
 
 globalStyle('.DocSearch-Hit[aria-selected=true] .DocSearch-Hit-path', {
-  backgroundColor: vars.colors.backgroundScrim,
   color: vars.colors.accent,
 });
 
