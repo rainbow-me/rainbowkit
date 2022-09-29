@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
-import { useAddress } from '../hooks/useAddress';
+import { useAccount } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import { useTransactionStore } from './TransactionStoreContext';
 
 export function useClearRecentTransactions(): () => void {
   const store = useTransactionStore();
-  const address = useAddress();
+  const { address } = useAccount();
   const chainId = useChainId();
 
   return useCallback(() => {

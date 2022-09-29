@@ -208,7 +208,6 @@ async function run() {
     if (!options.skipGit) {
       log(chalk.cyan(`📚 Initializing git repository`));
       await execa('git', ['init'], { cwd: targetPath });
-      await execa('git', ['branch', '-m', 'main'], { cwd: targetPath });
       await execa('git', ['add', '.'], { cwd: targetPath });
       await execa(
         'git',

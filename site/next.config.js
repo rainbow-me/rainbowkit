@@ -16,6 +16,11 @@ const nextConfig = {
         destination: '/docs/introduction',
         permanent: false,
       },
+      {
+        source: '/docs/migrating-to-02',
+        destination: '/docs/migration-guide',
+        permanent: true,
+      },
     ];
   },
 };

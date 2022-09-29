@@ -1,27 +1,27 @@
-import { argent } from './argent/argent';
-import { brave } from './brave/brave';
-import { coinbase } from './coinbase/coinbase';
-import { imToken } from './imToken/imToken';
-import { injected } from './injected/injected';
-import { ledger } from './ledger/ledger';
-import { metaMask } from './metaMask/metaMask';
-import { rainbow } from './rainbow/rainbow';
-import { steak } from './steak/steak';
-import { tokenpocket } from './tokenpocket/tokenpocket';
-import { trust } from './trust/trust';
-import { walletConnect } from './walletConnect/walletConnect';
+import { argentWallet } from './argentWallet/argentWallet';
+import { braveWallet } from './braveWallet/braveWallet';
+import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
+import { imTokenWallet } from './imTokenWallet/imTokenWallet';
+import { injectedWallet } from './injectedWallet/injectedWallet';
+import { ledgerWallet } from './ledgerWallet/ledgerWallet';
+import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
+import { omniWallet } from './omniWallet/omniWallet';
+import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
+import { trustWallet } from './trustWallet/trustWallet';
+import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 
-export const wallet = {
-  argent,
-  brave,
-  coinbase,
-  imToken,
-  injected,
-  ledger,
-  metaMask,
-  rainbow,
-  steak,
-  tokenpocket,
-  trust,
-  walletConnect,
+export {
+  argentWallet,
+  braveWallet,
+  coinbaseWallet,
+  imTokenWallet,
+  injectedWallet,
+  ledgerWallet,
+  metaMaskWallet,
+  omniWallet,
+  rainbowWallet,
+  tokenPocketWallet,
+  trustWallet,
+  walletConnectWallet,
 };

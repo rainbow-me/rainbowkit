@@ -23,11 +23,22 @@ export const YourApp = () => {
         openAccountModal,
         openChainModal,
         openConnectModal,
+        authenticationStatus,
         mounted,
       }) => {
+        // Note: If your app doesn't use authentication, you
+        // can remove all 'authenticationStatus' checks
+        const ready = mounted && authenticationStatus !== 'loading';
+        const connected =
+          ready &&
+          account &&
+          chain &&
+          (!authenticationStatus ||
+            authenticationStatus === 'authenticated');
+
         return (
           <div
-            {...(!mounted && {
+            {...(!ready && {
               'aria-hidden': true,
               'style': {
                 opacity: 0,
@@ -37,7 +48,7 @@ export const YourApp = () => {
             })}
           >
             {(() => {
-              if (!mounted || !account || !chain) {
+              if (!connected) {
                 return (
                   <button onClick={openConnectModal} type="button">
                     Connect Wallet
@@ -283,13 +294,6 @@ The following props are passed to your render function.
       description: 'Function to open the connect modal',
     },
     {
-      name: 'mounted',
-      required: false,
-      type: 'boolean',
-      description:
-        'Boolean indicating whether the component has mounted',
-    },
-    {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
@@ -308,6 +312,27 @@ The following props are passed to your render function.
       type: 'boolean',
       description:
         'Boolean indicating whether the connect modal is open',
+    },
+  ]}
+/>
+
+### General state properties
+
+<PropsTable
+  data={[
+    {
+      name: 'mounted',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the component has mounted',
+    },
+    {
+      name: 'authenticationStatus',
+      required: false,
+      type: '"loading" | "unauthenticated" | "authenticated" | undefined',
+      description:
+        'The authentication status, or undefined if authentication has not been configured',
     },
   ]}
 />

@@ -37,6 +37,10 @@ export const lightTheme = ({
     connectButtonText: '#25292E',
     connectButtonTextError: '#FFF',
     connectionIndicator: '#30E000',
+    downloadBottomCardBackground:
+      'linear-gradient(126deg, rgba(255, 255, 255, 0) 9.49%, rgba(171, 171, 171, 0.04) 71.04%), #FFFFFF',
+    downloadTopCardBackground:
+      'linear-gradient(126deg, rgba(171, 171, 171, 0.2) 9.49%, rgba(255, 255, 255, 0) 71.04%), #FFFFFF',
     error: '#FF494A',
     generalBorder: 'rgba(0, 0, 0, 0.06)',
     generalBorderDim: 'rgba(0, 0, 0, 0.03)',

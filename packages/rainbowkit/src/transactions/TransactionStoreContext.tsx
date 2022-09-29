@@ -1,6 +1,6 @@
+import { providers } from 'ethers';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useProvider } from 'wagmi';
-import { useAddress } from '../hooks/useAddress';
+import { useAccount, useProvider } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import { createTransactionStore, TransactionStore } from './transactionStore';
 
@@ -17,8 +17,8 @@ export function TransactionStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const provider = useProvider();
-  const address = useAddress();
+  const provider = useProvider<providers.BaseProvider>();
+  const { address } = useAccount();
   const chainId = useChainId();
 
   // Use existing store if it exists, or lazily create one

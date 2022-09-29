@@ -37,6 +37,10 @@ export const midnightTheme = ({
     connectButtonText: '#FFF',
     connectButtonTextError: '#FFF',
     connectionIndicator: '#30E000',
+    downloadBottomCardBackground:
+      'linear-gradient(126deg, rgba(0, 0, 0, 0) 9.49%, rgba(120, 120, 120, 0.1) 71.04%), #050505',
+    downloadTopCardBackground:
+      'linear-gradient(126deg, rgba(120, 120, 120, 0.1) 9.49%, rgba(0, 0, 0, 0) 71.04%), #050505',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
     generalBorderDim: 'rgba(255, 255, 255, 0.04)',

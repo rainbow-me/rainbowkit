@@ -1,5 +1,25 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.2
+
+### Patch Changes
+
+- d12b75e: Fix crash in Linux/WSL when attempting to rename branch after running `git init`
+
+  When scaffolding a new project, we now honor the system default setting rather than forcibly renaming the branch.
+
+## 0.1.1
+
+### Patch Changes
+
+- 8dd5a74: Update wagmi to v0.6
+
+## 0.1.0
+
+### Minor Changes
+
+- 6e25576: Update `wagmi` dependency to `^0.5.3`
+
 ## 0.0.4
 
 ### Patch Changes

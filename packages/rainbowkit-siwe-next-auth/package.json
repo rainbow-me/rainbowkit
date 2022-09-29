@@ -1,0 +1,46 @@
+{
+  "name": "@rainbow-me/rainbowkit-siwe-next-auth",
+  "version": "0.1.4",
+  "description": "RainbowKit authentication adapter for Sign-In with Ethereum and NextAuth.js",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=12.4"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "build:watch": "node build.js --watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
+    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen:watch": "tsc --emitDeclarationOnly --watch"
+  },
+  "keywords": [],
+  "author": "Rainbow",
+  "license": "MIT",
+  "peerDependencies": {
+    "@rainbow-me/rainbowkit": "0.5.x || 0.6.x || 0.7.x",
+    "next-auth": "^4.10.2",
+    "react": ">=17",
+    "siwe": "^1.1.6"
+  },
+  "devDependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "siwe": "^1.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/rainbowkit-siwe-next-auth"
+  }
+}

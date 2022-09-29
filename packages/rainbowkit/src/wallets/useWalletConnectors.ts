@@ -2,7 +2,10 @@ import { Connector, useConnect } from 'wagmi';
 import { flatten } from '../utils/flatten';
 import { indexBy } from '../utils/indexBy';
 import { isNotNullish } from '../utils/isNotNullish';
-import { useRainbowKitChains } from './../components/RainbowKitProvider/RainbowKitChainContext';
+import {
+  useInitialChainId,
+  useRainbowKitChains,
+} from './../components/RainbowKitProvider/RainbowKitChainContext';
 import { WalletInstance } from './Wallet';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
@@ -15,13 +18,24 @@ export interface WalletConnector extends WalletInstance {
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const chains = useRainbowKitChains();
-  const { connectAsync, connectors: defaultConnectors } = useConnect({
-    chainId: chains[0]?.id,
-  });
+  const rainbowKitChains = useRainbowKitChains();
+  const intialChainId = useInitialChainId();
+  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
+  const defaultConnectors = defaultConnectors_untyped as Connector[];
 
   async function connectWallet(walletId: string, connector: Connector) {
-    const result = await connectAsync(connector);
+    const walletChainId = await connector.getChainId();
+    const result = await connectAsync({
+      chainId:
+        // The goal here is to ensure users are always on a supported chain when connecting.
+        // If an `initialChain` prop was provided to RainbowKitProvider, use that.
+        intialChainId ??
+        // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.
+        rainbowKitChains.find(({ id }) => id === walletChainId)?.id ??
+        // Finally, fall back to the first chain provided to RainbowKitProvider.
+        rainbowKitChains[0]?.id,
+      connector,
+    });
 
     if (result) {
       addRecentWalletId(walletId);
@@ -67,7 +81,7 @@ export function useWalletConnectors(): WalletConnector[] {
     walletConnectors.push({
       ...wallet,
       connect: () => connectWallet(wallet.id, wallet.connector),
-      groupName: recent ? 'Recent' : wallet.groupName,
+      groupName: wallet.groupName,
       onConnecting: (fn: () => void) =>
         wallet.connector.on('message', ({ type }) =>
           type === 'connecting' ? fn() : undefined
@@ -93,6 +107,5 @@ export function useWalletConnectors(): WalletConnector[] {
         : undefined,
     });
   });
-
   return walletConnectors;
 }

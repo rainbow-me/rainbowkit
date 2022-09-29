@@ -5,6 +5,7 @@ import {
   ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
@@ -37,6 +38,7 @@ export function ConnectButton({
   showBalance = defaultProps.showBalance,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
+  const connectionStatus = useConnectionStatus();
 
   return (
     <ConnectButtonRenderer>
@@ -48,13 +50,14 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
+        const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
 
         return (
           <Box
             display="flex"
             gap="12"
-            {...(!mounted && {
+            {...(!ready && {
               'aria-hidden': true,
               'style': {
                 opacity: 0,
@@ -63,11 +66,12 @@ export function ConnectButton({
               },
             })}
           >
-            {mounted && account ? (
+            {ready && account && connectionStatus === 'connected' ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
                     alignItems="center"
+                    aria-label="Chain Selector"
                     as="button"
                     background={
                       unsupportedChain

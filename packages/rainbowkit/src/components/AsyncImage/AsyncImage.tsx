@@ -41,6 +41,7 @@ export function AsyncImage({
       height={typeof height === 'string' ? height : undefined}
       overflow="hidden"
       position="relative"
+      role="img"
       style={{
         background,
         height: typeof height === 'number' ? height : undefined,

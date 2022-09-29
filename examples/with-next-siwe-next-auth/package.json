@@ -1,0 +1,29 @@
+{
+  "name": "with-next-siwe-next-auth",
+  "private": true,
+  "version": "0.0.8",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
+    "ethers": "^5.0.0",
+    "next": "^12.1.6",
+    "next-auth": "^4.10.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "siwe": "^1.1.6",
+    "wagmi": "^0.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@types/react": "^18.0.9",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^12.1.6",
+    "typescript": "^4.7.2"
+  }
+}

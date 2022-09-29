@@ -21,6 +21,7 @@ import * as styles from './MobileOptions.css';
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
   const {
     connect,
+    connector,
     iconBackground,
     iconUrl,
     id,
@@ -55,7 +56,10 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
 
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
-            setWalletConnectDeepLink({ mobileUri, name });
+
+            if (connector.id === 'walletConnect') {
+              setWalletConnectDeepLink({ mobileUri, name });
+            }
 
             if (mobileUri.startsWith('http')) {
               // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
@@ -77,7 +81,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             }
           }
         });
-      }, [connect, getMobileUri, onConnecting, name])}
+      }, [connector, connect, getMobileUri, onConnecting, name])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       type="button"

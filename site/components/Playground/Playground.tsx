@@ -17,10 +17,11 @@ import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useMounted } from 'lib/useMounted';
 import React, { useState } from 'react';
+import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
+import { WideIcon } from './WideIcon';
 
-const { DesktopOptions, MobileOptions, dialogContent, dialogContentMobile } =
-  __private__;
+const { DesktopOptions, dialogContent } = __private__;
 
 const THEMES = {
   dark: darkTheme,
@@ -32,6 +33,7 @@ type Modes = keyof typeof THEMES;
 type ThemeOptions = Parameters<typeof lightTheme>[0];
 type Accents = ThemeOptions['accentColor'];
 type Radii = ThemeOptions['borderRadius'];
+type ModalSizes = 'compact' | 'wide';
 
 const gradientColors: Record<Accents, any> = {
   blue: [
@@ -70,10 +72,13 @@ export function Playground() {
   const [mode, setMode] = useState<Modes>('light');
   const [accent, setAccent] = useState<Accents>('blue');
   const [radii, setRadii] = useState<Radii>('large');
+  const [modalSize, setModalSize] = useState<ModalSizes>('wide');
+  const isCompact = modalSize === 'compact';
 
   const handleModeChange = value => setMode(value);
   const handleAccentChange = value => setAccent(value);
   const handleRadiiChange = value => setRadii(value);
+  const handleModalSizeChange = value => setModalSize(value);
 
   const selectedTheme = THEMES[mode]({
     ...THEMES[mode].accentColors[accent],
@@ -83,12 +88,7 @@ export function Playground() {
   const gradient = gradientColors[accent];
 
   return useMounted() ? (
-    <Box
-      marginTop={{ md: '11', lg: '12' }}
-      paddingY={{ xs: '11', lg: '12' }}
-      position="relative"
-      zIndex="10"
-    >
+    <Box paddingY={{ xs: '11', lg: '12' }} position="relative" zIndex="10">
       <Box
         inset="0"
         position="absolute"
@@ -145,6 +145,7 @@ export function Playground() {
           <RainbowKitProvider
             chains={chains}
             id="playground"
+            modalSize={modalSize}
             theme={selectedTheme}
           >
             <Box
@@ -156,13 +157,24 @@ export function Playground() {
                 userSelect: 'none',
               }}
             >
-              <Box display={{ xs: 'none', md: 'block' }}>
+              <Box
+                display={{ xs: 'none', md: 'flex' }}
+                style={{
+                  height: 500,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
                 <div style={{ position: 'relative' }}>
                   <div
                     className={dialogContent}
-                    style={{
-                      width: 712,
-                    }}
+                    style={
+                      isCompact
+                        ? {}
+                        : {
+                            width: 712,
+                          }
+                    }
                   >
                     <DesktopOptions onClose={() => {}} />
                   </div>
@@ -176,13 +188,10 @@ export function Playground() {
               <Box display={{ md: 'none' }}>
                 <div style={{ position: 'relative' }}>
                   <div
-                    className={clsx(dialogContent, dialogContentMobile)}
-                    style={{
-                      maxWidth: 420,
-                      width: '100%',
-                    }}
+                    className={clsx(dialogContent)}
+                    style={{ maxWidth: '100%' }}
                   >
-                    <MobileOptions onClose={() => {}} />
+                    <DesktopOptions onClose={() => {}} />
                   </div>
                   {/* This div is placed on top of rainbowkit to make it non-interactive.
                   pointer-events: none; was forcing scrollbar to show:
@@ -205,6 +214,30 @@ export function Playground() {
             flexWrap="wrap"
             gap={{ xs: '8', md: '10' }}
           >
+            <Box display={{ xs: 'none', md: 'block' }}>
+              <Text
+                size={{ xs: '3', md: '4' }}
+                style={{ mixBlendMode: 'overlay' }}
+                weight="bold"
+              >
+                Modal
+              </Text>
+              <ControlBox>
+                <RadioGroup.Root
+                  name="modalSize"
+                  onValueChange={handleModalSizeChange}
+                  style={{ display: 'inline-flex', gap: 19 }}
+                  value={modalSize}
+                >
+                  <Radio activeValue={modalSize} id="modalSize" value="wide">
+                    <WideIcon />
+                  </Radio>
+                  <Radio activeValue={modalSize} id="modalSize" value="compact">
+                    <CompactIcon />
+                  </Radio>
+                </RadioGroup.Root>
+              </ControlBox>
+            </Box>
             <div>
               <Text
                 size={{ xs: '3', md: '4' }}

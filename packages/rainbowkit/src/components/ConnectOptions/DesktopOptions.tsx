@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
-import { isMobile } from '../../utils/isMobile';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -10,23 +9,41 @@ import {
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { ConnectModalIntro } from '../ConnectModal/ConnectModalIntro';
+import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
+import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
+import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
+import { AppContext } from '../RainbowKitProvider/AppContext';
+import {
+  ModalSizeContext,
+  ModalSizeOptions,
+} from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
+
 import {
   ConnectDetail,
   DownloadDetail,
+  DownloadOptionsDetail,
   GetDetail,
-  InstructionDetail,
+  InstructionExtensionDetail,
+  InstructionMobileDetail,
 } from './ConnectDetails';
-import { ScrollClassName, sidebar } from './DesktopOptions.css';
+import {
+  ScrollClassName,
+  sidebar,
+  sidebarCompactMode,
+} from './DesktopOptions.css';
 
 export enum WalletStep {
   None = 'NONE',
+  LearnCompact = 'LEARN_COMPACT',
   Get = 'GET',
   Connect = 'CONNECT',
+  DownloadOptions = 'DOWNLOAD_OPTIONS',
   Download = 'DOWNLOAD',
-  Instructions = 'INSTRUCTIONS',
+  InstructionsMobile = 'INSTRUCTIONS_MOBILE',
+  InstructionsExtension = 'INSTRUCTIONS_EXTENSION',
 }
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
@@ -37,11 +54,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   >();
   const [selectedWallet, setSelectedWallet] = useState<WalletConnector>();
   const [qrCodeUri, setQrCodeUri] = useState<string>();
-  const hasQrCode = !!selectedWallet?.qrCode;
+  const hasQrCode = !!selectedWallet?.qrCode && qrCodeUri;
   const [connectionError, setConnectionError] = useState(false);
-  const wallets = useWalletConnectors().filter(
-    wallet => wallet.ready || wallet.downloadUrls?.browserExtension
-  );
+  const modalSize = useContext(ModalSizeContext);
+  const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
+  const { disclaimer: Disclaimer } = useContext(AppContext);
+
+  const wallets = useWalletConnectors()
+    .filter(wallet => wallet.ready || wallet.downloadUrls?.browserExtension)
+    .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
@@ -63,7 +84,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const onSelectWallet = (wallet: WalletConnector) => {
+  const selectWallet = (wallet: WalletConnector) => {
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 
@@ -81,8 +102,33 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         const sWallet = wallets.find(w => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
         setQrCodeUri(uri);
-        setSelectedWallet(sWallet);
-        changeWalletStep(WalletStep.Connect);
+
+        // This timeout prevents the UI from flickering if connection is instant,
+        // otherwise users will see a flash of the "connecting" state.
+        setTimeout(
+          () => {
+            setSelectedWallet(sWallet);
+            changeWalletStep(WalletStep.Connect);
+          },
+          uri ? 0 : 50
+        );
+
+        // If the WalletConnect request is rejected, restart the wallet
+        // selection flow to create a new connection with a new QR code
+        const provider = await sWallet?.connector.getProvider();
+        const connection = provider?.signer?.connection;
+        if (connection?.on && connection?.off) {
+          const handleConnectionClose = () => {
+            removeHandlers();
+            selectWallet(wallet);
+          };
+          const removeHandlers = () => {
+            connection.off('close', handleConnectionClose);
+            connection.off('open', removeHandlers);
+          };
+          connection.on('close', handleConnectionClose);
+          connection.on('open', removeHandlers);
+        }
       });
     } else {
       setSelectedWallet(wallet);
@@ -90,11 +136,25 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const getMobileWallet = (id: string) => {
+  const getWalletDownload = (id: string) => {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
+    const isMobile = sWallet?.downloadUrls?.qrCode;
+    const isExtension = sWallet?.downloadUrls?.browserExtension;
     setSelectedWallet(sWallet);
-    changeWalletStep(WalletStep.Download);
+    if (isMobile && isExtension) {
+      changeWalletStep(WalletStep.DownloadOptions);
+    } else if (isMobile) {
+      changeWalletStep(WalletStep.Download);
+    } else {
+      changeWalletStep(WalletStep.InstructionsExtension);
+    }
+  };
+
+  const clearSelectedWallet = () => {
+    setSelectedOptionId(undefined);
+    setSelectedWallet(undefined);
+    setQrCodeUri(undefined);
   };
   const changeWalletStep = (
     newWalletStep: WalletStep,
@@ -105,9 +165,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       newWalletStep === WalletStep.Get &&
       initialWalletStep === WalletStep.Get
     ) {
-      setSelectedOptionId(undefined);
-      setSelectedWallet(undefined);
-      setQrCodeUri(undefined);
+      clearSelectedWallet();
     } else if (!isBack && newWalletStep === WalletStep.Get) {
       setInitialWalletStep(WalletStep.Get);
     } else if (!isBack && newWalletStep === WalletStep.Connect) {
@@ -123,10 +181,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let walletContent = null;
   let headerLabel = null;
   let headerBackButtonLink: WalletStep | null = null;
+  let headerBackButtonCallback: () => void;
 
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
+
+  const hasExtensionAndMobile = !!(
+    selectedWallet?.downloadUrls?.browserExtension &&
+    (selectedWallet?.downloadUrls?.android || selectedWallet?.downloadUrls?.ios)
+  );
 
   switch (walletStep) {
     case WalletStep.None:
@@ -134,15 +198,28 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         <ConnectModalIntro getWallet={() => changeWalletStep(WalletStep.Get)} />
       );
       break;
-    case WalletStep.Get:
-      walletContent = <GetDetail getMobileWallet={getMobileWallet} />;
-      headerLabel = 'Get a Wallet';
+    case WalletStep.LearnCompact:
+      walletContent = (
+        <ConnectModalIntro
+          compactModeEnabled={compactModeEnabled}
+          getWallet={() => changeWalletStep(WalletStep.Get)}
+        />
+      );
+      headerLabel = 'What is a Wallet?';
       headerBackButtonLink = WalletStep.None;
+      break;
+    case WalletStep.Get:
+      walletContent = <GetDetail getWalletDownload={getWalletDownload} />;
+      headerLabel = 'Get a Wallet';
+      headerBackButtonLink = compactModeEnabled
+        ? WalletStep.LearnCompact
+        : WalletStep.None;
       break;
     case WalletStep.Connect:
       walletContent = selectedWallet && (
         <ConnectDetail
           changeWalletStep={changeWalletStep}
+          compactModeEnabled={compactModeEnabled}
           connectionError={connectionError}
           qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
@@ -156,6 +233,20 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             ? 'your phone'
             : selectedWallet.name
         }`;
+      headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
+      headerBackButtonCallback = compactModeEnabled
+        ? clearSelectedWallet
+        : () => {};
+      break;
+    case WalletStep.DownloadOptions:
+      walletContent = selectedWallet && (
+        <DownloadOptionsDetail
+          changeWalletStep={changeWalletStep}
+          wallet={selectedWallet}
+        />
+      );
+      headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
+      headerBackButtonLink = initialWalletStep;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
@@ -164,71 +255,179 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = hasQrCode && `Install ${selectedWallet.name}`;
-      headerBackButtonLink = initialWalletStep;
+      headerLabel = selectedWallet && `Install ${selectedWallet.name}`;
+      headerBackButtonLink = hasExtensionAndMobile
+        ? WalletStep.DownloadOptions
+        : initialWalletStep;
       break;
-    case WalletStep.Instructions:
+    case WalletStep.InstructionsMobile:
       walletContent = selectedWallet && (
-        <InstructionDetail
-          connectWallet={onSelectWallet}
+        <InstructionMobileDetail
+          connectWallet={selectWallet}
           wallet={selectedWallet}
         />
       );
-      headerLabel = hasQrCode && `Get started with ${selectedWallet.name}`;
+      headerLabel =
+        selectedWallet &&
+        `Get started with ${
+          compactModeEnabled
+            ? selectedWallet.shortName || selectedWallet.name
+            : selectedWallet.name
+        }`;
       headerBackButtonLink = WalletStep.Download;
+      break;
+    case WalletStep.InstructionsExtension:
+      walletContent = selectedWallet && (
+        <InstructionExtensionDetail wallet={selectedWallet} />
+      );
+      headerLabel =
+        selectedWallet &&
+        `Get started with ${
+          compactModeEnabled
+            ? selectedWallet.shortName || selectedWallet.name
+            : selectedWallet.name
+        }`;
+      headerBackButtonLink = WalletStep.DownloadOptions;
       break;
     default:
       break;
   }
-
   return (
-    <Box display="flex" flexDirection="row" style={{ maxHeight: 504 }}>
-      <Box
-        className={sidebar}
-        display="flex"
-        flexDirection="column"
-        marginTop="18"
-      >
-        <Box marginLeft="6" paddingBottom="8" paddingX="18">
-          <Text as="h1" color="modalText" id={titleId} size="18" weight="heavy">
-            Connect a Wallet
-          </Text>
-        </Box>
-        <Box className={ScrollClassName} paddingBottom="18">
-          {Object.entries(groupedWallets).map(
-            ([groupName, wallets], index) =>
-              wallets.length > 0 && (
-                <Fragment key={index}>
-                  {groupName ? (
-                    <Box marginBottom="8" marginTop="16" marginX="6">
-                      <Text color="modalTextSecondary" size="14" weight="bold">
-                        {groupName}
+    <Box
+      display="flex"
+      flexDirection="row"
+      style={{ maxHeight: compactModeEnabled ? 468 : 504 }}
+    >
+      {(compactModeEnabled ? walletStep === WalletStep.None : true) && (
+        <Box
+          className={compactModeEnabled ? sidebarCompactMode : sidebar}
+          display="flex"
+          flexDirection="column"
+          marginTop="16"
+        >
+          <Box display="flex" justifyContent="space-between">
+            {compactModeEnabled && Disclaimer && (
+              <Box marginLeft="16" width="28">
+                <InfoButton
+                  onClick={() => changeWalletStep(WalletStep.LearnCompact)}
+                />
+              </Box>
+            )}
+            {compactModeEnabled && !Disclaimer && (
+              <Box marginLeft="16" width="28" />
+            )}
+            <Box
+              marginLeft={compactModeEnabled ? '0' : '6'}
+              paddingBottom="8"
+              paddingTop="2"
+              paddingX="18"
+            >
+              <Text
+                as="h1"
+                color="modalText"
+                id={titleId}
+                size="18"
+                weight="heavy"
+              >
+                Connect a Wallet
+              </Text>
+            </Box>
+            {compactModeEnabled && (
+              <Box marginRight="16">
+                <CloseButton onClose={onClose} />
+              </Box>
+            )}
+          </Box>
+          <Box className={ScrollClassName} paddingBottom="18">
+            {Object.entries(groupedWallets).map(
+              ([groupName, wallets], index) =>
+                wallets.length > 0 && (
+                  <Fragment key={index}>
+                    {groupName ? (
+                      <Box marginBottom="8" marginTop="16" marginX="6">
+                        <Text
+                          color="modalTextSecondary"
+                          size="14"
+                          weight="bold"
+                        >
+                          {groupName}
+                        </Text>
+                      </Box>
+                    ) : null}
+                    <Box display="flex" flexDirection="column" gap="4">
+                      {wallets.map(wallet => {
+                        return (
+                          <ModalSelection
+                            currentlySelected={wallet.id === selectedOptionId}
+                            iconBackground={wallet.iconBackground}
+                            iconUrl={wallet.iconUrl}
+                            key={wallet.id}
+                            name={wallet.name}
+                            onClick={() => selectWallet(wallet)}
+                            ready={wallet.ready}
+                            recent={wallet.recent}
+                          />
+                        );
+                      })}
+                    </Box>
+                  </Fragment>
+                )
+            )}
+          </Box>
+          {compactModeEnabled && (
+            <>
+              <Box background="generalBorder" height="1" marginTop="-1" />
+              {Disclaimer ? (
+                <Box paddingX="24" paddingY="16" textAlign="center">
+                  <Disclaimer Link={DisclaimerLink} Text={DisclaimerText} />
+                </Box>
+              ) : (
+                <Box
+                  alignItems="center"
+                  display="flex"
+                  justifyContent="space-between"
+                  paddingX="24"
+                  paddingY="16"
+                >
+                  <Box paddingY="4">
+                    <Text color="modalTextSecondary" size="14" weight="medium">
+                      New to Ethereum wallets?
+                    </Text>
+                  </Box>
+                  <Box
+                    alignItems="center"
+                    display="flex"
+                    flexDirection="row"
+                    gap="4"
+                    justifyContent="center"
+                  >
+                    <Box
+                      className={touchableStyles({
+                        active: 'shrink',
+                        hover: 'grow',
+                      })}
+                      cursor="pointer"
+                      onClick={() => changeWalletStep(WalletStep.LearnCompact)}
+                      paddingY="4"
+                      style={{ willChange: 'transform' }}
+                      transition="default"
+                    >
+                      <Text color="accentColor" size="14" weight="bold">
+                        Learn More
                       </Text>
                     </Box>
-                  ) : null}
-                  <Box display="flex" flexDirection="column" gap="4">
-                    {wallets.map(wallet => {
-                      return (
-                        <ModalSelection
-                          currentlySelected={wallet.id === selectedOptionId}
-                          iconBackground={wallet.iconBackground}
-                          iconUrl={wallet.iconUrl}
-                          key={wallet.id}
-                          name={wallet.name}
-                          onClick={() => onSelectWallet(wallet)}
-                          ready={wallet.ready}
-                        />
-                      );
-                    })}
                   </Box>
-                </Fragment>
-              )
+                </Box>
+              )}
+            </>
           )}
         </Box>
-      </Box>
-      {!isMobile() && (
+      )}
+      {(compactModeEnabled ? walletStep !== WalletStep.None : true) && (
         <>
-          <Box background="generalBorder" minWidth="1" width="1" />
+          {!compactModeEnabled && (
+            <Box background="generalBorder" minWidth="1" width="1" />
+          )}
           <Box
             display="flex"
             flexDirection="column"
@@ -250,10 +449,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       hover: 'growLg',
                     })}
                     color="accentColor"
-                    onClick={() =>
+                    onClick={() => {
                       headerBackButtonLink &&
-                      changeWalletStep(headerBackButtonLink, true)
-                    }
+                        changeWalletStep(headerBackButtonLink, true);
+                      headerBackButtonCallback?.();
+                    }}
                     paddingX="8"
                     paddingY="4"
                     style={{
@@ -289,7 +489,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: 432 }}
+              style={{ minHeight: compactModeEnabled ? 396 : 432 }}
             >
               <Box
                 alignItems="center"
@@ -298,7 +498,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 gap="6"
                 height="full"
                 justifyContent="center"
-                marginTop="6"
                 marginX="8"
               >
                 {walletContent}

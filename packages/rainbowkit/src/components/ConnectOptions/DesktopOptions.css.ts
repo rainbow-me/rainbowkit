@@ -24,3 +24,7 @@ export const sidebar = style({
   },
   'minWidth': '246px',
 });
+
+export const sidebarCompactMode = style({
+  minWidth: '100%',
+});

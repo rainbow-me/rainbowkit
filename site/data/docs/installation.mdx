@@ -66,7 +66,7 @@ import { publicProvider } from 'wagmi/providers/public';
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider()
   ]
 );
@@ -113,9 +113,31 @@ export const YourApp = () => {
 };
 ```
 
-You're done! RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
+RainbowKit will now handle your user's wallet selection, display wallet/transaction information and handle network/wallet switching.
 
-> Note: If you're using [Remix,](https://remix.run) remember to [add RainbowKit to its server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages).
+#### Additional build tooling setup
+
+Some build tools will require additional setup.
+
+##### Node polyfills
+
+If your bundler doesn't provide Node polyfills (e.g. [Vite](https://vitejs.dev)), you'll need to include polyfills for `global`, `Buffer` and `process.env`. As an example, you can reference the [polyfills in our sample Vite project.](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)
+
+##### Remix
+
+When using [Remix](https://remix.run), all RainbowKit package entry points must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) in your Remix config since they're published as ESM packages.
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
 
 ### Add your own functionality
 
@@ -131,6 +153,6 @@ To see some running examples of RainbowKit, or even use them to automatically sc
 
 To try RainbowKit directly in your browser, check out the CodeSandbox links below:
 
-- with [Create React App](https://codesandbox.io/s/dn3rho)
-- with [Create React App](https://codesandbox.io/s/ilfuoy) (TypeScript)
-- with [Next.js](https://codesandbox.io/s/tmxcc0)
+- with [Create React App](https://codesandbox.io/s/rainbowkit-create-react-app-1vwx1r)
+- with [Create React App (TypeScript)](https://codesandbox.io/s/rainbowkit-create-typescript-app-xuxnqy)
+- with [Next.js](https://codesandbox.io/s/rainbowkit-nextjs-gz890p)
