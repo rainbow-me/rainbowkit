@@ -19,7 +19,9 @@ export default function DocPage({ doc, sectionName }: DocPageProps) {
         title={`${doc.title} — RainbowKit`}
       />
       <Box as="article">
-        <p style={{ display: 'none' }}>{sectionName}</p>
+        <p data-algolia-lvl0 style={{ display: 'none' }}>
+          {sectionName}
+        </p>
         <Component components={components} />
       </Box>
     </>
