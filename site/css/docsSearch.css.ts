@@ -39,24 +39,17 @@ globalStyle('.DocSearch-Modal, .DocSearch-Modal button', {
   fontFamily: vars.fonts.normal,
 });
 
-// TODO: Style the loading indicator
 globalStyle('.DocSearch-LoadingIndicator', {
-  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='9' stroke-width='2' stroke='%23cffafe' /%3E%3Cpath d='M3,12a9,9 0 1,0 18,0a9,9 0 1,0 -18,0' stroke-width='2' stroke='%2306b6d4' stroke-dasharray='56.5486677646' stroke-dashoffset='37.6991118431' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-  backgroundSize: '100% 100%',
   display: 'none',
   height: 18,
   width: 18,
 });
 
-globalStyle('.DocSearch-LoadingIndicator svg', {
-  display: 'none',
+globalStyle('.DocSearch-Container--Stalled .DocSearch-LoadingIndicator', {
+  display: 'block',
 });
 
 globalStyle('.DocSearch-Reset', {
-  display: 'none',
-});
-
-globalStyle('.DocSearch-Container--Stalled .DocSearch-LoadingIndicator', {
   display: 'none',
 });
 
@@ -79,6 +72,10 @@ globalStyle('.DocSearch-MagnifierLabel', {
   flexShrink: 0,
   height: 18,
   width: 18,
+});
+
+globalStyle('.DocSearch-Container--Stalled .DocSearch-MagnifierLabel', {
+  display: 'none',
 });
 
 globalStyle('.DocSearch-MagnifierLabel svg', {
