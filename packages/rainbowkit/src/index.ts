@@ -8,6 +8,7 @@ export {
   useChainModal,
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
+export { useRainbowKitChainsById, useRainbowKitChains } from './components/RainbowKitProvider/RainbowKitChainContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
 export {
   RainbowKitAuthenticationProvider,
