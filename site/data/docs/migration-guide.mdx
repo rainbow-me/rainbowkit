@@ -6,6 +6,47 @@ title: Migration Guide
 
 ## Migrating RainbowKit
 
+### 0.7.x Breaking changes
+
+If you're creating a custom wallet list, you must now import each wallet individually in order to reduce bundle size. Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
+
+```diff
+-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
++import { connectorsForWallets } from '@rainbow-me/rainbowkit';
++import {
++  injectedWallet,
++  rainbowWallet,
++  metaMaskWallet,
++  coinbaseWallet,
++  walletConnectWallet,
++} from '@rainbow-me/rainbowkit/wallets';
+
+const wallets = [
+-  wallet.injected({ chains }),
+-  wallet.rainbow({ chains }),
+-  wallet.metaMask({ chains }),
+-  wallet.coinbase({ chains, appName: 'My App' }),
+-  wallet.walletConnect({ chains }),
++  injectedWallet({ chains }),
++  rainbowWallet({ chains }),
++  metaMaskWallet({ chains }),
++  coinbaseWallet({ chains, appName: 'My App' }),
++  walletConnectWallet({ chains }),
+];
+```
+
+Also note that the Steakwallet backwards compatibility layer has been removed. Omni should be used instead.
+
+```diff
+-import { wallet } from '@rainbow-me/rainbowkit';
++import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const wallets = [
+-  wallet.steak({ chains }),
++  omniWallet({ chains }),
+];
+```
+
 ### 0.4.x Breaking changes
 
 RainbowKit has updated the `wagmi` peer dependency to `0.5.x`.

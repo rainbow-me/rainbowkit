@@ -4,19 +4,19 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface RainbowOptions {
+export interface OmniWalletOptions {
   chains: Chain[];
 }
 
-export const rainbow = ({ chains }: RainbowOptions): Wallet => ({
-  id: 'rainbow',
-  name: 'Rainbow',
-  iconUrl: async () => (await import('./rainbow.svg')).default,
-  iconBackground: '#0c2f78',
+export const omniWallet = ({ chains }: OmniWalletOptions): Wallet => ({
+  id: 'omni',
+  name: 'Omni',
+  iconUrl: async () => (await import('./omniWallet.svg')).default,
+  iconBackground: '#000',
   downloadUrls: {
-    android: 'https://play.google.com/store/apps/details?id=me.rainbow',
-    ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
-    qrCode: 'https://rainbow.download',
+    android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
+    ios: 'https://itunes.apple.com/us/app/id1569375204',
+    qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({ chains });
@@ -26,35 +26,32 @@ export const rainbow = ({ chains }: RainbowOptions): Wallet => ({
       mobile: {
         getUri: async () => {
           const { uri } = (await connector.getProvider()).connector;
-
           return isAndroid()
             ? uri
-            : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+            : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl:
-            'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
+          learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
               description:
-                'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+                'Add Omni to your home screen for faster access to your wallet.',
               step: 'install',
-              title: 'Open the Rainbow app',
+              title: 'Open the Omni app',
             },
             {
-              description:
-                'You can easily backup your wallet using our backup feature on your phone.',
+              description: 'Create a new wallet or import an existing one.',
               step: 'create',
               title: 'Create or Import a Wallet',
             },
             {
               description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
+                'Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect.',
               step: 'scan',
-              title: 'Tap the scan button',
+              title: 'Tap the QR icon and scan',
             },
           ],
         },

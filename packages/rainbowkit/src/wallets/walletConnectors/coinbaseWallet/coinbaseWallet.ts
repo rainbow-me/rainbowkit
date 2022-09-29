@@ -4,12 +4,15 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
-export interface CoinbaseOptions {
+export interface CoinbaseWalletOptions {
   appName: string;
   chains: Chain[];
 }
 
-export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
+export const coinbaseWallet = ({
+  appName,
+  chains,
+}: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
 
@@ -17,7 +20,7 @@ export const coinbase = ({ appName, chains }: CoinbaseOptions): Wallet => {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
-    iconUrl: async () => (await import('./coinbase.svg')).default,
+    iconUrl: async () => (await import('./coinbaseWallet.svg')).default,
     iconAccent: '#2c5ff6',
     iconBackground: '#2c5ff6',
     // Note that we never resolve `installed` to `false` because the
