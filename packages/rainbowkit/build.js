@@ -9,7 +9,7 @@ import readdir from 'recursive-readdir-files';
 const isWatching = process.argv.includes('--watch');
 const isCssMinified = process.env.MINIFY_CSS === 'true';
 
-const getRecursivePaths = async rootPath =>
+const getAllEntryPoints = async rootPath =>
   (await readdir(rootPath))
     .map(({ path }) => path)
     .filter(
@@ -61,7 +61,7 @@ const mainBuild = esbuild.build({
     './src/index.ts',
 
     // esbuild needs these additional entry points in order to support tree shaking while also supporting CSS
-    ...(await getRecursivePaths('src/themes')),
+    ...(await getAllEntryPoints('src/themes')),
 
     // The build output is cleaner when bundling all components into a single chunk
     // This is done assuming that consumers use most of the components in the package, which is a reasonable assumption for now
@@ -80,7 +80,7 @@ const mainBuild = esbuild.build({
 
 const walletsBuild = esbuild.build({
   ...baseBuildConfig,
-  entryPoints: await getRecursivePaths('src/wallets/walletConnectors'),
+  entryPoints: await getAllEntryPoints('src/wallets/walletConnectors'),
   outdir: 'dist/wallets/walletConnectors',
   watch: isWatching
     ? {
