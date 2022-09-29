@@ -9,12 +9,17 @@ description: Customizing the wallet list
 
 > Note: This API is unstable and likely to change in the near future. We recommend avoiding changes to the wallet list for now.
 
-You can use the `wallet` object and the `connectorsForWallets` function to build your own list of wallets and generate the necessary connectors. This way you have full control over which wallets to display, and in which order.
+You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along with the `connectorsForWallets` function to build your own list of wallets with their necessary connectors. This way you have full control over which wallets to display, and in which order.
 
 For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  injectedWallet,
+  rainbowWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 import { chain, configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -31,9 +36,9 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.injected({ chains }),
-      wallet.rainbow({ chains }),
-      wallet.walletConnect({ chains }),
+      injectedWallet({ chains }),
+      rainbowWallet({ chains }),
+      walletConnectWallet({ chains }),
     ],
   },
 ]);
@@ -74,9 +79,9 @@ This is a fallback wallet option designed for WalletConnect-based wallets that h
 **It's recommended that you always include this wallet in the list to ensure all WalletConnect-based wallets are supported.**
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.walletConnect(options: {
+walletConnectWallet(options: {
   chains: Chain[];
 });
 ```
@@ -88,9 +93,9 @@ This is a fallback wallet option designed for scenarios where `window.ethereum` 
 **It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.injected(options: {
+injectedWallet(options: {
   chains: Chain[];
   shimDisconnect?: boolean;
 });
@@ -103,9 +108,9 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 #### Argent
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.argent(options: {
+argentWallet(options: {
   chains: Chain[];
 });
 ```
@@ -113,9 +118,9 @@ wallet.argent(options: {
 #### Brave Wallet
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.brave(options: {
+braveWallet(options: {
   chains: Chain[];
   shimDisconnect?: boolean;
 });
@@ -124,9 +129,9 @@ wallet.brave(options: {
 #### Coinbase Wallet
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.coinbase(options: {
+coinbaseWallet(options: {
   appName: string;
   chains: Chain[];
 });
@@ -135,9 +140,9 @@ wallet.coinbase(options: {
 #### Ledger Live
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.ledger(options: {
+ledgerWallet(options: {
   chains: Chain[];
   infuraId?: string;
 });
@@ -146,20 +151,30 @@ wallet.ledger(options: {
 #### MetaMask
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.metaMask(options: {
+metaMaskWallet(options: {
   chains: Chain[];
   shimDisconnect?: boolean;
+});
+```
+
+#### Omni
+
+```tsx
+import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+
+omniWallet(options: {
+  chains: Chain[];
 });
 ```
 
 #### Rainbow
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.rainbow(options: {
+rainbowWallet(options: {
   chains: Chain[];
 });
 ```
@@ -167,30 +182,20 @@ wallet.rainbow(options: {
 #### Trust Wallet
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.trust(options: {
+trustWallet(options: {
   chains: Chain[];
   shimDisconnect?: boolean;
-});
-```
-
-#### Steakwallet
-
-```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
-
-wallet.steak(options: {
-  chains: Chain[];
 });
 ```
 
 #### imToken
 
 ```tsx
-import { wallet } from '@rainbow-me/rainbowkit';
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 
-wallet.imToken(options: {
+imTokenWallet(options: {
   chains: Chain[];
 });
 ```
@@ -204,34 +209,46 @@ Here are a few examples of displaying different wallets, in different order.
 Show MetaMask along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  injectedWallet,
+  metaMaskWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.injected({ chains }),
-      wallet.metaMask({ chains }),
-      wallet.walletConnect({ chains }),
+      injectedWallet({ chains }),
+      metaMaskWallet({ chains }),
+      walletConnectWallet({ chains }),
     ],
   },
 ]);
 ```
 
-Show MetaMask, Rainbow and Coinbase along with generic fallback wallets.
+Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  injectedWallet,
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets([
   {
     groupName: 'Suggested',
     wallets: [
-      wallet.injected({ chains }),
-      wallet.metaMask({ chains }),
-      wallet.rainbow({ chains }),
-      wallet.coinbase({ appName: 'My RainbowKit App', chains }),
-      wallet.walletConnect({ chains }),
+      injectedWallet({ chains }),
+      rainbowWallet({ chains }),
+      metaMaskWallet({ chains }),
+      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
+      walletConnectWallet({ chains }),
     ],
   },
 ]);
@@ -246,22 +263,29 @@ You can use the `groupName` key to name different wallet groups. This is useful 
 Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  injectedWallet,
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      wallet.injected({ chains }),
-      wallet.rainbow({ chains }),
-      wallet.metaMask({ chains }),
+      injectedWallet({ chains }),
+      rainbowWallet({ chains }),
+      metaMaskWallet({ chains }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
-      wallet.coinbase({ chains, appName: 'My RainbowKit App' }),
-      wallet.walletConnect({ chains }),
+      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
+      walletConnectWallet({ chains }),
     ],
   },
 ]);

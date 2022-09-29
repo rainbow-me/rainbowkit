@@ -10,13 +10,19 @@ import {
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
-  wallet,
 } from '@rainbow-me/rainbowkit';
-
 import {
   GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import {
+  argentWallet,
+  imTokenWallet,
+  ledgerWallet,
+  omniWallet,
+  trustWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -112,11 +118,11 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      wallet.argent({ chains }),
-      wallet.trust({ chains }),
-      wallet.steak({ chains }),
-      wallet.imToken({ chains }),
-      wallet.ledger({ chains }),
+      argentWallet({ chains }),
+      trustWallet({ chains }),
+      omniWallet({ chains }),
+      imTokenWallet({ chains }),
+      ledgerWallet({ chains }),
     ],
   },
 ]);

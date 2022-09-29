@@ -5,15 +5,18 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface TrustOptions {
+export interface TrustWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
-export const trust = ({ chains, shimDisconnect }: TrustOptions): Wallet => ({
+export const trustWallet = ({
+  chains,
+  shimDisconnect,
+}: TrustWalletOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
-  iconUrl: async () => (await import('./trust.svg')).default,
+  iconUrl: async () => (await import('./trustWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
     android:

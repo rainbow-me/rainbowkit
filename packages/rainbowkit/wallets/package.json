@@ -1,0 +1,3 @@
+{
+  "main": "../dist/wallets/walletConnectors/index.js"
+}
