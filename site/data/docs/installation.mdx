@@ -125,7 +125,19 @@ If your bundler doesn't provide Node polyfills (e.g. [Vite](https://vitejs.dev))
 
 ##### Remix
 
-When using [Remix](https://remix.run), RainbowKit must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) since it's published as an ESM package.
+When using [Remix](https://remix.run), all RainbowKit package entry points must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) in your Remix config since they're published as ESM packages.
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
 
 ### Add your own functionality
 

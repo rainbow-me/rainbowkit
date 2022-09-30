@@ -23,11 +23,16 @@ export const mewWallet = ({
     ios: 'https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&mt=8&ct=rainbow',
   },
   createConnector: () => {
-    const inAppBrowser = Boolean(
-      typeof window !== 'undefined' && window.ethereum?.isMEWwallet
-    );
+    const isMewWalletInjected =
+      typeof window !== 'undefined' &&
+      Boolean(
+        (
+          window.ethereum as typeof window.ethereum &
+            (undefined | { isMEWwallet?: boolean })
+        )?.isMEWwallet
+      );
 
-    if (inAppBrowser) {
+    if (isMewWalletInjected) {
       return {
         connector: new InjectedConnector({
           chains,

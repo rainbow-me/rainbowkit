@@ -2,8 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { chain, Connector } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { connectorsForWallets, wallet } from '..';
+import { connectorsForWallets } from '..';
 import { WalletInstance } from './Wallet';
+import { injectedWallet } from './walletConnectors';
 
 const getWalletInstances = (
   connector: Connector & { _wallets?: WalletInstance[] }
@@ -32,7 +33,7 @@ describe('connectorsForWallets', () => {
               id: 'test-walletconnect-wallet',
               name: 'Test WalletConnect Wallet',
             },
-            wallet.injected({ chains }),
+            injectedWallet({ chains }),
           ],
         },
       ])();
@@ -75,7 +76,7 @@ describe('connectorsForWallets', () => {
               id: 'test-walletconnect-wallet',
               name: 'Test WalletConnect Wallet',
             },
-            wallet.injected({ chains }),
+            injectedWallet({ chains }),
           ],
         },
       ])();
@@ -105,7 +106,7 @@ describe('connectorsForWallets', () => {
         {
           groupName: 'Test Group 1',
           wallets: [
-            wallet.injected({ chains }),
+            injectedWallet({ chains }),
             {
               createConnector: () => ({
                 connector: new InjectedConnector(),
@@ -183,7 +184,7 @@ describe('connectorsForWallets', () => {
         {
           groupName: 'Test Group 2',
           wallets: [
-            wallet.injected({ chains }),
+            injectedWallet({ chains }),
             {
               createConnector: () => ({
                 connector: new WalletConnectConnector({ chains, options: {} }),

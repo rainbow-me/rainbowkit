@@ -20,6 +20,8 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-connectButtonText": "#25292E",
         "--rk-colors-connectButtonTextError": "#FFF",
         "--rk-colors-connectionIndicator": "#30E000",
+        "--rk-colors-downloadBottomCardBackground": "linear-gradient(126deg, rgba(255, 255, 255, 0) 9.49%, rgba(171, 171, 171, 0.04) 71.04%), #FFFFFF",
+        "--rk-colors-downloadTopCardBackground": "linear-gradient(126deg, rgba(171, 171, 171, 0.2) 9.49%, rgba(255, 255, 255, 0) 71.04%), #FFFFFF",
         "--rk-colors-error": "#FF494A",
         "--rk-colors-generalBorder": "rgba(0, 0, 0, 0.06)",
         "--rk-colors-generalBorderDim": "rgba(0, 0, 0, 0.03)",

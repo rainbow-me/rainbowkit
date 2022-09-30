@@ -3,14 +3,14 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface ImTokenOptions {
+export interface ImTokenWalletOptions {
   chains: Chain[];
 }
 
-export const imToken = ({ chains }: ImTokenOptions): Wallet => ({
+export const imTokenWallet = ({ chains }: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
-  iconUrl: async () => (await import('./imToken.svg')).default,
+  iconUrl: async () => (await import('./imTokenWallet.svg')).default,
   iconBackground: '#098de6',
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=im.token.app',
