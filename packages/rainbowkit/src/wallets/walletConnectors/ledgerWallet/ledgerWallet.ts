@@ -4,15 +4,15 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface LedgerOptions {
+export interface LedgerWalletOptions {
   chains: Chain[];
 }
 
-export const ledger = ({ chains }: LedgerOptions): Wallet => ({
+export const ledgerWallet = ({ chains }: LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   name: 'Ledger Live',
-  iconUrl: async () => (await import('./ledger.svg')).default,
+  iconUrl: async () => (await import('./ledgerWallet.svg')).default,
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
     ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',

@@ -5,12 +5,12 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface MetaMaskOptions {
+export interface MetaMaskWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
-export function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
+function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/tmm/wagmi/blob/main/packages/core/src/connectors/metaMask.ts
   const isMetaMask = Boolean(ethereum.isMetaMask);
@@ -25,6 +25,10 @@ export function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
     return false;
   }
 
+  if (ethereum.isTokenPocket) {
+    return false;
+  }
+
   if (ethereum.isTokenary) {
     return false;
   }
@@ -32,10 +36,10 @@ export function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   return true;
 }
 
-export const metaMask = ({
+export const metaMaskWallet = ({
   chains,
   shimDisconnect,
-}: MetaMaskOptions): Wallet => {
+}: MetaMaskWalletOptions): Wallet => {
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -46,7 +50,8 @@ export const metaMask = ({
   return {
     id: 'metaMask',
     name: 'MetaMask',
-    iconUrl: async () => (await import('./metaMask.svg')).default,
+    iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
+    iconAccent: '#f6851a',
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {

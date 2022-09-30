@@ -10,29 +10,18 @@ export interface InfinityWalletOptions {
   shimDisconnect?: boolean;
 }
 
-export interface InfinityWalletEthereum extends Ethereum {
-  isInfinityWallet?: true;
-}
-
-export function isInfinityWallet(ethereum: NonNullable<typeof window['ethereum']>) {
-
-  let iwEtheruem: InfinityWalletEthereum | undefined = typeof ethereum !== 'undefined' ? ethereum : undefined;
-
-  const isInfinityWallet = Boolean(iwEtheruem?.isInfinityWallet);
-
-  if (!isInfinityWallet) {
-    return false;
-  }
-
-  return true;
-}
-
 export const infinityWallet = ({
   chains,
   shimDisconnect,
 }: InfinityWalletOptions): Wallet => {
-
-  const isInfinityWalletInjected = typeof window !== 'undefined' && typeof window.ethereum !== 'undefined' && isInfinityWallet(window.ethereum);
+  const isInfinityWalletInjected =
+    typeof window !== 'undefined' &&
+    Boolean(
+      (
+        window.ethereum as typeof window.ethereum &
+          (undefined | { isInfinityWallet?: boolean })
+      )?.isInfinityWallet
+    );
 
   const shouldUseWalletConnect = !isInfinityWalletInjected;
 
@@ -75,7 +64,8 @@ export const infinityWallet = ({
             learnMoreUrl: 'https://infinitywallet.io/',
             steps: [
               {
-                description: 'Open or install the Infinity Wallet, make a shortcut for faster access to your wallet.',
+                description:
+                  'Open or install the Infinity Wallet, make a shortcut for faster access to your wallet.',
                 step: 'install',
                 title: 'Open the Infinity Wallet',
               },
@@ -85,7 +75,8 @@ export const infinityWallet = ({
                 title: 'Create or Import a Wallet',
               },
               {
-                description: 'Accept the prompt to open in Infinity Wallet or Scan the QR code. A connection prompt will appear for you to connect your wallet.',
+                description:
+                  'Accept the prompt to open in Infinity Wallet or Scan the QR code. A connection prompt will appear for you to connect your wallet.',
                 step: 'scan',
                 title: 'Click WalletConnect to scan',
               },

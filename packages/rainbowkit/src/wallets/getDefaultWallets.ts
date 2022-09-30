@@ -1,12 +1,12 @@
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
-import { brave } from './walletConnectors/brave/brave';
-import { coinbase } from './walletConnectors/coinbase/coinbase';
-import { injected } from './walletConnectors/injected/injected';
-import { isMetaMask, metaMask } from './walletConnectors/metaMask/metaMask';
-import { rainbow } from './walletConnectors/rainbow/rainbow';
-import { walletConnect } from './walletConnectors/walletConnect/walletConnect';
+import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
+import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
+import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
+import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
+import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
+import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export const getDefaultWallets = ({
   appName,
@@ -18,25 +18,16 @@ export const getDefaultWallets = ({
   connectors: ReturnType<typeof connectorsForWallets>;
   wallets: WalletList;
 } => {
-  const needsInjectedWalletFallback =
-    typeof window !== 'undefined' &&
-    window.ethereum &&
-    !isMetaMask(window.ethereum) &&
-    !window.ethereum.isCoinbaseWallet &&
-    !window.ethereum.isBraveWallet;
-
   const wallets: WalletList = [
     {
       groupName: 'Popular',
       wallets: [
-        rainbow({ chains }),
-        coinbase({ appName, chains }),
-        metaMask({ chains, shimDisconnect: true }),
-        walletConnect({ chains }),
-        brave({ chains, shimDisconnect: true }),
-        ...(needsInjectedWalletFallback
-          ? [injected({ chains, shimDisconnect: true })]
-          : []),
+        injectedWallet({ chains }),
+        rainbowWallet({ chains }),
+        coinbaseWallet({ appName, chains }),
+        metaMaskWallet({ chains }),
+        walletConnectWallet({ chains }),
+        braveWallet({ chains }),
       ],
     },
   ];

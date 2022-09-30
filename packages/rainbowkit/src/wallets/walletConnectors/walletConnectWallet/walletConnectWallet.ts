@@ -4,14 +4,16 @@ import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface WalletConnectOptions {
+export interface WalletConnectWalletOptions {
   chains: Chain[];
 }
 
-export const walletConnect = ({ chains }: WalletConnectOptions): Wallet => ({
+export const walletConnectWallet = ({
+  chains,
+}: WalletConnectWalletOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
-  iconUrl: async () => (await import('./walletConnect.svg')).default,
+  iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
   iconBackground: '#3b99fc',
   createConnector: () => {
     const ios = isIOS();

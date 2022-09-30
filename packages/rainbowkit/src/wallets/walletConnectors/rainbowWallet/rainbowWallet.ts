@@ -4,20 +4,19 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface ArgentOptions {
+export interface RainbowWalletOptions {
   chains: Chain[];
 }
 
-export const argent = ({ chains }: ArgentOptions): Wallet => ({
-  id: 'argent',
-  name: 'Argent',
-  iconUrl: async () => (await import('./argent.svg')).default,
-  iconBackground: '#fff',
+export const rainbowWallet = ({ chains }: RainbowWalletOptions): Wallet => ({
+  id: 'rainbow',
+  name: 'Rainbow',
+  iconUrl: async () => (await import('./rainbowWallet.svg')).default,
+  iconBackground: '#0c2f78',
   downloadUrls: {
-    android:
-      'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient',
-    ios: 'https://apps.apple.com/us/app/argent/id1358741926',
-    qrCode: 'https://argent.link/app',
+    android: 'https://play.google.com/store/apps/details?id=me.rainbow',
+    ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
+    qrCode: 'https://rainbow.download',
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({ chains });
@@ -30,23 +29,24 @@ export const argent = ({ chains }: ArgentOptions): Wallet => ({
 
           return isAndroid()
             ? uri
-            : `https://argent.link/app/wc?uri=${encodeURIComponent(uri)}`;
+            : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl: 'https://www.argent.xyz/learn/what-is-a-crypto-wallet/',
+          learnMoreUrl:
+            'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
           steps: [
             {
               description:
-                'Put Argent on your home screen for faster access to your wallet.',
+                'We recommend putting Rainbow on your home screen for faster access to your wallet.',
               step: 'install',
-              title: 'Open the Argent app',
+              title: 'Open the Rainbow app',
             },
             {
               description:
-                'Create a wallet and username, or import an existing wallet.',
+                'You can easily backup your wallet using our backup feature on your phone.',
               step: 'create',
               title: 'Create or Import a Wallet',
             },
@@ -54,7 +54,7 @@ export const argent = ({ chains }: ArgentOptions): Wallet => ({
               description:
                 'After you scan, a connection prompt will appear for you to connect your wallet.',
               step: 'scan',
-              title: 'Tap the Scan QR button',
+              title: 'Tap the scan button',
             },
           ],
         },

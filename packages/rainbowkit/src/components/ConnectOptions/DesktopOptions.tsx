@@ -60,9 +60,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
-  const wallets = useWalletConnectors().filter(
-    wallet => wallet.ready || wallet.downloadUrls?.browserExtension
-  );
+  const wallets = useWalletConnectors()
+    .filter(wallet => wallet.ready || wallet.downloadUrls?.browserExtension)
+    .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
 
@@ -84,7 +84,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const onSelectWallet = (wallet: WalletConnector) => {
+  const selectWallet = (wallet: WalletConnector) => {
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 
@@ -112,6 +112,23 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           },
           uri ? 0 : 50
         );
+
+        // If the WalletConnect request is rejected, restart the wallet
+        // selection flow to create a new connection with a new QR code
+        const provider = await sWallet?.connector.getProvider();
+        const connection = provider?.signer?.connection;
+        if (connection?.on && connection?.off) {
+          const handleConnectionClose = () => {
+            removeHandlers();
+            selectWallet(wallet);
+          };
+          const removeHandlers = () => {
+            connection.off('close', handleConnectionClose);
+            connection.off('open', removeHandlers);
+          };
+          connection.on('close', handleConnectionClose);
+          connection.on('open', removeHandlers);
+        }
       });
     } else {
       setSelectedWallet(wallet);
@@ -246,7 +263,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     case WalletStep.InstructionsMobile:
       walletContent = selectedWallet && (
         <InstructionMobileDetail
-          connectWallet={onSelectWallet}
+          connectWallet={selectWallet}
           wallet={selectedWallet}
         />
       );
@@ -346,8 +363,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             iconUrl={wallet.iconUrl}
                             key={wallet.id}
                             name={wallet.name}
-                            onClick={() => onSelectWallet(wallet)}
+                            onClick={() => selectWallet(wallet)}
                             ready={wallet.ready}
+                            recent={wallet.recent}
                           />
                         );
                       })}

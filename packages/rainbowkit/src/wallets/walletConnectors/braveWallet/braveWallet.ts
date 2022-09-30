@@ -3,15 +3,18 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
-export interface BraveOptions {
+export interface BraveWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
-export const brave = ({ chains, shimDisconnect }: BraveOptions): Wallet => ({
+export const braveWallet = ({
+  chains,
+  shimDisconnect,
+}: BraveWalletOptions): Wallet => ({
   id: 'brave',
   name: 'Brave Wallet',
-  iconUrl: async () => (await import('./brave.svg')).default,
+  iconUrl: async () => (await import('./braveWallet.svg')).default,
   iconBackground: '#fff',
   installed:
     typeof window !== 'undefined' && window.ethereum?.isBraveWallet === true,

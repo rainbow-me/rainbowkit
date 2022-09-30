@@ -18,6 +18,9 @@ const contractConfig = {
 };
 
 const Home: NextPage = () => {
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
   const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
 
@@ -78,7 +81,7 @@ const Home: NextPage = () => {
               </p>
             )}
 
-            {isConnected && !isMinted && (
+            {mounted && isConnected && !isMinted && (
               <button
                 style={{ marginTop: 24 }}
                 disabled={!mint || isMintLoading || isMintStarted}
