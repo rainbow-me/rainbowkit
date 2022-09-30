@@ -3,18 +3,18 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
-export interface InjectedOptions {
+export interface InjectedWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
-export const injected = ({
+export const injectedWallet = ({
   chains,
   shimDisconnect,
-}: InjectedOptions): Wallet => ({
+}: InjectedWalletOptions): Wallet => ({
   id: 'injected',
   name: 'Injected Wallet',
-  iconUrl: async () => (await import('./injected.png')).default,
+  iconUrl: async () => (await import('./injectedWallet.png')).default,
   iconBackground: '#fff',
   hidden: ({ wallets }) =>
     wallets.some(

@@ -5,29 +5,30 @@ import { isMobile } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface EnkryptOptions {
+export interface EnkryptWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
-export interface EnkryptEthereum extends Ethereum {
-  isEnkrypt?: true;
-}
-
-export const enkrypt = ({ chains, shimDisconnect }: EnkryptOptions): Wallet => {
-  let enkryptEthereum: EnkryptEthereum | undefined =
-    typeof window !== 'undefined' ? window.ethereum : undefined;
-
+export const enkryptWallet = ({
+  chains,
+  shimDisconnect,
+}: EnkryptWalletOptions): Wallet => {
   const isEnkryptInjected =
-    typeof enkryptEthereum !== 'undefined' &&
-    enkryptEthereum?.isEnkrypt === true;
+    typeof window !== 'undefined' &&
+    Boolean(
+      (
+        window.ethereum as typeof window.ethereum &
+          (undefined | { isEnkrypt?: boolean })
+      )?.isEnkrypt
+    );
 
   const shouldUseWalletConnect = isMobile() && !isEnkryptInjected;
 
   return {
     id: 'enkrypt',
     name: 'Enkrypt',
-    iconUrl: async () => (await import('./enkrypt.svg')).default,
+    iconUrl: async () => (await import('./enkryptWallet.svg')).default,
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isEnkryptInjected : undefined,
     downloadUrls: {

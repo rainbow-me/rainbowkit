@@ -39,6 +39,10 @@ export const darkTheme = ({
     connectButtonText: '#FFF',
     connectButtonTextError: '#FFF',
     connectionIndicator: '#30E000',
+    downloadBottomCardBackground:
+      'linear-gradient(126deg, rgba(0, 0, 0, 0) 9.49%, rgba(120, 120, 120, 0.2) 71.04%), #1A1B1F',
+    downloadTopCardBackground:
+      'linear-gradient(126deg, rgba(120, 120, 120, 0.2) 9.49%, rgba(0, 0, 0, 0) 71.04%), #1A1B1F',
     error: '#FF494A',
     generalBorder: 'rgba(255, 255, 255, 0.08)',
     generalBorderDim: 'rgba(255, 255, 255, 0.04)',
