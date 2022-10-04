@@ -279,50 +279,52 @@ export function ConnectDetail({
                 </Box>
               ) : null}
               {ready && !hasQrCode && (
-                <Box
-                  alignItems="center"
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="center"
-                >
-                  <Text
-                    color="modalTextSecondary"
-                    size="14"
-                    textAlign="center"
-                    weight="medium"
+                <>
+                  <Box
+                    alignItems="center"
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
                   >
-                    Confirm connection in the extension
-                  </Text>
-                </Box>
-              )}
-              <Box
-                alignItems="center"
-                color="modalText"
-                display="flex"
-                flexDirection="row"
-                height="32"
-                marginTop="8"
-              >
-                {connectionError ? (
-                  <ActionButton
-                    label="RETRY"
-                    onClick={
-                      getDesktopDeepLink
-                        ? async () => {
-                            const uri = await getDesktopDeepLink();
-                            window.open(uri, safari ? '_blank' : '_self');
-                          }
-                        : () => {
-                            reconnect(wallet);
-                          }
-                    }
-                  />
-                ) : (
-                  <Box color="modalTextSecondary">
-                    <SpinnerIcon />
+                    <Text
+                      color="modalTextSecondary"
+                      size="14"
+                      textAlign="center"
+                      weight="medium"
+                    >
+                      Confirm connection in the extension
+                    </Text>
                   </Box>
-                )}
-              </Box>
+                  <Box
+                    alignItems="center"
+                    color="modalText"
+                    display="flex"
+                    flexDirection="row"
+                    height="32"
+                    marginTop="8"
+                  >
+                    {connectionError ? (
+                      <ActionButton
+                        label="RETRY"
+                        onClick={
+                          getDesktopDeepLink
+                            ? async () => {
+                                const uri = await getDesktopDeepLink();
+                                window.open(uri, safari ? '_blank' : '_self');
+                              }
+                            : () => {
+                                reconnect(wallet);
+                              }
+                        }
+                      />
+                    ) : (
+                      <Box color="modalTextSecondary">
+                        <SpinnerIcon />
+                      </Box>
+                    )}
+                  </Box>
+                </>
+              )}
             </Box>
           </Box>
         </Box>
