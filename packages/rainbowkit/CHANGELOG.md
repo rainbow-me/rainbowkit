@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.7.1
+
+### Patch Changes
+
+- 6b6a73b: Ensure loading spinner is not visible on install prompt
+- 5ddc813: Fix package.json exports field backwards compatibility for `@rainbow-me/rainbowkit/wallets`
+
 ## 0.7.0
 
 ### Minor Changes
