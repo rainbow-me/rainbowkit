@@ -26,8 +26,20 @@ function App({ Component, pageProps }: AppProps) {
   const isDocs = router.pathname.includes('/docs');
   useEffect(() => {
     const body = document.body;
+
+    const uniqueColors = (function* () {
+      let lastColor = getColor();
+      while (true) {
+        const color = getColor();
+        if (color !== lastColor) {
+          lastColor = color;
+          yield color;
+        }
+      }
+    })();
+
     const tasteTheRainbow = () =>
-      body.style.setProperty('--selectionColor', getColor());
+      body.style.setProperty('--selectionColor', uniqueColors.next().value);
 
     body.addEventListener('mousedown', tasteTheRainbow);
 
