@@ -8,7 +8,9 @@ import {
 import { Header } from 'components/Header/Header';
 import { NextIcon } from 'components/Icons/Next';
 import { PreviousIcon } from 'components/Icons/Previous';
+import { SearchIcon } from 'components/Icons/Search';
 import { Link } from 'components/Link/Link';
+import { SearchButton, SearchProvider } from 'components/Search/Search';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
@@ -53,94 +55,103 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div ref={ref}>
-      <Header docsMobileMenuRef={docsMobileMenuRef} sticky />
+    <SearchProvider>
+      <div ref={ref}>
+        <Header docsMobileMenuRef={docsMobileMenuRef} sticky />
 
-      <DocsMobileMenuContext.Provider value={docsMobileMenuRef}>
-        <DocsMobileMenuSlot>
-          <DialogPrimitive.Root onOpenChange={setIsOpen} open={isOpen}>
-            <Box display={{ lg: 'none' }}>
-              <DialogPrimitive.Trigger asChild>
-                <Button>Menu</Button>
-              </DialogPrimitive.Trigger>
-            </Box>
-            <DialogPrimitive.Portal>
-              <DialogPrimitive.Overlay
-                style={{
-                  backdropFilter: 'blur(4px)',
-                  backgroundColor: vars.colors.backgroundScrim,
-                  inset: 0,
-                  position: 'fixed',
-                  zIndex: 11,
-                }}
-              />
-              <DialogPrimitive.Content
-                style={{
-                  bottom: 0,
-                  left: 0,
-                  outline: 'none',
-                  position: 'fixed',
-                  top: 0,
-                  width: `calc(250px + ${vars.space[6]})`,
-                  zIndex: 12,
-                }}
-              >
-                <Box
-                  backgroundColor="fillElevated"
-                  padding="6"
-                  style={{ height: '100%', overflow: 'auto' }}
+        <DocsMobileMenuContext.Provider value={docsMobileMenuRef}>
+          <DocsMobileMenuSlot>
+            <DialogPrimitive.Root onOpenChange={setIsOpen} open={isOpen}>
+              <Box alignItems="center" display={{ lg: 'none', xs: 'flex' }}>
+                <DialogPrimitive.Trigger asChild>
+                  <Button>Menu</Button>
+                </DialogPrimitive.Trigger>
+                <SearchButton marginLeft="4">
+                  {() => (
+                    <Button as="span" shape="circle" variant="gray">
+                      <SearchIcon />
+                    </Button>
+                  )}
+                </SearchButton>
+              </Box>
+              <DialogPrimitive.Portal>
+                <DialogPrimitive.Overlay
+                  style={{
+                    backdropFilter: 'blur(4px)',
+                    backgroundColor: vars.colors.backgroundScrim,
+                    inset: 0,
+                    position: 'fixed',
+                    zIndex: 11,
+                  }}
+                />
+                <DialogPrimitive.Content
+                  style={{
+                    bottom: 0,
+                    left: 0,
+                    outline: 'none',
+                    position: 'fixed',
+                    top: 0,
+                    width: `calc(250px + ${vars.space[6]})`,
+                    zIndex: 12,
+                  }}
                 >
-                  <Sidebar routes={docsRoutes} />
-                </Box>
-              </DialogPrimitive.Content>
-            </DialogPrimitive.Portal>
-          </DialogPrimitive.Root>
-        </DocsMobileMenuSlot>
-      </DocsMobileMenuContext.Provider>
+                  <Box
+                    backgroundColor="fillElevated"
+                    padding="6"
+                    style={{ height: '100%', overflow: 'auto' }}
+                  >
+                    <Sidebar routes={docsRoutes} />
+                  </Box>
+                </DialogPrimitive.Content>
+              </DialogPrimitive.Portal>
+            </DialogPrimitive.Root>
+          </DocsMobileMenuSlot>
+        </DocsMobileMenuContext.Provider>
 
-      <Wrapper>
-        <Box className={navigationSidebar}>
-          <Box className={navigationSidebarScroller}>
-            <Sidebar routes={docsRoutes} />
-          </Box>
-        </Box>
-
-        <Box className={content}>
-          <Box paddingLeft={{ lg: '10' }}>
-            <>{children}</>
-
-            <Box
-              borderTopWidth="1"
-              display="flex"
-              justifyContent="space-between"
-              marginTop="9"
-              paddingTop="8"
-            >
-              {previous && (
-                <Text weight="semibold">
-                  <NextLink href={`/docs/${previous.slug}`} passHref>
-                    <Link className={paginationItem}>
-                      <PreviousIcon />
-                      {previous.title}
-                    </Link>
-                  </NextLink>
-                </Text>
-              )}
-              <span aria-hidden />
-              {next && (
-                <Text weight="semibold">
-                  <NextLink href={`/docs/${next.slug}`} passHref>
-                    <Link className={paginationItem}>
-                      {next.title}
-                      <NextIcon />
-                    </Link>
-                  </NextLink>
-                </Text>
-              )}
+        <Wrapper>
+          <Box className={navigationSidebar}>
+            <Box className={navigationSidebarScroller}>
+              <Sidebar routes={docsRoutes} />
             </Box>
           </Box>
-        </Box>
-      </Wrapper>
-    </div>
+
+          <Box className={content}>
+            <Box paddingLeft={{ lg: '10' }}>
+              <>{children}</>
+
+              <Box
+                borderTopWidth="1"
+                display="flex"
+                justifyContent="space-between"
+                marginTop="9"
+                paddingTop="8"
+              >
+                {previous && (
+                  <Text weight="semibold">
+                    <NextLink href={`/docs/${previous.slug}`} passHref>
+                      <Link className={paginationItem}>
+                        <PreviousIcon />
+                        {previous.title}
+                      </Link>
+                    </NextLink>
+                  </Text>
+                )}
+                <span aria-hidden />
+                {next && (
+                  <Text weight="semibold">
+                    <NextLink href={`/docs/${next.slug}`} passHref>
+                      <Link className={paginationItem}>
+                        {next.title}
+                        <NextIcon />
+                      </Link>
+                    </NextLink>
+                  </Text>
+                )}
+              </Box>
+            </Box>
+          </Box>
+        </Wrapper>
+      </div>
+    </SearchProvider>
   );
 }

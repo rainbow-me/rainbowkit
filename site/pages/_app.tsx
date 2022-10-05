@@ -4,8 +4,10 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
+
 import { vars } from '../css/vars.css';
 import '../css/global.css';
+import '../css/docsSearch.css';
 
 const highlightColors = [
   vars.colors.orange,

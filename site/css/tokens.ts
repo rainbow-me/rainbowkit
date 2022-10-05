@@ -1,5 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const colors = {
+  transparent: 'transparent',
+
   green10: '#EAFCE8',
   green20: '#CDFACD',
   green30: '#A6F5AC',
