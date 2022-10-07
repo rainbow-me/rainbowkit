@@ -12,6 +12,7 @@ import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { useAuthenticationStatus } from './AuthenticationContext';
+import { RainbowKitProviderProps } from './RainbowKitProvider';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -39,10 +40,11 @@ const ModalContext = createContext<ModalContextValue>({
 });
 
 interface ModalProviderProps {
+  token: RainbowKitProviderProps['token'];
   children: ReactNode;
 }
 
-export function ModalProvider({ children }: ModalProviderProps) {
+export function ModalProvider({ children, token }: ModalProviderProps) {
   const {
     closeModal: closeConnectModal,
     isModalOpen: connectModalOpen,
@@ -118,7 +120,11 @@ export function ModalProvider({ children }: ModalProviderProps) {
     >
       {children}
       <ConnectModal onClose={closeConnectModal} open={connectModalOpen} />
-      <AccountModal onClose={closeAccountModal} open={accountModalOpen} />
+      <AccountModal
+        onClose={closeAccountModal}
+        open={accountModalOpen}
+        token={token}
+      />
       <ChainModal onClose={closeChainModal} open={chainModalOpen} />
     </ModalContext.Provider>
   );

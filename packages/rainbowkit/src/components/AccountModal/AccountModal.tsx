@@ -1,19 +1,26 @@
 import React from 'react';
-import { useAccount, useBalance, useDisconnect } from 'wagmi';
+import { useAccount, useBalance, useDisconnect, useNetwork } from 'wagmi';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
 import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
+import { RainbowKitProviderProps } from '../RainbowKitProvider/RainbowKitProvider';
 
 export interface AccountModalProps {
+  token: RainbowKitProviderProps['token'];
   open: boolean;
   onClose: () => void;
 }
 
-export function AccountModal({ onClose, open }: AccountModalProps) {
+export function AccountModal({ onClose, open, token }: AccountModalProps) {
   const { address } = useAccount();
-  const { data: balanceData } = useBalance({ addressOrName: address });
+  const { chain } = useNetwork();
+  const { data: balanceData } = useBalance({
+    addressOrName: address,
+    chainId: token?.find(val => val.chain === chain?.id)?.chain,
+    token: token?.find(val => val.chain === chain?.id)?.address,
+  });
   const ensAvatar = useMainnetEnsAvatar(address);
   const ensName = useMainnetEnsName(address);
   const { disconnect } = useDisconnect();

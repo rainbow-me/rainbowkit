@@ -22,6 +22,10 @@ export interface ConnectButtonProps {
   showBalance?: ResponsiveValue<boolean>;
   chainStatus?: ResponsiveValue<ChainStatus>;
   label?: string;
+  token?: {
+    chain: number;
+    address: string;
+  }[];
 }
 
 const defaultProps = {
@@ -29,6 +33,7 @@ const defaultProps = {
   chainStatus: { largeScreen: 'full', smallScreen: 'icon' },
   label: 'Connect Wallet',
   showBalance: { largeScreen: true, smallScreen: false },
+  token: undefined,
 } as const;
 
 export function ConnectButton({
@@ -36,12 +41,13 @@ export function ConnectButton({
   chainStatus = defaultProps.chainStatus,
   label = defaultProps.label,
   showBalance = defaultProps.showBalance,
+  token = defaultProps.token,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
   return (
-    <ConnectButtonRenderer>
+    <ConnectButtonRenderer token={token}>
       {({
         account,
         chain,

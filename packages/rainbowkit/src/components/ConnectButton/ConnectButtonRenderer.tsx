@@ -24,6 +24,10 @@ import { formatENS } from './formatENS';
 const noop = () => {};
 
 export interface ConnectButtonRendererProps {
+  token?: {
+    chain: number;
+    address: string;
+  }[];
   children: (renderProps: {
     account?: {
       address: string;
@@ -57,13 +61,18 @@ export interface ConnectButtonRendererProps {
 
 export function ConnectButtonRenderer({
   children,
+  token,
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
   const { address } = useAccount();
   const ensAvatar = useMainnetEnsAvatar(address);
   const ensName = useMainnetEnsName(address);
-  const { data: balanceData } = useBalance({ addressOrName: address });
   const { chain: activeChain } = useNetwork();
+  const { data: balanceData } = useBalance({
+    addressOrName: address,
+    chainId: token?.find(val => val.chain === activeChain?.id)?.chain,
+    token: token?.find(val => val.chain === activeChain?.id)?.address,
+  });
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
 

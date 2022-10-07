@@ -63,6 +63,10 @@ export interface RainbowKitProviderProps {
   coolMode?: boolean;
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
+  token?: {
+    chain: number;
+    address: string;
+  }[];
 }
 
 const defaultTheme = lightTheme();
@@ -78,6 +82,7 @@ export function RainbowKitProvider({
   coolMode = false,
   avatar,
   modalSize = ModalSizeOptions.WIDE,
+  token,
 }: RainbowKitProviderProps) {
   usePreloadImages();
 
@@ -114,7 +119,7 @@ export function RainbowKitProvider({
               <AvatarContext.Provider value={avatarContext}>
                 <AppContext.Provider value={appContext}>
                   <ThemeIdContext.Provider value={id}>
-                    <ModalProvider>
+                    <ModalProvider token={token}>
                       {theme ? (
                         <div {...createThemeRootProps(id)}>
                           <style
