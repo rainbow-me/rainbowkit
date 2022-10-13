@@ -43,12 +43,17 @@ export const enkryptWallet = ({
             options: { shimDisconnect },
           });
 
+      const getUri = async () => {
+        const uri = (await connector.getProvider()).connector.uri;
+        return isMobile()
+          ? uri
+          : `https://enkrypt.com/wc?uri=${encodeURIComponent(uri)}`;
+      };
+
       return {
         connector,
         mobile: {
-          getUri: async () => {
-            return 'https://www.enkrypt.com/';
-          },
+          getUri: shouldUseWalletConnect ? getUri : undefined,
         },
       };
     },
