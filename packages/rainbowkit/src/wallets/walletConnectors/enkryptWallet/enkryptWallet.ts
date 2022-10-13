@@ -34,9 +34,6 @@ export const enkryptWallet = ({
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/enkrypt-ethereum-polkadot/kkpllkodjeloidieedojogacfhpaihoh',
-      android:
-        'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&hl=en_US&gl=US',
-      ios: 'https://apps.apple.com/us/app/mew-wallet-ethereum-defi-web3/id1464614025',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
@@ -48,6 +45,11 @@ export const enkryptWallet = ({
 
       return {
         connector,
+        mobile: {
+          getUri: async () => {
+            return 'https://www.enkrypt.com/';
+          },
+        },
       };
     },
   };
