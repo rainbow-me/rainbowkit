@@ -12,10 +12,11 @@ type Props = Atoms &
   HTMLProperties & {
     as?: React.ElementType;
     className?: ClassValue;
+    testId?: string;
   };
 
 export const Box = React.forwardRef<HTMLElement, Props>(
-  ({ as = 'div', className, ...props }: Props, ref) => {
+  ({ as = 'div', className, testId, ...props }: Props, ref) => {
     const atomProps: Record<string, unknown> = {};
     const nativeProps: Record<string, unknown> = {};
 
@@ -33,8 +34,9 @@ export const Box = React.forwardRef<HTMLElement, Props>(
     });
 
     return React.createElement(as, {
-      className: clsx(atomicClasses, className),
+      'className': clsx(atomicClasses, className),
       ...nativeProps,
+      'data-testid': testId ? `rk-${testId.replace(/^rk-/, '')}` : undefined,
       ref,
     });
   }
