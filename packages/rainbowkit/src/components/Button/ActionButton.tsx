@@ -41,6 +41,7 @@ export function ActionButton({
   rel = 'noreferrer noopener',
   size = 'medium',
   target = '_blank',
+  testId,
   type = 'primary',
 }: {
   href?: string;
@@ -51,6 +52,7 @@ export function ActionButton({
   target?: string;
   type?: 'primary' | 'secondary';
   disabled?: boolean;
+  testId?: string;
 }) {
   const isPrimary = type === 'primary';
   const isNotLarge = size !== 'large';
@@ -90,6 +92,7 @@ export function ActionButton({
       paddingX={paddingX}
       paddingY={paddingY}
       style={{ willChange: 'transform' }}
+      testId={testId}
       textAlign="center"
       transition="transform"
       {...(background ? { background } : {})}

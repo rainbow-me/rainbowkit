@@ -84,6 +84,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
       }, [connector, connect, getMobileUri, onConnecting, name])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
+      testId={`wallet-option-${id}`}
       type="button"
       width="full"
     >
