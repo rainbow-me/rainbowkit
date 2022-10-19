@@ -9,12 +9,14 @@ interface ProfileDetailsActionProps {
   action?: () => void;
   icon: JSX.Element;
   url?: string;
+  testId?: string;
 }
 
 export function ProfileDetailsAction({
   action,
   icon,
   label,
+  testId,
   url,
 }: ProfileDetailsActionProps) {
   const mobile = isMobile();
@@ -37,6 +39,7 @@ export function ProfileDetailsAction({
       onClick={action}
       padding={mobile ? '6' : '8'}
       style={{ willChange: 'transform' }}
+      testId={testId}
       transition="default"
       width="full"
     >
