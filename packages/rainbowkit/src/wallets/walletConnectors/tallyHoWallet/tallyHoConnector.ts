@@ -25,7 +25,8 @@ export default class TallyHoConnector extends Connector<
   async connect({ chainId }: { chainId?: number } = {}) {
     try {
       const provider = await this.getProvider();
-      if (!provider) throw new Error();
+      if (!provider)
+        throw new Error('ConnectorNotFoundError: Connector not found');
 
       if (provider.on) {
         provider.on('accountsChanged', this.onAccountsChanged);
@@ -67,7 +68,7 @@ export default class TallyHoConnector extends Connector<
 
       return { account, chain: { id, unsupported }, provider };
     } catch (error) {
-      throw new Error();
+      throw error;
     }
   }
 
@@ -112,7 +113,8 @@ export default class TallyHoConnector extends Connector<
 
   async getAccount() {
     const provider = await this.getProvider();
-    if (!provider) throw new Error('bad provider');
+    if (!provider)
+      throw new Error('ConnectorNotFoundError: Connector not found');
     const accounts = await provider.request({
       method: 'eth_requestAccounts',
     });
@@ -122,7 +124,8 @@ export default class TallyHoConnector extends Connector<
 
   async getChainId() {
     const provider = await this.getProvider();
-    if (!provider) throw new Error();
+    if (!provider)
+      throw new Error('ConnectorNotFoundError: Connector not found');
     return await provider
       .request({ method: 'eth_chainId' })
       .then(normalizeChainId);
@@ -132,7 +135,8 @@ export default class TallyHoConnector extends Connector<
     if (this.options?.shimChainChangedDisconnect) this.#switchingChains = true;
 
     const provider = await this.getProvider();
-    if (!provider) throw new Error();
+    if (!provider)
+      throw new Error('ConnectorNotFoundError: Connector not found');
     const id = hexValue(chainId);
 
     try {
@@ -150,7 +154,8 @@ export default class TallyHoConnector extends Connector<
       );
     } catch (error) {
       const chain = this.chains.find(x => x.id === chainId);
-      if (!chain) throw new Error();
+      if (!chain)
+        throw new Error('ConnectorNotFoundError: Connector not found');
 
       try {
         await provider.request({
@@ -167,7 +172,7 @@ export default class TallyHoConnector extends Connector<
         });
         return chain;
       } catch (e) {
-        throw new Error();
+        throw new Error('SwitchChainError');
       }
     }
   }
@@ -186,7 +191,8 @@ export default class TallyHoConnector extends Connector<
   async isAuthorized() {
     try {
       const provider = await this.getProvider();
-      if (!provider) throw new Error();
+      if (!provider)
+        throw new Error('ConnectorNotFoundError: Connector not found');
       const accounts = await provider.request({
         method: 'eth_accounts',
       });
