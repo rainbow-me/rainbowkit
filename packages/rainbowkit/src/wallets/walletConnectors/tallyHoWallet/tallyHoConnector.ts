@@ -91,7 +91,7 @@ export default class TallyHoConnector extends Connector<
   };
 
   protected onDisconnect = () => {
-    // We need this as MetaMask can emit the "disconnect" event
+    // We need this as Tally Ho can emit the "disconnect" event
     // upon switching chains. This workaround ensures that the
     // user currently isn't in the process of switching chains.
     if (this.options?.shimChainChangedDisconnect && this.#switchingChains) {
