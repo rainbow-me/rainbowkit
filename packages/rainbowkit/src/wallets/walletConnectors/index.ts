@@ -7,6 +7,7 @@ import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { tallyHoWallet } from './tallyHoWallet/tallyHoWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 
@@ -20,6 +21,7 @@ export {
   metaMaskWallet,
   omniWallet,
   rainbowWallet,
+  tallyHoWallet,
   trustWallet,
   walletConnectWallet,
 };
