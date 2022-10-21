@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.7.3
+
+### Patch Changes
+
+- 5a65178: Fix Coinbase Wallet mobile deep link
+
 ## 0.7.2
 
 ### Patch Changes
