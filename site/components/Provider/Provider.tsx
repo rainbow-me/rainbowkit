@@ -5,6 +5,7 @@ import {
 import {
   argentWallet,
   imTokenWallet,
+  infinityWallet,
   ledgerWallet,
   omniWallet,
   trustWallet,
@@ -33,6 +34,7 @@ const connectors = connectorsForWallets([
     groupName: 'More',
     wallets: [
       argentWallet({ chains }),
+      infinityWallet({ chains }),
       trustWallet({ chains }),
       omniWallet({ chains }),
       imTokenWallet({ chains }),
