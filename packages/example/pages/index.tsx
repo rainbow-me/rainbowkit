@@ -62,8 +62,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { chain: activeChain } = useNetwork();
 
   const { config: sendTransactionConfig } = usePrepareSendTransaction({
+    enabled: !!address,
     request: {
-      to: address,
+      to: address!,
       value: 0,
     },
   });
