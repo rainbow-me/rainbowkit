@@ -11,7 +11,7 @@ export interface RainbowWalletOptions {
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
-  // isRainbow needs to be added to the wagmi `Ethereum` object
+  // `isRainbow` needs to be added to the wagmi `Ethereum` object
   // @ts-ignore
   const isRainbow = Boolean(ethereum.isRainbow);
 
@@ -58,7 +58,6 @@ export const rainbowWallet = ({
           ? uri
           : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
       };
-      // const connector = getWalletConnectConnector({ chains });
 
       return {
         connector,
