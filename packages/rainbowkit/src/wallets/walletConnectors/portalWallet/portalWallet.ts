@@ -15,7 +15,7 @@ export const portalWallet = ({
   id: 'portal',
   name: 'Ripio Portal',
   iconUrl: async () => (await import('./portal.svg')).default,
-  iconAccent: '##65ffb5',
+  iconAccent: '#65ffb5',
   iconBackground: '#fff',
   installed:
     typeof window !== 'undefined' && window.ethereum?.isPortal === true,
