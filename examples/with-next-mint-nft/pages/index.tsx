@@ -9,12 +9,12 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
-import contractInterface from '../contract-abi.json';
+import { abi } from '../contract-abi';
 import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 
 const contractConfig = {
-  addressOrName: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
-  contractInterface: contractInterface,
+  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  abi,
 };
 
 const Home: NextPage = () => {

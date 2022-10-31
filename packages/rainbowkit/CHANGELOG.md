@@ -1,5 +1,18 @@
 # @rainbow-me/rainbowkit
 
+## 0.7.4
+
+### Patch Changes
+
+- e36da59: Add support for injected connector to Rainbow wallet
+- 0ff4210: Add `wagmi@0.7.x` to peer dependencies
+
+## 0.7.3
+
+### Patch Changes
+
+- 5a65178: Fix Coinbase Wallet mobile deep link
+
 ## 0.7.2
 
 ### Patch Changes
