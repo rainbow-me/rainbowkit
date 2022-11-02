@@ -13,7 +13,7 @@ import { abi } from '../contract-abi';
 import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 
 const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  address: '0x029d4C6e97f54559eE87bc013318d0147f982e6e',
   abi,
 };
 
@@ -126,14 +126,14 @@ const Home: NextPage = () => {
                 </p>
                 <p style={{ marginBottom: 6 }}>
                   View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}>
+                  <a href={`https://goerli.etherscan.io/tx/${mintData?.hash}`}>
                     Etherscan
                   </a>
                 </p>
                 <p>
                   View on{' '}
                   <a
-                    href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
+                    href={`https://testnets.opensea.io/assets/goerli/${txData?.to}/1`}
                   >
                     Opensea
                   </a>

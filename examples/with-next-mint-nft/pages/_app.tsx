@@ -11,7 +11,7 @@ import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.rinkeby],
+  [chain.goerli],
   [publicProvider()]
 );
 
