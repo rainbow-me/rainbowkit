@@ -15,7 +15,7 @@
     "siwe": "^1.1.6"
   },
   "peerDependencies": {
-    "wagmi": "^0.7.5"
+    "wagmi": "^0.8.4"
   },
   "scripts": {
     "dev": "next dev",
