@@ -10,5 +10,7 @@ module.exports = {
   serverDependenciesToBundle: [
     '@rainbow-me/rainbowkit',
     '@rainbow-me/rainbowkit/wallets',
+    'wagmi',
+    '@wagmi/core',
   ],
 };
