@@ -15,7 +15,10 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import {
+  useRainbowKitChains,
+  useRainbowKitChainsById,
+} from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 export interface ChainModalProps {
   open: boolean;
@@ -24,7 +27,8 @@ export interface ChainModalProps {
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
   const { chain: activeChain } = useNetwork();
-  const { chains, error: networkError, switchNetwork } = useSwitchNetwork();
+  const chains = useRainbowKitChains();
+  const { error: networkError, switchNetwork } = useSwitchNetwork();
   const { disconnect } = useDisconnect();
   const { connector: activeConnector } = useAccount();
   const [switchingToChain, setSwitchingToChain] = useState<number | null>();

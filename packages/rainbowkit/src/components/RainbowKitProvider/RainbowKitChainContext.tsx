@@ -6,6 +6,7 @@ export interface RainbowKitChain {
   id: number;
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
+  name: string;
 }
 
 // This type is a combination of wagmi and RainbowKit chain types to make
