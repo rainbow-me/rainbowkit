@@ -37,7 +37,7 @@ export function createAuthenticationAdapter<Message>(
   return adapter;
 }
 
-const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
+export const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
   null
 );
 
