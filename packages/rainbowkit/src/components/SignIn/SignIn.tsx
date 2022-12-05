@@ -212,6 +212,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}
+            testId="auth-message-button"
           />
           {mobile ? (
             <ActionButton

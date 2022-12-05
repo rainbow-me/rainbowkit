@@ -21,7 +21,7 @@ import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
 import { formatENS } from './formatENS';
 
-const noop = () => {};
+const noop = () => { };
 
 export interface ConnectButtonRendererProps {
   token?: {
@@ -90,9 +90,8 @@ export function ConnectButtonRenderer({
     showRecentTransactions;
 
   const displayBalance = balanceData
-    ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
-        balanceData.symbol
-      }`
+    ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${balanceData.symbol
+    }`
     : undefined;
 
   const { openConnectModal } = useConnectModal();
@@ -106,30 +105,30 @@ export function ConnectButtonRenderer({
       {children({
         account: address
           ? {
-              address,
-              balanceDecimals: balanceData?.decimals,
-              balanceFormatted: balanceData?.formatted,
-              balanceSymbol: balanceData?.symbol,
-              displayBalance,
-              displayName: ensName
-                ? formatENS(ensName)
-                : formatAddress(address),
-              ensAvatar: ensAvatar ?? undefined,
-              ensName: ensName ?? undefined,
-              hasPendingTransactions,
-            }
+            address,
+            balanceDecimals: balanceData?.decimals,
+            balanceFormatted: balanceData?.formatted,
+            balanceSymbol: balanceData?.symbol,
+            displayBalance,
+            displayName: ensName
+              ? formatENS(ensName)
+              : formatAddress(address),
+            ensAvatar: ensAvatar ?? undefined,
+            ensName: ensName ?? undefined,
+            hasPendingTransactions,
+          }
           : undefined,
         accountModalOpen,
         authenticationStatus,
         chain: activeChain
           ? {
-              hasIcon: Boolean(chainIconUrl),
-              iconBackground: chainIconBackground,
-              iconUrl: resolvedChainIconUrl,
-              id: activeChain.id,
-              name: activeChain.name,
-              unsupported: activeChain.unsupported,
-            }
+            hasIcon: Boolean(chainIconUrl),
+            iconBackground: chainIconBackground,
+            iconUrl: resolvedChainIconUrl,
+            id: activeChain.id,
+            name: activeChain.name,
+            unsupported: activeChain.unsupported,
+          }
           : undefined,
         chainModalOpen,
         connectModalOpen,

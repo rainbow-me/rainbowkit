@@ -44,9 +44,9 @@ export const useThemeRootProps = () => {
 export type Theme =
   | ThemeVars
   | {
-      lightMode: ThemeVars;
-      darkMode: ThemeVars;
-    };
+    lightMode: ThemeVars;
+    darkMode: ThemeVars;
+  };
 
 export interface RainbowKitProviderProps {
   chains: RainbowKitChain[];
@@ -136,9 +136,9 @@ export function RainbowKitProvider({
 
                                 'darkMode' in theme
                                   ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
-                                      theme.darkMode,
-                                      { extends: theme.lightMode }
-                                    )}}}`
+                                    theme.darkMode,
+                                    { extends: theme.lightMode }
+                                  )}}}`
                                   : null,
                               ].join(''),
                             }}
