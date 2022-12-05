@@ -8,11 +8,18 @@ type Props = {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
   currentlySelected?: boolean;
+  testId?: string;
 };
 
 export const MenuButton = React.forwardRef(
   (
-    { children, currentlySelected = false, onClick, ...urlProps }: Props,
+    {
+      children,
+      currentlySelected = false,
+      onClick,
+      testId,
+      ...urlProps
+    }: Props,
     ref: React.Ref<HTMLElement>
   ) => {
     const mobile = isMobile();
@@ -24,6 +31,7 @@ export const MenuButton = React.forwardRef(
         display="flex"
         onClick={onClick}
         ref={ref}
+        testId={testId}
         type="button"
       >
         <Box
