@@ -45,7 +45,7 @@
     "ethers": ">=5.5.1",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": "0.8.x"
+    "wagmi": "0.9.x"
   },
   "devDependencies": {
     "@ethersproject/abstract-provider": "^5.5.1",
