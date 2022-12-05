@@ -36,7 +36,7 @@ type WithAnchor = {
 } & Pick<JSX.IntrinsicElements['a'], 'href' | 'rel' | 'target'>;
 
 type WithoutAnchor = {
-  as?: 'button';
+  as?: 'button' | 'span';
 };
 
 export const iconSizeMapping: Record<styles.Size, keyof Theme['space']> = {

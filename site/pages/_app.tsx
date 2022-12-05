@@ -4,8 +4,10 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
+
 import { vars } from '../css/vars.css';
 import '../css/global.css';
+import '../css/docsSearch.css';
 
 const highlightColors = [
   vars.colors.orange,
@@ -26,8 +28,20 @@ function App({ Component, pageProps }: AppProps) {
   const isDocs = router.pathname.includes('/docs');
   useEffect(() => {
     const body = document.body;
+
+    const uniqueColors = (function* () {
+      let lastColor = getColor();
+      while (true) {
+        const color = getColor();
+        if (color !== lastColor) {
+          lastColor = color;
+          yield color;
+        }
+      }
+    })();
+
     const tasteTheRainbow = () =>
-      body.style.setProperty('--selectionColor', getColor());
+      body.style.setProperty('--selectionColor', uniqueColors.next().value);
 
     body.addEventListener('mousedown', tasteTheRainbow);
 

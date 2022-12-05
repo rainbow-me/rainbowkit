@@ -65,9 +65,7 @@ export default function App() {
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ client, chains }] = useState(() => {
     const testChains =
-      ENV.PUBLIC_ENABLE_TESTNETS === 'true'
-        ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-        : [];
+      ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [chain.goerli] : [];
 
     const { chains, provider } = configureChains(
       [

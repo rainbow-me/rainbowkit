@@ -124,6 +124,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                               switchNetwork(chain.id);
                             }
                       }
+                      testId={`chain-option-${chain.id}`}
                     >
                       <Box fontFamily="body" fontSize="16" fontWeight="bold">
                         <Box
@@ -228,7 +229,10 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             {unsupportedChain && (
               <>
                 <Box background="generalBorderDim" height="1" marginX="8" />
-                <MenuButton onClick={() => disconnect()}>
+                <MenuButton
+                  onClick={() => disconnect()}
+                  testId="chain-option-disconnect"
+                >
                   <Box
                     color="error"
                     fontFamily="body"

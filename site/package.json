@@ -1,9 +1,10 @@
 {
   "name": "site",
-  "version": "0.0.36",
+  "version": "0.0.41",
   "description": "Site and docs for RainbowKit.",
   "private": true,
   "dependencies": {
+    "@docsearch/react": "3",
     "@ethersproject/bignumber": "^5.5.1",
     "@ethersproject/providers": "^5.5.1",
     "@radix-ui/react-dialog": "^0.1.7",
@@ -42,7 +43,7 @@
     "next-contentlayer": "0.2.2"
   },
   "peerDependencies": {
-    "wagmi": "^0.6.6"
+    "wagmi": "^0.8.4"
   },
   "scripts": {
     "dev": "next dev --port 3001",

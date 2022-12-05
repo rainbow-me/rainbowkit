@@ -102,6 +102,9 @@ export function ConnectButton({
                     onClick={openChainModal}
                     paddingX="10"
                     paddingY="8"
+                    testId={
+                      unsupportedChain ? 'wrong-network-button' : 'chain-button'
+                    }
                     transition="default"
                     type="button"
                   >
@@ -171,6 +174,7 @@ export function ConnectButton({
                     fontFamily="body"
                     fontWeight="bold"
                     onClick={openAccountModal}
+                    testId="account-button"
                     transition="default"
                     type="button"
                   >
@@ -256,6 +260,7 @@ export function ConnectButton({
                 key="connect"
                 onClick={openConnectModal}
                 paddingX="14"
+                testId="connect-button"
                 transition="default"
                 type="button"
               >

@@ -6,6 +6,7 @@ type PartialDoc = Pick<Doc, 'title'> & Pick<Doc, 'slug'>;
 export type RouteProps = {
   label: string;
   pages: PartialDoc[];
+  section?: string;
 };
 
 export const docsRoutes: RouteProps[] = [

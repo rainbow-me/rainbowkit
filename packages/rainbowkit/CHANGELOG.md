@@ -1,5 +1,67 @@
 # @rainbow-me/rainbowkit
 
+## 0.8.0
+
+### Minor Changes
+
+- 6b37050: **Breaking**: Updated the `wagmi` peer dependency to `0.8.x`.
+
+  ## Migration guide
+
+  ### 1. Upgrade `wagmi` to `^0.8.0`
+
+  ```bash
+  npm i wagmi@^0.8.0
+  ```
+
+  ### 2. Follow `wagmi`'s migration guide
+
+  You may need to follow [`wagmi`'s migration guide](https://wagmi.sh/docs/migration-guide) to migrate any breaking changes.
+
+## 0.7.4
+
+### Patch Changes
+
+- e36da59: Add support for injected connector to Rainbow wallet
+- 0ff4210: Add `wagmi@0.7.x` to peer dependencies
+
+## 0.7.3
+
+### Patch Changes
+
+- 5a65178: Fix Coinbase Wallet mobile deep link
+
+## 0.7.2
+
+### Patch Changes
+
+- 1de8203: Add `data-testid` attributes to support end-to-end testing.
+
+  The following set of `data-testid` attribute values are now provided.
+
+  - `rk-connect-button`
+  - `rk-disconnect-button`
+  - `rk-account-button`
+  - `rk-chain-button`
+  - `rk-wrong-network-button`
+  - `rk-wallet-option-${wallet.id}`
+  - `rk-chain-option-${chain.id}`
+  - `rk-chain-option-disconnect`
+  - `rk-auth-message-button`
+
+  These attributes can be targeted with a selector like this:
+
+  ```css
+  [data-testid="rk-connect-button"]
+  ```
+
+## 0.7.1
+
+### Patch Changes
+
+- 6b6a73b: Ensure loading spinner is not visible on install prompt
+- 5ddc813: Fix package.json exports field backwards compatibility for `@rainbow-me/rainbowkit/wallets`
+
 ## 0.7.0
 
 ### Minor Changes

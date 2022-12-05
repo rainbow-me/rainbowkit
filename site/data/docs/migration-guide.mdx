@@ -6,6 +6,18 @@ title: Migration Guide
 
 ## Migrating RainbowKit
 
+### 0.8.x Breaking changes
+
+### 1. Upgrade RainbowKit and `wagmi` to their latest version:
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
+```
+
+#### 2. Follow `wagmi`'s migration guide
+
+If you are using `wagmi`, you may need to follow [`wagmi`'s migration guide](https://wagmi.sh/docs/migration-guide) to migrate any breaking changes.
+
 ### 0.7.x Breaking changes
 
 If you're creating a custom wallet list, you must now import each wallet individually in order to reduce bundle size. Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
