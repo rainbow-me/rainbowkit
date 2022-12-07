@@ -34,7 +34,6 @@ import {
   useDisconnect,
   WagmiConfig,
 } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
 
@@ -67,13 +66,10 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.arbitrum,
     avalancheChain,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+      ? [chain.goerli]
       : []),
   ],
-  [
-    alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),
-    publicProvider(),
-  ]
+  [publicProvider()]
 );
 
 const { wallets } = getDefaultWallets({
@@ -119,10 +115,10 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains }),
-      trustWallet({ chains }),
-      omniWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
+      omniWallet({ chains }),
+      trustWallet({ chains }),
     ],
   },
 ]);

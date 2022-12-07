@@ -16,9 +16,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     chain.polygon,
     chain.optimism,
     chain.arbitrum,
-    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-      : []),
+    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [chain.goerli] : []),
   ],
   [
     alchemyProvider({ apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC' }),
