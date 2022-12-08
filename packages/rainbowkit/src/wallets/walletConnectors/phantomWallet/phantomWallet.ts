@@ -19,12 +19,16 @@ export const phantomWallet = ({
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=app.phantom',
     ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
-    qrCode: 'https://phantom.app/download',
+    browserExtension: 'https://phantom.app/download',
   },
-  createConnector: () => ({
-    connector: new InjectedConnector({
+  createConnector: () => {
+    const connector = new InjectedConnector({
       chains,
       options: { shimDisconnect },
-    }),
-  }),
+    });
+
+    return {
+      connector,
+    };
+  },
 });
