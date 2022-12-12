@@ -2,7 +2,6 @@ import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   AvatarComponent,
-  Chain,
   connectorsForWallets,
   darkTheme,
   DisclaimerComponent,
@@ -28,46 +27,32 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import {
-  chain,
   configureChains,
   createClient,
   useDisconnect,
   WagmiConfig,
 } from 'wagmi';
+import {
+  arbitrum,
+  avalanche,
+  goerli,
+  mainnet,
+  optimism,
+  polygon,
+} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
-const avalancheChain: Chain = {
-  blockExplorers: {
-    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-  },
-  id: 43_114,
-  name: 'Avalanche',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Avalanche',
-    symbol: 'AVAX',
-  },
-  network: 'avalanche',
-  rpcUrls: {
-    default: 'https://api.avax.network/ext/bc/C/rpc',
-  },
-  testnet: false,
-};
-
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    chain.mainnet,
-    chain.polygon,
-    chain.optimism,
-    chain.arbitrum,
-    avalancheChain,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [chain.goerli]
-      : []),
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    avalanche,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [publicProvider()]
 );
