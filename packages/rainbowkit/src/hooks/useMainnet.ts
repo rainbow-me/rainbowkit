@@ -1,3 +1,4 @@
+import type { BaseProvider } from '@ethersproject/providers';
 import { Chain, useProvider } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 
@@ -10,7 +11,7 @@ export function useMainnet() {
   // than necessary in case the manual typing is ever incorrect.
   // If we're unable to resolve a list of chains, or the chains are
   // an invalid type, we'll silently bail out.
-  const provider = useProvider<{ chains?: Chain[] }>();
+  const provider = useProvider<BaseProvider & { chains?: Chain[] }>();
   const chains = Array.isArray(provider.chains) ? provider.chains : [];
   const enabled = chains?.some(chain => chain?.id === chainId);
 
