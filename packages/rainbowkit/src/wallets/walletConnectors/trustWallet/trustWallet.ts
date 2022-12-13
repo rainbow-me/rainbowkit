@@ -74,7 +74,7 @@ export const trustWallet = ({
 
         return isAndroid()
           ? uri
-          : `https://link.trustwallet.com/wc?uri=${encodeURIComponent}`;
+          : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {
