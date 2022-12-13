@@ -84,7 +84,7 @@ export const trustWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri,
+              getUri: async () => (await connector.getProvider()).connector.uri,
               instructions: {
                 learnMoreUrl:
                   'https://trustwallet.com/blog/an-introduction-to-trustwallet',
