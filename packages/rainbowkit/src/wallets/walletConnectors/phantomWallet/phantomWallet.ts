@@ -11,24 +11,30 @@ export interface PhantomWalletOptions {
 export const phantomWallet = ({
   chains,
   shimDisconnect,
-}: PhantomWalletOptions): Wallet => ({
-  id: 'phantom',
-  name: 'Phantom',
-  iconUrl: async () => (await import('./phantomWallet.svg')).default,
-  iconBackground: '#551BF9',
-  downloadUrls: {
-    android: 'https://play.google.com/store/apps/details?id=app.phantom',
-    ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
-    browserExtension: 'https://phantom.app/download',
-  },
-  createConnector: () => {
-    const connector = new InjectedConnector({
-      chains,
-      options: { shimDisconnect },
-    });
+}: PhantomWalletOptions): Wallet => {
+  const isPhantomInjected = typeof window !== 'undefined' &&
+  typeof window.ethereum !== 'undefined' &&
+  typeof(window.ethereum as any).isPhantom  !== 'undefined'
+  return {
+    id: 'phantom',
+    name: 'Phantom',
+    iconUrl: async () => (await import('./phantomWallet.svg')).default,
+    iconBackground: '#551BF9',
+    installed: isPhantomInjected,
+    downloadUrls: {
+      android: 'https://play.google.com/store/apps/details?id=app.phantom',
+      ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
+      browserExtension: 'https://phantom.app/download',
+    },
+    createConnector: () => {
+      const connector = new InjectedConnector({
+        chains,
+        options: { shimDisconnect },
+      });
 
-    return {
-      connector,
-    };
-  },
-});
+      return {
+        connector,
+      };
+    },
+  };
+};
