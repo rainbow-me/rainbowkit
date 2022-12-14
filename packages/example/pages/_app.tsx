@@ -16,6 +16,7 @@ import {
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
+  enkryptWallet,
   imTokenWallet,
   ledgerWallet,
   omniWallet,
@@ -100,6 +101,7 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains }),
+      enkryptWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       omniWallet({ chains }),
