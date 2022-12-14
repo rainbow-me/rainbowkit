@@ -5,6 +5,12 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
+declare global {
+  interface Window {
+    trustwallet: any;
+  }
+}
+
 export interface TrustWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
@@ -19,6 +25,10 @@ function isTrust(ethereum: NonNullable<typeof window['ethereum']>) {
     return false;
   }
 
+  if (!ethereum._events && !ethereum._state) {
+    return false;
+  }
+
   // Brave tries to make itself look like MetaMask
   // Could also try RPC `web3_clientVersion` if following is unreliable
   if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state) {
@@ -26,6 +36,10 @@ function isTrust(ethereum: NonNullable<typeof window['ethereum']>) {
   }
 
   if (ethereum.isTokenPocket) {
+    return false;
+  }
+
+  if (ethereum.isCoinbaseWallet) {
     return false;
   }
 
@@ -40,10 +54,18 @@ export const trustWallet = ({
   chains,
   shimDisconnect,
 }: TrustWalletOptions): Wallet => {
-  const isTrustInjected =
+  let isTrustInjected;
+  //
+  if (
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
-    isTrust(window.ethereum);
+    !isTrust(window.ethereum)
+  ) {
+    window.ethereum = window.trustwallet;
+    isTrustInjected = true;
+  } else {
+    isTrustInjected = false;
+  }
 
   const shouldUseWalletConnect = !isTrustInjected;
 
@@ -84,9 +106,7 @@ export const trustWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: isAndroid()
-                ? getUri
-                : async () => (await connector.getProvider()).connector.uri,
+              getUri: async () => (await connector.getProvider()).connector.uri,
               instructions: {
                 learnMoreUrl:
                   'https://trustwallet.com/blog/an-introduction-to-trustwallet',
