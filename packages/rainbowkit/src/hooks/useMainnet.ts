@@ -1,7 +1,8 @@
-import { Chain, useProvider, chain as wagmiChains } from 'wagmi';
+import { Chain, useProvider } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 
 export function useMainnet() {
-  const chainId = wagmiChains.mainnet.id;
+  const chainId = mainnet.id;
 
   // Because the generic for 'useProvider' is defaulting to 'unknown'
   // and the return type is being resolved as 'any', we're having to
