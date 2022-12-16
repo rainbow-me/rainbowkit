@@ -1,5 +1,5 @@
 {
-  "name": "rainbowkit",
+  "name": "@RubiconDeFi/rainbowkit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git"
+    "url": "git+https://github.com/RubiconDeFi/rainbowkit.git"
   },
   "license": "MIT",
   "devDependencies": {

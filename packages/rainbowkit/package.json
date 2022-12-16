@@ -69,7 +69,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "url": "https://github.com/RubiconDeFi/rainbowkit.git",
     "directory": "packages/rainbowkit"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

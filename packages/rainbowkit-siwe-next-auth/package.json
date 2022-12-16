@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "url": "git+https://github.com/RubiconDeFi/rainbowkit.git",
     "directory": "packages/rainbowkit-siwe-next-auth"
   }
 }
