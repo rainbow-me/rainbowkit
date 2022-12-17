@@ -6,6 +6,7 @@ import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { omniWallet } from './omniWallet/omniWallet';
+import { openBlockWallet } from './openBlockWallet/openBlockWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
@@ -20,6 +21,7 @@ export {
   metaMaskWallet,
   omniWallet,
   rainbowWallet,
+  openBlockWallet,
   trustWallet,
   walletConnectWallet,
 };
