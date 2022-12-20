@@ -12,9 +12,10 @@ export const phantomWallet = ({
   chains,
   shimDisconnect,
 }: PhantomWalletOptions): Wallet => {
-  const isPhantomInjected = typeof window !== 'undefined' &&
-  typeof window.ethereum !== 'undefined' &&
-  typeof(window.ethereum as any).isPhantom  !== 'undefined'
+  const isPhantomInjected =
+    typeof window !== 'undefined' &&
+    typeof window.ethereum !== 'undefined' &&
+    typeof (window.ethereum as any).isPhantom !== 'undefined';
   return {
     id: 'phantom',
     name: 'Phantom',
