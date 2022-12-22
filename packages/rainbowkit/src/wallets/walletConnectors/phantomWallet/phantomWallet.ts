@@ -35,6 +35,31 @@ export const phantomWallet = ({
 
       return {
         connector,
+        extension: {
+          learnMoreUrl: 'https://help.phantom.app',
+          instructions: {
+            steps: [
+              {
+                description:
+                  'We recommend pinning Phantom to your taskbar for easier access to your wallet.',
+                step: 'install',
+                title: 'Install the Phantom extension',
+              },
+              {
+                description:
+                  'Be sure to back up your wallet using a secure method. Never share your secret recovery phrase with anyone.',
+                step: 'create',
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description:
+                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                step: 'refresh',
+                title: 'Refresh your browser',
+              },
+            ],
+          },
+        },
       };
     },
   };
