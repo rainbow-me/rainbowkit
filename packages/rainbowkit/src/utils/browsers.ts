@@ -11,6 +11,7 @@ export enum BrowserType {
   Firefox = 'Firefox',
   Brave = 'Brave',
   Browser = 'Browser',
+  Safari = 'Safari',
 }
 
 export function getBrowser(): BrowserType {
@@ -31,6 +32,9 @@ export function getBrowser(): BrowserType {
   }
   if (ua.indexOf('firefox') > -1) {
     return BrowserType.Firefox;
+  }
+  if (ua.indexOf('safari') > -1) {
+    return BrowserType.Safari;
   }
   return BrowserType.Browser;
 }
