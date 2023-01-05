@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
+## 0.1.5
+
+### Patch Changes
+
+- 6b37050: Added `@rainbow-me/rainbowkit@0.8.x` as a peer dependency
+
 ## 0.1.4
 
 ### Patch Changes

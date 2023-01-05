@@ -1,6 +1,6 @@
 {
   "name": "site",
-  "version": "0.0.40",
+  "version": "0.0.42",
   "description": "Site and docs for RainbowKit.",
   "private": true,
   "dependencies": {
@@ -43,7 +43,7 @@
     "next-contentlayer": "0.2.2"
   },
   "peerDependencies": {
-    "wagmi": "^0.7.5"
+    "wagmi": "^0.9.0"
   },
   "scripts": {
     "dev": "next dev --port 3001",

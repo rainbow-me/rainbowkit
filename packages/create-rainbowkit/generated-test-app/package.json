@@ -1,7 +1,7 @@
 {
   "name": "generated-test-app",
   "private": true,
-  "version": "0.1.32",
+  "version": "0.1.34",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +14,7 @@
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "wagmi": "^0.7.5"
+    "wagmi": "^0.9.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",

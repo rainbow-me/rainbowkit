@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { chain, Connector } from 'wagmi';
+import { Connector } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { connectorsForWallets } from '..';
@@ -19,7 +20,7 @@ const getWalletInstances = (
 describe('connectorsForWallets', () => {
   describe('injected fallback', () => {
     it('includes injected fallback if no wallets using InjectedConnector were provided', () => {
-      const chains = [chain.mainnet];
+      const chains = [mainnet];
       const connectors = connectorsForWallets([
         {
           groupName: 'Test Group 1',
@@ -52,7 +53,7 @@ describe('connectorsForWallets', () => {
     });
 
     it('includes injected fallback if no wallets using InjectedConnector are installed', () => {
-      const chains = [chain.mainnet];
+      const chains = [mainnet];
       const connectors = connectorsForWallets([
         {
           groupName: 'Test Group 1',
@@ -101,7 +102,7 @@ describe('connectorsForWallets', () => {
     });
 
     it('includes injected fallback in the same order it was defined if no wallets using InjectedConnector are installed', () => {
-      const chains = [chain.mainnet];
+      const chains = [mainnet];
       const connectors = connectorsForWallets([
         {
           groupName: 'Test Group 1',
@@ -164,7 +165,7 @@ describe('connectorsForWallets', () => {
     });
 
     it('excludes injected fallback if another wallet using InjectedConnector is installed', () => {
-      const chains = [chain.mainnet];
+      const chains = [mainnet];
       const connectors = connectorsForWallets([
         {
           groupName: 'Test Group 1',
