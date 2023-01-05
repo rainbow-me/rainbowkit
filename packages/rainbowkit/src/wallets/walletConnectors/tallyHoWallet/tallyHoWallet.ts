@@ -1,16 +1,36 @@
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
-import TallyHoConnector from './tallyHoConnector';
-import { TallyHoWalletOptions } from './types';
+
+export interface InjectedWalletOptions {
+  chains: Chain[];
+  shimDisconnect?: boolean;
+}
+
+declare global {
+  interface Window {
+    tally: any;
+  }
+}
 
 export const tallyHoWallet = ({
   chains,
   shimDisconnect,
-}: TallyHoWalletOptions): Wallet => ({
+}: InjectedWalletOptions): Wallet => ({
   createConnector: () => {
     return {
-      connector: new TallyHoConnector({
+      connector: new InjectedConnector({
         chains,
-        options: { shimDisconnect },
+        options: {
+          getProvider() {
+            const getTally = (tally?: any) =>
+              tally?.isTally ? tally : undefined;
+            if (typeof window === 'undefined') return;
+            return getTally(window.tally);
+          },
+          name: 'Tally',
+          shimDisconnect,
+        },
       }),
     };
   },
