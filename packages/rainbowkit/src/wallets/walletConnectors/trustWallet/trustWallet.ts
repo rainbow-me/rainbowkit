@@ -17,6 +17,7 @@ export const trustWallet = ({
   id: 'trust',
   name: 'Trust Wallet',
   iconUrl: async () => (await import('./trustWallet.svg')).default,
+  iconAccent: '#3375BB',
   iconBackground: '#fff',
   downloadUrls: {
     browserExtension:
