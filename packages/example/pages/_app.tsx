@@ -19,7 +19,6 @@ import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
-  trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -103,7 +102,6 @@ const connectors = connectorsForWallets([
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       omniWallet({ chains }),
-      trustWallet({ chains }),
     ],
   },
 ]);
