@@ -10,10 +10,12 @@
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.35",
     "@types/react": "^18.0.9",
+    "buffer": "^6.0.3",
     "ethers": "^5.0.0",
+    "process": "^0.11.10",
+    "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "react": "^18.1.0",
     "typescript": "^4.7.2",
     "util": "0.12.4",
     "wagmi": "^0.9.0",
@@ -21,9 +23,9 @@
   },
   "scripts": {
     "dev": "npm run start",
-    "start": "PORT=3030 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
+    "start": "PORT=3030 craco start",
+    "build": "craco build",
+    "test": "craco test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +45,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.0.0",
+    "@craco/types": "^7.0.0",
+    "webpack": "^5.75.0"
   }
 }
