@@ -243,7 +243,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
         ?.filter(
           wallet => wallet.downloadUrls?.ios || wallet.downloadUrls?.android
         )
-        ?.splice(0, 3);
+        ?.splice(0, 4);
 
       walletContent = (
         <Box>
