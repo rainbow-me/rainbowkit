@@ -2,83 +2,166 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+
+declare global {
+  interface Window {
+    trustwallet?: Window['ethereum'];
+  }
+}
 
 export interface TrustWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
 
+function isTrustWallet(ethereum: NonNullable<typeof window['ethereum']>) {
+  // Identify if Trust Wallet injected provider is present.
+  const trustWallet = !!ethereum.isTrust;
+
+  return trustWallet;
+}
+
 export const trustWallet = ({
   chains,
   shimDisconnect,
-}: TrustWalletOptions): Wallet => ({
-  id: 'trust',
-  name: 'Trust Wallet',
-  iconUrl: async () => (await import('./trustWallet.svg')).default,
-  iconAccent: '#3375BB',
-  iconBackground: '#fff',
-  downloadUrls: {
-    browserExtension:
-      'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
-    android:
-      'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
-    ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
-    qrCode: 'https://link.trustwallet.com',
-  },
-  createConnector: () => {
-    const inAppBrowser = Boolean(
-      typeof window !== 'undefined' && window.ethereum?.isTrust
-    );
+}: TrustWalletOptions): Wallet => {
+  const injectedProviderExist =
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
 
-    if (inAppBrowser) {
-      return {
-        connector: new InjectedConnector({
-          chains,
-          options: { shimDisconnect },
-        }),
+  const isTrustWalletInjected =
+    injectedProviderExist &&
+    (isTrustWallet(window.ethereum!) || !!window['trustwallet']);
+
+  const shouldUseWalletConnect = !isTrustWalletInjected;
+
+  return {
+    id: 'trust',
+    name: 'Trust Wallet',
+    iconUrl: async () => (await import('./trustWallet.svg')).default,
+    // Note that we never resolve `installed` to `false` because the
+    // Coinbase Wallet SDK falls back to other connection methods if
+    // the injected connector isn't available
+    installed: isTrustWalletInjected || undefined,
+    iconAccent: '#3375BB',
+    iconBackground: '#fff',
+    downloadUrls: {
+      browserExtension:
+        'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
+      android:
+        'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
+      ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
+      qrCode: 'https://trustwallet.com/download',
+    },
+    createConnector: () => {
+      const getUri = async () => {
+        const { uri } = (await connector.getProvider()).connector;
+
+        return isAndroid()
+          ? uri
+          : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
-    }
 
-    const connector = getWalletConnectConnector({ chains });
+      const connector = shouldUseWalletConnect
+        ? getWalletConnectConnector({ chains })
+        : new InjectedConnector({
+            chains,
+            options: {
+              name: 'Trust Wallet',
+              shimDisconnect,
+              shimChainChangedDisconnect: true,
+              getProvider() {
+                // No injected providers exist.
+                if (!injectedProviderExist) {
+                  return;
+                }
 
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
-          return isAndroid()
-            ? uri
-            : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
-        },
-      },
-      qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+                // Trust Wallet was injected into window.ethereum.
+                if (isTrustWallet(window.ethereum!)) {
+                  return window.ethereum;
+                }
+
+                // Trust Wallet provider might be replaced by another
+                // injected provider, check the providers array.
+                if (window.ethereum?.providers) {
+                  return window.ethereum.providers.find(isTrustWallet);
+                }
+
+                // In some cases injected providers can replace window.ethereum
+                // without updating the providers array. In that case the Trust Wallet
+                // can be installed and its provider instance can be retrieved by
+                // looking at the global `trustwallet` object.
+                return window['trustwallet'];
+              },
+            },
+          });
+
+      const mobileConnector = {
+        getUri: shouldUseWalletConnect ? getUri : undefined,
+      };
+
+      let qrConnector = undefined;
+
+      if (shouldUseWalletConnect) {
+        qrConnector = {
+          getUri,
+          instructions: {
+            learnMoreUrl: 'https://trustwallet.com/',
+            steps: [
+              {
+                description:
+                  'Put Trust Wallet on your home screen for faster access to your wallet.',
+                step: 'install' as InstructionStepName,
+                title: 'Open the Trust Wallet app',
+              },
+              {
+                description: 'Create a new wallet or import an existing one.',
+                step: 'create' as InstructionStepName,
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description:
+                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                step: 'scan' as InstructionStepName,
+                title: 'Tap WalletConnect in Settings',
+              },
+            ],
+          },
+        };
+      }
+
+      const extensionConnector = {
         instructions: {
-          learnMoreUrl:
-            'https://trustwallet.com/blog/an-introduction-to-trustwallet',
+          learnMoreUrl: 'https://trustwallet.com/browser-extension',
           steps: [
             {
               description:
-                'Put Trust Wallet on your home screen for faster access to your wallet.',
-              step: 'install',
-              title: 'Open the Trust Wallet app',
+                'Click at the top right of your browser and pin Trust Wallet for easy access.',
+              step: 'install' as InstructionStepName,
+              title: 'Install the Trust Wallet extension',
             },
             {
               description: 'Create a new wallet or import an existing one.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
+              step: 'create' as InstructionStepName,
+              title: 'Create or Import a wallet',
             },
             {
               description:
-                'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
-              step: 'scan',
-              title: 'Tap WalletConnect in Settings',
+                'Once you set up Trust Wallet, click below to refresh the browser and load up the extension.',
+              step: 'refresh' as InstructionStepName,
+              title: 'Refresh your browser',
             },
           ],
         },
-      },
-    };
-  },
-});
+      };
+
+      return {
+        connector,
+        mobile: mobileConnector,
+        qrCode: qrConnector,
+        extension: extensionConnector,
+      };
+    },
+  };
+};
