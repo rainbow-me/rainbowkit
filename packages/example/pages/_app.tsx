@@ -16,6 +16,7 @@ import {
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
+  exodusWallet,
   imTokenWallet,
   ledgerWallet,
   omniWallet,

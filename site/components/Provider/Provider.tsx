@@ -4,6 +4,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  exodusWallet,
   imTokenWallet,
   ledgerWallet,
   omniWallet,

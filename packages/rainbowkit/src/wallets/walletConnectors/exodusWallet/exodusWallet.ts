@@ -8,10 +8,13 @@ export interface ExodusOptions {
   shimDisconnect?: boolean;
 }
 
-export const exodus = ({ chains, shimDisconnect }: ExodusOptions): Wallet => ({
+export const exodusWallet = ({
+  chains,
+  shimDisconnect,
+}: ExodusOptions): Wallet => ({
   id: 'exodus',
   name: 'Exodus',
-  iconUrl: async () => (await import('./exodus.svg')).default,
+  iconUrl: async () => (await import('./exodusWallet.svg')).default,
   iconBackground: '#fff',
   installed:
     typeof window !== 'undefined' && window.ethereum?.isExodus === true,
