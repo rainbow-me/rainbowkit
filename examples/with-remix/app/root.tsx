@@ -28,7 +28,7 @@ import {
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
 
-type Env = { PUBLIC_ENABLE_TESTNETS?: string };
+type Env = { ALCHEMY_API_KEY?: string; PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
