@@ -16,6 +16,7 @@ import type {
 } from '@remix-run/node';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import type { Chain } from 'wagmi';
 import {
@@ -47,6 +48,8 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
+      ALCHEMY_API_KEY:
+        process.env.ALCHEMY_API_KEY || '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
       PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
@@ -66,7 +69,7 @@ export default function App() {
 
     const { chains, provider } = configureChains(
       [mainnet, polygon, optimism, arbitrum, ...testChains],
-      [publicProvider()]
+      [alchemyProvider({ apiKey: ENV.ALCHEMY_API_KEY! }), publicProvider()]
     );
 
     const { connectors } = getDefaultWallets({
