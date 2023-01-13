@@ -16,7 +16,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "sideEffects": [
-    "src/css/reset.css.ts"
+    "src/css/reset.css.ts",
+    "dist/index.css"
   ],
   "engines": {
     "node": ">=12.4"
