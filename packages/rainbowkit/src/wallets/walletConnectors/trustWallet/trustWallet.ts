@@ -75,10 +75,16 @@ export const trustWallet = ({
       qrCode: 'https://trustwallet.com/download',
     },
     createConnector: () => {
-      const getUri = async () => {
+      const getUriMobile = async () => {
         const { uri } = (await connector.getProvider()).connector;
 
         return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
+      };
+
+      const getUriQR = async () => {
+        const { uri } = (await connector.getProvider()).connector;
+
+        return uri;
       };
 
       const connector = shouldUseWalletConnect
@@ -94,14 +100,14 @@ export const trustWallet = ({
           });
 
       const mobileConnector = {
-        getUri: shouldUseWalletConnect ? getUri : undefined,
+        getUri: shouldUseWalletConnect ? getUriMobile : undefined,
       };
 
       let qrConnector = undefined;
 
       if (shouldUseWalletConnect) {
         qrConnector = {
-          getUri,
+          getUri: getUriQR,
           instructions: {
             learnMoreUrl: 'https://trustwallet.com/',
             steps: [
