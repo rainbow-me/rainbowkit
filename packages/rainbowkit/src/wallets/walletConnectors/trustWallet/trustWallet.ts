@@ -1,13 +1,12 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../../utils/isMobile';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
-    trustwallet?: Window['ethereum'];
+    trustwallet: Window['ethereum'];
   }
 }
 
@@ -16,24 +15,45 @@ export interface TrustWalletOptions {
   shimDisconnect?: boolean;
 }
 
-function isTrustWallet(ethereum: NonNullable<typeof window['ethereum']>) {
-  // Identify if Trust Wallet injected provider is present.
-  const trustWallet = !!ethereum.isTrust;
+function getTrustWalletInjectedProvider(): Window['ethereum'] {
+  const isTrustWallet = (ethereum: NonNullable<Window['ethereum']>) => {
+    // Identify if Trust Wallet injected provider is present.
+    const trustWallet = !!ethereum.isTrust;
 
-  return trustWallet;
+    return trustWallet;
+  };
+
+  const injectedProviderExist =
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+
+  // No injected providers exist.
+  if (!injectedProviderExist) {
+    return;
+  }
+
+  // Trust Wallet was injected into window.ethereum.
+  if (isTrustWallet(window.ethereum!)) {
+    return window.ethereum;
+  }
+
+  // Trust Wallet provider might be replaced by another
+  // injected provider, check the providers array.
+  if (window.ethereum?.providers) {
+    return window.ethereum.providers.find(isTrustWallet);
+  }
+
+  // In some cases injected providers can replace window.ethereum
+  // without updating the providers array. In those instances the Trust Wallet
+  // can be installed and its provider instance can be retrieved by
+  // looking at the global `trustwallet` object.
+  return window['trustwallet'];
 }
 
 export const trustWallet = ({
   chains,
   shimDisconnect,
 }: TrustWalletOptions): Wallet => {
-  const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
-
-  const isTrustWalletInjected =
-    injectedProviderExist &&
-    (isTrustWallet(window.ethereum!) || !!window['trustwallet']);
-
+  const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
   return {
@@ -58,9 +78,7 @@ export const trustWallet = ({
       const getUri = async () => {
         const { uri } = (await connector.getProvider()).connector;
 
-        return isAndroid()
-          ? uri
-          : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
+        return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const connector = shouldUseWalletConnect
@@ -71,29 +89,7 @@ export const trustWallet = ({
               name: 'Trust Wallet',
               shimDisconnect,
               shimChainChangedDisconnect: true,
-              getProvider() {
-                // No injected providers exist.
-                if (!injectedProviderExist) {
-                  return;
-                }
-
-                // Trust Wallet was injected into window.ethereum.
-                if (isTrustWallet(window.ethereum!)) {
-                  return window.ethereum;
-                }
-
-                // Trust Wallet provider might be replaced by another
-                // injected provider, check the providers array.
-                if (window.ethereum?.providers) {
-                  return window.ethereum.providers.find(isTrustWallet);
-                }
-
-                // In some cases injected providers can replace window.ethereum
-                // without updating the providers array. In that case the Trust Wallet
-                // can be installed and its provider instance can be retrieved by
-                // looking at the global `trustwallet` object.
-                return window['trustwallet'];
-              },
+              getProvider: getTrustWalletInjectedProvider,
             },
           });
 
