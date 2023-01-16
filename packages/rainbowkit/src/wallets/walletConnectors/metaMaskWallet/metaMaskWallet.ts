@@ -13,7 +13,13 @@ export interface MetaMaskWalletOptions {
 function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/tmm/wagmi/blob/main/packages/core/src/connectors/metaMask.ts
-  const isMetaMask = Boolean(ethereum.isMetaMask);
+  const isMetaMask =
+    Boolean(ethereum.isMetaMask) ||
+    Boolean(
+      ethereum.providers?.find(
+        (ethereum: NonNullable<Window['ethereum']>) => !!ethereum.isMetaMask
+      )
+    );
 
   if (!isMetaMask) {
     return false;
