@@ -12,7 +12,7 @@
     "next-auth": "^4.10.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "siwe": "^1.1.6"
+    "siwe": "^2.1.4"
   },
   "peerDependencies": {
     "wagmi": "^0.12.13"
