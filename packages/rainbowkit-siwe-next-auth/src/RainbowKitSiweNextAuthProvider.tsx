@@ -23,6 +23,8 @@ export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
 interface RainbowKitSiweNextAuthProviderProps {
   enabled?: boolean;
   getSiweMessageOptions?: GetSiweMessageOptions;
+  onSignIn?: () => void;
+  onSignOut?: () => void;
   children: ReactNode;
 }
 
@@ -30,6 +32,8 @@ export function RainbowKitSiweNextAuthProvider({
   children,
   enabled,
   getSiweMessageOptions,
+  onSignIn,
+  onSignOut,
 }: RainbowKitSiweNextAuthProviderProps) {
   const { status } = useSession();
   const adapter = useMemo(
@@ -70,6 +74,7 @@ export function RainbowKitSiweNextAuthProvider({
 
         signOut: async () => {
           await signOut({ redirect: false });
+          if (onSignOut) onSignOut();
         },
 
         verify: async ({ message, signature }) => {
@@ -79,10 +84,13 @@ export function RainbowKitSiweNextAuthProvider({
             signature,
           });
 
-          return response?.ok ?? false;
+          if (!response?.ok) return false;
+
+          if (onSignIn) signIn();
+          return true;
         },
       }),
-    [getSiweMessageOptions]
+    [getSiweMessageOptions, onSignIn, onSignOut]
   );
 
   return (
