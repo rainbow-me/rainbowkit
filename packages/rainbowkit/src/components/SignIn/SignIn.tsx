@@ -101,6 +101,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         const verified = await authAdapter.verify({ message, signature });
 
         if (verified) {
+          onClose();
           return;
         } else {
           throw new Error();
