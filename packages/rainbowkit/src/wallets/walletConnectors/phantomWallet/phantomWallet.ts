@@ -14,9 +14,9 @@ export const phantomWallet = ({
 }: PhantomWalletOptions): Wallet => {
   const isPhantomInjected =
     typeof window !== 'undefined' &&
-    typeof window.phantom !== 'undefined'
+    typeof (window as any).phantom !== 'undefined'
 
-    const getProvider = () => typeof window !== 'undefined' && isPhantomInjected ? window.phantom?.ethereum : undefined;
+    const getProvider = () => typeof window !== 'undefined' && isPhantomInjected ? ((window as any).phantom as any)?.ethereum : undefined;
 
   console.log('PHANTOM INJECTION',isPhantomInjected) 
   return { id: 'phantom',
