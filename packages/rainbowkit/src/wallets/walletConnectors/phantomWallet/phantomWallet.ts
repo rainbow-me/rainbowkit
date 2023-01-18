@@ -16,8 +16,9 @@ export const phantomWallet = ({
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
     typeof (window.ethereum as any).isPhantom !== 'undefined';
-  return {
-    id: 'phantom',
+
+  console.log('PHANTOM INJECTION',isPhantomInjected) 
+  return { id: 'phantom',
     name: 'Phantom',
     iconUrl: async () => (await import('./phantomWallet.svg')).default,
     iconBackground: '#551BF9',
