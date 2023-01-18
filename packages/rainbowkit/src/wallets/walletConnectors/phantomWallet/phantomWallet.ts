@@ -16,13 +16,14 @@ export const phantomWallet = ({
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
     typeof (window.ethereum as any).isPhantom !== 'undefined';
+    const getProvider = () => typeof window !== 'undefined' ? window.phantom.ethereum : undefined;
 
   console.log('PHANTOM INJECTION',isPhantomInjected) 
   return { id: 'phantom',
     name: 'Phantom',
     iconUrl: async () => (await import('./phantomWallet.svg')).default,
     iconBackground: '#551BF9',
-    installed: isPhantomInjected,
+    installed: isPhantomInjected || undefined,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=app.phantom',
       ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
@@ -31,8 +32,8 @@ export const phantomWallet = ({
     createConnector: () => {
       const connector = new InjectedConnector({
         chains,
-        options: { shimDisconnect, getProvider: () => (((window as any)?.phantom as any)?.ethereum) },
-      });
+        options: { shimDisconnect, getProvider } },
+      );
 
       return {
         connector,
