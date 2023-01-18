@@ -31,7 +31,7 @@ export const phantomWallet = ({
     createConnector: () => {
       const connector = new InjectedConnector({
         chains,
-        options: { shimDisconnect },
+        options: { shimDisconnect, getProvider: () => (((window as any)?.phantom as any)?.ethereum) },
       });
 
       return {
