@@ -28,7 +28,7 @@ export const tallyHoWallet = ({
             if (typeof window === 'undefined') return;
             return getTally(window.tally);
           },
-          name: 'Tally',
+          name: 'Tally Ho',
           shimDisconnect,
         },
       }),
@@ -40,7 +40,7 @@ export const tallyHoWallet = ({
   },
   iconBackground: '#d08d57',
   iconUrl: async () => (await import('./tallyHoWallet.svg')).default,
-  id: 'tallyHoWallet',
+  id: 'tallyHo',
   installed: true,
-  name: 'Tally Ho Wallet',
+  name: 'Tally Ho',
 });
