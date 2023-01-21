@@ -40,6 +40,7 @@ import {
   optimism,
   polygon,
 } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
 
@@ -54,7 +55,10 @@ const { chains, provider, webSocketProvider } = configureChains(
     avalanche,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
-  [publicProvider()]
+  [
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
+    publicProvider(),
+  ]
 );
 
 const { wallets } = getDefaultWallets({
