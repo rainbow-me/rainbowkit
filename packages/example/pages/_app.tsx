@@ -150,6 +150,9 @@ type RadiusScale = typeof radiusScales[number];
 const overlayBlurs = ['large', 'small', 'none'] as const;
 type OverlayBlur = typeof overlayBlurs[number];
 
+const avatarFallbacks = ['emojis', 'nouns'] as const;
+type AvatarFallback = typeof avatarFallbacks[number];
+
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
@@ -167,6 +170,8 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+  const [selectedAvatarFallback, setAvatarFallback] =
+    useState<AvatarFallback>('emojis');
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -204,6 +209,7 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
+        avatarFallback={selectedAvatarFallback}
         chains={chains}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
@@ -520,6 +526,37 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
                             value={overlayBlur}
                           />{' '}
                           {overlayBlur}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Avatar fallback</h4>
+                    <div
+                      style={{
+                        alignItems: 'flex-start',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                      }}
+                    >
+                      {avatarFallbacks.map(avatarFallback => (
+                        <label
+                          key={avatarFallback}
+                          style={{ userSelect: 'none' }}
+                        >
+                          <input
+                            checked={avatarFallback === selectedAvatarFallback}
+                            name="avatarFallback"
+                            onChange={e =>
+                              setAvatarFallback(
+                                e.target.value as AvatarFallback
+                              )
+                            }
+                            type="radio"
+                            value={avatarFallback}
+                          />{' '}
+                          {avatarFallback}
                         </label>
                       ))}
                     </div>
