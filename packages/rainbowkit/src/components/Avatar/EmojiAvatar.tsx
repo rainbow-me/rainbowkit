@@ -4,7 +4,12 @@ import { SpinnerIcon } from '../Icons/Spinner';
 import { AvatarComponent } from '../RainbowKitProvider/AvatarContext';
 import { emojiAvatarForAddress } from './emojiAvatarForAddress';
 
-export const EmojiAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+export const EmojiAvatar: AvatarComponent = ({
+  address,
+  ensImage,
+  fallbackTheme,
+  size,
+}) => {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     if (ensImage) {
@@ -15,8 +20,8 @@ export const EmojiAvatar: AvatarComponent = ({ address, ensImage, size }) => {
   }, [ensImage]);
 
   const { color: backgroundColor, emoji } = useMemo(
-    () => emojiAvatarForAddress(address),
-    [address]
+    () => emojiAvatarForAddress(address, fallbackTheme),
+    [address, fallbackTheme]
   );
   return ensImage ? (
     loaded ? (
@@ -48,6 +53,18 @@ export const EmojiAvatar: AvatarComponent = ({ address, ensImage, size }) => {
         <SpinnerIcon />
       </Box>
     )
+  ) : fallbackTheme === 'nouns' ? (
+    <Box
+      backgroundSize="cover"
+      borderRadius="full"
+      position="absolute"
+      style={{
+        backgroundImage: `url(${emoji})`,
+        backgroundPosition: 'center',
+        height: size,
+        width: size,
+      }}
+    />
   ) : (
     <Box
       alignItems="center"

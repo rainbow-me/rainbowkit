@@ -1,3 +1,6 @@
+import { NounFactory } from '@cloudnouns/kit';
+import { AvatarFallbackTheme } from '../RainbowKitProvider/AvatarContext';
+
 const colors = [
   '#FC5C54',
   '#FFD95A',
@@ -73,7 +76,21 @@ function hashCode(text: string) {
   return hash;
 }
 
-export function emojiAvatarForAddress(address: string) {
+export function emojiAvatarForAddress(
+  address: string,
+  fallbackTheme?: AvatarFallbackTheme
+) {
+  if (fallbackTheme === 'nouns') {
+    const noun = NounFactory.createFromString(address, {
+      size: 256,
+    });
+
+    return {
+      color: noun.background,
+      emoji: noun.svg,
+    };
+  }
+
   const resolvedAddress = typeof address === 'string' ? address : '';
   const avatarIndex = Math.abs(
     hashCode(resolvedAddress.toLowerCase()) % avatars.length

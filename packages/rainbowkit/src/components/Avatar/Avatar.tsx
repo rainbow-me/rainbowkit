@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
-import { AvatarContext } from '../RainbowKitProvider/AvatarContext';
+import {
+  AvatarContext,
+  AvatarFallbackContext,
+} from '../RainbowKitProvider/AvatarContext';
 
 interface AvatarProps {
   address: string;
@@ -12,6 +15,7 @@ interface AvatarProps {
 
 export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
   const AvatarComponent = useContext(AvatarContext);
+  const avatarFallbackTheme = useContext(AvatarFallbackContext);
 
   return (
     <Box
@@ -43,7 +47,12 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
         }}
         userSelect="none"
       >
-        <AvatarComponent address={address} ensImage={imageUrl} size={size} />
+        <AvatarComponent
+          address={address}
+          ensImage={imageUrl}
+          fallbackTheme={avatarFallbackTheme}
+          size={size}
+        />
       </Box>
       {typeof loading === 'boolean' && (
         <Box
