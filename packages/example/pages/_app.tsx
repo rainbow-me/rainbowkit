@@ -20,6 +20,7 @@ import {
   ledgerWallet,
   omniWallet,
   trustWallet,
+  zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -104,6 +105,7 @@ const connectors = connectorsForWallets([
       ledgerWallet({ chains }),
       omniWallet({ chains }),
       trustWallet({ chains }),
+      zerionWallet({ chains }),
     ],
   },
 ]);

@@ -10,6 +10,7 @@ import {
   argentWallet,
   trustWallet,
   ledgerWallet,
+  zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
@@ -47,6 +48,7 @@ const connectors = connectorsForWallets([
       argentWallet({ chains }),
       trustWallet({ chains }),
       ledgerWallet({ chains }),
+      zerionWallet({ chains }),
     ],
   },
 ]);
