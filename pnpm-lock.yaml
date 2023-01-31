@@ -92,6 +92,7 @@ importers:
       '@testing-library/react': ^13.2.0
       '@testing-library/user-event': ^13.5.0
       '@types/jest': ^27.5.1
+      buffer: npm:buffer@6.0.3
       ethers: ^5.0.0
       react-scripts: 5.0.1
       util: 0.12.4
@@ -102,6 +103,7 @@ importers:
       '@testing-library/react': 13.3.0
       '@testing-library/user-event': 13.5.0
       '@types/jest': 27.5.2
+      buffer: 6.0.3
       ethers: 5.6.8
       react-scripts: 5.0.1
       util: 0.12.4
