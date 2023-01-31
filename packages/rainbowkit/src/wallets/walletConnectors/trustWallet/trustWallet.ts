@@ -61,7 +61,7 @@ export const trustWallet = ({
     name: 'Trust Wallet',
     iconUrl: async () => (await import('./trustWallet.svg')).default,
     // Note that we never resolve `installed` to `false` because the
-    // Coinbase Wallet SDK falls back to other connection methods if
+    // Trust Wallet provider falls back to other connection methods if
     // the injected connector isn't available
     installed: isTrustWalletInjected || undefined,
     iconAccent: '#3375BB',
