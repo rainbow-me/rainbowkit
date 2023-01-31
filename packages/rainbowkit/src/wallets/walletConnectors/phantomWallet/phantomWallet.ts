@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -12,33 +11,21 @@ export const phantomWallet = ({
   chains,
   shimDisconnect,
 }: PhantomWalletOptions): Wallet => {
-  const isPhantomInjected =
-    typeof window !== 'undefined' &&
-    typeof (window as any).phantom !== 'undefined'
-
-    const getProvider = () => typeof window !== 'undefined' && isPhantomInjected ? ((window as any).phantom as any)?.ethereum : undefined;
-
-  console.log('PHANTOM INJECTION',isPhantomInjected) 
-  return { id: 'phantom',
-    name: 'Phantom',
-    iconUrl: async () => (await import('./phantomWallet.svg')).default,
-    iconBackground: '#551BF9',
-    installed: isPhantomInjected,
-    downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=app.phantom',
-      ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
-      browserExtension: 'https://phantom.app/download',
-    },
+  return {
     createConnector: () => {
+      const getProvider = () =>
+        typeof window !== 'undefined'
+          ? ((window as any).phantom as any)?.ethereum
+          : undefined;
+
       const connector = new InjectedConnector({
         chains,
-        options: { shimDisconnect, getProvider } },
-      );
+        options: { getProvider, shimDisconnect },
+      });
 
       return {
         connector,
         extension: {
-          learnMoreUrl: 'https://help.phantom.app',
           instructions: {
             steps: [
               {
@@ -61,8 +48,22 @@ export const phantomWallet = ({
               },
             ],
           },
+          learnMoreUrl: 'https://help.phantom.app',
         },
       };
     },
+    downloadUrls: {
+      android: 'https://play.google.com/store/apps/details?id=app.phantom',
+      browserExtension: 'https://phantom.app/download',
+      ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
+    },
+    iconBackground: '#551BF9',
+    iconUrl: async () => (await import('./phantomWallet.svg')).default,
+    id: 'phantom',
+    installed:
+      (typeof window !== 'undefined' &&
+        !!((window as any).phantom as any)?.ethereum) ||
+      undefined,
+    name: 'Phantom',
   };
 };
