@@ -11,7 +11,7 @@
   #### 1. Upgrade RainbowKit and `wagmi` to their latest version:
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+  npm i @rainbow-me/rainbowkit@^0.8.1 wagmi@^0.9.0
   ```
 
   #### 2. Check for breaking changes in `wagmi`
