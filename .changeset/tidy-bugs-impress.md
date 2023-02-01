@@ -1,5 +1,5 @@
 ---
-'@rainbow-me/rainbowkit': patch
+'@rainbow-me/rainbowkit': minor
 ---
 
 The wagmi peer dependency has been updated to `0.10.x`.
