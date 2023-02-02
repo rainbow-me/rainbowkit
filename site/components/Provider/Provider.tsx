@@ -7,7 +7,6 @@ import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
-  portalWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
@@ -39,7 +38,6 @@ const connectors = connectorsForWallets([
       omniWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
-      portalWallet({ chains }),
     ],
   },
 ]);
