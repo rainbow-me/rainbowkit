@@ -33,10 +33,6 @@ function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
     return false;
   }
 
-  if (ethereum.isPortal) {
-    return false;
-  }
-
   return true;
 }
 
