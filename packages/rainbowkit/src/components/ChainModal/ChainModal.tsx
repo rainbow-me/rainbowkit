@@ -102,7 +102,16 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
               </Text>
             </Box>
           )}
-          <Box display="flex" flexDirection="column" gap="4" padding="2">
+          <Box
+            display="flex"
+            flexDirection="column"
+            gap="4"
+            padding="2"
+            style={{
+              overflowY: 'scroll',
+              maxHeight: '90vh',
+            }}
+          >
             {switchNetwork ? (
               chains.map((chain, idx) => {
                 const isCurrentChain = chain.id === activeChain?.id;
