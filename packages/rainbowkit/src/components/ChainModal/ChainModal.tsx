@@ -108,8 +108,13 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             gap="4"
             padding="2"
             style={{
-              overflowY: 'scroll',
-              maxHeight: '90vh',
+              'overflowY': 'scroll',
+              'maxHeight': '90vh',
+              'scrollbarWidth': 'none',
+              'msOverflowStyle': 'none',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
             }}
           >
             {switchNetwork ? (
