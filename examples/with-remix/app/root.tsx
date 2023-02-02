@@ -14,8 +14,8 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
-import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import type { Chain } from 'wagmi';
 import {
@@ -27,7 +27,7 @@ import {
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
 
-type Env = { ALCHEMY_API_KEY?: string; PUBLIC_ENABLE_TESTNETS?: string };
+type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
@@ -47,8 +47,6 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
-      ALCHEMY_API_KEY:
-        process.env.ALCHEMY_API_KEY || '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
       PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
@@ -64,20 +62,11 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ client, chains }] = useState(() => {
-    const testChains =
-      ENV.PUBLIC_ENABLE_TESTNETS === 'true'
-        ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
-        : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
     const { chains, provider } = configureChains(
-      [
-        chain.mainnet,
-        chain.polygon,
-        chain.optimism,
-        chain.arbitrum,
-        ...testChains,
-      ],
-      [alchemyProvider({ apiKey: ENV.ALCHEMY_API_KEY }), publicProvider()]
+      [mainnet, polygon, optimism, arbitrum, ...testChains],
+      [publicProvider()]
     );
 
     const { connectors } = getDefaultWallets({

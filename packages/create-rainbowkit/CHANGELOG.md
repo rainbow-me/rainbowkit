@@ -1,5 +1,23 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.5
+
+### Patch Changes
+
+- a1d6776: Updated `wagmi` to `0.9.x`
+
+## 0.1.4
+
+### Patch Changes
+
+- 6b37050: Updated `wagmi` to `^0.8.4`
+
+## 0.1.3
+
+### Patch Changes
+
+- 0ff4210: Updated wagmi to `0.7.5`
+
 ## 0.1.2
 
 ### Patch Changes

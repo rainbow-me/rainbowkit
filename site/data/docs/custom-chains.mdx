@@ -13,12 +13,8 @@ For example, here's how you can create an Avalanche chain for [avax.network](htt
 
 ```tsx
 import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import {
-  chain,
-  configureChains,
-  createClient,
-  WagmiConfig,
-} from 'wagmi';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { Chain } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
 const avalancheChain: Chain = {
@@ -33,7 +29,9 @@ const avalancheChain: Chain = {
     symbol: 'AVAX',
   },
   rpcUrls: {
-    default: 'https://api.avax.network/ext/bc/C/rpc',
+    default: {
+      http: ['https://api.avax.network/ext/bc/C/rpc'],
+    },
   },
   blockExplorers: {
     default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
@@ -44,7 +42,11 @@ const avalancheChain: Chain = {
 
 const { provider, chains } = configureChains(
   [avalancheChain],
-  [jsonRpcProvider({ rpc: chain => ({ http: chain.rpcUrls.default }) })]
+  [
+    jsonRpcProvider({
+      rpc: chain => ({ http: chain.rpcUrls.default.http[0] }),
+    }),
+  ]
 );
 
 const { connectors } = getDefaultWallets({

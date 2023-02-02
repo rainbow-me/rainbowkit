@@ -15,6 +15,7 @@ type Props = {
   name: string;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
+  testId?: string;
 };
 
 export const ModalSelection = ({
@@ -26,6 +27,7 @@ export const ModalSelection = ({
   onClick,
   ready,
   recent,
+  testId,
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
@@ -58,6 +60,7 @@ export const ModalSelection = ({
         onClick={onClick}
         padding="5"
         style={{ willChange: 'transform' }}
+        testId={testId}
         transition="default"
         width="full"
         {...(currentlySelected
