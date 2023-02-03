@@ -15,15 +15,24 @@ function createConnector(options: WalletConnectConnectorOptions) {
 
 export function getWalletConnectConnector({
   chains,
+  projectId,
   qrcode = false,
+  version = '1',
 }: {
   chains: Chain[];
   qrcode?: boolean;
+  version?: '1' | '2';
+  projectId?: string;
 }) {
   const options: WalletConnectConnectorOptions = {
     chains,
     options: {
+      projectId:
+        projectId ||
+        (process.env.WALLETCONNECT_PROJECT_ID as string) ||
+        (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string),
       qrcode,
+      version,
     },
   };
 
