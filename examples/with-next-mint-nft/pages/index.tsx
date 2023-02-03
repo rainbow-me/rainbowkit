@@ -24,6 +24,7 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
 
+  // @ts-expect-error
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
     functionName: 'mint',
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
     error: mintError,
   } = useContractWrite(contractWriteConfig);
 
+  // @ts-expect-error
   const { data: totalSupplyData } = useContractRead({
     ...contractConfig,
     functionName: 'totalSupply',
