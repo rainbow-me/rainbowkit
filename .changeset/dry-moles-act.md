@@ -4,7 +4,7 @@
 
 The wagmi peer dependency has been updated to `0.11.x`.
 
-The minimum TypeScripe version is now `4.9.4`
+The minimum TypeScript version is now `4.9.4`
 
 Follow the steps below to migrate.
 
