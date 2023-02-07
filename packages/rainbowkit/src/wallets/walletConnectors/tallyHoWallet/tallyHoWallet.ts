@@ -41,6 +41,6 @@ export const tallyHoWallet = ({
   iconBackground: '#d08d57',
   iconUrl: async () => (await import('./tallyHoWallet.svg')).default,
   id: 'tallyHo',
-  installed: true,
+  installed: Boolean(window['tally']),
   name: 'Tally Ho',
 });
