@@ -20,8 +20,8 @@ export {
   ledgerWallet,
   metaMaskWallet,
   omniWallet,
-  rainbowWallet,
   openBlockWallet,
+  rainbowWallet,
   trustWallet,
   walletConnectWallet,
 };
