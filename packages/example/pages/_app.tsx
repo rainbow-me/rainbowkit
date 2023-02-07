@@ -18,9 +18,9 @@ import {
   argentWallet,
   imTokenWallet,
   ledgerWallet,
+  okxWallet,
   omniWallet,
   trustWallet,
-  okxWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
