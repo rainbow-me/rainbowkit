@@ -181,19 +181,15 @@ export function ConnectDetail({
     downloadUrls?.qrCode && downloadUrls?.browserExtension;
   const hasQrCode = qrCode && qrCodeUri;
 
-  const [isReady, setIsReady] = useState<boolean>(false);
-
+  const [isReady, setIsReady] = useState<boolean | undefined>(undefined);
   // Check on component mount if the wallet is ready.
   useEffect(() => {
     wallet.connector.getProvider().then(provider => {
-      const isReady = provider;
-      if (!wasReady && isReady) {
-        // If the wallet was not ready, but now is ready attempt to connect
-        reconnect(wallet);
+      if (!wasReady && provider && isReady === undefined) {
+        setIsReady(!!provider);
       }
-      setIsReady(isReady);
     });
-  }, [wallet.connector, reconnect, wallet, wasReady]);
+  }, [wallet.connector, wallet, wasReady, isReady]);
 
   const ready = wasReady || isReady;
 
