@@ -8,22 +8,12 @@ export interface OKXWalletOptions {
   chains: Chain[];
 }
 
-function isOKX(ethereum: NonNullable<typeof window['ethereum']>) {
-  // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
-  // @ts-expect-error
-  const isOKX = Boolean(ethereum.isOkxWallet || ethereum.isOKExWallet);
-  if (!isOKX) {
-    return false;
-  }
-
-  return true;
-}
-
 export const okxWallet = ({ chains }: OKXWalletOptions): Wallet => {
+  // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
   const isOKXInjected =
     typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    isOKX(window.ethereum);
+    // @ts-expect-error
+    typeof window.okxwallet !== 'undefined';
 
   const shouldUseWalletConnect = !isOKXInjected;
 
@@ -46,6 +36,10 @@ export const okxWallet = ({ chains }: OKXWalletOptions): Wallet => {
         ? getWalletConnectConnector({ chains })
         : new InjectedConnector({
             chains,
+            options: {
+              // @ts-expect-error
+              getProvider: () => window.okxwallet,
+            },
           });
 
       const getUri = async () => (await connector.getProvider()).connector.uri;
