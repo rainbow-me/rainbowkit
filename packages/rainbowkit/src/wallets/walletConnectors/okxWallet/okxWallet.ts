@@ -36,7 +36,8 @@ export const okxWallet = ({ chains }: OKXWalletOptions): Wallet => {
     downloadUrls: {
       browserExtension:
         'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
-      android: 'https://static.byucvwj.cn/upgradeapp/okx-android.apk',
+      android:
+        'https://play.google.com/store/apps/details?id=com.okinc.okex.gp',
       ios: 'https://itunes.apple.com/app/id1327268470?mt=8',
       qrCode: 'https://www.okx.com/web3',
     },
