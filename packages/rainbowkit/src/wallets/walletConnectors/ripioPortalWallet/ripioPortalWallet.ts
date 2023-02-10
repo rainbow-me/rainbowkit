@@ -20,7 +20,7 @@ export const ripioPortalWallet = ({
   installed:
     typeof window !== 'undefined' && window.ethereum?.isPortal === true,
   downloadUrls: {
-    browserExtension: 'https://www.ripio.com/portal/',
+    browserExtension: 'https://chrome.google.com/webstore/detail/ripio-portal/ddamhapapianibkkkcclabgicmpnpdnj',
   },
   createConnector: () => ({
     connector: new InjectedConnector({
