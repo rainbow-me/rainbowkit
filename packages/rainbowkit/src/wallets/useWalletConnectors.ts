@@ -82,8 +82,7 @@ export function useWalletConnectors(): WalletConnector[] {
       connect: () => connectWallet(wallet.id, wallet.connector),
       groupName: wallet.groupName,
       onConnecting: (fn: () => void) =>
-        // @ts-expect-error
-        wallet.connector.on('message', ({ type }) =>
+        wallet.connector.on('message', ({ type }: { type: string }) =>
           type === 'connecting' ? fn() : undefined
         ),
       ready: (wallet.installed ?? true) && wallet.connector.ready,
