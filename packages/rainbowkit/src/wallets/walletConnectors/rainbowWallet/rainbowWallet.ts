@@ -42,6 +42,7 @@ export const rainbowWallet = ({
       ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
       qrCode: 'https://rainbow.download',
     },
+    installed: isRainbowInjected || undefined,
     createConnector: () => {
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({ chains })
