@@ -6,7 +6,7 @@
 
 - Updated dependencies [355402b]
   - @rainbow-me/rainbowkit@0.10.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.7
 
 ## 0.0.15
 
