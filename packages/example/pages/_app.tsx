@@ -35,6 +35,7 @@ import {
 import {
   arbitrum,
   avalanche,
+  bsc,
   goerli,
   mainnet,
   optimism,
@@ -52,6 +53,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     polygon,
     optimism,
     arbitrum,
+    bsc,
     avalanche,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
