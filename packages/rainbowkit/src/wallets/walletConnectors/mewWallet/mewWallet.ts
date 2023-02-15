@@ -29,7 +29,7 @@ export const mewWallet = ({
       Boolean(
         (
           window.ethereum as typeof window.ethereum &
-            (undefined | { isMEWwallet?: boolean })
+          (undefined | { isMEWwallet?: boolean })
         )?.isMEWwallet
       );
 
@@ -46,16 +46,7 @@ export const mewWallet = ({
 
     return {
       connector,
-      mobile: {
-        getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
-          return isAndroid()
-            ? uri
-            : `https://mewwallet.com/wc?uri=${encodeURIComponent(uri)}`;
-        },
-      },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
           learnMoreUrl: 'https://www.mewwallet.com/what-is-ethereum/',
           steps: [
