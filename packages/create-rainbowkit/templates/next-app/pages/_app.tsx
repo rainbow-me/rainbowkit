@@ -1,9 +1,9 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import type { AppProps } from 'next/app';
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import { arbitrum, goerli, mainnet, optimism, polygon } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, provider, webSocketProvider } = configureChains(
@@ -14,9 +14,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     arbitrum,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
-  [
-    publicProvider(),
-  ]
+  [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
