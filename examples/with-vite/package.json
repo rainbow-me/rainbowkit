@@ -13,13 +13,13 @@
     "ethers": "^5.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "wagmi": "^0.10.0"
+    "wagmi": "^0.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.1",
     "@vitejs/plugin-react": "^1.3.0",
-    "typescript": "^4.7.2",
+    "typescript": "^4.9.4",
     "vite": "^2.9.9"
   }
 }
