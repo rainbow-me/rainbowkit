@@ -14,7 +14,7 @@ export const mewWallet = ({
   shimDisconnect,
 }: MewWalletOptions): Wallet => ({
   id: 'mew',
-  name: 'MEW Wallet',
+  name: 'MEW wallet',
   iconUrl: async () => (await import('./mewWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
