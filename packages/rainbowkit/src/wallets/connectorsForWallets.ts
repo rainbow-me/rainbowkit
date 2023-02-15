@@ -137,12 +137,10 @@ export const connectorsForWallets = (walletList: WalletList) => {
           // the old list. This is happening because we're
           // re-using the WalletConnectConnector instance
           // so the wallet list already exists after HMR.
-          // @ts-expect-error
           connector._wallets = [];
         }
 
         // Add wallet to connector's list of associated wallets
-        // @ts-expect-error
         connector._wallets.push(walletInstance);
       }
     );
