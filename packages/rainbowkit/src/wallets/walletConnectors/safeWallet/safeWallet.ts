@@ -15,7 +15,7 @@ export const safeWallet = ({
   options = {},
 }: SafeWalletOptions): Wallet => ({
   id: 'safe',
-  name: 'Safe (Gnosis)',
+  name: 'Safe',
   iconUrl: async () => (await import('./safe.svg')).default,
   iconBackground: '#000',
   createConnector: () => ({
