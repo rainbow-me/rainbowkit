@@ -12,7 +12,7 @@ export interface SafeWalletOptions {
 // https://github.com/safe-global/safe-apps-sdk/tree/main/packages/safe-apps-wagmi#integration-steps
 export const safeWallet = ({
   chains,
-  options = {}
+  options = {},
 }: SafeWalletOptions): Wallet => ({
   id: 'safe',
   name: 'Safe (Gnosis)',
