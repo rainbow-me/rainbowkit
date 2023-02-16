@@ -16,7 +16,7 @@ export const mewWallet = ({
     Boolean(
       (
         window.ethereum as typeof window.ethereum &
-        (undefined | { isMEWwallet?: boolean })
+          (undefined | { isMEWwallet?: boolean })
       )?.isMEWwallet
     );
   return {
@@ -37,7 +37,7 @@ export const mewWallet = ({
           chains,
           options: { shimDisconnect },
         }),
-      }
+      };
     },
-  }
+  };
 };
