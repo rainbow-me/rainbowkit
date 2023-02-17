@@ -1,6 +1,7 @@
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
+import { bitKeepWallet } from './walletConnectors/bitKeepWallet/bitKeepWallet';
 import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
@@ -26,6 +27,7 @@ export const getDefaultWallets = ({
         rainbowWallet({ chains }),
         coinbaseWallet({ appName, chains }),
         metaMaskWallet({ chains }),
+        bitKeepWallet({ chains }),
         walletConnectWallet({ chains }),
         braveWallet({ chains }),
       ],

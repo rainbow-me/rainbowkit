@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { bitKeepWallet } from './bitKeepWallet/bitKeepWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
@@ -18,6 +19,7 @@ export {
   injectedWallet,
   ledgerWallet,
   metaMaskWallet,
+  bitKeepWallet,
   omniWallet,
   rainbowWallet,
   trustWallet,
