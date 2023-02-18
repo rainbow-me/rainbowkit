@@ -8,14 +8,26 @@ import { useEffect, useRef } from 'react';
 import { getAuthOptions } from './api/auth/[...nextauth]';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await unstable_getServerSession(
+    req,
+    res,
+    getAuthOptions(req)
+  );
+
+  if (!session)
+    return {
+      redirect: {
+        statusCode: 301,
+        destination: '/',
+      },
+    };
+
   return {
-    props: {
-      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
-    },
+    props: { session },
   };
 };
 
-const Home: NextPage = () => {
+const Restricted: NextPage = () => {
   const { status } = useSession();
   const prevStatus = useRef(status);
   const router = useRouter();
@@ -27,10 +39,10 @@ const Home: NextPage = () => {
     });
 
     if (
-      prevStatus.current === 'unauthenticated' &&
-      status === 'authenticated'
+      prevStatus.current === 'authenticated' &&
+      status === 'unauthenticated'
     ) {
-      router.push('/restricted');
+      router.push('/');
     }
     prevStatus.current = status;
   }, [status]);
@@ -44,17 +56,13 @@ const Home: NextPage = () => {
           padding: 12,
         }}
       >
-        <header>
-          <ConnectButton />
-        </header>
+        <ConnectButton />
       </div>
 
-      <h1>Home Page</h1>
-      {status === 'authenticated' ? (
-        <Link href="/restricted">Restricted</Link>
-      ) : null}
+      <h1>Restricted Page</h1>
+      <Link href="/">Home</Link>
     </>
   );
 };
 
-export default Home;
+export default Restricted;
