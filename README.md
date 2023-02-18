@@ -46,6 +46,7 @@ The following examples are provided in the [examples](./examples/) folder of thi
 - `with-next-mint-nft`
 - `with-next-siwe-next-auth`
 - `with-next-siwe-iron-session`
+- `with-next-use-siwe`
 - `with-remix`
 
 ### Running examples
