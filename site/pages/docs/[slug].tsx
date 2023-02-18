@@ -1,10 +1,10 @@
 import { Box } from 'components/Box/Box';
 import { components } from 'components/MdxComponents/MdxComponents';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
+import { allDocs, Doc } from 'contentlayer/generated';
 import { docsRoutes } from 'lib/docsRoutes';
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import React from 'react';
-import { allDocs, Doc } from '.contentlayer/generated';
 
 type DocPageProps = { doc: Doc; sectionName: string };
 
