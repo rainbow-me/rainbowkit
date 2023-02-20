@@ -1,4 +1,5 @@
 {
   "name": "RainbowKit Example",
-  "description": "Test dApp deployment of RainbowKit"
+  "description": "Test dApp deployment of RainbowKit",
+  "iconPath": "rainbow.svg"
 }
