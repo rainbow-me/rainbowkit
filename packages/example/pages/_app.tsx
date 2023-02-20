@@ -19,6 +19,7 @@ import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
+  rabbyWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -108,6 +109,7 @@ const connectors = connectorsForWallets([
       ledgerWallet({ chains }),
       omniWallet({ chains }),
       trustWallet({ chains }),
+      rabbyWallet({ chains }),
     ],
   },
 ]);
