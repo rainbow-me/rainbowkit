@@ -12,7 +12,6 @@ export interface RainbowWalletOptions {
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
   // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  // @ts-expect-error
   const isRainbow = Boolean(ethereum.isRainbow);
 
   if (!isRainbow) {
