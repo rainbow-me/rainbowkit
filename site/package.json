@@ -39,8 +39,8 @@
     "unist-util-visit": "4.1.0"
   },
   "devDependencies": {
-    "contentlayer": "0.2.2",
-    "next-contentlayer": "0.2.2"
+    "contentlayer": "0.2.8",
+    "next-contentlayer": "0.2.8"
   },
   "peerDependencies": {
     "wagmi": "^0.11.0"
