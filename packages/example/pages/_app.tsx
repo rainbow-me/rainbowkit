@@ -35,6 +35,7 @@ import {
 import {
   arbitrum,
   avalanche,
+  baseGoerli,
   bsc,
   goerli,
   mainnet,
@@ -55,7 +56,9 @@ const { chains, provider, webSocketProvider } = configureChains(
     arbitrum,
     bsc,
     avalanche,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [goerli, baseGoerli]
+      : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
