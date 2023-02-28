@@ -2,6 +2,7 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import { detectProviderFlag } from '../../detectProviderFlag';
 
 export interface BraveWalletOptions {
   chains: Chain[];
@@ -16,8 +17,7 @@ export const braveWallet = ({
   name: 'Brave Wallet',
   iconUrl: async () => (await import('./braveWallet.svg')).default,
   iconBackground: '#fff',
-  installed:
-    typeof window !== 'undefined' && window.ethereum?.isBraveWallet === true,
+  installed: detectProviderFlag('isBraveWallet') || undefined,
   downloadUrls: {
     // We're opting not to provide a download prompt if Brave isn't the current
     // browser since it's unlikely to be a desired behavior for users. It's

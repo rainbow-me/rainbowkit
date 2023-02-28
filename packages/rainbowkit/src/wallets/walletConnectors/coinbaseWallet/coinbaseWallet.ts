@@ -3,6 +3,7 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import { detectProviderFlag } from '../../detectProviderFlag';
 
 export interface CoinbaseWalletOptions {
   appName: string;
@@ -13,8 +14,7 @@ export const coinbaseWallet = ({
   appName,
   chains,
 }: CoinbaseWalletOptions): Wallet => {
-  const isCoinbaseWalletInjected =
-    typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
+  const isCoinbaseWalletInjected = detectProviderFlag('isCoinbaseWallet');
 
   return {
     id: 'coinbase',

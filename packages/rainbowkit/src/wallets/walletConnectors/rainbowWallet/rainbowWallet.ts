@@ -3,6 +3,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import { detectProviderFlag } from '../../detectProviderFlag';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
@@ -10,25 +11,11 @@ export interface RainbowWalletOptions {
   shimDisconnect?: boolean;
 }
 
-function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
-  // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  const isRainbow = Boolean(ethereum.isRainbow);
-
-  if (!isRainbow) {
-    return false;
-  }
-
-  return true;
-}
-
 export const rainbowWallet = ({
   chains,
   shimDisconnect,
 }: RainbowWalletOptions): Wallet => {
-  const isRainbowInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    isRainbow(window.ethereum);
+  const isRainbowInjected = detectProviderFlag('isRainbow');
 
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
