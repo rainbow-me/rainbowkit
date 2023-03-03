@@ -1,7 +1,7 @@
 {
   "name": "with-next-siwe-next-auth",
   "private": true,
-  "version": "0.0.17",
+  "version": "0.0.18",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,7 +1,7 @@
 {
   "name": "with-next",
   "private": true,
-  "version": "0.0.35",
+  "version": "0.0.36",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
