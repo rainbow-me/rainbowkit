@@ -1,34 +1,58 @@
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 type SerializedOptions = string;
-const sharedConnectors = new Map<SerializedOptions, WalletConnectConnector>();
+const sharedConnectors = new Map<
+  SerializedOptions,
+  WalletConnectConnector | WalletConnectLegacyConnector
+>();
 
+type WalletConnectVersion = '1' | '2';
 type WalletConnectConnectorOptions = ConstructorParameters<
-  typeof WalletConnectConnector
+  typeof WalletConnectConnector | typeof WalletConnectLegacyConnector
 >[0];
 
-function createConnector(options: WalletConnectConnectorOptions) {
-  const connector = new WalletConnectConnector(options);
+function createConnector(
+  version: WalletConnectVersion,
+  options: WalletConnectConnectorOptions
+) {
+  const connector =
+    version === '1'
+      ? new WalletConnectLegacyConnector(options)
+      : new WalletConnectConnector(options);
   sharedConnectors.set(JSON.stringify(options), connector);
   return connector;
 }
 
 export function getWalletConnectConnector({
   chains,
+  projectId,
   qrcode = false,
+  version = '1',
 }: {
   chains: Chain[];
   qrcode?: boolean;
+  version?: WalletConnectVersion;
+  projectId?: string;
 }) {
-  const options: WalletConnectConnectorOptions = {
-    chains,
-    options: {
-      qrcode,
-    },
-  };
+  const options: WalletConnectConnectorOptions =
+    version === '1'
+      ? {
+          chains,
+          options: {
+            qrcode,
+          },
+        }
+      : {
+          chains,
+          options: {
+            projectId,
+            qrcode,
+          },
+        };
 
   const serializedOptions = JSON.stringify(options);
   const sharedConnector = sharedConnectors.get(serializedOptions);
 
-  return sharedConnector ?? createConnector(options);
+  return sharedConnector ?? createConnector(version, options);
 }
