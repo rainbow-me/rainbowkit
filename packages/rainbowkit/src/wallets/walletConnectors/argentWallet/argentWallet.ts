@@ -20,7 +20,7 @@ export const argentWallet = ({ chains }: ArgentWalletOptions): Wallet => ({
     qrCode: 'https://argent.link/app',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ chains, version: '1' });
 
     return {
       connector,

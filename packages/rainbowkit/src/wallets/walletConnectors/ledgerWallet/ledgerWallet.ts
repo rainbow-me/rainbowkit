@@ -19,7 +19,7 @@ export const ledgerWallet = ({ chains }: LedgerWalletOptions): Wallet => ({
     qrCode: 'https://www.ledger.com/ledger-live/download#download-device-2',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ chains, version: '1' });
 
     return {
       connector,

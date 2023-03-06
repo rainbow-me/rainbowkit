@@ -43,7 +43,7 @@ export const rainbowWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ chains, version: '1' })
         : new InjectedConnector({
             chains,
             options: { shimDisconnect },

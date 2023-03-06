@@ -63,7 +63,7 @@ export const metaMaskWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ chains, version: '1' })
         : new MetaMaskConnector({
             chains,
             options: { shimDisconnect },

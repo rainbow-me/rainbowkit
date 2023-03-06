@@ -18,7 +18,7 @@ export const imTokenWallet = ({ chains }: ImTokenWalletOptions): Wallet => ({
     qrCode: 'https://token.im/download',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ chains, version: '1' });
 
     return {
       connector,

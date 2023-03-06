@@ -19,7 +19,7 @@ export const omniWallet = ({ chains }: OmniWalletOptions): Wallet => ({
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ chains, version: '2' });
 
     return {
       connector,

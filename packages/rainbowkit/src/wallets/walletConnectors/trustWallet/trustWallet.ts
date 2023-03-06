@@ -38,7 +38,7 @@ export const trustWallet = ({
       };
     }
 
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ chains, version: '2' });
 
     return {
       connector,
