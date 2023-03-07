@@ -46,8 +46,11 @@ export function getWalletConnectConnector({
       : {
           chains,
           options: {
-            projectId,
-            qrcode,
+            projectId:
+              projectId ||
+              (process.env.WALLETCONNECT_PROJECT_ID as string) ||
+              (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string),
+            showQrModal: qrcode,
           },
         };
 
