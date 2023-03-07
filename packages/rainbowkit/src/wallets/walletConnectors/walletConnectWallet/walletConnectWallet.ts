@@ -3,6 +3,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { listenForUri } from '../../listenForUri';
 
 export interface WalletConnectWalletOptions {
   chains: Chain[];
@@ -24,7 +25,7 @@ export const walletConnectWallet = ({
       version: '2',
     });
 
-    const getUri = async () => (await connector.getProvider()).connector.uri;
+    const getUri = listenForUri(connector);
 
     return {
       connector,

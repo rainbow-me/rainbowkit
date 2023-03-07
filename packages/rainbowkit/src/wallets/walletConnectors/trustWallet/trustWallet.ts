@@ -4,6 +4,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { listenForUri } from '../../listenForUri';
 
 export interface TrustWalletOptions {
   chains: Chain[];
@@ -44,14 +45,14 @@ export const trustWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const uri = await listenForUri(connector)();
           return isAndroid()
             ? uri
             : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: listenForUri(connector),
         instructions: {
           learnMoreUrl:
             'https://trustwallet.com/blog/an-introduction-to-trustwallet',
