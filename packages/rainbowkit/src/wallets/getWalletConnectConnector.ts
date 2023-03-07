@@ -28,7 +28,7 @@ export function getWalletConnectConnector({
   chains,
   projectId,
   qrcode = false,
-  version = '1',
+  version = '1', // This will default to '2' in a future release
 }: {
   chains: Chain[];
   qrcode?: boolean;
