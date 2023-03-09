@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { getBrowserDownloadUrl } from '../../wallets/getDownloadUrl';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -61,7 +62,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
   const wallets = useWalletConnectors()
-    .filter(wallet => wallet.ready || wallet.downloadUrls?.browserExtension)
+    .filter(wallet => wallet.ready || !!getBrowserDownloadUrl(wallet))
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
@@ -140,7 +141,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
-    const isExtension = sWallet?.downloadUrls?.browserExtension;
+    const isExtension = !!getBrowserDownloadUrl(sWallet);
     setSelectedWallet(sWallet);
     if (isMobile && isExtension) {
       changeWalletStep(WalletStep.DownloadOptions);
@@ -188,7 +189,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   }, [walletStep, selectedWallet]);
 
   const hasExtensionAndMobile = !!(
-    selectedWallet?.downloadUrls?.browserExtension &&
+    !!getBrowserDownloadUrl(selectedWallet) &&
     (selectedWallet?.downloadUrls?.android || selectedWallet?.downloadUrls?.ios)
   );
 

@@ -44,6 +44,11 @@ export type Wallet<C extends Connector = Connector> = {
     android?: string;
     ios?: string;
     browserExtension?: string;
+    chrome?: string;
+    edge?: string;
+    firefox?: string;
+    opera?: string;
+    safari?: string;
     qrCode?: string;
   };
   hidden?: (args: {

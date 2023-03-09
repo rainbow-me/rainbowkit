@@ -29,7 +29,7 @@ export const coinbaseWallet = ({
     // the injected connector isn't available
     installed: isCoinbaseWalletInjected || undefined,
     downloadUrls: {
-      browserExtension:
+      chrome:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',

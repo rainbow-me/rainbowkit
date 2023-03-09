@@ -5,32 +5,55 @@ export function isSafari(): boolean {
   );
 }
 
+export function isArc(): boolean {
+  return (
+    getComputedStyle(document.body).getPropertyValue('--arc-palette-focus') !==
+    ''
+  );
+}
+
 export enum BrowserType {
+  Arc = 'Arc',
+  Brave = 'Brave',
+  Browser = 'Browser',
   Chrome = 'Chrome',
   Edge = 'Edge',
   Firefox = 'Firefox',
-  Brave = 'Brave',
-  Browser = 'Browser',
+  Opera = 'Opera',
+  Safari = 'Safari',
 }
 
 export function getBrowser(): BrowserType {
   let ua = navigator.userAgent.toLowerCase();
-  // brave
-  // @ts-ignore
-  if (navigator?.brave?.isBrave) {
-    return BrowserType.Brave;
+
+  // chrome
+  if (ua.indexOf('chrome') > -1) {
+    return BrowserType.Chrome;
+  }
+  // safari
+  if (isSafari()) {
+    return BrowserType.Safari;
   }
   // edge
   if (ua.indexOf('edge') > -1 || ua.indexOf('edg/') > -1) {
     return BrowserType.Edge;
   }
-  // chrome
-  if (ua.indexOf('chrome') > -1) {
-    return BrowserType.Chrome;
-    // firefox
-  }
+  // firefox
   if (ua.indexOf('firefox') > -1) {
     return BrowserType.Firefox;
+  }
+  // brave
+  // @ts-ignore
+  if (navigator?.brave?.isBrave) {
+    return BrowserType.Brave;
+  }
+  // opera
+  if (ua.indexOf('op') > -1) {
+    return BrowserType.Opera;
+  }
+  // arc
+  if (isArc()) {
+    return BrowserType.Arc;
   }
   return BrowserType.Browser;
 }

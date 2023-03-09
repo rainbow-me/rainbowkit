@@ -4,6 +4,7 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { InstructionStepName } from '../../wallets/Wallet';
+import { getBrowserDownloadUrl } from '../../wallets/getDownloadUrl';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -24,14 +25,20 @@ import { WalletStep } from './DesktopOptions';
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
-    case BrowserType.Chrome:
-      return (await import(`../Icons/Chrome.svg`)).default;
+    case BrowserType.Arc:
+      return (await import(`../Icons/Arc.svg`)).default;
     case BrowserType.Brave:
       return (await import(`../Icons/Brave.svg`)).default;
+    case BrowserType.Chrome:
+      return (await import(`../Icons/Chrome.svg`)).default;
     case BrowserType.Edge:
       return (await import(`../Icons/Edge.svg`)).default;
     case BrowserType.Firefox:
       return (await import(`../Icons/Firefox.svg`)).default;
+    case BrowserType.Opera:
+      return (await import(`../Icons/Opera.svg`)).default;
+    case BrowserType.Safari:
+      return (await import(`../Icons/Safari.svg`)).default;
     default:
       return (await import(`../Icons/Browser.svg`)).default;
   }
@@ -67,15 +74,15 @@ export function GetDetail({
         {shownWallets
           ?.filter(
             wallet =>
-              wallet.downloadUrls?.browserExtension ||
+              getBrowserDownloadUrl(wallet) ||
               (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
               wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
-            const hasMobileAndExtension =
-              downloadUrls?.qrCode && downloadUrls?.browserExtension;
+            const hasExtension = !!getBrowserDownloadUrl(wallet);
+            const hasMobileAndExtension = downloadUrls?.qrCode && hasExtension;
 
             return (
               <Box
@@ -109,7 +116,7 @@ export function GetDetail({
                         ? 'Mobile Wallet and Extension'
                         : hasMobileCompanionApp
                         ? 'Mobile Wallet'
-                        : downloadUrls?.browserExtension
+                        : hasExtension
                         ? 'Browser Extension'
                         : null}
                     </Text>
@@ -177,8 +184,8 @@ export function ConnectDetail({
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
 
-  const hasQrCodeAndExtension =
-    downloadUrls?.qrCode && downloadUrls?.browserExtension;
+  const hasExtension = !!getBrowserDownloadUrl(wallet);
+  const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
@@ -265,14 +272,14 @@ export function ConnectDetail({
               <Text color="modalText" size="18" weight="bold">
                 {ready
                   ? `Opening ${name}...`
-                  : downloadUrls?.browserExtension
+                  : hasExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
-              {!ready && downloadUrls?.browserExtension ? (
+              {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
-                    href={downloadUrls.browserExtension}
+                    href={getBrowserDownloadUrl(wallet)}
                     label="INSTALL"
                     type="secondary"
                   />
@@ -606,7 +613,7 @@ export function DownloadOptionsDetail({
             )
           }
           title={`${wallet.name} for ${browser}`}
-          url={wallet?.downloadUrls?.browserExtension}
+          url={getBrowserDownloadUrl(wallet)}
           variant="browser"
         />
         <DownloadOptionsBox
