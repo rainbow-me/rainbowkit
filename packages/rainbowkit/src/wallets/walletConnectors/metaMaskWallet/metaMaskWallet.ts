@@ -49,11 +49,15 @@ export const metaMaskWallet = ({
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
     downloadUrls: {
-      chrome:
-        'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
-      qrCode: 'https://metamask.io/download/',
+      qrCode: 'https://metamask.io/download',
+      chrome:
+        'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',
+      edge: 'https://microsoftedge.microsoft.com/addons/detail/metamask/ejbalbakoplchlghecdalmeeeajnimhm',
+      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/ether-metamask',
+      opera: 'https://addons.opera.com/en-gb/extensions/details/metamask-10',
+      browserExtension: 'https://metamask.io/download',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
