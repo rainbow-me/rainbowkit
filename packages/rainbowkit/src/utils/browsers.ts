@@ -25,27 +25,14 @@ export enum BrowserType {
 
 export function getBrowser(): BrowserType {
   let ua = navigator.userAgent.toLowerCase();
-
-  // chrome
-  if (ua.indexOf('chrome') > -1) {
-    return BrowserType.Chrome;
-  }
-  // safari
-  if (isSafari()) {
-    return BrowserType.Safari;
-  }
-  // edge
-  if (ua.indexOf('edge') > -1 || ua.indexOf('edg/') > -1) {
-    return BrowserType.Edge;
-  }
-  // firefox
-  if (ua.indexOf('firefox') > -1) {
-    return BrowserType.Firefox;
-  }
   // brave
   // @ts-ignore
   if (navigator?.brave?.isBrave) {
     return BrowserType.Brave;
+  }
+  // edge
+  if (ua.indexOf('edge') > -1 || ua.indexOf('edg/') > -1) {
+    return BrowserType.Edge;
   }
   // opera
   if (ua.indexOf('op') > -1) {
@@ -54,6 +41,18 @@ export function getBrowser(): BrowserType {
   // arc
   if (isArc()) {
     return BrowserType.Arc;
+  }
+  // chrome
+  if (ua.indexOf('chrome') > -1) {
+    return BrowserType.Chrome;
+  }
+  // firefox
+  if (ua.indexOf('firefox') > -1) {
+    return BrowserType.Firefox;
+  }
+  // safari
+  if (isSafari()) {
+    return BrowserType.Safari;
   }
   return BrowserType.Browser;
 }
