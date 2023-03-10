@@ -1,8 +1,8 @@
 # @rainbow-me/rainbowkit
 
-## 0.13.0
+## 0.12.1
 
-### Minor Changes
+### Patch Changes
 
 - 8f01a12: Bitski Support
 
@@ -27,8 +27,6 @@
     },
   ]);
   ```
-
-### Patch Changes
 
 - 3399df5: MEW Wallet Support
 
