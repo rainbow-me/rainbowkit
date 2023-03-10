@@ -2,11 +2,26 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Add MEW Wallet
+MEW Wallet Support
 
 **Example usage**
 
 ```ts
+import {
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-const wallets = [mewWallet({ chains })];
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ chains }),
+      trustWallet({ chains }),
+      mewWallet({ chains }),
+      ledgerWallet({ chains }),
+    ],
+  },
+]);
 ```
