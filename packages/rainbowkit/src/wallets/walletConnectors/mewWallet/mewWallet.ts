@@ -4,13 +4,9 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { Wallet } from '../../Wallet';
 export interface MewWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-export const mewWallet = ({
-  chains,
-  shimDisconnect,
-}: MewWalletOptions): Wallet => {
+export const mewWallet = ({ chains }: MewWalletOptions): Wallet => {
   const isMewWalletInjected =
     typeof window !== 'undefined' &&
     Boolean(
@@ -35,7 +31,6 @@ export const mewWallet = ({
       return {
         connector: new InjectedConnector({
           chains,
-          options: { shimDisconnect },
         }),
       };
     },

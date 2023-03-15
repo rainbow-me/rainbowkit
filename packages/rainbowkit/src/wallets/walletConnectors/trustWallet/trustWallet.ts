@@ -7,13 +7,9 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TrustWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-export const trustWallet = ({
-  chains,
-  shimDisconnect,
-}: TrustWalletOptions): Wallet => ({
+export const trustWallet = ({ chains }: TrustWalletOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
   iconUrl: async () => (await import('./trustWallet.svg')).default,
@@ -33,7 +29,6 @@ export const trustWallet = ({
       return {
         connector: new InjectedConnector({
           chains,
-          options: { shimDisconnect },
         }),
       };
     }

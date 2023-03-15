@@ -7,7 +7,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -36,10 +35,7 @@ function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
   return true;
 }
 
-export const metaMaskWallet = ({
-  chains,
-  shimDisconnect,
-}: MetaMaskWalletOptions): Wallet => {
+export const metaMaskWallet = ({ chains }: MetaMaskWalletOptions): Wallet => {
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -66,7 +62,6 @@ export const metaMaskWallet = ({
         ? getWalletConnectConnector({ chains })
         : new MetaMaskConnector({
             chains,
-            options: { shimDisconnect },
           });
 
       const getUri = async () => {

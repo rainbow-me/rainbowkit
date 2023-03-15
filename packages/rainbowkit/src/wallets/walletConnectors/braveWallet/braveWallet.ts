@@ -5,13 +5,9 @@ import { Wallet } from '../../Wallet';
 
 export interface BraveWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-export const braveWallet = ({
-  chains,
-  shimDisconnect,
-}: BraveWalletOptions): Wallet => ({
+export const braveWallet = ({ chains }: BraveWalletOptions): Wallet => ({
   id: 'brave',
   name: 'Brave Wallet',
   iconUrl: async () => (await import('./braveWallet.svg')).default,
@@ -27,7 +23,6 @@ export const braveWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options: { shimDisconnect },
     }),
   }),
 });

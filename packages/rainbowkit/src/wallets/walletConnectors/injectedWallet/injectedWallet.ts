@@ -5,13 +5,9 @@ import { Wallet } from '../../Wallet';
 
 export interface InjectedWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-export const injectedWallet = ({
-  chains,
-  shimDisconnect,
-}: InjectedWalletOptions): Wallet => ({
+export const injectedWallet = ({ chains }: InjectedWalletOptions): Wallet => ({
   id: 'injected',
   name: 'Injected Wallet',
   iconUrl: async () => (await import('./injectedWallet.png')).default,
@@ -26,7 +22,6 @@ export const injectedWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options: { shimDisconnect },
     }),
   }),
 });

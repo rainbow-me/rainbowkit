@@ -5,13 +5,9 @@ import { Wallet } from '../../Wallet';
 
 export interface BitskiWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-export const bitskiWallet = ({
-  chains,
-  shimDisconnect,
-}: BitskiWalletOptions): Wallet => ({
+export const bitskiWallet = ({ chains }: BitskiWalletOptions): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
   installed:
@@ -28,7 +24,6 @@ export const bitskiWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options: { shimDisconnect },
     }),
   }),
 });

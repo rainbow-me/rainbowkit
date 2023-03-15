@@ -7,7 +7,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -21,10 +20,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
   return true;
 }
 
-export const rainbowWallet = ({
-  chains,
-  shimDisconnect,
-}: RainbowWalletOptions): Wallet => {
+export const rainbowWallet = ({ chains }: RainbowWalletOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -46,7 +42,6 @@ export const rainbowWallet = ({
         ? getWalletConnectConnector({ chains })
         : new InjectedConnector({
             chains,
-            options: { shimDisconnect },
           });
 
       const getUri = async () => {
