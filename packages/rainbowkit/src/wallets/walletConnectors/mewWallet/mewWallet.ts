@@ -2,6 +2,8 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import { detectProviderFlag } from '../../detectProviderFlag';
+
 export interface MewWalletOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
@@ -11,20 +13,12 @@ export const mewWallet = ({
   chains,
   shimDisconnect,
 }: MewWalletOptions): Wallet => {
-  const isMewWalletInjected =
-    typeof window !== 'undefined' &&
-    Boolean(
-      (
-        window.ethereum as typeof window.ethereum &
-          (undefined | { isMEWwallet?: boolean })
-      )?.isMEWwallet
-    );
   return {
     id: 'mew',
     name: 'MEW wallet',
     iconUrl: async () => (await import('./mewWallet.svg')).default,
     iconBackground: '#fff',
-    installed: isMewWalletInjected,
+    installed: detectProviderFlag('isMEWwallet'),
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
