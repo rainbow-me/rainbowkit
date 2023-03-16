@@ -1,17 +1,17 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { SafeConnectorOptions } from 'wagmi/connectors/safe';
 import { SafeConnector } from 'wagmi/connectors/safe';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
 export interface SafeWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const safeWallet = ({
   chains,
-  shimDisconnect,
-}: SafeWalletOptions): Wallet => ({
+  ...options
+}: SafeWalletOptions & SafeConnectorOptions): Wallet => ({
   id: 'safe',
   name: 'Safe',
   iconAccent: '#12ff80',
@@ -28,6 +28,6 @@ export const safeWallet = ({
     // an explicit wallet choice for users coming from other browsers.
   },
   createConnector: () => ({
-    connector: new SafeConnector({ chains, options: { shimDisconnect } }),
+    connector: new SafeConnector({ chains, options }),
   }),
 });
