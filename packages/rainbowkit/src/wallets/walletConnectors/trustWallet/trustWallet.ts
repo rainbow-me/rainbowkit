@@ -3,6 +3,7 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import { detectProviderFlag } from '../../detectProviderFlag';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TrustWalletOptions {
@@ -25,9 +26,7 @@ export const trustWallet = ({
     qrCode: 'https://link.trustwallet.com',
   },
   createConnector: () => {
-    const inAppBrowser = Boolean(
-      typeof window !== 'undefined' && window.ethereum?.isTrust
-    );
+    const inAppBrowser = detectProviderFlag('isTrust');
 
     if (inAppBrowser) {
       return {
