@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -7,7 +8,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -23,8 +23,8 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 
 export const rainbowWallet = ({
   chains,
-  shimDisconnect,
-}: RainbowWalletOptions): Wallet => {
+  ...options
+}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -46,7 +46,7 @@ export const rainbowWallet = ({
         ? getWalletConnectConnector({ chains })
         : new InjectedConnector({
             chains,
-            options: { shimDisconnect },
+            options,
           });
 
       const getUri = async () => {
