@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.2
+
+### Patch Changes
+
+- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. RainbowKit wallet connectors now also accept all `InjectedConnectorOptions` options.
+- 429a3c7: Improvements to RainbowKit UX on iPad
+
 ## 0.12.1
 
 ### Patch Changes
