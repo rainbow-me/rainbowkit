@@ -1,5 +1,5 @@
 import { Connector } from 'wagmi';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { isHexString } from '../utils/colors';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
@@ -102,7 +102,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         ) {
           const { chains, options } = connector;
 
-          walletConnectModalConnector = new WalletConnectConnector({
+          walletConnectModalConnector = new WalletConnectLegacyConnector({
             chains,
             options: {
               ...options,
@@ -137,12 +137,10 @@ export const connectorsForWallets = (walletList: WalletList) => {
           // the old list. This is happening because we're
           // re-using the WalletConnectConnector instance
           // so the wallet list already exists after HMR.
-          // @ts-expect-error
           connector._wallets = [];
         }
 
         // Add wallet to connector's list of associated wallets
-        // @ts-expect-error
         connector._wallets.push(walletInstance);
       }
     );
