@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { LedgerConnector } from '@wagmi/connectors/ledger';
 import { Connector } from 'wagmi';
+import { LedgerConnector } from 'wagmi/connectors/ledger';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isChrome, isIOS, isMacOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
