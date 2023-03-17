@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { MetaMaskConnectorOptions } from '@wagmi/core/dist/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -7,7 +8,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -38,8 +38,8 @@ function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
 
 export const metaMaskWallet = ({
   chains,
-  shimDisconnect,
-}: MetaMaskWalletOptions): Wallet => {
+  ...options
+}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -66,7 +66,7 @@ export const metaMaskWallet = ({
         ? getWalletConnectConnector({ chains })
         : new MetaMaskConnector({
             chains,
-            options: { shimDisconnect },
+            options,
           });
 
       const getUri = async () => {
