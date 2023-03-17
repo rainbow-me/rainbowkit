@@ -11,7 +11,11 @@ export function isSmallIOS(): boolean {
 }
 
 export function isLargeIOS(): boolean {
-  return typeof navigator !== 'undefined' && /iPad/.test(navigator.userAgent);
+  return (
+    typeof navigator !== 'undefined' &&
+    (/iPad/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
+  );
 }
 
 export function isIOS(): boolean {
@@ -19,5 +23,5 @@ export function isIOS(): boolean {
 }
 
 export function isMobile(): boolean {
-  return isAndroid() || isSmallIOS();
+  return isAndroid() || isIOS();
 }
