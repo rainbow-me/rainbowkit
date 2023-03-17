@@ -100,8 +100,8 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      enkryptWallet({ chains }),
       argentWallet({ chains }),
+      enkryptWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       omniWallet({ chains }),
