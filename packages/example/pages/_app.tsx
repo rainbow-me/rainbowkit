@@ -17,6 +17,7 @@ import {
 import {
   argentWallet,
   bitskiWallet,
+  dawnWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
@@ -111,6 +112,7 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains }),
+      dawnWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       mewWallet({ chains }),
