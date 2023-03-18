@@ -33,6 +33,10 @@ function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
     return false;
   }
 
+  if (ethereum.isDawn) {
+    return false;
+  }
+
   return true;
 }
 
