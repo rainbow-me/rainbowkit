@@ -60,14 +60,14 @@ class EIP5749Connector extends InjectedConnector {
   }
 
   async getAccount() {
-    const provider = await this.getProvider();
+    const provider = await super.getProvider();
     if (!provider) throw new ConnectorNotFoundError();
     return provider
       .request({
         method: 'eth_accounts',
       })
-      .then(accounts => getAddress(accounts[0] as string))
-      .catch(err => err); //somewhere in import { createClient} from 'wagmi', it doesnt handle the eth_accounts error properly thats why it keeps popping up with connect window. This fixes it;
+      .then((accounts: string[]) => getAddress(accounts[0] as string))
+      .catch((err: unknown) => err); //somewhere in import { createClient} from 'wagmi', it doesnt handle the eth_accounts error properly thats why it keeps popping up with connect window. This fixes it;
   }
 }
 
