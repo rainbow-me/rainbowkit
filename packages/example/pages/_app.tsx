@@ -15,9 +15,9 @@ import {
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
-  enkryptWallet,
   argentWallet,
   bitskiWallet,
+  enkryptWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
