@@ -1,14 +1,17 @@
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 type SerializedOptions = string;
-const sharedConnectors = new Map<SerializedOptions, WalletConnectConnector>();
+const sharedConnectors = new Map<
+  SerializedOptions,
+  WalletConnectLegacyConnector
+>();
 
 type WalletConnectConnectorOptions = ConstructorParameters<
-  typeof WalletConnectConnector
+  typeof WalletConnectLegacyConnector
 >[0];
 
 function createConnector(options: WalletConnectConnectorOptions) {
-  const connector = new WalletConnectConnector(options);
+  const connector = new WalletConnectLegacyConnector(options);
   sharedConnectors.set(JSON.stringify(options), connector);
   return connector;
 }

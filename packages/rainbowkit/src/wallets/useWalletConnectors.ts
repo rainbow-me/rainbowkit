@@ -46,7 +46,6 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const walletInstances = flatten(
     defaultConnectors.map(connector => {
-      // @ts-expect-error
       return (connector._wallets as WalletInstance[]) ?? [];
     })
   ).sort((a, b) => a.index - b.index);
@@ -83,7 +82,7 @@ export function useWalletConnectors(): WalletConnector[] {
       connect: () => connectWallet(wallet.id, wallet.connector),
       groupName: wallet.groupName,
       onConnecting: (fn: () => void) =>
-        wallet.connector.on('message', ({ type }) =>
+        wallet.connector.on('message', ({ type }: { type: string }) =>
           type === 'connecting' ? fn() : undefined
         ),
       ready: (wallet.installed ?? true) && wallet.connector.ready,
