@@ -1,17 +1,17 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
 export interface InjectedWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const injectedWallet = ({
   chains,
-  shimDisconnect,
-}: InjectedWalletOptions): Wallet => ({
+  ...options
+}: InjectedWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'injected',
   name: 'Injected Wallet',
   iconUrl: async () => (await import('./injectedWallet.png')).default,
@@ -26,7 +26,7 @@ export const injectedWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options: { shimDisconnect },
+      options,
     }),
   }),
 });

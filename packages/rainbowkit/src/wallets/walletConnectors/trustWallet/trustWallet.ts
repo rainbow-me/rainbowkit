@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -7,13 +8,12 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TrustWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const trustWallet = ({
   chains,
-  shimDisconnect,
-}: TrustWalletOptions): Wallet => ({
+  ...options
+}: TrustWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'trust',
   name: 'Trust Wallet',
   iconUrl: async () => (await import('./trustWallet.svg')).default,
@@ -33,7 +33,7 @@ export const trustWallet = ({
       return {
         connector: new InjectedConnector({
           chains,
-          options: { shimDisconnect },
+          options,
         }),
       };
     }
