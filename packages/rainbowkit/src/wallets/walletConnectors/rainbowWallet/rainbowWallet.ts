@@ -5,6 +5,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { listenForUri } from '../../listenForUri';
 
 export interface RainbowWalletOptions {
   chains: Chain[];
@@ -50,7 +51,7 @@ export const rainbowWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const uri = await listenForUri(connector)();
 
         return isAndroid()
           ? uri
