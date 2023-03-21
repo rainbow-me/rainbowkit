@@ -14,7 +14,7 @@ export const bitskiWallet = ({
 }: BitskiWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
-  installed:
+  installed: () =>
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
     ((window.ethereum as any).isBitski === true ||
