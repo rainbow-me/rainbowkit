@@ -1,5 +1,82 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.2
+
+### Patch Changes
+
+- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. RainbowKit wallet connectors now also accept all `InjectedConnectorOptions` options.
+- 429a3c7: Improvements to RainbowKit UX on iPad
+
+## 0.12.1
+
+### Patch Changes
+
+- 8f01a12: Bitski Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ chains }),
+        trustWallet({ chains }),
+        bitskiWallet({ chains }),
+        ledgerWallet({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+- 3399df5: MEW Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ chains }),
+        trustWallet({ chains }),
+        mewWallet({ chains }),
+        ledgerWallet({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+## 0.12.0
+
+### Minor Changes
+
+- 9838acf: The wagmi peer dependency has been updated to `0.12.x`.
+
+  RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
+
+  Wallets will be transitioned automatically in future releases.
+
+  Follow the steps below to migrate.
+
+  #### 1. Upgrade RainbowKit and `wagmi` to their latest version
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+  ```
+
 ## 0.11.1
 
 ### Patch Changes
