@@ -17,11 +17,12 @@ export const injectedWallet = ({
   iconUrl: async () => (await import('./injectedWallet.png')).default,
   iconBackground: '#fff',
   hidden: ({ wallets }) =>
-    wallets.some(
-      wallet =>
-        wallet.installed &&
-        (wallet.connector instanceof InjectedConnector ||
-          wallet.id === 'coinbase')
+    wallets.some(wallet =>
+      typeof wallet.installed === 'function'
+        ? wallet.installed?.()
+        : wallet.installed &&
+          (wallet.connector instanceof InjectedConnector ||
+            wallet.id === 'coinbase')
     ),
   createConnector: () => ({
     connector: new InjectedConnector({

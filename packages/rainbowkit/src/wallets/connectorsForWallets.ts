@@ -117,6 +117,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
           connector,
           groupIndex,
           groupName,
+          hidden,
           index,
           walletConnectModalConnector,
           ...walletMeta,

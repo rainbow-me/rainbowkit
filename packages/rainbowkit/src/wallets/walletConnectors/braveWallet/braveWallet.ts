@@ -16,7 +16,7 @@ export const braveWallet = ({
   name: 'Brave Wallet',
   iconUrl: async () => (await import('./braveWallet.svg')).default,
   iconBackground: '#fff',
-  installed:
+  installed: () =>
     typeof window !== 'undefined' && window.ethereum?.isBraveWallet === true,
   downloadUrls: {
     // We're opting not to provide a download prompt if Brave isn't the current
