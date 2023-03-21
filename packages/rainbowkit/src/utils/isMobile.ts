@@ -25,14 +25,3 @@ export function isIOS(): boolean {
 export function isMobile(): boolean {
   return isAndroid() || isIOS();
 }
-
-export function isMacOS(): boolean {
-  return (
-    typeof navigator !== 'undefined' &&
-    /Macintosh; Intel Mac OS X/.test(navigator.userAgent)
-  );
-}
-
-export function isChrome(): boolean {
-  return typeof navigator !== 'undefined' && /Chrome/.test(navigator.userAgent);
-}

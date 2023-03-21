@@ -3,7 +3,8 @@ import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isSafari } from '../../../utils/browsers';
-import { isAndroid, isIOS, isMacOS } from '../../../utils/isMobile';
+import { isAndroid, isIOS } from '../../../utils/isMobile';
+import { isMacOS } from '../../../utils/platforms';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
