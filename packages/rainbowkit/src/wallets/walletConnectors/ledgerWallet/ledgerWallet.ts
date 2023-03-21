@@ -1,107 +1,116 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import { Connector } from 'wagmi';
-import { LedgerConnector } from 'wagmi/connectors/ledger';
+import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isChrome, isIOS, isMacOS } from '../../../utils/isMobile';
+import { isSafari } from '../../../utils/browsers';
+import { isAndroid, isIOS, isMacOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface LedgerWalletOptions {
   projectId?: string;
   chains: Chain[];
-  enableDebugLogs?: boolean;
-  chainId?: number;
-  bridge?: string;
-  infuraId?: string;
-  rpc?: { [chainId: number]: string };
 }
 
 export const ledgerWallet = ({
-  bridge,
-  chainId,
   chains,
-  enableDebugLogs,
-  projectId,
-  rpc,
-}: LedgerWalletOptions): Wallet => {
-  // TODO check Connect support using hardcoded logic, will be out of sync with
-  // Connect Kit when it is updated, until DApps update to an updated version of
-  // RainbowKit
-  const isLedgerConnectEnabled =
-    typeof window !== 'undefined' && window.ethereum?.isLedgerConnect === true;
-  const ios = isIOS();
-  const macOS = isMacOS();
-  const isLedgerConnectSupported = (ios || macOS) && !isChrome();
-
+  ...options
+}: LedgerWalletOptions & InjectedConnectorOptions): Wallet => {
+  const isLedgerExtensionCompatible = (isIOS() || isMacOS()) && isSafari();
   return {
     id: 'ledger',
+    iconBackground: '#000',
     name: 'Ledger',
     iconUrl: async () => (await import('./ledgerWallet.svg')).default,
-    iconAccent: '#fff',
-    iconBackground: '#000',
-    installed: isLedgerConnectEnabled || undefined,
-    downloadUrls: {
-      browserExtension: isLedgerConnectSupported
-        ? 'https://get-connect-ledger-com.netlify.app'
-        : 'https://www.ledger.com/ledger-live/download',
-      android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
-      ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
-      qrCode: 'https://www.ledger.com/ledger-live/download',
-    },
-    createConnector: () => {
-      const connector = new LedgerConnector({
-        chains,
-        options: {
-          enableDebugLogs,
-          isHeadless: true,
-          chainId,
-          bridge,
-          rpc,
+    downloadUrls: isLedgerExtensionCompatible
+      ? {
+          browserExtension: 'https://ledger.com/ledger-extension',
+          ios: 'https://apps.apple.com/app/ledger-extension-browse-web3/id1627727841',
+          qrCode: 'https://ledger.com/ledger-extension',
+        }
+      : {
+          android:
+            'https://play.google.com/store/apps/details?id=com.ledger.live',
+          ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
+          qrCode: 'https://ledger.com/ledger-live',
         },
-      }) as unknown as Connector<any, any, any>;
-
-      const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
-        const ledgerLiveUri = `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
-
-        return ledgerLiveUri;
-      };
+    installed: () =>
+      typeof window !== 'undefined' && window.ethereum?.isLedgerConnect,
+    createConnector: () => {
+      const connector = isLedgerExtensionCompatible
+        ? new InjectedConnector({
+            chains,
+            options,
+          })
+        : getWalletConnectConnector({ chains });
 
       return {
         connector,
-        desktop: isLedgerConnectSupported
-          ? undefined
-          : {
-              getUri,
-            },
-        qrCode: isLedgerConnectSupported
-          ? undefined
-          : {
-              getUri,
-              instructions: {
-                learnMoreUrl:
-                  'https://www.coinbase.com/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet',
-                steps: [
-                  {
-                    description:
-                      'We recommend putting Ledger Live on your home screen for quicker access.',
-                    step: 'install',
-                    title: 'Open the Ledger Live app',
-                  },
-                  {
-                    description:
-                      'You can easily backup your wallet using the cloud backup feature.',
-                    step: 'create',
-                    title: 'Create or Import a Wallet',
-                  },
-                  {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
-                    step: 'scan',
-                    title: 'Tap the scan button',
-                  },
-                ],
+        mobile: {
+          getUri: async () => {
+            const { uri } = (await connector.getProvider()).connector;
+            return isAndroid()
+              ? uri
+              : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+          },
+        },
+        desktop: {
+          getUri: async () => {
+            const { uri } = (await connector.getProvider()).connector;
+            return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+          },
+        },
+        qrCode: {
+          getUri: async () => (await connector.getProvider()).connector.uri,
+          instructions: {
+            learnMoreUrl: 'https://ledger.com/ledger-live',
+            steps: [
+              {
+                description:
+                  'We recommend putting Ledger Live on your home screen for quicker access.',
+                step: 'install',
+                title: 'Open the Ledger Live app',
               },
-            },
+              {
+                description:
+                  'You can easily backup your wallet using the cloud backup feature.',
+                step: 'create',
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description:
+                  'After you scan, a connection prompt will appear for you to connect your wallet.',
+                step: 'scan',
+                title: 'Tap the scan button',
+              },
+            ],
+          },
+        },
+        extension: {
+          instructions: {
+            learnMoreUrl: 'https://get-connect.ledger.com/onboarding',
+            steps: [
+              {
+                description:
+                  'Select Safari from the menu bar and then Preferences, or Settings. Select Extensions. Check the box next to Ledger Extension.',
+                step: 'install',
+                title: 'Activate the Ledger Extension',
+              },
+              {
+                description:
+                  'Click on the Ledger logo located on the left of the URL bar. Select "Always Allow on Every Website". The Ledger logo should turn blue.',
+                step: 'create',
+                title: 'Allow Safari Permissions',
+              },
+              {
+                description:
+                  'Make sure vour device is unlocked with the Ethereum app installed and opened. Click below to refresh the browser and load up the extension.',
+                step: 'refresh',
+                title: 'Connect your Ledger & Refresh',
+              },
+            ],
+          },
+        },
       };
     },
   };
