@@ -20,6 +20,7 @@ export const injectedWallet = ({
     wallets.some(
       wallet =>
         wallet.installed &&
+        wallet.name === wallet.connector.name &&
         (wallet.connector instanceof InjectedConnector ||
           wallet.id === 'coinbase')
     ),

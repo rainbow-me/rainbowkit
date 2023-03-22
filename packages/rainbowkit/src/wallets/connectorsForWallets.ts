@@ -76,10 +76,11 @@ export const connectorsForWallets = (walletList: WalletList) => {
             wallets: [
               // Note: We only expose a subset of fields
               // publicly to reduce API surface area
-              ...walletInstances.map(({ connector, id, installed }) => ({
+              ...walletInstances.map(({ connector, id, installed, name }) => ({
                 connector,
                 id,
                 installed,
+                name,
               })),
             ],
           });
