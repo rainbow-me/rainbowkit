@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.3
+
+### Patch Changes
+
+- e7f1bec: `injectedWallet` now has a friendlier name and icon
+- fe4f356: RainbowKit dApps that use `getDefaultWallets` or `injectedWallet` will now more eagerly display the fallback `injectedWallet` connector to better support dApp Browsers when a branded connector is unavailable.
+
 ## 0.12.2
 
 ### Patch Changes
