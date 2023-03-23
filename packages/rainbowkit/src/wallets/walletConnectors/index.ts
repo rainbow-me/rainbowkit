@@ -11,6 +11,7 @@ import { omniWallet } from './omniWallet/omniWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
+import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
   argentWallet,
@@ -26,4 +27,5 @@ export {
   rainbowWallet,
   trustWallet,
   walletConnectWallet,
+  zerionWallet,
 };

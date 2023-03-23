@@ -22,6 +22,7 @@ import {
   mewWallet,
   omniWallet,
   trustWallet,
+  zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -117,6 +118,7 @@ const connectors = connectorsForWallets([
       omniWallet({ chains }),
       trustWallet({ chains }),
       bitskiWallet({ chains }),
+      zerionWallet({ chains }),
     ],
   },
 ]);
