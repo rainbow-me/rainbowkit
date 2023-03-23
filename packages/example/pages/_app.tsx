@@ -548,6 +548,7 @@ export default function App(appProps: AppProps) {
     <>
       <Head>
         <title>RainbowKit Example</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
         <WagmiConfig client={wagmiClient}>

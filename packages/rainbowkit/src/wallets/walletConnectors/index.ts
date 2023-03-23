@@ -9,6 +9,7 @@ import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { safeWallet } from './safeWallet/safeWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 
@@ -24,6 +25,7 @@ export {
   mewWallet,
   omniWallet,
   rainbowWallet,
+  safeWallet,
   trustWallet,
   walletConnectWallet,
 };
