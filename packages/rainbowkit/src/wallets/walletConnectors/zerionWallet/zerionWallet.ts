@@ -8,7 +8,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ZerionWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const zerionWallet = ({
