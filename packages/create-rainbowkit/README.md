@@ -5,9 +5,9 @@ Scaffold a new RainbowKit project.
 ```bash
 npm init @rainbow-me/rainbowkit@latest
 # or
-yarn create @rainbow-me/rainbowkit@latest
-# or
 pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
 ```
 
 ## License

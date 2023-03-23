@@ -16,8 +16,10 @@ import {
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
+  bitskiWallet,
   imTokenWallet,
   ledgerWallet,
+  mewWallet,
   omniWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -35,6 +37,8 @@ import {
 import {
   arbitrum,
   avalanche,
+  baseGoerli,
+  bsc,
   goerli,
   mainnet,
   optimism,
@@ -52,8 +56,11 @@ const { chains, provider, webSocketProvider } = configureChains(
     polygon,
     optimism,
     arbitrum,
+    bsc,
     avalanche,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [goerli, baseGoerli]
+      : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
@@ -106,8 +113,10 @@ const connectors = connectorsForWallets([
       argentWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
+      mewWallet({ chains }),
       omniWallet({ chains }),
       trustWallet({ chains }),
+      bitskiWallet({ chains }),
     ],
   },
 ]);

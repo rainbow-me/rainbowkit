@@ -8,6 +8,9 @@ type ChainName =
   | 'arbitrumRinkeby'
   | 'avalanche'
   | 'avalancheFuji'
+  | 'baseGoerli'
+  | 'bsc'
+  | 'bscTestnet'
   | 'goerli'
   | 'hardhat'
   | 'kovan'
@@ -41,6 +44,16 @@ const avalancheIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/avalanche.svg')).default,
 };
 
+const baseIcon: IconMetadata = {
+  iconBackground: '#0052ff',
+  iconUrl: async () => (await import('./chainIcons/base.svg')).default,
+};
+
+const bscIcon: IconMetadata = {
+  iconBackground: '#ebac0e',
+  iconUrl: async () => (await import('./chainIcons/bsc.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -66,6 +79,9 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
+  baseGoerli: { chainId: 84531, ...baseIcon },
+  bsc: { chainId: 56, ...bscIcon },
+  bscTestnet: { chainId: 97, ...bscIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   kovan: { chainId: 42, ...ethereumIcon },

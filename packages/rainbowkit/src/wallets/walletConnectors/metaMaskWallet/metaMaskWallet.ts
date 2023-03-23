@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { MetaMaskConnectorOptions } from '@wagmi/core/dist/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -7,39 +8,30 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
-function isMetaMask(ethereum: NonNullable<typeof window['ethereum']>) {
+function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
-  // https://github.com/tmm/wagmi/blob/main/packages/core/src/connectors/metaMask.ts
-  const isMetaMask = Boolean(ethereum.isMetaMask);
-
-  if (!isMetaMask) {
-    return false;
-  }
-
+  // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
+  const isMetaMask = !!ethereum?.isMetaMask;
+  if (!isMetaMask) return false;
   // Brave tries to make itself look like MetaMask
   // Could also try RPC `web3_clientVersion` if following is unreliable
-  if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state) {
+  if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state)
     return false;
-  }
-
-  if (ethereum.isTokenPocket) {
-    return false;
-  }
-
-  if (ethereum.isTokenary) {
-    return false;
-  }
-
+  if (ethereum.isApexWallet) return false;
+  if (ethereum.isAvalanche) return false;
+  if (ethereum.isKuCoinWallet) return false;
+  if (ethereum.isPortal) return false;
+  if (ethereum.isTokenPocket) return false;
+  if (ethereum.isTokenary) return false;
   return true;
 }
 
 export const metaMaskWallet = ({
   chains,
-  shimDisconnect,
-}: MetaMaskWalletOptions): Wallet => {
+  ...options
+}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -66,7 +58,7 @@ export const metaMaskWallet = ({
         ? getWalletConnectConnector({ chains })
         : new MetaMaskConnector({
             chains,
-            options: { shimDisconnect },
+            options,
           });
 
       const getUri = async () => {
