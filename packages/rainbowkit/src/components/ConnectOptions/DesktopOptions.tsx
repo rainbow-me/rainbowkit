@@ -15,6 +15,7 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { ConnectorContext } from '../RainbowKitProvider/ConnectorContext';
 import {
   ModalSizeContext,
   ModalSizeOptions,
@@ -183,6 +184,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
+  const [connector] = useContext(ConnectorContext);
+
+  useEffect(() => {
+    if (connector) selectWallet(connector);
+  }, []);
+
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
@@ -233,7 +240,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             ? 'your phone'
             : selectedWallet.name
         }`;
-      headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
+      headerBackButtonLink =
+        compactModeEnabled && !connector ? WalletStep.None : null;
       headerBackButtonCallback = compactModeEnabled
         ? clearSelectedWallet
         : () => {};
