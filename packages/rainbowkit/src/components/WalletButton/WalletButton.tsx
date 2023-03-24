@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useWalletConnectors } from '../../wallets/useWalletConnectors';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ConnectorContext } from '../RainbowKitProvider/ConnectorContext';
+import * as styles from './WalletButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
 export interface WalletButtonProps {
@@ -15,53 +17,86 @@ const defaultProps = {
 } as const;
 
 export function WalletButton({ wallet: walletId }: WalletButtonProps) {
+  const [isMouseOver, setIsMouseOver] = useState<Boolean>(false);
   const connectionStatus = useConnectionStatus();
+  const [, setConnector] = useContext(ConnectorContext);
 
-  const [walletConnector] = useWalletConnectors().filter(
+  const [wallet] = useWalletConnectors().filter(
     wallet => wallet.id === walletId
   );
-
-  const [, setConnector] = useContext(ConnectorContext);
 
   return (
     <WalletButtonRenderer>
       {({ mounted, openConnectModal }) => {
         const ready = mounted && connectionStatus !== 'loading';
-
         return (
           <Box
             display="flex"
-            gap="12"
-            {...(!ready && {
-              'aria-hidden': true,
-              'style': {
-                opacity: 0,
-                pointerEvents: 'none',
-                userSelect: 'none',
-              },
-            })}
+            flexDirection="column"
+            onMouseEnter={() => setIsMouseOver(true)}
+            onMouseLeave={() => setIsMouseOver(false)}
           >
             <Box
               as="button"
-              background="accentColor"
-              borderRadius="connectButton"
-              boxShadow="connectButton"
-              className={touchableStyles({ active: 'shrink', hover: 'grow' })}
-              color="accentColorForeground"
-              fontFamily="body"
-              fontWeight="bold"
-              height="40"
-              key="connect"
+              borderRadius="menuButton"
+              borderStyle="solid"
+              borderWidth="1"
+              className={[
+                styles.border,
+                touchableStyles({
+                  active: 'shrink',
+                }),
+              ]}
               onClick={() => {
-                setConnector?.(walletConnector);
+                setConnector?.(wallet);
                 openConnectModal();
               }}
-              paddingX="14"
-              testId="connect-button"
+              padding="6"
+              style={{ willChange: 'transform' }}
+              testId={`wallet-button-${wallet.id}`}
               transition="default"
-              type="button"
+              width="full"
+              {...{
+                background: { hover: 'menuItemBackground' },
+              }}
             >
-              {walletConnector?.name || 'Connect'}
+              <Box
+                color="modalText"
+                disabled={!ready}
+                fontFamily="body"
+                fontSize="16"
+                fontWeight="bold"
+                transition="default"
+              >
+                <Box
+                  alignItems="center"
+                  display="flex"
+                  flexDirection="row"
+                  gap="12"
+                  paddingRight="6"
+                >
+                  <Box>
+                    <AsyncImage
+                      background={wallet.iconBackground}
+                      {...(isMouseOver
+                        ? {}
+                        : { borderColor: 'actionButtonBorder' })}
+                      borderRadius="6"
+                      height="28"
+                      src={wallet.iconUrl}
+                      width="28"
+                    />
+                  </Box>
+                  <Box
+                    alignItems="center"
+                    display="flex"
+                    flexDirection="column"
+                    width="full"
+                  >
+                    <Box>{wallet.name}</Box>
+                  </Box>
+                </Box>
+              </Box>
             </Box>
           </Box>
         );

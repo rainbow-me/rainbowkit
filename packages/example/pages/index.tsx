@@ -274,6 +274,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              width: 200,
             }}
           >
             <WalletButton wallet="metaMask" />
