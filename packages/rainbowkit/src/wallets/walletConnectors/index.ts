@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -15,6 +16,7 @@ import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 
 export {
   argentWallet,
+  bifrostWallet,
   bitskiWallet,
   braveWallet,
   coinbaseWallet,
