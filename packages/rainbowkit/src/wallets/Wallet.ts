@@ -51,6 +51,7 @@ export type Wallet<C extends Connector = Connector> = {
       id: string;
       connector: Connector;
       installed?: boolean;
+      name: string;
     }[];
   }) => boolean;
   createConnector: () => RainbowKitConnector<C>;

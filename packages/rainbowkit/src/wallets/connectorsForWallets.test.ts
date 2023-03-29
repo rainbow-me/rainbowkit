@@ -52,7 +52,7 @@ describe('connectorsForWallets', () => {
 
       expect(getWalletInstances(connectors[1]).length).toBe(1);
       expect(getWalletInstances(connectors[1])[0].index).toBe(1);
-      expect(getWalletInstances(connectors[1])[0].name).toBe('Injected Wallet');
+      expect(getWalletInstances(connectors[1])[0].name).toBe('Browser Wallet');
     });
 
     it('includes injected fallback if no wallets using InjectedConnector are installed', () => {
@@ -104,7 +104,7 @@ describe('connectorsForWallets', () => {
 
       expect(getWalletInstances(connectors[2]).length).toBe(1);
       expect(getWalletInstances(connectors[2])[0].index).toBe(2);
-      expect(getWalletInstances(connectors[2])[0].name).toBe('Injected Wallet');
+      expect(getWalletInstances(connectors[2])[0].name).toBe('Browser Wallet');
     });
 
     it('includes injected fallback in the same order it was defined if no wallets using InjectedConnector are installed', () => {
@@ -167,7 +167,7 @@ describe('connectorsForWallets', () => {
 
       expect(getWalletInstances(connectors[2]).length).toBe(1);
       expect(getWalletInstances(connectors[2])[0].index).toBe(0); // Note this is now first in the list
-      expect(getWalletInstances(connectors[2])[0].name).toBe('Injected Wallet');
+      expect(getWalletInstances(connectors[2])[0].name).toBe('Browser Wallet');
       expect(getWalletInstances(connectors[2])[0].groupName).toBe(
         'Test Group 1'
       );
@@ -181,7 +181,9 @@ describe('connectorsForWallets', () => {
           wallets: [
             {
               createConnector: () => ({
-                connector: new InjectedConnector(),
+                connector: new InjectedConnector({
+                  options: { chains, name: 'Test Wallet Installed' },
+                }),
               }),
               iconBackground: '#fff',
               iconUrl: '/test.png',

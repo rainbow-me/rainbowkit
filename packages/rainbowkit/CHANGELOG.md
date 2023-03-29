@@ -1,5 +1,25 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.4
+
+### Patch Changes
+
+- 9b93f56: Added `safeWallet` connector to support Safe Apps. dApps that rely on `getDefaultWallets` will adopt this behavior automatically. dApps that rely on the Custom Wallet List should add `safeWallet` alongside `injectedWallet`.
+
+## 0.12.3
+
+### Patch Changes
+
+- e7f1bec: `injectedWallet` now has a friendlier name and icon
+- fe4f356: RainbowKit dApps that use `getDefaultWallets` or `injectedWallet` will now more eagerly display the fallback `injectedWallet` connector to better support dApp Browsers when a branded connector is unavailable.
+
+## 0.12.2
+
+### Patch Changes
+
+- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. RainbowKit wallet connectors now also accept all `InjectedConnectorOptions` options.
+- 429a3c7: Improvements to RainbowKit UX on iPad
+
 ## 0.12.1
 
 ### Patch Changes
