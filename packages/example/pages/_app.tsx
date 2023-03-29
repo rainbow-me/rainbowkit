@@ -16,8 +16,10 @@ import {
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
+  bitskiWallet,
   imTokenWallet,
   ledgerWallet,
+  mewWallet,
   omniWallet,
   ripioPortalWallet,
   trustWallet,
@@ -36,6 +38,8 @@ import {
 import {
   arbitrum,
   avalanche,
+  baseGoerli,
+  bsc,
   goerli,
   mainnet,
   optimism,
@@ -53,8 +57,11 @@ const { chains, provider, webSocketProvider } = configureChains(
     polygon,
     optimism,
     arbitrum,
+    bsc,
     avalanche,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [goerli, baseGoerli]
+      : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
@@ -108,8 +115,10 @@ const connectors = connectorsForWallets([
       argentWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
+      mewWallet({ chains }),
       omniWallet({ chains }),
       trustWallet({ chains }),
+      bitskiWallet({ chains }),
     ],
   },
 ]);
@@ -541,6 +550,7 @@ export default function App(appProps: AppProps) {
     <>
       <Head>
         <title>RainbowKit Example</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
         <WagmiConfig client={wagmiClient}>
