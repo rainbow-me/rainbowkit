@@ -145,6 +145,16 @@ coinbaseWallet(options: {
 });
 ```
 
+#### Dawn Wallet
+
+```tsx
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+
+dawnWallet((options: {
+  chains: Chain[];
+});
+```
+
 #### Ledger Live
 
 ```tsx
@@ -195,11 +205,12 @@ rainbowWallet(options: {
 });
 ```
 
-#### Dawn Wallet
+#### Safe (Gnosis Safe)
 
 ```tsx
-import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
-dawnWallet(options: {
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeWallet(options: {
   chains: Chain[];
 });
 ```

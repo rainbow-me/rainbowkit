@@ -5,7 +5,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrum'
-  | 'arbitrumRinkeby'
+  | 'arbitrumGoerli'
   | 'avalanche'
   | 'avalancheFuji'
   | 'baseGoerli'
@@ -76,7 +76,7 @@ const polygonIcon: IconMetadata = {
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, ...arbitrumIcon },
-  arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
+  arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
