@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface DawnWalletOptions {
@@ -20,6 +21,7 @@ export const dawnWallet = ({
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
     window.ethereum.isDawn,
+  hidden: () => !isIOS(),
   downloadUrls: {
     ios: 'https://testflight.apple.com/join/UHmOJnNy',
   },
