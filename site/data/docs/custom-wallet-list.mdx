@@ -156,6 +156,16 @@ ledgerWallet(options: {
 });
 ```
 
+#### imToken
+
+```tsx
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+
+imTokenWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### MetaMask
 
 ```tsx
@@ -171,6 +181,16 @@ metaMaskWallet(options: {
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 mewWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### OKX Wallet
+
+```tsx
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+okxWallet(options: {
   chains: Chain[];
 });
 ```
@@ -211,16 +231,6 @@ safeWallet(options: {
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### imToken
-
-```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
-
-imTokenWallet(options: {
   chains: Chain[];
 });
 ```
