@@ -57,7 +57,7 @@ export const zerionWallet = ({
 
         return isAndroid()
           ? uri
-          : `https:/wallet.zerion.io/wc?uri=${encodeURIComponent(uri)}`;
+          : `https://wallet.zerion.io/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {
