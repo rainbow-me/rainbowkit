@@ -17,10 +17,13 @@ import {
 import {
   argentWallet,
   bitskiWallet,
+  dawnWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
+  tahoWallet,
   trustWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -112,12 +115,15 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains }),
+      bitskiWallet({ chains }),
+      dawnWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       mewWallet({ chains }),
+      okxWallet({ chains }),
       omniWallet({ chains }),
+      tahoWallet({ chains }),
       trustWallet({ chains }),
-      bitskiWallet({ chains }),
       zerionWallet({ chains }),
     ],
   },
@@ -550,6 +556,7 @@ export default function App(appProps: AppProps) {
     <>
       <Head>
         <title>RainbowKit Example</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
         <WagmiConfig client={wagmiClient}>
