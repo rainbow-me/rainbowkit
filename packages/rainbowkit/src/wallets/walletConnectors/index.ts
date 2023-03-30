@@ -11,6 +11,7 @@ import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
+import { tahoWallet } from './tahoWallet/tahoWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 
@@ -27,6 +28,7 @@ export {
   omniWallet,
   rainbowWallet,
   safeWallet,
+  tahoWallet,
   trustWallet,
   okxWallet,
   walletConnectWallet,

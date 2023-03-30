@@ -22,6 +22,7 @@ import {
   mewWallet,
   okxWallet,
   omniWallet,
+  tahoWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -118,6 +119,7 @@ const connectors = connectorsForWallets([
       mewWallet({ chains }),
       okxWallet({ chains }),
       omniWallet({ chains }),
+      tahoWallet({ chains }),
       trustWallet({ chains }),
     ],
   },
