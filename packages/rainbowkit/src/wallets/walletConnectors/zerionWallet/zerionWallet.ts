@@ -16,8 +16,9 @@ export const zerionWallet = ({
 }: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
   const isZerionInjected =
     typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isZerion;
+    ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
+      // @ts-expect-error
+      typeof window.zerionWallet !== 'undefined');
 
   const shouldUseWalletConnect = !isZerionInjected;
 
@@ -41,7 +42,14 @@ export const zerionWallet = ({
         ? getWalletConnectConnector({ chains })
         : new InjectedConnector({
             chains,
-            options,
+            options: {
+              getProvider: () =>
+                typeof window !== 'undefined'
+                  ? // @ts-expect-error
+                    window.zerionWallet || window.ethereum
+                  : undefined,
+              ...options,
+            },
           });
 
       const getUri = async () => {
