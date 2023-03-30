@@ -1,5 +1,89 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.5
+
+### Patch Changes
+
+- 2b4ede4: Zerion Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [zerionWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 6a01368: Taho Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [tahoWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 936b523: OKX Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [okxWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7f669bd: Dawn Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [dawnWallet({ chains })],
+    },
+  ]);
+  ```
+
 ## 0.12.4
 
 ### Patch Changes
