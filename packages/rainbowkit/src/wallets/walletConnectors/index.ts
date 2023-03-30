@@ -2,6 +2,7 @@ import { argentWallet } from './argentWallet/argentWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
+import { dawnWallet } from './dawnWallet/dawnWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -20,6 +21,7 @@ export {
   bitskiWallet,
   braveWallet,
   coinbaseWallet,
+  dawnWallet,
   imTokenWallet,
   injectedWallet,
   ledgerWallet,
