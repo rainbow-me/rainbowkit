@@ -21,7 +21,9 @@ import {
   imTokenWallet,
   ledgerWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
+  tahoWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -112,13 +114,15 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains }),
+      bitskiWallet({ chains }),
       dawnWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       mewWallet({ chains }),
+      okxWallet({ chains }),
       omniWallet({ chains }),
+      tahoWallet({ chains }),
       trustWallet({ chains }),
-      bitskiWallet({ chains }),
     ],
   },
 ]);
