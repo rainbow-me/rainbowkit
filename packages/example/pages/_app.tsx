@@ -17,12 +17,16 @@ import {
 import {
   argentWallet,
   bitskiWallet,
+  dawnWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
   ripioPortalWallet,
+  tahoWallet,
   trustWallet,
+  zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -111,14 +115,18 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      ripioPortalWallet({ chains }),
       argentWallet({ chains }),
+      bitskiWallet({ chains }),
+      dawnWallet({ chains }),
       imTokenWallet({ chains }),
       ledgerWallet({ chains }),
       mewWallet({ chains }),
+      okxWallet({ chains }),
       omniWallet({ chains }),
+      ripioPortalWallet({ chains }),
+      tahoWallet({ chains }),
       trustWallet({ chains }),
-      bitskiWallet({ chains }),
+      zerionWallet({ chains }),
     ],
   },
 ]);

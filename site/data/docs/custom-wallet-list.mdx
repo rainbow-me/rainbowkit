@@ -145,6 +145,16 @@ coinbaseWallet(options: {
 });
 ```
 
+#### Dawn Wallet
+
+```tsx
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+
+dawnWallet((options: {
+  chains: Chain[];
+});
+```
+
 #### Ledger Live
 
 ```tsx
@@ -153,6 +163,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ledgerWallet(options: {
   chains: Chain[];
   infuraId?: string;
+});
+```
+
+#### imToken
+
+```tsx
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+
+imTokenWallet(options: {
+  chains: Chain[];
 });
 ```
 
@@ -171,6 +191,16 @@ metaMaskWallet(options: {
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 mewWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### OKX Wallet
+
+```tsx
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+okxWallet(options: {
   chains: Chain[];
 });
 ```
@@ -206,6 +236,26 @@ rainbowWallet(options: {
 });
 ```
 
+#### Safe (Gnosis Safe)
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Taho
+
+```tsx
+import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tahoWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Trust Wallet
 
 ```tsx
@@ -216,12 +266,12 @@ trustWallet(options: {
 });
 ```
 
-#### imToken
+#### Zerion
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
-imTokenWallet(options: {
+zerionWallet(options: {
   chains: Chain[];
 });
 ```
