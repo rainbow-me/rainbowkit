@@ -37,9 +37,11 @@ export const rainbowWallet = ({
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
     downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=me.rainbow',
-      ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
-      qrCode: 'https://rainbow.download',
+      android:
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit',
+      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
+      qrCode:
+        'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
