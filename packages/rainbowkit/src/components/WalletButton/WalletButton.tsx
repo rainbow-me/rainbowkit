@@ -106,6 +106,3 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
 }
 
 WalletButton.defaultProps = defaultProps;
-WalletButton.Rainbow = () => WalletButton({ wallet: 'rainbow' });
-
-export const RainbowButton = WalletButton.Rainbow;

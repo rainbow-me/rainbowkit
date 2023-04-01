@@ -1,11 +1,10 @@
+import { RainbowButton } from '@rainbow-me/button';
 import {
   ConnectButton,
-  RainbowButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
   useConnectModal,
-  WalletButton,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
 import { unstable_getServerSession } from 'next-auth';
@@ -269,15 +268,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
             }}
           >
             <RainbowButton />
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: 200,
-            }}
-          >
-            <WalletButton wallet="metaMask" />
           </div>
         </div>
       </div>
