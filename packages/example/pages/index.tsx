@@ -253,7 +253,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
       </div>
 
       <div>
-        <h3 style={{ fontFamily: 'sans-serif' }}>Wallet buttons</h3>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Rainbow button</h3>
         <div
           style={{
             display: 'flex',
