@@ -67,7 +67,7 @@ export const rainbowWallet = ({
               getUri,
               instructions: {
                 learnMoreUrl:
-                  'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
+                  'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
                 steps: [
                   {
                     description:
