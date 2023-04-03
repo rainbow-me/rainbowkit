@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.6
+
+### Patch Changes
+
+- d35809e: Amended `rainbowWallet` connector extension support and URLs
+
+  Improved UI flow for wallet connectors that don't specify `extension.instructions`
+
 ## 0.12.5
 
 ### Patch Changes
