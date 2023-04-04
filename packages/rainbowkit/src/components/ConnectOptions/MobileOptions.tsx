@@ -21,7 +21,6 @@ import * as styles from './MobileOptions.css';
 function WalletButton({ wallet }: { wallet: WalletConnector }) {
   const {
     connect,
-    connector,
     iconBackground,
     iconUrl,
     id,
@@ -78,7 +77,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
             }
           }
         });
-      }, [connector, connect, getMobileUri, onConnecting, name])}
+      }, [connect, getMobileUri, onConnecting, name])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       testId={`wallet-option-${id}`}
