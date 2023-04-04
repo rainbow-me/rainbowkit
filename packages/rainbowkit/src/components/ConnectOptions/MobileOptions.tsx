@@ -56,10 +56,7 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
 
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
-
-            if (connector.id === 'walletConnect') {
-              setWalletConnectDeepLink({ mobileUri, name });
-            }
+            setWalletConnectDeepLink({ mobileUri, name });
 
             if (mobileUri.startsWith('http')) {
               // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
