@@ -11,11 +11,11 @@ export const getBrowserDownloadUrl = (wallet?: WalletConnector) => {
     case BrowserType.Chrome:
       return wallet?.downloadUrls?.chrome;
     case BrowserType.Edge:
-      return wallet?.downloadUrls?.edge;
+      return wallet?.downloadUrls?.edge || wallet?.downloadUrls?.chrome;
     case BrowserType.Firefox:
       return wallet?.downloadUrls?.firefox;
     case BrowserType.Opera:
-      return wallet?.downloadUrls?.opera;
+      return wallet?.downloadUrls?.opera || wallet?.downloadUrls?.chrome;
     case BrowserType.Safari:
       return wallet?.downloadUrls?.safari;
   }
