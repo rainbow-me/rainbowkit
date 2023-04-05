@@ -55,6 +55,12 @@ function WalletButton({ wallet }: { wallet: WalletConnector }) {
 
           if (getMobileUri) {
             const mobileUri = await getMobileUri();
+
+            // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
+            // successful connection and then the universal provider uses it on requests.
+            // We call it upon onConnecting; in the legacy provider, this was only required
+            // for the `walletConnect` fallback connector, but now appears to be required for all.
+            // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
             setWalletConnectDeepLink({ mobileUri, name });
 
             if (mobileUri.startsWith('http')) {
