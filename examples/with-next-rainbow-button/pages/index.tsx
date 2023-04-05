@@ -1,10 +1,15 @@
 import { RainbowButton } from '@rainbow-me/button';
 import type { NextPage } from 'next';
 import { useAccount, useDisconnect } from 'wagmi';
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = () => {
+  const [isMounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
+
   return (
     <div
       style={{
@@ -17,10 +22,8 @@ const Home: NextPage = () => {
       }}
     >
       <RainbowButton />
-      {isConnected && (
-        <button onClick={() => disconnect()}>
-          Disconnect
-        </button>
+      {isMounted && isConnected && (
+        <button onClick={() => disconnect()}>Disconnect</button>
       )}
     </div>
   );
