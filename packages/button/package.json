@@ -26,7 +26,7 @@
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": "0.12.x",
+    "@rainbow-me/rainbowkit": ">=0.12.8",
     "react": ">=17"
   },
   "devDependencies": {
