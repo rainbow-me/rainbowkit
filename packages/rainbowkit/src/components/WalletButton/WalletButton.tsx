@@ -9,12 +9,8 @@ import * as styles from './WalletButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
 export interface WalletButtonProps {
-  wallet?: string;
+  wallet: string;
 }
-
-const defaultProps = {
-  wallet: 'rainbow',
-} as const;
 
 export function WalletButton({ wallet: walletId }: WalletButtonProps) {
   const [isMouseOver, setIsMouseOver] = useState<Boolean>(false);
@@ -104,5 +100,3 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
     </WalletButtonRenderer>
   );
 }
-
-WalletButton.defaultProps = defaultProps;
