@@ -1,5 +1,12 @@
 # with-next-siwe-iron-session
 
+## 0.0.26
+
+### Patch Changes
+
+- Updated dependencies [4ef5c51]
+  - @rainbow-me/rainbowkit@0.12.7
+
 ## 0.0.25
 
 ### Patch Changes

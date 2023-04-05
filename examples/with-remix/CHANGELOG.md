@@ -1,5 +1,12 @@
 # with-remix
 
+## 0.0.44
+
+### Patch Changes
+
+- Updated dependencies [4ef5c51]
+  - @rainbow-me/rainbowkit@0.12.7
+
 ## 0.0.43
 
 ### Patch Changes

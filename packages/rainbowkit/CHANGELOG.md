@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.7
+
+### Patch Changes
+
+- 4ef5c51: Fixed an issue that caused mobile WalletConnect redirects for signing request hooks to fail in Wagmi 0.12.x
+
 ## 0.12.6
 
 ### Patch Changes
