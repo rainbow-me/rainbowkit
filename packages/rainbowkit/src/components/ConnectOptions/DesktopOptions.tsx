@@ -190,7 +190,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const hasExtensionAndMobile = !!(
     !!getBrowserDownloadUrl(selectedWallet) &&
-    (selectedWallet?.downloadUrls?.android || selectedWallet?.downloadUrls?.ios)
+    (selectedWallet?.downloadUrls?.android ||
+      selectedWallet?.downloadUrls?.ios ||
+      selectedWallet?.downloadUrls?.mobile)
   );
 
   switch (walletStep) {

@@ -44,13 +44,14 @@ export type Wallet<C extends Connector = Connector> = {
   downloadUrls?: {
     android?: string;
     ios?: string;
-    browserExtension?: string;
+    mobile?: string;
+    qrCode?: string;
     chrome?: string;
     edge?: string;
     firefox?: string;
     opera?: string;
     safari?: string;
-    qrCode?: string;
+    browserExtension?: string;
   };
   hidden?: (args: {
     wallets: {
