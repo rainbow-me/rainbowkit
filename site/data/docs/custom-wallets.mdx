@@ -67,7 +67,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
     {
       name: 'downloadUrls',
       required: false,
-      type: '{ android?: string, ios?: string, browserExtension?: string, qrCode?: string } | undefined',
+      type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
       description: 'Object containing download URLs',
     },
@@ -83,9 +83,79 @@ The `Wallet` function type is provided to help you define your own custom wallet
       name: 'createConnector',
       required: true,
       type: '() => RainbowKitConnector',
-      typeSimple: 'Connector',
+      typeSimple: 'RainbowKitConnector',
       description:
         'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+  ]}
+/>
+
+### DownloadUrls Properties
+
+<PropsTable
+  data={[
+    {
+      name: 'android',
+      required: false,
+      type: 'string',
+      description: 'Google Play URL',
+    },
+    {
+      name: 'ios',
+      required: false,
+      type: 'string',
+      description: 'Apple App Store URL',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for mobile users when `android` or `ios` are unavailable',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for users that scan the mobile download QR Code',
+    },
+    {
+      name: 'chrome',
+      required: false,
+      type: 'string',
+      description: 'Chrome Web Store URL',
+    },
+    {
+      name: 'edge',
+      required: false,
+      type: 'string',
+      description: 'Microsoft Edge Add-ons URL',
+    },
+    {
+      name: 'firefox',
+      required: false,
+      type: 'string',
+      description: 'Firefox Browser Add-ons URL',
+    },
+    {
+      name: 'opera',
+      required: false,
+      type: 'string',
+      description: 'Opera add-ons URL',
+    },
+    {
+      name: 'safari',
+      required: false,
+      type: 'string',
+      description: 'Mac App Store URL',
+    },
+    {
+      name: 'browserExtension',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
   ]}
 />
@@ -117,7 +187,15 @@ The following properties are defined on the return value of the `createConnector
       type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional setup instructions an an icon URL if different from the wallet icon',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing optional browser extension setup instructions',
     },
   ]}
 />
@@ -147,8 +225,9 @@ export const rainbow = ({
   iconUrl: 'https://my-image.xyz',
   iconBackground: '#0c2f78',
   downloadUrls: {
-    android: 'https://my-wallet/android',
-    ios: 'https://my-wallet/ios',
+    android: 'https://play.google.com/store/apps/details?id=my.wallet',
+    ios: 'https://apps.apple.com/us/app/my-wallet',
+    chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
@@ -179,6 +258,31 @@ export const rainbow = ({
                 'After you scan, a connection prompt will appear for you to connect your wallet.',
               step: 'scan',
               title: 'Tap the scan button',
+            },
+          ],
+        },
+      },
+      extension: {
+        instructions: {
+          learnMoreUrl: 'https://my-wallet/learn-more',
+          steps: [
+            {
+              description:
+                'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
+              step: 'install',
+              title: 'Install the My Wallet extension',
+            },
+            {
+              description:
+                'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+              step: 'create',
+              title: 'Create or Import a Wallet',
+            },
+            {
+              description:
+                'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+              step: 'refresh',
+              title: 'Refresh your browser',
             },
           ],
         },
