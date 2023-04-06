@@ -862,6 +862,22 @@ export function InstructionExtensionDetail({
           label="Refresh"
           onClick={window.location.reload.bind(window.location)}
         />
+        <Box
+          as="a"
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          display="block"
+          href={wallet?.extension?.instructions?.learnMoreUrl}
+          paddingX="12"
+          paddingY="4"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

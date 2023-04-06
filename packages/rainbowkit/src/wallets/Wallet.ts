@@ -23,6 +23,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
   };
   extension?: {
     instructions?: {
+      learnMoreUrl: string;
       steps: {
         step: InstructionStepName;
         title: string;

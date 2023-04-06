@@ -109,8 +109,8 @@ export const metaMaskWallet = ({
             }
           : undefined,
         extension: {
-          learnMoreUrl: 'https://metamask.io/faqs/',
           instructions: {
+            learnMoreUrl: 'https://metamask.io/faqs/',
             steps: [
               {
                 description:

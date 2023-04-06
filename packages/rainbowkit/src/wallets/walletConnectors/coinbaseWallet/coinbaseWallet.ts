@@ -58,7 +58,7 @@ export const coinbaseWallet = ({
                 getUri,
                 instructions: {
                   learnMoreUrl:
-                    'https://www.coinbase.com/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet',
+                    'https://www.coinbase.com/wallet/articles/getting-started-mobile',
                   steps: [
                     {
                       description:
@@ -83,6 +83,8 @@ export const coinbaseWallet = ({
               },
               extension: {
                 instructions: {
+                  learnMoreUrl:
+                    'https://www.coinbase.com/wallet/articles/getting-started-extension',
                   steps: [
                     {
                       description:
