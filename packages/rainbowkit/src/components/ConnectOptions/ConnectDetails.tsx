@@ -4,7 +4,6 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { InstructionStepName } from '../../wallets/Wallet';
-import { getBrowserDownloadUrl } from '../../wallets/getDownloadUrl';
 import {
   useWalletConnectors,
   WalletConnector,
@@ -74,14 +73,14 @@ export function GetDetail({
         {shownWallets
           ?.filter(
             wallet =>
-              getBrowserDownloadUrl(wallet) ||
+              wallet.extensionDownloadUrl ||
               (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
               wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
-            const hasExtension = !!getBrowserDownloadUrl(wallet);
+            const hasExtension = !!wallet.extensionDownloadUrl;
             const hasMobileAndExtension = downloadUrls?.qrCode && hasExtension;
 
             return (
@@ -184,7 +183,7 @@ export function ConnectDetail({
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
 
-  const hasExtension = !!getBrowserDownloadUrl(wallet);
+  const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCode = qrCode && qrCodeUri;
 
@@ -279,7 +278,7 @@ export function ConnectDetail({
               {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
-                    href={getBrowserDownloadUrl(wallet)}
+                    href={wallet.extensionDownloadUrl}
                     label="INSTALL"
                     type="secondary"
                   />
@@ -571,7 +570,7 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
-  const { extension } = wallet;
+  const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -600,35 +599,39 @@ export function DownloadOptionsDetail({
         justifyContent="center"
         width="full"
       >
-        <DownloadOptionsBox
-          actionLabel={`Add to ${browser}`}
-          description="Access your wallet right from your favorite web browser."
-          iconUrl={getBrowserSrc}
-          isCompact={isCompact}
-          onAction={() =>
-            changeWalletStep(
-              extension?.instructions
-                ? WalletStep.InstructionsExtension
-                : WalletStep.Connect
-            )
-          }
-          title={`${wallet.name} for ${browser}`}
-          url={getBrowserDownloadUrl(wallet)}
-          variant="browser"
-        />
-        <DownloadOptionsBox
-          actionLabel="Get the app"
-          description="Use the mobile wallet to explore the world of Ethereum."
-          iconAccent={wallet.iconAccent}
-          iconBackground={wallet.iconBackground}
-          iconUrl={wallet.iconUrl}
-          isCompact={isCompact}
-          onAction={() => {
-            changeWalletStep(WalletStep.Download);
-          }}
-          title={`${wallet.name} for Mobile`}
-          variant="app"
-        />
+        {extensionDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel={`Add to ${browser}`}
+            description="Access your wallet right from your favorite web browser."
+            iconUrl={getBrowserSrc}
+            isCompact={isCompact}
+            onAction={() =>
+              changeWalletStep(
+                extension?.instructions
+                  ? WalletStep.InstructionsExtension
+                  : WalletStep.Connect
+              )
+            }
+            title={`${wallet.name} for ${browser}`}
+            url={extensionDownloadUrl}
+            variant="browser"
+          />
+        )}
+        {mobileDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel="Get the app"
+            description="Use the mobile wallet to explore the world of Ethereum."
+            iconAccent={wallet.iconAccent}
+            iconBackground={wallet.iconBackground}
+            iconUrl={wallet.iconUrl}
+            isCompact={isCompact}
+            onAction={() => {
+              changeWalletStep(WalletStep.Download);
+            }}
+            title={`${wallet.name} for Mobile`}
+            variant="app"
+          />
+        )}
       </Box>
     </Box>
   );
