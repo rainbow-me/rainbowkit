@@ -125,7 +125,6 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                               display="flex"
                               flexDirection="row"
                               marginRight="6"
-                              transition="default"
                             >
                               <Text
                                 color="accentColorForeground"
