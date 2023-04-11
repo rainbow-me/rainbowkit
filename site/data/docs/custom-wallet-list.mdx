@@ -97,7 +97,6 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 injectedWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
@@ -115,6 +114,16 @@ argentWallet(options: {
 });
 ```
 
+#### Bitski
+
+```tsx
+import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitskiWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Brave Wallet
 
 ```tsx
@@ -122,7 +131,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 
 braveWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
@@ -133,6 +141,16 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
 coinbaseWallet(options: {
   appName: string;
+  chains: Chain[];
+});
+```
+
+#### Dawn Wallet
+
+```tsx
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+
+dawnWallet((options: {
   chains: Chain[];
 });
 ```
@@ -148,6 +166,16 @@ ledgerWallet(options: {
 });
 ```
 
+#### imToken
+
+```tsx
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+
+imTokenWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### MetaMask
 
 ```tsx
@@ -155,7 +183,25 @@ import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 
 metaMaskWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
+});
+```
+
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+mewWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### OKX Wallet
+
+```tsx
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+okxWallet(options: {
+  chains: Chain[];
 });
 ```
 
@@ -179,6 +225,26 @@ rainbowWallet(options: {
 });
 ```
 
+#### Safe (Gnosis Safe)
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Taho
+
+```tsx
+import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tahoWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Trust Wallet
 
 ```tsx
@@ -186,16 +252,15 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
-#### imToken
+#### Zerion
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
-imTokenWallet(options: {
+zerionWallet(options: {
   chains: Chain[];
 });
 ```

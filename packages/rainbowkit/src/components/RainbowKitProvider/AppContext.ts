@@ -8,7 +8,8 @@ export type DisclaimerComponent = React.FunctionComponent<{
 export const defaultAppInfo = {
   appName: undefined,
   disclaimer: undefined,
-  learnMoreUrl: 'https://learn.rainbow.me/what-is-a-cryptoweb3-wallet-actually',
+  learnMoreUrl:
+    'https://learn.rainbow.me/understanding-web3?utm_source=rainbowkit&utm_campaign=learnmore',
 };
 
 export const AppContext = createContext<{

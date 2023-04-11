@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -7,7 +8,6 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -23,8 +23,8 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 
 export const rainbowWallet = ({
   chains,
-  shimDisconnect,
-}: RainbowWalletOptions): Wallet => {
+  ...options
+}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -36,17 +36,21 @@ export const rainbowWallet = ({
     name: 'Rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
+    installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
     downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=me.rainbow',
-      ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
-      qrCode: 'https://rainbow.download',
+      android:
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit',
+      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
+      qrCode:
+        'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
+      browserExtension: 'https://rainbow.me/extension?utm_source=rainbowkit',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({ chains })
         : new InjectedConnector({
             chains,
-            options: { shimDisconnect },
+            options,
           });
 
       const getUri = async () => {
@@ -65,7 +69,7 @@ export const rainbowWallet = ({
               getUri,
               instructions: {
                 learnMoreUrl:
-                  'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
+                  'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
                 steps: [
                   {
                     description:
