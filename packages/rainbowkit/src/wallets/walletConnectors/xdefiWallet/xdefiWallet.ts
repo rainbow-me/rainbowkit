@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -11,16 +12,14 @@ declare global {
 
 export interface XDEFIWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const xdefiWallet = ({
   chains,
-  shimDisconnect,
-}: XDEFIWalletOptions): Wallet => {
+  ...options
+}: XDEFIWalletOptions & InjectedConnectorOptions): Wallet => {
   const isInstalled =
     typeof window !== 'undefined' && typeof window?.xfi !== 'undefined';
-
   return {
     id: 'xdefi',
     name: 'XDEFI Wallet',
@@ -35,20 +34,11 @@ export const xdefiWallet = ({
       connector: new InjectedConnector({
         chains,
         options: {
-          shimDisconnect,
           //@ts-ignore
           getProvider: () => {
-            return new Promise(resolve => {
-              setTimeout(() => {
-                const res =
-                  typeof window !== 'undefined' &&
-                  typeof window?.xfi !== 'undefined'
-                    ? (window.xfi?.ethereum as any)
-                    : undefined;
-                resolve(res);
-              }, 0);
-            });
+            return isInstalled ? (window.xfi?.ethereum as any) : undefined;
           },
+          ...options,
         },
       }),
     }),

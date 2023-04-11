@@ -36,6 +36,6 @@ export {
   trustWallet,
   okxWallet,
   walletConnectWallet,
-  zerionWallet,
   xdefiWallet,
+  zerionWallet,
 };

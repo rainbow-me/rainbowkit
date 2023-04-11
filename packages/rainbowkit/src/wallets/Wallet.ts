@@ -39,7 +39,7 @@ export type Wallet<C extends Connector = Connector> = {
   iconUrl: string | (() => Promise<string>);
   iconAccent?: string;
   iconBackground: string;
-  installed?: boolean | (() => boolean | undefined) | Promise<boolean>;
+  installed?: boolean;
   downloadUrls?: {
     android?: string;
     ios?: string;
@@ -50,7 +50,7 @@ export type Wallet<C extends Connector = Connector> = {
     wallets: {
       id: string;
       connector: Connector;
-      installed?: boolean | (() => boolean | undefined) | Promise<boolean>;
+      installed?: boolean;
       name: string;
     }[];
   }) => boolean;
@@ -59,7 +59,7 @@ export type Wallet<C extends Connector = Connector> = {
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
 
-export type WalletInstance = Omit<Wallet, 'createConnector'> &
+export type WalletInstance = Omit<Wallet, 'createConnector' | 'hidden'> &
   ReturnType<Wallet['createConnector']> & {
     index: number;
     groupIndex: number;

@@ -8,7 +8,6 @@ import {
   ledgerWallet,
   omniWallet,
   trustWallet,
-  xdefiWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
