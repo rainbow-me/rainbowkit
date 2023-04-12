@@ -72,9 +72,39 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
+  projectId,
+});
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ chains, projectId }),
+      bitskiWallet({ chains }),
+      dawnWallet({ chains }),
+      imTokenWallet({ chains, projectId }),
+      ledgerWallet({ chains, projectId }),
+      mewWallet({ chains }),
+      okxWallet({ chains, projectId }),
+      omniWallet({ chains, projectId }),
+      tahoWallet({ chains }),
+      trustWallet({ chains, projectId }),
+      zerionWallet({ chains, projectId }),
+    ],
+  },
+]);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
 });
 
 const demoAppInfo = {
@@ -108,33 +138,6 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
     </div>
   );
 };
-
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ chains }),
-      bitskiWallet({ chains }),
-      dawnWallet({ chains }),
-      imTokenWallet({ chains }),
-      ledgerWallet({ chains }),
-      mewWallet({ chains }),
-      okxWallet({ chains }),
-      omniWallet({ chains }),
-      tahoWallet({ chains }),
-      trustWallet({ chains }),
-      zerionWallet({ chains }),
-    ],
-  },
-]);
-
-const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider,
-  webSocketProvider,
-});
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to the RainbowKit Demo',
