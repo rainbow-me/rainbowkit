@@ -7,11 +7,13 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TrustWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
 export const trustWallet = ({
   chains,
+  projectId,
   ...options
 }: TrustWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'trust',
@@ -38,7 +40,7 @@ export const trustWallet = ({
       };
     }
 
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,

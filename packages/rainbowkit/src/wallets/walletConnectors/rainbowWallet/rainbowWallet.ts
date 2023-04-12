@@ -7,6 +7,7 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
@@ -23,6 +24,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 
 export const rainbowWallet = ({
   chains,
+  projectId,
   ...options
 }: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
@@ -47,7 +49,7 @@ export const rainbowWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
             options,

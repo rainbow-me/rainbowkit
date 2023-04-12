@@ -5,10 +5,14 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OmniWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
-export const omniWallet = ({ chains }: OmniWalletOptions): Wallet => ({
+export const omniWallet = ({
+  chains,
+  projectId,
+}: OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -19,7 +23,7 @@ export const omniWallet = ({ chains }: OmniWalletOptions): Wallet => ({
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,
