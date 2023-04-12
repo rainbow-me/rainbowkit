@@ -7,6 +7,7 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
@@ -30,6 +31,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
 
 export const metaMaskWallet = ({
   chains,
+  projectId,
   ...options
 }: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
   const isMetaMaskInjected =
@@ -55,7 +57,7 @@ export const metaMaskWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ projectId, chains })
         : new MetaMaskConnector({
             chains,
             options,

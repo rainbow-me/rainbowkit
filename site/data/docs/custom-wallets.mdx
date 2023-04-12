@@ -127,10 +127,14 @@ import {
 } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
+  projectId: string;
   chains: Chain[];
 }
 
-export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
+export const rainbow = ({
+  chains,
+  projectId,
+}: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -141,7 +145,7 @@ export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,

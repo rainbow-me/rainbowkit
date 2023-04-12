@@ -37,8 +37,8 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      walletConnectWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -82,6 +82,7 @@ This is a fallback wallet option designed for WalletConnect-based wallets that h
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 walletConnectWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -110,6 +111,7 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 argentWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -150,7 +152,7 @@ coinbaseWallet(options: {
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 
-dawnWallet((options: {
+dawnWallet(options: {
   chains: Chain[];
 });
 ```
@@ -161,6 +163,7 @@ dawnWallet((options: {
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ledgerWallet(options: {
+  projectId: string;
   chains: Chain[];
   infuraId?: string;
 });
@@ -172,6 +175,7 @@ ledgerWallet(options: {
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 
 imTokenWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -182,6 +186,7 @@ imTokenWallet(options: {
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 
 metaMaskWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -201,6 +206,7 @@ mewWallet(options: {
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 okxWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -211,6 +217,7 @@ okxWallet(options: {
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 
 omniWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -221,6 +228,7 @@ omniWallet(options: {
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
 rainbowWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -251,6 +259,7 @@ tahoWallet(options: {
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -261,6 +270,7 @@ trustWallet(options: {
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 zerionWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -286,8 +296,8 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      metaMaskWallet({ chains }),
-      walletConnectWallet({ chains }),
+      metaMaskWallet({ projectId, chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -310,10 +320,10 @@ const connectors = connectorsForWallets([
     groupName: 'Suggested',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      metaMaskWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      metaMaskWallet({ projectId, chains }),
       coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -342,15 +352,15 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      metaMaskWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      metaMaskWallet({ projectId, chains }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
       coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);

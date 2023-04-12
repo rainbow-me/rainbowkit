@@ -7,11 +7,13 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OKXWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
 export const okxWallet = ({
   chains,
+  projectId,
   ...options
 }: OKXWalletOptions & InjectedConnectorOptions): Wallet => {
   // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
@@ -38,7 +40,7 @@ export const okxWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
             options: {
