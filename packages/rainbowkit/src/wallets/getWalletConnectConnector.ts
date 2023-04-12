@@ -29,10 +29,7 @@ export function getWalletConnectConnector({
   const options: WalletConnectConnectorOptions = {
     chains,
     options: {
-      projectId:
-        projectId ||
-        (process.env.WALLETCONNECT_PROJECT_ID as string) ||
-        (process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string),
+      projectId,
       qrcode,
     },
   };
