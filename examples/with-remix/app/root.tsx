@@ -71,7 +71,7 @@ export default function App() {
 
     const { connectors } = getDefaultWallets({
       appName: 'RainbowKit Remix Example',
-      projectId: '',
+      projectId: 'YOUR_PROJECT_ID',
       chains,
     });
 
