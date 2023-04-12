@@ -12,8 +12,10 @@ import { walletConnectWallet } from './walletConnectors/walletConnectWallet/wall
 export const getDefaultWallets = ({
   appName,
   chains,
+  projectId,
 }: {
   appName: string;
+  projectId?: string;
   chains: Chain[];
 }): {
   connectors: ReturnType<typeof connectorsForWallets>;
@@ -25,10 +27,10 @@ export const getDefaultWallets = ({
       wallets: [
         injectedWallet({ chains }),
         safeWallet({ chains }),
-        rainbowWallet({ chains }),
+        rainbowWallet({ chains, projectId }),
         coinbaseWallet({ appName, chains }),
-        metaMaskWallet({ chains }),
-        walletConnectWallet({ chains }),
+        metaMaskWallet({ chains, projectId }),
+        walletConnectWallet({ chains, projectId }),
         braveWallet({ chains }),
       ],
     },
