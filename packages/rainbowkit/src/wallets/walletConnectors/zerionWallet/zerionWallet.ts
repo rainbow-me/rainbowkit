@@ -27,7 +27,7 @@ export const zerionWallet = ({
     name: 'Zerion',
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
     iconAccent: '#2962ef',
-    iconBackground: '#fff',
+    iconBackground: '#2962ef',
     installed: !shouldUseWalletConnect ? isZerionInjected : undefined,
     downloadUrls: {
       browserExtension:
