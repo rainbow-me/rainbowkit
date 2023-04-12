@@ -54,6 +54,8 @@ import { publicProvider } from 'wagmi/providers/public';
 
 Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
 
+> Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
 ```tsx line=4-99
 ...
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -69,6 +71,7 @@ const { chains, provider } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
   chains
 });
 
