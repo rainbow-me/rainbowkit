@@ -2,4 +2,22 @@
 '@rainbow-me/rainbowkit': minor
 ---
 
-Added support for XDEFI wallet
+XDEFI Wallet Support
+
+**Example usage**
+
+```tsx
+import {
+  getDefaultWallets,
+  connectorsForWallets,
+} from '@rainbow-me/rainbowkit';
+import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+const { wallets } = getDefaultWallets({ appName, chains });
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [xdefiWallet({ chains })],
+  },
+]);
+```
