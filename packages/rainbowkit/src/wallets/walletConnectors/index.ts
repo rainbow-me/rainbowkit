@@ -14,6 +14,7 @@ import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
+import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
@@ -36,6 +37,7 @@ export {
   rabbyWallet,
   rainbowWallet,
   safeWallet,
+  safeheronWallet,
   tahoWallet,
   trustWallet,
   okxWallet,
