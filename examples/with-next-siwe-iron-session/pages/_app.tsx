@@ -33,8 +33,11 @@ const { chains, provider, webSocketProvider } = configureChains(
   [publicProvider()]
 );
 
+const projectId = 'YOUR_PROJECT_ID';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
+  projectId,
   chains,
 });
 
@@ -47,9 +50,9 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      argentWallet({ chains }),
-      trustWallet({ chains }),
-      ledgerWallet({ chains }),
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
     ],
   },
 ]);

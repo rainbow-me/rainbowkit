@@ -5,10 +5,14 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ArgentWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
-export const argentWallet = ({ chains }: ArgentWalletOptions): Wallet => ({
+export const argentWallet = ({
+  chains,
+  projectId,
+}: ArgentWalletOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argentWallet.svg')).default,
@@ -20,7 +24,7 @@ export const argentWallet = ({ chains }: ArgentWalletOptions): Wallet => ({
     qrCode: 'https://argent.link/app',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,

@@ -43,8 +43,11 @@ const { chains, provider, webSocketProvider } = configureChains(
   [publicProvider()]
 );
 
+const projectId = 'YOUR_PROJECT_ID';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit Mint NFT Demo',
+  projectId,
   chains,
 });
 
@@ -56,7 +59,10 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [argentWallet({ chains }), trustWallet({ chains })],
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+    ],
   },
 ]);
 

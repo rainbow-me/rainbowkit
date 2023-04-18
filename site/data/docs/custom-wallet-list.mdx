@@ -37,8 +37,8 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      walletConnectWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -82,6 +82,7 @@ This is a fallback wallet option designed for WalletConnect-based wallets that h
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 walletConnectWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -97,7 +98,6 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 injectedWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
@@ -111,6 +111,17 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 argentWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Bitski
+
+```tsx
+import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitskiWallet(options: {
   chains: Chain[];
 });
 ```
@@ -122,7 +133,6 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 
 braveWallet(options: {
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
@@ -137,14 +147,36 @@ coinbaseWallet(options: {
 });
 ```
 
+#### Dawn Wallet
+
+```tsx
+import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+
+dawnWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Ledger Live
 
 ```tsx
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ledgerWallet(options: {
+  projectId: string;
   chains: Chain[];
   infuraId?: string;
+});
+```
+
+#### imToken
+
+```tsx
+import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+
+imTokenWallet(options: {
+  projectId: string;
+  chains: Chain[];
 });
 ```
 
@@ -154,8 +186,28 @@ ledgerWallet(options: {
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 
 metaMaskWallet(options: {
+  projectId: string;
   chains: Chain[];
-  shimDisconnect?: boolean;
+});
+```
+
+#### MEW Wallet
+
+```tsx
+import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+mewWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### OKX Wallet
+
+```tsx
+import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+okxWallet(options: {
+  projectId: string;
+  chains: Chain[];
 });
 ```
 
@@ -165,6 +217,7 @@ metaMaskWallet(options: {
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 
 omniWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -186,6 +239,27 @@ phantomWallet(options: {
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
 rainbowWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Safe (Gnosis Safe)
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Taho
+
+```tsx
+import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tahoWallet(options: {
   chains: Chain[];
 });
 ```
@@ -196,17 +270,18 @@ rainbowWallet(options: {
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
+  projectId: string;
   chains: Chain[];
-  shimDisconnect?: boolean;
 });
 ```
 
-#### imToken
+#### Zerion
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
-imTokenWallet(options: {
+zerionWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -232,8 +307,8 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      metaMaskWallet({ chains }),
-      walletConnectWallet({ chains }),
+      metaMaskWallet({ projectId, chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -256,10 +331,10 @@ const connectors = connectorsForWallets([
     groupName: 'Suggested',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      metaMaskWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      metaMaskWallet({ projectId, chains }),
       coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
@@ -288,15 +363,15 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       injectedWallet({ chains }),
-      rainbowWallet({ chains }),
-      metaMaskWallet({ chains }),
+      rainbowWallet({ projectId, chains }),
+      metaMaskWallet({ projectId, chains }),
     ],
   },
   {
     groupName: 'Others',
     wallets: [
       coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ chains }),
+      walletConnectWallet({ projectId, chains }),
     ],
   },
 ]);
