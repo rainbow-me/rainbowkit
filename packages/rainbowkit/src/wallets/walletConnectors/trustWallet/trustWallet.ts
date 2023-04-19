@@ -1,83 +1,177 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
+import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+
+declare global {
+  interface Window {
+    trustwallet: Window['ethereum'];
+  }
+}
 
 export interface TrustWalletOptions {
   projectId?: string;
   chains: Chain[];
 }
 
+function getTrustWalletInjectedProvider(): Window['ethereum'] {
+  const isTrustWallet = (ethereum: NonNullable<Window['ethereum']>) => {
+    // Identify if Trust Wallet injected provider is present.
+    const trustWallet = !!ethereum.isTrust;
+
+    return trustWallet;
+  };
+
+  const injectedProviderExist =
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+
+  // No injected providers exist.
+  if (!injectedProviderExist) {
+    return;
+  }
+
+  // Trust Wallet injected provider is available in the global scope.
+  // There are cases that some cases injected providers can replace window.ethereum
+  // without updating the ethereum.providers array. To prevent issues where
+  // the TW connector does not recognize the provider when TW extension is installed,
+  // we begin our checks by relying on TW's global object.
+  if (window['trustwallet']) {
+    return window['trustwallet'];
+  }
+
+  // Trust Wallet was injected into window.ethereum.
+  if (isTrustWallet(window.ethereum!)) {
+    return window.ethereum;
+  }
+
+  // Trust Wallet provider might be replaced by another
+  // injected provider, check the providers array.
+  if (window.ethereum?.providers) {
+    // ethereum.providers array is a non-standard way to
+    // preserve multiple injected providers. Eventually, EIP-5749
+    // will become a living standard and we will have to update this.
+    return window.ethereum.providers.find(isTrustWallet);
+  }
+}
+
 export const trustWallet = ({
   chains,
   projectId,
   ...options
-}: TrustWalletOptions & InjectedConnectorOptions): Wallet => ({
-  id: 'trust',
-  name: 'Trust Wallet',
-  iconUrl: async () => (await import('./trustWallet.svg')).default,
-  iconBackground: '#fff',
-  downloadUrls: {
-    android:
-      'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
-    ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
-    qrCode: 'https://link.trustwallet.com',
-  },
-  createConnector: () => {
-    const inAppBrowser = Boolean(
-      typeof window !== 'undefined' && window.ethereum?.isTrust
-    );
+}: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
+  const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
+  const shouldUseWalletConnect = !isTrustWalletInjected;
 
-    if (inAppBrowser) {
-      return {
-        connector: new InjectedConnector({
-          chains,
-          options,
-        }),
+  return {
+    id: 'trust',
+    name: 'Trust Wallet',
+    iconUrl: async () => (await import('./trustWallet.svg')).default,
+    // Note that we never resolve `installed` to `false` because the
+    // Trust Wallet provider falls back to other connection methods if
+    // the injected connector isn't available
+    installed: isTrustWalletInjected || undefined,
+    iconAccent: '#3375BB',
+    iconBackground: '#fff',
+    downloadUrls: {
+      browserExtension:
+        'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
+      android:
+        'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
+      ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
+      qrCode: 'https://trustwallet.com/download',
+    },
+    createConnector: () => {
+      const getUriMobile = async () => {
+        const { uri } = (await connector.getProvider()).connector;
+
+        return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
-    }
 
-    const connector = getWalletConnectConnector({ projectId, chains });
+      const getUriQR = async () => {
+        const { uri } = (await connector.getProvider()).connector;
 
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
-          return isAndroid()
-            ? uri
-            : `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
-        },
-      },
-      qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        return uri;
+      };
+
+      const connector = shouldUseWalletConnect
+        ? getWalletConnectConnector({ projectId, chains })
+        : new InjectedConnector({
+            chains,
+            options: {
+              name: 'Trust Wallet',
+              shimChainChangedDisconnect: true,
+              getProvider: getTrustWalletInjectedProvider,
+              ...options,
+            },
+          });
+
+      const mobileConnector = {
+        getUri: shouldUseWalletConnect ? getUriMobile : undefined,
+      };
+
+      let qrConnector = undefined;
+
+      if (shouldUseWalletConnect) {
+        qrConnector = {
+          getUri: getUriQR,
+          instructions: {
+            learnMoreUrl: 'https://trustwallet.com/',
+            steps: [
+              {
+                description:
+                  'Put Trust Wallet on your home screen for faster access to your wallet.',
+                step: 'install' as InstructionStepName,
+                title: 'Open the Trust Wallet app',
+              },
+              {
+                description: 'Create a new wallet or import an existing one.',
+                step: 'create' as InstructionStepName,
+                title: 'Create or Import a Wallet',
+              },
+              {
+                description:
+                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                step: 'scan' as InstructionStepName,
+                title: 'Tap WalletConnect in Settings',
+              },
+            ],
+          },
+        };
+      }
+
+      const extensionConnector = {
         instructions: {
-          learnMoreUrl:
-            'https://trustwallet.com/blog/an-introduction-to-trustwallet',
+          learnMoreUrl: 'https://trustwallet.com/browser-extension',
           steps: [
             {
               description:
-                'Put Trust Wallet on your home screen for faster access to your wallet.',
-              step: 'install',
-              title: 'Open the Trust Wallet app',
+                'Click at the top right of your browser and pin Trust Wallet for easy access.',
+              step: 'install' as InstructionStepName,
+              title: 'Install the Trust Wallet extension',
             },
             {
               description: 'Create a new wallet or import an existing one.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
+              step: 'create' as InstructionStepName,
+              title: 'Create or Import a wallet',
             },
             {
               description:
-                'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
-              step: 'scan',
-              title: 'Tap WalletConnect in Settings',
+                'Once you set up Trust Wallet, click below to refresh the browser and load up the extension.',
+              step: 'refresh' as InstructionStepName,
+              title: 'Refresh your browser',
             },
           ],
         },
-      },
-    };
-  },
-});
+      };
+
+      return {
+        connector,
+        mobile: mobileConnector,
+        qrCode: qrConnector,
+        extension: extensionConnector,
+      };
+    },
+  };
+};
