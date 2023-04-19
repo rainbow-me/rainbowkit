@@ -7,7 +7,6 @@ import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
-  phantomWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
