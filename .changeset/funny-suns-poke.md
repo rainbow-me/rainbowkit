@@ -2,7 +2,7 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Phantom Wallet Support
+Phantom Support
 
 **Example usage**
 
