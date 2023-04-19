@@ -1,5 +1,5 @@
 ---
-'@rainbow-me/rainbowkit': minor
+'@rainbow-me/rainbowkit': patch
 ---
 
 XDEFI Wallet Support
@@ -12,7 +12,7 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
-const { wallets } = getDefaultWallets({ appName, chains });
+const { wallets } = getDefaultWallets({ appName, projectId, chains });
 const connectors = connectorsForWallets([
   ...wallets,
   {
