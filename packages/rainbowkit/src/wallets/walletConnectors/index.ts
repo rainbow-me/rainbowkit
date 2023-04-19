@@ -11,6 +11,7 @@ import { mewWallet } from './mewWallet/mewWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
+import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
@@ -32,6 +33,7 @@ export {
   mewWallet,
   omniWallet,
   phantomWallet,
+  rabbyWallet,
   rainbowWallet,
   safeWallet,
   tahoWallet,
