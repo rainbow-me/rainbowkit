@@ -10,6 +10,7 @@ import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
+import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
@@ -30,6 +31,7 @@ export {
   metaMaskWallet,
   mewWallet,
   omniWallet,
+  phantomWallet,
   rainbowWallet,
   safeWallet,
   tahoWallet,
