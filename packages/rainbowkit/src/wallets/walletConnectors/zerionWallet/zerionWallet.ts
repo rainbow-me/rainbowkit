@@ -7,11 +7,13 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ZerionWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
 export const zerionWallet = ({
   chains,
+  projectId,
   ...options
 }: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
   const isZerionInjected =
@@ -27,7 +29,7 @@ export const zerionWallet = ({
     name: 'Zerion',
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
     iconAccent: '#2962ef',
-    iconBackground: '#fff',
+    iconBackground: '#2962ef',
     installed: !shouldUseWalletConnect ? isZerionInjected : undefined,
     downloadUrls: {
       browserExtension:
@@ -39,7 +41,7 @@ export const zerionWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
             options: {

@@ -14,12 +14,42 @@ RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` f
 
 Wallets will be transitioned automatically in future releases.
 
+Every dApp must now provide a [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` to enable WalletConnect v2. This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023. RainbowKit will quietly prefer v1 for all wallets if `projectId` is unspecified.
+
 Follow the steps below to migrate.
 
 #### 1. Upgrade RainbowKit and `wagmi` to their latest version
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+```
+
+#### 2. Supply a WalletConnect Cloud projectId
+
+Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
+Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
 ```
 
 ### 0.11.x Breaking changes

@@ -41,6 +41,13 @@ The `Wallet` function type is provided to help you define your own custom wallet
         'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
+      name: 'iconAccent',
+      required: false,
+      type: 'string',
+      description:
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+    },
+    {
       name: 'iconBackground',
       required: true,
       type: 'string',
@@ -127,10 +134,14 @@ import {
 } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
+  projectId: string;
   chains: Chain[];
 }
 
-export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
+export const rainbow = ({
+  chains,
+  projectId,
+}: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -141,7 +152,7 @@ export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
     qrCode: 'https://my-wallet/qr',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,

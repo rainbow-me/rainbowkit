@@ -5,11 +5,13 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface WalletConnectWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
 export const walletConnectWallet = ({
   chains,
+  projectId,
 }: WalletConnectWalletOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
@@ -19,6 +21,7 @@ export const walletConnectWallet = ({
     const ios = isIOS();
 
     const connector = getWalletConnectConnector({
+      projectId,
       chains,
       qrcode: ios,
     });

@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.10
+
+### Patch Changes
+
+- aef9643: Support for WalletConnect Cloud `projectId`
+
 ## 0.1.9
 
 ### Patch Changes

@@ -5,10 +5,14 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface LedgerWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
-export const ledgerWallet = ({ chains }: LedgerWalletOptions): Wallet => ({
+export const ledgerWallet = ({
+  chains,
+  projectId,
+}: LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   name: 'Ledger Live',
@@ -19,7 +23,7 @@ export const ledgerWallet = ({ chains }: LedgerWalletOptions): Wallet => ({
     qrCode: 'https://www.ledger.com/ledger-live/download#download-device-2',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,

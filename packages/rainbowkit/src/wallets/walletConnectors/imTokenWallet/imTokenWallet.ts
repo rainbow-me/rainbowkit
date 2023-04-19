@@ -4,10 +4,14 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ImTokenWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
-export const imTokenWallet = ({ chains }: ImTokenWalletOptions): Wallet => ({
+export const imTokenWallet = ({
+  chains,
+  projectId,
+}: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
   iconUrl: async () => (await import('./imTokenWallet.svg')).default,
@@ -18,7 +22,7 @@ export const imTokenWallet = ({ chains }: ImTokenWalletOptions): Wallet => ({
     qrCode: 'https://token.im/download',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ chains });
+    const connector = getWalletConnectConnector({ projectId, chains });
 
     return {
       connector,
