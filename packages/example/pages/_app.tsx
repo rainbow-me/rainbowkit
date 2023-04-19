@@ -11,10 +11,6 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import {
-  GetSiweMessageOptions,
-  RainbowKitSiweNextAuthProvider,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
-import {
   argentWallet,
   bitskiWallet,
   dawnWallet,
@@ -27,10 +23,14 @@ import {
   trustWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import {
+  GetSiweMessageOptions,
+  RainbowKitSiweNextAuthProvider,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
 
-import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import {
   configureChains,
