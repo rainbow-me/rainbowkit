@@ -15,6 +15,7 @@ import { safeWallet } from './safeWallet/safeWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
+import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
@@ -35,5 +36,6 @@ export {
   trustWallet,
   okxWallet,
   walletConnectWallet,
+  xdefiWallet,
   zerionWallet,
 };

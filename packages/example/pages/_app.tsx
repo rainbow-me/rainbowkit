@@ -21,6 +21,7 @@ import {
   omniWallet,
   tahoWallet,
   trustWallet,
+  xdefiWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
@@ -95,6 +96,7 @@ const connectors = connectorsForWallets([
       omniWallet({ chains, projectId }),
       tahoWallet({ chains }),
       trustWallet({ chains, projectId }),
+      xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
   },
