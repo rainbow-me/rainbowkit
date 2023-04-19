@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  pnpm: 7
+  pnpm: 8
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -22,18 +22,18 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cache .pnpm-store
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}
