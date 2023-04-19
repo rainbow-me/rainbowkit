@@ -68,17 +68,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
-    wallet?.connect?.()?.catch(() => {
-      setConnectionError(true);
-    });
+    if (wallet.ready) {
+      wallet?.connect?.()?.catch(() => {
+        setConnectionError(true);
+      });
 
-    const getDesktopDeepLink = wallet.desktop?.getUri;
-    if (getDesktopDeepLink) {
-      // if desktop deep link, wait for uri
-      setTimeout(async () => {
-        const uri = await getDesktopDeepLink();
-        window.open(uri, safari ? '_blank' : '_self');
-      }, 0);
+      const getDesktopDeepLink = wallet.desktop?.getUri;
+      if (getDesktopDeepLink) {
+        // if desktop deep link, wait for uri
+        setTimeout(async () => {
+          const uri = await getDesktopDeepLink();
+          window.open(uri, safari ? '_blank' : '_self');
+        }, 0);
+      }
     }
   };
 

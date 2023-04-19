@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
@@ -171,7 +171,7 @@ export function ConnectDetail({
     iconUrl,
     name,
     qrCode,
-    ready: wasReady,
+    ready,
     showWalletConnectModal,
   } = wallet;
   const getDesktopDeepLink = wallet.desktop?.getUri;
@@ -180,22 +180,6 @@ export function ConnectDetail({
   const hasQrCodeAndExtension =
     downloadUrls?.qrCode && downloadUrls?.browserExtension;
   const hasQrCode = qrCode && qrCodeUri;
-
-  const [isReady, setIsReady] = useState<boolean>(false);
-
-  // Check on component mount if the wallet is ready.
-  useEffect(() => {
-    wallet.connector.getProvider().then(provider => {
-      const isReady = provider;
-      if (!wasReady && isReady) {
-        // If the wallet was not ready, but now is ready attempt to connect
-        reconnect(wallet);
-      }
-      setIsReady(isReady);
-    });
-  }, [wallet.connector, reconnect, wallet, wasReady]);
-
-  const ready = wasReady || isReady;
 
   const secondaryAction: {
     description: string;
