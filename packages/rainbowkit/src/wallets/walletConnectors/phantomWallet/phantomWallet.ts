@@ -1,17 +1,17 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
 export interface PhantomWalletOptions {
   chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export const phantomWallet = ({
   chains,
-  shimDisconnect,
-}: PhantomWalletOptions): Wallet => {
+  ...options
+}: PhantomWalletOptions & InjectedConnectorOptions): Wallet => {
   return {
     id: 'phantom',
     name: 'Phantom',
@@ -34,7 +34,7 @@ export const phantomWallet = ({
 
       const connector = new InjectedConnector({
         chains,
-        options: { getProvider, shimDisconnect },
+        options: { getProvider, ...options },
       });
 
       return {
