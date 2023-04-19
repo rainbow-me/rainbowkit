@@ -1,5 +1,91 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.9
+
+### Patch Changes
+
+- 361bb39: Phantom Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [phantomWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 82376f0: Rabby Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [rabbyWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7c9e580: Trust Wallet Support
+
+  The `trustWallet` wallet connector now includes support for the Trust Wallet browser extension.
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [trustWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 0127559: XDEFI Wallet Support
+
+  **Example usage**
+
+  ```tsx
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [xdefiWallet({ chains })],
+    },
+  ]);
+  ```
+
 ## 0.12.8
 
 ### Patch Changes
