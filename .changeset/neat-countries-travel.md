@@ -14,7 +14,7 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
-const { wallets } = getDefaultWallets({ appName, chains });
+const { wallets } = getDefaultWallets({ appName, projectId, chains });
 const connectors = connectorsForWallets([
   ...wallets,
   {
