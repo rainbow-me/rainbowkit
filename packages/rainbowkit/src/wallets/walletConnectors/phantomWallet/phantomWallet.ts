@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -12,6 +13,19 @@ export const phantomWallet = ({
   shimDisconnect,
 }: PhantomWalletOptions): Wallet => {
   return {
+    id: 'phantom',
+    name: 'Phantom',
+    iconUrl: async () => (await import('./phantomWallet.svg')).default,
+    iconBackground: '#551BF9',
+    installed:
+      (typeof window !== 'undefined' &&
+        !!((window as any).phantom as any)?.ethereum) ||
+      undefined,
+    downloadUrls: {
+      android: 'https://play.google.com/store/apps/details?id=app.phantom',
+      browserExtension: 'https://phantom.app/download',
+      ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
+    },
     createConnector: () => {
       const getProvider = () =>
         typeof window !== 'undefined'
@@ -52,18 +66,5 @@ export const phantomWallet = ({
         },
       };
     },
-    downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=app.phantom',
-      browserExtension: 'https://phantom.app/download',
-      ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
-    },
-    iconBackground: '#551BF9',
-    iconUrl: async () => (await import('./phantomWallet.svg')).default,
-    id: 'phantom',
-    installed:
-      (typeof window !== 'undefined' &&
-        !!((window as any).phantom as any)?.ethereum) ||
-      undefined,
-    name: 'Phantom',
   };
 };
