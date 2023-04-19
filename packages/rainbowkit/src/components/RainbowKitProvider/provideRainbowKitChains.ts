@@ -5,9 +5,12 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrum'
-  | 'arbitrumRinkeby'
+  | 'arbitrumGoerli'
   | 'avalanche'
   | 'avalancheFuji'
+  | 'baseGoerli'
+  | 'bsc'
+  | 'bscTestnet'
   | 'goerli'
   | 'hardhat'
   | 'kovan'
@@ -41,6 +44,16 @@ const avalancheIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/avalanche.svg')).default,
 };
 
+const baseIcon: IconMetadata = {
+  iconBackground: '#0052ff',
+  iconUrl: async () => (await import('./chainIcons/base.svg')).default,
+};
+
+const bscIcon: IconMetadata = {
+  iconBackground: '#ebac0e',
+  iconUrl: async () => (await import('./chainIcons/bsc.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -63,9 +76,12 @@ const polygonIcon: IconMetadata = {
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, ...arbitrumIcon },
-  arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
+  arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
+  baseGoerli: { chainId: 84531, ...baseIcon },
+  bsc: { chainId: 56, ...bscIcon },
+  bscTestnet: { chainId: 97, ...bscIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   kovan: { chainId: 42, ...ethereumIcon },

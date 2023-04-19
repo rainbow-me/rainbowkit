@@ -1,5 +1,108 @@
 # example
 
+## 0.0.55
+
+### Patch Changes
+
+- Updated dependencies [aef9643]
+- Updated dependencies [532b117]
+  - @rainbow-me/rainbowkit@0.12.8
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+
+## 0.0.54
+
+### Patch Changes
+
+- Updated dependencies [4ef5c51]
+  - @rainbow-me/rainbowkit@0.12.7
+
+## 0.0.53
+
+### Patch Changes
+
+- Updated dependencies [d35809e]
+  - @rainbow-me/rainbowkit@0.12.6
+
+## 0.0.52
+
+### Patch Changes
+
+- Updated dependencies [2b4ede4]
+- Updated dependencies [6a01368]
+- Updated dependencies [936b523]
+- Updated dependencies [7f669bd]
+  - @rainbow-me/rainbowkit@0.12.5
+
+## 0.0.51
+
+### Patch Changes
+
+- Updated dependencies [9b93f56]
+  - @rainbow-me/rainbowkit@0.12.4
+
+## 0.0.50
+
+### Patch Changes
+
+- Updated dependencies [e7f1bec]
+- Updated dependencies [fe4f356]
+  - @rainbow-me/rainbowkit@0.12.3
+
+## 0.0.49
+
+### Patch Changes
+
+- Updated dependencies [2a1d230]
+- Updated dependencies [429a3c7]
+  - @rainbow-me/rainbowkit@0.12.2
+
+## 0.0.48
+
+### Patch Changes
+
+- Updated dependencies [3399df5]
+- Updated dependencies [8f01a12]
+  - @rainbow-me/rainbowkit@0.12.1
+
+## 0.0.47
+
+### Patch Changes
+
+- Updated dependencies [9838acf]
+  - @rainbow-me/rainbowkit@0.12.0
+
+## 0.0.46
+
+### Patch Changes
+
+- Updated dependencies [924ae82]
+- Updated dependencies [5e233ea]
+  - @rainbow-me/rainbowkit@0.11.1
+
+## 0.0.45
+
+### Patch Changes
+
+- Updated dependencies [1876ba0]
+  - @rainbow-me/rainbowkit@0.11.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.8
+
+## 0.0.44
+
+### Patch Changes
+
+- Updated dependencies [355402b]
+  - @rainbow-me/rainbowkit@0.10.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.7
+
+## 0.0.43
+
+### Patch Changes
+
+- Updated dependencies [49f0ec9]
+  - @rainbow-me/rainbowkit@0.9.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.6
+
 ## 0.0.42
 
 ### Patch Changes
@@ -127,7 +230,7 @@
 - Updated dependencies [737a1d6]
 - Updated dependencies [737a1d6]
 - Updated dependencies [488c5a1]
-  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.6
   - @rainbow-me/rainbowkit@0.5.0
 
 ## 0.0.28

@@ -564,6 +564,7 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
+  const { extension } = wallet;
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -597,7 +598,13 @@ export function DownloadOptionsDetail({
           description="Access your wallet right from your favorite web browser."
           iconUrl={getBrowserSrc}
           isCompact={isCompact}
-          onAction={() => changeWalletStep(WalletStep.InstructionsExtension)}
+          onAction={() =>
+            changeWalletStep(
+              extension?.instructions
+                ? WalletStep.InstructionsExtension
+                : WalletStep.Connect
+            )
+          }
           title={`${wallet.name} for ${browser}`}
           url={wallet?.downloadUrls?.browserExtension}
           variant="browser"

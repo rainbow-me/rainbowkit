@@ -1,5 +1,39 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.10
+
+### Patch Changes
+
+- aef9643: Support for WalletConnect Cloud `projectId`
+
+## 0.1.9
+
+### Patch Changes
+
+- 9838acf: Updated `wagmi` to `0.12.x`
+
+## 0.1.8
+
+### Patch Changes
+
+- 924ae82: Updated `wagmi` to `>=0.11.7`
+
+- cf62d10: Fix next-app template by removing `alchemyProvider` in favor of `publicProvider`
+
+  The `alchemyProvider` public API key provided by Alchemy and the Ethers project has been deprecated. Examples and templates now favor the `publicProvider` exclusively.
+
+## 0.1.7
+
+### Patch Changes
+
+- 1876ba0: Updated `wagmi` to `0.11.x`
+
+## 0.1.6
+
+### Patch Changes
+
+- 355402b: Updated `wagmi` to `0.10.x`
+
 ## 0.1.5
 
 ### Patch Changes

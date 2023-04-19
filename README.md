@@ -19,9 +19,9 @@ You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https:
 ```bash
 npm init @rainbow-me/rainbowkit@latest
 # or
-yarn create @rainbow-me/rainbowkit@latest
-# or
 pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
 ```
 
 ## Documentation

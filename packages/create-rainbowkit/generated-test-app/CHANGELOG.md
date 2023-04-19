@@ -1,5 +1,103 @@
 # generated-test-app
 
+## 0.1.47
+
+### Patch Changes
+
+- Updated dependencies [aef9643]
+  - @rainbow-me/rainbowkit@0.12.8
+
+## 0.1.46
+
+### Patch Changes
+
+- Updated dependencies [4ef5c51]
+  - @rainbow-me/rainbowkit@0.12.7
+
+## 0.1.45
+
+### Patch Changes
+
+- Updated dependencies [d35809e]
+  - @rainbow-me/rainbowkit@0.12.6
+
+## 0.1.44
+
+### Patch Changes
+
+- Updated dependencies [2b4ede4]
+- Updated dependencies [6a01368]
+- Updated dependencies [936b523]
+- Updated dependencies [7f669bd]
+  - @rainbow-me/rainbowkit@0.12.5
+
+## 0.1.43
+
+### Patch Changes
+
+- Updated dependencies [9b93f56]
+  - @rainbow-me/rainbowkit@0.12.4
+
+## 0.1.42
+
+### Patch Changes
+
+- Updated dependencies [e7f1bec]
+- Updated dependencies [fe4f356]
+  - @rainbow-me/rainbowkit@0.12.3
+
+## 0.1.41
+
+### Patch Changes
+
+- Updated dependencies [2a1d230]
+- Updated dependencies [429a3c7]
+  - @rainbow-me/rainbowkit@0.12.2
+
+## 0.1.40
+
+### Patch Changes
+
+- Updated dependencies [3399df5]
+- Updated dependencies [8f01a12]
+  - @rainbow-me/rainbowkit@0.12.1
+
+## 0.1.39
+
+### Patch Changes
+
+- Updated dependencies [9838acf]
+  - @rainbow-me/rainbowkit@0.12.0
+
+## 0.1.38
+
+### Patch Changes
+
+- Updated dependencies [924ae82]
+- Updated dependencies [5e233ea]
+  - @rainbow-me/rainbowkit@0.11.1
+
+## 0.1.37
+
+### Patch Changes
+
+- Updated dependencies [1876ba0]
+  - @rainbow-me/rainbowkit@0.11.0
+
+## 0.1.36
+
+### Patch Changes
+
+- Updated dependencies [355402b]
+  - @rainbow-me/rainbowkit@0.10.0
+
+## 0.1.35
+
+### Patch Changes
+
+- Updated dependencies [49f0ec9]
+  - @rainbow-me/rainbowkit@0.9.0
+
 ## 0.1.34
 
 ### Patch Changes
