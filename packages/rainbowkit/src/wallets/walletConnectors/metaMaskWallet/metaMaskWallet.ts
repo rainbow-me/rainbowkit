@@ -26,6 +26,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   if (ethereum.isPortal) return false;
   if (ethereum.isTokenPocket) return false;
   if (ethereum.isTokenary) return false;
+  if (ethereum.isRabby) return false;
   return true;
 }
 
