@@ -38,7 +38,7 @@ const rinkeby: Chain = {
   testnet: true,
 };
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [rinkeby],
   [publicProvider()]
 );
@@ -69,8 +69,8 @@ const connectors = connectorsForWallets([
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

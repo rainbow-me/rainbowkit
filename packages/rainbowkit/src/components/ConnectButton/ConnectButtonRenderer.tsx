@@ -60,8 +60,8 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const mounted = useIsMounted();
   const { address } = useAccount();
-  const ensAvatar = useMainnetEnsAvatar(address);
   const ensName = useMainnetEnsName(address);
+  const ensAvatar = useMainnetEnsAvatar(ensName);
   const { data: balanceData } = useBalance({ address });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();

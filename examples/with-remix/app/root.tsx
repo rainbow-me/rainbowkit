@@ -64,7 +64,7 @@ export default function App() {
   const [{ client, chains }] = useState(() => {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
-    const { chains, provider } = configureChains(
+    const { chains, publicClient } = configureChains(
       [mainnet, polygon, optimism, arbitrum, ...testChains],
       [publicProvider()]
     );
@@ -76,9 +76,9 @@ export default function App() {
     });
 
     const client = createClient({
-      provider,
-      connectors,
       autoConnect: true,
+      connectors,
+      publicClient,
     });
 
     return {

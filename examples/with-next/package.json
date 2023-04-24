@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "ethers": "^5.6.8",
     "next": "^12.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^0.12.13"
+    "viem": "~0.3.9",
+    "wagmi": "0.0.0-20230424012123"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
