@@ -1,7 +1,7 @@
-import { Ethereum } from 'wagmi';
+import { WindowProvider } from 'wagmi';
 
 declare global {
   interface Window {
-    ethereum?: Ethereum;
+    ethereum?: WindowProvider;
   }
 }
