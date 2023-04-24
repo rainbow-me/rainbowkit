@@ -1,4 +1,4 @@
-import { Ethereum } from '@wagmi/core';
+import { Ethereum } from 'wagmi';
 
 declare global {
   interface Window {
