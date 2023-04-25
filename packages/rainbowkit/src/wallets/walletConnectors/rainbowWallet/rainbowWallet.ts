@@ -41,7 +41,7 @@ export const rainbowWallet = ({
     installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit',
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit&utm_source=rainbowkit',
       ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
       qrCode:
         'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
