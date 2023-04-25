@@ -27,10 +27,11 @@ type WalletConnectLegacyConnectorOptions =
 
 function createConnector(
   version: WalletConnectVersion,
-  options: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
+  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
 ) {
-  const connector = new WalletConnectLegacyConnector(options);
-  sharedConnectors.set(JSON.stringify(options), connector);
+  // ignoring `version` until v2 delayed uri fetch changes are merged
+  const connector = new WalletConnectLegacyConnector(config);
+  sharedConnectors.set(JSON.stringify(config), connector);
   return connector;
 }
 
