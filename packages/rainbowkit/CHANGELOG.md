@@ -1,5 +1,30 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.10
+
+### Patch Changes
+
+- ecaa85f: Support for `options` customization for `walletConnectWallet`
+
+  **Example usage**
+
+  ```tsx
+  walletConnectWallet(options: {
+    projectId: string;
+    chains: Chain[];
+    options?: {
+      bridge?: string;
+      qrcode?: boolean;
+      qrcodeModalOptions?: {
+        desktopLinks?: string[];
+        mobileLinks: string[];
+      };
+    }
+  });
+  ```
+
+  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options for Web3Modal v2.
+
 ## 0.12.9
 
 ### Patch Changes

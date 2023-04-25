@@ -1,5 +1,13 @@
 # example
 
+## 0.0.57
+
+### Patch Changes
+
+- Updated dependencies [ecaa85f]
+  - @rainbow-me/rainbowkit@0.12.10
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+
 ## 0.0.56
 
 ### Patch Changes
