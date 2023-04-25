@@ -1,41 +1,80 @@
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-redeclare */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+
 type SerializedOptions = string;
 const sharedConnectors = new Map<
   SerializedOptions,
-  WalletConnectConnector | WalletConnectLegacyConnector
+  WalletConnectLegacyConnector | WalletConnectConnector
 >();
 
-type WalletConnectConnectorOptions = ConstructorParameters<
-  typeof WalletConnectConnector | typeof WalletConnectLegacyConnector
->[0];
+type WalletConnectVersion = '1' | '2';
 
-function createConnector(options: WalletConnectConnectorOptions) {
-  const connector = new WalletConnectLegacyConnector(options);
-  sharedConnectors.set(JSON.stringify(options), connector);
+type WalletConnectConnectorConfig = ConstructorParameters<
+  typeof WalletConnectConnector
+>[0];
+// @ts-ignore
+type WalletConnectConnectorOptions = WalletConnectConnectorConfig['options'];
+
+type WalletConnectLegacyConnectorConfig = ConstructorParameters<
+  typeof WalletConnectLegacyConnector
+>[0];
+type WalletConnectLegacyConnectorOptions =
+  // @ts-ignore
+  WalletConnectLegacyConnectorConfig['options'];
+
+function createConnector(
+  version: WalletConnectVersion,
+  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
+) {
+  // ignoring `version` until v2 delayed uri fetch changes are merged
+  const connector = new WalletConnectLegacyConnector(config);
+  sharedConnectors.set(JSON.stringify(config), connector);
   return connector;
 }
 
+export function getWalletConnectConnector(config: {
+  chains: Chain[];
+  projectId?: string; // to prepare for migration to v2
+  options?: WalletConnectLegacyConnectorOptions;
+}): WalletConnectLegacyConnector;
+
+export function getWalletConnectConnector(config: {
+  version: '1';
+  chains: Chain[];
+  options?: WalletConnectLegacyConnectorOptions;
+}): WalletConnectLegacyConnector;
+
+export function getWalletConnectConnector(config: {
+  version: '2';
+  chains: Chain[];
+  projectId: string;
+  options?: WalletConnectConnectorOptions;
+}): WalletConnectConnector;
+
 export function getWalletConnectConnector({
   chains,
+  options = {},
   projectId,
-  qrcode = false,
+  version = '1',
 }: {
   chains: Chain[];
   projectId?: string;
-  qrcode?: boolean;
-}) {
-  const options: WalletConnectConnectorOptions = {
+  version?: WalletConnectVersion;
+  options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
+}): any {
+  const config = {
     chains,
     options: {
       projectId,
-      qrcode,
+      ...options,
     },
   };
 
-  const serializedOptions = JSON.stringify(options);
-  const sharedConnector = sharedConnectors.get(serializedOptions);
+  const serializedConfig = JSON.stringify(config);
+  const sharedConnector = sharedConnectors.get(serializedConfig);
 
-  return sharedConnector ?? createConnector(options);
+  return sharedConnector ?? createConnector(version, config);
 }

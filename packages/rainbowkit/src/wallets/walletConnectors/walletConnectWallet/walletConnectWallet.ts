@@ -21,9 +21,12 @@ export const walletConnectWallet = ({
     const ios = isIOS();
 
     const connector = getWalletConnectConnector({
-      projectId,
+      version: '1',
       chains,
-      qrcode: ios,
+      options: {
+        qrcode: ios,
+        projectId,
+      },
     });
 
     const getUri = async () => (await connector.getProvider()).connector.uri;
