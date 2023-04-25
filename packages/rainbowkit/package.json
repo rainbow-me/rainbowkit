@@ -61,6 +61,7 @@
     "vitest": "^0.30.0"
   },
   "dependencies": {
+    "@blocto/sdk": "^0.4.3",
     "@vanilla-extract/css": "1.9.1",
     "@vanilla-extract/dynamic": "2.0.2",
     "@vanilla-extract/sprinkles": "1.5.0",

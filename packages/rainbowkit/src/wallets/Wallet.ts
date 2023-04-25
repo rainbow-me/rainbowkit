@@ -55,6 +55,7 @@ export type Wallet<C extends Connector = Connector> = {
     }[];
   }) => boolean;
   createConnector: () => RainbowKitConnector<C>;
+  closeModalOnConnecting?: boolean;
 };
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];

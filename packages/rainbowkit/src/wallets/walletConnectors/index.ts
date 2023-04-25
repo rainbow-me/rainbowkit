@@ -1,5 +1,6 @@
 import { argentWallet } from './argentWallet/argentWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
+import { bloctoWallet } from './bloctoWallet/bloctoWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
@@ -18,10 +19,10 @@ import { tahoWallet } from './tahoWallet/tahoWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
-import { zerionWallet } from './zerionWallet/zerionWallet';
-
+import { zerionWallet } from './zerionWallet/zerionWallet'
 export {
   argentWallet,
+  bloctoWallet,
   bitskiWallet,
   braveWallet,
   coinbaseWallet,
