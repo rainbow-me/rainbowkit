@@ -7,7 +7,7 @@ import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 type SerializedOptions = string;
 const sharedConnectors = new Map<
   SerializedOptions,
-  WalletConnectLegacyConnector
+  WalletConnectLegacyConnector | WalletConnectConnector
 >();
 
 type WalletConnectVersion = '1' | '2';
