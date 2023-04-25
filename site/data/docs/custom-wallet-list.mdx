@@ -84,8 +84,20 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 walletConnectWallet(options: {
   projectId: string;
   chains: Chain[];
+  options?: {
+    bridge?: string;
+    qrcode?: boolean;
+    qrcodeModalOptions?: {
+      desktopLinks?: string[];
+      mobileLinks: string[];
+    };
+  }
 });
 ```
+
+Additional documentation for supported `options` can be found [here](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional).
+
+In preparation for the migration to WalletConnect v2, the `options` for Web3Modal v2 are also supported. Reference the [Ethereum Provider docs](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization). The required `projectId` is automatically pre-populated by RainbowKit.
 
 ##### Injected Wallet
 
