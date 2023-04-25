@@ -57,12 +57,10 @@ export function getWalletConnectConnector({
   chains,
   options = {},
   projectId,
-  qrcode = false,
   version = '1',
 }: {
   chains: Chain[];
   projectId?: string;
-  qrcode?: boolean;
   version?: WalletConnectVersion;
   options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
 }): any {
@@ -70,7 +68,6 @@ export function getWalletConnectConnector({
     chains,
     options: {
       projectId,
-      qrcode,
       ...options,
     },
   };
