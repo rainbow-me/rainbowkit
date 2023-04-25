@@ -14,8 +14,7 @@ export interface MetaMaskWalletOptions {
 function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
-  const isMetaMask = !!ethereum?.isMetaMask;
-  if (!isMetaMask) return false;
+  if (!ethereum?.isMetaMask) return false;
   // Brave tries to make itself look like MetaMask
   // Could also try RPC `web3_clientVersion` if following is unreliable
   if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state)
@@ -66,7 +65,8 @@ export const metaMaskWallet = ({
   // in window.providers scenarios with multiple wallets injected.
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
-    (window.ethereum?.isMetaMask || providers?.some(isMetaMask));
+    typeof window.ethereum !== 'undefined' &&
+    (window.ethereum.providers?.some(isMetaMask) || window.ethereum.isMetaMask);
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
   return {
