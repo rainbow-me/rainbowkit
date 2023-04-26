@@ -18,6 +18,10 @@ describe('getWalletConnectConnector', () => {
       expect(connector.id).toBe('walletConnectLegacy');
       expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
     });
+    it('qrcode defaults', () => {
+      const connector = getWalletConnectConnector({ chains });
+      expect(connector.options.qrcode).toBe(false);
+    });
   });
 
   describe("version '1'", () => {
@@ -28,6 +32,7 @@ describe('getWalletConnectConnector', () => {
       });
       expect(connector.id).toBe('walletConnectLegacy');
       expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
+      expect(connector.options.qrcode).toBe(false);
     });
     it('with options', () => {
       const connector = getWalletConnectConnector({
@@ -43,6 +48,7 @@ describe('getWalletConnectConnector', () => {
       });
       expect(connector.id).toBe('walletConnectLegacy');
       expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
+      expect(connector.options.qrcode).toBe(true);
     });
   });
 
