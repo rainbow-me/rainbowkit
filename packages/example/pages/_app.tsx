@@ -17,12 +17,19 @@ import {
 import {
   argentWallet,
   bitskiWallet,
+  dawnWallet,
   enkryptWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
+  phantomWallet,
+  rabbyWallet,
+  tahoWallet,
   trustWallet,
+  xdefiWallet,
+  zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -69,9 +76,43 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
+  projectId,
+});
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ chains, projectId }),
+      bitskiWallet({ chains }),
+      enkryptWallet({ chains }),
+      dawnWallet({ chains }),
+      imTokenWallet({ chains, projectId }),
+      ledgerWallet({ chains, projectId }),
+      mewWallet({ chains }),
+      okxWallet({ chains, projectId }),
+      omniWallet({ chains, projectId }),
+      phantomWallet({ chains }),
+      rabbyWallet({ chains }),
+      tahoWallet({ chains }),
+      trustWallet({ chains, projectId }),
+      xdefiWallet({ chains }),
+      zerionWallet({ chains, projectId }),
+    ],
+  },
+]);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
 });
 
 const demoAppInfo = {
@@ -105,30 +146,6 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
     </div>
   );
 };
-
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ chains }),
-      enkryptWallet({ chains }),
-      imTokenWallet({ chains }),
-      ledgerWallet({ chains }),
-      mewWallet({ chains }),
-      omniWallet({ chains }),
-      trustWallet({ chains }),
-      bitskiWallet({ chains }),
-    ],
-  },
-]);
-
-const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider,
-  webSocketProvider,
-});
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to the RainbowKit Demo',
@@ -550,6 +567,7 @@ export default function App(appProps: AppProps) {
     <>
       <Head>
         <title>RainbowKit Example</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
         <WagmiConfig client={wagmiClient}>

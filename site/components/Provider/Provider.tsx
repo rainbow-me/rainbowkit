@@ -23,9 +23,12 @@ export const { chains, provider } = configureChains(
   ]
 );
 
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
+
 const { wallets } = getDefaultWallets({
   appName: 'rainbowkit.com',
   chains,
+  projectId,
 });
 
 const connectors = connectorsForWallets([
@@ -33,11 +36,11 @@ const connectors = connectorsForWallets([
   {
     groupName: 'More',
     wallets: [
-      argentWallet({ chains }),
-      trustWallet({ chains }),
-      omniWallet({ chains }),
-      imTokenWallet({ chains }),
-      ledgerWallet({ chains }),
+      argentWallet({ chains, projectId }),
+      trustWallet({ chains, projectId }),
+      omniWallet({ chains, projectId }),
+      imTokenWallet({ chains, projectId }),
+      ledgerWallet({ chains, projectId }),
     ],
   },
 ]);

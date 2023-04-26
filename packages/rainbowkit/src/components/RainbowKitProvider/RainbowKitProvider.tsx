@@ -68,16 +68,16 @@ export interface RainbowKitProviderProps {
 const defaultTheme = lightTheme();
 
 export function RainbowKitProvider({
-  chains,
-  initialChain,
-  id,
-  theme = defaultTheme,
-  children,
   appInfo,
-  showRecentTransactions = false,
-  coolMode = false,
   avatar,
+  chains,
+  children,
+  coolMode = false,
+  id,
+  initialChain,
   modalSize = ModalSizeOptions.WIDE,
+  showRecentTransactions = false,
+  theme = defaultTheme,
 }: RainbowKitProviderProps) {
   usePreloadImages();
 

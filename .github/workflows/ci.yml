@@ -3,7 +3,7 @@ name: CI
 on: [pull_request, push]
 
 env:
-  pnpm: 7
+  pnpm: 8
 
 jobs:
   tests:
@@ -15,13 +15,13 @@ jobs:
         node: [lts/*]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Cache .pnpm-store
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-node${{ matrix.node }}-${env.pnpm}-${{ hashFiles('**/pnpm-lock.yaml') }}

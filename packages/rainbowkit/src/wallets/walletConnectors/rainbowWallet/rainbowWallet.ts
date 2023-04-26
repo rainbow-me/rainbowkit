@@ -7,6 +7,7 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
+  projectId?: string;
   chains: Chain[];
 }
 
@@ -23,6 +24,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 
 export const rainbowWallet = ({
   chains,
+  projectId,
   ...options
 }: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
@@ -36,14 +38,18 @@ export const rainbowWallet = ({
     name: 'Rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
+    installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
     downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=me.rainbow',
-      ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
-      qrCode: 'https://rainbow.download',
+      android:
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit',
+      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
+      qrCode:
+        'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
+      browserExtension: 'https://rainbow.me/extension?utm_source=rainbowkit',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
             options,
@@ -65,7 +71,7 @@ export const rainbowWallet = ({
               getUri,
               instructions: {
                 learnMoreUrl:
-                  'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
+                  'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
                 steps: [
                   {
                     description:

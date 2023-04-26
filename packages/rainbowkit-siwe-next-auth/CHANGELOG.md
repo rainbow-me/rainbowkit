@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
+## 0.1.9
+
+### Patch Changes
+
+- 532b117: Fixed an issue with peer dependencies versioning
+
 ## 0.1.8
 
 ### Patch Changes

@@ -13,13 +13,14 @@ export const injectedWallet = ({
   ...options
 }: InjectedWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'injected',
-  name: 'Injected Wallet',
-  iconUrl: async () => (await import('./injectedWallet.png')).default,
+  name: 'Browser Wallet',
+  iconUrl: async () => (await import('./injectedWallet.svg')).default,
   iconBackground: '#fff',
   hidden: ({ wallets }) =>
     wallets.some(
       wallet =>
         wallet.installed &&
+        wallet.name === wallet.connector.name &&
         (wallet.connector instanceof InjectedConnector ||
           wallet.id === 'coinbase')
     ),

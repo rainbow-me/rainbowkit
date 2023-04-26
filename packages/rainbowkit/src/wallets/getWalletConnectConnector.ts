@@ -1,13 +1,14 @@
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 type SerializedOptions = string;
 const sharedConnectors = new Map<
   SerializedOptions,
-  WalletConnectLegacyConnector
+  WalletConnectConnector | WalletConnectLegacyConnector
 >();
 
 type WalletConnectConnectorOptions = ConstructorParameters<
-  typeof WalletConnectLegacyConnector
+  typeof WalletConnectConnector | typeof WalletConnectLegacyConnector
 >[0];
 
 function createConnector(options: WalletConnectConnectorOptions) {
@@ -18,14 +19,17 @@ function createConnector(options: WalletConnectConnectorOptions) {
 
 export function getWalletConnectConnector({
   chains,
+  projectId,
   qrcode = false,
 }: {
   chains: Chain[];
+  projectId?: string;
   qrcode?: boolean;
 }) {
   const options: WalletConnectConnectorOptions = {
     chains,
     options: {
+      projectId,
       qrcode,
     },
   };
