@@ -58,7 +58,7 @@
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.1.0",
-    "vitest": "^0.5.0"
+    "vitest": "^0.30.0"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.9.1",
