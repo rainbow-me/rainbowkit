@@ -8,16 +8,16 @@ FoxWallet Support
 
 ```tsx
 import {
-    getDefaultWallets,
-    connectorsForWallets,
+  getDefaultWallets,
+  connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 const { wallets } = getDefaultWallets({ appName, projectId, chains });
 const connectors = connectorsForWallets([
-    ...wallets,
-    {
-        groupName: 'Other',
-        wallets: [foxWallet({ chains, projectId })],
-    },
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [foxWallet({ chains, projectId })],
+  },
 ]);
 ```
