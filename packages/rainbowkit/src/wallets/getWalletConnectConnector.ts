@@ -15,13 +15,14 @@ type WalletConnectVersion = '1' | '2';
 type WalletConnectConnectorConfig = ConstructorParameters<
   typeof WalletConnectConnector
 >[0];
-// @ts-ignore
-type WalletConnectConnectorOptions = WalletConnectConnectorConfig['options'];
+export type WalletConnectConnectorOptions =
+  // @ts-ignore
+  WalletConnectConnectorConfig['options'];
 
 type WalletConnectLegacyConnectorConfig = ConstructorParameters<
   typeof WalletConnectLegacyConnector
 >[0];
-type WalletConnectLegacyConnectorOptions =
+export type WalletConnectLegacyConnectorOptions =
   // @ts-ignore
   WalletConnectLegacyConnectorConfig['options'];
 
