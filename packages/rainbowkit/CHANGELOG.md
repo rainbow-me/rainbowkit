@@ -1,5 +1,28 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.11
+
+### Patch Changes
+
+- 0469e00: Support for `options` customization for `walletConnectWallet`
+
+  **Example usage**
+
+  ```tsx
+  walletConnectWallet(options: {
+    projectId: string;
+    chains: Chain[];
+    options?: {
+      qrcodeModalOptions?: {
+        desktopLinks?: string[];
+        mobileLinks?: string[];
+      };
+    }
+  });
+  ```
+
+  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+
 ## 0.12.10
 
 ## 0.12.9
