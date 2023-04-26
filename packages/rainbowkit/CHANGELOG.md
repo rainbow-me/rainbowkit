@@ -13,11 +13,9 @@
     projectId: string;
     chains: Chain[];
     options?: {
-      bridge?: string;
-      qrcode?: boolean;
       qrcodeModalOptions?: {
         desktopLinks?: string[];
-        mobileLinks: string[];
+        mobileLinks?: string[];
       };
     }
   });
