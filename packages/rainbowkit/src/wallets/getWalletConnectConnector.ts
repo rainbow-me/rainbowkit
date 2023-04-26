@@ -70,6 +70,7 @@ export function getWalletConnectConnector({
     chains,
     options: {
       projectId,
+      qrcode: false,
       ...options,
     },
   };
