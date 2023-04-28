@@ -14,14 +14,14 @@
     "ethers": "^5.7.1",
     "next": "^12.1.6",
     "next-auth": "^4.10.2",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "siwe": "^1.1.6",
     "wagmi": "^0.12.12"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
-    "@types/react": "^18.0.9",
+    "@types/react": "^18.2.0",
     "eslint": "^8.15.0",
     "eslint-config-next": "^12.1.6",
     "typescript": "^4.9.4"

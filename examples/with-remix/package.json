@@ -17,15 +17,15 @@
     "@remix-run/serve": "^1.5.1",
     "buffer-polyfill": "npm:buffer@^6.0.3",
     "ethers": "^5.7.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "wagmi": "^0.12.12"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",
     "@remix-run/eslint-config": "^1.5.1",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
     "eslint": "^8.15.0",
     "typescript": "^4.9.4"
   },
