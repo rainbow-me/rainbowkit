@@ -35,7 +35,7 @@ export const ledgerWallet = ({
           ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
           qrCode: 'https://ledger.com/ledger-live',
         },
-    installed: () =>
+    installed:
       typeof window !== 'undefined' && window.ethereum?.isLedgerConnect,
     createConnector: () => {
       const connector = isLedgerExtensionCompatible
