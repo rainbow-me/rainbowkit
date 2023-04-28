@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Connector, useConnect } from 'wagmi';
 import { flatten } from '../utils/flatten';
 import { indexBy } from '../utils/indexBy';
@@ -18,17 +17,12 @@ export interface WalletConnector extends WalletInstance {
   recent: boolean;
 }
 
-const assembleWalletConnectors = async ({
-  connectAsync,
-  defaultConnectors,
-  intialChainId,
-  rainbowKitChains,
-}: {
-  connectAsync: ReturnType<typeof useConnect>['connectAsync'];
-  defaultConnectors: Connector[];
-  intialChainId: number | undefined;
-  rainbowKitChains: ReturnType<typeof useRainbowKitChains>;
-}): Promise<WalletConnector[]> => {
+export function useWalletConnectors(): WalletConnector[] {
+  const rainbowKitChains = useRainbowKitChains();
+  const intialChainId = useInitialChainId();
+  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
+  const defaultConnectors = defaultConnectors_untyped as Connector[];
+
   async function connectWallet(walletId: string, connector: Connector) {
     const walletChainId = await connector.getChainId();
     const result = await connectAsync({
@@ -50,16 +44,11 @@ const assembleWalletConnectors = async ({
     return result;
   }
 
-  const _walletInstances = flatten(
+  const walletInstances = flatten(
     defaultConnectors.map(connector => {
       return (connector._wallets as WalletInstance[]) ?? [];
     })
   ).sort((a, b) => a.index - b.index);
-
-  const walletInstances = _walletInstances.filter(
-    walletInstance =>
-      walletInstance.hidden?.({ wallets: _walletInstances }) !== true
-  );
 
   const walletInstanceById = indexBy(
     walletInstances,
@@ -75,17 +64,15 @@ const assembleWalletConnectors = async ({
   const groupedWallets: WalletInstance[] = [
     ...recentWallets,
     ...walletInstances.filter(
-      walletInstance =>
-        !recentWallets.includes(walletInstance) &&
-        !walletInstance.hidden?.({ wallets: walletInstances })
+      walletInstance => !recentWallets.includes(walletInstance)
     ),
   ];
 
   const walletConnectors: WalletConnector[] = [];
 
-  for (const wallet of groupedWallets) {
+  groupedWallets.forEach((wallet: WalletInstance) => {
     if (!wallet) {
-      break;
+      return;
     }
 
     const recent = recentWallets.includes(wallet);
@@ -98,12 +85,7 @@ const assembleWalletConnectors = async ({
         wallet.connector.on('message', ({ type }: { type: string }) =>
           type === 'connecting' ? fn() : undefined
         ),
-      ready:
-        ((typeof wallet.installed === 'function'
-          ? wallet.installed?.()
-          : wallet.installed) ??
-          true) &&
-        (wallet.connector.ready || (await wallet.connector.getProvider())),
+      ready: (wallet.installed ?? true) && wallet.connector.ready,
       recent,
       showWalletConnectModal: wallet.walletConnectModalConnector
         ? async () => {
@@ -123,32 +105,6 @@ const assembleWalletConnectors = async ({
           }
         : undefined,
     });
-  }
-  return walletConnectors;
-};
-
-export function useWalletConnectors(): WalletConnector[] {
-  const rainbowKitChains = useRainbowKitChains();
-  const intialChainId = useInitialChainId();
-  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
-  const defaultConnectors = defaultConnectors_untyped as Connector[];
-
-  const [walletConnectors, setWalletConnectors] = useState<WalletConnector[]>(
-    []
-  );
-
-  useEffect(() => {
-    const fetchWalletConnectors = async () => {
-      const _walletConnectors = await assembleWalletConnectors({
-        connectAsync,
-        defaultConnectors,
-        intialChainId,
-        rainbowKitChains,
-      });
-      setWalletConnectors(_walletConnectors);
-    };
-    fetchWalletConnectors();
-  }, [connectAsync, defaultConnectors, intialChainId, rainbowKitChains]);
-
+  });
   return walletConnectors;
 }
