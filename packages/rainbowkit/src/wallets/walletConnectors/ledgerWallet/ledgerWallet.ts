@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isSafari } from '../../../utils/browsers';
@@ -15,6 +15,7 @@ export interface LedgerWalletOptions {
 
 export const ledgerWallet = ({
   chains,
+  projectId,
   ...options
 }: LedgerWalletOptions & InjectedConnectorOptions): Wallet => {
   const isLedgerExtensionCompatible = (isIOS() || isMacOS()) && isSafari();
@@ -43,7 +44,7 @@ export const ledgerWallet = ({
             chains,
             options,
           })
-        : getWalletConnectConnector({ chains });
+        : getWalletConnectConnector({ projectId, chains });
 
       return {
         connector,
