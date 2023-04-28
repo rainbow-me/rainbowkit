@@ -14,6 +14,7 @@ declare global {
     blocto: BloctoSDK;
   }
 }
+
 export class BloctoConnector extends InjectedConnector {
   readonly ready = typeof window !== 'undefined';
   readonly id = 'blocto';
@@ -83,7 +84,7 @@ export class BloctoConnector extends InjectedConnector {
   }
 
   /**
-   * @see https://github.com/tmm/wagmi/blob/fc94210b67daa91aa164625dfe189d5b6c2f92d4/packages/core/src/connectors/injected.ts#L179
+   * @see https://docs.blocto.app/blocto-sdk/javascript-sdk/evm-sdk/switch-ethereum-chain
    */
   async switchChain(chainId: number) {
     const chain = this.#chains.find(x => x.id === chainId) ?? {
@@ -95,22 +96,23 @@ export class BloctoConnector extends InjectedConnector {
     const provider = await this.getProvider();
     if (!provider) throw new ConnectorNotFoundError();
     try {
-      await provider.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId,
-            rpcUrls: [chain.rpcUrls?.default?.http[0]],
-          },
-        ],
-      });
+      if (
+        provider.switchableNetwork?.rpc_url !== chain.rpcUrls?.default?.http[0]
+      ) {
+        await provider.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId,
+              rpcUrls: [chain.rpcUrls?.default?.http[0]],
+            },
+          ],
+        });
+      }
       await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId }],
       });
-      const listeners = provider?.eventListeners?.chainChanged;
-      listeners[0](chainId);
-      listeners[1]();
       return chain;
     } catch (error) {
       throw new SwitchChainError(error);

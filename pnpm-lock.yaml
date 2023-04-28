@@ -22,9 +22,6 @@ importers:
       '@babel/register':
         specifier: ^7.16.0
         version: 7.16.0(@babel/core@7.16.0)
-      '@blocto/sdk':
-        specifier: ^0.4.3
-        version: 0.4.3
       '@changesets/cli':
         specifier: 2.18.1
         version: 2.18.1
@@ -405,8 +402,8 @@ importers:
   packages/rainbowkit:
     dependencies:
       '@blocto/sdk':
-        specifier: ^0.4.3
-        version: 0.4.3
+        specifier: ^0.4.4
+        version: 0.4.4
       '@vanilla-extract/css':
         specifier: 1.9.1
         version: 1.9.1
@@ -3188,8 +3185,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: false
 
-  /@blocto/sdk@0.4.3:
-    resolution: {integrity: sha512-Dtk19jknv7J4xKOfGwdsp7gdgcCqc2Fg4KIkHHFb8N9iMqFmzFoIizDmX5HzuyBxVhExM8Q61Y0Ndxzutz55mQ==}
+  /@blocto/sdk@0.4.4:
+    resolution: {integrity: sha512-95cY/MvmCiJBxJ6oeXVAtPp2Kwi6r26UN8DoCu54XhvC79Z2qVdyVold6zRSHq4LEUpFec1t188mqCGTvve2/A==}
     peerDependencies:
       '@solana/web3.js': ^1.30.2
       aptos: ^1.3.14
@@ -3199,7 +3196,7 @@ packages:
       aptos:
         optional: true
     dependencies:
-      bs58: 4.0.1
+      bs58: 5.0.0
       buffer: 6.0.3
       eip1193-provider: 1.0.1
       js-sha3: 0.8.0
@@ -3207,6 +3204,7 @@ packages:
       - bufferutil
       - debug
       - utf-8-validate
+    dev: false
 
   /@changesets/apply-release-plan@5.0.5:
     resolution: {integrity: sha512-CxL9dkhzjHiVmXCyHgsLCQj7i/coFTMv/Yy0v6BC5cIWZkQml+lf7zvQqAcFXwY7b54HxRWZPku02XFB53Q0Uw==}
@@ -8417,7 +8415,7 @@ packages:
       '@walletconnect/legacy-utils': 2.0.0
       copy-to-clipboard: 3.3.3
       preact: 10.13.2
-      qrcode: 1.5.1
+      qrcode: 1.5.3
 
   /@walletconnect/legacy-provider@2.0.0:
     resolution: {integrity: sha512-A8xPebMI1A+50HbWwTpFCbwP7G+1NGKdTKyg8BUUg3h3Y9JucpC1W6w/x0v1Xw7qFEqQnz74LoIN/A3ytH9xrQ==}
@@ -9474,6 +9472,10 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
 
+  /base-x@4.0.0:
+    resolution: {integrity: sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==}
+    dev: false
+
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
@@ -9700,6 +9702,12 @@ packages:
     resolution: {integrity: sha512-Ok3Wdf5vOIlBrgCvTq96gBkJw+JUEzdBgyaza5HLtPm7yTHkjRy8+JzNyHF7BHa0bNWOQIp3m5YF0nnFcOIKLw==}
     dependencies:
       base-x: 3.0.9
+
+  /bs58@5.0.0:
+    resolution: {integrity: sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ==}
+    dependencies:
+      base-x: 4.0.0
+    dev: false
 
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
@@ -18388,8 +18396,8 @@ packages:
       yargs: 15.4.1
     dev: false
 
-  /qrcode@1.5.1:
-    resolution: {integrity: sha512-nS8NJ1Z3md8uTjKtP+SGGhfqmTCs5flU/xR623oI0JX+Wepz9R8UrRVCTBTJm3qGw3rH6jJ6MUHjkDx15cxSSg==}
+  /qrcode@1.5.3:
+    resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dependencies:
