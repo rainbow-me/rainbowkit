@@ -78,7 +78,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         // if desktop deep link, wait for uri
         setTimeout(async () => {
           const uri = await getDesktopDeepLink();
-          window.open(uri, safari ? '_parent' : '_self');
+          window.open(uri, safari ? '_blank' : '_self');
         }, 0);
       }
     }
@@ -132,8 +132,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       });
     } else {
       setSelectedWallet(wallet);
-      setInitialWalletStep(WalletStep.None);
-      changeWalletStep(WalletStep.DownloadOptions);
+      changeWalletStep(WalletStep.Connect);
     }
   };
 
@@ -174,7 +173,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
     setWalletStep(newWalletStep);
   };
-  const [initialWalletStep, setInitialWalletStep] = useState<WalletStep | null>(
+  const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
     WalletStep.None
   );
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
@@ -247,8 +246,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         />
       );
       headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
-      headerBackButtonLink =
-        initialWalletStep === WalletStep.None ? null : initialWalletStep;
+      headerBackButtonLink = initialWalletStep;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
