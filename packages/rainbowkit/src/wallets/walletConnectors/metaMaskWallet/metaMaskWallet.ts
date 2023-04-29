@@ -11,7 +11,7 @@ export interface MetaMaskWalletOptions {
   chains: Chain[];
 }
 
-function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
+function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
   const isMetaMask = !!ethereum?.isMetaMask;
@@ -27,6 +27,14 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   if (ethereum.isTokenPocket) return false;
   if (ethereum.isTokenary) return false;
   if (ethereum.isRabby) return false;
+  if (ethereum.isBitKeep) return false;
+  if (ethereum.isBlockWallet) return false;
+  if (ethereum.isMathWallet) return false;
+  if (ethereum.isOkxWallet || ethereum.isOKExWallet) return false;
+  if (ethereum.isOneInchIOSWallet || ethereum.isOneInchAndroidWallet)
+    return false;
+  if (ethereum.isOpera) return false;
+  if (ethereum.isZerion) return false;
   return true;
 }
 
