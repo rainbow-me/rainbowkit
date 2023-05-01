@@ -33,6 +33,7 @@ import {
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import {
@@ -179,7 +180,12 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
-function RainbowKitApp({ Component, pageProps }: AppProps) {
+function RainbowKitApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -560,7 +566,11 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default function App(appProps: AppProps) {
+export default function App(
+  appProps: AppProps<{
+    session: Session;
+  }>
+) {
   return (
     <>
       <Head>
