@@ -7,9 +7,9 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
-    "ethers": "^5.0.0",
-    "next": "^12.1.6",
-    "next-auth": "^4.18.8",
+    "ethers": "^5.6.8",
+    "next": "^12.2.5",
+    "next-auth": "^4.22.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "siwe": "^2.1.4"
