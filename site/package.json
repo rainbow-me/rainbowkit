@@ -41,7 +41,7 @@
     "next-contentlayer": "0.2.8"
   },
   "peerDependencies": {
-    "wagmi": "1.0.0-next.1"
+    "wagmi": "1.0.0-next.2"
   },
   "scripts": {
     "dev": "next dev --port 3001",

@@ -11,7 +11,7 @@ import {
   trustWallet,
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { SessionProvider } from 'next-auth/react';
@@ -56,7 +56,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
@@ -75,7 +75,7 @@ export default function App({
 }>) {
   return (
     <SessionProvider refetchInterval={0} session={pageProps.session}>
-      <WagmiConfig client={wagmiClient}>
+      <WagmiConfig config={wagmiConfig}>
         <RainbowKitSiweNextAuthProvider
           getSiweMessageOptions={getSiweMessageOptions}
         >

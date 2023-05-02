@@ -10,7 +10,7 @@ RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add 
 
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
-- 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
+- 🦄 Built on top of [wagmi](https://wagmi.sh) and [viem](https://viem.sh)
 
 ## Quick start
 

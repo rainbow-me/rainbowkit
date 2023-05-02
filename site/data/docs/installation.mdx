@@ -25,17 +25,17 @@ Alternatively, you can manually integrate RainbowKit into your existing project.
 
 ### Manual setup
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
+Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi ethers@^5
+npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
 > Note: RainbowKit is a [React](https://reactjs.org/) library.
 
 #### Import
 
-Import RainbowKit, wagmi, and ethers.
+Import RainbowKit and wagmi.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -44,7 +44,7 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -52,7 +52,7 @@ import { publicProvider } from 'wagmi/providers/public';
 
 #### Configure
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
+Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config.
 
 > Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
@@ -75,7 +75,7 @@ const { connectors } = getDefaultWallets({
   chains
 });
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   provider
@@ -91,7 +91,7 @@ Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagm
 ```tsx
 const App = () => {
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>

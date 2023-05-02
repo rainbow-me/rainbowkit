@@ -7,7 +7,7 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
-import { createClient, configureChains, WagmiConfig } from 'wagmi';
+import { createConfig, configureChains, WagmiConfig } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -66,7 +66,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
@@ -75,7 +75,7 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
         <Component {...pageProps} />
       </RainbowKitProvider>

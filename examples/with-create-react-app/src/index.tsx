@@ -6,7 +6,7 @@ import './index.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import App from './App';
@@ -28,7 +28,7 @@ const { connectors } = getDefaultWallets({
   chains,
 });
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
@@ -41,7 +41,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         <App />
       </RainbowKitProvider>

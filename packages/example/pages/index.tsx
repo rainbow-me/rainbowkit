@@ -63,10 +63,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
 
   const { config: sendTransactionConfig } = usePrepareSendTransaction({
     enabled: !!address,
-    request: {
-      to: address!,
-      value: 0n,
-    },
+    to: address,
+    value: 0n,
   });
 
   const {

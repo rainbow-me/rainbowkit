@@ -38,7 +38,7 @@ import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import {
   configureChains,
-  createClient,
+  createConfig,
   useDisconnect,
   WagmiConfig,
 } from 'wagmi';
@@ -107,7 +107,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   publicClient,
@@ -578,7 +578,7 @@ export default function App(
         <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiConfig client={wagmiClient}>
+        <WagmiConfig config={wagmiConfig}>
           <RainbowKitApp {...appProps} />
         </WagmiConfig>
       </SessionProvider>
