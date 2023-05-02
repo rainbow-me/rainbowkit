@@ -22,7 +22,7 @@ wagmi v1 requires the `viem` peer dependency. Install it with the following comm
 npm i viem
 ```
 
-Note: wagmi no longer uses the `ethers` package internally. 
+Note: wagmi no longer uses the `ethers` package internally.
 
 **3. Check for breaking changes in `wagmi`**
 
