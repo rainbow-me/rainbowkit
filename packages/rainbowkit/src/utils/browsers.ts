@@ -1,6 +1,9 @@
 export function isSafari(): boolean {
   return (
     typeof navigator !== 'undefined' &&
+    !/fxios\//i.test(navigator.userAgent) && // exclude Firefox on iOS
+    !/opt\//i.test(navigator.userAgent) && // exclude Opera on iOS
+    !/edgios\//i.test(navigator.userAgent) && // exclude Edge on iOS
     /Version\/([0-9._]+).*Safari/.test(navigator.userAgent) // Source: https://github.com/DamonOehlman/detect-browser/blob/master/src/index.ts
   );
 }
