@@ -28,7 +28,7 @@ export const phantomWallet = ({
       qrCode: 'https://phantom.app/download',
       chrome:
         'https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa',
-      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/phantom-app/',
+      firefox: 'https://addons.mozilla.org/firefox/addon/phantom-app/',
       browserExtension: 'https://phantom.app/download',
     },
     createConnector: () => {

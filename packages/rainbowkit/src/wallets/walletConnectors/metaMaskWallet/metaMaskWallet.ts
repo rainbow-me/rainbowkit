@@ -56,8 +56,8 @@ export const metaMaskWallet = ({
       chrome:
         'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',
       edge: 'https://microsoftedge.microsoft.com/addons/detail/metamask/ejbalbakoplchlghecdalmeeeajnimhm',
-      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/ether-metamask',
-      opera: 'https://addons.opera.com/en-gb/extensions/details/metamask-10',
+      firefox: 'https://addons.mozilla.org/firefox/addon/ether-metamask',
+      opera: 'https://addons.opera.com/extensions/details/metamask-10',
       browserExtension: 'https://metamask.io/download',
     },
     createConnector: () => {

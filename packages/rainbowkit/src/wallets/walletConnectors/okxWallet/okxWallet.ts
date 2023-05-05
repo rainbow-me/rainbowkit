@@ -39,7 +39,7 @@ export const okxWallet = ({
       chrome:
         'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       edge: 'https://microsoftedge.microsoft.com/addons/detail/okx-wallet/pbpjkcldjiffchgbbndmhojiacbgflha',
-      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/okexwallet/',
+      firefox: 'https://addons.mozilla.org/firefox/addon/okexwallet/',
       browserExtension: 'https://okx.com/download',
     },
     createConnector: () => {
