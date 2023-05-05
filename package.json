@@ -69,7 +69,7 @@
     "eventemitter3": "^4.0.7",
     "husky": "^7.0.4",
     "next": "^12.2.5",
-    "next-auth": "^4.22.1",
+    "next-auth": "4.20.1",
     "postcss": "^8.4.6",
     "postcss-prefix-selector": "^1.15.0",
     "prettier": "^2.5.0",
