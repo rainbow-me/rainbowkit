@@ -19,7 +19,7 @@ If you haven't already, first set up your [Next.js](https://nextjs.org) project 
 Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth ethers@^5
 ```
 
 ### Set up the provider
