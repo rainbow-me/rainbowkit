@@ -5,7 +5,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { isSafari } from '../../../utils/browsers';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { isMacOS } from '../../../utils/platforms';
-import { Wallet } from '../../Wallet';
+import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 interface WindowWithEthereum {
@@ -22,6 +22,56 @@ const EXTENSION_APPLE_URL = 'https://apps.apple.com/app/ledger-extension-browse-
 const LEDGERLIVE_WEB_URL = 'https://ledger.com/ledger-live'
 const LEDGERLIVE_ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.ledger.live'
 const LEDGERLIVE_APPLE_URL = 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700'
+
+const EXTENSION_STEPS: {
+  description: string,
+  step: InstructionStepName,
+  title: string
+}[] = [
+  {
+    description:
+      'Select Safari from the menu bar and then Preferences, or Settings. Select Extensions. Check the box next to Ledger Extension.',
+    step: 'install',
+    title: 'Activate the Ledger Extension',
+  },
+  {
+    description:
+      'Click on the Ledger logo located on the left of the URL bar. Select "Always Allow on Every Website". The Ledger logo should turn blue.',
+    step: 'create',
+    title: 'Allow Safari Permissions',
+  },
+  {
+    description:
+      'Make sure vour device is unlocked with the Ethereum app installed and opened. Click below to refresh the browser and load up the extension.',
+    step: 'refresh',
+    title: 'Connect your Ledger & Refresh',
+  },
+];
+const LEDGERLIVE_STEPS: {
+  description: string,
+  step: InstructionStepName,
+  title: string
+}[] = [
+  {
+    description:
+      'We recommend putting Ledger Live on your home screen for quicker access.',
+    step: 'install',
+    title: 'Open the Ledger Live app',
+  },
+  {
+    description:
+      'You can easily backup your wallet using the cloud backup feature.',
+    step: 'create',
+    title: 'Create or Import a Wallet',
+  },
+  {
+    description:
+      'After you scan, a connection prompt will appear for you to connect your wallet.',
+    step: 'scan',
+    title: 'Tap the scan button',
+  },
+];
+
 
 enum ExtensionSupportedChains {
   EthereumMainnet = 1,
@@ -127,51 +177,15 @@ export const ledgerWallet = ({
           },
           instructions: {
             learnMoreUrl: LEDGERLIVE_WEB_URL,
-            steps: [
-              {
-                description:
-                  'We recommend putting Ledger Live on your home screen for quicker access.',
-                step: 'install',
-                title: 'Open the Ledger Live app',
-              },
-              {
-                description:
-                  'You can easily backup your wallet using the cloud backup feature.',
-                step: 'create',
-                title: 'Create or Import a Wallet',
-              },
-              {
-                description:
-                  'After you scan, a connection prompt will appear for you to connect your wallet.',
-                step: 'scan',
-                title: 'Tap the scan button',
-              },
-            ],
+            steps: (isFirstChainSupported && isExtensionSupported)
+              ? EXTENSION_STEPS
+              : LEDGERLIVE_STEPS,
           },
         },
         extension: {
           instructions: {
             learnMoreUrl: EXTENSION_WEB_URL,
-            steps: [
-              {
-                description:
-                  'Select Safari from the menu bar and then Preferences, or Settings. Select Extensions. Check the box next to Ledger Extension.',
-                step: 'install',
-                title: 'Activate the Ledger Extension',
-              },
-              {
-                description:
-                  'Click on the Ledger logo located on the left of the URL bar. Select "Always Allow on Every Website". The Ledger logo should turn blue.',
-                step: 'create',
-                title: 'Allow Safari Permissions',
-              },
-              {
-                description:
-                  'Make sure vour device is unlocked with the Ethereum app installed and opened. Click below to refresh the browser and load up the extension.',
-                step: 'refresh',
-                title: 'Connect your Ledger & Refresh',
-              },
-            ],
+            steps: EXTENSION_STEPS,
           },
         }
       };
