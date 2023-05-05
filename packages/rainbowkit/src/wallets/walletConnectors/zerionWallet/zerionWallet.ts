@@ -35,10 +35,11 @@ export const zerionWallet = ({
       android:
         'https://play.google.com/store/apps/details?id=io.zerion.android',
       ios: 'https://apps.apple.com/app/apple-store/id1456732565',
+      mobile: 'https://link.zerion.io/pt3gdRP0njb',
       qrCode: 'https://link.zerion.io/pt3gdRP0njb',
-      browserExtension: 'https://zerion.io/extension',
       chrome:
         'https://chrome.google.com/webstore/detail/klghhnkeealcohjjanjjdaeeggmfmlpl',
+      browserExtension: 'https://zerion.io/extension',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect

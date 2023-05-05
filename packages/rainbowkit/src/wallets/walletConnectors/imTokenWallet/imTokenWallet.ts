@@ -19,6 +19,7 @@ export const imTokenWallet = ({
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=im.token.app',
     ios: 'https://itunes.apple.com/us/app/imtoken2/id1384798940',
+    mobile: 'https://token.im/download',
     qrCode: 'https://token.im/download',
   },
   createConnector: () => {

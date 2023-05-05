@@ -23,9 +23,9 @@ export const tahoWallet = ({
   iconBackground: '#d08d57',
   iconUrl: async () => (await import('./tahoWallet.svg')).default,
   downloadUrls: {
-    browserExtension: 'https://taho.xyz/',
     chrome:
       'https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd',
+    browserExtension: 'https://taho.xyz',
   },
   installed:
     typeof window !== 'undefined' &&

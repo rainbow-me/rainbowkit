@@ -78,10 +78,11 @@ export const trustWallet = ({
       android:
         'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
       ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
+      mobile: 'https://trustwallet.com/download',
       qrCode: 'https://trustwallet.com/download',
-      browserExtension: 'https://trustwallet.com/browser-extension',
       chrome:
         'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
+      browserExtension: 'https://trustwallet.com/browser-extension',
     },
     createConnector: () => {
       const getUriMobile = async () => {

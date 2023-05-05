@@ -51,6 +51,7 @@ export const metaMaskWallet = ({
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
+      mobile: 'https://metamask.io/download',
       qrCode: 'https://metamask.io/download',
       chrome:
         'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn',

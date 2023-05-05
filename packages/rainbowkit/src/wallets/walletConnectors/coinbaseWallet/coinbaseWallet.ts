@@ -31,10 +31,11 @@ export const coinbaseWallet = ({
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
+      mobile: 'https://coinbase.com/wallet/downloads',
       qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
-      browserExtension: 'https://coinbase.com/wallet',
       chrome:
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
+      browserExtension: 'https://coinbase.com/wallet',
     },
     createConnector: () => {
       const ios = isIOS();

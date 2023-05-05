@@ -20,6 +20,7 @@ export const omniWallet = ({
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=fi.steakwallet.app',
     ios: 'https://itunes.apple.com/us/app/id1569375204',
+    mobile: 'https://omniwallet.app.link',
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {

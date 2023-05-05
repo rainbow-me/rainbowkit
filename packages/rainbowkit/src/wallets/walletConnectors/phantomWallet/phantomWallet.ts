@@ -24,11 +24,12 @@ export const phantomWallet = ({
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=app.phantom',
       ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
+      mobile: 'https://phantom.app/download',
       qrCode: 'https://phantom.app/download',
-      browserExtension: 'https://phantom.app/download',
       chrome:
         'https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa',
       firefox: 'https://addons.mozilla.org/en-US/firefox/addon/phantom-app/',
+      browserExtension: 'https://phantom.app/download',
     },
     createConnector: () => {
       const getProvider = () =>
