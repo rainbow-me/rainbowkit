@@ -27,7 +27,8 @@ export const xdefiWallet = ({
     iconUrl: async () => (await import('./xdefiWallet.svg')).default,
     iconBackground: '#fff',
     downloadUrls: {
-      browserExtension:
+      browserExtension: 'https://xdefi.io/',
+      chrome:
         'https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf',
     },
     createConnector: () => ({

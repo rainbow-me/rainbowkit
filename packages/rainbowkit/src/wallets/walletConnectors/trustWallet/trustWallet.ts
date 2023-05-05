@@ -75,14 +75,13 @@ export const trustWallet = ({
     iconAccent: '#3375BB',
     iconBackground: '#fff',
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
       android:
         'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
       ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
+      qrCode: 'https://trustwallet.com/download',
+      browserExtension: 'https://trustwallet.com/browser-extension',
       chrome:
         'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
-      qrCode: 'https://trustwallet.com/download',
     },
     createConnector: () => {
       const getUriMobile = async () => {

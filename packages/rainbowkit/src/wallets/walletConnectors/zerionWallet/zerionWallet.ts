@@ -32,12 +32,13 @@ export const zerionWallet = ({
     iconBackground: '#2962ef',
     installed: !shouldUseWalletConnect ? isZerionInjected : undefined,
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/klghhnkeealcohjjanjjdaeeggmfmlpl',
       android:
         'https://play.google.com/store/apps/details?id=io.zerion.android',
       ios: 'https://apps.apple.com/app/apple-store/id1456732565',
       qrCode: 'https://link.zerion.io/pt3gdRP0njb',
+      browserExtension: 'https://zerion.io/extension',
+      chrome:
+        'https://chrome.google.com/webstore/detail/klghhnkeealcohjjanjjdaeeggmfmlpl',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect

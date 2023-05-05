@@ -22,7 +22,8 @@ export const bitskiWallet = ({
   iconUrl: async () => (await import('./bitskiWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
-    browserExtension:
+    browserExtension: 'https://bitski.com',
+    chrome:
       'https://chrome.google.com/webstore/detail/bitski/feejiigddaafeojfddjjlmfkabimkell',
   },
   createConnector: () => ({

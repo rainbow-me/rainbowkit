@@ -40,7 +40,7 @@ export const argentWallet = ({
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl: 'https://www.argent.xyz/learn/what-is-a-crypto-wallet/',
+          learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [
             {
               description:

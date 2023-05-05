@@ -31,12 +31,15 @@ export const okxWallet = ({
     iconAccent: '#000',
     iconBackground: '#000',
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       android:
         'https://play.google.com/store/apps/details?id=com.okinc.okex.gp',
       ios: 'https://itunes.apple.com/app/id1327268470?mt=8',
-      qrCode: 'https://www.okx.com/web3',
+      qrCode: 'https://okx.com/web3',
+      browserExtension: 'https://okx.com/download',
+      chrome:
+        'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
+      edge: 'https://microsoftedge.microsoft.com/addons/detail/okx-wallet/pbpjkcldjiffchgbbndmhojiacbgflha',
+      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/okexwallet/',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
@@ -66,7 +69,7 @@ export const okxWallet = ({
           ? {
               getUri: async () => (await connector.getProvider()).connector.uri,
               instructions: {
-                learnMoreUrl: 'https://www.okx.com/web3/',
+                learnMoreUrl: 'https://okx.com/web3/',
                 steps: [
                   {
                     description:
@@ -92,7 +95,7 @@ export const okxWallet = ({
           : undefined,
         extension: {
           instructions: {
-            learnMoreUrl: 'https://www.okx.com/web3/',
+            learnMoreUrl: 'https://okx.com/web3/',
             steps: [
               {
                 description:

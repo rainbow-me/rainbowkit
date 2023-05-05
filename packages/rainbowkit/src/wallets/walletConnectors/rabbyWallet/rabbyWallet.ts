@@ -21,8 +21,9 @@ export const rabbyWallet = ({
     typeof window.ethereum !== 'undefined' &&
     window.ethereum.isRabby === true,
   downloadUrls: {
-    browserExtension:
-      'https://chrome.google.com/webstore/detail/rabby/acmacodkjbdgmoleebolmdjonilkdbch',
+    browserExtension: 'https://rabby.io/',
+    chrome:
+      'https://chrome.google.com/webstore/detail/rabby-wallet/acmacodkjbdgmoleebolmdjonilkdbch',
   },
   createConnector: () => ({
     connector: new InjectedConnector({
