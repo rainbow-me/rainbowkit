@@ -28,6 +28,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   if (ethereum.isBlockWallet) return false;
   if (ethereum.isCoinbaseWallet) return false;
   if (ethereum.isDawn) return false;
+  if (ethereum.isEnkrypt) return false;
   if (ethereum.isExodus) return false;
   if (ethereum.isFrame) return false;
   if (ethereum.isFrontier) return false;
