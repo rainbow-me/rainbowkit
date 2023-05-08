@@ -16,11 +16,13 @@ If you haven't already, first set up your [Next.js](https://nextjs.org) project 
 
 ### Install
 
-Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
+Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and its peer dependency, [ethers](https://docs.ethers.org/v5/).
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth
+npm install @rainbow-me/rainbowkit-siwe-next-auth ethers@^5
 ```
+
+> Note: `siwe` requires the [ethers](https://docs.ethers.org/v5/) peer dependency, while [wagmi](https://wagmi.sh/) now relies on the alternative [viem](https://viem.sh).
 
 ### Set up the provider
 
@@ -36,10 +38,16 @@ Wrap `RainbowKitProvider` with `RainbowKitSiweNextAuthProvider`, ensuring it's n
 import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
 import { WagmiConfig } from 'wagmi';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   return (
     <WagmiConfig {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>

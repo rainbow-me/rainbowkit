@@ -6,7 +6,7 @@ import {
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
-import { unstable_getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
@@ -23,7 +23,7 @@ import { getAuthOptions } from './api/auth/[...nextauth]';
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
-      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
+      session: await getServerSession(req, res, getAuthOptions(req)),
     },
   };
 };

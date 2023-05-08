@@ -42,22 +42,22 @@
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {
-    "ethers": ">=5.5.1",
+    "ethers": ">=5.6.8",
     "react": ">=17",
     "react-dom": ">=17",
     "wagmi": "0.12.x"
   },
   "devDependencies": {
-    "@ethersproject/abstract-provider": "^5.5.1",
-    "@ethersproject/providers": "^5.5.1",
+    "@ethersproject/abstract-provider": "^5.6.1",
+    "@ethersproject/providers": "^5.6.1",
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
-    "ethers": "^5.0.0",
+    "ethers": "^5.6.8",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "vitest": "^0.30.0"
   },
   "dependencies": {

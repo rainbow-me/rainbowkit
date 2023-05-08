@@ -30,13 +30,13 @@
   "license": "MIT",
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "0.5.x || 0.6.x || 0.7.x || 0.8.x || 0.9.x || 0.10.x || 0.11.x || 0.12.x",
-    "next-auth": "^4.10.2",
+    "next-auth": "4.20.1",
     "react": ">=17",
-    "siwe": "^1.1.6"
+    "siwe": "^2.1.4"
   },
   "devDependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "siwe": "^1.1.6"
+    "siwe": "^2.1.4"
   },
   "repository": {
     "type": "git",

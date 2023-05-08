@@ -15,6 +15,7 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
 import {
   RainbowKitSiweNextAuthProvider,
   GetSiweMessageOptions,
@@ -66,7 +67,12 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to the RainbowKit + SIWE example app',
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   return (
     <SessionProvider refetchInterval={0} session={pageProps.session}>
       <WagmiConfig client={wagmiClient}>

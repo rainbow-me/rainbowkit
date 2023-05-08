@@ -1,7 +1,7 @@
 // Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
 // with added process.env.VERCEL_URL detection to support preview deployments
 // and with auth option logic extracted into a 'getAuthOptions' function so it
-// can be used to get the session server-side with 'unstable_getServerSession'
+// can be used to get the session server-side with 'getServerSession'
 import { IncomingMessage } from 'http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
@@ -36,7 +36,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
             return null;
           }
 
-          await siwe.validate(credentials?.signature || '');
+          await siwe.verify({ signature: credentials?.signature || '' });
           return {
             id: siwe.address,
           };
