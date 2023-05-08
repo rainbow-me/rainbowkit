@@ -249,7 +249,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
       const mobileWallets = wallets
         ?.filter(
-          wallet => wallet.downloadUrls?.ios || wallet.downloadUrls?.android
+          wallet =>
+            wallet.downloadUrls?.ios ||
+            wallet.downloadUrls?.android ||
+            wallet.downloadUrls?.mobile
         )
         ?.splice(0, 3);
 
@@ -268,7 +271,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             {mobileWallets.map((wallet, index) => {
               const { downloadUrls, iconBackground, iconUrl, name } = wallet;
 
-              if (!downloadUrls?.ios && !downloadUrls?.android) {
+              if (
+                !downloadUrls?.ios &&
+                !downloadUrls?.android &&
+                !downloadUrls?.mobile
+              ) {
                 return null;
               }
 
@@ -298,7 +305,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                         </Text>
                       </Box>
                       <ActionButton
-                        href={ios ? downloadUrls?.ios : downloadUrls?.android}
+                        href={
+                          (ios ? downloadUrls?.ios : downloadUrls?.android) ||
+                          downloadUrls?.mobile
+                        }
                         label="GET"
                         size="small"
                         type="secondary"

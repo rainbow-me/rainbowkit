@@ -23,6 +23,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
   };
   extension?: {
     instructions?: {
+      learnMoreUrl: string;
       steps: {
         step: InstructionStepName;
         title: string;
@@ -43,8 +44,14 @@ export type Wallet<C extends Connector = Connector> = {
   downloadUrls?: {
     android?: string;
     ios?: string;
-    browserExtension?: string;
+    mobile?: string;
     qrCode?: string;
+    chrome?: string;
+    edge?: string;
+    firefox?: string;
+    opera?: string;
+    safari?: string;
+    browserExtension?: string;
   };
   hidden?: (args: {
     wallets: {

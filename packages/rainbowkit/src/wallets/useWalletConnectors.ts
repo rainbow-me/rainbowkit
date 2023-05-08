@@ -7,6 +7,7 @@ import {
   useRainbowKitChains,
 } from './../components/RainbowKitProvider/RainbowKitChainContext';
 import { WalletInstance } from './Wallet';
+import { getExtensionDownloadUrl, getMobileDownloadUrl } from './downloadUrls';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
@@ -15,6 +16,8 @@ export interface WalletConnector extends WalletInstance {
   onConnecting?: (fn: () => void) => void;
   showWalletConnectModal?: () => void;
   recent: boolean;
+  mobileDownloadUrl?: string;
+  extensionDownloadUrl?: string;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -80,7 +83,9 @@ export function useWalletConnectors(): WalletConnector[] {
     walletConnectors.push({
       ...wallet,
       connect: () => connectWallet(wallet.id, wallet.connector),
+      extensionDownloadUrl: getExtensionDownloadUrl(wallet),
       groupName: wallet.groupName,
+      mobileDownloadUrl: getMobileDownloadUrl(wallet),
       onConnecting: (fn: () => void) =>
         wallet.connector.on('message', ({ type }: { type: string }) =>
           type === 'connecting' ? fn() : undefined

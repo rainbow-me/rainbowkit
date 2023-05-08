@@ -29,11 +29,13 @@ export const coinbaseWallet = ({
     // the injected connector isn't available
     installed: isCoinbaseWalletInjected || undefined,
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
+      mobile: 'https://coinbase.com/wallet/downloads',
       qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
+      chrome:
+        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
+      browserExtension: 'https://coinbase.com/wallet',
     },
     createConnector: () => {
       const ios = isIOS();
@@ -58,7 +60,7 @@ export const coinbaseWallet = ({
                 getUri,
                 instructions: {
                   learnMoreUrl:
-                    'https://www.coinbase.com/learn/tips-and-tutorials/how-to-set-up-a-crypto-wallet',
+                    'https://coinbase.com/wallet/articles/getting-started-mobile',
                   steps: [
                     {
                       description:
@@ -83,6 +85,8 @@ export const coinbaseWallet = ({
               },
               extension: {
                 instructions: {
+                  learnMoreUrl:
+                    'https://coinbase.com/wallet/articles/getting-started-extension',
                   steps: [
                     {
                       description:

@@ -21,6 +21,7 @@ export const argentWallet = ({
     android:
       'https://play.google.com/store/apps/details?id=im.argent.contractwalletclient',
     ios: 'https://apps.apple.com/us/app/argent/id1358741926',
+    mobile: 'https://argent.xyz/download-argent',
     qrCode: 'https://argent.link/app',
   },
   createConnector: () => {
@@ -40,7 +41,7 @@ export const argentWallet = ({
       qrCode: {
         getUri: async () => (await connector.getProvider()).connector.uri,
         instructions: {
-          learnMoreUrl: 'https://www.argent.xyz/learn/what-is-a-crypto-wallet/',
+          learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [
             {
               description:
