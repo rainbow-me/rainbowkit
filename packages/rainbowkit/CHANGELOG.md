@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.14
+
+### Patch Changes
+
+- 865175f: Upgraded minimum `siwe` peer dependency to `^2.1.4` and minimum `ethers` peer dependency to `^5.6.8` to resolve `siwe` peer mismatch.
+
+  Updated [Authentication docs](https://www.rainbowkit.com/docs/authentication) and examples to support modern `next-auth` types.
+
 ## 0.12.13
 
 ### Patch Changes
