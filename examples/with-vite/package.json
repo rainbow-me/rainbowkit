@@ -13,7 +13,7 @@
     "ethers": "^5.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "wagmi": "^0.12.0"
+    "wagmi": "^0.12.13"
   },
   "devDependencies": {
     "@types/react": "^18.0.9",

@@ -16,7 +16,7 @@
     "react": "^18.1.0",
     "typescript": "^4.9.4",
     "util": "0.12.4",
-    "wagmi": "^0.12.0",
+    "wagmi": "^0.12.13",
     "web-vitals": "^2.1.4",
     "buffer": "npm:buffer@6.0.3"
   },

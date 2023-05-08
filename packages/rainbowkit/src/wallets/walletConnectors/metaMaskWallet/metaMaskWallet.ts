@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { MetaMaskConnectorOptions } from '@wagmi/core/dist/connectors/metaMask';
+import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
@@ -14,18 +14,44 @@ export interface MetaMaskWalletOptions {
 function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
-  const isMetaMask = !!ethereum?.isMetaMask;
-  if (!isMetaMask) return false;
+  if (!ethereum?.isMetaMask) return false;
   // Brave tries to make itself look like MetaMask
   // Could also try RPC `web3_clientVersion` if following is unreliable
   if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state)
     return false;
   if (ethereum.isApexWallet) return false;
   if (ethereum.isAvalanche) return false;
+  if (ethereum.isBackpack) return false;
+  if (ethereum.isBifrost) return false;
+  if (ethereum.isBitKeep) return false;
+  if (ethereum.isBitski) return false;
+  if (ethereum.isBlockWallet) return false;
+  if (ethereum.isCoinbaseWallet) return false;
+  if (ethereum.isDawn) return false;
+  if (ethereum.isEnkrypt) return false;
+  if (ethereum.isExodus) return false;
+  if (ethereum.isFrame) return false;
+  if (ethereum.isFrontier) return false;
+  if (ethereum.isGamestop) return false;
+  if (ethereum.isHyperPay) return false;
+  if (ethereum.isImToken) return false;
   if (ethereum.isKuCoinWallet) return false;
+  if (ethereum.isMathWallet) return false;
+  if (ethereum.isOkxWallet || ethereum.isOKExWallet) return false;
+  if (ethereum.isOneInchIOSWallet || ethereum.isOneInchAndroidWallet)
+    return false;
+  if (ethereum.isOpera) return false;
+  if (ethereum.isPhantom) return false;
   if (ethereum.isPortal) return false;
+  if (ethereum.isRabby) return false;
+  if (ethereum.isRainbow) return false;
+  if (ethereum.isStatus) return false;
+  if (ethereum.isTally) return false;
   if (ethereum.isTokenPocket) return false;
   if (ethereum.isTokenary) return false;
+  if (ethereum.isTrust || ethereum.isTrustWallet) return false;
+  if (ethereum.isXDEFI) return false;
+  if (ethereum.isZerion) return false;
   return true;
 }
 
@@ -34,11 +60,17 @@ export const metaMaskWallet = ({
   projectId,
   ...options
 }: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
+  const providers = typeof window !== 'undefined' && window.ethereum?.providers;
+
+  // Not using the explicit isMetaMask fn to check for MetaMask
+  // so that users can continue to use the MetaMask button
+  // to interact with wallets compatible with window.ethereum.
+  // The connector's getProvider will instead favor the real MetaMask
+  // in window.providers scenarios with multiple wallets injected.
   const isMetaMaskInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
-    isMetaMask(window.ethereum);
-
+    (window.ethereum.providers?.some(isMetaMask) || window.ethereum.isMetaMask);
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
   return {
@@ -60,7 +92,15 @@ export const metaMaskWallet = ({
         ? getWalletConnectConnector({ projectId, chains })
         : new MetaMaskConnector({
             chains,
-            options,
+            options: {
+              getProvider: () =>
+                providers
+                  ? providers.find(isMetaMask)
+                  : typeof window !== 'undefined'
+                  ? window.ethereum
+                  : undefined,
+              ...options,
+            },
           });
 
       const getUri = async () => {
