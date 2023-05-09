@@ -82,6 +82,9 @@ importers:
       eslint-plugin-jsx-a11y:
         specifier: ^6.5.1
         version: 6.5.1(eslint@7.32.0)
+      ethers:
+        specifier: ^5.6.8
+        version: 5.6.8
       eventemitter3:
         specifier: ^4.0.7
         version: 4.0.7
@@ -142,9 +145,6 @@ importers:
       buffer:
         specifier: npm:buffer@6.0.3
         version: 6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.21.4)(@babel/plugin-transform-react-jsx@7.21.5)(@typescript-eslint/eslint-plugin@5.5.0)(@typescript-eslint/parser@5.5.0)(esbuild@0.14.39)(eslint@8.15.0)(react@18.2.0)(typescript@4.9.4)
@@ -160,9 +160,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -176,9 +173,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.1
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: 8.15.0
@@ -192,9 +186,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.1
-        version: 5.6.8
       framer-motion:
         specifier: ^6.3.3
         version: 6.3.3(react-dom@18.2.0)(react@18.2.0)
@@ -211,9 +202,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       iron-session:
         specifier: ^6.3.1
         version: 6.3.1(next@12.2.6)
@@ -236,9 +224,6 @@ importers:
       '@rainbow-me/rainbowkit-siwe-next-auth':
         specifier: workspace:*
         version: link:../../packages/rainbowkit-siwe-next-auth
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       siwe:
         specifier: ^2.1.4
         version: 2.1.4(ethers@5.6.8)
@@ -270,9 +255,6 @@ importers:
       buffer-polyfill:
         specifier: npm:buffer@^6.0.3
         version: /buffer@6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       '@remix-run/dev':
         specifier: ^1.5.1
@@ -292,9 +274,6 @@ importers:
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^1.3.0
@@ -342,9 +321,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -358,9 +334,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../../rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -3397,7 +3370,7 @@ packages:
     resolution: {integrity: sha512-CxKTdoZY4zDJLWXG6HzNH6znWK0M79WzzxHegDoecE3+K32pzfHOzuXg2/oGSTecZynFgpkjYXNPOqXVJlqClw==}
     dependencies:
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/hash': 5.6.1
@@ -3445,7 +3418,7 @@ packages:
     resolution: {integrity: sha512-n1r6lttFBG0t2vNiI3HoWaS/KdOt8xyDjzlP2cuevlWLG6EX0OwcKLyG/Kp/cuwNxdy/ous+R/DEMdTUwWQIjQ==}
     dependencies:
       '@ethersproject/abstract-provider': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/logger': 5.6.0
       '@ethersproject/properties': 5.6.0
@@ -3462,7 +3435,7 @@ packages:
   /@ethersproject/address@5.6.1:
     resolution: {integrity: sha512-uOgF0kS5MJv9ZvCz7x6T2EXJSzotiybApn4XlOgoTX0xdtyVIJ7pF+6cGPxiEq/dpBiTfMiw7Yc81JcwhSYA0Q==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3509,8 +3482,8 @@ packages:
   /@ethersproject/bignumber@5.6.2:
     resolution: {integrity: sha512-v7+EEUbhGqT3XJ9LMPsKvXYHFc8eHxTowFCG/HgJErmq4XHJ2WR7aeyICg3uTOAQ7Icn0GFHAohXEhxQHq4Ubw==}
     dependencies:
-      '@ethersproject/bytes': 5.6.1
-      '@ethersproject/logger': 5.6.0
+      '@ethersproject/bytes': 5.7.0
+      '@ethersproject/logger': 5.7.0
       bn.js: 5.2.1
 
   /@ethersproject/bignumber@5.7.0:
@@ -3533,7 +3506,7 @@ packages:
   /@ethersproject/constants@5.6.1:
     resolution: {integrity: sha512-QSq9WVnZbxXYFftrjSjZDUshp6/eKp6qrtdBtUCm0QxCV5z1fG/w3kdlcsjMCQuQHUnAclKoK7XpXMezhRDOLg==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
 
   /@ethersproject/constants@5.7.0:
     resolution: {integrity: sha512-DHI+y5dBNvkpYUMiRQyxRBYBefZkJfo70VUkUAsRjcPs47muV9evftfZ0PJVCXYbAiCgght0DtcF9srFQmIgWA==}
@@ -3547,7 +3520,7 @@ packages:
       '@ethersproject/abstract-provider': 5.6.1
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3573,7 +3546,7 @@ packages:
     dependencies:
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3598,7 +3571,7 @@ packages:
     dependencies:
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/basex': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/logger': 5.6.0
       '@ethersproject/pbkdf2': 5.6.1
@@ -3743,7 +3716,7 @@ packages:
       '@ethersproject/address': 5.6.1
       '@ethersproject/base64': 5.6.1
       '@ethersproject/basex': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/hash': 5.6.1
@@ -3850,7 +3823,7 @@ packages:
   /@ethersproject/solidity@5.6.1:
     resolution: {integrity: sha512-KWqVLkUUoLBfL1iwdzUVlkNqAUIFMpbbeH0rgCfKmJp0vFtY4AsaN91gHKo9ZZLkC4UOm3cI3BmMV4N53BOq4g==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3885,7 +3858,7 @@ packages:
     resolution: {integrity: sha512-BuV63IRPHmJvthNkkt9G70Ullx6AcM+SDc+a8Aw/8Yew6YwT51TcBKEp1P4oOQ/bP25I18JJr7rcFRgFtU9B2Q==}
     dependencies:
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/keccak256': 5.6.1
@@ -3910,7 +3883,7 @@ packages:
   /@ethersproject/units@5.6.1:
     resolution: {integrity: sha512-rEfSEvMQ7obcx3KWD5EWWx77gqv54K6BKiZzKxkQJqtpriVsICrktIQmKl8ReNToPeIYPnFHpXvKpi068YFZXw==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/constants': 5.6.1
       '@ethersproject/logger': 5.6.0
 
@@ -3927,7 +3900,7 @@ packages:
       '@ethersproject/abstract-provider': 5.6.1
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/hash': 5.6.1
       '@ethersproject/hdnode': 5.6.2

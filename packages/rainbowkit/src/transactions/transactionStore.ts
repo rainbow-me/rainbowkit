@@ -136,7 +136,7 @@ export function createTransactionStore({
 
           const requestPromise = provider
             .waitForTransaction(hash, confirmations)
-            .then(({ status }) => {
+            .then(({ status }: { status?: number }) => {
               transactionRequestCache.delete(hash);
 
               if (status === undefined) {
