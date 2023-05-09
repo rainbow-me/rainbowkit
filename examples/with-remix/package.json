@@ -10,16 +10,15 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.6.1",
     "@rainbow-me/rainbowkit": "workspace:*",
     "@remix-run/node": "^1.5.1",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",
     "buffer-polyfill": "npm:buffer@^6.0.3",
-    "ethers": "^5.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^0.12.13"
+    "viem": "~0.3.19",
+    "wagmi": "^1.0.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",
@@ -27,7 +26,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.1",
     "eslint": "^8.15.0",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=14"

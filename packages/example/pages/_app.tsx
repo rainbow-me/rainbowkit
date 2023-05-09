@@ -38,7 +38,7 @@ import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import {
   configureChains,
-  createClient,
+  createConfig,
   useDisconnect,
   WagmiConfig,
 } from 'wagmi';
@@ -58,7 +58,7 @@ import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     mainnet,
     polygon,
@@ -107,11 +107,11 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 const demoAppInfo = {
@@ -578,7 +578,7 @@ export default function App(
         <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiConfig client={wagmiClient}>
+        <WagmiConfig config={wagmiConfig}>
           <RainbowKitApp {...appProps} />
         </WagmiConfig>
       </SessionProvider>

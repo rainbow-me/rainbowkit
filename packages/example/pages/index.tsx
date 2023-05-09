@@ -63,10 +63,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
 
   const { config: sendTransactionConfig } = usePrepareSendTransaction({
     enabled: !!address,
-    request: {
-      to: address!,
-      value: 0,
-    },
+    to: address,
+    value: 0n,
   });
 
   const {
@@ -94,6 +92,18 @@ const Example = ({ authEnabled }: AppContextProps) => {
       verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
       version: '1',
     },
+    message: {
+      contents: 'Hello, Bob!',
+      from: {
+        name: 'Cow',
+        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+      },
+      to: {
+        name: 'Bob',
+        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+      },
+    },
+    primaryType: 'Mail',
     types: {
       Mail: [
         { name: 'from', type: 'Person' },
@@ -104,17 +114,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
         { name: 'name', type: 'string' },
         { name: 'wallet', type: 'address' },
       ],
-    },
-    value: {
-      contents: 'Hello, Bob!',
-      from: {
-        name: 'Cow',
-        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
-      },
-      to: {
-        name: 'Bob',
-        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-      },
     },
   });
 

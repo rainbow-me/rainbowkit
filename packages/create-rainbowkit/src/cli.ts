@@ -50,7 +50,7 @@ async function run() {
     const reservedPackageNames = [
       '@rainbow-me/rainbowkit',
       'wagmi',
-      'ethers',
+      'viem',
       'next',
       'react',
       'react-dom',

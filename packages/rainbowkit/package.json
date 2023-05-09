@@ -42,19 +42,17 @@
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {
-    "ethers": ">=5.6.8",
+    "viem": "~0.3.19",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": "0.12.x"
+    "wagmi": "^1.0.1"
   },
   "devDependencies": {
-    "@ethersproject/abstract-provider": "^5.6.1",
-    "@ethersproject/providers": "^5.6.1",
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
-    "ethers": "^5.6.8",
+    "viem": "~0.3.19",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",

@@ -1,4 +1,4 @@
-import { providers } from 'ethers';
+import type { Address, PublicClient } from 'viem';
 
 const storageKey = 'rk-transactions';
 
@@ -61,7 +61,7 @@ function validateTransaction(
 export function createTransactionStore({
   provider: initialProvider,
 }: {
-  provider: providers.BaseProvider;
+  provider: PublicClient;
 }) {
   let data: Data = loadData();
 
@@ -69,7 +69,7 @@ export function createTransactionStore({
   const listeners: Set<() => void> = new Set();
   const transactionRequestCache: Map<string, Promise<void>> = new Map();
 
-  function setProvider(newProvider: providers.BaseProvider): void {
+  function setProvider(newProvider: PublicClient): void {
     provider = newProvider;
   }
 
@@ -135,8 +135,8 @@ export function createTransactionStore({
           }
 
           const requestPromise = provider
-            .waitForTransaction(hash, confirmations)
-            .then(({ status }: { status?: number }) => {
+            .waitForTransactionReceipt({ confirmations, hash: hash as Address })
+            .then(({ status }) => {
               transactionRequestCache.delete(hash);
 
               if (status === undefined) {

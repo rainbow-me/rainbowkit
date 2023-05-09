@@ -13,7 +13,7 @@ For example, here's how you can create an Avalanche chain for [avax.network](htt
 
 ```tsx
 import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
@@ -55,7 +55,7 @@ const { connectors } = getDefaultWallets({
   chains,
 });
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
   provider,
@@ -63,7 +63,7 @@ const wagmiClient = createClient({
 
 const App = () => {
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>

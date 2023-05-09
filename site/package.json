@@ -5,8 +5,6 @@
   "private": true,
   "dependencies": {
     "@docsearch/react": "3",
-    "@ethersproject/bignumber": "^5.6.1",
-    "@ethersproject/providers": "^5.6.1",
     "@radix-ui/react-dialog": "^0.1.7",
     "@radix-ui/react-popover": "^0.1.6",
     "@radix-ui/react-portal": "^0.1.4",
@@ -22,7 +20,6 @@
     "clsx": "1.1.1",
     "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
-    "ethers": "^5.6.8",
     "framer-motion": "^6.3.0",
     "hast-util-to-html": "8.0.3",
     "hast-util-to-string": "2.0.0",
@@ -36,14 +33,15 @@
     "remark-slug": "^7.0.1",
     "three": "^0.139.2",
     "unified": "10.1.2",
-    "unist-util-visit": "4.1.0"
+    "unist-util-visit": "4.1.0",
+    "viem": "~0.3.19"
   },
   "devDependencies": {
     "contentlayer": "0.2.8",
     "next-contentlayer": "0.2.8"
   },
   "peerDependencies": {
-    "wagmi": "^0.12.13"
+    "wagmi": "^1.0.1"
   },
   "scripts": {
     "dev": "next dev --port 3001",

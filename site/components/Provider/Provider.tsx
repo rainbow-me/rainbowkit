@@ -10,12 +10,12 @@ import {
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { arbitrum, bsc, mainnet, optimism, polygon } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-export const { chains, provider } = configureChains(
+export const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, bsc],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
@@ -45,12 +45,12 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
+  publicClient,
 });
 
 export function Provider({ children }) {
-  return <WagmiConfig client={wagmiClient}>{children}</WagmiConfig>;
+  return <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>;
 }
