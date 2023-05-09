@@ -82,6 +82,9 @@ importers:
       eslint-plugin-jsx-a11y:
         specifier: ^6.5.1
         version: 6.5.1(eslint@7.32.0)
+      ethers:
+        specifier: ^5.6.8
+        version: 5.6.8
       eventemitter3:
         specifier: ^4.0.7
         version: 4.0.7
@@ -142,9 +145,6 @@ importers:
       buffer:
         specifier: npm:buffer@6.0.3
         version: 6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.21.4)(@babel/plugin-transform-react-jsx@7.21.5)(@typescript-eslint/eslint-plugin@5.5.0)(@typescript-eslint/parser@5.5.0)(esbuild@0.14.39)(eslint@8.15.0)(react@18.2.0)(typescript@4.9.4)
@@ -160,9 +160,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -176,9 +173,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.1
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: 8.15.0
@@ -192,9 +186,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.1
-        version: 5.6.8
       framer-motion:
         specifier: ^6.3.3
         version: 6.3.3(react-dom@18.2.0)(react@18.2.0)
@@ -211,9 +202,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       iron-session:
         specifier: ^6.3.1
         version: 6.3.1(next@12.2.6)
@@ -236,9 +224,6 @@ importers:
       '@rainbow-me/rainbowkit-siwe-next-auth':
         specifier: workspace:*
         version: link:../../packages/rainbowkit-siwe-next-auth
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
       siwe:
         specifier: ^2.1.4
         version: 2.1.4(ethers@5.6.8)
@@ -270,9 +255,6 @@ importers:
       buffer-polyfill:
         specifier: npm:buffer@^6.0.3
         version: /buffer@6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       '@remix-run/dev':
         specifier: ^1.5.1
@@ -292,9 +274,6 @@ importers:
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^1.3.0
@@ -342,9 +321,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -358,9 +334,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../../rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -463,7 +436,7 @@ importers:
   packages/rainbowkit-siwe-next-auth:
     dependencies:
       next-auth:
-        specifier: 4.20.1
+        specifier: '>=4.10.2 <=4.20.1'
         version: 4.20.1(next@12.2.6)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: '>=17'
@@ -1432,16 +1405,6 @@ packages:
       '@babel/core': 7.16.0
       '@babel/helper-plugin-utils': 7.21.5
 
-  /@babel/plugin-syntax-jsx@7.21.4(@babel/core@7.17.8):
-    resolution: {integrity: sha512-5hewiLct5OKyh6PLKEYaFclcqtIgCb6bmELouxjF6up5q3Sov7rOayW4RwhbaBL0dit8rA80GNfY+UuDp2mBbQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.17.8
-      '@babel/helper-plugin-utils': 7.21.5
-    dev: true
-
   /@babel/plugin-syntax-jsx@7.21.4(@babel/core@7.21.8):
     resolution: {integrity: sha512-5hewiLct5OKyh6PLKEYaFclcqtIgCb6bmELouxjF6up5q3Sov7rOayW4RwhbaBL0dit8rA80GNfY+UuDp2mBbQ==}
     engines: {node: '>=6.9.0'}
@@ -1839,16 +1802,6 @@ packages:
       '@babel/core': 7.16.0
       '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.16.0)
 
-  /@babel/plugin-transform-react-jsx-development@7.18.6(@babel/core@7.17.8):
-    resolution: {integrity: sha512-SA6HEjwYFKF7WDjWcMcMGUimmw/nhNRDWxr+KaLSCrkD/LMDBvWRmHAYgE1HDeF8KUuI8OAu+RT6EOtKxSW2qA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.17.8
-      '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.17.8)
-    dev: true
-
   /@babel/plugin-transform-react-jsx-development@7.18.6(@babel/core@7.21.8):
     resolution: {integrity: sha512-SA6HEjwYFKF7WDjWcMcMGUimmw/nhNRDWxr+KaLSCrkD/LMDBvWRmHAYgE1HDeF8KUuI8OAu+RT6EOtKxSW2qA==}
     engines: {node: '>=6.9.0'}
@@ -1859,23 +1812,23 @@ packages:
       '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.21.8)
     dev: true
 
-  /@babel/plugin-transform-react-jsx-self@7.21.0(@babel/core@7.17.8):
+  /@babel/plugin-transform-react-jsx-self@7.21.0(@babel/core@7.21.8):
     resolution: {integrity: sha512-f/Eq+79JEu+KUANFks9UZCcvydOOGMgF7jBrcwjHa5jTZD8JivnhCJYvmlhR/WTXBWonDExPoW0eO/CR4QJirA==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.8
+      '@babel/core': 7.21.8
       '@babel/helper-plugin-utils': 7.21.5
     dev: true
 
-  /@babel/plugin-transform-react-jsx-source@7.19.6(@babel/core@7.17.8):
+  /@babel/plugin-transform-react-jsx-source@7.19.6(@babel/core@7.21.8):
     resolution: {integrity: sha512-RpAi004QyMNisst/pvSanoRdJ4q+jMCWyk9zdw/CyLB9j8RXEahodR6l2GyttDRyEVWZtbN+TpLiHJ3t34LbsQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.8
+      '@babel/core': 7.21.8
       '@babel/helper-plugin-utils': 7.21.5
     dev: true
 
@@ -1891,20 +1844,6 @@ packages:
       '@babel/helper-plugin-utils': 7.21.5
       '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.16.0)
       '@babel/types': 7.21.5
-
-  /@babel/plugin-transform-react-jsx@7.21.5(@babel/core@7.17.8):
-    resolution: {integrity: sha512-ELdlq61FpoEkHO6gFRpfj0kUgSwQTGoaEU8eMRoS8Dv3v6e7BjEAj5WMtIBRdHUeAioMhKP5HyxNzNnP+heKbA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.17.8
-      '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-module-imports': 7.21.4
-      '@babel/helper-plugin-utils': 7.21.5
-      '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.17.8)
-      '@babel/types': 7.21.5
-    dev: true
 
   /@babel/plugin-transform-react-jsx@7.21.5(@babel/core@7.21.8):
     resolution: {integrity: sha512-ELdlq61FpoEkHO6gFRpfj0kUgSwQTGoaEU8eMRoS8Dv3v6e7BjEAj5WMtIBRdHUeAioMhKP5HyxNzNnP+heKbA==}
@@ -2735,7 +2674,7 @@ packages:
       gray-matter: 4.0.3
       imagescript: 1.2.16
       micromatch: 4.0.5
-      ts-pattern: 4.2.3
+      ts-pattern: 4.3.0
       unified: 10.1.2
       yaml: 1.10.2
       zod: 3.21.4
@@ -2774,7 +2713,7 @@ packages:
       hash-wasm: 4.9.0
       inflection: 1.13.4
       oo-ascii-tree: 1.80.0
-      ts-pattern: 4.2.3
+      ts-pattern: 4.3.0
       type-fest: 2.19.0
     dev: true
 
@@ -3431,7 +3370,7 @@ packages:
     resolution: {integrity: sha512-CxKTdoZY4zDJLWXG6HzNH6znWK0M79WzzxHegDoecE3+K32pzfHOzuXg2/oGSTecZynFgpkjYXNPOqXVJlqClw==}
     dependencies:
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/hash': 5.6.1
@@ -3479,7 +3418,7 @@ packages:
     resolution: {integrity: sha512-n1r6lttFBG0t2vNiI3HoWaS/KdOt8xyDjzlP2cuevlWLG6EX0OwcKLyG/Kp/cuwNxdy/ous+R/DEMdTUwWQIjQ==}
     dependencies:
       '@ethersproject/abstract-provider': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/logger': 5.6.0
       '@ethersproject/properties': 5.6.0
@@ -3496,7 +3435,7 @@ packages:
   /@ethersproject/address@5.6.1:
     resolution: {integrity: sha512-uOgF0kS5MJv9ZvCz7x6T2EXJSzotiybApn4XlOgoTX0xdtyVIJ7pF+6cGPxiEq/dpBiTfMiw7Yc81JcwhSYA0Q==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3543,8 +3482,8 @@ packages:
   /@ethersproject/bignumber@5.6.2:
     resolution: {integrity: sha512-v7+EEUbhGqT3XJ9LMPsKvXYHFc8eHxTowFCG/HgJErmq4XHJ2WR7aeyICg3uTOAQ7Icn0GFHAohXEhxQHq4Ubw==}
     dependencies:
-      '@ethersproject/bytes': 5.6.1
-      '@ethersproject/logger': 5.6.0
+      '@ethersproject/bytes': 5.7.0
+      '@ethersproject/logger': 5.7.0
       bn.js: 5.2.1
 
   /@ethersproject/bignumber@5.7.0:
@@ -3567,7 +3506,7 @@ packages:
   /@ethersproject/constants@5.6.1:
     resolution: {integrity: sha512-QSq9WVnZbxXYFftrjSjZDUshp6/eKp6qrtdBtUCm0QxCV5z1fG/w3kdlcsjMCQuQHUnAclKoK7XpXMezhRDOLg==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
 
   /@ethersproject/constants@5.7.0:
     resolution: {integrity: sha512-DHI+y5dBNvkpYUMiRQyxRBYBefZkJfo70VUkUAsRjcPs47muV9evftfZ0PJVCXYbAiCgght0DtcF9srFQmIgWA==}
@@ -3581,7 +3520,7 @@ packages:
       '@ethersproject/abstract-provider': 5.6.1
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3607,7 +3546,7 @@ packages:
     dependencies:
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3632,7 +3571,7 @@ packages:
     dependencies:
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/basex': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/logger': 5.6.0
       '@ethersproject/pbkdf2': 5.6.1
@@ -3777,7 +3716,7 @@ packages:
       '@ethersproject/address': 5.6.1
       '@ethersproject/base64': 5.6.1
       '@ethersproject/basex': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/hash': 5.6.1
@@ -3884,7 +3823,7 @@ packages:
   /@ethersproject/solidity@5.6.1:
     resolution: {integrity: sha512-KWqVLkUUoLBfL1iwdzUVlkNqAUIFMpbbeH0rgCfKmJp0vFtY4AsaN91gHKo9ZZLkC4UOm3cI3BmMV4N53BOq4g==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/keccak256': 5.6.1
       '@ethersproject/logger': 5.6.0
@@ -3919,7 +3858,7 @@ packages:
     resolution: {integrity: sha512-BuV63IRPHmJvthNkkt9G70Ullx6AcM+SDc+a8Aw/8Yew6YwT51TcBKEp1P4oOQ/bP25I18JJr7rcFRgFtU9B2Q==}
     dependencies:
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/constants': 5.6.1
       '@ethersproject/keccak256': 5.6.1
@@ -3944,7 +3883,7 @@ packages:
   /@ethersproject/units@5.6.1:
     resolution: {integrity: sha512-rEfSEvMQ7obcx3KWD5EWWx77gqv54K6BKiZzKxkQJqtpriVsICrktIQmKl8ReNToPeIYPnFHpXvKpi068YFZXw==}
     dependencies:
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/constants': 5.6.1
       '@ethersproject/logger': 5.6.0
 
@@ -3961,7 +3900,7 @@ packages:
       '@ethersproject/abstract-provider': 5.6.1
       '@ethersproject/abstract-signer': 5.6.2
       '@ethersproject/address': 5.6.1
-      '@ethersproject/bignumber': 5.6.2
+      '@ethersproject/bignumber': 5.7.0
       '@ethersproject/bytes': 5.6.1
       '@ethersproject/hash': 5.6.1
       '@ethersproject/hdnode': 5.6.2
@@ -7164,11 +7103,11 @@ packages:
     resolution: {integrity: sha512-H+yIupjUE4a+E4oeWUv4xUJIMR0DWBIMUG/DYgvj0J9Vu1rdHAlJ5JdbI+N1KDUD7Ee2fZ1DMPZ/NBg6mXtoCw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@babel/core': 7.17.8
-      '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.17.8)
-      '@babel/plugin-transform-react-jsx-development': 7.18.6(@babel/core@7.17.8)
-      '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.17.8)
-      '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.17.8)
+      '@babel/core': 7.21.8
+      '@babel/plugin-transform-react-jsx': 7.21.5(@babel/core@7.21.8)
+      '@babel/plugin-transform-react-jsx-development': 7.18.6(@babel/core@7.21.8)
+      '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.21.8)
+      '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.8)
       '@rollup/pluginutils': 4.2.1
       react-refresh: 0.11.0
       resolve: 1.22.2
@@ -8713,7 +8652,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001486
-      electron-to-chromium: 1.4.386
+      electron-to-chromium: 1.4.387
       node-releases: 2.0.10
       update-browserslist-db: 1.0.11(browserslist@4.21.5)
 
@@ -10188,8 +10127,8 @@ packages:
       jake: 10.8.5
     dev: false
 
-  /electron-to-chromium@1.4.386:
-    resolution: {integrity: sha512-w0VD4WR225nuNsz6FokDaqugxzue6iUVBo8QfUrl2Y6nWHxtBUhjWDnUaG/1v5oWeFPLMJAQk3zKHTHW/P8+Og==}
+  /electron-to-chromium@1.4.387:
+    resolution: {integrity: sha512-tutLf+alr1/0YqJwKPdstVvDLmxmLb5xNyDLNS0RZmenHcEYk9qKfpKDCVZEKJ00JVbnayJm1MZAbYhYDFpcOw==}
 
   /elliptic@6.5.4:
     resolution: {integrity: sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==}
@@ -19842,8 +19781,8 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-pattern@4.2.3:
-    resolution: {integrity: sha512-tPg2/owaVtWiimsmXpFEzI5IcfPU2BEwzFbviuSmqqaKIGyy6hyvBF4kxcuhy8UJz+6nEKUOEeaHc43drIuvpQ==}
+  /ts-pattern@4.3.0:
+    resolution: {integrity: sha512-pefrkcd4lmIVR0LA49Imjf9DYLK8vtWhqBPA3Ya1ir8xCW0O2yjL9dsCVvI7pCodLC5q7smNpEtDR2yVulQxOg==}
     dev: true
 
   /tsconfig-paths@3.14.2:

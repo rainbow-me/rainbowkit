@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.1.11
+
+### Patch Changes
+
+- 865175f: Upgraded template dependencies: `ethers`, `next`, `react`, `react-dom`, `siwe` and `next-auth` to support `siwe@2`.
+
 ## 0.1.10
 
 ### Patch Changes
