@@ -19,7 +19,7 @@ If you haven't already, first set up your [Next.js](https://nextjs.org) project 
 Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and its peer dependency, [ethers](https://docs.ethers.org/v5/).
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
 ```
 
 > Note: `siwe` requires the [ethers](https://docs.ethers.org/v5/) peer dependency, while [wagmi](https://wagmi.sh/) now relies on the alternative [viem](https://viem.sh).
