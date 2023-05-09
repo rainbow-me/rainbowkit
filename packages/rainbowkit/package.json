@@ -42,17 +42,17 @@
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {
-    "viem": "~0.3.16",
+    "viem": "~0.3.17",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": "1.0.0-next.2"
+    "wagmi": "1.0.0-next.9"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
-    "viem": "~0.3.16",
+    "viem": "~0.3.17",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",

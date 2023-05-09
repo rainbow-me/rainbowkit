@@ -13,10 +13,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "~0.3.16"
+    "viem": "~0.3.17"
   },
   "peerDependencies": {
-    "wagmi": "1.0.0-next.2"
+    "wagmi": "1.0.0-next.9"
   },
   "scripts": {
     "dev": "next dev",
