@@ -1,0 +1,11 @@
+{
+  "$schema": "https://codesandbox.io/schemas/tasks.json",
+  "setupTasks": ["pnpm install --frozen-lockfile"],
+  "tasks": {
+    "dev-server": {
+      "name": "Run Dev Server",
+      "command": "pnpm dev",
+      "runAtStart": true
+    }
+  }
+}
