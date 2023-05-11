@@ -2,14 +2,18 @@
   "$schema": "https://codesandbox.io/schemas/tasks.json",
   "setupTasks": [
     {
-      "name": "Installing Dependencies",
-      "command": "pnpm install"
+      "name": "Upgrading RainbowKit to the latest version",
+      "command": "yarn up @rainbow-me/rainbowkit"
+    },
+    {
+      "name": "Installing dependencies",
+      "command": "yarn install"
     }
   ],
   "tasks": {
     "dev": {
       "name": "Start Dev Server",
-      "command": "pnpm dev",
+      "command": "yarn dev",
       "runAtStart": true
     }
   }
