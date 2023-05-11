@@ -74,6 +74,7 @@ export function GetDetail({
           ?.filter(
             wallet =>
               wallet.extensionDownloadUrl ||
+              wallet.desktopDownloadUrl ||
               (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map(wallet => {
@@ -82,6 +83,8 @@ export function GetDetail({
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
             const hasExtension = !!wallet.extensionDownloadUrl;
             const hasMobileAndExtension = downloadUrls?.qrCode && hasExtension;
+            const hasMobileAndDesktop =
+              downloadUrls?.qrCode && !!wallet.desktopDownloadUrl;
 
             return (
               <Box
@@ -113,6 +116,8 @@ export function GetDetail({
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
                         ? 'Mobile Wallet and Extension'
+                        : hasMobileAndDesktop
+                        ? 'Mobile and Desktop Wallets'
                         : hasMobileCompanionApp
                         ? 'Mobile Wallet'
                         : hasExtension
@@ -187,6 +192,8 @@ export function ConnectDetail({
 
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
+  const hasQrCodeAndDesktop =
+    downloadUrls?.qrCode && !!wallet.desktopDownloadUrl;
   const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
@@ -211,7 +218,7 @@ export function ConnectDetail({
         label: 'GET',
         onClick: () =>
           changeWalletStep(
-            hasQrCodeAndExtension
+            hasQrCodeAndExtension || hasQrCodeAndDesktop
               ? WalletStep.DownloadOptions
               : WalletStep.Download
           ),
@@ -389,7 +396,7 @@ const DownloadOptionsBox = ({
   isCompact: boolean;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
-  variant: 'browser' | 'app';
+  variant: 'browser' | 'app' | 'desktop';
 }) => {
   const isBrowserCard = variant === 'browser';
   const gradientRgbas =
@@ -575,7 +582,13 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
-  const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
+  const {
+    desktop,
+    desktopDownloadUrl,
+    extension,
+    extensionDownloadUrl,
+    mobileDownloadUrl,
+  } = wallet;
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -622,9 +635,29 @@ export function DownloadOptionsDetail({
             variant="browser"
           />
         )}
+        {desktopDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel="Get the desktop app"
+            description="Use the desktop wallet to explore the world of Ethereum."
+            iconAccent={wallet.iconAccent}
+            iconBackground={wallet.iconBackground}
+            iconUrl={wallet.iconUrl}
+            isCompact={isCompact}
+            onAction={() =>
+              changeWalletStep(
+                desktop?.instructions
+                  ? WalletStep.InstructionsDesktop
+                  : WalletStep.Connect
+              )
+            }
+            title={`${wallet.name} for Desktop`}
+            url={desktopDownloadUrl}
+            variant="desktop"
+          />
+        )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel="Get the app"
+            actionLabel="Get the mobile app"
             description="Use the mobile wallet to explore the world of Ethereum."
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
@@ -707,6 +740,7 @@ const stepIcons: Record<
   InstructionStepName,
   (wallet: WalletConnector) => ReactNode
 > = {
+  connect: () => <RefreshIcon />,
   create: () => <CreateIcon />,
   install: wallet => (
     <AsyncImage
@@ -886,6 +920,74 @@ export function InstructionExtensionDetail({
             Learn More
           </Text>
         </Box>
+      </Box>
+    </Box>
+  );
+}
+
+export function InstructionDesktopDetail({
+  connectWallet,
+  wallet,
+}: {
+  connectWallet: (wallet: WalletConnector) => void;
+  wallet: WalletConnector;
+}) {
+  return (
+    <Box
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      height="full"
+      width="full"
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap="28"
+        height="full"
+        justifyContent="center"
+        paddingY="32"
+        style={{ maxWidth: 320 }}
+      >
+        {wallet?.desktop?.instructions?.steps.map((d, idx) => (
+          <Box
+            alignItems="center"
+            display="flex"
+            flexDirection="row"
+            gap="16"
+            key={idx}
+          >
+            <Box
+              borderRadius="10"
+              height="48"
+              minWidth="48"
+              overflow="hidden"
+              position="relative"
+              width="48"
+            >
+              {stepIcons[d.step]?.(wallet)}
+            </Box>
+            <Box display="flex" flexDirection="column" gap="4">
+              <Text color="modalText" size="14" weight="bold">
+                {d.title}
+              </Text>
+              <Text color="modalTextSecondary" size="14" weight="medium">
+                {d.description}
+              </Text>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+
+      <Box
+        alignItems="center"
+        display="flex"
+        flexDirection="column"
+        gap="12"
+        justifyContent="center"
+        marginBottom="16"
+      >
+        <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
       </Box>
     </Box>
   );

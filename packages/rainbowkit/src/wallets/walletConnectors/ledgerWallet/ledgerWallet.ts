@@ -9,6 +9,8 @@ import type {
   WalletConnectLegacyConnectorOptions,
 } from '../../getWalletConnectConnector';
 
+const LEDGERLIVE_WEB_URL = 'https://www.ledger.com/ledger-live';
+
 export interface LedgerWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
@@ -31,13 +33,15 @@ export const ledgerWallet = ({
 }: LedgerWalletLegacyOptions | LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
+  iconAccent: '#000',
   name: 'Ledger Live',
   iconUrl: async () => (await import('./ledgerWallet.svg')).default,
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
     ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
-    mobile: 'https://www.ledger.com/ledger-live',
-    qrCode: 'https://ledger.com/ledger-live',
+    mobile: LEDGERLIVE_WEB_URL,
+    desktop: LEDGERLIVE_WEB_URL,
+    qrCode: LEDGERLIVE_WEB_URL,
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({
@@ -67,6 +71,57 @@ export const ledgerWallet = ({
             walletConnectVersion
           );
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+        },
+        instructions: {
+          learnMoreUrl: LEDGERLIVE_WEB_URL,
+          steps: [
+            {
+              description:
+                'We recommend putting Ledger Live on your home screen for quicker',
+              step: 'install',
+              title: 'Open the Ledger Live app',
+            },
+            {
+              description: 'Set up a new Ledger or connect to an existing one.',
+              step: 'create',
+              title: 'Set up your Ledger',
+            },
+            {
+              description:
+                'A connection prompt will appear for you to connect your wallet.',
+              step: 'connect',
+              title: 'Connect',
+            },
+          ],
+        },
+      },
+      qrCode: {
+        getUri: async () => {
+          const { uri } = (await connector.getProvider()).connector;
+          return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+        },
+        instructions: {
+          learnMoreUrl: LEDGERLIVE_WEB_URL,
+          steps: [
+            {
+              description:
+                'We recommend putting Ledger Live on your home screen for quicker access.',
+              step: 'install',
+              title: 'Open the Ledger Live app',
+            },
+            {
+              description:
+                'You can either sync with the desktop app or connect your Ledger.',
+              step: 'create',
+              title: 'Set up your Ledger',
+            },
+            {
+              description:
+                'Tap WalletConnect then Switch to Scanner. After you scan, a connection prompt will appear for you to connect your wallet.',
+              step: 'scan',
+              title: 'Scan the code',
+            },
+          ],
         },
       },
     };

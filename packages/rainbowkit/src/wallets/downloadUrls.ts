@@ -27,3 +27,7 @@ export const getMobileDownloadUrl = (wallet?: WalletInstance) => {
     wallet?.downloadUrls?.mobile
   );
 };
+
+export const getDesktopDownloadUrl = (wallet?: WalletInstance) => {
+  return wallet?.downloadUrls?.desktop;
+};

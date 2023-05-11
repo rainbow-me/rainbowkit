@@ -26,6 +26,7 @@ import {
   DownloadDetail,
   DownloadOptionsDetail,
   GetDetail,
+  InstructionDesktopDetail,
   InstructionExtensionDetail,
   InstructionMobileDetail,
 } from './ConnectDetails';
@@ -43,6 +44,7 @@ export enum WalletStep {
   DownloadOptions = 'DOWNLOAD_OPTIONS',
   Download = 'DOWNLOAD',
   InstructionsMobile = 'INSTRUCTIONS_MOBILE',
+  InstructionsDesktop = 'INSTRUCTIONS_DESKTOP',
   InstructionsExtension = 'INSTRUCTIONS_EXTENSION',
 }
 
@@ -144,12 +146,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
+    const isDesktop = !!sWallet?.desktopDownloadUrl;
     const isExtension = !!sWallet?.extensionDownloadUrl;
     setSelectedWallet(sWallet);
-    if (isMobile && isExtension) {
+    if (isMobile && (isExtension || isDesktop)) {
       changeWalletStep(WalletStep.DownloadOptions);
     } else if (isMobile) {
       changeWalletStep(WalletStep.Download);
+    } else if (isDesktop) {
+      changeWalletStep(WalletStep.InstructionsDesktop);
     } else {
       changeWalletStep(WalletStep.InstructionsExtension);
     }
@@ -285,6 +290,22 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     case WalletStep.InstructionsExtension:
       walletContent = selectedWallet && (
         <InstructionExtensionDetail wallet={selectedWallet} />
+      );
+      headerLabel =
+        selectedWallet &&
+        `Get started with ${
+          compactModeEnabled
+            ? selectedWallet.shortName || selectedWallet.name
+            : selectedWallet.name
+        }`;
+      headerBackButtonLink = WalletStep.DownloadOptions;
+      break;
+    case WalletStep.InstructionsDesktop:
+      walletContent = selectedWallet && (
+        <InstructionDesktopDetail
+          connectWallet={selectWallet}
+          wallet={selectedWallet}
+        />
       );
       headerLabel =
         selectedWallet &&
