@@ -182,7 +182,8 @@ describe('connectorsForWallets', () => {
             {
               createConnector: () => ({
                 connector: new InjectedConnector({
-                  options: { chains, name: 'Test Wallet Installed' },
+                  chains,
+                  options: { name: 'Test Wallet Installed' },
                 }),
               }),
               iconBackground: '#fff',
