@@ -63,9 +63,9 @@ export function AsyncImage({
         height="full"
         position="absolute"
         style={{
-          touchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',
+          WebkitTouchCallout: 'none',
           ...(isRemoteImage
             ? {
                 opacity: isRemoteImageLoaded ? 1 : 0,
