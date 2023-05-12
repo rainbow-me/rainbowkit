@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -50,8 +49,7 @@ export const coinbaseWallet = ({
         },
       });
 
-      const getUri = async () =>
-        (await (connector as WalletConnectLegacyConnector).getProvider()).qrUrl;
+      const getUri = async () => (await connector.getProvider()).qrUrl;
 
       return {
         connector,
