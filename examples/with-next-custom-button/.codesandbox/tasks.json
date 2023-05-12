@@ -1,14 +1,13 @@
 {
   "$schema": "https://codesandbox.io/schemas/tasks.json",
-  "setupTasks": [
-    {
-      "name": "Installing dependencies",
-      "command": "yarn add @rainbow-me/rainbowkit@latest"
-    }
-  ],
+  "setupTasks": ["yarn add @rainbow-me/rainbowkit@latest", "yarn build"],
   "tasks": {
-    "dev": {
-      "name": "Start Dev Server",
+    "install-dependencies": {
+      "name": "Install Dependencies",
+      "command": "yarn add @rainbow-me/rainbowkit@latest"
+    },
+    "start-app": {
+      "name": "Run Dev Server",
       "command": "yarn dev",
       "runAtStart": true
     }
