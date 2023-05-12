@@ -147,7 +147,7 @@ export function createTransactionStore({
                 account,
                 chainId,
                 hash,
-                status === 0 ? 'failed' : 'confirmed'
+                status === 'reverted' ? 'failed' : 'confirmed'
               );
             });
 
