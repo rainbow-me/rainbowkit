@@ -2,12 +2,8 @@
   "$schema": "https://codesandbox.io/schemas/tasks.json",
   "setupTasks": [
     {
-      "name": "Upgrading RainbowKit to the latest version",
-      "command": "yarn up @rainbow-me/rainbowkit"
-    },
-    {
       "name": "Installing dependencies",
-      "command": "yarn install"
+      "command": "yarn add @rainbow-me/rainbowkit@latest"
     }
   ],
   "tasks": {
