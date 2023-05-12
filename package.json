@@ -60,7 +60,6 @@
     "@typescript-eslint/parser": "^5.5.0",
     "@vanilla-extract/esbuild-plugin": "^2.2.0",
     "@vanilla-extract/vite-plugin": "^3.8.0",
-    "@wagmi/core": "^1.0.5",
     "autoprefixer": "^10.4.0",
     "esbuild": "^0.14.39",
     "eslint": "7.32.0",
