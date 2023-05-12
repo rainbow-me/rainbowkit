@@ -30,6 +30,8 @@ function omitRootDependencies(packageName, dependencies) {
     // We're on an older version of eslint due to eslint-config-rainbow
     // so we need to allow multiple versions for now.
     'eslint',
+    // The with-next-app uses Next 13, while the other examples and site use Next 12.
+    'next',
   ];
 
   Object.keys(dependencies).forEach(dep => {
