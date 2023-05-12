@@ -126,6 +126,8 @@ In previous versions of RainbowKit that relied on [ethers](https://docs.ethers.o
 
 Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) and [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) samples for configuration guidance for your project.
 
+> Note: Create React App additionally requires that you polyfill `Buffer`
+
 ##### Vite
 
 The [Vite](https://vitejs.dev) bundler doesn't provide Node polyfills, so you'll need to include polyfills for `global`, `Buffer` and `process.env`. As an example, you can reference the [polyfills in our sample Vite project](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
