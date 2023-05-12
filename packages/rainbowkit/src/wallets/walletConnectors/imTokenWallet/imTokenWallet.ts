@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -29,12 +30,16 @@ export const imTokenWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const { uri } = (
+            await (connector as WalletConnectLegacyConnector).getProvider()
+          ).connector;
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          (await (connector as WalletConnectLegacyConnector).getProvider())
+            .connector.uri,
         instructions: {
           learnMoreUrl:
             typeof window !== 'undefined' &&

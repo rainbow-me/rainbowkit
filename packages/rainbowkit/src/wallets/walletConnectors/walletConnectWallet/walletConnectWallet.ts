@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -36,7 +37,9 @@ export const walletConnectWallet = ({
       },
     });
 
-    const getUri = async () => (await connector.getProvider()).connector.uri;
+    const getUri = async () =>
+      (await (connector as WalletConnectLegacyConnector).getProvider())
+        .connector.uri;
 
     return {
       connector,

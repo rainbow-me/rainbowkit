@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -30,7 +31,9 @@ export const ledgerWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const { uri } = (
+            await (connector as WalletConnectLegacyConnector).getProvider()
+          ).connector;
           return isAndroid()
             ? uri
             : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
@@ -38,7 +41,9 @@ export const ledgerWallet = ({
       },
       desktop: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const { uri } = (
+            await (connector as WalletConnectLegacyConnector).getProvider()
+          ).connector;
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
       },

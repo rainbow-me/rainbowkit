@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { MetaMaskConnectorOptions } from '@wagmi/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -109,7 +110,9 @@ export const metaMaskWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const { uri } = (
+          await (connector as WalletConnectLegacyConnector).getProvider()
+        ).connector;
 
         return isAndroid()
           ? uri

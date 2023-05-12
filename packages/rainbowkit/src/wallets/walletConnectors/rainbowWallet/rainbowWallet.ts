@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -57,7 +58,9 @@ export const rainbowWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const { uri } = (
+          await (connector as WalletConnectLegacyConnector).getProvider()
+        ).connector;
 
         return isAndroid()
           ? uri

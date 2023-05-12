@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
+import type { WalletConnectLegacyConnector } from '@wagmi/connectors/walletConnectLegacy';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { InstructionStepName, Wallet } from '../../Wallet';
@@ -86,13 +87,17 @@ export const trustWallet = ({
     },
     createConnector: () => {
       const getUriMobile = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const { uri } = (
+          await (connector as WalletConnectLegacyConnector).getProvider()
+        ).connector;
 
         return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const { uri } = (
+          await (connector as WalletConnectLegacyConnector).getProvider()
+        ).connector;
 
         return uri;
       };

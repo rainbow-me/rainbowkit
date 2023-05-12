@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -30,14 +31,18 @@ export const omniWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const { uri } = (
+            await (connector as WalletConnectLegacyConnector).getProvider()
+          ).connector;
           return isAndroid()
             ? uri
             : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          (await (connector as WalletConnectLegacyConnector).getProvider())
+            .connector.uri,
         instructions: {
           learnMoreUrl: 'https://omni.app/support',
           steps: [
