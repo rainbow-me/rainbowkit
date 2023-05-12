@@ -16,22 +16,32 @@ type WalletConnectConnectorConfig = ConstructorParameters<
   typeof WalletConnectConnector
 >[0];
 export type WalletConnectConnectorOptions =
-  // @ts-ignore
   WalletConnectConnectorConfig['options'];
 
 type WalletConnectLegacyConnectorConfig = ConstructorParameters<
   typeof WalletConnectLegacyConnector
 >[0];
 export type WalletConnectLegacyConnectorOptions =
-  // @ts-ignore
   WalletConnectLegacyConnectorConfig['options'];
+
+function createConnector(
+  version: '1',
+  config: WalletConnectLegacyConnectorConfig
+): WalletConnectLegacyConnector;
+
+function createConnector(
+  version: '2',
+  config: WalletConnectConnectorConfig
+): WalletConnectConnector;
 
 function createConnector(
   version: WalletConnectVersion,
   config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
-) {
+): WalletConnectLegacyConnector | WalletConnectConnector {
   // ignoring `version` until v2 delayed uri fetch changes are merged
-  const connector = new WalletConnectLegacyConnector(config);
+  const connector = new WalletConnectLegacyConnector(
+    config as WalletConnectLegacyConnectorConfig
+  );
   sharedConnectors.set(JSON.stringify(config), connector);
   return connector;
 }
@@ -52,24 +62,23 @@ export function getWalletConnectConnector(config: {
   version: '2';
   chains: Chain[];
   projectId: string;
-  options?: WalletConnectConnectorOptions;
-}): WalletConnectConnector;
+  options?: Omit<WalletConnectConnectorOptions, 'projectId'>;
+}): WalletConnectLegacyConnector;
 
 export function getWalletConnectConnector({
   chains,
   options = {},
-  projectId,
-  version = '1',
 }: {
   chains: Chain[];
   projectId?: string;
   version?: WalletConnectVersion;
-  options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
-}): any {
+  options?:
+    | WalletConnectLegacyConnectorOptions
+    | Omit<WalletConnectConnectorOptions, 'projectId'>;
+}): WalletConnectLegacyConnector | WalletConnectConnector {
   const config = {
     chains,
     options: {
-      projectId,
       qrcode: false,
       ...options,
     },
@@ -78,5 +87,5 @@ export function getWalletConnectConnector({
   const serializedConfig = JSON.stringify(config);
   const sharedConnector = sharedConnectors.get(serializedConfig);
 
-  return sharedConnector ?? createConnector(version, config);
+  return sharedConnector ?? createConnector('1', config);
 }
