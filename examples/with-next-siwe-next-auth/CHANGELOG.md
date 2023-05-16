@@ -1,5 +1,13 @@
 # with-next-siwe-next-auth
 
+## 0.0.35
+
+### Patch Changes
+
+- 371c988: Adopted `fs`, `net`, and `tls` polyfills for better `wagmi@1` and `viem` Webpack bundler support.
+
+  These modules are required by WalletConnect packages upstream, and were previously polyfilled by `ethers`. Reference the discussion [here](https://github.com/wagmi-dev/wagmi/issues/2300#issuecomment-1541425648).
+
 ## 0.0.34
 
 ### Patch Changes
