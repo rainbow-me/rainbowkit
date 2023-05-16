@@ -163,7 +163,7 @@ export function QRCode({
               <rect height={logoSize} width={logoSize} />
             </clipPath>
           </defs>
-          <rect fill="transparent" height={size} width={size} />
+          <rect fill="white" height={size} width={size} />
           {dots}
         </svg>
       </Box>
