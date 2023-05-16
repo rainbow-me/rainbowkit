@@ -61,7 +61,7 @@ Configure your desired chains and generate the required connectors. You will als
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const { chains, provider } = configureChains(
+const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
@@ -78,7 +78,7 @@ const { connectors } = getDefaultWallets({
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider
+  publicClient
 })
 ```
 
