@@ -1,6 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
-import NextImage from 'next/image';
+import NextImage from "next/legacy/image";
 import Link from 'next/link';
 import React from 'react';
 import { grid } from './UsedBy.css';
