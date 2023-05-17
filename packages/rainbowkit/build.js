@@ -53,6 +53,9 @@ const baseBuildConfig = {
     },
   ],
   splitting: true, // Required for tree shaking
+  banner: {
+    js: '"use client";',
+  },
 };
 
 const mainBuild = esbuild.build({
