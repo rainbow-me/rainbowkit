@@ -11,7 +11,7 @@
     "dev:site": "pnpm dev:lib & pnpm --filter site dev",
     "dev:cli": "pnpm --filter @rainbow-me/create-rainbowkit dev",
     "dev:template:next-app": "pnpm --filter rainbowkit-next-app dev",
-    "build": "pnpm --recursive --parallel --filter \"!*-app\" build",
+    "build": "pnpm --recursive --parallel --filter=!rainbowkit-next-app --filter=!generated-test-app build",
     "start": "pnpm dev",
     "lint": "eslint . --ext=js,jsx,mjs,ts,cjs,tsx && pnpm format:check && pnpm --recursive typecheck",
     "lint:fix": "eslint . --ext=js,jsx,mjs,ts,cjs,tsx --fix && pnpm format:fix",
