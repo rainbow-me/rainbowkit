@@ -178,11 +178,11 @@ importers:
         version: link:../../packages/rainbowkit
     devDependencies:
       eslint:
-        specifier: 8.15.0
-        version: 8.15.0
+        specifier: ^8.15.0
+        version: 8.40.0
       eslint-config-next:
         specifier: 12.1.6
-        version: 12.1.6(eslint@8.15.0)(next@13.4.2)(typescript@5.0.4)
+        version: 12.1.6(eslint@8.40.0)(next@13.4.2)(typescript@5.0.4)
 
   examples/with-next-mint-nft:
     dependencies:
@@ -194,11 +194,11 @@ importers:
         version: 6.3.3(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       eslint:
-        specifier: 8.15.0
-        version: 8.15.0
+        specifier: ^8.15.0
+        version: 8.40.0
       eslint-config-next:
         specifier: 12.1.6
-        version: 12.1.6(eslint@8.15.0)(next@13.4.2)(typescript@5.0.4)
+        version: 12.1.6(eslint@8.40.0)(next@13.4.2)(typescript@5.0.4)
 
   examples/with-next-siwe-iron-session:
     dependencies:
@@ -7606,6 +7606,26 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@typescript-eslint/parser@5.59.5(eslint@8.40.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-NJXQC4MRnF9N9yWqQE2/KLRSOLvrrlZb48NGVfBa+RuPMN6B7ZcK5jZOvhuygv4D64fRKnZI4L4p8+M+rfeQuw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@typescript-eslint/scope-manager': 5.59.5
+      '@typescript-eslint/types': 5.59.5
+      '@typescript-eslint/typescript-estree': 5.59.5(typescript@5.0.4)
+      debug: 4.3.4
+      eslint: 8.40.0
+      typescript: 5.0.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@typescript-eslint/scope-manager@4.33.0:
     resolution: {integrity: sha512-5IfJHpgTsTZuONKbODctL4kKuQje/bzBRkwHE8UOZ4f89Zeddg+EGZs8PD8NcN4LdM3ygHWYB3ukPAYjvl/qbQ==}
     engines: {node: ^8.10.0 || ^10.13.0 || >=11.10.1}
@@ -11690,7 +11710,7 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /eslint-config-next@12.1.6(eslint@8.15.0)(next@13.4.2)(typescript@5.0.4):
+  /eslint-config-next@12.1.6(eslint@8.40.0)(next@13.4.2)(typescript@5.0.4):
     resolution: {integrity: sha512-qoiS3g/EPzfCTkGkaPBSX9W0NGE/B1wNO3oWrd76QszVGrdpLggNqcO8+LR6MB0CNqtp9Q8NoeVrxNVbzM9hqA==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -11702,14 +11722,14 @@ packages:
     dependencies:
       '@next/eslint-plugin-next': 12.1.6
       '@rushstack/eslint-patch': 1.2.0
-      '@typescript-eslint/parser': 5.59.5(eslint@8.15.0)(typescript@5.0.4)
-      eslint: 8.15.0
+      '@typescript-eslint/parser': 5.59.5(eslint@8.40.0)(typescript@5.0.4)
+      eslint: 8.40.0
       eslint-import-resolver-node: 0.3.7
-      eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.27.5)(eslint@8.15.0)
+      eslint-import-resolver-typescript: 2.7.1(eslint-plugin-import@2.27.5)(eslint@8.40.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.5)(eslint-import-resolver-typescript@2.7.1)(eslint@8.15.0)
-      eslint-plugin-jsx-a11y: 6.5.1(eslint@8.15.0)
-      eslint-plugin-react: 7.32.2(eslint@8.15.0)
-      eslint-plugin-react-hooks: 4.6.0(eslint@8.15.0)
+      eslint-plugin-jsx-a11y: 6.5.1(eslint@8.40.0)
+      eslint-plugin-react: 7.32.2(eslint@8.40.0)
+      eslint-plugin-react-hooks: 4.6.0(eslint@8.40.0)
       next: 13.4.2(@babel/core@7.21.8)(@opentelemetry/api@1.1.0)(react-dom@18.2.0)(react@18.2.0)
       typescript: 5.0.4
     transitivePeerDependencies:
@@ -11848,6 +11868,24 @@ packages:
       tsconfig-paths: 3.14.2
     transitivePeerDependencies:
       - supports-color
+
+  /eslint-import-resolver-typescript@2.7.1(eslint-plugin-import@2.27.5)(eslint@8.40.0):
+    resolution: {integrity: sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      eslint: '*'
+      eslint-plugin-import: '*'
+    dependencies:
+      debug: 4.3.4
+      eslint: 8.40.0
+      eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.5)(eslint-import-resolver-typescript@2.7.1)(eslint@8.15.0)
+      glob: 7.2.3
+      is-glob: 4.0.3
+      resolve: 1.22.2
+      tsconfig-paths: 3.14.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /eslint-import-resolver-typescript@3.5.5(@typescript-eslint/parser@5.59.5)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.27.5)(eslint@8.15.0):
     resolution: {integrity: sha512-TdJqPHs2lW5J9Zpe17DZNQuDnox4xo2o+0tE7Pggain9Rbc19ik8kFtXdxZ250FVx2kF4vlt2RSf4qlUpG7bhw==}
