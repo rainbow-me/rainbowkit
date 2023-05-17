@@ -68,7 +68,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eventemitter3": "^4.0.7",
     "husky": "^7.0.4",
-    "next": "^12.2.6",
+    "next": "^13.4.2",
     "next-auth": "4.20.1",
     "postcss": "^8.4.6",
     "postcss-prefix-selector": "^1.15.0",
