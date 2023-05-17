@@ -20,6 +20,9 @@ const getAllEntryPoints = async rootPath =>
     );
 
 const baseBuildConfig = {
+  banner: {
+    js: '"use client";', // Required for Next 13 App Router
+  },
   bundle: true,
   format: 'esm',
   loader: {
@@ -53,9 +56,6 @@ const baseBuildConfig = {
     },
   ],
   splitting: true, // Required for tree shaking
-  banner: {
-    js: '"use client";',
-  },
 };
 
 const mainBuild = esbuild.build({
