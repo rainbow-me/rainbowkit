@@ -37,84 +37,86 @@ export function SearchProvider({ children }) {
     onOpen,
   });
 
-  return <>
-    <Head>
-      <link
-        crossOrigin="true"
-        href={`https://${APP_ID}-dsn.algolia.net`}
-        rel="preconnect"
-      />
-    </Head>
-    <SearchContext.Provider
-      value={{
-        isOpen,
-        onClose,
-        onOpen,
-      }}
-    >
-      {children}
-    </SearchContext.Provider>
-    {isOpen &&
-      createPortal(
-        <DocSearchModal
-          apiKey={API_KEY}
-          appId={APP_ID}
-          hitComponent={Hit}
-          indexName={INDEX_NAME}
-          initialScrollY={window.scrollY}
-          navigator={{
-            navigate({ itemUrl }) {
-              setIsOpen(false);
-              router.push(itemUrl);
-            },
-          }}
-          onClose={onClose}
-          placeholder="Search documentation"
-          transformItems={items => {
-            return items.map((item, index) => {
-              const a = document.createElement('a');
-              a.href = item.url;
+  return (
+    <>
+      <Head>
+        <link
+          crossOrigin="anonymous"
+          href={`https://${APP_ID}-dsn.algolia.net`}
+          rel="preconnect"
+        />
+      </Head>
+      <SearchContext.Provider
+        value={{
+          isOpen,
+          onClose,
+          onOpen,
+        }}
+      >
+        {children}
+      </SearchContext.Provider>
+      {isOpen &&
+        createPortal(
+          <DocSearchModal
+            apiKey={API_KEY}
+            appId={APP_ID}
+            hitComponent={Hit}
+            indexName={INDEX_NAME}
+            initialScrollY={window.scrollY}
+            navigator={{
+              navigate({ itemUrl }) {
+                setIsOpen(false);
+                router.push(itemUrl);
+              },
+            }}
+            onClose={onClose}
+            placeholder="Search documentation"
+            transformItems={items => {
+              return items.map((item, index) => {
+                const a = document.createElement('a');
+                a.href = item.url;
 
-              const hash =
-                a.hash === '#content-wrapper' || a.hash === '#header'
-                  ? ''
-                  : a.hash;
+                const hash =
+                  a.hash === '#content-wrapper' || a.hash === '#header'
+                    ? ''
+                    : a.hash;
 
-              if (item.hierarchy?.lvl0) {
-                item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(
-                  /&amp;/g,
-                  '&'
-                );
-              }
-
-              if (item._highlightResult?.hierarchy?.lvl0?.value) {
-                item._highlightResult.hierarchy.lvl0.value =
-                  item._highlightResult.hierarchy.lvl0.value.replace(
+                if (item.hierarchy?.lvl0) {
+                  item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(
                     /&amp;/g,
                     '&'
                   );
-              }
+                }
 
-              return {
-                ...item,
-                __is_child: () =>
-                  item.type !== 'lvl1' &&
-                  items.length > 1 &&
-                  items[0].type === 'lvl1' &&
-                  index !== 0,
-                __is_first: () => index === 1,
-                __is_last: () => index === items.length - 1 && index !== 0,
-                __is_parent: () =>
-                  item.type === 'lvl1' && items.length > 1 && index === 0,
-                __is_result: () => true,
-                url: `${a.pathname}${hash}`,
-              };
-            });
-          }}
-        />,
-        document.body
-      )}
-  </>;
+                if (item._highlightResult?.hierarchy?.lvl0?.value) {
+                  item._highlightResult.hierarchy.lvl0.value =
+                    item._highlightResult.hierarchy.lvl0.value.replace(
+                      /&amp;/g,
+                      '&'
+                    );
+                }
+
+                return {
+                  ...item,
+                  __is_child: () =>
+                    item.type !== 'lvl1' &&
+                    items.length > 1 &&
+                    items[0].type === 'lvl1' &&
+                    index !== 0,
+                  __is_first: () => index === 1,
+                  __is_last: () => index === items.length - 1 && index !== 0,
+                  __is_parent: () =>
+                    item.type === 'lvl1' && items.length > 1 && index === 0,
+                  __is_result: () => true,
+                  url: `${a.pathname}${hash}`,
+                };
+              });
+            }}
+          />,
+          document.body
+        )}
+    </>
+  );
 }
 
 function Hit({ children, hit }) {
