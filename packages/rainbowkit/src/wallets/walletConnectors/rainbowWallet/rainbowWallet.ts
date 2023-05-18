@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -26,8 +25,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 export const rainbowWallet = ({
   chains,
   projectId,
-  ...options
-}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
+}: RainbowWalletOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -54,7 +52,6 @@ export const rainbowWallet = ({
         ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
-            options,
           });
 
       const getUri = async () => {

@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -15,8 +14,7 @@ export interface ZerionWalletOptions {
 export const zerionWallet = ({
   chains,
   projectId,
-  ...options
-}: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
+}: ZerionWalletOptions): Wallet => {
   const isZerionInjected =
     typeof window !== 'undefined' &&
     ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
@@ -53,7 +51,6 @@ export const zerionWallet = ({
                   ? // @ts-expect-error
                     window.zerionWallet || window.ethereum
                   : undefined,
-              ...options,
             },
           });
 

@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -8,10 +7,7 @@ export interface InjectedWalletOptions {
   chains: Chain[];
 }
 
-export const injectedWallet = ({
-  chains,
-  ...options
-}: InjectedWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const injectedWallet = ({ chains }: InjectedWalletOptions): Wallet => ({
   id: 'injected',
   name: 'Browser Wallet',
   iconUrl: async () => (await import('./injectedWallet.svg')).default,
@@ -27,7 +23,6 @@ export const injectedWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
   }),
 });

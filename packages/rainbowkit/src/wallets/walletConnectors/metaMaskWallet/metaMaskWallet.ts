@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { MetaMaskConnectorOptions } from '@wagmi/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -59,8 +58,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
 export const metaMaskWallet = ({
   chains,
   projectId,
-  ...options
-}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
+}: MetaMaskWalletOptions): Wallet => {
   const providers = typeof window !== 'undefined' && window.ethereum?.providers;
 
   // Not using the explicit isMetaMask fn to check for MetaMask
@@ -106,7 +104,6 @@ export const metaMaskWallet = ({
                   : typeof window !== 'undefined'
                   ? window.ethereum
                   : undefined,
-              ...options,
             },
           });
 

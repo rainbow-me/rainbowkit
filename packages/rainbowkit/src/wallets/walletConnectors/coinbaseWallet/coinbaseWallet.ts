@@ -12,7 +12,6 @@ export interface CoinbaseWalletOptions {
 export const coinbaseWallet = ({
   appName,
   chains,
-  ...options
 }: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected =
     typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
@@ -45,7 +44,6 @@ export const coinbaseWallet = ({
         options: {
           appName,
           headlessMode: true,
-          ...options,
         },
       });
 

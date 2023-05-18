@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
-import type { WalletConnectLegacyConnector } from '@wagmi/connectors/walletConnectLegacy';
+import type { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { InstructionStepName, Wallet } from '../../Wallet';
@@ -60,8 +59,7 @@ function getTrustWalletInjectedProvider(): Window['ethereum'] {
 export const trustWallet = ({
   chains,
   projectId,
-  ...options
-}: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
+}: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
@@ -109,7 +107,6 @@ export const trustWallet = ({
             options: {
               name: 'Trust Wallet',
               getProvider: getTrustWalletInjectedProvider,
-              ...options,
             },
           });
 

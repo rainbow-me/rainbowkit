@@ -1,5 +1,4 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { InjectedConnectorOptions } from '@wagmi/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -14,10 +13,7 @@ declare global {
   }
 }
 
-export const tahoWallet = ({
-  chains,
-  ...options
-}: TahoWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const tahoWallet = ({ chains }: TahoWalletOptions): Wallet => ({
   id: 'taho',
   name: 'Taho',
   iconBackground: '#d08d57',
@@ -44,7 +40,6 @@ export const tahoWallet = ({
             if (typeof window === 'undefined') return;
             return getTaho(window.tally);
           },
-          ...options,
         },
       }),
       extension: {
