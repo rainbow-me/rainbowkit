@@ -4,6 +4,7 @@ import { isHexString } from '../utils/colors';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { Wallet, WalletInstance, WalletList } from './Wallet';
+import type { RainbowKitConnector } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -15,7 +16,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
   return () => {
     let index = -1;
 
-    const connectors: Connector[] = [];
+    const connectors: (Connector & { _wallets?: WalletInstance[] })[] = [];
     const visibleWallets: WalletListItem[] = [];
     const potentiallyHiddenWallets: WalletListItem[] = [];
     const walletInstances: WalletInstance[] = [];
@@ -91,9 +92,11 @@ export const connectorsForWallets = (walletList: WalletList) => {
           }
         }
 
-        const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector()
-        );
+        const {
+          connector,
+          ...connectionMethods
+        }: RainbowKitConnector<Connector & { _wallets?: WalletInstance[] }> =
+          omitUndefinedValues(createConnector());
 
         let walletConnectModalConnector: Connector | undefined;
         if (
@@ -142,7 +145,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
 
         // Add wallet to connector's list of associated wallets
-        connector._wallets.push(walletInstance);
+        connector._wallets?.push(walletInstance);
       }
     );
 

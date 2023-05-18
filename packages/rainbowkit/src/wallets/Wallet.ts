@@ -2,7 +2,7 @@ import { Connector } from 'wagmi';
 
 export type InstructionStepName = 'install' | 'create' | 'scan' | 'refresh';
 
-type RainbowKitConnector<C extends Connector = Connector> = {
+export type RainbowKitConnector<C extends Connector = Connector> = {
   connector: C;
   mobile?: {
     getUri?: () => Promise<string>;
