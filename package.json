@@ -80,7 +80,7 @@
     "vitest": "^0.30.0",
     "wagmi": "^1.0.5",
     "@wagmi/core": "^1.0.5",
-    "viem": "~0.3.26"
+    "viem": "~0.3.29"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
