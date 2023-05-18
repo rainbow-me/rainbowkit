@@ -11,7 +11,9 @@ import type {
 export interface WalletConnectWalletOptions {
   projectId?: string;
   chains: Chain[];
-  options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
+  options?:
+    | WalletConnectLegacyConnectorOptions
+    | Omit<WalletConnectConnectorOptions, 'projectId'>;
 }
 
 export const walletConnectWallet = ({
