@@ -49,7 +49,8 @@ export const coinbaseWallet = ({
         },
       });
 
-      const getUri = async () => (await connector.getProvider()).qrUrl;
+      const getUri = async () =>
+        (await connector.getProvider()).qrUrl as string;
 
       return {
         connector,
