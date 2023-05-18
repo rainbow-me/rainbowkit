@@ -108,7 +108,6 @@ export const trustWallet = ({
             chains,
             options: {
               name: 'Trust Wallet',
-              shimChainChangedDisconnect: true,
               getProvider: getTrustWalletInjectedProvider,
               ...options,
             },
