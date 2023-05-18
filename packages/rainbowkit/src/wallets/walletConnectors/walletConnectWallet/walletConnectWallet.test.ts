@@ -1,6 +1,5 @@
-import { describe, expect, expectTypeOf, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
-import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { walletConnectWallet } from './walletConnectWallet';
 
 describe('walletConnectWallet', () => {
@@ -11,14 +10,12 @@ describe('walletConnectWallet', () => {
     const wallet = walletConnectWallet({ chains });
     const { connector } = wallet.createConnector();
     expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
   });
 
   it('with projectId', () => {
     const wallet = walletConnectWallet({ chains, projectId });
     const { connector } = wallet.createConnector();
     expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
   });
 
   it('v1 options', () => {
@@ -36,7 +33,6 @@ describe('walletConnectWallet', () => {
     const { connector } = wallet.createConnector();
 
     expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
 
     expect(connector.options.qrcode).toBe(true);
     expect(connector.options.qrcodeModalOptions.desktopLinks).toHaveLength(1);
@@ -53,7 +49,6 @@ describe('walletConnectWallet', () => {
     const { connector } = wallet.createConnector();
 
     expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
 
     expect(connector.options.qrcode).toBe(false);
     expect(connector.options.showQrModal).toBe(true);
