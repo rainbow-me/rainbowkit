@@ -1,7 +1,7 @@
 {
   "name": "with-next-mint-nft",
   "private": true,
-  "version": "0.0.52",
+  "version": "0.0.53",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,8 +14,8 @@
     "next": "^12.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~0.3.22",
-    "wagmi": "^1.0.2"
+    "viem": "~0.3.26",
+    "wagmi": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^18.16.8",
