@@ -24,7 +24,9 @@ export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
-  const defaultConnectors = defaultConnectors_untyped as Connector[];
+  const defaultConnectors = defaultConnectors_untyped as (Connector & {
+    _wallets?: WalletInstance[];
+  })[];
 
   async function connectWallet(walletId: string, connector: Connector) {
     const walletChainId = await connector.getChainId();
