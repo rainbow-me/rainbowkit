@@ -32,7 +32,6 @@ export const walletConnectWallet = ({
       chains,
       options: {
         qrcode: ios,
-        projectId,
         ...options,
       },
     });
