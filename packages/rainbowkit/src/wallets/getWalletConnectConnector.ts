@@ -16,12 +16,14 @@ type WalletConnectConnectorConfig = ConstructorParameters<
   typeof WalletConnectConnector
 >[0];
 export type WalletConnectConnectorOptions =
+  // @ts-ignore - 'options' does not exist on type 'unknown'
   WalletConnectConnectorConfig['options'];
 
 type WalletConnectLegacyConnectorConfig = ConstructorParameters<
   typeof WalletConnectLegacyConnector
 >[0];
 export type WalletConnectLegacyConnectorOptions =
+  // @ts-ignore - 'options' does not exist on type 'unknown'
   WalletConnectLegacyConnectorConfig['options'];
 
 function createConnector(
