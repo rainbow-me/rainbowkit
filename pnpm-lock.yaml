@@ -65,7 +65,7 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(@types/node@17.0.35)(vite@2.9.9)
       '@wagmi/core':
-        specifier: ^1.0.5
+        specifier: ~1.0.5
         version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
       autoprefixer:
         specifier: ^10.4.0
@@ -125,7 +125,7 @@ importers:
         specifier: ^0.30.0
         version: 0.30.0
       wagmi:
-        specifier: ^1.0.5
+        specifier: ~1.0.5
         version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
 
   examples/with-create-react-app:
@@ -372,7 +372,7 @@ importers:
         specifier: ~0.3.33
         version: 0.3.33(typescript@5.0.4)
       wagmi:
-        specifier: ^1.0.5
+        specifier: ~1.0.5
         version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
 
   packages/rainbowkit:
@@ -427,7 +427,7 @@ importers:
         specifier: ^0.30.0
         version: 0.30.0
       wagmi:
-        specifier: ^1.0.5
+        specifier: ~1.0.5
         version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
 
   packages/rainbowkit-siwe-next-auth:
@@ -545,7 +545,7 @@ importers:
         specifier: ~0.3.33
         version: 0.3.33(typescript@5.0.4)
       wagmi:
-        specifier: ^1.0.5
+        specifier: ~1.0.5
         version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
     devDependencies:
       contentlayer:

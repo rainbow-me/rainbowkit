@@ -16,7 +16,7 @@
     "viem": "~0.3.33"
   },
   "peerDependencies": {
-    "wagmi": "^1.0.5"
+    "wagmi": "~1.0.5"
   },
   "scripts": {
     "dev": "next dev",
