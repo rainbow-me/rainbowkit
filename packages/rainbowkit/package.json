@@ -52,7 +52,7 @@
     "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
-    "viem": "~0.3.29",
+    "viem": "~0.3.33",
     "wagmi": "^1.0.5",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
