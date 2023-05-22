@@ -44,8 +44,8 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "viem": "0.3.x",
-    "wagmi": "1.0.x"
+    "viem": "~0.3.19",
+    "wagmi": "~1.0.1"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
