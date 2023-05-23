@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { PublicClient } from 'viem';
 import { useAccount, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import { createTransactionStore, TransactionStore } from './transactionStore';
@@ -17,7 +16,7 @@ export function TransactionStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const provider = usePublicClient<PublicClient>();
+  const provider = usePublicClient();
   const { address } = useAccount();
   const chainId = useChainId();
 
