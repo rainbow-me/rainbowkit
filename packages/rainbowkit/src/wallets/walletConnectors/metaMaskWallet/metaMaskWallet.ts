@@ -11,7 +11,7 @@ export interface MetaMaskWalletOptions {
   chains: Chain[];
 }
 
-function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
+function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
   // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
   if (!ethereum?.isMetaMask) return false;

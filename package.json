@@ -71,7 +71,7 @@
     "next-auth": "4.20.1",
     "postcss": "^8.4.6",
     "postcss-prefix-selector": "^1.15.0",
-    "prettier": "^2.5.0",
+    "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "recursive-readdir-files": "^2.0.7",

@@ -155,10 +155,10 @@ const themes = [
   { name: 'dark', theme: darkTheme },
   { name: 'midnight', theme: midnightTheme },
 ] as const;
-type ThemeName = typeof themes[number]['name'];
+type ThemeName = (typeof themes)[number]['name'];
 
 const fontStacks = ['rounded', 'system'] as const;
-type FontStack = typeof fontStacks[number];
+type FontStack = (typeof fontStacks)[number];
 
 const accentColors = [
   'blue',
@@ -169,16 +169,16 @@ const accentColors = [
   'red',
   'custom',
 ] as const;
-type AccentColor = typeof accentColors[number];
+type AccentColor = (typeof accentColors)[number];
 
 const radiusScales = ['large', 'medium', 'small', 'none'] as const;
-type RadiusScale = typeof radiusScales[number];
+type RadiusScale = (typeof radiusScales)[number];
 
 const overlayBlurs = ['large', 'small', 'none'] as const;
-type OverlayBlur = typeof overlayBlurs[number];
+type OverlayBlur = (typeof overlayBlurs)[number];
 
 const modalSizes = ['wide', 'compact'] as const;
-type ModalSize = typeof modalSizes[number];
+type ModalSize = (typeof modalSizes)[number];
 
 function RainbowKitApp({
   Component,
