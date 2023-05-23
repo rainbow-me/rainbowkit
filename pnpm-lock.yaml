@@ -66,7 +66,7 @@ importers:
         version: 3.8.0(@types/node@18.16.8)(vite@2.9.9)
       '@wagmi/core':
         specifier: ~1.0.5
-        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
       autoprefixer:
         specifier: ^10.4.0
         version: 10.4.0(postcss@8.4.6)
@@ -119,14 +119,14 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       viem:
-        specifier: ~0.3.33
-        version: 0.3.33(typescript@5.0.4)
+        specifier: ~0.3.35
+        version: 0.3.35(typescript@5.0.4)
       vitest:
         specifier: ^0.30.0
         version: 0.30.0
       wagmi:
         specifier: ~1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
 
   examples/with-create-react-app:
     dependencies:
@@ -369,11 +369,11 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4(ethers@5.6.8)
       viem:
-        specifier: ~0.3.33
-        version: 0.3.33(typescript@5.0.4)
+        specifier: ~0.3.35
+        version: 0.3.35(typescript@5.0.4)
       wagmi:
         specifier: ~1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
 
   packages/rainbowkit:
     dependencies:
@@ -421,14 +421,14 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0
       viem:
-        specifier: ~0.3.33
-        version: 0.3.33(typescript@5.0.4)
+        specifier: ~0.3.35
+        version: 0.3.35(typescript@5.0.4)
       vitest:
         specifier: ^0.30.0
         version: 0.30.0
       wagmi:
         specifier: ~1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
 
   packages/rainbowkit-siwe-next-auth:
     dependencies:
@@ -542,11 +542,11 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       viem:
-        specifier: ~0.3.33
-        version: 0.3.33(typescript@5.0.4)
+        specifier: ~0.3.35
+        version: 0.3.35(typescript@5.0.4)
       wagmi:
         specifier: ~1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
     devDependencies:
       contentlayer:
         specifier: 0.2.8
@@ -8010,7 +8010,7 @@ packages:
     dependencies:
       typescript: 5.0.4
 
-  /@wagmi/connectors@1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33):
+  /@wagmi/connectors@1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35):
     resolution: {integrity: sha512-5uB+dUDop8s9scdE+S4IhgcfP8oRwdULVvpJ2MusDp+C00+OgvS3SnwZM6+Pjc9tyj5pi143zqsYtDynxFrMEA==}
     peerDependencies:
       '@wagmi/chains': '>=0.2.23'
@@ -8033,7 +8033,7 @@ packages:
       abitype: 0.8.1(typescript@5.0.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 0.3.33(typescript@5.0.4)
+      viem: 0.3.35(typescript@5.0.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
@@ -8045,7 +8045,7 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.33):
+  /@wagmi/core@1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.35):
     resolution: {integrity: sha512-n8Y84WJkofGjhd4a+vpZzPPEQiHnkIGMe0uHOXfkm4eKJZyaJqvVJFPMWE6xFJkk0hxZ+1zw5xn0ZhdroHwHvg==}
     peerDependencies:
       typescript: '>=4.9.4'
@@ -8055,11 +8055,11 @@ packages:
         optional: true
     dependencies:
       '@wagmi/chains': 0.2.23(typescript@5.0.4)
-      '@wagmi/connectors': 1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+      '@wagmi/connectors': 1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
       abitype: 0.8.1(typescript@5.0.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 0.3.33(typescript@5.0.4)
+      viem: 0.3.35(typescript@5.0.4)
       zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
@@ -21202,8 +21202,8 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  /viem@0.3.33(typescript@5.0.4):
-    resolution: {integrity: sha512-ITB7wiYIWMxSyOQePPVa+6YcCrQiBLY/S758iZcjIZFqyqF8i/9PBhAPiqbiUrdfydaqjjRtWR1PAaXlMxmgtg==}
+  /viem@0.3.35(typescript@5.0.4):
+    resolution: {integrity: sha512-r9GrjAwY5BAehRAMSDJQGpPWGM6sKbAftb3GVny/rLCdjjtK4Zz2B3HOcjOQEM7jo+3LfPWSd85rBkNEpWntiA==}
     dependencies:
       '@adraffy/ens-normalize': 1.9.0
       '@noble/curves': 1.0.0
@@ -21399,7 +21399,7 @@ packages:
       xml-name-validator: 3.0.0
     dev: false
 
-  /wagmi@1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.33):
+  /wagmi@1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.35):
     resolution: {integrity: sha512-XsLhNPTD7c+QXaA9elMwDihvcNHBw4Jcu0S/otkn3N4FgWIUVSQGiUYwm3AQrm/UhON0+Q8Y3ICzxB47PSr46g==}
     peerDependencies:
       react: '>=17.0.0'
@@ -21412,12 +21412,12 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.7
       '@tanstack/react-query': 4.29.7(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.7(@tanstack/react-query@4.29.7)
-      '@wagmi/core': 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.33)
+      '@wagmi/core': 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.35)
       abitype: 0.8.1(typescript@5.0.4)
       react: 18.2.0
       typescript: 5.0.4
       use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 0.3.33(typescript@5.0.4)
+      viem: 0.3.35(typescript@5.0.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil

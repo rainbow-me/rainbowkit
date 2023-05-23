@@ -80,7 +80,7 @@
     "ethers": "^5.6.8",
     "@wagmi/core": "~1.0.5",
     "wagmi": "~1.0.5",
-    "viem": "~0.3.33"
+    "viem": "~0.3.35"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
