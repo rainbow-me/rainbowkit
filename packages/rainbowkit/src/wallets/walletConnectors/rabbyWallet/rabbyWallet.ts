@@ -13,9 +13,9 @@ export const rabbyWallet = ({
   ...options
 }: RabbyWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'rabby',
-  name: 'Rabby',
+  name: 'Rabby Wallet',
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
-  iconBackground: '#fff',
+  iconBackground: '#8697FF',
   installed:
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
