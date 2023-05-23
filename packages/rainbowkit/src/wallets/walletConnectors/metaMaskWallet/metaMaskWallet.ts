@@ -98,7 +98,7 @@ export const metaMaskWallet = ({
         : new MetaMaskConnector({
             chains,
             options: {
-              // @ts-expect-error - MetaMaskConnector accepts this option, but doesn't expose type
+              // @ts-ignore - MetaMaskConnector accepts this option, but doesn't expose type
               getProvider: () =>
                 providers
                   ? providers.find(isMetaMask)
