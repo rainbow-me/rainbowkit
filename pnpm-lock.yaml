@@ -171,6 +171,19 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(eslint@8.15.0)(typescript@5.0.4)
 
+  examples/with-next-app:
+    dependencies:
+      '@rainbow-me/rainbowkit':
+        specifier: workspace:*
+        version: link:../../packages/rainbowkit
+    devDependencies:
+      eslint:
+        specifier: ^8.15.0
+        version: 8.15.0
+      eslint-config-next:
+        specifier: ^13.4.3
+        version: 13.4.3(eslint@8.15.0)(typescript@5.0.4)
+
   examples/with-next-custom-button:
     dependencies:
       '@rainbow-me/rainbowkit':
