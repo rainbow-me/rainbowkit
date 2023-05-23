@@ -34,6 +34,7 @@ You can use the CodeSandbox links below try out RainbowKit:
 
 - with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 - with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 - with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 
@@ -43,6 +44,7 @@ The following examples are provided in the [examples](./examples/) folder of thi
 
 - `with-create-react-app`
 - `with-next`
+- `with-next-app`
 - `with-next-custom-button`
 - `with-next-mint-nft`
 - `with-next-siwe-next-auth`

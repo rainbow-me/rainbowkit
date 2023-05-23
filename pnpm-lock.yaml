@@ -171,6 +171,22 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(eslint@8.15.0)(typescript@5.0.4)
 
+  examples/with-next-app:
+    dependencies:
+      '@rainbow-me/rainbowkit':
+        specifier: workspace:*
+        version: link:../../packages/rainbowkit
+    devDependencies:
+      encoding:
+        specifier: ^0.1.13
+        version: 0.1.13
+      eslint:
+        specifier: ^8.15.0
+        version: 8.15.0
+      eslint-config-next:
+        specifier: ^13.4.3
+        version: 13.4.3(eslint@8.15.0)(typescript@5.0.4)
+
   examples/with-next-custom-button:
     dependencies:
       '@rainbow-me/rainbowkit':
@@ -11132,6 +11148,12 @@ packages:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
     engines: {node: '>= 0.8'}
 
+  /encoding@0.1.13:
+    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    dependencies:
+      iconv-lite: 0.6.3
+    dev: true
+
   /end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
@@ -13978,7 +14000,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
-    dev: false
 
   /icss-utils@5.1.0(postcss@8.4.23):
     resolution: {integrity: sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==}
