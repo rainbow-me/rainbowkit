@@ -15,7 +15,7 @@ export const rabbyWallet = ({
   id: 'rabby',
   name: 'Rabby Wallet',
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
-  iconBackground: '#fff',
+  iconBackground: '#8697FF',
   installed:
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
