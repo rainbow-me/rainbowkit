@@ -34,7 +34,7 @@
     "three": "^0.139.2",
     "unified": "10.1.2",
     "unist-util-visit": "4.1.0",
-    "viem": "~0.3.33"
+    "viem": "~0.3.35"
   },
   "devDependencies": {
     "contentlayer": "0.2.8",
