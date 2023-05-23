@@ -8,7 +8,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "ethers": "^5.6.8",
-    "next": "^12.2.6",
+    "next": "^13.4.3",
     "next-auth": "4.20.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
