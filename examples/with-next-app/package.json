@@ -1,7 +1,7 @@
 {
-  "name": "generated-test-app",
+  "name": "with-next-app",
   "private": true,
-  "version": "0.1.56",
+  "version": "0.0.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,6 +21,11 @@
     "@types/react": "^18.2.6",
     "eslint": "^8.15.0",
     "eslint-config-next": "^13.4.3",
-    "typescript": "^5.0.4"
+    "next": "^13.4.3",
+    "typescript": "^5.0.4",
+    "encoding": "^0.1.13"
+  },
+  "engines": {
+    "node": ">=16.8.0"
   }
 }

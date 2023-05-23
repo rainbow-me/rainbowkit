@@ -41,7 +41,7 @@ export function SearchProvider({ children }) {
     <>
       <Head>
         <link
-          crossOrigin="true"
+          crossOrigin="anonymous"
           href={`https://${APP_ID}-dsn.algolia.net`}
           rel="preconnect"
         />
@@ -121,19 +121,19 @@ export function SearchProvider({ children }) {
 
 function Hit({ children, hit }) {
   return (
-    <Link href={hit.url} passHref>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a
-        className={clsx({
-          'DocSearch-Hit--Child': hit.__is_child?.(),
-          'DocSearch-Hit--FirstChild': hit.__is_first?.(),
-          'DocSearch-Hit--LastChild': hit.__is_last?.(),
-          'DocSearch-Hit--Parent': hit.__is_parent?.(),
-          'DocSearch-Hit--Result': hit.__is_result?.(),
-        })}
-      >
-        {children}
-      </a>
+    <Link
+      className={clsx({
+        'DocSearch-Hit--Child': hit.__is_child?.(),
+        'DocSearch-Hit--FirstChild': hit.__is_first?.(),
+        'DocSearch-Hit--LastChild': hit.__is_last?.(),
+        'DocSearch-Hit--Parent': hit.__is_parent?.(),
+        'DocSearch-Hit--Result': hit.__is_result?.(),
+      })}
+      href={hit.url}
+      passHref
+    >
+      {}
+      {children}
     </Link>
   );
 }

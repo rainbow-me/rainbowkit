@@ -11,7 +11,7 @@ import { PropsTable } from 'components/PropsTable/PropsTable';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 import React, { useState } from 'react';
 
 export const components = {

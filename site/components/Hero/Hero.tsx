@@ -1,5 +1,5 @@
 import { Box } from 'components/Box/Box';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 import React from 'react';
 import {
   compactModalWrapper,

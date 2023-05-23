@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.62",
+  "version": "0.0.63",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -8,15 +8,15 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "ethers": "^5.6.8",
-    "next": "^12.2.6",
+    "next": "^13.4.3",
     "next-auth": "4.20.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "~0.3.19"
+    "viem": "~0.3.35"
   },
   "peerDependencies": {
-    "wagmi": "^1.0.1"
+    "wagmi": "~1.0.5"
   },
   "scripts": {
     "dev": "next dev",
