@@ -59,6 +59,7 @@ export const okxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
+                // @ts-ignore - connector is appropriately typed as WalletConnectLegacyConnector or WalletConnectConnector
                 const { uri } = (await connector.getProvider()).connector;
                 return isAndroid()
                   ? uri
@@ -68,6 +69,7 @@ export const okxWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
+              // @ts-ignore - connector is appropriately typed as WalletConnectLegacyConnector or WalletConnectConnector
               getUri: async () => (await connector.getProvider()).connector.uri,
               instructions: {
                 learnMoreUrl: 'https://okx.com/web3/',

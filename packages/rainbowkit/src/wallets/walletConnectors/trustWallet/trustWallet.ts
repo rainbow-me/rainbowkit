@@ -86,12 +86,14 @@ export const trustWallet = ({
     },
     createConnector: () => {
       const getUriMobile = async () => {
+        // @ts-ignore - connector is appropriately typed as WalletConnectLegacyConnector or WalletConnectConnector
         const { uri } = (await connector.getProvider()).connector;
 
         return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
+        // @ts-ignore - connector is appropriately typed as WalletConnectLegacyConnector or WalletConnectConnector
         const { uri } = (await connector.getProvider()).connector;
 
         return uri;
