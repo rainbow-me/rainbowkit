@@ -19,7 +19,6 @@ export interface WalletConnectWalletOptions {
 export const walletConnectWallet = ({
   chains,
   options,
-  projectId,
 }: WalletConnectWalletOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
