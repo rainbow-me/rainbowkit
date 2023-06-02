@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -11,6 +12,7 @@ import type {
 export interface WalletConnectWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
   options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
 }
 
@@ -18,6 +20,7 @@ export const walletConnectWallet = ({
   chains,
   options,
   projectId,
+  walletConnectVersion = '2',
 }: WalletConnectWalletOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
@@ -36,7 +39,8 @@ export const walletConnectWallet = ({
       },
     });
 
-    const getUri = async () => (await connector.getProvider()).connector.uri;
+    const getUri = async () =>
+      getWalletConnectUri(connector, walletConnectVersion);
 
     return {
       connector,

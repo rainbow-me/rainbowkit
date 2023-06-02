@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -7,11 +8,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 export interface OmniWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 export const omniWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
 }: OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
@@ -30,14 +33,18 @@ export const omniWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const uri = await getWalletConnectUri(
+            connector,
+            walletConnectVersion
+          );
           return isAndroid()
             ? uri
             : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          getWalletConnectUri(connector, walletConnectVersion),
         instructions: {
           learnMoreUrl: 'https://omni.app/support',
           steps: [

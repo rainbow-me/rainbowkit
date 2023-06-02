@@ -1,17 +1,20 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
 export interface CoinbaseWalletOptions {
   appName: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 export const coinbaseWallet = ({
   appName,
   chains,
+  walletConnectVersion = '2',
   ...options
 }: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected =
@@ -49,15 +52,14 @@ export const coinbaseWallet = ({
         },
       });
 
-      const getUri = async () => (await connector.getProvider()).qrUrl;
-
       return {
         connector,
         ...(ios
           ? {}
           : {
               qrCode: {
-                getUri,
+                getUri: async () =>
+                  getWalletConnectUri(connector, walletConnectVersion),
                 instructions: {
                   learnMoreUrl:
                     'https://coinbase.com/wallet/articles/getting-started-mobile',

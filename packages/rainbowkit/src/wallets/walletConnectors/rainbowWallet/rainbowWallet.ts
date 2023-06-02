@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -9,6 +10,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 export interface RainbowWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -25,6 +27,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 export const rainbowWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
   ...options
 }: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
@@ -50,15 +53,18 @@ export const rainbowWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId, chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+          })
         : new InjectedConnector({
             chains,
             options,
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
-
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
           : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
