@@ -15,18 +15,33 @@ describe('getWalletConnectConnector', () => {
 
   describe('generic', () => {
     it('without projectId', () => {
-      const connector = getWalletConnectConnector({ chains });
-      expect(connector.id).toBe('walletConnect');
-      expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
+      // eslint-disable-next-line jest/require-to-throw-message
+      expect(() => getWalletConnectConnector({ chains })).toThrowError();
     });
     it('with projectId', () => {
       const connector = getWalletConnectConnector({ chains, projectId });
       expect(connector.id).toBe('walletConnect');
-      expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
+      expectTypeOf(connector).toMatchTypeOf<WalletConnectConnector>();
     });
     it('qrcode defaults', () => {
-      const connector = getWalletConnectConnector({ chains });
+      const connector = getWalletConnectConnector({ chains, projectId });
+      expect(connector.options.showQrModal).toBe(false);
+    });
+    it('v1 qrcode defaults', () => {
+      const connector = getWalletConnectConnector({
+        chains,
+        projectId,
+        version: '1',
+      });
       expect(connector.options.qrcode).toBe(false);
+    });
+    it('v2 qrcode defaults', () => {
+      const connector = getWalletConnectConnector({
+        chains,
+        projectId,
+        version: '2',
+      });
+      expect(connector.options.showQrModal).toBe(false);
     });
   });
 
