@@ -79,8 +79,8 @@
     "typescript": "^5.0.4",
     "vitest": "^0.30.0",
     "ethers": "^5.6.8",
-    "wagmi": "~1.0.9",
-    "viem": "~0.3.44"
+    "wagmi": "~1.1.0",
+    "viem": "~0.3.45"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
