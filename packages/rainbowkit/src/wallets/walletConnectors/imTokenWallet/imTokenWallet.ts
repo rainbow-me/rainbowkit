@@ -1,16 +1,19 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ImTokenWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 export const imTokenWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
 }: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
@@ -29,12 +32,16 @@ export const imTokenWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const uri = await getWalletConnectUri(
+            connector,
+            walletConnectVersion
+          );
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          getWalletConnectUri(connector, walletConnectVersion),
         instructions: {
           learnMoreUrl:
             typeof window !== 'undefined' &&

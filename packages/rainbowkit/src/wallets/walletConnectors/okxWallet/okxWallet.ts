@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -9,11 +10,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 export interface OKXWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 export const okxWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
   ...options
 }: OKXWalletOptions & InjectedConnectorOptions): Wallet => {
   // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
@@ -59,7 +62,10 @@ export const okxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
-                const { uri } = (await connector.getProvider()).connector;
+                const uri = await getWalletConnectUri(
+                  connector,
+                  walletConnectVersion
+                );
                 return isAndroid()
                   ? uri
                   : `okex://main/wc?uri=${encodeURIComponent(uri)}`;
@@ -68,7 +74,8 @@ export const okxWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () => (await connector.getProvider()).connector.uri,
+              getUri: async () =>
+                getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
                 learnMoreUrl: 'https://okx.com/web3/',
                 steps: [

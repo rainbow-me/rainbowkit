@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -9,11 +10,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 export interface ZerionWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 export const zerionWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
   ...options
 }: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
   const isZerionInjected =
@@ -57,7 +60,7 @@ export const zerionWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
 
         return isAndroid()
           ? uri

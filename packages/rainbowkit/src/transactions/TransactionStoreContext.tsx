@@ -17,7 +17,7 @@ export function TransactionStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const provider = usePublicClient<PublicClient>();
+  const provider = usePublicClient() as PublicClient;
   const { address } = useAccount();
   const chainId = useChainId();
 

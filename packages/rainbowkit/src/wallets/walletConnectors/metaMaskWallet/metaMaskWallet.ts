@@ -2,6 +2,7 @@
 import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -9,6 +10,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 export interface MetaMaskWalletOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion?: '1' | '2';
 }
 
 function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
@@ -58,6 +60,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
 export const metaMaskWallet = ({
   chains,
   projectId,
+  walletConnectVersion = '2',
   ...options
 }: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
   const providers = typeof window !== 'undefined' && window.ethereum?.providers;
@@ -109,8 +112,7 @@ export const metaMaskWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
-
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
           : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
