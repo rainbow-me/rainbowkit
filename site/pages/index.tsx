@@ -71,10 +71,21 @@ export default function Home() {
           <Box marginBottom="8">
             <InstallScript />
           </Box>
-          <Box marginBottom={{ xs: '0', md: '11' }}>
+          <Box
+            display="flex"
+            flexDirection={{ xs: 'column', sm: 'row' }}
+            gap={{ xs: '5', sm: '8' }}
+            justifyContent="center"
+            marginBottom={{ xs: '0', md: '11' }}
+          >
             <NextLink href="/docs" legacyBehavior passHref>
               <Button as="a" size="xl" variant="purpleGradient">
                 View the Docs
+              </Button>
+            </NextLink>
+            <NextLink href="/guides" legacyBehavior passHref>
+              <Button as="a" size="xl" variant="blueGradient">
+                Read Guides
               </Button>
             </NextLink>
           </Box>
@@ -164,6 +175,10 @@ export default function Home() {
               ))}
             </Box>
             <Box
+              display="flex"
+              flexDirection={{ xs: 'column', sm: 'row' }}
+              gap={{ xs: '5', sm: '8' }}
+              justifyContent="center"
               marginTop={{ xs: '5', md: '11' }}
               textAlign={{ xs: 'left', md: 'center' }}
             >
@@ -175,6 +190,16 @@ export default function Home() {
                   variant="purpleGradient"
                 >
                   View the Docs
+                </Button>
+              </NextLink>
+              <NextLink href="/guides" legacyBehavior passHref>
+                <Button
+                  as="a"
+                  size="xl"
+                  style={{ alignSelf: 'flex-start' }}
+                  variant="blueGradient"
+                >
+                  Read Guides
                 </Button>
               </NextLink>
             </Box>
