@@ -62,9 +62,7 @@ export const zerionWallet = ({
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
 
-        return isAndroid()
-          ? uri
-          : `https://wallet.zerion.io/wc?uri=${encodeURIComponent(uri)}`;
+        return isAndroid() ? uri : `zerion://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {

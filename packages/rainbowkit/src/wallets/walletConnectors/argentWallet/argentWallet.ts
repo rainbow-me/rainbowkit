@@ -44,7 +44,7 @@ export const argentWallet = ({
           );
           return isAndroid()
             ? uri
-            : `https://argent.link/app/wc?uri=${encodeURIComponent(uri)}`;
+            : `argent://app/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {

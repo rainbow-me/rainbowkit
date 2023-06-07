@@ -67,7 +67,7 @@ export const rainbowWallet = ({
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          : `rainbow://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {
