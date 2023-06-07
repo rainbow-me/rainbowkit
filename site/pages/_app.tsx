@@ -56,7 +56,7 @@ function App({ Component, pageProps }: AppProps) {
       'data-mode',
       isDocs || isGuides ? 'light' : 'dark'
     );
-  }, [isDocs]);
+  }, [isDocs, isGuides]);
 
   return (
     <>
