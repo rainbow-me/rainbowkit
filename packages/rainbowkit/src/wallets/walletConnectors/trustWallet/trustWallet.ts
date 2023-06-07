@@ -91,7 +91,7 @@ export const trustWallet = ({
       const getUriMobile = async () => {
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
 
-        return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
+        return `trust://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {

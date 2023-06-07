@@ -37,9 +37,7 @@ export const omniWallet = ({
             connector,
             walletConnectVersion
           );
-          return isAndroid()
-            ? uri
-            : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
+          return isAndroid() ? uri : `omni://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
