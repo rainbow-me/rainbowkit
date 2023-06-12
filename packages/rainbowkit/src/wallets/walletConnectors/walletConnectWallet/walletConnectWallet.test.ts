@@ -9,6 +9,7 @@ describe('walletConnectWallet', () => {
   const projectId = 'test-project-id';
 
   it('without projectId', () => {
+    // @ts-ignore - intentionally missing projectId for v2 default
     const wallet = walletConnectWallet({ chains });
     // eslint-disable-next-line jest/require-to-throw-message
     expect(() => wallet.createConnector()).toThrowError();
@@ -31,8 +32,7 @@ describe('walletConnectWallet', () => {
           mobileLinks: ['rainbow'],
         },
       },
-      projectId,
-      walletConnectVersion: '1',
+      version: '1',
     });
     const { connector } = wallet.createConnector();
 
@@ -43,6 +43,20 @@ describe('walletConnectWallet', () => {
     expect(connector.options.qrcodeModalOptions.desktopLinks).toHaveLength(1);
   });
 
+  it('v1 custom bridge option', () => {
+    const wallet = walletConnectWallet({
+      chains,
+      options: {
+        bridge: 'https://bridge.myhostedserver.com',
+      },
+      version: '1',
+    });
+    const { connector } = wallet.createConnector();
+
+    expect(connector.id).toBe('walletConnectLegacy');
+    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
+  });
+
   it('v2 options', () => {
     const wallet = walletConnectWallet({
       chains,
@@ -50,7 +64,7 @@ describe('walletConnectWallet', () => {
         showQrModal: true,
       },
       projectId,
-      walletConnectVersion: '2',
+      version: '2',
     });
     const { connector } = wallet.createConnector();
 
@@ -59,6 +73,23 @@ describe('walletConnectWallet', () => {
 
     expect(connector.options.qrcode).toBe(undefined);
     expect(connector.options.showQrModal).toBe(true);
-    // needs additional tests once WalletConnectConnector migration is complete
+  });
+
+  it('v2 walletConnectOptions', () => {
+    const wallet = walletConnectWallet({
+      chains,
+      options: {
+        showQrModal: true,
+      },
+      projectId,
+      version: '2',
+    });
+    const { connector } = wallet.createConnector();
+
+    expect(connector.id).toBe('walletConnect');
+    expectTypeOf(connector).toMatchTypeOf<WalletConnectConnector>();
+
+    expect(connector.options.qrcode).toBe(undefined);
+    expect(connector.options.showQrModal).toBe(true);
   });
 });

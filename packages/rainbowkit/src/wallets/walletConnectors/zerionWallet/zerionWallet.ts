@@ -6,19 +6,33 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface ZerionWalletOptions {
+export interface ZerionWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion?: '1' | '2';
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface ZerionWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const zerionWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (ZerionWalletOptions | ZerionWalletLegacyOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isZerionInjected =
     typeof window !== 'undefined' &&
     ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
@@ -46,7 +60,12 @@ export const zerionWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId, chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {

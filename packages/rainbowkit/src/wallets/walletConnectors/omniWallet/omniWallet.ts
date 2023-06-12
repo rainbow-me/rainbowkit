@@ -4,18 +4,31 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface OmniWalletOptions {
+export interface OmniWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion?: '1' | '2';
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface OmniWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const omniWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
   walletConnectVersion = '2',
-}: OmniWalletOptions): Wallet => ({
+}: OmniWalletLegacyOptions | OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -27,7 +40,12 @@ export const omniWallet = ({
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
+    const connector = getWalletConnectConnector({
+      projectId,
+      chains,
+      version: walletConnectVersion,
+      options: walletConnectOptions,
+    });
 
     return {
       connector,

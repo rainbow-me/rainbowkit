@@ -6,11 +6,23 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface RainbowWalletOptions {
+export interface RainbowWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion?: '1' | '2';
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface RainbowWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
@@ -27,6 +39,7 @@ function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
 export const rainbowWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
   walletConnectVersion = '2',
   ...options
 }: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
@@ -57,6 +70,7 @@ export const rainbowWallet = ({
             projectId,
             chains,
             version: walletConnectVersion,
+            options: walletConnectOptions,
           })
         : new InjectedConnector({
             chains,
