@@ -5,6 +5,10 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -12,10 +16,18 @@ declare global {
   }
 }
 
-export interface TrustWalletOptions {
+export interface TrustWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion?: '1' | '2';
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface TrustWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 function getTrustWalletInjectedProvider(): Window['ethereum'] {
@@ -61,6 +73,7 @@ function getTrustWalletInjectedProvider(): Window['ethereum'] {
 export const trustWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
   walletConnectVersion = '2',
   ...options
 }: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
@@ -101,7 +114,12 @@ export const trustWallet = ({
       };
 
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId, chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {

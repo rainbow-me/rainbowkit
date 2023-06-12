@@ -9,19 +9,26 @@ import type {
   WalletConnectLegacyConnectorOptions,
 } from '../../getWalletConnectConnector';
 
-export interface WalletConnectWalletOptions {
+export interface WalletConnectWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion?: '1' | '2';
-  options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
+  version: '1';
+  options?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface WalletConnectWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  version?: '2';
+  options?: WalletConnectConnectorOptions;
 }
 
 export const walletConnectWallet = ({
   chains,
   options,
   projectId,
-  walletConnectVersion = '2',
-}: WalletConnectWalletOptions): Wallet => ({
+  version = '2',
+}: WalletConnectWalletLegacyOptions | WalletConnectWalletOptions): Wallet => ({
   id: 'walletConnect',
   name: 'WalletConnect',
   iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
@@ -30,7 +37,7 @@ export const walletConnectWallet = ({
     const ios = isIOS();
 
     const connector =
-      walletConnectVersion === '1'
+      version === '1'
         ? getWalletConnectConnector({
             version: '1',
             chains,
@@ -49,8 +56,7 @@ export const walletConnectWallet = ({
             },
           });
 
-    const getUri = async () =>
-      getWalletConnectUri(connector, walletConnectVersion);
+    const getUri = async () => getWalletConnectUri(connector, version);
 
     return {
       connector,
