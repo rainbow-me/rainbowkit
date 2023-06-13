@@ -75,6 +75,10 @@ export function getWalletConnectConnector({
     },
   };
 
+  if (version === '1' && !config.options.bridge) {
+    config.options.bridge = 'https://derelay.rabby.io';
+  }
+
   const serializedConfig = JSON.stringify(config);
   const sharedConnector = sharedConnectors.get(serializedConfig);
 
