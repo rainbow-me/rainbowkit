@@ -15,6 +15,7 @@ export default function GuidePage({ guide }: GuidePageProps) {
     <>
       <TitleAndMetaTags
         description={guide.description}
+        image={guide.image}
         title={`${guide.title} — RainbowKit`}
       />
       <Box as="article">

@@ -37,6 +37,10 @@ export const Guide = defineDocumentType(() => ({
     },
     description: {
       type: 'string',
+      required: true,
+    },
+    image: {
+      type: 'string',
       required: false,
     },
   },
