@@ -19,7 +19,7 @@ export function GuidesLayout({ children }: { children: React.ReactNode }) {
       <Header sticky />
       <Wrapper>
         <Box className={content}>
-          <Box paddingLeft={{ lg: '11' }} paddingRight={{ lg: '11' }}>
+          <Box paddingLeft={{ lg: '12' }} paddingRight={{ lg: '12' }}>
             <>{children}</>
           </Box>
         </Box>
