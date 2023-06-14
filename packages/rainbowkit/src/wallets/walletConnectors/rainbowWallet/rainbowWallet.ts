@@ -3,7 +3,7 @@ import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injec
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isAndroid } from '../../../utils/isMobile';
+import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
@@ -81,7 +81,9 @@ export const rainbowWallet = ({
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
-          : `rainbow://wc?uri=${encodeURIComponent(uri)}`;
+          : isIOS()
+          ? `rainbow://wc?uri=${encodeURIComponent(uri)}`
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {
