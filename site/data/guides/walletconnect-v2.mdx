@@ -10,7 +10,7 @@ image: guide-walletconnect-v2.png
 
 The WalletConnect v1 protocol will be shut down on June 28, 2023, and RainbowKit has your back to make the transition super simple.
 
-Support for WalletConnect v2 is now standard in RainbowKit, without breaking changes. Just upgrade and follow the guide below!
+Support for WalletConnect v2 is now standard in RainbowKit, without breaking changes. Just upgrade and reference the guide below for additional details.
 
 #### Understanding WalletConnect v2
 
@@ -22,7 +22,7 @@ With v2, your users can now simultaneously connect to multiple chains, so you ca
 
 If you've already followed the migration guides for RainbowKit `0.12.x` and `1.0.x`, then you're almost there! Just upgrade to the latest patch release and give it a try.
 
-RainbowKit enabled WalletConnect v2 by default with `0.12.15` and `1.0.2`. We are continuing support for `0.12.x` in case your dApp has not yet upgraded to Wagmi and RainbowKit v1.
+RainbowKit enabled WalletConnect v2 by default with `0.12.15` and `1.0.2`. We are continuing support for `0.12.x` in case your dApp has not yet upgraded to wagmi v1 and RainbowKit v1.
 
 **1. Upgrading dependencies**
 
@@ -32,7 +32,7 @@ npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 
 If you're using a version of RainbowKit before `0.12.x` or `1.0.x`, just follow the [Migration Guides](/docs/migration-guide) to get up-to-date.
 
-It is recommended that `0.12.x` dApps also begin to upgrade, as improvements to WalletConnect v2 will only be included in future versions of Wagmi.
+It is recommended that `0.12.x` dApps begin to upgrade to wagmi v1, as stability improvements for WalletConnect v2 will only be included in future versions of wagmi.
 
 **2. Supplying a projectId**
 
@@ -79,7 +79,7 @@ metaMaskWallet(options: {
 });
 ```
 
-Once the WalletConnect v1 servers are shutdown on June 28th, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required to continue using the v1 protocol. The dApp and wallet must each utilize the same bridge server. Reference the following examples:
+Once the WalletConnect v1 servers are shutdown on June 28th, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required to continue using the v1 protocol. Reference the following examples:
 
 ```ts
 walletConnectWallet(options: {
