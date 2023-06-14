@@ -3,7 +3,7 @@ import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isAndroid } from '../../../utils/isMobile';
+import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
@@ -134,8 +134,10 @@ export const metaMaskWallet = ({
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
-          : // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
-            `metamask:///wc?uri=${encodeURIComponent(uri)}`;
+          : isIOS()
+          ? // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
+            `metamask:///wc?uri=${encodeURIComponent(uri)}`
+          : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
       };
 
       return {
