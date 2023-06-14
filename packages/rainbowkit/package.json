@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/rainbowkit",
-  "version": "0.12.15-canary.3",
+  "version": "0.12.15",
   "description": "The best way to connect a wallet",
   "files": [
     "dist",
