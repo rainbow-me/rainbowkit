@@ -1,13 +1,50 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import { WindowProvider } from 'wagmi/dist/window';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
+declare global {
+  interface Window {
+    evmproviders: Record<string, WindowProvider>;
+    avalanche: WindowProvider;
+  }
+}
+
 export interface CoreWalletOptions {
   projectId?: string;
   chains: Chain[];
+}
+
+function getCoreWalletInjectedProvider(): WindowProvider | undefined {
+  const injectedProviderExist =
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+
+  // No injected providers exist.
+  if (!injectedProviderExist) {
+    return;
+  }
+
+  // Core implements EIP-5749 and creates the window.evmproviders
+  if (window['evmproviders']?.['core']) {
+    return window['evmproviders']?.['core'];
+  }
+
+  // Core was injected into window.avalanche.
+  if (window.avalanche) {
+    return window.avalanche;
+  }
+
+  // Core was injected into window.ethereum.
+  if (
+    typeof window !== 'undefined' &&
+    typeof window.ethereum !== 'undefined' &&
+    window.ethereum.isAvalanche === true
+  ) {
+    return window.ethereum;
+  }
 }
 
 export const coreWallet = ({
@@ -15,10 +52,7 @@ export const coreWallet = ({
   projectId,
   ...options
 }: CoreWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isCoreInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isAvalanche === true;
+  const isCoreInjected = Boolean(getCoreWalletInjectedProvider());
 
   const shouldUseWalletConnect = !isCoreInjected;
   return {
@@ -41,7 +75,11 @@ export const coreWallet = ({
         ? getWalletConnectConnector({ projectId, chains })
         : new InjectedConnector({
             chains,
-            options,
+            options: {
+              name: 'Core',
+              getProvider: () => getCoreWalletInjectedProvider,
+              ...options,
+            },
           });
       const getUri = async () => {
         const { uri } = (await connector.getProvider()).connector;
