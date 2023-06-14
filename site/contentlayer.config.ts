@@ -26,9 +26,35 @@ export const Doc = defineDocumentType(() => ({
   },
 }));
 
+export const Guide = defineDocumentType(() => ({
+  name: 'Guide',
+  filePathPattern: `guides/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      required: true,
+    },
+    image: {
+      type: 'string',
+      required: false,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: doc => doc._raw.flattenedPath.replace('guides/', ''),
+    },
+  },
+}));
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Doc],
+  documentTypes: [Doc, Guide],
   mdx: {
     remarkPlugins: [remarkSlug],
     rehypePlugins: [rehypeMetaAttribute, rehypeHighlightCode],

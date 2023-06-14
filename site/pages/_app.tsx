@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
+import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
 import { vars } from '../css/vars.css';
 import '../css/global.css';
@@ -26,6 +27,8 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const isDocs = router.pathname.includes('/docs');
+  const isGuides = router.pathname.includes('/guides');
+
   useEffect(() => {
     const body = document.body;
 
@@ -49,8 +52,11 @@ function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    document.body.setAttribute('data-mode', isDocs ? 'light' : 'dark');
-  }, [isDocs]);
+    document.body.setAttribute(
+      'data-mode',
+      isDocs || isGuides ? 'light' : 'dark'
+    );
+  }, [isDocs, isGuides]);
 
   return (
     <>
@@ -59,6 +65,10 @@ function App({ Component, pageProps }: AppProps) {
           <DocsLayout>
             <Component {...pageProps} />
           </DocsLayout>
+        ) : isGuides ? (
+          <GuidesLayout>
+            <Component {...pageProps} />
+          </GuidesLayout>
         ) : (
           <Component {...pageProps} />
         )}
