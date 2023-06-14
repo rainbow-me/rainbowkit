@@ -4,6 +4,7 @@ on: [pull_request, push]
 
 env:
   pnpm: 8
+  NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID: TEST_PROJECT_ID
 
 jobs:
   tests:

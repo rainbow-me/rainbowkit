@@ -2,8 +2,13 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -11,9 +16,18 @@ declare global {
   }
 }
 
-export interface TrustWalletOptions {
+export interface TrustWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface TrustWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 function getTrustWalletInjectedProvider(): Window['ethereum'] {
@@ -59,6 +73,8 @@ function getTrustWalletInjectedProvider(): Window['ethereum'] {
 export const trustWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
   ...options
 }: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
   const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
@@ -86,19 +102,24 @@ export const trustWallet = ({
     },
     createConnector: () => {
       const getUriMobile = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
 
-        return `https://link.trustwallet.com/wc?uri=${encodeURIComponent(uri)}`;
+        return `trust://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
-        const { uri } = (await connector.getProvider()).connector;
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
 
         return uri;
       };
 
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId, chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {

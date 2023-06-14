@@ -47,6 +47,25 @@ export function useWalletConnectors(): WalletConnector[] {
     return result;
   }
 
+  async function connectToWalletConnectModal(
+    walletId: string,
+    walletConnectModalConnector: Connector
+  ) {
+    try {
+      return await connectWallet(walletId, walletConnectModalConnector!);
+    } catch (err) {
+      const isUserRejection =
+        // @ts-expect-error - Web3Modal v1 error name
+        err.name === 'UserRejectedRequestError' ||
+        // @ts-expect-error - Web3Modal v2 error message on desktop
+        err.message === 'Connection request reset. Please try again.';
+
+      if (!isUserRejection) {
+        throw err;
+      }
+    }
+  }
+
   const walletInstances = flatten(
     defaultConnectors.map(connector => {
       return (connector._wallets as WalletInstance[]) ?? [];
@@ -82,7 +101,11 @@ export function useWalletConnectors(): WalletConnector[] {
 
     walletConnectors.push({
       ...wallet,
-      connect: () => connectWallet(wallet.id, wallet.connector),
+      // @ts-ignore - ignoring potential undefined return type
+      connect: () =>
+        wallet.connector.showQrModal
+          ? connectToWalletConnectModal(wallet.id, wallet.connector)
+          : connectWallet(wallet.id, wallet.connector),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
       groupName: wallet.groupName,
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
@@ -93,21 +116,11 @@ export function useWalletConnectors(): WalletConnector[] {
       ready: (wallet.installed ?? true) && wallet.connector.ready,
       recent,
       showWalletConnectModal: wallet.walletConnectModalConnector
-        ? async () => {
-            try {
-              await connectWallet(
-                wallet.id,
-                wallet.walletConnectModalConnector!
-              );
-            } catch (err) {
-              // @ts-expect-error
-              const isUserRejection = err.name === 'UserRejectedRequestError';
-
-              if (!isUserRejection) {
-                throw err;
-              }
-            }
-          }
+        ? () =>
+            connectToWalletConnectModal(
+              wallet.id,
+              wallet.walletConnectModalConnector
+            )
         : undefined,
     });
   });

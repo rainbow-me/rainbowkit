@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/rainbowkit",
-  "version": "0.12.14",
+  "version": "0.12.15-canary.3",
   "description": "The best way to connect a wallet",
   "files": [
     "dist",
@@ -67,6 +67,10 @@
     "clsx": "1.1.1",
     "qrcode": "1.5.0",
     "react-remove-scroll": "2.5.4"
+  },
+  "overrides": {
+    "@walletconnect/ethereum-provider": "2.7.8",
+    "@web3modal/standalone": "^2.4.3"
   },
   "repository": {
     "type": "git",
