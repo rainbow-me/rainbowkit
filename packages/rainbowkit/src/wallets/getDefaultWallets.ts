@@ -15,7 +15,7 @@ export const getDefaultWallets = ({
   projectId,
 }: {
   appName: string;
-  projectId?: string;
+  projectId: string;
   chains: Chain[];
 }): {
   connectors: ReturnType<typeof connectorsForWallets>;

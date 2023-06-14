@@ -29,18 +29,21 @@ export type WalletConnectLegacyConnectorOptions =
 function createConnector(
   version: WalletConnectVersion,
   config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
-) {
-  // ignoring `version` until v2 delayed uri fetch changes are merged
-  const connector = new WalletConnectLegacyConnector(config);
+): WalletConnectLegacyConnector | WalletConnectConnector {
+  const connector =
+    version === '1'
+      ? new WalletConnectLegacyConnector(config)
+      : new WalletConnectConnector(config);
   sharedConnectors.set(JSON.stringify(config), connector);
   return connector;
 }
 
 export function getWalletConnectConnector(config: {
+  version?: WalletConnectVersion;
+  projectId?: string;
   chains: Chain[];
-  projectId?: string; // to prepare for migration to v2
-  options?: WalletConnectLegacyConnectorOptions;
-}): WalletConnectLegacyConnector;
+  options?: WalletConnectConnectorOptions;
+}): WalletConnectConnector;
 
 export function getWalletConnectConnector(config: {
   version: '1';
@@ -50,8 +53,8 @@ export function getWalletConnectConnector(config: {
 
 export function getWalletConnectConnector(config: {
   version: '2';
-  chains: Chain[];
   projectId: string;
+  chains: Chain[];
   options?: WalletConnectConnectorOptions;
 }): WalletConnectConnector;
 
@@ -59,20 +62,30 @@ export function getWalletConnectConnector({
   chains,
   options = {},
   projectId,
-  version = '1',
+  version = '2',
 }: {
   chains: Chain[];
   projectId?: string;
   version?: WalletConnectVersion;
   options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
-}): any {
+}): WalletConnectConnector | WalletConnectLegacyConnector {
+  if (version === '2' && !projectId)
+    throw new Error(
+      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation'
+    );
   const config = {
     chains,
-    options: {
-      projectId,
-      qrcode: false,
-      ...options,
-    },
+    options:
+      version === '1'
+        ? {
+            qrcode: false,
+            ...options,
+          }
+        : {
+            projectId,
+            showQrModal: false,
+            ...options,
+          },
   };
 
   const serializedConfig = JSON.stringify(config);

@@ -1,18 +1,34 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface OmniWalletOptions {
+export interface OmniWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface OmniWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const omniWallet = ({
   chains,
   projectId,
-}: OmniWalletOptions): Wallet => ({
+  walletConnectOptions,
+  walletConnectVersion = '2',
+}: OmniWalletLegacyOptions | OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -24,20 +40,27 @@ export const omniWallet = ({
     qrCode: 'https://omniwallet.app.link',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
+    const connector = getWalletConnectConnector({
+      projectId,
+      chains,
+      version: walletConnectVersion,
+      options: walletConnectOptions,
+    });
 
     return {
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
-          return isAndroid()
-            ? uri
-            : `https://links.steakwallet.fi/wc?uri=${encodeURIComponent(uri)}`;
+          const uri = await getWalletConnectUri(
+            connector,
+            walletConnectVersion
+          );
+          return isAndroid() ? uri : `omni://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          getWalletConnectUri(connector, walletConnectVersion),
         instructions: {
           learnMoreUrl: 'https://omni.app/support',
           steps: [

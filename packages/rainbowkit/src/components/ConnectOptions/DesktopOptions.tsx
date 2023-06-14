@@ -225,6 +225,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           changeWalletStep={changeWalletStep}
           compactModeEnabled={compactModeEnabled}
           connectionError={connectionError}
+          onClose={onClose}
           qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
           wallet={selectedWallet}

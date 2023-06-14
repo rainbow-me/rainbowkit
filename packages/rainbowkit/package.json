@@ -1,6 +1,6 @@
 {
   "name": "@rainbow-me/rainbowkit",
-  "version": "1.0.1",
+  "version": "1.0.2-canary.3",
   "description": "The best way to connect a wallet",
   "files": [
     "dist",
@@ -44,16 +44,16 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "viem": "~0.3.19",
-    "wagmi": "~1.0.1"
+    "viem": "~0.3.19 || ^1.0.0",
+    "wagmi": "~1.0.1 || ~1.1.0 || ~1.2.0"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/private": "^1.0.3",
     "@vanilla-extract/css-utils": "0.1.2",
     "autoprefixer": "^10.4.0",
-    "viem": "~0.3.35",
-    "wagmi": "~1.0.5",
+    "viem": "~1.0.6",
+    "wagmi": "~1.2.0",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",
