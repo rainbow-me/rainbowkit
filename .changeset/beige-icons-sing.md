@@ -32,7 +32,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-You can read the full migration guide [here](https://www.rainbowkit.com/docs/migration-guide#walletconnect-v2).
+You can read the full migration guide [here](https://www.rainbowkit.com/guides/walletconnect-v2).
 
 **Advanced options**
 
@@ -45,7 +45,7 @@ metaMaskWallet(options: {
 });
 ```
 
-Once the WalletConnect v1 servers are shutdown, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required. The dApp and wallet must each utilize the same server. Reference the following examples:
+Once the WalletConnect v1 servers are shutdown, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required.
 
 ```ts
 walletConnectWallet(options: {
