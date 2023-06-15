@@ -9,6 +9,7 @@ type ChainName =
   | 'avalanche'
   | 'avalancheFuji'
   | 'cronos'
+  | 'cronosTestnet'
   | 'baseGoerli'
   | 'bsc'
   | 'bscTestnet'
@@ -56,7 +57,7 @@ const bscIcon: IconMetadata = {
 };
 
 const cronosIcon: IconMetadata = {
-  iconBackground: '#1a90ff',
+  iconBackground: '#002D74',
   iconUrl: async () => (await import('./chainIcons/cronos.svg')).default,
 };
 
@@ -89,6 +90,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   bsc: { chainId: 56, ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
   cronos: { chainId: 25, ...cronosIcon },
+  cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   kovan: { chainId: 42, ...ethereumIcon },
