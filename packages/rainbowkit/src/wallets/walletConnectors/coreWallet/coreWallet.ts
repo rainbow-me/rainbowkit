@@ -8,8 +8,8 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
-    evmproviders: Record<string, WindowProvider>;
-    avalanche: WindowProvider;
+    evmproviders?: Record<string, WindowProvider>;
+    avalanche?: WindowProvider;
   }
 }
 
@@ -76,8 +76,7 @@ export const coreWallet = ({
         : new InjectedConnector({
             chains,
             options: {
-              name: 'Core',
-              getProvider: () => getCoreWalletInjectedProvider,
+              getProvider: getCoreWalletInjectedProvider,
               ...options,
             },
           });
