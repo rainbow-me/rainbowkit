@@ -27,22 +27,14 @@ export function useWalletConnectors(): WalletConnector[] {
   const defaultConnectors = defaultConnectors_untyped as Connector[];
 
   async function connectWallet(walletId: string, connector: Connector) {
-    let walletChainId: number | undefined;
-    try {
-      walletChainId = await connector.getChainId();
-    } catch (e) {
-      // If the wallet is locked, it might not be connected to any chains resulting in a
-      // {message: 'The provider is disconnected from all chains.', code: 4900} error
-    }
-
+    const walletChainId = await connector.getChainId();
     const result = await connectAsync({
       chainId:
         // The goal here is to ensure users are always on a supported chain when connecting.
         // If an `initialChain` prop was provided to RainbowKitProvider, use that.
         intialChainId ??
         // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.
-        (walletChainId &&
-          rainbowKitChains.find(({ id }) => id === walletChainId)?.id) ??
+        rainbowKitChains.find(({ id }) => id === walletChainId)?.id ??
         // Finally, fall back to the first chain provided to RainbowKitProvider.
         rainbowKitChains[0]?.id,
       connector,
