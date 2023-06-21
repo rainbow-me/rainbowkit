@@ -116,6 +116,7 @@ const wagmiConfig = createConfig({
 
 const demoAppInfo = {
   appName: 'Rainbowkit Demo',
+  authButtonLabel: 'Sign message',
 };
 
 const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {

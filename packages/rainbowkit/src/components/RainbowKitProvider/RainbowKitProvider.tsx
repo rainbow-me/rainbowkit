@@ -59,6 +59,7 @@ export interface RainbowKitProviderProps {
     appName?: string;
     learnMoreUrl?: string;
     disclaimer?: DisclaimerComponent;
+    authButtonText?: string;
   };
   coolMode?: boolean;
   avatar?: AvatarComponent;

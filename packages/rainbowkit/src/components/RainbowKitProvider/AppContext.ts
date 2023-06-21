@@ -7,6 +7,7 @@ export type DisclaimerComponent = React.FunctionComponent<{
 
 export const defaultAppInfo = {
   appName: undefined,
+  authButtonLabel: undefined,
   disclaimer: undefined,
   learnMoreUrl:
     'https://learn.rainbow.me/understanding-web3?utm_source=rainbowkit&utm_campaign=learnmore',
@@ -14,6 +15,7 @@ export const defaultAppInfo = {
 
 export const AppContext = createContext<{
   appName?: string;
+  authButtonLabel?: string;
   learnMoreUrl?: string;
   disclaimer?: DisclaimerComponent;
 }>(defaultAppInfo);

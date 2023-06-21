@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
 import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
@@ -7,6 +7,7 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useAuthenticationAdapter } from '../RainbowKitProvider/AuthenticationContext';
 import { Text } from '../Text/Text';
 
@@ -19,6 +20,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
     nonce?: string;
   }>({ status: 'idle' });
 
+  const { authButtonLabel } = useContext(AppContext);
   const authAdapter = useAuthenticationAdapter();
 
   const getNonce = useCallback(async () => {
@@ -203,6 +205,8 @@ export function SignIn({ onClose }: { onClose: () => void }) {
                 ? 'Waiting for signature...'
                 : status === 'verifying'
                 ? 'Verifying signature...'
+                : authButtonLabel
+                ? authButtonLabel
                 : 'Send message'
             }
             onClick={signIn}
