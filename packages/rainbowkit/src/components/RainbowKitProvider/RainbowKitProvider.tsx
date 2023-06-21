@@ -57,9 +57,9 @@ export interface RainbowKitProviderProps {
   showRecentTransactions?: boolean;
   appInfo?: {
     appName?: string;
+    authButtonLabel?: string;
     learnMoreUrl?: string;
     disclaimer?: DisclaimerComponent;
-    authButtonText?: string;
   };
   coolMode?: boolean;
   avatar?: AvatarComponent;
