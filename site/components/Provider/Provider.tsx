@@ -11,12 +11,12 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { arbitrum, bsc, mainnet, optimism, polygon } from 'wagmi/chains';
+import { arbitrum, bsc, mainnet, optimism, polygon, zora } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 export const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, bsc],
+  [mainnet, polygon, optimism, arbitrum, bsc, zora],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
     publicProvider(),
