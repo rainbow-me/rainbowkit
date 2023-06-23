@@ -18,12 +18,12 @@ Your chain config can be defined in a single array provided to [`configureChains
 ```tsx
 import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
 import { configureChains } from 'wagmi';
-import { mainnet, polygon } from 'wagmi/chains';
+import { mainnet, optimism, zora } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 const { chains } = configureChains(
-  [mainnet, polygon],
+  [mainnet, optimism, zora],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider(),
@@ -60,7 +60,7 @@ As a convenience, you can also pass a chain object.
 Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
 
 ```tsx
-import { Chain, mainnet, polygon } from 'wagmi/chains';
+import { Chain, mainnet, optimism } from 'wagmi/chains';
 
 const defaultChains: Chain[] = [
   {
@@ -68,8 +68,8 @@ const defaultChains: Chain[] = [
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
-    ...polygon,
-    iconUrl: 'https://example.com/icons/polygon.png',
+    ...optimism,
+    iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 

@@ -15,7 +15,14 @@ import type {
   LoaderFunction,
 } from '@remix-run/node';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  zora,
+  goerli,
+} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import type { Chain } from 'wagmi';
 import {
@@ -65,7 +72,7 @@ export default function App() {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
     const { chains, publicClient } = configureChains(
-      [mainnet, polygon, optimism, arbitrum, ...testChains],
+      [mainnet, polygon, optimism, arbitrum, zora, ...testChains],
       [publicProvider()]
     );
 
