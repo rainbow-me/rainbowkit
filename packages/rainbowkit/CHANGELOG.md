@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.3
+
+### Patch Changes
+
+- d00c777: Added `zora` and `zoraTestnet` chain support
+
 ## 1.0.2
 
 ### Patch Changes
