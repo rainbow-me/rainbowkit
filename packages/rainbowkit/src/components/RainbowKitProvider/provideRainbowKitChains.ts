@@ -77,7 +77,7 @@ const polygonIcon: IconMetadata = {
 };
 
 const zoraIcon: IconMetadata = {
-  iconBackground: '#425361',
+  iconBackground: '#000000',
   iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
