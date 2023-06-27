@@ -84,10 +84,6 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
-    ],
-    "overrides": {
-      "@walletconnect/ethereum-provider": "2.7.8",
-      "@web3modal/standalone": "^2.4.3"
-    }
+    ]
   }
 }
