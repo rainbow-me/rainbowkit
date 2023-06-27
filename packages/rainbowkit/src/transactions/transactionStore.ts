@@ -147,7 +147,8 @@ export function createTransactionStore({
                 account,
                 chainId,
                 hash,
-                status === 0 ? 'failed' : 'confirmed'
+                // @ts-ignore - types changed with viem@1.1.0
+                status === 0 || status === 'reverted' ? 'failed' : 'confirmed'
               );
             });
 
