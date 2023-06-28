@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.16
+
+### Patch Changes
+
+- 6af1db7: Upgraded minimum `wagmi` peer dependency to `0.12.18` for improved WalletConnect v2 support.
+
 ## 0.12.15
 
 ### Patch Changes
