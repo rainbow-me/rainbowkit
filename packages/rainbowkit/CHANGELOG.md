@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.4
+
+### Patch Changes
+
+- 6d361b4: Support for wagmi `1.3.x` and viem `1.1.x` peer dependencies.
+
 ## 1.0.3
 
 ### Patch Changes
