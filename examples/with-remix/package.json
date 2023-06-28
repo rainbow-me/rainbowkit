@@ -17,8 +17,8 @@
     "buffer-polyfill": "npm:buffer@^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~1.0.6",
-    "wagmi": "~1.2.1"
+    "viem": "~1.1.8",
+    "wagmi": "~1.3.2"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",
