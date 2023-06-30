@@ -15,6 +15,7 @@ import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
+import { ttWallet } from './thundercore/ttWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
@@ -38,6 +39,7 @@ export {
   safeWallet,
   tahoWallet,
   trustWallet,
+  ttWallet,
   okxWallet,
   walletConnectWallet,
   xdefiWallet,
