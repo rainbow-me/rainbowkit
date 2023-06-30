@@ -10,6 +10,8 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
+    "./dist/*": "./dist/*.js",
+    "./dist/": "./dist/",
     "./styles.css": "./dist/index.css",
     "./wallets": "./dist/wallets/walletConnectors/index.js"
   },
