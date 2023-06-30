@@ -238,14 +238,18 @@ export const rainbow = ({
       mobile: {
         getUri: async () => {
           const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve => provider.once('display_uri', resolve));
+          const uri = await new Promise<string>(resolve =>
+            provider.once('display_uri', resolve)
+          );
           return uri;
         },
       },
       qrCode: {
         getUri: async () => {
           const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve => provider.once('display_uri', resolve));
+          const uri = await new Promise<string>(resolve =>
+            provider.once('display_uri', resolve)
+          );
           return uri;
         },
         instructions: {
