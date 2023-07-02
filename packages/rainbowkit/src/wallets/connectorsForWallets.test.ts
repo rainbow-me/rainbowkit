@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { Connector } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { connectorsForWallets } from '..';
 import { WalletInstance } from './Wallet';
 import { injectedWallet } from './walletConnectors';
@@ -27,7 +27,7 @@ describe('connectorsForWallets', () => {
           wallets: [
             {
               createConnector: () => ({
-                connector: new WalletConnectLegacyConnector({
+                connector: new WalletConnectConnector({
                   chains,
                   options: {},
                 }),
@@ -73,7 +73,7 @@ describe('connectorsForWallets', () => {
             },
             {
               createConnector: () => ({
-                connector: new WalletConnectLegacyConnector({
+                connector: new WalletConnectConnector({
                   chains,
                   options: {},
                 }),
@@ -131,7 +131,7 @@ describe('connectorsForWallets', () => {
           wallets: [
             {
               createConnector: () => ({
-                connector: new WalletConnectLegacyConnector({
+                connector: new WalletConnectConnector({
                   chains,
                   options: {},
                 }),
@@ -199,7 +199,7 @@ describe('connectorsForWallets', () => {
             injectedWallet({ chains }),
             {
               createConnector: () => ({
-                connector: new WalletConnectLegacyConnector({
+                connector: new WalletConnectConnector({
                   chains,
                   options: {},
                 }),

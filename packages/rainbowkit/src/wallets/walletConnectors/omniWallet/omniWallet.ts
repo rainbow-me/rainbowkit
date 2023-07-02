@@ -4,22 +4,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface OmniWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface OmniWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -27,8 +16,7 @@ export const omniWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: OmniWalletLegacyOptions | OmniWalletOptions): Wallet => ({
+}: OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -43,7 +31,6 @@ export const omniWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -51,16 +38,12 @@ export const omniWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion
-          );
+          const uri = await getWalletConnectUri(connector);
           return isAndroid() ? uri : `omni://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () =>
-          getWalletConnectUri(connector, walletConnectVersion),
+        getUri: async () => getWalletConnectUri(connector),
         instructions: {
           learnMoreUrl: 'https://omni.app/support',
           steps: [

@@ -4,17 +4,7 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface LedgerWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface LedgerWalletOptions {
   projectId: string;
@@ -27,8 +17,7 @@ export const ledgerWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: LedgerWalletLegacyOptions | LedgerWalletOptions): Wallet => ({
+}: LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   name: 'Ledger Live',
@@ -43,7 +32,6 @@ export const ledgerWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -51,10 +39,7 @@ export const ledgerWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion
-          );
+          const uri = await getWalletConnectUri(connector);
           return isAndroid()
             ? uri
             : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
@@ -62,10 +47,7 @@ export const ledgerWallet = ({
       },
       desktop: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion
-          );
+          const uri = await getWalletConnectUri(connector);
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
       },

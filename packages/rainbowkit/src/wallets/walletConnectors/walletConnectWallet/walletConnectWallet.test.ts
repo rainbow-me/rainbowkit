@@ -1,7 +1,6 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { walletConnectWallet } from './walletConnectWallet';
 
 describe('walletConnectWallet', () => {
@@ -22,49 +21,13 @@ describe('walletConnectWallet', () => {
     expectTypeOf(connector).toMatchTypeOf<WalletConnectConnector>();
   });
 
-  it('v1 options', () => {
-    const wallet = walletConnectWallet({
-      chains,
-      options: {
-        qrcode: true,
-        qrcodeModalOptions: {
-          desktopLinks: ['ledger'],
-          mobileLinks: ['rainbow'],
-        },
-      },
-      version: '1',
-    });
-    const { connector } = wallet.createConnector();
-
-    expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
-
-    expect(connector.options.qrcode).toBe(true);
-    expect(connector.options.qrcodeModalOptions.desktopLinks).toHaveLength(1);
-  });
-
-  it('v1 custom bridge option', () => {
-    const wallet = walletConnectWallet({
-      chains,
-      options: {
-        bridge: 'https://bridge.myhostedserver.com',
-      },
-      version: '1',
-    });
-    const { connector } = wallet.createConnector();
-
-    expect(connector.id).toBe('walletConnectLegacy');
-    expectTypeOf(connector).toMatchTypeOf<WalletConnectLegacyConnector>();
-  });
-
-  it('v2 options', () => {
+  it('options', () => {
     const wallet = walletConnectWallet({
       chains,
       options: {
         showQrModal: true,
       },
       projectId,
-      version: '2',
     });
     const { connector } = wallet.createConnector();
 
@@ -75,14 +38,13 @@ describe('walletConnectWallet', () => {
     expect(connector.options.showQrModal).toBe(true);
   });
 
-  it('v2 walletConnectOptions', () => {
+  it('walletConnectOptions', () => {
     const wallet = walletConnectWallet({
       chains,
       options: {
         showQrModal: true,
       },
       projectId,
-      version: '2',
     });
     const { connector } = wallet.createConnector();
 
