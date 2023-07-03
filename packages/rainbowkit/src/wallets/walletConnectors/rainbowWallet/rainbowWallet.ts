@@ -25,7 +25,7 @@ export interface RainbowWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
+function isRainbow(ethereum: NonNullable<(typeof window)['ethereum']>) {
   // `isRainbow` needs to be added to the wagmi `Ethereum` object
   const isRainbow = Boolean(ethereum.isRainbow);
 

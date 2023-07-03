@@ -90,7 +90,13 @@ export function ModalProvider({ children }: ModalProviderProps) {
     if (connectionStatus === 'connected' && !chainSupported) {
       openChainModal();
     }
-  }, [openChainModal, chainSupported, connectionStatus, chainModalOpen, connectModalOpen])
+  }, [
+    openChainModal,
+    chainSupported,
+    connectionStatus,
+    chainModalOpen,
+    connectModalOpen,
+  ]);
 
   return (
     <ModalContext.Provider
