@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -84,6 +85,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
     onDisconnect: () => closeModals(),
   });
+
+  useEffect(() => {
+    if (connectionStatus === 'connected' && !chainSupported) {
+      openChainModal();
+    }
+  }, [openChainModal, chainSupported, connectionStatus, chainModalOpen, connectModalOpen])
 
   return (
     <ModalContext.Provider

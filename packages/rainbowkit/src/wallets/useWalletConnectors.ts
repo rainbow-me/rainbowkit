@@ -21,7 +21,6 @@ export interface WalletConnector extends WalletInstance {
 }
 
 export function useWalletConnectors(): WalletConnector[] {
-  const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultConnectors = defaultConnectors_untyped as Connector[];
@@ -30,13 +29,9 @@ export function useWalletConnectors(): WalletConnector[] {
     const walletChainId = await connector.getChainId();
     const result = await connectAsync({
       chainId:
-        // The goal here is to ensure users are always on a supported chain when connecting.
-        // If an `initialChain` prop was provided to RainbowKitProvider, use that.
-        intialChainId ??
-        // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.
-        rainbowKitChains.find(({ id }) => id === walletChainId)?.id ??
-        // Finally, fall back to the first chain provided to RainbowKitProvider.
-        rainbowKitChains[0]?.id,
+        // Connect to the provided initial chain or the current wallet chain
+        // and handle unsupported network case by opening chain modal
+        intialChainId ?? walletChainId,
       connector,
     });
 
