@@ -13,6 +13,7 @@ export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
 } from './components/RainbowKitProvider/AuthenticationContext';
+export { useRainbowKitChains } from './components/RainbowKitProvider/RainbowKitChainContext';
 export type { Wallet, WalletList } from './wallets/Wallet';
 export type { Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';
