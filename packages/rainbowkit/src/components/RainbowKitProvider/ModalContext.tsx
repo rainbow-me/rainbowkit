@@ -136,16 +136,16 @@ export function useModalState() {
 }
 
 export function useAccountModal() {
-  const { openAccountModal } = useContext(ModalContext);
-  return { openAccountModal };
+  const { accountModalOpen, openAccountModal } = useContext(ModalContext);
+  return { accountModalOpen, openAccountModal };
 }
 
 export function useChainModal() {
-  const { openChainModal } = useContext(ModalContext);
-  return { openChainModal };
+  const { chainModalOpen, openChainModal } = useContext(ModalContext);
+  return { chainModalOpen, openChainModal };
 }
 
 export function useConnectModal() {
-  const { openConnectModal } = useContext(ModalContext);
-  return { openConnectModal };
+  const { connectModalOpen, openConnectModal } = useContext(ModalContext);
+  return { connectModalOpen, openConnectModal };
 }

@@ -97,7 +97,7 @@ function Link({ children, slug }) {
   const router = useRouter();
 
   return (
-    <NextLink passHref href={`/docs/${slug}`}>
+    <NextLink passHref href={`/docs/${slug}`} legacyBehavior>
       <Box as="a" className={link({ active: router.query.slug === slug })}>
         {children}
       </Box>

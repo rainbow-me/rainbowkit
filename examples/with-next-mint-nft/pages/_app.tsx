@@ -7,7 +7,7 @@ import {
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
-import { createClient, configureChains, WagmiConfig } from 'wagmi';
+import { createConfig, configureChains, WagmiConfig } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -38,13 +38,16 @@ const rinkeby: Chain = {
   testnet: true,
 };
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [rinkeby],
   [publicProvider()]
 );
 
+const projectId = 'YOUR_PROJECT_ID';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit Mint NFT Demo',
+  projectId,
   chains,
 });
 
@@ -56,20 +59,23 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [argentWallet({ chains }), trustWallet({ chains })],
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+    ],
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
         <Component {...pageProps} />
       </RainbowKitProvider>

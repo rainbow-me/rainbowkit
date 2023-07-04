@@ -1,5 +1,135 @@
 # generated-test-app
 
+## 0.1.59
+
+### Patch Changes
+
+- Updated dependencies [6d361b4]
+  - @rainbow-me/rainbowkit@1.0.4
+
+## 0.1.58
+
+### Patch Changes
+
+- Updated dependencies [d00c777]
+  - @rainbow-me/rainbowkit@1.0.3
+
+## 0.1.57
+
+### Patch Changes
+
+- Updated dependencies [e2b1072]
+- Updated dependencies [e2b1072]
+  - @rainbow-me/rainbowkit@1.0.2
+
+## 0.1.56
+
+### Patch Changes
+
+- Updated dependencies [9432a2f]
+- Updated dependencies [b2c66ff]
+- Updated dependencies [bcb3d18]
+  - @rainbow-me/rainbowkit@1.0.1
+
+## 0.1.55
+
+### Patch Changes
+
+- 371c988: Adopted `fs`, `net`, and `tls` polyfills for better `wagmi@1` and `viem` Webpack bundler support.
+
+  These modules are required by WalletConnect packages upstream, and were previously polyfilled by `ethers`. Reference the discussion [here](https://github.com/wagmi-dev/wagmi/issues/2300#issuecomment-1541425648).
+
+## 0.1.54
+
+### Patch Changes
+
+- Updated dependencies [93b58d0]
+  - @rainbow-me/rainbowkit@1.0.0
+
+## 0.1.53
+
+### Patch Changes
+
+- Updated dependencies [865175f]
+  - @rainbow-me/rainbowkit@0.12.14
+
+## 0.1.52
+
+### Patch Changes
+
+- Updated dependencies [0f8e87e]
+- Updated dependencies [6eab54d]
+  - @rainbow-me/rainbowkit@0.12.13
+
+## 0.1.51
+
+### Patch Changes
+
+- Updated dependencies [ab051b9]
+  - @rainbow-me/rainbowkit@0.12.12
+
+## 0.1.50
+
+### Patch Changes
+
+- Updated dependencies [0469e00]
+  - @rainbow-me/rainbowkit@0.12.11
+
+## 0.1.49
+
+### Patch Changes
+
+- Updated dependencies [ecaa85f]
+  - @rainbow-me/rainbowkit@0.12.10
+
+## 0.1.48
+
+### Patch Changes
+
+- Updated dependencies [361bb39]
+- Updated dependencies [82376f0]
+- Updated dependencies [7c9e580]
+- Updated dependencies [0127559]
+  - @rainbow-me/rainbowkit@0.12.9
+
+## 0.1.47
+
+### Patch Changes
+
+- Updated dependencies [aef9643]
+  - @rainbow-me/rainbowkit@0.12.8
+
+## 0.1.46
+
+### Patch Changes
+
+- Updated dependencies [4ef5c51]
+  - @rainbow-me/rainbowkit@0.12.7
+
+## 0.1.45
+
+### Patch Changes
+
+- Updated dependencies [d35809e]
+  - @rainbow-me/rainbowkit@0.12.6
+
+## 0.1.44
+
+### Patch Changes
+
+- Updated dependencies [2b4ede4]
+- Updated dependencies [6a01368]
+- Updated dependencies [936b523]
+- Updated dependencies [7f669bd]
+  - @rainbow-me/rainbowkit@0.12.5
+
+## 0.1.43
+
+### Patch Changes
+
+- Updated dependencies [9b93f56]
+  - @rainbow-me/rainbowkit@0.12.4
+
 ## 0.1.42
 
 ### Patch Changes

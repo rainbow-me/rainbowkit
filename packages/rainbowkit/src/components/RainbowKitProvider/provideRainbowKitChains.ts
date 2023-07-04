@@ -5,7 +5,7 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
 type ChainName =
   | 'arbitrum'
-  | 'arbitrumRinkeby'
+  | 'arbitrumGoerli'
   | 'avalanche'
   | 'avalancheFuji'
   | 'baseGoerli'
@@ -23,7 +23,9 @@ type ChainName =
   | 'polygonMumbai'
   | 'rinkeby'
   | 'ropsten'
-  | 'sepolia';
+  | 'sepolia'
+  | 'zora'
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -74,9 +76,14 @@ const polygonIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
+const zoraIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, ...arbitrumIcon },
-  arbitrumRinkeby: { chainId: 421_611, ...arbitrumIcon },
+  arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
@@ -95,6 +102,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  zora: { chainId: 7777777, ...zoraIcon },
+  zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(

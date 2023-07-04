@@ -1,5 +1,5 @@
 import { Connector } from 'wagmi';
-import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { isHexString } from '../utils/colors';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
@@ -103,11 +103,11 @@ export const connectorsForWallets = (walletList: WalletList) => {
         ) {
           const { chains, options } = connector;
 
-          walletConnectModalConnector = new WalletConnectLegacyConnector({
+          walletConnectModalConnector = new WalletConnectConnector({
             chains,
             options: {
               ...options,
-              qrcode: true,
+              showQrModal: true,
             },
           });
 

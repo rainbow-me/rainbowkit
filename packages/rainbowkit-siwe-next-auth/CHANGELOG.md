@@ -1,5 +1,31 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
+## 0.2.0
+
+### Minor Changes
+
+- 93b58d0: RainbowKit has reached v1 alongside [wagmi](https://wagmi.sh), which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
+
+  `0.2.x` now requires `@rainbow-me/rainbowkit` v1, specifically: `1.0.x`.
+
+  While wagmi v1 now relies on `viem` instead of the `ethers` peer dependency, `siwe` will still require `ethers` as a peer dependency. Ensure that you have installed a compatible `ethers` version, including: `^5.6.8 || ^6.0.8`.
+
+## 0.1.10
+
+### Patch Changes
+
+- 865175f: Upgraded minimum `siwe` peer dependency to `^2.1.4` and minimum `ethers` peer dependency to `^5.6.8` to resolve `siwe` peer mismatch.
+
+  Specified maximum `next-auth` peer dependency as `4.20.1` due to known issues introduced in later versions.
+
+  Updated [Authentication docs](https://www.rainbowkit.com/docs/authentication) and examples to support modern `next-auth` types.
+
+## 0.1.9
+
+### Patch Changes
+
+- 532b117: Fixed an issue with peer dependencies versioning
+
 ## 0.1.8
 
 ### Patch Changes
