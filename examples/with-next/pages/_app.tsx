@@ -24,6 +24,7 @@ import { publicProvider } from 'wagmi/providers/public';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
+    mainnet,
     polygon,
     optimism,
     arbitrum,
@@ -67,7 +68,7 @@ const wagmiConfig = createConfig({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
+      <RainbowKitProvider appInfo={demoAppInfo} chains={[optimism, arbitrum]}>
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
