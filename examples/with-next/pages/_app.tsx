@@ -8,6 +8,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bitKeepWallet,
   trustWallet,
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -52,6 +53,7 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ projectId, chains }),
+      bitKeepWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
     ],

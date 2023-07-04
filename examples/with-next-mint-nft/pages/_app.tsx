@@ -6,7 +6,11 @@ import {
   getDefaultWallets,
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
-import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
+import {
+  argentWallet,
+  bitKeepWallet,
+  trustWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, configureChains, WagmiConfig } from 'wagmi';
 import { Chain } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
@@ -61,6 +65,7 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ projectId, chains }),
+      bitKeepWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
     ],
   },
