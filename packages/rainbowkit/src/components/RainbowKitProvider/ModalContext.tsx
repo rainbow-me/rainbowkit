@@ -90,7 +90,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   });
 
   useEffect(() => {
-    if (!switchNetwork || chainModalOpen || connectModalOpen) return;
+    if (!switchNetwork) return;
     if (
       !chainSupported ||
       !rainbowKitChains.find(({ id }) => id === chain?.id)
@@ -103,8 +103,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
     chain?.id,
     openChainModal,
     switchNetwork,
-    chainModalOpen,
-    connectModalOpen,
     rainbowKitChains,
   ]);
 
