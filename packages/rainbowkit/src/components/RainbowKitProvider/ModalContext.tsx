@@ -82,7 +82,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
   useAccount({
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
-    onDisconnect: () => closeModals(),
+    onDisconnect: () => closeModals({ keepConnectModalOpen: true }),
   });
 
   return (
