@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 0.12.17
+
+### Patch Changes
+
+- e1fd3df: Fixed an issue with MetaMask Mobile's connector that blocked WalletConnect pairings
+
 ## 0.12.16
 
 ### Patch Changes
