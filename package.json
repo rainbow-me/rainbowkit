@@ -73,6 +73,7 @@
     "eventemitter3": "^4.0.7",
     "husky": "^7.0.4",
     "jsdom": "^22.1.0",
+    "lokijs": "^1.5.12",
     "next": "^13.4.3",
     "next-auth": "4.20.1",
     "postcss": "^8.4.6",
