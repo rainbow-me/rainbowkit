@@ -8,6 +8,8 @@ type ChainName =
   | 'arbitrumGoerli'
   | 'avalanche'
   | 'avalancheFuji'
+  | 'cronos'
+  | 'cronosTestnet'
   | 'baseGoerli'
   | 'bsc'
   | 'bscTestnet'
@@ -56,6 +58,11 @@ const bscIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/bsc.svg')).default,
 };
 
+const cronosIcon: IconMetadata = {
+  iconBackground: '#002D74',
+  iconUrl: async () => (await import('./chainIcons/cronos.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -89,6 +96,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   baseGoerli: { chainId: 84531, ...baseIcon },
   bsc: { chainId: 56, ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
+  cronos: { chainId: 25, ...cronosIcon },
+  cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   kovan: { chainId: 42, ...ethereumIcon },
