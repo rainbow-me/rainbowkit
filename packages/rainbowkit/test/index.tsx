@@ -40,7 +40,7 @@ export function renderWithProviders(
   const { chains, publicClient } = configureChains(
     [mainnet, polygon, optimism, arbitrum, zora],
     [
-      alchemyProvider({ apiKey: process.env.ALCHEMY_ID || '' }),
+      alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
       publicProvider(),
     ]
   );
@@ -48,7 +48,7 @@ export function renderWithProviders(
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
     chains,
-    projectId: 'YOUR_PROJECT_ID',
+    projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
   });
 
   const mockConnector = new MockConnector({
