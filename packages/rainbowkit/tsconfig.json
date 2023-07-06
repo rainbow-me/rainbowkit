@@ -8,6 +8,6 @@
     "jsx": "react",
     "outDir": "dist"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.test.ts"],
   "include": ["src", "assets.d.ts"]
 }
