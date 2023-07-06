@@ -18,13 +18,13 @@ import { publicProvider } from 'wagmi/providers/public';
 export const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, bsc, zora],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
   ]
 );
 
 const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID';
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'rainbowkit.com',

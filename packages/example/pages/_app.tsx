@@ -71,7 +71,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
       : []),
   ],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
   ]
 );
