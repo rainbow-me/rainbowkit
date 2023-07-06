@@ -2,4 +2,4 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-`<ChainModal />` Fixed a bug where all chains on the `WagmiClient` would show, now only the ones passed to `<RainbowKitProvider />` are displayed
+Decoupled `chains` between `WagmiConfig` and `RainbowKitProvider` so that dApps can now supply a subset of supported chains to `RainbowKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
