@@ -123,7 +123,6 @@ export const trustWallet = ({
         : new InjectedConnector({
             chains,
             options: {
-              name: 'Trust Wallet',
               getProvider: getTrustWalletInjectedProvider,
               ...options,
             },
