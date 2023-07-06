@@ -97,7 +97,10 @@ export const ledgerWallet = ({
       },
       qrCode: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const uri = await getWalletConnectUri(
+            connector,
+            walletConnectVersion
+          );
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
         instructions: {
