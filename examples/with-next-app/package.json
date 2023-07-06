@@ -22,10 +22,7 @@
     "eslint": "^8.15.0",
     "eslint-config-next": "^13.4.3",
     "next": "^13.4.3",
-    "typescript": "^5.0.4",
-    "encoding": "^0.1.13",
-    "pino-pretty": "^10.0.0",
-    "lokijs": "^1.5.12"
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=16.8.0"
