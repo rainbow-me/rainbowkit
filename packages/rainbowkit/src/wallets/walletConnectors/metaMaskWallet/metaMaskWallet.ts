@@ -136,7 +136,7 @@ export const metaMaskWallet = ({
           ? uri
           : isIOS()
           ? // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
-            `metamask:///wc?uri=${encodeURIComponent(uri)}`
+            `metamask://wc?uri=${encodeURIComponent(uri)}`
           : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
       };
 
