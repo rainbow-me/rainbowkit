@@ -446,6 +446,9 @@ importers:
       '@vanilla-extract/private':
         specifier: ^1.0.3
         version: 1.0.3
+      '@wagmi/core':
+        specifier: ~1.3.6
+        version: 1.3.6(react@18.2.0)(typescript@5.0.4)(viem@1.2.9)
       autoprefixer:
         specifier: ^10.4.0
         version: 10.4.0(postcss@8.4.6)
