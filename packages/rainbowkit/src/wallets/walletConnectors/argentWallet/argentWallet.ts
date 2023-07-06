@@ -1,18 +1,34 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface ArgentWalletOptions {
+export interface ArgentWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface ArgentWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const argentWallet = ({
   chains,
   projectId,
-}: ArgentWalletOptions): Wallet => ({
+  walletConnectOptions,
+  walletConnectVersion = '2',
+}: ArgentWalletLegacyOptions | ArgentWalletOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argentWallet.svg')).default,
@@ -25,21 +41,29 @@ export const argentWallet = ({
     qrCode: 'https://argent.link/app',
   },
   createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
+    const connector = getWalletConnectConnector({
+      projectId,
+      chains,
+      version: walletConnectVersion,
+      options: walletConnectOptions,
+    });
 
     return {
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
-
+          const uri = await getWalletConnectUri(
+            connector,
+            walletConnectVersion
+          );
           return isAndroid()
             ? uri
-            : `https://argent.link/app/wc?uri=${encodeURIComponent(uri)}`;
+            : `argent://app/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () => (await connector.getProvider()).connector.uri,
+        getUri: async () =>
+          getWalletConnectUri(connector, walletConnectVersion),
         instructions: {
           learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [

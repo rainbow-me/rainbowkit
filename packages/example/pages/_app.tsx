@@ -45,13 +45,13 @@ import {
 } from 'wagmi';
 import {
   arbitrum,
-  avalanche,
   baseGoerli,
   bsc,
   goerli,
   mainnet,
   optimism,
   polygon,
+  zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -66,7 +66,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     optimism,
     arbitrum,
     bsc,
-    avalanche,
+    zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [goerli, baseGoerli]
       : []),

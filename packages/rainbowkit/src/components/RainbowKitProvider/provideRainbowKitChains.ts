@@ -23,7 +23,9 @@ type ChainName =
   | 'polygonMumbai'
   | 'rinkeby'
   | 'ropsten'
-  | 'sepolia';
+  | 'sepolia'
+  | 'zora'
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -74,6 +76,11 @@ const polygonIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
+const zoraIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -95,6 +102,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  zora: { chainId: 7777777, ...zoraIcon },
+  zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(

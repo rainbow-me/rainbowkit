@@ -1,5 +1,23 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.2.4
+
+### Patch Changes
+
+- 6d361b4: Updated `wagmi` to `~1.3.0` and `viem` to `~1.1.0`.
+
+## 0.2.3
+
+### Patch Changes
+
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+
+  It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
+
+  [Reference the viem migration guide here](https://viem.sh/docs/migration-guide.html#_1-x-x-breaking-changes).
+
 ## 0.2.2
 
 ### Patch Changes

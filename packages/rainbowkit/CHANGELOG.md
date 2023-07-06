@@ -1,5 +1,94 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.4
+
+### Patch Changes
+
+- 6d361b4: Support for wagmi `1.3.x` and viem `1.1.x` peer dependencies.
+
+## 1.0.3
+
+### Patch Changes
+
+- d00c777: Added `zora` and `zoraTestnet` chain support
+
+## 1.0.2
+
+### Patch Changes
+
+- e2b1072: Support for WalletConnect v2 is now standard in RainbowKit.
+
+  Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
+  This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023.
+
+  Upgrade RainbowKit and provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+
+  ```ts
+  const projectId = 'YOUR_PROJECT_ID';
+
+  const { wallets } = getDefaultWallets({
+    appName: 'My RainbowKit App',
+    projectId,
+    chains,
+  });
+
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ projectId, chains }),
+        trustWallet({ projectId, chains }),
+        ledgerWallet({ projectId, chains }),
+      ],
+    },
+  ]);
+  ```
+
+  You can read the full migration guide [here](https://www.rainbowkit.com/guides/walletconnect-v2).
+
+  **Advanced options**
+
+  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overriden.
+
+  ```ts
+  metaMaskWallet(options: {
+    chains: Chain[];
+    walletConnectVersion: '1',
+  });
+  ```
+
+  Once the WalletConnect v1 servers are shutdown, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required.
+
+  ```ts
+  walletConnectWallet(options: {
+    chains: Chain[];
+    version: '1',
+    options: {
+      bridge: 'https://bridge.myhostedserver.com',
+    },
+  });
+
+  customWallet(options: {
+    chains: Chain[];
+    walletConnectVersion: '1',
+    walletConnectOptions: {
+      bridge: 'https://bridge.myhostedserver.com',
+    },
+  });
+  ```
+
+  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+
+  It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
+
+  [Reference the viem migration guide here](https://viem.sh/docs/migration-guide.html#_1-x-x-breaking-changes).
+
 ## 1.0.1
 
 ### Patch Changes
