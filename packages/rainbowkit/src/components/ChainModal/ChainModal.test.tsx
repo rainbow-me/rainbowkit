@@ -1,7 +1,7 @@
 import user from '@testing-library/user-event';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { arbitrum, goerli, mainnet } from 'wagmi/chains';
+import { arbitrum, goerli, mainnet, optimism } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test/';
 import { ChainModal } from './ChainModal';
 
@@ -32,6 +32,31 @@ describe('<ChainModal />', () => {
 
     expect(mainnetOption).toHaveTextContent('Connected');
     expect(mainnetOption).toBeDisabled();
+  });
+
+  it('List chains provided in <RainbowKitProvider />', async () => {
+    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
+      chains: [mainnet, arbitrum, optimism],
+      mock: true,
+      props: { chains: [optimism] },
+    });
+
+    const optimismOption = await modal.findByTestId(
+      `rk-chain-option-${optimism.id}`
+    );
+
+    // optimism SHOULD be displayed
+    // as it was the only passed to RainbowKitProvider
+    expect(optimismOption).toBeInTheDocument();
+
+    // mainnet & arb SHOULD NOT be displayed
+    // even tho they're supported they were not passed to RainbowKitProvider
+    expect(
+      modal.queryByTestId(`rk-chain-option-${mainnet.id}`)
+    ).not.toBeInTheDocument();
+    expect(
+      modal.queryByTestId(`rk-chain-option-${arbitrum.id}`)
+    ).not.toBeInTheDocument();
   });
 
   it('Can switch chains', async () => {
