@@ -58,7 +58,6 @@ export type Wallet<C extends Connector = Connector> = {
     android?: string;
     ios?: string;
     mobile?: string;
-    desktop?: string;
     qrCode?: string;
     chrome?: string;
     edge?: string;
@@ -66,6 +65,10 @@ export type Wallet<C extends Connector = Connector> = {
     opera?: string;
     safari?: string;
     browserExtension?: string;
+    macos?: string;
+    windows?: string;
+    linux?: string;
+    desktop?: string;
   };
   hidden?: (args: {
     wallets: {
