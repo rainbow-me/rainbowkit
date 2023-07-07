@@ -9,8 +9,6 @@ import type {
   WalletConnectLegacyConnectorOptions,
 } from '../../getWalletConnectConnector';
 
-const LEDGERLIVE_WEB_URL = 'https://www.ledger.com/ledger-live';
-
 export interface LedgerWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
@@ -39,9 +37,12 @@ export const ledgerWallet = ({
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
     ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
-    mobile: LEDGERLIVE_WEB_URL,
-    desktop: LEDGERLIVE_WEB_URL,
-    qrCode: LEDGERLIVE_WEB_URL,
+    mobile: 'https://www.ledger.com/ledger-live',
+    qrCode: 'https://r354.adj.st/?adj_t=t2esmlk',
+    windows: 'https://www.ledger.com/ledger-live/download',
+    macos: 'https://www.ledger.com/ledger-live/download',
+    linux: 'https://www.ledger.com/ledger-live/download',
+    desktop: 'https://www.ledger.com/ledger-live',
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({
@@ -73,7 +74,8 @@ export const ledgerWallet = ({
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
         instructions: {
-          learnMoreUrl: LEDGERLIVE_WEB_URL,
+          learnMoreUrl:
+            'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
           steps: [
             {
               description:
@@ -104,7 +106,8 @@ export const ledgerWallet = ({
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
         instructions: {
-          learnMoreUrl: LEDGERLIVE_WEB_URL,
+          learnMoreUrl:
+            'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
           steps: [
             {
               description:
