@@ -76,7 +76,8 @@ export const trustWallet = ({
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (TrustWalletLegacyOptions | TrustWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
