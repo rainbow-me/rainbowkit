@@ -12,6 +12,7 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
+import { ConnectIcon, preloadConnectIcon } from '../Icons/Connect';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
 import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
@@ -595,6 +596,7 @@ export function DownloadOptionsDetail({
     preloadCreateIcon();
     preloadScanIcon();
     preloadRefreshIcon();
+    preloadConnectIcon();
   }, []);
 
   return (
@@ -740,7 +742,7 @@ const stepIcons: Record<
   InstructionStepName,
   (wallet: WalletConnector) => ReactNode
 > = {
-  connect: () => <RefreshIcon />,
+  connect: () => <ConnectIcon />,
   create: () => <CreateIcon />,
   install: wallet => (
     <AsyncImage
