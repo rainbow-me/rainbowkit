@@ -3,7 +3,7 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
-import { getPlatform } from '../../utils/platforms';
+import { getPlatform, PlatformType } from '../../utils/platforms';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -46,6 +46,22 @@ const getBrowserSrc: () => Promise<string> = async () => {
 };
 
 const preloadBrowserIcon = () => loadImages(getBrowserSrc);
+
+const getPlatformSrc: () => Promise<string> = async () => {
+  const platform = getPlatform();
+  switch (platform) {
+    case PlatformType.Windows:
+      return (await import(`../Icons/Windows.svg`)).default;
+    case PlatformType.MacOS:
+      return (await import(`../Icons/Macos.svg`)).default;
+    case PlatformType.Linux:
+      return (await import(`../Icons/Linux.svg`)).default;
+    default:
+      return (await import(`../Icons/Linux.svg`)).default;
+  }
+};
+
+const preloadPlatformIcon = () => loadImages(getPlatformSrc);
 
 export function GetDetail({
   getWalletDownload,
@@ -233,6 +249,7 @@ export function ConnectDetail({
   useEffect(() => {
     // Preload icon used on next screen
     preloadBrowserIcon();
+    preloadPlatformIcon();
   }, []);
 
   return (
@@ -643,9 +660,7 @@ export function DownloadOptionsDetail({
           <DownloadOptionsBox
             actionLabel={`Add to ${platform}`}
             description="Access your wallet natively from your powerful desktop."
-            iconAccent={wallet.iconAccent}
-            iconBackground={wallet.iconBackground}
-            iconUrl={wallet.iconUrl}
+            iconUrl={getPlatformSrc}
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
