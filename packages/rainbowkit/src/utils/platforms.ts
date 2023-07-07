@@ -3,6 +3,13 @@ import { UAParser } from 'ua-parser-js';
 const ua = UAParser();
 const { os } = ua;
 
+export enum PlatformType {
+  Windows = 'Windows',
+  MacOS = 'Mac OS',
+  Linux = 'Linux',
+  Desktop = 'Desktop',
+}
+
 export function isWindows(): boolean {
   return os.name === 'Windows';
 }
@@ -15,4 +22,11 @@ export function isLinux(): boolean {
   return ['Ubuntu', 'Mint', 'Fedora', 'Debian', 'Arch', 'Linux'].includes(
     os.name!
   );
+}
+
+export function getPlatform(): PlatformType {
+  if (isWindows()) return PlatformType.Windows;
+  else if (isMacOS()) return PlatformType.MacOS;
+  else if (isLinux()) return PlatformType.Linux;
+  return PlatformType.Desktop;
 }
