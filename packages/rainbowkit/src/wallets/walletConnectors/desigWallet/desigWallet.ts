@@ -21,6 +21,8 @@ export const desigWallet = ({
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.desig.app',
       ios: 'https://apps.apple.com/app/desig-wallet/id6450106028',
+      qrCode: 'https://desig.io/download',
+      mobile: 'https://desig.io/download',
       browserExtension:
         'https://chrome.google.com/webstore/detail/desig-wallet/panpgppehdchfphcigocleabcmcgfoca',
     },
@@ -55,7 +57,7 @@ export const desigWallet = ({
               },
               {
                 description:
-                  'Once you set up your wallet, refresh the browser and load up the extension.',
+                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
                 step: 'refresh',
                 title: 'Refresh your browser',
               },
