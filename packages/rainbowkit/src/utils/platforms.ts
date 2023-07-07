@@ -5,7 +5,7 @@ const { os } = ua;
 
 export enum PlatformType {
   Windows = 'Windows',
-  MacOS = 'Mac OS',
+  MacOS = 'macOS',
   Linux = 'Linux',
   Desktop = 'Desktop',
 }

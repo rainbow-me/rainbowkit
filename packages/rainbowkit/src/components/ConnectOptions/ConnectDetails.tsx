@@ -3,6 +3,7 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
+import { getPlatform } from '../../utils/platforms';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   useWalletConnectors,
@@ -581,6 +582,7 @@ export function DownloadOptionsDetail({
   wallet: WalletConnector;
 }) {
   const browser = getBrowser();
+  const platform = getPlatform();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
   const {
@@ -639,8 +641,8 @@ export function DownloadOptionsDetail({
         )}
         {desktopDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel="Get the desktop app"
-            description="Use the desktop wallet to explore the world of Ethereum."
+            actionLabel={`Add to ${platform}`}
+            description="Access your wallet natively from your powerful desktop."
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
             iconUrl={wallet.iconUrl}
@@ -652,7 +654,7 @@ export function DownloadOptionsDetail({
                   : WalletStep.Connect
               )
             }
-            title={`${wallet.name} for Desktop`}
+            title={`${wallet.name} for ${platform}`}
             url={desktopDownloadUrl}
             variant="desktop"
           />
