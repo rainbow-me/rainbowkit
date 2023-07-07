@@ -659,7 +659,7 @@ export function DownloadOptionsDetail({
         )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel="Get the mobile app"
+            actionLabel="Get the app"
             description="Use the mobile wallet to explore the world of Ethereum."
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
