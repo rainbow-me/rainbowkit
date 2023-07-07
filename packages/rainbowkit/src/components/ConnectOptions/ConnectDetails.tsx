@@ -990,6 +990,22 @@ export function InstructionDesktopDetail({
         marginBottom="16"
       >
         <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
+        <Box
+          as="a"
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          display="block"
+          href={wallet?.desktop?.instructions?.learnMoreUrl}
+          paddingX="12"
+          paddingY="4"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
+        </Box>
       </Box>
     </Box>
   );
