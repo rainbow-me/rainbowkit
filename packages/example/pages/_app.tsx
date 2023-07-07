@@ -24,6 +24,7 @@ import {
   coin98Wallet,
   coreWallet,
   dawnWallet,
+  desigWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
@@ -110,6 +111,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
+      desigWallet({ chains }),
       argentWallet({ chains, projectId }),
       bifrostWallet({ chains, projectId }),
       bitgetWallet({ chains, projectId }),
