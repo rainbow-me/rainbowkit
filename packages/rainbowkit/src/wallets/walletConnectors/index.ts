@@ -3,6 +3,7 @@ import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { desigWallet } from './desigWallet/desigWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -33,6 +34,7 @@ export {
   mewWallet,
   omniWallet,
   phantomWallet,
+  desigWallet,
   rabbyWallet,
   rainbowWallet,
   safeWallet,
