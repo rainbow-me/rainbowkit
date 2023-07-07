@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.5
+
+### Patch Changes
+
+- 08e3f4c: Decoupled `chains` between `WagmiConfig` and `RainbowKitProvider` so that dApps can now supply a subset of supported chains to `RainbowKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
+- cb3614e: Added `cronos` and `cronosTestnet` chain support
+- 53d96bc: Fixed an issue with MetaMask Mobile's connector that blocked WalletConnect pairings
+- bfab830: Updated BNB Smart Chain icon.
+
 ## 1.0.4
 
 ### Patch Changes
