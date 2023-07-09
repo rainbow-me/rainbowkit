@@ -38,6 +38,7 @@ import {
   uniswapWallet,
   xdefiWallet,
   zerionWallet,
+  fordefiWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   GetSiweMessageOptions,
@@ -129,6 +130,7 @@ const connectors = connectorsForWallets([
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
+      fordefiWallet({ chains, projectId }),
     ],
   },
 ]);

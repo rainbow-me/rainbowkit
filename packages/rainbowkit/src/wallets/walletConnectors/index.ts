@@ -15,6 +15,7 @@ import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
+import { fordefiWallet } from './fordefiWallet/fordefiWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
@@ -68,4 +69,5 @@ export {
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,
+  fordefiWallet,
 };
