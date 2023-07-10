@@ -32,7 +32,7 @@ export const ledgerWallet = ({
   id: 'ledger',
   iconBackground: '#000',
   iconAccent: '#000',
-  name: 'Ledger Live',
+  name: 'Ledger',
   iconUrl: async () => (await import('./ledgerWallet.svg')).default,
   downloadUrls: {
     android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
