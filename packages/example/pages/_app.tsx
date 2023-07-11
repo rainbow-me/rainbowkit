@@ -82,7 +82,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 );
 
 const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
