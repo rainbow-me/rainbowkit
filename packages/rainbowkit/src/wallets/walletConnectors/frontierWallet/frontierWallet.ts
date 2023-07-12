@@ -39,7 +39,7 @@ export const frontierWallet = ({
   ...options
 }: (FrontierWalletLegacyOptions | FrontierWalletOptions) &
   InjectedConnectorOptions): Wallet => {
-  const isCoreInjected =
+  const isFrontierInjected =
     typeof window !== 'undefined' &&
     typeof window.frontier !== 'undefined' &&
     window?.frontier?.ethereum?.isFrontier;
@@ -64,7 +64,7 @@ export const frontierWallet = ({
       browserExtension: 'https://www.frontier.xyz/download',
     },
     createConnector: () => {
-      const shouldUseWalletConnect = !isCoreInjected;
+      const shouldUseWalletConnect = !isFrontierInjected;
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({
             chains,
