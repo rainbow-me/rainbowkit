@@ -60,6 +60,7 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   if (ethereum.isRabby) return false;
   if (ethereum.isRainbow) return false;
   if (ethereum.isStatus) return false;
+  if (ethereum.isTalisman) return false;
   if (ethereum.isTally) return false;
   if (ethereum.isTokenPocket) return false;
   if (ethereum.isTokenary) return false;
