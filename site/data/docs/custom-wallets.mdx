@@ -237,13 +237,21 @@ export const rainbow = ({
       connector,
       mobile: {
         getUri: async () => {
-          const { uri } = (await connector.getProvider()).connector;
+          const provider = await connector.getProvider();
+          const uri = await new Promise<string>(resolve =>
+            provider.once('display_uri', resolve)
+          );
           return uri;
         },
       },
       qrCode: {
-        getUri: async () =>
-          (await connector.getProvider()).connector.uri,
+        getUri: async () => {
+          const provider = await connector.getProvider();
+          const uri = await new Promise<string>(resolve =>
+            provider.once('display_uri', resolve)
+          );
+          return uri;
+        },
         instructions: {
           learnMoreUrl: 'https://my-wallet/learn-more',
           steps: [

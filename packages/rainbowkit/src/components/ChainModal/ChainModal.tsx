@@ -1,22 +1,17 @@
-import React, {
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
+import React, { Fragment, useContext } from 'react';
+import { useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box, BoxProps } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
+
 export interface ChainModalProps {
   open: boolean;
   onClose: () => void;
@@ -24,49 +19,22 @@ export interface ChainModalProps {
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
   const { chain: activeChain } = useNetwork();
-  const { chains, error: networkError, switchNetwork } = useSwitchNetwork();
+  const { chains, pendingChainId, reset, switchNetwork } = useSwitchNetwork({
+    onSettled: () => {
+      reset(); // reset mutation variables (eg. pendingChainId, error)
+      onClose();
+    },
+  });
+
   const { disconnect } = useDisconnect();
-  const { connector: activeConnector } = useAccount();
-  const [switchingToChain, setSwitchingToChain] = useState<number | null>();
   const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
-  const rainbowkitChainsById = useRainbowKitChainsById();
   const unsupportedChain = activeChain?.unsupported ?? false;
   const chainIconSize = mobile ? '36' : '28';
 
-  const stopSwitching = useCallback(() => {
-    setSwitchingToChain(null);
-    onClose();
-  }, [onClose]);
-
-  useEffect(() => {
-    if (!activeConnector) {
-      return;
-    }
-
-    const stopSwitching = () => {
-      setSwitchingToChain(null);
-      onClose();
-    };
-
-    let provider: any;
-    activeConnector?.getProvider?.().then((provider_: any) => {
-      provider = provider_;
-      provider.on('chainChanged', stopSwitching);
-    });
-
-    return () => {
-      provider?.removeListener('chainChanged', stopSwitching);
-    };
-  }, [activeConnector, onClose, stopSwitching]);
-
-  useEffect(() => {
-    if (networkError && networkError.name === 'UserRejectedRequestError') {
-      stopSwitching();
-    }
-  }, [networkError, stopSwitching]);
-
   const { appName } = useContext(AppContext);
+
+  const rainbowkitChains = useRainbowKitChains();
 
   if (!activeChain || !activeChain?.id) {
     return null;
@@ -104,13 +72,13 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
           )}
           <Box display="flex" flexDirection="column" gap="4" padding="2">
             {switchNetwork ? (
-              chains.map((chain, idx) => {
+              rainbowkitChains.map(({ iconBackground, iconUrl, id }, idx) => {
+                const chain = chains.find(c => c.id === id);
+                if (!chain) return null;
+
                 const isCurrentChain = chain.id === activeChain?.id;
-                const switching = chain.id === switchingToChain;
-                const rainbowKitChain = rainbowkitChainsById[chain.id];
-                const chainIconSize: BoxProps['width'] = mobile ? '36' : '28';
-                const chainIconUrl = rainbowKitChain?.iconUrl;
-                const chainIconBackground = rainbowKitChain?.iconBackground;
+                const switching =
+                  !isCurrentChain && chain.id === pendingChainId;
 
                 return (
                   <Fragment key={chain.id}>
@@ -119,10 +87,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                       onClick={
                         isCurrentChain
                           ? undefined
-                          : () => {
-                              setSwitchingToChain(chain.id);
-                              switchNetwork(chain.id);
-                            }
+                          : () => switchNetwork(chain.id)
                       }
                       testId={`chain-option-${chain.id}`}
                     >
@@ -140,18 +105,18 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                             gap="4"
                             height={chainIconSize}
                           >
-                            {chainIconUrl ? (
+                            {iconUrl && (
                               <Box height="full" marginRight="8">
                                 <AsyncImage
                                   alt={chain.name}
-                                  background={chainIconBackground}
+                                  background={iconBackground}
                                   borderRadius="full"
                                   height={chainIconSize}
-                                  src={chainIconUrl}
+                                  src={iconUrl}
                                   width={chainIconSize}
                                 />
                               </Box>
-                            ) : null}
+                            )}
                             <div>{chain.name}</div>
                           </Box>
                           {isCurrentChain && (
@@ -202,7 +167,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         </Box>
                       </Box>
                     </MenuButton>
-                    {mobile && idx < chains?.length - 1 && (
+                    {mobile && idx < rainbowkitChains.length - 1 && (
                       <Box
                         background="generalBorderDim"
                         height="1"
