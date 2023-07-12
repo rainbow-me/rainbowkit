@@ -14,7 +14,7 @@ import type {
 export interface BitKeepWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion: '2';
+  walletConnectVersion: '1';
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
@@ -33,35 +33,32 @@ export const bitKeepWallet = ({
   ...options
 }: (BitKeepWalletLegacyOptions | BitKeepWalletOptions) &
   InjectedConnectorOptions): Wallet => {
-  // Not using the explicit isBitKeep fn to check for bitKeep
-  // so that users can continue to use the bitKeep button
-  // to interact with wallets compatible with window.ethereum.
-  // The connector's getProvider will instead favor the real bitKeep
-
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
-    (window as any).bitkeep !== undefined &&
-    ((window as any).bitkeep as any)?.ethereum !== undefined &&
-    ((window as any).bitkeep as any).isBitKeep === true;
+    // @ts-expect-error
+    window.bitkeep !== undefined &&
+    // @ts-expect-error
+    window.bitkeep.ethereum !== undefined &&
+    // @ts-expect-error
+    window.bitkeep.isBitKeep === true;
 
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
     id: 'bitKeep',
     name: 'BitKeep',
-    iconUrl: 'https://bitkeep.com/favicon.ico',
+    iconUrl: async () => (await import('./bitKeepWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isBitKeepInjected : undefined,
     downloadUrls: {
       android: 'https://bitkeep.com/en/download?type=2',
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
-      chrome:
-        'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
       ios: 'https://apps.apple.com/app/bitkeep/id1395301115',
       mobile: 'https://bitkeep.com/en/download?type=2',
       qrCode: 'https://bitkeep.com/en/download',
+      chrome:
+        'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
+      browserExtension: 'https://bitkeep.com/en/download',
     },
 
     createConnector: () => {
