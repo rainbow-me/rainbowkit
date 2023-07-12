@@ -17,7 +17,7 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [frontierWallet({ chains })],
+    wallets: [frontierWallet({ projectId, chains })],
   },
 ]);
 ```
