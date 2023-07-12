@@ -40,7 +40,7 @@ export const bitKeepWallet = ({
     // @ts-expect-error
     window.bitkeep.ethereum !== undefined &&
     // @ts-expect-error
-    window.bitkeep.isBitKeep === true;
+    window.bitkeep.ethereum.isBitKeep === true;
 
   const shouldUseWalletConnect = !isBitKeepInjected;
 
