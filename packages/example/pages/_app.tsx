@@ -101,7 +101,7 @@ const connectors = connectorsForWallets([
       omniWallet({ chains, projectId }),
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
-      safeHeronWallet({ chains }),
+      safeheronWallet({ chains }),
       tahoWallet({ chains }),
       trustWallet({ chains, projectId }),
       xdefiWallet({ chains }),
