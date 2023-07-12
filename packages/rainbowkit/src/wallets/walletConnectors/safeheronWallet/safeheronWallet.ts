@@ -23,7 +23,8 @@ export const safeheronWallet = ({
   installed:
     typeof window !== 'undefined' &&
     typeof window.safeheron !== 'undefined' &&
-    (window.safeheron as any).isSafeheron === true,
+    // @ts-ignore
+    window.safeheron.isSafeheron === true,
   iconUrl: async () => (await import('./safeheronWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -40,5 +41,30 @@ export const safeheronWallet = ({
         ...options,
       },
     }),
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://www.safeheron.com/',
+        steps: [
+          {
+            description:
+              'We recommend pinning Safeheron to your taskbar for quicker access to your wallet.',
+            step: 'install',
+            title: 'Install the Core extension',
+          },
+          {
+            description:
+              'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+            step: 'create',
+            title: 'Create or Import a Wallet',
+          },
+          {
+            description:
+              'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+            step: 'refresh',
+            title: 'Refresh your browser',
+          },
+        ],
+      },
+    },
   }),
 });
