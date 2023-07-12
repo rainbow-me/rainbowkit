@@ -2,7 +2,7 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Safeheron Wallet Support
+Safeheron Support
 
 **Example usage**
 
