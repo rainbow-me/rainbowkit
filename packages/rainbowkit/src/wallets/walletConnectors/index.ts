@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { bitKeepWallet } from './bitKeepWallet/bitKeepWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -22,6 +23,7 @@ import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
   argentWallet,
+  bitKeepWallet,
   bitskiWallet,
   braveWallet,
   coinbaseWallet,
