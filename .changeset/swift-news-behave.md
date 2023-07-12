@@ -2,7 +2,7 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-Bitkeep Support
+BitKeep Support
 
 **Example usage**
 
