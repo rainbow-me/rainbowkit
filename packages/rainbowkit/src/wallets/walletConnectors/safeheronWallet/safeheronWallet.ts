@@ -27,8 +27,9 @@ export const safeheronWallet = ({
   iconUrl: async () => (await import('./safeheronWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
-    browserExtension:
+    chrome:
       'https://chrome.google.com/webstore/detail/safeheron/aiaghdjafpiofpainifbgfgjfpclngoh',
+    browserExtension: 'https://www.safeheron.com/',
   },
   createConnector: () => ({
     connector: new InjectedConnector({
