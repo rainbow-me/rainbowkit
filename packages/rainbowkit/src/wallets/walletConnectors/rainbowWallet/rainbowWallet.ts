@@ -42,7 +42,8 @@ export const rainbowWallet = ({
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&

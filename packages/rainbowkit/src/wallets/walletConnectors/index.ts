@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { bitKeepWallet } from './bitKeepWallet/bitKeepWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
@@ -16,6 +17,7 @@ import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
+import { talismanWallet } from './talismanWallet/talismanWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
@@ -23,6 +25,7 @@ import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
   argentWallet,
+  bitKeepWallet,
   bitskiWallet,
   braveWallet,
   coin98Wallet,
@@ -39,6 +42,7 @@ export {
   rainbowWallet,
   safeWallet,
   tahoWallet,
+  talismanWallet,
   trustWallet,
   okxWallet,
   walletConnectWallet,
