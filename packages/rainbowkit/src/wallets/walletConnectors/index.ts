@@ -19,6 +19,7 @@ import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
+import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
@@ -45,6 +46,7 @@ export {
   safeheronWallet,
   tahoWallet,
   talismanWallet,
+  tokenPocketWallet,
   trustWallet,
   okxWallet,
   walletConnectWallet,
