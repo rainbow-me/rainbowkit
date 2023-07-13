@@ -126,6 +126,17 @@ argentWallet(options: {
 });
 ```
 
+#### BitKeep
+
+```tsx
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Bitski
 
 ```tsx
@@ -163,6 +174,16 @@ coinbaseWallet(options: {
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 
 dawnWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Frontier Wallet
+
+```tsx
+import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+frontierWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -273,12 +294,32 @@ safeWallet(options: {
 });
 ```
 
+#### Safeheron
+
+```tsx
+import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeheronWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Taho
 
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 
 tahoWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Talisman
+
+```tsx
+import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+
+talismanWallet(options: {
   chains: Chain[];
 });
 ```
