@@ -3,6 +3,7 @@ import { bitKeepWallet } from './bitKeepWallet/bitKeepWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
+import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
@@ -31,6 +32,7 @@ export {
   bitskiWallet,
   braveWallet,
   coinbaseWallet,
+  coreWallet,
   dawnWallet,
   frontierWallet,
   imTokenWallet,
