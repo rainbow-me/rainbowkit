@@ -55,5 +55,5 @@ export {
   okxWallet,
   walletConnectWallet,
   xdefiWallet,
-  zerionWallet
+  zerionWallet,
 };
