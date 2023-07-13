@@ -21,8 +21,8 @@ export const desigWallet = ({
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.desig.app',
       ios: 'https://apps.apple.com/app/desig-wallet/id6450106028',
-      qrCode: 'https://desig.io/download',
-      mobile: 'https://desig.io/download',
+      qrCode: 'https://desig.io',
+      mobile: 'https://desig.io',
       browserExtension:
         'https://chrome.google.com/webstore/detail/desig-wallet/panpgppehdchfphcigocleabcmcgfoca',
     },
