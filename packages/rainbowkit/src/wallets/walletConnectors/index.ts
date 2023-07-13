@@ -11,6 +11,7 @@ import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
+import { oktoWallet } from './oktoWallet/oktoWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
@@ -50,6 +51,7 @@ export {
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
+  oktoWallet,
   okxWallet,
   walletConnectWallet,
   xdefiWallet,
