@@ -83,8 +83,10 @@ export const rainbowWallet = ({
         return isAndroid()
           ? uri
           : isIOS()
-          ? `rainbow://wc?uri=${encodeURIComponent(uri)}`
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
+              uri
+            )}&connector=rainbowkit`;
       };
 
       return {
