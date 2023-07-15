@@ -33,6 +33,7 @@ export interface Coin98WalletOptions {
 function getCoin98WalletInjectedProvider(): Window['ethereum'] {
   const isCoin98Wallet = (ethereum: NonNullable<Window['ethereum']>) => {
     // Identify if Coin98 Wallet injected provider is present.
+    // @ts-expect-error
     const coin98Wallet = !!ethereum.isCoin98;
 
     return coin98Wallet;
