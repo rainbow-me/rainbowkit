@@ -36,7 +36,7 @@ export const oktoWallet = ({
   downloadUrls: {
     android:
       'https://play.google.com/store/apps/details?id=im.okto.contractwalletclient',
-    ios: 'https://apps.apple.com/us/app/okto/id1358741926',
+    ios: 'https://apps.apple.com/in/app/okto-wallet/id6450688229',
     mobile: 'https://okto.tech/',
     qrCode: 'https://okto.tech/',
   },
@@ -67,18 +67,19 @@ export const oktoWallet = ({
           steps: [
             {
               description:
-                'Put okto on your home screen for faster access to your wallet.',
+                'Open the Okto app (Add Okto to your home screen for quick access)',
               step: 'install',
               title: 'Open the okto app',
             },
             {
-              description: 'Create a wallet and username',
+              description:
+                'Create an account (Your wallet account will get created)',
               step: 'create',
               title: 'Create a MPC Wallet',
             },
             {
               description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
+                'Tap the Scan QR icon on the top right corner of the home screen (After you scan, a connection prompt will appear on the screen for you to approve)',
               step: 'scan',
               title: 'Tap the Scan QR button',
             },
