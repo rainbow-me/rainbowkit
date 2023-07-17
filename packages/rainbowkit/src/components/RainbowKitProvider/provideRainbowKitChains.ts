@@ -36,6 +36,7 @@ type IconMetadata = {
 
 type ChainMetadata = {
   chainId: number;
+  name?: string;
 } & IconMetadata;
 
 const arbitrumIcon: IconMetadata = {
@@ -89,7 +90,7 @@ const zoraIcon: IconMetadata = {
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
-  arbitrum: { chainId: 42_161, ...arbitrumIcon },
+  arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
@@ -103,7 +104,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   kovan: { chainId: 42, ...ethereumIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, ...ethereumIcon },
-  optimism: { chainId: 10, ...optimismIcon },
+  optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
   polygon: { chainId: 137, ...polygonIcon },
@@ -121,11 +122,11 @@ const chainMetadataById = Object.fromEntries(
     .map(({ chainId, ...metadata }) => [chainId, metadata])
 );
 
-/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain properties if not already provided */
+/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
   chains: Chain[]
 ): Chain[] =>
   chains.map(chain => ({
-    ...(chainMetadataById[chain.id] ?? {}),
     ...chain,
+    ...(chainMetadataById[chain.id] ?? {}),
   }));
