@@ -95,7 +95,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
-  bsc: { chainId: 56, ...bscIcon },
+  bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
