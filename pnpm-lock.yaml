@@ -114,8 +114,8 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(@babel/core@7.16.0)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 4.20.1
-        version: 4.20.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.22.1
+        version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       postcss:
         specifier: ^8.4.6
         version: 8.4.6
@@ -380,8 +380,8 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(@babel/core@7.16.0)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 4.20.1
-        version: 4.20.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.22.1
+        version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -471,8 +471,8 @@ importers:
   packages/rainbowkit-siwe-next-auth:
     dependencies:
       next-auth:
-        specifier: '>=4.10.2 <=4.20.1'
-        version: 4.20.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: '>=4.22.1'
+        version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: '>=17'
         version: 18.2.0
@@ -16862,8 +16862,8 @@ packages:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
     dev: false
 
-  /next-auth@4.20.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ZcTUN4qzzZ/zJYgOW0hMXccpheWtAol8QOMdMts+LYRcsPGsqf2hEityyaKyECQVw1cWInb9dF3wYwI5GZdEmQ==}
+  /next-auth@4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
@@ -21505,6 +21505,7 @@ packages:
 
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
 
   /uvu@0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
