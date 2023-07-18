@@ -111,7 +111,6 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      desigWallet({ chains }),
       argentWallet({ chains, projectId }),
       bifrostWallet({ chains, projectId }),
       bitgetWallet({ chains, projectId }),
@@ -119,6 +118,7 @@ const connectors = connectorsForWallets([
       coin98Wallet({ chains, projectId }),
       coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      desigWallet({ chains }),
       enkryptWallet({ chains }),
       foxWallet({ chains, projectId }),
       frameWallet({ chains }),
