@@ -97,12 +97,12 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Other',
     wallets: [
-      desigWallet({ chains }),
       argentWallet({ chains, projectId }),
       bitKeepWallet({ chains, projectId }),
       bitskiWallet({ chains }),
       coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      desigWallet({ chains }),
       frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
