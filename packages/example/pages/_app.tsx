@@ -50,7 +50,7 @@ import {
 } from 'wagmi';
 import {
   arbitrum,
-  baseGoerli,
+  base,
   bsc,
   goerli,
   mainnet,
@@ -70,11 +70,10 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
-    bsc,
+    base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [goerli, baseGoerli]
-      : []),
+    bsc,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),

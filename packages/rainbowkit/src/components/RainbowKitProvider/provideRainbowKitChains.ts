@@ -10,6 +10,7 @@ type ChainName =
   | 'avalancheFuji'
   | 'cronos'
   | 'cronosTestnet'
+  | 'base'
   | 'baseGoerli'
   | 'bsc'
   | 'bscTestnet'
@@ -94,6 +95,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
+  base: { chainId: 8453, ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
