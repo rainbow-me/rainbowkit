@@ -471,7 +471,7 @@ importers:
   packages/rainbowkit-siwe-next-auth:
     dependencies:
       next-auth:
-        specifier: '>=4.22.1'
+        specifier: '>=4.21.0'
         version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: '>=17'
