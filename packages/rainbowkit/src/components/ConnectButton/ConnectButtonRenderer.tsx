@@ -62,7 +62,7 @@ export function ConnectButtonRenderer({
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const { data: balanceData } = useBalance({ address });
+  const { data: balanceData } = useBalance({ address, watch: true });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;

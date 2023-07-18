@@ -13,7 +13,7 @@ export interface AccountModalProps {
 
 export function AccountModal({ onClose, open }: AccountModalProps) {
   const { address } = useAccount();
-  const { data: balanceData } = useBalance({ address });
+  const { data: balanceData } = useBalance({ address, watch: true });
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { disconnect } = useDisconnect();
