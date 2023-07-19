@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.7
+
+### Patch Changes
+
+- d303a3b9: Added `base` chain support
+- f1e98e84: RainbowKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
+
 ## 1.0.6
 
 ### Patch Changes

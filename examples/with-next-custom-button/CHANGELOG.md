@@ -1,5 +1,13 @@
 # with-next-custom-button
 
+## 0.0.60
+
+### Patch Changes
+
+- Updated dependencies [f1e98e84]
+- Updated dependencies [d303a3b9]
+  - @rainbow-me/rainbowkit@1.0.7
+
 ## 0.0.59
 
 ### Patch Changes
