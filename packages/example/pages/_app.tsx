@@ -19,6 +19,7 @@ import {
   coreWallet,
   dawnWallet,
   enkryptWallet,
+  fordefiWallet,
   foxWallet,
   frameWallet,
   frontierWallet,
@@ -38,7 +39,6 @@ import {
   uniswapWallet,
   xdefiWallet,
   zerionWallet,
-  fordefiWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   GetSiweMessageOptions,
@@ -111,6 +111,7 @@ const connectors = connectorsForWallets([
       coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
       enkryptWallet({ chains }),
+      fordefiWallet({ chains, projectId }),
       foxWallet({ chains, projectId }),
       frameWallet({ chains }),
       frontierWallet({ chains, projectId }),
@@ -130,7 +131,6 @@ const connectors = connectorsForWallets([
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
-      fordefiWallet({ chains, projectId }),
     ],
   },
 ]);

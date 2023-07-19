@@ -45,6 +45,7 @@ export {
   coreWallet,
   dawnWallet,
   enkryptWallet,
+  fordefiWallet,
   foxWallet,
   frameWallet,
   frontierWallet,
@@ -69,5 +70,4 @@ export {
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,
-  fordefiWallet,
 };
