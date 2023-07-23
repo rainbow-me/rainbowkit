@@ -2,8 +2,6 @@
 import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
@@ -33,8 +31,6 @@ export const fordefiWallet = ({
   ...options
 }: (FordefiWalletLegacyOptions | FordefiWalletOptions) &
   MetaMaskConnectorOptions): Wallet => {
-  const providers = typeof window !== 'undefined' && window.ethereum?.providers;
-
   const isFordefiInjected =
     typeof window !== 'undefined' &&
     ((typeof window.ethereum !== 'undefined' && window.ethereum.isFordefi) ||
