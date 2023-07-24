@@ -114,8 +114,8 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(@babel/core@7.16.0)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 4.22.1
-        version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.22.3
+        version: 4.22.3(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       postcss:
         specifier: ^8.4.6
         version: 8.4.6
@@ -380,8 +380,8 @@ importers:
         specifier: ^13.4.3
         version: 13.4.3(@babel/core@7.16.0)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 4.22.1
-        version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.22.3
+        version: 4.22.3(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -16864,6 +16864,31 @@ packages:
 
   /next-auth@4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-NTR3f6W7/AWXKw8GSsgSyQcDW6jkslZLH8AiZa5PQ09w1kR8uHtR9rez/E9gAq/o17+p0JYHE8QjF3RoniiObA==}
+    peerDependencies:
+      next: ^12.2.5 || ^13
+      nodemailer: ^6.6.5
+      react: ^17.0.2 || ^18
+      react-dom: ^17.0.2 || ^18
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.21.5
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.14.4
+      next: 13.4.3(@babel/core@7.16.0)(react-dom@18.2.0)(react@18.2.0)
+      oauth: 0.9.15
+      openid-client: 5.4.2
+      preact: 10.13.2
+      preact-render-to-string: 5.2.6(preact@10.13.2)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      uuid: 8.3.2
+    dev: false
+
+  /next-auth@4.22.3(next@13.4.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-XAgy9xV3J2eJOXrQhmxdjV6MLM29ibm6WtMXc3KY6IPZeApf+SuBuPvlqCUfbu5YsAzlg9WSw6u01dChTfeZOA==}
     peerDependencies:
       next: ^12.2.5 || ^13
       nodemailer: ^6.6.5
