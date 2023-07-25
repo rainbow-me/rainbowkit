@@ -2,13 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -16,18 +10,9 @@ declare global {
   }
 }
 
-export interface Coin98WalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface Coin98WalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 function getCoin98WalletInjectedProvider(): Window['ethereum'] {
@@ -73,13 +58,9 @@ function getCoin98WalletInjectedProvider(): Window['ethereum'] {
 
 export const coin98Wallet = ({
   chains,
-  projectId,
-  walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
 }: Coin98WalletOptions & InjectedConnectorOptions): Wallet => {
   const isCoin98WalletInjected = Boolean(getCoin98WalletInjectedProvider());
-  const shouldUseWalletConnect = !isCoin98WalletInjected;
 
   return {
     id: 'coin98',
@@ -102,68 +83,15 @@ export const coin98Wallet = ({
       browserExtension: 'https://coin98.com/wallet',
     },
     createConnector: () => {
-      const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
-
-        return `coin98://wc?uri=${encodeURIComponent(uri)}`;
-      };
-
-      const getUriQR = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
-
-        return uri;
-      };
-
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            version: walletConnectVersion,
-            options: walletConnectOptions,
-          })
-        : new InjectedConnector({
-            chains,
-            options: {
-              name: 'Coin98 Wallet',
-              shimChainChangedDisconnect: true,
-              getProvider: getCoin98WalletInjectedProvider,
-              ...options,
-            },
-          });
-
-      const mobileConnector = {
-        getUri: shouldUseWalletConnect ? getUriMobile : undefined,
-      };
-
-      let qrConnector = undefined;
-
-      if (shouldUseWalletConnect) {
-        qrConnector = {
-          getUri: getUriQR,
-          instructions: {
-            learnMoreUrl: 'https://coin98.com/',
-            steps: [
-              {
-                description:
-                  'Put Coin98 Wallet on your home screen for faster access to your wallet.',
-                step: 'install' as InstructionStepName,
-                title: 'Open the Coin98 Wallet app',
-              },
-              {
-                description: 'Create a new wallet or import an existing one.',
-                step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
-              },
-              {
-                description:
-                  'Choose Wallet Connect, then scan the QR code and confirm the prompt to connect.',
-                step: 'scan' as InstructionStepName,
-                title: 'Tap WalletConnect in Widget',
-              },
-            ],
-          },
-        };
-      }
+      const connector = new InjectedConnector({
+        chains,
+        options: {
+          name: 'Coin98 Wallet',
+          shimChainChangedDisconnect: true,
+          getProvider: getCoin98WalletInjectedProvider,
+          ...options,
+        },
+      });
 
       const extensionConnector = {
         instructions: {
@@ -192,8 +120,6 @@ export const coin98Wallet = ({
 
       return {
         connector,
-        mobile: mobileConnector,
-        qrCode: qrConnector,
         extension: extensionConnector,
       };
     },
