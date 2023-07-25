@@ -1,5 +1,136 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.7
+
+### Patch Changes
+
+- d303a3b9: Added `base` chain support
+- f1e98e84: RainbowKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
+
+## 1.0.6
+
+### Patch Changes
+
+- dc3cd10b: Core Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [coreWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- c251d55d: Talisman Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [talismanWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- d5b3bd19: Safeheron Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [safeheronWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 66e84239: Frontier Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [frontierWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 1b4f142e: BitKeep Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [bitKeepWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- e089ab98: TokenPocket Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [tokenPocketWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
 ## 1.0.5
 
 ### Patch Changes

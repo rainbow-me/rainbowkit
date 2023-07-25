@@ -42,7 +42,8 @@ export const rainbowWallet = ({
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
@@ -82,8 +83,10 @@ export const rainbowWallet = ({
         return isAndroid()
           ? uri
           : isIOS()
-          ? `rainbow://wc?uri=${encodeURIComponent(uri)}`
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
+              uri
+            )}&connector=rainbowkit`;
       };
 
       return {

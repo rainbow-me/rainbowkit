@@ -12,8 +12,11 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bitKeepWallet,
   bitskiWallet,
+  coreWallet,
   dawnWallet,
+  frontierWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
@@ -21,7 +24,10 @@ import {
   omniWallet,
   phantomWallet,
   rabbyWallet,
+  safeheronWallet,
   tahoWallet,
+  talismanWallet,
+  tokenPocketWallet,
   trustWallet,
   xdefiWallet,
   zerionWallet,
@@ -44,7 +50,7 @@ import {
 } from 'wagmi';
 import {
   arbitrum,
-  baseGoerli,
+  base,
   bsc,
   goerli,
   mainnet,
@@ -64,11 +70,10 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
-    bsc,
+    base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [goerli, baseGoerli]
-      : []),
+    bsc,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
@@ -91,8 +96,11 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains, projectId }),
+      bitKeepWallet({ chains, projectId }),
       bitskiWallet({ chains }),
+      coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
       mewWallet({ chains }),
@@ -100,7 +108,10 @@ const connectors = connectorsForWallets([
       omniWallet({ chains, projectId }),
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
+      safeheronWallet({ chains }),
       tahoWallet({ chains }),
+      talismanWallet({ chains }),
+      tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
