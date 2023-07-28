@@ -4,6 +4,7 @@ import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain {
   id: number;
+  name?: string;
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
