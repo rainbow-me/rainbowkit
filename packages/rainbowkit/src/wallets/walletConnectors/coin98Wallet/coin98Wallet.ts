@@ -87,7 +87,6 @@ export const coin98Wallet = ({
         chains,
         options: {
           name: 'Coin98 Wallet',
-          shimChainChangedDisconnect: true,
           getProvider: getCoin98WalletInjectedProvider,
           ...options,
         },
