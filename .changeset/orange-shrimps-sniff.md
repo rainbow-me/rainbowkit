@@ -17,7 +17,7 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [foxWallet({ chains, projectId })],
+    wallets: [foxWallet({ projectId, chains })],
   },
 ]);
 ```
