@@ -32,8 +32,7 @@ export const foxWallet = ({
     id: 'foxwallet',
     name: 'FoxWallet',
     iconUrl: async () => (await import('./foxWallet.svg')).default,
-    iconAccent: '#000',
-    iconBackground: '#000',
+    iconBackground: '#fff',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.foxwallet.play',
