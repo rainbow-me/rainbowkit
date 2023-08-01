@@ -2,17 +2,23 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface FoxWalletOptions {
   projectId: string;
   chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const foxWallet = ({
   chains,
   projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
   ...options
 }: FoxWalletOptions & InjectedConnectorOptions): Wallet => {
   const isFoxInjected =
@@ -36,7 +42,12 @@ export const foxWallet = ({
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId, chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {
@@ -51,16 +62,18 @@ export const foxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
-                const { uri } = (await connector.getProvider()).connector;
-                return `https://link.foxwallet.com/wc?uri=${encodeURIComponent(
-                  uri
-                )}`;
+                const uri = await getWalletConnectUri(
+                  connector,
+                  walletConnectVersion
+                );
+                return `foxwallet://wc?uri=${encodeURIComponent(uri)}`;
               }
             : undefined,
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () => (await connector.getProvider()).connector.uri,
+              getUri: async () =>
+                getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
                 learnMoreUrl: 'https://foxwallet.com',
                 steps: [
