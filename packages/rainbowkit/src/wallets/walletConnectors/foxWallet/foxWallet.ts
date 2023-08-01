@@ -6,7 +6,7 @@ import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface FoxWalletOptions {
-  projectId?: string;
+  projectId: string;
   chains: Chain[];
 }
 
