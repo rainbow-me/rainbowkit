@@ -23,7 +23,7 @@ export const safeWallet = ({
     !(typeof window === 'undefined') && window?.parent !== window,
   downloadUrls: {
     // We're opting not to provide a download prompt if the application is not 
-    // already running in an embedded app within the safe wallet site,
+    // already running as a Safe App within the context of the Safe browser,
     // since it's unlikely to be a desired behavior for users.
   },
   createConnector: () => ({
