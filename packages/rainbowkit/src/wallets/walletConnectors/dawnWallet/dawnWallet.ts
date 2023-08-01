@@ -23,7 +23,8 @@ export const dawnWallet = ({
     window.ethereum.isDawn,
   hidden: () => !isIOS(),
   downloadUrls: {
-    ios: 'https://testflight.apple.com/join/UHmOJnNy',
+    ios: 'https://apps.apple.com/us/app/dawn-ethereum-wallet/id1673143782',
+    mobile: 'https://dawnwallet.xyz',
   },
   createConnector: () => ({
     connector: new InjectedConnector({

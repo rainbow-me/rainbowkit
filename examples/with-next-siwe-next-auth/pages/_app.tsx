@@ -11,21 +11,30 @@ import {
   trustWallet,
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  zora,
+  goerli,
+} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
 import {
   RainbowKitSiweNextAuthProvider,
   GetSiweMessageOptions,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     mainnet,
     polygon,
     optimism,
     arbitrum,
+    zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [publicProvider()]
@@ -55,21 +64,26 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
   statement: 'Sign in to the RainbowKit + SIWE example app',
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   return (
     <SessionProvider refetchInterval={0} session={pageProps.session}>
-      <WagmiConfig client={wagmiClient}>
+      <WagmiConfig config={wagmiConfig}>
         <RainbowKitSiweNextAuthProvider
           getSiweMessageOptions={getSiweMessageOptions}
         >

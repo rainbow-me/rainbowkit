@@ -11,11 +11,13 @@ import { PropsTable } from 'components/PropsTable/PropsTable';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 import React, { useState } from 'react';
+import { Announcement } from '../Announcement/Announcement';
 
 export const components = {
   a: props => <Link {...props} />,
+  Announcement,
   blockquote: props => (
     <Box
       as="blockquote"

@@ -1,5 +1,57 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.2.4
+
+### Patch Changes
+
+- 6d361b4: Updated `wagmi` to `~1.3.0` and `viem` to `~1.1.0`.
+
+## 0.2.3
+
+### Patch Changes
+
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+
+  It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
+
+  [Reference the viem migration guide here](https://viem.sh/docs/migration-guide.html#_1-x-x-breaking-changes).
+
+## 0.2.2
+
+### Patch Changes
+
+- 86a1ddd: Upgraded templates to support Next 13
+
+## 0.2.1
+
+### Patch Changes
+
+- 371c988: Adopted `fs`, `net`, and `tls` polyfills in the `@rainbow-me/create-rainbowkit` templates for better `wagmi@1` and `viem` Webpack bundler support.
+
+  These modules are required by WalletConnect packages upstream, and were previously polyfilled by `ethers`. Reference the discussion [here](https://github.com/wagmi-dev/wagmi/issues/2300#issuecomment-1541425648).
+
+## 0.2.0
+
+### Minor Changes
+
+- 93b58d0: RainbowKit and the [wagmi](https://wagmi.sh) peer dependency have been updated to `1.x.x`, which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
+
+  wagmi v1 now relies on `viem` instead of the `ethers` peer dependency, so `@rainbow-me/create-rainbowkit` templates have been upgraded to favor [viem](https://viem.sh/).
+
+  Give RainbowKit and [wagmi v1](https://wagmi.sh/react/migration-guide#1xx-breaking-changes) a try today:
+
+  ```bash
+  yarn create @rainbow-me/rainbowkit
+  ```
+
+## 0.1.11
+
+### Patch Changes
+
+- 865175f: Upgraded template dependencies: `ethers`, `next`, `react`, `react-dom`, `siwe` and `next-auth` to support `siwe@2`.
+
 ## 0.1.10
 
 ### Patch Changes

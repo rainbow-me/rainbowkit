@@ -61,7 +61,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { disclaimer: Disclaimer } = useContext(AppContext);
 
   const wallets = useWalletConnectors()
-    .filter(wallet => wallet.ready || wallet.downloadUrls?.browserExtension)
+    .filter(wallet => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
@@ -132,7 +132,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       });
     } else {
       setSelectedWallet(wallet);
-      changeWalletStep(WalletStep.Connect);
+      changeWalletStep(
+        wallet?.extensionDownloadUrl
+          ? WalletStep.DownloadOptions
+          : WalletStep.Connect
+      );
     }
   };
 
@@ -140,7 +144,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedOptionId(id);
     const sWallet = wallets.find(w => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
-    const isExtension = sWallet?.downloadUrls?.browserExtension;
+    const isExtension = !!sWallet?.extensionDownloadUrl;
     setSelectedWallet(sWallet);
     if (isMobile && isExtension) {
       changeWalletStep(WalletStep.DownloadOptions);
@@ -187,9 +191,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
 
+  const hasExtension = !!selectedWallet?.extensionDownloadUrl;
   const hasExtensionAndMobile = !!(
-    selectedWallet?.downloadUrls?.browserExtension &&
-    (selectedWallet?.downloadUrls?.android || selectedWallet?.downloadUrls?.ios)
+    hasExtension && selectedWallet?.mobileDownloadUrl
   );
 
   switch (walletStep) {
@@ -221,6 +225,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           changeWalletStep={changeWalletStep}
           compactModeEnabled={compactModeEnabled}
           connectionError={connectionError}
+          onClose={onClose}
           qrCodeUri={qrCodeUri}
           reconnect={connectToWallet}
           wallet={selectedWallet}
@@ -246,7 +251,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         />
       );
       headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
-      headerBackButtonLink = initialWalletStep;
+      headerBackButtonLink =
+        hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (

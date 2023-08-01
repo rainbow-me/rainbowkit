@@ -29,7 +29,8 @@ export const mewWallet = ({
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
       ios: 'https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&mt=8&ct=rainbow',
-      qrCode: 'https://www.mewwallet.com/',
+      mobile: 'https://mewwallet.com',
+      qrCode: 'https://mewwallet.com',
     },
     createConnector: () => {
       return {

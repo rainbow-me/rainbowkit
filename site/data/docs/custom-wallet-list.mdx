@@ -44,19 +44,19 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-You can then pass your connectors to `wagmi`'s `createClient`.
+You can then pass your connectors to `wagmi`'s `createConfig`.
 
 ```tsx line=1,4-99
-import { createClient, WagmiConfig } from 'wagmi';
+import { createConfig, WagmiConfig } from 'wagmi';
 ...
 const connectors = connectorsForWallets([ /* ... */ ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   connectors,
 });
 
 const App = () => (
-  <WagmiConfig client={wagmiClient}>
+  <WagmiConfig config={wagmiConfig}>
     <RainbowKitProvider {...etc}>
       {/* Your App */}
     </RainbowKitProvider>
@@ -84,8 +84,18 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 walletConnectWallet(options: {
   projectId: string;
   chains: Chain[];
+  options?: {
+    qrcodeModalOptions?: {
+      desktopLinks?: string[];
+      mobileLinks?: string[];
+    };
+  }
 });
 ```
+
+Additional documentation for supported `options` can be found [here](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional).
+
+In preparation for the migration to WalletConnect v2, the `options` for Web3Modal v2 are also supported. Reference the [Ethereum Provider docs](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization). The required `projectId` is automatically pre-populated by RainbowKit.
 
 ##### Injected Wallet
 
@@ -111,6 +121,17 @@ The following wallets are provided via the `wallet` object (in alphabetical orde
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 argentWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### BitKeep
+
+```tsx
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
   projectId: string;
   chains: Chain[];
 });
@@ -147,6 +168,17 @@ coinbaseWallet(options: {
 });
 ```
 
+#### Core
+
+```tsx
+import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+
+coreWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Dawn Wallet
 
 ```tsx
@@ -163,6 +195,16 @@ dawnWallet(options: {
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 foxWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Frontier Wallet
+
+```tsx
+import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+frontierWallet(options: {
   projectId: string;
   chains: Chain[];
 });
@@ -274,12 +316,43 @@ safeWallet(options: {
 });
 ```
 
+#### Safeheron
+
+```tsx
+import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeheronWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Taho
 
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 
 tahoWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Talisman
+
+```tsx
+import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+
+talismanWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### TokenPocket
+
+```tsx
+import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenPocketWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -291,6 +364,16 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
   projectId: string;
+  chains: Chain[];
+});
+```
+
+#### XDEFI Wallet
+
+```tsx
+import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+
+xdefiWallet(options: {
   chains: Chain[];
 });
 ```

@@ -25,17 +25,17 @@ Alternatively, you can manually integrate RainbowKit into your existing project.
 
 ### Manual setup
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi-xyz.vercel.app/) and [ethers](https://docs.ethers.io).
+Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi ethers@^5
+npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
 > Note: RainbowKit is a [React](https://reactjs.org/) library.
 
 #### Import
 
-Import RainbowKit, wagmi, and ethers.
+Import RainbowKit and wagmi.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -44,15 +44,21 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  zora,
+} from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 ```
 
 #### Configure
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` client.
+Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config.
 
 > Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
@@ -61,8 +67,8 @@ Configure your desired chains and generate the required connectors. You will als
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
-const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, zora],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider()
@@ -75,10 +81,10 @@ const { connectors } = getDefaultWallets({
   chains
 });
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider
+  publicClient
 })
 ```
 
@@ -91,7 +97,7 @@ Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagm
 ```tsx
 const App = () => {
   return (
-    <WagmiConfig client={wagmiClient}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         <YourApp />
       </RainbowKitProvider>
@@ -118,13 +124,23 @@ RainbowKit will now handle your user's wallet selection, display wallet/transact
 
 Some build tools will require additional setup.
 
-##### Node polyfills
+##### React, Next.js, and Webpack
 
-If your bundler doesn't provide Node polyfills (e.g. [Vite](https://vitejs.dev)), you'll need to include polyfills for `global`, `Buffer` and `process.env`. As an example, you can reference the [polyfills in our sample Vite project.](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)
+The [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler used by Next.js and Create React App [no longer provides Node polyfills](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), so you'll need to include these modules yourself to satisfy RainbowKit's peer dependencies. Create React App specifically requires that you polyfill `Buffer`.
+
+In previous versions of RainbowKit that relied on [ethers](https://docs.ethers.org/v5/), the `fs`, `net`, and `tls` modules were automatically polyfilled. This is no longer the case with RainbowKit v1 + wagmi v1, which are built on [viem](https://viem.sh/).
+
+Reference our [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), and [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) samples for configuration guidance for your project.
+
+##### Vite
+
+The [Vite](https://vitejs.dev) bundler doesn't provide Node polyfills, so you'll need to include polyfills for `global`, `Buffer` and `process.env`. As an example, you can reference the [polyfills in our sample Vite project](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
 
 ##### Remix
 
 When using [Remix](https://remix.run), all RainbowKit package entry points must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) in your Remix config since they're published as ESM packages.
+
+Remix also requires that you polyfill `global`, `Buffer` and `process.env`. Reference the [polyfills in our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
 
 ```js
 /**
@@ -152,6 +168,8 @@ To see some running examples of RainbowKit, or even use them to automatically sc
 
 To try RainbowKit directly in your browser, check out the CodeSandbox links below:
 
-- with [Create React App](https://codesandbox.io/s/rainbowkit-create-react-app-1vwx1r)
-- with [Create React App (TypeScript)](https://codesandbox.io/s/rainbowkit-create-typescript-app-xuxnqy)
-- with [Next.js](https://codesandbox.io/s/rainbowkit-nextjs-gz890p)
+- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

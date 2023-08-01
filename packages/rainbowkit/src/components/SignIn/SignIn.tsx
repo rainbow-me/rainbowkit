@@ -1,11 +1,6 @@
 import React, { useCallback, useRef } from 'react';
-import {
-  useAccount,
-  useDisconnect,
-  useNetwork,
-  UserRejectedRequestError,
-  useSignMessage,
-} from 'wagmi';
+import { UserRejectedRequestError } from 'viem';
+import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';

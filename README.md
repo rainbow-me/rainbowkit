@@ -10,7 +10,7 @@ RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add 
 
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
-- 🦄 Built on top of [wagmi](https://github.com/tmm/wagmi) and [ethers](https://docs.ethers.io)
+- 🦄 Built on top of [wagmi](https://wagmi.sh) and [viem](https://viem.sh)
 
 ## Quick start
 
@@ -32,9 +32,11 @@ For full documentation, visit [rainbowkit.com](https://rainbowkit.com).
 
 You can use the CodeSandbox links below try out RainbowKit:
 
-- with [Create React App](https://codesandbox.io/s/rainbowkit-create-react-app-1vwx1r)
-- with [Create React App (TypeScript)](https://codesandbox.io/s/rainbowkit-create-typescript-app-xuxnqy)
-- with [Next.js](https://codesandbox.io/s/rainbowkit-nextjs-gz890p)
+- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 
 ## Examples
 
@@ -42,11 +44,13 @@ The following examples are provided in the [examples](./examples/) folder of thi
 
 - `with-create-react-app`
 - `with-next`
+- `with-next-app`
 - `with-next-custom-button`
 - `with-next-mint-nft`
 - `with-next-siwe-next-auth`
 - `with-next-siwe-iron-session`
 - `with-remix`
+- `with-vite`
 
 ### Running examples
 

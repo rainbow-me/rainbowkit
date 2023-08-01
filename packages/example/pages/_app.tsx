@@ -12,9 +12,12 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bitKeepWallet,
   bitskiWallet,
+  coreWallet,
   dawnWallet,
   foxWallet,
+  frontierWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
@@ -22,7 +25,10 @@ import {
   omniWallet,
   phantomWallet,
   rabbyWallet,
+  safeheronWallet,
   tahoWallet,
+  talismanWallet,
+  tokenPocketWallet,
   trustWallet,
   xdefiWallet,
   zerionWallet,
@@ -34,23 +40,24 @@ import {
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import {
   configureChains,
-  createClient,
+  createConfig,
   useDisconnect,
   WagmiConfig,
 } from 'wagmi';
 import {
   arbitrum,
-  avalanche,
-  baseGoerli,
+  base,
   bsc,
   goerli,
   mainnet,
   optimism,
   polygon,
+  zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -58,25 +65,25 @@ import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     mainnet,
     polygon,
     optimism,
     arbitrum,
+    base,
+    zora,
     bsc,
-    avalanche,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [goerli, baseGoerli]
-      : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
   ]
 );
 
-const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
+const projectId =
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
@@ -90,9 +97,12 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains, projectId }),
+      bitKeepWallet({ chains, projectId }),
       bitskiWallet({ chains }),
+      coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
       foxWallet({ chains, projectId }),
+      frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
       mewWallet({ chains }),
@@ -100,7 +110,10 @@ const connectors = connectorsForWallets([
       omniWallet({ chains, projectId }),
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
+      safeheronWallet({ chains }),
       tahoWallet({ chains }),
+      talismanWallet({ chains }),
+      tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
@@ -108,11 +121,11 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiClient = createClient({
+const wagmiConfig = createConfig({
   autoConnect: true,
   connectors,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 const demoAppInfo = {
@@ -181,7 +194,12 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
-function RainbowKitApp({ Component, pageProps }: AppProps) {
+function RainbowKitApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -562,7 +580,11 @@ function RainbowKitApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default function App(appProps: AppProps) {
+export default function App(
+  appProps: AppProps<{
+    session: Session;
+  }>
+) {
   return (
     <>
       <Head>
@@ -570,7 +592,7 @@ export default function App(appProps: AppProps) {
         <link href="/favicon.ico" rel="icon" />
       </Head>
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiConfig client={wagmiClient}>
+        <WagmiConfig config={wagmiConfig}>
           <RainbowKitApp {...appProps} />
         </WagmiConfig>
       </SessionProvider>
