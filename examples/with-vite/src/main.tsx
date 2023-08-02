@@ -16,8 +16,7 @@ const { chains, publicClient } = configureChains(
 
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit demo',
-  projectId:
-    import.meta.env.VITE_APP_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
+  projectId: 'YOUR_PROJECT_ID',
   chains,
 });
 

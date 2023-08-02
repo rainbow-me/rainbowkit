@@ -34,10 +34,7 @@ import {
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
 
-type Env = {
-  PUBLIC_WALLETCONNECT_PROJECT_ID?: string;
-  PUBLIC_ENABLE_TESTNETS?: string;
-};
+type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
@@ -57,8 +54,6 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
-      PUBLIC_WALLETCONNECT_PROJECT_ID:
-        process.env.PUBLIC_WALLETCONNECT_PROJECT_ID,
       PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
@@ -83,7 +78,7 @@ export default function App() {
 
     const { connectors } = getDefaultWallets({
       appName: 'RainbowKit Remix Example',
-      projectId: ENV.PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
+      projectId: 'YOUR_PROJECT_ID',
       chains,
     });
 
