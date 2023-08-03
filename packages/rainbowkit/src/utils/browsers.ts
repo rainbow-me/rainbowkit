@@ -29,8 +29,7 @@ export function getBrowser(): BrowserType {
   const ua = navigator.userAgent.toLowerCase();
   // @ts-ignore
   if (navigator.brave?.isBrave) return BrowserType.Brave;
-  else if (ua.indexOf('edge') > -1 || ua.indexOf('edg/') > -1)
-    return BrowserType.Edge;
+  else if (ua.indexOf('edg/') > -1) return BrowserType.Edge;
   else if (ua.indexOf('op') > -1) return BrowserType.Opera;
   else if (isArc()) return BrowserType.Arc;
   else if (ua.indexOf('chrome') > -1) return BrowserType.Chrome;
