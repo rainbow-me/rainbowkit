@@ -31,6 +31,7 @@ import {
   trustWallet,
   xdefiWallet,
   zerionWallet,
+  safepalWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   GetSiweMessageOptions,
@@ -115,6 +116,7 @@ const connectors = connectorsForWallets([
       trustWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
+      safepalWallet({ chains, projectId }),
     ],
   },
 ]);

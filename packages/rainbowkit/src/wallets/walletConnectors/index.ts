@@ -25,7 +25,7 @@ import { trustWallet } from './trustWallet/trustWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
-
+import { safepalWallet } from './safepalWallet/safepalWallet';
 export {
   argentWallet,
   bitKeepWallet,
@@ -54,4 +54,5 @@ export {
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,
+  safepalWallet,
 };
