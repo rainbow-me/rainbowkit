@@ -13,6 +13,7 @@ import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
+import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
@@ -41,6 +42,7 @@ export {
   metaMaskWallet,
   mewWallet,
   omniWallet,
+  oneKeyWallet,
   phantomWallet,
   rabbyWallet,
   rainbowWallet,
