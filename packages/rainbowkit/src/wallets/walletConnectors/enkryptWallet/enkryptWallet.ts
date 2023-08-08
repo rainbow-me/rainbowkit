@@ -26,6 +26,8 @@ export const enkryptWallet = ({
     typeof window !== 'undefined' &&
     typeof window.enkrypt !== 'undefined' &&
     window?.enkrypt?.providers?.ethereum;
+  // eslint-disable-next-line no-console
+  console.log(isEnkryptInjected, 'enkrypt injection check');
   return {
     id: 'enkrypt',
     name: 'Enkrypt Wallet',
