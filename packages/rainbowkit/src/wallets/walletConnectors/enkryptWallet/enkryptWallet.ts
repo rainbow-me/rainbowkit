@@ -26,15 +26,12 @@ export const enkryptWallet = ({
     typeof window !== 'undefined' &&
     typeof window.enkrypt !== 'undefined' &&
     window?.enkrypt?.providers?.ethereum;
-  // eslint-disable-next-line no-console
-  console.log(isEnkryptInjected, 'enkrypt injection check');
   return {
     id: 'enkrypt',
     name: 'Enkrypt Wallet',
     installed: isEnkryptInjected ? true : undefined,
     iconUrl: async () => (await import('./enkryptWallet.svg')).default,
-    iconAccent: '#C549FF',
-    iconBackground: '#fff',
+    iconBackground: '#FFFFFF',
     downloadUrls: {
       qrCode: 'https://www.enkrypt.com',
       chrome:
