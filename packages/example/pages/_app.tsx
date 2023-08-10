@@ -37,6 +37,7 @@ import {
   phantomWallet,
   rabbyWallet,
   safeheronWallet,
+  subWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
@@ -137,6 +138,7 @@ const connectors = connectorsForWallets([
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
+      subWallet({ chains, projectId }),
     ],
   },
 ]);
