@@ -25,17 +25,6 @@ export interface RainbowWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
-  // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  const isRainbow = Boolean(ethereum.isRainbow);
-
-  if (!isRainbow) {
-    return false;
-  }
-
-  return true;
-}
-
 export const rainbowWallet = ({
   chains,
   projectId,
@@ -47,9 +36,10 @@ export const rainbowWallet = ({
   const isRainbowInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
-    isRainbow(window.ethereum);
-
+    (window.ethereum.providers?.some(p => p.isRainbow) ||
+      window.ethereum.isRainbow);
   const shouldUseWalletConnect = !isRainbowInjected;
+
   return {
     id: 'rainbow',
     name: 'Rainbow',
