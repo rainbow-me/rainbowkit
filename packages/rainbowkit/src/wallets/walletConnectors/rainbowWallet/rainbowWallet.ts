@@ -1,10 +1,13 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
   WalletConnectConnectorOptions,
@@ -33,13 +36,8 @@ export const rainbowWallet = ({
   ...options
 }: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
   InjectedConnectorOptions): Wallet => {
-  const isRainbowInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    (window.ethereum.providers?.some(p => p.isRainbow) ||
-      window.ethereum.isRainbow);
+  const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
-
   return {
     id: 'rainbow',
     name: 'Rainbow',
@@ -63,10 +61,7 @@ export const rainbowWallet = ({
             version: walletConnectVersion,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options,
-          });
+        : getInjectedConnector({ flag: 'isRainbow', chains, options });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
