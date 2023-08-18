@@ -12,8 +12,8 @@
     "buffer": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~1.3.0",
-    "wagmi": "~1.3.9"
+    "viem": "~1.6.0",
+    "wagmi": "~1.3.10"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
