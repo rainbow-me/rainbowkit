@@ -23,6 +23,7 @@ import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { trustWallet } from './trustWallet/trustWallet';
+import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
@@ -42,6 +43,7 @@ export {
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
   phantomWallet,
   rabbyWallet,
@@ -52,7 +54,7 @@ export {
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
-  okxWallet,
+  uniswapWallet,
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,

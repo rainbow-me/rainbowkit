@@ -30,6 +30,7 @@ import {
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
+  uniswapWallet,
   xdefiWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -115,6 +116,7 @@ const connectors = connectorsForWallets([
       talismanWallet({ chains }),
       tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
+      uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
