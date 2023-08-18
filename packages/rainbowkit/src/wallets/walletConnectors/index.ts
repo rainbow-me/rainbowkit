@@ -5,6 +5,7 @@ import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { foxWallet } from './foxWallet/foxWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
@@ -34,6 +35,7 @@ export {
   coinbaseWallet,
   coreWallet,
   dawnWallet,
+  foxWallet,
   frontierWallet,
   imTokenWallet,
   injectedWallet,
