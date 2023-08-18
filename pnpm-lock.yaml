@@ -86,6 +86,9 @@ importers:
       esbuild:
         specifier: ^0.14.39
         version: 0.14.39
+      esbuild-plugin-replace:
+        specifier: ^1.4.0
+        version: 1.4.0
       eslint:
         specifier: 7.32.0
         version: 7.32.0
@@ -11881,6 +11884,12 @@ packages:
     os: [openbsd]
     optional: true
 
+  /esbuild-plugin-replace@1.4.0:
+    resolution: {integrity: sha512-lP3ZAyzyRa5JXoOd59lJbRKNObtK8pJ/RO7o6vdjwLi71GfbL32NR22ZuS7/cLZkr10/L1lutoLma8E4DLngYg==}
+    dependencies:
+      magic-string: 0.25.9
+    dev: true
+
   /esbuild-sunos-64@0.14.22:
     resolution: {integrity: sha512-/mbJdXTW7MTcsPhtfDsDyPEOju9EOABvCjeUU2OJ7fWpX/Em/H3WYDa86tzLUbcVg++BScQDzqV/7RYw5XNY0g==}
     engines: {node: '>=12'}
@@ -20564,6 +20573,7 @@ packages:
 
   /sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
 
   /space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}

@@ -2,6 +2,7 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
+import { replace } from 'esbuild-plugin-replace';
 import postcss from 'postcss';
 import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
@@ -54,6 +55,9 @@ const baseBuildConfig = {
         }));
       },
     },
+    replace({
+      __buildVersion: process.env.npm_package_version,
+    }),
   ],
   splitting: true, // Required for tree shaking
 };
