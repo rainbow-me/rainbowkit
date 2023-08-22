@@ -137,6 +137,15 @@ bitKeepWallet(options: {
 });
 ```
 
+#### Bifrost Wallet
+
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+bifrostWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Bitski
 
 ```tsx
@@ -185,6 +194,26 @@ coreWallet(options: {
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 
 dawnWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### FoxWallet
+
+```tsx
+import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+foxWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Frame Wallet
+
+```tsx
+import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+frameWallet(options: {
   chains: Chain[];
 });
 ```
@@ -363,6 +392,17 @@ tokenPocketWallet(options: {
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Uniswap Wallet
+
+```tsx
+import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+
+uniswapWallet(options: {
   projectId: string;
   chains: Chain[];
 });

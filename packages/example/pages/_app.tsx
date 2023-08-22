@@ -12,10 +12,13 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bifrostWallet,
   bitKeepWallet,
   bitskiWallet,
   coreWallet,
   dawnWallet,
+  foxWallet,
+  frameWallet,
   frontierWallet,
   imTokenWallet,
   ledgerWallet,
@@ -30,6 +33,7 @@ import {
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
+  uniswapWallet,
   xdefiWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -97,10 +101,13 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains, projectId }),
+      bifrostWallet({ chains, projectId }),
       bitKeepWallet({ chains, projectId }),
       bitskiWallet({ chains }),
       coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      foxWallet({ chains, projectId }),
+      frameWallet({ chains }),
       frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
@@ -115,6 +122,7 @@ const connectors = connectorsForWallets([
       talismanWallet({ chains }),
       tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
+      uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],

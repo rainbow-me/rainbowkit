@@ -1,5 +1,12 @@
 # with-create-react-app
 
+## 0.1.60
+
+### Patch Changes
+
+- Updated dependencies [eb319f3]
+  - @rainbow-me/rainbowkit@1.0.8
+
 ## 0.1.59
 
 ### Patch Changes
