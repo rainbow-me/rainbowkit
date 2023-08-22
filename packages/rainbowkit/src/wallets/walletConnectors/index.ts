@@ -6,6 +6,7 @@ import { braveWallet } from './braveWallet/braveWallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { foxWallet } from './foxWallet/foxWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
@@ -23,6 +24,7 @@ import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { trustWallet } from './trustWallet/trustWallet';
+import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
@@ -36,12 +38,14 @@ export {
   coinbaseWallet,
   coreWallet,
   dawnWallet,
+  foxWallet,
   frontierWallet,
   imTokenWallet,
   injectedWallet,
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
+  okxWallet,
   omniWallet,
   phantomWallet,
   rabbyWallet,
@@ -52,7 +56,7 @@ export {
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
-  okxWallet,
+  uniswapWallet,
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,

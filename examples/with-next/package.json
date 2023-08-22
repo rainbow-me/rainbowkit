@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^13.4.3",
+    "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~1.3.0",
-    "wagmi": "~1.3.9"
+    "viem": "~1.6.7",
+    "wagmi": "~1.3.10"
   },
   "devDependencies": {
     "@types/node": "^18.16.12",
-    "@types/react": "^18.2.14",
+    "@types/react": "^18.2.20",
     "eslint": "^8.15.0",
-    "eslint-config-next": "^13.4.3",
+    "eslint-config-next": "^13.4.19",
     "typescript": "^5.0.4"
   }
 }

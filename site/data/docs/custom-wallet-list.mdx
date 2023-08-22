@@ -198,6 +198,17 @@ dawnWallet(options: {
 });
 ```
 
+#### FoxWallet
+
+```tsx
+import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+
+foxWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Frontier Wallet
 
 ```tsx
@@ -361,6 +372,17 @@ tokenPocketWallet(options: {
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### Uniswap Wallet
+
+```tsx
+import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+
+uniswapWallet(options: {
   projectId: string;
   chains: Chain[];
 });
