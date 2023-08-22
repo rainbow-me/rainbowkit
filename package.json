@@ -74,7 +74,7 @@
     "husky": "^7.0.4",
     "jsdom": "^22.1.0",
     "lokijs": "^1.5.12",
-    "next": "^13.4.18",
+    "next": "^13.4.19",
     "next-auth": "4.22.3",
     "postcss": "^8.4.6",
     "postcss-prefix-selector": "^1.15.0",

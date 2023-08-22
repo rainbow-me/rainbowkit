@@ -12,7 +12,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "ethers": "^5.6.8",
-    "next": "^13.4.18",
+    "next": "^13.4.19",
     "next-auth": "4.22.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +24,7 @@
     "@types/node": "^18.16.12",
     "@types/react": "^18.2.20",
     "eslint": "^8.15.0",
-    "eslint-config-next": "^13.4.18",
+    "eslint-config-next": "^13.4.19",
     "typescript": "^5.0.4"
   }
 }
