@@ -57,13 +57,13 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/node": "^18.16.12",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "@vanilla-extract/esbuild-plugin": "^2.2.0",
     "@vanilla-extract/vite-plugin": "^3.8.2",
-    "@wagmi/core": "~1.3.8",
+    "@wagmi/core": "~1.3.9",
     "autoprefixer": "^10.4.0",
     "esbuild": "^0.14.39",
     "esbuild-plugin-replace": "^1.4.0",
@@ -75,7 +75,7 @@
     "husky": "^7.0.4",
     "jsdom": "^22.1.0",
     "lokijs": "^1.5.12",
-    "next": "^13.4.3",
+    "next": "^13.4.19",
     "next-auth": "4.22.3",
     "postcss": "^8.4.6",
     "postcss-prefix-selector": "^1.15.0",
@@ -84,9 +84,9 @@
     "react-dom": "^18.2.0",
     "recursive-readdir-files": "^2.0.7",
     "typescript": "^5.0.4",
-    "viem": "~1.3.0",
+    "viem": "~1.6.7",
     "vitest": "^0.32.4",
-    "wagmi": "~1.3.9"
+    "wagmi": "~1.3.10"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
