@@ -6,6 +6,7 @@ import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { foxWallet } from './foxWallet/foxWallet';
+import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
@@ -37,6 +38,7 @@ export {
   coreWallet,
   dawnWallet,
   foxWallet,
+  frameWallet,
   frontierWallet,
   imTokenWallet,
   injectedWallet,
