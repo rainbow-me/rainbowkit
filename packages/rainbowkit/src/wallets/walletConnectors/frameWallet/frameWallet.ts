@@ -20,7 +20,7 @@ export const frameWallet = ({
     ((window.ethereum as any).isFrame === true ||
       !!window.ethereum.providers?.find((p: any) => p.isFrame === true)),
   iconUrl: async () => (await import('./frameWallet.svg')).default,
-  iconBackground: '#fff',
+  iconBackground: '#121C20',
   downloadUrls: {
     browserExtension: 'https://frame.sh/',
   },
