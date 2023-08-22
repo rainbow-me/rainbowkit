@@ -11,7 +11,6 @@ declare global {
 }
 
 export interface Coin98WalletOptions {
-  projectId: string;
   chains: Chain[];
 }
 
