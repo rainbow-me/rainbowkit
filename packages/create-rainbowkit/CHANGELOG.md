@@ -1,5 +1,12 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.2.5
+
+### Patch Changes
+
+- ad913e60: Upgraded `wagmi`, `viem`, and `next` in templates.
+- f5e73b98: Upgraded templates for `base` network support
+
 ## 0.2.4
 
 ### Patch Changes
