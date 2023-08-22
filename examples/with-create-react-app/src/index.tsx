@@ -12,6 +12,7 @@ import {
   polygon,
   optimism,
   arbitrum,
+  base,
   zora,
   goerli,
 } from 'wagmi/chains';
@@ -24,6 +25,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
+    base,
     zora,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],

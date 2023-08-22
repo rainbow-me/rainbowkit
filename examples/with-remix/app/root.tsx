@@ -20,6 +20,7 @@ import {
   polygon,
   optimism,
   arbitrum,
+  base,
   zora,
   goerli,
 } from 'wagmi/chains';
@@ -72,7 +73,7 @@ export default function App() {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
     const { chains, publicClient } = configureChains(
-      [mainnet, polygon, optimism, arbitrum, zora, ...testChains],
+      [mainnet, polygon, optimism, arbitrum, base, zora, ...testChains],
       [publicProvider()]
     );
 
