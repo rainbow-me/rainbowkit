@@ -36,6 +36,7 @@ export const oktoWallet = ({
   downloadUrls: {
     android:
       'https://play.google.com/store/apps/details?id=im.okto.contractwalletclient',
+    ios: 'https://apps.apple.com/in/app/okto-wallet/id6450688229',
     mobile: 'https://okto.tech/',
     qrCode: 'https://okto.tech/',
   },
