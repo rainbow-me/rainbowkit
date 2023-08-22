@@ -31,7 +31,7 @@ export const uniswapWallet = ({
   id: 'uniswap',
   name: 'Uniswap Wallet',
   iconUrl: async () => (await import('./uniswapWallet.svg')).default,
-  iconBackground: '#000',
+  iconBackground: '#FFD8EA',
   downloadUrls: {
     ios: 'https://apps.apple.com/app/apple-store/id6443944476',
     mobile: 'https://wallet.uniswap.org/',
