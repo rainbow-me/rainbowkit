@@ -5,7 +5,7 @@ import { createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import type { Chain } from 'wagmi';
-import { arbitrum, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
 import { MockConnector } from 'wagmi/connectors/mock';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -13,7 +13,7 @@ import { RainbowKitProvider } from '../src/components/RainbowKitProvider/Rainbow
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
-const defaultChains = [mainnet, polygon, optimism, arbitrum, zora];
+const defaultChains = [mainnet, polygon, optimism, arbitrum, base, zora];
 
 export function renderWithProviders(
   component: ReactElement,
@@ -38,7 +38,7 @@ export function renderWithProviders(
   });
 
   const { chains, publicClient } = configureChains(
-    [mainnet, polygon, optimism, arbitrum, zora],
+    [mainnet, polygon, optimism, arbitrum, base, zora],
     [
       alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
       publicProvider(),
