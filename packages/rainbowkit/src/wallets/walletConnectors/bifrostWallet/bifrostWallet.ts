@@ -50,8 +50,8 @@ export const bifrostWallet = ({
     installed: !shouldUseWalletConnect ? isBifrostInjected : undefined,
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=com.bifrostwallet.app&hl=en_GB&gl=US',
-      ios: 'https://apps.apple.com/gb/app/bifrost-wallet/id1577198351',
+        'https://play.google.com/store/apps/details?id=com.bifrostwallet.app',
+      ios: 'https://apps.apple.com/us/app/bifrost-wallet/id1577198351',
       qrCode: 'https://bifrostwallet.com/#download-app',
     },
     createConnector: () => {
