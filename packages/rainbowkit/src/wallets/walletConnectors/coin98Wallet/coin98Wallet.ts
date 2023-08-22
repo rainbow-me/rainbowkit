@@ -2,7 +2,13 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
+import { Wallet } from '../../Wallet';
+import {
+  getWalletConnectConnector,
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -10,8 +16,18 @@ declare global {
   }
 }
 
-export interface Coin98WalletOptions {
+export interface Coin98WalletLegacyOptions {
+  projectId?: string;
   chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface Coin98WalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 function getCoin98WalletInjectedProvider(): Window['ethereum'] {
@@ -56,10 +72,14 @@ function getCoin98WalletInjectedProvider(): Window['ethereum'] {
 
 export const coin98Wallet = ({
   chains,
+  projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
   ...options
-}: Coin98WalletOptions & InjectedConnectorOptions): Wallet => {
+}: (Coin98WalletLegacyOptions | Coin98WalletOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isCoin98WalletInjected = Boolean(getCoin98WalletInjectedProvider());
-
+  const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
     id: 'coin98',
     name: 'Coin98 Wallet',
@@ -67,7 +87,7 @@ export const coin98Wallet = ({
     // Note that we never resolve `installed` to `false` because the
     // Coin98 Wallet provider falls back to other connection methods if
     // the injected connector isn't available
-    installed: isCoin98WalletInjected || undefined,
+    installed: !shouldUseWalletConnect ? isCoin98WalletInjected : undefined,
     iconAccent: '#CDA349',
     iconBackground: '#fff',
     downloadUrls: {
@@ -81,43 +101,81 @@ export const coin98Wallet = ({
       browserExtension: 'https://coin98.com/wallet',
     },
     createConnector: () => {
-      const connector = new InjectedConnector({
-        chains,
-        options: {
-          name: 'Coin98 Wallet',
-          getProvider: getCoin98WalletInjectedProvider,
-          ...options,
-        },
-      });
-
-      const extensionConnector = {
-        instructions: {
-          learnMoreUrl: 'https://coin98.com/wallet',
-          steps: [
-            {
-              description:
-                'Click at the top right of your browser and pin Coi98 Wallet for easy access.',
-              step: 'install' as InstructionStepName,
-              title: 'Install the Coin98 Wallet extension',
+      const connector = shouldUseWalletConnect
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            options: walletConnectOptions,
+            version: walletConnectVersion,
+          })
+        : new InjectedConnector({
+            chains,
+            options: {
+              name: 'Coin98 Wallet',
+              getProvider: getCoin98WalletInjectedProvider,
+              ...options,
             },
-            {
-              description: 'Create a new wallet or import an existing one.',
-              step: 'create' as InstructionStepName,
-              title: 'Create or Import a wallet',
-            },
-            {
-              description:
-                'Once you set up Coin98 Wallet, click below to refresh the browser and load up the extension.',
-              step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
-            },
-          ],
-        },
+          });
+      const getUri = async () => {
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        return uri;
       };
 
       return {
         connector,
-        extension: extensionConnector,
+        mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
+        qrCode: shouldUseWalletConnect
+          ? {
+              getUri,
+              instructions: {
+                learnMoreUrl: 'https://coin98.com/wallet',
+                steps: [
+                  {
+                    description:
+                      'We recommend putting Coin98 Wallet on your home screen for faster access to your wallet.',
+                    step: 'install',
+                    title: 'Open the Coin98 Wallet app',
+                  },
+                  {
+                    description:
+                      'You can easily backup your wallet using our backup feature on your phone.',
+                    step: 'create',
+                    title: 'Create or Import a Wallet',
+                  },
+                  {
+                    description:
+                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    step: 'scan',
+                    title: 'Tap the WalletConnect button',
+                  },
+                ],
+              },
+            }
+          : undefined,
+        extension: {
+          instructions: {
+            learnMoreUrl: 'https://coin98.com/wallet',
+            steps: [
+              {
+                description:
+                  'Click at the top right of your browser and pin Coin98 Wallet for easy access.',
+                step: 'install',
+                title: 'Install the Coin98 Wallet extension',
+              },
+              {
+                description: 'Create a new wallet or import an existing one.',
+                step: 'create',
+                title: 'Create or Import a wallet',
+              },
+              {
+                description:
+                  'Once you set up Coin98 Wallet, click below to refresh the browser and load up the extension.',
+                step: 'refresh',
+                title: 'Refresh your browser',
+              },
+            ],
+          },
+        },
       };
     },
   };
