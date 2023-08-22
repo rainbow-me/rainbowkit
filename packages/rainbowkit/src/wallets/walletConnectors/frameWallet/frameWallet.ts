@@ -38,7 +38,7 @@ export const frameWallet = ({
             description:
               'We recommend pinning Frame to your taskbar for quicker access to your wallet.',
             step: 'install',
-            title: 'Install the Frame extension',
+            title: 'Install Frame & the companion extension',
           },
           {
             description:
