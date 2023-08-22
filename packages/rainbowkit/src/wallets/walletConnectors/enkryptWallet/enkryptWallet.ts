@@ -31,8 +31,7 @@ export const enkryptWallet = ({
     name: 'Enkrypt Wallet',
     installed: isEnkryptInjected ? true : undefined,
     iconUrl: async () => (await import('./enkryptWallet.svg')).default,
-    iconAccent: '#C549FF',
-    iconBackground: '#fff',
+    iconBackground: '#FFFFFF',
     downloadUrls: {
       qrCode: 'https://www.enkrypt.com',
       chrome:
