@@ -3,6 +3,7 @@ import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitKeepWallet } from './bitKeepWallet/bitKeepWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
+import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
@@ -36,6 +37,7 @@ export {
   bitKeepWallet,
   bitskiWallet,
   braveWallet,
+  coin98Wallet,
   coinbaseWallet,
   coreWallet,
   dawnWallet,
