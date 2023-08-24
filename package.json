@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "husky install",
+    "prepare": "husky install",
     "dev": "yarn --recursive --parallel --filter @rainbow-me/rainbowkit* --filter example dev",
     "dev:lib": "yarn --filter @rainbow-me/rainbowkit* dev",
     "dev:example": "yarn dev:lib & yarn --filter example dev",
