@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useMemo } from 'react';
 import { useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -25,6 +25,10 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
       onClose();
     },
   });
+
+  const chainsMap = useMemo(() => {
+    return new Map(chains.map(c => [c.id, c]));
+  }, [chains]);
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';
@@ -74,7 +78,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             {switchNetwork ? (
               rainbowkitChains.map(
                 ({ iconBackground, iconUrl, id, name }, idx) => {
-                  const chain = chains.find(c => c.id === id);
+                  const chain = chainsMap.get(id);
                   if (!chain) return null;
 
                   const isCurrentChain = chain.id === activeChain?.id;
