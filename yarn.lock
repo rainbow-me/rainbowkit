@@ -3150,41 +3150,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rainbow-me/rainbowkit@workspace:packages/rainbowkit":
-  version: 0.0.0-use.local
-  resolution: "@rainbow-me/rainbowkit@workspace:packages/rainbowkit"
-  dependencies:
-    "@testing-library/jest-dom": ^5.16.5
-    "@testing-library/react": ^14.0.0
-    "@testing-library/user-event": ^14.4.3
-    "@types/qrcode": ^1.4.2
-    "@vanilla-extract/css": 1.9.1
-    "@vanilla-extract/css-utils": 0.1.2
-    "@vanilla-extract/dynamic": 2.0.2
-    "@vanilla-extract/private": ^1.0.3
-    "@vanilla-extract/sprinkles": 1.5.0
-    "@wagmi/core": ~1.3.9
-    autoprefixer: ^10.4.0
-    clsx: 1.1.1
-    jsdom: ^22.1.0
-    nock: ^13.2.4
-    postcss: ^8.4.4
-    prettier: ^2.5.0
-    qrcode: 1.5.0
-    react: ^18.2.0
-    react-remove-scroll: 2.5.4
-    typescript: ^5.0.4
-    viem: ~1.6.7
-    vitest: ^0.32.4
-    wagmi: ~1.3.10
-  peerDependencies:
-    react: ">=17"
-    react-dom: ">=17"
-    viem: ~0.3.19 || ^1.0.0
-    wagmi: ~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0
-  languageName: unknown
-  linkType: soft
-
 "@rushstack/eslint-patch@npm:^1.1.0":
   version: 1.3.3
   resolution: "@rushstack/eslint-patch@npm:1.3.3"
@@ -3467,6 +3432,41 @@ __metadata:
   checksum: f8537066b542b6770c1b5b2ae5ad0688d1b986e4bf818067c152c123a5471531987bbf024224f75f387f481ccc5b628e391e49e92102b8b1a3e2d449d6105402
   languageName: node
   linkType: hard
+
+"@stakekit/rainbowkit@workspace:packages/rainbowkit":
+  version: 0.0.0-use.local
+  resolution: "@stakekit/rainbowkit@workspace:packages/rainbowkit"
+  dependencies:
+    "@testing-library/jest-dom": ^5.16.5
+    "@testing-library/react": ^14.0.0
+    "@testing-library/user-event": ^14.4.3
+    "@types/qrcode": ^1.4.2
+    "@vanilla-extract/css": 1.9.1
+    "@vanilla-extract/css-utils": 0.1.2
+    "@vanilla-extract/dynamic": 2.0.2
+    "@vanilla-extract/private": ^1.0.3
+    "@vanilla-extract/sprinkles": 1.5.0
+    "@wagmi/core": ~1.3.9
+    autoprefixer: ^10.4.0
+    clsx: 1.1.1
+    jsdom: ^22.1.0
+    nock: ^13.2.4
+    postcss: ^8.4.4
+    prettier: ^2.5.0
+    qrcode: 1.5.0
+    react: ^18.2.0
+    react-remove-scroll: 2.5.4
+    typescript: ^5.0.4
+    viem: ~1.6.7
+    vitest: ^0.32.4
+    wagmi: ~1.3.10
+  peerDependencies:
+    react: ">=17"
+    react-dom: ">=17"
+    viem: ~0.3.19 || ^1.0.0
+    wagmi: ~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0
+  languageName: unknown
+  linkType: soft
 
 "@swc/helpers@npm:0.5.1":
   version: 0.5.1

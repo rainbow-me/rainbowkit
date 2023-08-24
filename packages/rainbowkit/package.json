@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-me/rainbowkit",
+  "name": "@stakekit/rainbowkit",
   "version": "1.0.9",
   "description": "The best way to connect a wallet",
   "files": [
@@ -20,6 +20,10 @@
   ],
   "engines": {
     "node": ">=12.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "node build.js",
@@ -72,10 +76,5 @@
     "clsx": "1.1.1",
     "qrcode": "1.5.0",
     "react-remove-scroll": "2.5.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
-    "directory": "packages/rainbowkit"
   }
 }
