@@ -50,6 +50,7 @@ export const walletConnectWallet = ({
             version: '2',
             chains,
             projectId,
+            // @ts-ignore
             options: {
               showQrModal: ios,
               ...options,

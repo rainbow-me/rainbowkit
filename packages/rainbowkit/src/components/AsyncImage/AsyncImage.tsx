@@ -63,6 +63,7 @@ export function AsyncImage({
         height="full"
         position="absolute"
         style={{
+          // @ts-ignore
           touchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',

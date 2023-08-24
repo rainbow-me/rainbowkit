@@ -45,6 +45,7 @@ export const argentWallet = ({
       projectId,
       chains,
       version: walletConnectVersion,
+      // @ts-ignore
       options: walletConnectOptions,
     });
 

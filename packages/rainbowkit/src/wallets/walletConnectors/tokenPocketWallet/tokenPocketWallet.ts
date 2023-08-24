@@ -58,7 +58,9 @@ export const tokenPocketWallet = ({
         ? getWalletConnectConnector({
             chains,
             projectId,
+            // @ts-ignore
             options: walletConnectOptions,
+            // @ts-ignore
             version: walletConnectVersion,
           })
         : new InjectedConnector({ chains });

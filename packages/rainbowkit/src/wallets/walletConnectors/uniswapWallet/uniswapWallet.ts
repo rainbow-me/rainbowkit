@@ -42,6 +42,7 @@ export const uniswapWallet = ({
       projectId,
       chains,
       version: walletConnectVersion,
+      // @ts-ignore
       options: walletConnectOptions,
     });
 

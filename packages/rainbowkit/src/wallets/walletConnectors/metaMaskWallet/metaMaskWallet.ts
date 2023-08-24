@@ -116,11 +116,13 @@ export const metaMaskWallet = ({
             projectId,
             chains,
             version: walletConnectVersion,
+            // @ts-ignore
             options: walletConnectOptions,
           })
         : new MetaMaskConnector({
             chains,
             options: {
+              // @ts-ignore
               getProvider: () =>
                 providers
                   ? providers.find(isMetaMask)

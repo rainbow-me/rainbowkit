@@ -5,6 +5,7 @@ export function useMainnetEnsName(address: string | undefined) {
   const { chainId, enabled } = useMainnet();
 
   const { data: ensName } = useEnsName({
+    // @ts-ignore
     address,
     chainId,
     enabled,

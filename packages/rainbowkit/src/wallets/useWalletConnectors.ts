@@ -68,6 +68,7 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const walletInstances = flatten(
     defaultConnectors.map(connector => {
+      // @ts-ignore
       return (connector._wallets as WalletInstance[]) ?? [];
     })
   ).sort((a, b) => a.index - b.index);
@@ -103,6 +104,7 @@ export function useWalletConnectors(): WalletConnector[] {
       ...wallet,
       // @ts-ignore - ignoring potential undefined return type
       connect: () =>
+        // @ts-ignore
         wallet.connector.showQrModal
           ? connectToWalletConnectModal(wallet.id, wallet.connector)
           : connectWallet(wallet.id, wallet.connector),
@@ -119,6 +121,7 @@ export function useWalletConnectors(): WalletConnector[] {
         ? () =>
             connectToWalletConnectModal(
               wallet.id,
+              // @ts-ignore
               wallet.walletConnectModalConnector
             )
         : undefined,

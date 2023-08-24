@@ -105,6 +105,7 @@ export const coin98Wallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
+            // @ts-ignore
             options: walletConnectOptions,
             version: walletConnectVersion,
           })

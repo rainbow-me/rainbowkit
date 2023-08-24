@@ -13,7 +13,8 @@ function getExplicitInjectedProvider(
     return;
   const providers = window.ethereum.providers;
   return providers
-    ? providers.find(provider => provider[flag])
+    ? // @ts-ignore
+      providers.find(provider => provider[flag])
     : window.ethereum[flag]
     ? window.ethereum
     : undefined;

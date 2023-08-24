@@ -119,6 +119,7 @@ export const trustWallet = ({
             projectId,
             chains,
             version: walletConnectVersion,
+            // @ts-ignore
             options: walletConnectOptions,
           })
         : new InjectedConnector({

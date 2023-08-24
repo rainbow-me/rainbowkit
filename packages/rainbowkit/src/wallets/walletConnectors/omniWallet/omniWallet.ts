@@ -44,6 +44,7 @@ export const omniWallet = ({
       projectId,
       chains,
       version: walletConnectVersion,
+      // @ts-ignore
       options: walletConnectOptions,
     });
 

@@ -37,6 +37,7 @@ export const coinbaseWallet = ({
         'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
       browserExtension: 'https://coinbase.com/wallet',
     },
+    // @ts-ignore
     createConnector: () => {
       const ios = isIOS();
 

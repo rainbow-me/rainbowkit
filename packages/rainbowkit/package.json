@@ -24,10 +24,9 @@
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
-    "dev": "pnpm build:watch & pnpm typegen:watch",
-    "prepare": "MINIFY_CSS=true pnpm build",
-    "prebuild": "pnpm typegen",
-    "typecheck": "pnpm tsc --noEmit",
+    "dev": "yarn build:watch & yarn typegen:watch",
+    "prepack": "MINIFY_CSS=true yarn typegen && yarn build",
+    "typecheck": "yarn tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
@@ -54,15 +53,17 @@
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/css-utils": "0.1.2",
     "@vanilla-extract/private": "^1.0.3",
+    "@wagmi/core": "~1.3.9",
     "autoprefixer": "^10.4.0",
     "jsdom": "^22.1.0",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
+    "prettier": "^2.5.0",
     "react": "^18.2.0",
+    "typescript": "^5.0.4",
     "viem": "~1.6.7",
     "vitest": "^0.32.4",
-    "wagmi": "~1.3.10",
-    "@wagmi/core": "~1.3.9"
+    "wagmi": "~1.3.10"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.9.1",

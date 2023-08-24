@@ -32,8 +32,10 @@ function createConnector(
 ): WalletConnectLegacyConnector | WalletConnectConnector {
   const connector =
     version === '1'
-      ? new WalletConnectLegacyConnector(config)
-      : new WalletConnectConnector(config);
+      ? // @ts-ignore
+        new WalletConnectLegacyConnector(config)
+      : // @ts-ignore
+        new WalletConnectConnector(config);
   sharedConnectors.set(JSON.stringify(config), connector);
   return connector;
 }
@@ -104,5 +106,6 @@ export function getWalletConnectConnector({
   const serializedConfig = JSON.stringify(config);
   const sharedConnector = sharedConnectors.get(serializedConfig);
 
+  // @ts-ignore
   return sharedConnector ?? createConnector(version, config);
 }

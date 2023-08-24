@@ -65,6 +65,7 @@ export const bitKeepWallet = ({
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({
             chains,
+            // @ts-ignore
             options: walletConnectOptions,
             projectId,
             version: walletConnectVersion,
