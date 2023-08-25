@@ -1,5 +1,299 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.9
+
+### Patch Changes
+
+- 42a0c3e5: Bifrost Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [bifrostWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 67933ed5: Uniswap Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [uniswapWallet({ chains })],
+    },
+  ]);
+  ```
+
+- e7ae2571: Coin98 Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [coin98Wallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- c434ca7a: Enkrypt Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [enkryptWallet({ chains })],
+    },
+  ]);
+  ```
+
+- ad1f860e: Frame Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [frameWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 60968a5f: OneKey Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [oneKeyWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7b31af24: FoxWallet Support
+
+  **Example Usage**
+
+  ```tsx
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [foxWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+## 1.0.8
+
+### Patch Changes
+
+- eb319f3: Improved warnings and error handling for dApps with an invalid or missing `projectId`.
+
+  Improved the developer experience for RainbowKit examples and templates with a bundled development `projectId`. It is required that every dApp obtains a unique `projectId` before entering production to avoid throttling and issues for end users.
+
+  Read our WalletConnect v2 [Migration Guide](https://www.rainbowkit.com/guides/walletconnect-v2#:~:text=2.%20Supplying%20a%20projectId) for more information.
+
+## 1.0.7
+
+### Patch Changes
+
+- d303a3b9: Added `base` chain support
+- f1e98e84: RainbowKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
+
+## 1.0.6
+
+### Patch Changes
+
+- dc3cd10b: Core Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [coreWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- c251d55d: Talisman Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [talismanWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- d5b3bd19: Safeheron Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [safeheronWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 66e84239: Frontier Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [frontierWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 1b4f142e: BitKeep Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [bitKeepWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- e089ab98: TokenPocket Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [tokenPocketWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+## 1.0.5
+
+### Patch Changes
+
+- 08e3f4c: Decoupled `chains` between `WagmiConfig` and `RainbowKitProvider` so that dApps can now supply a subset of supported chains to `RainbowKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
+- cb3614e: Added `cronos` and `cronosTestnet` chain support
+- 53d96bc: Fixed an issue with MetaMask Mobile's connector that blocked WalletConnect pairings
+- bfab830: Updated BNB Smart Chain icon.
+
 ## 1.0.4
 
 ### Patch Changes

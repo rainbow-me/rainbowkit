@@ -12,17 +12,30 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bifrostWallet,
+  bitKeepWallet,
   bitskiWallet,
+  coin98Wallet,
+  coreWallet,
   dawnWallet,
+  enkryptWallet,
+  foxWallet,
+  frameWallet,
+  frontierWallet,
   imTokenWallet,
   ledgerWallet,
   mewWallet,
   okxWallet,
   omniWallet,
+  oneKeyWallet,
   phantomWallet,
   rabbyWallet,
+  safeheronWallet,
   tahoWallet,
+  talismanWallet,
+  tokenPocketWallet,
   trustWallet,
+  uniswapWallet,
   xdefiWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -44,7 +57,7 @@ import {
 } from 'wagmi';
 import {
   arbitrum,
-  baseGoerli,
+  base,
   bsc,
   goerli,
   mainnet,
@@ -64,19 +77,19 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
-    bsc,
+    base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [goerli, baseGoerli]
-      : []),
+    bsc,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || '' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
   ]
 );
 
-const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
+const projectId =
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
@@ -90,17 +103,30 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains, projectId }),
+      bifrostWallet({ chains, projectId }),
+      bitKeepWallet({ chains, projectId }),
       bitskiWallet({ chains }),
+      coin98Wallet({ chains, projectId }),
+      coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      enkryptWallet({ chains }),
+      foxWallet({ chains, projectId }),
+      frameWallet({ chains }),
+      frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
       mewWallet({ chains }),
       okxWallet({ chains, projectId }),
       omniWallet({ chains, projectId }),
+      oneKeyWallet({ chains }),
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
+      safeheronWallet({ chains }),
       tahoWallet({ chains }),
+      talismanWallet({ chains }),
+      tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
+      uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],

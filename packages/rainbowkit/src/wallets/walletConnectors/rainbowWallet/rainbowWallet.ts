@@ -1,10 +1,13 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
   WalletConnectConnectorOptions,
@@ -25,29 +28,15 @@ export interface RainbowWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function isRainbow(ethereum: NonNullable<(typeof window)['ethereum']>) {
-  // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  const isRainbow = Boolean(ethereum.isRainbow);
-
-  if (!isRainbow) {
-    return false;
-  }
-
-  return true;
-}
-
 export const rainbowWallet = ({
   chains,
   projectId,
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isRainbowInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    isRainbow(window.ethereum);
-
+}: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
+  const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
     id: 'rainbow',
@@ -72,18 +61,17 @@ export const rainbowWallet = ({
             version: walletConnectVersion,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options,
-          });
+        : getInjectedConnector({ flag: 'isRainbow', chains, options });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
           : isIOS()
-          ? `rainbow://wc?uri=${encodeURIComponent(uri)}`
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
+              uri
+            )}&connector=rainbowkit`;
       };
 
       return {

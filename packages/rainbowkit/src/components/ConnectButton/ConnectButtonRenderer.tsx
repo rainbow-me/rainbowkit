@@ -70,6 +70,7 @@ export function ConnectButtonRenderer({
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
     : undefined;
+  const chainName = rainbowKitChain?.name ?? undefined;
   const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
   const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
 
@@ -118,7 +119,7 @@ export function ConnectButtonRenderer({
               iconBackground: chainIconBackground,
               iconUrl: resolvedChainIconUrl,
               id: activeChain.id,
-              name: activeChain.name,
+              name: chainName ?? activeChain.name,
               unsupported: activeChain.unsupported,
             }
           : undefined,
