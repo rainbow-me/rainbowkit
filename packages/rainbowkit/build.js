@@ -32,6 +32,12 @@ const baseBuildConfig = {
   },
   platform: 'browser',
   plugins: [
+    replace({
+      include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
+      values: {
+        __buildVersion: process.env.npm_package_version,
+      },
+    }),
     vanillaExtractPlugin({
       identifiers: isCssMinified ? 'short' : 'debug',
       processCss: async css => {
@@ -55,9 +61,6 @@ const baseBuildConfig = {
         }));
       },
     },
-    replace({
-      __buildVersion: process.env.npm_package_version,
-    }),
   ],
   splitting: true, // Required for tree shaking
 };
