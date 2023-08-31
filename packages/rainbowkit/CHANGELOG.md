@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.10
+
+### Patch Changes
+
+- a129cb04: Resolved an issue that prevented some PNG icons within RainbowKit from rendering.
+
 ## 1.0.9
 
 ### Patch Changes
