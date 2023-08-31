@@ -21,6 +21,7 @@ export type {
 } from './components/RainbowKitProvider/AuthenticationContext';
 export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
 export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
+export { AvatarContext } from './components/RainbowKitProvider/AvatarContext';
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
 export { midnightTheme } from './themes/midnightTheme';

@@ -8,11 +8,11 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "dev": "yarn --recursive --parallel --filter @rainbow-me/rainbowkit* --filter example dev",
-    "dev:lib": "yarn --filter @rainbow-me/rainbowkit* dev",
+    "dev": "yarn --recursive --parallel --filter @stakekit/rainbowkit* --filter example dev",
+    "dev:lib": "yarn --filter @stakekit/rainbowkit* dev",
     "dev:example": "yarn dev:lib & yarn --filter example dev",
     "dev:site": "yarn dev:lib & yarn --filter site dev",
-    "dev:cli": "yarn --filter @rainbow-me/create-rainbowkit dev",
+    "dev:cli": "yarn --filter @stakekit/create-rainbowkit dev",
     "dev:template:next-app": "yarn --filter rainbowkit-next-app dev",
     "build": "yarn --recursive --parallel --filter=!rainbowkit-next-app --filter=!generated-test-app build",
     "start": "yarn dev",
@@ -25,8 +25,8 @@
     "test:unit": "vitest",
     "test:update": "vitest --update",
     "test:watch": "vitest --watch",
-    "test:cli": "yarn --filter @rainbow-me/create-rainbowkit test:build",
-    "test:cli:dev": "yarn --filter @rainbow-me/create-rainbowkit test:dev",
+    "test:cli": "yarn --filter @stakekit/create-rainbowkit test:build",
+    "test:cli:dev": "yarn --filter @stakekit/create-rainbowkit test:dev",
     "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
     "changeset": "changeset",
     "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbowkit/node_modules && rm -rf ./packages/create-rainbowkit/dist && yarn install",
@@ -35,8 +35,8 @@
     "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
     "release:build": "yarn clean && yarn lint && yarn test && MINIFY_CSS=true yarn --recursive --parallel --filter \"!*-app\" build && cp README.md packages/rainbowkit/README.md",
     "release:test": "yarn release:build && yarn --filter example dev",
-    "ci:example": "yarn --filter @rainbow-me/rainbowkit* prepare && yarn --filter example build",
-    "ci:site": "yarn --filter @rainbow-me/rainbowkit* prepare && yarn --filter site build"
+    "ci:example": "yarn --filter @stakekit/rainbowkit* prepare && yarn --filter example build",
+    "ci:site": "yarn --filter @stakekit/rainbowkit* prepare && yarn --filter site build"
   },
   "repository": {
     "type": "git",

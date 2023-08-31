@@ -19,12 +19,8 @@ export interface ChainModalProps {
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
   const { chain: activeChain } = useNetwork();
-  const { chains, pendingChainId, reset, switchNetwork } = useSwitchNetwork({
-    onSettled: () => {
-      reset(); // reset mutation variables (eg. pendingChainId, error)
-      onClose();
-    },
-  });
+  const { chains, error, pendingChainId, reset, switchNetwork } =
+    useSwitchNetwork();
 
   const chainsMap = useMemo(() => {
     return new Map(chains.map(c => [c.id, c]));
@@ -44,8 +40,13 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
     return null;
   }
 
+  const _onClose = () => {
+    reset();
+    onClose();
+  };
+
   return (
-    <Dialog onClose={onClose} open={open} titleId={titleId}>
+    <Dialog onClose={_onClose} open={open} titleId={titleId}>
       <DialogContent bottomSheetOnMobile>
         <Box display="flex" flexDirection="column" gap="14">
           <Box
@@ -65,7 +66,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 Switch Networks
               </Text>
             </Box>
-            <CloseButton onClose={onClose} />
+            <CloseButton onClose={_onClose} />
           </Box>
           {unsupportedChain && (
             <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
@@ -150,7 +151,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                 />
                               </Box>
                             )}
-                            {switching && (
+                            {!!switching && (
                               <Box
                                 alignItems="center"
                                 display="flex"
@@ -162,10 +163,12 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  Confirm in Wallet
+                                  {error
+                                    ? 'Error switching chain'
+                                    : 'Confirm in Wallet'}
                                 </Text>
                                 <Box
-                                  background="standby"
+                                  background={error ? 'error' : 'standby'}
                                   borderRadius="full"
                                   height="8"
                                   marginLeft="8"
