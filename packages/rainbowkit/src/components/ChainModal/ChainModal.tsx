@@ -20,7 +20,11 @@ export interface ChainModalProps {
 export function ChainModal({ onClose, open }: ChainModalProps) {
   const { chain: activeChain } = useNetwork();
   const { chains, error, pendingChainId, reset, switchNetwork } =
-    useSwitchNetwork();
+    useSwitchNetwork({
+      onSuccess: () => {
+        _onClose();
+      },
+    });
 
   const chainsMap = useMemo(() => {
     return new Map(chains.map(c => [c.id, c]));
