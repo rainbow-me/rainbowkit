@@ -78,7 +78,7 @@
     "next": "^13.4.19",
     "next-auth": "4.22.3",
     "postcss": "^8.4.29",
-    "postcss-prefix-selector": "^1.15.0",
+    "postcss-prefix-selector": "^1.16.0",
     "prettier": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
