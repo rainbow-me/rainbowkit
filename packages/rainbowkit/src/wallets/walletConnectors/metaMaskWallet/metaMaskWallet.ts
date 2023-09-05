@@ -65,6 +65,8 @@ function isMetaMask(ethereum?: typeof window['ethereum']): boolean {
   if (ethereum.isTokenary) return false;
   if (ethereum.isTrust || ethereum.isTrustWallet) return false;
   if (ethereum.isXDEFI) return false;
+  // @ts-expect-error
+  if (ethereum.isZeal) return false;
   if (ethereum.isZerion) return false;
   return true;
 }
