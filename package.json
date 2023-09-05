@@ -64,7 +64,7 @@
     "@vanilla-extract/esbuild-plugin": "^2.2.0",
     "@vanilla-extract/vite-plugin": "^3.8.2",
     "@wagmi/core": "~1.4.1",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.15",
     "esbuild": "^0.14.39",
     "esbuild-plugin-replace": "^1.4.0",
     "eslint": "7.32.0",
