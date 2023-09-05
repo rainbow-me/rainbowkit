@@ -71,7 +71,7 @@
     "eslint-config-rainbow": "^3.0.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "ethers": "^5.6.8",
-    "eventemitter3": "^4.0.7",
+    "eventemitter3": "^5.0.1",
     "husky": "^8.0.3",
     "jsdom": "^22.1.0",
     "lokijs": "^1.5.12",
