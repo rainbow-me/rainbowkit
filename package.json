@@ -61,7 +61,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
-    "@vanilla-extract/esbuild-plugin": "^2.2.0",
+    "@vanilla-extract/esbuild-plugin": "^2.3.0",
     "@vanilla-extract/vite-plugin": "^3.9.0",
     "@wagmi/core": "~1.4.1",
     "autoprefixer": "^10.4.15",
