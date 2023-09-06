@@ -44,6 +44,7 @@ import {
   uniswapWallet,
   xdefiWallet,
   zerionWallet,
+  safepalWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import type { Session } from 'next-auth';
@@ -137,6 +138,7 @@ const connectors = connectorsForWallets([
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
+      safepalWallet({ chains, projectId }),
     ],
   },
 ]);

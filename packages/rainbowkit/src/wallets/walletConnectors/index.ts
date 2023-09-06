@@ -32,6 +32,7 @@ import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
+import { safepalWallet } from './safepalWallet/safepalWallet';
 
 export {
   argentWallet,
@@ -69,4 +70,5 @@ export {
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,
+  safepalWallet,
 };
