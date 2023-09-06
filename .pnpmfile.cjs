@@ -27,9 +27,7 @@ function omitRootDependencies(packageName, dependencies) {
 
   const filteredDependencies = {};
   const allowedDuplicatePackages = [
-    // We're on an older version of eslint due to eslint-config-rainbow
-    // so we need to allow multiple versions for now.
-    'eslint',
+    // None for now
   ];
 
   Object.keys(dependencies).forEach((dep) => {
