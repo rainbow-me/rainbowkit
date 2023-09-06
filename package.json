@@ -85,7 +85,7 @@
     "recursive-readdir-files": "^2.3.0",
     "typescript": "^5.0.4",
     "viem": "~1.10.3",
-    "vitest": "^0.32.4",
+    "vitest": "^0.33.0",
     "wagmi": "~1.4.1"
   },
   "packageManager": "pnpm@8.7.1",
