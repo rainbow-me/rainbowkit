@@ -14,7 +14,7 @@
     "build": "pnpm --recursive --parallel --filter=!rainbowkit-next-app --filter=!generated-test-app build",
     "start": "pnpm dev",
     "lint": "biome lint . && pnpm format:check && pnpm --recursive typecheck",
-    "lint:fix": "biome lint . --fix && pnpm format:fix",
+    "lint:fix": "biome lint . --apply && pnpm format:fix",
     "format:check": "biome check .",
     "format:fix": "biome format \"./**/*.{ts,js,jsx,mjs,cjs,md,mdx,tsx}\" --write",
     "link:cli": "cd packages/create-rainbowkit && pnpm link --global",
