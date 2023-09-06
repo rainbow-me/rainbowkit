@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';

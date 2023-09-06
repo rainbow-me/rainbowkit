@@ -22,12 +22,10 @@ export const row = style([
     marginX: 'auto',
     paddingX: {
       xs: '6',
-      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
       md: '10',
     },
     paddingY: {
       xs: '4',
-      // eslint-disable-next-line sort-keys-fix/sort-keys-fix
       lg: '7',
     },
   }),

@@ -11,7 +11,6 @@ import prompts from 'prompts';
 import validateNpmPackageName from 'validate-npm-package-name';
 import { detectPackageManager } from './detectPackageManager';
 
-// eslint-disable-next-line no-console
 const log = console.log;
 
 class FriendlyError extends Error {}

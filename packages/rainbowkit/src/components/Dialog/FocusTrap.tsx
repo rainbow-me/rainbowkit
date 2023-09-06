@@ -44,7 +44,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
             contentRef.current && moveFocusWithin(contentRef.current, 'end'),
           [],
         )}
-        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
       />
       <div
         ref={contentRef}
@@ -58,7 +58,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
             contentRef.current && moveFocusWithin(contentRef.current, 'start'),
           [],
         )}
-        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
       />
     </>
   );

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { animated } from '@react-spring/three';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import React, { useEffect, useRef, useState } from 'react';
@@ -225,7 +224,6 @@ export function MeshGradient({ backgroundColor, u_c1, u_c2, u_c3 }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // eslint-disable-next-line no-undef
       setDevicePixelRatio(window.devicePixelRatio);
     }
   }, []);

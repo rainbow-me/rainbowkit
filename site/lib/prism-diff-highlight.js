@@ -1,6 +1,4 @@
 // https://github.com/PrismJS/prism/blob/master/plugins/diff-highlight/prism-diff-highlight.js
-/* eslint-disable no-useless-escape */
-// eslint-disable-next-line import/no-commonjs
 
 module.exports = (Prism) => {
   const LANGUAGE_REGEX = /diff-([\w-]+)/i;

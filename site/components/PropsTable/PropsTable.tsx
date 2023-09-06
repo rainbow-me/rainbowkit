@@ -1,5 +1,3 @@
-/* eslint-disable no-extra-boolean-cast */
-
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';

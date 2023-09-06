@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import { toHtml as hastToHtml } from 'hast-util-to-html';
 import parse from 'rehype-parse';
 import { unified } from 'unified';

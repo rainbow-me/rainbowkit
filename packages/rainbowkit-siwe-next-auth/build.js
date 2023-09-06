@@ -1,4 +1,3 @@
-/* eslint-disable no-console, import/no-extraneous-dependencies */
 import * as esbuild from 'esbuild';
 
 const isWatching = process.argv.includes('--watch');

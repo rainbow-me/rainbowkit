@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
   RequiredConditionalValue,

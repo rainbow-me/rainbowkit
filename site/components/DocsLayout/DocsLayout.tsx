@@ -53,7 +53,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     const handleRouteChange = () => setIsOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
     return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SearchProvider>

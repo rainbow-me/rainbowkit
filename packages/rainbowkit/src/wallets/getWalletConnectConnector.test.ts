@@ -15,7 +15,6 @@ describe('getWalletConnectConnector', () => {
 
   describe('generic', () => {
     it('without projectId', () => {
-      // eslint-disable-next-line jest/require-to-throw-message
       expect(() => getWalletConnectConnector({ chains })).toThrowError();
     });
     it('with projectId', () => {

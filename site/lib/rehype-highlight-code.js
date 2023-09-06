@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 // Inspired by https://github.com/j0lv3r4/mdx-prism
 
 import { toString as nodeToString } from 'hast-util-to-string';

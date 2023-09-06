@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { calc } from '@vanilla-extract/css-utils';
 import {
   ConditionalValue,

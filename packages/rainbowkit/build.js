@@ -1,4 +1,3 @@
-/* eslint-disable no-console, import/no-unresolved, import/no-extraneous-dependencies */
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';

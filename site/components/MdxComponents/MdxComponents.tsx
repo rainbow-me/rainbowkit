@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';

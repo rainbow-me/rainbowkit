@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-sort-props */
 import { Box } from 'components/Box/Box';
 import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';

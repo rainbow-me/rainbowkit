@@ -4,7 +4,6 @@ import { atoms } from 'css/atoms';
 export const regionWrapper = style({
   overflow: 'auto',
   position: 'relative',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   ':focus': { outline: 0 },
 });
 

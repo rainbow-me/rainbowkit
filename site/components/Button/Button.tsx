@@ -41,11 +41,8 @@ type WithoutAnchor = {
 
 export const iconSizeMapping: Record<styles.Size, keyof Theme['space']> = {
   xs: '5',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   s: '1',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   m: '1',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   l: '1',
   xl: '1',
 };

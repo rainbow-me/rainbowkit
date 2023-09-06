@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
   RainbowKitProvider,

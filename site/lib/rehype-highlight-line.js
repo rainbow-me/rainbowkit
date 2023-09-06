@@ -1,5 +1,4 @@
 // Inspired by https://github.com/j0lv3r4/mdx-prism
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 
 import { toHtml as hastToHtml } from 'hast-util-to-html';
 import parse from 'rehype-parse';

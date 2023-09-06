@@ -26,7 +26,6 @@ export const pre = style({
     '--syntax4': vars.colors.labelSecondary,
     '--text': vars.colors.blue,
   },
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   backgroundColor: 'var(--background)',
   borderRadius: vars.radii[5],
   boxShadow: 'var(--outline)',

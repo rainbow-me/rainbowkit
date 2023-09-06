@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Doc } from '.contentlayer/generated';
 
 type PartialDoc = Pick<Doc, 'title'> & Pick<Doc, 'slug'>;
