@@ -27,5 +27,5 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [withVanillaExtract, withContentlayer],
-  nextConfig
+  nextConfig,
 );

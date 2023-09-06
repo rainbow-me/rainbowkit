@@ -43,14 +43,14 @@ const lineNumberify = (ast, lineNum = 1) => {
       result.nodes.push(node);
       return result;
     },
-    { nodes: [], lineNumber: lineNumber }
+    { nodes: [], lineNumber: lineNumber },
   );
 };
 
 const wrapLines = (ast, linesToHighlight) => {
   const highlightAll =
     linesToHighlight.length === 1 && linesToHighlight[0] === 0;
-  const allLines = Array.from(new Set(ast.map(x => x.lineNumber)));
+  const allLines = Array.from(new Set(ast.map((x) => x.lineNumber)));
   let i = 0;
   const wrapped = allLines.reduce((nodes, marker) => {
     const line = marker;
@@ -94,13 +94,13 @@ const wrapLines = (ast, linesToHighlight) => {
 const MULTILINE_TOKEN_SPAN =
   /<span class="token ([^"]+)">[^<]*\n[^<]*<\/span>/g;
 
-const applyMultilineFix = ast => {
+const applyMultilineFix = (ast) => {
   // AST to HTML
   let html = hastToHtml(ast);
 
   // Fix JSX issue
   html = html.replace(MULTILINE_TOKEN_SPAN, (match, token) =>
-    match.replace(/\n/g, `</span>\n<span class="token ${token}">`)
+    match.replace(/\n/g, `</span>\n<span class="token ${token}">`),
   );
 
   // HTML to AST

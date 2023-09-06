@@ -36,7 +36,7 @@ export const link = recipe({
       true: style([
         atoms({ backgroundColor: { base: 'blue' } }),
         style({
-          boxShadow: `0px 2px 8px rgba(0, 0, 0, 0.2)`,
+          boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.2)',
           color: vars.colors.labelWhite,
         }),
       ]),

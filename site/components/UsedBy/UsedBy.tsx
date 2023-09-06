@@ -146,7 +146,7 @@ export function UsedBy() {
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">
         <Box className={grid}>
-          {frens.map(fren => (
+          {frens.map((fren) => (
             <Link
               href={fren.url}
               key={fren.name}

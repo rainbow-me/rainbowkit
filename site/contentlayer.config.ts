@@ -6,7 +6,7 @@ import { rehypeMetaAttribute } from './lib/rehype-meta-attribute';
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
-  filePathPattern: `docs/**/*.mdx`,
+  filePathPattern: 'docs/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: {
@@ -21,14 +21,14 @@ export const Doc = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: doc => doc._raw.flattenedPath.replace('docs/', ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace('docs/', ''),
     },
   },
 }));
 
 export const Guide = defineDocumentType(() => ({
   name: 'Guide',
-  filePathPattern: `guides/**/*.mdx`,
+  filePathPattern: 'guides/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: {
@@ -47,7 +47,7 @@ export const Guide = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: 'string',
-      resolve: doc => doc._raw.flattenedPath.replace('guides/', ''),
+      resolve: (doc) => doc._raw.flattenedPath.replace('guides/', ''),
     },
   },
 }));

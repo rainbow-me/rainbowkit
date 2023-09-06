@@ -57,7 +57,7 @@ const syntax1 = [
   '.token.selector .class',
   '.token.function',
 ];
-globalStyle(syntax1.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(syntax1.map((s) => `${pre} ${s}`).join(', '), {
   color: 'var(--syntax1)',
 });
 
@@ -69,7 +69,7 @@ const syntax2 = [
   '.token.unit',
   '.token.color',
 ];
-globalStyle(syntax2.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(syntax2.map((s) => `${pre} ${s}`).join(', '), {
   color: 'var(--syntax2)',
 });
 
@@ -81,12 +81,12 @@ const syntax3 = [
   '.token.pseudo-class',
   '.token.important',
 ];
-globalStyle(syntax3.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(syntax3.map((s) => `${pre} ${s}`).join(', '), {
   color: 'var(--syntax3)',
 });
 
 const syntax4 = ['.token.punctuation', '.token.module', '.token.property'];
-globalStyle(syntax4.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(syntax4.map((s) => `${pre} ${s}`).join(', '), {
   color: 'var(--syntax4)',
 });
 
@@ -103,7 +103,7 @@ const inherit = [
   ' .language-shell .token:not(.comment)',
   ' .language-css .token.function',
 ];
-globalStyle(inherit.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(inherit.map((s) => `${pre} ${s}`).join(', '), {
   color: 'var(--inherit)',
 });
 
@@ -111,7 +111,7 @@ const tokensModifiers = [
   '.token.deleted:not(.prefix)',
   '.token.inserted:not(.prefix)',
 ];
-globalStyle(tokensModifiers.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(tokensModifiers.map((s) => `${pre} ${s}`).join(', '), {
   display: 'block',
   margin: '0 -20px',
   padding: '0 20px',
@@ -129,7 +129,7 @@ const tokensModifiersPrefixed = [
   '.token.deleted.prefix',
   '.token.inserted.prefix',
 ];
-globalStyle(tokensModifiersPrefixed.map(s => `${pre} ${s}`).join(`, `), {
+globalStyle(tokensModifiersPrefixed.map((s) => `${pre} ${s}`).join(', '), {
   userSelect: 'none',
 });
 
@@ -137,7 +137,7 @@ globalStyle(
   `${pre} [data-highlighted=false], ${pre} [data-highlighted=false] .token`,
   {
     color: vars.colors.labelQuaternary,
-  }
+  },
 );
 
 globalStyle(`${pre} .highlight-word`, {

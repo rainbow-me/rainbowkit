@@ -51,7 +51,7 @@ export const base = style([
   },
 ]);
 
-export const hover = styleVariants(hoverScaleValues, scale => ({
+export const hover = styleVariants(hoverScaleValues, (scale) => ({
   selectors: {
     '&,&::after': {
       vars: { [hoverScaleVar]: String(scale) },
@@ -59,7 +59,7 @@ export const hover = styleVariants(hoverScaleValues, scale => ({
   },
 }));
 
-export const active = styleVariants(activeScaleValues, scale => ({
+export const active = styleVariants(activeScaleValues, (scale) => ({
   selectors: {
     '&,&::after': {
       vars: { [activeScaleVar]: String(scale) },

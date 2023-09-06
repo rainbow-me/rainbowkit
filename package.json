@@ -16,7 +16,7 @@
     "lint": "biome lint . && pnpm format:check && pnpm --recursive typecheck",
     "lint:fix": "biome lint . --apply && pnpm format:fix",
     "format:check": "biome check .",
-    "format:fix": "biome format \"./**/*.{ts,js,jsx,mjs,cjs,md,mdx,tsx}\" --write",
+    "format:fix": "biome format . --write",
     "link:cli": "cd packages/create-rainbowkit && pnpm link --global",
     "test": "pnpm test:unit",
     "test:unit": "vitest",

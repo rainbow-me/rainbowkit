@@ -2,11 +2,11 @@
 import { calc } from '@vanilla-extract/css-utils';
 import {
   ConditionalValue,
+  RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,
   defineProperties,
-  RequiredConditionalValue,
 } from '@vanilla-extract/sprinkles';
 
 import { Breakpoint, breakpointNames, breakpoints } from './breakpoints';
@@ -43,12 +43,12 @@ const extendedSpace = {
   '1/2': '50%',
   '2/3': '66.666667%',
   '3/4': '75%',
-  'full': '100%',
-  'auto': 'auto',
-  'screenSm': breakpoints.sm,
-  'screenMd': breakpoints.md,
-  'screenLg': breakpoints.lg,
-  'screenXl': breakpoints.xl,
+  full: '100%',
+  auto: 'auto',
+  screenSm: breakpoints.sm,
+  screenMd: breakpoints.md,
+  screenLg: breakpoints.lg,
+  screenXl: breakpoints.xl,
 };
 
 const margin = { ...vars.space, auto: 'auto' };
@@ -154,7 +154,7 @@ const responsiveProperties = defineProperties({
 const unresponsiveProperties = defineProperties({
   properties: {
     aspectRatio: {
-      'auto': 'auto',
+      auto: 'auto',
       '1/1': '1 / 1',
       '2/1': '2 / 1',
       '4/1': '4 / 1',
@@ -206,7 +206,7 @@ const unresponsiveProperties = defineProperties({
       '50': 50,
       '75': 75,
       '100': 100,
-      'auto': 'auto',
+      auto: 'auto',
     },
   },
 });
@@ -267,7 +267,7 @@ export const sprinkles = createSprinkles(
   unresponsiveProperties,
   colorProperties,
   motionSafeProperties,
-  interactionProperties
+  interactionProperties,
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];
 

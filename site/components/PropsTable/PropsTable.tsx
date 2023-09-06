@@ -25,7 +25,7 @@ export function PropsTable({
   'aria-label': ariaLabel,
   data,
 }: {
-  'data': PropDef[];
+  data: PropDef[];
   'aria-label'?: string;
 }) {
   return (
@@ -61,7 +61,7 @@ export function PropsTable({
                 type,
                 typeSimple,
               },
-              i
+              i,
             ) => (
               <Box as="tr" key={`${name}-${i}`}>
                 <Box as="td" className={td}>
@@ -87,8 +87,8 @@ export function PropsTable({
                   )}
                 </Box>
                 <Box as="td" className={td}>
-                  <Code>{Boolean(typeSimple) ? typeSimple : type} </Code>
-                  {Boolean(typeSimple) && (
+                  <Code>{typeSimple ? typeSimple : type} </Code>
+                  {typeSimple && (
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -108,10 +108,10 @@ export function PropsTable({
                   )}
                 </Box>
                 <Box as="td" className={td}>
-                  {Boolean(defaultValue) ? <Code>{defaultValue}</Code> : <>–</>}
+                  {defaultValue ? <Code>{defaultValue}</Code> : <>–</>}
                 </Box>
               </Box>
-            )
+            ),
           )}
         </Box>
       </Box>

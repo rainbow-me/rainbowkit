@@ -20,9 +20,9 @@ export const dialogContent = style([
         width: '360px',
       },
     },
-    'boxSizing': 'content-box',
-    'maxWidth': '100vw',
-    'width': '360px',
+    boxSizing: 'content-box',
+    maxWidth: '100vw',
+    width: '360px',
   },
 ]);
 

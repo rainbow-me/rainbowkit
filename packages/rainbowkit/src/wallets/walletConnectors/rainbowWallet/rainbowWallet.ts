@@ -70,7 +70,7 @@ export const rainbowWallet = ({
           : isIOS()
           ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
           : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
-              uri
+              uri,
             )}&connector=rainbowkit`;
       };
 

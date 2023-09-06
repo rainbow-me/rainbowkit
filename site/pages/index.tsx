@@ -146,7 +146,7 @@ export default function Home() {
                 'Custom Chains',
                 'App Store and Google Play Integration',
                 'Custom Connect Button',
-              ].map(value => (
+              ].map((value) => (
                 <Box
                   alignItems="center"
                   as="li"

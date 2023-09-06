@@ -3,7 +3,7 @@ import { components } from 'components/MdxComponents/MdxComponents';
 import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import React from 'react';
-import { allGuides, Guide } from '.contentlayer/generated';
+import { Guide, allGuides } from '.contentlayer/generated';
 
 type GuidePageProps = { guide: Guide };
 
@@ -26,7 +26,7 @@ export default function GuidePage({ guide }: GuidePageProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = allGuides.map(guide => `/${guide._raw.flattenedPath}`);
+  const paths = allGuides.map((guide) => `/${guide._raw.flattenedPath}`);
   return {
     fallback: false,
     paths,
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const guide = allGuides.find(guide => guide.slug === params.slug);
+  const guide = allGuides.find((guide) => guide.slug === params.slug);
   return {
     props: {
       guide,

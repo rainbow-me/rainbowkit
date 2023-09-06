@@ -51,7 +51,7 @@ export const uniswapWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `uniswap://wc?uri=${encodeURIComponent(uri)}`;
         },

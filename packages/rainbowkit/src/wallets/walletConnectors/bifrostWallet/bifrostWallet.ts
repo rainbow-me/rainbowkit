@@ -6,9 +6,9 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import {
-  getWalletConnectConnector,
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
+  getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 import { InjectedWalletOptions } from '../injectedWallet/injectedWallet';
 

@@ -14,8 +14,8 @@ esbuild
       {
         name: 'make-all-packages-external',
         setup(build) {
-          let filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
-          build.onResolve({ filter }, args => ({
+          const filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
+          build.onResolve({ filter }, (args) => ({
             external: true,
             path: args.path,
           }));

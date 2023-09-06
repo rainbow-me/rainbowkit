@@ -53,7 +53,7 @@ export const omniWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return isAndroid() ? uri : `omni://wc?uri=${encodeURIComponent(uri)}`;
         },

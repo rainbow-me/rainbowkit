@@ -18,11 +18,11 @@ export const injectedWallet = ({
   iconBackground: '#fff',
   hidden: ({ wallets }) =>
     wallets.some(
-      wallet =>
+      (wallet) =>
         wallet.installed &&
         wallet.name === wallet.connector.name &&
         (wallet.connector instanceof InjectedConnector ||
-          wallet.id === 'coinbase')
+          wallet.id === 'coinbase'),
     ),
   createConnector: () => ({
     connector: new InjectedConnector({

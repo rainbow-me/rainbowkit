@@ -1,8 +1,8 @@
 import React from 'react';
 import {
+  ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-  ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
@@ -59,7 +59,7 @@ export function ConnectButton({
             gap="12"
             {...(!ready && {
               'aria-hidden': true,
-              'style': {
+              style: {
                 opacity: 0,
                 pointerEvents: 'none',
                 userSelect: 'none',
@@ -89,8 +89,8 @@ export function ConnectButton({
                         ? 'connectButtonTextError'
                         : 'connectButtonText'
                     }
-                    display={mapResponsiveValue(chainStatus, value =>
-                      value === 'none' ? 'none' : 'flex'
+                    display={mapResponsiveValue(chainStatus, (value) =>
+                      value === 'none' ? 'none' : 'flex',
                     )}
                     fontFamily="body"
                     fontWeight="bold"
@@ -121,10 +121,10 @@ export function ConnectButton({
                       <Box alignItems="center" display="flex" gap="6">
                         {chain.hasIcon ? (
                           <Box
-                            display={mapResponsiveValue(chainStatus, value =>
+                            display={mapResponsiveValue(chainStatus, (value) =>
                               value === 'full' || value === 'icon'
                                 ? 'block'
-                                : 'none'
+                                : 'none',
                             )}
                             height="24"
                             width="24"
@@ -140,7 +140,7 @@ export function ConnectButton({
                           </Box>
                         ) : null}
                         <Box
-                          display={mapResponsiveValue(chainStatus, value => {
+                          display={mapResponsiveValue(chainStatus, (value) => {
                             if (value === 'icon' && !chain.iconUrl) {
                               return 'block'; // Show the chain name if there is no iconUrl
                             }
@@ -180,8 +180,8 @@ export function ConnectButton({
                   >
                     {account.displayBalance && (
                       <Box
-                        display={mapResponsiveValue(showBalance, value =>
-                          value ? 'block' : 'none'
+                        display={mapResponsiveValue(showBalance, (value) =>
+                          value ? 'block' : 'none',
                         )}
                         padding="8"
                         paddingLeft="12"
@@ -215,10 +215,10 @@ export function ConnectButton({
                         height="24"
                       >
                         <Box
-                          display={mapResponsiveValue(accountStatus, value =>
+                          display={mapResponsiveValue(accountStatus, (value) =>
                             value === 'full' || value === 'avatar'
                               ? 'block'
-                              : 'none'
+                              : 'none',
                           )}
                         >
                           <Avatar
@@ -231,10 +231,12 @@ export function ConnectButton({
 
                         <Box alignItems="center" display="flex" gap="6">
                           <Box
-                            display={mapResponsiveValue(accountStatus, value =>
-                              value === 'full' || value === 'address'
-                                ? 'block'
-                                : 'none'
+                            display={mapResponsiveValue(
+                              accountStatus,
+                              (value) =>
+                                value === 'full' || value === 'address'
+                                  ? 'block'
+                                  : 'none',
                             )}
                           >
                             {account.displayName}

@@ -5,9 +5,9 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
-  getWalletConnectConnector,
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
+  getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 
 declare global {

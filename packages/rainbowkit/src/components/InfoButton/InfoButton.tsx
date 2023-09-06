@@ -9,7 +9,7 @@ export const InfoButton = ({
   onClick,
 }: {
   'aria-label'?: string;
-  'onClick': () => void;
+  onClick: () => void;
 }) => {
   const mobile = isMobile();
   return (

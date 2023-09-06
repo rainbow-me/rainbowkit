@@ -63,7 +63,7 @@ export const foxWallet = ({
             ? async () => {
                 const uri = await getWalletConnectUri(
                   connector,
-                  walletConnectVersion
+                  walletConnectVersion,
                 );
                 return `foxwallet://wc?uri=${encodeURIComponent(uri)}`;
               }

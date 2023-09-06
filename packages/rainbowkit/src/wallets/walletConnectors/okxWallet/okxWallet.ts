@@ -83,7 +83,7 @@ export const okxWallet = ({
             ? async () => {
                 const uri = await getWalletConnectUri(
                   connector,
-                  walletConnectVersion
+                  walletConnectVersion,
                 );
                 return isAndroid()
                   ? uri

@@ -74,7 +74,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             {switchNetwork ? (
               rainbowkitChains.map(
                 ({ iconBackground, iconUrl, id, name }, idx) => {
-                  const chain = chains.find(c => c.id === id);
+                  const chain = chains.find((c) => c.id === id);
                   if (!chain) return null;
 
                   const isCurrentChain = chain.id === activeChain?.id;
@@ -181,7 +181,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                       )}
                     </Fragment>
                   );
-                }
+                },
               )
             ) : (
               <Box

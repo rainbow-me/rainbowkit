@@ -45,7 +45,7 @@ export const Text = React.forwardRef(
       textAlign = 'inherit',
       weight = 'regular',
     }: TextProps,
-    ref: React.Ref<HTMLElement>
+    ref: React.Ref<HTMLElement>,
   ) => {
     return (
       <Box
@@ -65,7 +65,7 @@ export const Text = React.forwardRef(
         {children}
       </Box>
     );
-  }
+  },
 );
 
 Text.displayName = 'Text';

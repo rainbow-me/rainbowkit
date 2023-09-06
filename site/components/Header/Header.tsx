@@ -1,8 +1,8 @@
 import {
   ConnectButton,
+  RainbowKitProvider,
   darkTheme,
   lightTheme,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';

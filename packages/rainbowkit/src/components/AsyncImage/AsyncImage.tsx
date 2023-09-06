@@ -30,7 +30,7 @@ export function AsyncImage({
   const isRemoteImage = src && /^http/.test(src);
   const [isRemoteImageLoaded, setRemoteImageLoaded] = useReducer(
     () => true,
-    false
+    false,
   );
 
   return (
@@ -53,9 +53,9 @@ export function AsyncImage({
         {...(isRemoteImage
           ? {
               'aria-hidden': true,
-              'as': 'img',
-              'onLoad': setRemoteImageLoaded,
-              'src': src,
+              as: 'img',
+              onLoad: setRemoteImageLoaded,
+              src: src,
             }
           : {
               backgroundSize: 'cover',

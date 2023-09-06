@@ -17,7 +17,7 @@ export const mewWallet = ({
       (
         window.ethereum as typeof window.ethereum &
           (undefined | { isMEWwallet?: boolean })
-      )?.isMEWwallet
+      )?.isMEWwallet,
     );
   return {
     id: 'mew',

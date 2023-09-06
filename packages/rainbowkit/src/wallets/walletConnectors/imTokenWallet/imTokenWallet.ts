@@ -52,7 +52,7 @@ export const imTokenWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },

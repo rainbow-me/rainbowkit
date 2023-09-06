@@ -32,7 +32,7 @@ function omitRootDependencies(packageName, dependencies) {
     'eslint',
   ];
 
-  Object.keys(dependencies).forEach(dep => {
+  Object.keys(dependencies).forEach((dep) => {
     if (!rootDependencies[dep] || allowedDuplicatePackages.includes(dep)) {
       // Keep the dependency in the app template's package.json since it's not in the
       // root package.json (or in the list of allowed duplicate packages).
@@ -45,7 +45,7 @@ function omitRootDependencies(packageName, dependencies) {
             'You might have stale files left over from a past create-rainbowkit run. Try running "pnpm test:cli:clean" and then "pnpm test:cli:dev" after install to regenerate test app.',
         ]
           .filter(Boolean)
-          .join('\n')
+          .join('\n'),
       );
     }
   });

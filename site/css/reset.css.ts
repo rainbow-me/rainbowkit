@@ -43,7 +43,7 @@ const field = style([
     '::placeholder': {
       opacity: 1,
     },
-    'outline': 'none',
+    outline: 'none',
   },
 ]);
 
@@ -58,7 +58,7 @@ const select = style([
     ':disabled': {
       opacity: 1,
     },
-    'selectors': {
+    selectors: {
       '&::-ms-expand': {
         display: 'none',
       },
