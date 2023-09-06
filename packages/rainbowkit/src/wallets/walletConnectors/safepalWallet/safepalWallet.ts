@@ -31,7 +31,7 @@ export interface SafepalWalletOptions {
 }
 
 function getSafepalWalletInjectedProvider(): Window['ethereum'] {
-  const isSafePalWallet = (ethereum: NonNullable<Window['ethereum']>) => {
+  const isSafePalWallet = (ethereum: NonNullable<Window['ethereum']> | any) => {
     // Identify if SafePal Wallet injected provider is present.
     const safepalWallet = !!ethereum.isSafePal;
 
