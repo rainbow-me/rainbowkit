@@ -37,6 +37,7 @@ import {
   phantomWallet,
   rabbyWallet,
   safeheronWallet,
+  safepalWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
@@ -44,7 +45,6 @@ import {
   uniswapWallet,
   xdefiWallet,
   zerionWallet,
-  safepalWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import type { Session } from 'next-auth';

@@ -11,6 +11,7 @@ import {
   argentWallet,
   trustWallet,
   ledgerWallet,
+  safepalWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
@@ -58,6 +59,7 @@ const connectors = connectorsForWallets([
       argentWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
+      safepalWallet({ projectId, chains }),
     ],
   },
 ]);
