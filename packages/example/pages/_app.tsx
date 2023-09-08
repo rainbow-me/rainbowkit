@@ -13,6 +13,7 @@ import {
 import {
   argentWallet,
   bifrostWallet,
+  bitgetWallet,
   bitKeepWallet,
   bitskiWallet,
   coin98Wallet,

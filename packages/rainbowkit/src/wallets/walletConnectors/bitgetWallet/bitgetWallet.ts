@@ -26,7 +26,8 @@ export interface BitgetWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-export const bitKeepWallet = ({
+// Bitget Wallet, ex BitKeep
+export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
@@ -57,8 +58,7 @@ export const bitKeepWallet = ({
       ios: 'https://web3.bitget.com/en/wallet-download?type=1',
       mobile: 'https://web3.bitget.com/en/wallet-download?type=2',
       qrCode: 'https://web3.bitget.com/en/wallet-download',
-      chrome:
-        'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
+      chrome: 'https://chrome.google.com/webstore/detail/bitget-wallet-formerly-bi/jiidiaalihmmhddjgbnbgdfflelocpak',
       browserExtension: 'https://web3.bitget.com/en/wallet-download',
     },
 
