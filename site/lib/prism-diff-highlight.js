@@ -72,7 +72,7 @@ module.exports = (Prism) => {
       const lines = [];
       let m;
       HTML_LINE.lastIndex = 0;
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       while ((m = HTML_LINE.exec(highlighted))) {
         lines.push(prefix + m[0]);
       }

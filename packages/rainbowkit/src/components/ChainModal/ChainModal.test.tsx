@@ -62,7 +62,7 @@ describe('<ChainModal />', () => {
   it('Can switch chains', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,
@@ -89,7 +89,7 @@ describe('<ChainModal />', () => {
   it('Just closes on switch error (user rejected, or other)', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,
@@ -133,7 +133,7 @@ describe('<ChainModal />', () => {
   it('Closes on close button press', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,

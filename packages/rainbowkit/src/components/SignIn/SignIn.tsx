@@ -21,7 +21,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
   const authAdapter = useAuthenticationAdapter();
 
-  // rome-ignore lint/nursery/useExhaustiveDependencies: TODO
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   const getNonce = useCallback(async () => {
     try {
       const nonce = await authAdapter.getNonce();

@@ -216,7 +216,7 @@ function makeElementCool(
     element.removeEventListener('mouseleave', disableAutoAddParticle);
 
     // Cancel animation loop once animations are done
-    // rome-ignore lint/correctness/noUnusedVariables: TODO
+    // biome-ignore lint/correctness/noUnusedVariables: TODO
     const interval = setInterval(() => {
       if (animationFrame && particles.length === 0) {
         cancelAnimationFrame(animationFrame);

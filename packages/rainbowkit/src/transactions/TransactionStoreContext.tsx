@@ -24,7 +24,7 @@ export function TransactionStoreProvider({
   // Use existing store if it exists, or lazily create one
   const [store] = useState(
     () =>
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       storeSingleton ?? (storeSingleton = createTransactionStore({ provider })),
   );
 

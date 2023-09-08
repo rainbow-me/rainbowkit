@@ -40,8 +40,8 @@ export async function getStaticProps({ params }) {
   const doc = allDocs.find((doc) => doc.slug === params.slug);
   const sectionName = docsRoutes.reduce((acc, curr) => {
     curr.pages.forEach((page) =>
-      // rome-ignore lint/style/noParameterAssign: TODO
-      // rome-ignore lint/suspicious/noAssignInExpressions: TODO
+      // biome-ignore lint/style/noParameterAssign: TODO
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       page.slug === params.slug ? (acc = curr.label) : null,
     );
     return acc;

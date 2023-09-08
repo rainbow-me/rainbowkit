@@ -48,7 +48,7 @@ export const docsRoutes: RouteProps[] = [
 ];
 
 export const allDocsRoutes: PartialDoc[] = docsRoutes.reduce((acc, curr) => {
-  // rome-ignore lint/style/noParameterAssign: TODO
+  // biome-ignore lint/style/noParameterAssign: TODO
   acc = [...acc, ...curr.pages];
   return acc;
 }, []);

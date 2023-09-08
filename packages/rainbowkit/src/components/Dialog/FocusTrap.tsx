@@ -23,7 +23,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
     };
   }, []);
 
-  // rome-ignore lint/nursery/useExhaustiveDependencies: TODO
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (contentRef.current) {
       const elementToFocus =

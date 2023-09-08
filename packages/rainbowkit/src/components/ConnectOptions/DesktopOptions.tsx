@@ -184,7 +184,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
-  // rome-ignore lint/nursery/useExhaustiveDependencies: TODO
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
