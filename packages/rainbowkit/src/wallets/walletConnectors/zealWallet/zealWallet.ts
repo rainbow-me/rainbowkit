@@ -19,7 +19,6 @@ export const zealWallet = ({
   installed:
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
-    // @ts-expect-error
     window.ethereum.isZeal === true,
   downloadUrls: {
     browserExtension: 'https://zeal.app',
