@@ -50,12 +50,6 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   const { address } = useAccount();
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
-  const { disconnect } = useDisconnect();
-
-  const cancel = React.useCallback(() => {
-    onClose();
-    disconnect();
-  }, [onClose, disconnect]);
 
   const signIn = async () => {
     try {
@@ -129,7 +123,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         position="absolute"
         right="0"
       >
-        <CloseButton onClose={cancel} />
+        <CloseButton onClose={onClose} />
       </Box>
       <Box
         alignItems="center"
@@ -217,7 +211,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
           {mobile ? (
             <ActionButton
               label="Cancel"
-              onClick={cancel}
+              onClick={onClose}
               size="large"
               type="secondary"
             />
@@ -227,7 +221,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               borderRadius="full"
               className={touchableStyles({ active: 'shrink', hover: 'grow' })}
               display="block"
-              onClick={cancel}
+              onClick={onClose}
               paddingX="10"
               paddingY="5"
               rel="noreferrer"
