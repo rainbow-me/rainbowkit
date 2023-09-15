@@ -51,7 +51,11 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
   const { disconnect } = useDisconnect();
-  const cancel = () => disconnect();
+
+  const cancel = React.useCallback(() => {
+    onClose();
+    disconnect();
+  }, [onClose, disconnect]);
 
   const signIn = async () => {
     try {
@@ -125,7 +129,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         position="absolute"
         right="0"
       >
-        <CloseButton onClose={onClose} />
+        <CloseButton onClose={cancel} />
       </Box>
       <Box
         alignItems="center"
