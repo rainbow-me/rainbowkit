@@ -1,10 +1,10 @@
 import React from 'react';
+import { useDisconnect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { SignIn } from '../SignIn/SignIn';
-import { useDisconnect } from 'wagmi';
 
 export interface ConnectModalProps {
   open: boolean;
