@@ -55,7 +55,7 @@ export const bitgetWallet = ({
     installed: !shouldUseWalletConnect ? isBitKeepInjected : undefined,
     downloadUrls: {
       android: 'https://web3.bitget.com/en/wallet-download?type=0',
-      ios: 'https://web3.bitget.com/en/wallet-download?type=1',
+      ios: 'https://apps.apple.com/app/bitkeep/id1395301115',
       mobile: 'https://web3.bitget.com/en/wallet-download?type=2',
       qrCode: 'https://web3.bitget.com/en/wallet-download',
       chrome: 'https://chrome.google.com/webstore/detail/bitget-wallet-formerly-bi/jiidiaalihmmhddjgbnbgdfflelocpak',
@@ -91,7 +91,7 @@ export const bitgetWallet = ({
         connector,
         extension: {
           instructions: {
-            learnMoreUrl: 'https://web3.bitget.com/zh/academy',
+            learnMoreUrl: 'https://web3.bitget.com/en/academy',
             steps: [
               {
                 description:
@@ -122,7 +122,7 @@ export const bitgetWallet = ({
               getUri: async () =>
                 getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
-                learnMoreUrl: 'https://web3.bitget.com/zh/academy',
+                learnMoreUrl: 'https://web3.bitget.com/en/academy',
                 steps: [
                   {
                     description:
