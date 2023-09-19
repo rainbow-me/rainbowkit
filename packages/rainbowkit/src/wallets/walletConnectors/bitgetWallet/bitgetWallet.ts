@@ -47,7 +47,7 @@ export const bitgetWallet = ({
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
-    id: 'bitget',
+    id: 'bitgetWallet',
     name: 'Bitget Wallet',
     iconUrl: async () => (await import('./bitgetWallet.svg')).default,
     iconAccent: '#f6851a',
