@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { i18n } from '../../locales';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import {
@@ -209,7 +210,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           getWallet={() => changeWalletStep(WalletStep.Get)}
         />
       );
-      headerLabel = 'What is a Wallet?';
+      headerLabel = i18n.t('intro.title');
       headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Get:

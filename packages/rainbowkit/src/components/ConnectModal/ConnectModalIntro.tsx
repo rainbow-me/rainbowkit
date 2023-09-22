@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { i18n } from '../../locales';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
@@ -31,7 +32,7 @@ export function ConnectModalIntro({
         <Box marginBottom="10">
           {!compactModeEnabled && (
             <Text color="modalText" size="18" weight="heavy">
-              What is a Wallet?
+              {i18n.t('intro.title')}
             </Text>
           )}
         </Box>
@@ -94,7 +95,7 @@ export function ConnectModalIntro({
             transition="default"
           >
             <Text color="accentColor" size="14" weight="bold">
-              Learn More
+              {i18n.t('intro.learn_more.label')}
             </Text>
           </Box>
         </Box>

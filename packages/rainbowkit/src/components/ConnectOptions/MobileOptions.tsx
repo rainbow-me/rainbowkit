@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { i18n } from '../../locales';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -215,7 +216,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                What is a Wallet?
+                {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
                 A wallet is used to send, receive, store, and display digital
@@ -235,7 +236,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               />
               <ActionButton
                 href={learnMoreUrl}
-                label="Learn More"
+                label={i18n.t('intro.learn_more.label')}
                 size="large"
                 type="secondary"
               />
