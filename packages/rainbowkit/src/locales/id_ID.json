@@ -10,10 +10,43 @@
       "description": "Alih-alih membuat akun dan kata sandi baru di setiap situs web, cukup hubungkan dompet Anda."
     },
     "wallet": {
+      "recent": "Baru",
+      "scan": {
+        "title": "Pindai dengan",
+        "phone": "ponsel Anda",
+        "mobile": "Pindai dengan ponsel Anda untuk mengunduh di iOS atau Android",
+        "install": "Instal",
+        "wallet": "Dompet",
+        "continue": "Lanjutkan",
+        "get_started_with": "Mulai dengan",
+        "get": "Dapatkan"
+      },
+      "get_started": {
+        "for_mobile": "untuk Seluler",
+        "add_to": "Tambahkan ke",
+        "get_app": "Dapatkan aplikasi",
+        "access_browser": "Akses dompet Anda langsung dari browser web favorit Anda.",
+        "access_mobile": "Gunakan dompet seluler untuk menjelajahi dunia Ethereum.",
+        "for": "untuk",
+        "title": "DAPATKAN",
+        "open": "BUKA",
+        "not_found": "Tidak punya",
+        "need": "Perlu",
+        "official": "resmi",
+        "wallet_connect": "modal WalletConnect?"
+      },
       "title": "Dapatkan Dompet",
       "wallet_extension": "Dompet Mobile dan Ekstensi",
       "companion_app": "Dompet Mobile",
-      "browser_extension": "Ekstensi Browser"
+      "browser_extension": "Ekstensi Browser",
+      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital. Ini juga cara baru untuk masuk, tanpa perlu membuat akun dan kata sandi baru di setiap situs web.",
+      "connect": {
+        "title": "Hubungkan Dompet"
+      }
+    },
+    "not_found": {
+      "title": "Bukan yang Anda cari?",
+      "description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda."
     },
     "learn_more": {
       "label": "Pelajari lebih lanjut"

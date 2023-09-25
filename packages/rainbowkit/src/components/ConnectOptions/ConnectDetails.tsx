@@ -17,10 +17,10 @@ import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
@@ -147,11 +147,10 @@ export function GetDetail({
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          Not what you&rsquo;re looking for?
+          {i18n.t('intro.not_found.title')}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
-          Select a wallet on the left to get started with a different wallet
-          provider.
+          {i18n.t('intro.not_found.description')}
         </Text>
       </Box>
     </Box>
@@ -188,6 +187,8 @@ export function ConnectDetail({
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
 
+  const i18n = useContext(I18nContext);
+
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCode = qrCode && qrCodeUri;
@@ -199,10 +200,10 @@ export function ConnectDetail({
     href?: string;
   } | null = showWalletConnectModal
     ? {
-        description: `Need the ${
-          compactModeEnabled ? '' : 'official'
-        } WalletConnect modal?`,
-        label: 'OPEN',
+        description: `${i18n.t('intro.wallet.get_started.need')} ${
+          compactModeEnabled ? '' : i18n.t('intro.wallet.get_started.official')
+        } ${i18n.t('intro.wallet.get_started.wallet_connect')}`,
+        label: i18n.t('intro.wallet.get_started.open'),
         onClick: () => {
           onClose();
           showWalletConnectModal();
@@ -210,8 +211,8 @@ export function ConnectDetail({
       }
     : hasQrCode
     ? {
-        description: `Don\u2019t have ${name}?`,
-        label: 'GET',
+        description: `${i18n.t('intro.wallet.get_started.not_found')} ${name}?`,
+        label: i18n.t('intro.wallet.get_started.title'),
         onClick: () =>
           changeWalletStep(
             hasQrCodeAndExtension
@@ -580,6 +581,8 @@ export function DownloadOptionsDetail({
   const isCompact = modalSize === 'compact';
   const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
 
+  const i18n = useContext(I18nContext);
+
   useEffect(() => {
     // Preload icons used on next screen
     preloadCreateIcon();
@@ -609,8 +612,10 @@ export function DownloadOptionsDetail({
       >
         {extensionDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={`Add to ${browser}`}
-            description="Access your wallet right from your favorite web browser."
+            actionLabel={`${i18n.t(
+              'intro.wallet.get_started.add_to'
+            )} ${browser}`}
+            description={i18n.t('intro.wallet.get_started.access_browser')}
             iconUrl={getBrowserSrc}
             isCompact={isCompact}
             onAction={() =>
@@ -620,15 +625,17 @@ export function DownloadOptionsDetail({
                   : WalletStep.Connect
               )
             }
-            title={`${wallet.name} for ${browser}`}
+            title={`${wallet.name} ${i18n.t(
+              'intro.wallet.get_started.for'
+            )} ${browser}`}
             url={extensionDownloadUrl}
             variant="browser"
           />
         )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel="Get the app"
-            description="Use the mobile wallet to explore the world of Ethereum."
+            actionLabel={i18n.t('intro.wallet.get_started.get_app')}
+            description={i18n.t('intro.wallet.get_started.access_mobile')}
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
             iconUrl={wallet.iconUrl}
@@ -636,7 +643,9 @@ export function DownloadOptionsDetail({
             onAction={() => {
               changeWalletStep(WalletStep.Download);
             }}
-            title={`${wallet.name} for Mobile`}
+            title={`${wallet.name} ${i18n.t(
+              'intro.wallet.get_started.for_mobile'
+            )}`}
             variant="app"
           />
         )}
@@ -653,6 +662,8 @@ export function DownloadDetail({
   wallet: WalletConnector;
 }) {
   const { downloadUrls, qrCode } = wallet;
+
+  const i18n = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -671,7 +682,7 @@ export function DownloadDetail({
     >
       <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          Scan with your phone to download on iOS or Android
+          {i18n.t('intro.wallet.scan.mobile')}
         </Text>
       </Box>
       <Box height="full">
@@ -692,7 +703,7 @@ export function DownloadDetail({
         paddingY="8"
       >
         <ActionButton
-          label="Continue"
+          label={i18n.t('intro.wallet.scan.continue')}
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions

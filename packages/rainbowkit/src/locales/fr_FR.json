@@ -10,10 +10,43 @@
       "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site web, connectez simplement votre portefeuille."
     },
     "wallet": {
+      "recent": "Récemment",
+      "scan": {
+        "title": "Scanner avec",
+        "phone": "votre téléphone",
+        "mobile": "Scannez avec votre téléphone pour télécharger sur iOS ou Android",
+        "install": "Installer",
+        "wallet": "Portefeuille",
+        "continue": "Continuer",
+        "get_started_with": "Commencez avec",
+        "get": "Obtenir"
+      },
+      "get_started": {
+        "for_mobile": "pour Mobile",
+        "add_to": "Ajouter à",
+        "get_app": "Télécharger l'application",
+        "access_browser": "Accédez à votre portefeuille directement depuis votre navigateur web préféré.",
+        "access_mobile": "Utilisez le portefeuille mobile pour explorer le monde d'Ethereum.",
+        "for": "pour",
+        "title": "OBTENIR",
+        "open": "OUVRIR",
+        "not_found": "N'a pas",
+        "need": "Besoin de l'",
+        "official": "officiel",
+        "wallet_connect": "modal de WalletConnect?"
+      },
       "title": "Obtenez un Portefeuille",
       "wallet_extension": "Portefeuille Mobile et Extension",
       "companion_app": "Portefeuille Mobile",
-      "browser_extension": "Extension de Navigateur"
+      "browser_extension": "Extension de Navigateur",
+      "description": "Un portefeuille est utilisé pour envoyer, recevoir, stocker et afficher des actifs numériques. C'est aussi un nouveau moyen de se connecter, sans avoir besoin de créer de nouveaux comptes et mots de passe sur chaque site web.",
+      "connect": {
+        "title": "Connectez un Portefeuille"
+      }
+    },
+    "not_found": {
+      "title": "Ce n'est pas ce que vous cherchez ?",
+      "description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille."
     },
     "learn_more": {
       "label": "En savoir plus"

@@ -10,10 +10,43 @@
       "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu billetera."
     },
     "wallet": {
+      "recent": "Reciente",
+      "scan": {
+        "title": "Escanea con",
+        "phone": "tu teléfono",
+        "mobile": "Escanea con tu teléfono para descargar en iOS o Android",
+        "install": "Instalar",
+        "wallet": "Cartera",
+        "continue": "Continuar",
+        "get_started_with": "Comienza con",
+        "get": "Obtener"
+      },
+      "get_started": {
+        "for_mobile": "para Móvil",
+        "add_to": "Añadir a",
+        "get_app": "Obtener la aplicación",
+        "access_browser": "Accede a tu cartera directamente desde tu navegador web favorito.",
+        "access_mobile": "Usa la cartera móvil para explorar el mundo de Ethereum.",
+        "for": "para",
+        "title": "OBTENER",
+        "open": "ABRIR",
+        "not_found": "No tiene",
+        "need": "Necesita el",
+        "official": "oficial",
+        "wallet_connect": "modal de WalletConnect?"
+      },
       "title": "Obtén una Billetera",
       "wallet_extension": "Billetera Móvil y Extensión",
       "companion_app": "Billetera Móvil",
-      "browser_extension": "Extensión de Navegador"
+      "browser_extension": "Extensión de Navegador",
+      "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
+      "connect": {
+        "title": "Conectar una Billetera"
+      }
+    },
+    "not_found": {
+      "title": "¿No es lo que estás buscando?",
+      "description": "Selecciona una billetera en la pantalla principal para comenzar con un proveedor de billeteras diferente."
     },
     "learn_more": {
       "label": "Obtener más información"

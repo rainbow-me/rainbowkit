@@ -10,10 +10,43 @@
       "description": "Her web sitesinde yeni hesaplar ve şifreler oluşturmak yerine, sadece cüzdanınızı bağlayın."
     },
     "wallet": {
+      "recent": "Son",
+      "scan": {
+        "title": "Tarama yap",
+        "phone": "telefonunuzla",
+        "mobile": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+        "install": "Kur",
+        "wallet": "Cüzdan",
+        "continue": "Devam et",
+        "get_started_with": "ile Başlayın",
+        "get": "Al"
+      },
+      "get_started": {
+        "for_mobile": "Mobil için",
+        "add_to": "Ekle",
+        "get_app": "Uygulamayı indir",
+        "access_browser": "Cüzdanınıza en sevdiğiniz web tarayıcısından doğrudan erişin.",
+        "access_mobile": "Ethereum dünyasını keşfetmek için mobil cüzdanı kullanın.",
+        "for": "için",
+        "title": "AL",
+        "open": "AÇ",
+        "not_found": "Yok",
+        "need": "Şuna ihtiyacınız var mı",
+        "official": "resmi",
+        "wallet_connect": "WalletConnect modu?"
+      },
       "title": "Bir Cüzdan Edinin",
       "wallet_extension": "Mobil Cüzdan ve Eklenti",
       "companion_app": "Mobil Cüzdan",
-      "browser_extension": "Tarayıcı Eklentisi"
+      "browser_extension": "Tarayıcı Eklentisi",
+      "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve göstermek için kullanılır. Aynı zamanda, her web sitesinde yeni hesaplar ve şifreler oluşturma ihtiyacı olmadan giriş yapmanın yeni bir yoludur.",
+      "connect": {
+        "title": "Bir Cüzdan Bağlayın"
+      }
+    },
+    "not_found": {
+      "title": "Aradığınız bu değil mi?",
+      "description": "Farklı bir cüzdan sağlayıcıyla başlamak için ana ekranda bir cüzdan seçin."
     },
     "learn_more": {
       "label": "Daha fazla bilgi edinin"

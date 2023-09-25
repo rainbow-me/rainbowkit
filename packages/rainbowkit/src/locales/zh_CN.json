@@ -10,10 +10,43 @@
       "description": "不用在每个网站上创建新的账户和密码，只需连接您的钱包。"
     },
     "wallet": {
+      "recent": "最近的",
+      "scan": {
+        "title": "用",
+        "phone": "您的手机扫描",
+        "mobile": "用您的手机扫描以在iOS或Android上下载",
+        "install": "安装",
+        "wallet": "钱包",
+        "continue": "继续",
+        "get_started_with": "开始使用",
+        "get": "获取"
+      },
+      "get_started": {
+        "for_mobile": "用于移动",
+        "add_to": "添加至",
+        "get_app": "获取应用",
+        "access_browser": "直接从您最喜爱的网络浏览器访问您的钱包。",
+        "access_mobile": "使用移动钱包探索以太坊的世界。",
+        "for": "为了",
+        "title": "获取",
+        "open": "打开",
+        "not_found": "没有",
+        "need": "需要",
+        "official": "官方",
+        "wallet_connect": "WalletConnect模态？"
+      },
       "title": "获取钱包",
       "wallet_extension": "移动钱包和扩展",
       "companion_app": "移动钱包",
-      "browser_extension": "浏览器扩展"
+      "browser_extension": "浏览器扩展",
+      "description": "钱包用于发送、接收、存储和显示数字资产。这也是一种新的登录方式，无需在每个网站上创建新的帐户和密码。",
+      "connect": {
+        "title": "连接钱包"
+      }
+    },
+    "not_found": {
+      "title": "不是您要找的吗？",
+      "description": "在主屏幕上选择一个钱包，以便开始使用不同的钱包提供商。"
     },
     "learn_more": {
       "label": "了解更多"

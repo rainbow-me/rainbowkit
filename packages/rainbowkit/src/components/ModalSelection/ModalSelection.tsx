@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './ModalSelection.css';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 
 type Props = {
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
@@ -32,6 +33,8 @@ export const ModalSelection = ({
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
   const [isMouseOver, setIsMouseOver] = useState<Boolean>(false);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <Box
@@ -102,7 +105,7 @@ export const ModalSelection = ({
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
                 >
-                  Recent
+                  {i18n.t('intro.wallet.recent')}
                 </Text>
               )}
             </Box>

@@ -235,9 +235,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         hasQrCode &&
-        `Scan with ${
+        `${i18n.t('intro.wallet.scan.title')} ${
           selectedWallet.name === 'WalletConnect'
-            ? 'your phone'
+            ? i18n.t('intro.wallet.scan.phone')
             : selectedWallet.name
         }`;
       headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
@@ -252,7 +252,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
+      headerLabel =
+        selectedWallet &&
+        `${i18n.t('intro.wallet.scan.get')} ${selectedWallet.name}`;
       headerBackButtonLink =
         hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
       break;
@@ -263,7 +265,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = selectedWallet && `Install ${selectedWallet.name}`;
+      headerLabel =
+        selectedWallet &&
+        `${i18n.t('intro.wallet.scan.install')} ${selectedWallet.name}`;
       headerBackButtonLink = hasExtensionAndMobile
         ? WalletStep.DownloadOptions
         : initialWalletStep;
@@ -277,7 +281,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        `Get started with ${
+        `${i18n.t('intro.wallet.scan.get_started_with')} ${
           compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name
@@ -290,7 +294,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        `Get started with ${
+        `${i18n.t('intro.wallet.scan.get_started_with')} ${
           compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name

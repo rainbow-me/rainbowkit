@@ -10,10 +10,43 @@
       "description": "Ao invés de criar novas contas e senhas em cada site, apenas conecte sua carteira."
     },
     "wallet": {
+      "recent": "Recente",
+      "scan": {
+        "title": "Escanear com",
+        "phone": "seu telefone",
+        "mobile": "Escaneie com seu telefone para baixar no iOS ou Android",
+        "install": "Instalar",
+        "wallet": "Carteira",
+        "continue": "Continuar",
+        "get_started_with": "Comece com",
+        "get": "Pegar"
+      },
+      "get_started": {
+        "for_mobile": "para Celular",
+        "add_to": "Adicionar a",
+        "get_app": "Baixar o app",
+        "access_browser": "Acesse sua carteira diretamente do seu navegador web favorito.",
+        "access_mobile": "Use a carteira móvel para explorar o mundo do Ethereum.",
+        "for": "para",
+        "title": "OBTER",
+        "open": "ABRIR",
+        "not_found": "Não tem",
+        "need": "Precisa do",
+        "official": "oficial",
+        "wallet_connect": "modal do WalletConnect?"
+      },
       "title": "Obtenha uma Carteira",
       "wallet_extension": "Carteira Móvel e Extensão",
       "companion_app": "Carteira Móvel",
-      "browser_extension": "Extensão de Navegador"
+      "browser_extension": "Extensão de Navegador",
+      "description": "Uma carteira é usada para enviar, receber, armazenar e exibir ativos digitais. Também é uma nova forma de fazer login, sem a necessidade de criar novas contas e senhas em cada site.",
+      "connect": {
+        "title": "Conectar uma Carteira"
+      }
+    },
+    "not_found": {
+      "title": "Não é o que você está procurando?",
+      "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
     },
     "learn_more": {
       "label": "Saiba mais"

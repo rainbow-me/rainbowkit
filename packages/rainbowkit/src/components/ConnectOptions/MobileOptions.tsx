@@ -41,6 +41,8 @@ function WalletButton({
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
 
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       as="button"
@@ -136,7 +138,7 @@ function WalletButton({
 
           {wallet.recent && (
             <Text color="accentColor" size="12" weight="medium">
-              Recent
+              {i18n.t('intro.wallet.recent')}
             </Text>
           )}
         </Box>
@@ -170,7 +172,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
-      headerLabel = 'Connect a Wallet';
+      headerLabel = i18n.t('intro.wallet.connect.title');
       headerBackgroundContrast = true;
       walletContent = (
         <Box>
@@ -221,9 +223,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                A wallet is used to send, receive, store, and display digital
-                assets. It&rsquo;s also a new way to log in, without needing to
-                create new accounts and passwords on&nbsp;every&nbsp;website.
+                {i18n.t('intro.wallet.description')}
               </Text>
             </Box>
           </Box>
@@ -254,7 +254,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       break;
     }
     case MobileWalletStep.Get: {
-      headerLabel = 'Get a Wallet';
+      headerLabel = i18n.t('intro.wallet.title');
       headerBackButtonLink = MobileWalletStep.Connect;
 
       const mobileWallets = wallets
@@ -354,11 +354,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                Not what you&rsquo;re looking for?
+                {i18n.t('intro.not_found.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                Select a wallet on the main screen to get started with a
-                different wallet provider.
+                {i18n.t('intro.not_found.description')}
               </Text>
             </Box>
           </Box>

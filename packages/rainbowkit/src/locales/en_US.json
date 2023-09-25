@@ -10,10 +10,43 @@
       "description": "Instead of creating new accounts and passwords on every website, just connect your wallet."
     },
     "wallet": {
+      "recent": "Recent",
+      "scan": {
+        "title": "Scan with",
+        "phone": "your phone",
+        "mobile": "Scan with your phone to download on iOS or Android",
+        "install": "Install",
+        "wallet": "Wallet",
+        "continue": "Continue",
+        "get_started_with": "Get started with",
+        "get": "Get"
+      },
+      "get_started": {
+        "for_mobile": "for Mobile",
+        "add_to": "Add to",
+        "get_app": "Get the app",
+        "access_browser": "Access your wallet right from your favorite web browser.",
+        "access_mobile": "Use the mobile wallet to explore the world of Ethereum.",
+        "for": "for",
+        "title": "GET",
+        "open": "OPEN",
+        "not_found": "Don't have",
+        "need": "Need the",
+        "official": "official",
+        "wallet_connect": "WalletConnect modal?"
+      },
       "title": "Get a Wallet",
       "wallet_extension": "Mobile Wallet and Extension",
       "companion_app": "Mobile Wallet",
-      "browser_extension": "Browser Extension"
+      "browser_extension": "Browser Extension",
+      "description": "A wallet is used to send, receive, store, and display digital assets. It's also a new way to log in, without needing to create new accounts and passwords on every website.",
+      "connect": {
+        "title": "Connect a Wallet"
+      }
+    },
+    "not_found": {
+      "title": "Not what you're looking for?",
+      "description": "Select a wallet on the main screen to get started with a different wallet provider."
     },
     "learn_more": {
       "label": "Learn more"

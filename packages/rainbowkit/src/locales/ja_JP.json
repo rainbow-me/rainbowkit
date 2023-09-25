@@ -10,10 +10,43 @@
       "description": "各ウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続してください。"
     },
     "wallet": {
+      "recent": "最近の",
+      "scan": {
+        "title": "スキャン",
+        "phone": "あなたの電話で",
+        "mobile": "iOSまたはAndroidでダウンロードするために、お使いの電話でスキャンしてください",
+        "install": "インストール",
+        "wallet": "ウォレット",
+        "continue": "続ける",
+        "get_started_with": "で始めましょう",
+        "get": "取得"
+      },
+      "get_started": {
+        "for_mobile": "モバイル用",
+        "add_to": "追加する",
+        "get_app": "アプリを取得",
+        "access_browser": "お気に入りのウェブブラウザから直接ウォレットにアクセスできます。",
+        "access_mobile": "モバイルウォレットを使用して、Ethereumの世界を探索しましょう。",
+        "for": "のため",
+        "title": "取得",
+        "open": "開く",
+        "not_found": "持っていません",
+        "need": "必要ですか",
+        "official": "公式",
+        "wallet_connect": "WalletConnectモーダル？"
+      },
       "title": "ウォレットを取得",
       "wallet_extension": "モバイルウォレットと拡張機能",
       "companion_app": "モバイルウォレット",
-      "browser_extension": "ブラウザ拡張"
+      "browser_extension": "ブラウザ拡張",
+      "description": "ウォレットは、デジタル資産を送信、受信、保存、表示するために使用されます。これは、すべてのウェブサイトで新しいアカウントとパスワードを作成する必要なく、ログインする新しい方法でもあります。",
+      "connect": {
+        "title": "ウォレットを接続する"
+      }
+    },
+    "not_found": {
+      "title": "お探しのものではありませんか？",
+      "description": "メイン画面でウォレットを選択し、別のウォレットプロバイダーで始めてください。"
     },
     "learn_more": {
       "label": "詳しくはこちら"
