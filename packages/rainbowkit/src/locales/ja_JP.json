@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "ウォレットとは何ですか？",
+    "digital_asset": {
+      "title": "あなたのデジタルアセットのためのホーム",
+      "description": "ウォレットは、EthereumやNFTのようなデジタルアセットを送信、受信、保存、表示するために使用されます。"
+    },
+    "login": {
+      "title": "新しいログイン方法",
+      "description": "各ウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続してください。"
+    },
+    "wallet": {
+      "title": "ウォレットを取得",
+      "wallet_extension": "モバイルウォレットと拡張機能",
+      "companion_app": "モバイルウォレット",
+      "browser_extension": "ブラウザ拡張"
+    },
     "learn_more": {
       "label": "詳しくはこちら"
     }

@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "O que é uma Carteira?",
+    "digital_asset": {
+      "title": "Um Lar para seus Ativos Digitais",
+      "description": "Carteiras são usadas para enviar, receber, armazenar e exibir ativos digitais como Ethereum e NFTs."
+    },
+    "login": {
+      "title": "Uma Nova Forma de Fazer Login",
+      "description": "Ao invés de criar novas contas e senhas em cada site, apenas conecte sua carteira."
+    },
+    "wallet": {
+      "title": "Obtenha uma Carteira",
+      "wallet_extension": "Carteira Móvel e Extensão",
+      "companion_app": "Carteira Móvel",
+      "browser_extension": "Extensão de Navegador"
+    },
     "learn_more": {
       "label": "Saiba mais"
     }

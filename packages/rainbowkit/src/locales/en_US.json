@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "What is a Wallet?",
+    "digital_asset": {
+      "title": "A Home for your Digital Assets",
+      "description": "Wallets are used to send, receive, store, and display digital assets like Ethereum and NFTs."
+    },
+    "login": {
+      "title": "A New Way to Log In",
+      "description": "Instead of creating new accounts and passwords on every website, just connect your wallet."
+    },
+    "wallet": {
+      "title": "Get a Wallet",
+      "wallet_extension": "Mobile Wallet and Extension",
+      "companion_app": "Mobile Wallet",
+      "browser_extension": "Browser Extension"
+    },
     "learn_more": {
       "label": "Learn more"
     }

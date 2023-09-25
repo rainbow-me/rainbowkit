@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "¿Qué es una billetera?",
+    "digital_asset": {
+      "title": "Un hogar para tus Activos Digitales",
+      "description": "Las carteras se utilizan para enviar, recibir, almacenar y mostrar activos digitales como Ethereum y NFTs."
+    },
+    "login": {
+      "title": "Una nueva forma de iniciar sesión",
+      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu billetera."
+    },
+    "wallet": {
+      "title": "Obtén una Billetera",
+      "wallet_extension": "Billetera Móvil y Extensión",
+      "companion_app": "Billetera Móvil",
+      "browser_extension": "Extensión de Navegador"
+    },
     "learn_more": {
       "label": "Obtener más información"
     }

@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "什么是钱包？",
+    "digital_asset": {
+      "title": "您的数字资产之家",
+      "description": "钱包用于发送、接收、存储和展示像以太坊和NFT这样的数字资产。"
+    },
+    "login": {
+      "title": "新的登录方式",
+      "description": "不用在每个网站上创建新的账户和密码，只需连接您的钱包。"
+    },
+    "wallet": {
+      "title": "获取钱包",
+      "wallet_extension": "移动钱包和扩展",
+      "companion_app": "移动钱包",
+      "browser_extension": "浏览器扩展"
+    },
     "learn_more": {
       "label": "了解更多"
     }

@@ -6,6 +6,7 @@ import {
   darkTheme,
   DisclaimerComponent,
   getDefaultWallets,
+  Language,
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
@@ -46,6 +47,7 @@ import {
 
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
@@ -212,6 +214,7 @@ function RainbowKitApp({
 }: AppProps<{
   session: Session;
 }>) {
+  const router = useRouter();
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -225,6 +228,7 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+  const [language, setLanguage] = useState(Language.EN_US);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -248,6 +252,8 @@ function RainbowKitApp({
 
   const appContextProps: AppContextProps = { authEnabled };
 
+  const locales = router.locales || [];
+
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
@@ -265,6 +271,7 @@ function RainbowKitApp({
         chains={chains}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
+        language={language}
         modalSize={modalSize}
         showRecentTransactions={showRecentTransactions}
         theme={currentTheme({
@@ -293,6 +300,30 @@ function RainbowKitApp({
                 <h3>RainbowKitProvider props</h3>
                 <table cellSpacing={12}>
                   <tbody>
+                    <tr>
+                      <td>
+                        <label
+                          htmlFor="authEnabled"
+                          style={{ userSelect: 'none' }}
+                        >
+                          language
+                        </label>
+                      </td>
+                      <td>
+                        <select
+                          onChange={e => {
+                            setLanguage(e.target.value as Language);
+                          }}
+                          value={language}
+                        >
+                          {locales.map(locale => (
+                            <option key={locale} value={locale}>
+                              {locale}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
                     <tr>
                       <td>
                         <label

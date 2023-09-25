@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "Apa itu Dompet?",
+    "digital_asset": {
+      "title": "Sebuah Rumah untuk Aset Digital Anda",
+      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital seperti Ethereum dan NFT."
+    },
+    "login": {
+      "title": "Cara Baru untuk Masuk",
+      "description": "Alih-alih membuat akun dan kata sandi baru di setiap situs web, cukup hubungkan dompet Anda."
+    },
+    "wallet": {
+      "title": "Dapatkan Dompet",
+      "wallet_extension": "Dompet Mobile dan Ekstensi",
+      "companion_app": "Dompet Mobile",
+      "browser_extension": "Ekstensi Browser"
+    },
     "learn_more": {
       "label": "Pelajari lebih lanjut"
     }

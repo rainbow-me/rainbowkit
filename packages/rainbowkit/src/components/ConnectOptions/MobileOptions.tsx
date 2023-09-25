@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
-import { i18n } from '../../locales';
 import { isIOS } from '../../utils/isMobile';
 import {
   useWalletConnectors,
@@ -14,6 +13,7 @@ import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
 import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
@@ -164,6 +164,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
     MobileWalletStep.Connect
   );
 
+  const i18n = useContext(I18nContext);
+
   const ios = isIOS();
 
   switch (walletStep) {
@@ -229,7 +231,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
-                label="Get a Wallet"
+                label={i18n.t('intro.wallet.title')}
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"

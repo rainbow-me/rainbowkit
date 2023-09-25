@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "Qu'est-ce qu'un portefeuille?",
+    "digital_asset": {
+      "title": "Un foyer pour vos Actifs Numériques",
+      "description": "Les portefeuilles sont utilisés pour envoyer, recevoir, stocker et afficher des actifs numériques tels que Ethereum et les NFT."
+    },
+    "login": {
+      "title": "Une nouvelle façon de se connecter",
+      "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site web, connectez simplement votre portefeuille."
+    },
+    "wallet": {
+      "title": "Obtenez un Portefeuille",
+      "wallet_extension": "Portefeuille Mobile et Extension",
+      "companion_app": "Portefeuille Mobile",
+      "browser_extension": "Extension de Navigateur"
+    },
     "learn_more": {
       "label": "En savoir plus"
     }

@@ -1,6 +1,20 @@
 {
   "intro": {
     "title": "Cüzdan nedir?",
+    "digital_asset": {
+      "title": "Dijital Varlıklarınız İçin Bir Ev",
+      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır."
+    },
+    "login": {
+      "title": "Yeni Bir Giriş Yolu",
+      "description": "Her web sitesinde yeni hesaplar ve şifreler oluşturmak yerine, sadece cüzdanınızı bağlayın."
+    },
+    "wallet": {
+      "title": "Bir Cüzdan Edinin",
+      "wallet_extension": "Mobil Cüzdan ve Eklenti",
+      "companion_app": "Mobil Cüzdan",
+      "browser_extension": "Tarayıcı Eklentisi"
+    },
     "learn_more": {
       "label": "Daha fazla bilgi edinin"
     }

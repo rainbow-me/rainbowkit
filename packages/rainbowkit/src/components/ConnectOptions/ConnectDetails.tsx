@@ -20,6 +20,7 @@ import { QRCode } from '../QRCode/QRCode';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
@@ -52,6 +53,8 @@ export function GetDetail({
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <Box
@@ -112,11 +115,11 @@ export function GetDetail({
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
-                        ? 'Mobile Wallet and Extension'
+                        ? i18n.t('intro.wallet.wallet_extension')
                         : hasMobileCompanionApp
-                        ? 'Mobile Wallet'
+                        ? i18n.t('intro.wallet.companion_app')
                         : hasExtension
-                        ? 'Browser Extension'
+                        ? i18n.t('intro.wallet.browser_extension')
                         : null}
                     </Text>
                   </Box>
