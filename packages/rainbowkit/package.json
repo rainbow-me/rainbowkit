@@ -59,10 +59,10 @@
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",
-    "viem": "~1.10.7",
+    "viem": "~1.12.2",
     "vitest": "^0.33.0",
-    "wagmi": "~1.4.1",
-    "@wagmi/core": "~1.4.1"
+    "wagmi": "~1.4.2",
+    "@wagmi/core": "~1.4.2"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.9.1",
