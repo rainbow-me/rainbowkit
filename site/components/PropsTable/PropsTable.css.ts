@@ -1,9 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 
+// biome-ignore format: design system keys
 export const regionWrapper = style({
-  overflow: 'auto',
-  position: 'relative',
+  'overflow': 'auto',
+  'position': 'relative',
   ':focus': { outline: 0 },
 });
 

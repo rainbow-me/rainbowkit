@@ -72,6 +72,7 @@ export const themeVars = createGlobalThemeContract(
   (_, path) => `rk-${path.join('-')}`,
 );
 
+// biome-ignore format: design system keys
 const spacing = {
   '-1': '-1px',
   '0': '0',
@@ -96,6 +97,7 @@ const spacing = {
   '64': '64px',
 };
 
+// biome-ignore format: design system keys
 const dimensions = {
   '1': '1px',
   '2': '2px',
@@ -115,8 +117,8 @@ const dimensions = {
   '54': '54px',
   '60': '60px',
   '200': '200px',
-  full: '100%',
-  max: 'max-content',
+  'full': '100%',
+  'max': 'max-content',
 };
 
 const flexAlignment = ['flex-start', 'flex-end', 'center'] as const;
@@ -146,6 +148,7 @@ export const mapResponsiveValue = createMapValueFn(responsiveProperties);
 export const normalizeResponsiveValue =
   createNormalizeValueFn(responsiveProperties);
 
+// biome-ignore format: design system keys
 const unresponsiveProperties = defineProperties({
   properties: {
     alignSelf: flexAlignment,
@@ -157,7 +160,7 @@ const unresponsiveProperties = defineProperties({
       '10': '10px',
       '13': '13px',
       '25%': '25%',
-      full: '9999px',
+      'full': '9999px',
     },
     borderStyle: {
       solid: 'solid',

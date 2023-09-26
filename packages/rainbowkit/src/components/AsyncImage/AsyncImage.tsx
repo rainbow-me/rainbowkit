@@ -51,11 +51,12 @@ export function AsyncImage({
     >
       <Box
         {...(isRemoteImage
-          ? {
+          ? // biome-ignore format: design system keys
+            {
               'aria-hidden': true,
-              as: 'img',
-              onLoad: setRemoteImageLoaded,
-              src: src,
+              'as': 'img',
+              'onLoad': setRemoteImageLoaded,
+              'src': src,
             }
           : {
               backgroundSize: 'cover',

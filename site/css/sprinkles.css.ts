@@ -36,18 +36,19 @@ const negativeSpace = {
   '-12': `${calc(vars.space['12']).negate()}`,
 };
 
+// biome-ignore format: design system keys
 const extendedSpace = {
   '1/4': '25%',
   '1/3': '33.333333%',
   '1/2': '50%',
   '2/3': '66.666667%',
   '3/4': '75%',
-  full: '100%',
-  auto: 'auto',
-  screenSm: breakpoints.sm,
-  screenMd: breakpoints.md,
-  screenLg: breakpoints.lg,
-  screenXl: breakpoints.xl,
+  'full': '100%',
+  'auto': 'auto',
+  'screenSm': breakpoints.sm,
+  'screenMd': breakpoints.md,
+  'screenLg': breakpoints.lg,
+  'screenXl': breakpoints.xl,
 };
 
 const margin = { ...vars.space, auto: 'auto' };
@@ -150,10 +151,11 @@ const responsiveProperties = defineProperties({
   },
 });
 
+// biome-ignore format: design system keys
 const unresponsiveProperties = defineProperties({
   properties: {
     aspectRatio: {
-      auto: 'auto',
+      'auto': 'auto',
       '1/1': '1 / 1',
       '2/1': '2 / 1',
       '4/1': '4 / 1',
@@ -205,7 +207,7 @@ const unresponsiveProperties = defineProperties({
       '50': 50,
       '75': 75,
       '100': 100,
-      auto: 'auto',
+      'auto': 'auto',
     },
   },
 });
