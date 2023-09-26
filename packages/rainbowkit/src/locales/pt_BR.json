@@ -9,8 +9,18 @@
       "title": "Uma Nova Forma de Fazer Login",
       "description": "Ao invés de criar novas contas e senhas em cada site, apenas conecte sua carteira."
     },
+    "ethereum": {
+      "title": "Novo nas carteiras Ethereum?"
+    },
     "wallet": {
       "recent": "Recente",
+      "indicators": {
+        "opening": "Abrindo",
+        "not_installed": "não está instalado",
+        "not_available": "não está disponível",
+        "confirm": "Confirme a conexão na extensão",
+        "retry": "TENTAR NOVAMENTE"
+      },
       "scan": {
         "title": "Escanear com",
         "phone": "seu telefone",

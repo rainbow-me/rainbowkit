@@ -9,8 +9,18 @@
       "title": "新しいログイン方法",
       "description": "各ウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続してください。"
     },
+    "ethereum": {
+      "title": "Ethereumウォレットは初めてですか？"
+    },
     "wallet": {
       "recent": "最近の",
+      "indicators": {
+        "opening": "開いています",
+        "not_installed": "がインストールされていません",
+        "not_available": "は利用できません",
+        "confirm": "拡張機能で接続を確認",
+        "retry": "リトライ"
+      },
       "scan": {
         "title": "スキャン",
         "phone": "あなたの電話で",

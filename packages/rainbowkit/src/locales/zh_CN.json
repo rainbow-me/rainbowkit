@@ -9,8 +9,18 @@
       "title": "新的登录方式",
       "description": "不用在每个网站上创建新的账户和密码，只需连接您的钱包。"
     },
+    "ethereum": {
+      "title": "对Ethereum钱包不熟悉？"
+    },
     "wallet": {
       "recent": "最近的",
+      "indicators": {
+        "opening": "正在打开",
+        "not_installed": "未安装",
+        "not_available": "不可用",
+        "confirm": "在扩展中确认连接",
+        "retry": "重试"
+      },
       "scan": {
         "title": "用",
         "phone": "您的手机扫描",

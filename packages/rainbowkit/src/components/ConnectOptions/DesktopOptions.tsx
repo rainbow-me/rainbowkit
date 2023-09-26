@@ -404,7 +404,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 >
                   <Box paddingY="4">
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      New to Ethereum wallets?
+                      {i18n.t('intro.ethereum.title')}
                     </Text>
                   </Box>
                   <Box
@@ -426,7 +426,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       transition="default"
                     >
                       <Text color="accentColor" size="14" weight="bold">
-                        Learn More
+                        {i18n.t('intro.learn_more.label')}
                       </Text>
                     </Box>
                   </Box>

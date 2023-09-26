@@ -279,10 +279,12 @@ export function ConnectDetail({
             >
               <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? `Opening ${name}...`
+                  ? `${i18n.t('intro.wallet.indicators.opening')} ${name}...`
                   : hasExtension
-                  ? `${name} is not installed`
-                  : `${name} is not available`}
+                  ? `${name} ${i18n.t('intro.wallet.indicators.not_installed')}`
+                  : `${name} ${i18n.t(
+                      'intro.wallet.indicators.not_available'
+                    )}`}
               </Text>
               {!ready && hasExtension ? (
                 <Box paddingTop="20">
@@ -307,7 +309,7 @@ export function ConnectDetail({
                       textAlign="center"
                       weight="medium"
                     >
-                      Confirm connection in the extension
+                      {i18n.t('intro.wallet.indicators.confirm')}
                     </Text>
                   </Box>
                   <Box
@@ -320,7 +322,7 @@ export function ConnectDetail({
                   >
                     {connectionError ? (
                       <ActionButton
-                        label="RETRY"
+                        label={i18n.t('intro.wallet.indicators.retry')}
                         onClick={
                           getDesktopDeepLink
                             ? async () => {

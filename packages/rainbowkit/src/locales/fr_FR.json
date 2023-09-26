@@ -9,8 +9,18 @@
       "title": "Une nouvelle façon de se connecter",
       "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site web, connectez simplement votre portefeuille."
     },
+    "ethereum": {
+      "title": "Nouveau dans les portefeuilles Ethereum?"
+    },
     "wallet": {
       "recent": "Récemment",
+      "indicators": {
+        "opening": "Ouverture",
+        "not_installed": "n'est pas installé",
+        "not_available": "n'est pas disponible",
+        "confirm": "Confirmez la connexion dans l'extension",
+        "retry": "RÉESSAYER"
+      },
       "scan": {
         "title": "Scanner avec",
         "phone": "votre téléphone",

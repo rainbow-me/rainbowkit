@@ -9,8 +9,18 @@
       "title": "Una nueva forma de iniciar sesión",
       "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu billetera."
     },
+    "ethereum": {
+      "title": "¿Nuevo en carteras de Ethereum?"
+    },
     "wallet": {
       "recent": "Reciente",
+      "indicators": {
+        "opening": "Abriendo",
+        "not_installed": "no está instalado",
+        "not_available": "no está disponible",
+        "confirm": "Confirma la conexión en la extensión",
+        "retry": "REINTENTAR"
+      },
       "scan": {
         "title": "Escanea con",
         "phone": "tu teléfono",

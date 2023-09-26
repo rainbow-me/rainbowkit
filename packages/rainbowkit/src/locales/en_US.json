@@ -9,8 +9,18 @@
       "title": "A New Way to Log In",
       "description": "Instead of creating new accounts and passwords on every website, just connect your wallet."
     },
+    "ethereum": {
+      "title": "New to Ethereum wallets?"
+    },
     "wallet": {
       "recent": "Recent",
+      "indicators": {
+        "opening": "Opening",
+        "not_installed": "is not installed",
+        "not_available": "is not available",
+        "confirm": "Confirm connection in the extension",
+        "retry": "RETRY"
+      },
       "scan": {
         "title": "Scan with",
         "phone": "your phone",

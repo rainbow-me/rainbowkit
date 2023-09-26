@@ -9,8 +9,18 @@
       "title": "Yeni Bir Giriş Yolu",
       "description": "Her web sitesinde yeni hesaplar ve şifreler oluşturmak yerine, sadece cüzdanınızı bağlayın."
     },
+    "ethereum": {
+      "title": "Ethereum cüzdanlarına yeni mi?"
+    },
     "wallet": {
       "recent": "Son",
+      "indicators": {
+        "opening": "Açılıyor",
+        "not_installed": "yüklenmedi",
+        "not_available": "mevcut değil",
+        "confirm": "Bağlantıyı eklentide onaylayın",
+        "retry": "YENİDEN DENE"
+      },
       "scan": {
         "title": "Tarama yap",
         "phone": "telefonunuzla",

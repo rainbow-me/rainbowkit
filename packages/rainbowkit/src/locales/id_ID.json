@@ -9,8 +9,18 @@
       "title": "Cara Baru untuk Masuk",
       "description": "Alih-alih membuat akun dan kata sandi baru di setiap situs web, cukup hubungkan dompet Anda."
     },
+    "ethereum": {
+      "title": "Baru di dompet Ethereum?"
+    },
     "wallet": {
       "recent": "Baru",
+      "indicators": {
+        "opening": "Membuka",
+        "not_installed": "tidak terpasang",
+        "not_available": "tidak tersedia",
+        "confirm": "Konfirmasi koneksi di ekstensi",
+        "retry": "COBA LAGI"
+      },
       "scan": {
         "title": "Pindai dengan",
         "phone": "ponsel Anda",
