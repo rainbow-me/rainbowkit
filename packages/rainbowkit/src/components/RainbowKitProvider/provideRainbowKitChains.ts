@@ -128,7 +128,7 @@ const chainMetadataById = Object.fromEntries(
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
   chains: Chain[],
 ): Chain[] =>
-  chains.map(chain => {
+  chains.map((chain) => {
     const chainMeta = chainMetadataById[chain.id] ?? {};
     return {
       ...chainMeta,
