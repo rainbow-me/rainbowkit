@@ -61,5 +61,25 @@
     "learn_more": {
       "label": "Pelajari lebih lanjut"
     }
+  },
+
+  "wallet_connectors": {
+    "argent": {
+      "step1": {
+        "description": "Taruh Argent di layar utama Anda untuk akses dompet lebih cepat.",
+        "step": "pasang",
+        "title": "Buka aplikasi Argent"
+      },
+      "step2": {
+        "description": "Buat dompet dan nama pengguna, atau impor dompet yang sudah ada.",
+        "step": "buat",
+        "title": "Buat atau Impor Dompet"
+      },
+      "step3": {
+        "description": "Setelah Anda memindai, akan muncul prompt koneksi untuk menghubungkan dompet Anda.",
+        "step": "pindai",
+        "title": "Tekan tombol Pindai QR"
+      }
+    }
   }
 }

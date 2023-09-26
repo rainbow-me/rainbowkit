@@ -61,5 +61,25 @@
     "learn_more": {
       "label": "Daha fazla bilgi edinin"
     }
+  },
+
+  "wallet_connectors": {
+    "argent": {
+      "step1": {
+        "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
+        "step": "kur",
+        "title": "Argent uygulamasını açın"
+      },
+      "step2": {
+        "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
+        "step": "oluştur",
+        "title": "Cüzdan Oluştur veya İçe Aktar"
+      },
+      "step3": {
+        "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi görünecektir.",
+        "step": "tara",
+        "title": "QR Tarat düğmesine dokunun"
+      }
+    }
   }
 }

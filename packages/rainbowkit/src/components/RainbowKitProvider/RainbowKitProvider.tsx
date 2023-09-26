@@ -22,6 +22,7 @@ import {
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { useFingerprint } from './useFingerprint';
+import { useI18nLocalStorage } from './useI18nLocalStorage';
 import { usePreloadImages } from './usePreloadImages';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
@@ -86,6 +87,7 @@ export function RainbowKitProvider({
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
+  useI18nLocalStorage({ language });
 
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 

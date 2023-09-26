@@ -1,5 +1,5 @@
 import { I18n } from 'i18n-js';
-
+import { storageKey as languageLocaleKey } from '../components/RainbowKitProvider/useI18nLocalStorage';
 import en_US from './en_US.json';
 import es_419 from './es_419.json';
 import fr_FR from './fr_FR.json';
@@ -41,3 +41,23 @@ export const i18n = new I18n({
 i18n.defaultLocale = Language.EN_US;
 i18n.locale = Language.EN_US;
 i18n.enableFallback = true;
+
+export const getLocalStorageI18nLocale = (): Language => {
+  const localeLocalStorage =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem(languageLocaleKey)
+      : null;
+
+  if (localeLocalStorage) {
+    return localeLocalStorage as Language;
+  }
+
+  return Language.EN_US;
+};
+
+export const translateWithLocaleLocalStorage = (key: string) => {
+  const locale = getLocalStorageI18nLocale();
+  i18n.locale = locale;
+  const translation = i18n.t(key);
+  return translation;
+};

@@ -61,5 +61,27 @@
     "learn_more": {
       "label": "En savoir plus"
     }
+  },
+
+  "wallet_connectors": {
+    "qr_code": {
+      "argent": {
+        "step1": {
+          "description": "Mettez Argent sur votre écran d'accueil pour accéder plus rapidement à votre portefeuille.",
+          "step": "installer",
+          "title": "Ouvrez l'application Argent"
+        },
+        "step2": {
+          "description": "Créez un portefeuille et un nom d'utilisateur, ou importez un portefeuille existant.",
+          "step": "créer",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille.",
+          "step": "scanner",
+          "title": "Appuyez sur le bouton Scanner QR"
+        }
+      }
+    }
   }
 }

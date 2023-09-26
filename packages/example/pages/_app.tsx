@@ -252,7 +252,7 @@ function RainbowKitApp({
 
   const appContextProps: AppContextProps = { authEnabled };
 
-  const locales = router.locales || [];
+  const locales = router.locales!;
 
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
