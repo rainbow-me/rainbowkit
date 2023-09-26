@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -65,21 +66,31 @@ export const omniWallet = ({
           learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
-              description:
-                'Add Omni to your home screen for faster access to your wallet.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step1.description'
+              ),
               step: 'install',
-              title: 'Open the Omni app',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step1.title'
+              ),
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step2.description'
+              ),
               step: 'create',
-              title: 'Create or Import a Wallet',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step2.title'
+              ),
             },
             {
-              description:
-                'Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step3.description'
+              ),
               step: 'scan',
-              title: 'Tap the QR icon and scan',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.omni.step3.title'
+              ),
             },
           ],
         },

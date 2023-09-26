@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -89,22 +90,31 @@ export const bifrostWallet = ({
                   'https://support.bifrostwallet.com/en/articles/6886814-how-to-use-walletconnect',
                 steps: [
                   {
-                    description:
-                      'We recommend putting Bifrost Wallet on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the Bifrost Wallet app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Create or import a wallet using your recovery phrase.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bifrost.step3.title'
+                    ),
                   },
                 ],
               },

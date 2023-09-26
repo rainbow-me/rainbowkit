@@ -64,21 +64,23 @@
   },
 
   "wallet_connectors": {
-    "argent": {
-      "step1": {
-        "description": "将Argent放在您的主屏幕上，以更快地访问您的钱包。",
-        "step": "安装",
-        "title": "打开Argent应用"
-      },
-      "step2": {
-        "description": "创建一个钱包和用户名，或导入现有的钱包。",
-        "step": "创建",
-        "title": "创建或导入一个钱包"
-      },
-      "step3": {
-        "description": "扫描后，将出现一个连接提示，让您连接您的钱包。",
-        "step": "扫描",
-        "title": "点击扫描QR按钮"
+    "qr_code": {
+      "argent": {
+        "step1": {
+          "description": "将Argent放在您的主屏幕上，以更快地访问您的钱包。",
+          "step": "安装",
+          "title": "打开Argent应用"
+        },
+        "step2": {
+          "description": "创建一个钱包和用户名，或导入现有的钱包。",
+          "step": "创建",
+          "title": "创建或导入一个钱包"
+        },
+        "step3": {
+          "description": "扫描后，将出现一个连接提示，让您连接您的钱包。",
+          "step": "扫描",
+          "title": "点击扫描QR按钮"
+        }
       }
     }
   }

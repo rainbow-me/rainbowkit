@@ -64,21 +64,23 @@
   },
 
   "wallet_connectors": {
-    "argent": {
-      "step1": {
-        "description": "Coloque o Argent na sua tela inicial para acessar sua carteira mais rapidamente.",
-        "step": "instalar",
-        "title": "Abra o aplicativo Argent"
-      },
-      "step2": {
-        "description": "Crie uma carteira e um nome de usuário, ou importe uma carteira existente.",
-        "step": "criar",
-        "title": "Criar ou Importar uma Carteira"
-      },
-      "step3": {
-        "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-        "step": "escanear",
-        "title": "Toque no botão Escanear QR"
+    "qr_code": {
+      "argent": {
+        "step1": {
+          "description": "Coloque o Argent na sua tela inicial para acessar sua carteira mais rapidamente.",
+          "step": "instalar",
+          "title": "Abra o aplicativo Argent"
+        },
+        "step2": {
+          "description": "Crie uma carteira e um nome de usuário, ou importe uma carteira existente.",
+          "step": "criar",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "step": "escanear",
+          "title": "Toque no botão Escanear QR"
+        }
       }
     }
   }

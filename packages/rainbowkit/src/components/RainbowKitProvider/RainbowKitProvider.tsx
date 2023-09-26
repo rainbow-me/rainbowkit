@@ -88,7 +88,6 @@ export function RainbowKitProvider({
   usePreloadImages();
   useFingerprint();
   useI18nLocalStorage({ language });
-
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {

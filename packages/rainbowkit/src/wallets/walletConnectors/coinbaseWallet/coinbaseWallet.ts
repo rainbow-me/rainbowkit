@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 
@@ -63,22 +64,31 @@ export const coinbaseWallet = ({
                     'https://coinbase.com/wallet/articles/getting-started-mobile',
                   steps: [
                     {
-                      description:
-                        'We recommend putting Coinbase Wallet on your home screen for quicker access.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step1.description'
+                      ),
                       step: 'install',
-                      title: 'Open the Coinbase Wallet app',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step1.title'
+                      ),
                     },
                     {
-                      description:
-                        'You can easily backup your wallet using the cloud backup feature.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step2.description'
+                      ),
                       step: 'create',
-                      title: 'Create or Import a Wallet',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step2.title'
+                      ),
                     },
                     {
-                      description:
-                        'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step3.description'
+                      ),
                       step: 'scan',
-                      title: 'Tap the scan button',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.qr_code.coinbase.step3.title'
+                      ),
                     },
                   ],
                 },
@@ -89,22 +99,31 @@ export const coinbaseWallet = ({
                     'https://coinbase.com/wallet/articles/getting-started-extension',
                   steps: [
                     {
-                      description:
-                        'We recommend pinning Coinbase Wallet to your taskbar for quicker access to your wallet.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step1.description'
+                      ),
                       step: 'install',
-                      title: 'Install the Coinbase Wallet extension',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step1.title'
+                      ),
                     },
                     {
-                      description:
-                        'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step2.description'
+                      ),
                       step: 'create',
-                      title: 'Create or Import a Wallet',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step2.title'
+                      ),
                     },
                     {
-                      description:
-                        'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                      description: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step3.description'
+                      ),
                       step: 'refresh',
-                      title: 'Refresh your browser',
+                      title: translateWithLocaleLocalStorage(
+                        'wallet_connectors.extension.coinbase.step3.title'
+                      ),
                     },
                   ],
                 },

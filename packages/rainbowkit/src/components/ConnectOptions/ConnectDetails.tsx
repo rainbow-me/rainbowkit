@@ -745,6 +745,8 @@ export function InstructionMobileDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -800,7 +802,10 @@ export function InstructionMobileDetail({
         justifyContent="center"
         marginBottom="16"
       >
-        <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
+        <ActionButton
+          label={i18n.t('intro.wallet.connect.label')}
+          onClick={() => connectWallet(wallet)}
+        />
         <Box
           as="a"
           className={touchableStyles({ active: 'shrink', hover: 'grow' })}
@@ -814,7 +819,7 @@ export function InstructionMobileDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            Learn More
+            {i18n.t('intro.learn_more.label')}
           </Text>
         </Box>
       </Box>
@@ -827,6 +832,8 @@ export function InstructionExtensionDetail({
 }: {
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -883,7 +890,7 @@ export function InstructionExtensionDetail({
         marginBottom="16"
       >
         <ActionButton
-          label="Refresh"
+          label={i18n.t('intro.wallet.refresh.label')}
           onClick={window.location.reload.bind(window.location)}
         />
         <Box
@@ -899,7 +906,7 @@ export function InstructionExtensionDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            Learn More
+            {i18n.t('intro.learn_more.label')}
           </Text>
         </Box>
       </Box>

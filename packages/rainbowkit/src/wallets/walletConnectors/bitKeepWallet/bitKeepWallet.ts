@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -93,22 +94,31 @@ export const bitKeepWallet = ({
             learnMoreUrl: 'https://study.bitkeep.com',
             steps: [
               {
-                description:
-                  'We recommend pinning BitKeep to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the BitKeep extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.bitkeep.step3.description'
+                ),
               },
             ],
           },
@@ -124,22 +134,31 @@ export const bitKeepWallet = ({
                 learnMoreUrl: 'https://study.bitkeep.com',
                 steps: [
                   {
-                    description:
-                      'We recommend putting BitKeep on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the BitKeep app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.bitkeep.step3.title'
+                    ),
                   },
                 ],
               },

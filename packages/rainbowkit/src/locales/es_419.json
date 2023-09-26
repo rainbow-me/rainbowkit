@@ -64,21 +64,23 @@
   },
 
   "wallet_connectors": {
-    "argent": {
-      "step1": {
-        "description": "Pon Argent en tu pantalla principal para acceder más rápidamente a tu billetera.",
-        "step": "instalar",
-        "title": "Abre la app de Argent"
-      },
-      "step2": {
-        "description": "Crea una billetera y nombre de usuario, o importa una billetera existente.",
-        "step": "crear",
-        "title": "Crea o Importa una Billetera"
-      },
-      "step3": {
-        "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
-        "step": "escanear",
-        "title": "Toca el botón Escanear QR"
+    "qr_code": {
+      "argent": {
+        "step1": {
+          "description": "Pon Argent en tu pantalla principal para acceder más rápidamente a tu billetera.",
+          "step": "instalar",
+          "title": "Abre la app de Argent"
+        },
+        "step2": {
+          "description": "Crea una billetera y nombre de usuario, o importa una billetera existente.",
+          "step": "crear",
+          "title": "Crea o Importa una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "step": "escanear",
+          "title": "Toca el botón Escanear QR"
+        }
       }
     }
   }

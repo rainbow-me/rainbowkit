@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -99,22 +100,31 @@ export const okxWallet = ({
                 learnMoreUrl: 'https://okx.com/web3/',
                 steps: [
                   {
-                    description:
-                      'We recommend putting OKX Wallet on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the OKX Wallet app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.okx.step3.title'
+                    ),
                   },
                 ],
               },
@@ -125,22 +135,31 @@ export const okxWallet = ({
             learnMoreUrl: 'https://okx.com/web3/',
             steps: [
               {
-                description:
-                  'We recommend pinning OKX Wallet to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the OKX Wallet extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.okx.step3.title'
+                ),
               },
             ],
           },

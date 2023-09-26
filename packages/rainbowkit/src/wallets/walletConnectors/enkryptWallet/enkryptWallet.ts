@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import type { Wallet } from '../../Wallet';
 
 declare global {
@@ -59,22 +60,31 @@ export const enkryptWallet = ({
             learnMoreUrl: 'https://blog.enkrypt.com/what-is-a-web3-wallet/',
             steps: [
               {
-                description:
-                  'We recommend pinning Enkrypt Wallet to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the Enkrypt Wallet extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.enkrypt.step3.title'
+                ),
               },
             ],
           },

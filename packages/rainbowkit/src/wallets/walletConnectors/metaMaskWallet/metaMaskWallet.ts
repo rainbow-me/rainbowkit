@@ -2,6 +2,7 @@
 import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -153,22 +154,31 @@ export const metaMaskWallet = ({
                 learnMoreUrl: 'https://metamask.io/faqs/',
                 steps: [
                   {
-                    description:
-                      'We recommend putting MetaMask on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the MetaMask app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
-                    step: 'scan',
-                    title: 'Tap the scan button',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step3.description'
+                    ),
+                    step: 'refresh',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.metamask.step3.title'
+                    ),
                   },
                 ],
               },
@@ -179,22 +189,31 @@ export const metaMaskWallet = ({
             learnMoreUrl: 'https://metamask.io/faqs/',
             steps: [
               {
-                description:
-                  'We recommend pinning MetaMask to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the MetaMask extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.metamask.step3.title'
+                ),
               },
             ],
           },

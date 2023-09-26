@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { i18n } from '../../../locales';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -70,23 +70,31 @@ export const argentWallet = ({
             learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
             steps: [
               {
-                description: i18n.t(
+                description: translateWithLocaleLocalStorage(
                   'wallet_connectors.qr_code.argent.step1.description'
                 ),
                 step: 'install',
-                title: i18n.t('wallet_connectors.qr_code.argent.step1.title'),
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.argent.step1.title'
+                ),
               },
               {
-                description:
-                  'Create a wallet and username, or import an existing wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.argent.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.argent.step2.title'
+                ),
               },
               {
-                description:
-                  'After you scan, a connection prompt will appear for you to connect your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.argent.step3.description'
+                ),
                 step: 'scan',
-                title: 'Tap the Scan QR button',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.argent.step3.title'
+                ),
               },
             ],
           },

@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
@@ -131,22 +132,31 @@ export const coin98Wallet = ({
                 learnMoreUrl: 'https://coin98.com/wallet',
                 steps: [
                   {
-                    description:
-                      'We recommend putting Coin98 Wallet on your home screen for faster access to your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the Coin98 Wallet app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the WalletConnect button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.coin98.step3.title'
+                    ),
                   },
                 ],
               },
@@ -157,21 +167,31 @@ export const coin98Wallet = ({
             learnMoreUrl: 'https://coin98.com/wallet',
             steps: [
               {
-                description:
-                  'Click at the top right of your browser and pin Coin98 Wallet for easy access.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the Coin98 Wallet extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step1.title'
+                ),
               },
               {
-                description: 'Create a new wallet or import an existing one.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up Coin98 Wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.coin98.step3.title'
+                ),
               },
             ],
           },

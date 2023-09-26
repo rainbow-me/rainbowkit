@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -77,22 +78,31 @@ export const foxWallet = ({
                 learnMoreUrl: 'https://foxwallet.com',
                 steps: [
                   {
-                    description:
-                      'We recommend putting FoxWallet on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the FoxWallet app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.fox.step3.title'
+                    ),
                   },
                 ],
               },

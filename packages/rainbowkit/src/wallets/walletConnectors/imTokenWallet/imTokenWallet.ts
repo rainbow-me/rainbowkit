@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -68,21 +69,31 @@ export const imTokenWallet = ({
               : 'https://support.token.im/hc/en-us/categories/360000925393',
           steps: [
             {
-              description:
-                'Put imToken app on your home screen for faster access to your wallet.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step1.description'
+              ),
               step: 'install',
-              title: 'Open the imToken app',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step1.title'
+              ),
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step2.description'
+              ),
               step: 'create',
-              title: 'Create or Import a Wallet',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step2.title'
+              ),
             },
             {
-              description:
-                'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step3.description'
+              ),
               step: 'scan',
-              title: 'Tap Scanner Icon in top right corner',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.im_token.step3.title'
+              ),
             },
           ],
         },

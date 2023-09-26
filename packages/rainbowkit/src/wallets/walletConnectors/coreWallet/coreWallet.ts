@@ -3,6 +3,7 @@ import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WindowProvider } from 'wagmi/dist/window';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
@@ -117,22 +118,31 @@ export const coreWallet = ({
                   'https://support.avax.network/en/articles/6115608-core-mobile-how-to-add-the-core-mobile-to-my-phone',
                 steps: [
                   {
-                    description:
-                      'We recommend putting Core on your home screen for faster access to your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the Core app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the WalletConnect button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.core.step3.title'
+                    ),
                   },
                 ],
               },
@@ -143,22 +153,31 @@ export const coreWallet = ({
             learnMoreUrl: 'https://extension.core.app/',
             steps: [
               {
-                description:
-                  'We recommend pinning Core to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the Core extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.core.step3.title'
+                ),
               },
             ],
           },
