@@ -87,7 +87,7 @@ export function TxList({ address }: TxListProps) {
         )}
         <Box display="flex" flexDirection="column" gap="4">
           {hasTransactions ? (
-            visibleTxs.map(tx => <TxItem key={tx.hash} tx={tx} />)
+            visibleTxs.map((tx) => <TxItem key={tx.hash} tx={tx} />)
           ) : (
             <>
               <Box padding={mobile ? '12' : '8'}>

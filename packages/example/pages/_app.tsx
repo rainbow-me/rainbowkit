@@ -1,15 +1,20 @@
-import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import './global.css';
+
 import {
   AvatarComponent,
+  DisclaimerComponent,
+  RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
-  DisclaimerComponent,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
+import {
+  GetSiweMessageOptions,
+  RainbowKitSiweNextAuthProvider,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
   bifrostWallet,
@@ -39,21 +44,17 @@ import {
   xdefiWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import {
-  GetSiweMessageOptions,
-  RainbowKitSiweNextAuthProvider,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
 
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import {
+  WagmiConfig,
   configureChains,
   createConfig,
   useDisconnect,
-  WagmiConfig,
 } from 'wagmi';
 import {
   arbitrum,
@@ -85,7 +86,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
-  ]
+  ],
 );
 
 const projectId =
@@ -307,7 +308,7 @@ function RainbowKitApp({
                           checked={authEnabled}
                           id="authEnabled"
                           name="authEnabled"
-                          onChange={e => {
+                          onChange={(e) => {
                             setAuthEnabled(e.target.checked);
 
                             // Reset connection and auth state when
@@ -338,7 +339,7 @@ function RainbowKitApp({
                           checked={showRecentTransactions}
                           id="showRecentTransactions"
                           name="showRecentTransactions"
-                          onChange={e =>
+                          onChange={(e) =>
                             setShowRecentTransactions(e.target.checked)
                           }
                           type="checkbox"
@@ -359,7 +360,7 @@ function RainbowKitApp({
                           checked={coolModeEnabled}
                           id="coolModeEnabled"
                           name="coolModeEnabled"
-                          onChange={e => setCoolModeEnabled(e.target.checked)}
+                          onChange={(e) => setCoolModeEnabled(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -378,7 +379,7 @@ function RainbowKitApp({
                           checked={showDisclaimer}
                           id="showDisclaimer"
                           name="showDisclaimer"
-                          onChange={e => setShowDisclaimer(e.target.checked)}
+                          onChange={(e) => setShowDisclaimer(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -397,7 +398,7 @@ function RainbowKitApp({
                           checked={customAvatar}
                           id="customAvatar"
                           name="customAvatar"
-                          onChange={e => setCustomAvatar(e.target.checked)}
+                          onChange={(e) => setCustomAvatar(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -406,12 +407,12 @@ function RainbowKitApp({
                       <td>modalSize</td>
                       <td>
                         <select
-                          onChange={e =>
+                          onChange={(e) =>
                             setModalSize(e.target.value as ModalSize)
                           }
                           value={modalSize}
                         >
-                          {modalSizes.map(size => (
+                          {modalSizes.map((size) => (
                             <option key={size} value={size}>
                               {size}
                             </option>
@@ -423,16 +424,16 @@ function RainbowKitApp({
                       <td>initialChain</td>
                       <td>
                         <select
-                          onChange={e =>
+                          onChange={(e) =>
                             setInitialChainId(
                               e.target.value
                                 ? parseInt(e.target.value, 10)
-                                : undefined
+                                : undefined,
                             )
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...chains].map(chain => (
+                          {[undefined, ...chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
@@ -467,7 +468,7 @@ function RainbowKitApp({
                           <input
                             checked={themeName === selectedThemeName}
                             name="theme"
-                            onChange={e =>
+                            onChange={(e) =>
                               setThemeName(e.target.value as ThemeName)
                             }
                             type="radio"
@@ -488,12 +489,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {fontStacks.map(fontStack => (
+                      {fontStacks.map((fontStack) => (
                         <label key={fontStack} style={{ userSelect: 'none' }}>
                           <input
                             checked={fontStack === selectedFontStack}
                             name="fontStack"
-                            onChange={e =>
+                            onChange={(e) =>
                               setFontStack(e.target.value as FontStack)
                             }
                             type="radio"
@@ -514,12 +515,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {accentColors.map(accentColor => (
+                      {accentColors.map((accentColor) => (
                         <label key={accentColor} style={{ userSelect: 'none' }}>
                           <input
                             checked={accentColor === selectedAccentColor}
                             name="accentColor"
-                            onChange={e =>
+                            onChange={(e) =>
                               setAccentColor(e.target.value as AccentColor)
                             }
                             type="radio"
@@ -540,12 +541,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {radiusScales.map(radiusScale => (
+                      {radiusScales.map((radiusScale) => (
                         <label key={radiusScale} style={{ userSelect: 'none' }}>
                           <input
                             checked={radiusScale === selectedRadiusScale}
                             name="radiusScale"
-                            onChange={e =>
+                            onChange={(e) =>
                               setRadiusScale(e.target.value as RadiusScale)
                             }
                             type="radio"
@@ -566,12 +567,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {overlayBlurs.map(overlayBlur => (
+                      {overlayBlurs.map((overlayBlur) => (
                         <label key={overlayBlur} style={{ userSelect: 'none' }}>
                           <input
                             checked={overlayBlur === selectedOverlayBlur}
                             name="overlayBlur"
-                            onChange={e =>
+                            onChange={(e) =>
                               setOverlayBlur(e.target.value as OverlayBlur)
                             }
                             type="radio"
@@ -595,7 +596,7 @@ function RainbowKitApp({
 export default function App(
   appProps: AppProps<{
     session: Session;
-  }>
+  }>,
 ) {
   return (
     <>

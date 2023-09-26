@@ -8,7 +8,7 @@ import { WalletInstance } from './Wallet';
 import { injectedWallet } from './walletConnectors';
 
 const getWalletInstances = (
-  connector: Connector & { _wallets?: WalletInstance[] }
+  connector: Connector & { _wallets?: WalletInstance[] },
 ) => {
   if (!connector._wallets) {
     throw new Error('Wallet instances not found on connector');
@@ -47,7 +47,7 @@ describe('connectorsForWallets', () => {
       expect(getWalletInstances(connectors[0]).length).toBe(1);
       expect(getWalletInstances(connectors[0])[0].index).toBe(0);
       expect(getWalletInstances(connectors[0])[0].name).toBe(
-        'Test WalletConnect Wallet'
+        'Test WalletConnect Wallet',
       );
 
       expect(getWalletInstances(connectors[1]).length).toBe(1);
@@ -93,13 +93,13 @@ describe('connectorsForWallets', () => {
       expect(getWalletInstances(connectors[0]).length).toBe(1);
       expect(getWalletInstances(connectors[0])[0].index).toBe(0);
       expect(getWalletInstances(connectors[0])[0].name).toBe(
-        'Test Not Installed Wallet'
+        'Test Not Installed Wallet',
       );
 
       expect(getWalletInstances(connectors[1]).length).toBe(1);
       expect(getWalletInstances(connectors[1])[0].index).toBe(1);
       expect(getWalletInstances(connectors[1])[0].name).toBe(
-        'Test WalletConnect Wallet'
+        'Test WalletConnect Wallet',
       );
 
       expect(getWalletInstances(connectors[2]).length).toBe(1);
@@ -150,26 +150,26 @@ describe('connectorsForWallets', () => {
       expect(getWalletInstances(connectors[0]).length).toBe(1);
       expect(getWalletInstances(connectors[0])[0].index).toBe(1);
       expect(getWalletInstances(connectors[0])[0].name).toBe(
-        'Test Not Installed Wallet'
+        'Test Not Installed Wallet',
       );
       expect(getWalletInstances(connectors[0])[0].groupName).toBe(
-        'Test Group 1'
+        'Test Group 1',
       );
 
       expect(getWalletInstances(connectors[1]).length).toBe(1);
       expect(getWalletInstances(connectors[1])[0].index).toBe(2);
       expect(getWalletInstances(connectors[1])[0].name).toBe(
-        'Test WalletConnect Wallet'
+        'Test WalletConnect Wallet',
       );
       expect(getWalletInstances(connectors[1])[0].groupName).toBe(
-        'Test Group 2'
+        'Test Group 2',
       );
 
       expect(getWalletInstances(connectors[2]).length).toBe(1);
       expect(getWalletInstances(connectors[2])[0].index).toBe(0); // Note this is now first in the list
       expect(getWalletInstances(connectors[2])[0].name).toBe('Browser Wallet');
       expect(getWalletInstances(connectors[2])[0].groupName).toBe(
-        'Test Group 1'
+        'Test Group 1',
       );
     });
 
@@ -218,19 +218,19 @@ describe('connectorsForWallets', () => {
       expect(getWalletInstances(connectors[0]).length).toBe(1);
       expect(getWalletInstances(connectors[0])[0].index).toBe(0);
       expect(getWalletInstances(connectors[0])[0].groupName).toBe(
-        'Test Group 1'
+        'Test Group 1',
       );
       expect(getWalletInstances(connectors[0])[0].name).toBe(
-        'Test Wallet Installed'
+        'Test Wallet Installed',
       );
 
       expect(getWalletInstances(connectors[1]).length).toBe(1);
       expect(getWalletInstances(connectors[1])[0].index).toBe(2);
       expect(getWalletInstances(connectors[1])[0].groupName).toBe(
-        'Test Group 2'
+        'Test Group 2',
       );
       expect(getWalletInstances(connectors[1])[0].name).toBe(
-        'Test WalletConnect Wallet'
+        'Test WalletConnect Wallet',
       );
     });
   });

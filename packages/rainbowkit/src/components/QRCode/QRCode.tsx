@@ -6,11 +6,11 @@ import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css'
 
 const generateMatrix = (
   value: string,
-  errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel
+  errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel,
 ) => {
   const arr = Array.prototype.slice.call(
     QRCodeUtil.create(value, { errorCorrectionLevel }).modules.data,
-    0
+    0,
   );
   const sqrt = Math.sqrt(arr.length);
   return arr.reduce(
@@ -18,7 +18,7 @@ const generateMatrix = (
       (index % sqrt === 0
         ? rows.push([key])
         : rows[rows.length - 1].push(key)) && rows,
-    []
+    [],
   );
 };
 
@@ -48,7 +48,7 @@ export function QRCode({
     const dots: ReactElement[] = [];
     const matrix = generateMatrix(uri, ecl);
     const cellSize = size / matrix.length;
-    let qrList = [
+    const qrList = [
       { x: 0, y: 0 },
       { x: 1, y: 0 },
       { x: 0, y: 1 },
@@ -68,7 +68,7 @@ export function QRCode({
             width={cellSize * (7 - i * 2)}
             x={x1 + cellSize * i}
             y={y1 + cellSize * i}
-          />
+          />,
         );
       }
     });
@@ -102,7 +102,7 @@ export function QRCode({
                   fill="black"
                   key={`circle-${i}-${j}`}
                   r={cellSize / 3} // calculate size of single dots
-                />
+                />,
               );
             }
           }

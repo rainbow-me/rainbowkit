@@ -31,7 +31,7 @@ export const ModalSelection = ({
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
-  const [isMouseOver, setIsMouseOver] = useState<Boolean>(false);
+  const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
   return (
     <Box

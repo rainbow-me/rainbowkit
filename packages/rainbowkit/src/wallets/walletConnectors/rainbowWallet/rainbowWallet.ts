@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -70,7 +69,7 @@ export const rainbowWallet = ({
           : isIOS()
           ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
           : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
-              uri
+              uri,
             )}&connector=rainbowkit`;
       };
 

@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { SafeConnectorOptions } from 'wagmi/connectors/safe';
 import { SafeConnector } from 'wagmi/connectors/safe';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';

@@ -121,14 +121,14 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
 const chainMetadataById = Object.fromEntries(
   Object.values(chainMetadataByName)
     .filter(isNotNullish)
-    .map(({ chainId, ...metadata }) => [chainId, metadata])
+    .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
 /** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
-  chains: Chain[]
+  chains: Chain[],
 ): Chain[] =>
-  chains.map(chain => ({
+  chains.map((chain) => ({
     ...chain,
     ...(chainMetadataById[chain.id] ?? {}),
   }));

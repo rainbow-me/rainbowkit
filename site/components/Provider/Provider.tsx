@@ -10,7 +10,7 @@ import {
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -28,7 +28,7 @@ export const { chains, publicClient } = configureChains(
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
-  ]
+  ],
 );
 
 const projectId =

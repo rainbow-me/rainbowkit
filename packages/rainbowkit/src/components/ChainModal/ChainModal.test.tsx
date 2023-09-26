@@ -13,12 +13,12 @@ describe('<ChainModal />', () => {
         chains: [mainnet], // only supports mainnet
         mock: true,
         mockOptions: { chainId: goerli.id }, // is connected to goerli
-      }
+      },
     );
     expect(
       await findByText(
-        'Wrong network detected, switch or disconnect to continue.'
-      )
+        'Wrong network detected, switch or disconnect to continue.',
+      ),
     ).toBeVisible();
   });
 
@@ -27,7 +27,7 @@ describe('<ChainModal />', () => {
       mock: true,
     });
     const mainnetOption = await modal.findByTestId(
-      `rk-chain-option-${mainnet.id}`
+      `rk-chain-option-${mainnet.id}`,
     );
 
     expect(mainnetOption).toHaveTextContent('Connected');
@@ -42,7 +42,7 @@ describe('<ChainModal />', () => {
     });
 
     const optimismOption = await modal.findByTestId(
-      `rk-chain-option-${optimism.id}`
+      `rk-chain-option-${optimism.id}`,
     );
 
     // optimism SHOULD be displayed
@@ -52,26 +52,27 @@ describe('<ChainModal />', () => {
     // mainnet & arb SHOULD NOT be displayed
     // even tho they're supported they were not passed to RainbowKitProvider
     expect(
-      modal.queryByTestId(`rk-chain-option-${mainnet.id}`)
+      modal.queryByTestId(`rk-chain-option-${mainnet.id}`),
     ).not.toBeInTheDocument();
     expect(
-      modal.queryByTestId(`rk-chain-option-${arbitrum.id}`)
+      modal.queryByTestId(`rk-chain-option-${arbitrum.id}`),
     ).not.toBeInTheDocument();
   });
 
   it('Can switch chains', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,
-      }
+      },
     );
     const mainnetOption = await modal.findByTestId(
-      `rk-chain-option-${mainnet.id}`
+      `rk-chain-option-${mainnet.id}`,
     );
     const arbitrumOption = await modal.findByTestId(
-      `rk-chain-option-${arbitrum.id}`
+      `rk-chain-option-${arbitrum.id}`,
     );
 
     expect(mainnetOption).toHaveTextContent('Connected');
@@ -88,6 +89,7 @@ describe('<ChainModal />', () => {
   it('Just closes on switch error (user rejected, or other)', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,
@@ -95,13 +97,13 @@ describe('<ChainModal />', () => {
           chainId: mainnet.id,
           flags: { failSwitchChain: true, isAuthorized: true },
         },
-      }
+      },
     );
     const mainnetOption = await modal.findByTestId(
-      `rk-chain-option-${mainnet.id}`
+      `rk-chain-option-${mainnet.id}`,
     );
     const arbitrumOption = await modal.findByTestId(
-      `rk-chain-option-${arbitrum.id}`
+      `rk-chain-option-${arbitrum.id}`,
     );
 
     expect(mainnetOption).toHaveTextContent('Connected');
@@ -124,17 +126,18 @@ describe('<ChainModal />', () => {
     });
 
     expect(modal.baseElement).toHaveTextContent(
-      `Your wallet does not support switching networks from`
+      'Your wallet does not support switching networks from',
     );
   });
 
-  it(`Closes on close button press`, async () => {
+  it('Closes on close button press', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
       {
         mock: true,
-      }
+      },
     );
     const closeButton = await modal.findByLabelText('Close');
     await user.click(closeButton);

@@ -11,14 +11,13 @@ import prompts from 'prompts';
 import validateNpmPackageName from 'validate-npm-package-name';
 import { detectPackageManager } from './detectPackageManager';
 
-// eslint-disable-next-line no-console
 const log = console.log;
 
 class FriendlyError extends Error {}
 
 async function run() {
   try {
-    let projectPath: string = '';
+    let projectPath = '';
 
     const packageJson = createRequire(import.meta.url)('../package.json');
 
@@ -26,20 +25,20 @@ async function run() {
       .version(packageJson.version)
       .arguments('[project-directory]')
       .usage(`${chalk.green('[project-directory]')} [options]`)
-      .action(name => {
+      .action((name) => {
         projectPath = name;
       })
       .option(
         '--use-npm',
-        'Explicitly tell the CLI to bootstrap the app using npm'
+        'Explicitly tell the CLI to bootstrap the app using npm',
       )
       .option(
         '--use-yarn',
-        'Explicitly tell the CLI to bootstrap the app using Yarn'
+        'Explicitly tell the CLI to bootstrap the app using Yarn',
       )
       .option(
         '--use-pnpm',
-        'Explicitly tell the CLI to bootstrap the app using pnpm'
+        'Explicitly tell the CLI to bootstrap the app using pnpm',
       )
       .option('--skip-git', 'Skip initializing a git repository')
       .allowUnknownOption()
@@ -57,7 +56,7 @@ async function run() {
     ];
 
     log();
-    log(chalk.green(`🌈 Welcome to RainbowKit!`));
+    log(chalk.green('🌈 Welcome to RainbowKit!'));
 
     const isValidProjectName = (value: string) =>
       validateNpmPackageName(value).validForNewPackages;
@@ -76,7 +75,7 @@ async function run() {
         message: 'What is the name of your project?',
         name: 'value',
         type: 'text',
-        validate: value => {
+        validate: (value) => {
           if (!isValidProjectName(value)) {
             return invalidProjectNameErrorMessage;
           }
@@ -103,10 +102,10 @@ async function run() {
       throw new FriendlyError(
         [
           chalk.red(
-            `👀 The project name you provided is not a valid package name.`
+            '👀 The project name you provided is not a valid package name.',
           ),
           `🙏 ${invalidProjectNameErrorMessage}`,
-        ].join('\n')
+        ].join('\n'),
       );
     }
 
@@ -114,12 +113,12 @@ async function run() {
       throw new FriendlyError(
         [
           chalk.red(
-            `👀 The project name you provided is a reserved package name.`
+            '👀 The project name you provided is a reserved package name.',
           ),
           `🙏 Please use a project name other than "${reservedPackageNames.find(
-            x => x === projectPath
+            (x) => x === projectPath,
           )}".`,
-        ].join('\n')
+        ].join('\n'),
       );
     }
 
@@ -129,8 +128,8 @@ async function run() {
       throw new FriendlyError(
         [
           chalk.red(`👀 The target directory "${projectPath}" already exists.`),
-          `🙏 Please remove this directory or choose a different project name.`,
-        ].join('\n')
+          '🙏 Please remove this directory or choose a different project name.',
+        ].join('\n'),
       );
     }
 
@@ -141,19 +140,19 @@ async function run() {
 
     log(
       chalk.cyan(
-        `🚀 Creating a new RainbowKit app in ${chalk.bold(targetPath)}`
-      )
+        `🚀 Creating a new RainbowKit app in ${chalk.bold(targetPath)}`,
+      ),
     );
 
     const ignoreList: string[] = ['node_modules', '.next', 'CHANGELOG.md'];
 
     await cpy(path.join(selectedTemplatePath, '**', '*'), targetPath, {
-      filter: src =>
-        ignoreList.every(ignore => {
+      filter: (src) =>
+        ignoreList.every((ignore) => {
           const relativePath = path.relative(selectedTemplatePath, src.path);
           return !relativePath.includes(ignore);
         }),
-      rename: name => name.replace(/^_dot_/, '.'),
+      rename: (name) => name.replace(/^_dot_/, '.'),
     });
 
     // Update package name
@@ -168,7 +167,7 @@ async function run() {
 
     await fs.writeFile(
       path.join(targetPath, 'package.json'),
-      JSON.stringify(pkgJson, null, 2)
+      JSON.stringify(pkgJson, null, 2),
     );
 
     const packageManager = options.usePnpm
@@ -182,9 +181,9 @@ async function run() {
     log(
       chalk.cyan(
         `📦 Installing dependencies with ${chalk.bold(
-          packageManager
-        )}. This could take a while.`
-      )
+          packageManager,
+        )}. This could take a while.`,
+      ),
     );
     await execa(packageManager, ['install'], {
       cwd: targetPath,
@@ -201,12 +200,12 @@ async function run() {
         {
           cwd: targetPath,
           stdio: 'inherit',
-        }
+        },
       );
     }
 
     if (!options.skipGit) {
-      log(chalk.cyan(`📚 Initializing git repository`));
+      log(chalk.cyan('📚 Initializing git repository'));
       await execa('git', ['init'], { cwd: targetPath });
       await execa('git', ['add', '.'], { cwd: targetPath });
       await execa(
@@ -217,20 +216,20 @@ async function run() {
           '--message',
           'Initial commit from create-rainbowkit',
         ],
-        { cwd: targetPath }
+        { cwd: targetPath },
       );
     }
 
-    log(chalk.green(`🌈 Done! Thanks for using RainbowKit 🙏`));
+    log(chalk.green('🌈 Done! Thanks for using RainbowKit 🙏'));
     log();
     log(
       chalk.cyan(
         `👉 To get started, run ${chalk.bold(
-          `cd ${projectPath}`
+          `cd ${projectPath}`,
         )} and then ${chalk.bold(
-          `${packageManager}${packageManager === 'npm' ? ' run' : ''} dev`
-        )}`
-      )
+          `${packageManager}${packageManager === 'npm' ? ' run' : ''} dev`,
+        )}`,
+      ),
     );
     log();
   } catch (err) {

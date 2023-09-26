@@ -1,8 +1,8 @@
 import {
   ConnectButton,
+  RainbowKitProvider,
   darkTheme,
   lightTheme,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
@@ -47,12 +47,9 @@ export function Header({
         </NextLink>
 
         <Box
-          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
           alignItems={{ xs: 'flex-start', sm: 'center' }}
           display="flex"
-          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
           flexDirection={{ xs: 'column', sm: 'row' }}
-          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
           gap={{ xs: '1', sm: '4' }}
         >
           <Text style={{ lineHeight: 1 }} variant="title3" weight="bold">
@@ -81,7 +78,6 @@ export function Header({
           borderBottomWidth="1"
           borderColor="separator"
           display={{ lg: 'none' }}
-          // eslint-disable-next-line sort-keys-fix/sort-keys-fix
           paddingX={{ xs: '6', sm: '6', md: '10', lg: '10' }}
           paddingY="4"
           ref={docsMobileMenuRef}

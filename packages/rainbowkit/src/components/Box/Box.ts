@@ -1,6 +1,6 @@
 import clsx, { ClassValue } from 'clsx';
 import * as React from 'react';
-import { atoms, Atoms } from '../../css/atoms';
+import { Atoms, atoms } from '../../css/atoms';
 import { sprinkles } from '../../css/sprinkles.css';
 
 type HTMLProperties<T = HTMLElement> = Omit<
@@ -34,12 +34,12 @@ export const Box = React.forwardRef<HTMLElement, Props>(
     });
 
     return React.createElement(as, {
-      'className': clsx(atomicClasses, className),
+      className: clsx(atomicClasses, className),
       ...nativeProps,
       'data-testid': testId ? `rk-${testId.replace(/^rk-/, '')}` : undefined,
       ref,
     });
-  }
+  },
 );
 
 export type BoxProps = Parameters<typeof Box>[0];

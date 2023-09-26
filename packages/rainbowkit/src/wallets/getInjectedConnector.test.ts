@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { describe, expect, it } from 'vitest';
 import type { WindowProvider } from 'wagmi';
 import { mainnet } from 'wagmi/chains';

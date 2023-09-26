@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { atoms } from 'css/atoms';
 
 const variant = {

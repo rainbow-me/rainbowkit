@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 
+// biome-ignore format: design system keys
 export const regionWrapper = style({
   'overflow': 'auto',
   'position': 'relative',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   ':focus': { outline: 0 },
 });
 
