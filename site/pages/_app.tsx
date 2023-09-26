@@ -6,9 +6,9 @@ import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
-import { vars } from '../css/vars.css';
-import '../css/global.css';
 import '../css/docsSearch.css';
+import '../css/global.css';
+import { vars } from '../css/vars.css';
 
 const highlightColors = [
   vars.colors.orange,
@@ -54,7 +54,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.body.setAttribute(
       'data-mode',
-      isDocs || isGuides ? 'light' : 'dark'
+      isDocs || isGuides ? 'light' : 'dark',
     );
   }, [isDocs, isGuides]);
 

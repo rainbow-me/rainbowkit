@@ -1,6 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { atoms } from 'css/atoms';
 import { Sprinkles } from 'css/sprinkles.css';
 import { vars } from 'css/vars.css';
@@ -85,7 +84,7 @@ const variant = {
   blueGradient: style([
     atoms({ color: 'white100' }),
     style({
-      backgroundImage: `linear-gradient(270deg, #1DA1F2, #1D7DF2)`,
+      backgroundImage: 'linear-gradient(270deg, #1DA1F2, #1D7DF2)',
     }),
   ]),
   pinkGradient: style([
@@ -121,7 +120,7 @@ export type Shadow = keyof typeof shadow;
 const getShapeSizeCompoundVariant = (
   size: Size,
   shape: Shape,
-  width: Sprinkles['size'] | number
+  width: Sprinkles['size'] | number,
 ) => ({
   variants: {
     size,

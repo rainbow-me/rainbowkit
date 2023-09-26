@@ -19,7 +19,7 @@ function safeParseJsonData(string: string | null): Data {
   try {
     const value = string ? JSON.parse(string) : {};
     return typeof value === 'object' ? value : {};
-  } catch (err) {
+  } catch {
     return {};
   }
 }
@@ -28,14 +28,14 @@ function loadData(): Data {
   return safeParseJsonData(
     typeof localStorage !== 'undefined'
       ? localStorage.getItem(storageKey)
-      : null
+      : null,
   );
 }
 
 const transactionHashRegex = /^0x([A-Fa-f0-9]{64})$/;
 
 function validateTransaction(
-  transaction: Transaction | NewTransaction
+  transaction: Transaction | NewTransaction,
 ): string[] {
   const errors: string[] = [];
 
@@ -80,7 +80,7 @@ export function createTransactionStore({
   function addTransaction(
     account: string,
     chainId: number,
-    transaction: NewTransaction
+    transaction: NewTransaction,
   ): void {
     const errors = validateTransaction(transaction);
 
@@ -88,7 +88,7 @@ export function createTransactionStore({
       throw new Error(['Unable to add transaction', ...errors].join('\n'));
     }
 
-    updateTransactions(account, chainId, transactions => {
+    updateTransactions(account, chainId, (transactions) => {
       return [
         { ...transaction, status: 'pending' },
         ...transactions.filter(({ hash }) => {
@@ -109,23 +109,23 @@ export function createTransactionStore({
     account: string,
     chainId: number,
     hash: string,
-    status: TransactionStatus
+    status: TransactionStatus,
   ): void {
-    updateTransactions(account, chainId, transactions => {
-      return transactions.map(transaction =>
-        transaction.hash === hash ? { ...transaction, status } : transaction
+    updateTransactions(account, chainId, (transactions) => {
+      return transactions.map((transaction) =>
+        transaction.hash === hash ? { ...transaction, status } : transaction,
       );
     });
   }
 
   async function waitForPendingTransactions(
     account: string,
-    chainId: number
+    chainId: number,
   ): Promise<void> {
     await Promise.all(
       getTransactions(account, chainId)
-        .filter(transaction => transaction.status === 'pending')
-        .map(async transaction => {
+        .filter((transaction) => transaction.status === 'pending')
+        .map(async (transaction) => {
           const { confirmations, hash } = transaction;
 
           const existingRequest = transactionRequestCache.get(hash);
@@ -148,21 +148,21 @@ export function createTransactionStore({
                 chainId,
                 hash,
                 // @ts-ignore - types changed with viem@1.1.0
-                status === 0 || status === 'reverted' ? 'failed' : 'confirmed'
+                status === 0 || status === 'reverted' ? 'failed' : 'confirmed',
               );
             });
 
           transactionRequestCache.set(hash, requestPromise);
 
           return await requestPromise;
-        })
+        }),
     );
   }
 
   function updateTransactions(
     account: string,
     chainId: number,
-    updateFn: (transactions: Transaction[]) => Transaction[]
+    updateFn: (transactions: Transaction[]) => Transaction[],
   ): void {
     // Ensure we’re always operating on the latest data in case we have
     // multiple instances/tabs/etc. since we write all data back to
@@ -193,7 +193,7 @@ export function createTransactionStore({
   }
 
   function notifyListeners(): void {
-    listeners.forEach(listener => listener());
+    listeners.forEach((listener) => listener());
   }
 
   function onChange(fn: () => void): () => void {

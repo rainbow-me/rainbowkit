@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -63,7 +62,7 @@ export const foxWallet = ({
             ? async () => {
                 const uri = await getWalletConnectUri(
                   connector,
-                  walletConnectVersion
+                  walletConnectVersion,
                 );
                 return `foxwallet://wc?uri=${encodeURIComponent(uri)}`;
               }

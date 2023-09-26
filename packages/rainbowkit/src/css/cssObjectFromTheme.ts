@@ -6,7 +6,7 @@ const resolveThemeVars = (theme: ThemeVars | (() => ThemeVars)) =>
 
 export function cssObjectFromTheme(
   theme: ThemeVars | (() => ThemeVars),
-  { extends: baseTheme }: { extends?: ThemeVars | (() => ThemeVars) } = {}
+  { extends: baseTheme }: { extends?: ThemeVars | (() => ThemeVars) } = {},
 ) {
   const resolvedThemeVars = {
     // We use an object spread here to ensure it's a plain object since vanilla-extract's
@@ -22,13 +22,13 @@ export function cssObjectFromTheme(
 
   const resolvedBaseThemeVars = assignInlineVars(
     themeVars,
-    resolveThemeVars(baseTheme)
+    resolveThemeVars(baseTheme),
   );
 
   const filteredVars = Object.fromEntries(
     Object.entries(resolvedThemeVars).filter(
-      ([varName, value]) => value !== resolvedBaseThemeVars[varName]
-    )
+      ([varName, value]) => value !== resolvedBaseThemeVars[varName],
+    ),
   );
 
   return filteredVars;

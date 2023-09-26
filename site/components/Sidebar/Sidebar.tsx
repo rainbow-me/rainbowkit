@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-sort-props */
 import { Box } from 'components/Box/Box';
 import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';
@@ -40,11 +39,11 @@ export function Sidebar({ routes }) {
           hover: 'fillElevated',
         }}
         style={{
-          boxShadow: `inset 0 0 0 1px currentColor, 0 0 0 1px currentColor`,
+          boxShadow: 'inset 0 0 0 1px currentColor, 0 0 0 1px currentColor',
           outline: 'none',
         }}
       >
-        {key => (
+        {(key) => (
           <>
             <Box
               as="span"
@@ -69,7 +68,7 @@ export function Sidebar({ routes }) {
         )}
       </SearchButton>
 
-      {routes.map(route => (
+      {routes.map((route) => (
         <Box key={route.label} marginBottom="7">
           <Text
             as="h3"
@@ -82,7 +81,7 @@ export function Sidebar({ routes }) {
           >
             {route.label}
           </Text>
-          {route.pages.map(page => (
+          {route.pages.map((page) => (
             <Link key={page.title} slug={page.slug}>
               {page.title}
             </Link>

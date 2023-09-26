@@ -30,7 +30,7 @@ export function AsyncImage({
   const isRemoteImage = src && /^http/.test(src);
   const [isRemoteImageLoaded, setRemoteImageLoaded] = useReducer(
     () => true,
-    false
+    false,
   );
 
   return (
@@ -51,7 +51,8 @@ export function AsyncImage({
     >
       <Box
         {...(isRemoteImage
-          ? {
+          ? // biome-ignore format: design system keys
+            {
               'aria-hidden': true,
               'as': 'img',
               'onLoad': setRemoteImageLoaded,

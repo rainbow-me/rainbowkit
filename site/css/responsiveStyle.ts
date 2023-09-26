@@ -1,5 +1,3 @@
-/* eslint-disable sort-destructure-keys/sort-destructure-keys */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { StyleRule } from '@vanilla-extract/css';
 import { Breakpoint, breakpoints } from './breakpoints';
 
@@ -34,9 +32,7 @@ export const responsiveStyle = ({
   lg,
   xl,
 }: ResponsiveStyle): StyleRule => {
-  /* eslint-disable @typescript-eslint/no-unused-vars */
   const { '@media': _, ...xsStyle } = (xs ?? {}) as any;
-  /* eslint-enable @typescript-eslint/no-unused-vars */
   return {
     ...xsStyle,
     ...(sm || md || lg || xl

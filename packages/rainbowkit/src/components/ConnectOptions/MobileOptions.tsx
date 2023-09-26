@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -160,7 +160,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: MobileWalletStep | null = null;
 
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
-    MobileWalletStep.Connect
+    MobileWalletStep.Connect,
   );
 
   const ios = isIOS();
@@ -180,8 +180,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           >
             <Box display="flex" style={{ margin: '0 auto' }}>
               {wallets
-                .filter(wallet => wallet.ready)
-                .map(wallet => {
+                .filter((wallet) => wallet.ready)
+                .map((wallet) => {
                   return (
                     <Box key={wallet.id} paddingX="20">
                       <Box width="60">
@@ -256,10 +256,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
       const mobileWallets = wallets
         ?.filter(
-          wallet =>
+          (wallet) =>
             wallet.downloadUrls?.ios ||
             wallet.downloadUrls?.android ||
-            wallet.downloadUrls?.mobile
+            wallet.downloadUrls?.mobile,
         )
         ?.splice(0, 3);
 
