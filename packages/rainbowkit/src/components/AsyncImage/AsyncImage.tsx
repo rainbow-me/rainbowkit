@@ -26,7 +26,7 @@ export function AsyncImage({
   height,
   src: srcProp,
   width,
-  testId
+  testId,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
   const isRemoteImage = src && /^http/.test(src);

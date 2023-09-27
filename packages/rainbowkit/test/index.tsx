@@ -37,13 +37,10 @@ export function renderWithProviders(
     transport: http(),
   });
 
-  const { chains, publicClient } = configureChains(
-    supportedChains,
-    [
-      alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
-      publicProvider(),
-    ],
-  );
+  const { chains, publicClient } = configureChains(supportedChains, [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
+    publicProvider(),
+  ]);
 
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
