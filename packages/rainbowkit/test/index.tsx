@@ -24,7 +24,7 @@ export function renderWithProviders(
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {
-  const supportedChains = options?.chains || defaultChains;
+  const supportedChains: Chain[] = options?.chains || defaultChains;
   const firstChain = supportedChains[0];
 
   const account = privateKeyToAccount(
@@ -38,7 +38,7 @@ export function renderWithProviders(
   });
 
   const { chains, publicClient } = configureChains(
-    [mainnet, polygon, optimism, arbitrum, base, zora],
+    supportedChains,
     [
       alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
       publicProvider(),
