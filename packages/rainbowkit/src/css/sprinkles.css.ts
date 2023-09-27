@@ -135,6 +135,8 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: 'smallScreen',
   properties: {
+    overflowY: ['auto', 'scroll', 'hidden'],
+    flexWrap: ['wrap', 'nowrap'],
     alignItems: flexAlignment,
     display: ['none', 'block', 'flex', 'inline'],
   },

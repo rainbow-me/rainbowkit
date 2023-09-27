@@ -682,7 +682,7 @@ export function DownloadDetail({
       height="full"
       width="full"
     >
-      <Box style={{ maxWidth: 220, textAlign: 'center' }}>
+      <Box style={{ textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
           {i18n.t('intro.wallet.scan.mobile')}
         </Text>
@@ -761,6 +761,7 @@ export function InstructionMobileDetail({
         gap="28"
         height="full"
         justifyContent="center"
+        overflowY="auto"
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
@@ -848,6 +849,7 @@ export function InstructionExtensionDetail({
         gap="28"
         height="full"
         justifyContent="center"
+        overflowY="auto"
         paddingY="32"
         style={{ maxWidth: 320 }}
       >

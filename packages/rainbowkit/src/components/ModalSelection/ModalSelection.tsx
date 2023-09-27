@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './ModalSelection.css';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 
 type Props = {
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;

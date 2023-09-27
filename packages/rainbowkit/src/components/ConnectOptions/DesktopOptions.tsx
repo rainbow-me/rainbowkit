@@ -398,6 +398,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 <Box
                   alignItems="center"
                   display="flex"
+                  flexWrap="wrap"
                   justifyContent="space-between"
                   paddingX="24"
                   paddingY="16"
