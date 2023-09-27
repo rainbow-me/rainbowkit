@@ -115,6 +115,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                     height={chainIconSize}
                                     src={iconUrl}
                                     width={chainIconSize}
+                                    testId={`chain-option-${chain.id}-icon`}
                                   />
                                 </Box>
                               )}

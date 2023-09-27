@@ -14,6 +14,7 @@ interface AsyncImageProps {
   borderRadius?: BoxProps['borderRadius'];
   borderColor?: BoxProps['borderColor'] | CustomBorderColor;
   boxShadow?: BoxProps['boxShadow'];
+  testId?: string;
 }
 
 export function AsyncImage({
@@ -25,6 +26,7 @@ export function AsyncImage({
   height,
   src: srcProp,
   width,
+  testId,
 }: AsyncImageProps) {
   const src = useAsyncImage(srcProp);
   const isRemoteImage = src && /^http/.test(src);
@@ -48,6 +50,7 @@ export function AsyncImage({
         width: typeof width === 'number' ? width : undefined,
       }}
       width={typeof width === 'string' ? width : undefined}
+      testId={testId}
     >
       <Box
         {...(isRemoteImage

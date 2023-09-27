@@ -3,6 +3,7 @@ import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { arbitrum, goerli, mainnet, optimism } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test/';
+import { Chain } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ChainModal } from './ChainModal';
 
 describe('<ChainModal />', () => {
@@ -143,5 +144,33 @@ describe('<ChainModal />', () => {
     await user.click(closeButton);
 
     expect(onCloseGotCalled).toBe(true);
+  });
+
+  it('Custom chain metadata', async () => {
+    const customChains: Chain[] = [
+      {
+        ...mainnet,
+        name: 'Custom Chain',
+        iconUrl: 'https://example.com/icon.svg',
+        iconBackground: '#fff',
+      },
+    ];
+
+    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
+      chains: customChains,
+      mock: true,
+    });
+    const mainnetOption = await modal.findByTestId(
+      `rk-chain-option-${mainnet.id}`,
+    );
+    expect(mainnetOption).toHaveTextContent('Ethereum');
+
+    const mainnetOptionIcon = await modal.findByTestId(
+      `rk-chain-option-${mainnet.id}-icon`,
+    );
+    expect(mainnetOptionIcon).toHaveAttribute(
+      'style',
+      'background: rgb(255, 255, 255);',
+    );
   });
 });
