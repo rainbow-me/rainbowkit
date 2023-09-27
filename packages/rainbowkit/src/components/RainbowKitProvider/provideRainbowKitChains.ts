@@ -129,10 +129,11 @@ export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
   chains: Chain[],
 ): Chain[] =>
   chains.map((chain) => {
-    const chainMeta = chainMetadataById[chain.id] ?? {};
+    const defaultMetadata = chainMetadataById[chain.id] ?? {};
     return {
-      ...chainMeta,
       ...chain,
-      name: chainMeta.name ?? chain.name,
-    };
+      name: defaultMetadata.name ?? chain.name, // favor colloquial names
+      iconUrl: chain.iconUrl ?? defaultMetadata.iconUrl,
+      iconBackground: chain.iconBackground ?? defaultMetadata.iconBackground,
+    } as Chain;
   });
