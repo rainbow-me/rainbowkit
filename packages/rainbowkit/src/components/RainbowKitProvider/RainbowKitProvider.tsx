@@ -3,7 +3,6 @@ import { useAccount } from 'wagmi';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { largeScreenMinWidth, ThemeVars } from '../../css/sprinkles.css';
 import { useWindowSize } from '../../hooks/useWindowSize';
-import { Language } from '../../locales';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, defaultAppInfo, DisclaimerComponent } from './AppContext';
@@ -22,7 +21,6 @@ import {
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { useFingerprint } from './useFingerprint';
-import { useI18nLocalStorage } from './useI18nLocalStorage';
 import { usePreloadImages } from './usePreloadImages';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
@@ -67,7 +65,6 @@ export interface RainbowKitProviderProps {
   coolMode?: boolean;
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
-  language?: Language;
 }
 
 const defaultTheme = lightTheme();
@@ -80,14 +77,12 @@ export function RainbowKitProvider({
   coolMode = false,
   id,
   initialChain,
-  language = Language.EN_US,
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
-  useI18nLocalStorage({ language });
   useAccount({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
@@ -110,7 +105,7 @@ export function RainbowKitProvider({
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <I18nProvider language={language}>
+      <I18nProvider>
         <CoolModeContext.Provider value={coolMode}>
           <ModalSizeContext.Provider
             value={isSmallScreen ? ModalSizeOptions.COMPACT : modalSize}

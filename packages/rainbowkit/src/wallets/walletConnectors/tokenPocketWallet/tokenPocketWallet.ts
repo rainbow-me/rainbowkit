@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isMobile } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
@@ -82,22 +83,31 @@ export const tokenPocketWallet = ({
                 learnMoreUrl: 'https://help.tokenpocket.pro/en/',
                 steps: [
                   {
-                    description:
-                      'We recommend putting TokenPocket on your home screen for quicker access.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the TokenPocket app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.qr_code.token_pocket.step3.title'
+                    ),
                   },
                 ],
               },
@@ -109,22 +119,31 @@ export const tokenPocketWallet = ({
               'https://help.tokenpocket.pro/en/extension-wallet/faq/installation-tutorial',
             steps: [
               {
-                description:
-                  'We recommend pinning TokenPocket to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the TokenPocket extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.token_pocket.step3.title'
+                ),
               },
             ],
           },

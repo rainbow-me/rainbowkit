@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -63,21 +64,31 @@ export const uniswapWallet = ({
           learnMoreUrl: 'https://wallet.uniswap.org/',
           steps: [
             {
-              description:
-                'Add Uniswap Wallet to your home screen for faster access to your wallet.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step1.description'
+              ),
               step: 'install',
-              title: 'Open the Uniswap app',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step1.title'
+              ),
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step2.description'
+              ),
               step: 'create',
-              title: 'Create or Import a Wallet',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step2.title'
+              ),
             },
             {
-              description:
-                'Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step3.description'
+              ),
               step: 'scan',
-              title: 'Tap the QR icon and scan',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.qr_code.uniswap.step3.title'
+              ),
             },
           ],
         },

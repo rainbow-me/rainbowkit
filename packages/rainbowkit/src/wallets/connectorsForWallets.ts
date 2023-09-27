@@ -1,5 +1,6 @@
 import { Connector } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { configureLocaleLocalStorage, Language } from '../locales';
 import { isHexString } from '../utils/colors';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
@@ -11,9 +12,20 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-export const connectorsForWallets = (walletList: WalletList) => {
+interface Options {
+  language: Language;
+}
+
+export const connectorsForWallets = (
+  walletList: WalletList,
+  options?: Options
+) => {
   return () => {
     let index = -1;
+
+    if (typeof localStorage !== 'undefined') {
+      configureLocaleLocalStorage(options?.language);
+    }
 
     const connectors: Connector[] = [];
     const visibleWallets: WalletListItem[] = [];

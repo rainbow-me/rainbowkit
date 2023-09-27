@@ -99,41 +99,51 @@ const { wallets } = getDefaultWallets({
   projectId,
 });
 
-const connectors = connectorsForWallets([
-  ...wallets,
+export const localStorageLocale =
+  typeof localStorage !== 'undefined'
+    ? (localStorage.getItem('locale') as Language)
+    : Language.EN_US;
+
+const connectors = connectorsForWallets(
+  [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ chains, projectId }),
+        bifrostWallet({ chains, projectId }),
+        bitKeepWallet({ chains, projectId }),
+        bitskiWallet({ chains }),
+        coin98Wallet({ chains, projectId }),
+        coreWallet({ chains, projectId }),
+        dawnWallet({ chains }),
+        enkryptWallet({ chains }),
+        foxWallet({ chains, projectId }),
+        frameWallet({ chains }),
+        frontierWallet({ chains, projectId }),
+        imTokenWallet({ chains, projectId }),
+        ledgerWallet({ chains, projectId }),
+        mewWallet({ chains }),
+        okxWallet({ chains, projectId }),
+        omniWallet({ chains, projectId }),
+        oneKeyWallet({ chains }),
+        phantomWallet({ chains }),
+        rabbyWallet({ chains }),
+        safeheronWallet({ chains }),
+        tahoWallet({ chains }),
+        talismanWallet({ chains }),
+        tokenPocketWallet({ chains, projectId }),
+        trustWallet({ chains, projectId }),
+        uniswapWallet({ chains, projectId }),
+        xdefiWallet({ chains }),
+        zerionWallet({ chains, projectId }),
+      ],
+    },
+  ],
   {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ chains, projectId }),
-      bifrostWallet({ chains, projectId }),
-      bitKeepWallet({ chains, projectId }),
-      bitskiWallet({ chains }),
-      coin98Wallet({ chains, projectId }),
-      coreWallet({ chains, projectId }),
-      dawnWallet({ chains }),
-      enkryptWallet({ chains }),
-      foxWallet({ chains, projectId }),
-      frameWallet({ chains }),
-      frontierWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-      mewWallet({ chains }),
-      okxWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      oneKeyWallet({ chains }),
-      phantomWallet({ chains }),
-      rabbyWallet({ chains }),
-      safeheronWallet({ chains }),
-      tahoWallet({ chains }),
-      talismanWallet({ chains }),
-      tokenPocketWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      uniswapWallet({ chains, projectId }),
-      xdefiWallet({ chains }),
-      zerionWallet({ chains, projectId }),
-    ],
-  },
-]);
+    language: localStorageLocale,
+  }
+);
 
 const wagmiConfig = createConfig({
   autoConnect: true,
@@ -228,7 +238,6 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-  const [language, setLanguage] = useState(Language.JA_JP);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -271,7 +280,6 @@ function RainbowKitApp({
         chains={chains}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
-        language={language}
         modalSize={modalSize}
         showRecentTransactions={showRecentTransactions}
         theme={currentTheme({
@@ -312,9 +320,10 @@ function RainbowKitApp({
                       <td>
                         <select
                           onChange={e => {
-                            setLanguage(e.target.value as Language);
+                            localStorage.setItem('locale', e.target.value);
+                            router.reload();
                           }}
-                          value={language}
+                          value={localStorageLocale}
                         >
                           {locales.map(locale => (
                             <option key={locale} value={locale}>

@@ -290,7 +290,7 @@ export function ConnectDetail({
                 <Box paddingTop="20">
                   <ActionButton
                     href={wallet.extensionDownloadUrl}
-                    label="INSTALL"
+                    label={i18n.t('intro.install.label')}
                     type="secondary"
                   />
                 </Box>

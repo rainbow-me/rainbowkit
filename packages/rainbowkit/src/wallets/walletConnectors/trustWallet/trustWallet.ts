@@ -2,6 +2,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -142,21 +143,31 @@ export const trustWallet = ({
             learnMoreUrl: 'https://trustwallet.com/',
             steps: [
               {
-                description:
-                  'Put Trust Wallet on your home screen for faster access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step1.description'
+                ),
                 step: 'install' as InstructionStepName,
-                title: 'Open the Trust Wallet app',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step1.title'
+                ),
               },
               {
-                description: 'Create a new wallet or import an existing one.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step2.description'
+                ),
                 step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step2.title'
+                ),
               },
               {
-                description:
-                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step3.description'
+                ),
                 step: 'scan' as InstructionStepName,
-                title: 'Tap WalletConnect in Settings',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.qr_code.trust.step3.title'
+                ),
               },
             ],
           },
@@ -168,21 +179,31 @@ export const trustWallet = ({
           learnMoreUrl: 'https://trustwallet.com/browser-extension',
           steps: [
             {
-              description:
-                'Click at the top right of your browser and pin Trust Wallet for easy access.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step1.description'
+              ),
               step: 'install' as InstructionStepName,
-              title: 'Install the Trust Wallet extension',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step1.title'
+              ),
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step2.description'
+              ),
               step: 'create' as InstructionStepName,
-              title: 'Create or Import a wallet',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step2.title'
+              ),
             },
             {
-              description:
-                'Once you set up Trust Wallet, click below to refresh the browser and load up the extension.',
+              description: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step3.description'
+              ),
               step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
+              title: translateWithLocaleLocalStorage(
+                'wallet_connectors.extension.trust.step3.title'
+              ),
             },
           ],
         },

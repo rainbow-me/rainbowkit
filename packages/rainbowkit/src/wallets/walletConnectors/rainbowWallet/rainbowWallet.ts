@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
@@ -85,22 +86,31 @@ export const rainbowWallet = ({
                   'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
                 steps: [
                   {
-                    description:
-                      'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step1.description'
+                    ),
                     step: 'install',
-                    title: 'Open the Rainbow app',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step1.title'
+                    ),
                   },
                   {
-                    description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step2.description'
+                    ),
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step2.title'
+                    ),
                   },
                   {
-                    description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                    description: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step3.description'
+                    ),
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: translateWithLocaleLocalStorage(
+                      'wallet_connectors.extension.rainbow.step3.title'
+                    ),
                   },
                 ],
               },

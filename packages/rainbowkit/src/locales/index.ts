@@ -1,5 +1,4 @@
 import { I18n } from 'i18n-js';
-import { storageKey as languageLocaleKey } from '../components/RainbowKitProvider/useI18nLocalStorage';
 import en_US from './en_US.json';
 import es_419 from './es_419.json';
 import fr_FR from './fr_FR.json';
@@ -42,22 +41,34 @@ i18n.defaultLocale = Language.EN_US;
 i18n.locale = Language.EN_US;
 i18n.enableFallback = true;
 
-export const getLocalStorageI18nLocale = (): Language => {
-  const localeLocalStorage =
+export const storageKey = 'rk-locale';
+
+export const getLocalStorageLocale = (): Language | void => {
+  const localStorageLocale =
     typeof localStorage !== 'undefined'
-      ? localStorage.getItem(languageLocaleKey)
-      : null;
+      ? (localStorage.getItem(storageKey) as Language)
+      : undefined;
 
-  if (localeLocalStorage) {
-    return localeLocalStorage as Language;
-  }
-
-  return Language.EN_US;
+  return localStorageLocale;
 };
 
 export const translateWithLocaleLocalStorage = (key: string) => {
-  const locale = getLocalStorageI18nLocale();
+  const locale = getLocalStorageLocale() || Language.EN_US;
   i18n.locale = locale;
   const translation = i18n.t(key);
   return translation;
+};
+
+export const configureLocaleLocalStorage = (language: Language | undefined) => {
+  if (language) {
+    localStorage.setItem(storageKey, language);
+  }
+
+  if (!language) {
+    const localStorageLocale = getLocalStorageLocale();
+
+    if (localStorageLocale) {
+      localStorage.removeItem(storageKey);
+    }
+  }
 };

@@ -1,5 +1,6 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { translateWithLocaleLocalStorage } from '../../../locales';
 import { Wallet } from '../../Wallet';
 
 export interface OnekeyWalletOptions {
@@ -33,22 +34,31 @@ export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
               'https://help.onekey.so/hc/en-us/categories/360000170236',
             steps: [
               {
-                description:
-                  'We recommend pinning OneKey Wallet to your taskbar for quicker access to your wallet.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step1.description'
+                ),
                 step: 'install',
-                title: 'Install the OneKey Wallet extension',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step1.title'
+                ),
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step2.description'
+                ),
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step2.title'
+                ),
               },
               {
-                description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                description: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step3.description'
+                ),
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: translateWithLocaleLocalStorage(
+                  'wallet_connectors.extension.one_key.step3.title'
+                ),
               },
             ],
           },
