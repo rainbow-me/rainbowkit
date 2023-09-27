@@ -4,11 +4,11 @@ import './global.css';
 import {
   AvatarComponent,
   DisclaimerComponent,
+  Language,
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
-  Language,
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
@@ -50,6 +50,7 @@ import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import {
   WagmiConfig,
@@ -70,7 +71,6 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
-import { useRouter } from 'next/router';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 

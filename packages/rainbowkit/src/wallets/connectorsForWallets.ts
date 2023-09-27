@@ -1,7 +1,7 @@
 import { Connector } from 'wagmi';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { Language, configureLocaleLocalStorage } from '../locales';
 import { isHexString } from '../utils/colors';
-import { configureLocaleLocalStorage, Language } from '../locales';
 import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { Wallet, WalletInstance, WalletList } from './Wallet';

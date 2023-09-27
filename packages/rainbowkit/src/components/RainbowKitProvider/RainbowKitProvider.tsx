@@ -8,6 +8,7 @@ import { TransactionStoreProvider } from '../../transactions/TransactionStoreCon
 import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
+import { I18nProvider } from './I18nContext';
 import { ModalProvider } from './ModalContext';
 import {
   ModalSizeContext,
@@ -21,7 +22,6 @@ import {
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { useFingerprint } from './useFingerprint';
 import { usePreloadImages } from './usePreloadImages';
-import { I18nProvider } from './I18nContext';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
