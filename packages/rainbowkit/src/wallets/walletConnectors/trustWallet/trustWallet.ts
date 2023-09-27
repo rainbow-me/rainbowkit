@@ -143,29 +143,29 @@ export const trustWallet = ({
             steps: [
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step1.description'
+                  'wallet_connectors.qr_code.trust.step1.description',
                 ),
                 step: 'install' as InstructionStepName,
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step1.title'
+                  'wallet_connectors.qr_code.trust.step1.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step2.description'
+                  'wallet_connectors.qr_code.trust.step2.description',
                 ),
                 step: 'create' as InstructionStepName,
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step2.title'
+                  'wallet_connectors.qr_code.trust.step2.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step3.description'
+                  'wallet_connectors.qr_code.trust.step3.description',
                 ),
                 step: 'scan' as InstructionStepName,
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step3.title'
+                  'wallet_connectors.qr_code.trust.step3.title',
                 ),
               },
             ],
@@ -179,29 +179,29 @@ export const trustWallet = ({
           steps: [
             {
               description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step1.description'
+                'wallet_connectors.extension.trust.step1.description',
               ),
               step: 'install' as InstructionStepName,
               title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step1.title'
+                'wallet_connectors.extension.trust.step1.title',
               ),
             },
             {
               description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step2.description'
+                'wallet_connectors.extension.trust.step2.description',
               ),
               step: 'create' as InstructionStepName,
               title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step2.title'
+                'wallet_connectors.extension.trust.step2.title',
               ),
             },
             {
               description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step3.description'
+                'wallet_connectors.extension.trust.step3.description',
               ),
               step: 'refresh' as InstructionStepName,
               title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step3.title'
+                'wallet_connectors.extension.trust.step3.title',
               ),
             },
           ],

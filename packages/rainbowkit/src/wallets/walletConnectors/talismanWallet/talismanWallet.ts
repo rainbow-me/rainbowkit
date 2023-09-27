@@ -50,29 +50,29 @@ export const talismanWallet = ({
         steps: [
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step1.description'
+              'wallet_connectors.extension.talisman.step1.description',
             ),
             step: 'install',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step1.title'
+              'wallet_connectors.extension.talisman.step1.title',
             ),
           },
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step2.description'
+              'wallet_connectors.extension.talisman.step2.description',
             ),
             step: 'create',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step2.title'
+              'wallet_connectors.extension.talisman.step2.title',
             ),
           },
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step3.description'
+              'wallet_connectors.extension.talisman.step3.description',
             ),
             step: 'refresh',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.talisman.step3.title'
+              'wallet_connectors.extension.talisman.step3.title',
             ),
           },
         ],

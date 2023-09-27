@@ -103,29 +103,29 @@ export const frontierWallet = ({
                 steps: [
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step1.description'
+                      'wallet_connectors.qr_code.im_token.step1.description',
                     ),
                     step: 'install',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step1.title'
+                      'wallet_connectors.qr_code.im_token.step1.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step2.description'
+                      'wallet_connectors.qr_code.im_token.step2.description',
                     ),
                     step: 'create',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step2.title'
+                      'wallet_connectors.qr_code.im_token.step2.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step3.description'
+                      'wallet_connectors.qr_code.im_token.step3.description',
                     ),
                     step: 'scan',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step3.title'
+                      'wallet_connectors.qr_code.im_token.step3.title',
                     ),
                   },
                 ],
@@ -139,29 +139,29 @@ export const frontierWallet = ({
             steps: [
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step1.description'
+                  'wallet_connectors.extension.frontier.step1.description',
                 ),
                 step: 'install',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step1.title'
+                  'wallet_connectors.extension.frontier.step1.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step2.description'
+                  'wallet_connectors.extension.frontier.step2.description',
                 ),
                 step: 'create',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step2.title'
+                  'wallet_connectors.extension.frontier.step2.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step3.description'
+                  'wallet_connectors.extension.frontier.step3.description',
                 ),
                 step: 'refresh',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step3.title'
+                  'wallet_connectors.extension.frontier.step3.title',
                 ),
               },
             ],

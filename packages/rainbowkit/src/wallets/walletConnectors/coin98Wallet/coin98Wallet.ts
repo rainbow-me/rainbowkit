@@ -132,29 +132,29 @@ export const coin98Wallet = ({
                 steps: [
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step1.description'
+                      'wallet_connectors.qr_code.coin98.step1.description',
                     ),
                     step: 'install',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step1.title'
+                      'wallet_connectors.qr_code.coin98.step1.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step2.description'
+                      'wallet_connectors.qr_code.coin98.step2.description',
                     ),
                     step: 'create',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step2.title'
+                      'wallet_connectors.qr_code.coin98.step2.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step3.description'
+                      'wallet_connectors.qr_code.coin98.step3.description',
                     ),
                     step: 'scan',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.coin98.step3.title'
+                      'wallet_connectors.qr_code.coin98.step3.title',
                     ),
                   },
                 ],
@@ -167,29 +167,29 @@ export const coin98Wallet = ({
             steps: [
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step1.description'
+                  'wallet_connectors.extension.coin98.step1.description',
                 ),
                 step: 'install',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step1.title'
+                  'wallet_connectors.extension.coin98.step1.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step2.description'
+                  'wallet_connectors.extension.coin98.step2.description',
                 ),
                 step: 'create',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step2.title'
+                  'wallet_connectors.extension.coin98.step2.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step3.description'
+                  'wallet_connectors.extension.coin98.step3.description',
                 ),
                 step: 'refresh',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.coin98.step3.title'
+                  'wallet_connectors.extension.coin98.step3.title',
                 ),
               },
             ],

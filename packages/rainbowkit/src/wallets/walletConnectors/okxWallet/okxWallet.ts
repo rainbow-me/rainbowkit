@@ -100,29 +100,29 @@ export const okxWallet = ({
                 steps: [
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step1.description'
+                      'wallet_connectors.qr_code.okx.step1.description',
                     ),
                     step: 'install',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step1.title'
+                      'wallet_connectors.qr_code.okx.step1.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step2.description'
+                      'wallet_connectors.qr_code.okx.step2.description',
                     ),
                     step: 'create',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step2.title'
+                      'wallet_connectors.qr_code.okx.step2.title',
                     ),
                   },
                   {
                     description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step3.description'
+                      'wallet_connectors.qr_code.okx.step3.description',
                     ),
                     step: 'scan',
                     title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.okx.step3.title'
+                      'wallet_connectors.qr_code.okx.step3.title',
                     ),
                   },
                 ],
@@ -135,29 +135,29 @@ export const okxWallet = ({
             steps: [
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step1.description'
+                  'wallet_connectors.extension.okx.step1.description',
                 ),
                 step: 'install',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step1.title'
+                  'wallet_connectors.extension.okx.step1.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step2.description'
+                  'wallet_connectors.extension.okx.step2.description',
                 ),
                 step: 'create',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step2.title'
+                  'wallet_connectors.extension.okx.step2.title',
                 ),
               },
               {
                 description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step3.description'
+                  'wallet_connectors.extension.okx.step3.description',
                 ),
                 step: 'refresh',
                 title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.okx.step3.title'
+                  'wallet_connectors.extension.okx.step3.title',
                 ),
               },
             ],

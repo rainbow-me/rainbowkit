@@ -47,29 +47,29 @@ export const safeheronWallet = ({
         steps: [
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step1.description'
+              'wallet_connectors.extension.safeheron.step1.description',
             ),
             step: 'install',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step1.title'
+              'wallet_connectors.extension.safeheron.step1.title',
             ),
           },
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step2.description'
+              'wallet_connectors.extension.safeheron.step2.description',
             ),
             step: 'create',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step2.title'
+              'wallet_connectors.extension.safeheron.step2.title',
             ),
           },
           {
             description: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step3.description'
+              'wallet_connectors.extension.safeheron.step3.description',
             ),
             step: 'refresh',
             title: translateWithLocaleLocalStorage(
-              'wallet_connectors.extension.safeheron.step3.title'
+              'wallet_connectors.extension.safeheron.step3.title',
             ),
           },
         ],

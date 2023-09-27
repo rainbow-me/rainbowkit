@@ -1,86 +1,82 @@
 {
-  "name": "rainbowkit",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@rainbow-me/rainbowkit",
+  "version": "1.0.11",
+  "description": "The best way to connect a wallet",
+  "files": [
+    "dist",
+    "styles.css",
+    "wallets"
+  ],
   "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./dist/index.css",
+    "./wallets": "./dist/wallets/walletConnectors/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "src/css/reset.css.ts"
+  ],
+  "engines": {
+    "node": ">=12.4"
+  },
   "scripts": {
-    "postinstall": "husky install",
-    "dev": "pnpm --recursive --parallel --filter @rainbow-me/rainbowkit* --filter example dev",
-    "dev:lib": "pnpm --filter @rainbow-me/rainbowkit* dev",
-    "dev:example": "pnpm dev:lib & pnpm --filter example dev",
-    "dev:site": "pnpm dev:lib & pnpm --filter site dev",
-    "dev:cli": "pnpm --filter @rainbow-me/create-rainbowkit dev",
-    "dev:template:next-app": "pnpm --filter rainbowkit-next-app dev",
-    "build": "pnpm --recursive --parallel --filter=!rainbowkit-next-app --filter=!generated-test-app build",
-    "start": "pnpm dev",
-    "lint": "biome lint . && pnpm format:check && pnpm --recursive typecheck",
-    "lint:fix": "biome lint . --apply && pnpm format:fix",
-    "format:check": "biome check .",
-    "format:fix": "biome format . --write",
-    "link:cli": "cd packages/create-rainbowkit && pnpm link --global",
-    "test": "pnpm test:unit",
-    "test:unit": "vitest",
-    "test:update": "vitest --update",
-    "test:watch": "vitest --watch",
-    "test:cli": "pnpm --filter @rainbow-me/create-rainbowkit test:build",
-    "test:cli:dev": "pnpm --filter @rainbow-me/create-rainbowkit test:dev",
-    "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
-    "changeset": "changeset",
-    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbowkit/node_modules && rm -rf ./packages/create-rainbowkit/dist && pnpm install",
-    "clean:untracked": "git clean -fxd && pnpm install",
-    "release": "pnpm release:verify-git && pnpm release:build && changeset publish",
-    "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
-    "release:build": "pnpm clean && pnpm lint && pnpm test && MINIFY_CSS=true pnpm --recursive --parallel --filter \"!*-app\" build && cp README.md packages/rainbowkit/README.md",
-    "release:test": "pnpm release:build && pnpm --filter example dev",
-    "ci:example": "pnpm --filter @rainbow-me/rainbowkit* prepare && pnpm --filter example build",
-    "ci:site": "pnpm --filter @rainbow-me/rainbowkit* prepare && pnpm --filter site build"
+    "build": "node build.js",
+    "build:watch": "node build.js --watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
+    "prepare": "MINIFY_CSS=true pnpm build",
+    "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
+    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git"
-  },
+  "keywords": [
+    "ens",
+    "ethereum",
+    "react",
+    "react-hook",
+    "hooks",
+    "blockchain"
+  ],
+  "author": "Rainbow",
   "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17",
+    "viem": "~0.3.19 || ^1.0.0",
+    "wagmi": "~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0 || ~1.4.0"
+  },
   "devDependencies": {
-    "@biomejs/biome": "1.2.2",
-    "@changesets/cli": "2.26.2",
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@lavamoat/preinstall-always-fail": "^1.0.0",
-    "@tanstack/query-core": "^4.28.0",
-    "@tanstack/react-query": "^4.28.0",
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/node": "^18.16.12",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "@vanilla-extract/esbuild-plugin": "^2.2.0",
-    "@vanilla-extract/vite-plugin": "^3.9.0",
-    "@wagmi/core": "~1.4.2",
+    "@types/qrcode": "^1.4.2",
+    "@vanilla-extract/css-utils": "0.1.2",
+    "@vanilla-extract/private": "^1.0.3",
     "autoprefixer": "^10.4.15",
-    "esbuild": "^0.14.39",
-    "esbuild-plugin-replace": "^1.4.0",
-    "ethers": "^5.6.8",
-    "eventemitter3": "^5.0.1",
-    "husky": "^8.0.3",
     "jsdom": "^22.1.0",
-    "lokijs": "^1.5.12",
-    "next": "^13.4.19",
-    "next-auth": "4.22.3",
-    "postcss": "^8.4.29",
-    "postcss-prefix-selector": "^1.16.0",
+    "nock": "^13.2.4",
+    "postcss": "^8.4.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "recursive-readdir-files": "^2.3.0",
-    "typescript": "^5.0.4",
     "viem": "~1.12.2",
     "vitest": "^0.33.0",
-    "wagmi": "~1.4.2"
+    "wagmi": "~1.4.2",
+    "@wagmi/core": "~1.4.2"
   },
-  "packageManager": "pnpm@8.7.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+  "dependencies": {
+    "@vanilla-extract/css": "1.9.1",
+    "@vanilla-extract/dynamic": "2.0.2",
+    "@vanilla-extract/sprinkles": "1.5.0",
+    "clsx": "1.1.1",
+    "qrcode": "1.5.0",
+    "react-remove-scroll": "2.5.4",
+    "i18n-js": "^4.3.2",
+    "@types/i18n-js": "^3.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/rainbowkit"
   }
 }

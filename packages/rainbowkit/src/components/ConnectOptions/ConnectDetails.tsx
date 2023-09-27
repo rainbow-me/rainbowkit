@@ -283,7 +283,7 @@ export function ConnectDetail({
                   : hasExtension
                   ? `${name} ${i18n.t('intro.wallet.indicators.not_installed')}`
                   : `${name} ${i18n.t(
-                      'intro.wallet.indicators.not_available'
+                      'intro.wallet.indicators.not_available',
                     )}`}
               </Text>
               {!ready && hasExtension ? (
@@ -615,7 +615,7 @@ export function DownloadOptionsDetail({
         {extensionDownloadUrl && (
           <DownloadOptionsBox
             actionLabel={`${i18n.t(
-              'intro.wallet.get_started.add_to'
+              'intro.wallet.get_started.add_to',
             )} ${browser}`}
             description={i18n.t('intro.wallet.get_started.access_browser')}
             iconUrl={getBrowserSrc}
@@ -628,7 +628,7 @@ export function DownloadOptionsDetail({
               )
             }
             title={`${wallet.name} ${i18n.t(
-              'intro.wallet.get_started.for'
+              'intro.wallet.get_started.for',
             )} ${browser}`}
             url={extensionDownloadUrl}
             variant="browser"
@@ -646,7 +646,7 @@ export function DownloadOptionsDetail({
               changeWalletStep(WalletStep.Download);
             }}
             title={`${wallet.name} ${i18n.t(
-              'intro.wallet.get_started.for_mobile'
+              'intro.wallet.get_started.for_mobile',
             )}`}
             variant="app"
           />
