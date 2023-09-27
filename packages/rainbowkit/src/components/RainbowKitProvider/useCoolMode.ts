@@ -19,6 +19,7 @@ export const useCoolMode = (imageUrl: string | (() => Promise<string>)) => {
   const coolModeEnabled = useContext(CoolModeContext);
   const resolvedImageUrl = useAsyncImage(imageUrl);
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (coolModeEnabled && ref.current && resolvedImageUrl) {
       return makeElementCool(ref.current, resolvedImageUrl);
@@ -50,7 +51,7 @@ const getContainer = () => {
       'bottom:0',
       'pointer-events:none',
       'z-index:2147483647',
-    ].join(';')
+    ].join(';'),
   );
 
   document.body.appendChild(container);
@@ -93,7 +94,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
         `top:${top}px`,
         `left:${left}px`,
         `transform:rotate(${spinVal}deg)`,
-      ].join(';')
+      ].join(';'),
     );
 
     container.appendChild(particle);
@@ -112,7 +113,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
   }
 
   function updateParticles() {
-    particles.forEach(p => {
+    particles.forEach((p) => {
       p.left = p.left - p.speedHorz * p.direction;
       p.top = p.top - p.speedUp;
       p.speedUp = Math.min(p.size, p.speedUp - 1);
@@ -122,7 +123,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
         p.top >=
         Math.max(window.innerHeight, document.body.clientHeight) + p.size
       ) {
-        particles = particles.filter(o => o !== p);
+        particles = particles.filter((o) => o !== p);
         p.element.remove();
       }
 
@@ -134,7 +135,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
           `top:${p.top}px`,
           `left:${p.left}px`,
           `transform:rotate(${p.spinVal}deg)`,
-        ].join(';')
+        ].join(';'),
       );
     });
   }
@@ -192,7 +193,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
     element.removeEventListener('mouseleave', disableAutoAddParticle);
 
     // Cancel animation loop once animations are done
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       if (animationFrame && particles.length === 0) {
         cancelAnimationFrame(animationFrame);
         clearInterval(interval);

@@ -95,7 +95,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
-  base: { chainId: 8453, ...baseIcon },
+  base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
@@ -105,30 +105,35 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   hardhat: { chainId: 31_337, ...hardhatIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
-  mainnet: { chainId: 1, ...ethereumIcon },
+  mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
-  polygon: { chainId: 137, ...polygonIcon },
+  polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
-  zora: { chainId: 7777777, ...zoraIcon },
+  zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
   Object.values(chainMetadataByName)
     .filter(isNotNullish)
-    .map(({ chainId, ...metadata }) => [chainId, metadata])
+    .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
 /** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
-  chains: Chain[]
+  chains: Chain[],
 ): Chain[] =>
-  chains.map(chain => ({
-    ...chain,
-    ...(chainMetadataById[chain.id] ?? {}),
-  }));
+  chains.map((chain) => {
+    const defaultMetadata = chainMetadataById[chain.id] ?? {};
+    return {
+      ...chain,
+      name: defaultMetadata.name ?? chain.name, // favor colloquial names
+      iconUrl: chain.iconUrl ?? defaultMetadata.iconUrl,
+      iconBackground: chain.iconBackground ?? defaultMetadata.iconBackground,
+    } as Chain;
+  });

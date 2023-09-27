@@ -1,6 +1,6 @@
 import React, {
-  createContext,
   ReactNode,
+  createContext,
   useContext,
   useEffect,
   useMemo,
@@ -32,13 +32,13 @@ export interface AuthenticationConfig<Message> {
 
 // Right now this function only serves to infer the generic Message type
 export function createAuthenticationAdapter<Message>(
-  adapter: AuthenticationAdapter<Message>
+  adapter: AuthenticationAdapter<Message>,
 ) {
   return adapter;
 }
 
 const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
-  null
+  null,
 );
 
 interface RainbowKitAuthenticationProviderProps<Message>
@@ -81,7 +81,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     <AuthenticationContext.Provider
       value={useMemo(
         () => (enabled ? { adapter, status } : null),
-        [enabled, adapter, status]
+        [enabled, adapter, status],
       )}
     >
       {children}

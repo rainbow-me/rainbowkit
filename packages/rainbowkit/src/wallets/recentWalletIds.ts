@@ -4,7 +4,7 @@ function safeParseJsonArray<T>(string: string | null): T[] {
   try {
     const value = string ? JSON.parse(string) : [];
     return Array.isArray(value) ? value : [];
-  } catch (err) {
+  } catch {
     return [];
   }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -6,9 +5,9 @@ import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
-  getWalletConnectConnector,
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
+  getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 
 declare global {

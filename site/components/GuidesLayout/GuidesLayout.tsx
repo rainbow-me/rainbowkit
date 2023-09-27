@@ -11,7 +11,7 @@ export function GuidesLayout({ children }: { children: React.ReactNode }) {
   const ref = useCoolMode(
     '/rainbow.svg',
     !isConnected,
-    true
+    true,
   ) as Ref<HTMLDivElement>;
 
   return (
@@ -20,7 +20,7 @@ export function GuidesLayout({ children }: { children: React.ReactNode }) {
       <Wrapper>
         <Box className={content}>
           <Box paddingLeft={{ lg: '12' }} paddingRight={{ lg: '12' }}>
-            <>{children}</>
+            {children}
           </Box>
         </Box>
       </Wrapper>

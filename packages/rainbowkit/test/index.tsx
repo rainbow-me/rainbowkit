@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import type { MockProviderOptions } from '@wagmi/core/connectors/mock';
 import React, { ReactElement } from 'react';
-import { createWalletClient, http } from 'viem';
+import { http, createWalletClient } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import type { Chain } from 'wagmi';
 import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
 import { MockConnector } from 'wagmi/connectors/mock';
@@ -22,13 +22,13 @@ export function renderWithProviders(
     mock?: boolean;
     mockOptions?: MockProviderOptions;
     props?: Omit<RainbowKitProviderProps, 'children'>;
-  }
+  },
 ) {
-  const supportedChains = options?.chains || defaultChains;
+  const supportedChains: Chain[] = options?.chains || defaultChains;
   const firstChain = supportedChains[0];
 
   const account = privateKeyToAccount(
-    '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80'
+    '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
   ); // first anvil pk
 
   const client = createWalletClient({
@@ -37,13 +37,10 @@ export function renderWithProviders(
     transport: http(),
   });
 
-  const { chains, publicClient } = configureChains(
-    [mainnet, polygon, optimism, arbitrum, base, zora],
-    [
-      alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
-      publicProvider(),
-    ]
-  );
+  const { chains, publicClient } = configureChains(supportedChains, [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
+    publicProvider(),
+  ]);
 
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',

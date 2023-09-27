@@ -36,7 +36,7 @@ export const Link = React.forwardRef(
       variant = 'blue',
       ...props
     }: Props,
-    ref: React.Ref<HTMLElement>
+    ref: React.Ref<HTMLElement>,
   ) => {
     return (
       <Box
@@ -45,7 +45,7 @@ export const Link = React.forwardRef(
           styles.variants({
             variant,
           }),
-          className
+          className,
         )}
         color={color}
         display={display}
@@ -63,7 +63,7 @@ export const Link = React.forwardRef(
         {children}
       </Box>
     );
-  }
+  },
 );
 
 Link.displayName = 'Link';

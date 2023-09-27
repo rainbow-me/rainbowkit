@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -54,7 +53,7 @@ export const omniWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return isAndroid() ? uri : `omni://wc?uri=${encodeURIComponent(uri)}`;
         },

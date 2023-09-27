@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { translateWithLocaleLocalStorage } from '../../../locales';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -53,7 +52,7 @@ export const imTokenWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },

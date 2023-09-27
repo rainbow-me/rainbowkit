@@ -1,11 +1,10 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
+  RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,
   defineProperties,
-  RequiredConditionalValue,
 } from '@vanilla-extract/sprinkles';
 
 import './reset.css';
@@ -70,9 +69,10 @@ export type ThemeVars = typeof themeContractValues;
 
 export const themeVars = createGlobalThemeContract(
   themeContractValues,
-  (_, path) => `rk-${path.join('-')}`
+  (_, path) => `rk-${path.join('-')}`,
 );
 
+// biome-ignore format: design system keys
 const spacing = {
   '-1': '-1px',
   '0': '0',
@@ -97,6 +97,7 @@ const spacing = {
   '64': '64px',
 };
 
+// biome-ignore format: design system keys
 const dimensions = {
   '1': '1px',
   '2': '2px',
@@ -149,6 +150,7 @@ export const mapResponsiveValue = createMapValueFn(responsiveProperties);
 export const normalizeResponsiveValue =
   createNormalizeValueFn(responsiveProperties);
 
+// biome-ignore format: design system keys
 const unresponsiveProperties = defineProperties({
   properties: {
     alignSelf: flexAlignment,
@@ -247,6 +249,6 @@ const colorProperties = defineProperties({
 export const sprinkles = createSprinkles(
   colorProperties,
   responsiveProperties,
-  unresponsiveProperties
+  unresponsiveProperties,
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];

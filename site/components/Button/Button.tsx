@@ -41,11 +41,8 @@ type WithoutAnchor = {
 
 export const iconSizeMapping: Record<styles.Size, keyof Theme['space']> = {
   xs: '5',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   s: '1',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   m: '1',
-  // eslint-disable-next-line sort-keys-fix/sort-keys-fix
   l: '1',
   xl: '1',
 };
@@ -65,7 +62,7 @@ export const Button = React.forwardRef(
       variant = 'contrast',
       ...boxProps
     }: Props,
-    ref: React.Ref<HTMLButtonElement>
+    ref: React.Ref<HTMLButtonElement>,
   ) => {
     return (
       <Box
@@ -85,7 +82,7 @@ export const Button = React.forwardRef(
         {suffix && <Box display="inline-flex">{suffix}</Box>}
       </Box>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

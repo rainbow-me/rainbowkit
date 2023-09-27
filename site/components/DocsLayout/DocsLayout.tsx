@@ -33,7 +33,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const currentPageSlug = router.query.slug;
   const currentPageIndex = allDocsRoutes.findIndex(
-    page => page.slug === currentPageSlug
+    (page) => page.slug === currentPageSlug,
   );
   const previous = allDocsRoutes[currentPageIndex - 1];
   const next = allDocsRoutes[currentPageIndex + 1];
@@ -43,16 +43,17 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const ref = useCoolMode(
     '/rainbow.svg',
     !isConnected,
-    true
+    true,
   ) as Ref<HTMLDivElement>;
 
   // Listen to route change so we can programatically close
   // the docs mobile menu when changing routes.
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
     return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SearchProvider>
@@ -117,7 +118,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
           <Box className={content}>
             <Box paddingLeft={{ lg: '10' }}>
-              <>{children}</>
+              {children}
 
               <Box
                 borderTopWidth="1"

@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -84,7 +83,7 @@ export const okxWallet = ({
             ? async () => {
                 const uri = await getWalletConnectUri(
                   connector,
-                  walletConnectVersion
+                  walletConnectVersion,
                 );
                 return isAndroid()
                   ? uri

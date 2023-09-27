@@ -1,5 +1,5 @@
 import clsx, { ClassValue } from 'clsx';
-import { atoms, Atoms } from 'css/atoms';
+import { Atoms, atoms } from 'css/atoms';
 import { sprinkles } from 'css/sprinkles.css';
 import React from 'react';
 
@@ -37,7 +37,7 @@ export const Box = React.forwardRef<HTMLElement, Props>(
       ...nativeProps,
       ref,
     });
-  }
+  },
 );
 
 export type BoxProps = Parameters<typeof Box>[0];

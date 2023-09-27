@@ -3,8 +3,8 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -63,10 +63,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const i18n = useContext(I18nContext);
 
   const wallets = useWalletConnectors()
-    .filter(wallet => wallet.ready || !!wallet.extensionDownloadUrl)
+    .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
-  const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
+  const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
@@ -101,7 +101,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         if (callbackFired) return;
         callbackFired = true;
 
-        const sWallet = wallets.find(w => wallet.id === w.id);
+        const sWallet = wallets.find((w) => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
         setQrCodeUri(uri);
 
@@ -112,7 +112,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             setSelectedWallet(sWallet);
             changeWalletStep(WalletStep.Connect);
           },
-          uri ? 0 : 50
+          uri ? 0 : 50,
         );
 
         // If the WalletConnect request is rejected, restart the wallet
@@ -137,14 +137,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       changeWalletStep(
         wallet?.extensionDownloadUrl
           ? WalletStep.DownloadOptions
-          : WalletStep.Connect
+          : WalletStep.Connect,
       );
     }
   };
 
   const getWalletDownload = (id: string) => {
     setSelectedOptionId(id);
-    const sWallet = wallets.find(w => id === w.id);
+    const sWallet = wallets.find((w) => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
     const isExtension = !!sWallet?.extensionDownloadUrl;
     setSelectedWallet(sWallet);
@@ -162,10 +162,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedWallet(undefined);
     setQrCodeUri(undefined);
   };
-  const changeWalletStep = (
-    newWalletStep: WalletStep,
-    isBack: boolean = false
-  ) => {
+  const changeWalletStep = (newWalletStep: WalletStep, isBack = false) => {
     if (
       isBack &&
       newWalletStep === WalletStep.Get &&
@@ -180,7 +177,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setWalletStep(newWalletStep);
   };
   const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
-    WalletStep.None
+    WalletStep.None,
   );
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
 
@@ -189,6 +186,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
@@ -367,7 +365,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       </Box>
                     ) : null}
                     <Box display="flex" flexDirection="column" gap="4">
-                      {wallets.map(wallet => {
+                      {wallets.map((wallet) => {
                         return (
                           <ModalSelection
                             currentlySelected={wallet.id === selectedOptionId}
@@ -384,7 +382,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       })}
                     </Box>
                   </Fragment>
-                )
+                ),
             )}
           </Box>
           {compactModeEnabled && (

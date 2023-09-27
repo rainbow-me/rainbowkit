@@ -1,4 +1,3 @@
-/* eslint-disable no-console, import/no-unresolved, import/no-extraneous-dependencies */
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
 import * as esbuild from 'esbuild';
@@ -10,14 +9,14 @@ import readdir from 'recursive-readdir-files';
 const isWatching = process.argv.includes('--watch');
 const isCssMinified = process.env.MINIFY_CSS === 'true';
 
-const getAllEntryPoints = async rootPath =>
+const getAllEntryPoints = async (rootPath) =>
   (await readdir(rootPath))
     .map(({ path }) => path)
     .filter(
-      path =>
+      (path) =>
         /\.tsx?$/.test(path) &&
         !path.endsWith('.css.ts') &&
-        !path.includes('.test.')
+        !path.includes('.test.'),
     );
 
 const baseBuildConfig = {
@@ -40,7 +39,7 @@ const baseBuildConfig = {
     }),
     vanillaExtractPlugin({
       identifiers: isCssMinified ? 'short' : 'debug',
-      processCss: async css => {
+      processCss: async (css) => {
         const result = await postcss([
           autoprefixer,
           prefixSelector({ prefix: '[data-rk]' }),
@@ -54,8 +53,8 @@ const baseBuildConfig = {
     {
       name: 'make-all-packages-external',
       setup(build) {
-        let filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
-        build.onResolve({ filter }, args => ({
+        const filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
+        build.onResolve({ filter }, (args) => ({
           external: true,
           path: args.path,
         }));

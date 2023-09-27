@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-redeclare */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
@@ -28,7 +26,7 @@ export type WalletConnectLegacyConnectorOptions =
 
 function createConnector(
   version: WalletConnectVersion,
-  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
+  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig,
 ): WalletConnectLegacyConnector | WalletConnectConnector {
   const connector =
     version === '1'
@@ -76,12 +74,11 @@ export function getWalletConnectConnector({
   if (version === '2') {
     if (!projectId || projectId === '')
       throw new Error(
-        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure'
+        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
       );
     else if (projectId === 'YOUR_PROJECT_ID' || projectId === exampleProjectId)
-      // eslint-disable-next-line no-console
       console.warn(
-        'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure'
+        'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure',
       );
   }
 

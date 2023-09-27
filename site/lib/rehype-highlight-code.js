@@ -1,15 +1,14 @@
-/* eslint-disable import/order */
 // Inspired by https://github.com/j0lv3r4/mdx-prism
 
-import parseNumericRange from 'parse-numeric-range';
-import { visit } from 'unist-util-visit';
 import { toString as nodeToString } from 'hast-util-to-string';
+import parseNumericRange from 'parse-numeric-range';
 import { refractor } from 'refractor/lib/all.js';
+import { visit } from 'unist-util-visit';
 import { highlightLine } from './rehype-highlight-line.js';
 import { highlightWord } from './rehype-highlight-word.js';
 
 export const rehypeHighlightCode = () => {
-  const visitor = (node, index, parentNode) => {
+  const visitor = (node, _index, parentNode) => {
     if (parentNode.tagName === 'pre' && node.tagName === 'code') {
       // syntax highlight
       const lang = node.properties.className
@@ -36,7 +35,7 @@ export const rehypeHighlightCode = () => {
     }
   };
 
-  return tree => {
+  return (tree) => {
     visit(tree, 'element', visitor);
   };
 };

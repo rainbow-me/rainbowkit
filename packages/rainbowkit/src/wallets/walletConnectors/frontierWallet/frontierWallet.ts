@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';

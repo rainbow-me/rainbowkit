@@ -58,7 +58,7 @@ export const Text = React.forwardRef(
       whiteSpace,
       wordBreak,
     }: Props,
-    ref: React.Ref<HTMLElement>
+    ref: React.Ref<HTMLElement>,
   ) => {
     return (
       <Box
@@ -88,7 +88,7 @@ export const Text = React.forwardRef(
         {children}
       </Box>
     );
-  }
+  },
 );
 
 Text.displayName = 'Text';
