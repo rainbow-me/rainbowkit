@@ -23,6 +23,8 @@ export const connectorsForWallets = (
   return () => {
     let index = -1;
 
+    // Configure `locale` in localStorage at build/load time, if available.
+    // Checking if localStorage is not `undefined` is required for next.js SSR in most cases
     if (typeof localStorage !== 'undefined') {
       configureLocaleLocalStorage(options?.language);
     }

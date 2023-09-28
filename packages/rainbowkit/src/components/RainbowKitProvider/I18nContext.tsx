@@ -5,6 +5,8 @@ import { Language, getLocalStorageLocale, i18n as _i18n } from '../../locales';
 export const I18nContext = createContext<_I18N>(_i18n);
 
 const useI18n = () => {
+  // Initializes `i18n` with locale from local storage or defaults to EN_US.
+  // The returned `i18n` is memoized.
   const i18n = useMemo(() => {
     const locale = getLocalStorageLocale() || Language.EN_US;
     _i18n.locale = locale;

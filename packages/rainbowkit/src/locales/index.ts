@@ -52,6 +52,8 @@ export const getLocalStorageLocale = (): Language | void => {
   return localStorageLocale;
 };
 
+// Retrieves locale from localStorage (or defaults to en_US) and translates the provided key.
+// Primarily used in `createConnector` for translating `walletConnectors`.
 export const translateWithLocaleLocalStorage = (key: string) => {
   const locale = getLocalStorageLocale() || Language.EN_US;
   i18n.locale = locale;
@@ -60,15 +62,16 @@ export const translateWithLocaleLocalStorage = (key: string) => {
 };
 
 export const configureLocaleLocalStorage = (language: Language | undefined) => {
+  // If language specified then save `locale` in localStorage
   if (language) {
     localStorage.setItem(storageKey, language);
+    return;
   }
 
-  if (!language) {
-    const localStorageLocale = getLocalStorageLocale();
-
-    if (localStorageLocale) {
-      localStorage.removeItem(storageKey);
-    }
+  const localStorageLocale = getLocalStorageLocale();
+  // Remove language from localStorage if none is specified and a language is already saved,
+  // to avoid potential language saved confusions.
+  if (localStorageLocale) {
+    localStorage.removeItem(storageKey);
   }
 };

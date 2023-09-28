@@ -100,10 +100,12 @@ const { wallets } = getDefaultWallets({
   projectId,
 });
 
+// In this example, the user's locale is stored in local storage, allowing for language switching functionality.
+// If defined, we retrieve the locale value and typecast it as `Language`.
 export const localStorageLocale =
   typeof localStorage !== 'undefined'
     ? (localStorage.getItem('locale') as Language)
-    : Language.EN_US;
+    : null;
 
 const connectors = connectorsForWallets(
   [
@@ -141,9 +143,13 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  {
-    language: localStorageLocale,
-  },
+  // The `connectorsForWallets` function will be executed during build/load time.
+  // After its execution, the selected language will be stored to `localStorage` under the key `rk-locale`.
+  localStorageLocale
+    ? {
+        language: localStorageLocale as Language,
+      }
+    : { language: Language.EN_US },
 );
 
 const wagmiConfig = createConfig({
@@ -324,7 +330,7 @@ function RainbowKitApp({
                             localStorage.setItem('locale', e.target.value);
                             router.reload();
                           }}
-                          value={localStorageLocale}
+                          value={localStorageLocale || ''}
                         >
                           {locales.map((locale) => (
                             <option key={locale} value={locale}>
