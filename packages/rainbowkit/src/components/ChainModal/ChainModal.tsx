@@ -11,7 +11,10 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
-import { ScrollClassName } from './ChainModal.css';
+import {
+  DesktopScrollClassName,
+  MobileScrollClassName,
+} from './ChainModal.css';
 
 export interface ChainModalProps {
   open: boolean;
@@ -72,7 +75,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             </Box>
           )}
           <Box
-            className={ScrollClassName}
+            className={mobile ? MobileScrollClassName : DesktopScrollClassName}
             display="flex"
             flexDirection="column"
             gap="4"
