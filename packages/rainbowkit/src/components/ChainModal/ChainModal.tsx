@@ -11,6 +11,7 @@ import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
+import { ScrollClassName } from './ChainModal.css';
 
 export interface ChainModalProps {
   open: boolean;
@@ -42,7 +43,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
 
   return (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
-      <DialogContent bottomSheetOnMobile>
+      <DialogContent bottomSheetOnMobile paddingBottom="0">
         <Box display="flex" flexDirection="column" gap="14">
           <Box
             display="flex"
@@ -71,19 +72,12 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             </Box>
           )}
           <Box
+            className={ScrollClassName}
             display="flex"
             flexDirection="column"
             gap="4"
             padding="2"
-            style={{
-              overflowY: 'scroll',
-              maxHeight: '90vh',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              '&::-webkit-scrollbar': {
-                display: 'none',
-              },
-            }}
+            paddingBottom="16"
           >
             {switchNetwork ? (
               rainbowkitChains.map(
