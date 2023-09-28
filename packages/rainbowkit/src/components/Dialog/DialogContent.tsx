@@ -21,7 +21,7 @@ export function DialogContent({
   children,
   marginTop,
   padding = '16',
-  paddingBottom = '16',
+  paddingBottom,
   wide = false,
 }: DialogContentProps) {
   const mobile = isMobile();
@@ -42,7 +42,7 @@ export function DialogContent({
           mobile && bottomSheetOnMobile ? styles.bottomSheetOverrides : null,
         ].join(' ')}
       >
-        <Box padding={padding} paddingBottom={paddingBottom}>
+        <Box padding={padding} paddingBottom={paddingBottom ?? padding}>
           {children}
         </Box>
       </Box>
