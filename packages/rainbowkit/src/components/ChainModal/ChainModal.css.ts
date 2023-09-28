@@ -8,6 +8,7 @@ export const DesktopScrollClassName = style({
 export const MobileScrollClassName = style({
   maxHeight: 454,
   overflowY: 'auto',
+  overflowX: 'hidden',
   scrollbarWidth: 'none',
   selectors: {
     '&::-webkit-scrollbar': {
