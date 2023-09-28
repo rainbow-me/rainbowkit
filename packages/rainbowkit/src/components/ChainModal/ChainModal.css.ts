@@ -2,12 +2,12 @@ import { style } from '@vanilla-extract/css';
 
 export const DesktopScrollClassName = style({
   maxHeight: 454,
-  overflow: 'auto',
+  overflowY: 'auto',
 });
 
 export const MobileScrollClassName = style({
   maxHeight: 454,
-  overflow: 'auto',
+  overflowY: 'auto',
   scrollbarWidth: 'none',
   selectors: {
     '&::-webkit-scrollbar': {
