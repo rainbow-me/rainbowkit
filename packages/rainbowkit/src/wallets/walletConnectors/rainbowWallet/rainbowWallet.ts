@@ -1,61 +1,76 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-import { InjectedConnector } from 'wagmi/connectors/injected';
+import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../../utils/isMobile';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
+import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
 
-export interface RainbowWalletOptions {
+export interface RainbowWalletLegacyOptions {
+  projectId?: string;
   chains: Chain[];
-  shimDisconnect?: boolean;
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
-function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
-  // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  // @ts-expect-error
-  const isRainbow = Boolean(ethereum.isRainbow);
-
-  if (!isRainbow) {
-    return false;
-  }
-
-  return true;
+export interface RainbowWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const rainbowWallet = ({
   chains,
-  shimDisconnect,
-}: RainbowWalletOptions): Wallet => {
-  const isRainbowInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    isRainbow(window.ethereum);
-
+  projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
+  ...options
+}: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
+  const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
     id: 'rainbow',
     name: 'Rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
+    installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
     downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=me.rainbow',
-      ios: 'https://apps.apple.com/us/app/rainbow-ethereum-wallet/id1457119021',
-      qrCode: 'https://rainbow.download',
+      android:
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit&utm_source=rainbowkit',
+      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
+      mobile: 'https://rainbow.download?utm_source=rainbowkit',
+      qrCode:
+        'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
+      browserExtension: 'https://rainbow.me/extension?utm_source=rainbowkit',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
-        : new InjectedConnector({
+        ? getWalletConnectConnector({
+            projectId,
             chains,
-            options: { shimDisconnect },
-          });
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
+        : getInjectedConnector({ flag: 'isRainbow', chains, options });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
-
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
         return isAndroid()
           ? uri
-          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(uri)}`;
+          : isIOS()
+          ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
+          : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
+              uri,
+            )}&connector=rainbowkit`;
       };
 
       return {
@@ -66,7 +81,7 @@ export const rainbowWallet = ({
               getUri,
               instructions: {
                 learnMoreUrl:
-                  'https://learn.rainbow.me/connect-your-wallet-to-a-website-or-app',
+                  'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
                 steps: [
                   {
                     description:

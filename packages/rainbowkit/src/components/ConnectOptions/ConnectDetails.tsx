@@ -5,16 +5,16 @@ import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
-import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
-import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
+import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
+import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
@@ -24,16 +24,22 @@ import { WalletStep } from './DesktopOptions';
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
-    case BrowserType.Chrome:
-      return (await import(`../Icons/Chrome.svg`)).default;
+    case BrowserType.Arc:
+      return (await import('../Icons/Arc.svg')).default;
     case BrowserType.Brave:
-      return (await import(`../Icons/Brave.svg`)).default;
+      return (await import('../Icons/Brave.svg')).default;
+    case BrowserType.Chrome:
+      return (await import('../Icons/Chrome.svg')).default;
     case BrowserType.Edge:
-      return (await import(`../Icons/Edge.svg`)).default;
+      return (await import('../Icons/Edge.svg')).default;
     case BrowserType.Firefox:
-      return (await import(`../Icons/Firefox.svg`)).default;
+      return (await import('../Icons/Firefox.svg')).default;
+    case BrowserType.Opera:
+      return (await import('../Icons/Opera.svg')).default;
+    case BrowserType.Safari:
+      return (await import('../Icons/Safari.svg')).default;
     default:
-      return (await import(`../Icons/Browser.svg`)).default;
+      return (await import('../Icons/Browser.svg')).default;
   }
 };
 
@@ -66,16 +72,16 @@ export function GetDetail({
       >
         {shownWallets
           ?.filter(
-            wallet =>
-              wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode && wallet.downloadUrls?.qrCode)
+            (wallet) =>
+              wallet.extensionDownloadUrl ||
+              (wallet.qrCode && wallet.downloadUrls?.qrCode),
           )
-          .map(wallet => {
+          .map((wallet) => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
               wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
-            const hasMobileAndExtension =
-              downloadUrls?.qrCode && downloadUrls?.browserExtension;
+            const hasExtension = !!wallet.extensionDownloadUrl;
+            const hasMobileAndExtension = downloadUrls?.qrCode && hasExtension;
 
             return (
               <Box
@@ -109,7 +115,7 @@ export function GetDetail({
                         ? 'Mobile Wallet and Extension'
                         : hasMobileCompanionApp
                         ? 'Mobile Wallet'
-                        : downloadUrls?.browserExtension
+                        : hasExtension
                         ? 'Browser Extension'
                         : null}
                     </Text>
@@ -154,6 +160,7 @@ export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
   connectionError,
+  onClose,
   qrCodeUri,
   reconnect,
   wallet,
@@ -164,6 +171,7 @@ export function ConnectDetail({
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
+  onClose: () => void;
 }) {
   const {
     downloadUrls,
@@ -177,8 +185,8 @@ export function ConnectDetail({
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
 
-  const hasQrCodeAndExtension =
-    downloadUrls?.qrCode && downloadUrls?.browserExtension;
+  const hasExtension = !!wallet.extensionDownloadUrl;
+  const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
@@ -192,7 +200,10 @@ export function ConnectDetail({
           compactModeEnabled ? '' : 'official'
         } WalletConnect modal?`,
         label: 'OPEN',
-        onClick: showWalletConnectModal,
+        onClick: () => {
+          onClose();
+          showWalletConnectModal();
+        },
       }
     : hasQrCode
     ? {
@@ -202,7 +213,7 @@ export function ConnectDetail({
           changeWalletStep(
             hasQrCodeAndExtension
               ? WalletStep.DownloadOptions
-              : WalletStep.Download
+              : WalletStep.Download,
           ),
       }
     : null;
@@ -265,14 +276,14 @@ export function ConnectDetail({
               <Text color="modalText" size="18" weight="bold">
                 {ready
                   ? `Opening ${name}...`
-                  : downloadUrls?.browserExtension
+                  : hasExtension
                   ? `${name} is not installed`
                   : `${name} is not available`}
               </Text>
-              {!ready && downloadUrls?.browserExtension ? (
+              {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
-                    href={downloadUrls.browserExtension}
+                    href={wallet.extensionDownloadUrl}
                     label="INSTALL"
                     type="secondary"
                   />
@@ -564,6 +575,7 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
+  const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -592,29 +604,39 @@ export function DownloadOptionsDetail({
         justifyContent="center"
         width="full"
       >
-        <DownloadOptionsBox
-          actionLabel={`Add to ${browser}`}
-          description="Access your wallet right from your favorite web browser."
-          iconUrl={getBrowserSrc}
-          isCompact={isCompact}
-          onAction={() => changeWalletStep(WalletStep.InstructionsExtension)}
-          title={`${wallet.name} for ${browser}`}
-          url={wallet?.downloadUrls?.browserExtension}
-          variant="browser"
-        />
-        <DownloadOptionsBox
-          actionLabel="Get the app"
-          description="Use the mobile wallet to explore the world of Ethereum."
-          iconAccent={wallet.iconAccent}
-          iconBackground={wallet.iconBackground}
-          iconUrl={wallet.iconUrl}
-          isCompact={isCompact}
-          onAction={() => {
-            changeWalletStep(WalletStep.Download);
-          }}
-          title={`${wallet.name} for Mobile`}
-          variant="app"
-        />
+        {extensionDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel={`Add to ${browser}`}
+            description="Access your wallet right from your favorite web browser."
+            iconUrl={getBrowserSrc}
+            isCompact={isCompact}
+            onAction={() =>
+              changeWalletStep(
+                extension?.instructions
+                  ? WalletStep.InstructionsExtension
+                  : WalletStep.Connect,
+              )
+            }
+            title={`${wallet.name} for ${browser}`}
+            url={extensionDownloadUrl}
+            variant="browser"
+          />
+        )}
+        {mobileDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel="Get the app"
+            description="Use the mobile wallet to explore the world of Ethereum."
+            iconAccent={wallet.iconAccent}
+            iconBackground={wallet.iconBackground}
+            iconUrl={wallet.iconUrl}
+            isCompact={isCompact}
+            onAction={() => {
+              changeWalletStep(WalletStep.Download);
+            }}
+            title={`${wallet.name} for Mobile`}
+            variant="app"
+          />
+        )}
       </Box>
     </Box>
   );
@@ -672,7 +694,7 @@ export function DownloadDetail({
             changeWalletStep(
               qrCode?.instructions
                 ? WalletStep.InstructionsMobile
-                : WalletStep.Connect
+                : WalletStep.Connect,
             )
           }
         />
@@ -686,7 +708,7 @@ const stepIcons: Record<
   (wallet: WalletConnector) => ReactNode
 > = {
   create: () => <CreateIcon />,
-  install: wallet => (
+  install: (wallet) => (
     <AsyncImage
       background={wallet.iconBackground}
       borderColor="generalBorder"
@@ -848,6 +870,22 @@ export function InstructionExtensionDetail({
           label="Refresh"
           onClick={window.location.reload.bind(window.location)}
         />
+        <Box
+          as="a"
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          display="block"
+          href={wallet?.extension?.instructions?.learnMoreUrl}
+          paddingX="12"
+          paddingY="4"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            Learn More
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

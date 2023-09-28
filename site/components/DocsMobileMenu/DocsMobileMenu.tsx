@@ -10,6 +10,6 @@ export function DocsMobileMenuSlot({ children }) {
   const docsMobileMenuRef = React.useContext(DocsMobileMenuContext);
 
   return useMounted() ? (
-    <Portal containerRef={docsMobileMenuRef}>{children}</Portal>
+    <Portal container={docsMobileMenuRef.current}>{children}</Portal>
   ) : null;
 }

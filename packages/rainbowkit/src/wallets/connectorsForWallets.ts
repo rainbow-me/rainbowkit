@@ -29,13 +29,13 @@ export const connectorsForWallets = (walletList: WalletList) => {
     // e.g. the "Injected Wallet" option hides itself if another
     // injected wallet is available.
     walletList.forEach(({ groupName, wallets }, groupIndex) => {
-      wallets.forEach(wallet => {
+      wallets.forEach((wallet) => {
         index++;
 
         // guard against non-hex values for `iconAccent`
         if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
           throw new Error(
-            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
+            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
           );
         }
 
@@ -76,10 +76,11 @@ export const connectorsForWallets = (walletList: WalletList) => {
             wallets: [
               // Note: We only expose a subset of fields
               // publicly to reduce API surface area
-              ...walletInstances.map(({ connector, id, installed }) => ({
+              ...walletInstances.map(({ connector, id, installed, name }) => ({
                 connector,
                 id,
                 installed,
+                name,
               })),
             ],
           });
@@ -91,7 +92,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
 
         const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector()
+          createConnector(),
         );
 
         let walletConnectModalConnector: Connector | undefined;
@@ -106,7 +107,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
             chains,
             options: {
               ...options,
-              qrcode: true,
+              showQrModal: true,
             },
           });
 
@@ -137,14 +138,12 @@ export const connectorsForWallets = (walletList: WalletList) => {
           // the old list. This is happening because we're
           // re-using the WalletConnectConnector instance
           // so the wallet list already exists after HMR.
-          // @ts-expect-error
           connector._wallets = [];
         }
 
         // Add wallet to connector's list of associated wallets
-        // @ts-expect-error
         connector._wallets.push(walletInstance);
-      }
+      },
     );
 
     return connectors;

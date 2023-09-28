@@ -14,8 +14,16 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, goerli } from 'wagmi/chains';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+  goerli,
+} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import type { Chain } from 'wagmi';
 import {
@@ -61,27 +69,28 @@ export default function App() {
   // client happens during render, but the result is cached via `useState`
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
-  const [{ client, chains }] = useState(() => {
+  const [{ config, chains }] = useState(() => {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
-    const { chains, provider } = configureChains(
-      [mainnet, polygon, optimism, arbitrum, ...testChains],
+    const { chains, publicClient } = configureChains(
+      [mainnet, polygon, optimism, arbitrum, base, zora, ...testChains],
       [publicProvider()]
     );
 
     const { connectors } = getDefaultWallets({
       appName: 'RainbowKit Remix Example',
+      projectId: 'YOUR_PROJECT_ID',
       chains,
     });
 
-    const client = createClient({
-      provider,
-      connectors,
+    const config = createConfig({
       autoConnect: true,
+      connectors,
+      publicClient,
     });
 
     return {
-      client,
+      config,
       chains,
     };
   });
@@ -93,8 +102,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {client && chains ? (
-          <WagmiConfig client={client}>
+        {config && chains ? (
+          <WagmiConfig config={config}>
             <RainbowKitProvider chains={chains as Chain[]}>
               <div
                 style={{

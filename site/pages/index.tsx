@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
@@ -15,7 +14,7 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
@@ -72,7 +71,7 @@ export default function Home() {
             <InstallScript />
           </Box>
           <Box marginBottom={{ xs: '0', md: '11' }}>
-            <NextLink href="/docs" passHref>
+            <NextLink href="/docs" legacyBehavior passHref>
               <Button as="a" size="xl" variant="purpleGradient">
                 View the Docs
               </Button>
@@ -146,7 +145,7 @@ export default function Home() {
                 'Custom Chains',
                 'App Store and Google Play Integration',
                 'Custom Connect Button',
-              ].map(value => (
+              ].map((value) => (
                 <Box
                   alignItems="center"
                   as="li"
@@ -167,7 +166,7 @@ export default function Home() {
               marginTop={{ xs: '5', md: '11' }}
               textAlign={{ xs: 'left', md: 'center' }}
             >
-              <NextLink href="/docs" passHref>
+              <NextLink href="/docs" legacyBehavior passHref>
                 <Button
                   as="a"
                   size="xl"

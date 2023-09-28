@@ -16,8 +16,8 @@ export function usePreloadImages() {
 
   const preloadImages = useCallback(() => {
     loadImages(
-      ...walletConnectors.map(wallet => wallet.iconUrl),
-      ...rainbowKitChains.map(chain => chain.iconUrl).filter(isNotNullish)
+      ...walletConnectors.map((wallet) => wallet.iconUrl),
+      ...rainbowKitChains.map((chain) => chain.iconUrl).filter(isNotNullish),
     );
 
     // Preload illustrations used on desktop

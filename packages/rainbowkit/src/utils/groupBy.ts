@@ -1,10 +1,10 @@
 export function groupBy<Item>(
   items: Item[],
-  getKey: (item: Item) => string
+  getKey: (item: Item) => string,
 ): Record<string, Item[]> {
   const groupedItems: Record<string, Item[]> = {};
 
-  items.forEach(item => {
+  items.forEach((item) => {
     const key = getKey(item);
 
     if (!key) {

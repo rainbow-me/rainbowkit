@@ -31,7 +31,7 @@ All API changes should also include updates to [`README.md`](../README.md) and t
 
 ## Coding standards
 
-Our code formatting rules are defined in [`.eslintrc.cjs`](../.eslintrc.cjs). You can check your code against these standards by running:
+Our code formatting rules are defined in [`biome.json`](../.biome.json). You can check your code against these standards by running:
 
 ```bash
 pnpm lint

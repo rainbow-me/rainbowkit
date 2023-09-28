@@ -28,8 +28,8 @@ export function SearchProvider({ children }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const onOpen = useCallback(() => setIsOpen(true), [setIsOpen]);
-  const onClose = useCallback(() => setIsOpen(false), [setIsOpen]);
+  const onOpen = useCallback(() => setIsOpen(true), []);
+  const onClose = useCallback(() => setIsOpen(false), []);
 
   useDocSearchKeyboardEvents({
     isOpen,
@@ -41,7 +41,7 @@ export function SearchProvider({ children }) {
     <>
       <Head>
         <link
-          crossOrigin="true"
+          crossOrigin="anonymous"
           href={`https://${APP_ID}-dsn.algolia.net`}
           rel="preconnect"
         />
@@ -71,7 +71,7 @@ export function SearchProvider({ children }) {
             }}
             onClose={onClose}
             placeholder="Search documentation"
-            transformItems={items => {
+            transformItems={(items) => {
               return items.map((item, index) => {
                 const a = document.createElement('a');
                 a.href = item.url;
@@ -84,7 +84,7 @@ export function SearchProvider({ children }) {
                 if (item.hierarchy?.lvl0) {
                   item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(
                     /&amp;/g,
-                    '&'
+                    '&',
                   );
                 }
 
@@ -92,7 +92,7 @@ export function SearchProvider({ children }) {
                   item._highlightResult.hierarchy.lvl0.value =
                     item._highlightResult.hierarchy.lvl0.value.replace(
                       /&amp;/g,
-                      '&'
+                      '&',
                     );
                 }
 
@@ -113,7 +113,7 @@ export function SearchProvider({ children }) {
               });
             }}
           />,
-          document.body
+          document.body,
         )}
     </>
   );
@@ -121,19 +121,19 @@ export function SearchProvider({ children }) {
 
 function Hit({ children, hit }) {
   return (
-    <Link href={hit.url} passHref>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a
-        className={clsx({
-          'DocSearch-Hit--Child': hit.__is_child?.(),
-          'DocSearch-Hit--FirstChild': hit.__is_first?.(),
-          'DocSearch-Hit--LastChild': hit.__is_last?.(),
-          'DocSearch-Hit--Parent': hit.__is_parent?.(),
-          'DocSearch-Hit--Result': hit.__is_result?.(),
-        })}
-      >
-        {children}
-      </a>
+    <Link
+      className={clsx({
+        'DocSearch-Hit--Child': hit.__is_child?.(),
+        'DocSearch-Hit--FirstChild': hit.__is_first?.(),
+        'DocSearch-Hit--LastChild': hit.__is_last?.(),
+        'DocSearch-Hit--Parent': hit.__is_parent?.(),
+        'DocSearch-Hit--Result': hit.__is_result?.(),
+      })}
+      href={hit.url}
+      passHref
+    >
+      {}
+      {children}
     </Link>
   );
 }

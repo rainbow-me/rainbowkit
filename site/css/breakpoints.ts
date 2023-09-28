@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const breakpoints = {
   sm: 640,
   md: 768,

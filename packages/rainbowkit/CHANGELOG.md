@@ -1,5 +1,879 @@
 # @rainbow-me/rainbowkit
 
+## 1.0.11
+
+### Patch Changes
+
+- 118dfe11: Support for wagmi `1.4.x` and viem `1.10.x` peer dependencies.
+
+## 1.0.10
+
+### Patch Changes
+
+- a129cb04: Resolved an issue that prevented some PNG icons within RainbowKit from rendering.
+
+## 1.0.9
+
+### Patch Changes
+
+- 42a0c3e5: Bifrost Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [bifrostWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 67933ed5: Uniswap Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [uniswapWallet({ chains })],
+    },
+  ]);
+  ```
+
+- e7ae2571: Coin98 Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [coin98Wallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- c434ca7a: Enkrypt Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [enkryptWallet({ chains })],
+    },
+  ]);
+  ```
+
+- ad1f860e: Frame Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [frameWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 60968a5f: OneKey Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [oneKeyWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7b31af24: FoxWallet Support
+
+  **Example Usage**
+
+  ```tsx
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [foxWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+## 1.0.8
+
+### Patch Changes
+
+- eb319f3: Improved warnings and error handling for dApps with an invalid or missing `projectId`.
+
+  Improved the developer experience for RainbowKit examples and templates with a bundled development `projectId`. It is required that every dApp obtains a unique `projectId` before entering production to avoid throttling and issues for end users.
+
+  Read our WalletConnect v2 [Migration Guide](https://www.rainbowkit.com/guides/walletconnect-v2#:~:text=2.%20Supplying%20a%20projectId) for more information.
+
+## 1.0.7
+
+### Patch Changes
+
+- d303a3b9: Added `base` chain support
+- f1e98e84: RainbowKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
+
+## 1.0.6
+
+### Patch Changes
+
+- dc3cd10b: Core Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [coreWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- c251d55d: Talisman Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [talismanWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- d5b3bd19: Safeheron Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [safeheronWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 66e84239: Frontier Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [frontierWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 1b4f142e: BitKeep Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [bitKeepWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- e089ab98: TokenPocket Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [tokenPocketWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+## 1.0.5
+
+### Patch Changes
+
+- 08e3f4c: Decoupled `chains` between `WagmiConfig` and `RainbowKitProvider` so that dApps can now supply a subset of supported chains to `RainbowKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
+- cb3614e: Added `cronos` and `cronosTestnet` chain support
+- 53d96bc: Fixed an issue with MetaMask Mobile's connector that blocked WalletConnect pairings
+- bfab830: Updated BNB Smart Chain icon.
+
+## 1.0.4
+
+### Patch Changes
+
+- 6d361b4: Support for wagmi `1.3.x` and viem `1.1.x` peer dependencies.
+
+## 1.0.3
+
+### Patch Changes
+
+- d00c777: Added `zora` and `zoraTestnet` chain support
+
+## 1.0.2
+
+### Patch Changes
+
+- e2b1072: Support for WalletConnect v2 is now standard in RainbowKit.
+
+  Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
+  This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023.
+
+  Upgrade RainbowKit and provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+
+  ```ts
+  const projectId = 'YOUR_PROJECT_ID';
+
+  const { wallets } = getDefaultWallets({
+    appName: 'My RainbowKit App',
+    projectId,
+    chains,
+  });
+
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ projectId, chains }),
+        trustWallet({ projectId, chains }),
+        ledgerWallet({ projectId, chains }),
+      ],
+    },
+  ]);
+  ```
+
+  You can read the full migration guide [here](https://www.rainbowkit.com/guides/walletconnect-v2).
+
+  **Advanced options**
+
+  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overriden.
+
+  ```ts
+  metaMaskWallet(options: {
+    chains: Chain[];
+    walletConnectVersion: '1',
+  });
+  ```
+
+  Once the WalletConnect v1 servers are shutdown, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required.
+
+  ```ts
+  walletConnectWallet(options: {
+    chains: Chain[];
+    version: '1',
+    options: {
+      bridge: 'https://bridge.myhostedserver.com',
+    },
+  });
+
+  customWallet(options: {
+    chains: Chain[];
+    walletConnectVersion: '1',
+    walletConnectOptions: {
+      bridge: 'https://bridge.myhostedserver.com',
+    },
+  });
+  ```
+
+  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+
+  It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
+
+  [Reference the viem migration guide here](https://viem.sh/docs/migration-guide.html#_1-x-x-breaking-changes).
+
+## 1.0.1
+
+### Patch Changes
+
+- 9432a2f: The `ConnectButton` component is now tagged with `use client;` to support the Next 13 App Router and server-side rendered dApps. You can reference a full `app/` directory implementation example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app).
+- b2c66ff: Modified acceptable peer dependency versions to ensure proper peer warnings for future versions of wagmi and viem. `wagmi` now requires `~1.0.1` and `viem` now requires `~0.3.19`.
+- bcb3d18: Modal Hooks including `useConnectModal`, `useAccountModal`, and `useChainModal` now each return a boolean with the status of the modal.
+
+  ```tsx
+  const { connectModalOpen } = useConnectModal();
+  const { accountModalOpen } = useAccountModal();
+  const { chainModalOpen } = useChainModal();
+  ```
+
+## 1.0.0
+
+### Major Changes
+
+- 93b58d0: **Breaking:**
+
+  The [wagmi](https://wagmi.sh) peer dependency has been updated to `1.x.x`.
+
+  Follow the steps below to migrate.
+
+  **1. Upgrade RainbowKit and `wagmi` to their latest version**
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^1 wagmi@^1
+  ```
+
+  **2. Install `viem` peer dependency**
+
+  wagmi v1 requires the `viem` peer dependency. Install it with the following command:
+
+  ```bash
+  npm i viem
+  ```
+
+  Note: wagmi no longer uses the `ethers` package internally. But if you rely on the [Authentication](https://www.rainbowkit.com/docs/authentication) API, `siwe` will still require `ethers` as a peer dependency.
+
+  **3. Check for breaking changes in `wagmi`**
+
+  If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v1.
+
+  It is recommended that you adopt Typescript `^5.0.4` or above for compatibility with `abitype` and future versions of `wagmi` and `viem`.
+
+  [You can see their migration guide here](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
+
+## 0.12.14
+
+### Patch Changes
+
+- 865175f: Upgraded minimum `ethers` peer dependency to `^5.6.8`.
+
+## 0.12.13
+
+### Patch Changes
+
+- 0f8e87e: **Improved extension store support**
+
+  RainbowKit wallet connectors now support multiple browser extension download URLs, and RainbowKit will automatically direct users to the appropriate extension store.
+
+  Users will also experience an improved download flow for extensions, including support for Arc, Opera, and Safari browsers.
+
+  dApps that utilize the `Custom Wallets` API can reference the updated docs [here](https://www.rainbowkit.com/docs/custom-wallets).
+
+  ```tsx
+  {
+    downloadUrls: {
+      chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
+      edge: 'https://microsoftedge.microsoft.com/addons/detail/my-wallet',
+      firefox: 'https://addons.mozilla.org/firefox/addon/my-wallet',
+      opera: 'https://addons.opera.com/extensions/details/my-wallet',
+      browserExtension: 'https://my-wallet/', */ fallback download page */
+    }
+  }
+  ```
+
+- 6eab54d: Detecting MetaMask in `window.ethereum.providers` for wallets that support the `ethereum.providers` standard.
+
+  Overriding Wagmi's `getProvider` logic for MetaMask to ensure that MetaMask is preferred when available, and RainbowKit's MetaMask button continues to act as a fallback for users that rely on wallets that override `window.ethereum`.
+
+## 0.12.12
+
+### Patch Changes
+
+- ab051b9: Support for `options` customization for `walletConnectWallet`
+
+  **Example usage**
+
+  ```tsx
+  walletConnectWallet(options: {
+    projectId: string;
+    chains: Chain[];
+    options?: {
+      qrcodeModalOptions?: {
+        desktopLinks?: string[];
+        mobileLinks?: string[];
+      };
+    }
+  });
+  ```
+
+  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+
+## 0.12.11
+
+## 0.12.10
+
+## 0.12.9
+
+### Patch Changes
+
+- 361bb39: Phantom Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [phantomWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 82376f0: Rabby Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [rabbyWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7c9e580: Trust Wallet Support
+
+  The `trustWallet` wallet connector now includes support for the Trust Wallet browser extension.
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [trustWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 0127559: XDEFI Wallet Support
+
+  **Example usage**
+
+  ```tsx
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [xdefiWallet({ chains })],
+    },
+  ]);
+  ```
+
+## 0.12.8
+
+### Patch Changes
+
+- aef9643: **Support for WalletConnect Cloud `projectId`**
+
+  Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
+  RainbowKit will enable WalletConnect v2 for supported wallets when `projectId` is specified. If `projectId` is unspecified, RainbowKit will quietly prefer WalletConnect v1.
+
+  This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023.
+
+  Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+
+  ```ts
+  const projectId = 'YOUR_PROJECT_ID';
+
+  const { wallets } = getDefaultWallets({
+    appName: 'My RainbowKit App',
+    projectId,
+    chains,
+  });
+
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ projectId, chains }),
+        trustWallet({ projectId, chains }),
+        ledgerWallet({ projectId, chains }),
+      ],
+    },
+  ]);
+  ```
+
+## 0.12.7
+
+### Patch Changes
+
+- 4ef5c51: Fixed an issue that caused mobile WalletConnect redirects for signing request hooks to fail in Wagmi 0.12.x
+
+## 0.12.6
+
+### Patch Changes
+
+- d35809e: Amended `rainbowWallet` connector extension support and URLs
+
+  Improved UI flow for wallet connectors that don't specify `extension.instructions`
+
+## 0.12.5
+
+### Patch Changes
+
+- 2b4ede4: Zerion Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [zerionWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 6a01368: Taho Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [tahoWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 936b523: OKX Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [okxWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 7f669bd: Dawn Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [dawnWallet({ chains })],
+    },
+  ]);
+  ```
+
+## 0.12.4
+
+### Patch Changes
+
+- 9b93f56: Added `safeWallet` connector to support Safe Apps. dApps that rely on `getDefaultWallets` will adopt this behavior automatically. dApps that rely on the Custom Wallet List should add `safeWallet` alongside `injectedWallet`.
+
+## 0.12.3
+
+### Patch Changes
+
+- e7f1bec: `injectedWallet` now has a friendlier name and icon
+- fe4f356: RainbowKit dApps that use `getDefaultWallets` or `injectedWallet` will now more eagerly display the fallback `injectedWallet` connector to better support dApp Browsers when a branded connector is unavailable.
+
+## 0.12.2
+
+### Patch Changes
+
+- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. RainbowKit wallet connectors now also accept all `InjectedConnectorOptions` options.
+- 429a3c7: Improvements to RainbowKit UX on iPad
+
+## 0.12.1
+
+### Patch Changes
+
+- 8f01a12: Bitski Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ chains }),
+        trustWallet({ chains }),
+        bitskiWallet({ chains }),
+        ledgerWallet({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+- 3399df5: MEW Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from '@rainbow-me/rainbowkit';
+  import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ chains }),
+        trustWallet({ chains }),
+        mewWallet({ chains }),
+        ledgerWallet({ chains }),
+      ],
+    },
+  ]);
+  ```
+
+## 0.12.0
+
+### Minor Changes
+
+- 9838acf: The wagmi peer dependency has been updated to `0.12.x`.
+
+  RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
+
+  Wallets will be transitioned automatically in future releases.
+
+  Follow the steps below to migrate.
+
+  #### 1. Upgrade RainbowKit and `wagmi` to their latest version
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+  ```
+
+## 0.11.1
+
+### Patch Changes
+
+- 924ae82: Bumped minimum `wagmi` version to `0.11.7`
+
+  Added `baseGoerli` chain support
+
+- 5e233ea: Added `bsc` and `bscTestnet` chain support
+
+## 0.11.0
+
+### Minor Changes
+
+- 1876ba0: The wagmi peer dependency has been updated to `0.11.x`.
+
+  The minimum TypeScript version is now `4.9.4`
+
+  Follow the steps below to migrate.
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
+  ```
+
+  If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+
+  [You can see their migration guide here](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
+
+## 0.10.0
+
+### Minor Changes
+
+- 355402b: The wagmi peer dependency has been updated to `0.10.x`.
+
+  Follow the steps below to migrate.
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
+  ```
+
+  If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+
+  [You can see their migration guide here](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+
+## 0.9.0
+
+### Minor Changes
+
+- 49f0ec9: The wagmi peer dependency has been updated to `0.9.x`.
+
+  Follow the steps below to migrate.
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+  ```
+
+  If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
+
+  [You can see their migration guide here](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+
 ## 0.8.1
 
 ### Patch Changes

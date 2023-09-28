@@ -1,9 +1,10 @@
-import React, { createContext, ReactNode, useContext, useMemo } from 'react';
+import React, { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Chain as WagmiChain } from 'wagmi';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain {
   id: number;
+  name?: string;
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
@@ -40,7 +41,7 @@ export function RainbowKitChainProvider({
           initialChainId:
             typeof initialChain === 'number' ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain]
+        [chains, initialChain],
       )}
     >
       {children}
@@ -60,7 +61,7 @@ export const useRainbowKitChainsById = () => {
   return useMemo(() => {
     const rainbowkitChainsById: Record<number, RainbowKitChain> = {};
 
-    rainbowkitChains.forEach(rkChain => {
+    rainbowkitChains.forEach((rkChain) => {
       rainbowkitChainsById[rkChain.id] = rkChain;
     });
 

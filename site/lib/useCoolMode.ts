@@ -15,7 +15,7 @@ interface Particle {
 export const useCoolMode = (
   imageUrl: string,
   disabled?: boolean,
-  ignoreCoolModeDocsDemo?: boolean
+  ignoreCoolModeDocsDemo?: boolean,
 ) => {
   const ref = useRef<HTMLElement>(null);
   const resolvedImageUrl = imageUrl;
@@ -26,7 +26,7 @@ export const useCoolMode = (
         ref.current,
         resolvedImageUrl,
         disabled,
-        ignoreCoolModeDocsDemo
+        ignoreCoolModeDocsDemo,
       );
     }
   }, [resolvedImageUrl, disabled, ignoreCoolModeDocsDemo]);
@@ -56,7 +56,7 @@ const getContainer = () => {
       'bottom:0',
       'pointer-events:none',
       'z-index:2147483647',
-    ].join(';')
+    ].join(';'),
   );
 
   document.body.appendChild(container);
@@ -70,7 +70,7 @@ function makeElementCool(
   element: HTMLElement,
   imageUrl: string,
   disabled: boolean,
-  ignoreCoolModeDocsDemo: boolean
+  ignoreCoolModeDocsDemo: boolean,
 ): () => void {
   instanceCounter++;
 
@@ -104,7 +104,7 @@ function makeElementCool(
         `top:${top}px`,
         `left:${left}px`,
         `transform:rotate(${spinVal}deg)`,
-      ].join(';')
+      ].join(';'),
     );
 
     container.appendChild(particle);
@@ -123,7 +123,7 @@ function makeElementCool(
   }
 
   function updateParticles() {
-    particles.forEach(p => {
+    particles.forEach((p) => {
       p.left = p.left - p.speedHorz * p.direction;
       p.top = p.top - p.speedUp;
       p.speedUp = Math.min(p.size, p.speedUp - 1);
@@ -133,7 +133,7 @@ function makeElementCool(
         p.top >=
         Math.max(window.innerHeight, document.body.clientHeight) + p.size
       ) {
-        particles = particles.filter(o => o !== p);
+        particles = particles.filter((o) => o !== p);
         p.element.remove();
       }
 
@@ -145,7 +145,7 @@ function makeElementCool(
           `top:${p.top}px`,
           `left:${p.left}px`,
           `transform:rotate(${p.spinVal}deg)`,
-        ].join(';')
+        ].join(';'),
       );
     });
   }
@@ -190,7 +190,7 @@ function makeElementCool(
     // are tapping on the buttons in #cool-mode-demo which is an `id`
     // added to the CoolMode.tsx Component - otherwise we get double emoji showers!
     if (ignoreCoolModeDocsDemo) {
-      var element = document.getElementById('cool-mode-demo');
+      const element = document.getElementById('cool-mode-demo');
       if (element?.contains(e.target as any)) return;
     }
 
@@ -216,7 +216,7 @@ function makeElementCool(
     element.removeEventListener('mouseleave', disableAutoAddParticle);
 
     // Cancel animation loop once animations are done
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       if (animationFrame && particles.length === 0) {
         cancelAnimationFrame(animationFrame);
         clearInterval(interval);

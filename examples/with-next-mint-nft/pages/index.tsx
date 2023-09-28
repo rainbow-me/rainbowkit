@@ -15,13 +15,13 @@ import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 const contractConfig = {
   address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
   abi,
-};
+} as const;
 
 const Home: NextPage = () => {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
 
-  const [totalMinted, setTotalMinted] = React.useState(0);
+  const [totalMinted, setTotalMinted] = React.useState(0n);
   const { isConnected } = useAccount();
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
 
   React.useEffect(() => {
     if (totalSupplyData) {
-      setTotalMinted(totalSupplyData.toNumber());
+      setTotalMinted(totalSupplyData);
     }
   }, [totalSupplyData]);
 
@@ -66,7 +66,7 @@ const Home: NextPage = () => {
           <div style={{ padding: '24px 24px 24px 0' }}>
             <h1>NFT Demo Mint</h1>
             <p style={{ margin: '12px 0 24px' }}>
-              {totalMinted} minted so far!
+              {Number(totalMinted)} minted so far!
             </p>
             <ConnectButton />
 

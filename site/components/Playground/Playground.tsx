@@ -1,16 +1,15 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
+  RainbowKitProvider,
   __private__,
   darkTheme,
   lightTheme,
   midnightTheme,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
-import { chains, Provider } from 'components/Provider/Provider';
+import { Provider, chains } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
@@ -75,10 +74,10 @@ export function Playground() {
   const [modalSize, setModalSize] = useState<ModalSizes>('wide');
   const isCompact = modalSize === 'compact';
 
-  const handleModeChange = value => setMode(value);
-  const handleAccentChange = value => setAccent(value);
-  const handleRadiiChange = value => setRadii(value);
-  const handleModalSizeChange = value => setModalSize(value);
+  const handleModeChange = (value) => setMode(value);
+  const handleAccentChange = (value) => setAccent(value);
+  const handleRadiiChange = (value) => setRadii(value);
+  const handleModalSizeChange = (value) => setModalSize(value);
 
   const selectedTheme = THEMES[mode]({
     ...THEMES[mode].accentColors[accent],
@@ -289,7 +288,7 @@ export function Playground() {
                   style={{ display: 'inline-flex', gap: 19, flexWrap: 'wrap' }}
                   value={accent}
                 >
-                  {(Object.keys(gradientColors) as Accents[]).map(color => (
+                  {(Object.keys(gradientColors) as Accents[]).map((color) => (
                     <Radio
                       activeValue={accent}
                       id="accent"
