@@ -11,7 +11,6 @@ import type {
   WalletConnectLegacyConnectorOptions,
 } from '../../getWalletConnectConnector';
 
-
 export interface BitgetWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
