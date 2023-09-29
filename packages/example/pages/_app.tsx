@@ -233,7 +233,7 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>("wide");
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-  const [locale, setLocale] = useState("" as any);
+  const [locale, setLocale] = useState(Locale.EN_US);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -255,7 +255,7 @@ function RainbowKitApp({
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
   useEffect(() => {
-    if (locale) wagmiConfig.setConnectors(connectors);
+    wagmiConfig.setConnectors(connectors);
   }, [locale]);
 
   const appContextProps: AppContextProps = { authEnabled };

@@ -3,13 +3,8 @@ import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { isHexString } from "../utils/colors";
 import { isMobile } from "../utils/isMobile";
 import { omitUndefinedValues } from "../utils/omitUndefinedValues";
-import {
-  InstructionStepName,
-  Wallet,
-  WalletInstance,
-  WalletList,
-} from "./Wallet";
-import { Locale, i18n } from "../locales";
+import { Wallet, WalletInstance, WalletList } from "./Wallet";
+import { i18n } from "../locales";
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -59,7 +54,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
       });
     });
-    console.log("hit?", i18n.locale);
+
     // We process the known visible wallets first so that the potentially
     // hidden wallets have access to the complete list of resolved wallets
     const walletListItems: WalletListItem[] = [
@@ -120,7 +115,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
           connectors.push(walletConnectModalConnector);
         }
 
-        let walletInstance = {
+        const walletInstance = {
           connector,
           groupIndex,
           groupName,
@@ -130,8 +125,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
           ...connectionMethods,
         };
 
-        i18n.locale = Locale.JA_JP;
-
+        // Initialize i18n support for qrCode steps if exists
         if (walletInstance.qrCode?.instructions?.steps) {
           walletInstance.qrCode = {
             ...walletInstance.qrCode,
@@ -142,6 +136,23 @@ export const connectorsForWallets = (walletList: WalletList) => {
                 title: i18n.t(step.title),
                 description: i18n.t(step.title),
               })),
+            },
+          };
+        }
+
+        // Initialize i18n support for extension steps if exists
+        if (walletInstance.extension?.instructions?.steps) {
+          walletInstance.extension = {
+            ...walletInstance.extension,
+            instructions: {
+              ...walletInstance.extension.instructions,
+              steps: walletInstance.extension.instructions.steps.map(
+                (step) => ({
+                  ...step,
+                  title: i18n.t(step.title),
+                  description: i18n.t(step.title),
+                })
+              ),
             },
           };
         }
