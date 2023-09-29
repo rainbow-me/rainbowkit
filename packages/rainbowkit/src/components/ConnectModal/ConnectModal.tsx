@@ -15,7 +15,7 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
 
-  // when a user rejects the SIWE signature, close the modal and disconnect
+  // when a user cancels or dismisses the SignIn modal for SIWE, disconnect and call onClose
   const { disconnect } = useDisconnect();
   const onAuthCancel = React.useCallback(() => {
     onClose();
