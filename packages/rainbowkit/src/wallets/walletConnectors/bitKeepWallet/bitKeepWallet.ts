@@ -1,27 +1,26 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { InjectedConnectorOptions } from "@wagmi/core/connectors/injected";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { getWalletConnectUri } from "../../../utils/getWalletConnectUri";
+import { isAndroid } from "../../../utils/isMobile";
+import { Wallet } from "../../Wallet";
+import { getWalletConnectConnector } from "../../getWalletConnectConnector";
 import type {
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+} from "../../getWalletConnectConnector";
 
 export interface BitKeepWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion: '1';
+  walletConnectVersion: "1";
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
 export interface BitKeepWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
+  walletConnectVersion?: "2";
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -29,12 +28,12 @@ export const bitKeepWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
+  walletConnectVersion = "2",
   ...options
 }: (BitKeepWalletLegacyOptions | BitKeepWalletOptions) &
   InjectedConnectorOptions): Wallet => {
   const isBitKeepInjected =
-    typeof window !== 'undefined' &&
+    typeof window !== "undefined" &&
     // @ts-expect-error
     window.bitkeep !== undefined &&
     // @ts-expect-error
@@ -45,20 +44,20 @@ export const bitKeepWallet = ({
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
-    id: 'bitKeep',
-    name: 'BitKeep',
-    iconUrl: async () => (await import('./bitKeepWallet.svg')).default,
-    iconAccent: '#f6851a',
-    iconBackground: '#fff',
+    id: "bitKeep",
+    name: "BitKeep",
+    iconUrl: async () => (await import("./bitKeepWallet.svg")).default,
+    iconAccent: "#f6851a",
+    iconBackground: "#fff",
     installed: !shouldUseWalletConnect ? isBitKeepInjected : undefined,
     downloadUrls: {
-      android: 'https://bitkeep.com/en/download?type=2',
-      ios: 'https://apps.apple.com/app/bitkeep/id1395301115',
-      mobile: 'https://bitkeep.com/en/download?type=2',
-      qrCode: 'https://bitkeep.com/en/download',
+      android: "https://bitkeep.com/en/download?type=2",
+      ios: "https://apps.apple.com/app/bitkeep/id1395301115",
+      mobile: "https://bitkeep.com/en/download?type=2",
+      qrCode: "https://bitkeep.com/en/download",
       chrome:
-        'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
-      browserExtension: 'https://bitkeep.com/en/download',
+        "https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak",
+      browserExtension: "https://bitkeep.com/en/download",
     },
 
     createConnector: () => {
@@ -90,34 +89,25 @@ export const bitKeepWallet = ({
         connector,
         extension: {
           instructions: {
-            learnMoreUrl: 'https://study.bitkeep.com',
+            learnMoreUrl: "https://study.bitkeep.com",
             steps: [
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step1.description',
-                ),
-                step: 'install',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step1.title',
-                ),
+                description:
+                  "wallet_connectors.extension.bitkeep.step1.description",
+                step: "install",
+                title: "wallet_connectors.extension.bitkeep.step1.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step2.description',
-                ),
-                step: 'create',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step2.title',
-                ),
+                description:
+                  "wallet_connectors.extension.bitkeep.step2.description",
+                step: "create",
+                title: "wallet_connectors.extension.bitkeep.step2.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step3.description',
-                ),
-                step: 'refresh',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.bitkeep.step3.description',
-                ),
+                description:
+                  "wallet_connectors.extension.bitkeep.step3.description",
+                step: "refresh",
+                title: "wallet_connectors.extension.bitkeep.step3.description",
               },
             ],
           },
@@ -130,34 +120,26 @@ export const bitKeepWallet = ({
               getUri: async () =>
                 getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
-                learnMoreUrl: 'https://study.bitkeep.com',
+                learnMoreUrl: "https://study.bitkeep.com",
                 steps: [
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step1.description',
-                    ),
-                    step: 'install',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step1.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.bitkeep.step1.description",
+                    step: "install",
+                    title: "wallet_connectors.qr_code.bitkeep.step1.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step2.description',
-                    ),
-                    step: 'create',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step2.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.bitkeep.step2.description",
+
+                    step: "create",
+                    title: "wallet_connectors.qr_code.bitkeep.step2.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step3.description',
-                    ),
-                    step: 'scan',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.bitkeep.step3.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.bitkeep.step3.description",
+                    step: "scan",
+                    title: "wallet_connectors.qr_code.bitkeep.step3.title",
                   },
                 ],
               },

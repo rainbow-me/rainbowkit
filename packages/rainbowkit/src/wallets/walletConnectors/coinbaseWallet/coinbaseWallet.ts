@@ -1,8 +1,7 @@
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { isIOS } from "../../../utils/isMobile";
+import { Wallet } from "../../Wallet";
 
 export interface CoinbaseWalletOptions {
   appName: string;
@@ -15,27 +14,27 @@ export const coinbaseWallet = ({
   ...options
 }: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected =
-    typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
+    typeof window !== "undefined" && window.ethereum?.isCoinbaseWallet === true;
 
   return {
-    id: 'coinbase',
-    name: 'Coinbase Wallet',
-    shortName: 'Coinbase',
-    iconUrl: async () => (await import('./coinbaseWallet.svg')).default,
-    iconAccent: '#2c5ff6',
-    iconBackground: '#2c5ff6',
+    id: "coinbase",
+    name: "Coinbase Wallet",
+    shortName: "Coinbase",
+    iconUrl: async () => (await import("./coinbaseWallet.svg")).default,
+    iconAccent: "#2c5ff6",
+    iconBackground: "#2c5ff6",
     // Note that we never resolve `installed` to `false` because the
     // Coinbase Wallet SDK falls back to other connection methods if
     // the injected connector isn't available
     installed: isCoinbaseWalletInjected || undefined,
     downloadUrls: {
-      android: 'https://play.google.com/store/apps/details?id=org.toshi',
-      ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
-      mobile: 'https://coinbase.com/wallet/downloads',
-      qrCode: 'https://coinbase-wallet.onelink.me/q5Sx/fdb9b250',
+      android: "https://play.google.com/store/apps/details?id=org.toshi",
+      ios: "https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455",
+      mobile: "https://coinbase.com/wallet/downloads",
+      qrCode: "https://coinbase-wallet.onelink.me/q5Sx/fdb9b250",
       chrome:
-        'https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad',
-      browserExtension: 'https://coinbase.com/wallet',
+        "https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad",
+      browserExtension: "https://coinbase.com/wallet",
     },
     createConnector: () => {
       const ios = isIOS();
@@ -60,34 +59,25 @@ export const coinbaseWallet = ({
                 getUri,
                 instructions: {
                   learnMoreUrl:
-                    'https://coinbase.com/wallet/articles/getting-started-mobile',
+                    "https://coinbase.com/wallet/articles/getting-started-mobile",
                   steps: [
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step1.description',
-                      ),
-                      step: 'install',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step1.title',
-                      ),
+                      description:
+                        "wallet_connectors.qr_code.coinbase.step1.description",
+                      step: "install",
+                      title: "wallet_connectors.qr_code.coinbase.step1.title",
                     },
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step2.description',
-                      ),
-                      step: 'create',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step2.title',
-                      ),
+                      description:
+                        "wallet_connectors.qr_code.coinbase.step2.description",
+                      step: "create",
+                      title: "wallet_connectors.qr_code.coinbase.step2.title",
                     },
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step3.description',
-                      ),
-                      step: 'scan',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.qr_code.coinbase.step3.title',
-                      ),
+                      description:
+                        "wallet_connectors.qr_code.coinbase.step3.description",
+                      step: "scan",
+                      title: "wallet_connectors.qr_code.coinbase.step3.title",
                     },
                   ],
                 },
@@ -95,34 +85,25 @@ export const coinbaseWallet = ({
               extension: {
                 instructions: {
                   learnMoreUrl:
-                    'https://coinbase.com/wallet/articles/getting-started-extension',
+                    "https://coinbase.com/wallet/articles/getting-started-extension",
                   steps: [
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step1.description',
-                      ),
-                      step: 'install',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step1.title',
-                      ),
+                      description:
+                        "wallet_connectors.extension.coinbase.step1.description",
+                      step: "install",
+                      title: "wallet_connectors.extension.coinbase.step1.title",
                     },
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step2.description',
-                      ),
-                      step: 'create',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step2.title',
-                      ),
+                      description:
+                        "wallet_connectors.extension.coinbase.step2.description",
+                      step: "create",
+                      title: "wallet_connectors.extension.coinbase.step2.title",
                     },
                     {
-                      description: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step3.description',
-                      ),
-                      step: 'refresh',
-                      title: translateWithLocaleLocalStorage(
-                        'wallet_connectors.extension.coinbase.step3.title',
-                      ),
+                      description:
+                        "wallet_connectors.extension.coinbase.step3.description",
+                      step: "refresh",
+                      title: "wallet_connectors.extension.coinbase.step3.title",
                     },
                   ],
                 },

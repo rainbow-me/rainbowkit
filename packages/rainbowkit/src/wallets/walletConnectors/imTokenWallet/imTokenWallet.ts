@@ -1,24 +1,23 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { getWalletConnectUri } from "../../../utils/getWalletConnectUri";
+import { Wallet } from "../../Wallet";
+import { getWalletConnectConnector } from "../../getWalletConnectConnector";
 import type {
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+} from "../../getWalletConnectConnector";
 
 export interface ImTokenWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion: '1';
+  walletConnectVersion: "1";
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
 export interface ImTokenWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
+  walletConnectVersion?: "2";
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -26,17 +25,17 @@ export const imTokenWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
+  walletConnectVersion = "2",
 }: ImTokenWalletLegacyOptions | ImTokenWalletOptions): Wallet => ({
-  id: 'imToken',
-  name: 'imToken',
-  iconUrl: async () => (await import('./imTokenWallet.svg')).default,
-  iconBackground: '#098de6',
+  id: "imToken",
+  name: "imToken",
+  iconUrl: async () => (await import("./imTokenWallet.svg")).default,
+  iconBackground: "#098de6",
   downloadUrls: {
-    android: 'https://play.google.com/store/apps/details?id=im.token.app',
-    ios: 'https://itunes.apple.com/us/app/imtoken2/id1384798940',
-    mobile: 'https://token.im/download',
-    qrCode: 'https://token.im/download',
+    android: "https://play.google.com/store/apps/details?id=im.token.app",
+    ios: "https://itunes.apple.com/us/app/imtoken2/id1384798940",
+    mobile: "https://token.im/download",
+    qrCode: "https://token.im/download",
   },
   createConnector: () => {
     const connector = getWalletConnectConnector({
@@ -52,7 +51,7 @@ export const imTokenWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion,
+            walletConnectVersion
           );
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },
@@ -62,37 +61,28 @@ export const imTokenWallet = ({
           getWalletConnectUri(connector, walletConnectVersion),
         instructions: {
           learnMoreUrl:
-            typeof window !== 'undefined' &&
-            window.navigator.language.includes('zh')
-              ? 'https://support.token.im/hc/zh-cn/categories/360000925393'
-              : 'https://support.token.im/hc/en-us/categories/360000925393',
+            typeof window !== "undefined" &&
+            window.navigator.language.includes("zh")
+              ? "https://support.token.im/hc/zh-cn/categories/360000925393"
+              : "https://support.token.im/hc/en-us/categories/360000925393",
           steps: [
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step1.description',
-              ),
-              step: 'install',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step1.title',
-              ),
+              description:
+                "wallet_connectors.qr_code.im_token.step1.description",
+              step: "install",
+              title: "wallet_connectors.qr_code.im_token.step1.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step2.description',
-              ),
-              step: 'create',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step2.title',
-              ),
+              description:
+                "wallet_connectors.qr_code.im_token.step2.description",
+              step: "create",
+              title: "wallet_connectors.qr_code.im_token.step2.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step3.description',
-              ),
-              step: 'scan',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.qr_code.im_token.step3.title',
-              ),
+              description:
+                "wallet_connectors.qr_code.im_token.step3.description",
+              step: "scan",
+              title: "wallet_connectors.qr_code.im_token.step3.title",
             },
           ],
         },

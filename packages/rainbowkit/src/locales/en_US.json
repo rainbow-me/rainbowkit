@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Recent",
       "indicators": {
-        "opening": "Opening",
-        "not_installed": "is not installed",
-        "not_available": "is not available",
+        "opening": "Opening %{name}",
+        "not_installed": "%{name} is not installed",
+        "not_available": "%{name} is not available",
         "confirm": "Confirm connection in the extension",
         "retry": "RETRY"
       },
       "scan": {
-        "title": "Scan with",
+        "title": "Scan with %{name}",
         "phone": "your phone",
         "mobile": "Scan with your phone to download on iOS or Android",
-        "install": "Install",
+        "install": "Install %{name}",
         "wallet": "Wallet",
         "continue": "Continue",
-        "get_started_with": "Get started with",
-        "get": "Get"
+        "get_started_with": "Get started with %{name}",
+        "get": "Get %{name}"
       },
       "get_started": {
         "for_mobile": "for Mobile",
@@ -43,7 +43,7 @@
         "for": "for",
         "title": "GET",
         "open": "OPEN",
-        "not_found": "Don't have",
+        "not_found": "Don't have %{name}",
         "need": "Need the",
         "official": "official",
         "wallet_connect": "WalletConnect modal?"

@@ -1,26 +1,26 @@
-import { I18n } from 'i18n-js';
-import en_US from './en_US.json';
-import es_419 from './es_419.json';
-import fr_FR from './fr_FR.json';
-import hi_IN from './hi_IN.json';
-import id_ID from './id_ID.json';
-import ja_JP from './ja_JP.json';
-import pt_BR from './pt_BR.json';
-import ru_RU from './ru_RU.json';
-import tr_TR from './tr_TR.json';
-import zh_CN from './zh_CN.json';
+import { I18n } from "i18n-js";
+import en_US from "./en_US.json";
+import es_419 from "./es_419.json";
+import fr_FR from "./fr_FR.json";
+import hi_IN from "./hi_IN.json";
+import id_ID from "./id_ID.json";
+import ja_JP from "./ja_JP.json";
+import pt_BR from "./pt_BR.json";
+import ru_RU from "./ru_RU.json";
+import tr_TR from "./tr_TR.json";
+import zh_CN from "./zh_CN.json";
 
-export enum Language {
-  EN_US = 'en_US',
-  ES_419 = 'es_419',
-  FR_FR = 'fr_FR',
-  JA_JP = 'ja_JP',
-  PT_BR = 'pt_BR',
-  ZH_CN = 'zh_CN',
-  ID_ID = 'id_ID',
-  HI_IN = 'hi_IN',
-  TR_TR = 'tr_TR',
-  RU_RU = 'ru_RU',
+export enum Locale {
+  EN_US = "en_US",
+  ES_419 = "es_419",
+  FR_FR = "fr_FR",
+  JA_JP = "ja_JP",
+  PT_BR = "pt_BR",
+  ZH_CN = "zh_CN",
+  ID_ID = "id_ID",
+  HI_IN = "hi_IN",
+  TR_TR = "tr_TR",
+  RU_RU = "ru_RU",
 }
 
 export const i18n = new I18n({
@@ -37,41 +37,6 @@ export const i18n = new I18n({
 });
 
 // Configure languages
-i18n.defaultLocale = Language.EN_US;
-i18n.locale = Language.EN_US;
+i18n.defaultLocale = Locale.EN_US;
+i18n.locale = Locale.EN_US;
 i18n.enableFallback = true;
-
-export const storageKey = 'rk-locale';
-
-export const getLocalStorageLocale = (): Language | void => {
-  const localStorageLocale =
-    typeof localStorage !== 'undefined'
-      ? (localStorage.getItem(storageKey) as Language)
-      : undefined;
-
-  return localStorageLocale;
-};
-
-// Retrieves locale from localStorage (or defaults to en_US) and translates the provided key.
-// Primarily used in `createConnector` for translating `walletConnectors`.
-export const translateWithLocaleLocalStorage = (key: string) => {
-  const locale = getLocalStorageLocale() || Language.EN_US;
-  i18n.locale = locale;
-  const translation = i18n.t(key);
-  return translation;
-};
-
-export const configureLocaleLocalStorage = (language: Language | undefined) => {
-  // If language specified then save `locale` in localStorage
-  if (language) {
-    localStorage.setItem(storageKey, language);
-    return;
-  }
-
-  const localStorageLocale = getLocalStorageLocale();
-  // Remove language from localStorage if none is specified and a language is already saved,
-  // to avoid potential language saved confusions.
-  if (localStorageLocale) {
-    localStorage.removeItem(storageKey);
-  }
-};

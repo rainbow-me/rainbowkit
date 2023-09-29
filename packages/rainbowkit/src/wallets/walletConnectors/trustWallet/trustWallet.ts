@@ -1,37 +1,36 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { InstructionStepName, Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type { InjectedConnectorOptions } from "@wagmi/core/connectors/injected";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { getWalletConnectUri } from "../../../utils/getWalletConnectUri";
+import { InstructionStepName, Wallet } from "../../Wallet";
+import { getWalletConnectConnector } from "../../getWalletConnectConnector";
 import type {
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+} from "../../getWalletConnectConnector";
 
 declare global {
   interface Window {
-    trustwallet: Window['ethereum'];
+    trustwallet: Window["ethereum"];
   }
 }
 
 export interface TrustWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion: '1';
+  walletConnectVersion: "1";
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
 export interface TrustWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
+  walletConnectVersion?: "2";
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function getTrustWalletInjectedProvider(): Window['ethereum'] {
-  const isTrustWallet = (ethereum: NonNullable<Window['ethereum']>) => {
+function getTrustWalletInjectedProvider(): Window["ethereum"] {
+  const isTrustWallet = (ethereum: NonNullable<Window["ethereum"]>) => {
     // Identify if Trust Wallet injected provider is present.
     const trustWallet = !!ethereum.isTrust;
 
@@ -39,7 +38,7 @@ function getTrustWalletInjectedProvider(): Window['ethereum'] {
   };
 
   const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+    typeof window !== "undefined" && typeof window.ethereum !== "undefined";
 
   // No injected providers exist.
   if (!injectedProviderExist) {
@@ -51,8 +50,8 @@ function getTrustWalletInjectedProvider(): Window['ethereum'] {
   // without updating the ethereum.providers array. To prevent issues where
   // the TW connector does not recognize the provider when TW extension is installed,
   // we begin our checks by relying on TW's global object.
-  if (window['trustwallet']) {
-    return window['trustwallet'];
+  if (window["trustwallet"]) {
+    return window["trustwallet"];
   }
 
   // Trust Wallet was injected into window.ethereum.
@@ -74,7 +73,7 @@ export const trustWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
+  walletConnectVersion = "2",
   ...options
 }: (TrustWalletLegacyOptions | TrustWalletOptions) &
   InjectedConnectorOptions): Wallet => {
@@ -82,24 +81,24 @@ export const trustWallet = ({
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
   return {
-    id: 'trust',
-    name: 'Trust Wallet',
-    iconUrl: async () => (await import('./trustWallet.svg')).default,
+    id: "trust",
+    name: "Trust Wallet",
+    iconUrl: async () => (await import("./trustWallet.svg")).default,
     // Note that we never resolve `installed` to `false` because the
     // Trust Wallet provider falls back to other connection methods if
     // the injected connector isn't available
     installed: isTrustWalletInjected || undefined,
-    iconAccent: '#3375BB',
-    iconBackground: '#fff',
+    iconAccent: "#3375BB",
+    iconBackground: "#fff",
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp',
-      ios: 'https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409',
-      mobile: 'https://trustwallet.com/download',
-      qrCode: 'https://trustwallet.com/download',
+        "https://play.google.com/store/apps/details?id=com.wallet.crypto.trustapp",
+      ios: "https://apps.apple.com/us/app/trust-crypto-bitcoin-wallet/id1288339409",
+      mobile: "https://trustwallet.com/download",
+      qrCode: "https://trustwallet.com/download",
       chrome:
-        'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
-      browserExtension: 'https://trustwallet.com/browser-extension',
+        "https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph",
+      browserExtension: "https://trustwallet.com/browser-extension",
     },
     createConnector: () => {
       const getUriMobile = async () => {
@@ -139,34 +138,25 @@ export const trustWallet = ({
         qrConnector = {
           getUri: getUriQR,
           instructions: {
-            learnMoreUrl: 'https://trustwallet.com/',
+            learnMoreUrl: "https://trustwallet.com/",
             steps: [
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step1.description',
-                ),
-                step: 'install' as InstructionStepName,
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step1.title',
-                ),
+                description:
+                  "wallet_connectors.qr_code.trust.step1.description",
+                step: "install" as InstructionStepName,
+                title: "wallet_connectors.qr_code.trust.step1.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step2.description',
-                ),
-                step: 'create' as InstructionStepName,
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step2.title',
-                ),
+                description:
+                  "wallet_connectors.qr_code.trust.step2.description",
+                step: "create" as InstructionStepName,
+                title: "wallet_connectors.qr_code.trust.step2.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step3.description',
-                ),
-                step: 'scan' as InstructionStepName,
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.qr_code.trust.step3.title',
-                ),
+                description:
+                  "wallet_connectors.qr_code.trust.step3.description",
+                step: "scan" as InstructionStepName,
+                title: "wallet_connectors.qr_code.trust.step3.title",
               },
             ],
           },
@@ -175,34 +165,25 @@ export const trustWallet = ({
 
       const extensionConnector = {
         instructions: {
-          learnMoreUrl: 'https://trustwallet.com/browser-extension',
+          learnMoreUrl: "https://trustwallet.com/browser-extension",
           steps: [
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step1.description',
-              ),
-              step: 'install' as InstructionStepName,
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step1.title',
-              ),
+              description:
+                "wallet_connectors.extension.trust.step1.description",
+              step: "install" as InstructionStepName,
+              title: "wallet_connectors.extension.trust.step1.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step2.description',
-              ),
-              step: 'create' as InstructionStepName,
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step2.title',
-              ),
+              description:
+                "wallet_connectors.extension.trust.step2.description",
+              step: "create" as InstructionStepName,
+              title: "wallet_connectors.extension.trust.step2.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step3.description',
-              ),
-              step: 'refresh' as InstructionStepName,
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.trust.step3.title',
-              ),
+              description:
+                "wallet_connectors.extension.trust.step3.description",
+              step: "refresh" as InstructionStepName,
+              title: "wallet_connectors.extension.trust.step3.title",
             },
           ],
         },

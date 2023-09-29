@@ -1,7 +1,6 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { Wallet } from '../../Wallet';
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { Wallet } from "../../Wallet";
 
 export interface OnekeyWalletOptions {
   chains: Chain[];
@@ -14,7 +13,7 @@ declare global {
 }
 
 export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
-  const provider = typeof window !== 'undefined' && window['$onekey']?.ethereum;
+  const provider = typeof window !== "undefined" && window["$onekey"]?.ethereum;
   const isOnekeyInjected = Boolean(provider);
 
   return {
@@ -31,34 +30,25 @@ export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
         extension: {
           instructions: {
             learnMoreUrl:
-              'https://help.onekey.so/hc/en-us/categories/360000170236',
+              "https://help.onekey.so/hc/en-us/categories/360000170236",
             steps: [
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step1.description',
-                ),
-                step: 'install',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step1.title',
-                ),
+                description:
+                  "wallet_connectors.extension.one_key.step1.description",
+                step: "install",
+                title: "wallet_connectors.extension.one_key.step1.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step2.description',
-                ),
-                step: 'create',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step2.title',
-                ),
+                description:
+                  "wallet_connectors.extension.one_key.step2.description",
+                step: "create",
+                title: "wallet_connectors.extension.one_key.step2.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step3.description',
-                ),
-                step: 'refresh',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.one_key.step3.title',
-                ),
+                description:
+                  "wallet_connectors.extension.one_key.step3.description",
+                step: "refresh",
+                title: "wallet_connectors.extension.one_key.step3.title",
               },
             ],
           },
@@ -67,20 +57,20 @@ export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
     },
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=so.onekey.app.wallet',
-      browserExtension: 'https://www.onekey.so/download/',
+        "https://play.google.com/store/apps/details?id=so.onekey.app.wallet",
+      browserExtension: "https://www.onekey.so/download/",
       chrome:
-        'https://chrome.google.com/webstore/detail/onekey/jnmbobjmhlngoefaiojfljckilhhlhcj',
-      edge: 'https://microsoftedge.microsoft.com/addons/detail/onekey/obffkkagpmohennipjokmpllocnlndac',
-      ios: 'https://apps.apple.com/us/app/onekey-open-source-wallet/id1609559473',
-      mobile: 'https://www.onekey.so/download/',
-      qrCode: 'https://www.onekey.so/download/',
+        "https://chrome.google.com/webstore/detail/onekey/jnmbobjmhlngoefaiojfljckilhhlhcj",
+      edge: "https://microsoftedge.microsoft.com/addons/detail/onekey/obffkkagpmohennipjokmpllocnlndac",
+      ios: "https://apps.apple.com/us/app/onekey-open-source-wallet/id1609559473",
+      mobile: "https://www.onekey.so/download/",
+      qrCode: "https://www.onekey.so/download/",
     },
-    iconAccent: '#00B812',
-    iconBackground: '#fff',
-    iconUrl: async () => (await import('./oneKeyWallet.svg')).default,
-    id: 'onekey',
+    iconAccent: "#00B812",
+    iconBackground: "#fff",
+    iconUrl: async () => (await import("./oneKeyWallet.svg")).default,
+    id: "onekey",
     installed: isOnekeyInjected,
-    name: 'OneKey',
+    name: "OneKey",
   };
 };

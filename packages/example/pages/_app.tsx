@@ -1,21 +1,21 @@
-import '@rainbow-me/rainbowkit/styles.css';
-import './global.css';
+import "@rainbow-me/rainbowkit/styles.css";
+import "./global.css";
 
 import {
   AvatarComponent,
   DisclaimerComponent,
-  Language,
+  Locale,
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from "@rainbow-me/rainbowkit";
 import {
   GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from "@rainbow-me/rainbowkit-siwe-next-auth";
 import {
   argentWallet,
   bifrostWallet,
@@ -44,20 +44,20 @@ import {
   uniswapWallet,
   xdefiWallet,
   zerionWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
-import type { Session } from 'next-auth';
-import { SessionProvider, signOut } from 'next-auth/react';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import type { Session } from "next-auth";
+import { SessionProvider, signOut } from "next-auth/react";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import {
   WagmiConfig,
   configureChains,
   createConfig,
   useDisconnect,
-} from 'wagmi';
+} from "wagmi";
 import {
   arbitrum,
   base,
@@ -67,12 +67,16 @@ import {
   optimism,
   polygon,
   zora,
-} from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import { AppContextProps } from '../lib/AppContextProps';
+} from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import { AppContextProps } from "../lib/AppContextProps";
+import {
+  getDetectedBrowserLocale,
+  getSupportedLocaleFromBrowser,
+} from "../utils/locale";
 
-const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
+const RAINBOW_TERMS = "https://rainbow.me/terms-of-use";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -83,74 +87,58 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     base,
     zora,
     bsc,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
   ],
   [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? "" }),
     publicProvider(),
-  ],
+  ]
 );
 
 const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "YOUR_PROJECT_ID";
 
 const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
+  appName: "RainbowKit demo",
   chains,
   projectId,
 });
 
-// In this example, the user's locale is stored in local storage, allowing for language switching functionality.
-// If defined, we retrieve the locale value and typecast it as `Language`.
-export const localStorageLocale =
-  typeof localStorage !== 'undefined'
-    ? (localStorage.getItem('locale') as Language)
-    : null;
-
-const connectors = connectorsForWallets(
-  [
-    ...wallets,
-    {
-      groupName: 'Other',
-      wallets: [
-        argentWallet({ chains, projectId }),
-        bifrostWallet({ chains, projectId }),
-        bitKeepWallet({ chains, projectId }),
-        bitskiWallet({ chains }),
-        coin98Wallet({ chains, projectId }),
-        coreWallet({ chains, projectId }),
-        dawnWallet({ chains }),
-        enkryptWallet({ chains }),
-        foxWallet({ chains, projectId }),
-        frameWallet({ chains }),
-        frontierWallet({ chains, projectId }),
-        imTokenWallet({ chains, projectId }),
-        ledgerWallet({ chains, projectId }),
-        mewWallet({ chains }),
-        okxWallet({ chains, projectId }),
-        omniWallet({ chains, projectId }),
-        oneKeyWallet({ chains }),
-        phantomWallet({ chains }),
-        rabbyWallet({ chains }),
-        safeheronWallet({ chains }),
-        tahoWallet({ chains }),
-        talismanWallet({ chains }),
-        tokenPocketWallet({ chains, projectId }),
-        trustWallet({ chains, projectId }),
-        uniswapWallet({ chains, projectId }),
-        xdefiWallet({ chains }),
-        zerionWallet({ chains, projectId }),
-      ],
-    },
-  ],
-  // The `connectorsForWallets` function will be executed during build/load time.
-  // After its execution, the selected language will be stored to `localStorage` under the key `rk-locale`.
-  localStorageLocale
-    ? {
-        language: localStorageLocale as Language,
-      }
-    : { language: Language.EN_US },
-);
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: "Other",
+    wallets: [
+      argentWallet({ chains, projectId }),
+      bifrostWallet({ chains, projectId }),
+      bitKeepWallet({ chains, projectId }),
+      bitskiWallet({ chains }),
+      coin98Wallet({ chains, projectId }),
+      coreWallet({ chains, projectId }),
+      dawnWallet({ chains }),
+      enkryptWallet({ chains }),
+      foxWallet({ chains, projectId }),
+      frameWallet({ chains }),
+      frontierWallet({ chains, projectId }),
+      imTokenWallet({ chains, projectId }),
+      ledgerWallet({ chains, projectId }),
+      mewWallet({ chains }),
+      okxWallet({ chains, projectId }),
+      omniWallet({ chains, projectId }),
+      oneKeyWallet({ chains }),
+      phantomWallet({ chains }),
+      rabbyWallet({ chains }),
+      safeheronWallet({ chains }),
+      tahoWallet({ chains }),
+      talismanWallet({ chains }),
+      tokenPocketWallet({ chains, projectId }),
+      trustWallet({ chains, projectId }),
+      uniswapWallet({ chains, projectId }),
+      xdefiWallet({ chains }),
+      zerionWallet({ chains, projectId }),
+    ],
+  },
+]);
 
 const wagmiConfig = createConfig({
   autoConnect: true,
@@ -160,13 +148,13 @@ const wagmiConfig = createConfig({
 });
 
 const demoAppInfo = {
-  appName: 'Rainbowkit Demo',
+  appName: "Rainbowkit Demo",
 };
 
 const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
   return (
     <Text>
-      By connecting, you agree to this demo&apos;s{' '}
+      By connecting, you agree to this demo&apos;s{" "}
       <Link href={RAINBOW_TERMS}>Terms of Service</Link> and acknowledge you
       have read and understand our <Link href={RAINBOW_TERMS}>Disclaimer</Link>
     </Text>
@@ -177,12 +165,12 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
   return (
     <div
       style={{
-        alignItems: 'center',
-        backgroundColor: 'lightpink',
-        color: 'black',
-        display: 'flex',
+        alignItems: "center",
+        backgroundColor: "lightpink",
+        color: "black",
+        display: "flex",
         height: size,
-        justifyContent: 'center',
+        justifyContent: "center",
         width: size,
       }}
     >
@@ -192,38 +180,38 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
 };
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to the RainbowKit Demo',
+  statement: "Sign in to the RainbowKit Demo",
 });
 
 const themes = [
-  { name: 'light', theme: lightTheme },
-  { name: 'dark', theme: darkTheme },
-  { name: 'midnight', theme: midnightTheme },
+  { name: "light", theme: lightTheme },
+  { name: "dark", theme: darkTheme },
+  { name: "midnight", theme: midnightTheme },
 ] as const;
-type ThemeName = typeof themes[number]['name'];
+type ThemeName = (typeof themes)[number]["name"];
 
-const fontStacks = ['rounded', 'system'] as const;
-type FontStack = typeof fontStacks[number];
+const fontStacks = ["rounded", "system"] as const;
+type FontStack = (typeof fontStacks)[number];
 
 const accentColors = [
-  'blue',
-  'green',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'custom',
+  "blue",
+  "green",
+  "orange",
+  "pink",
+  "purple",
+  "red",
+  "custom",
 ] as const;
-type AccentColor = typeof accentColors[number];
+type AccentColor = (typeof accentColors)[number];
 
-const radiusScales = ['large', 'medium', 'small', 'none'] as const;
-type RadiusScale = typeof radiusScales[number];
+const radiusScales = ["large", "medium", "small", "none"] as const;
+type RadiusScale = (typeof radiusScales)[number];
 
-const overlayBlurs = ['large', 'small', 'none'] as const;
-type OverlayBlur = typeof overlayBlurs[number];
+const overlayBlurs = ["large", "small", "none"] as const;
+type OverlayBlur = (typeof overlayBlurs)[number];
 
-const modalSizes = ['wide', 'compact'] as const;
-type ModalSize = typeof modalSizes[number];
+const modalSizes = ["wide", "compact"] as const;
+type ModalSize = (typeof modalSizes)[number];
 
 function RainbowKitApp({
   Component,
@@ -234,41 +222,65 @@ function RainbowKitApp({
   const router = useRouter();
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
-  const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
-  const [selectedFontStack, setFontStack] = useState<FontStack>('rounded');
-  const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
-  const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
-  const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
+  const [selectedThemeName, setThemeName] = useState<ThemeName>("light");
+  const [selectedFontStack, setFontStack] = useState<FontStack>("rounded");
+  const [selectedAccentColor, setAccentColor] = useState<AccentColor>("blue");
+  const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>("large");
+  const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>("none");
   const [authEnabled, setAuthEnabled] = useState(pageProps.session !== null);
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
-  const [modalSize, setModalSize] = useState<ModalSize>('wide');
+  const [modalSize, setModalSize] = useState<ModalSize>("wide");
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+  const [locale, setLocale] = useState("" as any);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
   ).theme;
 
   const backgroundStyles = {
-    dark: { background: '#090913', color: '#FFF' },
+    dark: { background: "#090913", color: "#FFF" },
     light: null,
-    midnight: { background: '#0B0E17', color: '#FFF' },
+    midnight: { background: "#0B0E17", color: "#FFF" },
   };
 
   const selectedBackgroundStyles = backgroundStyles[selectedThemeName];
 
   const accentColor =
-    selectedAccentColor === 'custom'
-      ? { accentColor: 'red', accentColorForeground: 'yellow' } // https://blog.codinghorror.com/a-tribute-to-the-windows-31-hot-dog-stand-color-scheme
+    selectedAccentColor === "custom"
+      ? { accentColor: "red", accentColorForeground: "yellow" } // https://blog.codinghorror.com/a-tribute-to-the-windows-31-hot-dog-stand-color-scheme
       : currentTheme.accentColors[selectedAccentColor];
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
+  useEffect(() => {
+    if (locale) wagmiConfig.setConnectors(connectors);
+  }, [locale]);
 
   const appContextProps: AppContextProps = { authEnabled };
 
   const locales = router.locales!;
+
+  const getUserDetectedBrowserLocale = () => {
+    // Start off with en_US locale
+    let locale = Locale.EN_US;
+
+    const detectedBrowserLocale = getDetectedBrowserLocale();
+
+    // If browser locale detected then see if we support the browser's locale
+    if (detectedBrowserLocale) {
+      // Defaults to en_US locale if no locale from browser found
+      locale = getSupportedLocaleFromBrowser(detectedBrowserLocale);
+    }
+
+    return locale;
+  };
+
+  useEffect(() => {
+    const userBrowserDetectedLocale = getUserDetectedBrowserLocale();
+    setLocale(userBrowserDetectedLocale);
+  }, []);
 
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
@@ -285,6 +297,7 @@ function RainbowKitApp({
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
+        locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
@@ -298,7 +311,7 @@ function RainbowKitApp({
       >
         <div
           style={{
-            minHeight: '100vh',
+            minHeight: "100vh",
             padding: 8,
             ...selectedBackgroundStyles,
           }}
@@ -309,7 +322,7 @@ function RainbowKitApp({
             <>
               <div
                 style={{
-                  fontFamily: 'sans-serif',
+                  fontFamily: "sans-serif",
                 }}
               >
                 <h3>RainbowKitProvider props</h3>
@@ -319,7 +332,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="authEnabled"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           language
                         </label>
@@ -327,10 +340,9 @@ function RainbowKitApp({
                       <td>
                         <select
                           onChange={(e) => {
-                            localStorage.setItem('locale', e.target.value);
-                            router.reload();
+                            setLocale(e.target.value as Locale);
                           }}
-                          value={localStorageLocale || ''}
+                          value={locale}
                         >
                           {locales.map((locale) => (
                             <option key={locale} value={locale}>
@@ -344,7 +356,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="authEnabled"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           authentication
                         </label>
@@ -375,7 +387,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="showRecentTransactions"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           showRecentTransactions
                         </label>
@@ -396,7 +408,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="coolModeEnabled"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           coolMode
                         </label>
@@ -415,7 +427,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="showDisclaimer"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           disclaimer
                         </label>
@@ -434,7 +446,7 @@ function RainbowKitApp({
                       <td>
                         <label
                           htmlFor="customAvatar"
-                          style={{ userSelect: 'none' }}
+                          style={{ userSelect: "none" }}
                         >
                           avatar
                         </label>
@@ -474,17 +486,17 @@ function RainbowKitApp({
                             setInitialChainId(
                               e.target.value
                                 ? parseInt(e.target.value, 10)
-                                : undefined,
+                                : undefined
                             )
                           }
-                          value={selectedInitialChainId ?? 'default'}
+                          value={selectedInitialChainId ?? "default"}
                         >
                           {[undefined, ...chains].map((chain) => (
                             <option
-                              key={chain?.id ?? ''}
-                              value={chain?.id ?? ''}
+                              key={chain?.id ?? ""}
+                              value={chain?.id ?? ""}
                             >
-                              {chain?.name ?? 'Default'}
+                              {chain?.name ?? "Default"}
                             </option>
                           ))}
                         </select>
@@ -494,8 +506,8 @@ function RainbowKitApp({
                 </table>
                 <div
                   style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
+                    display: "flex",
+                    flexWrap: "wrap",
                     gap: 24,
                   }}
                 >
@@ -503,14 +515,14 @@ function RainbowKitApp({
                     <h4>Theme</h4>
                     <div
                       style={{
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: "flex-start",
+                        display: "flex",
+                        flexDirection: "column",
                         gap: 12,
                       }}
                     >
                       {themes.map(({ name: themeName }) => (
-                        <label key={themeName} style={{ userSelect: 'none' }}>
+                        <label key={themeName} style={{ userSelect: "none" }}>
                           <input
                             checked={themeName === selectedThemeName}
                             name="theme"
@@ -519,7 +531,7 @@ function RainbowKitApp({
                             }
                             type="radio"
                             value={themeName}
-                          />{' '}
+                          />{" "}
                           {themeName}
                         </label>
                       ))}
@@ -529,14 +541,14 @@ function RainbowKitApp({
                     <h4>Font stack</h4>
                     <div
                       style={{
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: "flex-start",
+                        display: "flex",
+                        flexDirection: "column",
                         gap: 12,
                       }}
                     >
                       {fontStacks.map((fontStack) => (
-                        <label key={fontStack} style={{ userSelect: 'none' }}>
+                        <label key={fontStack} style={{ userSelect: "none" }}>
                           <input
                             checked={fontStack === selectedFontStack}
                             name="fontStack"
@@ -545,7 +557,7 @@ function RainbowKitApp({
                             }
                             type="radio"
                             value={fontStack}
-                          />{' '}
+                          />{" "}
                           {fontStack}
                         </label>
                       ))}
@@ -555,14 +567,14 @@ function RainbowKitApp({
                     <h4>Accent</h4>
                     <div
                       style={{
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: "flex-start",
+                        display: "flex",
+                        flexDirection: "column",
                         gap: 12,
                       }}
                     >
                       {accentColors.map((accentColor) => (
-                        <label key={accentColor} style={{ userSelect: 'none' }}>
+                        <label key={accentColor} style={{ userSelect: "none" }}>
                           <input
                             checked={accentColor === selectedAccentColor}
                             name="accentColor"
@@ -571,7 +583,7 @@ function RainbowKitApp({
                             }
                             type="radio"
                             value={accentColor}
-                          />{' '}
+                          />{" "}
                           {accentColor}
                         </label>
                       ))}
@@ -581,14 +593,14 @@ function RainbowKitApp({
                     <h4>Border radius</h4>
                     <div
                       style={{
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: "flex-start",
+                        display: "flex",
+                        flexDirection: "column",
                         gap: 12,
                       }}
                     >
                       {radiusScales.map((radiusScale) => (
-                        <label key={radiusScale} style={{ userSelect: 'none' }}>
+                        <label key={radiusScale} style={{ userSelect: "none" }}>
                           <input
                             checked={radiusScale === selectedRadiusScale}
                             name="radiusScale"
@@ -597,7 +609,7 @@ function RainbowKitApp({
                             }
                             type="radio"
                             value={radiusScale}
-                          />{' '}
+                          />{" "}
                           {radiusScale}
                         </label>
                       ))}
@@ -607,14 +619,14 @@ function RainbowKitApp({
                     <h4>Overlay blurs</h4>
                     <div
                       style={{
-                        alignItems: 'flex-start',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: "flex-start",
+                        display: "flex",
+                        flexDirection: "column",
                         gap: 12,
                       }}
                     >
                       {overlayBlurs.map((overlayBlur) => (
-                        <label key={overlayBlur} style={{ userSelect: 'none' }}>
+                        <label key={overlayBlur} style={{ userSelect: "none" }}>
                           <input
                             checked={overlayBlur === selectedOverlayBlur}
                             name="overlayBlur"
@@ -623,7 +635,7 @@ function RainbowKitApp({
                             }
                             type="radio"
                             value={overlayBlur}
-                          />{' '}
+                          />{" "}
                           {overlayBlur}
                         </label>
                       ))}
@@ -642,7 +654,7 @@ function RainbowKitApp({
 export default function App(
   appProps: AppProps<{
     session: Session;
-  }>,
+  }>
 ) {
   return (
     <>

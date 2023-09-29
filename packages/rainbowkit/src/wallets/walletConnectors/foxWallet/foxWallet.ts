@@ -1,16 +1,15 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
+import type { InjectedConnectorOptions } from "@wagmi/core/connectors/injected";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { getWalletConnectUri } from "../../../utils/getWalletConnectUri";
+import { Wallet } from "../../Wallet";
+import { getWalletConnectConnector } from "../../getWalletConnectConnector";
+import type { WalletConnectConnectorOptions } from "../../getWalletConnectConnector";
 
 export interface FoxWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
+  walletConnectVersion?: "2";
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -18,26 +17,26 @@ export const foxWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
+  walletConnectVersion = "2",
   ...options
 }: FoxWalletOptions & InjectedConnectorOptions): Wallet => {
   const isFoxInjected =
-    typeof window !== 'undefined' &&
+    typeof window !== "undefined" &&
     // @ts-expect-error
-    typeof window.foxwallet !== 'undefined';
+    typeof window.foxwallet !== "undefined";
 
   const shouldUseWalletConnect = !isFoxInjected;
 
   return {
-    id: 'foxwallet',
-    name: 'FoxWallet',
-    iconUrl: async () => (await import('./foxWallet.svg')).default,
-    iconBackground: '#fff',
+    id: "foxwallet",
+    name: "FoxWallet",
+    iconUrl: async () => (await import("./foxWallet.svg")).default,
+    iconBackground: "#fff",
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=com.foxwallet.play',
-      ios: 'https://apps.apple.com/app/foxwallet-crypto-web3/id1590983231',
-      qrCode: 'https://foxwallet.com/download',
+        "https://play.google.com/store/apps/details?id=com.foxwallet.play",
+      ios: "https://apps.apple.com/app/foxwallet-crypto-web3/id1590983231",
+      qrCode: "https://foxwallet.com/download",
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
@@ -63,7 +62,7 @@ export const foxWallet = ({
             ? async () => {
                 const uri = await getWalletConnectUri(
                   connector,
-                  walletConnectVersion,
+                  walletConnectVersion
                 );
                 return `foxwallet://wc?uri=${encodeURIComponent(uri)}`;
               }
@@ -74,34 +73,26 @@ export const foxWallet = ({
               getUri: async () =>
                 getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
-                learnMoreUrl: 'https://foxwallet.com',
+                learnMoreUrl: "https://foxwallet.com",
                 steps: [
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step1.description',
-                    ),
-                    step: 'install',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step1.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.fox.step1.description",
+                    step: "install",
+                    title: "wallet_connectors.qr_code.fox.step1.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step2.description',
-                    ),
-                    step: 'create',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step2.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.fox.step2.description",
+
+                    step: "create",
+                    title: "wallet_connectors.qr_code.fox.step2.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step3.description',
-                    ),
-                    step: 'scan',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.fox.step3.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.fox.step3.description",
+                    step: "scan",
+                    title: "wallet_connectors.qr_code.fox.step3.title",
                   },
                 ],
               },

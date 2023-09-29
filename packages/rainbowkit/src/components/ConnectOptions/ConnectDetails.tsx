@@ -1,46 +1,46 @@
-import React, { ReactNode, useContext, useEffect } from 'react';
-import { touchableStyles } from '../../css/touchableStyles';
-import { useWindowSize } from '../../hooks/useWindowSize';
-import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
-import { getGradientRGBAs } from '../../utils/colors';
-import { InstructionStepName } from '../../wallets/Wallet';
+import React, { ReactNode, useContext, useEffect } from "react";
+import { touchableStyles } from "../../css/touchableStyles";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { BrowserType, getBrowser, isSafari } from "../../utils/browsers";
+import { getGradientRGBAs } from "../../utils/colors";
+import { InstructionStepName } from "../../wallets/Wallet";
 import {
   WalletConnector,
   useWalletConnectors,
-} from '../../wallets/useWalletConnectors';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { loadImages } from '../AsyncImage/useAsyncImage';
-import { Box, BoxProps } from '../Box/Box';
-import { ActionButton } from '../Button/ActionButton';
-import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
-import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
-import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
-import { SpinnerIcon } from '../Icons/Spinner';
-import { QRCode } from '../QRCode/QRCode';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
-import { Text } from '../Text/Text';
-import { WalletStep } from './DesktopOptions';
+} from "../../wallets/useWalletConnectors";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { loadImages } from "../AsyncImage/useAsyncImage";
+import { Box, BoxProps } from "../Box/Box";
+import { ActionButton } from "../Button/ActionButton";
+import { CreateIcon, preloadCreateIcon } from "../Icons/Create";
+import { RefreshIcon, preloadRefreshIcon } from "../Icons/Refresh";
+import { ScanIcon, preloadScanIcon } from "../Icons/Scan";
+import { SpinnerIcon } from "../Icons/Spinner";
+import { QRCode } from "../QRCode/QRCode";
+import { I18nContext } from "../RainbowKitProvider/I18nContext";
+import { ModalSizeContext } from "../RainbowKitProvider/ModalSizeContext";
+import { Text } from "../Text/Text";
+import { WalletStep } from "./DesktopOptions";
 
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
     case BrowserType.Arc:
-      return (await import('../Icons/Arc.svg')).default;
+      return (await import("../Icons/Arc.svg")).default;
     case BrowserType.Brave:
-      return (await import('../Icons/Brave.svg')).default;
+      return (await import("../Icons/Brave.svg")).default;
     case BrowserType.Chrome:
-      return (await import('../Icons/Chrome.svg')).default;
+      return (await import("../Icons/Chrome.svg")).default;
     case BrowserType.Edge:
-      return (await import('../Icons/Edge.svg')).default;
+      return (await import("../Icons/Edge.svg")).default;
     case BrowserType.Firefox:
-      return (await import('../Icons/Firefox.svg')).default;
+      return (await import("../Icons/Firefox.svg")).default;
     case BrowserType.Opera:
-      return (await import('../Icons/Opera.svg')).default;
+      return (await import("../Icons/Opera.svg")).default;
     case BrowserType.Safari:
-      return (await import('../Icons/Safari.svg')).default;
+      return (await import("../Icons/Safari.svg")).default;
     default:
-      return (await import('../Icons/Browser.svg')).default;
+      return (await import("../Icons/Browser.svg")).default;
   }
 };
 
@@ -77,7 +77,7 @@ export function GetDetail({
           ?.filter(
             (wallet) =>
               wallet.extensionDownloadUrl ||
-              (wallet.qrCode && wallet.downloadUrls?.qrCode),
+              (wallet.qrCode && wallet.downloadUrls?.qrCode)
           )
           .map((wallet) => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
@@ -115,11 +115,11 @@ export function GetDetail({
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
-                        ? i18n.t('intro.wallet.wallet_extension')
+                        ? i18n.t("intro.wallet.wallet_extension")
                         : hasMobileCompanionApp
-                        ? i18n.t('intro.wallet.companion_app')
+                        ? i18n.t("intro.wallet.companion_app")
                         : hasExtension
-                        ? i18n.t('intro.wallet.browser_extension')
+                        ? i18n.t("intro.wallet.browser_extension")
                         : null}
                     </Text>
                   </Box>
@@ -144,20 +144,20 @@ export function GetDetail({
         justifyContent="space-between"
         marginBottom="4"
         paddingY="8"
-        style={{ maxWidth: 275, textAlign: 'center' }}
+        style={{ maxWidth: 275, textAlign: "center" }}
       >
         <Text color="modalText" size="14" weight="bold">
-          {i18n.t('intro.not_found.title')}
+          {i18n.t("intro.not_found.title")}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
-          {i18n.t('intro.not_found.description')}
+          {i18n.t("intro.not_found.description")}
         </Text>
       </Box>
     </Box>
   );
 }
 
-const LOGO_SIZE: BoxProps['height'] = '44'; // size of wallet logo in Connect tab
+const LOGO_SIZE: BoxProps["height"] = "44"; // size of wallet logo in Connect tab
 export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
@@ -200,10 +200,10 @@ export function ConnectDetail({
     href?: string;
   } | null = showWalletConnectModal
     ? {
-        description: `${i18n.t('intro.wallet.get_started.need')} ${
-          compactModeEnabled ? '' : i18n.t('intro.wallet.get_started.official')
-        } ${i18n.t('intro.wallet.get_started.wallet_connect')}`,
-        label: i18n.t('intro.wallet.get_started.open'),
+        description: `${i18n.t("intro.wallet.get_started.need")} ${
+          compactModeEnabled ? "" : i18n.t("intro.wallet.get_started.official")
+        } ${i18n.t("intro.wallet.get_started.wallet_connect")}`,
+        label: i18n.t("intro.wallet.get_started.open"),
         onClick: () => {
           onClose();
           showWalletConnectModal();
@@ -211,13 +211,15 @@ export function ConnectDetail({
       }
     : hasQrCode
     ? {
-        description: `${i18n.t('intro.wallet.get_started.not_found')} ${name}?`,
-        label: i18n.t('intro.wallet.get_started.title'),
+        description: `${i18n.t("intro.wallet.get_started.not_found", {
+          name,
+        })} ?`,
+        label: i18n.t("intro.wallet.get_started.title"),
         onClick: () =>
           changeWalletStep(
             hasQrCodeAndExtension
               ? WalletStep.DownloadOptions
-              : WalletStep.Download,
+              : WalletStep.Download
           ),
       }
     : null;
@@ -275,22 +277,26 @@ export function ConnectDetail({
               flexDirection="column"
               gap="4"
               paddingX="32"
-              style={{ textAlign: 'center' }}
+              style={{ textAlign: "center" }}
             >
               <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? `${i18n.t('intro.wallet.indicators.opening')} ${name}...`
+                  ? `${i18n.t("intro.wallet.indicators.opening", {
+                      name,
+                    })} ...`
                   : hasExtension
-                  ? `${name} ${i18n.t('intro.wallet.indicators.not_installed')}`
-                  : `${name} ${i18n.t(
-                      'intro.wallet.indicators.not_available',
-                    )}`}
+                  ? i18n.t("intro.wallet.indicators.not_installed", {
+                      name,
+                    })
+                  : i18n.t("intro.wallet.indicators.not_available", {
+                      name,
+                    })}
               </Text>
               {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
                     href={wallet.extensionDownloadUrl}
-                    label={i18n.t('intro.install.label')}
+                    label={i18n.t("intro.install.label")}
                     type="secondary"
                   />
                 </Box>
@@ -309,7 +315,7 @@ export function ConnectDetail({
                       textAlign="center"
                       weight="medium"
                     >
-                      {i18n.t('intro.wallet.indicators.confirm')}
+                      {i18n.t("intro.wallet.indicators.confirm")}
                     </Text>
                   </Box>
                   <Box
@@ -322,12 +328,12 @@ export function ConnectDetail({
                   >
                     {connectionError ? (
                       <ActionButton
-                        label={i18n.t('intro.wallet.indicators.retry')}
+                        label={i18n.t("intro.wallet.indicators.retry")}
                         onClick={
                           getDesktopDeepLink
                             ? async () => {
                                 const uri = await getDesktopDeepLink();
-                                window.open(uri, safari ? '_blank' : '_self');
+                                window.open(uri, safari ? "_blank" : "_self");
                               }
                             : () => {
                                 reconnect(wallet);
@@ -395,9 +401,9 @@ const DownloadOptionsBox = ({
   isCompact: boolean;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
-  variant: 'browser' | 'app';
+  variant: "browser" | "app";
 }) => {
-  const isBrowserCard = variant === 'browser';
+  const isBrowserCard = variant === "browser";
   const gradientRgbas =
     !isBrowserCard && iconAccent && getGradientRGBAs(iconAccent);
   return (
@@ -407,9 +413,9 @@ const DownloadOptionsBox = ({
       display="flex"
       justifyContent="center"
       overflow="hidden"
-      paddingX={isCompact ? '18' : '44'}
+      paddingX={isCompact ? "18" : "44"}
       position="relative"
-      style={{ flex: 1, isolation: 'isolate' }}
+      style={{ flex: 1, isolation: "isolate" }}
       width="full"
     >
       <Box
@@ -418,11 +424,11 @@ const DownloadOptionsBox = ({
         borderStyle="solid"
         borderWidth="1"
         style={{
-          bottom: '0',
-          left: '0',
-          position: 'absolute',
-          right: '0',
-          top: '0',
+          bottom: "0",
+          left: "0",
+          position: "absolute",
+          right: "0",
+          top: "0",
           zIndex: 1,
         }}
       />
@@ -441,22 +447,22 @@ const DownloadOptionsBox = ({
             flexDirection="row"
             justifyContent="space-between"
             style={{
-              bottom: '0',
-              filter: 'blur(20px)',
-              left: '0',
-              position: 'absolute',
-              right: '0',
-              top: '0',
-              transform: 'translate3d(0, 0, 0)',
+              bottom: "0",
+              filter: "blur(20px)",
+              left: "0",
+              position: "absolute",
+              right: "0",
+              top: "0",
+              transform: "translate3d(0, 0, 0)",
             }}
           >
             <Box
               style={{
-                filter: 'blur(100px)',
+                filter: "blur(100px)",
                 marginLeft: -27,
                 marginTop: -20,
                 opacity: 0.6,
-                transform: 'translate3d(0, 0, 0)',
+                transform: "translate3d(0, 0, 0)",
               }}
             >
               <AsyncImage
@@ -468,12 +474,12 @@ const DownloadOptionsBox = ({
             </Box>
             <Box
               style={{
-                filter: 'blur(100px)',
+                filter: "blur(100px)",
                 marginRight: 0,
                 marginTop: 105,
                 opacity: 0.6,
-                overflow: 'auto',
-                transform: 'translate3d(0, 0, 0)',
+                overflow: "auto",
+                transform: "translate3d(0, 0, 0)",
               }}
             >
               <AsyncImage
@@ -490,11 +496,11 @@ const DownloadOptionsBox = ({
         <Box
           background="downloadBottomCardBackground"
           style={{
-            bottom: '0',
-            left: '0',
-            position: 'absolute',
-            right: '0',
-            top: '0',
+            bottom: "0",
+            left: "0",
+            position: "absolute",
+            right: "0",
+            top: "0",
           }}
         >
           <Box
@@ -504,7 +510,7 @@ const DownloadOptionsBox = ({
               height: 564,
               left: -215,
               top: -197,
-              transform: 'translate3d(0, 0, 0)',
+              transform: "translate3d(0, 0, 0)",
               width: 564,
             }}
           />
@@ -515,7 +521,7 @@ const DownloadOptionsBox = ({
               height: 564,
               left: -1,
               top: -76,
-              transform: 'translate3d(0, 0, 0)',
+              transform: "translate3d(0, 0, 0)",
               width: 564,
             }}
           />
@@ -538,8 +544,8 @@ const DownloadOptionsBox = ({
             {...(iconBackground
               ? {
                   background: iconBackground,
-                  borderColor: 'generalBorder',
-                  borderRadius: '10',
+                  borderColor: "generalBorder",
+                  borderRadius: "10",
                 }
               : null)}
           />
@@ -580,7 +586,7 @@ export function DownloadOptionsDetail({
 }) {
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
-  const isCompact = modalSize === 'compact';
+  const isCompact = modalSize === "compact";
   const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
 
   const i18n = useContext(I18nContext);
@@ -615,20 +621,20 @@ export function DownloadOptionsDetail({
         {extensionDownloadUrl && (
           <DownloadOptionsBox
             actionLabel={`${i18n.t(
-              'intro.wallet.get_started.add_to',
+              "intro.wallet.get_started.add_to"
             )} ${browser}`}
-            description={i18n.t('intro.wallet.get_started.access_browser')}
+            description={i18n.t("intro.wallet.get_started.access_browser")}
             iconUrl={getBrowserSrc}
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
                 extension?.instructions
                   ? WalletStep.InstructionsExtension
-                  : WalletStep.Connect,
+                  : WalletStep.Connect
               )
             }
             title={`${wallet.name} ${i18n.t(
-              'intro.wallet.get_started.for',
+              "intro.wallet.get_started.for"
             )} ${browser}`}
             url={extensionDownloadUrl}
             variant="browser"
@@ -636,8 +642,8 @@ export function DownloadOptionsDetail({
         )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={i18n.t('intro.wallet.get_started.get_app')}
-            description={i18n.t('intro.wallet.get_started.access_mobile')}
+            actionLabel={i18n.t("intro.wallet.get_started.get_app")}
+            description={i18n.t("intro.wallet.get_started.access_mobile")}
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
             iconUrl={wallet.iconUrl}
@@ -646,7 +652,7 @@ export function DownloadOptionsDetail({
               changeWalletStep(WalletStep.Download);
             }}
             title={`${wallet.name} ${i18n.t(
-              'intro.wallet.get_started.for_mobile',
+              "intro.wallet.get_started.for_mobile"
             )}`}
             variant="app"
           />
@@ -682,9 +688,9 @@ export function DownloadDetail({
       height="full"
       width="full"
     >
-      <Box style={{ textAlign: 'center' }}>
+      <Box style={{ textAlign: "center" }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          {i18n.t('intro.wallet.scan.mobile')}
+          {i18n.t("intro.wallet.scan.mobile")}
         </Text>
       </Box>
       <Box height="full">
@@ -705,12 +711,12 @@ export function DownloadDetail({
         paddingY="8"
       >
         <ActionButton
-          label={i18n.t('intro.wallet.scan.continue')}
+          label={i18n.t("intro.wallet.scan.continue")}
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions
                 ? WalletStep.InstructionsMobile
-                : WalletStep.Connect,
+                : WalletStep.Connect
             )
           }
         />
@@ -804,23 +810,23 @@ export function InstructionMobileDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t('intro.wallet.connect.label')}
+          label={i18n.t("intro.wallet.connect.label")}
           onClick={() => connectWallet(wallet)}
         />
         <Box
           as="a"
-          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          className={touchableStyles({ active: "shrink", hover: "grow" })}
           display="block"
           href={wallet?.qrCode?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
           target="_blank"
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t('intro.learn_more.label')}
+            {i18n.t("intro.learn_more.label")}
           </Text>
         </Box>
       </Box>
@@ -892,23 +898,23 @@ export function InstructionExtensionDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t('intro.wallet.refresh.label')}
+          label={i18n.t("intro.wallet.refresh.label")}
           onClick={window.location.reload.bind(window.location)}
         />
         <Box
           as="a"
-          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          className={touchableStyles({ active: "shrink", hover: "grow" })}
           display="block"
           href={wallet?.extension?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
           target="_blank"
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t('intro.learn_more.label')}
+            {i18n.t("intro.learn_more.label")}
           </Text>
         </Box>
       </Box>

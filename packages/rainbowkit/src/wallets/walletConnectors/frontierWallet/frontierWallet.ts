@@ -1,15 +1,14 @@
-import type { InjectedConnectorOptions } from '@wagmi/core';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isAndroid } from '../../../utils/isMobile';
-import type { Wallet } from '../../Wallet';
+import type { InjectedConnectorOptions } from "@wagmi/core";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import type { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { getWalletConnectUri } from "../../../utils/getWalletConnectUri";
+import { isAndroid } from "../../../utils/isMobile";
+import type { Wallet } from "../../Wallet";
 import type {
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+} from "../../getWalletConnectConnector";
+import { getWalletConnectConnector } from "../../getWalletConnectConnector";
 
 declare global {
   interface Window {
@@ -20,14 +19,14 @@ declare global {
 export interface FrontierWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
-  walletConnectVersion: '1';
+  walletConnectVersion: "1";
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
 export interface FrontierWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
+  walletConnectVersion?: "2";
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -35,33 +34,33 @@ export const frontierWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
+  walletConnectVersion = "2",
   ...options
 }: (FrontierWalletLegacyOptions | FrontierWalletOptions) &
   InjectedConnectorOptions): Wallet => {
   const isFrontierInjected =
-    typeof window !== 'undefined' &&
-    typeof window.frontier !== 'undefined' &&
+    typeof window !== "undefined" &&
+    typeof window.frontier !== "undefined" &&
     window?.frontier?.ethereum?.isFrontier;
   return {
-    id: 'frontier',
-    name: 'Frontier Wallet',
+    id: "frontier",
+    name: "Frontier Wallet",
     installed:
-      typeof window !== 'undefined' &&
-      typeof window.frontier !== 'undefined' &&
+      typeof window !== "undefined" &&
+      typeof window.frontier !== "undefined" &&
       window?.frontier?.ethereum?.isFrontier
         ? true
         : undefined,
-    iconUrl: async () => (await import('./frontierWallet.svg')).default,
-    iconBackground: '#CC703C',
+    iconUrl: async () => (await import("./frontierWallet.svg")).default,
+    iconBackground: "#CC703C",
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=com.frontierwallet',
-      ios: 'https://apps.apple.com/us/app/frontier-crypto-defi-wallet/id1482380988',
-      qrCode: 'https://www.frontier.xyz/download',
+        "https://play.google.com/store/apps/details?id=com.frontierwallet",
+      ios: "https://apps.apple.com/us/app/frontier-crypto-defi-wallet/id1482380988",
+      qrCode: "https://www.frontier.xyz/download",
       chrome:
-        'https://chrome.google.com/webstore/detail/frontier-wallet/kppfdiipphfccemcignhifpjkapfbihd',
-      browserExtension: 'https://www.frontier.xyz/download',
+        "https://chrome.google.com/webstore/detail/frontier-wallet/kppfdiipphfccemcignhifpjkapfbihd",
+      browserExtension: "https://www.frontier.xyz/download",
     },
     createConnector: () => {
       const shouldUseWalletConnect = !isFrontierInjected;
@@ -86,7 +85,7 @@ export const frontierWallet = ({
             getProvider: () => {
               const getFront = (frontier?: any) =>
                 frontier?.ethereum ? frontier?.ethereum : undefined;
-              if (typeof window === 'undefined') return;
+              if (typeof window === "undefined") return;
               return getFront(window.frontier);
             },
             ...options,
@@ -99,34 +98,25 @@ export const frontierWallet = ({
           ? {
               getUri,
               instructions: {
-                learnMoreUrl: 'https://help.frontier.xyz/en/',
+                learnMoreUrl: "https://help.frontier.xyz/en/",
                 steps: [
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step1.description',
-                    ),
-                    step: 'install',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step1.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.im_token.step1.description",
+                    step: "install",
+                    title: "wallet_connectors.qr_code.im_token.step1.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step2.description',
-                    ),
-                    step: 'create',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step2.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.im_token.step2.description",
+                    step: "create",
+                    title: "wallet_connectors.qr_code.im_token.step2.title",
                   },
                   {
-                    description: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step3.description',
-                    ),
-                    step: 'scan',
-                    title: translateWithLocaleLocalStorage(
-                      'wallet_connectors.qr_code.im_token.step3.title',
-                    ),
+                    description:
+                      "wallet_connectors.qr_code.im_token.step3.description",
+                    step: "scan",
+                    title: "wallet_connectors.qr_code.im_token.step3.title",
                   },
                 ],
               },
@@ -135,34 +125,25 @@ export const frontierWallet = ({
         extension: {
           instructions: {
             learnMoreUrl:
-              'https://help.frontier.xyz/en/articles/6967236-setting-up-frontier-on-your-device',
+              "https://help.frontier.xyz/en/articles/6967236-setting-up-frontier-on-your-device",
             steps: [
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step1.description',
-                ),
-                step: 'install',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step1.title',
-                ),
+                description:
+                  "wallet_connectors.extension.frontier.step1.description",
+                step: "install",
+                title: "wallet_connectors.extension.frontier.step1.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step2.description',
-                ),
-                step: 'create',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step2.title',
-                ),
+                description:
+                  "wallet_connectors.extension.frontier.step2.description",
+                step: "create",
+                title: "wallet_connectors.extension.frontier.step2.title",
               },
               {
-                description: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step3.description',
-                ),
-                step: 'refresh',
-                title: translateWithLocaleLocalStorage(
-                  'wallet_connectors.extension.frontier.step3.title',
-                ),
+                description:
+                  "wallet_connectors.extension.frontier.step3.description",
+                step: "refresh",
+                title: "wallet_connectors.extension.frontier.step3.title",
               },
             ],
           },

@@ -1,8 +1,7 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { translateWithLocaleLocalStorage } from '../../../locales';
-import { Wallet } from '../../Wallet';
+import type { InjectedConnectorOptions } from "@wagmi/core/connectors/injected";
+import { InjectedConnector } from "wagmi/connectors/injected";
+import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
+import { Wallet } from "../../Wallet";
 
 export interface TahoWalletOptions {
   chains: Chain[];
@@ -18,19 +17,19 @@ export const tahoWallet = ({
   chains,
   ...options
 }: TahoWalletOptions & InjectedConnectorOptions): Wallet => ({
-  id: 'taho',
-  name: 'Taho',
-  iconBackground: '#d08d57',
-  iconUrl: async () => (await import('./tahoWallet.svg')).default,
+  id: "taho",
+  name: "Taho",
+  iconBackground: "#d08d57",
+  iconUrl: async () => (await import("./tahoWallet.svg")).default,
   downloadUrls: {
     chrome:
-      'https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd',
-    browserExtension: 'https://taho.xyz',
+      "https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd",
+    browserExtension: "https://taho.xyz",
   },
   installed:
-    typeof window !== 'undefined' &&
-    typeof window.tally !== 'undefined' &&
-    window['tally']
+    typeof window !== "undefined" &&
+    typeof window.tally !== "undefined" &&
+    window["tally"]
       ? true
       : undefined,
   createConnector: () => {
@@ -41,7 +40,7 @@ export const tahoWallet = ({
           getProvider: () => {
             const getTaho = (tally?: any) =>
               tally?.isTally ? tally : undefined;
-            if (typeof window === 'undefined') return;
+            if (typeof window === "undefined") return;
             return getTaho(window.tally);
           },
           ...options,
@@ -50,34 +49,22 @@ export const tahoWallet = ({
       extension: {
         instructions: {
           learnMoreUrl:
-            'https://tahowallet.notion.site/Taho-Knowledge-Base-4d95ed5439c64d6db3d3d27abf1fdae5',
+            "https://tahowallet.notion.site/Taho-Knowledge-Base-4d95ed5439c64d6db3d3d27abf1fdae5",
           steps: [
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step1.description',
-              ),
-              step: 'install',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step1.title',
-              ),
+              description: "wallet_connectors.extension.taho.step1.description",
+              step: "install",
+              title: "wallet_connectors.extension.taho.step1.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step2.description',
-              ),
-              step: 'create',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step2.title',
-              ),
+              description: "wallet_connectors.extension.taho.step2.description",
+              step: "create",
+              title: "wallet_connectors.extension.taho.step2.title",
             },
             {
-              description: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step3.description',
-              ),
-              step: 'refresh',
-              title: translateWithLocaleLocalStorage(
-                'wallet_connectors.extension.taho.step3.title',
-              ),
+              description: "wallet_connectors.extension.taho.step3.description",
+              step: "refresh",
+              title: "wallet_connectors.extension.taho.step3.title",
             },
           ],
         },
