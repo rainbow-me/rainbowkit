@@ -7,22 +7,25 @@
     },
     "login": {
       "title": "Una nueva forma de iniciar sesión",
-      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu billetera."
+      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu cartera."
     },
     "ethereum": {
-      "title": "¿Nuevo en carteras de Ethereum?"
+      "title": "¿Eres nuevo en las carteras de Ethereum?"
+    },
+    "install": {
+      "label": "INSTALAR"
     },
     "wallet": {
       "recent": "Reciente",
       "indicators": {
         "opening": "Abriendo",
         "not_installed": "no está instalado",
-        "not_available": "no está disponible",
+        "not_available": "No hay cotización disponible",
         "confirm": "Confirma la conexión en la extensión",
         "retry": "REINTENTAR"
       },
       "scan": {
-        "title": "Escanea con",
+        "title": "Escanear con",
         "phone": "tu teléfono",
         "mobile": "Escanea con tu teléfono para descargar en iOS o Android",
         "install": "Instalar",
@@ -34,52 +37,558 @@
       "get_started": {
         "for_mobile": "para Móvil",
         "add_to": "Añadir a",
-        "get_app": "Obtener la aplicación",
+        "get_app": "Obtén la aplicación",
         "access_browser": "Accede a tu cartera directamente desde tu navegador web favorito.",
         "access_mobile": "Usa la cartera móvil para explorar el mundo de Ethereum.",
         "for": "para",
         "title": "OBTENER",
         "open": "ABRIR",
-        "not_found": "No tiene",
-        "need": "Necesita el",
+        "not_found": "No tienes",
+        "need": "Necesito el",
         "official": "oficial",
-        "wallet_connect": "modal de WalletConnect?"
+        "wallet_connect": "¿Modal WalletConnect?"
       },
-      "title": "Obtén una Billetera",
-      "wallet_extension": "Billetera Móvil y Extensión",
-      "companion_app": "Billetera Móvil",
-      "browser_extension": "Extensión de Navegador",
-      "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
+      "title": "Obtén una billetera",
+      "wallet_extension": "Billetera móvil y extensión",
+      "companion_app": "Billetera móvil",
+      "browser_extension": "Extensión de navegador",
+      "description": "Una billetera se utiliza para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
       "connect": {
-        "title": "Conectar una Billetera"
+        "label": "Conectar",
+        "title": "Conectar una billetera"
+      },
+      "refresh": {
+        "label": "Actualizar"
       }
     },
     "not_found": {
       "title": "¿No es lo que estás buscando?",
-      "description": "Selecciona una billetera en la pantalla principal para comenzar con un proveedor de billeteras diferente."
+      "description": "Selecciona una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
     },
     "learn_more": {
       "label": "Obtener más información"
     }
   },
-
   "wallet_connectors": {
     "qr_code": {
       "argent": {
         "step1": {
-          "description": "Pon Argent en tu pantalla principal para acceder más rápidamente a tu billetera.",
-          "step": "instalar",
-          "title": "Abre la app de Argent"
+          "description": "Pon Argent en tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación Argent"
         },
         "step2": {
-          "description": "Crea una billetera y nombre de usuario, o importa una billetera existente.",
-          "step": "crear",
-          "title": "Crea o Importa una Billetera"
+          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
           "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
-          "step": "escanear",
-          "title": "Toca el botón Escanear QR"
+          "title": "Toque el botón Escanear QR"
+        }
+      },
+      "bifrost": {
+        "step1": {
+          "description": "Recomendamos poner Bifrost Wallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación Bifrost Wallet"
+        },
+        "step2": {
+          "description": "Cree o importe una billetera usando su frase de recuperación.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Toque el botón de escaneo"
+        }
+      },
+      "bitkeep": {
+        "step1": {
+          "description": "Recomendamos poner BitKeep en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación BitKeep"
+        },
+        "step2": {
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de que escanees, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Toca el botón de escanear"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Recomendamos colocar la Billetera Coin98 en tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abra la aplicación de la Billetera Coin98"
+        },
+        "step2": {
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un aviso de conexión para conectar tu billetera.",
+          "title": "Toca el botón WalletConnect"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Recomendamos colocar la Billetera Coinbase en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación Billetera Coinbase"
+        },
+        "step2": {
+          "description": "Puedes respaldar fácilmente tu billetera usando la función de respaldo en la nube.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un aviso de conexión para conectar tu billetera.",
+          "title": "Toca el botón de escanear"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Recomendamos colocar Core en tu pantalla principal para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación Core"
+        },
+        "step2": {
+          "description": "Puedes hacer una copia de seguridad de tu billetera fácilmente usando nuestra característica de respaldo en tu teléfono.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Toca el botón de WalletConnect"
+        }
+      },
+      "fox": {
+        "step1": {
+          "description": "Recomendamos poner FoxWallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación FoxWallet"
+        },
+        "step2": {
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje para conectar tu billetera.",
+          "title": "Toca el botón de escanear"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Recomendamos poner la Wallet de Frontier en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación de Frontier Wallet"
+        },
+        "step2": {
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje para conectar tu billetera.",
+          "title": "Toca el botón de escanear"
+        }
+      },
+      "im_token": {
+        "step1": {
+          "title": "Abre la aplicación imToken",
+          "description": "Coloca la aplicación imToken en tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Cree una nueva billetera o importe una existente."
+        },
+        "step3": {
+          "title": "Toque el icono de escáner en la esquina superior derecha",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme la solicitud para conectar."
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "Abra la aplicación MetaMask",
+          "description": "Recomendamos poner MetaMask en tu pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear una Billetera o importar una",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toque el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Abre la aplicación de Billetera OKX",
+          "description": "Recomendamos colocar la Billetera OKX en su pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera."
+        }
+      },
+      "omni": {
+        "step1": {
+          "title": "Abre la aplicación Omni",
+          "description": "Agrega Omni a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca el icono QR y escanea",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma la solicitud para conectar."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Abre la aplicación TokenPocket",
+          "description": "Recomendamos poner TokenPocket en tu pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toca el botón de escaneo",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Abre la aplicación Trust Wallet",
+          "description": "Pon Trust Wallet en tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca WalletConnect en Ajustes",
+          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el mensaje para conectar."
+        }
+      },
+      "uniswap": {
+        "step1": {
+          "title": "Abre la aplicación Uniswap",
+          "description": "Agrega la Billetera Uniswap a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca el icono QR y escanea",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el aviso para conectar."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Abre la aplicación Zerion",
+          "description": "Recomendamos poner Zerion en tu pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
+        }
+      }
+    },
+    "extension": {
+      "bitkeep": {
+        "step1": {
+          "description": "Recomendamos fijar BitKeep a tu barra de tareas para una acceso más rápido a tu billetera.",
+          "title": "Instala la extensión BitKeep"
+        },
+        "step2": {
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o importar una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
+        }
+      },
+      "bitski": {
+        "step1": {
+          "description": "Recomendamos anclar Bitski a su barra de tareas para un acceso más rápido a su billetera.",
+          "title": "Instale la extensión Bitski"
+        },
+        "step2": {
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o importar una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Haga clic en la parte superior derecha de su navegador y ancle Coin98 Wallet para un fácil acceso.",
+          "title": "Instale la extensión de Coin98 Wallet"
+        },
+        "step2": {
+          "description": "Cree una nueva billetera o importe una existente.",
+          "title": "Crear o importar una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configure Coin98 Wallet, haga clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Recomendamos anclar Coinbase Wallet a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instale la extensión de Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Recomendamos anclar Core a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Core"
+        },
+        "step2": {
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o importar una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "enkrypt": {
+        "step1": {
+          "description": "Recomendamos anclar Enkrypt Wallet a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Enkrypt Wallet"
+        },
+        "step2": {
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "frame": {
+        "step1": {
+          "description": "Recomendamos anclar Frame a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instale Frame & la extensión complementaria"
+        },
+        "step2": {
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Recomendamos anclar la Billetera Frontier a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de Billetera Frontier"
+        },
+        "step2": {
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "1Instala la extensión MetaMask",
+          "description": "Recomendamos fijar MetaMask en tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "1Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "1Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Instala la extensión de la billetera OKX",
+          "description": "Recomendamos fijar la billetera OKX en tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualice su navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "one_key": {
+        "step1": {
+          "title": "Instale la extensión de Billetera OneKey",
+          "description": "Recomendamos anclar la Billetera OneKey a su barra de tareas para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualice su navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "phantom": {
+        "step1": {
+          "title": "Instale la extensión Phantom",
+          "description": "Recomendamos anclar Phantom a su barra de tareas para un acceso más fácil a su billetera."
+        },
+        "step2": {
+          "title": "Crear una Billetera o importar una",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta de recuperación con nadie."
+        },
+        "step3": {
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "rabby": {
+        "step1": {
+          "title": "Instala la extensión de Rabby",
+          "description": "Recomendamos anclar Rabby a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "rainbow": {
+        "step1": {
+          "title": "Abre la aplicación Rainbow",
+          "description": "Recomendamos poner Rainbow en tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera."
+        }
+      },
+      "safeheron": {
+        "step1": {
+          "title": "Instale la extensión Core",
+          "description": "Recomendamos anclar Safeheron a su barra de tareas para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "taho": {
+        "step1": {
+          "title": "Instale la extensión Taho",
+          "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "talisman": {
+        "step1": {
+          "title": "Instala la extensión Talisman",
+          "description": "Recomendamos anclar Talisman a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera Ethereum",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase de recuperación con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Instalar la extensión TokenPocket",
+          "description": "Recomendamos anclar TokenPocket a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera con un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Instala la extensión de Trust Wallet",
+          "description": "Haz clic en la parte superior derecha de tu navegador y ancla Trust Wallet para un fácil acceso."
+        },
+        "step2": {
+          "title": "Crear o importar una billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures Trust Wallet, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "xdefi": {
+        "step1": {
+          "title": "Instala la extensión de XDEFI Wallet",
+          "description": "Recomendamos anclar XDEFI Wallet a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o importar una billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Instala la extensión de Zerion",
+          "description": "Recomendamos anclar Zerion a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     }
