@@ -1,6 +1,6 @@
-import { I18n as _I18N } from "i18n-js";
-import React, { ReactNode, createContext, useMemo } from "react";
-import { Locale, i18n as _i18n } from "../../locales";
+import { I18n as _I18N } from 'i18n-js';
+import React, { ReactNode, createContext, useMemo } from 'react';
+import { Locale, i18n as _i18n } from '../../locales';
 
 export const I18nContext = createContext<_I18N>(_i18n);
 
