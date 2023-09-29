@@ -3,7 +3,7 @@
     "title": "Apa itu Dompet?",
     "digital_asset": {
       "title": "Sebuah Rumah untuk Aset Digital Anda",
-      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital seperti Ethereum dan NFT."
+      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital seperti Ethereum dan NFTs."
     },
     "login": {
       "title": "Cara Baru untuk Masuk",
@@ -12,13 +12,16 @@
     "ethereum": {
       "title": "Baru di dompet Ethereum?"
     },
+    "install": {
+      "label": "PASANG"
+    },
     "wallet": {
-      "recent": "Baru",
+      "recent": "Baru-baru ini",
       "indicators": {
         "opening": "Membuka",
-        "not_installed": "tidak terpasang",
+        "not_installed": "tidak dipasang",
         "not_available": "tidak tersedia",
-        "confirm": "Konfirmasi koneksi di ekstensi",
+        "confirm": "Konfirmasi koneksi dalam ekstensi",
         "retry": "COBA LAGI"
       },
       "scan": {
@@ -32,26 +35,30 @@
         "get": "Dapatkan"
       },
       "get_started": {
-        "for_mobile": "untuk Seluler",
+        "for_mobile": "untuk Mobile",
         "add_to": "Tambahkan ke",
-        "get_app": "Dapatkan aplikasi",
+        "get_app": "Dapatkan aplikasinya",
         "access_browser": "Akses dompet Anda langsung dari browser web favorit Anda.",
-        "access_mobile": "Gunakan dompet seluler untuk menjelajahi dunia Ethereum.",
+        "access_mobile": "Gunakan dompet mobile untuk menjelajahi dunia Ethereum.",
         "for": "untuk",
         "title": "DAPATKAN",
         "open": "BUKA",
-        "not_found": "Tidak punya",
-        "need": "Perlu",
+        "not_found": "Tidak memiliki",
+        "need": "Butuh",
         "official": "resmi",
-        "wallet_connect": "modal WalletConnect?"
+        "wallet_connect": "Modal WalletConnect?"
       },
       "title": "Dapatkan Dompet",
-      "wallet_extension": "Dompet Mobile dan Ekstensi",
-      "companion_app": "Dompet Mobile",
+      "wallet_extension": "Dompet Seluler dan Ekstensi",
+      "companion_app": "Dompet Seluler",
       "browser_extension": "Ekstensi Browser",
       "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital. Ini juga cara baru untuk masuk, tanpa perlu membuat akun dan kata sandi baru di setiap situs web.",
       "connect": {
+        "label": "Hubungkan",
         "title": "Hubungkan Dompet"
+      },
+      "refresh": {
+        "label": "Segarkan"
       }
     },
     "not_found": {
@@ -62,24 +69,526 @@
       "label": "Pelajari lebih lanjut"
     }
   },
-
   "wallet_connectors": {
     "qr_code": {
       "argent": {
         "step1": {
-          "description": "Taruh Argent di layar utama Anda untuk akses dompet lebih cepat.",
-          "step": "pasang",
+          "description": "Letakkan Argent di layar utama Anda untuk akses lebih cepat ke dompet Anda.",
           "title": "Buka aplikasi Argent"
         },
         "step2": {
           "description": "Buat dompet dan nama pengguna, atau impor dompet yang sudah ada.",
-          "step": "buat",
-          "title": "Buat atau Impor Dompet"
+          "title": "Buat atau Impor Wallet"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul prompt koneksi untuk menghubungkan dompet Anda.",
-          "step": "pindai",
-          "title": "Tekan tombol Pindai QR"
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Ketuk tombol Pindai QR"
+        }
+      },
+      "bifrost": {
+        "step1": {
+          "description": "Kami merekomendasikan menempatkan Bifrost Wallet pada layar utama Anda untuk akses lebih cepat.",
+          "title": "Buka aplikasi Bifrost Wallet"
+        },
+        "step2": {
+          "description": "Buat atau impor dompet menggunakan frase pemulihan Anda.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Ketuk tombol pindai"
+        }
+      },
+      "bitkeep": {
+        "step1": {
+          "description": "Kami merekomendasikan menempatkan BitKeep pada layar utama Anda untuk akses lebih cepat.",
+          "title": "Buka aplikasi BitKeep"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul prompt koneksi bagi Anda untuk menghubungkan dompet Anda.",
+          "title": "Ketuk tombol pindai"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Kami menyarankan untuk menaruh Coin98 Wallet di layar awal Anda untuk akses dompet Anda dengan lebih cepat.",
+          "title": "Buka aplikasi Coin98 Wallet"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan kami di ponsel Anda.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menyambungkan dompet Anda.",
+          "title": "Ketuk tombol WalletConnect"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Kami merekomendasikan menaruh Coinbase Wallet di layar utama Anda untuk akses lebih cepat.",
+          "title": "Buka aplikasi Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan cloud.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menyambungkan dompet Anda.",
+          "title": "Ketuk tombol scan"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menaruh Core di layar utama Anda untuk akses lebih cepat ke wallet Anda.",
+          "title": "Buka aplikasi Core"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menyambungkan wallet Anda.",
+          "title": "Ketuk tombol WalletConnect"
+        }
+      },
+      "fox": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menaruh FoxWallet di layar utama Anda untuk akses lebih cepat.",
+          "title": "Buka aplikasi FoxWallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menyambungkan wallet Anda.",
+          "title": "Tekan tombol pemindaian"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menempatkan Wallet Frontier di layar utama Anda untuk akses yang lebih cepat.",
+          "title": "Buka aplikasi Wallet Frontier"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul pesan untuk menghubungkan dompet Anda.",
+          "title": "Tekan tombol pemindaian"
+        }
+      },
+      "im_token": {
+        "step1": {
+          "title": "Buka aplikasi imToken",
+          "description": "Letakkan aplikasi imToken di layar utama Anda untuk akses dompet yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk Ikon Scanner di sudut kanan atas",
+          "description": "Pilih Koneksi Baru, lalu scan kode QR dan konfirmasi petunjuk untuk terhubung."
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "Buka aplikasi MetaMask",
+          "description": "Kami merekomendasikan menempatkan MetaMask di layar awal Anda untuk akses yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Ketuk tombol scan",
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Buka aplikasi OKX Wallet",
+          "description": "Kami menyarankan untuk menaruh OKX Wallet di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Ketuk tombol scan",
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda."
+        }
+      },
+      "omni": {
+        "step1": {
+          "title": "Buka aplikasi Omni",
+          "description": "Tambah Omni ke layar utama Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Buat wallet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk ikon QR dan scan",
+          "description": "Ketuk ikon QR pada layar beranda Anda, scan kode dan konfirmasi prompt untuk terhubung."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Buka aplikasi TokenPocket",
+          "description": "Kami merekomendasikan untuk menaruh TokenPocket di layar beranda Anda untuk akses yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Ketuk tombol scan",
+          "description": "Setelah Anda scan, prompt koneksi akan muncul untuk Anda terhubung wallet Anda."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Buka aplikasi Trust Wallet",
+          "description": "Letakkan Trust Wallet di layar utama Anda untuk akses ke wallet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Buat wallet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk WalletConnect di Pengaturan",
+          "description": "Pilih Koneksi Baru, kemudian scan kode QR dan konfirmasi prompt untuk terhubung."
+        }
+      },
+      "uniswap": {
+        "step1": {
+          "title": "Buka aplikasi Uniswap",
+          "description": "Tambahkan Uniswap Wallet ke layar utama Anda untuk akses ke wallet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Buat wallet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk ikon QR dan scan",
+          "description": "Ketuk ikon QR di layar awal Anda, pindai kode dan konfirmasi permintaan untuk terhubung."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Buka aplikasi Zerion",
+          "description": "Kami merekomendasikan untuk menempatkan Zerion di layar awal Anda untuk akses yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan Anda mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Ketuk tombol pindai",
+          "description": "Setelah Anda memindai, akan muncul permintaan koneksi untuk Anda menghubungkan wallet Anda."
+        }
+      }
+    },
+    "extension": {
+      "bitkeep": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk mengepin BitKeep ke taskbar Anda untuk akses yang lebih cepat ke wallet Anda.",
+          "title": "Instal ekstensi BitKeep"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "bitski": {
+        "step1": {
+          "description": "Kami menyarankan untuk menempelkan Bitski ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Instal ekstensi Bitski"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Klik di pojok kanan atas browser Anda dan sematkan Coin98 Wallet untuk akses yang mudah.",
+          "title": "Instal ekstensi Coin98 Wallet"
+        },
+        "step2": {
+          "description": "Buat wallet baru atau impor yang sudah ada.",
+          "title": "Buat atau Impor wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan Coin98 Wallet, klik di bawah untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk mengepin Coinbase Wallet ke taskbar Anda untuk akses wallet yang lebih cepat.",
+          "title": "Instal ekstensi Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah bagikan frase rahasia Anda kepada siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan perambah dan memuat ekstensi.",
+          "title": "Segarkan perambah Anda"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Kami menyarankan menempelkan Core ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Pasang ekstensi Core"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan perambah dan memuat ekstensi.",
+          "title": "Segarkan perambah Anda"
+        }
+      },
+      "enkrypt": {
+        "step1": {
+          "description": "Kami menyarankan menempelkan Enkrypt Wallet ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Pasang ekstensi Enkrypt Wallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk memuat ulang browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "frame": {
+        "step1": {
+          "description": "Kami menyarankan menempelkan Frame ke taskbar Anda untuk akses yang lebih cepat ke wallet Anda.",
+          "title": "Instal Frame & ekstensi pendamping"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Kami menyarankan untuk menempel Frontier Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda.",
+          "title": "Instal ekstensi Frontier Wallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Wallet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "1Pasang ekstensi MetaMask",
+          "description": "Kami merekomendasikan menempelkan MetaMask ke taskbar Anda untuk akses dompet yang lebih cepat."
+        },
+        "step2": {
+          "title": "1Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "1Segarkan browser Anda",
+          "description": "Setelah Anda mengatur dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Pasang ekstensi OKX Wallet",
+          "description": "Kami merekomendasikan menempelkan OKX Wallet ke taskbar Anda untuk akses dompet yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan peramban Anda",
+          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah untuk menyegarkan peramban dan memuat ekstensi."
+        }
+      },
+      "one_key": {
+        "step1": {
+          "title": "Pasang ekstensi OneKey Wallet",
+          "description": "Kami merekomendasikan menempel OneKey Wallet ke taskbar Anda untuk akses wallet yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan peramban Anda",
+          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah untuk menyegarkan peramban dan memuat ekstensi."
+        }
+      },
+      "phantom": {
+        "step1": {
+          "title": "Pasang ekstensi Phantom",
+          "description": "Kami merekomendasikan menempel Phantom ke taskbar Anda untuk akses wallet yang lebih mudah."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "rabby": {
+        "step1": {
+          "title": "Instal ekstensi Rabby",
+          "description": "Kami merekomendasikan menempelkan Rabby ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "rainbow": {
+        "step1": {
+          "title": "Buka aplikasi Rainbow",
+          "description": "Kami merekomendasikan menaruh Rainbow di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan kami di ponsel Anda."
+        },
+        "step3": {
+          "title": "Ketuk tombol pemindaian",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      },
+      "safeheron": {
+        "step1": {
+          "title": "Pasang ekstensi Core",
+          "description": "Kami menyarankan menempelkan Safeheron pada taskbar Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "taho": {
+        "step1": {
+          "title": "Pasang ekstensi Taho",
+          "description": "Kami sarankan mengepin Taho ke taskbar Anda untuk akses dompet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "talisman": {
+        "step1": {
+          "title": "Instal ekstensi Talisman",
+          "description": "Kami sarankan mengepin Talisman ke taskbar Anda untuk akses dompet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet Ethereum",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase pemulihan Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Instal ekstensi TokenPocket",
+          "description": "Kami merekomendasikan menjepit TokenPocket ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda mengatur dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Instal ekstensi Trust Wallet",
+          "description": "Klik di kanan atas browser Anda dan sematkan Trust Wallet untuk akses mudah."
+        },
+        "step2": {
+          "title": "Buat atau Impor dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda mengatur Trust Wallet, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "xdefi": {
+        "step1": {
+          "title": "Instal ekstensi XDEFI Wallet",
+          "description": "Kami merekomendasikan untuk menempelkan XDEFI Wallet ke taskbar Anda untuk akses dompet lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Instal ekstensi Zerion",
+          "description": "Kami menyarankan menempelkan Zerion ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
         }
       }
     }

@@ -2,18 +2,21 @@
   "intro": {
     "title": "Qu'est-ce qu'un portefeuille?",
     "digital_asset": {
-      "title": "Un foyer pour vos Actifs Numériques",
-      "description": "Les portefeuilles sont utilisés pour envoyer, recevoir, stocker et afficher des actifs numériques tels que Ethereum et les NFT."
+      "title": "Un foyer pour vos actifs numériques",
+      "description": "Les portefeuilles sont utilisés pour envoyer, recevoir, stocker et afficher des actifs numériques comme Ethereum et les NFTs."
     },
     "login": {
       "title": "Une nouvelle façon de se connecter",
-      "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site web, connectez simplement votre portefeuille."
+      "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site Web, connectez simplement votre portefeuille."
     },
     "ethereum": {
-      "title": "Nouveau dans les portefeuilles Ethereum?"
+      "title": "Vous êtes nouveau dans les portefeuilles Ethereum ?"
+    },
+    "install": {
+      "label": "INSTALLER"
     },
     "wallet": {
-      "recent": "Récemment",
+      "recent": "Récent",
       "indicators": {
         "opening": "Ouverture",
         "not_installed": "n'est pas installé",
@@ -22,64 +25,570 @@
         "retry": "RÉESSAYER"
       },
       "scan": {
-        "title": "Scanner avec",
+        "title": "Scannez avec",
         "phone": "votre téléphone",
         "mobile": "Scannez avec votre téléphone pour télécharger sur iOS ou Android",
         "install": "Installer",
         "wallet": "Portefeuille",
         "continue": "Continuer",
-        "get_started_with": "Commencez avec",
+        "get_started_with": "Commencer avec",
         "get": "Obtenir"
       },
       "get_started": {
         "for_mobile": "pour Mobile",
         "add_to": "Ajouter à",
-        "get_app": "Télécharger l'application",
+        "get_app": "Obtenir l'application",
         "access_browser": "Accédez à votre portefeuille directement depuis votre navigateur web préféré.",
         "access_mobile": "Utilisez le portefeuille mobile pour explorer le monde d'Ethereum.",
         "for": "pour",
         "title": "OBTENIR",
-        "open": "OUVRIR",
-        "not_found": "N'a pas",
-        "need": "Besoin de l'",
+        "open": "OUVERT",
+        "not_found": "N'ont pas",
+        "need": "Besoin du",
         "official": "officiel",
-        "wallet_connect": "modal de WalletConnect?"
+        "wallet_connect": "Modal WalletConnect?"
       },
-      "title": "Obtenez un Portefeuille",
-      "wallet_extension": "Portefeuille Mobile et Extension",
-      "companion_app": "Portefeuille Mobile",
-      "browser_extension": "Extension de Navigateur",
-      "description": "Un portefeuille est utilisé pour envoyer, recevoir, stocker et afficher des actifs numériques. C'est aussi un nouveau moyen de se connecter, sans avoir besoin de créer de nouveaux comptes et mots de passe sur chaque site web.",
+      "title": "Obtenir un portefeuille",
+      "wallet_extension": "Portefeuille mobile et extension",
+      "companion_app": "Portefeuille mobile",
+      "browser_extension": "Extension de navigateur",
+      "description": "Un portefeuille est utilisé pour envoyer, recevoir, stocker et afficher des actifs numériques. C'est aussi une nouvelle façon de se connecter, sans avoir besoin de créer de nouveaux comptes et mots de passe sur chaque site web.",
       "connect": {
-        "title": "Connectez un Portefeuille"
+        "label": "Connexion",
+        "title": "Connecter un portefeuille"
+      },
+      "refresh": {
+        "label": "Actualiser"
       }
     },
     "not_found": {
-      "title": "Ce n'est pas ce que vous cherchez ?",
+      "title": "Ce n'est pas ce que vous recherchez?",
       "description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille."
     },
     "learn_more": {
       "label": "En savoir plus"
     }
   },
-
   "wallet_connectors": {
     "qr_code": {
       "argent": {
         "step1": {
-          "description": "Mettez Argent sur votre écran d'accueil pour accéder plus rapidement à votre portefeuille.",
-          "step": "installer",
+          "description": "Mettez Argent sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
           "title": "Ouvrez l'application Argent"
         },
         "step2": {
           "description": "Créez un portefeuille et un nom d'utilisateur, ou importez un portefeuille existant.",
-          "step": "créer",
           "title": "Créer ou Importer un Portefeuille"
         },
         "step3": {
           "description": "Après avoir scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille.",
-          "step": "scanner",
-          "title": "Appuyez sur le bouton Scanner QR"
+          "title": "Appuyez sur le bouton Scanner le QR"
+        }
+      },
+      "bifrost": {
+        "step1": {
+          "description": "Nous recommandons de mettre Bifrost Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Bifrost Wallet"
+        },
+        "step2": {
+          "description": "Créez ou importez un portefeuille à l'aide de votre phrase de récupération.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de numérisation"
+        }
+      },
+      "bitkeep": {
+        "step1": {
+          "description": "Nous recommandons de mettre BitKeep sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application BitKeep"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous connecter à votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Nous recommandons de mettre le portefeuille Coin98 sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Coin98 Wallet"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une fenêtre de connexion apparaitra pour que vous puissiez connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Nous recommandons de mettre Coinbase Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant la fonction de sauvegarde dans le cloud.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une fenêtre de connexion apparaitra pour que vous puissiez connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Nous vous recommandons de mettre Core sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Core"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone.",
+          "title": "Créez ou Importez un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois le scan effectué, une invitation à la connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
+        }
+      },
+      "fox": {
+        "step1": {
+          "description": "Nous vous conseillons de mettre FoxWallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application FoxWallet"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créez ou Importez un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois le scan effectué, une invitation à la connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Nous vous recommandons de mettre le portefeuille Frontier sur votre écran d'accueil pour y accéder plus rapidement.",
+          "title": "Ouvrez l'application Frontier Wallet"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
+        }
+      },
+      "im_token": {
+        "step1": {
+          "title": "Ouvrir l'application imToken",
+          "description": "Mettez l'application imToken sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créer un nouveau portefeuille ou en importer un existant :)."
+        },
+        "step3": {
+          "title": "Appuyez sur l'icône du scanner dans le coin supérieur droit",
+          "description": "Choisissez Nouvelle connexion, puis scannez le code QR et confirmez l'invite pour vous connecter."
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "Ouvrir l'application MetaMask",
+          "description": "Nous recommandons de mettre MetaMask sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de numérisation",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Ouvrez l'application OKX Wallet",
+          "description": "Nous vous recommandons de mettre OKX Wallet sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de numérisation",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      },
+      "omni": {
+        "step1": {
+          "title": "Ouvrez l'application Omni",
+          "description": "Ajoutez Omni à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Touchez l'icône QR et scannez",
+          "description": "Touchez l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour vous connecter."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Ouvrez l'application TokenPocket",
+          "description": "Nous vous recommandons de mettre TokenPocket sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "Touchez le bouton scan",
+          "description": "Après le scan, une invite de connexion apparaîtra pour vous connecter à votre portefeuille."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Ouvrez l'application Trust Wallet",
+          "description": "Mettez Trust Wallet sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur WalletConnect dans les paramètres",
+          "description": "Choisissez Nouvelle Connexion, puis scannez le code QR et confirmez l'invite pour vous connecter."
+        }
+      },
+      "uniswap": {
+        "step1": {
+          "title": "Ouvrez l'application Uniswap",
+          "description": "Ajoutez Uniswap Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Appuyez sur l'icône QR et scannez",
+          "description": "Appuyez sur l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour vous connecter."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Ouvrez l'application Zerion",
+          "description": "Nous vous recommandons de mettre Zerion sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      }
+    },
+    "extension": {
+      "bitkeep": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler BitKeep à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension BitKeep"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois votre portefeuille configuré, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "bitski": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler Bitski à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Bitski"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois votre portefeuille configuré, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "coin98": {
+        "step1": {
+          "description": "Cliquez en haut à droite de votre navigateur et épinglez le portefeuille Coin98 pour un accès facile.",
+          "title": "Installez l'extension du portefeuille Coin98"
+        },
+        "step2": {
+          "description": "Créez un nouveau portefeuille ou importez-en un existant.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré le portefeuille Coin98, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "coinbase": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler le portefeuille Coinbase à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension du portefeuille Coinbase"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "core": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler Core à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Core"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "enkrypt": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler Enkrypt Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Enkrypt Wallet"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Actualisez votre navigateur"
+        }
+      },
+      "frame": {
+        "step1": {
+          "description": "Nous recommandons d'épingler Frame à votre barre des tâches pour accéder plus rapidement à votre portefeuille.",
+          "title": "Installez Frame et l'extension associée"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "frontier": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler le portefeuille Frontier à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension du portefeuille Frontier"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
+        }
+      },
+      "metamask": {
+        "step1": {
+          "title": "1Installez l'extension MetaMask",
+          "description": "Nous vous recommandons d'épingler MetaMask à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "1Créez ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "1Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "okx": {
+        "step1": {
+          "title": "Installez l'extension OKX Wallet",
+          "description": "Nous vous recommandons d'épingler OKX Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créez ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "one_key": {
+        "step1": {
+          "title": "Installez l'extension OneKey Wallet",
+          "description": "Nous recommandons d'épingler OneKey Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "phantom": {
+        "step1": {
+          "title": "Installez l'extension Phantom",
+          "description": "Nous recommandons d'épingler Phantom à votre barre des tâches pour un accès plus facile à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase de récupération secrète avec personne."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "rabby": {
+        "step1": {
+          "title": "Installez l'extension Rabby",
+          "description": "Nous vous recommandons d'épingler Rabby à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "rainbow": {
+        "step1": {
+          "title": "Ouvrez l'application Rainbow",
+          "description": "Nous vous recommandons de placer Rainbow sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone."
+        },
+        "step3": {
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
+        }
+      },
+      "safeheron": {
+        "step1": {
+          "title": "Installez l'extension Core",
+          "description": "Nous vous recommandons d'épingler Safeheron à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "taho": {
+        "step1": {
+          "title": "Installez l'extension Taho",
+          "description": "Nous vous recommandons d'épingler Taho à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sûre. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "talisman": {
+        "step1": {
+          "title": "Installez l'extension Talisman",
+          "description": "Nous vous recommandons d'épingler Talisman à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille Ethereum",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sûre. Ne partagez jamais votre phrase de récupération avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "token_pocket": {
+        "step1": {
+          "title": "Installez l'extension TokenPocket",
+          "description": "Nous vous recommandons d'épingler TokenPocket à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "trust": {
+        "step1": {
+          "title": "Installez l'extension Trust Wallet",
+          "description": "Cliquez en haut à droite de votre navigateur et épinglez Trust Wallet pour y accéder facilement."
+        },
+        "step2": {
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré Trust Wallet, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "xdefi": {
+        "step1": {
+          "title": "Installez l'extension XDEFI Wallet",
+          "description": "Nous vous recommandons d'épingler XDEFI Wallet à votre barre des tâches pour accéder plus rapidement à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      },
+      "zerion": {
+        "step1": {
+          "title": "Installez l'extension Zerion",
+          "description": "Nous vous recommandons d'épingler Zerion à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     }
