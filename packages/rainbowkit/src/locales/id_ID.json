@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Baru-baru ini",
       "indicators": {
-        "opening": "Membuka",
-        "not_installed": "tidak dipasang",
-        "not_available": "tidak tersedia",
+        "opening": "Membuka %{name}",
+        "not_installed": "%{name} tidak diinstal",
+        "not_available": "%{name} tidak tersedia",
         "confirm": "Konfirmasi koneksi dalam ekstensi",
         "retry": "COBA LAGI"
       },
       "scan": {
-        "title": "Pindai dengan",
+        "title": "Pindai dengan %{name}",
         "phone": "ponsel Anda",
         "mobile": "Pindai dengan ponsel Anda untuk mengunduh di iOS atau Android",
-        "install": "Instal",
+        "install": "Instal %{name}",
         "wallet": "Dompet",
         "continue": "Lanjutkan",
-        "get_started_with": "Mulai dengan",
-        "get": "Dapatkan"
+        "get_started_with": "Mulai menggunakan %{name}",
+        "get": "Dapatkan %{name}"
       },
       "get_started": {
         "for_mobile": "untuk Mobile",
@@ -43,7 +43,7 @@
         "for": "untuk",
         "title": "DAPATKAN",
         "open": "BUKA",
-        "not_found": "Tidak memiliki",
+        "not_found": "Tidak memiliki %{name}",
         "need": "Butuh",
         "official": "resmi",
         "wallet_connect": "Modal WalletConnect?"

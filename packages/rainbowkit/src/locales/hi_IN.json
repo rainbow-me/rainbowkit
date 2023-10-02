@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "हाल का",
       "indicators": {
-        "opening": "खुल रहा है",
-        "not_installed": "स्थापित नहीं है",
-        "not_available": "उपलब्ध नहीं है",
+        "opening": "खुल रहा है %{name}",
+        "not_installed": "%{name} स्थापित नहीं है",
+        "not_available": "%{name} उपलब्ध नहीं है",
         "confirm": "एक्सटेंशन में कनेक्शन की पुष्टि करें",
         "retry": "पुन: प्रयास करें"
       },
       "scan": {
-        "title": "इसे स्कैन करें",
+        "title": "स्कैन करें %{name}के साथ",
         "phone": "अपने फ़ोन से",
         "mobile": "iOS या Android पर डाउनलोड करने के लिए अपने फ़ोन से स्कैन करें",
-        "install": "इंस्टॉल",
+        "install": "स्थापित करें %{name}",
         "wallet": "वॉलेट",
         "continue": "जारी रखें",
-        "get_started_with": "के साथ शुरुआत करें",
-        "get": "प्राप्त करें"
+        "get_started_with": "शुरुआत करें %{name}के साथ",
+        "get": "प्राप्त करें %{name}"
       },
       "get_started": {
         "for_mobile": "मोबाइल के लिए",
@@ -43,7 +43,7 @@
         "for": "के लिए",
         "title": "प्राप्त करें",
         "open": "खोलें",
-        "not_found": "पास नहीं है",
+        "not_found": "क्या आपके पास नहीं है %{name}",
         "need": "की जरूरत है",
         "official": "आधिकारिक",
         "wallet_connect": "WalletConnect मोडल?"

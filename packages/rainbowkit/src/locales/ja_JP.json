@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "最近の",
       "indicators": {
-        "opening": "開いています",
-        "not_installed": "インストールされていません",
-        "not_available": "利用できません",
+        "opening": "%{name}を開く",
+        "not_installed": "%{name}はインストールされていません",
+        "not_available": "%{name}は利用できません",
         "confirm": "拡張機能での接続を確認",
         "retry": "再試行"
       },
       "scan": {
-        "title": "スキャンする",
+        "title": "%{name}でスキャン",
         "phone": "あなたの電話で",
         "mobile": "iOSまたはAndroidでダウンロードするためにあなたの電話でスキャンします",
-        "install": "インストール",
+        "install": "%{name}をインストールする",
         "wallet": "ウォレット",
         "continue": "続ける",
-        "get_started_with": "始める",
-        "get": "取得"
+        "get_started_with": "%{name}を始めましょう",
+        "get": "%{name}を取得"
       },
       "get_started": {
         "for_mobile": "モバイル用",
@@ -43,7 +43,7 @@
         "for": "に対して",
         "title": "入手する",
         "open": "開く",
-        "not_found": "持っていない",
+        "not_found": "%{name}がありません",
         "need": "必要",
         "official": "公式の",
         "wallet_connect": "WalletConnectモダル？"

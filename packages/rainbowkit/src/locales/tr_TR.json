@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Son",
       "indicators": {
-        "opening": "Açılıyor",
-        "not_installed": "kurulu değil",
-        "not_available": "mevcut değil",
+        "opening": "Açılıyor %{name}",
+        "not_installed": "%{name} yüklü değil",
+        "not_available": "%{name} kullanılabilir değil",
         "confirm": "Uzantıda bağlantıyı onaylayın",
         "retry": "TEKRAR DENE"
       },
       "scan": {
-        "title": "Şununla tarayın",
+        "title": "Tarama yapın %{name}kullanarak",
         "phone": "telefonunuz",
         "mobile": "iOS veya Android'de indirmek için telefonunuzla tarayın",
-        "install": "Yükle",
+        "install": "Yükleyin %{name}",
         "wallet": "Cüzdan",
         "continue": "Devam et",
-        "get_started_with": "ile başlayın",
-        "get": "Al"
+        "get_started_with": "Başlayın %{name}ile",
+        "get": "Alın %{name}"
       },
       "get_started": {
         "for_mobile": "Mobil için",
@@ -43,7 +43,7 @@
         "for": "için",
         "title": "AL",
         "open": "AÇ",
-        "not_found": "Yok mu",
+        "not_found": "Yok mu %{name}",
         "need": "Gereken",
         "official": "resmi",
         "wallet_connect": "WalletConnect modal?"

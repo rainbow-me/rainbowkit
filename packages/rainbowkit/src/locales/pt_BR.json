@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Recente",
       "indicators": {
-        "opening": "Abrindo",
-        "not_installed": "não está instalado",
-        "not_available": "não está disponível",
+        "opening": "Abrindo %{name}",
+        "not_installed": "%{name} não está instalado",
+        "not_available": "%{name} não está disponível",
         "confirm": "Confirme a conexão na extensão",
         "retry": "TENTAR NOVAMENTE"
       },
       "scan": {
-        "title": "Digitalizar com",
+        "title": "Escanear com %{name}",
         "phone": "seu telefone",
         "mobile": "Digitalize com seu telefone para baixar no iOS ou Android",
-        "install": "Instalar",
+        "install": "Instalar %{name}",
         "wallet": "Carteira",
         "continue": "Continuar",
-        "get_started_with": "Comece com o",
-        "get": "Obter"
+        "get_started_with": "Comece com %{name}",
+        "get": "Obter %{name}"
       },
       "get_started": {
         "for_mobile": "para Mobile",
@@ -43,7 +43,7 @@
         "for": "para",
         "title": "OBTER",
         "open": "ABRIR",
-        "not_found": "Não tem",
+        "not_found": "Não possui %{name}",
         "need": "Precisa do",
         "official": "oficial",
         "wallet_connect": "Modal WalletConnect?"

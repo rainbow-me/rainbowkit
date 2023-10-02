@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Reciente",
       "indicators": {
-        "opening": "Abriendo",
-        "not_installed": "no está instalado",
-        "not_available": "No hay cotización disponible",
+        "opening": "Abriendo %{name}",
+        "not_installed": "%{name} no está instalado",
+        "not_available": "%{name} no está disponible",
         "confirm": "Confirma la conexión en la extensión",
         "retry": "REINTENTAR"
       },
       "scan": {
-        "title": "Escanear con",
+        "title": "Escanear con %{name}",
         "phone": "tu teléfono",
         "mobile": "Escanea con tu teléfono para descargar en iOS o Android",
-        "install": "Instalar",
+        "install": "Instalar %{name}",
         "wallet": "Cartera",
         "continue": "Continuar",
-        "get_started_with": "Comienza con",
-        "get": "Obtener"
+        "get_started_with": "Empezar con %{name}",
+        "get": "Obtener %{name}"
       },
       "get_started": {
         "for_mobile": "para Móvil",
@@ -43,7 +43,7 @@
         "for": "para",
         "title": "OBTENER",
         "open": "ABRIR",
-        "not_found": "No tienes",
+        "not_found": "No tienes %{name}",
         "need": "Necesito el",
         "official": "oficial",
         "wallet_connect": "¿Modal WalletConnect?"

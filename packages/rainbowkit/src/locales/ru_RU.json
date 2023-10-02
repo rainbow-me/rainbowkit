@@ -18,21 +18,21 @@
     "wallet": {
       "recent": "Недавние",
       "indicators": {
-        "opening": "Открытие",
-        "not_installed": "не установлено",
-        "not_available": "недоступно",
+        "opening": "Открытие %{name}",
+        "not_installed": "%{name} не установлен",
+        "not_available": "%{name} недоступен",
         "confirm": "Подтвердите подключение в расширении",
         "retry": "ПОВТОРИТЬ"
       },
       "scan": {
-        "title": "Сканировать с помощью",
+        "title": "Сканировать с помощью %{name}",
         "phone": "вашего телефона",
         "mobile": "Сканируйте с помощью вашего телефона, чтобы скачать на iOS или Android",
-        "install": "Установить",
+        "install": "Установить %{name}",
         "wallet": "Кошелек",
         "continue": "Продолжить",
-        "get_started_with": "Начать работу с",
-        "get": "Получить"
+        "get_started_with": "Начать использовать %{name}",
+        "get": "Получить %{name}"
       },
       "get_started": {
         "for_mobile": "Для мобильных",
@@ -43,7 +43,7 @@
         "for": "для",
         "title": "ПОЛУЧИТЬ",
         "open": "ОТКРЫТЬ",
-        "not_found": "Не имеете",
+        "not_found": "У вас нет %{name}",
         "need": "Нужно",
         "official": "официальное",
         "wallet_connect": "Модальное окно WalletConnect?"
