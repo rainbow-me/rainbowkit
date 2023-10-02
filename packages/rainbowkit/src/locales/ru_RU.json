@@ -15,6 +15,13 @@
     "install": {
       "label": "УСТАНОВИТЬ"
     },
+    "group_name": {
+      "recommended": "Рекомендуемые",
+      "other": "Другой",
+      "popular": "Популярное",
+      "more": "Больше",
+      "others": "Другой"
+    },
     "wallet": {
       "recent": "Недавние",
       "indicators": {

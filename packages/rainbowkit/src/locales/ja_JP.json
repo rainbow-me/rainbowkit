@@ -16,11 +16,11 @@
       "label": "インストール"
     },
     "group_name": {
-      "recommended": "おすすめ",
-      "other": "その他",
+      "recommended": "推奨",
+      "other": "他の",
       "popular": "人気",
       "more": "もっと",
-      "others": "他人"
+      "others": "その他"
     },
     "wallet": {
       "recent": "最近の",

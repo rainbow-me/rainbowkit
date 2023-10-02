@@ -15,6 +15,13 @@
     "install": {
       "label": "स्थापित करें"
     },
+    "group_name": {
+      "recommended": "अनुशंसित",
+      "other": "अन्य",
+      "popular": "लोकप्रिय",
+      "more": "अधिक",
+      "others": "अन्य लोग"
+    },
     "wallet": {
       "recent": "हाल का",
       "indicators": {

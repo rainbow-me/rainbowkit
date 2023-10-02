@@ -15,6 +15,13 @@
     "install": {
       "label": "KURULUM"
     },
+    "group_name": {
+      "recommended": "Tavsiye Edilen",
+      "other": "Diğer",
+      "popular": "Popüler",
+      "more": "Daha Fazla",
+      "others": "Diğerleri"
+    },
     "wallet": {
       "recent": "Son",
       "indicators": {

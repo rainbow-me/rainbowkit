@@ -15,6 +15,13 @@
     "install": {
       "label": "PASANG"
     },
+    "group_name": {
+      "recommended": "Direkomendasikan",
+      "other": "Lainnya",
+      "popular": "Populer",
+      "more": "Lebih",
+      "others": "Lainnya"
+    },
     "wallet": {
       "recent": "Baru-baru ini",
       "indicators": {

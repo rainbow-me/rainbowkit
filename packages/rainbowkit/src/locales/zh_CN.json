@@ -15,6 +15,13 @@
     "install": {
       "label": "安装"
     },
+    "group_name": {
+      "recommended": "推荐",
+      "other": "其他",
+      "popular": "流行",
+      "more": "更多",
+      "others": "其他人"
+    },
     "wallet": {
       "recent": "最近",
       "indicators": {

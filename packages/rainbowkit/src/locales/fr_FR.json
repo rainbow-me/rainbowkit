@@ -15,6 +15,13 @@
     "install": {
       "label": "INSTALLER"
     },
+    "group_name": {
+      "recommended": "Recommandé",
+      "other": "Autre",
+      "popular": "Populaire",
+      "more": "Plus",
+      "others": "Autres"
+    },
     "wallet": {
       "recent": "Récent",
       "indicators": {
