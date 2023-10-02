@@ -370,9 +370,6 @@ importers:
 
   packages/rainbowkit:
     dependencies:
-      '@types/i18n-js':
-        specifier: ^3.8.5
-        version: 3.8.5
       '@vanilla-extract/css':
         specifier: 1.9.1
         version: 1.9.1
@@ -407,6 +404,9 @@ importers:
       '@testing-library/user-event':
         specifier: ^14.4.3
         version: 14.4.3(@testing-library/dom@9.3.1)
+      '@types/i18n-js':
+        specifier: ^3.8.5
+        version: 3.8.5
       '@types/qrcode':
         specifier: ^1.4.2
         version: 1.4.2
@@ -8495,7 +8495,7 @@ packages:
 
   /@types/i18n-js@3.8.5:
     resolution: {integrity: sha512-6LlMVfkAW8gwcgxIRjxuWxjhD+hw4Mj2VC609FpYCG5n8usb2GE2xbKsEQXWmAIe6LBN2OOw7HnSjZqMDHVtDw==}
-    dev: false
+    dev: true
 
   /@types/is-ci@3.0.0:
     resolution: {integrity: sha512-Q0Op0hdWbYd1iahB+IFNQcWXFq4O0Q5MwQP7uN0souuQ4rPg1vEYcnIOfr1gY+M+6rc8FGoRaBO1mOOvL29sEQ==}
