@@ -80,7 +80,7 @@
   "helper_text": {
     "not_what_looking_for": "Not what you're looking for?",
     "select_wallet_main_screen": "Select a wallet on the main screen to get started with a different wallet provider.",
-    "not_found": "Don\u2019t have %{name}",
+    "not_found": "Don\u2019t have %{name} ?",
     "official": "official",
     "transactions": "transactions will appear here",
     "explorer": "View more on explorer"
