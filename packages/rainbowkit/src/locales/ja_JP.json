@@ -15,6 +15,13 @@
     "install": {
       "label": "インストール"
     },
+    "group_name": {
+      "recommended": "おすすめ",
+      "other": "その他",
+      "popular": "人気",
+      "more": "もっと",
+      "others": "他人"
+    },
     "wallet": {
       "recent": "最近の",
       "indicators": {
