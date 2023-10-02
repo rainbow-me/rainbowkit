@@ -325,7 +325,7 @@ function RainbowKitApp({
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
-        locale={locale as Locale}
+        locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
