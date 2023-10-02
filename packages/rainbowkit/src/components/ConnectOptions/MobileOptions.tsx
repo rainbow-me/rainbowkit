@@ -138,7 +138,7 @@ function WalletButton({
 
           {wallet.recent && (
             <Text color="accentColor" size="12" weight="medium">
-              {i18n.t('intro.wallet.recent')}
+              {i18n.t('indicators.recent')}
             </Text>
           )}
         </Box>
@@ -172,7 +172,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
-      headerLabel = i18n.t('intro.wallet.connect.title');
+      headerLabel = i18n.t('connect.title');
       headerBackgroundContrast = true;
       walletContent = (
         <Box>
@@ -223,7 +223,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {i18n.t('intro.wallet.description')}
+                {i18n.t('what_is_wallet.description')}
               </Text>
             </Box>
           </Box>
@@ -231,14 +231,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
-                label={i18n.t('intro.wallet.title')}
+                label={i18n.t('get_wallet.title')}
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
               <ActionButton
                 href={learnMoreUrl}
-                label={i18n.t('intro.learn_more.label')}
+                label={i18n.t('learn_more.title')}
                 size="large"
                 type="secondary"
               />
@@ -254,7 +254,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       break;
     }
     case MobileWalletStep.Get: {
-      headerLabel = i18n.t('intro.wallet.title');
+      headerLabel = i18n.t('get_wallet.title');
       headerBackButtonLink = MobileWalletStep.Connect;
 
       const mobileWallets = wallets
@@ -354,10 +354,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                {i18n.t('intro.not_found.title')}
+                {i18n.t('helper_text.not_what_looking_for')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {i18n.t('intro.not_found.description')}
+                {i18n.t('helper_text.select_wallet_main_screen')}
               </Text>
             </Box>
           </Box>

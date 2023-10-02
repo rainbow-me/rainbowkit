@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useContext } from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-} from "../../css/sprinkles.css";
-import { touchableStyles } from "../../css/touchableStyles";
-import { useConnectionStatus } from "../../hooks/useConnectionStatus";
-import { isMobile } from "../../utils/isMobile";
-import { AsyncImage } from "../AsyncImage/AsyncImage";
-import { Avatar } from "../Avatar/Avatar";
-import { Box } from "../Box/Box";
-import { DropdownIcon } from "../Icons/Dropdown";
-import { useRainbowKitChains } from "../RainbowKitProvider/RainbowKitChainContext";
-import { ConnectButtonRenderer } from "./ConnectButtonRenderer";
+} from '../../css/sprinkles.css';
+import { touchableStyles } from '../../css/touchableStyles';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
+import { isMobile } from '../../utils/isMobile';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { Avatar } from '../Avatar/Avatar';
+import { Box } from '../Box/Box';
+import { DropdownIcon } from '../Icons/Dropdown';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
-type AccountStatus = "full" | "avatar" | "address";
-type ChainStatus = "full" | "icon" | "name" | "none";
+type AccountStatus = 'full' | 'avatar' | 'address';
+type ChainStatus = 'full' | 'icon' | 'name' | 'none';
 
 export interface ConnectButtonProps {
   accountStatus?: ResponsiveValue<AccountStatus>;
@@ -25,9 +26,9 @@ export interface ConnectButtonProps {
 }
 
 const defaultProps = {
-  accountStatus: "full",
-  chainStatus: { largeScreen: "full", smallScreen: "icon" },
-  label: "Connect Wallet",
+  accountStatus: 'full',
+  chainStatus: { largeScreen: 'full', smallScreen: 'icon' },
+  label: 'Connect Wallet',
   showBalance: { largeScreen: true, smallScreen: false },
 } as const;
 
@@ -40,6 +41,8 @@ export function ConnectButton({
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
+  const i18n = useContext(I18nContext);
+
   return (
     <ConnectButtonRenderer>
       {({
@@ -50,7 +53,7 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
-        const ready = mounted && connectionStatus !== "loading";
+        const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
 
         return (
@@ -58,15 +61,15 @@ export function ConnectButton({
             display="flex"
             gap="12"
             {...(!ready && {
-              "aria-hidden": true,
+              'aria-hidden': true,
               style: {
                 opacity: 0,
-                pointerEvents: "none",
-                userSelect: "none",
+                pointerEvents: 'none',
+                userSelect: 'none',
               },
             })}
           >
-            {ready && account && connectionStatus === "connected" ? (
+            {ready && account && connectionStatus === 'connected' ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
@@ -75,35 +78,35 @@ export function ConnectButton({
                     as="button"
                     background={
                       unsupportedChain
-                        ? "connectButtonBackgroundError"
-                        : "connectButtonBackground"
+                        ? 'connectButtonBackgroundError'
+                        : 'connectButtonBackground'
                     }
                     borderRadius="connectButton"
                     boxShadow="connectButton"
                     className={touchableStyles({
-                      active: "shrink",
-                      hover: "grow",
+                      active: 'shrink',
+                      hover: 'grow',
                     })}
                     color={
                       unsupportedChain
-                        ? "connectButtonTextError"
-                        : "connectButtonText"
+                        ? 'connectButtonTextError'
+                        : 'connectButtonText'
                     }
                     display={mapResponsiveValue(chainStatus, (value) =>
-                      value === "none" ? "none" : "flex"
+                      value === 'none' ? 'none' : 'flex',
                     )}
                     fontFamily="body"
                     fontWeight="bold"
                     gap="6"
                     key={
                       // Force re-mount to prevent CSS transition
-                      unsupportedChain ? "unsupported" : "supported"
+                      unsupportedChain ? 'unsupported' : 'supported'
                     }
                     onClick={openChainModal}
                     paddingX="10"
                     paddingY="8"
                     testId={
-                      unsupportedChain ? "wrong-network-button" : "chain-button"
+                      unsupportedChain ? 'wrong-network-button' : 'chain-button'
                     }
                     transition="default"
                     type="button"
@@ -122,15 +125,15 @@ export function ConnectButton({
                         {chain.hasIcon ? (
                           <Box
                             display={mapResponsiveValue(chainStatus, (value) =>
-                              value === "full" || value === "icon"
-                                ? "block"
-                                : "none"
+                              value === 'full' || value === 'icon'
+                                ? 'block'
+                                : 'none',
                             )}
                             height="24"
                             width="24"
                           >
                             <AsyncImage
-                              alt={chain.name ?? "Chain icon"}
+                              alt={chain.name ?? 'Chain icon'}
                               background={chain.iconBackground}
                               borderRadius="full"
                               height="24"
@@ -141,13 +144,13 @@ export function ConnectButton({
                         ) : null}
                         <Box
                           display={mapResponsiveValue(chainStatus, (value) => {
-                            if (value === "icon" && !chain.iconUrl) {
-                              return "block"; // Show the chain name if there is no iconUrl
+                            if (value === 'icon' && !chain.iconUrl) {
+                              return 'block'; // Show the chain name if there is no iconUrl
                             }
 
-                            return value === "full" || value === "name"
-                              ? "block"
-                              : "none";
+                            return value === 'full' || value === 'name'
+                              ? 'block'
+                              : 'none';
                           })}
                         >
                           {chain.name ?? chain.id}
@@ -166,8 +169,8 @@ export function ConnectButton({
                     borderRadius="connectButton"
                     boxShadow="connectButton"
                     className={touchableStyles({
-                      active: "shrink",
-                      hover: "grow",
+                      active: 'shrink',
+                      hover: 'grow',
                     })}
                     color="connectButtonText"
                     display="flex"
@@ -181,7 +184,7 @@ export function ConnectButton({
                     {account.displayBalance && (
                       <Box
                         display={mapResponsiveValue(showBalance, (value) =>
-                          value ? "block" : "none"
+                          value ? 'block' : 'none',
                         )}
                         padding="8"
                         paddingLeft="12"
@@ -192,10 +195,10 @@ export function ConnectButton({
                     <Box
                       background={
                         normalizeResponsiveValue(showBalance)[
-                          isMobile() ? "smallScreen" : "largeScreen"
+                          isMobile() ? 'smallScreen' : 'largeScreen'
                         ]
-                          ? "connectButtonInnerBackground"
-                          : "connectButtonBackground"
+                          ? 'connectButtonInnerBackground'
+                          : 'connectButtonBackground'
                       }
                       borderColor="connectButtonBackground"
                       borderRadius="connectButton"
@@ -216,9 +219,9 @@ export function ConnectButton({
                       >
                         <Box
                           display={mapResponsiveValue(accountStatus, (value) =>
-                            value === "full" || value === "avatar"
-                              ? "block"
-                              : "none"
+                            value === 'full' || value === 'avatar'
+                              ? 'block'
+                              : 'none',
                           )}
                         >
                           <Avatar
@@ -234,9 +237,9 @@ export function ConnectButton({
                             display={mapResponsiveValue(
                               accountStatus,
                               (value) =>
-                                value === "full" || value === "address"
-                                  ? "block"
-                                  : "none"
+                                value === 'full' || value === 'address'
+                                  ? 'block'
+                                  : 'none',
                             )}
                           >
                             {account.displayName}
@@ -254,7 +257,7 @@ export function ConnectButton({
                 background="accentColor"
                 borderRadius="connectButton"
                 boxShadow="connectButton"
-                className={touchableStyles({ active: "shrink", hover: "grow" })}
+                className={touchableStyles({ active: 'shrink', hover: 'grow' })}
                 color="accentColorForeground"
                 fontFamily="body"
                 fontWeight="bold"
@@ -266,7 +269,9 @@ export function ConnectButton({
                 transition="default"
                 type="button"
               >
-                {label}
+                {label === 'Connect Wallet'
+                  ? i18n.t('connect.connect_wallet')
+                  : label}
               </Box>
             )}
           </Box>

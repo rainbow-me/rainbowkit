@@ -105,7 +105,7 @@ export const ModalSelection = ({
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
                 >
-                  {i18n.t('intro.wallet.recent')}
+                  {i18n.t('indicators.recent')}
                 </Text>
               )}
             </Box>

@@ -82,7 +82,7 @@ export function ConnectModalIntro({
           margin="10"
         >
           <ActionButton
-            label={i18n.t('intro.wallet.title')}
+            label={i18n.t('get_wallet.title')}
             onClick={getWallet}
           />
           <Box
@@ -98,7 +98,7 @@ export function ConnectModalIntro({
             transition="default"
           >
             <Text color="accentColor" size="14" weight="bold">
-              {i18n.t('intro.learn_more.label')}
+              {i18n.t('learn_more.title')}
             </Text>
           </Box>
         </Box>

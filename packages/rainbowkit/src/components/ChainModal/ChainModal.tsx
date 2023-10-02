@@ -9,6 +9,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 
@@ -25,6 +26,8 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
       onClose();
     },
   });
+
+  const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';
@@ -58,7 +61,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                Switch Networks
+                {i18n.t('network.switch')}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />

@@ -9,6 +9,7 @@ import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
 
@@ -27,6 +28,8 @@ export function TxList({ address }: TxListProps) {
   const hasTransactions = visibleTxs.length > 0;
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <>
@@ -96,7 +99,7 @@ export function TxList({ address }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  {appName ?? 'Your'} transactions will appear here...
+                  {appName ?? 'Your'} {i18n.t('helper_text.transactions')}...
                 </Text>
               </Box>
               {mobile && (
@@ -139,7 +142,7 @@ export function TxList({ address }: TxListProps) {
               size={mobile ? '16' : '14'}
               weight={mobile ? 'semibold' : 'bold'}
             >
-              View more on Explorer
+              {i18n.t('helper_text.explorer')}
             </Text>
             <ExternalLinkIcon />
           </Box>
