@@ -99,21 +99,21 @@ export const okxWallet = ({
                 steps: [
                   {
                     description:
-                      'wallet_connectors.qr_code.okx.step1.description',
+                      'wallet_connectors.okx.qr_code.step1.description',
                     step: 'install',
-                    title: 'wallet_connectors.qr_code.okx.step1.title',
+                    title: 'wallet_connectors.okx.qr_code.step1.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.okx.step2.description',
+                      'wallet_connectors.okx.qr_code.step2.description',
                     step: 'create',
-                    title: 'wallet_connectors.qr_code.okx.step2.title',
+                    title: 'wallet_connectors.okx.qr_code.step2.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.okx.step3.description',
+                      'wallet_connectors.okx.qr_code.step3.description',
                     step: 'scan',
-                    title: 'wallet_connectors.qr_code.okx.step3.title',
+                    title: 'wallet_connectors.okx.qr_code.step3.title',
                   },
                 ],
               },
@@ -125,21 +125,21 @@ export const okxWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.okx.step1.description',
+                  'wallet_connectors.okx.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.okx.step1.title',
+                title: 'wallet_connectors.okx.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.okx.step2.description',
+                  'wallet_connectors.okx.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.okx.step2.title',
+                title: 'wallet_connectors.okx.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.okx.step3.description',
+                  'wallet_connectors.okx.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.okx.step3.title',
+                title: 'wallet_connectors.okx.extension.step3.title',
               },
             ],
           },

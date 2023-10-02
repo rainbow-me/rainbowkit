@@ -59,21 +59,21 @@ export const enkryptWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.enkrypt.step1.description',
+                  'wallet_connectors.enkrypt.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.enkrypt.step1.title',
+                title: 'wallet_connectors.enkrypt.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.enkrypt.step2.description',
+                  'wallet_connectors.enkrypt.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.enkrypt.step2.title',
+                title: 'wallet_connectors.enkrypt.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.enkrypt.step3.description',
+                  'wallet_connectors.enkrypt.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.enkrypt.step3.title',
+                title: 'wallet_connectors.enkrypt.extension.step3.title',
               },
             ],
           },

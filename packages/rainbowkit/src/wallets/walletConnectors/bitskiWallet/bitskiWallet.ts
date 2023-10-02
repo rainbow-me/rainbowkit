@@ -36,19 +36,19 @@ export const bitskiWallet = ({
           'https://bitski.zendesk.com/hc/articles/12803972818836-How-to-install-the-Bitski-browser-extension',
         steps: [
           {
-            description: 'wallet_connectors.extension.bitski.step1.description',
+            description: 'wallet_connectors.bitski.extension.step1.description',
             step: 'install',
-            title: 'wallet_connectors.extension.bitski.step1.title',
+            title: 'wallet_connectors.bitski.extension.step1.title',
           },
           {
-            description: 'wallet_connectors.extension.bitski.step2.description',
+            description: 'wallet_connectors.bitski.extension.step2.description',
             step: 'create',
-            title: 'wallet_connectors.extension.bitski.step2.title',
+            title: 'wallet_connectors.bitski.extension.step2.title',
           },
           {
-            description: 'wallet_connectors.extension.bitski.step3.description',
+            description: 'wallet_connectors.bitski.extension.step3.description',
             step: 'refresh',
-            title: 'wallet_connectors.extension.bitski.step3.title',
+            title: 'wallet_connectors.bitski.extension.step3.title',
           },
         ],
       },

@@ -63,21 +63,21 @@ export const uniswapWallet = ({
           steps: [
             {
               description:
-                'wallet_connectors.qr_code.uniswap.step1.description',
+                'wallet_connectors.uniswap.qr_code.step1.description',
               step: 'install',
-              title: 'wallet_connectors.qr_code.uniswap.step1.title',
+              title: 'wallet_connectors.uniswap.qr_code.step1.title',
             },
             {
               description:
-                'wallet_connectors.qr_code.uniswap.step2.description',
+                'wallet_connectors.uniswap.qr_code.step2.description',
               step: 'create',
-              title: 'wallet_connectors.qr_code.uniswap.step2.title',
+              title: 'wallet_connectors.uniswap.qr_code.step2.title',
             },
             {
               description:
-                'wallet_connectors.qr_code.uniswap.step3.description',
+                'wallet_connectors.uniswap.qr_code.step3.description',
               step: 'scan',
-              title: 'wallet_connectors.qr_code.uniswap.step3.title',
+              title: 'wallet_connectors.uniswap.qr_code.step3.title',
             },
           ],
         },

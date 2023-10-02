@@ -117,21 +117,21 @@ export const coreWallet = ({
                 steps: [
                   {
                     description:
-                      'wallet_connectors.qr_code.core.step1.description',
+                      'wallet_connectors.core.qr_code.step1.description',
                     step: 'install',
-                    title: 'wallet_connectors.qr_code.core.step1.title',
+                    title: 'wallet_connectors.core.qr_code.step1.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.core.step2.description',
+                      'wallet_connectors.core.qr_code.step2.description',
                     step: 'create',
-                    title: 'wallet_connectors.qr_code.core.step2.title',
+                    title: 'wallet_connectors.core.qr_code.step2.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.core.step3.description',
+                      'wallet_connectors.core.qr_code.step3.description',
                     step: 'scan',
-                    title: 'wallet_connectors.qr_code.core.step3.title',
+                    title: 'wallet_connectors.core.qr_code.step3.title',
                   },
                 ],
               },
@@ -143,21 +143,21 @@ export const coreWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.core.step1.description',
+                  'wallet_connectors.core.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.core.step1.title',
+                title: 'wallet_connectors.core.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.core.step2.description',
+                  'wallet_connectors.core.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.core.step2.title',
+                title: 'wallet_connectors.core.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.core.step3.description',
+                  'wallet_connectors.core.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.core.step3.title',
+                title: 'wallet_connectors.core.extension.step3.title',
               },
             ],
           },

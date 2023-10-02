@@ -67,19 +67,19 @@ export const argentWallet = ({
           learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [
             {
-              description: 'wallet_connectors.qr_code.argent.step1.description',
+              description: 'wallet_connectors.argent.qr_code.step1.description',
               step: 'install',
-              title: 'wallet_connectors.qr_code.argent.step1.title',
+              title: 'wallet_connectors.argent.qr_code.step1.title',
             },
             {
-              description: 'wallet_connectors.qr_code.argent.step2.description',
+              description: 'wallet_connectors.argent.qr_code.step2.description',
               step: 'create',
-              title: 'wallet_connectors.qr_code.argent.step2.title',
+              title: 'wallet_connectors.argent.qr_code.step2.title',
             },
             {
-              description: 'wallet_connectors.qr_code.argent.step3.description',
+              description: 'wallet_connectors.argent.qr_code.step3.description',
               step: 'scan',
-              title: 'wallet_connectors.qr_code.argent.step3.title',
+              title: 'wallet_connectors.argent.qr_code.step3.title',
             },
           ],
         },

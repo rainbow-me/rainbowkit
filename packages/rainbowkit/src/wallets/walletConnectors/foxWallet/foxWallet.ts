@@ -77,22 +77,22 @@ export const foxWallet = ({
                 steps: [
                   {
                     description:
-                      'wallet_connectors.qr_code.fox.step1.description',
+                      'wallet_connectors.fox.qr_code.step1.description',
                     step: 'install',
-                    title: 'wallet_connectors.qr_code.fox.step1.title',
+                    title: 'wallet_connectors.fox.qr_code.step1.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.fox.step2.description',
+                      'wallet_connectors.fox.qr_code.step2.description',
 
                     step: 'create',
-                    title: 'wallet_connectors.qr_code.fox.step2.title',
+                    title: 'wallet_connectors.fox.qr_code.step2.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.fox.step3.description',
+                      'wallet_connectors.fox.qr_code.step3.description',
                     step: 'scan',
-                    title: 'wallet_connectors.qr_code.fox.step3.title',
+                    title: 'wallet_connectors.fox.qr_code.step3.title',
                   },
                 ],
               },

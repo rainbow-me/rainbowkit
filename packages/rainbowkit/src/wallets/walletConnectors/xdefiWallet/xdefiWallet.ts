@@ -47,21 +47,21 @@ export const xdefiWallet = ({
           steps: [
             {
               description:
-                'wallet_connectors.extension.xdefi.step1.description',
+                'wallet_connectors.xdefi.extension.step1.description',
               step: 'install',
-              title: 'wallet_connectors.extension.xdefi.step1.title',
+              title: 'wallet_connectors.xdefi.extension.step1.title',
             },
             {
               description:
-                'wallet_connectors.extension.xdefi.step2.description',
+                'wallet_connectors.xdefi.extension.step2.description',
               step: 'create',
-              title: 'wallet_connectors.extension.xdefi.step2.title',
+              title: 'wallet_connectors.xdefi.extension.step2.title',
             },
             {
               description:
-                'wallet_connectors.extension.xdefi.step3.description',
+                'wallet_connectors.xdefi.extension.step3.description',
               step: 'refresh',
-              title: 'wallet_connectors.extension.xdefi.step3.title',
+              title: 'wallet_connectors.xdefi.extension.step3.title',
             },
           ],
         },

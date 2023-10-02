@@ -49,21 +49,21 @@ export const talismanWallet = ({
         steps: [
           {
             description:
-              'wallet_connectors.extension.talisman.step1.description',
+              'wallet_connectors.talisman.extension.step1.description',
             step: 'install',
-            title: 'wallet_connectors.extension.talisman.step1.title',
+            title: 'wallet_connectors.talisman.extension.step1.title',
           },
           {
             description:
-              'wallet_connectors.extension.talisman.step2.description',
+              'wallet_connectors.talisman.extension.step2.description',
             step: 'create',
-            title: 'wallet_connectors.extension.talisman.step2.title',
+            title: 'wallet_connectors.talisman.extension.step2.title',
           },
           {
             description:
-              'wallet_connectors.extension.talisman.step3.description',
+              'wallet_connectors.talisman.extension.step3.description',
             step: 'refresh',
-            title: 'wallet_connectors.extension.talisman.step3.title',
+            title: 'wallet_connectors.talisman.extension.step3.title',
           },
         ],
       },

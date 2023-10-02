@@ -1,10 +1,10 @@
-import { Connector } from 'wagmi';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { i18n } from '../locales';
-import { isHexString } from '../utils/colors';
-import { isMobile } from '../utils/isMobile';
-import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { Wallet, WalletInstance, WalletList } from './Wallet';
+import { Connector } from "wagmi";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { isHexString } from "../utils/colors";
+import { isMobile } from "../utils/isMobile";
+import { omitUndefinedValues } from "../utils/omitUndefinedValues";
+import { Wallet, WalletInstance, WalletList } from "./Wallet";
+
 interface WalletListItem extends Wallet {
   index: number;
   groupIndex: number;
@@ -35,7 +35,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         // guard against non-hex values for `iconAccent`
         if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
           throw new Error(
-            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
+            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
           );
         }
 
@@ -46,7 +46,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
           index,
         };
 
-        if (typeof wallet.hidden === 'function') {
+        if (typeof wallet.hidden === "function") {
           potentiallyHiddenWallets.push(walletListItem);
         } else {
           visibleWallets.push(walletListItem);
@@ -70,7 +70,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         index,
         ...walletMeta
       }) => {
-        if (typeof hidden === 'function') {
+        if (typeof hidden === "function") {
           // Run the function to check if the wallet needs to be hidden
           const isHidden = hidden({
             wallets: [
@@ -92,12 +92,12 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
 
         const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector(),
+          createConnector()
         );
 
         let walletConnectModalConnector: Connector | undefined;
         if (
-          walletMeta.id === 'walletConnect' &&
+          walletMeta.id === "walletConnect" &&
           connectionMethods.qrCode &&
           !isMobile()
         ) {
@@ -124,38 +124,6 @@ export const connectorsForWallets = (walletList: WalletList) => {
           ...connectionMethods,
         };
 
-        // Initialize i18n support for qrCode steps if exists
-        if (walletInstance.qrCode?.instructions?.steps) {
-          walletInstance.qrCode = {
-            ...walletInstance.qrCode,
-            instructions: {
-              ...walletInstance.qrCode.instructions,
-              steps: walletInstance.qrCode.instructions.steps.map((step) => ({
-                ...step,
-                title: i18n.t(step.title),
-                description: i18n.t(step.title),
-              })),
-            },
-          };
-        }
-
-        // Initialize i18n support for extension steps if exists
-        if (walletInstance.extension?.instructions?.steps) {
-          walletInstance.extension = {
-            ...walletInstance.extension,
-            instructions: {
-              ...walletInstance.extension.instructions,
-              steps: walletInstance.extension.instructions.steps.map(
-                (step) => ({
-                  ...step,
-                  title: i18n.t(step.title),
-                  description: i18n.t(step.title),
-                }),
-              ),
-            },
-          };
-        }
-
         // We maintain an array of all wallet instances
         // so they can be passed to the `hidden` function
         // used by generic fallback wallets
@@ -175,7 +143,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
 
         // Add wallet to connector's list of associated wallets
         connector._wallets.push(walletInstance);
-      },
+      }
     );
 
     return connectors;

@@ -64,19 +64,19 @@ export const omniWallet = ({
           learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
-              description: 'wallet_connectors.qr_code.omni.step1.description',
+              description: 'wallet_connectors.omni.qr_code.step1.description',
               step: 'install',
-              title: 'wallet_connectors.qr_code.omni.step1.title',
+              title: 'wallet_connectors.omni.qr_code.step1.title',
             },
             {
-              description: 'wallet_connectors.qr_code.omni.step2.description',
+              description: 'wallet_connectors.omni.qr_code.step2.description',
               step: 'create',
-              title: 'wallet_connectors.qr_code.omni.step2.title',
+              title: 'wallet_connectors.omni.qr_code.step2.title',
             },
             {
-              description: 'wallet_connectors.qr_code.omni.step3.description',
+              description: 'wallet_connectors.omni.qr_code.step3.description',
               step: 'scan',
-              title: 'wallet_connectors.qr_code.omni.step3.title',
+              title: 'wallet_connectors.omni.qr_code.step3.title',
             },
           ],
         },

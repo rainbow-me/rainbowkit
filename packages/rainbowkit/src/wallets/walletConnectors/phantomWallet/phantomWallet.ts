@@ -48,21 +48,21 @@ export const phantomWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.phantom.step1.description',
+                  'wallet_connectors.phantom.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.phantom.step1.title',
+                title: 'wallet_connectors.phantom.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.phantom.step2.description',
+                  'wallet_connectors.phantom.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.phantom.step2.title',
+                title: 'wallet_connectors.phantom.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.phantom.step3.description',
+                  'wallet_connectors.phantom.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.phantom.step3.title',
+                title: 'wallet_connectors.phantom.extension.step3.title',
               },
             ],
             learnMoreUrl: 'https://help.phantom.app',

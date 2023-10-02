@@ -34,21 +34,21 @@ export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.one_key.step1.description',
+                  'wallet_connectors.one_key.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.one_key.step1.title',
+                title: 'wallet_connectors.one_key.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.one_key.step2.description',
+                  'wallet_connectors.one_key.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.one_key.step2.title',
+                title: 'wallet_connectors.one_key.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.one_key.step3.description',
+                  'wallet_connectors.one_key.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.one_key.step3.title',
+                title: 'wallet_connectors.one_key.extension.step3.title',
               },
             ],
           },

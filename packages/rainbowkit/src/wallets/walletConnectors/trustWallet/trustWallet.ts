@@ -142,21 +142,21 @@ export const trustWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.qr_code.trust.step1.description',
+                  'wallet_connectors.trust.qr_code.step1.description',
                 step: 'install' as InstructionStepName,
-                title: 'wallet_connectors.qr_code.trust.step1.title',
+                title: 'wallet_connectors.trust.qr_code.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.qr_code.trust.step2.description',
+                  'wallet_connectors.trust.qr_code.step2.description',
                 step: 'create' as InstructionStepName,
-                title: 'wallet_connectors.qr_code.trust.step2.title',
+                title: 'wallet_connectors.trust.qr_code.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.qr_code.trust.step3.description',
+                  'wallet_connectors.trust.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'wallet_connectors.qr_code.trust.step3.title',
+                title: 'wallet_connectors.trust.qr_code.step3.title',
               },
             ],
           },
@@ -169,21 +169,21 @@ export const trustWallet = ({
           steps: [
             {
               description:
-                'wallet_connectors.extension.trust.step1.description',
+                'wallet_connectors.trust.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'wallet_connectors.extension.trust.step1.title',
+              title: 'wallet_connectors.trust.extension.step1.title',
             },
             {
               description:
-                'wallet_connectors.extension.trust.step2.description',
+                'wallet_connectors.trust.extension.step2.description',
               step: 'create' as InstructionStepName,
-              title: 'wallet_connectors.extension.trust.step2.title',
+              title: 'wallet_connectors.trust.extension.step2.title',
             },
             {
               description:
-                'wallet_connectors.extension.trust.step3.description',
+                'wallet_connectors.trust.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'wallet_connectors.extension.trust.step3.title',
+              title: 'wallet_connectors.trust.extension.step3.title',
             },
           ],
         },

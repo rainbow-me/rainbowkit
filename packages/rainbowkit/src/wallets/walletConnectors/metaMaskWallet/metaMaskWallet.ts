@@ -153,21 +153,21 @@ export const metaMaskWallet = ({
                 steps: [
                   {
                     description:
-                      'wallet_connectors.qr_code.metamask.step1.description',
+                      'wallet_connectors.metamask.qr_code.step1.description',
                     step: 'install',
-                    title: 'wallet_connectors.qr_code.metamask.step1.title',
+                    title: 'wallet_connectors.metamask.qr_code.step1.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.metamask.step2.description',
+                      'wallet_connectors.metamask.qr_code.step2.description',
                     step: 'create',
-                    title: 'wallet_connectors.qr_code.metamask.step2.title',
+                    title: 'wallet_connectors.metamask.qr_code.step2.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.metamask.step3.description',
+                      'wallet_connectors.metamask.qr_code.step3.description',
                     step: 'refresh',
-                    title: 'wallet_connectors.qr_code.metamask.step3.title',
+                    title: 'wallet_connectors.metamask.qr_code.step3.title',
                   },
                 ],
               },
@@ -179,21 +179,21 @@ export const metaMaskWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.metamask.step1.description',
+                  'wallet_connectors.metamask.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.metamask.step1.title',
+                title: 'wallet_connectors.metamask.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.metamask.step2.description',
+                  'wallet_connectors.metamask.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.metamask.step2.title',
+                title: 'wallet_connectors.metamask.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.metamask.step3.description',
+                  'wallet_connectors.metamask.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.metamask.step3.title',
+                title: 'wallet_connectors.metamask.extension.step3.title',
               },
             ],
           },

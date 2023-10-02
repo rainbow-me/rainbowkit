@@ -46,21 +46,21 @@ export const safeheronWallet = ({
         steps: [
           {
             description:
-              'wallet_connectors.extension.safeheron.step1.description',
+              'wallet_connectors.safeheron.extension.step1.description',
             step: 'install',
-            title: 'wallet_connectors.extension.safeheron.step1.title',
+            title: 'wallet_connectors.safeheron.extension.step1.title',
           },
           {
             description:
-              'wallet_connectors.extension.safeheron.step2.description',
+              'wallet_connectors.safeheron.extension.step2.description',
             step: 'create',
-            title: 'wallet_connectors.extension.safeheron.step2.title',
+            title: 'wallet_connectors.safeheron.extension.step2.title',
           },
           {
             description:
-              'wallet_connectors.extension.safeheron.step3.description',
+              'wallet_connectors.safeheron.extension.step3.description',
             step: 'refresh',
-            title: 'wallet_connectors.extension.safeheron.step3.title',
+            title: 'wallet_connectors.safeheron.extension.step3.title',
           },
         ],
       },

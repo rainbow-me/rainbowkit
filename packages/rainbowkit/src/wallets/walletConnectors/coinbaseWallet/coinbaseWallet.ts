@@ -63,21 +63,21 @@ export const coinbaseWallet = ({
                   steps: [
                     {
                       description:
-                        'wallet_connectors.qr_code.coinbase.step1.description',
+                        'wallet_connectors.coinbase.qr_code.step1.description',
                       step: 'install',
-                      title: 'wallet_connectors.qr_code.coinbase.step1.title',
+                      title: 'wallet_connectors.coinbase.qr_code.step1.title',
                     },
                     {
                       description:
-                        'wallet_connectors.qr_code.coinbase.step2.description',
+                        'wallet_connectors.coinbase.qr_code.step2.description',
                       step: 'create',
-                      title: 'wallet_connectors.qr_code.coinbase.step2.title',
+                      title: 'wallet_connectors.coinbase.qr_code.step2.title',
                     },
                     {
                       description:
-                        'wallet_connectors.qr_code.coinbase.step3.description',
+                        'wallet_connectors.coinbase.qr_code.step3.description',
                       step: 'scan',
-                      title: 'wallet_connectors.qr_code.coinbase.step3.title',
+                      title: 'wallet_connectors.coinbase.qr_code.step3.title',
                     },
                   ],
                 },
@@ -89,21 +89,21 @@ export const coinbaseWallet = ({
                   steps: [
                     {
                       description:
-                        'wallet_connectors.extension.coinbase.step1.description',
+                        'wallet_connectors.coinbase.extension.step1.description',
                       step: 'install',
-                      title: 'wallet_connectors.extension.coinbase.step1.title',
+                      title: 'wallet_connectors.coinbase.extension.step1.title',
                     },
                     {
                       description:
-                        'wallet_connectors.extension.coinbase.step2.description',
+                        'wallet_connectors.coinbase.extension.step2.description',
                       step: 'create',
-                      title: 'wallet_connectors.extension.coinbase.step2.title',
+                      title: 'wallet_connectors.coinbase.extension.step2.title',
                     },
                     {
                       description:
-                        'wallet_connectors.extension.coinbase.step3.description',
+                        'wallet_connectors.coinbase.extension.step3.description',
                       step: 'refresh',
-                      title: 'wallet_connectors.extension.coinbase.step3.title',
+                      title: 'wallet_connectors.coinbase.extension.step3.title',
                     },
                   ],
                 },

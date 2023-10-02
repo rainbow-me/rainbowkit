@@ -102,21 +102,21 @@ export const frontierWallet = ({
                 steps: [
                   {
                     description:
-                      'wallet_connectors.qr_code.im_token.step1.description',
+                      'wallet_connectors.im_token.qr_code.step1.description',
                     step: 'install',
-                    title: 'wallet_connectors.qr_code.im_token.step1.title',
+                    title: 'wallet_connectors.im_token.qr_code.step1.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.im_token.step2.description',
+                      'wallet_connectors.im_token.qr_code.step2.description',
                     step: 'create',
-                    title: 'wallet_connectors.qr_code.im_token.step2.title',
+                    title: 'wallet_connectors.im_token.qr_code.step2.title',
                   },
                   {
                     description:
-                      'wallet_connectors.qr_code.im_token.step3.description',
+                      'wallet_connectors.im_token.qr_code.step3.description',
                     step: 'scan',
-                    title: 'wallet_connectors.qr_code.im_token.step3.title',
+                    title: 'wallet_connectors.im_token.qr_code.step3.title',
                   },
                 ],
               },
@@ -129,21 +129,21 @@ export const frontierWallet = ({
             steps: [
               {
                 description:
-                  'wallet_connectors.extension.frontier.step1.description',
+                  'wallet_connectors.frontier.extension.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.extension.frontier.step1.title',
+                title: 'wallet_connectors.frontier.extension.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.frontier.step2.description',
+                  'wallet_connectors.frontier.extension.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.extension.frontier.step2.title',
+                title: 'wallet_connectors.frontier.extension.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.extension.frontier.step3.description',
+                  'wallet_connectors.frontier.extension.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.extension.frontier.step3.title',
+                title: 'wallet_connectors.frontier.extension.step3.title',
               },
             ],
           },
