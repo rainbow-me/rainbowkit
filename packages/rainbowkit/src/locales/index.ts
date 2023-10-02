@@ -10,33 +10,32 @@ import ru_RU from './ru_RU.json';
 import tr_TR from './tr_TR.json';
 import zh_CN from './zh_CN.json';
 
-export enum Locale {
-  EN_US = 'en_US',
-  ES_419 = 'es_419',
-  FR_FR = 'fr_FR',
-  JA_JP = 'ja_JP',
-  PT_BR = 'pt_BR',
-  ZH_CN = 'zh_CN',
-  ID_ID = 'id_ID',
-  HI_IN = 'hi_IN',
-  TR_TR = 'tr_TR',
-  RU_RU = 'ru_RU',
-}
+export type Locale =
+  | 'en-US'
+  | 'es-419'
+  | 'fr-FR'
+  | 'ja-JP'
+  | 'pt-BR'
+  | 'zh-CN'
+  | 'id-ID'
+  | 'hi-IN'
+  | 'tr-TR'
+  | 'ru-RU';
 
 export const i18n = new I18n({
-  en_US,
-  es_419,
-  fr_FR,
-  hi_IN,
-  id_ID,
-  ja_JP,
-  pt_BR,
-  ru_RU,
-  tr_TR,
-  zh_CN,
+  ['en-US']: en_US,
+  ['es-419']: es_419,
+  ['fr-FR']: fr_FR,
+  ['hi_IN']: hi_IN,
+  ['id-ID']: id_ID,
+  ['ja-JP']: ja_JP,
+  ['pt-BR']: pt_BR,
+  ['ru-RU']: ru_RU,
+  ['tr-TR']: tr_TR,
+  ['zh-CN']: zh_CN,
 });
 
 // Configure languages
-i18n.defaultLocale = Locale.EN_US;
-i18n.locale = Locale.EN_US;
+i18n.defaultLocale = 'en-US';
+i18n.locale = 'en-US';
 i18n.enableFallback = true;

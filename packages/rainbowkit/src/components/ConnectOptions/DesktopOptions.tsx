@@ -68,6 +68,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
 
+  const supportedI18nGroupNames = [
+    'Recommended',
+    'Other',
+    'Popular',
+    'More',
+    'Others',
+  ];
+
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
     if (wallet.ready) {
@@ -361,7 +369,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                           size="14"
                           weight="bold"
                         >
-                          {groupName}
+                          {supportedI18nGroupNames.includes(groupName)
+                            ? i18n.t(
+                                `intro.group_name.${groupName.toLowerCase()}`,
+                              )
+                            : groupName}
                         </Text>
                       </Box>
                     ) : null}

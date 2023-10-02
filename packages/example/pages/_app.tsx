@@ -4,7 +4,6 @@ import './global.css';
 import {
   AvatarComponent,
   DisclaimerComponent,
-  Locale,
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
@@ -73,7 +72,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
 import {
   getDetectedBrowserLocale,
-  getSupportedLocaleFromBrowser,
+  isBrowserLocaleSupported,
 } from '../utils/locale';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
@@ -213,6 +212,22 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
+// Used to detect whether browser language supports any of these languages
+export const locales = [
+  'en-US',
+  'es-419',
+  'fr-FR',
+  'ja-JP',
+  'pt-BR',
+  'zh-CN',
+  'id-ID',
+  'hi-IN',
+  'tr-TR',
+  'ru-RU',
+] as const;
+
+export type Locale = typeof locales[number];
+
 function RainbowKitApp({
   Component,
   pageProps,
@@ -233,7 +248,7 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-  const [locale, setLocale] = useState(Locale.EN_US);
+  const [locale, setLocale] = useState<Locale>('en-US');
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -253,10 +268,16 @@ function RainbowKitApp({
       : currentTheme.accentColors[selectedAccentColor];
 
   const [isMounted, setIsMounted] = useState(false);
+
+  const refreshConnectors = () => {
+    wagmiConfig.setConnectors(connectors);
+  };
+
   useEffect(() => setIsMounted(true), []);
+
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
-    wagmiConfig.setConnectors(connectors);
+    refreshConnectors();
   }, [locale]);
 
   const appContextProps: AppContextProps = { authEnabled };
@@ -264,15 +285,17 @@ function RainbowKitApp({
   const locales = router.locales!;
 
   const getUserDetectedBrowserLocale = () => {
-    // Start off with en_US locale
-    let locale = Locale.EN_US;
+    // Start off with en-US locale
+    let locale = 'en-US';
 
     const detectedBrowserLocale = getDetectedBrowserLocale();
 
     // If browser locale detected then see if we support the browser's locale
     if (detectedBrowserLocale) {
-      // Defaults to en_US locale if no locale from browser found
-      locale = getSupportedLocaleFromBrowser(detectedBrowserLocale);
+      const isSupported = isBrowserLocaleSupported(detectedBrowserLocale);
+      if (isSupported) {
+        locale = detectedBrowserLocale;
+      }
     }
 
     return locale;
@@ -280,8 +303,8 @@ function RainbowKitApp({
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
-    const userBrowserDetectedLocale = getUserDetectedBrowserLocale();
-    setLocale(userBrowserDetectedLocale);
+    const browserDetectedLocale = getUserDetectedBrowserLocale();
+    setLocale(browserDetectedLocale as Locale);
   }, []);
 
   // Note: Non-RainbowKit providers are wrapped around this component
@@ -299,7 +322,7 @@ function RainbowKitApp({
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
-        locale={locale}
+        locale={locale as Locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
