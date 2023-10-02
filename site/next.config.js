@@ -8,6 +8,22 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  i18n: {
+    locales: [
+      'en-US',
+      'es-419',
+      'fr',
+      'hi',
+      'id',
+      'ja',
+      'pt-BR',
+      'ru',
+      'tr',
+      'zh-CN',
+    ],
+    defaultLocale: 'en-US',
+    localeDetection: true,
+  },
   async redirects() {
     return [
       {

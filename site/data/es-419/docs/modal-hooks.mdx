@@ -1,0 +1,64 @@
+---
+title: Modal Hooks
+description: Programmatically open modals via Hooks
+---
+
+# Modal Hooks
+
+## Programmatically open modals via Hooks
+
+The following Hooks are provided to allow the programmatic opening of modals anywhere in your application.
+
+- `useConnectModal`
+- `useAccountModal`
+- `useChainModal`
+
+Each of these Hooks returns an object with a function for opening its respective modal. Note that the returned functions will be undefined if your application is not in the required state for the modal to be open.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Each hook also returns a boolean for the status of the modal. It is typically recommended that you rely purely on Wagmi hooks (i.e. `useAccount`) to react to a user's wallet connection status directly, rather than relying on the state of the Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+
+dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.

@@ -1,0 +1,167 @@
+---
+title: Custom theme
+description: Creating a custom theme
+---
+
+# Custom theme
+
+## Creating a custom theme
+
+> Note: This API is unstable and likely to change
+> in the near future. We recommend sticking with the [built-in themes](/docs/theming) for
+> now.
+
+While the built-in themes provide some level of customization, the `Theme` type is provided to help you define your own custom themes with lower-level access to the underlying theme variables.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Extending a built-in theme
+
+You can extend a built-in theme without having to re-define the entire theme. This is useful when you only want to override specific theme tokens.
+
+To do that, install `lodash.merge` (or equivalent):
+
+```bash
+npm install lodash.merge
+```
+
+Import it, along with the theme you want to extend (eg: `darkTheme`) and the TypeScript `Theme` type:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+Then, merge the built-in theme, with the theme tokens you'd like to override. In this example, I'm overriding the `accentColor` token to match my brand's accent color.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+Finally, you can now pass your custom theme to `RainbowKitProvider`'s `theme` prop.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Creating custom theme selectors
+
+If your app is server/statically rendered and allows users to manually toggle between themes, RainbowKit's theming system can be hooked up to custom CSS selectors with the following functions that can be used with any CSS-in-JS system:
+
+- `cssStringFromTheme`
+- `cssObjectFromTheme`
+
+These functions return CSS that sets all required theme variables. Since both strings and objects are supported, this can be integrated with any CSS-in-JS system.
+
+As a basic example, you can render your own `style` element with custom selectors for each theme. Since we're taking control of rendering the theme's CSS, we're passing `null` to the `theme` prop so that RainbowKitProvider doesn't render any styles for us. Also note the use of the extends option on the cssStringFromTheme function which omits any theme variables that are the same as the base theme.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

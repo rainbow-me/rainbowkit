@@ -1,0 +1,102 @@
+---
+title: Upgrading your dApp to WalletConnect v2
+description: RainbowKit has migrated to v2, and you can prepare your dApp in 5 minutes or less
+image: guide-walletconnect-v2.png
+---
+
+# Migrating to WalletConnect v2
+
+## Prepare your dApp for the v2 upgrade in 5 minutes or less
+
+The WalletConnect v1 protocol will be shut down on June 28, 2023, and RainbowKit has your back to make the transition super simple.
+
+Support for WalletConnect v2 is now standard in RainbowKit, without breaking changes. Just upgrade and reference the guide below for additional details.
+
+#### Understanding WalletConnect v2
+
+WalletConnect is the protocol that allows users to connect their mobile wallets to your dApp, and it's an important foundation of RainbowKit. The recent release of WalletConnect v2 brings a number of important upgrades to make the wallet-dApp experience even better.
+
+With v2, your users can now simultaneously connect to multiple chains, so you can forget about the chain switching handshake. It also broadens support for more networks, and brings improvements that make Sign-in with Ethereum even faster.
+
+#### Upgrading your dApp
+
+If you've already followed the migration guides for RainbowKit `0.12.x` and `1.0.x`, then you're almost there! Just upgrade to the latest patch release and give it a try.
+
+RainbowKit enabled WalletConnect v2 by default with `0.12.15` and `1.0.2`. We are continuing support for `0.12.x` in case your dApp has not yet upgraded to wagmi v1 and RainbowKit v1.
+
+**1. Upgrading dependencies**
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+If you're using a version of RainbowKit before `0.12.x` or `1.0.x`, just follow the [Migration Guides](/docs/migration-guide) to get up-to-date.
+
+It is recommended that `0.12.x` dApps begin to upgrade to wagmi v1, as stability improvements for WalletConnect v2 will only be included in future versions of wagmi.
+
+**2. Supplying a projectId**
+
+Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
+
+Supply your `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKit is type-safe and will warn you when a `projectId` is missing. Refer to our examples to see v2 in action:
+
+- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+#### Advanced customization
+
+If your dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, RainbowKit's default WalletConnect version can be overriden for each wallet independently.
+
+```ts
+metaMaskWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+});
+```
+
+Once the WalletConnect v1 servers are shutdown on June 28th, a [custom bridge server](https://docs.walletconnect.com/1.0/bridge-server) is required to continue using the v1 protocol. Reference the following examples:
+
+```ts
+walletConnectWallet(options: {
+  chains: Chain[];
+  version: '1',
+  options: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+
+customWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+  walletConnectOptions: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+```
+
+Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
