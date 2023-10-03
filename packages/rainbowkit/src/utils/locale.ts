@@ -1,4 +1,4 @@
-import { Locale, locales } from '../pages/_app';
+import { Locale } from '../locales';
 
 // Detect user locale from browser
 export const getDetectedBrowserLocale = () => {
@@ -12,6 +12,19 @@ export const getDetectedBrowserLocale = () => {
     }
   }
 };
+
+export const locales = [
+  'en-US',
+  'es-419',
+  'fr-FR',
+  'ja-JP',
+  'pt-BR',
+  'zh-CN',
+  'id-ID',
+  'hi-IN',
+  'tr-TR',
+  'ru-RU',
+];
 
 // We will get locale from browser and return the locale which we support
 export const isBrowserLocaleSupported = (locale: string) => {

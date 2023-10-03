@@ -70,10 +70,6 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
-import {
-  getDetectedBrowserLocale,
-  isBrowserLocaleSupported,
-} from '../utils/locale';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
@@ -275,29 +271,6 @@ function RainbowKitApp({
 
   const locales = router.locales!;
 
-  const getUserDetectedBrowserLocale = () => {
-    // Start off with en-US locale
-    let locale = 'en-US';
-
-    const detectedBrowserLocale = getDetectedBrowserLocale();
-
-    // If browser locale detected then see if we support the browser's locale
-    if (detectedBrowserLocale) {
-      const isSupported = isBrowserLocaleSupported(detectedBrowserLocale);
-      if (isSupported) {
-        locale = detectedBrowserLocale;
-      }
-    }
-
-    return locale;
-  };
-
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
-  useEffect(() => {
-    const browserDetectedLocale = getUserDetectedBrowserLocale();
-    setLocale(browserDetectedLocale as Locale);
-  }, []);
-
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
@@ -346,7 +319,7 @@ function RainbowKitApp({
                   <tbody>
                     <tr>
                       <td>
-                        <label style={{ userSelect: 'none' }}>language</label>
+                        <label style={{ userSelect: 'none' }}>locale</label>
                       </td>
                       <td>
                         <select
