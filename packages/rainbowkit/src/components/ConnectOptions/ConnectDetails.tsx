@@ -703,7 +703,7 @@ export function DownloadDetail({
       </Box>
       <Box display="flex" flex="1">
         {downloadUrls?.qrCode ? (
-          <QRCode logoSize={0} size={268} uri={downloadUrls.qrCode} />
+          <QRCode logoSize={0} size={260} uri={downloadUrls.qrCode} />
         ) : null}
       </Box>
 
