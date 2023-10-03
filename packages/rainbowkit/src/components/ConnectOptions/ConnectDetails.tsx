@@ -115,18 +115,18 @@ export function GetDetail({
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
-                        ? i18n.t('access.extension')
+                        ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileCompanionApp
-                        ? i18n.t('access.app')
+                        ? i18n.t('get.mobile.description')
                         : hasExtension
-                        ? i18n.t('access.browser_extension')
+                        ? i18n.t('get.extension.description')
                         : null}
                     </Text>
                   </Box>
                 </Box>
                 <Box display="flex" flexDirection="column" gap="4">
                   <ActionButton
-                    label="GET"
+                    label={i18n.t('get.action.label')}
                     onClick={() => getWalletDownload(id)}
                     type="secondary"
                   />
@@ -147,10 +147,10 @@ export function GetDetail({
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          {i18n.t('helper_text.not_what_looking_for')}
+          {i18n.t('get.looking_for.title')}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
-          {i18n.t('helper_text.select_wallet_main_screen')}
+          {i18n.t('get.looking_for.description')}
         </Text>
       </Box>
     </Box>
@@ -200,10 +200,10 @@ export function ConnectDetail({
     href?: string;
   } | null = showWalletConnectModal
     ? {
-        description: i18n.t('started.wallet_connect', {
-          modifier: !compactModeEnabled ? i18n.t('helper_text.official') : '',
-        }),
-        label: i18n.t('indicators.open'),
+        description: !compactModeEnabled
+          ? i18n.t('connect.walletconnect.description.full')
+          : i18n.t('connect.walletconnect.description.compact'),
+        label: i18n.t('connect.walletconnect.open.label'),
         onClick: () => {
           onClose();
           showWalletConnectModal();
@@ -211,10 +211,10 @@ export function ConnectDetail({
       }
     : hasQrCode
     ? {
-        description: i18n.t('helper_text.not_found', {
-          name,
+        description: i18n.t('connect.secondary_action.get.description', {
+          wallet: name,
         }),
-        label: i18n.t('indicators.get'),
+        label: i18n.t('connect.secondary_action.get.label'),
         onClick: () =>
           changeWalletStep(
             hasQrCodeAndExtension
@@ -281,22 +281,22 @@ export function ConnectDetail({
             >
               <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? `${i18n.t('indicators.loading', {
-                      name,
-                    })} ...`
-                  : hasExtension
-                  ? i18n.t('indicators.not_installed', {
-                      name,
+                  ? i18n.t('connect.status.opening', {
+                      wallet: name,
                     })
-                  : i18n.t('indicators.not_available', {
-                      name,
+                  : hasExtension
+                  ? i18n.t('connect.status.not_installed', {
+                      wallet: name,
+                    })
+                  : i18n.t('connect.status.not_available', {
+                      wallet: name,
                     })}
               </Text>
               {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
                     href={wallet.extensionDownloadUrl}
-                    label={i18n.t('indicators.install')}
+                    label={i18n.t('connect.secondary_action.install.label')}
                     type="secondary"
                   />
                 </Box>
@@ -315,7 +315,7 @@ export function ConnectDetail({
                       textAlign="center"
                       weight="medium"
                     >
-                      {i18n.t('indicators.confirm')}
+                      {i18n.t('connect.status.confirm')}
                     </Text>
                   </Box>
                   <Box
@@ -328,7 +328,7 @@ export function ConnectDetail({
                   >
                     {connectionError ? (
                       <ActionButton
-                        label={i18n.t('indicators.retry')}
+                        label={i18n.t('connect.secondary_action.retry.label')}
                         onClick={
                           getDesktopDeepLink
                             ? async () => {
@@ -619,10 +619,10 @@ export function DownloadOptionsDetail({
       >
         {extensionDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={`${i18n.t('started.add_browser', {
+            actionLabel={i18n.t('get_options.extension.download.label', {
               browser,
-            })}`}
-            description={i18n.t('access.browser')}
+            })}
+            description={i18n.t('get_options.extension.description')}
             iconUrl={getBrowserSrc}
             isCompact={isCompact}
             onAction={() =>
@@ -632,8 +632,8 @@ export function DownloadOptionsDetail({
                   : WalletStep.Connect,
               )
             }
-            title={i18n.t('started.extension', {
-              name: wallet.name,
+            title={i18n.t('get_options.extension.title', {
+              wallet: wallet.name,
               browser,
             })}
             url={extensionDownloadUrl}
@@ -642,8 +642,10 @@ export function DownloadOptionsDetail({
         )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={i18n.t('started.app_title')}
-            description={i18n.t('access.mobile')}
+            actionLabel={i18n.t('get_options.mobile.download.label', {
+              wallet: wallet.name,
+            })}
+            description={i18n.t('get_options.mobile.description')}
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
             iconUrl={wallet.iconUrl}
@@ -651,9 +653,7 @@ export function DownloadOptionsDetail({
             onAction={() => {
               changeWalletStep(WalletStep.Download);
             }}
-            title={i18n.t('started.mobile', {
-              name: wallet.name,
-            })}
+            title={i18n.t('get_options.mobile.title', { wallet: wallet.name })}
             variant="app"
           />
         )}
@@ -688,9 +688,9 @@ export function DownloadDetail({
       height="full"
       width="full"
     >
-      <Box style={{ textAlign: 'center' }}>
+      <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          {i18n.t('scan.mobile')}
+          {i18n.t('get_mobile.description')}
         </Text>
       </Box>
       <Box height="full">
@@ -711,7 +711,7 @@ export function DownloadDetail({
         paddingY="8"
       >
         <ActionButton
-          label={i18n.t('indicators.continue')}
+          label={i18n.t('get_mobile.continue.label')}
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions
@@ -810,7 +810,7 @@ export function InstructionMobileDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t('connect.label')}
+          label={i18n.t('get_instructions.mobile.connect.label')}
           onClick={() => connectWallet(wallet)}
         />
         <Box
@@ -826,7 +826,7 @@ export function InstructionMobileDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t('learn_more.title')}
+            {i18n.t('get_instructions.mobile.learn_more.label')}
           </Text>
         </Box>
       </Box>
@@ -898,7 +898,7 @@ export function InstructionExtensionDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t('intro.wallet.refresh.label')}
+          label={i18n.t('get_instructions.extension.refresh.label')}
           onClick={window.location.reload.bind(window.location)}
         />
         <Box
@@ -914,7 +914,7 @@ export function InstructionExtensionDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t('learn_more.title')}
+            {i18n.t('get_instructions.extension.learn_more.label')}
           </Text>
         </Box>
       </Box>

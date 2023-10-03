@@ -140,14 +140,14 @@ export function ProfileDetails({
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
               label={
                 copiedAddress
-                  ? i18n.t('copy_address.copied')
-                  : i18n.t('copy_address.title')
+                  ? i18n.t('profile.copy_address.copied')
+                  : i18n.t('profile.copy_address.label')
               }
             />
             <ProfileDetailsAction
               action={onDisconnect}
               icon={<DisconnectIcon />}
-              label={i18n.t('disconnect.title')}
+              label={i18n.t('profile.disconnect.label')}
               testId="disconnect-button"
             />
           </Box>

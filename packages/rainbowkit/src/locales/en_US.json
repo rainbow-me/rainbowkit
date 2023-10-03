@@ -1,6 +1,11 @@
 {
+  "connect_wallet": {
+    "label": "Connect Wallet"
+  },
+
   "intro": {
     "title": "What is a Wallet?",
+    "description": "A wallet is used to send, receive, store, and display digital assets. It's also a new way to log in, without needing to create new accounts and passwords on every website.",
     "digital_asset": {
       "title": "A Home for your Digital Assets",
       "description": "Wallets are used to send, receive, store, and display digital assets like Ethereum and NFTs."
@@ -8,37 +13,63 @@
     "login": {
       "title": "A New Way to Log In",
       "description": "Instead of creating new accounts and passwords on every website, just connect your wallet."
-    }
-  },
-
-  "what_is_wallet": {
-    "description": "A wallet is used to send, receive, store, and display digital assets. It's also a new way to log in, without needing to create new accounts and passwords on every website.",
-
-    "refresh": {
-      "label": "Refresh"
+    },
+    "get": {
+      "label": "Get a Wallet"
+    },
+    "learn_more": {
+      "label": "Learn more"
     }
   },
 
   "connect": {
     "label": "Connect",
     "title": "Connect a Wallet",
-    "connect_wallet": "Connect Wallet"
+    "new_to_ethereum": {
+      "description": "New to Ethereum wallets?",
+      "learn_more": {
+        "label": "Learn more"
+      }
+    },
+    "learn_more": {
+      "label": "Learn more"
+    },
+    "recent": "Recent",
+    "status": {
+      "opening": "Opening %{wallet}...",
+      "not_installed": "%{wallet} is not installed",
+      "not_available": "%{wallet} is not available",
+      "confirm": "Confirm connection in the extension"
+    },
+    "secondary_action": {
+      "get": {
+        "description": "Don\u2019t have %{wallet}?",
+        "label": "GET"
+      },
+      "install": {
+        "label": "INSTALL"
+      },
+      "retry": {
+        "label": "RETRY"
+      }
+    },
+    "walletconnect": {
+      "description": {
+        "full": "Need the official WalletConnect modal?",
+        "compact": "Need the WalletConnect modal?"
+      },
+      "open": {
+        "label": "OPEN"
+      }
+    }
   },
 
-  "network": {
-    "switch": "Switch Networks"
+  "connect_scan": {
+    "title": "Scan with %{wallet}",
+    "fallback_title": "Scan with your phone"
   },
 
-  "copy_address": {
-    "title": "Copy Address",
-    "copied": "Copied!"
-  },
-
-  "disconnect": {
-    "title": "Disconnect"
-  },
-
-  "group_name": {
+  "connector_group": {
     "recommended": "Recommended",
     "other": "Other",
     "popular": "Popular",
@@ -46,69 +77,100 @@
     "others": "Others"
   },
 
-  "access": {
-    "browser": "Access your wallet right from your favorite web browser.",
-    "mobile": "Use the mobile wallet to explore the world of Ethereum.",
-    "extension": "Mobile Wallet and Extension",
-    "app": "Mobile Wallet",
-    "browser_extension": "Browser Extension"
-  },
-
-  "scan": {
-    "title": "Scan with %{name}",
-    "wallet_connect_phone": "your phone",
-    "mobile": "Scan with your phone to download on iOS or Android"
-  },
-
   "get": {
-    "get": "Get %{name}",
-    "get_started_with": "Get started with %{name}"
+    "title": "Get a Wallet",
+    "action": {
+      "label": "GET"
+    },
+    "mobile": {
+      "description": "Mobile Wallet"
+    },
+    "extension": {
+      "description": "Browser Extension"
+    },
+    "mobile_and_extension": {
+      "description": "Mobile Wallet and Extension"
+    },
+    "looking_for": {
+      "title": "Not what you're looking for?",
+      "description": "Select a wallet on the main screen to get started with a different wallet provider."
+    }
   },
 
-  "started": {
-    "extension": "%{name} for %{browser}",
-    "mobile": "%{name} for Mobile",
-    "add_browser": "Add to %{browser}",
-    "app_title": "Get the app",
-    "wallet_connect": "Need the %{modifier} WalletConnect modal?"
+  "get_options": {
+    "title": "Get started with %{wallet}",
+    "mobile": {
+      "title": "%{wallet} for Mobile",
+      "description": "Use the mobile wallet to explore the world of Ethereum.",
+      "download": {
+        "label": "Get the app"
+      }
+    },
+    "extension": {
+      "title": "%{wallet} for %{browser}",
+      "description": "Access your wallet right from your favorite web browser.",
+      "download": {
+        "label": "Add to %{browser}"
+      }
+    }
   },
 
-  "install": {
-    "title": "Install %{name}"
+  "get_mobile": {
+    "title": "Install %{wallet}",
+    "description": "Scan with your phone to download on iOS or Android",
+    "continue": {
+      "label": "Continue"
+    }
   },
 
-  "helper_text": {
-    "not_what_looking_for": "Not what you're looking for?",
-    "select_wallet_main_screen": "Select a wallet on the main screen to get started with a different wallet provider.",
-    "not_found": "Don\u2019t have %{name} ?",
-    "official": "official",
-    "transactions": "transactions will appear here",
-    "explorer": "View more on explorer"
+  "get_instructions": {
+    "mobile": {
+      "connect": {
+        "label": "Connect"
+      },
+      "learn_more": {
+        "label": "Learn more"
+      }
+    },
+    "extension": {
+      "refresh": {
+        "label": "Refresh"
+      },
+      "learn_more": {
+        "label": "Learn more"
+      }
+    }
   },
 
-  "learn_more": {
-    "title": "Learn more"
+  "chains": {
+    "title": "Switch Networks",
+    "wrong_network": "Wrong network detected, switch or disconnect to continue.",
+    "confirm": "Confirm in Wallet",
+    "switching_not_supported": "Your wallet does not support switching networks from %{appName}. Try switching networks from within your wallet instead.",
+    "disconnect": "Disconnect",
+    "connected": "Connected"
   },
 
-  "get_wallet": {
-    "title": "Get a Wallet"
-  },
-
-  "indicators": {
-    "loading": "Opening %{name}",
-    "not_installed": "%{name} is not installed",
-    "not_available": "%{name} is not available",
-    "confirm": "Confirm connection in the extension",
-    "retry": "RETRY",
-    "continue": "Continue",
-    "install": "INSTALL",
-    "recent": "Recent",
-    "get": "GET",
-    "open": "OPEN"
-  },
-
-  "guides": {
-    "ethereum": "New to Ethereum wallets?"
+  "profile": {
+    "disconnect": {
+      "label": "Disconnect"
+    },
+    "copy_address": {
+      "label": "Copy Address",
+      "copied": "Copied!"
+    },
+    "explorer": {
+      "label": "View more on explorer"
+    },
+    "transactions": {
+      "description": "%{appName} transactions will appear here...",
+      "recent": {
+        "title": "Recent Transactions"
+      },
+      "clear": {
+        "label": "Clear All"
+      }
+    }
   },
 
   "wallet_connectors": {

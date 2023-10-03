@@ -53,7 +53,7 @@ export function TxList({ address }: TxListProps) {
                 size={mobile ? '16' : '14'}
                 weight="semibold"
               >
-                Recent Transactions
+                {i18n.t('profile.transactions.recent.title')}
               </Text>
               <Box
                 style={{
@@ -81,7 +81,7 @@ export function TxList({ address }: TxListProps) {
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    Clear All
+                    {i18n.t('profile.transactions.clear.label')}
                   </Text>
                 </Box>
               </Box>
@@ -99,7 +99,9 @@ export function TxList({ address }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  {appName ?? 'Your'} {i18n.t('helper_text.transactions')}...
+                  {i18n.t('profile.transactions.description', {
+                    appName: appName ?? 'this app',
+                  })}
                 </Text>
               </Box>
               {mobile && (
@@ -142,7 +144,7 @@ export function TxList({ address }: TxListProps) {
               size={mobile ? '16' : '14'}
               weight={mobile ? 'semibold' : 'bold'}
             >
-              {i18n.t('helper_text.explorer')}
+              {i18n.t('profile.explorer.label')}
             </Text>
             <ExternalLinkIcon />
           </Box>

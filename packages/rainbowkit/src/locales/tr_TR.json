@@ -1,6 +1,10 @@
 {
+  "connect_wallet": {
+    "label": "Cüzdanı Bağla"
+  },
   "intro": {
     "title": "Cüzdan nedir?",
+    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
     "digital_asset": {
       "title": "Dijital Varlıklarınız İçin Bir Ev",
       "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
@@ -9,593 +13,725 @@
       "title": "Yeni Bir Giriş Yolu",
       "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
     },
-    "ethereum": {
-      "title": "Ethereum cüzdanlarına mı yeni geldiniz?"
-    },
-    "install": {
-      "label": "KURULUM"
-    },
-    "group_name": {
-      "recommended": "Tavsiye Edilen",
-      "other": "Diğer",
-      "popular": "Popüler",
-      "more": "Daha Fazla",
-      "others": "Diğerleri"
-    },
-    "wallet": {
-      "recent": "Son",
-      "indicators": {
-        "opening": "Açılıyor %{name}",
-        "not_installed": "%{name} yüklü değil",
-        "not_available": "%{name} kullanılabilir değil",
-        "confirm": "Uzantıda bağlantıyı onaylayın",
-        "retry": "TEKRAR DENE"
-      },
-      "scan": {
-        "title": "Tarama yapın %{name}kullanarak",
-        "phone": "telefonunuz",
-        "mobile": "iOS veya Android'de indirmek için telefonunuzla tarayın",
-        "install": "Yükleyin %{name}",
-        "wallet": "Cüzdan",
-        "continue": "Devam et",
-        "get_started_with": "Başlayın %{name}ile",
-        "get": "Alın %{name}"
-      },
-      "get_started": {
-        "for_mobile": "Mobil için",
-        "add_to": "Ekle",
-        "get_app": "Uygulamayı alın",
-        "access_browser": "En sevdiğiniz web tarayıcısından doğrudan cüzdanınıza erişin.",
-        "access_mobile": "Ethereum dünyasını keşfetmek için mobil cüzdanı kullanın.",
-        "for": "için",
-        "title": "AL",
-        "open": "AÇ",
-        "not_found": "Yok mu %{name}",
-        "need": "Gereken",
-        "official": "resmi",
-        "wallet_connect": "WalletConnect modal?"
-      },
-      "title": "Bir Cüzdan Edinin",
-      "wallet_extension": "Mobil Cüzdan ve Eklenti",
-      "companion_app": "Mobil Cüzdan",
-      "browser_extension": "Tarayıcı Eklentisi",
-      "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Bu aynı zamanda yeni bir oturum açma yoludur, her web sitesinde yeni hesaplar ve parolalar oluşturmaya gerek kalmadan.",
-      "connect": {
-        "label": "Bağlan",
-        "title": "Cüzdanı Bağla"
-      },
-      "refresh": {
-        "label": "Yenile"
-      }
-    },
-    "not_found": {
-      "title": "Aradığınız bu değil mi?",
-      "description": "Farklı bir cüzdan sağlayıcısıyla başlamak için ana ekranda bir cüzdan seçin."
+    "get": {
+      "label": "Bir Cüzdan Edinin"
     },
     "learn_more": {
       "label": "Daha fazla bilgi edinin"
     }
   },
+  "connect": {
+    "label": "Bağlan",
+    "title": "Bir Cüzdanı Bağla",
+    "new_to_ethereum": {
+      "description": "Ethereum cüzdanlarına yeni misiniz?",
+      "learn_more": {
+        "label": "Daha fazla bilgi edinin"
+      }
+    },
+    "learn_more": {
+      "label": "Daha fazla bilgi edinin"
+    },
+    "recent": "Son",
+    "status": {
+      "opening": "%{wallet}açılıyor...",
+      "not_installed": "%{wallet} yüklü değil",
+      "not_available": "%{wallet} kullanılabilir değil",
+      "confirm": "Bağlantıyı eklentide onaylayın"
+    },
+    "secondary_action": {
+      "get": {
+        "description": "%{wallet}'nız yok mu?",
+        "label": "AL"
+      },
+      "install": {
+        "label": "YÜKLE"
+      },
+      "retry": {
+        "label": "YENİDEN DENE"
+      }
+    },
+    "walletconnect": {
+      "description": {
+        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
+        "compact": "WalletConnect modalına mı ihtiyacınız var?"
+      },
+      "open": {
+        "label": "AÇ"
+      }
+    }
+  },
+  "connect_scan": {
+    "title": "%{wallet}ile tarama yapın",
+    "fallback_title": "Telefonunuzla tarama yapın"
+  },
+  "connector_group": {
+    "recommended": "Tavsiye Edilen",
+    "other": "Diğer",
+    "popular": "Popüler",
+    "more": "Daha Fazla",
+    "others": "Diğerleri"
+  },
+  "get": {
+    "title": "Bir Cüzdan Edinin",
+    "action": {
+      "label": "AL"
+    },
+    "mobile": {
+      "description": "Mobil Cüzdan"
+    },
+    "extension": {
+      "description": "Tarayıcı Eklentisi"
+    },
+    "mobile_and_extension": {
+      "description": "Mobil Cüzdan ve Eklenti"
+    },
+    "looking_for": {
+      "title": "Aradığınız şey bu değil mi?",
+      "description": "Ana ekranda bir cüzdan seçerek farklı bir cüzdan sağlayıcısıyla başlayın."
+    }
+  },
+  "get_options": {
+    "title": "%{wallet}ile başlayın",
+    "mobile": {
+      "title": "%{wallet} Mobil İçin",
+      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
+      "download": {
+        "label": "Uygulamayı alın"
+      }
+    },
+    "extension": {
+      "title": "%{wallet} için %{browser}",
+      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
+      "download": {
+        "label": "%{browser}'e ekle"
+      }
+    }
+  },
+  "get_mobile": {
+    "title": "%{wallet}'i yükleyin",
+    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+    "continue": {
+      "label": "Devam et"
+    }
+  },
+  "get_instructions": {
+    "mobile": {
+      "connect": {
+        "label": "Bağlan"
+      },
+      "learn_more": {
+        "label": "Daha fazla bilgi edinin"
+      }
+    },
+    "extension": {
+      "refresh": {
+        "label": "Yenile"
+      },
+      "learn_more": {
+        "label": "Daha fazla öğrenin"
+      }
+    }
+  },
+  "chains": {
+    "title": "Ağları Değiştir",
+    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
+    "confirm": "Cüzdanında Onayla",
+    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
+    "disconnect": "Bağlantıyı Kes",
+    "connected": "Bağlı"
+  },
+  "profile": {
+    "disconnect": {
+      "label": "Bağlantıyı Kes"
+    },
+    "copy_address": {
+      "label": "Adresi Kopyala",
+      "copied": "Kopyalandı!"
+    },
+    "explorer": {
+      "label": "Explorer üzerinde daha fazlasını görün"
+    },
+    "transactions": {
+      "description": "%{appName} işlem burada görünecek...",
+      "recent": {
+        "title": "Son İşlemler"
+      },
+      "clear": {
+        "label": "Hepsini Temizle"
+      }
+    }
+  },
   "wallet_connectors": {
-    "qr_code": {
-      "argent": {
+    "argent": {
+      "qr_code": {
         "step1": {
           "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
           "title": "Argent uygulamasını açın"
         },
         "step2": {
           "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluşturun veya İçe Aktarın"
-        },
-        "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi görünecektir.",
-          "title": "Scan QR düğmesine dokunun"
-        }
-      },
-      "bifrost": {
-        "step1": {
-          "description": "Bifrost Wallet'ı anasayfanıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "Bifrost Wallet uygulamasını açın"
-        },
-        "step2": {
-          "description": "Kurtarma ifadenizi kullanarak bir cüzdan oluşturun veya içe aktarın.",
-          "title": "Cüzdan Oluşturun veya İçe Aktarın"
-        },
-        "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
-        }
-      },
-      "bitkeep": {
-        "step1": {
-          "description": "BitKeep'i anasayfanıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "BitKeep uygulamasını açın"
-        },
-        "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluşturun veya Cüzdanı İçeri Aktarın"
-        },
-        "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi çıkar.",
-          "title": "Tarama düğmesine dokunun"
-        }
-      },
-      "coin98": {
-        "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanı'nı ana ekranınıza koymanızı öneririz.",
-          "title": "Coin98 Cüzdan uygulamasını açın"
-        },
-        "step2": {
-          "description": "Telefonunuzda bulunan yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "Tarama işleminden sonra, cüzdanınızı bağlamanız için bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
-        }
-      },
-      "coinbase": {
-        "step1": {
-          "description": "Coinbase Cüzdanı'nı ana ekranınıza koymanızı daha hızlı erişim için öneririz.",
-          "title": "Coinbase Cüzdan uygulamasını açın"
-        },
-        "step2": {
-          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
-        },
-        "step3": {
-          "description": "Tarama işleminden sonra, cüzdanınızı bağlamanız için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
-        }
-      },
-      "core": {
-        "step1": {
-          "description": "Core'ı ana ekranınıza eklemenizi cüzdanınıza daha hızlı erişim sağlamak için öneririz.",
-          "title": "Core uygulamasını açın"
-        },
-        "step2": {
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçe Aktar"
-        },
-        "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
-        }
-      },
-      "fox": {
-        "step1": {
-          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
-          "title": "FoxWallet uygulamasını açın"
-        },
-        "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeyi unutmayın. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçe Aktar"
-        },
-        "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
-        }
-      },
-      "frontier": {
-        "step1": {
-          "description": "Frontier Cüzdanı'nı ana ekranınıza koymanızı öneririz daha hızlı erişim için.",
-          "title": "Frontier Cüzdan uygulamasını açın"
-        },
-        "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçeri Aktar"
-        },
-        "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
-        }
-      },
-      "im_token": {
-        "step1": {
-          "title": "imToken uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçeri Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içeri aktarın."
-        },
-        "step3": {
-          "title": "Sağ üst köşedeki Tarayıcı İkonuna dokunun",
-          "description": "Yeni Bağlantıyı seçin, ardından QR kodunu tarayın ve bağlantıyı yapmak için isteği onaylayın."
-        }
-      },
-      "metamask": {
-        "step1": {
-          "title": "MetaMask uygulamasını açın",
-          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
-        }
-      },
-      "okx": {
-        "step1": {
-          "title": "OKX Wallet uygulamasını açın",
-          "description": "Erişimin daha hızlı olması için OKX Wallet'i ana ekranınıza koymanızı öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvende bir yöntemle yedeklediğinizden emin olun. Gizli cümleyinizi asla kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
-        }
-      },
-      "omni": {
-        "step1": {
-          "title": "Omni uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane ithal edin."
-        },
-        "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
-        }
-      },
-      "token_pocket": {
-        "step1": {
-          "title": "TokenPocket uygulamasını açın",
-          "description": "Daha hızlı erişim için TokenPocket'i ana ekranınıza koymanızı öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İthal Et",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi çıkacaktır."
-        }
-      },
-      "trust": {
-        "step1": {
-          "title": "Trust Wallet uygulamasını açın",
-          "description": "Trust Wallet'ınızı hızlı erişim için ana ekranınıza koyun."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
-        },
-        "step3": {
-          "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Yeni Bağlantı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
-        }
-      },
-      "uniswap": {
-        "step1": {
-          "title": "Uniswap uygulamasını açın",
-          "description": "Uniswap Wallet'ınızı hızlı erişim için ana ekranınıza ekleyin."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
-        },
-        "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
-        }
-      },
-      "zerion": {
-        "step1": {
-          "title": "Zerion uygulamasını açın",
-          "description": "Zerion'u daha hızlı erişim için ana ekranınıza koymanızı öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramanın ardından cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "QR tarayıcı düğmesine dokunun"
         }
       }
     },
-    "extension": {
-      "bitkeep": {
+    "bifrost": {
+      "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için BitKeep'i görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "BitKeep eklentisini yükleyin"
+          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
+          "title": "Bifrost Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
+          "title": "Tarayıcı düğmesine dokunun"
+        }
+      }
+    },
+    "bitkeep": {
+      "qr_code": {
+        "step1": {
+          "description": "Daha hızlı erişim için BitKeep'i ana ekranınıza koymanızı öneririz.",
+          "title": "BitKeep uygulamasını açın"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur ya da Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir.",
+          "title": "Tarama düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim sağlamak için BitKeep'i görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "BitKeep uzantısını yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur ya da Cüzdanı İçe Aktar"
         },
         "step3": {
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
           "title": "Tarayıcınızı yenileyin"
         }
-      },
-      "bitski": {
+      }
+    },
+    "bitski": {
+      "extension": {
         "step1": {
           "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
           "title": "Bitski eklentisini yükleyin"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
           "title": "Tarayıcınızı yenileyin"
         }
-      },
-      "coin98": {
+      }
+    },
+    "coin98": {
+      "qr_code": {
         "step1": {
-          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Coin98 Cüzdan'ı sabitleyin.",
+          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
+          "title": "Coin98 Cüzdan uygulamasını açın"
+        },
+        "step2": {
+          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "CüzdanBağlantısı düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
           "title": "Coin98 Cüzdan eklentisini yükleyin"
         },
         "step2": {
           "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "title": "Bir cüzdan oluşturun veya içe aktarın"
         },
         "step3": {
           "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
           "title": "Tarayıcınızı yenileyin"
         }
-      },
-      "coinbase": {
+      }
+    },
+    "coinbase": {
+      "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Coinbase Cüzdan eklentisini yükleyin"
+          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
+          "title": "Coinbase Wallet uygulamasını açın"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+        },
+        "step3": {
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
+          "title": "Tarama düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Coinbase Wallet uzantısını yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
           "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
           "title": "Tarayıcınızı yenileyin"
         }
-      },
-      "core": {
+      }
+    },
+    "core": {
+      "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneriyoruz.",
+          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
+          "title": "Core uygulamasını açın"
+        },
+        "step2": {
+          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
+          "title": "Cüzdan Oluştur veya İçe Aktar"
+        },
+        "step3": {
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
+          "title": "WalletConnect düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
           "title": "Core eklentisini yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+        },
+        "step3": {
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      }
+    },
+    "fox": {
+      "qr_code": {
+        "step1": {
+          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
+          "title": "FoxWallet uygulamasını açın"
         },
         "step2": {
           "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
-      },
-      "enkrypt": {
+      }
+    },
+    "frontier": {
+      "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Enkrypt Wallet'ı görev çubuğunuza sabitlemenizi öneriyoruz.",
-          "title": "Enkrypt Wallet eklentisini yükleyin"
+          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
+          "title": "Frontier Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
       },
-      "frame": {
+      "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Görev çubuğunuza Frame'i sabitlemenizi öneririz.",
-          "title": "Frame & eklenti yükleyin"
-        },
-        "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli kelime öbeğinizi kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
-        },
-        "step3": {
-          "description": "Cüzdanınızı ayarladığınızda, aşağıdaki tıklayın tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
-        }
-      },
-      "frontier": {
-        "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
           "title": "Frontier Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli kelime öbeğinizi kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladığınızda, aşağıdaki tıklayın tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
+          "title": "Tarayıcınızı Yenileyin"
         }
-      },
-      "metamask": {
+      }
+    },
+    "im_token": {
+      "qr_code": {
         "step1": {
-          "title": "1MetaMask eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "imToken uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
         },
         "step2": {
-          "title": "1Cüzdan Oluştur veya Bir Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
         },
         "step3": {
-          "title": "1Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
+          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+        }
+      }
+    },
+    "metamask": {
+      "qr_code": {
+        "step1": {
+          "title": "MetaMask uygulamasını açın",
+          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarama düğmesine dokunun",
+          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
-      "okx": {
+      "extension": {
+        "step1": {
+          "title": "MetaMask eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı Yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "okx": {
+      "qr_code": {
+        "step1": {
+          "title": "OKX Wallet uygulamasını açın",
+          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarama düğmesine dokunun",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+        }
+      },
+      "extension": {
         "step1": {
           "title": "OKX Cüzdan eklentisini yükleyin",
           "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
-        }
-      },
-      "one_key": {
-        "step1": {
-          "title": "OneKey Wallet eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
-        }
-      },
-      "phantom": {
-        "step1": {
-          "title": "Phantom eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
         },
         "step3": {
           "title": "Tarayıcınızı yenileyin",
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
-      },
-      "rabby": {
+      }
+    },
+    "omni": {
+      "qr_code": {
         "step1": {
-          "title": "Rabby eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Omni uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "QR simgesine dokunun ve tarayın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
         }
-      },
-      "rainbow": {
+      }
+    },
+    "token_pocket": {
+      "qr_code": {
         "step1": {
-          "title": "Rainbow uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'ı ana ekranınıza koymanızı öneririz."
+          "title": "TokenPocket uygulamasını açın",
+          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı telefonunuzdaki yedekleme özelliğimizi kullanarak kolayca yedekleyebilirsiniz."
+          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
           "title": "Tarama düğmesine dokunun",
-          "description": "Taramadan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
-      "safeheron": {
+      "extension": {
         "step1": {
-          "title": "Çekirdek eklentiyi yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
-        }
-      },
-      "taho": {
-        "step1": {
-          "title": "Taho eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdani İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, eklentiyi yüklemek için tarayıcıyı yenilemek üzere aşağıya tıklayın."
-        }
-      },
-      "talisman": {
-        "step1": {
-          "title": "Talisman eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Ethereum Cüzdanı Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi asla başkalarıyla paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın."
-        }
-      },
-      "token_pocket": {
-        "step1": {
-          "title": "TokenPocket uzantısını yükleyin",
+          "title": "TokenPocket eklentisini yükleyin",
           "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Bir Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedekleyin. Gizli ifadenizi asla kimseyle paylaşmayın."
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
           "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "trust": {
+      "qr_code": {
+        "step1": {
+          "title": "Trust Wallet uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+        },
+        "step3": {
+          "title": "Ayarlar'da WalletConnect'e dokunun",
+          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
         }
       },
-      "trust": {
+      "extension": {
         "step1": {
           "title": "Trust Wallet eklentisini yükleyin",
-          "description": "Tarayıcınızın sağ üst kısmına tıklayın ve Trust Wallet'i kolay erişim için sabitleyin."
+          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
+        },
+        "step2": {
+          "title": "Bir cüzdan oluşturun veya içe aktarın",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "uniswap": {
+      "qr_code": {
+        "step1": {
+          "title": "Uniswap uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya İçe Aktar",
           "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Trust Wallet'i ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "QR ikonuna dokunun ve tarama yapın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
         }
-      },
-      "xdefi": {
+      }
+    },
+    "zerion": {
+      "qr_code": {
         "step1": {
-          "title": "XDEFI Wallet eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğuna sabitlemenizi öneririz."
+          "title": "Zerion uygulamasını açın",
+          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Tarama düğmesine basın",
+          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
-      "zerion": {
+      "extension": {
         "step1": {
           "title": "Zerion eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Zerion'ı görev çubuğunuza sabitlemenizi öneririz."
+          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "rainbow": {
+      "qr_code": {
+        "step1": {
+          "title": "Rainbow uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
+        },
+        "step3": {
+          "title": "Tarama düğmesine dokunun",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+        }
+      }
+    },
+    "enkrypt": {
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Enkrypt Cüzdan eklentisini yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+        },
+        "step3": {
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      }
+    },
+    "frame": {
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Frame ve eşlik eden uzantıyı yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
+          "title": "Cüzdan Oluştur veya İçe Aktar"
+        },
+        "step3": {
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      }
+    },
+    "one_key": {
+      "extension": {
+        "step1": {
+          "title": "OneKey Wallet uzantısını yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
         },
         "step3": {
           "title": "Tarayıcınızı yenileyin",
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "phantom": {
+      "extension": {
+        "step1": {
+          "title": "Phantom eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "rabby": {
+      "extension": {
+        "step1": {
+          "title": "Rabby eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
+        }
+      }
+    },
+    "safeheron": {
+      "extension": {
+        "step1": {
+          "title": "Core eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "taho": {
+      "extension": {
+        "step1": {
+          "title": "Taho uzantısını yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "talisman": {
+      "extension": {
+        "step1": {
+          "title": "Talisman eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
+    "xdefi": {
+      "extension": {
+        "step1": {
+          "title": "XDEFI Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     }

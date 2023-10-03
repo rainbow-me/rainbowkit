@@ -222,7 +222,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       break;
     case WalletStep.Get:
       walletContent = <GetDetail getWalletDownload={getWalletDownload} />;
-      headerLabel = i18n.t('get_wallet.title');
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = compactModeEnabled
         ? WalletStep.LearnCompact
         : WalletStep.None;
@@ -241,12 +241,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         hasQrCode &&
-        i18n.t('scan.title', {
-          name:
-            selectedWallet.name === 'WalletConnect'
-              ? i18n.t('scan.wallet_connect_phone')
-              : selectedWallet.name,
-        });
+        (selectedWallet.name === 'WalletConnect'
+          ? i18n.t('connect_scan.fallback_title')
+          : i18n.t('connect_scan.title', {
+              wallet: selectedWallet.name,
+            }));
       headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
       headerBackButtonCallback = compactModeEnabled
         ? clearSelectedWallet
@@ -261,7 +260,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        i18n.t('get.get_started_with', { name: selectedWallet.name });
+        i18n.t('get_options.title', { wallet: selectedWallet.name });
       headerBackButtonLink =
         hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
       break;
@@ -274,7 +273,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        i18n.t('install.title', { name: selectedWallet.name });
+        i18n.t('get_mobile.title', { wallet: selectedWallet.name });
       headerBackButtonLink = hasExtensionAndMobile
         ? WalletStep.DownloadOptions
         : initialWalletStep;
@@ -288,8 +287,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        i18n.t('get.get_started_with', {
-          name: compactModeEnabled
+        i18n.t('get_options.title', {
+          wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name,
         });
@@ -301,8 +300,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        i18n.t('get.get_started_with', {
-          name: compactModeEnabled
+        i18n.t('get_options.title', {
+          wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name,
         });
@@ -370,7 +369,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                           weight="bold"
                         >
                           {supportedI18nGroupNames.includes(groupName)
-                            ? i18n.t(`group_name.${groupName.toLowerCase()}`)
+                            ? i18n.t(
+                                `connector_group.${groupName.toLowerCase()}`,
+                              )
                             : groupName}
                         </Text>
                       </Box>
@@ -414,7 +415,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 >
                   <Box paddingY="4">
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {i18n.t('guides.ethereum')}
+                      {i18n.t('connect.new_to_ethereum.description')}
                     </Text>
                   </Box>
                   <Box
@@ -436,7 +437,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       transition="default"
                     >
                       <Text color="accentColor" size="14" weight="bold">
-                        {i18n.t('learn_more.title')}
+                        {i18n.t('connect.new_to_ethereum.learn_more.label')}
                       </Text>
                     </Box>
                   </Box>

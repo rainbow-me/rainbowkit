@@ -270,7 +270,7 @@ export function ConnectButton({
                 type="button"
               >
                 {label === 'Connect Wallet'
-                  ? i18n.t('connect.connect_wallet')
+                  ? i18n.t('connect_wallet.label')
                   : label}
               </Box>
             )}

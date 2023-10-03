@@ -138,7 +138,7 @@ function WalletButton({
 
           {wallet.recent && (
             <Text color="accentColor" size="12" weight="medium">
-              {i18n.t('indicators.recent')}
+              {i18n.t('connect.recent')}
             </Text>
           )}
         </Box>
@@ -223,7 +223,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {i18n.t('what_is_wallet.description')}
+                {i18n.t('intro.description')}
               </Text>
             </Box>
           </Box>
@@ -231,14 +231,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
-                label={i18n.t('get_wallet.title')}
+                label={i18n.t('intro.get.label')}
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
               <ActionButton
                 href={learnMoreUrl}
-                label={i18n.t('learn_more.title')}
+                label={i18n.t('intro.learn_more.label')}
                 size="large"
                 type="secondary"
               />
@@ -254,7 +254,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       break;
     }
     case MobileWalletStep.Get: {
-      headerLabel = i18n.t('get_wallet.title');
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = MobileWalletStep.Connect;
 
       const mobileWallets = wallets
@@ -354,10 +354,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                {i18n.t('helper_text.not_what_looking_for')}
+                {i18n.t('get.looking_for.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {i18n.t('helper_text.select_wallet_main_screen')}
+                {i18n.t('get.looking_for.description')}
               </Text>
             </Box>
           </Box>

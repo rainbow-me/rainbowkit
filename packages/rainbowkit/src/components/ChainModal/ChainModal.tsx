@@ -61,7 +61,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                {i18n.t('network.switch')}
+                {i18n.t('chains.title')}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
@@ -69,7 +69,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
           {unsupportedChain && (
             <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                Wrong network detected, switch or disconnect to continue.
+                {i18n.t('chains.wrong_network')}
               </Text>
             </Box>
           )}
@@ -136,7 +136,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  Connected
+                                  {i18n.t('chains.connected')}
                                 </Text>
                                 <Box
                                   background="connectionIndicator"
@@ -162,7 +162,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  Confirm in Wallet
+                                  {i18n.t('chains.confirm')}
                                 </Text>
                                 <Box
                                   background="standby"
@@ -195,9 +195,9 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 paddingY="12"
               >
                 <Text color="modalText" size="14" weight="medium">
-                  Your wallet does not support switching networks from{' '}
-                  {appName ?? 'this app'}. Try switching networks from within
-                  your wallet instead.
+                  {i18n.t('chains.switching_not_supported', {
+                    appName: appName ?? 'this app',
+                  })}
                 </Text>
               </Box>
             )}
@@ -236,7 +236,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         >
                           <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
-                        <div>Disconnect</div>
+                        <div>{i18n.t('chains.disconnect')}</div>
                       </Box>
                     </Box>
                   </Box>
