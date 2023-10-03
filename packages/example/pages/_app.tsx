@@ -319,25 +319,6 @@ function RainbowKitApp({
                   <tbody>
                     <tr>
                       <td>
-                        <label style={{ userSelect: 'none' }}>locale</label>
-                      </td>
-                      <td>
-                        <select
-                          onChange={(e) => {
-                            setLocale(e.target.value as Locale);
-                          }}
-                          value={locale}
-                        >
-                          {locales.map((locale) => (
-                            <option key={locale} value={locale}>
-                              {locale}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
                         <label
                           htmlFor="authEnabled"
                           style={{ userSelect: 'none' }}
@@ -481,6 +462,25 @@ function RainbowKitApp({
                               value={chain?.id ?? ''}
                             >
                               {chain?.name ?? 'Default'}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style={{ userSelect: 'none' }}>locale</label>
+                      </td>
+                      <td>
+                        <select
+                          onChange={(e) => {
+                            setLocale(e.target.value as Locale);
+                          }}
+                          value={locale}
+                        >
+                          {locales.map((locale) => (
+                            <option key={locale} value={locale}>
+                              {locale}
                             </option>
                           ))}
                         </select>
