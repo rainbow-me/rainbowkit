@@ -61,16 +61,17 @@ export function GetDetail({
       alignItems="center"
       display="flex"
       flexDirection="column"
-      height="full"
       marginTop="18"
       width="full"
+      flex="1"
+      overflowY="auto"
     >
       <Box
         alignItems="center"
         display="flex"
         flexDirection="column"
         gap="28"
-        height="full"
+        flex="1"
         width="full"
       >
         {shownWallets
@@ -109,7 +110,7 @@ export function GetDetail({
                     src={iconUrl}
                     width="48"
                   />
-                  <Box display="flex" flexDirection="column" gap="2">
+                  <Box display="flex" flex="1" flexDirection="column" gap="2">
                     <Text color="modalText" size="14" weight="bold">
                       {name}
                     </Text>
@@ -143,7 +144,7 @@ export function GetDetail({
         gap="8"
         justifyContent="space-between"
         marginBottom="4"
-        paddingY="8"
+        paddingY="16"
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
@@ -233,12 +234,18 @@ export function ConnectDetail({
   }, []);
 
   return (
-    <Box display="flex" flexDirection="column" height="full" width="full">
+    <Box
+      display="flex"
+      flexDirection="column"
+      width="full"
+      flex="1"
+      overflowY="auto"
+    >
       {hasQrCode ? (
         <Box
           alignItems="center"
           display="flex"
-          height="full"
+          flex="1"
           justifyContent="center"
         >
           <QRCode
@@ -260,7 +267,7 @@ export function ConnectDetail({
           alignItems="center"
           display="flex"
           justifyContent="center"
-          style={{ flexGrow: 1 }}
+          flex="1"
         >
           <Box
             alignItems="center"
@@ -603,7 +610,7 @@ export function DownloadOptionsDetail({
       display="flex"
       flexDirection="column"
       gap="24"
-      height="full"
+      flex="1"
       marginBottom="8"
       marginTop="4"
       width="full"
@@ -685,15 +692,16 @@ export function DownloadDetail({
       display="flex"
       flexDirection="column"
       gap="24"
-      height="full"
+      flex="1"
       width="full"
+      overflowY="auto"
     >
       <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
           {i18n.t('get_mobile.description')}
         </Text>
       </Box>
-      <Box height="full">
+      <Box display="flex" flex="1">
         {downloadUrls?.qrCode ? (
           <QRCode logoSize={0} size={268} uri={downloadUrls.qrCode} />
         ) : null}
@@ -758,16 +766,16 @@ export function InstructionMobileDetail({
       alignItems="center"
       display="flex"
       flexDirection="column"
-      height="full"
       width="full"
+      flex="1"
+      overflowY="auto"
     >
       <Box
         display="flex"
         flexDirection="column"
         gap="28"
-        height="full"
+        flex="1"
         justifyContent="center"
-        overflowY="auto"
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
@@ -846,16 +854,16 @@ export function InstructionExtensionDetail({
       alignItems="center"
       display="flex"
       flexDirection="column"
-      height="full"
       width="full"
+      flex="1"
+      overflowY="auto"
     >
       <Box
         display="flex"
         flexDirection="column"
         gap="28"
-        height="full"
+        flex="1"
         justifyContent="center"
-        overflowY="auto"
         paddingY="32"
         style={{ maxWidth: 320 }}
       >
