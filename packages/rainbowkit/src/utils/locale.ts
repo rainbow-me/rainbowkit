@@ -26,7 +26,7 @@ export const locales = [
   'ru-RU',
 ];
 
-// We will get locale from browser and return the locale which we support
+// Check if browser locale is supported
 export const isBrowserLocaleSupported = (locale: string) => {
   return locales.includes(locale as Locale);
 };
