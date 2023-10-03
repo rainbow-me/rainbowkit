@@ -456,7 +456,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             display="flex"
             flexDirection="column"
             margin="16"
-            style={{ flexGrow: 1 }}
+            style={{ flex: 1 }}
           >
             <Box
               alignItems="center"
@@ -513,16 +513,19 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              style={{ minHeight: compactModeEnabled ? 396 : 432 }}
+              overflowY="auto"
+              style={{ flex: 1 }}
             >
               <Box
                 alignItems="center"
                 display="flex"
                 flexDirection="column"
                 gap="6"
-                height="full"
                 justifyContent="center"
                 marginX="8"
+                overflowY="hidden"
+                flex="1"
+                style={{ minHeight: compactModeEnabled ? 396 : 'auto' }}
               >
                 {walletContent}
               </Box>
