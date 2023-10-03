@@ -1,0 +1,80 @@
+---
+title: Localization
+description: Customizing your dApp's language with built-in translations
+---
+
+# Localization
+
+## Customizing your dApp's language with built-in translations
+
+By default, RainbowKit's `locale` is set to `en-US` for English language users.
+
+If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
+
+To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider locale="zh-CN" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### Using with Next.js
+
+RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+
+Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support. It is recommended that you use the same techniques to translate your dApp's content for full localization support.
+
+```json
+// next.config.js
+{
+  i18n: {
+    locales: ['default', 'en', 'zh-CN'],
+    defaultLocale: 'default',
+    localeDetection: true,
+  },
+}
+```
+
+Then pass the `locale` provided by the Next.js Router to the `RainbowKitProvider`. This approach
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => {
+  const { locale } = useRouter();
+  return (
+    <RainbowKitProvider locale="zh-CN" {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  )
+};
+```
+
+### Supported Languages
+
+We provide full support for the following `locale` regions:
+
+<Table
+  header={[
+    'Language', 'Region', 'Locale'
+  ]}
+  dataTypes={[
+    'string', 'string', 'code'
+  ]}
+  data={[
+    ['Español', 'Latin America', 'es-419'],
+    ['Français', 'France', 'fr-FR'],
+    ['日本語', 'Japan', 'ja-JP'],
+    ['Português', 'Brazil', 'pt-BR'],
+    ['中文', 'Mainland China', 'zh-CN'],
+    ['Bahasa Indonesia', 'Indonesia', 'id-ID'],
+    ['हिंदी', 'India', 'hi-IN'],
+    ['Türkçe', 'Turkey', 'tr-TR'],
+    ['Русский', 'Russia', 'ru-RU'],
+  ]}
+/>
