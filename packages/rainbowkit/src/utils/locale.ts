@@ -45,8 +45,8 @@ export const standardizeBrowserLocale = (
     return 'fr-FR';
   }
 
-  if (isIncluded(['pt', 'pt-BR'], locale)) {
-    return 'pt-BR';
+  if (isIncluded(['ja', 'ja-JP'], locale)) {
+    return 'ja-JP';
   }
 
   if (isIncluded(['pt', 'pt-BR'], locale)) {
