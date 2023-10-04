@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
+import { AccountExtraInfo } from '../AccountModal/context';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -10,6 +11,7 @@ import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
@@ -22,9 +24,11 @@ interface ProfileDetailsProps {
   ensName: ReturnType<typeof useEnsName>['data'];
   onClose: () => void;
   onDisconnect: () => void;
+  accountExtraInfo?: AccountExtraInfo;
 }
 
 export function ProfileDetails({
+  accountExtraInfo,
   address,
   balanceData,
   ensAvatar,
@@ -124,6 +128,35 @@ export function ProfileDetails({
                 </Box>
               )}
             </Box>
+            {accountExtraInfo?.otherAddresses.map(addr => (
+              <MenuButton
+                currentlySelected={false}
+                key={addr}
+                onClick={() => {
+                  accountExtraInfo.onOtherAddressClick(addr);
+                  onClose();
+                }}
+              >
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap={mobile ? '4' : '0'}
+                  textAlign="center"
+                >
+                  <Box textAlign="center">
+                    <Text
+                      as="h1"
+                      color="modalText"
+                      id={titleId}
+                      size={mobile ? '20' : '18'}
+                      weight="heavy"
+                    >
+                      {addr}
+                    </Text>
+                  </Box>
+                </Box>
+              </MenuButton>
+            ))}
           </Box>
           <Box
             display="flex"

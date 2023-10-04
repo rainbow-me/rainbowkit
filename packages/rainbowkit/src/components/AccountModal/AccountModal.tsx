@@ -5,6 +5,7 @@ import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
+import { useAccountExtraInfo } from './context';
 
 export interface AccountModalProps {
   open: boolean;
@@ -18,6 +19,8 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { disconnect } = useDisconnect();
 
+  const accountExtraInfo = useAccountExtraInfo();
+
   if (!address) {
     return null;
   }
@@ -30,6 +33,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
         <Dialog onClose={onClose} open={open} titleId={titleId}>
           <DialogContent bottomSheetOnMobile padding="0">
             <ProfileDetails
+              accountExtraInfo={accountExtraInfo}
               address={address}
               balanceData={balanceData}
               ensAvatar={ensAvatar}
