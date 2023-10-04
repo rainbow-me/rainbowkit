@@ -26,7 +26,7 @@ export const i18n = new I18n({
   ['en-US']: en_US,
   ['es-419']: es_419,
   ['fr-FR']: fr_FR,
-  ['hi_IN']: hi_IN,
+  ['hi-IN']: hi_IN,
   ['id-ID']: id_ID,
   ['ja-JP']: ja_JP,
   ['pt-BR']: pt_BR,

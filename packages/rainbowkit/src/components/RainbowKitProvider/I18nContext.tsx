@@ -3,7 +3,7 @@ import React, { ReactNode, createContext, useMemo } from 'react';
 import { Locale, i18n as _i18n } from '../../locales';
 import {
   getDetectedBrowserLocale,
-  isBrowserLocaleSupported,
+  standardizeBrowserLocale,
 } from '../../utils/locale';
 
 export const I18nContext = createContext<_I18N>(_i18n);
@@ -18,8 +18,11 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
     const browserLocale = getDetectedBrowserLocale();
 
     if (browserLocale) {
-      const isSupported = isBrowserLocaleSupported(browserLocale as Locale);
-      if (isSupported) return browserLocale;
+      const standardizedocale = standardizeBrowserLocale(
+        browserLocale as Locale,
+      );
+
+      if (standardizedocale) return standardizedocale;
     }
   }, []);
 
