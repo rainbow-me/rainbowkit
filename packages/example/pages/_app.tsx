@@ -208,7 +208,6 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
-// Used to detect whether browser language supports any of these languages
 export const locales = [
   'en-US',
   'es-419',
