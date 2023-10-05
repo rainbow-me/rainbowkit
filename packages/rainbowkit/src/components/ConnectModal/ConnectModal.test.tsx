@@ -6,7 +6,7 @@ import { Locale } from '../../locales';
 import { ConnectModal } from './ConnectModal';
 
 describe('<ConnectModal />', () => {
-  const renderHeaderLabelModal = async (locale?: Locale) => {
+  const renderHeaderLabelModal = (locale?: Locale) => {
     const options = {
       mock: true,
       props: {
@@ -25,23 +25,23 @@ describe('<ConnectModal />', () => {
     return modal.textContent;
   };
 
-  it('Defaults to English without a `locale` prop', async () => {
-    const label = await renderHeaderLabelModal();
+  it('Defaults to English without a `locale` prop', () => {
+    const label = renderHeaderLabelModal();
     expect(label).toBe('Connect a Wallet');
   });
 
-  it("Displays in English for 'en-US'", async () => {
-    const label = await renderHeaderLabelModal('en-US');
+  it("Displays in English for 'en-US'", () => {
+    const label = renderHeaderLabelModal('en-US');
     expect(label).toBe('Connect a Wallet');
   });
 
-  it("Displays in Spanish for 'es-419'", async () => {
-    const label = await renderHeaderLabelModal('es-419');
+  it("Displays in Spanish for 'es-419'", () => {
+    const label = renderHeaderLabelModal('es-419');
     expect(label).toBe('Conectar una billetera');
   });
 
-  it("Displays in Russian for 'ru-RU'", async () => {
-    const label = await renderHeaderLabelModal('ru-RU');
+  it("Displays in Russian for 'ru-RU'", () => {
+    const label = renderHeaderLabelModal('ru-RU');
     expect(label).toBe('Подключить кошелек');
   });
 });

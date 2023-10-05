@@ -6,7 +6,7 @@ import { Locale } from '../../locales';
 import { ConnectButton } from './ConnectButton';
 
 describe('<ConnectButton />', () => {
-  const renderTextButton = async (locale?: Locale) => {
+  const renderTextButton = (locale?: Locale) => {
     const options = {
       mock: true,
       props: {
@@ -22,23 +22,23 @@ describe('<ConnectButton />', () => {
     return button.textContent;
   };
 
-  it('Defaults to English without a `locale` prop', async () => {
-    const text = await renderTextButton();
+  it('Defaults to English without a `locale` prop', () => {
+    const text = renderTextButton();
     expect(text).toBe('Connect Wallet');
   });
 
-  it("Displays in English for 'en-US'", async () => {
-    const text = await renderTextButton('en-US');
+  it("Displays in English for 'en-US'", () => {
+    const text = renderTextButton('en-US');
     expect(text).toBe('Connect Wallet');
   });
 
-  it("Displays in Spanish for 'es-419'", async () => {
-    const text = await renderTextButton('es-419');
+  it("Displays in Spanish for 'es-419'", () => {
+    const text = renderTextButton('es-419');
     expect(text).toBe('Conectar la billetera');
   });
 
-  it("Displays in Russian for 'ru-RU'", async () => {
-    const text = await renderTextButton('ru-RU');
+  it("Displays in Russian for 'ru-RU'", () => {
+    const text = renderTextButton('ru-RU');
     expect(text).toBe('Подключить кошелек');
   });
 });
