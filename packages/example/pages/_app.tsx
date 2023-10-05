@@ -4,6 +4,7 @@ import './global.css';
 import {
   AvatarComponent,
   DisclaimerComponent,
+  Locale,
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
@@ -207,21 +208,6 @@ type OverlayBlur = typeof overlayBlurs[number];
 
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
-
-export const locales = [
-  'en-US',
-  'es-419',
-  'fr-FR',
-  'ja-JP',
-  'pt-BR',
-  'zh-CN',
-  'id-ID',
-  'hi-IN',
-  'tr-TR',
-  'ru-RU',
-] as const;
-
-export type Locale = typeof locales[number];
 
 function RainbowKitApp({
   Component,
