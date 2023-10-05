@@ -206,9 +206,11 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 paddingY="12"
               >
                 <Text color="modalText" size="14" weight="medium">
-                  {i18n.t('chains.switching_not_supported', {
-                    appName: appName ?? 'this app',
-                  })}
+                  {appName
+                    ? i18n.t('chains.switching_not_supported', {
+                        appName,
+                      })
+                    : i18n.t('chains.switching_not_supported_fallback')}
                 </Text>
               </Box>
             )}
