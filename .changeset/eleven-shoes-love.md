@@ -4,7 +4,7 @@
 
 RainbowKit is now localized in 10 languages and counting 🌎
 
-A user's preferred language is automatically detected and the wallet linking experiencing will be fully localized out of the box, including the `ConnectButton`. Developers can always customize the language selection or allow their users to choose a different language by passing a `locale` prop to `RainbowKitProvider` like so:
+A user's preferred language is automatically detected and the wallet linking experience will be fully localized out of the box, including the `ConnectButton`. Developers can always customize the language selection or allow their users to choose a different language by passing a `locale` prop to `RainbowKitProvider` like so:
 
 ```tsx
 <RainbowKitProvider locale="zh-CN">
