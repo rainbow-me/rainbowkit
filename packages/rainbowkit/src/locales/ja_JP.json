@@ -195,7 +195,7 @@
         }
       }
     },
-    "bitkeep": {
+    "bitget": {
       "qr_code": {
         "step1": {
           "description": "より速くアクセスできるように、BitKeepをホーム画面に置くことをお勧めします。",

@@ -195,7 +195,7 @@
         }
       }
     },
-    "bitkeep": {
+    "bitget": {
       "qr_code": {
         "step1": {
           "description": "我们建议将BitKeep放在您的主屏幕上，以便更快地访问。",

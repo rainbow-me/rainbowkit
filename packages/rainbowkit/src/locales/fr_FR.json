@@ -195,7 +195,7 @@
         }
       }
     },
-    "bitkeep": {
+    "bitget": {
       "qr_code": {
         "step1": {
           "description": "Nous vous recommandons de mettre BitKeep sur votre écran d'accueil pour un accès plus rapide.",

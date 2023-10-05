@@ -195,7 +195,7 @@
         }
       }
     },
-    "bitkeep": {
+    "bitget": {
       "qr_code": {
         "step1": {
           "description": "Recomendamos colocar o BitKeep na sua tela inicial para um acesso mais rápido.",

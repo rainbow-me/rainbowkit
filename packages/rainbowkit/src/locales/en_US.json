@@ -208,11 +208,11 @@
       }
     },
 
-    "bitkeep": {
+    "bitget": {
       "qr_code": {
         "step1": {
-          "description": "We recommend putting BitKeep on your home screen for quicker access.",
-          "title": "Open the BitKeep app"
+          "description": "We recommend putting Bitget Wallet on your home screen for quicker access.",
+          "title": "Open the Bitget Wallet app"
         },
         "step2": {
           "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
@@ -226,8 +226,8 @@
 
       "extension": {
         "step1": {
-          "description": "We recommend pinning BitKeep to your taskbar for quicker access to your wallet.",
-          "title": "Install the BitKeep extension"
+          "description": "We recommend pinning Bitget Wallet to your taskbar for quicker access to your wallet.",
+          "title": "Install the Bitget Wallet extension"
         },
         "step2": {
           "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
