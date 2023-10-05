@@ -30,25 +30,26 @@ export const isIncluded = (keys: string[], key: string) => {
   return keys.includes(key);
 };
 
+// biome-ignore format: locale keys
 export const standardizeBrowserLocale: Record<string | Locale, Locale> = {
-  en: 'en-US',
+  'en': 'en-US',
   'en-US': 'en-US',
-  es: 'es-419',
+  'es': 'es-419',
   'es-419': 'es-419',
-  fr: 'fr-FR',
+  'fr': 'fr-FR',
   'fr-FR': 'fr-FR',
-  ja: 'ja-JP',
+  'ja': 'ja-JP',
   'ja-JP': 'ja-JP',
-  pt: 'pt-BR',
+  'pt': 'pt-BR',
   'pt-BR': 'pt-BR',
-  zh: 'zh-CN',
+  'zh': 'zh-CN',
   'zh-CN': 'zh-CN',
-  id: 'id-ID',
+  'id': 'id-ID',
   'id-ID': 'id-ID',
-  hi: 'hi-IN',
+  'hi': 'hi-IN',
   'hi-IN': 'hi-IN',
-  tr: 'tr-TR',
+  'tr': 'tr-TR',
   'tr-TR': 'tr-TR',
-  ru: 'ru-RU',
+  'ru': 'ru-RU',
   'ru-RU': 'ru-RU',
 };
