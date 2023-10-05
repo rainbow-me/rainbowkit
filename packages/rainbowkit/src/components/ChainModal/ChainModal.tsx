@@ -12,6 +12,10 @@ import { AppContext } from '../RainbowKitProvider/AppContext';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
+import {
+  DesktopScrollClassName,
+  MobileScrollClassName,
+} from './ChainModal.css';
 
 export interface ChainModalProps {
   open: boolean;
@@ -45,7 +49,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
 
   return (
     <Dialog onClose={onClose} open={open} titleId={titleId}>
-      <DialogContent bottomSheetOnMobile>
+      <DialogContent bottomSheetOnMobile paddingBottom="0">
         <Box display="flex" flexDirection="column" gap="14">
           <Box
             display="flex"
@@ -73,7 +77,14 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
               </Text>
             </Box>
           )}
-          <Box display="flex" flexDirection="column" gap="4" padding="2">
+          <Box
+            className={mobile ? MobileScrollClassName : DesktopScrollClassName}
+            display="flex"
+            flexDirection="column"
+            gap="4"
+            padding="2"
+            paddingBottom="16"
+          >
             {switchNetwork ? (
               rainbowkitChains.map(
                 ({ iconBackground, iconUrl, id, name }, idx) => {
