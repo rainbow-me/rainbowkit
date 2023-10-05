@@ -231,6 +231,7 @@ function RainbowKitApp({
   session: Session;
 }>) {
   const router = useRouter();
+
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -264,7 +265,6 @@ function RainbowKitApp({
       : currentTheme.accentColors[selectedAccentColor];
 
   const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => setIsMounted(true), []);
 
   const appContextProps: AppContextProps = { authEnabled };
