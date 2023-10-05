@@ -244,7 +244,6 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
-  const [locale, setLocale] = useState<Locale>('en-US');
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -270,6 +269,7 @@ function RainbowKitApp({
   const appContextProps: AppContextProps = { authEnabled };
 
   const locales = router.locales!;
+  const locale = (router.locale || router.defaultLocale) as Locale;
 
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
@@ -474,7 +474,9 @@ function RainbowKitApp({
                       <td>
                         <select
                           onChange={(e) => {
-                            setLocale(e.target.value as Locale);
+                            router.push('/', undefined, {
+                              locale: e.target.value,
+                            });
                           }}
                           value={locale}
                         >
