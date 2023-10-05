@@ -18,7 +18,7 @@ import {
 import {
   argentWallet,
   bifrostWallet,
-  bitKeepWallet,
+  bitgetWallet,
   bitskiWallet,
   coin98Wallet,
   coreWallet,
@@ -105,7 +105,7 @@ const connectors = connectorsForWallets([
     wallets: [
       argentWallet({ chains, projectId }),
       bifrostWallet({ chains, projectId }),
-      bitKeepWallet({ chains, projectId }),
+      bitgetWallet({ chains, projectId }),
       bitskiWallet({ chains }),
       coin98Wallet({ chains, projectId }),
       coreWallet({ chains, projectId }),
