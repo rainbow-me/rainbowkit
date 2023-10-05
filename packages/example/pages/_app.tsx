@@ -231,6 +231,11 @@ function RainbowKitApp({
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
+  const routerLocale = router.locale as Locale;
+
+  // Set `locale` as default from next.js and let dropdown set new `locale`
+  const [locale, setLocale] = useState<Locale>(routerLocale);
+
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
   ).theme;
@@ -253,8 +258,7 @@ function RainbowKitApp({
 
   const appContextProps: AppContextProps = { authEnabled };
 
-  const locales = router.locales!;
-  const locale = (router.locale || router.defaultLocale) as Locale;
+  const locales = router.locales as Locale[];
 
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
@@ -459,9 +463,7 @@ function RainbowKitApp({
                       <td>
                         <select
                           onChange={(e) => {
-                            router.push('/', undefined, {
-                              locale: e.target.value,
-                            });
+                            setLocale(e.target.value as Locale);
                           }}
                           value={locale}
                         >
