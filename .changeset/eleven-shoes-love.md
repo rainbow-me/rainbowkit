@@ -1,11 +1,15 @@
 ---
-"@rainbow-me/rainbowkit": patch
+"@rainbow-me/rainbowkit": minor
 ---
 
-Added i18n internalization support for the following locales such as en-US, es-419, fr-FR, ja-JP, pt-BR, zh-CN, id-ID, hi-IN, tr-TR and ru-RU. This ensures enhanced usability and accessibility by allowing users to interact with their preferred languages.
+RainbowKit is now localized in 10 languages and counting 🌎
 
-Simply pass in `locale` prop to `RainbowKitProvider`.
+A user's preferred language is automatically detected and the wallet linking experiencing will be fully localized out of the box, including the `ConnectButton`. Developers can always customize the language selection or allow their users to choose a different language by passing a `locale` prop to `RainbowKitProvider` like so:
 
 ```tsx
-<RainbowKitProvider locale={locale}>
+<RainbowKitProvider locale="zh-CN">
 ```
+
+RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specifed with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
+
+If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
