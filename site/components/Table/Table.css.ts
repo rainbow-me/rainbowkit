@@ -28,8 +28,4 @@ export const th = style([
   style({ fontWeight: '800' }),
 ]);
 
-export const td = style([
-  cell,
-  atoms({ fontSize: '2' }),
-  style({ whiteSpace: 'nowrap' }),
-]);
+export const td = style([cell, style({ whiteSpace: 'nowrap' })]);

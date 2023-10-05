@@ -1,5 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Code } from 'components/Code/Code';
+import { Text } from 'components/Text/Text';
 import React from 'react';
 import { regionWrapper, table, td, th } from './Table.css';
 
@@ -20,7 +21,13 @@ function TableRow({
     <Box as="tr" key={key}>
       {data.map((value, i) => (
         <Box as="td" className={td}>
-          {dataTypes[i] === 'code' ? <Code>{value}</Code> : value}
+          {dataTypes[i] === 'code' ? (
+            <Code>{value}</Code>
+          ) : (
+            <Text as="p" color="labelSecondary" style={{ fontWeight: 500 }}>
+              {value}
+            </Text>
+          )}
         </Box>
       ))}
     </Box>
