@@ -13,19 +13,6 @@ export const getDetectedBrowserLocale = () => {
   }
 };
 
-export const locales = [
-  'en-US',
-  'es-419',
-  'fr-FR',
-  'ja-JP',
-  'pt-BR',
-  'zh-CN',
-  'id-ID',
-  'hi-IN',
-  'tr-TR',
-  'ru-RU',
-];
-
 export const isIncluded = (keys: string[], key: string) => {
   return keys.includes(key);
 };
