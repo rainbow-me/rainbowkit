@@ -30,46 +30,25 @@ export const isIncluded = (keys: string[], key: string) => {
   return keys.includes(key);
 };
 
-export const standardizeBrowserLocale = (
-  locale: string,
-): Locale | undefined => {
-  if (isIncluded(['en-US', 'en'], locale)) {
-    return 'en-US';
-  }
-
-  if (isIncluded(['es', 'es-419'], locale)) {
-    return 'es-419';
-  }
-
-  if (isIncluded(['fr', 'fr-FR'], locale)) {
-    return 'fr-FR';
-  }
-
-  if (isIncluded(['ja', 'ja-JP'], locale)) {
-    return 'ja-JP';
-  }
-
-  if (isIncluded(['pt', 'pt-BR'], locale)) {
-    return 'pt-BR';
-  }
-
-  if (isIncluded(['zh', 'zh-CN'], locale)) {
-    return 'zh-CN';
-  }
-
-  if (isIncluded(['id', 'id-ID'], locale)) {
-    return 'id-ID';
-  }
-
-  if (isIncluded(['hi', 'hi-IN'], locale)) {
-    return 'hi-IN';
-  }
-
-  if (isIncluded(['tr', 'tr-TR'], locale)) {
-    return 'tr-TR';
-  }
-
-  if (isIncluded(['ru', 'ru-RU'], locale)) {
-    return 'ru-RU';
-  }
+export const standardizeBrowserLocale: Record<string | Locale, Locale> = {
+  en: 'en-US',
+  'en-US': 'en-US',
+  es: 'es-419',
+  'es-419': 'es-419',
+  fr: 'fr-FR',
+  'fr-FR': 'fr-FR',
+  ja: 'ja-JP',
+  'ja-JP': 'ja-JP',
+  pt: 'pt-BR',
+  'pt-BR': 'pt-BR',
+  zh: 'zh-CN',
+  'zh-CN': 'zh-CN',
+  id: 'id-ID',
+  'id-ID': 'id-ID',
+  hi: 'hi-IN',
+  'hi-IN': 'hi-IN',
+  tr: 'tr-TR',
+  'tr-TR': 'tr-TR',
+  ru: 'ru-RU',
+  'ru-RU': 'ru-RU',
 };

@@ -18,10 +18,7 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
     const browserLocale = getDetectedBrowserLocale();
 
     if (browserLocale) {
-      const standardizedocale = standardizeBrowserLocale(
-        browserLocale as Locale,
-      );
-
+      const standardizedocale = standardizeBrowserLocale[browserLocale];
       if (standardizedocale) return standardizedocale;
     }
   }, []);

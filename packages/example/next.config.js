@@ -14,6 +14,7 @@ module.exports = {
       'tr-TR',
       'ru-RU',
     ],
+    localeDetection: true,
   },
   reactStrictMode: true,
 };
