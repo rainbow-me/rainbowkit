@@ -24,13 +24,38 @@ export interface BitgetWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-export const bitKeepWallet = ({
+/**
+ * @deprecated `BitKeepWalletLegacyOptions` is now `BitgetWalletLegacyOptions`
+ */
+export interface BitKeepWalletLegacyOptions {
+  projectId?: string;
+  chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+/**
+ * @deprecated `BitKeepWalletOptions` is now `BitgetWalletOptions`
+ */
+export interface BitKeepWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
+}
+
+export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: (BitgetWalletLegacyOptions | BitgetWalletOptions) &
+}: (
+  | BitgetWalletLegacyOptions
+  | BitgetWalletOptions
+  | BitKeepWalletLegacyOptions
+  | BitKeepWalletOptions
+) &
   InjectedConnectorOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
@@ -44,7 +69,7 @@ export const bitKeepWallet = ({
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
-    id: 'bitgetWallet',
+    id: 'bitget',
     name: 'Bitget Wallet',
     iconUrl: async () => (await import('./bitgetWallet.svg')).default,
     iconAccent: '#f6851a',
@@ -93,9 +118,9 @@ export const bitKeepWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Bitget Wallet to your taskbar for quicker access to your wallet',
+                  'We recommend pinning Bitget Wallet to your taskbar for quicker access to your wallet.',
                 step: 'install',
-                title: 'Install the Bitget Wallet Chrome Extension',
+                title: 'Install the Bitget Wallet extension',
               },
               {
                 description:
@@ -148,3 +173,8 @@ export const bitKeepWallet = ({
     },
   };
 };
+
+/**
+ * @deprecated `bitKeepWallet` is now `bitgetWallet`
+ */
+export const bitKeepWallet = bitgetWallet;
