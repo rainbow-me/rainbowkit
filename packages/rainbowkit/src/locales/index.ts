@@ -14,33 +14,60 @@ import tr_TR from './tr_TR.json';
 import zh_CN from './zh_CN.json';
 
 export type Locale =
+  | 'ar'
   | 'ar-AR'
+  | 'en'
   | 'en-US'
+  | 'es'
   | 'es-419'
+  | 'fr'
   | 'fr-FR'
+  | 'hi'
   | 'hi-IN'
+  | 'id'
   | 'id-ID'
+  | 'ja'
   | 'ja-JP'
+  | 'ko'
   | 'ko-KR'
+  | 'pt'
   | 'pt-BR'
+  | 'ru'
   | 'ru-RU'
+  | 'th'
   | 'th-TH'
+  | 'tr'
   | 'tr-TR'
+  | 'zh'
   | 'zh-CN';
 
+// biome-ignore format: locale keys
 export const i18n = new I18n({
+  'ar': ar_AR,
   'ar-AR': ar_AR,
+  'en': en_US,
   'en-US': en_US,
+  'es': es_419,
   'es-419': es_419,
+  'fr': fr_FR,
   'fr-FR': fr_FR,
+  'hi': hi_IN,
   'hi-IN': hi_IN,
+  'id': id_ID,
   'id-ID': id_ID,
+  'ja': ja_JP,
   'ja-JP': ja_JP,
+  'ko': ko_KR,
   'ko-KR': ko_KR,
+  'pt': pt_BR,
   'pt-BR': pt_BR,
+  'ru': ru_RU,
   'ru-RU': ru_RU,
+  'th': th_TH,
   'th-TH': th_TH,
+  'tr': tr_TR,
   'tr-TR': tr_TR,
+  'zh': zh_CN,
   'zh-CN': zh_CN,
 });
 
