@@ -5,6 +5,7 @@ import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
+  Locale,
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
@@ -69,7 +70,7 @@ const wagmiConfig = createConfig({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { locale } = useRouter();
+  const { locale } = useRouter() as { locale: Locale };
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains} locale={locale}>

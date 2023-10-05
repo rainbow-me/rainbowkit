@@ -19,6 +19,7 @@ export type {
   AuthenticationStatus,
   AuthenticationConfig,
 } from './components/RainbowKitProvider/AuthenticationContext';
+export type { Locale } from './locales/';
 export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
 export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
 export { lightTheme } from './themes/lightTheme';

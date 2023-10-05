@@ -43,10 +43,10 @@ Configure your Next.js project like the example below to add an optional `/local
 Then pass the `locale` provided by the Next.js Router to the `RainbowKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
 
 export const App = () => {
-  const { locale } = useRouter();
+  const { locale } = useRouter() as { locale: Locale };
   return (
     <RainbowKitProvider locale={locale} {...etc}>
       {/* Your App */}
