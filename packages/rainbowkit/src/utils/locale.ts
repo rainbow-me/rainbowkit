@@ -13,10 +13,6 @@ export const getDetectedBrowserLocale = () => {
   }
 };
 
-export const isIncluded = (keys: string[], key: string) => {
-  return keys.includes(key);
-};
-
 // biome-ignore format: locale keys
 export const standardizeBrowserLocale: Record<string | Locale, Locale> = {
   'en': 'en-US',
