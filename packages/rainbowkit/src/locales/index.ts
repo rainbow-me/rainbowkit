@@ -5,6 +5,7 @@ import fr_FR from './fr_FR.json';
 import hi_IN from './hi_IN.json';
 import id_ID from './id_ID.json';
 import ja_JP from './ja_JP.json';
+import ko_KR from './ko_KR.json';
 import pt_BR from './pt_BR.json';
 import ru_RU from './ru_RU.json';
 import tr_TR from './tr_TR.json';
@@ -14,13 +15,14 @@ export type Locale =
   | 'en-US'
   | 'es-419'
   | 'fr-FR'
-  | 'ja-JP'
-  | 'pt-BR'
-  | 'zh-CN'
-  | 'id-ID'
   | 'hi-IN'
+  | 'id-ID'
+  | 'ja-JP'
+  | 'ko-KR'
+  | 'pt-BR'
+  | 'ru-RU'
   | 'tr-TR'
-  | 'ru-RU';
+  | 'zh-CN';
 
 export const i18n = new I18n({
   'en-US': en_US,
@@ -29,13 +31,13 @@ export const i18n = new I18n({
   'hi-IN': hi_IN,
   'id-ID': id_ID,
   'ja-JP': ja_JP,
+  'ko-KR': ko_KR,
   'pt-BR': pt_BR,
   'ru-RU': ru_RU,
   'tr-TR': tr_TR,
   'zh-CN': zh_CN,
 });
 
-// Configure languages
 i18n.defaultLocale = 'en-US';
 i18n.locale = 'en-US';
 i18n.enableFallback = true;
