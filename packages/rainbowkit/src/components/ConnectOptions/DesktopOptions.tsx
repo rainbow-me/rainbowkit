@@ -314,7 +314,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     <Box
       display="flex"
       flexDirection="row"
-      style={{ maxHeight: compactModeEnabled ? 468 : 504 }}
+      style={{
+        maxHeight: compactModeEnabled ? 468 : 504,
+        minHeight: compactModeEnabled ? 468 : 'auto',
+      }}
     >
       {(compactModeEnabled ? walletStep === WalletStep.None : true) && (
         <Box
@@ -526,7 +529,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 marginX="8"
                 overflowY="hidden"
                 flex="1"
-                style={{ minHeight: compactModeEnabled ? 396 : 'auto' }}
               >
                 {walletContent}
               </Box>
