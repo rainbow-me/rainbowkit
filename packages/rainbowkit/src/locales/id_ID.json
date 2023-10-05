@@ -138,6 +138,7 @@
     "wrong_network": "Jaringan yang salah terdeteksi, alihkan atau diskonek untuk melanjutkan.",
     "confirm": "Konfirmasi di Dompet",
     "switching_not_supported": "Dompet Anda tidak mendukung pengalihan jaringan dari %{appName}. Coba alihkan jaringan dari dalam dompet Anda.",
+    "switching_not_supported_fallback": "Wallet Anda tidak mendukung penggantian jaringan dari aplikasi ini. Cobalah ganti jaringan dari dalam wallet Anda.",
     "disconnect": "Putuskan koneksi",
     "connected": "Terkoneksi"
   },
@@ -198,26 +199,26 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempatkan BitKeep di layar utama Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi BitKeep"
+          "description": "Kami menyarankan untuk meletakkan Bitget Wallet di layar depan Anda untuk akses yang lebih cepat.",
+          "title": "Buka aplikasi Bitget Wallet"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
           "title": "Buat atau Impor Wallet"
         },
         "step3": {
-          "description": "Setelah Anda pindai, prompt koneksi akan muncul untuk Anda menghubungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "Setelah Anda pindai, akan muncul petunjuk untuk menghubungkan wallet Anda.",
+          "title": "Tekan tombol pindai"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk membuat pintasan BitKeep di taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi BitKeep"
+          "description": "Kami menyarankan untuk memasang Bitget Wallet ke taskbar Anda untuk akses yang lebih cepat ke wallet Anda.",
+          "title": "Instal ekstensi Dompet Bitget"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
+          "title": "Buat atau Impor Dompet"
         },
         "step3": {
           "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",

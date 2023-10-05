@@ -138,6 +138,7 @@
     "wrong_network": "Rede errada detectada, mude ou desconecte para continuar.",
     "confirm": "Confirme na Carteira",
     "switching_not_supported": "Sua carteira não suporta a mudança de redes de %{appName}. Tente mudar de redes dentro da sua carteira.",
+    "switching_not_supported_fallback": "Sua carteira não suporta a troca de redes a partir deste aplicativo. Tente trocar de rede dentro de sua carteira.",
     "disconnect": "Desconectar",
     "connected": "Conectado"
   },
@@ -198,25 +199,25 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar o BitKeep na sua tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo BitKeep"
+          "description": "Recomendamos colocar a Bitget Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bitget Wallet"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
-          "title": "Toque no botão de digitalização"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos que você fixe o BitKeep em sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão BitKeep"
+          "description": "Recomendamos fixar a Bitget Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Bitget"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
           "title": "Criar ou Importar uma Carteira"
         },
         "step3": {

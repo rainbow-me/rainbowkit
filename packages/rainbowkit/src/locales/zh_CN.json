@@ -138,6 +138,7 @@
     "wrong_network": "检测到错误的网络，请切换或断开连接以继续。",
     "confirm": "在钱包中确认",
     "switching_not_supported": "您的钱包不支持从 %{appName}切换网络。请尝试从您的钱包内部切换网络。",
+    "switching_not_supported_fallback": "您的钱包不支持从此应用切换网络。尝试从您的钱包内切换网络。",
     "disconnect": "断开连接",
     "connected": "已连接"
   },
@@ -198,29 +199,29 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "我们建议将BitKeep放在您的主屏幕上，以便更快地访问。",
-          "title": "打开 BitKeep 应用"
+          "description": "我们建议您将Bitget钱包添加到主屏幕，以便更快地访问。",
+          "title": "打开Bitget钱包应用程序"
         },
         "step2": {
-          "description": "确保使用安全的方法备份您的钱包。永远不要与任何人分享您的秘密短语。",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
           "title": "创建或导入钱包"
         },
         "step3": {
-          "description": "扫描后，将出现连接提示，供您连接您的钱包。",
+          "description": "扫描后，将出现一个连接提示，供您连接您的钱包。",
           "title": "点击扫描按钮"
         }
       },
       "extension": {
         "step1": {
-          "description": "我们建议将BitKeep固定在任务栏上，以便更快地访问您的钱包。",
-          "title": "安装BitKeep扩展"
+          "description": "我们建议您将Bitget钱包固定在任务栏，以便更快地访问您的钱包。",
+          "title": "安装Bitget Wallet扩展"
         },
         "step2": {
-          "description": "确保使用安全的方法备份您的钱包。永远不要与任何人分享您的秘密短语。",
+          "description": "确保使用安全的方式备份您的钱包。绝不与任何人分享您的秘密短语。",
           "title": "创建或导入钱包"
         },
         "step3": {
-          "description": "设置完您的钱包后，点击下方以刷新浏览器并加载扩展程序。",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。",
           "title": "刷新您的浏览器"
         }
       }

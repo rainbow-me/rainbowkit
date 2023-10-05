@@ -138,6 +138,7 @@
     "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
     "confirm": "Cüzdanında Onayla",
     "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
+    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
     "disconnect": "Bağlantıyı Kes",
     "connected": "Bağlı"
   },
@@ -198,29 +199,29 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için BitKeep'i ana ekranınıza koymanızı öneririz.",
-          "title": "BitKeep uygulamasını açın"
+          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
+          "title": "Bitget Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur ya da Cüzdanı İçe Aktar"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir.",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
           "title": "Tarama düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için BitKeep'i görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "BitKeep uzantısını yükleyin"
+          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Bitget Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur ya da Cüzdanı İçe Aktar"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
           "title": "Tarayıcınızı yenileyin"
         }
       }

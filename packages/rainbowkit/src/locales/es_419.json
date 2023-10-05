@@ -138,6 +138,7 @@
     "wrong_network": "Se detectó la red incorrecta, cambia o desconéctate para continuar.",
     "confirm": "Confirmar en la cartera",
     "switching_not_supported": "Tu cartera no admite cambiar las redes desde %{appName}. Intenta cambiar las redes desde tu cartera.",
+    "switching_not_supported_fallback": "Su billetera no admite el cambio de redes desde esta aplicación. Intente cambiar de red desde dentro de su billetera en su lugar.",
     "disconnect": "Desconectar",
     "connected": "Conectado"
   },
@@ -198,30 +199,30 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner BitKeep en su pantalla de inicio para un acceso más rápido.",
-          "title": "Abra la aplicación BitKeep"
+          "description": "Recomendamos colocar Bitget Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bitget Wallet"
         },
         "step2": {
           "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá una solicitud de conexión para que conecte su billetera.",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
           "title": "Toque el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar BitKeep a su barra de tareas para un acceso más rápido a su billetera.",
-          "title": "Instale la extensión de BitKeep"
+          "description": "Recomendamos anclar Bitget Wallet a su barra de tareas para un acceso más rápido a su billetera.",
+          "title": "Instale la extensión de la Billetera Bitget"
         },
         "step2": {
-          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
         }
       }
     },

@@ -138,6 +138,7 @@
     "wrong_network": "Mauvais réseau détecté, changez ou déconnectez-vous pour continuer.",
     "confirm": "Confirmer dans le portefeuille",
     "switching_not_supported": "Votre portefeuille ne supporte pas le changement de réseaux depuis %{appName}. Essayez de changer de réseau depuis votre portefeuille.",
+    "switching_not_supported_fallback": "Votre portefeuille ne prend pas en charge le changement de réseaux à partir de cette application. Essayez de changer de réseau à partir de votre portefeuille à la place.",
     "disconnect": "Déconnecter",
     "connected": "Connecté"
   },
@@ -198,29 +199,29 @@
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Nous vous recommandons de mettre BitKeep sur votre écran d'accueil pour un accès plus rapide.",
-          "title": "Ouvrez l'application BitKeep"
+          "description": "Nous vous recommandons de placer Bitget Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Bitget Wallet"
         },
         "step2": {
-          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque.",
           "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Après avoir scanné, une invitation à la connexion apparaîtra pour que vous puissiez connecter votre portefeuille.",
+          "description": "Après le scan, une incitation de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
           "title": "Appuyez sur le bouton de scan"
         }
       },
       "extension": {
         "step1": {
-          "description": "Nous vous recommandons d'épingler BitKeep à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
-          "title": "Installez l'extension BitKeep"
+          "description": "Nous vous recommandons d'épingler Bitget Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension de portefeuille Bitget"
         },
         "step2": {
-          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
-          "title": "Créer ou Importer un portefeuille"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créez ou Importez un portefeuille"
         },
         "step3": {
-          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
           "title": "Rafraîchissez votre navigateur"
         }
       }
