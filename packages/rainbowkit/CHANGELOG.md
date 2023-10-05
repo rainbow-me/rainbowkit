@@ -951,6 +951,7 @@
   - `rk-chain-option-${chain.id}`
   - `rk-chain-option-disconnect`
   - `rk-auth-message-button`
+  - `rk-connect-header-label`
 
   These attributes can be targeted with a selector like this:
 
