@@ -15,6 +15,8 @@ export const getDetectedBrowserLocale = () => {
 
 // biome-ignore format: locale keys
 export const standardizeBrowserLocale: Record<string | Locale, Locale> = {
+  'ar': 'ar-AR',
+  'ar-AR': 'ar-AR',
   'en': 'en-US',
   'en-US': 'en-US',
   'es': 'es-419',
@@ -33,6 +35,8 @@ export const standardizeBrowserLocale: Record<string | Locale, Locale> = {
   'pt-BR': 'pt-BR',
   'ru': 'ru-RU',
   'ru-RU': 'ru-RU',
+  'th': 'th-TH',
+  'th-TH': 'th-TH',
   'tr': 'tr-TR',
   'tr-TR': 'tr-TR',
   'zh': 'zh-CN',
