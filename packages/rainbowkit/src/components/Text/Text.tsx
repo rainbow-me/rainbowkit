@@ -27,6 +27,7 @@ export type TextProps = {
   tabIndex?: number;
   textAlign?: BoxProps['textAlign'];
   display?: BoxProps['display'];
+  testId?: string;
 };
 
 export const Text = React.forwardRef(
@@ -44,6 +45,7 @@ export const Text = React.forwardRef(
       tabIndex,
       textAlign = 'inherit',
       weight = 'regular',
+      testId,
     }: TextProps,
     ref: React.Ref<HTMLElement>,
   ) => {
@@ -61,6 +63,7 @@ export const Text = React.forwardRef(
         style={style}
         tabIndex={tabIndex}
         textAlign={textAlign}
+        testId={testId}
       >
         {children}
       </Box>

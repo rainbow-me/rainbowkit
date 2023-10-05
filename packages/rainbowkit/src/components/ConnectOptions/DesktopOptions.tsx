@@ -346,6 +346,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 id={titleId}
                 size="18"
                 weight="heavy"
+                testId={'connect-header-label'}
               >
                 {i18n.t('connect.title')}
               </Text>
