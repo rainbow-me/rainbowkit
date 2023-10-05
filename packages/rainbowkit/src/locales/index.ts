@@ -23,16 +23,16 @@ export type Locale =
   | 'ru-RU';
 
 export const i18n = new I18n({
-  ['en-US']: en_US,
-  ['es-419']: es_419,
-  ['fr-FR']: fr_FR,
-  ['hi-IN']: hi_IN,
-  ['id-ID']: id_ID,
-  ['ja-JP']: ja_JP,
-  ['pt-BR']: pt_BR,
-  ['ru-RU']: ru_RU,
-  ['tr-TR']: tr_TR,
-  ['zh-CN']: zh_CN,
+  'en-US': en_US,
+  'es-419': es_419,
+  'fr-FR': fr_FR,
+  'hi-IN': hi_IN,
+  'id-ID': id_ID,
+  'ja-JP': ja_JP,
+  'pt-BR': pt_BR,
+  'ru-RU': ru_RU,
+  'tr-TR': tr_TR,
+  'zh-CN': zh_CN,
 });
 
 // Configure languages
