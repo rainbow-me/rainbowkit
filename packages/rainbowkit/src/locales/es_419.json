@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "¿No es lo que estás buscando?",
-      "description": "Selecciona una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
+      "mobile": {
+        "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
+      },
+      "desktop": {
+        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
+        "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
+      }
     }
   },
   "get_options": {

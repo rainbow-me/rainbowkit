@@ -93,7 +93,13 @@
     },
     "looking_for": {
       "title": "Not what you're looking for?",
-      "description": "Select a wallet on the main screen to get started with a different wallet provider."
+      "mobile": {
+        "description": "Select a wallet on the main screen to get started with a different wallet provider."
+      },
+      "desktop": {
+        "compact_description": "Select a wallet on the main screen to get started with a different wallet provider.",
+        "wide_description": "Select a wallet on the left to get started with a different wallet provider."
+      }
     }
   },
 

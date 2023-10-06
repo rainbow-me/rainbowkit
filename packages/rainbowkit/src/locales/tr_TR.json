@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "Aradığınız şey bu değil mi?",
-      "description": "Ana ekranda bir cüzdan seçerek farklı bir cüzdan sağlayıcısıyla başlayın."
+      "mobile": {
+        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
+      },
+      "desktop": {
+        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
+        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
+      }
     }
   },
   "get_options": {

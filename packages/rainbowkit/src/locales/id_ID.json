@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "Bukan yang Anda cari?",
-      "description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda."
+      "mobile": {
+        "description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda."
+      },
+      "desktop": {
+        "compact_description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda.",
+        "wide_description": "Pilih dompet di sebelah kiri untuk memulai dengan penyedia dompet yang berbeda."
+      }
     }
   },
   "get_options": {

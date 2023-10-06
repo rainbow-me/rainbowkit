@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "찾고 계신 것이 아닌가요?",
-      "description": "다른 지갑 제공자로 시작하려면 메인 화면에서 지갑을 선택하세요."
+      "mobile": {
+        "description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요."
+      },
+      "desktop": {
+        "compact_description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요.",
+        "wide_description": "왼쪽에서 지갑을 선택하여 다른 지갑 제공자를 사용하기 시작하세요."
+      }
     }
   },
   "get_options": {

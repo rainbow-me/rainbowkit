@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "Não é o que você está procurando?",
-      "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
+      "mobile": {
+        "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
+      },
+      "desktop": {
+        "compact_description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente.",
+        "wide_description": "Selecione uma carteira à esquerda para começar com um provedor de carteira diferente."
+      }
     }
   },
   "get_options": {

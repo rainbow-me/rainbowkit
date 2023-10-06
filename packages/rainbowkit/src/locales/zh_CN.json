@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "不是你要找的吗？",
-      "description": "在主屏幕上选择一个钱包，以开始使用不同的钱包提供商。"
+      "mobile": {
+        "description": "在主屏幕上选择一个钱包，以开始使用不同的钱包提供商。"
+      },
+      "desktop": {
+        "compact_description": "在主屏幕上选择一个钱包，以开始使用不同的钱包提供商。",
+        "wide_description": "在左侧选择一个钱包，以开始使用不同的钱包提供商。"
+      }
     }
   },
   "get_options": {

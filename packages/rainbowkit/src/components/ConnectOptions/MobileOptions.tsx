@@ -357,7 +357,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                 {i18n.t('get.looking_for.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {i18n.t('get.looking_for.description')}
+                {i18n.t('get.looking_for.mobile.description')}
               </Text>
             </Box>
           </Box>

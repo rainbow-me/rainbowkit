@@ -48,8 +48,10 @@ const preloadBrowserIcon = () => loadImages(getBrowserSrc);
 
 export function GetDetail({
   getWalletDownload,
+  compactModeEnabled,
 }: {
   getWalletDownload: (walletId: string) => void;
+  compactModeEnabled: boolean;
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
@@ -151,7 +153,9 @@ export function GetDetail({
           {i18n.t('get.looking_for.title')}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
-          {i18n.t('get.looking_for.description')}
+          {compactModeEnabled
+            ? i18n.t('get.looking_for.desktop.compact_description')
+            : i18n.t('get.looking_for.desktop.wide_description')}
         </Text>
       </Box>
     </Box>

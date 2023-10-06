@@ -221,7 +221,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Get:
-      walletContent = <GetDetail getWalletDownload={getWalletDownload} />;
+      walletContent = (
+        <GetDetail
+          getWalletDownload={getWalletDownload}
+          compactModeEnabled={compactModeEnabled}
+        />
+      );
       headerLabel = i18n.t('get.title');
       headerBackButtonLink = compactModeEnabled
         ? WalletStep.LearnCompact

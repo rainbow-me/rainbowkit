@@ -88,7 +88,13 @@
     },
     "looking_for": {
       "title": "Ce n'est pas ce que vous cherchez ?",
-      "description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille."
+      "mobile": {
+        "description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille."
+      },
+      "desktop": {
+        "compact_description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille.",
+        "wide_description": "Sélectionnez un portefeuille sur la gauche pour commencer avec un autre fournisseur de portefeuille."
+      }
     }
   },
   "get_options": {
