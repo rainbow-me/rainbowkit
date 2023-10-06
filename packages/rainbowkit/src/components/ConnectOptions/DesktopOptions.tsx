@@ -319,10 +319,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     <Box
       display="flex"
       flexDirection="row"
-      style={{
-        maxHeight: compactModeEnabled ? 468 : 504,
-        minHeight: compactModeEnabled ? 468 : 'auto',
-      }}
+      style={{ maxHeight: compactModeEnabled ? 468 : 504 }}
     >
       {(compactModeEnabled ? walletStep === WalletStep.None : true) && (
         <Box
@@ -417,7 +414,6 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 <Box
                   alignItems="center"
                   display="flex"
-                  flexWrap="wrap"
                   justifyContent="space-between"
                   paddingX="24"
                   paddingY="16"
@@ -465,7 +461,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             display="flex"
             flexDirection="column"
             margin="16"
-            style={{ flex: 1 }}
+            style={{ flexGrow: 1 }}
           >
             <Box
               alignItems="center"
@@ -522,18 +518,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             <Box
               display="flex"
               flexDirection="column"
-              overflowY="auto"
-              style={{ flex: 1 }}
+              style={{ minHeight: compactModeEnabled ? 396 : 432 }}
             >
               <Box
                 alignItems="center"
                 display="flex"
                 flexDirection="column"
                 gap="6"
+                height="full"
                 justifyContent="center"
                 marginX="8"
-                overflowY="hidden"
-                flex="1"
               >
                 {walletContent}
               </Box>

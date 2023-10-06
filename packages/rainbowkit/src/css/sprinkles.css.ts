@@ -136,8 +136,6 @@ const responsiveProperties = defineProperties({
   },
   defaultCondition: 'smallScreen',
   properties: {
-    overflowY: ['auto', 'scroll', 'hidden'],
-    flexWrap: ['wrap', 'nowrap'],
     alignItems: flexAlignment,
     display: ['none', 'block', 'flex', 'inline'],
   },
@@ -175,7 +173,6 @@ const unresponsiveProperties = defineProperties({
     },
     cursor: ['pointer'],
     flexDirection: ['row', 'column'],
-    flex: ['1'],
     fontFamily: themeVars.fonts,
     fontSize: {
       '12': { fontSize: '12px', lineHeight: '18px' },
