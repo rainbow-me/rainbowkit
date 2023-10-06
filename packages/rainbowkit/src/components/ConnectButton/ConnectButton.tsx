@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
@@ -40,14 +40,8 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
-  const [isClient, setIsClient] = useState(false);
 
   const i18n = useContext(I18nContext);
-
-  // Quick fix to avoid hydration errors with next-js on brave browser
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   return (
     <ConnectButtonRenderer>
@@ -275,7 +269,7 @@ export function ConnectButton({
                 transition="default"
                 type="button"
               >
-                {isClient && label === 'Connect Wallet'
+                {mounted && label === 'Connect Wallet'
                   ? i18n.t('connect_wallet.label')
                   : label}
               </Box>
