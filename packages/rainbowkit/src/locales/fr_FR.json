@@ -32,7 +32,7 @@
     "learn_more": {
       "label": "En savoir plus"
     },
-    "recent": "Récents :)",
+    "recent": "Récents",
     "status": {
       "opening": "Ouverture %{wallet}...",
       "not_installed": "%{wallet} n'est pas installé",
