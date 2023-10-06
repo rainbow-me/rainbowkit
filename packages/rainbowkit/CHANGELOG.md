@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.1.1
+
+### Patch Changes
+
+- b60e335c: Fixed a dependency resolution issue for `ESModule` projects related to `i18n-js`
+
 ## 1.1.0
 
 ### Minor Changes
