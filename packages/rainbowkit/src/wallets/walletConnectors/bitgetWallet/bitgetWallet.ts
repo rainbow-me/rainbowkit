@@ -118,21 +118,21 @@ export const bitgetWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Bitget Wallet to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.bitget.extension.step1.description',
                 step: 'install',
-                title: 'Install the Bitget Wallet extension',
+                title: 'wallet_connectors.bitget.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.bitget.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.bitget.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.bitget.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.bitget.extension.step3.description',
               },
             ],
           },
@@ -149,21 +149,22 @@ export const bitgetWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Bitget Wallet on your home screen for quicker access.',
+                      'wallet_connectors.bitget.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Bitget Wallet app',
+                    title: 'wallet_connectors.bitget.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.bitget.qr_code.step2.description',
+
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.bitget.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.bitget.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.bitget.qr_code.step3.title',
                   },
                 ],
               },

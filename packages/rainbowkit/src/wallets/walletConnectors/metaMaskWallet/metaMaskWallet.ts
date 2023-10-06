@@ -153,21 +153,21 @@ export const metaMaskWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting MetaMask on your home screen for quicker access.',
+                      'wallet_connectors.metamask.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the MetaMask app',
+                    title: 'wallet_connectors.metamask.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.metamask.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.metamask.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
-                    step: 'scan',
-                    title: 'Tap the scan button',
+                      'wallet_connectors.metamask.qr_code.step3.description',
+                    step: 'refresh',
+                    title: 'wallet_connectors.metamask.qr_code.step3.title',
                   },
                 ],
               },
@@ -179,21 +179,21 @@ export const metaMaskWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning MetaMask to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.metamask.extension.step1.description',
                 step: 'install',
-                title: 'Install the MetaMask extension',
+                title: 'wallet_connectors.metamask.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.metamask.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.metamask.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.metamask.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.metamask.extension.step3.title',
               },
             ],
           },

@@ -85,21 +85,21 @@ export const rainbowWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+                      'wallet_connectors.rainbow.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Rainbow app',
+                    title: 'wallet_connectors.rainbow.qr_code.step1.title',
                   },
                   {
                     description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                      'wallet_connectors.rainbow.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.rainbow.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.rainbow.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.rainbow.qr_code.step3.title',
                   },
                 ],
               },

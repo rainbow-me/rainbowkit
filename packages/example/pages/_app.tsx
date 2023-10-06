@@ -4,6 +4,7 @@ import './global.css';
 import {
   AvatarComponent,
   DisclaimerComponent,
+  Locale,
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
@@ -49,6 +50,7 @@ import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import {
   WagmiConfig,
@@ -213,6 +215,8 @@ function RainbowKitApp({
 }: AppProps<{
   session: Session;
 }>) {
+  const router = useRouter();
+
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -226,6 +230,11 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+
+  const routerLocale = router.locale as Locale;
+
+  // Set `locale` as default from next.js and let dropdown set new `locale`
+  const [locale, setLocale] = useState<Locale>(routerLocale);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -249,6 +258,8 @@ function RainbowKitApp({
 
   const appContextProps: AppContextProps = { authEnabled };
 
+  const locales = router.locales as Locale[];
+
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
@@ -264,6 +275,7 @@ function RainbowKitApp({
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
+        locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
@@ -439,6 +451,25 @@ function RainbowKitApp({
                               value={chain?.id ?? ''}
                             >
                               {chain?.name ?? 'Default'}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style={{ userSelect: 'none' }}>locale</label>
+                      </td>
+                      <td>
+                        <select
+                          onChange={(e) => {
+                            setLocale(e.target.value as Locale);
+                          }}
+                          value={locale}
+                        >
+                          {locales.map((locale) => (
+                            <option key={locale} value={locale}>
+                              {locale}
                             </option>
                           ))}
                         </select>

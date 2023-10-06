@@ -64,21 +64,19 @@ export const omniWallet = ({
           learnMoreUrl: 'https://omni.app/support',
           steps: [
             {
-              description:
-                'Add Omni to your home screen for faster access to your wallet.',
+              description: 'wallet_connectors.omni.qr_code.step1.description',
               step: 'install',
-              title: 'Open the Omni app',
+              title: 'wallet_connectors.omni.qr_code.step1.title',
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: 'wallet_connectors.omni.qr_code.step2.description',
               step: 'create',
-              title: 'Create or Import a Wallet',
+              title: 'wallet_connectors.omni.qr_code.step2.title',
             },
             {
-              description:
-                'Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect.',
+              description: 'wallet_connectors.omni.qr_code.step3.description',
               step: 'scan',
-              title: 'Tap the QR icon and scan',
+              title: 'wallet_connectors.omni.qr_code.step3.title',
             },
           ],
         },

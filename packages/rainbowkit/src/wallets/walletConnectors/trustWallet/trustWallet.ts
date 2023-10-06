@@ -142,20 +142,21 @@ export const trustWallet = ({
             steps: [
               {
                 description:
-                  'Put Trust Wallet on your home screen for faster access to your wallet.',
+                  'wallet_connectors.trust.qr_code.step1.description',
                 step: 'install' as InstructionStepName,
-                title: 'Open the Trust Wallet app',
-              },
-              {
-                description: 'Create a new wallet or import an existing one.',
-                step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.trust.qr_code.step1.title',
               },
               {
                 description:
-                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                  'wallet_connectors.trust.qr_code.step2.description',
+                step: 'create' as InstructionStepName,
+                title: 'wallet_connectors.trust.qr_code.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.trust.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'Tap WalletConnect in Settings',
+                title: 'wallet_connectors.trust.qr_code.step3.title',
               },
             ],
           },
@@ -168,20 +169,21 @@ export const trustWallet = ({
           steps: [
             {
               description:
-                'Click at the top right of your browser and pin Trust Wallet for easy access.',
+                'wallet_connectors.trust.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'Install the Trust Wallet extension',
-            },
-            {
-              description: 'Create a new wallet or import an existing one.',
-              step: 'create' as InstructionStepName,
-              title: 'Create or Import a wallet',
+              title: 'wallet_connectors.trust.extension.step1.title',
             },
             {
               description:
-                'Once you set up Trust Wallet, click below to refresh the browser and load up the extension.',
+                'wallet_connectors.trust.extension.step2.description',
+              step: 'create' as InstructionStepName,
+              title: 'wallet_connectors.trust.extension.step2.title',
+            },
+            {
+              description:
+                'wallet_connectors.trust.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
+              title: 'wallet_connectors.trust.extension.step3.title',
             },
           ],
         },

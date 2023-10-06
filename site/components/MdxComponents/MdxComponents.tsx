@@ -7,6 +7,7 @@ import { CopyIcon } from 'components/Icons/Copy';
 import { Link } from 'components/Link/Link';
 import { Pre } from 'components/Pre/Pre';
 import { PropsTable } from 'components/PropsTable/PropsTable';
+import { Table } from 'components/Table/Table';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
@@ -186,6 +187,7 @@ export const components = {
     );
   },
   PropsTable: (props) => <PropsTable aria-label="Component Props" {...props} />,
+  Table: (props) => <Table aria-label="Props Table" {...props} />,
   ul: (props) => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
   Video: (props) => (
     <Box

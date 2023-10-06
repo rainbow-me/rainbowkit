@@ -1,0 +1,748 @@
+{
+  "connect_wallet": {
+    "label": "Conectar Carteira"
+  },
+  "intro": {
+    "title": "O que é uma Carteira?",
+    "description": "Uma carteira é usada para enviar, receber, armazenar e exibir ativos digitais. Também é uma nova forma de se conectar, sem precisar criar novas contas e senhas em todo site.",
+    "digital_asset": {
+      "title": "Um lar para seus ativos digitais",
+      "description": "Carteiras são usadas para enviar, receber, armazenar e exibir ativos digitais como Ethereum e NFTs."
+    },
+    "login": {
+      "title": "Uma nova maneira de fazer login",
+      "description": "Em vez de criar novas contas e senhas em todos os sites, basta conectar sua carteira."
+    },
+    "get": {
+      "label": "Obter uma Carteira"
+    },
+    "learn_more": {
+      "label": "Saiba mais"
+    }
+  },
+  "connect": {
+    "label": "Conectar",
+    "title": "Conectar uma Carteira",
+    "new_to_ethereum": {
+      "description": "Novo nas carteiras Ethereum?",
+      "learn_more": {
+        "label": "Saiba mais"
+      }
+    },
+    "learn_more": {
+      "label": "Saiba mais"
+    },
+    "recent": "Recente",
+    "status": {
+      "opening": "Abrindo %{wallet}...",
+      "not_installed": "%{wallet} não está instalado",
+      "not_available": "%{wallet} não está disponível",
+      "confirm": "Confirme a conexão na extensão"
+    },
+    "secondary_action": {
+      "get": {
+        "description": "Não tem %{wallet}?",
+        "label": "OBTER"
+      },
+      "install": {
+        "label": "INSTALAR"
+      },
+      "retry": {
+        "label": "TENTAR DE NOVO"
+      }
+    },
+    "walletconnect": {
+      "description": {
+        "full": "Precisa do modal oficial do WalletConnect?",
+        "compact": "Precisa do modal WalletConnect?"
+      },
+      "open": {
+        "label": "ABRIR"
+      }
+    }
+  },
+  "connect_scan": {
+    "title": "Digitalize com %{wallet}",
+    "fallback_title": "Digitalize com o seu telefone"
+  },
+  "connector_group": {
+    "recommended": "Recomendado",
+    "other": "Outro",
+    "popular": "Popular",
+    "more": "Mais",
+    "others": "Outros"
+  },
+  "get": {
+    "title": "Obter uma Carteira",
+    "action": {
+      "label": "OBTER"
+    },
+    "mobile": {
+      "description": "Carteira Móvel"
+    },
+    "extension": {
+      "description": "Extensão do Navegador"
+    },
+    "mobile_and_extension": {
+      "description": "Carteira Móvel e Extensão"
+    },
+    "looking_for": {
+      "title": "Não é o que você está procurando?",
+      "mobile": {
+        "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
+      },
+      "desktop": {
+        "compact_description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente.",
+        "wide_description": "Selecione uma carteira à esquerda para começar com um provedor de carteira diferente."
+      }
+    }
+  },
+  "get_options": {
+    "title": "Comece com %{wallet}",
+    "short_title": "Obtenha %{wallet}",
+    "mobile": {
+      "title": "%{wallet} para Móvel",
+      "description": "Use a carteira móvel para explorar o mundo do Ethereum.",
+      "download": {
+        "label": "Baixe o aplicativo"
+      }
+    },
+    "extension": {
+      "title": "%{wallet} para %{browser}",
+      "description": "Acesse sua carteira diretamente do seu navegador web favorito.",
+      "download": {
+        "label": "Adicionar ao %{browser}"
+      }
+    }
+  },
+  "get_mobile": {
+    "title": "Instale %{wallet}",
+    "description": "Escaneie com seu celular para baixar no iOS ou Android",
+    "continue": {
+      "label": "Continuar"
+    }
+  },
+  "get_instructions": {
+    "mobile": {
+      "connect": {
+        "label": "Conectar"
+      },
+      "learn_more": {
+        "label": "Saiba mais"
+      }
+    },
+    "extension": {
+      "refresh": {
+        "label": "Atualizar"
+      },
+      "learn_more": {
+        "label": "Saiba mais"
+      }
+    }
+  },
+  "chains": {
+    "title": "Mudar Redes",
+    "wrong_network": "Rede errada detectada, mude ou desconecte para continuar.",
+    "confirm": "Confirme na Carteira",
+    "switching_not_supported": "Sua carteira não suporta a mudança de redes de %{appName}. Tente mudar de redes dentro da sua carteira.",
+    "switching_not_supported_fallback": "Sua carteira não suporta a troca de redes a partir deste aplicativo. Tente trocar de rede dentro de sua carteira.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
+  },
+  "profile": {
+    "disconnect": {
+      "label": "Desconectar"
+    },
+    "copy_address": {
+      "label": "Copiar Endereço",
+      "copied": "Copiado!"
+    },
+    "explorer": {
+      "label": "Veja mais no explorador"
+    },
+    "transactions": {
+      "description": "%{appName} transações aparecerão aqui...",
+      "description_fallback": "Suas transações aparecerão aqui...",
+      "recent": {
+        "title": "Transações Recentes"
+      },
+      "clear": {
+        "label": "Limpar Tudo"
+      }
+    }
+  },
+  "wallet_connectors": {
+    "argent": {
+      "qr_code": {
+        "step1": {
+          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Argent"
+        },
+        "step2": {
+          "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão Scan QR"
+        }
+      }
+    },
+    "bifrost": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar a Bifrost Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bifrost Wallet"
+        },
+        "step2": {
+          "description": "Crie ou importe uma carteira usando sua frase de recuperação.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Após você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
+        }
+      }
+    },
+    "bitget": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar a Bitget Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bitget Wallet"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar a Bitget Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Bitget"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "bitski": {
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar o Bitski na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Bitski"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "coin98": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar a Carteira Coin98 na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Carteira Coin98"
+        },
+        "step2": {
+          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Clique no canto superior direito do seu navegador e fixe a Carteira Coin98 para fácil acesso.",
+          "title": "Instale a extensão da Carteira Coin98"
+        },
+        "step2": {
+          "description": "Crie uma nova carteira ou importe uma existente.",
+          "title": "Criar ou Importar uma carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar a Carteira Coin98, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "coinbase": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar a Carteira Coinbase na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, um prompt de conexão aparecerá para que você conecte sua carteira.",
+          "title": "Toque no botão de escanear"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar o Coinbase Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Coinbase Wallet"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "core": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar o Core na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Core"
+        },
+        "step2": {
+          "description": "Você pode facilmente salvar sua carteira usando nosso recurso de backup no seu celular.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar o Core na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Core"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "fox": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar o FoxWallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo FoxWallet"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
+        }
+      }
+    },
+    "frontier": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos colocar o Frontier Wallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Frontier Wallet"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
+          "title": "Toque no botão de varredura"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar a Carteira Frontier na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Frontier"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "im_token": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo imToken",
+          "description": "Coloque o aplicativo imToken na tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no ícone do Scanner no canto superior direito",
+          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
+        }
+      }
+    },
+    "metamask": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo MetaMask",
+          "description": "Recomendamos colocar o MetaMask na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão escanear",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão MetaMask",
+          "description": "Recomendamos fixar o MetaMask na barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "okx": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo da Carteira OKX",
+          "description": "Recomendamos colocar a Carteira OKX na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão OKX Wallet",
+          "description": "Recomendamos fixar a OKX Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize o seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "omni": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Omni",
+          "description": "Adicione o Omni à sua tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no ícone do QR e escaneie",
+          "description": "Toque no ícone QR na tela inicial, escaneie o código e confirme o prompt para conectar."
+        }
+      }
+    },
+    "token_pocket": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo TokenPocket",
+          "description": "Recomendamos colocar o TokenPocket na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão TokenPocket",
+          "description": "Recomendamos fixar o TokenPocket em sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "trust": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Trust Wallet",
+          "description": "Coloque o Trust Wallet na tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque em WalletConnect nas Configurações",
+          "description": "Escolha Nova Conexão, depois escaneie o QR code e confirme o prompt para se conectar."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Trust Wallet",
+          "description": "Clique no canto superior direito do seu navegador e marque Trust Wallet para fácil acesso."
+        },
+        "step2": {
+          "title": "Crie ou Importe uma carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois que configurar a Trust Wallet, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "uniswap": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Uniswap",
+          "description": "Adicione a Carteira Uniswap à sua tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque no ícone QR e escaneie",
+          "description": "Toque no ícone QR na sua tela inicial, escaneie o código e confirme o prompt para conectar."
+        }
+      }
+    },
+    "zerion": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Zerion",
+          "description": "Recomendamos colocar o Zerion na sua tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de digitalizar, um prompt de conexão aparecerá para que você possa conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Zerion",
+          "description": "Recomendamos fixar o Zerion na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "rainbow": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Rainbow",
+          "description": "Recomendamos colocar o Rainbow na tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Você pode facilmente fazer backup da sua carteira usando nosso recurso de backup no seu telefone."
+        },
+        "step3": {
+          "title": "Toque no botão de digitalizar",
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "enkrypt": {
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar a Carteira Enkrypt na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Enkrypt"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize o seu navegador"
+        }
+      }
+    },
+    "frame": {
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fixar o Frame na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale o Frame e a extensão complementar"
+        },
+        "step2": {
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
+        },
+        "step3": {
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
+        }
+      }
+    },
+    "one_key": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão OneKey Wallet",
+          "description": "Recomendamos fixar a OneKey Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "phantom": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Phantom",
+          "description": "Recomendamos fixar o Phantom na sua barra de tarefas para facilitar o acesso à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta de recuperação com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "rabby": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Rabby",
+          "description": "Recomendamos fixar Rabby na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "safeheron": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Core",
+          "description": "Recomendamos fixar Safeheron na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "taho": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Taho",
+          "description": "Recomendamos fixar o Taho na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "talisman": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Talisman",
+          "description": "Recomendamos fixar o Talisman na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Crie ou Importe uma Carteira Ethereum",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
+        },
+        "step3": {
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "xdefi": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão XDEFI Wallet",
+          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    }
+  }
+}

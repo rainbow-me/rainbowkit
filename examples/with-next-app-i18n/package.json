@@ -1,0 +1,31 @@
+{
+  "name": "with-next-app-i18n",
+  "private": true,
+  "version": "0.0.13",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "next": "^13.4.19",
+    "next-intl": "^2.20.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "~1.12.2",
+    "wagmi": "~1.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.12",
+    "@types/react": "^18.2.21",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^13.4.19",
+    "next": "^13.4.19",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=16.8.0"
+  }
+}

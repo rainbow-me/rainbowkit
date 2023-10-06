@@ -34,22 +34,19 @@ export const rabbyWallet = ({
         learnMoreUrl: 'https://rabby.io/',
         steps: [
           {
-            description:
-              'We recommend pinning Rabby to your taskbar for quicker access to your wallet.',
+            description: 'wallet_connectors.rabby.extension.step1.description',
             step: 'install',
-            title: 'Install the Rabby extension',
+            title: 'wallet_connectors.rabby.extension.step1.title',
           },
           {
-            description:
-              'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+            description: 'wallet_connectors.rabby.extension.step2.description',
             step: 'create',
-            title: 'Create or Import a Wallet',
+            title: 'wallet_connectors.rabby.extension.step2.title',
           },
           {
-            description:
-              'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+            description: 'wallet_connectors.rabby.extension.step3.description',
             step: 'refresh',
-            title: 'Refresh your browser',
+            title: 'wallet_connectors.rabby.extension.step3.title',
           },
         ],
       },
