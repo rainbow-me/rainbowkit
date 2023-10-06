@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "Comienza con %{wallet}",
+    "short_title": "Obtener %{wallet}",
     "mobile": {
       "title": "%{wallet} para móvil",
       "description": "Use la billetera móvil para explorar el mundo de Ethereum.",
@@ -129,7 +130,7 @@
         "label": "Actualizar"
       },
       "learn_more": {
-        "label": "Aprende más"
+        "label": "Obtener más información"
       }
     }
   },
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} transacciones aparecerán aquí...",
+      "description_fallback": "Tus transacciones aparecerán aquí...",
       "recent": {
         "title": "Transacciones recientes"
       },

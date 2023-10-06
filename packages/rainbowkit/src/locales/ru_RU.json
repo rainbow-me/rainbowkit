@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "Начните с %{wallet}",
+    "short_title": "Получить %{wallet}",
     "mobile": {
       "title": "%{wallet} для мобильных",
       "description": "Используйте мобильный кошелек для исследования мира Ethereum.",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} транзакции появятся здесь...",
+      "description_fallback": "Ваши транзакции появятся здесь...",
       "recent": {
         "title": "Недавние транзакции"
       },

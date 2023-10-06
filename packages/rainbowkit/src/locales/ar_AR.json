@@ -17,7 +17,7 @@
       "label": "احصل على محفظة"
     },
     "learn_more": {
-      "label": "أعرف أكثر"
+      "label": "تعلم المزيد"
     }
   },
   "connect": {
@@ -26,7 +26,7 @@
     "new_to_ethereum": {
       "description": "جديد في محافظ Ethereum؟",
       "learn_more": {
-        "label": "أعرف أكثر"
+        "label": "تعلم المزيد"
       }
     },
     "learn_more": {
@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "ليس لديك %{wallet}؟",
+        "description": "لا يوجد لديك %{wallet}؟",
         "label": "احصل"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "ابدأ مع %{wallet}",
+    "short_title": "احصل على %{wallet}",
     "mobile": {
       "title": "%{wallet} للجوال",
       "description": "استخدم محفظة الموبايل لاستكشاف عالم Ethereum.",
@@ -121,7 +122,7 @@
         "label": "اتصل"
       },
       "learn_more": {
-        "label": "تعرف أكثر"
+        "label": "تعلم المزيد"
       }
     },
     "extension": {
@@ -129,7 +130,7 @@
         "label": "تحديث"
       },
       "learn_more": {
-        "label": "تعرف أكثر"
+        "label": "تعلم المزيد"
       }
     }
   },
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} ستظهر المعاملات هنا...",
+      "description_fallback": "سوف تظهر معاملاتك هنا...",
       "recent": {
         "title": "المعاملات الأخيرة"
       },

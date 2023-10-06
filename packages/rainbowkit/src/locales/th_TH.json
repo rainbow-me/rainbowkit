@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "ไม่มี %{wallet}หรือไม่?",
+        "description": "ไม่มี %{wallet}?",
         "label": "รับ"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "เริ่มต้นกับ %{wallet}",
+    "short_title": "รับ %{wallet}",
     "mobile": {
       "title": "%{wallet} สำหรับมือถือ",
       "description": "ใช้กระเป๋าระบบมือถือในการสำรวจโลกของ Ethereum.",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} รายการจะปรากฎที่นี่...",
+      "description_fallback": "การทำธุรกรรมของคุณจะปรากฎที่นี่...",
       "recent": {
         "title": "ธุรกรรมล่าสุด"
       },

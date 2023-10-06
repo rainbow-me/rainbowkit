@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "没有 %{wallet}？",
+        "description": "没有 %{wallet}吗？",
         "label": "获取"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "开始使用 %{wallet}",
+    "short_title": "获取 %{wallet}",
     "mobile": {
       "title": "%{wallet} 用于移动",
       "description": "使用移动钱包探索以太坊的世界。",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} 交易将会出现在这里...",
+      "description_fallback": "您的交易将会出现在这里...",
       "recent": {
         "title": "最近交易"
       },

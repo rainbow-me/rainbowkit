@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "Mulai dengan %{wallet}",
+    "short_title": "Dapatkan %{wallet}",
     "mobile": {
       "title": "%{wallet} untuk Mobile",
       "description": "Gunakan dompet mobile untuk menjelajahi dunia Ethereum.",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} transaksi akan muncul di sini...",
+      "description_fallback": "Transaksi Anda akan muncul di sini...",
       "recent": {
         "title": "Transaksi Terbaru"
       },

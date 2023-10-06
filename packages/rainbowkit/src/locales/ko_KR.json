@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}가 없으신가요?",
+        "description": "%{wallet}가 없나요?",
         "label": "GET"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "%{wallet}로 시작하십시오",
+    "short_title": "%{wallet}얻기",
     "mobile": {
       "title": "모바일용 %{wallet}",
       "description": "모바일 지갑으로 이더리움 세계를 탐험하세요.",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} 거래가 여기에 나타납니다...",
+      "description_fallback": "여기에 트랜잭션이 표시됩니다...",
       "recent": {
         "title": "최근 거래 내역"
       },

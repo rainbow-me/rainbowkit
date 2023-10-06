@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "Não possui %{wallet}?",
+        "description": "Não tem %{wallet}?",
         "label": "OBTER"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "Comece com %{wallet}",
+    "short_title": "Obtenha %{wallet}",
     "mobile": {
       "title": "%{wallet} para Móvel",
       "description": "Use a carteira móvel para explorar o mundo do Ethereum.",
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} transações aparecerão aqui...",
+      "description_fallback": "Suas transações aparecerão aqui...",
       "recent": {
         "title": "Transações Recentes"
       },

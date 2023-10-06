@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "%{wallet}で始める",
+    "short_title": "%{wallet}を取得する",
     "mobile": {
       "title": "モバイル用 %{wallet}",
       "description": "モバイルウォレットを使用して、イーサリアムの世界を探索します。",
@@ -129,7 +130,7 @@
         "label": "更新"
       },
       "learn_more": {
-        "label": "もっと詳しく学ぶ"
+        "label": "詳しくはこちら"
       }
     }
   },
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} トランザクションがここに表示されます...",
+      "description_fallback": "あなたのトランザクションはここに表示されます...",
       "recent": {
         "title": "最近のトランザクション"
       },

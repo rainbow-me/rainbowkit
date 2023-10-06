@@ -26,7 +26,7 @@
     "new_to_ethereum": {
       "description": "Ethereum वॉलेट्स में नए हैं?",
       "learn_more": {
-        "label": "और जानें।"
+        "label": "और जानें"
       }
     },
     "learn_more": {
@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "क्या आपके पास %{wallet}नहीं है?",
+        "description": "क्या आपके पास %{wallet}नहीं है ?",
         "label": "प्राप्त करें"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "%{wallet}के साथ शुरू करें",
+    "short_title": "%{wallet}प्राप्त करें",
     "mobile": {
       "title": "मोबाइल के लिए %{wallet}",
       "description": "मोबाइल वॉलेट का उपयोग करके Ethereum की दुनिया का अन्वेषण करें।",
@@ -129,7 +130,7 @@
         "label": "ताज़ा करें"
       },
       "learn_more": {
-        "label": "और अधिक जानें"
+        "label": "और जानें"
       }
     }
   },
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} लेन - देन यहां दिखाई देंगे...",
+      "description_fallback": "आपके लेन-देन यहां दिखाई देंगे...",
       "recent": {
         "title": "हाल के लेन - देन"
       },

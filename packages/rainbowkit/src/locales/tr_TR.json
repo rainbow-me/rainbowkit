@@ -41,7 +41,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}'nız yok mu?",
+        "description": "%{wallet}yok mu?",
         "label": "AL"
       },
       "install": {
@@ -93,6 +93,7 @@
   },
   "get_options": {
     "title": "%{wallet}ile başlayın",
+    "short_title": "%{wallet}Edinin",
     "mobile": {
       "title": "%{wallet} Mobil İçin",
       "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
@@ -129,7 +130,7 @@
         "label": "Yenile"
       },
       "learn_more": {
-        "label": "Daha fazla öğrenin"
+        "label": "Daha fazla bilgi edinin"
       }
     }
   },
@@ -155,6 +156,7 @@
     },
     "transactions": {
       "description": "%{appName} işlem burada görünecek...",
+      "description_fallback": "İşlemleriniz burada görünecek...",
       "recent": {
         "title": "Son İşlemler"
       },
