@@ -1,7 +1,7 @@
 {
   "name": "with-vite",
   "private": true,
-  "version": "0.0.52",
+  "version": "0.0.53",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
