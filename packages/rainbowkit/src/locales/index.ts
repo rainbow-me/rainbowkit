@@ -1,5 +1,6 @@
 import type * as I18nTypes from 'i18n-js';
-import { I18n } from 'i18n-js/dist/require';
+// @ts-ignore
+import { I18n } from 'i18n-js/dist/require/index.js';
 import ar_AR from './ar_AR.json';
 import en_US from './en_US.json';
 import es_419 from './es_419.json';
