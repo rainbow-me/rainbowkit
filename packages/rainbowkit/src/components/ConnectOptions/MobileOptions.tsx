@@ -319,7 +319,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                           (ios ? downloadUrls?.ios : downloadUrls?.android) ||
                           downloadUrls?.mobile
                         }
-                        label="GET"
+                        label={i18n.t('get.action.label')}
                         size="small"
                         type="secondary"
                       />
