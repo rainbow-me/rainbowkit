@@ -1,1 +1,1 @@
-declare module "i18n-js/dist/require";
+declare module 'i18n-js/dist/require';
