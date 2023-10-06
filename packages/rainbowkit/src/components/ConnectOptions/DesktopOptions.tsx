@@ -260,7 +260,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        i18n.t('get_options.title', { wallet: selectedWallet.name });
+        i18n.t('get_options.short_title', { wallet: selectedWallet.name });
       headerBackButtonLink =
         hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
       break;

@@ -18,7 +18,7 @@
       "label": "Get a Wallet"
     },
     "learn_more": {
-      "label": "Learn more"
+      "label": "Learn More"
     }
   },
 
@@ -28,7 +28,7 @@
     "new_to_ethereum": {
       "description": "New to Ethereum wallets?",
       "learn_more": {
-        "label": "Learn more"
+        "label": "Learn More"
       }
     },
     "learn_more": {
@@ -43,7 +43,7 @@
     },
     "secondary_action": {
       "get": {
-        "description": "Don\u2019t have %{wallet}?",
+        "description": "Don't have %{wallet}?",
         "label": "GET"
       },
       "install": {
@@ -99,6 +99,7 @@
 
   "get_options": {
     "title": "Get started with %{wallet}",
+    "short_title": "Get %{wallet}",
     "mobile": {
       "title": "%{wallet} for Mobile",
       "description": "Use the mobile wallet to explore the world of Ethereum.",
@@ -129,7 +130,7 @@
         "label": "Connect"
       },
       "learn_more": {
-        "label": "Learn more"
+        "label": "Learn More"
       }
     },
     "extension": {
@@ -137,7 +138,7 @@
         "label": "Refresh"
       },
       "learn_more": {
-        "label": "Learn more"
+        "label": "Learn More"
       }
     }
   },
@@ -165,6 +166,7 @@
     },
     "transactions": {
       "description": "%{appName} transactions will appear here...",
+      "description_fallback": "Your transactions will appear here...",
       "recent": {
         "title": "Recent Transactions"
       },

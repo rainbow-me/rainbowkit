@@ -99,9 +99,11 @@ export function TxList({ address }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  {i18n.t('profile.transactions.description', {
-                    appName: appName ?? 'this app',
-                  })}
+                  {appName
+                    ? i18n.t('profile.transactions.description', {
+                        appName,
+                      })
+                    : i18n.t('profile.transactions.description_fallback')}
                 </Text>
               </Box>
               {mobile && (
