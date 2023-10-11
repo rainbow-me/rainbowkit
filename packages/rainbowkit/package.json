@@ -59,10 +59,10 @@
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",
-    "viem": "~1.12.2",
+    "viem": "~1.16.3",
     "vitest": "^0.33.0",
-    "wagmi": "~1.4.2",
-    "@wagmi/core": "~1.4.2",
+    "wagmi": "~1.4.3",
+    "@wagmi/core": "~1.4.3",
     "@types/i18n-js": "^3.8.5"
   },
   "dependencies": {
