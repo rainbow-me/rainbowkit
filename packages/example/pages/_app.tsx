@@ -63,6 +63,7 @@ import {
   base,
   bsc,
   goerli,
+  holesky,
   mainnet,
   optimism,
   polygon,
@@ -83,7 +84,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     base,
     zora,
     bsc,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [goerli, holesky]
+      : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
