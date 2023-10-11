@@ -16,6 +16,7 @@ type ChainName =
   | 'bscTestnet'
   | 'goerli'
   | 'hardhat'
+  | 'holesky'
   | 'kovan'
   | 'localhost'
   | 'mainnet'
@@ -28,8 +29,7 @@ type ChainName =
   | 'ropsten'
   | 'sepolia'
   | 'zora'
-  | 'zoraTestnet'
-  | 'holesky';
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -104,6 +104,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
+  holesky: { chainId: 17000, ...ethereumIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
@@ -117,7 +118,6 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
-  holesky: { chainId: 17000, ...ethereumIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
