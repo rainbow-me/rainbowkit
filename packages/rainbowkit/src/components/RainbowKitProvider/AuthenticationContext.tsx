@@ -8,6 +8,11 @@ import React, {
 } from 'react';
 import { useAccount } from 'wagmi';
 
+interface ConnectorData {
+  account: string;
+  chain: number;
+}
+
 export type AuthenticationStatus =
   | 'loading'
   | 'unauthenticated'
@@ -55,7 +60,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
-  useAccount({
+  const { connector } = useAccount({
     onDisconnect: () => {
       adapter.signOut();
     },
@@ -76,6 +81,24 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
       adapter.signOut();
     }
   }, [status, adapter, isDisconnected]);
+
+  const handleChangedAccount = ({ account }: ConnectorData) => {
+    // Only if account is changed then signOut
+    if (account) adapter.signOut();
+  };
+
+  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (connector && status === 'authenticated') {
+      // Attach the event listener when status is 'authenticated'
+      connector.on('change', handleChangedAccount);
+
+      // Cleanup function to remove the event listener
+      return () => {
+        connector?.off('change', handleChangedAccount);
+      };
+    }
+  }, [connector, status]);
 
   return (
     <AuthenticationContext.Provider
