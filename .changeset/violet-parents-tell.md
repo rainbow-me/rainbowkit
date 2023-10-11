@@ -3,4 +3,4 @@
 "example": patch
 ---
 
-Added holesky testnet with chain id and icon. Also updated the example app to include holesky testnet chain.
+Added holesky testnet with chain id and icon. Also updated the example app to include the holesky testnet chain.
