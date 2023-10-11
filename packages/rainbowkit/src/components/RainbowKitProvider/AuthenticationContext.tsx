@@ -6,12 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { useAccount } from 'wagmi';
-
-interface ConnectorData {
-  account: string;
-  chain: number;
-}
+import { ConnectorData, useAccount } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -87,6 +82,9 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     if (account) adapter.signOut();
   };
 
+  // Wait for user authentication before listening to "change" event.
+  // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
+  // Ensure to turn off the "change" event listener for cleanup.
   // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (connector && status === 'authenticated') {
