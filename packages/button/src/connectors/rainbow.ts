@@ -8,11 +8,11 @@ declare class RainbowConnector extends Connector {
   constructor({ chains }: RainbowWalletOptions);
 }
 
-function RainbowConnector({ chains }: RainbowWalletOptions) {
+function RainbowConnector({ chains, projectId }: RainbowWalletOptions) {
   return connectorsForWallets([
     {
       groupName: 'Popular',
-      wallets: [rainbowWallet({ chains })],
+      wallets: [rainbowWallet({ chains, projectId })],
     },
   ])()[0];
 }
