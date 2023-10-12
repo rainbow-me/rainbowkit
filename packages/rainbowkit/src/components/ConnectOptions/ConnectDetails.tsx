@@ -5,18 +5,19 @@ import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
 import { Box, BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
-import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
-import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
+import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
+import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
@@ -24,16 +25,22 @@ import { WalletStep } from './DesktopOptions';
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
-    case BrowserType.Chrome:
-      return (await import(`../Icons/Chrome.svg`)).default;
+    case BrowserType.Arc:
+      return (await import('../Icons/Arc.svg')).default;
     case BrowserType.Brave:
-      return (await import(`../Icons/Brave.svg`)).default;
+      return (await import('../Icons/Brave.svg')).default;
+    case BrowserType.Chrome:
+      return (await import('../Icons/Chrome.svg')).default;
     case BrowserType.Edge:
-      return (await import(`../Icons/Edge.svg`)).default;
+      return (await import('../Icons/Edge.svg')).default;
     case BrowserType.Firefox:
-      return (await import(`../Icons/Firefox.svg`)).default;
+      return (await import('../Icons/Firefox.svg')).default;
+    case BrowserType.Opera:
+      return (await import('../Icons/Opera.svg')).default;
+    case BrowserType.Safari:
+      return (await import('../Icons/Safari.svg')).default;
     default:
-      return (await import(`../Icons/Browser.svg`)).default;
+      return (await import('../Icons/Browser.svg')).default;
   }
 };
 
@@ -41,11 +48,15 @@ const preloadBrowserIcon = () => loadImages(getBrowserSrc);
 
 export function GetDetail({
   getWalletDownload,
+  compactModeEnabled,
 }: {
   getWalletDownload: (walletId: string) => void;
+  compactModeEnabled: boolean;
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <Box
@@ -66,16 +77,16 @@ export function GetDetail({
       >
         {shownWallets
           ?.filter(
-            wallet =>
-              wallet.downloadUrls?.browserExtension ||
-              (wallet.qrCode && wallet.downloadUrls?.qrCode)
+            (wallet) =>
+              wallet.extensionDownloadUrl ||
+              (wallet.qrCode && wallet.downloadUrls?.qrCode),
           )
-          .map(wallet => {
+          .map((wallet) => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
               wallet;
             const hasMobileCompanionApp = downloadUrls?.qrCode && qrCode;
-            const hasMobileAndExtension =
-              downloadUrls?.qrCode && downloadUrls?.browserExtension;
+            const hasExtension = !!wallet.extensionDownloadUrl;
+            const hasMobileAndExtension = downloadUrls?.qrCode && hasExtension;
 
             return (
               <Box
@@ -106,18 +117,18 @@ export function GetDetail({
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
-                        ? 'Mobile Wallet and Extension'
+                        ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileCompanionApp
-                        ? 'Mobile Wallet'
-                        : downloadUrls?.browserExtension
-                        ? 'Browser Extension'
+                        ? i18n.t('get.mobile.description')
+                        : hasExtension
+                        ? i18n.t('get.extension.description')
                         : null}
                     </Text>
                   </Box>
                 </Box>
                 <Box display="flex" flexDirection="column" gap="4">
                   <ActionButton
-                    label="GET"
+                    label={i18n.t('get.action.label')}
                     onClick={() => getWalletDownload(id)}
                     type="secondary"
                   />
@@ -138,11 +149,12 @@ export function GetDetail({
         style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          Not what you&rsquo;re looking for?
+          {i18n.t('get.looking_for.title')}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
-          Select a wallet on the left to get started with a different wallet
-          provider.
+          {compactModeEnabled
+            ? i18n.t('get.looking_for.desktop.compact_description')
+            : i18n.t('get.looking_for.desktop.wide_description')}
         </Text>
       </Box>
     </Box>
@@ -154,6 +166,7 @@ export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
   connectionError,
+  onClose,
   qrCodeUri,
   reconnect,
   wallet,
@@ -164,6 +177,7 @@ export function ConnectDetail({
   qrCodeUri?: string;
   reconnect: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
+  onClose: () => void;
 }) {
   const {
     downloadUrls,
@@ -177,8 +191,10 @@ export function ConnectDetail({
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
 
-  const hasQrCodeAndExtension =
-    downloadUrls?.qrCode && downloadUrls?.browserExtension;
+  const i18n = useContext(I18nContext);
+
+  const hasExtension = !!wallet.extensionDownloadUrl;
+  const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCode = qrCode && qrCodeUri;
 
   const secondaryAction: {
@@ -188,21 +204,26 @@ export function ConnectDetail({
     href?: string;
   } | null = showWalletConnectModal
     ? {
-        description: `Need the ${
-          compactModeEnabled ? '' : 'official'
-        } WalletConnect modal?`,
-        label: 'OPEN',
-        onClick: showWalletConnectModal,
+        description: !compactModeEnabled
+          ? i18n.t('connect.walletconnect.description.full')
+          : i18n.t('connect.walletconnect.description.compact'),
+        label: i18n.t('connect.walletconnect.open.label'),
+        onClick: () => {
+          onClose();
+          showWalletConnectModal();
+        },
       }
     : hasQrCode
     ? {
-        description: `Don\u2019t have ${name}?`,
-        label: 'GET',
+        description: i18n.t('connect.secondary_action.get.description', {
+          wallet: name,
+        }),
+        label: i18n.t('connect.secondary_action.get.label'),
         onClick: () =>
           changeWalletStep(
             hasQrCodeAndExtension
               ? WalletStep.DownloadOptions
-              : WalletStep.Download
+              : WalletStep.Download,
           ),
       }
     : null;
@@ -264,16 +285,22 @@ export function ConnectDetail({
             >
               <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? `Opening ${name}...`
-                  : downloadUrls?.browserExtension
-                  ? `${name} is not installed`
-                  : `${name} is not available`}
+                  ? i18n.t('connect.status.opening', {
+                      wallet: name,
+                    })
+                  : hasExtension
+                  ? i18n.t('connect.status.not_installed', {
+                      wallet: name,
+                    })
+                  : i18n.t('connect.status.not_available', {
+                      wallet: name,
+                    })}
               </Text>
-              {!ready && downloadUrls?.browserExtension ? (
+              {!ready && hasExtension ? (
                 <Box paddingTop="20">
                   <ActionButton
-                    href={downloadUrls.browserExtension}
-                    label="INSTALL"
+                    href={wallet.extensionDownloadUrl}
+                    label={i18n.t('connect.secondary_action.install.label')}
                     type="secondary"
                   />
                 </Box>
@@ -292,7 +319,7 @@ export function ConnectDetail({
                       textAlign="center"
                       weight="medium"
                     >
-                      Confirm connection in the extension
+                      {i18n.t('connect.status.confirm')}
                     </Text>
                   </Box>
                   <Box
@@ -305,7 +332,7 @@ export function ConnectDetail({
                   >
                     {connectionError ? (
                       <ActionButton
-                        label="RETRY"
+                        label={i18n.t('connect.secondary_action.retry.label')}
                         onClick={
                           getDesktopDeepLink
                             ? async () => {
@@ -329,7 +356,6 @@ export function ConnectDetail({
           </Box>
         </Box>
       )}
-
       <Box
         alignItems="center"
         borderRadius="10"
@@ -564,7 +590,9 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const modalSize = useContext(ModalSizeContext);
   const isCompact = modalSize === 'compact';
-  const { extension } = wallet;
+  const { extension, extensionDownloadUrl, mobileDownloadUrl } = wallet;
+
+  const i18n = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -593,35 +621,46 @@ export function DownloadOptionsDetail({
         justifyContent="center"
         width="full"
       >
-        <DownloadOptionsBox
-          actionLabel={`Add to ${browser}`}
-          description="Access your wallet right from your favorite web browser."
-          iconUrl={getBrowserSrc}
-          isCompact={isCompact}
-          onAction={() =>
-            changeWalletStep(
-              extension?.instructions
-                ? WalletStep.InstructionsExtension
-                : WalletStep.Connect
-            )
-          }
-          title={`${wallet.name} for ${browser}`}
-          url={wallet?.downloadUrls?.browserExtension}
-          variant="browser"
-        />
-        <DownloadOptionsBox
-          actionLabel="Get the app"
-          description="Use the mobile wallet to explore the world of Ethereum."
-          iconAccent={wallet.iconAccent}
-          iconBackground={wallet.iconBackground}
-          iconUrl={wallet.iconUrl}
-          isCompact={isCompact}
-          onAction={() => {
-            changeWalletStep(WalletStep.Download);
-          }}
-          title={`${wallet.name} for Mobile`}
-          variant="app"
-        />
+        {extensionDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel={i18n.t('get_options.extension.download.label', {
+              browser,
+            })}
+            description={i18n.t('get_options.extension.description')}
+            iconUrl={getBrowserSrc}
+            isCompact={isCompact}
+            onAction={() =>
+              changeWalletStep(
+                extension?.instructions
+                  ? WalletStep.InstructionsExtension
+                  : WalletStep.Connect,
+              )
+            }
+            title={i18n.t('get_options.extension.title', {
+              wallet: wallet.name,
+              browser,
+            })}
+            url={extensionDownloadUrl}
+            variant="browser"
+          />
+        )}
+        {mobileDownloadUrl && (
+          <DownloadOptionsBox
+            actionLabel={i18n.t('get_options.mobile.download.label', {
+              wallet: wallet.name,
+            })}
+            description={i18n.t('get_options.mobile.description')}
+            iconAccent={wallet.iconAccent}
+            iconBackground={wallet.iconBackground}
+            iconUrl={wallet.iconUrl}
+            isCompact={isCompact}
+            onAction={() => {
+              changeWalletStep(WalletStep.Download);
+            }}
+            title={i18n.t('get_options.mobile.title', { wallet: wallet.name })}
+            variant="app"
+          />
+        )}
       </Box>
     </Box>
   );
@@ -635,6 +674,8 @@ export function DownloadDetail({
   wallet: WalletConnector;
 }) {
   const { downloadUrls, qrCode } = wallet;
+
+  const i18n = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -653,7 +694,7 @@ export function DownloadDetail({
     >
       <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          Scan with your phone to download on iOS or Android
+          {i18n.t('get_mobile.description')}
         </Text>
       </Box>
       <Box height="full">
@@ -674,12 +715,12 @@ export function DownloadDetail({
         paddingY="8"
       >
         <ActionButton
-          label="Continue"
+          label={i18n.t('get_mobile.continue.label')}
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions
                 ? WalletStep.InstructionsMobile
-                : WalletStep.Connect
+                : WalletStep.Connect,
             )
           }
         />
@@ -693,7 +734,7 @@ const stepIcons: Record<
   (wallet: WalletConnector) => ReactNode
 > = {
   create: () => <CreateIcon />,
-  install: wallet => (
+  install: (wallet) => (
     <AsyncImage
       background={wallet.iconBackground}
       borderColor="generalBorder"
@@ -714,6 +755,8 @@ export function InstructionMobileDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -751,10 +794,10 @@ export function InstructionMobileDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {d.title}
+                {i18n.t(d.title)}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {d.description}
+                {i18n.t(d.description)}
               </Text>
             </Box>
           </Box>
@@ -769,7 +812,10 @@ export function InstructionMobileDetail({
         justifyContent="center"
         marginBottom="16"
       >
-        <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
+        <ActionButton
+          label={i18n.t('get_instructions.mobile.connect.label')}
+          onClick={() => connectWallet(wallet)}
+        />
         <Box
           as="a"
           className={touchableStyles({ active: 'shrink', hover: 'grow' })}
@@ -783,7 +829,7 @@ export function InstructionMobileDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            Learn More
+            {i18n.t('get_instructions.mobile.learn_more.label')}
           </Text>
         </Box>
       </Box>
@@ -796,6 +842,8 @@ export function InstructionExtensionDetail({
 }: {
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -833,10 +881,10 @@ export function InstructionExtensionDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {d.title}
+                {i18n.t(d.title)}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {d.description}
+                {i18n.t(d.description)}
               </Text>
             </Box>
           </Box>
@@ -852,9 +900,25 @@ export function InstructionExtensionDetail({
         marginBottom="16"
       >
         <ActionButton
-          label="Refresh"
+          label={i18n.t('get_instructions.extension.refresh.label')}
           onClick={window.location.reload.bind(window.location)}
         />
+        <Box
+          as="a"
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+          display="block"
+          href={wallet?.extension?.instructions?.learnMoreUrl}
+          paddingX="12"
+          paddingY="4"
+          rel="noreferrer"
+          style={{ willChange: 'transform' }}
+          target="_blank"
+          transition="default"
+        >
+          <Text color="accentColor" size="14" weight="bold">
+            {i18n.t('get_instructions.extension.learn_more.label')}
+          </Text>
+        </Box>
       </Box>
     </Box>
   );

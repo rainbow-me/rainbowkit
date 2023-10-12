@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const colors = {
   transparent: 'transparent',
 
@@ -115,6 +114,7 @@ export const colors = {
   blueGray100: '#242529',
 };
 
+// biome-ignore format: design system keys
 export const tokens = {
   colors: {
     light: {

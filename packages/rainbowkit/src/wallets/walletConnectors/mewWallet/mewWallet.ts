@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -17,7 +16,7 @@ export const mewWallet = ({
       (
         window.ethereum as typeof window.ethereum &
           (undefined | { isMEWwallet?: boolean })
-      )?.isMEWwallet
+      )?.isMEWwallet,
     );
   return {
     id: 'mew',
@@ -29,7 +28,8 @@ export const mewWallet = ({
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
       ios: 'https://apps.apple.com/app/apple-store/id1464614025?pt=118781877&mt=8&ct=rainbow',
-      qrCode: 'https://www.mewwallet.com/',
+      mobile: 'https://mewwallet.com',
+      qrCode: 'https://mewwallet.com',
     },
     createConnector: () => {
       return {

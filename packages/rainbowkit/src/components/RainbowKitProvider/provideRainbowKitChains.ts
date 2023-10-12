@@ -8,11 +8,15 @@ type ChainName =
   | 'arbitrumGoerli'
   | 'avalanche'
   | 'avalancheFuji'
+  | 'cronos'
+  | 'cronosTestnet'
+  | 'base'
   | 'baseGoerli'
   | 'bsc'
   | 'bscTestnet'
   | 'goerli'
   | 'hardhat'
+  | 'holesky'
   | 'kovan'
   | 'localhost'
   | 'mainnet'
@@ -23,7 +27,9 @@ type ChainName =
   | 'polygonMumbai'
   | 'rinkeby'
   | 'ropsten'
-  | 'sepolia';
+  | 'sepolia'
+  | 'zora'
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -32,6 +38,7 @@ type IconMetadata = {
 
 type ChainMetadata = {
   chainId: number;
+  name?: string;
 } & IconMetadata;
 
 const arbitrumIcon: IconMetadata = {
@@ -54,6 +61,11 @@ const bscIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/bsc.svg')).default,
 };
 
+const cronosIcon: IconMetadata = {
+  iconBackground: '#002D74',
+  iconUrl: async () => (await import('./chainIcons/cronos.svg')).default,
+};
+
 const ethereumIcon: IconMetadata = {
   iconBackground: '#484c50',
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
@@ -74,40 +86,56 @@ const polygonIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
+const zoraIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
-  arbitrum: { chainId: 42_161, ...arbitrumIcon },
+  arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
+  base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
-  bsc: { chainId: 56, ...bscIcon },
+  bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
+  cronos: { chainId: 25, ...cronosIcon },
+  cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
+  holesky: { chainId: 17000, ...ethereumIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
-  mainnet: { chainId: 1, ...ethereumIcon },
-  optimism: { chainId: 10, ...optimismIcon },
+  mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
+  optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
-  polygon: { chainId: 137, ...polygonIcon },
+  polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
+  zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
+  zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
   Object.values(chainMetadataByName)
     .filter(isNotNullish)
-    .map(({ chainId, ...metadata }) => [chainId, metadata])
+    .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
-/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain properties if not already provided */
+/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
-  chains: Chain[]
+  chains: Chain[],
 ): Chain[] =>
-  chains.map(chain => ({
-    ...(chainMetadataById[chain.id] ?? {}),
-    ...chain,
-  }));
+  chains.map((chain) => {
+    const defaultMetadata = chainMetadataById[chain.id] ?? {};
+    return {
+      ...chain,
+      name: defaultMetadata.name ?? chain.name, // favor colloquial names
+      iconUrl: chain.iconUrl ?? defaultMetadata.iconUrl,
+      iconBackground: chain.iconBackground ?? defaultMetadata.iconBackground,
+    } as Chain;
+  });

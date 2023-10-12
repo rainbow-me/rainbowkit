@@ -1,6 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
-import NextImage from 'next/image';
+import NextImage from 'next/legacy/image';
 import Link from 'next/link';
 import React from 'react';
 import { grid } from './UsedBy.css';
@@ -13,12 +13,12 @@ const frens = [
   },
   {
     asset: 'optimism',
-    name: 'Optimism Bridge',
+    name: 'Optimism',
     url: 'https://app.optimism.io/bridge',
   },
   {
     asset: 'arbitrum',
-    name: 'Arbitrum DAO',
+    name: 'Arbitrum',
     url: 'https://arbitrum.foundation/',
   },
   {
@@ -27,14 +27,39 @@ const frens = [
     url: 'https://zora.co/',
   },
   {
+    asset: 'opensea-pro',
+    name: 'OpenSea Pro',
+    url: 'https://pro.opensea.io/',
+  },
+  {
     asset: 'ens',
     name: 'ENS',
     url: 'https://alpha.ens.domains/',
   },
   {
+    asset: 'prop-house',
+    name: 'Prop House',
+    url: 'https://prop.house/',
+  },
+  {
     asset: 'matcha',
     name: 'Matcha',
     url: 'https://www.matcha.xyz/',
+  },
+  {
+    asset: 'kwenta',
+    name: 'Kwenta',
+    url: 'https://kwenta.eth.limo/',
+  },
+  {
+    asset: 'aura',
+    name: 'Aura',
+    url: 'https://app.aura.finance/',
+  },
+  {
+    asset: 'lyra',
+    name: 'Lyra',
+    url: 'https://app.lyra.finance/',
   },
   {
     asset: 'looksrare',
@@ -87,14 +112,19 @@ const frens = [
     url: 'https://superrare.com/',
   },
   {
+    asset: 'trader-joe',
+    name: 'Trader Joe',
+    url: 'https://traderjoexyz.com/',
+  },
+  {
     asset: 'doodles',
     name: 'Doodles',
     url: 'https://doodles.app/',
   },
   {
-    asset: 'trader-joe',
-    name: 'Trader Joe',
-    url: 'https://traderjoexyz.com/',
+    asset: 'frax',
+    name: 'Frax',
+    url: 'https://app.frax.finance/',
   },
 ];
 
@@ -116,49 +146,51 @@ export function UsedBy() {
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">
         <Box className={grid}>
-          {frens.map(fren => (
-            <Link href={fren.url} key={fren.name}>
-              <a href={fren.url} style={{ textDecoration: 'none' }}>
-                <Box textAlign="center">
-                  <Box
-                    as="span"
-                    borderRadius="round"
-                    display="inline-block"
-                    height={{
-                      lg: '_48',
-                      xs: '11',
-                    }}
-                    overflow="hidden"
-                    style={{
-                      boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.4)',
-                    }}
-                    width={{
-                      lg: '_48',
-                      xs: '11',
-                    }}
-                  >
-                    <NextImage
-                      alt={fren.name}
-                      height={64}
-                      layout="responsive"
-                      src={`/frens/${fren.asset}.png`}
-                      width={64}
-                    />
-                  </Box>
-                  <Text
-                    color="labelSecondary"
-                    marginTop="2"
-                    size={{
-                      lg: '3',
-                      xs: '2',
-                    }}
-                    variant={null}
-                    weight="semibold"
-                  >
-                    {fren.name}
-                  </Text>
+          {frens.map((fren) => (
+            <Link
+              href={fren.url}
+              key={fren.name}
+              style={{ textDecoration: 'none' }}
+            >
+              <Box textAlign="center">
+                <Box
+                  as="span"
+                  borderRadius="round"
+                  display="inline-block"
+                  height={{
+                    lg: '_48',
+                    xs: '11',
+                  }}
+                  overflow="hidden"
+                  style={{
+                    boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.4)',
+                  }}
+                  width={{
+                    lg: '_48',
+                    xs: '11',
+                  }}
+                >
+                  <NextImage
+                    alt={fren.name}
+                    height={64}
+                    layout="responsive"
+                    src={`/frens/${fren.asset}.png`}
+                    width={64}
+                  />
                 </Box>
-              </a>
+                <Text
+                  color="labelSecondary"
+                  marginTop="2"
+                  size={{
+                    lg: '3',
+                    xs: '2',
+                  }}
+                  variant={null}
+                  weight="semibold"
+                >
+                  {fren.name}
+                </Text>
+              </Box>
             </Link>
           ))}
         </Box>

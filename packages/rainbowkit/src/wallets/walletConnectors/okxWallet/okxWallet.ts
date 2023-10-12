@@ -1,19 +1,37 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
+
+export interface OKXWalletLegacyOptions {
+  projectId?: string;
+  chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
 
 export interface OKXWalletOptions {
+  projectId: string;
   chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const okxWallet = ({
   chains,
+  projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
   ...options
-}: OKXWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (OKXWalletLegacyOptions | OKXWalletOptions) &
+  InjectedConnectorOptions): Wallet => {
   // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
   const isOKXInjected =
     typeof window !== 'undefined' &&
@@ -29,16 +47,25 @@ export const okxWallet = ({
     iconAccent: '#000',
     iconBackground: '#000',
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
       android:
         'https://play.google.com/store/apps/details?id=com.okinc.okex.gp',
       ios: 'https://itunes.apple.com/app/id1327268470?mt=8',
-      qrCode: 'https://www.okx.com/web3',
+      mobile: 'https://okx.com/download',
+      qrCode: 'https://okx.com/download',
+      chrome:
+        'https://chrome.google.com/webstore/detail/okx-wallet/mcohilncbfahbmgdjkbpemcciiolgcge',
+      edge: 'https://microsoftedge.microsoft.com/addons/detail/okx-wallet/pbpjkcldjiffchgbbndmhojiacbgflha',
+      firefox: 'https://addons.mozilla.org/firefox/addon/okexwallet/',
+      browserExtension: 'https://okx.com/download',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {
@@ -53,7 +80,10 @@ export const okxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
-                const { uri } = (await connector.getProvider()).connector;
+                const uri = await getWalletConnectUri(
+                  connector,
+                  walletConnectVersion,
+                );
                 return isAndroid()
                   ? uri
                   : `okex://main/wc?uri=${encodeURIComponent(uri)}`;
@@ -62,53 +92,54 @@ export const okxWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () => (await connector.getProvider()).connector.uri,
+              getUri: async () =>
+                getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
-                learnMoreUrl: 'https://www.okx.com/web3/',
+                learnMoreUrl: 'https://okx.com/web3/',
                 steps: [
                   {
                     description:
-                      'We recommend putting OKX Wallet on your home screen for quicker access.',
+                      'wallet_connectors.okx.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the OKX Wallet app',
+                    title: 'wallet_connectors.okx.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.okx.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.okx.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.okx.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.okx.qr_code.step3.title',
                   },
                 ],
               },
             }
           : undefined,
         extension: {
-          learnMoreUrl: 'https://www.okx.com/web3/',
           instructions: {
+            learnMoreUrl: 'https://okx.com/web3/',
             steps: [
               {
                 description:
-                  'We recommend pinning OKX Wallet to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.okx.extension.step1.description',
                 step: 'install',
-                title: 'Install the OKX Wallet extension',
+                title: 'wallet_connectors.okx.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.okx.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.okx.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.okx.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.okx.extension.step3.title',
               },
             ],
           },

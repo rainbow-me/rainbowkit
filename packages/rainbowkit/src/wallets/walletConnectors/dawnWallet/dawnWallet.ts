@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -23,7 +22,8 @@ export const dawnWallet = ({
     window.ethereum.isDawn,
   hidden: () => !isIOS(),
   downloadUrls: {
-    ios: 'https://testflight.apple.com/join/UHmOJnNy',
+    ios: 'https://apps.apple.com/us/app/dawn-ethereum-wallet/id1673143782',
+    mobile: 'https://dawnwallet.xyz',
   },
   createConnector: () => ({
     connector: new InjectedConnector({

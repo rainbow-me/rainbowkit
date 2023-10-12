@@ -1,19 +1,37 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../../utils/isMobile';
+import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
+import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import type {
+  WalletConnectConnectorOptions,
+  WalletConnectLegacyConnectorOptions,
+} from '../../getWalletConnectConnector';
+
+export interface ZerionWalletLegacyOptions {
+  projectId?: string;
+  chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
 
 export interface ZerionWalletOptions {
+  projectId: string;
   chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
 export const zerionWallet = ({
   chains,
+  projectId,
+  walletConnectOptions,
+  walletConnectVersion = '2',
   ...options
-}: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
+}: (ZerionWalletOptions | ZerionWalletLegacyOptions) &
+  InjectedConnectorOptions): Wallet => {
   const isZerionInjected =
     typeof window !== 'undefined' &&
     ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
@@ -27,19 +45,26 @@ export const zerionWallet = ({
     name: 'Zerion',
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
     iconAccent: '#2962ef',
-    iconBackground: '#fff',
+    iconBackground: '#2962ef',
     installed: !shouldUseWalletConnect ? isZerionInjected : undefined,
     downloadUrls: {
-      browserExtension:
-        'https://chrome.google.com/webstore/detail/klghhnkeealcohjjanjjdaeeggmfmlpl',
       android:
         'https://play.google.com/store/apps/details?id=io.zerion.android',
       ios: 'https://apps.apple.com/app/apple-store/id1456732565',
+      mobile: 'https://link.zerion.io/pt3gdRP0njb',
       qrCode: 'https://link.zerion.io/pt3gdRP0njb',
+      chrome:
+        'https://chrome.google.com/webstore/detail/klghhnkeealcohjjanjjdaeeggmfmlpl',
+      browserExtension: 'https://zerion.io/extension',
     },
     createConnector: () => {
       const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({ chains })
+        ? getWalletConnectConnector({
+            projectId,
+            chains,
+            version: walletConnectVersion,
+            options: walletConnectOptions,
+          })
         : new InjectedConnector({
             chains,
             options: {
@@ -53,11 +78,8 @@ export const zerionWallet = ({
           });
 
       const getUri = async () => {
-        const { uri } = (await connector.getProvider()).connector;
-
-        return isAndroid()
-          ? uri
-          : `https://wallet.zerion.io/wc?uri=${encodeURIComponent(uri)}`;
+        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        return isIOS() ? `zerion://wc?uri=${encodeURIComponent(uri)}` : uri;
       };
 
       return {
@@ -74,21 +96,21 @@ export const zerionWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Zerion on your home screen for quicker access.',
+                      'wallet_connectors.zerion.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Zerion app',
+                    title: 'wallet_connectors.zerion.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.zerion.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.zerion.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.zerion.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.zerion.qr_code.step3.title',
                   },
                 ],
               },
@@ -100,21 +122,21 @@ export const zerionWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Zerion to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.zerion.extension.step1.description',
                 step: 'install',
-                title: 'Install the Zerion extension',
+                title: 'wallet_connectors.zerion.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.zerion.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.zerion.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.zerion.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.zerion.extension.step3.title',
               },
             ],
           },

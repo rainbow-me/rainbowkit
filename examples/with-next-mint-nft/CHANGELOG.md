@@ -1,5 +1,192 @@
 # with-next-mint-nft
 
+## 0.0.67
+
+### Patch Changes
+
+- Updated dependencies [b60e335c]
+  - @rainbow-me/rainbowkit@1.1.1
+
+## 0.0.66
+
+### Patch Changes
+
+- Updated dependencies [b37f5d68]
+  - @rainbow-me/rainbowkit@1.1.0
+
+## 0.0.65
+
+### Patch Changes
+
+- Updated dependencies [5b8d8219]
+- Updated dependencies [fb9405a4]
+- Updated dependencies [7643e706]
+- Updated dependencies [252f02e8]
+  - @rainbow-me/rainbowkit@1.0.12
+
+## 0.0.64
+
+### Patch Changes
+
+- Updated dependencies [118dfe11]
+  - @rainbow-me/rainbowkit@1.0.11
+
+## 0.0.63
+
+### Patch Changes
+
+- Updated dependencies [a129cb04]
+  - @rainbow-me/rainbowkit@1.0.10
+
+## 0.0.62
+
+### Patch Changes
+
+- Updated dependencies [42a0c3e5]
+- Updated dependencies [67933ed5]
+- Updated dependencies [e7ae2571]
+- Updated dependencies [c434ca7a]
+- Updated dependencies [ad1f860e]
+- Updated dependencies [60968a5f]
+- Updated dependencies [7b31af24]
+  - @rainbow-me/rainbowkit@1.0.9
+
+## 0.0.61
+
+### Patch Changes
+
+- Updated dependencies [eb319f3]
+  - @rainbow-me/rainbowkit@1.0.8
+
+## 0.0.60
+
+### Patch Changes
+
+- Updated dependencies [f1e98e84]
+- Updated dependencies [d303a3b9]
+  - @rainbow-me/rainbowkit@1.0.7
+
+## 0.0.59
+
+### Patch Changes
+
+- Updated dependencies [dc3cd10b]
+- Updated dependencies [c251d55d]
+- Updated dependencies [d5b3bd19]
+- Updated dependencies [66e84239]
+- Updated dependencies [1b4f142e]
+- Updated dependencies [e089ab98]
+  - @rainbow-me/rainbowkit@1.0.6
+
+## 0.0.58
+
+### Patch Changes
+
+- Updated dependencies [08e3f4c]
+- Updated dependencies [cb3614e]
+- Updated dependencies [53d96bc]
+- Updated dependencies [bfab830]
+  - @rainbow-me/rainbowkit@1.0.5
+
+## 0.0.57
+
+### Patch Changes
+
+- Updated dependencies [6d361b4]
+  - @rainbow-me/rainbowkit@1.0.4
+
+## 0.0.56
+
+### Patch Changes
+
+- Updated dependencies [d00c777]
+  - @rainbow-me/rainbowkit@1.0.3
+
+## 0.0.55
+
+### Patch Changes
+
+- Updated dependencies [e2b1072]
+- Updated dependencies [e2b1072]
+  - @rainbow-me/rainbowkit@1.0.2
+
+## 0.0.54
+
+### Patch Changes
+
+- Updated dependencies [9432a2f]
+- Updated dependencies [b2c66ff]
+- Updated dependencies [bcb3d18]
+  - @rainbow-me/rainbowkit@1.0.1
+
+## 0.0.53
+
+### Patch Changes
+
+- 371c988: Adopted `fs`, `net`, and `tls` polyfills for better `wagmi@1` and `viem` Webpack bundler support.
+
+  These modules are required by WalletConnect packages upstream, and were previously polyfilled by `ethers`. Reference the discussion [here](https://github.com/wagmi-dev/wagmi/issues/2300#issuecomment-1541425648).
+
+## 0.0.52
+
+### Patch Changes
+
+- Updated dependencies [93b58d0]
+  - @rainbow-me/rainbowkit@1.0.0
+
+## 0.0.51
+
+### Patch Changes
+
+- Updated dependencies [865175f]
+  - @rainbow-me/rainbowkit@0.12.14
+
+## 0.0.50
+
+### Patch Changes
+
+- Updated dependencies [0f8e87e]
+- Updated dependencies [6eab54d]
+  - @rainbow-me/rainbowkit@0.12.13
+
+## 0.0.49
+
+### Patch Changes
+
+- Updated dependencies [ab051b9]
+  - @rainbow-me/rainbowkit@0.12.12
+
+## 0.0.48
+
+### Patch Changes
+
+- Updated dependencies [0469e00]
+  - @rainbow-me/rainbowkit@0.12.11
+
+## 0.0.47
+
+### Patch Changes
+
+- Updated dependencies [ecaa85f]
+  - @rainbow-me/rainbowkit@0.12.10
+
+## 0.0.46
+
+### Patch Changes
+
+- Updated dependencies [361bb39]
+- Updated dependencies [82376f0]
+- Updated dependencies [7c9e580]
+- Updated dependencies [0127559]
+  - @rainbow-me/rainbowkit@0.12.9
+
+## 0.0.45
+
+### Patch Changes
+
+- Updated dependencies [aef9643]
+  - @rainbow-me/rainbowkit@0.12.8
+
 ## 0.0.44
 
 ### Patch Changes

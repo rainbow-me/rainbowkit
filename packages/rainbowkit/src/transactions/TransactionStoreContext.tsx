@@ -1,8 +1,8 @@
-import { providers } from 'ethers';
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useAccount, useProvider } from 'wagmi';
+import { PublicClient } from 'viem';
+import { useAccount, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
-import { createTransactionStore, TransactionStore } from './transactionStore';
+import { TransactionStore, createTransactionStore } from './transactionStore';
 
 // Only allow a single instance of the store to exist at once
 // so that multiple RainbowKitProvider instances can share the same store.
@@ -17,14 +17,15 @@ export function TransactionStoreProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const provider = useProvider<providers.BaseProvider>();
+  const provider = usePublicClient() as PublicClient;
   const { address } = useAccount();
   const chainId = useChainId();
 
   // Use existing store if it exists, or lazily create one
   const [store] = useState(
     () =>
-      storeSingleton ?? (storeSingleton = createTransactionStore({ provider }))
+      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
+      storeSingleton ?? (storeSingleton = createTransactionStore({ provider })),
   );
 
   // Keep store provider up to date with any wagmi changes

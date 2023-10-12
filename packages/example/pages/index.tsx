@@ -7,7 +7,7 @@ import {
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
-import { unstable_getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
@@ -24,7 +24,7 @@ import { getAuthOptions } from './api/auth/[...nextauth]';
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
-      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
+      session: await getServerSession(req, res, getAuthOptions(req)),
     },
   };
 };
@@ -35,9 +35,9 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = ({ authEnabled }: AppContextProps) => {
-  const { openAccountModal } = useAccountModal();
-  const { openChainModal } = useChainModal();
-  const { openConnectModal } = useConnectModal();
+  const { openAccountModal, accountModalOpen } = useAccountModal();
+  const { openChainModal, chainModalOpen } = useChainModal();
+  const { openConnectModal, connectModalOpen } = useConnectModal();
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status } = useSession();
 
@@ -54,20 +54,18 @@ const Example = ({ authEnabled }: AppContextProps) => {
     useState<ChainStatus>(defaultProps.chainStatus.largeScreen);
 
   const [showBalanceSmallScreen, setShowBalanceSmallScreen] = useState<boolean>(
-    defaultProps.showBalance.smallScreen
+    defaultProps.showBalance.smallScreen,
   );
   const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
-    defaultProps.showBalance.largeScreen
+    defaultProps.showBalance.largeScreen,
   );
 
   const { chain: activeChain } = useNetwork();
 
   const { config: sendTransactionConfig } = usePrepareSendTransaction({
     enabled: !!address,
-    request: {
-      to: address!,
-      value: 0,
-    },
+    to: address,
+    value: 0n,
   });
 
   const {
@@ -95,6 +93,18 @@ const Example = ({ authEnabled }: AppContextProps) => {
       verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
       version: '1',
     },
+    message: {
+      contents: 'Hello, Bob!',
+      from: {
+        name: 'Cow',
+        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+      },
+      to: {
+        name: 'Bob',
+        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+      },
+    },
+    primaryType: 'Mail',
     types: {
       Mail: [
         { name: 'from', type: 'Person' },
@@ -105,17 +115,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
         { name: 'name', type: 'string' },
         { name: 'wallet', type: 'address' },
       ],
-    },
-    value: {
-      contents: 'Hello, Bob!',
-      from: {
-        name: 'Cow',
-        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
-      },
-      to: {
-        name: 'Bob',
-        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-      },
     },
   });
 
@@ -183,7 +182,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
               <div
                 {...(!ready && {
                   'aria-hidden': true,
-                  'style': {
+                  style: {
                     opacity: 0,
                     pointerEvents: 'none',
                     userSelect: 'none',
@@ -282,21 +281,25 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 onClick={openConnectModal}
                 type="button"
               >
-                Open connect modal
+                {connectModalOpen
+                  ? 'Connect modal opened'
+                  : 'Open connect modal'}
               </button>
               <button
                 disabled={!openChainModal}
                 onClick={openChainModal}
                 type="button"
               >
-                Open chain modal
+                {chainModalOpen ? 'Chain modal opened' : 'Open chain modal'}
               </button>
               <button
                 disabled={!openAccountModal}
                 onClick={openAccountModal}
                 type="button"
               >
-                Open account modal
+                {accountModalOpen
+                  ? 'Account modal opened'
+                  : 'Open account modal'}
               </button>
             </div>
           </div>
@@ -366,9 +369,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <select
                       id="accountStatus"
-                      onChange={event =>
+                      onChange={(event) =>
                         setAccountStatusSmallScreen(
-                          event.currentTarget.value as AccountStatus
+                          event.currentTarget.value as AccountStatus,
                         )
                       }
                       value={accountStatusSmallScreen}
@@ -381,9 +384,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <select
                       id="accountStatus"
-                      onChange={event =>
+                      onChange={(event) =>
                         setAccountStatusLargeScreen(
-                          event.currentTarget.value as AccountStatus
+                          event.currentTarget.value as AccountStatus,
                         )
                       }
                       value={accountStatusLargeScreen}
@@ -402,7 +405,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                     <input
                       checked={showBalanceSmallScreen}
                       id="showBalance"
-                      onChange={event => {
+                      onChange={(event) => {
                         setShowBalanceSmallScreen(event.currentTarget.checked);
                       }}
                       type="checkbox"
@@ -412,7 +415,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                     <input
                       checked={showBalanceLargeScreen}
                       id="showBalance"
-                      onChange={event => {
+                      onChange={(event) => {
                         setShowBalanceLargeScreen(event.currentTarget.checked);
                       }}
                       type="checkbox"
@@ -426,9 +429,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <select
                       id="chainStatus"
-                      onChange={event =>
+                      onChange={(event) =>
                         setChainStatusSmallScreen(
-                          event.currentTarget.value as ChainStatus
+                          event.currentTarget.value as ChainStatus,
                         )
                       }
                       value={chainStatusSmallScreen}
@@ -442,9 +445,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <select
                       id="chainStatus"
-                      onChange={event =>
+                      onChange={(event) =>
                         setChainStatusLargeScreen(
-                          event.currentTarget.value as ChainStatus
+                          event.currentTarget.value as ChainStatus,
                         )
                       }
                       value={chainStatusLargeScreen}
@@ -475,7 +478,7 @@ function ManageTransactions() {
 
   return (
     <form
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault();
 
         addRecentTransaction({
@@ -499,7 +502,7 @@ function ManageTransactions() {
         <label htmlFor="txHash">Hash</label>
         <input
           id="txHash"
-          onChange={e => setHash(e.currentTarget.value)}
+          onChange={(e) => setHash(e.currentTarget.value)}
           type="text"
           value={hash}
         />
@@ -508,7 +511,7 @@ function ManageTransactions() {
         <label htmlFor="txDescription">Description</label>
         <input
           id="txDescription"
-          onChange={e => setDescription(e.currentTarget.value)}
+          onChange={(e) => setDescription(e.currentTarget.value)}
           type="text"
           value={description}
         />
@@ -517,7 +520,7 @@ function ManageTransactions() {
         <label htmlFor="txConfirmations">Confirmations</label>
         <input
           id="txConfirmations"
-          onChange={e => setConfirmations(e.currentTarget.valueAsNumber)}
+          onChange={(e) => setConfirmations(e.currentTarget.valueAsNumber)}
           type="number"
           value={confirmations}
         />
