@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { touchableStyles } from '../../css/touchableStyles';
-import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { useWalletConnectors } from '../../wallets/useWalletConnectors';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box } from '../Box/Box';
-import { ConnectorContext } from '../RainbowKitProvider/ConnectorContext';
-import * as styles from './WalletButton.css';
-import { WalletButtonRenderer } from './WalletButtonRenderer';
+import React, { useContext, useState } from "react";
+import { touchableStyles } from "../../css/touchableStyles";
+import { useConnectionStatus } from "../../hooks/useConnectionStatus";
+import { useWalletConnectors } from "../../wallets/useWalletConnectors";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { Box } from "../Box/Box";
+import { ConnectorContext } from "../RainbowKitProvider/ConnectorContext";
+import * as styles from "./WalletButton.css";
+import { WalletButtonRenderer } from "./WalletButtonRenderer";
 
 export interface WalletButtonProps {
   wallet: string;
@@ -17,14 +17,12 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
   const connectionStatus = useConnectionStatus();
   const [, setConnector] = useContext(ConnectorContext);
 
-  const [wallet] = useWalletConnectors().filter(
-    (wallet) => wallet.id === walletId,
-  );
+  const [wallet] = useWalletConnectors(walletId);
 
   return (
     <WalletButtonRenderer>
       {({ mounted, openConnectModal }) => {
-        const ready = mounted && connectionStatus !== 'loading';
+        const ready = mounted && connectionStatus !== "loading";
         return (
           <Box
             display="flex"
@@ -40,7 +38,7 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
               className={[
                 styles.border,
                 touchableStyles({
-                  active: 'shrink',
+                  active: "shrink",
                 }),
               ]}
               onClick={() => {
@@ -49,12 +47,12 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
                 openConnectModal();
               }}
               padding="6"
-              style={{ willChange: 'transform' }}
+              style={{ willChange: "transform" }}
               testId={`wallet-button-${wallet.id}`}
               transition="default"
               width="full"
               {...{
-                background: { hover: 'menuItemBackground' },
+                background: { hover: "menuItemBackground" },
               }}
             >
               <Box
@@ -77,7 +75,7 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
                       background={wallet.iconBackground}
                       {...(isMouseOver
                         ? {}
-                        : { borderColor: 'actionButtonBorder' })}
+                        : { borderColor: "actionButtonBorder" })}
                       borderRadius="6"
                       height="28"
                       src={wallet.iconUrl}
