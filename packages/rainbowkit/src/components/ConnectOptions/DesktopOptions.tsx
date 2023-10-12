@@ -198,7 +198,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const [connector] = useContext(ConnectorContext);
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
+    // @ts-ignore TODO
     if (connector) selectWallet(connector);
   }, []);
 

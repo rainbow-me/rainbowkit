@@ -13,12 +13,12 @@ export interface WalletButtonProps {
 }
 
 export function WalletButton({ wallet: walletId }: WalletButtonProps) {
-  const [isMouseOver, setIsMouseOver] = useState<Boolean>(false);
+  const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
   const connectionStatus = useConnectionStatus();
   const [, setConnector] = useContext(ConnectorContext);
 
   const [wallet] = useWalletConnectors().filter(
-    wallet => wallet.id === walletId
+    (wallet) => wallet.id === walletId,
   );
 
   return (
@@ -44,6 +44,7 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
                 }),
               ]}
               onClick={() => {
+                // @ts-ignore
                 setConnector?.(wallet);
                 openConnectModal();
               }}

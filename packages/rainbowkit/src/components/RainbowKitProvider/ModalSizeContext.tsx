@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { ReactNode, createContext, useContext } from 'react';
 import { largeScreenMinWidth } from '../../css/sprinkles.css';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { ConnectorContext } from './ConnectorContext';
@@ -11,7 +11,7 @@ export const ModalSizeOptions = {
 export type ModalSizes = typeof ModalSizeOptions[keyof typeof ModalSizeOptions];
 
 export const ModalSizeContext = createContext<ModalSizes>(
-  ModalSizeOptions.WIDE
+  ModalSizeOptions.WIDE,
 );
 
 interface ModalSizeProviderProps {
@@ -28,6 +28,7 @@ export function ModalSizeProvider({
   const [connector] = useContext(ConnectorContext);
   return (
     <ModalSizeContext.Provider
+      // @ts-ignore
       value={isSmallScreen || connector ? ModalSizeOptions.COMPACT : modalSize}
     >
       {children}
