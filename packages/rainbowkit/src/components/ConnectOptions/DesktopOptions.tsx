@@ -15,8 +15,8 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { ConnectorContext } from '../RainbowKitProvider/ConnectorContext';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 
 import {
   ModalSizeContext,
@@ -113,6 +113,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
         const sWallet = wallets.find((w) => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
+
         setQrCodeUri(uri);
 
         // This timeout prevents the UI from flickering if connection is instant,
@@ -196,13 +197,17 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
-  const [connector] = useContext(ConnectorContext);
+  const { connector } = useContext(RainbowButtonContext);
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
-    // @ts-ignore TODO
-    if (connector) selectWallet(connector);
-  }, []);
+    if (connector) {
+      // If `WalletStep.Connect` step is not set user will wait to get the qrCode first which might
+      // take time when doing `onConnecting` process in `selectWallet` function
+      changeWalletStep(WalletStep.Connect);
+      selectWallet(connector);
+    }
+  }, [connector]);
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {

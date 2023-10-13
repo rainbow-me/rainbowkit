@@ -1,28 +1,28 @@
-import React, { useContext, useState } from "react";
-import { touchableStyles } from "../../css/touchableStyles";
-import { useConnectionStatus } from "../../hooks/useConnectionStatus";
-import { useWalletConnectors } from "../../wallets/useWalletConnectors";
-import { AsyncImage } from "../AsyncImage/AsyncImage";
-import { Box } from "../Box/Box";
-import { ConnectorContext } from "../RainbowKitProvider/ConnectorContext";
-import * as styles from "./WalletButton.css";
-import { WalletButtonRenderer } from "./WalletButtonRenderer";
+import React, { useContext, useState } from 'react';
+import { touchableStyles } from '../../css/touchableStyles';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
+import { useWalletConnectors } from '../../wallets/useWalletConnectors';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { Box } from '../Box/Box';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
+import * as styles from './WalletButton.css';
+import { WalletButtonRenderer } from './WalletButtonRenderer';
 
 export interface WalletButtonProps {
   wallet: string;
 }
 
-export function WalletButton({ wallet: walletId }: WalletButtonProps) {
+export function WalletButton() {
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
   const connectionStatus = useConnectionStatus();
-  const [, setConnector] = useContext(ConnectorContext);
+  const { setConnector } = useContext(RainbowButtonContext);
 
-  const [wallet] = useWalletConnectors(walletId);
+  const [rainbowWallet] = useWalletConnectors('rainbow');
 
   return (
     <WalletButtonRenderer>
       {({ mounted, openConnectModal }) => {
-        const ready = mounted && connectionStatus !== "loading";
+        const ready = mounted && connectionStatus !== 'loading';
         return (
           <Box
             display="flex"
@@ -38,21 +38,20 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
               className={[
                 styles.border,
                 touchableStyles({
-                  active: "shrink",
+                  active: 'shrink',
                 }),
               ]}
               onClick={() => {
-                // @ts-ignore
-                setConnector?.(wallet);
+                setConnector(rainbowWallet);
                 openConnectModal();
               }}
               padding="6"
-              style={{ willChange: "transform" }}
-              testId={`wallet-button-${wallet.id}`}
+              style={{ willChange: 'transform' }}
+              testId={`wallet-button-${rainbowWallet.id}`}
               transition="default"
               width="full"
               {...{
-                background: { hover: "menuItemBackground" },
+                background: { hover: 'menuItemBackground' },
               }}
             >
               <Box
@@ -72,13 +71,13 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
                 >
                   <Box>
                     <AsyncImage
-                      background={wallet.iconBackground}
+                      background={rainbowWallet.iconBackground}
                       {...(isMouseOver
                         ? {}
-                        : { borderColor: "actionButtonBorder" })}
+                        : { borderColor: 'actionButtonBorder' })}
                       borderRadius="6"
                       height="28"
-                      src={wallet.iconUrl}
+                      src={rainbowWallet.iconUrl}
                       width="28"
                     />
                   </Box>
@@ -88,7 +87,7 @@ export function WalletButton({ wallet: walletId }: WalletButtonProps) {
                     flexDirection="column"
                     width="full"
                   >
-                    <Box>{wallet.name}</Box>
+                    <Box>{rainbowWallet.name}</Box>
                   </Box>
                 </Box>
               </Box>

@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useContext } from 'react';
 import { largeScreenMinWidth } from '../../css/sprinkles.css';
 import { useWindowSize } from '../../hooks/useWindowSize';
-import { ConnectorContext } from './ConnectorContext';
+import { RainbowButtonContext } from './RainbowButtonContext';
 
 export const ModalSizeOptions = {
   COMPACT: 'compact',
@@ -25,7 +25,8 @@ export function ModalSizeProvider({
 }: ModalSizeProviderProps) {
   const { width } = useWindowSize();
   const isSmallScreen = width && width < largeScreenMinWidth;
-  const [connector] = useContext(ConnectorContext);
+  const { connector } = useContext(RainbowButtonContext);
+
   return (
     <ModalSizeContext.Provider
       // @ts-ignore

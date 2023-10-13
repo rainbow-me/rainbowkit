@@ -7,7 +7,6 @@ import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
-import { ConnectorProvider } from './ConnectorContext';
 import { CoolModeContext } from './CoolModeContext';
 import { I18nProvider } from './I18nContext';
 import { ModalProvider } from './ModalContext';
@@ -16,6 +15,7 @@ import {
   ModalSizeProvider,
   ModalSizes,
 } from './ModalSizeContext';
+import { RainbowButtonProvider } from './RainbowButtonContext';
 import {
   RainbowKitChain,
   RainbowKitChainProvider,
@@ -106,7 +106,7 @@ export function RainbowKitProvider({
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <ConnectorProvider>
+      <RainbowButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>
             <ModalSizeProvider modalSize={modalSize}>
@@ -157,7 +157,7 @@ export function RainbowKitProvider({
             </ModalSizeProvider>
           </CoolModeContext.Provider>
         </I18nProvider>
-      </ConnectorProvider>
+      </RainbowButtonProvider>
     </RainbowKitChainProvider>
   );
 }

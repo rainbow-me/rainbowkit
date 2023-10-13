@@ -14,5 +14,5 @@ export function RainbowButtonProvider({
 }
 
 export function RainbowButton() {
-  return <WalletButton wallet="rainbow" />;
+  return <WalletButton />;
 }
