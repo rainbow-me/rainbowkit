@@ -1,24 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
-import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import * as styles from './RainbowButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
 export const RainbowButton = () => {
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
-  const connectionStatus = useConnectionStatus();
-  const { setConnector } = useContext(RainbowButtonContext);
 
   const [rainbowWallet] = useWalletConnectors('rainbow');
 
   return (
     <WalletButtonRenderer>
-      {({ mounted, openConnectModal }) => {
-        const ready = mounted && connectionStatus !== 'loading';
+      {({ isReady, connect }) => {
         return (
           <Box
             display="flex"
@@ -37,10 +32,7 @@ export const RainbowButton = () => {
                   active: 'shrink',
                 }),
               ]}
-              onClick={() => {
-                setConnector(rainbowWallet);
-                openConnectModal();
-              }}
+              onClick={connect}
               padding="6"
               style={{ willChange: 'transform' }}
               testId={`wallet-button-${rainbowWallet.id}`}
@@ -52,7 +44,7 @@ export const RainbowButton = () => {
             >
               <Box
                 color="modalText"
-                disabled={!ready}
+                disabled={!isReady}
                 fontFamily="body"
                 fontSize="16"
                 fontWeight="bold"
@@ -94,3 +86,5 @@ export const RainbowButton = () => {
     </WalletButtonRenderer>
   );
 };
+
+RainbowButton.Custom = WalletButtonRenderer;

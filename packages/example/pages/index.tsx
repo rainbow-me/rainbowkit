@@ -271,6 +271,50 @@ const Example = ({ authEnabled }: AppContextProps) => {
         </div>
       </div>
 
+      <div>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Rainbow button (custom)</h3>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 10,
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <RainbowButton.Custom>
+              {({ isReady, connect }) => {
+                return (
+                  <button
+                    type="button"
+                    style={{
+                      background: '#0D3887',
+                      padding: '12px 16px',
+                      borderRadius: '24px',
+                      color: '#fff',
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      fontFamily: 'Helvetica Neue',
+                      outlineWidth: 0,
+                      border: 'none',
+                      cursor: 'pointer',
+                    }}
+                    disabled={!isReady}
+                    onClick={connect}
+                  >
+                    Connect Rainbow
+                  </button>
+                );
+              }}
+            </RainbowButton.Custom>
+          </div>
+        </div>
+      </div>
+
       {ready && (
         <>
           <div>
