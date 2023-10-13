@@ -5,14 +5,10 @@ import { useWalletConnectors } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
-import * as styles from './WalletButton.css';
+import * as styles from './RainbowButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
-export interface WalletButtonProps {
-  wallet: string;
-}
-
-export function WalletButton() {
+export const RainbowButton = () => {
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
   const connectionStatus = useConnectionStatus();
   const { setConnector } = useContext(RainbowButtonContext);
@@ -97,4 +93,4 @@ export function WalletButton() {
       }}
     </WalletButtonRenderer>
   );
-}
+};
