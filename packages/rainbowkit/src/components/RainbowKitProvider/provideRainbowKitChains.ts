@@ -94,7 +94,7 @@ const zoraIcon: IconMetadata = {
 };
 
 const zksyncIcon: IconMetadata = {
-  iconBackground: '#000000',
+  iconBackground: '#FFFFFF',
   iconUrl: async () => (await import('./chainIcons/zksync.svg')).default,
 };
 
