@@ -148,7 +148,8 @@ export const safepalWallet = ({
                 title: 'wallet_connectors.safepal.qr_code.step1.title',
               },
               {
-                description: 'wallet_connectors.safepal.qr_code.step2.description',
+                description:
+                  'wallet_connectors.safepal.qr_code.step2.description',
                 step: 'create' as InstructionStepName,
                 title: 'wallet_connectors.safepal.qr_code.step2.title',
               },
@@ -174,7 +175,8 @@ export const safepalWallet = ({
               title: 'wallet_connectors.safepal.extension.step1.title',
             },
             {
-              description: 'wallet_connectors.safepal.extension.step2.description',
+              description:
+                'wallet_connectors.safepal.extension.step2.description',
               step: 'create' as InstructionStepName,
               title: 'wallet_connectors.safepal.extension.step2.title',
             },
