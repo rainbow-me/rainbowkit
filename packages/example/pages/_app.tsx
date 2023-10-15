@@ -131,6 +131,7 @@ const connectors = connectorsForWallets([
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
       safeheronWallet({ chains }),
+      safepalWallet({ chains, projectId }),
       tahoWallet({ chains }),
       talismanWallet({ chains }),
       tokenPocketWallet({ chains, projectId }),
@@ -138,7 +139,6 @@ const connectors = connectorsForWallets([
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
       zerionWallet({ chains, projectId }),
-      safepalWallet({ chains, projectId }),
     ],
   },
 ]);

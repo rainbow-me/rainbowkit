@@ -62,6 +62,7 @@ export {
   rainbowWallet,
   safeWallet,
   safeheronWallet,
+  safepalWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
@@ -70,5 +71,4 @@ export {
   walletConnectWallet,
   xdefiWallet,
   zerionWallet,
-  safepalWallet,
 };
