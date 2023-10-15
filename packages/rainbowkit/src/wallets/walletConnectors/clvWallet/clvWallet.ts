@@ -2,10 +2,9 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
-
 import {
-  getWalletConnectConnector,
   WalletConnectConnectorOptions,
+  getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 
 export interface CLVWalletOptions {
