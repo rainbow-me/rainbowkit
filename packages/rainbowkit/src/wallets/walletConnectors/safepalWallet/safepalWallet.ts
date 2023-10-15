@@ -143,20 +143,20 @@ export const safepalWallet = ({
             steps: [
               {
                 description:
-                  'Put SafePal Wallet on your home screen for faster access to your wallet.',
+                  'wallet_connectors.safepal.qr_code.step1.description',
                 step: 'install' as InstructionStepName,
-                title: 'Open the SafePal Wallet app',
+                title: 'wallet_connectors.safepal.qr_code.step1.title',
               },
               {
-                description: 'Create a new wallet or import an existing one.',
+                description: 'wallet_connectors.safepal.qr_code.step2.description',
                 step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.safepal.qr_code.step2.title',
               },
               {
                 description:
-                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                  'wallet_connectors.safepal.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'Tap WalletConnect in Settings',
+                title: 'wallet_connectors.safepal.qr_code.step3.title',
               },
             ],
           },
@@ -169,20 +169,20 @@ export const safepalWallet = ({
           steps: [
             {
               description:
-                'Click at the top right of your browser and pin SafePal Wallet for easy access.',
+                'wallet_connectors.safepal.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'Install the SafePal Wallet extension',
+              title: 'wallet_connectors.safepal.extension.step1.title',
             },
             {
-              description: 'Create a new wallet or import an existing one.',
+              description: 'wallet_connectors.safepal.extension.step2.description',
               step: 'create' as InstructionStepName,
-              title: 'Create or Import a wallet',
+              title: 'wallet_connectors.safepal.extension.step2.title',
             },
             {
               description:
-                'Once you set up SafePal Wallet, click below to refresh the browser and load up the extension.',
+                'wallet_connectors.safepal.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
+              title: 'wallet_connectors.safepal.extension.step3.title',
             },
           ],
         },
