@@ -8,6 +8,8 @@ import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
 import { safeWallet } from './walletConnectors/safeWallet/safeWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
+import { xdefiWallet } from './walletConnectors/xdefiWallet/xdefiWallet';
+
 
 export const getDefaultWallets = ({
   appName,
@@ -25,6 +27,7 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
+        xdefiWallet({ chains, projectId }),
         injectedWallet({ chains }),
         safeWallet({ chains }),
         rainbowWallet({ chains, projectId }),
