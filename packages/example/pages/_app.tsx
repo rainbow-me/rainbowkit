@@ -67,6 +67,7 @@ import {
   mainnet,
   optimism,
   polygon,
+  zkSync,
   zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -84,6 +85,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     base,
     zora,
     bsc,
+    zkSync,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [goerli, holesky]
       : []),
