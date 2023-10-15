@@ -32,6 +32,19 @@ export const clvWallet = ({
   const shouldUseWalletConnect = !isCLVInjected;
 
   return {
+    id: 'clv',
+    name: 'CLV',
+    iconUrl: async () => (await import('./clvWallet.svg')).default,
+    iconBackground: '#fff',
+    iconAccent: '#BDFDE2',
+    installed: !shouldUseWalletConnect ? isCLVInjected : undefined,
+    downloadUrls: {
+      chrome:
+        'https://chrome.google.com/webstore/detail/clv-wallet/nhnkbkgjikgcigadomkphalanndcapjk',
+      ios: 'https://apps.apple.com/app/clover-wallet/id1570072858',
+      mobile: 'https://apps.apple.com/app/clover-wallet/id1570072858',
+      qrCode: 'https://clv.org/',
+    },
     createConnector: () => {
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({
@@ -113,18 +126,5 @@ export const clvWallet = ({
           : undefined,
       };
     },
-    downloadUrls: {
-      chrome:
-        'https://chrome.google.com/webstore/detail/clv-wallet/nhnkbkgjikgcigadomkphalanndcapjk',
-      ios: 'https://apps.apple.com/app/clover-wallet/id1570072858',
-      mobile: 'https://apps.apple.com/app/clover-wallet/id1570072858',
-      qrCode: 'https://clv.org/',
-    },
-    iconAccent: '#BDFDE2',
-    iconBackground: '#fff',
-    iconUrl: async () => (await import('./clvWallet.svg')).default,
-    id: 'clv',
-    installed: !shouldUseWalletConnect ? isCLVInjected : undefined,
-    name: 'CLV',
   };
 };
