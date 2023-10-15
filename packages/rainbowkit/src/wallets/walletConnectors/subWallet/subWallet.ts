@@ -93,22 +93,19 @@ export const subWallet = ({
             learnMoreUrl: 'https://www.subwallet.app/',
             steps: [
               {
-                description:
-                  'We recommend putting SubWallet on your home screen for quicker access.',
+                description: 'wallet_connectors.sub.qr_code.step1.title',
                 step: 'install' as InstructionStepName,
-                title: 'Open the SubWallet app',
+                title: 'wallet_connectors.sub.qr_code.step1.description',
               },
               {
-                description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                description: 'wallet_connectors.sub.qr_code.step2.title',
                 step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.sub.qr_code.step2.description',
               },
               {
-                description:
-                  'After you scan, a connection prompt will appear for you to connect your wallet.',
+                description: 'wallet_connectors.sub.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'Tap the scan button',
+                title: 'wallet_connectors.sub.qr_code.step3.title',
               },
             ],
           },
@@ -120,22 +117,19 @@ export const subWallet = ({
           learnMoreUrl: 'https://www.subwallet.app/',
           steps: [
             {
-              description:
-                'We recommend pinning SubWallet to your taskbar for quicker access to your wallet.',
+              description: 'wallet_connectors.sub.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'Install the SubWallet extension',
+              title: 'wallet_connectors.sub.extension.step1.title',
             },
             {
-              description:
-                'Be sure to back up your wallet using a secure method. Never share your recovery phrase with anyone.',
+              description: 'wallet_connectors.sub.extension.step2.description',
               step: 'create' as InstructionStepName,
-              title: 'Create or Import a Wallet',
+              title: 'wallet_connectors.sub.extension.step2.title',
             },
             {
-              description:
-                'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+              description: 'wallet_connectors.sub.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
+              title: 'wallet_connectors.sub.extension.step3.title',
             },
           ],
         },
