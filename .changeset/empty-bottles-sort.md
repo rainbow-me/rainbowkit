@@ -1,5 +1,4 @@
 ---
-'example': patch
 '@rainbow-me/rainbowkit': patch
 ---
 
