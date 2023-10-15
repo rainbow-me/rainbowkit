@@ -32,6 +32,7 @@ import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
+import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
@@ -70,5 +71,6 @@ export {
   uniswapWallet,
   walletConnectWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 };

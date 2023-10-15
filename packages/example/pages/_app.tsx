@@ -44,6 +44,7 @@ import {
   trustWallet,
   uniswapWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -138,6 +139,7 @@ const connectors = connectorsForWallets([
       trustWallet({ chains, projectId }),
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
+      zealWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
   },
