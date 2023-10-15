@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -47,21 +46,21 @@ export const desigWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Desig to your taskbar for easier access to your wallet.',
+                  'wallet_connectors.desig.extension.step1.description',
                 step: 'install',
-                title: 'Install the Desig extension',
+                title: 'wallet_connectors.desig.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your account for added security and easy wallet recovery.',
+                  'wallet_connectors.desig.extension.step2.description',
                 step: 'create',
-                title: 'Create a Wallet',
+                title: 'wallet_connectors.desig.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.desig.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.desig.extension.step3.title',
               },
             ],
             learnMoreUrl: 'https://desig.io',
