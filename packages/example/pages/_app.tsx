@@ -67,8 +67,8 @@ import {
   mainnet,
   optimism,
   polygon,
-  zora,
   zkSync,
+  zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
