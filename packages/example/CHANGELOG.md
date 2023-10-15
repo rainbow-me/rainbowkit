@@ -1,5 +1,16 @@
 # example
 
+## 0.0.77
+
+### Patch Changes
+
+- b2b69dcd: Added `holesky` testnet to the chains list
+- Updated dependencies [6cbd9a57]
+- Updated dependencies [7d978605]
+- Updated dependencies [b2b69dcd]
+  - @rainbow-me/rainbowkit@1.1.2
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
 ## 0.0.76
 
 ### Patch Changes
