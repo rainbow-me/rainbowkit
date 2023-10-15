@@ -1,8 +1,8 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface ZealWalletOptions {
   chains: Chain[];
@@ -16,10 +16,7 @@ export const zealWallet = ({
   name: 'Zeal',
   iconUrl: async () => (await import('./zealWallet.svg')).default,
   iconBackground: '#fff0',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isZeal === true,
+  installed: hasInjectedProvider('isZeal'),
   downloadUrls: {
     browserExtension: 'https://zeal.app',
   },
@@ -33,22 +30,19 @@ export const zealWallet = ({
         learnMoreUrl: 'https://zeal.app/',
         steps: [
           {
-            description:
-              'We recommend pinning Zeal to your taskbar for quicker access to your wallet.',
+            description: 'wallet_connectors.zeal.extension.step1.description',
             step: 'install',
-            title: 'Install the Zeal extension',
+            title: 'wallet_connectors.zeal.extension.step1.title',
           },
           {
-            description:
-              'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+            description: 'wallet_connectors.zeal.extension.step2.description',
             step: 'create',
-            title: 'Create or Import a Wallet',
+            title: 'wallet_connectors.zeal.extension.step2.title',
           },
           {
-            description:
-              'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+            description: 'wallet_connectors.zeal.extension.step3.description',
             step: 'refresh',
-            title: 'Refresh your browser',
+            title: 'wallet_connectors.zeal.extension.step3.title',
           },
         ],
       },
