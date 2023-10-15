@@ -384,6 +384,16 @@ safeheronWallet(options: {
 });
 ```
 
+#### SafePal Wallet
+
+```tsx
+import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
+safepalWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Taho
 
 ```tsx
@@ -443,6 +453,16 @@ uniswapWallet(options: {
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 xdefiWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Zeal
+
+```tsx
+import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
+
+zealWallet(options: {
   chains: Chain[];
 });
 ```
