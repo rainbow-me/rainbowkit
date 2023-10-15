@@ -27,7 +27,7 @@ export const getDefaultWallets = ({
     {
       groupName: 'Popular',
       wallets: [
-        xdefiWallet({ chains, projectId }),
+        xdefiWallet({ chains }),
         injectedWallet({ chains }),
         safeWallet({ chains }),
         rainbowWallet({ chains, projectId }),
