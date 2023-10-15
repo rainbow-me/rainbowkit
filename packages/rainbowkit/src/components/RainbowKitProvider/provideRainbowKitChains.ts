@@ -125,7 +125,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
-  zkSync: { chainId: 324, ...zkSyncIcon },
+  zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
 };
 
