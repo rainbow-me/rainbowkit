@@ -46,7 +46,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'More',
     wallets: [
-      xdefiWallet({ chains, projectId }),
+      xdefiWallet({ chains }),
       argentWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
       omniWallet({ chains, projectId }),
