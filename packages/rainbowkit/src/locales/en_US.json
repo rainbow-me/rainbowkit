@@ -854,20 +854,6 @@
           "title": "Refresh your browser",
           "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
-      }, 
-      "qr_code": {
-        "step1": {
-          "title": "Open the Desig Wallet app",
-          "description": "Put Desig Wallet on your home screen for faster access to your wallet."
-        },
-        "step2": {
-          "title": "Create or Import a Wallet",
-          "description": "Create a new wallet or import an existing one."
-        },
-        "step3": {
-          "title": "Tap the scan button",
-          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
-        }
       }
     }
   }
