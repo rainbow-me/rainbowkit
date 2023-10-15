@@ -8,6 +8,7 @@ import {
   ledgerWallet,
   omniWallet,
   trustWallet,
+  xdefiWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
@@ -45,6 +46,7 @@ const connectors = connectorsForWallets([
   {
     groupName: 'More',
     wallets: [
+      xdefiWallet({ chains, projectId }),
       argentWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
       omniWallet({ chains, projectId }),
