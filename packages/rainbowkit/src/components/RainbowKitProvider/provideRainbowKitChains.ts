@@ -94,7 +94,7 @@ const zoraIcon: IconMetadata = {
 };
 
 const zkSyncIcon: IconMetadata = {
-  iconBackground: '#FFFFFF',
+  iconBackground: '#f9f7ec',
   iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
 };
 
