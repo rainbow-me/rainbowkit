@@ -37,6 +37,7 @@ import {
   phantomWallet,
   rabbyWallet,
   safeheronWallet,
+  safepalWallet,
   subWallet,
   tahoWallet,
   talismanWallet,
@@ -44,6 +45,7 @@ import {
   trustWallet,
   uniswapWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -131,6 +133,7 @@ const connectors = connectorsForWallets([
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
       safeheronWallet({ chains }),
+      safepalWallet({ chains, projectId }),
       subWallet({ chains, projectId }),
       tahoWallet({ chains }),
       talismanWallet({ chains }),
@@ -138,6 +141,7 @@ const connectors = connectorsForWallets([
       trustWallet({ chains, projectId }),
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
+      zealWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
   },
