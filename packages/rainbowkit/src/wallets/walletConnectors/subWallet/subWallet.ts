@@ -93,19 +93,20 @@ export const subWallet = ({
             learnMoreUrl: 'https://www.subwallet.app/',
             steps: [
               {
-                description: 'wallet_connectors.sub.qr_code.step1.title',
+                description: 'wallet_connectors.subwallet.qr_code.step1.title',
                 step: 'install' as InstructionStepName,
-                title: 'wallet_connectors.sub.qr_code.step1.description',
+                title: 'wallet_connectors.subwallet.qr_code.step1.description',
               },
               {
-                description: 'wallet_connectors.sub.qr_code.step2.title',
+                description: 'wallet_connectors.subwallet.qr_code.step2.title',
                 step: 'create' as InstructionStepName,
-                title: 'wallet_connectors.sub.qr_code.step2.description',
+                title: 'wallet_connectors.subwallet.qr_code.step2.description',
               },
               {
-                description: 'wallet_connectors.sub.qr_code.step3.description',
+                description:
+                  'wallet_connectors.subwallet.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'wallet_connectors.sub.qr_code.step3.title',
+                title: 'wallet_connectors.subwallet.qr_code.step3.title',
               },
             ],
           },
@@ -117,19 +118,22 @@ export const subWallet = ({
           learnMoreUrl: 'https://www.subwallet.app/',
           steps: [
             {
-              description: 'wallet_connectors.sub.extension.step1.description',
+              description:
+                'wallet_connectors.subwallet.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'wallet_connectors.sub.extension.step1.title',
+              title: 'wallet_connectors.subwallet.extension.step1.title',
             },
             {
-              description: 'wallet_connectors.sub.extension.step2.description',
+              description:
+                'wallet_connectors.subwallet.extension.step2.description',
               step: 'create' as InstructionStepName,
-              title: 'wallet_connectors.sub.extension.step2.title',
+              title: 'wallet_connectors.subwallet.extension.step2.title',
             },
             {
-              description: 'wallet_connectors.sub.extension.step3.description',
+              description:
+                'wallet_connectors.subwallet.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'wallet_connectors.sub.extension.step3.title',
+              title: 'wallet_connectors.subwallet.extension.step3.title',
             },
           ],
         },

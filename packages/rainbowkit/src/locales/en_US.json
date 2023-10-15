@@ -792,7 +792,7 @@
       }
     },
 
-    "sub": {
+    "subwallet": {
       "extension": {
         "step1": {
           "title": "Install the SubWallet extension",
