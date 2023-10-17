@@ -10,7 +10,7 @@ export function useRecentTransactions(): Transaction[] {
   const chainId = useChainId();
 
   const [transactions, setTransactions] = useState(() =>
-    store && address && chainId ? store.getTransactions(address, chainId) : []
+    store && address && chainId ? store.getTransactions(address, chainId) : [],
   );
 
   useEffect(() => {

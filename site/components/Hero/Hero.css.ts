@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 import { responsiveStyle } from 'css/responsiveStyle';

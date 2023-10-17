@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
@@ -52,7 +51,7 @@ export const imTokenWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },
@@ -69,20 +68,21 @@ export const imTokenWallet = ({
           steps: [
             {
               description:
-                'Put imToken app on your home screen for faster access to your wallet.',
+                'wallet_connectors.im_token.qr_code.step1.description',
               step: 'install',
-              title: 'Open the imToken app',
-            },
-            {
-              description: 'Create a new wallet or import an existing one.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
+              title: 'wallet_connectors.im_token.qr_code.step1.title',
             },
             {
               description:
-                'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                'wallet_connectors.im_token.qr_code.step2.description',
+              step: 'create',
+              title: 'wallet_connectors.im_token.qr_code.step2.title',
+            },
+            {
+              description:
+                'wallet_connectors.im_token.qr_code.step3.description',
               step: 'scan',
-              title: 'Tap Scanner Icon in top right corner',
+              title: 'wallet_connectors.im_token.qr_code.step3.title',
             },
           ],
         },

@@ -1,7 +1,4 @@
-export const convertHexToRGBA = (
-  hexCode: string,
-  opacity: number = 1
-): string => {
+export const convertHexToRGBA = (hexCode: string, opacity = 1): string => {
   let hex = hexCode.replace('#', '');
 
   if (hex.length === 3) {
@@ -14,6 +11,7 @@ export const convertHexToRGBA = (
 
   /* Backward compatibility for whole number based opacity values. */
   if (opacity > 1 && opacity <= 100) {
+    // biome-ignore lint/style/noParameterAssign: TODO
     opacity = opacity / 100;
   }
 

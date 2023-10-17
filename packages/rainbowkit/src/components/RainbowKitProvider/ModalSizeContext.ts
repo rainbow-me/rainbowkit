@@ -8,5 +8,5 @@ export const ModalSizeOptions = {
 export type ModalSizes = typeof ModalSizeOptions[keyof typeof ModalSizeOptions];
 
 export const ModalSizeContext = createContext<ModalSizes>(
-  ModalSizeOptions.WIDE
+  ModalSizeOptions.WIDE,
 );

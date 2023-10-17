@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
@@ -51,7 +50,7 @@ export const uniswapWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `uniswap://wc?uri=${encodeURIComponent(uri)}`;
         },
@@ -64,20 +63,21 @@ export const uniswapWallet = ({
           steps: [
             {
               description:
-                'Add Uniswap Wallet to your home screen for faster access to your wallet.',
+                'wallet_connectors.uniswap.qr_code.step1.description',
               step: 'install',
-              title: 'Open the Uniswap app',
-            },
-            {
-              description: 'Create a new wallet or import an existing one.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
+              title: 'wallet_connectors.uniswap.qr_code.step1.title',
             },
             {
               description:
-                'Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect.',
+                'wallet_connectors.uniswap.qr_code.step2.description',
+              step: 'create',
+              title: 'wallet_connectors.uniswap.qr_code.step2.title',
+            },
+            {
+              description:
+                'wallet_connectors.uniswap.qr_code.step3.description',
               step: 'scan',
-              title: 'Tap the QR icon and scan',
+              title: 'wallet_connectors.uniswap.qr_code.step3.title',
             },
           ],
         },

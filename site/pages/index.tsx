@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
@@ -146,7 +145,7 @@ export default function Home() {
                 'Custom Chains',
                 'App Store and Google Play Integration',
                 'Custom Connect Button',
-              ].map(value => (
+              ].map((value) => (
                 <Box
                   alignItems="center"
                   as="li"

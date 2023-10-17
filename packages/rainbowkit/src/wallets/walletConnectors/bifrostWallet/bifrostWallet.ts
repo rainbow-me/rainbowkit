@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -6,9 +5,9 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import {
-  getWalletConnectConnector,
   WalletConnectConnectorOptions,
   WalletConnectLegacyConnectorOptions,
+  getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 import { InjectedWalletOptions } from '../injectedWallet/injectedWallet';
 
@@ -90,21 +89,21 @@ export const bifrostWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Bifrost Wallet on your home screen for quicker access.',
+                      'wallet_connectors.bifrost.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Bifrost Wallet app',
+                    title: 'wallet_connectors.bifrost.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Create or import a wallet using your recovery phrase.',
+                      'wallet_connectors.bifrost.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.bifrost.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.bifrost.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.bifrost.qr_code.step3.title',
                   },
                 ],
               },

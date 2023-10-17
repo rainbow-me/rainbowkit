@@ -1,11 +1,10 @@
-/* eslint-disable react/no-unknown-property */
 import { animated } from '@react-spring/three';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function lerpRGB(color1, color2, t) {
-  let color = [0, 0, 0];
+  const color = [0, 0, 0];
   color[0] = color1[0] + (color2[0] - color1[0]) * t;
   color[1] = color1[1] + (color2[1] - color1[1]) * t;
   color[2] = color1[2] + (color2[2] - color1[2]) * t;
@@ -13,9 +12,9 @@ function lerpRGB(color1, color2, t) {
 }
 
 function circle(et, radius, acceleration) {
-  var angle = (et * acceleration) % 360;
-  var x = radius * Math.sin((Math.PI * 2 * angle) / 360);
-  var y = radius * Math.cos((Math.PI * 2 * angle) / 360);
+  const angle = (et * acceleration) % 360;
+  const x = radius * Math.sin((Math.PI * 2 * angle) / 360);
+  const y = radius * Math.cos((Math.PI * 2 * angle) / 360);
   return [x, y];
 }
 
@@ -170,8 +169,8 @@ function Mesh(props) {
 
   useFrame(({ clock }) => {
     if (typeof ref.current !== 'undefined') {
-      var et = clock.getElapsedTime() + 40;
-      var pos = circle(et, 2, 2);
+      const et = clock.getElapsedTime() + 40;
+      const pos = circle(et, 2, 2);
 
       // Animate the gradient position
       ref.current.material.u_time = pos[0]; // This seems to be clamped to 2 dec places
@@ -185,17 +184,17 @@ function Mesh(props) {
       ref.current.material.u_c1 = lerpRGB(
         ref.current.material.u_c1,
         props.u_c1,
-        props.transitionSpeed
+        props.transitionSpeed,
       );
       ref.current.material.u_c2 = lerpRGB(
         ref.current.material.u_c2,
         props.u_c2,
-        props.transitionSpeed
+        props.transitionSpeed,
       );
       ref.current.material.u_c3 = lerpRGB(
         ref.current.material.u_c3,
         props.u_c3,
-        props.transitionSpeed
+        props.transitionSpeed,
       );
     }
   });
@@ -225,7 +224,6 @@ export function MeshGradient({ backgroundColor, u_c1, u_c2, u_c3 }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // eslint-disable-next-line no-undef
       setDevicePixelRatio(window.devicePixelRatio);
     }
   }, []);

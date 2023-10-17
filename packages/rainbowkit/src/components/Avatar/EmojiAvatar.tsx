@@ -16,7 +16,7 @@ export const EmojiAvatar: AvatarComponent = ({ address, ensImage, size }) => {
 
   const { color: backgroundColor, emoji } = useMemo(
     () => emojiAvatarForAddress(address),
-    [address]
+    [address],
   );
   return ensImage ? (
     loaded ? (

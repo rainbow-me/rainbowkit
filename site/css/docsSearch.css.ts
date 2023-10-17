@@ -29,8 +29,8 @@ globalStyle('.DocSearch-Container', {
 globalStyle('.DocSearch-Modal', {
   backgroundColor: vars.colors.accent,
   borderRadius: vars.radii[3],
-  margin: `8vh auto`,
-  maxHeight: `calc(100vh - 16vh)`,
+  margin: '8vh auto',
+  maxHeight: 'calc(100vh - 16vh)',
   maxWidth: '640px',
   overflow: 'auto',
 });
@@ -98,7 +98,7 @@ globalStyle(
   '.DocSearch-Input::-webkit-search-cancel-button,.DocSearch-Input::-webkit-search-decoration,.DocSearch-Input::-webkit-search-results-button,.DocSearch-Input::-webkit-search-results-decoration',
   {
     display: 'none',
-  }
+  },
 );
 
 globalStyle('.DocSearch-Cancel', {
@@ -200,7 +200,7 @@ globalStyle(
   '.DocSearch-Hit[aria-selected=true] .DocSearch-Hit--Result .DocSearch-Hit-action',
   {
     opacity: 1,
-  }
+  },
 );
 
 globalStyle('.DocSearch-Hit--Result .DocSearch-Hit-action svg', {
@@ -242,7 +242,7 @@ globalStyle(
   '.DocSearch-Hit[aria-selected=true] .DocSearch-Hit-icon, .DocSearch-Hit[aria-selected=true] .DocSearch-Hit-action',
   {
     filter: 'invert(1)',
-  }
+  },
 );
 
 globalStyle('.DocSearch-Hit-Container', {
@@ -302,7 +302,7 @@ globalStyle(
   '.DocSearch-Hit-action-button[title="Remove this search from history"]',
   {
     backgroundImage: Icon.Close,
-  }
+  },
 );
 
 globalStyle(
@@ -315,12 +315,12 @@ globalStyle(
     height: 28,
     padding: 0,
     width: 28,
-  }
+  },
 );
 
 globalStyle(
   '.DocSearch-Hit-action-button[title="Save this search"] svg, .DocSearch-Hit-action-button[title="Remove this search from history"] svg',
-  { display: 'none' }
+  { display: 'none' },
 );
 
 globalStyle('.DocSearch-NoResults-Prefill-List .DocSearch-Help', {

@@ -32,9 +32,9 @@ async function loadAsyncImage(asyncImage: () => Promise<string>) {
       return url;
     });
 
-  const requestPromise = load().catch(_err => {
+  const requestPromise = load().catch((_err) => {
     // Retry once if the request failed
-    return load().catch(_err => {
+    return load().catch((_err) => {
       // Ignore failed retry, remove failed request from
       // promise cache so next request can try again
       cachedRequestPromises.delete(asyncImage);
@@ -48,18 +48,18 @@ async function loadAsyncImage(asyncImage: () => Promise<string>) {
 
 export async function loadImages(...urls: (string | AsyncImageSrc)[]) {
   return await Promise.all(
-    urls.map(url => (typeof url === 'function' ? loadAsyncImage(url) : url))
+    urls.map((url) => (typeof url === 'function' ? loadAsyncImage(url) : url)),
   );
 }
 
 function useForceUpdate() {
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   return forceUpdate;
 }
 
 export function useAsyncImage(
-  url?: string | AsyncImageSrc
+  url?: string | AsyncImageSrc,
 ): string | undefined {
   const cachedUrl = typeof url === 'function' ? cachedUrls.get(url) : undefined;
   const forceUpdate = useForceUpdate();

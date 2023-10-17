@@ -3,8 +3,8 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
@@ -15,6 +15,7 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import {
   ModalSizeContext,
   ModalSizeOptions,
@@ -59,12 +60,21 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const modalSize = useContext(ModalSizeContext);
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
+  const i18n = useContext(I18nContext);
 
   const wallets = useWalletConnectors()
-    .filter(wallet => wallet.ready || !!wallet.extensionDownloadUrl)
+    .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
-  const groupedWallets = groupBy(wallets, wallet => wallet.groupName);
+  const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
+
+  const supportedI18nGroupNames = [
+    'Recommended',
+    'Other',
+    'Popular',
+    'More',
+    'Others',
+  ];
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
@@ -99,7 +109,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         if (callbackFired) return;
         callbackFired = true;
 
-        const sWallet = wallets.find(w => wallet.id === w.id);
+        const sWallet = wallets.find((w) => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
         setQrCodeUri(uri);
 
@@ -110,7 +120,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
             setSelectedWallet(sWallet);
             changeWalletStep(WalletStep.Connect);
           },
-          uri ? 0 : 50
+          uri ? 0 : 50,
         );
 
         // If the WalletConnect request is rejected, restart the wallet
@@ -135,14 +145,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       changeWalletStep(
         wallet?.extensionDownloadUrl
           ? WalletStep.DownloadOptions
-          : WalletStep.Connect
+          : WalletStep.Connect,
       );
     }
   };
 
   const getWalletDownload = (id: string) => {
     setSelectedOptionId(id);
-    const sWallet = wallets.find(w => id === w.id);
+    const sWallet = wallets.find((w) => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
     const isExtension = !!sWallet?.extensionDownloadUrl;
     setSelectedWallet(sWallet);
@@ -160,10 +170,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setSelectedWallet(undefined);
     setQrCodeUri(undefined);
   };
-  const changeWalletStep = (
-    newWalletStep: WalletStep,
-    isBack: boolean = false
-  ) => {
+  const changeWalletStep = (newWalletStep: WalletStep, isBack = false) => {
     if (
       isBack &&
       newWalletStep === WalletStep.Get &&
@@ -178,7 +185,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     setWalletStep(newWalletStep);
   };
   const [initialWalletStep, setInitialWalletStep] = useState<WalletStep>(
-    WalletStep.None
+    WalletStep.None,
   );
   const [walletStep, setWalletStep] = useState<WalletStep>(WalletStep.None);
 
@@ -187,6 +194,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     setConnectionError(false);
   }, [walletStep, selectedWallet]);
@@ -209,12 +217,17 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           getWallet={() => changeWalletStep(WalletStep.Get)}
         />
       );
-      headerLabel = 'What is a Wallet?';
+      headerLabel = i18n.t('intro.title');
       headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Get:
-      walletContent = <GetDetail getWalletDownload={getWalletDownload} />;
-      headerLabel = 'Get a Wallet';
+      walletContent = (
+        <GetDetail
+          getWalletDownload={getWalletDownload}
+          compactModeEnabled={compactModeEnabled}
+        />
+      );
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = compactModeEnabled
         ? WalletStep.LearnCompact
         : WalletStep.None;
@@ -233,11 +246,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         hasQrCode &&
-        `Scan with ${
-          selectedWallet.name === 'WalletConnect'
-            ? 'your phone'
-            : selectedWallet.name
-        }`;
+        (selectedWallet.name === 'WalletConnect'
+          ? i18n.t('connect_scan.fallback_title')
+          : i18n.t('connect_scan.title', {
+              wallet: selectedWallet.name,
+            }));
       headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
       headerBackButtonCallback = compactModeEnabled
         ? clearSelectedWallet
@@ -250,7 +263,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = selectedWallet && `Get ${selectedWallet.name}`;
+      headerLabel =
+        selectedWallet &&
+        i18n.t('get_options.short_title', { wallet: selectedWallet.name });
       headerBackButtonLink =
         hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
       break;
@@ -261,7 +276,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           wallet={selectedWallet}
         />
       );
-      headerLabel = selectedWallet && `Install ${selectedWallet.name}`;
+      headerLabel =
+        selectedWallet &&
+        i18n.t('get_mobile.title', { wallet: selectedWallet.name });
       headerBackButtonLink = hasExtensionAndMobile
         ? WalletStep.DownloadOptions
         : initialWalletStep;
@@ -275,11 +292,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        `Get started with ${
-          compactModeEnabled
+        i18n.t('get_options.title', {
+          wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
-            : selectedWallet.name
-        }`;
+            : selectedWallet.name,
+        });
       headerBackButtonLink = WalletStep.Download;
       break;
     case WalletStep.InstructionsExtension:
@@ -288,11 +305,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        `Get started with ${
-          compactModeEnabled
+        i18n.t('get_options.title', {
+          wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
-            : selectedWallet.name
-        }`;
+            : selectedWallet.name,
+        });
       headerBackButtonLink = WalletStep.DownloadOptions;
       break;
     default:
@@ -334,8 +351,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 id={titleId}
                 size="18"
                 weight="heavy"
+                testId={'connect-header-label'}
               >
-                Connect a Wallet
+                {i18n.t('connect.title')}
               </Text>
             </Box>
             {compactModeEnabled && (
@@ -356,12 +374,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                           size="14"
                           weight="bold"
                         >
-                          {groupName}
+                          {supportedI18nGroupNames.includes(groupName)
+                            ? i18n.t(
+                                `connector_group.${groupName.toLowerCase()}`,
+                              )
+                            : groupName}
                         </Text>
                       </Box>
                     ) : null}
                     <Box display="flex" flexDirection="column" gap="4">
-                      {wallets.map(wallet => {
+                      {wallets.map((wallet) => {
                         return (
                           <ModalSelection
                             currentlySelected={wallet.id === selectedOptionId}
@@ -378,7 +400,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       })}
                     </Box>
                   </Fragment>
-                )
+                ),
             )}
           </Box>
           {compactModeEnabled && (
@@ -398,7 +420,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 >
                   <Box paddingY="4">
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      New to Ethereum wallets?
+                      {i18n.t('connect.new_to_ethereum.description')}
                     </Text>
                   </Box>
                   <Box
@@ -420,7 +442,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       transition="default"
                     >
                       <Text color="accentColor" size="14" weight="bold">
-                        Learn More
+                        {i18n.t('connect.new_to_ethereum.learn_more.label')}
                       </Text>
                     </Box>
                   </Box>

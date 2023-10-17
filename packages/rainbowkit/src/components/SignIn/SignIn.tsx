@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
-import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
+import { useAccount, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -21,12 +21,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
   const authAdapter = useAuthenticationAdapter();
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   const getNonce = useCallback(async () => {
     try {
       const nonce = await authAdapter.getNonce();
-      setState(x => ({ ...x, nonce }));
-    } catch (error) {
-      setState(x => ({
+      setState((x) => ({ ...x, nonce }));
+    } catch {
+      setState((x) => ({
         ...x,
         errorMessage: 'Error preparing message, please retry!',
         status: 'idle',
@@ -49,8 +50,6 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   const { address } = useAccount();
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
-  const { disconnect } = useDisconnect();
-  const cancel = () => disconnect();
 
   const signIn = async () => {
     try {
@@ -61,7 +60,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         return;
       }
 
-      setState(x => ({
+      setState((x) => ({
         ...x,
         errorMessage: undefined,
         status: 'signing',
@@ -77,20 +76,20 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {
           // It's not really an "error" so we silently ignore and reset to idle state
-          return setState(x => ({
+          return setState((x) => ({
             ...x,
             status: 'idle',
           }));
         }
 
-        return setState(x => ({
+        return setState((x) => ({
           ...x,
           errorMessage: 'Error signing message, please retry!',
           status: 'idle',
         }));
       }
 
-      setState(x => ({ ...x, status: 'verifying' }));
+      setState((x) => ({ ...x, status: 'verifying' }));
 
       try {
         const verified = await authAdapter.verify({ message, signature });
@@ -100,14 +99,14 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         } else {
           throw new Error();
         }
-      } catch (error) {
-        return setState(x => ({
+      } catch {
+        return setState((x) => ({
           ...x,
           errorMessage: 'Error verifying signature, please retry!',
           status: 'idle',
         }));
       }
-    } catch (error) {
+    } catch {
       setState({
         errorMessage: 'Oops, something went wrong!',
         status: 'idle',
@@ -212,7 +211,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
           {mobile ? (
             <ActionButton
               label="Cancel"
-              onClick={cancel}
+              onClick={onClose}
               size="large"
               type="secondary"
             />
@@ -222,7 +221,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               borderRadius="full"
               className={touchableStyles({ active: 'shrink', hover: 'grow' })}
               display="block"
-              onClick={cancel}
+              onClick={onClose}
               paddingX="10"
               paddingY="5"
               rel="noreferrer"

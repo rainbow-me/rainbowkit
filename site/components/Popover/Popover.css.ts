@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { atoms } from 'css/atoms';
 
+// biome-ignore format: design system keys
 export const content = style([
   atoms({
     backgroundColor: 'fillElevated',
@@ -13,7 +14,6 @@ export const content = style([
     'maxWidth': 320,
     'minWidth': 200,
     'wordBreak': 'break-word',
-    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
     ':focus': { outline: 'none' },
   }),
 ]);

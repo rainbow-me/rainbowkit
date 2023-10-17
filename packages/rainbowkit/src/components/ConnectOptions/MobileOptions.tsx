@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
-  useWalletConnectors,
   WalletConnector,
+  useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -13,6 +13,7 @@ import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
 import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
@@ -39,6 +40,8 @@ function WalletButton({
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <Box
@@ -135,7 +138,7 @@ function WalletButton({
 
           {wallet.recent && (
             <Text color="accentColor" size="12" weight="medium">
-              Recent
+              {i18n.t('connect.recent')}
             </Text>
           )}
         </Box>
@@ -160,14 +163,16 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: MobileWalletStep | null = null;
 
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
-    MobileWalletStep.Connect
+    MobileWalletStep.Connect,
   );
+
+  const i18n = useContext(I18nContext);
 
   const ios = isIOS();
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
-      headerLabel = 'Connect a Wallet';
+      headerLabel = i18n.t('connect.title');
       headerBackgroundContrast = true;
       walletContent = (
         <Box>
@@ -180,8 +185,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           >
             <Box display="flex" style={{ margin: '0 auto' }}>
               {wallets
-                .filter(wallet => wallet.ready)
-                .map(wallet => {
+                .filter((wallet) => wallet.ready)
+                .map((wallet) => {
                   return (
                     <Box key={wallet.id} paddingX="20">
                       <Box width="60">
@@ -215,12 +220,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                What is a Wallet?
+                {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                A wallet is used to send, receive, store, and display digital
-                assets. It&rsquo;s also a new way to log in, without needing to
-                create new accounts and passwords on&nbsp;every&nbsp;website.
+                {i18n.t('intro.description')}
               </Text>
             </Box>
           </Box>
@@ -228,14 +231,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
-                label="Get a Wallet"
+                label={i18n.t('intro.get.label')}
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
               <ActionButton
                 href={learnMoreUrl}
-                label="Learn More"
+                label={i18n.t('intro.learn_more.label')}
                 size="large"
                 type="secondary"
               />
@@ -251,15 +254,15 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       break;
     }
     case MobileWalletStep.Get: {
-      headerLabel = 'Get a Wallet';
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = MobileWalletStep.Connect;
 
       const mobileWallets = wallets
         ?.filter(
-          wallet =>
+          (wallet) =>
             wallet.downloadUrls?.ios ||
             wallet.downloadUrls?.android ||
-            wallet.downloadUrls?.mobile
+            wallet.downloadUrls?.mobile,
         )
         ?.splice(0, 3);
 
@@ -316,7 +319,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                           (ios ? downloadUrls?.ios : downloadUrls?.android) ||
                           downloadUrls?.mobile
                         }
-                        label="GET"
+                        label={i18n.t('get.action.label')}
                         size="small"
                         type="secondary"
                       />
@@ -351,11 +354,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                Not what you&rsquo;re looking for?
+                {i18n.t('get.looking_for.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                Select a wallet on the main screen to get started with a
-                different wallet provider.
+                {i18n.t('get.looking_for.mobile.description')}
               </Text>
             </Box>
           </Box>

@@ -1,5 +1,72 @@
 # with-next-siwe-next-auth
 
+## 0.0.50
+
+### Patch Changes
+
+- Updated dependencies [6cbd9a57]
+- Updated dependencies [7d978605]
+- Updated dependencies [b2b69dcd]
+  - @rainbow-me/rainbowkit@1.1.2
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.49
+
+### Patch Changes
+
+- Updated dependencies [b60e335c]
+  - @rainbow-me/rainbowkit@1.1.1
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.48
+
+### Patch Changes
+
+- Updated dependencies [b37f5d68]
+  - @rainbow-me/rainbowkit@1.1.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+
+## 0.0.47
+
+### Patch Changes
+
+- Updated dependencies [5b8d8219]
+- Updated dependencies [fb9405a4]
+- Updated dependencies [7643e706]
+- Updated dependencies [252f02e8]
+  - @rainbow-me/rainbowkit@1.0.12
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.46
+
+### Patch Changes
+
+- Updated dependencies [118dfe11]
+  - @rainbow-me/rainbowkit@1.0.11
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.45
+
+### Patch Changes
+
+- Updated dependencies [a129cb04]
+  - @rainbow-me/rainbowkit@1.0.10
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.44
+
+### Patch Changes
+
+- Updated dependencies [42a0c3e5]
+- Updated dependencies [67933ed5]
+- Updated dependencies [e7ae2571]
+- Updated dependencies [c434ca7a]
+- Updated dependencies [ad1f860e]
+- Updated dependencies [60968a5f]
+- Updated dependencies [7b31af24]
+  - @rainbow-me/rainbowkit@1.0.9
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
 ## 0.0.43
 
 ### Patch Changes

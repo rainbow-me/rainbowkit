@@ -20,7 +20,7 @@ export const MenuButton = React.forwardRef(
       testId,
       ...urlProps
     }: Props,
-    ref: React.Ref<HTMLElement>
+    ref: React.Ref<HTMLElement>,
   ) => {
     const mobile = isMobile();
     return (
@@ -63,7 +63,7 @@ export const MenuButton = React.forwardRef(
         </Box>
       </Box>
     );
-  }
+  },
 );
 
 MenuButton.displayName = 'MenuButton';

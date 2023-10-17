@@ -16,6 +16,7 @@ export const ScrollClassName = style([
   },
 ]);
 
+// biome-ignore format: design system keys
 export const sidebar = style({
   '@media': {
     [`screen and (min-width: ${largeScreenMinWidth}px)`]: {

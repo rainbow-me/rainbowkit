@@ -13,12 +13,12 @@ const frens = [
   },
   {
     asset: 'optimism',
-    name: 'Optimism Bridge',
+    name: 'Optimism',
     url: 'https://app.optimism.io/bridge',
   },
   {
     asset: 'arbitrum',
-    name: 'Arbitrum DAO',
+    name: 'Arbitrum',
     url: 'https://arbitrum.foundation/',
   },
   {
@@ -27,14 +27,39 @@ const frens = [
     url: 'https://zora.co/',
   },
   {
+    asset: 'opensea-pro',
+    name: 'OpenSea Pro',
+    url: 'https://pro.opensea.io/',
+  },
+  {
     asset: 'ens',
     name: 'ENS',
     url: 'https://alpha.ens.domains/',
   },
   {
+    asset: 'prop-house',
+    name: 'Prop House',
+    url: 'https://prop.house/',
+  },
+  {
     asset: 'matcha',
     name: 'Matcha',
     url: 'https://www.matcha.xyz/',
+  },
+  {
+    asset: 'kwenta',
+    name: 'Kwenta',
+    url: 'https://kwenta.eth.limo/',
+  },
+  {
+    asset: 'aura',
+    name: 'Aura',
+    url: 'https://app.aura.finance/',
+  },
+  {
+    asset: 'lyra',
+    name: 'Lyra',
+    url: 'https://app.lyra.finance/',
   },
   {
     asset: 'looksrare',
@@ -87,14 +112,19 @@ const frens = [
     url: 'https://superrare.com/',
   },
   {
+    asset: 'trader-joe',
+    name: 'Trader Joe',
+    url: 'https://traderjoexyz.com/',
+  },
+  {
     asset: 'doodles',
     name: 'Doodles',
     url: 'https://doodles.app/',
   },
   {
-    asset: 'trader-joe',
-    name: 'Trader Joe',
-    url: 'https://traderjoexyz.com/',
+    asset: 'frax',
+    name: 'Frax',
+    url: 'https://app.frax.finance/',
   },
 ];
 
@@ -116,7 +146,7 @@ export function UsedBy() {
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">
         <Box className={grid}>
-          {frens.map(fren => (
+          {frens.map((fren) => (
             <Link
               href={fren.url}
               key={fren.name}

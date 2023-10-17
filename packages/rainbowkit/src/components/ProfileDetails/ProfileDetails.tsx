@@ -10,6 +10,7 @@ import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
@@ -34,6 +35,8 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
+
+  const i18n = useContext(I18nContext);
 
   const copyAddressAction = useCallback(() => {
     if (address) {
@@ -135,12 +138,16 @@ export function ProfileDetails({
             <ProfileDetailsAction
               action={copyAddressAction}
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
-              label={copiedAddress ? 'Copied!' : 'Copy Address'}
+              label={
+                copiedAddress
+                  ? i18n.t('profile.copy_address.copied')
+                  : i18n.t('profile.copy_address.label')
+              }
             />
             <ProfileDetailsAction
               action={onDisconnect}
               icon={<DisconnectIcon />}
-              label="Disconnect"
+              label={i18n.t('profile.disconnect.label')}
               testId="disconnect-button"
             />
           </Box>
