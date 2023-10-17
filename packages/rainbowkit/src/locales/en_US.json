@@ -22,6 +22,24 @@
     }
   },
 
+  "sign_in": {
+    "label": "Verify your account",
+    "description": "To finish connecting, you must sign a message in your wallet to verify that you are the owner of this account.",
+    "message": {
+      "send": "Send message",
+      "preparing": "Preparing message...",
+      "cancel": "Cancel",
+      "preparing_error": "Error preparing message, please retry!"
+    },
+    "signature": {
+      "waiting": "Waiting for signature...",
+      "verifying": "Verifying signature...",
+      "signing_error": "Error signing message, please retry!",
+      "verifying_error": "Error verifying signature, please retry!",
+      "oops_error": "Oops, something went wrong!"
+    }
+  },
+
   "connect": {
     "label": "Connect",
     "title": "Connect a Wallet",

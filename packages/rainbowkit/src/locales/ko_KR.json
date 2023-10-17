@@ -20,6 +20,23 @@
       "label": "더 알아보기"
     }
   },
+  "sign_in": {
+    "label": "계정을 확인하세요",
+    "description": "연결을 완료하려면 이 계정의 소유자임을 확인하기 위해 지갑에 메시지에 서명해야 합니다.",
+    "message": {
+      "send": "메시지 보내기",
+      "preparing": "메시지 준비 중...",
+      "cancel": "취소",
+      "preparing_error": "메시지 준비 중 오류가 발생했습니다. 다시 시도하세요!"
+    },
+    "signature": {
+      "waiting": "서명을 기다리는 중...",
+      "verifying": "서명 검증 중...",
+      "signing_error": "메시지 서명 중 오류가 발생했습니다. 다시 시도하세요!",
+      "verifying_error": "서명 검증 중 오류가 발생했습니다. 다시 시도하세요!",
+      "oops_error": "앗, 문제가 발생했습니다!"
+    }
+  },
   "connect": {
     "label": "연결",
     "title": "지갑 연결",
