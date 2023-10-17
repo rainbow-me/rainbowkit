@@ -13,7 +13,7 @@ export const RainbowButton = () => {
 
   return (
     <WalletButtonRenderer>
-      {({ isReady, connect }) => {
+      {({ ready, connect }) => {
         return (
           <Box
             display="flex"
@@ -33,9 +33,10 @@ export const RainbowButton = () => {
                 }),
               ]}
               onClick={connect}
+              disabled={!ready}
               padding="6"
               style={{ willChange: 'transform' }}
-              testId={`wallet-button-${rainbowWallet.id}`}
+              testId={`wallet-button-${rainbowWallet?.id || ''}`}
               transition="default"
               width="full"
               {...{
@@ -44,7 +45,7 @@ export const RainbowButton = () => {
             >
               <Box
                 color="modalText"
-                disabled={!isReady}
+                disabled={!ready}
                 fontFamily="body"
                 fontSize="16"
                 fontWeight="bold"
@@ -59,13 +60,13 @@ export const RainbowButton = () => {
                 >
                   <Box>
                     <AsyncImage
-                      background={rainbowWallet.iconBackground}
+                      background={rainbowWallet?.iconBackground}
                       {...(isMouseOver
                         ? {}
                         : { borderColor: 'actionButtonBorder' })}
                       borderRadius="6"
                       height="28"
-                      src={rainbowWallet.iconUrl}
+                      src={rainbowWallet?.iconUrl}
                       width="28"
                     />
                   </Box>
@@ -75,7 +76,7 @@ export const RainbowButton = () => {
                     flexDirection="column"
                     width="full"
                   >
-                    <Box>{rainbowWallet.name}</Box>
+                    <Box>{rainbowWallet?.name}</Box>
                   </Box>
                 </Box>
               </Box>

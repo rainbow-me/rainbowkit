@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
@@ -14,16 +14,43 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
+const LoadingSpinner = () => {
+  const width = 80;
+  const height = 80;
+  const radiusFactor = 20;
+
+  const perimeter = 2 * (width + height - 4 * radiusFactor);
+
+  return (
+    <svg className={styles.spinner} viewBox="0 0 86 86" width="86" height="86">
+      <rect
+        x="3"
+        y="3"
+        width={width}
+        height={height}
+        rx={radiusFactor}
+        ry={radiusFactor}
+        strokeDasharray={`${perimeter / 3} ${(2 * perimeter) / 3}`}
+        strokeDashoffset={perimeter} // Adjust this value as per your design needs
+        className={styles.rotatingBorder}
+      />
+    </svg>
+  );
+};
+
 function WalletButton({
   onClose,
   wallet,
+  isCustomConnector,
 }: {
   wallet: WalletConnector;
+  isCustomConnector?: boolean;
   onClose: () => void;
 }) {
   const {
@@ -43,6 +70,62 @@ function WalletButton({
 
   const i18n = useContext(I18nContext);
 
+  const onConnect = useCallback(async () => {
+    if (id === 'walletConnect') onClose?.();
+    connect?.()?.catch(() => {});
+
+    // We need to guard against "onConnecting" callbacks being fired
+    // multiple times since connector instances can be shared between
+    // wallets. Ideally wagmi would let us scope the callback to the
+    // specific "connect" call, but this will work in the meantime.
+    let callbackFired = false;
+
+    onConnecting?.(async () => {
+      if (callbackFired) return;
+      callbackFired = true;
+
+      if (getMobileUri) {
+        const mobileUri = await getMobileUri();
+
+        if (
+          connector.id === 'walletConnect' ||
+          connector.id === 'walletConnectLegacy'
+        ) {
+          // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
+          // successful connection and then the universal provider uses it on requests. We call
+          // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.
+          // The `connector` type refers to Wagmi connectors, as opposed to RainbowKit wallet connectors.
+          // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
+          setWalletConnectDeepLink({ mobileUri, name });
+        }
+
+        if (mobileUri.startsWith('http')) {
+          // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
+          // Using 'window.open' causes issues on iOS in non-Safari browsers and
+          // WebViews where a blank tab is left behind after connecting.
+          // This is especially bad in some WebView scenarios (e.g. following a
+          // link from Twitter) where the user doesn't have any mechanism for
+          // closing the blank tab.
+          // For whatever reason, links with a target of "_blank" don't suffer
+          // from this problem, and programmatically clicking a detached link
+          // element with the same attributes also avoids the issue.
+          const link = document.createElement('a');
+          link.href = mobileUri;
+          link.target = '_blank';
+          link.rel = 'noreferrer noopener';
+          link.click();
+        } else {
+          window.location.href = mobileUri;
+        }
+      }
+    });
+  }, [connector, connect, getMobileUri, onConnecting, onClose, name, id]);
+
+  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isCustomConnector) onConnect();
+  }, [isCustomConnector]);
+
   return (
     <Box
       as="button"
@@ -50,56 +133,7 @@ function WalletButton({
       disabled={!ready}
       fontFamily="body"
       key={id}
-      onClick={useCallback(async () => {
-        if (id === 'walletConnect') onClose?.();
-        connect?.();
-
-        // We need to guard against "onConnecting" callbacks being fired
-        // multiple times since connector instances can be shared between
-        // wallets. Ideally wagmi would let us scope the callback to the
-        // specific "connect" call, but this will work in the meantime.
-        let callbackFired = false;
-
-        onConnecting?.(async () => {
-          if (callbackFired) return;
-          callbackFired = true;
-
-          if (getMobileUri) {
-            const mobileUri = await getMobileUri();
-
-            if (
-              connector.id === 'walletConnect' ||
-              connector.id === 'walletConnectLegacy'
-            ) {
-              // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
-              // successful connection and then the universal provider uses it on requests. We call
-              // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.
-              // The `connector` type refers to Wagmi connectors, as opposed to RainbowKit wallet connectors.
-              // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
-              setWalletConnectDeepLink({ mobileUri, name });
-            }
-
-            if (mobileUri.startsWith('http')) {
-              // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
-              // Using 'window.open' causes issues on iOS in non-Safari browsers and
-              // WebViews where a blank tab is left behind after connecting.
-              // This is especially bad in some WebView scenarios (e.g. following a
-              // link from Twitter) where the user doesn't have any mechanism for
-              // closing the blank tab.
-              // For whatever reason, links with a target of "_blank" don't suffer
-              // from this problem, and programmatically clicking a detached link
-              // element with the same attributes also avoids the issue.
-              const link = document.createElement('a');
-              link.href = mobileUri;
-              link.target = '_blank';
-              link.rel = 'noreferrer noopener';
-              link.click();
-            } else {
-              window.location.href = mobileUri;
-            }
-          }
-        });
-      }, [connector, connect, getMobileUri, onConnecting, onClose, name, id])}
+      onClick={onConnect}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       testId={`wallet-option-${id}`}
@@ -112,7 +146,15 @@ function WalletButton({
         flexDirection="column"
         justifyContent="center"
       >
-        <Box paddingBottom="8" paddingTop="10">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingBottom="8"
+          paddingTop="10"
+          position="relative"
+        >
+          {isCustomConnector ? <LoadingSpinner /> : null}
           <AsyncImage
             background={iconBackground}
             borderRadius="13"
@@ -122,26 +164,28 @@ function WalletButton({
             width="60"
           />
         </Box>
-        <Box display="flex" flexDirection="column" textAlign="center">
-          <Text
-            as="h2"
-            color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-            size="13"
-            weight="medium"
-          >
-            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
-            <Box as="span" position="relative">
-              {shortName ?? name}
-              {!wallet.ready && ' (unsupported)'}
-            </Box>
-          </Text>
-
-          {wallet.recent && (
-            <Text color="accentColor" size="12" weight="medium">
-              {i18n.t('connect.recent')}
+        {!isCustomConnector ? (
+          <Box display="flex" flexDirection="column" textAlign="center">
+            <Text
+              as="h2"
+              color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+              size="13"
+              weight="medium"
+            >
+              {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+              <Box as="span" position="relative">
+                {shortName ?? name}
+                {!wallet.ready && ' (unsupported)'}
+              </Box>
             </Text>
-          )}
-        </Box>
+
+            {wallet.recent && (
+              <Text color="accentColor" size="12" weight="medium">
+                {i18n.t('connect.recent')}
+              </Text>
+            )}
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );
@@ -150,6 +194,7 @@ function WalletButton({
 enum MobileWalletStep {
   Connect = 'CONNECT',
   Get = 'GET',
+  QrCode = 'QR_CODE',
 }
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
@@ -167,10 +212,54 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   );
 
   const i18n = useContext(I18nContext);
+  const { connector } = useContext(RainbowButtonContext);
 
   const ios = isIOS();
 
+  useEffect(() => {
+    if (connector) {
+      setWalletStep(MobileWalletStep.QrCode);
+    }
+  }, [connector]);
+
   switch (walletStep) {
+    case MobileWalletStep.QrCode: {
+      headerLabel = '';
+      headerBackgroundContrast = true;
+      walletContent = (
+        <Box>
+          <Box
+            display="flex"
+            paddingTop="10"
+            paddingBottom="32"
+            justifyContent="center"
+            alignItems="center"
+            background="profileForeground"
+            flexDirection="column"
+          >
+            <Box width="60">
+              <WalletButton
+                isCustomConnector
+                onClose={onClose}
+                wallet={connector!}
+              />
+            </Box>
+            <Box marginTop="20">
+              <Text color="modalText" size="18" weight="semibold">
+                Continue in Rainbow
+              </Text>
+            </Box>
+
+            <Box maxWidth="310" marginTop="8">
+              <Text color="modalText" size="16" weight="medium">
+                Accept connection request in the wallet
+              </Text>
+            </Box>
+          </Box>
+        </Box>
+      );
+      break;
+    }
     case MobileWalletStep.Connect: {
       headerLabel = i18n.t('connect.title');
       headerBackgroundContrast = true;
@@ -368,7 +457,11 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box display="flex" flexDirection="column" paddingBottom="36">
+    <Box
+      display="flex"
+      flexDirection="column"
+      paddingBottom={connector ? '0' : '36'}
+    >
       {/* header section */}
       <Box
         background={

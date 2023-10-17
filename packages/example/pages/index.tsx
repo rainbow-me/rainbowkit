@@ -287,7 +287,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             }}
           >
             <RainbowButton.Custom>
-              {({ isReady, connect }) => {
+              {({ ready, connect }) => {
                 return (
                   <button
                     type="button"
@@ -303,7 +303,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       border: 'none',
                       cursor: 'pointer',
                     }}
-                    disabled={!isReady}
+                    disabled={!ready}
                     onClick={connect}
                   >
                     Connect Rainbow

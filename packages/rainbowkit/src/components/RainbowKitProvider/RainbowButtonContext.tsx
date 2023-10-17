@@ -1,9 +1,9 @@
-import React, { ReactNode, createContext, useState } from 'react';
+import React, { ReactNode, createContext, useMemo, useState } from 'react';
 import { WalletConnector } from '../../wallets/useWalletConnectors';
 
 interface RainbowButtonContextValue {
   connector: WalletConnector | null;
-  setConnector: (wallet: WalletConnector | null) => void; // Updated type here
+  setConnector: (wallet: WalletConnector | null) => void;
 }
 
 export const RainbowButtonContext = createContext<RainbowButtonContextValue>({
@@ -22,10 +22,13 @@ export function RainbowButtonProvider({
 
   return (
     <RainbowButtonContext.Provider
-      value={{
-        connector,
-        setConnector,
-      }}
+      value={useMemo(
+        () => ({
+          connector,
+          setConnector,
+        }),
+        [connector],
+      )}
     >
       {children}
     </RainbowButtonContext.Provider>

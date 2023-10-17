@@ -9,14 +9,11 @@ import {
 import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 
 export interface WalletButtonRendererProps {
-  children: (renderProps: {
-    isReady: boolean;
-    connect: () => void;
-  }) => ReactNode;
+  children: (renderProps: { ready: boolean; connect: () => void }) => ReactNode;
 }
 
 export function WalletButtonRenderer({ children }: WalletButtonRendererProps) {
-  const isMounted = useIsMounted();
+  const mounted = useIsMounted();
   const { openConnectModal } = useConnectModal();
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(RainbowButtonContext);
@@ -33,7 +30,7 @@ export function WalletButtonRenderer({ children }: WalletButtonRendererProps) {
   return (
     <>
       {children({
-        isReady: isMounted && connectionStatus !== 'loading',
+        ready: mounted && connectionStatus !== 'loading',
         connect: () => {
           if (openConnectModal) {
             openConnectModal();
