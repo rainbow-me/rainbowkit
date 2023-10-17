@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 1.1.2
+
+### Patch Changes
+
+- 6cbd9a57: Added `zkSync` and `zkSyncTestnet` network support
+- 7d978605: Fixed an issue where a user would not get automatically logged out from the Authentication API after switching their wallet in MetaMask or other browser wallets. Users must now sign a new SIWE message after switching wallets.
+- b2b69dcd: Added `holesky` testnet support
+
 ## 1.1.1
 
 ### Patch Changes

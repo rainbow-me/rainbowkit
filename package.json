@@ -56,7 +56,7 @@
     "@types/react-dom": "^18.2.7",
     "@vanilla-extract/esbuild-plugin": "^2.2.0",
     "@vanilla-extract/vite-plugin": "^3.9.0",
-    "@wagmi/core": "~1.4.2",
+    "@wagmi/core": "~1.4.3",
     "autoprefixer": "^10.4.15",
     "esbuild": "^0.14.39",
     "esbuild-plugin-replace": "^1.4.0",
@@ -73,9 +73,9 @@
     "react-dom": "^18.2.0",
     "recursive-readdir-files": "^2.3.0",
     "typescript": "^5.0.4",
-    "viem": "~1.12.2",
+    "viem": "~1.16.3",
     "vitest": "^0.33.0",
-    "wagmi": "~1.4.2"
+    "wagmi": "~1.4.3"
   },
   "packageManager": "pnpm@8.7.1",
   "pnpm": {

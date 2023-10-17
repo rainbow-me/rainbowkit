@@ -37,12 +37,14 @@ import {
   phantomWallet,
   rabbyWallet,
   safeheronWallet,
+  safepalWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
   trustWallet,
   uniswapWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
@@ -67,6 +69,7 @@ import {
   mainnet,
   optimism,
   polygon,
+  zkSync,
   zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -84,6 +87,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     base,
     zora,
     bsc,
+    zkSync,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [goerli, holesky]
       : []),
@@ -128,12 +132,14 @@ const connectors = connectorsForWallets([
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
       safeheronWallet({ chains }),
+      safepalWallet({ chains, projectId }),
       tahoWallet({ chains }),
       talismanWallet({ chains }),
       tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
       uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
+      zealWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
   },

@@ -24,6 +24,7 @@ import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
+import { safepalWallet } from './safepalWallet/safepalWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
@@ -31,6 +32,7 @@ import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
+import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
@@ -61,6 +63,7 @@ export {
   rainbowWallet,
   safeWallet,
   safeheronWallet,
+  safepalWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
@@ -68,5 +71,6 @@ export {
   uniswapWallet,
   walletConnectWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 };
