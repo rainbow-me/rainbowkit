@@ -1,7 +1,8 @@
 import React, { ReactNode, createContext, useContext } from 'react';
 import { useAccount } from 'wagmi';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
-import { ThemeVars } from '../../css/sprinkles.css';
+import { ThemeVars, largeScreenMinWidth } from '../../css/sprinkles.css';
+import { useWindowSize } from '../../hooks/useWindowSize';
 import { Locale } from '../../locales';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
@@ -104,12 +105,18 @@ export function RainbowKitProvider({
 
   const avatarContext = avatar ?? defaultAvatar;
 
+  const { width } = useWindowSize();
+  const isSmallScreen = width && width < largeScreenMinWidth;
+
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
       <RainbowButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>
-            <ModalSizeProvider modalSize={modalSize}>
+            <ModalSizeProvider
+              // @ts-ignore
+              value={isSmallScreen ? ModalSizeOptions.COMPACT : modalSize}
+            >
               <ShowRecentTransactionsContext.Provider
                 value={showRecentTransactions}
               >

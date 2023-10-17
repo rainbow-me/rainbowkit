@@ -202,8 +202,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (connector) {
-      // If `WalletStep.Connect` step is not set user will wait to get the qrCode first which might
-      // take time when doing `onConnecting` process in `selectWallet` function
+      // If `WalletStep.Connect` is not set. User would have to wait to get the
+      // QR code first before proceeding to `connect` step
       changeWalletStep(WalletStep.Connect);
       selectWallet(connector);
     }

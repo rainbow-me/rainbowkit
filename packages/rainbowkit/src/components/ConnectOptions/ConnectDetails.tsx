@@ -629,13 +629,13 @@ export function DownloadOptionsDetail({
             description={i18n.t('get_options.extension.description')}
             iconUrl={getBrowserSrc}
             isCompact={isCompact}
-            onAction={() => {
+            onAction={() =>
               changeWalletStep(
                 extension?.instructions
                   ? WalletStep.InstructionsExtension
                   : WalletStep.Connect,
-              );
-            }}
+              )
+            }
             title={i18n.t('get_options.extension.title', {
               wallet: wallet.name,
               browser,

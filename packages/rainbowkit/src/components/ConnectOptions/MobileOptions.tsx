@@ -194,7 +194,7 @@ function WalletButton({
 enum MobileWalletStep {
   Connect = 'CONNECT',
   Get = 'GET',
-  QrCode = 'QR_CODE',
+  WalletConnect = 'WALLETCONNECT',
 }
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
@@ -218,12 +218,12 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
 
   useEffect(() => {
     if (connector) {
-      setWalletStep(MobileWalletStep.QrCode);
+      setWalletStep(MobileWalletStep.WalletConnect);
     }
   }, [connector]);
 
   switch (walletStep) {
-    case MobileWalletStep.QrCode: {
+    case MobileWalletStep.WalletConnect: {
       headerLabel = '';
       headerBackgroundContrast = true;
       walletContent = (
