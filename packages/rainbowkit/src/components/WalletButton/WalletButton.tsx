@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { touchableStyles } from '../../css/touchableStyles';
-import { useWalletConnectors } from '../../wallets/useWalletConnectors';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box } from '../Box/Box';
-import * as styles from './RainbowButton.css';
-import { WalletButtonRenderer } from './WalletButtonRenderer';
+import React, { useState } from "react";
+import { touchableStyles } from "../../css/touchableStyles";
+import { useWalletConnectors } from "../../wallets/useWalletConnectors";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { Box } from "../Box/Box";
+import * as styles from "./WalletButton.css";
+import { WalletButtonRenderer } from "./WalletButtonRenderer";
 
-export const RainbowButton = () => {
+export const WalletButton = () => {
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
-  const [rainbowWallet] = useWalletConnectors('rainbow');
+  const [rainbowWallet] = useWalletConnectors("rainbow");
 
   return (
     <WalletButtonRenderer>
@@ -29,18 +29,18 @@ export const RainbowButton = () => {
               className={[
                 styles.border,
                 touchableStyles({
-                  active: 'shrink',
+                  active: "shrink",
                 }),
               ]}
               onClick={connect}
               disabled={!ready}
               padding="6"
-              style={{ willChange: 'transform' }}
-              testId={`wallet-button-${rainbowWallet?.id || ''}`}
+              style={{ willChange: "transform" }}
+              testId={`wallet-button-${rainbowWallet?.id || ""}`}
               transition="default"
               width="full"
               {...{
-                background: { hover: 'menuItemBackground' },
+                background: { hover: "menuItemBackground" },
               }}
             >
               <Box
@@ -63,7 +63,7 @@ export const RainbowButton = () => {
                       background={rainbowWallet?.iconBackground}
                       {...(isMouseOver
                         ? {}
-                        : { borderColor: 'actionButtonBorder' })}
+                        : { borderColor: "actionButtonBorder" })}
                       borderRadius="6"
                       height="28"
                       src={rainbowWallet?.iconUrl}
@@ -88,4 +88,4 @@ export const RainbowButton = () => {
   );
 };
 
-RainbowButton.Custom = WalletButtonRenderer;
+WalletButton.Custom = WalletButtonRenderer;

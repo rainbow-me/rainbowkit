@@ -1,3 +1,3 @@
-export { ConnectButton } from './ConnectButton/ConnectButton';
-export { RainbowButton } from './RainbowButton/RainbowButton';
-export { RainbowKitProvider } from './RainbowKitProvider/RainbowKitProvider';
+export { ConnectButton } from "./ConnectButton/ConnectButton";
+export { WalletButton } from "./WalletButton/WalletButton";
+export { RainbowKitProvider } from "./RainbowKitProvider/RainbowKitProvider";

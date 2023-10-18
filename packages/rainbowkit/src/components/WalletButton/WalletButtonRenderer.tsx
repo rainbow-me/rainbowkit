@@ -1,12 +1,12 @@
-import React, { ReactNode, useContext, useEffect } from 'react';
-import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { useIsMounted } from '../../hooks/useIsMounted';
-import { useWalletConnectors } from '../../wallets/useWalletConnectors';
+import React, { ReactNode, useContext, useEffect } from "react";
+import { useConnectionStatus } from "../../hooks/useConnectionStatus";
+import { useIsMounted } from "../../hooks/useIsMounted";
+import { useWalletConnectors } from "../../wallets/useWalletConnectors";
 import {
   useConnectModal,
   useModalState,
-} from '../RainbowKitProvider/ModalContext';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
+} from "../RainbowKitProvider/ModalContext";
+import { RainbowButtonContext } from "../RainbowKitProvider/RainbowButtonContext";
 
 export interface WalletButtonRendererProps {
   children: (renderProps: { ready: boolean; connect: () => void }) => ReactNode;
@@ -17,7 +17,7 @@ export function WalletButtonRenderer({ children }: WalletButtonRendererProps) {
   const { openConnectModal } = useConnectModal();
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(RainbowButtonContext);
-  const [rainbowWallet] = useWalletConnectors('rainbow');
+  const [rainbowWallet] = useWalletConnectors("rainbow");
   const connectionStatus = useConnectionStatus();
 
   // If modal is closed we want to setConnector to null
@@ -30,7 +30,7 @@ export function WalletButtonRenderer({ children }: WalletButtonRendererProps) {
   return (
     <>
       {children({
-        ready: mounted && connectionStatus !== 'loading',
+        ready: mounted && connectionStatus !== "loading",
         connect: () => {
           if (openConnectModal) {
             openConnectModal();
@@ -42,4 +42,4 @@ export function WalletButtonRenderer({ children }: WalletButtonRendererProps) {
   );
 }
 
-WalletButtonRenderer.displayName = 'WalletButton.Custom';
+WalletButtonRenderer.displayName = "WalletButton.Custom";

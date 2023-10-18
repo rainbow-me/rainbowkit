@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/button",
   "description": "Rainbow connector button",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "files": [
     "dist"
   ],
@@ -26,7 +26,7 @@
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": ">=1.1.1",
+    "@rainbow-me/rainbowkit": "1.0.x || 1.1.x",
     "react": ">=17"
   },
   "devDependencies": {
