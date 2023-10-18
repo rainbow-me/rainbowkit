@@ -16,7 +16,7 @@ export const ModalSizeContext = createContext<ModalSizes>(
 
 interface ModalSizeProviderProps {
   children: ReactNode;
-  modalSize?: ModalSizes;
+  modalSize: ModalSizes;
 }
 
 export function ModalSizeProvider({
@@ -29,7 +29,6 @@ export function ModalSizeProvider({
 
   return (
     <ModalSizeContext.Provider
-      // @ts-ignore
       value={isSmallScreen || connector ? ModalSizeOptions.COMPACT : modalSize}
     >
       {children}
