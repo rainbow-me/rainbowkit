@@ -7,8 +7,9 @@ import { MobileOptions } from './MobileOptions';
 export default function ConnectOptions({ onClose }: { onClose: () => void }) {
   const { connector } = useContext(RainbowButtonContext);
 
-  // When doing mobile view and then switch straight to desktop the
-  // rainbowkit modal will pop up if you have custom connector.
+  // If you do inspect element on mobile then switch to
+  // desktop view the rainbowkit connect modal will pop up.
+  // In this case we don't want that if we are using a custom connector
   return isMobile() || connector ? (
     <MobileOptions onClose={onClose} />
   ) : (
