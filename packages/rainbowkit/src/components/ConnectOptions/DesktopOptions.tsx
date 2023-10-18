@@ -1,4 +1,10 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
@@ -63,6 +69,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const i18n = useContext(I18nContext);
+
+  const initialized = useRef(false);
 
   const wallets = useWalletConnectors()
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
@@ -201,11 +209,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
-    if (connector) {
+    // When using `reactStrictMode: true` in development mode the useEffect hook
+    // will fire twice. We avoid this by using `useRef` logic here. Works for now.
+    if (connector && !initialized.current) {
       // If `WalletStep.Connect` is not set. User would have to wait to get the
       // QR code first before proceeding to `connect` step
       changeWalletStep(WalletStep.Connect);
       selectWallet(connector);
+      initialized.current = true;
     }
   }, [connector]);
 

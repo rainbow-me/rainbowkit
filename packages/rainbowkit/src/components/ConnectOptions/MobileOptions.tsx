@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
@@ -67,6 +73,7 @@ function WalletButton({
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
+  const initialized = useRef(false);
 
   const i18n = useContext(I18nContext);
 
@@ -123,7 +130,12 @@ function WalletButton({
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (isCustomConnector) onConnect();
+    // When using `reactStrictMode: true` in development mode the useEffect hook
+    // will fire twice. We avoid this by using `useRef` logic here. Works for now.
+    if (isCustomConnector && !initialized.current) {
+      onConnect();
+      initialized.current = true;
+    }
   }, [isCustomConnector]);
 
   return (
