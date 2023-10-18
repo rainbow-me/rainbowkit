@@ -26,7 +26,7 @@ import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDee
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
-const LoadingSpinner = () => {
+const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
   const width = 80;
   const height = 80;
   const radiusFactor = 20;
@@ -45,6 +45,12 @@ const LoadingSpinner = () => {
         strokeDasharray={`${perimeter / 3} ${(2 * perimeter) / 3}`}
         strokeDashoffset={perimeter} // Adjust this value as per your design needs
         className={styles.rotatingBorder}
+        style={{
+          // Prop style passing works only in `@vanilla-extract/recipes`.
+          // Instead downloading packages we can do this
+          // manually without passing props
+          stroke: wallet?.iconAccent || '#0D3887',
+        }}
       />
     </svg>
   );
@@ -166,7 +172,7 @@ function WalletButton({
           paddingTop="10"
           position="relative"
         >
-          {isCustomConnector ? <LoadingSpinner /> : null}
+          {isCustomConnector ? <LoadingSpinner wallet={wallet} /> : null}
           <AsyncImage
             background={iconBackground}
             borderRadius="13"
@@ -258,7 +264,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
             </Box>
             <Box marginTop="20">
               <Text color="modalText" size="18" weight="semibold">
-                Continue in Rainbow
+                Continue in {connector?.name}
               </Text>
             </Box>
 

@@ -20,9 +20,7 @@ export interface WalletConnector extends WalletInstance {
   extensionDownloadUrl?: string;
 }
 
-export function useWalletConnectors(
-  selectedWalletId?: string,
-): WalletConnector[] {
+export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
@@ -94,42 +92,37 @@ export function useWalletConnectors(
 
   const walletConnectors: WalletConnector[] = [];
 
-  groupedWallets
-    .filter((wallet) => {
-      if (selectedWalletId) return selectedWalletId === wallet.id;
-      return true;
-    })
-    .forEach((wallet: WalletInstance) => {
-      if (!wallet) {
-        return;
-      }
+  groupedWallets.forEach((wallet: WalletInstance) => {
+    if (!wallet) {
+      return;
+    }
 
-      const recent = recentWallets.includes(wallet);
+    const recent = recentWallets.includes(wallet);
 
-      walletConnectors.push({
-        ...wallet,
-        // @ts-ignore - ignoring potential undefined return type
-        connect: () =>
-          wallet.connector.showQrModal
-            ? connectToWalletConnectModal(wallet.id, wallet.connector)
-            : connectWallet(wallet.id, wallet.connector),
-        extensionDownloadUrl: getExtensionDownloadUrl(wallet),
-        groupName: wallet.groupName,
-        mobileDownloadUrl: getMobileDownloadUrl(wallet),
-        onConnecting: (fn: () => void) =>
-          wallet.connector.on('message', ({ type }: { type: string }) =>
-            type === 'connecting' ? fn() : undefined,
-          ),
-        ready: (wallet.installed ?? true) && wallet.connector.ready,
-        recent,
-        showWalletConnectModal: wallet.walletConnectModalConnector
-          ? () =>
-              connectToWalletConnectModal(
-                wallet.id,
-                wallet.walletConnectModalConnector,
-              )
-          : undefined,
-      });
+    walletConnectors.push({
+      ...wallet,
+      // @ts-ignore - ignoring potential undefined return type
+      connect: () =>
+        wallet.connector.showQrModal
+          ? connectToWalletConnectModal(wallet.id, wallet.connector)
+          : connectWallet(wallet.id, wallet.connector),
+      extensionDownloadUrl: getExtensionDownloadUrl(wallet),
+      groupName: wallet.groupName,
+      mobileDownloadUrl: getMobileDownloadUrl(wallet),
+      onConnecting: (fn: () => void) =>
+        wallet.connector.on('message', ({ type }: { type: string }) =>
+          type === 'connecting' ? fn() : undefined,
+        ),
+      ready: (wallet.installed ?? true) && wallet.connector.ready,
+      recent,
+      showWalletConnectModal: wallet.walletConnectModalConnector
+        ? () =>
+            connectToWalletConnectModal(
+              wallet.id,
+              wallet.walletConnectModalConnector,
+            )
+        : undefined,
     });
+  });
   return walletConnectors;
 }

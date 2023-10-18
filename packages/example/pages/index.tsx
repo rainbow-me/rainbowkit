@@ -1,15 +1,15 @@
-import { RainbowButton } from "@rainbow-me/button";
+import { RainbowButton } from '@rainbow-me/button';
 import {
   ConnectButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
   useConnectModal,
-} from "@rainbow-me/rainbowkit";
-import { GetServerSideProps } from "next";
-import { getServerSession } from "next-auth";
-import { useSession } from "next-auth/react";
-import React, { ComponentProps, useEffect, useState } from "react";
+} from '@rainbow-me/rainbowkit';
+import { GetServerSideProps } from 'next';
+import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
+import React, { ComponentProps, useEffect, useState } from 'react';
 import {
   useAccount,
   useNetwork,
@@ -17,9 +17,9 @@ import {
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
-} from "wagmi";
-import { AppContextProps } from "../lib/AppContextProps";
-import { getAuthOptions } from "./api/auth/[...nextauth]";
+} from 'wagmi';
+import { AppContextProps } from '../lib/AppContextProps';
+import { getAuthOptions } from './api/auth/[...nextauth]';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
@@ -31,8 +31,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 type ConnectButtonProps = ComponentProps<typeof ConnectButton>;
 type ExtractString<Value> = Value extends string ? Value : never;
-type AccountStatus = ExtractString<ConnectButtonProps["accountStatus"]>;
-type ChainStatus = ExtractString<ConnectButtonProps["chainStatus"]>;
+type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
+type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = ({ authEnabled }: AppContextProps) => {
   const { openAccountModal, accountModalOpen } = useAccountModal();
@@ -54,10 +54,10 @@ const Example = ({ authEnabled }: AppContextProps) => {
     useState<ChainStatus>(defaultProps.chainStatus.largeScreen);
 
   const [showBalanceSmallScreen, setShowBalanceSmallScreen] = useState<boolean>(
-    defaultProps.showBalance.smallScreen
+    defaultProps.showBalance.smallScreen,
   );
   const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
-    defaultProps.showBalance.largeScreen
+    defaultProps.showBalance.largeScreen,
   );
 
   const { chain: activeChain } = useNetwork();
@@ -79,7 +79,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
     error: signingError,
     signMessage,
   } = useSignMessage({
-    message: "wen token",
+    message: 'wen token',
   });
 
   const {
@@ -89,31 +89,31 @@ const Example = ({ authEnabled }: AppContextProps) => {
   } = useSignTypedData({
     domain: {
       chainId: 1,
-      name: "Ether Mail",
-      verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
-      version: "1",
+      name: 'Ether Mail',
+      verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
+      version: '1',
     },
     message: {
-      contents: "Hello, Bob!",
+      contents: 'Hello, Bob!',
       from: {
-        name: "Cow",
-        wallet: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826",
+        name: 'Cow',
+        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
       },
       to: {
-        name: "Bob",
-        wallet: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB",
+        name: 'Bob',
+        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
       },
     },
-    primaryType: "Mail",
+    primaryType: 'Mail',
     types: {
       Mail: [
-        { name: "from", type: "Person" },
-        { name: "to", type: "Person" },
-        { name: "contents", type: "string" },
+        { name: 'from', type: 'Person' },
+        { name: 'to', type: 'Person' },
+        { name: 'contents', type: 'string' },
       ],
       Person: [
-        { name: "name", type: "string" },
-        { name: "wallet", type: "address" },
+        { name: 'name', type: 'string' },
+        { name: 'wallet', type: 'address' },
       ],
     },
   });
@@ -121,24 +121,24 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const ready = mounted && (!authEnabled || status !== "loading");
+  const ready = mounted && (!authEnabled || status !== 'loading');
   const connected =
-    isWagmiConnected && (!authEnabled || status === "authenticated");
+    isWagmiConnected && (!authEnabled || status === 'authenticated');
 
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         gap: 24,
         paddingBottom: 24,
       }}
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          position: "sticky",
+          display: 'flex',
+          justifyContent: 'flex-end',
+          position: 'sticky',
           top: 8,
         }}
       >
@@ -159,8 +159,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
       </div>
 
       <div>
-        <h3 style={{ fontFamily: "sans-serif" }}>Custom buttons</h3>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Custom buttons</h3>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <ConnectButton.Custom>
             {({
               account,
@@ -171,22 +171,22 @@ const Example = ({ authEnabled }: AppContextProps) => {
               openChainModal,
               openConnectModal,
             }) => {
-              const ready = mounted && authenticationStatus !== "loading";
+              const ready = mounted && authenticationStatus !== 'loading';
               const connected =
                 ready &&
                 account &&
                 chain &&
                 (!authenticationStatus ||
-                  authenticationStatus === "authenticated");
+                  authenticationStatus === 'authenticated');
 
               return (
                 <div
                   {...(!ready && {
-                    "aria-hidden": true,
+                    'aria-hidden': true,
                     style: {
                       opacity: 0,
-                      pointerEvents: "none",
-                      userSelect: "none",
+                      pointerEvents: 'none',
+                      userSelect: 'none',
                     },
                   })}
                 >
@@ -208,10 +208,10 @@ const Example = ({ authEnabled }: AppContextProps) => {
                     }
 
                     return (
-                      <div style={{ display: "flex", gap: 12 }}>
+                      <div style={{ display: 'flex', gap: 12 }}>
                         <button
                           onClick={openChainModal}
-                          style={{ alignItems: "center", display: "flex" }}
+                          style={{ alignItems: 'center', display: 'flex' }}
                           type="button"
                         >
                           {chain.hasIcon && (
@@ -221,13 +221,13 @@ const Example = ({ authEnabled }: AppContextProps) => {
                                 borderRadius: 999,
                                 height: 12,
                                 marginRight: 4,
-                                overflow: "hidden",
+                                overflow: 'hidden',
                                 width: 12,
                               }}
                             >
                               {chain.iconUrl && (
                                 <img
-                                  alt={chain.name ?? "Chain icon"}
+                                  alt={chain.name ?? 'Chain icon'}
                                   src={chain.iconUrl}
                                   style={{ height: 12, width: 12 }}
                                 />
@@ -241,7 +241,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                           {account.displayName}
                           {account.displayBalance
                             ? ` (${account.displayBalance})`
-                            : ""}
+                            : ''}
                         </button>
                       </div>
                     );
@@ -258,7 +258,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   type="button"
                   disabled={!ready}
                   onClick={connect}
-                  style={{ marginLeft: "18px" }}
+                  style={{ marginLeft: '18px' }}
                 >
                   Connect Rainbow
                 </button>
@@ -269,18 +269,18 @@ const Example = ({ authEnabled }: AppContextProps) => {
       </div>
 
       <div>
-        <h3 style={{ fontFamily: "sans-serif" }}>Rainbow button</h3>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Rainbow button</h3>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
+            display: 'flex',
+            flexDirection: 'row',
             gap: 10,
           }}
         >
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <RainbowButton />
@@ -291,23 +291,23 @@ const Example = ({ authEnabled }: AppContextProps) => {
       {ready && (
         <>
           <div>
-            <h3 style={{ fontFamily: "sans-serif" }}>Modal hooks</h3>
-            <div style={{ display: "flex", gap: 12, paddingBottom: 12 }}>
+            <h3 style={{ fontFamily: 'sans-serif' }}>Modal hooks</h3>
+            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
                 disabled={!openConnectModal}
                 onClick={openConnectModal}
                 type="button"
               >
                 {connectModalOpen
-                  ? "Connect modal opened"
-                  : "Open connect modal"}
+                  ? 'Connect modal opened'
+                  : 'Open connect modal'}
               </button>
               <button
                 disabled={!openChainModal}
                 onClick={openChainModal}
                 type="button"
               >
-                {chainModalOpen ? "Chain modal opened" : "Open chain modal"}
+                {chainModalOpen ? 'Chain modal opened' : 'Open chain modal'}
               </button>
               <button
                 disabled={!openAccountModal}
@@ -315,17 +315,17 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 type="button"
               >
                 {accountModalOpen
-                  ? "Account modal opened"
-                  : "Open account modal"}
+                  ? 'Account modal opened'
+                  : 'Open account modal'}
               </button>
             </div>
           </div>
 
-          <div style={{ fontFamily: "sans-serif" }}>
+          <div style={{ fontFamily: 'sans-serif' }}>
             <h3>
               Example Actions {!connected && <span>(not connected)</span>}
             </h3>
-            <div style={{ display: "flex", gap: 12, paddingBottom: 12 }}>
+            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
                 disabled={!connected || !sendTransaction}
                 onClick={() => sendTransaction?.()}
@@ -354,13 +354,13 @@ const Example = ({ authEnabled }: AppContextProps) => {
               )}
               {transactionError && <div>Error sending transaction</div>}
               {signingData && (
-                <div style={{ wordBreak: "break-all" }}>
+                <div style={{ wordBreak: 'break-all' }}>
                   Data Signature: {signingData}
                 </div>
               )}
               {signingError && <div>Error signing message</div>}
               {typedData && (
-                <div style={{ wordBreak: "break-all" }}>
+                <div style={{ wordBreak: 'break-all' }}>
                   Typed Data Signature: {typedData}
                 </div>
               )}
@@ -368,7 +368,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             </div>
           </div>
 
-          <div style={{ fontFamily: "sans-serif" }}>
+          <div style={{ fontFamily: 'sans-serif' }}>
             <h3>ConnectButton props</h3>
             <table cellSpacing={12}>
               <thead>
@@ -388,7 +388,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       id="accountStatus"
                       onChange={(event) =>
                         setAccountStatusSmallScreen(
-                          event.currentTarget.value as AccountStatus
+                          event.currentTarget.value as AccountStatus,
                         )
                       }
                       value={accountStatusSmallScreen}
@@ -403,7 +403,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       id="accountStatus"
                       onChange={(event) =>
                         setAccountStatusLargeScreen(
-                          event.currentTarget.value as AccountStatus
+                          event.currentTarget.value as AccountStatus,
                         )
                       }
                       value={accountStatusLargeScreen}
@@ -448,7 +448,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       id="chainStatus"
                       onChange={(event) =>
                         setChainStatusSmallScreen(
-                          event.currentTarget.value as ChainStatus
+                          event.currentTarget.value as ChainStatus,
                         )
                       }
                       value={chainStatusSmallScreen}
@@ -464,7 +464,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       id="chainStatus"
                       onChange={(event) =>
                         setChainStatusLargeScreen(
-                          event.currentTarget.value as ChainStatus
+                          event.currentTarget.value as ChainStatus,
                         )
                       }
                       value={chainStatusLargeScreen}
@@ -489,8 +489,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
 function ManageTransactions() {
   const addRecentTransaction = useAddRecentTransaction();
 
-  const [hash, setHash] = useState("");
-  const [description, setDescription] = useState("");
+  const [hash, setHash] = useState('');
+  const [description, setDescription] = useState('');
   const [confirmations, setConfirmations] = useState(1);
 
   return (
@@ -500,22 +500,22 @@ function ManageTransactions() {
 
         addRecentTransaction({
           confirmations: confirmations === 1 ? undefined : confirmations,
-          description: description.trim() || "Transaction",
+          description: description.trim() || 'Transaction',
           hash: hash.trim(),
         });
 
-        setHash("");
-        setDescription("");
+        setHash('');
+        setDescription('');
       }}
       style={{
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "sans-serif",
+        display: 'flex',
+        flexDirection: 'column',
+        fontFamily: 'sans-serif',
         gap: 12,
       }}
     >
       <h3>Add recent transaction</h3>
-      <div style={{ display: "flex", gap: 12 }}>
+      <div style={{ display: 'flex', gap: 12 }}>
         <label htmlFor="txHash">Hash</label>
         <input
           id="txHash"
@@ -524,7 +524,7 @@ function ManageTransactions() {
           value={hash}
         />
       </div>
-      <div style={{ display: "flex", gap: 12 }}>
+      <div style={{ display: 'flex', gap: 12 }}>
         <label htmlFor="txDescription">Description</label>
         <input
           id="txDescription"
@@ -533,7 +533,7 @@ function ManageTransactions() {
           value={description}
         />
       </div>
-      <div style={{ display: "flex", gap: 12 }}>
+      <div style={{ display: 'flex', gap: 12 }}>
         <label htmlFor="txConfirmations">Confirmations</label>
         <input
           id="txConfirmations"
