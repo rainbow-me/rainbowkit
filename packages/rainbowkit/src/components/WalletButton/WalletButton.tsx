@@ -1,21 +1,24 @@
-import React from 'react';
-import { touchableStyles } from '../../css/touchableStyles';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box } from '../Box/Box';
-import { SpinnerIcon } from '../Icons/Spinner';
-import * as styles from './WalletButton.css';
-import { WalletButtonRenderer } from './WalletButtonRenderer';
+import React from "react";
+import { touchableStyles } from "../../css/touchableStyles";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { Box } from "../Box/Box";
+import { SpinnerIcon } from "../Icons/Spinner";
+import * as styles from "./WalletButton.css";
+import { WalletButtonRenderer } from "./WalletButtonRenderer";
 
 export const WalletButton = () => {
   return (
     <WalletButtonRenderer>
-      {({ ready, connect, connector, loading, error }) => {
+      {({ ready, connect, connected, connector, loading, error }) => {
+        const isDisabled = !ready || loading;
+
         return (
           <Box
             display="flex"
             flexDirection="column"
             alignItems="center"
-            pointerEvents={loading ? 'none' : 'all'}
+            disabled={isDisabled}
+            pointerEvents={isDisabled ? "none" : "all"}
           >
             <Box
               as="button"
@@ -25,78 +28,71 @@ export const WalletButton = () => {
               className={[
                 styles.maxWidth,
                 styles.border,
-                !loading
-                  ? touchableStyles({
-                      active: 'shrink',
-                    })
-                  : '',
+                touchableStyles({
+                  active: "shrink",
+                  hover: "grow",
+                }),
               ]}
+              minHeight="44"
               onClick={connect}
               disabled={!ready || loading}
               padding="6"
-              style={{ willChange: 'transform' }}
-              testId={`wallet-button-${connector?.id || ''}`}
+              style={{ willChange: "transform" }}
+              testId={`wallet-button-${connector?.id || ""}`}
               transition="default"
               width="full"
-              {...(!loading
-                ? {
-                    background: { hover: 'menuItemBackground' },
-                  }
-                : {})}
+              background={{
+                base: error
+                  ? "connectButtonBackgroundError"
+                  : "accentColorForeground",
+                hover: error
+                  ? "connectButtonBackgroundError"
+                  : "menuItemBackground",
+              }}
             >
-              {loading ? (
+              <Box
+                color="modalText"
+                fontFamily="body"
+                fontSize="16"
+                fontWeight="bold"
+                transition="default"
+              >
                 <Box
-                  color="modalText"
-                  fontFamily="body"
-                  fontSize="16"
-                  fontWeight="bold"
-                  transition="default"
-                  display="flex"
                   alignItems="center"
-                  paddingY="3"
-                  paddingBottom="3"
+                  display="flex"
+                  flexDirection="row"
+                  gap="12"
+                  paddingRight="6"
+                  paddingLeft={error ? "6" : "0"}
                 >
-                  <SpinnerIcon />
-                  <Box paddingLeft="6">Connecting...</Box>
-                </Box>
-              ) : (
-                <Box
-                  color="modalText"
-                  fontFamily="body"
-                  fontSize="16"
-                  fontWeight="bold"
-                  transition="default"
-                >
+                  {!error ? (
+                    <Box>
+                      {loading ? (
+                        <SpinnerIcon />
+                      ) : (
+                        <AsyncImage
+                          background={connector?.iconBackground}
+                          borderRadius="6"
+                          height="28"
+                          src={connector?.iconUrl}
+                          width="28"
+                        />
+                      )}
+                    </Box>
+                  ) : null}
+
                   <Box
                     alignItems="center"
                     display="flex"
-                    flexDirection="row"
-                    gap="12"
-                    paddingRight="6"
+                    flexDirection="column"
+                    width="full"
+                    color={error ? "connectButtonTextError" : "modalText"}
                   >
-                    <Box>
-                      <AsyncImage
-                        background={connector?.iconBackground}
-                        borderRadius="6"
-                        height="28"
-                        src={connector?.iconUrl}
-                        width="28"
-                      />
-                    </Box>
-                    <Box
-                      alignItems="center"
-                      display="flex"
-                      flexDirection="column"
-                      width="full"
-                    >
-                      <Box>{connector?.name}</Box>
-                    </Box>
+                    <Box>{error ? "Connection Failed" : connector?.name}</Box>
                   </Box>
                 </Box>
-              )}
+              </Box>
             </Box>
-
-            {error ? <Box marginTop="8">{error}</Box> : null}
           </Box>
         );
       }}
