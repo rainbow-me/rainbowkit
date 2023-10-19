@@ -1,5 +1,5 @@
-import "@rainbow-me/rainbowkit/styles.css";
-import "./global.css";
+import '@rainbow-me/rainbowkit/styles.css';
+import './global.css';
 
 import {
   AvatarComponent,
@@ -11,11 +11,11 @@ import {
   getDefaultWallets,
   lightTheme,
   midnightTheme,
-} from "@rainbow-me/rainbowkit";
+} from '@rainbow-me/rainbowkit';
 import {
   GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
-} from "@rainbow-me/rainbowkit-siwe-next-auth";
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
   argentWallet,
   bifrostWallet,
@@ -46,20 +46,20 @@ import {
   xdefiWallet,
   zealWallet,
   zerionWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 
-import type { Session } from "next-auth";
-import { SessionProvider, signOut } from "next-auth/react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import type { Session } from 'next-auth';
+import { SessionProvider, signOut } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import {
   WagmiConfig,
   configureChains,
   createConfig,
   useDisconnect,
-} from "wagmi";
+} from 'wagmi';
 import {
   arbitrum,
   base,
@@ -71,12 +71,12 @@ import {
   polygon,
   zkSync,
   zora,
-} from "wagmi/chains";
-import { alchemyProvider } from "wagmi/providers/alchemy";
-import { publicProvider } from "wagmi/providers/public";
-import { AppContextProps } from "../lib/AppContextProps";
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+import { AppContextProps } from '../lib/AppContextProps';
 
-const RAINBOW_TERMS = "https://rainbow.me/terms-of-use";
+const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -636,7 +636,7 @@ function RainbowKitApp({
 export default function App(
   appProps: AppProps<{
     session: Session;
-  }>
+  }>,
 ) {
   return (
     <>

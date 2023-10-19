@@ -28,13 +28,19 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
               className={[
                 styles.maxWidth,
                 styles.border,
-                touchableStyles({
-                  active: 'shrink',
-                  hover: 'grow',
-                }),
+                !connected
+                  ? touchableStyles({
+                      active: 'shrink',
+                      hover: 'grow',
+                    })
+                  : '',
               ]}
               minHeight="44"
-              onClick={connect}
+              onClick={() => {
+                if (connected) return;
+
+                connect();
+              }}
               disabled={!ready || loading}
               padding="6"
               style={{ willChange: 'transform' }}
@@ -56,6 +62,8 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                 fontSize="16"
                 fontWeight="bold"
                 transition="default"
+                display="flex"
+                alignItems="center"
               >
                 <Box
                   alignItems="center"
@@ -90,6 +98,17 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                   >
                     <Box>{error ? 'Connection Failed' : connector?.name}</Box>
                   </Box>
+
+                  {connected ? (
+                    <Box
+                      background="standby"
+                      height="8"
+                      width="8"
+                      minWidth="8"
+                      minHeight="8"
+                      borderRadius="full"
+                    />
+                  ) : null}
                 </Box>
               </Box>
             </Box>

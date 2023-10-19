@@ -175,6 +175,7 @@ const unresponsiveProperties = defineProperties({
     cursor: ['pointer', 'none'],
     pointerEvents: ['none', 'all'],
     minHeight: {
+      '8': { minHeight: '8px' },
       '44': { minHeight: '44px' },
     },
     flexDirection: ['row', 'column'],

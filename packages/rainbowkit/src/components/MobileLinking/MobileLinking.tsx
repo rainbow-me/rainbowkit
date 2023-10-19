@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
-import { WalletButton } from '../ConnectOptions/MobileOptions';
 import { Box } from '../Box/Box';
+import { WalletButton } from '../ConnectOptions/MobileOptions';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { Text } from '../Text/Text';
 
 const MobileLinking = ({ onClose }: { onClose: () => void }) => {
