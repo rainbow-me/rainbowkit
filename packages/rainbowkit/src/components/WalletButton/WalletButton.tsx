@@ -102,7 +102,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                     width="full"
                     color={error ? 'connectButtonTextError' : 'modalText'}
                   >
-                    <Box>{error ? 'Connection Failed' : connector?.name}</Box>
+                    <Box>{error ? error : connector?.name}</Box>
                   </Box>
 
                   {connected ? (
