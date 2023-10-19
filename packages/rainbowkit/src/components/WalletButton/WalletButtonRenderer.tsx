@@ -17,12 +17,13 @@ import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext
 export interface WalletButtonRendererProps {
   wallet?: string;
   children: (renderProps: {
-    ready: boolean;
-    connected: boolean;
-    connect: () => void;
-    loading: boolean;
     error: string;
+    loading: boolean;
+    connected: boolean;
+    ready: boolean;
+    mounted: boolean;
     connector: WalletConnector;
+    connect: () => void;
   }) => ReactNode;
 }
 
@@ -81,18 +82,19 @@ export function WalletButtonRenderer({
   };
 
   // If anyone uses SIWE then we don't want them to be able to connect
-  // if they are in a process of authentication or if they are authenticated
-  const isStatusLoadingOrConnected = connectionStatus === 'loading';
-  const ready = firstConnector && mounted && !isStatusLoadingOrConnected;
+  // if they are in a process of authentication
+  const isStatusLoading = connectionStatus === 'loading';
+  const ready = firstConnector && !isStatusLoading;
 
   return (
     <>
       {children({
-        ready,
-        connector: firstConnector,
-        loading,
         error,
+        loading,
         connected,
+        ready,
+        mounted,
+        connector: firstConnector,
         connect: () => {
           if (openConnectModal && mobile) {
             openConnectModal();

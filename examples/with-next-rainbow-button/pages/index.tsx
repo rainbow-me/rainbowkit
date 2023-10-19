@@ -1,12 +1,8 @@
-import { RainbowButton } from '@rainbow-me/button';
-import type { NextPage } from 'next';
-import { useAccount, useDisconnect } from 'wagmi';
-import { useEffect, useState } from 'react';
+import { RainbowButton } from "@rainbow-me/button";
+import type { NextPage } from "next";
+import { useAccount, useDisconnect } from "wagmi";
 
 const Home: NextPage = () => {
-  const [isMounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
 
@@ -22,7 +18,7 @@ const Home: NextPage = () => {
       }}
     >
       <RainbowButton wallet='rainbow' />
-      {isMounted && isConnected && (
+      {isConnected && (
         <button onClick={() => disconnect()}>Disconnect</button>
       )}
     </div>

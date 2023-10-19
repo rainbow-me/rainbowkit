@@ -9,8 +9,14 @@ import { WalletButtonRenderer } from './WalletButtonRenderer';
 export const WalletButton = ({ wallet }: { wallet?: string }) => {
   return (
     <WalletButtonRenderer wallet={wallet}>
-      {({ ready, connect, connected, connector, loading, error }) => {
+      {({ ready, connect, connected, mounted, connector, loading, error }) => {
         const isDisabled = !ready || loading;
+
+        // SSR mismatch issue in next.js:
+        // By default, "rainbow wallet" text is expected.
+        // If new custom connector is detected the text will change on the client side.
+        // To prevent errors in next.js, we ensure the component mounts on the client side.
+        if (!mounted) return;
 
         return (
           <Box
