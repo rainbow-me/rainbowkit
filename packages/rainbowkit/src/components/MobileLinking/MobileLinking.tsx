@@ -1,0 +1,49 @@
+import React, { useContext } from 'react';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
+import { WalletButton } from '../ConnectOptions/MobileOptions';
+import { Box } from '../Box/Box';
+import { Text } from '../Text/Text';
+
+const MobileLinking = ({ onClose }: { onClose: () => void }) => {
+  const { connector } = useContext(RainbowButtonContext);
+
+  return (
+    <Box>
+      <Box
+        display="flex"
+        paddingTop="24"
+        paddingBottom="32"
+        justifyContent="center"
+        alignItems="center"
+        background="profileForeground"
+        flexDirection="column"
+      >
+        <Box width="60">
+          <WalletButton
+            isCustomConnector
+            onClose={onClose}
+            wallet={connector!}
+          />
+        </Box>
+        <Box marginTop="20">
+          <Text
+            textAlign="center"
+            color="modalText"
+            size="18"
+            weight="semibold"
+          >
+            Continue in {connector?.name}
+          </Text>
+        </Box>
+
+        <Box maxWidth="310" marginTop="8">
+          <Text textAlign="center" color="modalText" size="16" weight="medium">
+            Accept connection request in the wallet
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default MobileLinking;

@@ -16,8 +16,8 @@ export function RainbowButtonProvider({
   );
 }
 
-export const RainbowButton = () => {
-  return <WalletButton />;
+export const RainbowButton = ({ wallet }: { wallet?: string }) => {
+  return <WalletButton wallet={wallet} />;
 };
 
 RainbowButton.Custom = WalletButton.Custom;

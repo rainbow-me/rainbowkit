@@ -258,13 +258,17 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   type="button"
                   disabled={!ready}
                   onClick={connect}
-                  style={{ marginLeft: '18px' }}
+                  style={{ marginLeft: '16px' }}
                 >
                   Connect Rainbow
                 </button>
               );
             }}
           </RainbowButton.Custom>
+
+          <div style={{ marginLeft: '16px' }}>
+            <RainbowButton wallet="metamask" />
+          </div>
         </div>
       </div>
 
@@ -283,7 +287,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
               flexDirection: 'column',
             }}
           >
-            <RainbowButton />
+            <RainbowButton wallet="rainbow" />
           </div>
         </div>
       </div>

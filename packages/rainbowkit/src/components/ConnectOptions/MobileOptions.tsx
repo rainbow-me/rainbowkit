@@ -20,7 +20,6 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
@@ -56,7 +55,7 @@ const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
   );
 };
 
-function WalletButton({
+export function WalletButton({
   onClose,
   wallet,
   isCustomConnector,
@@ -212,7 +211,6 @@ function WalletButton({
 enum MobileWalletStep {
   Connect = 'CONNECT',
   Get = 'GET',
-  WalletConnect = 'WALLETCONNECT',
 }
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
@@ -230,54 +228,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   );
 
   const i18n = useContext(I18nContext);
-  const { connector } = useContext(RainbowButtonContext);
 
   const ios = isIOS();
 
-  useEffect(() => {
-    if (connector) {
-      setWalletStep(MobileWalletStep.WalletConnect);
-    }
-  }, [connector]);
-
   switch (walletStep) {
-    case MobileWalletStep.WalletConnect: {
-      headerLabel = '';
-      headerBackgroundContrast = true;
-      walletContent = (
-        <Box>
-          <Box
-            display="flex"
-            paddingTop="10"
-            paddingBottom="32"
-            justifyContent="center"
-            alignItems="center"
-            background="profileForeground"
-            flexDirection="column"
-          >
-            <Box width="60">
-              <WalletButton
-                isCustomConnector
-                onClose={onClose}
-                wallet={connector!}
-              />
-            </Box>
-            <Box marginTop="20">
-              <Text color="modalText" size="18" weight="semibold">
-                Continue in {connector?.name}
-              </Text>
-            </Box>
-
-            <Box maxWidth="310" marginTop="8">
-              <Text color="modalText" size="16" weight="medium">
-                Accept connection request in the wallet
-              </Text>
-            </Box>
-          </Box>
-        </Box>
-      );
-      break;
-    }
     case MobileWalletStep.Connect: {
       headerLabel = i18n.t('connect.title');
       headerBackgroundContrast = true;
@@ -475,11 +429,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      paddingBottom={connector ? '0' : '36'}
-    >
+    <Box display="flex" flexDirection="column" paddingBottom="36">
       {/* header section */}
       <Box
         background={

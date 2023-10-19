@@ -1,14 +1,14 @@
-import React from "react";
-import { touchableStyles } from "../../css/touchableStyles";
-import { AsyncImage } from "../AsyncImage/AsyncImage";
-import { Box } from "../Box/Box";
-import { SpinnerIcon } from "../Icons/Spinner";
-import * as styles from "./WalletButton.css";
-import { WalletButtonRenderer } from "./WalletButtonRenderer";
+import React from 'react';
+import { touchableStyles } from '../../css/touchableStyles';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { Box } from '../Box/Box';
+import { SpinnerIcon } from '../Icons/Spinner';
+import * as styles from './WalletButton.css';
+import { WalletButtonRenderer } from './WalletButtonRenderer';
 
-export const WalletButton = () => {
+export const WalletButton = ({ wallet }: { wallet?: string }) => {
   return (
-    <WalletButtonRenderer>
+    <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, connector, loading, error }) => {
         const isDisabled = !ready || loading;
 
@@ -18,7 +18,7 @@ export const WalletButton = () => {
             flexDirection="column"
             alignItems="center"
             disabled={isDisabled}
-            pointerEvents={isDisabled ? "none" : "all"}
+            pointerEvents={isDisabled ? 'none' : 'all'}
           >
             <Box
               as="button"
@@ -29,25 +29,25 @@ export const WalletButton = () => {
                 styles.maxWidth,
                 styles.border,
                 touchableStyles({
-                  active: "shrink",
-                  hover: "grow",
+                  active: 'shrink',
+                  hover: 'grow',
                 }),
               ]}
               minHeight="44"
               onClick={connect}
               disabled={!ready || loading}
               padding="6"
-              style={{ willChange: "transform" }}
-              testId={`wallet-button-${connector?.id || ""}`}
+              style={{ willChange: 'transform' }}
+              testId={`wallet-button-${connector?.id || ''}`}
               transition="default"
               width="full"
               background={{
                 base: error
-                  ? "connectButtonBackgroundError"
-                  : "accentColorForeground",
+                  ? 'connectButtonBackgroundError'
+                  : 'accentColorForeground',
                 hover: error
-                  ? "connectButtonBackgroundError"
-                  : "menuItemBackground",
+                  ? 'connectButtonBackgroundError'
+                  : 'menuItemBackground',
               }}
             >
               <Box
@@ -63,7 +63,7 @@ export const WalletButton = () => {
                   flexDirection="row"
                   gap="12"
                   paddingRight="6"
-                  paddingLeft={error ? "6" : "0"}
+                  paddingLeft={error ? '6' : '0'}
                 >
                   {!error ? (
                     <Box>
@@ -86,9 +86,9 @@ export const WalletButton = () => {
                     display="flex"
                     flexDirection="column"
                     width="full"
-                    color={error ? "connectButtonTextError" : "modalText"}
+                    color={error ? 'connectButtonTextError' : 'modalText'}
                   >
-                    <Box>{error ? "Connection Failed" : connector?.name}</Box>
+                    <Box>{error ? 'Connection Failed' : connector?.name}</Box>
                   </Box>
                 </Box>
               </Box>

@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 import { BaseError } from "viem";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount } from "wagmi";
 import { useConnectionStatus } from "../../hooks/useConnectionStatus";
 import { useIsMounted } from "../../hooks/useIsMounted";
 import { isMobile } from "../../utils/isMobile";
@@ -15,7 +15,7 @@ import {
 import { RainbowButtonContext } from "../RainbowKitProvider/RainbowButtonContext";
 
 export interface WalletButtonRendererProps {
-  connectorId?: string;
+  wallet?: string;
   children: (renderProps: {
     ready: boolean;
     connected: boolean;
@@ -27,8 +27,9 @@ export interface WalletButtonRendererProps {
 }
 
 export function WalletButtonRenderer({
-  // "rainbow" by default
-  connectorId = "rainbow",
+  // Wallet is the same as `connector.id` which is injected into
+  // wagmi connectors
+  wallet = "rainbow",
   children,
 }: WalletButtonRendererProps) {
   const mounted = useIsMounted();
@@ -36,8 +37,10 @@ export function WalletButtonRenderer({
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(RainbowButtonContext);
   const [firstConnector] = useWalletConnectors()
-    .filter((wallet) => wallet.ready)
-    .filter((wallet) => wallet.id === connectorId)
+    .filter((_wallet) => _wallet.ready)
+    // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
+    // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
+    .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
   const connectionStatus = useConnectionStatus();
@@ -103,5 +106,3 @@ export function WalletButtonRenderer({
     </>
   );
 }
-
-WalletButtonRenderer.displayName = "WalletButton.Custom";

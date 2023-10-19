@@ -3,7 +3,7 @@ import * as esbuild from 'esbuild';
 
 const isWatching = process.argv.includes('--watch');
 
-esbuild
+const mainBuild = esbuild
   .build({
     bundle: true,
     entryPoints: ['src/index.ts'],
@@ -30,6 +30,28 @@ esbuild
         }
       : undefined,
   })
+  .then(() => {
+    if (isWatching) {
+      console.log('watching...');
+    }
+  })
+  .catch(() => process.exit(1));
+
+const packageBuild = esbuild.build({
+  entryPoints: ['./node_modules/@rainbow-me/rainbowkit/styles.css'],
+  format: 'esm',
+  outdir: 'dist/rainbowkit/styles',
+  watch: isWatching
+    ? {
+        onRebuild(error, result) {
+          if (error) console.error('wallets build failed:', error);
+          else console.log('wallets build succeeded:', result);
+        },
+      }
+    : undefined,
+});
+
+Promise.all([mainBuild, packageBuild])
   .then(() => {
     if (isWatching) {
       console.log('watching...');

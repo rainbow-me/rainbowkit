@@ -11,7 +11,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./node_modules/@rainbow-me/rainbowkit/styles.css"
+    "./styles.css": "./dist/rainbowkit/styles/styles.css"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,7 +26,7 @@
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": "1.0.x || 1.1.x",
+    "@rainbow-me/rainbowkit": "1.2.x",
     "react": ">=17"
   },
   "devDependencies": {
