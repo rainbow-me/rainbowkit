@@ -20,8 +20,8 @@ import {
   ModalSizeContext,
   ModalSizeOptions,
 } from '../RainbowKitProvider/ModalSizeContext';
+import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { Text } from '../Text/Text';
-
 import {
   ConnectDetail,
   DownloadDetail,
@@ -62,6 +62,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const i18n = useContext(I18nContext);
 
+  const { connector } = useContext(RainbowButtonContext);
+
   const wallets = useWalletConnectors()
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
@@ -75,6 +77,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'More',
     'Others',
   ];
+
+  // If user uses custom connector we only will show the connect modal on desktop
+  // if user hasn't installed the wallet on their browser.
+  useEffect(() => {
+    if (connector) {
+      setSelectedWallet(connector);
+      changeWalletStep(WalletStep.DownloadOptions);
+    }
+  }, [connector]);
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
@@ -252,9 +263,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           : i18n.t('connect_scan.title', {
               wallet: selectedWallet.name,
             }));
-      headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
+      headerBackButtonLink = connector
+        ? WalletStep.DownloadOptions
+        : compactModeEnabled
+        ? WalletStep.None
+        : null;
       headerBackButtonCallback = compactModeEnabled
-        ? clearSelectedWallet
+        ? !connector
+          ? clearSelectedWallet
+          : () => {}
         : () => {};
       break;
     case WalletStep.DownloadOptions:
@@ -268,7 +285,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         selectedWallet &&
         i18n.t('get_options.short_title', { wallet: selectedWallet.name });
       headerBackButtonLink =
-        hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
+        !connector && hasExtensionAndMobile && WalletStep.Connect
+          ? initialWalletStep
+          : null;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (

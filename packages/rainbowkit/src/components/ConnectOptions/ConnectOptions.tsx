@@ -11,10 +11,12 @@ export default function ConnectOptions({ onClose }: { onClose: () => void }) {
   // If you do inspect element on mobile then switch to
   // desktop view the rainbowkit connect modal will pop up.
   // In this case we don't want that if we are using a custom connector
-  return connector ? (
-    <MobileLinking onClose={onClose} />
-  ) : isMobile() ? (
-    <MobileOptions onClose={onClose} />
+  return isMobile() ? (
+    connector ? (
+      <MobileLinking onClose={onClose} />
+    ) : (
+      <MobileOptions onClose={onClose} />
+    )
   ) : (
     <DesktopOptions onClose={onClose} />
   );

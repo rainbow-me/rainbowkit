@@ -84,9 +84,7 @@ export function WalletButtonRenderer({
   // If anyone uses SIWE then we don't want them to be able to connect
   // if they are in a process of authentication
   const isStatusLoading = connectionStatus === 'loading';
-  const isConnectorInjected = !!firstConnector?.installed;
-  const ready =
-    (!mobile ? isConnectorInjected : firstConnector) && !isStatusLoading;
+  const ready = firstConnector && !isStatusLoading;
 
   return (
     <>
@@ -98,9 +96,12 @@ export function WalletButtonRenderer({
         mounted,
         connector: firstConnector,
         connect: () => {
-          if (openConnectModal && mobile) {
-            openConnectModal();
+          // If openConnectModal is true and user is on mobile or
+          // if user hasn't installed the connector then we prompt them
+          // to rainbowkit connect modal
+          if (openConnectModal && (mobile || !firstConnector?.installed)) {
             setConnector(firstConnector);
+            openConnectModal();
             return;
           }
 
