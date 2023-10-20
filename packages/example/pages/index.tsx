@@ -278,7 +278,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             gap: 10,
           }}
         >
-          <RainbowButton wallet="rainbow" />
+          <RainbowButton />
           <WalletButton wallet="metaMask" />
         </div>
       </div>

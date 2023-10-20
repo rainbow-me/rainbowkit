@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         gap: 10,
       }}
     >
-      <RainbowButton wallet='rainbow' />
+      <RainbowButton/>
       {isConnected && (
         <button onClick={() => disconnect()}>Disconnect</button>
       )}
