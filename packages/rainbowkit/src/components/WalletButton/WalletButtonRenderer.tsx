@@ -84,7 +84,9 @@ export function WalletButtonRenderer({
   // If anyone uses SIWE then we don't want them to be able to connect
   // if they are in a process of authentication
   const isStatusLoading = connectionStatus === 'loading';
-  const ready = firstConnector && !isStatusLoading;
+  const isConnectorInjected = !!firstConnector?.installed;
+  const ready =
+    (!mobile ? isConnectorInjected : firstConnector) && !isStatusLoading;
 
   return (
     <>
