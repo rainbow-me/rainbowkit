@@ -1,4 +1,10 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
@@ -62,6 +68,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const i18n = useContext(I18nContext);
 
+  const initialized = useRef(false);
+
   const { connector } = useContext(RainbowButtonContext);
 
   const wallets = useWalletConnectors()
@@ -81,9 +89,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   // If a user hasn't installed the extension we will get the
   // qr code with additional steps on how to get the wallet
   useEffect(() => {
-    if (connector) {
+    if (connector && !initialized.current) {
       changeWalletStep(WalletStep.Connect);
       selectWallet(connector);
+      initialized.current = true;
     }
   }, [connector]);
 
