@@ -1,6 +1,7 @@
 import { RainbowButton } from '@rainbow-me/button';
 import {
   ConnectButton,
+  WalletButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
@@ -265,15 +266,11 @@ const Example = ({ authEnabled }: AppContextProps) => {
               );
             }}
           </RainbowButton.Custom>
-
-          <div style={{ marginLeft: '16px' }}>
-            <RainbowButton wallet="metamask" />
-          </div>
         </div>
       </div>
 
       <div>
-        <h3 style={{ fontFamily: 'sans-serif' }}>Rainbow button</h3>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Wallet buttons</h3>
         <div
           style={{
             display: 'flex',
@@ -281,14 +278,8 @@ const Example = ({ authEnabled }: AppContextProps) => {
             gap: 10,
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <RainbowButton wallet="rainbow" />
-          </div>
+          <RainbowButton wallet="rainbow" />
+          <WalletButton wallet="metaMask" />
         </div>
       </div>
 
