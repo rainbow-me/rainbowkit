@@ -78,12 +78,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'Others',
   ];
 
-  // If user uses custom connector we only will show the connect modal on desktop
-  // if user hasn't installed the wallet on their browser.
+  // If a user hasn't installed the extension we will get the
+  // qr code with additional steps on how to get the wallet
   useEffect(() => {
     if (connector) {
-      setSelectedWallet(connector);
-      changeWalletStep(WalletStep.DownloadOptions);
+      changeWalletStep(WalletStep.Connect);
+      selectWallet(connector);
     }
   }, [connector]);
 
@@ -263,10 +263,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           : i18n.t('connect_scan.title', {
               wallet: selectedWallet.name,
             }));
-      headerBackButtonLink = connector
-        ? WalletStep.DownloadOptions
-        : compactModeEnabled
-        ? WalletStep.None
+      headerBackButtonLink = compactModeEnabled
+        ? connector
+          ? null
+          : WalletStep.None
         : null;
       headerBackButtonCallback = compactModeEnabled
         ? !connector
