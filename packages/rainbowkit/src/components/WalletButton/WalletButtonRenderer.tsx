@@ -72,10 +72,8 @@ export function WalletButtonRenderer({
       setLoading(true);
       if (error) setError('');
       await firstConnector?.connect?.();
-    } catch (err) {
-      const shortErrMessage = (err as BaseError)?.shortMessage;
-      const errMessage = shortErrMessage || 'Connection failed.';
-      setError(errMessage);
+    } catch {
+      setError('Connection failed');
     } finally {
       setLoading(false);
     }
