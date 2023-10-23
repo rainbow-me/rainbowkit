@@ -7,6 +7,7 @@ import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
@@ -46,6 +47,7 @@ export {
   coinbaseWallet,
   coreWallet,
   dawnWallet,
+  desigWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
