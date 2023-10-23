@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Conectar la billetera"
+    "label": "Connecter le portefeuille"
   },
   "intro": {
-    "title": "¿Qué es una billetera?",
-    "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
+    "title": "Qu'est-ce qu'un portefeuille?",
+    "description": "Un portefeuille est utilisé pour envoyer, recevoir, stocker et afficher des actifs numériques. C'est aussi une nouvelle façon de se connecter, sans avoir besoin de créer de nouveaux comptes et mots de passe sur chaque site.",
     "digital_asset": {
-      "title": "Un hogar para tus Activos Digitales",
-      "description": "Las carteras se utilizan para enviar, recibir, almacenar y mostrar activos digitales como Ethereum y NFTs."
+      "title": "Un foyer pour vos actifs numériques",
+      "description": "Les portefeuilles sont utilisés pour envoyer, recevoir, stocker et afficher des actifs numériques comme Ethereum et les NFTs."
     },
     "login": {
-      "title": "Una nueva forma de iniciar sesión",
-      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu cartera."
+      "title": "Une nouvelle façon de se connecter",
+      "description": "Au lieu de créer de nouveaux comptes et mots de passe sur chaque site Web, connectez simplement votre portefeuille."
     },
     "get": {
-      "label": "Obtener una billetera"
+      "label": "Obtenir un portefeuille"
     },
     "learn_more": {
-      "label": "Obtener más información"
+      "label": "En savoir plus"
     }
   },
   "connect": {
-    "label": "Conectar",
-    "title": "Conectar una billetera",
+    "label": "Connecter",
+    "title": "Connecter un portefeuille",
     "new_to_ethereum": {
-      "description": "¿Eres nuevo en las billeteras Ethereum?",
+      "description": "Nouveau aux portefeuilles Ethereum?",
       "learn_more": {
-        "label": "Obtener más información"
+        "label": "En savoir plus"
       }
     },
     "learn_more": {
-      "label": "Obtener más información"
+      "label": "En savoir plus"
     },
-    "recent": "Reciente",
+    "recent": "Récents",
     "status": {
-      "opening": "Abriendo %{wallet}...",
-      "not_installed": "%{wallet} no está instalado",
-      "not_available": "%{wallet} no está disponible",
-      "confirm": "Confirma la conexión en la extensión"
+      "opening": "Ouverture %{wallet}...",
+      "not_installed": "%{wallet} n'est pas installé",
+      "not_available": "%{wallet} n'est pas disponible",
+      "confirm": "Confirmez la connexion dans l'extension"
     },
     "secondary_action": {
       "get": {
-        "description": "¿No tienes %{wallet}?",
-        "label": "OBTENER"
+        "description": "Vous n'avez pas de %{wallet}?",
+        "label": "OBTENIR"
       },
       "install": {
-        "label": "INSTALAR"
+        "label": "INSTALLER"
       },
       "retry": {
-        "label": "REINTENTAR"
+        "label": "RÉESSAYER"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "¿Necesitas el modal oficial de WalletConnect?",
-        "compact": "¿Necesitas el modal de WalletConnect?"
+        "full": "Vous avez besoin du modal officiel de WalletConnect ?",
+        "compact": "Besoin du modal de WalletConnect ?"
       },
       "open": {
-        "label": "ABRIR"
+        "label": "OUVRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "Escanea con %{wallet}",
-    "fallback_title": "Escanea con tu teléfono"
+    "title": "Scannez avec %{wallet}",
+    "fallback_title": "Scannez avec votre téléphone"
   },
   "connector_group": {
-    "recommended": "Recomendado",
-    "other": "Otro",
-    "popular": "شائع",
-    "more": "Más",
-    "others": "Otros"
+    "recommended": "Recommandé",
+    "other": "Autre",
+    "popular": "Populaire",
+    "more": "Plus",
+    "others": "Autres"
   },
   "get": {
-    "title": "Obtener una billetera",
+    "title": "Obtenez un portefeuille",
     "action": {
-      "label": "OBTENER"
+      "label": "OBTENIR"
     },
     "mobile": {
-      "description": "Billetera Móvil"
+      "description": "Portefeuille mobile"
     },
     "extension": {
-      "description": "Extensión de navegador"
+      "description": "Extension de navigateur"
     },
     "mobile_and_extension": {
-      "description": "Billetera móvil y extensión"
+      "description": "Portefeuille mobile et extension"
     },
     "looking_for": {
-      "title": "¿No es lo que estás buscando?",
+      "title": "Ce n'est pas ce que vous cherchez ?",
       "mobile": {
-        "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
+        "description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille."
       },
       "desktop": {
-        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
-        "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
+        "compact_description": "Sélectionnez un portefeuille sur l'écran principal pour commencer avec un autre fournisseur de portefeuille.",
+        "wide_description": "Sélectionnez un portefeuille sur la gauche pour commencer avec un autre fournisseur de portefeuille."
       }
     }
   },
   "get_options": {
-    "title": "Comienza con %{wallet}",
-    "short_title": "Obtener %{wallet}",
+    "title": "Commencez avec %{wallet}",
+    "short_title": "Obtenez %{wallet}",
     "mobile": {
-      "title": "%{wallet} para móvil",
-      "description": "Use la billetera móvil para explorar el mundo de Ethereum.",
+      "title": "%{wallet} pour mobile",
+      "description": "Utilisez le portefeuille mobile pour explorer le monde d'Ethereum.",
       "download": {
-        "label": "Obtener la aplicación"
+        "label": "Obtenez l'application"
       }
     },
     "extension": {
-      "title": "%{wallet} para %{browser}",
-      "description": "Acceda a su billetera directamente desde su navegador web favorito.",
+      "title": "%{wallet} pour %{browser}",
+      "description": "Accédez à votre portefeuille directement depuis votre navigateur web préféré.",
       "download": {
-        "label": "Añadir a %{browser}"
+        "label": "Ajouter à %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "Instalar %{wallet}",
-    "description": "Escanee con su teléfono para descargar en iOS o Android",
+    "title": "Installer %{wallet}",
+    "description": "Scannez avec votre téléphone pour télécharger sur iOS ou Android",
     "continue": {
-      "label": "Continuar"
+      "label": "Continuer"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Conectar"
+        "label": "Connecter"
       },
       "learn_more": {
-        "label": "Obtener más información"
+        "label": "En savoir plus"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Actualizar"
+        "label": "Rafraîchir"
       },
       "learn_more": {
-        "label": "Obtener más información"
+        "label": "En savoir plus"
       }
     }
   },
   "chains": {
-    "title": "Cambiar redes",
-    "wrong_network": "Se detectó la red incorrecta, cambia o desconéctate para continuar.",
-    "confirm": "Confirmar en la cartera",
-    "switching_not_supported": "Tu cartera no admite cambiar las redes desde %{appName}. Intenta cambiar las redes desde tu cartera.",
-    "switching_not_supported_fallback": "Su billetera no admite el cambio de redes desde esta aplicación. Intente cambiar de red desde dentro de su billetera en su lugar.",
-    "disconnect": "Desconectar",
-    "connected": "Conectado"
+    "title": "Changer de Réseaux",
+    "wrong_network": "Mauvais réseau détecté, changez ou déconnectez-vous pour continuer.",
+    "confirm": "Confirmer dans le portefeuille",
+    "switching_not_supported": "Votre portefeuille ne supporte pas le changement de réseaux depuis %{appName}. Essayez de changer de réseau depuis votre portefeuille.",
+    "switching_not_supported_fallback": "Votre portefeuille ne prend pas en charge le changement de réseaux à partir de cette application. Essayez de changer de réseau à partir de votre portefeuille à la place.",
+    "disconnect": "Déconnecter",
+    "connected": "Connecté"
   },
   "profile": {
     "disconnect": {
-      "label": "Desconectar"
+      "label": "Déconnecter"
     },
     "copy_address": {
-      "label": "Copiar dirección",
-      "copied": "¡Copiado!"
+      "label": "Copier l'adresse",
+      "copied": "Copié !"
     },
     "explorer": {
-      "label": "Ver más en el explorador"
+      "label": "Voir plus sur l'explorateur"
     },
     "transactions": {
-      "description": "%{appName} transacciones aparecerán aquí...",
-      "description_fallback": "Tus transacciones aparecerán aquí...",
+      "description": "%{appName} transactions apparaîtront ici...",
+      "description_fallback": "Vos transactions apparaîtront ici...",
       "recent": {
-        "title": "Transacciones recientes"
+        "title": "Transactions Récentes"
       },
       "clear": {
-        "label": "Borrar Todo"
+        "label": "Tout supprimer"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Coloque Argent en su pantalla de inicio para un acceso más rápido a su billetera.",
-          "title": "Abra la aplicación Argent"
+          "description": "Mettez Argent sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Argent"
         },
         "step2": {
-          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Créez un portefeuille et un nom d'utilisateur, ou importez un portefeuille existant.",
+          "title": "Créer ou Importer un Portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
-          "title": "Toque el botón Escanear QR"
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton Scan QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner Bifrost Wallet en su pantalla de inicio para un acceso más rápido.",
-          "title": "Abra la aplicación Bifrost Wallet"
+          "description": "Nous vous recommandons de mettre le portefeuille Bifrost sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Bifrost Wallet"
         },
         "step2": {
-          "description": "Cree o importe una billetera usando su frase de recuperación.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Créez ou importez un portefeuille en utilisant votre phrase de récupération.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
-          "title": "Toque el botón de escaneo"
+          "description": "Après votre scan, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar Bitget Wallet en su pantalla de inicio para un acceso más rápido.",
-          "title": "Abra la aplicación Bitget Wallet"
+          "description": "Nous vous recommandons de placer Bitget Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Bitget Wallet"
         },
         "step2": {
-          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
-          "title": "Toque el botón de escanear"
+          "description": "Après le scan, une incitation de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar Bitget Wallet a su barra de tareas para un acceso más rápido a su billetera.",
-          "title": "Instale la extensión de la Billetera Bitget"
+          "description": "Nous vous recommandons d'épingler Bitget Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension de portefeuille Bitget"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créez ou Importez un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
-          "title": "Refrescar tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar Bitski a tu barra de tareas para un acceso más rápido a tu billetera.",
-          "title": "Instala la extensión Bitski"
+          "description": "Nous recommandons d'épingler Bitski à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Bitski"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner Coin98 Wallet en la pantalla de inicio para un acceso más rápido a su billetera.",
-          "title": "Abra la aplicación Coin98 Wallet"
+          "description": "Nous vous recommandons de placer Coin98 Wallet sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Coin98 Wallet"
         },
         "step2": {
-          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
-          "title": "Toque el botón WalletConnect"
+          "description": "Après que vous ayez scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Haga clic en la parte superior derecha de su navegador y fije Coin98 Wallet para un fácil acceso.",
-          "title": "Instale la extensión Coin98 Wallet"
+          "description": "Cliquez en haut à droite de votre navigateur et épinglez Coin98 Wallet pour un accès facile.",
+          "title": "Installez l'extension Coin98 Wallet"
         },
         "step2": {
-          "description": "Crea una nueva billetera o importa una existente.",
-          "title": "Crear o Importar una billetera"
+          "description": "Créez un nouveau portefeuille ou importez-en un existant.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configures Coin98 Wallet, haz clic a continuación para refrescar el navegador y cargar la extensión.",
-          "title": "Refresca tu navegador"
+          "description": "Une fois que vous avez configuré Coin98 Wallet, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner Coinbase Wallet en tu pantalla de inicio para un acceso más rápido.",
-          "title": "Abre la aplicación de la Billetera Coinbase"
+          "description": "Nous recommandons de placer Coinbase Wallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Coinbase Wallet"
         },
         "step2": {
-          "description": "Puedes respaldar tu billetera fácilmente utilizando la función de respaldo en la nube.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant la fonction de sauvegarde cloud.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
-          "title": "Pulsa el botón de escanear"
+          "description": "Après avoir scanné, une invite de connexion s'affichera pour que vous puissiez connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
         }
       },
       "extension": {
         "step1": {
-          "description": "Te recomendamos anclar la Billetera Coinbase a tu barra de tareas para un acceso más rápido a tu billetera.",
-          "title": "Instala la extensión de la Billetera Coinbase"
+          "description": "Nous recommandons d'épingler Coinbase Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Coinbase Wallet"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sûre. Ne partagez jamais votre phrase secrète avec quiconque.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para refrescar el navegador y cargar la extensión.",
-          "title": "Refresca tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Actualisez votre navigateur"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner Core en su pantalla de inicio para un acceso más rápido a su billetera.",
-          "title": "Abra la aplicación Core"
+          "description": "Nous recommandons de placer Core sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Core"
         },
         "step2": {
-          "description": "Puedes respaldar fácilmente tu billetera utilizando nuestra función de respaldo en tu teléfono.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
-          "title": "Toque el botón WalletConnect"
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos fijar Core a tu barra de tareas para acceder más rápido a tu billetera.",
-          "title": "Instala la extensión Core"
+          "description": "Nous recommandons d'épingler Core à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Core"
         },
         "step2": {
-          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque.",
+          "title": "Créez ou Importer un Portefeuille"
         },
         "step3": {
-          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
-          "title": "Refresca tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner FoxWallet en tu pantalla de inicio para un acceso más rápido.",
-          "title": "Abre la aplicación FoxWallet"
+          "description": "Nous recommandons de mettre FoxWallet sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application FoxWallet"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
-          "title": "Toca el botón de escanear"
+          "description": "Après avoir scanné, une invitation à la connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos poner la Billetera Frontier en tu pantalla principal para un acceso más rápido.",
-          "title": "Abre la aplicación de la Billetera Frontier"
+          "description": "Nous vous recommandons de placer le portefeuille Frontier sur votre écran d'accueil pour un accès plus rapide.",
+          "title": "Ouvrez l'application Frontier Wallet"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
-          "title": "Haz clic en el botón de escaneo"
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton de scan"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar la billetera Frontier a tu barra de tareas para un acceso más rápido a tu billetera.",
-          "title": "Instala la extensión de la billetera Frontier"
+          "description": "Nous recommandons d'épingler Frontier Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Frontier Wallet"
         },
         "step2": {
-          "description": "Asegúrese de hacer una copia de seguridad de su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créez ou importez un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
-          "title": "Actualizar tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "Abrir la aplicación imToken",
-          "description": "Pon la aplicación imToken en tu pantalla de inicio para un acceso más rápido a tu billetera."
+          "title": "Ouvrez l'application imToken",
+          "description": "Placez l'application imToken sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Crea una nueva billetera o importa una existente."
+          "title": "Créez ou importez un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant ."
         },
         "step3": {
-          "title": "Toca el Icono del Escáner en la esquina superior derecha",
-          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
+          "title": "Appuyez sur l'icône du scanner dans le coin supérieur droit",
+          "description": "Choisissez Nouvelle Connexion, puis scannez le code QR et confirmez l'invite pour vous connecter."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación MetaMask",
-          "description": "Recomendamos colocar MetaMask en tu pantalla de inicio para un acceso más rápido."
+          "title": "Ouvrez l'application MetaMask",
+          "description": "Nous vous recommandons de mettre MetaMask sur votre écran d'accueil pour un accès plus rapide."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Veillez à sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
         },
         "step3": {
-          "title": "Toca el botón de escanear",
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instala la extensión MetaMask",
-          "description": "Recomendamos anclar MetaMask a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l’extension de MetaMask",
+          "description": "Nous recommandons d'épingler MetaMask à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación OKX Wallet",
-          "description": "Recomendamos colocar OKX Wallet en tu pantalla de inicio para un acceso más rápido."
+          "title": "Ouvrez l'application OKX Wallet",
+          "description": "Nous recommandons de mettre OKX Wallet sur votre écran d'accueil pour un accès plus rapide."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
-          "title": "Toca el botón de escanear",
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+          "title": "Appuyez sur le bouton de numérisation",
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instala la extensión de Billetera OKX",
-          "description": "Recomendamos anclar la Billetera OKX a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension de portefeuille OKX",
+          "description": "Nous vous recommandons d'épingler le portefeuille OKX à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Abra la aplicación Omni",
-          "description": "Agregue Omni a su pantalla de inicio para un acceso más rápido a su billetera."
+          "title": "Ouvrez l'application Omni",
+          "description": "Ajoutez Omni à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Crear una nueva billetera o importar una existente."
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
         },
         "step3": {
-          "title": "Toque el icono de QR y escanee",
-          "description": "Toca el icono QR en tu pantalla principal, escanea el código y confirma el aviso para conectar."
+          "title": "Touchez l'icône QR et scannez",
+          "description": "Appuyez sur l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour vous connecter."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación TokenPocket",
-          "description": "Recomendamos colocar TokenPocket en tu pantalla principal para un acceso más rápido."
+          "title": "Ouvrez l'application TokenPocket",
+          "description": "Nous vous recommandons de mettre TokenPocket sur votre écran d'accueil pour un accès plus rapide."
         },
         "step2": {
-          "title": "Crear o importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créez ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
         },
         "step3": {
-          "title": "Toca el botón de escaneo",
-          "description": "Después de escanear, aparecerá una solicitud de conexión para que puedas conectar tu billetera."
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après votre scan, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instala la extensión TokenPocket",
-          "description": "Recomendamos anclar TokenPocket a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension TokenPocket",
+          "description": "Nous recommandons d'épingler TokenPocket à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación Trust Wallet",
-          "description": "Ubica Trust Wallet en tu pantalla de inicio para un acceso más rápido a tu billetera."
+          "title": "Ouvrez l'application Trust Wallet",
+          "description": "Placez Trust Wallet sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Crea una nueva billetera o importa una existente."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Créer un nouveau portefeuille ou en importer un existant."
         },
         "step3": {
-          "title": "Toca WalletConnect en Configuraciones",
-          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el aviso para conectar."
+          "title": "Appuyez sur WalletConnect dans les paramètres",
+          "description": "Choisissez Nouvelle Connexion, puis scannez le code QR et confirmez l'invite pour vous connecter."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instala la extensión de Trust Wallet",
-          "description": "Haz clic en la parte superior derecha de tu navegador y fija Trust Wallet para un fácil acceso."
+          "title": "Installez l'extension Trust Wallet",
+          "description": "Cliquez en haut à droite de votre navigateur et épinglez Trust Wallet pour un accès facile."
         },
         "step2": {
-          "title": "Crea o Importa una billetera",
-          "description": "Crea una nueva billetera o importa una existente."
+          "title": "Créer ou importer un portefeuille",
+          "description": "Créer un nouveau portefeuille ou en importer un existant."
         },
         "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configures Trust Wallet, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré Trust Wallet, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación Uniswap",
-          "description": "Agrega la billetera Uniswap a tu pantalla de inicio para un acceso más rápido a tu billetera."
+          "title": "Ouvrez l'application Uniswap",
+          "description": "Ajoutez Uniswap Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Crea una nueva billetera o importa una existente."
+          "title": "Créez ou importez un portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
         },
         "step3": {
-          "title": "Toca el icono QR y escanea",
-          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
+          "title": "Tapez sur l'icône QR et scannez",
+          "description": "Touchez l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour vous connecter."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación Zerion",
-          "description": "Recomendamos poner Zerion en tu pantalla de inicio para un acceso más rápido."
+          "title": "Ouvrez l'application Zerion",
+          "description": "Nous vous recommandons de mettre Zerion sur votre écran d'accueil pour un accès plus rapide."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne."
         },
         "step3": {
-          "title": "Toca el botón de escanear",
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Une fois que vous avez scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instala la extensión Zerion",
-          "description": "Recomendamos anclar Zerion a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installer l'extension Zerion",
+          "description": "Nous recommandons d'épingler Zerion à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Abre la aplicación Rainbow",
-          "description": "Recomendamos poner Rainbow en tu pantalla de inicio para un acceso más rápido a tu billetera."
+          "title": "Ouvre l'application Rainbow",
+          "description": "Nous vous recommandons de mettre Rainbow sur votre écran d'accueil pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono."
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone."
         },
         "step3": {
-          "title": "Toca el botón de escanear",
-          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
+          "title": "Appuyez sur le bouton de scan",
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour que vous connectiez votre portefeuille."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar la Billetera Enkrypt a tu barra de tareas para un acceso más rápido a tu billetera.",
-          "title": "Instala la extensión de Billetera Enkrypt"
+          "description": "Nous vous recommandons d'épingler Enkrypt Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension Enkrypt Wallet"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
-          "title": "Refresca tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l’extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Recomendamos anclar Frame a tu barra de tareas para un acceso más rápido a tu billetera.",
-          "title": "Instala Frame y la extensión complementaria"
+          "description": "Nous vous recommandons d'épingler Frame à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez Frame & l'extension complémentaire"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
-          "title": "Crear o Importar una Billetera"
+          "description": "Assurez-vous de sauvegarder votre portefeuille à l'aide d'une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne.",
+          "title": "Créer ou Importer un portefeuille"
         },
         "step3": {
-          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
-          "title": "Refresca tu navegador"
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension.",
+          "title": "Rafraîchissez votre navigateur"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "Instale la extensión de Billetera OneKey",
-          "description": "Recomendamos anclar la Billetera OneKey a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension OneKey Wallet",
+          "description": "Nous vous recommandons d'épingler OneKey Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec personne."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión Phantom",
-          "description": "Recomendamos fijar Phantom a tu barra de tareas para un acceso más fácil a tu billetera."
+          "title": "Installez l'extension Phantom",
+          "description": "Nous vous recommandons d'épingler Phantom à votre barre des tâches pour un accès plus facile à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta de recuperación con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase de récupération secrète avec personne."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión Rabby",
-          "description": "Recomendamos anclar Rabby a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension Rabby",
+          "description": "Nous recommandons d'épingler Rabby à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Actualisez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión Core",
-          "description": "Recomendamos anclar Safeheron a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension Core",
+          "description": "Nous recommandons d'épingler Safeheron à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
         },
         "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de Taho",
-          "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension Taho",
+          "description": "Nous vous recommandons d'épingler Taho à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crea o Importa una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
         },
         "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de Talisman",
-          "description": "Recomendamos anclar Talisman a tu barra de tareas para un acceso más rápido a tu billetera."
+          "title": "Installez l'extension Talisman",
+          "description": "Nous vous recommandons d'épingler Talisman à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crea o importa una billetera Ethereum",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
+          "title": "Créer ou importer un portefeuille Ethereum",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase de récupération avec personne."
         },
         "step3": {
-          "title": "Recarga tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "Instala la extensión de la billetera XDEFI",
-          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
+          "title": "Installez l'extension du portefeuille XDEFI",
+          "description": "Nous vous recommandons d'épingler XDEFI Wallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+          "title": "Créer ou Importer un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit."
         },
         "step3": {
-          "title": "Actualice su navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
         }
       }
     }
