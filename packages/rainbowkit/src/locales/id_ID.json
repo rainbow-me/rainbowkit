@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "Instal ekstensi Desig",
+          "description": "Kami merekomendasikan menempelkan Desig ke taskbar Anda untuk akses dompet Anda lebih mudah."
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "Buat Dompet",
           "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "Instal ekstensi SubWallet",
+          "description": "Kami merekomendasikan menempelkan SubWallet ke taskbar Anda untuk akses dompet Anda lebih cepat."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "Buka aplikasi SubWallet",
+          "description": "Kami merekomendasikan menaruh SubWallet di layar utama Anda untuk akses lebih cepat."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "Instal ekstensi CLV Wallet",
+          "description": "Kami merekomendasikan menempelkan CLV Wallet ke taskbar Anda untuk akses dompet Anda lebih cepat."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
