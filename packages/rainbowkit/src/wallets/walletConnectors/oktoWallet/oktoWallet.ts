@@ -66,19 +66,19 @@ export const oktoWallet = ({
           learnMoreUrl: 'https://okto.tech/',
           steps: [
             {
-              description: 'wallet_connectors.okto.extension.step1.description',
+              description: 'wallet_connectors.okto.qr_code.step1.description',
               step: 'install',
-              title: 'wallet_connectors.okto.extension.step1.title',
+              title: 'wallet_connectors.okto.qr_code.step1.title',
             },
             {
-              description: 'wallet_connectors.okto.extension.step2.description',
+              description: 'wallet_connectors.okto.qr_code.step2.description',
               step: 'create',
-              title: 'wallet_connectors.okto.extension.step2.title',
+              title: 'wallet_connectors.okto.qr_code.step2.title',
             },
             {
-              description: 'wallet_connectors.okto.extension.step3.description',
+              description: 'wallet_connectors.okto.qr_code.step3.description',
               step: 'scan',
-              title: 'wallet_connectors.okto.extension.step3.title',
+              title: 'wallet_connectors.okto.qr_code.step3.title',
             },
           ],
         },
