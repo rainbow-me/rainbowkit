@@ -763,8 +763,8 @@
     "safepal": {
       "extension": {
         "step1": {
-          "title": "Install the SafePal Wallet extension",
-          "description": "Click at the top right of your browser and pin SafePal Wallet for easy access."
+          "title": "SafePal Wallet eklentisini yükleyin",
+          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için SafePal Wallet'ı sabitleyin."
         },
         "step2": {
           "title": "Bir cüzdan oluşturun veya içe aktarın",
@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "Desig eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim sağlamak için Desig'i görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "Bir Cüzdan Oluşturun",
           "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "SubWallet eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için SubWallet'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "SubWallet uygulamasını açın",
+          "description": "Daha hızlı erişim için SubWallet'ı ana ekranınıza koymenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "CLV Cüzdanı eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için CLV Cüzdanını görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "CLV Cüzdan uygulamasını açın",
+          "description": "Daha hızlı erişim için CLV Cüzdanını ana ekranınıza koymanızı öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "Okto uygulamasını açın",
+          "description": "Hızlı erişim için Okto'yu ana ekranınıza ekleyin"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "MPC Cüzdanı oluşturun",
+          "description": "Bir hesap oluşturun ve bir cüzdan oluşturun"
         },
         "step3": {
           "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "Sağ üstteki Tarama QR simgesine dokunun ve bağlanmak için istemi onaylayın."
         }
       }
     }
