@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "ติดตั้งส่วนขยาย Desig",
+          "description": "เราขอแนะนำให้คุณตรึง Desig ไว้ที่แถบงานของคุณเพื่อให้เข้าถึงกระเป๋าเงินของคุณได้ง่ายขึ้น"
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "สร้างกระเป๋าเงิน",
           "description": "ตรวจสอบการสำรองข้อมูลกระเป๋าสตางค์ของคุณให้แน่นอนโดยใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใครเป็นอันขาด."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "ติดตั้งส่วนขยาย SubWallet",
+          "description": "เราขอแนะนำให้คุณตรึง SubWallet ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
         },
         "step2": {
           "title": "สร้างหรือนำเข้า Wallet",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "เปิดแอพ SubWallet",
+          "description": "เราขอแนะนำให้วาง SubWallet ไว้ที่หน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น"
         },
         "step2": {
           "title": "สร้างหรือนำเข้า Wallet",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "ติดตั้งส่วนขยาย CLV Wallet",
+          "description": "เราขอแนะนำให้คุณตรึง CLV Wallet ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
         },
         "step2": {
           "title": "สร้างหรือนำเข้า Wallet",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "เปิดแอพ CLV Wallet",
+          "description": "เราแนะนำให้คุณวาง CLV Wallet บนหน้าจอหลักเพื่อให้สามารถเข้าถึงได้เร็วขึ้น"
         },
         "step2": {
           "title": "สร้างหรือนำเข้า Wallet",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "เปิดแอพ Okto",
+          "description": "เพิ่ม Okto ไปยังหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็ว"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "สร้างกระเป๋าเงิน MPC",
+          "description": "สร้างบัญชีและสร้างกระเป๋าเงิน"
         },
         "step3": {
           "title": "แตะ WalletConnect ในการตั้งค่า",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "แตะที่ไอคอน Scan QR ที่บริเวณมุมบนขวาและยืนยันข้อความเพื่อเชื่อมต่อ."
         }
       }
     }
