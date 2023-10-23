@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "เชื่อมต่อกระเป๋าเงิน"
+    "label": "Conectar la billetera"
   },
   "intro": {
-    "title": "อะไรคือกระเป๋าเงิน?",
-    "description": "กระเป๋าเงินใช้ในการส่ง, รับ, เก็บ, และแสดงสินทรัพย์ดิจิทัล มันยังเป็นวิธีใหม่ในการเข้าสู่ระบบ, โดยไม่จำเป็นต้องสร้างบัญชีและรหัสผ่านใหม่ในทุกเว็บไซต์.",
+    "title": "¿Qué es una billetera?",
+    "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
     "digital_asset": {
-      "title": "บ้านสำหรับสินทรัพย์ดิจิทัลของคุณ",
-      "description": "กระเป๋าเงินถูกใช้เพื่อส่ง, รับ, เก็บ, แสดงสินทรัพย์ดิจิทัล เช่น Ethereum และ NFTs."
+      "title": "Un hogar para tus Activos Digitales",
+      "description": "Las carteras se utilizan para enviar, recibir, almacenar y mostrar activos digitales como Ethereum y NFTs."
     },
     "login": {
-      "title": "วิธีใหม่ในการเข้าสู่ระบบ",
-      "description": "แทนที่จะสร้างบัญชีและรหัสผ่านใหม่ในทุกเว็บไซต์, แค่เชื่อมต่อกระเป๋าของคุณ."
+      "title": "Una nueva forma de iniciar sesión",
+      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu cartera."
     },
     "get": {
-      "label": "รับกระเป๋าเงิน"
+      "label": "Obtener una billetera"
     },
     "learn_more": {
-      "label": "เรียนรู้เพิ่มเติม"
+      "label": "Obtener más información"
     }
   },
   "connect": {
-    "label": "เชื่อมต่อ",
-    "title": "เชื่อมต่อกระเป๋าเงิน",
+    "label": "Conectar",
+    "title": "Conectar una billetera",
     "new_to_ethereum": {
-      "description": "ใหม่กับกระเป๋า Ethereum หรือไม่?",
+      "description": "¿Eres nuevo en las billeteras Ethereum?",
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Obtener más información"
       }
     },
     "learn_more": {
-      "label": "เรียนรู้เพิ่มเติม"
+      "label": "Obtener más información"
     },
-    "recent": "ล่าสุด",
+    "recent": "Reciente",
     "status": {
-      "opening": "กำลังเปิด %{wallet}...",
-      "not_installed": "%{wallet} ไม่ได้ติดตั้ง",
-      "not_available": "%{wallet} ไม่สามารถใช้ได้",
-      "confirm": "ยืนยันการเชื่อมต่อในส่วนขยาย"
+      "opening": "Abriendo %{wallet}...",
+      "not_installed": "%{wallet} no está instalado",
+      "not_available": "%{wallet} no está disponible",
+      "confirm": "Confirma la conexión en la extensión"
     },
     "secondary_action": {
       "get": {
-        "description": "ไม่มี %{wallet}?",
-        "label": "รับ"
+        "description": "¿No tienes %{wallet}?",
+        "label": "OBTENER"
       },
       "install": {
-        "label": "ติดตั้ง"
+        "label": "INSTALAR"
       },
       "retry": {
-        "label": "ลองใหม่"
+        "label": "REINTENTAR"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "ต้องการ modal อย่างเป็นทางการจาก WalletConnect หรือไม่?",
-        "compact": "ต้องการ modal จาก WalletConnect หรือไม่?"
+        "full": "¿Necesitas el modal oficial de WalletConnect?",
+        "compact": "¿Necesitas el modal de WalletConnect?"
       },
       "open": {
-        "label": "เปิด"
+        "label": "ABRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "สแกนด้วย %{wallet}",
-    "fallback_title": "สแกนด้วยโทรศัพท์ของคุณ"
+    "title": "Escanea con %{wallet}",
+    "fallback_title": "Escanea con tu teléfono"
   },
   "connector_group": {
-    "recommended": "แนะนำ",
-    "other": "อื่น ๆ",
+    "recommended": "Recomendado",
+    "other": "Otro",
     "popular": "ยอดนิยม",
-    "more": "เพิ่มเติม",
-    "others": "อื่น ๆ"
+    "more": "Más",
+    "others": "Otros"
   },
   "get": {
-    "title": "รับกระเป๋าเงิน",
+    "title": "Obtener una billetera",
     "action": {
-      "label": "รับ"
+      "label": "OBTENER"
     },
     "mobile": {
-      "description": "Wallet บนมือถือ"
+      "description": "Billetera Móvil"
     },
     "extension": {
-      "description": "ส่วนขยายบราวเซอร์"
+      "description": "Extensión de navegador"
     },
     "mobile_and_extension": {
-      "description": "กระเป๋าเงินมือถือและส่วนขยาย"
+      "description": "Billetera móvil y extensión"
     },
     "looking_for": {
-      "title": "ไม่ใช่สิ่งที่คุณกำลังหาหรือไม่?",
+      "title": "¿No es lo que estás buscando?",
       "mobile": {
-        "description": "เลือกกระเป๋าเงินบนหน้าจอหลักเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน"
+        "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
       },
       "desktop": {
-        "compact_description": "เลือกกระเป๋าเงินบนหน้าจอหลักเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน",
-        "wide_description": "เลือกกระเป๋าเงินที่อยู่ทางซ้ายเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน"
+        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
+        "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
       }
     }
   },
   "get_options": {
-    "title": "เริ่มต้นกับ %{wallet}",
-    "short_title": "รับ %{wallet}",
+    "title": "Comienza con %{wallet}",
+    "short_title": "Obtener %{wallet}",
     "mobile": {
-      "title": "%{wallet} สำหรับมือถือ",
-      "description": "ใช้กระเป๋าระบบมือถือในการสำรวจโลกของ Ethereum.",
+      "title": "%{wallet} para móvil",
+      "description": "Use la billetera móvil para explorar el mundo de Ethereum.",
       "download": {
-        "label": "รับแอป"
+        "label": "Obtener la aplicación"
       }
     },
     "extension": {
-      "title": "%{wallet} สำหรับ %{browser}",
-      "description": "เข้าถึงกระเป๋าเงินของคุณได้โดยตรงจากบราวเซอร์ที่คุณชื่นชอบ.",
+      "title": "%{wallet} para %{browser}",
+      "description": "Acceda a su billetera directamente desde su navegador web favorito.",
       "download": {
-        "label": "เพิ่มไปยัง %{browser}"
+        "label": "Añadir a %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "ติดตั้ง %{wallet}",
-    "description": "สแกนด้วยโทรศัพท์ของคุณเพื่อดาวน์โหลดบน iOS หรือ Android",
+    "title": "Instalar %{wallet}",
+    "description": "Escanee con su teléfono para descargar en iOS o Android",
     "continue": {
-      "label": "ดำเนินการต่อ"
+      "label": "Continuar"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "เชื่อมต่อ"
+        "label": "Conectar"
       },
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Obtener más información"
       }
     },
     "extension": {
       "refresh": {
-        "label": "รีเฟรช"
+        "label": "Actualizar"
       },
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Obtener más información"
       }
     }
   },
   "chains": {
-    "title": "เปลี่ยนเครือข่าย",
-    "wrong_network": "ตรวจสอบพบเครือข่ายที่ไม่ถูกต้อง สลับหรือตัดการเชื่อมต่อเพื่อดำเนินการต่อ.",
-    "confirm": "ยืนยันใน Wallet",
-    "switching_not_supported": "กระเป๋าสตางค์ของคุณไม่สนับสนุนการเปลี่ยนเครือข่ายจาก %{appName}ลองเปลี่ยนเครือข่ายจากภายในกระเป๋าสตางค์ของคุณแทน",
-    "switching_not_supported_fallback": "กระเป๋าสตางค์ของคุณไม่สนับสนุนการสลับเครือข่ายจากแอปนี้ ลองสลับเครือข่ายจากภายในกระเป๋าสตางค์ของคุณแทน",
-    "disconnect": "ตัดการเชื่อมต่อ",
-    "connected": "เชื่อมต่อแล้ว"
+    "title": "Cambiar redes",
+    "wrong_network": "Se detectó la red incorrecta, cambia o desconéctate para continuar.",
+    "confirm": "Confirmar en la cartera",
+    "switching_not_supported": "Tu cartera no admite cambiar las redes desde %{appName}. Intenta cambiar las redes desde tu cartera.",
+    "switching_not_supported_fallback": "Su billetera no admite el cambio de redes desde esta aplicación. Intente cambiar de red desde dentro de su billetera en su lugar.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
   },
   "profile": {
     "disconnect": {
-      "label": "ตัดการเชื่อมต่อ"
+      "label": "Desconectar"
     },
     "copy_address": {
-      "label": "คัดลอกที่อยู่",
-      "copied": "คัดลอกแล้ว!"
+      "label": "Copiar dirección",
+      "copied": "¡Copiado!"
     },
     "explorer": {
-      "label": "ดูเพิ่มเติมบน explorer"
+      "label": "Ver más en el explorador"
     },
     "transactions": {
-      "description": "%{appName} รายการจะปรากฎที่นี่...",
-      "description_fallback": "การทำธุรกรรมของคุณจะปรากฎที่นี่...",
+      "description": "%{appName} transacciones aparecerán aquí...",
+      "description_fallback": "Tus transacciones aparecerán aquí...",
       "recent": {
-        "title": "ธุรกรรมล่าสุด"
+        "title": "Transacciones recientes"
       },
       "clear": {
-        "label": "ลบทั้งหมด"
+        "label": "Borrar Todo"
       }
     }
   },
@@ -175,710 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "วาง Argent บนหน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น",
-          "title": "เปิดแอป Argent"
+          "description": "Coloque Argent en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Argent"
         },
         "step2": {
-          "description": "สร้างกระเป๋าเงินและชื่อผู้ใช้หรือนำเข้ากระเป๋าเงินที่มีอยู่แล้ว",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะที่คุ่มุ่งสแกน QR"
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón Escanear QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Bifrost Wallet บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอพฯ Bifrost Wallet"
+          "description": "Recomendamos poner Bifrost Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bifrost Wallet"
         },
         "step2": {
-          "description": "สร้างหรือนำเข้ากระเป๋าเงินด้วย recovery phrase ของคุณ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cree o importe una billetera usando su frase de recuperación.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón de escaneo"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้วาง Bitget Wallet บนหน้าจอหน้าแรกของคุณเพื่อการเข้าถึงที่รวดเร็วขึ้น.",
-          "title": "เปิดแอพ Bitget Wallet"
+          "description": "Recomendamos colocar Bitget Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bitget Wallet"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
+          "title": "Toque el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณปัก Bitget Wallet ไว้บนแถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนเสริม Bitget Wallet"
+          "description": "Recomendamos anclar Bitget Wallet a su barra de tareas para un acceso más rápido a su billetera.",
+          "title": "Instale la extensión de la Billetera Bitget"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้ทำปัก Bitski ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้โดยไม่ต้องรอ",
-          "title": "ติดตั้งส่วนขยาย Bitski"
+          "description": "Recomendamos anclar Bitski a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Bitski"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Coin98 Wallet บนหน้าจอหลักของคุณ เพื่อให้เข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น.",
-          "title": "เปิดแอพ Coin98 Wallet"
+          "description": "Recomendamos poner Coin98 Wallet en la pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Coin98 Wallet"
         },
         "step2": {
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าเงินของคุณได้ง่ายๆ ด้วยฟีเจอร์สำรองข้อมูลบนโทรศัพท์ของคุณ.",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะที่ปุ่ม WalletConnect"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "คลิกที่ด้านบนขวาของเบราว์เซอร์ของคุณและปัก Coin98 Wallet ไว้เพื่อให้เข้าถึงได้ง่าย.",
-          "title": "ติดตั้งส่วนขยาย Coin98 Wallet"
+          "description": "Haga clic en la parte superior derecha de su navegador y fije Coin98 Wallet para un fácil acceso.",
+          "title": "Instale la extensión Coin98 Wallet"
         },
         "step2": {
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว.",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Crea una nueva billetera o importa una existente.",
+          "title": "Crear o Importar una billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่า Coin98 Wallet แล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยายขึ้นมา.",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configures Coin98 Wallet, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "เราแนะนำให้วาง Coinbase Wallet ไว้ที่หน้าจอหลักของคุณเพื่อให้เข้าถึงได้เร็วขึ้น.",
-          "title": "เปิดแอป Coinbase Wallet"
+          "description": "Recomendamos poner Coinbase Wallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Coinbase"
         },
         "step2": {
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าสตางค์ของคุณได้ง่ายๆ โดยใช้ฟีเจอร์การสำรองข้อมูลด้วยคลาวด์",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Puedes respaldar tu billetera fácilmente utilizando la función de respaldo en la nube.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Pulsa el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณยัด Coinbase Wallet ไว้ที่แถบงานของคุณเพื่อให้สามารถเข้าถึงกระเป๋าสตางค์ของคุณได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนขยาย Coinbase Wallet"
+          "description": "Te recomendamos anclar la Billetera Coinbase a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la Billetera Coinbase"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configure su billetera, haga clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "เราแนะนำให้คุณวาง Core ลงสนามหลักเพื่อให้เข้าถึงกระเป๋าเงินได้เร็วขึ้น",
-          "title": "เปิดแอปเครื่องมือช่วยอีเกิร์น"
+          "description": "Recomendamos poner Core en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Core"
         },
         "step2": {
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าเงินของคุณได้ง่ายๆ ด้วยฟีเจอร์สำรองข้อมูลบนโทรศัพท์ของคุณ.",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Puedes respaldar fácilmente tu billetera utilizando nuestra función de respaldo en tu teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะที่ปุ่ม WalletConnect"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณปัก Core ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้อย่างรวดเร็ว",
-          "title": "ติดตั้งส่วนขยาย Core"
+          "description": "Recomendamos fijar Core a tu barra de tareas para acceder más rápido a tu billetera.",
+          "title": "Instala la extensión Core"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง FoxWallet บนหน้าจอหลักเพื่อให้เข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอป FoxWallet"
+          "description": "Recomendamos poner FoxWallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación FoxWallet"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
+          "title": "Toca el botón de escanear"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Frontier Wallet บนหน้าจอหลักเพื่อให้เข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอป Frontier Wallet"
+          "description": "Recomendamos poner la Billetera Frontier en tu pantalla principal para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Frontier"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Haz clic en el botón de escaneo"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณปักหมุด Frontier Wallet ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้ง่ายขึ้น",
-          "title": "ติดตั้งส่วนเสริม Frontier Wallet"
+          "description": "Recomendamos anclar la billetera Frontier a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la billetera Frontier"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrese de hacer una copia de seguridad de su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualizar tu navegador"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ imToken",
-          "description": "ใส่แอพ imToken ไว้ที่หน้าจอหลักเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น."
+          "title": "Abrir la aplicación imToken",
+          "description": "Pon la aplicación imToken en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "แตะไอคอนสแกนเนอร์ในมุมบนขวา",
-          "description": "เลือก New Connection, แล้วสแกน QR code และยืนยันการรับรองสำหรับการเชื่อมต่อ"
+          "title": "Toca el Icono del Escáner en la esquina superior derecha",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป MetaMask",
-          "description": "เราขอแนะนำให้วาง MetaMask บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น"
+          "title": "Abre la aplicación MetaMask",
+          "description": "Recomendamos colocar MetaMask en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย MetaMask",
-          "description": "เราขอแนะนำให้คุณปัก MetaMask ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้รวดเร็ว"
+          "title": "Instala la extensión MetaMask",
+          "description": "Recomendamos anclar MetaMask a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ OKX Wallet",
-          "description": "เราแนะนำให้วาง OKX Wallet บนหน้าจอหลักของคุณเพื่อให้เข้าถึงได้เร็วขึ้น"
+          "title": "Abre la aplicación OKX Wallet",
+          "description": "Recomendamos colocar OKX Wallet en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม OKX Wallet",
-          "description": "เราแนะนำให้ยึด OKX Wallet ไว้ที่แถบงานของคุณเพื่อให้เข้าถึง wallet ของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión de Billetera OKX",
+          "description": "Recomendamos anclar la Billetera OKX a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Omni",
-          "description": "เพิ่ม Omni ไปยังหน้าจอแรกเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้รวดเร็วขึ้น"
+          "title": "Abra la aplicación Omni",
+          "description": "Agregue Omni a su pantalla de inicio para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crear una nueva billetera o importar una existente."
         },
         "step3": {
-          "title": "แตะที่ไอคอน QR แล้วสแกน",
-          "description": "แตะที่ไอคอน QR บนหน้าจอหน้าแรกของคุณ, สแกนรหัสและยืนยันการเตือนเพื่อเชื่อมต่อ."
+          "title": "Toque el icono de QR y escanee",
+          "description": "Toca el icono QR en tu pantalla principal, escanea el código y confirma el aviso para conectar."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป TokenPocket",
-          "description": "เราแนะนำให้วาง TokenPocket บนหน้าจอหน้าแรกของคุณเพื่อเข้าถึงได้เร็วขึ้น."
+          "title": "Abre la aplicación TokenPocket",
+          "description": "Recomendamos colocar TokenPocket en tu pantalla principal para un acceso más rápido."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
+          "title": "Toca el botón de escaneo",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que puedas conectar tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย TokenPocket",
-          "description": "เราขอแนะนำให้คุณปัก TokenPocket ไว้ที่แถบงานเพื่อทำให้สามารถเข้าถึงกระเป๋าเงินของคุณได้ง่ายขึ้น"
+          "title": "Instala la extensión TokenPocket",
+          "description": "Recomendamos anclar TokenPocket a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ Trust Wallet",
-          "description": "วาง Trust Wallet ที่หน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้รวดเร็วขึ้น"
+          "title": "Abre la aplicación Trust Wallet",
+          "description": "Ubica Trust Wallet en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "แตะ WalletConnect ในการตั้งค่า",
-          "description": "เลือก New Connection, แล้วสแกน QR code และยืนยันการรับรองสำหรับการเชื่อมต่อ"
+          "title": "Toca WalletConnect en Configuraciones",
+          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el aviso para conectar."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Trust Wallet",
-          "description": "คลิกที่มุมบนขวาของเบราว์เซอร์ของคุณและปัก Trust Wallet เพื่อเข้าถึงได้ง่าย"
+          "title": "Instala la extensión de Trust Wallet",
+          "description": "Haz clic en la parte superior derecha de tu navegador y fija Trust Wallet para un fácil acceso."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
+          "title": "Crea o Importa una billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่า Trust Wallet แล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยายขึ้นมา"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures Trust Wallet, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Uniswap",
-          "description": "เพิ่ม Uniswap Wallet ไปยังหน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Abre la aplicación Uniswap",
+          "description": "Agrega la billetera Uniswap a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "แตะที่ไอคอน QR แล้วสแกน",
-          "description": "แตะที่ไอคอน QR บนหน้าจอหลักของคุณ สแกนรหัสและยืนยันการเชื่อมต่อ"
+          "title": "Toca el icono QR y escanea",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Zerion",
-          "description": "เราแนะนำให้คุณวาง Zerion บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น"
+          "title": "Abre la aplicación Zerion",
+          "description": "Recomendamos poner Zerion en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Zerion",
-          "description": "เราแนะนำให้คุณติด Zerion บนแถบงานของคุณเพื่อเข้าถึง wallet ของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión Zerion",
+          "description": "Recomendamos anclar Zerion a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Rainbow",
-          "description": "เราขอแนะนำให้คุณวาง Rainbow อยู่บนหน้าจอหลักของคุณเพื่อรับผิดชอบจากกระเป๋าสตางค์ของคุณอย่างรวดเร็ว"
+          "title": "Abre la aplicación Rainbow",
+          "description": "Recomendamos poner Rainbow en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าเงินของคุณได้ง่ายๆ ด้วยฟีเจอร์สำรองข้อมูลบนโทรศัพท์ของคุณ."
+          "title": "Crear o Importar una Billetera",
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณปัก Enkrypt Wallet ไว้ที่แทบงานของคุณเพื่อให้สามารถเข้าถึงกระเป๋าสตางค์ของคุณได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนขยาย Enkrypt Wallet"
+          "description": "Recomendamos anclar la Billetera Enkrypt a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de Billetera Enkrypt"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้หมุน Frame ไว้บน taskbar ของคุณเพื่อให้เข้าถึง wallet ได้เร็วขึ้น",
-          "title": "ติดตั้ง Frame และ extension ที่เป็นคู่"
+          "description": "Recomendamos anclar Frame a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala Frame y la extensión complementaria"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม OneKey Wallet",
-          "description": "เราแนะนำการปัก OneKey Wallet ไว้บนแทบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้ง่ายขึ้น"
+          "title": "Instale la extensión de Billetera OneKey",
+          "description": "Recomendamos anclar la Billetera OneKey a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม Phantom",
-          "description": "เราแนะนำการปัก Phantom ไว้บนแทบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้ง่ายขึ้น"
+          "title": "Instala la extensión Phantom",
+          "description": "Recomendamos fijar Phantom a tu barra de tareas para un acceso más fácil a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยข้อความลับสำหรับการกู้คืนของคุณกับบุคคลใด ๆ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta de recuperación con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Rabby",
-          "description": "เราแนะนำให้คุณปัก Rabby ไว้ที่แถบงานเพื่อให้เข้าถึงกระเป๋าเงินของคุณได้รวดเร็วขึ้น."
+          "title": "Instala la extensión Rabby",
+          "description": "Recomendamos anclar Rabby a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Core",
-          "description": "เราขอแนะนำให้คุณปัก Safeheron ไว้ที่แถบงานเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión Core",
+          "description": "Recomendamos anclar Safeheron a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Taho",
-          "description": "เราแนะนำให้คุณปัก Taho ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión de Taho",
+          "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crea o Importa una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Talisman",
-          "description": "เราแนะนำให้คุณปัก Talisman ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión de Talisman",
+          "description": "Recomendamos anclar Talisman a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน Ethereum",
-          "description": "ให้แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีการกู้คืนของคุณให้ใครทราบเด็ดขาด"
+          "title": "Crea o importa una billetera Ethereum",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Recarga tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย XDEFI Wallet",
-          "description": "เราแนะนำให้คุณตรา XDEFI Wallet ไว้ที่แถบงานเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Instala la extensión de la billetera XDEFI",
+          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      }
-    },
-    "zeal": {
-      "extension": {
-        "step1": {
-          "title": "ติดตั้งส่วนขยาย Zeal",
-          "description": "เราแนะนำให้ปัก Zeal ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
-        },
-        "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      }
-    },
-    "safepal": {
-      "extension": {
-        "step1": {
-          "title": "ติดตั้งส่วนขยาย SafePal Wallet",
-          "description": "คลิกที่มุมบนขวาของเบราว์เซอร์ของคุณและปักมุม SafePal Wallet เพื่อที่จะเข้าถึงได้ง่าย"
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
-        },
-        "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "หลังจากคุณตั้งค่า SafePal Wallet เรียบร้อยแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "เปิดแอป SafePal Wallet",
-          "description": "วาง SafePal Wallet ที่หน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว."
-        },
-        "step3": {
-          "title": "แตะ WalletConnect ในการตั้งค่า",
-          "description": "เลือก New Connection, แล้วสแกน QR code และยืนยันการรับรองสำหรับการเชื่อมต่อ"
-        }
-      }
-    },
-    "desig": {
-      "extension": {
-        "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
-        },
-        "step2": {
-          "title": "Create a Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
-        },
-        "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      }
-    },
-    "subwallet": {
-      "extension": {
-        "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ให้แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีการกู้คืนของคุณให้ใครทราบเด็ดขาด"
-        },
-        "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
-        },
-        "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
-        }
-      }
-    },
-    "clv": {
-      "extension": {
-        "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
-        },
-        "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ"
-        },
-        "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ"
-        }
-      }
-    },
-    "okto": {
-      "qr_code": {
-        "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
-        },
-        "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
-        },
-        "step3": {
-          "title": "แตะ WalletConnect ในการตั้งค่า",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "title": "Actualice su navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     }
