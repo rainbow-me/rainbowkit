@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
+import { ActionButton } from '../Button/ActionButton';
 import { WalletButton } from '../ConnectOptions/MobileOptions';
 import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { Text } from '../Text/Text';
@@ -40,6 +41,15 @@ const MobileLinking = ({ onClose }: { onClose: () => void }) => {
           <Text textAlign="center" color="modalText" size="16" weight="medium">
             Accept connection request in the wallet
           </Text>
+        </Box>
+
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          marginTop="16"
+        >
+          <ActionButton label={'Dismiss'} size="medium" onClick={onClose} />
         </Box>
       </Box>
     </Box>

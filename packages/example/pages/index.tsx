@@ -7,12 +7,15 @@ import {
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
+import { WalletInstance } from '@rainbow-me/rainbowkit/dist/wallets/Wallet';
 import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
 import {
+  Connector,
   useAccount,
+  useConnect,
   useNetwork,
   usePrepareSendTransaction,
   useSendTransaction,
@@ -41,6 +44,15 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openConnectModal, connectModalOpen } = useConnectModal();
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status } = useSession();
+
+  const { connectors: defaultConnectors_untyped } = useConnect();
+
+  const defaultConnectors = defaultConnectors_untyped as Connector[];
+
+  const connectors = defaultConnectors.flatMap((connector) => {
+    // @ts-ignore
+    return (connector._wallets as WalletInstance[]) ?? [];
+  });
 
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -269,17 +281,35 @@ const Example = ({ authEnabled }: AppContextProps) => {
         </div>
       </div>
 
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 10,
+        }}
+      >
+        <RainbowButton />
+      </div>
+
       <div>
         <h3 style={{ fontFamily: 'sans-serif' }}>Wallet buttons</h3>
+
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 10,
+            display: 'grid',
+            justifyItems: 'start',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '20px',
+            maxWidth: '800px',
           }}
         >
-          <RainbowButton />
-          <WalletButton wallet="metaMask" />
+          {connectors
+            .filter((connector) => connector.id !== 'rainbow')
+            .map((connector) => {
+              const connectorId = connector.id;
+
+              return <WalletButton key={connectorId} wallet={connectorId} />;
+            })}
         </div>
       </div>
 

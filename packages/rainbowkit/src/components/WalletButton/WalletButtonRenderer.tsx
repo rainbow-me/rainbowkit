@@ -1,9 +1,19 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { BaseError } from 'viem';
+import React, {
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useAccount } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { isMobile } from '../../utils/isMobile';
+import {
+  addLatestWalletId,
+  clearLatestWalletId,
+  getLatestWalletId,
+} from '../../wallets/latestWalletId';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -38,7 +48,6 @@ export function WalletButtonRenderer({
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(RainbowButtonContext);
   const [firstConnector] = useWalletConnectors()
-    .filter((_wallet) => _wallet.ready)
     // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
     .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
@@ -58,14 +67,32 @@ export function WalletButtonRenderer({
     if (!connectModalOpen && connector) setConnector(null);
   }, [connectModalOpen]);
 
-  const { isConnected: connected } = useAccount({
+  const { isConnected, isDisconnected } = useAccount({
     onConnect: () => {
+      /*  const lastClickedWalletName = getRecent */
       // If you get error on desktop and thenswitch to mobile view
       // then connect your wallet the error will remain there. We will
       // reset the error in case that happens.
       if (error) setError('');
     },
+    onDisconnect: clearLatestWalletId,
   });
+
+  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
+  const isLastWalletIdConnected = useMemo(() => {
+    const lastWalletId = getLatestWalletId();
+
+    if (!lastWalletId || !firstConnector?.id) {
+      return false;
+    }
+
+    // Sometimes localstorage might not be in sync
+    // if component doesn't rerender, but for if user
+    // is not connected don't show them the green badge
+    if (!isConnected) return false;
+
+    return lastWalletId === firstConnector?.id;
+  }, [isConnected, isDisconnected, firstConnector]);
 
   const connectWallet = async () => {
     try {
@@ -82,24 +109,31 @@ export function WalletButtonRenderer({
   // If anyone uses SIWE then we don't want them to be able to connect
   // if they are in a process of authentication
   const isStatusLoading = connectionStatus === 'loading';
-  const ready = firstConnector && !isStatusLoading;
+  const ready = !!openConnectModal && firstConnector && !isStatusLoading;
+
+  const isNotSupported = !firstConnector?.installed || !firstConnector?.ready;
 
   return (
     <>
       {children({
         error,
         loading,
-        connected,
+        connected: isLastWalletIdConnected,
         ready,
         mounted,
         connector: firstConnector,
-        connect: () => {
+        connect: async () => {
+          // Used to track which last wallet user has clicked
+          // we can then use this value to show connected green badge
+          // for our custom Wallet Button API
+          addLatestWalletId(firstConnector?.id || '');
+
           // If openConnectModal is true and user is on mobile or
           // if user hasn't installed the connector then we prompt them
           // to rainbowkit connect modal
-          if (openConnectModal && (mobile || !firstConnector?.installed)) {
+          if (mobile || isNotSupported) {
+            openConnectModal?.();
             setConnector(firstConnector);
-            openConnectModal();
             return;
           }
 

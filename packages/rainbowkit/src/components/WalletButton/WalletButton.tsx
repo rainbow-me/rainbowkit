@@ -34,19 +34,13 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
               className={[
                 styles.maxWidth,
                 styles.border,
-                !connected
-                  ? touchableStyles({
-                      active: 'shrink',
-                      hover: 'grow',
-                    })
-                  : '',
+                touchableStyles({
+                  active: 'shrink',
+                  hover: 'grow',
+                }),
               ]}
               minHeight="44"
-              onClick={() => {
-                if (connected) return;
-
-                connect();
-              }}
+              onClick={connect}
               disabled={!ready || loading}
               padding="6"
               style={{ willChange: 'transform' }}
