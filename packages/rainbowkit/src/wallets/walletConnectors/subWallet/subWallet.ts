@@ -93,14 +93,16 @@ export const subWallet = ({
             learnMoreUrl: 'https://www.subwallet.app/',
             steps: [
               {
-                description: 'wallet_connectors.subwallet.qr_code.step1.title',
+                description:
+                  'wallet_connectors.subwallet.qr_code.step1.description',
                 step: 'install' as InstructionStepName,
-                title: 'wallet_connectors.subwallet.qr_code.step1.description',
+                title: 'wallet_connectors.subwallet.qr_code.step1.title',
               },
               {
-                description: 'wallet_connectors.subwallet.qr_code.step2.title',
+                description:
+                  'wallet_connectors.subwallet.qr_code.step2.description',
                 step: 'create' as InstructionStepName,
-                title: 'wallet_connectors.subwallet.qr_code.step2.description',
+                title: 'wallet_connectors.subwallet.qr_code.step2.title',
               },
               {
                 description:
