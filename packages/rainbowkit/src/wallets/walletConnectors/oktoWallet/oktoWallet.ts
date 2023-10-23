@@ -66,22 +66,19 @@ export const oktoWallet = ({
           learnMoreUrl: 'https://okto.tech/',
           steps: [
             {
-              description:
-                'Open the Okto app (Add Okto to your home screen for quick access)',
+              description: 'wallet_connectors.okto.extension.step1.description',
               step: 'install',
-              title: 'Open the okto app',
+              title: 'wallet_connectors.okto.extension.step1.title',
             },
             {
-              description:
-                'Create an account (Your wallet account will get created)',
+              description: 'wallet_connectors.okto.extension.step2.description',
               step: 'create',
-              title: 'Create a MPC Wallet',
+              title: 'wallet_connectors.okto.extension.step2.title',
             },
             {
-              description:
-                'Tap the Scan QR icon on the top right corner of the home screen (After you scan, a connection prompt will appear on the screen for you to approve)',
+              description: 'wallet_connectors.okto.extension.step3.description',
               step: 'scan',
-              title: 'Tap the Scan QR button',
+              title: 'wallet_connectors.okto.extension.step3.title',
             },
           ],
         },
