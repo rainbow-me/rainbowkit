@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Conectar Carteira"
+    "label": "اتصال المحفظة"
   },
   "intro": {
-    "title": "O que é uma Carteira?",
-    "description": "Uma carteira é usada para enviar, receber, armazenar e exibir ativos digitais. Também é uma nova forma de se conectar, sem precisar criar novas contas e senhas em todo site.",
+    "title": "ما هو المحفظة؟",
+    "description": "تُستخدم المحفظة لإرسال واستلام وتخزين وعرض الأصول الرقمية. إنها أيضاً طريقة جديدة لتسجيل الدخول، دون الحاجة إلى إنشاء حسابات وكلمات مرور جديدة على كل موقع.",
     "digital_asset": {
-      "title": "Um lar para seus ativos digitais",
-      "description": "Carteiras são usadas para enviar, receber, armazenar e exibir ativos digitais como Ethereum e NFTs."
+      "title": "دار لأصولك الرقمية",
+      "description": "تُستخدم المحافظ لإرسال واستلام وتخزين وعرض الأصول الرقمية مثل إيثيريوم والـ NFTs."
     },
     "login": {
-      "title": "Uma nova maneira de fazer login",
-      "description": "Em vez de criar novas contas e senhas em todos os sites, basta conectar sua carteira."
+      "title": "طريقة جديدة لتسجيل الدخول",
+      "description": "بدلاً من إنشاء حسابات وكلمات مرور جديدة على كل موقع، فقط قم بتوصيل محفظتك."
     },
     "get": {
-      "label": "Obter uma Carteira"
+      "label": "احصل على محفظة"
     },
     "learn_more": {
-      "label": "Saiba mais"
+      "label": "تعلم المزيد"
     }
   },
   "connect": {
-    "label": "Conectar",
-    "title": "Conectar uma Carteira",
+    "label": "اتصل",
+    "title": "اتصال بالمحفظة",
     "new_to_ethereum": {
-      "description": "Novo nas carteiras Ethereum?",
+      "description": "جديد في محافظ Ethereum؟",
       "learn_more": {
-        "label": "Saiba mais"
+        "label": "تعلم المزيد"
       }
     },
     "learn_more": {
-      "label": "Saiba mais"
+      "label": "أعرف أكثر"
     },
-    "recent": "Recente",
+    "recent": "الأخير",
     "status": {
-      "opening": "Abrindo %{wallet}...",
-      "not_installed": "%{wallet} não está instalado",
-      "not_available": "%{wallet} não está disponível",
-      "confirm": "Confirme a conexão na extensão"
+      "opening": "جار فتح %{wallet}...",
+      "not_installed": "%{wallet} غير مثبت",
+      "not_available": "%{wallet} غير متاح",
+      "confirm": "تأكيد الاتصال في الامتداد"
     },
     "secondary_action": {
       "get": {
-        "description": "Não tem %{wallet}?",
-        "label": "OBTER"
+        "description": "لا يوجد لديك %{wallet}؟",
+        "label": "احصل"
       },
       "install": {
-        "label": "INSTALAR"
+        "label": "تثبيت"
       },
       "retry": {
-        "label": "TENTAR DE NOVO"
+        "label": "أعد المحاولة"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Precisa do modal oficial do WalletConnect?",
-        "compact": "Precisa do modal WalletConnect?"
+        "full": "هل تحتاج إلى النافذة الرسمية لـ WalletConnect؟",
+        "compact": "هل تحتاج إلى النافذة لـ WalletConnect؟"
       },
       "open": {
-        "label": "ABRIR"
+        "label": "افتح"
       }
     }
   },
   "connect_scan": {
-    "title": "Digitalize com %{wallet}",
-    "fallback_title": "Digitalize com o seu telefone"
+    "title": "المسح باستخدام %{wallet}",
+    "fallback_title": "المسح باستخدام هاتفك"
   },
   "connector_group": {
-    "recommended": "Recomendado",
-    "other": "Outro",
-    "popular": "Popular",
-    "more": "Mais",
-    "others": "Outros"
+    "recommended": "موصى به",
+    "other": "آخر",
+    "popular": "شائع",
+    "more": "المزيد",
+    "others": "الآخرين"
   },
   "get": {
-    "title": "Obter uma Carteira",
+    "title": "احصل على محفظة",
     "action": {
-      "label": "OBTER"
+      "label": "احصل"
     },
     "mobile": {
-      "description": "Carteira Móvel"
+      "description": "محفظة الموبايل"
     },
     "extension": {
-      "description": "Extensão do Navegador"
+      "description": "ملحق المتصفح"
     },
     "mobile_and_extension": {
-      "description": "Carteira Móvel e Extensão"
+      "description": "محفظة موبايل وملحق"
     },
     "looking_for": {
-      "title": "Não é o que você está procurando?",
+      "title": "ليست هذه هي ما تبحث عنه؟",
       "mobile": {
-        "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
+        "description": "حدد محفظة على الشاشة الرئيسية للبدء باستخدام موفر محفظة مختلف."
       },
       "desktop": {
-        "compact_description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente.",
-        "wide_description": "Selecione uma carteira à esquerda para começar com um provedor de carteira diferente."
+        "compact_description": "حدد محفظة على الشاشة الرئيسية للبدء باستخدام موفر محفظة مختلف.",
+        "wide_description": "حدد محفظة على اليسار للبدء باستخدام موفر محفظة مختلف."
       }
     }
   },
   "get_options": {
-    "title": "Comece com %{wallet}",
-    "short_title": "Obtenha %{wallet}",
+    "title": "ابدأ مع %{wallet}",
+    "short_title": "احصل على %{wallet}",
     "mobile": {
-      "title": "%{wallet} para Móvel",
-      "description": "Use a carteira móvel para explorar o mundo do Ethereum.",
+      "title": "%{wallet} للجوال",
+      "description": "استخدم محفظة الموبايل لاستكشاف عالم Ethereum.",
       "download": {
-        "label": "Baixe o aplicativo"
+        "label": "احصل على التطبيق"
       }
     },
     "extension": {
-      "title": "%{wallet} para %{browser}",
-      "description": "Acesse sua carteira diretamente do seu navegador web favorito.",
+      "title": "%{wallet} لـ %{browser}",
+      "description": "وصول لمحفظتك مباشرة من متصفح الويب المفضل لديك.",
       "download": {
-        "label": "Adicionar ao %{browser}"
+        "label": "أضف إلى %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "Instale %{wallet}",
-    "description": "Escaneie com seu celular para baixar no iOS ou Android",
+    "title": "قم بالتثبيت %{wallet}",
+    "description": "استخدم هاتفك للتحميل على iOS أو Android",
     "continue": {
-      "label": "Continuar"
+      "label": "استمر"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Conectar"
+        "label": "اتصل"
       },
       "learn_more": {
-        "label": "Saiba mais"
+        "label": "تعلم المزيد"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Atualizar"
+        "label": "تحديث"
       },
       "learn_more": {
-        "label": "Saiba mais"
+        "label": "تعلم المزيد"
       }
     }
   },
   "chains": {
-    "title": "Mudar Redes",
-    "wrong_network": "Rede errada detectada, mude ou desconecte para continuar.",
-    "confirm": "Confirme na Carteira",
-    "switching_not_supported": "Sua carteira não suporta a mudança de redes de %{appName}. Tente mudar de redes dentro da sua carteira.",
-    "switching_not_supported_fallback": "Sua carteira não suporta a troca de redes a partir deste aplicativo. Tente trocar de rede dentro de sua carteira.",
-    "disconnect": "Desconectar",
-    "connected": "Conectado"
+    "title": "تبديل الشبكات",
+    "wrong_network": "تم اكتشاف شبكة غير صحيحة، قم بالتبديل أو القطع للمتابعة.",
+    "confirm": "التأكيد في المحفظة",
+    "switching_not_supported": "محفظتك لا تدعم التبديل بين الشبكات من %{appName}. جرب التبديل بين الشبكات من داخل المحفظة بدلاً من ذلك.",
+    "switching_not_supported_fallback": "محفظتك لا تدعم تبديل الشبكات من هذا التطبيق. حاول تبديل الشبكات من داخل المحفظة بدلاً من ذلك.",
+    "disconnect": "قطع الاتصال",
+    "connected": "متصل"
   },
   "profile": {
     "disconnect": {
-      "label": "Desconectar"
+      "label": "قطع الاتصال"
     },
     "copy_address": {
-      "label": "Copiar Endereço",
-      "copied": "Copiado!"
+      "label": "نسخ العنوان",
+      "copied": "تم النسخ!"
     },
     "explorer": {
-      "label": "Veja mais no explorador"
+      "label": "عرض المزيد على المستكشف"
     },
     "transactions": {
-      "description": "%{appName} transações aparecerão aqui...",
-      "description_fallback": "Suas transações aparecerão aqui...",
+      "description": "%{appName} ستظهر المعاملات هنا...",
+      "description_fallback": "سوف تظهر معاملاتك هنا...",
       "recent": {
-        "title": "Transações Recentes"
+        "title": "المعاملات الأخيرة"
       },
       "clear": {
-        "label": "Limpar Tudo"
+        "label": "مسح الكل"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
-          "title": "Abra o aplicativo Argent"
+          "description": "ضع أرجنت على شاشتك الرئيسية للوصول السريع إلى محفظتك.",
+          "title": "افتح تطبيق Argent"
         },
         "step2": {
-          "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "أنشئ محفظة واسم مستخدم، أو استورد محفظة موجودة بالفعل.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão Scan QR"
+          "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل المحفظة الخاصة بك.",
+          "title": "اضغط على زر فحص الكود الشريطي"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar a Bifrost Wallet na sua tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo Bifrost Wallet"
+          "description": "نوصي بوضع محفظة Bifrost على الشاشة الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق محفظة Bifrost"
         },
         "step2": {
-          "description": "Crie ou importe uma carteira usando sua frase de recuperação.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "أنشئ أو استورد محفظة باستخدام عبارة الاستعادة الخاصة بك.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Após você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escanear"
+          "description": "بعد الفحص، سيظهر موجه الاتصال لك لتوصيل محفظتك.",
+          "title": "اضغط على زر المسح"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar a Bitget Wallet na sua tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo Bitget Wallet"
+          "description": "نوصي بوضع محفظة Bitget على الشاشة الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق محفظة Bitget"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أحد.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escaneamento"
+          "description": "بعد الفحص، ستظهر لك موجه اتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar a Bitget Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão da Carteira Bitget"
+          "description": "نوصي بتثبيت محفظة Bitget على شريط المهام للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد محفظة Bitget"
         },
         "step2": {
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ محفظة أو استورد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "قم بتحديث متصفحك"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar o Bitski na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão Bitski"
+          "description": "نوصي بتثبيت Bitski على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد Bitski"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بعد إعداد المحفظة الخاصة بك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar a Carteira Coin98 na tela inicial para um acesso mais rápido à sua carteira.",
-          "title": "Abra o aplicativo Carteira Coin98"
+          "description": "نوصي بوضع محفظة Coin98 على الشاشة الرئيسية لسرعة الوصول إلى محفظتك.",
+          "title": "افتح تطبيق محفظة Coin98"
         },
         "step2": {
-          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "يمكنك بسهولة نسخ محفظتك الاحتياطي باستخدام ميزة النسخ الاحتياطي على هاتفك.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão WalletConnect"
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Clique no canto superior direito do seu navegador e fixe a Carteira Coin98 para fácil acesso.",
-          "title": "Instale a extensão da Carteira Coin98"
+          "description": "انقر في الجزء العلوي الأيمن من المتصفح وثبت Coin98 Wallet لسهولة الوصول.",
+          "title": "قم بتثبيت امتداد Coin98 Wallet"
         },
         "step2": {
-          "description": "Crie uma nova carteira ou importe uma existente.",
-          "title": "Criar ou Importar uma carteira"
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة بالفعل.",
+          "title": "أنشئ محفظة أو استورد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar a Carteira Coin98, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد Coin98 Wallet ، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar a Carteira Coinbase na tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo Coinbase Wallet"
+          "description": "نوصي بوضع Coinbase Wallet على الشاشة الرئيسية لسهولة الوصول.",
+          "title": "افتح تطبيق Coinbase Wallet"
         },
         "step2": {
-          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "يمكنك بسهولة النسخ الاحتياطي لمحفظتك باستخدام ميزة النسخ الاحتياطي السحابي.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para que você conecte sua carteira.",
-          "title": "Toque no botão de escanear"
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar o Coinbase Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão Coinbase Wallet"
+          "description": "نوصي بتثبيت محفظة Coinbase على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Coinbase"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد المحفظة"
         },
         "step3": {
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar o Core na tela inicial para um acesso mais rápido à sua carteira.",
-          "title": "Abra o aplicativo Core"
+          "description": "نوصي بوضع Core على الشاشة الرئيسية للوصول السريع إلى محفظتك.",
+          "title": "افتح تطبيق Core"
         },
         "step2": {
-          "description": "Você pode facilmente salvar sua carteira usando nosso recurso de backup no seu celular.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "يمكنك بسهولة النسخ الاحتياطي لمحفظتك باستخدام ميزة النسخ الاحتياطي على هاتفك.",
+          "title": "إنشاء أو استيراد المحفظة"
         },
         "step3": {
-          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão WalletConnect"
+          "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar o Core na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão Core"
+          "description": "نوصي بتثبيت Core على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد Core"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "تحديث متصفحك"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar o FoxWallet na tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo FoxWallet"
+          "description": "نوصي بوضع FoxWallet على شاشتك الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق FoxWallet"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء محفظة أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
-          "title": "Toque no botão de escaneamento"
+          "description": "بعد الفحص، ستظهر لك موجه الاتصال لتتمكن من اتصال محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Recomendamos colocar o Frontier Wallet na tela inicial para um acesso mais rápido.",
-          "title": "Abra o aplicativo Frontier Wallet"
+          "description": "نوصي بوضع Frontier Wallet على شاشتك الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق Frontier Wallet"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من نسخ محفظتك احتياطيا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
-          "title": "Toque no botão de varredura"
+          "description": "بعد الفحص، ستظهر لك موجه الاتصال لربط محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar a Carteira Frontier na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão da Carteira Frontier"
+          "description": "نوصي بتثبيت محفظة Frontier على شريط المهام للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Frontier"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من نسخ محفظتك احتياطيا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "قم بتحديث المتصفح الخاص بك"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo imToken",
-          "description": "Coloque o aplicativo imToken na tela inicial para um acesso mais rápido à sua carteira."
+          "title": "افتح تطبيق imToken",
+          "description": "ضع تطبيق imToken على الشاشة الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Crie uma nova carteira ou importe uma existente."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "قم بإنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Toque no ícone do Scanner no canto superior direito",
-          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
+          "title": "اضغط على أيقونة الماسح الضوئي في الزاوية العليا اليمنى",
+          "description": "اختر الاتصال الجديد، ثم امسح الرمز الشريطي وأكد الموجه للاتصال."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo MetaMask",
-          "description": "Recomendamos colocar o MetaMask na tela inicial para um acesso mais rápido."
+          "title": "افتح تطبيق MetaMask",
+          "description": "نوصي بوضع MetaMask على الشاشة الرئيسية لديك للوصول بشكل أسرع."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ الحفاظ على محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Toque no botão escanear",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك موجه اتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instale a extensão MetaMask",
-          "description": "Recomendamos fixar o MetaMask na barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت امتداد MetaMask",
+          "description": "نوصي بتثبيت MetaMask في شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "تحديث متصفحك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo da Carteira OKX",
-          "description": "Recomendamos colocar a Carteira OKX na tela inicial para um acesso mais rápido."
+          "title": "افتح تطبيق محفظة OKX",
+          "description": "نوصي بوضع محفظة OKX على الشاشة الرئيسية للوصول الأسرع."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instale a extensão OKX Wallet",
-          "description": "Recomendamos fixar a OKX Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت امتداد محفظة OKX",
+          "description": "نوصي بتثبيت محفظة OKX على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من حفظ نسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo Omni",
-          "description": "Adicione o Omni à sua tela inicial para um acesso mais rápido à sua carteira."
+          "title": "افتح تطبيق Omni",
+          "description": "أضف Omni إلى شاشتك الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Crie uma nova carteira ou importe uma existente."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "إنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Toque no ícone do QR e escaneie",
-          "description": "Toque no ícone QR na tela inicial, escaneie o código e confirme o prompt para conectar."
+          "title": "اضغط على أيقونة الرمز الاستجابة السريعة وامسحها",
+          "description": "اضغط على الرمز QR على الشاشة الرئيسية الخاصة بك، امسح الرمز وأكد الموافقة للاتصال."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo TokenPocket",
-          "description": "Recomendamos colocar o TokenPocket na tela inicial para um acesso mais rápido."
+          "title": "افتح تطبيق TokenPocket",
+          "description": "نوصي بوضع TokenPocket على الشاشة الرئيسية للوصول السريع."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك رسالة موجهة للاتصال بمحفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instale a extensão TokenPocket",
-          "description": "Recomendamos fixar o TokenPocket em sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت امتداد TokenPocket",
+          "description": "نوصي بتثبيت TokenPocket على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "قم بإنشاء محفظة أو استيراد محفظة",
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo Trust Wallet",
-          "description": "Coloque o Trust Wallet na tela inicial para um acesso mais rápido à sua carteira."
+          "title": "افتح تطبيق Trust Wallet",
+          "description": "ضع Trust Wallet على الشاشة الرئيسية للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Crie uma nova carteira ou importe uma existente."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة."
         },
         "step3": {
-          "title": "Toque em WalletConnect nas Configurações",
-          "description": "Escolha Nova Conexão, depois escaneie o QR code e confirme o prompt para se conectar."
+          "title": "اضغط على WalletConnect في الإعدادات",
+          "description": "اختر الاتصال الجديد، ثم امسح الرمز الشريطي QR وأكد الموجه للاتصال."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instale a extensão Trust Wallet",
-          "description": "Clique no canto superior direito do seu navegador e marque Trust Wallet para fácil acesso."
+          "title": "قم بتثبيت امتداد Trust Wallet",
+          "description": "انقر في الجزء العلوي الأيمن من المتصفح وثبت Trust Wallet للوصول بسهولة."
         },
         "step2": {
-          "title": "Crie ou Importe uma carteira",
-          "description": "Crie uma nova carteira ou importe uma existente."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois que configurar a Trust Wallet, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث متصفحك",
+          "description": "بمجرد إعداد Trust Wallet، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo Uniswap",
-          "description": "Adicione a Carteira Uniswap à sua tela inicial para um acesso mais rápido à sua carteira."
+          "title": "افتح تطبيق Uniswap",
+          "description": "أضف محفظة Uniswap إلى شاشة الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Crie uma nova carteira ou importe uma existente."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "قم بإنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Toque no ícone QR e escaneie",
-          "description": "Toque no ícone QR na sua tela inicial, escaneie o código e confirme o prompt para conectar."
+          "title": "اضغط على الأيقونة QR واقرأ الرمز",
+          "description": "اضغط على أيقونة QR على الشاشة الرئيسية، قراءة الرمز وتأكيد الرسالة الموجهة للاتصال."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo Zerion",
-          "description": "Recomendamos colocar o Zerion na sua tela inicial para um acesso mais rápido."
+          "title": "افتح تطبيق Zerion",
+          "description": "نوصي بوضع Zerion على شاشتك الرئيسية للوصول الأسرع."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من حفظ نسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de digitalizar, um prompt de conexão aparecerá para que você possa conectar sua carteira."
+          "title": "اضغط على زر المسح",
+          "description": "بعد المسح، سوف يظهر لك نافذة الاتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instale a extensão Zerion",
-          "description": "Recomendamos fixar o Zerion na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "تثبيت امتداد Zerion",
+          "description": "نوصي بتثبيت Zerion على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Abra o aplicativo Rainbow",
-          "description": "Recomendamos colocar o Rainbow na tela inicial para um acesso mais rápido à sua carteira."
+          "title": "افتح تطبيق Rainbow",
+          "description": "نوصي بوضع Rainbow على شاشة البداية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Você pode facilmente fazer backup da sua carteira usando nosso recurso de backup no seu telefone."
+          "title": "إنشاء محفظة أو استيراد محفظة",
+          "description": "يمكنك عمل نسخة احتياطية بسهولة لمحفظتك باستخدام ميزة النسخ الاحتياطي على هاتفك."
         },
         "step3": {
-          "title": "Toque no botão de digitalizar",
-          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira."
+          "title": "اضغط على الزر الماسح الضوئي",
+          "description": "بعد الفحص، سيظهر لك موجه اتصال لربط محفظتك."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar a Carteira Enkrypt na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale a extensão da Carteira Enkrypt"
+          "description": "نوصي بتثبيت محفظة Enkrypt على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Enkrypt"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ أو استورد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize o seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "حدث المتصفح الخاص بك"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Recomendamos fixar o Frame na sua barra de tarefas para um acesso mais rápido à sua carteira.",
-          "title": "Instale o Frame e a extensão complementar"
+          "description": "نوصي بتعليق Frame على شريط المهام للوصول السريع إلى محفظتك.",
+          "title": "ثبت Frame والإضافة المصاحبة"
         },
         "step2": {
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
-          "title": "Criar ou Importar uma Carteira"
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ أو استورد محفظة"
         },
         "step3": {
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
-          "title": "Atualize seu navegador"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "حدث المتصفح الخاص بك"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão OneKey Wallet",
-          "description": "Recomendamos fixar a OneKey Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت امتداد محفظة OneKey",
+          "description": "نوصي بتثبيت محفظة OneKey على شريط المهام للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão Phantom",
-          "description": "Recomendamos fixar o Phantom na sua barra de tarefas para facilitar o acesso à sua carteira."
+          "title": "قم بتثبيت امتداد Phantom",
+          "description": "نوصي بتثبيت Phantom على شريط المهام للوصول الأسهل إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta de recuperação com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك عبارة الاستعادة السرية الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المتصفح",
+          "description": "بمجرد إعداد المحفظة، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão Rabby",
-          "description": "Recomendamos fixar Rabby na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "ثبت امتداد Rabby",
+          "description": "نوصي بتثبيت Rabby على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك العبارة السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المتصفح",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão Core",
-          "description": "Recomendamos fixar Safeheron na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت إضافة النواة",
+          "description": "نوصي بتثبيت Safeheron على شريط المهام الخاص بك للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ محفظتك بطريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão Taho",
-          "description": "Recomendamos fixar o Taho na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "تثبيت إضافة Taho",
+          "description": "نوصي بتثبيت Taho على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "إنشاء محفظة أو استيراد محفظة",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão Talisman",
-          "description": "Recomendamos fixar o Talisman na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "تثبيت إضافة Talisman",
+          "description": "نوصي بتثبيت Talisman على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Crie ou Importe uma Carteira Ethereum",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
+          "title": "إنشاء محفظة Ethereum أو استيرادها",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارة الاستعادة الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Atualize o seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المستعرض الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المستعرض وتحميل الإضافة."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "Instale a extensão XDEFI Wallet",
-          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
+          "title": "قم بتثبيت إضافة XDEFI Wallet",
+          "description": "نوصي بتثبيت XDEFI Wallet على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك العبارة السرية الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+          "title": "قم بتحديث المستعرض الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     }
