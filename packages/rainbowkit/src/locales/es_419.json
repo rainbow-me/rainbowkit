@@ -92,7 +92,7 @@
         "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
       },
       "desktop": {
-        "compact_description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente.",
+        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
         "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
       }
     }
@@ -199,7 +199,7 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
           "title": "Toque el botón de escaneo"
         }
       }
@@ -211,12 +211,12 @@
           "title": "Abra la aplicación Bitget Wallet"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
-          "title": "Toque el botón de escaneo"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
+          "title": "Toque el botón de escanear"
         }
       },
       "extension": {
@@ -229,8 +229,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
         }
       }
     },
@@ -261,7 +261,7 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
           "title": "Toque el botón WalletConnect"
         }
       },
@@ -276,7 +276,7 @@
         },
         "step3": {
           "description": "Una vez que configures Coin98 Wallet, haz clic a continuación para refrescar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "title": "Refresca tu navegador"
         }
       }
     },
@@ -291,8 +291,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
-          "title": "Toque el botón de escaneo"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Pulsa el botón de escanear"
         }
       },
       "extension": {
@@ -305,8 +305,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configure su billetera, haga clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
@@ -317,11 +317,11 @@
           "title": "Abra la aplicación Core"
         },
         "step2": {
-          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "description": "Puedes respaldar fácilmente tu billetera utilizando nuestra función de respaldo en tu teléfono.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
           "title": "Toque el botón WalletConnect"
         }
       },
@@ -331,12 +331,12 @@
           "title": "Instala la extensión Core"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
@@ -351,8 +351,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
-          "title": "Toque el botón de escaneo"
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
+          "title": "Toca el botón de escanear"
         }
       }
     },
@@ -367,8 +367,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
-          "title": "Toque el botón de escaneo"
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Haz clic en el botón de escaneo"
         }
       },
       "extension": {
@@ -377,12 +377,12 @@
           "title": "Instala la extensión de la billetera Frontier"
         },
         "step2": {
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "description": "Asegúrese de hacer una copia de seguridad de su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualizar tu navegador"
         }
       }
     },
@@ -413,8 +413,8 @@
           "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
@@ -424,11 +424,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -440,11 +440,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
@@ -454,10 +454,10 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
+          "title": "Refresca tu navegador",
           "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
@@ -470,7 +470,7 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Crea una nueva billetera o importa una existente."
+          "description": "Crear una nueva billetera o importar una existente."
         },
         "step3": {
           "title": "Toque el icono de QR y escanee",
@@ -485,12 +485,12 @@
           "description": "Recomendamos colocar TokenPocket en tu pantalla principal para un acceso más rápido."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
+          "title": "Crear o importar una Billetera",
           "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+          "title": "Toca el botón de escaneo",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que puedas conectar tu billetera."
         }
       },
       "extension": {
@@ -504,7 +504,7 @@
         },
         "step3": {
           "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
@@ -520,7 +520,7 @@
         },
         "step3": {
           "title": "Toca WalletConnect en Configuraciones",
-          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
+          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el aviso para conectar."
         }
       },
       "extension": {
@@ -529,11 +529,11 @@
           "description": "Haz clic en la parte superior derecha de tu navegador y fija Trust Wallet para un fácil acceso."
         },
         "step2": {
-          "title": "Crear o Importar una billetera",
+          "title": "Crea o Importa una billetera",
           "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
+          "title": "Refresca tu navegador",
           "description": "Una vez que configures Trust Wallet, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
@@ -549,7 +549,7 @@
           "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Toque el icono de QR y escanee",
+          "title": "Toca el icono QR y escanea",
           "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
         }
       }
@@ -562,11 +562,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
@@ -576,11 +576,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
           "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
@@ -592,11 +592,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono."
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono."
         },
         "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
         }
       }
     },
@@ -611,8 +611,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
@@ -627,8 +627,8 @@
           "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
-          "title": "Actualiza tu navegador"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
@@ -640,11 +640,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
           "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
@@ -660,7 +660,7 @@
         },
         "step3": {
           "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -672,11 +672,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
           "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
@@ -691,8 +691,8 @@
           "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -703,12 +703,12 @@
           "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Crear o Importar una Billetera",
+          "title": "Crea o Importa una Billetera",
           "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -723,8 +723,8 @@
           "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+          "title": "Recarga tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -736,149 +736,11 @@
         },
         "step2": {
           "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Actualiza tu navegador",
+          "title": "Actualice su navegador",
           "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      }
-    },
-    "zeal": {
-      "extension": {
-        "step1": {
-          "title": "Instale la extensión Zeal",
-          "description": "Recomendamos anclar Zeal a su barra de tareas para un acceso más rápido a su billetera."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      }
-    },
-    "safepal": {
-      "extension": {
-        "step1": {
-          "title": "Instale la extensión de la billetera SafePal",
-          "description": "Haga clic en la esquina superior derecha de su navegador y ancle SafePal Wallet para un fácil acceso."
-        },
-        "step2": {
-          "title": "Crear o Importar una billetera",
-          "description": "Crea una nueva billetera o importa una existente."
-        },
-        "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure la Billetera SafePal, haga clic abajo para refrescar el navegador y cargar la extensión."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Abra la aplicación Billetera SafePal",
-          "description": "Coloque la Billetera SafePal en su pantalla de inicio para un acceso más rápido a su billetera."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Crea una nueva billetera o importa una existente."
-        },
-        "step3": {
-          "title": "Toca WalletConnect en Configuraciones",
-          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
-        }
-      }
-    },
-    "desig": {
-      "extension": {
-        "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
-        },
-        "step2": {
-          "title": "Create a Wallet",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      }
-    },
-    "subwallet": {
-      "extension": {
-        "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
-        },
-        "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
-        }
-      }
-    },
-    "clv": {
-      "extension": {
-        "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Actualiza tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Toque el botón de escaneo",
-          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
-        }
-      }
-    },
-    "okto": {
-      "qr_code": {
-        "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
-        },
-        "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
-        },
-        "step3": {
-          "title": "Toca WalletConnect en Configuraciones",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
         }
       }
     }
