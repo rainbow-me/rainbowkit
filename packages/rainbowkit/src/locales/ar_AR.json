@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "เชื่อมต่อกระเป๋าเงิน"
+    "label": "Cüzdanı Bağla"
   },
   "intro": {
-    "title": "อะไรคือกระเป๋าเงิน?",
-    "description": "กระเป๋าเงินใช้ในการส่ง, รับ, เก็บ, และแสดงสินทรัพย์ดิจิทัล มันยังเป็นวิธีใหม่ในการเข้าสู่ระบบ, โดยไม่จำเป็นต้องสร้างบัญชีและรหัสผ่านใหม่ในทุกเว็บไซต์.",
+    "title": "Cüzdan nedir?",
+    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
     "digital_asset": {
-      "title": "บ้านสำหรับสินทรัพย์ดิจิทัลของคุณ",
-      "description": "กระเป๋าเงินถูกใช้เพื่อส่ง, รับ, เก็บ, แสดงสินทรัพย์ดิจิทัล เช่น Ethereum และ NFTs."
+      "title": "Dijital Varlıklarınız İçin Bir Ev",
+      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
     },
     "login": {
-      "title": "วิธีใหม่ในการเข้าสู่ระบบ",
-      "description": "แทนที่จะสร้างบัญชีและรหัสผ่านใหม่ในทุกเว็บไซต์, แค่เชื่อมต่อกระเป๋าของคุณ."
+      "title": "Yeni Bir Giriş Yolu",
+      "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
     },
     "get": {
-      "label": "รับกระเป๋าเงิน"
+      "label": "Bir Cüzdan Edinin"
     },
     "learn_more": {
-      "label": "เรียนรู้เพิ่มเติม"
+      "label": "Daha fazla bilgi edinin"
     }
   },
   "connect": {
-    "label": "เชื่อมต่อ",
-    "title": "เชื่อมต่อกระเป๋าเงิน",
+    "label": "Bağlan",
+    "title": "Bir Cüzdanı Bağla",
     "new_to_ethereum": {
-      "description": "ใหม่กับกระเป๋า Ethereum หรือไม่?",
+      "description": "Ethereum cüzdanlarına yeni misiniz?",
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Daha fazla bilgi edinin"
       }
     },
     "learn_more": {
-      "label": "เรียนรู้เพิ่มเติม"
+      "label": "Daha fazla bilgi edinin"
     },
-    "recent": "ล่าสุด",
+    "recent": "Son",
     "status": {
-      "opening": "กำลังเปิด %{wallet}...",
-      "not_installed": "%{wallet} ไม่ได้ติดตั้ง",
-      "not_available": "%{wallet} ไม่สามารถใช้ได้",
-      "confirm": "ยืนยันการเชื่อมต่อในส่วนขยาย"
+      "opening": "%{wallet}açılıyor...",
+      "not_installed": "%{wallet} yüklü değil",
+      "not_available": "%{wallet} kullanılabilir değil",
+      "confirm": "Bağlantıyı eklentide onaylayın"
     },
     "secondary_action": {
       "get": {
-        "description": "ไม่มี %{wallet}?",
-        "label": "รับ"
+        "description": "%{wallet}yok mu?",
+        "label": "AL"
       },
       "install": {
-        "label": "ติดตั้ง"
+        "label": "YÜKLE"
       },
       "retry": {
-        "label": "ลองใหม่"
+        "label": "YENİDEN DENE"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "ต้องการ modal อย่างเป็นทางการจาก WalletConnect หรือไม่?",
-        "compact": "ต้องการ modal จาก WalletConnect หรือไม่?"
+        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
+        "compact": "WalletConnect modalına mı ihtiyacınız var?"
       },
       "open": {
-        "label": "เปิด"
+        "label": "AÇ"
       }
     }
   },
   "connect_scan": {
-    "title": "สแกนด้วย %{wallet}",
-    "fallback_title": "สแกนด้วยโทรศัพท์ของคุณ"
+    "title": "%{wallet}ile tarama yapın",
+    "fallback_title": "Telefonunuzla tarama yapın"
   },
   "connector_group": {
-    "recommended": "แนะนำ",
-    "other": "อื่น ๆ",
-    "popular": "ยอดนิยม",
-    "more": "เพิ่มเติม",
-    "others": "อื่น ๆ"
+    "recommended": "Tavsiye Edilen",
+    "other": "Diğer",
+    "popular": "Popüler",
+    "more": "Daha Fazla",
+    "others": "Diğerleri"
   },
   "get": {
-    "title": "รับ Wallet",
+    "title": "Bir Cüzdan Edinin",
     "action": {
-      "label": "รับ"
+      "label": "AL"
     },
     "mobile": {
-      "description": "Wallet บนมือถือ"
+      "description": "Mobil Cüzdan"
     },
     "extension": {
-      "description": "ส่วนขยายบราวเซอร์"
+      "description": "Tarayıcı Eklentisi"
     },
     "mobile_and_extension": {
-      "description": "กระเป๋าเงินมือถือและส่วนขยาย"
+      "description": "Mobil Cüzdan ve Eklenti"
     },
     "looking_for": {
-      "title": "ไม่ใช่สิ่งที่คุณกำลังหาหรือไม่?",
+      "title": "Aradığınız şey bu değil mi?",
       "mobile": {
-        "description": "เลือกกระเป๋าเงินบนหน้าจอหลักเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน"
+        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
       },
       "desktop": {
-        "compact_description": "เลือกกระเป๋าเงินบนหน้าจอหลักเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน",
-        "wide_description": "เลือกกระเป๋าเงินที่อยู่ทางซ้ายเพื่อเริ่มต้นใช้งานกับผู้ให้บริการกระเป๋าเงินที่แตกต่างกัน"
+        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
+        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
       }
     }
   },
   "get_options": {
-    "title": "เริ่มต้นกับ %{wallet}",
-    "short_title": "รับ %{wallet}",
+    "title": "%{wallet}ile başlayın",
+    "short_title": "%{wallet}Edinin",
     "mobile": {
-      "title": "%{wallet} สำหรับมือถือ",
-      "description": "ใช้กระเป๋าระบบมือถือในการสำรวจโลกของ Ethereum.",
+      "title": "%{wallet} Mobil İçin",
+      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
       "download": {
-        "label": "รับแอป"
+        "label": "Uygulamayı alın"
       }
     },
     "extension": {
-      "title": "%{wallet} สำหรับ %{browser}",
-      "description": "เข้าถึงกระเป๋าเงินของคุณได้โดยตรงจากบราวเซอร์ที่คุณชื่นชอบ.",
+      "title": "%{wallet} için %{browser}",
+      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
       "download": {
-        "label": "เพิ่มไปยัง %{browser}"
+        "label": "%{browser}'e ekle"
       }
     }
   },
   "get_mobile": {
-    "title": "ติดตั้ง %{wallet}",
-    "description": "สแกนด้วยโทรศัพท์ของคุณเพื่อดาวน์โหลดบน iOS หรือ Android",
+    "title": "%{wallet}'i yükleyin",
+    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
     "continue": {
-      "label": "ดำเนินการต่อ"
+      "label": "Devam et"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "เชื่อมต่อ"
+        "label": "Bağlan"
       },
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Daha fazla bilgi edinin"
       }
     },
     "extension": {
       "refresh": {
-        "label": "รีเฟรช"
+        "label": "Yenile"
       },
       "learn_more": {
-        "label": "เรียนรู้เพิ่มเติม"
+        "label": "Daha fazla bilgi edinin"
       }
     }
   },
   "chains": {
-    "title": "เปลี่ยนเครือข่าย",
-    "wrong_network": "ตรวจสอบพบเครือข่ายที่ไม่ถูกต้อง สลับหรือตัดการเชื่อมต่อเพื่อดำเนินการต่อ.",
-    "confirm": "ยืนยันใน Wallet",
-    "switching_not_supported": "กระเป๋าสตางค์ของคุณไม่สนับสนุนการเปลี่ยนเครือข่ายจาก %{appName}ลองเปลี่ยนเครือข่ายจากภายในกระเป๋าสตางค์ของคุณแทน",
-    "switching_not_supported_fallback": "กระเป๋าสตางค์ของคุณไม่สนับสนุนการสลับเครือข่ายจากแอปนี้ ลองสลับเครือข่ายจากภายในกระเป๋าสตางค์ของคุณแทน",
-    "disconnect": "ตัดการเชื่อมต่อ",
-    "connected": "เชื่อมต่อแล้ว"
+    "title": "Ağları Değiştir",
+    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
+    "confirm": "Cüzdanında Onayla",
+    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
+    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
+    "disconnect": "Bağlantıyı Kes",
+    "connected": "Bağlı"
   },
   "profile": {
     "disconnect": {
-      "label": "ตัดการเชื่อมต่อ"
+      "label": "Bağlantıyı Kes"
     },
     "copy_address": {
-      "label": "คัดลอกที่อยู่",
-      "copied": "คัดลอกแล้ว!"
+      "label": "Adresi Kopyala",
+      "copied": "Kopyalandı!"
     },
     "explorer": {
-      "label": "ดูเพิ่มเติมบน explorer"
+      "label": "Explorer üzerinde daha fazlasını görün"
     },
     "transactions": {
-      "description": "%{appName} รายการจะปรากฎที่นี่...",
-      "description_fallback": "การทำธุรกรรมของคุณจะปรากฎที่นี่...",
+      "description": "%{appName} işlem burada görünecek...",
+      "description_fallback": "İşlemleriniz burada görünecek...",
       "recent": {
-        "title": "ธุรกรรมล่าสุด"
+        "title": "Son İşlemler"
       },
       "clear": {
-        "label": "ลบทั้งหมด"
+        "label": "Hepsini Temizle"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "วาง Argent บนหน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น",
-          "title": "เปิดแอป Argent"
+          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
+          "title": "Argent uygulamasını açın"
         },
         "step2": {
-          "description": "สร้างกระเป๋าเงินและชื่อผู้ใช้หรือนำเข้ากระเป๋าเงินที่มีอยู่แล้ว",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะปรากฏหน้าต่างเชื่อมต่อให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะที่คุ่มุ่งสแกน QR"
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "QR tarayıcı düğmesine dokunun"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Bifrost Wallet บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอพฯ Bifrost Wallet"
+          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
+          "title": "Bifrost Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "สร้างหรือนำเข้ากระเป๋าเงินด้วย recovery phrase ของคุณ",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกนแล้วยินยันการเชื่อมต่อกับกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
+          "title": "Tarayıcı düğmesine dokunun"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้วาง Bitget Wallet บนหน้าจอหน้าแรกของคุณเพื่อการเข้าถึงที่รวดเร็วขึ้น.",
-          "title": "เปิดแอพ Bitget Wallet"
+          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
+          "title": "Bitget Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "ตรวจสอบการสำรองข้อมูลกระเป๋าสตางค์ของคุณให้แน่นอนโดยใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใครเป็นอันขาด.",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกน จะมีข้อความขอเชื่อมต่อที่จะปรากฏขึ้นให้คุณเชื่อมต่อกระเป๋าสตางค์ของคุณ.",
-          "title": "แตะปุ่มสแกน"
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณปัก Bitget Wallet ไว้บนแถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนเสริม Bitget Wallet"
+          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Bitget Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "โปรดแน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับบุคคลใดๆ",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้วคลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนเสริม",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้ทำปัก Bitski ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้โดยไม่ต้องรอ",
-          "title": "ติดตั้งส่วนขยาย Bitski"
+          "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Bitski eklentisini yükleyin"
         },
         "step2": {
-          "description": "ควรสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยคำลับของคุณให้ใครทราบ",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Coin98 Wallet บนหน้าจอหลักของคุณ เพื่อให้เข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น.",
-          "title": "เปิดแอพ Coin98 Wallet"
+          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
+          "title": "Coin98 Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าเงินของคุณได้ง่ายๆ ด้วยฟีเจอร์สำรองข้อมูลบนโทรศัพท์ของคุณ.",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากคุณสแกน จะมีเตือนการเชื่อมต่อที่ปรากฏขึ้นให้คุณเชื่อมต่อกระเป๋าเงินของคุณ.",
-          "title": "แตะที่ปุ่ม WalletConnect"
+          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "CüzdanBağlantısı düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "คลิกที่ด้านบนขวาของเบราว์เซอร์ของคุณและปัก Coin98 Wallet ไว้เพื่อให้เข้าถึงได้ง่าย.",
-          "title": "ติดตั้งส่วนขยาย Coin98 Wallet"
+          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
+          "title": "Coin98 Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้าที่มีอยู่แล้ว.",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
+          "title": "Bir cüzdan oluşturun veya içe aktarın"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่า Coin98 Wallet แล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยายขึ้นมา.",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "เราแนะนำให้วาง Coinbase Wallet ไว้ที่หน้าจอหลักของคุณเพื่อให้เข้าถึงได้เร็วขึ้น.",
-          "title": "เปิดแอป Coinbase Wallet"
+          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
+          "title": "Coinbase Wallet uygulamasını açın"
         },
         "step2": {
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าสตางค์ของคุณได้ง่ายๆ โดยใช้ฟีเจอร์การสำรองข้อมูลด้วยคลาวด์",
-          "title": "สร้างหรือนำเข้ากระเป๋าสตางค์"
+          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกนแล้ว จะมีการแสดงขอ้มูลเพื่อให้คุณเชื่อมต่อกระเป๋าสตางค์ของคุณ",
-          "title": "แตะที่ปุ่มสแกน"
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณยัด Coinbase Wallet ไว้ที่แถบงานของคุณเพื่อให้สามารถเข้าถึงกระเป๋าสตางค์ของคุณได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนขยาย Coinbase Wallet"
+          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Coinbase Wallet uzantısını yükleyin"
         },
         "step2": {
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยประโยคลับของคุณให้กับใครเลย",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
+          "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
-          "description": "เมื่อคุณได้ตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อเรียกดูเบราว์เซอร์ใหม่และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "เราแนะนำให้คุณวาง Core ลงสนามหลักเพื่อให้เข้าถึงกระเป๋าเงินได้เร็วขึ้น",
-          "title": "เปิดแอปเครื่องมือช่วยอีเกิร์น"
+          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
+          "title": "Core uygulamasını açın"
         },
         "step2": {
-          "description": "คุณสามารถสำรองกระเป๋าเงินของคุณได้ง่ายๆ โดยใช้ฟีเจอร์สำรองของเราบนโทรศัพท์ของคุณ",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
+          "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกนแล้ว จะมีการแจ้งเตือนเพื่อให้คุณเชื่อมต่อกับกระเป๋าสตางค์ของคุณ",
-          "title": "แตะปุ่ม WalletConnect"
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
+          "title": "WalletConnect düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณปัก Core ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้อย่างรวดเร็ว",
-          "title": "ติดตั้งส่วนขยาย Core"
+          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Core eklentisini yükleyin"
         },
         "step2": {
-          "description": "โปรดแน่ใจว่าคุณได้สำรองกระเป๋าสตางค์ของคุณใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใคร",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าสตางค์ของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง FoxWallet บนหน้าจอหลักเพื่อให้เข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอป FoxWallet"
+          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
+          "title": "FoxWallet uygulamasını açın"
         },
         "step2": {
-          "description": "ตรวจสอบที่จะสำรองข้อมูลกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย จงอย่าเปิดเผยประโยคลับลับของคุณให้ผู้อื่นรู้",
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกน จะมีการเชื่อมต่อที่แสดงให้คุณเชื่อมต่อกระเป๋าเงินของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณวาง Frontier Wallet บนหน้าจอหลักเพื่อให้เข้าถึงได้เร็วขึ้น",
-          "title": "เปิดแอป Frontier Wallet"
+          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
+          "title": "Frontier Cüzdan uygulamasını açın"
         },
         "step2": {
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าสตางค์ของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใคร",
-          "title": "สร้างหรือนำเข้ากระเป๋าสตางค์"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "หลังจากที่คุณสแกนแล้ว จะมีการแสดงข้อมูลเพื่อให้คุณเชื่อมต่อกับกระเป๋าสตางค์ของคุณ",
-          "title": "แตะปุ่มสแกน"
+          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarama düğmesine dokunun"
         }
       },
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้คุณปักหมุด Frontier Wallet ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้ง่ายขึ้น",
-          "title": "ติดตั้งส่วนเสริม Frontier Wallet"
+          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Frontier Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าสตางค์ของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใคร",
-          "title": "สร้างหรือนำเข้ากระเป๋าสตางค์"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย",
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ"
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
+          "title": "Tarayıcınızı Yenileyin"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ imToken",
-          "description": "ใส่แอพ imToken ไว้ที่หน้าจอหลักเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น."
+          "title": "imToken uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้ากระเป๋าเงินที่มีอยู่แล้ว"
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
         },
         "step3": {
-          "title": "แตะไอคอนสแกนเนอร์ในมุมบนขวา",
-          "description": "เลือก New Connection, แล้วสแกน QR code และยืนยันการรับรองสำหรับการเชื่อมต่อ"
+          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
+          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป MetaMask",
-          "description": "เราขอแนะนำให้วาง MetaMask บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น"
+          "title": "MetaMask uygulamasını açın",
+          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ตรวจสอบว่าได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีลับของคุณให้กับใคร"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "แตะที่ปุ่มสแกน",
-          "description": "หลังจากการสแกน, จะปรากฏข้อความเชื่อมต่อสำหรับคุณเพื่อเชื่อมต่อกับกระเป๋าเงินของคุณ"
+          "title": "Tarama düğmesine dokunun",
+          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย MetaMask",
-          "description": "เราขอแนะนำให้คุณปัก MetaMask ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้รวดเร็ว"
+          "title": "MetaMask eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "อย่างแน่นอนให้สำรองข้อมูลกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์ประโยคลับของคุณกับใครเลย"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı Yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ OKX Wallet",
-          "description": "เราแนะนำให้วาง OKX Wallet บนหน้าจอหลักของคุณเพื่อให้เข้าถึงได้เร็วขึ้น"
+          "title": "OKX Wallet uygulamasını açın",
+          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "จงแน่ใจว่าคุณได้สำรองข้อมูล wallet ของคุณด้วยวิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณให้คนอื่น"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากคุณสแกน จะมีการแสดงข้อมูลเพื่อให้คุณเชื่อมต่อ wallet ของคุณ"
+          "title": "Tarama düğmesine dokunun",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม OKX Wallet",
-          "description": "เราแนะนำให้ยึด OKX Wallet ไว้ที่แถบงานของคุณเพื่อให้เข้าถึง wallet ของคุณได้เร็วขึ้น"
+          "title": "OKX Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "โปรดแน่ใจว่าคุณได้สำรองกระเป๋าสตางค์ของคุณด้วยวิธีที่ปลอดภัย อย่าเปิดเผยประโยคลับของคุณให้ใครทราบ"
+          "title": "Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าสตางค์ของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Omni",
-          "description": "เพิ่ม Omni ไปยังหน้าจอแรกเพื่อเข้าถึงกระเป๋าสตางค์ของคุณได้รวดเร็วขึ้น"
+          "title": "Omni uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าสตางค์",
-          "description": "สร้างกระเป๋าสตางค์ใหม่หรือนำเข้ากระเป๋าสตางค์ที่มีอยู่"
+          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
-          "title": "แตะที่ไอคอน QR แล้วสแกน",
-          "description": "แตะที่ไอคอน QR บนหน้าจอหน้าแรกของคุณ, สแกนรหัสและยืนยันการเตือนเพื่อเชื่อมต่อ."
+          "title": "QR simgesine dokunun ve tarayın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป TokenPocket",
-          "description": "เราแนะนำให้วาง TokenPocket บนหน้าจอหน้าแรกของคุณเพื่อเข้าถึงได้เร็วขึ้น."
+          "title": "TokenPocket uygulamasını açın",
+          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "ตรวจสอบว่าได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีลับของคุณให้ผู้อื่นทราบในทางใดทางหนึ่ง."
+          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากที่คุณสแกนแล้ว จะมีการเรียกให้เชื่อมต่อกับกระเป๋าเงินของคุณ"
+          "title": "Tarama düğmesine dokunun",
+          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย TokenPocket",
-          "description": "เราขอแนะนำให้คุณปัก TokenPocket ไว้ที่แถบงานเพื่อทำให้สามารถเข้าถึงกระเป๋าเงินของคุณได้ง่ายขึ้น"
+          "title": "TokenPocket eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าเงินของคุณด้วยวิธีที่ปลอดภัย อย่าทำการแชร์ประโยคลับด้วยความลับของคุณกับใคร"
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชบราวเซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชบราวเซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอพ Trust Wallet",
-          "description": "วาง Trust Wallet ที่หน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้รวดเร็วขึ้น"
+          "title": "Trust Wallet uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้าง wallet ใหม่หรือนำเข้า wallet ที่มีอยู่แล้ว"
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
         },
         "step3": {
-          "title": "แตะ WalletConnect ในการตั้งค่า",
-          "description": "เลือก New Connection จากนั้นสแกน QR code และยืนยันการแจ้งเตือนเพื่อเชื่อมต่อ"
+          "title": "Ayarlar'da WalletConnect'e dokunun",
+          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Trust Wallet",
-          "description": "คลิกที่มุมบนขวาของเบราว์เซอร์ของคุณและปัก Trust Wallet เพื่อเข้าถึงได้ง่าย"
+          "title": "Trust Wallet eklentisini yükleyin",
+          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า wallet",
-          "description": "สร้าง wallet ใหม่หรือนำเข้า wallet ที่มีอยู่แล้ว"
+          "title": "Bir cüzdan oluşturun veya içe aktarın",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่า Trust Wallet แล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยายขึ้นมา"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Uniswap",
-          "description": "เพิ่ม Uniswap Wallet ไปยังหน้าจอหลักของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Uniswap uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "สร้างกระเป๋าเงินใหม่หรือนำเข้ากระเป๋าเงินที่มีอยู่แล้ว"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
         },
         "step3": {
-          "title": "แตะที่ไอคอน QR และสแกน",
-          "description": "แตะที่ไอคอน QR บนหน้าจอหลักของคุณ สแกนรหัสและยืนยันการเชื่อมต่อ"
+          "title": "QR ikonuna dokunun ve tarama yapın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Zerion",
-          "description": "เราแนะนำให้คุณวาง Zerion บนหน้าจอหลักของคุณเพื่อเข้าถึงได้เร็วขึ้น"
+          "title": "Zerion uygulamasını açın",
+          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้า Wallet",
-          "description": "ลองทำสำเนาข้อมูล wallet ของคุณไว้ในช่องทางที่ปลอดภัย อย่าเปิดเผยวลีลับของคุณให้กับผู้อื่น"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "แตะที่ปุ่มสแกน",
-          "description": "หลังจากสแกน จะมีหน้าต่างแสดงคำสั่งเชื่อมต่อให้คุณเชื่อมต่อ wallet ของคุณ"
+          "title": "Tarama düğmesine basın",
+          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       },
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Zerion",
-          "description": "เราแนะนำให้คุณติด Zerion บนแถบงานของคุณเพื่อเข้าถึง wallet ของคุณได้เร็วขึ้น"
+          "title": "Zerion eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองข้อมูลกระเป๋าเงินของคุณโดยวิธีที่ปลอดภัย อย่าเปิดเผยประโยคลับลับของคุณให้ใครทราบครับ"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "เปิดแอป Rainbow",
-          "description": "เราขอแนะนำให้คุณวาง Rainbow อยู่บนหน้าจอหลักของคุณเพื่อรับผิดชอบจากกระเป๋าสตางค์ของคุณอย่างรวดเร็ว"
+          "title": "Rainbow uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าสตางค์",
-          "description": "คุณสามารถสำรองข้อมูลกระเป๋าสตางค์ของคุณได้ง่ายๆ ด้วยฟีเจอร์สำรองข้อมูลบนโทรศัพท์ของคุณ"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
         },
         "step3": {
-          "title": "แตะปุ่มสแกน",
-          "description": "หลังจากสแกนแล้ว จะแสดงข้อความขอเชื่อมต่อเพื่อให้คุณเชื่อมต่อกระเป๋าสตางค์ของคุณ"
+          "title": "Tarama düğmesine dokunun",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "เราขอแนะนำให้คุณปัก Enkrypt Wallet ไว้ที่แทบงานของคุณเพื่อให้สามารถเข้าถึงกระเป๋าสตางค์ของคุณได้เร็วขึ้น",
-          "title": "ติดตั้งส่วนขยาย Enkrypt Wallet"
+          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Enkrypt Cüzdan eklentisini yükleyin"
         },
         "step2": {
-          "description": "ตรวจสอบให้แน่ใจว่าคุณได้สำรองกระเป๋าสตางค์ของคุณโดยใช้วิธีที่ปลอดภัย ห้ามแชร์วลีลับของคุณให้กับใคร",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่า wallet ของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรช browser และโหลดขึ้น extension",
-          "title": "รีเฟรช browser ของคุณ"
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "เราแนะนำให้หมุน Frame ไว้บน taskbar ของคุณเพื่อให้เข้าถึง wallet ได้เร็วขึ้น",
-          "title": "ติดตั้ง Frame และ extension ที่เป็นคู่"
+          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Frame ve eşlik eden uzantıyı yükleyin"
         },
         "step2": {
-          "description": "ตรวจสอบว่าได้สำรอง wallet ของคุณโดยใช้วิธีการที่ปลอดภัย อย่าเปิดเผยวลีลับของคุณให้กับใคร",
-          "title": "สร้างหรือนำเข้า Wallet"
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
+          "title": "Cüzdan Oluştur veya İçe Aktar"
         },
         "step3": {
-          "description": "เมื่อคุณตั้งค่า wallet ของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรช browser และโหลดขึ้น extension",
-          "title": "รีเฟรช browser ของคุณ"
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม OneKey Wallet",
-          "description": "เราแนะนำการปัก OneKey Wallet ไว้บนแทบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้ง่ายขึ้น"
+          "title": "OneKey Wallet uzantısını yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "อย่าลืมสำรองกระเป๋าเงินของคุณด้วยวิธีที่ปลอดภัย อย่าแชร์วลีลับของคุณกับใคร"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนเสริม"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนเสริม Phantom",
-          "description": "เราแนะนำการปัก Phantom ไว้บนแทบงานของคุณเพื่อเข้าถึงกระเป๋าเงินได้ง่ายขึ้น"
+          "title": "Phantom eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยข้อความลับสำหรับการกู้คืนของคุณกับบุคคลใด ๆ"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินเรียบร้อยแล้ว, คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Rabby",
-          "description": "เราแนะนำให้คุณปัก Rabby ไว้ที่แถบงานเพื่อให้เข้าถึงกระเป๋าเงินของคุณได้รวดเร็วขึ้น."
+          "title": "Rabby eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์ข้อความลับของคุณกับบุคคลอื่น"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Core",
-          "description": "เราขอแนะนำให้คุณปัก Safeheron ไว้ที่แถบงานเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Core eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "อย่าลืมสำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยประโยคลับของคุณให้ผู้อื่นทราบ"
+          "title": "Cüzdan Oluştur veya İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Taho",
-          "description": "เราแนะนำให้คุณปัก Taho ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Taho uzantısını yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "โปรดแน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าแชร์ประโยคลับคุณกับผู้อื่น"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย Talisman",
-          "description": "เราแนะนำให้คุณปัก Talisman ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "Talisman eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน Ethereum",
-          "description": "ให้แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีการกู้คืนของคุณให้ใครทราบเด็ดขาด"
+          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนขยาย"
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "ติดตั้งส่วนขยาย XDEFI Wallet",
-          "description": "เราแนะนำให้คุณตรา XDEFI Wallet ไว้ที่แถบงานเพื่อเข้าถึงกระเป๋าเงินของคุณได้เร็วขึ้น"
+          "title": "XDEFI Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
-          "title": "สร้างหรือนำเข้ากระเป๋าเงิน",
-          "description": "ให้แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยวลีลับของคุณให้ใครทราบเด็ดขาด"
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
         },
         "step3": {
-          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
-          "description": "หลังจากที่คุณตั้งค่ากระเป๋าสตางค์ของคุณแล้ว คลิกด้านล่างเพื่อรีเฟรชบราวเซอร์และโหลดส่วนเสริม."
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
         }
       }
     }
