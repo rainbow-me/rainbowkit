@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "지갑 연결"
+    "label": "Conectar Carteira"
   },
   "intro": {
-    "title": "지갑이란 무엇인가요?",
-    "description": "지갑은 디지털 자산을 보내고, 받고, 저장하고, 표시하는 데 사용됩니다. 또한, 모든 웹 사이트에서 새 계정과 비밀번호를 생성할 필요 없이 로그인하는 새로운 방법입니다.",
+    "title": "O que é uma Carteira?",
+    "description": "Uma carteira é usada para enviar, receber, armazenar e exibir ativos digitais. Também é uma nova forma de se conectar, sem precisar criar novas contas e senhas em todo site.",
     "digital_asset": {
-      "title": "당신의 디지털 자산을 위한 집",
-      "description": "지갑은 이더리움 및 NFT와 같은 디지털 자산을 보내고, 받고, 저장하고, 표시하는데 사용됩니다."
+      "title": "Um lar para seus ativos digitais",
+      "description": "Carteiras são usadas para enviar, receber, armazenar e exibir ativos digitais como Ethereum e NFTs."
     },
     "login": {
-      "title": "새로운 로그인 방식",
-      "description": "모든 웹사이트에서 새 계정과 비밀번호를 생성하는 대신, 당신의 지갑을 연결하기만 하면 됩니다."
+      "title": "Uma nova maneira de fazer login",
+      "description": "Em vez de criar novas contas e senhas em todos os sites, basta conectar sua carteira."
     },
     "get": {
-      "label": "지갑 가져오기"
+      "label": "Obter uma Carteira"
     },
     "learn_more": {
-      "label": "더 알아보기"
+      "label": "Saiba mais"
     }
   },
   "connect": {
-    "label": "연결",
-    "title": "지갑 연결",
+    "label": "Conectar",
+    "title": "Conectar uma Carteira",
     "new_to_ethereum": {
-      "description": "이더리움 지갑에 처음 접하시나요?",
+      "description": "Novo nas carteiras Ethereum?",
       "learn_more": {
-        "label": "더 알아보기"
+        "label": "Saiba mais"
       }
     },
     "learn_more": {
-      "label": "더 알아보기"
+      "label": "Saiba mais"
     },
-    "recent": "최근",
+    "recent": "Recente",
     "status": {
-      "opening": "%{wallet}열기 ...",
-      "not_installed": "%{wallet} 가 설치되어 있지 않습니다",
-      "not_available": "%{wallet} 를 사용할 수 없습니다",
-      "confirm": "확장기능에서 연결을 확인하세요"
+      "opening": "Abrindo %{wallet}...",
+      "not_installed": "%{wallet} não está instalado",
+      "not_available": "%{wallet} não está disponível",
+      "confirm": "Confirme a conexão na extensão"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}가 없나요?",
-        "label": "OBTENER"
+        "description": "Não tem %{wallet}?",
+        "label": "OBTER"
       },
       "install": {
-        "label": "설치"
+        "label": "INSTALAR"
       },
       "retry": {
-        "label": "다시 시도"
+        "label": "TENTAR DE NOVO"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "공식 WalletConnect 모달이 필요한가요?",
-        "compact": "WalletConnect 모달이 필요한가요?"
+        "full": "Precisa do modal oficial do WalletConnect?",
+        "compact": "Precisa do modal WalletConnect?"
       },
       "open": {
-        "label": "열기"
+        "label": "ABRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}로 스캔하기",
-    "fallback_title": "휴대폰으로 스캔하기"
+    "title": "Digitalize com %{wallet}",
+    "fallback_title": "Digitalize com o seu telefone"
   },
   "connector_group": {
-    "recommended": "추천",
-    "other": "기타",
-    "popular": "인기",
-    "more": "더 보기",
-    "others": "다른 사항들"
+    "recommended": "Recomendado",
+    "other": "Outro",
+    "popular": "Popular",
+    "more": "Mais",
+    "others": "Outros"
   },
   "get": {
-    "title": "월렛 받기",
+    "title": "Obter uma Carteira",
     "action": {
-      "label": "받기"
+      "label": "OBTER"
     },
     "mobile": {
-      "description": "모바일 월렛"
+      "description": "Carteira Móvel"
     },
     "extension": {
-      "description": "브라우저 확장 프로그램"
+      "description": "Extensão do Navegador"
     },
     "mobile_and_extension": {
-      "description": "모바일 지갑 및 확장 프로그램"
+      "description": "Carteira Móvel e Extensão"
     },
     "looking_for": {
-      "title": "찾고 계신 것이 아닌가요?",
+      "title": "Não é o que você está procurando?",
       "mobile": {
-        "description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요."
+        "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
       },
       "desktop": {
-        "compact_description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요.",
-        "wide_description": "왼쪽에서 지갑을 선택하여 다른 지갑 제공자를 사용하기 시작하세요."
+        "compact_description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente.",
+        "wide_description": "Selecione uma carteira à esquerda para começar com um provedor de carteira diferente."
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}로 시작하십시오",
-    "short_title": "%{wallet}얻기",
+    "title": "Comece com %{wallet}",
+    "short_title": "Obtenha %{wallet}",
     "mobile": {
-      "title": "모바일용 %{wallet}",
-      "description": "모바일 지갑으로 이더리움 세계를 탐험하세요.",
+      "title": "%{wallet} para Móvel",
+      "description": "Use a carteira móvel para explorar o mundo do Ethereum.",
       "download": {
-        "label": "앱 받기"
+        "label": "Baixe o aplicativo"
       }
     },
     "extension": {
-      "title": "%{browser}용 %{wallet}",
-      "description": "가장 좋아하는 웹 브라우저에서 바로 지갑에 접근하세요.",
+      "title": "%{wallet} para %{browser}",
+      "description": "Acesse sua carteira diretamente do seu navegador web favorito.",
       "download": {
-        "label": "추가하기 %{browser}"
+        "label": "Adicionar ao %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "설치하기 %{wallet}",
-    "description": "iOS 또는 Android에서 다운로드하기 위해 휴대폰으로 스캔하세요",
+    "title": "Instale %{wallet}",
+    "description": "Escaneie com seu celular para baixar no iOS ou Android",
     "continue": {
-      "label": "계속"
+      "label": "Continuar"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "연결"
+        "label": "Conectar"
       },
       "learn_more": {
-        "label": "더 알아보기"
+        "label": "Saiba mais"
       }
     },
     "extension": {
       "refresh": {
-        "label": "새로고침"
+        "label": "Atualizar"
       },
       "learn_more": {
-        "label": "더 알아보기"
+        "label": "Saiba mais"
       }
     }
   },
   "chains": {
-    "title": "네트워크 전환",
-    "wrong_network": "잘못된 네트워크를 탐지했습니다, 계속하려면 전환하거나 연결을 해제하세요.",
-    "confirm": "지갑에서 승인",
-    "switching_not_supported": "지갑에서 %{appName}네트워크를 전환하는 것은 지원되지 않습니다. 대신 지갑 내에서 네트워크를 전환해 보세요.",
-    "switching_not_supported_fallback": "당신의 지갑은 이 앱에서 네트워크를 바꾸는 것을 지원하지 않습니다. 대신 지갑 내에서 네트워크를 변경해 보십시오.",
-    "disconnect": "연결 해제",
-    "connected": "연결됨"
+    "title": "Mudar Redes",
+    "wrong_network": "Rede errada detectada, mude ou desconecte para continuar.",
+    "confirm": "Confirme na Carteira",
+    "switching_not_supported": "Sua carteira não suporta a mudança de redes de %{appName}. Tente mudar de redes dentro da sua carteira.",
+    "switching_not_supported_fallback": "Sua carteira não suporta a troca de redes a partir deste aplicativo. Tente trocar de rede dentro de sua carteira.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
   },
   "profile": {
     "disconnect": {
-      "label": "연결 해제"
+      "label": "Desconectar"
     },
     "copy_address": {
-      "label": "주소 복사",
-      "copied": "복사됨!"
+      "label": "Copiar Endereço",
+      "copied": "Copiado!"
     },
     "explorer": {
-      "label": "탐색기에서 더 보기"
+      "label": "Veja mais no explorador"
     },
     "transactions": {
-      "description": "%{appName} 거래가 여기에 나타납니다...",
-      "description_fallback": "여기에 트랜잭션이 표시됩니다...",
+      "description": "%{appName} transações aparecerão aqui...",
+      "description_fallback": "Suas transações aparecerão aqui...",
       "recent": {
-        "title": "최근 거래 내역"
+        "title": "Transações Recentes"
       },
       "clear": {
-        "label": "모두 지우기"
+        "label": "Limpar Tudo"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "지갑에 더 빠르게 액세스하려면 Argent를 홈 화면에 놓으십시오.",
-          "title": "Argent 앱을 열기"
+          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Argent"
         },
         "step2": {
-          "description": "지갑과 사용자 이름을 생성하거나 기존의 지갑을 가져옵니다.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
-          "title": "QR 코드 스캔 버튼을 누르기"
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão Scan QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "더 빠른 접근을 위해 홈 화면에 Bifrost Wallet을 놓는 것을 권장합니다.",
-          "title": "Bifrost 지갑 앱을 열어주세요"
+          "description": "Recomendamos colocar a Bifrost Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bifrost Wallet"
         },
         "step2": {
-          "description": "복구 문구를 사용하여 지갑을 생성하거나 가져옵니다.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Crie ou importe uma carteira usando sua frase de recuperação.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 후 연결 프롬프트가 나타나고 지갑을 연결할 수 있습니다.",
-          "title": "스캔 버튼을 누릅니다"
+          "description": "Após você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "더 빠른 접근을 위해 Bitget 지갑을 홈 화면에 두는 것을 권장합니다.",
-          "title": "Bitget 지갑 앱을 열십시오"
+          "description": "Recomendamos colocar a Bitget Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bitget Wallet"
         },
         "step2": {
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 후, 지갑을 연결하라는 연결 요청 메시지가 나타납니다.",
-          "title": "스캔 버튼을 누르십시오"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
         }
       },
       "extension": {
         "step1": {
-          "description": "지갑에 빠르게 액세스하기 위해 Bitget Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
-          "title": "Bitget Wallet 확장 프로그램을 설치하세요"
+          "description": "Recomendamos fixar a Bitget Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Bitget"
         },
         "step2": {
-          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 누구와도 공유하지 마십시오.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요.",
-          "title": "브라우저를 새로 고침하세요"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 액세스하기 위해 Bitski를 작업 표시줄에 고정하는 것을 권장합니다.",
-          "title": "Bitski 확장 기능을 설치합니다"
+          "description": "Recomendamos fixar o Bitski na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Bitski"
         },
         "step2": {
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 누구와도 공유하지 마십시오.",
-          "title": "지갑 만들기 또는 가져오기"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
-          "title": "브라우저를 새로고침하세요"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "지갑에 빠르게 액세스하기 위해 Coin98 Wallet을 홈 화면에 두는 것을 권장합니다.",
-          "title": "Coin98 Wallet 앱을 열기"
+          "description": "Recomendamos colocar a Carteira Coin98 na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Carteira Coin98"
         },
         "step2": {
-          "description": "휴대폰에서 백업 기능을 이용하여 지갑을 쉽게 백업할 수 있습니다.",
-          "title": "지갑 만들기 또는 가져오기"
+          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔한 후 연결 프롬프트가 나타나 지갑을 연결하도록 합니다.",
-          "title": "WalletConnect 버튼을 누르십시오"
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "브라우저 오른쪽 상단을 클릭하고 쉽게 액세스할 수 있도록 Coin98 Wallet을 고정하십시오.",
-          "title": "Coin98 Wallet 확장 프로그램을 설치하십시오"
+          "description": "Clique no canto superior direito do seu navegador e fixe a Carteira Coin98 para fácil acesso.",
+          "title": "Instale a extensão da Carteira Coin98"
         },
         "step2": {
-          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다.",
-          "title": "지갑을 만들거나 가져옵니다"
+          "description": "Crie uma nova carteira ou importe uma existente.",
+          "title": "Criar ou Importar uma carteira"
         },
         "step3": {
-          "description": "Coin98 Wallet을 설정하면 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
-          "title": "브라우저를 새로 고치십시오"
+          "description": "Depois de configurar a Carteira Coin98, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "더 빠른 액세스를 위해 Coinbase Wallet을 홈 화면에 두는 것을 권장합니다.",
-          "title": "Coinbase Wallet 앱을 엽니다"
+          "description": "Recomendamos colocar a Carteira Coinbase na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Coinbase Wallet"
         },
         "step2": {
-          "description": "클라우드 백업 기능을 사용하여 지갑을 쉽게 백업할 수 있습니다.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔한 후에 지갑을 연결하라는 연결 프롬프트가 나타납니다.",
-          "title": "스캔 버튼을 탭하세요"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para que você conecte sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 접근할 수 있도록 Coinbase Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
-          "title": "Coinbase Wallet 확장 프로그램을 설치하세요"
+          "description": "Recomendamos fixar o Coinbase Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Coinbase Wallet"
         },
         "step2": {
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구는 절대로 누구와도 공유하지 마십시오.",
-          "title": "지갑 만들기 또는 가져오기"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
-          "title": "브라우저 새로 고침"
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "지갑에 빠르게 액세스할 수 있도록 Core를 홈 화면에 두는 것을 추천드립니다.",
-          "title": "Core 앱 열기"
+          "description": "Recomendamos colocar o Core na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Core"
         },
         "step2": {
-          "description": "휴대폰에서 우리의 백업 기능을 이용해 지갑을 쉽게 백업할 수 있습니다.",
-          "title": "지갑 만들기 또는 가져오기"
+          "description": "Você pode facilmente salvar sua carteira usando nosso recurso de backup no seu celular.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 한 후에는 지갑을 연결하라는 연결 요청이 표시됩니다.",
-          "title": "WalletConnect 버튼을 누르세요"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 액세스하기 위해 작업 표시줄에 Core를 고정하는 것을 권장합니다.",
-          "title": "Core 확장 프로그램을 설치하십시오"
+          "description": "Recomendamos fixar o Core na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Core"
         },
         "step2": {
-          "description": "안전한 방법을 사용하여 지갑을 백업해야 합니다. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
-          "title": "지갑 만들기 또는 가져오기"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
-          "title": "브라우저를 새로 고치세요"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "FoxWallet을 홈 화면에 놓는 것을 추천합니다. 이렇게 하면 더 빠르게 접근할 수 있습니다.",
-          "title": "FoxWallet 앱을 열어주세요"
+          "description": "Recomendamos colocar o FoxWallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo FoxWallet"
         },
         "step2": {
-          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
-          "title": "지갑을 생성하거나 가져오기"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 후, 지갑을 연결하라는 연결 프롬프트가 표시됩니다.",
-          "title": "스캔 버튼을 누르세요"
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Frontier Wallet을 홈 화면에 놓는 것을 추천합니다. 이렇게 하면 더 빠르게 접근할 수 있습니다.",
-          "title": "Frontier Wallet 앱을 열어주세요"
+          "description": "Recomendamos colocar o Frontier Wallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Frontier Wallet"
         },
         "step2": {
-          "description": "지갑을 안전한 방법으로 백업해야 합니다. 비밀 구문을 누구와도 공유하지 마세요.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "스캔 후에 지갑을 연결하라는 연결 프롬프트가 표시됩니다.",
-          "title": "스캔 버튼을 누르세요"
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
+          "title": "Toque no botão de varredura"
         }
       },
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 액세스 할 수 있도록 Frontier Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
-          "title": "Frontier Wallet 확장 기능 설치"
+          "description": "Recomendamos fixar a Carteira Frontier na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Frontier"
         },
         "step2": {
-          "description": "지갑을 안전한 방법으로 백업해야 합니다. 비밀 구문을 누구와도 공유하지 마세요.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후에 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
-          "title": "브라우저를 새로 고칩니다"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imToken 앱을 연다",
-          "description": "당신의 지갑에 더 빠르게 접근하기 위해 imToken 앱을 홈 화면에 둡니다."
+          "title": "Abra o aplicativo imToken",
+          "description": "Coloque o aplicativo imToken na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑을 만들거나 불러옵니다",
-          "description": "새 지갑을 생성하거나 기존의 것을 가져옵니다."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "오른쪽 상단의 스캐너 아이콘을 누릅니다",
-          "description": "새 연결을 선택하고 QR 코드를 스캔한 뒤, 연결하려는 프롬프트를 확인합니다."
+          "title": "Toque no ícone do Scanner no canto superior direito",
+          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMask 앱을 엽니다",
-          "description": "빠른 액세스를 위해 MetaMask를 홈 화면에 두는 것을 권장합니다."
+          "title": "Abra o aplicativo MetaMask",
+          "description": "Recomendamos colocar o MetaMask na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "당신의 지갑을 안전한 방법으로 백업하는 것을 잊지 마세요. 절대로 비밀 구절을 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "스캔 버튼을 누릅니다",
-          "description": "스캔한 후에 지갑을 연결하라는 연결 프롬프트가 나타납니다."
+          "title": "Toque no botão escanear",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMask 확장 프로그램을 설치하세요",
-          "description": "지갑에 빠르게 접근하기 위해 MetaMask를 작업표시줄에 고정하는 것을 추천합니다."
+          "title": "Instale a extensão MetaMask",
+          "description": "Recomendamos fixar o MetaMask na barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 결코 비밀 문구를 다른 사람과 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고치세요",
-          "description": "지갑 설정을 마친 후에는 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Wallet 앱을 열기",
-          "description": "더 빠른 접근을 위해 OKX 지갑을 홈 화면에 두는 것을 추천합니다."
+          "title": "Abra o aplicativo da Carteira OKX",
+          "description": "Recomendamos colocar a Carteira OKX na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "지갑 만들기 또는 불러오기",
-          "description": "안전한 방법으로 지갑을 백업하십시오. 절대 비밀 문구를 다른 사람과 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "스캔 버튼을 탭하세요",
-          "description": "스캔 후 연결 요청이 나타나며, 이를 통해 지갑을 연결할 수 있습니다."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "OKX 지갑 확장 프로그램 설치하기",
-          "description": "지갑에 빠르게 접근할 수 있도록 OKX 지갑을 작업 표시줄에 고정하는 것을 추천합니다."
+          "title": "Instale a extensão OKX Wallet",
+          "description": "Recomendamos fixar a OKX Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 만들기 또는 불러오기",
-          "description": "당신의 지갑을 안전한 방법으로 백업해야 합니다. 비밀 문구를 절대로 다른 사람과 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고치세요",
-          "description": "지갑을 설정한 후, 브라우저를 새로 고치고 확장 기능을 로드하기 위해 아래를 클릭하세요."
+          "title": "Atualize o seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omni 앱을 열기",
-          "description": "더 빠른 액세스를 위해 Omni를 홈 스크린에 추가하세요."
+          "title": "Abra o aplicativo Omni",
+          "description": "Adicione o Omni à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 만들기 또는 가져오기",
-          "description": "새로운 지갑을 만들거나 기존의 하나를 가져옵니다."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "QR 아이콘을 탭하고 스캔하기",
-          "description": "홈 화면의 QR 아이콘을 탭하고, 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
+          "title": "Toque no ícone do QR e escaneie",
+          "description": "Toque no ícone QR na tela inicial, escaneie o código e confirme o prompt para conectar."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocket 앱을 열어주세요",
-          "description": "빠른 접근을 위해 홈 화면에 TokenPocket을 추가하는 것을 권장합니다."
+          "title": "Abra o aplicativo TokenPocket",
+          "description": "Recomendamos colocar o TokenPocket na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 누구에게도 비밀 문구를 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "스캔 버튼을 탭하세요",
-          "description": "스캔 후에 지갑을 연결하라는 프롬프트가 표시됩니다."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocket 확장 기능을 설치하십시오",
-          "description": "지갑에 빠르게 접근하기 위해 TokenPocket를 작업 표시줄에 고정하는 것을 추천합니다."
+          "title": "Instale a extensão TokenPocket",
+          "description": "Recomendamos fixar o TokenPocket em sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 문구를 다른 사람과 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저 새로 고침",
-          "description": "지갑을 설정하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 기능을 로드합니다."
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Wallet 앱을 열기",
-          "description": "지갑에 빠르게 접근하기 위해 Trust Wallet을 홈 스크린에 두십시오."
+          "title": "Abra o aplicativo Trust Wallet",
+          "description": "Coloque o Trust Wallet na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "새로운 지갑을 생성하거나 기존의 것을 가져오십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "설정에서 WalletConnect를 탭하십시오",
-          "description": "새 연결을 선택한 다음 QR 코드를 스캔하고, 연결을 확인하는 프롬프트를 확인하십시오."
+          "title": "Toque em WalletConnect nas Configurações",
+          "description": "Escolha Nova Conexão, depois escaneie o QR code e confirme o prompt para se conectar."
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet 확장 기능을 설치하십시오",
-          "description": "브라우저의 오른쪽 상단을 클릭하고 Trust Wallet을 고정하여 쉽게 접근하십시오."
+          "title": "Instale a extensão Trust Wallet",
+          "description": "Clique no canto superior direito do seu navegador e marque Trust Wallet para fácil acesso."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "새로운 지갑을 생성하거나 기존의 것을 가져오십시오."
+          "title": "Crie ou Importe uma carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "브라우저를 새로고침하세요",
-          "description": "Trust Wallet을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드합니다."
+          "title": "Atualize seu navegador",
+          "description": "Depois que configurar a Trust Wallet, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswap 앱을 엽니다",
-          "description": "Uniswap Wallet을 홈 화면에 추가하여 지갑에 더 빠르게 액세스하세요."
+          "title": "Abra o aplicativo Uniswap",
+          "description": "Adicione a Carteira Uniswap à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑을 만들거나 가져오기",
-          "description": "새 지갑을 생성하거나 기존의 것을 가져옵니다."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "QR 아이콘을 누르고 스캔하기",
-          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
+          "title": "Toque no ícone QR e escaneie",
+          "description": "Toque no ícone QR na sua tela inicial, escaneie o código e confirme o prompt para conectar."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerion 앱을 엽니다",
-          "description": "더 빠른 접근을 위해 Zerion을 홈 화면에 두는 것을 권장합니다."
+          "title": "Abra o aplicativo Zerion",
+          "description": "Recomendamos colocar o Zerion na sua tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "지갑 만들기 또는 가져오기",
-          "description": "안전한 방법으로 지갑을 백업하십시오. 절대로 비밀 구절을 누군가와 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "스캔 버튼을 탭하십시오",
-          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하십시오."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de digitalizar, um prompt de conexão aparecerá para que você possa conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion 확장 프로그램을 설치하십시오",
-          "description": "지갑에 더 빠르게 접근할 수 있도록 Zerion을 작업 표시줄에 고정하는 것을 권장합니다."
+          "title": "Instale a extensão Zerion",
+          "description": "Recomendamos fixar o Zerion na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 비밀 구문을 절대로 다른 사람과 공유하지 마세요."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고치세요",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbow 앱 열기",
-          "description": "지갑에 더 빠르게 접근하기 위해 홈 화면에 Rainbow를 두는 것을 추천합니다."
+          "title": "Abra o aplicativo Rainbow",
+          "description": "Recomendamos colocar o Rainbow na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "휴대폰에 있는 백업 기능을 사용하여 지갑을 쉽게 백업할 수 있습니다."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Você pode facilmente fazer backup da sua carteira usando nosso recurso de backup no seu telefone."
         },
         "step3": {
-          "title": "스캔 버튼을 누르세요",
-          "description": "스캔 후, 지갑을 연결하라는 연결 프롬프트가 나타납니다."
+          "title": "Toque no botão de digitalizar",
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 접근하기 위해 작업 표시줄에 Enkrypt Wallet를 고정하는 것을 추천합니다.",
-          "title": "Enkrypt Wallet 확장 프로그램을 설치하세요"
+          "description": "Recomendamos fixar a Carteira Enkrypt na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Enkrypt"
         },
         "step2": {
-          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후에는 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
-          "title": "브라우저 새로 고침"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize o seu navegador"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "지갑에 더 빠르게 접근할 수 있도록 Frame을 작업 표시줄에 고정하는 것을 추천합니다.",
-          "title": "Frame 및 동반 확장 프로그램 설치"
+          "description": "Recomendamos fixar o Frame na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale o Frame e a extensão complementar"
         },
         "step2": {
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 다른 사람과 공유하지 마세요.",
-          "title": "지갑 생성 또는 가져오기"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "지갑을 설정한 후에는 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
-          "title": "브라우저 새로 고침"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet 확장 프로그램을 설치하세요",
-          "description": "지갑에 빠르게 접근할 수 있도록 OneKey Wallet을 작업 표시줄에 고정하는 것을 권장합니다."
+          "title": "Instale a extensão OneKey Wallet",
+          "description": "Recomendamos fixar a OneKey Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 불러오기",
-          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고침하십시오",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하십시오."
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom 확장 프로그램을 설치하세요",
-          "description": "지갑에 더 쉽게 접근할 수 있도록 Phantom을 작업 표시줄에 고정하는 것을 권장합니다."
+          "title": "Instale a extensão Phantom",
+          "description": "Recomendamos fixar o Phantom na sua barra de tarefas para facilitar o acesso à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 불러오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 누구와도 비밀 복구 구문을 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta de recuperação com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로고침하십시오",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 기능을 로드하십시오."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabby 확장 프로그램을 설치하십시오",
-          "description": "지갑에 더 빠르게 액세스할 수 있도록 Rabby를 작업표시줄에 고정하는 것을 권장합니다."
+          "title": "Instale a extensão Rabby",
+          "description": "Recomendamos fixar Rabby na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 만들기 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 누구와도 비밀 구문을 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고침하십시오",
-          "description": "지갑 설정을 완료하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드합니다."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "코어 확장 프로그램 설치",
-          "description": "지갑에 빠르게 액세스하기 위해 Safeheron을 작업 표시줄에 고정하는 것을 권장합니다."
+          "title": "Instale a extensão Core",
+          "description": "Recomendamos fixar Safeheron na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 만들기 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 절대 다른 사람과 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저 새로 고침",
-          "description": "지갑 설정을 완료하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드합니다."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho 확장 프로그램 설치",
-          "description": "지갑에 더 빠르게 액세스하기 위해 Taho를 작업 표시줄에 고정하는 것을 추천합니다."
+          "title": "Instale a extensão Taho",
+          "description": "Recomendamos fixar o Taho na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑 생성 또는 가져오기",
-          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 결코 비밀 문구를 누군가와 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고치십시오",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "탈리스만 확장 프로그램 설치",
-          "description": "지갑에 더 빠르게 접근하기 위해 Talisman을 작업 표시줄에 고정하는 것을 추천합니다."
+          "title": "Instale a extensão Talisman",
+          "description": "Recomendamos fixar o Talisman na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "이더리움 지갑 생성 또는 가져오기",
-          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하십시오. 복구 문구를 누구와도 공유하지 마십시오."
+          "title": "Crie ou Importe uma Carteira Ethereum",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고침하십시오",
-          "description": "지갑을 설정 한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 기능을 로드하십시오."
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI 지갑 확장 기능을 설치하십시오",
-          "description": "지갑에 빠르게 액세스하기 위해 작업 표시줄에 XDEFI Wallet을 고정하는 것을 권장합니다."
+          "title": "Instale a extensão XDEFI Wallet",
+          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "지갑을 만들거나 가져오기",
-          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 누구와도 공유하지 마십시오."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "브라우저를 새로 고침하십시오",
-          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하십시오."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     }
