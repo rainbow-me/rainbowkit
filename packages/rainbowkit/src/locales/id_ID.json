@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "Buka aplikasi CLV Wallet",
+          "description": "Kami sarankan untuk menempatkan CLV Wallet di layar utama Anda untuk akses yang lebih cepat."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "Buka aplikasi Okto",
+          "description": "Tambahkan Okto ke layar utama Anda untuk akses cepat"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "Buat Wallet MPC",
+          "description": "Buat akun dan generate wallet"
         },
         "step3": {
           "title": "Ketuk WalletConnect di Pengaturan",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "Ketuk ikon Scan QR di pojok kanan atas dan konfirmasi prompt untuk terhubung."
         }
       }
     }
