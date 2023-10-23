@@ -219,6 +219,16 @@ dawnWallet(options: {
 });
 ```
 
+#### Desig Wallet
+
+```tsx
+import { desigWallet } from '@rainbow-me/rainbowkit/wallets';
+
+desigWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### Enkrypt Wallet
 
 ```tsx
@@ -384,6 +394,27 @@ safeheronWallet(options: {
 });
 ```
 
+#### SafePal Wallet
+
+```tsx
+import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
+safepalWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
+#### SubWallet
+
+```tsx
+import { subWallet } from '@rainbow-me/rainbowkit/wallets';
+
+subWallet(options: {
+  chains: Chain[];
+  projectId: string;
+});
+```
+
 #### Taho
 
 ```tsx
@@ -443,6 +474,16 @@ uniswapWallet(options: {
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 xdefiWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Zeal
+
+```tsx
+import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
+
+zealWallet(options: {
   chains: Chain[];
 });
 ```

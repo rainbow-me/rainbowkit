@@ -8,6 +8,7 @@ import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
@@ -25,6 +26,8 @@ import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
+import { safepalWallet } from './safepalWallet/safepalWallet';
+import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
@@ -32,6 +35,7 @@ import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
+import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
@@ -46,6 +50,7 @@ export {
   coinbaseWallet,
   coreWallet,
   dawnWallet,
+  desigWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
@@ -63,6 +68,8 @@ export {
   rainbowWallet,
   safeWallet,
   safeheronWallet,
+  safepalWallet,
+  subWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
@@ -70,5 +77,6 @@ export {
   uniswapWallet,
   walletConnectWallet,
   xdefiWallet,
+  zealWallet,
   zerionWallet,
 };
