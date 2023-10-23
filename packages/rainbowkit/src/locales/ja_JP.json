@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "ウォレットを接続する"
+    "label": "Conectar la billetera"
   },
   "intro": {
-    "title": "ウォレットとは何ですか？",
-    "description": "ウォレットは、デジタルアセットを送信、受信、保存、表示するために使用されます。また、各ウェブサイトで新たなアカウントやパスワードを作成する必要なく、ログインする新しい方法でもあります。",
+    "title": "¿Qué es una billetera?",
+    "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
     "digital_asset": {
-      "title": "あなたのデジタル資産のための家",
-      "description": "ウォレットは、EthereumやNFTのようなデジタル資産を送信、受信、保存、表示するために使用されます。"
+      "title": "Un hogar para tus Activos Digitales",
+      "description": "Las carteras se utilizan para enviar, recibir, almacenar y mostrar activos digitales como Ethereum y NFTs."
     },
     "login": {
-      "title": "新しいログイン方法",
-      "description": "すべてのウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続します。"
+      "title": "Una nueva forma de iniciar sesión",
+      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu cartera."
     },
     "get": {
-      "label": "ウォレットを取得する"
+      "label": "Obtener una billetera"
     },
     "learn_more": {
-      "label": "詳しくはこちら"
+      "label": "Obtener más información"
     }
   },
   "connect": {
-    "label": "接続",
-    "title": "ウォレットを接続する",
+    "label": "Conectar",
+    "title": "Conectar una billetera",
     "new_to_ethereum": {
-      "description": "Ethereumのウォレットが初めてですか？",
+      "description": "¿Eres nuevo en las billeteras Ethereum?",
       "learn_more": {
-        "label": "詳しくはこちら"
+        "label": "Obtener más información"
       }
     },
     "learn_more": {
-      "label": "詳しくはこちら"
+      "label": "Obtener más información"
     },
-    "recent": "最近",
+    "recent": "Reciente",
     "status": {
-      "opening": "%{wallet}を開いています...",
-      "not_installed": "%{wallet} はインストールされていません",
-      "not_available": "%{wallet} は利用できません",
-      "confirm": "エクステンションで接続を確認してください"
+      "opening": "Abriendo %{wallet}...",
+      "not_installed": "%{wallet} no está instalado",
+      "not_available": "%{wallet} no está disponible",
+      "confirm": "Confirma la conexión en la extensión"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}がありませんか？",
-        "label": "取得"
+        "description": "¿No tienes %{wallet}?",
+        "label": "OBTENER"
       },
       "install": {
-        "label": "インストール"
+        "label": "INSTALAR"
       },
       "retry": {
-        "label": "再試行"
+        "label": "REINTENTAR"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "公式のWalletConnectモーダルが必要ですか？",
-        "compact": "WalletConnectモーダルが必要ですか？"
+        "full": "¿Necesitas el modal oficial de WalletConnect?",
+        "compact": "¿Necesitas el modal de WalletConnect?"
       },
       "open": {
-        "label": "開く"
+        "label": "ABRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}でスキャン",
-    "fallback_title": "携帯電話でスキャンしてください"
+    "title": "Escanea con %{wallet}",
+    "fallback_title": "Escanea con tu teléfono"
   },
   "connector_group": {
-    "recommended": "推奨",
-    "other": "その他",
+    "recommended": "Recomendado",
+    "other": "Otro",
     "popular": "人気",
-    "more": "もっと",
-    "others": "その他"
+    "more": "Más",
+    "others": "Otros"
   },
   "get": {
-    "title": "ウォレットを取得する",
+    "title": "Obtener una billetera",
     "action": {
-      "label": "取得"
+      "label": "OBTENER"
     },
     "mobile": {
-      "description": "モバイルウォレット"
+      "description": "Billetera Móvil"
     },
     "extension": {
-      "description": "ブラウザ拡張"
+      "description": "Extensión de navegador"
     },
     "mobile_and_extension": {
-      "description": "モバイルウォレットと拡張機能"
+      "description": "Billetera móvil y extensión"
     },
     "looking_for": {
-      "title": "お探しのものではありませんか？",
+      "title": "¿No es lo que estás buscando?",
       "mobile": {
-        "description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。"
+        "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
       },
       "desktop": {
-        "compact_description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。",
-        "wide_description": "左側のウォレットを選択して、別のウォレットプロバイダーで始めてください。"
+        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
+        "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}で始める",
-    "short_title": "%{wallet}を取得する",
+    "title": "Comienza con %{wallet}",
+    "short_title": "Obtener %{wallet}",
     "mobile": {
-      "title": "モバイル用 %{wallet}",
-      "description": "モバイルウォレットを使用して、イーサリアムの世界を探索します。",
+      "title": "%{wallet} para móvil",
+      "description": "Use la billetera móvil para explorar el mundo de Ethereum.",
       "download": {
-        "label": "アプリを取得"
+        "label": "Obtener la aplicación"
       }
     },
     "extension": {
-      "title": "%{wallet} for %{browser}",
-      "description": "お好きなウェブブラウザからウォレットに直接アクセスします。",
+      "title": "%{wallet} para %{browser}",
+      "description": "Acceda a su billetera directamente desde su navegador web favorito.",
       "download": {
-        "label": "%{browser}に追加"
+        "label": "Añadir a %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "%{wallet}をインストール",
-    "description": "iOSまたはAndroidでダウンロードするために電話でスキャン",
+    "title": "Instalar %{wallet}",
+    "description": "Escanee con su teléfono para descargar en iOS o Android",
     "continue": {
-      "label": "続行"
+      "label": "Continuar"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "接続"
+        "label": "Conectar"
       },
       "learn_more": {
-        "label": "詳しくはこちら"
+        "label": "Obtener más información"
       }
     },
     "extension": {
       "refresh": {
-        "label": "更新"
+        "label": "Actualizar"
       },
       "learn_more": {
-        "label": "詳しくはこちら"
+        "label": "Obtener más información"
       }
     }
   },
   "chains": {
-    "title": "ネットワークを切り替える",
-    "wrong_network": "誤ったネットワークが検出されました、続行するには切り替えるか切断してください。",
-    "confirm": "ウォレットで確認する",
-    "switching_not_supported": "あなたのウォレットは %{appName}からネットワークを切り替えることをサポートしていません。ウォレット内でネットワークを切り替えてみてください。",
-    "switching_not_supported_fallback": "あなたのウォレットは、このアプリからネットワークを切り替えることをサポートしていません。代わりにウォレット内からネットワークを切り替えてみてください。",
-    "disconnect": "切断する",
-    "connected": "接続しました"
+    "title": "Cambiar redes",
+    "wrong_network": "Se detectó la red incorrecta, cambia o desconéctate para continuar.",
+    "confirm": "Confirmar en la cartera",
+    "switching_not_supported": "Tu cartera no admite cambiar las redes desde %{appName}. Intenta cambiar las redes desde tu cartera.",
+    "switching_not_supported_fallback": "Su billetera no admite el cambio de redes desde esta aplicación. Intente cambiar de red desde dentro de su billetera en su lugar.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
   },
   "profile": {
     "disconnect": {
-      "label": "切断する"
+      "label": "Desconectar"
     },
     "copy_address": {
-      "label": "アドレスをコピーする",
-      "copied": "コピーしました！"
+      "label": "Copiar dirección",
+      "copied": "¡Copiado!"
     },
     "explorer": {
-      "label": "エクスプローラーで詳しく見る"
+      "label": "Ver más en el explorador"
     },
     "transactions": {
-      "description": "%{appName} トランザクションがここに表示されます...",
-      "description_fallback": "あなたのトランザクションはここに表示されます...",
+      "description": "%{appName} transacciones aparecerán aquí...",
+      "description_fallback": "Tus transacciones aparecerán aquí...",
       "recent": {
-        "title": "最近のトランザクション"
+        "title": "Transacciones recientes"
       },
       "clear": {
-        "label": "すべてクリア"
+        "label": "Borrar Todo"
       }
     }
   },
@@ -175,710 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "より速くウォレットにアクセスするために、Argentをホーム画面に置いてください。",
-          "title": "Argentアプリを開く"
+          "description": "Coloque Argent en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Argent"
         },
         "step2": {
-          "description": "ウォレットとユーザーネームを作成するか、既存のウォレットをインポートします。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「QRをスキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón Escanear QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "より速くアクセスできるように、Bifrost Walletをホーム画面に置くことをお勧めします。",
-          "title": "Bifrost Walletアプリを開きます"
+          "description": "Recomendamos poner Bifrost Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bifrost Wallet"
         },
         "step2": {
-          "description": "リカバリーフレーズを使用してウォレットを作成またはインポートします。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Cree o importe una billetera usando su frase de recuperación.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「スキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón de escaneo"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "より迅速なアクセスのために、ホーム画面にBitget Walletを配置することをお勧めします。",
-          "title": "Bitget Walletアプリを開く"
+          "description": "Recomendamos colocar Bitget Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bitget Wallet"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「スキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
+          "title": "Toque el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "ウォレットへのより迅速なアクセスのためにBitget Walletをタスクバーにピン留めすることをお勧めします。",
-          "title": "Bitget Wallet拡張機能をインストールします"
+          "description": "Recomendamos anclar Bitget Wallet a su barra de tareas para un acceso más rápido a su billetera.",
+          "title": "Instale la extensión de la Billetera Bitget"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "ウォレットへの素早いアクセスのために、Bitskiをタスクバーにピン留めすることをお勧めします。",
-          "title": "Bitskiエクステンションをインストールする"
+          "description": "Recomendamos anclar Bitski a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Bitski"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Coin98ウォレットをホーム画面に置くことで、ウォレットへのアクセスが高速化されることをお勧めします。",
-          "title": "Coin98ウォレットアプリを開きます"
+          "description": "Recomendamos poner Coin98 Wallet en la pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Coin98 Wallet"
         },
         "step2": {
-          "description": "電話のバックアップ機能を使用して、ウォレットを簡単にバックアップすることができます。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "WalletConnectボタンをタップします"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "ブラウザの右上をクリックして、Coin98ウォレットをピン留めして簡単にアクセスできるようにします。",
-          "title": "Coin98ウォレットの拡張機能をインストールします"
+          "description": "Haga clic en la parte superior derecha de su navegador y fije Coin98 Wallet para un fácil acceso.",
+          "title": "Instale la extensión Coin98 Wallet"
         },
         "step2": {
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。",
-          "title": "ウォレットを作成またはインポートする"
+          "description": "Crea una nueva billetera o importa una existente.",
+          "title": "Crear o Importar una billetera"
         },
         "step3": {
-          "description": "Coin98ウォレットをセットアップしたら、下のリンクをクリックしてブラウザを更新し、拡張機能をロードします。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configures Coin98 Wallet, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "より素早くアクセスできるように、Coinbaseウォレットをホームスクリーンに置くことをお勧めします。",
-          "title": "Coinbase Walletアプリを開く"
+          "description": "Recomendamos poner Coinbase Wallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Coinbase"
         },
         "step2": {
-          "description": "クラウドバックアップ機能を使用して、簡単にウォレットをバックアップできます。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Puedes respaldar tu billetera fácilmente utilizando la función de respaldo en la nube.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「スキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Pulsa el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "タスクバーにCoinbase Walletをピン留めして、ウォレットにより早くアクセスできるように推奨します。",
-          "title": "Coinbase Wallet拡張機能をインストールする"
+          "description": "Te recomendamos anclar la Billetera Coinbase a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la Billetera Coinbase"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configure su billetera, haga clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "ウォレットへの迅速なアクセスのため、コアをホーム画面に設定することを推奨します。",
-          "title": "Coreアプリを開く"
+          "description": "Recomendamos poner Core en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Core"
         },
         "step2": {
-          "description": "電話のバックアップ機能を使用して、ウォレットを簡単にバックアップすることができます。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Puedes respaldar fácilmente tu billetera utilizando nuestra función de respaldo en tu teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "WalletConnectボタンをタップします"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "ウォレットへのより迅速なアクセスのために、タスクバーにCoreをピン留めすることをお勧めします。",
-          "title": "Core拡張機能をインストールする"
+          "description": "Recomendamos fijar Core a tu barra de tareas para acceder más rápido a tu billetera.",
+          "title": "Instala la extensión Core"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "より迅速なアクセスのために、ホーム画面にFoxWalletを置くことをお勧めします。",
-          "title": "FoxWalletアプリを開く"
+          "description": "Recomendamos poner FoxWallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación FoxWallet"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「スキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
+          "title": "Toca el botón de escanear"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Frontierウォレットをホーム画面に置くことで、より早くアクセスできることをお勧めします。",
-          "title": "Frontierウォレットアプリを開きます"
+          "description": "Recomendamos poner la Billetera Frontier en tu pantalla principal para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Frontier"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
-          "title": "「スキャン」ボタンをタップします"
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Haz clic en el botón de escaneo"
         }
       },
       "extension": {
         "step1": {
-          "description": "より迅速なウォレットへのアクセスを可能にするために、フロンティアウォレットをタスクバーにピン留めすることを推奨します。",
-          "title": "フロンティアウォレットの拡張機能をインストールします"
+          "description": "Recomendamos anclar la billetera Frontier a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la billetera Frontier"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrese de hacer una copia de seguridad de su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualizar tu navegador"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imTokenアプリを開く",
-          "description": "ウォレットへのアクセスを速くするために、imTokenアプリをホーム画面に置いてください。"
+          "title": "Abrir la aplicación imToken",
+          "description": "Pon la aplicación imToken en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "右上隅のスキャナーアイコンをタップします",
-          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
+          "title": "Toca el Icono del Escáner en la esquina superior derecha",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMaskアプリを開きます",
-          "description": "迅速なアクセスのために、MetaMaskをホーム画面に置くことをお勧めします。"
+          "title": "Abre la aplicación MetaMask",
+          "description": "Recomendamos colocar MetaMask en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMaskの拡張機能をインストールします",
-          "description": "ウォレットへのより速いアクセスのために、MetaMaskをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instala la extensión MetaMask",
+          "description": "Recomendamos anclar MetaMask a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Walletアプリを開く",
-          "description": "OKX Walletをホーム画面に配置して、より早くアクセスできるようにすることをお勧めします。"
+          "title": "Abre la aplicación OKX Wallet",
+          "description": "Recomendamos colocar OKX Wallet en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "OKXウォレット拡張機能をインストールする",
-          "description": "ウォレットへの迅速なアクセスのため、OKXウォレットをタスクバーにピン止めすることをお勧めします。"
+          "title": "Instala la extensión de Billetera OKX",
+          "description": "Recomendamos anclar la Billetera OKX a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omniアプリを開く",
-          "description": "Omniをホーム画面に追加して、ウォレットへのアクセスを早めます。"
+          "title": "Abra la aplicación Omni",
+          "description": "Agregue Omni a su pantalla de inicio para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Crear una nueva billetera o importar una existente."
         },
         "step3": {
-          "title": "QRアイコンをタップしてスキャン",
-          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンし、プロンプトを確認して接続します。"
+          "title": "Toque el icono de QR y escanee",
+          "description": "Toca el icono QR en tu pantalla principal, escanea el código y confirma el aviso para conectar."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocketアプリを開く",
-          "description": "より速いアクセスのために、TokenPocketをホーム画面に置くことをお勧めします。"
+          "title": "Abre la aplicación TokenPocket",
+          "description": "Recomendamos colocar TokenPocket en tu pantalla principal para un acceso más rápido."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+          "title": "Toca el botón de escaneo",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que puedas conectar tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocketエクステンションをインストールする",
-          "description": "ウォレットへのより早いアクセスのために、TokenPocketをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instala la extensión TokenPocket",
+          "description": "Recomendamos anclar TokenPocket a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Walletアプリを開く",
-          "description": "ウォレットへの高速アクセスのために、Trust Walletをホーム画面に置きます。"
+          "title": "Abre la aplicación Trust Wallet",
+          "description": "Ubica Trust Wallet en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "設定でWalletConnectをタップします",
-          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
+          "title": "Toca WalletConnect en Configuraciones",
+          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el aviso para conectar."
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet拡張機能をインストールします",
-          "description": "ブラウザの右上をクリックし、Trust Walletをピン留めして簡単にアクセスできるようにします。"
+          "title": "Instala la extensión de Trust Wallet",
+          "description": "Haz clic en la parte superior derecha de tu navegador y fija Trust Wallet para un fácil acceso."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポートする",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+          "title": "Crea o Importa una billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "Trust Walletの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures Trust Wallet, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswapアプリを開く",
-          "description": "Uniswapウォレットをホーム画面に追加して、ウォレットへのアクセスを高速化します。"
+          "title": "Abre la aplicación Uniswap",
+          "description": "Agrega la billetera Uniswap a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "QRアイコンをタップしてスキャン",
-          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンしてプロンプトを確認して接続します。"
+          "title": "Toca el icono QR y escanea",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerionアプリを開く",
-          "description": "より速くアクセスするために、Zerionをホーム画面に置くことをお勧めします。"
+          "title": "Abre la aplicación Zerion",
+          "description": "Recomendamos poner Zerion en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion拡張機能をインストールする",
-          "description": "ウォレットへの素早いアクセスのため、Zerionをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instala la extensión Zerion",
+          "description": "Recomendamos anclar Zerion a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbowアプリを開く",
-          "description": "ウォレットへの早いアクセスのために、Rainbowをホーム画面に置くことをおすすめします。"
+          "title": "Abre la aplicación Rainbow",
+          "description": "Recomendamos poner Rainbow en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "電話のバックアップ機能を使用して、ウォレットを簡単にバックアップすることができます。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono."
         },
         "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "ウォレットへのアクセスをより早くするため、タスクバーにEnkrypt Walletをピン留めすることを推奨します。",
-          "title": "Enkrypt Wallet拡張機能をインストールしてください"
+          "description": "Recomendamos anclar la Billetera Enkrypt a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de Billetera Enkrypt"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "ウォレットへのアクセスをより早くするため、タスクバーにFrameをピン留めすることを推奨します。",
-          "title": "Frameとその付属の拡張機能をインストール"
+          "description": "Recomendamos anclar Frame a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala Frame y la extensión complementaria"
         },
         "step2": {
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
-          "title": "ウォレットを作成またはインポート"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
-          "title": "ブラウザを更新する"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet拡張機能をインストール",
-          "description": "ウォレットへのアクセスを素早く行うため、OneKey Walletをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instale la extensión de Billetera OneKey",
+          "description": "Recomendamos anclar la Billetera OneKey a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom拡張機能をインストールする",
-          "description": "ウォレットへの容易なアクセスのため、Phantomをタスクバーにピン留めすることを推奨します。"
+          "title": "Instala la extensión Phantom",
+          "description": "Recomendamos fijar Phantom a tu barra de tareas para un acceso más fácil a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta de recuperación con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabbyエクステンションをインストールする",
-          "description": "ウォレットへの素早いアクセスのため、タスクバーにRabbyをピン止めすることをお勧めします。"
+          "title": "Instala la extensión Rabby",
+          "description": "Recomendamos anclar Rabby a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Core拡張機能をインストールする",
-          "description": "ウォレットへの素早いアクセスのため、タスクバーにSafeheronをピン止めすることをお勧めします。"
+          "title": "Instala la extensión Core",
+          "description": "Recomendamos anclar Safeheron a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho拡張機能をインストールする",
-          "description": "ウォレットへのより迅速なアクセスのため、Tahoをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instala la extensión de Taho",
+          "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crea o Importa una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Talisman拡張機能をインストールする",
-          "description": "ウォレットへのより早いアクセスのために、Talismanをタスクバーにピン留めすることをお勧めします。"
+          "title": "Instala la extensión de Talisman",
+          "description": "Recomendamos anclar Talisman a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Ethereumウォレットを作成するか、インポートする",
-          "description": "ウォレットを安全な方法でバックアップしておくことを確認してください。リカバリーフレーズを誰とも共有しないでください。"
+          "title": "Crea o importa una billetera Ethereum",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
+          "title": "Recarga tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI Wallet拡張機能をインストールする",
-          "description": "XDEFI Walletをタスクバーにピン留めすることで、ウォレットへのアクセスが速くなることをお勧めします。"
+          "title": "Instala la extensión de la billetera XDEFI",
+          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
-        }
-      }
-    },
-    "zeal": {
-      "extension": {
-        "step1": {
-          "title": "Zeal 拡張機能をインストール",
-          "description": "ウォレットに素早くアクセスするために、タスクバーに Zeal をピン留めすることをお勧めします。"
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
-        }
-      }
-    },
-    "safepal": {
-      "extension": {
-        "step1": {
-          "title": "SafePal Wallet拡張機能をインストールする",
-          "description": "ブラウザの右上でクリックし、Easy AccessのためにSafePal Walletをピン留めします。"
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポートする",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
-        },
-        "step3": {
-          "title": "ブラウザを更新する",
-          "description": "SafePal Walletのセットアップが完了したら、以下をクリックしてブラウザをリフレッシュし、エクステンションをロードします。"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "SafePal Walletアプリを開く",
-          "description": "SafePal Walletをホーム画面に置くことで、ウォレットへの素早いアクセスが可能になります。"
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
-        },
-        "step3": {
-          "title": "設定でWalletConnectをタップします",
-          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
-        }
-      }
-    },
-    "desig": {
-      "extension": {
-        "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
-        },
-        "step2": {
-          "title": "Create a Wallet",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
-        }
-      }
-    },
-    "subwallet": {
-      "extension": {
-        "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしておくことを確認してください。リカバリーフレーズを誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
-        }
-      }
-    },
-    "clv": {
-      "extension": {
-        "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "ブラウザを更新する",
-          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "ウォレットを作成またはインポート",
-          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。"
-        },
-        "step3": {
-          "title": "「スキャン」ボタンをタップします",
-          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
-        }
-      }
-    },
-    "okto": {
-      "qr_code": {
-        "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
-        },
-        "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
-        },
-        "step3": {
-          "title": "設定でWalletConnectをタップします",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "title": "Actualice su navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     }
