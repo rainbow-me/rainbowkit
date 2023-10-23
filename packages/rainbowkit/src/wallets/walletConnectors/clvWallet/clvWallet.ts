@@ -112,7 +112,7 @@ export const clvWallet = ({
                     description:
                       'wallet_connectors.clv.qr_code.step2.description',
                     step: 'create',
-                    title: 'wallet_connectors.clv.qr_code.step1.title',
+                    title: 'wallet_connectors.clv.qr_code.step2.title',
                   },
                   {
                     description:
