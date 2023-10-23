@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "Instale a extensão Desig",
+          "description": "Recomendamos fixar Desig na sua barra de tarefas para facilitar o acesso à sua carteira."
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "Criar uma Carteira",
           "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "Instale a extensão SubWallet",
+          "description": "Recomendamos fixar SubWallet na sua barra de tarefas para acesso mais rápido à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "Abra o aplicativo SubWallet",
+          "description": "Recomendamos colocar SubWallet na tela inicial para acesso mais rápido."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "Instale a extensão CLV Wallet",
+          "description": "Recomendamos fixar CLV Wallet na sua barra de tarefas para acesso mais rápido à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "Abra o aplicativo da carteira CLV",
+          "description": "Recomendamos colocar a Carteira CLV na tela inicial para acesso mais rápido."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "Abra o aplicativo Okto",
+          "description": "Adicione Okto à sua tela inicial para acesso rápido"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "Crie uma carteira MPC",
+          "description": "Crie uma conta e gere uma carteira"
         },
         "step3": {
           "title": "Toque em WalletConnect nas Configurações",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "Toque no ícone Scan QR no canto superior direito e confirme o prompt para conectar."
         }
       }
     }
