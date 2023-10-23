@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Hubungkan Dompet"
+    "label": "اتصال المحفظة"
   },
   "intro": {
-    "title": "Apa itu Dompet?",
-    "description": "Sebuah dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital. Ini juga cara baru untuk masuk, tanpa perlu membuat akun dan kata sandi baru di setiap situs web.",
+    "title": "ما هو المحفظة؟",
+    "description": "تُستخدم المحفظة لإرسال واستلام وتخزين وعرض الأصول الرقمية. إنها أيضاً طريقة جديدة لتسجيل الدخول، دون الحاجة إلى إنشاء حسابات وكلمات مرور جديدة على كل موقع.",
     "digital_asset": {
-      "title": "Sebuah Rumah untuk Aset Digital Anda",
-      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital seperti Ethereum dan NFTs."
+      "title": "دار لأصولك الرقمية",
+      "description": "تُستخدم المحافظ لإرسال واستلام وتخزين وعرض الأصول الرقمية مثل إيثيريوم والـ NFTs."
     },
     "login": {
-      "title": "Cara Baru untuk Masuk",
-      "description": "Alih-alih membuat akun dan kata sandi baru di setiap situs web, cukup hubungkan dompet Anda."
+      "title": "طريقة جديدة لتسجيل الدخول",
+      "description": "بدلاً من إنشاء حسابات وكلمات مرور جديدة على كل موقع، فقط قم بتوصيل محفظتك."
     },
     "get": {
-      "label": "Dapatkan Dompet"
+      "label": "احصل على محفظة"
     },
     "learn_more": {
-      "label": "Pelajari lebih lanjut"
+      "label": "تعلم المزيد"
     }
   },
   "connect": {
-    "label": "Hubungkan",
-    "title": "Hubungkan Dompet",
+    "label": "اتصل",
+    "title": "اتصال بالمحفظة",
     "new_to_ethereum": {
-      "description": "Baru dalam dompet Ethereum?",
+      "description": "جديد في محافظ Ethereum؟",
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "تعلم المزيد"
       }
     },
     "learn_more": {
-      "label": "Pelajari lebih lanjut"
+      "label": "أعرف أكثر"
     },
-    "recent": "Terkini",
+    "recent": "الأخير",
     "status": {
-      "opening": "Membuka %{wallet}...",
-      "not_installed": "%{wallet} tidak terpasang",
-      "not_available": "%{wallet} tidak tersedia",
-      "confirm": "Konfirmasikan koneksi di ekstensi"
+      "opening": "جار فتح %{wallet}...",
+      "not_installed": "%{wallet} غير مثبت",
+      "not_available": "%{wallet} غير متاح",
+      "confirm": "تأكيد الاتصال في الامتداد"
     },
     "secondary_action": {
       "get": {
-        "description": "Tidak memiliki %{wallet}?",
-        "label": "DAPATKAN"
+        "description": "لا يوجد لديك %{wallet}؟",
+        "label": "احصل"
       },
       "install": {
-        "label": "PASANG"
+        "label": "تثبيت"
       },
       "retry": {
-        "label": "COBA LAGI"
+        "label": "أعد المحاولة"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Perlu modal resmi WalletConnect?",
-        "compact": "Perlu modal WalletConnect?"
+        "full": "هل تحتاج إلى النافذة الرسمية لـ WalletConnect؟",
+        "compact": "هل تحتاج إلى النافذة لـ WalletConnect؟"
       },
       "open": {
-        "label": "BUKA"
+        "label": "افتح"
       }
     }
   },
   "connect_scan": {
-    "title": "Pindai dengan %{wallet}",
-    "fallback_title": "Pindai dengan ponsel Anda"
+    "title": "المسح باستخدام %{wallet}",
+    "fallback_title": "المسح باستخدام هاتفك"
   },
   "connector_group": {
-    "recommended": "Direkomendasikan",
-    "other": "Lainnya",
-    "popular": "Populer",
-    "more": "Lebih Banyak",
-    "others": "Lainnya"
+    "recommended": "موصى به",
+    "other": "آخر",
+    "popular": "شائع",
+    "more": "المزيد",
+    "others": "الآخرين"
   },
   "get": {
-    "title": "Dapatkan Dompet",
+    "title": "احصل على محفظة",
     "action": {
-      "label": "DAPATKAN"
+      "label": "احصل"
     },
     "mobile": {
-      "description": "Dompet Mobile"
+      "description": "محفظة الموبايل"
     },
     "extension": {
-      "description": "Ekstensi Browser"
+      "description": "ملحق المتصفح"
     },
     "mobile_and_extension": {
-      "description": "Dompet Mobile dan Ekstensi"
+      "description": "محفظة موبايل وملحق"
     },
     "looking_for": {
-      "title": "Bukan yang Anda cari?",
+      "title": "ليست هذه هي ما تبحث عنه؟",
       "mobile": {
-        "description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda."
+        "description": "حدد محفظة على الشاشة الرئيسية للبدء باستخدام موفر محفظة مختلف."
       },
       "desktop": {
-        "compact_description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda.",
-        "wide_description": "Pilih dompet di sebelah kiri untuk memulai dengan penyedia dompet yang berbeda."
+        "compact_description": "حدد محفظة على الشاشة الرئيسية للبدء باستخدام موفر محفظة مختلف.",
+        "wide_description": "حدد محفظة على اليسار للبدء باستخدام موفر محفظة مختلف."
       }
     }
   },
   "get_options": {
-    "title": "Mulai dengan %{wallet}",
-    "short_title": "Dapatkan %{wallet}",
+    "title": "ابدأ مع %{wallet}",
+    "short_title": "احصل على %{wallet}",
     "mobile": {
-      "title": "%{wallet} untuk Mobile",
-      "description": "Gunakan dompet mobile untuk menjelajahi dunia Ethereum.",
+      "title": "%{wallet} للجوال",
+      "description": "استخدم محفظة الموبايل لاستكشاف عالم Ethereum.",
       "download": {
-        "label": "Dapatkan aplikasinya"
+        "label": "احصل على التطبيق"
       }
     },
     "extension": {
-      "title": "%{wallet} untuk %{browser}",
-      "description": "Akses dompet Anda langsung dari browser web favorit Anda.",
+      "title": "%{wallet} لـ %{browser}",
+      "description": "وصول لمحفظتك مباشرة من متصفح الويب المفضل لديك.",
       "download": {
-        "label": "Tambahkan ke %{browser}"
+        "label": "أضف إلى %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "Instal %{wallet}",
-    "description": "Pindai dengan ponsel Anda untuk mengunduh di iOS atau Android",
+    "title": "قم بالتثبيت %{wallet}",
+    "description": "استخدم هاتفك للتحميل على iOS أو Android",
     "continue": {
-      "label": "Lanjutkan"
+      "label": "استمر"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Hubungkan"
+        "label": "اتصل"
       },
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "تعلم المزيد"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Segarkan"
+        "label": "تحديث"
       },
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "تعلم المزيد"
       }
     }
   },
   "chains": {
-    "title": "Alihkan Jaringan",
-    "wrong_network": "Jaringan yang salah terdeteksi, alihkan atau diskonek untuk melanjutkan.",
-    "confirm": "Konfirmasi di Dompet",
-    "switching_not_supported": "Dompet Anda tidak mendukung pengalihan jaringan dari %{appName}. Coba alihkan jaringan dari dalam dompet Anda.",
-    "switching_not_supported_fallback": "Wallet Anda tidak mendukung penggantian jaringan dari aplikasi ini. Cobalah ganti jaringan dari dalam wallet Anda.",
-    "disconnect": "Putuskan koneksi",
-    "connected": "Terkoneksi"
+    "title": "تبديل الشبكات",
+    "wrong_network": "تم اكتشاف شبكة غير صحيحة، قم بالتبديل أو القطع للمتابعة.",
+    "confirm": "التأكيد في المحفظة",
+    "switching_not_supported": "محفظتك لا تدعم التبديل بين الشبكات من %{appName}. جرب التبديل بين الشبكات من داخل المحفظة بدلاً من ذلك.",
+    "switching_not_supported_fallback": "محفظتك لا تدعم تبديل الشبكات من هذا التطبيق. حاول تبديل الشبكات من داخل المحفظة بدلاً من ذلك.",
+    "disconnect": "قطع الاتصال",
+    "connected": "متصل"
   },
   "profile": {
     "disconnect": {
-      "label": "Putuskan koneksi"
+      "label": "قطع الاتصال"
     },
     "copy_address": {
-      "label": "Salin Alamat",
-      "copied": "Tersalin!"
+      "label": "نسخ العنوان",
+      "copied": "تم النسخ!"
     },
     "explorer": {
-      "label": "Lihat lebih banyak di penjelajah"
+      "label": "عرض المزيد على المستكشف"
     },
     "transactions": {
-      "description": "%{appName} transaksi akan muncul di sini...",
-      "description_fallback": "Transaksi Anda akan muncul di sini...",
+      "description": "%{appName} ستظهر المعاملات هنا...",
+      "description_fallback": "سوف تظهر معاملاتك هنا...",
       "recent": {
-        "title": "Transaksi Terbaru"
+        "title": "المعاملات الأخيرة"
       },
       "clear": {
-        "label": "Hapus Semua"
+        "label": "مسح الكل"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Letakkan Argent di layar utama Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Buka aplikasi Argent"
+          "description": "ضع أرجنت على شاشتك الرئيسية للوصول السريع إلى محفظتك.",
+          "title": "افتح تطبيق Argent"
         },
         "step2": {
-          "description": "Buat dompet dan nama pengguna, atau impor dompet yang ada.",
-          "title": "Buat atau Impor Dompet"
+          "description": "أنشئ محفظة واسم مستخدم، أو استورد محفظة موجودة بالفعل.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
-          "title": "Tekan tombol Scan QR"
+          "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل المحفظة الخاصة بك.",
+          "title": "اضغط على زر فحص الكود الشريطي"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempatkan Bifrost Wallet di layar utama anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Bifrost Wallet"
+          "description": "نوصي بوضع محفظة Bifrost على الشاشة الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق محفظة Bifrost"
         },
         "step2": {
-          "description": "Buat atau impor sebuah dompet menggunakan frasa pemulihan Anda.",
-          "title": "Buat atau Impor sebuah Wallet"
+          "description": "أنشئ أو استورد محفظة باستخدام عبارة الاستعادة الخاصة بك.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, sebuah pesan akan muncul untuk menghubungkan dompet Anda.",
-          "title": "Tekan tombol scan"
+          "description": "بعد الفحص، سيظهر موجه الاتصال لك لتوصيل محفظتك.",
+          "title": "اضغط على زر المسح"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Kami menyarankan untuk meletakkan Bitget Wallet di layar depan Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Bitget Wallet"
+          "description": "نوصي بوضع محفظة Bitget على الشاشة الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق محفظة Bitget"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أحد.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda pindai, akan muncul petunjuk untuk menghubungkan wallet Anda.",
-          "title": "Tekan tombol pindai"
+          "description": "بعد الفحص، ستظهر لك موجه اتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Bitget Wallet ke taskbar Anda untuk akses yang lebih cepat ke wallet Anda.",
-          "title": "Instal ekstensi Dompet Bitget"
+          "description": "نوصي بتثبيت محفظة Bitget على شريط المهام للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد محفظة Bitget"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ محفظة أو استورد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "قم بتحديث متصفحك"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk memasang Bitski ke taskbar Anda untuk akses dompet Anda yang lebih cepat.",
-          "title": "Pasang ekstensi Bitski"
+          "description": "نوصي بتثبيت Bitski على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد Bitski"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بعد إعداد المحفظة الخاصة بك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menaruh Coin98 Wallet di layar utama Anda untuk akses wallet Anda lebih cepat.",
-          "title": "Buka aplikasi Coin98 Wallet"
+          "description": "نوصي بوضع محفظة Coin98 على الشاشة الرئيسية لسرعة الوصول إلى محفظتك.",
+          "title": "افتح تطبيق محفظة Coin98"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
-          "title": "Buat atau Impor Wallet"
+          "description": "يمكنك بسهولة نسخ محفظتك الاحتياطي باستخدام ميزة النسخ الاحتياطي على هاتفك.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda melakukan pemindaian, akan muncul prompt koneksi untuk Anda menghubungkan wallet Anda.",
-          "title": "Ketuk tombol WalletConnect"
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Klik di pojok kanan atas browser Anda dan sematkan Coin98 Wallet untuk akses mudah.",
-          "title": "Pasang ekstensi Coin98 Wallet"
+          "description": "انقر في الجزء العلوي الأيمن من المتصفح وثبت Coin98 Wallet لسهولة الوصول.",
+          "title": "قم بتثبيت امتداد Coin98 Wallet"
         },
         "step2": {
-          "description": "Buat dompet baru atau impor yang sudah ada.",
-          "title": "Buat atau Impor sebuah dompet"
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة بالفعل.",
+          "title": "أنشئ محفظة أو استورد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan Coin98 Wallet, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد Coin98 Wallet ، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan memasang Coinbase Wallet di layar utama Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Coinbase Wallet"
+          "description": "نوصي بوضع Coinbase Wallet على الشاشة الرئيسية لسهولة الوصول.",
+          "title": "افتح تطبيق Coinbase Wallet"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan awan.",
-          "title": "Buat atau Impor sebuah Dompet"
+          "description": "يمكنك بسهولة النسخ الاحتياطي لمحفظتك باستخدام ميزة النسخ الاحتياطي السحابي.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul sebuah petunjuk koneksi untuk Anda menyambungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempel Coinbase Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi Coinbase Wallet"
+          "description": "نوصي بتثبيت محفظة Coinbase على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Coinbase"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Import Wallet"
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد المحفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "تحديث المتصفح الخاص بك"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk meletakkan Core di layar utama Anda untuk akses lebih cepat ke wallet Anda.",
-          "title": "Buka aplikasi Core"
+          "description": "نوصي بوضع Core على الشاشة الرئيسية للوصول السريع إلى محفظتك.",
+          "title": "افتح تطبيق Core"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda dengan menggunakan fitur cadangan kami di telepon Anda.",
-          "title": "Buat atau Import Wallet"
+          "description": "يمكنك بسهولة النسخ الاحتياطي لمحفظتك باستخدام ميزة النسخ الاحتياطي على هاتفك.",
+          "title": "إنشاء أو استيراد المحفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menyambungkan wallet Anda.",
-          "title": "Ketuk tombol WalletConnect"
+          "description": "بعد الفحص، سيظهر لك موجه الاتصال لتوصيل محفظتك.",
+          "title": "اضغط على زر WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempelkan Core pada taskbar Anda untuk akses ke dompet Anda lebih cepat.",
-          "title": "Pasang ekstensi Core"
+          "description": "نوصي بتثبيت Core على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "قم بتثبيت امتداد Core"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد.",
+          "title": "تحديث متصفحك"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menaruh FoxWallet pada layar utama Anda untuk akses lebih cepat.",
-          "title": "Buka aplikasi FoxWallet"
+          "description": "نوصي بوضع FoxWallet على شاشتك الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق FoxWallet"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء محفظة أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "بعد الفحص، ستظهر لك موجه الاتصال لتتمكن من اتصال محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk meletakkan Frontier Wallet di layar awal Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Frontier Wallet"
+          "description": "نوصي بوضع Frontier Wallet على شاشتك الرئيسية للوصول الأسرع.",
+          "title": "افتح تطبيق Frontier Wallet"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "تأكد من نسخ محفظتك احتياطيا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menghubungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "بعد الفحص، ستظهر لك موجه الاتصال لربط محفظتك.",
+          "title": "اضغط على زر الفحص"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami menyarankan menempelkan Frontier Wallet ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi Frontier Wallet"
+          "description": "نوصي بتثبيت محفظة Frontier على شريط المهام للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Frontier"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "تأكد من نسخ محفظتك احتياطيا باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "إنشاء أو استيراد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "قم بتحديث المتصفح الخاص بك"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi imToken",
-          "description": "Letakkan aplikasi imToken di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+          "title": "افتح تطبيق imToken",
+          "description": "ضع تطبيق imToken على الشاشة الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "قم بإنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Ketuk Ikon Scanner di pojok kanan atas",
-          "description": "Pilih Koneksi Baru, lalu pindai kode QR dan konfirmasi petunjuk untuk terhubung."
+          "title": "اضغط على أيقونة الماسح الضوئي في الزاوية العليا اليمنى",
+          "description": "اختر الاتصال الجديد، ثم امسح الرمز الشريطي وأكد الموجه للاتصال."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi MetaMask",
-          "description": "Kami merekomendasikan untuk meletakkan MetaMask di layar beranda Anda untuk akses yang lebih cepat."
+          "title": "افتح تطبيق MetaMask",
+          "description": "نوصي بوضع MetaMask على الشاشة الرئيسية لديك للوصول بشكل أسرع."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ الحفاظ على محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Ketuk tombol pindai",
-          "description": "Setelah Anda memindai, petunjuk koneksi akan muncul untuk Anda menyambungkan dompet Anda."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك موجه اتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Pasang ekstensi MetaMask",
-          "description": "Kami menyarankan untuk memasang MetaMask pada taskbar Anda untuk akses wallet lebih cepat."
+          "title": "قم بتثبيت امتداد MetaMask",
+          "description": "نوصي بتثبيت MetaMask في شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "تحديث متصفحك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi OKX Wallet",
-          "description": "Kami menyarankan untuk menaruh OKX Wallet di layar utama Anda untuk akses lebih cepat."
+          "title": "افتح تطبيق محفظة OKX",
+          "description": "نوصي بوضع محفظة OKX على الشاشة الرئيسية للوصول الأسرع."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Ketuk tombol scan",
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك مطالبة بالاتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi OKX Wallet",
-          "description": "Kami menyarankan untuk menempelkan OKX Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "قم بتثبيت امتداد محفظة OKX",
+          "description": "نوصي بتثبيت محفظة OKX على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من حفظ نسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Omni",
-          "description": "Tambahkan Omni ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+          "title": "افتح تطبيق Omni",
+          "description": "أضف Omni إلى شاشتك الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat wallet baru atau impor yang sudah ada."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "إنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Ketuk ikon QR dan scan",
-          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi petunjuk untuk terhubung."
+          "title": "اضغط على أيقونة الرمز الاستجابة السريعة وامسحها",
+          "description": "اضغط على الرمز QR على الشاشة الرئيسية الخاصة بك، امسح الرمز وأكد الموافقة للاتصال."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi TokenPocket",
-          "description": "Kami sarankan meletakkan TokenPocket di layar utama Anda untuk akses yang lebih cepat."
+          "title": "افتح تطبيق TokenPocket",
+          "description": "نوصي بوضع TokenPocket على الشاشة الرئيسية للوصول السريع."
         },
         "step2": {
-          "title": "Buat atau impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Ketuk tombol pindai",
-          "description": "Setelah Anda memindai, Indikasi sambungan akan muncul untuk Anda menghubungkan dompet Anda."
+          "title": "اضغط على زر المسح",
+          "description": "بعد الفحص، ستظهر لك رسالة موجهة للاتصال بمحفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi TokenPocket",
-          "description": "Kami merekomendasikan penambatan TokenPocket ke taskbar Anda untuk akses dompet Anda lebih cepat."
+          "title": "قم بتثبيت امتداد TokenPocket",
+          "description": "نوصي بتثبيت TokenPocket على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagi frasa rahasia Anda dengan siapa pun."
+          "title": "قم بإنشاء محفظة أو استيراد محفظة",
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Trust Wallet",
-          "description": "Pasang Trust Wallet di layar utama Anda untuk akses dompet Anda lebih cepat."
+          "title": "افتح تطبيق Trust Wallet",
+          "description": "ضع Trust Wallet على الشاشة الرئيسية للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة."
         },
         "step3": {
-          "title": "Ketuk WalletConnect di Pengaturan",
-          "description": "Pilih Koneksi Baru, kemudian pindai kode QR dan konfirmasi perintah untuk terhubung."
+          "title": "اضغط على WalletConnect في الإعدادات",
+          "description": "اختر الاتصال الجديد، ثم امسح الرمز الشريطي QR وأكد الموجه للاتصال."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Trust Wallet",
-          "description": "Klik di pojok kanan atas browser Anda dan sematkan Trust Wallet untuk akses mudah."
+          "title": "قم بتثبيت امتداد Trust Wallet",
+          "description": "انقر في الجزء العلوي الأيمن من المتصفح وثبت Trust Wallet للوصول بسهولة."
         },
         "step2": {
-          "title": "Buat atau Impor dompet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "أنشئ محفظة جديدة أو استورد واحدة موجودة."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur Trust Wallet, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث متصفحك",
+          "description": "بمجرد إعداد Trust Wallet، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Uniswap",
-          "description": "Tambahkan Uniswap Wallet ke layar utama Anda untuk akses ke wallet Anda lebih cepat."
+          "title": "افتح تطبيق Uniswap",
+          "description": "أضف محفظة Uniswap إلى شاشة الرئيسية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat wallet baru atau impor yang sudah ada."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "قم بإنشاء محفظة جديدة أو استيراد واحدة موجودة."
         },
         "step3": {
-          "title": "Ketuk ikon QR dan pindai",
-          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+          "title": "اضغط على الأيقونة QR واقرأ الرمز",
+          "description": "اضغط على أيقونة QR على الشاشة الرئيسية، قراءة الرمز وتأكيد الرسالة الموجهة للاتصال."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Zerion",
-          "description": "Kami merekomendasikan untuk meletakkan Zerion di layar utama Anda untuk akses lebih cepat."
+          "title": "افتح تطبيق Zerion",
+          "description": "نوصي بوضع Zerion على شاشتك الرئيسية للوصول الأسرع."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من حفظ نسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Ketuk tombol scan",
-          "description": "Setelah Anda scan, muncul prompt koneksi untuk Anda menghubungkan dompet Anda."
+          "title": "اضغط على زر المسح",
+          "description": "بعد المسح، سوف يظهر لك نافذة الاتصال لتوصيل محفظتك."
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Zerion",
-          "description": "Kami menyarankan untuk menempelkan Zerion ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "تثبيت امتداد Zerion",
+          "description": "نوصي بتثبيت Zerion على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من الاحتفاظ بنسخة احتياطية من محفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur wallet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Rainbow",
-          "description": "Kami menyarankan menempatkan Rainbow di layar home Anda untuk akses yang lebih cepat ke wallet Anda."
+          "title": "افتح تطبيق Rainbow",
+          "description": "نوصي بوضع Rainbow على شاشة البداية للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda."
+          "title": "إنشاء محفظة أو استيراد محفظة",
+          "description": "يمكنك عمل نسخة احتياطية بسهولة لمحفظتك باستخدام ميزة النسخ الاحتياطي على هاتفك."
         },
         "step3": {
-          "title": "Tekan tombol scan",
-          "description": "Setelah Anda memindai, akan muncul pesan untuk menghubungkan dompet Anda."
+          "title": "اضغط على الزر الماسح الضوئي",
+          "description": "بعد الفحص، سيظهر لك موجه اتصال لربط محفظتك."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Enkrypt Wallet ke taskbar Anda untuk akses dompet yang lebih cepat.",
-          "title": "Instal ekstensi Enkrypt Wallet"
+          "description": "نوصي بتثبيت محفظة Enkrypt على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك.",
+          "title": "تثبيت امتداد محفظة Enkrypt"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ أو استورد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet, klik di bawah ini untuk memuat ulang peramban dan meload ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "حدث المتصفح الخاص بك"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Frame ke taskbar Anda untuk akses dompet yang lebih cepat.",
-          "title": "Instal Frame & ekstensi pendamping"
+          "description": "نوصي بتعليق Frame على شريط المهام للوصول السريع إلى محفظتك.",
+          "title": "ثبت Frame والإضافة المصاحبة"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص.",
+          "title": "أنشئ أو استورد محفظة"
         },
         "step3": {
-          "description": "Setelah Anda menyetel wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة.",
+          "title": "حدث المتصفح الخاص بك"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi OneKey Wallet",
-          "description": "Kami menyarankan untuk menempelkan OneKey Wallet ke taskbar Anda untuk akses wallet yang lebih cepat."
+          "title": "قم بتثبيت امتداد محفظة OneKey",
+          "description": "نوصي بتثبيت محفظة OneKey على شريط المهام للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ احتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الامتداد."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Phantom",
-          "description": "Kami menyarankan untuk mem-pin Phantom ke taskbar Anda untuk akses dompet yang lebih mudah."
+          "title": "قم بتثبيت امتداد Phantom",
+          "description": "نوصي بتثبيت Phantom على شريط المهام للوصول الأسهل إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك عبارة الاستعادة السرية الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المتصفح",
+          "description": "بمجرد إعداد المحفظة، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Rabby",
-          "description": "Kami merekomendasikan menempelkan Rabby ke taskbar Anda untuk akses lebih cepat ke wallet Anda."
+          "title": "ثبت امتداد Rabby",
+          "description": "نوصي بتثبيت Rabby على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "تأكد من نسخ محفظتك احتياطيًا باستخدام طريقة آمنة. لا تشارك العبارة السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المتصفح",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Core",
-          "description": "Kami merekomendasikan menempelkan Safeheron ke taskbar Anda untuk akses lebih cepat ke wallet Anda."
+          "title": "قم بتثبيت إضافة النواة",
+          "description": "نوصي بتثبيت Safeheron على شريط المهام الخاص بك للوصول السريع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "إنشاء أو استيراد محفظة",
+          "description": "تأكد من نسخ محفظتك بطريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Taho",
-          "description": "Kami merekomendasikan pengepinan Taho ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
+          "title": "تثبيت إضافة Taho",
+          "description": "نوصي بتثبيت Taho على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "إنشاء محفظة أو استيراد محفظة",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "تحديث المتصفح الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Talisman",
-          "description": "Kami merekomendasikan menempelkan Talisman ke taskbar Anda untuk akses dompet Anda lebih cepat."
+          "title": "تثبيت إضافة Talisman",
+          "description": "نوصي بتثبيت Talisman على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet Ethereum",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase pemulihan Anda dengan siapa pun."
+          "title": "إنشاء محفظة Ethereum أو استيرادها",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارة الاستعادة الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المستعرض الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المستعرض وتحميل الإضافة."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Dompet XDEFI",
-          "description": "Kami merekomendasikan menempelkan XDEFI Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "قم بتثبيت إضافة XDEFI Wallet",
+          "description": "نوصي بتثبيت XDEFI Wallet على شريط المهام للوصول الأسرع إلى محفظتك."
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "title": "أنشئ محفظة أو استورد محفظة",
+          "description": "تأكد من النسخ الاحتياطي لمحفظتك باستخدام طريقة آمنة. لا تشارك العبارة السرية الخاصة بك مع أي شخص."
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "قم بتحديث المستعرض الخاص بك",
+          "description": "بمجرد إعداد محفظتك، انقر أدناه لتحديث المتصفح وتحميل الإضافة."
         }
       }
     }
