@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "قم بتثبيت إضافة Desig",
+          "description": "نوصي بتثبيت Desig على شريط المهام الخاص بك للوصول الأسهل إلى محفظتك."
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "إنشاء محفظة",
           "description": "تأكد من عمل نسخة احتياطية لمحفظتك باستخدام طريقة آمنة. لا تشارك عبارتك السرية مع أحد."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "قم بتثبيت إضافة SubWallet",
+          "description": "نوصي بتثبيت SubWallet على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
           "title": "إنشاء أو استيراد محفظة",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "افتح تطبيق SubWallet",
+          "description": "نوصي بوضع SubWallet على شاشة الرئيسية الخاصة بك للوصول الأسرع."
         },
         "step2": {
           "title": "إنشاء أو استيراد محفظة",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "قم بتثبيت إضافة CLV Wallet",
+          "description": "نوصي بتثبيت CLV Wallet على شريط المهام الخاص بك للوصول الأسرع إلى محفظتك."
         },
         "step2": {
           "title": "إنشاء أو استيراد محفظة",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "افتح تطبيق محفظة CLV",
+          "description": "نوصي بوضع محفظة CLV على الشاشة الرئيسية للوصول الأسرع."
         },
         "step2": {
           "title": "إنشاء أو استيراد محفظة",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "افتح تطبيق Okto",
+          "description": "أضف Okto إلى الشاشة الرئيسية للوصول السريع"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "أنشئ محفظة MPC",
+          "description": "أنشئ حسابًا وقم بإنشاء محفظة"
         },
         "step3": {
           "title": "اضغط على WalletConnect في الإعدادات",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "اضغط على أيقونة فحص الشاشة في الجهة العليا اليمنى وأكد الإدخال للاتصال."
         }
       }
     }
