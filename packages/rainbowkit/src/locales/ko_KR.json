@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "Desig 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 쉽게 접근하기 위해 작업 표시줄에 Desig을 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "지갑 생성",
           "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "SubWallet 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 작업 표시줄에 SubWallet을 고정하는 것을 권장합니다."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "SubWallet 앱 열기",
+          "description": "더 빠른 접근을 위해 SubWallet을 홈 화면에 두는 것을 권장합니다."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "CLV Wallet 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 작업 표시줄에 CLV Wallet을 고정하는 것을 권장합니다."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "CLV Wallet 앱을 엽니다",
+          "description": "더 빠른 접근을 위해 CLV Wallet을 홈 화면에 놓는 것이 좋습니다."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "Okto 앱을 엽니다",
+          "description": "빠른 접근을 위해 Okto를 홈 화면에 추가합니다"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "MPC Wallet을 만듭니다",
+          "description": "계정을 만들고 지갑을 생성합니다"
         },
         "step3": {
           "title": "설정에서 WalletConnect를 탭하십시오",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "오른쪽 상단의 QR 아이콘을 탭하고 연결하려면 알림을 확인합니다."
         }
       }
     }
