@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Hubungkan Dompet"
+    "label": "ウォレットを接続する"
   },
   "intro": {
-    "title": "Apa itu Dompet?",
-    "description": "Sebuah dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital. Ini juga cara baru untuk masuk, tanpa perlu membuat akun dan kata sandi baru di setiap situs web.",
+    "title": "ウォレットとは何ですか？",
+    "description": "ウォレットは、デジタルアセットを送信、受信、保存、表示するために使用されます。また、各ウェブサイトで新たなアカウントやパスワードを作成する必要なく、ログインする新しい方法でもあります。",
     "digital_asset": {
-      "title": "Sebuah Rumah untuk Aset Digital Anda",
-      "description": "Dompet digunakan untuk mengirim, menerima, menyimpan, dan menampilkan aset digital seperti Ethereum dan NFTs."
+      "title": "あなたのデジタル資産のための家",
+      "description": "ウォレットは、EthereumやNFTのようなデジタル資産を送信、受信、保存、表示するために使用されます。"
     },
     "login": {
-      "title": "Cara Baru untuk Masuk",
-      "description": "Alih-alih membuat akun dan kata sandi baru di setiap situs web, cukup hubungkan dompet Anda."
+      "title": "新しいログイン方法",
+      "description": "すべてのウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続します。"
     },
     "get": {
-      "label": "Dapatkan Dompet"
+      "label": "ウォレットを取得する"
     },
     "learn_more": {
-      "label": "Pelajari lebih lanjut"
+      "label": "詳しくはこちら"
     }
   },
   "connect": {
-    "label": "Hubungkan",
-    "title": "Hubungkan Dompet",
+    "label": "接続",
+    "title": "ウォレットを接続する",
     "new_to_ethereum": {
-      "description": "Baru dalam dompet Ethereum?",
+      "description": "Ethereumのウォレットが初めてですか？",
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "詳しくはこちら"
       }
     },
     "learn_more": {
-      "label": "Pelajari lebih lanjut"
+      "label": "詳しくはこちら"
     },
-    "recent": "Terkini",
+    "recent": "最近",
     "status": {
-      "opening": "Membuka %{wallet}...",
-      "not_installed": "%{wallet} tidak terpasang",
-      "not_available": "%{wallet} tidak tersedia",
-      "confirm": "Konfirmasikan koneksi di ekstensi"
+      "opening": "%{wallet}を開いています...",
+      "not_installed": "%{wallet} はインストールされていません",
+      "not_available": "%{wallet} は利用できません",
+      "confirm": "エクステンションで接続を確認してください"
     },
     "secondary_action": {
       "get": {
-        "description": "Tidak memiliki %{wallet}?",
-        "label": "DAPATKAN"
+        "description": "%{wallet}がありませんか？",
+        "label": "取得"
       },
       "install": {
-        "label": "PASANG"
+        "label": "インストール"
       },
       "retry": {
-        "label": "COBA LAGI"
+        "label": "再試行"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Perlu modal resmi WalletConnect?",
-        "compact": "Perlu modal WalletConnect?"
+        "full": "公式のWalletConnectモーダルが必要ですか？",
+        "compact": "WalletConnectモーダルが必要ですか？"
       },
       "open": {
-        "label": "BUKA"
+        "label": "開く"
       }
     }
   },
   "connect_scan": {
-    "title": "Pindai dengan %{wallet}",
-    "fallback_title": "Pindai dengan ponsel Anda"
+    "title": "%{wallet}でスキャン",
+    "fallback_title": "携帯電話でスキャンしてください"
   },
   "connector_group": {
-    "recommended": "Direkomendasikan",
-    "other": "Lainnya",
-    "popular": "Populer",
-    "more": "Lebih Banyak",
-    "others": "Lainnya"
+    "recommended": "推奨",
+    "other": "その他",
+    "popular": "人気",
+    "more": "もっと",
+    "others": "その他"
   },
   "get": {
-    "title": "Dapatkan Dompet",
+    "title": "ウォレットを取得",
     "action": {
-      "label": "DAPATKAN"
+      "label": "取得"
     },
     "mobile": {
-      "description": "Dompet Mobile"
+      "description": "モバイルウォレット"
     },
     "extension": {
-      "description": "Ekstensi Browser"
+      "description": "ブラウザ拡張"
     },
     "mobile_and_extension": {
-      "description": "Dompet Mobile dan Ekstensi"
+      "description": "モバイルウォレットと拡張機能"
     },
     "looking_for": {
-      "title": "Bukan yang Anda cari?",
+      "title": "お探しのものではありませんか？",
       "mobile": {
-        "description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda."
+        "description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。"
       },
       "desktop": {
-        "compact_description": "Pilih dompet di layar utama untuk memulai dengan penyedia dompet yang berbeda.",
-        "wide_description": "Pilih dompet di sebelah kiri untuk memulai dengan penyedia dompet yang berbeda."
+        "compact_description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。",
+        "wide_description": "左側のウォレットを選択して、別のウォレットプロバイダーで始めてください。"
       }
     }
   },
   "get_options": {
-    "title": "Mulai dengan %{wallet}",
-    "short_title": "Dapatkan %{wallet}",
+    "title": "%{wallet}で始める",
+    "short_title": "%{wallet}を取得する",
     "mobile": {
-      "title": "%{wallet} untuk Mobile",
-      "description": "Gunakan dompet mobile untuk menjelajahi dunia Ethereum.",
+      "title": "モバイル用 %{wallet}",
+      "description": "モバイルウォレットを使用して、イーサリアムの世界を探索します。",
       "download": {
-        "label": "Dapatkan aplikasinya"
+        "label": "アプリを取得"
       }
     },
     "extension": {
-      "title": "%{wallet} untuk %{browser}",
-      "description": "Akses dompet Anda langsung dari browser web favorit Anda.",
+      "title": "%{wallet} لـ %{browser}",
+      "description": "お好きなウェブブラウザからウォレットに直接アクセスします。",
       "download": {
-        "label": "Tambahkan ke %{browser}"
+        "label": "%{browser}に追加"
       }
     }
   },
   "get_mobile": {
-    "title": "Instal %{wallet}",
-    "description": "Pindai dengan ponsel Anda untuk mengunduh di iOS atau Android",
+    "title": "%{wallet}をインストール",
+    "description": "iOSまたはAndroidでダウンロードするために電話でスキャン",
     "continue": {
-      "label": "Lanjutkan"
+      "label": "続行"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Hubungkan"
+        "label": "接続"
       },
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "詳しくはこちら"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Segarkan"
+        "label": "更新"
       },
       "learn_more": {
-        "label": "Pelajari lebih lanjut"
+        "label": "詳しくはこちら"
       }
     }
   },
   "chains": {
-    "title": "Alihkan Jaringan",
-    "wrong_network": "Jaringan yang salah terdeteksi, alihkan atau diskonek untuk melanjutkan.",
-    "confirm": "Konfirmasi di Dompet",
-    "switching_not_supported": "Dompet Anda tidak mendukung pengalihan jaringan dari %{appName}. Coba alihkan jaringan dari dalam dompet Anda.",
-    "switching_not_supported_fallback": "Wallet Anda tidak mendukung penggantian jaringan dari aplikasi ini. Cobalah ganti jaringan dari dalam wallet Anda.",
-    "disconnect": "Putuskan koneksi",
-    "connected": "Terkoneksi"
+    "title": "ネットワークを切り替える",
+    "wrong_network": "誤ったネットワークが検出されました、続行するには切り替えるか切断してください。",
+    "confirm": "ウォレットで確認する",
+    "switching_not_supported": "あなたのウォレットは %{appName}からネットワークを切り替えることをサポートしていません。ウォレット内でネットワークを切り替えてみてください。",
+    "switching_not_supported_fallback": "あなたのウォレットは、このアプリからネットワークを切り替えることをサポートしていません。代わりにウォレット内からネットワークを切り替えてみてください。",
+    "disconnect": "切断する",
+    "connected": "接続しました"
   },
   "profile": {
     "disconnect": {
-      "label": "Putuskan koneksi"
+      "label": "切断する"
     },
     "copy_address": {
-      "label": "Salin Alamat",
-      "copied": "Tersalin!"
+      "label": "アドレスをコピーする",
+      "copied": "コピーしました！"
     },
     "explorer": {
-      "label": "Lihat lebih banyak di penjelajah"
+      "label": "エクスプローラーで詳しく見る"
     },
     "transactions": {
-      "description": "%{appName} transaksi akan muncul di sini...",
-      "description_fallback": "Transaksi Anda akan muncul di sini...",
+      "description": "%{appName} トランザクションがここに表示されます...",
+      "description_fallback": "あなたのトランザクションはここに表示されます...",
       "recent": {
-        "title": "Transaksi Terbaru"
+        "title": "最近のトランザクション"
       },
       "clear": {
-        "label": "Hapus Semua"
+        "label": "すべてクリア"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Letakkan Argent di layar utama Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Buka aplikasi Argent"
+          "description": "より速くウォレットにアクセスするために、Argentをホーム画面に置いてください。",
+          "title": "Argentアプリを開く"
         },
         "step2": {
-          "description": "Buat dompet dan nama pengguna, atau impor dompet yang ada.",
-          "title": "Buat atau Impor Dompet"
+          "description": "ウォレットとユーザーネームを作成するか、既存のウォレットをインポートします。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
-          "title": "Tekan tombol Scan QR"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "「QRをスキャン」ボタンをタップします"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempatkan Bifrost Wallet di layar utama anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Bifrost Wallet"
+          "description": "より速くアクセスできるように、Bifrost Walletをホーム画面に置くことをお勧めします。",
+          "title": "Bifrost Walletアプリを開きます"
         },
         "step2": {
-          "description": "Buat atau impor sebuah dompet menggunakan frasa pemulihan Anda.",
-          "title": "Buat atau Impor sebuah Wallet"
+          "description": "リカバリーフレーズを使用してウォレットを作成またはインポートします。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda memindai, sebuah pesan akan muncul untuk menghubungkan dompet Anda.",
-          "title": "Tekan tombol scan"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "「スキャン」ボタンをタップします"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Kami menyarankan untuk meletakkan Bitget Wallet di layar depan Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Bitget Wallet"
+          "description": "より迅速なアクセスのために、ホーム画面にBitget Walletを配置することをお勧めします。",
+          "title": "Bitget Walletアプリを開く"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda pindai, akan muncul petunjuk untuk menghubungkan wallet Anda.",
-          "title": "Tekan tombol pindai"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Bitget Wallet ke taskbar Anda untuk akses yang lebih cepat ke wallet Anda.",
-          "title": "Instal ekstensi Dompet Bitget"
+          "description": "ウォレットへのより迅速なアクセスのためにBitget Walletをタスクバーにピン留めすることをお勧めします。",
+          "title": "Bitget Wallet拡張機能をインストールします"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポートします"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk memasang Bitski ke taskbar Anda untuk akses dompet Anda yang lebih cepat.",
-          "title": "Pasang ekstensi Bitski"
+          "description": "ウォレットへの素早いアクセスのために、Bitskiをタスクバーにピン留めすることをお勧めします。",
+          "title": "Bitskiエクステンションをインストールする"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成するか、インポートする"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menaruh Coin98 Wallet di layar utama Anda untuk akses wallet Anda lebih cepat.",
-          "title": "Buka aplikasi Coin98 Wallet"
+          "description": "Coin98ウォレットをホーム画面に置くことで、ウォレットへのアクセスが高速化されることをお勧めします。",
+          "title": "Coin98ウォレットアプリを開きます"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
-          "title": "Buat atau Impor Wallet"
+          "description": "電話のバックアップ機能を使用して、ウォレットを簡単にバックアップすることができます。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Setelah Anda melakukan pemindaian, akan muncul prompt koneksi untuk Anda menghubungkan wallet Anda.",
-          "title": "Ketuk tombol WalletConnect"
+          "description": "スキャン後、ウォレットへの接続を促すプロンプトが表示されます。",
+          "title": "WalletConnectボタンをタップします"
         }
       },
       "extension": {
         "step1": {
-          "description": "Klik di pojok kanan atas browser Anda dan sematkan Coin98 Wallet untuk akses mudah.",
-          "title": "Pasang ekstensi Coin98 Wallet"
+          "description": "ブラウザの右上をクリックして、Coin98ウォレットをピン留めして簡単にアクセスできるようにします。",
+          "title": "Coin98ウォレットの拡張機能をインストールします"
         },
         "step2": {
-          "description": "Buat dompet baru atau impor yang sudah ada.",
-          "title": "Buat atau Impor sebuah dompet"
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan Coin98 Wallet, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "Coin98ウォレットをセットアップしたら、下のリンクをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan memasang Coinbase Wallet di layar utama Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Coinbase Wallet"
+          "description": "より素早くアクセスできるように、Coinbaseウォレットをホームスクリーンに置くことをお勧めします。",
+          "title": "Coinbase Walletアプリを開く"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan awan.",
-          "title": "Buat atau Impor sebuah Dompet"
+          "description": "クラウドバックアップ機能を使用して、簡単にウォレットをバックアップできます。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul sebuah petunjuk koneksi untuk Anda menyambungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempel Coinbase Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi Coinbase Wallet"
+          "description": "タスクバーにCoinbase Walletをピン留めして、ウォレットにより早くアクセスできるように推奨します。",
+          "title": "Coinbase Wallet拡張機能をインストールする"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Import Wallet"
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰にも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットの設定が完了したら、下のボタンをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk meletakkan Core di layar utama Anda untuk akses lebih cepat ke wallet Anda.",
-          "title": "Buka aplikasi Core"
+          "description": "ウォレットへの迅速なアクセスのため、コアをホーム画面に設定することを推奨します。",
+          "title": "Coreアプリを開く"
         },
         "step2": {
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda dengan menggunakan fitur cadangan kami di telepon Anda.",
-          "title": "Buat atau Import Wallet"
+          "description": "電話のバックアップ機能を使って、簡単にウォレットをバックアップできます。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menyambungkan wallet Anda.",
-          "title": "Ketuk tombol WalletConnect"
+          "description": "スキャン後、ウォレットを接続するようにプロンプトが表示されます。",
+          "title": "WalletConnectボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menempelkan Core pada taskbar Anda untuk akses ke dompet Anda lebih cepat.",
-          "title": "Pasang ekstensi Core"
+          "description": "ウォレットへのより迅速なアクセスのために、タスクバーにCoreをピン留めすることをお勧めします。",
+          "title": "Core拡張機能をインストールする"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "セキュアな方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk menaruh FoxWallet pada layar utama Anda untuk akses lebih cepat.",
-          "title": "Buka aplikasi FoxWallet"
+          "description": "より迅速なアクセスのために、ホーム画面にFoxWalletを置くことをお勧めします。",
+          "title": "FoxWalletアプリを開く"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "セキュアな方法を使用してウォレットをバックアップすることを確認してください。秘密のフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップします"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Kami merekomendasikan untuk meletakkan Frontier Wallet di layar awal Anda untuk akses yang lebih cepat.",
-          "title": "Buka aplikasi Frontier Wallet"
+          "description": "Frontierウォレットをホーム画面に置くことで、より早くアクセスできることをお勧めします。",
+          "title": "Frontierウォレットアプリを開きます"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "セキュアな方法を使用してウォレットをバックアップすることを確認してください。秘密のフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda menghubungkan dompet Anda.",
-          "title": "Ketuk tombol pindai"
+          "description": "スキャン後に、ウォレットの接続を促すメッセージが表示されます。",
+          "title": "スキャンボタンをタップします"
         }
       },
       "extension": {
         "step1": {
-          "description": "Kami menyarankan menempelkan Frontier Wallet ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
-          "title": "Instal ekstensi Frontier Wallet"
+          "description": "より迅速なウォレットへのアクセスを可能にするために、フロンティアウォレットをタスクバーにピン留めすることを推奨します。",
+          "title": "フロンティアウォレットの拡張機能をインストールします"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットの設定が完了したら、ブラウザを更新して拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi imToken",
-          "description": "Letakkan aplikasi imToken di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+          "title": "imTokenアプリを開く",
+          "description": "ウォレットへのアクセスを速くするために、imTokenアプリをホーム画面に置いてください。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Ketuk Ikon Scanner di pojok kanan atas",
-          "description": "Pilih Koneksi Baru, lalu pindai kode QR dan konfirmasi petunjuk untuk terhubung."
+          "title": "右上隅のスキャナーアイコンをタップします",
+          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi MetaMask",
-          "description": "Kami merekomendasikan untuk meletakkan MetaMask di layar beranda Anda untuk akses yang lebih cepat."
+          "title": "MetaMaskアプリを開きます",
+          "description": "迅速なアクセスのために、MetaMaskをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成またはインポートします",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Ketuk tombol pindai",
-          "description": "Setelah Anda memindai, petunjuk koneksi akan muncul untuk Anda menyambungkan dompet Anda."
+          "title": "スキャンボタンをタップします",
+          "description": "スキャンすると、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Pasang ekstensi MetaMask",
-          "description": "Kami menyarankan untuk memasang MetaMask pada taskbar Anda untuk akses wallet lebih cepat."
+          "title": "MetaMaskの拡張機能をインストールします",
+          "description": "ウォレットへのより速いアクセスのために、MetaMaskをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "安全な方法を使用してウォレットをバックアップし、秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新",
+          "description": "ウォレットを設定した後は、下のリンクをクリックしてブラウザを更新し、エクステンションを読み込んでください。"
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi OKX Wallet",
-          "description": "Kami menyarankan untuk menaruh OKX Wallet di layar utama Anda untuk akses lebih cepat."
+          "title": "OKX Walletアプリを開く",
+          "description": "OKX Walletをホーム画面に配置して、より早くアクセスできるようにすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "セキュアな方法を使ってウォレットをバックアップしてください。秘密フレーズは誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Ketuk tombol scan",
-          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi OKX Wallet",
-          "description": "Kami menyarankan untuk menempelkan OKX Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "OKXウォレット拡張機能をインストールする",
+          "description": "ウォレットへの迅速なアクセスのため、OKXウォレットをタスクバーにピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "セキュアな方法を使ってウォレットをバックアップしてください。秘密フレーズは誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、下をクリックしてブラウザをリフレッシュし、拡張機能を読み込みます。"
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Omni",
-          "description": "Tambahkan Omni ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+          "title": "Omniアプリを開く",
+          "description": "Omniをホーム画面に追加して、ウォレットへのアクセスを早めます。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat wallet baru atau impor yang sudah ada."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Ketuk ikon QR dan scan",
-          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi petunjuk untuk terhubung."
+          "title": "QRアイコンをタップしてスキャン",
+          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンし、プロンプトを確認して接続します。"
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi TokenPocket",
-          "description": "Kami sarankan meletakkan TokenPocket di layar utama Anda untuk akses yang lebih cepat."
+          "title": "TokenPocketアプリを開く",
+          "description": "より速いアクセスのために、TokenPocketをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Ketuk tombol pindai",
-          "description": "Setelah Anda memindai, Indikasi sambungan akan muncul untuk Anda menghubungkan dompet Anda."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi TokenPocket",
-          "description": "Kami merekomendasikan penambatan TokenPocket ke taskbar Anda untuk akses dompet Anda lebih cepat."
+          "title": "TokenPocketエクステンションをインストールする",
+          "description": "ウォレットへのより早いアクセスのために、TokenPocketをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagi frasa rahasia Anda dengan siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットを安全な方法でバックアップすることを確認してください。シークレットフレーズを決して他の人と共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新",
+          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Trust Wallet",
-          "description": "Pasang Trust Wallet di layar utama Anda untuk akses dompet Anda lebih cepat."
+          "title": "Trust Walletアプリを開く",
+          "description": "ウォレットへの高速アクセスのために、Trust Walletをホーム画面に置きます。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Ketuk WalletConnect di Pengaturan",
-          "description": "Pilih Koneksi Baru, kemudian pindai kode QR dan konfirmasi perintah untuk terhubung."
+          "title": "設定でWalletConnectをタップします",
+          "description": "新しい接続を選択し、QRコードをスキャンして、プロンプトで接続を確認します。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Trust Wallet",
-          "description": "Klik di pojok kanan atas browser Anda dan sematkan Trust Wallet untuk akses mudah."
+          "title": "Trust Wallet拡張機能をインストールします",
+          "description": "ブラウザの右上をクリックし、Trust Walletをピン留めして簡単にアクセスできるようにします。"
         },
         "step2": {
-          "title": "Buat atau Impor dompet",
-          "description": "Buat dompet baru atau impor yang sudah ada."
+          "title": "ウォレットを作成するかインポートします",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur Trust Wallet, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "Trust Walletの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Uniswap",
-          "description": "Tambahkan Uniswap Wallet ke layar utama Anda untuk akses ke wallet Anda lebih cepat."
+          "title": "Uniswapアプリを開く",
+          "description": "Uniswapウォレットをホーム画面に追加して、ウォレットへのアクセスを高速化します。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Buat wallet baru atau impor yang sudah ada."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Ketuk ikon QR dan pindai",
-          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+          "title": "QRアイコンをタップしてスキャンする",
+          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンしてプロンプトを確認して接続します。"
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Zerion",
-          "description": "Kami merekomendasikan untuk meletakkan Zerion di layar utama Anda untuk akses lebih cepat."
+          "title": "Zerionアプリを開く",
+          "description": "より速くアクセスするために、Zerionをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Ketuk tombol scan",
-          "description": "Setelah Anda scan, muncul prompt koneksi untuk Anda menghubungkan dompet Anda."
+          "title": "スキャンボタンを押す",
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Zerion",
-          "description": "Kami menyarankan untuk menempelkan Zerion ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "Zerion拡張機能をインストールする",
+          "description": "ウォレットへの素早いアクセスのため、Zerionをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットをセキュアな方法でバックアップすることを確認してください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur wallet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットをセットアップしたら、下のボタンをクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Buka aplikasi Rainbow",
-          "description": "Kami menyarankan menempatkan Rainbow di layar home Anda untuk akses yang lebih cepat ke wallet Anda."
+          "title": "Rainbowアプリを開く",
+          "description": "ウォレットへの早いアクセスのために、Rainbowをホーム画面に置くことをおすすめします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda."
+          "title": "ウォレットを作成またはインポート",
+          "description": "電話のバックアップ機能を使用して、簡単にウォレットをバックアップすることができます。"
         },
         "step3": {
-          "title": "Tekan tombol scan",
-          "description": "Setelah Anda memindai, akan muncul pesan untuk menghubungkan dompet Anda."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Enkrypt Wallet ke taskbar Anda untuk akses dompet yang lebih cepat.",
-          "title": "Instal ekstensi Enkrypt Wallet"
+          "description": "ウォレットへのアクセスをより早くするため、タスクバーにEnkrypt Walletをピン留めすることを推奨します。",
+          "title": "Enkrypt Wallet拡張機能をインストールしてください"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun.",
-          "title": "Buat atau Impor Dompet"
+          "description": "安全な方法でウォレットのバックアップを必ず取り、秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成するか、インポートする"
         },
         "step3": {
-          "description": "Setelah Anda menyiapkan dompet, klik di bawah ini untuk memuat ulang peramban dan meload ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Kami menyarankan untuk memasang Frame ke taskbar Anda untuk akses dompet yang lebih cepat.",
-          "title": "Instal Frame & ekstensi pendamping"
+          "description": "ウォレットへのアクセスをより早くするため、タスクバーにFrameをピン留めすることを推奨します。",
+          "title": "Frameとその付属の拡張機能をインストール"
         },
         "step2": {
-          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun.",
-          "title": "Buat atau Impor Wallet"
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成、またはインポート"
         },
         "step3": {
-          "description": "Setelah Anda menyetel wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
-          "title": "Segarkan browser Anda"
+          "description": "ウォレットの設定が完了したら、下のリンクをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi OneKey Wallet",
-          "description": "Kami menyarankan untuk menempelkan OneKey Wallet ke taskbar Anda untuk akses wallet yang lebih cepat."
+          "title": "OneKey Wallet拡張機能をインストール",
+          "description": "ウォレットへのアクセスを素早く行うため、OneKey Walletをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成、またはインポート",
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Phantom",
-          "description": "Kami menyarankan untuk mem-pin Phantom ke taskbar Anda untuk akses dompet yang lebih mudah."
+          "title": "Phantom拡張機能をインストールする",
+          "description": "ウォレットへの容易なアクセスのため、Phantomをタスクバーにピン留めすることを推奨します。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Rabby",
-          "description": "Kami merekomendasikan menempelkan Rabby ke taskbar Anda untuk akses lebih cepat ke wallet Anda."
+          "title": "Rabbyエクステンションをインストールする",
+          "description": "ウォレットへの素早いアクセスのため、タスクバーにRabbyをピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan wallet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "セキュアな方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Core",
-          "description": "Kami merekomendasikan menempelkan Safeheron ke taskbar Anda untuk akses lebih cepat ke wallet Anda."
+          "title": "コア拡張機能をインストール",
+          "description": "ウォレットへの素早いアクセスのため、タスクバーにSafeheronをピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Wallet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "ウォレットを作成またはインポート",
+          "description": "確実に安全な方法でウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda mengatur dompet Anda, klik di bawah untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Taho",
-          "description": "Kami merekomendasikan pengepinan Taho ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
+          "title": "Taho拡張機能をインストールする",
+          "description": "ウォレットへのより迅速なアクセスのため、Tahoをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "確実に安全な方法でウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Talisman",
-          "description": "Kami merekomendasikan menempelkan Talisman ke taskbar Anda untuk akses dompet Anda lebih cepat."
+          "title": "Talisman拡張機能をインストールする",
+          "description": "ウォレットへのより早いアクセスのために、Talismanをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet Ethereum",
-          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase pemulihan Anda dengan siapa pun."
+          "title": "Ethereumウォレットを作成するか、インポートする",
+          "description": "ウォレットを安全な方法でバックアップしておくことを確認してください。リカバリーフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "Instal ekstensi Dompet XDEFI",
-          "description": "Kami merekomendasikan menempelkan XDEFI Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+          "title": "XDEFI Wallet拡張機能をインストールする",
+          "description": "XDEFI Walletをタスクバーにピン留めすることで、ウォレットへのアクセスが速くなることをお勧めします。"
         },
         "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frase rahasia Anda dengan siapa pun."
+          "title": "ウォレットの作成またはインポート",
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードしてください。"
         }
       }
     }
