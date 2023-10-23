@@ -743,6 +743,144 @@
           "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードしてください。"
         }
       }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "Zeal 拡張機能をインストール",
+          "description": "ウォレットに素早くアクセスするために、タスクバーに Zeal をピン留めすることをお勧めします。"
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "SafePal Wallet拡張機能をインストールする",
+          "description": "ブラウザの右上でクリックし、Easy AccessのためにSafePal Walletをピン留めします。"
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポートする",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "SafePal Walletのセットアップが完了したら、以下をクリックしてブラウザをリフレッシュし、エクステンションをロードします。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "SafePal Walletアプリを開く",
+          "description": "SafePal Walletをホーム画面に置くことで、ウォレットへの素早いアクセスが可能になります。"
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
+        },
+        "step3": {
+          "title": "設定でWalletConnectをタップします",
+          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "Install the Desig extension",
+          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "Create a Wallet",
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "Install the SubWallet extension",
+          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットを安全な方法でバックアップしておくことを確認してください。リカバリーフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the SubWallet app",
+          "description": "We recommend putting SubWallet on your home screen for quicker access."
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "「スキャン」ボタンをタップします",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "Install the CLV Wallet extension",
+          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the CLV Wallet app",
+          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+        },
+        "step2": {
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
+        },
+        "step3": {
+          "title": "「スキャン」ボタンをタップします",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Okto app",
+          "description": "Add Okto to your home screen for quick access"
+        },
+        "step2": {
+          "title": "Create an MPC Wallet",
+          "description": "Create an account and generate a wallet"
+        },
+        "step3": {
+          "title": "設定でWalletConnectをタップします",
+          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+        }
+      }
     }
   }
 }
