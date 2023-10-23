@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Подключить кошелек"
+    "label": "Conectar la billetera"
   },
   "intro": {
-    "title": "Что такое кошелек?",
-    "description": "Кошелек используется для отправки, получения, хранения и отображения цифровых активов. Это также новый способ входа в систему, без необходимости создания новых учетных записей и паролей на каждом сайте.",
+    "title": "¿Qué es una billetera?",
+    "description": "Una billetera se usa para enviar, recibir, almacenar y mostrar activos digitales. También es una nueva forma de iniciar sesión, sin necesidad de crear nuevas cuentas y contraseñas en cada sitio web.",
     "digital_asset": {
-      "title": "Дом для ваших цифровых активов",
-      "description": "Кошельки используются для отправки, получения, хранения и отображения цифровых активов, таких как Ethereum и NFT."
+      "title": "Un hogar para tus Activos Digitales",
+      "description": "Las carteras se utilizan para enviar, recibir, almacenar y mostrar activos digitales como Ethereum y NFTs."
     },
     "login": {
-      "title": "Новый способ входа в систему",
-      "description": "Вместо создания новых аккаунтов и паролей на каждом сайте, просто подключите ваш кошелек."
+      "title": "Una nueva forma de iniciar sesión",
+      "description": "En lugar de crear nuevas cuentas y contraseñas en cada sitio web, simplemente conecta tu cartera."
     },
     "get": {
-      "label": "Получить кошелек"
+      "label": "Obtener una billetera"
     },
     "learn_more": {
-      "label": "Узнать больше"
+      "label": "Obtener más información"
     }
   },
   "connect": {
-    "label": "Подключить",
-    "title": "Подключить кошелек",
+    "label": "Conectar",
+    "title": "Conectar una billetera",
     "new_to_ethereum": {
-      "description": "Впервые столкнулись с кошельками Ethereum?",
+      "description": "¿Eres nuevo en las billeteras Ethereum?",
       "learn_more": {
-        "label": "Узнать больше"
+        "label": "Obtener más información"
       }
     },
     "learn_more": {
-      "label": "Узнать больше"
+      "label": "Obtener más información"
     },
-    "recent": "Недавние",
+    "recent": "Reciente",
     "status": {
-      "opening": "Открывается %{wallet}...",
-      "not_installed": "%{wallet} не установлен",
-      "not_available": "%{wallet} не доступен",
-      "confirm": "Подтвердите подключение в расширении"
+      "opening": "Abriendo %{wallet}...",
+      "not_installed": "%{wallet} no está instalado",
+      "not_available": "%{wallet} no está disponible",
+      "confirm": "Confirma la conexión en la extensión"
     },
     "secondary_action": {
       "get": {
-        "description": "У вас нет %{wallet}?",
-        "label": "ПОЛУЧИТЬ"
+        "description": "¿No tienes %{wallet}?",
+        "label": "OBTENER"
       },
       "install": {
-        "label": "УСТАНОВИТЬ"
+        "label": "INSTALAR"
       },
       "retry": {
-        "label": "ПОВТОРИТЬ"
+        "label": "REINTENTAR"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Нужен официальный модальный окно WalletConnect?",
-        "compact": "Нужен модальный окно WalletConnect?"
+        "full": "¿Necesitas el modal oficial de WalletConnect?",
+        "compact": "¿Necesitas el modal de WalletConnect?"
       },
       "open": {
-        "label": "ОТКРЫТЬ"
+        "label": "ABRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "Сканировать с помощью %{wallet}",
-    "fallback_title": "Сканировать с помощью вашего телефона"
+    "title": "Escanea con %{wallet}",
+    "fallback_title": "Escanea con tu teléfono"
   },
   "connector_group": {
-    "recommended": "Рекомендуемые",
-    "other": "Другие",
+    "recommended": "Recomendado",
+    "other": "Otro",
     "popular": "Популярные",
-    "more": "Больше",
-    "others": "Другие"
+    "more": "Más",
+    "others": "Otros"
   },
   "get": {
-    "title": "Получить кошелек",
+    "title": "Obtener una billetera",
     "action": {
-      "label": "ПОЛУЧИТЬ"
+      "label": "OBTENER"
     },
     "mobile": {
-      "description": "Мобильный кошелек"
+      "description": "Billetera Móvil"
     },
     "extension": {
-      "description": "Расширение для браузера"
+      "description": "Extensión de navegador"
     },
     "mobile_and_extension": {
-      "description": "Мобильный кошелек и расширение"
+      "description": "Billetera móvil y extensión"
     },
     "looking_for": {
-      "title": "Не то, что вы ищете?",
+      "title": "¿No es lo que estás buscando?",
       "mobile": {
-        "description": "Выберите кошелек на главном экране, чтобы начать работу с другим провайдером кошелька."
+        "description": "Seleccione una billetera en la pantalla principal para comenzar con un proveedor de billetera diferente."
       },
       "desktop": {
-        "compact_description": "Выберите кошелек на главном экране, чтобы начать работу с другим провайдером кошелька.",
-        "wide_description": "Выберите кошелек слева, чтобы начать работу с другим провайдером кошелька."
+        "compact_description": "Seleccione una cartera en la pantalla principal para comenzar con un proveedor de cartera diferente.",
+        "wide_description": "Seleccione una cartera a la izquierda para comenzar con un proveedor de cartera diferente."
       }
     }
   },
   "get_options": {
-    "title": "Начните с %{wallet}",
-    "short_title": "Получить %{wallet}",
+    "title": "Comienza con %{wallet}",
+    "short_title": "Obtener %{wallet}",
     "mobile": {
-      "title": "%{wallet} для мобильных",
-      "description": "Используйте мобильный кошелек для исследования мира Ethereum.",
+      "title": "%{wallet} para móvil",
+      "description": "Use la billetera móvil para explorar el mundo de Ethereum.",
       "download": {
-        "label": "Скачать приложение"
+        "label": "Obtener la aplicación"
       }
     },
     "extension": {
-      "title": "%{wallet} для %{browser}",
-      "description": "Доступ к вашему кошельку прямо из вашего любимого веб-браузера.",
+      "title": "%{wallet} para %{browser}",
+      "description": "Acceda a su billetera directamente desde su navegador web favorito.",
       "download": {
-        "label": "Добавить в %{browser}"
+        "label": "Añadir a %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "Установить %{wallet}",
-    "description": "Отсканируйте на своем телефоне для скачивания на iOS или Android",
+    "title": "Instalar %{wallet}",
+    "description": "Escanee con su teléfono para descargar en iOS o Android",
     "continue": {
-      "label": "Продолжить"
+      "label": "Continuar"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Подключить"
+        "label": "Conectar"
       },
       "learn_more": {
-        "label": "Узнать больше"
+        "label": "Obtener más información"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Обновить"
+        "label": "Actualizar"
       },
       "learn_more": {
-        "label": "Узнать больше"
+        "label": "Obtener más información"
       }
     }
   },
   "chains": {
-    "title": "Переключить сети",
-    "wrong_network": "Обнаружена неверная сеть, переключитесь или отключитесь для продолжения.",
-    "confirm": "Подтвердить в кошельке",
-    "switching_not_supported": "Ваш кошелек не поддерживает переключение сетей с %{appName}. Попробуйте переключить сети из вашего кошелька.",
-    "switching_not_supported_fallback": "Ваш кошелек не поддерживает переключение сетей из этого приложения. Попробуйте переключить сети из вашего кошелька.",
-    "disconnect": "Отключить",
-    "connected": "Подключено"
+    "title": "Cambiar redes",
+    "wrong_network": "Se detectó la red incorrecta, cambia o desconéctate para continuar.",
+    "confirm": "Confirmar en la cartera",
+    "switching_not_supported": "Tu cartera no admite cambiar las redes desde %{appName}. Intenta cambiar las redes desde tu cartera.",
+    "switching_not_supported_fallback": "Su billetera no admite el cambio de redes desde esta aplicación. Intente cambiar de red desde dentro de su billetera en su lugar.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
   },
   "profile": {
     "disconnect": {
-      "label": "Отключить"
+      "label": "Desconectar"
     },
     "copy_address": {
-      "label": "Скопировать адрес",
-      "copied": "Скопировано!"
+      "label": "Copiar dirección",
+      "copied": "¡Copiado!"
     },
     "explorer": {
-      "label": "Посмотреть больше в эксплорере"
+      "label": "Ver más en el explorador"
     },
     "transactions": {
-      "description": "%{appName} транзакции появятся здесь...",
-      "description_fallback": "Ваши транзакции появятся здесь...",
+      "description": "%{appName} transacciones aparecerán aquí...",
+      "description_fallback": "Tus transacciones aparecerán aquí...",
       "recent": {
-        "title": "Недавние транзакции"
+        "title": "Transacciones recientes"
       },
       "clear": {
-        "label": "Очистить все"
+        "label": "Borrar Todo"
       }
     }
   },
@@ -175,710 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Добавьте Argent на домашний экран для более быстрого доступа к вашему кошельку.",
-          "title": "Откройте приложение Argent"
+          "description": "Coloque Argent en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Argent"
         },
         "step2": {
-          "description": "Создайте кошелек и имя пользователя или импортируйте существующий кошелек.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Cree una billetera y un nombre de usuario, o importe una billetera existente.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку Сканировать QR"
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón Escanear QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем добавить кошелек Bifrost на ваш начальный экран для более быстрого доступа.",
-          "title": "Откройте приложение Bifrost Wallet"
+          "description": "Recomendamos poner Bifrost Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bifrost Wallet"
         },
         "step2": {
-          "description": "Создайте или импортируйте кошелек, используя вашу фразу восстановления.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Cree o importe una billetera usando su frase de recuperación.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку сканирования"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón de escaneo"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем добавить Bitget Wallet на ваш экран для более быстрого доступа.",
-          "title": "Откройте приложение Bitget Wallet"
+          "description": "Recomendamos colocar Bitget Wallet en su pantalla de inicio para un acceso más rápido.",
+          "title": "Abra la aplicación Bitget Wallet"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку сканирования"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que pueda conectar su billetera.",
+          "title": "Toque el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем закрепить Bitget Wallet на панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение Bitget Wallet"
+          "description": "Recomendamos anclar Bitget Wallet a su barra de tareas para un acceso más rápido a su billetera.",
+          "title": "Instale la extensión de la Billetera Bitget"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем прикрепить Bitski к вашей панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение Bitski"
+          "description": "Recomendamos anclar Bitski a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Bitski"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем добавить Coin98 Wallet на ваш главный экран для более быстрого доступа к вашему кошельку.",
-          "title": "Откройте приложение Coin98 Wallet"
+          "description": "Recomendamos poner Coin98 Wallet en la pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Coin98 Wallet"
         },
         "step2": {
-          "description": "Вы можете легко сделать резервную копию вашего кошелька, используя нашу функцию резервного копирования на вашем телефоне.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку WalletConnect"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conecte su billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Нажмите в верхнем правом углу вашего браузера и закрепите Coin98 Wallet для удобного доступа.",
-          "title": "Установите расширение Coin98 Wallet"
+          "description": "Haga clic en la parte superior derecha de su navegador y fije Coin98 Wallet para un fácil acceso.",
+          "title": "Instale la extensión Coin98 Wallet"
         },
         "step2": {
-          "description": "Создайте новый кошелек или импортируйте существующий.",
-          "title": "Создайте или импортируйте кошелек"
+          "description": "Crea una nueva billetera o importa una existente.",
+          "title": "Crear o Importar una billetera"
         },
         "step3": {
-          "description": "После того как вы настроите Кошелек Coin98, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configures Coin98 Wallet, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем добавить Coinbase Wallet на ваш экран начала для более быстрого доступа.",
-          "title": "Откройте приложение Coinbase Wallet"
+          "description": "Recomendamos poner Coinbase Wallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Coinbase"
         },
         "step2": {
-          "description": "Вы легко можете сделать резервную копию вашего кошелька, используя функцию облачного резервного копирования.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Puedes respaldar tu billetera fácilmente utilizando la función de respaldo en la nube.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку сканирования"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Pulsa el botón de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем закрепить Coinbase Wallet на вашей панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение Coinbase Wallet"
+          "description": "Te recomendamos anclar la Billetera Coinbase a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la Billetera Coinbase"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configure su billetera, haga clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем добавить Core на ваш экран быстрого доступа для ускоренного доступа к вашему кошельку.",
-          "title": "Открыть приложение Core"
+          "description": "Recomendamos poner Core en su pantalla de inicio para un acceso más rápido a su billetera.",
+          "title": "Abra la aplicación Core"
         },
         "step2": {
-          "description": "Вы можете легко сделать резервную копию вашего кошелька, используя нашу функцию резервного копирования на вашем телефоне.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Puedes respaldar fácilmente tu billetera utilizando nuestra función de respaldo en tu teléfono.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку WalletConnect"
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera.",
+          "title": "Toque el botón WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем закрепить Core на панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение Core"
+          "description": "Recomendamos fijar Core a tu barra de tareas para acceder más rápido a tu billetera.",
+          "title": "Instala la extensión Core"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем поместить FoxWallet на ваш экран начального экрана для более быстрого доступа.",
-          "title": "Откройте приложение FoxWallet"
+          "description": "Recomendamos poner FoxWallet en tu pantalla de inicio para un acceso más rápido.",
+          "title": "Abre la aplicación FoxWallet"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку сканирования"
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera.",
+          "title": "Toca el botón de escanear"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Мы рекомендуем установить Frontier Wallet на экран вашего смартфона для более быстрого доступа.",
-          "title": "Откройте приложение Frontier Wallet"
+          "description": "Recomendamos poner la Billetera Frontier en tu pantalla principal para un acceso más rápido.",
+          "title": "Abre la aplicación de la Billetera Frontier"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
-          "title": "Нажмите кнопку сканирования"
+          "description": "Después de escanear, aparecerá un mensaje para que conectes tu billetera.",
+          "title": "Haz clic en el botón de escaneo"
         }
       },
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем прикрепить кошелек Frontier к панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение кошелька Frontier"
+          "description": "Recomendamos anclar la billetera Frontier a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de la billetera Frontier"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrese de hacer una copia de seguridad de su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configure su billetera, haga clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualizar tu navegador"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение imToken",
-          "description": "Поместите приложение imToken на главный экран для более быстрого доступа к вашему кошельку."
+          "title": "Abrir la aplicación imToken",
+          "description": "Pon la aplicación imToken en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Нажмите на иконку сканера в верхнем правом углу",
-          "description": "Выберите Новое соединение, затем отсканируйте QR-код и подтвердите запрос на соединение."
+          "title": "Toca el Icono del Escáner en la esquina superior derecha",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение MetaMask",
-          "description": "Мы рекомендуем поместить MetaMask на главный экран для быстрого доступа."
+          "title": "Abre la aplicación MetaMask",
+          "description": "Recomendamos colocar MetaMask en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "Установите расширение MetaMask",
-          "description": "Мы рекомендуем закрепить MetaMask на вашей панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión MetaMask",
+          "description": "Recomendamos anclar MetaMask a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение кошелька OKX",
-          "description": "Мы рекомендуем разместить кошелек OKX на вашем главном экране для более быстрого доступа."
+          "title": "Abre la aplicación OKX Wallet",
+          "description": "Recomendamos colocar OKX Wallet en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "Установите расширение кошелька OKX",
-          "description": "Мы рекомендуем закрепить OKX Wallet на панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión de Billetera OKX",
+          "description": "Recomendamos anclar la Billetera OKX a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение Omni",
-          "description": "Добавьте Omni на свой домашний экран для более быстрого доступа к вашему кошельку."
+          "title": "Abra la aplicación Omni",
+          "description": "Agregue Omni a su pantalla de inicio para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crear una nueva billetera o importar una existente."
         },
         "step3": {
-          "title": "Нажмите на иконку QR и отсканируйте",
-          "description": "Нажмите на иконку QR на вашем домашнем экране, отсканируйте код и подтвердите подсказку, чтобы подключиться."
+          "title": "Toque el icono de QR y escanee",
+          "description": "Toca el icono QR en tu pantalla principal, escanea el código y confirma el aviso para conectar."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение TokenPocket",
-          "description": "Мы рекомендуем разместить TokenPocket на вашем домашнем экране для быстрого доступа."
+          "title": "Abre la aplicación TokenPocket",
+          "description": "Recomendamos colocar TokenPocket en tu pantalla principal para un acceso más rápido."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
+          "title": "Toca el botón de escaneo",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que puedas conectar tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "Установите расширение TokenPocket",
-          "description": "Мы рекомендуем закрепить TokenPocket на вашей панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión TokenPocket",
+          "description": "Recomendamos anclar TokenPocket a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение Trust Wallet",
-          "description": "Разместите Trust Wallet на вашем домашнем экране для более быстрого доступа к вашему кошельку."
+          "title": "Abre la aplicación Trust Wallet",
+          "description": "Ubica Trust Wallet en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Нажмите WalletConnect в настройках",
-          "description": "Выберите Новое соединение, затем отсканируйте QR-код и подтвердите запрос на соединение."
+          "title": "Toca WalletConnect en Configuraciones",
+          "description": "Elige Nueva Conexión, luego escanea el código QR y confirma el aviso para conectar."
         }
       },
       "extension": {
         "step1": {
-          "title": "Установите расширение Trust Wallet",
-          "description": "Кликните в правом верхнем углу вашего браузера и закрепите Trust Wallet для легкого доступа."
+          "title": "Instala la extensión de Trust Wallet",
+          "description": "Haz clic en la parte superior derecha de tu navegador y fija Trust Wallet para un fácil acceso."
         },
         "step2": {
-          "title": "Создайте или импортируйте кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
+          "title": "Crea o Importa una billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После настройки Trust Wallet, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures Trust Wallet, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение Uniswap",
-          "description": "Добавьте кошелек Uniswap на главный экран для быстрого доступа к вашему кошельку."
+          "title": "Abre la aplicación Uniswap",
+          "description": "Agrega la billetera Uniswap a tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
         },
         "step3": {
-          "title": "Нажмите на иконку QR и отсканируйте",
-          "description": "Нажмите на иконку QR на главном экране, отсканируйте код и подтвердите запрос на подключение."
+          "title": "Toca el icono QR y escanea",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение Zerion",
-          "description": "Мы рекомендуем разместить Zerion на главном экране для более быстрого доступа."
+          "title": "Abre la aplicación Zerion",
+          "description": "Recomendamos poner Zerion en tu pantalla de inicio para un acceso más rápido."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       },
       "extension": {
         "step1": {
-          "title": "Установите расширение Zerion",
-          "description": "Мы рекомендуем прикрепить Zerion к вашей панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión Zerion",
+          "description": "Recomendamos anclar Zerion a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Откройте приложение Rainbow",
-          "description": "Мы рекомендуем поместить Rainbow на ваш экран главного меню для более быстрого доступа к вашему кошельку."
+          "title": "Abre la aplicación Rainbow",
+          "description": "Recomendamos poner Rainbow en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Вы можете легко сделать резервную копию вашего кошелька, используя нашу функцию резервного копирования на вашем телефоне."
+          "title": "Crear o Importar una Billetera",
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono."
         },
         "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
+          "title": "Toca el botón de escanear",
+          "description": "Después de escanear, aparecerá una solicitud de conexión para que conectes tu billetera."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем закрепить Enkrypt Wallet на панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите расширение Enkrypt Wallet"
+          "description": "Recomendamos anclar la Billetera Enkrypt a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión de Billetera Enkrypt"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Мы рекомендуем закрепить Frame на панели задач для более быстрого доступа к вашему кошельку.",
-          "title": "Установите Frame и дополнительное расширение"
+          "description": "Recomendamos anclar Frame a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala Frame y la extensión complementaria"
         },
         "step2": {
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
-          "title": "Создать или Импортировать кошелек"
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
         },
         "step3": {
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
-          "title": "Обновите ваш браузер"
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refresca tu navegador"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "Установите расширение OneKey Wallet",
-          "description": "Мы рекомендуем закрепить OneKey Wallet на панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instale la extensión de Billetera OneKey",
+          "description": "Recomendamos anclar la Billetera OneKey a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Установите расширение Phantom",
-          "description": "Мы рекомендуем закрепить Phantom на панели задач для более удобного доступа к вашему кошельку."
+          "title": "Instala la extensión Phantom",
+          "description": "Recomendamos fijar Phantom a tu barra de tareas para un acceso más fácil a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой восстановления с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera usando un método seguro. Nunca comparta su frase secreta de recuperación con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Установите расширение Rabby",
-          "description": "Мы рекомендуем закрепить Rabby на панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión Rabby",
+          "description": "Recomendamos anclar Rabby a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de hacer una copia de seguridad de tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Actualiza tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Установите расширение Core",
-          "description": "Мы рекомендуем закрепить SafeHeron на панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión Core",
+          "description": "Recomendamos anclar Safeheron a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Установите расширение Taho",
-          "description": "Мы рекомендуем закрепить Taho на вашей панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión de Taho",
+          "description": "Recomendamos anclar Taho a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crea o Importa una Billetera",
+          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Refresca tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Установите расширение Talisman",
-          "description": "Мы рекомендуем закрепить Talisman на вашей панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión de Talisman",
+          "description": "Recomendamos anclar Talisman a tu barra de tareas para un acceso más rápido a tu billetera."
         },
         "step2": {
-          "title": "Создайте или импортируйте кошелек Ethereum",
-          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь вашей фразой восстановления с кем-либо."
+          "title": "Crea o importa una billetera Ethereum",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+          "title": "Recarga tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "Установите расширение кошелька XDEFI",
-          "description": "Мы рекомендуем закрепить XDEFI Wallet на панели задач для более быстрого доступа к вашему кошельку."
+          "title": "Instala la extensión de la billetera XDEFI",
+          "description": "Recomendamos anclar XDEFI Wallet a su barra de tareas para un acceso más rápido a su billetera."
         },
         "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
         },
         "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      }
-    },
-    "zeal": {
-      "extension": {
-        "step1": {
-          "title": "Установите расширение Zeal",
-          "description": "Мы рекомендуем закрепить Zeal на панели задач для быстрого доступа к вашему кошельку."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
-        },
-        "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      }
-    },
-    "safepal": {
-      "extension": {
-        "step1": {
-          "title": "Установите расширение SafePal Wallet",
-          "description": "Кликните в верхнем правом углу вашего браузера и закрепите SafePal Wallet для удобного доступа."
-        },
-        "step2": {
-          "title": "Создайте или импортируйте кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
-        },
-        "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После настройки кошелька SafePal нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Откройте приложение SafePal Wallet",
-          "description": "Разместите SafePal Wallet на главном экране для более быстрого доступа к вашему кошельку."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Создайте новый кошелек или импортируйте существующий."
-        },
-        "step3": {
-          "title": "Нажмите WalletConnect в настройках",
-          "description": "Выберите Новое соединение, затем отсканируйте QR-код и подтвердите запрос на соединение."
-        }
-      }
-    },
-    "desig": {
-      "extension": {
-        "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
-        },
-        "step2": {
-          "title": "Create a Wallet",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
-        },
-        "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      }
-    },
-    "subwallet": {
-      "extension": {
-        "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь вашей фразой восстановления с кем-либо."
-        },
-        "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
-        },
-        "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
-        }
-      }
-    },
-    "clv": {
-      "extension": {
-        "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
-        },
-        "step3": {
-          "title": "Обновите ваш браузер",
-          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
-        }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
-        },
-        "step2": {
-          "title": "Создать или Импортировать кошелек",
-          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
-        },
-        "step3": {
-          "title": "Нажмите кнопку сканирования",
-          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька."
-        }
-      }
-    },
-    "okto": {
-      "qr_code": {
-        "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
-        },
-        "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
-        },
-        "step3": {
-          "title": "Нажмите WalletConnect в настройках",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "title": "Actualice su navegador",
+          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
         }
       }
     }
