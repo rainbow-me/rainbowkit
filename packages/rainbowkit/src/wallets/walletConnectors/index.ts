@@ -18,6 +18,7 @@ import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
+import { oktoWallet } from './oktoWallet/oktoWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
@@ -60,6 +61,7 @@ export {
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
+  oktoWallet,
   okxWallet,
   omniWallet,
   oneKeyWallet,

@@ -917,6 +917,23 @@
           "description": "After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
+    },
+
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Okto app",
+          "description": "Add Okto to your home screen for quick access"
+        },
+        "step2": {
+          "title": "Create an MPC Wallet",
+          "description": "Create an account and generate a wallet"
+        },
+        "step3": {
+          "title": "Tap WalletConnect in Settings",
+          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+        }
+      }
     }
   }
 }
