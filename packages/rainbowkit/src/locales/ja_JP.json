@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "ウォレットを接続する"
   },
   "intro": {
-    "title": "Cüzdan nedir?",
-    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
+    "title": "ウォレットとは何ですか？",
+    "description": "ウォレットは、デジタルアセットを送信、受信、保存、表示するために使用されます。また、各ウェブサイトで新たなアカウントやパスワードを作成する必要なく、ログインする新しい方法でもあります。",
     "digital_asset": {
-      "title": "Dijital Varlıklarınız İçin Bir Ev",
-      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
+      "title": "あなたのデジタル資産のための家",
+      "description": "ウォレットは、EthereumやNFTのようなデジタル資産を送信、受信、保存、表示するために使用されます。"
     },
     "login": {
-      "title": "Yeni Bir Giriş Yolu",
-      "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
+      "title": "新しいログイン方法",
+      "description": "すべてのウェブサイトで新しいアカウントとパスワードを作成する代わりに、ウォレットを接続します。"
     },
     "get": {
-      "label": "Bir Cüzdan Edinin"
+      "label": "ウォレットを取得する"
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "詳しくはこちら"
     }
   },
   "connect": {
-    "label": "Bağlan",
-    "title": "Bir Cüzdanı Bağla",
+    "label": "接続",
+    "title": "ウォレットを接続する",
     "new_to_ethereum": {
-      "description": "Ethereum cüzdanlarına yeni misiniz?",
+      "description": "Ethereumのウォレットが初めてですか？",
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "詳しくはこちら"
       }
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "詳しくはこちら"
     },
-    "recent": "Son",
+    "recent": "最近",
     "status": {
-      "opening": "%{wallet}açılıyor...",
-      "not_installed": "%{wallet} yüklü değil",
-      "not_available": "%{wallet} kullanılabilir değil",
-      "confirm": "Bağlantıyı eklentide onaylayın"
+      "opening": "%{wallet}を開いています...",
+      "not_installed": "%{wallet} はインストールされていません",
+      "not_available": "%{wallet} は利用できません",
+      "confirm": "エクステンションで接続を確認してください"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}yok mu?",
-        "label": "AL"
+        "description": "%{wallet}がありませんか？",
+        "label": "取得"
       },
       "install": {
-        "label": "YÜKLE"
+        "label": "インストール"
       },
       "retry": {
-        "label": "YENİDEN DENE"
+        "label": "再試行"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
-        "compact": "WalletConnect modalına mı ihtiyacınız var?"
+        "full": "公式のWalletConnectモーダルが必要ですか？",
+        "compact": "WalletConnectモーダルが必要ですか？"
       },
       "open": {
-        "label": "AÇ"
+        "label": "開く"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}ile tarama yapın",
-    "fallback_title": "Telefonunuzla tarama yapın"
+    "title": "%{wallet}でスキャン",
+    "fallback_title": "携帯電話でスキャンしてください"
   },
   "connector_group": {
-    "recommended": "Tavsiye Edilen",
-    "other": "Diğer",
-    "popular": "Popüler",
-    "more": "Daha Fazla",
-    "others": "Diğerleri"
+    "recommended": "推奨",
+    "other": "その他",
+    "popular": "人気",
+    "more": "もっと",
+    "others": "その他"
   },
   "get": {
-    "title": "Bir Cüzdan Edinin",
+    "title": "ウォレットを取得",
     "action": {
-      "label": "AL"
+      "label": "取得"
     },
     "mobile": {
-      "description": "Mobil Cüzdan"
+      "description": "モバイルウォレット"
     },
     "extension": {
-      "description": "Tarayıcı Eklentisi"
+      "description": "ブラウザ拡張"
     },
     "mobile_and_extension": {
-      "description": "Mobil Cüzdan ve Eklenti"
+      "description": "モバイルウォレットと拡張機能"
     },
     "looking_for": {
-      "title": "Aradığınız şey bu değil mi?",
+      "title": "お探しのものではありませんか？",
       "mobile": {
-        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
+        "description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。"
       },
       "desktop": {
-        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
-        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
+        "compact_description": "メイン画面でウォレットを選択し、異なるウォレットプロバイダーで始めてください。",
+        "wide_description": "左側のウォレットを選択して、別のウォレットプロバイダーで始めてください。"
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}ile başlayın",
-    "short_title": "%{wallet}Edinin",
+    "title": "%{wallet}で始める",
+    "short_title": "%{wallet}を取得する",
     "mobile": {
-      "title": "%{wallet} Mobil İçin",
-      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
+      "title": "モバイル用 %{wallet}",
+      "description": "モバイルウォレットを使用して、イーサリアムの世界を探索します。",
       "download": {
-        "label": "Uygulamayı alın"
+        "label": "アプリを取得"
       }
     },
     "extension": {
-      "title": "%{wallet} için %{browser}",
-      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
+      "title": "%{wallet} for %{browser}",
+      "description": "お好きなウェブブラウザからウォレットに直接アクセスします。",
       "download": {
-        "label": "%{browser}'e ekle"
+        "label": "%{browser}に追加"
       }
     }
   },
   "get_mobile": {
-    "title": "%{wallet}'i yükleyin",
-    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+    "title": "%{wallet}をインストール",
+    "description": "iOSまたはAndroidでダウンロードするために電話でスキャン",
     "continue": {
-      "label": "Devam et"
+      "label": "続行"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Bağlan"
+        "label": "接続"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "詳しくはこちら"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Yenile"
+        "label": "更新"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "詳しくはこちら"
       }
     }
   },
   "chains": {
-    "title": "Ağları Değiştir",
-    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
-    "confirm": "Cüzdanında Onayla",
-    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
-    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
-    "disconnect": "Bağlantıyı Kes",
-    "connected": "Bağlı"
+    "title": "ネットワークを切り替える",
+    "wrong_network": "誤ったネットワークが検出されました、続行するには切り替えるか切断してください。",
+    "confirm": "ウォレットで確認する",
+    "switching_not_supported": "あなたのウォレットは %{appName}からネットワークを切り替えることをサポートしていません。ウォレット内でネットワークを切り替えてみてください。",
+    "switching_not_supported_fallback": "あなたのウォレットは、このアプリからネットワークを切り替えることをサポートしていません。代わりにウォレット内からネットワークを切り替えてみてください。",
+    "disconnect": "切断する",
+    "connected": "接続しました"
   },
   "profile": {
     "disconnect": {
-      "label": "Bağlantıyı Kes"
+      "label": "切断する"
     },
     "copy_address": {
-      "label": "Adresi Kopyala",
-      "copied": "Kopyalandı!"
+      "label": "アドレスをコピーする",
+      "copied": "コピーしました！"
     },
     "explorer": {
-      "label": "Explorer üzerinde daha fazlasını görün"
+      "label": "エクスプローラーで詳しく見る"
     },
     "transactions": {
-      "description": "%{appName} işlem burada görünecek...",
-      "description_fallback": "İşlemleriniz burada görünecek...",
+      "description": "%{appName} トランザクションがここに表示されます...",
+      "description_fallback": "あなたのトランザクションはここに表示されます...",
       "recent": {
-        "title": "Son İşlemler"
+        "title": "最近のトランザクション"
       },
       "clear": {
-        "label": "Hepsini Temizle"
+        "label": "すべてクリア"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "より速くウォレットにアクセスするために、Argentをホーム画面に置いてください。",
+          "title": "Argentアプリを開く"
         },
         "step2": {
-          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "ウォレットとユーザーネームを作成するか、既存のウォレットをインポートします。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "QR tarayıcı düğmesine dokunun"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "「QRをスキャン」ボタンをタップします"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
-          "title": "Bifrost Cüzdan uygulamasını açın"
+          "description": "より速くアクセスできるように、Bifrost Walletをホーム画面に置くことをお勧めします。",
+          "title": "Bifrost Walletアプリを開きます"
         },
         "step2": {
-          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "リカバリーフレーズを使用してウォレットを作成またはインポートします。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
-          "title": "Tarayıcı düğmesine dokunun"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "「スキャン」ボタンをタップします"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Bitget Cüzdan uygulamasını açın"
+          "description": "より迅速なアクセスのために、ホーム画面にBitget Walletを配置することをお勧めします。",
+          "title": "Bitget Walletアプリを開く"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "ウォレットは安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitget Cüzdan eklentisini yükleyin"
+          "description": "ウォレットへのより迅速なアクセスのためにBitget Walletをタスクバーにピン留めすることをお勧めします。",
+          "title": "Bitget Wallet拡張機能をインストールします"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポートします"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitski eklentisini yükleyin"
+          "description": "ウォレットへの素早いアクセスのために、Bitskiをタスクバーにピン留めすることをお勧めします。",
+          "title": "Bitskiエクステンションをインストールする"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "ウォレットを安全な方法でバックアップしてください。シークレットフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成するか、インポートする"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Coin98 Cüzdan uygulamasını açın"
+          "description": "Coin98ウォレットをホーム画面に置くことで、ウォレットへのアクセスが高速化されることをお勧めします。",
+          "title": "Coin98ウォレットアプリを開きます"
         },
         "step2": {
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "電話のバックアップ機能を使用して、ウォレットを簡単にバックアップすることができます。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "CüzdanBağlantısı düğmesine dokunun"
+          "description": "スキャン後、ウォレットへの接続を促すプロンプトが表示されます。",
+          "title": "WalletConnectボタンをタップします"
         }
       },
       "extension": {
         "step1": {
-          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
-          "title": "Coin98 Cüzdan eklentisini yükleyin"
+          "description": "ブラウザの右上をクリックして、Coin98ウォレットをピン留めして簡単にアクセスできるようにします。",
+          "title": "Coin98ウォレットの拡張機能をインストールします"
         },
         "step2": {
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
-          "title": "Bir cüzdan oluşturun veya içe aktarın"
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Coin98ウォレットをセットアップしたら、下のリンクをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "Coinbase Wallet uygulamasını açın"
+          "description": "より素早くアクセスできるように、Coinbaseウォレットをホームスクリーンに置くことをお勧めします。",
+          "title": "Coinbase Walletアプリを開く"
         },
         "step2": {
-          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "クラウドバックアップ機能を使用して、簡単にウォレットをバックアップできます。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Coinbase Wallet uzantısını yükleyin"
+          "description": "タスクバーにCoinbase Walletをピン留めして、ウォレットにより早くアクセスできるように推奨します。",
+          "title": "Coinbase Wallet拡張機能をインストールする"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰にも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットの設定が完了したら、下のボタンをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
-          "title": "Core uygulamasını açın"
+          "description": "ウォレットへの迅速なアクセスのため、コアをホーム画面に設定することを推奨します。",
+          "title": "Coreアプリを開く"
         },
         "step2": {
-          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "電話のバックアップ機能を使って、簡単にウォレットをバックアップできます。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
+          "description": "スキャン後、ウォレットを接続するようにプロンプトが表示されます。",
+          "title": "WalletConnectボタンをタップする"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Core eklentisini yükleyin"
+          "description": "ウォレットへのより迅速なアクセスのために、タスクバーにCoreをピン留めすることをお勧めします。",
+          "title": "Core拡張機能をインストールする"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "セキュアな方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポートする"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
-          "title": "FoxWallet uygulamasını açın"
+          "description": "より迅速なアクセスのために、ホーム画面にFoxWalletを置くことをお勧めします。",
+          "title": "FoxWalletアプリを開く"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "セキュアな方法を使用してウォレットをバックアップすることを確認してください。秘密のフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。",
+          "title": "スキャンボタンをタップします"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
-          "title": "Frontier Cüzdan uygulamasını açın"
+          "description": "Frontierウォレットをホーム画面に置くことで、より早くアクセスできることをお勧めします。",
+          "title": "Frontierウォレットアプリを開きます"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "セキュアな方法を使用してウォレットをバックアップすることを確認してください。秘密のフレーズは誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "スキャン後に、ウォレットの接続を促すメッセージが表示されます。",
+          "title": "スキャンボタンをタップします"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frontier Cüzdan eklentisini yükleyin"
+          "description": "より迅速なウォレットへのアクセスを可能にするために、フロンティアウォレットをタスクバーにピン留めすることを推奨します。",
+          "title": "フロンティアウォレットの拡張機能をインストールします"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。",
+          "title": "ウォレットを作成またはインポート"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
-          "title": "Tarayıcınızı Yenileyin"
+          "description": "ウォレットの設定が完了したら、ブラウザを更新して拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imToken uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
+          "title": "imTokenアプリを開く",
+          "description": "ウォレットへのアクセスを速くするために、imTokenアプリをホーム画面に置いてください。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+          "title": "右上隅のスキャナーアイコンをタップします",
+          "description": "新しい接続を選択し、QRコードをスキャンしてプロンプトを確認し接続します。"
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMask uygulamasını açın",
-          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
+          "title": "MetaMaskアプリを開きます",
+          "description": "迅速なアクセスのために、MetaMaskをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成またはインポートします",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "スキャンボタンをタップします",
+          "description": "スキャンすると、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMask eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "MetaMaskの拡張機能をインストールします",
+          "description": "ウォレットへのより速いアクセスのために、MetaMaskをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "安全な方法を使用してウォレットをバックアップし、秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı Yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新",
+          "description": "ウォレットを設定した後は、下のリンクをクリックしてブラウザを更新し、エクステンションを読み込んでください。"
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Wallet uygulamasını açın",
-          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
+          "title": "OKX Walletアプリを開く",
+          "description": "OKX Walletをホーム画面に配置して、より早くアクセスできるようにすることをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "セキュアな方法を使ってウォレットをバックアップしてください。秘密フレーズは誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "OKX Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "OKXウォレット拡張機能をインストールする",
+          "description": "ウォレットへの迅速なアクセスのため、OKXウォレットをタスクバーにピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "セキュアな方法を使ってウォレットをバックアップしてください。秘密フレーズは誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、下をクリックしてブラウザをリフレッシュし、拡張機能を読み込みます。"
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omni uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
+          "title": "Omniアプリを開く",
+          "description": "Omniをホーム画面に追加して、ウォレットへのアクセスを早めます。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "QRアイコンをタップしてスキャン",
+          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンし、プロンプトを確認して接続します。"
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocket uygulamasını açın",
-          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
+          "title": "TokenPocketアプリを開く",
+          "description": "より速いアクセスのために、TokenPocketをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocket eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "TokenPocketエクステンションをインストールする",
+          "description": "ウォレットへのより早いアクセスのために、TokenPocketをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットを安全な方法でバックアップすることを確認してください。シークレットフレーズを決して他の人と共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新",
+          "description": "ウォレットのセットアップが完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Wallet uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
+          "title": "Trust Walletアプリを開く",
+          "description": "ウォレットへの高速アクセスのために、Trust Walletをホーム画面に置きます。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "設定でWalletConnectをタップします",
+          "description": "新しい接続を選択し、QRコードをスキャンして、プロンプトで接続を確認します。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet eklentisini yükleyin",
-          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
+          "title": "Trust Wallet拡張機能をインストールします",
+          "description": "ブラウザの右上をクリックし、Trust Walletをピン留めして簡単にアクセスできるようにします。"
         },
         "step2": {
-          "title": "Bir cüzdan oluşturun veya içe aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "ウォレットを作成するかインポートします",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "Trust Walletの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。"
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswap uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
+          "title": "Uniswapアプリを開く",
+          "description": "Uniswapウォレットをホーム画面に追加して、ウォレットへのアクセスを高速化します。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "新しいウォレットを作成するか、既存のものをインポートします。"
         },
         "step3": {
-          "title": "QR ikonuna dokunun ve tarama yapın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+          "title": "QRアイコンをタップしてスキャンする",
+          "description": "ホーム画面のQRアイコンをタップし、コードをスキャンしてプロンプトを確認して接続します。"
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerion uygulamasını açın",
-          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
+          "title": "Zerionアプリを開く",
+          "description": "より速くアクセスするために、Zerionをホーム画面に置くことをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "必ず安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰にも共有しないでください。"
         },
         "step3": {
-          "title": "Tarama düğmesine basın",
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "スキャンボタンを押す",
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Zerion拡張機能をインストールする",
+          "description": "ウォレットへの素早いアクセスのため、Zerionをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "ウォレットをセキュアな方法でバックアップすることを確認してください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットをセットアップしたら、下のボタンをクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbow uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
+          "title": "Rainbowアプリを開く",
+          "description": "ウォレットへの早いアクセスのために、Rainbowをホーム画面に置くことをおすすめします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
+          "title": "ウォレットを作成またはインポート",
+          "description": "電話のバックアップ機能を使用して、簡単にウォレットをバックアップすることができます。"
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+          "title": "スキャンボタンをタップする",
+          "description": "スキャンした後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Enkrypt Cüzdan eklentisini yükleyin"
+          "description": "ウォレットへのアクセスをより早くするため、タスクバーにEnkrypt Walletをピン留めすることを推奨します。",
+          "title": "Enkrypt Wallet拡張機能をインストールしてください"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "安全な方法でウォレットのバックアップを必ず取り、秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成するか、インポートする"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能を読み込みます。",
+          "title": "ブラウザを更新する"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frame ve eşlik eden uzantıyı yükleyin"
+          "description": "ウォレットへのアクセスをより早くするため、タスクバーにFrameをピン留めすることを推奨します。",
+          "title": "Frameとその付属の拡張機能をインストール"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。",
+          "title": "ウォレットを作成、またはインポート"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "ウォレットの設定が完了したら、下のリンクをクリックしてブラウザを更新し、拡張機能をロードします。",
+          "title": "ブラウザを更新"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "OneKey Wallet拡張機能をインストール",
+          "description": "ウォレットへのアクセスを素早く行うため、OneKey Walletをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
+          "title": "ウォレットを作成、またはインポート",
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットを設定したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Phantom拡張機能をインストールする",
+          "description": "ウォレットへの容易なアクセスのため、Phantomをタスクバーにピン留めすることを推奨します。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+          "title": "ウォレットを作成またはインポートする",
+          "description": "安全な方法を使用してウォレットをバックアップしてください。秘密の回復フレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、エクステンションを読み込みます。"
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabby eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Rabbyエクステンションをインストールする",
+          "description": "ウォレットへの素早いアクセスのため、タスクバーにRabbyをピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "セキュアな方法を使用してウォレットをバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
+          "title": "ブラウザを更新",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Core eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "コア拡張機能をインストール",
+          "description": "ウォレットへの素早いアクセスのため、タスクバーにSafeheronをピン止めすることをお勧めします。"
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "ウォレットを作成またはインポート",
+          "description": "確実に安全な方法でウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Taho拡張機能をインストールする",
+          "description": "ウォレットへのより迅速なアクセスのため、Tahoをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "ウォレットを作成するか、インポートする",
+          "description": "確実に安全な方法でウォレットをバックアップしてください。秘密のフレーズは決して誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Talisman eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Talisman拡張機能をインストールする",
+          "description": "ウォレットへのより早いアクセスのために、Talismanをタスクバーにピン留めすることをお勧めします。"
         },
         "step2": {
-          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Ethereumウォレットを作成するか、インポートする",
+          "description": "ウォレットを安全な方法でバックアップしておくことを確認してください。リカバリーフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、下をクリックしてブラウザを更新し、拡張機能をロードします。"
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "XDEFI Wallet拡張機能をインストールする",
+          "description": "XDEFI Walletをタスクバーにピン留めすることで、ウォレットへのアクセスが速くなることをお勧めします。"
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "ウォレットの作成またはインポート",
+          "description": "ウォレットを安全な方法でバックアップしてください。秘密のフレーズを誰とも共有しないでください。"
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "ブラウザを更新する",
+          "description": "ウォレットの設定が完了したら、以下をクリックしてブラウザを更新し、拡張機能をロードしてください。"
         }
       }
     }
