@@ -2,7 +2,7 @@
 '@rainbow-me/rainbowkit': patch
 ---
 
-SubWallet support
+SubWallet Support
 
 **Example usage**
 
