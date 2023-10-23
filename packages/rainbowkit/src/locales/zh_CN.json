@@ -793,11 +793,11 @@
     "desig": {
       "extension": {
         "step1": {
-          "title": "Install the Desig extension",
-          "description": "We recommend pinning Desig to your taskbar for easier access to your wallet."
+          "title": "安装 Desig 扩展",
+          "description": "我们建议将 Desig 固定到任务栏，以便更轻松地访问您的钱包。"
         },
         "step2": {
-          "title": "Create a Wallet",
+          "title": "创建一个钱包",
           "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
         },
         "step3": {
@@ -809,8 +809,8 @@
     "subwallet": {
       "extension": {
         "step1": {
-          "title": "Install the SubWallet extension",
-          "description": "We recommend pinning SubWallet to your taskbar for quicker access to your wallet."
+          "title": "安装 SubWallet 扩展",
+          "description": "我们建议将 SubWallet 固定到任务栏，以便更快地访问您的钱包。"
         },
         "step2": {
           "title": "创建或导入钱包",
@@ -823,8 +823,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the SubWallet app",
-          "description": "We recommend putting SubWallet on your home screen for quicker access."
+          "title": "打开 SubWallet 应用",
+          "description": "我们建议将 SubWallet 放置在主屏幕上，以便更快地访问。"
         },
         "step2": {
           "title": "创建或导入钱包",
@@ -839,8 +839,8 @@
     "clv": {
       "extension": {
         "step1": {
-          "title": "Install the CLV Wallet extension",
-          "description": "We recommend pinning CLV Wallet to your taskbar for quicker access to your wallet."
+          "title": "安装 CLV Wallet 扩展",
+          "description": "我们建议将 CLV Wallet 固定到任务栏，以便更快地访问您的钱包。"
         },
         "step2": {
           "title": "创建或导入钱包",
@@ -853,8 +853,8 @@
       },
       "qr_code": {
         "step1": {
-          "title": "Open the CLV Wallet app",
-          "description": "We recommend putting CLV Wallet on your home screen for quicker access."
+          "title": "打开 CLV 钱包应用",
+          "description": "我们建议将 CLV 钱包添加到您的主屏幕，以便更快地访问。"
         },
         "step2": {
           "title": "创建或导入钱包",
@@ -869,16 +869,16 @@
     "okto": {
       "qr_code": {
         "step1": {
-          "title": "Open the Okto app",
-          "description": "Add Okto to your home screen for quick access"
+          "title": "打开 Okto 应用",
+          "description": "将 Okto 添加到您的主屏幕以便快速访问"
         },
         "step2": {
-          "title": "Create an MPC Wallet",
-          "description": "Create an account and generate a wallet"
+          "title": "创建一个 MPC 钱包",
+          "description": "创建一个账户并生成一个钱包"
         },
         "step3": {
           "title": "在设置中点击WalletConnect",
-          "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+          "description": "点击右上角的扫描二维码图标，并确认提示以连接。"
         }
       }
     }
