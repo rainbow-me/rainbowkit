@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "Conectar Carteira"
   },
   "intro": {
-    "title": "Cüzdan nedir?",
-    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
+    "title": "O que é uma Carteira?",
+    "description": "Uma carteira é usada para enviar, receber, armazenar e exibir ativos digitais. Também é uma nova forma de se conectar, sem precisar criar novas contas e senhas em todo site.",
     "digital_asset": {
-      "title": "Dijital Varlıklarınız İçin Bir Ev",
-      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
+      "title": "Um lar para seus ativos digitais",
+      "description": "Carteiras são usadas para enviar, receber, armazenar e exibir ativos digitais como Ethereum e NFTs."
     },
     "login": {
-      "title": "Yeni Bir Giriş Yolu",
-      "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
+      "title": "Uma nova maneira de fazer login",
+      "description": "Em vez de criar novas contas e senhas em todos os sites, basta conectar sua carteira."
     },
     "get": {
-      "label": "Bir Cüzdan Edinin"
+      "label": "Obter uma Carteira"
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "Saiba mais"
     }
   },
   "connect": {
-    "label": "Bağlan",
-    "title": "Bir Cüzdanı Bağla",
+    "label": "Conectar",
+    "title": "Conectar uma Carteira",
     "new_to_ethereum": {
-      "description": "Ethereum cüzdanlarına yeni misiniz?",
+      "description": "Novo nas carteiras Ethereum?",
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Saiba mais"
       }
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "Saiba mais"
     },
-    "recent": "Son",
+    "recent": "Recente",
     "status": {
-      "opening": "%{wallet}açılıyor...",
-      "not_installed": "%{wallet} yüklü değil",
-      "not_available": "%{wallet} kullanılabilir değil",
-      "confirm": "Bağlantıyı eklentide onaylayın"
+      "opening": "Abrindo %{wallet}...",
+      "not_installed": "%{wallet} não está instalado",
+      "not_available": "%{wallet} não está disponível",
+      "confirm": "Confirme a conexão na extensão"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}yok mu?",
-        "label": "AL"
+        "description": "Não tem %{wallet}?",
+        "label": "OBTER"
       },
       "install": {
-        "label": "YÜKLE"
+        "label": "INSTALAR"
       },
       "retry": {
-        "label": "YENİDEN DENE"
+        "label": "TENTAR DE NOVO"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
-        "compact": "WalletConnect modalına mı ihtiyacınız var?"
+        "full": "Precisa do modal oficial do WalletConnect?",
+        "compact": "Precisa do modal WalletConnect?"
       },
       "open": {
-        "label": "AÇ"
+        "label": "ABRIR"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}ile tarama yapın",
-    "fallback_title": "Telefonunuzla tarama yapın"
+    "title": "Digitalize com %{wallet}",
+    "fallback_title": "Digitalize com o seu telefone"
   },
   "connector_group": {
-    "recommended": "Tavsiye Edilen",
-    "other": "Diğer",
-    "popular": "Popüler",
-    "more": "Daha Fazla",
-    "others": "Diğerleri"
+    "recommended": "Recomendado",
+    "other": "Outro",
+    "popular": "Popular",
+    "more": "Mais",
+    "others": "Outros"
   },
   "get": {
-    "title": "Bir Cüzdan Edinin",
+    "title": "Obter uma Carteira",
     "action": {
-      "label": "AL"
+      "label": "OBTER"
     },
     "mobile": {
-      "description": "Mobil Cüzdan"
+      "description": "Carteira Móvel"
     },
     "extension": {
-      "description": "Tarayıcı Eklentisi"
+      "description": "Extensão do Navegador"
     },
     "mobile_and_extension": {
-      "description": "Mobil Cüzdan ve Eklenti"
+      "description": "Carteira Móvel e Extensão"
     },
     "looking_for": {
-      "title": "Aradığınız şey bu değil mi?",
+      "title": "Não é o que você está procurando?",
       "mobile": {
-        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
+        "description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente."
       },
       "desktop": {
-        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
-        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
+        "compact_description": "Selecione uma carteira na tela principal para começar com um provedor de carteira diferente.",
+        "wide_description": "Selecione uma carteira à esquerda para começar com um provedor de carteira diferente."
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}ile başlayın",
-    "short_title": "%{wallet}Edinin",
+    "title": "Comece com %{wallet}",
+    "short_title": "Obtenha %{wallet}",
     "mobile": {
-      "title": "%{wallet} Mobil İçin",
-      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
+      "title": "%{wallet} para Móvel",
+      "description": "Use a carteira móvel para explorar o mundo do Ethereum.",
       "download": {
-        "label": "Uygulamayı alın"
+        "label": "Baixe o aplicativo"
       }
     },
     "extension": {
-      "title": "%{wallet} için %{browser}",
-      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
+      "title": "%{wallet} para %{browser}",
+      "description": "Acesse sua carteira diretamente do seu navegador web favorito.",
       "download": {
-        "label": "%{browser}'e ekle"
+        "label": "Adicionar ao %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "%{wallet}'i yükleyin",
-    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+    "title": "Instale %{wallet}",
+    "description": "Escaneie com seu celular para baixar no iOS ou Android",
     "continue": {
-      "label": "Devam et"
+      "label": "Continuar"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Bağlan"
+        "label": "Conectar"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Saiba mais"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Yenile"
+        "label": "Atualizar"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Saiba mais"
       }
     }
   },
   "chains": {
-    "title": "Ağları Değiştir",
-    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
-    "confirm": "Cüzdanında Onayla",
-    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
-    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
-    "disconnect": "Bağlantıyı Kes",
-    "connected": "Bağlı"
+    "title": "Mudar Redes",
+    "wrong_network": "Rede errada detectada, mude ou desconecte para continuar.",
+    "confirm": "Confirme na Carteira",
+    "switching_not_supported": "Sua carteira não suporta a mudança de redes de %{appName}. Tente mudar de redes dentro da sua carteira.",
+    "switching_not_supported_fallback": "Sua carteira não suporta a troca de redes a partir deste aplicativo. Tente trocar de rede dentro de sua carteira.",
+    "disconnect": "Desconectar",
+    "connected": "Conectado"
   },
   "profile": {
     "disconnect": {
-      "label": "Bağlantıyı Kes"
+      "label": "Desconectar"
     },
     "copy_address": {
-      "label": "Adresi Kopyala",
-      "copied": "Kopyalandı!"
+      "label": "Copiar Endereço",
+      "copied": "Copiado!"
     },
     "explorer": {
-      "label": "Explorer üzerinde daha fazlasını görün"
+      "label": "Veja mais no explorador"
     },
     "transactions": {
-      "description": "%{appName} işlem burada görünecek...",
-      "description_fallback": "İşlemleriniz burada görünecek...",
+      "description": "%{appName} transações aparecerão aqui...",
+      "description_fallback": "Suas transações aparecerão aqui...",
       "recent": {
-        "title": "Son İşlemler"
+        "title": "Transações Recentes"
       },
       "clear": {
-        "label": "Hepsini Temizle"
+        "label": "Limpar Tudo"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "Coloque o Argent na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Argent"
         },
         "step2": {
-          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Crie uma carteira e nome de usuário, ou importe uma carteira existente.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "QR tarayıcı düğmesine dokunun"
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão Scan QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
-          "title": "Bifrost Cüzdan uygulamasını açın"
+          "description": "Recomendamos colocar a Bifrost Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bifrost Wallet"
         },
         "step2": {
-          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Crie ou importe uma carteira usando sua frase de recuperação.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
-          "title": "Tarayıcı düğmesine dokunun"
+          "description": "Após você escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Bitget Cüzdan uygulamasını açın"
+          "description": "Recomendamos colocar a Bitget Wallet na sua tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Bitget Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitget Cüzdan eklentisini yükleyin"
+          "description": "Recomendamos fixar a Bitget Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Bitget"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitski eklentisini yükleyin"
+          "description": "Recomendamos fixar o Bitski na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Bitski"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Coin98 Cüzdan uygulamasını açın"
+          "description": "Recomendamos colocar a Carteira Coin98 na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Carteira Coin98"
         },
         "step2": {
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Você pode facilmente fazer backup de sua carteira usando nosso recurso de backup em seu telefone.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "CüzdanBağlantısı düğmesine dokunun"
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
-          "title": "Coin98 Cüzdan eklentisini yükleyin"
+          "description": "Clique no canto superior direito do seu navegador e fixe a Carteira Coin98 para fácil acesso.",
+          "title": "Instale a extensão da Carteira Coin98"
         },
         "step2": {
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
-          "title": "Bir cüzdan oluşturun veya içe aktarın"
+          "description": "Crie uma nova carteira ou importe uma existente.",
+          "title": "Criar ou Importar uma carteira"
         },
         "step3": {
-          "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar a Carteira Coin98, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "Coinbase Wallet uygulamasını açın"
+          "description": "Recomendamos colocar a Carteira Coinbase na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Coinbase Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Você pode fazer backup da sua carteira facilmente usando o recurso de backup na nuvem.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para que você conecte sua carteira.",
+          "title": "Toque no botão de escanear"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Coinbase Wallet uzantısını yükleyin"
+          "description": "Recomendamos fixar o Coinbase Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Coinbase Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
-          "title": "Core uygulamasını açın"
+          "description": "Recomendamos colocar o Core na tela inicial para um acesso mais rápido à sua carteira.",
+          "title": "Abra o aplicativo Core"
         },
         "step2": {
-          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Você pode facilmente salvar sua carteira usando nosso recurso de backup no seu celular.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
+          "description": "Depois de escanear, um prompt de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Core eklentisini yükleyin"
+          "description": "Recomendamos fixar o Core na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão Core"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
-          "title": "FoxWallet uygulamasını açın"
+          "description": "Recomendamos colocar o FoxWallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo FoxWallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira.",
+          "title": "Toque no botão de escaneamento"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
-          "title": "Frontier Cüzdan uygulamasını açın"
+          "description": "Recomendamos colocar o Frontier Wallet na tela inicial para um acesso mais rápido.",
+          "title": "Abra o aplicativo Frontier Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira.",
+          "title": "Toque no botão de varredura"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frontier Cüzdan eklentisini yükleyin"
+          "description": "Recomendamos fixar a Carteira Frontier na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Frontier"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
-          "title": "Tarayıcınızı Yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imToken uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
+          "title": "Abra o aplicativo imToken",
+          "description": "Coloque o aplicativo imToken na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+          "title": "Toque no ícone do Scanner no canto superior direito",
+          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMask uygulamasını açın",
-          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
+          "title": "Abra o aplicativo MetaMask",
+          "description": "Recomendamos colocar o MetaMask na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Toque no botão escanear",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMask eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão MetaMask",
+          "description": "Recomendamos fixar o MetaMask na barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı Yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Wallet uygulamasını açın",
-          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
+          "title": "Abra o aplicativo da Carteira OKX",
+          "description": "Recomendamos colocar a Carteira OKX na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "OKX Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão OKX Wallet",
+          "description": "Recomendamos fixar a OKX Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize o seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omni uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
+          "title": "Abra o aplicativo Omni",
+          "description": "Adicione o Omni à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "Toque no ícone do QR e escaneie",
+          "description": "Toque no ícone QR na tela inicial, escaneie o código e confirme o prompt para conectar."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocket uygulamasını açın",
-          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
+          "title": "Abra o aplicativo TokenPocket",
+          "description": "Recomendamos colocar o TokenPocket na tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocket eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão TokenPocket",
+          "description": "Recomendamos fixar o TokenPocket em sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Wallet uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
+          "title": "Abra o aplicativo Trust Wallet",
+          "description": "Coloque o Trust Wallet na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "Toque em WalletConnect nas Configurações",
+          "description": "Escolha Nova Conexão, depois escaneie o QR code e confirme o prompt para se conectar."
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet eklentisini yükleyin",
-          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
+          "title": "Instale a extensão Trust Wallet",
+          "description": "Clique no canto superior direito do seu navegador e marque Trust Wallet para fácil acesso."
         },
         "step2": {
-          "title": "Bir cüzdan oluşturun veya içe aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "Crie ou Importe uma carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois que configurar a Trust Wallet, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswap uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
+          "title": "Abra o aplicativo Uniswap",
+          "description": "Adicione a Carteira Uniswap à sua tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
         },
         "step3": {
-          "title": "QR ikonuna dokunun ve tarama yapın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+          "title": "Toque no ícone QR e escaneie",
+          "description": "Toque no ícone QR na sua tela inicial, escaneie o código e confirme o prompt para conectar."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerion uygulamasını açın",
-          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
+          "title": "Abra o aplicativo Zerion",
+          "description": "Recomendamos colocar o Zerion na sua tela inicial para um acesso mais rápido."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarama düğmesine basın",
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de digitalizar, um prompt de conexão aparecerá para que você possa conectar sua carteira."
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Zerion",
+          "description": "Recomendamos fixar o Zerion na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbow uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
+          "title": "Abra o aplicativo Rainbow",
+          "description": "Recomendamos colocar o Rainbow na tela inicial para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Você pode facilmente fazer backup da sua carteira usando nosso recurso de backup no seu telefone."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+          "title": "Toque no botão de digitalizar",
+          "description": "Depois de escanear, uma solicitação de conexão aparecerá para você conectar sua carteira."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Enkrypt Cüzdan eklentisini yükleyin"
+          "description": "Recomendamos fixar a Carteira Enkrypt na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale a extensão da Carteira Enkrypt"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize o seu navegador"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frame ve eşlik eden uzantıyı yükleyin"
+          "description": "Recomendamos fixar o Frame na sua barra de tarefas para um acesso mais rápido à sua carteira.",
+          "title": "Instale o Frame e a extensão complementar"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém.",
+          "title": "Criar ou Importar uma Carteira"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão.",
+          "title": "Atualize seu navegador"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão OneKey Wallet",
+          "description": "Recomendamos fixar a OneKey Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Phantom",
+          "description": "Recomendamos fixar o Phantom na sua barra de tarefas para facilitar o acesso à sua carteira."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta de recuperação com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabby eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Rabby",
+          "description": "Recomendamos fixar Rabby na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Core eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Core",
+          "description": "Recomendamos fixar Safeheron na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Taho",
+          "description": "Recomendamos fixar o Taho na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Talisman eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão Talisman",
+          "description": "Recomendamos fixar o Talisman na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Crie ou Importe uma Carteira Ethereum",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize o seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Instale a extensão XDEFI Wallet",
+          "description": "Recomendamos fixar a Carteira XDEFI na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
     }
