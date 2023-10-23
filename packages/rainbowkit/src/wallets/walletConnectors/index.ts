@@ -26,6 +26,7 @@ import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
+import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
@@ -66,6 +67,7 @@ export {
   safeWallet,
   safeheronWallet,
   safepalWallet,
+  subWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
