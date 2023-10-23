@@ -54,7 +54,7 @@ export const oktoWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return isAndroid() ? uri : `okto://wc?uri=${encodeURIComponent(uri)}`;
         },
