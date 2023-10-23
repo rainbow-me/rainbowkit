@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "지갑 연결"
   },
   "intro": {
-    "title": "Cüzdan nedir?",
-    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
+    "title": "지갑이란 무엇인가요?",
+    "description": "지갑은 디지털 자산을 보내고, 받고, 저장하고, 표시하는 데 사용됩니다. 또한, 모든 웹 사이트에서 새 계정과 비밀번호를 생성할 필요 없이 로그인하는 새로운 방법입니다.",
     "digital_asset": {
-      "title": "Dijital Varlıklarınız İçin Bir Ev",
-      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
+      "title": "당신의 디지털 자산을 위한 집",
+      "description": "지갑은 이더리움 및 NFT와 같은 디지털 자산을 보내고, 받고, 저장하고, 표시하는데 사용됩니다."
     },
     "login": {
-      "title": "Yeni Bir Giriş Yolu",
-      "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
+      "title": "새로운 로그인 방식",
+      "description": "모든 웹사이트에서 새 계정과 비밀번호를 생성하는 대신, 당신의 지갑을 연결하기만 하면 됩니다."
     },
     "get": {
-      "label": "Bir Cüzdan Edinin"
+      "label": "지갑 가져오기"
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "더 알아보기"
     }
   },
   "connect": {
-    "label": "Bağlan",
-    "title": "Bir Cüzdanı Bağla",
+    "label": "연결",
+    "title": "지갑 연결",
     "new_to_ethereum": {
-      "description": "Ethereum cüzdanlarına yeni misiniz?",
+      "description": "이더리움 지갑에 처음 접하시나요?",
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "더 알아보기"
       }
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "더 알아보기"
     },
-    "recent": "Son",
+    "recent": "최근",
     "status": {
-      "opening": "%{wallet}açılıyor...",
-      "not_installed": "%{wallet} yüklü değil",
-      "not_available": "%{wallet} kullanılabilir değil",
-      "confirm": "Bağlantıyı eklentide onaylayın"
+      "opening": "%{wallet}열기 ...",
+      "not_installed": "%{wallet} 가 설치되어 있지 않습니다",
+      "not_available": "%{wallet} 를 사용할 수 없습니다",
+      "confirm": "확장기능에서 연결을 확인하세요"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}yok mu?",
-        "label": "AL"
+        "description": "%{wallet}가 없나요?",
+        "label": "GET"
       },
       "install": {
-        "label": "YÜKLE"
+        "label": "설치"
       },
       "retry": {
-        "label": "YENİDEN DENE"
+        "label": "다시 시도"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
-        "compact": "WalletConnect modalına mı ihtiyacınız var?"
+        "full": "공식 WalletConnect 모달이 필요한가요?",
+        "compact": "WalletConnect 모달이 필요한가요?"
       },
       "open": {
-        "label": "AÇ"
+        "label": "열기"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}ile tarama yapın",
-    "fallback_title": "Telefonunuzla tarama yapın"
+    "title": "%{wallet}로 스캔하기",
+    "fallback_title": "휴대폰으로 스캔하기"
   },
   "connector_group": {
-    "recommended": "Tavsiye Edilen",
-    "other": "Diğer",
-    "popular": "Popüler",
-    "more": "Daha Fazla",
-    "others": "Diğerleri"
+    "recommended": "추천",
+    "other": "기타",
+    "popular": "인기",
+    "more": "더 보기",
+    "others": "다른 사항들"
   },
   "get": {
-    "title": "Bir Cüzdan Edinin",
+    "title": "월렛 받기",
     "action": {
-      "label": "AL"
+      "label": "받기"
     },
     "mobile": {
-      "description": "Mobil Cüzdan"
+      "description": "모바일 월렛"
     },
     "extension": {
-      "description": "Tarayıcı Eklentisi"
+      "description": "브라우저 확장 프로그램"
     },
     "mobile_and_extension": {
-      "description": "Mobil Cüzdan ve Eklenti"
+      "description": "모바일 지갑 및 확장 프로그램"
     },
     "looking_for": {
-      "title": "Aradığınız şey bu değil mi?",
+      "title": "찾고 계신 것이 아닌가요?",
       "mobile": {
-        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
+        "description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요."
       },
       "desktop": {
-        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
-        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
+        "compact_description": "메인 화면에서 다른 지갑 제공자를 사용하기 위해 지갑을 선택하세요.",
+        "wide_description": "왼쪽에서 지갑을 선택하여 다른 지갑 제공자를 사용하기 시작하세요."
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}ile başlayın",
-    "short_title": "%{wallet}Edinin",
+    "title": "%{wallet}로 시작하십시오",
+    "short_title": "%{wallet}얻기",
     "mobile": {
-      "title": "%{wallet} Mobil İçin",
-      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
+      "title": "모바일용 %{wallet}",
+      "description": "모바일 지갑으로 이더리움 세계를 탐험하세요.",
       "download": {
-        "label": "Uygulamayı alın"
+        "label": "앱 받기"
       }
     },
     "extension": {
-      "title": "%{wallet} için %{browser}",
-      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
+      "title": "%{browser}용 %{wallet}",
+      "description": "가장 좋아하는 웹 브라우저에서 바로 지갑에 접근하세요.",
       "download": {
-        "label": "%{browser}'e ekle"
+        "label": "추가하기 %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "%{wallet}'i yükleyin",
-    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+    "title": "설치하기 %{wallet}",
+    "description": "iOS 또는 Android에서 다운로드하기 위해 휴대폰으로 스캔하세요",
     "continue": {
-      "label": "Devam et"
+      "label": "계속"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Bağlan"
+        "label": "연결"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "더 알아보기"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Yenile"
+        "label": "새로고침"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "더 알아보기"
       }
     }
   },
   "chains": {
-    "title": "Ağları Değiştir",
-    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
-    "confirm": "Cüzdanında Onayla",
-    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
-    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
-    "disconnect": "Bağlantıyı Kes",
-    "connected": "Bağlı"
+    "title": "네트워크 전환",
+    "wrong_network": "잘못된 네트워크를 탐지했습니다, 계속하려면 전환하거나 연결을 해제하세요.",
+    "confirm": "지갑에서 승인",
+    "switching_not_supported": "지갑에서 %{appName}네트워크를 전환하는 것은 지원되지 않습니다. 대신 지갑 내에서 네트워크를 전환해 보세요.",
+    "switching_not_supported_fallback": "당신의 지갑은 이 앱에서 네트워크를 바꾸는 것을 지원하지 않습니다. 대신 지갑 내에서 네트워크를 변경해 보십시오.",
+    "disconnect": "연결 해제",
+    "connected": "연결됨"
   },
   "profile": {
     "disconnect": {
-      "label": "Bağlantıyı Kes"
+      "label": "연결 해제"
     },
     "copy_address": {
-      "label": "Adresi Kopyala",
-      "copied": "Kopyalandı!"
+      "label": "주소 복사",
+      "copied": "복사됨!"
     },
     "explorer": {
-      "label": "Explorer üzerinde daha fazlasını görün"
+      "label": "탐색기에서 더 보기"
     },
     "transactions": {
-      "description": "%{appName} işlem burada görünecek...",
-      "description_fallback": "İşlemleriniz burada görünecek...",
+      "description": "%{appName} 거래가 여기에 나타납니다...",
+      "description_fallback": "여기에 트랜잭션이 표시됩니다...",
       "recent": {
-        "title": "Son İşlemler"
+        "title": "최근 거래 내역"
       },
       "clear": {
-        "label": "Hepsini Temizle"
+        "label": "모두 지우기"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "지갑에 더 빠르게 액세스하려면 Argent를 홈 화면에 놓으십시오.",
+          "title": "Argent 앱을 열기"
         },
         "step2": {
-          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "지갑과 사용자 이름을 생성하거나 기존의 지갑을 가져옵니다.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "QR tarayıcı düğmesine dokunun"
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "title": "QR 코드 스캔 버튼을 누르기"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
-          "title": "Bifrost Cüzdan uygulamasını açın"
+          "description": "더 빠른 접근을 위해 홈 화면에 Bifrost Wallet을 놓는 것을 권장합니다.",
+          "title": "Bifrost 지갑 앱을 열어주세요"
         },
         "step2": {
-          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "복구 문구를 사용하여 지갑을 생성하거나 가져옵니다.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
-          "title": "Tarayıcı düğmesine dokunun"
+          "description": "스캔 후 연결 프롬프트가 나타나고 지갑을 연결할 수 있습니다.",
+          "title": "스캔 버튼을 누릅니다"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Bitget Cüzdan uygulamasını açın"
+          "description": "더 빠른 접근을 위해 Bitget 지갑을 홈 화면에 두는 것을 권장합니다.",
+          "title": "Bitget 지갑 앱을 열십시오"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "스캔 후, 지갑을 연결하라는 연결 요청 메시지가 나타납니다.",
+          "title": "스캔 버튼을 누르십시오"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitget Cüzdan eklentisini yükleyin"
+          "description": "지갑에 빠르게 액세스하기 위해 Bitget Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Bitget Wallet 확장 프로그램을 설치하세요"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 누구와도 공유하지 마십시오.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요.",
+          "title": "브라우저를 새로 고침하세요"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitski eklentisini yükleyin"
+          "description": "지갑에 더 빠르게 액세스하기 위해 Bitski를 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Bitski 확장 기능을 설치합니다"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 누구와도 공유하지 마십시오.",
+          "title": "지갑 만들기 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저를 새로고침하세요"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Coin98 Cüzdan uygulamasını açın"
+          "description": "지갑에 빠르게 액세스하기 위해 Coin98 Wallet을 홈 화면에 두는 것을 권장합니다.",
+          "title": "Coin98 Wallet 앱을 열기"
         },
         "step2": {
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "휴대폰에서 백업 기능을 이용하여 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 만들기 또는 가져오기"
         },
         "step3": {
-          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "CüzdanBağlantısı düğmesine dokunun"
+          "description": "스캔한 후 연결 프롬프트가 나타나 지갑을 연결하도록 합니다.",
+          "title": "WalletConnect 버튼을 누르십시오"
         }
       },
       "extension": {
         "step1": {
-          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
-          "title": "Coin98 Cüzdan eklentisini yükleyin"
+          "description": "브라우저 오른쪽 상단을 클릭하고 쉽게 액세스할 수 있도록 Coin98 Wallet을 고정하십시오.",
+          "title": "Coin98 Wallet 확장 프로그램을 설치하십시오"
         },
         "step2": {
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
-          "title": "Bir cüzdan oluşturun veya içe aktarın"
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다.",
+          "title": "지갑을 만들거나 가져옵니다"
         },
         "step3": {
-          "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Coin98 Wallet을 설정하면 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
+          "title": "브라우저를 새로 고치십시오"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "Coinbase Wallet uygulamasını açın"
+          "description": "더 빠른 액세스를 위해 Coinbase Wallet을 홈 화면에 두는 것을 권장합니다.",
+          "title": "Coinbase Wallet 앱을 엽니다"
         },
         "step2": {
-          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "클라우드 백업 기능을 사용하여 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "스캔한 후에 지갑을 연결하라는 연결 프롬프트가 나타납니다.",
+          "title": "스캔 버튼을 탭하세요"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Coinbase Wallet uzantısını yükleyin"
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Coinbase Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Coinbase Wallet 확장 프로그램을 설치하세요"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구는 절대로 누구와도 공유하지 마십시오.",
+          "title": "지갑 만들기 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
+          "title": "브라우저 새로 고침"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
-          "title": "Core uygulamasını açın"
+          "description": "지갑에 빠르게 액세스할 수 있도록 Core를 홈 화면에 두는 것을 추천드립니다.",
+          "title": "Core 앱 열기"
         },
         "step2": {
-          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "휴대폰에서 우리의 백업 기능을 이용해 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 만들기 또는 가져오기"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
+          "description": "스캔 한 후에는 지갑을 연결하라는 연결 요청이 표시됩니다.",
+          "title": "WalletConnect 버튼을 누르세요"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Core eklentisini yükleyin"
+          "description": "지갑에 더 빠르게 액세스하기 위해 작업 표시줄에 Core를 고정하는 것을 권장합니다.",
+          "title": "Core 확장 프로그램을 설치하십시오"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "안전한 방법을 사용하여 지갑을 백업해야 합니다. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
+          "title": "지갑 만들기 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
+          "title": "브라우저를 새로 고치세요"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
-          "title": "FoxWallet uygulamasını açın"
+          "description": "FoxWallet을 홈 화면에 놓는 것을 추천합니다. 이렇게 하면 더 빠르게 접근할 수 있습니다.",
+          "title": "FoxWallet 앱을 열어주세요"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
+          "title": "지갑을 생성하거나 가져오기"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "스캔 후, 지갑을 연결하라는 연결 프롬프트가 표시됩니다.",
+          "title": "스캔 버튼을 누르세요"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
-          "title": "Frontier Cüzdan uygulamasını açın"
+          "description": "Frontier Wallet을 홈 화면에 놓는 것을 추천합니다. 이렇게 하면 더 빠르게 접근할 수 있습니다.",
+          "title": "Frontier Wallet 앱을 열어주세요"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "지갑을 안전한 방법으로 백업해야 합니다. 비밀 구문을 누구와도 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "스캔 후에 지갑을 연결하라는 연결 프롬프트가 표시됩니다.",
+          "title": "스캔 버튼을 누르세요"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frontier Cüzdan eklentisini yükleyin"
+          "description": "지갑에 더 빠르게 액세스 할 수 있도록 Frontier Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Frontier Wallet 확장 기능 설치"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "지갑을 안전한 방법으로 백업해야 합니다. 비밀 구문을 누구와도 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
-          "title": "Tarayıcınızı Yenileyin"
+          "description": "지갑을 설정한 후에 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오.",
+          "title": "브라우저를 새로 고칩니다"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imToken uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
+          "title": "imToken 앱을 연다",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 imToken 앱을 홈 화면에 둡니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
+          "title": "지갑을 만들거나 불러옵니다",
+          "description": "새 지갑을 생성하거나 기존의 것을 가져옵니다."
         },
         "step3": {
-          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+          "title": "오른쪽 상단의 스캐너 아이콘을 누릅니다",
+          "description": "새 연결을 선택하고 QR 코드를 스캔한 뒤, 연결하려는 프롬프트를 확인합니다."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMask uygulamasını açın",
-          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
+          "title": "MetaMask 앱을 엽니다",
+          "description": "빠른 액세스를 위해 MetaMask를 홈 화면에 두는 것을 권장합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "당신의 지갑을 안전한 방법으로 백업하는 것을 잊지 마세요. 절대로 비밀 구절을 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔한 후에 지갑을 연결하라는 연결 프롬프트가 나타납니다."
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMask eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "MetaMask 확장 프로그램을 설치하세요",
+          "description": "지갑에 빠르게 접근하기 위해 MetaMask를 작업표시줄에 고정하는 것을 추천합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 결코 비밀 문구를 다른 사람과 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarayıcınızı Yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고치세요",
+          "description": "지갑 설정을 마친 후에는 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Wallet uygulamasını açın",
-          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
+          "title": "OKX Wallet 앱을 열기",
+          "description": "더 빠른 접근을 위해 OKX 지갑을 홈 화면에 두는 것을 추천합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "지갑 만들기 또는 불러오기",
+          "description": "안전한 방법으로 지갑을 백업하십시오. 절대 비밀 문구를 다른 사람과 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+          "title": "스캔 버튼을 탭하세요",
+          "description": "스캔 후 연결 요청이 나타나며, 이를 통해 지갑을 연결할 수 있습니다."
         }
       },
       "extension": {
         "step1": {
-          "title": "OKX Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "OKX 지갑 확장 프로그램 설치하기",
+          "description": "지갑에 빠르게 접근할 수 있도록 OKX 지갑을 작업 표시줄에 고정하는 것을 추천합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "지갑 만들기 또는 불러오기",
+          "description": "당신의 지갑을 안전한 방법으로 백업해야 합니다. 비밀 문구를 절대로 다른 사람과 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고치세요",
+          "description": "지갑을 설정한 후, 브라우저를 새로 고치고 확장 기능을 로드하기 위해 아래를 클릭하세요."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omni uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
+          "title": "Omni 앱을 열기",
+          "description": "더 빠른 액세스를 위해 Omni를 홈 스크린에 추가하세요."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "지갑 만들기 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 하나를 가져옵니다."
         },
         "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "QR 아이콘을 탭하고 스캔하기",
+          "description": "홈 화면의 QR 아이콘을 탭하고, 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocket uygulamasını açın",
-          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
+          "title": "TokenPocket 앱을 열어주세요",
+          "description": "빠른 접근을 위해 홈 화면에 TokenPocket을 추가하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 누구에게도 비밀 문구를 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "스캔 버튼을 탭하세요",
+          "description": "스캔 후에 지갑을 연결하라는 프롬프트가 표시됩니다."
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocket eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "TokenPocket 확장 기능을 설치하십시오",
+          "description": "지갑에 빠르게 접근하기 위해 TokenPocket를 작업 표시줄에 고정하는 것을 추천합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 문구를 다른 사람과 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저 새로 고침",
+          "description": "지갑을 설정하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 기능을 로드합니다."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Wallet uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
+          "title": "Trust Wallet 앱을 열기",
+          "description": "지갑에 빠르게 접근하기 위해 Trust Wallet을 홈 스크린에 두십시오."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 생성하거나 기존의 것을 가져오십시오."
         },
         "step3": {
-          "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "설정에서 WalletConnect를 탭하십시오",
+          "description": "새 연결을 선택한 다음 QR 코드를 스캔하고, 연결을 확인하는 프롬프트를 확인하십시오."
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet eklentisini yükleyin",
-          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
+          "title": "Trust Wallet 확장 기능을 설치하십시오",
+          "description": "브라우저의 오른쪽 상단을 클릭하고 Trust Wallet을 고정하여 쉽게 접근하십시오."
         },
         "step2": {
-          "title": "Bir cüzdan oluşturun veya içe aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 생성하거나 기존의 것을 가져오십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로고침하세요",
+          "description": "Trust Wallet을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드합니다."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswap uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
+          "title": "Uniswap 앱을 엽니다",
+          "description": "Uniswap Wallet을 홈 화면에 추가하여 지갑에 더 빠르게 액세스하세요."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "지갑을 만들거나 가져오기",
+          "description": "새 지갑을 생성하거나 기존의 것을 가져옵니다."
         },
         "step3": {
-          "title": "QR ikonuna dokunun ve tarama yapın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+          "title": "QR 아이콘을 누르고 스캔하기",
+          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerion uygulamasını açın",
-          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
+          "title": "Zerion 앱을 엽니다",
+          "description": "더 빠른 접근을 위해 Zerion을 홈 화면에 두는 것을 권장합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 만들기 또는 가져오기",
+          "description": "안전한 방법으로 지갑을 백업하십시오. 절대로 비밀 구절을 누군가와 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarama düğmesine basın",
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "스캔 버튼을 탭하십시오",
+          "description": "스캔 후 연결 프롬프트가 나타나 지갑을 연결하십시오."
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Zerion 확장 프로그램을 설치하십시오",
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Zerion을 작업 표시줄에 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 비밀 구문을 절대로 다른 사람과 공유하지 마세요."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고치세요",
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbow uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
+          "title": "Rainbow 앱 열기",
+          "description": "지갑에 더 빠르게 접근하기 위해 홈 화면에 Rainbow를 두는 것을 추천합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "휴대폰에 있는 백업 기능을 사용하여 지갑을 쉽게 백업할 수 있습니다."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+          "title": "스캔 버튼을 누르세요",
+          "description": "스캔 후, 지갑을 연결하라는 연결 프롬프트가 나타납니다."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Enkrypt Cüzdan eklentisini yükleyin"
+          "description": "지갑에 더 빠르게 접근하기 위해 작업 표시줄에 Enkrypt Wallet를 고정하는 것을 추천합니다.",
+          "title": "Enkrypt Wallet 확장 프로그램을 설치하세요"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑을 설정한 후에는 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저 새로 고침"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frame ve eşlik eden uzantıyı yükleyin"
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Frame을 작업 표시줄에 고정하는 것을 추천합니다.",
+          "title": "Frame 및 동반 확장 프로그램 설치"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 다른 사람과 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "지갑을 설정한 후에는 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저 새로 고침"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "OneKey Wallet 확장 프로그램을 설치하세요",
+          "description": "지갑에 빠르게 접근할 수 있도록 OneKey Wallet을 작업 표시줄에 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
+          "title": "지갑 생성 또는 불러오기",
+          "description": "지갑을 안전한 방법으로 백업하십시오. 절대로 비밀 문구를 다른 사람과 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고침하십시오",
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드하십시오."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Phantom 확장 프로그램을 설치하세요",
+          "description": "지갑에 더 쉽게 접근할 수 있도록 Phantom을 작업 표시줄에 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+          "title": "지갑 생성 또는 불러오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 누구와도 비밀 복구 구문을 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로고침하십시오",
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 기능을 로드하십시오."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabby eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Rabby 확장 프로그램을 설치하십시오",
+          "description": "지갑에 더 빠르게 액세스할 수 있도록 Rabby를 작업표시줄에 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "지갑 만들기 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 누구와도 비밀 구문을 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
+          "title": "브라우저를 새로 고침하십시오",
+          "description": "지갑 설정을 완료하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드합니다."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Core eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "코어 확장 프로그램 설치",
+          "description": "지갑에 빠르게 액세스하기 위해 Safeheron을 작업 표시줄에 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "지갑 만들기 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 절대 다른 사람과 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저 새로 고침",
+          "description": "지갑 설정을 완료하면 아래를 클릭하여 브라우저를 새로 고침하고 확장 프로그램을 로드합니다."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Taho 확장 프로그램 설치",
+          "description": "지갑에 더 빠르게 액세스하기 위해 Taho를 작업 표시줄에 고정하는 것을 추천합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 결코 비밀 문구를 누군가와 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고치십시오",
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하십시오."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Talisman eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "탈리스만 확장 프로그램 설치",
+          "description": "지갑에 더 빠르게 접근하기 위해 Talisman을 작업 표시줄에 고정하는 것을 추천합니다."
         },
         "step2": {
-          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
+          "title": "이더리움 지갑 생성 또는 가져오기",
+          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하십시오. 복구 문구를 누구와도 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고침하십시오",
+          "description": "지갑을 설정 한 후 아래를 클릭하여 브라우저를 새로 고침하고 확장 기능을 로드하십시오."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "XDEFI 지갑 확장 기능을 설치하십시오",
+          "description": "지갑에 빠르게 액세스하기 위해 작업 표시줄에 XDEFI Wallet을 고정하는 것을 권장합니다."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "지갑을 만들거나 가져오기",
+          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하십시오. 비밀 문구를 누구와도 공유하지 마십시오."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "브라우저를 새로 고침하십시오",
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하십시오."
         }
       }
     }
