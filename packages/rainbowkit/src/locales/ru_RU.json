@@ -1,173 +1,173 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "Подключить кошелек"
   },
   "intro": {
-    "title": "Cüzdan nedir?",
-    "description": "Bir cüzdan, dijital varlıkları göndermek, almak, saklamak ve görüntülemek için kullanılır. Aynı zamanda her web sitesinde yeni hesaplar ve şifreler oluşturmanıza gerek kalmadan oturum açmanın yeni bir yoludur.",
+    "title": "Что такое кошелек?",
+    "description": "Кошелек используется для отправки, получения, хранения и отображения цифровых активов. Это также новый способ входа в систему, без необходимости создания новых учетных записей и паролей на каждом сайте.",
     "digital_asset": {
-      "title": "Dijital Varlıklarınız İçin Bir Ev",
-      "description": "Cüzdanlar, Ethereum ve NFT'ler gibi dijital varlıkları göndermek, almak, depolamak ve görüntülemek için kullanılır."
+      "title": "Дом для ваших цифровых активов",
+      "description": "Кошельки используются для отправки, получения, хранения и отображения цифровых активов, таких как Ethereum и NFT."
     },
     "login": {
-      "title": "Yeni Bir Giriş Yolu",
-      "description": "Her web sitesinde yeni hesap ve parolalar oluşturmak yerine, sadece cüzdanınızı bağlayın."
+      "title": "Новый способ входа в систему",
+      "description": "Вместо создания новых аккаунтов и паролей на каждом сайте, просто подключите ваш кошелек."
     },
     "get": {
-      "label": "Bir Cüzdan Edinin"
+      "label": "Получить кошелек"
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "Узнать больше"
     }
   },
   "connect": {
-    "label": "Bağlan",
-    "title": "Bir Cüzdanı Bağla",
+    "label": "Подключить",
+    "title": "Подключить кошелек",
     "new_to_ethereum": {
-      "description": "Ethereum cüzdanlarına yeni misiniz?",
+      "description": "Впервые столкнулись с кошельками Ethereum?",
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Узнать больше"
       }
     },
     "learn_more": {
-      "label": "Daha fazla bilgi edinin"
+      "label": "Узнать больше"
     },
-    "recent": "Son",
+    "recent": "Недавние",
     "status": {
-      "opening": "%{wallet}açılıyor...",
-      "not_installed": "%{wallet} yüklü değil",
-      "not_available": "%{wallet} kullanılabilir değil",
-      "confirm": "Bağlantıyı eklentide onaylayın"
+      "opening": "Открывается %{wallet}...",
+      "not_installed": "%{wallet} не установлен",
+      "not_available": "%{wallet} не доступен",
+      "confirm": "Подтвердите подключение в расширении"
     },
     "secondary_action": {
       "get": {
-        "description": "%{wallet}yok mu?",
-        "label": "AL"
+        "description": "У вас нет %{wallet}?",
+        "label": "ПОЛУЧИТЬ"
       },
       "install": {
-        "label": "YÜKLE"
+        "label": "УСТАНОВИТЬ"
       },
       "retry": {
-        "label": "YENİDEN DENE"
+        "label": "ПОВТОРИТЬ"
       }
     },
     "walletconnect": {
       "description": {
-        "full": "Resmi WalletConnect modalına mı ihtiyacınız var?",
-        "compact": "WalletConnect modalına mı ihtiyacınız var?"
+        "full": "Нужен официальный модальный окно WalletConnect?",
+        "compact": "Нужен модальный окно WalletConnect?"
       },
       "open": {
-        "label": "AÇ"
+        "label": "ОТКРЫТЬ"
       }
     }
   },
   "connect_scan": {
-    "title": "%{wallet}ile tarama yapın",
-    "fallback_title": "Telefonunuzla tarama yapın"
+    "title": "Сканировать с помощью %{wallet}",
+    "fallback_title": "Сканировать с помощью вашего телефона"
   },
   "connector_group": {
-    "recommended": "Tavsiye Edilen",
-    "other": "Diğer",
-    "popular": "Popüler",
-    "more": "Daha Fazla",
-    "others": "Diğerleri"
+    "recommended": "Рекомендуемые",
+    "other": "Другие",
+    "popular": "Популярные",
+    "more": "Больше",
+    "others": "Другие"
   },
   "get": {
-    "title": "Bir Cüzdan Edinin",
+    "title": "Получить кошелек",
     "action": {
-      "label": "AL"
+      "label": "ПОЛУЧИТЬ"
     },
     "mobile": {
-      "description": "Mobil Cüzdan"
+      "description": "Мобильный кошелек"
     },
     "extension": {
-      "description": "Tarayıcı Eklentisi"
+      "description": "Расширение для браузера"
     },
     "mobile_and_extension": {
-      "description": "Mobil Cüzdan ve Eklenti"
+      "description": "Мобильный кошелек и расширение"
     },
     "looking_for": {
-      "title": "Aradığınız şey bu değil mi?",
+      "title": "Не то, что вы ищете?",
       "mobile": {
-        "description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin."
+        "description": "Выберите кошелек на главном экране, чтобы начать работу с другим провайдером кошелька."
       },
       "desktop": {
-        "compact_description": "Ana ekranda başka bir cüzdan sağlayıcısıyla başlamak için bir cüzdan seçin.",
-        "wide_description": "Başka bir cüzdan sağlayıcısıyla başlamak için sol tarafta bir cüzdan seçin."
+        "compact_description": "Выберите кошелек на главном экране, чтобы начать работу с другим провайдером кошелька.",
+        "wide_description": "Выберите кошелек слева, чтобы начать работу с другим провайдером кошелька."
       }
     }
   },
   "get_options": {
-    "title": "%{wallet}ile başlayın",
-    "short_title": "%{wallet}Edinin",
+    "title": "Начните с %{wallet}",
+    "short_title": "Получить %{wallet}",
     "mobile": {
-      "title": "%{wallet} Mobil İçin",
-      "description": "Mobil cüzdanı kullanarak Ethereum dünyasını keşfedin.",
+      "title": "%{wallet} для мобильных",
+      "description": "Используйте мобильный кошелек для исследования мира Ethereum.",
       "download": {
-        "label": "Uygulamayı alın"
+        "label": "Скачать приложение"
       }
     },
     "extension": {
-      "title": "%{wallet} için %{browser}",
-      "description": "Cüzdanınıza favori web tarayıcınızdan doğrudan erişin.",
+      "title": "%{wallet} для %{browser}",
+      "description": "Доступ к вашему кошельку прямо из вашего любимого веб-браузера.",
       "download": {
-        "label": "%{browser}'e ekle"
+        "label": "Добавить в %{browser}"
       }
     }
   },
   "get_mobile": {
-    "title": "%{wallet}'i yükleyin",
-    "description": "iOS veya Android'de indirmek için telefonunuzla tarayın",
+    "title": "Установить %{wallet}",
+    "description": "Отсканируйте на своем телефоне для скачивания на iOS или Android",
     "continue": {
-      "label": "Devam et"
+      "label": "Продолжить"
     }
   },
   "get_instructions": {
     "mobile": {
       "connect": {
-        "label": "Bağlan"
+        "label": "Подключить"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Узнать больше"
       }
     },
     "extension": {
       "refresh": {
-        "label": "Yenile"
+        "label": "Обновить"
       },
       "learn_more": {
-        "label": "Daha fazla bilgi edinin"
+        "label": "Узнать больше"
       }
     }
   },
   "chains": {
-    "title": "Ağları Değiştir",
-    "wrong_network": "Yanlış ağ algılandı, devam etmek için bağlantıyı kesin veya değiştirin.",
-    "confirm": "Cüzdanında Onayla",
-    "switching_not_supported": "Cüzdanınız %{appName}. ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdan ağları değiştirmeyi deneyin.",
-    "switching_not_supported_fallback": "Cüzdanınız bu uygulamadan ağları değiştirmeyi desteklemiyor. Bunun yerine cüzdanınızdaki ağları değiştirmeyi deneyin.",
-    "disconnect": "Bağlantıyı Kes",
-    "connected": "Bağlı"
+    "title": "Переключить сети",
+    "wrong_network": "Обнаружена неверная сеть, переключитесь или отключитесь для продолжения.",
+    "confirm": "Подтвердить в кошельке",
+    "switching_not_supported": "Ваш кошелек не поддерживает переключение сетей с %{appName}. Попробуйте переключить сети из вашего кошелька.",
+    "switching_not_supported_fallback": "Ваш кошелек не поддерживает переключение сетей из этого приложения. Попробуйте переключить сети из вашего кошелька.",
+    "disconnect": "Отключить",
+    "connected": "Подключено"
   },
   "profile": {
     "disconnect": {
-      "label": "Bağlantıyı Kes"
+      "label": "Отключить"
     },
     "copy_address": {
-      "label": "Adresi Kopyala",
-      "copied": "Kopyalandı!"
+      "label": "Скопировать адрес",
+      "copied": "Скопировано!"
     },
     "explorer": {
-      "label": "Explorer üzerinde daha fazlasını görün"
+      "label": "Посмотреть больше в эксплорере"
     },
     "transactions": {
-      "description": "%{appName} işlem burada görünecek...",
-      "description_fallback": "İşlemleriniz burada görünecek...",
+      "description": "%{appName} транзакции появятся здесь...",
+      "description_fallback": "Ваши транзакции появятся здесь...",
       "recent": {
-        "title": "Son İşlemler"
+        "title": "Недавние транзакции"
       },
       "clear": {
-        "label": "Hepsini Temizle"
+        "label": "Очистить все"
       }
     }
   },
@@ -175,572 +175,572 @@
     "argent": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Argent'i ana ekranınıza koyun.",
-          "title": "Argent uygulamasını açın"
+          "description": "Добавьте Argent на домашний экран для более быстрого доступа к вашему кошельку.",
+          "title": "Откройте приложение Argent"
         },
         "step2": {
-          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Создайте кошелек и имя пользователя или импортируйте существующий кошелек.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "QR tarayıcı düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
+          "title": "Нажмите кнопку Сканировать QR"
         }
       }
     },
     "bifrost": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bifrost Cüzdan'ı ana ekranınıza koymanızı öneririz.",
-          "title": "Bifrost Cüzdan uygulamasını açın"
+          "description": "Мы рекомендуем добавить кошелек Bifrost на ваш начальный экран для более быстрого доступа.",
+          "title": "Откройте приложение Bifrost Wallet"
         },
         "step2": {
-          "description": "Kurtarma ifadenizle bir cüzdan oluşturun veya içe aktarın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Создайте или импортируйте кошелек, используя вашу фразу восстановления.",
+          "title": "Создать или импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama işlemi sonrasında, cüzdanınızı bağlamak için bir bağlantı istemi gözükecektir.",
-          "title": "Tarayıcı düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение вашего кошелька.",
+          "title": "Нажмите кнопку сканирования"
         }
       }
     },
     "bitget": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Bitget Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Bitget Cüzdan uygulamasını açın"
+          "description": "Мы рекомендуем добавить Bitget Wallet на ваш экран для более быстрого доступа.",
+          "title": "Откройте приложение Bitget Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Обязательно сделайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение вашего кошелька.",
+          "title": "Нажмите кнопку сканирования"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitget Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitget Cüzdan eklentisini yükleyin"
+          "description": "Мы рекомендуем закрепить Bitget Wallet на панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение Bitget Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemekten emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Обязательно сохраните резервную копию вашего кошелька с помощью надёжного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "bitski": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Bitski'yi görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Bitski eklentisini yükleyin"
+          "description": "Мы рекомендуем прикрепить Bitski к вашей панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение Bitski"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Обязательно сохраните резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать кошелек или Импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "coin98": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coin98 Cüzdanınızı ana ekranınıza koymanızı öneririz.",
-          "title": "Coin98 Cüzdan uygulamasını açın"
+          "description": "Мы рекомендуем добавить Coin98 Wallet на ваш главный экран для более быстрого доступа к вашему кошельку.",
+          "title": "Откройте приложение Coin98 Wallet"
         },
         "step2": {
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Вы можете легко сделать резервную копию вашего кошелька, используя нашу функцию резервного копирования на вашем телефоне.",
+          "title": "Создать или импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama işlemi yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "CüzdanBağlantısı düğmesine dokunun"
+          "description": "После сканирования для вас появится запрос на подключение, чтобы подключить ваш кошелек.",
+          "title": "Нажмите кнопку WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Tarayıcınızın sağ üst köşesinde tıklayın ve Coin98 Cüzdanınızı kolay erişim için sabitleyin.",
-          "title": "Coin98 Cüzdan eklentisini yükleyin"
+          "description": "Нажмите в верхнем правом углу вашего браузера и закрепите Coin98 Wallet для удобного доступа.",
+          "title": "Установите расширение Coin98 Wallet"
         },
         "step2": {
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
-          "title": "Bir cüzdan oluşturun veya içe aktarın"
+          "description": "Создайте новый кошелек или импортируйте существующий.",
+          "title": "Создайте или импортируйте кошелек"
         },
         "step3": {
-          "description": "Coin98 Cüzdan'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "После того как вы настроите Кошелек Coin98, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "coinbase": {
       "qr_code": {
         "step1": {
-          "description": "Coinbase Cüzdan'ı ana ekranınıza koymanızı öneririz, böylece daha hızlı erişim sağlanır.",
-          "title": "Coinbase Wallet uygulamasını açın"
+          "description": "Мы рекомендуем добавить Coinbase Wallet на ваш экран начала для более быстрого доступа.",
+          "title": "Откройте приложение Coinbase Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı bulut yedekleme özelliğini kullanarak kolayca yedekleyebilirsiniz.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Вы легко можете сделать резервную копию вашего кошелька, используя функцию облачного резервного копирования.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение для подключения вашего кошелька.",
+          "title": "Нажмите кнопку сканирования"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Coinbase Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Coinbase Wallet uzantısını yükleyin"
+          "description": "Мы рекомендуем закрепить Coinbase Wallet на вашей панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение Coinbase Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Обязательно сделайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "core": {
       "qr_code": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u ana ekranınıza koymanızı öneririz.",
-          "title": "Core uygulamasını açın"
+          "description": "Мы рекомендуем добавить Core на ваш экран быстрого доступа для ускоренного доступа к вашему кошельку.",
+          "title": "Открыть приложение Core"
         },
         "step2": {
-          "description": "Cüzdanınızın yedeğini telefonunuzda bulunan yedekleme özelliğimizi kullanarak kolayca alabilirsiniz.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Вы можете легко создать резервную копию вашего кошелька, используя нашу функцию резервного копирования на вашем телефоне.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamak üzere bir bağlantı istemi görünecektir.",
-          "title": "WalletConnect düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение, чтобы вы могли подключить ваш кошелек.",
+          "title": "Нажмите кнопку WalletConnect"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Core'u görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Core eklentisini yükleyin"
+          "description": "Мы рекомендуем закрепить Core на панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение Core"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye dikkat edin. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Обязательно создайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь вашей секретной фразой с кем-либо.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayarak tarayıcıyı yenileyin ve eklentiyi yükleyin.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Как только вы настроите ваш кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "fox": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için FoxWallet'ı ana ekranınıza koymanızı öneririz.",
-          "title": "FoxWallet uygulamasını açın"
+          "description": "Мы рекомендуем поместить FoxWallet на ваш экран начального экрана для более быстрого доступа.",
+          "title": "Откройте приложение FoxWallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Обязательно сделайте резервное копирование вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Tarama yaptıktan sonra cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "После сканирования появится приглашение для подключения вашего кошелька.",
+          "title": "Нажмите кнопку сканирования"
         }
       }
     },
     "frontier": {
       "qr_code": {
         "step1": {
-          "description": "Daha hızlı erişim için Frontier Cüzdanını ana ekranınıza koymanızı öneririz.",
-          "title": "Frontier Cüzdan uygulamasını açın"
+          "description": "Мы рекомендуем установить Frontier Wallet на экран вашего смартфона для более быстрого доступа.",
+          "title": "Откройте приложение Frontier Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Обязательно сделайте резервное копирование вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или Импортировать кошелек"
         },
         "step3": {
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
-          "title": "Tarama düğmesine dokunun"
+          "description": "После сканирования появится запрос на подключение кошелька.",
+          "title": "Нажмите кнопку сканирования"
         }
       },
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim için Frontier Cüzdanını görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frontier Cüzdan eklentisini yükleyin"
+          "description": "Мы рекомендуем прикрепить кошелек Frontier к панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение кошелька Frontier"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+          "description": "Обязательно сделайте резервную копию своего кошелька с использованием надежного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemeye ve eklentiyi yüklemeye başlamak için aşağıya tıklayın.",
-          "title": "Tarayıcınızı Yenileyin"
+          "description": "После настройки вашего кошелька нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "im_token": {
       "qr_code": {
         "step1": {
-          "title": "imToken uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için imToken uygulamasını ana ekranınıza koyun."
+          "title": "Откройте приложение imToken",
+          "description": "Поместите приложение imToken на главный экран для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir cüzdanı içe aktarın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Создайте новый кошелек или импортируйте существующий."
         },
         "step3": {
-          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+          "title": "Нажмите на иконку сканера в верхнем правом углу",
+          "description": "Выберите Новое соединение, затем отсканируйте QR-код и подтвердите запрос на соединение."
         }
       }
     },
     "metamask": {
       "qr_code": {
         "step1": {
-          "title": "MetaMask uygulamasını açın",
-          "description": "Daha hızlı erişim için MetaMask'ı ana ekranınıza koymanızı öneririz."
+          "title": "Откройте приложение MetaMask",
+          "description": "Мы рекомендуем поместить MetaMask на главный экран для быстрого доступа."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli kurtarma ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Создайте или импортируйте кошелек",
+          "description": "Обязательно сохраните копию своего кошелька с помощью надежного метода. Никогда не делитесь своей секретной фразой с кем бы то ни было."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Нажмите кнопку сканирования",
+          "description": "После сканирования появится запрос на соединение вашего кошелька."
         }
       },
       "extension": {
         "step1": {
-          "title": "MetaMask eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için MetaMask'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение MetaMask",
+          "description": "Мы рекомендуем закрепить MetaMask на вашей панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно сохраните резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı Yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки вашего кошелька, щелкните ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "okx": {
       "qr_code": {
         "step1": {
-          "title": "OKX Wallet uygulamasını açın",
-          "description": "Daha hızlı erişim için OKX Wallet'ı ana ekranınıza koymanızı öneririz."
+          "title": "Откройте приложение кошелька OKX",
+          "description": "Мы рекомендуем разместить кошелек OKX на вашем главном экране для более быстрого доступа."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно сохраните резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+          "title": "Нажмите на кнопку сканирования",
+          "description": "После сканирования появится запрос на подключение вашего кошелька."
         }
       },
       "extension": {
         "step1": {
-          "title": "OKX Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение кошелька OKX",
+          "description": "Мы рекомендуем закрепить OKX Wallet на панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+          "title": "Создать кошелек или импортировать кошелек",
+          "description": "Обязательно сохраните резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "Как только вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "omni": {
       "qr_code": {
         "step1": {
-          "title": "Omni uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Omni'yi ana ekranınıza ekleyin."
+          "title": "Откройте приложение Omni",
+          "description": "Добавьте Omni на свой домашний экран для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun ya da İçe Aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Создайте новый кошелек или импортируйте существующий."
         },
         "step3": {
-          "title": "QR simgesine dokunun ve tarayın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "Нажмите на иконку QR и отсканируйте",
+          "description": "Нажмите на иконку QR на вашем домашнем экране, отсканируйте код и подтвердите подсказку, чтобы подключиться."
         }
       }
     },
     "token_pocket": {
       "qr_code": {
         "step1": {
-          "title": "TokenPocket uygulamasını açın",
-          "description": "Daha hızlı erişim için TokenPocket'ı ana ekranınıza koymanızı öneririz."
+          "title": "Откройте приложение TokenPocket",
+          "description": "Мы рекомендуем разместить TokenPocket на вашем домашнем экране для быстрого доступа."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya Cüzdanı İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Создать или Импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька при помощи безопасного метода. Никогда не делитесь своим секретным кодом с кем-либо."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Taramayı yaptıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Нажмите на кнопку сканирования",
+          "description": "После сканирования появится подсказка о подключении для подключения вашего кошелька."
         }
       },
       "extension": {
         "step1": {
-          "title": "TokenPocket eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için TokenPocket'i görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение TokenPocket",
+          "description": "Мы рекомендуем закрепить TokenPocket на вашей панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli cümlenizi asla başkalarıyla paylaşmayın."
+          "title": "Создать или Импортировать кошелек",
+          "description": "Обязательно создайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemekte ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "trust": {
       "qr_code": {
         "step1": {
-          "title": "Trust Wallet uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Trust Wallet'ı ana ekranınıza koyun."
+          "title": "Откройте приложение Trust Wallet",
+          "description": "Разместите Trust Wallet на вашем домашнем экране для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "Создать или Импортировать кошелек",
+          "description": "Создайте новый кошелек или импортируйте существующий."
         },
         "step3": {
-          "title": "Ayarlar'da WalletConnect'e dokunun",
-          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlanmak için istemi onaylayın."
+          "title": "Нажмите WalletConnect в настройках",
+          "description": "Выберите Новое соединение, затем сканируйте QR-код и подтвердите запрос на подключение."
         }
       },
       "extension": {
         "step1": {
-          "title": "Trust Wallet eklentisini yükleyin",
-          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Trust Wallet'i sabitleyin."
+          "title": "Установите расширение Trust Wallet",
+          "description": "Кликните в правом верхнем углу вашего браузера и закрепите Trust Wallet для легкого доступа."
         },
         "step2": {
-          "title": "Bir cüzdan oluşturun veya içe aktarın",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut bir tane içe aktarın."
+          "title": "Создайте или импортируйте кошелек",
+          "description": "Создайте новый кошелек или импортируйте существующий."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Trust Wallet'ı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки Trust Wallet, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "uniswap": {
       "qr_code": {
         "step1": {
-          "title": "Uniswap uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Uniswap Cüzdanınızı ana ekranınıza ekleyin."
+          "title": "Откройте приложение Uniswap",
+          "description": "Добавьте кошелек Uniswap на главный экран для быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Создайте новый кошелек или импортируйте существующий."
         },
         "step3": {
-          "title": "QR ikonuna dokunun ve tarama yapın",
-          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+          "title": "Нажмите на иконку QR и отсканируйте",
+          "description": "Нажмите на иконку QR на главном экране, отсканируйте код и подтвердите запрос на подключение."
         }
       }
     },
     "zerion": {
       "qr_code": {
         "step1": {
-          "title": "Zerion uygulamasını açın",
-          "description": "Daha hızlı erişim için Zerion'un ana ekranınıza konumlandırmanızı öneririz."
+          "title": "Откройте приложение Zerion",
+          "description": "Мы рекомендуем разместить Zerion на главном экране для более быстрого доступа."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedekleyin. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно создайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarama düğmesine basın",
-          "description": "Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+          "title": "Нажмите кнопку сканирования",
+          "description": "После сканирования вам будет предложено подключить ваш кошелек."
         }
       },
       "extension": {
         "step1": {
-          "title": "Zerion eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Zerion'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение Zerion",
+          "description": "Мы рекомендуем прикрепить Zerion к вашей панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklemeye emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Создайте или импортируйте кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делясь своим секретным паролем с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "Как только вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "rainbow": {
       "qr_code": {
         "step1": {
-          "title": "Rainbow uygulamasını açın",
-          "description": "Cüzdanınıza daha hızlı erişim için Rainbow'u ana ekranınıza koymanızı öneririz."
+          "title": "Откройте приложение Rainbow",
+          "description": "Мы рекомендуем поместить Rainbow на ваш экран главного меню для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz."
+          "title": "Создайте или импортируйте кошелек",
+          "description": "Вы можете легко сделать резервную копию вашего кошелька с помощью нашей функции резервного копирования на вашем телефоне."
         },
         "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlamanız için bir bağlantı istemi belirecektir."
+          "title": "Нажмите кнопку сканировать",
+          "description": "После сканирования появится запрос на подключение вашего кошелька."
         }
       }
     },
     "enkrypt": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Enkrypt Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Enkrypt Cüzdan eklentisini yükleyin"
+          "description": "Мы рекомендуем закрепить Enkrypt Wallet на панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите расширение Enkrypt Wallet"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın.",
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın"
+          "description": "Обязательно сделайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создать или импортировать кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "Как только вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "frame": {
       "extension": {
         "step1": {
-          "description": "Cüzdanınıza daha hızlı erişim sağlamak için Frame'ı görev çubuğunuza sabitlemenizi öneririz.",
-          "title": "Frame ve eşlik eden uzantıyı yükleyin"
+          "description": "Мы рекомендуем закрепить Frame на панели задач для более быстрого доступа к вашему кошельку.",
+          "title": "Установите Frame и дополнительное расширение"
         },
         "step2": {
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi asla başkasıyla paylaşmayın.",
-          "title": "Cüzdan Oluştur veya İçe Aktar"
+          "description": "Обязательно создайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо.",
+          "title": "Создайте или Импортируйте кошелек"
         },
         "step3": {
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıya tıklayın.",
-          "title": "Tarayıcınızı yenileyin"
+          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение.",
+          "title": "Обновите ваш браузер"
         }
       }
     },
     "one_key": {
       "extension": {
         "step1": {
-          "title": "OneKey Wallet uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için OneKey Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение OneKey Wallet",
+          "description": "Мы рекомендуем закрепить OneKey Wallet на панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli ifadenizi kimseyle paylaşmayın."
+          "title": "Создайте или Импортируйте кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки кошелька нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "phantom": {
       "extension": {
         "step1": {
-          "title": "Phantom eklentisini yükleyin",
-          "description": "Cüzdanınıza daha kolay erişim sağlamak için Phantom'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение Phantom",
+          "description": "Мы рекомендуем закрепить Phantom на панели задач для более удобного доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+          "title": "Создать или Импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой восстановления с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После того как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "rabby": {
       "extension": {
         "step1": {
-          "title": "Rabby eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Rabby'yi görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение Rabby",
+          "description": "Мы рекомендуем закрепить Rabby на панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi asla başkalarıyla paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем бы то ни было."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıdaki düğmeye tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "safeheron": {
       "extension": {
         "step1": {
-          "title": "Core eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Safeheron'u görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите основное расширение",
+          "description": "Мы рекомендуем закрепить SafeHeron на панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Cüzdan Oluştur veya İçe Aktar",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После того, как вы настроите ваш кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "taho": {
       "extension": {
         "step1": {
-          "title": "Taho uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Taho'yu görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение Taho",
+          "description": "Мы рекомендуем закрепить Taho на вашей панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Создать или импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с использованием безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "talisman": {
       "extension": {
         "step1": {
-          "title": "Talisman eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Talisman'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение Talisman",
+          "description": "Мы рекомендуем закрепить Talisman на вашей панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Ethereum Cüzdanı Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Kurtarma ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Создайте или импортируйте кошелек Ethereum",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь вашей фразой восстановления с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     },
     "xdefi": {
       "extension": {
         "step1": {
-          "title": "XDEFI Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için XDEFI Wallet'ı görev çubuğunuza sabitlemenizi öneririz."
+          "title": "Установите расширение кошелька XDEFI",
+          "description": "Мы рекомендуем закрепить XDEFI Wallet на панели задач для более быстрого доступа к вашему кошельку."
         },
         "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
+          "title": "Создать или Импортировать кошелек",
+          "description": "Обязательно создайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой с кем-либо."
         },
         "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+          "title": "Обновите ваш браузер",
+          "description": "После того, как вы настроите свой кошелек, нажмите ниже, чтобы обновить браузер и загрузить расширение."
         }
       }
     }
