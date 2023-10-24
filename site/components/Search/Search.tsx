@@ -28,8 +28,8 @@ export function SearchProvider({ children }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  const onOpen = useCallback(() => setIsOpen(true), [setIsOpen]);
-  const onClose = useCallback(() => setIsOpen(false), [setIsOpen]);
+  const onOpen = useCallback(() => setIsOpen(true), []);
+  const onClose = useCallback(() => setIsOpen(false), []);
 
   useDocSearchKeyboardEvents({
     isOpen,
@@ -71,7 +71,7 @@ export function SearchProvider({ children }) {
             }}
             onClose={onClose}
             placeholder="Search documentation"
-            transformItems={items => {
+            transformItems={(items) => {
               return items.map((item, index) => {
                 const a = document.createElement('a');
                 a.href = item.url;
@@ -84,7 +84,7 @@ export function SearchProvider({ children }) {
                 if (item.hierarchy?.lvl0) {
                   item.hierarchy.lvl0 = item.hierarchy.lvl0.replace(
                     /&amp;/g,
-                    '&'
+                    '&',
                   );
                 }
 
@@ -92,7 +92,7 @@ export function SearchProvider({ children }) {
                   item._highlightResult.hierarchy.lvl0.value =
                     item._highlightResult.hierarchy.lvl0.value.replace(
                       /&amp;/g,
-                      '&'
+                      '&',
                     );
                 }
 
@@ -113,7 +113,7 @@ export function SearchProvider({ children }) {
               });
             }}
           />,
-          document.body
+          document.body,
         )}
     </>
   );

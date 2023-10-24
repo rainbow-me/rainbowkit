@@ -17,7 +17,6 @@ export const cool = style([
     xs: {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },
-    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
     md: {
       gridTemplateColumns: 'repeat(2, 1fr)',
     },

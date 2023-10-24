@@ -54,7 +54,7 @@ export function useWalletConnectors(): WalletConnector[] {
 
   async function connectToWalletConnectModal(
     walletId: string,
-    walletConnectModalConnector: Connector
+    walletConnectModalConnector: Connector,
   ) {
     try {
       return await connectWallet(walletId, walletConnectModalConnector!);
@@ -72,26 +72,26 @@ export function useWalletConnectors(): WalletConnector[] {
   }
 
   const walletInstances = flatten(
-    defaultConnectors.map(connector => {
+    defaultConnectors.map((connector) => {
       return (connector._wallets as WalletInstance[]) ?? [];
-    })
+    }),
   ).sort((a, b) => a.index - b.index);
 
   const walletInstanceById = indexBy(
     walletInstances,
-    walletInstance => walletInstance.id
+    (walletInstance) => walletInstance.id,
   );
 
   const MAX_RECENT_WALLETS = 3;
   const recentWallets: WalletInstance[] = getRecentWalletIds()
-    .map(walletId => walletInstanceById[walletId])
+    .map((walletId) => walletInstanceById[walletId])
     .filter(isNotNullish)
     .slice(0, MAX_RECENT_WALLETS);
 
   const groupedWallets: WalletInstance[] = [
     ...recentWallets,
     ...walletInstances.filter(
-      walletInstance => !recentWallets.includes(walletInstance)
+      (walletInstance) => !recentWallets.includes(walletInstance),
     ),
   ];
 
@@ -117,7 +117,7 @@ export function useWalletConnectors(): WalletConnector[] {
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
       onConnecting: (fn: () => void) =>
         wallet.connector.on('message', ({ type }: { type: string }) =>
-          type === 'connecting' ? fn() : undefined
+          type === 'connecting' ? fn() : undefined,
         ),
       ready: (wallet.installed ?? true) && wallet.connector.ready,
       recent,
@@ -125,7 +125,7 @@ export function useWalletConnectors(): WalletConnector[] {
         ? () =>
             connectToWalletConnectModal(
               wallet.id,
-              wallet.walletConnectModalConnector
+              wallet.walletConnectModalConnector,
             )
         : undefined,
     });

@@ -5,6 +5,7 @@ import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
+  Locale,
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
@@ -17,10 +18,12 @@ import {
   polygon,
   optimism,
   arbitrum,
+  base,
   zora,
   goerli,
 } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+import { useRouter } from 'next/router';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -28,6 +31,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
+    base,
     zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
@@ -66,9 +70,10 @@ const wagmiConfig = createConfig({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { locale } = useRouter() as { locale: Locale };
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
+      <RainbowKitProvider appInfo={demoAppInfo} chains={chains} locale={locale}>
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>

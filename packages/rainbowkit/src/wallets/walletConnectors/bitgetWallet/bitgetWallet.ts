@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
@@ -11,6 +10,23 @@ import type {
   WalletConnectLegacyConnectorOptions,
 } from '../../getWalletConnectConnector';
 
+export interface BitgetWalletLegacyOptions {
+  projectId?: string;
+  chains: Chain[];
+  walletConnectVersion: '1';
+  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
+}
+
+export interface BitgetWalletOptions {
+  projectId: string;
+  chains: Chain[];
+  walletConnectVersion?: '2';
+  walletConnectOptions?: WalletConnectConnectorOptions;
+}
+
+/**
+ * @deprecated `BitKeepWalletLegacyOptions` is now `BitgetWalletLegacyOptions`
+ */
 export interface BitKeepWalletLegacyOptions {
   projectId?: string;
   chains: Chain[];
@@ -18,6 +34,9 @@ export interface BitKeepWalletLegacyOptions {
   walletConnectOptions?: WalletConnectLegacyConnectorOptions;
 }
 
+/**
+ * @deprecated `BitKeepWalletOptions` is now `BitgetWalletOptions`
+ */
 export interface BitKeepWalletOptions {
   projectId: string;
   chains: Chain[];
@@ -25,13 +44,18 @@ export interface BitKeepWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-export const bitKeepWallet = ({
+export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: (BitKeepWalletLegacyOptions | BitKeepWalletOptions) &
+}: (
+  | BitgetWalletLegacyOptions
+  | BitgetWalletOptions
+  | BitKeepWalletLegacyOptions
+  | BitKeepWalletOptions
+) &
   InjectedConnectorOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
@@ -45,20 +69,20 @@ export const bitKeepWallet = ({
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
-    id: 'bitKeep',
-    name: 'BitKeep',
-    iconUrl: async () => (await import('./bitKeepWallet.svg')).default,
+    id: 'bitget',
+    name: 'Bitget Wallet',
+    iconUrl: async () => (await import('./bitgetWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isBitKeepInjected : undefined,
     downloadUrls: {
-      android: 'https://bitkeep.com/en/download?type=2',
+      android: 'https://web3.bitget.com/en/wallet-download?type=0',
       ios: 'https://apps.apple.com/app/bitkeep/id1395301115',
-      mobile: 'https://bitkeep.com/en/download?type=2',
-      qrCode: 'https://bitkeep.com/en/download',
+      mobile: 'https://web3.bitget.com/en/wallet-download?type=2',
+      qrCode: 'https://web3.bitget.com/en/wallet-download',
       chrome:
         'https://chrome.google.com/webstore/detail/bitkeep-crypto-nft-wallet/jiidiaalihmmhddjgbnbgdfflelocpak',
-      browserExtension: 'https://bitkeep.com/en/download',
+      browserExtension: 'https://web3.bitget.com/en/wallet-download',
     },
 
     createConnector: () => {
@@ -90,25 +114,25 @@ export const bitKeepWallet = ({
         connector,
         extension: {
           instructions: {
-            learnMoreUrl: 'https://study.bitkeep.com',
+            learnMoreUrl: 'https://web3.bitget.com/en/academy',
             steps: [
               {
                 description:
-                  'We recommend pinning BitKeep to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.bitget.extension.step1.description',
                 step: 'install',
-                title: 'Install the BitKeep extension',
+                title: 'wallet_connectors.bitget.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.bitget.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.bitget.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.bitget.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.bitget.extension.step3.description',
               },
             ],
           },
@@ -121,25 +145,26 @@ export const bitKeepWallet = ({
               getUri: async () =>
                 getWalletConnectUri(connector, walletConnectVersion),
               instructions: {
-                learnMoreUrl: 'https://study.bitkeep.com',
+                learnMoreUrl: 'https://web3.bitget.com/en/academy',
                 steps: [
                   {
                     description:
-                      'We recommend putting BitKeep on your home screen for quicker access.',
+                      'wallet_connectors.bitget.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the BitKeep app',
+                    title: 'wallet_connectors.bitget.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.bitget.qr_code.step2.description',
+
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.bitget.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.bitget.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.bitget.qr_code.step3.title',
                   },
                 ],
               },
@@ -149,3 +174,8 @@ export const bitKeepWallet = ({
     },
   };
 };
+
+/**
+ * @deprecated `bitKeepWallet` is now `bitgetWallet`
+ */
+export const bitKeepWallet = bitgetWallet;

@@ -1,61 +1,79 @@
-import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import './global.css';
+
 import {
   AvatarComponent,
+  DisclaimerComponent,
+  Locale,
+  RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
-  DisclaimerComponent,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
-  RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import {
-  argentWallet,
-  bitKeepWallet,
-  bitskiWallet,
-  coreWallet,
-  dawnWallet,
-  frontierWallet,
-  imTokenWallet,
-  ledgerWallet,
-  mewWallet,
-  okxWallet,
-  omniWallet,
-  phantomWallet,
-  rabbyWallet,
-  safeheronWallet,
-  tahoWallet,
-  talismanWallet,
-  tokenPocketWallet,
-  trustWallet,
-  xdefiWallet,
-  zerionWallet,
-} from '@rainbow-me/rainbowkit/wallets';
 import {
   GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import {
+  argentWallet,
+  bifrostWallet,
+  bitgetWallet,
+  bitskiWallet,
+  clvWallet,
+  coin98Wallet,
+  coreWallet,
+  dawnWallet,
+  desigWallet,
+  enkryptWallet,
+  foxWallet,
+  frameWallet,
+  frontierWallet,
+  imTokenWallet,
+  ledgerWallet,
+  mewWallet,
+  oktoWallet,
+  okxWallet,
+  omniWallet,
+  oneKeyWallet,
+  phantomWallet,
+  rabbyWallet,
+  safeheronWallet,
+  safepalWallet,
+  subWallet,
+  tahoWallet,
+  talismanWallet,
+  tokenPocketWallet,
+  trustWallet,
+  uniswapWallet,
+  xdefiWallet,
+  zealWallet,
+  zerionWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import {
+  WagmiConfig,
   configureChains,
   createConfig,
   useDisconnect,
-  WagmiConfig,
 } from 'wagmi';
 import {
   arbitrum,
   base,
   bsc,
   goerli,
+  holesky,
   mainnet,
   optimism,
   polygon,
+  zkSync,
   zora,
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
@@ -73,12 +91,15 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     base,
     zora,
     bsc,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    zkSync,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [goerli, holesky]
+      : []),
   ],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
     publicProvider(),
-  ]
+  ],
 );
 
 const projectId =
@@ -96,24 +117,37 @@ const connectors = connectorsForWallets([
     groupName: 'Other',
     wallets: [
       argentWallet({ chains, projectId }),
-      bitKeepWallet({ chains, projectId }),
+      bifrostWallet({ chains, projectId }),
+      bitgetWallet({ chains, projectId }),
       bitskiWallet({ chains }),
+      clvWallet({ chains, projectId }),
+      coin98Wallet({ chains, projectId }),
       coreWallet({ chains, projectId }),
       dawnWallet({ chains }),
+      desigWallet({ chains }),
+      enkryptWallet({ chains }),
+      foxWallet({ chains, projectId }),
+      frameWallet({ chains }),
       frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
       mewWallet({ chains }),
+      oktoWallet({ chains, projectId }),
       okxWallet({ chains, projectId }),
       omniWallet({ chains, projectId }),
+      oneKeyWallet({ chains }),
       phantomWallet({ chains }),
       rabbyWallet({ chains }),
       safeheronWallet({ chains }),
+      safepalWallet({ chains, projectId }),
+      subWallet({ chains, projectId }),
       tahoWallet({ chains }),
       talismanWallet({ chains }),
       tokenPocketWallet({ chains, projectId }),
       trustWallet({ chains, projectId }),
+      uniswapWallet({ chains, projectId }),
       xdefiWallet({ chains }),
+      zealWallet({ chains }),
       zerionWallet({ chains, projectId }),
     ],
   },
@@ -198,6 +232,8 @@ function RainbowKitApp({
 }: AppProps<{
   session: Session;
 }>) {
+  const router = useRouter();
+
   const { disconnect } = useDisconnect();
   const [selectedInitialChainId, setInitialChainId] = useState<number>();
   const [selectedThemeName, setThemeName] = useState<ThemeName>('light');
@@ -211,6 +247,11 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+
+  const routerLocale = router.locale as Locale;
+
+  // Set `locale` as default from next.js and let dropdown set new `locale`
+  const [locale, setLocale] = useState<Locale>(routerLocale);
 
   const currentTheme = (
     themes.find(({ name }) => name === selectedThemeName) ?? themes[0]
@@ -234,6 +275,8 @@ function RainbowKitApp({
 
   const appContextProps: AppContextProps = { authEnabled };
 
+  const locales = router.locales as Locale[];
+
   // Note: Non-RainbowKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
@@ -249,6 +292,7 @@ function RainbowKitApp({
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
+        locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
         modalSize={modalSize}
@@ -293,7 +337,7 @@ function RainbowKitApp({
                           checked={authEnabled}
                           id="authEnabled"
                           name="authEnabled"
-                          onChange={e => {
+                          onChange={(e) => {
                             setAuthEnabled(e.target.checked);
 
                             // Reset connection and auth state when
@@ -324,7 +368,7 @@ function RainbowKitApp({
                           checked={showRecentTransactions}
                           id="showRecentTransactions"
                           name="showRecentTransactions"
-                          onChange={e =>
+                          onChange={(e) =>
                             setShowRecentTransactions(e.target.checked)
                           }
                           type="checkbox"
@@ -345,7 +389,7 @@ function RainbowKitApp({
                           checked={coolModeEnabled}
                           id="coolModeEnabled"
                           name="coolModeEnabled"
-                          onChange={e => setCoolModeEnabled(e.target.checked)}
+                          onChange={(e) => setCoolModeEnabled(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -364,7 +408,7 @@ function RainbowKitApp({
                           checked={showDisclaimer}
                           id="showDisclaimer"
                           name="showDisclaimer"
-                          onChange={e => setShowDisclaimer(e.target.checked)}
+                          onChange={(e) => setShowDisclaimer(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -383,7 +427,7 @@ function RainbowKitApp({
                           checked={customAvatar}
                           id="customAvatar"
                           name="customAvatar"
-                          onChange={e => setCustomAvatar(e.target.checked)}
+                          onChange={(e) => setCustomAvatar(e.target.checked)}
                           type="checkbox"
                         />
                       </td>
@@ -392,12 +436,12 @@ function RainbowKitApp({
                       <td>modalSize</td>
                       <td>
                         <select
-                          onChange={e =>
+                          onChange={(e) =>
                             setModalSize(e.target.value as ModalSize)
                           }
                           value={modalSize}
                         >
-                          {modalSizes.map(size => (
+                          {modalSizes.map((size) => (
                             <option key={size} value={size}>
                               {size}
                             </option>
@@ -409,21 +453,40 @@ function RainbowKitApp({
                       <td>initialChain</td>
                       <td>
                         <select
-                          onChange={e =>
+                          onChange={(e) =>
                             setInitialChainId(
                               e.target.value
                                 ? parseInt(e.target.value, 10)
-                                : undefined
+                                : undefined,
                             )
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...chains].map(chain => (
+                          {[undefined, ...chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
                             >
                               {chain?.name ?? 'Default'}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label style={{ userSelect: 'none' }}>locale</label>
+                      </td>
+                      <td>
+                        <select
+                          onChange={(e) => {
+                            setLocale(e.target.value as Locale);
+                          }}
+                          value={locale}
+                        >
+                          {locales.map((locale) => (
+                            <option key={locale} value={locale}>
+                              {locale}
                             </option>
                           ))}
                         </select>
@@ -453,7 +516,7 @@ function RainbowKitApp({
                           <input
                             checked={themeName === selectedThemeName}
                             name="theme"
-                            onChange={e =>
+                            onChange={(e) =>
                               setThemeName(e.target.value as ThemeName)
                             }
                             type="radio"
@@ -474,12 +537,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {fontStacks.map(fontStack => (
+                      {fontStacks.map((fontStack) => (
                         <label key={fontStack} style={{ userSelect: 'none' }}>
                           <input
                             checked={fontStack === selectedFontStack}
                             name="fontStack"
-                            onChange={e =>
+                            onChange={(e) =>
                               setFontStack(e.target.value as FontStack)
                             }
                             type="radio"
@@ -500,12 +563,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {accentColors.map(accentColor => (
+                      {accentColors.map((accentColor) => (
                         <label key={accentColor} style={{ userSelect: 'none' }}>
                           <input
                             checked={accentColor === selectedAccentColor}
                             name="accentColor"
-                            onChange={e =>
+                            onChange={(e) =>
                               setAccentColor(e.target.value as AccentColor)
                             }
                             type="radio"
@@ -526,12 +589,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {radiusScales.map(radiusScale => (
+                      {radiusScales.map((radiusScale) => (
                         <label key={radiusScale} style={{ userSelect: 'none' }}>
                           <input
                             checked={radiusScale === selectedRadiusScale}
                             name="radiusScale"
-                            onChange={e =>
+                            onChange={(e) =>
                               setRadiusScale(e.target.value as RadiusScale)
                             }
                             type="radio"
@@ -552,12 +615,12 @@ function RainbowKitApp({
                         gap: 12,
                       }}
                     >
-                      {overlayBlurs.map(overlayBlur => (
+                      {overlayBlurs.map((overlayBlur) => (
                         <label key={overlayBlur} style={{ userSelect: 'none' }}>
                           <input
                             checked={overlayBlur === selectedOverlayBlur}
                             name="overlayBlur"
-                            onChange={e =>
+                            onChange={(e) =>
                               setOverlayBlur(e.target.value as OverlayBlur)
                             }
                             type="radio"
@@ -581,7 +644,7 @@ function RainbowKitApp({
 export default function App(
   appProps: AppProps<{
     session: Session;
-  }>
+  }>,
 ) {
   return (
     <>

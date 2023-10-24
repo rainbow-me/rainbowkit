@@ -1,10 +1,12 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
   WalletConnectConnectorOptions,
@@ -25,17 +27,6 @@ export interface RainbowWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function isRainbow(ethereum: NonNullable<typeof window['ethereum']>) {
-  // `isRainbow` needs to be added to the wagmi `Ethereum` object
-  const isRainbow = Boolean(ethereum.isRainbow);
-
-  if (!isRainbow) {
-    return false;
-  }
-
-  return true;
-}
-
 export const rainbowWallet = ({
   chains,
   projectId,
@@ -44,11 +35,7 @@ export const rainbowWallet = ({
   ...options
 }: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
   InjectedConnectorOptions): Wallet => {
-  const isRainbowInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    isRainbow(window.ethereum);
-
+  const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
     id: 'rainbow',
@@ -73,10 +60,7 @@ export const rainbowWallet = ({
             version: walletConnectVersion,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options,
-          });
+        : getInjectedConnector({ flag: 'isRainbow', chains, options });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector, walletConnectVersion);
@@ -85,7 +69,7 @@ export const rainbowWallet = ({
           : isIOS()
           ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
           : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
-              uri
+              uri,
             )}&connector=rainbowkit`;
       };
 
@@ -101,21 +85,21 @@ export const rainbowWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Rainbow on your home screen for faster access to your wallet.',
+                      'wallet_connectors.rainbow.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Rainbow app',
+                    title: 'wallet_connectors.rainbow.qr_code.step1.title',
                   },
                   {
                     description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                      'wallet_connectors.rainbow.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.rainbow.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.rainbow.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.rainbow.qr_code.step3.title',
                   },
                 ],
               },

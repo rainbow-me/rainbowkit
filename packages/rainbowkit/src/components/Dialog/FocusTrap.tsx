@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 
 const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
   const focusableElements = element.querySelectorAll(
-    'button:not(:disabled), a[href]'
+    'button:not(:disabled), a[href]',
   ) as NodeListOf<HTMLButtonElement | HTMLAnchorElement>;
 
   if (focusableElements.length === 0) return;
@@ -23,6 +23,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
     };
   }, []);
 
+  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (contentRef.current) {
       const elementToFocus =
@@ -41,9 +42,10 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'end'),
-          []
+          [],
         )}
-        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: incorrect
+        tabIndex={0}
       />
       <div
         ref={contentRef}
@@ -55,9 +57,10 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         onFocus={useCallback(
           () =>
             contentRef.current && moveFocusWithin(contentRef.current, 'start'),
-          []
+          [],
         )}
-        tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+        // biome-ignore lint/a11y/noNoninteractiveTabindex: incorrect
+        tabIndex={0}
       />
     </>
   );

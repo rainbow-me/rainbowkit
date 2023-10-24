@@ -37,6 +37,7 @@ const appearance = style({
   appearance: 'none',
 });
 
+// biome-ignore format: design system keys
 const field = style([
   appearance,
   {
@@ -52,6 +53,7 @@ const mark = style({
   color: 'inherit',
 });
 
+// biome-ignore format: design system keys
 const select = style([
   field,
   {

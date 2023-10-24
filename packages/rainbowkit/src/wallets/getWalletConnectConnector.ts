@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-redeclare */
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
 import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
@@ -28,7 +26,7 @@ export type WalletConnectLegacyConnectorOptions =
 
 function createConnector(
   version: WalletConnectVersion,
-  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig
+  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig,
 ): WalletConnectLegacyConnector | WalletConnectConnector {
   const connector =
     version === '1'
@@ -69,10 +67,21 @@ export function getWalletConnectConnector({
   version?: WalletConnectVersion;
   options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
 }): WalletConnectConnector | WalletConnectLegacyConnector {
-  if (version === '2' && !projectId)
-    throw new Error(
-      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation'
-    );
+  // We use this projectId in place of YOUR_PROJECT_ID for our examples.
+  // This allows us our examples and templates to be functional with WalletConnect v2.
+  // We warn developers against using this projectId in their dApp in production.
+  const exampleProjectId = '21fef48091f12692cad574a6f7753643';
+  if (version === '2') {
+    if (!projectId || projectId === '')
+      throw new Error(
+        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
+      );
+    else if (projectId === 'YOUR_PROJECT_ID' || projectId === exampleProjectId)
+      console.warn(
+        'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure',
+      );
+  }
+
   const config = {
     chains,
     options:
@@ -82,7 +91,8 @@ export function getWalletConnectConnector({
             ...options,
           }
         : {
-            projectId,
+            projectId:
+              projectId === 'YOUR_PROJECT_ID' ? exampleProjectId : projectId,
             showQrModal: false,
             ...options,
           },

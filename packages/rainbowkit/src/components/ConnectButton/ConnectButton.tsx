@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
+  ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
-  ResponsiveValue,
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
@@ -11,6 +11,7 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
@@ -40,6 +41,8 @@ export function ConnectButton({
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
+  const i18n = useContext(I18nContext);
+
   return (
     <ConnectButtonRenderer>
       {({
@@ -59,7 +62,7 @@ export function ConnectButton({
             gap="12"
             {...(!ready && {
               'aria-hidden': true,
-              'style': {
+              style: {
                 opacity: 0,
                 pointerEvents: 'none',
                 userSelect: 'none',
@@ -89,8 +92,8 @@ export function ConnectButton({
                         ? 'connectButtonTextError'
                         : 'connectButtonText'
                     }
-                    display={mapResponsiveValue(chainStatus, value =>
-                      value === 'none' ? 'none' : 'flex'
+                    display={mapResponsiveValue(chainStatus, (value) =>
+                      value === 'none' ? 'none' : 'flex',
                     )}
                     fontFamily="body"
                     fontWeight="bold"
@@ -121,10 +124,10 @@ export function ConnectButton({
                       <Box alignItems="center" display="flex" gap="6">
                         {chain.hasIcon ? (
                           <Box
-                            display={mapResponsiveValue(chainStatus, value =>
+                            display={mapResponsiveValue(chainStatus, (value) =>
                               value === 'full' || value === 'icon'
                                 ? 'block'
-                                : 'none'
+                                : 'none',
                             )}
                             height="24"
                             width="24"
@@ -140,7 +143,7 @@ export function ConnectButton({
                           </Box>
                         ) : null}
                         <Box
-                          display={mapResponsiveValue(chainStatus, value => {
+                          display={mapResponsiveValue(chainStatus, (value) => {
                             if (value === 'icon' && !chain.iconUrl) {
                               return 'block'; // Show the chain name if there is no iconUrl
                             }
@@ -180,8 +183,8 @@ export function ConnectButton({
                   >
                     {account.displayBalance && (
                       <Box
-                        display={mapResponsiveValue(showBalance, value =>
-                          value ? 'block' : 'none'
+                        display={mapResponsiveValue(showBalance, (value) =>
+                          value ? 'block' : 'none',
                         )}
                         padding="8"
                         paddingLeft="12"
@@ -215,10 +218,10 @@ export function ConnectButton({
                         height="24"
                       >
                         <Box
-                          display={mapResponsiveValue(accountStatus, value =>
+                          display={mapResponsiveValue(accountStatus, (value) =>
                             value === 'full' || value === 'avatar'
                               ? 'block'
-                              : 'none'
+                              : 'none',
                           )}
                         >
                           <Avatar
@@ -231,10 +234,12 @@ export function ConnectButton({
 
                         <Box alignItems="center" display="flex" gap="6">
                           <Box
-                            display={mapResponsiveValue(accountStatus, value =>
-                              value === 'full' || value === 'address'
-                                ? 'block'
-                                : 'none'
+                            display={mapResponsiveValue(
+                              accountStatus,
+                              (value) =>
+                                value === 'full' || value === 'address'
+                                  ? 'block'
+                                  : 'none',
                             )}
                           >
                             {account.displayName}
@@ -264,7 +269,9 @@ export function ConnectButton({
                 transition="default"
                 type="button"
               >
-                {label}
+                {mounted && label === 'Connect Wallet'
+                  ? i18n.t('connect_wallet.label')
+                  : label}
               </Box>
             )}
           </Box>

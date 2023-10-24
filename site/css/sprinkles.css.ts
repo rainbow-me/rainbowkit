@@ -1,12 +1,11 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { calc } from '@vanilla-extract/css-utils';
 import {
   ConditionalValue,
+  RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,
   defineProperties,
-  RequiredConditionalValue,
 } from '@vanilla-extract/sprinkles';
 
 import { Breakpoint, breakpointNames, breakpoints } from './breakpoints';
@@ -37,6 +36,7 @@ const negativeSpace = {
   '-12': `${calc(vars.space['12']).negate()}`,
 };
 
+// biome-ignore format: design system keys
 const extendedSpace = {
   '1/4': '25%',
   '1/3': '33.333333%',
@@ -151,6 +151,7 @@ const responsiveProperties = defineProperties({
   },
 });
 
+// biome-ignore format: design system keys
 const unresponsiveProperties = defineProperties({
   properties: {
     aspectRatio: {
@@ -267,7 +268,7 @@ export const sprinkles = createSprinkles(
   unresponsiveProperties,
   colorProperties,
   motionSafeProperties,
-  interactionProperties
+  interactionProperties,
 );
 export type Sprinkles = Parameters<typeof sprinkles>[0];
 

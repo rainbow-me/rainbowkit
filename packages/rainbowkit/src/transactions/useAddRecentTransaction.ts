@@ -5,7 +5,7 @@ import { useTransactionStore } from './TransactionStoreContext';
 import { NewTransaction } from './transactionStore';
 
 export function useAddRecentTransaction(): (
-  transaction: NewTransaction
+  transaction: NewTransaction,
 ) => void {
   const store = useTransactionStore();
   const { address } = useAccount();
@@ -19,6 +19,6 @@ export function useAddRecentTransaction(): (
 
       store.addTransaction(address, chainId, transaction);
     },
-    [store, address, chainId]
+    [store, address, chainId],
   );
 }

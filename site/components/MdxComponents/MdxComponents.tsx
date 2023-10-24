@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
@@ -8,6 +7,7 @@ import { CopyIcon } from 'components/Icons/Copy';
 import { Link } from 'components/Link/Link';
 import { Pre } from 'components/Pre/Pre';
 import { PropsTable } from 'components/PropsTable/PropsTable';
+import { Table } from 'components/Table/Table';
 import { Text } from 'components/Text/Text';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
@@ -16,9 +16,9 @@ import React, { useState } from 'react';
 import { Announcement } from '../Announcement/Announcement';
 
 export const components = {
-  a: props => <Link {...props} />,
+  a: (props) => <Link {...props} />,
   Announcement,
-  blockquote: props => (
+  blockquote: (props) => (
     <Box
       as="blockquote"
       borderColor="fillElevated"
@@ -43,7 +43,7 @@ export const components = {
     );
   },
   CoolMode,
-  h1: props => (
+  h1: (props) => (
     <Text
       as="h1"
       marginBottom="1"
@@ -52,7 +52,7 @@ export const components = {
       {...props}
     />
   ),
-  h2: props => (
+  h2: (props) => (
     <Text
       as="h2"
       color="labelSecondary"
@@ -129,7 +129,7 @@ export const components = {
       </Text>
     </Box>
   ),
-  p: props => (
+  p: (props) => (
     <Text
       as="p"
       color="labelSecondary"
@@ -149,7 +149,7 @@ export const components = {
         const code = codeElement.innerText.replace(/\n{2,}/g, '\n');
         setCode(code);
       }
-    }, [preRef]);
+    }, [preRef, setCode]);
 
     React.useEffect(() => {
       if (requestCopy) copy(code);
@@ -186,9 +186,10 @@ export const components = {
       </Box>
     );
   },
-  PropsTable: props => <PropsTable aria-label="Component Props" {...props} />,
-  ul: props => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
-  Video: props => (
+  PropsTable: (props) => <PropsTable aria-label="Component Props" {...props} />,
+  Table: (props) => <Table aria-label="Props Table" {...props} />,
+  ul: (props) => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
+  Video: (props) => (
     <Box
       as="video"
       autoPlay

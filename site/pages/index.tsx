@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Header } from 'components/Header/Header';
@@ -146,7 +145,7 @@ export default function Home() {
                 'Custom Chains',
                 'App Store and Google Play Integration',
                 'Custom Connect Button',
-              ].map(value => (
+              ].map((value) => (
                 <Box
                   alignItems="center"
                   as="li"
@@ -293,7 +292,10 @@ export default function Home() {
               </Link>
             </Text>
             <Text size="4" weight="bold">
-              <Link href="https://rainbow.me/media-kit.zip" variant="gray">
+              <Link
+                href="https://www.figma.com/community/file/1139300796265858893/rainbow-brand-assets"
+                variant="gray"
+              >
                 <span data-emoji>⬇️</span> media kit
               </Link>
             </Text>

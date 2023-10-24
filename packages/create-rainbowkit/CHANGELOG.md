@@ -1,5 +1,30 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.2.8
+
+### Patch Changes
+
+- 2abfffe0: Updated wagmi to `~1.4.3` and viem to `~1.16.3`.
+
+## 0.2.7
+
+### Patch Changes
+
+- 6b460fcb: Updated wagmi to `~1.4.2` and viem to `~1.12.2`.
+
+## 0.2.6
+
+### Patch Changes
+
+- 118dfe11: Updated wagmi to `~1.4.0` and viem to `~1.10.0`.
+
+## 0.2.5
+
+### Patch Changes
+
+- ad913e60: Upgraded `wagmi`, `viem`, and `next` in templates.
+- f5e73b98: Upgraded templates for `base` network support
+
 ## 0.2.4
 
 ### Patch Changes

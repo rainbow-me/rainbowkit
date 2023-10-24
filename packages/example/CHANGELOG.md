@@ -1,5 +1,95 @@
 # example
 
+## 0.0.78
+
+### Patch Changes
+
+- Updated dependencies [02e796c0]
+- Updated dependencies [efb8566e]
+- Updated dependencies [4b7a44c8]
+- Updated dependencies [2c8abbb2]
+- Updated dependencies [e41103fb]
+- Updated dependencies [b0022aea]
+  - @rainbow-me/rainbowkit@1.1.3
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.77
+
+### Patch Changes
+
+- b2b69dcd: Added `holesky` testnet to the chains list
+- Updated dependencies [6cbd9a57]
+- Updated dependencies [7d978605]
+- Updated dependencies [b2b69dcd]
+  - @rainbow-me/rainbowkit@1.1.2
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.76
+
+### Patch Changes
+
+- Updated dependencies [b60e335c]
+  - @rainbow-me/rainbowkit@1.1.1
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.75
+
+### Patch Changes
+
+- Updated dependencies [b37f5d68]
+  - @rainbow-me/rainbowkit@1.1.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+
+## 0.0.74
+
+### Patch Changes
+
+- Updated dependencies [5b8d8219]
+- Updated dependencies [fb9405a4]
+- Updated dependencies [7643e706]
+- Updated dependencies [252f02e8]
+  - @rainbow-me/rainbowkit@1.0.12
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.73
+
+### Patch Changes
+
+- Updated dependencies [118dfe11]
+  - @rainbow-me/rainbowkit@1.0.11
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.72
+
+### Patch Changes
+
+- Updated dependencies [a129cb04]
+  - @rainbow-me/rainbowkit@1.0.10
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.71
+
+### Patch Changes
+
+- Updated dependencies [42a0c3e5]
+- Updated dependencies [67933ed5]
+- Updated dependencies [e7ae2571]
+- Updated dependencies [c434ca7a]
+- Updated dependencies [ad1f860e]
+- Updated dependencies [60968a5f]
+- Updated dependencies [7b31af24]
+  - @rainbow-me/rainbowkit@1.0.9
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.70
+
+### Patch Changes
+
+- Updated dependencies [eb319f3]
+- Updated dependencies [86be3f0]
+  - @rainbow-me/rainbowkit@1.0.8
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+
 ## 0.0.69
 
 ### Patch Changes
