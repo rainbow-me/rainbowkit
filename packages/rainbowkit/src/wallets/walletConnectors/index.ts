@@ -3,10 +3,12 @@ import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitKeepWallet, bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
+import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
+import { desigWallet } from './desigWallet/desigWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
@@ -16,6 +18,7 @@ import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
+import { oktoWallet } from './oktoWallet/oktoWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
@@ -25,6 +28,7 @@ import { rainbowWallet } from './rainbowWallet/rainbowWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
+import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
@@ -42,10 +46,12 @@ export {
   bitKeepWallet,
   bitskiWallet,
   braveWallet,
+  clvWallet,
   coin98Wallet,
   coinbaseWallet,
   coreWallet,
   dawnWallet,
+  desigWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
@@ -55,6 +61,7 @@ export {
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
+  oktoWallet,
   okxWallet,
   omniWallet,
   oneKeyWallet,
@@ -64,6 +71,7 @@ export {
   safeWallet,
   safeheronWallet,
   safepalWallet,
+  subWallet,
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
