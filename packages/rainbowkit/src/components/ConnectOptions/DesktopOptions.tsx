@@ -8,6 +8,7 @@ import React, {
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -115,6 +116,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   };
 
   const selectWallet = (wallet: WalletConnector) => {
+    // We still want to get the latest wallet id to show connected
+    // green badge on our custom WalletButton API
+    addLatestWalletId(wallet.id);
+
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 

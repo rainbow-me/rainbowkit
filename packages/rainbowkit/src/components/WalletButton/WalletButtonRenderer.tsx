@@ -27,7 +27,7 @@ import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext
 export interface WalletButtonRendererProps {
   wallet?: string;
   children: (renderProps: {
-    error: string;
+    error: boolean;
     loading: boolean;
     connected: boolean;
     ready: boolean;
@@ -56,7 +56,7 @@ export function WalletButtonRenderer({
   const connectionStatus = useConnectionStatus();
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const mobile = isMobile();
 
@@ -73,7 +73,7 @@ export function WalletButtonRenderer({
       // If you get error on desktop and thenswitch to mobile view
       // then connect your wallet the error will remain there. We will
       // reset the error in case that happens.
-      if (error) setError('');
+      if (isError) setIsError(false);
     },
     onDisconnect: clearLatestWalletId,
   });
@@ -97,10 +97,10 @@ export function WalletButtonRenderer({
   const connectWallet = async () => {
     try {
       setLoading(true);
-      if (error) setError('');
+      if (isError) setIsError(false);
       await firstConnector?.connect?.();
     } catch {
-      setError('Connection failed');
+      setIsError(true);
     } finally {
       setLoading(false);
     }
@@ -116,7 +116,7 @@ export function WalletButtonRenderer({
   return (
     <>
       {children({
-        error,
+        error: isError,
         loading,
         connected: isLastWalletIdConnected,
         ready,

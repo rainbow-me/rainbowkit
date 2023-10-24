@@ -41,6 +41,7 @@ const themeContractValues = {
     profileForeground: '',
     selectedOptionBorder: '',
     standby: '',
+    connected: '',
   },
   fonts: {
     body: '',

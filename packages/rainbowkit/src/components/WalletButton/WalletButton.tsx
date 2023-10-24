@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import * as styles from './WalletButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
 export const WalletButton = ({ wallet }: { wallet?: string }) => {
   return (
     <WalletButtonRenderer wallet={wallet}>
-      {({ ready, connect, connected, mounted, connector, loading, error }) => {
+      {({ ready, connect, connected, mounted, connector, loading }) => {
         const isDisabled = !ready || loading;
+        const i18n = useContext(I18nContext);
+        const connectorName = connector?.name || '';
 
         // SSR mismatch issue in next.js:
         // By default, "rainbow wallet" text is expected.
@@ -47,14 +50,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
               testId={`wallet-button-${connector?.id || ''}`}
               transition="default"
               width="full"
-              background={{
-                base: error
-                  ? 'connectButtonBackgroundError'
-                  : 'accentColorForeground',
-                hover: error
-                  ? 'connectButtonBackgroundError'
-                  : 'menuItemBackground',
-              }}
+              background="connectButtonBackground"
             >
               <Box
                 color="modalText"
@@ -71,43 +67,56 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                   flexDirection="row"
                   gap="12"
                   paddingRight="6"
-                  paddingLeft={error ? '6' : '0'}
                 >
-                  {!error ? (
-                    <Box>
-                      {loading ? (
-                        <SpinnerIcon />
-                      ) : (
-                        <AsyncImage
-                          background={connector?.iconBackground}
-                          borderRadius="6"
-                          height="28"
-                          src={connector?.iconUrl}
-                          width="28"
-                        />
-                      )}
-                    </Box>
-                  ) : null}
-
+                  <Box>
+                    {loading ? (
+                      <SpinnerIcon />
+                    ) : (
+                      <AsyncImage
+                        background={connector?.iconBackground}
+                        borderRadius="6"
+                        height="28"
+                        src={connector?.iconUrl}
+                        width="28"
+                      />
+                    )}
+                  </Box>
                   <Box
                     alignItems="center"
                     display="flex"
                     flexDirection="column"
                     width="full"
-                    color={error ? 'connectButtonTextError' : 'modalText'}
+                    color="modalText"
                   >
-                    <Box>{error ? error : connector?.name}</Box>
+                    <Box>
+                      {loading
+                        ? i18n.t('connect.status.opening', {
+                            wallet: connectorName,
+                          })
+                        : connectorName}
+                    </Box>
                   </Box>
 
-                  {connected ? (
-                    <Box
-                      background="standby"
-                      height="8"
-                      width="8"
-                      minWidth="8"
-                      minHeight="8"
-                      borderRadius="full"
-                    />
+                  {!loading ? (
+                    connected ? (
+                      <Box
+                        background="connected"
+                        height="8"
+                        width="8"
+                        minWidth="8"
+                        minHeight="8"
+                        borderRadius="full"
+                      />
+                    ) : (
+                      <Box
+                        background="error"
+                        height="8"
+                        width="8"
+                        minWidth="8"
+                        minHeight="8"
+                        borderRadius="full"
+                      />
+                    )
                   ) : null}
                 </Box>
               </Box>

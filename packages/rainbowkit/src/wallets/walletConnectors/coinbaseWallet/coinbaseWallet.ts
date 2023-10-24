@@ -8,13 +8,55 @@ export interface CoinbaseWalletOptions {
   chains: Chain[];
 }
 
+declare global {
+  interface Window {
+    coinbaseWalletExtension: Window['ethereum'];
+  }
+}
+
+function getCoinbaseWalletInjectedProvider(): Window['ethereum'] {
+  const isCoinbaseWallet = (
+    ethereum: NonNullable<Window['ethereum']> | any,
+  ) => {
+    // Identify if Coinbase Wallet injected provider is present.
+    const coinbaseWallet = !!ethereum.isCoinbaseWallet;
+
+    return coinbaseWallet;
+  };
+
+  const injectedProviderExist =
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
+
+  // No injected providers exist.
+  if (!injectedProviderExist) {
+    return;
+  }
+
+  if (window['coinbaseWalletExtension']) {
+    return window['coinbaseWalletExtension'];
+  }
+
+  // Coinbase Wallet was injected into window.ethereum.
+  if (isCoinbaseWallet(window.ethereum!)) {
+    return window.ethereum;
+  }
+
+  // Coinbase Wallet provider might be replaced by another
+  // injected provider, check the providers array.
+  if (window.ethereum?.providers) {
+    // ethereum.providers array is a non-standard way to
+    // preserve multiple injected providers. Eventually, EIP-5749
+    // will become a living standard and we will have to update this.
+    return window.ethereum.providers.find(isCoinbaseWallet);
+  }
+}
+
 export const coinbaseWallet = ({
   appName,
   chains,
   ...options
 }: CoinbaseWalletOptions): Wallet => {
-  const isCoinbaseWalletInjected =
-    typeof window !== 'undefined' && window.ethereum?.isCoinbaseWallet === true;
+  const isCoinbaseWalletInjected = Boolean(getCoinbaseWalletInjectedProvider());
 
   return {
     id: 'coinbase',

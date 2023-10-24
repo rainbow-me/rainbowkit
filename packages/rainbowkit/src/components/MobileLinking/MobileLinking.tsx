@@ -1,24 +1,35 @@
 import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
-import { ActionButton } from '../Button/ActionButton';
+import { CloseButton } from '../CloseButton/CloseButton';
 import { WalletButton } from '../ConnectOptions/MobileOptions';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { Text } from '../Text/Text';
 
 const MobileLinking = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(RainbowButtonContext);
+  const i18n = useContext(I18nContext);
+  const connectorName = connector?.name || '';
 
   return (
     <Box>
       <Box
         display="flex"
-        paddingTop="24"
         paddingBottom="32"
         justifyContent="center"
         alignItems="center"
         background="profileForeground"
         flexDirection="column"
       >
+        <Box
+          width="full"
+          display="flex"
+          justifyContent="flex-end"
+          marginTop="18"
+          marginRight="24"
+        >
+          <CloseButton onClose={onClose} />
+        </Box>
         <Box width="60">
           <WalletButton
             isCustomConnector
@@ -33,23 +44,18 @@ const MobileLinking = ({ onClose }: { onClose: () => void }) => {
             size="18"
             weight="semibold"
           >
-            Continue in {connector?.name}
+            {i18n.t('connect.status.opening_mobile', {
+              wallet: connectorName,
+            })}
           </Text>
         </Box>
 
         <Box maxWidth="310" marginTop="8">
           <Text textAlign="center" color="modalText" size="16" weight="medium">
-            Accept connection request in the wallet
+            {i18n.t('connect.status.confirm_mobile', {
+              wallet: connectorName,
+            })}
           </Text>
-        </Box>
-
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          marginTop="16"
-        >
-          <ActionButton label={'Dismiss'} size="medium" onClick={onClose} />
         </Box>
       </Box>
     </Box>
