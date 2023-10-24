@@ -44,7 +44,7 @@ const MobileLinking = ({ onClose }: { onClose: () => void }) => {
             size="18"
             weight="semibold"
           >
-            {i18n.t('connect.status.opening_mobile', {
+            {i18n.t('connect.status.connect_mobile', {
               wallet: connectorName,
             })}
           </Text>

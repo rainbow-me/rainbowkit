@@ -90,7 +90,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                   >
                     <Box>
                       {loading
-                        ? i18n.t('connect.status.opening', {
+                        ? i18n.t('connect.status.connecting', {
                             wallet: connectorName,
                           })
                         : connectorName}
