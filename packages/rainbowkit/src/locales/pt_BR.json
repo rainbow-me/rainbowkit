@@ -20,6 +20,23 @@
       "label": "Saiba mais"
     }
   },
+  "sign_in": {
+    "label": "Verifique sua conta",
+    "description": "Para concluir a conexão, você deve assinar uma mensagem em sua carteira para confirmar que você é o proprietário desta conta.",
+    "message": {
+      "send": "Enviar mensagem",
+      "preparing": "Preparando mensagem...",
+      "cancel": "Cancelar",
+      "preparing_error": "Erro ao preparar a mensagem, tente novamente!"
+    },
+    "signature": {
+      "waiting": "Aguardando assinatura...",
+      "verifying": "Verificando assinatura...",
+      "signing_error": "Erro ao assinar a mensagem, tente novamente!",
+      "verifying_error": "Erro ao verificar assinatura, tente novamente!",
+      "oops_error": "Ops, algo deu errado!"
+    }
+  },
   "connect": {
     "label": "Conectar",
     "title": "Conectar uma Carteira",
