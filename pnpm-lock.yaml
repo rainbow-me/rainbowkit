@@ -402,13 +402,13 @@ importers:
 
   packages/rainbow-button:
     dependencies:
+      '@rainbow-me/rainbowkit':
+        specifier: workspace:*
+        version: link:../rainbowkit
       react:
         specifier: '>=17'
         version: 18.2.0
     devDependencies:
-      '@rainbow-me/rainbowkit':
-        specifier: workspace:*
-        version: link:../rainbowkit
       '@wagmi/core':
         specifier: ^1.4.3
         version: 1.4.3(@types/react@18.2.21)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.16.3)

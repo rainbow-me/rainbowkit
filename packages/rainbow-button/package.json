@@ -26,12 +26,13 @@
     "typegen": "tsc --emitDeclarationOnly || true",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*"
+  },
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": "1.2.x",
     "react": ">=17"
   },
   "devDependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*",
     "@wagmi/core": "^1.4.3"
   },
   "repository": {
