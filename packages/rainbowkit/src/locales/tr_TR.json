@@ -20,6 +20,23 @@
       "label": "Daha fazla bilgi edinin"
     }
   },
+  "sign_in": {
+    "label": "Hesabınızı doğrulayın",
+    "description": "Bağlantıyı tamamlamak için, bu hesabın sahibi olduğunuzu doğrulamak için cüzdanınızdaki bir mesaja imza atmalısınız.",
+    "message": {
+      "send": "Mesajı gönder",
+      "preparing": "Mesaj hazırlanıyor...",
+      "cancel": "İptal",
+      "preparing_error": "Mesajı hazırlarken hata oluştu, lütfen tekrar deneyin!"
+    },
+    "signature": {
+      "waiting": "İmza bekleniyor...",
+      "verifying": "İmza doğrulanıyor...",
+      "signing_error": "Mesajı imzalarken hata oluştu, lütfen tekrar deneyin!",
+      "verifying_error": "İmza doğrulanırken hata oluştu, lütfen tekrar deneyin!",
+      "oops_error": "Hata, bir şeyler yanlış gitti!"
+    }
+  },
   "connect": {
     "label": "Bağlan",
     "title": "Bir Cüzdanı Bağla",

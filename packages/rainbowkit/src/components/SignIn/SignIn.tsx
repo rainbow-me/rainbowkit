@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
 import { useAccount, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
@@ -8,11 +8,13 @@ import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { useAuthenticationAdapter } from '../RainbowKitProvider/AuthenticationContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
+  const i18n = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
@@ -29,7 +31,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
     } catch {
       setState((x) => ({
         ...x,
-        errorMessage: 'Error preparing message, please retry!',
+        errorMessage: i18n.t('sign_in.message.preparing_error'),
         status: 'idle',
       }));
     }
@@ -84,7 +86,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
         return setState((x) => ({
           ...x,
-          errorMessage: 'Error signing message, please retry!',
+          errorMessage: i18n.t('sign_in.signature.signing_error'),
           status: 'idle',
         }));
       }
@@ -102,13 +104,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       } catch {
         return setState((x) => ({
           ...x,
-          errorMessage: 'Error verifying signature, please retry!',
+          errorMessage: i18n.t('sign_in.signature.verifying_error'),
           status: 'idle',
         }));
       }
     } catch {
       setState({
-        errorMessage: 'Oops, something went wrong!',
+        errorMessage: i18n.t('sign_in.signature.oops_error'),
         status: 'idle',
       });
     }
@@ -154,7 +156,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               textAlign="center"
               weight="heavy"
             >
-              Verify your account
+              {i18n.t('sign_in.label')}
             </Text>
           </Box>
           <Box
@@ -168,8 +170,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               size={mobile ? '16' : '14'}
               textAlign="center"
             >
-              To finish connecting, you must sign a message in your wallet to
-              verify that you are the owner of this account.
+              {i18n.t('sign_in.description')}
             </Text>
             {status === 'idle' && state.errorMessage ? (
               <Text
@@ -197,12 +198,12 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             }
             label={
               !state.nonce
-                ? 'Preparing message...'
+                ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
-                ? 'Waiting for signature...'
+                ? i18n.t('sign_in.signature.waiting')
                 : status === 'verifying'
-                ? 'Verifying signature...'
-                : 'Send message'
+                ? i18n.t('sign_in.signature.verifying')
+                : i18n.t('sign_in.message.send')
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}
@@ -234,7 +235,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
                 size={mobile ? '16' : '14'}
                 weight="bold"
               >
-                Cancel
+                {i18n.t('sign_in.message.cancel')}
               </Text>
             </Box>
           )}
