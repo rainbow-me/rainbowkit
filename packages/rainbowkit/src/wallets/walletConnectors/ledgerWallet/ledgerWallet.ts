@@ -77,21 +77,19 @@ export const ledgerWallet = ({
             'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
           steps: [
             {
-              description:
-                'We recommend putting Ledger Live on your home screen for quicker',
+              description: 'wallet_connectors.ledger.desktop.step1.description',
               step: 'install',
-              title: 'Open the Ledger Live app',
+              title: 'wallet_connectors.ledger.desktop.step1.title',
             },
             {
-              description: 'Set up a new Ledger or connect to an existing one.',
+              description: 'wallet_connectors.ledger.desktop.step2.description',
               step: 'create',
-              title: 'Set up your Ledger',
+              title: 'wallet_connectors.ledger.desktop.step2.title',
             },
             {
-              description:
-                'A connection prompt will appear for you to connect your wallet.',
+              description: 'wallet_connectors.ledger.desktop.step3.description',
               step: 'connect',
-              title: 'Connect',
+              title: 'wallet_connectors.ledger.desktop.step3.title',
             },
           ],
         },
@@ -109,22 +107,19 @@ export const ledgerWallet = ({
             'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
           steps: [
             {
-              description:
-                'We recommend putting Ledger Live on your home screen for quicker access.',
+              description: 'wallet_connectors.ledger.qr_code.step1.description',
               step: 'install',
-              title: 'Open the Ledger Live app',
+              title: 'wallet_connectors.ledger.qr_code.step1.title',
             },
             {
-              description:
-                'You can either sync with the desktop app or connect your Ledger.',
+              description: 'wallet_connectors.ledger.qr_code.step2.description',
               step: 'create',
-              title: 'Set up your Ledger',
+              title: 'wallet_connectors.ledger.qr_code.step2.title',
             },
             {
-              description:
-                'Tap WalletConnect then Switch to Scanner. After you scan, a connection prompt will appear for you to connect your wallet.',
+              description: 'wallet_connectors.ledger.qr_code.step3.description',
               step: 'scan',
-              title: 'Scan the code',
+              title: 'wallet_connectors.ledger.qr_code.step3.title',
             },
           ],
         },
