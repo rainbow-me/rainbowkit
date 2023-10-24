@@ -3,7 +3,8 @@
   "description": "Rainbow connector button",
   "version": "0.1.0",
   "files": [
-    "dist"
+    "dist",
+    "styles.css"
   ],
   "keywords": [],
   "author": "Rainbow",
@@ -11,7 +12,7 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
-    "./styles.css": "./dist/rainbowkit/styles/styles.css"
+    "./styles.css": "./dist/index.css"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

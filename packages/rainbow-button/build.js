@@ -38,9 +38,8 @@ const mainBuild = esbuild
   .catch(() => process.exit(1));
 
 const packageBuild = esbuild.build({
-  entryPoints: ['./node_modules/@rainbow-me/rainbowkit/styles.css'],
-  format: 'esm',
-  outdir: 'dist/rainbowkit/styles',
+  entryPoints: ['../rainbowkit/dist/index.css'],
+  outdir: 'dist',
   watch: isWatching
     ? {
         onRebuild(error, result) {
