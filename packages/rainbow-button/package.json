@@ -6,7 +6,14 @@
     "dist",
     "styles.css"
   ],
-  "keywords": [],
+  "keywords": [
+    "rainbow",
+    "wallet",
+    "ethereum",
+    "react",
+    "react-hook",
+    "hooks"
+  ],
   "author": "Rainbow",
   "license": "MIT",
   "type": "module",
