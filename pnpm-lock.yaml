@@ -408,6 +408,15 @@ importers:
       react:
         specifier: '>=17'
         version: 18.2.0
+      react-dom:
+        specifier: '>=17'
+        version: 18.2.0(react@18.2.0)
+      viem:
+        specifier: ~0.3.19 || ^1.0.0
+        version: 1.16.3(typescript@5.0.4)
+      wagmi:
+        specifier: ~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0 || ~1.4.0
+        version: 1.4.3(@types/react@18.2.21)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.16.3)
     devDependencies:
       '@wagmi/core':
         specifier: ^1.4.3
@@ -16817,6 +16826,7 @@ packages:
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
     dependencies:
       js-tokens: 4.0.0
 
