@@ -67,7 +67,7 @@ export function WalletButtonRenderer({
     if (!connectModalOpen && connector) setConnector(null);
   }, [connectModalOpen]);
 
-  const { isConnected, isDisconnected } = useAccount({
+  const { isConnected, isDisconnected, isConnecting } = useAccount({
     onConnect: () => {
       /*  const lastClickedWalletName = getRecent */
       // If you get error on desktop and thenswitch to mobile view
@@ -109,7 +109,8 @@ export function WalletButtonRenderer({
   // If anyone uses SIWE then we don't want them to be able to connect
   // if they are in a process of authentication
   const isStatusLoading = connectionStatus === 'loading';
-  const ready = !!openConnectModal && firstConnector && !isStatusLoading;
+  const ready =
+    !isConnecting && !!openConnectModal && firstConnector && !isStatusLoading;
 
   const isNotSupported = !firstConnector?.installed || !firstConnector?.ready;
 
