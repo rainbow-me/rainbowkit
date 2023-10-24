@@ -109,6 +109,9 @@
     "mobile_and_extension": {
       "description": "Mobile Wallet and Extension"
     },
+    "mobile_and_desktop": {
+      "description": "Mobile and Desktop Wallet"
+    },
     "looking_for": {
       "title": "Not what you're looking for?",
       "mobile": {

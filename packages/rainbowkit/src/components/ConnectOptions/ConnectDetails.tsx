@@ -140,7 +140,7 @@ export function GetDetail({
                       {hasMobileAndExtension
                         ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileAndDesktop
-                        ? 'Mobile and Desktop Wallets'
+                        ? i18n.t('get.mobile_and_desktop.description')
                         : hasMobileCompanionApp
                         ? i18n.t('get.mobile.description')
                         : hasExtension
