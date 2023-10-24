@@ -20,6 +20,23 @@
       "label": "了解更多"
     }
   },
+  "sign_in": {
+    "label": "验证您的账户",
+    "description": "为了完成连接，您必须在钱包中签署一条消息，以验证您是此账户的所有者。",
+    "message": {
+      "send": "发送消息",
+      "preparing": "准备消息中...",
+      "cancel": "取消",
+      "preparing_error": "准备消息时出错，请重试！"
+    },
+    "signature": {
+      "waiting": "等待签名...",
+      "verifying": "正在验证签名...",
+      "signing_error": "签署消息时出错，请重试！",
+      "verifying_error": "验证签名时出错，请重试！",
+      "oops_error": "哎呀，出了点问题！"
+    }
+  },
   "connect": {
     "label": "连接",
     "title": "连接钱包",

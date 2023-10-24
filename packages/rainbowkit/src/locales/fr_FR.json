@@ -20,6 +20,23 @@
       "label": "En savoir plus"
     }
   },
+  "sign_in": {
+    "label": "Vérifiez votre compte",
+    "description": "Pour terminer la connexion, vous devez signer un message dans votre portefeuille pour vérifier que vous êtes le propriétaire de ce compte.",
+    "message": {
+      "send": "Envoyer le message",
+      "preparing": "Préparation du message...",
+      "cancel": "Annuler",
+      "preparing_error": "Erreur lors de la préparation du message, veuillez réessayer!"
+    },
+    "signature": {
+      "waiting": "En attente de la signature...",
+      "verifying": "Vérification de la signature...",
+      "signing_error": "Erreur lors de la signature du message, veuillez réessayer!",
+      "verifying_error": "Erreur lors de la vérification de la signature, veuillez réessayer!",
+      "oops_error": "Oups, quelque chose a mal tourné!"
+    }
+  },
   "connect": {
     "label": "Connecter",
     "title": "Connecter un portefeuille",

@@ -1,5 +1,129 @@
 # @rainbow-me/rainbowkit
 
+## 1.1.3
+
+### Patch Changes
+
+- 02e796c0: SafePal Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { safepalWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [safepalWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- efb8566e: SubWallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { subWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains, projectId });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [subWallet({ chains, projectId })],
+    },
+  ]);
+  ```
+
+- 4b7a44c8: Okto Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { oktoWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, projectId, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [oktoWallet({ projectId, chains })],
+    },
+  ]);
+  ```
+
+- 2c8abbb2: Zeal Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { zealWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [zealWallet({ chains })],
+    },
+  ]);
+  ```
+
+- e41103fb: CLV Wallet Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { clvWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [clvWallet({ chains, projectId })],
+    },
+  ]);
+  ```
+
+- b0022aea: Desig Wallet support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { desigWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains, projectId });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [desigWallet({ chains })],
+    },
+  ]);
+  ```
+
 ## 1.1.2
 
 ### Patch Changes

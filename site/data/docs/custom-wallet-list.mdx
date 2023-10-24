@@ -166,6 +166,16 @@ braveWallet(options: {
 });
 ```
 
+### CLV Wallet
+```tsx
+import { clvWallet } from '@rainbow-me/rainbowkit/wallets';
+
+clvWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Coinbase Wallet
 
 ```tsx
@@ -205,6 +215,16 @@ coreWallet(options: {
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 
 dawnWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Desig Wallet
+
+```tsx
+import { desigWallet } from '@rainbow-me/rainbowkit/wallets';
+
+desigWallet(options: {
   chains: Chain[];
 });
 ```
@@ -287,6 +307,17 @@ metaMaskWallet(options: {
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 mewWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Okto
+
+```tsx
+import { oktoWallet } from '@rainbow-me/rainbowkit/wallets';
+
+oktoWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
@@ -381,6 +412,17 @@ import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
 safepalWallet(options: {
   projectId: string;
   chains: Chain[];
+});
+```
+
+#### SubWallet
+
+```tsx
+import { subWallet } from '@rainbow-me/rainbowkit/wallets';
+
+subWallet(options: {
+  chains: Chain[];
+  projectId: string;
 });
 ```
 
