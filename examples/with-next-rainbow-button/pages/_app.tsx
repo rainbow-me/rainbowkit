@@ -1,10 +1,10 @@
 import "../styles/global.css";
-import "@rainbow-me/button/styles.css";
+import "@rainbow-me/rainbow-button/styles.css";
 import type { AppProps } from "next/app";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/button";
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet],

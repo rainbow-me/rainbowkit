@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-me/button",
+  "name": "@rainbow-me/rainbow-button",
   "description": "Rainbow connector button",
   "version": "0.1.0",
   "files": [
@@ -36,6 +36,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rainbow-me/rainbowkit.git",
-    "directory": "packages/button"
+    "directory": "packages/rainbow-button"
   }
 }

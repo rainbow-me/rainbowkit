@@ -1,4 +1,4 @@
-import { RainbowButton } from '@rainbow-me/button';
+import { RainbowButton } from '@rainbow-me/rainbow-button';
 import {
   ConnectButton,
   WalletButton,
