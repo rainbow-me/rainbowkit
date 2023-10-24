@@ -20,6 +20,23 @@
       "label": "Obtener más información"
     }
   },
+  "sign_in": {
+    "label": "Verifica tu cuenta",
+    "description": "Para terminar de conectar, debes firmar un mensaje en tu billetera para verificar que eres el propietario de esta cuenta.",
+    "message": {
+      "send": "Enviar mensaje",
+      "preparing": "Preparando mensaje...",
+      "cancel": "Cancelar",
+      "preparing_error": "Error al preparar el mensaje, ¡intenta de nuevo!"
+    },
+    "signature": {
+      "waiting": "Esperando firma...",
+      "verifying": "Verificando firma...",
+      "signing_error": "Error al firmar el mensaje, ¡intenta de nuevo!",
+      "verifying_error": "Error al verificar la firma, ¡intenta de nuevo!",
+      "oops_error": "¡Ups! Algo salió mal."
+    }
+  },
   "connect": {
     "label": "Conectar",
     "title": "Conectar una billetera",
