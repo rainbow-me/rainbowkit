@@ -3,7 +3,7 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
-import { getPlatform, PlatformType } from '../../utils/platforms';
+import { PlatformType, getPlatform } from '../../utils/platforms';
 import { InstructionStepName } from '../../wallets/Wallet';
 import {
   WalletConnector,
@@ -52,13 +52,13 @@ const getPlatformSrc: () => Promise<string> = async () => {
   const platform = getPlatform();
   switch (platform) {
     case PlatformType.Windows:
-      return (await import(`../Icons/Windows.svg`)).default;
+      return (await import('../Icons/Windows.svg')).default;
     case PlatformType.MacOS:
-      return (await import(`../Icons/Macos.svg`)).default;
+      return (await import('../Icons/Macos.svg')).default;
     case PlatformType.Linux:
-      return (await import(`../Icons/Linux.svg`)).default;
+      return (await import('../Icons/Linux.svg')).default;
     default:
-      return (await import(`../Icons/Linux.svg`)).default;
+      return (await import('../Icons/Linux.svg')).default;
   }
 };
 
@@ -98,7 +98,7 @@ export function GetDetail({
             (wallet) =>
               wallet.extensionDownloadUrl ||
               wallet.desktopDownloadUrl ||
-              (wallet.qrCode && wallet.downloadUrls?.qrCode)
+              (wallet.qrCode && wallet.downloadUrls?.qrCode),
           )
           .map((wallet) => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
@@ -688,7 +688,7 @@ export function DownloadOptionsDetail({
               changeWalletStep(
                 desktop?.instructions
                   ? WalletStep.InstructionsDesktop
-                  : WalletStep.Connect
+                  : WalletStep.Connect,
               )
             }
             title={`${wallet.name} for ${platform}`}

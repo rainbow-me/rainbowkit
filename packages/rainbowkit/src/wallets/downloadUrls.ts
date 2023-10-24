@@ -1,6 +1,6 @@
 import { BrowserType, getBrowser } from '../utils/browsers';
 import { isIOS } from '../utils/isMobile';
-import { getPlatform, PlatformType } from '../utils/platforms';
+import { PlatformType, getPlatform } from '../utils/platforms';
 import { WalletInstance } from './Wallet';
 
 export const getExtensionDownloadUrl = (wallet?: WalletInstance) => {

@@ -20,7 +20,7 @@ export function isMacOS(): boolean {
 
 export function isLinux(): boolean {
   return ['Ubuntu', 'Mint', 'Fedora', 'Debian', 'Arch', 'Linux'].includes(
-    os.name!
+    os.name!,
   );
 }
 

@@ -100,7 +100,7 @@ export const ledgerWallet = ({
         getUri: async () => {
           const uri = await getWalletConnectUri(
             connector,
-            walletConnectVersion
+            walletConnectVersion,
           );
           return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
         },
