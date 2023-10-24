@@ -20,6 +20,23 @@
       "label": "Pelajari lebih lanjut"
     }
   },
+  "sign_in": {
+    "label": "Verifikasi akun Anda",
+    "description": "Untuk menyelesaikan koneksi, Anda harus menandatangani sebuah pesan di dompet Anda untuk memastikan bahwa Anda adalah pemilik dari akun ini.",
+    "message": {
+      "send": "Kirim pesan",
+      "preparing": "Mempersiapkan pesan...",
+      "cancel": "Batal",
+      "preparing_error": "Kesalahan dalam mempersiapkan pesan, silakan coba lagi!"
+    },
+    "signature": {
+      "waiting": "Menunggu tanda tangan...",
+      "verifying": "Memverifikasi tanda tangan...",
+      "signing_error": "Kesalahan dalam menandatangani pesan, silakan coba lagi!",
+      "verifying_error": "Kesalahan dalam memverifikasi tanda tangan, silakan coba lagi!",
+      "oops_error": "Ups, ada yang salah!"
+    }
+  },
   "connect": {
     "label": "Hubungkan",
     "title": "Hubungkan Dompet",
