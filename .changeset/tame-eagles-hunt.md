@@ -1,8 +1,33 @@
 ---
-"with-next-rainbow-button": patch
-"@rainbow-me/rainbowkit": patch
-"example": patch
-"@rainbow-me/rainbow-button": patch
+"@rainbow-me/rainbowkit": minor
 ---
 
-Introduced a new WalletButton component for custom connectors. Also added the RainbowButton. Both components are designed to work well with RainbowKit.
+The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+Like the `ConnectButton`, the `WalletButton.Custom` component is available for custom implementations and styling.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
