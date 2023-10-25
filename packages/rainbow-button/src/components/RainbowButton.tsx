@@ -10,6 +10,7 @@ export function RainbowButtonProvider({
   // This is due to the current incompatibility between the 'rainbowkit' chain modal and the 'rainbow' button library.
   // As a workaround, users can utilize 'wagmi' to switch chains.
   return (
+    // chains array is intentionally left empty
     <RainbowKitProvider chains={[]} {...options}>
       {children}
     </RainbowKitProvider>
