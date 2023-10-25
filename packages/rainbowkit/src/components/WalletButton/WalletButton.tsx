@@ -107,16 +107,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                         minHeight="8"
                         borderRadius="full"
                       />
-                    ) : (
-                      <Box
-                        background="error"
-                        height="8"
-                        width="8"
-                        minWidth="8"
-                        minHeight="8"
-                        borderRadius="full"
-                      />
-                    )
+                    ) : null
                   ) : null}
                 </Box>
               </Box>
