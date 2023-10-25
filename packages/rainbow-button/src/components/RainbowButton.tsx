@@ -5,10 +5,10 @@ import React from 'react';
 export function RainbowButtonProvider({
   children,
   ...options
-}: Omit<RainbowKitProviderProps, 'chains'>) {
-  // NOTE: The chains array is intentionally left empty.
-  // This is due to the current incompatibility between the 'rainbowkit' chain modal and the 'rainbow' button library.
-  // As a workaround, users can utilize 'wagmi' to switch chains.
+}: Omit<
+  RainbowKitProviderProps,
+  'chains' | 'avatar' | 'initialChain' | 'modalSize' | 'showRecentTransactions'
+>) {
   return (
     // chains array is intentionally left empty
     <RainbowKitProvider chains={[]} {...options}>
