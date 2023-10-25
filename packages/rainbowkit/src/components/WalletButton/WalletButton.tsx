@@ -85,7 +85,6 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                     alignItems="center"
                     display="flex"
                     flexDirection="column"
-                    width="full"
                     color="modalText"
                   >
                     <Box>
@@ -97,17 +96,16 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                     </Box>
                   </Box>
 
-                  {!loading ? (
-                    connected ? (
-                      <Box
-                        background="connected"
-                        height="8"
-                        width="8"
-                        minWidth="8"
-                        minHeight="8"
-                        borderRadius="full"
-                      />
-                    ) : null
+                  {connected ? (
+                    <Box
+                      background="connectionIndicator"
+                      borderColor="selectedOptionBorder"
+                      borderRadius="full"
+                      borderStyle="solid"
+                      borderWidth="1"
+                      height="8"
+                      width="8"
+                    />
                   ) : null}
                 </Box>
               </Box>

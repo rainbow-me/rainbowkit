@@ -19,7 +19,6 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-connectButtonInnerBackground": "linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06))",
         "--rk-colors-connectButtonText": "#25292E",
         "--rk-colors-connectButtonTextError": "#FFF",
-        "--rk-colors-connected": "#00E676",
         "--rk-colors-connectionIndicator": "#30E000",
         "--rk-colors-downloadBottomCardBackground": "linear-gradient(126deg, rgba(255, 255, 255, 0) 9.49%, rgba(171, 171, 171, 0.04) 71.04%), #FFFFFF",
         "--rk-colors-downloadTopCardBackground": "linear-gradient(126deg, rgba(171, 171, 171, 0.2) 9.49%, rgba(255, 255, 255, 0) 71.04%), #FFFFFF",
