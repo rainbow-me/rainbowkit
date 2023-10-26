@@ -1,9 +1,8 @@
 import React from 'react';
-import { WalletButton } from './WalletButton';
-import { renderWithProviders } from '../../../test';
-import { cleanup } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi';
-import { describe, expect, it, beforeEach, afterEach } from 'vitest';
+import { renderWithProviders } from '../../../test';
+import { WalletButton } from './WalletButton';
 
 describe('<WalletButton />', () => {
   const getWalletButtonLabel = async (connectorId?: string) => {
