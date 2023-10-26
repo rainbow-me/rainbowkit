@@ -1,0 +1,27 @@
+{
+  "name": "with-next-wallet-button",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbow-button": "workspace:*",
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "~1.16.3",
+    "wagmi": "~1.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.12",
+    "@types/react": "^18.2.21",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^12.1.6",
+    "typescript": "^5.0.4"
+  }
+}
