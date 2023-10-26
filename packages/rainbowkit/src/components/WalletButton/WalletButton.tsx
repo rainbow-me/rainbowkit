@@ -87,7 +87,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                     flexDirection="column"
                     color="modalText"
                   >
-                    <Box>
+                    <Box testId={`wallet-button-label-${connector?.id || ''}`}>
                       {loading
                         ? i18n.t('connect.status.connecting', {
                             wallet: connectorName,
