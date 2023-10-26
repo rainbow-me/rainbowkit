@@ -5,7 +5,7 @@ import { Box } from '../Box/Box';
 import { Text } from '../Text/Text';
 
 interface ProfileDetailsActionProps {
-  label: string;
+  label?: string;
   action?: () => void;
   icon: JSX.Element;
   url?: string;
@@ -55,11 +55,11 @@ export function ProfileDetailsAction({
         <Box color="modalText" height="max">
           {icon}
         </Box>
-        <Box>
-          <Text color="modalText" size={mobile ? '12' : '13'} weight="semibold">
+        {label ? <Box>
+          <Text color='modalText' size={mobile ? '12' : '13'} weight='semibold'>
             {label}
           </Text>
-        </Box>
+        </Box> : null}
       </Box>
     </Box>
   );

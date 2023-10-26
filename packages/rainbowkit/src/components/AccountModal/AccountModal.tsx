@@ -28,7 +28,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
     <>
       {address && (
         <Dialog onClose={onClose} open={open} titleId={titleId}>
-          <DialogContent bottomSheetOnMobile padding="0">
+          <DialogContent wide bottomSheetOnMobile padding="0">
             <ProfileDetails
               address={address}
               balanceData={balanceData}
