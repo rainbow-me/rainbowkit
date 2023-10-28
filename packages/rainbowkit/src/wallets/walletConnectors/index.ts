@@ -13,6 +13,7 @@ import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
+import { hyperPlayWallet } from './hyperPlayWallet/hyperPlayWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -56,6 +57,7 @@ export {
   foxWallet,
   frameWallet,
   frontierWallet,
+  hyperPlayWallet,
   imTokenWallet,
   injectedWallet,
   ledgerWallet,
