@@ -31,6 +31,7 @@ import { safepalWallet } from './safepalWallet/safepalWallet';
 import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
+import { tokenaryWallet } from './tokenaryWallet/tokenaryWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
@@ -74,6 +75,7 @@ export {
   subWallet,
   tahoWallet,
   talismanWallet,
+  tokenaryWallet,
   tokenPocketWallet,
   trustWallet,
   uniswapWallet,
