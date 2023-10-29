@@ -19,7 +19,7 @@ export const hyperPlayWallet = ({
   ...options
 }: HyperPlayWalletOptions & InjectedConnectorOptions): Wallet => {
   // check if MetaMask is installed, else use WalletConnect
-  const shouldUseWalletConnect = window.ethereum?.isMetaMask ? false : true;
+  const shouldUseMetamask = window.ethereum?.isMetaMask ? true : false;
 
   return {
     id: 'hyperplay',
@@ -36,19 +36,19 @@ export const hyperPlayWallet = ({
     createConnector: () => {
       const getUriQR = async () => await getWalletConnectUri(connector, '2');
 
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
+      const connector = shouldUseMetamask
+        ? new InjectedConnector({
+            chains,
+            options: { getProvider: () => window.ethereum, ...options },
+          })
+        : getWalletConnectConnector({
             projectId,
             chains,
             version: '2',
-          })
-        : new InjectedConnector({
-            chains,
-            options: { getProvider: () => window.ethereum, ...options },
           });
 
       const mobileConnector = {
-        getUri: shouldUseWalletConnect ? getUriQR : undefined,
+        getUri: shouldUseMetamask ? undefined : getUriQR,
       };
 
       let qrConnector = undefined;
@@ -77,7 +77,7 @@ export const hyperPlayWallet = ({
         ],
       };
 
-      if (shouldUseWalletConnect) {
+      if (!shouldUseMetamask) {
         qrConnector = {
           getUri: getUriQR,
           instructions,
