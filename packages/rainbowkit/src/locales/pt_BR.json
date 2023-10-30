@@ -760,6 +760,144 @@
           "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
         }
       }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Zeal",
+          "description": "Recomendamos fixar o Zeal na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão da Carteira SafePal",
+          "description": "Clique no canto superior direito do seu navegador e fixe a Carteira SafePal para fácil acesso."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar a Carteira SafePal, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Carteira SafePal",
+          "description": "Coloque a Carteira SafePal na tela inicial para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Crie uma nova carteira ou importe uma existente."
+        },
+        "step3": {
+          "title": "Toque em WalletConnect nas Configurações",
+          "description": "Escolha Nova Conexão, em seguida, escaneie o código QR e confirme o prompt para conectar."
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Desig",
+          "description": "Recomendamos fixar Desig na sua barra de tarefas para facilitar o acesso à sua carteira."
+        },
+        "step2": {
+          "title": "Criar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão SubWallet",
+          "description": "Recomendamos fixar SubWallet na sua barra de tarefas para acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase de recuperação com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo SubWallet",
+          "description": "Recomendamos colocar SubWallet na tela inicial para acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão CLV Wallet",
+          "description": "Recomendamos fixar CLV Wallet na sua barra de tarefas para acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize seu navegador",
+          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo da carteira CLV",
+          "description": "Recomendamos colocar a Carteira CLV na tela inicial para acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer backup de sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de escanear",
+          "description": "Depois que você escanear, um prompt de conexão aparecerá para você conectar sua carteira."
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Okto",
+          "description": "Adicione Okto à sua tela inicial para acesso rápido"
+        },
+        "step2": {
+          "title": "Crie uma carteira MPC",
+          "description": "Crie uma conta e gere uma carteira"
+        },
+        "step3": {
+          "title": "Toque em WalletConnect nas Configurações",
+          "description": "Toque no ícone Scan QR no canto superior direito e confirme o prompt para conectar."
+        }
+      }
     }
   }
 }

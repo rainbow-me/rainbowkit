@@ -760,6 +760,144 @@
           "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하십시오."
         }
       }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "Zeal 확장 프로그램을 설치하십시오",
+          "description": "월렛에 더 빠르게 액세스할 수 있도록 Zeal을 작업 표시 줄에 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "SafePal Wallet 확장 프로그램을 설치하세요",
+          "description": "브라우저의 오른쪽 상단에서 클릭하고 SafePal Wallet을 고정하여 쉽게 접근하세요."
+        },
+        "step2": {
+          "title": "지갑을 만들거나 가져옵니다",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "SafePal Wallet을 설정한 후에는 아래를 클릭하여 브라우저를 새로 고치고 확장 기능을 로드하십시오."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "SafePal Wallet 앱을 열십시오",
+          "description": "월렛에 빠르게 액세스할 수 있도록 SafePal Wallet을 홈 화면에 두십시오."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "설정에서 WalletConnect를 탭하십시오",
+          "description": "새 연결을 선택하고 QR 코드를 스캔한 뒤, 연결하려는 프롬프트를 확인합니다."
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "Desig 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 쉽게 접근하기 위해 작업 표시줄에 Desig을 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "SubWallet 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 작업 표시줄에 SubWallet을 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "반드시 안전한 방법을 사용하여 지갑을 백업하십시오. 복구 문구를 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "SubWallet 앱 열기",
+          "description": "더 빠른 접근을 위해 SubWallet을 홈 화면에 두는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다."
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "CLV Wallet 확장 프로그램 설치",
+          "description": "당신의 지갑에 더 빠르게 접근하기 위해 작업 표시줄에 CLV Wallet을 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로 고치고 확장 프로그램을 로드하세요."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "CLV Wallet 앱을 엽니다",
+          "description": "더 빠른 접근을 위해 CLV Wallet을 홈 화면에 놓는 것이 좋습니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하십시오. 절대로 비밀 구문을 누구와도 공유하지 마십시오."
+        },
+        "step3": {
+          "title": "스캔 버튼을 누릅니다",
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다."
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Okto 앱을 엽니다",
+          "description": "빠른 접근을 위해 Okto를 홈 화면에 추가합니다"
+        },
+        "step2": {
+          "title": "MPC Wallet을 만듭니다",
+          "description": "계정을 만들고 지갑을 생성합니다"
+        },
+        "step3": {
+          "title": "설정에서 WalletConnect를 탭하십시오",
+          "description": "오른쪽 상단의 QR 아이콘을 탭하고 연결하려면 알림을 확인합니다."
+        }
+      }
     }
   }
 }
