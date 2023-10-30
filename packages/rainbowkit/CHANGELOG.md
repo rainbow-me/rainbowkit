@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 1.1.4
+
+### Patch Changes
+
+- 9f68c300: Fixed an issue with Trust Wallet detection in Trust's in-app mobile browser
+- 3f595c12: Added localization support in the `Authentication` flow for SIWE
+- e2075b31: Improved Coinbase Wallet detection when multiple wallets are active
+
 ## 1.1.3
 
 ### Patch Changes
