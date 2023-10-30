@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "محفظة موبايل وملحق"
     },
+    "mobile_and_desktop": {
+      "description": "محفظة الموبايل والكمبيوتر"
+    },
     "looking_for": {
       "title": "ليست هذه هي ما تبحث عنه؟",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "أضف إلى %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} لـ %{platform}",
+      "description": "قم بالوصول إلى محفظتك بشكل أصلي من كمبيوترك القوي.",
+      "download": {
+        "label": "أضف إلى %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "تحديث"
+      },
+      "learn_more": {
+        "label": "تعلم المزيد"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "اتصل"
       },
       "learn_more": {
         "label": "تعلم المزيد"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "اضغط على WalletConnect في الإعدادات",
           "description": "اضغط على أيقونة فحص الشاشة في الجهة العليا اليمنى وأكد الإدخال للاتصال."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "افتح تطبيق Ledger Live",
+          "description": "نوصي بوضع Ledger Live على شاشة الرئيسية لديك لسرعة الوصول."
+        },
+        "step2": {
+          "title": "قم بإعداد Ledger الخاص بك",
+          "description": "قم بإعداد Ledger جديد أو قم بالاتصال بواحد موجود ."
+        },
+        "step3": {
+          "title": "اتصل",
+          "description": "بعد المسح، سوف يظهر لك نافذة الاتصال لتوصيل محفظتك."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "افتح تطبيق Ledger Live",
+          "description": "نوصي بوضع Ledger Live على شاشة الرئيسية لديك لسرعة الوصول."
+        },
+        "step2": {
+          "title": "قم بإعداد Ledger الخاص بك",
+          "description": "يمكنك إما المزامنة مع تطبيق سطح المكتب أو توصيل Ledger الخاص بك."
+        },
+        "step3": {
+          "title": "مسح الرمز",
+          "description": "اضغط على WalletConnect ثم انتقل إلى الفحص. بعد المسح، سوف يظهر لك نافذة الاتصال لتوصيل محفظتك."
         }
       }
     }

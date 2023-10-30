@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "モバイルウォレットと拡張機能"
     },
+    "mobile_and_desktop": {
+      "description": "モバイルとデスクトップウォレット"
+    },
     "looking_for": {
       "title": "お探しのウォレットがありませんか？",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "%{browser}に追加"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} for %{platform}",
+      "description": "あなたの強力なデスクトップからネイティブにウォレットにアクセスします。",
+      "download": {
+        "label": "%{platform}に追加する"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "更新"
+      },
+      "learn_more": {
+        "label": "詳しくはこちら"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "接続"
       },
       "learn_more": {
         "label": "詳しくはこちら"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "設定でWalletConnectをタップします",
           "description": "右上のScan QRアイコンをタップし、接続するためのプロンプトを確認します。"
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Ledger Liveアプリを開く",
+          "description": "より速いアクセスのために、ホーム画面にLedger Liveを置くことを推奨します。"
+        },
+        "step2": {
+          "title": "あなたのLedgerを設定する",
+          "description": "新しいLedgerを設定するか、既存のものに接続します。"
+        },
+        "step3": {
+          "title": "接続",
+          "description": "スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Ledger Liveアプリを開く",
+          "description": "より速いアクセスのために、ホーム画面にLedger Liveを置くことを推奨します。"
+        },
+        "step2": {
+          "title": "あなたのLedgerを設定する",
+          "description": "デスクトップアプリと同期するか、あなたのLedgerに接続することができます。"
+        },
+        "step3": {
+          "title": "コードをスキャンする",
+          "description": "WalletConnectをタップし、スキャナーに切り替えてください。スキャン後、ウォレットを接続するための接続プロンプトが表示されます。"
         }
       }
     }

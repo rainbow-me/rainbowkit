@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "모바일 지갑 및 확장 프로그램"
     },
+    "mobile_and_desktop": {
+      "description": "모바일 및 데스크톱 지갑"
+    },
     "looking_for": {
       "title": "찾고 계신 것이 아닌가요?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "추가하기 %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} 용 %{platform}",
+      "description": "강력한 데스크톱에서 네이티브로 지갑에 접근하세요.",
+      "download": {
+        "label": "%{platform}에 추가"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "새로고침"
+      },
+      "learn_more": {
+        "label": "더 알아보기"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "연결"
       },
       "learn_more": {
         "label": "더 알아보기"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "설정에서 WalletConnect를 탭하십시오",
           "description": "오른쪽 상단의 QR 아이콘을 탭하고 연결하려면 알림을 확인합니다."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Ledger Live 앱을 엽니다",
+          "description": "빠른 접근을 위해 Ledger Live를 홈화면에 두는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "Ledger 설정",
+          "description": "새 Ledger를 설정하거나 기존 Ledger에 연결하세요."
+        },
+        "step3": {
+          "title": "연결",
+          "description": "스캔 후 연결 요청이 나타나며, 이를 통해 지갑을 연결할 수 있습니다."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Ledger Live 앱을 엽니다",
+          "description": "빠른 접근을 위해 Ledger Live를 홈화면에 두는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "Ledger 설정",
+          "description": "데스크톱 앱과 동기화하거나 Ledger를 연결할 수 있습니다."
+        },
+        "step3": {
+          "title": "코드를 스캔하십시오",
+          "description": "WalletConnect를 탭하고 스캐너로 전환합니다. 스캔 후 연결 요청이 나타나며, 이를 통해 지갑을 연결할 수 있습니다."
         }
       }
     }
