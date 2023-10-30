@@ -140,6 +140,13 @@
       "download": {
         "label": "Add to %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} for %{platform}",
+      "description": "Access your wallet natively from your powerful desktop.",
+      "download": {
+        "label": "Add to %{platform}"
+      }
     }
   },
 
@@ -163,6 +170,14 @@
     "extension": {
       "refresh": {
         "label": "Refresh"
+      },
+      "learn_more": {
+        "label": "Learn More"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Connect"
       },
       "learn_more": {
         "label": "Learn More"

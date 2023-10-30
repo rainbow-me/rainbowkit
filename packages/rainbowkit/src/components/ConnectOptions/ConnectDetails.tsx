@@ -680,8 +680,10 @@ export function DownloadOptionsDetail({
         )}
         {desktopDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={`Add to ${platform}`}
-            description="Access your wallet natively from your powerful desktop."
+            actionLabel={i18n.t('get_options.desktop.download.label', {
+              platform,
+            })}
+            description={i18n.t('get_options.desktop.description')}
             iconUrl={getPlatformSrc}
             isCompact={isCompact}
             onAction={() =>
@@ -691,7 +693,10 @@ export function DownloadOptionsDetail({
                   : WalletStep.Connect,
               )
             }
-            title={`${wallet.name} for ${platform}`}
+            title={i18n.t('get_options.desktop.title', {
+              wallet: wallet.name,
+              platform,
+            })}
             url={desktopDownloadUrl}
             variant="desktop"
           />
@@ -984,6 +989,8 @@ export function InstructionDesktopDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -1021,10 +1028,10 @@ export function InstructionDesktopDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {d.title}
+                {i18n.t(d.title)}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {d.description}
+                {i18n.t(d.description)}
               </Text>
             </Box>
           </Box>
@@ -1039,7 +1046,10 @@ export function InstructionDesktopDetail({
         justifyContent="center"
         marginBottom="16"
       >
-        <ActionButton label="Connect" onClick={() => connectWallet(wallet)} />
+        <ActionButton
+          label={i18n.t('get_instructions.desktop.connect.label')}
+          onClick={() => connectWallet(wallet)}
+        />
         <Box
           as="a"
           className={touchableStyles({ active: 'shrink', hover: 'grow' })}
@@ -1053,7 +1063,7 @@ export function InstructionDesktopDetail({
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            Learn More
+            {i18n.t('get_instructions.desktop.learn_more.label')}
           </Text>
         </Box>
       </Box>

@@ -326,11 +326,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        `Get started with ${
-          compactModeEnabled
+        i18n.t('get_options.title', {
+          wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
-            : selectedWallet.name
-        }`;
+            : selectedWallet.name,
+        });
       headerBackButtonLink = WalletStep.DownloadOptions;
       break;
     default:
