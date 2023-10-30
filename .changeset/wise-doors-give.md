@@ -1,13 +1,13 @@
 ---
-'@rainbow-me/rainbowkit': patch
+'@rainbow-me/rainbowkit': minor
 ---
 
-**Improved desktop app download support**
+**Improved desktop wallet download support**
 
-RainbowKit wallet connectors now support a desktop download links and desktop
-app instructions.
+RainbowKit wallet connectors now support desktop download links and desktop
+wallet instructions.
 
-dApps that utilize the Custom Wallets API can reference the updated docs [here](https://www.rainbowkit.com/docs/custom-wallets).
+Dapps that utilize the Custom Wallets API can reference the updated docs [here](https://www.rainbowkit.com/docs/custom-wallets).
 
 ```ts
 {
