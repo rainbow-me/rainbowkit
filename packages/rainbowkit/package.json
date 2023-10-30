@@ -63,7 +63,8 @@
     "vitest": "^0.33.0",
     "wagmi": "~1.4.3",
     "@wagmi/core": "~1.4.3",
-    "@types/i18n-js": "^3.8.5"
+    "@types/i18n-js": "^3.8.5",
+    "@types/ua-parser-js": "^0.7.36"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.9.1",
@@ -72,7 +73,8 @@
     "clsx": "1.1.1",
     "qrcode": "1.5.0",
     "react-remove-scroll": "2.5.4",
-    "i18n-js": "^4.3.2"
+    "i18n-js": "^4.3.2",
+    "ua-parser-js": "^1.0.35"
   },
   "repository": {
     "type": "git",
