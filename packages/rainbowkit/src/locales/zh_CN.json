@@ -760,6 +760,144 @@
           "description": "一旦你设置好你的钱包，点击下面刷新浏览器和加载扩展。"
         }
       }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "安装Zeal扩展程序",
+          "description": "我们建议将Zeal固定在您的任务栏上，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "安装SafePal Wallet扩展程序",
+          "description": "点击浏览器右上角并固定SafePal Wallet以便于快速访问。"
+        },
+        "step2": {
+          "title": "创建或导入钱包。",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "一旦设置了SafePal钱包，点击下方刷新浏览器并加载扩展程序。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开SafePal钱包应用程序",
+          "description": "将SafePal钱包放在主屏幕上以更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "在设置中点击WalletConnect",
+          "description": "选择新连接，然后扫描二维码并确认提示以进行连接。"
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "安装 Desig 扩展",
+          "description": "我们建议将 Desig 固定到任务栏，以便更轻松地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建一个钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "安装 SubWallet 扩展",
+          "description": "我们建议将 SubWallet 固定到任务栏，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "确保使用安全的方法备份您的钱包。永远不要与任何人分享您的恢复短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开 SubWallet 应用",
+          "description": "我们建议将 SubWallet 放置在主屏幕上，以便更快地访问。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "安装 CLV Wallet 扩展",
+          "description": "我们建议将 CLV Wallet 固定到任务栏，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开 CLV 钱包应用",
+          "description": "我们建议将 CLV 钱包添加到您的主屏幕，以便更快地访问。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "点击扫描按钮",
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。"
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 Okto 应用",
+          "description": "将 Okto 添加到您的主屏幕以便快速访问"
+        },
+        "step2": {
+          "title": "创建一个 MPC 钱包",
+          "description": "创建一个账户并生成一个钱包"
+        },
+        "step3": {
+          "title": "在设置中点击WalletConnect",
+          "description": "点击右上角的扫描二维码图标，并确认提示以连接。"
+        }
+      }
     }
   }
 }

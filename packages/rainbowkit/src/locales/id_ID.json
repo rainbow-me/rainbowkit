@@ -760,6 +760,144 @@
           "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
         }
       }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Zeal",
+          "description": "Kami merekomendasikan untuk mem-pin Zeal ke taskbar Anda untuk akses wallet lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "Pasang ekstensi SafePal Wallet",
+          "description": "Klik di pojok kanan atas browser Anda dan pin SafePal Wallet untuk akses mudah."
+        },
+        "step2": {
+          "title": "Buat atau Impor sebuah dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan SafePal Wallet, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi SafePal Wallet",
+          "description": "Letakkan SafePal Wallet di layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk WalletConnect di Pengaturan",
+          "description": "Pilih Koneksi Baru, lalu pindai kode QR dan konfirmasi petunjuk untuk terhubung."
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Desig",
+          "description": "Kami merekomendasikan menempelkan Desig ke taskbar Anda untuk akses dompet Anda lebih mudah."
+        },
+        "step2": {
+          "title": "Buat Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi SubWallet",
+          "description": "Kami merekomendasikan menempelkan SubWallet ke taskbar Anda untuk akses dompet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah berbagi frase pemulihan Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi SubWallet",
+          "description": "Kami merekomendasikan menaruh SubWallet di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi CLV Wallet",
+          "description": "Kami merekomendasikan menempelkan CLV Wallet ke taskbar Anda untuk akses dompet Anda lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi CLV Wallet",
+          "description": "Kami sarankan untuk menempatkan CLV Wallet di layar utama Anda untuk akses yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Tekan tombol scan",
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Okto",
+          "description": "Tambahkan Okto ke layar utama Anda untuk akses cepat"
+        },
+        "step2": {
+          "title": "Buat Wallet MPC",
+          "description": "Buat akun dan generate wallet"
+        },
+        "step3": {
+          "title": "Ketuk WalletConnect di Pengaturan",
+          "description": "Ketuk ikon Scan QR di pojok kanan atas dan konfirmasi prompt untuk terhubung."
+        }
+      }
     }
   }
 }
