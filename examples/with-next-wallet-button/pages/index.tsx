@@ -1,15 +1,17 @@
-import { WalletButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { WalletButton } from "@rainbow-me/rainbowkit";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
 
+  const { connectors, connect } = useConnect();
+  const wagmiConnectors = connectors.slice(2);
+
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
-
   if (!isMounted) return;
 
   return (
@@ -30,9 +32,31 @@ const Home: NextPage = () => {
           gap: 14
         }}
       >
-          <WalletButton wallet='rainbow' />
+        <WalletButton wallet="rainbow"/>
+        <WalletButton.Custom wallet="metaMask">
+          {({ ready, connect, connector }) => {
+            return (
+              <button
+                disabled={!ready}
+                onClick={connect}
+                key={connector.id}
+              >
+                {connector.name}
+              </button>
+            );
+          }}
+        </WalletButton.Custom>
+        {wagmiConnectors.map((connector) => (
+          <button
+            disabled={!connector.ready}
+            onClick={() => connect({ connector })}
+            key={connector.id}
+          >
+            {connector.name}
+          </button>
+        ))}
         {isConnected && (
-          <button style={{ marginTop: "48px" }} onClick={() => disconnect()}>
+          <button onClick={() => disconnect()}>
             Disconnect
           </button>
         )}
