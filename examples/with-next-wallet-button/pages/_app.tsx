@@ -1,10 +1,10 @@
 import "../styles/global.css";
-import "@rainbow-me/rainbow-button/styles.css";
+import "@rainbow-me/rainbowkit/styles.css";
 import type { AppProps } from "next/app";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
-import { RainbowButtonProvider } from "@rainbow-me/rainbow-button";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import {
   getDefaultWallets,
   connectorsForWallets,
@@ -36,9 +36,9 @@ const wagmiClient = createConfig({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiClient}>
-      <RainbowButtonProvider>
+      <RainbowKitProvider chains={chains}>
         <Component {...pageProps} />
-      </RainbowButtonProvider>
+      </RainbowKitProvider>
     </WagmiConfig>
   );
 }

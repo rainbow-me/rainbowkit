@@ -1,8 +1,7 @@
-import { RainbowButton } from "@rainbow-me/rainbow-button";
 import { WalletButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();

@@ -262,9 +262,6 @@ importers:
 
   examples/with-next-wallet-button:
     dependencies:
-      '@rainbow-me/rainbow-button':
-        specifier: workspace:*
-        version: link:../../packages/rainbow-button
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
