@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Portefeuille mobile et extension"
     },
+    "mobile_and_desktop": {
+      "description": "Portefeuille mobile et de bureau"
+    },
     "looking_for": {
       "title": "Ce n'est pas ce que vous cherchez ?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Ajouter à %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} pour %{platform}",
+      "description": "Accédez à votre portefeuille nativement depuis votre puissant ordinateur de bureau.",
+      "download": {
+        "label": "Ajouter à %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Rafraîchir"
+      },
+      "learn_more": {
+        "label": "En savoir plus"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Connecter"
       },
       "learn_more": {
         "label": "En savoir plus"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Appuyez sur WalletConnect dans les paramètres",
           "description": "Touchez l'icône 'Scan QR' en haut à droite et confirmez l'invite pour vous connecter."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Ouvrez l'application Ledger Live",
+          "description": "Nous vous recommandons de mettre Ledger Live sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Configurez votre Ledger",
+          "description": "Configurez un nouveau Ledger ou connectez-vous à un existant."
+        },
+        "step3": {
+          "title": "Connecter",
+          "description": "Une fois que vous avez scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application Ledger Live",
+          "description": "Nous vous recommandons de mettre Ledger Live sur votre écran d'accueil pour un accès plus rapide."
+        },
+        "step2": {
+          "title": "Configurez votre Ledger",
+          "description": "Vous pouvez soit synchroniser avec l'application de bureau, soit connecter votre Ledger."
+        },
+        "step3": {
+          "title": "Scannez le code",
+          "description": "Appuyez sur WalletConnect puis passez au Scanner. Une fois que vous avez scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille."
         }
       }
     }

@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "กระเป๋าเงินมือถือและส่วนขยาย"
     },
+    "mobile_and_desktop": {
+      "description": "กระเป๋าเงินบนมือถือและคอมพิวเตอร์"
+    },
     "looking_for": {
       "title": "ไม่ใช่สิ่งที่คุณกำลังหาหรือไม่?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "เพิ่มไปยัง %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} สำหรับ %{platform}",
+      "description": "เข้าถึงกระเป๋าเงินของคุณโดยตรงจากคอมพิวเตอร์ที่มีประสิทธิภาพของคุณ",
+      "download": {
+        "label": "เพิ่มไปยัง %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "รีเฟรช"
+      },
+      "learn_more": {
+        "label": "เรียนรู้เพิ่มเติม"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "เชื่อมต่อ"
       },
       "learn_more": {
         "label": "เรียนรู้เพิ่มเติม"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "แตะ WalletConnect ในการตั้งค่า",
           "description": "แตะที่ไอคอน Scan QR ที่บริเวณมุมบนขวาและยืนยันข้อความเพื่อเชื่อมต่อ."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "เปิดแอป Ledger Live",
+          "description": "เราแนะนำให้คุณวาง Ledger Live บนหน้าจอหลักเพื่อให้สามารถเข้าถึงได้เร็วขึ้น"
+        },
+        "step2": {
+          "title": "ตั้งค่า Ledger ของคุณ",
+          "description": "ตั้งค่า Ledger ใหม่หรือเชื่อมต่อกับ Ledger ที่มีอยู่แล้ว"
+        },
+        "step3": {
+          "title": "เชื่อมต่อ",
+          "description": "หลังจากที่คุณสแกนแล้ว จะมีการเรียกให้เชื่อมต่อกับกระเป๋าเงินของคุณ"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "เปิดแอป Ledger Live",
+          "description": "เราแนะนำให้วาง Ledger Live บนหน้าจอหลักของคุณเพื่อการเข้าถึงที่รวดเร็วขึ้น"
+        },
+        "step2": {
+          "title": "ตั้งค่า Ledger ของคุณ",
+          "description": "คุณสามารถซิงค์กับแอพพลิเคชันบนเดสก์ท็อปหรือเชื่อมต่อ Ledger ของคุณ"
+        },
+        "step3": {
+          "title": "สแกนรหัส",
+          "description": "แตะ WalletConnect แล้วเปลี่ยนไปที่ Scanner. หลังจากที่คุณสแกนแล้ว จะมีการเรียกให้เชื่อมต่อกับกระเป๋าเงินของคุณ"
         }
       }
     }

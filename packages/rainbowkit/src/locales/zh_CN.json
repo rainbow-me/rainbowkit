@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "移动钱包和扩展"
     },
+    "mobile_and_desktop": {
+      "description": "移动和桌面钱包"
+    },
     "looking_for": {
       "title": "不是你要找的吗？",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "添加到 %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} 对于 %{platform}",
+      "description": "从您强大的桌面原生访问您的钱包。",
+      "download": {
+        "label": "添加到 %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "刷新"
+      },
+      "learn_more": {
+        "label": "了解更多"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "连接"
       },
       "learn_more": {
         "label": "了解更多"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "在设置中点击WalletConnect",
           "description": "点击右上角的扫描二维码图标，并确认提示以连接。"
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "打开Ledger Live应用",
+          "description": "我们建议将Ledger Live放在您的主屏幕上，以便更快地访问。"
+        },
+        "step2": {
+          "title": "设置您的Ledger",
+          "description": "设置一个新的Ledger或连接到一个现有的。"
+        },
+        "step3": {
+          "title": "连接",
+          "description": "你扫描后，会出现一个连接提示让你连接你的钱包。"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开Ledger Live应用",
+          "description": "我们建议将Ledger Live放在您的主屏幕上，以便更快地访问。"
+        },
+        "step2": {
+          "title": "设置您的Ledger",
+          "description": "您可以同步桌面应用程式，或连接您的Ledger。"
+        },
+        "step3": {
+          "title": "扫描代码",
+          "description": "点击 WalletConnect 然后切换到扫描器。你扫描后，会出现一个连接提示让你连接你的钱包。"
         }
       }
     }

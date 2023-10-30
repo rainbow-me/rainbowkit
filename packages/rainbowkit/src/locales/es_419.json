@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Billetera móvil y extensión"
     },
+    "mobile_and_desktop": {
+      "description": "Billetera Móvil y de Escritorio"
+    },
     "looking_for": {
       "title": "¿No es lo que estás buscando?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Añadir a %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} para %{platform}",
+      "description": "Acceda a su billetera de forma nativa desde su potente escritorio.",
+      "download": {
+        "label": "Añadir a %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Actualizar"
+      },
+      "learn_more": {
+        "label": "Obtener más información"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Conectar"
       },
       "learn_more": {
         "label": "Obtener más información"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Toca WalletConnect en Configuraciones",
           "description": "Toca el icono de Escanear QR en la parte superior derecha y confirma el mensaje para conectar."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Abra la aplicación Ledger Live",
+          "description": "Recomendamos poner Ledger Live en su pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Configure su Ledger",
+          "description": "Configure un nuevo Ledger o conéctese a uno existente."
+        },
+        "step3": {
+          "title": "Conectar",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Ledger Live",
+          "description": "Recomendamos poner Ledger Live en su pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Configure su Ledger",
+          "description": "Puedes sincronizar con la aplicación de escritorio o conectar tu Ledger."
+        },
+        "step3": {
+          "title": "Escanea el código",
+          "description": "Toca WalletConnect y luego cambia a Scanner. Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       }
     }

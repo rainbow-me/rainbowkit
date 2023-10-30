@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Carteira Móvel e Extensão"
     },
+    "mobile_and_desktop": {
+      "description": "Carteira para Mobile e Desktop"
+    },
     "looking_for": {
       "title": "Não é o que você está procurando?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Adicionar ao %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} para %{platform}",
+      "description": "Acesse sua carteira nativamente do seu desktop poderoso.",
+      "download": {
+        "label": "Adicionar ao %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Atualizar"
+      },
+      "learn_more": {
+        "label": "Saiba mais"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Conectar"
       },
       "learn_more": {
         "label": "Saiba mais"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Toque em WalletConnect nas Configurações",
           "description": "Toque no ícone Scan QR no canto superior direito e confirme o prompt para conectar."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Abra o aplicativo Ledger Live",
+          "description": "Recomendamos colocar o Ledger Live na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Configure seu Ledger",
+          "description": "Configure um novo Ledger ou conecte-se a um já existente."
+        },
+        "step3": {
+          "title": "Conectar",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo Ledger Live",
+          "description": "Recomendamos colocar o Ledger Live na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Configure seu Ledger",
+          "description": "Você pode sincronizar com o aplicativo de desktop ou conectar seu Ledger."
+        },
+        "step3": {
+          "title": "Escanear o código",
+          "description": "Toque em WalletConnect e em seguida mude para Scanner. Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
         }
       }
     }

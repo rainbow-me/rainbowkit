@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Dompet Mobile dan Ekstensi"
     },
+    "mobile_and_desktop": {
+      "description": "Dompet Seluler dan Desktop"
+    },
     "looking_for": {
       "title": "Bukan yang Anda cari?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Tambahkan ke %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} untuk %{platform}",
+      "description": "Akses dompet Anda secara native dari desktop yang kuat Anda.",
+      "download": {
+        "label": "Tambahkan ke %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Segarkan"
+      },
+      "learn_more": {
+        "label": "Pelajari lebih lanjut"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Hubungkan"
       },
       "learn_more": {
         "label": "Pelajari lebih lanjut"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Ketuk WalletConnect di Pengaturan",
           "description": "Ketuk ikon Scan QR di pojok kanan atas dan konfirmasi prompt untuk terhubung."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Buka aplikasi Ledger Live",
+          "description": "Kami merekomendasikan menempatkan Ledger Live di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Atur Ledger Anda",
+          "description": "Atur Ledger baru atau hubungkan ke Ledger yang sudah ada."
+        },
+        "step3": {
+          "title": "Hubungkan",
+          "description": "Setelah Anda scan, muncul prompt koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Ledger Live",
+          "description": "Kami merekomendasikan menempatkan Ledger Live di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Atur Ledger Anda",
+          "description": "Anda dapat melakukan sinkronisasi dengan aplikasi desktop atau menghubungkan Ledger Anda."
+        },
+        "step3": {
+          "title": "Pindai kode",
+          "description": "Ketuk WalletConnect lalu Beralih ke Scanner. Setelah Anda scan, muncul prompt koneksi untuk Anda menghubungkan dompet Anda."
         }
       }
     }

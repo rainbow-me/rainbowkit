@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Mobil Cüzdan ve Eklenti"
     },
+    "mobile_and_desktop": {
+      "description": "Mobil ve Masaüstü Cüzdan"
+    },
     "looking_for": {
       "title": "Aradığınız şey bu değil mi?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "%{browser}'e ekle"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} için %{platform}",
+      "description": "Güçlü masaüstünüzden cüzdanınıza yerel olarak erişin.",
+      "download": {
+        "label": "%{platform}ekleyin"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Yenile"
+      },
+      "learn_more": {
+        "label": "Daha fazla bilgi edinin"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Bağlan"
       },
       "learn_more": {
         "label": "Daha fazla bilgi edinin"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Ayarlar'da WalletConnect'e dokunun",
           "description": "Sağ üstteki Tarama QR simgesine dokunun ve bağlanmak için istemi onaylayın."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Ledger Live uygulamasını açın",
+          "description": "Daha hızlı erişim için Ledger Live'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Ledger'ınızı kurun",
+          "description": "Yeni bir Ledger kurun veya mevcut birine bağlanın."
+        },
+        "step3": {
+          "title": "Bağlan",
+          "description": "Cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Ledger Live uygulamasını açın",
+          "description": "Daha hızlı erişim için Ledger Live'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Ledger'ınızı kurun",
+          "description": "Masaüstü uygulama ile senkronize olabilir veya Ledger'ınızı bağlayabilirsiniz."
+        },
+        "step3": {
+          "title": "Kodu tarayın",
+          "description": "WalletConnect'e dokunun ve ardından Tarayıcı'ya geçin. Taramadan sonra, cüzdanınızı bağlamak için bir bağlantı istemi belirecektir."
         }
       }
     }

@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Мобильный кошелек и расширение"
     },
+    "mobile_and_desktop": {
+      "description": "Мобильный и настольный кошелек"
+    },
     "looking_for": {
       "title": "Не то, что вы ищете?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Добавить в %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} для %{platform}",
+      "description": "Получите доступ к вашему кошельку нативно со своего мощного рабочего стола.",
+      "download": {
+        "label": "Добавить в %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Обновить"
+      },
+      "learn_more": {
+        "label": "Узнать больше"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Подключить"
       },
       "learn_more": {
         "label": "Узнать больше"
@@ -896,6 +914,36 @@
         "step3": {
           "title": "Нажмите WalletConnect в настройках",
           "description": "Коснитесь значка Scan QR в верхнем правом углу и подтвердите запрос на подключение."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Откройте приложение Ledger Live",
+          "description": "Мы рекомендуем поместить Ledger Live на ваш экран домой для более быстрого доступа."
+        },
+        "step2": {
+          "title": "Настройте ваш Ledger",
+          "description": "Настройте новый Ledger или подключитесь к существующему."
+        },
+        "step3": {
+          "title": "Подключить",
+          "description": "После сканирования вам будет предложено подключить ваш кошелек."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Откройте приложение Ledger Live",
+          "description": "Мы рекомендуем поместить Ledger Live на ваш экран домой для более быстрого доступа."
+        },
+        "step2": {
+          "title": "Настройте ваш Ledger",
+          "description": "Вы можете синхронизировать с настольным приложением или подключить свой Ledger."
+        },
+        "step3": {
+          "title": "Сканировать код",
+          "description": "Нажмите WalletConnect, затем переключитесь на Scanner. После сканирования вам будет предложено подключить ваш кошелек."
         }
       }
     }
