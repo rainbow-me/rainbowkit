@@ -27,24 +27,10 @@ const Home: NextPage = () => {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          maxWidth: "400px",
+          gap: 14
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 20,
-          }}
-        >
-          {["rainbow", "metamask", "coinbase", "walletConnect"].map(
-            (connectorId) => {
-              return <WalletButton key={connectorId} wallet={connectorId} />;
-            }
-          )}
-        </div>
+          <WalletButton wallet='rainbow' />
         {isConnected && (
           <button style={{ marginTop: "48px" }} onClick={() => disconnect()}>
             Disconnect
