@@ -26,7 +26,7 @@
     "label": "Verify your account",
     "description": "To finish connecting, you must sign a message in your wallet to verify that you are the owner of this account.",
     "message": {
-      "send": "Send message",
+      "send": "Sign message",
       "preparing": "Preparing message...",
       "cancel": "Cancel",
       "preparing_error": "Error preparing message, please retry!"
