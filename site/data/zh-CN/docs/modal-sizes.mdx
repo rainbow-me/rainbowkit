@@ -1,0 +1,28 @@
+---
+title: 模态尺寸
+description: 宽度对比紧凑
+---
+
+# 模态尺寸
+
+## 宽度对比紧凑尺寸
+
+默认情况下，RainbowKit的 `modalSize` 设为 `wide`（看起来如此）：
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+我们还提供 `compact` 模态尺寸，看起来如此：
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+要将模态尺寸设为 `compact`，只需在您的 `RainbowKitProvider` 中添加 `modalSize="compact"` 作为一个属性：
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

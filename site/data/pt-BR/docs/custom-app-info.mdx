@@ -1,0 +1,62 @@
+---
+title: Informações Personalizadas do Aplicativo
+description: Personalizando as informações do seu aplicativo
+---
+
+# Informações Personalizadas do Aplicativo
+
+## Personalizando as informações do seu aplicativo
+
+Você pode passar as informações do seu aplicativo na prop 'appInfo' para 'RainbowKitProvider'. As propriedades que você pode modificar são o nome do seu aplicativo ('appName') e o link para onde o botão “Saiba Mais” do modal de conexão redireciona ('learnMoreUrl'):
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Adicione um Aviso Legal
+
+Você pode fornecer seu próprio aviso legal para ser exibido na parte inferior do modal de conexão. A propriedade 'disclaimer' em 'appInfo' recebe um 'DisclaimerComponent' com os argumentos 'Text' e 'Link'. Você pode usá-lo para construir seu próprio aviso legal que herda o sistema de temas. Nós exportamos o tipo 'DisclaimerComponent' para usuários do TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

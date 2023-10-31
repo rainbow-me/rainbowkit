@@ -1,0 +1,385 @@
+---
+title: การสร้างธีม
+description: การใช้และปรับแต่งธีม
+---
+
+# การสร้างธีม
+
+## การใช้และปรับแต่งธีม
+
+คุณสามารถปรับแต่ง UI ของ RainbowKit เพื่อเข้ากับแบรนด์ของคุณ. คุณสามารถเลือกจากสีเน้นที่กำหนดไว้ล่วงหน้าและการกำหนดรัศมีขอบ.
+
+มีฟังก์ชันธีมในตัว 3 ฟังก์ชัน:
+
+-   `lightTheme`   (ค่าเริ่มต้น)
+-   `darkTheme`
+-   `midnightTheme`
+
+ฟังก์ชันธีมจะส่งคืนวัตถุธีม. คุณสามารถส่งวัตถุไปยัง `RainbowKitProvider`'s `theme` prop.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+ถ้าคุณต้องการ, คุณสามารถส่ง `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` และ `overlayBlur` เพื่อปรับแต่ง.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### การปรับแต่งธีมที่สร้างไว้แล้ว
+
+ฟังก์ชันธีมที่มีอยู่ภายในยังยอมรับอ็อบเจ็กต์ตัวเลือก, ทำให้คุณสามารถเลือกจากหลายสไตล์ทางตาซึ่งแตกต่างกันได้
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+ตัวอย่างเช่น การปรับแต่งธีมสีเข้มด้วยสีแอคเซนท์สีม่วงและสเกลรัศมีขอบ `medium`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+แต่ละธีมยังให้คำประกอบสีเฉพาะ (`blue`, `green`, `orange`, `pink`, `purple`, `red`) ที่สามารถแพร่ไปในวัตถุตัวเลือก ตัวอย่างเช่น การใช้คำประกอบสี `pink`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### ตัวอย่าง
+
+#### ฟังก์ชั่นของธีม
+
+นี่คือบางวิธีที่คุณสามารถใช้ prop `theme`
+
+ใช้ธีม `darkTheme`
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+ใช้ธีม `midnightTheme`
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### สีเน้น
+
+นี่คือวิธีการที่แตกต่างกันสองสามวิธีที่คุณสามารถใช้ `accentColor` config.
+
+ตั้งค่าสีเน้นเป็นค่าสีม่วงที่กำหนดเอง.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+ตั้งค่าสีเน้นเป็น `green` ที่ตั้งค่าไว้แล้ว.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### รัศมีขอบ
+
+นี่คือวิธีการที่แตกต่างกันสองสามวิธีที่คุณสามารถใช้ `borderRadius` config.
+
+ตั้งค่ารัศมีขอบเป็น `medium`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+ตั้งค่ารัศมีขอบเป็น `none`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> เตือนความทรงจำ: ค่ารัศมีขอบที่มีให้คือ: `large` (ค่าเริ่มต้น), `medium`, `small` และ `none`.
+
+#### ทางเลือกของฟ้อนต์
+
+โดยค่าเริ่มต้น, `fontStack` ถูกตั้งเป็น `rounded`. แต่นี่คือวิธีที่คุณสามารถใช้การตั้งค่า `fontStack`.
+
+ตั้งค่า font stack เป็น `system`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### เบลอoverlay
+
+โดยค่าเริ่มต้น, `overlayBlur` ถูกตั้งเป็น `none`. แต่นี่คือวิธีที่คุณสามารถใช้การตั้งค่า `overlayBlur`.
+
+ตั้งค่าเบลอโอเวอเลย์เป็น `small`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### ผสมและจับคู่
+
+นี่คือวิธีที่แตกต่างๆที่คุณสามารถใช้ธีมต่างๆ, กับ `accentColor`, `borderRadius` และ `fontStack` props ร่วมกัน.
+
+-   ใช้ธีม `lightTheme`
+-   ตั้งค่าสีเน้นบนค่าสีม่วงที่กำหนดเอง
+-   ตั้งค่ารัศมีขอบเป็น `medium`
+-   ตั้งค่า stack ของฟอนต์เป็น `system`
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+-   ใช้ธีม `midnightTheme`
+-   ตั้งค่าสีเน้นเป็นพรีเซ็ต `pink` ที่สร้างไว้ล่วงหน้า
+-   ตั้งค่ารัศมีขอบเป็น `small`
+-   ตั้งค่า stack ของฟอนต์เป็น `system`
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### สนับสนุนโหมดมืด
+
+หากแอพของคุณใช้คิวรีมีเดีย `prefers-color-scheme: dark` มาตรฐานในการสลับระหว่างโหมดสว่างและมืด คุณสามารถให้ theme object ที่มีค่า `lightMode` และ `darkMode` ในการใช้งานเพิ่มเติม
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

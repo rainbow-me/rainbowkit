@@ -1,0 +1,102 @@
+---
+title: การอัปเกรด dApp ของคุณเป็น WalletConnect v2
+description: RainbowKit ได้ทำการย้ายไปยัง v2 และคุณสามารถเตรียม dApp ของคุณในเวลาไม่เกิน 5 นาที
+image: guide-walletconnect-v2.png
+---
+
+# การย้ายไปยัง WalletConnect v2
+
+## เตรียม dApp ของคุณสำหรับการอัปเกรด v2 ในเวลาไม่เกิน 5 นาที
+
+โปรโตคอล WalletConnect v1 จะถูกปิดใช้งานในวันที่ 28 มิถุนายน 2023 และ RainbowKit สนับสนุนคุณให้การย้ายไปยังระบบใหม่สะดวกและง่ายดาย
+
+การสนับสนุน WalletConnect v2 ตอนนี้เป็นมาตรฐานใน RainbowKit โดยไม่มีการเปลี่ยนแปลงที่จะทำให้เกิดความเสียหาย เพียงทำการอัปเกรดและอ้างอิงถึงคู่มือด้านล่างสำหรับรายละเอียดเพิ่มเติม
+
+#### ทำความเข้าใจเกี่ยวกับ WalletConnect v2
+
+WalletConnect เป็นโปรโตคอลที่ช่วยให้ผู้ใช้สามารถเชื่อมต่อกระเป๋าเงินออนไลน์ของพวกเขากับ dApp ของคุณ และเป็นฐานสำคัญของ RainbowKit การปล่อย WalletConnect v2 ล่าสุดนำเสนอการอัปเกรดที่สำคัญเพื่อทำให้ประสบการณ์การใช้กระเป๋าเงินกับ dApp ดียิ่งขึ้น
+
+ด้วย v2, ผู้ใช้ของคุณสามารถเชื่อมต่อกับหลายๆ สายพร้อมกัน, ดังนั้นคุณสามารถลืมเกี่ยวกับการจับมือเพื่อสลับสายได้. มันยังขยายการสนับสนุนสำหรับเครือข่ายมากขึ้น, และนำความแก้ไขมาทำให้การลงชื่อเข้าใช้ด้วย Ethereum เร็วขึ้นด้วย.
+
+#### การอัปเกรด dApp ของคุณ
+
+หากคุณได้ปฏิบัติตามคู่มือการย้ายสำหรับ RainbowKit `0.12.x` และ `1.0.x`, แล้วคุณจะเกือบจะทำได้แล้ว! เพียงอัปเกรดไปยังรีลีสแพทช์ล่าสุดและลองทดสอบดู.
+
+RainbowKit เปิดให้บริการ WalletConnect v2 เป็นค่าเริ่มต้นด้วย `0.12.15` และ `1.0.2`. เราจะลงมือสนับสนุน `0.12.x` ต่อในกรณีที่ dApp ของคุณยังไม่ได้อัปเกรดไปยัง wagmi v1 และ RainbowKit v1.
+
+**1. อัปเกรดแพ็คเกจที่ขึ้นอยู่**
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+หากคุณกำลังใช้เวอร์ชันของ RainbowKit ก่อน `0.12.x` หรือ `1.0.x`, เพียงปฏิบัติตาม [คำแนะนำการย้ายข้อมูล](/docs/migration-guide) เพื่อให้ทันสมัย.
+
+แนะนำให้ dApps ที่เป็น `0.12.x` เริ่มการอัปเกรดไปยัง wagmi v1 เนื่องจากการปรับปรุงความเสถียรของ WalletConnect v2 จะรวมอยู่เฉพาะในเวอร์ชั่นใหม่ของ wagmi
+
+\*\*2. การให้ projectId
+
+ทุก ๆ dApp ที่ใช้ WalletConnect ตอนนี้จำเป็นต้องรับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/). สิ่งนี้ฟรีและใช้เวลาเพียงไม่กี่นาที.
+
+ข้อมูล `projectId` ของคุณไปยัง `getDefaultWallets` และ RainbowKit wallet connectors แต่ละตัวเหมือนต่อไปนี้:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKit เป็น type-safe และจะเตือนคุณเมื่อ `projectId` หายไป. อ้างอิงตัวอย่างของเราเพื่อดู v2 ทำงาน:
+
+-   [สร้าง React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+#### การปรับแต่งขั้นสูง
+
+ถ้า dApp ของคุณต้องการสนับสนุนกระเป๋าเงินรุ่นเก่าที่ยังไม่ได้ย้ายไปที่ WalletConnect v2, RainbowKit's มีทางเลือกในการใช้ WalletConnect ได้แบบเป็นแค่ที่เดียว
+
+```ts
+metaMaskWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+});
+```
+
+เมื่อเซิร์ฟเวอร์ WalletConnect v1 ถูกปิดการทำงานในวันที่ 28 มิถุนายน, ต้องมี [เซิร์ฟเวอร์สำหรับการเชื่อมต่อที่กำหนดเอง](https://docs.walletconnect.com/1.0/bridge-server) เพื่อทำการใช้งานโปรโตคอล v1 ต่อไป. อ้างอิงตัวอย่างต่อไปนี้:
+
+```ts
+walletConnectWallet(options: {
+  chains: Chain[];
+  version: '1',
+  options: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+
+customWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+  walletConnectOptions: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+```
+
+อ้างอิง [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) เพื่อเลือกตัวเลือกที่รองรับเพิ่มเติม.

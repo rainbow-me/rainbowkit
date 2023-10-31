@@ -1,0 +1,64 @@
+---
+title: Ganchos de Modales
+description: Abre modales programáticamente a través de Ganchos
+---
+
+# Ganchos de Modales
+
+## Abre modales programáticamente a través de Ganchos
+
+Los siguientes Ganchos se proporcionan para permitir la apertura programática de modales en cualquier lugar de tu aplicación.
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+Cada uno de estos Ganchos devuelve un objeto con una función para abrir su modal respectivo. Ten en cuenta que las funciones devueltas estarán indefinidas si tu aplicación no se encuentra en el estado requerido para que el modal esté abierto.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Cada gancho también devuelve un booleano para el estado del modal. Normalmente se recomienda que confíes únicamente en los ganchos de Wagmi (es decir, `useAccount`) para reaccionar directamente al estado de conexión de la cartera del usuario, en lugar de depender del estado del Modal de Conexión.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit está diseñado para ser no interrumpible y receptivo, por lo que las dApps siempre deben renderizar una interfaz para los usuarios, ya tengan o no conectada su cartera. Un usuario podría conectar o desconectar su cartera directamente desde MetaMask, por lo que la dApp debe ser receptiva al estado de conexión subyacente directamente.
+
+Las dApps que confían en mecanismos como Sign-in with Ethereum para la verificación de usuarios deberían depender en su lugar de la función [Authentication](/docs/authentication).

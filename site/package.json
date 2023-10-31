@@ -39,11 +39,13 @@
   },
   "devDependencies": {
     "contentlayer": "0.2.9",
-    "next-contentlayer": "0.2.9"
+    "next-contentlayer": "0.2.9",
+    "next-sitemap": "^4.2.3"
   },
   "scripts": {
     "dev": "next dev --port 3001",
     "build": "INIT_CWD=$PWD next build",
+    "postbuild": "next-sitemap",
     "typecheck": "INIT_CWD=$PWD contentlayer build && pnpm tsc --noEmit"
   },
   "keywords": [],

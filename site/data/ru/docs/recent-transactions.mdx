@@ -1,0 +1,75 @@
+---
+title: Недавние транзакции
+description: Показать ваши недавние транзакции
+---
+
+# Недавние транзакции
+
+## Показать ваши недавние транзакции
+
+Вы можете выбрать отображение недавних транзакций в модальном окне учетной записи RainbowKit. Обратите внимание, что все транзакции хранятся в локальном хранилище и должны быть вручную зарегистрированы в RainbowKit для отображения.
+
+Стандартная реализация `ConnectButton` также будет отображать индикатор загрузки вокруг аватара пользователя, если есть какие-либо ожидающие транзакции. Пользовательские реализации `ConnectButton` могут воссоздать это поведение через свойство `account.hasPendingTransactions`, которое передается в функцию рендеринга.
+
+Чтобы использовать эту функцию, сначала включите опцию `showRecentTransactions` на `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Затем транзакции можно зарегистрировать в RainbowKit с помощью хука `useAddRecentTransaction`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+Как только транзакция зарегистрирована в RainbowKit, ее статус будет обновлен после завершения.
+
+По умолчанию транзакция будет считаться завершенной, как только будет добыт один блок поверх блока, в котором была добыта транзакция, но это можно настроить, указав пользовательское значение `confirmations`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```

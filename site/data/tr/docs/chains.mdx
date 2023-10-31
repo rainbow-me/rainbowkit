@@ -1,0 +1,80 @@
+---
+title: Zincirler
+description: Zincirleri özelleştirme
+---
+
+# Zincirler
+
+## Zincirleri özelleştirme
+
+`RainbowKitProvider` üzerindeki `chains` özelliği, kullanıcının seçebileceği zincirleri tanımlar.
+
+RainbowKit, [wagmi’nin `chain` nesnesi](https://wagmi.sh/react/chains) ile entegre olacak şekilde tasarlanmıştır. Desteklenen zincirlerin listesine göz atın [here](https://wagmi.sh/react/chains#supported-chains).
+
+> `chain` nesnesi hakkında daha fazla detay için, veya bir özel zincir tanımı oluştururken örnekleri görmek için, [wagmi’nin `chain` nesnesi için kaynak koduna](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts) bakın.
+
+Zincir konfigürasyonunuz, [`configureChains`](https://wagmi.sh/react/providers/configuring-chains) için sağlanan tek bir dizi içinde tanımlanabilir.
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { configureChains } from 'wagmi';
+import { mainnet, optimism, zora } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains } = configureChains(
+  [mainnet, optimism, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider(),
+  ]
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Başlangıç zincirini özelleştirme
+
+Varsayılan olarak, RainbowKit, kullanıcılara hemen "Yanlış ağ" durumunu sunmamak için `chains` dizinizdeki ilk zincire bağlanır. Bu davranış, `initialChain` prop aracılığıyla özelleştirilebilir.
+
+İlk zincir, bir zincir ID'si kullanılarak yapılandırılabilir.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
+
+Bir kolaylık olarak, ayrıca bir zincir nesnesi geçirebilirsiniz.
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={mainnet}>
+```
+
+### Özel zincir simgeleri
+
+Birkaç zincir simgesi varsayılan olarak verilir, ancak iconUrl özelliğini kullanarak her zincir için simgeyi özelleştirebilirsiniz.
+
+```tsx
+import { Chain, mainnet, optimism } from 'wagmi/chains';
+
+const defaultChains: Chain[] = [
+  {
+    ...mainnet,
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const { chains } = configureChains(defaultChains, [
+  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+  publicProvider(),
+]);
+```

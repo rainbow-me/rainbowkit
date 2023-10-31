@@ -1,0 +1,51 @@
+---
+title: الصور الرمزية المخصصة
+description: تخصيص صورة المستخدم في التطبيق الخاص بك
+---
+
+# الصور الرمزية المخصصة
+
+## تخصيص صورة المستخدم في التطبيق الخاص بك
+
+الافتراضي أننا نوفر صورة رمزية للمستخدمين في حالة عدم تعيين صورة ENS الخاصة بهم، ولكن يمكنك تخصيص هذا عن طريق توفير مكون صورتك الرمزية الخاصة. يمكنك استيراد نوع `AvatarComponent` في حالة استخدام TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+نوع `AvatarComponent` المرتفع إلى prop `avatar` يحتوي على أنواع الخاصية كالتالي: `<{ address: string; ensImage?: string | null; size: number;}>`

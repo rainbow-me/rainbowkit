@@ -1,0 +1,385 @@
+---
+title: Tematización
+description: Uso y personalización de los temas
+---
+
+# Tematización
+
+## Uso y personalización de los temas
+
+Puede ajustar la interfaz de usuario de RainbowKit para que coincida con su marca. Puede elegir entre algunos colores de acento predefinidos y configuraciones de radio de borde.
+
+Existen 3 funciones de tema incorporadas:
+
+-   `lightTheme`   (predeterminado)
+-   `darkTheme`
+-   `midnightTheme`
+
+Una función de tema devuelve un objeto de tema. Puede pasar el objeto al prop `theme` del `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Si lo desea, puede pasar en `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` y `overlayBlur` para personalizarlos.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### Personalizando los temas incorporados
+
+Las funciones de tema incorporadas también aceptan un objeto de opciones, permitiéndole seleccionar entre varios estilos visuales diferentes.
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+Por ejemplo, para personalizar el tema oscuro con un color de acento morado y una escala de radio de borde `medium`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Cada tema también proporciona varios preajustes de color de acento (`blue`, `green`, `orange`, `pink`, `purple`, `red`) que se pueden integrar en el objeto de opciones. Por ejemplo, para usar el preset de color de acento `rosado`:
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Ejemplos
+
+#### Función de tema
+
+Aquí hay varias formas en las que puedes usar la propiedad `tema`.
+
+Use el tema `temaOscuro`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Use el tema `temaMedianoche`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### Color de acento
+
+Aquí hay varias formas en las que puedes usar la configuración `colorDeAcento`.
+
+Establezca el color de acento en un valor personalizado de púrpura.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Establezca el color de acento en el preset `verde` incorporado.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Radio de borde
+
+Aquí hay varias formas en las que puedes usar la configuración `radioDeBorde`.
+
+Establezca el radio del borde en `medio`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Establezca el radio del borde en `ninguno`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> Recordatorio: los valores de radio de borde disponibles son: `large` (predeterminado), `medium`, `small` y `none`.
+
+#### Pila de fuentes
+
+Por defecto, la `fontStack` está configurada a `rounded`. Pero aquí está cómo puedes usar la configuración `fontStack`.
+
+Establece la pila de fuentes a `system`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Desenfoque de superposición
+
+Por defecto, el `overlayBlur` está configurado a `none`. Pero aquí está cómo puedes usar la configuración `overlayBlur`.
+
+Establece el desenfoque de superposición a `small`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Mezclar y combinar
+
+Aquí hay algunas distintas formas en las que puedes utilizar diferentes temas, con las props `accentColor`, `borderRadius` y `fontStack` juntas.
+
+-   Utilice el tema `lightTheme`
+-   Establece el color de acento a un valor morado personalizado
+-   Establece el radio del borde a `medium`
+-   Establece la pila de fuentes en `system`
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+-   Utilice el tema `midnightTheme`
+-   Establece el color de acento al preset incorporado `pink`.
+-   Establece el radio del borde a `small`
+-   Establece la pila de fuentes en `system`
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Soporte para modo oscuro
+
+Si su aplicación utiliza la consulta de medios estándar `prefers-color-scheme: dark` para cambiar entre los modos de luz y oscuridad, puede proporcionar opcionalmente un objeto de tema dinámico que contenga los valores `lightMode` y `darkMode`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

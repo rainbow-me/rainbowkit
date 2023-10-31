@@ -1,0 +1,176 @@
+---
+title: 설치
+description: RainbowKit으로 시작하고 실행하기
+---
+
+# 설치
+
+## RainbowKit으로 시작하고 실행하기
+
+### 빠른 시작
+
+선택한 패키지 관리자를 사용하여 다음 명령 중 하나로 새로운 RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) 앱을 스캐폴드 할 수 있습니다:
+
+```bash
+npm init @rainbow-me/rainbowkit@latest
+# or
+pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
+```
+
+이것은 프로젝트 이름을 요청하고, 보일러플레이트 프로젝트가 포함된 새 디렉토리를 생성하고, 필요한 모든 종속성을 설치합니다.
+
+또는, 기존 프로젝트에 RainbowKit를 수동으로 통합할 수 있습니다.
+
+### 수동 설정
+
+RainbowKit와 그 피어 종속성인 [wagmi](https://wagmi.sh/)와 [viem](https://viem.sh)을 설치하세요.
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+> 참고: RainbowKit는 [React](https://reactjs.org/) 라이브러리입니다.
+
+#### 가져오기
+
+RainbowKit과 wagmi를 가져옵니다.
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+```
+
+#### 설정
+
+원하는 체인을 설정하고 필요한 커넥터를 생성합니다. `wagmi` 설정도 마련해야 합니다.
+
+> 참고: WalletConnect를 사용하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 얻어야 합니다. 이것은 완전히 무료이며 몇 분 밖에 걸리지 않습니다.
+
+```tsx line=4-99
+...
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+})
+```
+
+`wagmi`와 함께 체인 및 프로바이더 설정에 대해 더 알아보기(https://wagmi.sh/docs/providers/configuring-chains).
+
+#### 프로바이더 감싸기
+
+응용 프로그램을 `RainbowKitProvider` 및 [`WagmiConfig`](https://wagmi.sh/docs/provider)으로 감쌉니다.
+
+```tsx
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+#### 연결 버튼 추가
+
+그런 다음, 앱에서 `ConnectButton` 컴포넌트를 가져와서 렌더링합니다.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+RainbowKit은 이제 사용자의 지갑 선택을 처리하며, 지갑/거래 정보를 표시하고 네트워크/지갑 전환을 처리합니다.
+
+#### 추가적인 빌드 도구 설정
+
+일부 빌드 도구는 추가 설정이 필요할 수 있습니다.
+
+##### React, Next.js, 그리고 Webpack
+
+Next.js와 Create React App에 사용되는 [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) 번들러는 더 이상 Node polyfills를 제공하지 않으므로, RainbowKit의 피어 의존성을 충족시키기 위해 이 모듈들을 직접 포함해야 합니다. Create React App은 특히 `Buffer`에 polyfill이 필요합니다.
+
+[ethers](https://docs.ethers.org/v5/)에 의존하던 이전 버전의 RainbowKit에서는 `fs`, `net`, `tls` 모듈이 자동으로 polyfilled 되었습니다. 이는 RainbowKit v1 + wagmi v1에서는 더 이상 적용되지 않으며, 이들은 [viem](https://viem.sh/)를 기반으로 구축되었습니다.
+
+우리의 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), 및 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플들을 참조하여 프로젝트에 대한 구성 가이드를 받을 수 있습니다.
+
+##### Vite
+
+[Vite](https://vitejs.dev) 번들러는 Node polyfills을 제공하지 않으므로, `global`, `Buffer` 및 `process.env`에 대한 polyfills이 필요합니다. 예시로, [우리의 샘플 Vite 프로젝트의 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)을 참조할 수 있습니다.
+
+##### Remix
+
+[Remix](https://remix.run)을 사용할 때, 모든 RainbowKit 패키지 엔트리 포인트는 ESM 패키지로 배포되므로 리믹스 구성에서 [서버 의존성](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) 목록에 추가해야 합니다.
+
+리믹스는 또한 `global`, `Buffer` 및 `process.env`에 대한 폴리필이 필요합니다. [샘플 Remix 프로젝트에서의 폴리필](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)을 참조하십시오.
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
+
+### 자신만의 기능을 추가하십시오
+
+이제 사용자들이 지갑을 연결할 수 있으므로, [wagmi.](https://wagmi.sh)를 사용하여 앱의 나머지 부분을 구축할 수 있습니다.
+
+wagmi의 포괄적인 React Hooks 세트를 이용하여 트랜잭션을 전송하고, 계약에 상호 작용하고, ENS 세부 정보를 해결하고 더 많은 작업을 수행할 수 있습니다.
+
+자세한 내용은 [wagmi 문서](https://wagmi.sh)를 참조하십시오.
+
+### 추가 예제
+
+RainbowKit의 실행 예제를 보거나, 심지어 새 프로젝트를 자동으로 스캐폴드하는 데 사용하려면, [공식 예제](https://github.com/rainbow-me/rainbowkit/tree/main/examples)를 확인하십시오.
+
+브라우저에서 RainbowKit를 직접 시도하기 위해 아래의 CodeSandbox 링크를 확인하십시오:
+
+-   [리액트 앱 생성](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)을 사용하여
+-   [Next.js]을(를) 사용하여 (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   [Next.js 앱 라우터](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)을 사용하여
+-   [Remix]을(를) 사용하여 (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   [Vite]을(를) 사용하여 (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

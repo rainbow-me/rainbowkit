@@ -1,0 +1,167 @@
+---
+title: Пользовательская тема
+description: Создание пользовательской темы
+---
+
+# Пользовательская тема
+
+## Создание пользовательской темы
+
+> Примечание: этот API является нестаабильным и скорее всего изменится
+> в ближайшем будущем. Мы рекомендуем придерживаться [встроенных тем](/docs/theming) для
+> сейчас.
+
+Хотя встроенные темы предоставляют определенный уровень настройки, тип `Theme` предоставлен для помощи в определении вашей собственной пользовательской темы с низкоуровневым доступом к базовым переменным темы.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Расширение встроенной темы
+
+Вы можете расширить встроенную тему без необходимости заново определять всю тему. Это полезно, когда вы хотите переопределить только определенные токены темы.
+
+Чтобы сделать это, установите `lodash.merge` (или эквивалент):
+
+```bash
+npm install lodash.merge
+```
+
+Импортируйте его, вместе с темой, которую вы хотите расширить (например: `darkTheme`) и типом `Theme` TypeScript:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+Затем объедините встроенную тему с токенами темы, которые вы хотели бы переопределить. В этом примере я переопределяю токен `accentColor`, чтобы он соответствовал акцентному цвету моего бренда.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+Наконец, вы теперь можете передать свою пользовательскую тему в свойство `theme` объекта `RainbowKitProvider`.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Создание пользовательских селекторов темы
+
+Если ваше приложение рендерится на сервере/статически, и позволяет пользователям вручную переключать темы, система тем RainbowKit может быть подключена к пользовательским CSS селекторам с помощью следующих функций, которые можно использовать с любой системой CSS-in-JS:
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+Эти функции возвращают CSS, который устанавливает все необходимые переменные темы. Поскольку поддерживаются как строки, так и объекты, это можно интегрировать с любой системой CSS-in-JS.
+
+В качестве простого примера, вы можете отрисовать свой собственный элемент `style` с пользовательскими селекторами для каждой темы. Поскольку мы контролируем отрисовку CSS темы, мы передаем `null` в свойство `theme`, чтобы RainbowKitProvider не отрисовывал для нас никаких стилей. Также обратите внимание на использование опции extends в функции cssStringFromTheme, которая пропускает любые переменные темы, которые совпадают с базовой темой.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
