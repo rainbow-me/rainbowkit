@@ -1,0 +1,141 @@
+---
+title: 認証
+description: ユーザーの認証
+---
+
+# 認証
+
+## あなたのアプリケーションへの認証されたアクセスの提供
+
+接続プロセス中にユーザーがウォレットでメッセージに署名することを必要とすることも可能で、これにより接続されたアカウントを所有していることの証明と、アプリケーションへの特権アクセスを持つ認証されたユーザーセッションを作成することができる。
+
+カスタムのバックエンドやメッセージ形式と統合することも可能ですが、RainbowKitは[Sign-In with Ethereum](https://login.xyz)と [NextAuth.js.](https://next-auth.js.org)のファーストクラスサポートを提供しています。
+
+### EthereumとNextAuth.jsを使用したサインインを設定する
+
+まだ設定していない場合、最初に [Next.js](https://nextjs.org)プロジェクトを[公式のSign-In with EthereumのボイラープレートとNextAuth.jsで設定します。](https://docs.login.xyz/integrations/nextauth.js)
+
+#### をインストールする
+
+`@rainbow-me/rainbowkit-siwe-next-auth`パッケージとそのピア依存性、 [ethers](https://docs.ethers.org/v5/)をインストールします。
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+```
+
+> 注：`siwe`では [ethers](https://docs.ethers.org/v5/)のピア依存性が必要ですが、 [wagmi](https://wagmi.sh/)は現在、代替の [viem](https://viem.sh)に依存しています。
+
+#### プロバイダの設定
+
+`App`コンポーネントで`RainbowKitSiweNextAuthProvider`をインポートします。
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+`RainbowKitSiweNextAuthProvider`で`RainbowKitProvider`をラップし、それがNextAuthの`SessionProvider`内にネストされていることを確認します。これにより、セッションにアクセスできます。
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
+  return (
+    <WagmiConfig {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider>
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+`RainbowKitSiweNextAuthProvider`が位置していると、ユーザーはウォレットを接続した後、メッセージに署名して認証するように求められます。
+
+#### SIWEメッサージオプションのカスタマイズ
+
+[SIWEメッセージオプション](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
+
+新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
+
+```tsx
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to my RainbowKit app',
+});
+
+<RainbowKitSiweNextAuthProvider
+  getSiweMessageOptions={getSiweMessageOptions}
+>
+  ...
+</RainbowKitSiweNextAuthProvider>;
+```
+
+#### セッションをサーバーサイドでアクセスします
+
+`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
+
+また、NextAuthがクライアント側で再度それを解決する必要がないように、解決済みのセッションオブジェクトを`getServerSideProps`経由で渡すこともできます。
+
+例えば：
+
+```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+セッションの管理に関する詳細は、以下のドキュメンテーションを参照してください：
+
+-   [Next.js認証ガイド](https://nextjs.org/docs/authentication)
+-   [NextAuth.jsドキュメンテーション](https://next-auth.js.org)

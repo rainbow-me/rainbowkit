@@ -1,0 +1,28 @@
+---
+title: Modal Boyutları
+description: Geniş vs. Sıkı
+---
+
+# Modal Boyutları
+
+## Geniş vs. Sıkı boyut
+
+Varsayılan olarak, RainbowKit'in `modalSize`'ı `wide` (geniş) olarak ayarlanmıştır (ve böyle görünür):
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+Ayrıca bir `compact` (sıkı) modal boyutu da sağlarız, bu da böyle görünür:
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+Modal boyutunuzu `compact` (sıkı) olarak ayarlamak için, yalnızca `modalSize="compact"`'ı `RainbowKitProvider`'ınızdaki bir özellik olarak ekleyin:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

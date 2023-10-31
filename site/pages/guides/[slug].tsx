@@ -33,8 +33,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const guide = allGuides.find((guide) => guide.slug === params.slug);
+export async function getStaticProps({ params, locale }) {
+  const guide = allGuides.find(
+    (guide) => guide.slug === params.slug && guide.locale === locale,
+  );
   return {
     props: {
       guide,

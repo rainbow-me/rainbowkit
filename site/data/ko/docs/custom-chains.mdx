@@ -1,0 +1,75 @@
+---
+title: 맞춤형 체인
+description: 맞춤형 체인 생성
+---
+
+# 맞춤형 체인
+
+## 맞춤형 체인 생성
+
+`Chain` 타입을 사용하여 맞춤형 체인을 생성하는 데 도움을 받을 수 있습니다. 그런 다음, 그것을 [`configureChains` 함수](https://wagmi.sh/docs/providers/configuring-chains)에 전달합니다.
+
+예를 들어, 여기에는 어떻게 [avax.network](https://avax.network)에 대한 아발란체 체인을 생성할 수 있는지에 대해 설명되어 있습니다.
+
+```tsx
+import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+
+const avalanche: Chain = {
+  id: 43_114,
+  name: 'Avalanche',
+  network: 'avalanche',
+  iconUrl: 'https://example.com/icon.svg',
+  iconBackground: '#fff',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  rpcUrls: {
+    public: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+  testnet: false,
+};
+
+const { provider, chains } = configureChains(
+  [avalanche],
+  [publicProvider()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+[체인 구성](https://wagmi.sh/docs/providers/configuring-chains)에 대해 더 알아보세요.

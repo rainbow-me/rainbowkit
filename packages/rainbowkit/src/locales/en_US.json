@@ -26,7 +26,7 @@
     "label": "Verify your account",
     "description": "To finish connecting, you must sign a message in your wallet to verify that you are the owner of this account.",
     "message": {
-      "send": "Send message",
+      "send": "Sign message",
       "preparing": "Preparing message...",
       "cancel": "Cancel",
       "preparing_error": "Error preparing message, please retry!"
@@ -112,6 +112,9 @@
     "mobile_and_extension": {
       "description": "Mobile Wallet and Extension"
     },
+    "mobile_and_desktop": {
+      "description": "Mobile and Desktop Wallet"
+    },
     "looking_for": {
       "title": "Not what you're looking for?",
       "mobile": {
@@ -140,6 +143,13 @@
       "download": {
         "label": "Add to %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} for %{platform}",
+      "description": "Access your wallet natively from your powerful desktop.",
+      "download": {
+        "label": "Add to %{platform}"
+      }
     }
   },
 
@@ -163,6 +173,14 @@
     "extension": {
       "refresh": {
         "label": "Refresh"
+      },
+      "learn_more": {
+        "label": "Learn More"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Connect"
       },
       "learn_more": {
         "label": "Learn More"
@@ -953,6 +971,37 @@
         "step3": {
           "title": "Tap WalletConnect in Settings",
           "description": "Tap the Scan QR icon at the top right and confirm the prompt to connect."
+        }
+      }
+    },
+
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Open the Ledger Live app",
+          "description": "We recommend putting Ledger Live on your home screen for quicker access."
+        },
+        "step2": {
+          "title": "Set up your Ledger",
+          "description": "Set up a new Ledger or connect to an existing one."
+        },
+        "step3": {
+          "title": "Connect",
+          "description": "A connection prompt will appear for you to connect your wallet."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the Ledger Live app",
+          "description": "We recommend putting Ledger Live on your home screen for quicker access."
+        },
+        "step2": {
+          "title": "Set up your Ledger",
+          "description": "You can either sync with the desktop app or connect your Ledger."
+        },
+        "step3": {
+          "title": "Scan the code",
+          "description": "Tap WalletConnect then Switch to Scanner. After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
     }

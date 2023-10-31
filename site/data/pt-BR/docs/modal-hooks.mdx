@@ -1,0 +1,64 @@
+---
+title: Ganchos Modais
+description: Abra modais programaticamente via Ganchos
+---
+
+# Ganchos Modais
+
+## Abra modais programaticamente via Ganchos
+
+Os seguintes Ganchos são fornecidos para permitir a abertura programática de modais em qualquer lugar do seu aplicativo.
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+Cada um desses Ganchos retorna um objeto com uma função para abrir o respectivo modal. Note que as funções retornadas estarão indefinidas se o seu aplicativo não estiver no estado necessário para que o modal seja aberto.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Cada gancho também retorna um booleano para o status do modal. Geralmente é recomendado que você dependa puramente dos ganchos Wagmi (ou seja, `useAccount`) para reagir ao status de conexão da carteira do usuário diretamente, em vez de depender do estado do Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit é projetado para ser não interrompido e responsivo, portanto, dApps sempre devem renderizar uma interface para os usuários, independentemente de terem ou não conectado sua carteira. Um usuário pode conectar ou desconectar sua carteira diretamente do MetaMask, portanto, o dApp deve ser responsivo ao status de conexão subjacente diretamente.
+
+dApps que dependem de mecanismos como o 'Sign-in with Ethereum' para verificação de usuário devem, em vez disso, contar com o recurso [Authentication](/docs/authentication).

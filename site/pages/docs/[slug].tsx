@@ -36,8 +36,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const doc = allDocs.find((doc) => doc.slug === params.slug);
+export async function getStaticProps({ params, locale }) {
+  const doc = allDocs.find(
+    (doc) => doc.slug === params.slug && doc.locale === locale,
+  );
   const sectionName = docsRoutes.reduce((acc, curr) => {
     curr.pages.forEach((page) =>
       // biome-ignore lint/style/noParameterAssign: TODO

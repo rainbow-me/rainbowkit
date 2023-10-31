@@ -1,0 +1,167 @@
+---
+title: ธีมที่กำหนดเอง
+description: การสร้างธีมที่กำหนดเอง
+---
+
+# ธีมที่กำหนดเอง
+
+## การสร้างธีมที่กำหนดเอง
+
+> หมายเหตุ: ส่วนต่อประสานนี้ไม่เสถียรและมีโอกาสที่จะเปลี่ยนแปลง
+> ในอนาคตอันใกล้. เราแนะนำให้ใช้ธีมที่มีอยู่แล้ว [ธีมที่ติดตั้งมากับ](/docs/theming) สำหรับ
+> ตอนนี้.
+
+ในขณะที่ธีมที่ติดตั้งมาแล้วให้ความสามารถในการปรับแต่งบางประการ, ประเภท 'Theme' จะช่วยให้คุณสามารถกำหนดธีมที่กำหนดเองโดยใช้สิทธิ์พิเศษในการเข้าถึงตัวแปรธีม.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### การขยายธีมที่ติดตั้งมาแล้ว
+
+คุณสามารถขยายธีมที่ติดตั้งมาแล้วโดยไม่ต้องกำหนดธีมใหม่ทั้งหมด. สิ่งนี้มีประโยชน์ในกรณีที่คุณต้องการเขียนทับโทเค็นธีมเฉพาะ.
+
+ในการทำเช่นนั้น, ติดตั้ง `lodash.merge` (หรือที่เทียบเท่า):
+
+```bash
+npm install lodash.merge
+```
+
+นำเข้ามัน, รวมถึงธีมที่คุณต้องการขยาย (เช่น: `darkTheme`) และ `Theme` ประเภท TypeScript:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+ทำการรวมธีมที่ติดตั้งมาแล้ว, กับโทเค็นธีมที่คุณต้องการเขียนทับ. ในตัวอย่างนี้, ฉันกำลังแทนที่โทเค็น `accentColor` เพื่อให้ตรงกับสีเน้นของแบรนด์ของฉัน
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+ในที่สุด, คุณสามารถส่งธีมที่กำหนดเองของคุณไปที่ `RainbowKitProvider` ด้วย `theme` prop.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### การสร้างโธมที่กำหนดเอง
+
+หากแอปของคุณนั้นถูกแสดงผลโดยเซิร์ฟเวอร์/แสดงผลแบบสถิติและอนุญาตให้ผู้ใช้ทำการสลับธีมอย่างทั่วถึง, ระบบธีมของRainbowKit สามารถเชื่อมต่อได้กับCSS selectorsที่กำหนดเอง ด้วยฟังก์ชันต่อไปนี่ที่สามารถใช้ร่วมกับระบบCSS-in-JS
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+ฟังก์ชันเหล่านี้จะส่งคืน CSS ที่ตั้งค่าหัวข้อธีมที่จำเป็นทั้งหมด. เนื่องจากทั้งสตริงและวัตถุต่างๆถูกสนับสนุน, คุณสามารถรวมกับระบบ CSS-in-JS ใดอีก.
+
+ในการทดลองสมการเบื้องต้น,คุณสามารถทำให้ของคุณเอง `style` element ด้วยตัวเลือกที่กำหนดเองสำหรับแต่ละธีม เนื่องจากเราควบคุมการแสดงผล CSS ของธีมเรา ทำให้เราส่งค่า `null` ไปยัง `theme` prop เพื่อให้ RainbowKitProvider ไม่ต้องจัดการสไตล์ให้เรา ยังควรทราบว่าการใช้ตัวเลือก extends บนฟังก์ชัน cssStringFromTheme ที่ข้ามตัวแปรธีมใด ๆ ที่เหมือนกับธีมฐาน
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

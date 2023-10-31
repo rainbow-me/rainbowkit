@@ -1,0 +1,385 @@
+---
+title: テーマ設定
+description: テーマの使用とカスタマイズ
+---
+
+# テーマ設定
+
+## テーマの使用とカスタマイズ
+
+RainbowKit UIをあなたのブランドに合わせて微調整することができます。 いくつかの事前定義されたアクセントカラーとボーダーラジアスの設定から選択することができます。
+
+3つの組み込みテーマ関数があります：
+
+-   `lightTheme`   (デフォルト)
+-   `darkTheme`
+-   `midnightTheme`
+
+テーマ関数はテーマオブジェクトを返します。 このオブジェクトを `RainbowKitProvider`の`theme` プロパティに渡すことができます。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+必要であれば、`accentColor`、`accentColorForeground`、`borderRadius`、`fontStack`、および`overlayBlur`をカスタマイズするために渡すことができます。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### 組み込みテーマのカスタマイズ
+
+組み込みのテーマ関数は、オプションオブジェクトも受け入れます。これにより、いくつかの異なる視覚スタイルから選択できます。
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+例えば、ダークテーマをパープルのアクセントカラーと`medium`のボーダーラディウススケールでカスタマイズする方法は次の通りです：
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+各テーマはさまざまなアクセントカラープリセット（`blue`、`green`、`orange`、`pink`、`purple`、`red`）を提供しており、これらをオプションオブジェクトにスプレッドすることができます。 例えば、ピンクのアクセントカラープリセットを使用する方法は次の通りです：
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 例
+
+#### テーマ機能
+
+`theme`プロパティを使用するいくつかの異なる方法です。
+
+`darkTheme`テーマを使用します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+`midnightTheme`テーマを使用します。
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### アクセントカラー
+
+`accentColor`設定を使用するいくつかの異なる方法です。
+
+アクセントカラーをカスタムの紫色に設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+アクセントカラーを内蔵の`green`プリセットに設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### ボーダーラディウス
+
+`borderRadius`設定を使用するいくつかの異なる方法です。
+
+ボーダーラディウスを`medium`に設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+ボーダーラディウスを`none`に設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> リマインダー：利用可能なボーダーラディウスの値は、`large`（デフォルト）、`medium`、`small`、および`none`です。
+
+#### フォントスタック
+
+デフォルトでは、`fontStack`は`rounded`に設定されています。 しかし、ここでは`fontStack`設定の使い方を説明します。
+
+フォントスタックを`system`に設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### オーバーレイのブラー
+
+デフォルトでは、`overlayBlur`は`none`に設定されています。 しかし、ここでは`overlayBlur`設定の使い方を説明します。
+
+オーバレイのブラーを`small`に設定します。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### ミックスアンドマッチ
+
+ここでは、異なるテーマを使用するためのいくつかの方法と、`accentColor`、`borderRadius`、`fontStack`プロパティを一緒に使用する方法を説明します。
+
+-   `lightTheme` テーマを使用する
+-   アクセントカラーをカスタムパープル値に設定する
+-   境界線の半径を `medium` に設定する
+-   フォントスタックを `system` に設定する
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+-   `midnightTheme` テーマを使用する
+-   アクセントカラーをビルトインの `pink` プリセットに設定する。
+-   境界線の半径を `small` に設定する
+-   フォントスタックを `system` に設定する
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### ダークモードのサポート
+
+あなたのアプリが標準的な `prefers-color-scheme: dark` メディアクエリを使用してライトモードとダークモードを切り替える場合、オプションで動的なテーマオブジェクトを提供して `lightMode` と `darkMode` の値を設定することができます。
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

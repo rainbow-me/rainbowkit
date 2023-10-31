@@ -1,0 +1,51 @@
+---
+title: Avatares personalizados
+description: Personalizando el avatar de usuario de su aplicación
+---
+
+# Avatares personalizados
+
+## Personalizando el avatar de usuario de su aplicación
+
+Por defecto proporcionamos un avatar para los usuarios en caso de que su imagen ENS no esté configurada, pero puede personalizar esto proporcionando su propio componente de avatar. Puede importar el tipo `AvatarComponent` si utiliza TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+El `AvatarComponent` pasado a la propiedad `avatar` tiene los tipos de propiedades como sigue: `<{ address: string; ensImage?: string | null; size: number;}>`

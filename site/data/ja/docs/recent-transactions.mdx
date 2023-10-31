@@ -1,0 +1,75 @@
+---
+title: 最近の取引
+description: 最近の取引を表示する
+---
+
+# 最近の取引
+
+## 最近の取引を表示する
+
+RainbowKitのアカウントモーダル内に最近の取引を表示するようにオプトインできます。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。
+
+デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りにローディングインジケーターを表示します。 カスタム`ConnectButton`実装は、レンダリング関数に渡される`account.hasPendingTransactions`プロパティを介してこの振る舞いを再現できます。
+
+この機能を使用するには、まず`RainbowKitProvider`の`showRecentTransactions`オプションを有効にします。
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+取引は、`useAddRecentTransaction`フックを使用してRainbowKitに登録できます。
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+取引がRainbowKitに登録されると、そのステータスは完了時に更新されます。
+
+デフォルトでは、トランザクションが採掘されたブロックの上に単一のブロックが採掘された時点で、トランザクションは完了と見なされますが、カスタムな `confirmations` の値を指定することによってこれを設定することができます。
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```

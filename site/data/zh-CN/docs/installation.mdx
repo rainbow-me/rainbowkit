@@ -1,0 +1,176 @@
+---
+title: 安装
+description: 通过RainbowKit快速启动和运行
+---
+
+# 安装
+
+## 通过RainbowKit快速启动和运行
+
+### 快速开始
+
+您可以使用以下命令之一，选择您喜欢的包管理器，创建一个新的RainbowKit+ [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org)应用脚手架：
+
+```bash
+npm init @rainbow-me/rainbowkit@latest
+# or
+pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
+```
+
+这将要求您输入项目名称，生成包含样板项目的新目录，并安装所有所需的依赖项。
+
+或者，您可以手动将RainbowKit集成到您现有的项目中。
+
+### 手动设置
+
+安装RainbowKit及其对等依赖项， [wagmi](https://wagmi.sh/) 和 [viem](https://viem.sh).
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+> 注意：RainbowKit 是一个 [React](https://reactjs.org/) 库。
+
+#### 已导入
+
+导入 RainbowKit 和 wagmi。
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+```
+
+#### 配置
+
+配置您所需的链并生成所需的连接器。 您还需要设置一个 `wagmi` 配置。
+
+> 注意：现在依赖 WalletConnect 的每一个 dApp 都需要从 [WalletConnect Cloud](https://cloud.walletconnect.com/) 获得一个 `projectId`。 这完全免费，只需要几分钟。
+
+```tsx line=4-99
+...
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+})
+```
+
+[阅读更多关于用 `wagmi` 配置链和提供者的信息](https://wagmi.sh/docs/providers/configuring-chains)。
+
+#### 包装提供者
+
+用 `RainbowKitProvider` 和 [`WagmiConfig`](https://wagmi.sh/docs/provider) 包装您的应用。
+
+```tsx
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+#### 添加连接按钮
+
+然后，在你的应用中，导入并渲染 `ConnectButton` 组件。
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+RainbowKit 现在将处理您用户的钱包选择，显示钱包/交易信息并处理网络/钱包切换。
+
+#### 额外的构建工具设置
+
+一些构建工具将需要额外的设置。
+
+##### React，Next.js和Webpack
+
+Next.js 和 Create React App 使用的[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) 打包器[不再提供 Node polyfills](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)，所以你需要自行包含这些模块来满足 RainbowKit 的同级依赖。 Create React App 特别要求你对 `Buffer` 进行 polyfill。
+
+在依赖 [ethers](https://docs.ethers.org/v5/) 的 RainbowKit 的先前版本中，`fs`、`net` 和 `tls` 模块会自动进行 polyfill。 在基于 [viem](https://viem.sh/) 的 RainbowKit v1 + wagmi v1 中，情况不再如此。
+
+参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)、[Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js)和[Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 示例，为您的项目提供配置指导。
+
+##### Vite
+
+[Vite](https://vitejs.dev) 打包程序不提供 Node polyfills，所以你需要包含 `global`、`Buffer` 和 `process.env` 的 polyfills。 例如，您可以参考我们的 [在我们的 Vite 项目示例中的 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)。
+
+##### Remix
+
+当使用 [Remix](https://remix.run)时，所有的 RainbowKit 包入口点都必须添加到您的 [服务器依赖项](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) 列表中，因为它们是以 ESM 包形式发布的。
+
+Remix 还要求您为 `global`，`Buffer` 和 `process.env` 填充兼容性代码。 参考我们的样本 Remix 项目中的 [polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)。
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
+
+### 添加你自己的功能
+
+现在您的用户可以连接他们的钱包，您可以开始使用 [wagmi.](https://wagmi.sh)构建应用程序的其余部分
+
+使用wagmi的全面React钩子套件，发送交易，与合约互动，解析ENS详情等等。
+
+查看更多详细信息，请查阅[wagmi文档](https://wagmi.sh)
+
+### 更多示例
+
+查看RainbowKit的一些运行示例，或者甚至使用它们来自动构建一个新项目，请查看[官方示例](https://github.com/rainbow-me/rainbowkit/tree/main/examples)。
+
+要直接在您的浏览器中试用RainbowKit，请查看下面的CodeSandbox链接：
+
+-   和[Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)一起用
+-   和 [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)一起
+-   与 [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   与 [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   与 [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

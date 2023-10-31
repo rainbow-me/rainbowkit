@@ -1,0 +1,102 @@
+---
+title: WalletConnect v2로 dApp 업그레이드 하기
+description: RainbowKit는 v2로 마이그레이션 되었으며, 5분 이내에 dApp을 준비할 수 있습니다
+image: guide-walletconnect-v2.png
+---
+
+# WalletConnect v2로 마이그레이션하기
+
+## 5분 이내에 dApp을 v2 업그레이드를 위해 준비하기
+
+WalletConnect v1 프로토콜은 2023년 6월 28일에 종료되며, RainbowKit는 이전을 매우 간단하게 도와줄 것입니다.
+
+이제 WalletConnect v2에 대한 지원은 RainbowKit에서 표준이며, 중단 없이 변경됩니다. 업그레이드만 하고 아래 안내를 참조하여 추가 세부 사항을 확인하십시오.
+
+#### WalletConnect v2 이해하기
+
+WalletConnect는 사용자가 모바일 지갑을 dApp에 연결할 수 있게 해주는 프로토콜이며, RainbowKit의 중요한 기반입니다. 최근에 출시된 WalletConnect v2는 지갑-dApp 경험을 더욱 향상시키는 많은 중요한 업그레이드를 제공합니다.
+
+v2를 사용하면 사용자가 동시에 여러 체인에 연결할 수 있으므로 체인 전환 핸드쉐이크를 잊을 수 있습니다. 또한 더 많은 네트워크를 지원하고 Ethereum으로 로그인할 때의 속도를 향상시킵니다.
+
+#### 당신의 dApp 업그레이드
+
+이미 RainbowKit `0.12.x`와 `1.0.x`에 대한 마이그레이션 가이드를 따랐다면 거의 다 왔습니다! 최신 패치 릴리즈로 업그레이드하고 시도해 보세요.
+
+RainbowKit은 `0.12.15`와 `1.0.2`로 WalletConnect v2를 기본적으로 활성화했습니다. `0.12.x`지원이 계속되고 있습니다. dApp이 아직 wagmi v1 및 RainbowKit v1으로 업그레이드하지 않은 경우를 대비하여.
+
+\*\*1. 의존성 업그레이드
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+`0.12.x` 또는 `1.0.x` 이전의 RainbowKit 버전을 사용하고 있다면, [Migration Guides](/docs/migration-guide)를 따라 최신 상태로 업데이트하십시오.
+
+`0.12.x` dApp 사용자는 wagmi v1로 업그레이드를 시작하는 것이 좋습니다. 왜냐하면 WalletConnect v2의 안정성 향상은 향후 wagmi 버전에서만 포함될 예정이기 때문입니다.
+
+**2. 프로젝트 아이디 제공**
+
+WalletConnect를 의존하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 얻어야합니다. 이는 완전히 무료이며 몇분밖에 걸리지 않습니다.
+
+다음과 같이 `getDefaultWallets` 및 개별 RainbowKit 지갑 커넥터에 `projectId`를 제공하십시오:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKit은 타입 안전하며, `projectId`가 누락될 경우 경고합니다. v2가 동작하는 예시를 참조하십시오:
+
+-   [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+#### 고급 사용자 지정
+
+당신의 dApp이 아직 WalletConnect v2로 마이그레이션하지 않은 레거시 월렛을 지원해야한다면, RainbowKit의 기본 WalletConnect 버전은 각 월렛별로 독립적으로 오버라이드 될 수 있습니다.
+
+```ts
+metaMaskWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+});
+```
+
+WalletConnect v1 서버가 6월 28일에 종료되면, v1 프로토콜을 계속 사용하기 위해서는 [사용자 정의 브릿지 서버](https://docs.walletconnect.com/1.0/bridge-server)가 필요합니다. 다음 예를 참조하십시오:
+
+```ts
+walletConnectWallet(options: {
+  chains: Chain[];
+  version: '1',
+  options: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+
+customWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+  walletConnectOptions: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+```
+
+추가 지원 옵션에 대한 참조는 [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect).

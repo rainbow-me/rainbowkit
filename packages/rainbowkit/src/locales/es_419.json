@@ -103,6 +103,9 @@
     "mobile_and_extension": {
       "description": "Billetera móvil y extensión"
     },
+    "mobile_and_desktop": {
+      "description": "Billetera Móvil y de Escritorio"
+    },
     "looking_for": {
       "title": "¿No es lo que estás buscando?",
       "mobile": {
@@ -130,6 +133,13 @@
       "download": {
         "label": "Añadir a %{browser}"
       }
+    },
+    "desktop": {
+      "title": "%{wallet} para %{platform}",
+      "description": "Acceda a su billetera de forma nativa desde su potente escritorio.",
+      "download": {
+        "label": "Añadir a %{platform}"
+      }
     }
   },
   "get_mobile": {
@@ -151,6 +161,14 @@
     "extension": {
       "refresh": {
         "label": "Actualizar"
+      },
+      "learn_more": {
+        "label": "Obtener más información"
+      }
+    },
+    "desktop": {
+      "connect": {
+        "label": "Conectar"
       },
       "learn_more": {
         "label": "Obtener más información"
@@ -758,6 +776,174 @@
         "step3": {
           "title": "Actualice su navegador",
           "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
+        }
+      }
+    },
+    "zeal": {
+      "extension": {
+        "step1": {
+          "title": "Instale la extensión Zeal",
+          "description": "Recomendamos anclar Zeal a su barra de tareas para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
+      }
+    },
+    "safepal": {
+      "extension": {
+        "step1": {
+          "title": "Instale la extensión de la billetera SafePal",
+          "description": "Haga clic en la esquina superior derecha de su navegador y ancle SafePal Wallet para un fácil acceso."
+        },
+        "step2": {
+          "title": "Crear o Importar una billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configure la Billetera SafePal, haga clic abajo para refrescar el navegador y cargar la extensión."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Billetera SafePal",
+          "description": "Coloque la Billetera SafePal en su pantalla de inicio para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca WalletConnect en Configuraciones",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
+        }
+      }
+    },
+    "desig": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión Desig",
+          "description": "Recomendamos anclar Desig a tu barra de tareas para acceder más fácilmente a tu cartera."
+        },
+        "step2": {
+          "title": "Crea una Cartera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
+      }
+    },
+    "subwallet": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión SubWallet",
+          "description": "Recomendamos anclar SubWallet a tu barra de tareas para acceder a tu cartera más rápidamente."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase de recuperación con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación SubWallet",
+          "description": "Recomendamos colocar SubWallet en tu pantalla principal para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
+      }
+    },
+    "clv": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión CLV Wallet",
+          "description": "Recomendamos anclar la billetera CLV a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación CLV Wallet",
+          "description": "Recomendamos colocar la billetera CLV en tu pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Toque el botón de escaneo",
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera."
+        }
+      }
+    },
+    "okto": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Okto",
+          "description": "Agrega Okto a tu pantalla de inicio para un acceso rápido"
+        },
+        "step2": {
+          "title": "Crea una billetera MPC",
+          "description": "Crea una cuenta y genera una billetera"
+        },
+        "step3": {
+          "title": "Toca WalletConnect en Configuraciones",
+          "description": "Toca el icono de Escanear QR en la parte superior derecha y confirma el mensaje para conectar."
+        }
+      }
+    },
+    "ledger": {
+      "desktop": {
+        "step1": {
+          "title": "Abra la aplicación Ledger Live",
+          "description": "Recomendamos poner Ledger Live en su pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Configure su Ledger",
+          "description": "Configure un nuevo Ledger o conéctese a uno existente."
+        },
+        "step3": {
+          "title": "Conectar",
+          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abra la aplicación Ledger Live",
+          "description": "Recomendamos poner Ledger Live en su pantalla de inicio para un acceso más rápido."
+        },
+        "step2": {
+          "title": "Configure su Ledger",
+          "description": "Puedes sincronizar con la aplicación de escritorio o conectar tu Ledger."
+        },
+        "step3": {
+          "title": "Escanea el código",
+          "description": "Toca WalletConnect y luego cambia a Scanner. Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
         }
       }
     }
