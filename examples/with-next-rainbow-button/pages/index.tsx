@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  return isMounted ? (
+  return isMounted && (
     <div
       style={{
         display: 'flex',
@@ -24,9 +24,7 @@ const Home: NextPage = () => {
       <RainbowButton />
       {isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
     </div>
-  ) : (
-    <></>
-  );
+  )
 };
 
 export default Home;

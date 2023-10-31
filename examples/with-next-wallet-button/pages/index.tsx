@@ -12,9 +12,8 @@ const Home: NextPage = () => {
 
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
-  if (!isMounted) return;
 
-  return (
+  return isMounted && (
     <div
       style={{
         display: "flex",
