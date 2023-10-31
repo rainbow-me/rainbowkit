@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
-  return isMounted && (
+  return (
     <div
       style={{
         display: "flex",
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
             );
           }}
         </WalletButton.Custom>
-        {wagmiConnectors.map((connector) => (
+        {isMounted && wagmiConnectors.map((connector) => (
           <button
             disabled={!connector.ready}
             onClick={() => connect({ connector })}
