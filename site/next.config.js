@@ -11,13 +11,16 @@ const nextConfig = {
   i18n: {
     locales: [
       'en-US',
+      'ar',
       'es-419',
       'fr',
       'hi',
       'id',
       'ja',
+      'ko',
       'pt-BR',
       'ru',
+      'th',
       'tr',
       'zh-CN',
     ],
