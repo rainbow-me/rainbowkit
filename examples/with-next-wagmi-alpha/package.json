@@ -1,0 +1,27 @@
+{
+  "name": "with-next-wagmi-alpha",
+  "private": true,
+  "version": "0.0.70",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*",
+    "@tanstack/react-query": "5.0.0-beta.35",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "viem": "2.0.0-alpha.17",
+    "wagmi": "2.0.0-alpha.10"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.12",
+    "@types/react": "^18.2.21",
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^13.4.19",
+    "typescript": "^5.0.4"
+  }
+}
