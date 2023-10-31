@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rainbowkit.com
+
+# Sitemaps
+Sitemap: https://rainbowkit.com/sitemap.xml
