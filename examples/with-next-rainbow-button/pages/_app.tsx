@@ -11,8 +11,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [publicProvider()]
 );
 
-const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "YOUR_PROJECT_ID";
+const projectId = "YOUR_PROJECT_ID";
 
 const wagmiClient = createConfig({
   autoConnect: true,
