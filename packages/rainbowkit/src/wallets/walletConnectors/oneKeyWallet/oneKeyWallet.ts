@@ -34,21 +34,21 @@ export const oneKeyWallet = ({ chains }: OnekeyWalletOptions): Wallet => {
             steps: [
               {
                 description:
-                  'We recommend pinning OneKey Wallet to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.one_key.extension.step1.description',
                 step: 'install',
-                title: 'Install the OneKey Wallet extension',
+                title: 'wallet_connectors.one_key.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.one_key.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.one_key.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.one_key.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.one_key.extension.step3.title',
               },
             ],
           },

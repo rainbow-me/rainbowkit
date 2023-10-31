@@ -34,9 +34,9 @@ type AccountStatus = ExtractString<ConnectButtonProps['accountStatus']>;
 type ChainStatus = ExtractString<ConnectButtonProps['chainStatus']>;
 
 const Example = ({ authEnabled }: AppContextProps) => {
-  const { openAccountModal } = useAccountModal();
-  const { openChainModal } = useChainModal();
-  const { openConnectModal } = useConnectModal();
+  const { openAccountModal, accountModalOpen } = useAccountModal();
+  const { openChainModal, chainModalOpen } = useChainModal();
+  const { openConnectModal, connectModalOpen } = useConnectModal();
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status } = useSession();
 
@@ -260,21 +260,25 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 onClick={openConnectModal}
                 type="button"
               >
-                Open connect modal
+                {connectModalOpen
+                  ? 'Connect modal opened'
+                  : 'Open connect modal'}
               </button>
               <button
                 disabled={!openChainModal}
                 onClick={openChainModal}
                 type="button"
               >
-                Open chain modal
+                {chainModalOpen ? 'Chain modal opened' : 'Open chain modal'}
               </button>
               <button
                 disabled={!openAccountModal}
                 onClick={openAccountModal}
                 type="button"
               >
-                Open account modal
+                {accountModalOpen
+                  ? 'Account modal opened'
+                  : 'Open account modal'}
               </button>
             </div>
           </div>

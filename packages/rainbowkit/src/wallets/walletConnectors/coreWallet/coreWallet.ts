@@ -117,21 +117,21 @@ export const coreWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Core on your home screen for faster access to your wallet.',
+                      'wallet_connectors.core.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Core app',
+                    title: 'wallet_connectors.core.qr_code.step1.title',
                   },
                   {
                     description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                      'wallet_connectors.core.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.core.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.core.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the WalletConnect button',
+                    title: 'wallet_connectors.core.qr_code.step3.title',
                   },
                 ],
               },
@@ -143,21 +143,21 @@ export const coreWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Core to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.core.extension.step1.description',
                 step: 'install',
-                title: 'Install the Core extension',
+                title: 'wallet_connectors.core.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.core.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.core.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.core.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.core.extension.step3.title',
               },
             ],
           },

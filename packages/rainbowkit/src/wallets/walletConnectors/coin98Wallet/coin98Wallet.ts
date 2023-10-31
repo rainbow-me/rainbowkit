@@ -131,21 +131,21 @@ export const coin98Wallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Coin98 Wallet on your home screen for faster access to your wallet.',
+                      'wallet_connectors.coin98.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Coin98 Wallet app',
+                    title: 'wallet_connectors.coin98.qr_code.step1.title',
                   },
                   {
                     description:
-                      'You can easily backup your wallet using our backup feature on your phone.',
+                      'wallet_connectors.coin98.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.coin98.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.coin98.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the WalletConnect button',
+                    title: 'wallet_connectors.coin98.qr_code.step3.title',
                   },
                 ],
               },
@@ -157,20 +157,21 @@ export const coin98Wallet = ({
             steps: [
               {
                 description:
-                  'Click at the top right of your browser and pin Coin98 Wallet for easy access.',
+                  'wallet_connectors.coin98.extension.step1.description',
                 step: 'install',
-                title: 'Install the Coin98 Wallet extension',
-              },
-              {
-                description: 'Create a new wallet or import an existing one.',
-                step: 'create',
-                title: 'Create or Import a wallet',
+                title: 'wallet_connectors.coin98.extension.step1.title',
               },
               {
                 description:
-                  'Once you set up Coin98 Wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.coin98.extension.step2.description',
+                step: 'create',
+                title: 'wallet_connectors.coin98.extension.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.coin98.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.coin98.extension.step3.title',
               },
             ],
           },

@@ -49,21 +49,21 @@ export const talismanWallet = ({
         steps: [
           {
             description:
-              'We recommend pinning Talisman to your taskbar for quicker access to your wallet.',
+              'wallet_connectors.talisman.extension.step1.description',
             step: 'install',
-            title: 'Install the Talisman extension',
+            title: 'wallet_connectors.talisman.extension.step1.title',
           },
           {
             description:
-              'Be sure to back up your wallet using a secure method. Never share your recovery phrase with anyone.',
+              'wallet_connectors.talisman.extension.step2.description',
             step: 'create',
-            title: 'Create or Import an Ethereum Wallet',
+            title: 'wallet_connectors.talisman.extension.step2.title',
           },
           {
             description:
-              'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+              'wallet_connectors.talisman.extension.step3.description',
             step: 'refresh',
-            title: 'Refresh your browser',
+            title: 'wallet_connectors.talisman.extension.step3.title',
           },
         ],
       },

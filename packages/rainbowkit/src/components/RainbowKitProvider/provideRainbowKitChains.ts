@@ -16,6 +16,7 @@ type ChainName =
   | 'bscTestnet'
   | 'goerli'
   | 'hardhat'
+  | 'holesky'
   | 'kovan'
   | 'localhost'
   | 'mainnet'
@@ -28,7 +29,9 @@ type ChainName =
   | 'ropsten'
   | 'sepolia'
   | 'zora'
-  | 'zoraTestnet';
+  | 'zoraTestnet'
+  | 'zkSync'
+  | 'zkSyncTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -90,6 +93,11 @@ const zoraIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
+const zkSyncIcon: IconMetadata = {
+  iconBackground: '#f9f7ec',
+  iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -103,6 +111,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
+  holesky: { chainId: 17000, ...ethereumIcon },
   kovan: { chainId: 42, ...ethereumIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
@@ -116,6 +125,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
+  zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
+  zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
 };
 
 const chainMetadataById = Object.fromEntries(

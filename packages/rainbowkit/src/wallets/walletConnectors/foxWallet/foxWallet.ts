@@ -77,21 +77,22 @@ export const foxWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting FoxWallet on your home screen for quicker access.',
+                      'wallet_connectors.fox.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the FoxWallet app',
+                    title: 'wallet_connectors.fox.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.fox.qr_code.step2.description',
+
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.fox.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.fox.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.fox.qr_code.step3.title',
                   },
                 ],
               },

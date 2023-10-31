@@ -292,7 +292,10 @@ export default function Home() {
               </Link>
             </Text>
             <Text size="4" weight="bold">
-              <Link href="https://rainbow.me/media-kit.zip" variant="gray">
+              <Link
+                href="https://www.figma.com/community/file/1139300796265858893/rainbow-brand-assets"
+                variant="gray"
+              >
                 <span data-emoji>⬇️</span> media kit
               </Link>
             </Text>

@@ -102,21 +102,21 @@ export const frontierWallet = ({
                 steps: [
                   {
                     description:
-                      'We recommend putting Frontier Wallet on your home screen for quicker access.',
+                      'wallet_connectors.im_token.qr_code.step1.description',
                     step: 'install',
-                    title: 'Open the Frontier Wallet app',
+                    title: 'wallet_connectors.im_token.qr_code.step1.title',
                   },
                   {
                     description:
-                      'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                      'wallet_connectors.im_token.qr_code.step2.description',
                     step: 'create',
-                    title: 'Create or Import a Wallet',
+                    title: 'wallet_connectors.im_token.qr_code.step2.title',
                   },
                   {
                     description:
-                      'After you scan, a connection prompt will appear for you to connect your wallet.',
+                      'wallet_connectors.im_token.qr_code.step3.description',
                     step: 'scan',
-                    title: 'Tap the scan button',
+                    title: 'wallet_connectors.im_token.qr_code.step3.title',
                   },
                 ],
               },
@@ -129,21 +129,21 @@ export const frontierWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Frontier Wallet to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.frontier.extension.step1.description',
                 step: 'install',
-                title: 'Install the Frontier Wallet extension',
+                title: 'wallet_connectors.frontier.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.frontier.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.frontier.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.frontier.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.frontier.extension.step3.title',
               },
             ],
           },

@@ -25,6 +25,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Modal Sizes', slug: 'modal-sizes' },
       { title: 'Theming', slug: 'theming' },
       { title: 'Chains', slug: 'chains' },
+      { title: 'Localization', slug: 'localization' },
       { title: 'Authentication', slug: 'authentication' },
       { title: 'Recent Transactions', slug: 'recent-transactions' },
     ],

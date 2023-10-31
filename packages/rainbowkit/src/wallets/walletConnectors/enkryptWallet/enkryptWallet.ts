@@ -59,21 +59,21 @@ export const enkryptWallet = ({
             steps: [
               {
                 description:
-                  'We recommend pinning Enkrypt Wallet to your taskbar for quicker access to your wallet.',
+                  'wallet_connectors.enkrypt.extension.step1.description',
                 step: 'install',
-                title: 'Install the Enkrypt Wallet extension',
+                title: 'wallet_connectors.enkrypt.extension.step1.title',
               },
               {
                 description:
-                  'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+                  'wallet_connectors.enkrypt.extension.step2.description',
                 step: 'create',
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.enkrypt.extension.step2.title',
               },
               {
                 description:
-                  'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+                  'wallet_connectors.enkrypt.extension.step3.description',
                 step: 'refresh',
-                title: 'Refresh your browser',
+                title: 'wallet_connectors.enkrypt.extension.step3.title',
               },
             ],
           },

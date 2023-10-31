@@ -9,6 +9,7 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 import {
@@ -29,6 +30,8 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
       onClose();
     },
   });
+
+  const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';
@@ -62,7 +65,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                Switch Networks
+                {i18n.t('chains.title')}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
@@ -70,7 +73,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
           {unsupportedChain && (
             <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                Wrong network detected, switch or disconnect to continue.
+                {i18n.t('chains.wrong_network')}
               </Text>
             </Box>
           )}
@@ -144,7 +147,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  Connected
+                                  {i18n.t('chains.connected')}
                                 </Text>
                                 <Box
                                   background="connectionIndicator"
@@ -170,7 +173,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  Confirm in Wallet
+                                  {i18n.t('chains.confirm')}
                                 </Text>
                                 <Box
                                   background="standby"
@@ -203,9 +206,11 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 paddingY="12"
               >
                 <Text color="modalText" size="14" weight="medium">
-                  Your wallet does not support switching networks from{' '}
-                  {appName ?? 'this app'}. Try switching networks from within
-                  your wallet instead.
+                  {appName
+                    ? i18n.t('chains.switching_not_supported', {
+                        appName,
+                      })
+                    : i18n.t('chains.switching_not_supported_fallback')}
                 </Text>
               </Box>
             )}
@@ -244,7 +249,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         >
                           <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
-                        <div>Disconnect</div>
+                        <div>{i18n.t('chains.disconnect')}</div>
                       </Box>
                     </Box>
                   </Box>

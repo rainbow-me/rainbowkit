@@ -9,6 +9,7 @@ import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
 
@@ -27,6 +28,8 @@ export function TxList({ address }: TxListProps) {
   const hasTransactions = visibleTxs.length > 0;
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <>
@@ -50,7 +53,7 @@ export function TxList({ address }: TxListProps) {
                 size={mobile ? '16' : '14'}
                 weight="semibold"
               >
-                Recent Transactions
+                {i18n.t('profile.transactions.recent.title')}
               </Text>
               <Box
                 style={{
@@ -78,7 +81,7 @@ export function TxList({ address }: TxListProps) {
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    Clear All
+                    {i18n.t('profile.transactions.clear.label')}
                   </Text>
                 </Box>
               </Box>
@@ -96,7 +99,11 @@ export function TxList({ address }: TxListProps) {
                   size={mobile ? '16' : '14'}
                   weight={mobile ? 'medium' : 'bold'}
                 >
-                  {appName ?? 'Your'} transactions will appear here...
+                  {appName
+                    ? i18n.t('profile.transactions.description', {
+                        appName,
+                      })
+                    : i18n.t('profile.transactions.description_fallback')}
                 </Text>
               </Box>
               {mobile && (
@@ -139,7 +146,7 @@ export function TxList({ address }: TxListProps) {
               size={mobile ? '16' : '14'}
               weight={mobile ? 'semibold' : 'bold'}
             >
-              View more on Explorer
+              {i18n.t('profile.explorer.label')}
             </Text>
             <ExternalLinkIcon />
           </Box>

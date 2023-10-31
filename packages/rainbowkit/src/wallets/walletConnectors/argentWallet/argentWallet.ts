@@ -67,22 +67,19 @@ export const argentWallet = ({
           learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [
             {
-              description:
-                'Put Argent on your home screen for faster access to your wallet.',
+              description: 'wallet_connectors.argent.qr_code.step1.description',
               step: 'install',
-              title: 'Open the Argent app',
+              title: 'wallet_connectors.argent.qr_code.step1.title',
             },
             {
-              description:
-                'Create a wallet and username, or import an existing wallet.',
+              description: 'wallet_connectors.argent.qr_code.step2.description',
               step: 'create',
-              title: 'Create or Import a Wallet',
+              title: 'wallet_connectors.argent.qr_code.step2.title',
             },
             {
-              description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
+              description: 'wallet_connectors.argent.qr_code.step3.description',
               step: 'scan',
-              title: 'Tap the Scan QR button',
+              title: 'wallet_connectors.argent.qr_code.step3.title',
             },
           ],
         },

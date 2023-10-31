@@ -1,5 +1,66 @@
 # with-next-siwe-iron-session
 
+## 0.0.53
+
+### Patch Changes
+
+- Updated dependencies [ef64a229]
+  - @rainbow-me/rainbowkit@1.2.0
+
+## 0.0.52
+
+### Patch Changes
+
+- Updated dependencies [9f68c300]
+- Updated dependencies [3f595c12]
+- Updated dependencies [e2075b31]
+  - @rainbow-me/rainbowkit@1.1.4
+
+## 0.0.51
+
+### Patch Changes
+
+- Updated dependencies [02e796c0]
+- Updated dependencies [efb8566e]
+- Updated dependencies [4b7a44c8]
+- Updated dependencies [2c8abbb2]
+- Updated dependencies [e41103fb]
+- Updated dependencies [b0022aea]
+  - @rainbow-me/rainbowkit@1.1.3
+
+## 0.0.50
+
+### Patch Changes
+
+- Updated dependencies [6cbd9a57]
+- Updated dependencies [7d978605]
+- Updated dependencies [b2b69dcd]
+  - @rainbow-me/rainbowkit@1.1.2
+
+## 0.0.49
+
+### Patch Changes
+
+- Updated dependencies [b60e335c]
+  - @rainbow-me/rainbowkit@1.1.1
+
+## 0.0.48
+
+### Patch Changes
+
+- Updated dependencies [b37f5d68]
+  - @rainbow-me/rainbowkit@1.1.0
+
+## 0.0.47
+
+### Patch Changes
+
+- Updated dependencies [5b8d8219]
+- Updated dependencies [fb9405a4]
+- Updated dependencies [7643e706]
+- Updated dependencies [252f02e8]
+  - @rainbow-me/rainbowkit@1.0.12
+
 ## 0.0.46
 
 ### Patch Changes
