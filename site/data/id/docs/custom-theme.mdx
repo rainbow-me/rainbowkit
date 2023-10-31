@@ -1,0 +1,167 @@
+---
+title: Tema khusus
+description: Membuat tema khusus
+---
+
+# Tema khusus
+
+## Membuat tema khusus
+
+> Catatan: API ini tidak stabil dan kemungkinan akan berubah
+> dalam waktu dekat. Kami menyarankan untuk tetap menggunakan [tema bawaan](/docs/theming) untuk
+> sekarang.
+
+Meskipun tema bawaan menyediakan beberapa tingkat penyesuaian, tipe `Theme` disediakan untuk membantu Anda mendefinisikan tema kustom Anda sendiri dengan akses tingkat rendah ke variabel tema yang mendasar.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Mengextend tema bawaan
+
+Anda dapat mengextend tema bawaan tanpa harus mendefinisikan ulang seluruh tema. Ini berguna ketika Anda hanya ingin menimpa token tema spesifik.
+
+Untuk melakukan itu, instal `lodash.merge` (atau setara):
+
+```bash
+npm install lodash.merge
+```
+
+Impor itu, bersama dengan tema yang ingin Anda extend (mis: `darkTheme`) dan tipe `Theme` TypeScript:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+Lalu, gabungkan tema bawaan, dengan token tema yang ingin Anda timpa. Dalam contoh ini, saya menimpa token `accentColor` agar sesuai dengan warna aksen merek saya.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+Akhirnya, Anda sekarang dapat meneruskan tema kustom Anda ke properti `theme` dari `RainbowKitProvider`.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Membuat pemilih tema kustom
+
+Jika aplikasi Anda di-render oleh server/static dan memungkinkan pengguna untuk secara manual beralih di antara tema, sistem theming RainbowKit dapat dihubungkan ke pemilih CSS kustom dengan fungsi berikut yang dapat digunakan dengan sistem CSS-in-JS apa pun:
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+Fungsi ini mengembalikan CSS yang mengatur semua variabel tema yang diperlukan. Karena kedua string dan objek didukung, ini dapat diintegrasikan dengan sistem CSS-in-JS apa pun.
+
+Sebagai contoh dasar, Anda dapat merender elemen `style` Anda sendiri dengan pemilih kustom untuk setiap tema. Karena kita mengambil kendali dalam merender CSS tema, kita melewatkan `null` ke properti `theme` sehingga RainbowKitProvider tidak merender gaya apa pun untuk kita. Harap juga catat penggunaan opsi extends pada fungsi cssStringFromTheme yang menghilangkan variabel tema apa pun yang sama dengan tema dasar.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

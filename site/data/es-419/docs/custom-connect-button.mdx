@@ -1,15 +1,15 @@
 ---
-title: Custom ConnectButton
-description: Creating a custom ConnectButton
+title: ConnectButton personalizado
+description: Creando un ConnectButton personalizado
 ---
 
-# Custom ConnectButton
+# ConnectButton personalizado
 
-## Creating a custom ConnectButton
+## Creando un ConnectButton personalizado
 
-You can use the low-level `ConnectButton.Custom` to create your own custom connection button. This component renders a function, which includes everything you need to re-implement the built-in buttons.
+Puede usar el `ConnectButton.Custom` de bajo nivel para crear su propio botón de conexión personalizado. Este componente renderiza una función, que incluye todo lo que necesita para volver a implementar los botones integrados.
 
-A minimal re-implementation of the built-in buttons would look something like this:
+Una re-implemetación mínima de los botones integrados se vería algo así:
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -111,9 +111,9 @@ export const YourApp = () => {
 };
 ```
 
-The following props are passed to your render function.
+Las siguientes propiedades son pasadas a su función de renderizado.
 
-### Account properties
+### Propiedades de la cuenta
 
 <PropsTable
   data={[
@@ -210,7 +210,7 @@ The following props are passed to your render function.
   ]}
 />
 
-### Chain properties
+### Propiedades de la cadena
 
 <PropsTable
   data={[
@@ -247,7 +247,7 @@ The following props are passed to your render function.
       type: 'number',
       description: (
         <>
-          The chain ID, e.g. <code>1</code>
+          El ID de la cadena, por ejemplo, <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ The following props are passed to your render function.
       type: 'string | undefined',
       description: (
         <>
-          The chain name, e.g. <code>"Ethereum"</code>
+          El nombre de la cadena, por ejemplo, <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,12 +266,12 @@ The following props are passed to your render function.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Boolean indicating whether the current chain is unsupported',
+        'Booleano que indica si la cadena actual no es compatible',
     },
   ]}
 />
 
-### Modal state properties
+### Propiedades del estado modal
 
 <PropsTable
   data={[
@@ -279,44 +279,44 @@ The following props are passed to your render function.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the account modal',
+      description: 'Función para abrir el modal de la cuenta',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the chain modal',
+      description: 'Función para abrir el modal de la cadena',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Function to open the connect modal',
+      description: 'Función para abrir el modal de conexión',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the account modal is open',
+        'Booleano que indica si el modal de la cuenta está abierto',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Boolean indicating whether the chain modal is open',
+      description: 'Booleano que indica si el modal de la cadena está abierto',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Boolean indicating whether the connect modal is open',
+        'Booleano que indica si el modal de conexión está abierto',
     },
   ]}
 />
 
-### General state properties
+### Propiedades generales del estado
 
 <PropsTable
   data={[

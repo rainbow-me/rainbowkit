@@ -1,0 +1,98 @@
+---
+title: 自定义认证
+description: 连接到您自己的认证后端
+---
+
+# 自定义认证
+
+## 连接到您自己的认证后端
+
+尽管RainbowKit提供了[对以太坊和NextAuth.js登录的一流支持，](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs)你也可以与自定义后端和信息格式集成。
+
+### 创建自定义适配器
+
+首先创建一个认证适配器。 这允许RainbowKit创建/准备信息并与你的后端通信。
+
+举个例子，我们可以制作一个让我们使用[以太坊登录](https://login.xyz)对一些[自定义API端点](https://wagmi.sh/examples/sign-in-with-ethereum)的认证适配器。
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### 提供认证状态
+
+假设您的应用程序已以某种方式管理了认证生命周期，您可以将当前的认证状态与您的自定义适配器一起传递给`RainbowKitAuthenticationProvider`，包装您现有的`RainbowKitProvider`。
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiConfig {...etc}>
+      <RainbowKitAuthenticationProvider
+        adapter={authenticationAdapter}
+        status={AUTHENTICATION_STATUS}
+      >
+        <RainbowKitProvider {...etc}>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </RainbowKitAuthenticationProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+如果你已经走到这一步并为现有的开源认证库创建了一个适配器，请考虑创建一个供他人使用的软件包！

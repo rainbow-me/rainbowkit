@@ -1,17 +1,17 @@
 ---
-title: Custom Wallets
-description: Create a custom wallet
+title: Billeteras personalizadas
+description: Crear una billetera personalizada
 ---
 
-# Custom Wallets
+# Billeteras personalizadas
 
-## Create a custom wallet
+## Crear una billetera personalizada
 
-> Note: This API is unstable and likely to change in the near future. We will be adding more built-in wallets over time. [Let us know](https://github.com/rainbow-me/rainbowkit/issues) if there are any particular wallets you're interested in.
+> Nota: Esta API es inestable y es probable que cambie en un futuro cercano. Agregaremos más billeteras incorporadas con el tiempo. [Háganos saber](https://github.com/rainbow-me/rainbowkit/issues) si hay alguna billetera particular que le interese.
 
-The `Wallet` function type is provided to help you define your own custom wallets. The following properties can be configured on the return value of your `Wallet` function:
+El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias billeteras personalizadas. Las siguientes propiedades se pueden configurar en el valor de retorno de su función `Wallet`:
 
-### Wallet Properties
+### Propiedades de la Billetera
 
 <PropsTable
   data={[
@@ -90,7 +90,7 @@ The `Wallet` function type is provided to help you define your own custom wallet
   ]}
 />
 
-### DownloadUrls Properties
+### Propiedades de DownloadUrls
 
 <PropsTable
   data={[
@@ -157,37 +157,12 @@ The `Wallet` function type is provided to help you define your own custom wallet
       description:
         'Landing page for desktop extension users when browser-compatible URLs are unavailable',
     },
-    {
-      name: 'macos',
-      required: false,
-      type: 'string',
-      description: 'Download page URL for macOS users',
-    },
-    {
-      name: 'windows',
-      required: false,
-      type: 'string',
-      description: 'Download page URL for Windows users',
-    },
-    {
-      name: 'linux',
-      required: false,
-      type: 'string',
-      description: 'Download page URL for Linux users',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for desktop app users when system-compatible URLs are unavailable',
-    },
   ]}
 />
 
-### RainbowKitConnector properties
+### Propiedades de RainbowKitConnector
 
-The following properties are defined on the return value of the `createConnector` function.
+Las siguientes propiedades se definen en el valor de retorno de la función `createConnector`.
 
 <PropsTable
   data={[
@@ -225,9 +200,9 @@ The following properties are defined on the return value of the `createConnector
   ]}
 />
 
-### Examples
+### Ejemplos
 
-For example, to create a custom wallet using WalletConnect:
+Por ejemplo, para crear una billetera personalizada utilizando WalletConnect:
 
 ```tsx
 import {
@@ -325,4 +300,4 @@ export const rainbow = ({
 });
 ```
 
-You can then add your custom wallet in the [wallet list](/docs/custom-wallet-list).
+Luego puedes agregar tu billetera personalizada en la [lista de billeteras](/docs/custom-wallet-list).

@@ -1,0 +1,141 @@
+---
+title: Otentikasi
+description: Mengotentikasi pengguna Anda
+---
+
+# Otentikasi
+
+## Menyediakan akses terotentikasi ke aplikasi Anda
+
+Anda secara opsional dapat mewajibkan pengguna untuk menandatangani pesan dengan dompet mereka selama proses koneksi, membuktikan bahwa mereka memiliki akun yang terhubung dan memungkinkan Anda untuk membuat sesi pengguna terotentikasi dengan akses istimewa ke aplikasi Anda.
+
+Sementara itu mungkin untuk [mengintegrasikan dengan back-end dan format pesan khusus,](/docs/custom-authentication) RainbowKit menyediakan dukungan kelas atas untuk [Masuk Dengan Ethereum](https://login.xyz) dan [NextAuth.js.](https://next-auth.js.org)
+
+### Atur Masuk Dengan Ethereum dan NextAuth.js
+
+Jika Anda belum, pertama atur proyek [Next.js](https://nextjs.org) Anda dengan [boilerplate Masuk Dengan Ethereum resmi untuk NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+
+#### Instal
+
+Instal paket `@rainbow-me/rainbowkit-siwe-next-auth` dan dependensi peer-nya, [ethers](https://docs.ethers.org/v5/).
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+```
+
+> Catatan: `siwe` memerlukan dependensi peer [ethers](https://docs.ethers.org/v5/), sementara [wagmi](https://wagmi.sh/) sekarang bergantung pada alternatif [viem](https://viem.sh).
+
+#### Atur penyedia
+
+Dalam komponen `App` Anda, import `RainbowKitSiweNextAuthProvider`.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+Bungkus `RainbowKitProvider` dengan `RainbowKitSiweNextAuthProvider`, pastikan itu bersarang di dalam `SessionProvider` NextAuth sehingga memiliki akses ke sesi.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
+  return (
+    <WagmiConfig {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider>
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+Dengan `RainbowKitSiweNextAuthProvider` di tempat, pengguna Anda sekarang akan diminta untuk mengautentikasi dengan menandatangani pesan setelah mereka telah menyambungkan dompet mereka.
+
+#### Sesuaikan opsi pesan SIWE
+
+Anda dapat menyesuaikan [opsi pesan SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) dengan melewatkan fungsi ke prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
+
+Fungsi ini akan dipanggil setiap kali pesan baru dibuat. Opsi yang dikembalikan dari fungsi ini akan digabungkan dengan nilai default.
+
+```tsx
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to my RainbowKit app',
+});
+
+<RainbowKitSiweNextAuthProvider
+  getSiweMessageOptions={getSiweMessageOptions}
+>
+  ...
+</RainbowKitSiweNextAuthProvider>;
+```
+
+#### Akses sesi dari sisi server
+
+Anda dapat mengakses token sesi dengan fungsi `getToken` dari NextAuth yang diimpor dari `next-auth/jwt`. Jika pengguna berhasil diautentikasi, properti `sub` dari token sesi ("subjek" dari token, yaitu pengguna) akan menjadi alamat pengguna.
+
+Anda juga dapat meneruskan objek sesi yang telah diselesaikan dari server melalui `getServerSideProps` sehingga NextAuth tidak perlu menyelesaikannya lagi di klien.
+
+Sebagai contoh:
+
+```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+Untuk informasi lebih lanjut tentang mengelola sesi, Anda dapat merujuk ke dokumentasi berikut:
+
+-   [Panduan otentikasi Next.js](https://nextjs.org/docs/authentication)
+-   [Dokumentasi NextAuth.js](https://next-auth.js.org)

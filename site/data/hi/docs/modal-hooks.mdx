@@ -1,0 +1,64 @@
+---
+title: मोडल हुक्स
+description: हुक्स के माध्यम से कार्यक्रमनिर्धारित रूप से मोडल्स खोलें
+---
+
+# मोडल हुक्स
+
+## हुक्स के माध्यम से कार्यक्रमनिर्धारित रूप से मोडल्स खोलें
+
+निम्नलिखित हुक्स आपके ऐप्लिकेशन में कहीं भी मोडल्स को कार्यक्रमनिर्धारित रूप से खोलने की अनुमति देने के लिए प्रदान की जाती हैं।
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+इनमें से प्रत्येक हुक्स एक ऑब्जेक्ट लौटाता है जिसमें उसके संबंधित मोडल को खोलने का एक फ़ंक्शन होता है। ध्यान दें कि अगर आपका एप्लिकेशन मोडल को खोलने के लिए आवश्यक स्थिति में नहीं होता है, तो लौटाये गए फ़ंक्शंस अपरिभाषित हो सकते हैं।
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+प्रत्येक हुक को मोडल की स्थिति के लिए एक बूलियन भी लौटाता है। यह साधारणत: अनुशंसा की जाती है कि आप केवल Wagmi हुक्स (यानी `useAccount`) पर निर्भर रहें, ताकि उपयोगकर्ता के वॉलेट कनेक्शन स्थिति के प्रति प्रतिक्रिया कर सकें, जबकि कनेक्ट मोडल की स्थिति पर निर्भरता के बजाय।
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit को बाधारहित और प्रतिसादात्मक बनाया गया है, इसलिए dApps को हमेशा उपयोगकर्ताओं के लिए एक इंटरफ़ेस रेंडर करना चाहिए, चाहे वे अपने वॉलेट से जुड़े हों या नहीं। एक उपयोगकर्ता सीधे MetaMask से अपना वॉलेट जोड़ या अलग कर सकता है, इसलिए dApp को सीधे अधीनस्थ कनेक्शन स्थिति के प्रति प्रतिसादात्मक होना चाहिए।
+
+उन dApps पर भरोसा करना चाहिए जो मैकेनिज़म्स पर निर्भर करते हैं जैसे कि उपयोगकर्ता सत्यापन के लिए Ethereum के साथ Sign-in की जगह [Authentication](/docs/authentication) विशेषता पर निर्भर करना चाहिए।

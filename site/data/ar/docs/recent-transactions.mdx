@@ -1,0 +1,75 @@
+---
+title: المعاملات الأخيرة
+description: أظهر معاملاتك الأخيرة
+---
+
+# المعاملات الأخيرة
+
+## أظهر معاملاتك الأخيرة
+
+يمكنك اختيار عرض المعاملات الأخيرة داخل نافذة حساب RainbowKit. لاحظ أن جميع المعاملات تُحتفظ بها في التخزين المحلي ويجب تسجيلها يدويًا مع RainbowKit لتظهر.
+
+سيعرض الأزر الافتراضي `ConnectButton` أيضًا مؤشر تحميل حول صورة المستخدم الشخصية إذا كانت هناك معاملات معلقة. يمكن لتنفيذات `ConnectButton` المخصصة إعادة إنشاء هذا السلوك من خلال الخاصية `account.hasPendingTransactions` التي يتم تمريرها إلى دالة الترسيم الخاصة بك.
+
+للاستفادة من هذه الميزة، قم أولاً بتمكين الخيار `showRecentTransactions` على `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+ثم يمكن تسجيل المعاملات مع RainbowKit باستخدام الخطاف `useAddRecentTransaction`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+بمجرد تسجيل المعاملة مع RainbowKit، سيتم تحديث حالتها عند الانتهاء.
+
+بشكل افتراضي، سيتم اعتبار الصفقة مكتملة بمجرد تعدين كتلة واحدة فوق الكتلة التي تم فيها تعدين الصفقة، لكن يمكن تكوين ذلك عن طريق تحديد قيمة `confirmations` مخصصة.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```

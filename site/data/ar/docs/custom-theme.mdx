@@ -1,0 +1,167 @@
+---
+title: السمة المخصصة
+description: إنشاء سمة مخصصة
+---
+
+# السمة المخصصة
+
+## إنشاء سمة مخصصة
+
+> ملاحظة: هذه الواجهة البرمجية غير مستقرة ومرجح أن تتغير
+> في المستقبل القريب. نوصي بالتمسك بـ[السمات المدمجة](/docs/theming) لـ
+> الآن.
+
+بينما تقدم السمات المدمجة بعض درجات التخصيص، يتم توفير نوع `Theme` لمساعدتك على تعريف سماتك المخصصة الخاصة بهك بالوصول على مستوى أدنى إلى متغيرات السمة الأساسية.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### توسيع سمة مدمجة
+
+يمكنك توسيع سمة مدمجة دون الحاجة لإعادة تعريف السمة بأكملها. هذا مفيد عندما ترغب فقط في تجاوز الرموز السمات المحددة.
+
+للقيام بذلك، قم بتثبيت `lodash.merge` (أو ما يكافئه):
+
+```bash
+npm install lodash.merge
+```
+
+استورده، بجانب السمة التي تريد توسيعها (مثل: `darkTheme`) ونوع `Theme` من TypeScript:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+ثم، ادمج السمة المدمجة، مع رموز السمة التي تود تجاوزها. في هذا المثال، أقوم بتجاوز الرمز `accentColor` ليتوافق مع لون العلامة التجارية لدي.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+أخيرا، يمكنك الآن تمرير السمة المخصصة الخاصة بك إلى `theme` prop لـ `RainbowKitProvider`.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### إنشاء محددات سمة مخصصة
+
+إذا كان تطبيقك يتم تقديمه خادمًا / بشكل ثابت ويسمح للمستخدمين بالتبديل يدويًا بين السمات، يمكن ربط نظام السمات لـ RainbowKit بمحددات CSS مخصصة باستخدام الوظائف التالية التي يمكن استخدامها مع أي نظام CSS-in-JS:
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+تعيد هذه الوظائف CSS يضبط جميع متغيرات السمة المطلوبة. بما أن كلاً من السلاسل والكائنات مدعومة، يمكن دمجها مع أي نظام CSS-in-JS.
+
+كمثال أساسي، يمكنك تقديم عنصر `style` خاص بك مع محددات مخصصة لكل سمة. بما أننا نتحكم في تقديم CSS للسمة، نقوم بتمرير `null` إلى `theme` prop بحيث لا يقوم RainbowKitProvider بتقديم أي أنماط لنا. أيضا قم بملاحظة استخدام خيار extends على الدالة cssStringFromTheme التي تحذف أي متغيرات للمظهر تكون مشابهة للمظهر الأساسي.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

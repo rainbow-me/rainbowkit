@@ -1,0 +1,80 @@
+---
+title: 链
+description: 自定义链
+---
+
+# 链
+
+## 自定义链
+
+`RainbowKitProvider` 上的 `chains` prop 定义了用户可以选择的链。
+
+RainbowKit 旨在与 [wagmi 的 `chain` 对象](https://wagmi.sh/react/chains) 集成。 查看支持的链列表 [here](https://wagmi.sh/react/chains#supported-chains)。
+
+> 有关 `chain` 对象的更多细节，或查看创建自定义链定义时的示例，请参见 [wagmi 的 `chain` 对象的源代码](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts)。
+
+您的链配置可以在提供给 [`configureChains`](https://wagmi.sh/react/providers/configuring-chains) 的单个数组中定义。
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { configureChains } from 'wagmi';
+import { mainnet, optimism, zora } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains } = configureChains(
+  [mainnet, optimism, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider(),
+  ]
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 自定义初始链
+
+默认情况下，RainbowKit将连接到您的`chains`数组中的第一条链，以确保用户不会立即面临"错误网络"状态。 可以通过`initialChain`属性自定义此行为。
+
+可以使用链ID配置初始链。
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
+
+为方便起见，您也可以传递一个链对象。
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={mainnet}>
+```
+
+### 定制链图标
+
+默认提供了几个链图标，但您可以使用iconUrl属性为每个链定制图标。
+
+```tsx
+import { Chain, mainnet, optimism } from 'wagmi/chains';
+
+const defaultChains: Chain[] = [
+  {
+    ...mainnet,
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const { chains } = configureChains(defaultChains, [
+  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+  publicProvider(),
+]);
+```

@@ -1,0 +1,167 @@
+---
+title: 사용자 정의 테마
+description: 사용자 정의 테마 생성
+---
+
+# 사용자 정의 테마
+
+## 사용자 정의 테마 생성
+
+> 참고: 이 API는 불안정하며 가까운 미래에
+> 변경 가능성이 높습니다. 현재는 [내장 테마](/docs/theming)를 사용하는 것이 좋습니다
+> .
+
+내장 테마가 일정 수준의 사용자 정의를 제공하면서도, `Theme` 타입은 기본 테마 변수에 대한 하위 수준 액세스를 통해 자신만의 사용자 정의 테마를 정의하는 데 도움을 줍니다.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### 내장 테마 확장
+
+전체 테마를 다시 정의하지 않고도 내장 테마를 확장할 수 있습니다. 이는 특정 테마 토큰을 오버라이드하려는 경우에 유용합니다.
+
+그렇게 하려면 `lodash.merge` (또는 동등한 패키지)를 설치하세요:
+
+```bash
+npm install lodash.merge
+```
+
+그것을 가져오십시오, 당신이 확장하려는 테마와 함께 (예: `darkTheme`) 그리고 TypeScript `Theme` 타입:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+그런 다음, 내장된 테마와 덮어 쓰려는 테마 토큰을 병합하십시오. 이 예에서는, 나의 브랜드의 강조 색상에 맞게 `accentColor` 토큰을 덮어 씁니다.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+마지막으로, 이제 사용자 정의 테마를 `RainbowKitProvider`의 `theme` prop에 전달할 수 있습니다.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 사용자 정의 테마 선택자 생성하기
+
+당신의 앱이 서버/정적으로 렌더링 되고 사용자가 테마를 수동으로 토글할 수 있는 경우, RainbowKit의 테마 시스템은 다음 함수를 사용하여 사용자 정의 CSS 선택자에 연결될 수 있습니다. 이 함수는 모든 CSS-in-JS 시스템과 함께 사용할 수 있습니다:
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+이 함수들은 모든 필요한 테마 변수를 설정하는 CSS를 반환합니다. 문자열과 객체 모두 지원되므로, 이는 어떤 CSS-in-JS 시스템과도 통합될 수 있습니다.
+
+기본적인 예시로, 각 테마에 대해 사용자 정의 선택자가 있는 'style' 요소를 렌더링 할 수 있습니다. 테마의 CSS를 렌더링하는 것을 제어하고 있으므로, RainbowKitProvider가 우리를 위해 스타일을 렌더링하지 않도록 'theme' prop에 'null'을 전달합니다. 또한 기본 테마와 동일한 테마 변수를 생략하는 cssStringFromTheme 함수에서 extends 옵션의 사용을 주목하십시오.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
