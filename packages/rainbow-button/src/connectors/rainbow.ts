@@ -1,17 +1,18 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import type { RainbowWalletOptions } from '@rainbow-me/rainbowkit/dist/wallets/walletConnectors/rainbowWallet/rainbowWallet';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 import type { Connector } from '@wagmi/core';
 
+export type RainbowConnectorOptions = Parameters<typeof rainbowWallet>[0];
+
 declare class RainbowConnector extends Connector {
-  constructor({ chains }: RainbowWalletOptions);
+  constructor(options: RainbowConnectorOptions);
 }
 
-function RainbowConnector({ chains, projectId }: RainbowWalletOptions) {
+function RainbowConnector(options: RainbowConnectorOptions) {
   return connectorsForWallets([
     {
       groupName: 'Popular',
-      wallets: [rainbowWallet({ chains, projectId })],
+      wallets: [rainbowWallet(options)],
     },
   ])()[0];
 }
