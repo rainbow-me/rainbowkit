@@ -1,21 +1,21 @@
-import React, { Fragment, useContext } from 'react';
-import { useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
-import { isMobile } from '../../utils/isMobile';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box } from '../Box/Box';
-import { CloseButton } from '../CloseButton/CloseButton';
-import { Dialog } from '../Dialog/Dialog';
-import { DialogContent } from '../Dialog/DialogContent';
-import { DisconnectSqIcon } from '../Icons/DisconnectSq';
-import { MenuButton } from '../MenuButton/MenuButton';
-import { AppContext } from '../RainbowKitProvider/AppContext';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
-import { Text } from '../Text/Text';
+import React, { Fragment, useContext } from "react";
+import { useConfig, useDisconnect, useSwitchChain } from "wagmi";
+import { isMobile } from "../../utils/isMobile";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { Box } from "../Box/Box";
+import { CloseButton } from "../CloseButton/CloseButton";
+import { Dialog } from "../Dialog/Dialog";
+import { DialogContent } from "../Dialog/DialogContent";
+import { DisconnectSqIcon } from "../Icons/DisconnectSq";
+import { MenuButton } from "../MenuButton/MenuButton";
+import { AppContext } from "../RainbowKitProvider/AppContext";
+import { I18nContext } from "../RainbowKitProvider/I18nContext";
+import { useRainbowKitChains } from "../RainbowKitProvider/RainbowKitChainContext";
+import { Text } from "../Text/Text";
 import {
   DesktopScrollClassName,
   MobileScrollClassName,
-} from './ChainModal.css';
+} from "./ChainModal.css";
 
 export interface ChainModalProps {
   open: boolean;
@@ -23,21 +23,22 @@ export interface ChainModalProps {
 }
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
-  const { chain: activeChain } = useNetwork();
-  const { chains, pendingChainId, reset, switchNetwork } = useSwitchNetwork({
-    onSettled: () => {
+  const { chains: chainss } = useConfig();
+  const activeChain = { id: 1 };
+  const { chains, pendingChainId, reset, switchNetwork } = useSwitchChain({
+    /* onSettled: () => {
       reset(); // reset mutation variables (eg. pendingChainId, error)
       onClose();
-    },
+    }, */
   });
 
   const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
-  const titleId = 'rk_chain_modal_title';
+  const titleId = "rk_chain_modal_title";
   const mobile = isMobile();
   const unsupportedChain = activeChain?.unsupported ?? false;
-  const chainIconSize = mobile ? '36' : '28';
+  const chainIconSize = mobile ? "36" : "28";
 
   const { appName } = useContext(AppContext);
 
@@ -62,18 +63,18 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 as="h1"
                 color="modalText"
                 id={titleId}
-                size={mobile ? '20' : '18'}
+                size={mobile ? "20" : "18"}
                 weight="heavy"
               >
-                {i18n.t('chains.title')}
+                {i18n.t("chains.title")}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
           {unsupportedChain && (
-            <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
+            <Box marginX="8" textAlign={mobile ? "center" : "left"}>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t('chains.wrong_network')}
+                {i18n.t("chains.wrong_network")}
               </Text>
             </Box>
           )}
@@ -147,7 +148,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  {i18n.t('chains.connected')}
+                                  {i18n.t("chains.connected")}
                                 </Text>
                                 <Box
                                   background="connectionIndicator"
@@ -173,7 +174,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  {i18n.t('chains.confirm')}
+                                  {i18n.t("chains.confirm")}
                                 </Text>
                                 <Box
                                   background="standby"
@@ -196,7 +197,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                       )}
                     </Fragment>
                   );
-                },
+                }
               )
             ) : (
               <Box
@@ -207,10 +208,10 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
               >
                 <Text color="modalText" size="14" weight="medium">
                   {appName
-                    ? i18n.t('chains.switching_not_supported', {
+                    ? i18n.t("chains.switching_not_supported", {
                         appName,
                       })
-                    : i18n.t('chains.switching_not_supported_fallback')}
+                    : i18n.t("chains.switching_not_supported_fallback")}
                 </Text>
               </Box>
             )}
@@ -249,7 +250,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         >
                           <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
-                        <div>{i18n.t('chains.disconnect')}</div>
+                        <div>{i18n.t("chains.disconnect")}</div>
                       </Box>
                     </Box>
                   </Box>

@@ -1,35 +1,35 @@
-import React, { ReactNode, createContext, useContext } from 'react';
-import { useAccount } from 'wagmi';
-import { cssStringFromTheme } from '../../css/cssStringFromTheme';
-import { ThemeVars, largeScreenMinWidth } from '../../css/sprinkles.css';
-import { useWindowSize } from '../../hooks/useWindowSize';
-import { Locale } from '../../locales';
-import { lightTheme } from '../../themes/lightTheme';
-import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
-import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
-import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
-import { CoolModeContext } from './CoolModeContext';
-import { I18nProvider } from './I18nContext';
-import { ModalProvider } from './ModalContext';
+import React, { ReactNode, createContext, useContext } from "react";
+import { cssStringFromTheme } from "../../css/cssStringFromTheme";
+import { ThemeVars, largeScreenMinWidth } from "../../css/sprinkles.css";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { Locale } from "../../locales";
+import { lightTheme } from "../../themes/lightTheme";
+import { TransactionStoreProvider } from "../../transactions/TransactionStoreContext";
+import { AppContext, DisclaimerComponent, defaultAppInfo } from "./AppContext";
+import { AvatarComponent, AvatarContext, defaultAvatar } from "./AvatarContext";
+import { CoolModeContext } from "./CoolModeContext";
+import { I18nProvider } from "./I18nContext";
+import { ModalProvider } from "./ModalContext";
 import {
   ModalSizeContext,
   ModalSizeOptions,
   ModalSizes,
-} from './ModalSizeContext';
+} from "./ModalSizeContext";
 import {
   RainbowKitChain,
   RainbowKitChainProvider,
-} from './RainbowKitChainContext';
-import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
-import { useFingerprint } from './useFingerprint';
-import { usePreloadImages } from './usePreloadImages';
-import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
+} from "./RainbowKitChainContext";
+import { ShowRecentTransactionsContext } from "./ShowRecentTransactionsContext";
+import { useFingerprint } from "./useFingerprint";
+import { usePreloadImages } from "./usePreloadImages";
+import { Wallet } from "../../wallets/Wallet";
+import { RainbowKitWalletsProvider } from "./RainbowKitWalletsProvider";
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
-const attr = 'data-rk';
+const attr = "data-rk";
 
-const createThemeRootProps = (id: string | undefined) => ({ [attr]: id || '' });
+const createThemeRootProps = (id: string | undefined) => ({ [attr]: id || "" });
 
 const createThemeRootSelector = (id: string | undefined) => {
   if (id && !/^[a-zA-Z0-9_]+$/.test(id)) {
@@ -67,6 +67,7 @@ export interface RainbowKitProviderProps {
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
   locale?: Locale;
+  wallets: Wallet[];
 }
 
 const defaultTheme = lightTheme();
@@ -83,15 +84,16 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
+  wallets,
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
 
-  useAccount({ onDisconnect: clearWalletConnectDeepLink });
+  /* useAccount({ onDisconnect: clearWalletConnectDeepLink }); */
 
-  if (typeof theme === 'function') {
+  if (typeof theme === "function") {
     throw new Error(
-      'A theme function was provided to the "theme" prop instead of a theme object. You must execute this function to get the resulting theme object.',
+      'A theme function was provided to the "theme" prop instead of a theme object. You must execute this function to get the resulting theme object.'
     );
   }
 
@@ -108,59 +110,61 @@ export function RainbowKitProvider({
   const isSmallScreen = width && width < largeScreenMinWidth;
 
   return (
-    <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <I18nProvider locale={locale}>
-        <CoolModeContext.Provider value={coolMode}>
-          <ModalSizeContext.Provider
-            value={isSmallScreen ? ModalSizeOptions.COMPACT : modalSize}
-          >
-            <ShowRecentTransactionsContext.Provider
-              value={showRecentTransactions}
+    <RainbowKitWalletsProvider wallets={wallets}>
+      <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
+        <I18nProvider locale={locale}>
+          <CoolModeContext.Provider value={coolMode}>
+            <ModalSizeContext.Provider
+              value={isSmallScreen ? ModalSizeOptions.COMPACT : modalSize}
             >
-              <TransactionStoreProvider>
-                <AvatarContext.Provider value={avatarContext}>
-                  <AppContext.Provider value={appContext}>
-                    <ThemeIdContext.Provider value={id}>
-                      <ModalProvider>
-                        {theme ? (
-                          <div {...createThemeRootProps(id)}>
-                            <style
-                              // biome-ignore lint/security/noDangerouslySetInnerHtml: TODO
-                              dangerouslySetInnerHTML={{
-                                // Selectors are sanitized to only contain alphanumeric
-                                // and underscore characters. Theme values generated by
-                                // cssStringFromTheme are sanitized, removing
-                                // characters that terminate values / HTML tags.
-                                __html: [
-                                  `${selector}{${cssStringFromTheme(
-                                    'lightMode' in theme
-                                      ? theme.lightMode
-                                      : theme,
-                                  )}}`,
+              <ShowRecentTransactionsContext.Provider
+                value={showRecentTransactions}
+              >
+                <TransactionStoreProvider>
+                  <AvatarContext.Provider value={avatarContext}>
+                    <AppContext.Provider value={appContext}>
+                      <ThemeIdContext.Provider value={id}>
+                        <ModalProvider>
+                          {theme ? (
+                            <div {...createThemeRootProps(id)}>
+                              <style
+                                // biome-ignore lint/security/noDangerouslySetInnerHtml: TODO
+                                dangerouslySetInnerHTML={{
+                                  // Selectors are sanitized to only contain alphanumeric
+                                  // and underscore characters. Theme values generated by
+                                  // cssStringFromTheme are sanitized, removing
+                                  // characters that terminate values / HTML tags.
+                                  __html: [
+                                    `${selector}{${cssStringFromTheme(
+                                      "lightMode" in theme
+                                        ? theme.lightMode
+                                        : theme
+                                    )}}`,
 
-                                  'darkMode' in theme
-                                    ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
-                                        theme.darkMode,
-                                        { extends: theme.lightMode },
-                                      )}}}`
-                                    : null,
-                                ].join(''),
-                              }}
-                            />
-                            {children}
-                          </div>
-                        ) : (
-                          children
-                        )}
-                      </ModalProvider>
-                    </ThemeIdContext.Provider>
-                  </AppContext.Provider>
-                </AvatarContext.Provider>
-              </TransactionStoreProvider>
-            </ShowRecentTransactionsContext.Provider>
-          </ModalSizeContext.Provider>
-        </CoolModeContext.Provider>
-      </I18nProvider>
-    </RainbowKitChainProvider>
+                                    "darkMode" in theme
+                                      ? `@media(prefers-color-scheme:dark){${selector}{${cssStringFromTheme(
+                                          theme.darkMode,
+                                          { extends: theme.lightMode }
+                                        )}}}`
+                                      : null,
+                                  ].join(""),
+                                }}
+                              />
+                              {children}
+                            </div>
+                          ) : (
+                            children
+                          )}
+                        </ModalProvider>
+                      </ThemeIdContext.Provider>
+                    </AppContext.Provider>
+                  </AvatarContext.Provider>
+                </TransactionStoreProvider>
+              </ShowRecentTransactionsContext.Provider>
+            </ModalSizeContext.Provider>
+          </CoolModeContext.Provider>
+        </I18nProvider>
+      </RainbowKitChainProvider>
+    </RainbowKitWalletsProvider>
   );
 }

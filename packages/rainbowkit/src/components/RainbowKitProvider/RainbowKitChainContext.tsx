@@ -1,6 +1,5 @@
-import React, { ReactNode, createContext, useContext, useMemo } from 'react';
-import { Chain as WagmiChain } from 'wagmi';
-import { provideRainbowKitChains } from './provideRainbowKitChains';
+import React, { ReactNode, createContext, useContext, useMemo } from "react";
+import { provideRainbowKitChains } from "./provideRainbowKitChains";
 
 export interface RainbowKitChain {
   id: number;
@@ -8,10 +7,6 @@ export interface RainbowKitChain {
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
-
-// This type is a combination of wagmi and RainbowKit chain types to make
-// it easier for consumers to define their chain config in a single place.
-export type Chain = WagmiChain & RainbowKitChain;
 
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
@@ -39,9 +34,9 @@ export function RainbowKitChainProvider({
         () => ({
           chains: provideRainbowKitChains(chains),
           initialChainId:
-            typeof initialChain === 'number' ? initialChain : initialChain?.id,
+            typeof initialChain === "number" ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain],
+        [chains, initialChain]
       )}
     >
       {children}

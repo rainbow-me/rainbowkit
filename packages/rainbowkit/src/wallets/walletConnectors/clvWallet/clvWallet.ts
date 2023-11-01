@@ -1,26 +1,6 @@
-import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
 import { Wallet } from "../../Wallet";
-import { WalletConnectConnectorOptions } from "../../getWalletConnectConnector";
-
-export interface CLVWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: "2";
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
-
-declare global {
-  interface Window {
-    clover: any;
-  }
-}
 
 export const clvWallet = (): Wallet => {
-  const provider = typeof window !== "undefined" && window["clover"];
-  const isCLVInjected = Boolean(provider);
-
-  const shouldUseWalletConnect = !isCLVInjected;
-
   return {
     id: "clv",
     name: "CLV",
@@ -56,33 +36,28 @@ export const clvWallet = (): Wallet => {
           ],
         },
       },
-      qrCode: shouldUseWalletConnect
-        ? {
-            instructions: {
-              learnMoreUrl: "https://clv.org/",
-              steps: [
-                {
-                  description:
-                    "wallet_connectors.clv.qr_code.step1.description",
-                  step: "install",
-                  title: "wallet_connectors.clv.qr_code.step1.title",
-                },
-                {
-                  description:
-                    "wallet_connectors.clv.qr_code.step2.description",
-                  step: "create",
-                  title: "wallet_connectors.clv.qr_code.step2.title",
-                },
-                {
-                  description:
-                    "wallet_connectors.clv.qr_code.step3.description",
-                  step: "scan",
-                  title: "wallet_connectors.clv.qr_code.step3.title",
-                },
-              ],
+      qrCode: {
+        instructions: {
+          learnMoreUrl: "https://clv.org/",
+          steps: [
+            {
+              description: "wallet_connectors.clv.qr_code.step1.description",
+              step: "install",
+              title: "wallet_connectors.clv.qr_code.step1.title",
             },
-          }
-        : undefined,
+            {
+              description: "wallet_connectors.clv.qr_code.step2.description",
+              step: "create",
+              title: "wallet_connectors.clv.qr_code.step2.title",
+            },
+            {
+              description: "wallet_connectors.clv.qr_code.step3.description",
+              step: "scan",
+              title: "wallet_connectors.clv.qr_code.step3.title",
+            },
+          ],
+        },
+      },
     },
   };
 };

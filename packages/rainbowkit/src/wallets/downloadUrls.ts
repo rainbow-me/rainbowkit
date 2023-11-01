@@ -1,9 +1,9 @@
-import { BrowserType, getBrowser } from '../utils/browsers';
-import { isIOS } from '../utils/isMobile';
-import { PlatformType, getPlatform } from '../utils/platforms';
-import { WalletInstance } from './Wallet';
+import { BrowserType, getBrowser } from "../utils/browsers";
+import { isIOS } from "../utils/isMobile";
+import { PlatformType, getPlatform } from "../utils/platforms";
+import { Wallet } from "./Wallet";
 
-export const getExtensionDownloadUrl = (wallet?: WalletInstance) => {
+export const getExtensionDownloadUrl = (wallet: Wallet) => {
   const browser = getBrowser();
   return (
     {
@@ -21,7 +21,7 @@ export const getExtensionDownloadUrl = (wallet?: WalletInstance) => {
   );
 };
 
-export const getMobileDownloadUrl = (wallet?: WalletInstance) => {
+export const getMobileDownloadUrl = (wallet: Wallet) => {
   const ios = isIOS();
   return (
     (ios ? wallet?.downloadUrls?.ios : wallet?.downloadUrls?.android) ??
@@ -29,7 +29,7 @@ export const getMobileDownloadUrl = (wallet?: WalletInstance) => {
   );
 };
 
-export const getDesktopDownloadUrl = (wallet?: WalletInstance) => {
+export const getDesktopDownloadUrl = (wallet: Wallet) => {
   const platform = getPlatform();
   return (
     {

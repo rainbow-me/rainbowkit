@@ -1,9 +1,12 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-import Image from "next/image";
 import { useConnect } from "wagmi";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
 
 const Home: NextPage = () => {
+  const { openConnectModal } = useConnectModal();
+  const { connectors } = useConnect();
+  console.log(connectors);
   return (
     <div
       style={{
@@ -11,7 +14,9 @@ const Home: NextPage = () => {
         justifyContent: "flex-end",
         padding: 12,
       }}
-    ></div>
+    >
+      <button onClick={openConnectModal}>Hey there</button>
+    </div>
   );
 };
 

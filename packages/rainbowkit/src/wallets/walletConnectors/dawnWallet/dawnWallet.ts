@@ -10,7 +10,6 @@ export const dawnWallet = (): Wallet => ({
   id: "dawn",
   name: "Dawn",
   iconBackground: "#000000",
-  hidden: !isIOS(),
   downloadUrls: {
     ios: "https://apps.apple.com/us/app/dawn-ethereum-wallet/id1673143782",
     mobile: "https://dawnwallet.xyz",

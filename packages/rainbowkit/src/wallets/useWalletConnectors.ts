@@ -1,24 +1,20 @@
-import { Connector, useConnect } from 'wagmi';
-import { flatten } from '../utils/flatten';
-import { indexBy } from '../utils/indexBy';
-import { isNotNullish } from '../utils/isNotNullish';
+import { Connector, useConnect } from "wagmi";
+import { flatten } from "../utils/flatten";
+import { indexBy } from "../utils/indexBy";
+import { isNotNullish } from "../utils/isNotNullish";
 import {
   useInitialChainId,
   useRainbowKitChains,
-} from './../components/RainbowKitProvider/RainbowKitChainContext';
-import { WalletInstance } from './Wallet';
+} from "./../components/RainbowKitProvider/RainbowKitChainContext";
 import {
   getDesktopDownloadUrl,
   getExtensionDownloadUrl,
   getMobileDownloadUrl,
-} from './downloadUrls';
-import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
+} from "./downloadUrls";
+import { addRecentWalletId, getRecentWalletIds } from "./recentWalletIds";
+import { useRainbowKitWallets } from "../components/RainbowKitProvider/RainbowKitWalletsProvider";
 
-export interface WalletConnector extends WalletInstance {
-  ready?: boolean;
-  connect?: ReturnType<typeof useConnect>['connectAsync'];
-  onConnecting?: (fn: () => void) => void;
-  showWalletConnectModal?: () => void;
+export interface WalletConnector extends Connector {
   recent: boolean;
   mobileDownloadUrl?: string;
   extensionDownloadUrl?: string;
@@ -28,11 +24,17 @@ export interface WalletConnector extends WalletInstance {
 export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
-  const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
-  const defaultConnectors = defaultConnectors_untyped as Connector[];
+  const rainbowKitWallets = useRainbowKitWallets();
+  const { connectAsync, connectors } = useConnect();
 
-  async function connectWallet(walletId: string, connector: Connector) {
+  async function connectWallet(connector: Connector) {
     const walletChainId = await connector.getChainId();
+    connector.getProvider().then((res) => {
+      // @ts-ignore
+      res.once("display_uri", () => {
+        console.log("HUH?");
+      });
+    });
     const result = await connectAsync({
       chainId:
         // The goal here is to ensure users are always on a supported chain when connecting.
@@ -46,89 +48,41 @@ export function useWalletConnectors(): WalletConnector[] {
     });
 
     if (result) {
-      addRecentWalletId(walletId);
+      addRecentWalletId(connector.id);
     }
 
     return result;
   }
 
-  async function connectToWalletConnectModal(
-    walletId: string,
-    walletConnectModalConnector: Connector,
-  ) {
-    try {
-      return await connectWallet(walletId, walletConnectModalConnector!);
-    } catch (err) {
-      const isUserRejection =
-        // @ts-expect-error - Web3Modal v1 error name
-        err.name === 'UserRejectedRequestError' ||
-        // @ts-expect-error - Web3Modal v2 error message on desktop
-        err.message === 'Connection request reset. Please try again.';
-
-      if (!isUserRejection) {
-        throw err;
-      }
-    }
-  }
-
-  const walletInstances = flatten(
-    defaultConnectors.map((connector) => {
-      return (connector._wallets as WalletInstance[]) ?? [];
-    }),
-  ).sort((a, b) => a.index - b.index);
-
   const walletInstanceById = indexBy(
-    walletInstances,
-    (walletInstance) => walletInstance.id,
+    connectors as Connector[],
+    (walletInstance) => walletInstance.id
   );
 
   const MAX_RECENT_WALLETS = 3;
-  const recentWallets: WalletInstance[] = getRecentWalletIds()
+
+  const recentWallets = getRecentWalletIds()
     .map((walletId) => walletInstanceById[walletId])
     .filter(isNotNullish)
     .slice(0, MAX_RECENT_WALLETS);
 
-  const groupedWallets: WalletInstance[] = [
-    ...recentWallets,
-    ...walletInstances.filter(
-      (walletInstance) => !recentWallets.includes(walletInstance),
-    ),
-  ];
+  const installedConnectors: WalletConnector[] = [];
 
-  const walletConnectors: WalletConnector[] = [];
+  connectors.forEach((wallet: Connector) => {
+    if (!wallet) return;
 
-  groupedWallets.forEach((wallet: WalletInstance) => {
-    if (!wallet) {
-      return;
-    }
+    const isWalletConnectModal = wallet.id === "walletConnect";
 
     const recent = recentWallets.includes(wallet);
 
-    walletConnectors.push({
+    installedConnectors.push({
       ...wallet,
-      // @ts-ignore - ignoring potential undefined return type
-      connect: () =>
-        wallet.connector.showQrModal
-          ? connectToWalletConnectModal(wallet.id, wallet.connector)
-          : connectWallet(wallet.id, wallet.connector),
-      desktopDownloadUrl: getDesktopDownloadUrl(wallet),
+      connect: () => connectWallet(wallet),
+      /*  desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
-      groupName: wallet.groupName,
-      mobileDownloadUrl: getMobileDownloadUrl(wallet),
-      onConnecting: (fn: () => void) =>
-        wallet.connector.on('message', ({ type }: { type: string }) =>
-          type === 'connecting' ? fn() : undefined,
-        ),
-      ready: (wallet.installed ?? true) && wallet.connector.ready,
+      mobileDownloadUrl: getMobileDownloadUrl(wallet), */
       recent,
-      showWalletConnectModal: wallet.walletConnectModalConnector
-        ? () =>
-            connectToWalletConnectModal(
-              wallet.id,
-              wallet.walletConnectModalConnector,
-            )
-        : undefined,
     });
   });
-  return walletConnectors;
+  return installedConnectors;
 }

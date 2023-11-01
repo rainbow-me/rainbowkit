@@ -40,7 +40,7 @@ type RainbowKitConnector = {
   };
 };
 
-export type Wallet<C extends Connector = Connector> = {
+export type Wallet = {
   id: string;
   name: string;
   shortName?: string;
@@ -63,7 +63,4 @@ export type Wallet<C extends Connector = Connector> = {
     desktop?: string;
   };
   connector?: RainbowKitConnector;
-  hidden?: boolean;
 };
-
-export type WalletList = { groupName: string; wallets: Wallet[] }[];

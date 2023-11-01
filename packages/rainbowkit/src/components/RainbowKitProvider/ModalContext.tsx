@@ -5,13 +5,13 @@ import React, {
   useContext,
   useMemo,
   useState,
-} from 'react';
-import { useAccount, useNetwork } from 'wagmi';
-import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { AccountModal } from '../AccountModal/AccountModal';
-import { ChainModal } from '../ChainModal/ChainModal';
-import { ConnectModal } from '../ConnectModal/ConnectModal';
-import { useAuthenticationStatus } from './AuthenticationContext';
+} from "react";
+import { useAccount, useConfig, useSwitchChain } from "wagmi";
+import { useConnectionStatus } from "../../hooks/useConnectionStatus";
+import { AccountModal } from "../AccountModal/AccountModal";
+import { ChainModal } from "../ChainModal/ChainModal";
+import { ConnectModal } from "../ConnectModal/ConnectModal";
+import { useAuthenticationStatus } from "./AuthenticationContext";
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -62,7 +62,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
   } = useModalStateValue();
 
   const connectionStatus = useConnectionStatus();
-  const { chain } = useNetwork();
+  const { chains } = useConfig();
+  const chain = { unsupported: false, id: 1 };
   const chainSupported = !chain?.unsupported;
 
   interface CloseModalsOptions {
@@ -79,7 +80,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
     closeChainModal();
   }
 
-  const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
+  const isUnauthenticated = useAuthenticationStatus() === "unauthenticated";
   useAccount({
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
     onDisconnect: () => closeModals(),
@@ -93,14 +94,14 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           openAccountModal:
-            chainSupported && connectionStatus === 'connected'
+            chainSupported && connectionStatus === "connected"
               ? openAccountModal
               : undefined,
           openChainModal:
-            connectionStatus === 'connected' ? openChainModal : undefined,
+            connectionStatus === "connected" ? openChainModal : undefined,
           openConnectModal:
-            connectionStatus === 'disconnected' ||
-            connectionStatus === 'unauthenticated'
+            connectionStatus === "disconnected" ||
+            connectionStatus === "unauthenticated"
               ? openConnectModal
               : undefined,
         }),
@@ -113,7 +114,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openAccountModal,
           openChainModal,
           openConnectModal,
-        ],
+        ]
       )}
     >
       {children}

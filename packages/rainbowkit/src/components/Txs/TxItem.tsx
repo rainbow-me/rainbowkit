@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNetwork } from 'wagmi';
+import { useConfig, useNetwork } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { Transaction } from '../../transactions/transactionStore';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -32,8 +32,8 @@ export function TxItem({ tx }: TxProps) {
   const mobile = isMobile();
   const Icon = getTxStatusIcon(tx.status);
   const color = tx.status === 'failed' ? 'error' : 'accentColor';
-  const { chain: activeChain } = useNetwork();
-
+  const { chains } = useConfig();
+  const activeChain = { id: 1 };
   const confirmationStatus =
     tx.status === 'confirmed'
       ? 'Confirmed'
