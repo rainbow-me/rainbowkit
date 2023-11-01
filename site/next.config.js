@@ -25,7 +25,6 @@ const nextConfig = {
       'zh-CN',
     ],
     defaultLocale: 'en-US',
-    localeDetection: true,
   },
   async redirects() {
     return [
