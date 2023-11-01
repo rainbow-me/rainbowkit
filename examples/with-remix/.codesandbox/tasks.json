@@ -11,7 +11,7 @@
       "command": "yarn dev",
       "runAtStart": true,
       "preview": {
-        "port": 3000
+        "port": 8000
       }
     }
   }
