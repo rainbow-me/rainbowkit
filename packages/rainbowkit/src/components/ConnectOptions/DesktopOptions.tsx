@@ -80,6 +80,13 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     wallet?.connect?.()?.catch(() => {
       setConnectionError(true);
     });
+
+    const isWalletConnect =
+      wallet.id === "walletConnect" || wallet.id === "ledger";
+
+    if (isWalletConnect) {
+      onClose();
+    }
   };
 
   const selectWallet = (wallet: WalletConnector) => {
@@ -139,7 +146,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   };
 
   const getWalletDownload = (id: string) => {
-/*     setSelectedOptionId(id);
+    /*     setSelectedOptionId(id);
     const sWallet = wallets.find((w) => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
     const isDesktop = !!sWallet?.desktopDownloadUrl;
@@ -369,7 +376,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               </Box>
             )}
           </Box>
+
           <Box className={ScrollClassName} paddingBottom="18">
+            <Box marginBottom="8" marginTop="16" marginX="6">
+              <Text color="modalTextSecondary" size="14" weight="bold">
+                Installed
+              </Text>
+            </Box>
+
             <Box display="flex" flexDirection="column" gap="4">
               {wallets.map((wallet) => {
                 return (
@@ -388,6 +402,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
               })}
             </Box>
           </Box>
+
           {compactModeEnabled && (
             <>
               <Box background="generalBorder" height="1" marginTop="-1" />

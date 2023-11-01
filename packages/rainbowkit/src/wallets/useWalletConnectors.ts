@@ -28,11 +28,11 @@ export function useWalletConnectors(): WalletConnector[] {
   const { connectAsync, connectors } = useConnect();
 
   async function connectWallet(connector: Connector) {
-    const walletChainId = await connector.getChainId();
-    connector.getProvider().then((res) => {
+    const walletChainId = await connector?.getChainId?.()?.catch(() => 1);
+    connector.getProvider().then(async (provider) => {
       // @ts-ignore
-      res.once("display_uri", () => {
-        console.log("HUH?");
+      provider.on("message", () => {
+        console.log("RIGHT");
       });
     });
     const result = await connectAsync({
@@ -71,13 +71,12 @@ export function useWalletConnectors(): WalletConnector[] {
   connectors.forEach((wallet: Connector) => {
     if (!wallet) return;
 
-    const isWalletConnectModal = wallet.id === "walletConnect";
-
     const recent = recentWallets.includes(wallet);
 
     installedConnectors.push({
       ...wallet,
       connect: () => connectWallet(wallet),
+
       /*  desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
       mobileDownloadUrl: getMobileDownloadUrl(wallet), */

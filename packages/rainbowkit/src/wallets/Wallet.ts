@@ -42,10 +42,12 @@ type RainbowKitConnector = {
 
 export type Wallet = {
   id: string;
+  ids?: string[];
   name: string;
   shortName?: string;
   iconAccent?: string;
   iconBackground: string;
+  installed?: boolean;
   downloadUrls?: {
     android?: string;
     ios?: string;

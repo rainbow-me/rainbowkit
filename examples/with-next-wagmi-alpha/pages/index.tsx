@@ -6,7 +6,11 @@ import "@rainbow-me/rainbowkit/styles.css";
 const Home: NextPage = () => {
   const { openConnectModal } = useConnectModal();
   const { connectors } = useConnect();
-  console.log(connectors);
+/*   connectors.map((connector) => {
+    connector.getProvider().then((provider) => {
+      console.log(provider);
+    });
+  }); */
   return (
     <div
       style={{

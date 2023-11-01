@@ -23,6 +23,7 @@ import {
   frontierWallet,
   imTokenWallet,
   ledgerWallet,
+  metaMaskWallet,
   mewWallet,
   oktoWallet,
   okxWallet,
@@ -47,12 +48,14 @@ import {
   coinbaseWallet,
   walletConnect,
   metaMask,
+  injected,
 } from "wagmi/connectors";
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
+  multiInjectedProviderDiscovery: true,
   connectors: [
-    ledger(),
+    ledger({ projectId: "590c99c1a986405c0ded19c795c8bf1c" }),
     coinbaseWallet({ appName: "RainbowKit Wagmi V2" }),
     walletConnect({
       projectId: "590c99c1a986405c0ded19c795c8bf1c",
@@ -66,6 +69,7 @@ export const wagmiConfig = createConfig({
 });
 
 const rainbowWallets = connectorsForWallets([
+  metaMaskWallet(),
   argentWallet(),
   bifrostWallet(),
   bitgetWallet(),
