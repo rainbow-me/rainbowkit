@@ -9,12 +9,8 @@ declare class RainbowConnector extends Connector {
 }
 
 function RainbowConnector(options: RainbowConnectorOptions) {
-  return connectorsForWallets([
-    {
-      groupName: 'Popular',
-      wallets: [rainbowWallet(options)],
-    },
-  ])()[0];
+  const [rainbowConnector] = connectorsForWallets([rainbowWallet(options)]);
+  return rainbowConnector;
 }
 
 export { RainbowConnector };

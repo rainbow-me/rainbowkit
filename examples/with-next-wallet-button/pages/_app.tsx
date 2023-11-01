@@ -19,14 +19,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const projectId = "YOUR_PROJECT_ID";
 
 const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      rainbowWallet({ projectId, chains }),
-      metaMaskWallet({ projectId, chains }),
-    ],
-  },
-])();
+  rainbowWallet({ projectId, chains }),
+  metaMaskWallet({ projectId, chains }),
+]);
 
 const wagmiClient = createConfig({
   autoConnect: true,
