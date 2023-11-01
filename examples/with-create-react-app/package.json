@@ -21,8 +21,8 @@
     "buffer": "npm:buffer@6.0.3"
   },
   "scripts": {
-    "dev": "npm run start",
-    "start": "PORT=3030 react-scripts start",
+    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
     "eject": "react-scripts eject"
