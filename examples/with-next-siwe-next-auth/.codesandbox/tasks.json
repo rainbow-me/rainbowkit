@@ -1,10 +1,13 @@
 {
   "$schema": "https://codesandbox.io/schemas/tasks.json",
-  "setupTasks": ["yarn add @rainbow-me/rainbowkit@latest", "yarn build"],
+  "setupTasks": [
+    "yarn add @rainbow-me/rainbowkit@latest @rainbow-me/rainbowkit-siwe-next-auth@latest",
+    "yarn build"
+  ],
   "tasks": {
     "install-dependencies": {
       "name": "Install Dependencies",
-      "command": "yarn add @rainbow-me/rainbowkit@latest"
+      "command": "yarn add @rainbow-me/rainbowkit@latest @rainbow-me/rainbowkit-siwe-next-auth@latest"
     },
     "start-app": {
       "name": "Run Dev Server",
