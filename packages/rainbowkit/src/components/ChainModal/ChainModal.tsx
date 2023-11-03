@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { useConfig, useDisconnect, useSwitchChain } from "wagmi";
+import { useAccount, useDisconnect, useNetwork, useSwitchChain } from "wagmi";
 import { isMobile } from "../../utils/isMobile";
 import { AsyncImage } from "../AsyncImage/AsyncImage";
 import { Box } from "../Box/Box";
@@ -23,13 +23,14 @@ export interface ChainModalProps {
 }
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
-  const { chains: chainss } = useConfig();
-  const activeChain = { id: 1 };
-  const { chains, pendingChainId, reset, switchNetwork } = useSwitchChain({
-    /* onSettled: () => {
-      reset(); // reset mutation variables (eg. pendingChainId, error)
-      onClose();
-    }, */
+  const { chain: activeChain } = useAccount();
+  const { chains, reset, switchChain, isSuccess } = useSwitchChain({
+    mutation: {
+      onSettled: () => {
+        reset(); // reset mutation variables (eg. pendingChainId, error)
+        onClose();
+      },
+    },
   });
 
   const i18n = useContext(I18nContext);
@@ -37,7 +38,8 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
   const { disconnect } = useDisconnect();
   const titleId = "rk_chain_modal_title";
   const mobile = isMobile();
-  const unsupportedChain = activeChain?.unsupported ?? false;
+  // @TODO (mago): find a way to get unsupported chain from user
+  const unsupportedChain = /* activeChain?.unsupported ?? false */ false;
   const chainIconSize = mobile ? "36" : "28";
 
   const { appName } = useContext(AppContext);
@@ -86,15 +88,16 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             padding="2"
             paddingBottom="16"
           >
-            {switchNetwork ? (
+            {isSuccess ? (
               rainbowkitChains.map(
                 ({ iconBackground, iconUrl, id, name }, idx) => {
                   const chain = chains.find((c) => c.id === id);
                   if (!chain) return null;
 
                   const isCurrentChain = chain.id === activeChain?.id;
+                  // @TODO (mago): find a way to see if a chain is switching
                   const switching =
-                    !isCurrentChain && chain.id === pendingChainId;
+                    /* !isCurrentChain && chain.id === pendingChainId */ false;
 
                   return (
                     <Fragment key={chain.id}>
@@ -103,7 +106,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         onClick={
                           isCurrentChain
                             ? undefined
-                            : () => switchNetwork(chain.id)
+                            : () => switchChain({ chainId: chain.id })
                         }
                         testId={`chain-option-${chain.id}`}
                       >

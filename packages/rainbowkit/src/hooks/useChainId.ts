@@ -1,6 +1,6 @@
-import { useConfig } from "wagmi";
+import { useAccount } from "wagmi";
 
 export function useChainId(): number | null {
-  const { chains } = useConfig();
-  return /* activeChain?.id */ 1 ?? null;
+  const { chain: activeChain } = useAccount();
+  return activeChain?.id ?? null;
 }

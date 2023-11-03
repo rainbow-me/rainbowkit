@@ -54,14 +54,7 @@ import {
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
   multiInjectedProviderDiscovery: true,
-  connectors: [
-    ledger({ projectId: "590c99c1a986405c0ded19c795c8bf1c" }),
-    coinbaseWallet({ appName: "RainbowKit Wagmi V2" }),
-    walletConnect({
-      projectId: "590c99c1a986405c0ded19c795c8bf1c",
-    }),
-    metaMask(),
-  ],
+  connectors: [metaMask()],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
@@ -106,7 +99,6 @@ const rainbowWallets = connectorsForWallets([
 ]);
 
 const queryClient = new QueryClient();
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={wagmiConfig}>

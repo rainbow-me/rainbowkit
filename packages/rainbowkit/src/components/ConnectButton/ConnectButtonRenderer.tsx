@@ -1,5 +1,5 @@
 import React, { ReactNode, useContext } from "react";
-import { useAccount, useBalance, useConfig, useNetwork } from "wagmi";
+import { useAccount, useBalance } from "wagmi";
 import { useIsMounted } from "../../hooks/useIsMounted";
 import { useMainnetEnsAvatar } from "../../hooks/useMainnetEnsAvatar";
 import { useMainnetEnsName } from "../../hooks/useMainnetEnsName";
@@ -63,8 +63,7 @@ export function ConnectButtonRenderer({
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { data: balanceData } = useBalance({ address });
-  const { chains } = useConfig();
-  const activeChain = 1;
+  const { chain: activeChain } = useAccount();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
 
@@ -121,7 +120,8 @@ export function ConnectButtonRenderer({
               iconUrl: resolvedChainIconUrl,
               id: activeChain.id,
               name: chainName ?? activeChain.name,
-              unsupported: activeChain.unsupported,
+              // @TODO (mago): find a way to see if the network you're in is unsupported
+              unsupported: /* activeChain.unsupported, */ false,
             }
           : undefined,
         chainModalOpen,

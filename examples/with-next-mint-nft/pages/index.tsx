@@ -1,19 +1,21 @@
-import React from 'react';
-import Image from 'next/image';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
+import React from "react";
+import Image from "next/image";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import type { NextPage } from "next";
 import {
   useAccount,
   useContractRead,
   useContractWrite,
   usePrepareContractWrite,
+  useSimulateContract,
   useWaitForTransaction,
-} from 'wagmi';
-import { abi } from '../contract-abi';
-import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
+  useWriteContract,
+} from "wagmi";
+import { abi } from "../contract-abi";
+import FlipCard, { BackCard, FrontCard } from "../components/FlipCard";
 
 const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  address: "0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30",
   abi,
 } as const;
 
@@ -24,22 +26,22 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0n);
   const { isConnected } = useAccount();
 
-  const { config: contractWriteConfig } = usePrepareContractWrite({
+  const { data: contractWriteConfig } = useSimulateContract({
     ...contractConfig,
-    functionName: 'mint',
+    functionName: "mint",
   });
 
   const {
     data: mintData,
-    write: mint,
-    isLoading: isMintLoading,
+    writeContract: mint,
+    isPending: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useContractWrite(contractWriteConfig);
+  } = useWriteContract(contractWriteConfig);
 
   const { data: totalSupplyData } = useContractRead({
     ...contractConfig,
-    functionName: 'totalSupply',
+    functionName: "totalSupply",
     watch: true,
   });
 
@@ -62,21 +64,21 @@ const Home: NextPage = () => {
   return (
     <div className="page">
       <div className="container">
-        <div style={{ flex: '1 1 auto' }}>
-          <div style={{ padding: '24px 24px 24px 0' }}>
+        <div style={{ flex: "1 1 auto" }}>
+          <div style={{ padding: "24px 24px 24px 0" }}>
             <h1>NFT Demo Mint</h1>
-            <p style={{ margin: '12px 0 24px' }}>
+            <p style={{ margin: "12px 0 24px" }}>
               {Number(totalMinted)} minted so far!
             </p>
             <ConnectButton />
 
             {mintError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {mintError.message}
               </p>
             )}
             {txError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {txError.message}
               </p>
             )}
@@ -90,15 +92,15 @@ const Home: NextPage = () => {
                 data-mint-started={isMintStarted}
                 onClick={() => mint?.()}
               >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
+                {isMintLoading && "Waiting for approval"}
+                {isMintStarted && "Minting..."}
+                {!isMintLoading && !isMintStarted && "Mint"}
               </button>
             )}
           </div>
         </div>
 
-        <div style={{ flex: '0 0 auto' }}>
+        <div style={{ flex: "0 0 auto" }}>
           <FlipCard>
             <FrontCard isCardFlipped={isMinted}>
               <Image
@@ -125,13 +127,13 @@ const Home: NextPage = () => {
                   Your NFT will show up in your wallet in the next few minutes.
                 </p>
                 <p style={{ marginBottom: 6 }}>
-                  View on{' '}
+                  View on{" "}
                   <a href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}>
                     Etherscan
                   </a>
                 </p>
                 <p>
-                  View on{' '}
+                  View on{" "}
                   <a
                     href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
                   >

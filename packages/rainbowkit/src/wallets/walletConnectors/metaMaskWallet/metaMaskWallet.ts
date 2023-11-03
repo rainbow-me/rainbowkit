@@ -1,5 +1,5 @@
 import { Wallet } from "../../Wallet";
-
+import {injected} from 'wagmi/connectors'
 export const metaMaskWallet = (): Wallet => {
   return {
     id: "metaMask",

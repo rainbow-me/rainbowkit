@@ -29,12 +29,7 @@ export function useWalletConnectors(): WalletConnector[] {
 
   async function connectWallet(connector: Connector) {
     const walletChainId = await connector?.getChainId?.()?.catch(() => 1);
-    connector.getProvider().then(async (provider) => {
-      // @ts-ignore
-      provider.on("message", () => {
-        console.log("RIGHT");
-      });
-    });
+
     const result = await connectAsync({
       chainId:
         // The goal here is to ensure users are always on a supported chain when connecting.

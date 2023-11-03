@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { ConnectorData, useAccount } from 'wagmi';
+import {  useAccount } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'

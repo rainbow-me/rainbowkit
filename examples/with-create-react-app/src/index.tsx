@@ -6,7 +6,7 @@ import './index.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig, WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -51,11 +51,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <WagmiConfig config={wagmiConfig}>
+    <WagmiProvider config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         <App />
       </RainbowKitProvider>
-    </WagmiConfig>
+    </WagmiPro>
   </React.StrictMode>
 );
 
