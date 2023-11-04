@@ -1,14 +1,19 @@
-import { Connector } from "wagmi";
+import { Connector } from 'wagmi';
 
 export type InstructionStepName =
-  | "install"
-  | "create"
-  | "scan"
-  | "connect"
-  | "refresh";
+  | 'install'
+  | 'create'
+  | 'scan'
+  | 'connect'
+  | 'refresh';
 
-type RainbowKitConnector = {
+type RainbowKitConnector<C extends Connector = Connector> = {
+  connector: C;
+  mobile?: {
+    getUri?: () => Promise<string>;
+  };
   desktop?: {
+    getUri?: () => Promise<string>;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -19,6 +24,7 @@ type RainbowKitConnector = {
     };
   };
   qrCode?: {
+    getUri: () => Promise<string>;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -40,11 +46,11 @@ type RainbowKitConnector = {
   };
 };
 
-export type Wallet = {
+export type Wallet<C extends Connector = Connector> = {
   id: string;
-  ids?: string[];
   name: string;
   shortName?: string;
+  iconUrl: string | (() => Promise<string>);
   iconAccent?: string;
   iconBackground: string;
   installed?: boolean;
@@ -64,5 +70,23 @@ export type Wallet = {
     linux?: string;
     desktop?: string;
   };
-  connector?: RainbowKitConnector;
+  hidden?: (args: {
+    wallets: {
+      id: string;
+      connector: Connector;
+      installed?: boolean;
+      name: string;
+    }[];
+  }) => boolean;
+  createConnector: () => RainbowKitConnector<C>;
 };
+
+export type WalletList = { groupName: string; wallets: Wallet[] }[];
+
+export type WalletInstance = Omit<Wallet, 'createConnector' | 'hidden'> &
+  ReturnType<Wallet['createConnector']> & {
+    index: number;
+    groupIndex: number;
+    groupName: string;
+    walletConnectModalConnector?: Connector;
+  };
