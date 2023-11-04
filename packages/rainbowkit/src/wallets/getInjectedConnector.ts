@@ -37,7 +37,15 @@ function getInjectedProvider(flag: string) {
 function createInjectedConnector(provider?: any): CreateConnector {
   return (walletOptions: WalletOptionsParams = {}) => {
     // Create the injected configuration object conditionally based on the provider.
-    const injectedConfig = provider ? { target: () => provider } : {};
+    const injectedConfig = provider
+      ? {
+          target: () => ({
+            id: walletOptions.id,
+            name: walletOptions.name,
+            provider,
+          }),
+        }
+      : {};
 
     return createConnector((config) => ({
       // Spread the injectedConfig object, which may be empty or contain the target function

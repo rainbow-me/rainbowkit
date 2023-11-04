@@ -5,7 +5,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 const Home: NextPage = () => {
   const { openConnectModal } = useConnectModal();
-  const { connectors } = useConnect();
+  const { connectors, connect } = useConnect();
   const { switchChain } = useSwitchChain();
   console.log(connectors);
   return (
@@ -13,6 +13,7 @@ const Home: NextPage = () => {
       style={{
         display: "flex",
         justifyContent: "flex-end",
+        flexWrap: "wrap",
         padding: 12,
       }}
     >
@@ -20,8 +21,8 @@ const Home: NextPage = () => {
         return (
           <button
             onClick={async () => {
-              await connector.connect();
-              switchChain({ chainId: 137 });
+              console.log(connector);
+              connector.connect();
             }}
           >
             {connector.name}

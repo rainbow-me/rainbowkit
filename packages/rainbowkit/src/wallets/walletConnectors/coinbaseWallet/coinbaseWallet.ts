@@ -1,20 +1,18 @@
-import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { Chain } from "../../../components/RainbowKitProvider/RainbowKitChainContext";
 import { isIOS } from "../../../utils/isMobile";
-import { Wallet } from "../../Wallet";
+import { Wallet, WalletOptionsParams } from "../../Wallet";
 import { hasInjectedProvider } from "../../getInjectedConnector";
+import { createConnector } from "wagmi";
+import { coinbaseWallet as coinbaseWagmiWallet } from "wagmi/connectors";
 
 export interface CoinbaseWalletOptions {
   appName: string;
-  chains: Chain[];
 }
 
-export const coinbaseWallet = ({
-  appName,
-  chains,
-  ...options
-}: CoinbaseWalletOptions): Wallet => {
+export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected = hasInjectedProvider("isCoinbaseWallet");
+
+  const getUri = (uri: string) => uri;
+  const ios = isIOS();
 
   return {
     id: "coinbase",
@@ -36,80 +34,69 @@ export const coinbaseWallet = ({
         "https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad",
       browserExtension: "https://coinbase.com/wallet",
     },
+    ...(ios
+      ? {}
+      : {
+          qrCode: {
+            getUri,
+            instructions: {
+              learnMoreUrl:
+                "https://coinbase.com/wallet/articles/getting-started-mobile",
+              steps: [
+                {
+                  description:
+                    "wallet_connectors.coinbase.qr_code.step1.description",
+                  step: "install",
+                  title: "wallet_connectors.coinbase.qr_code.step1.title",
+                },
+                {
+                  description:
+                    "wallet_connectors.coinbase.qr_code.step2.description",
+                  step: "create",
+                  title: "wallet_connectors.coinbase.qr_code.step2.title",
+                },
+                {
+                  description:
+                    "wallet_connectors.coinbase.qr_code.step3.description",
+                  step: "scan",
+                  title: "wallet_connectors.coinbase.qr_code.step3.title",
+                },
+              ],
+            },
+          },
+          extension: {
+            instructions: {
+              learnMoreUrl:
+                "https://coinbase.com/wallet/articles/getting-started-extension",
+              steps: [
+                {
+                  description:
+                    "wallet_connectors.coinbase.extension.step1.description",
+                  step: "install",
+                  title: "wallet_connectors.coinbase.extension.step1.title",
+                },
+                {
+                  description:
+                    "wallet_connectors.coinbase.extension.step2.description",
+                  step: "create",
+                  title: "wallet_connectors.coinbase.extension.step2.title",
+                },
+                {
+                  description:
+                    "wallet_connectors.coinbase.extension.step3.description",
+                  step: "refresh",
+                  title: "wallet_connectors.coinbase.extension.step3.title",
+                },
+              ],
+            },
+          },
+        }),
     createConnector: () => {
-      const ios = isIOS();
-
-      const connector = new CoinbaseWalletConnector({
-        chains,
-        options: {
-          appName,
-          headlessMode: true,
-          ...options,
-        },
-      });
-
-      const getUri = async () => (await connector.getProvider()).qrUrl;
-
-      return {
-        connector,
-        ...(ios
-          ? {}
-          : {
-              qrCode: {
-                getUri,
-                instructions: {
-                  learnMoreUrl:
-                    "https://coinbase.com/wallet/articles/getting-started-mobile",
-                  steps: [
-                    {
-                      description:
-                        "wallet_connectors.coinbase.qr_code.step1.description",
-                      step: "install",
-                      title: "wallet_connectors.coinbase.qr_code.step1.title",
-                    },
-                    {
-                      description:
-                        "wallet_connectors.coinbase.qr_code.step2.description",
-                      step: "create",
-                      title: "wallet_connectors.coinbase.qr_code.step2.title",
-                    },
-                    {
-                      description:
-                        "wallet_connectors.coinbase.qr_code.step3.description",
-                      step: "scan",
-                      title: "wallet_connectors.coinbase.qr_code.step3.title",
-                    },
-                  ],
-                },
-              },
-              extension: {
-                instructions: {
-                  learnMoreUrl:
-                    "https://coinbase.com/wallet/articles/getting-started-extension",
-                  steps: [
-                    {
-                      description:
-                        "wallet_connectors.coinbase.extension.step1.description",
-                      step: "install",
-                      title: "wallet_connectors.coinbase.extension.step1.title",
-                    },
-                    {
-                      description:
-                        "wallet_connectors.coinbase.extension.step2.description",
-                      step: "create",
-                      title: "wallet_connectors.coinbase.extension.step2.title",
-                    },
-                    {
-                      description:
-                        "wallet_connectors.coinbase.extension.step3.description",
-                      step: "refresh",
-                      title: "wallet_connectors.coinbase.extension.step3.title",
-                    },
-                  ],
-                },
-              },
-            }),
-      };
+      return (walletOptions: WalletOptionsParams = {}) =>
+        createConnector((config) => ({
+          ...coinbaseWagmiWallet({ appName })(config),
+          ...walletOptions,
+        }));
     },
   };
 };

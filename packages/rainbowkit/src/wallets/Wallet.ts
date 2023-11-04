@@ -69,16 +69,8 @@ export type Wallet = {
     linux?: string;
     desktop?: string;
   };
-  hidden?: (args: {
-    wallets: {
-      id: string;
-      // @TODO (mago): figure out this connector hidden logic
-      connector: any /* Connector */;
-      installed?: boolean;
-      name: string;
-    }[];
-  }) => boolean;
-  createConnector?: () => (options?: Record<string, any>) => CreateConnectorFn;
+  hidden?: () => boolean;
+  createConnector: () => (options?: Record<string, any>) => CreateConnectorFn;
 } & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
