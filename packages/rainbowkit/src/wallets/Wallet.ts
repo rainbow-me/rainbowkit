@@ -1,19 +1,18 @@
-import { Connector } from 'wagmi';
+import { CreateConnectorFn } from "wagmi";
 
 export type InstructionStepName =
-  | 'install'
-  | 'create'
-  | 'scan'
-  | 'connect'
-  | 'refresh';
+  | "install"
+  | "create"
+  | "scan"
+  | "connect"
+  | "refresh";
 
-type RainbowKitConnector<C extends Connector = Connector> = {
-  connector: C;
+type RainbowKitConnector = {
   mobile?: {
-    getUri?: () => Promise<string>;
+    getUri?: (uri: string) => string;
   };
   desktop?: {
-    getUri?: () => Promise<string>;
+    getUri?: (uri: string) => string;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -24,7 +23,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
     };
   };
   qrCode?: {
-    getUri: () => Promise<string>;
+    getUri: (uri: string) => string;
     instructions?: {
       learnMoreUrl: string;
       steps: {
@@ -46,7 +45,7 @@ type RainbowKitConnector<C extends Connector = Connector> = {
   };
 };
 
-export type Wallet<C extends Connector = Connector> = {
+export type Wallet = {
   id: string;
   name: string;
   shortName?: string;
@@ -73,18 +72,24 @@ export type Wallet<C extends Connector = Connector> = {
   hidden?: (args: {
     wallets: {
       id: string;
-      connector: Connector;
+      // @TODO (mago): figure out this connector hidden logic
+      connector: any /* Connector */;
       installed?: boolean;
       name: string;
     }[];
   }) => boolean;
-  createConnector: () => RainbowKitConnector<C>;
-};
+  createConnector?: () => (options?: Record<string, any>) => CreateConnectorFn;
+} & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
 
-export type WalletInstance = Omit<Wallet, 'createConnector' | 'hidden'> &
-  ReturnType<Wallet['createConnector']> & {
+export type WalletOptionsParams = Record<string, any>;
+export type CreateConnector = (
+  walletOptions?: Record<string, any>
+) => CreateConnectorFn;
+
+export type WalletInstance = Omit<Wallet, "createConnector" | "hidden"> &
+  ReturnType<Wallet["createConnector"]> & {
     index: number;
     groupIndex: number;
     groupName: string;

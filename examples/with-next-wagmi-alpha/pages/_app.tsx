@@ -4,7 +4,7 @@ import {
   connectorsForWallets,
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
-import { createConfig, http, WagmiProvider } from "wagmi";
+import { createConfig, createConnector, http, WagmiProvider } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -53,8 +53,23 @@ import {
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
-  multiInjectedProviderDiscovery: true,
-  connectors: [metaMask()],
+  multiInjectedProviderDiscovery: false,
+  connectors: [
+    createConnector((config) => {
+      return {
+        ...injected({
+          target() {
+            return undefined;
+          },
+        })(config),
+      };
+    }),
+    createConnector((config) => {
+      return {
+        ...metaMask()(config),
+      };
+    }),
+  ],
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
@@ -103,7 +118,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider chains={[]} wallets={rainbowWallets}>
+        <RainbowKitProvider chains={[]}>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
