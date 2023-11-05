@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const { openConnectModal } = useConnectModal();
   const { connectors, connect } = useConnect();
   const { switchChain } = useSwitchChain();
-  console.log(connectors);
+
   return (
     <div
       style={{

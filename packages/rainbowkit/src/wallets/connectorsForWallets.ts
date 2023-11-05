@@ -76,6 +76,7 @@ export const connectorsForWallets = (
           ...walletMeta,
           groupIndex,
           groupName,
+          isRainbowKitConnector: true,
         })
       );
 
