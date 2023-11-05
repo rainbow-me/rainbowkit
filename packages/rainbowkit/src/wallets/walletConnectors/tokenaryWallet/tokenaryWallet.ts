@@ -8,7 +8,7 @@ export interface TokenaryWalletOptions {
   chains: Chain[];
 }
 
-export const tokenary = ({
+export const tokenaryWallet = ({
   chains,
   ...options
 }: TokenaryWalletOptions & InjectedConnectorOptions): Wallet => ({
