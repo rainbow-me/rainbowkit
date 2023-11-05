@@ -1,4 +1,4 @@
-import { CreateConnectorFn } from "wagmi";
+import { CreateConnectorFn, Connector } from "wagmi";
 
 export type InstructionStepName =
   | "install"
@@ -80,10 +80,10 @@ export type CreateConnector = (
   walletOptions?: Record<string, any>
 ) => CreateConnectorFn;
 
-export type WalletInstance = Omit<Wallet, "createConnector" | "hidden"> &
-  ReturnType<Wallet["createConnector"]> & {
+export type WalletInstance = Connector &
+  Omit<Wallet, "createConnector" | "hidden"> & {
     index: number;
     groupIndex: number;
     groupName: string;
-    walletConnectModalConnector?: Connector;
+    isRainbowKitConnector: boolean;
   };
