@@ -48,9 +48,7 @@ export const argentWallet = ({ projectId }: ArgentWalletOptions): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    return getWalletConnectConnector({
-      projectId,
-    });
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

@@ -40,15 +40,11 @@ export const desigWallet = (): Wallet => {
         learnMoreUrl: "https://desig.io",
       },
     },
-    createConnector: () => {
-      const provider =
+    createConnector: getInjectedConnector({
+      target:
         typeof window !== "undefined"
           ? (window as any).desig?.ethereum
-          : undefined;
-
-      const connector = getInjectedConnector({ target: provider });
-
-      return connector;
-    },
+          : undefined,
+    }),
   };
 };

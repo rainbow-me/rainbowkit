@@ -112,16 +112,12 @@ export const coreWallet = ({ projectId }: CoreWalletOptions): Wallet => {
         ],
       },
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target: getCoreWalletInjectedProvider(),
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target: getCoreWalletInjectedProvider(),
+        }),
   };
 };

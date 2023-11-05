@@ -92,14 +92,10 @@ export const tokenPocketWallet = ({
         ],
       },
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getDefaultInjectedConnector();
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getDefaultInjectedConnector(),
   };
 };

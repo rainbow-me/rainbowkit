@@ -16,5 +16,5 @@ export const dawnWallet = (): Wallet => ({
     ios: "https://apps.apple.com/us/app/dawn-ethereum-wallet/id1673143782",
     mobile: "https://dawnwallet.xyz",
   },
-  createConnector: () => getDefaultInjectedConnector(),
+  createConnector: getDefaultInjectedConnector(),
 });

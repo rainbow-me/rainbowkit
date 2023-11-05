@@ -47,9 +47,7 @@ export const safeheronWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    return getInjectedConnector({
-      target: typeof window !== "undefined" ? window.safeheron : undefined,
-    });
-  },
+  createConnector: getInjectedConnector({
+    target: typeof window !== "undefined" ? window.safeheron : undefined,
+  }),
 });

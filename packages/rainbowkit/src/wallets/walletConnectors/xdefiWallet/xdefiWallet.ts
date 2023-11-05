@@ -43,9 +43,8 @@ export const xdefiWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: () =>
-      getInjectedConnector({
-        target: isInstalled ? (window.xfi?.ethereum as any) : undefined,
-      }),
+    createConnector: getInjectedConnector({
+      target: isInstalled ? (window.xfi?.ethereum as any) : undefined,
+    }),
   };
 };

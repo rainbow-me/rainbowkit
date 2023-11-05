@@ -70,14 +70,10 @@ export const rainbowWallet = ({ projectId }: RainbowWalletOptions): Wallet => {
         }
       : undefined,
 
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({ flag: "isRainbow" });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({ flag: "isRainbow" }),
   };
 };

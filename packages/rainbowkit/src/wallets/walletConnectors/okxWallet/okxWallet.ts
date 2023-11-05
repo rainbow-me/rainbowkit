@@ -91,19 +91,15 @@ export const okxWallet = ({ projectId }: OKXWalletOptions): Wallet => {
       },
     },
 
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target:
-              typeof window !== "undefined"
-                ? (window as any).okxwallet
-                : undefined,
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target:
+            typeof window !== "undefined"
+              ? (window as any).okxwallet
+              : undefined,
+        }),
   };
 };

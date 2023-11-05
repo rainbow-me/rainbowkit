@@ -111,16 +111,15 @@ export const frontierWallet = ({
         ],
       },
     },
-    createConnector: () => {
-      const getFront = (frontier?: any) => {
-        return frontier?.ethereum ? frontier?.ethereum : undefined;
-      };
-
-      return shouldUseWalletConnect
-        ? getWalletConnectConnector({ projectId })
-        : getInjectedConnector({
-            target: typeof window !== "undefined" ? getFront() : undefined,
-          });
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({ projectId })
+      : getInjectedConnector({
+          target:
+            typeof window !== "undefined"
+              ? window.frontier?.ethereum
+                ? window.frontier?.ethereum
+                : undefined
+              : undefined,
+        }),
   };
 };

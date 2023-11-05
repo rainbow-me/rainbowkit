@@ -46,17 +46,11 @@ export const phantomWallet = (): Wallet => {
         learnMoreUrl: "https://help.phantom.app",
       },
     },
-    createConnector: () => {
-      const provider =
+    createConnector: getInjectedConnector({
+      target:
         typeof window !== "undefined"
           ? ((window as any).phantom as any)?.ethereum
-          : undefined;
-
-      const connector = getInjectedConnector({
-        target: provider,
-      });
-
-      return connector;
-    },
+          : undefined,
+    }),
   };
 };

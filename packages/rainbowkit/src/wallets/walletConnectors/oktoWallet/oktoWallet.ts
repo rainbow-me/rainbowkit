@@ -46,11 +46,7 @@ export const oktoWallet = ({ projectId }: OktoWalletOptions): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-    });
-
-    return connector;
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

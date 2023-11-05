@@ -23,6 +23,6 @@ export const mewWallet = (): Wallet => {
       mobile: "https://mewwallet.com",
       qrCode: "https://mewwallet.com",
     },
-    createConnector: () => getDefaultInjectedConnector(),
+    createConnector: getDefaultInjectedConnector(),
   };
 };

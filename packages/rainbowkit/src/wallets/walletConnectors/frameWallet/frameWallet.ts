@@ -37,5 +37,5 @@ export const frameWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => getDefaultInjectedConnector(),
+  createConnector: getDefaultInjectedConnector(),
 });

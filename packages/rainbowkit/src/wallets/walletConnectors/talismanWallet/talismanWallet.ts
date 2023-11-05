@@ -45,9 +45,7 @@ export const talismanWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    return getInjectedConnector({
-      target: typeof window !== "undefined" ? window.talismanEth : undefined,
-    });
-  },
+  createConnector: getInjectedConnector({
+    target: typeof window !== "undefined" ? window.talismanEth : undefined,
+  }),
 });

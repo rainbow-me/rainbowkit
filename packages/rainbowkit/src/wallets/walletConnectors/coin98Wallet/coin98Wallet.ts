@@ -91,14 +91,10 @@ export const coin98Wallet = ({ projectId }: Coin98WalletOptions): Wallet => {
         ],
       },
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({ flag: "isCoin98" });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({ flag: "isCoin98" }),
   };
 };

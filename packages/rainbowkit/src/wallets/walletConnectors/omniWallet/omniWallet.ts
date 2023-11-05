@@ -45,11 +45,7 @@ export const omniWallet = ({ projectId }: OmniWalletOptions): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-    });
-
-    return connector;
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

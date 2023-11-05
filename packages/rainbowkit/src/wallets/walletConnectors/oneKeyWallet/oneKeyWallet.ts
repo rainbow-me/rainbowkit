@@ -57,12 +57,8 @@ export const oneKeyWallet = (): Wallet => {
       },
     },
 
-    createConnector: () => {
-      const connector = getInjectedConnector({
-        target: provider,
-      });
-
-      return connector;
-    },
+    createConnector: getInjectedConnector({
+      target: provider,
+    }),
   };
 };

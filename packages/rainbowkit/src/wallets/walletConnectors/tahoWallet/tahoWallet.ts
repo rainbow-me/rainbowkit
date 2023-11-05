@@ -53,10 +53,8 @@ export const tahoWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: () => {
-      return getInjectedConnector({
-        target: getProvider(),
-      });
-    },
+    createConnector: getInjectedConnector({
+      target: getProvider(),
+    }),
   };
 };

@@ -66,14 +66,10 @@ export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
         }
       : undefined,
 
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getDefaultInjectedConnector();
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getDefaultInjectedConnector(),
   };
 };

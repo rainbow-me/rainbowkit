@@ -38,5 +38,5 @@ export const bitskiWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => getDefaultInjectedConnector(),
+  createConnector: getDefaultInjectedConnector(),
 });

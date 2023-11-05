@@ -142,16 +142,12 @@ export const safepalWallet = ({ projectId }: SafepalWalletOptions): Wallet => {
     mobile: mobileConnector,
     ...(qrConnector ? qrConnector : {}),
     extension: extensionConnector,
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target: getSafepalWalletInjectedProvider(),
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target: getSafepalWalletInjectedProvider(),
+        }),
   };
 };

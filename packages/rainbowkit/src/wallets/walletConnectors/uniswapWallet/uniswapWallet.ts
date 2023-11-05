@@ -45,11 +45,7 @@ export const uniswapWallet = ({ projectId }: UniswapWalletOptions): Wallet => ({
     },
   },
 
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-    });
-
-    return connector;
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

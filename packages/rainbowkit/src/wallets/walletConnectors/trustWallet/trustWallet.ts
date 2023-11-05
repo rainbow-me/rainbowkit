@@ -108,16 +108,12 @@ export const trustWallet = ({ projectId }: TrustWalletOptions): Wallet => {
     mobile: mobileConnector,
     qrCode: qrConnector,
     extension: extensionConnector,
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : isMobile()
-        ? getInjectedConnector({ flag: "isTrust" })
-        : getInjectedConnector({ flag: "isTrustWallet" });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : isMobile()
+      ? getInjectedConnector({ flag: "isTrust" })
+      : getInjectedConnector({ flag: "isTrustWallet" }),
   };
 };

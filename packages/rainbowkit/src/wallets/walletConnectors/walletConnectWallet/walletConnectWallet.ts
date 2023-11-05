@@ -24,9 +24,8 @@ export const walletConnectWallet = ({
           mobile: { getUri },
           qrCode: { getUri },
         }),
-    createConnector: () =>
-      getWalletConnectConnector({
-        projectId,
-      }),
+    createConnector: getWalletConnectConnector({
+      projectId,
+    }),
   };
 };

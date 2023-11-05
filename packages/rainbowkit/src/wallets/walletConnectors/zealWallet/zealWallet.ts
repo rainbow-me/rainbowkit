@@ -35,5 +35,5 @@ export const zealWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => getDefaultInjectedConnector(),
+  createConnector: getDefaultInjectedConnector(),
 });

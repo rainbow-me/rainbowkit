@@ -82,16 +82,12 @@ export const clvWallet = ({ projectId }: CLVWalletOptions): Wallet => {
           },
         }
       : undefined,
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target: provider,
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target: provider,
+        }),
   };
 };

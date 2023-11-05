@@ -58,19 +58,15 @@ export const foxWallet = ({ projectId }: FoxWalletOptions): Wallet => {
           },
         }
       : undefined,
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target:
-              typeof window !== "undefined"
-                ? (window as any).foxwallet?.ethereum
-                : undefined,
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target:
+            typeof window !== "undefined"
+              ? (window as any).foxwallet?.ethereum
+              : undefined,
+        }),
   };
 };

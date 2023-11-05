@@ -91,20 +91,16 @@ export const zerionWallet = ({ projectId }: ZerionWalletOptions): Wallet => {
         ],
       },
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target:
-              typeof window !== "undefined"
-                ? // @ts-expect-error
-                  window.zerionWallet || window.ethereum
-                : undefined,
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target:
+            typeof window !== "undefined"
+              ? // @ts-expect-error
+                window.zerionWallet || window.ethereum
+              : undefined,
+        }),
   };
 };

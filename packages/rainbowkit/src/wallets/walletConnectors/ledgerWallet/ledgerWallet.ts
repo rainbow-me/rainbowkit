@@ -81,11 +81,7 @@ export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-    });
-
-    return connector;
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

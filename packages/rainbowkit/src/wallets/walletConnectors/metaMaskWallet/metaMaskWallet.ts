@@ -153,18 +153,15 @@ export const metaMaskWallet = ({
         ],
       },
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : (walletOptions: WalletOptionsParams = {}) => {
-            return createConnector((config) => ({
-              ...metaMask()(config),
-              ...walletOptions,
-            }));
-          };
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : (walletOptions: WalletOptionsParams = {}) => {
+          return createConnector((config) => ({
+            ...metaMask()(config),
+            ...walletOptions,
+          }));
+        },
   };
 };

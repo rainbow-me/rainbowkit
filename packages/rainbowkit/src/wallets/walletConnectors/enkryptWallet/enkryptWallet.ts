@@ -57,13 +57,11 @@ export const enkryptWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: () => {
-      return getInjectedConnector({
-        target:
-          typeof window !== "undefined"
-            ? window?.enkrypt?.providers?.ethereum
-            : undefined,
-      });
-    },
+    createConnector: getInjectedConnector({
+      target:
+        typeof window !== "undefined"
+          ? window?.enkrypt?.providers?.ethereum
+          : undefined,
+    }),
   };
 };

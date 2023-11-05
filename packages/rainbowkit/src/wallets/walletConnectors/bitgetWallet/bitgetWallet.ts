@@ -97,18 +97,14 @@ export const bitgetWallet = ({ projectId }: BitKeepWalletOptions): Wallet => {
         }
       : undefined,
 
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            // @ts-expect-error
-            target: window.bitkeep.ethereum,
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          // @ts-expect-error
+          target: window.bitkeep.ethereum,
+        }),
   };
 };
 

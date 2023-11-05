@@ -23,7 +23,7 @@ describe("connectorsForWallets", () => {
           groupName: "Test Group 1",
           wallets: [
             {
-              createConnector: () => () =>
+              createConnector: () =>
                 walletConnect({ projectId: exampleProjectId }),
               iconBackground: "#fff",
               iconUrl: "/test.png",
@@ -49,7 +49,7 @@ describe("connectorsForWallets", () => {
           groupName: "Test Group 1",
           wallets: [
             {
-              createConnector: () => () =>
+              createConnector: () =>
                 walletConnect({ projectId: exampleProjectId }),
               hidden: () => true,
               iconBackground: "#fff",
@@ -66,19 +66,17 @@ describe("connectorsForWallets", () => {
     });
 
     it("should throw if projectId is invalid to wallet connect connector", () => {
-      const walletList = [
-        {
-          groupName: "Test Group 1",
-          wallets: [
-            // @ts-expect-error
-            walletConnectWallet({ projectId: undefined }),
-          ],
-        },
-      ];
-
       // You can also check the specific error message part, for example:
       expect(() => {
-        connectorsForWallets(walletList);
+        connectorsForWallets([
+          {
+            groupName: "Test Group 1",
+            wallets: [
+              // @ts-expect-error
+              walletConnectWallet({ projectId: undefined }),
+            ],
+          },
+        ]);
       }).toThrow(
         "No projectId found. Every dApp must now provide a WalletConnect Cloud projectId"
       );

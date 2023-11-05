@@ -48,11 +48,7 @@ export const imTokenWallet = ({ projectId }: ImTokenWalletOptions): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-    });
-
-    return connector;
-  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+  }),
 });

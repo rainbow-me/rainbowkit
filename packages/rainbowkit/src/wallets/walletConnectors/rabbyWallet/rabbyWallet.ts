@@ -37,7 +37,5 @@ export const rabbyWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: () => {
-    return getDefaultInjectedConnector();
-  },
+  createConnector: getDefaultInjectedConnector(),
 });

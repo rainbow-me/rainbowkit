@@ -111,16 +111,12 @@ export const subWallet = ({ projectId }: SubWalletOptions): Wallet => {
     mobile: mobileConnector,
     qrCode: qrConnector,
     extension: extensionConnector,
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-          })
-        : getInjectedConnector({
-            target: getSubWalletInjectedProvider(),
-          });
-
-      return connector;
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+        })
+      : getInjectedConnector({
+          target: getSubWalletInjectedProvider(),
+        }),
   };
 };

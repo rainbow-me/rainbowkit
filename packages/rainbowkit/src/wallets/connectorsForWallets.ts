@@ -71,7 +71,7 @@ export const connectorsForWallets = (
         }
       }
 
-      const connector = createConnector()(
+      const connector = createConnector(
         omitUndefinedValues({
           ...walletMeta,
           groupIndex,

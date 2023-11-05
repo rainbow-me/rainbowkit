@@ -70,7 +70,7 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
-  createConnector: () => (options?: Record<string, any>) => CreateConnectorFn;
+  createConnector: (options?: Record<string, any>) => CreateConnectorFn;
 } & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
