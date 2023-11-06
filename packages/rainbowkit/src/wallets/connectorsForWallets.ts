@@ -2,6 +2,7 @@ import { CreateConnectorFn } from "wagmi";
 import { isHexString } from "../utils/colors";
 import { omitUndefinedValues } from "../utils/omitUndefinedValues";
 import { Wallet, WalletList } from "./Wallet";
+import { isIOS } from "../utils/isMobile";
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -71,12 +72,15 @@ export const connectorsForWallets = (
         }
       }
 
+      const isWalletConnectConnector = walletMeta.id === "walletConnect";
+
       const connector = createConnector(
         omitUndefinedValues({
           ...walletMeta,
           groupIndex,
           groupName,
           isRainbowKitConnector: true,
+          ...(isWalletConnectConnector ? { showQrModal: isIOS()} : {}),
         })
       );
 

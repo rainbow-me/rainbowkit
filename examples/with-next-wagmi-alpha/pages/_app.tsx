@@ -2,6 +2,7 @@ import "../styles/global.css";
 import type { AppProps } from "next/app";
 import {
   connectorsForWallets,
+  getDefaultWallets,
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import { createConfig, createConnector, http, WagmiProvider } from "wagmi";
@@ -55,9 +56,15 @@ import {
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? "YOUR_PROJECT_ID";
 
+const { wallets } = getDefaultWallets({
+  appName: "RainbowKit demo",
+  projectId,
+});
+
 const connectors = connectorsForWallets([
+  ...wallets,
   {
-    groupName: "123",
+    groupName: "Other",
     wallets: [
       rainbowWallet({ projectId }),
       argentWallet({ projectId }),

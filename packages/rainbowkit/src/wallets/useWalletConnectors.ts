@@ -19,18 +19,18 @@ export interface WalletConnector extends WalletInstance {
     accounts: readonly `0x${string}`[];
     chainId: number;
   }>;
-  onConnecting: (fn: (data: any) => void) => void;
   showWalletConnectModal?: () => void;
   recent: boolean;
   mobileDownloadUrl?: string;
   extensionDownloadUrl?: string;
   desktopDownloadUrl?: string;
+  getDesktopUri?: () => Promise<string>;
+  getQrCodeUri?: () => Promise<string>;
 }
 
-interface ConnectorEmitterEventParams {
-  uuid?: string;
-  type?: string;
-  data?: any;
+interface EventEmitterParams {
+  type: string;
+  data: string;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -86,6 +86,20 @@ export function useWalletConnectors(): WalletConnector[] {
     (walletInstance) => walletInstance.id
   );
 
+  const getWalletConnectUri = async (
+    connector: Connector,
+    uriConverter: (uri: string) => string
+  ): Promise<string> => {
+    const provider = await connector.getProvider();
+    return new Promise<string>((resolve) =>
+      // Wagmi v2 doesn't have a return type for provider yet
+      // @ts-expect-error
+      provider.once("display_uri", (uri) => {
+        resolve(uriConverter(uri));
+      })
+    );
+  };
+
   const MAX_RECENT_WALLETS = 3;
   const recentWallets: WalletInstance[] = getRecentWalletIds()
     .map((walletId) => walletInstanceById[walletId])
@@ -110,18 +124,18 @@ export function useWalletConnectors(): WalletConnector[] {
 
     walletConnectors.push({
       ...wallet,
+      ready: wallet.installed ?? true,
       connect: () => connectWallet(wallet),
       desktopDownloadUrl: getDesktopDownloadUrl(wallet),
       extensionDownloadUrl: getExtensionDownloadUrl(wallet),
       groupName: wallet.groupName,
       mobileDownloadUrl: getMobileDownloadUrl(wallet),
-      onConnecting: (fn: (data: any) => void) =>
-        wallet.emitter.on(
-          "message",
-          ({ type, data }: ConnectorEmitterEventParams) =>
-            type === "display_uri" ? fn(data) : undefined
-        ),
-      ready: wallet.installed ?? true,
+      getQrCodeUri: wallet.qrCode?.getUri
+        ? () => getWalletConnectUri(wallet, wallet.qrCode!.getUri!)
+        : undefined,
+      getDesktopUri: wallet.desktop?.getUri
+        ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)
+        : undefined,
       recent,
       showWalletConnectModal: undefined,
     });

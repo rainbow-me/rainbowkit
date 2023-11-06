@@ -87,69 +87,41 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
       // @TODO (mago): figure out desktop deep link
 
-      /*      const getDesktopDeepLink = wallet.desktop?.getUri;
+      const getDesktopDeepLink = wallet.getDesktopUri;
       if (getDesktopDeepLink) {
         // if desktop deep link, wait for uri
         setTimeout(async () => {
           const uri = await getDesktopDeepLink();
-          window.open(uri, safari ? '_blank' : '_self');
+          window.open(uri, safari ? "_blank" : "_self");
         }, 0);
-      } */
+      }
     }
   };
 
-  const selectWallet = (wallet: WalletConnector) => {
+  const onQrCode = async (wallet: WalletConnector) => {
+    const sWallet = wallets.find((w) => wallet.id === w.id);
+    const uri = await sWallet?.getQrCodeUri?.();
+    setQrCodeUri(uri);
+
+    // This timeout prevents the UI from flickering if connection is instant,
+    // otherwise users will see a flash of the "connecting" state.
+    setTimeout(
+      () => {
+        setSelectedWallet(sWallet);
+        changeWalletStep(WalletStep.Connect);
+      },
+      uri ? 0 : 50
+    );
+  };
+
+  const selectWallet = async (wallet: WalletConnector) => {
+    // This ensures that we listen to the provider.once("display_uri")
+    // before connecting to the wallet
+    if (wallet.ready) onQrCode(wallet);
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 
-    if (wallet.ready) {
-      // We need to guard against "onConnecting" callbacks being fired
-      // multiple times since connector instances can be shared between
-      // wallets. Ideally wagmi would let us scope the callback to the
-      // specific "connect" call, but this will work in the meantime.
-      let callbackFired = false;
-
-      wallet?.onConnecting?.(async (data) => {
-        console.log(data);
-        if (callbackFired) return;
-        callbackFired = true;
-
-        // @TODO (mago): fix this
-
-        /*     const sWallet = wallets.find((w) => wallet.id === w.id);
-        const uri = await sWallet?.qrCode?.getUri();
-        setQrCodeUri(uri);
-
-        // This timeout prevents the UI from flickering if connection is instant,
-        // otherwise users will see a flash of the "connecting" state.
-        setTimeout(
-          () => {
-            setSelectedWallet(sWallet);
-            changeWalletStep(WalletStep.Connect);
-          },
-          uri ? 0 : 50
-        ); */
-
-        // @TODO (mago): fix this
-
-        // If the WalletConnect request is rejected, restart the wallet
-        // selection flow to create a new connection with a new QR code
-        /*    const provider = await sWallet?.connector.getProvider();
-        const connection = provider?.signer?.connection;
-        if (connection?.on && connection?.off) {
-          const handleConnectionClose = () => {
-            removeHandlers();
-            selectWallet(wallet);
-          };
-          const removeHandlers = () => {
-            connection.off("close", handleConnectionClose);
-            connection.off("open", removeHandlers);
-          };
-          connection.on("close", handleConnectionClose);
-          connection.on("open", removeHandlers);
-        } */
-      });
-    } else {
+    if (!wallet.ready) {
       setSelectedWallet(wallet);
       changeWalletStep(
         wallet?.extensionDownloadUrl
