@@ -13,6 +13,7 @@ export const walletConnectWallet = ({
   return {
     id: "walletConnect",
     name: "WalletConnect",
+    installed: true,
     iconUrl: async () => (await import("./walletConnectWallet.svg")).default,
     iconBackground: "#3b99fc",
     qrCode: { getUri },

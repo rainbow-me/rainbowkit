@@ -2,7 +2,6 @@ import { WalletList } from "./Wallet";
 import { connectorsForWallets } from "./connectorsForWallets";
 import { braveWallet } from "./walletConnectors/braveWallet/braveWallet";
 import { coinbaseWallet } from "./walletConnectors/coinbaseWallet/coinbaseWallet";
-import { injectedWallet } from "./walletConnectors/injectedWallet/injectedWallet";
 import { metaMaskWallet } from "./walletConnectors/metaMaskWallet/metaMaskWallet";
 import { rainbowWallet } from "./walletConnectors/rainbowWallet/rainbowWallet";
 import { safeWallet } from "./walletConnectors/safeWallet/safeWallet";
@@ -22,7 +21,6 @@ export const getDefaultWallets = ({
     {
       groupName: "Popular",
       wallets: [
-        injectedWallet(),
         safeWallet(),
         rainbowWallet({ projectId }),
         coinbaseWallet({ appName }),

@@ -19,7 +19,7 @@ export const enkryptWallet = (): Wallet => {
   return {
     id: "enkrypt",
     name: "Enkrypt Wallet",
-    installed: isEnkryptInjected ? true : undefined,
+    installed: isEnkryptInjected,
     iconUrl: async () => (await import("./enkryptWallet.svg")).default,
     iconBackground: "#FFFFFF",
     downloadUrls: {

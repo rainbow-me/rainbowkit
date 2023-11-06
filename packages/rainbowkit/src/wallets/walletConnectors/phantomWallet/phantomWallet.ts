@@ -8,9 +8,8 @@ export const phantomWallet = (): Wallet => {
     iconUrl: async () => (await import("./phantomWallet.svg")).default,
     iconBackground: "#9A8AEE",
     installed:
-      (typeof window !== "undefined" &&
-        !!((window as any).phantom as any)?.ethereum) ||
-      undefined,
+      typeof window !== "undefined" &&
+      !!((window as any).phantom as any)?.ethereum,
     downloadUrls: {
       android: "https://play.google.com/store/apps/details?id=app.phantom",
       ios: "https://apps.apple.com/app/phantom-solana-wallet/1598432977",

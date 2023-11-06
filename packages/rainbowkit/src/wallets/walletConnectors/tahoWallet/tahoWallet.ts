@@ -27,9 +27,7 @@ export const tahoWallet = (): Wallet => {
     installed:
       typeof window !== "undefined" &&
       typeof window.tally !== "undefined" &&
-      window["tally"]
-        ? true
-        : undefined,
+      window["tally"],
     extension: {
       instructions: {
         learnMoreUrl:

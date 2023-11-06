@@ -66,7 +66,6 @@ const connectors = connectorsForWallets([
   {
     groupName: "Other",
     wallets: [
-      rainbowWallet({ projectId }),
       argentWallet({ projectId }),
       bifrostWallet({ projectId }),
       bitgetWallet({ projectId }),

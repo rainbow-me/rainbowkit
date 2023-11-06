@@ -8,8 +8,7 @@ export const desigWallet = (): Wallet => {
     iconUrl: async () => (await import("./desigWallet.svg")).default,
     iconBackground: "#ffffff",
     installed:
-      (typeof window !== "undefined" && !!(window as any)?.desig?.ethereum) ||
-      undefined,
+      typeof window !== "undefined" && !!(window as any)?.desig?.ethereum,
     downloadUrls: {
       android: "https://play.google.com/store/apps/details?id=io.desig.app",
       ios: "https://apps.apple.com/app/desig-wallet/id6450106028",
