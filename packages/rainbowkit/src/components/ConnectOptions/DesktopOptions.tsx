@@ -1,6 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { touchableStyles } from "../../css/touchableStyles";
-import { isSafari } from "../../utils/browsers";
 import { groupBy } from "../../utils/groupBy";
 import {
   WalletConnector,
@@ -51,7 +50,6 @@ export enum WalletStep {
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const titleId = "rk_connect_title";
-  const safari = isSafari();
   const [selectedOptionId, setSelectedOptionId] = useState<
     string | undefined
   >();
@@ -84,23 +82,14 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
       });
-
-      // @TODO (mago): figure out desktop deep link
-
-      const getDesktopDeepLink = wallet.getDesktopUri;
-      if (getDesktopDeepLink) {
-        // if desktop deep link, wait for uri
-        setTimeout(async () => {
-          const uri = await getDesktopDeepLink();
-          window.open(uri, safari ? "_blank" : "_self");
-        }, 0);
-      }
     }
   };
 
   const onQrCode = async (wallet: WalletConnector) => {
     const sWallet = wallets.find((w) => wallet.id === w.id);
+
     const uri = await sWallet?.getQrCodeUri?.();
+ 
     setQrCodeUri(uri);
 
     // This timeout prevents the UI from flickering if connection is instant,

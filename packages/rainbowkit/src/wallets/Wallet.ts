@@ -86,4 +86,6 @@ export type WalletInstance = Connector &
     groupIndex: number;
     groupName: string;
     isRainbowKitConnector: boolean;
+    isWalletConnectModalConnector?: boolean;
+    walletConnectModalConnector?: Connector;
   };

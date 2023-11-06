@@ -9,7 +9,10 @@ function createWalletConnectConnector(
 ): CreateConnectorFn {
   // Create and configure the WalletConnect connector with project ID and options.
   return createConnector((config) => ({
-    ...walletConnect({ projectId, showQrModal: false })(config),
+    ...walletConnect({
+      projectId,
+      showQrModal: walletOptions.showQrModal ?? false,
+    })(config),
     ...walletOptions,
   }));
 }

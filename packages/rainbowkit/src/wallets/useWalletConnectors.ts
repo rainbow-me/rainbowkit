@@ -26,11 +26,7 @@ export interface WalletConnector extends WalletInstance {
   desktopDownloadUrl?: string;
   getDesktopUri?: () => Promise<string>;
   getQrCodeUri?: () => Promise<string>;
-}
-
-interface EventEmitterParams {
-  type: string;
-  data: string;
+  getMobileUri?: () => Promise<string>;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -60,14 +56,15 @@ export function useWalletConnectors(): WalletConnector[] {
     return result;
   }
 
-  /*   async function connectToWalletConnectModal(
-    walletId: string,
+  async function connectToWalletConnectModal(
     walletConnectModalConnector: Connector
   ) {
     try {
-      return await connectWallet(walletId, walletConnectModalConnector!);
+      return await connectWallet(walletConnectModalConnector);
     } catch (err) {
       const isUserRejection =
+        // @ts-expect-error - Web3Modal v1 error name
+        err.name === "UserRejectedRequestError" ||
         // @ts-expect-error - Web3Modal v2 error message on desktop
         err.message === "Connection request reset. Please try again.";
 
@@ -75,11 +72,30 @@ export function useWalletConnectors(): WalletConnector[] {
         throw err;
       }
     }
-  } */
+  }
 
-  const walletInstances = defaultConnectors.filter(
-    (connector) => connector.isRainbowKitConnector
+  const walletConnectModalConnector = defaultConnectors.find(
+    (connector) =>
+      connector.id === "walletConnect" &&
+      connector.isWalletConnectModalConnector
   );
+
+  const walletInstances = defaultConnectors
+    .filter(
+      (connector) =>
+        !connector.isWalletConnectModalConnector &&
+        connector.isRainbowKitConnector
+    )
+    .map((connector) => {
+      // Check if we should use the walletConnectModalConnector for this instance
+      const shouldUseWalletConnectModal =
+        connector.id === "walletConnect" && walletConnectModalConnector;
+
+      // Include the walletConnectModalConnector in the result
+      return shouldUseWalletConnectModal
+        ? { ...connector, walletConnectModalConnector }
+        : connector;
+    });
 
   const walletInstanceById = indexBy(
     walletInstances,
@@ -91,6 +107,12 @@ export function useWalletConnectors(): WalletConnector[] {
     uriConverter: (uri: string) => string
   ): Promise<string> => {
     const provider = await connector.getProvider();
+
+    if (connector.id === "coinbase") {
+      // @ts-expect-error
+      return provider.qrUrl;
+    }
+
     return new Promise<string>((resolve) =>
       // Wagmi v2 doesn't have a return type for provider yet
       // @ts-expect-error
@@ -136,8 +158,13 @@ export function useWalletConnectors(): WalletConnector[] {
       getDesktopUri: wallet.desktop?.getUri
         ? () => getWalletConnectUri(wallet, wallet.desktop!.getUri!)
         : undefined,
+      getMobileUri: wallet.mobile?.getUri
+        ? () => getWalletConnectUri(wallet, wallet.mobile?.getUri!)
+        : undefined,
       recent,
-      showWalletConnectModal: undefined,
+      showWalletConnectModal: wallet.walletConnectModalConnector
+        ? () => connectToWalletConnectModal(wallet.walletConnectModalConnector!)
+        : undefined,
     });
   });
   return walletConnectors;
