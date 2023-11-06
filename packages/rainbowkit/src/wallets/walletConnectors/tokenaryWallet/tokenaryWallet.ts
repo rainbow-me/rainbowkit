@@ -19,7 +19,7 @@ export const tokenaryWallet = ({
   installed:
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
-    typeof window.tokenary !== 'undefined',
+    window.ethereum.isTokenary,
   hidden: () => isAndroid(),
   downloadUrls: {
     ios: 'https://tokenary.io/get',
