@@ -14,6 +14,7 @@ export const content = style([
     'maxWidth': 320,
     'minWidth': 200,
     'wordBreak': 'break-word',
+    'whiteSpace': 'initial',
     ':focus': { outline: 'none' },
   }),
 ]);
