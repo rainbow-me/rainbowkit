@@ -137,6 +137,24 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const walletConnectors: WalletConnector[] = [];
 
+  const eip6963Connectors = defaultConnectors.filter((c) => {
+    const isEIP6963Connector = !c.isRainbowKitConnector && c.icon && c.uid;
+    return isEIP6963Connector;
+  });
+  console.log(eip6963Connectors);
+  eip6963Connectors.forEach((wallet) => {
+    const recent = recentWallets.includes(wallet);
+
+    walletConnectors.push({
+      ...wallet,
+      iconUrl: wallet.icon || "",
+      ready: true,
+      connect: () => connectWallet(wallet),
+      groupName: "Installed",
+      recent,
+    });
+  });
+
   groupedWallets.forEach((wallet: WalletInstance) => {
     if (!wallet) {
       return;
@@ -167,5 +185,6 @@ export function useWalletConnectors(): WalletConnector[] {
         : undefined,
     });
   });
+
   return walletConnectors;
 }

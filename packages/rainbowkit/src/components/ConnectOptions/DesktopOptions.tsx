@@ -89,7 +89,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     const sWallet = wallets.find((w) => wallet.id === w.id);
 
     const uri = await sWallet?.getQrCodeUri?.();
- 
+
     setQrCodeUri(uri);
 
     // This timeout prevents the UI from flickering if connection is instant,
@@ -384,6 +384,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             ready={wallet.ready}
                             recent={wallet.recent}
                             testId={`wallet-option-${wallet.id}`}
+                            isRainbowKitConnector={wallet.isRainbowKitConnector}
                           />
                         );
                       })}

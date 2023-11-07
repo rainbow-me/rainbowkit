@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { touchableStyles } from '../../css/touchableStyles';
-import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box } from '../Box/Box';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
-import { Text } from '../Text/Text';
-import * as styles from './ModalSelection.css';
+import React, { useContext, useState } from "react";
+import { touchableStyles } from "../../css/touchableStyles";
+import { AsyncImage } from "../AsyncImage/AsyncImage";
+import { Box } from "../Box/Box";
+import { I18nContext } from "../RainbowKitProvider/I18nContext";
+import { useCoolMode } from "../RainbowKitProvider/useCoolMode";
+import { Text } from "../Text/Text";
+import * as styles from "./ModalSelection.css";
 
 type Props = {
   onClick?: React.MouseEventHandler<HTMLElement> | undefined;
@@ -17,10 +17,11 @@ type Props = {
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
   testId?: string;
+  isRainbowKitConnector?: boolean;
 };
 
 export const ModalSelection = ({
-  as = 'button',
+  as = "button",
   currentlySelected = false,
   iconBackground,
   iconUrl,
@@ -29,6 +30,7 @@ export const ModalSelection = ({
   ready,
   recent,
   testId,
+  isRainbowKitConnector,
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
@@ -54,7 +56,7 @@ export const ModalSelection = ({
             ? [
                 styles.transparentBorder,
                 touchableStyles({
-                  active: 'shrink',
+                  active: "shrink",
                 }),
               ]
             : undefined
@@ -62,23 +64,23 @@ export const ModalSelection = ({
         disabled={currentlySelected}
         onClick={onClick}
         padding="5"
-        style={{ willChange: 'transform' }}
+        style={{ willChange: "transform" }}
         testId={testId}
         transition="default"
         width="full"
         {...(currentlySelected
           ? {
-              background: 'accentColor',
-              borderColor: 'selectedOptionBorder',
-              boxShadow: 'selectedWallet',
+              background: "accentColor",
+              borderColor: "selectedOptionBorder",
+              boxShadow: "selectedWallet",
             }
           : {
-              background: { hover: 'menuItemBackground' },
+              background: { hover: "menuItemBackground" },
             })}
         {...urlProps}
       >
         <Box
-          color={currentlySelected ? 'accentColorForeground' : 'modalText'}
+          color={currentlySelected ? "accentColorForeground" : "modalText"}
           disabled={!ready}
           fontFamily="body"
           fontSize="16"
@@ -88,7 +90,9 @@ export const ModalSelection = ({
           <Box alignItems="center" display="flex" flexDirection="row" gap="12">
             <AsyncImage
               background={iconBackground}
-              {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
+              {...(!isMouseOver && isRainbowKitConnector
+                ? { borderColor: "actionButtonBorder" }
+                : {})}
               borderRadius="6"
               height="28"
               src={iconUrl}
@@ -99,13 +103,13 @@ export const ModalSelection = ({
               {recent && (
                 <Text
                   color={
-                    currentlySelected ? 'accentColorForeground' : 'accentColor'
+                    currentlySelected ? "accentColorForeground" : "accentColor"
                   }
                   size="12"
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
                 >
-                  {i18n.t('connect.recent')}
+                  {i18n.t("connect.recent")}
                 </Text>
               )}
             </Box>
@@ -116,4 +120,4 @@ export const ModalSelection = ({
   );
 };
 
-ModalSelection.displayName = 'ModalSelection';
+ModalSelection.displayName = "ModalSelection";

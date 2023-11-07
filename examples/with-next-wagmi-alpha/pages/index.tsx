@@ -1,12 +1,21 @@
+"use client";
+
 import type { NextPage } from "next";
 import { useConnect, useSwitchChain } from "wagmi";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
+import {
+  ConnectButton,
+  useAccountModal,
+  useChainModal,
+  useConnectModal,
+} from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 
 const Home: NextPage = () => {
   const { openConnectModal } = useConnectModal();
   const { connectors, connect } = useConnect();
   const { switchChain } = useSwitchChain();
+  const { openChainModal } = useChainModal();
+  const { openAccountModal } = useAccountModal();
 
   return (
     <div
@@ -29,7 +38,21 @@ const Home: NextPage = () => {
           </button>
         );
       })}
-      <button onClick={openConnectModal}>Hey there</button>
+      <ConnectButton
+        accountStatus={{
+          largeScreen: "full",
+          smallScreen: "full",
+        }}
+        chainStatus={{
+          largeScreen: "full",
+          smallScreen: "full",
+        }}
+        showBalance={{
+          largeScreen: true,
+          smallScreen: true,
+        }}
+      />
+      <button onClick={openAccountModal}>Hey there</button>
     </div>
   );
 };

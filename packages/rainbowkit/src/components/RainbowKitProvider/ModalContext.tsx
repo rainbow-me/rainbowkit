@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { useAccount, useConfig, useSwitchChain } from "wagmi";
+import { useAccountEffect } from "wagmi";
 import { useConnectionStatus } from "../../hooks/useConnectionStatus";
 import { AccountModal } from "../AccountModal/AccountModal";
 import { ChainModal } from "../ChainModal/ChainModal";
@@ -62,9 +62,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
   } = useModalStateValue();
 
   const connectionStatus = useConnectionStatus();
-  const { chains } = useConfig();
-  const chain = { unsupported: false, id: 1 };
-  const chainSupported = !chain?.unsupported;
 
   interface CloseModalsOptions {
     keepConnectModalOpen?: boolean;
@@ -81,7 +78,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
   }
 
   const isUnauthenticated = useAuthenticationStatus() === "unauthenticated";
-  useAccount({
+
+  useAccountEffect({
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
     onDisconnect: () => closeModals(),
   });
@@ -94,9 +92,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           openAccountModal:
-            chainSupported && connectionStatus === "connected"
-              ? openAccountModal
-              : undefined,
+            connectionStatus === "connected" ? openAccountModal : undefined,
           openChainModal:
             connectionStatus === "connected" ? openChainModal : undefined,
           openConnectModal:
@@ -107,7 +103,6 @@ export function ModalProvider({ children }: ModalProviderProps) {
         }),
         [
           connectionStatus,
-          chainSupported,
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,

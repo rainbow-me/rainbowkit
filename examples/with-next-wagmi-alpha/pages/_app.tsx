@@ -6,7 +6,7 @@ import {
   RainbowKitProvider,
 } from "@rainbow-me/rainbowkit";
 import { createConfig, createConnector, http, WagmiProvider } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
+import { mainnet, optimism, sepolia, zora } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   argentWallet,
@@ -105,11 +105,13 @@ const connectors = connectorsForWallets([
 
 export const wagmiConfig = createConfig({
   chains: [mainnet, sepolia],
-  multiInjectedProviderDiscovery: false,
+  multiInjectedProviderDiscovery: true,
   connectors,
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
+    [optimism.id]: http(),
+    [zora.id]: http(),
   },
 });
 
@@ -118,7 +120,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider chains={[]}>
+        <RainbowKitProvider chains={[mainnet, sepolia, optimism, zora]}>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
