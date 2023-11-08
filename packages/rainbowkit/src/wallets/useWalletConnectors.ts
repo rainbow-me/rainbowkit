@@ -1,6 +1,5 @@
 import { Connector, useConnect } from 'wagmi';
 import { indexBy } from '../utils/indexBy';
-import { isNotNullish } from '../utils/isNotNullish';
 import {
   useInitialChainId,
   useRainbowKitChains,
@@ -11,6 +10,13 @@ import {
   getExtensionDownloadUrl,
   getMobileDownloadUrl,
 } from './downloadUrls';
+import {
+  connectorsWithRecentWallets,
+  isEIP6963Connector,
+  isRainbowKitConnector,
+  isRecentWallet,
+  rainbowKitConnectorWithWalletConnect,
+} from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
@@ -28,6 +34,8 @@ export interface WalletConnector extends WalletInstance {
   getQrCodeUri?: () => Promise<string>;
   getMobileUri?: () => Promise<string>;
 }
+
+const eip6963StrPrefix = 'eip6963';
 
 export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
@@ -74,34 +82,6 @@ export function useWalletConnectors(): WalletConnector[] {
     }
   }
 
-  const walletConnectModalConnector = defaultConnectors.find(
-    (connector) =>
-      connector.id === 'walletConnect' &&
-      connector.isWalletConnectModalConnector,
-  );
-
-  const walletInstances = defaultConnectors
-    .filter(
-      (connector) =>
-        !connector.isWalletConnectModalConnector &&
-        connector.isRainbowKitConnector,
-    )
-    .map((connector) => {
-      // Check if we should use the walletConnectModalConnector for this instance
-      const shouldUseWalletConnectModal =
-        connector.id === 'walletConnect' && walletConnectModalConnector;
-
-      // Include the walletConnectModalConnector in the result
-      return shouldUseWalletConnectModal
-        ? { ...connector, walletConnectModalConnector }
-        : connector;
-    });
-
-  const walletInstanceById = indexBy(
-    walletInstances,
-    (walletInstance) => walletInstance.id,
-  );
-
   const getWalletConnectUri = async (
     connector: Connector,
     uriConverter: (uri: string) => string,
@@ -122,45 +102,74 @@ export function useWalletConnectors(): WalletConnector[] {
     );
   };
 
+  const walletConnectModalConnector = defaultConnectors.find(
+    (connector) =>
+      connector.id === 'walletConnect' &&
+      connector.isWalletConnectModalConnector,
+  );
+
+  const rainbowKitConnectors = defaultConnectors
+    .filter(isRainbowKitConnector)
+    .filter((wallet) => !wallet.isWalletConnectModalConnector)
+    .map((wallet) =>
+      rainbowKitConnectorWithWalletConnect(
+        wallet,
+        walletConnectModalConnector!,
+      ),
+    );
+
+  const eip6963Connectors = defaultConnectors
+    .filter(isEIP6963Connector)
+    .map((connector) => {
+      // We would have to do this just to ensure that we don't mix the EIP6963 connector (id's)
+      // with rainbowkit connectors (id's). Otherwise we might run into some conflicts / issues
+      return {
+        ...connector,
+        id: `${eip6963StrPrefix}-${connector.id}`,
+        groupIndex: 0,
+      };
+    });
+
+  const combinedConnectors = [...eip6963Connectors, ...rainbowKitConnectors];
+
+  const walletInstanceById = indexBy(
+    combinedConnectors,
+    (walletInstance) => walletInstance.id,
+  );
+
   const MAX_RECENT_WALLETS = 3;
+
   const recentWallets: WalletInstance[] = getRecentWalletIds()
     .map((walletId) => walletInstanceById[walletId])
-    .filter(isNotNullish)
+    .filter(Boolean)
     .slice(0, MAX_RECENT_WALLETS);
-
-  const groupedWallets: WalletInstance[] = [
-    ...recentWallets,
-    ...walletInstances.filter(
-      (walletInstance) => !recentWallets.includes(walletInstance),
-    ),
-  ];
 
   const walletConnectors: WalletConnector[] = [];
 
-  const eip6963Connectors = defaultConnectors.filter((c) => {
-    const isEIP6963Connector = !c.isRainbowKitConnector && c.icon && c.uid;
-    return isEIP6963Connector;
-  });
-  console.log(eip6963Connectors);
-  eip6963Connectors.forEach((wallet) => {
-    const recent = recentWallets.includes(wallet);
-
-    walletConnectors.push({
-      ...wallet,
-      iconUrl: wallet.icon || '',
-      ready: true,
-      connect: () => connectWallet(wallet),
-      groupName: 'Installed',
-      recent,
-    });
+  const combinedConnectorsWithRecentWallets = connectorsWithRecentWallets({
+    wallets: [...eip6963Connectors, ...rainbowKitConnectors],
+    recentWallets: recentWallets,
   });
 
-  groupedWallets.forEach((wallet: WalletInstance) => {
-    if (!wallet) {
+  combinedConnectorsWithRecentWallets.forEach((wallet) => {
+    if (!wallet) return;
+
+    const eip6963 = isEIP6963Connector(wallet);
+
+    const recent = isRecentWallet(recentWallets, wallet.id);
+
+    if (eip6963) {
+      walletConnectors.push({
+        ...wallet,
+        iconUrl: wallet.icon || '',
+        ready: true,
+        connect: () => connectWallet(wallet),
+        groupName: 'Installed',
+        recent,
+      });
+
       return;
     }
-
-    const recent = recentWallets.includes(wallet);
 
     walletConnectors.push({
       ...wallet,

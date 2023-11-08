@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import { GetEnsNameReturnType } from 'viem';
+import { GetEnsAvatarReturnType } from 'viem/actions';
+import { useAccount, useBalance } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -19,8 +21,8 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
   balanceData: ReturnType<typeof useBalance>['data'];
-  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
-  ensName: ReturnType<typeof useEnsName>['data'];
+  ensAvatar: GetEnsAvatarReturnType | undefined;
+  ensName: GetEnsNameReturnType | undefined;
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -59,6 +61,7 @@ export function ProfileDetails({
   }
 
   const accountName = ensName ? formatENS(ensName) : formatAddress(address);
+  // @ts-ignore
   const ethBalance = balanceData?.formatted;
   const displayBalance = ethBalance
     ? abbreviateETHBalance(parseFloat(ethBalance))
@@ -113,7 +116,7 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              {balanceData && (
+              {!!balanceData && (
                 <Box textAlign="center">
                   <Text
                     as="h1"
@@ -122,6 +125,7 @@ export function ProfileDetails({
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
+                    {/* @ts-ignore */}
                     {displayBalance} {balanceData.symbol}
                   </Text>
                 </Box>

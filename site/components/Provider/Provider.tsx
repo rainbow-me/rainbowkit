@@ -9,9 +9,11 @@ import {
   omniWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import { WagmiConfig, configureChains, createConfig } from 'wagmi';
+import { http, WagmiProvider, createConfig } from 'wagmi';
 import {
+  Chain,
   arbitrum,
   base,
   bsc,
@@ -20,23 +22,14 @@ import {
   polygon,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 
-export const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
-    publicProvider(),
-  ],
-);
+export const chains = [mainnet, polygon, optimism, arbitrum, base, zora, bsc];
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'rainbowkit.com',
-  chains,
   projectId,
 });
 
@@ -45,21 +38,36 @@ const connectors = connectorsForWallets([
   {
     groupName: 'More',
     wallets: [
-      argentWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
+      argentWallet({ projectId }),
+      trustWallet({ projectId }),
+      omniWallet({ projectId }),
+      imTokenWallet({ projectId }),
+      ledgerWallet({ projectId }),
     ],
   },
 ]);
 
 const wagmiConfig = createConfig({
-  autoConnect: true,
+  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  multiInjectedProviderDiscovery: true,
   connectors,
-  publicClient,
+  transports: {
+    [mainnet.id]: http(),
+    [polygon.id]: http(),
+    [optimism.id]: http(),
+    [arbitrum.id]: http(),
+    [base.id]: http(),
+    [zora.id]: http(),
+    [bsc.id]: http(),
+  },
 });
 
+const client = new QueryClient();
+
 export function Provider({ children }) {
-  return <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>;
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  );
 }

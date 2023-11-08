@@ -521,6 +521,9 @@ importers:
       '@react-three/fiber':
         specifier: ^8.0.12
         version: 8.0.12(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(three@0.139.2)
+      '@tanstack/react-query':
+        specifier: 5.0.0-beta.35
+        version: 5.0.0-beta.35(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)
       '@vanilla-extract/css':
         specifier: 1.9.1
         version: 1.9.1

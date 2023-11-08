@@ -360,7 +360,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     {groupName ? (
                       <Box marginBottom="8" marginTop="16" marginX="6">
                         <Text
-                          color="modalTextSecondary"
+                          color={
+                            groupName === 'Installed'
+                              ? 'accentColor'
+                              : 'modalTextSecondary'
+                          }
                           size="14"
                           weight="bold"
                         >
