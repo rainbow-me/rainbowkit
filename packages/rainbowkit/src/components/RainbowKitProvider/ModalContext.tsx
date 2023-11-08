@@ -5,13 +5,13 @@ import React, {
   useContext,
   useMemo,
   useState,
-} from "react";
-import { useAccountEffect } from "wagmi";
-import { useConnectionStatus } from "../../hooks/useConnectionStatus";
-import { AccountModal } from "../AccountModal/AccountModal";
-import { ChainModal } from "../ChainModal/ChainModal";
-import { ConnectModal } from "../ConnectModal/ConnectModal";
-import { useAuthenticationStatus } from "./AuthenticationContext";
+} from 'react';
+import { useAccountEffect } from 'wagmi';
+import { useConnectionStatus } from '../../hooks/useConnectionStatus';
+import { AccountModal } from '../AccountModal/AccountModal';
+import { ChainModal } from '../ChainModal/ChainModal';
+import { ConnectModal } from '../ConnectModal/ConnectModal';
+import { useAuthenticationStatus } from './AuthenticationContext';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -77,7 +77,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
     closeChainModal();
   }
 
-  const isUnauthenticated = useAuthenticationStatus() === "unauthenticated";
+  const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
 
   useAccountEffect({
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
@@ -92,12 +92,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           openAccountModal:
-            connectionStatus === "connected" ? openAccountModal : undefined,
+            connectionStatus === 'connected' ? openAccountModal : undefined,
           openChainModal:
-            connectionStatus === "connected" ? openChainModal : undefined,
+            connectionStatus === 'connected' ? openChainModal : undefined,
           openConnectModal:
-            connectionStatus === "disconnected" ||
-            connectionStatus === "unauthenticated"
+            connectionStatus === 'disconnected' ||
+            connectionStatus === 'unauthenticated'
               ? openConnectModal
               : undefined,
         }),
@@ -109,7 +109,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openAccountModal,
           openChainModal,
           openConnectModal,
-        ]
+        ],
       )}
     >
       {children}

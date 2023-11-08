@@ -1,6 +1,6 @@
 export function indexBy<Item>(
   items: Item[],
-  getKey: (item: Item) => string
+  getKey: (item: Item) => string,
 ): Record<string, Item> {
   const indexedItems: Record<string, Item> = {};
 

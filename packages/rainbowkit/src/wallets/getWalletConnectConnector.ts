@@ -1,11 +1,12 @@
-import { walletConnect } from "wagmi/connectors";
-import { createConnector, CreateConnectorFn } from "wagmi";
-import { CreateConnector, WalletOptionsParams } from "./Wallet";
+import { createConnector } from 'wagmi';
+import { CreateConnectorFn } from 'wagmi';
+import { walletConnect } from 'wagmi/connectors';
+import { CreateConnector, WalletOptionsParams } from './Wallet';
 
 // Creates a WalletConnect connector with the given project ID and additional options.
 function createWalletConnectConnector(
   projectId: string,
-  walletOptions: WalletOptionsParams = {}
+  walletOptions: WalletOptionsParams = {},
 ): CreateConnectorFn {
   // Create and configure the WalletConnect connector with project ID and options.
   return createConnector((config) => ({
@@ -26,7 +27,7 @@ export function getWalletConnectConnector({
   // Check if the projectId is provided; if not, throw an error.
   if (!projectId) {
     throw new Error(
-      "No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure"
+      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
     );
   }
 

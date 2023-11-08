@@ -1,10 +1,10 @@
-import { InstructionStepName, Wallet } from "../../Wallet";
-import { getInjectedConnector } from "../../getInjectedConnector";
-import { getWalletConnectConnector } from "../../getWalletConnectConnector";
+import { InstructionStepName, Wallet } from '../../Wallet';
+import { getInjectedConnector } from '../../getInjectedConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
-    safepalProvider: Window["ethereum"];
+    safepalProvider: Window['ethereum'];
   }
 }
 
@@ -12,8 +12,8 @@ export interface SafepalWalletOptions {
   projectId: string;
 }
 
-function getSafepalWalletInjectedProvider(): Window["ethereum"] {
-  const isSafePalWallet = (ethereum: NonNullable<Window["ethereum"]> | any) => {
+function getSafepalWalletInjectedProvider(): Window['ethereum'] {
+  const isSafePalWallet = (ethereum: NonNullable<Window['ethereum']> | any) => {
     // Identify if SafePal Wallet injected provider is present.
     const safepalWallet = !!ethereum.isSafePal;
 
@@ -21,7 +21,7 @@ function getSafepalWalletInjectedProvider(): Window["ethereum"] {
   };
 
   const injectedProviderExist =
-    typeof window !== "undefined" && typeof window.ethereum !== "undefined";
+    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
 
   // No injected providers exist.
   if (!injectedProviderExist) {
@@ -33,8 +33,8 @@ function getSafepalWalletInjectedProvider(): Window["ethereum"] {
   // without updating the ethereum.providers array. To prevent issues where
   // the TW connector does not recognize the provider when TW extension is installed,
   // we begin our checks by relying on TW's global object.
-  if (window["safepalProvider"]) {
-    return window["safepalProvider"];
+  if (window['safepalProvider']) {
+    return window['safepalProvider'];
   }
 
   // SafePal Wallet was injected into window.ethereum.
@@ -74,22 +74,22 @@ export const safepalWallet = ({ projectId }: SafepalWalletOptions): Wallet => {
     qrConnector = {
       getUri: getUriQR,
       instructions: {
-        learnMoreUrl: "https://safepal.com/",
+        learnMoreUrl: 'https://safepal.com/',
         steps: [
           {
-            description: "wallet_connectors.safepal.qr_code.step1.description",
-            step: "install" as InstructionStepName,
-            title: "wallet_connectors.safepal.qr_code.step1.title",
+            description: 'wallet_connectors.safepal.qr_code.step1.description',
+            step: 'install' as InstructionStepName,
+            title: 'wallet_connectors.safepal.qr_code.step1.title',
           },
           {
-            description: "wallet_connectors.safepal.qr_code.step2.description",
-            step: "create" as InstructionStepName,
-            title: "wallet_connectors.safepal.qr_code.step2.title",
+            description: 'wallet_connectors.safepal.qr_code.step2.description',
+            step: 'create' as InstructionStepName,
+            title: 'wallet_connectors.safepal.qr_code.step2.title',
           },
           {
-            description: "wallet_connectors.safepal.qr_code.step3.description",
-            step: "scan" as InstructionStepName,
-            title: "wallet_connectors.safepal.qr_code.step3.title",
+            description: 'wallet_connectors.safepal.qr_code.step3.description',
+            step: 'scan' as InstructionStepName,
+            title: 'wallet_connectors.safepal.qr_code.step3.title',
           },
         ],
       },
@@ -98,46 +98,46 @@ export const safepalWallet = ({ projectId }: SafepalWalletOptions): Wallet => {
 
   const extensionConnector = {
     instructions: {
-      learnMoreUrl: "https://www.safepal.com/download?product=2",
+      learnMoreUrl: 'https://www.safepal.com/download?product=2',
       steps: [
         {
-          description: "wallet_connectors.safepal.extension.step1.description",
-          step: "install" as InstructionStepName,
-          title: "wallet_connectors.safepal.extension.step1.title",
+          description: 'wallet_connectors.safepal.extension.step1.description',
+          step: 'install' as InstructionStepName,
+          title: 'wallet_connectors.safepal.extension.step1.title',
         },
         {
-          description: "wallet_connectors.safepal.extension.step2.description",
-          step: "create" as InstructionStepName,
-          title: "wallet_connectors.safepal.extension.step2.title",
+          description: 'wallet_connectors.safepal.extension.step2.description',
+          step: 'create' as InstructionStepName,
+          title: 'wallet_connectors.safepal.extension.step2.title',
         },
         {
-          description: "wallet_connectors.safepal.extension.step3.description",
-          step: "refresh" as InstructionStepName,
-          title: "wallet_connectors.safepal.extension.step3.title",
+          description: 'wallet_connectors.safepal.extension.step3.description',
+          step: 'refresh' as InstructionStepName,
+          title: 'wallet_connectors.safepal.extension.step3.title',
         },
       ],
     },
   };
 
   return {
-    id: "safepal",
-    name: "SafePal Wallet",
-    iconUrl: async () => (await import("./safepalWallet.svg")).default,
+    id: 'safepal',
+    name: 'SafePal Wallet',
+    iconUrl: async () => (await import('./safepalWallet.svg')).default,
     // Note that we never resolve `installed` to `false` because the
     // SafePal Wallet provider falls back to other connection methods if
     // the injected connector isn't available
     installed: isSafePalWalletInjected,
-    iconAccent: "#3375BB",
-    iconBackground: "#fff",
+    iconAccent: '#3375BB',
+    iconBackground: '#fff',
     downloadUrls: {
       android:
-        "https://play.google.com/store/apps/details?id=io.safepal.wallet&referrer=utm_source%3Drainbowkit%26utm_medium%3Ddisplay%26utm_campaign%3Ddownload",
-      ios: "https://apps.apple.com/app/apple-store/id1548297139?pt=122504219&ct=rainbowkit&mt=8",
-      mobile: "https://www.safepal.com/en/download",
-      qrCode: "https://www.safepal.com/en/download",
+        'https://play.google.com/store/apps/details?id=io.safepal.wallet&referrer=utm_source%3Drainbowkit%26utm_medium%3Ddisplay%26utm_campaign%3Ddownload',
+      ios: 'https://apps.apple.com/app/apple-store/id1548297139?pt=122504219&ct=rainbowkit&mt=8',
+      mobile: 'https://www.safepal.com/en/download',
+      qrCode: 'https://www.safepal.com/en/download',
       chrome:
-        "https://chrome.google.com/webstore/detail/safepal-extension-wallet/lgmpcpglpngdoalbgeoldeajfclnhafa",
-      browserExtension: "https://www.safepal.com/download?product=2",
+        'https://chrome.google.com/webstore/detail/safepal-extension-wallet/lgmpcpglpngdoalbgeoldeajfclnhafa',
+      browserExtension: 'https://www.safepal.com/download?product=2',
     },
     mobile: mobileConnector,
     ...(qrConnector ? qrConnector : {}),

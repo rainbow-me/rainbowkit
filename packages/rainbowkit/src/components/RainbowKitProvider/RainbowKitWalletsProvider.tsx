@@ -1,5 +1,5 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
-import { Wallet } from "../../wallets/Wallet";
+import React, { ReactNode, createContext, useContext, useMemo } from 'react';
+import { Wallet } from '../../wallets/Wallet';
 
 interface RainbowKitWalletsContextValue {
   wallets: Wallet[];

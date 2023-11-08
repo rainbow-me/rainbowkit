@@ -1,17 +1,17 @@
-import { isAndroid } from "../../../utils/isMobile";
-import { Wallet } from "../../Wallet";
+import { isAndroid } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
 import {
   getDefaultInjectedConnector,
   hasInjectedProvider,
-} from "../../getInjectedConnector";
-import { getWalletConnectConnector } from "../../getWalletConnectConnector";
+} from '../../getInjectedConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface BifrostWalletOptions {
   projectId: string;
 }
 
 export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
-  const isBifrostInjected = hasInjectedProvider("isBifrost");
+  const isBifrostInjected = hasInjectedProvider('isBifrost');
 
   const shouldUseWalletConnect = !isBifrostInjected;
 
@@ -22,16 +22,16 @@ export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
   };
 
   return {
-    id: "bifrostWallet",
-    name: "Bifrost Wallet",
-    iconUrl: async () => (await import("./bifrostWallet.svg")).default,
-    iconBackground: "#fff",
+    id: 'bifrostWallet',
+    name: 'Bifrost Wallet',
+    iconUrl: async () => (await import('./bifrostWallet.svg')).default,
+    iconBackground: '#fff',
     installed: !shouldUseWalletConnect ? isBifrostInjected : undefined,
     downloadUrls: {
       android:
-        "https://play.google.com/store/apps/details?id=com.bifrostwallet.app",
-      ios: "https://apps.apple.com/us/app/bifrost-wallet/id1577198351",
-      qrCode: "https://bifrostwallet.com/#download-app",
+        'https://play.google.com/store/apps/details?id=com.bifrostwallet.app',
+      ios: 'https://apps.apple.com/us/app/bifrost-wallet/id1577198351',
+      qrCode: 'https://bifrostwallet.com/#download-app',
     },
     mobile: {
       getUri: shouldUseWalletConnect ? getUri : undefined,
@@ -41,25 +41,25 @@ export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
           getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl:
-              "https://support.bifrostwallet.com/en/articles/6886814-how-to-use-walletconnect",
+              'https://support.bifrostwallet.com/en/articles/6886814-how-to-use-walletconnect',
             steps: [
               {
                 description:
-                  "wallet_connectors.bifrost.qr_code.step1.description",
-                step: "install",
-                title: "wallet_connectors.bifrost.qr_code.step1.title",
+                  'wallet_connectors.bifrost.qr_code.step1.description',
+                step: 'install',
+                title: 'wallet_connectors.bifrost.qr_code.step1.title',
               },
               {
                 description:
-                  "wallet_connectors.bifrost.qr_code.step2.description",
-                step: "create",
-                title: "wallet_connectors.bifrost.qr_code.step2.title",
+                  'wallet_connectors.bifrost.qr_code.step2.description',
+                step: 'create',
+                title: 'wallet_connectors.bifrost.qr_code.step2.title',
               },
               {
                 description:
-                  "wallet_connectors.bifrost.qr_code.step3.description",
-                step: "scan",
-                title: "wallet_connectors.bifrost.qr_code.step3.title",
+                  'wallet_connectors.bifrost.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.bifrost.qr_code.step3.title',
               },
             ],
           },

@@ -1,34 +1,34 @@
-import { describe, expect, it } from "vitest";
-import { connectorsForWallets } from "..";
-import { walletConnect } from "wagmi/connectors";
-import { injectedWallet } from "./walletConnectors/injectedWallet/injectedWallet";
-import { CreateConnectorFn } from "wagmi";
-import { walletConnectWallet } from "./walletConnectors/walletConnectWallet/walletConnectWallet";
+import { describe, expect, it } from 'vitest';
+import { CreateConnectorFn } from 'wagmi';
+import { walletConnect } from 'wagmi/connectors';
+import { connectorsForWallets } from '..';
+import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
+import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 const isValidConnector = (connector: CreateConnectorFn): boolean => {
-  if (typeof connector !== "function") {
-    throw new Error("Wallet instance is not a function");
+  if (typeof connector !== 'function') {
+    throw new Error('Wallet instance is not a function');
   }
 
   return !!connector;
 };
 
-const exampleProjectId = "21fef48091f12692cad574a6f7753643";
+const exampleProjectId = '21fef48091f12692cad574a6f7753643';
 
-describe("connectorsForWallets", () => {
-  describe("injected fallback", () => {
-    it("should return wallet connect and injected wallet connectors", () => {
+describe('connectorsForWallets', () => {
+  describe('injected fallback', () => {
+    it('should return wallet connect and injected wallet connectors', () => {
       const connectors = connectorsForWallets([
         {
-          groupName: "Test Group 1",
+          groupName: 'Test Group 1',
           wallets: [
             {
               createConnector: () =>
                 walletConnect({ projectId: exampleProjectId }),
-              iconBackground: "#fff",
-              iconUrl: "/test.png",
-              id: "test-walletconnect-wallet",
-              name: "Test WalletConnect Wallet",
+              iconBackground: '#fff',
+              iconUrl: '/test.png',
+              id: 'test-walletconnect-wallet',
+              name: 'Test WalletConnect Wallet',
             },
             injectedWallet(),
           ],
@@ -46,17 +46,17 @@ describe("connectorsForWallets", () => {
     it("should not return connector if 'hidden' returns true", () => {
       const connectors = connectorsForWallets([
         {
-          groupName: "Test Group 1",
+          groupName: 'Test Group 1',
           wallets: [
             {
               createConnector: () =>
                 walletConnect({ projectId: exampleProjectId }),
               hidden: () => true,
-              iconBackground: "#fff",
-              iconUrl: "/test.png",
-              id: "test-not-installed-wallet",
+              iconBackground: '#fff',
+              iconUrl: '/test.png',
+              id: 'test-not-installed-wallet',
               installed: false,
-              name: "Test Not Installed Wallet",
+              name: 'Test Not Installed Wallet',
             },
           ],
         },
@@ -65,12 +65,12 @@ describe("connectorsForWallets", () => {
       expect(connectors.length).toBe(0);
     });
 
-    it("should throw if projectId is invalid to wallet connect connector", () => {
+    it('should throw if projectId is invalid to wallet connect connector', () => {
       // You can also check the specific error message part, for example:
       expect(() => {
         connectorsForWallets([
           {
-            groupName: "Test Group 1",
+            groupName: 'Test Group 1',
             wallets: [
               // @ts-expect-error
               walletConnectWallet({ projectId: undefined }),
@@ -78,7 +78,7 @@ describe("connectorsForWallets", () => {
           },
         ]);
       }).toThrow(
-        "No projectId found. Every dApp must now provide a WalletConnect Cloud projectId"
+        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId',
       );
     });
   });

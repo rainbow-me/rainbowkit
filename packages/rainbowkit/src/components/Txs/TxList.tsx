@@ -1,22 +1,22 @@
-import React, { useContext } from "react";
-import { useAccount } from "wagmi";
-import { touchableStyles } from "../../css/touchableStyles";
-import { useClearRecentTransactions } from "../../transactions/useClearRecentTransactions";
-import { useRecentTransactions } from "../../transactions/useRecentTransactions";
-import { chainToExplorerUrl } from "../../utils/chainToExplorerUrl";
-import { isMobile } from "../../utils/isMobile";
-import { Box } from "../Box/Box";
-import { ExternalLinkIcon } from "../Icons/ExternalLink";
-import { AppContext } from "../RainbowKitProvider/AppContext";
+import React, { useContext } from 'react';
+import { useAccount } from 'wagmi';
+import { touchableStyles } from '../../css/touchableStyles';
+import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
+import { useRecentTransactions } from '../../transactions/useRecentTransactions';
+import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
+import { isMobile } from '../../utils/isMobile';
+import { Box } from '../Box/Box';
+import { ExternalLinkIcon } from '../Icons/ExternalLink';
+import { AppContext } from '../RainbowKitProvider/AppContext';
 
-import { I18nContext } from "../RainbowKitProvider/I18nContext";
-import { Text } from "../Text/Text";
-import { TxItem } from "./TxItem";
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { Text } from '../Text/Text';
+import { TxItem } from './TxItem';
 
 const NUMBER_OF_VISIBLE_TXS = 3;
 
 interface TxListProps {
-  address: ReturnType<typeof useAccount>["address"];
+  address: ReturnType<typeof useAccount>['address'];
 }
 
 export function TxList({ address }: TxListProps) {
@@ -39,21 +39,21 @@ export function TxList({ address }: TxListProps) {
         gap="10"
         paddingBottom="2"
         paddingTop="16"
-        paddingX={mobile ? "8" : "18"}
+        paddingX={mobile ? '8' : '18'}
       >
         {hasTransactions && (
           <Box
-            paddingBottom={mobile ? "4" : "0"}
+            paddingBottom={mobile ? '4' : '0'}
             paddingTop="8"
-            paddingX={mobile ? "12" : "6"}
+            paddingX={mobile ? '12' : '6'}
           >
             <Box display="flex" justifyContent="space-between">
               <Text
                 color="modalTextSecondary"
-                size={mobile ? "16" : "14"}
+                size={mobile ? '16' : '14'}
                 weight="semibold"
               >
-                {i18n.t("profile.transactions.recent.title")}
+                {i18n.t('profile.transactions.recent.title')}
               </Text>
               <Box
                 style={{
@@ -66,22 +66,22 @@ export function TxList({ address }: TxListProps) {
                 <Box
                   as="button"
                   background={{
-                    hover: "profileForeground",
+                    hover: 'profileForeground',
                   }}
                   borderRadius="actionButton"
-                  className={touchableStyles({ active: "shrink" })}
+                  className={touchableStyles({ active: 'shrink' })}
                   onClick={clearRecentTransactions}
-                  paddingX={mobile ? "8" : "12"}
-                  paddingY={mobile ? "4" : "5"}
+                  paddingX={mobile ? '8' : '12'}
+                  paddingY={mobile ? '4' : '5'}
                   transition="default"
                   type="button"
                 >
                   <Text
                     color="modalTextSecondary"
-                    size={mobile ? "16" : "14"}
+                    size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {i18n.t("profile.transactions.clear.label")}
+                    {i18n.t('profile.transactions.clear.label')}
                   </Text>
                 </Box>
               </Box>
@@ -93,17 +93,17 @@ export function TxList({ address }: TxListProps) {
             visibleTxs.map((tx) => <TxItem key={tx.hash} tx={tx} />)
           ) : (
             <>
-              <Box padding={mobile ? "12" : "8"}>
+              <Box padding={mobile ? '12' : '8'}>
                 <Text
                   color="modalTextDim"
-                  size={mobile ? "16" : "14"}
-                  weight={mobile ? "medium" : "bold"}
+                  size={mobile ? '16' : '14'}
+                  weight={mobile ? 'medium' : 'bold'}
                 >
                   {appName
-                    ? i18n.t("profile.transactions.description", {
+                    ? i18n.t('profile.transactions.description', {
                         appName,
                       })
-                    : i18n.t("profile.transactions.description_fallback")}
+                    : i18n.t('profile.transactions.description_fallback')}
                 </Text>
               </Box>
               {mobile && (
@@ -119,13 +119,13 @@ export function TxList({ address }: TxListProps) {
         </Box>
       </Box>
       {explorerLink && (
-        <Box paddingBottom="18" paddingX={mobile ? "8" : "18"}>
+        <Box paddingBottom="18" paddingX={mobile ? '8' : '18'}>
           <Box
             alignItems="center"
             as="a"
-            background={{ hover: "profileForeground" }}
+            background={{ hover: 'profileForeground' }}
             borderRadius="menuButton"
-            className={touchableStyles({ active: "shrink" })}
+            className={touchableStyles({ active: 'shrink' })}
             color="modalTextDim"
             display="flex"
             flexDirection="row"
@@ -134,19 +134,19 @@ export function TxList({ address }: TxListProps) {
             paddingX="8"
             paddingY="12"
             rel="noreferrer noopener"
-            style={{ willChange: "transform" }}
+            style={{ willChange: 'transform' }}
             target="_blank"
             transition="default"
             width="full"
-            {...(mobile ? { paddingLeft: "12" } : {})}
+            {...(mobile ? { paddingLeft: '12' } : {})}
           >
             <Text
               color="modalText"
               font="body"
-              size={mobile ? "16" : "14"}
-              weight={mobile ? "semibold" : "bold"}
+              size={mobile ? '16' : '14'}
+              weight={mobile ? 'semibold' : 'bold'}
             >
-              {i18n.t("profile.explorer.label")}
+              {i18n.t('profile.explorer.label')}
             </Text>
             <ExternalLinkIcon />
           </Box>

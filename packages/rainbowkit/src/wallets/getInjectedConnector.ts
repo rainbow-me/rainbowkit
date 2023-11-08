@@ -1,12 +1,12 @@
-import { createConnector } from "wagmi";
-import { injected } from "wagmi/connectors";
-import { CreateConnector, WalletOptionsParams } from "./Wallet";
+import { createConnector } from 'wagmi';
+import { injected } from 'wagmi/connectors';
+import { CreateConnector, WalletOptionsParams } from './Wallet';
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true
  */
 function getExplicitInjectedProvider(flag: string) {
-  if (typeof window === "undefined" || typeof window.ethereum === "undefined")
+  if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
     return;
   const providers = window.ethereum.providers;
   return providers
@@ -24,12 +24,12 @@ export function hasInjectedProvider(flag: string): boolean {
  * Returns an injected provider that favors the flag match, but falls back to window.ethereum
  */
 function getInjectedProvider(flag: string) {
-  if (typeof window === "undefined" || typeof window.ethereum === "undefined")
+  if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
     return;
   const providers = window.ethereum.providers;
   const provider = getExplicitInjectedProvider(flag);
   if (provider) return provider;
-  else if (typeof providers !== "undefined" && providers.length > 0)
+  else if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
   else return window.ethereum;
 }

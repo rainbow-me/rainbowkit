@@ -5,13 +5,13 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-} from "react";
-import { useAccount, useAccountEffect } from "wagmi";
+} from 'react';
+import { useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
-  | "loading"
-  | "unauthenticated"
-  | "authenticated";
+  | 'loading'
+  | 'unauthenticated'
+  | 'authenticated';
 
 export interface AuthenticationAdapter<Message> {
   getNonce: () => Promise<string>;
@@ -32,13 +32,13 @@ export interface AuthenticationConfig<Message> {
 
 // Right now this function only serves to infer the generic Message type
 export function createAuthenticationAdapter<Message>(
-  adapter: AuthenticationAdapter<Message>
+  adapter: AuthenticationAdapter<Message>,
 ) {
   return adapter;
 }
 
 const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
-  null
+  null,
 );
 
 interface RainbowKitAuthenticationProviderProps<Message>
@@ -74,7 +74,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     if (onceRef.current) return;
     onceRef.current = true;
 
-    if (isDisconnected && status === "authenticated") {
+    if (isDisconnected && status === 'authenticated') {
       adapter.signOut();
     }
   }, [status, adapter, isDisconnected]);
@@ -88,13 +88,13 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   // Ensure to turn off the "change" event listener for cleanup.
   // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (connector && status === "authenticated") {
+    if (connector && status === 'authenticated') {
       // Attach the event listener when status is 'authenticated'
-      connector.emitter.on("change", handleChangedAccount);
+      connector.emitter.on('change', handleChangedAccount);
 
       // Cleanup function to remove the event listener
       return () => {
-        connector.emitter.off("change", handleChangedAccount);
+        connector.emitter.off('change', handleChangedAccount);
       };
     }
   }, [connector, status]);
@@ -103,7 +103,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     <AuthenticationContext.Provider
       value={useMemo(
         () => (enabled ? { adapter, status } : null),
-        [enabled, adapter, status]
+        [enabled, adapter, status],
       )}
     >
       {children}
@@ -115,7 +115,7 @@ export function useAuthenticationAdapter() {
   const { adapter } = useContext(AuthenticationContext) ?? {};
 
   if (!adapter) {
-    throw new Error("No authentication adapter found");
+    throw new Error('No authentication adapter found');
   }
 
   return adapter;

@@ -1,11 +1,11 @@
-import { CreateConnectorFn, Connector } from "wagmi";
+import { Connector, CreateConnectorFn } from 'wagmi';
 
 export type InstructionStepName =
-  | "install"
-  | "create"
-  | "scan"
-  | "connect"
-  | "refresh";
+  | 'install'
+  | 'create'
+  | 'scan'
+  | 'connect'
+  | 'refresh';
 
 type RainbowKitConnector = {
   mobile?: {
@@ -77,11 +77,11 @@ export type WalletList = { groupName: string; wallets: Wallet[] }[];
 
 export type WalletOptionsParams = Record<string, any>;
 export type CreateConnector = (
-  walletOptions?: Record<string, any>
+  walletOptions?: Record<string, any>,
 ) => CreateConnectorFn;
 
 export type WalletInstance = Connector &
-  Omit<Wallet, "createConnector" | "hidden"> & {
+  Omit<Wallet, 'createConnector' | 'hidden'> & {
     index: number;
     groupIndex: number;
     groupName: string;

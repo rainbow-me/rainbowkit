@@ -1,21 +1,21 @@
-import { WalletInstance } from "./Wallet";
+import { WalletInstance } from './Wallet';
 
 export const groupedWallets = (
   recentWallets: WalletInstance[],
-  walletInstances: WalletInstance[]
+  walletInstances: WalletInstance[],
 ) => {
   return [
     ...recentWallets,
     ...walletInstances.filter(
       (walletInstance) =>
-        !recentWallets.some((wallet) => wallet.id === walletInstance.id)
+        !recentWallets.some((wallet) => wallet.id === walletInstance.id),
     ),
   ];
 };
 
 export const isRecentWallet = (
   recentWallets: WalletInstance[],
-  walletId: string
+  walletId: string,
 ) => {
   return recentWallets.some((recentWallet) => recentWallet.id === walletId);
 };
@@ -35,11 +35,11 @@ export const isEIP6963Connector = (wallet: WalletInstance) => {
 
 export const rainbowKitConnectorWithWalletConnect = (
   wallet: WalletInstance,
-  walletConnectModalConnector: WalletInstance
+  walletConnectModalConnector: WalletInstance,
 ) => {
   // Check if we should use the walletConnectModalConnector for this instance
   const shouldUseWalletConnectModal =
-    wallet.id === "walletConnect" && walletConnectModalConnector;
+    wallet.id === 'walletConnect' && walletConnectModalConnector;
 
   // Include the walletConnectModalConnector in the result
   return shouldUseWalletConnectModal

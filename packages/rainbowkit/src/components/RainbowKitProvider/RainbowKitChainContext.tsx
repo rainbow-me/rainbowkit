@@ -1,5 +1,5 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
-import { provideRainbowKitChains } from "./provideRainbowKitChains";
+import React, { ReactNode, createContext, useContext, useMemo } from 'react';
+import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain {
   id: number;
@@ -34,9 +34,9 @@ export function RainbowKitChainProvider({
         () => ({
           chains: provideRainbowKitChains(chains),
           initialChainId:
-            typeof initialChain === "number" ? initialChain : initialChain?.id,
+            typeof initialChain === 'number' ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain]
+        [chains, initialChain],
       )}
     >
       {children}

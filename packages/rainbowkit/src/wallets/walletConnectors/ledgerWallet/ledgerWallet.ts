@@ -1,27 +1,27 @@
-import { isAndroid } from "../../../utils/isMobile";
-import { Wallet } from "../../Wallet";
-import { getWalletConnectConnector } from "../../getWalletConnectConnector";
+import { isAndroid } from '../../../utils/isMobile';
+import { Wallet } from '../../Wallet';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface LedgerWalletOptions {
   projectId: string;
 }
 
 export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
-  id: "ledger",
-  iconBackground: "#000",
-  iconAccent: "#000",
-  name: "Ledger",
+  id: 'ledger',
+  iconBackground: '#000',
+  iconAccent: '#000',
+  name: 'Ledger',
   installed: true,
-  iconUrl: async () => (await import("./ledgerWallet.svg")).default,
+  iconUrl: async () => (await import('./ledgerWallet.svg')).default,
   downloadUrls: {
-    android: "https://play.google.com/store/apps/details?id=com.ledger.live",
-    ios: "https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700",
-    mobile: "https://www.ledger.com/ledger-live",
-    qrCode: "https://r354.adj.st/?adj_t=t2esmlk",
-    windows: "https://www.ledger.com/ledger-live/download",
-    macos: "https://www.ledger.com/ledger-live/download",
-    linux: "https://www.ledger.com/ledger-live/download",
-    desktop: "https://www.ledger.com/ledger-live",
+    android: 'https://play.google.com/store/apps/details?id=com.ledger.live',
+    ios: 'https://apps.apple.com/us/app/ledger-live-web3-wallet/id1361671700',
+    mobile: 'https://www.ledger.com/ledger-live',
+    qrCode: 'https://r354.adj.st/?adj_t=t2esmlk',
+    windows: 'https://www.ledger.com/ledger-live/download',
+    macos: 'https://www.ledger.com/ledger-live/download',
+    linux: 'https://www.ledger.com/ledger-live/download',
+    desktop: 'https://www.ledger.com/ledger-live',
   },
   mobile: {
     getUri: (uri: string) => {
@@ -36,22 +36,22 @@ export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
     },
     instructions: {
       learnMoreUrl:
-        "https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live",
+        'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
       steps: [
         {
-          description: "wallet_connectors.ledger.desktop.step1.description",
-          step: "install",
-          title: "wallet_connectors.ledger.desktop.step1.title",
+          description: 'wallet_connectors.ledger.desktop.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.ledger.desktop.step1.title',
         },
         {
-          description: "wallet_connectors.ledger.desktop.step2.description",
-          step: "create",
-          title: "wallet_connectors.ledger.desktop.step2.title",
+          description: 'wallet_connectors.ledger.desktop.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.ledger.desktop.step2.title',
         },
         {
-          description: "wallet_connectors.ledger.desktop.step3.description",
-          step: "connect",
-          title: "wallet_connectors.ledger.desktop.step3.title",
+          description: 'wallet_connectors.ledger.desktop.step3.description',
+          step: 'connect',
+          title: 'wallet_connectors.ledger.desktop.step3.title',
         },
       ],
     },
@@ -62,22 +62,22 @@ export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
     },
     instructions: {
       learnMoreUrl:
-        "https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live",
+        'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
       steps: [
         {
-          description: "wallet_connectors.ledger.qr_code.step1.description",
-          step: "install",
-          title: "wallet_connectors.ledger.qr_code.step1.title",
+          description: 'wallet_connectors.ledger.qr_code.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.ledger.qr_code.step1.title',
         },
         {
-          description: "wallet_connectors.ledger.qr_code.step2.description",
-          step: "create",
-          title: "wallet_connectors.ledger.qr_code.step2.title",
+          description: 'wallet_connectors.ledger.qr_code.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.ledger.qr_code.step2.title',
         },
         {
-          description: "wallet_connectors.ledger.qr_code.step3.description",
-          step: "scan",
-          title: "wallet_connectors.ledger.qr_code.step3.title",
+          description: 'wallet_connectors.ledger.qr_code.step3.description',
+          step: 'scan',
+          title: 'wallet_connectors.ledger.qr_code.step3.title',
         },
       ],
     },

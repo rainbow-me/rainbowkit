@@ -1,13 +1,10 @@
+import { mainnet } from 'viem/chains';
 import { useEnsName } from 'wagmi';
-import { useMainnet } from './useMainnet';
 
 export function useMainnetEnsName(address: string | undefined) {
-  const { chainId, enabled } = useMainnet();
-
   const { data: ensName } = useEnsName({
-    address,
-    chainId,
-    enabled,
+    chainId: mainnet.id,
+    address: address as `0x`,
   });
 
   return ensName;

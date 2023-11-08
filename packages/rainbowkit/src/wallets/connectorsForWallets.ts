@@ -1,7 +1,7 @@
-import { CreateConnectorFn } from "wagmi";
-import { isHexString } from "../utils/colors";
-import { omitUndefinedValues } from "../utils/omitUndefinedValues";
-import { Wallet, WalletList, WalletOptionsParams } from "./Wallet";
+import { CreateConnectorFn } from 'wagmi';
+import { isHexString } from '../utils/colors';
+import { omitUndefinedValues } from '../utils/omitUndefinedValues';
+import { Wallet, WalletList, WalletOptionsParams } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -10,7 +10,7 @@ interface WalletListItem extends Wallet {
 }
 
 export const connectorsForWallets = (
-  walletList: WalletList
+  walletList: WalletList,
 ): CreateConnectorFn[] => {
   let index = -1;
 
@@ -33,7 +33,7 @@ export const connectorsForWallets = (
       // guard against non-hex values for `iconAccent`
       if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
         throw new Error(
-          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
+          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
         );
       }
 
@@ -44,7 +44,7 @@ export const connectorsForWallets = (
         index,
       };
 
-      if (typeof wallet.hidden === "function") {
+      if (typeof wallet.hidden === 'function') {
         potentiallyHiddenWallets.push(walletListItem);
       } else {
         visibleWallets.push(walletListItem);
@@ -61,7 +61,7 @@ export const connectorsForWallets = (
 
   walletListItems.forEach(
     ({ createConnector, groupIndex, groupName, hidden, ...walletMeta }) => {
-      if (typeof hidden === "function") {
+      if (typeof hidden === 'function') {
         // Run the function to check if the wallet needs to be hidden
         const isHidden = hidden();
 
@@ -81,20 +81,20 @@ export const connectorsForWallets = (
         });
       };
 
-      const isWalletConnectConnector = walletMeta.id === "walletConnect";
+      const isWalletConnectConnector = walletMeta.id === 'walletConnect';
 
       if (isWalletConnectConnector) {
         connectors.push(
           createConnector(
-            params({ showQrModal: true, isWalletConnectModalConnector: true })
-          )
+            params({ showQrModal: true, isWalletConnectModalConnector: true }),
+          ),
         );
       }
 
       const connector = createConnector(params());
 
       connectors.push(connector);
-    }
+    },
   );
 
   return connectors;

@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
-import { Box, BoxProps } from "../Box/Box";
-import { AsyncImageSrc, useAsyncImage } from "./useAsyncImage";
+import React, { useReducer } from 'react';
+import { Box, BoxProps } from '../Box/Box';
+import { AsyncImageSrc, useAsyncImage } from './useAsyncImage';
 
 type CustomBorderColor = {
   custom: string;
@@ -8,12 +8,12 @@ type CustomBorderColor = {
 interface AsyncImageProps {
   alt?: string;
   src: string | AsyncImageSrc | undefined;
-  width: BoxProps["width"] | number;
-  height: BoxProps["height"] | number;
+  width: BoxProps['width'] | number;
+  height: BoxProps['height'] | number;
   background?: string;
-  borderRadius?: BoxProps["borderRadius"];
-  borderColor?: BoxProps["borderColor"] | CustomBorderColor;
-  boxShadow?: BoxProps["boxShadow"];
+  borderRadius?: BoxProps['borderRadius'];
+  borderColor?: BoxProps['borderColor'] | CustomBorderColor;
+  boxShadow?: BoxProps['boxShadow'];
   testId?: string;
 }
 
@@ -32,7 +32,7 @@ export function AsyncImage({
   const isRemoteImage = src && /^http/.test(src);
   const [isRemoteImageLoaded, setRemoteImageLoaded] = useReducer(
     () => true,
-    false
+    false,
   );
 
   return (
@@ -40,16 +40,16 @@ export function AsyncImage({
       aria-label={alt}
       borderRadius={borderRadius}
       boxShadow={boxShadow}
-      height={typeof height === "string" ? height : undefined}
+      height={typeof height === 'string' ? height : undefined}
       overflow="hidden"
       position="relative"
       role="img"
       style={{
         background,
-        height: typeof height === "number" ? height : undefined,
-        width: typeof width === "number" ? width : undefined,
+        height: typeof height === 'number' ? height : undefined,
+        width: typeof width === 'number' ? width : undefined,
       }}
-      width={typeof width === "string" ? width : undefined}
+      width={typeof width === 'string' ? width : undefined}
       testId={testId}
     >
       <Box
@@ -62,21 +62,21 @@ export function AsyncImage({
               src: src,
             }
           : {
-              backgroundSize: "contain",
+              backgroundSize: 'contain',
             })}
         height="full"
         position="absolute"
         style={{
-          touchCallout: "none",
-          transition: "opacity .15s linear",
-          userSelect: "none",
+          touchCallout: 'none',
+          transition: 'opacity .15s linear',
+          userSelect: 'none',
           ...(isRemoteImage
             ? {
                 opacity: isRemoteImageLoaded ? 1 : 0,
               }
             : {
                 backgroundImage: src ? `url(${src})` : undefined,
-                backgroundRepeat: "no-repeat",
+                backgroundRepeat: 'no-repeat',
                 opacity: src ? 1 : 0,
               }),
         }}
@@ -84,7 +84,7 @@ export function AsyncImage({
       />
       {borderColor ? (
         <Box
-          {...(typeof borderColor === "object" && "custom" in borderColor
+          {...(typeof borderColor === 'object' && 'custom' in borderColor
             ? { style: { borderColor: borderColor.custom } }
             : { borderColor })}
           borderRadius={borderRadius}

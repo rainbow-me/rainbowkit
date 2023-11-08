@@ -1,48 +1,48 @@
-import React, { ReactNode, useContext, useEffect } from "react";
-import { touchableStyles } from "../../css/touchableStyles";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { BrowserType, getBrowser, isSafari } from "../../utils/browsers";
-import { getGradientRGBAs } from "../../utils/colors";
-import { PlatformType, getPlatform } from "../../utils/platforms";
-import { InstructionStepName } from "../../wallets/Wallet";
+import React, { ReactNode, useContext, useEffect } from 'react';
+import { touchableStyles } from '../../css/touchableStyles';
+import { useWindowSize } from '../../hooks/useWindowSize';
+import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
+import { getGradientRGBAs } from '../../utils/colors';
+import { PlatformType, getPlatform } from '../../utils/platforms';
+import { InstructionStepName } from '../../wallets/Wallet';
 import {
   WalletConnector,
   useWalletConnectors,
-} from "../../wallets/useWalletConnectors";
-import { AsyncImage } from "../AsyncImage/AsyncImage";
-import { loadImages } from "../AsyncImage/useAsyncImage";
-import { Box, BoxProps } from "../Box/Box";
-import { ActionButton } from "../Button/ActionButton";
-import { ConnectIcon, preloadConnectIcon } from "../Icons/Connect";
-import { CreateIcon, preloadCreateIcon } from "../Icons/Create";
-import { RefreshIcon, preloadRefreshIcon } from "../Icons/Refresh";
-import { ScanIcon, preloadScanIcon } from "../Icons/Scan";
-import { SpinnerIcon } from "../Icons/Spinner";
-import { QRCode } from "../QRCode/QRCode";
-import { I18nContext } from "../RainbowKitProvider/I18nContext";
-import { ModalSizeContext } from "../RainbowKitProvider/ModalSizeContext";
-import { Text } from "../Text/Text";
-import { WalletStep } from "./DesktopOptions";
+} from '../../wallets/useWalletConnectors';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { loadImages } from '../AsyncImage/useAsyncImage';
+import { Box, BoxProps } from '../Box/Box';
+import { ActionButton } from '../Button/ActionButton';
+import { ConnectIcon, preloadConnectIcon } from '../Icons/Connect';
+import { CreateIcon, preloadCreateIcon } from '../Icons/Create';
+import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
+import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
+import { SpinnerIcon } from '../Icons/Spinner';
+import { QRCode } from '../QRCode/QRCode';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
+import { Text } from '../Text/Text';
+import { WalletStep } from './DesktopOptions';
 
 const getBrowserSrc: () => Promise<string> = async () => {
   const browser = getBrowser();
   switch (browser) {
     case BrowserType.Arc:
-      return (await import("../Icons/Arc.svg")).default;
+      return (await import('../Icons/Arc.svg')).default;
     case BrowserType.Brave:
-      return (await import("../Icons/Brave.svg")).default;
+      return (await import('../Icons/Brave.svg')).default;
     case BrowserType.Chrome:
-      return (await import("../Icons/Chrome.svg")).default;
+      return (await import('../Icons/Chrome.svg')).default;
     case BrowserType.Edge:
-      return (await import("../Icons/Edge.svg")).default;
+      return (await import('../Icons/Edge.svg')).default;
     case BrowserType.Firefox:
-      return (await import("../Icons/Firefox.svg")).default;
+      return (await import('../Icons/Firefox.svg')).default;
     case BrowserType.Opera:
-      return (await import("../Icons/Opera.svg")).default;
+      return (await import('../Icons/Opera.svg')).default;
     case BrowserType.Safari:
-      return (await import("../Icons/Safari.svg")).default;
+      return (await import('../Icons/Safari.svg')).default;
     default:
-      return (await import("../Icons/Browser.svg")).default;
+      return (await import('../Icons/Browser.svg')).default;
   }
 };
 
@@ -52,13 +52,13 @@ const getPlatformSrc: () => Promise<string> = async () => {
   const platform = getPlatform();
   switch (platform) {
     case PlatformType.Windows:
-      return (await import("../Icons/Windows.svg")).default;
+      return (await import('../Icons/Windows.svg')).default;
     case PlatformType.MacOS:
-      return (await import("../Icons/Macos.svg")).default;
+      return (await import('../Icons/Macos.svg')).default;
     case PlatformType.Linux:
-      return (await import("../Icons/Linux.svg")).default;
+      return (await import('../Icons/Linux.svg')).default;
     default:
-      return (await import("../Icons/Linux.svg")).default;
+      return (await import('../Icons/Linux.svg')).default;
   }
 };
 
@@ -98,7 +98,7 @@ export function GetDetail({
             (wallet) =>
               wallet.extensionDownloadUrl ||
               wallet.desktopDownloadUrl ||
-              (wallet.qrCode && wallet.downloadUrls?.qrCode)
+              (wallet.qrCode && wallet.downloadUrls?.qrCode),
           )
           .map((wallet) => {
             const { downloadUrls, iconBackground, iconUrl, id, name, qrCode } =
@@ -138,20 +138,20 @@ export function GetDetail({
                     </Text>
                     <Text color="modalTextSecondary" size="14" weight="medium">
                       {hasMobileAndExtension
-                        ? i18n.t("get.mobile_and_extension.description")
+                        ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileAndDesktop
-                        ? i18n.t("get.mobile_and_desktop.description")
+                        ? i18n.t('get.mobile_and_desktop.description')
                         : hasMobileCompanionApp
-                        ? i18n.t("get.mobile.description")
+                        ? i18n.t('get.mobile.description')
                         : hasExtension
-                        ? i18n.t("get.extension.description")
+                        ? i18n.t('get.extension.description')
                         : null}
                     </Text>
                   </Box>
                 </Box>
                 <Box display="flex" flexDirection="column" gap="4">
                   <ActionButton
-                    label={i18n.t("get.action.label")}
+                    label={i18n.t('get.action.label')}
                     onClick={() => getWalletDownload(id)}
                     type="secondary"
                   />
@@ -169,22 +169,22 @@ export function GetDetail({
         justifyContent="space-between"
         marginBottom="4"
         paddingY="8"
-        style={{ maxWidth: 275, textAlign: "center" }}
+        style={{ maxWidth: 275, textAlign: 'center' }}
       >
         <Text color="modalText" size="14" weight="bold">
-          {i18n.t("get.looking_for.title")}
+          {i18n.t('get.looking_for.title')}
         </Text>
         <Text color="modalTextSecondary" size="14" weight="medium">
           {compactModeEnabled
-            ? i18n.t("get.looking_for.desktop.compact_description")
-            : i18n.t("get.looking_for.desktop.wide_description")}
+            ? i18n.t('get.looking_for.desktop.compact_description')
+            : i18n.t('get.looking_for.desktop.wide_description')}
         </Text>
       </Box>
     </Box>
   );
 }
 
-const LOGO_SIZE: BoxProps["height"] = "44"; // size of wallet logo in Connect tab
+const LOGO_SIZE: BoxProps['height'] = '44'; // size of wallet logo in Connect tab
 export function ConnectDetail({
   changeWalletStep,
   compactModeEnabled,
@@ -225,7 +225,7 @@ export function ConnectDetail({
 
   const onDesktopUri = async () => {
     const uri = await getDesktopUri?.();
-    window.open(uri, safari ? "_blank" : "_self");
+    window.open(uri, safari ? '_blank' : '_self');
   };
 
   const secondaryAction: {
@@ -236,9 +236,9 @@ export function ConnectDetail({
   } | null = showWalletConnectModal
     ? {
         description: !compactModeEnabled
-          ? i18n.t("connect.walletconnect.description.full")
-          : i18n.t("connect.walletconnect.description.compact"),
-        label: i18n.t("connect.walletconnect.open.label"),
+          ? i18n.t('connect.walletconnect.description.full')
+          : i18n.t('connect.walletconnect.description.compact'),
+        label: i18n.t('connect.walletconnect.open.label'),
         onClick: () => {
           onClose();
           showWalletConnectModal();
@@ -246,15 +246,15 @@ export function ConnectDetail({
       }
     : hasQrCode
     ? {
-        description: i18n.t("connect.secondary_action.get.description", {
+        description: i18n.t('connect.secondary_action.get.description', {
           wallet: name,
         }),
-        label: i18n.t("connect.secondary_action.get.label"),
+        label: i18n.t('connect.secondary_action.get.label'),
         onClick: () =>
           changeWalletStep(
             hasQrCodeAndExtension || hasQrCodeAndDesktop
               ? WalletStep.DownloadOptions
-              : WalletStep.Download
+              : WalletStep.Download,
           ),
       }
     : null;
@@ -313,18 +313,18 @@ export function ConnectDetail({
               flexDirection="column"
               gap="4"
               paddingX="32"
-              style={{ textAlign: "center" }}
+              style={{ textAlign: 'center' }}
             >
               <Text color="modalText" size="18" weight="bold">
                 {ready
-                  ? i18n.t("connect.status.opening", {
+                  ? i18n.t('connect.status.opening', {
                       wallet: name,
                     })
                   : hasExtension
-                  ? i18n.t("connect.status.not_installed", {
+                  ? i18n.t('connect.status.not_installed', {
                       wallet: name,
                     })
-                  : i18n.t("connect.status.not_available", {
+                  : i18n.t('connect.status.not_available', {
                       wallet: name,
                     })}
               </Text>
@@ -332,7 +332,7 @@ export function ConnectDetail({
                 <Box paddingTop="20">
                   <ActionButton
                     href={wallet.extensionDownloadUrl}
-                    label={i18n.t("connect.secondary_action.install.label")}
+                    label={i18n.t('connect.secondary_action.install.label')}
                     type="secondary"
                   />
                 </Box>
@@ -351,7 +351,7 @@ export function ConnectDetail({
                       textAlign="center"
                       weight="medium"
                     >
-                      {i18n.t("connect.status.confirm")}
+                      {i18n.t('connect.status.confirm')}
                     </Text>
                   </Box>
                   <Box
@@ -364,7 +364,7 @@ export function ConnectDetail({
                   >
                     {connectionError ? (
                       <ActionButton
-                        label={i18n.t("connect.secondary_action.retry.label")}
+                        label={i18n.t('connect.secondary_action.retry.label')}
                         onClick={async () => {
                           if (isDesktopDeepLinkAvailable) onDesktopUri();
                           reconnect(wallet);
@@ -430,9 +430,9 @@ const DownloadOptionsBox = ({
   isCompact: boolean;
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
-  variant: "browser" | "app" | "desktop";
+  variant: 'browser' | 'app' | 'desktop';
 }) => {
-  const isBrowserCard = variant === "browser";
+  const isBrowserCard = variant === 'browser';
   const gradientRgbas =
     !isBrowserCard && iconAccent && getGradientRGBAs(iconAccent);
   return (
@@ -442,9 +442,9 @@ const DownloadOptionsBox = ({
       display="flex"
       justifyContent="center"
       overflow="hidden"
-      paddingX={isCompact ? "18" : "44"}
+      paddingX={isCompact ? '18' : '44'}
       position="relative"
-      style={{ flex: 1, isolation: "isolate" }}
+      style={{ flex: 1, isolation: 'isolate' }}
       width="full"
     >
       <Box
@@ -453,11 +453,11 @@ const DownloadOptionsBox = ({
         borderStyle="solid"
         borderWidth="1"
         style={{
-          bottom: "0",
-          left: "0",
-          position: "absolute",
-          right: "0",
-          top: "0",
+          bottom: '0',
+          left: '0',
+          position: 'absolute',
+          right: '0',
+          top: '0',
           zIndex: 1,
         }}
       />
@@ -476,22 +476,22 @@ const DownloadOptionsBox = ({
             flexDirection="row"
             justifyContent="space-between"
             style={{
-              bottom: "0",
-              filter: "blur(20px)",
-              left: "0",
-              position: "absolute",
-              right: "0",
-              top: "0",
-              transform: "translate3d(0, 0, 0)",
+              bottom: '0',
+              filter: 'blur(20px)',
+              left: '0',
+              position: 'absolute',
+              right: '0',
+              top: '0',
+              transform: 'translate3d(0, 0, 0)',
             }}
           >
             <Box
               style={{
-                filter: "blur(100px)",
+                filter: 'blur(100px)',
                 marginLeft: -27,
                 marginTop: -20,
                 opacity: 0.6,
-                transform: "translate3d(0, 0, 0)",
+                transform: 'translate3d(0, 0, 0)',
               }}
             >
               <AsyncImage
@@ -503,12 +503,12 @@ const DownloadOptionsBox = ({
             </Box>
             <Box
               style={{
-                filter: "blur(100px)",
+                filter: 'blur(100px)',
                 marginRight: 0,
                 marginTop: 105,
                 opacity: 0.6,
-                overflow: "auto",
-                transform: "translate3d(0, 0, 0)",
+                overflow: 'auto',
+                transform: 'translate3d(0, 0, 0)',
               }}
             >
               <AsyncImage
@@ -525,11 +525,11 @@ const DownloadOptionsBox = ({
         <Box
           background="downloadBottomCardBackground"
           style={{
-            bottom: "0",
-            left: "0",
-            position: "absolute",
-            right: "0",
-            top: "0",
+            bottom: '0',
+            left: '0',
+            position: 'absolute',
+            right: '0',
+            top: '0',
           }}
         >
           <Box
@@ -539,7 +539,7 @@ const DownloadOptionsBox = ({
               height: 564,
               left: -215,
               top: -197,
-              transform: "translate3d(0, 0, 0)",
+              transform: 'translate3d(0, 0, 0)',
               width: 564,
             }}
           />
@@ -550,7 +550,7 @@ const DownloadOptionsBox = ({
               height: 564,
               left: -1,
               top: -76,
-              transform: "translate3d(0, 0, 0)",
+              transform: 'translate3d(0, 0, 0)',
               width: 564,
             }}
           />
@@ -573,8 +573,8 @@ const DownloadOptionsBox = ({
             {...(iconBackground
               ? {
                   background: iconBackground,
-                  borderColor: "generalBorder",
-                  borderRadius: "10",
+                  borderColor: 'generalBorder',
+                  borderRadius: '10',
                 }
               : null)}
           />
@@ -616,7 +616,7 @@ export function DownloadOptionsDetail({
   const browser = getBrowser();
   const platform = getPlatform();
   const modalSize = useContext(ModalSizeContext);
-  const isCompact = modalSize === "compact";
+  const isCompact = modalSize === 'compact';
   const {
     desktop,
     desktopDownloadUrl,
@@ -657,20 +657,20 @@ export function DownloadOptionsDetail({
       >
         {extensionDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={i18n.t("get_options.extension.download.label", {
+            actionLabel={i18n.t('get_options.extension.download.label', {
               browser,
             })}
-            description={i18n.t("get_options.extension.description")}
+            description={i18n.t('get_options.extension.description')}
             iconUrl={getBrowserSrc}
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
                 extension?.instructions
                   ? WalletStep.InstructionsExtension
-                  : WalletStep.Connect
+                  : WalletStep.Connect,
               )
             }
-            title={i18n.t("get_options.extension.title", {
+            title={i18n.t('get_options.extension.title', {
               wallet: wallet.name,
               browser,
             })}
@@ -680,20 +680,20 @@ export function DownloadOptionsDetail({
         )}
         {desktopDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={i18n.t("get_options.desktop.download.label", {
+            actionLabel={i18n.t('get_options.desktop.download.label', {
               platform,
             })}
-            description={i18n.t("get_options.desktop.description")}
+            description={i18n.t('get_options.desktop.description')}
             iconUrl={getPlatformSrc}
             isCompact={isCompact}
             onAction={() =>
               changeWalletStep(
                 desktop?.instructions
                   ? WalletStep.InstructionsDesktop
-                  : WalletStep.Connect
+                  : WalletStep.Connect,
               )
             }
-            title={i18n.t("get_options.desktop.title", {
+            title={i18n.t('get_options.desktop.title', {
               wallet: wallet.name,
               platform,
             })}
@@ -703,10 +703,10 @@ export function DownloadOptionsDetail({
         )}
         {mobileDownloadUrl && (
           <DownloadOptionsBox
-            actionLabel={i18n.t("get_options.mobile.download.label", {
+            actionLabel={i18n.t('get_options.mobile.download.label', {
               wallet: wallet.name,
             })}
-            description={i18n.t("get_options.mobile.description")}
+            description={i18n.t('get_options.mobile.description')}
             iconAccent={wallet.iconAccent}
             iconBackground={wallet.iconBackground}
             iconUrl={wallet.iconUrl}
@@ -714,7 +714,7 @@ export function DownloadOptionsDetail({
             onAction={() => {
               changeWalletStep(WalletStep.Download);
             }}
-            title={i18n.t("get_options.mobile.title", { wallet: wallet.name })}
+            title={i18n.t('get_options.mobile.title', { wallet: wallet.name })}
             variant="app"
           />
         )}
@@ -749,9 +749,9 @@ export function DownloadDetail({
       height="full"
       width="full"
     >
-      <Box style={{ maxWidth: 220, textAlign: "center" }}>
+      <Box style={{ maxWidth: 220, textAlign: 'center' }}>
         <Text color="modalTextSecondary" size="14" weight="semibold">
-          {i18n.t("get_mobile.description")}
+          {i18n.t('get_mobile.description')}
         </Text>
       </Box>
       <Box height="full">
@@ -772,12 +772,12 @@ export function DownloadDetail({
         paddingY="8"
       >
         <ActionButton
-          label={i18n.t("get_mobile.continue.label")}
+          label={i18n.t('get_mobile.continue.label')}
           onClick={() =>
             changeWalletStep(
               qrCode?.instructions
                 ? WalletStep.InstructionsMobile
-                : WalletStep.Connect
+                : WalletStep.Connect,
             )
           }
         />
@@ -871,23 +871,23 @@ export function InstructionMobileDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t("get_instructions.mobile.connect.label")}
+          label={i18n.t('get_instructions.mobile.connect.label')}
           onClick={() => connectWallet(wallet)}
         />
         <Box
           as="a"
-          className={touchableStyles({ active: "shrink", hover: "grow" })}
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
           display="block"
           href={wallet?.qrCode?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"
-          style={{ willChange: "transform" }}
+          style={{ willChange: 'transform' }}
           target="_blank"
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t("get_instructions.mobile.learn_more.label")}
+            {i18n.t('get_instructions.mobile.learn_more.label')}
           </Text>
         </Box>
       </Box>
@@ -958,23 +958,23 @@ export function InstructionExtensionDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t("get_instructions.extension.refresh.label")}
+          label={i18n.t('get_instructions.extension.refresh.label')}
           onClick={window.location.reload.bind(window.location)}
         />
         <Box
           as="a"
-          className={touchableStyles({ active: "shrink", hover: "grow" })}
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
           display="block"
           href={wallet?.extension?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"
-          style={{ willChange: "transform" }}
+          style={{ willChange: 'transform' }}
           target="_blank"
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t("get_instructions.extension.learn_more.label")}
+            {i18n.t('get_instructions.extension.learn_more.label')}
           </Text>
         </Box>
       </Box>
@@ -1047,23 +1047,23 @@ export function InstructionDesktopDetail({
         marginBottom="16"
       >
         <ActionButton
-          label={i18n.t("get_instructions.desktop.connect.label")}
+          label={i18n.t('get_instructions.desktop.connect.label')}
           onClick={() => connectWallet(wallet)}
         />
         <Box
           as="a"
-          className={touchableStyles({ active: "shrink", hover: "grow" })}
+          className={touchableStyles({ active: 'shrink', hover: 'grow' })}
           display="block"
           href={wallet?.desktop?.instructions?.learnMoreUrl}
           paddingX="12"
           paddingY="4"
           rel="noreferrer"
-          style={{ willChange: "transform" }}
+          style={{ willChange: 'transform' }}
           target="_blank"
           transition="default"
         >
           <Text color="accentColor" size="14" weight="bold">
-            {i18n.t("get_instructions.desktop.learn_more.label")}
+            {i18n.t('get_instructions.desktop.learn_more.label')}
           </Text>
         </Box>
       </Box>
