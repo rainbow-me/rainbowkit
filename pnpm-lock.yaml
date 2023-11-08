@@ -241,19 +241,6 @@ importers:
         specifier: ^13.4.19
         version: 13.4.19(eslint@8.15.0)(typescript@5.0.4)
 
-  examples/with-next-wagmi-alpha:
-    dependencies:
-      '@rainbow-me/rainbowkit':
-        specifier: workspace:*
-        version: link:../../packages/rainbowkit
-    devDependencies:
-      eslint:
-        specifier: ^8.15.0
-        version: 8.15.0
-      eslint-config-next:
-        specifier: ^13.4.19
-        version: 13.4.19(eslint@8.15.0)(typescript@5.0.4)
-
   examples/with-remix:
     dependencies:
       '@rainbow-me/rainbowkit':
