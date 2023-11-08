@@ -1,0 +1,141 @@
+---
+title: Authentification
+description: Authentification de vos utilisateurs
+---
+
+# Authentification
+
+## Fournir un accès authentifié à votre application
+
+Vous pouvez éventuellement exiger que les utilisateurs signent un message avec leur portefeuille lors du processus de connexion, prouvant qu'ils possèdent le compte connecté et vous permettant de créer une session utilisateur authentifiée avec un accès privilégié à votre application.
+
+Alors qu'il est possible d'[intégrer avec des back-ends personnalisés et des formats de messages,](/docs/custom-authentication) RainbowKit offre un support de première classe pour [Se connecter avec Ethereum](https://login.xyz) et [NextAuth.js.](https://next-auth.js.org)
+
+### Configurer Se connecter avec Ethereum et NextAuth.js
+
+Si vous ne l'avez pas déjà fait, commencez par configurer votre projet [Next.js](https://nextjs.org) avec le [modèle officiel Se connecter avec Ethereum pour NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+
+#### Installer
+
+Installez le paquet `@rainbow-me/rainbowkit-siwe-next-auth` et sa dépendance de pair, [ethers](https://docs.ethers.org/v5/).
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+```
+
+> Remarque: `siwe` nécessite la dépendance de pair [ethers](https://docs.ethers.org/v5/), tandis que [wagmi](https://wagmi.sh/) repose maintenant sur l'alternative [viem](https://viem.sh).
+
+#### Configurez le fournisseur
+
+Dans votre composant `App`, importez `RainbowKitSiweNextAuthProvider`.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+Enveloppez `RainbowKitProvider` avec `RainbowKitSiweNextAuthProvider`, en veillant à ce qu'il soit imbriqué dans le `SessionProvider` de NextAuth afin qu'il ait accès à la session.
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
+import { AppProps } from 'next/app';
+import { WagmiConfig } from 'wagmi';
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
+  return (
+    <WagmiConfig {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <RainbowKitSiweNextAuthProvider>
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitSiweNextAuthProvider>
+      </SessionProvider>
+    </WagmiConfig>
+  );
+}
+```
+
+Avec `RainbowKitSiweNextAuthProvider` en place, vos utilisateurs seront désormais invités à s'authentifier en signant un message une fois qu'ils ont connecté leur portefeuille.
+
+#### Personnalisez les options de message SIWE
+
+Vous pouvez personnaliser les [options de message SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) en passant une fonction à la propriété `getSiweMessageOptions` sur `RainbowKitSiweNextAuthProvider`.
+
+Cette fonction sera appelée chaque fois qu'un nouveau message est créé. Les options renvoyées par cette fonction seront fusionnées avec les valeurs par défaut.
+
+```tsx
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to my RainbowKit app',
+});
+
+<RainbowKitSiweNextAuthProvider
+  getSiweMessageOptions={getSiweMessageOptions}
+>
+  ...
+</RainbowKitSiweNextAuthProvider>;
+```
+
+#### Accédez à la session côté serveur
+
+Vous pouvez accéder au jeton de session avec la fonction `getToken` de NextAuth importée de `next-auth/jwt`. Si l'utilisateur a réussi à s'authentifier, la propriété `sub` du jeton de session (le "sujet" du jeton, c'est-à-dire l'utilisateur) sera l'adresse de l'utilisateur.
+
+Vous pouvez également transmettre l'objet de session résolu du serveur via `getServerSideProps` afin que NextAuth n'ait pas besoin de le résoudre à nouveau sur le client.
+
+Par exemple :
+
+```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+Pour plus d'informations sur la gestion de la session, vous pouvez consulter la documentation suivante :
+
+-   [Guide d'authentification Next.js](https://nextjs.org/docs/authentication)
+-   [Documentation NextAuth.js](https://next-auth.js.org)

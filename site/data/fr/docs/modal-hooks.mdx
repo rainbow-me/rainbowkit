@@ -1,0 +1,64 @@
+---
+title: Hooks Modals
+description: Ouvrez les modales de manière programmatique via Hooks
+---
+
+# Hooks Modals
+
+## Ouvrez les modaux de manière programmatique via Hooks
+
+Les Hooks suivants sont fournis pour permettre l'ouverture programmatique de modaux n'importe où dans votre application.
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+Chacun de ces Hooks renvoie un objet avec une fonction pour ouvrir son modal respectif. Notez que les fonctions renvoyées seront indéfinies si votre application n'est pas dans l'état requis pour que le modal soit ouvert.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Chaque hook renvoie également un booléen pour l'état du modal. Il est généralement recommandé de vous fier purement aux hooks Wagmi (c'est-à-dire `useAccount`) pour réagir directement au statut de connexion du portefeuille d'un utilisateur, plutôt que de vous fier à l'état du Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit est conçu pour être non-interruptif et réactif, donc les dApps devraient toujours rendre une interface pour les utilisateurs qu'ils aient ou non connecté leur portefeuille. Un utilisateur pourrait connecter ou déconnecter son portefeuille directement à partir de MetaMask, donc le dApp doit être réactif au statut de connexion sous-jacent directement.
+
+Les dApps qui dépendent de mécanismes comme Sign-in with Ethereum pour la vérification des utilisateurs devraient plutôt dépendre de la fonction [Authentication](/docs/authentication).

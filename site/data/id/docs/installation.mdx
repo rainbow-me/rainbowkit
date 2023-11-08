@@ -1,0 +1,176 @@
+---
+title: Instalasi
+description: Mulai dan jalankan dengan RainbowKit
+---
+
+# Instalasi
+
+## Mulai dan jalankan dengan RainbowKit
+
+### Mulai cepat
+
+Anda dapat membuat kerangka baru RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app dengan salah satu dari perintah berikut, menggunakan manager paket pilihan Anda:
+
+```bash
+npm init @rainbow-me/rainbowkit@latest
+# or
+pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
+```
+
+Ini akan meminta Anda untuk nama proyek, menghasilkan direktori baru berisi proyek template, dan menginstal semua dependensi yang dibutuhkan.
+
+Alternatifnya, Anda dapat mengintegrasikan RainbowKit secara manual ke dalam proyek yang ada.
+
+### Pengaturan manual
+
+Instal RainbowKit dan peer dependenciesnya, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh).
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+> Catatan: RainbowKit adalah pustaka [React](https://reactjs.org/).
+
+#### Impor
+
+Impor RainbowKit dan wagmi.
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+```
+
+#### Konfigurasi
+
+Konfigurasikan rantai yang diinginkan dan hasilkan konektor yang diperlukan. Anda juga perlu menyiapkan konfigurasi `wagmi`.
+
+> Catatan: Setiap dApp yang bergantung pada WalletConnect sekarang harus mendapatkan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini benar-benar gratis dan hanya membutuhkan beberapa menit.
+
+```tsx line=4-99
+...
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+})
+```
+
+[Baca lebih lanjut tentang konfiguration rantai & penyedia dengan `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
+
+#### Bungkus penyedia
+
+Bungkus aplikasi Anda dengan `RainbowKitProvider` dan [`WagmiConfig`](https://wagmi.sh/docs/provider).
+
+```tsx
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+#### Tambahkan tombol connect
+
+Kemudian, dalam aplikasi Anda, impor dan render komponen `ConnectButton`.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+RainbowKit sekarang akan menangani pemilihan dompet pengguna Anda, menampilkan informasi dompet/transaksi dan menangani pergantian jaringan/dompet.
+
+#### Pengaturan alat pembangunan tambahan
+
+Beberapa alat pembangunan akan memerlukan pengaturan tambahan.
+
+##### React, Next.js, dan Webpack
+
+Pembundel [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) yang digunakan oleh Next.js dan Create React App [tidak lagi menyediakan polyfill Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), jadi Anda perlu menyertakan modul-modul ini dengan sendiri untuk memenuhi dependensi sebaya RainbowKit. Create React App secara khusus memerlukan anda untuk memasukkan polyfill `Buffer`.
+
+Dalam versi sebelumnya dari RainbowKit yang mengandalkan pada [ethers](https://docs.ethers.org/v5/), modul `fs`, `net`, dan `tls` secara otomatis diisi. Hal ini tidak lagi berlaku dengan RainbowKit v1 + wagmi v1, yang dibangun pada [viem](https://viem.sh/).
+
+Merujuk pada [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), dan [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) sampel untuk petunjuk konfigurasi proyek Anda.
+
+##### Vite
+
+Bundler [Vite](https://vitejs.dev) tidak menyediakan Node polyfills, jadi Anda perlu memasukkan polyfills untuk `global`, `Buffer` dan `process.env`. Sebagai contoh, Anda dapat merujuk ke [polyfills dalam contoh proyek Vite kami](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
+
+##### Remix
+
+Ketika menggunakan [Remix](https://remix.run), semua titik masuk paket RainbowKit harus ditambahkan ke daftar [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) Anda di konfigurasi Remix Anda karena mereka dipublikasikan sebagai paket ESM.
+
+Remix juga membutuhkan agar Anda melakukan polyfill `global`, `Buffer` dan `process.env`. Merujuk pada [polyfills dalam contoh proyek Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
+
+### Tambahkan fungsionalitas Anda sendiri
+
+Sekarang bahwa pengguna Anda dapat menghubungkan dompet mereka, Anda dapat mulai membangun sisa aplikasi Anda menggunakan [wagmi.](https://wagmi.sh)
+
+Kirim transaksi, berinteraksi dengan kontrak, menyelesaikan detail ENS dan banyak lagi dengan rangkaian lengkap React Hooks dari wagmi.
+
+Untuk detail lebih lanjut, lihat [dokumentasi wagmi.](https://wagmi.sh)
+
+### Contoh lebih lanjut
+
+Untuk melihat beberapa contoh berjalan dari RainbowKit, atau bahkan menggunakannya untuk secara otomatis mencangkul proyek baru, periksa [contoh resmi](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+
+Untuk mencoba RainbowKit langsung di peramban Anda, periksa tautan CodeSandbox di bawah:
+
+-   dengan [Membuat Aplikasi React](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   dengan [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   dengan [Next.js Aplikasi Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   dengan [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   dengan [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

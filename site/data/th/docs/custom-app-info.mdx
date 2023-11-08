@@ -1,0 +1,62 @@
+---
+title: ข้อมูลแอปที่กำหนดเอง
+description: การกำหนดข้อมูลแอปของคุณเอง
+---
+
+# ข้อมูลแอปที่กำหนดเอง
+
+## การกำหนดข้อมูลแอปของคุณเอง
+
+คุณสามารถส่งข้อมูลแอปของคุณในกรณี `appInfo` สำหรับ `RainbowKitProvider`. คุณสามารถแก้ไขคุณสมบัติได้เช่น ชื่อแอปของคุณ (`appName`) และลิ้งค์ที่ปุ่ม “เรียนรู้เพิ่มเติม” ใน modal การเชื่อมต่อจะนำไปยัง (`learnMoreUrl`):
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### เพิ่มข้อปฏิเสธ
+
+คุณสามารถให้ข้อปฏิเสธของคุณเองที่จะแสดงที่ด้านล่างของ modal การเชื่อมต่อ. คุณสมบัติ `disclaimer` ใน `appInfo` ยอมรับ `DisclaimerComponent` ด้วยอาร์กิวเมนต์ `Text` และ `Link`. คุณสามารถใช้มันสร้างข้อปฏิเสธของคุณเองที่สืบทอดระบบธีม. เราส่งออกประเภท `DisclaimerComponent` สำหรับผู้ใช้ TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

@@ -1,0 +1,91 @@
+---
+title: Localização
+description: Personalizando o idioma do seu dApp com traduções embutidas
+---
+
+# Localização
+
+## Personalizando o idioma do seu dApp com traduções embutidas
+
+Por padrão, o RainbowKit suporta o local `en-US` para usuários de língua inglesa.
+
+Se disponível, o RainbowKit detectará o [idioma preferido](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) do usuário e escolherá as traduções apropriadas. Os desenvolvedores podem sempre substituir o idioma padrão.
+
+Para especificar um idioma para seus usuários, basta adicionar `locale="zh-CN"` como uma prop no seu `RainbowKitProvider`
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider locale="zh-CN" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### Usando com Next.js
+
+O suporte à localização do RainbowKit funciona ainda melhor com o [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+
+Configure seu projeto Next.js como o exemplo abaixo para adicionar um sub-caminho `/locale/` opcional às suas rotas, o que ajudará os motores de busca e usuários a descobrir melhor seu suporte multilíngue.
+
+```json
+// next.config.js
+{
+  i18n: {
+    locales: ['default', 'en', 'zh-CN'],
+    defaultLocale: 'default',
+  },
+}
+```
+
+Em seguida, passe o `locale` fornecido pelo Pages Router para o `RainbowKitProvider`
+
+```tsx
+import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
+
+export const App = () => {
+  const { locale } = useRouter() as { locale: Locale };
+  return (
+    <RainbowKitProvider locale={locale} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  )
+};
+```
+
+Você pode referenciar um exemplo para o Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+
+App Router ainda não suporta i18n. Consulte nosso exemplo separado [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) para melhores práticas de implementação com o middleware [`next-intl`](https://github.com/amannn/next-intl).
+
+É recomendado que você use as mesmas técnicas para traduzir o conteúdo do seu dApp para suporte completo de localização. Bibliotecas de localização como [`i18n-js`](https://github.com/fnando/i18n) e [`next-intl`](https://github.com/amannn/next-intl) e ferramentas de gerenciamento como Crowdin simplificarão esse processo.
+
+### Idiomas Suportados
+
+Oferecemos suporte completo para as seguintes regiões `locale`:
+
+<Table
+  header={[
+    'Language', 'Region', 'Locale', 'Shortform'
+  ]}
+  dataTypes={[
+    'string', 'string', 'code', 'code'
+  ]}
+  data={[
+    ['English', 'United States 🇺🇸', 'en-US', 'en'],
+    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh'],
+    ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
+    ['Español', 'Latin America 🌎', 'es-419', 'es'],
+    ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],
+    ['العربية', 'Middle East 🌍', 'ar-AR', 'ar'],
+    ['Português', 'Brazil 🇧🇷', 'pt-BR', 'pt'],
+    ['Русский', 'Russia 🇷🇺', 'ru-RU', 'ru'],
+    ['Bahasa Indonesia', 'Indonesia 🇮🇩', 'id-ID', 'id'],
+    ['日本語', 'Japan 🇯🇵', 'ja-JP', 'ja'],
+    ['Türkçe', 'Turkey 🇹🇷', 'tr-TR', 'tr'],
+    ['한국어', 'South Korea 🇰🇷', 'ko-KR', 'ko'],
+    ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
+  ]}
+/>
+
+Se você gostaria de ver suporte para um idioma adicional, por favor, abra uma [Discussão no GitHub](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) e trabalharemos para apoiá-lo o mais rápido possível.

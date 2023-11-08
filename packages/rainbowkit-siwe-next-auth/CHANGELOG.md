@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [ef64a229]
+  - @rainbow-me/rainbowkit@1.2.0
+
 ## 0.3.1
 
 ### Patch Changes

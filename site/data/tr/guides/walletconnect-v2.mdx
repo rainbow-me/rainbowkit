@@ -1,0 +1,102 @@
+---
+title: dApp'inizi WalletConnect v2'ye yükseltme
+description: RainbowKit v2'ye geçti ve dApp'inizi 5 dakika veya daha kısa sürede hazırlayabilirsiniz
+image: rehber-cüzdanbaglantisi-v2.png
+---
+
+# WalletConnect v2'ye geçiş
+
+## dApp'inizi 5 dakika veya daha kısa sürede v2 yükseltmeye hazırlayın
+
+WalletConnect v1 protokolü 28 Haziran 2023'te kapatılacak ve RainbowKit, geçişi süper basit hale getirmek için sizin yanınızda.
+
+RainbowKit'te artık WalletConnect v2 desteği standarttır, kırıcı değişiklikler olmadan. Sadece yükseltin ve ek detaylar için aşağıdaki rehbere başvurun.
+
+#### WalletConnect v2'yi Anlama
+
+WalletConnect, kullanıcıların mobil cüzdanlarını dApp'inize bağlamasını sağlayan protokoldür ve RainbowKit'in önemli bir temelidir. WalletConnect v2'nin son yayını, cüzdan-dApp deneyimini daha da iyi hale getirmek için bir dizi önemli yükseltme getirdi.
+
+v2 ile kullanıcılarınız artık birden çok zincire eşzamanlı olarak bağlanabilir, bu yüzden zincir değiştirme tokalaşmasını unutabilirsiniz. Ayrıca daha fazla ağ için desteği genişletir ve Ethereum ile Oturum açmayı daha hızlı hale getiren iyileştirmeler getirir.
+
+#### dApp'ınızı yükseltme
+
+Eğer zaten RainbowKit `0.12.x` ve `1.0.x` için göç rehberlerini izlediyseniz, neredeyse oradasınız! Sadece en son yama sürümüne yükseltin ve bir deneyin.
+
+RainbowKit, `0.12.15` ve `1.0.2` ile varsayılan olarak WalletConnect v2'yi etkinleştirdi. dApp'ınız henüz wagmi v1 ve RainbowKit v1'e yükseltilmediği sürece `0.12.x` için desteği sürdürüyoruz.
+
+**1. Bağımlılıkları Yükseltme**
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+Eğer RainbowKit'in `0.12.x` veya `1.0.x` öncesinde bir sürümünü kullanıyorsanız, güncel olmak için sadece [Migration Guides](/docs/migration-guide) takip edin.
+
+`0.12.x` dApp'larının wagmi v1'e yükseltmeye başlaması önerilir, çünkü WalletConnect v2 için stabilite iyileştirmeleri yalnızca wagmi'nin gelecekteki sürümlerinde dahil olacaktır.
+
+**2. Bir projectId sağlama**
+
+WalletConnect'e dayanan her dApp artık bir `projectId` almamız gerekiyor [WalletConnect Cloud](https://cloud.walletconnect.com/) 'dan. Bu tamamen ücretsizdir ve yalnızca birkaç dakika alır.
+
+`getDefaultWallets` ve bireysel RainbowKit cüzdan bağlantılarına `projectId`nizi şu şekilde sağlayın:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKit tip güvenliğine sahip olup bir `projectId` eksik olduğunda sizi uyarır. v2'nin aksiyonda görmek için örneklerimize başvurun:
+
+-   [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   [Next.js Uygulama Yönlendiricisi](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+#### İleri düzey özelleştirme
+
+Eğer dApp'iniz henüz WalletConnect v2'ye taşınmamış bir eski cüzdanı desteklemeyi gerektiriyorsa, RainbowKit'in varsayılan WalletConnect sürümü her cüzdan için bağımsız olarak geçersiz kılınabilir.
+
+```ts
+metaMaskWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+});
+```
+
+WalletConnect v1 sunucuları 28 Haziran'da kapatıldığında, v1 protokolünü kullanmaya devam etmek için bir [özel köprü sunucu](https://docs.walletconnect.com/1.0/bridge-server) gereklidir. Aşağıdaki örnekleri inceleyin:
+
+```ts
+walletConnectWallet(options: {
+  chains: Chain[];
+  version: '1',
+  options: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+
+customWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+  walletConnectOptions: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+```
+
+Ek desteklenen seçenekler için [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) referansını inceleyin.

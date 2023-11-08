@@ -1,0 +1,167 @@
+---
+title: अनुकूलित थीम
+description: एक अनुकूलित थीम बनाना
+---
+
+# अनुकूलित थीम
+
+## एक अनुकूलित थीम बनाना
+
+> नोट: यह API अस्थिर है और संभावित
+> है कि यह निकट भविष्य में बदल जाएगी। हम
+> अभी [built-in themes] \(/docs/theming) के साथ चिपके रहने की सलाह देते हैं।
+
+जबकि बिल्ट-इन थीम्स कुछ स्तर की अनुकूलन को प्रदान करती हैं, `Theme` प्रकार आपको अपनी custom themes को परिभाषित करने के लिए मदद करता है जिसमें थीम वेरिएबल्स के निचले-स्तर का दस्त्रेस होता है।
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### एक बिल्ट-इन थीम विस्तारित करना
+
+आप एक बिल्ट-इन थीम को विस्तारित कर सकते हैं, बिना पूरी थीम को पुनः परिभाषित करें। यह तब उपयोगी होता है जब आप केवल विशेष थीम टोकनों को ओवरराइड करना चाहते हैं।
+
+इसके लिए, `lodash.merge` को स्थापित करें (या समकक्ष):
+
+```bash
+npm install lodash.merge
+```
+
+इसे आयात करें, साथ ही थीम को जो आप विस्तारित करना चाहते हैं (जैसे: `darkTheme`) और TypeScript `Theme` प्रकार:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+फिर, बिल्ट-इन थीम को मर्ज करें, थीम टोकन्स के साथ जिन्हें आप ओवरराइड करना चाहते हैं। इस उदाहरण में, मैं `accentColor` टोकन को ओवरराइड कर रहा हूँ, ताकि ये मेरे ब्रांड के accent रंग से मिलान करे।
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+अंत में, अब आप अपनी कस्टम थीम को `RainbowKitProvider` के `theme` prop में पास कर सकते हैं।
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### कस्टम थीम सेलेक्टर्स बनाना
+
+यदि आपका ऐप सर्वर/स्थैतिक रूप से रेंडर होता है और इसे उपयोगकर्ता मैन्युअल रूप से थीम्स के बीच में टॉगल कर सकते हैं, तो RainbowKit की थीमिंग सिस्टम को कस्टम CSS सेलेक्टर्स के साथ जोड़ा जा सकता है निम्नलिखित फंक्शन्स के साथ जो किसी भी CSS-in-JS सिस्टम के साथ उपयोग किया जा सकता है:
+
+-   `cssStringFromTheme`
+-   `cssObjectFromTheme`
+
+ये फंक्शन्स CSS लौटाते हैं जो सभी आवश्यक थीम वेरिएबल्स को सेट करते हैं। चूंकि दोनों स्ट्रिंग्स और ऑब्जेक्ट्स समर्थित हैं, इसे किसी भी CSS-in-JS सिस्टम के साथ एकीकृत किया जा सकता है।
+
+एक बुनियादी उदाहरण के रूप में, आप अपनी स्वयं की `style` तत्व को प्रत्येक थीम के लिए कस्टम सेलेक्टर्स के साथ रेंडर कर सकते हैं। चूंकि हम थीम के CSS को रेंडर करने का नियंत्रण ले रहे हैं, इसलिए हम `null` को `theme` prop में पास कर रहे हैं ताकि RainbowKitProvider हमारे लिए कोई styles न रेंडर करे। cssStringFromTheme संगठन के extends विकल्प का उपयोग करने का ध्यान दें, जो मूल थीम के समान किसी भी थीम मापदंडों को छोड़ देता है।
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

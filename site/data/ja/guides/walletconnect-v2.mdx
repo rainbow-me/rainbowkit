@@ -1,0 +1,102 @@
+---
+title: WalletConnect v2にあなたのdAppをアップグレードする
+description: RainbowKitはv2に移行しました、そしてあなたのdAppは5分かそれ以下で準備することができます
+image: guide-walletconnect-v2.png
+---
+
+# WalletConnect v2への移行
+
+## あなたのdAppを5分かそれ以下でv2アップグレードに対応させる
+
+WalletConnect v1プロトコルは2023年6月28日に終了します、そしてRainbowKitはこの遷移を超簡単にするためのサポートを提供します。
+
+WalletConnect v2のサポートは今やRainbowKitの標準で、破壊的な変更なしに。 ただアップグレードを行い、詳細は以下のガイドを参照してください。
+
+#### WalletConnect v2を理解する
+
+WalletConnectはユーザーがモバイルウォレットをあなたのdAppに接続することを可能にするプロトコルで、RainbowKitの重要な基盤です。 最近のWalletConnect v2のリリースはウォレットとdAppの体験をさらに良くするための重要なアップグレードをたくさんもたらします。
+
+v2を使用すると、ユーザーは複数のチェーンに同時に接続できるようになり、チェーン切り替えの手間を省くことができます。 また、より多くのネットワークをサポートし、Ethereumでのサインインをさらに高速にする改善を提供します。
+
+#### あなたのdAppをアップグレードする
+
+既にRainbowKit `0.12.x`と`1.0.x`の移行ガイドを参照していれば、もうほとんど終わりです！ 最新のパッチリリースにアップグレードしてみてください。
+
+RainbowKitはデフォルトでWalletConnect v2を`0.12.15` と `1.0.2`で有効にしました。 まだあなたのdAppがwagmi v1とRainbowKit v1にアップグレードしていない場合、`0.12.x`に対するサポートを続けています。
+
+**1. 依存関係のアップグレード**
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+RainbowKitのバージョン`0.12.x`または`1.0.x`より前を使用している場合は、[移行ガイド](/docs/migration-guide)に従って最新の状態になるまでアップグレードしてください。
+
+`0.12.x` dAppsはwagmi v1へのアップグレードを開始することを推奨します。WalletConnect v2の安定性向上は、今後のwagmiのバージョンでのみ含まれます。
+
+\*\*2. projectIdの提供
+
+WalletConnectに依存するすべてのdAppは現在、[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分しかかかりません。
+
+次に示すように、`getDefaultWallets`と個々のRainbowKitウォレットコネクタに`projectId`を供給してください。
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKitはタイプセーフであり、`projectId`が欠落していると警告します。 v2が動作する様子を見るために、当社の例を参照してください：
+
+-   [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+#### 高度なカスタマイズ
+
+あなたのdAppがまだWalletConnect v2に移行しきっていないレガシーウォレットをサポートする必要がある場合、RainbowKitのデフォルトのWalletConnectバージョンは各ウォレットごとに独立して上書きすることができます。
+
+```ts
+metaMaskWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+});
+```
+
+WalletConnect v1サーバーが6月28日にシャットダウンされたら、v1プロトコルを続けるためには[カスタムブリッジサーバー](https://docs.walletconnect.com/1.0/bridge-server)が必要になります。 以下の例を参照してください:
+
+```ts
+walletConnectWallet(options: {
+  chains: Chain[];
+  version: '1',
+  options: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+
+customWallet(options: {
+  chains: Chain[];
+  walletConnectVersion: '1',
+  walletConnectOptions: {
+    bridge: 'https://bridge.myhostedserver.com',
+  },
+});
+```
+
+追加のサポートオプションについては、 [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) を参照してください。

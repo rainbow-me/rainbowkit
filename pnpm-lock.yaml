@@ -590,6 +590,9 @@ importers:
       next-contentlayer:
         specifier: 0.2.9
         version: 0.2.9(esbuild@0.14.39)(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
+      next-sitemap:
+        specifier: ^4.2.3
+        version: 4.2.3(next@13.4.19)
 
 packages:
 
@@ -4935,6 +4938,10 @@ packages:
       type-fest: 3.10.0(typescript@5.0.4)
     transitivePeerDependencies:
       - typescript
+    dev: true
+
+  /@corex/deepmerge@4.0.43:
+    resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
     dev: true
 
   /@cspotcode/source-map-support@0.8.1:
@@ -19052,6 +19059,20 @@ packages:
       react: 18.2.0
       use-intl: 2.20.2(react@18.2.0)
     dev: false
+
+  /next-sitemap@4.2.3(next@13.4.19):
+    resolution: {integrity: sha512-vjdCxeDuWDzldhCnyFCQipw5bfpl4HmZA7uoo3GAaYGjGgfL4Cxb1CiztPuWGmS+auYs7/8OekRS8C2cjdAsjQ==}
+    engines: {node: '>=14.18'}
+    hasBin: true
+    peerDependencies:
+      next: '*'
+    dependencies:
+      '@corex/deepmerge': 4.0.43
+      '@next/env': 13.4.19
+      fast-glob: 3.2.12
+      minimist: 1.2.8
+      next: 13.4.19(@babel/core@7.21.8)(@opentelemetry/api@1.1.0)(react-dom@18.2.0)(react@18.2.0)
+    dev: true
 
   /next@13.4.19(@babel/core@7.21.8)(@opentelemetry/api@1.1.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-HuPSzzAbJ1T4BD8e0bs6B9C1kWQ6gv8ykZoRWs5AQoiIuqbGHHdQO7Ljuvg05Q0Z24E2ABozHe6FxDvI6HfyAw==}

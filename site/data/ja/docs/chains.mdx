@@ -1,0 +1,80 @@
+---
+title: チェーン
+description: チェーンのカスタマイズ
+---
+
+# チェーン
+
+## チェーンのカスタマイズ
+
+`RainbowKitProvider`の`chains`プロップは、ユーザーが選択できるチェーンを定義します。
+
+RainbowKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)と統合するように設計されています。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。
+
+> `chain`オブジェクトの詳細、またはカスタムチェーン定義を作成するときの例については、[wagmiの`chain`オブジェクトのソースコード](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts)を参照してください。
+
+あなたのチェーン設定は、[`configureChains`](https://wagmi.sh/react/providers/configuring-chains)に提供された単一の配列で定義できます。
+
+```tsx
+import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
+import { configureChains } from 'wagmi';
+import { mainnet, optimism, zora } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains } = configureChains(
+  [mainnet, optimism, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider(),
+  ]
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider chains={chains} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 初期チェーンのカスタマイズ
+
+デフォルトでは、RainbowKitはユーザーがすぐに"Wrong network"状態にならないように、`chains`配列の最初のチェーンに接続します。 この動作は、`initialChain` propを介してカスタマイズできます。
+
+初期チェーンはチェーンIDを使用して設定できます。
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={1}>
+```
+
+便宜上、チェーンオブジェクトも渡すことができます。
+
+```tsx
+<RainbowKitProvider chains={chains} initialChain={mainnet}>
+```
+
+### カスタムチェーンアイコン
+
+デフォルトでいくつかのチェーンアイコンが提供されますが、iconUrlプロパティを使用して各チェーンのアイコンをカスタマイズできます。
+
+```tsx
+import { Chain, mainnet, optimism } from 'wagmi/chains';
+
+const defaultChains: Chain[] = [
+  {
+    ...mainnet,
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const { chains } = configureChains(defaultChains, [
+  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+  publicProvider(),
+]);
+```

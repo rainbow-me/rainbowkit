@@ -9,7 +9,10 @@
     "start-app": {
       "name": "Run Dev Server",
       "command": "yarn dev",
-      "runAtStart": true
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
     }
   }
 }

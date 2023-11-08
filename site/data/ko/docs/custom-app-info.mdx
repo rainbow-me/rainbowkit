@@ -1,0 +1,62 @@
+---
+title: 사용자 정의 앱 정보
+description: 앱의 정보를 사용자 정의하는 방법
+---
+
+# 사용자 정의 앱 정보
+
+## 앱의 정보를 사용자 정의하는 방법
+
+`RainbowKitProvider`에 `appInfo` prop으로 앱의 정보를 전달할 수 있습니다. 수정할 수 있는 속성은 앱의 이름 (`appName`)과 연결 모달에서 '자세히 알아보기' 버튼을 클릭할 때 리디렉션되는 링크 (`learnMoreUrl`)입니다:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 디스클레이머 추가
+
+연결 모달 하단에 표시될 자체 디스클레이머를 제공할 수 있습니다. `appInfo`의 `disclaimer` 속성은 인수 `Text`와 `Link`가 있는 `DisclaimerComponent`를 취합니다. 테마 시스템을 상속하는 자체 디스클레이머를 구축하는 데 사용할 수 있습니다. TypeScript 사용자를 위해 `DisclaimerComponent` 유형을 내보냅니다:
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

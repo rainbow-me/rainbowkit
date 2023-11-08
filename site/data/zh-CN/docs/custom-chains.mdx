@@ -1,0 +1,75 @@
+---
+title: 自定义链
+description: 创建自定义链
+---
+
+# 自定义链
+
+## 创建自定义链
+
+您可以使用 `Chain` 类型来帮助您创建自定义链。 然后，将其传递到 [`configureChains` 函数](https://wagmi.sh/docs/providers/configuring-chains)。
+
+例如，这里是您可以为 [avax.network](https://avax.network) 创建 Avalanche 链的方式。
+
+```tsx
+import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+
+const avalanche: Chain = {
+  id: 43_114,
+  name: 'Avalanche',
+  network: 'avalanche',
+  iconUrl: 'https://example.com/icon.svg',
+  iconBackground: '#fff',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Avalanche',
+    symbol: 'AVAX',
+  },
+  rpcUrls: {
+    public: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+  testnet: false,
+};
+
+const { provider, chains } = configureChains(
+  [avalanche],
+  [publicProvider()]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  provider,
+});
+
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <YourApp />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+了解更多关于 [配置链](https://wagmi.sh/docs/providers/configuring-chains)的信息。
