@@ -39,7 +39,7 @@ export const connectorsForWallets = (
 
       const walletListItem = {
         ...wallet,
-        groupIndex,
+        groupIndex: groupIndex + 1,
         groupName,
         index,
       };

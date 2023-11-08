@@ -104,7 +104,7 @@ const connectors = connectorsForWallets([
 ]);
 
 export const wagmiConfig = createConfig({
-  chains: [mainnet, sepolia],
+  chains: [mainnet, sepolia, optimism, zora],
   multiInjectedProviderDiscovery: true,
   connectors,
   transports: {

@@ -254,7 +254,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 onClick={() =>
                   sendTransaction?.({
                     to: address as `0x`,
-                    value: parseEther("0.1"),
+                    value: parseEther("0.001"),
                   })
                 }
                 type="button"

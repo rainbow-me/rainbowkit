@@ -1,78 +1,84 @@
-import { render } from '@testing-library/react';
-import type { MockProviderOptions } from '@wagmi/core/connectors/mock';
-import React, { ReactElement } from 'react';
-import { http, createWalletClient } from 'viem';
-import { privateKeyToAccount } from 'viem/accounts';
-import { WagmiConfig, configureChains, createConfig } from 'wagmi';
-import type { Chain } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
-import { MockConnector } from 'wagmi/connectors/mock';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
+import { render } from "@testing-library/react";
+import React, { ReactElement } from "react";
+import { http, Chain } from "viem";
+import { WagmiProvider, createConfig } from "wagmi";
+import {
+  arbitrum,
+  base,
+  bsc,
+  goerli,
+  holesky,
+  mainnet,
+  optimism,
+  polygon,
+  zkSync,
+  zora,
+} from "wagmi/chains";
+import { RainbowKitProvider } from "../src/components/RainbowKitProvider/RainbowKitProvider";
+import type { RainbowKitProviderProps } from "../src/components/RainbowKitProvider/RainbowKitProvider";
+import { getDefaultWallets } from "../src/wallets/getDefaultWallets";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { MockParameters, mock } from "wagmi/connectors";
 
 const defaultChains = [mainnet, polygon, optimism, arbitrum, base, zora];
+
+const queryClient = new QueryClient();
 
 export function renderWithProviders(
   component: ReactElement,
   options?: {
     chains?: Chain[];
     mock?: boolean;
-    mockOptions?: MockProviderOptions;
-    props?: Omit<RainbowKitProviderProps, 'children'>;
-  },
+    mockOptions?: MockParameters;
+    props?: Omit<RainbowKitProviderProps, "children">;
+  }
 ) {
   const supportedChains: Chain[] = options?.chains || defaultChains;
-  const firstChain = supportedChains[0];
-
-  const account = privateKeyToAccount(
-    '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
-  ); // first anvil pk
-
-  const client = createWalletClient({
-    account,
-    chain: firstChain,
-    transport: http(),
-  });
-
-  const { chains, publicClient } = configureChains(supportedChains, [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID ?? '' }),
-    publicProvider(),
-  ]);
 
   const { connectors } = getDefaultWallets({
-    appName: 'My RainbowKit App',
-    chains,
-    projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
-  });
-
-  const mockConnector = new MockConnector({
-    chains,
-    options: {
-      chainId: firstChain.id,
-      flags: { isAuthorized: true },
-      walletClient: client,
-      ...options?.mockOptions,
-    },
+    appName: "My RainbowKit App",
+    projectId: process.env.WALLETCONNECT_PROJECT_ID ?? "YOUR_PROJECT_ID",
   });
 
   const wagmiConfig = createConfig({
-    autoConnect: true,
-    connectors: options?.mock ? [mockConnector] : connectors,
-    publicClient,
+    chains: supportedChains as unknown as readonly [Chain, ...Chain[]],
+    multiInjectedProviderDiscovery: true,
+    connectors: options?.mock
+      ? [
+          mock({
+            accounts: [
+              "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+              "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+              "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+            ],
+          }),
+        ]
+      : connectors,
+    transports: {
+      [mainnet.id]: http(),
+      [polygon.id]: http(),
+      [optimism.id]: http(),
+      [arbitrum.id]: http(),
+      [base.id]: http(),
+      [zora.id]: http(),
+      [bsc.id]: http(),
+      [zkSync.id]: http(),
+      [goerli.id]: http(),
+      [holesky.id]: http(),
+    },
   });
 
   return render(component, {
     wrapper: ({ children }) => (
-      <WagmiConfig config={wagmiConfig}>
-        <RainbowKitProvider
-          chains={chains}
-          children={children}
-          {...options?.props}
-        />
-      </WagmiConfig>
+      <WagmiProvider config={wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider
+            chains={supportedChains}
+            children={children}
+            {...options?.props}
+          />
+        </QueryClientProvider>
+      </WagmiProvider>
     ),
   });
 }

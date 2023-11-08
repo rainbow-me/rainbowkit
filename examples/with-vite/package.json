@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
+    "@tanstack/react-query": "5.0.0-beta.35",
     "buffer": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

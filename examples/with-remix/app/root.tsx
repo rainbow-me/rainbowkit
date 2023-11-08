@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Meta,
   Links,
@@ -7,14 +7,14 @@ import {
   LiveReload,
   ScrollRestoration,
   useLoaderData,
-} from '@remix-run/react';
-import { json } from '@remix-run/node';
+} from "@remix-run/react";
+import { json } from "@remix-run/node";
 import type {
   MetaFunction,
   LinksFunction,
   LoaderFunction,
-} from '@remix-run/node';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+} from "@remix-run/node";
+import { createConfig, http, WagmiConfig, WagmiProvider } from "wagmi";
 import {
   mainnet,
   polygon,
@@ -23,31 +23,31 @@ import {
   base,
   zora,
   goerli,
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
-import type { Chain } from 'wagmi';
+  Chain,
+} from "wagmi/chains";
 import {
   RainbowKitProvider,
   ConnectButton,
   getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+} from "@rainbow-me/rainbowkit";
 
-import globalStylesUrl from './styles/global.css';
-import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
+import globalStylesUrl from "./styles/global.css";
+import rainbowStylesUrl from "@rainbow-me/rainbowkit/styles.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
 export const meta: MetaFunction = () => ({
-  charset: 'utf-8',
-  title: 'RainbowKit Remix Example',
-  viewport: 'width=device-width,initial-scale=1',
+  charset: "utf-8",
+  title: "RainbowKit Remix Example",
+  viewport: "width=device-width,initial-scale=1",
 });
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: globalStylesUrl },
-  { rel: 'stylesheet', href: rainbowStylesUrl },
+  { rel: "stylesheet", href: globalStylesUrl },
+  { rel: "stylesheet", href: rainbowStylesUrl },
 ];
 
 // Note: These environment variables are hard coded for demonstration purposes.
@@ -55,12 +55,14 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
-      PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
+      PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || "false",
     },
   };
 
   return json(data);
 };
+
+const client = new QueryClient();
 
 export default function App() {
   const { ENV } = useLoaderData<LoaderData>();
@@ -70,23 +72,36 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
-    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : [];
 
-    const { chains, publicClient } = configureChains(
-      [mainnet, polygon, optimism, arbitrum, base, zora, ...testChains],
-      [publicProvider()]
-    );
+    const chains = [
+      mainnet,
+      polygon,
+      optimism,
+      arbitrum,
+      base,
+      zora,
+      ...testChains,
+    ];
 
     const { connectors } = getDefaultWallets({
-      appName: 'RainbowKit Remix Example',
-      projectId: 'YOUR_PROJECT_ID',
-      chains,
+      appName: "RainbowKit Remix Example",
+      projectId: "YOUR_PROJECT_ID",
     });
 
     const config = createConfig({
-      autoConnect: true,
+      chains: chains as unknown as readonly [Chain, ...Chain[]],
+      multiInjectedProviderDiscovery: true,
       connectors,
-      publicClient,
+      transports: {
+        [mainnet.id]: http(),
+        [goerli.id]: http(),
+        [polygon.id]: http(),
+        [optimism.id]: http(),
+        [arbitrum.id]: http(),
+        [base.id]: http(),
+        [zora.id]: http(),
+      },
     });
 
     return {
@@ -103,20 +118,22 @@ export default function App() {
       </head>
       <body>
         {config && chains ? (
-          <WagmiConfig config={config}>
-            <RainbowKitProvider chains={chains as Chain[]}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  padding: '12px',
-                }}
-              >
-                <ConnectButton />
-              </div>
-            </RainbowKitProvider>
-            <Outlet />
-          </WagmiConfig>
+          <WagmiProvider config={config}>
+            <QueryClientProvider client={client}>
+              <RainbowKitProvider chains={chains}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    padding: "12px",
+                  }}
+                >
+                  <ConnectButton />
+                </div>
+              </RainbowKitProvider>
+              <Outlet />
+            </QueryClientProvider>
+          </WagmiProvider>
         ) : null}
         <ScrollRestoration />
         <Scripts />

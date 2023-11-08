@@ -74,6 +74,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     "Popular",
     "More",
     "Others",
+    "Installed",
   ];
 
   const connectToWallet = (wallet: WalletConnector) => {

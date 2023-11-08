@@ -4,11 +4,8 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
 import {
   useAccount,
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-  useSimulateContract,
-  useWaitForTransaction,
+  useReadContract,
+  useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
 import { abi } from "../contract-abi";
@@ -26,31 +23,25 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0n);
   const { isConnected } = useAccount();
 
-  const { data: contractWriteConfig } = useSimulateContract({
-    ...contractConfig,
-    functionName: "mint",
-  });
-
   const {
-    data: mintData,
+    data: hash,
     writeContract: mint,
     isPending: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useWriteContract(contractWriteConfig);
+  } = useWriteContract();
 
-  const { data: totalSupplyData } = useContractRead({
+  const { data: totalSupplyData } = useReadContract({
     ...contractConfig,
     functionName: "totalSupply",
-    watch: true,
   });
 
   const {
     data: txData,
     isSuccess: txSuccess,
     error: txError,
-  } = useWaitForTransaction({
-    hash: mintData?.hash,
+  } = useWaitForTransactionReceipt({
+    hash,
   });
 
   React.useEffect(() => {
@@ -90,7 +81,12 @@ const Home: NextPage = () => {
                 className="button"
                 data-mint-loading={isMintLoading}
                 data-mint-started={isMintStarted}
-                onClick={() => mint?.()}
+                onClick={() =>
+                  mint?.({
+                    ...contractConfig,
+                    functionName: "mint",
+                  })
+                }
               >
                 {isMintLoading && "Waiting for approval"}
                 {isMintStarted && "Minting..."}
@@ -128,7 +124,7 @@ const Home: NextPage = () => {
                 </p>
                 <p style={{ marginBottom: 6 }}>
                   View on{" "}
-                  <a href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}>
+                  <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
                     Etherscan
                   </a>
                 </p>

@@ -30,7 +30,6 @@ const Home: NextPage = () => {
         return (
           <button
             onClick={async () => {
-              console.log(connector);
               connector.connect();
             }}
           >

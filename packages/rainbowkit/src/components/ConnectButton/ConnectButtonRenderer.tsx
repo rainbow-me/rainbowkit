@@ -66,14 +66,12 @@ export function ConnectButtonRenderer({
   const { chain: activeChain } = useAccount();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
-
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
     : undefined;
   const chainName = rainbowKitChain?.name ?? undefined;
   const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
   const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
-
   const resolvedChainIconUrl = useAsyncImage(chainIconUrl);
 
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);

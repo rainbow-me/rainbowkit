@@ -8,7 +8,6 @@ import { Dialog } from "../Dialog/Dialog";
 import { DialogContent } from "../Dialog/DialogContent";
 import { DisconnectSqIcon } from "../Icons/DisconnectSq";
 import { MenuButton } from "../MenuButton/MenuButton";
-import { AppContext } from "../RainbowKitProvider/AppContext";
 import { I18nContext } from "../RainbowKitProvider/I18nContext";
 import { useRainbowKitChains } from "../RainbowKitProvider/RainbowKitChainContext";
 import { Text } from "../Text/Text";
@@ -23,8 +22,8 @@ export interface ChainModalProps {
 }
 
 export function ChainModal({ onClose, open }: ChainModalProps) {
-  const { chain: activeChain, chainId } = useAccount();
-  const { reset, switchChain, ...rest } = useSwitchChain({
+  const { chainId } = useAccount();
+  const { reset, switchChain } = useSwitchChain({
     mutation: {
       onSettled: () => {
         reset(); // reset mutation variables (eg. pendingChainId, error)
@@ -32,7 +31,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
       },
     },
   });
-  console.log(rest);
+
   const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
@@ -41,8 +40,6 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
   // @TODO (mago): find a way to get unsupported chain from user
   const unsupportedChain = /* activeChain?.unsupported ?? false */ false;
   const chainIconSize = mobile ? "36" : "28";
-
-  const { appName } = useContext(AppContext);
 
   const rainbowkitChains = useRainbowKitChains();
 
