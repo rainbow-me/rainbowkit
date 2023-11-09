@@ -1,11 +1,11 @@
-import "./polyfills";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
-import "./index.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { createConfig, http, WagmiProvider } from "wagmi";
+import './polyfills';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+import './index.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -15,8 +15,8 @@ import {
   zora,
   goerli,
   Chain,
-} from "wagmi/chains";
-import App from "./App";
+} from 'wagmi/chains';
+import App from './App';
 
 const chains = [
   mainnet,
@@ -25,12 +25,12 @@ const chains = [
   arbitrum,
   base,
   zora,
-  ...(process.env.REACT_APP_ENABLE_TESTNETS === "true" ? [goerli] : []),
+  ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
 ];
 
 const { connectors } = getDefaultWallets({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
 });
 
 export const wagmiConfig = createConfig({
@@ -48,7 +48,7 @@ export const wagmiConfig = createConfig({
 });
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 
 root.render(

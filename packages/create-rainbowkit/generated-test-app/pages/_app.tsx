@@ -1,8 +1,8 @@
-import "../styles/globals.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import type { AppProps } from "next/app";
-import { createConfig, http, WagmiProvider } from "wagmi";
+import '../styles/globals.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import type { AppProps } from 'next/app';
+import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   goerli,
@@ -15,8 +15,8 @@ import {
   bsc,
   zkSync,
   holesky,
-} from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+} from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains = [
   mainnet,
@@ -25,12 +25,12 @@ const chains = [
   arbitrum,
   base,
   zora,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
 ];
 
 const { connectors } = getDefaultWallets({
-  appName: "RainbowKit App",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
 });
 
 const wagmiConfig = createConfig({

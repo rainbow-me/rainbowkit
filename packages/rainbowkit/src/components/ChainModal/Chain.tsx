@@ -1,19 +1,19 @@
-import React, { Fragment, useContext } from "react";
-import { AsyncImage } from "../AsyncImage/AsyncImage";
-import { Box, BoxProps } from "../Box/Box";
-import { MenuButton } from "../MenuButton/MenuButton";
-import { Text } from "../Text/Text";
-import { useSwitchChain } from "wagmi";
-import { AsyncImageSrc } from "../AsyncImage/useAsyncImage";
-import { isMobile } from "../../utils/isMobile";
-import { I18nContext } from "../RainbowKitProvider/I18nContext";
-import { useRainbowKitChains } from "../RainbowKitProvider/RainbowKitChainContext";
+import React, { Fragment, useContext } from 'react';
+import { useSwitchChain } from 'wagmi';
+import { isMobile } from '../../utils/isMobile';
+import { AsyncImage } from '../AsyncImage/AsyncImage';
+import { AsyncImageSrc } from '../AsyncImage/useAsyncImage';
+import { Box, BoxProps } from '../Box/Box';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { Text } from '../Text/Text';
 
 interface ChainProps {
   chainId: number;
   currentChainId: number;
-  switchChain: ReturnType<typeof useSwitchChain>["switchChain"];
-  chainIconSize: BoxProps["height"];
+  switchChain: ReturnType<typeof useSwitchChain>['switchChain'];
+  chainIconSize: BoxProps['height'];
   name: string | undefined;
   isLoading: boolean;
   iconBackground: string | undefined;
@@ -82,7 +82,7 @@ const Chain = ({
                 marginRight="6"
               >
                 <Text color="accentColorForeground" size="14" weight="medium">
-                  {i18n.t("chains.connected")}
+                  {i18n.t('chains.connected')}
                 </Text>
                 <Box
                   background="connectionIndicator"
@@ -104,7 +104,7 @@ const Chain = ({
                 marginRight="6"
               >
                 <Text color="modalText" size="14" weight="medium">
-                  {i18n.t("chains.confirm")}
+                  {i18n.t('chains.confirm')}
                 </Text>
                 <Box
                   background="standby"

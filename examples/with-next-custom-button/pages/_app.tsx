@@ -1,17 +1,17 @@
-import "../styles/global.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
+import '../styles/global.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import type { AppProps } from 'next/app';
 import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
-} from "@rainbow-me/rainbowkit";
+} from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
-} from "@rainbow-me/rainbowkit/wallets";
-import { createConfig, http, WagmiProvider } from "wagmi";
+} from '@rainbow-me/rainbowkit/wallets';
+import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -21,8 +21,8 @@ import {
   zora,
   goerli,
   Chain,
-} from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+} from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains = [
   mainnet,
@@ -31,24 +31,24 @@ const chains = [
   arbitrum,
   base,
   zora,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
 ];
 
-const projectId = "YOUR_PROJECT_ID";
+const projectId = 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
-  appName: "RainbowKit demo",
+  appName: 'RainbowKit demo',
   projectId,
 });
 
 const demoAppInfo = {
-  appName: "Rainbowkit Demo",
+  appName: 'Rainbowkit Demo',
 };
 
 const connectors = connectorsForWallets([
   ...wallets,
   {
-    groupName: "Other",
+    groupName: 'Other',
     wallets: [
       argentWallet({ projectId }),
       trustWallet({ projectId }),

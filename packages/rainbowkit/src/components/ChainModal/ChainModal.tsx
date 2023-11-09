@@ -1,21 +1,21 @@
-import React, { useContext, useState } from "react";
-import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
-import { isMobile } from "../../utils/isMobile";
-import { Box } from "../Box/Box";
-import { CloseButton } from "../CloseButton/CloseButton";
-import { Dialog } from "../Dialog/Dialog";
-import { DialogContent } from "../Dialog/DialogContent";
-import { DisconnectSqIcon } from "../Icons/DisconnectSq";
-import { MenuButton } from "../MenuButton/MenuButton";
-import { I18nContext } from "../RainbowKitProvider/I18nContext";
-import { useRainbowKitChains } from "../RainbowKitProvider/RainbowKitChainContext";
-import { Text } from "../Text/Text";
+import React, { useContext, useState } from 'react';
+import { useAccount, useDisconnect, useSwitchChain } from 'wagmi';
+import { useConfig } from 'wagmi';
+import { isMobile } from '../../utils/isMobile';
+import { Box } from '../Box/Box';
+import { CloseButton } from '../CloseButton/CloseButton';
+import { Dialog } from '../Dialog/Dialog';
+import { DialogContent } from '../Dialog/DialogContent';
+import { DisconnectSqIcon } from '../Icons/DisconnectSq';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { Text } from '../Text/Text';
+import Chain from './Chain';
 import {
   DesktopScrollClassName,
   MobileScrollClassName,
-} from "./ChainModal.css";
-import { useConfig } from "wagmi";
-import Chain from "./Chain";
+} from './ChainModal.css';
 
 export interface ChainModalProps {
   open: boolean;
@@ -46,10 +46,10 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
   const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
-  const titleId = "rk_chain_modal_title";
+  const titleId = 'rk_chain_modal_title';
   const mobile = isMobile();
-  const isCurrentChainSupported =  chains.some((chain) => chain.id === chainId);
-  const chainIconSize = mobile ? "36" : "28";
+  const isCurrentChainSupported = chains.some((chain) => chain.id === chainId);
+  const chainIconSize = mobile ? '36' : '28';
   const rainbowkitChains = useRainbowKitChains();
 
   if (!chainId) {
@@ -71,18 +71,18 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 as="h1"
                 color="modalText"
                 id={titleId}
-                size={mobile ? "20" : "18"}
+                size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                {i18n.t("chains.title")}
+                {i18n.t('chains.title')}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
           </Box>
           {!isCurrentChainSupported && (
-            <Box marginX="8" textAlign={mobile ? "center" : "left"}>
+            <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t("chains.wrong_network")}
+                {i18n.t('chains.wrong_network')}
               </Text>
             </Box>
           )}
@@ -110,7 +110,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                     idx={idx}
                   />
                 );
-              }
+              },
             )}
             {!isCurrentChainSupported && (
               <>
@@ -147,7 +147,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         >
                           <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
-                        <div>{i18n.t("chains.disconnect")}</div>
+                        <div>{i18n.t('chains.disconnect')}</div>
                       </Box>
                     </Box>
                   </Box>

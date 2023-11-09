@@ -56,8 +56,8 @@ export function AsyncImage({
         {...(isRemoteImage
           ? // biome-ignore format: design system keys
             {
-              "aria-hidden": true,
-              as: "img",
+              'aria-hidden': true,
+              as: 'img',
               onLoad: setRemoteImageLoaded,
               src: src,
             }

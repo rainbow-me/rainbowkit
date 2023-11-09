@@ -1,25 +1,25 @@
-import React, { ReactNode, useContext } from "react";
-import { useAccount, useBalance, useConfig } from "wagmi";
-import { useIsMounted } from "../../hooks/useIsMounted";
-import { useMainnetEnsAvatar } from "../../hooks/useMainnetEnsAvatar";
-import { useMainnetEnsName } from "../../hooks/useMainnetEnsName";
-import { useRecentTransactions } from "../../transactions/useRecentTransactions";
-import { useAsyncImage } from "../AsyncImage/useAsyncImage";
+import React, { ReactNode, useContext } from 'react';
+import { useAccount, useBalance, useConfig } from 'wagmi';
+import { useIsMounted } from '../../hooks/useIsMounted';
+import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
+import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
+import { useRecentTransactions } from '../../transactions/useRecentTransactions';
+import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
   AuthenticationStatus,
   useAuthenticationStatus,
-} from "../RainbowKitProvider/AuthenticationContext";
+} from '../RainbowKitProvider/AuthenticationContext';
 import {
   useAccountModal,
   useChainModal,
   useConnectModal,
   useModalState,
-} from "../RainbowKitProvider/ModalContext";
-import { useRainbowKitChainsById } from "../RainbowKitProvider/RainbowKitChainContext";
-import { ShowRecentTransactionsContext } from "../RainbowKitProvider/ShowRecentTransactionsContext";
-import { abbreviateETHBalance } from "./abbreviateETHBalance";
-import { formatAddress } from "./formatAddress";
-import { formatENS } from "./formatENS";
+} from '../RainbowKitProvider/ModalContext';
+import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
+import { abbreviateETHBalance } from './abbreviateETHBalance';
+import { formatAddress } from './formatAddress';
+import { formatENS } from './formatENS';
 
 const noop = () => {};
 
@@ -65,7 +65,7 @@ export function ConnectButtonRenderer({
   const { chainId } = useAccount();
   const { chains: wagmiChains } = useConfig();
   const isCurrentChainSupported = wagmiChains.some(
-    (chain) => chain.id === chainId
+    (chain) => chain.id === chainId,
   );
   const { data: balanceData } = useBalance({ address });
   const rainbowkitChainsById = useRainbowKitChainsById();
@@ -78,7 +78,7 @@ export function ConnectButtonRenderer({
 
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const hasPendingTransactions =
-    useRecentTransactions().some(({ status }) => status === "pending") &&
+    useRecentTransactions().some(({ status }) => status === 'pending') &&
     showRecentTransactions;
 
   const displayBalance = balanceData
@@ -134,4 +134,4 @@ export function ConnectButtonRenderer({
   );
 }
 
-ConnectButtonRenderer.displayName = "ConnectButton.Custom";
+ConnectButtonRenderer.displayName = 'ConnectButton.Custom';
