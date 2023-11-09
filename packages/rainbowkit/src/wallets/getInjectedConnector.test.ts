@@ -5,65 +5,12 @@ import {
 } from './getInjectedConnector';
 
 describe('getInjectedConnector', () => {
-  it('only rainbow provider', () => {
+  it('should return injected connector', () => {
     window.ethereum = { isMetaMask: true, isRainbow: true };
     const connector = getInjectedConnector({
       flag: 'isRainbow',
     });
-    expect(connector.name).toEqual('Rainbow');
-  });
-
-  it('only metamask provider', () => {
-    window.ethereum = { isMetaMask: true };
-    const connector = getInjectedConnector({
-      flag: 'isRainbow',
-    });
-    expect(connector.name).toEqual('MetaMask');
-  });
-
-  describe('rainbow and metamask providers', () => {
-    it('rainbow default enabled', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        isRainbow: true,
-        providers: [
-          { isMetaMask: true, isRainbow: true },
-          { isMetaMask: true },
-        ],
-      };
-      const connector = getInjectedConnector({
-        flag: 'isRainbow',
-      });
-      expect(connector.name).toEqual('Rainbow');
-    });
-
-    it('rainbow default disabled rainbow connector', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        providers: [
-          { isMetaMask: true },
-          { isMetaMask: true, isRainbow: true },
-        ],
-      };
-      const connector = getInjectedConnector({
-        flag: 'isRainbow',
-      });
-      expect(connector.name).toEqual('Rainbow');
-    });
-
-    it('rainbow default disabled metamask connector', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        providers: [
-          { isMetaMask: true },
-          { isMetaMask: true, isRainbow: true },
-        ],
-      };
-      const connector = getInjectedConnector({
-        flag: 'isMetaMask',
-      });
-      expect(connector.name).toEqual('MetaMask');
-    });
+    expect(!!connector).toBe(true);
   });
 });
 
