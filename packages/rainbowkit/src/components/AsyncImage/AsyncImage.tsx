@@ -57,9 +57,9 @@ export function AsyncImage({
           ? // biome-ignore format: design system keys
             {
               'aria-hidden': true,
-              as: 'img',
-              onLoad: setRemoteImageLoaded,
-              src: src,
+              'as': 'img',
+              'onLoad': setRemoteImageLoaded,
+              'src': src,
             }
           : {
               backgroundSize: 'contain',
@@ -67,7 +67,7 @@ export function AsyncImage({
         height="full"
         position="absolute"
         style={{
-          // @ts-ignore
+          // @ts-expect-error
           touchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',

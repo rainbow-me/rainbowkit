@@ -53,23 +53,23 @@ const Home: NextPage = () => {
   const isMinted = txSuccess;
 
   return (
-    <div className='page'>
-      <div className='container'>
-        <div style={{ flex: '1 1 auto' }}>
-          <div style={{ padding: '24px 24px 24px 0' }}>
+    <div className="page">
+      <div className="container">
+        <div style={{ flex: "1 1 auto" }}>
+          <div style={{ padding: "24px 24px 24px 0" }}>
             <h1>NFT Demo Mint</h1>
-            <p style={{ margin: '12px 0 24px' }}>
+            <p style={{ margin: "12px 0 24px" }}>
               {Number(totalMinted)} minted so far!
             </p>
             <ConnectButton />
 
             {mintError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {mintError.message}
               </p>
             )}
             {txError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
+              <p style={{ marginTop: 24, color: "#FF6257" }}>
                 Error: {txError.message}
               </p>
             )}
@@ -78,33 +78,33 @@ const Home: NextPage = () => {
               <button
                 style={{ marginTop: 24 }}
                 disabled={!mint || isMintLoading || isMintStarted}
-                className='button'
+                className="button"
                 data-mint-loading={isMintLoading}
                 data-mint-started={isMintStarted}
                 onClick={() =>
                   mint?.({
                     ...contractConfig,
-                    functionName: 'mint',
+                    functionName: "mint",
                   })
                 }
               >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
+                {isMintLoading && "Waiting for approval"}
+                {isMintStarted && "Minting..."}
+                {!isMintLoading && !isMintStarted && "Mint"}
               </button>
             )}
           </div>
         </div>
 
-        <div style={{ flex: '0 0 auto' }}>
+        <div style={{ flex: "0 0 auto" }}>
           <FlipCard>
             <FrontCard isCardFlipped={isMinted}>
               <Image
-                layout='responsive'
-                src='/nft.png'
-                width='500'
-                height='500'
-                alt='RainbowKit Demo NFT'
+                layout="responsive"
+                src="/nft.png"
+                width="500"
+                height="500"
+                alt="RainbowKit Demo NFT"
               />
               <h1 style={{ marginTop: 24 }}>Rainbow NFT</h1>
               <ConnectButton />
@@ -112,10 +112,10 @@ const Home: NextPage = () => {
             <BackCard isCardFlipped={isMinted}>
               <div style={{ padding: 24 }}>
                 <Image
-                  src='/nft.png'
-                  width='80'
-                  height='80'
-                  alt='RainbowKit Demo NFT'
+                  src="/nft.png"
+                  width="80"
+                  height="80"
+                  alt="RainbowKit Demo NFT"
                   style={{ borderRadius: 8 }}
                 />
                 <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>

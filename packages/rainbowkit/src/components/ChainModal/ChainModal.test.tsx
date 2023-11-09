@@ -17,7 +17,7 @@ describe('<ChainModal />', () => {
     const { findByText } = renderWithProviders(
       <ChainModal mockChainId={1} onClose={() => {}} open />,
       {
-        chains: [polygon], // only supports mainnet
+        chains: [polygon],
         mock: true,
       },
     );

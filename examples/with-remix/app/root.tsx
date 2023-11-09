@@ -111,7 +111,7 @@ export default function App() {
   });
 
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <Meta />
         <Links />
