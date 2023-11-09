@@ -72,9 +72,9 @@ describe('<ChainModal />', () => {
   it('Just closes on switch error (user rejected, or other)', async () => {
     let onCloseGotCalled = false;
     const modal = renderWithProviders(
-      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       <ChainModal
         mockChainId={1}
+        // biome-ignore lint/suspicious/noAssignInExpressions: TODO
         onClose={() => (onCloseGotCalled = true)}
         open
       />,
