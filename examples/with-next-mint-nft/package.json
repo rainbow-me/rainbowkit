@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@decent.xyz/box-hooks": "latest",
+    "@decent.xyz/box-ui": "latest",
     "@rainbow-me/rainbowkit": "workspace:*",
     "framer-motion": "^6.3.3",
     "next": "^13.4.19",
