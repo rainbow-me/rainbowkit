@@ -18,7 +18,6 @@ import {
   ChainId, 
   TokenInfo, 
   ethGasToken,
-  TokenSelector
 } from '@decent.xyz/box-ui';
 import { BoxHooksContextProvider } from '@decent.xyz/box-hooks';
 import { DecentMint } from '../components/DecentMint';
