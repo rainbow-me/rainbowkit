@@ -31,7 +31,9 @@ type ChainName =
   | 'zora'
   | 'zoraTestnet'
   | 'zkSync'
-  | 'zkSyncTestnet';
+  | 'zkSyncTestnet'
+  | 'xdc'
+  | 'xdcTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
@@ -98,6 +100,16 @@ const zkSyncIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
 };
 
+const xdcIcon: IconMetadata = {
+  iconBackground: '#f9f7ec',
+  iconUrl: async () => (await import('./chainIcons/xdc.svg')).default,
+};
+
+const xdcTestnetIcon: IconMetadata = {
+  iconBackground: '#f9f7ec',
+  iconUrl: async () => (await import('./chainIcons/xdcTestnet.svg')).default,
+};
+
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
@@ -127,6 +139,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zoraTestnet: { chainId: 999, ...zoraIcon },
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
+  xdc: { chainId: 50, ...xdcIcon },
+  xdcTestnet: { chainId: 51, ...xdcTestnetIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
