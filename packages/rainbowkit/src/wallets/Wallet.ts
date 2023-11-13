@@ -53,6 +53,7 @@ export type Wallet = {
   iconAccent?: string;
   iconBackground: string;
   installed?: boolean;
+  ready?: boolean;
   downloadUrls?: {
     android?: string;
     ios?: string;

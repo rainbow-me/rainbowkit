@@ -42,6 +42,9 @@ const Home: NextPage = () => {
     error: txError,
   } = useWaitForTransactionReceipt({
     hash,
+    query: {
+      enabled: !!hash,
+    },
   });
 
   React.useEffect(() => {
