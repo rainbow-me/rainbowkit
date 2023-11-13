@@ -32,7 +32,6 @@ const connectors = connectorsForWallets([
 
 const wagmiConfig = createConfig({
   chains: [goerli, mainnet],
-  multiInjectedProviderDiscovery: true,
   connectors,
   transports: {
     [mainnet.id]: http(),

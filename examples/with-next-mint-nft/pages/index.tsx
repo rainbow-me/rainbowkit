@@ -55,21 +55,21 @@ const Home: NextPage = () => {
   return (
     <div className="page">
       <div className="container">
-        <div style={{ flex: "1 1 auto" }}>
-          <div style={{ padding: "24px 24px 24px 0" }}>
+        <div style={{ flex: '1 1 auto' }}>
+          <div style={{ padding: '24px 24px 24px 0' }}>
             <h1>NFT Demo Mint</h1>
-            <p style={{ margin: "12px 0 24px" }}>
+            <p style={{ margin: '12px 0 24px' }}>
               {Number(totalMinted)} minted so far!
             </p>
             <ConnectButton />
 
             {mintError && (
-              <p style={{ marginTop: 24, color: "#FF6257" }}>
+              <p style={{ marginTop: 24, color: '#FF6257' }}>
                 Error: {mintError.message}
               </p>
             )}
             {txError && (
-              <p style={{ marginTop: 24, color: "#FF6257" }}>
+              <p style={{ marginTop: 24, color: '#FF6257' }}>
                 Error: {txError.message}
               </p>
             )}
@@ -88,15 +88,15 @@ const Home: NextPage = () => {
                   })
                 }
               >
-                {isMintLoading && "Waiting for approval"}
-                {isMintStarted && "Minting..."}
-                {!isMintLoading && !isMintStarted && "Mint"}
+                {isMintLoading && 'Waiting for approval'}
+                {isMintStarted && 'Minting...'}
+                {!isMintLoading && !isMintStarted && 'Mint'}
               </button>
             )}
           </div>
         </div>
 
-        <div style={{ flex: "0 0 auto" }}>
+        <div style={{ flex: '0 0 auto' }}>
           <FlipCard>
             <FrontCard isCardFlipped={isMinted}>
               <Image

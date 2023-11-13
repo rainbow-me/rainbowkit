@@ -42,7 +42,6 @@ export function renderWithProviders(
 
   const wagmiConfig = createConfig({
     chains: supportedChains as unknown as readonly [Chain, ...Chain[]],
-    multiInjectedProviderDiscovery: true,
     connectors: options?.mock
       ? [
           mock({

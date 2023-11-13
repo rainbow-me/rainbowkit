@@ -61,7 +61,6 @@ const connectors = connectorsForWallets([
 
 const wagmiConfig = createConfig({
   chains: chains as unknown as readonly [Chain, ...Chain[]],
-  multiInjectedProviderDiscovery: true,
   connectors,
   transports: {
     [mainnet.id]: http(),
