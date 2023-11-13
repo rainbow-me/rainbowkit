@@ -23,6 +23,7 @@ interface ProfileDetailsProps {
   ensName: ReturnType<typeof useEnsName>['data'];
   onClose: () => void;
   onDisconnect: () => void;
+  setBalanceData: (data: ReturnType<typeof useBalance>['data']) => void;
 }
 
 export function ProfileDetails({
@@ -32,9 +33,20 @@ export function ProfileDetails({
   ensName,
   onClose,
   onDisconnect,
+  setBalanceData,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
+
+  const { data: wagmiBalanceData } = useBalance({
+    address,
+    enabled: !balanceData,
+  });
+
+  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (!balanceData) setBalanceData(wagmiBalanceData);
+  }, [wagmiBalanceData?.value]);
 
   const i18n = useContext(I18nContext);
 

@@ -43,8 +43,13 @@ export function ConnectButton({
 
   const i18n = useContext(I18nContext);
 
+  const shouldShowBalance =
+    normalizeResponsiveValue(showBalance)[
+      isMobile() ? 'smallScreen' : 'largeScreen'
+    ];
+
   return (
-    <ConnectButtonRenderer>
+    <ConnectButtonRenderer showBalance={shouldShowBalance}>
       {({
         account,
         chain,
