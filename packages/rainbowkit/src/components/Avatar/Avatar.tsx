@@ -51,11 +51,6 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
           display="flex"
           height="full"
           position="absolute"
-          style={{
-            opacity: loading ? 1 : 0,
-            transition: loading ? '0.6s ease' : '0.2s ease',
-            transitionDelay: loading ? '.05s' : undefined,
-          }}
           width="full"
         >
           <SpinnerIcon height="100%" width="100%" />
