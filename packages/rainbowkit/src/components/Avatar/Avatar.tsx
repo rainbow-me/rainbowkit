@@ -45,7 +45,7 @@ export function Avatar({ address, imageUrl, loading, size }: AvatarProps) {
       >
         <AvatarComponent address={address} ensImage={imageUrl} size={size} />
       </Box>
-      {typeof loading === 'boolean' && (
+      {loading && (
         <Box
           color="accentColor"
           display="flex"
