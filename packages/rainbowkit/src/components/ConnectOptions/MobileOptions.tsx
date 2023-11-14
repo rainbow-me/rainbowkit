@@ -37,6 +37,7 @@ function WalletButton({
     onConnecting,
     ready,
     shortName,
+    showWalletConnectModal,
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
@@ -51,7 +52,12 @@ function WalletButton({
       fontFamily="body"
       key={id}
       onClick={useCallback(async () => {
-        if (id === 'walletConnect') onClose?.();
+        if (id === 'walletConnect') {
+          onClose?.();
+          showWalletConnectModal?.();
+          return;
+        }
+
         connect?.();
 
         // We need to guard against "onConnecting" callbacks being fired
@@ -99,7 +105,16 @@ function WalletButton({
             }
           }
         });
-      }, [connector, connect, getMobileUri, onConnecting, onClose, name, id])}
+      }, [
+        showWalletConnectModal,
+        connector,
+        connect,
+        getMobileUri,
+        onConnecting,
+        onClose,
+        name,
+        id,
+      ])}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       testId={`wallet-option-${id}`}
