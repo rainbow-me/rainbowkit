@@ -652,16 +652,14 @@ export default function App(
         <title>RainbowKit Example</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <SessionProvider
-          refetchInterval={0}
-          session={appProps.pageProps.session}
-        >
+
+      <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
+        <QueryClientProvider client={queryClient}>
           <WagmiProvider config={wagmiConfig}>
             <RainbowKitApp {...appProps} />
           </WagmiProvider>
-        </SessionProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </SessionProvider>
     </>
   );
 }
