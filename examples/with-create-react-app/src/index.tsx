@@ -33,7 +33,7 @@ const { connectors } = getDefaultWallets({
   projectId: 'YOUR_PROJECT_ID',
 });
 
-export const wagmiConfig = createConfig({
+const wagmiConfig = createConfig({
   chains: chains as unknown as readonly [Chain, ...Chain[]],
   connectors,
   transports: {

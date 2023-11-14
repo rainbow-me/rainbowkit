@@ -80,10 +80,10 @@ function WalletButton({
         };
 
         if (id !== 'walletConnect') onMobileUri();
-        if (id === 'walletConnect') onClose?.();
 
         if (showWalletConnectModal) {
           showWalletConnectModal();
+          onClose?.();
           return;
         }
 

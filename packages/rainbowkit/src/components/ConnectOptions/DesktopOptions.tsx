@@ -21,6 +21,7 @@ import {
 } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 
+import { isSafari } from '../../utils/browsers';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -61,6 +62,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const i18n = useContext(I18nContext);
+  const safari = isSafari();
 
   const wallets = useWalletConnectors()
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
@@ -86,6 +88,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     }
   };
 
+  const onDesktopUri = async (wallet: WalletConnector) => {
+    const sWallet = wallets.find((w) => wallet.id === w.id);
+
+    setTimeout(async () => {
+      const uri = await sWallet?.getDesktopUri?.();
+      if (uri) window.open(uri, safari ? '_blank' : '_self');
+    }, 0);
+  };
+
   const onQrCode = async (wallet: WalletConnector) => {
     const sWallet = wallets.find((w) => wallet.id === w.id);
 
@@ -107,7 +118,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const selectWallet = async (wallet: WalletConnector) => {
     // This ensures that we listen to the provider.once("display_uri")
     // before connecting to the wallet
-    if (wallet.ready) onQrCode(wallet);
+    if (wallet.ready) {
+      onQrCode(wallet);
+      onDesktopUri(wallet);
+    }
+
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 

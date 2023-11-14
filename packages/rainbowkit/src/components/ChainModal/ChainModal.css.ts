@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css';
 export const DesktopScrollClassName = style({
   maxHeight: 454,
   overflowY: 'auto',
-  overflowX: 'hidden',
 });
 
 export const MobileScrollClassName = style({
