@@ -10,15 +10,15 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@tanstack/react-query": "5.0.0-beta.35",
+    "@tanstack/react-query": "5.8.3",
     "ethers": "^5.6.8",
     "iron-session": "^6.3.1",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "2.0.0-alpha.17",
-    "wagmi": "2.0.0-alpha.10"
+    "viem": "2.0.0-beta.6",
+    "wagmi": "2.0.0-beta.3"
   },
   "devDependencies": {
     "@types/node": "^18.16.12",
