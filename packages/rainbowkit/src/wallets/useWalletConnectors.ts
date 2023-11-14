@@ -4,7 +4,7 @@ import {
   useInitialChainId,
   useRainbowKitChains,
 } from './../components/RainbowKitProvider/RainbowKitChainContext';
-import { WalletInstance } from './Wallet';
+import { WagmiConnectorInstance, WalletInstance } from './Wallet';
 import {
   getDesktopDownloadUrl,
   getExtensionDownloadUrl,
@@ -41,7 +41,13 @@ export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
-  const defaultConnectors = defaultConnectors_untyped as WalletInstance[];
+  const defaultCreatedConnectors =
+    defaultConnectors_untyped as WagmiConnectorInstance[];
+
+  const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
+    ...connector,
+    ...(connector.rkDetails || {}),
+  }));
 
   async function connectWallet(connector: Connector) {
     const walletChainId = await connector.getChainId();
@@ -122,7 +128,7 @@ export function useWalletConnectors(): WalletConnector[] {
     .filter(isEIP6963Connector)
     .map((connector) => {
       // We would have to do this just to ensure that we don't mix the EIP6963 connector (id's)
-      // with rainbowkit connectors (id's). Otherwise we might run into some conflicts / issues
+      // with rainbowkit connectors (id's). Otherwise we will run into conflicts / issues
       return {
         ...connector,
         id: `${eip6963StrPrefix}-${connector.id}`,

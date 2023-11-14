@@ -71,14 +71,22 @@ export const connectorsForWallets = (
         }
       }
 
-      const params = (additionalParams: WalletOptionsParams = {}) => {
-        return omitUndefinedValues({
-          ...walletMeta,
-          groupIndex,
-          groupName,
-          isRainbowKitConnector: true,
-          ...additionalParams,
-        });
+      const params = (
+        // For now we should only use these as the additional parameters
+        additionalParams?: Pick<
+          WalletOptionsParams['rkDetails'],
+          'showQrModal' | 'isWalletConnectModalConnector'
+        >,
+      ) => {
+        return {
+          rkDetails: omitUndefinedValues({
+            ...walletMeta,
+            groupIndex,
+            groupName,
+            isRainbowKitConnector: true,
+            ...additionalParams,
+          }),
+        };
       };
 
       const isWalletConnectConnector = walletMeta.id === 'walletConnect';

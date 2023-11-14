@@ -71,7 +71,10 @@ export function GetDetail({
   getWalletDownload: (walletId: string) => void;
   compactModeEnabled: boolean;
 }) {
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    (wallet) => wallet.isRainbowKitConnector,
+  );
+
   const shownWallets = wallets.splice(0, 5);
 
   const i18n = useContext(I18nContext);

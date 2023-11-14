@@ -91,7 +91,7 @@ export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
             },
           },
         }),
-    createConnector: (walletOptions: WalletOptionsParams = {}) =>
+    createConnector: (walletOptions: WalletOptionsParams) =>
       createConnector((config) => ({
         ...coinbaseWagmiWallet({ appName, headlessMode: true })(config),
         ...walletOptions,

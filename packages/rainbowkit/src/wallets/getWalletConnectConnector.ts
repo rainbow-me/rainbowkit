@@ -3,17 +3,46 @@ import { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { CreateConnector, WalletOptionsParams } from './Wallet';
 
+const walletConnectInstances = new Map<
+  string,
+  ReturnType<typeof walletConnect>
+>();
+
+// Function to get or create a walletConnect instance
+const getOrCreateWalletConnectInstance = (
+  projectId: string,
+  showQrModal: boolean,
+): ReturnType<typeof walletConnect> => {
+  const key = `${projectId}_${showQrModal}`;
+
+  const sharedWalletConnector = walletConnectInstances.get(key);
+
+  if (sharedWalletConnector) {
+    return sharedWalletConnector;
+  }
+
+  // Create a new walletConnect instance and store it
+  const newWalletConnectInstance = walletConnect({
+    projectId,
+    showQrModal,
+  });
+
+  walletConnectInstances.set(key, newWalletConnectInstance);
+
+  return newWalletConnectInstance;
+};
+
 // Creates a WalletConnect connector with the given project ID and additional options.
 function createWalletConnectConnector(
   projectId: string,
-  walletOptions: WalletOptionsParams = {},
+  walletOptions: WalletOptionsParams,
 ): CreateConnectorFn {
   // Create and configure the WalletConnect connector with project ID and options.
   return createConnector((config) => ({
-    ...walletConnect({
+    ...getOrCreateWalletConnectInstance(
       projectId,
-      showQrModal: walletOptions.showQrModal ?? false,
-    })(config),
+      walletOptions.rkDetails?.showQrModal ?? false,
+    )(config),
     ...walletOptions,
   }));
 }
@@ -32,6 +61,6 @@ export function getWalletConnectConnector({
   }
 
   // Return a function that merges additional wallet options with the default options.
-  return (walletOptions: WalletOptionsParams = {}) =>
+  return (walletOptions: WalletOptionsParams) =>
     createWalletConnectConnector(projectId, { ...walletOptions });
 }

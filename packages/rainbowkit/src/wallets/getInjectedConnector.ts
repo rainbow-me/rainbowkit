@@ -35,13 +35,13 @@ function getInjectedProvider(flag: string) {
 }
 
 function createInjectedConnector(provider?: any): CreateConnector {
-  return (walletOptions: WalletOptionsParams = {}) => {
+  return (walletOptions: WalletOptionsParams) => {
     // Create the injected configuration object conditionally based on the provider.
     const injectedConfig = provider
       ? {
           target: () => ({
-            id: walletOptions.id,
-            name: walletOptions.name,
+            id: walletOptions.rkDetails.id,
+            name: walletOptions.rkDetails.name,
             provider,
           }),
         }

@@ -17,7 +17,7 @@ export const safeWallet = (): Wallet => ({
     // already running as a Safe App within the context of the Safe browser,
     // since it's unlikely to be a desired behavior for users.
   },
-  createConnector: (walletOptions: WalletOptionsParams = {}) => {
+  createConnector: (walletOptions: WalletOptionsParams) => {
     return createConnector((config) => ({
       ...safe()(config),
       ...walletOptions,

@@ -71,22 +71,33 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
-  createConnector: (options?: Record<string, any>) => CreateConnectorFn;
+  createConnector: (options: WalletOptionsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
 
-export type WalletOptionsParams = Record<string, any>;
-export type CreateConnector = (
-  walletOptions?: Record<string, any>,
-) => CreateConnectorFn;
+export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
+  index: number;
+  groupIndex: number;
+  groupName: string;
+  isWalletConnectModalConnector?: boolean;
+  isRainbowKitConnector: boolean;
+  walletConnectModalConnector?: Connector;
+  showQrModal?: boolean;
+};
 
-export type WalletInstance = Connector &
-  Omit<Wallet, 'createConnector' | 'hidden'> & {
-    index: number;
-    groupIndex: number;
-    groupName: string;
-    isRainbowKitConnector: boolean;
-    isWalletConnectModalConnector?: boolean;
-    walletConnectModalConnector?: Connector;
-  };
+export type WalletOptionsParams = { rkDetails: RainbowKitDetails };
+
+export type CreateConnector = (walletOptions: {
+  rkDetails: RainbowKitDetails;
+}) => CreateConnectorFn;
+
+// This is the default connector you get at first from wagmi
+// "Connector" + rainbowkit details we inject into the connector
+export type WagmiConnectorInstance = Connector & {
+  rkDetails: RainbowKitDetails;
+};
+
+// This will be the wallet instance we will return
+// in the rainbowkit connect modal
+export type WalletInstance = Connector & RainbowKitDetails;

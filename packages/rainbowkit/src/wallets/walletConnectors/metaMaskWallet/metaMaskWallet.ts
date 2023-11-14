@@ -157,7 +157,7 @@ export const metaMaskWallet = ({
       ? getWalletConnectConnector({
           projectId,
         })
-      : (walletOptions: WalletOptionsParams = {}) => {
+      : (walletOptions: WalletOptionsParams) => {
           return createConnector((config) => ({
             ...metaMask()(config),
             ...walletOptions,
