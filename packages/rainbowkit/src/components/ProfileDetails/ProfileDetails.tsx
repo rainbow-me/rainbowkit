@@ -45,7 +45,7 @@ export function ProfileDetails({
 
   // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (!balanceData) setBalanceData(wagmiBalanceData);
+    if (wagmiBalanceData) setBalanceData(wagmiBalanceData);
   }, [wagmiBalanceData?.value]);
 
   const i18n = useContext(I18nContext);
