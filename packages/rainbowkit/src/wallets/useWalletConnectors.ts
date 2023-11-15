@@ -167,7 +167,7 @@ export function useWalletConnectors(): WalletConnector[] {
     if (eip6963) {
       walletConnectors.push({
         ...wallet,
-        iconUrl: wallet.icon || '',
+        iconUrl: wallet.icon!,
         ready: true,
         connect: () => connectWallet(wallet),
         groupName: 'Installed',
@@ -200,6 +200,5 @@ export function useWalletConnectors(): WalletConnector[] {
         : undefined,
     });
   });
-
   return walletConnectors;
 }

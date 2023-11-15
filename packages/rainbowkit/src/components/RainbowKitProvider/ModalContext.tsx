@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useAccountEffect } from 'wagmi';
+import { useAccount, useAccountEffect, useConfig } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
@@ -63,6 +63,11 @@ export function ModalProvider({ children }: ModalProviderProps) {
 
   const connectionStatus = useConnectionStatus();
 
+  const { chainId } = useAccount();
+  const { chains } = useConfig();
+
+  const isCurrentChainSupported = chains.some((chain) => chain.id === chainId);
+
   interface CloseModalsOptions {
     keepConnectModalOpen?: boolean;
   }
@@ -80,14 +85,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
 
   useAccountEffect({
-    onConnect: (params) => {
-      console.log('CLOSED (onConnect)', params);
-      closeModals({ keepConnectModalOpen: isUnauthenticated });
-    },
-    onDisconnect: () => {
-      console.log('CLOSED (onDisconnect)');
-      closeModals();
-    },
+    onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
+    onDisconnect: () => closeModals(),
   });
 
   return (
@@ -98,7 +97,9 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           openAccountModal:
-            connectionStatus === 'connected' ? openAccountModal : undefined,
+            isCurrentChainSupported && connectionStatus === 'connected'
+              ? openAccountModal
+              : undefined,
           openChainModal:
             connectionStatus === 'connected' ? openChainModal : undefined,
           openConnectModal:
@@ -115,6 +116,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openAccountModal,
           openChainModal,
           openConnectModal,
+          isCurrentChainSupported,
         ],
       )}
     >

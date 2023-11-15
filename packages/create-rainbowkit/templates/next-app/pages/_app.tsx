@@ -16,7 +16,6 @@ import {
   zkSync,
   holesky,
 } from 'wagmi/chains';
-// @ts-ignore
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains = [

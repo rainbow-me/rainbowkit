@@ -91,6 +91,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const onDesktopUri = async (wallet: WalletConnector) => {
     const sWallet = wallets.find((w) => wallet.id === w.id);
 
+    if (!sWallet?.getDesktopUri) return;
+
     setTimeout(async () => {
       const uri = await sWallet?.getDesktopUri?.();
       if (uri) window.open(uri, safari ? '_blank' : '_self');

@@ -27,7 +27,7 @@ export const isRainbowKitConnector = (wallet: WalletInstance) => {
 export const isEIP6963Connector = (wallet: WalletInstance) => {
   return !!(
     !wallet.isRainbowKitConnector &&
-    wallet.icon &&
+    wallet.icon?.startsWith('data:image') &&
     wallet.uid &&
     wallet.name
   );
