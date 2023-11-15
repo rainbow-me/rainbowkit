@@ -1,4 +1,5 @@
-import { Connector, useConnect } from 'wagmi';
+import { Config, Connector, useConnect } from 'wagmi';
+import { ConnectMutateAsync } from 'wagmi/query';
 import { indexBy } from '../utils/indexBy';
 import {
   useInitialChainId,
@@ -21,10 +22,7 @@ import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
-  connect: () => Promise<{
-    accounts: readonly `0x${string}`[];
-    chainId: number;
-  }>;
+  connect: () => ReturnType<ConnectMutateAsync<Config, unknown>>;
   showWalletConnectModal?: () => void;
   recent: boolean;
   mobileDownloadUrl?: string;

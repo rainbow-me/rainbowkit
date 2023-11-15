@@ -141,7 +141,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-export const wagmiConfig = createConfig({
+const wagmiConfig = createConfig({
   chains: chains as unknown as readonly [Chain, ...Chain[]],
   connectors,
   transports: {
