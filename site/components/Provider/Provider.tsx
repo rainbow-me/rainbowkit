@@ -50,6 +50,7 @@ const connectors = connectorsForWallets([
 const wagmiConfig = createConfig({
   chains: chains as unknown as readonly [Chain, ...Chain[]],
   connectors,
+  ssr: true,
   transports: {
     [mainnet.id]: http(),
     [polygon.id]: http(),

@@ -36,7 +36,7 @@
     "unist-util-visit": "4.1.0",
     "viem": "2.0.0-beta.6",
     "wagmi": "2.0.0-beta.3",
-    "@tanstack/react-query": "5.0.0-beta.35"
+    "@tanstack/react-query": "5.8.3"
   },
   "devDependencies": {
     "contentlayer": "0.2.9",

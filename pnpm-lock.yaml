@@ -509,8 +509,8 @@ importers:
         specifier: ^8.0.12
         version: 8.0.12(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)(three@0.139.2)
       '@tanstack/react-query':
-        specifier: 5.0.0-beta.35
-        version: 5.0.0-beta.35(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)
+        specifier: 5.8.3
+        version: 5.8.3(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)
       '@vanilla-extract/css':
         specifier: 1.9.1
         version: 1.9.1
@@ -582,7 +582,7 @@ importers:
         version: 2.0.0-beta.6(typescript@5.0.4)
       wagmi:
         specifier: 2.0.0-beta.3
-        version: 2.0.0-beta.3(@tanstack/react-query@5.0.0-beta.35)(@types/react@18.2.21)(lokijs@1.5.12)(react-native@0.72.6)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6)
+        version: 2.0.0-beta.3(@tanstack/react-query@5.8.3)(@types/react@18.2.21)(lokijs@1.5.12)(react-native@0.72.6)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6)
     devDependencies:
       contentlayer:
         specifier: 0.2.9
@@ -8821,31 +8821,8 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tanstack/query-core@5.0.0-beta.35:
-    resolution: {integrity: sha512-UDFfBR+ncev2nte+nLsNTCX9Q06rfqADhTVnp5m43IdxFoXwy1qRVg3mBkMDZp+P2JHkKlRohYvZ+bUeuIwK2Q==}
-    dev: false
-
   /@tanstack/query-core@5.8.3:
     resolution: {integrity: sha512-SWFMFtcHfttLYif6pevnnMYnBvxKf3C+MHMH7bevyYfpXpTMsLB9O6nNGBdWSoPwnZRXFNyNeVZOw25Wmdasow==}
-
-  /@tanstack/react-query@5.0.0-beta.35(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0):
-    resolution: {integrity: sha512-9hxP/DZbGucYFaHx6Njhkrbx32lNRk4QqqkGzyQ4IPaYfJTELE7urc9LBYRwrof211cj0W76IxmpjDwZ5ljZpQ==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 5.0.0-beta.35
-      client-only: 0.0.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.72.6(@babel/core@7.21.8)(@babel/preset-env@7.16.4)(react@18.2.0)
-    dev: false
 
   /@tanstack/react-query@5.8.3(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0):
     resolution: {integrity: sha512-EDRrsMgUtKM+SjVmhDYBd4jwWWyHAw3kCaurKLIO90OfPQr/UhpwcqM2l/eQOaUYon9lfDB2ejQi1edHK7zEdA==}
@@ -24256,38 +24233,6 @@ packages:
     dependencies:
       xml-name-validator: 4.0.0
     dev: true
-
-  /wagmi@2.0.0-beta.3(@tanstack/react-query@5.0.0-beta.35)(@types/react@18.2.21)(lokijs@1.5.12)(react-native@0.72.6)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6):
-    resolution: {integrity: sha512-2DGS1Ie8RinxFDUqB1AwaLwRJ4I1dOPU2uH72pK1EuHXgPTe2lNbUG/re+EUhR5TJ1s0uefAtFj4khcir3BPuw==}
-    peerDependencies:
-      '@tanstack/react-query': '>=5.0.0'
-      react: '>=18'
-      typescript: '>=5.0.4'
-      viem: 2.0.0-beta.6
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@tanstack/react-query': 5.0.0-beta.35(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)
-      '@wagmi/connectors': 4.0.0-beta.3(@types/react@18.2.21)(@wagmi/core@2.0.0-beta.3)(lokijs@1.5.12)(react-native@0.72.6)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6)
-      '@wagmi/core': 2.0.0-beta.3(@types/react@18.2.21)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6)
-      react: 18.2.0
-      typescript: 5.0.4
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 2.0.0-beta.6(typescript@5.0.4)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - '@tanstack/query-core'
-      - '@types/react'
-      - bufferutil
-      - encoding
-      - immer
-      - lokijs
-      - react-native
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: false
 
   /wagmi@2.0.0-beta.3(@tanstack/react-query@5.8.3)(@types/react@18.2.21)(lokijs@1.5.12)(react-native@0.72.6)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0-beta.6):
     resolution: {integrity: sha512-2DGS1Ie8RinxFDUqB1AwaLwRJ4I1dOPU2uH72pK1EuHXgPTe2lNbUG/re+EUhR5TJ1s0uefAtFj4khcir3BPuw==}
