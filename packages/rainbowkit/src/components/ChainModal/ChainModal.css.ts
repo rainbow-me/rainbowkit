@@ -1,12 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
 export const DesktopScrollClassName = style({
-  maxHeight: 454,
+  maxHeight: 456,
   overflowY: 'auto',
+  overflowX: 'hidden',
 });
 
 export const MobileScrollClassName = style({
-  maxHeight: 454,
+  maxHeight: 456,
   overflowY: 'auto',
   overflowX: 'hidden',
   scrollbarWidth: 'none',
