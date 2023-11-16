@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Fixed a bug where the spinner icon was still spinning when loading state wasn't 'true' in the <Avatar /> component
+Fixed a bug where the avatar loading indicator had used excessive CPU cycles
