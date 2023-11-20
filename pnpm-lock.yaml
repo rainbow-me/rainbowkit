@@ -24,8 +24,8 @@ importers:
         specifier: ^18.4.2
         version: 18.4.2
       '@lavamoat/preinstall-always-fail':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       '@tanstack/query-core':
         specifier: ^4.28.0
         version: 4.29.5
@@ -6607,8 +6607,9 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /@lavamoat/preinstall-always-fail@1.0.0:
-    resolution: {integrity: sha512-vD2DcC0ffJj1w2y1Lu0OU39wHmlPEd2tCDW04Bm6Kf4LyRnCHCezTsS8yzeSJ+4so7XP+TITuR5FGJRWxPb+GA==}
+  /@lavamoat/preinstall-always-fail@2.0.0:
+    resolution: {integrity: sha512-7sgV9DtAD7z7nhxLb2vSjEqgjd3xVk2CbZKwBDVFXkZk1L6xrOIaJTNv5rgNy801/Rjc54KyJ48fHR3djwU35A==}
+    engines: {node: ^16.20.0 || ^18.0.0 || ^20.0.0}
     dev: true
 
   /@ledgerhq/connect-kit-loader@1.1.0:

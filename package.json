@@ -45,7 +45,7 @@
     "@changesets/cli": "2.26.2",
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.2",
-    "@lavamoat/preinstall-always-fail": "^1.0.0",
+    "@lavamoat/preinstall-always-fail": "^2.0.0",
     "@tanstack/query-core": "^4.28.0",
     "@tanstack/react-query": "^4.28.0",
     "@testing-library/jest-dom": "^6.1.4",
