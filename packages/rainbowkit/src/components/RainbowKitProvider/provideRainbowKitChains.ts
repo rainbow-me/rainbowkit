@@ -6,12 +6,14 @@ import type { RainbowKitChain } from './RainbowKitChainContext';
 type ChainName =
   | 'arbitrum'
   | 'arbitrumGoerli'
+  | 'arbitrumSepolia'
   | 'avalanche'
   | 'avalancheFuji'
   | 'cronos'
   | 'cronosTestnet'
   | 'base'
   | 'baseGoerli'
+  | 'baseSepolia'
   | 'bsc'
   | 'bscTestnet'
   | 'goerli'
@@ -23,6 +25,7 @@ type ChainName =
   | 'optimism'
   | 'optimismKovan'
   | 'optimismGoerli'
+  | 'optimismSepolia'
   | 'polygon'
   | 'polygonMumbai'
   | 'rinkeby'
@@ -33,6 +36,7 @@ type ChainName =
   | 'zkSync'
   | 'zkSyncTestnet'
   | 'zora'
+  | 'zoraSepolia'
   | 'zoraTestnet';
 
 type IconMetadata = {
@@ -108,10 +112,12 @@ const zoraIcon: IconMetadata = {
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   arbitrum: { chainId: 42_161, name: 'Arbitrum', ...arbitrumIcon },
   arbitrumGoerli: { chainId: 421_613, ...arbitrumIcon },
+  arbitrumSepolia: { chainId: 421_614, ...arbitrumIcon },
   avalanche: { chainId: 43_114, ...avalancheIcon },
   avalancheFuji: { chainId: 43_113, ...avalancheIcon },
   base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
+  baseSepolia: { chainId: 84532, ...baseIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
   cronos: { chainId: 25, ...cronosIcon },
@@ -125,6 +131,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
+  optimismSepolia: { chainId: 11155420, ...optimismIcon },
   polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
   polygonMumbai: { chainId: 80_001, ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
@@ -135,6 +142,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
+  zoraSepolia: { chainId: 999999999, ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
