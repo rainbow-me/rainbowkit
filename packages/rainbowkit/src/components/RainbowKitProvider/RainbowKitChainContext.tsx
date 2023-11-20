@@ -1,15 +1,15 @@
-import React, { ReactNode, createContext, useContext, useMemo } from 'react';
-import { provideRainbowKitChains } from './provideRainbowKitChains';
+import React, { ReactNode, createContext, useContext, useMemo } from "react";
+import { provideRainbowKitChains } from "./provideRainbowKitChains";
+import { Chain } from "viem";
 
-export interface RainbowKitChain {
+export interface RainbowKitChain extends Chain {
   id: number;
-  name?: string;
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
 
 interface RainbowKitChainContextValue {
-  chains: RainbowKitChain[];
+  chains: readonly [RainbowKitChain, ...RainbowKitChain[]];
   initialChainId?: number;
 }
 
@@ -18,7 +18,7 @@ const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
 });
 
 interface RainbowKitChainProviderProps {
-  chains: RainbowKitChain[];
+  chains: readonly [RainbowKitChain, ...RainbowKitChain[]];
   initialChain?: RainbowKitChain | number;
   children: ReactNode;
 }
@@ -34,9 +34,9 @@ export function RainbowKitChainProvider({
         () => ({
           chains: provideRainbowKitChains(chains),
           initialChainId:
-            typeof initialChain === 'number' ? initialChain : initialChain?.id,
+            typeof initialChain === "number" ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain],
+        [chains, initialChain]
       )}
     >
       {children}
