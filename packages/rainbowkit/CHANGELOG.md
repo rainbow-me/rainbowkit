@@ -1,5 +1,32 @@
 # @rainbow-me/rainbowkit
 
+## 1.2.1
+
+### Patch Changes
+
+- 74ead9df: Tokenary Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { tokenaryWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [tokenaryWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 94dce820: Fixed scroll bar inconsistencies in the Chain selector for large chain lists or when animating upon user interaction
+- 39d81e93: Fixed a bug where the avatar loading indicator had used excessive CPU cycles
+
 ## 1.2.0
 
 ### Minor Changes
