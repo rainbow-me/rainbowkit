@@ -44,6 +44,23 @@ body {
   transition: all ease 100ms;
 }
 
+.disabled-button {
+  appearance: none;
+  border: none;
+  font-family: SFRounded, ui-rounded, "SF Pro Rounded";
+  background-color: gray;
+  display: inline-flex;
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 700;
+  height: 35px;
+  padding: 0 24px;
+  border-radius: 9999px;
+  align-items: center;
+  color: white;
+  transition: all ease 100ms;
+}
+
 button:not(:disabled):hover {
   transform: scale(1.04)
 }
@@ -76,6 +93,13 @@ button[data-mint-started="true"] {
 button[data-mint-done="true"] {
    opacity: 0;
    transform: scale(0.85);
+}
+
+.link {
+  color: #0645AD
+}
+.link:hover {
+  opacity: 0.8;
 }
 
 h1 { font-size: 24px; }

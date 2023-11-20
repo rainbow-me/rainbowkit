@@ -1,7 +1,7 @@
 {
-  "name": "with-next-mint-nft",
+  "name": "with-next-decent-box",
   "private": true,
-  "version": "0.0.71",
+  "version": "0.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@decent.xyz/box-hooks": "latest",
+    "@decent.xyz/box-ui": "latest",
     "@rainbow-me/rainbowkit": "workspace:*",
     "framer-motion": "^6.3.3",
     "next": "^13.4.19",
