@@ -58,11 +58,11 @@ const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
 export function WalletButton({
   onClose,
   wallet,
-  isCustomConnector,
+  connecting,
 }: {
   wallet: WalletConnector;
-  isCustomConnector?: boolean;
   onClose: () => void;
+  connecting?: boolean;
 }) {
   const {
     connect,
@@ -137,11 +137,11 @@ export function WalletButton({
   useEffect(() => {
     // When using `reactStrictMode: true` in development mode the useEffect hook
     // will fire twice. We avoid this by using `useRef` logic here. Works for now.
-    if (isCustomConnector && !initialized.current) {
+    if (connecting && !initialized.current) {
       onConnect();
       initialized.current = true;
     }
-  }, [isCustomConnector]);
+  }, [connecting]);
 
   return (
     <Box
@@ -171,7 +171,7 @@ export function WalletButton({
           paddingTop="10"
           position="relative"
         >
-          {isCustomConnector ? <LoadingSpinner wallet={wallet} /> : null}
+          {connecting ? <LoadingSpinner wallet={wallet} /> : null}
           <AsyncImage
             background={iconBackground}
             borderRadius="13"
@@ -181,7 +181,7 @@ export function WalletButton({
             width="60"
           />
         </Box>
-        {!isCustomConnector ? (
+        {!connecting ? (
           <Box display="flex" flexDirection="column" textAlign="center">
             <Text
               as="h2"

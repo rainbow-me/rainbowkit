@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
-import { WalletButton } from '../ConnectOptions/MobileOptions';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
 import { Text } from '../Text/Text';
+import { WalletButton } from './MobileOptions';
 
-const MobileLinking = ({ onClose }: { onClose: () => void }) => {
+export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(RainbowButtonContext);
   const i18n = useContext(I18nContext);
   const connectorName = connector?.name || '';
@@ -31,11 +31,7 @@ const MobileLinking = ({ onClose }: { onClose: () => void }) => {
           <CloseButton onClose={onClose} />
         </Box>
         <Box width="60">
-          <WalletButton
-            isCustomConnector
-            onClose={onClose}
-            wallet={connector!}
-          />
+          <WalletButton onClose={onClose} wallet={connector!} connecting />
         </Box>
         <Box marginTop="20">
           <Text
@@ -61,5 +57,3 @@ const MobileLinking = ({ onClose }: { onClose: () => void }) => {
     </Box>
   );
 };
-
-export default MobileLinking;
