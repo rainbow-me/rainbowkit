@@ -30,7 +30,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "1.0.x || 1.1.x || 1.2.x",
-    "next-auth": ">=4.21.0",
+    "next-auth": ">=4.21.0 <5",
     "react": ">=17",
     "siwe": "^2.1.4"
   },

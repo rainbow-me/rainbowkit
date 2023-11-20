@@ -18,8 +18,8 @@
     "wagmi": "~1.4.7"
   },
   "devDependencies": {
-    "@types/node": "^18.16.12",
-    "@types/react": "^18.2.21",
+    "@types/node": "^18.18.10",
+    "@types/react": "^18.2.37",
     "eslint": "^8.15.0",
     "eslint-config-next": "^13.4.19",
     "typescript": "^5.0.4"
