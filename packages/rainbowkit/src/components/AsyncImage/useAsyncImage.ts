@@ -5,6 +5,7 @@ export type AsyncImageSrc = () => Promise<string>;
 const cachedUrls = new Map<AsyncImageSrc, string>();
 
 // Store requests in a cache so we don't fetch the same image twice
+// biome-ignore lint/suspicious/noConfusingVoidType: TODO
 const cachedRequestPromises = new Map<AsyncImageSrc, Promise<string | void>>();
 
 async function loadAsyncImage(asyncImage: () => Promise<string>) {

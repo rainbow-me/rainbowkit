@@ -85,7 +85,6 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
-  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (connector && status === 'authenticated') {
       // Attach the event listener when status is 'authenticated'
@@ -96,7 +95,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
         connector?.off('change', handleChangedAccount);
       };
     }
-  }, [connector, status]);
+  }, [connector, status, handleChangedAccount]);
 
   return (
     <AuthenticationContext.Provider

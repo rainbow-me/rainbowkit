@@ -48,12 +48,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   // Listen to route change so we can programatically close
   // the docs mobile menu when changing routes.
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     const handleRouteChange = () => setIsOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
     return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []);
+  }, [setIsOpen, router]);
 
   return (
     <SearchProvider>
