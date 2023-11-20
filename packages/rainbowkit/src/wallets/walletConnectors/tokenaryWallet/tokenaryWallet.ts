@@ -24,6 +24,7 @@ export const tokenaryWallet = ({
   downloadUrls: {
     ios: 'https://tokenary.io/get',
     mobile: 'https://tokenary.io',
+    safari: 'https://tokenary.io/get',
     browserExtension: 'https://tokenary.io/get',
   },
   createConnector: () => ({
