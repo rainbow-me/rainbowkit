@@ -130,7 +130,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
-  xdc: { chainId: 50, ...xdcIcon },
+  xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
   xdcTestnet: { chainId: 51, ...xdcIcon },
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
