@@ -13,7 +13,7 @@ export const tokenaryWallet = ({
   ...options
 }: TokenaryWalletOptions & InjectedConnectorOptions): Wallet => ({
   id: 'tokenary',
-  name: 'tokenary',
+  name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
   iconBackground: '#000000',
   installed:
@@ -23,6 +23,7 @@ export const tokenaryWallet = ({
   hidden: () => isAndroid(),
   downloadUrls: {
     ios: 'https://tokenary.io/get',
+    mobile: 'https://tokenary.io',
     browserExtension: 'https://tokenary.io/get',
   },
   createConnector: () => ({
