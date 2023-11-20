@@ -39,8 +39,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       '@testing-library/user-event':
-        specifier: ^14.4.3
-        version: 14.4.3(@testing-library/dom@9.3.1)
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.1)
       '@types/node':
         specifier: ^18.16.12
         version: 18.16.12
@@ -421,8 +421,8 @@ importers:
         specifier: ^14.1.2
         version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
       '@testing-library/user-event':
-        specifier: ^14.4.3
-        version: 14.4.3(@testing-library/dom@9.3.1)
+        specifier: ^14.5.1
+        version: 14.5.1(@testing-library/dom@9.3.1)
       '@types/i18n-js':
         specifier: ^3.8.5
         version: 3.8.5
@@ -8328,8 +8328,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@testing-library/user-event@14.4.3(@testing-library/dom@9.3.1):
-    resolution: {integrity: sha512-kCUc5MEwaEMakkO5x7aoD+DLi02ehmEM2QCGWvNqAS1dV/fAvORWEjnjsEIvml59M7Y5kCkWN6fCCyPOe8OL6Q==}
+  /@testing-library/user-event@14.5.1(@testing-library/dom@9.3.1):
+    resolution: {integrity: sha512-UCcUKrUYGj7ClomOo2SpNVvx4/fkd/2BbIHDCle8A0ax+P3bU7yJwDBDrS6ZwdTMARWTGODX1hEsCcO+7beJjg==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
