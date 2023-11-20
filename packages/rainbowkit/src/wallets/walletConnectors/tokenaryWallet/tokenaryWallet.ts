@@ -1,7 +1,7 @@
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { isAndroid } from '../../../utils/isMobile';
+import { isSafari } from '../../../utils/browsers';
 import { Wallet } from '../../Wallet';
 
 export interface TokenaryWalletOptions {
@@ -20,7 +20,7 @@ export const tokenaryWallet = ({
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
     window.ethereum.isTokenary,
-  hidden: () => isAndroid(),
+  hidden: () => !isSafari(),
   downloadUrls: {
     ios: 'https://tokenary.io/get',
     mobile: 'https://tokenary.io',
