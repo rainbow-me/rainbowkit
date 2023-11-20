@@ -28,12 +28,12 @@ type ChainName =
   | 'rinkeby'
   | 'ropsten'
   | 'sepolia'
-  | 'zora'
-  | 'zoraTestnet'
+  | 'xdc'
+  | 'xdcTestnet'
   | 'zkSync'
   | 'zkSyncTestnet'
-  | 'xdc'
-  | 'xdcTestnet';
+  | 'zora'
+  | 'zoraTestnet';
 
 type IconMetadata = {
   iconUrl: () => Promise<string>;
