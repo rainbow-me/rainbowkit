@@ -27,7 +27,7 @@ import {
   ModalSizeContext,
   ModalSizeOptions,
 } from '../RainbowKitProvider/ModalSizeContext';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
+import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 import {
   ConnectDetail,
@@ -73,7 +73,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const initialized = useRef(false);
 
-  const { connector } = useContext(RainbowButtonContext);
+  const { connector } = useContext(WalletButtonContext);
 
   const wallets = useWalletConnectors()
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)

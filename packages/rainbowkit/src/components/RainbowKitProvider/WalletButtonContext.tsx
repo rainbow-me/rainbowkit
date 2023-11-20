@@ -1,27 +1,25 @@
 import React, { ReactNode, createContext, useMemo, useState } from 'react';
 import { WalletConnector } from '../../wallets/useWalletConnectors';
 
-interface RainbowButtonContextValue {
+interface WalletButtonContextValue {
   connector: WalletConnector | null;
   setConnector: (wallet: WalletConnector | null) => void;
 }
 
-export const RainbowButtonContext = createContext<RainbowButtonContextValue>({
+export const WalletButtonContext = createContext<WalletButtonContextValue>({
   connector: null,
   setConnector: () => {},
 });
 
-interface RainbowButtonProviderProps {
+interface WalletButtonProviderProps {
   children: ReactNode;
 }
 
-export function RainbowButtonProvider({
-  children,
-}: RainbowButtonProviderProps) {
+export function WalletButtonProvider({ children }: WalletButtonProviderProps) {
   const [connector, setConnector] = useState<WalletConnector | null>(null);
 
   return (
-    <RainbowButtonContext.Provider
+    <WalletButtonContext.Provider
       value={useMemo(
         () => ({
           connector,
@@ -31,6 +29,6 @@ export function RainbowButtonProvider({
       )}
     >
       {children}
-    </RainbowButtonContext.Provider>
+    </WalletButtonContext.Provider>
   );
 }

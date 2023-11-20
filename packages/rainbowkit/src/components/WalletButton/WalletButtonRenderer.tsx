@@ -22,7 +22,7 @@ import {
   useConnectModal,
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
-import { RainbowButtonContext } from '../RainbowKitProvider/RainbowButtonContext';
+import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 
 export interface WalletButtonRendererProps {
   wallet?: string;
@@ -46,7 +46,7 @@ export function WalletButtonRenderer({
   const mounted = useIsMounted();
   const { openConnectModal } = useConnectModal();
   const { connectModalOpen } = useModalState();
-  const { connector, setConnector } = useContext(RainbowButtonContext);
+  const { connector, setConnector } = useContext(WalletButtonContext);
   const [firstConnector] = useWalletConnectors()
     // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison

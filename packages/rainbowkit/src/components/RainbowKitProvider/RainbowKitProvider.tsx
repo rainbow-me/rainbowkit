@@ -15,12 +15,12 @@ import {
   ModalSizeProvider,
   ModalSizes,
 } from './ModalSizeContext';
-import { RainbowButtonProvider } from './RainbowButtonContext';
 import {
   RainbowKitChain,
   RainbowKitChainProvider,
 } from './RainbowKitChainContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
+import { WalletButtonProvider } from './WalletButtonContext';
 import { useFingerprint } from './useFingerprint';
 import { usePreloadImages } from './usePreloadImages';
 import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
@@ -106,7 +106,7 @@ export function RainbowKitProvider({
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
-      <RainbowButtonProvider>
+      <WalletButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>
             <ModalSizeProvider modalSize={modalSize}>
@@ -157,7 +157,7 @@ export function RainbowKitProvider({
             </ModalSizeProvider>
           </CoolModeContext.Provider>
         </I18nProvider>
-      </RainbowButtonProvider>
+      </WalletButtonProvider>
     </RainbowKitChainProvider>
   );
 }
