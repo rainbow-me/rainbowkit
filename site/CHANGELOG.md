@@ -1,5 +1,14 @@
 # site
 
+## 0.0.81
+
+### Patch Changes
+
+- Updated dependencies [74ead9df]
+- Updated dependencies [94dce820]
+- Updated dependencies [39d81e93]
+  - @rainbow-me/rainbowkit@1.2.1
+
 ## 0.0.80
 
 ### Patch Changes
