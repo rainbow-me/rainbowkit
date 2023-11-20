@@ -15,7 +15,7 @@ export const tokenaryWallet = ({
   id: 'tokenary',
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
-  iconBackground: '#000000',
+  iconBackground: '#ffffff',
   installed:
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&
