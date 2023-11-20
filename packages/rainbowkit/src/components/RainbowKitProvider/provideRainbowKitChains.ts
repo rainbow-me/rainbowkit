@@ -90,9 +90,9 @@ const polygonIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
 };
 
-const zoraIcon: IconMetadata = {
-  iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
+const xdcIcon: IconMetadata = {
+  iconBackground: '#f9f7ec',
+  iconUrl: async () => (await import('./chainIcons/xdc.svg')).default,
 };
 
 const zkSyncIcon: IconMetadata = {
@@ -100,14 +100,9 @@ const zkSyncIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/zkSync.svg')).default,
 };
 
-const xdcIcon: IconMetadata = {
-  iconBackground: '#f9f7ec',
-  iconUrl: async () => (await import('./chainIcons/xdc.svg')).default,
-};
-
-const xdcTestnetIcon: IconMetadata = {
-  iconBackground: '#f9f7ec',
-  iconUrl: async () => (await import('./chainIcons/xdcTestnet.svg')).default,
+const zoraIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/zora.svg')).default,
 };
 
 const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
@@ -135,12 +130,12 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
-  zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
-  zoraTestnet: { chainId: 999, ...zoraIcon },
+  xdc: { chainId: 50, ...xdcIcon },
+  xdcTestnet: { chainId: 51, ...xdcIcon },
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
-  xdc: { chainId: 50, ...xdcIcon },
-  xdcTestnet: { chainId: 51, ...xdcTestnetIcon },
+  zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
+  zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 
 const chainMetadataById = Object.fromEntries(
