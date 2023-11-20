@@ -44,6 +44,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
             id: siwe.address,
           };
         } catch (e) {
+          console.error('siwe authorization failed', e);
           return null;
         }
       },
