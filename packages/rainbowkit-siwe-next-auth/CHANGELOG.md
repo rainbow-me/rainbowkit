@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
+## 0.3.3
+
+### Patch Changes
+
+- 2f56ab23: Adopted `'use client'` directive for safe App Router usage
+- 9dfe0531: Added strict peer incompatibility with `next-auth@5`. RainbowKit will support `next-auth` v5 in a future release with improved App Router support.
+
 ## 0.3.2
 
 ### Patch Changes
