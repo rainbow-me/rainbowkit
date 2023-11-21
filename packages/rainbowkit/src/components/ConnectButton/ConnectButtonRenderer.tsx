@@ -58,7 +58,7 @@ export interface ConnectButtonRendererProps {
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const mounted = useIsMounted();
+  const isMounted = useIsMounted();
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
@@ -125,7 +125,7 @@ export function ConnectButtonRenderer({
           : undefined,
         chainModalOpen,
         connectModalOpen,
-        mounted,
+        mounted: isMounted(),
         openAccountModal: openAccountModal ?? noop,
         openChainModal: openChainModal ?? noop,
         openConnectModal: openConnectModal ?? noop,
