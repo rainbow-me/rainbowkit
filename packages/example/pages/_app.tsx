@@ -133,6 +133,7 @@ const connectors = connectorsForWallets([
       tahoWallet(),
       talismanWallet(),
       tokenPocketWallet({ projectId }),
+      tokenaryWallet(),
       trustWallet({ projectId }),
       uniswapWallet({ projectId }),
       xdefiWallet(),

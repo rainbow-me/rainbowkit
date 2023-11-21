@@ -16,7 +16,7 @@ interface RainbowKitChainContextValue {
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
   // We use 'mainnet' as the default because wagmi defines
-  // 'chains' as a tuple type with at least one chain.
+  // 'chains' as a tuple type with at least one chain
   chains: [mainnet],
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
+import { mainnet } from 'viem/chains';
 import { describe, expect, it } from 'vitest';
-import { mainnet } from 'wagmi';
 import { renderWithProviders } from '../../../test';
 import { WalletButton } from './WalletButton';
 

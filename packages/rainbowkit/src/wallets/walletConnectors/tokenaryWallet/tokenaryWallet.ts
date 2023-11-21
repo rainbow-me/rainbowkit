@@ -1,17 +1,8 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isSafari } from '../../../utils/browsers';
 import { Wallet } from '../../Wallet';
+import { getDefaultInjectedConnector } from '../../getInjectedConnector';
 
-export interface TokenaryWalletOptions {
-  chains: Chain[];
-}
-
-export const tokenaryWallet = ({
-  chains,
-  ...options
-}: TokenaryWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const tokenaryWallet = (): Wallet => ({
   id: 'tokenary',
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
@@ -28,10 +19,5 @@ export const tokenaryWallet = ({
     safari: 'https://tokenary.io/get',
     browserExtension: 'https://tokenary.io/get',
   },
-  createConnector: () => ({
-    connector: new InjectedConnector({
-      chains,
-      options,
-    }),
-  }),
+  createConnector: getDefaultInjectedConnector(),
 });
