@@ -1,32 +1,35 @@
 import "../styles/global.css";
 import "@rainbow-me/rainbow-button/styles.css";
 import type { AppProps } from "next/app";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { createConfig, http, WagmiProvider } from "wagmi";
 import { mainnet } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
-
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
-  [publicProvider()]
-);
+import {
+  RainbowButtonProvider,
+  rainbowConnector,
+} from "@rainbow-me/rainbow-button";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const projectId = "YOUR_PROJECT_ID";
 
 const wagmiClient = createConfig({
-  autoConnect: true,
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient,
-  webSocketPublicClient,
+  connectors: [rainbowConnector({ projectId })],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
 });
+
+const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiClient}>
-      <RainbowButtonProvider>
-        <Component {...pageProps} />
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={wagmiClient}>
+      <QueryClientProvider client={client}>
+        <RainbowButtonProvider>
+          <Component {...pageProps} />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
 

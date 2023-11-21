@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useContext, useMemo } from 'react';
 import { Chain } from 'viem';
-import { mainnet } from 'viem/chains';
+import { mainnet } from 'wagmi/chains';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain extends Chain {

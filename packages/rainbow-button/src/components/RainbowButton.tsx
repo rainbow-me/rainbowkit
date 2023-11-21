@@ -1,7 +1,7 @@
 import { RainbowKitProvider, WalletButton } from '@rainbow-me/rainbowkit';
 import type { RainbowKitProviderProps } from '@rainbow-me/rainbowkit/dist/components/RainbowKitProvider/RainbowKitProvider';
 import React from 'react';
-import { mainnet } from 'viem/chains';
+import { mainnet } from 'wagmi/chains';
 
 export function RainbowButtonProvider({
   children,
