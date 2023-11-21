@@ -269,7 +269,7 @@ export function ConnectButton({
                 transition="default"
                 type="button"
               >
-                {label === 'Connect Wallet'
+                {mounted && label === 'Connect Wallet'
                   ? i18n.t('connect_wallet.label')
                   : label}
               </Box>
