@@ -4465,7 +4465,6 @@ packages:
   /@biomejs/biome@1.3.3:
     resolution: {integrity: sha512-vTJn7RBzLWIabUuUIoEopO860YyBrbPEu4Pztfd28jRU5QD074hKZ9IQs24pFO6A2R296gaeYmN62f4u7pUruQ==}
     engines: {node: '>=14.*'}
-    hasBin: true
     optionalDependencies:
       '@biomejs/cli-darwin-arm64': 1.3.3
       '@biomejs/cli-darwin-x64': 1.3.3
