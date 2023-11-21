@@ -656,11 +656,11 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <QueryClientProvider client={queryClient}>
-          <WagmiProvider config={wagmiConfig}>
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />
-          </WagmiProvider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </SessionProvider>
     </>
   );
