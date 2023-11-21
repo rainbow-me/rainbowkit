@@ -1,8 +1,10 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
-## 1.0.0
+## 0.3.4
 
 ### Patch Changes
+
+- Peer dependency support for RainbowKit `1.3.x`
 
 - Updated dependencies [9ce75a65]
   - @rainbow-me/rainbowkit@1.3.0
