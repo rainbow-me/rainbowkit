@@ -45,6 +45,7 @@ import {
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
+  tokenaryWallet,
   trustWallet,
   uniswapWallet,
   xdefiWallet,

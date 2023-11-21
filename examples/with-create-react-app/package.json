@@ -1,6 +1,6 @@
 {
   "name": "with-create-react-app",
-  "version": "0.1.70",
+  "version": "0.1.72",
   "private": true,
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
@@ -9,8 +9,8 @@
     "@testing-library/user-event": "^14.4.3",
     "@tanstack/react-query": "5.8.3",
     "@types/jest": "^29.5.2",
-    "@types/node": "^18.16.12",
-    "@types/react": "^18.2.21",
+    "@types/node": "^18.18.10",
+    "@types/react": "^18.2.37",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "react": "^18.2.0",

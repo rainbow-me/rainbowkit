@@ -43,6 +43,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Custom App Info', slug: 'custom-app-info' },
       { title: 'Custom Avatars', slug: 'custom-avatars' },
       { title: 'Custom Authentication', slug: 'custom-authentication' },
+      { title: 'WalletButton', slug: 'wallet-button' },
       { title: 'Cool Mode', slug: 'cool-mode' },
     ],
   },

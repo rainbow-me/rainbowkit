@@ -1,5 +1,34 @@
 # example
 
+## 0.0.83
+
+### Patch Changes
+
+- 9ce75a65: Added 'Wallet buttons' section to test `WalletButton` API and added `RainbowButton` and `RainbowButton.Custom` examples
+- Updated dependencies [9ce75a65]
+- Updated dependencies [9ce75a65]
+  - @rainbow-me/rainbow-button@0.1.0
+  - @rainbow-me/rainbowkit@1.3.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.4
+
+## 0.0.82
+
+### Patch Changes
+
+- Updated dependencies [2f56ab23]
+- Updated dependencies [9dfe0531]
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.3
+
+## 0.0.81
+
+### Patch Changes
+
+- Updated dependencies [74ead9df]
+- Updated dependencies [94dce820]
+- Updated dependencies [39d81e93]
+  - @rainbow-me/rainbowkit@1.2.1
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.2
+
 ## 0.0.80
 
 ### Patch Changes

@@ -32,6 +32,7 @@ import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
 import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
+import { tokenaryWallet } from './tokenaryWallet/tokenaryWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
@@ -74,6 +75,7 @@ export {
   subWallet,
   tahoWallet,
   talismanWallet,
+  tokenaryWallet,
   tokenPocketWallet,
   trustWallet,
   uniswapWallet,

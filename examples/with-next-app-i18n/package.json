@@ -1,7 +1,7 @@
 {
   "name": "with-next-app-i18n",
   "private": true,
-  "version": "0.0.19",
+  "version": "0.0.21",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,8 +19,8 @@
     "wagmi": "2.0.0-beta.3"
   },
   "devDependencies": {
-    "@types/node": "^18.16.12",
-    "@types/react": "^18.2.21",
+    "@types/node": "^18.18.10",
+    "@types/react": "^18.2.37",
     "eslint": "^8.15.0",
     "eslint-config-next": "^13.4.19",
     "next": "^13.4.19",

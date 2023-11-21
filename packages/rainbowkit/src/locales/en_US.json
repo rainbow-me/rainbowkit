@@ -55,9 +55,12 @@
     "recent": "Recent",
     "status": {
       "opening": "Opening %{wallet}...",
+      "connecting": "Connecting",
+      "connect_mobile": "Continue in %{wallet}",
       "not_installed": "%{wallet} is not installed",
       "not_available": "%{wallet} is not available",
-      "confirm": "Confirm connection in the extension"
+      "confirm": "Confirm connection in the extension",
+      "confirm_mobile": "Accept connection request in the wallet"
     },
     "secondary_action": {
       "get": {
