@@ -45,8 +45,8 @@ const packageBuild = esbuild.build({
   watch: isWatching
     ? {
         onRebuild(error, result) {
-          if (error) console.error('wallets build failed:', error);
-          else console.log('wallets build succeeded:', result);
+          if (error) console.error('styling bundling failed:', error);
+          else console.log('styling bundling succeeded:', result);
         },
       }
     : undefined,
