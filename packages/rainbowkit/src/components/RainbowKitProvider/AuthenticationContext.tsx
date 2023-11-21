@@ -1,6 +1,7 @@
 import React, {
   ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -77,10 +78,13 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     }
   }, [status, adapter, isDisconnected]);
 
-  const handleChangedAccount = ({ account }: ConnectorData) => {
-    // Only if account is changed then signOut
-    if (account) adapter.signOut();
-  };
+  const handleChangedAccount = useCallback(
+    ({ account }: ConnectorData) => {
+      // Only if account is changed then signOut
+      if (account) adapter.signOut();
+    },
+    [adapter],
+  );
 
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
