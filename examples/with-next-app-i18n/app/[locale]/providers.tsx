@@ -84,11 +84,15 @@ export function Providers({
   React.useEffect(() => setMounted(true), []);
   return (
     <WagmiProvider config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} appInfo={demoAppInfo} locale={locale}>
-        <QueryClientProvider client={client}>
+      <QueryClientProvider client={client}>
+        <RainbowKitProvider
+          chains={chains}
+          appInfo={demoAppInfo}
+          locale={locale}
+        >
           {mounted && children}
-        </QueryClientProvider>
-      </RainbowKitProvider>
+        </RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }

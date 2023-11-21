@@ -42,9 +42,6 @@
     "viem": "2.0.0-beta.6",
     "wagmi": "2.0.0-beta.3"
   },
-  "devDependencies": {
-    "@wagmi/core": "^1.4.3"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rainbow-me/rainbowkit.git",
