@@ -103,8 +103,8 @@ export function RainbowKitProvider({
   };
 
   const avatarContext = avatar ?? defaultAvatar;
-  
-  console.log("HELLO WORLD");
+
+  console.log('HELLO WORLD');
 
   return (
     <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
