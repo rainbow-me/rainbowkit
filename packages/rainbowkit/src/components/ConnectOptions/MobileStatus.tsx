@@ -46,7 +46,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
           </Text>
         </Box>
 
-        <Box maxWidth="310" marginTop="8">
+        <Box maxWidth="full" marginTop="8">
           <Text textAlign="center" color="modalText" size="16" weight="medium">
             {i18n.t('connect.status.confirm_mobile', {
               wallet: connectorName,

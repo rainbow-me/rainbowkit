@@ -117,7 +117,6 @@ const dimensions = {
   '54': '54px',
   '60': '60px',
   '200': '200px',
-  '310': '310px',
   'full': '100%',
   'max': 'max-content',
 };
