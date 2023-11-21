@@ -14,7 +14,6 @@ import {
   Chain,
   bsc,
   zkSync,
-  holesky,
 } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
@@ -46,7 +45,6 @@ const wagmiConfig = createConfig({
     [bsc.id]: http(),
     [zkSync.id]: http(),
     [goerli.id]: http(),
-    [holesky.id]: http(),
   },
 });
 

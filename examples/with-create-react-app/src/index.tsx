@@ -43,6 +43,7 @@ const wagmiConfig = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
+    [goerli.id]: http(),
   },
 });
 
