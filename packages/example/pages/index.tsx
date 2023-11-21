@@ -1,5 +1,7 @@
+import { RainbowButton } from '@rainbow-me/rainbow-button';
 import {
   ConnectButton,
+  WalletButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
@@ -159,95 +161,129 @@ const Example = ({ authEnabled }: AppContextProps) => {
 
       <div>
         <h3 style={{ fontFamily: 'sans-serif' }}>Custom buttons</h3>
-        <ConnectButton.Custom>
-          {({
-            account,
-            authenticationStatus,
-            chain,
-            mounted,
-            openAccountModal,
-            openChainModal,
-            openConnectModal,
-          }) => {
-            const ready = mounted && authenticationStatus !== 'loading';
-            const connected =
-              ready &&
-              account &&
-              chain &&
-              (!authenticationStatus ||
-                authenticationStatus === 'authenticated');
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <ConnectButton.Custom>
+            {({
+              account,
+              authenticationStatus,
+              chain,
+              mounted,
+              openAccountModal,
+              openChainModal,
+              openConnectModal,
+            }) => {
+              const ready = mounted && authenticationStatus !== 'loading';
+              const connected =
+                ready &&
+                account &&
+                chain &&
+                (!authenticationStatus ||
+                  authenticationStatus === 'authenticated');
 
-            return (
-              <div
-                {...(!ready && {
-                  'aria-hidden': true,
-                  style: {
-                    opacity: 0,
-                    pointerEvents: 'none',
-                    userSelect: 'none',
-                  },
-                })}
-              >
-                {(() => {
-                  if (!connected) {
+              return (
+                <div
+                  {...(!ready && {
+                    'aria-hidden': true,
+                    style: {
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                    },
+                  })}
+                >
+                  {(() => {
+                    if (!connected) {
+                      return (
+                        <button onClick={openConnectModal} type="button">
+                          Connect Wallet
+                        </button>
+                      );
+                    }
+
+                    if (chain.unsupported) {
+                      return (
+                        <button onClick={openChainModal} type="button">
+                          Wrong network
+                        </button>
+                      );
+                    }
+
                     return (
-                      <button onClick={openConnectModal} type="button">
-                        Connect Wallet
-                      </button>
+                      <div style={{ display: 'flex', gap: 12 }}>
+                        <button
+                          onClick={openChainModal}
+                          style={{ alignItems: 'center', display: 'flex' }}
+                          type="button"
+                        >
+                          {chain.hasIcon && (
+                            <div
+                              style={{
+                                background: chain.iconBackground,
+                                borderRadius: 999,
+                                height: 12,
+                                marginRight: 4,
+                                overflow: 'hidden',
+                                width: 12,
+                              }}
+                            >
+                              {chain.iconUrl && (
+                                <img
+                                  alt={chain.name ?? 'Chain icon'}
+                                  src={chain.iconUrl}
+                                  style={{ height: 12, width: 12 }}
+                                />
+                              )}
+                            </div>
+                          )}
+                          {chain.name ?? chain.id}
+                        </button>
+
+                        <button onClick={openAccountModal} type="button">
+                          {account.displayName}
+                          {account.displayBalance
+                            ? ` (${account.displayBalance})`
+                            : ''}
+                        </button>
+                      </div>
                     );
-                  }
+                  })()}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
 
-                  if (chain.unsupported) {
-                    return (
-                      <button onClick={openChainModal} type="button">
-                        Wrong network
-                      </button>
-                    );
-                  }
+          <RainbowButton.Custom>
+            {({ ready, connect }) => {
+              return (
+                <button
+                  type="button"
+                  disabled={!ready}
+                  onClick={connect}
+                  style={{ marginLeft: '16px' }}
+                >
+                  Connect Rainbow
+                </button>
+              );
+            }}
+          </RainbowButton.Custom>
+        </div>
+      </div>
 
-                  return (
-                    <div style={{ display: 'flex', gap: 12 }}>
-                      <button
-                        onClick={openChainModal}
-                        style={{ alignItems: 'center', display: 'flex' }}
-                        type="button"
-                      >
-                        {chain.hasIcon && (
-                          <div
-                            style={{
-                              background: chain.iconBackground,
-                              borderRadius: 999,
-                              height: 12,
-                              marginRight: 4,
-                              overflow: 'hidden',
-                              width: 12,
-                            }}
-                          >
-                            {chain.iconUrl && (
-                              <img
-                                alt={chain.name ?? 'Chain icon'}
-                                src={chain.iconUrl}
-                                style={{ height: 12, width: 12 }}
-                              />
-                            )}
-                          </div>
-                        )}
-                        {chain.name ?? chain.id}
-                      </button>
+      <div>
+        <h3 style={{ fontFamily: 'sans-serif' }}>Wallet buttons</h3>
 
-                      <button onClick={openAccountModal} type="button">
-                        {account.displayName}
-                        {account.displayBalance
-                          ? ` (${account.displayBalance})`
-                          : ''}
-                      </button>
-                    </div>
-                  );
-                })()}
-              </div>
-            );
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '20px',
           }}
-        </ConnectButton.Custom>
+        >
+          {['rainbow', 'metamask', 'coinbase'].map((connector) => {
+            return <WalletButton key={connector} wallet={connector} />;
+          })}
+        </div>
       </div>
 
       {ready && (

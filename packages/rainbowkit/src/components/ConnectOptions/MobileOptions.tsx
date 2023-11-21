@@ -1,4 +1,10 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
 import {
@@ -19,12 +25,44 @@ import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDee
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
-function WalletButton({
+const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
+  const width = 80;
+  const height = 80;
+  const radiusFactor = 20;
+
+  const perimeter = 2 * (width + height - 4 * radiusFactor);
+
+  return (
+    <svg className={styles.spinner} viewBox="0 0 86 86" width="86" height="86">
+      <rect
+        x="3"
+        y="3"
+        width={width}
+        height={height}
+        rx={radiusFactor}
+        ry={radiusFactor}
+        strokeDasharray={`${perimeter / 3} ${(2 * perimeter) / 3}`}
+        strokeDashoffset={perimeter} // Adjust this value as per your design needs
+        className={styles.rotatingBorder}
+        style={{
+          // Prop style passing works only in `@vanilla-extract/recipes`.
+          // Instead downloading packages we can do this
+          // manually without passing props
+          stroke: wallet?.iconAccent || '#0D3887',
+        }}
+      />
+    </svg>
+  );
+};
+
+export function WalletButton({
   onClose,
   wallet,
+  connecting,
 }: {
   wallet: WalletConnector;
   onClose: () => void;
+  connecting?: boolean;
 }) {
   const {
     connect,
@@ -40,8 +78,70 @@ function WalletButton({
   } = wallet;
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
+  const initialized = useRef(false);
 
   const i18n = useContext(I18nContext);
+
+  const onConnect = useCallback(async () => {
+    if (id === 'walletConnect') onClose?.();
+    connect?.()?.catch(() => {});
+
+    // We need to guard against "onConnecting" callbacks being fired
+    // multiple times since connector instances can be shared between
+    // wallets. Ideally wagmi would let us scope the callback to the
+    // specific "connect" call, but this will work in the meantime.
+    let callbackFired = false;
+
+    onConnecting?.(async () => {
+      if (callbackFired) return;
+      callbackFired = true;
+
+      if (getMobileUri) {
+        const mobileUri = await getMobileUri();
+
+        if (
+          connector.id === 'walletConnect' ||
+          connector.id === 'walletConnectLegacy'
+        ) {
+          // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
+          // successful connection and then the universal provider uses it on requests. We call
+          // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.
+          // The `connector` type refers to Wagmi connectors, as opposed to RainbowKit wallet connectors.
+          // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
+          setWalletConnectDeepLink({ mobileUri, name });
+        }
+
+        if (mobileUri.startsWith('http')) {
+          // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
+          // Using 'window.open' causes issues on iOS in non-Safari browsers and
+          // WebViews where a blank tab is left behind after connecting.
+          // This is especially bad in some WebView scenarios (e.g. following a
+          // link from Twitter) where the user doesn't have any mechanism for
+          // closing the blank tab.
+          // For whatever reason, links with a target of "_blank" don't suffer
+          // from this problem, and programmatically clicking a detached link
+          // element with the same attributes also avoids the issue.
+          const link = document.createElement('a');
+          link.href = mobileUri;
+          link.target = '_blank';
+          link.rel = 'noreferrer noopener';
+          link.click();
+        } else {
+          window.location.href = mobileUri;
+        }
+      }
+    });
+  }, [connector, connect, getMobileUri, onConnecting, onClose, name, id]);
+
+  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    // When using `reactStrictMode: true` in development mode the useEffect hook
+    // will fire twice. We avoid this by using `useRef` logic here. Works for now.
+    if (connecting && !initialized.current) {
+      onConnect();
+      initialized.current = true;
+    }
+  }, [connecting]);
 
   return (
     <Box
@@ -50,56 +150,7 @@ function WalletButton({
       disabled={!ready}
       fontFamily="body"
       key={id}
-      onClick={useCallback(async () => {
-        if (id === 'walletConnect') onClose?.();
-        connect?.();
-
-        // We need to guard against "onConnecting" callbacks being fired
-        // multiple times since connector instances can be shared between
-        // wallets. Ideally wagmi would let us scope the callback to the
-        // specific "connect" call, but this will work in the meantime.
-        let callbackFired = false;
-
-        onConnecting?.(async () => {
-          if (callbackFired) return;
-          callbackFired = true;
-
-          if (getMobileUri) {
-            const mobileUri = await getMobileUri();
-
-            if (
-              connector.id === 'walletConnect' ||
-              connector.id === 'walletConnectLegacy'
-            ) {
-              // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
-              // successful connection and then the universal provider uses it on requests. We call
-              // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.
-              // The `connector` type refers to Wagmi connectors, as opposed to RainbowKit wallet connectors.
-              // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
-              setWalletConnectDeepLink({ mobileUri, name });
-            }
-
-            if (mobileUri.startsWith('http')) {
-              // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
-              // Using 'window.open' causes issues on iOS in non-Safari browsers and
-              // WebViews where a blank tab is left behind after connecting.
-              // This is especially bad in some WebView scenarios (e.g. following a
-              // link from Twitter) where the user doesn't have any mechanism for
-              // closing the blank tab.
-              // For whatever reason, links with a target of "_blank" don't suffer
-              // from this problem, and programmatically clicking a detached link
-              // element with the same attributes also avoids the issue.
-              const link = document.createElement('a');
-              link.href = mobileUri;
-              link.target = '_blank';
-              link.rel = 'noreferrer noopener';
-              link.click();
-            } else {
-              window.location.href = mobileUri;
-            }
-          }
-        });
-      }, [connector, connect, getMobileUri, onConnecting, onClose, name, id])}
+      onClick={onConnect}
       ref={coolModeRef}
       style={{ overflow: 'visible', textAlign: 'center' }}
       testId={`wallet-option-${id}`}
@@ -112,7 +163,15 @@ function WalletButton({
         flexDirection="column"
         justifyContent="center"
       >
-        <Box paddingBottom="8" paddingTop="10">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          paddingBottom="8"
+          paddingTop="10"
+          position="relative"
+        >
+          {connecting ? <LoadingSpinner wallet={wallet} /> : null}
           <AsyncImage
             background={iconBackground}
             borderRadius="13"
@@ -122,26 +181,28 @@ function WalletButton({
             width="60"
           />
         </Box>
-        <Box display="flex" flexDirection="column" textAlign="center">
-          <Text
-            as="h2"
-            color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
-            size="13"
-            weight="medium"
-          >
-            {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
-            <Box as="span" position="relative">
-              {shortName ?? name}
-              {!wallet.ready && ' (unsupported)'}
-            </Box>
-          </Text>
-
-          {wallet.recent && (
-            <Text color="accentColor" size="12" weight="medium">
-              {i18n.t('connect.recent')}
+        {!connecting ? (
+          <Box display="flex" flexDirection="column" textAlign="center">
+            <Text
+              as="h2"
+              color={wallet.ready ? 'modalText' : 'modalTextSecondary'}
+              size="13"
+              weight="medium"
+            >
+              {/* Fix button text clipping in Safari: https://stackoverflow.com/questions/41100273/overflowing-button-text-is-being-clipped-in-safari */}
+              <Box as="span" position="relative">
+                {shortName ?? name}
+                {!wallet.ready && ' (unsupported)'}
+              </Box>
             </Text>
-          )}
-        </Box>
+
+            {wallet.recent && (
+              <Text color="accentColor" size="12" weight="medium">
+                {i18n.t('connect.recent')}
+              </Text>
+            )}
+          </Box>
+        ) : null}
       </Box>
     </Box>
   );

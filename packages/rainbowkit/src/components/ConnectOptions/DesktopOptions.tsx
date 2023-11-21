@@ -1,7 +1,14 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -20,8 +27,8 @@ import {
   ModalSizeContext,
   ModalSizeOptions,
 } from '../RainbowKitProvider/ModalSizeContext';
+import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
-
 import {
   ConnectDetail,
   DownloadDetail,
@@ -64,6 +71,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const i18n = useContext(I18nContext);
 
+  const initialized = useRef(false);
+
+  const { connector } = useContext(WalletButtonContext);
+
   const wallets = useWalletConnectors()
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
@@ -77,6 +88,16 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'More',
     'Others',
   ];
+
+  // If a user hasn't installed the extension we will get the
+  // qr code with additional steps on how to get the wallet
+  useEffect(() => {
+    if (connector && !initialized.current) {
+      changeWalletStep(WalletStep.Connect);
+      selectWallet(connector);
+      initialized.current = true;
+    }
+  }, [connector]);
 
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
@@ -97,6 +118,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   };
 
   const selectWallet = (wallet: WalletConnector) => {
+    // We still want to get the latest wallet id to show connected
+    // green badge on our custom WalletButton API
+    addLatestWalletId(wallet.id);
+
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 
@@ -113,6 +138,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
         const sWallet = wallets.find((w) => wallet.id === w.id);
         const uri = await sWallet?.qrCode?.getUri();
+
         setQrCodeUri(uri);
 
         // This timeout prevents the UI from flickering if connection is instant,
@@ -256,9 +282,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           : i18n.t('connect_scan.title', {
               wallet: selectedWallet.name,
             }));
-      headerBackButtonLink = compactModeEnabled ? WalletStep.None : null;
+      headerBackButtonLink = compactModeEnabled
+        ? connector
+          ? null
+          : WalletStep.None
+        : null;
       headerBackButtonCallback = compactModeEnabled
-        ? clearSelectedWallet
+        ? !connector
+          ? clearSelectedWallet
+          : () => {}
         : () => {};
       break;
     case WalletStep.DownloadOptions:
@@ -271,8 +303,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       headerLabel =
         selectedWallet &&
         i18n.t('get_options.short_title', { wallet: selectedWallet.name });
-      headerBackButtonLink =
-        hasExtensionAndMobile && WalletStep.Connect ? initialWalletStep : null;
+      headerBackButtonLink = connector
+        ? WalletStep.Connect
+        : hasExtensionAndMobile && WalletStep.Connect
+        ? initialWalletStep
+        : null;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (

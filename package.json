@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "postinstall": "husky install",
-    "dev": "pnpm --recursive --parallel --filter @rainbow-me/rainbowkit* --filter example dev",
-    "dev:lib": "pnpm --filter @rainbow-me/rainbowkit* dev",
+    "dev": "pnpm --recursive --parallel --filter @rainbow-me/rainbow* --filter example dev",
+    "dev:lib": "pnpm --parallel --filter @rainbow-me/rainbow* dev",
     "dev:example": "pnpm dev:lib & pnpm --filter example dev",
     "dev:site": "pnpm dev:lib & pnpm --filter site dev",
     "dev:cli": "pnpm --filter @rainbow-me/create-rainbowkit dev",
@@ -26,14 +26,14 @@
     "test:cli:dev": "pnpm --filter @rainbow-me/create-rainbowkit test:dev",
     "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
     "changeset": "changeset",
-    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbowkit/node_modules && rm -rf ./packages/create-rainbowkit/dist && pnpm install",
+    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbow-button/dist && rm -rf ./packages/create-rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules && pnpm install",
     "clean:untracked": "git clean -fxd && pnpm install",
     "release": "pnpm release:verify-git && pnpm release:build && changeset publish",
     "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
     "release:build": "pnpm clean && pnpm lint && pnpm test && MINIFY_CSS=true pnpm --recursive --parallel --filter \"!*-app\" build && cp README.md packages/rainbowkit/README.md",
     "release:test": "pnpm release:build && pnpm --filter example dev",
-    "ci:example": "pnpm --filter @rainbow-me/rainbowkit* prepare && pnpm --filter example build",
-    "ci:site": "pnpm --filter @rainbow-me/rainbowkit* prepare && pnpm --filter site build"
+    "ci:example": "pnpm --filter @rainbow-me/rainbow* prepare && pnpm --filter example build",
+    "ci:site": "pnpm --filter @rainbow-me/rainbow* prepare && pnpm --filter site build"
   },
   "repository": {
     "type": "git",

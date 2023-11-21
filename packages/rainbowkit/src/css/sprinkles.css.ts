@@ -171,7 +171,12 @@ const unresponsiveProperties = defineProperties({
       '2': '2px',
       '4': '4px',
     },
-    cursor: ['pointer'],
+    cursor: ['pointer', 'none'],
+    pointerEvents: ['none', 'all'],
+    minHeight: {
+      '8': { minHeight: '8px' },
+      '44': { minHeight: '44px' },
+    },
     flexDirection: ['row', 'column'],
     fontFamily: themeVars.fonts,
     fontSize: {

@@ -1,0 +1,53 @@
+{
+  "name": "@rainbow-me/rainbow-button",
+  "description": "Rainbow connector button",
+  "version": "0.0.1",
+  "files": [
+    "dist",
+    "styles.css"
+  ],
+  "keywords": [
+    "rainbow",
+    "wallet",
+    "ethereum",
+    "react",
+    "react-hook",
+    "hooks"
+  ],
+  "author": "Rainbow",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./dist/index.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "node build.js",
+    "build:watch": "node build.js --watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
+    "prepare": "pnpm build",
+    "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
+    "typegen": "tsc --emitDeclarationOnly || true",
+    "typegen:watch": "tsc --emitDeclarationOnly --watch"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17",
+    "viem": "~0.3.19 || ^1.0.0",
+    "wagmi": "~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0 || ~1.4.0"
+  },
+  "devDependencies": {
+    "@wagmi/core": "^1.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/rainbow-button"
+  }
+}
