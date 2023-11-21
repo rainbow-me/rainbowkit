@@ -54,7 +54,7 @@ const Home: NextPage = () => {
             {connector.name}
           </button>
         ))}
-        {isConnected && (
+        {isMounted && isConnected && (
           <button onClick={() => disconnect()}>
             Disconnect
           </button>
