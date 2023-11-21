@@ -26,7 +26,7 @@
     "test:cli:dev": "pnpm --filter @rainbow-me/create-rainbowkit test:dev",
     "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
     "changeset": "changeset",
-    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbowkit/node_modules && rm -rf ./packages/create-rainbowkit/dist && pnpm install",
+    "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbow-button/dist && rm -rf ./packages/create-rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules && pnpm install",
     "clean:untracked": "git clean -fxd && pnpm install",
     "release": "pnpm release:verify-git && pnpm release:build && changeset publish",
     "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
