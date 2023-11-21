@@ -43,7 +43,7 @@ export function WalletButtonRenderer({
   wallet = 'rainbow',
   children,
 }: WalletButtonRendererProps) {
-  const mounted = useIsMounted();
+  const isMounted = useIsMounted();
   const { openConnectModal } = useConnectModal();
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(WalletButtonContext);
@@ -66,12 +66,11 @@ export function WalletButtonRenderer({
 
   // If modal is closed we want to setConnector to null
   // to avoid "connecting to wallet..." ui
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (!connectModalOpen && connector) setConnector(null);
-  }, [connectModalOpen]);
+  }, [connectModalOpen, connector, setConnector]);
 
-  const { isConnected, isDisconnected, isConnecting } = useAccount({
+  const { isConnected, isConnecting } = useAccount({
     onConnect: () => {
       /*  const lastClickedWalletName = getRecent */
       // If you get error on desktop and thenswitch to mobile view
@@ -82,7 +81,6 @@ export function WalletButtonRenderer({
     onDisconnect: clearLatestWalletId,
   });
 
-  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   const isLastWalletIdConnected = useMemo(() => {
     const lastWalletId = getLatestWalletId();
 
@@ -96,7 +94,7 @@ export function WalletButtonRenderer({
     if (!isConnected) return false;
 
     return lastWalletId === firstConnector?.id;
-  }, [isConnected, isDisconnected, firstConnector]);
+  }, [isConnected, firstConnector]);
 
   const connectWallet = async () => {
     try {
@@ -125,7 +123,7 @@ export function WalletButtonRenderer({
         loading,
         connected: isLastWalletIdConnected,
         ready,
-        mounted,
+        mounted: isMounted(),
         connector: firstConnector,
         connect: async () => {
           // Used to track which last wallet user has clicked

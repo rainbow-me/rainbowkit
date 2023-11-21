@@ -1,6 +1,6 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
-import type { Connector } from '@wagmi/core';
+import { Connector } from '@wagmi/core';
 
 export type RainbowConnectorOptions = Parameters<typeof rainbowWallet>[0];
 
