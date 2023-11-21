@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { mainnet } from 'wagmi/chains';
+import { Chain, mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import { Locale } from '../../locales';
 import { ConnectModal } from './ConnectModal';
@@ -10,7 +10,7 @@ describe('<ConnectModal />', () => {
     const options = {
       mock: true,
       props: {
-        chains: [mainnet],
+        chains: [mainnet] as readonly [Chain, ...Chain[]],
         ...(locale ? { locale } : {}),
       },
     };

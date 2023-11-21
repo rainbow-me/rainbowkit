@@ -1,6 +1,7 @@
-import React, { ReactNode, createContext, useContext, useMemo } from "react";
-import { provideRainbowKitChains } from "./provideRainbowKitChains";
-import { Chain } from "viem";
+import React, { ReactNode, createContext, useContext, useMemo } from 'react';
+import { Chain } from 'viem';
+import { mainnet } from 'viem/chains';
+import { provideRainbowKitChains } from './provideRainbowKitChains';
 
 export interface RainbowKitChain extends Chain {
   id: number;
@@ -14,7 +15,9 @@ interface RainbowKitChainContextValue {
 }
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
-  chains: [],
+  // We use 'mainnet' as the default because wagmi defines
+  // 'chains' as a tuple type with at least one chain.
+  chains: [mainnet],
 });
 
 interface RainbowKitChainProviderProps {
@@ -34,9 +37,9 @@ export function RainbowKitChainProvider({
         () => ({
           chains: provideRainbowKitChains(chains),
           initialChainId:
-            typeof initialChain === "number" ? initialChain : initialChain?.id,
+            typeof initialChain === 'number' ? initialChain : initialChain?.id,
         }),
-        [chains, initialChain]
+        [chains, initialChain],
       )}
     >
       {children}

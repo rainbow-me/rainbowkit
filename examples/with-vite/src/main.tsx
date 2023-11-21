@@ -17,7 +17,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const chains = [mainnet, polygon, optimism, arbitrum, base, zora];
+const chains: readonly [Chain, ...Chain[]] = [mainnet, polygon, optimism, arbitrum, base, zora];
 
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit demo',
@@ -25,7 +25,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),

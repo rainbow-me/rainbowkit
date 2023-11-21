@@ -18,7 +18,7 @@ import {
 } from 'wagmi/chains';
 import App from './App';
 
-const chains = [
+const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
   polygon,
   optimism,
@@ -34,7 +34,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),
