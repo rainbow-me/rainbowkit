@@ -59,8 +59,8 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiConfig = createConfig({
-  chains,
   connectors,
+  chains,
   transports: {
     [mainnet.id]: http(),
     [polygon.id]: http(),
@@ -71,7 +71,7 @@ const wagmiConfig = createConfig({
   },
 });
 
-const client = new QueryClient();
+const client = new QueryClient()
 
 export function Providers({
   children,
@@ -84,15 +84,11 @@ export function Providers({
   React.useEffect(() => setMounted(true), []);
   return (
     <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={client}>
-        <RainbowKitProvider
-          chains={chains}
-          appInfo={demoAppInfo}
-          locale={locale}
-        >
+      <RainbowKitProvider chains={chains} appInfo={demoAppInfo} locale={locale}>
+        <QueryClientProvider client={client}>
           {mounted && children}
-        </RainbowKitProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </RainbowKitProvider>
     </WagmiProvider>
   );
 }
