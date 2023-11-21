@@ -225,9 +225,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   let headerBackButtonLink: WalletStep | null = null;
   let headerBackButtonCallback: () => void;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: expected use to re-render when step changes
   useEffect(() => {
     setConnectionError(false);
-  }, []);
+  }, [walletStep, selectedWallet]);
 
   const hasExtension = !!selectedWallet?.extensionDownloadUrl;
   const hasExtensionAndMobile = !!(
