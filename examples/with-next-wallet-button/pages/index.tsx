@@ -28,36 +28,27 @@ const Home: NextPage = () => {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          gap: 14
+          gap: 14,
         }}
       >
         <WalletButton wallet="rainbow"/>
         <WalletButton.Custom wallet="metaMask">
           {({ ready, connect, connector }) => {
             return (
-              <button
-                disabled={!ready}
-                onClick={connect}
-                key={connector.id}
-              >
+              <button disabled={!ready} onClick={connect} key={connector.id}>
                 {connector.name}
               </button>
             );
           }}
         </WalletButton.Custom>
-        {isMounted && wagmiConnectors.map((connector) => (
-          <button
-            disabled={!connector.ready}
-            onClick={() => connect({ connector })}
-            key={connector.id}
-          >
-            {connector.name}
-          </button>
-        ))}
+        {isMounted &&
+          wagmiConnectors.map((connector) => (
+            <button onClick={() => connect({ connector })} key={connector.id}>
+              {connector.name}
+            </button>
+          ))}
         {isMounted && isConnected && (
-          <button onClick={() => disconnect()}>
-            Disconnect
-          </button>
+          <button onClick={() => disconnect()}>Disconnect</button>
         )}
       </div>
     </div>
