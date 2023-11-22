@@ -17,6 +17,7 @@ import {
   Chain,
 } from 'wagmi/chains';
 import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -54,9 +55,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiProvider config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <App />
-      </RainbowKitProvider>
+      <QueryClientProvider client={new QueryClient()}>
+        <RainbowKitProvider chains={chains}>
+          <App />
+        </RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   </React.StrictMode>
 );
