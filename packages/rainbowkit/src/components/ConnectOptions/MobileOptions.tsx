@@ -133,7 +133,6 @@ export function WalletButton({
     });
   }, [connector, connect, getMobileUri, onConnecting, onClose, name, id]);
 
-  // biome-ignore lint/nursery/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     // When using `reactStrictMode: true` in development mode the useEffect hook
     // will fire twice. We avoid this by using `useRef` logic here. Works for now.
@@ -141,7 +140,7 @@ export function WalletButton({
       onConnect();
       initialized.current = true;
     }
-  }, [connecting]);
+  }, [connecting, onConnect]);
 
   return (
     <Box

@@ -23,7 +23,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
   const authAdapter = useAuthenticationAdapter();
 
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
+  // biome-ignore lint/correctness/useExhaustiveDependencies: correct setState usage
   const getNonce = useCallback(async () => {
     try {
       const nonce = await authAdapter.getNonce();
@@ -35,7 +35,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         status: 'idle',
       }));
     }
-  }, [authAdapter]);
+  }, [authAdapter, i18n]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect

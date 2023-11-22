@@ -19,7 +19,7 @@ import { allDocsRoutes, docsRoutes } from 'lib/docsRoutes';
 import { useCoolMode } from 'lib/useCoolMode';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Ref, useEffect } from 'react';
+import React, { Ref, useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import {
   content,
@@ -46,14 +46,16 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     true,
   ) as Ref<HTMLDivElement>;
 
+  const handleRouteChange = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   // Listen to route change so we can programatically close
   // the docs mobile menu when changing routes.
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
-    const handleRouteChange = () => setIsOpen(false);
     router.events.on('routeChangeStart', handleRouteChange);
     return () => router.events.off('routeChangeStart', handleRouteChange);
-  }, []);
+  }, [handleRouteChange, router]);
 
   return (
     <SearchProvider>
