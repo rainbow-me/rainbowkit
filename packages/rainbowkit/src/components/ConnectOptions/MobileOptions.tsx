@@ -113,6 +113,7 @@ export function WalletButton({
 
     if (id !== 'walletConnect') onMobileUri();
 
+    // if the id is "walletConnect" the "showWalletConnectModal" will always be true
     if (showWalletConnectModal) {
       showWalletConnectModal();
       onClose?.();
