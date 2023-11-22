@@ -100,6 +100,7 @@ export default function App() {
         [arbitrum.id]: http(),
         [base.id]: http(),
         [zora.id]: http(),
+        [goerli.id]: http(),
       },
     });
 
