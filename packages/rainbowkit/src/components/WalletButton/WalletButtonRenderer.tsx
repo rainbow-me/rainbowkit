@@ -9,7 +9,6 @@ import { useAccount, useAccountEffect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { isMobile } from '../../utils/isMobile';
-import { isRainbowKitConnector } from '../../wallets/groupedWallets';
 import {
   addLatestWalletId,
   clearLatestWalletId,
@@ -49,7 +48,7 @@ export function WalletButtonRenderer({
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(WalletButtonContext);
   const [firstConnector] = useWalletConnectors()
-    .filter(isRainbowKitConnector)
+    .filter((wallet) => wallet.isRainbowKitConnector)
     // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
     .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
