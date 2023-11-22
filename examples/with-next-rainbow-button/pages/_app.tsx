@@ -13,7 +13,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 
 const projectId = "YOUR_PROJECT_ID";
 
-const wagmiClient = createConfig({
+const config = createConfig({
   autoConnect: true,
   connectors: [new RainbowConnector({ chains, projectId })],
   publicClient,
@@ -22,7 +22,7 @@ const wagmiClient = createConfig({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiClient}>
+    <WagmiConfig config={config}>
       <RainbowButtonProvider>
         <Component {...pageProps} />
       </RainbowButtonProvider>

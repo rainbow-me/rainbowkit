@@ -23,7 +23,7 @@ const connectors = connectorsForWallets([
   metaMaskWallet({ projectId, chains }),
 ]);
 
-const wagmiClient = createConfig({
+const config = createConfig({
   autoConnect: true,
   connectors: [
     ...connectors,
@@ -46,7 +46,7 @@ const wagmiClient = createConfig({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiClient}>
+    <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
         <Component {...pageProps} />
       </RainbowKitProvider>

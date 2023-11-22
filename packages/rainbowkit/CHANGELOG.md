@@ -2083,7 +2083,7 @@
     return (
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
         <RainbowKitProvider chains={chains}>
-          <YourApp />
+          {/* Your App */}
         </RainbowKitProvider>
       </WagmiProvider>
     );
@@ -2105,7 +2105,7 @@
     return (
       <WagmiProvider client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
-          <YourApp />
+          {/* Your App */}
         </RainbowKitProvider>
       </WagmiProvider>
     );
@@ -2270,7 +2270,7 @@
     return (
       <WagmiProvider client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
-          <YourApp />
+          {/* Your App */}
         </RainbowKitProvider>
       </WagmiProvider>
     );
@@ -2310,7 +2310,7 @@
     return (
       <WagmiProvider client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
-          <YourApp />
+          {/* Your App */}
         </RainbowKitProvider>
       </WagmiProvider>
     );

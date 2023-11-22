@@ -25,15 +25,17 @@
     RainbowConnector,
   } from "@rainbow-me/rainbow-button";
 
-  const wagmiClient = createConfig({
+  const config = createConfig({
     connectors: [new RainbowConnector({ chains, projectId })],
     publicClient,
   });
 
   function MyApp({ Component, pageProps }: AppProps) {
     return (
-      <WagmiConfig config={wagmiClient}>
-        <RainbowButtonProvider>{/* Your App */}</RainbowButtonProvider>
+      <WagmiConfig config={config}>
+        <RainbowButtonProvider>
+          {/* Your App */}
+        </RainbowButtonProvider>
       </WagmiConfig>
     );
   }
