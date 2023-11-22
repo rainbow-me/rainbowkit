@@ -4,9 +4,9 @@
 
 # Rainbow Button
 
-The simplest way to add support for Rainbow Wallet to dApps built on `wagmi`.
+The simplest way to add support for Rainbow Wallet to dApps built on [wagmi](https://wagmi.sh/).
 
-This package is designed to work independent of [RainbowKit](https://www.rainbowkit.com).
+This package is designed to be installed independent of [RainbowKit](https://www.rainbowkit.com).
 
 ## Usage
 
@@ -36,10 +36,6 @@ import { createConfig, WagmiConfig } from 'wagmi';
 
 The `RainbowConnector` supports connecting with Rainbow just like wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
 
-```tsx
-import { RainbowConnector } from '@rainbow-me/rainbow-button';
-```
-
 Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in). This is absolutely free and only takes a few minutes.
 
 ```tsx
@@ -58,7 +54,7 @@ const App = () => {
   return (
     <WagmiConfig config={config}>
       <RainbowButtonProvider>
-        <YourApp />
+        {/* Your App */}
       </RainbowButtonProvider>
     </WagmiConfig>
   );
@@ -83,7 +79,7 @@ You can reference the [Adoption Guide](https://www.rainbowkit.com/guides/rainbow
 
 ### Custom Rainbow button
 
-You can also use the `RainbowButton.Custom` component for custom implementations and styling.
+The `RainbowButton.Custom` component is available for custom button implementations and styling.
 
 ```tsx
 <RainbowButton.Custom>
