@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -82,6 +83,10 @@ export function WalletButton({
   const i18n = useContext(I18nContext);
 
   const onConnect = useCallback(async () => {
+    // We still want to get the latest wallet id to show connected
+    // green badge on our custom WalletButton API
+    addLatestWalletId(id);
+
     const onMobileUri = async () => {
       const mobileUri = await getMobileUri?.();
 

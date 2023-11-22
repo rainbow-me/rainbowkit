@@ -29,6 +29,7 @@ import {
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -139,6 +140,10 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   };
 
   const selectWallet = async (wallet: WalletConnector) => {
+    // We still want to get the latest wallet id to show connected
+    // green badge on our custom WalletButton API
+    addLatestWalletId(wallet.id);
+
     // This ensures that we listen to the provider.once("display_uri")
     // before connecting to the wallet
     if (wallet.ready) {
