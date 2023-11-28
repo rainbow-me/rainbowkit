@@ -153,7 +153,12 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
         // If the WalletConnect request is rejected, restart the wallet
         // selection flow to create a new connection with a new QR code
-        const provider = await sWallet?.connector.getProvider();
+        let provider;
+
+        if (sWallet?.shouldCallProvider) {
+          provider = await sWallet?.connector.getProvider();
+        }
+
         const connection = provider?.signer?.connection;
         if (connection?.on && connection?.off) {
           const handleConnectionClose = () => {

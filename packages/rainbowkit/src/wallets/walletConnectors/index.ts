@@ -9,6 +9,7 @@ import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { desigWallet } from './desigWallet/desigWallet';
+import { emailWallet } from './emailWallet/emailWallet';
 import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
@@ -83,4 +84,5 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  emailWallet,
 };

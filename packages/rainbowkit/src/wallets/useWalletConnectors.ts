@@ -23,6 +23,7 @@ export interface WalletConnector extends WalletInstance {
   mobileDownloadUrl?: string;
   extensionDownloadUrl?: string;
   desktopDownloadUrl?: string;
+  shouldCallProvider: boolean;
 }
 
 export function useWalletConnectors(): WalletConnector[] {
@@ -128,6 +129,7 @@ export function useWalletConnectors(): WalletConnector[] {
               wallet.walletConnectModalConnector,
             )
         : undefined,
+      shouldCallProvider: wallet.id !== 'email' ? true : false,
     });
   });
   return walletConnectors;

@@ -26,6 +26,7 @@ import {
   coreWallet,
   dawnWallet,
   desigWallet,
+  emailWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
@@ -63,6 +64,7 @@ import {
   WagmiConfig,
   configureChains,
   createConfig,
+  useConnect,
   useDisconnect,
 } from 'wagmi';
 import {
@@ -121,6 +123,9 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
+const clientId =
+  process.env.NEXT_PUBLIC_WEB3_AUTH_CLIENT_ID ?? 'YOUR_WEB3_AUTH_CLIENT_ID';
+
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
@@ -128,6 +133,16 @@ const { wallets } = getDefaultWallets({
 });
 
 const connectors = connectorsForWallets([
+  {
+    groupName: 'Socials',
+    wallets: [
+      emailWallet({
+        chains,
+        clientId,
+        network: 'sapphire_devnet',
+      }),
+    ],
+  },
   ...wallets,
   {
     groupName: 'Other',
@@ -264,6 +279,7 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+  const { connectors, connectAsync } = useConnect();
 
   const routerLocale = router.locale as Locale;
 
@@ -330,6 +346,18 @@ function RainbowKitApp({
         >
           <Component {...pageProps} {...appContextProps} />
 
+          <button
+            type="button"
+            onClick={() => {
+              connectAsync({
+                connector: connectors.find(
+                  (connector) => connector.id === 'rk-auth-email',
+                )!,
+              });
+            }}
+          >
+            connnect email
+          </button>
           {isMounted && (
             <>
               <div
