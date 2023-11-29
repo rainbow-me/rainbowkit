@@ -11,7 +11,9 @@
   "exports": {
     ".": "./dist/index.js",
     "./styles.css": "./dist/index.css",
-    "./wallets": "./dist/wallets/walletConnectors/index.js"
+    "./wallets": "./dist/wallets/walletConnectors/index.js",
+    "./locales": "./dist/locales/index.js",
+    "./locales/*": "./dist/locales/*.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

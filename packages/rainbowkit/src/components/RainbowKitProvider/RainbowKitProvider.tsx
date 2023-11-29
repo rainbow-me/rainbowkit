@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useContext } from 'react';
 import { useAccount } from 'wagmi';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
-import { Locale } from '../../locales';
+import { type Locale } from '../../locales';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
 import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
@@ -161,3 +161,5 @@ export function RainbowKitProvider({
     </RainbowKitChainProvider>
   );
 }
+
+RainbowKitProvider.i18n = I18nProvider.i18n;

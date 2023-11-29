@@ -12,6 +12,14 @@ import {
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
+
+// import pt_BR from '@rainbow-me/rainbowkit/locales/pt_BR';
+import all from '@rainbow-me/rainbowkit/locales';
+
+// pt_BR.connect.label = 'Sign in';
+
+RainbowKitProvider.i18n.store(all);
+
 import {
   GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
@@ -58,7 +66,7 @@ import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   WagmiConfig,
   configureChains,

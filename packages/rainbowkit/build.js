@@ -101,7 +101,25 @@ const walletsBuild = esbuild.build({
     : undefined,
 });
 
-Promise.all([mainBuild, walletsBuild])
+const localesBuild = esbuild.build({
+  ...baseBuildConfig,
+  entryPoints: (await readdir('src/locales')).map(({ path }) => path),
+  outdir: 'dist/locales',
+  assetNames: '[name]',
+  splitting: true,
+  banner: undefined,
+  loader: { '.json': 'json' },
+  watch: isWatching
+    ? {
+        onRebuild(error, result) {
+          if (error) console.error('locales build failed:', error);
+          else console.log('locales build succeeded:', result);
+        },
+      }
+    : undefined,
+});
+
+Promise.all([mainBuild, walletsBuild, localesBuild])
   .then(() => {
     if (isWatching) {
       console.log('watching...');

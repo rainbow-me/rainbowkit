@@ -1,0 +1,4 @@
+{
+  "main": "../dist/locales/index.js",
+  "sideEffects": false
+}
