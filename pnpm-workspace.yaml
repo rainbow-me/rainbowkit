@@ -1,6 +1,4 @@
 prefer-workspace-packages: true
 packages:
-  - 'packages/*'
-  - 'packages/create-rainbowkit/**/*-app'
-  - 'site'
-  - 'examples/*'
+  - "packages/*"
+  - "packages/create-rainbowkit/**/*-app"

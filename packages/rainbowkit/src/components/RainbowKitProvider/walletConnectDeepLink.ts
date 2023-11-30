@@ -12,7 +12,7 @@ export function setWalletConnectDeepLink({
     JSON.stringify({
       href: mobileUri.split('?')[0],
       name,
-    })
+    }),
   );
 }
 

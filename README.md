@@ -17,11 +17,11 @@ RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add 
 You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
 
 ```bash
-npm init @rainbow-me/rainbowkit@latest
+npm init @stakekit/rainbowkit@latest
 # or
-pnpm create @rainbow-me/rainbowkit@latest
+pnpm create @stakekit/rainbowkit@latest
 # or
-yarn create @rainbow-me/rainbowkit
+yarn create @stakekit/rainbowkit
 ```
 
 ## Documentation

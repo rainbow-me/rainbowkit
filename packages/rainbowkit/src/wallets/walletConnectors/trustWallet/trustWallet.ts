@@ -1,9 +1,12 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
+import { isMobile } from '../../../utils/isMobile';
 import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type {
   WalletConnectConnectorOptions,
@@ -30,46 +33,6 @@ export interface TrustWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function getTrustWalletInjectedProvider(): Window['ethereum'] {
-  const isTrustWallet = (ethereum: NonNullable<Window['ethereum']>) => {
-    // Identify if Trust Wallet injected provider is present.
-    const trustWallet = !!ethereum.isTrust;
-
-    return trustWallet;
-  };
-
-  const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
-
-  // No injected providers exist.
-  if (!injectedProviderExist) {
-    return;
-  }
-
-  // Trust Wallet injected provider is available in the global scope.
-  // There are cases that some cases injected providers can replace window.ethereum
-  // without updating the ethereum.providers array. To prevent issues where
-  // the TW connector does not recognize the provider when TW extension is installed,
-  // we begin our checks by relying on TW's global object.
-  if (window['trustwallet']) {
-    return window['trustwallet'];
-  }
-
-  // Trust Wallet was injected into window.ethereum.
-  if (isTrustWallet(window.ethereum!)) {
-    return window.ethereum;
-  }
-
-  // Trust Wallet provider might be replaced by another
-  // injected provider, check the providers array.
-  if (window.ethereum?.providers) {
-    // ethereum.providers array is a non-standard way to
-    // preserve multiple injected providers. Eventually, EIP-5749
-    // will become a living standard and we will have to update this.
-    return window.ethereum.providers.find(isTrustWallet);
-  }
-}
-
 export const trustWallet = ({
   chains,
   projectId,
@@ -78,7 +41,9 @@ export const trustWallet = ({
   ...options
 }: (TrustWalletLegacyOptions | TrustWalletOptions) &
   InjectedConnectorOptions): Wallet => {
-  const isTrustWalletInjected = Boolean(getTrustWalletInjectedProvider());
+  const isTrustWalletInjected = isMobile()
+    ? hasInjectedProvider('isTrust')
+    : hasInjectedProvider('isTrustWallet');
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
   return {
@@ -122,13 +87,9 @@ export const trustWallet = ({
             // @ts-ignore
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options: {
-              getProvider: getTrustWalletInjectedProvider,
-              ...options,
-            },
-          });
+        : isMobile()
+        ? getInjectedConnector({ flag: 'isTrust', chains, options })
+        : getInjectedConnector({ flag: 'isTrustWallet', chains, options });
 
       const mobileConnector = {
         getUri: shouldUseWalletConnect ? getUriMobile : undefined,
@@ -144,20 +105,21 @@ export const trustWallet = ({
             steps: [
               {
                 description:
-                  'Put Trust Wallet on your home screen for faster access to your wallet.',
+                  'wallet_connectors.trust.qr_code.step1.description',
                 step: 'install' as InstructionStepName,
-                title: 'Open the Trust Wallet app',
-              },
-              {
-                description: 'Create a new wallet or import an existing one.',
-                step: 'create' as InstructionStepName,
-                title: 'Create or Import a Wallet',
+                title: 'wallet_connectors.trust.qr_code.step1.title',
               },
               {
                 description:
-                  'Choose New Connection, then scan the QR code and confirm the prompt to connect.',
+                  'wallet_connectors.trust.qr_code.step2.description',
+                step: 'create' as InstructionStepName,
+                title: 'wallet_connectors.trust.qr_code.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.trust.qr_code.step3.description',
                 step: 'scan' as InstructionStepName,
-                title: 'Tap WalletConnect in Settings',
+                title: 'wallet_connectors.trust.qr_code.step3.title',
               },
             ],
           },
@@ -170,20 +132,21 @@ export const trustWallet = ({
           steps: [
             {
               description:
-                'Click at the top right of your browser and pin Trust Wallet for easy access.',
+                'wallet_connectors.trust.extension.step1.description',
               step: 'install' as InstructionStepName,
-              title: 'Install the Trust Wallet extension',
-            },
-            {
-              description: 'Create a new wallet or import an existing one.',
-              step: 'create' as InstructionStepName,
-              title: 'Create or Import a wallet',
+              title: 'wallet_connectors.trust.extension.step1.title',
             },
             {
               description:
-                'Once you set up Trust Wallet, click below to refresh the browser and load up the extension.',
+                'wallet_connectors.trust.extension.step2.description',
+              step: 'create' as InstructionStepName,
+              title: 'wallet_connectors.trust.extension.step2.title',
+            },
+            {
+              description:
+                'wallet_connectors.trust.extension.step3.description',
               step: 'refresh' as InstructionStepName,
-              title: 'Refresh your browser',
+              title: 'wallet_connectors.trust.extension.step3.title',
             },
           ],
         },

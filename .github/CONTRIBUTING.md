@@ -31,7 +31,7 @@ All API changes should also include updates to [`README.md`](../README.md) and t
 
 ## Coding standards
 
-Our code formatting rules are defined in [`.eslintrc.cjs`](../.eslintrc.cjs). You can check your code against these standards by running:
+Our code formatting rules are defined in [`biome.json`](../.biome.json). You can check your code against these standards by running:
 
 ```bash
 pnpm lint
@@ -149,23 +149,30 @@ Once you’ve pushed the tag, you can create a new release on GitHub.
 #### If you published `rainbowkit`:
 
 - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
-- Select the latest version tag for `@rainbow-me/rainbowkit`.
-- Set the title to `@rainbow-me/rainbowkit@x.x.x` (substituting the latest version)
+- Select the latest version tag for `@stakekit/rainbowkit`.
+- Set the title to `@stakekit/rainbowkit@x.x.x` (substituting the latest version)
 - Copy the Markdown content below the latest version heading from [RainbowKit’s `CHANGELOG.md`](../packages/rainbowkit/CHANGELOG.md)
 
 #### If you published `rainbowkit-siwe-next-auth`:
 
 - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
-- Select the latest version tag for `@rainbow-me/rainbowkit-siwe-next-auth`.
-- Set the title to `@rainbow-me/rainbowkit-siwe-next-auth@x.x.x` (substituting the latest version)
+- Select the latest version tag for `@stakekit/rainbowkit-siwe-next-auth`.
+- Set the title to `@stakekit/rainbowkit-siwe-next-auth@x.x.x` (substituting the latest version)
 - Copy the Markdown content below the latest version heading from [rainbowkit-siwe-next-auth’s `CHANGELOG.md`](../packages/rainbowkit-siwe-next-auth/CHANGELOG.md)
 
 #### If you published `create-rainbowkit`:
 
 - Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
-- Select the latest version tag for `@rainbow-me/create-rainbowkit`.
-- Set the title to `@rainbow-me/create-rainbowkit@x.x.x` (substituting the latest version)
+- Select the latest version tag for `@stakekit/create-rainbowkit`.
+- Set the title to `@stakekit/create-rainbowkit@x.x.x` (substituting the latest version)
 - Copy the Markdown content below the latest version heading from [create-rainbowkit’s `CHANGELOG.md`](../packages/create-rainbowkit/CHANGELOG.md)
+
+#### If you published `rainbow-button`:
+
+- Go to [GitHub’s new release form.](https://github.com/rainbow-me/rainbowkit/releases/new)
+- Select the latest version tag for `@stakekit/rainbow-button`.
+- Set the title to `@stakekit/rainbow-button@x.x.x` (substituting the latest version)
+- Copy the Markdown content below the latest version heading from [rainbow-button's `CHANGELOG.md`](../packages/rainbow-button/CHANGELOG.md)
 
 If at any stage you’re unsure of the formatting, you can [reference past RainbowKit releases.](https://github.com/rainbow-me/rainbowkit/releases)
 

@@ -1,6 +1,6 @@
 import React, {
-  createContext,
   ReactNode,
+  createContext,
   useCallback,
   useContext,
   useMemo,
@@ -113,7 +113,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openAccountModal,
           openChainModal,
           openConnectModal,
-        ]
+        ],
       )}
     >
       {children}

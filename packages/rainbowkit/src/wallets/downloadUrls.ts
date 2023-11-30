@@ -1,5 +1,6 @@
 import { BrowserType, getBrowser } from '../utils/browsers';
 import { isIOS } from '../utils/isMobile';
+import { PlatformType, getPlatform } from '../utils/platforms';
 import { WalletInstance } from './Wallet';
 
 export const getExtensionDownloadUrl = (wallet?: WalletInstance) => {
@@ -25,5 +26,17 @@ export const getMobileDownloadUrl = (wallet?: WalletInstance) => {
   return (
     (ios ? wallet?.downloadUrls?.ios : wallet?.downloadUrls?.android) ??
     wallet?.downloadUrls?.mobile
+  );
+};
+
+export const getDesktopDownloadUrl = (wallet?: WalletInstance) => {
+  const platform = getPlatform();
+  return (
+    {
+      [PlatformType.Windows]: wallet?.downloadUrls?.windows,
+      [PlatformType.MacOS]: wallet?.downloadUrls?.macos,
+      [PlatformType.Linux]: wallet?.downloadUrls?.linux,
+      [PlatformType.Desktop]: wallet?.downloadUrls?.desktop,
+    }[platform] ?? wallet?.downloadUrls?.desktop
   );
 };

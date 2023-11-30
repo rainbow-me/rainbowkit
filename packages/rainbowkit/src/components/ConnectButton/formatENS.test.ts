@@ -4,7 +4,7 @@ import { formatENS } from './formatENS';
 describe('formatENS', () => {
   it('trucates ENS name over 24 characters', () => {
     expect(formatENS('reallylongensnameheretotestlongnames.eth')).toEqual(
-      'reallylongensnameheretot...'
+      'reallylongensnameheretot...',
     );
   });
 
@@ -12,21 +12,21 @@ describe('formatENS', () => {
     expect(formatENS('rainbow.eth')).toEqual('rainbow.eth');
   });
 
-  it(`if 24 characters, do not truncate .eth`, () => {
+  it('if 24 characters, do not truncate .eth', () => {
     expect(formatENS('qwertyuiopasdfghjklzxcvb.eth')).toEqual(
-      'qwertyuiopasdfghjklzxcvb.eth'
+      'qwertyuiopasdfghjklzxcvb.eth',
     );
   });
 
-  it(`Subdomains are taken into account`, () => {
+  it('Subdomains are taken into account', () => {
     expect(formatENS('rainbowrainbowrainbow.rainbowrainbow.eth')).toEqual(
-      'rainbowrainbowrainbow.ra...'
+      'rainbowrainbowrainbow.ra...',
     );
   });
 
-  it(`Non .eth names work`, () => {
+  it('Non .eth names work', () => {
     expect(formatENS('qwertyuiopasdfghjklzxcvb.xyz')).toEqual(
-      'qwertyuiopasdfghjklzxcvb.xyz'
+      'qwertyuiopasdfghjklzxcvb.xyz',
     );
   });
 });

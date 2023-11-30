@@ -13,7 +13,7 @@ import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
 import * as styles from './Dialog.css';
 import { FocusTrap } from './FocusTrap';
 
-const stopPropagation: MouseEventHandler<unknown> = event =>
+const stopPropagation: MouseEventHandler<unknown> = (event) =>
   event.stopPropagation();
 
 interface DialogProps {
@@ -37,7 +37,7 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
   const [bodyScrollable, setBodyScrollable] = useState(true);
   useEffect(() => {
     setBodyScrollable(
-      getComputedStyle(window.document.body).overflow !== 'hidden'
+      getComputedStyle(window.document.body).overflow !== 'hidden',
     );
   }, []);
 
@@ -71,7 +71,7 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
                 </Box>
               </Box>
             </RemoveScroll>,
-            document.body
+            document.body,
           )
         : null}
     </>

@@ -1,7 +1,14 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-export const useIsMounted = () => {
-  const [mounted, setMounted] = useReducer(() => true, false);
-  useEffect(setMounted, [setMounted]);
-  return mounted;
-};
+export function useIsMounted() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
+
+  return useCallback(() => isMounted, [isMounted]);
+}

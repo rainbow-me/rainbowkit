@@ -4,7 +4,7 @@ import { SpinnerIconClassName, SpinnerIconPathClassName } from './Icons.css';
 const useRandomId = (prefix: string) =>
   useMemo(
     () => `${prefix}_${Math.round(Math.random() * 1_000_000_000)}`,
-    [prefix]
+    [prefix],
   );
 
 export const SpinnerIcon = ({

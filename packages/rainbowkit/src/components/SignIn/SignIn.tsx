@@ -1,6 +1,6 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
-import { useAccount, useDisconnect, useNetwork, useSignMessage } from 'wagmi';
+import { useAccount, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -8,11 +8,13 @@ import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { useAuthenticationAdapter } from '../RainbowKitProvider/AuthenticationContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
+  const i18n = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
@@ -21,18 +23,19 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
   const authAdapter = useAuthenticationAdapter();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: correct setState usage
   const getNonce = useCallback(async () => {
     try {
       const nonce = await authAdapter.getNonce();
-      setState(x => ({ ...x, nonce }));
-    } catch (error) {
-      setState(x => ({
+      setState((x) => ({ ...x, nonce }));
+    } catch {
+      setState((x) => ({
         ...x,
-        errorMessage: 'Error preparing message, please retry!',
+        errorMessage: i18n.t('sign_in.message.preparing_error'),
         status: 'idle',
       }));
     }
-  }, [authAdapter]);
+  }, [authAdapter, i18n]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect
@@ -49,8 +52,6 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   const { address } = useAccount();
   const { chain: activeChain } = useNetwork();
   const { signMessageAsync } = useSignMessage();
-  const { disconnect } = useDisconnect();
-  const cancel = () => disconnect();
 
   const signIn = async () => {
     try {
@@ -61,7 +62,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         return;
       }
 
-      setState(x => ({
+      setState((x) => ({
         ...x,
         errorMessage: undefined,
         status: 'signing',
@@ -77,20 +78,20 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {
           // It's not really an "error" so we silently ignore and reset to idle state
-          return setState(x => ({
+          return setState((x) => ({
             ...x,
             status: 'idle',
           }));
         }
 
-        return setState(x => ({
+        return setState((x) => ({
           ...x,
-          errorMessage: 'Error signing message, please retry!',
+          errorMessage: i18n.t('sign_in.signature.signing_error'),
           status: 'idle',
         }));
       }
 
-      setState(x => ({ ...x, status: 'verifying' }));
+      setState((x) => ({ ...x, status: 'verifying' }));
 
       try {
         const verified = await authAdapter.verify({ message, signature });
@@ -100,16 +101,16 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         } else {
           throw new Error();
         }
-      } catch (error) {
-        return setState(x => ({
+      } catch {
+        return setState((x) => ({
           ...x,
-          errorMessage: 'Error verifying signature, please retry!',
+          errorMessage: i18n.t('sign_in.signature.verifying_error'),
           status: 'idle',
         }));
       }
-    } catch (error) {
+    } catch {
       setState({
-        errorMessage: 'Oops, something went wrong!',
+        errorMessage: i18n.t('sign_in.signature.oops_error'),
         status: 'idle',
       });
     }
@@ -155,7 +156,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               textAlign="center"
               weight="heavy"
             >
-              Verify your account
+              {i18n.t('sign_in.label')}
             </Text>
           </Box>
           <Box
@@ -169,8 +170,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               size={mobile ? '16' : '14'}
               textAlign="center"
             >
-              To finish connecting, you must sign a message in your wallet to
-              verify that you are the owner of this account.
+              {i18n.t('sign_in.description')}
             </Text>
             {status === 'idle' && state.errorMessage ? (
               <Text
@@ -198,12 +198,12 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             }
             label={
               !state.nonce
-                ? 'Preparing message...'
+                ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
-                ? 'Waiting for signature...'
+                ? i18n.t('sign_in.signature.waiting')
                 : status === 'verifying'
-                ? 'Verifying signature...'
-                : 'Send message'
+                ? i18n.t('sign_in.signature.verifying')
+                : i18n.t('sign_in.message.send')
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}
@@ -212,7 +212,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
           {mobile ? (
             <ActionButton
               label="Cancel"
-              onClick={cancel}
+              onClick={onClose}
               size="large"
               type="secondary"
             />
@@ -222,7 +222,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               borderRadius="full"
               className={touchableStyles({ active: 'shrink', hover: 'grow' })}
               display="block"
-              onClick={cancel}
+              onClick={onClose}
               paddingX="10"
               paddingY="5"
               rel="noreferrer"
@@ -235,7 +235,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
                 size={mobile ? '16' : '14'}
                 weight="bold"
               >
-                Cancel
+                {i18n.t('sign_in.message.cancel')}
               </Text>
             </Box>
           )}

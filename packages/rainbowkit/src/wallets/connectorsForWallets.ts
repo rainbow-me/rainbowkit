@@ -11,7 +11,39 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-export const connectorsForWallets = (walletList: WalletList) => {
+/*
+  Build your own list of wallets for the RainbowKit modal
+  with their necessary connectors. This way you have full
+  control over which wallets to display, and in which order.
+  Returns a `connectors` fn to pass directly to Wagmi's `createConfig`. 
+*/
+export function connectorsForWallets(walletList: WalletList): () => Connector[];
+
+/*
+  Assemble a list of low-level connectors for use with the
+  `WalletButton` and `RainbowButton` components in custom implementations.
+*/
+export function connectorsForWallets(wallets: Wallet[]): Connector[];
+
+/*
+  Overload implementation for `connectorsForWallets`.
+  1. Returns a `connectors` function that will then return a Connectors array
+  2. Returns a prepared Connectors array stuffed with dummy WalletList data
+*/
+export function connectorsForWallets(walletList: any): any {
+  if ('groupName' in walletList[0]) {
+    return _connectorsForWallets(walletList);
+  } else {
+    return _connectorsForWallets([
+      {
+        groupName: '',
+        wallets: walletList as Wallet[],
+      },
+    ])();
+  }
+}
+
+const _connectorsForWallets = (walletList: WalletList): (() => Connector[]) => {
   return () => {
     let index = -1;
 
@@ -29,13 +61,13 @@ export const connectorsForWallets = (walletList: WalletList) => {
     // e.g. the "Injected Wallet" option hides itself if another
     // injected wallet is available.
     walletList.forEach(({ groupName, wallets }, groupIndex) => {
-      wallets.forEach(wallet => {
+      wallets.forEach((wallet) => {
         index++;
 
         // guard against non-hex values for `iconAccent`
         if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
           throw new Error(
-            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
+            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
           );
         }
 
@@ -92,7 +124,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         }
 
         const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector()
+          createConnector(),
         );
 
         let walletConnectModalConnector: Connector | undefined;
@@ -145,7 +177,7 @@ export const connectorsForWallets = (walletList: WalletList) => {
         // Add wallet to connector's list of associated wallets
         // @ts-ignore
         connector._wallets.push(walletInstance);
-      }
+      },
     );
 
     return connectors;

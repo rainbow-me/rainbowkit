@@ -1,6 +1,11 @@
 import { Connector } from 'wagmi';
 
-export type InstructionStepName = 'install' | 'create' | 'scan' | 'refresh';
+export type InstructionStepName =
+  | 'install'
+  | 'create'
+  | 'scan'
+  | 'connect'
+  | 'refresh';
 
 type RainbowKitConnector<C extends Connector = Connector> = {
   connector: C;
@@ -9,6 +14,14 @@ type RainbowKitConnector<C extends Connector = Connector> = {
   };
   desktop?: {
     getUri?: () => Promise<string>;
+    instructions?: {
+      learnMoreUrl: string;
+      steps: {
+        step: InstructionStepName;
+        title: string;
+        description: string;
+      }[];
+    };
   };
   qrCode?: {
     getUri: () => Promise<string>;
@@ -52,6 +65,10 @@ export type Wallet<C extends Connector = Connector> = {
     opera?: string;
     safari?: string;
     browserExtension?: string;
+    macos?: string;
+    windows?: string;
+    linux?: string;
+    desktop?: string;
   };
   hidden?: (args: {
     wallets: {

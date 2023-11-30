@@ -9,7 +9,7 @@ export const CloseButton = ({
   onClose,
 }: {
   'aria-label'?: string;
-  'onClose': () => void;
+  onClose: () => void;
 }) => {
   const mobile = isMobile();
   return (

@@ -11,7 +11,6 @@ describe('walletConnectWallet', () => {
   it('without projectId', () => {
     // @ts-ignore - intentionally missing projectId for v2 default
     const wallet = walletConnectWallet({ chains });
-    // eslint-disable-next-line jest/require-to-throw-message
     expect(() => wallet.createConnector()).toThrowError();
   });
 

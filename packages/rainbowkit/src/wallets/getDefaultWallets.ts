@@ -1,5 +1,6 @@
-import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
-import { WalletList } from './Wallet';
+import type { Connector } from 'wagmi';
+import type { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import type { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
 import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
@@ -18,7 +19,7 @@ export const getDefaultWallets = ({
   projectId: string;
   chains: Chain[];
 }): {
-  connectors: ReturnType<typeof connectorsForWallets>;
+  connectors: () => Connector[];
   wallets: WalletList;
 } => {
   const wallets: WalletList = [

@@ -1,12 +1,13 @@
 import React, {
-  createContext,
   ReactNode,
+  createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useRef,
 } from 'react';
-import { useAccount } from 'wagmi';
+import { ConnectorData, useAccount } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -32,13 +33,13 @@ export interface AuthenticationConfig<Message> {
 
 // Right now this function only serves to infer the generic Message type
 export function createAuthenticationAdapter<Message>(
-  adapter: AuthenticationAdapter<Message>
+  adapter: AuthenticationAdapter<Message>,
 ) {
   return adapter;
 }
 
 const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
-  null
+  null,
 );
 
 interface RainbowKitAuthenticationProviderProps<Message>
@@ -55,7 +56,7 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
-  useAccount({
+  const { connector } = useAccount({
     onDisconnect: () => {
       adapter.signOut();
     },
@@ -77,11 +78,34 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     }
   }, [status, adapter, isDisconnected]);
 
+  const handleChangedAccount = useCallback(
+    ({ account }: ConnectorData) => {
+      // Only if account is changed then signOut
+      if (account) adapter.signOut();
+    },
+    [adapter],
+  );
+
+  // Wait for user authentication before listening to "change" event.
+  // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
+  // Ensure to turn off the "change" event listener for cleanup.
+  useEffect(() => {
+    if (connector && status === 'authenticated') {
+      // Attach the event listener when status is 'authenticated'
+      connector.on('change', handleChangedAccount);
+
+      // Cleanup function to remove the event listener
+      return () => {
+        connector?.off('change', handleChangedAccount);
+      };
+    }
+  }, [connector, status, handleChangedAccount]);
+
   return (
     <AuthenticationContext.Provider
       value={useMemo(
         () => (enabled ? { adapter, status } : null),
-        [enabled, adapter, status]
+        [enabled, adapter, status],
       )}
     >
       {children}

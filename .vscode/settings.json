@@ -1,4 +1,3 @@
 {
-  "eslint.packageManager": "yarn",
-  "npm.packageManager": "yarn"
+  "npm.packageManager": "pnpm"
 }

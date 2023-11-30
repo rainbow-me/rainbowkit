@@ -14,7 +14,7 @@ export function useMainnet() {
   // @ts-expect-error
   const provider = usePublicClient<{ chains?: Chain[] }>();
   const chains = Array.isArray(provider.chains) ? provider.chains : [];
-  const enabled = chains?.some(chain => chain?.id === chainId);
+  const enabled = chains?.some((chain) => chain?.id === chainId);
 
   return { chainId, enabled };
 }

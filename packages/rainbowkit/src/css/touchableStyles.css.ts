@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createVar, style, styleVariants } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 import { sprinkles } from './sprinkles.css';
@@ -51,7 +50,7 @@ export const base = style([
   },
 ]);
 
-export const hover = styleVariants(hoverScaleValues, scale => ({
+export const hover = styleVariants(hoverScaleValues, (scale) => ({
   selectors: {
     '&,&::after': {
       vars: { [hoverScaleVar]: String(scale) },
@@ -59,7 +58,7 @@ export const hover = styleVariants(hoverScaleValues, scale => ({
   },
 }));
 
-export const active = styleVariants(activeScaleValues, scale => ({
+export const active = styleVariants(activeScaleValues, (scale) => ({
   selectors: {
     '&,&::after': {
       vars: { [activeScaleVar]: String(scale) },

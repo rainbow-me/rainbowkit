@@ -1,5 +1,119 @@
 # example
 
+## 0.0.83
+
+### Patch Changes
+
+- 9ce75a65: Added 'Wallet buttons' section to test `WalletButton` API and added `RainbowButton` and `RainbowButton.Custom` examples
+- Updated dependencies [9ce75a65]
+- Updated dependencies [9ce75a65]
+  - @stakekit/rainbow-button@0.1.0
+  - @stakekit/rainbowkit@1.3.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.4
+
+## 0.0.82
+
+### Patch Changes
+
+- Updated dependencies [2f56ab23]
+- Updated dependencies [9dfe0531]
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.3
+
+## 0.0.81
+
+### Patch Changes
+
+- Updated dependencies [74ead9df]
+- Updated dependencies [94dce820]
+- Updated dependencies [39d81e93]
+  - @stakekit/rainbowkit@1.2.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.2
+
+## 0.0.80
+
+### Patch Changes
+
+- Updated dependencies [ef64a229]
+  - @stakekit/rainbowkit@1.2.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.2
+
+## 0.0.79
+
+### Patch Changes
+
+- Updated dependencies [9f68c300]
+- Updated dependencies [3f595c12]
+- Updated dependencies [e2075b31]
+  - @stakekit/rainbowkit@1.1.4
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.78
+
+### Patch Changes
+
+- Updated dependencies [02e796c0]
+- Updated dependencies [efb8566e]
+- Updated dependencies [4b7a44c8]
+- Updated dependencies [2c8abbb2]
+- Updated dependencies [e41103fb]
+- Updated dependencies [b0022aea]
+  - @stakekit/rainbowkit@1.1.3
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.77
+
+### Patch Changes
+
+- b2b69dcd: Added `holesky` testnet to the chains list
+- Updated dependencies [6cbd9a57]
+- Updated dependencies [7d978605]
+- Updated dependencies [b2b69dcd]
+  - @stakekit/rainbowkit@1.1.2
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.76
+
+### Patch Changes
+
+- Updated dependencies [b60e335c]
+  - @stakekit/rainbowkit@1.1.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.1
+
+## 0.0.75
+
+### Patch Changes
+
+- Updated dependencies [b37f5d68]
+  - @stakekit/rainbowkit@1.1.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.2
+
+## 0.0.74
+
+### Patch Changes
+
+- Updated dependencies [5b8d8219]
+- Updated dependencies [fb9405a4]
+- Updated dependencies [7643e706]
+- Updated dependencies [252f02e8]
+  - @stakekit/rainbowkit@1.0.12
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.73
+
+### Patch Changes
+
+- Updated dependencies [118dfe11]
+  - @stakekit/rainbowkit@1.0.11
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.0
+
+## 0.0.72
+
+### Patch Changes
+
+- Updated dependencies [a129cb04]
+  - @stakekit/rainbowkit@1.0.10
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.0
+
 ## 0.0.71
 
 ### Patch Changes
@@ -11,8 +125,8 @@
 - Updated dependencies [ad1f860e]
 - Updated dependencies [60968a5f]
 - Updated dependencies [7b31af24]
-  - @rainbow-me/rainbowkit@1.0.9
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+  - @stakekit/rainbowkit@1.0.9
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.0
 
 ## 0.0.70
 
@@ -20,8 +134,8 @@
 
 - Updated dependencies [eb319f3]
 - Updated dependencies [86be3f0]
-  - @rainbow-me/rainbowkit@1.0.8
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.3.0
+  - @stakekit/rainbowkit@1.0.8
+  - @stakekit/rainbowkit-siwe-next-auth@0.3.0
 
 ## 0.0.69
 
@@ -29,8 +143,8 @@
 
 - Updated dependencies [f1e98e84]
 - Updated dependencies [d303a3b9]
-  - @rainbow-me/rainbowkit@1.0.7
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.7
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.68
 
@@ -42,8 +156,8 @@
 - Updated dependencies [66e84239]
 - Updated dependencies [1b4f142e]
 - Updated dependencies [e089ab98]
-  - @rainbow-me/rainbowkit@1.0.6
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.6
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.67
 
@@ -53,24 +167,24 @@
 - Updated dependencies [cb3614e]
 - Updated dependencies [53d96bc]
 - Updated dependencies [bfab830]
-  - @rainbow-me/rainbowkit@1.0.5
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.5
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.66
 
 ### Patch Changes
 
 - Updated dependencies [6d361b4]
-  - @rainbow-me/rainbowkit@1.0.4
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.4
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.65
 
 ### Patch Changes
 
 - Updated dependencies [d00c777]
-  - @rainbow-me/rainbowkit@1.0.3
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.3
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.64
 
@@ -78,7 +192,7 @@
 
 - Updated dependencies [e2b1072]
 - Updated dependencies [e2b1072]
-  - @rainbow-me/rainbowkit@1.0.2
+  - @stakekit/rainbowkit@1.0.2
 
 ## 0.0.63
 
@@ -87,8 +201,8 @@
 - Updated dependencies [9432a2f]
 - Updated dependencies [b2c66ff]
 - Updated dependencies [bcb3d18]
-  - @rainbow-me/rainbowkit@1.0.1
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.62
 
@@ -96,16 +210,16 @@
 
 - Updated dependencies [93b58d0]
 - Updated dependencies [93b58d0]
-  - @rainbow-me/rainbowkit@1.0.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.2.0
+  - @stakekit/rainbowkit@1.0.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.2.0
 
 ## 0.0.61
 
 ### Patch Changes
 
 - Updated dependencies [865175f]
-  - @rainbow-me/rainbowkit@0.12.14
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.10
+  - @stakekit/rainbowkit@0.12.14
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.10
 
 ## 0.0.60
 
@@ -113,32 +227,32 @@
 
 - Updated dependencies [0f8e87e]
 - Updated dependencies [6eab54d]
-  - @rainbow-me/rainbowkit@0.12.13
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.13
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.59
 
 ### Patch Changes
 
 - Updated dependencies [ab051b9]
-  - @rainbow-me/rainbowkit@0.12.12
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.12
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.58
 
 ### Patch Changes
 
 - Updated dependencies [0469e00]
-  - @rainbow-me/rainbowkit@0.12.11
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.11
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.57
 
 ### Patch Changes
 
 - Updated dependencies [ecaa85f]
-  - @rainbow-me/rainbowkit@0.12.10
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.10
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.56
 
@@ -148,8 +262,8 @@
 - Updated dependencies [82376f0]
 - Updated dependencies [7c9e580]
 - Updated dependencies [0127559]
-  - @rainbow-me/rainbowkit@0.12.9
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.9
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.55
 
@@ -157,22 +271,22 @@
 
 - Updated dependencies [aef9643]
 - Updated dependencies [532b117]
-  - @rainbow-me/rainbowkit@0.12.8
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.9
+  - @stakekit/rainbowkit@0.12.8
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.9
 
 ## 0.0.54
 
 ### Patch Changes
 
 - Updated dependencies [4ef5c51]
-  - @rainbow-me/rainbowkit@0.12.7
+  - @stakekit/rainbowkit@0.12.7
 
 ## 0.0.53
 
 ### Patch Changes
 
 - Updated dependencies [d35809e]
-  - @rainbow-me/rainbowkit@0.12.6
+  - @stakekit/rainbowkit@0.12.6
 
 ## 0.0.52
 
@@ -182,14 +296,14 @@
 - Updated dependencies [6a01368]
 - Updated dependencies [936b523]
 - Updated dependencies [7f669bd]
-  - @rainbow-me/rainbowkit@0.12.5
+  - @stakekit/rainbowkit@0.12.5
 
 ## 0.0.51
 
 ### Patch Changes
 
 - Updated dependencies [9b93f56]
-  - @rainbow-me/rainbowkit@0.12.4
+  - @stakekit/rainbowkit@0.12.4
 
 ## 0.0.50
 
@@ -197,7 +311,7 @@
 
 - Updated dependencies [e7f1bec]
 - Updated dependencies [fe4f356]
-  - @rainbow-me/rainbowkit@0.12.3
+  - @stakekit/rainbowkit@0.12.3
 
 ## 0.0.49
 
@@ -205,7 +319,7 @@
 
 - Updated dependencies [2a1d230]
 - Updated dependencies [429a3c7]
-  - @rainbow-me/rainbowkit@0.12.2
+  - @stakekit/rainbowkit@0.12.2
 
 ## 0.0.48
 
@@ -213,14 +327,14 @@
 
 - Updated dependencies [3399df5]
 - Updated dependencies [8f01a12]
-  - @rainbow-me/rainbowkit@0.12.1
+  - @stakekit/rainbowkit@0.12.1
 
 ## 0.0.47
 
 ### Patch Changes
 
 - Updated dependencies [9838acf]
-  - @rainbow-me/rainbowkit@0.12.0
+  - @stakekit/rainbowkit@0.12.0
 
 ## 0.0.46
 
@@ -228,39 +342,39 @@
 
 - Updated dependencies [924ae82]
 - Updated dependencies [5e233ea]
-  - @rainbow-me/rainbowkit@0.11.1
+  - @stakekit/rainbowkit@0.11.1
 
 ## 0.0.45
 
 ### Patch Changes
 
 - Updated dependencies [1876ba0]
-  - @rainbow-me/rainbowkit@0.11.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.8
+  - @stakekit/rainbowkit@0.11.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.8
 
 ## 0.0.44
 
 ### Patch Changes
 
 - Updated dependencies [355402b]
-  - @rainbow-me/rainbowkit@0.10.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.7
+  - @stakekit/rainbowkit@0.10.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.7
 
 ## 0.0.43
 
 ### Patch Changes
 
 - Updated dependencies [49f0ec9]
-  - @rainbow-me/rainbowkit@0.9.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.6
+  - @stakekit/rainbowkit@0.9.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.6
 
 ## 0.0.42
 
 ### Patch Changes
 
 - Updated dependencies [a1d6776]
-  - @rainbow-me/rainbowkit@0.8.1
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.5
+  - @stakekit/rainbowkit@0.8.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.5
 
 ## 0.0.41
 
@@ -268,8 +382,8 @@
 
 - Updated dependencies [6b37050]
 - Updated dependencies [6b37050]
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.5
-  - @rainbow-me/rainbowkit@0.8.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.5
+  - @stakekit/rainbowkit@0.8.0
 
 ## 0.0.40
 
@@ -277,24 +391,24 @@
 
 - Updated dependencies [e36da59]
 - Updated dependencies [0ff4210]
-  - @rainbow-me/rainbowkit@0.7.4
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.4
+  - @stakekit/rainbowkit@0.7.4
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.4
 
 ## 0.0.39
 
 ### Patch Changes
 
 - Updated dependencies [5a65178]
-  - @rainbow-me/rainbowkit@0.7.3
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.4
+  - @stakekit/rainbowkit@0.7.3
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.4
 
 ## 0.0.38
 
 ### Patch Changes
 
 - Updated dependencies [1de8203]
-  - @rainbow-me/rainbowkit@0.7.2
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.4
+  - @stakekit/rainbowkit@0.7.2
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.4
 
 ## 0.0.37
 
@@ -302,8 +416,8 @@
 
 - Updated dependencies [6b6a73b]
 - Updated dependencies [5ddc813]
-  - @rainbow-me/rainbowkit@0.7.1
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.4
+  - @stakekit/rainbowkit@0.7.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.4
 
 ## 0.0.36
 
@@ -312,8 +426,8 @@
 - Updated dependencies [2e6bb8f]
 - Updated dependencies [2e6bb8f]
 - Updated dependencies [2e6bb8f]
-  - @rainbow-me/rainbowkit@0.7.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.4
+  - @stakekit/rainbowkit@0.7.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.4
 
 ## 0.0.35
 
@@ -321,8 +435,8 @@
 
 - Updated dependencies [ecd7209]
 - Updated dependencies [248a1cb]
-  - @rainbow-me/rainbowkit@0.6.2
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.3
+  - @stakekit/rainbowkit@0.6.2
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.3
 
 ## 0.0.34
 
@@ -330,8 +444,8 @@
 
 - Updated dependencies [85eb3bd]
 - Updated dependencies [fbf9d82]
-  - @rainbow-me/rainbowkit@0.6.1
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.3
+  - @stakekit/rainbowkit@0.6.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.3
 
 ## 0.0.33
 
@@ -343,16 +457,16 @@
 - Updated dependencies [62fd332]
 - Updated dependencies [c944ddc]
 - Updated dependencies [c944ddc]
-  - @rainbow-me/rainbowkit@0.6.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.3
+  - @stakekit/rainbowkit@0.6.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.3
 
 ## 0.0.32
 
 ### Patch Changes
 
 - Updated dependencies [52e2ad6]
-  - @rainbow-me/rainbowkit@0.5.3
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.2
+  - @stakekit/rainbowkit@0.5.3
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.2
 
 ## 0.0.31
 
@@ -361,8 +475,8 @@
 - Updated dependencies [12912b3]
 - Updated dependencies [fcfc13d]
 - Updated dependencies [3f9013f]
-  - @rainbow-me/rainbowkit@0.5.2
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.2
+  - @stakekit/rainbowkit@0.5.2
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.2
 
 ## 0.0.30
 
@@ -371,8 +485,8 @@
 - Updated dependencies [8060ccd]
 - Updated dependencies [4dfe834]
 - Updated dependencies [8060ccd]
-  - @rainbow-me/rainbowkit@0.5.1
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.1
+  - @stakekit/rainbowkit@0.5.1
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.1
 
 ## 0.0.29
 
@@ -381,22 +495,22 @@
 - Updated dependencies [737a1d6]
 - Updated dependencies [737a1d6]
 - Updated dependencies [488c5a1]
-  - @rainbow-me/rainbowkit-siwe-next-auth@0.1.6
-  - @rainbow-me/rainbowkit@0.5.0
+  - @stakekit/rainbowkit-siwe-next-auth@0.1.6
+  - @stakekit/rainbowkit@0.5.0
 
 ## 0.0.28
 
 ### Patch Changes
 
 - Updated dependencies [4333995]
-  - @rainbow-me/rainbowkit@0.4.8
+  - @stakekit/rainbowkit@0.4.8
 
 ## 0.0.27
 
 ### Patch Changes
 
 - Updated dependencies [1a4f2f7]
-  - @rainbow-me/rainbowkit@0.4.7
+  - @stakekit/rainbowkit@0.4.7
 
 ## 0.0.26
 
@@ -404,21 +518,21 @@
 
 - Updated dependencies [aae3163]
 - Updated dependencies [948c036]
-  - @rainbow-me/rainbowkit@0.4.6
+  - @stakekit/rainbowkit@0.4.6
 
 ## 0.0.25
 
 ### Patch Changes
 
 - Updated dependencies [8dd5a74]
-  - @rainbow-me/rainbowkit@0.4.5
+  - @stakekit/rainbowkit@0.4.5
 
 ## 0.0.24
 
 ### Patch Changes
 
 - Updated dependencies [fd08aa1]
-  - @rainbow-me/rainbowkit@0.4.4
+  - @stakekit/rainbowkit@0.4.4
 
 ## 0.0.23
 
@@ -427,14 +541,14 @@
 - Updated dependencies [4857e75]
 - Updated dependencies [c6a1033]
 - Updated dependencies [396308f]
-  - @rainbow-me/rainbowkit@0.4.3
+  - @stakekit/rainbowkit@0.4.3
 
 ## 0.0.22
 
 ### Patch Changes
 
 - Updated dependencies [0213b52]
-  - @rainbow-me/rainbowkit@0.4.2
+  - @stakekit/rainbowkit@0.4.2
 
 ## 0.0.21
 
@@ -442,28 +556,28 @@
 
 - Updated dependencies [3637bbb]
 - Updated dependencies [3637bbb]
-  - @rainbow-me/rainbowkit@0.4.1
+  - @stakekit/rainbowkit@0.4.1
 
 ## 0.0.20
 
 ### Patch Changes
 
 - Updated dependencies [08d189b]
-  - @rainbow-me/rainbowkit@0.4.0
+  - @stakekit/rainbowkit@0.4.0
 
 ## 0.0.19
 
 ### Patch Changes
 
 - Updated dependencies [b2b46ef]
-  - @rainbow-me/rainbowkit@0.3.7
+  - @stakekit/rainbowkit@0.3.7
 
 ## 0.0.18
 
 ### Patch Changes
 
 - Updated dependencies [d905271]
-  - @rainbow-me/rainbowkit@0.3.6
+  - @stakekit/rainbowkit@0.3.6
 
 ## 0.0.17
 
@@ -472,28 +586,28 @@
 - Updated dependencies [40d838e]
 - Updated dependencies [1ab9c07]
 - Updated dependencies [1a7d50c]
-  - @rainbow-me/rainbowkit@0.3.5
+  - @stakekit/rainbowkit@0.3.5
 
 ## 0.0.16
 
 ### Patch Changes
 
 - Updated dependencies [ac63f9a]
-  - @rainbow-me/rainbowkit@0.3.4
+  - @stakekit/rainbowkit@0.3.4
 
 ## 0.0.15
 
 ### Patch Changes
 
 - Updated dependencies [ee81177]
-  - @rainbow-me/rainbowkit@0.3.3
+  - @stakekit/rainbowkit@0.3.3
 
 ## 0.0.14
 
 ### Patch Changes
 
 - Updated dependencies [33a2dd7]
-  - @rainbow-me/rainbowkit@0.3.2
+  - @stakekit/rainbowkit@0.3.2
 
 ## 0.0.13
 
@@ -501,28 +615,28 @@
 
 - Updated dependencies [9d431fb]
 - Updated dependencies [11ed088]
-  - @rainbow-me/rainbowkit@0.3.1
+  - @stakekit/rainbowkit@0.3.1
 
 ## 0.0.12
 
 ### Patch Changes
 
 - Updated dependencies [233a6d7]
-  - @rainbow-me/rainbowkit@0.3.0
+  - @stakekit/rainbowkit@0.3.0
 
 ## 0.0.11
 
 ### Patch Changes
 
 - Updated dependencies [ce473cd]
-  - @rainbow-me/rainbowkit@0.2.5
+  - @stakekit/rainbowkit@0.2.5
 
 ## 0.0.10
 
 ### Patch Changes
 
 - Updated dependencies [867067c]
-  - @rainbow-me/rainbowkit@0.2.4
+  - @stakekit/rainbowkit@0.2.4
 
 ## 0.0.9
 
@@ -530,7 +644,7 @@
 
 - Updated dependencies [0686c2f]
 - Updated dependencies [dfc7d13]
-  - @rainbow-me/rainbowkit@0.2.3
+  - @stakekit/rainbowkit@0.2.3
 
 ## 0.0.8
 
@@ -540,28 +654,28 @@
 - Updated dependencies [4be196e]
 - Updated dependencies [7403fab]
 - Updated dependencies [4be196e]
-  - @rainbow-me/rainbowkit@0.2.2
+  - @stakekit/rainbowkit@0.2.2
 
 ## 0.0.7
 
 ### Patch Changes
 
 - Updated dependencies [a921853]
-  - @rainbow-me/rainbowkit@0.2.1
+  - @stakekit/rainbowkit@0.2.1
 
 ## 0.0.6
 
 ### Patch Changes
 
 - Updated dependencies [c0c494a]
-  - @rainbow-me/rainbowkit@0.2.0
+  - @stakekit/rainbowkit@0.2.0
 
 ## 0.0.5
 
 ### Patch Changes
 
 - Updated dependencies [0b98497]
-  - @rainbow-me/rainbowkit@0.1.2
+  - @stakekit/rainbowkit@0.1.2
 
 ## 0.0.4
 
@@ -577,7 +691,7 @@
 - Updated dependencies [209aa43]
 - Updated dependencies [be6ee16]
 - Updated dependencies [c4e7f67]
-  - @rainbow-me/rainbowkit@0.1.1
+  - @stakekit/rainbowkit@0.1.1
 
 ## 0.0.3
 
@@ -611,7 +725,7 @@
 - Updated dependencies [3295746]
 - Updated dependencies [9d351d0]
 - Updated dependencies [13fa857]
-  - @rainbow-me/rainbowkit@0.1.0
+  - @stakekit/rainbowkit@0.1.0
 
 ## 0.0.2
 
@@ -632,22 +746,22 @@
 - Updated dependencies [c174e12]
 - Updated dependencies [baf998c]
 - Updated dependencies [eaa5bf6]
-  - @rainbow-me/rainbowkit@0.0.2
+  - @stakekit/rainbowkit@0.0.2
 
 ## 0.0.1
 
 ### Patch Changes
 
 - Updated dependencies [ce3f499]
-  - @rainbow-me/rainbowkit@0.0.1
+  - @stakekit/rainbowkit@0.0.1
 
 ## 1.0.17
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-ui@0.0.64
-  - @rainbow-me/kit-core@0.0.63
+  - @stakekit/kit-ui@0.0.64
+  - @stakekit/kit-core@0.0.63
 
 ## 1.0.16
 
@@ -655,8 +769,8 @@
 
 - Updated dependencies [5e7ae56]
 - Updated dependencies [664bf79]
-  - @rainbow-me/kit-ui@0.0.63
-  - @rainbow-me/kit-core@0.0.62
+  - @stakekit/kit-ui@0.0.63
+  - @stakekit/kit-core@0.0.62
 
 ## 1.0.15
 
@@ -664,77 +778,77 @@
 
 - Updated dependencies [5e7ae56]
 - Updated dependencies [664bf79]
-  - @rainbow-me/kit-ui@0.0.62
-  - @rainbow-me/kit-core@0.0.61
+  - @stakekit/kit-ui@0.0.62
+  - @stakekit/kit-core@0.0.61
 
 ## 1.0.14
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-modal@0.0.25
-  - @rainbow-me/kit-utils@0.0.14
-  - @rainbow-me/kit-core@0.0.60
-  - @rainbow-me/kit-ui@0.0.61
+  - @stakekit/kit-modal@0.0.25
+  - @stakekit/kit-utils@0.0.14
+  - @stakekit/kit-core@0.0.60
+  - @stakekit/kit-ui@0.0.61
 
 ## 1.0.13
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-ui@0.0.60
-  - @rainbow-me/kit-core@0.0.59
+  - @stakekit/kit-ui@0.0.60
+  - @stakekit/kit-core@0.0.59
 
 ## 1.0.12
 
 ### Patch Changes
 
-- @rainbow-me/kit-core@0.0.58
-- @rainbow-me/kit-ui@0.0.59
+- @stakekit/kit-core@0.0.58
+- @stakekit/kit-ui@0.0.59
 
 ## 1.0.11
 
 ### Patch Changes
 
-- @rainbow-me/kit-core@0.0.57
-- @rainbow-me/kit-ui@0.0.58
+- @stakekit/kit-core@0.0.57
+- @stakekit/kit-ui@0.0.58
 
 ## 1.0.10
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-ui@0.0.57
-  - @rainbow-me/kit-core@0.0.56
+  - @stakekit/kit-ui@0.0.57
+  - @stakekit/kit-core@0.0.56
 
 ## 1.0.9
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-modal@0.0.24
-  - @rainbow-me/kit-ui@0.0.56
-  - @rainbow-me/kit-core@0.0.55
+  - @stakekit/kit-modal@0.0.24
+  - @stakekit/kit-ui@0.0.56
+  - @stakekit/kit-core@0.0.55
 
 ## 1.0.8
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-core@0.0.54
-  - @rainbow-me/kit-modal@0.0.23
-  - @rainbow-me/kit-ui@0.0.55
-  - @rainbow-me/kit-utils@0.0.13
+  - @stakekit/kit-core@0.0.54
+  - @stakekit/kit-modal@0.0.23
+  - @stakekit/kit-ui@0.0.55
+  - @stakekit/kit-utils@0.0.13
 
 ## 1.0.7
 
 ### Patch Changes
 
 - Updated dependencies
-  - @rainbow-me/kit-utils@0.0.12
-  - @rainbow-me/kit-core@0.0.53
-  - @rainbow-me/kit-modal@0.0.22
-  - @rainbow-me/kit-ui@0.0.54
+  - @stakekit/kit-utils@0.0.12
+  - @stakekit/kit-core@0.0.53
+  - @stakekit/kit-modal@0.0.22
+  - @stakekit/kit-ui@0.0.54
 
 ## 1.0.6
 
@@ -742,53 +856,53 @@
 
 - chore: bump deps and fix failing utils build
 - Updated dependencies
-  - @rainbow-me/kit-modal@0.0.21
-  - @rainbow-me/kit-ui@0.0.53
-  - @rainbow-me/kit-utils@0.0.11
-  - @rainbow-me/kit-core@0.0.52
+  - @stakekit/kit-modal@0.0.21
+  - @stakekit/kit-ui@0.0.53
+  - @stakekit/kit-utils@0.0.11
+  - @stakekit/kit-core@0.0.52
 
 ## 1.0.5
 
 ### Patch Changes
 
 - Updated dependencies [undefined]
-  - @rainbow-me/kit-utils@0.0.10
-  - @rainbow-me/kit-core@0.0.51
-  - @rainbow-me/kit-modal@0.0.20
-  - @rainbow-me/kit-ui@0.0.52
+  - @stakekit/kit-utils@0.0.10
+  - @stakekit/kit-core@0.0.51
+  - @stakekit/kit-modal@0.0.20
+  - @stakekit/kit-ui@0.0.52
 
 ## 1.0.4
 
 ### Patch Changes
 
 - Updated dependencies [undefined]
-  - @rainbow-me/kit-modal@0.0.19
-  - @rainbow-me/kit-core@0.0.50
-  - @rainbow-me/kit-ui@0.0.51
+  - @stakekit/kit-modal@0.0.19
+  - @stakekit/kit-core@0.0.50
+  - @stakekit/kit-ui@0.0.51
 
 ## 1.0.3
 
 ### Patch Changes
 
 - Updated dependencies [undefined]
-  - @rainbow-me/kit-modal@0.0.18
-  - @rainbow-me/kit-core@0.0.49
-  - @rainbow-me/kit-ui@0.0.50
+  - @stakekit/kit-modal@0.0.18
+  - @stakekit/kit-core@0.0.49
+  - @stakekit/kit-ui@0.0.50
 
 ## 1.0.2
 
 ### Patch Changes
 
 - Updated dependencies [undefined]
-  - @rainbow-me/kit-ui@0.0.49
-  - @rainbow-me/kit-core@0.0.48
-  - @rainbow-me/kit-modal@0.0.17
-  - @rainbow-me/kit-utils@0.0.9
+  - @stakekit/kit-ui@0.0.49
+  - @stakekit/kit-core@0.0.48
+  - @stakekit/kit-modal@0.0.17
+  - @stakekit/kit-utils@0.0.9
 
 ## 1.0.1
 
 ### Patch Changes
 
 - Updated dependencies [undefined]
-  - @rainbow-me/kit-ui@0.0.48
-  - @rainbow-me/kit-core@0.0.47
+  - @stakekit/kit-ui@0.0.48
+  - @stakekit/kit-core@0.0.47

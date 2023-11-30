@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode } from 'react';
+import React, { ReactNode, createContext } from 'react';
 
 export type DisclaimerComponent = React.FunctionComponent<{
   Text: React.FunctionComponent<{ children: ReactNode }>;

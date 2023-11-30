@@ -1,6 +1,6 @@
 {
   "name": "@stakekit/rainbowkit",
-  "version": "1.0.12",
+  "version": "1.3.0",
   "description": "The best way to connect a wallet",
   "files": [
     "dist",
@@ -21,16 +21,13 @@
   "engines": {
     "node": ">=12.4"
   },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
-    "dev": "yarn build:watch & yarn typegen:watch",
-    "prepack": "MINIFY_CSS=true yarn typegen && yarn build",
-    "typecheck": "yarn tsc --noEmit",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
+    "prepare": "MINIFY_CSS=true pnpm build",
+    "prebuild": "pnpm typegen",
+    "typecheck": "pnpm tsc --noEmit",
     "typegen": "tsc --emitDeclarationOnly || true",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
@@ -48,26 +45,26 @@
     "react": ">=17",
     "react-dom": ">=17",
     "viem": "~0.3.19 || ^1.0.0",
-    "wagmi": "~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0"
+    "wagmi": "~1.0.1 || ~1.1.0 || ~1.2.0 || ~1.3.0 || ~1.4.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "@types/qrcode": "^1.4.2",
     "@vanilla-extract/css-utils": "0.1.2",
     "@vanilla-extract/private": "^1.0.3",
-    "@wagmi/core": "~1.3.9",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.16",
     "jsdom": "^22.1.0",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
-    "prettier": "^2.5.0",
     "react": "^18.2.0",
-    "typescript": "^5.0.4",
-    "viem": "~1.6.7",
-    "vitest": "^0.32.4",
-    "wagmi": "~1.3.10"
+    "viem": "~1.19.4",
+    "vitest": "^0.33.0",
+    "wagmi": "~1.4.7",
+    "@wagmi/core": "~1.4.7",
+    "@types/i18n-js": "^3.8.5",
+    "@types/ua-parser-js": "^0.7.36"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.9.1",
@@ -75,6 +72,13 @@
     "@vanilla-extract/sprinkles": "1.5.0",
     "clsx": "1.1.1",
     "qrcode": "1.5.0",
-    "react-remove-scroll": "2.5.4"
+    "react-remove-scroll": "2.5.4",
+    "i18n-js": "^4.3.2",
+    "ua-parser-js": "^1.0.35"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
+    "directory": "packages/rainbowkit"
   }
 }
