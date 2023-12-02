@@ -601,6 +601,9 @@ importers:
       next-compose-plugins:
         specifier: 2.2.1
         version: 2.2.1
+      next-intl:
+        specifier: ^2.20.2
+        version: 2.20.2(next@13.4.19)(react@18.2.0)
       parse-numeric-range:
         specifier: 1.3.0
         version: 1.3.0

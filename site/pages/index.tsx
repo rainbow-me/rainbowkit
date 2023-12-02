@@ -14,12 +14,23 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import copy from 'copy-to-clipboard';
 import { vars } from 'css/vars.css';
 import { useCoolMode } from 'lib/useCoolMode';
+import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
 import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
 
+export async function getStaticProps(context) {
+  return {
+    props: {
+      messages: (await import(`../locales/${context.locale}.json`)).default,
+    },
+  };
+}
+
 export default function Home() {
+  const _t = useTranslations('landing');
+
   const { isConnected } = useAccount();
   const ref = useCoolMode('/rainbow.svg', !isConnected) as Ref<HTMLDivElement>;
 
