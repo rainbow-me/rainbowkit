@@ -29,7 +29,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Home() {
-  const _t = useTranslations('landing');
+  const t = useTranslations('landing');
 
   const { isConnected } = useAccount();
   const ref = useCoolMode('/rainbow.svg', !isConnected) as Ref<HTMLDivElement>;
@@ -67,7 +67,7 @@ export default function Home() {
             style={{ lineHeight: 1 }}
             weight="bold"
           >
-            The best way to connect a wallet
+            {t('headline')}
           </Text>
           <Text
             as="p"
@@ -76,7 +76,7 @@ export default function Home() {
             style={{ lineHeight: 1 }}
             weight="semibold"
           >
-            Designed for everyone. Built for developers.
+            {t('subheadline')}
           </Text>
           <Box marginBottom="8">
             <InstallScript />
@@ -84,7 +84,7 @@ export default function Home() {
           <Box marginBottom={{ xs: '0', md: '11' }}>
             <NextLink href="/docs" legacyBehavior passHref>
               <Button as="a" size="xl" variant="purpleGradient">
-                View the Docs
+                {t('cta')}
               </Button>
             </NextLink>
           </Box>
@@ -120,7 +120,7 @@ export default function Home() {
             style={{ lineHeight: 1 }}
             weight="bold"
           >
-            Rainbow 🤝 Developers
+            {t('developers.headline')}
           </Text>
           <Text
             align={{ xs: 'left', md: 'center' }}
@@ -131,10 +131,7 @@ export default function Home() {
             style={{ lineHeight: '28px', maxWidth: 720 }}
             weight="semibold"
           >
-            RainbowKit provides a fast, easy and highly customizable way for
-            developers to add a great wallet experience to their application. We
-            handle the hard stuff so developers and teams can focus on building
-            amazing products and communities for their users.
+            {t('developers.subheadline')}
           </Text>
 
           <Box marginTop={{ xs: '10', md: '11' }} marginX="auto">
@@ -148,14 +145,14 @@ export default function Home() {
               position="relative"
             >
               {[
-                'Easy Installation',
-                'Custom Themes',
-                'Built-in Themes',
-                'Custom Wallets List',
-                'Light and Dark Mode',
-                'Custom Chains',
-                'App Store and Google Play Integration',
-                'Custom Connect Button',
+                t('developers.installation'),
+                t('developers.custom_themes'),
+                t('developers.themes'),
+                t('developers.custom_wallet_list'),
+                t('developers.darkmode'),
+                t('developers.custom_chain'),
+                t('developers.appstore'),
+                t('developers.custom_connect'),
               ].map((value) => (
                 <Box
                   alignItems="center"
@@ -184,7 +181,7 @@ export default function Home() {
                   style={{ alignSelf: 'flex-start' }}
                   variant="purpleGradient"
                 >
-                  View the Docs
+                  {t('cta')}
                 </Button>
               </NextLink>
             </Box>
@@ -205,7 +202,7 @@ export default function Home() {
             style={{ lineHeight: '1' }}
             weight="bold"
           >
-            Made with ❤️ by your frens at{' '}
+            {t('madeby.headline')}{' '}
             <Box
               as="span"
               display={{ md: 'none' }}
@@ -244,10 +241,7 @@ export default function Home() {
             style={{ lineHeight: '28px', maxWidth: 720 }}
             weight="semibold"
           >
-            Building RainbowKit has been an incredibly fun effort across many
-            people at Rainbow and our frens at other companies. We&apos;re
-            always looking to make RainbowKit better, so please let us know how
-            we can improve.
+            {t('madeby.subheadline')}
           </Text>
 
           <Box
@@ -269,7 +263,7 @@ export default function Home() {
                 textAlign="center"
                 width="full"
               >
-                Follow us on Twitter
+                {t('madeby.twitter_cta')}
               </Box>
             </Button>
             <Button
@@ -281,7 +275,7 @@ export default function Home() {
               variant="pinkGradient"
             >
               <Box as="span" textAlign="center" width="full">
-                Share feedback with us
+                {t('madeby.feedback_cta')}
               </Box>
             </Button>
           </Box>
@@ -307,17 +301,17 @@ export default function Home() {
                 href="https://www.figma.com/community/file/1139300796265858893/rainbow-brand-assets"
                 variant="gray"
               >
-                <span data-emoji>⬇️</span> media kit
+                <span data-emoji>⬇️</span> {t('footer.mediakit')}
               </Link>
             </Text>
             <Text size="4" weight="bold">
               <Link href="https://rainbow.me/terms-of-use" variant="gray">
-                <span data-emoji>📜</span> terms of use
+                <span data-emoji>📜</span> {t('footer.terms')}
               </Link>
             </Text>
             <Text size="4" weight="bold">
               <Link href="https://rainbow.me/privacy" variant="gray">
-                <span data-emoji>🔒</span> privacy policy
+                <span data-emoji>🔒</span> {t('footer.privacy')}
               </Link>
             </Text>
             <Text color="labelTertiary" size="4" weight="bold">

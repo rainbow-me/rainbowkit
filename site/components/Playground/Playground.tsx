@@ -16,6 +16,7 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
@@ -91,6 +92,8 @@ export function Playground() {
   const gradient = gradientColors[accent];
   const isMounted = useIsMounted();
 
+  const t = useTranslations('landing');
+
   return isMounted() ? (
     <Box paddingY={{ xs: '11', lg: '12' }} position="relative" zIndex="10">
       <Box
@@ -127,7 +130,7 @@ export function Playground() {
             style={{ lineHeight: 1 }}
             weight="bold"
           >
-            Give RainbowKit a spin
+            {t('playground.headline')}
           </Text>
           <Text
             align={{ xs: 'left', md: 'center' }}
@@ -138,10 +141,7 @@ export function Playground() {
             style={{ lineHeight: '28px', maxWidth: 720 }}
             weight="semibold"
           >
-            Make your Ethereum login experience feel right at home on your
-            website. RainbowKit allows you to fully customize color, border
-            radius, wallet providers and a lot more — all through an easy-to-use
-            API. Get a feel for it below!
+            {t('playground.subheadline')}
           </Text>
         </Wrapper>
 
@@ -225,7 +225,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Modal
+                {t('playground.modal')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -249,7 +249,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Mode
+                {t('playground.mode')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -285,7 +285,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Accent
+                {t('playground.accent')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -316,7 +316,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Radius
+                {t('playground.radius')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -327,19 +327,19 @@ export function Playground() {
                 >
                   <Radio
                     activeValue={radii}
-                    data-label="L"
+                    data-label={t('playground.large')}
                     id="radii"
                     value="large"
                   />
                   <Radio
                     activeValue={radii}
-                    data-label="M"
+                    data-label={t('playground.medium')}
                     id="radii"
                     value="medium"
                   />
                   <Radio
                     activeValue={radii}
-                    data-label="S"
+                    data-label={t('playground.small')}
                     id="radii"
                     value="small"
                   />
