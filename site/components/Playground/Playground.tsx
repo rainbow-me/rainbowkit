@@ -1,5 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
+  Locale,
   RainbowKitProvider,
   __private__,
   darkTheme,
@@ -15,6 +16,7 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
@@ -73,6 +75,8 @@ export function Playground() {
   const [radii, setRadii] = useState<Radii>('large');
   const [modalSize, setModalSize] = useState<ModalSizes>('wide');
   const isCompact = modalSize === 'compact';
+
+  const { locale } = useRouter() as { locale: Locale };
 
   const handleModeChange = (value) => setMode(value);
   const handleAccentChange = (value) => setAccent(value);
@@ -147,6 +151,7 @@ export function Playground() {
             id="playground"
             modalSize={modalSize}
             theme={selectedTheme}
+            locale={locale}
           >
             <Box
               marginX={{ xs: '0', md: 'auto' }}
