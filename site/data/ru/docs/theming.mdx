@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Обратите внимание, что `rounded` пытается использовать SF Pro Rounded, и при отсутствии его будет использована системная шрифтовая схема.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'Размытие фона модального окна.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />

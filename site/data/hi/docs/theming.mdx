@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. नोट के `राउंडेड` कुछ नहीं है SF Pro Rounded की गईका, और तऻरों नहीं है क्या अब्रेकल फॉन्ट सिसीम पर पूर्व बताने की ये वंस्वित कर रहा है.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'मॉदल ब्लुर.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />

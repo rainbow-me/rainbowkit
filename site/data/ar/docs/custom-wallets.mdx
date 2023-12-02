@@ -38,20 +38,20 @@ description: إنشاء محفظة مخصصة
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'رابط URL لرمز المحفظة، أو وعد يتحقق مع URL لبيانات Base64',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'لون التمييز المستخدم في عمليات التنزيل للمحافظ التي لديها امتداد متصفح وتطبيق موبايل',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'لون الخلفية أثناء تحميل رمز المحفظة',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ description: إنشاء محفظة مخصصة
       type: 'boolean | undefined',
       description: (
         <>
-          إذا كانت المحفظة معروفة بأنها مثبتة، أو{' '}
-          <code>غير محدد</code> إذا كان غير محدد
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -69,7 +69,7 @@ description: إنشاء محفظة مخصصة
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'كائن يحتوي على روابط التنزيل',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ description: إنشاء محفظة مخصصة
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'دالة لحساب ما إذا كان يجب إخفاء هذه المحفظة من القائمة. هذا مفيد لتعريف المحافظ العامة الاحتياطية، مثل الاستخدام الافتراضي لـ "المحفظة المدمجة" التي تستخدم هذه الميزة',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ description: إنشاء محفظة مخصصة
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'الدالة لتقديم نسخة الرابط و التكوين لطرق الاتصال المختلفة، وصف أدناه',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
   ]}
 />
@@ -172,30 +172,30 @@ description: إنشاء محفظة مخصصة
       type: '{ getUri?: () => Promise<string> }',
       typeSimple: 'object',
       description:
-        'الدالة لحل رابط اتصال المحفظة الجوال',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: () => Promise<string> }',
       typeSimple: 'object',
-      description: 'الدالة لحل رابط التطبيق المكتبي العميق',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'كائن يحتوي على دالة لحل الرابط الرمزي الرباعي الأبعاد (QR) ، بالإضافة إلى تعليمات اختيارية لإعداد المحفظة الجوال',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'كائن يحتوي على تعليمات اختيارية لإعداد الإضافة المتصفح',
+        'Object containing optional browser extension setup instructions',
     },
   ]}
 />

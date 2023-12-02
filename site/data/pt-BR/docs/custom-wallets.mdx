@@ -38,20 +38,20 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL para ícone de carteira, ou uma promessa que resolve para um URL de dados Base64',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Cor de destaque usada nos fluxos de download para carteiras com extensão de navegador e aplicativo móvel',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Cor de fundo enquanto o ícone da carteira é carregado',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: 'boolean | undefined',
       description: (
         <>
-          Se a carteira é conhecida por estar instalada, ou{' '}
-          <code>indefinido</code> se indeterminado
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -69,7 +69,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Objeto contendo URLs de download',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Função para calcular se esta carteira deve ser ocultada da lista. Isso é útil para definir carteiras genéricas de fallback, por exemplo, o fallback integrado "Injected Wallet" faz uso desse recurso',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ O tipo de função `Wallet` é fornecido para ajudá-lo a definir suas próprias
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Função para fornecer a instância do conector e a configuração para diferentes métodos de conexão, descritos abaixo',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
   ]}
 />
@@ -184,7 +184,7 @@ As seguintes propriedades são definidas no valor de retorno da função `create
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
@@ -192,7 +192,7 @@ As seguintes propriedades são definidas no valor de retorno da função `create
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
         'Object containing optional browser extension setup instructions',

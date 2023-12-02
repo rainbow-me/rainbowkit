@@ -55,37 +55,37 @@ export const App = () => (
 <PropsTable
   data={[
     {
-      name: 'لون الظل الملفت للنظر',
+      name: 'accentColor',
       required: false,
       default: '"#0E76FD"',
-      type: 'سلسلة',
+      type: 'string',
       description:
-        'لون الخلفية/النص لعناصر التفاعل المختلفة.',
+        'The background/text color of various interactive elements.',
     },
     {
-      name: 'لون النص للظل الملفت للنظر',
+      name: 'accentColorForeground',
       required: false,
-      default: '"أبيض"',
-      type: 'سلسلة',
+      default: '"white"',
+      type: 'string',
       description:
-        'اللون المستخدم لعناصر النص المظهرة أعلى الظل الملفت للنظر.',
+        'The color used for foreground elements rendered on top of the accent color.',
     },
     {
-      name: 'نصوص الزوايا',
+      name: 'borderRadius',
       required: false,
-      default: 'كبير',
-      type: '"لا شيء" | "صغير" | "متوسط" | "كبير"',
-      typeSimple: 'تعداد',
-      description: 'حجم مقياس نصوص الزوايا بأكمله.',
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
     },
     {
-      name: 'علامة التبويب الخطية',
+      name: 'fontStack',
       required: false,
-      default: 'مستديرة',
-      type: '"مستديرة" | "النظام"',
-      typeSimple: 'تعداد',
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
       description:
-        "الحزمة الخطية المستخدمة في جميع واجهة المستخدم. ملاحظة أن `rounded` يحاول استخدام خطوط SF Pro Rounded، وعندما لا تكون متاحة، يستخدم خطوط النظام.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'إضاءة خلفية المودال.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />

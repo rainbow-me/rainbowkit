@@ -85,7 +85,7 @@ Las funciones de tema incorporadas también aceptan un objeto de opciones, permi
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Tenga en cuenta que `rounded` intenta usar SF Pro Rounded, y si no está disponible, se utilizarán fuentes del sistema.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ Las funciones de tema incorporadas también aceptan un objeto de opciones, permi
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'El desenfoque de fondo del modal.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />

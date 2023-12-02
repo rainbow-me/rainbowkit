@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. 참고로 `rounded`는 SF Pro Rounded를 사용하려고 하며 사용할 수 없을 때 시스템 폰트로 대체합니다.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: '모달 배경 블러.',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />
