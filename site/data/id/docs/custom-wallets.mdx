@@ -38,20 +38,20 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL untuk ikon dompet, atau janji yang menghasilkan URL data Base64',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Warna aksen digunakan dalam aliran unduhan untuk dompet dengan ekstensi browser dan aplikasi seluler',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Warna latar belakang saat ikon dompet dimuat',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          Apakah dompet diketahui terpasang, atau{' '}
+          <code>tidak ditentukan</code> jika tidak pasti
         </>
       ),
     },
@@ -69,7 +69,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Objek yang berisi URL unduhan',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Fungsi untuk menghitung apakah dompet ini harus disembunyikan dari daftar. Ini berguna untuk mendefinisikan dompet fallback generik, misalnya dompet fallback "Injected Wallet" bawaan menggunakan fitur ini',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ Tipe fungsi `Wallet` disediakan untuk membantu Anda mendefinisikan dompet kustom
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Fungsi untuk menyediakan instansi konektor dan konfigurasi untuk metode koneksi yang berbeda, dijelaskan di bawah ini',
     },
   ]}
 />
@@ -184,7 +184,7 @@ Properti berikut didefinisikan pada nilai kembalian fungsi `createConnector`.
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
@@ -192,7 +192,7 @@ Properti berikut didefinisikan pada nilai kembalian fungsi `createConnector`.
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing optional browser extension setup instructions',

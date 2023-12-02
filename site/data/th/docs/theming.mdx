@@ -7,7 +7,7 @@ description: การใช้และปรับแต่งธีม
 
 ## การใช้และปรับแต่งธีม
 
-คุณสามารถปรับแต่ง UI ของ RainbowKit เพื่อเข้ากับแบรนด์ของคุณ. คุณสามารถเลือกจากสีเน้นที่กำหนดไว้ล่วงหน้าและการกำหนดรัศมีขอบ.
+คุณสามารถปรับ UI ของ RainbowKit ให้ตรงกับแบรนด์ของคุณ คุณสามารถเลือกสีเน้นและการตั้งค่ารัศมีขอบจากที่กำหนดไว้ล่วงหน้า
 
 มีฟังก์ชันธีมในตัว 3 ฟังก์ชัน:
 
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "The font stack used throughout the UI. โปรดทราบว่า `rounded` พยายามใช้ SF Pro Rounded และเปลี่ยนไปใช้ระบบฟอนต์เมื่อไม่สามารถใช้งานได้.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'ความพลางพื้นหลังของโมดอล',
     },
   ]}
 />

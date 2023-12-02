@@ -7,9 +7,9 @@ description: 定制钱包列表
 
 ## 定制钱包列表
 
-> 注意：此API不稳定，很可能在不久的将来发生变化。 我们建议现在避免更改钱包列表。
+> 注意：此API不稳定，很可能在不久的将来发生变化。 我们建议现在避免更改钱包列表。 我们建议现在避免更改钱包列表。
 
-您可以从`'@rainbow-me/rainbowkit/wallets'`中导入各个钱包，同时使用`connectorsForWallets`函数来构建自己的钱包列表和所需连接器。 这样，您可以自由控制显示哪些钱包以及显示的顺序。
+您可以从`'@rainbow-me/rainbowkit/wallets'`中导入各个钱包，同时使用`connectorsForWallets`函数来构建自己的钱包列表和所需连接器。 这样，您可以自由控制显示哪些钱包以及显示的顺序。 这样，您可以自由控制显示哪些钱包以及显示的顺序。
 
 例如，您可以选择仅显示Rainbow和通用的Fallback钱包。
 
@@ -70,7 +70,7 @@ const App = () => (
 
 #### 通用钱包
 
-以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。
+以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。 因此，建议总是包含这些钱包。
 
 ##### WalletConnect
 
@@ -95,11 +95,11 @@ walletConnectWallet(options: {
 
 可以在如下链接找到支持的 `options` 的额外文档 [here](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional)。
 
-为了迁移到 WalletConnect v2，Web3Modal v2 的 `options` 也受到支持。 参考[Ethereum Provider 文档](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization)。 所需的 `projectId` 会由 RainbowKit 自动预填充。
+为了迁移到 WalletConnect v2，Web3Modal v2 的 `options` 也受到支持。 为了迁移到 WalletConnect v2，Web3Modal v2 的 `options` 也受到支持。 参考[Ethereum Provider 文档](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization)。 所需的 `projectId` 会由 RainbowKit 自动预填充。 所需的 `projectId` 会由 RainbowKit 自动预填充。
 
 ##### 注入式钱包
 
-这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
+这是一个后备钱包选项，专为`window.ethereum`存在但列表中其他钱包未提供的情况设计。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。 如果不需要后备或者没有可用的注入钱包，这个钱包会自动从列表中隐藏自己。
 
 **建议您始终在列表中包含此钱包，以确保支持所有注入的钱包。**
 
@@ -126,22 +126,22 @@ argentWallet(options: {
 });
 ```
 
-#### Bifrost 钱包
+#### BitKeep
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-bifrostWallet(options: {
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
 
-#### Bitget 钱包
+#### Bifrost Wallet
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+bifrostWallet(options: {
   chains: Chain[];
 });
 ```
@@ -156,7 +156,7 @@ bitskiWallet(options: {
 });
 ```
 
-#### Brave 钱包
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -166,7 +166,7 @@ braveWallet(options: {
 });
 ```
 
-#### Coinbase 钱包
+#### Coinbase Wallet
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -177,7 +177,7 @@ coinbaseWallet(options: {
 });
 ```
 
-#### Coin98 钱包
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
@@ -199,7 +199,7 @@ coreWallet(options: {
 });
 ```
 
-#### Dawn 钱包
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -209,7 +209,7 @@ dawnWallet(options: {
 });
 ```
 
-#### Enkrypt 钱包
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -229,7 +229,7 @@ foxWallet(options: {
 });
 ```
 
-#### Frame 钱包
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -238,7 +238,7 @@ frameWallet(options: {
 });
 ```
 
-#### Frontier 钱包
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -282,7 +282,7 @@ metaMaskWallet(options: {
 });
 ```
 
-#### MEW 钱包
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -291,7 +291,7 @@ mewWallet(options: {
 });
 ```
 
-#### OKX 钱包
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -333,7 +333,7 @@ phantomWallet(options: {
 });
 ```
 
-#### Rabby 钱包
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -374,16 +374,6 @@ safeheronWallet(options: {
 });
 ```
 
-#### SafePal 钱包
-
-```tsx
-import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
-safepalWallet(options: {
-  projectId: string;
-  chains: Chain[];
-});
-```
-
 #### Taho
 
 ```tsx
@@ -404,6 +394,16 @@ talismanWallet(options: {
 });
 ```
 
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenaryWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### TokenPocket
 
 ```tsx
@@ -415,7 +415,7 @@ tokenPocketWallet(options: {
 });
 ```
 
-#### Trust 钱包
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -426,7 +426,7 @@ trustWallet(options: {
 });
 ```
 
-#### Uniswap 钱包
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -437,22 +437,12 @@ uniswapWallet(options: {
 });
 ```
 
-#### XDEFI 钱包
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 xdefiWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### Zeal
-
-```tsx
-import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zealWallet(options: {
   chains: Chain[];
 });
 ```
@@ -526,7 +516,7 @@ const connectors = connectorsForWallets([
 
 #### 多个组
 
-你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
+你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。
 
 推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
 

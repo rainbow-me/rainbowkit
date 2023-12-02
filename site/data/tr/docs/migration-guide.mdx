@@ -32,7 +32,7 @@ Not: wagmi artık `ethers` paketini dahili olarak kullanmaz. Ancak [Authenticati
 
 **3. **Demetleyici ve polyfill uyumluluğunu sağlayın\*\*
 
-Wagmi'nin önceki sürümlerinde WalletConnect tarafından gerektirilen `fs`, `net` ve `tls` modülleri otomatik olarak polyfilled idi [ethers](https://docs.ethers.org/v5/) ile. RainbowKit v1 + wagmi v1 ile bu artık durum değil, bunlar [viem](https://viem.sh/) üzerine inşa edilmiştir.
+Wagmi'nin önceki sürümlerinde WalletConnect tarafından gerektirilen `fs`, `net` ve `tls` modülleri otomatik olarak polyfilled idi [ethers](https://docs.ethers.org/v5/) ile. RainbowKit v1 + wagmi v1 ile bu artık durum böyle değil, bunlar [viem](https://viem.sh/) üzerine kurulmuştur.
 
 Projeleriniz için yapılandırma rehberi olarak bizim [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) ve [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) örneklerine bakın.
 
@@ -54,7 +54,7 @@ Cüzdanlar gelecek sürümlerde otomatik olarak geçiş yapacak.
 
 Her dApp'in şimdi WalletConnect v2'yi etkinleştirmek için bir [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` sağlaması gerekiyor. Bu, WalletConnect v1 köprü sunucularının 28 Haziran 2023'te kapatılmasından önce tamamlanmalıdır. `projectId` belirtilmediği sürece, RainbowKit sessizce tüm cüzdanlar için v1'i tercih eder.
 
-Geçiş yapmak için aşağıdaki adımları izleyin.
+Taşımak için aşağıdaki adımları takip edin.
 
 #### 1.  RainbowKit ve `wagmi` yi en güncel versiyonlarına yükseltin
 
@@ -94,9 +94,9 @@ const connectors = connectorsForWallets([
 
 Wagmi eş bağımlılığı `0.11.x` olarak güncellendi.
 
-Taşınmak için aşağıdaki adımları izleyin.
+Taşımak için aşağıdaki adımları takip edin.
 
-#### 1.  RainbowKit ve `wagmi`yi en son sürüme yükseltin
+#### 1.  RainbowKit ve `wagmi` yi en güncel versiyonlarına yükseltin
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
@@ -138,9 +138,9 @@ Taşımak için aşağıdaki adımları takip edin.
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  `Wagmi`'deki kırılma değişikliklerini kontrol edin
+#### 2.  `wagmi`de bozucu değişiklikleri kontrol edin
 
-Uygulamanızda `wagmi` kanca'ları kullanıyorsanız, uygulamanızın `wagmi`'deki kırılma değişikliklerinden etkilenip etkilenmediğini kontrol etmeniz gerekecek.
+Eğer uygulamanızda `wagmi` kancaları kullanıyorsanız, uygulamanızın `wagmi`deki bozucu değişikliklerden etkilenip etkilenmediğini kontrol etmeniz gerekecektir.
 
 [Migrasyon rehberlerini buradan görebilirsiniz](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
@@ -148,17 +148,17 @@ Uygulamanızda `wagmi` kanca'ları kullanıyorsanız, uygulamanızın `wagmi`'de
 
 Wagmi bağımlılık eşleşmesi `0.8.x`'e güncellendi.
 
-Geçiş yapmak için aşağıdaki adımları izleyin.
+Taşımak için aşağıdaki adımları takip edin.
 
-#### 1.  RainbowKit ve `wagmi`'yi en son sürümlerine yükseltin
+#### 1.  RainbowKit ve `wagmi` yi en güncel versiyonlarına yükseltin
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2.  `Wagmi`'deki kırılma değişikliklerini kontrol edin
+#### 2.  `wagmi`de bozucu değişiklikleri kontrol edin
 
-Uygulamanızda `wagmi` kanca'ları kullanıyorsanız, uygulamanızın `wagmi`'deki kırılma değişikliklerinden etkilenip etkilenmediğini kontrol etmeniz gerekecek.
+Eğer uygulamanızda `wagmi` kancaları kullanıyorsanız, uygulamanızın `wagmi`deki bozucu değişikliklerden etkilenip etkilenmediğini kontrol etmeniz gerekecektir.
 
 [Göç rehberlerini burada görebilirsiniz](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
@@ -207,7 +207,7 @@ const wallets = [
 
 RainbowKit, `wagmi` eşdeğer bağımlılığını `0.5.x`'e güncelledi.
 
-Göç etmek için aşağıdaki adımları izleyin.
+Taşımak için aşağıdaki adımları takip edin.
 
 #### 1.  Bağımlılıkları Güncelle
 
@@ -217,9 +217,9 @@ RainbowKit ve wagmi'yi en son sürüme yükseltin
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2.  `Wagmi`'deki kırıcı değişiklikleri kontrol edin
+#### 2.  `wagmi`de bozucu değişiklikleri kontrol edin
 
-Uygulamanızda `wagmi` kancalarını kullanıyorsanız, uygulamanızın `wagmi`deki kırıcı değişikliklerden etkilenip etkilenmediğini kontrol etmeniz gerekecektir.
+Eğer uygulamanızda `wagmi` kancaları kullanıyorsanız, uygulamanızın `wagmi`deki bozucu değişikliklerden etkilenip etkilenmediğini kontrol etmeniz gerekecektir.
 
 [Taşınma rehberlerini buradan görebilirsiniz](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
@@ -287,11 +287,11 @@ const connectors = connectorsForWallets([
 
 RainbowKit, `wagmi` eşbağımlılığını `^0.4`a güncelledi.
 
-Geçiş yapmak için aşağıdaki adımları takip edin.
+Taşımak için aşağıdaki adımları takip edin.
 
-#### 1.  Bağımlılıkları yükselt
+#### 1.  Bağımlılıkları Güncelle
 
-RainbowKit ve wagmi'yi en son sürüme yükselt
+RainbowKit ve wagmi'yi en son sürüme yükseltin
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2

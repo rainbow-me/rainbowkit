@@ -7,7 +7,7 @@ description: Создать пользовательский кошелек
 
 ## Создать пользовательский кошелек
 
-> Примечание: Этот API нестабилен и, вероятно, изменится в ближайшем будущем. Со временем мы добавим больше встроенных кошельков. [Сообщите нам](https://github.com/rainbow-me/rainbowkit/issues) если есть конкретные кошельки, которые вас интересуют.
+> Примечание: АПИ находится в стадии разработки и может измениться в ближайшем будущем. Со временем мы добавим больше встроенных кошельков. [Сообщите нам](https://github.com/rainbow-me/rainbowkit/issues) если есть конкретные кошельки, которые вас интересуют.
 
 Тип функции `Wallet` предоставляется для помощи в определении ваших собственных пользовательских кошельков. Следующие свойства могут быть настроены в возвращаемом значении вашей функции `Wallet` :
 
@@ -38,20 +38,20 @@ description: Создать пользовательский кошелек
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL для иконки кошелька или обещание, разрешающееся в Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Цвет акцента, используемый в процессах скачивания для кошельков с расширением для браузера и мобильным приложением',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Цвет фона во время загрузки иконки кошелька',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ description: Создать пользовательский кошелек
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          Установлен ли кошелек, или{' '}
+          <code>undefined</code> в случае неполной информации
         </>
       ),
     },
@@ -69,7 +69,7 @@ description: Создать пользовательский кошелек
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Объект с URL-адресами для скачивания',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ description: Создать пользовательский кошелек
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Функция для определения, должен ли этот кошелек быть скрытым из списка. Для определения общих резервных кошельков, таких как встроенный резервный кошелек «Injected Wallet», это полезно',
     },
     {
       name: 'createConnector',
@@ -85,80 +85,14 @@ description: Создать пользовательский кошелек
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Функция для предоставления экземпляра коннектора и настройки для различных методов подключения, описанных ниже',
     },
   ]}
 />
 
 ### Свойства DownloadUrls
 
-<PropsTable
-  data={[
-    {
-      name: 'android',
-      required: false,
-      type: 'string',
-      description: 'Google Play URL',
-    },
-    {
-      name: 'ios',
-      required: false,
-      type: 'string',
-      description: 'Apple App Store URL',
-    },
-    {
-      name: 'mobile',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for mobile users when `android` or `ios` are unavailable',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for users that scan the mobile download QR Code',
-    },
-    {
-      name: 'chrome',
-      required: false,
-      type: 'string',
-      description: 'Chrome Web Store URL',
-    },
-    {
-      name: 'edge',
-      required: false,
-      type: 'string',
-      description: 'Microsoft Edge Add-ons URL',
-    },
-    {
-      name: 'firefox',
-      required: false,
-      type: 'string',
-      description: 'Firefox Browser Add-ons URL',
-    },
-    {
-      name: 'opera',
-      required: false,
-      type: 'string',
-      description: 'Opera add-ons URL',
-    },
-    {
-      name: 'safari',
-      required: false,
-      type: 'string',
-      description: 'Mac App Store URL',
-    },
-    {
-      name: 'browserExtension',
-      required: false,
-      type: 'string',
-      description:
-        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
-    },
-  ]}
-/>
+0
 
 ### Свойства RainbowKitConnector
 
@@ -184,7 +118,7 @@ description: Создать пользовательский кошелек
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
@@ -192,7 +126,7 @@ description: Создать пользовательский кошелек
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing optional browser extension setup instructions',

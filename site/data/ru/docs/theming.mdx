@@ -7,7 +7,7 @@ description: Использование и настройка тем
 
 ## Использование и настройка тем
 
-Вы можете настроить пользовательский интерфейс RainbowKit, чтобы он соответствовал вашему бренду. Вы можете выбрать из нескольких предустановленных акцентных цветов и конфигураций радиуса границы.
+Вы можете настроить UI RainbowKit, чтобы он соответствовал вашему бренду. Вы можете выбрать из нескольких предопределенных акцентов и конфигураций радиуса границы.
 
 Есть 3 встроенные функции темы:
 
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "The font stack used throughout the UI. Обратите внимание, что `rounded` пытается использовать SF Pro Rounded, и при отсутствии его будет использована системная шрифтовая схема.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'Размытие фона модального окна.',
     },
   ]}
 />

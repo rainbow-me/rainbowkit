@@ -77,7 +77,7 @@ description: カスタムウォレットを作成
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Function for calculating whether this wallet should be hidden from the list. これは、汎用のフォールバックウォレットを定義するために便利です。例えば、組み込みの「Injected Wallet」フォールバックは、この機能を使用しています。',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ description: カスタムウォレットを作成
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'さまざまな接続方法のコネクタインスタンスと構成を提供するための関数。以下で説明します。',
     },
   ]}
 />
@@ -184,7 +184,7 @@ description: カスタムウォレットを作成
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
@@ -192,7 +192,7 @@ description: カスタムウォレットを作成
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing optional browser extension setup instructions',

@@ -38,20 +38,20 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'URL para el ícono de la billetera o una promesa que resuelve a un URL de datos Base64',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'Color de acento utilizado en los flujos de descarga para billeteras con una extensión de navegador y una aplicación móvil',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'Color de fondo mientras se carga el ícono de la billetera',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          Si la billetera se sabe que está instalada, o{' '}
+          <code>undefined</code> si es indeterminada
         </>
       ),
     },
@@ -69,7 +69,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'Objeto que contiene URLs de descarga',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Función para calcular si esta billetera debe ocultarse de la lista. Esto es útil para definir billeteras genéricas de respaldo, por ejemplo, el respaldo integrado de "Injected Wallet" hace uso de esta función',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'Función para proporcionar la instancia del conector y la configuración para diferentes métodos de conexión, descritos a continuación',
     },
   ]}
 />
@@ -169,33 +169,33 @@ Las siguientes propiedades se definen en el valor de retorno de la función `cre
     {
       name: 'mobile',
       required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
+      type: '{ getUri?: () => Promesa<string> }',
+      typeSimple: 'objeto',
       description:
-        'Function for resolving a mobile wallet connection URI',
+        'Función para resolver una URI de conexión de billetera móvil',
     },
     {
-      name: 'desktop',
+      name: 'escritorio',
       required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
+      type: '{ getUri?: () => Promesa<string> }',
+      typeSimple: 'objeto',
+      description: 'Función para resolver un enlace profundo de una aplicación de escritorio',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
+      type: "{ getUri: () => Promesa<string>, instrucciones?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'objeto',
       description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+        'Objeto que contiene una función para resolver la URI del código QR, más instrucciones opcionales para la configuración de la billetera móvil',
     },
     {
-      name: 'extension',
+      name: 'extensión',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
+      type: "{ instrucciones?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'objeto',
       description:
-        'Object containing optional browser extension setup instructions',
+        'Objeto que contiene instrucciones opcionales para la configuración de la extensión del navegador',
     },
   ]}
 />

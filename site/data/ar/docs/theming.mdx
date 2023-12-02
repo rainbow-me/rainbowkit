@@ -7,7 +7,7 @@ description: استخدام وتخصيص السمات
 
 ## استخدام وتخصيص السمات
 
-يمكنك تعديل واجهة المستخدم من RainbowKit لتتناسب مع العلامة التجارية الخاصة بك. يمكنك الاختيار من بين بضعة ألوان أكسنت محددة مسبقا وتكوينات نصف القطر للحدود.
+يمكنك تعديل واجهة المستخدم لـ RainbowKit لتتناسب مع العلامة التجارية الخاصة بك. يمكنك اختيار من بين بعض الألوان المحددة مسبقًا وتكوينات نصف القطر الحدودية.
 
 هناك 3 وظائف مضمنة للسمة:
 
@@ -55,37 +55,37 @@ export const App = () => (
 <PropsTable
   data={[
     {
-      name: 'accentColor',
+      name: 'لون الظل الملفت للنظر',
       required: false,
       default: '"#0E76FD"',
-      type: 'string',
+      type: 'سلسلة',
       description:
-        'The background/text color of various interactive elements.',
+        'لون الخلفية/النص لعناصر التفاعل المختلفة.',
     },
     {
-      name: 'accentColorForeground',
+      name: 'لون النص للظل الملفت للنظر',
       required: false,
-      default: '"white"',
-      type: 'string',
+      default: '"أبيض"',
+      type: 'سلسلة',
       description:
-        'The color used for foreground elements rendered on top of the accent color.',
+        'اللون المستخدم لعناصر النص المظهرة أعلى الظل الملفت للنظر.',
     },
     {
-      name: 'borderRadius',
+      name: 'نصوص الزوايا',
       required: false,
-      default: 'large',
-      type: '"none" | "small" | "medium" | "large"',
-      typeSimple: 'enum',
-      description: 'The size of the entire border radius scale.',
+      default: 'كبير',
+      type: '"لا شيء" | "صغير" | "متوسط" | "كبير"',
+      typeSimple: 'تعداد',
+      description: 'حجم مقياس نصوص الزوايا بأكمله.',
     },
     {
-      name: 'fontStack',
+      name: 'علامة التبويب الخطية',
       required: false,
-      default: 'rounded',
-      type: '"rounded" | "system"',
-      typeSimple: 'enum',
+      default: 'مستديرة',
+      type: '"مستديرة" | "النظام"',
+      typeSimple: 'تعداد',
       description:
-        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "الحزمة الخطية المستخدمة في جميع واجهة المستخدم. ملاحظة أن `rounded` يحاول استخدام خطوط SF Pro Rounded، وعندما لا تكون متاحة، يستخدم خطوط النظام.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'The modal backdrop blur.',
+      description: 'إضاءة خلفية المودال.',
     },
   ]}
 />

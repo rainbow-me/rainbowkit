@@ -52,9 +52,12 @@
     "recent": "最近利用しました",
     "status": {
       "opening": "%{wallet}を開いています...",
+      "connecting": "接続中",
+      "connect_mobile": "%{wallet}で続行",
       "not_installed": "%{wallet} はインストールされていません",
       "not_available": "%{wallet} は利用できません",
-      "confirm": "エクステンションで接続を確認してください"
+      "confirm": "エクステンションで接続を確認してください",
+      "confirm_mobile": "ウォレットでの接続リクエストを承認する"
     },
     "secondary_action": {
       "get": {

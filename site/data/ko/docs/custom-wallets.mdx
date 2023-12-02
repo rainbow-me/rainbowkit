@@ -38,20 +38,20 @@ description: 사용자 정의 지갑 생성
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        '지갑 아이콘의 URL 또는 Base64 데이터 URL로 해결되는 프로미스',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        '브라우저 확장 프로그램 및 모바일 앱이 모두 있는 지갑 다운로드 플로우에서 사용하는 액센트 색상',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '지갑 아이콘이 로드되는 동안의 배경 색상',
     },
     {
       name: 'installed',
@@ -59,8 +59,8 @@ description: 사용자 정의 지갑 생성
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          지갑이 설치되어 있는지 여부, 또는{' '}
+          <code>undefined</code> 경우 indeterminate
         </>
       ),
     },
@@ -69,7 +69,7 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '다운로드 URL을 포함하는 객체',
     },
     {
       name: 'hidden',
@@ -77,7 +77,7 @@ description: 사용자 정의 지갑 생성
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '이 지갑을 목록에서 숨길지 여부를 계산하는 함수입니다. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -184,7 +184,7 @@ description: 사용자 정의 지갑 생성
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
@@ -192,7 +192,7 @@ description: 사용자 정의 지갑 생성
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
       typeSimple: 'object',
       description:
         'Object containing optional browser extension setup instructions',

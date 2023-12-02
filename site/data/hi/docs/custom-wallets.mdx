@@ -77,7 +77,7 @@ description: एक कस्टम वॉलेट बनाएं
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'Function for calculating whether this wallet should be hidden from the list. यह जीनेरिक फॉलबैक वॉलेट को परिभाषित करने के लिए महत्वपूर्ण है, जैसे कि इस फ़ीचर का उपयोग "इन्जेक्टेड वॉलेट" फॉलबैक में किया जाता है',
     },
     {
       name: 'createConnector',
@@ -85,7 +85,7 @@ description: एक कस्टम वॉलेट बनाएं
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'विभिन्न कनेक्शन मेथड के लिए कनेक्टर इंस्टेंस और कॉन्फ़िगरेशन प्रदान करने के लिए फ़ंक्शन, नीचे वर्णित',
     },
   ]}
 />
