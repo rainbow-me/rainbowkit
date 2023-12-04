@@ -5,3 +5,5 @@ files:
     translation: /site/data/%locale%/docs/%original_file_name%
   - source: /site/data/en-US/guides/*.mdx
     translation: /site/data/%locale%/guides/%original_file_name%
+  - source: /site/locales/en-US.json
+    translation: /site/locales/%locale%.json
