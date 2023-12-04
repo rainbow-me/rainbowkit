@@ -26,7 +26,6 @@ import {
   coreWallet,
   dawnWallet,
   desigWallet,
-  emailWallet,
   enkryptWallet,
   foxWallet,
   frameWallet,
@@ -40,6 +39,9 @@ import {
   oneKeyWallet,
   phantomWallet,
   rabbyWallet,
+  rainbowEmailWallet,
+  rainbowGoogleWallet,
+  rainbowPhoneWallet,
   safeheronWallet,
   safepalWallet,
   subWallet,
@@ -123,9 +125,6 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const clientId =
-  process.env.NEXT_PUBLIC_WEB3_AUTH_CLIENT_ID ?? 'YOUR_WEB3_AUTH_CLIENT_ID';
-
 const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   chains,
@@ -136,10 +135,14 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Socials',
     wallets: [
-      emailWallet({
+      rainbowEmailWallet({
         chains,
-        clientId,
-        network: 'sapphire_devnet',
+      }),
+      rainbowGoogleWallet({
+        chains,
+      }),
+      rainbowPhoneWallet({
+        chains,
       }),
     ],
   },
