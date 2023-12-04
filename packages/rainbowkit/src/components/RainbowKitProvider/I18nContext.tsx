@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useMemo } from 'react';
 
-import { Locale, i18n as _i18n } from '../../locales';
+import { type Locale, i18n as _i18n } from '../../locales';
 import { detectedBrowserLocale } from '../../utils/locale';
 
 export const I18nContext = createContext<typeof _i18n>(_i18n);
