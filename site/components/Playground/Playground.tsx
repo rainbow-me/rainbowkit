@@ -1,5 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
+  Locale,
   RainbowKitProvider,
   __private__,
   darkTheme,
@@ -15,6 +16,8 @@ import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
@@ -74,6 +77,8 @@ export function Playground() {
   const [modalSize, setModalSize] = useState<ModalSizes>('wide');
   const isCompact = modalSize === 'compact';
 
+  const { locale } = useRouter() as { locale: Locale };
+
   const handleModeChange = (value) => setMode(value);
   const handleAccentChange = (value) => setAccent(value);
   const handleRadiiChange = (value) => setRadii(value);
@@ -86,6 +91,8 @@ export function Playground() {
 
   const gradient = gradientColors[accent];
   const isMounted = useIsMounted();
+
+  const t = useTranslations('landing');
 
   return isMounted() ? (
     <Box paddingY={{ xs: '11', lg: '12' }} position="relative" zIndex="10">
@@ -123,7 +130,7 @@ export function Playground() {
             style={{ lineHeight: 1 }}
             weight="bold"
           >
-            Give RainbowKit a spin
+            {t('playground.headline')}
           </Text>
           <Text
             align={{ xs: 'left', md: 'center' }}
@@ -134,10 +141,7 @@ export function Playground() {
             style={{ lineHeight: '28px', maxWidth: 720 }}
             weight="semibold"
           >
-            Make your Ethereum login experience feel right at home on your
-            website. RainbowKit allows you to fully customize color, border
-            radius, wallet providers and a lot more — all through an easy-to-use
-            API. Get a feel for it below!
+            {t('playground.subheadline')}
           </Text>
         </Wrapper>
 
@@ -147,6 +151,7 @@ export function Playground() {
             id="playground"
             modalSize={modalSize}
             theme={selectedTheme}
+            locale={locale}
           >
             <Box
               marginX={{ xs: '0', md: 'auto' }}
@@ -220,7 +225,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Modal
+                {t('playground.modal')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -244,7 +249,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Mode
+                {t('playground.mode')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -280,7 +285,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Accent
+                {t('playground.accent')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -311,7 +316,7 @@ export function Playground() {
                 style={{ mixBlendMode: 'overlay' }}
                 weight="bold"
               >
-                Radius
+                {t('playground.radius')}
               </Text>
               <ControlBox>
                 <RadioGroup.Root
@@ -322,19 +327,19 @@ export function Playground() {
                 >
                   <Radio
                     activeValue={radii}
-                    data-label="L"
+                    data-label={t('playground.large')}
                     id="radii"
                     value="large"
                   />
                   <Radio
                     activeValue={radii}
-                    data-label="M"
+                    data-label={t('playground.medium')}
                     id="radii"
                     value="medium"
                   />
                   <Radio
                     activeValue={radii}
-                    data-label="S"
+                    data-label={t('playground.small')}
                     id="radii"
                     value="small"
                   />
