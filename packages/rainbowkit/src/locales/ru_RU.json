@@ -52,9 +52,12 @@
     "recent": "Недавние",
     "status": {
       "opening": "Открывается %{wallet}...",
+      "connecting": "Подключение",
+      "connect_mobile": "Продолжить в %{wallet}",
       "not_installed": "%{wallet} не установлен",
       "not_available": "%{wallet} не доступен",
-      "confirm": "Подтвердите подключение в расширении"
+      "confirm": "Подтвердите подключение в расширении",
+      "confirm_mobile": "Принять запрос на подключение в кошельке"
     },
     "secondary_action": {
       "get": {

@@ -1,0 +1,69 @@
+---
+title: RainbowボタンをdAppに採用する方法
+description: WagmiをサポートするRainbowウォレット用のプラグアンドプレイライブラリ
+image: guide-walletconnect-v2.png
+---
+
+# RainbowボタンをdAppに採用する方法
+
+`RainbowButton`コンポーネントは`wagmi`を使用し、よりカスタマイズされたコネクタの体験を希望するdAppにRainbowウォレットのサポートを追加する最も簡単な方法です ( [RainbowKit]参照)  。
+
+**1. `@rainbow-me/rainbow-button`とそのピア依存関係をインストールしてください**
+
+このパッケージはNext.js、React、Viteと互換性があります。 ピア依存関係の警告に従ってください。
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. Wagmiと一緒に構成してRainbowButtonをインストールしてください**
+
+`RainbowConnector`のインスタンスをWagmiコネクタリストに渡し、アプリを`RainbowButtonProvider`でラップしてください。 その後、`RainbowButton`コンポーネントをウォレットリストにドロップインしてください。
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+カスタムな実装やスタイルには、`RainbowButton.Custom`コンポーネントを使用することもできます。
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. 以上です！**
+
+これで、ユーザーはメンテナンスやトラブルの心配なく、Rainbowのシームレスな接続体験を楽しむことができます。
+
+また、追加のウォレットのサポートを採用したい場合は[`WalletButton`](https://www.rainbowkit.com/docs/wallet-button)コンポーネントも利用できます ( [RainbowKit]参照) 。

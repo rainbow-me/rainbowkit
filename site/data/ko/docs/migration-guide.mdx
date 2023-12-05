@@ -32,7 +32,7 @@ npm i viem
 
 **3. 번들러와 폴리필 호환성 확보**
 
-이전 버전의 wagmi는 [ethers](https://docs.ethers.org/v5/)에 의존했고, WalletConnect에 의해 필요로 하는 `fs`, `net`, `tls` 모듈들이 자동으로 폴리필되었습니다. RainbowKit v1 + wagmi v1은 더 이상 이런 경우가 아니며, 이는 [viem](https://viem.sh/) 위에 구축되어 있습니다.
+이전 버전의 wagmi는 [ethers](https://docs.ethers.org/v5/)에 의존했고, WalletConnect에 의해 필요로 하는 `fs`, `net`, `tls` 모듈들이 자동으로 폴리필되었습니다. 이는 RainbowKit v1 + wagmi v1에서는 더 이상 적용되지 않으며, 이들은 [viem](https://viem.sh/)를 기반으로 구축되었습니다.
 
 [Next.js 웹팩 설정](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)와 [Create React App 폴리필들](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플을 참조하여 귀하의 프로젝트를 위한 설정 가이드를 참고하세요.
 
@@ -54,7 +54,7 @@ RainbowKit은 계속된 WalletConnect v1 지원을 위해 `wagmi`의 `WalletConn
 
 모든 dApp은 이제 WalletConnect v2를 활성화하기 위해 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`를 제공해야 합니다. 이 작업은 WalletConnect v1 브리지 서버가 2023년 6월 28일에 종료되기 전에 완료되어야 합니다. `projectId`가 지정되지 않은 경우 RainbowKit은 모든 지갑에 대해 조용히 v1을 선호합니다.
 
-아래의 단계를 따라 마이그레이션을 진행하세요.
+아래의 단계를 따라 마이그레이션하세요.
 
 #### 1.  RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
 
@@ -64,7 +64,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2.  WalletConnect Cloud projectId를 제공하세요
 
-WalletConnect에 의존하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 획득해야합니다. 이 작업은 전혀 무료이며 몇 분만 걸립니다.
+WalletConnect에 의존하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 획득해야합니다. 이것은 완전히 무료이며 몇 분 밖에 걸리지 않습니다.
 
 `getDefaultWallets` 및 개별 RainbowKit 지갑 커넥터에 `projectId`를 제공하세요. 예시는 다음과 같습니다.
 
@@ -96,7 +96,7 @@ wagmi 동료 의존성이 `0.11.x`으로 업데이트되었습니다.
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1.  RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
+#### 1.  RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
@@ -112,17 +112,17 @@ npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 
 wagmi 동료 의존성이 `0.10.x`로 업데이트되었습니다.
 
-다음의 단계를 따라 마이그레이션하십시오.
+아래의 단계를 따라 마이그레이션하세요.
 
-#### 1.  RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하십시오.
+#### 1.  RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  `wagmi`에서의 중대한 변경 사항을 확인하십시오.
+#### 2.  `wagmi`에서 중단 변경 확인
 
-애플리케이션에서 `wagmi` 훅를 사용하는 경우, `wagmi`의 중요한 변경 사항으로 인해 애플리케이션이 영향을 받았는지 확인해야 합니다.
+`wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [이곳에서 그들의 마이그레이션 가이드를 볼 수 있습니다](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
@@ -130,17 +130,17 @@ npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 
 wagmi 피어 의존성이 `0.9.x`로 업데이트되었습니다.
 
-다음의 단계를 따라 마이그레이션하십시오.
+아래의 단계를 따라 마이그레이션하세요.
 
-#### 1.  RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하십시오.
+#### 1.  RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  `wagmi`에서 파괴적인 변경사항을 확인하세요.
+#### 2.  `wagmi`에서 중단 변경 확인
 
-프로그램에서 `wagmi` 후크를 사용하면 `wagmi`의 파괴적인 변경에 의해 애플리케이션이 영향을 받았는지 확인해야 합니다.
+`wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [여기에서 마이그레이션 가이드를 확인하세요](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
@@ -148,17 +148,17 @@ npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 
 wagmi 피어 의존성이 `0.8.x`로 업데이트 되었습니다.
 
-아래 단계에 따라 마이그레이션을 진행합니다.
+아래의 단계를 따라 마이그레이션하세요.
 
-#### 1.  RainbowKit과 `wagmi`를 최근 버전으로 업그레이드하십시오.
+#### 1.  RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2.  `wagmi`에서 파괴적인 변경사항을 확인하세요.
+#### 2.  `wagmi`에서 중단 변경 확인
 
-프로그램에서 `wagmi` 후크를 사용하면 `wagmi`의 파괴적인 변경에 의해 애플리케이션이 영향을 받았는지 확인해야 합니다.
+`wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [여기에서 그들의 마이그레이션 가이드를 볼 수 있습니다](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
@@ -217,9 +217,9 @@ RainbowKit과 wagmi를 최신 버전으로 업그레이드하세요
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2.  `wagmi`에서 중단 변경 사항을 확인하십시오.
+#### 2.  `wagmi`에서 중단 변경 확인
 
-당신이 애플리케이션에서 `wagmi` 훅을 사용한 경우, 당신의 애플리케이션이 `wagmi`의 중단 변경 사항에 의해 영향을 받았는지 확인해야 합니다.
+`wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [여기에서 마이그레이션 가이드를 확인할 수 있습니다](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
@@ -287,11 +287,11 @@ const connectors = connectorsForWallets([
 
 RainbowKit는 `wagmi` 피어 종속성을 `^0.4`로 업데이트하였습니다.
 
-아래 단계를 따라 마이그레이션하세요.
+아래의 단계를 따라 마이그레이션하세요.
 
-#### 1.  종속성 업그레이드
+#### 1.  의존성 업그레이드
 
-RainbowKit와 wagmi를 최신 버전으로 업그레이드하세요
+RainbowKit과 wagmi를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2

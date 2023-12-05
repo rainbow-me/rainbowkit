@@ -54,7 +54,7 @@ Dompet akan dialihkan secara otomatis dalam rilis di masa depan.
 
 Setiap dApp sekarang harus menyediakan [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId` untuk mengaktifkan WalletConnect v2. Ini harus diselesaikan sebelum server jembatan WalletConnect v1 dimatikan pada 28 Juni 2023. RainbowKit akan dengan diam-diam lebih memilih v1 untuk semua dompet jika `projectId` tidak ditentukan.
 
-Ikuti langkah-langkah di bawah ini untuk beralih.
+Ikuti langkah-langkah berikut untuk migrasi.
 
 #### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
@@ -94,9 +94,9 @@ const connectors = connectorsForWallets([
 
 Ketergantungan sejawat wagmi telah diperbarui menjadi `0.11.x`.
 
-Ikuti langkah-langkah di bawah ini untuk migrasi.
+Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Perbarui RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
@@ -120,9 +120,9 @@ Ikuti langkah-langkah berikut untuk migrasi.
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  Periksa perubahan yang mempengaruhi di `wagmi`
+#### 2.  Periksa perubahan besar pada `wagmi`
 
-Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah terpengaruh oleh perubahan yang mempengaruhi di `wagmi`.
+Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
 [Anda dapat melihat panduan migrasi mereka di sini](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 

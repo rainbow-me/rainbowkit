@@ -52,9 +52,12 @@
     "recent": "Recente",
     "status": {
       "opening": "Abrindo %{wallet}...",
+      "connecting": "Conectando",
+      "connect_mobile": "Continue em %{wallet}",
       "not_installed": "%{wallet} não está instalado",
       "not_available": "%{wallet} não está disponível",
-      "confirm": "Confirme a conexão na extensão"
+      "confirm": "Confirme a conexão na extensão",
+      "confirm_mobile": "Aceite o pedido de conexão na carteira"
     },
     "secondary_action": {
       "get": {

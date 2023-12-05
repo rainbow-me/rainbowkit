@@ -32,7 +32,7 @@ npm i viem
 
 **3. **تأكد من التوافق بين المجمع و polyfill\*\*
 
-في الإصدارات السابقة من wagmi التي تعتمد على [ethers](https://docs.ethers.org/v5/)، كانت الوحدات `fs`، `net`، و `tls` المطلوبة من WalletConnect يتم تلقائيا polyfilled. هذا لم يعد الحال مع RainbowKit v1 + wagmi v1، اللذان بنيا على [viem](https://viem.sh/).
+في الإصدارات السابقة من wagmi التي تعتمد على [ethers](https://docs.ethers.org/v5/)، كانت الوحدات `fs`، `net`، و `tls` المطلوبة من WalletConnect يتم تلقائيا polyfilled. هذا لم يعد الحال مع RainbowKit v1 + wagmi v1، اللذان تم بناؤهما على [viem](https://viem.sh/).
 
 راجع [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) و أمثلة [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) لتوجيهات التكوين لمشروعك.
 
@@ -64,7 +64,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2.  أقدم projectId من WalletConnect Cloud
 
-كل تطبيق dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تمامًا ويستغرق بضع دقائق فقط.
+كل تطبيق dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تماما ولا يستغرق سوى بضع دقائق.
 
 قدم `projectId` إلى `getDefaultWallets` وموصلات محفظة RainbowKit الفردية كما في الأمثلة التالية:
 
@@ -96,7 +96,7 @@ const connectors = connectorsForWallets([
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث إصدار لهما
+#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
@@ -114,15 +114,15 @@ npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  ترقية RainbowKit و `wagmi` إلى أحدث نسخة لهما
+#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  تحقق من التغييرات الجذرية في `wagmi`
+#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
 
-إذا كنت تستخدم خطافات `wagmi` في تطبيقك، فستحتاج إلى التحقق مما إذا كان تطبيقك قد تأثر بالتغييرات الجذرية في `wagmi`.
+إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
 [يمكنك رؤية دليل الترحيل الخاص بهم هنا](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
@@ -132,15 +132,15 @@ npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  ترقية RainbowKit و `wagmi` إلى أحدث نسخة لهما
+#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  تحقق من التغييرات الجذرية في `wagmi`
+#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
 
-إذا كنت تستخدم خطاطيف `wagmi` في تطبيقك، ستحتاج إلى التحقق مما إذا كان تطبيقك قد تأثر بالتغييرات الجذرية في `wagmi`.
+إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
 [يمكنك رؤية دليل الترحيل الخاص بهم هنا](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
@@ -150,15 +150,15 @@ npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### ١. قم بترقية RainbowKit و `wagmi` إلى آخر إصدار لهما
+#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### ٢. تحقق من التغييرات الجذرية في `wagmi`
+#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
 
-إذا كنت تستخدم خطاطيف `wagmi` في تطبيقك، ستحتاج إلى التحقق مما إذا كان تطبيقك قد تأثر بالتغييرات الجذرية في `wagmi`.
+إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
 [يمكنك رؤية دليل الترحيل الخاص بهم هنا](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
@@ -217,9 +217,9 @@ const wallets = [
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2.  تحقق من التغييرات الجوهرية في `wagmi`
+#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
 
-إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق مما إذا كان تطبيقك قد تأثر بالتغييرات الجوهرية في `wagmi`.
+إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
 [يمكنك رؤية دليل الترحيل الخاص بهم هنا](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
@@ -289,9 +289,9 @@ const connectors = connectorsForWallets([
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  ترقية الاعتمادات
+#### 1.  ترقية التبعيات
 
-قم بترقية RainbowKit و wagmi إلى أحدث إصدار
+ترقية RainbowKit و wagmi إلى أحدث إصدار لها
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2

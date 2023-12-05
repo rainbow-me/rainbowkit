@@ -52,9 +52,12 @@
     "recent": "최근",
     "status": {
       "opening": "%{wallet}열기 ...",
+      "connecting": "연결 중",
+      "connect_mobile": "%{wallet}에서 계속 진행",
       "not_installed": "%{wallet} 가 설치되어 있지 않습니다",
       "not_available": "%{wallet} 를 사용할 수 없습니다",
-      "confirm": "확장 프로그램에서 연결을 확인하세요"
+      "confirm": "확장 프로그램에서 연결을 확인하세요",
+      "confirm_mobile": "지갑에서 연결 요청을 수락하십시오"
     },
     "secondary_action": {
       "get": {

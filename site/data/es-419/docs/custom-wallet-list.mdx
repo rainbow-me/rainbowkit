@@ -126,22 +126,22 @@ argentWallet(options: {
 });
 ```
 
-#### Billetera Bifrost
+#### BitKeep
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-bifrostWallet(options: {
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
 
-#### Billetera Bitget
+#### Bifrost Wallet
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+bifrostWallet(options: {
   chains: Chain[];
 });
 ```
@@ -156,7 +156,7 @@ bitskiWallet(options: {
 });
 ```
 
-#### Billetera Brave
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -166,7 +166,7 @@ braveWallet(options: {
 });
 ```
 
-#### Billetera Coinbase
+#### Coinbase Wallet
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -177,7 +177,7 @@ coinbaseWallet(options: {
 });
 ```
 
-#### Billetera Coin98
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
@@ -199,7 +199,7 @@ coreWallet(options: {
 });
 ```
 
-#### Billetera Dawn
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -209,7 +209,7 @@ dawnWallet(options: {
 });
 ```
 
-#### Billetera Enkrypt
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -229,7 +229,7 @@ foxWallet(options: {
 });
 ```
 
-#### Billetera Frame
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -238,7 +238,7 @@ frameWallet(options: {
 });
 ```
 
-#### Billetera Frontier
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -282,7 +282,7 @@ metaMaskWallet(options: {
 });
 ```
 
-#### Billetera MEW
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -291,7 +291,7 @@ mewWallet(options: {
 });
 ```
 
-#### Billetera OKX
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -374,16 +374,6 @@ safeheronWallet(options: {
 });
 ```
 
-#### SafePal Wallet
-
-```tsx
-import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
-safepalWallet(options: {
-  projectId: string;
-  chains: Chain[];
-});
-```
-
 #### Taho
 
 ```tsx
@@ -400,6 +390,16 @@ tahoWallet(options: {
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 
 talismanWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenaryWallet(options: {
   chains: Chain[];
 });
 ```
@@ -447,16 +447,6 @@ xdefiWallet(options: {
 });
 ```
 
-#### Zeal
-
-```tsx
-import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zealWallet(options: {
-  chains: Chain[];
-});
-```
-
 #### Zerion
 
 ```tsx
@@ -496,7 +486,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-Muestra Rainbow, MetaMask y Coinbase junto con billeteras genéricas de reserva.
+Mostrar MetaMask junto con billeteras de reserva genéricas.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

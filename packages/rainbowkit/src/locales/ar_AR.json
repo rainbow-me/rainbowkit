@@ -52,9 +52,12 @@
     "recent": "الأخير",
     "status": {
       "opening": "جار فتح %{wallet}...",
+      "connecting": "جارٍ الاتصال",
+      "connect_mobile": "استمر في %{wallet}",
       "not_installed": "%{wallet} غير مثبت",
       "not_available": "%{wallet} غير متاح",
-      "confirm": "تأكيد الاتصال في الامتداد"
+      "confirm": "تأكيد الاتصال في الامتداد",
+      "confirm_mobile": "قبل طلب الاتصال في المحفظة"
     },
     "secondary_action": {
       "get": {

@@ -1,0 +1,69 @@
+---
+title: Применение кнопки Rainbow в вашем dApp
+description: Библиотека для поддержки Rainbow Wallet в вашем dApp
+image: guide-walletconnect-v2.png
+---
+
+# Применение кнопки Rainbow в вашем dApp
+
+Компонент `RainbowButton` - самый простой способ добавить поддержку Rainbow Wallet в dApps, использующие `wagmi`, и предпочитающие более индивидуальное подключение, чем [RainbowKit](https://www.rainbowkit.com/docs/installation).
+
+**1. Установите `@rainbow-me/rainbow-button` и его зависимости**
+
+Пакет совместим с Next.js, React и Vite. Убедитесь, что вы соблюдаете предупреждения о зависимостях.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. Настройте с Wagmi и установите RainbowButton**
+
+Передайте экземпляр `RainbowConnector` в список ваших Wagmi коннекторов и оберните ваше приложение в `RainbowButtonProvider`. Затем добавьте компонент `RainbowButton` в ваш список кошельков.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+Вы также можете использовать компонент `RainbowButton.Custom` для настройки и стилизации.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. Вот и всё!**
+
+Теперь ваши пользователи могут наслаждаться беспроблемным подключением к Rainbow — без какого-либо обслуживания или проблем.
+
+Также доступен [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) компонент в [RainbowKit](https://www.rainbowkit.com/docs/installation), если вы хотите добавить поддержку дополнительных кошельков.

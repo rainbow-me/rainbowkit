@@ -1,0 +1,42 @@
+---
+title: 월렛버튼
+description: 월렛버튼 사용 및 사용자 정의
+---
+
+# 월렛버튼
+
+새로운 `WalletButton` 컴포넌트는 사용자 정의 월렛 목록을 구현하여 RainbowKit과 관련된 유지보수의 이점을 제공하는 dApp에 도움이 됩니다.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+`ConnectButton`과 마찬가지로, `WalletButton.Custom` 컴포넌트는 사용자 정의 구현과 스타일링에 사용할 수 있습니다.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+대부분의 dApp은 [ConnectButton](https://www.rainbowkit.com/docs/connect-button)가 가장 적합합니다. `WalletButton` 도입과 사용 사례에 대한 자세한 내용은 [here](https://www.rainbowkit.com/docs/wallet-button) 문서를 참조하십시오.
+
+#### 데모
+
+아래 버튼을 눌러 RainbowKit 진입점의 모습을 확인하세요.
+
+<WalletButtonDemo />
