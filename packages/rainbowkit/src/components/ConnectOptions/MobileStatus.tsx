@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
+import { useTranslation } from '../../locales/useTranslation';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 import { WalletButton } from './MobileOptions';
 
 export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(WalletButtonContext);
-  const i18n = useContext(I18nContext);
+  const { t } = useTranslation();
   const connectorName = connector?.name || '';
 
   return (
@@ -40,7 +40,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
             size="18"
             weight="semibold"
           >
-            {i18n.t('connect.status.connect_mobile', {
+            {t('connect.status.connect_mobile', {
               wallet: connectorName,
             })}
           </Text>
@@ -48,7 +48,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
 
         <Box maxWidth="full" marginTop="8">
           <Text textAlign="center" color="modalText" size="16" weight="medium">
-            {i18n.t('connect.status.confirm_mobile', {
+            {t('connect.status.confirm_mobile', {
               wallet: connectorName,
             })}
           </Text>

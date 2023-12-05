@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useAccount, useNetwork } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
+import { useTranslation } from '../../locales/useTranslation';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { chainToExplorerUrl } from '../../utils/chainToExplorerUrl';
@@ -8,8 +9,6 @@ import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
 
@@ -29,7 +28,7 @@ export function TxList({ address }: TxListProps) {
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
 
-  const i18n = useContext(I18nContext);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -53,7 +52,7 @@ export function TxList({ address }: TxListProps) {
                 size={mobile ? '16' : '14'}
                 weight="semibold"
               >
-                {i18n.t('profile.transactions.recent.title')}
+                {t('profile.transactions.recent.title')}
               </Text>
               <Box
                 style={{
@@ -81,7 +80,7 @@ export function TxList({ address }: TxListProps) {
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {i18n.t('profile.transactions.clear.label')}
+                    {t('profile.transactions.clear.label')}
                   </Text>
                 </Box>
               </Box>
@@ -100,10 +99,10 @@ export function TxList({ address }: TxListProps) {
                   weight={mobile ? 'medium' : 'bold'}
                 >
                   {appName
-                    ? i18n.t('profile.transactions.description', {
+                    ? t('profile.transactions.description', {
                         appName,
                       })
-                    : i18n.t('profile.transactions.description_fallback')}
+                    : t('profile.transactions.description_fallback')}
                 </Text>
               </Box>
               {mobile && (
@@ -146,7 +145,7 @@ export function TxList({ address }: TxListProps) {
               size={mobile ? '16' : '14'}
               weight={mobile ? 'semibold' : 'bold'}
             >
-              {i18n.t('profile.explorer.label')}
+              {t('profile.explorer.label')}
             </Text>
             <ExternalLinkIcon />
           </Box>

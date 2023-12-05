@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { useTranslation } from '../../locales/useTranslation';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
@@ -7,7 +8,6 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({
@@ -18,7 +18,7 @@ export function ConnectModalIntro({
   getWallet: () => void;
 }) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
-  const i18n = useContext(I18nContext);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -33,7 +33,7 @@ export function ConnectModalIntro({
         <Box marginBottom="10">
           {!compactModeEnabled && (
             <Text color="modalText" size="18" weight="heavy">
-              {i18n.t('intro.title')}
+              {t('intro.title')}
             </Text>
           )}
         </Box>
@@ -51,10 +51,10 @@ export function ConnectModalIntro({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t('intro.digital_asset.title')}
+                {t('intro.digital_asset.title')}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t('intro.digital_asset.description')}
+                {t('intro.digital_asset.description')}
               </Text>
             </Box>
           </Box>
@@ -64,10 +64,10 @@ export function ConnectModalIntro({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t('intro.login.title')}
+                {t('intro.login.title')}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t('intro.login.description')}
+                {t('intro.login.description')}
               </Text>
             </Box>
           </Box>
@@ -80,7 +80,7 @@ export function ConnectModalIntro({
           justifyContent="center"
           margin="10"
         >
-          <ActionButton label={i18n.t('intro.get.label')} onClick={getWallet} />
+          <ActionButton label={t('intro.get.label')} onClick={getWallet} />
           <Box
             as="a"
             className={touchableStyles({ active: 'shrink', hover: 'grow' })}
@@ -94,7 +94,7 @@ export function ConnectModalIntro({
             transition="default"
           >
             <Text color="accentColor" size="14" weight="bold">
-              {i18n.t('intro.learn_more.label')}
+              {t('intro.learn_more.label')}
             </Text>
           </Box>
         </Box>

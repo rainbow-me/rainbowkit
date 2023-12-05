@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
@@ -6,12 +6,12 @@ import {
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
+import { useTranslation } from '../../locales/useTranslation';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
@@ -41,7 +41,7 @@ export function ConnectButton({
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
-  const i18n = useContext(I18nContext);
+  const { t } = useTranslation();
 
   return (
     <ConnectButtonRenderer>
@@ -270,7 +270,7 @@ export function ConnectButton({
                 type="button"
               >
                 {mounted && label === 'Connect Wallet'
-                  ? i18n.t('connect_wallet.label')
+                  ? t('connect_wallet.label')
                   : label}
               </Box>
             )}

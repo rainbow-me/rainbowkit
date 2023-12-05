@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { useTranslation } from '../../locales/useTranslation';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import * as styles from './WalletButton.css';
 import { WalletButtonRenderer } from './WalletButtonRenderer';
 
@@ -12,7 +12,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {
         const isDisabled = !ready || loading;
-        const i18n = useContext(I18nContext);
+        const { t } = useTranslation();
         const connectorName = connector?.name || '';
 
         // SSR mismatch issue in next.js:
@@ -89,7 +89,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                   >
                     <Box testId={`wallet-button-label-${connector?.id || ''}`}>
                       {loading
-                        ? i18n.t('connect.status.connecting', {
+                        ? t('connect.status.connecting', {
                             wallet: connectorName,
                           })
                         : connectorName}
