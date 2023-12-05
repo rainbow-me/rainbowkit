@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
+import { useTranslation } from '../../locales/useTranslation';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './ModalSelection.css';
@@ -34,7 +34,7 @@ export const ModalSelection = ({
   const coolModeRef = useCoolMode(iconUrl);
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
-  const i18n = useContext(I18nContext);
+  const { t } = useTranslation();
 
   return (
     <Box
@@ -105,7 +105,7 @@ export const ModalSelection = ({
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
                 >
-                  {i18n.t('connect.recent')}
+                  {t('connect.recent')}
                 </Text>
               )}
             </Box>
