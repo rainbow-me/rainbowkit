@@ -36,7 +36,7 @@ export function ProfileDetails({
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const copyAddressAction = useCallback(() => {
     if (address) {
@@ -140,14 +140,14 @@ export function ProfileDetails({
               icon={copiedAddress ? <CopiedIcon /> : <CopyIcon />}
               label={
                 copiedAddress
-                  ? t('profile.copy_address.copied')
-                  : t('profile.copy_address.label')
+                  ? i18n.t('profile.copy_address.copied')
+                  : i18n.t('profile.copy_address.label')
               }
             />
             <ProfileDetailsAction
               action={onDisconnect}
               icon={<DisconnectIcon />}
-              label={t('profile.disconnect.label')}
+              label={i18n.t('profile.disconnect.label')}
               testId="disconnect-button"
             />
           </Box>

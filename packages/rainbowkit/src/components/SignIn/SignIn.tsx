@@ -14,7 +14,7 @@ import { Text } from '../Text/Text';
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
@@ -31,11 +31,11 @@ export function SignIn({ onClose }: { onClose: () => void }) {
     } catch {
       setState((x) => ({
         ...x,
-        errorMessage: t('sign_in.message.preparing_error'),
+        errorMessage: i18n.t('sign_in.message.preparing_error'),
         status: 'idle',
       }));
     }
-  }, [authAdapter, t]);
+  }, [authAdapter, i18n.t]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect
@@ -86,7 +86,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
 
         return setState((x) => ({
           ...x,
-          errorMessage: t('sign_in.signature.signing_error'),
+          errorMessage: i18n.t('sign_in.signature.signing_error'),
           status: 'idle',
         }));
       }
@@ -104,13 +104,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       } catch {
         return setState((x) => ({
           ...x,
-          errorMessage: t('sign_in.signature.verifying_error'),
+          errorMessage: i18n.t('sign_in.signature.verifying_error'),
           status: 'idle',
         }));
       }
     } catch {
       setState({
-        errorMessage: t('sign_in.signature.oops_error'),
+        errorMessage: i18n.t('sign_in.signature.oops_error'),
         status: 'idle',
       });
     }
@@ -156,7 +156,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               textAlign="center"
               weight="heavy"
             >
-              {t('sign_in.label')}
+              {i18n.t('sign_in.label')}
             </Text>
           </Box>
           <Box
@@ -170,7 +170,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               size={mobile ? '16' : '14'}
               textAlign="center"
             >
-              {t('sign_in.description')}
+              {i18n.t('sign_in.description')}
             </Text>
             {status === 'idle' && state.errorMessage ? (
               <Text
@@ -198,12 +198,12 @@ export function SignIn({ onClose }: { onClose: () => void }) {
             }
             label={
               !state.nonce
-                ? t('sign_in.message.preparing')
+                ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
-                ? t('sign_in.signature.waiting')
+                ? i18n.t('sign_in.signature.waiting')
                 : status === 'verifying'
-                ? t('sign_in.signature.verifying')
-                : t('sign_in.message.send')
+                ? i18n.t('sign_in.signature.verifying')
+                : i18n.t('sign_in.message.send')
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}
@@ -235,7 +235,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
                 size={mobile ? '16' : '14'}
                 weight="bold"
               >
-                {t('sign_in.message.cancel')}
+                {i18n.t('sign_in.message.cancel')}
               </Text>
             </Box>
           )}

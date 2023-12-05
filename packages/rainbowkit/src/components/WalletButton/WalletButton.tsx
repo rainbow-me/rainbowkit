@@ -12,7 +12,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
     <WalletButtonRenderer wallet={wallet}>
       {({ ready, connect, connected, mounted, connector, loading }) => {
         const isDisabled = !ready || loading;
-        const { t } = useTranslation();
+        const { i18n } = useTranslation();
         const connectorName = connector?.name || '';
 
         // SSR mismatch issue in next.js:
@@ -89,7 +89,7 @@ export const WalletButton = ({ wallet }: { wallet?: string }) => {
                   >
                     <Box testId={`wallet-button-label-${connector?.id || ''}`}>
                       {loading
-                        ? t('connect.status.connecting', {
+                        ? i18n.t('connect.status.connecting', {
                             wallet: connectorName,
                           })
                         : connectorName}
