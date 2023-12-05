@@ -26,6 +26,7 @@ import { config } from "./config";
 import { fromHex } from "viem";
 import { normalizeChainId } from "../../utils/normalizeChainId";
 import { stringifyToQuery } from "../../utils/stringifyToQuery";
+import { getDappInfo } from "../../utils/dappInfo";
 
 export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
   #account: Address | null = null;
@@ -136,7 +137,8 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
           method,
           params,
         }: TransportRequestParams): Promise<any> {
-          console.log({ method, params });
+          const dappInfo = getDappInfo();
+
           const addQueryPrefix = true;
           let stringifyQuery = "";
 
@@ -146,6 +148,7 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
                 addQueryPrefix,
                 method,
                 ...params[0],
+                ...dappInfo,
               });
               break;
 
@@ -154,6 +157,7 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
                 addQueryPrefix,
                 method,
                 message: fromHex(params[0], "string"),
+                ...dappInfo,
               });
               break;
 
@@ -162,6 +166,7 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
                 addQueryPrefix,
                 method: "eth_signTypedData",
                 ...JSON.parse(params[1]),
+                ...dappInfo,
               });
               break;
 
@@ -192,11 +197,19 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
   }
 
   async getProvider(): Promise<void> {
+    const dappInfo = getDappInfo();
+
+    const stringifyQuery = stringifyToQuery({
+      addQueryPrefix: true,
+      step: this.loginType,
+      ...dappInfo,
+    });
+
     const { account, chainId } = await this.#customPopupRequest<
       InitializedProviderEventData,
       InitializedProviderEventResult
     >({
-      path: `/login?step=${this.loginType}`,
+      path: `/login${stringifyQuery}`,
       getKey: (data) => data,
       shouldResolve: (data) => !!data?.account,
     });
