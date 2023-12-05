@@ -1,7 +1,6 @@
 import React, { ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
-import { i18n } from '../../locales';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { PlatformType, getPlatform } from '../../utils/platforms';
@@ -20,6 +19,7 @@ import { RefreshIcon, preloadRefreshIcon } from '../Icons/Refresh';
 import { ScanIcon, preloadScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
@@ -73,6 +73,8 @@ export function GetDetail({
 }) {
   const wallets = useWalletConnectors();
   const shownWallets = wallets.splice(0, 5);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <Box
@@ -211,6 +213,8 @@ export function ConnectDetail({
   } = wallet;
   const getDesktopDeepLink = wallet.desktop?.getUri;
   const safari = isSafari();
+
+  const i18n = useContext(I18nContext);
 
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
@@ -621,6 +625,8 @@ export function DownloadOptionsDetail({
     mobileDownloadUrl,
   } = wallet;
 
+  const i18n = useContext(I18nContext);
+
   useEffect(() => {
     // Preload icons used on next screen
     preloadCreateIcon();
@@ -726,6 +732,8 @@ export function DownloadDetail({
 }) {
   const { downloadUrls, qrCode } = wallet;
 
+  const i18n = useContext(I18nContext);
+
   useEffect(() => {
     // Preload icons used on next screen
     preloadCreateIcon();
@@ -805,6 +813,8 @@ export function InstructionMobileDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -890,6 +900,8 @@ export function InstructionExtensionDetail({
 }: {
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"
@@ -977,6 +989,8 @@ export function InstructionDesktopDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
+  const i18n = useContext(I18nContext);
+
   return (
     <Box
       alignItems="center"

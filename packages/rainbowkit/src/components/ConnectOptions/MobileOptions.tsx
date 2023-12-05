@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
-import { i18n } from '../../locales';
 import { isIOS } from '../../utils/isMobile';
 import {
   WalletConnector,
@@ -20,6 +19,7 @@ import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
 import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
 import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
@@ -79,6 +79,8 @@ export function WalletButton({
   const getMobileUri = mobile?.getUri;
   const coolModeRef = useCoolMode(iconUrl);
   const initialized = useRef(false);
+
+  const i18n = useContext(I18nContext);
 
   const onConnect = useCallback(async () => {
     if (id === 'walletConnect') onClose?.();
@@ -223,6 +225,8 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
   const [walletStep, setWalletStep] = useState<MobileWalletStep>(
     MobileWalletStep.Connect,
   );
+
+  const i18n = useContext(I18nContext);
 
   const ios = isIOS();
 

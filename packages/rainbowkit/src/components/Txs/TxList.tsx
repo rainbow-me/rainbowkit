@@ -9,7 +9,7 @@ import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { AppContext } from '../RainbowKitProvider/AppContext';
 
-import { i18n } from '../../locales';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
 
@@ -28,6 +28,8 @@ export function TxList({ address }: TxListProps) {
   const hasTransactions = visibleTxs.length > 0;
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
+
+  const i18n = useContext(I18nContext);
 
   return (
     <>

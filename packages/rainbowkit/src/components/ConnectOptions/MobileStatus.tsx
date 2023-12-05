@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
-import { i18n } from '../../locales';
 import { Box } from '../Box/Box';
 import { CloseButton } from '../CloseButton/CloseButton';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 import { WalletButton } from './MobileOptions';
 
 export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(WalletButtonContext);
+  const i18n = useContext(I18nContext);
   const connectorName = connector?.name || '';
 
   return (
