@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
@@ -6,12 +6,12 @@ import {
 } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { i18n } from '../../locales';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
@@ -40,6 +40,8 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
+
+  const i18n = useContext(I18nContext);
 
   return (
     <ConnectButtonRenderer>
