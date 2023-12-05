@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { useDisconnect, useNetwork, useSwitchNetwork } from 'wagmi';
+import { i18n } from '../../locales';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -9,7 +10,6 @@ import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { Text } from '../Text/Text';
 import {
@@ -30,8 +30,6 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
       onClose();
     },
   });
-
-  const i18n = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';
