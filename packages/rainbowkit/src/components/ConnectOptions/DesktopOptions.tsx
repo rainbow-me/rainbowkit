@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
-import { useTranslation } from '../../locales/useTranslation';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import { addLatestWalletId } from '../../wallets/latestWalletId';
@@ -23,6 +22,7 @@ import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import {
   ModalSizeContext,
   ModalSizeOptions,
@@ -69,7 +69,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const modalSize = useContext(ModalSizeContext);
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
-  const { i18n } = useTranslation();
+  const { i18n } = useContext(I18nContext);
 
   const initialized = useRef(false);
 

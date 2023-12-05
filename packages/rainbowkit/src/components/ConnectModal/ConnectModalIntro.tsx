@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
-import { useTranslation } from '../../locales/useTranslation';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
@@ -8,6 +7,7 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { AssetsIcon } from '../Icons/Assets';
 import { LoginIcon } from '../Icons/Login';
 import { AppContext } from '../RainbowKitProvider/AppContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 
 export function ConnectModalIntro({
@@ -18,7 +18,7 @@ export function ConnectModalIntro({
   getWallet: () => void;
 }) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
-  const { i18n } = useTranslation();
+  const { i18n } = useContext(I18nContext);
 
   return (
     <>
