@@ -8,7 +8,7 @@ import { TransactionStoreProvider } from '../../transactions/TransactionStoreCon
 import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
 import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
-import { I18nProvider } from './I18nProvider';
+import { I18nProvider } from './I18nContext';
 import { ModalProvider } from './ModalContext';
 import {
   ModalSizeOptions,

@@ -1,20 +1,20 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
 import { useAccount, useNetwork, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
-import { useTranslation } from '../../locales/useTranslation';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { CloseButton } from '../CloseButton/CloseButton';
 import { useAuthenticationAdapter } from '../RainbowKitProvider/AuthenticationContext';
+import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
-  const { i18n } = useTranslation();
+  const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
