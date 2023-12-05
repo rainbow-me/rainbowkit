@@ -18,7 +18,7 @@ export function ConnectModalIntro({
   getWallet: () => void;
 }) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <>
@@ -33,7 +33,7 @@ export function ConnectModalIntro({
         <Box marginBottom="10">
           {!compactModeEnabled && (
             <Text color="modalText" size="18" weight="heavy">
-              {t('intro.title')}
+              {i18n.t('intro.title')}
             </Text>
           )}
         </Box>
@@ -51,10 +51,10 @@ export function ConnectModalIntro({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {t('intro.digital_asset.title')}
+                {i18n.t('intro.digital_asset.title')}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {t('intro.digital_asset.description')}
+                {i18n.t('intro.digital_asset.description')}
               </Text>
             </Box>
           </Box>
@@ -64,10 +64,10 @@ export function ConnectModalIntro({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {t('intro.login.title')}
+                {i18n.t('intro.login.title')}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {t('intro.login.description')}
+                {i18n.t('intro.login.description')}
               </Text>
             </Box>
           </Box>
@@ -80,7 +80,7 @@ export function ConnectModalIntro({
           justifyContent="center"
           margin="10"
         >
-          <ActionButton label={t('intro.get.label')} onClick={getWallet} />
+          <ActionButton label={i18n.t('intro.get.label')} onClick={getWallet} />
           <Box
             as="a"
             className={touchableStyles({ active: 'shrink', hover: 'grow' })}
@@ -94,7 +94,7 @@ export function ConnectModalIntro({
             transition="default"
           >
             <Text color="accentColor" size="14" weight="bold">
-              {t('intro.learn_more.label')}
+              {i18n.t('intro.learn_more.label')}
             </Text>
           </Box>
         </Box>

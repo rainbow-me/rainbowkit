@@ -28,7 +28,7 @@ export function TxList({ address }: TxListProps) {
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <>
@@ -52,7 +52,7 @@ export function TxList({ address }: TxListProps) {
                 size={mobile ? '16' : '14'}
                 weight="semibold"
               >
-                {t('profile.transactions.recent.title')}
+                {i18n.t('profile.transactions.recent.title')}
               </Text>
               <Box
                 style={{
@@ -80,7 +80,7 @@ export function TxList({ address }: TxListProps) {
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {t('profile.transactions.clear.label')}
+                    {i18n.t('profile.transactions.clear.label')}
                   </Text>
                 </Box>
               </Box>
@@ -99,10 +99,10 @@ export function TxList({ address }: TxListProps) {
                   weight={mobile ? 'medium' : 'bold'}
                 >
                   {appName
-                    ? t('profile.transactions.description', {
+                    ? i18n.t('profile.transactions.description', {
                         appName,
                       })
-                    : t('profile.transactions.description_fallback')}
+                    : i18n.t('profile.transactions.description_fallback')}
                 </Text>
               </Box>
               {mobile && (
@@ -145,7 +145,7 @@ export function TxList({ address }: TxListProps) {
               size={mobile ? '16' : '14'}
               weight={mobile ? 'semibold' : 'bold'}
             >
-              {t('profile.explorer.label')}
+              {i18n.t('profile.explorer.label')}
             </Text>
             <ExternalLinkIcon />
           </Box>

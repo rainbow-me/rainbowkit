@@ -8,7 +8,7 @@ import { WalletButton } from './MobileOptions';
 
 export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(WalletButtonContext);
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const connectorName = connector?.name || '';
 
   return (
@@ -40,7 +40,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
             size="18"
             weight="semibold"
           >
-            {t('connect.status.connect_mobile', {
+            {i18n.t('connect.status.connect_mobile', {
               wallet: connectorName,
             })}
           </Text>
@@ -48,7 +48,7 @@ export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
 
         <Box maxWidth="full" marginTop="8">
           <Text textAlign="center" color="modalText" size="16" weight="medium">
-            {t('connect.status.confirm_mobile', {
+            {i18n.t('connect.status.confirm_mobile', {
               wallet: connectorName,
             })}
           </Text>

@@ -80,7 +80,7 @@ export function WalletButton({
   const coolModeRef = useCoolMode(iconUrl);
   const initialized = useRef(false);
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const onConnect = useCallback(async () => {
     if (id === 'walletConnect') onClose?.();
@@ -197,7 +197,7 @@ export function WalletButton({
 
             {wallet.recent && (
               <Text color="accentColor" size="12" weight="medium">
-                {t('connect.recent')}
+                {i18n.t('connect.recent')}
               </Text>
             )}
           </Box>
@@ -226,13 +226,13 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
     MobileWalletStep.Connect,
   );
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const ios = isIOS();
 
   switch (walletStep) {
     case MobileWalletStep.Connect: {
-      headerLabel = t('connect.title');
+      headerLabel = i18n.t('connect.title');
       headerBackgroundContrast = true;
       walletContent = (
         <Box>
@@ -280,10 +280,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                {t('intro.title')}
+                {i18n.t('intro.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {t('intro.description')}
+                {i18n.t('intro.description')}
               </Text>
             </Box>
           </Box>
@@ -291,14 +291,14 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
           <Box paddingTop="32" paddingX="20">
             <Box display="flex" gap="14" justifyContent="center">
               <ActionButton
-                label={t('intro.get.label')}
+                label={i18n.t('intro.get.label')}
                 onClick={() => setWalletStep(MobileWalletStep.Get)}
                 size="large"
                 type="secondary"
               />
               <ActionButton
                 href={learnMoreUrl}
-                label={t('intro.learn_more.label')}
+                label={i18n.t('intro.learn_more.label')}
                 size="large"
                 type="secondary"
               />
@@ -314,7 +314,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
       break;
     }
     case MobileWalletStep.Get: {
-      headerLabel = t('get.title');
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = MobileWalletStep.Connect;
 
       const mobileWallets = wallets
@@ -379,7 +379,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
                           (ios ? downloadUrls?.ios : downloadUrls?.android) ||
                           downloadUrls?.mobile
                         }
-                        label={t('get.action.label')}
+                        label={i18n.t('get.action.label')}
                         size="small"
                         type="secondary"
                       />
@@ -414,10 +414,10 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
               textAlign="center"
             >
               <Text color="modalText" size="16" weight="bold">
-                {t('get.looking_for.title')}
+                {i18n.t('get.looking_for.title')}
               </Text>
               <Text color="modalTextSecondary" size="16">
-                {t('get.looking_for.mobile.description')}
+                {i18n.t('get.looking_for.mobile.description')}
               </Text>
             </Box>
           </Box>

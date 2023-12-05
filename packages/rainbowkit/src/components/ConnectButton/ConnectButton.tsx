@@ -41,7 +41,7 @@ export function ConnectButton({
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <ConnectButtonRenderer>
@@ -270,7 +270,7 @@ export function ConnectButton({
                 type="button"
               >
                 {mounted && label === 'Connect Wallet'
-                  ? t('connect_wallet.label')
+                  ? i18n.t('connect_wallet.label')
                   : label}
               </Box>
             )}

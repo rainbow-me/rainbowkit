@@ -34,7 +34,7 @@ export const ModalSelection = ({
   const coolModeRef = useCoolMode(iconUrl);
   const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <Box
@@ -105,7 +105,7 @@ export const ModalSelection = ({
                   style={{ lineHeight: 1, marginTop: -1 }}
                   weight="medium"
                 >
-                  {t('connect.recent')}
+                  {i18n.t('connect.recent')}
                 </Text>
               )}
             </Box>

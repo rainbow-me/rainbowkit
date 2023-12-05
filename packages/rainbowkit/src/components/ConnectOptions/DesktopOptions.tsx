@@ -69,7 +69,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const modalSize = useContext(ModalSizeContext);
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const initialized = useRef(false);
 
@@ -248,7 +248,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           getWallet={() => changeWalletStep(WalletStep.Get)}
         />
       );
-      headerLabel = t('intro.title');
+      headerLabel = i18n.t('intro.title');
       headerBackButtonLink = WalletStep.None;
       break;
     case WalletStep.Get:
@@ -258,7 +258,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
           compactModeEnabled={compactModeEnabled}
         />
       );
-      headerLabel = t('get.title');
+      headerLabel = i18n.t('get.title');
       headerBackButtonLink = compactModeEnabled
         ? WalletStep.LearnCompact
         : WalletStep.None;
@@ -278,8 +278,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       headerLabel =
         hasQrCode &&
         (selectedWallet.name === 'WalletConnect'
-          ? t('connect_scan.fallback_title')
-          : t('connect_scan.title', {
+          ? i18n.t('connect_scan.fallback_title')
+          : i18n.t('connect_scan.title', {
               wallet: selectedWallet.name,
             }));
       headerBackButtonLink = compactModeEnabled
@@ -302,7 +302,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        t('get_options.short_title', { wallet: selectedWallet.name });
+        i18n.t('get_options.short_title', { wallet: selectedWallet.name });
       headerBackButtonLink = connector
         ? WalletStep.Connect
         : hasExtensionAndMobile && WalletStep.Connect
@@ -318,7 +318,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        t('get_mobile.title', { wallet: selectedWallet.name });
+        i18n.t('get_mobile.title', { wallet: selectedWallet.name });
       headerBackButtonLink = hasExtensionAndMobile
         ? WalletStep.DownloadOptions
         : initialWalletStep;
@@ -332,7 +332,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        t('get_options.title', {
+        i18n.t('get_options.title', {
           wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name,
@@ -345,7 +345,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        t('get_options.title', {
+        i18n.t('get_options.title', {
           wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name,
@@ -361,7 +361,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       );
       headerLabel =
         selectedWallet &&
-        t('get_options.title', {
+        i18n.t('get_options.title', {
           wallet: compactModeEnabled
             ? selectedWallet.shortName || selectedWallet.name
             : selectedWallet.name,
@@ -409,7 +409,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 weight="heavy"
                 testId={'connect-header-label'}
               >
-                {t('connect.title')}
+                {i18n.t('connect.title')}
               </Text>
             </Box>
             {compactModeEnabled && (
@@ -431,7 +431,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                           weight="bold"
                         >
                           {supportedI18nGroupNames.includes(groupName)
-                            ? t(`connector_group.${groupName.toLowerCase()}`)
+                            ? i18n.t(
+                                `connector_group.${groupName.toLowerCase()}`,
+                              )
                             : groupName}
                         </Text>
                       </Box>
@@ -474,7 +476,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                 >
                   <Box paddingY="4">
                     <Text color="modalTextSecondary" size="14" weight="medium">
-                      {t('connect.new_to_ethereum.description')}
+                      {i18n.t('connect.new_to_ethereum.description')}
                     </Text>
                   </Box>
                   <Box
@@ -496,7 +498,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                       transition="default"
                     >
                       <Text color="accentColor" size="14" weight="bold">
-                        {t('connect.new_to_ethereum.learn_more.label')}
+                        {i18n.t('connect.new_to_ethereum.learn_more.label')}
                       </Text>
                     </Box>
                   </Box>

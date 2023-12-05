@@ -31,7 +31,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
     },
   });
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';
@@ -65,7 +65,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 size={mobile ? '20' : '18'}
                 weight="heavy"
               >
-                {t('chains.title')}
+                {i18n.t('chains.title')}
               </Text>
             </Box>
             <CloseButton onClose={onClose} />
@@ -73,7 +73,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
           {unsupportedChain && (
             <Box marginX="8" textAlign={mobile ? 'center' : 'left'}>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {t('chains.wrong_network')}
+                {i18n.t('chains.wrong_network')}
               </Text>
             </Box>
           )}
@@ -147,7 +147,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  {t('chains.connected')}
+                                  {i18n.t('chains.connected')}
                                 </Text>
                                 <Box
                                   background="connectionIndicator"
@@ -173,7 +173,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                                   size="14"
                                   weight="medium"
                                 >
-                                  {t('chains.confirm')}
+                                  {i18n.t('chains.confirm')}
                                 </Text>
                                 <Box
                                   background="standby"
@@ -207,10 +207,10 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
               >
                 <Text color="modalText" size="14" weight="medium">
                   {appName
-                    ? t('chains.switching_not_supported', {
+                    ? i18n.t('chains.switching_not_supported', {
                         appName,
                       })
-                    : t('chains.switching_not_supported_fallback')}
+                    : i18n.t('chains.switching_not_supported_fallback')}
                 </Text>
               </Box>
             )}
@@ -249,7 +249,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                         >
                           <DisconnectSqIcon size={Number(chainIconSize)} />
                         </Box>
-                        <div>{t('chains.disconnect')}</div>
+                        <div>{i18n.t('chains.disconnect')}</div>
                       </Box>
                     </Box>
                   </Box>
