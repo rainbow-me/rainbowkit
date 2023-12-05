@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import { i18n } from '../../locales';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -10,7 +11,6 @@ import { formatENS } from '../ConnectButton/formatENS';
 import { CopiedIcon } from '../Icons/Copied';
 import { CopyIcon } from '../Icons/Copy';
 import { DisconnectIcon } from '../Icons/Disconnect';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { Text } from '../Text/Text';
 import { TxList } from '../Txs/TxList';
@@ -35,8 +35,6 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
-
-  const i18n = useContext(I18nContext);
 
   const copyAddressAction = useCallback(() => {
     if (address) {
