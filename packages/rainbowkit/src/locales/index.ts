@@ -1,20 +1,6 @@
 import type * as I18nTypes from 'i18n-js';
 import { I18n } from 'i18n-js/dist/require/index.js';
 
-import ar_AR from './ar_AR.json';
-import en_US from './en_US.json';
-import es_419 from './es_419.json';
-import fr_FR from './fr_FR.json';
-import hi_IN from './hi_IN.json';
-import id_ID from './id_ID.json';
-import ja_JP from './ja_JP.json';
-import ko_KR from './ko_KR.json';
-import pt_BR from './pt_BR.json';
-import ru_RU from './ru_RU.json';
-import th_TH from './th_TH.json';
-import tr_TR from './tr_TR.json';
-import zh_CN from './zh_CN.json';
-
 export type Locale =
   | 'ar'
   | 'ar-AR'
@@ -43,36 +29,61 @@ export type Locale =
   | 'zh'
   | 'zh-CN';
 
-// biome-ignore format: locale keys
-export const i18n: I18nTypes.I18n = new I18n({
-  'ar': ar_AR,
-  'ar-AR': ar_AR,
-  'en': en_US,
-  'en-US': en_US,
-  'es': es_419,
-  'es-419': es_419,
-  'fr': fr_FR,
-  'fr-FR': fr_FR,
-  'hi': hi_IN,
-  'hi-IN': hi_IN,
-  'id': id_ID,
-  'id-ID': id_ID,
-  'ja': ja_JP,
-  'ja-JP': ja_JP,
-  'ko': ko_KR,
-  'ko-KR': ko_KR,
-  'pt': pt_BR,
-  'pt-BR': pt_BR,
-  'ru': ru_RU,
-  'ru-RU': ru_RU,
-  'th': th_TH,
-  'th-TH': th_TH,
-  'tr': tr_TR,
-  'tr-TR': tr_TR,
-  'zh': zh_CN,
-  'zh-CN': zh_CN,
-});
+export const i18n: I18nTypes.I18n = new I18n();
 
 i18n.defaultLocale = 'en-US';
-i18n.locale = 'en-US';
 i18n.enableFallback = true;
+
+const fetchLocale = async (locale: Locale): Promise<any> => {
+  switch (locale) {
+    case 'ar':
+    case 'ar-AR':
+      return (await import('./ar_AR.json')).default;
+    case 'en':
+    case 'en-US':
+      return (await import('./en_US.json')).default;
+    case 'es':
+    case 'es-419':
+      return (await import('./es_419.json')).default;
+    case 'fr':
+    case 'fr-FR':
+      return (await import('./fr_FR.json')).default;
+    case 'hi':
+    case 'hi-IN':
+      return (await import('./hi_IN.json')).default;
+    case 'id':
+    case 'id-ID':
+      return (await import('./id_ID.json')).default;
+    case 'ja':
+    case 'ja-JP':
+      return (await import('./ja_JP.json')).default;
+    case 'ko':
+    case 'ko-KR':
+      return (await import('./ko_KR.json')).default;
+    case 'pt':
+    case 'pt-BR':
+      return (await import('./pt_BR.json')).default;
+    case 'ru':
+    case 'ru-RU':
+      return (await import('./ru_RU.json')).default;
+    case 'th':
+    case 'th-TH':
+      return (await import('./th_TH.json')).default;
+    case 'tr':
+    case 'tr-TR':
+      return (await import('./tr_TR.json')).default;
+    case 'zh':
+    case 'zh-CN':
+      return (await import('./zh_CN.json')).default;
+    default:
+      return (await import('./en_US.json')).default;
+  }
+};
+
+export async function setLocale(locale: Locale) {
+  const localeFile = (await fetchLocale(locale)) as string;
+  i18n.translations[locale] = JSON.parse(localeFile);
+  i18n.locale = locale;
+}
+
+setLocale('en-US'); // load default locale
