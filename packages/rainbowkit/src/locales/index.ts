@@ -1,6 +1,8 @@
 import type * as I18nTypes from 'i18n-js';
 import { I18n } from 'i18n-js/dist/require/index.js';
 
+import en_US from './en_US.json';
+
 export type Locale =
   | 'ar'
   | 'ar-AR'
@@ -29,7 +31,11 @@ export type Locale =
   | 'zh'
   | 'zh-CN';
 
-export const i18n: I18nTypes.I18n = new I18n();
+// biome-ignore format: locale keys
+export const i18n: I18nTypes.I18n = new I18n({
+  'en': en_US,
+  'en-US': en_US,
+});
 
 i18n.defaultLocale = 'en-US';
 i18n.enableFallback = true;
@@ -85,5 +91,3 @@ export async function setLocale(locale: Locale) {
   i18n.translations[locale] = JSON.parse(localeFile);
   i18n.locale = locale;
 }
-
-setLocale('en-US'); // load default locale
