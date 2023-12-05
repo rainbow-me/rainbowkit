@@ -35,7 +35,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         status: 'idle',
       }));
     }
-  }, [authAdapter, i18n.t]);
+  }, [authAdapter, i18n]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect

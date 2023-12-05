@@ -38,6 +38,7 @@ export const i18n: I18nTypes.I18n = new I18n({
 });
 
 i18n.defaultLocale = 'en-US';
+i18n.locale = 'en-US';
 i18n.enableFallback = true;
 
 const fetchLocale = async (locale: Locale): Promise<any> => {
