@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import { PublicClient } from 'viem';
 import { useAccount, usePublicClient } from 'wagmi';
+import { useShowTransactions } from '../components/RainbowKitProvider/ResponsiveRpcSettingsProvider';
 import { useChainId } from '../hooks/useChainId';
 import { TransactionStore, createTransactionStore } from './transactionStore';
 
@@ -19,29 +20,35 @@ export function TransactionStoreProvider({
 }) {
   const provider = usePublicClient() as PublicClient;
   const { address } = useAccount();
+  const showTransactions = useShowTransactions();
   const chainId = useChainId();
 
   // Use existing store if it exists, or lazily create one
-  const [store] = useState(
-    () =>
-      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
-      storeSingleton ?? (storeSingleton = createTransactionStore({ provider })),
-  );
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  const store = useMemo(() => {
+    return !showTransactions
+      ? undefined
+      : storeSingleton ??
+          // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+          (storeSingleton = createTransactionStore({ provider }));
+  }, [showTransactions]);
 
   // Keep store provider up to date with any wagmi changes
   useEffect(() => {
-    store.setProvider(provider);
+    if (store && provider) {
+      store.setProvider(provider);
+    }
   }, [store, provider]);
 
   // Wait for pending transactions whenever address or chainId changes
   useEffect(() => {
-    if (address && chainId) {
+    if (address && chainId && store) {
       store.waitForPendingTransactions(address, chainId);
     }
   }, [store, address, chainId]);
 
   return (
-    <TransactionStoreContext.Provider value={store}>
+    <TransactionStoreContext.Provider value={store || null}>
       {children}
     </TransactionStoreContext.Provider>
   );
@@ -49,10 +56,5 @@ export function TransactionStoreProvider({
 
 export function useTransactionStore() {
   const store = useContext(TransactionStoreContext);
-
-  if (!store) {
-    throw new Error('Transaction hooks must be used within RainbowKitProvider');
-  }
-
   return store;
 }

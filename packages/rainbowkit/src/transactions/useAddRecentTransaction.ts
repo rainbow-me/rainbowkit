@@ -13,6 +13,8 @@ export function useAddRecentTransaction(): (
 
   return useCallback(
     (transaction: NewTransaction) => {
+      if (!store) return;
+
       if (!address || !chainId) {
         throw new Error('No address or chain ID found');
       }

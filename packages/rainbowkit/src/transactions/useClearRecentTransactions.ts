@@ -9,6 +9,8 @@ export function useClearRecentTransactions(): () => void {
   const chainId = useChainId();
 
   return useCallback(() => {
+    if (!store) return;
+
     if (!address || !chainId) {
       throw new Error('No address or chain ID found');
     }

@@ -1,18 +1,14 @@
 import React, { useContext } from 'react';
-import {
-  ResponsiveValue,
-  mapResponsiveValue,
-  normalizeResponsiveValue,
-} from '../../css/sprinkles.css';
+import { ResponsiveValue, mapResponsiveValue } from '../../css/sprinkles.css';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useShowBalance } from '../RainbowKitProvider/ResponsiveRpcSettingsProvider';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -20,7 +16,6 @@ type ChainStatus = 'full' | 'icon' | 'name' | 'none';
 
 export interface ConnectButtonProps {
   accountStatus?: ResponsiveValue<AccountStatus>;
-  showBalance?: ResponsiveValue<boolean>;
   chainStatus?: ResponsiveValue<ChainStatus>;
   label?: string;
 }
@@ -36,10 +31,10 @@ export function ConnectButton({
   accountStatus = defaultProps.accountStatus,
   chainStatus = defaultProps.chainStatus,
   label = defaultProps.label,
-  showBalance = defaultProps.showBalance,
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
+  const showBalance = useShowBalance();
 
   const i18n = useContext(I18nContext);
 
@@ -183,9 +178,7 @@ export function ConnectButton({
                   >
                     {account.displayBalance && (
                       <Box
-                        display={mapResponsiveValue(showBalance, (value) =>
-                          value ? 'block' : 'none',
-                        )}
+                        display={showBalance ? 'block' : 'none'}
                         padding="8"
                         paddingLeft="12"
                       >
@@ -194,9 +187,7 @@ export function ConnectButton({
                     )}
                     <Box
                       background={
-                        normalizeResponsiveValue(showBalance)[
-                          isMobile() ? 'smallScreen' : 'largeScreen'
-                        ]
+                        showBalance
                           ? 'connectButtonInnerBackground'
                           : 'connectButtonBackground'
                       }

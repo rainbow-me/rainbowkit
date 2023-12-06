@@ -85,6 +85,7 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import ResponsiveRpcSettings from '../components/ResponsiveRpcSettings/ResponsiveRpcSettings';
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
@@ -243,6 +244,11 @@ type OverlayBlur = typeof overlayBlurs[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = typeof modalSizes[number];
 
+const defaultResponsiveRpcSettings = {
+  largeScreen: true,
+  smallScreen: false,
+};
+
 function RainbowKitApp({
   Component,
   pageProps,
@@ -264,6 +270,13 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
+
+  const [responsiveRpcSettings, setResponsiveRpcSettings] = useState({
+    balance: defaultResponsiveRpcSettings,
+    ensName: defaultResponsiveRpcSettings,
+    ensAvatar: defaultResponsiveRpcSettings,
+    transactions: defaultResponsiveRpcSettings,
+  });
 
   const routerLocale = router.locale as Locale;
 
@@ -307,6 +320,7 @@ function RainbowKitApp({
           ...demoAppInfo,
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
+        responsiveRpcSettings={responsiveRpcSettings}
         avatar={customAvatar ? CustomAvatar : undefined}
         chains={chains}
         locale={locale}
@@ -511,6 +525,34 @@ function RainbowKitApp({
                     </tr>
                   </tbody>
                 </table>
+                <h3>RainbowKitProvider props (responsiveRpcSettings)</h3>
+                <ResponsiveRpcSettings
+                  values={responsiveRpcSettings}
+                  onChange={(
+                    value: string,
+                    type: 'smallScreen' | 'largeScreen',
+                    checked: boolean,
+                  ) => {
+                    if (type === 'largeScreen') {
+                      setResponsiveRpcSettings({
+                        ...responsiveRpcSettings,
+                        [value]: {
+                          ...(responsiveRpcSettings as any)[value],
+                          largeScreen: checked,
+                        },
+                      });
+                      return;
+                    }
+
+                    setResponsiveRpcSettings({
+                      ...responsiveRpcSettings,
+                      [value]: {
+                        ...(responsiveRpcSettings as any)[value],
+                        smallScreen: checked,
+                      },
+                    });
+                  }}
+                />
                 <div
                   style={{
                     display: 'flex',

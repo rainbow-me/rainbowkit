@@ -54,13 +54,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const [chainStatusLargeScreen, setChainStatusLargeScreen] =
     useState<ChainStatus>(defaultProps.chainStatus.largeScreen);
 
-  const [showBalanceSmallScreen, setShowBalanceSmallScreen] = useState<boolean>(
-    defaultProps.showBalance.smallScreen,
-  );
-  const [showBalanceLargeScreen, setShowBalanceLargeScreen] = useState<boolean>(
-    defaultProps.showBalance.largeScreen,
-  );
-
   const { chain: activeChain } = useNetwork();
 
   const { config: sendTransactionConfig } = usePrepareSendTransaction({
@@ -151,10 +144,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
           chainStatus={{
             largeScreen: chainStatusLargeScreen,
             smallScreen: chainStatusSmallScreen,
-          }}
-          showBalance={{
-            largeScreen: showBalanceLargeScreen,
-            smallScreen: showBalanceSmallScreen,
           }}
         />
       </div>
@@ -410,31 +399,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       <option>avatar</option>
                       <option>address</option>
                     </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label htmlFor="showBalance">showBalance</label>
-                  </td>
-                  <td>
-                    <input
-                      checked={showBalanceSmallScreen}
-                      id="showBalance"
-                      onChange={(event) => {
-                        setShowBalanceSmallScreen(event.currentTarget.checked);
-                      }}
-                      type="checkbox"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      checked={showBalanceLargeScreen}
-                      id="showBalance"
-                      onChange={(event) => {
-                        setShowBalanceLargeScreen(event.currentTarget.checked);
-                      }}
-                      type="checkbox"
-                    />
                   </td>
                 </tr>
                 <tr>

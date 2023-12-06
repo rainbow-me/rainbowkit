@@ -5,6 +5,7 @@ import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
+import { useShowBalance } from '../RainbowKitProvider/ResponsiveRpcSettingsProvider';
 
 export interface AccountModalProps {
   open: boolean;
@@ -13,7 +14,10 @@ export interface AccountModalProps {
 
 export function AccountModal({ onClose, open }: AccountModalProps) {
   const { address } = useAccount();
-  const { data: balanceData } = useBalance({ address });
+  const showBalance = useShowBalance();
+  const { data: balanceData } = useBalance({
+    address: !showBalance ? undefined : address,
+  });
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { disconnect } = useDisconnect();

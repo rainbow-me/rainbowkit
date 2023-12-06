@@ -16,6 +16,7 @@ import {
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useShowBalance } from '../RainbowKitProvider/ResponsiveRpcSettingsProvider';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
@@ -62,7 +63,10 @@ export function ConnectButtonRenderer({
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const { data: balanceData } = useBalance({ address });
+  const showBalance = useShowBalance();
+  const { data: balanceData } = useBalance({
+    address: showBalance ? address : undefined,
+  });
   const { chain: activeChain } = useNetwork();
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
