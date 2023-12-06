@@ -57,3 +57,5 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 };
 ```
+
+The `<ConnectButton />` component doesn't support `showBalance` prop anymore because it's deprecated in the `<RainbowKitProvider />` component under the `responsiveRpcSettings` prop.
