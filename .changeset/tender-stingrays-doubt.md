@@ -3,7 +3,7 @@
 "example": patch
 ---
 
-**RPC Call settings for different screen sizes**
+**RPC call settings for different screen sizes**
 
 These settings allow your app to manage which RPC calls are made depending on whether it's being used on a large screen, like a desktop, or a small screen, like a smartphone.
 
