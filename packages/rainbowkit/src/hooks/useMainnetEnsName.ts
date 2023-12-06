@@ -8,7 +8,7 @@ export function useMainnetEnsName(address: string | undefined) {
   const showEnsName = useShowEnsName();
 
   const { data: ensName } = useEnsName({
-    address: !showEnsName ? undefined : address,
+    address: showEnsName ? address : undefined,
     chainId,
     enabled,
   });

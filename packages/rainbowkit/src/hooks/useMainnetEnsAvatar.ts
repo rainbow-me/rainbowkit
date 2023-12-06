@@ -10,7 +10,7 @@ export function useMainnetEnsAvatar(name: string | null | undefined) {
   const { data: ensAvatar } = useEnsAvatar({
     chainId,
     enabled,
-    name: !showEnsAvatar ? undefined : name,
+    name: showEnsAvatar ? name : undefined,
   });
 
   return ensAvatar;

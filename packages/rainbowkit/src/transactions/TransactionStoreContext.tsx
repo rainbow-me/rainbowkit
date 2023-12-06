@@ -26,11 +26,11 @@ export function TransactionStoreProvider({
   // Use existing store if it exists, or lazily create one
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const store = useMemo(() => {
-    return !showTransactions
-      ? undefined
-      : storeSingleton ??
+    return showTransactions
+      ? storeSingleton ??
           // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-          (storeSingleton = createTransactionStore({ provider }));
+          (storeSingleton = createTransactionStore({ provider }))
+      : undefined;
   }, [showTransactions]);
 
   // Keep store provider up to date with any wagmi changes

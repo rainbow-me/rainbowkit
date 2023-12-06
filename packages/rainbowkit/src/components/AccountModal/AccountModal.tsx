@@ -16,7 +16,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
   const { address } = useAccount();
   const showBalance = useShowBalance();
   const { data: balanceData } = useBalance({
-    address: !showBalance ? undefined : address,
+    address: showBalance ? address : undefined,
   });
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
