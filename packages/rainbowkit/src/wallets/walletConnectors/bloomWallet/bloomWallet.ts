@@ -39,7 +39,7 @@ export const bloomWallet = ({
       desktop: {
         getUri: async () => {
           const uri = await getWalletConnectUri(connector, '2');
-          return `bloom://dapps/connect?uri=${encodeURIComponent(uri)}`;
+          return `bloom://wallet-connect/connect?uri=${encodeURIComponent(uri)}`;
         },
       },
     };
