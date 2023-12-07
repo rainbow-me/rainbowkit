@@ -2,10 +2,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-} from '../../getWalletConnectConnector';
-
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface BloomWalletOptions {
   projectId: string;
@@ -33,7 +30,7 @@ export const bloomWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: "2",
+      version: '2',
       options: walletConnectOptions,
     });
 
@@ -41,10 +38,7 @@ export const bloomWallet = ({
       connector,
       desktop: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            "2",
-          );
+          const uri = await getWalletConnectUri(connector, '2');
           return `bloom://dapps/connect?uri=${encodeURIComponent(uri)}`;
         },
       },
