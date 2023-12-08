@@ -1,7 +1,5 @@
-import { RainbowButton } from '@rainbow-me/rainbow-button';
 import {
   ConnectButton,
-  WalletButton,
   useAccountModal,
   useAddRecentTransaction,
   useChainModal,
@@ -252,7 +250,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
             }}
           </ConnectButton.Custom>
 
-          <RainbowButton.Custom>
+          {/*   <RainbowButton.Custom>
             {({ ready, connect }) => {
               return (
                 <button
@@ -265,7 +263,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 </button>
               );
             }}
-          </RainbowButton.Custom>
+          </RainbowButton.Custom> */}
         </div>
       </div>
 
@@ -280,9 +278,9 @@ const Example = ({ authEnabled }: AppContextProps) => {
             gap: '20px',
           }}
         >
-          {['rainbow', 'metamask', 'coinbase'].map((connector) => {
+          {/* {['rainbow', 'metamask', 'coinbase'].map((connector) => {
             return <WalletButton key={connector} wallet={connector} />;
-          })}
+          })} */}
         </div>
       </div>
 

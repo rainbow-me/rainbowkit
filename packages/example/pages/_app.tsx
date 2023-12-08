@@ -8,7 +8,6 @@ import {
   RainbowKitProvider,
   connectorsForWallets,
   darkTheme,
-  getDefaultWallets,
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
@@ -17,43 +16,12 @@ import {
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import {
-  argentWallet,
-  bifrostWallet,
-  bitgetWallet,
-  bitskiWallet,
-  clvWallet,
-  coin98Wallet,
-  coreWallet,
-  dawnWallet,
-  desigWallet,
-  enkryptWallet,
-  foxWallet,
-  frameWallet,
-  frontierWallet,
-  imTokenWallet,
-  ledgerWallet,
-  mewWallet,
-  oktoWallet,
-  okxWallet,
-  omniWallet,
-  oneKeyWallet,
-  phantomWallet,
-  rabbyWallet,
   rainbowEmailWallet,
+  rainbowFacebookWallet,
   rainbowGoogleWallet,
   rainbowPhoneWallet,
-  safeheronWallet,
-  safepalWallet,
-  subWallet,
-  tahoWallet,
-  talismanWallet,
-  tokenPocketWallet,
-  tokenaryWallet,
-  trustWallet,
-  uniswapWallet,
-  xdefiWallet,
-  zealWallet,
-  zerionWallet,
+  rainbowTwitchWallet,
+  rainbowTwitterWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import type { Session } from 'next-auth';
@@ -122,68 +90,36 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   ],
 );
 
-const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
-
-const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
-  chains,
-  projectId,
-});
-
 const connectors = connectorsForWallets([
   {
-    groupName: 'Socials',
+    groupName: 'OTP',
     wallets: [
       rainbowEmailWallet({
         chains,
       }),
-      rainbowGoogleWallet({
+      /*  rainbowPassKeyWallet({
         chains,
-      }),
+      }), */
       rainbowPhoneWallet({
         chains,
       }),
     ],
   },
-  ...wallets,
   {
-    groupName: 'Other',
+    groupName: 'Socials',
     wallets: [
-      argentWallet({ chains, projectId }),
-      bifrostWallet({ chains, projectId }),
-      bitgetWallet({ chains, projectId }),
-      bitskiWallet({ chains }),
-      clvWallet({ chains, projectId }),
-      coin98Wallet({ chains, projectId }),
-      coreWallet({ chains, projectId }),
-      dawnWallet({ chains }),
-      desigWallet({ chains }),
-      enkryptWallet({ chains }),
-      foxWallet({ chains, projectId }),
-      frameWallet({ chains }),
-      frontierWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-      mewWallet({ chains }),
-      oktoWallet({ chains, projectId }),
-      okxWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      oneKeyWallet({ chains }),
-      phantomWallet({ chains }),
-      rabbyWallet({ chains }),
-      safeheronWallet({ chains }),
-      safepalWallet({ chains, projectId }),
-      subWallet({ chains, projectId }),
-      tahoWallet({ chains }),
-      talismanWallet({ chains }),
-      tokenaryWallet({ chains }),
-      tokenPocketWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      uniswapWallet({ chains, projectId }),
-      xdefiWallet({ chains }),
-      zealWallet({ chains }),
-      zerionWallet({ chains, projectId }),
+      rainbowGoogleWallet({
+        chains,
+      }),
+      rainbowFacebookWallet({
+        chains,
+      }),
+      rainbowTwitterWallet({
+        chains,
+      }),
+      rainbowTwitchWallet({
+        chains,
+      }),
     ],
   },
 ]);

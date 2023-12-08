@@ -1,17 +1,23 @@
-import qs from "qs";
+import qs from 'qs';
 
-type StringToQueryParams = Record<string, any> & {
-  addQueryPrefix?: boolean;
-};
-export const stringifyToQuery = ({
-  addQueryPrefix = false,
-  ...rest
-}: StringToQueryParams) => {
-  Object.keys(rest).forEach((key: string) => {
-    if (rest[key] === undefined) {
-      rest[key] = "undefined";
+type StringToQueryParams = Record<string, any>;
+
+const _processUndefinedValues = (obj: Record<string, any>) => {
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] && typeof obj[key] === 'object') {
+      _processUndefinedValues(obj[key]);
+    } else if (obj[key] === undefined) {
+      obj[key] = '_undefined';
     }
   });
+};
 
-  return qs.stringify(rest, { addQueryPrefix });
+export const stringifyToQuery = (
+  params: StringToQueryParams,
+  addQueryPrefix: boolean,
+) => {
+  _processUndefinedValues(params);
+  return qs.stringify(params, {
+    addQueryPrefix,
+  });
 };

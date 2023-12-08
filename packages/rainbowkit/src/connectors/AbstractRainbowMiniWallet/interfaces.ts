@@ -1,5 +1,5 @@
-import { SendTransactionParameters } from "viem";
-import { Address } from "viem";
+import { SendTransactionParameters } from 'viem';
+import { Address } from 'viem';
 
 export interface EventMessage<T> {
   data: T;
@@ -31,14 +31,14 @@ export interface TransportRequestResponse {
 
 export type TransportRequestParams =
   | {
-      method: "personal_sign";
+      method: 'personal_sign';
       params: Address[];
     }
   | {
-      method: "eth_signTypedData_v4";
+      method: 'eth_signTypedData_v4';
       params: string[];
     }
   | {
-      method: "eth_sendTransaction";
+      method: 'eth_sendTransaction';
       params: SendTransactionParameters[];
     };

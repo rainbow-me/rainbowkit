@@ -1,7 +1,7 @@
-import { AbstractRainbowMiniWallet } from "../AbstractRainbowMiniWallet/AbstractRainbowMiniWallet";
+import { AbstractRainbowMiniWallet } from '../AbstractRainbowMiniWallet/AbstractRainbowMiniWallet';
 
 export class RainbowPhoneWallet extends AbstractRainbowMiniWallet {
-  readonly id = "phone";
-  readonly name = "Phone";
-  readonly loginType = "OTP";
+  readonly id = 'phone';
+  readonly name = 'Phone';
+  readonly loginType = 'PhoneOTP';
 }
