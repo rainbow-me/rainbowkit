@@ -2,6 +2,7 @@
   "name": "with-vite",
   "private": true,
   "version": "0.0.61",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
