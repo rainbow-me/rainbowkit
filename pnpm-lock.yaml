@@ -102,8 +102,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       recursive-readdir-files:
-        specifier: ^2.3.0
-        version: 2.3.0
+        specifier: ^2.3.1
+        version: 2.3.1
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -21796,8 +21796,8 @@ packages:
       tslib: 2.5.0
     dev: true
 
-  /recursive-readdir-files@2.3.0:
-    resolution: {integrity: sha512-LdZ/quSC4jyUKNlR4QzJPWtP58CO6NgS2ixE34VWojjb2Abqe2JPHkPKx5qJuBbvJwgBtFGnuGHyIhojuoGwaw==}
+  /recursive-readdir-files@2.3.1:
+    resolution: {integrity: sha512-BQfYr6RUl1wdla4+F8gTFzItE52/GpYssMiq+wHIN77n8mF9wzb1M/MndkDImZSzfFjrz5tJ/S5jdV7hGolm6g==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
