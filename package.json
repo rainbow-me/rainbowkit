@@ -67,7 +67,7 @@
     "lokijs": "^1.5.12",
     "next": "^14.0.4",
     "next-auth": "4.24.5",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.32",
     "postcss-prefix-selector": "^1.16.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
