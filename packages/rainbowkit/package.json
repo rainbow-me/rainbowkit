@@ -55,7 +55,7 @@
     "@vanilla-extract/css-utils": "0.1.2",
     "@vanilla-extract/private": "^1.0.3",
     "autoprefixer": "^10.4.16",
-    "jsdom": "^22.1.0",
+    "jsdom": "^23.0.1",
     "nock": "^13.2.4",
     "postcss": "^8.4.4",
     "react": "^18.2.0",
