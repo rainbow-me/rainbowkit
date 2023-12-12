@@ -18,7 +18,7 @@ export const bloomWallet = ({
   id: 'bloomWallet',
   iconBackground: '#000',
   iconAccent: '#000',
-  name: 'Bloom Wallet',
+  name: 'Bloom',
   iconUrl: async () => (await import('./bloomWallet.svg')).default,
   downloadUrls: {
     windows: 'https://bloomwallet.io/',
@@ -39,7 +39,9 @@ export const bloomWallet = ({
       desktop: {
         getUri: async () => {
           const uri = await getWalletConnectUri(connector, '2');
-          return `bloom://wallet-connect/connect?uri=${encodeURIComponent(uri)}`;
+          return `bloom://wallet-connect/connect?uri=${encodeURIComponent(
+            uri,
+          )}`;
         },
       },
     };
