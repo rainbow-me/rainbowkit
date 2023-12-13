@@ -36,7 +36,7 @@
     "unified": "10.1.2",
     "unist-util-visit": "4.1.0",
     "viem": "~1.19.13",
-    "wagmi": "~1.4.10"
+    "wagmi": "~1.4.11"
   },
   "devDependencies": {
     "contentlayer": "0.2.9",

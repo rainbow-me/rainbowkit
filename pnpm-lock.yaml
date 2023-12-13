@@ -57,8 +57,8 @@ importers:
         specifier: ^3.9.2
         version: 3.9.2(@types/node@18.18.10)(vite@4.4.7)
       '@wagmi/core':
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
@@ -114,8 +114,8 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(jsdom@22.1.0)
       wagmi:
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
 
   examples/with-create-react-app:
     dependencies:
@@ -410,8 +410,8 @@ importers:
         specifier: ~1.19.13
         version: 1.19.13(typescript@5.0.4)
       wagmi:
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
 
   packages/rainbow-button:
     dependencies:
@@ -490,8 +490,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       '@wagmi/core':
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.6)
@@ -514,8 +514,8 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(jsdom@22.1.0)
       wagmi:
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
 
   packages/rainbowkit-siwe-next-auth:
     dependencies:
@@ -635,8 +635,8 @@ importers:
         specifier: ~1.19.13
         version: 1.19.13(typescript@5.0.4)
       wagmi:
-        specifier: ~1.4.10
-        version: 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+        specifier: ~1.4.11
+        version: 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
     devDependencies:
       contentlayer:
         specifier: 0.2.9
@@ -8058,8 +8058,32 @@ packages:
       - utf-8-validate
       - zod
 
+  /@safe-global/safe-apps-provider@0.18.1(typescript@5.0.4):
+    resolution: {integrity: sha512-V4a05A3EgJcriqtDoJklDz1BOinWhC6P0hjUSxshA4KOZM7rGPCTto/usXs09zr1vvL28evl/NldSTv97j2bmg==}
+    dependencies:
+      '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.0.4)
+      events: 3.3.0
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - typescript
+      - utf-8-validate
+      - zod
+
   /@safe-global/safe-apps-sdk@8.0.0(typescript@5.0.4):
     resolution: {integrity: sha512-gYw0ki/EAuV1oSyMxpqandHjnthZjYYy+YWpTAzf8BqfXM3ItcZLpjxfg+3+mXW8HIO+3jw6T9iiqEXsqHaMMw==}
+    dependencies:
+      '@safe-global/safe-gateway-typescript-sdk': 3.7.3
+      viem: 1.19.13(typescript@5.0.4)
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - typescript
+      - utf-8-validate
+      - zod
+
+  /@safe-global/safe-apps-sdk@8.1.0(typescript@5.0.4):
+    resolution: {integrity: sha512-XJbEPuaVc7b9n23MqlF6c+ToYIS3f7P2Sel8f3cSBQ9WORE4xrSuvhMpK9fDSFqJ7by/brc+rmJR/5HViRr0/w==}
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.7.3
       viem: 1.19.13(typescript@5.0.4)
@@ -9452,8 +9476,8 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/connectors@3.1.8(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
-    resolution: {integrity: sha512-J6m8xWFw/Qb4V6VeERazEgfXPztx7wDWCfmUSrfSM54SSjdaFprAOZlcAMqBtibqH8HgnPvbdFA0DEOHbeX2ag==}
+  /@wagmi/connectors@3.1.9(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
+    resolution: {integrity: sha512-q7Hz6WDnvOcZ/EPzuFgilirSwyoWYo1owowHmHqHTxEu0yu6HFNQGuaMNK9hsM/XCHeCisW/ZdUvudQSBUVpHQ==}
     peerDependencies:
       typescript: '>=5.0.4'
       viem: '>=0.3.35'
@@ -9463,8 +9487,8 @@ packages:
     dependencies:
       '@coinbase/wallet-sdk': 3.6.6
       '@ledgerhq/connect-kit-loader': 1.1.0
-      '@safe-global/safe-apps-provider': 0.17.1(typescript@5.0.4)
-      '@safe-global/safe-apps-sdk': 8.0.0(typescript@5.0.4)
+      '@safe-global/safe-apps-provider': 0.18.1(typescript@5.0.4)
+      '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.0.4)
       '@walletconnect/ethereum-provider': 2.10.6(@types/react@18.2.37)(react@18.2.0)
       '@walletconnect/legacy-provider': 2.0.0
       '@walletconnect/modal': 2.6.2(@types/react@18.2.37)(react@18.2.0)
@@ -9495,8 +9519,8 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
-    resolution: {integrity: sha512-XJ5iSWZKOZSgQP3LFn/QHJqLGoX53SiBKc0/6s7KkVc68VmFenrZymNRg3fSwBsINlZgRVWpSj2lAVsl8IjSgw==}
+  /@wagmi/core@1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
+    resolution: {integrity: sha512-H6y5v+PpvYbT5Qsk7PTVu5MtcSqudDqGZC/LZFV6Y+UeJlBsnfJNy5+cPEzKmvaz+6tSyVPGCF9aWK+sNdC0sQ==}
     peerDependencies:
       typescript: '>=5.0.4'
       viem: '>=0.3.35'
@@ -9504,7 +9528,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@wagmi/connectors': 3.1.8(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+      '@wagmi/connectors': 3.1.9(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
       abitype: 0.8.7(typescript@5.0.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
@@ -23859,8 +23883,8 @@ packages:
       xml-name-validator: 4.0.0
     dev: true
 
-  /wagmi@1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
-    resolution: {integrity: sha512-n37srrOLWZIHq0ROXj15bpCZEo8GBtABcPchPDneTz3QUpLGY+EeiXrBaFHWcjNiTBOgDHyLIuS4Q0Xtj/DiYQ==}
+  /wagmi@1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13):
+    resolution: {integrity: sha512-Kslc5wwuPTSOqxpqElE9lGZahyPwlwAXrRpvmw+h89e8lPg7DWThQsPQMWiSvKcg+NloEHwQRGmy5rpfKFKLaA==}
     peerDependencies:
       react: '>=17.0.0'
       typescript: '>=5.0.4'
@@ -23872,7 +23896,7 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.5
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.5(@tanstack/react-query@4.29.5)
-      '@wagmi/core': 1.4.10(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
+      '@wagmi/core': 1.4.11(@types/react@18.2.37)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.13)
       abitype: 0.8.7(typescript@5.0.4)
       react: 18.2.0
       typescript: 5.0.4

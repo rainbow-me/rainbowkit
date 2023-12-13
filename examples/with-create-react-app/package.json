@@ -16,7 +16,7 @@
     "typescript": "^5.0.4",
     "util": "0.12.4",
     "viem": "~1.19.13",
-    "wagmi": "~1.4.10",
+    "wagmi": "~1.4.11",
     "web-vitals": "^2.1.4",
     "buffer": "npm:buffer@6.0.3"
   },
