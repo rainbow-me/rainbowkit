@@ -1,5 +1,5 @@
 export const config = {
   target: 'auth',
-  url: 'https://mini-wallet-rainbowdotme.vercel.app',
+  url: 'http://localhost:3000',
   features: 'width=600,height=700',
 };
