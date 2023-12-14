@@ -2,6 +2,7 @@
   "name": "with-vite",
   "private": true,
   "version": "0.0.61",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -18,8 +19,8 @@
   "devDependencies": {
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.0.3",
+    "@vitejs/plugin-react": "^4.2.1",
     "typescript": "^5.0.4",
-    "vite": "^4.4.7"
+    "vite": "^5.0.7"
   }
 }
