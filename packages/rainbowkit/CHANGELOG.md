@@ -267,7 +267,7 @@
   <RainbowKitProvider locale="zh-CN">
   ```
 
-  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specifed with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
+  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specified with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
 
   If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
 
@@ -636,7 +636,7 @@
 
   **Advanced options**
 
-  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overriden.
+  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overridden.
 
   ```ts
   metaMaskWallet(options: {
