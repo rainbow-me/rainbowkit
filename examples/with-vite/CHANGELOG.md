@@ -1,5 +1,13 @@
 # with-vite
 
+## 0.0.62
+
+### Patch Changes
+
+- 7119dc54: Upgraded `vite` to `^5.0.7` and `@vitejs/plugin-react` to `^4.2.1`
+
+  Adopted ESM to silence Vite 5 warnings
+
 ## 0.0.61
 
 ### Patch Changes
