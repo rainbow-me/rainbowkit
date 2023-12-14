@@ -1,5 +1,14 @@
 # @rainbow-me/rainbow-button
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [3feab0e6]
+- Updated dependencies [c9a8e469]
+- Updated dependencies [dba51779]
+  - @rainbow-me/rainbowkit@1.3.1
+
 ## 0.1.0
 
 ### Minor Changes
@@ -33,9 +42,7 @@
   function MyApp({ Component, pageProps }: AppProps) {
     return (
       <WagmiConfig config={config}>
-        <RainbowButtonProvider>
-          {/* Your App */}
-        </RainbowButtonProvider>
+        <RainbowButtonProvider>{/* Your App */}</RainbowButtonProvider>
       </WagmiConfig>
     );
   }
