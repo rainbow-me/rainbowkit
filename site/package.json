@@ -35,8 +35,8 @@
     "three": "^0.139.2",
     "unified": "10.1.2",
     "unist-util-visit": "4.1.0",
-    "viem": "~1.19.4",
-    "wagmi": "~1.4.7"
+    "viem": "~1.19.15",
+    "wagmi": "~1.4.12"
   },
   "devDependencies": {
     "contentlayer": "0.2.9",
