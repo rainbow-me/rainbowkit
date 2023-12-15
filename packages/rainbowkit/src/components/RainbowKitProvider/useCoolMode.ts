@@ -19,7 +19,6 @@ export const useCoolMode = (imageUrl: string | (() => Promise<string>)) => {
   const coolModeEnabled = useContext(CoolModeContext);
   const resolvedImageUrl = useAsyncImage(imageUrl);
 
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (coolModeEnabled && ref.current && resolvedImageUrl) {
       return makeElementCool(ref.current, resolvedImageUrl);

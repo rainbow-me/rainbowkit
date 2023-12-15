@@ -2,6 +2,7 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://rainbowkit.com',
   generateRobotsTxt: true,
+  autoLastmod: false,
   exclude: [
     '/ds',
     '/ar/*',

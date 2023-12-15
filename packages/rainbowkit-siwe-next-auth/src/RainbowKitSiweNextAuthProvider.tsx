@@ -15,7 +15,7 @@ type UnconfigurableMessageOptions = {
 type ConfigurableMessageOptions = Partial<
   Omit<SiweMessage, keyof UnconfigurableMessageOptions>
 > & {
-  [Key in keyof UnconfigurableMessageOptions]?: never;
+  [_Key in keyof UnconfigurableMessageOptions]?: never;
 };
 
 export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
