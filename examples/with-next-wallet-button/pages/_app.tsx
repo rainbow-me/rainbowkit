@@ -5,7 +5,7 @@ import { createConfig, http, WagmiProvider } from "wagmi";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { metaMaskWallet, rainbowWallet } from "@rainbow-me/rainbowkit/wallets";
-import { ledger, walletConnect, coinbaseWallet } from "wagmi/connectors";
+import { walletConnect, coinbaseWallet } from "wagmi/connectors";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { mainnet } from "wagmi/chains";
 
@@ -20,7 +20,6 @@ const wagmiClient = createConfig({
   connectors: [
     ...connectors,
     coinbaseWallet({ appName: "RainbowKit Example" }),
-    ledger({ projectId }),
     walletConnect({ projectId }),
   ],
   chains: [mainnet],

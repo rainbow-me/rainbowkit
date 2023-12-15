@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@tanstack/react-query": "5.8.3",
+    "@tanstack/react-query": "5.13.4",
     "@remix-run/node": "^1.5.1",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",
     "buffer-polyfill": "npm:buffer@^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "2.0.0-beta.6",
-    "wagmi": "2.0.0-beta.3"
+    "viem": "2.0.0-beta.15",
+    "wagmi": "2.0.0-beta.8"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",

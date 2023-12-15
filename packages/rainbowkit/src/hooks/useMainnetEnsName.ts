@@ -5,7 +5,7 @@ import { mainnet } from 'wagmi/chains';
 export function useMainnetEnsName(address: Address | undefined) {
   const { data: ensName } = useEnsName({
     chainId: mainnet.id,
-    address: address,
+    address,
   });
 
   return ensName;
