@@ -1,5 +1,15 @@
 # with-next-wallet-button
 
+## 0.0.3
+
+### Patch Changes
+
+- 479418d8: Removing `LedgerConnector` from `examples/with-next-wallet-button/pages/_app.tsx` since it got compromised
+- Updated dependencies [3feab0e6]
+- Updated dependencies [c9a8e469]
+- Updated dependencies [dba51779]
+  - @rainbow-me/rainbowkit@1.3.1
+
 ## 0.0.2
 
 ### Patch Changes

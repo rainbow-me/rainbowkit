@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.1
+
+### Patch Changes
+
+- 3feab0e6: Support for Wagmi `1.4.12` to mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package. RainbowKit dApp's were not directly impacted, but dApps that used the `LedgerConnector` connector in earlier versions of Wagmi could have been. This issue has since been resolved [by Ledger](https://x.com/Ledger/status/1735326240658100414?s=20) but the [wagmi team](https://x.com/wevm_dev/status/1735300109879963685?s=20) is encouraging developers to upgrade Wagmi and RainbowKit out of an abundance of caution.
+- c9a8e469: Improved Korean localization. Thanks @Hyun2!
+- dba51779: Added support for `arbitrumSepolia`, `baseSepolia`, `optimismSepolia`, `zoraSepolia` testnet chains
+
 ## 1.3.0
 
 ### Minor Changes
@@ -259,7 +267,7 @@
   <RainbowKitProvider locale="zh-CN">
   ```
 
-  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specifed with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
+  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specified with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
 
   If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
 
@@ -628,7 +636,7 @@
 
   **Advanced options**
 
-  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overriden.
+  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overridden.
 
   ```ts
   metaMaskWallet(options: {
