@@ -88,7 +88,7 @@ const fetchLocale = async (locale: Locale): Promise<any> => {
 
 export async function setLocale(locale: Locale) {
   const localeFile = (await fetchLocale(locale)) as string;
-  // vitest test bundler transforms json into "object", but next.js and react webpack bundlers transforms json into "string"
+  // vitest test bundler transforms json into object, but rainbowkit bundler transforms json into text
   i18n.translations[locale] =
     typeof localeFile === 'string' ? JSON.parse(localeFile) : localeFile;
   i18n.locale = locale;
