@@ -23,7 +23,7 @@ describe('<ConnectModal />', () => {
       options,
     );
 
-    await vi.advanceTimersByTimeAsync(250);
+    await vi.advanceTimersByTimeAsync(800);
 
     const modal = getByTestId('rk-connect-header-label');
 

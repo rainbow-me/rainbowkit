@@ -20,7 +20,7 @@ describe('<ConnectButton />', () => {
 
     const { getByTestId } = renderWithProviders(<ConnectButton />, options);
 
-    await vi.advanceTimersByTimeAsync(250);
+    await vi.advanceTimersByTimeAsync(800);
 
     const button = getByTestId('rk-connect-button');
 
