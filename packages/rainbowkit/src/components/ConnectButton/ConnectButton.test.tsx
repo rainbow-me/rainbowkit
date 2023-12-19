@@ -1,16 +1,13 @@
+import { screen, waitFor } from '@testing-library/react';
 import React from 'react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import { Locale } from '../../locales';
 import { ConnectButton } from './ConnectButton';
 
 describe('<ConnectButton />', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-
-  const renderTextButton = async (locale?: Locale) => {
+  const renderTextButton = (locale?: Locale) => {
     const options = {
       props: {
         chains: [mainnet],
@@ -18,32 +15,30 @@ describe('<ConnectButton />', () => {
       },
     };
 
-    const { getByTestId } = renderWithProviders(<ConnectButton />, options);
+    renderWithProviders(<ConnectButton />, options);
 
-    await vi.advanceTimersByTimeAsync(250);
-
-    const button = getByTestId('rk-connect-button');
-
-    return button.textContent;
+    return screen.getByTestId('rk-connect-button');
   };
 
   it('Defaults to English without a `locale` prop', async () => {
-    const text = await renderTextButton();
-    expect(text).toBe('Connect Wallet');
+    const button = renderTextButton();
+    await waitFor(() => expect(button.textContent).toBe('Connect Wallet'));
   });
 
   it("Displays in English for 'en-US'", async () => {
-    const text = await renderTextButton('en-US');
-    expect(text).toBe('Connect Wallet');
+    const button = renderTextButton('en-US');
+    await waitFor(() => expect(button.textContent).toBe('Connect Wallet'));
   });
 
   it("Displays in Spanish for 'es-419'", async () => {
-    const text = await renderTextButton('es-419');
-    expect(text).toBe('Conectar la billetera');
+    const button = renderTextButton('es-419');
+    await waitFor(() =>
+      expect(button.textContent).toBe('Conectar la billetera'),
+    );
   });
 
   it("Displays in Russian for 'ru-RU'", async () => {
-    const text = await renderTextButton('ru-RU');
-    expect(text).toBe('Подключить кошелек');
+    const button = renderTextButton('ru-RU');
+    await waitFor(() => expect(button.textContent).toBe('Подключить кошелек'));
   });
 });
