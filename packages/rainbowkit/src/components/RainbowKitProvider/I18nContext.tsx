@@ -25,19 +25,19 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
   );
 
   useEffect(() => {
+    const unsubscribe = i18n.onChange(() => {
+      setUpdateCount((count) => count + 1);
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
     if (locale && locale !== i18n.locale) {
       setLocale(locale);
     } else if (!locale && browserLocale && browserLocale !== i18n.locale) {
       setLocale(browserLocale);
     }
   }, [locale, browserLocale]);
-
-  useEffect(() => {
-    const unsubscribe = i18n.onChange(() => {
-      setUpdateCount((count) => count + 1);
-    });
-    return unsubscribe;
-  }, []);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const memoizedValue = useMemo(() => {

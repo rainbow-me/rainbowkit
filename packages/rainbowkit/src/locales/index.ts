@@ -1,6 +1,6 @@
 import type * as I18nTypes from 'i18n-js';
 import { I18n } from 'i18n-js/dist/require/index.js';
-
+import { jsonParser } from '../utils/jsonParser';
 import en_US from './en_US.json';
 
 export type Locale =
@@ -33,8 +33,8 @@ export type Locale =
 
 // biome-ignore format: locale keys
 export const i18n: I18nTypes.I18n = new I18n({
-  'en': en_US,
-  'en-US': en_US,
+  en: jsonParser(en_US),
+  "en-US": jsonParser(en_US),
 });
 
 i18n.defaultLocale = 'en-US';
@@ -88,9 +88,14 @@ const fetchLocale = async (locale: Locale): Promise<any> => {
 };
 
 export async function setLocale(locale: Locale) {
+  // If i18n translation already exists no need to refetch the local files again
+  if (i18n.translations[locale]) {
+    i18n.locale = locale;
+    return;
+  }
+
   const localeFile = (await fetchLocale(locale)) as string;
   // vitest test bundler transforms json into object, but rainbowkit bundler transforms json into text
-  i18n.translations[locale] =
-    typeof localeFile === 'string' ? JSON.parse(localeFile) : localeFile;
+  i18n.translations[locale] = jsonParser(localeFile);
   i18n.locale = locale;
 }
