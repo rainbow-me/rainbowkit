@@ -36,7 +36,7 @@ export function ProfileDetails({
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const copyAddressAction = useCallback(() => {
     if (address) {

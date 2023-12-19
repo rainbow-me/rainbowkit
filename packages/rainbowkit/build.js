@@ -28,6 +28,7 @@ const baseBuildConfig = {
   loader: {
     '.png': 'dataurl',
     '.svg': 'dataurl',
+    '.json': 'text',
   },
   platform: 'browser',
   plugins: [

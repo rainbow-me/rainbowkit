@@ -80,7 +80,7 @@ export function WalletButton({
   const coolModeRef = useCoolMode(iconUrl);
   const initialized = useRef(false);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const onConnect = useCallback(async () => {
     if (id === 'walletConnect') onClose?.();
@@ -226,7 +226,7 @@ export function MobileOptions({ onClose }: { onClose: () => void }) {
     MobileWalletStep.Connect,
   );
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const ios = isIOS();
 
