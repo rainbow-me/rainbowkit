@@ -1,46 +1,42 @@
+import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
+import { InjectedConnector } from 'wagmi/connectors/injected';
+import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
+import { Wallet } from '../../Wallet';
 
-import { InjectedConnector } from 'wagmi/connectors/injected'
-import { Chain } from 'wagmi';
+export interface LuksoWalletOptions {
+  chains: Chain[];
+}
 
-// Lukso chain configuration
-const LUKSO_TESTNET: Chain = {
-    id: 42,
-    name: 'LUKSO',
-    network: 'LUKSO',
-    nativeCurrency: {
-      decimals: 18,
-      name: 'LUKSO',
-      symbol: 'LYX',
-    },
-    rpcUrls: {
-      default: { http: ['hhttps://rpc.lukso.gateway.fm'] },
-      public: { http: ['https://lukso.nownodes.io'] },
-    },
-    blockExplorers: {
-      default: { name: 'Lukso Testnet Explorer', url: 'https://explorer.execution.mainnet.lukso.network/' },
-    },
-    testnet: true,
-  };
-
-export const luksoWallet = () => ({
-    id: 'Universal Profile',
-    name: 'Universal Profile',
-    iconUrl: 'https://wallet.universalprofile.cloud/assets/images/up-logo.png',
+export const luksoWallet = ({
+  chains,
+  ...options
+}: LuksoWalletOptions & InjectedConnectorOptions): Wallet => {
+  return {
+    id: 'lukso',
+    name: 'Lukso',
+    iconUrl: async () => (await import('./luksoWallet.svg')).default,
     iconBackground: '#646eb5',
+    installed:
+      (typeof window !== 'undefined' &&
+        !!((window as any).lukso as any)?.ethereum) ||
+      undefined,
     downloadUrls: {
       chrome: 'https://chrome.google.com/webstore/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn?hl=en',
+      firefox: 'https://chromewebstore.google.com/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn',
+      browserExtension: 'https://chromewebstore.google.com/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn',
     },
     createConnector: () => {
-    const connector = new InjectedConnector({
-            chains: [LUKSO_TESTNET],
-            options: {
-                getProvider: () => (typeof window !== 'undefined' && (window as any).lukso ? (window as any).lukso : undefined),
-                name: 'Universal Profile',
-            },
-        },
-    );
-  
-    return {
+      const getProvider = () =>
+        typeof window !== 'undefined'
+          ? ((window as any).lukso as any)?.ethereum
+          : undefined;
+
+      const connector = new InjectedConnector({
+        chains,
+        options: { getProvider, ...options },
+      });
+
+      return {
         connector,
         extension: {
           instructions: {
@@ -69,4 +65,26 @@ export const luksoWallet = () => ({
         },
       };
     },
-  });
+  };
+};
+
+
+// Lukso chain configuration
+const LUKSO_TESTNET: Chain = {
+    id: 42,
+    name: 'LUKSO',
+    network: 'LUKSO',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'LUKSO',
+      symbol: 'LYX',
+    },
+    rpcUrls: {
+      default: { http: ['hhttps://rpc.lukso.gateway.fm'] },
+      public: { http: ['https://lukso.nownodes.io'] },
+    },
+    blockExplorers: {
+      default: { name: 'Lukso Testnet Explorer', url: 'https://explorer.execution.mainnet.lukso.network/' },
+    },
+    testnet: true,
+  };
