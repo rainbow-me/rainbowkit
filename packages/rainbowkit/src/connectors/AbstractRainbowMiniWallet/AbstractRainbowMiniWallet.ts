@@ -6,24 +6,19 @@ import {
   createWalletClient,
   custom,
   getAddress,
-} from 'viem';
-import { fromHex } from 'viem';
+  isAddress,
+} from "viem";
+import { fromHex } from "viem";
 import {
   Address,
   Connector,
   ConnectorData,
   ConnectorNotFoundError,
   WalletClient,
-} from 'wagmi';
-import { appInfo } from '../../utils/appInfo';
-import { normalizeChainId } from '../../utils/normalizeChainId';
-import {
-  removeSessionToken,
-  savedSessionToken,
-  setSessionToken,
-} from '../../utils/session';
-import { stringifyToQuery } from '../../utils/stringifyToQuery';
-import { config } from './config';
+} from "wagmi";
+import { normalizeChainId } from "../../utils/normalizeChainId";
+import { stringifyToQuery } from "../../utils/stringifyToQuery";
+import { config } from "./config";
 import type {
   CustomPopupRequestParams,
   EventMessage,
@@ -32,7 +27,12 @@ import type {
   TransportRequestParams,
   TransportRequestResponse,
   TransportRequestResult,
-} from './interfaces';
+} from "./interfaces";
+import {
+  miniWalletConnector,
+  removeMiniWalletConnector,
+  setMiniWalletConnector,
+} from "../../utils/miniWalletConnector";
 
 export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
   #account: Address | null = null;
@@ -54,28 +54,34 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
     super({ chains, options });
   }
 
+  #getCachedProvider() {
+    const miniWallet = miniWalletConnector();
+    if (!miniWallet) return;
+    return { account: miniWallet.account, chain: miniWallet.chain };
+  }
+
   #customPopupRequest<EventData, Response>({
-    path = '',
+    path = "",
     shouldResolve,
     getKey,
   }: CustomPopupRequestParams<EventData, Response>): Promise<Response> {
-    if (typeof window === 'undefined') throw new Error('Window not found');
+    if (typeof window === "undefined") throw new Error("Window not found");
 
     return new Promise((resolve, reject) => {
       const popup = window.open(
         `${config.url}${path && `/${path}`}`,
         config.target,
-        config.features,
+        config.features
       );
 
       const intervalCheckIfWindowClosed = setInterval(() => {
         if (popup?.closed) {
           clearInterval(intervalCheckIfWindowClosed);
-          reject('User rejected login');
+          reject("User rejected login");
         }
       }, 500);
 
-      window.addEventListener('message', (e: EventMessage<EventData>) => {
+      window.addEventListener("message", (e: EventMessage<EventData>) => {
         if (shouldResolve(e.data)) {
           resolve(getKey(e.data));
         }
@@ -83,55 +89,49 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
     });
   }
 
-  async connect({
-    chainId,
-  }: { chainId?: number } = {}): Promise<Required<ConnectorData>> {
-    try {
+  async connect({ chainId }: { chainId?: number } = {}): Promise<
+    Required<ConnectorData>
+  > {
+    // @ts-ignore
+    this.emit("message", {
+      type: "connecting",
+    });
+
+    await this.getProvider();
+
+    const [account, connectedChainId] = await Promise.all([
+      this.getAccount(),
+      this.getChainId(),
+    ]);
+
+    let unsupported = this.isChainUnsupported(connectedChainId);
+    let id = connectedChainId;
+
+    if (chainId && connectedChainId !== chainId) {
       // @ts-ignore
-      this.emit('message', {
-        type: 'connecting',
-      });
-
-      await this.getProvider();
-
-      const [account, connectedChainId] = await Promise.all([
-        this.getAccount(),
-        this.getChainId(),
-      ]);
-
-      let unsupported = this.isChainUnsupported(connectedChainId);
-      let id = connectedChainId;
-
-      if (chainId && connectedChainId !== chainId) {
-        // @ts-ignore
-        const chain = await this.switchChain(chainId);
-        id = chain.id;
-        unsupported = this.isChainUnsupported(id);
-      }
-
-      return {
-        account,
-        chain: {
-          id,
-          unsupported,
-        },
-      };
-    } catch {
-      this.onDisconnect();
-      throw new UserRejectedRequestError(
-        'Something went wrong' as unknown as Error,
-      );
+      const chain = await this.switchChain(chainId);
+      id = chain.id;
+      unsupported = this.isChainUnsupported(id);
     }
+
+    return {
+      account,
+      chain: {
+        id,
+        unsupported,
+      },
+    };
   }
 
   async getWalletClient({
     chainId,
   }: { chainId?: number } = {}): Promise<WalletClient> {
+    const self = this;
+
     const account = await this.getAccount();
+
     // @ts-ignore
     const chain = this.chains.find((x) => x.id === chainId) as Chain;
-
-    const self = this;
 
     return createWalletClient({
       account,
@@ -144,22 +144,22 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
           let queryData = {};
 
           switch (method) {
-            case 'eth_sendTransaction':
+            case "eth_sendTransaction":
               queryData = {
                 signerData: { method, ...params[0] },
               };
               break;
 
-            case 'personal_sign':
+            case "personal_sign":
               queryData = {
-                signerData: { method, message: fromHex(params[0], 'string') },
+                signerData: { method, message: fromHex(params[0], "string") },
               };
               break;
 
-            case 'eth_signTypedData_v4':
+            case "eth_signTypedData_v4":
               queryData = {
                 signerData: {
-                  method: 'eth_signTypedData',
+                  method: "eth_signTypedData",
                   ...JSON.parse(params[1]),
                 },
               };
@@ -167,34 +167,20 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
 
             default:
               throw new MethodNotFoundRpcError(
-                new Error(`${method} not supported`),
+                new Error(`${method} not supported`)
               );
           }
 
-          const sessionToken = savedSessionToken();
-
-          queryData = {
-            ...queryData,
-            app: appInfo(),
-            ...(sessionToken ? { token: sessionToken } : {}),
-          };
-
           const stringifyQuery = stringifyToQuery(queryData, true);
 
-          const { signature, token } = await self.#customPopupRequest<
+          const { signature } = await self.#customPopupRequest<
             TransportRequestResponse,
             TransportRequestResult
           >({
             path: `/signer${stringifyQuery}`,
-            shouldResolve: (data) => !!data?.signature || data?.token === null,
+            shouldResolve: (data) => !!data?.signature,
             getKey: (data) => data,
           });
-
-          if (token) setSessionToken(token);
-          if (token === null) {
-            removeSessionToken();
-            throw new ConnectorNotFoundError();
-          }
 
           return signature;
         },
@@ -203,81 +189,64 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
   }
 
   async getAccount(): Promise<Address> {
-    if (!this.#account) throw new ConnectorNotFoundError();
+    await this.getProvider();
     return Promise.resolve(getAddress(this.#account));
   }
 
   async getProvider(): Promise<void> {
-    const sessionToken = savedSessionToken();
+    const cachedProvider = this.#getCachedProvider();
+
+    if (cachedProvider) {
+      if (!this.#chainId && !this.#account) {
+        this.#account = cachedProvider.account;
+        this.#chainId = cachedProvider.chain.id;
+      }
+
+      return;
+    }
 
     const stringifyQuery = stringifyToQuery(
       {
         type: this.loginType,
-        app: appInfo(),
-        ...(sessionToken ? { token: sessionToken } : {}),
       },
-      true,
+      true
     );
 
-    const { account, chainId, token } = await this.#customPopupRequest<
+    const { account, chainId } = await this.#customPopupRequest<
       InitializedProviderEventData,
       InitializedProviderEventResult
     >({
       path: `/login${stringifyQuery}`,
       getKey: (data) => data,
-      shouldResolve: (data) => !!data?.account || data?.token === null,
+      shouldResolve: (data) => !!data?.account,
     });
-    console.log({ token });
-    if (token) setSessionToken(token);
 
-    if (token === null) {
-      removeSessionToken();
+    if (!isAddress(account)) {
       throw new ConnectorNotFoundError();
     }
 
-    if (!this.#account) {
-      this.#account = account;
-    }
+    const normalizedChainId = normalizeChainId(chainId);
 
     // @ts-ignore
-    const chain = this.chains.find((chain) => chain.id === chainId);
+    const chain = this.chains.find((chain) => chain.id === normalizedChainId);
 
-    if (chain) {
-      this.#chainId = chain.id;
+    if (!chain) {
+      throw new SwitchChainError(new Error("chain not found on connector."));
     }
+
+    this.#chainId = chain.id;
+    this.#account = account;
+
+    setMiniWalletConnector({ account, chain });
   }
 
-  async watchAsset /* {
-      address,
-      decimals = 18,
-      image,
-      symbol,
-    }: {
-      address: Address;
-      decimals?: number;
-      image?: string;
-      symbol: string;
-    } */() {
-    /* const provider = await this.getProvider();
-  
-      return provider.request({
-        method: "wallet_watchAsset",
-        params: {
-          type: "ERC20",
-          options: {
-            address,
-            decimals,
-            image,
-            symbol,
-          },
-        },
-      }) as Promise<boolean>; */
-
-    return false;
+  async watchAsset() {
+    return true;
   }
 
   async isAuthorized() {
     try {
+      await this.getProvider();
       const account = await this.getAccount();
       return !!account;
     } catch {
@@ -286,53 +255,35 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
   }
 
   async getChainId(): Promise<number> {
-    if (!this.#chainId) return 1;
-    return normalizeChainId(this.#chainId);
+    await this.getProvider();
+    return this.#chainId!;
   }
 
   async switchChain(chainId: number) {
-    try {
-      // @ts-ignore
-      const chain = this.chains.find((chain) => chain.id === chainId);
+    // @ts-ignore
+    const chain = this.chains.find((chain) => chain.id === chainId);
 
-      if (!chain) {
-        throw new SwitchChainError(new Error('chain not found on connector.'));
-      }
-
-      /* await this.#web3AuthInstance.addChain({
-          chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: `0x${chain.id.toString(16)}`,
-          rpcTarget: chain.rpcUrls.default.http[0],
-          displayName: chain.name,
-          blockExplorer: chain.blockExplorers?.default.url[0] || "",
-          ticker: chain.nativeCurrency?.symbol || "ETH",
-          tickerName: chain.nativeCurrency?.name || "Ethereum",
-          decimals: chain.nativeCurrency.decimals || 18,
-        });
-  
-         await this.web3AuthInstance.switchChain({
-          chainId: `0x${chain.id.toString(16)}`,
-        }); */
-
-      return chain;
-    } catch (error: unknown) {
-      throw new SwitchChainError(error as Error);
+    if (!chain) {
+      throw new SwitchChainError(new Error("chain not found on connector."));
     }
+
+    return chain;
   }
 
   async disconnect(): Promise<void> {
     return new Promise((resolve) => {
       this.#account = null;
       this.#chainId = null;
+      removeMiniWalletConnector();
       resolve();
     });
   }
 
   protected onAccountsChanged = (accounts: string[]) => {
     // @ts-ignore
-    if (accounts.length === 0) this.emit('disconnect');
+    if (accounts.length === 0) this.emit("disconnect");
     // @ts-ignore
-    else this.emit('change', { account: getAddress(accounts[0]) });
+    else this.emit("change", { account: getAddress(accounts[0]) });
   };
 
   protected isChainUnsupported(chainId: number): boolean {
@@ -344,11 +295,11 @@ export abstract class AbstractRainbowMiniWallet extends Connector<void, any> {
     const id = normalizeChainId(chainId);
     const unsupported = this.isChainUnsupported(id);
     // @ts-ignore
-    this.emit('change', { chain: { id, unsupported } });
+    this.emit("change", { chain: { id, unsupported } });
   };
 
   protected onDisconnect() {
     // @ts-ignore
-    this.emit('disconnect');
+    this.emit("disconnect");
   }
 }
