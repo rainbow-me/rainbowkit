@@ -17,8 +17,9 @@ import {
   Chain,
 } from 'wagmi/chains';
 import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const chains = [
+const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
   polygon,
   optimism,
@@ -34,7 +35,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),
@@ -43,6 +44,7 @@ const wagmiConfig = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
+    [goerli.id]: http(),
   },
 });
 
@@ -53,9 +55,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiProvider config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <App />
-      </RainbowKitProvider>
+      <QueryClientProvider client={new QueryClient()}>
+        <RainbowKitProvider chains={chains}>
+          <App />
+        </RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   </React.StrictMode>
 );

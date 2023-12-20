@@ -23,7 +23,15 @@ import {
   zora,
 } from 'wagmi/chains';
 
-export const chains = [mainnet, polygon, optimism, arbitrum, base, zora, bsc];
+export const chains: readonly [Chain, ...Chain[]] = [
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+  bsc,
+];
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
@@ -48,7 +56,7 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   ssr: true,
   transports: {

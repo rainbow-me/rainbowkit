@@ -1,24 +1,27 @@
 import React, { ReactNode, createContext, useContext, useMemo } from 'react';
+import { Chain } from 'wagmi/chains';
+import { mainnet } from 'wagmi/chains';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
-export interface RainbowKitChain {
+export interface RainbowKitChain extends Chain {
   id: number;
-  name?: string;
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
 
 interface RainbowKitChainContextValue {
-  chains: RainbowKitChain[];
+  chains: readonly [RainbowKitChain, ...RainbowKitChain[]];
   initialChainId?: number;
 }
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
-  chains: [],
+  // We use 'mainnet' as the default because wagmi defines
+  // 'chains' as a tuple type with at least one chain
+  chains: [mainnet],
 });
 
 interface RainbowKitChainProviderProps {
-  chains: RainbowKitChain[];
+  chains: readonly [RainbowKitChain, ...RainbowKitChain[]];
   initialChain?: RainbowKitChain | number;
   children: ReactNode;
 }

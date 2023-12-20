@@ -45,6 +45,7 @@ import {
   tahoWallet,
   talismanWallet,
   tokenPocketWallet,
+  tokenaryWallet,
   trustWallet,
   uniswapWallet,
   xdefiWallet,
@@ -85,7 +86,7 @@ const { wallets } = getDefaultWallets({
   projectId,
 });
 
-const chains = [
+const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
   polygon,
   optimism,
@@ -132,6 +133,7 @@ const connectors = connectorsForWallets([
       tahoWallet(),
       talismanWallet(),
       tokenPocketWallet({ projectId }),
+      tokenaryWallet(),
       trustWallet({ projectId }),
       uniswapWallet({ projectId }),
       xdefiWallet(),
@@ -142,7 +144,7 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),
@@ -654,11 +656,11 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <QueryClientProvider client={queryClient}>
-          <WagmiProvider config={wagmiConfig}>
+        <WagmiProvider config={wagmiConfig}>
+          <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />
-          </WagmiProvider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       </SessionProvider>
     </>
   );

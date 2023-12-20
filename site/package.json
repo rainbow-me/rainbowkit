@@ -1,6 +1,6 @@
 {
   "name": "site",
-  "version": "0.0.80",
+  "version": "0.0.82",
   "description": "Site and docs for RainbowKit.",
   "private": true,
   "dependencies": {
@@ -34,9 +34,9 @@
     "three": "^0.139.2",
     "unified": "10.1.2",
     "unist-util-visit": "4.1.0",
-    "viem": "2.0.0-beta.6",
-    "wagmi": "2.0.0-beta.3",
-    "@tanstack/react-query": "5.8.3"
+    "viem": "2.0.0-beta.15",
+    "wagmi": "2.0.0-beta.8",
+    "@tanstack/react-query": "5.13.4"
   },
   "devDependencies": {
     "contentlayer": "0.2.9",

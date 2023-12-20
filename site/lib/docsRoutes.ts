@@ -43,6 +43,7 @@ export const docsRoutes: RouteProps[] = [
       { title: 'Custom App Info', slug: 'custom-app-info' },
       { title: 'Custom Avatars', slug: 'custom-avatars' },
       { title: 'Custom Authentication', slug: 'custom-authentication' },
+      { title: 'WalletButton', slug: 'wallet-button' },
       { title: 'Cool Mode', slug: 'cool-mode' },
     ],
   },
@@ -50,6 +51,7 @@ export const docsRoutes: RouteProps[] = [
 
 export const allDocsRoutes: PartialDoc[] = docsRoutes.reduce((acc, curr) => {
   // biome-ignore lint/style/noParameterAssign: TODO
+  // biome-ignore lint/performance/noAccumulatingSpread: TODO
   acc = [...acc, ...curr.pages];
   return acc;
 }, []);

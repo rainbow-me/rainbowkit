@@ -2,6 +2,7 @@ import { Box } from 'components/Box/Box';
 import { Button } from 'components/Button/Button';
 import { Code } from 'components/Code/Code';
 import { CoolMode } from 'components/CoolMode/CoolMode';
+import { WalletButtonDemo } from 'components/Demo/WalletButton';
 import { CheckIcon } from 'components/Icons/Check';
 import { CopyIcon } from 'components/Icons/Copy';
 import { Link } from 'components/Link/Link';
@@ -189,6 +190,7 @@ export const components = {
   PropsTable: (props) => <PropsTable aria-label="Component Props" {...props} />,
   Table: (props) => <Table aria-label="Props Table" {...props} />,
   ul: (props) => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
+  WalletButtonDemo,
   Video: (props) => (
     <Box
       as="video"

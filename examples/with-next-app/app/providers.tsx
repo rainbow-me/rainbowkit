@@ -24,7 +24,7 @@ import {
 } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const chains = [
+const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
   polygon,
   optimism,
@@ -58,7 +58,7 @@ const connectors = connectorsForWallets([
 ]);
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),
@@ -67,6 +67,7 @@ const wagmiConfig = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
+    [goerli.id]: http(),
   },
 });
 

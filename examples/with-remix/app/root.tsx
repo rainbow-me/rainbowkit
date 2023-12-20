@@ -74,7 +74,7 @@ export default function App() {
   const [{ config, chains }] = useState(() => {
     const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
 
-    const chains = [
+    const chains: readonly [Chain, ...Chain[]] = [
       mainnet,
       polygon,
       optimism,
@@ -90,7 +90,7 @@ export default function App() {
     });
 
     const config = createConfig({
-      chains: chains as unknown as readonly [Chain, ...Chain[]],
+      chains,
       connectors,
       transports: {
         [mainnet.id]: http(),
@@ -100,6 +100,7 @@ export default function App() {
         [arbitrum.id]: http(),
         [base.id]: http(),
         [zora.id]: http(),
+        [goerli.id]: http(),
       },
     });
 

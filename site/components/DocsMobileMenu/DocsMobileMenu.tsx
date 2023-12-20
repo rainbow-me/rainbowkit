@@ -1,5 +1,5 @@
 import { Portal } from '@radix-ui/react-portal';
-import { useMounted } from 'lib/useMounted';
+import { useIsMounted } from 'lib/useIsMounted';
 import React from 'react';
 
 export const DocsMobileMenuContext = React.createContext<
@@ -8,8 +8,9 @@ export const DocsMobileMenuContext = React.createContext<
 
 export function DocsMobileMenuSlot({ children }) {
   const docsMobileMenuRef = React.useContext(DocsMobileMenuContext);
+  const isMounted = useIsMounted();
 
-  return useMounted() ? (
+  return isMounted() ? (
     <Portal container={docsMobileMenuRef.current}>{children}</Portal>
   ) : null;
 }

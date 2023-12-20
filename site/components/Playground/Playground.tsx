@@ -14,7 +14,7 @@ import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
 import { isAndroid } from 'lib/isMobile';
-import { useMounted } from 'lib/useMounted';
+import { useIsMounted } from 'lib/useIsMounted';
 import React, { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
@@ -85,8 +85,9 @@ export function Playground() {
   });
 
   const gradient = gradientColors[accent];
+  const isMounted = useIsMounted();
 
-  return useMounted() ? (
+  return isMounted() ? (
     <Box paddingY={{ xs: '11', lg: '12' }} position="relative" zIndex="10">
       <Box
         inset="0"

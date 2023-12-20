@@ -1,5 +1,62 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.0
+
+### Minor Changes
+
+- 9ce75a65: The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
+
+  ```tsx
+  import { WalletButton } from '@rainbow-me/rainbowkit';
+
+  <WalletButton wallet="rainbow" />
+  <WalletButton wallet="metamask" />
+  <WalletButton wallet="coinbase" />
+  ```
+
+  Like the `ConnectButton`, the `WalletButton.Custom` component is available for custom implementations and styling.
+
+  ```tsx
+  <WalletButton.Custom wallet="rainbow">
+    {({ ready, connect }) => {
+      return (
+        <button type="button" disabled={!ready} onClick={connect}>
+          Connect Rainbow
+        </button>
+      );
+    }}
+  </WalletButton.Custom>
+  ```
+
+  Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
+
+## 1.2.1
+
+### Patch Changes
+
+- 74ead9df: Tokenary Support
+
+  **Example usage**
+
+  ```ts
+  import {
+    getDefaultWallets,
+    connectorsForWallets,
+  } from "@rainbow-me/rainbowkit";
+  import { tokenaryWallet } from "@rainbow-me/rainbowkit/wallets";
+  const { wallets } = getDefaultWallets({ appName, chains });
+  const connectors = connectorsForWallets([
+    ...wallets,
+    {
+      groupName: "Other",
+      wallets: [tokenaryWallet({ chains })],
+    },
+  ]);
+  ```
+
+- 94dce820: Fixed scroll bar inconsistencies in the Chain selector for large chain lists or when animating upon user interaction
+- 39d81e93: Fixed a bug where the avatar loading indicator had used excessive CPU cycles
+
 ## 1.2.0
 
 ### Minor Changes

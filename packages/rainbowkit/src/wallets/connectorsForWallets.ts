@@ -9,7 +9,33 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-export const connectorsForWallets = (
+/*
+  Assemble a list of low-level connectors for use with the
+  `WalletButton` and `RainbowButton` components in custom implementations.
+*/
+export function connectorsForWallets(
+  wallets: Wallet[] | WalletList,
+): CreateConnectorFn[];
+
+/*
+  Overload implementation for `connectorsForWallets`.
+  1. Returns a `connectors` function that will then return a Connectors array
+  2. Returns a prepared Connectors array stuffed with dummy WalletList data
+*/
+export function connectorsForWallets(walletList: any) {
+  if ('groupName' in walletList[0]) {
+    return _connectorsForWallets(walletList);
+  } else {
+    return _connectorsForWallets([
+      {
+        groupName: '',
+        wallets: walletList as Wallet[],
+      },
+    ]);
+  }
+}
+
+export const _connectorsForWallets = (
   walletList: WalletList,
 ): CreateConnectorFn[] => {
   let index = -1;

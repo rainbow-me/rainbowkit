@@ -20,20 +20,27 @@ import { RainbowKitProvider } from '../src/components/RainbowKitProvider/Rainbow
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
-const defaultChains = [mainnet, polygon, optimism, arbitrum, base, zora];
+const defaultChains: readonly [Chain, ...Chain[]] = [
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+];
 
 const queryClient = new QueryClient();
 
 export function renderWithProviders(
   component: ReactElement,
   options?: {
-    chains?: Chain[];
+    chains?: readonly [Chain, ...Chain[]];
     mock?: boolean;
     mockOptions?: MockParameters;
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {
-  const supportedChains: Chain[] = options?.chains || defaultChains;
+  const supportedChains = options?.chains || defaultChains;
 
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
@@ -41,7 +48,7 @@ export function renderWithProviders(
   });
 
   const wagmiConfig = createConfig({
-    chains: supportedChains as unknown as readonly [Chain, ...Chain[]],
+    chains: supportedChains,
     connectors: options?.mock
       ? [
           mock({

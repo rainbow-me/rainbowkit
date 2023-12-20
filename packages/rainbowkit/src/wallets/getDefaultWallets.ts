@@ -1,3 +1,4 @@
+import { CreateConnectorFn } from 'wagmi';
 import { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
 import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
@@ -14,7 +15,7 @@ export const getDefaultWallets = ({
   appName: string;
   projectId: string;
 }): {
-  connectors: ReturnType<typeof connectorsForWallets>;
+  connectors: CreateConnectorFn[];
   wallets: WalletList;
 } => {
   const wallets: WalletList = [

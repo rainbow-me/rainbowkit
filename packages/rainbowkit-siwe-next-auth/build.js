@@ -4,6 +4,9 @@ const isWatching = process.argv.includes('--watch');
 
 esbuild
   .build({
+    banner: {
+      js: '"use client";', // Required for Next 13 App Router
+    },
     bundle: true,
     entryPoints: ['src/index.ts'],
     format: 'esm',

@@ -14,11 +14,10 @@ import {
   Chain,
   bsc,
   zkSync,
-  holesky,
 } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const chains = [
+const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
   polygon,
   optimism,
@@ -34,7 +33,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiConfig = createConfig({
-  chains: chains as unknown as readonly [Chain, ...Chain[]],
+  chains,
   connectors,
   transports: {
     [mainnet.id]: http(),
@@ -46,7 +45,6 @@ const wagmiConfig = createConfig({
     [bsc.id]: http(),
     [zkSync.id]: http(),
     [goerli.id]: http(),
-    [holesky.id]: http(),
   },
 });
 

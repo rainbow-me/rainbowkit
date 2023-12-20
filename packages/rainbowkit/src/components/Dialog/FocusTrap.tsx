@@ -23,7 +23,6 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
     };
   }, []);
 
-  // biome-ignore lint/nursery/useExhaustiveDependencies: TODO
   useEffect(() => {
     if (contentRef.current) {
       const elementToFocus =
@@ -34,7 +33,7 @@ export function FocusTrap(props: JSX.IntrinsicElements['div']) {
         contentRef.current.focus();
       }
     }
-  }, [contentRef]);
+  }, []);
 
   return (
     <>
