@@ -16,6 +16,7 @@ import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
+import { luksoWallet } from './luksoWallet/luksoWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { oktoWallet } from './oktoWallet/oktoWallet';
@@ -60,6 +61,7 @@ export {
   imTokenWallet,
   injectedWallet,
   ledgerWallet,
+  luksoWallet,
   metaMaskWallet,
   mewWallet,
   oktoWallet,
