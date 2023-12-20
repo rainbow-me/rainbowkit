@@ -18,6 +18,7 @@ export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
     id: 'coinbase',
     name: 'Coinbase Wallet',
     shortName: 'Coinbase',
+    rdns: 'com.coinbase.wallet',
     iconUrl: async () => (await import('./coinbaseWallet.svg')).default,
     iconAccent: '#2c5ff6',
     iconBackground: '#2c5ff6',

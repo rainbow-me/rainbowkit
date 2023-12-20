@@ -5,6 +5,7 @@ export const rabbyWallet = (): Wallet => ({
   id: 'rabby',
   name: 'Rabby Wallet',
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
+  rdns: 'io.rabby',
   iconBackground: '#8697FF',
   installed:
     typeof window !== 'undefined' &&

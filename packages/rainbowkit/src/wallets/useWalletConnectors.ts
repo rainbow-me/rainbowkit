@@ -33,8 +33,6 @@ export interface WalletConnector extends WalletInstance {
   getMobileUri?: () => Promise<string>;
 }
 
-const eip6963StrPrefix = 'eip6963';
-
 export function useWalletConnectors(): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
@@ -44,8 +42,9 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
     ...connector,
+    // rkDetails is optional it does not exist in eip6963 connectors
     ...(connector.rkDetails || {}),
-  }));
+  })) as WalletInstance[];
 
   async function connectWallet(connector: Connector) {
     const walletChainId = await connector.getChainId();
@@ -112,16 +111,6 @@ export function useWalletConnectors(): WalletConnector[] {
       connector.isWalletConnectModalConnector,
   );
 
-  const rainbowKitConnectors = defaultConnectors
-    .filter(isRainbowKitConnector)
-    .filter((wallet) => !wallet.isWalletConnectModalConnector)
-    .map((wallet) =>
-      rainbowKitConnectorWithWalletConnect(
-        wallet,
-        walletConnectModalConnector!,
-      ),
-    );
-
   const eip6963Connectors = defaultConnectors
     .filter(isEIP6963Connector)
     .map((connector) => {
@@ -129,10 +118,26 @@ export function useWalletConnectors(): WalletConnector[] {
       // with rainbowkit connectors (id's). Otherwise we will run into conflicts / issues
       return {
         ...connector,
-        id: `${eip6963StrPrefix}-${connector.id}`,
         groupIndex: 0,
       };
     });
+
+  const rainbowKitConnectors = defaultConnectors
+    .filter(isRainbowKitConnector)
+    .filter((wallet) => !wallet.isWalletConnectModalConnector)
+    .filter((wallet) => {
+      const existsInEIP6963Connectors = eip6963Connectors.some(
+        (eip6963) => eip6963.id === wallet.rdns,
+      );
+
+      return !existsInEIP6963Connectors;
+    })
+    .map((wallet) =>
+      rainbowKitConnectorWithWalletConnect(
+        wallet,
+        walletConnectModalConnector!,
+      ),
+    );
 
   const combinedConnectors = [...eip6963Connectors, ...rainbowKitConnectors];
 
@@ -151,7 +156,7 @@ export function useWalletConnectors(): WalletConnector[] {
   const walletConnectors: WalletConnector[] = [];
 
   const combinedConnectorsWithRecentWallets = connectorsWithRecentWallets({
-    wallets: [...eip6963Connectors, ...rainbowKitConnectors],
+    wallets: combinedConnectors,
     recentWallets: recentWallets,
   });
 

@@ -10,6 +10,7 @@ declare global {
 export const talismanWallet = (): Wallet => ({
   id: 'talisman',
   name: 'Talisman',
+  rdns: 'xyz.talisman',
   iconUrl: async () => (await import('./talismanWallet.svg')).default,
   iconBackground: '#fff',
   installed:

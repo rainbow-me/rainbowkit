@@ -22,6 +22,7 @@ export const tokenPocketWallet = ({
   return {
     id: 'tokenPocket',
     name: 'TokenPocket',
+    rdns: 'pro.tokenpocket',
     iconUrl: async () => (await import('./tokenPocketWallet.svg')).default,
     iconBackground: '#2980FE',
     installed: !shouldUseWalletConnect ? isTokenPocketInjected : undefined,

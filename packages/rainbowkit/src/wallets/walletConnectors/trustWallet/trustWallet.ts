@@ -88,6 +88,7 @@ export const trustWallet = ({ projectId }: TrustWalletOptions): Wallet => {
   return {
     id: 'trust',
     name: 'Trust Wallet',
+    rdns: 'com.trustwallet.app',
     iconUrl: async () => (await import('./trustWallet.svg')).default,
     // Note that we never resolve `installed` to `false` because the
     // Trust Wallet provider falls back to other connection methods if

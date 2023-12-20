@@ -26,6 +26,7 @@ export const frontierWallet = ({
   return {
     id: 'frontier',
     name: 'Frontier Wallet',
+    rdns: 'xyz.frontier.wallet',
     installed:
       typeof window !== 'undefined' &&
       typeof window.frontier !== 'undefined' &&

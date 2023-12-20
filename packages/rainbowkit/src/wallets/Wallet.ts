@@ -48,6 +48,7 @@ type RainbowKitConnector = {
 export type Wallet = {
   id: string;
   name: string;
+  rdns?: string;
   shortName?: string;
   iconUrl: string | (() => Promise<string>);
   iconAccent?: string;
@@ -95,7 +96,9 @@ export type CreateConnector = (walletOptions: {
 // This is the default connector you get at first from wagmi
 // "Connector" + rainbowkit details we inject into the connector
 export type WagmiConnectorInstance = Connector & {
-  rkDetails: RainbowKitDetails;
+  // this is optional since we only get
+  // rkDetails if we use rainbowkit connectors
+  rkDetails?: RainbowKitDetails;
 };
 
 // This will be the wallet instance we will return

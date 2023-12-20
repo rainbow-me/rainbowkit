@@ -23,6 +23,7 @@ export const zerionWallet = ({ projectId }: ZerionWalletOptions): Wallet => {
   return {
     id: 'zerion',
     name: 'Zerion',
+    rdns: 'io.zerion.wallet',
     iconUrl: async () => (await import('./zerionWallet.svg')).default,
     iconAccent: '#2962ef',
     iconBackground: '#2962ef',

@@ -27,6 +27,7 @@ export const rainbowWallet = ({ projectId }: RainbowWalletOptions): Wallet => {
   return {
     id: 'rainbow',
     name: 'Rainbow',
+    rdns: 'me.rainbow',
     iconUrl: async () => (await import('./rainbowWallet.svg')).default,
     iconBackground: '#0c2f78',
     installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,

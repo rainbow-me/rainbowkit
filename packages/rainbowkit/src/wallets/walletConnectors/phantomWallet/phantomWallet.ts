@@ -5,6 +5,7 @@ export const phantomWallet = (): Wallet => {
   return {
     id: 'phantom',
     name: 'Phantom',
+    rdns: 'app.phantom',
     iconUrl: async () => (await import('./phantomWallet.svg')).default,
     iconBackground: '#9A8AEE',
     installed:

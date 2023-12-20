@@ -80,6 +80,7 @@ export const metaMaskWallet = ({
   return {
     id: 'metaMask',
     name: 'MetaMask',
+    rdns: 'io.metamask',
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',

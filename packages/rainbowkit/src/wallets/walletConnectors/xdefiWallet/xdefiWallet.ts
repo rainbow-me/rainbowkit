@@ -13,6 +13,7 @@ export const xdefiWallet = (): Wallet => {
   return {
     id: 'xdefi',
     name: 'XDEFI Wallet',
+    rdns: 'io.xdefi',
     installed: isInstalled,
     iconUrl: async () => (await import('./xdefiWallet.svg')).default,
     iconBackground: '#fff',

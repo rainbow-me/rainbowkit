@@ -4,6 +4,7 @@ import { getDefaultInjectedConnector } from '../../getInjectedConnector';
 export const braveWallet = (): Wallet => ({
   id: 'brave',
   name: 'Brave Wallet',
+  rdns: 'com.brave.wallet',
   iconUrl: async () => (await import('./braveWallet.svg')).default,
   iconBackground: '#fff',
   installed:
