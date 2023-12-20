@@ -148,7 +148,7 @@ const connectors = connectorsForWallets([
       frontierWallet({ chains, projectId }),
       imTokenWallet({ chains, projectId }),
       ledgerWallet({ chains, projectId }),
-      luksoWallet({ chains, projectId }),
+      luksoWallet({ chains }),
       mewWallet({ chains }),
       oktoWallet({ chains, projectId }),
       okxWallet({ chains, projectId }),
