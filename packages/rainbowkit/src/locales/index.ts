@@ -32,8 +32,8 @@ export type Locale =
 
 // biome-ignore format: locale keys
 export const i18n: I18nTypes.I18n = new I18n({
-  en: JSON.parse(en_US as any),
-  "en-US": JSON.parse(en_US as any),
+  'en': JSON.parse(en_US as any),
+  'en-US': JSON.parse(en_US as any),
 });
 
 i18n.defaultLocale = 'en-US';
@@ -93,7 +93,6 @@ export async function setLocale(locale: Locale) {
   }
 
   const localeFile = (await fetchLocale(locale)) as string;
-  // vitest test bundler transforms json into object, but rainbowkit bundler transforms json into text
   i18n.translations[locale] = JSON.parse(localeFile);
   i18n.locale = locale;
 }
