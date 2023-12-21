@@ -33,7 +33,9 @@ export interface WalletConnector extends WalletInstance {
   getMobileUri?: () => Promise<string>;
 }
 
-export function useWalletConnectors(): WalletConnector[] {
+export function useWalletConnectors(
+  combineEIP6963WithRkConnectors = false,
+): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
@@ -126,6 +128,8 @@ export function useWalletConnectors(): WalletConnector[] {
     .filter(isRainbowKitConnector)
     .filter((wallet) => !wallet.isWalletConnectModalConnector)
     .filter((wallet) => {
+      if (!combineEIP6963WithRkConnectors) return true;
+
       const existsInEIP6963Connectors = eip6963Connectors.some(
         (eip6963) => eip6963.id === wallet.rdns,
       );
