@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.2
+
+### Patch Changes
+
+- 7ba94f48: Optimized bundle size for localization feature
+
 ## 1.3.1
 
 ### Patch Changes
