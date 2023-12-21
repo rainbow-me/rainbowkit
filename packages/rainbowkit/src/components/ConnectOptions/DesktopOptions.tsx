@@ -69,7 +69,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const modalSize = useContext(ModalSizeContext);
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const initialized = useRef(false);
 

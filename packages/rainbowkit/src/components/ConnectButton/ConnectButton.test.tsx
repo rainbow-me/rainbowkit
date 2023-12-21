@@ -1,3 +1,4 @@
+import { screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
@@ -8,37 +9,36 @@ import { ConnectButton } from './ConnectButton';
 describe('<ConnectButton />', () => {
   const renderTextButton = (locale?: Locale) => {
     const options = {
-      mock: true,
       props: {
         chains: [mainnet],
         ...(locale ? { locale } : {}),
       },
     };
 
-    const { getByTestId } = renderWithProviders(<ConnectButton />, options);
+    renderWithProviders(<ConnectButton />, options);
 
-    const button = getByTestId('rk-connect-button');
-
-    return button.textContent;
+    return screen.getByTestId('rk-connect-button');
   };
 
-  it('Defaults to English without a `locale` prop', () => {
-    const text = renderTextButton();
-    expect(text).toBe('Connect Wallet');
+  it('Defaults to English without a `locale` prop', async () => {
+    const button = renderTextButton();
+    await waitFor(() => expect(button.textContent).toBe('Connect Wallet'));
   });
 
-  it("Displays in English for 'en-US'", () => {
-    const text = renderTextButton('en-US');
-    expect(text).toBe('Connect Wallet');
+  it("Displays in English for 'en-US'", async () => {
+    const button = renderTextButton('en-US');
+    await waitFor(() => expect(button.textContent).toBe('Connect Wallet'));
   });
 
-  it("Displays in Spanish for 'es-419'", () => {
-    const text = renderTextButton('es-419');
-    expect(text).toBe('Conectar la billetera');
+  it("Displays in Spanish for 'es-419'", async () => {
+    const button = renderTextButton('es-419');
+    await waitFor(() =>
+      expect(button.textContent).toBe('Conectar la billetera'),
+    );
   });
 
-  it("Displays in Russian for 'ru-RU'", () => {
-    const text = renderTextButton('ru-RU');
-    expect(text).toBe('Подключить кошелек');
+  it("Displays in Russian for 'ru-RU'", async () => {
+    const button = renderTextButton('ru-RU');
+    await waitFor(() => expect(button.textContent).toBe('Подключить кошелек'));
   });
 });
