@@ -6,7 +6,7 @@
 
 **The best way to connect a wallet 🌈**
 
-RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
+RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your app.
 
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
@@ -30,7 +30,7 @@ For full documentation, visit [rainbowkit.com](https://rainbowkit.com).
 
 ### Try it out
 
-You can use the CodeSandbox links below try out RainbowKit:
+You can use the CodeSandbox links below to try out RainbowKit:
 
 - with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
