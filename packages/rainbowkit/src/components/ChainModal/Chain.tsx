@@ -33,7 +33,7 @@ const Chain = ({
   idx,
 }: ChainProps) => {
   const mobile = isMobile();
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
   const rainbowkitChains = useRainbowKitChains();
 
   const isCurrentChain = currentChainId === chainId;

@@ -150,6 +150,7 @@ export function Playground() {
           id="playground"
           modalSize={modalSize}
           theme={selectedTheme}
+          locale={locale}
         >
           <Box
             marginX={{ xs: '0', md: 'auto' }}

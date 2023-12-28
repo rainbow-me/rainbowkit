@@ -12,7 +12,7 @@ import { walletButtons } from './WalletButton.css';
 export function WalletButtonDemo() {
   const { locale } = useRouter() as { locale: Locale };
   return (
-    <RainbowKitProvider chains={chains}>
+    <RainbowKitProvider chains={chains} locale={locale}>
       <Box className={walletButtons} id="wallet-button-demo">
         <Box alignItems={'flex-start'}>
           <RKWalletButton wallet="rainbow" />
