@@ -126,22 +126,22 @@ argentWallet(options: {
 });
 ```
 
+#### BitKeep
+
+```tsx
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Bifrost Wallet
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
 bifrostWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### Bitget Wallet
-
-```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
   chains: Chain[];
 });
 ```
@@ -374,16 +374,6 @@ safeheronWallet(options: {
 });
 ```
 
-#### SafePal Wallet
-
-```tsx
-import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
-safepalWallet(options: {
-  projectId: string;
-  chains: Chain[];
-});
-```
-
 #### Taho
 
 ```tsx
@@ -400,6 +390,16 @@ tahoWallet(options: {
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 
 talismanWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenaryWallet(options: {
   chains: Chain[];
 });
 ```
@@ -443,16 +443,6 @@ uniswapWallet(options: {
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 xdefiWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### Zeal
-
-```tsx
-import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zealWallet(options: {
   chains: Chain[];
 });
 ```

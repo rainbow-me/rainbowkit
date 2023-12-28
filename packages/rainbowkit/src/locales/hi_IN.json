@@ -52,9 +52,12 @@
     "recent": "हाल ही में",
     "status": {
       "opening": "%{wallet}खोल रहा है...",
+      "connecting": "जोड़ रहा है",
+      "connect_mobile": "जारी रखें %{wallet}",
       "not_installed": "%{wallet} स्थापित नहीं है",
       "not_available": "%{wallet} उपलब्ध नहीं है",
-      "confirm": "एक्सटेंशन में कनेक्शन की पुष्टि करें"
+      "confirm": "एक्सटेंशन में कनेक्शन की पुष्टि करें",
+      "confirm_mobile": "वॉलेट में कनेक्शन अनुरोध स्वीकार करें"
     },
     "secondary_action": {
       "get": {

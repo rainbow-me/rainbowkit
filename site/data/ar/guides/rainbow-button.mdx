@@ -1,0 +1,69 @@
+---
+title: اعتماد زر القوس قزح في تطبيقك اللامركزي
+description: مكتبة قابلة للتوصيل والاستخدام لدعم محافظ قوس قزح في تطبيقك اللامركزي
+image: guide-walletconnect-v2.png
+---
+
+# اعتماد زر القوس قزح في تطبيقك اللامركزي
+
+تُعتبر مكونة `RainbowButton` أسهل طريقة لدعم محافظ قوس قزح في تطبيقات اللامركزي التي تستخدم `wagmi` وتفضل تجربة اتصال مخصصة أكثر من [RainbowKit](https://www.rainbowkit.com/docs/installation).
+
+**1. قم بتثبيت `@rainbow-me/rainbow-button` والوابل اللازم**
+
+الحزمة متوافقة مع Next.js وReact وVite تأكد من اتباع الإرشادات بشأن الوابلِ اللازم.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. قم بتكوينه مع Wagmi وقم بتثبيت RainbowButton**
+
+قم بتمرير نسخة من `RainbowConnector` إلى قائمة وصل Wagmi الخاصة بك وقم بتضمين تطبيقك في `RainbowButtonProvider`. ثم أضف المكون `RainbowButton` في قائمة المحافظ الخاصة بك.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+يمكنك أيضًا استخدام المكون `RainbowButton.Custom` لأجل تنفيذات وتنسيقات مخصصة.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. هذا كل شيء!**
+
+الآن يمكن لمستخدميك الاستمتاع بتجربة اتصال سلسة مع قوس قزح - بدون أي صيانة أو صداع.
+
+هناك أيضًا مكون [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) المتاح في [RainbowKit](https://www.rainbowkit.com/docs/installation) إذا كنت ترغب في دعم محافظ إضافية.

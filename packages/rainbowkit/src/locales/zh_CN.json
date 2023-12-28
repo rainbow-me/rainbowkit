@@ -52,9 +52,12 @@
     "recent": "近期",
     "status": {
       "opening": "正在打开 %{wallet}...",
+      "connecting": "正在连接",
+      "connect_mobile": "在 %{wallet}中继续",
       "not_installed": "%{wallet} 尚未安装",
       "not_available": "%{wallet} 不可用",
-      "confirm": "在扩展中确认连接"
+      "confirm": "在扩展中确认连接",
+      "confirm_mobile": "在钱包中接受连接请求"
     },
     "secondary_action": {
       "get": {

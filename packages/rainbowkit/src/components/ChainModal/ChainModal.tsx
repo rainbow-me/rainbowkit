@@ -47,7 +47,7 @@ export function ChainModal({ onClose, open, mockChainId }: ChainModalProps) {
     },
   });
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const { disconnect } = useDisconnect();
   const titleId = 'rk_chain_modal_title';

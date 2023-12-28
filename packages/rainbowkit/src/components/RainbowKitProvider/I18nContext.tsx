@@ -1,9 +1,15 @@
-import React, { ReactNode, createContext, useMemo } from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
-import { Locale, i18n as _i18n } from '../../locales';
+import { Locale, i18n, setLocale } from '../../locales';
 import { detectedBrowserLocale } from '../../utils/locale';
 
-export const I18nContext = createContext<typeof _i18n>(_i18n);
+export const I18nContext = createContext<{ i18n: typeof i18n }>({ i18n });
 
 interface I18nProviderProps {
   children: ReactNode;
@@ -11,20 +17,37 @@ interface I18nProviderProps {
 }
 
 export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
+  const [updateCount, setUpdateCount] = useState(0);
+
   const browserLocale: Locale = useMemo(
     () => detectedBrowserLocale() as Locale,
     [],
   );
 
-  const i18n = useMemo(() => {
-    if (locale) {
-      _i18n.locale = locale;
-    } else if (!locale && browserLocale) {
-      _i18n.locale = browserLocale;
-    }
+  useEffect(() => {
+    const unsubscribe = i18n.onChange(() => {
+      setUpdateCount((count) => count + 1);
+    });
+    return unsubscribe;
+  }, []);
 
-    return _i18n;
+  useEffect(() => {
+    if (locale && locale !== i18n.locale) {
+      setLocale(locale);
+    } else if (!locale && browserLocale && browserLocale !== i18n.locale) {
+      setLocale(browserLocale);
+    }
   }, [locale, browserLocale]);
 
-  return <I18nContext.Provider value={i18n}>{children}</I18nContext.Provider>;
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  const memoizedValue = useMemo(() => {
+    const t = (key: string, options?: any) => i18n.t(key, options);
+    return { t, i18n };
+  }, [updateCount]);
+
+  return (
+    <I18nContext.Provider value={memoizedValue}>
+      {children}
+    </I18nContext.Provider>
+  );
 };

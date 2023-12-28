@@ -1,5 +1,6 @@
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
+import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
 import Link from 'next/link';
 import React from 'react';
@@ -129,6 +130,7 @@ const frens = [
 ];
 
 export function UsedBy() {
+  const t = useTranslations('landing');
   return (
     <>
       <Text
@@ -140,8 +142,7 @@ export function UsedBy() {
         style={{ lineHeight: '28px', maxWidth: 720 }}
         weight="semibold"
       >
-        The siqqest Web3 teams are using RainbowKit to improve their products,
-        delight their users and save time when building.
+        {t('adopters')}
       </Text>
 
       <Box marginTop={{ md: '11', xs: '10' }} marginX="auto">

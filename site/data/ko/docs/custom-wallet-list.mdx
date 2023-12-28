@@ -126,22 +126,22 @@ argentWallet(options: {
 });
 ```
 
-#### Bifrost 지갑
+#### BitKeep
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-bifrostWallet(options: {
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
 
-#### Bitget 지갑
+#### Bifrost Wallet
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+bifrostWallet(options: {
   chains: Chain[];
 });
 ```
@@ -156,7 +156,7 @@ bitskiWallet(options: {
 });
 ```
 
-#### Brave 지갑
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -166,7 +166,7 @@ braveWallet(options: {
 });
 ```
 
-#### Coinbase 지갑
+#### Coinbase Wallet
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -177,7 +177,7 @@ coinbaseWallet(options: {
 });
 ```
 
-#### Coin98 지갑
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
@@ -199,7 +199,7 @@ coreWallet(options: {
 });
 ```
 
-#### Dawn 지갑
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -209,7 +209,7 @@ dawnWallet(options: {
 });
 ```
 
-#### Enkrypt 지갑
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -229,7 +229,7 @@ foxWallet(options: {
 });
 ```
 
-#### Frame 지갑
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -238,7 +238,7 @@ frameWallet(options: {
 });
 ```
 
-#### Frontier 지갑
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -282,7 +282,7 @@ metaMaskWallet(options: {
 });
 ```
 
-#### MEW 지갑
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -291,7 +291,7 @@ mewWallet(options: {
 });
 ```
 
-#### OKX 지갑
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -333,7 +333,7 @@ phantomWallet(options: {
 });
 ```
 
-#### Rabby 지갑
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -374,16 +374,6 @@ safeheronWallet(options: {
 });
 ```
 
-#### SafePal 지갑
-
-```tsx
-import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
-safepalWallet(options: {
-  projectId: string;
-  chains: Chain[];
-});
-```
-
 #### Taho
 
 ```tsx
@@ -404,6 +394,16 @@ talismanWallet(options: {
 });
 ```
 
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenaryWallet(options: {
+  chains: Chain[];
+});
+```
+
 #### TokenPocket
 
 ```tsx
@@ -415,7 +415,7 @@ tokenPocketWallet(options: {
 });
 ```
 
-#### Trust 지갑
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -426,7 +426,7 @@ trustWallet(options: {
 });
 ```
 
-#### Uniswap 지갑
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -437,22 +437,12 @@ uniswapWallet(options: {
 });
 ```
 
-#### XDEFI 지갑
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 xdefiWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### Zeal
-
-```tsx
-import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zealWallet(options: {
   chains: Chain[];
 });
 ```

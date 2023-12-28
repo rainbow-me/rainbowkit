@@ -25,13 +25,13 @@ import '@rainbow-me/rainbow-button/styles.css';
 import { RainbowButtonProvider, rainbowConnector } from "@rainbow-me/rainbow-button";
 
 const wagmiClient = createConfig({
-  connectors: [rainbowConnector({ projectId })],
+  connectors: [rainbowConnector({ chains, projectId })],
   publicClient
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiClient}>
+    <WagmiConfig config={config}>
       <RainbowButtonProvider>
         {/* Your App */}
       </RainbowButtonProvider>

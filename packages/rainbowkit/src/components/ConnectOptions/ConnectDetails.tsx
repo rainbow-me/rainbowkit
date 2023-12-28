@@ -77,7 +77,7 @@ export function GetDetail({
 
   const shownWallets = wallets.splice(0, 5);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -218,7 +218,7 @@ export function ConnectDetail({
   const isDesktopDeepLinkAvailable = !!getDesktopUri;
   const safari = isSafari();
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
@@ -628,7 +628,7 @@ export function DownloadOptionsDetail({
     mobileDownloadUrl,
   } = wallet;
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -735,7 +735,7 @@ export function DownloadDetail({
 }) {
   const { downloadUrls, qrCode } = wallet;
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -816,7 +816,7 @@ export function InstructionMobileDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -903,7 +903,7 @@ export function InstructionExtensionDetail({
 }: {
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -992,7 +992,7 @@ export function InstructionDesktopDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box

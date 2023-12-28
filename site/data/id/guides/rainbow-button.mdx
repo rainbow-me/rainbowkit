@@ -1,0 +1,69 @@
+---
+title: Mengadopsi Tombol Rainbow di dApp Anda
+description: Sebuah library plug-and-play untuk mendukung dompet Rainbow di dApp Anda
+image: guide-walletconnect-v2.png
+---
+
+# Mengadopsi Tombol Rainbow di dApp Anda
+
+Komponen `RainbowButton` adalah cara termudah untuk menambahkan dukungan Rainbow Wallet ke dApp yang menggunakan `wagmi` dan lebih memilih pengalaman konektor kustom daripada [RainbowKit](https://www.rainbowkit.com/docs/installation).
+
+**1. Pasang `@rainbow-me/rainbow-button` dan depedensi terkait**
+
+Paket ini kompatibel dengan Next.js, React, dan Vite. Pastikan Anda mengikuti peringatan depedensi terkait.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. Konfigurasikan dengan Wagmi dan pasang RainbowButton**
+
+Kirimkan contoh `RainbowConnector` ke daftar konektor Wagmi Anda, dan bungkus aplikasi Anda dengan `RainbowButtonProvider`. Kemudian tambahkan komponen `RainbowButton` ke dalam daftar dompet Anda.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+Anda juga dapat menggunakan komponen `RainbowButton.Custom` untuk implementasi dan tampilan kustom.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. Dan itu saja!**
+
+Sekarang pengguna Anda dapat menikmati pengalaman koneksi yang mulus untuk Rainbow — tanpa perawatan atau masalah apapun.
+
+Sebuah komponen [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) juga tersedia di [RainbowKit](https://www.rainbowkit.com/docs/installation) jika Anda ingin mendukung dompet tambahan.

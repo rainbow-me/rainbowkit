@@ -1,0 +1,69 @@
+---
+title: अपने dApp में Rainbow बटन को अद्यतन करना
+description: Wagmi का समर्थन करने के लिए Rainbow वॉलेट के लिए औपचारिक पुस्तकालय को अनुवाद करना और dApp के लिए समर्थन प्रदान करना
+image: guide-walletconnect-v2.png
+---
+
+# अपने dApp में Rainbow बटन को अद्यतन करना
+
+`RainbowButton` कॉंपोनेंट, `wagmi` का उपयोग करने वाले dApps के लिए Rainbow Wallet के समर्थन के लिए एक सरलतम तरीका है जो [RainbowKit](https://www.rainbowkit.com/docs/installation) से अधिक, एक कस्टम कनेक्टर अनुभव का प्रोत्साहन करते हैं।
+
+**1. `@rainbow-me/rainbow-button` और इसके अंशीय आवश्यकता इंस्टॉल करें**
+
+पैकेज Next.js, React और Vite के साथ संगत है। उपेक्षा न करें और पियर डिपेंडन्सी चेतावनी का पालन करें।
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. Wagmi के साथ कॉन्फ़िगर करें और RainbowButton इंस्टॉल करें**
+
+अपने Wagmi कनेक्टर सूची में `RainbowConnector` का एक उदाहरण पास करें, और अपनो ऐप्प को `RainbowButtonProvider` में लपेटें। फिर अपनेवॉलेट सूची में `RainbowButton` कॉंपोनेंट ड्रॉप-इन करें।
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+तथा अनुकूलन और स्टाइलिंग के लिए उपयोग करने के लिए `RainbowButton.Custom` कॉंपोनेंट भी है।
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. और यही है!**
+
+अब आपके उपयोगकर्ता Rainbow के लिए एक अविभाज्य कनेक्शन अनुभव का आनंद ले सकते हैं - कोई रखरखाव या परेशानी के बिना।
+
+अगर आप चाहें तो, [RainbowKit](https://www.rainbowkit.com/docs/installation) में भी एक [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) कॉंपोनेंट उपलब्ध है जिसका समर्थन अपनाएं।

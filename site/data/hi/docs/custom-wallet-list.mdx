@@ -126,22 +126,22 @@ argentWallet(options: {
 });
 ```
 
-#### Bifrost वॉलेट
+#### BitKeep
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-bifrostWallet(options: {
+import { bitKeepWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bitKeepWallet(options: {
+  projectId: string;
   chains: Chain[];
 });
 ```
 
-#### Bitget वॉलेट
+#### Bifrost Wallet
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+bifrostWallet(options: {
   chains: Chain[];
 });
 ```
@@ -156,7 +156,7 @@ bitskiWallet(options: {
 });
 ```
 
-#### Brave वॉलेट
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -166,7 +166,7 @@ braveWallet(options: {
 });
 ```
 
-#### Coinbase वॉलेट
+#### Coinbase Wallet
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -177,7 +177,7 @@ coinbaseWallet(options: {
 });
 ```
 
-#### Coin98 वॉलेट
+#### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
@@ -188,7 +188,7 @@ coin98Wallet(options: {
 });
 ```
 
-#### कोर
+#### Core
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -199,7 +199,7 @@ coreWallet(options: {
 });
 ```
 
-#### Dawn वॉलेट
+#### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -209,7 +209,7 @@ dawnWallet(options: {
 });
 ```
 
-#### Enkrypt वॉलेट
+#### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -229,7 +229,7 @@ foxWallet(options: {
 });
 ```
 
-#### Frame वॉलेट
+#### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -238,7 +238,7 @@ frameWallet(options: {
 });
 ```
 
-#### Frontier वॉलेट
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -282,7 +282,7 @@ metaMaskWallet(options: {
 });
 ```
 
-#### MEW वॉलेट
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -291,7 +291,7 @@ mewWallet(options: {
 });
 ```
 
-#### OKX वॉलेट
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -302,7 +302,7 @@ okxWallet(options: {
 });
 ```
 
-#### ओम्नी
+#### Omni
 
 ```tsx
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -313,7 +313,7 @@ omniWallet(options: {
 });
 ```
 
-#### वनकी
+#### OneKey
 
 ```tsx
 import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -323,7 +323,7 @@ oneKeyWallet(options: {
 });
 ```
 
-#### फैंटम
+#### Phantom
 
 ```tsx
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -333,7 +333,7 @@ phantomWallet(options: {
 });
 ```
 
-#### रैबी वॉलेट
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -343,7 +343,7 @@ rabbyWallet(options: {
 });
 ```
 
-#### रेनबो
+#### Rainbow
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -354,7 +354,7 @@ rainbowWallet(options: {
 });
 ```
 
-#### सुरक्षित (Gnosis Safe)
+#### Safe (Gnosis Safe)
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -364,7 +364,7 @@ safeWallet(options: {
 });
 ```
 
-#### सेफहेरोन
+#### Safeheron
 
 ```tsx
 import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -374,17 +374,7 @@ safeheronWallet(options: {
 });
 ```
 
-#### सेफपैल वॉलेट
-
-```tsx
-import { safepalWallet } from '@rainbow-me/rainbowkit/wallets';
-safepalWallet(options: {
-  projectId: string;
-  chains: Chain[];
-});
-```
-
-#### ताहो
+#### Taho
 
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -394,7 +384,7 @@ tahoWallet(options: {
 });
 ```
 
-#### तालिस्मान
+#### Talisman
 
 ```tsx
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -404,7 +394,17 @@ talismanWallet(options: {
 });
 ```
 
-#### टोकनपॉकेट
+#### Tokenary
+
+```tsx
+import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+
+tokenaryWallet(options: {
+  chains: Chain[];
+});
+```
+
+#### TokenPocket
 
 ```tsx
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -415,7 +415,7 @@ tokenPocketWallet(options: {
 });
 ```
 
-#### ट्रस्ट वॉलेट
+#### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -426,7 +426,7 @@ trustWallet(options: {
 });
 ```
 
-#### यूनिस्वाप वॉलेट
+#### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -437,7 +437,7 @@ uniswapWallet(options: {
 });
 ```
 
-#### XDEFI वॉलेट
+#### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -447,17 +447,7 @@ xdefiWallet(options: {
 });
 ```
 
-#### जिल
-
-```tsx
-import { zealWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zealWallet(options: {
-  chains: Chain[];
-});
-```
-
-#### जेरियन
+#### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';

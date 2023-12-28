@@ -14,7 +14,7 @@ import { Text } from '../Text/Text';
 export const signInIcon = async () => (await import('./sign.png')).default;
 
 export function SignIn({ onClose }: { onClose: () => void }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
@@ -35,7 +35,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         status: 'idle',
       }));
     }
-  }, [authAdapter, i18n]);
+  }, [authAdapter, i18n.t]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect
