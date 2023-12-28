@@ -71,9 +71,9 @@
     "react-dom": "^18.2.0",
     "recursive-readdir-files": "^2.3.0",
     "typescript": "^5.0.4",
-    "viem": "2.0.0-beta.15",
+    "viem": "2.0.0-rc.3",
     "vitest": "^0.33.0",
-    "wagmi": "2.0.0-beta.8"
+    "wagmi": "2.0.0-rc.2"
   },
   "packageManager": "pnpm@8.10.5",
   "pnpm": {

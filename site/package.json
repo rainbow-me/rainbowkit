@@ -34,8 +34,8 @@
     "three": "^0.139.2",
     "unified": "10.1.2",
     "unist-util-visit": "4.1.0",
-    "viem": "2.0.0-beta.15",
-    "wagmi": "2.0.0-beta.8",
+    "viem": "2.0.0-rc.3",
+    "wagmi": "2.0.0-rc.2",
     "@tanstack/react-query": "5.13.4"
   },
   "devDependencies": {
