@@ -1,0 +1,75 @@
+---
+title: Останні Транзакції
+description: Показати ваші останні транзакції
+---
+
+# Останні Транзакції
+
+## Показати ваші останні транзакції
+
+Ви можете включити відображення останніх транзакцій у модальному вікні акаунта RainbowKit. Зверніть увагу, що всі транзакції зберігаються в локальному сховищі і їх потрібно вручну зареєструвати в RainbowKit, щоб вони відображалися.
+
+Стандартна реалізація `ConnectButton` також покаже індикатор завантаження навколо аватара користувача, якщо є незавершені транзакції. Індивідуальні реалізації `ConnectButton` можуть відтворити цю поведінку через властивість `account.hasPendingTransactions`, яка передається у вашу функцію відображення.
+
+Щоб використовувати цю функцію, спочатку активуйте опцію `showRecentTransactions` на `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Після цього транзакції можна реєструвати в RainbowKit за допомогою хука `useAddRecentTransaction`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+Як тільки транзакція буде зареєстрована в RainbowKit, її статус буде оновлено після завершення.
+
+За замовчуванням транзакція вважатиметься завершеною після видобутку одного блоку на вершині блоку, в якому була здійснена транзакція, але це можна налаштувати, вказавши власне значення `confirmations`.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
