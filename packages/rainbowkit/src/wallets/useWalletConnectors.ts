@@ -34,7 +34,7 @@ export interface WalletConnector extends WalletInstance {
 }
 
 export function useWalletConnectors(
-  combineEIP6963WithRkConnectors = false,
+  mergeEIP6963WithRkConnectors = false,
 ): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
@@ -128,7 +128,7 @@ export function useWalletConnectors(
     .filter(isRainbowKitConnector)
     .filter((wallet) => !wallet.isWalletConnectModalConnector)
     .filter((wallet) => {
-      if (!combineEIP6963WithRkConnectors) return true;
+      if (!mergeEIP6963WithRkConnectors) return true;
 
       const existsInEIP6963Connectors = eip6963Connectors.some(
         (eip6963) => eip6963.id === wallet.rdns,

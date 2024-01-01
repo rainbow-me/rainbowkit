@@ -76,9 +76,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const { connector } = useContext(WalletButtonContext);
 
-  const combineEIP6963WithRkConnectors = true;
+  const mergeEIP6963WithRkConnectors = true;
 
-  const wallets = useWalletConnectors(combineEIP6963WithRkConnectors)
+  const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
