@@ -22,7 +22,7 @@
 
 **Wagmi V2 Integration and EIP6963 Support**
 
-Upgraded to wagmi v2 and introduced support for EIP6963. 
+Upgraded to wagmi v2 and introduced support for EIP6963.
 
 EIP6963 wallets are now automatically placed in the `Installed` section of the RainbowKit connect modal. All projects within the RainbowKit repository examples folder have been updated to work with wagmi v2.
 
@@ -156,3 +156,119 @@ const wagmiConfig = createConfig({
 **EIP6963 Not Supported on Mobile**
 
 Please note that EIP6963 is not supported on mobile devices. Instead, we use the wallets provided to `connectorsForWallets` and/or `getDefaultWallets` and generate a WalletConnect URI to redirect you to the wallet app.
+
+**Rainbow Button Updates**
+
+The Rainbow Button package has been updated. We have transitioned from using the connector as a class to function.
+
+**Before:**
+
+```tsx
+import "@rainbow-me/rainbow-button/styles.css";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { mainnet } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+import {
+  RainbowButtonProvider,
+  RainbowConnector,
+} from "@rainbow-me/rainbow-button";
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [mainnet],
+  [publicProvider()]
+);
+
+const projectId = "YOUR_PROJECT_ID";
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient,
+  webSocketPublicClient,
+});
+
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowButtonProvider>{/* Your App */}</RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+**After:**
+
+```tsx
+import "@rainbow-me/rainbow-button/styles.css";
+import { createConfig, http, WagmiProvider } from "wagmi";
+import { mainnet } from "wagmi/chains";
+import {
+  RainbowButtonProvider,
+  rainbowConnector,
+} from "@rainbow-me/rainbow-button";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const projectId = "YOUR_PROJECT_ID";
+
+const wagmiConfig = createConfig({
+  connectors: [rainbowConnector({ projectId })],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+});
+
+const client = new QueryClient();
+
+const App = () => {
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={client}>
+        <RainbowButtonProvider>{/* Your App */}</RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+```
+
+**Wallet Button Updates**
+
+If you're using the `<WalletButton />` component from `@rainbow-me/rainbowkit`, ensure you use `connectorsForWallets` and/or `getDefaultWallets` in the `createConfig` function. Please note that we don't support EIP6963 for the `<WalletButton />` component.
+
+**Example:**
+
+```tsx
+import "@rainbow-me/rainbow-button/styles.css";
+import { createConfig, http, WagmiProvider } from "wagmi";
+import { mainnet } from "wagmi/chains";
+import { RainbowButtonProvider } from "@rainbow-me/rainbow-button";
+import { WalletButton, getDefaultWallets } from "@rainbow-me/rainbowkit";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const { connectors } = getDefaultWallets({
+  appName: "RainbowKit demo",
+  projectId: "YOUR_PROJECT_ID",
+});
+
+const wagmiConfig = createConfig({
+  connectors,
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+});
+
+const client = new QueryClient();
+
+const App = () => {
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={client}>
+        <RainbowButtonProvider>
+          <WalletButton wallet="metaMask" />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+```
