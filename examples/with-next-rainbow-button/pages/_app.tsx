@@ -15,6 +15,7 @@ const projectId = "YOUR_PROJECT_ID";
 
 const config = createConfig({
   autoConnect: true,
+  // @ts-ignore - TODO: resolve wagmi/viem issue
   connectors: [new RainbowConnector({ chains, projectId })],
   publicClient,
   webSocketPublicClient,

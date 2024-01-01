@@ -41,7 +41,7 @@ export function ConnectButton({
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <ConnectButtonRenderer>

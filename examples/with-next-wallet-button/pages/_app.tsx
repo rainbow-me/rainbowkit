@@ -8,7 +8,6 @@ import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { metaMaskWallet, rainbowWallet } from "@rainbow-me/rainbowkit/wallets";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { LedgerConnector } from "wagmi/connectors/ledger";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -31,10 +30,6 @@ const config = createConfig({
       options: {
         appName: 'RainbowKit Example',
       },
-    }),
-    new LedgerConnector({
-      chains,
-      options: { projectId },
     }),
     new WalletConnectConnector({
       options: { projectId },
