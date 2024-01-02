@@ -478,8 +478,8 @@ importers:
         specifier: ^3.8.9
         version: 3.8.9
       '@types/qrcode':
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.5.5
+        version: 1.5.5
       '@types/ua-parser-js':
         specifier: ^0.7.36
         version: 0.7.38
@@ -9417,10 +9417,10 @@ packages:
     resolution: {integrity: sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==}
     dev: false
 
-  /@types/qrcode@1.4.2:
-    resolution: {integrity: sha512-7uNT9L4WQTNJejHTSTdaJhfBSCN73xtXaHFyBJ8TSwiLhe4PRuTue7Iph0s2nG9R/ifUaSnGhLUOZavlBEqDWQ==}
+  /@types/qrcode@1.5.5:
+    resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
-      '@types/node': 17.0.35
+      '@types/node': 18.18.10
     dev: true
 
   /@types/qs@6.9.7:
