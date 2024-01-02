@@ -447,8 +447,8 @@ importers:
         specifier: 1.5.0
         version: 1.5.0(@vanilla-extract/css@1.9.1)
       clsx:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.1.0
+        version: 2.1.0
       i18n-js:
         specifier: ^4.3.2
         version: 4.3.2
@@ -578,8 +578,8 @@ importers:
         specifier: 1.5.0
         version: 1.5.0(@vanilla-extract/css@1.9.1)
       clsx:
-        specifier: 1.1.1
-        version: 1.1.1
+        specifier: 2.1.0
+        version: 2.1.0
       copy-to-clipboard:
         specifier: ^3.3.1
         version: 3.3.1
@@ -12395,6 +12395,11 @@ packages:
   /clsx@1.1.1:
     resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
     engines: {node: '>=6'}
+
+  /clsx@2.1.0:
+    resolution: {integrity: sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /cluster-key-slot@1.1.2:
     resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
