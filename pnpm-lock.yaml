@@ -494,7 +494,7 @@ importers:
         version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
       autoprefixer:
         specifier: ^10.4.16
-        version: 10.4.16(postcss@8.4.6)
+        version: 10.4.16(postcss@8.4.32)
       jsdom:
         specifier: ^23.0.1
         version: 23.0.1
@@ -502,8 +502,8 @@ importers:
         specifier: ^13.2.4
         version: 13.2.4
       postcss:
-        specifier: ^8.4.4
-        version: 8.4.6
+        specifier: ^8.4.32
+        version: 8.4.32
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -4731,7 +4731,6 @@ packages:
 
   /@changesets/cli@2.27.1:
     resolution: {integrity: sha512-iJ91xlvRnnrJnELTp4eJJEOPjgpF3NOh4qeQehM6Ugiz9gJPRZ2t+TsXun6E3AMN4hScZKjqVXl0TX+C7AB3ZQ==}
-    hasBin: true
     dependencies:
       '@babel/runtime': 7.23.4
       '@changesets/apply-release-plan': 7.0.0
@@ -4907,7 +4906,6 @@ packages:
   /@commitlint/cli@18.4.3(typescript@5.0.4):
     resolution: {integrity: sha512-zop98yfB3A6NveYAZ3P1Mb6bIXuCeWgnUfVNkH4yhIMQpQfzFwseadazOuSn0OOfTt0lWuFauehpm9GcqM5lww==}
     engines: {node: '>=v18'}
-    hasBin: true
     dependencies:
       '@commitlint/format': 18.4.3
       '@commitlint/lint': 18.4.3
@@ -11367,6 +11365,7 @@ packages:
       picocolors: 1.0.0
       postcss: 8.4.6
       postcss-value-parser: 4.2.0
+    dev: false
 
   /available-typed-arrays@1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
@@ -12600,7 +12599,6 @@ packages:
   /conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-ZPMl0ZJbw74iS9LuX9YIAiW8pfM5p3yh2o/NbXHbkFuZzY5jvdi5jFycEOkmBW5H5I7nA+D6f3UcsCLP2vvSEA==}
     engines: {node: '>=16'}
-    hasBin: true
     dependencies:
       JSONStream: 1.3.5
       is-text-path: 2.0.0
@@ -15821,7 +15819,6 @@ packages:
   /git-raw-commits@2.0.11:
     resolution: {integrity: sha512-VnctFhw+xfj8Va1xtfEqCUD2XDrbAPSJx+hSrE5K7fGdjZruW7XV+QOrN7LF/RJyvspRiD2I0asWsxFp0ya26A==}
     engines: {node: '>=10'}
-    hasBin: true
     dependencies:
       dargs: 7.0.0
       lodash: 4.17.21
@@ -16821,7 +16818,6 @@ packages:
   /is-docker@3.0.0:
     resolution: {integrity: sha512-eljcgEDlEns/7AXFosB5K/2nCM4P7FQPkGc/DWLy5rmFEWvZayGrik1d9/QIY5nJ4f9YsVvBkA6kJpHn9rISdQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    hasBin: true
 
   /is-extendable@0.1.1:
     resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
@@ -16876,7 +16872,6 @@ packages:
   /is-inside-container@1.0.0:
     resolution: {integrity: sha512-KIYLCCJghfHZxqjYBE7rEy0OBuTd5xCHS7tHVgvCLkx7StIoaxwNW3hCALgEUjFfeRk+MG/Qxmp/vtETEF3tRA==}
     engines: {node: '>=14.16'}
-    hasBin: true
     dependencies:
       is-docker: 3.0.0
 
@@ -17793,7 +17788,6 @@ packages:
 
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
-    hasBin: true
 
   /jose@4.14.4:
     resolution: {integrity: sha512-j8GhLiKmUAh+dsFXlX1aJCbt5KMibuKb+d7j1JaOJG6s2UjX1PQlW+OKB/sD4a/5ZYF4RcmYmLSndOoU3Lt/3g==}
@@ -21076,9 +21070,10 @@ packages:
     resolution: {integrity: sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.3.6
+      nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
 
   /preact-render-to-string@5.2.6(preact@10.13.2):
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
@@ -21118,7 +21113,6 @@ packages:
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
     dev: true
 
   /pretty-bytes@5.6.0:
@@ -22690,7 +22684,6 @@ packages:
   /smartwrap@2.0.2:
     resolution: {integrity: sha512-vCsKNQxb7PnCNd2wY1WClWifAc2lwqsG8OaswpJkVJsvMGcnEntdTCDajZCkk93Ay1U3t/9puJmb525Rg5MZBA==}
     engines: {node: '>=6'}
-    hasBin: true
     dependencies:
       array.prototype.flat: 1.3.2
       breakword: 1.0.5
@@ -23714,7 +23707,6 @@ packages:
   /tty-table@4.2.1:
     resolution: {integrity: sha512-xz0uKo+KakCQ+Dxj1D/tKn2FSyreSYWzdkL/BYhgN6oMW808g8QRMuh1atAV9fjTPbWBjfbkKQpI/5rEcnAc7g==}
     engines: {node: '>=8.0.0'}
-    hasBin: true
     dependencies:
       chalk: 4.1.2
       csv: 5.5.3
@@ -24451,7 +24443,7 @@ packages:
     dependencies:
       '@types/node': 18.16.12
       esbuild: 0.18.17
-      postcss: 8.4.27
+      postcss: 8.4.32
       rollup: 3.26.3
     optionalDependencies:
       fsevents: 2.3.3
