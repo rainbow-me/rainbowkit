@@ -61,6 +61,7 @@ export const useRainbowKitChainsById = () => {
   return useMemo(() => {
     const rainbowkitChainsById: Record<number, RainbowKitChain> = {};
 
+    // biome-ignore lint/complexity/noForEach: TODO
     rainbowkitChains.forEach((rkChain) => {
       rainbowkitChainsById[rkChain.id] = rkChain;
     });

@@ -3,6 +3,7 @@ import React from 'react';
 export function TickIcon() {
   return (
     <svg fill="none" height="22" width="22" xmlns="http://www.w3.org/2000/svg">
+      <title>Tick</title>
       <path
         d="M11 22c6.032 0 11-4.966 11-10.995C22 4.977 17.021 0 11 0 4.968 0 0 4.977 0 11.005 0 17.034 4.968 22 11 22Z"
         fill="#4BD166"

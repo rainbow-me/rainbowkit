@@ -59,7 +59,9 @@ const _connectorsForWallets = (walletList: WalletList): (() => Connector[]) => {
     // they can decide whether or not they should be hidden,
     // e.g. the "Injected Wallet" option hides itself if another
     // injected wallet is available.
+    // biome-ignore lint/complexity/noForEach: TODO
     walletList.forEach(({ groupName, wallets }, groupIndex) => {
+      // biome-ignore lint/complexity/noForEach: TODO
       wallets.forEach((wallet) => {
         index++;
 
@@ -92,6 +94,7 @@ const _connectorsForWallets = (walletList: WalletList): (() => Connector[]) => {
       ...potentiallyHiddenWallets,
     ];
 
+    // biome-ignore lint/complexity/noForEach: TODO
     walletListItems.forEach(
       ({
         createConnector,

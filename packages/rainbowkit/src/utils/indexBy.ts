@@ -4,6 +4,7 @@ export function indexBy<Item>(
 ): Record<string, Item> {
   const indexedItems: Record<string, Item> = {};
 
+  // biome-ignore lint/complexity/noForEach: TODO
   items.forEach((item) => {
     const key = getKey(item);
 

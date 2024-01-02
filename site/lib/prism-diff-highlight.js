@@ -29,7 +29,8 @@ module.exports = (Prism) => {
   });
 
   Prism.hooks.add('wrap', (env) => {
-    let diffLanguage, diffGrammar;
+    let diffLanguage;
+    let diffGrammar;
 
     if (env.language !== 'diff') {
       const langMatch = LANGUAGE_REGEX.exec(env.language);
@@ -70,7 +71,6 @@ module.exports = (Prism) => {
       const lines = [];
       let m;
       HTML_LINE.lastIndex = 0;
-      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       while ((m = HTML_LINE.exec(highlighted))) {
         lines.push(prefix + m[0]);
       }

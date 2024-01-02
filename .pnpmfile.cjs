@@ -30,6 +30,7 @@ function omitRootDependencies(packageName, dependencies) {
     // None for now
   ];
 
+  // biome-ignore lint/complexity/noForEach: TODO
   Object.keys(dependencies).forEach((dep) => {
     if (!rootDependencies[dep] || allowedDuplicatePackages.includes(dep)) {
       // Keep the dependency in the app template's package.json since it's not in the

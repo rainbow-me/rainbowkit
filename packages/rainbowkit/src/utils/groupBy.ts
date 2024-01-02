@@ -4,6 +4,7 @@ export function groupBy<Item>(
 ): Record<string, Item[]> {
   const groupedItems: Record<string, Item[]> = {};
 
+  // biome-ignore lint/complexity/noForEach: TODO
   items.forEach((item) => {
     const key = getKey(item);
 

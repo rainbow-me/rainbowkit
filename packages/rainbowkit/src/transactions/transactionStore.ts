@@ -193,6 +193,7 @@ export function createTransactionStore({
   }
 
   function notifyListeners(): void {
+    // biome-ignore lint/complexity/noForEach: TODO
     listeners.forEach((listener) => listener());
   }
 

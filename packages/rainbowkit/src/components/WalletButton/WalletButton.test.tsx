@@ -41,12 +41,12 @@ describe('<WalletButton />', () => {
   });
 
   it('should throw error for non ready connectors', () => {
-    ['argent', 'xdefi', 'uniswap'].forEach((connector) => {
+    for (const connector of ['argent', 'xdefi', 'uniswap']) {
       expect(() =>
         renderWithProviders(<WalletButton wallet={connector} />, {
           chains: [mainnet],
         }),
       ).toThrow('Connector not found');
-    });
+    }
   });
 });

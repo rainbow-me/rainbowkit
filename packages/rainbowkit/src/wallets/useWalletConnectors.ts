@@ -97,6 +97,7 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const walletConnectors: WalletConnector[] = [];
 
+  // biome-ignore lint/complexity/noForEach: TODO
   groupedWallets.forEach((wallet: WalletInstance) => {
     if (!wallet) {
       return;
