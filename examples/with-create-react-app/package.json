@@ -6,7 +6,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.2",
     "@types/node": "^18.18.10",
     "@types/react": "^18.2.43",
