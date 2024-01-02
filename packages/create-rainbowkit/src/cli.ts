@@ -173,10 +173,10 @@ async function run() {
     const packageManager = options.usePnpm
       ? 'pnpm'
       : options.useYarn
-      ? 'yarn'
-      : options.useNpm
-      ? 'npm'
-      : detectPackageManager();
+        ? 'yarn'
+        : options.useNpm
+          ? 'npm'
+          : detectPackageManager();
 
     log(
       chalk.cyan(

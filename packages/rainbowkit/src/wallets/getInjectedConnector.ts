@@ -15,8 +15,8 @@ function getExplicitInjectedProvider(
   return providers
     ? providers.find((provider) => provider[flag])
     : window.ethereum[flag]
-    ? window.ethereum
-    : undefined;
+      ? window.ethereum
+      : undefined;
 }
 
 export function hasInjectedProvider(
