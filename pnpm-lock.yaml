@@ -475,8 +475,8 @@ importers:
         specifier: ^14.5.2
         version: 14.5.2(@testing-library/dom@9.3.1)
       '@types/i18n-js':
-        specifier: ^3.8.5
-        version: 3.8.5
+        specifier: ^3.8.9
+        version: 3.8.9
       '@types/qrcode':
         specifier: ^1.4.2
         version: 1.4.2
@@ -9270,8 +9270,8 @@ packages:
       '@types/node': 18.18.10
     dev: false
 
-  /@types/i18n-js@3.8.5:
-    resolution: {integrity: sha512-6LlMVfkAW8gwcgxIRjxuWxjhD+hw4Mj2VC609FpYCG5n8usb2GE2xbKsEQXWmAIe6LBN2OOw7HnSjZqMDHVtDw==}
+  /@types/i18n-js@3.8.9:
+    resolution: {integrity: sha512-bSxgya4x5O+x+QhfCGckiDDE+17XGPp1TNBgBA/vfF5EwdiZC70F4cKG5QK2v44+v62oY7/t/InreRhxskulcA==}
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
