@@ -58,7 +58,7 @@ importers:
         version: 3.9.3(@types/node@18.18.10)(vite@5.0.7)
       '@wagmi/core':
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -108,14 +108,14 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       viem:
-        specifier: ~1.19.15
-        version: 1.19.15(typescript@5.0.4)
+        specifier: ~1.21.4
+        version: 1.21.4(typescript@5.0.4)
       vitest:
         specifier: ^0.33.0
         version: 0.33.0(jsdom@23.0.1)
       wagmi:
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
 
   examples/with-create-react-app:
     dependencies:
@@ -407,11 +407,11 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4(ethers@5.6.8)
       viem:
-        specifier: ~1.19.15
-        version: 1.19.15(typescript@5.0.4)
+        specifier: ~1.21.4
+        version: 1.21.4(typescript@5.0.4)
       wagmi:
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
 
   packages/rainbow-button:
     dependencies:
@@ -491,7 +491,7 @@ importers:
         version: 1.0.3
       '@wagmi/core':
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -508,14 +508,14 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0
       viem:
-        specifier: ~1.19.15
-        version: 1.19.15(typescript@5.0.4)
+        specifier: ~1.21.4
+        version: 1.21.4(typescript@5.0.4)
       vitest:
         specifier: ^0.33.0
         version: 0.33.0(jsdom@23.0.1)
       wagmi:
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
 
   packages/rainbowkit-siwe-next-auth:
     dependencies:
@@ -632,11 +632,11 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       viem:
-        specifier: ~1.19.15
-        version: 1.19.15(typescript@5.0.4)
+        specifier: ~1.21.4
+        version: 1.21.4(typescript@5.0.4)
       wagmi:
         specifier: ~1.4.12
-        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+        version: 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
     devDependencies:
       contentlayer:
         specifier: 0.2.9
@@ -8580,7 +8580,7 @@ packages:
     resolution: {integrity: sha512-gYw0ki/EAuV1oSyMxpqandHjnthZjYYy+YWpTAzf8BqfXM3ItcZLpjxfg+3+mXW8HIO+3jw6T9iiqEXsqHaMMw==}
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.7.3
-      viem: 1.19.15(typescript@5.0.4)
+      viem: 1.21.4(typescript@5.0.4)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -8592,7 +8592,7 @@ packages:
     resolution: {integrity: sha512-XJbEPuaVc7b9n23MqlF6c+ToYIS3f7P2Sel8f3cSBQ9WORE4xrSuvhMpK9fDSFqJ7by/brc+rmJR/5HViRr0/w==}
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.7.3
-      viem: 1.19.15(typescript@5.0.4)
+      viem: 1.21.4(typescript@5.0.4)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -9926,7 +9926,7 @@ packages:
       pretty-format: 29.6.0
     dev: true
 
-  /@wagmi/connectors@3.1.10(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15):
+  /@wagmi/connectors@3.1.10(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4):
     resolution: {integrity: sha512-ZLJC1QaeiZarkF07Cr9mOlVjPO1Lf5TBx+JKBms2y5fUIXlKrxCfQgO/gDCureboI+Us2X3IRI659+XacSGpbA==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -9945,7 +9945,7 @@ packages:
       abitype: 0.8.7(typescript@5.0.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 1.19.15(typescript@5.0.4)
+      viem: 1.21.4(typescript@5.0.4)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -10000,7 +10000,7 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15):
+  /@wagmi/core@1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4):
     resolution: {integrity: sha512-bLcYmmGgjtl3jAGo8X3Sm6oUwsdjbVxFMu9SWnwHdE4S9JdYeWM57dEhQgq8SYul2yQ7yY2/gimBf1Or0Ky3dQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -10009,11 +10009,11 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@wagmi/connectors': 3.1.10(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+      '@wagmi/connectors': 3.1.10(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
       abitype: 0.8.7(typescript@5.0.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 1.19.15(typescript@5.0.4)
+      viem: 1.21.4(typescript@5.0.4)
       zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -17053,7 +17053,7 @@ packages:
     peerDependencies:
       ws: '*'
     dependencies:
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.13.0
 
   /istanbul-lib-coverage@3.2.0:
     resolution: {integrity: sha512-eOeJ5BHCmHYvQK7xt9GkdHuzuCGS1Y6g9Gvnx3Ym33fz/HpLRYxiS0wHNr+m/MBC8B647Xt608vCDEvhl9c6Mw==}
@@ -17873,7 +17873,7 @@ packages:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
-      ws: 8.15.0
+      ws: 8.15.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -22185,7 +22185,7 @@ packages:
       '@babel/runtime': 7.23.4
       eventemitter3: 4.0.7
       uuid: 8.3.2
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.15.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
     optionalDependencies:
       bufferutil: 4.0.7
       utf-8-validate: 5.0.10
@@ -24271,28 +24271,6 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  /viem@1.19.15(typescript@5.0.4):
-    resolution: {integrity: sha512-rc87AkyrUUsoOAgMNYP+X/wN4GYwbhP87DkmsqQCYKxxQyzTX0+yliKs6Bxljbjr8ybU72GOb12Oyus6393AjQ==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@adraffy/ens-normalize': 1.10.0
-      '@noble/curves': 1.2.0
-      '@noble/hashes': 1.3.2
-      '@scure/bip32': 1.3.2
-      '@scure/bip39': 1.2.1
-      abitype: 0.9.8(typescript@5.0.4)
-      isows: 1.0.3(ws@8.13.0)
-      typescript: 5.0.4
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-
   /viem@1.19.4(typescript@5.0.4):
     resolution: {integrity: sha512-CvAVaOzxlu3Q/cpfrYvTRMBIPDMAkLu8aFmHLqU1Bg25DyUxp9xwoF1Ljp38q7/Rosm1OPFQ4y6K64v/VwoumQ==}
     peerDependencies:
@@ -24309,7 +24287,29 @@ packages:
       abitype: 0.9.8(typescript@5.0.4)
       isows: 1.0.3(ws@8.13.0)
       typescript: 5.0.4
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.13.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
+
+  /viem@1.21.4(typescript@5.0.4):
+    resolution: {integrity: sha512-BNVYdSaUjeS2zKQgPs+49e5JKocfo60Ib2yiXOWBT6LuVxY1I/6fFX3waEtpXvL1Xn4qu+BVitVtMh9lyThyhQ==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@adraffy/ens-normalize': 1.10.0
+      '@noble/curves': 1.2.0
+      '@noble/hashes': 1.3.2
+      '@scure/bip32': 1.3.2
+      '@scure/bip39': 1.2.1
+      abitype: 0.9.8(typescript@5.0.4)
+      isows: 1.0.3(ws@8.13.0)
+      typescript: 5.0.4
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -24551,7 +24551,7 @@ packages:
       xml-name-validator: 5.0.0
     dev: true
 
-  /wagmi@1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15):
+  /wagmi@1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4):
     resolution: {integrity: sha512-QRxpjhdMlZmbYTfn9VQkQMKq+l3kwA1O7tF10vaykPrjbGX+IIlyn72ib9oqW9BfQO7n/Sf/mnVz1zbxRhGPWA==}
     peerDependencies:
       react: '>=17.0.0'
@@ -24564,12 +24564,12 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.5
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.5(@tanstack/react-query@4.29.5)
-      '@wagmi/core': 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.19.15)
+      '@wagmi/core': 1.4.12(@types/react@18.2.46)(lokijs@1.5.12)(react@18.2.0)(typescript@5.0.4)(viem@1.21.4)
       abitype: 0.8.7(typescript@5.0.4)
       react: 18.2.0
       typescript: 5.0.4
       use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 1.19.15(typescript@5.0.4)
+      viem: 1.21.4(typescript@5.0.4)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -24761,7 +24761,7 @@ packages:
       spdy: 4.0.2
       webpack: 5.82.0(esbuild@0.14.39)
       webpack-dev-middleware: 5.3.3(webpack@5.82.0)
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.15.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -25223,8 +25223,20 @@ packages:
       utf-8-validate:
         optional: true
 
-  /ws@8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /ws@8.13.0:
     resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
+  /ws@8.15.0(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+    resolution: {integrity: sha512-H/Z3H55mrcrgjFwI+5jKavgXvwQLtfPCUEp6pi35VhoB0pfcHnSoyuTzkBEZpzq49g1193CUEwIvmsjcotenYw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -25237,19 +25249,6 @@ packages:
     dependencies:
       bufferutil: 4.0.7
       utf-8-validate: 5.0.10
-
-  /ws@8.15.0:
-    resolution: {integrity: sha512-H/Z3H55mrcrgjFwI+5jKavgXvwQLtfPCUEp6pi35VhoB0pfcHnSoyuTzkBEZpzq49g1193CUEwIvmsjcotenYw==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: '>=5.0.2'
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
-    dev: true
 
   /xdm@2.1.0:
     resolution: {integrity: sha512-3LxxbxKcRogYY7cQSMy1tUuU1zKNK9YPqMT7/S0r7Cz2QpyF8O9yFySGD7caOZt+LWUOQioOIX+6ZzCoBCpcAA==}
