@@ -96,11 +96,8 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       try {
         const verified = await authAdapter.verify({ message, signature });
 
-        if (verified) {
-          return;
-        } else {
-          throw new Error();
-        }
+        if (verified) return;
+        throw new Error();
       } catch {
         return setState((x) => ({
           ...x,

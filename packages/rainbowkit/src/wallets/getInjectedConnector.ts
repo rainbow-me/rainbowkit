@@ -36,9 +36,9 @@ function getInjectedProvider(
   const providers = window.ethereum.providers;
   const provider = getExplicitInjectedProvider(flag);
   if (provider) return provider;
-  else if (typeof providers !== 'undefined' && providers.length > 0)
+  if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
-  else return window.ethereum;
+  return window.ethereum;
 }
 
 export function getInjectedConnector({

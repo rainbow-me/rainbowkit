@@ -33,14 +33,13 @@ export function connectorsForWallets(wallets: Wallet[]): Connector[];
 export function connectorsForWallets(walletList: any): any {
   if ('groupName' in walletList[0]) {
     return _connectorsForWallets(walletList);
-  } else {
-    return _connectorsForWallets([
-      {
-        groupName: '',
-        wallets: walletList as Wallet[],
-      },
-    ])();
   }
+  return _connectorsForWallets([
+    {
+      groupName: '',
+      wallets: walletList as Wallet[],
+    },
+  ])();
 }
 
 const _connectorsForWallets = (walletList: WalletList): (() => Connector[]) => {
