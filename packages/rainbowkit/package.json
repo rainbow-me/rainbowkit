@@ -67,9 +67,9 @@
     "@types/ua-parser-js": "^0.7.39"
   },
   "dependencies": {
-    "@vanilla-extract/css": "1.9.1",
-    "@vanilla-extract/dynamic": "2.0.2",
-    "@vanilla-extract/sprinkles": "1.5.0",
+    "@vanilla-extract/css": "1.14.0",
+    "@vanilla-extract/dynamic": "2.1.0",
+    "@vanilla-extract/sprinkles": "1.6.1",
     "clsx": "2.1.0",
     "qrcode": "1.5.3",
     "react-remove-scroll": "2.5.7",
