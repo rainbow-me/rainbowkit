@@ -453,8 +453,8 @@ importers:
         specifier: ^4.3.2
         version: 4.3.2
       qrcode:
-        specifier: 1.5.0
-        version: 1.5.0
+        specifier: 1.5.3
+        version: 1.5.3
       react-dom:
         specifier: '>=17'
         version: 18.2.0(react@18.2.0)
@@ -21312,19 +21312,10 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: false
 
-  /qrcode@1.5.0:
-    resolution: {integrity: sha512-9MgRpgVc+/+47dFvQeD6U2s0Z92EsKzcHogtum4QB+UNd025WOJSHvn/hjk9xmzj7Stj95CyUAs31mrjxliEsQ==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      dijkstrajs: 1.0.3
-      encode-utf8: 1.0.3
-      pngjs: 5.0.0
-      yargs: 15.4.1
-    dev: false
-
   /qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
     dependencies:
       dijkstrajs: 1.0.3
       encode-utf8: 1.0.3

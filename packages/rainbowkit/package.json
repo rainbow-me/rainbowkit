@@ -71,7 +71,7 @@
     "@vanilla-extract/dynamic": "2.0.2",
     "@vanilla-extract/sprinkles": "1.5.0",
     "clsx": "1.1.1",
-    "qrcode": "1.5.0",
+    "qrcode": "1.5.3",
     "react-remove-scroll": "2.5.4",
     "i18n-js": "^4.3.2",
     "ua-parser-js": "^1.0.35"
