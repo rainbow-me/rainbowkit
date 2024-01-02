@@ -72,10 +72,6 @@ const mainBuild = esbuild.build({
 
     // esbuild needs these additional entry points in order to support tree shaking while also supporting CSS
     ...(await getAllEntryPoints('src/themes')),
-
-    // The build output is cleaner when bundling all components into a single chunk
-    // This is done assuming that consumers use most of the components in the package, which is a reasonable assumption for now
-    './src/components/index.ts',
   ],
   outdir: 'dist',
   watch: isWatching
