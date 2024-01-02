@@ -1,7 +1,5 @@
 ---
-"generated-test-app": patch
-"rainbowkit-next-app": patch
 "@rainbow-me/rainbowkit": patch
 ---
 
-Added support for the NodeNext module by disabling re-exporting components
+Improved support for `NodeNext` module resolution to resolve `"@rainbow-me/rainbowkit"' has no exported member 'RainbowKitProvider'` TypeScript warnings
