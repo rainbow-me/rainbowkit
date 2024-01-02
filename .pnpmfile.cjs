@@ -30,8 +30,7 @@ function omitRootDependencies(packageName, dependencies) {
     // None for now
   ];
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  Object.keys(dependencies).forEach((dep) => {
+  for (const dep of Object.keys(dependencies)) {
     if (!rootDependencies[dep] || allowedDuplicatePackages.includes(dep)) {
       // Keep the dependency in the app template's package.json since it's not in the
       // root package.json (or in the list of allowed duplicate packages).
@@ -47,7 +46,7 @@ function omitRootDependencies(packageName, dependencies) {
           .join('\n'),
       );
     }
-  });
+  }
 
   return filteredDependencies;
 }

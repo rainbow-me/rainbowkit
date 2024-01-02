@@ -4,12 +4,11 @@ export function groupBy<Item>(
 ): Record<string, Item[]> {
   const groupedItems: Record<string, Item[]> = {};
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  items.forEach((item) => {
+  for (const item of items) {
     const key = getKey(item);
 
     if (!key) {
-      return;
+      continue;
     }
 
     if (!groupedItems[key]) {
@@ -17,7 +16,7 @@ export function groupBy<Item>(
     }
 
     groupedItems[key].push(item);
-  });
+  }
 
   return groupedItems;
 }

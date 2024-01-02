@@ -97,10 +97,9 @@ export function useWalletConnectors(): WalletConnector[] {
 
   const walletConnectors: WalletConnector[] = [];
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  groupedWallets.forEach((wallet: WalletInstance) => {
+  for (const wallet of groupedWallets) {
     if (!wallet) {
-      return;
+      continue;
     }
 
     const recent = recentWallets.includes(wallet);
@@ -130,6 +129,6 @@ export function useWalletConnectors(): WalletConnector[] {
             )
         : undefined,
     });
-  });
+  }
   return walletConnectors;
 }

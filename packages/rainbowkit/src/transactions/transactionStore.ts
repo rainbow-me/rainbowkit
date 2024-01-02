@@ -193,8 +193,9 @@ export function createTransactionStore({
   }
 
   function notifyListeners(): void {
-    // biome-ignore lint/complexity/noForEach: TODO
-    listeners.forEach((listener) => listener());
+    for (const listener of listeners) {
+      listener();
+    }
   }
 
   function onChange(fn: () => void): () => void {

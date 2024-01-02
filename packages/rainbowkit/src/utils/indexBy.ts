@@ -4,16 +4,15 @@ export function indexBy<Item>(
 ): Record<string, Item> {
   const indexedItems: Record<string, Item> = {};
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  items.forEach((item) => {
+  for (const item of items) {
     const key = getKey(item);
 
     if (!key) {
-      return;
+      continue;
     }
 
     indexedItems[key] = item;
-  });
+  }
 
   return indexedItems;
 }
