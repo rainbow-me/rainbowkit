@@ -18,7 +18,6 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
-  balanceData: ReturnType<typeof useBalance>['data'];
   ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
   ensName: ReturnType<typeof useEnsName>['data'];
   onClose: () => void;
@@ -27,17 +26,18 @@ interface ProfileDetailsProps {
 
 export function ProfileDetails({
   address,
-  balanceData,
   ensAvatar,
   ensName,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
+
+  const { data: balanceData } = useBalance({
+    address,
+  });
+
   const [copiedAddress, setCopiedAddress] = useState(false);
-
-  const { i18n } = useContext(I18nContext);
-
   const copyAddressAction = useCallback(() => {
     if (address) {
       navigator.clipboard.writeText(address);
@@ -65,6 +65,8 @@ export function ProfileDetails({
     : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();
+
+  const { i18n } = useContext(I18nContext);
 
   return (
     <>

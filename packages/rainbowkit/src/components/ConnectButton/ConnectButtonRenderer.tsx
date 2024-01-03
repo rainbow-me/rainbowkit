@@ -1,9 +1,11 @@
 import React, { ReactNode, useContext } from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
 import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
+import { isMobile } from '../../utils/isMobile';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
   AuthenticationStatus,
@@ -16,6 +18,7 @@ import {
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
@@ -62,11 +65,11 @@ export function ConnectButtonRenderer({
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const { data: balanceData } = useBalance({ address });
-  const { chain: activeChain } = useNetwork();
+
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
 
+  const { chain: activeChain } = useNetwork();
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
     : undefined;
@@ -81,6 +84,15 @@ export function ConnectButtonRenderer({
     useRecentTransactions().some(({ status }) => status === 'pending') &&
     showRecentTransactions;
 
+  const { showBalance } = useShowBalance();
+  const shouldShowBalance = showBalance
+    ? normalizeResponsiveValue(showBalance)[
+        isMobile() ? 'smallScreen' : 'largeScreen'
+      ]
+    : false;
+  const { data: balanceData } = useBalance({
+    address: shouldShowBalance ? address : undefined,
+  });
   const displayBalance = balanceData
     ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
         balanceData.symbol

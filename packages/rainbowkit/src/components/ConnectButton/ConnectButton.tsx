@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
@@ -13,6 +13,7 @@ import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -40,8 +41,13 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
+  const { setShowBalance } = useShowBalance();
 
   const { i18n } = useContext(I18nContext);
+
+  useEffect(() => {
+    setShowBalance(showBalance);
+  }, [showBalance, setShowBalance]);
 
   return (
     <ConnectButtonRenderer>
