@@ -12,19 +12,19 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "ethers": "^5.6.8",
-    "next": "^13.4.19",
+    "next": "^14.0.4",
     "next-auth": "4.24.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "~1.19.15",
-    "wagmi": "~1.4.12"
+    "viem": "~1.21.4",
+    "wagmi": "~1.4.13"
   },
   "devDependencies": {
-    "@types/node": "^18.18.10",
-    "@types/react": "^18.2.37",
+    "@types/node": "^18.19.3",
+    "@types/react": "^18.2.43",
     "eslint": "^8.15.0",
-    "eslint-config-next": "^13.4.19",
+    "eslint-config-next": "^14.0.4",
     "typescript": "^5.0.4"
   }
 }
