@@ -1,0 +1,399 @@
+---
+title: Посібник з Міграції
+---
+
+# Посібник з Міграції
+
+## Міграція RainbowKit
+
+### Зміни, що розривають сумісність у 1.x.x
+
+#### Оновлено до wagmi v1
+
+Залежність [wagmi](https://wagmi.sh) була оновлена до версії `1.x.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+**1. Оновіть RainbowKit та `wagmi` до останніх версій**
+
+```bash
+npm i @rainbow-me/rainbowkit@^1 wagmi@^1
+```
+
+**2. Встановіть залежність `viem`**
+
+wagmi v1 вимагає пір-залежності `viem`. Встановіть її за допомогою наступної команди:
+
+```bash
+npm i viem
+```
+
+Примітка: wagmi більше не використовує пакет `ethers` внутрішньо. Але якщо ви покладаєтесь на API [Аутентифікації](https://www.rainbowkit.com/docs/authentication), `siwe` все ще потребуватиме `ethers` як пір-залежність.
+
+**3. Переконайтеся в сумісності збірника та поліфілів**
+
+У попередніх версіях wagmi, які використовували [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls`, необхідні для WalletConnect, автоматично поліфілувалися. Це більше не так з RainbowKit v1 + wagmi v1, які побудовані на [viem](https://viem.sh/).
+
+Дивіться наші приклади [Конфігурації Webpack для Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) та [Поліфіли для Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) для керівництва з налаштування вашого проекту.
+
+Додаткові керівництва для фреймворків Vite та Remix доступні [тут](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
+
+**4. Перевірте наявність критичних змін у `wagmi`**
+
+Якщо ви використовуєте хуки `wagmi` у вашому додатку, вам потрібно буде слідувати посібнику міграції `wagmi` до v1.
+
+[Тут ви можете переглянути їхній посібник міграції](https://wagmi.sh/react/migration-guide).
+
+### Зміни, що призводять до непрацездатності, у версії 0.12.x
+
+Залежність wagmi була оновлена до `0.12.x`.
+
+RainbowKit впровадив конектор `WalletConnectLegacyConnector` у `wagmi` для продовження підтримки WalletConnect v1. Підтримка WalletConnect v2 та `WalletConnectConnector` буде незабаром доступна у вигляді патч-релізу, без критичних змін.
+
+Гаманці будуть автоматично переведені у майбутніх релізах.
+
+Кожен dApp тепер повинен надавати `projectId` від [WalletConnect Cloud](https://cloud.walletconnect.com/) для активації WalletConnect v2. Це повинно бути зроблено до закриття серверів моста WalletConnect v1 28 червня 2023 року. RainbowKit буде безшумно віддавати перевагу версії v1 для всіх гаманців, якщо `projectId` не вказано.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть RainbowKit та `wagmi` до останніх версій
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+```
+
+#### 2.  Надайте WalletConnect Cloud projectId
+
+Кожен dApp, що використовує WalletConnect, тепер має отримати `projectId` з [WalletConnect Cloud](https://cloud.walletconnect.com/). Це абсолютно безкоштовно і займає лише кілька хвилин.
+
+Подайте `projectId` до `getDefaultWallets` та індивідуальних конекторів гаманців RainbowKit наступним чином:
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+### Зламні зміни 0.11.x
+
+Залежність wagmi була оновлена до версії `0.11.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть RainbowKit та `wagmi` до останніх версій
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
+```
+
+#### 2.  Перевірте зламні зміни у `wagmi`
+
+Якщо ви використовуєте хуки `wagmi` у вашому застосунку, вам потрібно перевірити, чи ваш застосунок був змінений через невідповідності у `wagmi`.
+
+[Тут ви можете переглянути їхній посібник з міграції](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
+
+### Зміни, що призводять до невідповідностей у версії 0.10.x
+
+Залежність wagmi peer була оновлена до `0.10.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть RainbowKit та `wagmi` до останніх версій
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
+```
+
+#### 2.  Перевірте зламні зміни у `wagmi`
+
+Якщо ви використовуєте хуки `wagmi` у вашому застосунку, вам потрібно перевірити, чи ваш застосунок був змінений через невідповідності у `wagmi`.
+
+[Тут ви можете переглянути їхній посібник з міграції](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+
+### Зміни, що призводять до невідповідностей у версії 0.9.x
+
+Залежність wagmi peer була оновлена до `0.9.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть RainbowKit та `wagmi` до останніх версій
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+```
+
+#### 2.  Перевірте зламні зміни у `wagmi`
+
+Якщо ви використовуєте хуки `wagmi` у вашому застосунку, вам потрібно перевірити, чи ваш застосунок був змінений через невідповідності у `wagmi`.
+
+[Тут ви можете переглянути їхній посібник з міграції](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+
+### Зміни, що призводять до невідповідностей у версії 0.8.x
+
+Залежність wagmi peer була оновлена до `0.8.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть RainbowKit та `wagmi` до останніх версій
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
+```
+
+#### 2.  Перевірте зламні зміни у `wagmi`
+
+Якщо ви використовуєте хуки `wagmi` у вашому застосунку, вам потрібно перевірити, чи ваш застосунок був змінений через невідповідності у `wagmi`.
+
+[Тут ви можете переглянути їхній путівник міграції](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
+
+### Зміни, що розривають сумісність, версії 0.7.x
+
+Якщо ви створюєте власний список гаманців, вам тепер потрібно імпортувати кожен гаманець окремо, щоб зменшити розмір пакету. Зверніть увагу, що оскільки гаманці більше не використовують простір імен через об'єкт `wallet`, всі гаманці тепер мають суфікс `Wallet`.
+
+```diff
+-import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
++import { connectorsForWallets } from '@rainbow-me/rainbowkit';
++import {
++  injectedWallet,
++  rainbowWallet,
++  metaMaskWallet,
++  coinbaseWallet,
++  walletConnectWallet,
++} from '@rainbow-me/rainbowkit/wallets';
+
+const wallets = [
+-  wallet.injected({ chains }),
+-  wallet.rainbow({ chains }),
+-  wallet.metaMask({ chains }),
+-  wallet.coinbase({ chains, appName: 'My App' }),
+-  wallet.walletConnect({ chains }),
++  injectedWallet({ chains }),
++  rainbowWallet({ chains }),
++  metaMaskWallet({ chains }),
++  coinbaseWallet({ chains, appName: 'My App' }),
++  walletConnectWallet({ chains }),
+];
+```
+
+Також зверніть увагу, що шар сумісності з Steakwallet було видалено. Замість цього слід використовувати Omni.
+
+```diff
+-import { wallet } from '@rainbow-me/rainbowkit';
++import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+
+const wallets = [
+-  wallet.steak({ chains }),
++  omniWallet({ chains }),
+];
+```
+
+### Зміни, що розривають сумісність, версії 0.4.x
+
+RainbowKit оновив залежність `wagmi` до версії `0.5.x`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть залежності
+
+Оновіть RainbowKit та wagmi до останньої версії
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
+```
+
+#### 2.  Перевірте зламні зміни у `wagmi`
+
+Якщо ви використовуєте хуки `wagmi` у вашому застосунку, вам потрібно перевірити, чи ваш застосунок був змінений через невідповідності у `wagmi`.
+
+[Ви можете переглянути їхній посібник міграції тут](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
+
+### Зміни 0.3.x, що призводять до несумісності
+
+Вилучено параметр `chainId` з `createConnector` у типі `Wallet`.
+
+**Зверніть увагу, що всі вбудовані гаманці використовують новий API. Більшість користувачів не відчують змін. Ця зміна впливає лише на користувачів, які створили/використовували [кастомні гаманці](/docs/custom-wallets).**
+
+Якщо ви раніше отримували URL-адреси RPC з `chainId` у `createConnector`, тепер ви можете видалити цю логіку, оскільки `wagmi` тепер обробляє URL-адреси RPC внутрішньо, коли використовується з `configureChains`.
+
+```diff
+import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
+import { chain, configureChains } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+
+export interface MyWalletOptions {
+  chains: Chain[];
+}
+
+-const chains = [chain.mainnet]
++const { chains } = configureChains(
++  [chain.mainnet],
++  [
++    alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }),
++    publicProvider(),
++  ]
++);
+
+export const rainbow = ({ chains }: MyWalletOptions): Wallet => ({
+  ...
+- createConnector: ({ chainId }) => {
++ createConnector: () => {
+-   const rpc = chains.reduce(
+-     (rpcUrlMap, chain) => ({
+-       ...rpcUrlMap,
+-       [chainId]: chain.rpcUrls.default,
+-     }),
+-     {}
+-   );
+    const connector = new WalletConnectConnector({
+      chains,
+      options: {
+        qrcode: false,
+-       rpc,
+      },
+    });
+  }
+  ...
+}
+
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      rainbow({ chains }),
+    ],
+  },
+]);
+```
+
+### Зміни 0.2.x, що призводять до несумісності
+
+RainbowKit оновив залежність `wagmi` до версії `^0.4`.
+
+Дотримуйтесь наступних кроків для міграції.
+
+#### 1.  Оновіть залежності
+
+Оновіть RainbowKit та wagmi до останньої версії
+
+```bash
+npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
+```
+
+#### 2.  Замініть імпорт configureChains
+
+Імпортуйте `configureChains` з wagmi замість RainbowKit:
+
+```diff
+- import { configureChains } from '@rainbow-me/rainbowkit';
++ import { configureChains } from 'wagmi';
+```
+
+#### 3.  Міграція провайдерів
+
+RainbowKit більше не експортує API `apiProvider`. Замініть його на бажаний провайдер з wagmi.
+
+```diff
+- import { apiProvider } from '@rainbow-me/rainbowkit';
+```
+
+#### Alchemy
+
+Імпортуйте `alchemyProvider` з `wagmi/providers/alchemy`.
+
+```diff
++ import { alchemyProvider } from 'wagmi/providers/alchemy';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+- [apiProvider.alchemy(process.env.ALCHEMY_ID)]
++ [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID })]
+);
+```
+
+#### Infura
+
+Імпортуйте `infuraProvider` з `wagmi/providers/infura`.
+
+```diff
++import { infuraProvider } from 'wagmi/providers/infura';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+- [apiProvider.infura(process.env.INFURA_ID)]
++ [infuraProvider({ infuraId: process.env.INFURA_ID })]
+);
+```
+
+#### JSON RPC
+
+Імпортуйте `jsonRpcProvider` з `wagmi/providers/jsonRpc`.
+
+```diff
++ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+  [
+-   apiProvider.jsonRpc(chain => ({
+-     rpcUrl: `https://${chain.id}.example.com`,
+-   })),
++   jsonRpcProvider({
++     rpc: chain => ({
++       http: `https://${chain.id}.example.com`,
++     }),
++   }),
+  ]
+);
+```
+
+#### Публічний провайдер
+
+Імпортуйте `publicProvider` з `wagmi/providers/public`.
+
+```diff
++ import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, provider } = configureChains(
+  [chain.mainnet, chain.polygon],
+- [apiProvider.fallback()]
++ [publicProvider()]
+);
+```
+
+#### 4.  Перейменуйте провайдера wagmi
+
+Перейменуйте `WagmiProvider` на `WagmiConfig`.
+
+```diff
+import {
+- WagmiProvider
++ WagmiConfig
+} from 'wagmi'
+
+const App = () => {
+  return (
+-   <WagmiProvider client={wagmiClient}>...</WagmiProvider>
++   <WagmiConfig client={wagmiClient}>...</WagmiConfig>
+  );
+};
+```
+
+І ви завершили! 🌈
