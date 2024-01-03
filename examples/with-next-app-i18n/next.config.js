@@ -1,5 +1,8 @@
+
+const withNextIntl = require('next-intl/plugin')();
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const config = {
   reactStrictMode: true,
   webpack: config => {
     config.resolve.fallback = { fs: false, net: false, tls: false };
@@ -8,4 +11,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(config);
