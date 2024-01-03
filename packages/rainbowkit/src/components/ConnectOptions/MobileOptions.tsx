@@ -34,6 +34,7 @@ const LoadingSpinner = ({ wallet }: { wallet: WalletConnector }) => {
 
   return (
     <svg className={styles.spinner} viewBox="0 0 86 86" width="86" height="86">
+      <title>Loading</title>
       <rect
         x="3"
         y="3"

@@ -692,6 +692,7 @@ export default function DS() {
 }
 
 const IconTag = ({ size = '17' }) => (
+  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
     width={size}
     height={size}
@@ -721,6 +722,7 @@ const IconTag = ({ size = '17' }) => (
 );
 
 const IconQR = () => (
+  // biome-ignore lint/a11y/noSvgWithoutTitle: safely ignored
   <svg
     width="14"
     height="14"

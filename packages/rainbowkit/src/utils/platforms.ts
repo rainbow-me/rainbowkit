@@ -26,7 +26,7 @@ export function isLinux(): boolean {
 
 export function getPlatform(): PlatformType {
   if (isWindows()) return PlatformType.Windows;
-  else if (isMacOS()) return PlatformType.MacOS;
-  else if (isLinux()) return PlatformType.Linux;
+  if (isMacOS()) return PlatformType.MacOS;
+  if (isLinux()) return PlatformType.Linux;
   return PlatformType.Desktop;
 }

@@ -193,7 +193,9 @@ export function createTransactionStore({
   }
 
   function notifyListeners(): void {
-    listeners.forEach((listener) => listener());
+    for (const listener of listeners) {
+      listener();
+    }
   }
 
   function onChange(fn: () => void): () => void {

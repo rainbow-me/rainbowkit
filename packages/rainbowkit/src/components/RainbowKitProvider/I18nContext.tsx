@@ -39,7 +39,7 @@ export const I18nProvider = ({ children, locale }: I18nProviderProps) => {
     }
   }, [locale, browserLocale]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: incorrect warning
   const memoizedValue = useMemo(() => {
     const t = (key: string, options?: any) => i18n.t(key, options);
     return { t, i18n };
