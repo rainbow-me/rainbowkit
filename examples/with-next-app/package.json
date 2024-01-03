@@ -23,8 +23,5 @@
     "eslint-config-next": "^14.0.4",
     "next": "^14.0.4",
     "typescript": "^5.0.4"
-  },
-  "engines": {
-    "node": ">=16.8.0"
   }
 }

@@ -1,5 +1,6 @@
 {
   "name": "with-remix",
+  "version": "0.0.75",
   "private": true,
   "sideEffects": [
     "polyfills.ts"
@@ -27,9 +28,5 @@
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.15.0",
     "typescript": "^5.0.4"
-  },
-  "engines": {
-    "node": ">=14"
-  },
-  "version": "0.0.75"
+  }
 }
