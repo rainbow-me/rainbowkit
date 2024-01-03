@@ -6,13 +6,8 @@ interface ShowBalanceContextValue {
   setShowBalance: (showBalance: ResponsiveValue<boolean>) => void;
 }
 
-const defaultShowBalanceProps = {
-  largeScreen: true,
-  smallScreen: false,
-} as ResponsiveValue<boolean>;
-
 const ShowBalanceContext = createContext<ShowBalanceContextValue>({
-  showBalance: defaultShowBalanceProps,
+  showBalance: undefined,
   setShowBalance: () => {},
 });
 
