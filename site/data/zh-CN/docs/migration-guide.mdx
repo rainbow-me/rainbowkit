@@ -22,7 +22,7 @@ npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 
 **2. 安装 `viem` 对等依赖项**
 
-wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以下命令安装： 使用以下命令安装：
+wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以下命令安装：
 
 ```bash
 npm i viem
@@ -32,7 +32,7 @@ npm i viem
 
 \*\*3. 确保捆绑器和 polyfill 兼容性
 
-在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在基于 [viem](https://viem.sh/) 的 RainbowKit v1 + wagmi v1 中，情况不再如此。
+在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在基于 [viem](https://viem.sh/) 的 RainbowKit v1 + wagmi v1 中，情况不再如此。
 
 参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 和 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 示例，以获得你的项目配置指导。
 
@@ -52,7 +52,7 @@ RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便
 
 未来的版本将自动过渡钱包。
 
-每个dApp现在必须提供一个 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`以启用WalletConnect v2。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 每个dApp现在必须提供一个 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`以启用WalletConnect v2。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 如果`projectId`未指定，RainbowKit将安静地首选所有钱包的v1。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 每个dApp现在必须提供一个 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`以启用WalletConnect v2。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 如果`projectId`未指定，RainbowKit将安静地首选所有钱包的v1。
+每个dApp现在必须提供一个 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`以启用WalletConnect v2。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 每个dApp现在必须提供一个 [WalletConnect Cloud](https://cloud.walletconnect.com/) `projectId`以启用WalletConnect v2。 这必须在2023年6月28日关闭WalletConnect v1桥接服务器之前完成。 如果`projectId`未指定，RainbowKit将安静地首选所有钱包的v1。
 
 按照以下步骤进行迁移。
 
@@ -64,7 +64,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2.  提供WalletConnect Cloud projectId
 
-现在依赖于WalletConnect的每个dApp都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取`projectId`。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。
+现在依赖于WalletConnect的每个dApp都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取`projectId`。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。
 
 将 `projectId` 提供给 `getDefaultWallets` 和独立的 RainbowKit 钱包连接器，如下所示：
 
@@ -164,7 +164,7 @@ npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 
 ### 0.7.x 版本中的破坏性变化
 
-如果您正在创建一个自定义的钱包列表，那么现在您必须单独导入每一个钱包，以减少包的大小。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。
+如果您正在创建一个自定义的钱包列表，那么现在您必须单独导入每一个钱包，以减少包的大小。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -227,7 +227,7 @@ npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 
 从`Wallet`类型的`createConnector`中移除了`chainId`参数。
 
-**注意所有内置钱包都使用新API。 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。** 大部分消费者不会受影响。 **注意所有内置钱包都使用新API。 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。** 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。\*\*
+**注意所有内置钱包都使用新API。 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。** 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。\*\*
 
 如果你之前在`createConnector`上从`chainId`派生出RPC URLs，现在你可以去掉这个逻辑，因为当与`configureChains`一起使用时，`wagmi`现在内部处理RPC URLs。
 
@@ -306,9 +306,9 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 + import { configureChains } from 'wagmi';
 ```
 
-#### 4.  重命名 wagmi 的提供者
+#### 3。 3。 迁移提供商
 
-RainbowKit不再导出`apiProvider` API。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。
+RainbowKit不再导出`apiProvider` API。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';
@@ -380,7 +380,7 @@ const { chains, provider } = configureChains(
 
 #### 4.  重命名 wagmi 的提供者
 
-将 `WamgiProvider` 重命名为 `WagmiConfig`。
+将 `WagmiProvider` 重命名为 `WagmiConfig`。
 
 ```diff
 import {
@@ -396,4 +396,4 @@ const App = () => {
 };
 ```
 
-您已经完成了！ 🌈 🌈 🌈
+您已经完成了！ 🌈 🌈
