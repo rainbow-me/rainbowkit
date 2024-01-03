@@ -38,8 +38,8 @@ export function TxItem({ tx }: TxProps) {
     tx.status === 'confirmed'
       ? 'Confirmed'
       : tx.status === 'failed'
-      ? 'Failed'
-      : 'Pending';
+        ? 'Failed'
+        : 'Pending';
 
   const explorerLink = chainToExplorerUrl(activeChain);
 

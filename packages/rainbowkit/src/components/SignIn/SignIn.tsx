@@ -96,11 +96,8 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       try {
         const verified = await authAdapter.verify({ message, signature });
 
-        if (verified) {
-          return;
-        } else {
-          throw new Error();
-        }
+        if (verified) return;
+        throw new Error();
       } catch {
         return setState((x) => ({
           ...x,
@@ -200,10 +197,10 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               !state.nonce
                 ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
-                ? i18n.t('sign_in.signature.waiting')
-                : status === 'verifying'
-                ? i18n.t('sign_in.signature.verifying')
-                : i18n.t('sign_in.message.send')
+                  ? i18n.t('sign_in.signature.waiting')
+                  : status === 'verifying'
+                    ? i18n.t('sign_in.signature.verifying')
+                    : i18n.t('sign_in.message.send')
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}

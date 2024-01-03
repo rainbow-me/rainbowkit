@@ -4,15 +4,15 @@ export function indexBy<Item>(
 ): Record<string, Item> {
   const indexedItems: Record<string, Item> = {};
 
-  items.forEach((item) => {
+  for (const item of items) {
     const key = getKey(item);
 
     if (!key) {
-      return;
+      continue;
     }
 
     indexedItems[key] = item;
-  });
+  }
 
   return indexedItems;
 }

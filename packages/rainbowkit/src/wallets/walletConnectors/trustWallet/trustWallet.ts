@@ -87,8 +87,8 @@ export const trustWallet = ({
             options: walletConnectOptions,
           })
         : isMobile()
-        ? getInjectedConnector({ flag: 'isTrust', chains, options })
-        : getInjectedConnector({ flag: 'isTrustWallet', chains, options });
+          ? getInjectedConnector({ flag: 'isTrust', chains, options })
+          : getInjectedConnector({ flag: 'isTrustWallet', chains, options });
 
       const mobileConnector = {
         getUri: shouldUseWalletConnect ? getUriMobile : undefined,
