@@ -306,8 +306,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       headerBackButtonLink = connector
         ? WalletStep.Connect
         : hasExtensionAndMobile && WalletStep.Connect
-        ? initialWalletStep
-        : null;
+          ? initialWalletStep
+          : null;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (

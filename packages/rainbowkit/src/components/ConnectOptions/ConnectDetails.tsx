@@ -140,12 +140,12 @@ export function GetDetail({
                       {hasMobileAndExtension
                         ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileAndDesktop
-                        ? i18n.t('get.mobile_and_desktop.description')
-                        : hasMobileCompanionApp
-                        ? i18n.t('get.mobile.description')
-                        : hasExtension
-                        ? i18n.t('get.extension.description')
-                        : null}
+                          ? i18n.t('get.mobile_and_desktop.description')
+                          : hasMobileCompanionApp
+                            ? i18n.t('get.mobile.description')
+                            : hasExtension
+                              ? i18n.t('get.extension.description')
+                              : null}
                     </Text>
                   </Box>
                 </Box>
@@ -239,19 +239,19 @@ export function ConnectDetail({
         },
       }
     : hasQrCode
-    ? {
-        description: i18n.t('connect.secondary_action.get.description', {
-          wallet: name,
-        }),
-        label: i18n.t('connect.secondary_action.get.label'),
-        onClick: () =>
-          changeWalletStep(
-            hasQrCodeAndExtension || hasQrCodeAndDesktop
-              ? WalletStep.DownloadOptions
-              : WalletStep.Download,
-          ),
-      }
-    : null;
+      ? {
+          description: i18n.t('connect.secondary_action.get.description', {
+            wallet: name,
+          }),
+          label: i18n.t('connect.secondary_action.get.label'),
+          onClick: () =>
+            changeWalletStep(
+              hasQrCodeAndExtension || hasQrCodeAndDesktop
+                ? WalletStep.DownloadOptions
+                : WalletStep.Download,
+            ),
+        }
+      : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
@@ -279,8 +279,8 @@ export function ConnectDetail({
               compactModeEnabled
                 ? 318
                 : smallWindow
-                ? Math.max(280, Math.min(windowWidth - 308, 382))
-                : 382
+                  ? Math.max(280, Math.min(windowWidth - 308, 382))
+                  : 382
             }
             uri={qrCodeUri}
           />
@@ -315,12 +315,12 @@ export function ConnectDetail({
                       wallet: name,
                     })
                   : hasExtension
-                  ? i18n.t('connect.status.not_installed', {
-                      wallet: name,
-                    })
-                  : i18n.t('connect.status.not_available', {
-                      wallet: name,
-                    })}
+                    ? i18n.t('connect.status.not_installed', {
+                        wallet: name,
+                      })
+                    : i18n.t('connect.status.not_available', {
+                        wallet: name,
+                      })}
               </Text>
               {!ready && hasExtension ? (
                 <Box paddingTop="20">

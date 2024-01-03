@@ -41,11 +41,13 @@ export async function getStaticProps({ params, locale }) {
     (doc) => doc.slug === params.slug && doc.locale === locale,
   );
   const sectionName = docsRoutes.reduce((acc, curr) => {
-    curr.pages.forEach((page) =>
-      // biome-ignore lint/style/noParameterAssign: TODO
-      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
-      page.slug === params.slug ? (acc = curr.label) : null,
-    );
+    for (const page of curr.pages) {
+      if (page.slug === params.slug) {
+        // biome-ignore lint/style/noParameterAssign: TODO
+        acc = curr.label;
+        break;
+      }
+    }
     return acc;
   }, '');
 

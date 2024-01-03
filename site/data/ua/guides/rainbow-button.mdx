@@ -1,0 +1,69 @@
+---
+title: Впровадження кнопки Rainbow у вашому dApp
+description: Бібліотека plug-and-play для Wagmi для підтримки гаманців Rainbow у вашому dApp
+image: guide-walletconnect-v2.png
+---
+
+# Впровадження кнопки Rainbow у вашому dApp
+
+Компонент `RainbowButton` - найпростіший спосіб додати підтримку гаманця Rainbow до dApp, які використовують `wagmi` та віддають перевагу більш кастомізованому досвіду підключення ніж [RainbowKit](https://www.rainbowkit.com/docs/installation).
+
+**1. Встановіть `@rainbow-me/rainbow-button` та його пір-залежності**
+
+Пакет сумісний з Next.js, React та Vite. Переконайтеся, що ви дотримуєтеся попереджень щодо пір-залежностей.
+
+```bash
+npm install @rainbow-me/rainbow-button wagmi viem
+```
+
+**2. Налаштуйте за допомогою Wagmi та встановіть RainbowButton**
+
+Передайте екземпляр `RainbowConnector` до списку конекторів вашого Wagmi та обгорніть ваш додаток в `RainbowButtonProvider`. Потім вставте компонент `RainbowButton` у ваш список гаманців.
+
+```tsx
+import '@rainbow-me/rainbow-button/styles.css';
+import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+
+const config = createConfig({
+  connectors: [new RainbowConnector({ chains, projectId })],
+  publicClient
+});
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <WagmiConfig config={config}>
+      <RainbowButtonProvider>
+        {/* Your App */}
+      </RainbowButtonProvider>
+    </WagmiConfig>
+  );
+};
+
+export const YourApp = () => {
+  return <RainbowButton />;
+};
+```
+
+Ви також можете використовувати компонент `RainbowButton.Custom` для налаштування власних реалізацій та стилізації.
+
+```tsx
+<RainbowButton.Custom>
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</RainbowButton.Custom>
+```
+
+**3. І ось і все!**
+
+Тепер ваші користувачі можуть насолоджуватися безперебійним досвідом підключення до Rainbow — без будь-якого обслуговування чи головного болю.
+
+Компонент [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) також доступний у [RainbowKit](https://www.rainbowkit.com/docs/installation), якщо ви бажаєте додати підтримку додаткових гаманців.
