@@ -1,5 +1,17 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.3
+
+### Patch Changes
+
+- 7565fb2: Added `uk-UA` and `ua` locale support for the Ukranian language.
+
+  Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
+
+- 24b5a88: Improved support for `NodeNext` module resolution to resolve `"@rainbow-me/rainbowkit"' has no exported member 'RainbowKitProvider'` TypeScript warnings
+
+- 5a184e9: Fixed a bug where `eth_getBalance` would be called when `showBalance` was set to `false`. Optimized additional provider calls to fetch wallet balances only when a user interacts with the Account modal.
+
 ## 1.3.2
 
 ### Patch Changes
