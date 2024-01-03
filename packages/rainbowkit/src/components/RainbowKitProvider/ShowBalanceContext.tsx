@@ -1,0 +1,33 @@
+import React, { ReactNode, createContext, useContext, useState } from 'react';
+import { ResponsiveValue } from '../../css/sprinkles.css';
+
+interface ShowBalanceContextValue {
+  showBalance: ResponsiveValue<boolean> | undefined;
+  setShowBalance: (showBalance: ResponsiveValue<boolean>) => void;
+}
+
+const defaultShowBalanceProps = {
+  largeScreen: true,
+  smallScreen: false,
+} as ResponsiveValue<boolean>;
+
+const ShowBalanceContext = createContext<ShowBalanceContextValue>({
+  showBalance: defaultShowBalanceProps,
+  setShowBalance: () => {},
+});
+
+interface ShowBalanceProviderProps {
+  children: ReactNode;
+}
+
+export function ShowBalanceProvider({ children }: ShowBalanceProviderProps) {
+  const [showBalance, setShowBalance] = useState<ResponsiveValue<boolean>>();
+
+  return (
+    <ShowBalanceContext.Provider value={{ showBalance, setShowBalance }}>
+      {children}
+    </ShowBalanceContext.Provider>
+  );
+}
+
+export const useShowBalance = () => useContext(ShowBalanceContext);
