@@ -32,14 +32,12 @@ export function ProfileDetails({
   onDisconnect,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
-  const [copiedAddress, setCopiedAddress] = useState(false);
 
   const { data: balanceData } = useBalance({
     address,
   });
 
-  const { i18n } = useContext(I18nContext);
-
+  const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
     if (address) {
       navigator.clipboard.writeText(address);
@@ -67,6 +65,8 @@ export function ProfileDetails({
     : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();
+
+  const { i18n } = useContext(I18nContext);
 
   return (
     <>

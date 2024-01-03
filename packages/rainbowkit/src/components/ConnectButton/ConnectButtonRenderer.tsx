@@ -61,25 +61,15 @@ export interface ConnectButtonRendererProps {
 export function ConnectButtonRenderer({
   children,
 }: ConnectButtonRendererProps) {
-  const { showBalance } = useShowBalance();
-
-  const shouldShowBalance = showBalance
-    ? normalizeResponsiveValue(showBalance)[
-        isMobile() ? 'smallScreen' : 'largeScreen'
-      ]
-    : false;
-
   const isMounted = useIsMounted();
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const { data: balanceData } = useBalance({
-    address: shouldShowBalance ? address : undefined,
-  });
-  const { chain: activeChain } = useNetwork();
+
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
 
+  const { chain: activeChain } = useNetwork();
   const rainbowKitChain = activeChain
     ? rainbowkitChainsById[activeChain.id]
     : undefined;
@@ -94,6 +84,15 @@ export function ConnectButtonRenderer({
     useRecentTransactions().some(({ status }) => status === 'pending') &&
     showRecentTransactions;
 
+  const { showBalance } = useShowBalance();
+  const shouldShowBalance = showBalance
+    ? normalizeResponsiveValue(showBalance)[
+        isMobile() ? 'smallScreen' : 'largeScreen'
+      ]
+    : false;
+  const { data: balanceData } = useBalance({
+    address: shouldShowBalance ? address : undefined,
+  });
   const displayBalance = balanceData
     ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
         balanceData.symbol
