@@ -1,15 +1,16 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { Chain, defineChain } from 'viem';
 import {
   RainbowKitProvider,
   getDefaultWallets,
   connectorsForWallets,
 } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
-import { createConfig, http, WagmiProvider } from 'wagmi';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Chain, defineChain } from 'viem';
 
 const rinkeby: Chain = defineChain({
   id: 4,

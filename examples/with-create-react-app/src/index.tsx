@@ -1,23 +1,25 @@
 import './polyfills';
+import './index.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
-import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
-  mainnet,
-  polygon,
-  optimism,
   arbitrum,
   base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
   zora,
-  goerli,
   Chain,
 } from 'wagmi/chains';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
 import App from './App';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -26,7 +28,7 @@ const chains: readonly [Chain, ...Chain[]] = [
   arbitrum,
   base,
   zora,
-  ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+  ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
 ];
 
 const { connectors } = getDefaultWallets({
@@ -44,7 +46,7 @@ const config = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
-    [goerli.id]: http(),
+    [sepolia.id]: http(),
   },
 });
 

@@ -1,8 +1,12 @@
 import './polyfills';
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createConfig, http, WagmiProvider } from 'wagmi';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import {
   mainnet,
   polygon,
@@ -12,10 +16,8 @@ import {
   zora,
   Chain,
 } from 'wagmi/chains';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+
 import App from './App';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const chains: readonly [Chain, ...Chain[]] = [mainnet, polygon, optimism, arbitrum, base, zora];
 

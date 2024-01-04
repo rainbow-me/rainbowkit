@@ -14,15 +14,17 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createConfig, http, WagmiConfig, WagmiProvider } from 'wagmi';
 import {
-  mainnet,
-  polygon,
-  optimism,
   arbitrum,
   base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
   zora,
-  goerli,
   Chain,
 } from 'wagmi/chains';
 import {
@@ -33,7 +35,6 @@ import {
 
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
@@ -72,7 +73,7 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
-    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [];
 
     const chains: readonly [Chain, ...Chain[]] = [
       mainnet,
@@ -94,13 +95,12 @@ export default function App() {
       connectors,
       transports: {
         [mainnet.id]: http(),
-        [goerli.id]: http(),
         [polygon.id]: http(),
         [optimism.id]: http(),
         [arbitrum.id]: http(),
         [base.id]: http(),
         [zora.id]: http(),
-        [goerli.id]: http(),
+        [sepolia.id]: http(),
       },
     });
 
