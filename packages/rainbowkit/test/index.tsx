@@ -7,8 +7,6 @@ import {
   arbitrum,
   base,
   bsc,
-  goerli,
-  holesky,
   mainnet,
   optimism,
   polygon,
@@ -67,8 +65,6 @@ export function renderWithProviders(
       [base.id]: http(),
       [zora.id]: http(),
       [bsc.id]: http(),
-      [goerli.id]: http(),
-      [holesky.id]: http(),
     },
   });
 
