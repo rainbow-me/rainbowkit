@@ -15,7 +15,7 @@
     "react": "^18.2.0",
     "typescript": "^5.0.4",
     "util": "0.12.4",
-    "viem": "2.0.0-rc.3",
+    "viem": "2.0.0",
     "wagmi": "2.0.0-rc.2",
     "@tanstack/react-query": "5.13.4",
     "web-vitals": "^2.1.4",
