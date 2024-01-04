@@ -70,13 +70,13 @@ const App = () => (
 
 #### 通用钱包
 
-以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。 因此，建议总是包含这些钱包。
+以下钱包的范围限制在通用连接方法，而非特定的应用。 因此，建议总是包含这些钱包。
 
 ##### WalletConnect
 
-这是为没有在列表中提供的基于WalletConnect的钱包设计的备选钱包选项。
+这是为没有在列表中提供的基于 WalletConnect 的钱包设计的备选钱包选项。
 
-**建议您总是把这个钱包包含在列表中，以确保支持所有基于WalletConnect的钱包。**
+**建议您总是把这个钱包包含在列表中，以确保支持所有基于 WalletConnect 的钱包。**
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -93,7 +93,7 @@ walletConnectWallet(options: {
 });
 ```
 
-可以在如下链接找到支持的 `options` 的额外文档 [here](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional)。
+可以在[这里](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional)找到支持的 `options` 的额外文档 。
 
 为了迁移到 WalletConnect v2，Web3Modal v2 的 `options` 也受到支持。 为了迁移到 WalletConnect v2，Web3Modal v2 的 `options` 也受到支持。 参考[Ethereum Provider 文档](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization)。 所需的 `projectId` 会由 RainbowKit 自动预填充。 所需的 `projectId` 会由 RainbowKit 自动预填充。
 

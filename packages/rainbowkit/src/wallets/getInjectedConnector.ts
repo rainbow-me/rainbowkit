@@ -12,8 +12,8 @@ function getExplicitInjectedProvider(flag: string) {
   return providers
     ? providers.find((provider: { [x: string]: any }) => provider[flag])
     : window.ethereum[flag]
-    ? window.ethereum
-    : undefined;
+      ? window.ethereum
+      : undefined;
 }
 
 export function hasInjectedProvider(flag: string): boolean {
@@ -29,9 +29,9 @@ function getInjectedProvider(flag: string) {
   const providers = window.ethereum.providers;
   const provider = getExplicitInjectedProvider(flag);
   if (provider) return provider;
-  else if (typeof providers !== 'undefined' && providers.length > 0)
+  if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
-  else return window.ethereum;
+  return window.ethereum;
 }
 
 function createInjectedConnector(provider?: any): CreateConnector {

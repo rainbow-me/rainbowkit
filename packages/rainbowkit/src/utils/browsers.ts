@@ -27,13 +27,13 @@ export enum BrowserType {
 export function getBrowser(): BrowserType {
   if (typeof navigator === 'undefined') return BrowserType.Browser;
   const ua = navigator.userAgent.toLowerCase();
-  // @ts-ignore
+  // @ts-ignore - brave is not in the navigator type
   if (navigator.brave?.isBrave) return BrowserType.Brave;
-  else if (ua.indexOf('edg/') > -1) return BrowserType.Edge;
-  else if (ua.indexOf('op') > -1) return BrowserType.Opera;
-  else if (isArc()) return BrowserType.Arc;
-  else if (ua.indexOf('chrome') > -1) return BrowserType.Chrome;
-  else if (ua.indexOf('firefox') > -1) return BrowserType.Firefox;
-  else if (isSafari()) return BrowserType.Safari;
+  if (ua.indexOf('edg/') > -1) return BrowserType.Edge;
+  if (ua.indexOf('op') > -1) return BrowserType.Opera;
+  if (isArc()) return BrowserType.Arc;
+  if (ua.indexOf('chrome') > -1) return BrowserType.Chrome;
+  if (ua.indexOf('firefox') > -1) return BrowserType.Firefox;
+  if (isSafari()) return BrowserType.Safari;
   return BrowserType.Browser;
 }

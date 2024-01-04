@@ -27,6 +27,8 @@ export type Locale =
   | 'th-TH'
   | 'tr'
   | 'tr-TR'
+  | 'ua'
+  | 'uk-UA'
   | 'zh'
   | 'zh-CN';
 
@@ -77,6 +79,9 @@ const fetchLocale = async (locale: Locale): Promise<any> => {
     case 'tr':
     case 'tr-TR':
       return (await import('./tr_TR.json')).default;
+    case 'ua':
+    case 'uk-UA':
+      return (await import('./uk_UA.json')).default;
     case 'zh':
     case 'zh-CN':
       return (await import('./zh_CN.json')).default;

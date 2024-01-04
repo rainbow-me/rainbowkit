@@ -1,0 +1,176 @@
+---
+title: Інсталяція
+description: Почніть працювати з RainbowKit
+---
+
+# Інсталяція
+
+## Почніть працювати з RainbowKit
+
+### Швидкий старт
+
+Ви можете створити новий додаток RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) за допомогою однієї з наступних команд, використовуючи менеджер пакетів на ваш вибір:
+
+```bash
+npm init @rainbow-me/rainbowkit@latest
+# or
+pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
+```
+
+Це запропонує вам ввести ім'я проекту, створити нову директорію, що містить шаблонний проект, та встановити всі необхідні залежності.
+
+Альтернативно, ви можете вручну інтегрувати RainbowKit у ваш існуючий проект.
+
+### Ручне налаштування
+
+Встановіть RainbowKit та його супутні залежності, [wagmi](https://wagmi.sh/) та [viem](https://viem.sh).
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+> Примітка: RainbowKit - це бібліотека [React](https://reactjs.org/).
+
+#### Імпорт
+
+Імпортуйте RainbowKit та wagmi.
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+```
+
+#### Налаштувати
+
+Налаштуйте бажані ланцюги та створіть необхідні конектори. Вам також потрібно налаштувати конфігурацію `wagmi`.
+
+> Примітка: Кожен dApp, який використовує WalletConnect, тепер повинен отримати `projectId` з [WalletConnect Cloud](https://cloud.walletconnect.com/). Це абсолютно безкоштовно і займає лише кілька хвилин.
+
+```tsx line=4-99
+...
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider()
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient
+})
+```
+
+[Детальніше про налаштування ланцюгів та провайдерів з `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
+
+#### Обгортання провайдерів
+
+Обгорніть ваш додаток за допомогою `RainbowKitProvider` та [`WagmiConfig`](https://wagmi.sh/docs/provider).
+
+```tsx
+const App = () => {
+  return (
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        {/* Your App */}
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
+```
+
+#### Додайте кнопку підключення
+
+Тоді, у вашому додатку, імпортуйте та відобразіть компонент `ConnectButton`.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+RainbowKit тепер керуватиме вибором гаманця користувача, відображенням інформації про гаманець/транзакції та перемиканням мережі/гаманця.
+
+#### Додаткове налаштування інструментів збірки
+
+Деякі інструменти збірки потребують додаткового налаштування.
+
+##### React, Next.js та Webpack
+
+Пакувальник [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/), який використовується Next.js та Create React App, [більше не надає поліфіли Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), тому вам потрібно буде включити ці модулі самостійно, щоб задовольнити залежності однолітків RainbowKit. Create React App конкретно вимагає, щоб ви зробили поліфіл `Buffer`.
+
+У попередніх версіях RainbowKit, які базувалися на [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls` були автоматично поліфільні. Це більше не так з RainbowKit v1 + wagmi v1, які побудовані на [viem](https://viem.sh/).
+
+Дивіться наші зразки [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js) та [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) для керівництва з налаштування для вашого проекту.
+
+##### Vite
+
+Пакувальник [Vite](https://vitejs.dev) не надає поліфіли Node, тому вам потрібно буде додати поліфіли для `global`, `Buffer` та `process.env`. Як приклад, ви можете ознайомитися з [поліфілами у нашому прикладі проекту Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
+
+##### Remix
+
+При використанні [Remix](https://remix.run), всі точки входу пакета RainbowKit мають бути додані до вашого списку [залежностей сервера](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) у вашій конфігурації Remix, оскільки вони публікуються як пакети ESM.
+
+Remix також вимагає, щоб ви забезпечили поліфіли для `global`, `Buffer` та `process.env`. Дивіться [поліфіли у нашому прикладі проекту Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
+
+```js
+/**
+ * @type {import('@remix-run/dev').AppConfig}
+ */
+module.exports = {
+  serverDependencies: [
+    '@rainbow-me/rainbowkit',
+    '@rainbow-me/rainbowkit/wallets',
+  ],
+};
+```
+
+### Додайте власний функціонал
+
+Тепер, коли ваші користувачі можуть підключати свої гаманці, ви можете почати розробку решти вашого додатку за допомогою [wagmi.](https://wagmi.sh)
+
+Відправляйте транзакції, взаємодійте з контрактами, розв'язуйте деталі ENS та багато іншого за допомогою повного набору React Hooks від wagmi.
+
+Для отримання додаткової інформації перегляньте [документацію wagmi.](https://wagmi.sh)
+
+### Додаткові приклади
+
+Щоб побачити деякі робочі приклади RainbowKit, або навіть використати їх для автоматичного створення нового проекту, перевірте [офіційні приклади](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+
+Щоб спробувати RainbowKit безпосередньо у вашому браузері, скористайтеся нижченаведеними посиланнями CodeSandbox:
+
+-   з [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+-   з [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+-   з [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+-   з [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+-   з [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
