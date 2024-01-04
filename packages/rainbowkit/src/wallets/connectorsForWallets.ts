@@ -1,7 +1,7 @@
-import { CreateConnectorFn } from 'wagmi';
+import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { Wallet, WalletList, WalletOptionsParams } from './Wallet';
+import type { Wallet, WalletList, WalletOptionsParams } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;

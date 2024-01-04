@@ -1,5 +1,5 @@
-import { CreateConnectorFn } from 'wagmi';
-import { WalletList } from './Wallet';
+import type { CreateConnectorFn } from 'wagmi';
+import type { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
 import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';

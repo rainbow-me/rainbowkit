@@ -1,7 +1,8 @@
 import { screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
-import { Chain, mainnet } from 'wagmi/chains';
+import { mainnet } from 'wagmi/chains';
+import type { Chain } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import { Locale } from '../../locales';
 import { ConnectModal } from './ConnectModal';

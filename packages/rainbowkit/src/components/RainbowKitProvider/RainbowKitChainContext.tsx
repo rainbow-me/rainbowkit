@@ -1,5 +1,5 @@
 import React, { ReactNode, createContext, useContext, useMemo } from 'react';
-import { Chain } from 'wagmi/chains';
+import type { Chain } from 'wagmi/chains';
 import { mainnet } from 'wagmi/chains';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 

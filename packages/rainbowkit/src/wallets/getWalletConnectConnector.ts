@@ -1,7 +1,7 @@
 import { createConnector } from 'wagmi';
-import { CreateConnectorFn } from 'wagmi';
+import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
-import { CreateConnector, WalletOptionsParams } from './Wallet';
+import type { CreateConnector, WalletOptionsParams } from './Wallet';
 
 const walletConnectInstances = new Map<
   string,

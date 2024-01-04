@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CreateConnectorFn } from 'wagmi';
+import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { connectorsForWallets } from '..';
 import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
