@@ -17,8 +17,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "2.0.0-rc.3",
-    "wagmi": "2.0.0-rc.2"
+    "viem": "^2.0.0",
+    "wagmi": "2.0.0-rc.3"
   },
   "devDependencies": {
     "@types/node": "^18.19.3",

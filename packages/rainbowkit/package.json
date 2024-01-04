@@ -44,8 +44,8 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "viem": "2.0.0-rc.3",
-    "wagmi": "2.0.0-rc.2"
+    "viem": "^2.0.0",
+    "wagmi": "2.0.0-rc.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.2.0",

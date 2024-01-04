@@ -19,7 +19,7 @@ npm i @rainbow-me/rainbowkit@beta wagmi@rc
 wagmi v2 requires the `viem` peer dependency. Install it with the following command:
 
 ```bash
-npm i viem@2.0.0-rc.3
+npm i viem@2.x
 ```
 
 **3. Check for breaking changes in `wagmi`**
