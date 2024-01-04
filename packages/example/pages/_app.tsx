@@ -100,6 +100,21 @@ const chains: readonly [Chain, ...Chain[]] = [
     : []),
 ];
 
+// If any of the alchemy HTTPS URLs are undefined, wagmi will default
+// to using the first available RPC HTTPS URL from the chain.
+const transports = {
+  [mainnet.id]: http(process.env.NEXT_PUBLIC_RPC_MAINNET_HTTPS),
+  [polygon.id]: http(process.env.NEXT_PUBLIC_RPC_POLYGON_HTTPS),
+  [optimism.id]: http(process.env.NEXT_PUBLIC_RPC_OPTIMISM_HTTPS),
+  [arbitrum.id]: http(process.env.NEXT_PUBLIC_RPC_ARBITRUM_HTTPS),
+  [base.id]: http(process.env.NEXT_PUBLIC_RPC_BASE_HTTPS),
+  [zora.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_HTTPS),
+  [bsc.id]: http(process.env.NEXT_PUBLIC_RPC_BSC_HTTPS),
+  [zkSync.id]: http(process.env.NEXT_PUBLIC_RPC_ZKSYNC_HTTPS),
+  [goerli.id]: http(process.env.NEXT_PUBLIC_RPC_GOERLI_HTTPS),
+  [holesky.id]: http(process.env.NEXT_PUBLIC_RPC_HOLESKY_HTTPS),
+};
+
 const connectors = connectorsForWallets([
   ...wallets,
   {
@@ -146,18 +161,7 @@ const connectors = connectorsForWallets([
 const config = createConfig({
   chains,
   connectors,
-  transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [base.id]: http(),
-    [zora.id]: http(),
-    [bsc.id]: http(),
-    [zkSync.id]: http(),
-    [goerli.id]: http(),
-    [holesky.id]: http(),
-  },
+  transports,
 });
 
 const demoAppInfo = {
