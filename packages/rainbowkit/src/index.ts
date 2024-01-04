@@ -2,6 +2,7 @@ export { ConnectButton } from './components/ConnectButton/ConnectButton';
 export { WalletButton } from './components/WalletButton/WalletButton';
 export { RainbowKitProvider } from './components/RainbowKitProvider/RainbowKitProvider';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
+export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
 export {
   useAccountModal,
@@ -13,7 +14,8 @@ export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
 } from './components/RainbowKitProvider/AuthenticationContext';
-export type { Wallet } from './wallets/Wallet';
+export type { RainbowKitChain as Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
+export type { Wallet, WalletList } from './wallets/Wallet';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';
 export type {
   AuthenticationStatus,
