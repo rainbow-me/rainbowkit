@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@tanstack/react-query':
-        specifier: 5.13.4
-        version: 5.13.4(react@18.2.0)
+        specifier: 5.17.1
+        version: 5.17.1(react@18.2.0)
       '@testing-library/jest-dom':
         specifier: ^6.2.0
         version: 6.2.0(vitest@0.33.0)
@@ -109,7 +109,7 @@ importers:
         version: 0.33.0(jsdom@23.0.1)
       wagmi:
         specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
+        version: 2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
 
   examples/with-create-react-app:
     dependencies:
@@ -383,8 +383,8 @@ importers:
         specifier: workspace:*
         version: link:../rainbowkit-siwe-next-auth
       '@tanstack/react-query':
-        specifier: 5.13.4
-        version: 5.13.4(react@18.2.0)
+        specifier: 5.17.1
+        version: 5.17.1(react@18.2.0)
       ethers:
         specifier: ^5.6.8
         version: 5.6.8
@@ -408,7 +408,7 @@ importers:
         version: 2.0.0(typescript@5.0.4)
       wagmi:
         specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
+        version: 2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
 
   packages/rainbow-button:
     dependencies:
@@ -426,7 +426,7 @@ importers:
         version: 2.0.0(typescript@5.0.4)
       wagmi:
         specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
+        version: 2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
 
   packages/rainbowkit:
     dependencies:
@@ -462,7 +462,7 @@ importers:
         version: 2.0.0(typescript@5.0.4)
       wagmi:
         specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
+        version: 2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.2.0
@@ -553,8 +553,8 @@ importers:
         specifier: ^8.0.12
         version: 8.0.12(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(three@0.139.2)
       '@tanstack/react-query':
-        specifier: 5.13.4
-        version: 5.13.4(react@18.2.0)
+        specifier: 5.17.1
+        version: 5.17.1(react@18.2.0)
       '@vanilla-extract/css':
         specifier: 1.14.0
         version: 1.14.0
@@ -629,7 +629,7 @@ importers:
         version: 2.0.0(typescript@5.0.4)
       wagmi:
         specifier: 2.0.0-rc.2
-        version: 2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
+        version: 2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
     devDependencies:
       contentlayer:
         specifier: 0.2.9
@@ -10779,15 +10779,15 @@ packages:
       defer-to-connect: 2.0.1
     dev: true
 
-  /@tanstack/query-core@5.13.4:
-    resolution: {integrity: sha512-8+rJucXvC/xlr4OrxHhEIob/cTlbT4fgmz1VsvB0D12FRStKaXeLORNGcOhSAynRd2NL74SV/Qq0IIb4DedLcA==}
+  /@tanstack/query-core@5.17.1:
+    resolution: {integrity: sha512-kUXozQmU7NBtzX5dM6qfFNZN+YK/9Ct37hnG/ogdgI4mExIx7VH/qRepsPhKfNrJz2w81/JykmM3Uug6sVpUSw==}
 
-  /@tanstack/react-query@5.13.4(react@18.2.0):
-    resolution: {integrity: sha512-3HjvkFFriEQwffUXtKHPiwkfFXUGbs46YATTzzyK1+Pw6Ekd3kwzS50e45qdamWuEXmXxyo5S1zp534LdFG0Rw==}
+  /@tanstack/react-query@5.17.1(react@18.2.0):
+    resolution: {integrity: sha512-4JYgX0kU+pvwVQi5eRiHGvBK7WnahEl6lmaxd32ZVSKmByAxLgaewoxBR03cdDNse8lUD2zGOe0sx3M/EGRlmA==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.13.4
+      '@tanstack/query-core': 5.17.1
       react: 18.2.0
 
   /@testing-library/dom@8.20.0:
@@ -27164,7 +27164,7 @@ packages:
       xml-name-validator: 5.0.0
     dev: true
 
-  /wagmi@2.0.0-rc.2(@tanstack/react-query@5.13.4)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0):
+  /wagmi@2.0.0-rc.2(@tanstack/react-query@5.17.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0):
     resolution: {integrity: sha512-y4xgkCp7ujMDiWlqUs+00G/IGokZZbitwyOYASvQl6fGGXpKAdHQ3OmAhzy9Xb5ah2ZSCejn1yC4iE/VyHSQkA==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
@@ -27175,7 +27175,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@tanstack/react-query': 5.13.4(react@18.2.0)
+      '@tanstack/react-query': 5.17.1(react@18.2.0)
       '@wagmi/connectors': 4.0.0-rc.2(@types/react@18.2.46)(@wagmi/core@2.0.0-rc.2)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
       '@wagmi/core': 2.0.0-rc.2(@types/react@18.2.46)(react@18.2.0)(typescript@5.0.4)(viem@2.0.0)
       react: 18.2.0

@@ -43,7 +43,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
     "@changesets/cli": "2.27.1",
-    "@tanstack/react-query": "5.13.4",
+    "@tanstack/react-query": "5.17.1",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
