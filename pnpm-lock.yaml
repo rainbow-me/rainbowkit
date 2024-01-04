@@ -421,7 +421,7 @@ importers:
       react-dom:
         specifier: '>=17'
         version: 18.2.0(react@18.2.0)
-      c:
+      viem:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.0.4)
       wagmi:

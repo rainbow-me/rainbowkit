@@ -6,6 +6,109 @@ title: Migration Guide
 
 ## Migrating RainbowKit
 
+### @rainbow-me/rainbowkit@beta Breaking changes
+
+#### Updated to wagmi v2
+
+The [wagmi](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.3`.
+
+Follow the steps below to migrate.
+
+**1. Upgrade RainbowKit to beta version and `wagmi` to v2 version**
+
+```bash
+npm i @rainbow-me/rainbowkit@beta wagmi@rc
+```
+
+**2. Install `viem` peer dependency**
+
+wagmi v2 requires the `viem` peer dependency. Install it with the following command:
+
+```bash
+npm i viem@2.x
+```
+
+**3. Check for breaking changes in `wagmi`**
+
+If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v2.
+
+[You can see their migration guide from v1 to v2 here](https://rc.wagmi.sh/react/guides/migrate-from-v1-to-v2).
+
+#### RainbowKit migration
+
+**1. Remove `chains` property**
+
+If you use `getDefaultWallets` make sure to remove `chains` property.
+
+```diff
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+
+const { wallets } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+-  chains,
+  projectId,
+});
+```
+
+If you use a wallet that requires `chains` property makes sure to remove that as well:
+
+```diff
+import { connectorsForWallets } from '@rainbow-me/rainbowkit/wallets';
+import {
+  injectedWallet,
+  rainbowWallet,
+  metaMaskWallet,
+  coinbaseWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+-      injectedWallet({ chains }),
+-      rainbowWallet({ projectId, chains }),
+-      metaMaskWallet({ projectId, chains }),
+-      coinbaseWallet({ chains, appName: 'My App' }),
+-      walletConnectWallet({ projectId, chains }),
++      injectedWallet(),
++      rainbowWallet({ projectId }),
++      metaMaskWallet({ projectId }),
++      coinbaseWallet({ appName: 'My App' }),
++      walletConnectWallet({ projectId }),
+    ],
+  },
+]);
+```
+
+**2. Create custom wallet**
+
+We've updated the way we create new wallets. Please refer to this [page](https://www.rainbowkit.com/docs/custom-wallets).
+
+**3. WalletConnect legacy deprecation**
+
+RainbowKit no longer supports WalletConnect legacy option. We now fully rely on the WalletConnect v2.
+
+#### Rainbow Button migration
+
+If you were using the rainbow button make sure to change `RainbowConnector` to `rainbowConnector` and remove `chains`. Apart from that nothing else is needed. You're good to go!
+
+```diff
+-import { RainbowConnector } from "@rainbow-me/rainbow-button";
++import { rainbowConnector } from "@rainbow-me/rainbow-button";
+
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+-      new RainbowConnector({ chains, projectId }),
++      rainbowConnector({ projectId }),
+    ],
+  },
+]);
+```
+
 ### 1.x.x Breaking changes
 
 #### Updated to wagmi v1
@@ -69,10 +172,10 @@ Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [
 Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
 
 ```ts
-const projectId = 'YOUR_PROJECT_ID';
+const projectId = "YOUR_PROJECT_ID";
 
 const { wallets } = getDefaultWallets({
-  appName: 'My RainbowKit App',
+  appName: "My RainbowKit App",
   projectId,
   chains,
 });
@@ -80,7 +183,7 @@ const { wallets } = getDefaultWallets({
 const connectors = connectorsForWallets([
   ...wallets,
   {
-    groupName: 'Other',
+    groupName: "Other",
     wallets: [
       argentWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
