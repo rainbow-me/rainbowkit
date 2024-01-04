@@ -41,17 +41,17 @@
 
   **2. Configure with Wagmi and install the RainbowButton**
 
-  Pass an instance of the `rainbowConnector` to your Wagmi connector list, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component into your wallet list.
+  Pass an instance of the `RainbowConnector` to your Wagmi connector list, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component into your wallet list.
 
   ```tsx
   import "@rainbow-me/rainbow-button/styles.css";
   import {
     RainbowButtonProvider,
-    rainbowConnector,
+    RainbowConnector,
   } from "@rainbow-me/rainbow-button";
 
-  const wagmiClient = createConfig({
-    connectors: [rainbowConnector({ projectId })],
+  const config = createConfig({
+    connectors: [new RainbowConnector({ chains, projectId })],
     publicClient,
   });
 
