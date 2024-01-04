@@ -18,10 +18,10 @@
 
 **1. Wagmi v2 migration**
 
-- `wagmi`: updated from `1.4.x` to `2.0.0-rc.2`
-- `viem`: updated from `1.21.x` to `2.0.0-rc.3`
+- `wagmi`: updated from `1.4.x` to `^2`
+- `viem`: updated from `1.21.x` to `^2`
 
-Alongside with wagmi v2 migration we've added `@tanstack/react-query` dependency with version `5.17.1`.
+Alongside with wagmi v2 migration we've added `@tanstack/react-query` dependency with version `^5`.
 
 
 **2. Example projects updates**
