@@ -1,6 +1,7 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+
 import {
   RainbowKitProvider,
   getDefaultWallets,
@@ -8,8 +9,8 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
 import { createConfig, configureChains, WagmiConfig } from 'wagmi';
-import { Chain } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+import { Chain } from 'wagmi/chains';
 
 const rinkeby: Chain = {
   id: 4,

@@ -14,23 +14,24 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  goerli,
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
-import type { Chain } from 'wagmi';
+
 import {
   RainbowKitProvider,
   ConnectButton,
   getDefaultWallets,
 } from '@rainbow-me/rainbowkit';
+import type { Chain } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import {
+  arbitrum,
+  base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
+  zora,
+} from 'wagmi/chains';
 
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
@@ -70,7 +71,7 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
-    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [];
 
     const { chains, publicClient } = configureChains(
       [mainnet, polygon, optimism, arbitrum, base, zora, ...testChains],
