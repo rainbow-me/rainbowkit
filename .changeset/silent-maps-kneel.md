@@ -4,7 +4,7 @@
 
 **Breaking:**
 
-The [wagmi v1](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.2`.
+The [wagmi v1](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.3`.
 
 Follow the steps below to migrate.
 

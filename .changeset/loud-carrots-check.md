@@ -4,11 +4,11 @@
 
 **Breaking:**
 
-The [wagmi](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.2`.
+The [wagmi](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.3`.
 
 Follow the steps below to migrate.
 
-**1. Upgrade RainbowKit and `wagmi` to their beta version**
+**1. Upgrade RainbowKit to beta version and `wagmi` to v2 version**
 
 ```bash
 npm i @rainbow-me/rainbowkit@beta wagmi@rc
