@@ -55,7 +55,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   ssr: true,
@@ -74,7 +74,7 @@ const client = new QueryClient();
 
 export function Provider({ children }) {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
     </WagmiProvider>
   );

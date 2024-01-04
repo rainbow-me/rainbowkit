@@ -47,7 +47,7 @@ export function renderWithProviders(
     projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
   });
 
-  const wagmiConfig = createConfig({
+  const config = createConfig({
     chains: supportedChains,
     connectors: options?.mock
       ? [
@@ -76,7 +76,7 @@ export function renderWithProviders(
 
   return render(component, {
     wrapper: ({ children }) => (
-      <WagmiProvider config={wagmiConfig}>
+      <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           <RainbowKitProvider
             chains={supportedChains}

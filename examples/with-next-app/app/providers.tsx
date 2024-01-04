@@ -57,7 +57,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   transports: {
@@ -77,7 +77,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
           {mounted && children}

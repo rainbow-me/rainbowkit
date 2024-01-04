@@ -143,7 +143,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   transports: {
@@ -656,7 +656,7 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiProvider config={wagmiConfig}>
+        <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />
           </QueryClientProvider>

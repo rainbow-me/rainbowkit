@@ -16,7 +16,7 @@ const connectors = connectorsForWallets([
   metaMaskWallet({ projectId }),
 ]);
 
-const wagmiClient = createConfig({
+const config = createConfig({
   connectors: [
     ...connectors,
     coinbaseWallet({ appName: "RainbowKit Example" }),
@@ -32,7 +32,7 @@ const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={wagmiClient}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider chains={[mainnet]}>
           <Component {...pageProps} />

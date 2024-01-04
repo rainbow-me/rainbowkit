@@ -32,7 +32,7 @@ const { connectors } = getDefaultWallets({
   projectId: 'YOUR_PROJECT_ID',
 });
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   transports: {
@@ -52,7 +52,7 @@ const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider chains={chains}>
           <Component {...pageProps} />

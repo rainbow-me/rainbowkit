@@ -11,7 +11,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const projectId = "YOUR_PROJECT_ID";
 
-const wagmiClient = createConfig({
+const config = createConfig({
   connectors: [rainbowConnector({ projectId })],
   chains: [mainnet],
   transports: {
@@ -23,7 +23,7 @@ const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={wagmiClient}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowButtonProvider>
           <Component {...pageProps} />

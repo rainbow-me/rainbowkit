@@ -59,7 +59,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   transports: {
@@ -78,7 +78,7 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter() as { locale: Locale };
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           appInfo={demoAppInfo}

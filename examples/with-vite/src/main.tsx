@@ -24,7 +24,7 @@ const { connectors } = getDefaultWallets({
   projectId: 'YOUR_PROJECT_ID',
 });
 
-const wagmiConfig = createConfig({
+const config = createConfig({
   chains,
   connectors,
   transports: {
@@ -41,7 +41,7 @@ const client = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider chains={chains}>
           <App />
