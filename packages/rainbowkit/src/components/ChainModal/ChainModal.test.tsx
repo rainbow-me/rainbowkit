@@ -74,7 +74,6 @@ describe('<ChainModal />', () => {
     const modal = renderWithProviders(
       <ChainModal
         mockChainId={1}
-        // biome-ignore lint/suspicious/noAssignInExpressions: TODO
         onClose={() => (onCloseGotCalled = true)}
         open
       />,
@@ -105,7 +104,6 @@ describe('<ChainModal />', () => {
     const modal = renderWithProviders(
       <ChainModal
         mockChainId={1}
-        // biome-ignore lint/suspicious/noAssignInExpressions: TODO
         onClose={() => (onCloseGotCalled = true)}
         open
       />,

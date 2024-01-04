@@ -71,7 +71,7 @@ export function ConnectButtonRenderer({
   const isCurrentChainSupported = wagmiChains.some(
     (chain) => chain.id === chainId,
   );
-  
+
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
   const rainbowKitChain = chainId ? rainbowkitChainsById[chainId] : undefined;

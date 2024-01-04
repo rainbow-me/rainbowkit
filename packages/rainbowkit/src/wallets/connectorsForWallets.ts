@@ -25,14 +25,13 @@ export function connectorsForWallets(
 export function connectorsForWallets(walletList: any) {
   if ('groupName' in walletList[0]) {
     return _connectorsForWallets(walletList);
-  } else {
-    return _connectorsForWallets([
-      {
-        groupName: '',
-        wallets: walletList as Wallet[],
-      },
-    ]);
   }
+  return _connectorsForWallets([
+    {
+      groupName: '',
+      wallets: walletList as Wallet[],
+    },
+  ]);
 }
 
 export const _connectorsForWallets = (
@@ -52,7 +51,9 @@ export const _connectorsForWallets = (
   // they can decide whether or not they should be hidden,
   // e.g. the "Injected Wallet" option hides itself if another
   // injected wallet is available.
+  // biome-ignore lint/complexity/noForEach: TODO
   walletList.forEach(({ groupName, wallets }, groupIndex) => {
+    // biome-ignore lint/complexity/noForEach: TODO
     wallets.forEach((wallet) => {
       index++;
 
@@ -85,51 +86,55 @@ export const _connectorsForWallets = (
     ...potentiallyHiddenWallets,
   ];
 
-  walletListItems.forEach(
-    ({ createConnector, groupIndex, groupName, hidden, ...walletMeta }) => {
-      if (typeof hidden === 'function') {
-        // Run the function to check if the wallet needs to be hidden
-        const isHidden = hidden();
+  for (const {
+    createConnector,
+    groupIndex,
+    groupName,
+    hidden,
+    ...walletMeta
+  } of walletListItems) {
+    if (typeof hidden === 'function') {
+      // Run the function to check if the wallet needs to be hidden
+      const isHidden = hidden();
 
-        // If wallet is hidden, bail out and proceed to the next list item
-        if (isHidden) {
-          return;
-        }
+      // If wallet is hidden, bail out and proceed to the next list item
+      if (isHidden) {
+        continue;
       }
+    }
 
-      const params = (
-        // For now we should only use these as the additional parameters
-        additionalParams?: Pick<
-          WalletOptionsParams['rkDetails'],
-          'showQrModal' | 'isWalletConnectModalConnector'
-        >,
-      ) => {
-        return {
-          rkDetails: omitUndefinedValues({
-            ...walletMeta,
-            groupIndex,
-            groupName,
-            isRainbowKitConnector: true,
-            ...additionalParams,
-          }),
-        };
+    const params = (
+      // For now we should only use these as the additional parameters
+      additionalParams?: Pick<
+        WalletOptionsParams['rkDetails'],
+        'showQrModal' | 'isWalletConnectModalConnector'
+      >,
+    ) => {
+      return {
+        rkDetails: omitUndefinedValues({
+          ...walletMeta,
+          groupIndex,
+          groupName,
+          isRainbowKitConnector: true,
+          ...additionalParams,
+        }),
       };
+    };
 
-      const isWalletConnectConnector = walletMeta.id === 'walletConnect';
+    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
 
-      if (isWalletConnectConnector) {
-        connectors.push(
-          createConnector(
-            params({ showQrModal: true, isWalletConnectModalConnector: true }),
-          ),
-        );
-      }
+    if (isWalletConnectConnector) {
+      connectors.push(
+        createConnector(
+          params({ showQrModal: true, isWalletConnectModalConnector: true }),
+        ),
+      );
+    }
 
-      const connector = createConnector(params());
+    const connector = createConnector(params());
 
-      connectors.push(connector);
-    },
-  );
+    connectors.push(connector);
+  }
 
   return connectors;
 };

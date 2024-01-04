@@ -164,8 +164,8 @@ export function useWalletConnectors(
     recentWallets: recentWallets,
   });
 
-  combinedConnectorsWithRecentWallets.forEach((wallet) => {
-    if (!wallet) return;
+  for (const wallet of combinedConnectorsWithRecentWallets) {
+    if (!wallet) continue;
 
     const eip6963 = isEIP6963Connector(wallet);
 
@@ -181,7 +181,7 @@ export function useWalletConnectors(
         recent,
       });
 
-      return;
+      continue;
     }
 
     walletConnectors.push({
@@ -206,6 +206,6 @@ export function useWalletConnectors(
         ? () => connectToWalletConnectModal(wallet.walletConnectModalConnector!)
         : undefined,
     });
-  });
+  }
   return walletConnectors;
 }
