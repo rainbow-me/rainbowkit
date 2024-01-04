@@ -71,6 +71,7 @@ import {
   mainnet,
   optimism,
   polygon,
+  sepolia,
   zkSync,
   zora,
 } from 'wagmi/chains';
@@ -96,7 +97,7 @@ const chains: readonly [Chain, ...Chain[]] = [
   bsc,
   zkSync,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [goerli, holesky]
+    ? [goerli, sepolia, holesky]
     : []),
 ];
 
@@ -112,6 +113,7 @@ const transports = {
   [bsc.id]: http(process.env.NEXT_PUBLIC_RPC_BSC_HTTPS),
   [zkSync.id]: http(process.env.NEXT_PUBLIC_RPC_ZKSYNC_HTTPS),
   [goerli.id]: http(process.env.NEXT_PUBLIC_RPC_GOERLI_HTTPS),
+  [sepolia.id]: http(process.env.NEXT_PUBLIC_RPC_SEPOLIA_HTTPS),
   [holesky.id]: http(process.env.NEXT_PUBLIC_RPC_HOLESKY_HTTPS),
 };
 

@@ -12,7 +12,6 @@ import {
   mainnet,
   optimism,
   polygon,
-  zkSync,
   zora,
 } from 'wagmi/chains';
 import { MockParameters, mock } from 'wagmi/connectors';
@@ -68,7 +67,6 @@ export function renderWithProviders(
       [base.id]: http(),
       [zora.id]: http(),
       [bsc.id]: http(),
-      [zkSync.id]: http(),
       [goerli.id]: http(),
       [holesky.id]: http(),
     },
