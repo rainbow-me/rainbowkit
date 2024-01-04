@@ -1,22 +1,23 @@
 import './polyfills';
+import './index.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
 
-import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
 import {
-  mainnet,
-  polygon,
-  optimism,
   arbitrum,
   base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
   zora,
-  goerli,
 } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+
 import App from './App';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -27,7 +28,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     arbitrum,
     base,
     zora,
-    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   [publicProvider()]
 );

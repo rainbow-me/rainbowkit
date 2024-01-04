@@ -1,6 +1,7 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+
 import {
   RainbowKitProvider,
   getDefaultWallets,
@@ -12,16 +13,17 @@ import {
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
 import {
-  mainnet,
-  polygon,
-  optimism,
   arbitrum,
   base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
   zora,
-  goerli,
 } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import {
@@ -37,7 +39,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   [publicProvider()]
 );
