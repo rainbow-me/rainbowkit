@@ -8,7 +8,7 @@ export interface WalletConnectWalletOptions {
 }
 
 // Used for maintance purposes for `connectorsForWallets` logic
-export const walletConnecWalletId = 'walletConnect';
+export const wcId = 'walletConnect';
 
 export const walletConnectWallet = ({
   projectId,
@@ -17,7 +17,7 @@ export const walletConnectWallet = ({
   const getUri = (uri: string) => uri;
 
   return {
-    id: walletConnecWalletId,
+    id: wcId,
     name: 'WalletConnect',
     installed: true,
     iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
