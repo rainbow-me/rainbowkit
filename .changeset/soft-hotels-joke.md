@@ -11,9 +11,9 @@
 Updated to following packages:
 
 - `wagmi`: updated from `1.4.x` to `2.0.0-rc.3`
-- `viem`: updated from `1.21.x` to `2.0.x`
+- `viem`: updated from `1.21.x` to `2.x`
 
-Alongside with wagmi v2 migration we've added `@tanstack/react-query` dependency with version `5.17.1`.
+Alongside with wagmi v2 migration we've added `@tanstack/react-query` dependency with version `^5`.
 
 Type in these commands to start using wagmi v2 and rainbowkit (beta):
 

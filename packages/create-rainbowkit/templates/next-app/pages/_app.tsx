@@ -1,21 +1,21 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import type { AppProps } from 'next/app';
+
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
-  goerli,
+  base,
+  bsc,
   mainnet,
   optimism,
   polygon,
-  base,
+  sepolia,
   zora,
   Chain,
-  bsc,
-  zkSync,
 } from 'wagmi/chains';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -24,7 +24,7 @@ const chains: readonly [Chain, ...Chain[]] = [
   arbitrum,
   base,
   zora,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
 ];
 
 const { connectors } = getDefaultWallets({
@@ -43,8 +43,7 @@ const config = createConfig({
     [base.id]: http(),
     [zora.id]: http(),
     [bsc.id]: http(),
-    [zkSync.id]: http(),
-    [goerli.id]: http(),
+    [sepolia.id]: http(),
   },
 });
 
