@@ -1,6 +1,6 @@
 import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
-import { bitKeepWallet, bitgetWallet } from './bitgetWallet/bitgetWallet';
+import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { clvWallet } from './clvWallet/clvWallet';
@@ -44,7 +44,6 @@ export {
   argentWallet,
   bifrostWallet,
   bitgetWallet,
-  bitKeepWallet,
   bitskiWallet,
   braveWallet,
   clvWallet,

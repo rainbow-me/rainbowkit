@@ -4,7 +4,7 @@ import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface BitKeepWalletOptions {
+export interface BitgetWalletOptions {
   projectId: string;
   walletConnectParameters?: WalletConnectParameters;
 }
@@ -12,7 +12,7 @@ export interface BitKeepWalletOptions {
 export const bitgetWallet = ({
   projectId,
   walletConnectParameters,
-}: BitKeepWalletOptions): Wallet => {
+}: BitgetWalletOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -113,8 +113,3 @@ export const bitgetWallet = ({
         }),
   };
 };
-
-/**
- * @deprecated `bitKeepWallet` is now `bitgetWallet`
- */
-export const bitKeepWallet = bitgetWallet;
