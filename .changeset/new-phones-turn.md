@@ -14,19 +14,19 @@
 "example": minor
 ---
 
-## Migrated from wagmi v1 to wagmi v2 ###
+## Migrated from Wagmi v1 to Wagmi v2 ###
 
 **1. Wagmi v2 migration**
 
-- `wagmi`: updated from `1.4.x` to `2.0.0-rc.3`
-- `viem`: updated from `1.21.x` to `2.x`
+- `wagmi`: updated from `1.4.x` to `^2.0.0`
+- `viem`: updated from `1.21.x` to `^2.0.0`
 
-Alongside with wagmi v2 migration we've added `@tanstack/react-query` dependency with version `^5`.
+Alongside with Wagmi v2 migration we've added `@tanstack/react-query` dependency with version `^5`.
 
 
 **2. Example projects updates**
 
-We've now updated all of our example projects to use wagmi v2 alongside with the new rainbowkit updates.
+We've now updated all of our example projects to use Wagmi v2 alongside with the new rainbowkit updates.
 
 **Before:**
 

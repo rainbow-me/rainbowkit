@@ -4,7 +4,7 @@
 
 **Breaking:**
 
-The [wagmi](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.3`.
+The [Wagmi](https://wagmi.sh) peer dependency is migrated over to [Wagmi v2](https://wagmi.sh/) which has been updated to `^2.0.0`.
 
 Follow the steps below to migrate.
 
@@ -16,10 +16,10 @@ npm i @rainbow-me/rainbowkit@beta wagmi
 
 **2. Install `viem` peer dependency**
 
-wagmi v2 requires the `viem` peer dependency. Install it with the following command:
+Wagmi v2 requires the `viem` peer dependency. Install it with the following command:
 
 ```bash
-npm i viem@2.x
+npm i viem@2
 ```
 
 **3. Check for breaking changes in `wagmi`**

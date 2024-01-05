@@ -6,33 +6,78 @@ title: Migration Guide
 
 ## Migrating RainbowKit
 
-### @rainbow-me/rainbowkit@beta Breaking changes
+### 2.x.x Breaking changes
 
-#### Updated to wagmi v2
+#### Updated to Wagmi v2
 
-The [wagmi](https://wagmi.sh) peer dependency is migrated over to [wagmi v2](https://rc.wagmi.sh/) which has been updated to `2.0.0-rc.3`.
+The [Wagmi](https://wagmi.sh) peer dependency has been updated to `^2.0.0.
 
 Follow the steps below to migrate.
 
-**1. Upgrade RainbowKit to beta version and `wagmi` to v2 version**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest version**
 
 ```bash
-npm i @rainbow-me/rainbowkit@beta wagmi@rc
+npm i @rainbow-me/rainbowkit@beta wagmi@2 viem@2
 ```
 
-**2. Install `viem` peer dependency**
+**2. Install `@tanstack/react-query` peer dependency**
 
-wagmi v2 requires the `viem` peer dependency. Install it with the following command:
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency. 
+
+Install it with the following command:
 
 ```bash
-npm i viem@2.x
+npm i @tanstack/react-query
 ```
 
-**3. Check for breaking changes in `wagmi`**
+**3. Adjust your Wagmi configuration
 
-If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v2.
+```diff
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+- import { configureChains, createConfig, WagmiConfig } from 'wagmi'
+- import { publicProvider } from 'wagmi/providers/public'
++ import { http, createConfig, WagmiProvider } from 'wagmi'
+import { mainnet, sepolia } from 'wagmi/chains'
 
-[You can see their migration guide from v1 to v2 here](https://rc.wagmi.sh/react/guides/migrate-from-v1-to-v2).
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider()], 
+- )
+
+const config = createConfig({
+-  autoConnect: true,
+-  publicClient
+   connectors,
++  chains: [mainnet, sepolia],
++  transports: {
++    [mainnet.id]: http(),
++    [sepolia.id]: http(),
++  },
+})
+
+const queryClient = new QueryClient() 
+
+const App = () => {
+  return (
+-    <WagmiConfig config={config}>
++    <WagmiProvider config={config}>
++      <QueryClientProvider client={queryClient}> 
+        <RainbowKitProvider chains={chains}>
+          {/* Your App */}
+        </RainbowKitProvider>
++      </QueryClientProvider> 
+    </WagmiConfig>
+  );
+};
+
+```
+
+**4. Check for breaking changes in `wagmi` and `viem`**
+
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
+
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### RainbowKit migration
 
@@ -89,25 +134,6 @@ We've updated the way we create new wallets. Please refer to this [page](https:/
 **3. WalletConnect legacy deprecation**
 
 RainbowKit no longer supports WalletConnect legacy option. We now fully rely on the WalletConnect v2.
-
-#### Rainbow Button migration
-
-If you were using the rainbow button make sure to change `RainbowConnector` to `rainbowConnector` and remove `chains`. Apart from that nothing else is needed. You're good to go!
-
-```diff
--import { RainbowConnector } from "@rainbow-me/rainbow-button";
-+import { rainbowConnector } from "@rainbow-me/rainbow-button";
-
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
--      new RainbowConnector({ chains, projectId }),
-+      rainbowConnector({ projectId }),
-    ],
-  },
-]);
-```
 
 ### 1.x.x Breaking changes
 
