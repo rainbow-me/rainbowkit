@@ -27,7 +27,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       '@tanstack/react-query':
-        specifier: 5.17.1
+        specifier: ^5.17.1
         version: 5.17.1(react@18.2.0)
       '@testing-library/jest-dom':
         specifier: ^6.2.0
@@ -383,7 +383,7 @@ importers:
         specifier: workspace:*
         version: link:../rainbowkit-siwe-next-auth
       '@tanstack/react-query':
-        specifier: 5.17.1
+        specifier: ^5.17.1
         version: 5.17.1(react@18.2.0)
       ethers:
         specifier: ^5.6.8
@@ -553,7 +553,7 @@ importers:
         specifier: ^8.0.12
         version: 8.0.12(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(three@0.139.2)
       '@tanstack/react-query':
-        specifier: 5.17.1
+        specifier: ^5.17.1
         version: 5.17.1(react@18.2.0)
       '@vanilla-extract/css':
         specifier: 1.14.0
