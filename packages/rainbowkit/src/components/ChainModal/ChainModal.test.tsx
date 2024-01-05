@@ -59,7 +59,7 @@ describe('<ChainModal />', () => {
     // optimism SHOULD be displayed
     // as it was the only passed to RainbowKitProvider
     expect(optimismOption).toBeInTheDocument();
-    // mainnet & arb SHOULD NOT be displayed
+    // fantom & avalanche SHOULD NOT be displayed
     // even tho they're supported they were not passed to RainbowKitProvider
     expect(
       modal.queryByTestId(`rk-chain-option-${fantom.id}`),
