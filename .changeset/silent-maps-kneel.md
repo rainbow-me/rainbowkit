@@ -48,7 +48,7 @@ const config = createConfig({
 });
 ```
 
-Feel free to follow `@rainbow-me/rainbow-button`'s migration guide [here](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+Feel free to follow `@rainbow-me/rainbow-button`'s migration guide [here](https://www.rainbowkit.com/docs/migration-guide).
 
 
  
