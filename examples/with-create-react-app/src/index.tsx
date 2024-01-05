@@ -50,6 +50,8 @@ const config = createConfig({
   },
 });
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -57,7 +59,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiProvider config={config}>
-      <QueryClientProvider client={new QueryClient()}>
+      <QueryClientProvider client={queryClient}>
         <RainbowKitProvider chains={chains}>
           <App />
         </RainbowKitProvider>
