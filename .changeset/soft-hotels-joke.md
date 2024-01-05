@@ -2,7 +2,7 @@
 "@rainbow-me/create-rainbowkit": patch
 ---
 
-Migrated template to wagmi v2 with the following package changes:
+Migrated template to Wagmi v2 with the following package changes:
 
 - updated `wagmi` from `1.4.x` to `^2.0.0`
 - updated `viem` from `1.21.x` to `^2.0.0`
