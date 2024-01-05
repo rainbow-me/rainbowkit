@@ -10,7 +10,6 @@ import {
 export interface CLVWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -24,7 +23,6 @@ export const clvWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
 }: CLVWalletOptions): Wallet => {
   const provider = typeof window !== 'undefined' && window['clover'];
   const isCLVInjected = Boolean(provider);
@@ -51,7 +49,6 @@ export const clvWallet = ({
             chains,
             options: walletConnectOptions,
             projectId,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({
             chains,
@@ -61,7 +58,7 @@ export const clvWallet = ({
           });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, '2');
+        const uri = await getWalletConnectUri(connector);
         return uri;
       };
 
@@ -97,8 +94,7 @@ export const clvWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
+              getUri: async () => getWalletConnectUri(connector),
               instructions: {
                 learnMoreUrl: 'https://clv.org/',
                 steps: [

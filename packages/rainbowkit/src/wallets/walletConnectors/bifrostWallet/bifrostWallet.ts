@@ -6,22 +6,13 @@ import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import {
   WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
   getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 import { InjectedWalletOptions } from '../injectedWallet/injectedWallet';
 
-export interface BifrostWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface BifrostWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -29,9 +20,8 @@ export const bifrostWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (BifrostWalletOptions | BifrostWalletLegacyOptions) &
+}: BifrostWalletOptions &
   InjectedWalletOptions &
   InjectedConnectorOptions): Wallet => {
   const isBifrostInjected =
@@ -59,7 +49,6 @@ export const bifrostWallet = ({
             chains,
             projectId,
             options: walletConnectOptions,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({
             chains,
@@ -67,7 +56,7 @@ export const bifrostWallet = ({
           });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return isAndroid()
           ? uri
@@ -81,8 +70,7 @@ export const bifrostWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
+              getUri: async () => getWalletConnectUri(connector),
               instructions: {
                 learnMoreUrl:
                   'https://support.bifrostwallet.com/en/articles/6886814-how-to-use-walletconnect',

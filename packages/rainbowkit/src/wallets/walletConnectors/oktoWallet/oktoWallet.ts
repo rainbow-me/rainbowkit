@@ -3,22 +3,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface OktoWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface OktoWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -26,8 +15,7 @@ export const oktoWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: OktoWalletLegacyOptions | OktoWalletOptions): Wallet => ({
+}: OktoWalletOptions): Wallet => ({
   id: 'Okto',
   name: 'Okto',
   iconUrl: async () => (await import('./oktoWallet.svg')).default,
@@ -43,7 +31,6 @@ export const oktoWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -51,16 +38,12 @@ export const oktoWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
+          const uri = await getWalletConnectUri(connector);
           return isAndroid() ? uri : `okto://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () =>
-          getWalletConnectUri(connector, walletConnectVersion),
+        getUri: async () => getWalletConnectUri(connector),
         instructions: {
           learnMoreUrl: 'https://okto.tech/',
           steps: [

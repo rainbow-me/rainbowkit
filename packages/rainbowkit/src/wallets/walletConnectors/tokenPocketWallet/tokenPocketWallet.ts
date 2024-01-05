@@ -4,23 +4,12 @@ import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitCha
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isMobile } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-export interface TokenPocketWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
 
 export interface TokenPocketWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -28,9 +17,7 @@ export const tokenPocketWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: (TokenPocketWalletLegacyOptions | TokenPocketWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: TokenPocketWalletOptions & InjectedConnectorOptions): Wallet => {
   const isTokenPocketInjected =
     typeof window !== 'undefined' && window.ethereum?.isTokenPocket === true;
 
@@ -58,12 +45,11 @@ export const tokenPocketWallet = ({
             chains,
             projectId,
             options: walletConnectOptions,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({ chains });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
         return isMobile()
           ? `tpoutside://wc?uri=${encodeURIComponent(uri)}`
           : uri;

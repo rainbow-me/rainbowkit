@@ -100,10 +100,7 @@ export function WalletButton({
       if (getMobileUri) {
         const mobileUri = await getMobileUri();
 
-        if (
-          connector.id === 'walletConnect' ||
-          connector.id === 'walletConnectLegacy'
-        ) {
+        if (connector.id === 'walletConnect') {
           // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
           // successful connection and then the universal provider uses it on requests. We call
           // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.

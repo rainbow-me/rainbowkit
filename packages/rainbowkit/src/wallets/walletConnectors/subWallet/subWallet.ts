@@ -17,7 +17,6 @@ declare global {
 export interface SubWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -30,7 +29,6 @@ export const subWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
 }: SubWalletOptions & InjectedConnectorOptions): Wallet => {
   const isSubWalletInjected = Boolean(getSubWalletInjectedProvider());
@@ -59,7 +57,6 @@ export const subWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : new InjectedConnector({
@@ -71,13 +68,13 @@ export const subWallet = ({
           });
 
       const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return `subwallet://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
-        return await getWalletConnectUri(connector, walletConnectVersion);
+        return await getWalletConnectUri(connector);
       };
 
       const mobileConnector = {

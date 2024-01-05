@@ -5,22 +5,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface BitgetWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface BitgetWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -28,10 +17,8 @@ export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (BitgetWalletLegacyOptions | BitgetWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: BitgetWalletOptions & InjectedConnectorOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -66,7 +53,6 @@ export const bitgetWallet = ({
             chains,
             options: walletConnectOptions,
             projectId,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({
             chains,
@@ -78,7 +64,7 @@ export const bitgetWallet = ({
           });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return isAndroid()
           ? uri
@@ -117,8 +103,7 @@ export const bitgetWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
+              getUri: async () => getWalletConnectUri(connector),
               instructions: {
                 learnMoreUrl: 'https://web3.bitget.com/en/academy',
                 steps: [

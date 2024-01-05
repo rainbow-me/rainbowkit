@@ -4,10 +4,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -15,17 +12,9 @@ declare global {
   }
 }
 
-export interface SafepalWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface SafepalWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -73,10 +62,8 @@ export const safepalWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (SafepalWalletLegacyOptions | SafepalWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: SafepalWalletOptions & InjectedConnectorOptions): Wallet => {
   const isSafePalWalletInjected = Boolean(getSafepalWalletInjectedProvider());
   const shouldUseWalletConnect = !isSafePalWalletInjected;
 
@@ -102,13 +89,13 @@ export const safepalWallet = ({
     },
     createConnector: () => {
       const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return `safepalwallet://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return uri;
       };
@@ -117,7 +104,6 @@ export const safepalWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : new InjectedConnector({

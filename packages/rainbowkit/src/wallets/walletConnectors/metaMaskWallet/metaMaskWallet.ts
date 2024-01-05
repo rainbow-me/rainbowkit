@@ -5,22 +5,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface MetaMaskWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -74,10 +63,8 @@ export const metaMaskWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (MetaMaskWalletLegacyOptions | MetaMaskWalletOptions) &
-  MetaMaskConnectorOptions): Wallet => {
+}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
   const providers = typeof window !== 'undefined' && window.ethereum?.providers;
 
   // Not using the explicit isMetaMask fn to check for MetaMask
@@ -115,7 +102,6 @@ export const metaMaskWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : new MetaMaskConnector({
@@ -132,7 +118,7 @@ export const metaMaskWallet = ({
           });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
         return isAndroid()
           ? uri
           : isIOS()

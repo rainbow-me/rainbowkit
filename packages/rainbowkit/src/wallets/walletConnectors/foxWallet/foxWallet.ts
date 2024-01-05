@@ -9,7 +9,6 @@ import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnec
 export interface FoxWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -17,7 +16,6 @@ export const foxWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
 }: FoxWalletOptions & InjectedConnectorOptions): Wallet => {
   const isFoxInjected =
@@ -43,7 +41,6 @@ export const foxWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : new InjectedConnector({
@@ -60,18 +57,14 @@ export const foxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
-                const uri = await getWalletConnectUri(
-                  connector,
-                  walletConnectVersion,
-                );
+                const uri = await getWalletConnectUri(connector);
                 return `foxwallet://wc?uri=${encodeURIComponent(uri)}`;
               }
             : undefined,
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
+              getUri: async () => getWalletConnectUri(connector),
               instructions: {
                 learnMoreUrl: 'https://foxwallet.com',
                 steps: [
