@@ -1,4 +1,5 @@
 import { WalletInstance } from './Wallet';
+import { wcId } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export const groupedWallets = (
   recentWallets: WalletInstance[],
@@ -39,7 +40,7 @@ export const rainbowKitConnectorWithWalletConnect = (
 ) => {
   // Check if we should use the walletConnectModalConnector for this instance
   const shouldUseWalletConnectModal =
-    wallet.id === 'walletConnect' && walletConnectModalConnector;
+    wallet.id === wcId && walletConnectModalConnector;
 
   // Include the walletConnectModalConnector in the result
   return shouldUseWalletConnectModal

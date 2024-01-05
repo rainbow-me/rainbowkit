@@ -43,7 +43,7 @@ const getOrCreateWalletConnectInstance = ({
     showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet
   };
 
-  // `rkDetailsShowQrModal should only be `true` boolean
+  // `rkDetailsShowQrModal` should always be `true`
   if (rkDetailsShowQrModal) {
     config = { ...config, showQrModal: true };
   }
@@ -75,6 +75,8 @@ function createWalletConnectConnector({
     ...getOrCreateWalletConnectInstance({
       projectId,
       walletConnectParameters,
+      // Used in `connectorsForWallets` to add another
+      // walletConnect wallet into rainbowkit with modal popup option
       rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
     })(config),
     ...walletDetails,
@@ -93,7 +95,7 @@ export function getWalletConnectConnector({
     );
   }
 
-  // Return a function that merges additional wallet options with the default options.
+  // Return a function that merges additional wallet details with `CreateConnectorFn`.
   return (walletDetails: WalletDetailsParams) =>
     createWalletConnectConnector({
       projectId,

@@ -8,6 +8,7 @@ export interface WalletConnectWalletOptions {
 }
 
 // Used for maintance purposes for `connectorsForWallets` logic
+// wcId = "WalletConnect id"
 export const wcId = 'walletConnect';
 
 export const walletConnectWallet = ({

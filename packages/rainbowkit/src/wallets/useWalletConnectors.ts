@@ -19,6 +19,7 @@ import {
   rainbowKitConnectorWithWalletConnect,
 } from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
+import { wcId } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
@@ -44,7 +45,9 @@ export function useWalletConnectors(
 
   const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
     ...connector,
-    // rkDetails is optional it does not exist in eip6963 connectors
+    // rkDetails is optional it does not exist in eip6963 connectors.
+    // We only inject `rkDetails` in `connectorsForWallets` when we
+    // want to have additional information in the connector.
     ...(connector.rkDetails || {}),
   })) as WalletInstance[];
 
@@ -109,15 +112,12 @@ export function useWalletConnectors(
 
   const walletConnectModalConnector = defaultConnectors.find(
     (connector) =>
-      connector.id === 'walletConnect' &&
-      connector.isWalletConnectModalConnector,
+      connector.id === wcId && connector.isWalletConnectModalConnector,
   );
 
   const eip6963Connectors = defaultConnectors
     .filter(isEIP6963Connector)
     .map((connector) => {
-      // We would have to do this just to ensure that we don't mix the EIP6963 connector (id's)
-      // with rainbowkit connectors (id's). Otherwise we will run into conflicts / issues
       return {
         ...connector,
         groupIndex: 0,
