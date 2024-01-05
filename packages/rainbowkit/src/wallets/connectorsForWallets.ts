@@ -1,7 +1,7 @@
 import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import type { Wallet, WalletList, WalletOptionsParams } from './Wallet';
+import type { Wallet, WalletDetailsParams, WalletList } from './Wallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -106,7 +106,7 @@ export const _connectorsForWallets = (
     const params = (
       // For now we should only use these as the additional parameters
       additionalParams?: Pick<
-        WalletOptionsParams['rkDetails'],
+        WalletDetailsParams['rkDetails'],
         'showQrModal' | 'isWalletConnectModalConnector'
       >,
     ) => {

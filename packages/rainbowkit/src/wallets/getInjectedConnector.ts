@@ -1,6 +1,6 @@
 import { createConnector } from 'wagmi';
 import { injected } from 'wagmi/connectors';
-import { CreateConnector, WalletOptionsParams } from './Wallet';
+import { CreateConnector, WalletDetailsParams } from './Wallet';
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true
@@ -35,13 +35,13 @@ function getInjectedProvider(flag: string) {
 }
 
 function createInjectedConnector(provider?: any): CreateConnector {
-  return (walletOptions: WalletOptionsParams) => {
+  return (walletDetails: WalletDetailsParams) => {
     // Create the injected configuration object conditionally based on the provider.
     const injectedConfig = provider
       ? {
           target: () => ({
-            id: walletOptions.rkDetails.id,
-            name: walletOptions.rkDetails.name,
+            id: walletDetails.rkDetails.id,
+            name: walletDetails.rkDetails.name,
             provider,
           }),
         }
@@ -50,7 +50,7 @@ function createInjectedConnector(provider?: any): CreateConnector {
     return createConnector((config) => ({
       // Spread the injectedConfig object, which may be empty or contain the target function
       ...injected(injectedConfig)(config),
-      ...walletOptions,
+      ...walletDetails,
     }));
   };
 }

@@ -1,7 +1,7 @@
 import { createConnector } from 'wagmi';
 import { metaMask } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletOptionsParams } from '../../Wallet';
+import { Wallet, WalletDetailsParams } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
@@ -158,10 +158,10 @@ export const metaMaskWallet = ({
       ? getWalletConnectConnector({
           projectId,
         })
-      : (walletOptions: WalletOptionsParams) => {
+      : (walletDetails: WalletDetailsParams) => {
           return createConnector((config) => ({
             ...metaMask()(config),
-            ...walletOptions,
+            ...walletDetails,
           }));
         },
   };

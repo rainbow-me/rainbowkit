@@ -112,8 +112,8 @@ The `Wallet` function type is provided to help you define your own custom wallet
     {
       name: "createConnector",
       required: true,
-      type: "createConnector: (options: WalletOptionsParams) => CreateConnectorFn",
-      typeSimple: "(options: WalletOptionsParams) => CreateConnectorFn",
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: "(details: WalletDetailsParams) => CreateConnectorFn",
       description:
         "Function for providing the connector instance",
     },

@@ -1,7 +1,7 @@
 import { createConnector } from 'wagmi';
 import { coinbaseWallet as coinbaseWagmiWallet } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletOptionsParams } from '../../Wallet';
+import { Wallet, WalletDetailsParams } from '../../Wallet';
 import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface CoinbaseWalletOptions {
@@ -92,10 +92,10 @@ export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
             },
           },
         }),
-    createConnector: (walletOptions: WalletOptionsParams) =>
+    createConnector: (walletDetails: WalletDetailsParams) =>
       createConnector((config) => ({
         ...coinbaseWagmiWallet({ appName, headlessMode: true })(config),
-        ...walletOptions,
+        ...walletDetails,
       })),
   };
 };

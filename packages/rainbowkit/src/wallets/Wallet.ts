@@ -72,7 +72,7 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
-  createConnector: (options: WalletOptionsParams) => CreateConnectorFn;
+  createConnector: (options: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
@@ -87,9 +87,9 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   showQrModal?: boolean;
 };
 
-export type WalletOptionsParams = { rkDetails: RainbowKitDetails };
+export type WalletDetailsParams = { rkDetails: RainbowKitDetails };
 
-export type CreateConnector = (walletOptions: {
+export type CreateConnector = (walletDetails: {
   rkDetails: RainbowKitDetails;
 }) => CreateConnectorFn;
 
