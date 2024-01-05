@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isMobile } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
 import { getDefaultInjectedConnector } from '../../getInjectedConnector';
@@ -5,10 +6,12 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TokenPocketWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 export const tokenPocketWallet = ({
   projectId,
+  walletConnectParameters,
 }: TokenPocketWalletOptions): Wallet => {
   const isTokenPocketInjected =
     typeof window !== 'undefined' && window.ethereum?.isTokenPocket === true;
@@ -96,6 +99,7 @@ export const tokenPocketWallet = ({
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getDefaultInjectedConnector(),
   };

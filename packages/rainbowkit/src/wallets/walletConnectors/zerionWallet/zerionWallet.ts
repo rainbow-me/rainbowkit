@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
@@ -5,9 +6,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ZerionWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const zerionWallet = ({ projectId }: ZerionWalletOptions): Wallet => {
+export const zerionWallet = ({
+  projectId,
+  walletConnectParameters,
+}: ZerionWalletOptions): Wallet => {
   const isZerionInjected =
     typeof window !== 'undefined' &&
     ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
@@ -95,6 +100,7 @@ export const zerionWallet = ({ projectId }: ZerionWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target:

@@ -54,7 +54,6 @@ export type Wallet = {
   iconAccent?: string;
   iconBackground: string;
   installed?: boolean;
-  ready?: boolean;
   downloadUrls?: {
     android?: string;
     ios?: string;
@@ -84,7 +83,9 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   isWalletConnectModalConnector?: boolean;
   isRainbowKitConnector: boolean;
   walletConnectModalConnector?: Connector;
-  showQrModal?: boolean;
+  // Used specifically in `connectorsForWallets` logic
+  // to make sure we can also get WalletConnect modal in rainbowkit
+  showQrModal?: true;
 };
 
 export type WalletDetailsParams = { rkDetails: RainbowKitDetails };

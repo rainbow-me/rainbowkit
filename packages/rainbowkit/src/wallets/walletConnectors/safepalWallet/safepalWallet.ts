@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -10,6 +11,7 @@ declare global {
 
 export interface SafepalWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 function getSafepalWalletInjectedProvider(): Window['ethereum'] {
@@ -52,7 +54,10 @@ function getSafepalWalletInjectedProvider(): Window['ethereum'] {
   }
 }
 
-export const safepalWallet = ({ projectId }: SafepalWalletOptions): Wallet => {
+export const safepalWallet = ({
+  projectId,
+  walletConnectParameters,
+}: SafepalWalletOptions): Wallet => {
   const isSafePalWalletInjected = Boolean(getSafepalWalletInjectedProvider());
   const shouldUseWalletConnect = !isSafePalWalletInjected;
 
@@ -145,6 +150,7 @@ export const safepalWallet = ({ projectId }: SafepalWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target: getSafepalWalletInjectedProvider(),

@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
@@ -5,9 +6,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OKXWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const okxWallet = ({ projectId }: OKXWalletOptions): Wallet => {
+export const okxWallet = ({
+  projectId,
+  walletConnectParameters,
+}: OKXWalletOptions): Wallet => {
   // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
   const isOKXInjected =
     typeof window !== 'undefined' &&
@@ -95,6 +100,7 @@ export const okxWallet = ({ projectId }: OKXWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target:

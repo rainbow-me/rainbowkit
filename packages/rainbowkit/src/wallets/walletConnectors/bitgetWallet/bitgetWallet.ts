@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
@@ -5,9 +6,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface BitKeepWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const bitgetWallet = ({ projectId }: BitKeepWalletOptions): Wallet => {
+export const bitgetWallet = ({
+  projectId,
+  walletConnectParameters,
+}: BitKeepWalletOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -100,6 +105,7 @@ export const bitgetWallet = ({ projectId }: BitKeepWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           // @ts-expect-error

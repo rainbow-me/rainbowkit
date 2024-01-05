@@ -1,11 +1,16 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface UniswapWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const uniswapWallet = ({ projectId }: UniswapWalletOptions): Wallet => ({
+export const uniswapWallet = ({
+  projectId,
+  walletConnectParameters,
+}: UniswapWalletOptions): Wallet => ({
   id: 'uniswap',
   name: 'Uniswap Wallet',
   iconUrl: async () => (await import('./uniswapWallet.svg')).default,
@@ -47,5 +52,6 @@ export const uniswapWallet = ({ projectId }: UniswapWalletOptions): Wallet => ({
 
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });

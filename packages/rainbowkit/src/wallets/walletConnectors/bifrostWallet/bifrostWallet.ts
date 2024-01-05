@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import {
@@ -8,9 +9,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface BifrostWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
+export const bifrostWallet = ({
+  projectId,
+  walletConnectParameters,
+}: BifrostWalletOptions): Wallet => {
   const isBifrostInjected = hasInjectedProvider('isBifrost');
 
   const shouldUseWalletConnect = !isBifrostInjected;
@@ -69,6 +74,7 @@ export const bifrostWallet = ({ projectId }: BifrostWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getDefaultInjectedConnector(),
   };

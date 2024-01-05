@@ -1,9 +1,11 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface CLVWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 declare global {
@@ -12,7 +14,10 @@ declare global {
   }
 }
 
-export const clvWallet = ({ projectId }: CLVWalletOptions): Wallet => {
+export const clvWallet = ({
+  projectId,
+  walletConnectParameters,
+}: CLVWalletOptions): Wallet => {
   const provider = typeof window !== 'undefined' && window['clover'];
   const isCLVInjected = Boolean(provider);
 
@@ -85,6 +90,7 @@ export const clvWallet = ({ projectId }: CLVWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target: provider,

@@ -1,12 +1,17 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface FoxWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const foxWallet = ({ projectId }: FoxWalletOptions): Wallet => {
+export const foxWallet = ({
+  projectId,
+  walletConnectParameters,
+}: FoxWalletOptions): Wallet => {
   const isFoxInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -61,6 +66,7 @@ export const foxWallet = ({ projectId }: FoxWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target:

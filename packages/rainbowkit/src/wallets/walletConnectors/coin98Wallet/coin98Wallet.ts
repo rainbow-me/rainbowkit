@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
@@ -13,9 +14,13 @@ declare global {
 
 export interface Coin98WalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const coin98Wallet = ({ projectId }: Coin98WalletOptions): Wallet => {
+export const coin98Wallet = ({
+  projectId,
+  walletConnectParameters,
+}: Coin98WalletOptions): Wallet => {
   const isCoin98WalletInjected = hasInjectedProvider('isCoin98');
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
@@ -94,6 +99,7 @@ export const coin98Wallet = ({ projectId }: Coin98WalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isCoin98' }),
   };

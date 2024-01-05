@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isMobile } from '../../../utils/isMobile';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import {
@@ -14,9 +15,13 @@ declare global {
 
 export interface TrustWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const trustWallet = ({ projectId }: TrustWalletOptions): Wallet => {
+export const trustWallet = ({
+  projectId,
+  walletConnectParameters,
+}: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
     ? hasInjectedProvider('isTrust')
     : hasInjectedProvider('isTrustWallet');
@@ -112,6 +117,7 @@ export const trustWallet = ({ projectId }: TrustWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : isMobile()
         ? getInjectedConnector({ flag: 'isTrust' })

@@ -1,12 +1,17 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OktoWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const oktoWallet = ({ projectId }: OktoWalletOptions): Wallet => ({
+export const oktoWallet = ({
+  projectId,
+  walletConnectParameters,
+}: OktoWalletOptions): Wallet => ({
   id: 'Okto',
   name: 'Okto',
   iconUrl: async () => (await import('./oktoWallet.svg')).default,
@@ -48,5 +53,6 @@ export const oktoWallet = ({ projectId }: OktoWalletOptions): Wallet => ({
   },
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });

@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import {
@@ -8,9 +9,13 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const rainbowWallet = ({ projectId }: RainbowWalletOptions): Wallet => {
+export const rainbowWallet = ({
+  projectId,
+  walletConnectParameters,
+}: RainbowWalletOptions): Wallet => {
   const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
 
@@ -74,6 +79,7 @@ export const rainbowWallet = ({ projectId }: RainbowWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({ flag: 'isRainbow' }),
   };

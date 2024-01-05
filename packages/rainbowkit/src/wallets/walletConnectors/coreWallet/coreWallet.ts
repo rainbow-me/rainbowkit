@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -11,6 +12,7 @@ declare global {
 
 export interface CoreWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 function getCoreWalletInjectedProvider(): any {
@@ -42,7 +44,10 @@ function getCoreWalletInjectedProvider(): any {
   }
 }
 
-export const coreWallet = ({ projectId }: CoreWalletOptions): Wallet => {
+export const coreWallet = ({
+  projectId,
+  walletConnectParameters,
+}: CoreWalletOptions): Wallet => {
   const isCoreInjected = Boolean(getCoreWalletInjectedProvider());
 
   const shouldUseWalletConnect = !isCoreInjected;
@@ -115,6 +120,7 @@ export const coreWallet = ({ projectId }: CoreWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target: getCoreWalletInjectedProvider(),

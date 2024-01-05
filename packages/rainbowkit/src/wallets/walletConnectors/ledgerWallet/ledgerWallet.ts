@@ -1,12 +1,17 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface LedgerWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
+export const ledgerWallet = ({
+  projectId,
+  walletConnectParameters,
+}: LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   iconAccent: '#000',
@@ -83,5 +88,6 @@ export const ledgerWallet = ({ projectId }: LedgerWalletOptions): Wallet => ({
   },
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });

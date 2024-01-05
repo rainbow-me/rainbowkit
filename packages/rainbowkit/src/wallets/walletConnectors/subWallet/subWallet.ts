@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -10,6 +11,7 @@ declare global {
 
 export interface SubWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 const getSubWalletInjectedProvider = (): Window['ethereum'] => {
@@ -17,7 +19,10 @@ const getSubWalletInjectedProvider = (): Window['ethereum'] => {
   return window.SubWallet;
 };
 
-export const subWallet = ({ projectId }: SubWalletOptions): Wallet => {
+export const subWallet = ({
+  projectId,
+  walletConnectParameters,
+}: SubWalletOptions): Wallet => {
   const isSubWalletInjected = Boolean(getSubWalletInjectedProvider());
   const shouldUseWalletConnect = !isSubWalletInjected;
 
@@ -114,6 +119,7 @@ export const subWallet = ({ projectId }: SubWalletOptions): Wallet => {
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : getInjectedConnector({
           target: getSubWalletInjectedProvider(),

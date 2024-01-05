@@ -1,12 +1,17 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ArgentWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const argentWallet = ({ projectId }: ArgentWalletOptions): Wallet => ({
+export const argentWallet = ({
+  projectId,
+  walletConnectParameters,
+}: ArgentWalletOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argentWallet.svg')).default,
@@ -50,5 +55,6 @@ export const argentWallet = ({ projectId }: ArgentWalletOptions): Wallet => ({
   },
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });

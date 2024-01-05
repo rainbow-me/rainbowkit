@@ -1,3 +1,4 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
@@ -11,10 +12,12 @@ declare global {
 
 export interface FrontierWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 export const frontierWallet = ({
   projectId,
+  walletConnectParameters,
 }: FrontierWalletOptions): Wallet => {
   const isFrontierInjected =
     typeof window !== 'undefined' &&
@@ -113,7 +116,7 @@ export const frontierWallet = ({
       },
     },
     createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({ projectId })
+      ? getWalletConnectConnector({ projectId, walletConnectParameters })
       : getInjectedConnector({
           target:
             typeof window !== 'undefined'

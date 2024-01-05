@@ -1,11 +1,12 @@
 import { createConnector } from 'wagmi';
-import { metaMask } from 'wagmi/connectors';
+import { WalletConnectParameters, metaMask } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet, WalletDetailsParams } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
 function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
@@ -56,6 +57,7 @@ function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
 
 export const metaMaskWallet = ({
   projectId,
+  walletConnectParameters,
 }: MetaMaskWalletOptions): Wallet => {
   // Not using the explicit isMetaMask fn to check for MetaMask
   // so that users can continue to use the MetaMask button
@@ -157,6 +159,7 @@ export const metaMaskWallet = ({
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({
           projectId,
+          walletConnectParameters,
         })
       : (walletDetails: WalletDetailsParams) => {
           return createConnector((config) => ({

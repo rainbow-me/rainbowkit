@@ -1,11 +1,16 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ImTokenWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const imTokenWallet = ({ projectId }: ImTokenWalletOptions): Wallet => ({
+export const imTokenWallet = ({
+  projectId,
+  walletConnectParameters,
+}: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
   iconUrl: async () => (await import('./imTokenWallet.svg')).default,
@@ -50,5 +55,6 @@ export const imTokenWallet = ({ projectId }: ImTokenWalletOptions): Wallet => ({
   },
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });

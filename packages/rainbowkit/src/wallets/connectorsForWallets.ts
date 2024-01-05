@@ -2,6 +2,7 @@ import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import type { Wallet, WalletDetailsParams, WalletList } from './Wallet';
+import { walletConnecWalletId } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -103,11 +104,11 @@ export const _connectorsForWallets = (
       }
     }
 
-    const params = (
+    const walletMetaData = (
       // For now we should only use these as the additional parameters
-      additionalParams?: Pick<
+      additionalRkParams?: Pick<
         WalletDetailsParams['rkDetails'],
-        'showQrModal' | 'isWalletConnectModalConnector'
+        'isWalletConnectModalConnector' | 'showQrModal'
       >,
     ) => {
       return {
@@ -116,22 +117,29 @@ export const _connectorsForWallets = (
           groupIndex,
           groupName,
           isRainbowKitConnector: true,
-          ...additionalParams,
+          // These additional params will be used in rainbowkit react tree to
+          // get the official WalletConnect modal popup if user chooses to open it.
+          // We're also going to use `showQrModal` true to inject that option into
+          // `walletConnectWallet`
+          ...(additionalRkParams ? additionalRkParams : {}),
         }),
       };
     };
 
-    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
+    const isWalletConnectConnector = walletMeta.id === walletConnecWalletId;
 
     if (isWalletConnectConnector) {
       connectors.push(
         createConnector(
-          params({ showQrModal: true, isWalletConnectModalConnector: true }),
+          walletMetaData({
+            isWalletConnectModalConnector: true,
+            showQrModal: true,
+          }),
         ),
       );
     }
 
-    const connector = createConnector(params());
+    const connector = createConnector(walletMetaData());
 
     connectors.push(connector);
   }

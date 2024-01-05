@@ -1,7 +1,28 @@
 import { createConnector } from 'wagmi';
 import type { CreateConnectorFn } from 'wagmi';
-import { walletConnect } from 'wagmi/connectors';
-import type { CreateConnector, WalletDetailsParams } from './Wallet';
+import { WalletConnectParameters, walletConnect } from 'wagmi/connectors';
+import type {
+  CreateConnector,
+  RainbowKitDetails,
+  WalletDetailsParams,
+} from './Wallet';
+
+interface GetWalletConnectConnectorParams {
+  projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
+}
+
+interface CreateWalletConnectConnectorParams {
+  projectId: string;
+  walletDetails: WalletDetailsParams;
+  walletConnectParameters?: WalletConnectParameters;
+}
+
+interface GetOrCreateWalletConnectInstanceParams {
+  projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
+  rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
+}
 
 const walletConnectInstances = new Map<
   string,
@@ -9,40 +30,53 @@ const walletConnectInstances = new Map<
 >();
 
 // Function to get or create a walletConnect instance
-const getOrCreateWalletConnectInstance = (
-  projectId: string,
-  showQrModal: boolean,
-): ReturnType<typeof walletConnect> => {
-  const key = `${projectId}_${showQrModal}`;
+const getOrCreateWalletConnectInstance = ({
+  projectId,
+  walletConnectParameters,
+  rkDetailsShowQrModal,
+}: GetOrCreateWalletConnectInstanceParams): ReturnType<
+  typeof walletConnect
+> => {
+  let config: WalletConnectParameters = {
+    ...(walletConnectParameters ? walletConnectParameters : {}),
+    projectId,
+    showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet
+  };
 
-  const sharedWalletConnector = walletConnectInstances.get(key);
+  // `rkDetailsShowQrModal should only be `true` boolean
+  if (rkDetailsShowQrModal) {
+    config = { ...config, showQrModal: true };
+  }
+
+  const serializedConfig = JSON.stringify(config, null, 2);
+
+  const sharedWalletConnector = walletConnectInstances.get(serializedConfig);
 
   if (sharedWalletConnector) {
     return sharedWalletConnector;
   }
 
   // Create a new walletConnect instance and store it
-  const newWalletConnectInstance = walletConnect({
-    projectId,
-    showQrModal,
-  });
+  const newWalletConnectInstance = walletConnect(config);
 
-  walletConnectInstances.set(key, newWalletConnectInstance);
+  walletConnectInstances.set(serializedConfig, newWalletConnectInstance);
 
   return newWalletConnectInstance;
 };
 
 // Creates a WalletConnect connector with the given project ID and additional options.
-function createWalletConnectConnector(
-  projectId: string,
-  walletDetails: WalletDetailsParams,
-): CreateConnectorFn {
+function createWalletConnectConnector({
+  projectId,
+  walletDetails,
+  walletConnectParameters,
+}: CreateWalletConnectConnectorParams): CreateConnectorFn {
   // Create and configure the WalletConnect connector with project ID and options.
   return createConnector((config) => ({
-    ...getOrCreateWalletConnectInstance(
+    ...getOrCreateWalletConnectInstance({
       projectId,
-      walletDetails.rkDetails?.showQrModal ?? false,
-    )(config),
+      walletConnectParameters,
+      rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
+    })(config),
     ...walletDetails,
   }));
 }
@@ -50,9 +84,8 @@ function createWalletConnectConnector(
 // Factory function to obtain a configured WalletConnect connector.
 export function getWalletConnectConnector({
   projectId,
-}: {
-  projectId?: string;
-}): CreateConnector {
+  walletConnectParameters,
+}: GetWalletConnectConnectorParams): CreateConnector {
   // Check if the projectId is provided; if not, throw an error.
   if (!projectId) {
     throw new Error(
@@ -62,5 +95,9 @@ export function getWalletConnectConnector({
 
   // Return a function that merges additional wallet options with the default options.
   return (walletDetails: WalletDetailsParams) =>
-    createWalletConnectConnector(projectId, { ...walletDetails });
+    createWalletConnectConnector({
+      projectId,
+      walletDetails,
+      walletConnectParameters,
+    });
 }

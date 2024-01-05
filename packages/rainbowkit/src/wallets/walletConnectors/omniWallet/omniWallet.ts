@@ -1,12 +1,17 @@
+import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OmniWalletOptions {
   projectId: string;
+  walletConnectParameters?: WalletConnectParameters;
 }
 
-export const omniWallet = ({ projectId }: OmniWalletOptions): Wallet => ({
+export const omniWallet = ({
+  projectId,
+  walletConnectParameters,
+}: OmniWalletOptions): Wallet => ({
   id: 'omni',
   name: 'Omni',
   iconUrl: async () => (await import('./omniWallet.svg')).default,
@@ -47,5 +52,6 @@ export const omniWallet = ({ projectId }: OmniWalletOptions): Wallet => ({
   },
   createConnector: getWalletConnectConnector({
     projectId,
+    walletConnectParameters,
   }),
 });
