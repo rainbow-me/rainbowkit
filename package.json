@@ -73,7 +73,7 @@
     "typescript": "^5.0.4",
     "viem": "^2.0.0",
     "vitest": "^0.33.0",
-    "wagmi": "2.0.0-rc.3"
+    "wagmi": "^2.0.0"
   },
   "packageManager": "pnpm@8.14.0",
   "pnpm": {
