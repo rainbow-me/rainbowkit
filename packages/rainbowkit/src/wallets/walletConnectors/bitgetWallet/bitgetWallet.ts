@@ -24,38 +24,13 @@ export interface BitgetWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-/**
- * @deprecated `BitKeepWalletLegacyOptions` is now `BitgetWalletLegacyOptions`
- */
-export interface BitKeepWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
-/**
- * @deprecated `BitKeepWalletOptions` is now `BitgetWalletOptions`
- */
-export interface BitKeepWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
-
 export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
   walletConnectVersion = '2',
   ...options
-}: (
-  | BitgetWalletLegacyOptions
-  | BitgetWalletOptions
-  | BitKeepWalletLegacyOptions
-  | BitKeepWalletOptions
-) &
+}: (BitgetWalletLegacyOptions | BitgetWalletOptions) &
   InjectedConnectorOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
@@ -174,8 +149,3 @@ export const bitgetWallet = ({
     },
   };
 };
-
-/**
- * @deprecated `bitKeepWallet` is now `bitgetWallet`
- */
-export const bitKeepWallet = bitgetWallet;
