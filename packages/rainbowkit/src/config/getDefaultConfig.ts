@@ -42,9 +42,17 @@ export const getDefaultConfig = ({
       {
         groupName: 'Popular',
         wallets: [
-          rainbowWallet({ chains, projectId, options: { metadata } }),
+          rainbowWallet({
+            chains,
+            projectId,
+            walletConnectOptions: { metadata },
+          }),
           coinbaseWallet({ appName, appIcon, chains }),
-          metaMaskWallet({ chains, projectId, options: { metadata } }),
+          metaMaskWallet({
+            chains,
+            projectId,
+            walletConnectOptions: { metadata },
+          }),
           walletConnectWallet({ chains, projectId, options: { metadata } }),
         ],
       },
