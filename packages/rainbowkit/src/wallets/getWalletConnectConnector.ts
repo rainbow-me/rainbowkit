@@ -7,9 +7,13 @@ const sharedConnectors = new Map<SerializedOptions, WalletConnectConnector>();
 type WalletConnectConnectorConfig = ConstructorParameters<
   typeof WalletConnectConnector
 >[0];
+
 export type WalletConnectConnectorOptions =
   // @ts-ignore
   WalletConnectConnectorConfig['options'];
+
+export type WalletConnectConnectorMetadata =
+  WalletConnectConnectorOptions['metadata'];
 
 function createConnector(
   config: WalletConnectConnectorConfig,

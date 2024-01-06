@@ -2,6 +2,7 @@ import { type Chain, configureChains, createConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import type { WalletList } from '../wallets/Wallet';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
+import type { WalletConnectConnectorMetadata } from '../wallets/getWalletConnectConnector';
 import {
   coinbaseWallet,
   metaMaskWallet,
@@ -11,6 +12,8 @@ import {
 
 export const getDefaultConfig = ({
   appName,
+  appDescription,
+  appUrl,
   appIcon,
   chains,
   wallets,
@@ -28,15 +31,21 @@ export const getDefaultConfig = ({
     publicProvider(),
   ]);
 
+  const metadata: WalletConnectConnectorMetadata = {
+    name: appName,
+    description: appDescription,
+    url: appUrl,
+  };
+
   const connectors = connectorsForWallets(
     wallets || [
       {
         groupName: 'Popular',
         wallets: [
-          rainbowWallet({ chains, projectId }),
+          rainbowWallet({ chains, projectId, options: { metadata } }),
           coinbaseWallet({ appName, appIcon, chains }),
-          metaMaskWallet({ chains, projectId }),
-          walletConnectWallet({ chains, projectId }),
+          metaMaskWallet({ chains, projectId, options: { metadata } }),
+          walletConnectWallet({ chains, projectId, options: { metadata } }),
         ],
       },
     ],
