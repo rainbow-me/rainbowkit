@@ -4,10 +4,7 @@ import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitCha
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 declare global {
@@ -16,17 +13,9 @@ declare global {
   }
 }
 
-export interface FrontierWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface FrontierWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -34,10 +23,8 @@ export const frontierWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (FrontierWalletLegacyOptions | FrontierWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: FrontierWalletOptions & InjectedConnectorOptions): Wallet => {
   const isFrontierInjected =
     typeof window !== 'undefined' &&
     typeof window.frontier !== 'undefined' &&
@@ -69,11 +56,10 @@ export const frontierWallet = ({
             chains,
             projectId,
             options: walletConnectOptions,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({ chains });
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
         return isAndroid()
           ? `frontier://wc?uri=${encodeURIComponent(uri)}`
           : uri;

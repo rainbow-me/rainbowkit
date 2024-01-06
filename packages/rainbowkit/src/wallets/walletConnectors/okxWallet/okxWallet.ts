@@ -5,22 +5,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface OKXWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface OKXWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -28,10 +17,8 @@ export const okxWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (OKXWalletLegacyOptions | OKXWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: OKXWalletOptions & InjectedConnectorOptions): Wallet => {
   // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
   const isOKXInjected =
     typeof window !== 'undefined' &&
@@ -63,7 +50,6 @@ export const okxWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : new InjectedConnector({
@@ -80,10 +66,7 @@ export const okxWallet = ({
         mobile: {
           getUri: shouldUseWalletConnect
             ? async () => {
-                const uri = await getWalletConnectUri(
-                  connector,
-                  walletConnectVersion,
-                );
+                const uri = await getWalletConnectUri(connector);
                 return isAndroid()
                   ? uri
                   : `okex://main/wc?uri=${encodeURIComponent(uri)}`;
@@ -92,8 +75,7 @@ export const okxWallet = ({
         },
         qrCode: shouldUseWalletConnect
           ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
+              getUri: async () => getWalletConnectUri(connector),
               instructions: {
                 learnMoreUrl: 'https://okx.com/web3/',
                 steps: [

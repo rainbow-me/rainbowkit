@@ -2,22 +2,11 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface UniswapWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface UniswapWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -25,8 +14,7 @@ export const uniswapWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: UniswapWalletLegacyOptions | UniswapWalletOptions): Wallet => ({
+}: UniswapWalletOptions): Wallet => ({
   id: 'uniswap',
   name: 'Uniswap Wallet',
   iconUrl: async () => (await import('./uniswapWallet.svg')).default,
@@ -40,7 +28,6 @@ export const uniswapWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -48,16 +35,12 @@ export const uniswapWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
+          const uri = await getWalletConnectUri(connector);
           return `uniswap://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () =>
-          getWalletConnectUri(connector, walletConnectVersion),
+        getUri: async () => getWalletConnectUri(connector),
         instructions: {
           learnMoreUrl: 'https://wallet.uniswap.org/',
           steps: [

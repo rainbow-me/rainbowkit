@@ -8,10 +8,7 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 declare global {
   interface Window {
@@ -19,17 +16,9 @@ declare global {
   }
 }
 
-export interface TrustWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface TrustWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -37,10 +26,8 @@ export const trustWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (TrustWalletLegacyOptions | TrustWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
     ? hasInjectedProvider('isTrust')
     : hasInjectedProvider('isTrustWallet');
@@ -68,13 +55,13 @@ export const trustWallet = ({
     },
     createConnector: () => {
       const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return `trust://wc?uri=${encodeURIComponent(uri)}`;
       };
 
       const getUriQR = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
 
         return uri;
       };
@@ -83,7 +70,6 @@ export const trustWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : isMobile()

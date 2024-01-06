@@ -2,22 +2,11 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface ImTokenWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface ImTokenWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -25,8 +14,7 @@ export const imTokenWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: ImTokenWalletLegacyOptions | ImTokenWalletOptions): Wallet => ({
+}: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
   iconUrl: async () => (await import('./imTokenWallet.svg')).default,
@@ -41,7 +29,6 @@ export const imTokenWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -49,16 +36,12 @@ export const imTokenWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
+          const uri = await getWalletConnectUri(connector);
           return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () =>
-          getWalletConnectUri(connector, walletConnectVersion),
+        getUri: async () => getWalletConnectUri(connector),
         instructions: {
           learnMoreUrl:
             typeof window !== 'undefined' &&

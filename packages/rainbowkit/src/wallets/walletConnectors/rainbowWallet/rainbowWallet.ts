@@ -8,22 +8,11 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface RainbowWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -31,10 +20,8 @@ export const rainbowWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (RainbowWalletLegacyOptions | RainbowWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
   const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
@@ -57,13 +44,12 @@ export const rainbowWallet = ({
         ? getWalletConnectConnector({
             projectId,
             chains,
-            version: walletConnectVersion,
             options: walletConnectOptions,
           })
         : getInjectedConnector({ flag: 'isRainbow', chains, options });
 
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
         return isAndroid()
           ? uri
           : isIOS()

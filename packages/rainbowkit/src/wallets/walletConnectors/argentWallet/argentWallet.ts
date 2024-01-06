@@ -3,22 +3,11 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
-
-export interface ArgentWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
+import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface ArgentWalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -26,8 +15,7 @@ export const argentWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
-}: ArgentWalletLegacyOptions | ArgentWalletOptions): Wallet => ({
+}: ArgentWalletOptions): Wallet => ({
   id: 'argent',
   name: 'Argent',
   iconUrl: async () => (await import('./argentWallet.svg')).default,
@@ -43,7 +31,6 @@ export const argentWallet = ({
     const connector = getWalletConnectConnector({
       projectId,
       chains,
-      version: walletConnectVersion,
       options: walletConnectOptions,
     });
 
@@ -51,18 +38,14 @@ export const argentWallet = ({
       connector,
       mobile: {
         getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
+          const uri = await getWalletConnectUri(connector);
           return isAndroid()
             ? uri
             : `argent://app/wc?uri=${encodeURIComponent(uri)}`;
         },
       },
       qrCode: {
-        getUri: async () =>
-          getWalletConnectUri(connector, walletConnectVersion),
+        getUri: async () => getWalletConnectUri(connector),
         instructions: {
           learnMoreUrl: 'https://argent.xyz/learn/what-is-a-crypto-wallet/',
           steps: [

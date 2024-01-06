@@ -5,7 +5,6 @@ import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
   WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
   getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
 
@@ -15,17 +14,9 @@ declare global {
   }
 }
 
-export interface Coin98WalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
 export interface Coin98WalletOptions {
   projectId: string;
   chains: Chain[];
-  walletConnectVersion?: '2';
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -73,10 +64,8 @@ export const coin98Wallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  walletConnectVersion = '2',
   ...options
-}: (Coin98WalletLegacyOptions | Coin98WalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+}: Coin98WalletOptions & InjectedConnectorOptions): Wallet => {
   const isCoin98WalletInjected = Boolean(getCoin98WalletInjectedProvider());
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
@@ -105,7 +94,6 @@ export const coin98Wallet = ({
             projectId,
             chains,
             options: walletConnectOptions,
-            version: walletConnectVersion,
           })
         : new InjectedConnector({
             chains,
@@ -116,7 +104,7 @@ export const coin98Wallet = ({
             },
           });
       const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
+        const uri = await getWalletConnectUri(connector);
         return uri;
       };
 
