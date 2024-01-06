@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useAccount, useDisconnect, useSwitchChain } from 'wagmi';
+import { useChainId, useDisconnect, useSwitchChain } from 'wagmi';
 import { useConfig } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
@@ -19,21 +19,17 @@ import {
 
 export interface ChainModalProps {
   open: boolean;
-  // We will use this for only testing purposes since for mock accounts
-  // wagmi won't give use the "chainId"
-  mockChainId?: number;
   onClose: () => void;
 }
 
-export function ChainModal({ onClose, open, mockChainId }: ChainModalProps) {
-  const { chainId: wagmiChainId } = useAccount();
-  const chainId = mockChainId || wagmiChainId;
+export function ChainModal({ onClose, open }: ChainModalProps) {
+  const chainId = useChainId();
   const { chains } = useConfig();
   const [pendingChainId, setPendingChainId] = useState<number | null>(null);
   const { switchChain } = useSwitchChain({
     mutation: {
-      onMutate: ({ chainId }) => {
-        setPendingChainId(chainId);
+      onMutate: ({ chainId: _chainId }) => {
+        setPendingChainId(_chainId);
       },
       onSuccess: () => {
         if (pendingChainId) setPendingChainId(null);

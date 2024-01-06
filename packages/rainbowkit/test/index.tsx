@@ -33,7 +33,7 @@ export function renderWithProviders(
   options?: {
     chains?: readonly [Chain, ...Chain[]];
     mock?: boolean;
-    mockOptions?: MockParameters;
+    mockFeatures?: MockParameters['features'];
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {
@@ -49,6 +49,9 @@ export function renderWithProviders(
     connectors: options?.mock
       ? [
           mock({
+            ...(options?.mockFeatures
+              ? { features: options?.mockFeatures }
+              : {}),
             accounts: [
               '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
               '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
