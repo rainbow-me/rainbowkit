@@ -64,16 +64,21 @@ import { http, WagmiProvider, createConfig, useDisconnect } from 'wagmi';
 import {
   Chain,
   arbitrum,
+  arbitrumSepolia,
   base,
+  baseSepolia,
   bsc,
   goerli,
   holesky,
   mainnet,
   optimism,
+  optimismSepolia,
   polygon,
+  polygonMumbai,
   sepolia,
   zkSync,
   zora,
+  zoraSepolia,
 } from 'wagmi/chains';
 import { AppContextProps } from '../lib/AppContextProps';
 
@@ -97,7 +102,16 @@ const chains: readonly [Chain, ...Chain[]] = [
   bsc,
   zkSync,
   ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [goerli, sepolia, holesky]
+    ? [
+        goerli,
+        sepolia,
+        holesky,
+        polygonMumbai,
+        optimismSepolia,
+        arbitrumSepolia,
+        baseSepolia,
+        zoraSepolia,
+      ]
     : []),
 ];
 
@@ -112,9 +126,19 @@ const transports = {
   [zora.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_HTTPS),
   [bsc.id]: http(process.env.NEXT_PUBLIC_RPC_BSC_HTTPS),
   [zkSync.id]: http(process.env.NEXT_PUBLIC_RPC_ZKSYNC_HTTPS),
+  // Testnet networks
   [goerli.id]: http(process.env.NEXT_PUBLIC_RPC_GOERLI_HTTPS),
   [sepolia.id]: http(process.env.NEXT_PUBLIC_RPC_SEPOLIA_HTTPS),
   [holesky.id]: http(process.env.NEXT_PUBLIC_RPC_HOLESKY_HTTPS),
+  [polygonMumbai.id]: http(process.env.NEXT_PUBLIC_RPC_POLYGON_MUMBAI_HTTPS),
+  [optimismSepolia.id]: http(
+    process.env.NEXT_PUBLIC_RPC_OPTIMISM_SEPOLIA_HTTPS,
+  ),
+  [arbitrumSepolia.id]: http(
+    process.env.NEXT_PUBLIC_RPC_ARBITRUM_SEPOLIA_HTTPS,
+  ),
+  [baseSepolia.id]: http(process.env.NEXT_PUBLIC_RPC_BASE_SEPOLIA_HTTPS),
+  [zoraSepolia.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_SEPOLIA_HTTPS),
 };
 
 const connectors = connectorsForWallets([
