@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import type { Wallet } from '../../Wallet';
@@ -17,10 +16,7 @@ export interface EnkryptWalletOptions {
   chains: Chain[];
 }
 
-export const enkryptWallet = ({
-  chains,
-  ...options
-}: EnkryptWalletOptions & InjectedConnectorOptions): Wallet => {
+export const enkryptWallet = ({ chains }: EnkryptWalletOptions): Wallet => {
   const isEnkryptInjected =
     typeof window !== 'undefined' &&
     typeof window.enkrypt !== 'undefined' &&
@@ -50,7 +46,6 @@ export const enkryptWallet = ({
               isEnkryptInjected
                 ? window?.enkrypt?.providers?.ethereum
                 : undefined,
-            ...options,
           },
         }),
         extension: {

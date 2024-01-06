@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -7,10 +6,7 @@ export interface BitskiWalletOptions {
   chains: Chain[];
 }
 
-export const bitskiWallet = ({
-  chains,
-  ...options
-}: BitskiWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const bitskiWallet = ({ chains }: BitskiWalletOptions): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
   installed:
@@ -28,7 +24,6 @@ export const bitskiWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
     extension: {
       instructions: {

@@ -1,5 +1,4 @@
-import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
@@ -63,8 +62,7 @@ export const metaMaskWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
+}: MetaMaskWalletOptions): Wallet => {
   const providers = typeof window !== 'undefined' && window.ethereum?.providers;
 
   // Not using the explicit isMetaMask fn to check for MetaMask
@@ -104,7 +102,7 @@ export const metaMaskWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new MetaMaskConnector({
+        : new InjectedConnector({
             chains,
             options: {
               getProvider: () =>
@@ -113,7 +111,6 @@ export const metaMaskWallet = ({
                   : typeof window !== 'undefined'
                     ? window.ethereum
                     : undefined,
-              ...options,
             },
           });
 

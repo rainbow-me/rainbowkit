@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -7,10 +6,7 @@ export interface FrameWalletOptions {
   chains: Chain[];
 }
 
-export const frameWallet = ({
-  chains,
-  ...options
-}: FrameWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const frameWallet = ({ chains }: FrameWalletOptions): Wallet => ({
   id: 'frame',
   name: 'Frame',
   installed:
@@ -26,7 +22,6 @@ export const frameWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
     extension: {
       instructions: {

@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -7,10 +6,7 @@ export interface DesigWalletOptions {
   chains: Chain[];
 }
 
-export const desigWallet = ({
-  chains,
-  ...options
-}: DesigWalletOptions & InjectedConnectorOptions): Wallet => {
+export const desigWallet = ({ chains }: DesigWalletOptions): Wallet => {
   return {
     id: 'desig',
     name: 'Desig Wallet',
@@ -36,7 +32,7 @@ export const desigWallet = ({
 
       const connector = new InjectedConnector({
         chains,
-        options: { getProvider, ...options },
+        options: { getProvider },
       });
 
       return {

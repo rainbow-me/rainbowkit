@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -8,10 +7,7 @@ export interface ZealWalletOptions {
   chains: Chain[];
 }
 
-export const zealWallet = ({
-  chains,
-  ...options
-}: ZealWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const zealWallet = ({ chains }: ZealWalletOptions): Wallet => ({
   id: 'zeal',
   name: 'Zeal',
   iconUrl: async () => (await import('./zealWallet.svg')).default,
@@ -23,7 +19,6 @@ export const zealWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
     extension: {
       instructions: {

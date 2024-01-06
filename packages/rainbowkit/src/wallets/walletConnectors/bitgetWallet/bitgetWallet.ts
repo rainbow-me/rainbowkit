@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -17,8 +16,7 @@ export const bitgetWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: BitgetWalletOptions & InjectedConnectorOptions): Wallet => {
+}: BitgetWalletOptions): Wallet => {
   const isBitKeepInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -59,7 +57,6 @@ export const bitgetWallet = ({
             options: {
               // @ts-expect-error
               getProvider: () => window.bitkeep.ethereum,
-              ...options,
             },
           });
 

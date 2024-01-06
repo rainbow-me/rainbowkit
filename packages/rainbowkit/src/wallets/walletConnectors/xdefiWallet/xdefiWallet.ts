@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -13,10 +12,7 @@ export interface XDEFIWalletOptions {
   chains: Chain[];
 }
 
-export const xdefiWallet = ({
-  chains,
-  ...options
-}: XDEFIWalletOptions & InjectedConnectorOptions): Wallet => {
+export const xdefiWallet = ({ chains }: XDEFIWalletOptions): Wallet => {
   const isInstalled =
     typeof window !== 'undefined' && typeof window?.xfi !== 'undefined';
   return {
@@ -38,7 +34,6 @@ export const xdefiWallet = ({
           getProvider: () => {
             return isInstalled ? (window.xfi?.ethereum as any) : undefined;
           },
-          ...options,
         },
       }),
       extension: {

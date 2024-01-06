@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -16,8 +15,7 @@ export const foxWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: FoxWalletOptions & InjectedConnectorOptions): Wallet => {
+}: FoxWalletOptions): Wallet => {
   const isFoxInjected =
     typeof window !== 'undefined' &&
     // @ts-expect-error
@@ -48,7 +46,6 @@ export const foxWallet = ({
             options: {
               // @ts-expect-error
               getProvider: () => window.foxwallet.ethereum,
-              ...options,
             },
           });
 

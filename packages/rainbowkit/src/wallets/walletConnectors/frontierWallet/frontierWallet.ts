@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -23,8 +22,7 @@ export const frontierWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: FrontierWalletOptions & InjectedConnectorOptions): Wallet => {
+}: FrontierWalletOptions): Wallet => {
   const isFrontierInjected =
     typeof window !== 'undefined' &&
     typeof window.frontier !== 'undefined' &&
@@ -74,7 +72,6 @@ export const frontierWallet = ({
               if (typeof window === 'undefined') return;
               return getFront(window.frontier);
             },
-            ...options,
           },
         }),
         mobile: {

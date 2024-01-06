@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -15,8 +14,7 @@ declare global {
 
 export const safeheronWallet = ({
   chains,
-  ...options
-}: SafeheronWalletOptions & InjectedConnectorOptions): Wallet => ({
+}: SafeheronWalletOptions): Wallet => ({
   id: 'safeheron',
   name: 'Safeheron',
   installed:
@@ -37,7 +35,6 @@ export const safeheronWallet = ({
       options: {
         getProvider: () =>
           typeof window !== 'undefined' ? window.safeheron : undefined,
-        ...options,
       },
     }),
     extension: {

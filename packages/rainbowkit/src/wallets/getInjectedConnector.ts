@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { InjectedProviderFlags, WindowProvider } from 'wagmi/window';
 import type { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
@@ -44,17 +43,14 @@ function getInjectedProvider(
 export function getInjectedConnector({
   chains,
   flag,
-  options,
 }: {
   flag: keyof InjectedProviderFlags;
   chains: Chain[];
-  options?: InjectedConnectorOptions;
 }): InjectedConnector {
   return new InjectedConnector({
     chains,
     options: {
       getProvider: () => getInjectedProvider(flag),
-      ...options,
     },
   });
 }

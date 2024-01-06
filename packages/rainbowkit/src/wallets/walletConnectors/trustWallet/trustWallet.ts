@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isMobile } from '../../../utils/isMobile';
@@ -17,8 +16,8 @@ declare global {
 }
 
 export interface TrustWalletOptions {
-  projectId: string;
   chains: Chain[];
+  projectId: string;
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
@@ -26,8 +25,7 @@ export const trustWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: TrustWalletOptions & InjectedConnectorOptions): Wallet => {
+}: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
     ? hasInjectedProvider('isTrust')
     : hasInjectedProvider('isTrustWallet');
@@ -73,8 +71,8 @@ export const trustWallet = ({
             options: walletConnectOptions,
           })
         : isMobile()
-          ? getInjectedConnector({ flag: 'isTrust', chains, options })
-          : getInjectedConnector({ flag: 'isTrustWallet', chains, options });
+          ? getInjectedConnector({ flag: 'isTrust', chains })
+          : getInjectedConnector({ flag: 'isTrustWallet', chains });
 
       const mobileConnector = {
         getUri: shouldUseWalletConnect ? getUriMobile : undefined,

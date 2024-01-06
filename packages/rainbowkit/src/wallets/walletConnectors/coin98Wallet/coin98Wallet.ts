@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -64,8 +63,7 @@ export const coin98Wallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: Coin98WalletOptions & InjectedConnectorOptions): Wallet => {
+}: Coin98WalletOptions): Wallet => {
   const isCoin98WalletInjected = Boolean(getCoin98WalletInjectedProvider());
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
@@ -100,7 +98,6 @@ export const coin98Wallet = ({
             options: {
               name: 'Coin98 Wallet',
               getProvider: getCoin98WalletInjectedProvider,
-              ...options,
             },
           });
       const getUri = async () => {

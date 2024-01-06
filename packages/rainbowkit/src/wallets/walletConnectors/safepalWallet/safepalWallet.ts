@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -62,8 +61,7 @@ export const safepalWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: SafepalWalletOptions & InjectedConnectorOptions): Wallet => {
+}: SafepalWalletOptions): Wallet => {
   const isSafePalWalletInjected = Boolean(getSafepalWalletInjectedProvider());
   const shouldUseWalletConnect = !isSafePalWalletInjected;
 
@@ -110,7 +108,6 @@ export const safepalWallet = ({
             chains,
             options: {
               getProvider: getSafepalWalletInjectedProvider,
-              ...options,
             },
           });
 

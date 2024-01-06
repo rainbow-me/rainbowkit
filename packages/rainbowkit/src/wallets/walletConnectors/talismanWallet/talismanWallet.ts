@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -13,10 +12,7 @@ export interface TalismanWalletOptions {
   chains: Chain[];
 }
 
-export const talismanWallet = ({
-  chains,
-  ...options
-}: TalismanWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const talismanWallet = ({ chains }: TalismanWalletOptions): Wallet => ({
   id: 'talisman',
   name: 'Talisman',
   iconUrl: async () => (await import('./talismanWallet.svg')).default,
@@ -40,7 +36,6 @@ export const talismanWallet = ({
           if (typeof window === 'undefined') return;
           return window.talismanEth;
         },
-        ...options,
       },
     }),
     extension: {

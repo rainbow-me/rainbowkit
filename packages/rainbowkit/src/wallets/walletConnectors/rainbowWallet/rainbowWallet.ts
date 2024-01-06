@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
@@ -20,8 +19,7 @@ export const rainbowWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: RainbowWalletOptions & InjectedConnectorOptions): Wallet => {
+}: RainbowWalletOptions): Wallet => {
   const isRainbowInjected = hasInjectedProvider('isRainbow');
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
@@ -46,7 +44,7 @@ export const rainbowWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : getInjectedConnector({ flag: 'isRainbow', chains, options });
+        : getInjectedConnector({ flag: 'isRainbow', chains });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector);

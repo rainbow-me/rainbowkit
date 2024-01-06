@@ -15,7 +15,6 @@ export interface SafeWalletOptions {
  */
 export const safeWallet = ({
   chains,
-  ...options
 }: SafeWalletOptions & SafeConnectorOptions): Wallet => ({
   id: 'safe',
   name: 'Safe',
@@ -32,6 +31,6 @@ export const safeWallet = ({
     // since it's unlikely to be a desired behavior for users.
   },
   createConnector: () => ({
-    connector: new SafeConnector({ chains, options }),
+    connector: new SafeConnector({ chains }),
   }),
 });

@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
@@ -29,8 +28,7 @@ export const subWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: SubWalletOptions & InjectedConnectorOptions): Wallet => {
+}: SubWalletOptions): Wallet => {
   const isSubWalletInjected = Boolean(getSubWalletInjectedProvider());
   const shouldUseWalletConnect = !isSubWalletInjected;
 
@@ -63,7 +61,6 @@ export const subWallet = ({
             chains,
             options: {
               getProvider: getSubWalletInjectedProvider,
-              ...options,
             },
           });
 

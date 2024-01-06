@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isSafari } from '../../../utils/browsers';
@@ -8,10 +7,7 @@ export interface TokenaryWalletOptions {
   chains: Chain[];
 }
 
-export const tokenaryWallet = ({
-  chains,
-  ...options
-}: TokenaryWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const tokenaryWallet = ({ chains }: TokenaryWalletOptions): Wallet => ({
   id: 'tokenary',
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
@@ -31,7 +27,6 @@ export const tokenaryWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
   }),
 });

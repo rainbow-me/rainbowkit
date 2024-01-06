@@ -1,4 +1,3 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
@@ -7,10 +6,7 @@ export interface RabbyWalletOptions {
   chains: Chain[];
 }
 
-export const rabbyWallet = ({
-  chains,
-  ...options
-}: RabbyWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const rabbyWallet = ({ chains }: RabbyWalletOptions): Wallet => ({
   id: 'rabby',
   name: 'Rabby Wallet',
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
@@ -27,7 +23,6 @@ export const rabbyWallet = ({
   createConnector: () => ({
     connector: new InjectedConnector({
       chains,
-      options,
     }),
     extension: {
       instructions: {
