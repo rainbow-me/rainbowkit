@@ -80,7 +80,6 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   }, [status, adapter, isDisconnected]);
 
   const handleChangedAccount = () => {
-    console.log('changed!');
     adapter.signOut();
   };
 
