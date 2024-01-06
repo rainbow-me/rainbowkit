@@ -6,8 +6,8 @@ import {
   DisclaimerComponent,
   Locale,
   RainbowKitProvider,
-  connectorsForWallets,
   darkTheme,
+  getDefaultConfig,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -59,12 +59,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import {
-  WagmiConfig,
-  configureChains,
-  createConfig,
-  useDisconnect,
-} from 'wagmi';
+import { WagmiConfig, useDisconnect } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -83,98 +78,88 @@ import {
   zora,
   zoraSepolia,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    zora,
-    bsc,
-    zkSync,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-      ? [
-          goerli,
-          sepolia,
-          holesky,
-          polygonMumbai,
-          optimismSepolia,
-          arbitrumSepolia,
-          baseSepolia,
-          zoraSepolia,
-        ]
-      : []),
-  ],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
-    publicProvider(),
-  ],
-);
-
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
+const chains = [
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+  bsc,
+  zkSync,
+  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+    ? [
+        goerli,
+        sepolia,
+        holesky,
+        polygonMumbai,
+        optimismSepolia,
+        arbitrumSepolia,
+        baseSepolia,
+        zoraSepolia,
+      ]
+    : []),
+];
+
 const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
-  chains,
+  appName: 'RainbowKit Demo',
   projectId,
+  chains,
 });
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ chains, projectId }),
-      bifrostWallet({ chains, projectId }),
-      bitgetWallet({ chains, projectId }),
-      bitskiWallet({ chains }),
-      clvWallet({ chains, projectId }),
-      coin98Wallet({ chains, projectId }),
-      coreWallet({ chains, projectId }),
-      dawnWallet({ chains }),
-      desigWallet({ chains }),
-      enkryptWallet({ chains }),
-      foxWallet({ chains, projectId }),
-      frameWallet({ chains }),
-      frontierWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-      mewWallet({ chains }),
-      oktoWallet({ chains, projectId }),
-      okxWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      oneKeyWallet({ chains }),
-      phantomWallet({ chains }),
-      rabbyWallet({ chains }),
-      safeheronWallet({ chains }),
-      safepalWallet({ chains, projectId }),
-      subWallet({ chains, projectId }),
-      tahoWallet({ chains }),
-      talismanWallet({ chains }),
-      tokenaryWallet({ chains }),
-      tokenPocketWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      uniswapWallet({ chains, projectId }),
-      xdefiWallet({ chains }),
-      zealWallet({ chains }),
-      zerionWallet({ chains, projectId }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
+const wagmiConfig = getDefaultConfig({
+  appName: 'RainbowKit Demo',
+  projectId,
+  chains,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ projectId, chains }),
+        bifrostWallet({ projectId, chains }),
+        bitgetWallet({ projectId, chains }),
+        bitskiWallet({ chains }),
+        clvWallet({ projectId, chains }),
+        coin98Wallet({ projectId, chains }),
+        coreWallet({ projectId, chains }),
+        dawnWallet({ chains }),
+        desigWallet({ chains }),
+        enkryptWallet({ chains }),
+        foxWallet({ projectId, chains }),
+        frameWallet({ chains }),
+        frontierWallet({ projectId, chains }),
+        imTokenWallet({ projectId, chains }),
+        ledgerWallet({ projectId, chains }),
+        mewWallet({ chains }),
+        oktoWallet({ projectId, chains }),
+        okxWallet({ projectId, chains }),
+        omniWallet({ projectId, chains }),
+        oneKeyWallet({ chains }),
+        phantomWallet({ chains }),
+        rabbyWallet({ chains }),
+        safeheronWallet({ chains }),
+        safepalWallet({ projectId, chains }),
+        subWallet({ projectId, chains }),
+        tahoWallet({ chains }),
+        talismanWallet({ chains }),
+        tokenPocketWallet({ projectId, chains }),
+        tokenaryWallet({ chains }),
+        trustWallet({ projectId, chains }),
+        uniswapWallet({ projectId, chains }),
+        xdefiWallet({ chains }),
+        zealWallet({ chains }),
+        zerionWallet({ projectId, chains }),
+      ],
+    },
+  ],
 });
 
 const demoAppInfo = {
