@@ -13,9 +13,8 @@ import {
   sepolia,
   zora,
   Chain,
-  bsc,
 } from 'wagmi/chains';
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -42,7 +41,6 @@ const config = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
-    [bsc.id]: http(),
     [sepolia.id]: http(),
   },
 });

@@ -7,7 +7,6 @@ import { createConfig, http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
-  bsc,
   mainnet,
   optimism,
   polygon,
@@ -42,7 +41,6 @@ const config = createConfig({
     [arbitrum.id]: http(),
     [base.id]: http(),
     [zora.id]: http(),
-    [bsc.id]: http(),
     [sepolia.id]: http(),
   },
 });
