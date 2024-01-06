@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { connectorsForWallets } from '..';
-import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
+import { browserWallet } from './walletConnectors/browserWallet/browserWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 const isValidConnector = (connector: CreateConnectorFn): boolean => {
@@ -30,7 +30,7 @@ describe('connectorsForWallets', () => {
               id: 'test-walletconnect-wallet',
               name: 'Test WalletConnect Wallet',
             },
-            injectedWallet(),
+            browserWallet(),
           ],
         },
       ]);

@@ -48,7 +48,7 @@ const getOrCreateWalletConnectInstance = ({
     config = { ...config, showQrModal: true };
   }
 
-  const serializedConfig = JSON.stringify(config, null, 2);
+  const serializedConfig = JSON.stringify(config);
 
   const sharedWalletConnector = walletConnectInstances.get(serializedConfig);
 
