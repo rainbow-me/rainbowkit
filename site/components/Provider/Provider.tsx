@@ -1,7 +1,4 @@
-import {
-  connectorsForWallets,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -10,7 +7,7 @@ import {
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import React from 'react';
-import { WagmiConfig, configureChains, createConfig } from 'wagmi';
+import { WagmiConfig } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -20,44 +17,35 @@ import {
   polygon,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 
-export const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
-    publicProvider(),
-  ],
-);
+export const chains = [mainnet, polygon, optimism, arbitrum, base, zora, bsc];
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
   appName: 'rainbowkit.com',
-  chains,
   projectId,
+  chains,
 });
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'More',
-    wallets: [
-      argentWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
+const wagmiConfig = getDefaultConfig({
+  appName: 'rainbowkit.com',
+  projectId,
+  chains,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'More',
+      wallets: [
+        argentWallet({ chains, projectId }),
+        trustWallet({ chains, projectId }),
+        omniWallet({ chains, projectId }),
+        imTokenWallet({ chains, projectId }),
+        ledgerWallet({ chains, projectId }),
+      ],
+    },
+  ],
 });
 
 export function Provider({ children }) {
