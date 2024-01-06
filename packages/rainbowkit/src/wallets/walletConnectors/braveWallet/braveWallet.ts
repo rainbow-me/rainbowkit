@@ -3,10 +3,16 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
+/**
+ * @protected `braveWallet` interface
+ */
 export interface BraveWalletOptions {
   chains: Chain[];
 }
 
+/**
+ * @protected Brave Browser wallet connector
+ */
 export const braveWallet = ({
   chains,
   ...options

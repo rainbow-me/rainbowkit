@@ -3,10 +3,16 @@ import { SafeConnector } from 'wagmi/connectors/safe';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 
+/**
+ * @protected `safeWallet` interface`
+ */
 export interface SafeWalletOptions {
   chains: Chain[];
 }
 
+/**
+ * @protected Safe Browser wallet connector
+ */
 export const safeWallet = ({
   chains,
   ...options
