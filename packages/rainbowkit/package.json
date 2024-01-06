@@ -62,7 +62,6 @@
     "viem": "~1.21.4",
     "vitest": "^0.33.0",
     "wagmi": "~1.4.13",
-    "@wagmi/core": "~1.4.13",
     "@types/i18n-js": "^3.8.9",
     "@types/ua-parser-js": "^0.7.39"
   },

@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import type { MockProviderOptions } from '@wagmi/core/connectors/mock';
 import React, { ReactElement } from 'react';
 import { http, createWalletClient } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
@@ -15,12 +14,16 @@ import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
 const defaultChains = [mainnet, polygon, optimism, arbitrum, base, zora];
 
+type MockConnectorOptions = ConstructorParameters<
+  typeof MockConnector
+>[0]['options'];
+
 export function renderWithProviders(
   component: ReactElement,
   options?: {
     chains?: Chain[];
     mock?: boolean;
-    mockOptions?: MockProviderOptions;
+    mockOptions?: MockConnectorOptions;
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {
