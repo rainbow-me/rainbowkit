@@ -8,7 +8,6 @@ import {
   WalletConnectConnectorOptions,
   getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
-import { InjectedWalletOptions } from '../injectedWallet/injectedWallet';
 
 export interface BifrostWalletOptions {
   projectId: string;
@@ -21,9 +20,7 @@ export const bifrostWallet = ({
   projectId,
   walletConnectOptions,
   ...options
-}: BifrostWalletOptions &
-  InjectedWalletOptions &
-  InjectedConnectorOptions): Wallet => {
+}: BifrostWalletOptions & InjectedConnectorOptions): Wallet => {
   const isBifrostInjected =
     typeof window !== 'undefined' &&
     typeof window.ethereum !== 'undefined' &&

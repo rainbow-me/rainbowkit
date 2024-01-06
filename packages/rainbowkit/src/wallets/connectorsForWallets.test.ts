@@ -5,7 +5,9 @@ import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { connectorsForWallets } from '..';
 import { WalletInstance } from './Wallet';
-import { injectedWallet } from './walletConnectors';
+import { browserWallet } from './walletConnectors/browserWallet/browserWallet';
+
+const projectId = 'YOUR_PROJECT_ID';
 
 const getWalletInstances = (
   connector: Connector & { _wallets?: WalletInstance[] },
@@ -29,7 +31,9 @@ describe('connectorsForWallets', () => {
               createConnector: () => ({
                 connector: new WalletConnectConnector({
                   chains,
-                  options: {},
+                  options: {
+                    projectId,
+                  },
                 }),
               }),
               iconBackground: '#fff',
@@ -37,7 +41,7 @@ describe('connectorsForWallets', () => {
               id: 'test-walletconnect-wallet',
               name: 'Test WalletConnect Wallet',
             },
-            injectedWallet({ chains }),
+            browserWallet({ chains }),
           ],
         },
       ])();
@@ -75,7 +79,9 @@ describe('connectorsForWallets', () => {
               createConnector: () => ({
                 connector: new WalletConnectConnector({
                   chains,
-                  options: {},
+                  options: {
+                    projectId,
+                  },
                 }),
               }),
               iconBackground: '#fff',
@@ -83,7 +89,7 @@ describe('connectorsForWallets', () => {
               id: 'test-walletconnect-wallet',
               name: 'Test WalletConnect Wallet',
             },
-            injectedWallet({ chains }),
+            browserWallet({ chains }),
           ],
         },
       ])();
@@ -113,7 +119,7 @@ describe('connectorsForWallets', () => {
         {
           groupName: 'Test Group 1',
           wallets: [
-            injectedWallet({ chains }),
+            browserWallet({ chains }),
             {
               createConnector: () => ({
                 connector: new InjectedConnector(),
@@ -133,7 +139,9 @@ describe('connectorsForWallets', () => {
               createConnector: () => ({
                 connector: new WalletConnectConnector({
                   chains,
-                  options: {},
+                  options: {
+                    projectId,
+                  },
                 }),
               }),
               iconBackground: '#fff',
@@ -182,7 +190,8 @@ describe('connectorsForWallets', () => {
             {
               createConnector: () => ({
                 connector: new InjectedConnector({
-                  options: { chains, name: 'Test Wallet Installed' },
+                  chains,
+                  options: { name: 'Test Wallet Installed' },
                 }),
               }),
               iconBackground: '#fff',
@@ -196,12 +205,14 @@ describe('connectorsForWallets', () => {
         {
           groupName: 'Test Group 2',
           wallets: [
-            injectedWallet({ chains }),
+            browserWallet({ chains }),
             {
               createConnector: () => ({
                 connector: new WalletConnectConnector({
                   chains,
-                  options: {},
+                  options: {
+                    projectId,
+                  },
                 }),
               }),
               iconBackground: '#fff',

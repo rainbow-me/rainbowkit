@@ -2,7 +2,6 @@ import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
-import { braveWallet } from './braveWallet/braveWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -14,7 +13,6 @@ import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
-import { injectedWallet } from './injectedWallet/injectedWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
@@ -25,7 +23,6 @@ import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
-import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
 import { subWallet } from './subWallet/subWallet';
@@ -45,7 +42,6 @@ export {
   bifrostWallet,
   bitgetWallet,
   bitskiWallet,
-  braveWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
@@ -57,7 +53,6 @@ export {
   frameWallet,
   frontierWallet,
   imTokenWallet,
-  injectedWallet,
   ledgerWallet,
   metaMaskWallet,
   mewWallet,
@@ -68,7 +63,6 @@ export {
   phantomWallet,
   rabbyWallet,
   rainbowWallet,
-  safeWallet,
   safeheronWallet,
   safepalWallet,
   subWallet,
