@@ -6,11 +6,13 @@ import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface CoinbaseWalletOptions {
   appName: string;
+  appIcon?: string;
   chains: Chain[];
 }
 
 export const coinbaseWallet = ({
   appName,
+  appIcon,
   chains,
   ...options
 }: CoinbaseWalletOptions): Wallet => {
@@ -43,6 +45,7 @@ export const coinbaseWallet = ({
         chains,
         options: {
           appName,
+          appLogoUrl: appIcon,
           headlessMode: true,
           ...options,
         },

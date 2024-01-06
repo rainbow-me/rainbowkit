@@ -11,6 +11,7 @@ import {
 
 export const getDefaultConfig = ({
   appName,
+  appIcon,
   chains,
   wallets,
   projectId,
@@ -33,7 +34,7 @@ export const getDefaultConfig = ({
         groupName: 'Popular',
         wallets: [
           rainbowWallet({ chains, projectId }),
-          coinbaseWallet({ appName, chains }),
+          coinbaseWallet({ appName, appIcon, chains }),
           metaMaskWallet({ chains, projectId }),
           walletConnectWallet({ chains, projectId }),
         ],
