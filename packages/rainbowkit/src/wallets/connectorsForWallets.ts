@@ -44,14 +44,6 @@ export const _connectorsForWallets = (
   const visibleWallets: WalletListItem[] = [];
   const potentiallyHiddenWallets: WalletListItem[] = [];
 
-  // First collect all list items in the correct order, but keep
-  // track of which ones have a `hidden` function so we can
-  // evaluate them after all the visible wallet instances have
-  // been created. This is because the potentially hidden wallets
-  // need access to the list of resolved wallet instances so that
-  // they can decide whether or not they should be hidden,
-  // e.g. the "Injected Wallet" option hides itself if another
-  // injected wallet is available.
   // biome-ignore lint/complexity/noForEach: TODO
   walletList.forEach(({ groupName, wallets }, groupIndex) => {
     // biome-ignore lint/complexity/noForEach: TODO
