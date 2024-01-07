@@ -118,9 +118,9 @@ export const _connectorsForWallets = (
           groupName,
           isRainbowKitConnector: true,
           // These additional params will be used in rainbowkit react tree to
-          // get the official WalletConnect modal popup if user chooses to open it.
-          // We're also going to use `showQrModal` true to inject that option into
-          // `walletConnectWallet`
+          // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
+          // showQrModal: true. This way we can let the user choose if they want to
+          // connect via QR code or open the official walletConnect modal instead
           ...(additionalRkParams ? additionalRkParams : {}),
         }),
       };
