@@ -104,11 +104,10 @@ export const metaMaskWallet = ({
             chains,
             // custom handling for metamask button fallback for third party wallets
             getProvider: () =>
-              typeof window !== 'undefined' && window.ethereum?.providers
-                ? window.ethereum.providers.find(isMetaMask)
-                : typeof window !== 'undefined'
-                  ? window.ethereum
-                  : undefined,
+              typeof window !== 'undefined'
+                ? window.ethereum?.providers?.find(isMetaMask) ??
+                  window.ethereum
+                : undefined,
           });
 
       const getUri = async () => {
