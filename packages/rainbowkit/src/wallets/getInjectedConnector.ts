@@ -26,8 +26,18 @@ function getExplicitInjectedProvider(
 function getWindowProviderNamespace(
   namespace: string,
 ): WindowProvider | undefined {
-  // @ts-expect-error - only `window.ethereum` is available in wagmi's global namespace
-  return window[namespace];
+  const providerSearch = (
+    provider: any,
+    namespace: string,
+  ): WindowProvider | undefined => {
+    const [property, ...path] = namespace.split('.');
+    const _provider = provider[property];
+    if (_provider) {
+      if (path.length === 0) return _provider;
+      return providerSearch(_provider, path.join('.'));
+    }
+  };
+  return providerSearch(window, namespace);
 }
 
 /*
