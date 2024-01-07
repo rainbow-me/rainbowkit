@@ -1,6 +1,9 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export interface BitskiWalletOptions {
   chains: Chain[];
@@ -9,11 +12,7 @@ export interface BitskiWalletOptions {
 export const bitskiWallet = ({ chains }: BitskiWalletOptions): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    ((window.ethereum as any).isBitski === true ||
-      !!window.ethereum.providers?.find((p: any) => p.isBitski === true)),
+  installed: hasInjectedProvider('isBitski'),
   iconUrl: async () => (await import('./bitskiWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -22,9 +21,7 @@ export const bitskiWallet = ({ chains }: BitskiWalletOptions): Wallet => ({
     browserExtension: 'https://bitski.com',
   },
   createConnector: () => ({
-    connector: new InjectedConnector({
-      chains,
-    }),
+    connector: getInjectedConnector({ chains, flag: 'isBitski' }),
     extension: {
       instructions: {
         learnMoreUrl:

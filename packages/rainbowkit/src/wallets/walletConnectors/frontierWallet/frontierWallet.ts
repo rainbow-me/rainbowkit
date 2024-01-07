@@ -55,7 +55,7 @@ export const frontierWallet = ({
             projectId,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({ chains });
+        : undefined;
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector);
         return isAndroid()

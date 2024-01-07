@@ -1,6 +1,9 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export interface FrameWalletOptions {
   chains: Chain[];
@@ -9,20 +12,14 @@ export interface FrameWalletOptions {
 export const frameWallet = ({ chains }: FrameWalletOptions): Wallet => ({
   id: 'frame',
   name: 'Frame',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    ((window.ethereum as any).isFrame === true ||
-      !!window.ethereum.providers?.find((p: any) => p.isFrame === true)),
+  installed: hasInjectedProvider('isFrame'),
   iconUrl: async () => (await import('./frameWallet.svg')).default,
   iconBackground: '#121C20',
   downloadUrls: {
     browserExtension: 'https://frame.sh/',
   },
   createConnector: () => ({
-    connector: new InjectedConnector({
-      chains,
-    }),
+    connector: getInjectedConnector({ chains, flag: 'isFrame' }),
     extension: {
       instructions: {
         learnMoreUrl:

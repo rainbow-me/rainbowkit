@@ -44,13 +44,13 @@ export function getInjectedConnector({
   chains,
   flag,
 }: {
-  flag: keyof InjectedProviderFlags;
+  flag?: keyof InjectedProviderFlags;
   chains: Chain[];
 }): InjectedConnector {
   return new InjectedConnector({
     chains,
-    options: {
-      getProvider: () => getInjectedProvider(flag),
-    },
+    options: flag
+      ? { getProvider: () => getInjectedProvider(flag) }
+      : undefined,
   });
 }

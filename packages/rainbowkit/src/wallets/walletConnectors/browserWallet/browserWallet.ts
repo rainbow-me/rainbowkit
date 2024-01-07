@@ -1,6 +1,7 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import { getInjectedConnector } from '../../getInjectedConnector';
 
 /**
  * @protected `browserWallet` interface
@@ -26,8 +27,6 @@ export const browserWallet = ({ chains }: BrowserWalletOptions): Wallet => ({
           wallet.id === 'coinbase'),
     ),
   createConnector: () => ({
-    connector: new InjectedConnector({
-      chains,
-    }),
+    connector: getInjectedConnector({ chains }),
   }),
 });
