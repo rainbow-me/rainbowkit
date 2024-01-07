@@ -1,15 +1,12 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export interface TahoWalletOptions {
   chains: Chain[];
-}
-
-declare global {
-  interface Window {
-    tally: any;
-  }
 }
 
 export const tahoWallet = ({ chains }: TahoWalletOptions): Wallet => ({
@@ -22,24 +19,13 @@ export const tahoWallet = ({ chains }: TahoWalletOptions): Wallet => ({
       'https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd',
     browserExtension: 'https://taho.xyz',
   },
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.tally !== 'undefined' &&
-    window['tally']
-      ? true
-      : undefined,
+  installed: hasInjectedProvider({ namespace: 'tally', flag: 'isTally' }),
   createConnector: () => {
     return {
-      connector: new InjectedConnector({
+      connector: getInjectedConnector({
         chains,
-        options: {
-          getProvider: () => {
-            const getTaho = (tally?: any) =>
-              tally?.isTally ? tally : undefined;
-            if (typeof window === 'undefined') return;
-            return getTaho(window.tally);
-          },
-        },
+        namespace: 'tally',
+        flag: 'isTally',
       }),
       extension: {
         instructions: {

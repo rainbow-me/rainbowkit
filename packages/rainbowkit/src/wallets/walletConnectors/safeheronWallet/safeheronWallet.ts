@@ -1,15 +1,12 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export interface SafeheronWalletOptions {
   chains: Chain[];
-}
-
-declare global {
-  interface Window {
-    safeheron: any;
-  }
 }
 
 export const safeheronWallet = ({
@@ -17,11 +14,10 @@ export const safeheronWallet = ({
 }: SafeheronWalletOptions): Wallet => ({
   id: 'safeheron',
   name: 'Safeheron',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.safeheron !== 'undefined' &&
-    // @ts-ignore
-    window.safeheron.isSafeheron === true,
+  installed: hasInjectedProvider({
+    namespace: 'safeheron',
+    flag: 'isSafeheron',
+  }),
   iconUrl: async () => (await import('./safeheronWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -30,12 +26,10 @@ export const safeheronWallet = ({
     browserExtension: 'https://www.safeheron.com/',
   },
   createConnector: () => ({
-    connector: new InjectedConnector({
+    connector: getInjectedConnector({
       chains,
-      options: {
-        getProvider: () =>
-          typeof window !== 'undefined' ? window.safeheron : undefined,
-      },
+      namespace: 'safeheron',
+      flag: 'isSafeheron',
     }),
     extension: {
       instructions: {
