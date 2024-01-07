@@ -4,23 +4,24 @@ import { WalletConnectParameters, walletConnect } from 'wagmi/connectors';
 import type {
   CreateConnector,
   RainbowKitDetails,
+  RainbowKitWalletConnectParameters,
   WalletDetailsParams,
 } from './Wallet';
 
 interface GetWalletConnectConnectorParams {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 interface CreateWalletConnectConnectorParams {
   projectId: string;
   walletDetails: WalletDetailsParams;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 interface GetOrCreateWalletConnectInstanceParams {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
   rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
 }
 
