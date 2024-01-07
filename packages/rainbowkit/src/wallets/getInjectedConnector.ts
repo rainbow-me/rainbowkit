@@ -60,10 +60,13 @@ export function hasInjectedProvider({
 /*
  * Returns an injected provider that favors the flag match, but falls back to window.ethereum
  */
-function getInjectedProvider(
-  flag: keyof InjectedProviderFlags | string,
-  namespace?: string,
-): WindowProvider | undefined {
+function getInjectedProvider({
+  flag,
+  namespace,
+}: {
+  flag?: keyof InjectedProviderFlags | string;
+  namespace?: string;
+}): WindowProvider | undefined {
   if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
     return;
   if (namespace) {
@@ -72,8 +75,10 @@ function getInjectedProvider(
     if (windowProvider) return windowProvider;
   }
   const providers = window.ethereum.providers;
-  const provider = getExplicitInjectedProvider(flag);
-  if (provider) return provider;
+  if (flag) {
+    const provider = getExplicitInjectedProvider(flag);
+    if (provider) return provider;
+  }
   if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
   return window.ethereum;
@@ -83,15 +88,19 @@ export function getInjectedConnector({
   chains,
   flag,
   namespace,
+  getProvider,
 }: {
   flag?: keyof InjectedProviderFlags | string;
   namespace?: string;
+  getProvider?: () => WindowProvider | undefined;
   chains: Chain[];
 }): InjectedConnector {
   return new InjectedConnector({
     chains,
-    options: flag
-      ? { getProvider: () => getInjectedProvider(flag, namespace) }
-      : undefined,
+    options: getProvider
+      ? { getProvider }
+      : flag || namespace
+        ? { getProvider: () => getInjectedProvider({ flag, namespace }) }
+        : undefined,
   });
 }
