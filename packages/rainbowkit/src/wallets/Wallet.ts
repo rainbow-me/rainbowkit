@@ -1,4 +1,5 @@
 import { Connector, CreateConnectorFn } from 'wagmi';
+import { WalletConnectParameters } from 'wagmi/connectors';
 
 export type InstructionStepName =
   | 'install'
@@ -75,6 +76,11 @@ export type Wallet = {
 } & RainbowKitConnector;
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
+
+export type RainbowKitWalletConnectParameters = Omit<
+  WalletConnectParameters,
+  'showQrModal' | 'projectId'
+>;
 
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;
