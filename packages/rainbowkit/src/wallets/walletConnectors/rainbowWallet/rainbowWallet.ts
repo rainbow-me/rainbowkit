@@ -20,7 +20,7 @@ export const rainbowWallet = ({
   projectId,
   walletConnectOptions,
 }: RainbowWalletOptions): Wallet => {
-  const isRainbowInjected = hasInjectedProvider('isRainbow');
+  const isRainbowInjected = hasInjectedProvider({ flag: 'isRainbow' });
   const shouldUseWalletConnect = !isRainbowInjected;
   return {
     id: 'rainbow',

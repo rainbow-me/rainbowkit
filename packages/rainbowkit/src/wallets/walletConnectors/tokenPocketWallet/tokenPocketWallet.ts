@@ -20,7 +20,7 @@ export const tokenPocketWallet = ({
   projectId,
   walletConnectOptions,
 }: TokenPocketWalletOptions): Wallet => {
-  const isTokenPocketInjected = hasInjectedProvider('isTokenPocket');
+  const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
   const shouldUseWalletConnect = !isTokenPocketInjected;
 
   return {

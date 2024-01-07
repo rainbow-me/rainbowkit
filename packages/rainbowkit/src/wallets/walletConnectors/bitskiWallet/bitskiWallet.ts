@@ -12,7 +12,7 @@ export interface BitskiWalletOptions {
 export const bitskiWallet = ({ chains }: BitskiWalletOptions): Wallet => ({
   id: 'bitski',
   name: 'Bitski',
-  installed: hasInjectedProvider('isBitski'),
+  installed: hasInjectedProvider({ flag: 'isBitski' }),
   iconUrl: async () => (await import('./bitskiWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {

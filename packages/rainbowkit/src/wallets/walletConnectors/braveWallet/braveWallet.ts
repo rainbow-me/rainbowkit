@@ -20,7 +20,7 @@ export const braveWallet = ({ chains }: BraveWalletOptions): Wallet => ({
   name: 'Brave Wallet',
   iconUrl: async () => (await import('./braveWallet.svg')).default,
   iconBackground: '#fff',
-  installed: hasInjectedProvider('isBraveWallet'),
+  installed: hasInjectedProvider({ flag: 'isBraveWallet' }),
   downloadUrls: {
     // We're opting not to provide a download prompt if Brave isn't the current
     // browser since it's unlikely to be a desired behavior for users. It's

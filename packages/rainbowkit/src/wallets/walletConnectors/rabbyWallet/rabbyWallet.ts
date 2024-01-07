@@ -14,7 +14,7 @@ export const rabbyWallet = ({ chains }: RabbyWalletOptions): Wallet => ({
   name: 'Rabby Wallet',
   iconUrl: async () => (await import('./rabbyWallet.svg')).default,
   iconBackground: '#8697FF',
-  installed: hasInjectedProvider('isRabby'),
+  installed: hasInjectedProvider({ flag: 'isRabby' }),
   downloadUrls: {
     chrome:
       'https://chrome.google.com/webstore/detail/rabby-wallet/acmacodkjbdgmoleebolmdjonilkdbch',

@@ -14,7 +14,7 @@ export const zealWallet = ({ chains }: ZealWalletOptions): Wallet => ({
   name: 'Zeal',
   iconUrl: async () => (await import('./zealWallet.svg')).default,
   iconBackground: '#fff0',
-  installed: hasInjectedProvider('isZeal'),
+  installed: hasInjectedProvider({ flag: 'isZeal' }),
   downloadUrls: {
     browserExtension: 'https://zeal.app',
   },

@@ -15,8 +15,7 @@ export const mewWallet = ({ chains }: MewWalletOptions): Wallet => {
     name: 'MEW wallet',
     iconUrl: async () => (await import('./mewWallet.svg')).default,
     iconBackground: '#fff',
-    // @ts-ignore - `isMEWwallet` needs to be added to Wagmi
-    installed: hasInjectedProvider('isMEWwallet'),
+    installed: hasInjectedProvider({ flag: 'isMEWwallet' }),
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
@@ -26,7 +25,6 @@ export const mewWallet = ({ chains }: MewWalletOptions): Wallet => {
     },
     createConnector: () => {
       return {
-        // @ts-ignore - `isMEWwallet` needs to be added to Wagmi
         connector: getInjectedConnector({ chains, flag: 'isMEWwallet' }),
       };
     },

@@ -22,7 +22,7 @@ export const bifrostWallet = ({
   projectId,
   walletConnectOptions,
 }: BifrostWalletOptions): Wallet => {
-  const isBifrostInjected = hasInjectedProvider('isBifrost');
+  const isBifrostInjected = hasInjectedProvider({ flag: 'isBifrost' });
   const shouldUseWalletConnect = !isBifrostInjected;
 
   return {

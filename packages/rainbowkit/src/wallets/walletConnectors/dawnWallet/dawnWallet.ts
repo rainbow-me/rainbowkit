@@ -15,7 +15,7 @@ export const dawnWallet = ({ chains }: DawnWalletOptions): Wallet => ({
   name: 'Dawn',
   iconUrl: async () => (await import('./dawnWallet.svg')).default,
   iconBackground: '#000000',
-  installed: hasInjectedProvider('isDawn'),
+  installed: hasInjectedProvider({ flag: 'isDawn' }),
   hidden: () => !isIOS(),
   downloadUrls: {
     ios: 'https://apps.apple.com/us/app/dawn-ethereum-wallet/id1673143782',

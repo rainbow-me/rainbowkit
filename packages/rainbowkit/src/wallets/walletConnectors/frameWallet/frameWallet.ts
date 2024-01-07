@@ -12,7 +12,7 @@ export interface FrameWalletOptions {
 export const frameWallet = ({ chains }: FrameWalletOptions): Wallet => ({
   id: 'frame',
   name: 'Frame',
-  installed: hasInjectedProvider('isFrame'),
+  installed: hasInjectedProvider({ flag: 'isFrame' }),
   iconUrl: async () => (await import('./frameWallet.svg')).default,
   iconBackground: '#121C20',
   downloadUrls: {

@@ -15,7 +15,7 @@ export const tokenaryWallet = ({ chains }: TokenaryWalletOptions): Wallet => ({
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
   iconBackground: '#ffffff',
-  installed: hasInjectedProvider('isTokenary'),
+  installed: hasInjectedProvider({ flag: 'isTokenary' }),
   hidden: () => !isSafari(),
   downloadUrls: {
     ios: 'https://tokenary.io/get',

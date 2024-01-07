@@ -15,7 +15,9 @@ export const coinbaseWallet = ({
   appIcon,
   chains,
 }: CoinbaseWalletOptions): Wallet => {
-  const isCoinbaseWalletInjected = hasInjectedProvider('isCoinbaseWallet');
+  const isCoinbaseWalletInjected = hasInjectedProvider({
+    flag: 'isCoinbaseWallet',
+  });
 
   return {
     id: 'coinbase',

@@ -9,12 +9,6 @@ import {
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
-declare global {
-  interface Window {
-    trustwallet: Window['ethereum'];
-  }
-}
-
 export interface TrustWalletOptions {
   chains: Chain[];
   projectId: string;
@@ -27,8 +21,8 @@ export const trustWallet = ({
   walletConnectOptions,
 }: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
-    ? hasInjectedProvider('isTrust')
-    : hasInjectedProvider('isTrustWallet');
+    ? hasInjectedProvider({ flag: 'isTrust' })
+    : hasInjectedProvider({ flag: 'isTrustWallet' });
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
   return {
