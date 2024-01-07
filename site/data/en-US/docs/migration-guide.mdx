@@ -10,7 +10,7 @@ title: Migration Guide
 
 #### Updated to Wagmi v2
 
-The [Wagmi](https://wagmi.sh) peer dependency has been updated to `^2.0.0.
+The [Wagmi](https://wagmi.sh) peer dependency has been updated to `2.x.x`.
 
 Follow the steps below to migrate.
 
@@ -22,7 +22,7 @@ npm i @rainbow-me/rainbowkit@beta wagmi@2 viem@2
 
 **2. Install `@tanstack/react-query` peer dependency**
 
-With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency. 
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
 
 Install it with the following command:
 
@@ -30,7 +30,7 @@ Install it with the following command:
 npm i @tanstack/react-query
 ```
 
-**3. Adjust your Wagmi configuration
+**3. Adjust your Wagmi configuration**
 
 ```diff
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -39,9 +39,9 @@ npm i @tanstack/react-query
 + import { http, createConfig, WagmiProvider } from 'wagmi'
 import { mainnet, sepolia } from 'wagmi/chains'
 
-- const { chains, publicClient } = configureChains( 
--   [mainnet, sepolia], 
--   [publicProvider()], 
+- const { chains, publicClient } = configureChains(
+-   [mainnet, sepolia],
+-   [publicProvider()],
 - )
 
 const config = createConfig({
@@ -55,18 +55,19 @@ const config = createConfig({
 +  },
 })
 
-const queryClient = new QueryClient() 
++ const queryClient = new QueryClient()
 
 const App = () => {
   return (
 -    <WagmiConfig config={config}>
 +    <WagmiProvider config={config}>
-+      <QueryClientProvider client={queryClient}> 
++      <QueryClientProvider client={queryClient}>
         <RainbowKitProvider chains={chains}>
           {/* Your App */}
         </RainbowKitProvider>
-+      </QueryClientProvider> 
-    </WagmiConfig>
++      </QueryClientProvider>
++    </WagmiProvider>
+-    </WagmiConfig>
   );
 };
 
@@ -127,13 +128,148 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-**2. Create custom wallet**
+**2. WalletConnect legacy deprecation**
 
-We've updated the way we create new wallets. Please refer to this [page](https://www.rainbowkit.com/docs/custom-wallets).
+RainbowKit no longer supports WalletConnect legacy option.
 
-**3. WalletConnect legacy deprecation**
+`walletConnectWallet` example usage.
 
-RainbowKit no longer supports WalletConnect legacy option. We now fully rely on the WalletConnect v2.
+```diff
+walletConnectWallet(options: {
+  projectId: string;
+-  walletConnectVersion: '1';
+  options?: {
+-    qrcodeModalOptions?: {
+-      desktopLinks?: string[];
+-      mobileLinks?: string[];
+-    };
+
++    qrModalOptions?: {
++      desktopWallets?: DesktopWallet[];
++      mobileWallets?: MobileWallet[];
++    };
+  }
+});
+```
+
+`metaMaskWallet` and `rainbowWallet` example usage.
+
+```diff
+// Rainbow wallet
+rainbowWallet(options: {
+  projectId: string;
+-  walletConnectVersion: '1';
+-  walletConnectOptions?: {
++  walletConnectParameters?: {
+-    qrcodeModalOptions?: {
+-      desktopLinks?: string[];
+-      mobileLinks?: string[];
+-    };
+
++    qrModalOptions?: {
++      desktopWallets?: DesktopWallet[];
++      mobileWallets?: MobileWallet[];
++    };
+  }
+});
+
+// MetaMask wallet
+metaMaskWallet(options: {
+  projectId: string;
+-  walletConnectVersion: '1';
+-  walletConnectOptions?: {
++  walletConnectParameters?: {
+-    qrcodeModalOptions?: {
+-      desktopLinks?: string[];
+-      mobileLinks?: string[];
+-    };
+
++    qrModalOptions?: {
++      desktopWallets?: DesktopWallet[];
++      mobileWallets?: MobileWallet[];
++    };
+  }
+});
+```
+
+**3. Custom wallet**
+
+If you've previously created your own wallet would need to update a few things.
+
+Here is example of a custom injected wallet.
+
+```diff
++ import { createConnector as wagmiCreateConnector } from 'wagmi';
++ import { injected } from 'wagmi/connectors';
+
+const injectedWallet = (): Wallet => ({
+  id: 'injected',
+  name: 'Injected Wallet',
+  iconUrl: async () => (await import('./injectedWallet.svg')).default,
+  iconBackground: '#fff',
++  mobile?: { ... };
++  desktop?: { ... };
++  qrCode?: { ... };
++  extension?: { ... };
+-  createConnector: () => ({
+-    connector: new InjectedConnector({
+-      chains,
+-      options,
+-    }),
+-  mobile?: { ... };
+-  desktop?: { ... };
+-  qrCode?: { ... };
+-  extension?: { ... };
+-  }),
++  createConnector: (walletDetails: WalletDetailsParams) => {
++    return wagmiCreateConnector((config) => ({
++      ...injected({
++        target: () => ({
++          id: "windowProvider",
++          name: "Window Provider",
++          provider: window.ethereum,
++        }),
++      })(config),
++      ...walletDetails,
++    }));
++  },
+});
+```
+
+Here is another example of a custom WalletConnect wallet.
+
+```diff
++ import { createConnector as wagmiCreateConnector } from 'wagmi';
++ import { walletConnect } from 'wagmi/connectors';
+
+const customWallet = (): Wallet => ({
+  id: 'custom',
+  name: 'Custom Wallet',
+  iconUrl: async () => (await import('./customWallet.svg')).default,
+  iconBackground: '#fff',
++  mobile?: { ... };
++  desktop?: { ... };
++  qrCode?: { ... };
++  extension?: { ... };
+-  createConnector: () => ({
+-    connector: new WalletConnectConnector({
+-      projectId: "...",
+-    }),
+-  mobile?: { ... };
+-  desktop?: { ... };
+-  qrCode?: { ... };
+-  extension?: { ... };
+-  }),
++  createConnector: (walletDetails: WalletDetailsParams) => {
++    return wagmiCreateConnector((config) => ({
++      ...walletConnect({
++        projectId: "...",
++      })(config),
++      ...walletDetails,
++    }));
++  },
+});
+```
 
 ### 1.x.x Breaking changes
 
