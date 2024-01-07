@@ -1,12 +1,11 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
 import { isMobile } from '../../../utils/isMobile';
-import type { Wallet } from '../../Wallet';
+import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getDefaultInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TokenPocketWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const tokenPocketWallet = ({

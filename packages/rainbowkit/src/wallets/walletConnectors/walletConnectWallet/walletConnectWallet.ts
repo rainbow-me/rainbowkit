@@ -1,10 +1,9 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface WalletConnectWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  options?: RainbowKitWalletConnectParameters;
 }
 
 // Used for maintance purposes for `connectorsForWallets` logic
@@ -13,7 +12,7 @@ export const wcId = 'walletConnect';
 
 export const walletConnectWallet = ({
   projectId,
-  walletConnectParameters,
+  options,
 }: WalletConnectWalletOptions): Wallet => {
   const getUri = (uri: string) => uri;
 
@@ -26,7 +25,7 @@ export const walletConnectWallet = ({
     qrCode: { getUri },
     createConnector: getWalletConnectConnector({
       projectId,
-      walletConnectParameters,
+      walletConnectParameters: options,
     }),
   };
 };

@@ -1,12 +1,11 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ZerionWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const zerionWallet = ({

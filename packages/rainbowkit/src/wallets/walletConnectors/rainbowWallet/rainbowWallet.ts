@@ -1,6 +1,5 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
@@ -9,7 +8,7 @@ import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface RainbowWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const rainbowWallet = ({

@@ -1,11 +1,10 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface FoxWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const foxWallet = ({

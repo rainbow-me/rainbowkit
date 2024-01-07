@@ -1,5 +1,4 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
@@ -14,7 +13,7 @@ declare global {
 
 export interface Coin98WalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const coin98Wallet = ({

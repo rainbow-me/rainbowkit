@@ -1,12 +1,16 @@
 import { createConnector } from 'wagmi';
-import { WalletConnectParameters, metaMask } from 'wagmi/connectors';
+import { metaMask } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletDetailsParams } from '../../Wallet';
+import {
+  RainbowKitWalletConnectParameters,
+  Wallet,
+  WalletDetailsParams,
+} from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {

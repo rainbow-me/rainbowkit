@@ -1,5 +1,8 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  InstructionStepName,
+  RainbowKitWalletConnectParameters,
+  Wallet,
+} from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
@@ -11,7 +14,7 @@ declare global {
 
 export interface SubWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 const getSubWalletInjectedProvider = (): Window['ethereum'] => {

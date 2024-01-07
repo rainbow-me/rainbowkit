@@ -1,6 +1,5 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
 import { isAndroid } from '../../../utils/isMobile';
-import type { Wallet } from '../../Wallet';
+import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
@@ -12,7 +11,7 @@ declare global {
 
 export interface FrontierWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const frontierWallet = ({

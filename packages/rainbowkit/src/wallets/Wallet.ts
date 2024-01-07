@@ -77,6 +77,9 @@ export type Wallet = {
 
 export type WalletList = { groupName: string; wallets: Wallet[] }[];
 
+// We don't want users to pass in `showQrModal` or `projectId`.
+// Those two values are handled by rainbowkit. The rest of WalletConnect
+// parameters can be passed with no issue
 export type RainbowKitWalletConnectParameters = Omit<
   WalletConnectParameters,
   'showQrModal' | 'projectId'

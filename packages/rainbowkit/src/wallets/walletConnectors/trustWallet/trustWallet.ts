@@ -1,6 +1,9 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
 import { isMobile } from '../../../utils/isMobile';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  InstructionStepName,
+  RainbowKitWalletConnectParameters,
+  Wallet,
+} from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
@@ -15,7 +18,7 @@ declare global {
 
 export interface TrustWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 export const trustWallet = ({

@@ -1,5 +1,8 @@
-import { WalletConnectParameters } from 'wagmi/connectors';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  InstructionStepName,
+  RainbowKitWalletConnectParameters,
+  Wallet,
+} from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
@@ -11,7 +14,7 @@ declare global {
 
 export interface SafepalWalletOptions {
   projectId: string;
-  walletConnectParameters?: WalletConnectParameters;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
 function getSafepalWalletInjectedProvider(): Window['ethereum'] {
