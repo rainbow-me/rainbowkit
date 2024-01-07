@@ -37,7 +37,7 @@ function getWindowProviderNamespace(
       return providerSearch(_provider, path.join('.'));
     }
   };
-  return providerSearch(window, namespace);
+  if (typeof window !== 'undefined') return providerSearch(window, namespace);
 }
 
 /*
@@ -67,14 +67,13 @@ function getInjectedProvider({
   flag?: keyof InjectedProviderFlags | string;
   namespace?: string;
 }): WindowProvider | undefined {
-  if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
-    return;
+  if (typeof window === 'undefined') return;
   if (namespace) {
     // prefer custom eip1193 namespaces
     const windowProvider = getWindowProviderNamespace(namespace);
     if (windowProvider) return windowProvider;
   }
-  const providers = window.ethereum.providers;
+  const providers = window.ethereum?.providers;
   if (flag) {
     const provider = getExplicitInjectedProvider(flag);
     if (provider) return provider;
