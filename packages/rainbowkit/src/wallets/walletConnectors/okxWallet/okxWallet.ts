@@ -1,8 +1,11 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
@@ -17,12 +20,7 @@ export const okxWallet = ({
   projectId,
   walletConnectOptions,
 }: OKXWalletOptions): Wallet => {
-  // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
-  const isOKXInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    typeof window.okxwallet !== 'undefined';
-
+  const isOKXInjected = hasInjectedProvider({ namespace: 'okxwallet' });
   const shouldUseWalletConnect = !isOKXInjected;
 
   return {
@@ -50,13 +48,7 @@ export const okxWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options: {
-              // @ts-expect-error
-              getProvider: () => window.okxwallet,
-            },
-          });
+        : getInjectedConnector({ chains, namespace: 'okxwallet' });
 
       return {
         connector,

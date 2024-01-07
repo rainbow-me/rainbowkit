@@ -1,16 +1,13 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    frontier: any;
-  }
-}
 
 export interface FrontierWalletOptions {
   projectId: string;
@@ -23,19 +20,15 @@ export const frontierWallet = ({
   projectId,
   walletConnectOptions,
 }: FrontierWalletOptions): Wallet => {
-  const isFrontierInjected =
-    typeof window !== 'undefined' &&
-    typeof window.frontier !== 'undefined' &&
-    window?.frontier?.ethereum?.isFrontier;
+  const isFrontierInjected = hasInjectedProvider({
+    namespace: 'frontier.ethereum',
+    flag: 'isFrontier',
+  });
+  const shouldUseWalletConnect = !isFrontierInjected;
   return {
     id: 'frontier',
     name: 'Frontier Wallet',
-    installed:
-      typeof window !== 'undefined' &&
-      typeof window.frontier !== 'undefined' &&
-      window?.frontier?.ethereum?.isFrontier
-        ? true
-        : undefined,
+    installed: isFrontierInjected,
     iconUrl: async () => (await import('./frontierWallet.svg')).default,
     iconBackground: '#CC703C',
     downloadUrls: {
@@ -48,7 +41,6 @@ export const frontierWallet = ({
       browserExtension: 'https://www.frontier.xyz/download',
     },
     createConnector: () => {
-      const shouldUseWalletConnect = !isFrontierInjected;
       const connector = shouldUseWalletConnect
         ? getWalletConnectConnector({
             chains,
@@ -63,16 +55,10 @@ export const frontierWallet = ({
           : uri;
       };
       return {
-        connector: new InjectedConnector({
+        connector: getInjectedConnector({
           chains,
-          options: {
-            getProvider: () => {
-              const getFront = (frontier?: any) =>
-                frontier?.ethereum ? frontier?.ethereum : undefined;
-              if (typeof window === 'undefined') return;
-              return getFront(window.frontier);
-            },
-          },
+          namespace: 'frontier.ethereum',
+          flag: 'isFrontier',
         }),
         mobile: {
           getUri: shouldUseWalletConnect ? getUri : undefined,
