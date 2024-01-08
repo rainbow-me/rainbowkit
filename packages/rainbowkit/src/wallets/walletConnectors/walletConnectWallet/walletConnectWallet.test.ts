@@ -1,6 +1,6 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
 import { Wallet } from '../../Wallet';
-import { walletConnectWallet, wcId } from './walletConnectWallet';
+import { walletConnectWallet } from './walletConnectWallet';
 
 describe('walletConnectWallet', () => {
   const projectId = 'test-project-id';
@@ -17,7 +17,7 @@ describe('walletConnectWallet', () => {
   it('with projectId', () => {
     const wallet = walletConnectWallet({ projectId });
 
-    expect(wallet.id).toBe(wcId);
+    expect(wallet.id).toBe('walletConnect');
     expectTypeOf(wallet.createConnector).toMatchTypeOf<
       Wallet['createConnector']
     >();
@@ -25,14 +25,13 @@ describe('walletConnectWallet', () => {
 
   it('v2 options', () => {
     const wallet = walletConnectWallet({
-      walletConnectParameters: {
-        showQrModal: true,
-        projectId,
+      options: {
+        isNewChainsStale: true,
       },
       projectId,
     });
 
-    expect(wallet.id).toBe(wcId);
+    expect(wallet.id).toBe('walletConnect');
     expectTypeOf(wallet.createConnector).toMatchTypeOf<
       Wallet['createConnector']
     >();

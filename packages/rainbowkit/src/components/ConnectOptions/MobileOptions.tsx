@@ -11,7 +11,6 @@ import {
   WalletConnector,
   useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
-import { wcId } from '../../wallets/walletConnectors/walletConnectWallet/walletConnectWallet';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
@@ -113,7 +112,7 @@ export function WalletButton({
       }
     };
 
-    if (id !== wcId) onMobileUri();
+    if (id !== 'walletConnect') onMobileUri();
 
     // If the id is "walletConnect" then "showWalletConnectModal" will always be true
     if (showWalletConnectModal) {

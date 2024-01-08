@@ -6,10 +6,6 @@ export interface WalletConnectWalletOptions {
   options?: RainbowKitWalletConnectParameters;
 }
 
-// Used for maintance purposes for `connectorsForWallets` logic
-// wcId = "WalletConnect id"
-export const wcId = 'walletConnect';
-
 export const walletConnectWallet = ({
   projectId,
   options,
@@ -17,9 +13,9 @@ export const walletConnectWallet = ({
   const getUri = (uri: string) => uri;
 
   return {
-    id: wcId,
+    id: 'walletConnect',
     name: 'WalletConnect',
-    installed: true,
+    installed: undefined,
     iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
     iconBackground: '#3b99fc',
     qrCode: { getUri },

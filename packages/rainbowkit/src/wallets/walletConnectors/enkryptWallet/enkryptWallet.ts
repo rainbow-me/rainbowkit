@@ -15,7 +15,7 @@ export const enkryptWallet = (): Wallet => {
   const isEnkryptInjected =
     typeof window !== 'undefined' &&
     typeof window.enkrypt !== 'undefined' &&
-    window?.enkrypt?.providers?.ethereum;
+    !!window?.enkrypt?.providers?.ethereum;
   return {
     id: 'enkrypt',
     name: 'Enkrypt Wallet',

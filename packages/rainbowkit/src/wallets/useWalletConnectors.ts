@@ -19,7 +19,6 @@ import {
   rainbowKitConnectorWithWalletConnect,
 } from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
-import { wcId } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
@@ -112,7 +111,8 @@ export function useWalletConnectors(
 
   const walletConnectModalConnector = defaultConnectors.find(
     (connector) =>
-      connector.id === wcId && connector.isWalletConnectModalConnector,
+      connector.id === 'walletConnect' &&
+      connector.isWalletConnectModalConnector,
   );
 
   const eip6963Connectors = defaultConnectors
