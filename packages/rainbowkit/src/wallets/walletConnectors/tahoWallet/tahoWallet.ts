@@ -4,12 +4,6 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-declare global {
-  interface Window {
-    tally: any;
-  }
-}
-
 export const tahoWallet = (): Wallet => {
   return {
     id: 'taho',
