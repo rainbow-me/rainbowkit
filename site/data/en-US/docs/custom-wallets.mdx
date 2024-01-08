@@ -22,6 +22,12 @@ The `Wallet` function type is provided to help you define your own custom wallet
       description: "Unique ID per wallet",
     },
     {
+      name: "rdns",
+      required: false,
+      type: "string",
+      description: "EIP6963 wallet rdns",
+    },
+    {
       name: "name",
       required: true,
       type: "string",
@@ -207,6 +213,7 @@ export interface MyWalletOptions {
 
 export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
   id: "my-wallet",
+  rdns: "my-wallet-rdns.com",
   name: "My Wallet",
   iconUrl: "https://my-image.xyz",
   iconBackground: "#0c2f78",

@@ -74,6 +74,12 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 walletConnectWallet(options: {
   projectId: string;
+  options?: {
+    qrModalOptions?: {
+      desktopWallets?: DesktopWallet[];
+      mobileWallets?: MobileWallet[];
+    };
+  }
 });
 ```
 
