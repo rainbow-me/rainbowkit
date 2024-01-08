@@ -29,8 +29,6 @@ const chains: readonly [Chain, ...Chain[]] = [
 const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  appDescription: 'RainobwKit Demo App',
-  appUrl: 'https://www.rainbowkit.com',
   chains,
   transports: {
     [mainnet.id]: http(),
