@@ -1,7 +1,10 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import {
   WalletConnectConnectorOptions,
   getWalletConnectConnector,
@@ -13,20 +16,12 @@ export interface CLVWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-declare global {
-  interface Window {
-    clover: any;
-  }
-}
-
 export const clvWallet = ({
   chains,
   projectId,
   walletConnectOptions,
 }: CLVWalletOptions): Wallet => {
-  const provider = typeof window !== 'undefined' && window['clover'];
-  const isCLVInjected = Boolean(provider);
-
+  const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
   const shouldUseWalletConnect = !isCLVInjected;
 
   return {
@@ -35,7 +30,7 @@ export const clvWallet = ({
     iconUrl: async () => (await import('./clvWallet.svg')).default,
     iconBackground: '#fff',
     iconAccent: '#BDFDE2',
-    installed: !shouldUseWalletConnect ? isCLVInjected : undefined,
+    installed: isCLVInjected,
     downloadUrls: {
       chrome:
         'https://chrome.google.com/webstore/detail/clv-wallet/nhnkbkgjikgcigadomkphalanndcapjk',
@@ -50,12 +45,7 @@ export const clvWallet = ({
             options: walletConnectOptions,
             projectId,
           })
-        : new InjectedConnector({
-            chains,
-            options: {
-              getProvider: () => provider,
-            },
-          });
+        : getInjectedConnector({ chains, namespace: 'clover' });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector);

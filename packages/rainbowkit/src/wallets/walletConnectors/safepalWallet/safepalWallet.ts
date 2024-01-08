@@ -1,16 +1,12 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    safepalProvider: Window['ethereum'];
-  }
-}
 
 export interface SafepalWalletOptions {
   projectId: string;
@@ -18,53 +14,15 @@ export interface SafepalWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function getSafepalWalletInjectedProvider(): Window['ethereum'] {
-  const isSafePalWallet = (ethereum: NonNullable<Window['ethereum']> | any) => {
-    // Identify if SafePal Wallet injected provider is present.
-    const safepalWallet = !!ethereum.isSafePal;
-
-    return safepalWallet;
-  };
-
-  const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
-
-  // No injected providers exist.
-  if (!injectedProviderExist) {
-    return;
-  }
-
-  // SafePal Wallet injected provider is available in the global scope.
-  // There are cases that some cases injected providers can replace window.ethereum
-  // without updating the ethereum.providers array. To prevent issues where
-  // the TW connector does not recognize the provider when TW extension is installed,
-  // we begin our checks by relying on TW's global object.
-  if (window['safepalProvider']) {
-    return window['safepalProvider'];
-  }
-
-  // SafePal Wallet was injected into window.ethereum.
-  if (isSafePalWallet(window.ethereum!)) {
-    return window.ethereum;
-  }
-
-  // SafePal Wallet provider might be replaced by another
-  // injected provider, check the providers array.
-  if (window.ethereum?.providers) {
-    // ethereum.providers array is a non-standard way to
-    // preserve multiple injected providers. Eventually, EIP-5749
-    // will become a living standard and we will have to update this.
-    return window.ethereum.providers.find(isSafePalWallet);
-  }
-}
-
 export const safepalWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: SafepalWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isSafePalWalletInjected = Boolean(getSafepalWalletInjectedProvider());
+}: SafepalWalletOptions): Wallet => {
+  const isSafePalWalletInjected = hasInjectedProvider({
+    namespace: 'safepalProvider',
+    flag: 'isSafePal',
+  });
   const shouldUseWalletConnect = !isSafePalWalletInjected;
 
   return {
@@ -106,12 +64,10 @@ export const safepalWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
+        : getInjectedConnector({
             chains,
-            options: {
-              getProvider: getSafepalWalletInjectedProvider,
-              ...options,
-            },
+            namespace: 'safepalProvider',
+            flag: 'isSafePal',
           });
 
       const mobileConnector = {

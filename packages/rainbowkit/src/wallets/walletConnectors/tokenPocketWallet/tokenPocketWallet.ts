@@ -1,9 +1,11 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import type { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isMobile } from '../../../utils/isMobile';
 import type { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
@@ -17,10 +19,8 @@ export const tokenPocketWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-}: TokenPocketWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isTokenPocketInjected =
-    typeof window !== 'undefined' && window.ethereum?.isTokenPocket === true;
-
+}: TokenPocketWalletOptions): Wallet => {
+  const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
   const shouldUseWalletConnect = !isTokenPocketInjected;
 
   return {
@@ -46,7 +46,7 @@ export const tokenPocketWallet = ({
             projectId,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({ chains });
+        : getInjectedConnector({ chains, flag: 'isTokenPocket' });
 
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector);

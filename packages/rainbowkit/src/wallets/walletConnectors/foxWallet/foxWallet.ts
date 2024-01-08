@@ -1,8 +1,10 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
@@ -16,13 +18,10 @@ export const foxWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: FoxWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isFoxInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    typeof window.foxwallet !== 'undefined';
-
+}: FoxWalletOptions): Wallet => {
+  const isFoxInjected = hasInjectedProvider({
+    namespace: 'foxwallet.ethereum',
+  });
   const shouldUseWalletConnect = !isFoxInjected;
 
   return {
@@ -43,14 +42,7 @@ export const foxWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options: {
-              // @ts-expect-error
-              getProvider: () => window.foxwallet.ethereum,
-              ...options,
-            },
-          });
+        : getInjectedConnector({ chains, namespace: 'foxwallet.ethereum' });
 
       return {
         connector,

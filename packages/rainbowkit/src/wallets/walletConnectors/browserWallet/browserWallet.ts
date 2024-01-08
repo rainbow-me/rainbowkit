@@ -1,7 +1,7 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import { getInjectedConnector } from '../../getInjectedConnector';
 
 /**
  * @protected `browserWallet` interface
@@ -13,10 +13,7 @@ export interface BrowserWalletOptions {
 /**
  * @protected eip-1193 wallet connector
  */
-export const browserWallet = ({
-  chains,
-  ...options
-}: BrowserWalletOptions & InjectedConnectorOptions): Wallet => ({
+export const browserWallet = ({ chains }: BrowserWalletOptions): Wallet => ({
   id: 'browser',
   name: 'Browser Wallet',
   iconUrl: async () => (await import('./browserWallet.svg')).default,
@@ -30,9 +27,6 @@ export const browserWallet = ({
           wallet.id === 'coinbase'),
     ),
   createConnector: () => ({
-    connector: new InjectedConnector({
-      chains,
-      options,
-    }),
+    connector: getInjectedConnector({ chains }),
   }),
 });

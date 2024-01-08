@@ -1,18 +1,14 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { InstructionStepName, Wallet } from '../../Wallet';
 import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
+import {
   WalletConnectConnectorOptions,
   getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    SubWallet: Window['ethereum'];
-  }
-}
 
 export interface SubWalletOptions {
   projectId: string;
@@ -20,18 +16,12 @@ export interface SubWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-const getSubWalletInjectedProvider = (): Window['ethereum'] => {
-  if (typeof window === 'undefined') return;
-  return window.SubWallet;
-};
-
 export const subWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: SubWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isSubWalletInjected = Boolean(getSubWalletInjectedProvider());
+}: SubWalletOptions): Wallet => {
+  const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
   const shouldUseWalletConnect = !isSubWalletInjected;
 
   return {
@@ -59,13 +49,7 @@ export const subWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
-            chains,
-            options: {
-              getProvider: getSubWalletInjectedProvider,
-              ...options,
-            },
-          });
+        : getInjectedConnector({ chains, namespace: 'SubWallet' });
 
       const getUriMobile = async () => {
         const uri = await getWalletConnectUri(connector);

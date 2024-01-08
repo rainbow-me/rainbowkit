@@ -56,7 +56,6 @@
     "@types/react-dom": "^18.2.17",
     "@vanilla-extract/esbuild-plugin": "^2.3.1",
     "@vanilla-extract/vite-plugin": "^3.9.3",
-    "@wagmi/core": "~1.4.13",
     "autoprefixer": "^10.4.16",
     "esbuild": "^0.14.39",
     "esbuild-plugin-replace": "^1.4.0",

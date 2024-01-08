@@ -1,9 +1,11 @@
-import type { MetaMaskConnectorOptions } from '@wagmi/core/connectors/metaMask';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
@@ -63,19 +65,13 @@ export const metaMaskWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: MetaMaskWalletOptions & MetaMaskConnectorOptions): Wallet => {
-  const providers = typeof window !== 'undefined' && window.ethereum?.providers;
-
+}: MetaMaskWalletOptions): Wallet => {
   // Not using the explicit isMetaMask fn to check for MetaMask
   // so that users can continue to use the MetaMask button
   // to interact with wallets compatible with window.ethereum.
   // The connector's getProvider will instead favor the real MetaMask
   // in window.providers scenarios with multiple wallets injected.
-  const isMetaMaskInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    (window.ethereum.providers?.some(isMetaMask) || window.ethereum.isMetaMask);
+  const isMetaMaskInjected = hasInjectedProvider({ flag: 'isMetaMask' });
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
   return {
@@ -104,17 +100,14 @@ export const metaMaskWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new MetaMaskConnector({
+        : getInjectedConnector({
             chains,
-            options: {
-              getProvider: () =>
-                providers
-                  ? providers.find(isMetaMask)
-                  : typeof window !== 'undefined'
-                    ? window.ethereum
-                    : undefined,
-              ...options,
-            },
+            // custom handling for metamask button fallback for third party wallets
+            getProvider: () =>
+              typeof window !== 'undefined'
+                ? window.ethereum?.providers?.find(isMetaMask) ??
+                  window.ethereum
+                : undefined,
           });
 
       const getUri = async () => {

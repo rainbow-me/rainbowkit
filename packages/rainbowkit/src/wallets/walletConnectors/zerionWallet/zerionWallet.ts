@@ -1,9 +1,11 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
@@ -17,14 +19,11 @@ export const zerionWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: ZerionWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isZerionInjected =
-    typeof window !== 'undefined' &&
-    ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
-      // @ts-expect-error
-      typeof window.zerionWallet !== 'undefined');
-
+}: ZerionWalletOptions): Wallet => {
+  const isZerionInjected = hasInjectedProvider({
+    namespace: 'zerionWallet',
+    flag: 'isZerion',
+  });
   const shouldUseWalletConnect = !isZerionInjected;
 
   return {
@@ -51,16 +50,10 @@ export const zerionWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
+        : getInjectedConnector({
             chains,
-            options: {
-              getProvider: () =>
-                typeof window !== 'undefined'
-                  ? // @ts-expect-error
-                    window.zerionWallet || window.ethereum
-                  : undefined,
-              ...options,
-            },
+            namespace: 'zerionWallet',
+            flag: 'isZerion',
           });
 
       const getUri = async () => {

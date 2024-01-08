@@ -1,9 +1,11 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import {
   WalletConnectConnectorOptions,
   getWalletConnectConnector,
@@ -19,13 +21,8 @@ export const bifrostWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: BifrostWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isBifrostInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isBifrost;
-
+}: BifrostWalletOptions): Wallet => {
+  const isBifrostInjected = hasInjectedProvider({ flag: 'isBifrost' });
   const shouldUseWalletConnect = !isBifrostInjected;
 
   return {
@@ -47,9 +44,9 @@ export const bifrostWallet = ({
             projectId,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
+        : getInjectedConnector({
+            flag: 'isBifrost',
             chains,
-            options,
           });
 
       const getUri = async () => {

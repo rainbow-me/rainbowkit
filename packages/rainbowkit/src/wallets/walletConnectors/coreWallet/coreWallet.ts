@@ -1,20 +1,14 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { WindowProvider } from 'wagmi/dist/window';
 import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { Wallet } from '../../Wallet';
 import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
+import {
   WalletConnectConnectorOptions,
   getWalletConnectConnector,
 } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    evmproviders?: Record<string, WindowProvider>;
-    avalanche?: WindowProvider;
-  }
-}
 
 export interface CoreWalletOptions {
   projectId: string;
@@ -22,43 +16,15 @@ export interface CoreWalletOptions {
   walletConnectOptions?: WalletConnectConnectorOptions;
 }
 
-function getCoreWalletInjectedProvider(): WindowProvider | undefined {
-  const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
-
-  // No injected providers exist.
-  if (!injectedProviderExist) {
-    return;
-  }
-
-  // Core implements EIP-5749 and creates the window.evmproviders
-  if (window['evmproviders']?.['core']) {
-    return window['evmproviders']?.['core'];
-  }
-
-  // Core was injected into window.avalanche.
-  if (window.avalanche) {
-    return window.avalanche;
-  }
-
-  // Core was injected into window.ethereum.
-  if (
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isAvalanche === true
-  ) {
-    return window.ethereum;
-  }
-}
-
 export const coreWallet = ({
   chains,
   projectId,
   walletConnectOptions,
-  ...options
-}: CoreWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isCoreInjected = Boolean(getCoreWalletInjectedProvider());
-
+}: CoreWalletOptions): Wallet => {
+  const isCoreInjected = hasInjectedProvider({
+    namespace: 'avalanche',
+    flag: 'isAvalanche',
+  });
   const shouldUseWalletConnect = !isCoreInjected;
   return {
     id: 'core',
@@ -82,12 +48,10 @@ export const coreWallet = ({
             chains,
             options: walletConnectOptions,
           })
-        : new InjectedConnector({
+        : getInjectedConnector({
             chains,
-            options: {
-              getProvider: getCoreWalletInjectedProvider,
-              ...options,
-            },
+            namespace: 'avalanche',
+            flag: 'isAvalanche',
           });
       const getUri = async () => {
         const uri = await getWalletConnectUri(connector);
