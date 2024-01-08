@@ -1,7 +1,4 @@
-import {
-  connectorsForWallets,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -11,7 +8,7 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import { http, WagmiProvider, createConfig } from 'wagmi';
+import { http, WagmiProvider } from 'wagmi';
 import {
   Chain,
   arbitrum,
@@ -36,38 +33,39 @@ export const chains: readonly [Chain, ...Chain[]] = [
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
+const transports = {
+  [mainnet.id]: http(),
+  [polygon.id]: http(),
+  [optimism.id]: http(),
+  [arbitrum.id]: http(),
+  [base.id]: http(),
+  [zora.id]: http(),
+  [bsc.id]: http(),
+};
+
 const { wallets } = getDefaultWallets({
   appName: 'rainbowkit.com',
   projectId,
 });
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'More',
-    wallets: [
-      argentWallet({ projectId }),
-      trustWallet({ projectId }),
-      omniWallet({ projectId }),
-      imTokenWallet({ projectId }),
-      ledgerWallet({ projectId }),
-    ],
-  },
-]);
-
-const config = createConfig({
+const config = getDefaultConfig({
+  appName: 'rainbowkit.com',
+  projectId,
   chains,
-  connectors,
-  ssr: true,
-  transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [base.id]: http(),
-    [zora.id]: http(),
-    [bsc.id]: http(),
-  },
+  transports,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'More',
+      wallets: [
+        argentWallet({ projectId }),
+        trustWallet({ projectId }),
+        omniWallet({ projectId }),
+        imTokenWallet({ projectId }),
+        ledgerWallet({ projectId }),
+      ],
+    },
+  ],
 });
 
 const client = new QueryClient();

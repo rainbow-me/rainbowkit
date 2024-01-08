@@ -5,12 +5,6 @@ import {
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-declare global {
-  interface Window {
-    coin98Wallet: Window['ethereum'];
-  }
-}
-
 export interface Coin98WalletOptions {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
@@ -20,16 +14,16 @@ export const coin98Wallet = ({
   projectId,
   walletConnectParameters,
 }: Coin98WalletOptions): Wallet => {
-  const isCoin98WalletInjected = hasInjectedProvider('isCoin98');
+  const isCoin98WalletInjected = hasInjectedProvider({
+    namespace: 'coin98Wallet',
+    flag: 'isCoin98',
+  });
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
     id: 'coin98',
     name: 'Coin98 Wallet',
     iconUrl: async () => (await import('./coin98Wallet.svg')).default,
-    // Note that we never resolve `installed` to `false` because the
-    // Coin98 Wallet provider falls back to other connection methods if
-    // the injected connector isn't available
-    installed: !shouldUseWalletConnect ? isCoin98WalletInjected : undefined,
+    installed: isCoin98WalletInjected,
     iconAccent: '#CDA349',
     iconBackground: '#fff',
     downloadUrls: {
@@ -100,6 +94,9 @@ export const coin98Wallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ flag: 'isCoin98' }),
+      : getInjectedConnector({
+          namespace: 'coin98Wallet',
+          flag: 'isCoin98',
+        }),
   };
 };

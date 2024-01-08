@@ -1,13 +1,10 @@
 import { isAndroid } from '../../../utils/isMobile';
 import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    frontier: any;
-  }
-}
 
 export interface FrontierWalletOptions {
   projectId: string;
@@ -18,23 +15,16 @@ export const frontierWallet = ({
   projectId,
   walletConnectParameters,
 }: FrontierWalletOptions): Wallet => {
-  const isFrontierInjected =
-    typeof window !== 'undefined' &&
-    typeof window.frontier !== 'undefined' &&
-    window?.frontier?.ethereum?.isFrontier;
-
+  const isFrontierInjected = hasInjectedProvider({
+    namespace: 'frontier.ethereum',
+    flag: 'isFrontier',
+  });
   const shouldUseWalletConnect = !isFrontierInjected;
-
   return {
     id: 'frontier',
     name: 'Frontier Wallet',
     rdns: 'xyz.frontier.wallet',
-    installed:
-      typeof window !== 'undefined' &&
-      typeof window.frontier !== 'undefined' &&
-      window?.frontier?.ethereum?.isFrontier
-        ? true
-        : undefined,
+    installed: isFrontierInjected,
     iconUrl: async () => (await import('./frontierWallet.svg')).default,
     iconBackground: '#CC703C',
     downloadUrls: {
@@ -117,12 +107,8 @@ export const frontierWallet = ({
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({ projectId, walletConnectParameters })
       : getInjectedConnector({
-          target:
-            typeof window !== 'undefined'
-              ? window.frontier?.ethereum
-                ? window.frontier?.ethereum
-                : undefined
-              : undefined,
+          namespace: 'frontier.ethereum',
+          flag: 'isFrontier',
         }),
   };
 };

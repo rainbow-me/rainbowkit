@@ -1,16 +1,16 @@
 import { isSafari } from '../../../utils/browsers';
 import { Wallet } from '../../Wallet';
-import { getDefaultInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const tokenaryWallet = (): Wallet => ({
   id: 'tokenary',
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
   iconBackground: '#ffffff',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isTokenary,
+  installed: hasInjectedProvider({ flag: 'isTokenary' }),
   hidden: () => !isSafari(),
   downloadUrls: {
     ios: 'https://tokenary.io/get',
@@ -19,5 +19,5 @@ export const tokenaryWallet = (): Wallet => ({
     safari: 'https://tokenary.io/get',
     browserExtension: 'https://tokenary.io/get',
   },
-  createConnector: getDefaultInjectedConnector(),
+  createConnector: getInjectedConnector({ flag: 'isTokenary' }),
 });

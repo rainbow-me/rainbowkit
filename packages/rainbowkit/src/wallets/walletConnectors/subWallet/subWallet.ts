@@ -3,30 +3,22 @@ import {
   RainbowKitWalletConnectParameters,
   Wallet,
 } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    SubWallet: Window['ethereum'];
-  }
-}
 
 export interface SubWalletOptions {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-const getSubWalletInjectedProvider = (): Window['ethereum'] => {
-  if (typeof window === 'undefined') return;
-  return window.SubWallet;
-};
-
 export const subWallet = ({
   projectId,
   walletConnectParameters,
 }: SubWalletOptions): Wallet => {
-  const isSubWalletInjected = Boolean(getSubWalletInjectedProvider());
+  const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
   const shouldUseWalletConnect = !isSubWalletInjected;
 
   const getUriMobile = (uri: string) => {
@@ -124,8 +116,6 @@ export const subWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({
-          target: getSubWalletInjectedProvider(),
-        }),
+      : getInjectedConnector({ namespace: 'SubWallet' }),
   };
 };

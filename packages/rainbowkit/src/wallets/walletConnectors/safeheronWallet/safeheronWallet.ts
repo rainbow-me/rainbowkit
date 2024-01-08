@@ -1,20 +1,16 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-
-declare global {
-  interface Window {
-    safeheron: any;
-  }
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const safeheronWallet = (): Wallet => ({
   id: 'safeheron',
   name: 'Safeheron',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.safeheron !== 'undefined' &&
-    // @ts-ignore
-    window.safeheron.isSafeheron === true,
+  installed: hasInjectedProvider({
+    namespace: 'safeheron',
+    flag: 'isSafeheron',
+  }),
   iconUrl: async () => (await import('./safeheronWallet.svg')).default,
   iconBackground: '#fff',
   downloadUrls: {
@@ -48,6 +44,7 @@ export const safeheronWallet = (): Wallet => ({
     },
   },
   createConnector: getInjectedConnector({
-    target: typeof window !== 'undefined' ? window.safeheron : undefined,
+    namespace: 'safeheron',
+    flag: 'isSafeheron',
   }),
 });

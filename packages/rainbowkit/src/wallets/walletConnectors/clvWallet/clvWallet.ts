@@ -1,5 +1,8 @@
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface CLVWalletOptions {
@@ -7,19 +10,11 @@ export interface CLVWalletOptions {
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-declare global {
-  interface Window {
-    clover: any;
-  }
-}
-
 export const clvWallet = ({
   projectId,
   walletConnectParameters,
 }: CLVWalletOptions): Wallet => {
-  const provider = typeof window !== 'undefined' && window['clover'];
-  const isCLVInjected = Boolean(provider);
-
+  const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
   const shouldUseWalletConnect = !isCLVInjected;
 
   return {
@@ -28,7 +23,7 @@ export const clvWallet = ({
     iconUrl: async () => (await import('./clvWallet.svg')).default,
     iconBackground: '#fff',
     iconAccent: '#BDFDE2',
-    installed: !shouldUseWalletConnect ? isCLVInjected : undefined,
+    installed: isCLVInjected,
     downloadUrls: {
       chrome:
         'https://chrome.google.com/webstore/detail/clv-wallet/nhnkbkgjikgcigadomkphalanndcapjk',
@@ -91,8 +86,6 @@ export const clvWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({
-          target: provider,
-        }),
+      : getInjectedConnector({ namespace: 'clover' }),
   };
 };

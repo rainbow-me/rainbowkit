@@ -1,11 +1,8 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-
-declare global {
-  interface Window {
-    talismanEth: Window['ethereum'];
-  }
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const talismanWallet = (): Wallet => ({
   id: 'talisman',
@@ -13,10 +10,10 @@ export const talismanWallet = (): Wallet => ({
   rdns: 'xyz.talisman',
   iconUrl: async () => (await import('./talismanWallet.svg')).default,
   iconBackground: '#fff',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.talismanEth !== 'undefined' &&
-    window.talismanEth.isTalisman === true,
+  installed: hasInjectedProvider({
+    namespace: 'talismanEth',
+    flag: 'isTalisman',
+  }),
   downloadUrls: {
     chrome:
       'https://chrome.google.com/webstore/detail/talisman-polkadot-wallet/fijngjgcjhjmmpcmkeiomlglpeiijkld',
@@ -47,6 +44,7 @@ export const talismanWallet = (): Wallet => ({
     },
   },
   createConnector: getInjectedConnector({
-    target: typeof window !== 'undefined' ? window.talismanEth : undefined,
+    namespace: 'talismanEth',
+    flag: 'isTalisman',
   }),
 });

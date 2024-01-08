@@ -1,6 +1,9 @@
 import { isAndroid } from '../../../utils/isMobile';
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface BitgetWalletOptions {
@@ -12,15 +15,10 @@ export const bitgetWallet = ({
   projectId,
   walletConnectParameters,
 }: BitgetWalletOptions): Wallet => {
-  const isBitKeepInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    window.bitkeep !== undefined &&
-    // @ts-expect-error
-    window.bitkeep.ethereum !== undefined &&
-    // @ts-expect-error
-    window.bitkeep.ethereum.isBitKeep === true;
-
+  const isBitKeepInjected = hasInjectedProvider({
+    namespace: 'bitkeep.ethereum',
+    flag: 'isBitKeep',
+  });
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
@@ -107,8 +105,8 @@ export const bitgetWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          // @ts-expect-error
-          target: window.bitkeep.ethereum,
+          namespace: 'bitkeep.ethereum',
+          flag: 'isBitKeep',
         }),
   };
 };

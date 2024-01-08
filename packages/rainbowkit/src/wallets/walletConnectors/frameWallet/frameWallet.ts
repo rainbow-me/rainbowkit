@@ -1,14 +1,13 @@
 import { Wallet } from '../../Wallet';
-import { getDefaultInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const frameWallet = (): Wallet => ({
   id: 'frame',
   name: 'Frame',
-  installed:
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    ((window.ethereum as any).isFrame === true ||
-      !!window.ethereum.providers?.find((p: any) => p.isFrame === true)),
+  installed: hasInjectedProvider({ flag: 'isFrame' }),
   iconUrl: async () => (await import('./frameWallet.svg')).default,
   iconBackground: '#121C20',
   downloadUrls: {
@@ -37,5 +36,5 @@ export const frameWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getDefaultInjectedConnector(),
+  createConnector: getInjectedConnector({ flag: 'isFrame' }),
 });

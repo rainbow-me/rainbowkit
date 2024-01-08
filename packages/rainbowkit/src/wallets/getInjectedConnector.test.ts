@@ -5,35 +5,81 @@ import {
 } from './getInjectedConnector';
 
 describe('getInjectedConnector', () => {
-  it('should return injected connector', () => {
+  it('only rainbow provider', () => {
     window.ethereum = { isMetaMask: true, isRainbow: true };
     const connector = getInjectedConnector({
       flag: 'isRainbow',
     });
-    expect(!!connector).toBe(true);
-  });
-});
-
-describe('hasInjectedProvider', () => {
-  it('only rainbow provider', () => {
-    window.ethereum = { isMetaMask: true, isRainbow: true };
-    const hasRainbow = hasInjectedProvider('isRainbow');
-    expect(hasRainbow).toEqual(true);
+    expect(!!connector).toEqual(true);
   });
 
   it('only metamask provider', () => {
     window.ethereum = { isMetaMask: true };
-    const hasRainbow = hasInjectedProvider('isRainbow');
+    const connector = getInjectedConnector({
+      flag: 'isMetaMask',
+    });
+    expect(!!connector).toEqual(true);
+  });
+});
+
+describe('hasInjectedProvider', () => {
+  it('only rainbow flag', () => {
+    window.ethereum = { isMetaMask: true, isRainbow: true };
+    const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
+    expect(hasRainbow).toEqual(true);
+  });
+
+  it('only metamask flag', () => {
+    window.ethereum = { isMetaMask: true };
+    const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
     expect(hasRainbow).toEqual(false);
   });
 
-  it('only coinbase provider', () => {
+  it('only coinbase flag', () => {
     window.ethereum = {
       isMetaMask: true,
       isCoinbaseWallet: true,
     };
-    const hasCoinbase = hasInjectedProvider('isCoinbaseWallet');
+    const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);
+  });
+
+  it('only enkrypt namespace', () => {
+    // @ts-expect-error - window namespace for enkrypt
+    window.enkrypt = {
+      providers: {
+        ethereum: { isMetaMask: true },
+      },
+    };
+    const hasEnkrypt = hasInjectedProvider({
+      namespace: 'enkrypt.providers.ethereum',
+    });
+    expect(hasEnkrypt).toEqual(true);
+  });
+
+  it('core namespace and flag', () => {
+    // @ts-expect-error - window namespace for avalanche, core
+    window.avalanche = {
+      isMetaMask: true,
+      isAvalanche: true,
+    };
+    const hasCore = hasInjectedProvider({
+      namespace: 'avalanche',
+      flag: 'isAvalanche',
+    });
+    expect(hasCore).toEqual(true);
+  });
+
+  it('core namespace and flag, fallback', () => {
+    window.ethereum = {
+      isMetaMask: true,
+      isAvalanche: true,
+    };
+    const hasCore = hasInjectedProvider({
+      namespace: 'avalanche',
+      flag: 'isAvalanche',
+    });
+    expect(hasCore).toEqual(true);
   });
 
   it('has rainbow and coinbase wallet', () => {
@@ -46,10 +92,10 @@ describe('hasInjectedProvider', () => {
       ],
     };
 
-    const hasCoinbase = hasInjectedProvider('isCoinbaseWallet');
+    const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);
 
-    const hasRainbow = hasInjectedProvider('isRainbow');
+    const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
     expect(hasRainbow).toEqual(true);
   });
 
@@ -64,13 +110,13 @@ describe('hasInjectedProvider', () => {
       ],
     };
 
-    const hasCoinbase = hasInjectedProvider('isCoinbaseWallet');
+    const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);
 
-    const hasRainbow = hasInjectedProvider('isRainbow');
+    const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
     expect(hasRainbow).toEqual(true);
 
-    const hasMetaMask = hasInjectedProvider('isMetaMask');
+    const hasMetaMask = hasInjectedProvider({ flag: 'isMetaMask' });
     expect(hasMetaMask).toEqual(true);
   });
 });

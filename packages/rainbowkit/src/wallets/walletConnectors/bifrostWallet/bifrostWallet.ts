@@ -1,7 +1,7 @@
 import { isAndroid } from '../../../utils/isMobile';
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import {
-  getDefaultInjectedConnector,
+  getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
@@ -15,7 +15,7 @@ export const bifrostWallet = ({
   projectId,
   walletConnectParameters,
 }: BifrostWalletOptions): Wallet => {
-  const isBifrostInjected = hasInjectedProvider('isBifrost');
+  const isBifrostInjected = hasInjectedProvider({ flag: 'isBifrost' });
 
   const shouldUseWalletConnect = !isBifrostInjected;
 
@@ -75,6 +75,8 @@ export const bifrostWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getDefaultInjectedConnector(),
+      : getInjectedConnector({
+          flag: 'isBifrost',
+        }),
   };
 };

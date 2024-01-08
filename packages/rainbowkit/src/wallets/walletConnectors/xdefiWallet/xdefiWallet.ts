@@ -1,20 +1,15 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-
-declare global {
-  interface Window {
-    xfi: any;
-  }
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const xdefiWallet = (): Wallet => {
-  const isInstalled =
-    typeof window !== 'undefined' && typeof window?.xfi !== 'undefined';
   return {
     id: 'xdefi',
     name: 'XDEFI Wallet',
     rdns: 'io.xdefi',
-    installed: isInstalled,
+    installed: hasInjectedProvider({ namespace: 'xfi.ethereum' }),
     iconUrl: async () => (await import('./xdefiWallet.svg')).default,
     iconBackground: '#fff',
     downloadUrls: {
@@ -44,8 +39,6 @@ export const xdefiWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({
-      target: isInstalled ? (window.xfi?.ethereum as any) : undefined,
-    }),
+    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
   };
 };

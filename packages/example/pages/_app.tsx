@@ -6,8 +6,8 @@ import {
   DisclaimerComponent,
   Locale,
   RainbowKitProvider,
-  connectorsForWallets,
   darkTheme,
+  getDefaultConfig,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -60,9 +60,9 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { http, WagmiProvider, createConfig, useDisconnect } from 'wagmi';
+import { http, WagmiProvider, useDisconnect } from 'wagmi';
 import {
-  Chain,
+  type Chain,
   arbitrum,
   arbitrumSepolia,
   base,
@@ -141,53 +141,54 @@ const transports = {
   [zoraSepolia.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_SEPOLIA_HTTPS),
 };
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ projectId }),
-      bifrostWallet({ projectId }),
-      bitgetWallet({ projectId }),
-      bitskiWallet(),
-      clvWallet({ projectId }),
-      coin98Wallet({ projectId }),
-      coreWallet({ projectId }),
-      dawnWallet(),
-      desigWallet(),
-      enkryptWallet(),
-      foxWallet({ projectId }),
-      frameWallet(),
-      frontierWallet({ projectId }),
-      imTokenWallet({ projectId }),
-      ledgerWallet({ projectId }),
-      mewWallet(),
-      oktoWallet({ projectId }),
-      okxWallet({ projectId }),
-      omniWallet({ projectId }),
-      oneKeyWallet(),
-      phantomWallet(),
-      rabbyWallet(),
-      safeheronWallet(),
-      safepalWallet({ projectId }),
-      subWallet({ projectId }),
-      tahoWallet(),
-      talismanWallet(),
-      tokenPocketWallet({ projectId }),
-      tokenaryWallet(),
-      trustWallet({ projectId }),
-      uniswapWallet({ projectId }),
-      xdefiWallet(),
-      zealWallet(),
-      zerionWallet({ projectId }),
-    ],
-  },
-]);
-
-const config = createConfig({
+const config = getDefaultConfig({
+  appName: 'RainbowKit Demo',
+  projectId,
   chains,
-  connectors,
   transports,
+  multiInjectedProviderDiscovery: false,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet({ projectId }),
+        bifrostWallet({ projectId }),
+        bitgetWallet({ projectId }),
+        bitskiWallet(),
+        clvWallet({ projectId }),
+        coin98Wallet({ projectId }),
+        coreWallet({ projectId }),
+        dawnWallet(),
+        desigWallet(),
+        enkryptWallet(),
+        foxWallet({ projectId }),
+        frameWallet(),
+        frontierWallet({ projectId }),
+        imTokenWallet({ projectId }),
+        ledgerWallet({ projectId }),
+        mewWallet(),
+        oktoWallet({ projectId }),
+        okxWallet({ projectId }),
+        omniWallet({ projectId }),
+        oneKeyWallet(),
+        phantomWallet(),
+        rabbyWallet(),
+        safeheronWallet(),
+        safepalWallet({ projectId }),
+        subWallet({ projectId }),
+        tahoWallet(),
+        talismanWallet(),
+        tokenPocketWallet({ projectId }),
+        tokenaryWallet(),
+        trustWallet({ projectId }),
+        uniswapWallet({ projectId }),
+        xdefiWallet(),
+        zealWallet(),
+        zerionWallet({ projectId }),
+      ],
+    },
+  ],
 });
 
 const demoAppInfo = {

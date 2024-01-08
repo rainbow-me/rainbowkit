@@ -1,54 +1,23 @@
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-
-declare global {
-  interface Window {
-    evmproviders?: Record<string, any>;
-    avalanche?: any;
-  }
-}
 
 export interface CoreWalletOptions {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-function getCoreWalletInjectedProvider(): any {
-  const injectedProviderExist =
-    typeof window !== 'undefined' && typeof window.ethereum !== 'undefined';
-
-  // No injected providers exist.
-  if (!injectedProviderExist) {
-    return;
-  }
-
-  // Core implements EIP-5749 and creates the window.evmproviders
-  if (window['evmproviders']?.['core']) {
-    return window['evmproviders']?.['core'];
-  }
-
-  // Core was injected into window.avalanche.
-  if (window.avalanche) {
-    return window.avalanche;
-  }
-
-  // Core was injected into window.ethereum.
-  if (
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.isAvalanche === true
-  ) {
-    return window.ethereum;
-  }
-}
-
 export const coreWallet = ({
   projectId,
   walletConnectParameters,
 }: CoreWalletOptions): Wallet => {
-  const isCoreInjected = Boolean(getCoreWalletInjectedProvider());
-
+  const isCoreInjected = hasInjectedProvider({
+    namespace: 'avalanche',
+    flag: 'isAvalanche',
+  });
   const shouldUseWalletConnect = !isCoreInjected;
   return {
     id: 'core',
@@ -122,7 +91,8 @@ export const coreWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          target: getCoreWalletInjectedProvider(),
+          namespace: 'avalanche',
+          flag: 'isAvalanche',
         }),
   };
 };

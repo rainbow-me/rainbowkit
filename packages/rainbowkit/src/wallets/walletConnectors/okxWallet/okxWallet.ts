@@ -1,6 +1,9 @@
 import { isAndroid } from '../../../utils/isMobile';
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface OKXWalletOptions {
@@ -12,12 +15,7 @@ export const okxWallet = ({
   projectId,
   walletConnectParameters,
 }: OKXWalletOptions): Wallet => {
-  // `isOkxWallet` or `isOKExWallet` needs to be added to the wagmi `Ethereum` object
-  const isOKXInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    typeof window.okxwallet !== 'undefined';
-
+  const isOKXInjected = hasInjectedProvider({ namespace: 'okxwallet' });
   const shouldUseWalletConnect = !isOKXInjected;
 
   return {
@@ -101,11 +99,6 @@ export const okxWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({
-          target:
-            typeof window !== 'undefined'
-              ? (window as any).okxwallet
-              : undefined,
-        }),
+      : getInjectedConnector({ namespace: 'okxwallet' }),
   };
 };

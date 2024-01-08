@@ -1,6 +1,9 @@
 import { isIOS } from '../../../utils/isMobile';
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface ZerionWalletOptions {
@@ -12,12 +15,10 @@ export const zerionWallet = ({
   projectId,
   walletConnectParameters,
 }: ZerionWalletOptions): Wallet => {
-  const isZerionInjected =
-    typeof window !== 'undefined' &&
-    ((typeof window.ethereum !== 'undefined' && window.ethereum.isZerion) ||
-      // @ts-expect-error
-      typeof window.zerionWallet !== 'undefined');
-
+  const isZerionInjected = hasInjectedProvider({
+    namespace: 'zerionWallet',
+    flag: 'isZerion',
+  });
   const shouldUseWalletConnect = !isZerionInjected;
 
   const getUri = (uri: string) => {
@@ -102,11 +103,8 @@ export const zerionWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          target:
-            typeof window !== 'undefined'
-              ? // @ts-expect-error
-                window.zerionWallet || window.ethereum
-              : undefined,
+          namespace: 'zerionWallet',
+          flag: 'isZerion',
         }),
   };
 };

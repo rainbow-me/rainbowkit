@@ -1,5 +1,8 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 declare global {
   interface Window {
@@ -8,12 +11,6 @@ declare global {
 }
 
 export const tahoWallet = (): Wallet => {
-  const getProvider = () => {
-    const getTaho = (tally?: any) => (tally?.isTally ? tally : undefined);
-    if (typeof window === 'undefined') return;
-    return getTaho(window.tally);
-  };
-
   return {
     id: 'taho',
     name: 'Taho',
@@ -24,10 +21,7 @@ export const tahoWallet = (): Wallet => {
         'https://chrome.google.com/webstore/detail/taho/eajafomhmkipbjmfmhebemolkcicgfmd',
       browserExtension: 'https://taho.xyz',
     },
-    installed:
-      typeof window !== 'undefined' &&
-      typeof window.tally !== 'undefined' &&
-      window['tally'],
+    installed: hasInjectedProvider({ namespace: 'tally', flag: 'isTally' }),
     extension: {
       instructions: {
         learnMoreUrl:
@@ -52,7 +46,8 @@ export const tahoWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
-      target: getProvider(),
+      namespace: 'tally',
+      flag: 'isTally',
     }),
   };
 };

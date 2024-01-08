@@ -1,5 +1,8 @@
 import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface FoxWalletOptions {
@@ -11,11 +14,9 @@ export const foxWallet = ({
   projectId,
   walletConnectParameters,
 }: FoxWalletOptions): Wallet => {
-  const isFoxInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    typeof window.foxwallet !== 'undefined';
-
+  const isFoxInjected = hasInjectedProvider({
+    namespace: 'foxwallet.ethereum',
+  });
   const shouldUseWalletConnect = !isFoxInjected;
 
   return {
@@ -67,11 +68,6 @@ export const foxWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({
-          target:
-            typeof window !== 'undefined'
-              ? (window as any).foxwallet?.ethereum
-              : undefined,
-        }),
+      : getInjectedConnector({ namespace: 'foxwallet.ethereum' }),
   };
 };

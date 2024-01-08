@@ -1,21 +1,16 @@
 import { Wallet } from '../../Wallet';
-import { getDefaultInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const mewWallet = (): Wallet => {
-  const isMewWalletInjected =
-    typeof window !== 'undefined' &&
-    Boolean(
-      (
-        window.ethereum as typeof window.ethereum &
-          (undefined | { isMEWwallet?: boolean })
-      )?.isMEWwallet,
-    );
   return {
     id: 'mew',
     name: 'MEW wallet',
     iconUrl: async () => (await import('./mewWallet.svg')).default,
     iconBackground: '#fff',
-    installed: isMewWalletInjected,
+    installed: hasInjectedProvider({ flag: 'isMEWwallet' }),
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
@@ -23,6 +18,6 @@ export const mewWallet = (): Wallet => {
       mobile: 'https://mewwallet.com',
       qrCode: 'https://mewwallet.com',
     },
-    createConnector: getDefaultInjectedConnector(),
+    createConnector: getInjectedConnector({ flag: 'isMEWwallet' }),
   };
 };

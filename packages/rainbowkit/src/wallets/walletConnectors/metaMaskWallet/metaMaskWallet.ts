@@ -1,11 +1,9 @@
-import { createConnector } from 'wagmi';
-import { metaMask } from 'wagmi/connectors';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import {
-  RainbowKitWalletConnectParameters,
-  Wallet,
-  WalletDetailsParams,
-} from '../../Wallet';
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface MetaMaskWalletOptions {
@@ -68,10 +66,7 @@ export const metaMaskWallet = ({
   // to interact with wallets compatible with window.ethereum.
   // The connector's getProvider will instead favor the real MetaMask
   // in window.providers scenarios with multiple wallets injected.
-  const isMetaMaskInjected =
-    typeof window !== 'undefined' &&
-    typeof window.ethereum !== 'undefined' &&
-    (window.ethereum.providers?.some(isMetaMask) || window.ethereum.isMetaMask);
+  const isMetaMaskInjected = hasInjectedProvider({ flag: 'isMetaMask' });
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
   const getUri = (uri: string) => {
@@ -165,11 +160,11 @@ export const metaMaskWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : (walletDetails: WalletDetailsParams) => {
-          return createConnector((config) => ({
-            ...metaMask()(config),
-            ...walletDetails,
-          }));
-        },
+      : getInjectedConnector({
+          target:
+            typeof window !== 'undefined'
+              ? window.ethereum?.providers?.find(isMetaMask) ?? window.ethereum
+              : undefined,
+        }),
   };
 };

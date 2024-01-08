@@ -1,5 +1,8 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const desigWallet = (): Wallet => {
   return {
@@ -7,8 +10,7 @@ export const desigWallet = (): Wallet => {
     name: 'Desig Wallet',
     iconUrl: async () => (await import('./desigWallet.svg')).default,
     iconBackground: '#ffffff',
-    installed:
-      typeof window !== 'undefined' && !!(window as any)?.desig?.ethereum,
+    installed: hasInjectedProvider({ namespace: 'desig.ethereum' }),
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.desig.app',
       ios: 'https://apps.apple.com/app/desig-wallet/id6450106028',
@@ -40,10 +42,7 @@ export const desigWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
-      target:
-        typeof window !== 'undefined'
-          ? (window as any).desig?.ethereum
-          : undefined,
+      namespace: 'desig.ethereum',
     }),
   };
 };

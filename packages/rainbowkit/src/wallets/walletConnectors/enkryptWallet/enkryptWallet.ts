@@ -1,26 +1,15 @@
 import type { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-
-declare global {
-  interface Window {
-    enkrypt: {
-      providers: {
-        ethereum: any;
-      };
-    };
-  }
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const enkryptWallet = (): Wallet => {
-  const isEnkryptInjected =
-    typeof window !== 'undefined' &&
-    typeof window.enkrypt !== 'undefined' &&
-    !!window?.enkrypt?.providers?.ethereum;
   return {
     id: 'enkrypt',
     name: 'Enkrypt Wallet',
     rdns: 'com.enkrypt',
-    installed: isEnkryptInjected,
+    installed: hasInjectedProvider({ namespace: 'enkrypt.providers.ethereum' }),
     iconUrl: async () => (await import('./enkryptWallet.svg')).default,
     iconBackground: '#FFFFFF',
     downloadUrls: {
@@ -59,10 +48,7 @@ export const enkryptWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
-      target:
-        typeof window !== 'undefined'
-          ? window?.enkrypt?.providers?.ethereum
-          : undefined,
+      namespace: 'enkrypt.providers.ethereum',
     }),
   };
 };

@@ -1,5 +1,8 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const phantomWallet = (): Wallet => {
   return {
@@ -8,9 +11,7 @@ export const phantomWallet = (): Wallet => {
     rdns: 'app.phantom',
     iconUrl: async () => (await import('./phantomWallet.svg')).default,
     iconBackground: '#9A8AEE',
-    installed:
-      typeof window !== 'undefined' &&
-      !!((window as any).phantom as any)?.ethereum,
+    installed: hasInjectedProvider({ namespace: 'phantom.ethereum' }),
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=app.phantom',
       ios: 'https://apps.apple.com/app/phantom-solana-wallet/1598432977',
@@ -47,10 +48,7 @@ export const phantomWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
-      target:
-        typeof window !== 'undefined'
-          ? ((window as any).phantom as any)?.ethereum
-          : undefined,
+      namespace: 'phantom.ethereum',
     }),
   };
 };

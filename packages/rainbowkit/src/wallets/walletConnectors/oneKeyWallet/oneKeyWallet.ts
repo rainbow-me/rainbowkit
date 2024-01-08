@@ -1,24 +1,17 @@
 import { Wallet } from '../../Wallet';
-import { getInjectedConnector } from '../../getInjectedConnector';
-
-declare global {
-  interface Window {
-    $onekey: any;
-  }
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
 export const oneKeyWallet = (): Wallet => {
-  const provider = typeof window !== 'undefined' && window['$onekey']?.ethereum;
-  const isOnekeyInjected = Boolean(provider);
-
   return {
     id: 'onekey',
     name: 'OneKey',
     iconAccent: '#00B812',
     iconBackground: '#fff',
     iconUrl: async () => (await import('./oneKeyWallet.svg')).default,
-    installed: isOnekeyInjected,
-
+    installed: hasInjectedProvider({ namespace: '$onekey.ethereum' }),
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=so.onekey.app.wallet',
@@ -58,7 +51,7 @@ export const oneKeyWallet = (): Wallet => {
     },
 
     createConnector: getInjectedConnector({
-      target: provider,
+      namespace: '$onekey.ethereum',
     }),
   };
 };

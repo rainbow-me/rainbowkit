@@ -6,10 +6,16 @@ import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface CoinbaseWalletOptions {
   appName: string;
+  appIcon?: string;
 }
 
-export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
-  const isCoinbaseWalletInjected = hasInjectedProvider('isCoinbaseWallet');
+export const coinbaseWallet = ({
+  appName,
+  appIcon,
+}: CoinbaseWalletOptions): Wallet => {
+  const isCoinbaseWalletInjected = hasInjectedProvider({
+    flag: 'isCoinbaseWallet',
+  });
 
   const getUri = (uri: string) => uri;
   const ios = isIOS();
@@ -94,7 +100,11 @@ export const coinbaseWallet = ({ appName }: CoinbaseWalletOptions): Wallet => {
         }),
     createConnector: (walletDetails: WalletDetailsParams) =>
       createConnector((config) => ({
-        ...coinbaseWagmiWallet({ appName, headlessMode: true })(config),
+        ...coinbaseWagmiWallet({
+          appName,
+          appLogoUrl: appIcon,
+          headlessMode: true,
+        })(config),
         ...walletDetails,
       })),
   };

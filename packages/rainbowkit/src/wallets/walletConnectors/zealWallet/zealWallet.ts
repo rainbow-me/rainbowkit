@@ -1,6 +1,6 @@
 import { Wallet } from '../../Wallet';
 import {
-  getDefaultInjectedConnector,
+  getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
@@ -9,7 +9,7 @@ export const zealWallet = (): Wallet => ({
   name: 'Zeal',
   iconUrl: async () => (await import('./zealWallet.svg')).default,
   iconBackground: '#fff0',
-  installed: hasInjectedProvider('isZeal'),
+  installed: hasInjectedProvider({ flag: 'isZeal' }),
   downloadUrls: {
     browserExtension: 'https://zeal.app',
   },
@@ -35,5 +35,5 @@ export const zealWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getDefaultInjectedConnector(),
+  createConnector: getInjectedConnector({ flag: 'isZeal' }),
 });

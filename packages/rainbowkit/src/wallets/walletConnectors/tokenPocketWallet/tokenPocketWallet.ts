@@ -1,6 +1,9 @@
 import { isMobile } from '../../../utils/isMobile';
 import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
-import { getDefaultInjectedConnector } from '../../getInjectedConnector';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export interface TokenPocketWalletOptions {
@@ -12,9 +15,7 @@ export const tokenPocketWallet = ({
   projectId,
   walletConnectParameters,
 }: TokenPocketWalletOptions): Wallet => {
-  const isTokenPocketInjected =
-    typeof window !== 'undefined' && window.ethereum?.isTokenPocket === true;
-
+  const isTokenPocketInjected = hasInjectedProvider({ flag: 'isTokenPocket' });
   const shouldUseWalletConnect = !isTokenPocketInjected;
 
   const getUri = (uri: string) => {
@@ -100,6 +101,6 @@ export const tokenPocketWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getDefaultInjectedConnector(),
+      : getInjectedConnector({ flag: 'isTokenPocket' }),
   };
 };

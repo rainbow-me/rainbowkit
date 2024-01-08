@@ -10,12 +10,6 @@ import {
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-declare global {
-  interface Window {
-    trustwallet: Window['ethereum'];
-  }
-}
-
 export interface TrustWalletOptions {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
@@ -26,8 +20,8 @@ export const trustWallet = ({
   walletConnectParameters,
 }: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
-    ? hasInjectedProvider('isTrust')
-    : hasInjectedProvider('isTrustWallet');
+    ? hasInjectedProvider({ flag: 'isTrust' })
+    : hasInjectedProvider({ flag: 'isTrustWallet' });
   const shouldUseWalletConnect = !isTrustWalletInjected;
 
   const getUriMobile = (uri: string) => {
