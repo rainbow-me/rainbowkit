@@ -53,7 +53,6 @@ export type Theme =
     };
 
 export interface RainbowKitProviderProps {
-  chains: readonly [RainbowKitChain, ...RainbowKitChain[]];
   initialChain?: RainbowKitChain | number;
   id?: string;
   children: ReactNode;
@@ -75,7 +74,6 @@ const defaultTheme = lightTheme();
 export function RainbowKitProvider({
   appInfo,
   avatar,
-  chains,
   children,
   coolMode = false,
   id,
@@ -106,7 +104,7 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
+    <RainbowKitChainProvider initialChain={initialChain}>
       <WalletButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>

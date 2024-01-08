@@ -1,7 +1,6 @@
 import { RainbowKitProvider, WalletButton } from '@rainbow-me/rainbowkit';
 import type { RainbowKitProviderProps } from '@rainbow-me/rainbowkit/dist/components/RainbowKitProvider/RainbowKitProvider';
 import React from 'react';
-import { mainnet } from 'wagmi/chains';
 
 export function RainbowButtonProvider({
   children,
@@ -10,12 +9,7 @@ export function RainbowButtonProvider({
   RainbowKitProviderProps,
   'chains' | 'avatar' | 'initialChain' | 'modalSize' | 'showRecentTransactions'
 >) {
-  return (
-    // Wagmi requires 'chains' as a tuple type with at least one chain
-    <RainbowKitProvider chains={[mainnet]} {...options}>
-      {children}
-    </RainbowKitProvider>
-  );
+  return <RainbowKitProvider {...options}>{children}</RainbowKitProvider>;
 }
 
 export const RainbowButton = () => {

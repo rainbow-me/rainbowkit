@@ -10,7 +10,6 @@ import {
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
-import { chains } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
@@ -146,7 +145,6 @@ export function Playground() {
         </Wrapper>
 
         <RainbowKitProvider
-          chains={chains}
           id="playground"
           modalSize={modalSize}
           theme={selectedTheme}

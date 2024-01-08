@@ -321,7 +321,6 @@ function RainbowKitApp({
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
-        chains={chains}
         locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
