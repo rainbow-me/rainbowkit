@@ -16,7 +16,6 @@ For example, you can choose to only show Rainbow along with generic fallback wal
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
-  metamaskWallet,
   rainbowWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -25,7 +24,6 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      metamaskWallet({ projectId }),
       rainbowWallet({ projectId }),
       walletConnectWallet({ projectId }),
     ],

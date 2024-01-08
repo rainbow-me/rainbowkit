@@ -334,10 +334,10 @@ Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [
 Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
 
 ```ts
-const projectId = "YOUR_PROJECT_ID";
+const projectId = 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
-  appName: "My RainbowKit App",
+  appName: 'My RainbowKit App',
   projectId,
   chains,
 });
@@ -345,7 +345,7 @@ const { wallets } = getDefaultWallets({
 const connectors = connectorsForWallets([
   ...wallets,
   {
-    groupName: "Other",
+    groupName: 'Other',
     wallets: [
       argentWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),

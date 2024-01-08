@@ -13,7 +13,7 @@ The `RainbowButton` component is the simplest way to add support for Rainbow Wal
 The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button@beta wagmi@2 viem@2
 ```
 
 **2. Configure with Wagmi and install the RainbowButton**
@@ -22,10 +22,10 @@ Pass an instance of the `rainbowConnector` to your Wagmi connector list, and wra
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, rainbowConnector } from "@rainbow-me/rainbow-button";
+import { RainbowButtonProvider, RainbowButton, rainbowConnector } from "@rainbow-me/rainbow-button";
 
-const wagmiClient = createConfig({
-  connectors: [rainbowConnector({ chains, projectId })],
+const config = createConfig({
+  connectors: [rainbowConnector({ projectId })],
   publicClient
 });
 
