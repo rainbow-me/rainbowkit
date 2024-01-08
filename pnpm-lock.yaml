@@ -222,10 +222,10 @@ importers:
         specifier: '>=17'
         version: 18.2.0(react@18.2.0)
       viem:
-        specifier: ^2.0.3
+        specifier: ^2.0.0
         version: 2.0.3(typescript@5.0.4)
       wagmi:
-        specifier: ^2.0.3
+        specifier: ^2.0.0
         version: 2.0.3(@tanstack/react-query@5.17.9)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.3)
 
   packages/rainbowkit:
@@ -258,10 +258,10 @@ importers:
         specifier: ^1.0.37
         version: 1.0.37
       viem:
-        specifier: ^2.0.3
+        specifier: ^2.0.0
         version: 2.0.3(typescript@5.0.4)
       wagmi:
-        specifier: ^2.0.3
+        specifier: ^2.0.0
         version: 2.0.3(@tanstack/react-query@5.17.9)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.0.4)(viem@2.0.3)
     devDependencies:
       '@testing-library/jest-dom':
