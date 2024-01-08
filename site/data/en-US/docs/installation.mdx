@@ -12,11 +12,11 @@ description: Get up and running with RainbowKit
 You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
 
 ```bash
-npm init @rainbow-me/rainbowkit@beta
+npm init @rainbow-me/rainbowkit@latest
 # or
-pnpm create @rainbow-me/rainbowkit@beta
+pnpm create @rainbow-me/rainbowkit@latest
 # or
-yarn create @rainbow-me/rainbowkit@beta
+yarn create @rainbow-me/rainbowkit
 ```
 
 This will prompt you for a project name, generate a new directory containing a boilerplate project, and install all required dependencies.
@@ -25,10 +25,10 @@ Alternatively, you can manually integrate RainbowKit into your existing project.
 
 ### Manual setup
 
-Install RainbowKit and its peer dependencies, [Wagmi v2](https://wagmi.sh/) and [Viem](https://viem.sh).
+Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh).
 
 ```bash
-npm install @rainbow-me/rainbowkit@beta wagmi@2 viem@2.
+npm install @rainbow-me/rainbowkit wagmi viem
 ```
 
 > Note: RainbowKit is a [React](https://reactjs.org/) library.
@@ -44,7 +44,7 @@ import {
   getDefaultWallets,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { http, createConfig, WagmiProvider } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -53,6 +53,8 @@ import {
   base,
   zora,
 } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 ```
 
 #### Configure
@@ -63,51 +65,44 @@ Configure your desired chains and generate the required connectors. You will als
 
 ```tsx line=4-99
 ...
-import { http, createConfig } from 'wagmi';
-import type { Chain } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
-const chains: readonly [Chain, ...Chain[]] = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-];
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, base, zora],
+  [
+    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
+    publicProvider()
+  ]
+);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
+  chains
 });
 
-const config = createConfig({
-  chains,
+const wagmiConfig = createConfig({
+  autoConnect: true,
   connectors,
-  transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [base.id]: http(),
-    [zora.id]: http(),
-  }
-});
+  publicClient
+})
 ```
 
-[Read more about configuring chains & config with `wagmi v2`](https://wagmi.sh/core/getting-started#create-config).
+[Read more about configuring chains & providers with `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
 
 #### Wrap providers
 
-Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider).
+Wrap your application with `RainbowKitProvider` and [`WagmiConfig`](https://wagmi.sh/docs/provider).
 
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         {/* Your App */}
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 ```

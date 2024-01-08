@@ -7,17 +7,21 @@ description: Create a custom chain
 
 ## Create a custom chain
 
-You can use the `Chain` type to help you create a custom chain.
+You can use the `Chain` type to help you create a custom chain. Then, pass that to the [`configureChains` function](https://wagmi.sh/docs/providers/configuring-chains).
 
 For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
 import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { createConfig, WagmiProvider } from 'wagmi';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
 
 const avalanche: Chain = {
   id: 43_114,
   name: 'Avalanche',
+  network: 'avalanche',
+  iconUrl: 'https://example.com/icon.svg',
+  iconBackground: '#fff',
   nativeCurrency: {
     decimals: 18,
     name: 'Avalanche',
@@ -40,31 +44,32 @@ const avalanche: Chain = {
   testnet: false,
 };
 
+const { provider, chains } = configureChains(
+  [avalanche],
+  [publicProvider()]
+);
 
 const { connectors } = getDefaultWallets({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
+  chains,
 });
 
-const chains: readonly [Chain, ...Chain[]] = [avalanche];
-
-const config = createConfig({
-  chains,
+const wagmiConfig = createConfig({
+  autoConnect: true,
   connectors,
-  transports: {
-    [avalanche.id]: http(),
-  },
+  provider,
 });
 
 const App = () => {
   return (
-    <WagmiProvider config={config}>
+    <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
         {/* Your App */}
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 };
 ```
 
-Learn more about [configuring chains](https://wagmi.sh/core/api/chains#create-chain).
+Learn more about [configuring chains](https://wagmi.sh/docs/providers/configuring-chains).
