@@ -50,6 +50,8 @@ const { wallets } = getDefaultWallets({
 
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
+  appDescription: 'RainbowKit Demo App',
+  appUrl: 'https://www.rainbowkit.com',
   projectId,
   chains,
   transports,

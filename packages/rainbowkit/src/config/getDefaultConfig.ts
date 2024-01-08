@@ -25,9 +25,8 @@ type _transports = Record<_chains[number]['id'], Transport>;
 
 interface GetDefaultConfigParameters {
   appName: string;
-  appDescription?: string;
-  appUrl?: string;
-  icons?: string[];
+  appDescription: string;
+  appUrl: string;
   appIcon?: string;
   chains: readonly [Chain, ...Chain[]];
   wallets?: WalletList;
@@ -39,7 +38,6 @@ export const getDefaultConfig = ({
   appName,
   appDescription,
   appUrl,
-  icons,
   appIcon,
   chains,
   wallets,
@@ -52,9 +50,9 @@ export const getDefaultConfig = ({
   >): WagmiProviderProps['config'] => {
   const metadata: RainbowKitWalletConnectParameters['metadata'] = {
     name: appName,
-    description: appDescription ?? '',
-    url: appUrl ?? '',
-    icons: icons ?? [],
+    description: appDescription,
+    url: appUrl,
+    icons: [...(appIcon ? [appIcon] : [])],
   };
 
   const connectors = connectorsForWallets(

@@ -143,7 +143,10 @@ const transports = {
 
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
+  appDescription: 'RainobwKit Demo App',
+  appUrl: 'https://www.rainbowkit.com',
   projectId,
+  appIcon: 'https://www.rainbowkit.com/rainbow.svg',
   chains,
   transports,
   wallets: [
