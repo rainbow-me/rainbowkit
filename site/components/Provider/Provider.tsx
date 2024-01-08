@@ -10,7 +10,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { http, WagmiProvider } from 'wagmi';
 import {
-  Chain,
   arbitrum,
   base,
   bsc,
@@ -19,16 +18,6 @@ import {
   polygon,
   zora,
 } from 'wagmi/chains';
-
-export const chains: readonly [Chain, ...Chain[]] = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  bsc,
-];
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
@@ -51,7 +40,7 @@ const { wallets } = getDefaultWallets({
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
-  chains,
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
   transports,
   wallets: [
     ...wallets,

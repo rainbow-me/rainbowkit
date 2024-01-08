@@ -62,7 +62,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { http, WagmiProvider, useDisconnect } from 'wagmi';
 import {
-  type Chain,
   arbitrum,
   arbitrumSepolia,
   base,
@@ -91,29 +90,6 @@ const { wallets } = getDefaultWallets({
   appName: 'RainbowKit demo',
   projectId,
 });
-
-const chains: readonly [Chain, ...Chain[]] = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  bsc,
-  zkSync,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [
-        goerli,
-        sepolia,
-        holesky,
-        polygonMumbai,
-        optimismSepolia,
-        arbitrumSepolia,
-        baseSepolia,
-        zoraSepolia,
-      ]
-    : []),
-];
 
 // If any of the alchemy HTTPS URLs are undefined, wagmi will default
 // to using the first available RPC HTTPS URL from the chain.
@@ -144,7 +120,28 @@ const transports = {
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
-  chains,
+  chains: [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    zora,
+    bsc,
+    zkSync,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [
+          goerli,
+          sepolia,
+          holesky,
+          polygonMumbai,
+          optimismSepolia,
+          arbitrumSepolia,
+          baseSepolia,
+          zoraSepolia,
+        ]
+      : []),
+  ],
   transports,
   wallets: [
     ...wallets,
@@ -491,7 +488,7 @@ function RainbowKitApp({
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...chains].map((chain) => (
+                          {[undefined, ...config.chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
