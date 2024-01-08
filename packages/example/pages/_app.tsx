@@ -146,7 +146,6 @@ const config = getDefaultConfig({
   projectId,
   chains,
   transports,
-  multiInjectedProviderDiscovery: false,
   wallets: [
     ...wallets,
     {
