@@ -1,4 +1,4 @@
-import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWalletList } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -32,10 +32,7 @@ const transports = {
   [bsc.id]: http(),
 };
 
-const { walletList } = getDefaultWallets({
-  appName: 'rainbowkit.com',
-  projectId,
-});
+const walletList = getDefaultWalletList();
 
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',

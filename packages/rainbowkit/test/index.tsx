@@ -15,7 +15,8 @@ import {
 import { MockParameters, mock } from 'wagmi/connectors';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
+import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
+import { getDefaultWalletList } from '../src/wallets/getDefaultWalletList';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -39,10 +40,7 @@ export function renderWithProviders(
 ) {
   const supportedChains = options?.chains || defaultChains;
 
-  const { connectors } = getDefaultWallets({
-    appName: 'My RainbowKit App',
-    projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
-  });
+  const walletList = getDefaultWalletList();
 
   const config = createConfig({
     chains: supportedChains,
@@ -59,7 +57,11 @@ export function renderWithProviders(
             ],
           }),
         ]
-      : connectors,
+      : connectorsForWallets({
+          appName: 'rainbowkit.com',
+          projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
+          walletList,
+        }),
     transports: {
       [mainnet.id]: http(),
       [polygon.id]: http(),
@@ -75,11 +77,9 @@ export function renderWithProviders(
     wrapper: ({ children }) => (
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider
-            chains={supportedChains}
-            children={children}
-            {...options?.props}
-          />
+          <RainbowKitProvider {...options?.props}>
+            {children}
+          </RainbowKitProvider>
         </QueryClientProvider>
       </WagmiProvider>
     ),
