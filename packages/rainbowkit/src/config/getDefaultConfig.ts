@@ -1,10 +1,7 @@
 import { Transport } from 'viem';
-import {
-  CreateConfigParameters,
-  WagmiProviderProps,
-  createConfig,
-} from 'wagmi';
-import type { Chain } from 'wagmi/chains';
+import { http } from 'wagmi';
+import { WagmiProviderProps, createConfig } from 'wagmi';
+import { type Chain } from 'wagmi/chains';
 import type { WalletList } from '../wallets/Wallet';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
@@ -15,37 +12,45 @@ import {
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
-type _chains = readonly [Chain, ...Chain[]];
+export type _chains = readonly [Chain, ...Chain[]];
 
 // Define the '_transports' type as a Record
 // It maps each 'Chain' id to a 'Transport'
-type _transports = Record<_chains[number]['id'], Transport>;
+export type _transports = Record<_chains[number]['id'], Transport>;
 
 interface GetDefaultConfigParameters {
   appName: string;
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  chains: readonly [Chain, ...Chain[]];
   walletList?: WalletList;
   projectId: string;
-  transports: _transports;
+  chains: _chains;
+  transports?: _transports;
+  multiInjectedProviderDiscovery?: boolean;
 }
+
+const createDefaultTransports = (chains: _chains): _transports => {
+  const transportsObject = chains.reduce((acc: _transports, chain) => {
+    const key = chain.id as keyof _transports;
+    acc[key] = http() as _transports[keyof _transports]; // Type assertion here
+    return acc;
+  }, {} as _transports);
+
+  return transportsObject;
+};
 
 export const getDefaultConfig = ({
   appName,
   appDescription,
   appUrl,
   appIcon,
-  chains,
   walletList,
   projectId,
-  ...wagmiOptions
-}: GetDefaultConfigParameters &
-  CreateConfigParameters<
-    _chains,
-    _transports
-  >): WagmiProviderProps['config'] => {
+  chains,
+  multiInjectedProviderDiscovery = true,
+  transports,
+}: GetDefaultConfigParameters): WagmiProviderProps['config'] => {
   const metadata = computeWalletConnectMetaData({
     appName,
     appDescription,
@@ -73,9 +78,14 @@ export const getDefaultConfig = ({
     walletConnectParameters: { metadata },
   });
 
+  if (!transports) {
+    transports = createDefaultTransports(chains);
+  }
+
   return createConfig({
-    chains,
     connectors,
-    ...wagmiOptions,
+    chains,
+    transports,
+    multiInjectedProviderDiscovery,
   });
 };
