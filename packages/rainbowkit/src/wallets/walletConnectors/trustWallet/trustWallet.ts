@@ -1,7 +1,7 @@
 import { isMobile } from '../../../utils/isMobile';
 import {
+  DefaultWalletOptions,
   InstructionStepName,
-  RainbowKitWalletConnectParameters,
   Wallet,
 } from '../../Wallet';
 import {
@@ -10,10 +10,7 @@ import {
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface TrustWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type TrustWalletOptions = DefaultWalletOptions;
 
 export const trustWallet = ({
   projectId,

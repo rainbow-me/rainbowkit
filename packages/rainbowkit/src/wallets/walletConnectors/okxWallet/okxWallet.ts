@@ -1,15 +1,12 @@
 import { isAndroid } from '../../../utils/isMobile';
-import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface OKXWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type OKXWalletOptions = DefaultWalletOptions;
 
 export const okxWallet = ({
   projectId,

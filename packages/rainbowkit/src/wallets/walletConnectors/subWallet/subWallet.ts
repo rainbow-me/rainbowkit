@@ -1,6 +1,6 @@
 import {
+  DefaultWalletOptions,
   InstructionStepName,
-  RainbowKitWalletConnectParameters,
   Wallet,
 } from '../../Wallet';
 import {
@@ -9,10 +9,7 @@ import {
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface SubWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type SubWalletOptions = DefaultWalletOptions;
 
 export const subWallet = ({
   projectId,

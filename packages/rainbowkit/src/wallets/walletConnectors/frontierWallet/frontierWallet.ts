@@ -1,15 +1,13 @@
 import { isAndroid } from '../../../utils/isMobile';
-import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { DefaultWalletOptions } from './../../Wallet';
 
-export interface FrontierWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type FrontierWalletOptions = DefaultWalletOptions;
 
 export const frontierWallet = ({
   projectId,

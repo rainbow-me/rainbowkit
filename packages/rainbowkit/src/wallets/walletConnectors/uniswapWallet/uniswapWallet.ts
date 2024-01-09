@@ -1,10 +1,8 @@
-import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { DefaultWalletOptions } from './../../Wallet';
 
-export interface UniswapWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type UniswapWalletOptions = DefaultWalletOptions;
 
 export const uniswapWallet = ({
   projectId,

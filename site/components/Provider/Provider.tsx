@@ -32,7 +32,7 @@ const transports = {
   [bsc.id]: http(),
 };
 
-const { wallets } = getDefaultWallets({
+const { walletList } = getDefaultWallets({
   appName: 'rainbowkit.com',
   projectId,
 });
@@ -42,16 +42,16 @@ const config = getDefaultConfig({
   projectId,
   chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
   transports,
-  wallets: [
-    ...wallets,
+  walletList: [
+    ...walletList,
     {
       groupName: 'More',
       wallets: [
-        argentWallet({ projectId }),
-        trustWallet({ projectId }),
-        omniWallet({ projectId }),
-        imTokenWallet({ projectId }),
-        ledgerWallet({ projectId }),
+        argentWallet,
+        trustWallet,
+        omniWallet,
+        imTokenWallet,
+        ledgerWallet,
       ],
     },
   ],

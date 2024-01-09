@@ -1,14 +1,11 @@
-import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface Coin98WalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type Coin98WalletOptions = DefaultWalletOptions;
 
 export const coin98Wallet = ({
   projectId,

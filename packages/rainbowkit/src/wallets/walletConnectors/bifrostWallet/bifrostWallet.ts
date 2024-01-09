@@ -1,15 +1,13 @@
 import { isAndroid } from '../../../utils/isMobile';
-import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { DefaultWalletOptions } from './../../Wallet';
 
-export interface BifrostWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type BifrostWalletOptions = DefaultWalletOptions;
 
 export const bifrostWallet = ({
   projectId,

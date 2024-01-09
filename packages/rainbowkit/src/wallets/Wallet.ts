@@ -1,5 +1,7 @@
 import { Connector, CreateConnectorFn } from 'wagmi';
 import { WalletConnectParameters } from 'wagmi/connectors';
+import { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
+import { WalletConnectWalletOptions } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export type InstructionStepName =
   | 'install'
@@ -75,7 +77,23 @@ export type Wallet = {
   createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
 } & RainbowKitConnector;
 
-export type WalletList = { groupName: string; wallets: Wallet[] }[];
+export interface DefaultWalletOptions {
+  projectId: string;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
+}
+
+export type CreateWalletFn = (
+  // These parameters will be used when creating a wallet. If injected
+  // wallet doesn't have parameters it will just ignore these passed in parameters
+  createWalletParams: CoinbaseWalletOptions &
+    Omit<WalletConnectWalletOptions, 'projectId'> &
+    DefaultWalletOptions,
+) => Wallet;
+
+export type WalletList = {
+  groupName: string;
+  wallets: CreateWalletFn[];
+}[];
 
 // We don't want users to pass in `showQrModal` or `projectId`.
 // Those two values are handled by rainbowkit. The rest of WalletConnect

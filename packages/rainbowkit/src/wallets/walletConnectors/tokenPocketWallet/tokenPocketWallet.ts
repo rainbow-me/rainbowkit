@@ -1,15 +1,12 @@
 import { isMobile } from '../../../utils/isMobile';
-import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface TokenPocketWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type TokenPocketWalletOptions = DefaultWalletOptions;
 
 export const tokenPocketWallet = ({
   projectId,

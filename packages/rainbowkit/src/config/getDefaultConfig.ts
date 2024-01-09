@@ -5,10 +5,8 @@ import {
   createConfig,
 } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
-import type {
-  RainbowKitWalletConnectParameters,
-  WalletList,
-} from '../wallets/Wallet';
+import type { WalletList } from '../wallets/Wallet';
+import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import {
   coinbaseWallet,
@@ -29,7 +27,7 @@ interface GetDefaultConfigParameters {
   appUrl?: string;
   appIcon?: string;
   chains: readonly [Chain, ...Chain[]];
-  wallets?: WalletList;
+  walletList?: WalletList;
   projectId: string;
   transports: _transports;
 }
@@ -40,7 +38,7 @@ export const getDefaultConfig = ({
   appUrl,
   appIcon,
   chains,
-  wallets,
+  walletList,
   projectId,
   ...wagmiOptions
 }: GetDefaultConfigParameters &
@@ -48,32 +46,32 @@ export const getDefaultConfig = ({
     _chains,
     _transports
   >): WagmiProviderProps['config'] => {
-  const metadata: RainbowKitWalletConnectParameters['metadata'] = {
-    name: appName,
-    description: appDescription ?? appName,
-    url: appUrl ?? (typeof window !== 'undefined' ? window.location.href : ''),
-    icons: [...(appIcon ? [appIcon] : [])],
-  };
+  const metadata = computeWalletConnectMetaData({
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  });
 
-  const connectors = connectorsForWallets(
-    wallets || [
+  const connectors = connectorsForWallets({
+    projectId,
+    walletList: walletList || [
       {
         groupName: 'Popular',
         wallets: [
-          rainbowWallet({
-            projectId,
-            walletConnectParameters: { metadata },
-          }),
-          coinbaseWallet({ appName, appIcon }),
-          metaMaskWallet({
-            projectId,
-            walletConnectParameters: { metadata },
-          }),
-          walletConnectWallet({ projectId, options: { metadata } }),
+          rainbowWallet,
+          coinbaseWallet,
+          metaMaskWallet,
+          walletConnectWallet,
         ],
       },
     ],
-  );
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+    walletConnectParameters: { metadata },
+  });
 
   return createConfig({
     chains,

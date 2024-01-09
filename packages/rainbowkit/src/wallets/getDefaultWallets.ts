@@ -1,6 +1,7 @@
 import type { CreateConnectorFn } from 'wagmi';
 import type { WalletList } from './Wallet';
 import { connectorsForWallets } from './connectorsForWallets';
+import { mewWallet } from './walletConnectors';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
@@ -14,22 +15,27 @@ export const getDefaultWallets = ({
   projectId: string;
 }): {
   connectors: CreateConnectorFn[];
-  wallets: WalletList;
+  walletList: WalletList;
 } => {
-  const wallets: WalletList = [
+  const walletList: WalletList = [
     {
       groupName: 'Popular',
       wallets: [
-        rainbowWallet({ projectId }),
-        coinbaseWallet({ appName }),
-        metaMaskWallet({ projectId }),
-        walletConnectWallet({ projectId }),
+        mewWallet,
+        rainbowWallet,
+        coinbaseWallet,
+        metaMaskWallet,
+        walletConnectWallet,
       ],
     },
   ];
 
   return {
-    connectors: connectorsForWallets(wallets),
-    wallets,
+    connectors: connectorsForWallets({
+      projectId,
+      appName,
+      walletList,
+    }),
+    walletList,
   };
 };

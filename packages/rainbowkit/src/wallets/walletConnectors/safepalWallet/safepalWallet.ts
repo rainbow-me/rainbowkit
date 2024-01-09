@@ -1,6 +1,6 @@
 import {
+  DefaultWalletOptions,
   InstructionStepName,
-  RainbowKitWalletConnectParameters,
   Wallet,
 } from '../../Wallet';
 import {
@@ -9,10 +9,7 @@ import {
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface SafepalWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type SafepalWalletOptions = DefaultWalletOptions;
 
 export const safepalWallet = ({
   projectId,

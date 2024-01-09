@@ -1,7 +1,13 @@
 import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import type { Wallet, WalletDetailsParams, WalletList } from './Wallet';
+import type {
+  RainbowKitWalletConnectParameters,
+  Wallet,
+  WalletDetailsParams,
+  WalletList,
+} from './Wallet';
+import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -9,45 +15,60 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-/*
-  Assemble a list of low-level connectors for use with the
-  `WalletButton` and `RainbowButton` components in custom implementations.
-*/
-export function connectorsForWallets(
-  wallets: Wallet[] | WalletList,
-): CreateConnectorFn[];
-
-/*
-  Overload implementation for `connectorsForWallets`.
-  1. Returns a `connectors` function that will then return a Connectors array
-  2. Returns a prepared Connectors array stuffed with dummy WalletList data
-*/
-export function connectorsForWallets(walletList: any) {
-  if ('groupName' in walletList[0]) {
-    return _connectorsForWallets(walletList);
-  }
-  return _connectorsForWallets([
-    {
-      groupName: '',
-      wallets: walletList as Wallet[],
-    },
-  ]);
+interface ConnectorsForWalletsParameters {
+  projectId: string;
+  walletList: WalletList;
+  appName: string;
+  appDescription?: string;
+  appUrl?: string;
+  appIcon?: string;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-export const _connectorsForWallets = (
-  walletList: WalletList,
-): CreateConnectorFn[] => {
+export const connectorsForWallets = ({
+  projectId,
+  walletList,
+  walletConnectParameters,
+  appName,
+  appDescription,
+  appUrl,
+  appIcon,
+}: ConnectorsForWalletsParameters): CreateConnectorFn[] => {
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];
   const visibleWallets: WalletListItem[] = [];
   const potentiallyHiddenWallets: WalletListItem[] = [];
 
+  const walletConnectMetaData = computeWalletConnectMetaData({
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  });
+
   // biome-ignore lint/complexity/noForEach: TODO
   walletList.forEach(({ groupName, wallets }, groupIndex) => {
     // biome-ignore lint/complexity/noForEach: TODO
-    wallets.forEach((wallet) => {
+    wallets.forEach((createWallet) => {
       index++;
+
+      const wallet = createWallet({
+        projectId,
+        appName,
+        appIcon,
+        // `option` is being used only for `walletConnectWallet` wallet
+        options: {
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+        },
+        // Every other wallet that supports walletConnect flow and is not
+        // `walletConnectWallet` wallet will have `walletConnectParameters` property
+        walletConnectParameters: {
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+        },
+      });
 
       // guard against non-hex values for `iconAccent`
       if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {

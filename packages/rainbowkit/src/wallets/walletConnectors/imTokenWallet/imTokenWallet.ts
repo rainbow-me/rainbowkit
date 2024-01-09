@@ -1,10 +1,7 @@
-import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface ImTokenWalletOptions {
-  projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
+export type ImTokenWalletOptions = DefaultWalletOptions;
 
 export const imTokenWallet = ({
   projectId,
