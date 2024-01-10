@@ -3,7 +3,7 @@ import type { CreateConnectorFn } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { connectorsForWallets } from '..';
 import { CreateWalletFn } from './Wallet';
-import { browserWallet } from './walletConnectors/browserWallet/browserWallet';
+import { injectedWallet } from './walletConnectors/injectedWallet/injectedWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 const isValidConnector = (connector: CreateConnectorFn): boolean => {
@@ -33,7 +33,7 @@ describe('connectorsForWallets', () => {
         walletList: [
           {
             groupName: 'Test Group 1',
-            wallets: [customWallet, browserWallet],
+            wallets: [customWallet, injectedWallet],
           },
         ],
       });

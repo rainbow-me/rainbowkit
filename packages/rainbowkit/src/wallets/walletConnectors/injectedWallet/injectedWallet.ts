@@ -1,10 +1,10 @@
 import { Wallet } from '../../Wallet';
 import { getInjectedConnector } from '../../getInjectedConnector';
 
-export const browserWallet = (): Wallet => ({
+export const injectedWallet = (): Wallet => ({
   id: 'injected',
   name: 'Browser Wallet',
-  iconUrl: async () => (await import('./browserWallet.svg')).default,
+  iconUrl: async () => (await import('./injectedWallet.svg')).default,
   iconBackground: '#fff',
   createConnector: getInjectedConnector({}),
 });
