@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext } from 'react';
 import { useAccountEffect } from 'wagmi';
+import type { Chain } from 'wagmi/chains';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { Locale } from '../../locales';
@@ -15,10 +16,7 @@ import {
   ModalSizeProvider,
   ModalSizes,
 } from './ModalSizeContext';
-import {
-  RainbowKitChain,
-  RainbowKitChainProvider,
-} from './RainbowKitChainContext';
+import { RainbowKitChainProvider } from './RainbowKitChainContext';
 import { ShowBalanceProvider } from './ShowBalanceContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { WalletButtonProvider } from './WalletButtonContext';
@@ -53,7 +51,7 @@ export type Theme =
     };
 
 export interface RainbowKitProviderProps {
-  initialChain?: RainbowKitChain | number;
+  initialChain?: Chain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
