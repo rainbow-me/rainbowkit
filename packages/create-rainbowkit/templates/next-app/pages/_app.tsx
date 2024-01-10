@@ -3,7 +3,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { http, WagmiProvider } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -26,16 +26,7 @@ const config = getDefaultConfig({
     base,
     zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
-  ],
-  transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [base.id]: http(),
-    [zora.id]: http(),
-    [sepolia.id]: http(),
-  },
+  ]
 });
 
 const client = new QueryClient();
