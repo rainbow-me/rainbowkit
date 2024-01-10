@@ -60,7 +60,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { http, WagmiProvider, useDisconnect } from 'wagmi';
+import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -88,32 +88,6 @@ const projectId =
 
 const walletList = getDefaultWalletList();
 
-// If any of the alchemy HTTPS URLs are undefined, wagmi will default
-// to using the first available RPC HTTPS URL from the chain.
-const transports = {
-  [mainnet.id]: http(process.env.NEXT_PUBLIC_RPC_MAINNET_HTTPS),
-  [polygon.id]: http(process.env.NEXT_PUBLIC_RPC_POLYGON_HTTPS),
-  [optimism.id]: http(process.env.NEXT_PUBLIC_RPC_OPTIMISM_HTTPS),
-  [arbitrum.id]: http(process.env.NEXT_PUBLIC_RPC_ARBITRUM_HTTPS),
-  [base.id]: http(process.env.NEXT_PUBLIC_RPC_BASE_HTTPS),
-  [zora.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_HTTPS),
-  [bsc.id]: http(process.env.NEXT_PUBLIC_RPC_BSC_HTTPS),
-  [zkSync.id]: http(process.env.NEXT_PUBLIC_RPC_ZKSYNC_HTTPS),
-  // Testnet networks
-  [goerli.id]: http(process.env.NEXT_PUBLIC_RPC_GOERLI_HTTPS),
-  [sepolia.id]: http(process.env.NEXT_PUBLIC_RPC_SEPOLIA_HTTPS),
-  [holesky.id]: http(process.env.NEXT_PUBLIC_RPC_HOLESKY_HTTPS),
-  [polygonMumbai.id]: http(process.env.NEXT_PUBLIC_RPC_POLYGON_MUMBAI_HTTPS),
-  [optimismSepolia.id]: http(
-    process.env.NEXT_PUBLIC_RPC_OPTIMISM_SEPOLIA_HTTPS,
-  ),
-  [arbitrumSepolia.id]: http(
-    process.env.NEXT_PUBLIC_RPC_ARBITRUM_SEPOLIA_HTTPS,
-  ),
-  [baseSepolia.id]: http(process.env.NEXT_PUBLIC_RPC_BASE_SEPOLIA_HTTPS),
-  [zoraSepolia.id]: http(process.env.NEXT_PUBLIC_RPC_ZORA_SEPOLIA_HTTPS),
-};
-
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -139,7 +113,6 @@ const config = getDefaultConfig({
         ]
       : []),
   ],
-  transports,
   walletList: [
     ...walletList,
     {
