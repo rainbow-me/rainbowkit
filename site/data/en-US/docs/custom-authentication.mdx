@@ -68,7 +68,7 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
-import { WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */
@@ -81,7 +81,7 @@ export default function App({ Component, pageProps }: AppProps) {
   // 'unauthenticated' or 'authenticated'.
 
   return (
-    <WagmiConfig {...etc}>
+    <WagmiProvider {...etc}>
       <RainbowKitAuthenticationProvider
         adapter={authenticationAdapter}
         status={AUTHENTICATION_STATUS}
@@ -90,7 +90,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </RainbowKitProvider>
       </RainbowKitAuthenticationProvider>
-    </WagmiConfig>
+    </WagmiProvider>
   );
 }
 ```

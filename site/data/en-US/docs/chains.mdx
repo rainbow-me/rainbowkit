@@ -7,67 +7,18 @@ description: Customizing chains
 
 ## Customizing chains
 
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
-RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/api/chains). Check out the list of supported chains [here](https://wagmi.sh/react/api/chains#available-chains).
-
-> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi and viem's `chain` object](https://github.com/wevm/viem/blob/main/src/types/chain.ts).
-
-Your chain config can be defined in a single array.
-
-```tsx
-import { RainbowKitProvider, type Chain } from '@rainbow-me/rainbowkit';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-
-const chains: readonly [Chain, ...Chain[]] = [
-  mainnet,
-  optimism,
-  zora,
-];
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
-
 ### Customizing the initial chain
 
-By default, RainbowKit will connect to the first chain in your `chains` array to ensure users aren't immediately presented with the "Wrong network" state. This behavior can be customized via the `initialChain` prop.
+By default, RainbowKit will connect to the first chain provided via the `initialChain` prop.
 
 The initial chain can be configured using a chain ID.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 As a convenience, you can also pass a chain object.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
-```
-
-### Custom chain icons
-
-Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
-
-```tsx
-import { mainnet, optimism } from 'wagmi/chains';
-import type { Chain } from '@rainbow-me/rainbowkit';
-
-const chains: readonly [Chain, ...Chain[]] = [
-  {
-    ...mainnet,
-    iconUrl: 'https://example.com/icons/ethereum.png',
-  },
-  {
-    ...optimism,
-    iconUrl: 'https://example.com/icons/optimism.png',
-  },
-];
-
-<RainbowKitProvider chains={chains}>
+<RainbowKitProvider initialChain={mainnet}>
 ```

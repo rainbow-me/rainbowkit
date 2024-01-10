@@ -150,7 +150,6 @@ export default function Home() {
                 t('developers.themes'),
                 t('developers.custom_wallet_list'),
                 t('developers.darkmode'),
-                t('developers.custom_chain'),
                 t('developers.appstore'),
                 t('developers.custom_connect'),
               ].map((value) => (

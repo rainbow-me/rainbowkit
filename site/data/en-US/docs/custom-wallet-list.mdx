@@ -16,19 +16,22 @@ For example, you can choose to only show Rainbow along with generic fallback wal
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
+  injectedWallet,
   rainbowWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { mainnet } from 'wagmi/chains';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      rainbowWallet({ projectId }),
-      walletConnectWallet({ projectId }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets({
+  projectId: 'YOUR_PROJECT_ID',
+  walletList: [
+    {
+      groupName: "Recommended",
+      wallets: [injectedWallet, rainbowWallet, walletConnectWallet],
+    },
+  ],
+  appName: 'My RainbowKit App',
+});
 ```
 
 You can then pass your connectors to `wagmi`'s `createConfig`.
@@ -36,7 +39,7 @@ You can then pass your connectors to `wagmi`'s `createConfig`.
 ```tsx line=1,4-99
 import { createConfig, WagmiProvider } from 'wagmi';
 ...
-const connectors = connectorsForWallets([ /* ... */ ]);
+const connectors = connectorsForWallets({ /* ... */ });
 
 const config = createConfig({
   connectors,

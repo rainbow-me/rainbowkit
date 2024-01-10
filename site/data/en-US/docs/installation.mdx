@@ -41,10 +41,10 @@ Import RainbowKit and wagmi.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  getDefaultWallets,
+  getDefaultConfig,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { http, createConfig, WagmiProvider } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -63,34 +63,12 @@ Configure your desired chains and generate the required connectors. You will als
 
 ```tsx line=4-99
 ...
-import { http, createConfig } from 'wagmi';
-import type { Chain } from 'wagmi';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-const chains: readonly [Chain, ...Chain[]] = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-];
-
-const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
-});
-
-const config = createConfig({
-  chains,
-  connectors,
-  transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [base.id]: http(),
-    [zora.id]: http(),
-  }
+const config = getDefaultConfig({
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
 });
 ```
 
@@ -103,8 +81,8 @@ Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wa
 ```tsx
 const App = () => {
   return (
-    <WagmiProvider config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+    <WagmiProvider config={config}>
+      <RainbowKitProvider>
         {/* Your App */}
       </RainbowKitProvider>
     </WagmiProvider>
