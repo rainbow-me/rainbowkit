@@ -1,5 +1,4 @@
 import type { WalletList } from './Wallet';
-import { mewWallet } from './walletConnectors';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
@@ -10,7 +9,6 @@ export const getDefaultWalletList = () => {
     {
       groupName: 'Popular',
       wallets: [
-        mewWallet,
         rainbowWallet,
         coinbaseWallet,
         metaMaskWallet,
