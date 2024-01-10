@@ -145,6 +145,19 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
 
+  packages/create-rainbowkit/generated-test-app:
+    dependencies:
+      '@rainbow-me/rainbowkit':
+        specifier: workspace:*
+        version: link:../../rainbowkit
+    devDependencies:
+      eslint:
+        specifier: ^8.15.0
+        version: 8.15.0
+      eslint-config-next:
+        specifier: ^14.0.4
+        version: 14.0.4(eslint@8.15.0)(typescript@5.0.4)
+
   packages/create-rainbowkit/templates/next-app:
     dependencies:
       '@rainbow-me/rainbowkit':
@@ -10114,6 +10127,7 @@ packages:
   /eslint@8.15.0:
     resolution: {integrity: sha512-GG5USZ1jhCu8HJkzGgeK8/+RGnHaNYZGrGDzUtigK3BsGESW/rs2az23XqE0WVwDxy1VRvvjSSGu5nB0Bu+6SA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    hasBin: true
     dependencies:
       '@eslint/eslintrc': 1.4.1
       '@humanwhocodes/config-array': 0.9.5
