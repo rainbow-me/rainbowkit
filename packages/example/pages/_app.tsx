@@ -8,7 +8,7 @@ import {
   RainbowKitProvider,
   darkTheme,
   getDefaultConfig,
-  getDefaultWalletList,
+  getDefaultWallets,
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
@@ -86,7 +86,7 @@ const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const walletList = getDefaultWalletList();
+const { walletList } = getDefaultWallets();
 
 // If any of the alchemy HTTPS URLs are undefined, wagmi will default
 // to using the first available RPC HTTPS URL from the chain.

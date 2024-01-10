@@ -38,7 +38,6 @@ import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
 
-
 export {
   argentWallet,
   bifrostWallet,
@@ -78,5 +77,5 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
-  injectedWallet
+  injectedWallet,
 };

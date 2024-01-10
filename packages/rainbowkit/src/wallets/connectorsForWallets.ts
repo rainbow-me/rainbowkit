@@ -15,9 +15,8 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-interface ConnectorsForWalletsParameters {
+export interface ConnectorsForWalletsParameters {
   projectId: string;
-  walletList: WalletList;
   appName: string;
   appDescription?: string;
   appUrl?: string;
@@ -25,15 +24,17 @@ interface ConnectorsForWalletsParameters {
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-export const connectorsForWallets = ({
-  projectId,
-  walletList,
-  walletConnectParameters,
-  appName,
-  appDescription,
-  appUrl,
-  appIcon,
-}: ConnectorsForWalletsParameters): CreateConnectorFn[] => {
+export const connectorsForWallets = (
+  walletList: WalletList,
+  {
+    projectId,
+    walletConnectParameters,
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  }: ConnectorsForWalletsParameters,
+): CreateConnectorFn[] => {
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];

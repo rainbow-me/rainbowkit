@@ -17,15 +17,17 @@ function rainbowConnector({
   appIcon,
   walletConnectParameters,
 }: RainbowConnectorOptions): CreateConnectorFn {
-  const [connector] = connectorsForWallets({
-    projectId,
-    appName,
-    appDescription,
-    appUrl,
-    appIcon,
-    walletList: [{ groupName: 'Popular', wallets: [rainbowWallet] }],
-    walletConnectParameters,
-  });
+  const [connector] = connectorsForWallets(
+    [{ groupName: 'Popular', wallets: [rainbowWallet] }],
+    {
+      projectId,
+      appName,
+      appDescription,
+      appUrl,
+      appIcon,
+      walletConnectParameters,
+    },
+  );
 
   return connector;
 }

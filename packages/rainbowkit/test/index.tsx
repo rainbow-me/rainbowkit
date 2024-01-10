@@ -16,7 +16,7 @@ import { MockParameters, mock } from 'wagmi/connectors';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
-import { getDefaultWalletList } from '../src/wallets/getDefaultWalletList';
+import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -40,7 +40,7 @@ export function renderWithProviders(
 ) {
   const supportedChains = options?.chains || defaultChains;
 
-  const walletList = getDefaultWalletList();
+  const { walletList } = getDefaultWallets();
 
   const config = createConfig({
     chains: supportedChains,
@@ -57,10 +57,9 @@ export function renderWithProviders(
             ],
           }),
         ]
-      : connectorsForWallets({
+      : connectorsForWallets(walletList, {
           appName: 'rainbowkit.com',
           projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
-          walletList,
         }),
     transports: {
       [mainnet.id]: http(),

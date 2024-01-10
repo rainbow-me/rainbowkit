@@ -58,9 +58,8 @@ export const getDefaultConfig = ({
     appIcon,
   });
 
-  const connectors = connectorsForWallets({
-    projectId,
-    walletList: walletList || [
+  const connectors = connectorsForWallets(
+    walletList || [
       {
         groupName: 'Popular',
         wallets: [
@@ -71,12 +70,15 @@ export const getDefaultConfig = ({
         ],
       },
     ],
-    appName,
-    appDescription,
-    appUrl,
-    appIcon,
-    walletConnectParameters: { metadata },
-  });
+    {
+      projectId,
+      appName,
+      appDescription,
+      appUrl,
+      appIcon,
+      walletConnectParameters: { metadata },
+    },
+  );
 
   if (!transports) {
     transports = createDefaultTransports(chains);

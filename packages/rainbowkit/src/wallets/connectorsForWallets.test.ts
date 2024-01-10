@@ -27,16 +27,18 @@ describe('connectorsForWallets', () => {
         name: 'Test WalletConnect Wallet',
       });
 
-      const connectors = connectorsForWallets({
-        projectId: exampleProjectId,
-        appName: 'rainbowkit.com',
-        walletList: [
+      const connectors = connectorsForWallets(
+        [
           {
             groupName: 'Test Group 1',
             wallets: [customWallet, injectedWallet],
           },
         ],
-      });
+        {
+          projectId: exampleProjectId,
+          appName: 'rainbowkit.com',
+        },
+      );
 
       expect(connectors.length).toBe(2);
 
@@ -57,13 +59,13 @@ describe('connectorsForWallets', () => {
         name: 'Test Not Installed Wallet',
       });
 
-      const connectors = connectorsForWallets({
-        projectId: exampleProjectId,
-        appName: 'rainbowkit.com',
-        walletList: [
-          { groupName: 'groupName: "Test Group 1"', wallets: [customWallet] },
-        ],
-      });
+      const connectors = connectorsForWallets(
+        [{ groupName: 'groupName: "Test Group 1"', wallets: [customWallet] }],
+        {
+          projectId: exampleProjectId,
+          appName: 'rainbowkit.com',
+        },
+      );
 
       expect(connectors.length).toBe(0);
     });
@@ -71,10 +73,8 @@ describe('connectorsForWallets', () => {
     it('should throw if projectId is invalid to wallet connect connector', () => {
       // You can also check the specific error message part, for example:
       expect(() => {
-        connectorsForWallets({
-          projectId: exampleProjectId,
-          appName: 'rainbowkit.com',
-          walletList: [
+        connectorsForWallets(
+          [
             {
               groupName: 'Test Group 1',
               wallets: [
@@ -83,7 +83,11 @@ describe('connectorsForWallets', () => {
               ],
             },
           ],
-        });
+          {
+            projectId: exampleProjectId,
+            appName: 'rainbowkit.com',
+          },
+        );
       }).toThrow(
         'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId',
       );
