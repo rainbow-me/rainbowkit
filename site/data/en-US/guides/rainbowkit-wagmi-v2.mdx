@@ -188,19 +188,4 @@ const config = createConfig({
 +   [sepolia.id]: http()
 + },
 });
-
-const queryClient = new QueryClient();
-
-const App = () => {
-  return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
-           {/* Your App */}
-        </RainbowKitProvider>
-      </QueryClientProvider>
-     </WagmiProvider>
-    </WagmiConfig>
-  );
-};
 ```
