@@ -93,13 +93,22 @@ export const ModalSelection = ({
               {...(!isMouseOver && isRainbowKitConnector
                 ? { borderColor: 'actionButtonBorder' }
                 : {})}
+              // We want to use pure <img /> element
+              // to avoid bugs with eip6963 icons as sometimes
+              // background: url(...) does not work
+              useAsImage={!isRainbowKitConnector}
               borderRadius="6"
               height="28"
               src={iconUrl}
               width="28"
             />
             <Box>
-              <Box style={{ marginTop: recent ? -2 : undefined }}>{name}</Box>
+              <Box
+                style={{ marginTop: recent ? -2 : undefined }}
+                maxWidth="200"
+              >
+                {name}
+              </Box>
               {recent && (
                 <Text
                   color={

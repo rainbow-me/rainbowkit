@@ -152,7 +152,7 @@ export const normalizeResponsiveValue =
 const unresponsiveProperties = defineProperties({
   properties: {
     alignSelf: flexAlignment,
-    backgroundSize: ['cover', 'contain'] as const,
+    backgroundSize: ['cover'] as const,
     borderRadius: {
       ...themeVars.radii,
       '1': '1px',

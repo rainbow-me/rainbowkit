@@ -12,6 +12,7 @@ interface AsyncImageProps {
   height: BoxProps['height'] | number;
   background?: string;
   borderRadius?: BoxProps['borderRadius'];
+  useAsImage?: boolean;
   borderColor?: BoxProps['borderColor'] | CustomBorderColor;
   boxShadow?: BoxProps['boxShadow'];
   testId?: string;
@@ -22,6 +23,7 @@ export function AsyncImage({
   background,
   borderColor,
   borderRadius,
+  useAsImage,
   boxShadow,
   height,
   src: srcProp,
@@ -53,32 +55,36 @@ export function AsyncImage({
       testId={testId}
     >
       <Box
-        {...(isRemoteImage
-          ? // biome-ignore format: design system keys
-            {
-              'aria-hidden': true,
-              'as': 'img',
-              'onLoad': setRemoteImageLoaded,
-              'src': src,
+        {...(useAsImage
+          ? { 'aria-hidden': true, as: 'img', src }
+          : isRemoteImage
+            ? // biome-ignore format: design system keys
+              {
+              "aria-hidden": true,
+              as: "img",
+              onLoad: setRemoteImageLoaded,
+              src,
             }
-          : {
-              backgroundSize: 'contain',
-            })}
+            : {
+                backgroundSize: 'cover',
+              })}
         height="full"
         position="absolute"
         style={{
           WebkitTouchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',
-          ...(isRemoteImage
-            ? {
-                opacity: isRemoteImageLoaded ? 1 : 0,
-              }
-            : {
-                backgroundImage: src ? `url(${src})` : undefined,
-                backgroundRepeat: 'no-repeat',
-                opacity: src ? 1 : 0,
-              }),
+          ...(!useAsImage
+            ? isRemoteImage
+              ? {
+                  opacity: isRemoteImageLoaded ? 1 : 0,
+                }
+              : {
+                  backgroundImage: src ? `url(${src})` : undefined,
+                  backgroundRepeat: 'no-repeat',
+                  opacity: src ? 1 : 0,
+                }
+            : {}),
         }}
         width="full"
       />
