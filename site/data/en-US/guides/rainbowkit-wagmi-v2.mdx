@@ -35,7 +35,7 @@ npm i @tanstack/react-query
 - import { configureChains, WagmiConfig } from 'wagmi'
 - import { publicProvider } from 'wagmi/providers/public'
 + import { WagmiProvider } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+  import { mainnet, sepolia } from 'wagmi/chains'
 + import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
 - const projectId = "YOUR_PROJECT_ID";
@@ -46,15 +46,15 @@ import { mainnet, sepolia } from 'wagmi/chains'
 - );
 
 - const { connectors } = getDefaultWallets({
--  appName: 'RainbowKit App',
--  projectId,
--  chains,
+-   appName: 'RainbowKit App',
+-   projectId,
+-   chains,
 - });
 
 - const config = createConfig({
--  autoConnect: true,
--  publicClient
--  connectors,
+-   autoConnect: true,
+-   publicClient
+-   connectors,
 });
 
 /* New RainbowKit API that replaces the need for both getDefaultWallets() and Wagmi's createConfig()*/
@@ -68,16 +68,16 @@ const config = getDefaultConfig({
 
 const App = () => {
   return (
--    <WagmiConfig config={config}>
-+    <WagmiProvider config={config}>
-+      <QueryClientProvider client={queryClient}>
--        <RainbowKitProvider chains={chains}>
-+        <RainbowKitProvider>
+-   <WagmiConfig config={config}>
++   <WagmiProvider config={config}>
++     <QueryClientProvider client={queryClient}>
+-       <RainbowKitProvider chains={chains}>
++       <RainbowKitProvider>
           {/* Your App */}
         </RainbowKitProvider>
-+      </QueryClientProvider>
-+    </WagmiProvider>
--    </WagmiConfig>
++     </QueryClientProvider>
++   </WagmiProvider>
+-   </WagmiConfig>
   );
 };
 
@@ -116,7 +116,7 @@ You do need to pass parameters to `getDefaultWallets` to receive prepared `conne
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit demo',
   projectId,
--  chains,
+- chains,
 });
 ```
 
@@ -132,33 +132,34 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Popular',
     wallets: [
--      ledgerWallet({ projectId, chains }),
--      trustWallet({ projectId, chains }),
-+      ledgerWallet, trustWallet
+-     ledgerWallet({ projectId, chains }),
++     ledgerWallet,
+-     trustWallet({ projectId, chains }),
++     trustWallet
     ],
   },
-+  {
-+    appName,
-+    projectId,
-+  }
- ]);
++ {
++   appName,
++   projectId,
++ }
+]);
 ```
 
 **Custom Wallet List example **
 
 ```diff
 - const { wallets } = getDefaultWallets({
--  appName: 'RainbowKit demo',
--  projectId,
--  chains,
+-   appName: 'RainbowKit demo',
+-   projectId,
+-   chains,
 - });
 + const { wallets } = getDefaultWallets();
 
 + const config = getDefaultConfig({
-+  appName: "My RainbowKit App",
-+  projectId: "YOUR_PROJECT_ID",
-+  chains: [mainnet, sepolia],
-+  wallets
++   appName: "My RainbowKit App",
++   projectId: "YOUR_PROJECT_ID",
++   chains: [mainnet, sepolia],
++   wallets
 + });
 
 // or you can use Wagmi's `createConfig()` directly
@@ -168,15 +169,15 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Popular',
     wallets: [
--      ledgerWallet({ projectId, chains }),
--      trustWallet({ projectId, chains }),
-+      ledgerWallet, trustWallet
+-     ledgerWallet({ projectId, chains }),
+-     trustWallet({ projectId, chains }),
++     ledgerWallet, trustWallet
     ],
   },
-+  {
-+    appName,
-+    projectId,
-+  }
++ {
++   appName,
++   projectId,
++ }
  ]);
 
 const config = createConfig({
