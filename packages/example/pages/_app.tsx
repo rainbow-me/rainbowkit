@@ -86,7 +86,7 @@ const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const { walletList } = getDefaultWallets();
+const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
@@ -113,8 +113,8 @@ const config = getDefaultConfig({
         ]
       : []),
   ],
-  walletList: [
-    ...walletList,
+  wallets: [
+    ...wallets,
     {
       groupName: 'Other',
       wallets: [

@@ -32,7 +32,7 @@ export function renderWithProviders(
 ) {
   const supportedChains = options?.chains || defaultChains;
 
-  const { walletList } = getDefaultWallets();
+  const { wallets } = getDefaultWallets();
 
   const config = createConfig({
     chains: supportedChains,
@@ -49,7 +49,7 @@ export function renderWithProviders(
             ],
           }),
         ]
-      : connectorsForWallets(walletList, {
+      : connectorsForWallets(wallets, {
           appName: 'rainbowkit.com',
           projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
         }),
