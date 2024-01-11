@@ -308,7 +308,12 @@ export function ConnectDetail({
             gap="8"
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
-              <AsyncImage height={LOGO_SIZE} src={iconUrl} width={LOGO_SIZE} />
+              <AsyncImage
+                useAsImage={!wallet.isRainbowKitConnector}
+                height={LOGO_SIZE}
+                src={iconUrl}
+                width={LOGO_SIZE}
+              />
             </Box>
             <Box
               alignItems="center"

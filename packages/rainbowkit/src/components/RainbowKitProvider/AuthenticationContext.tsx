@@ -89,11 +89,11 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   useEffect(() => {
     if (connector && status === 'authenticated') {
       // Attach the event listener when status is 'authenticated'
-      connector.emitter.on('change', handleChangedAccount);
+      connector?.emitter?.on?.('change', handleChangedAccount);
 
       // Cleanup function to remove the event listener
       return () => {
-        connector.emitter.off('change', handleChangedAccount);
+        connector?.emitter?.off?.('change', handleChangedAccount);
       };
     }
   }, [connector, status, handleChangedAccount]);
