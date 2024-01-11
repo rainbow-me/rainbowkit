@@ -57,7 +57,7 @@ npm i @tanstack/react-query
 -   connectors,
 });
 
-/* New RainbowKit API that replaces the need for both getDefaultWallets() and Wagmi's createConfig()*/
+/* New RainbowKit API */
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "YOUR_PROJECT_ID",
@@ -92,13 +92,13 @@ If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follo
 
 **4. Check for breaking changes in `@rainbow-me/rainbowkit`**
 
-**getDefaultConfig**
+### getDefaultConfig
 
 For dApps without a custom wallet list, `getDefaultConfig` will simplify your configuration. This replaces the need to use `getDefaultWallets`, `connectorsForWallets`, and Wagmi's `createConfig`. 
 
 You may still provide `wallets` from `getDefaultWallets` to `getDefaultConfig` alongside a custom Wallet List to build your own list, or use `connectorsForWallets` as needed. Reference the example below.
 
-**getDefaultWallets**
+### getDefaultWallets
 
 You no longer need to provide paramaters to `getDefaultWallets` to receive a list of default wallets
 
@@ -120,7 +120,7 @@ const { connectors } = getDefaultWallets({
 });
 ```
 
-**connectorsForWallets**
+### connectorsForWallets
 
 If you've used wallets from `@rainbow-me/rainbowkit/wallets`, you no longer need to call each wallet and pass in `projectId`, `chains` or WalletConnect options.
 
@@ -145,7 +145,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-**Custom Wallet List example**
+### Custom Wallet List example
 
 ```diff
 - const { wallets } = getDefaultWallets({
