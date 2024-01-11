@@ -11,13 +11,13 @@ import { walletConnectWallet } from './walletConnectors/walletConnectWallet/wall
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
   connectors: CreateConnectorFn[];
-  walletList: WalletList;
+  wallets: WalletList;
 };
 
-export function getDefaultWallets(): { walletList: WalletList };
+export function getDefaultWallets(): { wallets: WalletList };
 
 export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
-  const walletList: WalletList = [
+  const wallets: WalletList = [
     {
       groupName: 'Popular',
       wallets: [
@@ -31,12 +31,12 @@ export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
 
   if (parameters) {
     return {
-      connectors: connectorsForWallets(walletList, parameters),
-      walletList,
+      connectors: connectorsForWallets(wallets, parameters),
+      wallets,
     };
   }
 
   return {
-    walletList,
+    wallets,
   };
 }

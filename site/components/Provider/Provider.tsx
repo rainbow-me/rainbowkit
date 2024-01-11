@@ -32,15 +32,15 @@ const transports = {
   [bsc.id]: http(),
 };
 
-const { walletList } = getDefaultWallets();
+const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
   chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
   transports,
-  walletList: [
-    ...walletList,
+  wallets: [
+    ...wallets,
     {
       groupName: 'More',
       wallets: [

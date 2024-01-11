@@ -23,7 +23,7 @@ interface GetDefaultConfigParameters {
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  walletList?: WalletList;
+  wallets?: WalletList;
   projectId: string;
   chains: _chains;
   transports?: _transports;
@@ -45,7 +45,7 @@ export const getDefaultConfig = ({
   appDescription,
   appUrl,
   appIcon,
-  walletList,
+  wallets,
   projectId,
   chains,
   multiInjectedProviderDiscovery = true,
@@ -59,7 +59,7 @@ export const getDefaultConfig = ({
   });
 
   const connectors = connectorsForWallets(
-    walletList || [
+    wallets || [
       {
         groupName: 'Popular',
         wallets: [
