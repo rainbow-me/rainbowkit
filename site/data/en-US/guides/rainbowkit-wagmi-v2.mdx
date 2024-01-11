@@ -111,7 +111,7 @@ You no longer need to provide paramaters to `getDefaultWallets` to receive a lis
 + const { wallets } = getDefaultWallets();
 ```
 
-You do need to pass parameters to `getDefaultWallets` to receive prepared `connectors` for Wagmi's `createConfig`. `chains` is no longer required.
+You do need to pass parameters to `getDefaultWallets` to receive prepared `connectors` for Wagmi's `createConfig`. The `chains` prop is no longer required.
 ```diff
 const { connectors } = getDefaultWallets({
   appName: 'RainbowKit demo',
