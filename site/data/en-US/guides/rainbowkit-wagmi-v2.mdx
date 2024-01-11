@@ -1,0 +1,203 @@
+---
+title: Upgrading your dApp for RainbowKit v2
+description: RainbowKit and Wagmi have been promoted to v2
+image: guide-rainbowkit-v2.png
+---
+
+# Migrating to RainbowKit and Wagmi v2
+
+The [Wagmi](https://wagmi.sh) peer dependency has been updated to `2.x.x`.
+
+> Note: RainbowKit v2 is currently in Beta. Please report any issues or feedback on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+
+Follow the steps below to migrate.
+
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+
+```bash
+npm i @rainbow-me/rainbowkit@beta wagmi@2 viem@2
+```
+
+
+**2. Install `@tanstack/react-query` peer dependency**
+
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+
+Install it with the following command:
+
+```bash
+npm i @tanstack/react-query
+```
+
+
+**3. Adjust your Wagmi and RainbowKit configuration**
+
+```diff
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+- import { configureChains, WagmiConfig } from 'wagmi'
+- import { publicProvider } from 'wagmi/providers/public'
++ import { WagmiProvider } from 'wagmi'
+  import { mainnet, sepolia } from 'wagmi/chains'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+
+- const projectId = "YOUR_PROJECT_ID";
+
+- const { chains, publicClient } = configureChains(
+-   [mainnet, sepolia],
+-   [publicProvider()],
+- );
+
+- const { connectors } = getDefaultWallets({
+-   appName: 'RainbowKit App',
+-   projectId,
+-   chains,
+- });
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient
+-   connectors,
+});
+
+/* New RainbowKit API */
+const config = getDefaultConfig({
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains: [mainnet, sepolia],
+});
+
++ const queryClient = new QueryClient();
+
+const App = () => {
+  return (
+-   <WagmiConfig config={config}>
++   <WagmiProvider config={config}>
++     <QueryClientProvider client={queryClient}>
+-       <RainbowKitProvider chains={chains}>
++       <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
++     </QueryClientProvider>
++   </WagmiProvider>
+-   </WagmiConfig>
+  );
+};
+```
+
+
+**4. Check for breaking changes in `wagmi` and `viem`**
+
+If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
+
+- [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+
+**5. Check for breaking changes in RainbowKit**
+
+#### getDefaultConfig
+
+For dApps without a custom wallet list, `getDefaultConfig` will simplify your configuration. This replaces the need to use `getDefaultWallets`, `connectorsForWallets`, and Wagmi's `createConfig`. 
+
+You may still provide `wallets` from `getDefaultWallets` to `getDefaultConfig` alongside a custom Wallet List to build your own list, or use `connectorsForWallets` as needed. Reference the example below.
+
+#### getDefaultWallets
+
+You no longer need to provide paramaters to `getDefaultWallets` to receive a list of default wallets
+
+```diff
+- const { wallets } = getDefaultWallets({
+-  appName: 'RainbowKit demo',
+-  projectId,
+-  chains,
+- });
++ const { wallets } = getDefaultWallets();
+```
+
+You do need to pass parameters to `getDefaultWallets` to receive prepared `connectors` for Wagmi's `createConfig`. The `chains` prop is no longer required.
+```diff
+const { connectors } = getDefaultWallets({
+  appName: 'RainbowKit demo',
+  projectId,
+- chains,
+});
+```
+
+#### Custom Wallet List
+
+**connectorsForWallets**
+
+If you've used wallets from `@rainbow-me/rainbowkit/wallets`, you no longer need to call each wallet and pass in `projectId`, `chains` or WalletConnect options.
+
+You should now pass a 2nd parameter to `connectorsForWallets` with `appName`, `projectId` and additional optional props.
+
+```diff
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Popular',
+    wallets: [
+-     ledgerWallet({ projectId, chains }),
++     ledgerWallet,
+-     trustWallet({ projectId, chains }),
++     trustWallet
+    ],
+  },
++ {
++   appName,
++   projectId,
++ }
+]);
+```
+
+**Deprecated wallets**
+The follow wallet connectors are deprecated and no longer needed. Their functionality is now supported by RainbowKit by default.
+- `injectedWallet`
+- `safeWallet`
+- `braveWallet`
+
+**Example**
+
+```diff
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId,
+-   chains,
+- });
++ const { wallets } = getDefaultWallets();
+
++ const config = getDefaultConfig({
++   appName: "My RainbowKit App",
++   projectId: "YOUR_PROJECT_ID",
++   chains: [mainnet, sepolia],
++   wallets
++ });
+
+// or you can use Wagmi's `createConfig()` directly
+
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Popular',
+    wallets: [
+-     ledgerWallet({ projectId, chains }),
+-     trustWallet({ projectId, chains }),
++     ledgerWallet, 
++     trustWallet
+    ],
+  },
++ {
++   appName,
++   projectId,
++ }
+ ]);
+
+const config = createConfig({
+  connectors,
++ chains: [mainnet, sepolia],
++ transports: {
++   [mainnet.id]: http(),
++   [sepolia.id]: http()
++ },
+});
+```
