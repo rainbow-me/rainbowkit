@@ -120,7 +120,9 @@ const { connectors } = getDefaultWallets({
 });
 ```
 
-#### connectorsForWallets
+#### Custom Wallet List
+
+**connectorsForWallets**
 
 If you've used wallets from `@rainbow-me/rainbowkit/wallets`, you no longer need to call each wallet and pass in `projectId`, `chains` or WalletConnect options.
 
@@ -145,7 +147,13 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-#### Custom Wallet List example
+**Deprecated wallets**
+The follow wallet connectors are deprecated and no longer needed. Their functionality is now supported by RainbowKit by default.
+- `injectedWallet`
+- `safeWallet`
+- `braveWallet`
+
+**Example**
 
 ```diff
 - const { wallets } = getDefaultWallets({
@@ -171,7 +179,8 @@ const connectors = connectorsForWallets([
     wallets: [
 -     ledgerWallet({ projectId, chains }),
 -     trustWallet({ projectId, chains }),
-+     ledgerWallet, trustWallet
++     ledgerWallet, 
++     trustWallet
     ],
   },
 + {
