@@ -148,6 +148,19 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
 
+  packages/create-rainbowkit/generated-test-app:
+    dependencies:
+      '@rainbow-me/rainbowkit':
+        specifier: workspace:*
+        version: link:../../rainbowkit
+    devDependencies:
+      eslint:
+        specifier: ^8.15.0
+        version: 8.15.0
+      eslint-config-next:
+        specifier: ^14.0.4
+        version: 14.0.4(eslint@8.15.0)(typescript@5.0.4)
+
   packages/create-rainbowkit/templates/next-app:
     dependencies:
       '@rainbow-me/rainbowkit':
