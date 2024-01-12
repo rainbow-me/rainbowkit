@@ -89,11 +89,25 @@ export function getWalletConnectConnector({
   projectId,
   walletConnectParameters,
 }: GetWalletConnectConnectorParams): CreateConnector {
-  // Check if the projectId is provided; if not, throw an error.
-  if (!projectId) {
+  // We use this projectId in place of YOUR_PROJECT_ID for our examples.
+  // This allows us our examples and templates to be functional with WalletConnect v2.
+  // We warn developers against using this projectId in their dApp in production.
+  const exampleProjectId = '21fef48091f12692cad574a6f7753643';
+
+  if (!projectId || projectId === '') {
     throw new Error(
       'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
     );
+  }
+
+  if (projectId === 'YOUR_PROJECT_ID' || projectId === exampleProjectId) {
+    console.warn(
+      'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure',
+    );
+  }
+
+  if (projectId === 'YOUR_PROJECT_ID') {
+    projectId = exampleProjectId;
   }
 
   // Return a function that merges additional wallet details with `CreateConnectorFn`.
