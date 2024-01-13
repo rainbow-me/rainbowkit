@@ -100,12 +100,6 @@ export function getWalletConnectConnector({
     );
   }
 
-  if (projectId === 'YOUR_PROJECT_ID' || projectId === exampleProjectId) {
-    console.warn(
-      'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure',
-    );
-  }
-
   if (projectId === 'YOUR_PROJECT_ID') {
     projectId = exampleProjectId;
   }
