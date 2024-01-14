@@ -305,9 +305,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         i18n.t('get_options.short_title', { wallet: selectedWallet.name });
       headerBackButtonLink = connector
         ? WalletStep.Connect
-        : hasExtensionAndMobile && WalletStep.Connect
-          ? initialWalletStep
-          : null;
+        : compactModeEnabled
+        ? WalletStep.None
+        : null;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
