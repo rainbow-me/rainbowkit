@@ -10,8 +10,8 @@ import { ConnectModal } from './ConnectModal';
 describe('<ConnectModal />', () => {
   const renderHeaderLabelModal = async (locale?: Locale) => {
     const options = {
+      mock: true,
       props: {
-        mock: {},
         chains: [mainnet] as readonly [Chain, ...Chain[]],
         ...(locale ? { locale } : {}),
       },

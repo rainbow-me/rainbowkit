@@ -10,8 +10,8 @@ import { ConnectButton } from './ConnectButton';
 describe('<ConnectButton />', () => {
   const renderTextButton = (locale?: Locale) => {
     const options = {
+      mock: true,
       props: {
-        mock: {},
         chains: [mainnet] as readonly [Chain, ...Chain[]],
         ...(locale ? { locale } : {}),
       },
