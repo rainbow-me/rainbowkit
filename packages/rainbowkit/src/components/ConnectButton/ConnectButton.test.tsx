@@ -11,6 +11,7 @@ describe('<ConnectButton />', () => {
   const renderTextButton = (locale?: Locale) => {
     const options = {
       props: {
+        mock: {},
         chains: [mainnet] as readonly [Chain, ...Chain[]],
         ...(locale ? { locale } : {}),
       },
