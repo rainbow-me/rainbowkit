@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
-import type { Chain } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
 import { Locale } from '../../locales';
 import { ConnectButton } from './ConnectButton';
@@ -12,7 +11,7 @@ describe('<ConnectButton />', () => {
     const options = {
       mock: true,
       props: {
-        chains: [mainnet] as readonly [Chain, ...Chain[]],
+        chains: [mainnet],
         ...(locale ? { locale } : {}),
       },
     };
