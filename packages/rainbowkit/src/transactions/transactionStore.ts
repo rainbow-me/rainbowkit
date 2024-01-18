@@ -150,6 +150,12 @@ export function createTransactionStore({
                 // @ts-ignore - types changed with viem@1.1.0
                 status === 0 || status === 'reverted' ? 'failed' : 'confirmed',
               );
+            })
+            .catch(() => {
+              // If a transaction is not found or cancelled
+              // viem will throw a 'TransactionNotFoundError'.
+              // In this case it should mark the transaction as 'failed'
+              setTransactionStatus(account, chainId, hash, 'failed');
             });
 
           transactionRequestCache.set(hash, requestPromise);
