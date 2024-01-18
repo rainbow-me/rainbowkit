@@ -86,17 +86,23 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (connector && status === 'authenticated') {
+    // Wagmi renders emitter's partially on page load. We wanna make sure
+    // the event emitters gets updated before proceeding
+    if (
+      typeof connector?.emitter?.on === 'function' &&
+      status === 'authenticated'
+    ) {
       // Attach the event listener when status is 'authenticated'
-      connector.emitter?.on?.('change', handleChangedAccount);
+      connector.emitter.on('change', handleChangedAccount);
 
       // Cleanup function to remove the event listener
       return () => {
-        connector.emitter?.off?.('change', handleChangedAccount);
+        connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [connector, status, handleChangedAccount]);
+  }, [connector?.emitter, status]);
 
   return (
     <AuthenticationContext.Provider
