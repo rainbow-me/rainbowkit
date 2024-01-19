@@ -1,9 +1,10 @@
 import React, { ReactNode, useContext } from 'react';
-import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
 import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
+import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { isMobile } from '../../utils/isMobile';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
@@ -90,7 +91,7 @@ export function ConnectButtonRenderer({
         isMobile() ? 'smallScreen' : 'largeScreen'
       ]
     : false;
-  const { data: balanceData } = useBalance({
+  const balanceData = useRealtimeBalance({
     address: shouldShowBalance ? address : undefined,
   });
   const displayBalance = balanceData

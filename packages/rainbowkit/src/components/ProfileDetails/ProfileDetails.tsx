@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
+import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -33,7 +34,7 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
 
-  const { data: balanceData } = useBalance({
+  const balanceData = useRealtimeBalance({
     address,
   });
 
