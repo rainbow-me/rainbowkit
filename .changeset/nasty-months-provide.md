@@ -14,6 +14,7 @@ Example usage:
     useWaitForTransaction,
   } from "wagmi";
   import { useRefetchBalance } from "./hooks/useRefetchBalance";
+  import { ConnectButton } from '@rainbow-me/rainbowkit';
 
   const YourApp = () => {
     const refetchBalance = useRefetchBalance();
