@@ -13,7 +13,13 @@ import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
-export function SignIn({ onClose }: { onClose: () => void }) {
+export function SignIn({
+  onClose,
+  onCloseModal,
+}: {
+  onClose: () => void;
+  onCloseModal: () => void;
+}) {
   const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
@@ -99,7 +105,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         if (verified) {
           // This will ensure that 'connectModalOpen' state doesn't
           // stay to true after a successful authentication
-          onClose();
+          onCloseModal();
           return;
         }
 
