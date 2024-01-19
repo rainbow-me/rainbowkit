@@ -96,7 +96,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       try {
         const verified = await authAdapter.verify({ message, signature });
 
-        if (verified) return;
+        if (verified) {
+          // This will ensure that 'connectModalOpen' state doesn't
+          // stay to true after a successful authentication
+          onClose();
+          return;
+        }
+
         throw new Error();
       } catch {
         return setState((x) => ({
