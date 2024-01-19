@@ -3,7 +3,7 @@
 "example": patch
 ---
 
-Added `useRefetchBalance` hook to support realtime balance updates in rainbowkit. The hook should be called upon a successful transaction like.
+Added `useRefetchBalance` hook to support realtime balance in rainbowkit. The returned hook function should be called upon a successful transaction.
 
 Example usage:
 
