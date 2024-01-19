@@ -19,8 +19,8 @@ Example usage:
     const refetchBalance = useRefetchBalance();
 
     const { config: sendTransactionConfig } = usePrepareSendTransaction({
-      to: "0x",
-      value: BigInt("0"),
+      to: "<to_address>",
+      value: "<value>",
     });
 
     const { data: transactionData, sendTransaction } = useSendTransaction(
