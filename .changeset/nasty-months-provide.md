@@ -13,8 +13,7 @@ Example usage:
     useSendTransaction,
     useWaitForTransaction,
   } from "wagmi";
-  import { useRefetchBalance } from "./hooks/useRefetchBalance";
-  import { ConnectButton } from '@rainbow-me/rainbowkit';
+  import { useRefetchBalance, ConnectButton } from '@rainbow-me/rainbowkit';
 
   const YourApp = () => {
     const refetchBalance = useRefetchBalance();
