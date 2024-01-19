@@ -33,9 +33,12 @@ Example usage:
     });
 
     return (
-      <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
-        Send Transaction
-      </button>
+      <div>
+        <ConnectButton />
+        <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
+          Send Transaction
+        </button>
+      </div>
     );
   };
 ```
