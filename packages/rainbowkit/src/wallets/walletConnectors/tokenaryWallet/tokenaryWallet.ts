@@ -1,4 +1,3 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { isSafari } from '../../../utils/browsers';
 import { Wallet } from '../../Wallet';
 import {
@@ -6,11 +5,7 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export interface TokenaryWalletOptions {
-  chains: Chain[];
-}
-
-export const tokenaryWallet = ({ chains }: TokenaryWalletOptions): Wallet => ({
+export const tokenaryWallet = (): Wallet => ({
   id: 'tokenary',
   name: 'Tokenary',
   iconUrl: async () => (await import('./tokenaryWallet.svg')).default,
@@ -24,7 +19,5 @@ export const tokenaryWallet = ({ chains }: TokenaryWalletOptions): Wallet => ({
     safari: 'https://tokenary.io/get',
     browserExtension: 'https://tokenary.io/get',
   },
-  createConnector: () => ({
-    connector: getInjectedConnector({ chains, flag: 'isTokenary' }),
-  }),
+  createConnector: getInjectedConnector({ flag: 'isTokenary' }),
 });

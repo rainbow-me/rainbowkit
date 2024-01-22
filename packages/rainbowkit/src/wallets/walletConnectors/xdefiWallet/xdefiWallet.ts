@@ -1,27 +1,22 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export interface XDEFIWalletOptions {
-  chains: Chain[];
-}
-
-export const xdefiWallet = ({ chains }: XDEFIWalletOptions): Wallet => ({
-  id: 'xdefi',
-  name: 'XDEFI Wallet',
-  installed: hasInjectedProvider({ namespace: 'xfi.ethereum' }),
-  iconUrl: async () => (await import('./xdefiWallet.svg')).default,
-  iconBackground: '#fff',
-  downloadUrls: {
-    chrome:
-      'https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf',
-    browserExtension: 'https://xdefi.io',
-  },
-  createConnector: () => ({
-    connector: getInjectedConnector({ namespace: 'xfi.ethereum', chains }),
+export const xdefiWallet = (): Wallet => {
+  return {
+    id: 'xdefi',
+    name: 'XDEFI Wallet',
+    rdns: 'io.xdefi',
+    installed: hasInjectedProvider({ namespace: 'xfi.ethereum' }),
+    iconUrl: async () => (await import('./xdefiWallet.svg')).default,
+    iconBackground: '#fff',
+    downloadUrls: {
+      chrome:
+        'https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf',
+      browserExtension: 'https://xdefi.io',
+    },
     extension: {
       instructions: {
         learnMoreUrl: 'https://xdefi.io/support-categories/xdefi-wallet/',
@@ -44,5 +39,6 @@ export const xdefiWallet = ({ chains }: XDEFIWalletOptions): Wallet => ({
         ],
       },
     },
-  }),
-});
+    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
+  };
+};

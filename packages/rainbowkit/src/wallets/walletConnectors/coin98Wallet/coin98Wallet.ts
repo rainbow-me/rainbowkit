@@ -1,25 +1,15 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
-import {
-  WalletConnectConnectorOptions,
-  getWalletConnectConnector,
-} from '../../getWalletConnectConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface Coin98WalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type Coin98WalletOptions = DefaultWalletOptions;
 
 export const coin98Wallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: Coin98WalletOptions): Wallet => {
   const isCoin98WalletInjected = hasInjectedProvider({
     namespace: 'coin98Wallet',
@@ -43,80 +33,67 @@ export const coin98Wallet = ({
         'https://chrome.google.com/webstore/detail/coin98-wallet/aeachknmefphepccionboohckonoeemg',
       browserExtension: 'https://coin98.com/wallet',
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            options: walletConnectOptions,
-          })
-        : getInjectedConnector({
-            chains,
-            namespace: 'coin98Wallet',
-            flag: 'isCoin98',
-          });
-      const getUri = async () => {
-        const uri = await getWalletConnectUri(connector);
-        return uri;
-      };
-
-      return {
-        connector,
-        mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
-        qrCode: shouldUseWalletConnect
-          ? {
-              getUri,
-              instructions: {
-                learnMoreUrl: 'https://coin98.com/wallet',
-                steps: [
-                  {
-                    description:
-                      'wallet_connectors.coin98.qr_code.step1.description',
-                    step: 'install',
-                    title: 'wallet_connectors.coin98.qr_code.step1.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.coin98.qr_code.step2.description',
-                    step: 'create',
-                    title: 'wallet_connectors.coin98.qr_code.step2.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.coin98.qr_code.step3.description',
-                    step: 'scan',
-                    title: 'wallet_connectors.coin98.qr_code.step3.title',
-                  },
-                ],
-              },
-            }
-          : undefined,
-        extension: {
+    mobile: {
+      getUri: shouldUseWalletConnect ? (uri: string) => uri : undefined,
+    },
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl: 'https://coin98.com/wallet',
             steps: [
               {
                 description:
-                  'wallet_connectors.coin98.extension.step1.description',
+                  'wallet_connectors.coin98.qr_code.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.coin98.extension.step1.title',
+                title: 'wallet_connectors.coin98.qr_code.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.coin98.extension.step2.description',
+                  'wallet_connectors.coin98.qr_code.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.coin98.extension.step2.title',
+                title: 'wallet_connectors.coin98.qr_code.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.coin98.extension.step3.description',
-                step: 'refresh',
-                title: 'wallet_connectors.coin98.extension.step3.title',
+                  'wallet_connectors.coin98.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.coin98.qr_code.step3.title',
               },
             ],
           },
-        },
-      };
+        }
+      : undefined,
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://coin98.com/wallet',
+        steps: [
+          {
+            description: 'wallet_connectors.coin98.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.coin98.extension.step1.title',
+          },
+          {
+            description: 'wallet_connectors.coin98.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.coin98.extension.step2.title',
+          },
+          {
+            description: 'wallet_connectors.coin98.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.coin98.extension.step3.title',
+          },
+        ],
+      },
     },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({
+          namespace: 'coin98Wallet',
+          flag: 'isCoin98',
+        }),
   };
 };

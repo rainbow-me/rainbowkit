@@ -1,8 +1,10 @@
-import { type Chain, configureChains, createConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import { Transport } from 'viem';
+import { http } from 'wagmi';
+import { WagmiProviderProps, createConfig } from 'wagmi';
+import { type Chain } from 'wagmi/chains';
 import type { WalletList } from '../wallets/Wallet';
+import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
-import type { WalletConnectConnectorMetadata } from '../wallets/getWalletConnectConnector';
 import {
   coinbaseWallet,
   metaMaskWallet,
@@ -10,59 +12,82 @@ import {
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
+export type _chains = readonly [Chain, ...Chain[]];
+
+// Define the '_transports' type as a Record
+// It maps each 'Chain' id to a 'Transport'
+export type _transports = Record<_chains[number]['id'], Transport>;
+
+interface GetDefaultConfigParameters {
+  appName: string;
+  appDescription?: string;
+  appUrl?: string;
+  appIcon?: string;
+  wallets?: WalletList;
+  projectId: string;
+  chains: _chains;
+  transports?: _transports;
+  multiInjectedProviderDiscovery?: boolean;
+}
+
+const createDefaultTransports = (chains: _chains): _transports => {
+  const transportsObject = chains.reduce((acc: _transports, chain) => {
+    const key = chain.id as keyof _transports;
+    acc[key] = http() as _transports[keyof _transports]; // Type assertion here
+    return acc;
+  }, {} as _transports);
+
+  return transportsObject;
+};
+
 export const getDefaultConfig = ({
   appName,
   appDescription,
   appUrl,
   appIcon,
-  chains,
   wallets,
   projectId,
-}: {
-  appName: string;
-  appDescription?: string;
-  appUrl?: string;
-  appIcon?: string;
-  chains: Chain[];
-  wallets?: WalletList;
-  projectId: string;
-}) => {
-  const { publicClient, webSocketPublicClient } = configureChains(chains, [
-    publicProvider(),
-  ]);
-
-  const metadata: WalletConnectConnectorMetadata = {
-    name: appName,
-    description: appDescription,
-    url: appUrl,
-  };
+  chains,
+  multiInjectedProviderDiscovery = true,
+  transports,
+}: GetDefaultConfigParameters): WagmiProviderProps['config'] => {
+  const metadata = computeWalletConnectMetaData({
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  });
 
   const connectors = connectorsForWallets(
     wallets || [
       {
         groupName: 'Popular',
         wallets: [
-          rainbowWallet({
-            chains,
-            projectId,
-            walletConnectOptions: { metadata },
-          }),
-          coinbaseWallet({ appName, appIcon, chains }),
-          metaMaskWallet({
-            chains,
-            projectId,
-            walletConnectOptions: { metadata },
-          }),
-          walletConnectWallet({ chains, projectId, options: { metadata } }),
+          rainbowWallet,
+          coinbaseWallet,
+          metaMaskWallet,
+          walletConnectWallet,
         ],
       },
     ],
+    {
+      projectId,
+      appName,
+      appDescription,
+      appUrl,
+      appIcon,
+      walletConnectParameters: { metadata },
+    },
   );
 
+  if (!transports) {
+    transports = createDefaultTransports(chains);
+  }
+
   return createConfig({
-    autoConnect: true,
     connectors,
-    publicClient,
-    webSocketPublicClient,
+    chains,
+    transports,
+    multiInjectedProviderDiscovery,
   });
 };

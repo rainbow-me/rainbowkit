@@ -7,7 +7,6 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
-import { chains } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
@@ -63,7 +62,6 @@ export function Header({
 
         <Box style={{ marginLeft: 'auto' }}>
           <RainbowKitProvider
-            chains={chains}
             theme={
               darkMode
                 ? darkTheme({ accentColor: vars.colors.blue })

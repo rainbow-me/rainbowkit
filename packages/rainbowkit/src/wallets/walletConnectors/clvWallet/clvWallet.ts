@@ -1,25 +1,15 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
-import {
-  WalletConnectConnectorOptions,
-  getWalletConnectConnector,
-} from '../../getWalletConnectConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface CLVWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type CLVWalletOptions = DefaultWalletOptions;
 
 export const clvWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: CLVWalletOptions): Wallet => {
   const isCLVInjected = hasInjectedProvider({ namespace: 'clover' });
   const shouldUseWalletConnect = !isCLVInjected;
@@ -38,79 +28,61 @@ export const clvWallet = ({
       mobile: 'https://apps.apple.com/app/clover-wallet/id1570072858',
       qrCode: 'https://clv.org/',
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            chains,
-            options: walletConnectOptions,
-            projectId,
-          })
-        : getInjectedConnector({ chains, namespace: 'clover' });
-
-      const getUri = async () => {
-        const uri = await getWalletConnectUri(connector);
-        return uri;
-      };
-
-      return {
-        connector,
-        extension: {
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://clv.org/',
+        steps: [
+          {
+            description: 'wallet_connectors.clv.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.clv.extension.step1.title',
+          },
+          {
+            description: 'wallet_connectors.clv.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.clv.extension.step2.title',
+          },
+          {
+            description: 'wallet_connectors.clv.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.clv.extension.step3.title',
+          },
+        ],
+      },
+    },
+    mobile: {
+      getUri: shouldUseWalletConnect ? (uri: string) => uri : undefined,
+    },
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl: 'https://clv.org/',
             steps: [
               {
-                description:
-                  'wallet_connectors.clv.extension.step1.description',
+                description: 'wallet_connectors.clv.qr_code.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.clv.extension.step1.title',
+                title: 'wallet_connectors.clv.qr_code.step1.title',
               },
               {
-                description:
-                  'wallet_connectors.clv.extension.step2.description',
+                description: 'wallet_connectors.clv.qr_code.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.clv.extension.step2.title',
+                title: 'wallet_connectors.clv.qr_code.step2.title',
               },
               {
-                description:
-                  'wallet_connectors.clv.extension.step3.description',
-                step: 'refresh',
-                title: 'wallet_connectors.clv.extension.step3.title',
+                description: 'wallet_connectors.clv.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.clv.qr_code.step3.title',
               },
             ],
           },
-        },
-        mobile: {
-          getUri: shouldUseWalletConnect ? getUri : undefined,
-        },
-        qrCode: shouldUseWalletConnect
-          ? {
-              getUri: async () => getWalletConnectUri(connector),
-              instructions: {
-                learnMoreUrl: 'https://clv.org/',
-                steps: [
-                  {
-                    description:
-                      'wallet_connectors.clv.qr_code.step1.description',
-                    step: 'install',
-                    title: 'wallet_connectors.clv.qr_code.step1.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.clv.qr_code.step2.description',
-                    step: 'create',
-                    title: 'wallet_connectors.clv.qr_code.step2.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.clv.qr_code.step3.description',
-                    step: 'scan',
-                    title: 'wallet_connectors.clv.qr_code.step3.title',
-                  },
-                ],
-              },
-            }
-          : undefined,
-      };
-    },
+        }
+      : undefined,
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({ namespace: 'clover' }),
   };
 };

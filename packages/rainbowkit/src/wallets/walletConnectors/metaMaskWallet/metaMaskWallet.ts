@@ -1,19 +1,12 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
-export interface MetaMaskWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type MetaMaskWalletOptions = DefaultWalletOptions;
 
 function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
   // Logic borrowed from wagmi's MetaMaskConnector
@@ -62,9 +55,8 @@ function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
 }
 
 export const metaMaskWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: MetaMaskWalletOptions): Wallet => {
   // Not using the explicit isMetaMask fn to check for MetaMask
   // so that users can continue to use the MetaMask button
@@ -74,9 +66,19 @@ export const metaMaskWallet = ({
   const isMetaMaskInjected = hasInjectedProvider({ flag: 'isMetaMask' });
   const shouldUseWalletConnect = !isMetaMaskInjected;
 
+  const getUri = (uri: string) => {
+    return isAndroid()
+      ? uri
+      : isIOS()
+        ? // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
+          `metamask://wc?uri=${encodeURIComponent(uri)}`
+        : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
+  };
+
   return {
     id: 'metaMask',
     name: 'MetaMask',
+    rdns: 'io.metamask',
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',
@@ -93,92 +95,73 @@ export const metaMaskWallet = ({
       opera: 'https://addons.opera.com/extensions/details/metamask-10',
       browserExtension: 'https://metamask.io/download',
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            options: walletConnectOptions,
-          })
-        : getInjectedConnector({
-            chains,
-            // custom handling for metamask button fallback for third party wallets
-            getProvider: () =>
-              typeof window !== 'undefined'
-                ? window.ethereum?.providers?.find(isMetaMask) ??
-                  window.ethereum
-                : undefined,
-          });
 
-      const getUri = async () => {
-        const uri = await getWalletConnectUri(connector);
-        return isAndroid()
-          ? uri
-          : isIOS()
-            ? // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
-              `metamask://wc?uri=${encodeURIComponent(uri)}`
-            : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
-      };
-
-      return {
-        connector,
-        mobile: {
-          getUri: shouldUseWalletConnect ? getUri : undefined,
-        },
-        qrCode: shouldUseWalletConnect
-          ? {
-              getUri,
-              instructions: {
-                learnMoreUrl: 'https://metamask.io/faqs/',
-                steps: [
-                  {
-                    description:
-                      'wallet_connectors.metamask.qr_code.step1.description',
-                    step: 'install',
-                    title: 'wallet_connectors.metamask.qr_code.step1.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.metamask.qr_code.step2.description',
-                    step: 'create',
-                    title: 'wallet_connectors.metamask.qr_code.step2.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.metamask.qr_code.step3.description',
-                    step: 'refresh',
-                    title: 'wallet_connectors.metamask.qr_code.step3.title',
-                  },
-                ],
-              },
-            }
-          : undefined,
-        extension: {
+    mobile: {
+      getUri: shouldUseWalletConnect ? getUri : undefined,
+    },
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri,
           instructions: {
             learnMoreUrl: 'https://metamask.io/faqs/',
             steps: [
               {
                 description:
-                  'wallet_connectors.metamask.extension.step1.description',
+                  'wallet_connectors.metamask.qr_code.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.metamask.extension.step1.title',
+                title: 'wallet_connectors.metamask.qr_code.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.metamask.extension.step2.description',
+                  'wallet_connectors.metamask.qr_code.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.metamask.extension.step2.title',
+                title: 'wallet_connectors.metamask.qr_code.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.metamask.extension.step3.description',
+                  'wallet_connectors.metamask.qr_code.step3.description',
                 step: 'refresh',
-                title: 'wallet_connectors.metamask.extension.step3.title',
+                title: 'wallet_connectors.metamask.qr_code.step3.title',
               },
             ],
           },
-        },
-      };
+        }
+      : undefined,
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://metamask.io/faqs/',
+        steps: [
+          {
+            description:
+              'wallet_connectors.metamask.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.metamask.extension.step1.title',
+          },
+          {
+            description:
+              'wallet_connectors.metamask.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.metamask.extension.step2.title',
+          },
+          {
+            description:
+              'wallet_connectors.metamask.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.metamask.extension.step3.title',
+          },
+        ],
+      },
     },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({
+          target:
+            typeof window !== 'undefined'
+              ? window.ethereum?.providers?.find(isMetaMask) ?? window.ethereum
+              : undefined,
+        }),
   };
 };

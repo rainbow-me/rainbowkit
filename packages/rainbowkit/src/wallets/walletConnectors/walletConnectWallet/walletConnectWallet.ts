@@ -1,47 +1,27 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
 export interface WalletConnectWalletOptions {
   projectId: string;
-  chains: Chain[];
-  options?: WalletConnectConnectorOptions;
+  options?: RainbowKitWalletConnectParameters;
 }
 
 export const walletConnectWallet = ({
-  chains,
-  options,
   projectId,
-}: WalletConnectWalletOptions): Wallet => ({
-  id: 'walletConnect',
-  name: 'WalletConnect',
-  iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
-  iconBackground: '#3b99fc',
-  createConnector: () => {
-    const ios = isIOS();
+  options,
+}: WalletConnectWalletOptions): Wallet => {
+  const getUri = (uri: string) => uri;
 
-    const connector = getWalletConnectConnector({
-      chains,
+  return {
+    id: 'walletConnect',
+    name: 'WalletConnect',
+    installed: undefined,
+    iconUrl: async () => (await import('./walletConnectWallet.svg')).default,
+    iconBackground: '#3b99fc',
+    qrCode: { getUri },
+    createConnector: getWalletConnectConnector({
       projectId,
-      options: {
-        showQrModal: ios,
-        ...options,
-      },
-    });
-
-    const getUri = async () => getWalletConnectUri(connector);
-
-    return {
-      connector,
-      ...(ios
-        ? {}
-        : {
-            mobile: { getUri },
-            qrCode: { getUri },
-          }),
-    };
-  },
-});
+      walletConnectParameters: options,
+    }),
+  };
+};

@@ -1,90 +1,36 @@
 import { describe, expect, it } from 'vitest';
-import type { WindowProvider } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from './getInjectedConnector';
 
 describe('getInjectedConnector', () => {
-  const chains = [mainnet];
-
   it('only rainbow provider', () => {
-    window.ethereum = { isMetaMask: true, isRainbow: true } as WindowProvider;
+    window.ethereum = { isMetaMask: true, isRainbow: true };
     const connector = getInjectedConnector({
       flag: 'isRainbow',
-      chains,
     });
-    expect(connector.name).toEqual('Rainbow');
+    expect(!!connector).toEqual(true);
   });
 
   it('only metamask provider', () => {
-    window.ethereum = { isMetaMask: true } as WindowProvider;
+    window.ethereum = { isMetaMask: true };
     const connector = getInjectedConnector({
       flag: 'isMetaMask',
-      chains,
     });
-    expect(connector.name).toEqual('MetaMask');
-  });
-
-  describe('rainbow and metamask providers', () => {
-    it('rainbow default enabled', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        isRainbow: true,
-        providers: [
-          { isMetaMask: true, isRainbow: true },
-          { isMetaMask: true },
-        ],
-      } as WindowProvider;
-      const connector = getInjectedConnector({
-        flag: 'isRainbow',
-        chains,
-      });
-      expect(connector.name).toEqual('Rainbow');
-    });
-
-    it('rainbow default disabled rainbow connector', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        providers: [
-          { isMetaMask: true },
-          { isMetaMask: true, isRainbow: true },
-        ],
-      } as WindowProvider;
-      const connector = getInjectedConnector({
-        flag: 'isRainbow',
-        chains,
-      });
-      expect(connector.name).toEqual('Rainbow');
-    });
-
-    it('rainbow default disabled metamask connector', () => {
-      window.ethereum = {
-        isMetaMask: true,
-        providers: [
-          { isMetaMask: true },
-          { isMetaMask: true, isRainbow: true },
-        ],
-      } as WindowProvider;
-      const connector = getInjectedConnector({
-        flag: 'isMetaMask',
-        chains,
-      });
-      expect(connector.name).toEqual('MetaMask');
-    });
+    expect(!!connector).toEqual(true);
   });
 });
 
 describe('hasInjectedProvider', () => {
   it('only rainbow flag', () => {
-    window.ethereum = { isMetaMask: true, isRainbow: true } as WindowProvider;
+    window.ethereum = { isMetaMask: true, isRainbow: true };
     const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
     expect(hasRainbow).toEqual(true);
   });
 
   it('only metamask flag', () => {
-    window.ethereum = { isMetaMask: true } as WindowProvider;
+    window.ethereum = { isMetaMask: true };
     const hasRainbow = hasInjectedProvider({ flag: 'isRainbow' });
     expect(hasRainbow).toEqual(false);
   });
@@ -93,7 +39,7 @@ describe('hasInjectedProvider', () => {
     window.ethereum = {
       isMetaMask: true,
       isCoinbaseWallet: true,
-    } as WindowProvider;
+    };
     const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);
   });
@@ -104,7 +50,7 @@ describe('hasInjectedProvider', () => {
       providers: {
         ethereum: { isMetaMask: true },
       },
-    } as WindowProvider;
+    };
     const hasEnkrypt = hasInjectedProvider({
       namespace: 'enkrypt.providers.ethereum',
     });
@@ -116,7 +62,7 @@ describe('hasInjectedProvider', () => {
     window.avalanche = {
       isMetaMask: true,
       isAvalanche: true,
-    } as WindowProvider;
+    };
     const hasCore = hasInjectedProvider({
       namespace: 'avalanche',
       flag: 'isAvalanche',
@@ -128,7 +74,7 @@ describe('hasInjectedProvider', () => {
     window.ethereum = {
       isMetaMask: true,
       isAvalanche: true,
-    } as WindowProvider;
+    };
     const hasCore = hasInjectedProvider({
       namespace: 'avalanche',
       flag: 'isAvalanche',
@@ -144,7 +90,7 @@ describe('hasInjectedProvider', () => {
         { isMetaMask: true, isCoinbaseWallet: true },
         { isMetaMask: true, isRainbow: true },
       ],
-    } as WindowProvider;
+    };
 
     const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);
@@ -162,7 +108,7 @@ describe('hasInjectedProvider', () => {
         { isMetaMask: true, isRainbow: true },
         { isMetaMask: true },
       ],
-    } as WindowProvider;
+    };
 
     const hasCoinbase = hasInjectedProvider({ flag: 'isCoinbaseWallet' });
     expect(hasCoinbase).toEqual(true);

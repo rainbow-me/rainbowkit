@@ -1,38 +1,42 @@
-import type { Connector } from 'wagmi';
-import type { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import type { CreateConnectorFn } from 'wagmi';
 import type { WalletList } from './Wallet';
-import { connectorsForWallets } from './connectorsForWallets';
+import {
+  ConnectorsForWalletsParameters,
+  connectorsForWallets,
+} from './connectorsForWallets';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
-export const getDefaultWallets = ({
-  appName,
-  chains,
-  projectId,
-}: {
-  appName: string;
-  projectId: string;
-  chains: Chain[];
-}): {
-  connectors: () => Connector[];
+export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
+  connectors: CreateConnectorFn[];
   wallets: WalletList;
-} => {
+};
+
+export function getDefaultWallets(): { wallets: WalletList };
+
+export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
   const wallets: WalletList = [
     {
       groupName: 'Popular',
       wallets: [
-        rainbowWallet({ chains, projectId }),
-        coinbaseWallet({ appName, chains }),
-        metaMaskWallet({ chains, projectId }),
-        walletConnectWallet({ chains, projectId }),
+        rainbowWallet,
+        coinbaseWallet,
+        metaMaskWallet,
+        walletConnectWallet,
       ],
     },
   ];
 
+  if (parameters) {
+    return {
+      connectors: connectorsForWallets(wallets, parameters),
+      wallets,
+    };
+  }
+
   return {
-    connectors: connectorsForWallets(wallets),
     wallets,
   };
-};
+}

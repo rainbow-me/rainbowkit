@@ -24,7 +24,7 @@ export const rotatingBorder = style({
   animation: `${snakeBorder} 1s linear infinite`,
   strokeDasharray: '98 196', // Adjusted based on new perimeter calculation
   fill: 'none',
-  strokeLineCap: 'round',
+  strokeLinecap: 'round',
   strokeWidth: '4', // Reduced stroke width for better appearance on a smaller spinner
 });
 

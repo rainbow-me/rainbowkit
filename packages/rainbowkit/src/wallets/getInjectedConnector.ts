@@ -1,21 +1,18 @@
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import type { InjectedProviderFlags, WindowProvider } from 'wagmi/window';
-import type { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import { createConnector } from 'wagmi';
+import { injected } from 'wagmi/connectors';
+import { CreateConnector, WalletDetailsParams } from './Wallet';
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true
  */
-function getExplicitInjectedProvider(
-  flag: keyof InjectedProviderFlags | string,
-): WindowProvider | undefined {
+function getExplicitInjectedProvider(flag: string) {
   if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
     return;
   const providers = window.ethereum.providers;
   return providers
     ? // @ts-expect-error - some provider flags are not typed in `InjectedProviderFlags`
       providers.find((provider) => provider[flag])
-    : // @ts-expect-error - some provider flags are not typed in `InjectedProviderFlags`
-      window.ethereum[flag]
+    : window.ethereum[flag]
       ? window.ethereum
       : undefined;
 }
@@ -23,13 +20,8 @@ function getExplicitInjectedProvider(
 /*
  * Gets the `window.namespace` window provider if it exists
  */
-function getWindowProviderNamespace(
-  namespace: string,
-): WindowProvider | undefined {
-  const providerSearch = (
-    provider: any,
-    namespace: string,
-  ): WindowProvider | undefined => {
+function getWindowProviderNamespace(namespace: string) {
+  const providerSearch = (provider: any, namespace: string): any => {
     const [property, ...path] = namespace.split('.');
     const _provider = provider[property];
     if (_provider) {
@@ -47,7 +39,7 @@ export function hasInjectedProvider({
   flag,
   namespace,
 }: {
-  flag?: keyof InjectedProviderFlags | string;
+  flag?: string;
   namespace?: string;
 }): boolean {
   if (namespace && typeof getWindowProviderNamespace(namespace) !== 'undefined')
@@ -64,9 +56,9 @@ function getInjectedProvider({
   flag,
   namespace,
 }: {
-  flag?: keyof InjectedProviderFlags | string;
+  flag?: string;
   namespace?: string;
-}): WindowProvider | undefined {
+}) {
   if (typeof window === 'undefined') return;
   if (namespace) {
     // prefer custom eip1193 namespaces
@@ -83,23 +75,36 @@ function getInjectedProvider({
   return window.ethereum;
 }
 
+function createInjectedConnector(provider?: any): CreateConnector {
+  return (walletDetails: WalletDetailsParams) => {
+    // Create the injected configuration object conditionally based on the provider.
+    const injectedConfig = provider
+      ? {
+          target: () => ({
+            id: walletDetails.rkDetails.id,
+            name: walletDetails.rkDetails.name,
+            provider,
+          }),
+        }
+      : {};
+
+    return createConnector((config) => ({
+      // Spread the injectedConfig object, which may be empty or contain the target function
+      ...injected(injectedConfig)(config),
+      ...walletDetails,
+    }));
+  };
+}
+
 export function getInjectedConnector({
-  chains,
   flag,
   namespace,
-  getProvider,
+  target,
 }: {
-  flag?: keyof InjectedProviderFlags | string;
+  flag?: string;
   namespace?: string;
-  getProvider?: () => WindowProvider | undefined;
-  chains: Chain[];
-}): InjectedConnector {
-  return new InjectedConnector({
-    chains,
-    options: getProvider
-      ? { getProvider }
-      : flag || namespace
-        ? { getProvider: () => getInjectedProvider({ flag, namespace }) }
-        : undefined,
-  });
+  target?: any;
+}): CreateConnector {
+  const provider = target ? target : getInjectedProvider({ flag, namespace });
+  return createInjectedConnector(provider);
 }
