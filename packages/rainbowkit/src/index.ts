@@ -15,6 +15,8 @@ export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
 } from './components/RainbowKitProvider/AuthenticationContext';
+export { getChains } from './components/RainbowKitProvider/provideRainbowKitChains';
+export type { RainbowKitChain as Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export type {
   Wallet,
   WalletList,

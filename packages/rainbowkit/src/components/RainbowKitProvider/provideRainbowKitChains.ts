@@ -153,13 +153,27 @@ const chainMetadataById = Object.fromEntries(
     .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
-export const provideRainbowKitChains = (chains: readonly [Chain, ...Chain[]]) =>
-  chains.map((chain) => {
-    const defaultMetadata = chainMetadataById[chain.id] ?? {};
-    return {
-      ...chain,
-      name: defaultMetadata.name ?? chain.name, // Favor colloquial names
-      iconUrl: defaultMetadata.iconUrl,
-      iconBackground: defaultMetadata.iconBackground,
-    } as RainbowKitChain;
-  });
+const transformChainMetaData = (chain: RainbowKitChain) => {
+  const defaultMetadata = chainMetadataById[chain.id] ?? {};
+  return {
+    ...chain,
+    name: defaultMetadata.name ?? chain.name, // favor colloquial names
+    iconUrl: chain.iconUrl ?? defaultMetadata.iconUrl,
+    iconBackground: chain.iconBackground ?? defaultMetadata.iconBackground,
+  } as RainbowKitChain;
+};
+
+export const provideRainbowKitChains = (
+  chains: readonly [Chain, ...Chain[]],
+) => {
+  return chains.map(transformChainMetaData);
+};
+
+export const getChains = (
+  chains: readonly [RainbowKitChain, ...RainbowKitChain[]],
+): readonly [Chain, ...Chain[]] => {
+  const rainbowKitChains = provideRainbowKitChains(chains);
+
+  // Construct a tuple from the array as required by wagmi = readonly [Chain, ...Chain[]]
+  return [rainbowKitChains[0], ...rainbowKitChains.slice(1)];
+};
