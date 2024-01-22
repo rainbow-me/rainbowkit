@@ -1,6 +1,10 @@
 import { Config, Connector, useChainId, useConnect } from 'wagmi';
 import { ConnectMutateAsync } from 'wagmi/query';
-import { useInitialChainId } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import {
+  useIgnoreChainModalOnConnect,
+  useInitialChainId,
+  useRainbowKitChains,
+} from '../components/RainbowKitProvider/RainbowKitChainContext';
 import { indexBy } from '../utils/indexBy';
 import { WagmiConnectorInstance, WalletInstance } from './Wallet';
 import {
@@ -33,8 +37,10 @@ export interface WalletConnector extends WalletInstance {
 export function useWalletConnectors(
   mergeEIP6963WithRkConnectors = false,
 ): WalletConnector[] {
+  const rainbowKitChains = useRainbowKitChains();
   const currentChainId = useChainId();
   const intialChainId = useInitialChainId();
+  const ignoreChainModalOnConnect = useIgnoreChainModalOnConnect();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
@@ -47,11 +53,33 @@ export function useWalletConnectors(
     ...(connector.rkDetails || {}),
   })) as WalletInstance[];
 
+  const computeChainid = async (connector: Connector) => {
+    // Return inital chain if provided
+    if (intialChainId) return intialChainId;
+
+    // If user chooses to ignore the modal chain before connection
+    // we will make sure to use one of our rainbowkit chains
+    if (ignoreChainModalOnConnect) {
+      const walletChainId = await connector.getChainId();
+
+      // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.
+      return (
+        rainbowKitChains.find(({ id }) => id === walletChainId)?.id ??
+        // Finally, fall back to the first chain provided to RainbowKitProvider.
+        rainbowKitChains[0]?.id
+      );
+    }
+
+    // Otherwise return the current chain id which wagmi v2 provides
+    // out of the box without having your wallet connected.
+    return currentChainId;
+  };
+
   async function connectWallet(connector: Connector) {
+    const chainId = await computeChainid(connector);
+
     const result = await connectAsync({
-      // We'll try to connect to "intialChainId" if specified.
-      // Otherwise we'll connect with the current chain id
-      chainId: intialChainId ?? currentChainId,
+      chainId,
       connector,
     });
 

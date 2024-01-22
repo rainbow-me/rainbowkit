@@ -11,20 +11,24 @@ export interface RainbowKitChain extends Chain {
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
   initialChainId?: number;
+  ignoreChainModalOnConnect: boolean;
 }
 
 const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
   chains: [],
+  ignoreChainModalOnConnect: false,
 });
 
 interface RainbowKitChainProviderProps {
   initialChain?: Chain | number;
+  ignoreChainModalOnConnect: boolean;
   children: ReactNode;
 }
 
 export function RainbowKitChainProvider({
   children,
   initialChain,
+  ignoreChainModalOnConnect,
 }: RainbowKitChainProviderProps) {
   const { chains } = useConfig();
 
@@ -35,8 +39,9 @@ export function RainbowKitChainProvider({
           chains: provideRainbowKitChains(chains),
           initialChainId:
             typeof initialChain === 'number' ? initialChain : initialChain?.id,
+          ignoreChainModalOnConnect,
         }),
-        [chains, initialChain],
+        [chains, initialChain, ignoreChainModalOnConnect],
       )}
     >
       {children}
@@ -49,6 +54,9 @@ export const useRainbowKitChains = () =>
 
 export const useInitialChainId = () =>
   useContext(RainbowKitChainContext).initialChainId;
+
+export const useIgnoreChainModalOnConnect = () =>
+  useContext(RainbowKitChainContext).ignoreChainModalOnConnect;
 
 export const useRainbowKitChainsById = () => {
   const rainbowkitChains = useRainbowKitChains();
