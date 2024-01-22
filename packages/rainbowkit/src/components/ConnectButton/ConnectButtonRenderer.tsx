@@ -1,5 +1,5 @@
 import React, { ReactNode, useContext } from 'react';
-import { useAccount, useBalance, useConfig } from 'wagmi';
+import { useAccount, useBalance, useChainId, useConfig } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
@@ -65,9 +65,12 @@ export function ConnectButtonRenderer({
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
+  const { isConnected } = useAccount();
 
-  const { chainId } = useAccount();
+  const currentChainId = useChainId();
+  const { chainId: connectedChainId } = useAccount();
   const { chains: wagmiChains } = useConfig();
+  const chainId = isConnected ? connectedChainId : currentChainId;
   const isCurrentChainSupported = wagmiChains.some(
     (chain) => chain.id === chainId,
   );
@@ -133,7 +136,7 @@ export function ConnectButtonRenderer({
               iconUrl: resolvedChainIconUrl,
               id: chainId,
               name: chainName,
-              unsupported: !isCurrentChainSupported,
+              unsupported: isConnected && !isCurrentChainSupported,
             }
           : undefined,
         chainModalOpen,

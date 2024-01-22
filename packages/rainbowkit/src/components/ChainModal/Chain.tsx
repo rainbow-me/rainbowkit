@@ -19,6 +19,7 @@ interface ChainProps {
   iconBackground: string | undefined;
   src: string | AsyncImageSrc | undefined | null;
   idx: number;
+  isConnected?: boolean;
 }
 
 const Chain = ({
@@ -30,6 +31,7 @@ const Chain = ({
   src,
   name,
   iconBackground,
+  isConnected,
   idx,
 }: ChainProps) => {
   const mobile = isMobile();
@@ -74,7 +76,7 @@ const Chain = ({
               )}
               <div>{name ?? name}</div>
             </Box>
-            {isCurrentChain && (
+            {isCurrentChain && isConnected && (
               <Box
                 alignItems="center"
                 display="flex"

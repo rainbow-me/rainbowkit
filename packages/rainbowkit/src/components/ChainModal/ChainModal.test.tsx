@@ -6,7 +6,7 @@ import { renderWithProviders } from '../../../test/';
 import { ChainModal } from './ChainModal';
 
 describe('<ChainModal />', () => {
-  it('Show current connected chain indicator', async () => {
+  it('Show current chain selected status', async () => {
     const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
       mock: true,
     });
@@ -14,7 +14,7 @@ describe('<ChainModal />', () => {
       `rk-chain-option-${mainnet.id}`,
     );
 
-    expect(mainnetOption).toHaveTextContent('Connected');
+    expect(mainnetOption).toHaveTextContent('Ethereum');
     expect(mainnetOption).toBeDisabled();
   });
 
@@ -55,13 +55,13 @@ describe('<ChainModal />', () => {
       `rk-chain-option-${arbitrum.id}`,
     );
 
-    expect(mainnetOption).toHaveTextContent('Connected');
-    expect(arbitrumOption).not.toHaveTextContent('Connected');
+    expect(mainnetOption).toHaveTextContent('Ethereum');
+    expect(mainnetOption).toBeDisabled();
 
     await user.click(arbitrumOption);
 
-    expect(mainnetOption).not.toHaveTextContent('Connected');
-    expect(arbitrumOption).toHaveTextContent('Connected');
+    expect(arbitrumOption).toHaveTextContent('Arbitrum');
+    expect(arbitrumOption).toBeDisabled();
 
     expect(onCloseGotCalled).toBe(true);
   });
