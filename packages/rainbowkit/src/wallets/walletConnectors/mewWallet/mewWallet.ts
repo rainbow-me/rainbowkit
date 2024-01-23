@@ -1,15 +1,10 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 
-export interface MewWalletOptions {
-  chains: Chain[];
-}
-
-export const mewWallet = ({ chains }: MewWalletOptions): Wallet => {
+export const mewWallet = (): Wallet => {
   return {
     id: 'mew',
     name: 'MEW wallet',
@@ -23,10 +18,6 @@ export const mewWallet = ({ chains }: MewWalletOptions): Wallet => {
       mobile: 'https://mewwallet.com',
       qrCode: 'https://mewwallet.com',
     },
-    createConnector: () => {
-      return {
-        connector: getInjectedConnector({ chains, flag: 'isMEWwallet' }),
-      };
-    },
+    createConnector: getInjectedConnector({ flag: 'isMEWwallet' }),
   };
 };

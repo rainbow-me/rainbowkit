@@ -53,13 +53,14 @@ import {
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { WagmiConfig, useDisconnect } from 'wagmi';
+import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -85,78 +86,72 @@ const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const chains = [
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  bsc,
-  zkSync,
-  ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
-    ? [
-        goerli,
-        sepolia,
-        holesky,
-        polygonMumbai,
-        optimismSepolia,
-        arbitrumSepolia,
-        baseSepolia,
-        zoraSepolia,
-      ]
-    : []),
-];
+const { wallets } = getDefaultWallets();
 
-const { wallets } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
-  chains,
-});
-
-const wagmiConfig = getDefaultConfig({
-  appName: 'RainbowKit Demo',
-  projectId,
-  chains,
+  chains: [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    zora,
+    bsc,
+    zkSync,
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
+      ? [
+          goerli,
+          sepolia,
+          holesky,
+          polygonMumbai,
+          optimismSepolia,
+          arbitrumSepolia,
+          baseSepolia,
+          zoraSepolia,
+        ]
+      : []),
+  ],
   wallets: [
     ...wallets,
     {
       groupName: 'Other',
       wallets: [
-        argentWallet({ projectId, chains }),
-        bifrostWallet({ projectId, chains }),
-        bitgetWallet({ projectId, chains }),
-        bitskiWallet({ chains }),
-        clvWallet({ projectId, chains }),
-        coin98Wallet({ projectId, chains }),
-        coreWallet({ projectId, chains }),
-        dawnWallet({ chains }),
-        desigWallet({ chains }),
-        enkryptWallet({ chains }),
-        foxWallet({ projectId, chains }),
-        frameWallet({ chains }),
-        frontierWallet({ projectId, chains }),
-        imTokenWallet({ projectId, chains }),
-        ledgerWallet({ projectId, chains }),
-        mewWallet({ chains }),
-        oktoWallet({ projectId, chains }),
-        okxWallet({ projectId, chains }),
-        omniWallet({ projectId, chains }),
-        oneKeyWallet({ chains }),
-        phantomWallet({ chains }),
-        rabbyWallet({ chains }),
-        safeheronWallet({ chains }),
-        safepalWallet({ projectId, chains }),
-        subWallet({ projectId, chains }),
-        tahoWallet({ chains }),
-        talismanWallet({ chains }),
-        tokenPocketWallet({ projectId, chains }),
-        tokenaryWallet({ chains }),
-        trustWallet({ projectId, chains }),
-        uniswapWallet({ projectId, chains }),
-        xdefiWallet({ chains }),
-        zealWallet({ chains }),
-        zerionWallet({ projectId, chains }),
+        argentWallet,
+        bifrostWallet,
+        bitgetWallet,
+        bitskiWallet,
+        clvWallet,
+        coin98Wallet,
+        coreWallet,
+        dawnWallet,
+        desigWallet,
+        enkryptWallet,
+        foxWallet,
+        frameWallet,
+        frontierWallet,
+        imTokenWallet,
+        ledgerWallet,
+        mewWallet,
+        oktoWallet,
+        okxWallet,
+        omniWallet,
+        oneKeyWallet,
+        phantomWallet,
+        rabbyWallet,
+        safeheronWallet,
+        safepalWallet,
+        subWallet,
+        tahoWallet,
+        talismanWallet,
+        tokenPocketWallet,
+        tokenaryWallet,
+        trustWallet,
+        uniswapWallet,
+        xdefiWallet,
+        zealWallet,
+        zerionWallet,
       ],
     },
   ],
@@ -293,7 +288,6 @@ function RainbowKitApp({
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
-        chains={chains}
         locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
@@ -464,7 +458,7 @@ function RainbowKitApp({
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...chains].map((chain) => (
+                          {[undefined, ...config.chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
@@ -643,6 +637,8 @@ function RainbowKitApp({
   );
 }
 
+const queryClient = new QueryClient();
+
 export default function App(
   appProps: AppProps<{
     session: Session;
@@ -654,10 +650,13 @@ export default function App(
         <title>RainbowKit Example</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
+
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitApp {...appProps} />
-        </WagmiConfig>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitApp {...appProps} />
+          </QueryClientProvider>
+        </WagmiProvider>
       </SessionProvider>
     </>
   );

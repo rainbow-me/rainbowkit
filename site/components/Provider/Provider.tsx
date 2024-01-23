@@ -6,8 +6,9 @@ import {
   omniWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import { WagmiConfig } from 'wagmi';
+import { http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -18,36 +19,47 @@ import {
   zora,
 } from 'wagmi/chains';
 
-export const chains = [mainnet, polygon, optimism, arbitrum, base, zora, bsc];
-
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const { wallets } = getDefaultWallets({
-  appName: 'rainbowkit.com',
-  projectId,
-  chains,
-});
+const transports = {
+  [mainnet.id]: http(),
+  [polygon.id]: http(),
+  [optimism.id]: http(),
+  [arbitrum.id]: http(),
+  [base.id]: http(),
+  [zora.id]: http(),
+  [bsc.id]: http(),
+};
 
-const wagmiConfig = getDefaultConfig({
+const { wallets } = getDefaultWallets();
+
+const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
-  chains,
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
+  transports,
   wallets: [
     ...wallets,
     {
       groupName: 'More',
       wallets: [
-        argentWallet({ chains, projectId }),
-        trustWallet({ chains, projectId }),
-        omniWallet({ chains, projectId }),
-        imTokenWallet({ chains, projectId }),
-        ledgerWallet({ chains, projectId }),
+        argentWallet,
+        trustWallet,
+        omniWallet,
+        imTokenWallet,
+        ledgerWallet,
       ],
     },
   ],
 });
 
+const client = new QueryClient();
+
 export function Provider({ children }) {
-  return <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>;
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  );
 }

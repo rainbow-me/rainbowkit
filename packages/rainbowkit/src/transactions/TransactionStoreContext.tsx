@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PublicClient } from 'viem';
 import { useAccount, usePublicClient } from 'wagmi';
-import { useChainId } from '../hooks/useChainId';
+import { useChainId } from 'wagmi';
 import { TransactionStore, createTransactionStore } from './transactionStore';
 
 // Only allow a single instance of the store to exist at once
@@ -46,7 +46,7 @@ export function TransactionStoreProvider({
   );
 }
 
-export function useTransactionStore() {
+export function useTransactionStore(): TransactionStore {
   const store = useContext(TransactionStoreContext);
 
   if (!store) {

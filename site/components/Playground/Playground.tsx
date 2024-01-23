@@ -10,7 +10,6 @@ import {
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
-import { Provider, chains } from 'components/Provider/Provider';
 import { Text } from 'components/Text/Text';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { motion } from 'framer-motion';
@@ -145,68 +144,65 @@ export function Playground() {
           </Text>
         </Wrapper>
 
-        <Provider>
-          <RainbowKitProvider
-            chains={chains}
-            id="playground"
-            modalSize={modalSize}
-            theme={selectedTheme}
-            locale={locale}
+        <RainbowKitProvider
+          id="playground"
+          modalSize={modalSize}
+          theme={selectedTheme}
+          locale={locale}
+        >
+          <Box
+            marginX={{ xs: '0', md: 'auto' }}
+            marginY={{ xs: '9', md: '11' }}
+            paddingX="10"
+            style={{
+              maxWidth: 'fit-content',
+              userSelect: 'none',
+            }}
           >
             <Box
-              marginX={{ xs: '0', md: 'auto' }}
-              marginY={{ xs: '9', md: '11' }}
-              paddingX="10"
+              display={{ xs: 'none', md: 'flex' }}
               style={{
-                maxWidth: 'fit-content',
-                userSelect: 'none',
+                height: 500,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <Box
-                display={{ xs: 'none', md: 'flex' }}
-                style={{
-                  height: 500,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <div style={{ position: 'relative' }}>
-                  <div
-                    className={dialogContent}
-                    style={
-                      isCompact
-                        ? {}
-                        : {
-                            width: 712,
-                          }
-                    }
-                  >
-                    <DesktopOptions onClose={() => {}} />
-                  </div>
-                  {/* This div is placed on top of rainbowkit to make it non-interactive.
+              <div style={{ position: 'relative' }}>
+                <div
+                  className={dialogContent}
+                  style={
+                    isCompact
+                      ? {}
+                      : {
+                          width: 712,
+                        }
+                  }
+                >
+                  <DesktopOptions onClose={() => {}} />
+                </div>
+                {/* This div is placed on top of rainbowkit to make it non-interactive.
                   pointer-events: none; was forcing scrollbar to show:
                   https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
-                  <div style={{ position: 'absolute', inset: 0 }} />
-                </div>
-              </Box>
-
-              <Box display={{ md: 'none' }}>
-                <div style={{ position: 'relative' }}>
-                  <div
-                    className={clsx(dialogContent)}
-                    style={{ maxWidth: '100%' }}
-                  >
-                    <DesktopOptions onClose={() => {}} />
-                  </div>
-                  {/* This div is placed on top of rainbowkit to make it non-interactive.
-                  pointer-events: none; was forcing scrollbar to show:
-                  https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
-                  <div style={{ position: 'absolute', inset: 0 }} />
-                </div>
-              </Box>
+                <div style={{ position: 'absolute', inset: 0 }} />
+              </div>
             </Box>
-          </RainbowKitProvider>
-        </Provider>
+
+            <Box display={{ md: 'none' }}>
+              <div style={{ position: 'relative' }}>
+                <div
+                  className={clsx(dialogContent)}
+                  style={{ maxWidth: '100%' }}
+                >
+                  <DesktopOptions onClose={() => {}} />
+                </div>
+                {/* This div is placed on top of rainbowkit to make it non-interactive.
+                  pointer-events: none; was forcing scrollbar to show:
+                  https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
+                <div style={{ position: 'absolute', inset: 0 }} />
+              </div>
+            </Box>
+          </Box>
+        </RainbowKitProvider>
 
         <Box
           marginX={{ xs: '0', md: 'auto' }}

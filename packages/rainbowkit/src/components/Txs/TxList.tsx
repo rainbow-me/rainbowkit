@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
@@ -21,7 +21,7 @@ interface TxListProps {
 export function TxList({ address }: TxListProps) {
   const recentTransactions = useRecentTransactions();
   const clearRecentTransactions = useClearRecentTransactions();
-  const { chain: activeChain } = useNetwork();
+  const { chain: activeChain } = useAccount();
   const explorerLink = chainToExplorerUrl(activeChain);
   const visibleTxs = recentTransactions.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs.length > 0;

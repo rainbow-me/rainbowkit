@@ -1,19 +1,11 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
-export interface ImTokenWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type ImTokenWalletOptions = DefaultWalletOptions;
 
 export const imTokenWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: ImTokenWalletOptions): Wallet => ({
   id: 'imToken',
   name: 'imToken',
@@ -25,51 +17,40 @@ export const imTokenWallet = ({
     mobile: 'https://token.im/download',
     qrCode: 'https://token.im/download',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-      chains,
-      options: walletConnectOptions,
-    });
-
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const uri = await getWalletConnectUri(connector);
-          return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
-        },
-      },
-      qrCode: {
-        getUri: async () => getWalletConnectUri(connector),
-        instructions: {
-          learnMoreUrl:
-            typeof window !== 'undefined' &&
-            window.navigator.language.includes('zh')
-              ? 'https://support.token.im/hc/zh-cn/categories/360000925393'
-              : 'https://support.token.im/hc/en-us/categories/360000925393',
-          steps: [
-            {
-              description:
-                'wallet_connectors.im_token.qr_code.step1.description',
-              step: 'install',
-              title: 'wallet_connectors.im_token.qr_code.step1.title',
-            },
-            {
-              description:
-                'wallet_connectors.im_token.qr_code.step2.description',
-              step: 'create',
-              title: 'wallet_connectors.im_token.qr_code.step2.title',
-            },
-            {
-              description:
-                'wallet_connectors.im_token.qr_code.step3.description',
-              step: 'scan',
-              title: 'wallet_connectors.im_token.qr_code.step3.title',
-            },
-          ],
-        },
-      },
-    };
+  mobile: {
+    getUri: (uri: string) => {
+      return `imtokenv2://wc?uri=${encodeURIComponent(uri)}`;
+    },
   },
+  qrCode: {
+    getUri: (uri: string) => uri,
+    instructions: {
+      learnMoreUrl:
+        typeof window !== 'undefined' &&
+        window.navigator.language.includes('zh')
+          ? 'https://support.token.im/hc/zh-cn/categories/360000925393'
+          : 'https://support.token.im/hc/en-us/categories/360000925393',
+      steps: [
+        {
+          description: 'wallet_connectors.im_token.qr_code.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.im_token.qr_code.step1.title',
+        },
+        {
+          description: 'wallet_connectors.im_token.qr_code.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.im_token.qr_code.step2.title',
+        },
+        {
+          description: 'wallet_connectors.im_token.qr_code.step3.description',
+          step: 'scan',
+          title: 'wallet_connectors.im_token.qr_code.step3.title',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+    walletConnectParameters,
+  }),
 });

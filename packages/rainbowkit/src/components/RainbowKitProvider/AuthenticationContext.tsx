@@ -1,13 +1,12 @@
 import React, {
   ReactNode,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
   useRef,
 } from 'react';
-import { ConnectorData, useAccount } from 'wagmi';
+import { useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -56,7 +55,9 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
-  const { connector } = useAccount({
+  const { connector } = useAccount();
+
+  useAccountEffect({
     onDisconnect: () => {
       adapter.signOut();
     },
@@ -78,28 +79,30 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     }
   }, [status, adapter, isDisconnected]);
 
-  const handleChangedAccount = useCallback(
-    ({ account }: ConnectorData) => {
-      // Only if account is changed then signOut
-      if (account) adapter.signOut();
-    },
-    [adapter],
-  );
+  const handleChangedAccount = () => {
+    adapter.signOut();
+  };
 
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (connector && status === 'authenticated') {
+    // Wagmi renders emitter's partially on page load. We wanna make sure
+    // the event emitters gets updated before proceeding
+    if (
+      typeof connector?.emitter?.on === 'function' &&
+      status === 'authenticated'
+    ) {
       // Attach the event listener when status is 'authenticated'
-      connector.on('change', handleChangedAccount);
+      connector.emitter.on('change', handleChangedAccount);
 
       // Cleanup function to remove the event listener
       return () => {
-        connector?.off('change', handleChangedAccount);
+        connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [connector, status, handleChangedAccount]);
+  }, [connector?.emitter, status]);
 
   return (
     <AuthenticationContext.Provider

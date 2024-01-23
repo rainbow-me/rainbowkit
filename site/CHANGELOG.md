@@ -1,5 +1,11 @@
 # site
 
+## 0.0.86
+
+### Patch Changes
+
+- ae66859: Add `projectId` to `bifrostWallet` in the docs for custom wallet list
+
 ## 0.0.85
 
 ### Patch Changes

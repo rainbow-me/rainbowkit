@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useAccount, useBalance, useEnsAvatar, useEnsName } from 'wagmi';
+import { GetEnsNameReturnType } from 'viem';
+import { GetEnsAvatarReturnType } from 'viem/actions';
+import { useAccount, useBalance } from 'wagmi';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -18,8 +20,8 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
-  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
-  ensName: ReturnType<typeof useEnsName>['data'];
+  ensAvatar: GetEnsAvatarReturnType | undefined;
+  ensName: GetEnsNameReturnType | undefined;
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -115,7 +117,7 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              {balanceData && (
+              {!!balanceData && (
                 <Box textAlign="center">
                   <Text
                     as="h1"

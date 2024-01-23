@@ -1,28 +1,91 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  DefaultWalletOptions,
+  InstructionStepName,
+  Wallet,
+} from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
-import {
-  WalletConnectConnectorOptions,
-  getWalletConnectConnector,
-} from '../../getWalletConnectConnector';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface SubWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type SubWalletOptions = DefaultWalletOptions;
 
 export const subWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: SubWalletOptions): Wallet => {
   const isSubWalletInjected = hasInjectedProvider({ namespace: 'SubWallet' });
   const shouldUseWalletConnect = !isSubWalletInjected;
+
+  const getUriMobile = (uri: string) => {
+    return `subwallet://wc?uri=${encodeURIComponent(uri)}`;
+  };
+
+  const getUriQR = (uri: string) => {
+    return uri;
+  };
+
+  const mobileConnector = {
+    getUri: shouldUseWalletConnect ? getUriMobile : undefined,
+  };
+
+  let qrConnector = undefined;
+
+  if (shouldUseWalletConnect) {
+    qrConnector = {
+      getUri: getUriQR,
+      instructions: {
+        learnMoreUrl: 'https://www.subwallet.app/',
+        steps: [
+          {
+            description:
+              'wallet_connectors.subwallet.qr_code.step1.description',
+            step: 'install' as InstructionStepName,
+            title: 'wallet_connectors.subwallet.qr_code.step1.title',
+          },
+          {
+            description:
+              'wallet_connectors.subwallet.qr_code.step2.description',
+            step: 'create' as InstructionStepName,
+            title: 'wallet_connectors.subwallet.qr_code.step2.title',
+          },
+          {
+            description:
+              'wallet_connectors.subwallet.qr_code.step3.description',
+            step: 'scan' as InstructionStepName,
+            title: 'wallet_connectors.subwallet.qr_code.step3.title',
+          },
+        ],
+      },
+    };
+  }
+
+  const extensionConnector = {
+    instructions: {
+      learnMoreUrl: 'https://www.subwallet.app/',
+      steps: [
+        {
+          description:
+            'wallet_connectors.subwallet.extension.step1.description',
+          step: 'install' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.extension.step1.title',
+        },
+        {
+          description:
+            'wallet_connectors.subwallet.extension.step2.description',
+          step: 'create' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.extension.step2.title',
+        },
+        {
+          description:
+            'wallet_connectors.subwallet.extension.step3.description',
+          step: 'refresh' as InstructionStepName,
+          title: 'wallet_connectors.subwallet.extension.step3.title',
+        },
+      ],
+    },
+  };
 
   return {
     id: 'subwallet',
@@ -42,92 +105,14 @@ export const subWallet = ({
       ios: 'https://apps.apple.com/us/app/subwallet-polkadot-wallet/id1633050285',
       qrCode: 'https://www.subwallet.app/download',
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            options: walletConnectOptions,
-          })
-        : getInjectedConnector({ chains, namespace: 'SubWallet' });
-
-      const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector);
-
-        return `subwallet://wc?uri=${encodeURIComponent(uri)}`;
-      };
-
-      const getUriQR = async () => {
-        return await getWalletConnectUri(connector);
-      };
-
-      const mobileConnector = {
-        getUri: shouldUseWalletConnect ? getUriMobile : undefined,
-      };
-
-      let qrConnector = undefined;
-
-      if (shouldUseWalletConnect) {
-        qrConnector = {
-          getUri: getUriQR,
-          instructions: {
-            learnMoreUrl: 'https://www.subwallet.app/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.subwallet.qr_code.step1.description',
-                step: 'install' as InstructionStepName,
-                title: 'wallet_connectors.subwallet.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.subwallet.qr_code.step2.description',
-                step: 'create' as InstructionStepName,
-                title: 'wallet_connectors.subwallet.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.subwallet.qr_code.step3.description',
-                step: 'scan' as InstructionStepName,
-                title: 'wallet_connectors.subwallet.qr_code.step3.title',
-              },
-            ],
-          },
-        };
-      }
-
-      const extensionConnector = {
-        instructions: {
-          learnMoreUrl: 'https://www.subwallet.app/',
-          steps: [
-            {
-              description:
-                'wallet_connectors.subwallet.extension.step1.description',
-              step: 'install' as InstructionStepName,
-              title: 'wallet_connectors.subwallet.extension.step1.title',
-            },
-            {
-              description:
-                'wallet_connectors.subwallet.extension.step2.description',
-              step: 'create' as InstructionStepName,
-              title: 'wallet_connectors.subwallet.extension.step2.title',
-            },
-            {
-              description:
-                'wallet_connectors.subwallet.extension.step3.description',
-              step: 'refresh' as InstructionStepName,
-              title: 'wallet_connectors.subwallet.extension.step3.title',
-            },
-          ],
-        },
-      };
-
-      return {
-        connector,
-        mobile: mobileConnector,
-        qrCode: qrConnector,
-        extension: extensionConnector,
-      };
-    },
+    mobile: mobileConnector,
+    qrCode: qrConnector,
+    extension: extensionConnector,
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({ namespace: 'SubWallet' }),
   };
 };

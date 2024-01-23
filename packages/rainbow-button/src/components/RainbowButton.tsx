@@ -9,12 +9,7 @@ export function RainbowButtonProvider({
   RainbowKitProviderProps,
   'chains' | 'avatar' | 'initialChain' | 'modalSize' | 'showRecentTransactions'
 >) {
-  return (
-    // chains array is intentionally left empty
-    <RainbowKitProvider chains={[]} {...options}>
-      {children}
-    </RainbowKitProvider>
-  );
+  return <RainbowKitProvider {...options}>{children}</RainbowKitProvider>;
 }
 
 export const RainbowButton = () => {

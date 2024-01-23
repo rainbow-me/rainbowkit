@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useAccountEffect } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { isMobile } from '../../utils/isMobile';
@@ -48,12 +48,13 @@ export function WalletButtonRenderer({
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(WalletButtonContext);
   const [firstConnector] = useWalletConnectors()
+    .filter((wallet) => wallet.isRainbowKitConnector)
     // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
     .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
-  if (!firstConnector) {
+  if (!firstConnector && isMounted()) {
     throw new Error('Connector not found');
   }
 
@@ -70,7 +71,9 @@ export function WalletButtonRenderer({
     if (!connectModalOpen && connector) setConnector(null);
   }, [connectModalOpen, connector, setConnector]);
 
-  const { isConnected, isConnecting } = useAccount({
+  const { isConnected, isConnecting } = useAccount();
+
+  useAccountEffect({
     onConnect: () => {
       /*  const lastClickedWalletName = getRecent */
       // If you get error on desktop and thenswitch to mobile view

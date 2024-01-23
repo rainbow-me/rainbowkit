@@ -1,24 +1,16 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
 
-export interface OKXWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type OKXWalletOptions = DefaultWalletOptions;
 
 export const okxWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
+  walletConnectParameters,
 }: OKXWalletOptions): Wallet => {
   const isOKXInjected = hasInjectedProvider({ namespace: 'okxwallet' });
   const shouldUseWalletConnect = !isOKXInjected;
@@ -26,6 +18,7 @@ export const okxWallet = ({
   return {
     id: 'okx',
     name: 'OKX Wallet',
+    rdns: 'com.okex.wallet',
     iconUrl: async () => (await import('./okxWallet.svg')).default,
     iconAccent: '#000',
     iconBackground: '#000',
@@ -41,81 +34,68 @@ export const okxWallet = ({
       firefox: 'https://addons.mozilla.org/firefox/addon/okexwallet/',
       browserExtension: 'https://okx.com/download',
     },
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            options: walletConnectOptions,
-          })
-        : getInjectedConnector({ chains, namespace: 'okxwallet' });
-
-      return {
-        connector,
-        mobile: {
-          getUri: shouldUseWalletConnect
-            ? async () => {
-                const uri = await getWalletConnectUri(connector);
-                return isAndroid()
-                  ? uri
-                  : `okex://main/wc?uri=${encodeURIComponent(uri)}`;
-              }
-            : undefined,
-        },
-        qrCode: shouldUseWalletConnect
-          ? {
-              getUri: async () => getWalletConnectUri(connector),
-              instructions: {
-                learnMoreUrl: 'https://okx.com/web3/',
-                steps: [
-                  {
-                    description:
-                      'wallet_connectors.okx.qr_code.step1.description',
-                    step: 'install',
-                    title: 'wallet_connectors.okx.qr_code.step1.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.okx.qr_code.step2.description',
-                    step: 'create',
-                    title: 'wallet_connectors.okx.qr_code.step2.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.okx.qr_code.step3.description',
-                    step: 'scan',
-                    title: 'wallet_connectors.okx.qr_code.step3.title',
-                  },
-                ],
-              },
-            }
-          : undefined,
-        extension: {
+    mobile: {
+      getUri: shouldUseWalletConnect
+        ? (uri: string) => {
+            return isAndroid()
+              ? uri
+              : `okex://main/wc?uri=${encodeURIComponent(uri)}`;
+          }
+        : undefined,
+    },
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl: 'https://okx.com/web3/',
             steps: [
               {
-                description:
-                  'wallet_connectors.okx.extension.step1.description',
+                description: 'wallet_connectors.okx.qr_code.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.okx.extension.step1.title',
+                title: 'wallet_connectors.okx.qr_code.step1.title',
               },
               {
-                description:
-                  'wallet_connectors.okx.extension.step2.description',
+                description: 'wallet_connectors.okx.qr_code.step2.description',
                 step: 'create',
-                title: 'wallet_connectors.okx.extension.step2.title',
+                title: 'wallet_connectors.okx.qr_code.step2.title',
               },
               {
-                description:
-                  'wallet_connectors.okx.extension.step3.description',
-                step: 'refresh',
-                title: 'wallet_connectors.okx.extension.step3.title',
+                description: 'wallet_connectors.okx.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.okx.qr_code.step3.title',
               },
             ],
           },
-        },
-      };
+        }
+      : undefined,
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://okx.com/web3/',
+        steps: [
+          {
+            description: 'wallet_connectors.okx.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.okx.extension.step1.title',
+          },
+          {
+            description: 'wallet_connectors.okx.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.okx.extension.step2.title',
+          },
+          {
+            description: 'wallet_connectors.okx.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.okx.extension.step3.title',
+          },
+        ],
+      },
     },
+
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({ namespace: 'okxwallet' }),
   };
 };
