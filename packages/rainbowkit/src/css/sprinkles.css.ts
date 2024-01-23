@@ -197,6 +197,7 @@ const unresponsiveProperties = defineProperties({
     },
     gap: spacing,
     height: dimensions,
+    WebkitTouchCallout: ['none'],
     justifyContent: [...flexAlignment, 'space-between', 'space-around'],
     textAlign: textAlignments,
     marginBottom: spacing,
