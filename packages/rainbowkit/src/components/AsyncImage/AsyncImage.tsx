@@ -66,6 +66,7 @@ export function AsyncImage({
             })}
         height="full"
         position="absolute"
+        WebkitUserSelect="none"
         style={{
           touchCallout: 'none',
           transition: 'opacity .15s linear',
