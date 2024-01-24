@@ -11,7 +11,7 @@ import {
 
 declare global {
   interface Window {
-    coin98Wallet: Window['ethereum'];
+    coin98: { provider: Window['ethereum'] };
   }
 }
 
@@ -50,8 +50,8 @@ function getCoin98WalletInjectedProvider(): Window['ethereum'] {
   // without updating the ethereum.providers array. To prevent issues where
   // the C98 connector does not recognize the provider when C98 extension is installed,
   // we begin our checks by relying on C98's global object.
-  if (window['coin98Wallet']) {
-    return window['coin98Wallet'];
+  if (window['coin98']) {
+    return window['coin98']['provider'];
   }
 
   // Coin98 Wallet was injected into window.ethereum.
