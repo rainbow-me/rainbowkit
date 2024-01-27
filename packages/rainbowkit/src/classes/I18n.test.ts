@@ -22,7 +22,7 @@ describe('I18n', () => {
     testBasicTranslation('ja-JP', { hello: 'こんにちは' }, 'hello');
     testBasicTranslation('ar-AR', { hello: 'مرحبًا' }, 'hello');
 
-    it("should translate 'en-US' if 'ja-JP' message is missing (fallback enabled)", () => {
+    it("should translate 'en-US' if 'ja-JP' translation is missing (fallback enabled)", () => {
       const i18n = new I18n({
         'en-US': {
           hello: 'hello',
@@ -41,7 +41,7 @@ describe('I18n', () => {
       expect(i18n.t('hello')).toBe('hello');
     });
 
-    it('should return missing string if message is not present', () => {
+    it('should return missing message if translation does not exist', () => {
       const i18n = new I18n({
         'ja-JP': {
           hello: 'こんにちは',
@@ -53,7 +53,7 @@ describe('I18n', () => {
       expect(i18n.t('xyz')).toBe(`[missing: "ja-JP.xyz" translation]`);
     });
 
-    it('should return missing string if no locale present', () => {
+    it('should return missing message if no locale present', () => {
       const i18n = new I18n({});
 
       i18n.locale = 'ja-JP';
@@ -61,7 +61,7 @@ describe('I18n', () => {
       expect(i18n.t('xyz')).toBe(`[missing: "ja-JP.xyz" translation]`);
     });
 
-    it("should return missing string if 'ja-JP' locale has missing message (fallback disabled)", () => {
+    it("should return missing message if 'ja-JP' has missing translation (fallback disabled)", () => {
       const i18n = new I18n({
         'en-US': {
           hello: 'hello',
@@ -102,9 +102,8 @@ describe('I18n', () => {
 
       let called = false;
 
-      const unsubscribe = i18n.onChange(() => {
+      i18n.onChange(() => {
         called = true;
-        unsubscribe(); // Unsubscribe immediately
       });
 
       i18n.setTranslations('ru-RU', {
