@@ -1,5 +1,4 @@
-import type * as I18nTypes from 'i18n-js';
-import { I18n } from 'i18n-js/dist/require/index.js';
+import { I18n } from '../classes/I18n';
 import en_US from './en_US.json';
 
 export type Locale =
@@ -32,16 +31,16 @@ export type Locale =
   | 'zh'
   | 'zh-CN';
 
-// biome-ignore format: locale keys
-export const i18n: I18nTypes.I18n = new I18n({
-  'en': JSON.parse(en_US as any),
+export const i18n = new I18n({
+  en: JSON.parse(en_US as any),
   'en-US': JSON.parse(en_US as any),
 });
 
 i18n.defaultLocale = 'en-US';
+i18n.locale = 'en-US';
 i18n.enableFallback = true;
 
-const fetchLocale = async (locale: Locale): Promise<any> => {
+const fetchTranslations = async (locale: Locale): Promise<any> => {
   switch (locale) {
     case 'ar':
     case 'ar-AR':
@@ -92,12 +91,11 @@ const fetchLocale = async (locale: Locale): Promise<any> => {
 
 export async function setLocale(locale: Locale) {
   // If i18n translation already exists no need to refetch the local files again
-  if (i18n.translations[locale]) {
-    i18n.locale = locale;
+  const isCached = i18n.isLocaleCached(locale);
+  if (isCached) {
+    i18n.updateLocale(locale);
     return;
   }
-
-  const localeFile = (await fetchLocale(locale)) as string;
-  i18n.translations[locale] = JSON.parse(localeFile);
-  i18n.locale = locale;
+  const translations = await fetchTranslations(locale);
+  i18n.setTranslations(locale, JSON.parse(translations));
 }
