@@ -24,7 +24,6 @@ export class I18n {
   }
 
   private missingMessage(key: string): string {
-    console.log({ key });
     return `[missing: "${this.locale}.${key}" translation]`;
   }
 
