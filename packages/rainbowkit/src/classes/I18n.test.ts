@@ -104,7 +104,7 @@ describe('I18n Translation Tests', () => {
 
       const unsubscribe = i18n.onChange(() => {
         called = true;
-        unsubscribe(); // Unsubscribe immediately after being called
+        unsubscribe(); // Unsubscribe immediately
       });
 
       i18n.setTranslations('ru-RU', {
@@ -127,7 +127,7 @@ describe('I18n Translation Tests', () => {
         called = true;
       });
 
-      unsubscribe(); // Unsubscribe immediately after being set up
+      unsubscribe(); // Unsubscribe immediately
 
       i18n.setTranslations('ru-RU', {
         hello: 'привет',
