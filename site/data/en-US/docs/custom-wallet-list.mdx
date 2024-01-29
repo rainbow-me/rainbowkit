@@ -22,23 +22,27 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import { mainnet } from 'wagmi/chains';
 
-const connectors = connectorsForWallets({
-  projectId: 'YOUR_PROJECT_ID',
-  walletList: [
+const connectors = connectorsForWallets(
+  [
     {
       groupName: "Recommended",
       wallets: [injectedWallet, rainbowWallet, walletConnectWallet],
     },
   ],
-  appName: 'My RainbowKit App',
-});
+  {
+    appName: "My RainbowKit App",
+    projectId: "YOUR_PROJECT_ID",
+  }
+);
 ```
 
-You can then pass your connectors to `wagmi`'s `createConfig`.
+You can then pass your connectors to Wagmi's `createConfig`.
 
-```tsx line=1,4-99
-import { createConfig, WagmiProvider } from 'wagmi';
-...
+```tsx
+import { RainbowKitProvider, connectorsForWallets } from "@rainbow-me/rainbowkit";
+import { createConfig, http, WagmiProvider } from "wagmi";
+import { mainnet } from "wagmi/chains";
+
 const connectors = connectorsForWallets({ /* ... */ });
 
 const config = createConfig({

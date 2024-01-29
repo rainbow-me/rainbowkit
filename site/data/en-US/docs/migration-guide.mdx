@@ -33,11 +33,14 @@ npm i @tanstack/react-query
 **3. Adjust your Wagmi configuration**
 
 ```diff
+import '@rainbow-me/rainbowkit/styles.css';
+
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { mainnet, sepolia } from 'wagmi/chains'
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 - import { configureChains, WagmiConfig } from 'wagmi'
 - import { publicProvider } from 'wagmi/providers/public'
 + import { http, createConfig, WagmiProvider } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
 
 - const { chains, publicClient } = configureChains(
 -   [mainnet, sepolia],
@@ -84,18 +87,15 @@ If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follo
 
 **1. Adjust your RainbowKit configuration**
 
-Remember these adjustments is not the same as wagmi v2 adjustments. These updates will simplify the way you use wagmi and rainbowkit in your dApp.
+Remember these adjustments is not the same as wagmi v2 adjustments. These updates will simplify the way you use wagmi and RainbowKit in your dApp.
 
 ```diff
-import {
-  argentWallet,
-  imTokenWallet,
-  ledgerWallet,
-  omniWallet,
-  trustWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { WagmiProvider, createConfig } from 'wagmi';
+import '@rainbow-me/rainbowkit/styles.css';
+
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { WagmiProvider, http } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 - import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
 + import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
@@ -109,13 +109,17 @@ const projectId = "YOUR_PROJECT_ID";
 
 - const connectors = connectorsForWallets([...wallets]);
 
-// Creates wagmi and rainbowkit config for you out of the box!
 + const config = getDefaultConfig({
-+  appName: 'RainbowKit demo',
-+  projectId,
-+  chains: [mainnet, sepolia],
-+  transports,
++   appName: "RainbowKit demo",
++   projectId,
++   chains: [mainnet, sepolia],
++   transports: {
++     [mainnet.id]: http(),
++     [sepolia.id]: http(),
++   },
 + });
+
+const queryClient = new QueryClient()
 
 const App = () => {
   return (
@@ -127,8 +131,7 @@ const App = () => {
 +        </RainbowKitProvider>
 -        </RainbowKitProvider>
       </QueryClientProvider>
-     </WagmiProvider>
-    </WagmiConfig>
+    </WagmiProvider>
   );
 };
 ```
@@ -138,14 +141,17 @@ const App = () => {
 If you use custom wallets you no longer need to pass in `projectId`, `chains` or even walletConnect parameters individually. We've also updated `connectorsForWallets` and deprecated `getDefaultWallets`.
 
 ```diff
-- import { getDefaultWallets } from '@rainbow-me/rainbowkit';
-+ import { getDefaultWalletList } from '@rainbow-me/rainbowkit';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit/wallets';
+import '@rainbow-me/rainbowkit/styles.css';
+
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { connectorsForWallets, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   ledgerWallet,
   trustWallet
 } from '@rainbow-me/rainbowkit/wallets';
-import { createConfig } from 'wagmi';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 - const { wallets } = getDefaultWallets({
 -  appName: 'RainbowKit demo',
@@ -153,7 +159,7 @@ import { createConfig } from 'wagmi';
 -  chains,
 - });
 
-+ const walletList = getDefaultWalletList();
++ const { wallets } = getDefaultWallets();
 
 - const connectors = connectorsForWallets([
 -  {
@@ -165,24 +171,34 @@ import { createConfig } from 'wagmi';
 -  },
 - ]);
 
-+ const connectors = connectorsForWallets({
-+  projectId,
-+  walletList: [
-+    ...walletList,
-+    {
-+      groupName: "Popular",
-+      wallets: [ledgerWallet, trustWallet],
-+    },
++ const connectors = connectorsForWallets(
++   [
++     ...wallets,
++     {
++       groupName: "Recommended",
++       wallets: [
++        ledgerWallet,
++        trustWallet,
++       ],
++     },
 +  ],
-+  appName,
-+ });
++  {
++    appName: 'My RainbowKit App',
++    projectId: 'YOUR_PROJECT_ID',
++  }
++ );
 
 
 const config = createConfig({
-  connectors, // Pass in connectors to wagmi's `createConfig`
-  chains,
-  transports,
+  connectors,
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http(),
+  },
 });
+
+const queryClient = new QueryClient()
 
 const App = () => {
   return (
@@ -192,8 +208,7 @@ const App = () => {
            {/* Your App */}
         </RainbowKitProvider>
       </QueryClientProvider>
-     </WagmiProvider>
-    </WagmiConfig>
+    </WagmiProvider>
   );
 };
 ```
@@ -205,6 +220,7 @@ RainbowKit no longer supports WalletConnect legacy parameters. Here is how you p
 Example with `connectorsForWallets`
 
 ```diff
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
   coinbaseWallet,
@@ -212,11 +228,10 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets({
-  projectId,
-  walletList: [
+const connectors = connectorsForWallets(
+  [
     {
-      groupName: 'Recommended',
+      groupName: "Recommended",
       wallets: [
         rainbowWallet,
         coinbaseWallet,
@@ -225,9 +240,12 @@ const connectors = connectorsForWallets({
       ],
     },
   ],
-  appName,
-+ walletConnectParameters: { ... };
-});
+  {
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
++   walletConnectParameters: { ... },
+  }
+);
 ```
 
 `RainbowKitWalletConnectParameters` type will help you to see what parameters you should pass in.
@@ -313,8 +331,47 @@ const customWallet = (): Wallet => ({
 
 **5. Custom chains**
 
-We no longer support custom chains. You no longer can pass `chains` into `<RainbowKitProvider>`
+We've introduced a new function called `getChains` which allows you to create custom RainbowKit chains and integrate them into wagmi's configuration function.
 
+Example with `createConfig`.
+
+```
+import { mainnet, polygon } from 'wagmi/chains';
+import { getChains } from '@rainbow-me/rainbowkit';
+import { createConfig, http } from 'wagmi'
+
+const chains = getChains([
+  { ...mainnet, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+  { ...polygon, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+]);
+
+const config = createConfig({
+  chains,
+  transports: {
+    [mainnet.id]: http(),
+    [polygon.id]: http(),
+  },
+});
+```
+
+Example with `getDefaultConfig` from `@rainbow-me/rainbowkit`.
+
+```
+import { mainnet, polygon } from 'wagmi/chains';
+import { getChains } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+
+const chains = getChains([
+  { ...mainnet, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+  { ...polygon, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+]);
+
+const config = getDefaultConfig({
+  appName: 'RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains,
+});
+```
 
 ### 1.x.x Breaking changes
 

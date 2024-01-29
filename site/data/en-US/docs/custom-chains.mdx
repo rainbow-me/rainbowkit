@@ -1,0 +1,46 @@
+---
+title: Custom chains
+description: Create a custom chain
+---
+
+# Custom chains
+
+## Create a custom chain
+
+You can use the `getChains` from `@rainbow-me/rainbowkit` to help you create a custom chains. Then, pass that to the [`createConfig` function](https://wagmi.sh/core/api/createConfig#createconfig).
+
+```tsx
+import { RainbowKitProvider, getChains, getDefaultWallets } from "@rainbow-me/rainbowkit";
+import { mainnet, polygon } from 'wagmi/chains';
+import { createConfig, http, WagmiProvider } from "wagmi";
+
+const chains = getChains([
+  { ...mainnet, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+  { ...polygon, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+]);
+
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+});
+
+const wagmiConfig = createConfig({
+  connectors,
+  chains,
+  transports: {
+    [mainnet.id]: http(),
+  },
+});
+
+const App = () => {
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <RainbowKitProvider>
+        {/* Your App */}
+      </RainbowKitProvider>
+    </WagmiProvider>
+  );
+};
+```
+
+Learn more about [chains](https://wagmi.sh/core/api/createConfig#chains).
