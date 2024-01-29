@@ -2,6 +2,6 @@
 "site": patch
 ---
 
-- Added migration guide for `@rainbow-me/rainbowkit@beta` breaking changes.
-- Added migration guide for `@rainbow-me/rainbow-button@beta` breaking changes.
-- Introducing eip6963 wallet support in RainbowKit and adding step by step guide for wallet providers how they can add eip6963 wallet support without facing duplication issues.
+- Added migration guide for `@rainbow-me/rainbowkit` `2.x.x` breaking changes.
+- Updated Custom Wallet List, Custom Chains and Installation sections.
+- Updated `Provider.tsx` to use the new wagmi v2 configuration alongside with rainbowkit v2
