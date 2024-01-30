@@ -35,7 +35,7 @@ npm i @tanstack/react-query
 ```diff
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { mainnet, sepolia } from 'wagmi/chains'
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 - import { configureChains, WagmiConfig } from 'wagmi'
@@ -92,14 +92,14 @@ Remember these adjustments is not the same as wagmi v2 adjustments. These update
 ```diff
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, http } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 - import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
 + import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-const projectId = "YOUR_PROJECT_ID";
+const projectId = 'YOUR_PROJECT_ID';
 
 - const { wallets } = getDefaultWallets({
 -  appName: 'RainbowKit demo',
@@ -110,7 +110,7 @@ const projectId = "YOUR_PROJECT_ID";
 - const connectors = connectorsForWallets([...wallets]);
 
 + const config = getDefaultConfig({
-+   appName: "RainbowKit demo",
++   appName: 'RainbowKit demo',
 +   projectId,
 +   chains: [mainnet, sepolia],
 +   transports: {
@@ -143,7 +143,7 @@ If you use custom wallets you no longer need to pass in `projectId`, `chains` or
 ```diff
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { connectorsForWallets, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   ledgerWallet,
@@ -175,7 +175,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 +   [
 +     ...wallets,
 +     {
-+       groupName: "Recommended",
++       groupName: 'Recommended',
 +       wallets: [
 +        ledgerWallet,
 +        trustWallet,
@@ -231,7 +231,7 @@ import {
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [
         rainbowWallet,
         coinbaseWallet,
@@ -283,8 +283,8 @@ const injectedWallet = (): Wallet => ({
 +    return wagmiCreateConnector((config) => ({
 +      ...injected({
 +        target: () => ({
-+          id: "windowProvider",
-+          name: "Window Provider",
++          id: 'windowProvider',
++          name: 'Window Provider',
 +          provider: window.ethereum,
 +        }),
 +      })(config),
@@ -311,7 +311,7 @@ const customWallet = (): Wallet => ({
 +  extension?: { ... };
 -  createConnector: () => ({
 -    connector: new WalletConnectConnector({
--      projectId: "...",
+-      projectId: '...',
 -    }),
 -  mobile?: { ... };
 -  desktop?: { ... };
@@ -321,7 +321,7 @@ const customWallet = (): Wallet => ({
 +  createConnector: (walletDetails: WalletDetailsParams) => {
 +    return wagmiCreateConnector((config) => ({
 +      ...walletConnect({
-+        projectId: "...",
++        projectId: '...',
 +      })(config),
 +      ...walletDetails,
 +    }));
@@ -341,8 +341,8 @@ import { getChains } from '@rainbow-me/rainbowkit';
 import { createConfig, http } from 'wagmi'
 
 const chains = getChains([
-  { ...mainnet, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
-  { ...polygon, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+  { ...mainnet, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
+  { ...polygon, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
 ]);
 
 const config = createConfig({
@@ -362,8 +362,8 @@ import { getChains } from '@rainbow-me/rainbowkit';
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
 const chains = getChains([
-  { ...mainnet, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
-  { ...polygon, iconUrl: "<icon_url>", iconBackground: "<icon_background>" },
+  { ...mainnet, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
+  { ...polygon, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
 ]);
 
 const config = getDefaultConfig({

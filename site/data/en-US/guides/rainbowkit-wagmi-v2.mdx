@@ -33,7 +33,7 @@ npm i @tanstack/react-query
 ```diff
   import '@rainbow-me/rainbowkit/styles.css';
 
-  import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
   import { mainnet, sepolia } from 'wagmi/chains';
 + import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 - import { configureChains, WagmiConfig } from 'wagmi'
@@ -41,7 +41,7 @@ npm i @tanstack/react-query
 + import { WagmiProvider } from 'wagmi'
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const projectId = "YOUR_PROJECT_ID";
+const projectId = 'YOUR_PROJECT_ID';
 
 - const { chains, publicClient } = configureChains(
 -   [mainnet, sepolia],
@@ -62,7 +62,7 @@ const projectId = "YOUR_PROJECT_ID";
 
 // New RainbowKit configuration setup
 + const config = getDefaultConfig({
-+  appName: "My RainbowKit App",
++  appName: 'My RainbowKit App',
 +  projectId,
 +  chains: [mainnet, sepolia],
 + });
@@ -136,7 +136,7 @@ const connectors = connectorsForWallets(
   [
     ...wallets,
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [
 -       ledgerWallet({ projectId, chains }),
 +       ledgerWallet,
@@ -165,8 +165,8 @@ Example usage with `getDefaultWallets` and `getDefaultConfig`.
 + const { wallets } = getDefaultWallets();
 
 + const config = getDefaultConfig({
-+   appName: "My RainbowKit App",
-+   projectId: "YOUR_PROJECT_ID",
++   appName: 'My RainbowKit App',
++   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet, sepolia],
 +   wallets
 + });
@@ -186,7 +186,7 @@ const connectors = connectorsForWallets(
   [
     ...wallets,
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [
 -       ledgerWallet({ projectId, chains }),
 +       ledgerWallet,

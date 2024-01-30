@@ -25,13 +25,13 @@ import { mainnet } from 'wagmi/chains';
 const connectors = connectorsForWallets(
   [
     {
-      groupName: "Recommended",
+      groupName: 'Recommended',
       wallets: [injectedWallet, rainbowWallet, walletConnectWallet],
     },
   ],
   {
-    appName: "My RainbowKit App",
-    projectId: "YOUR_PROJECT_ID",
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
   }
 );
 ```
@@ -39,9 +39,9 @@ const connectors = connectorsForWallets(
 You can then pass your connectors to Wagmi's `createConfig`.
 
 ```tsx
-import { RainbowKitProvider, connectorsForWallets } from "@rainbow-me/rainbowkit";
-import { createConfig, http, WagmiProvider } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 
 const connectors = connectorsForWallets({ /* ... */ });
 
