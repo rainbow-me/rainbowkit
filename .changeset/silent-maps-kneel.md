@@ -33,15 +33,15 @@ If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s 
 If you use `RainbowConnector` connector you would need to update it to `rainbowConnector` without specifyingg the `chains`.
 
 ```diff
--import { RainbowConnector } from "@rainbow-me/rainbow-button";
-+import { rainbowConnector } from "@rainbow-me/rainbow-button";
-+import { mainnet } from "wagmi/chains";
-+import { http } from "wagmi";
-import { createConfig } from "wagmi";
+-import { RainbowConnector } from '@rainbow-me/rainbow-button';
++import { rainbowConnector } from '@rainbow-me/rainbow-button';
++import { mainnet } from 'wagmi/chains';
++import { http } from 'wagmi';
+import { createConfig } from 'wagmi';
 
 + const connectors = connectorsForWallets([rainbowConnector], {
-+   appName: "RainbowKit App",
-+   projectId: "YOUR_PROJECT_ID",
++   appName: 'RainbowKit App',
++   projectId: 'YOUR_PROJECT_ID',
 + });
 
 const config = createConfig({
@@ -54,5 +54,3 @@ const config = createConfig({
 });
 
 ```
-
-Feel free to follow `@rainbow-me/rainbow-button`'s migration guide [here](https://www.rainbowkit.com/docs/migration-guide).

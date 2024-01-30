@@ -29,6 +29,7 @@ const wagmiConfig = createConfig({
   chains,
   transports: {
     [mainnet.id]: http(),
+    [polygon.id]: http(),
   },
 });
 

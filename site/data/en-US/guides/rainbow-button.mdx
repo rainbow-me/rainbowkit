@@ -13,34 +13,45 @@ The `RainbowButton` component is the simplest way to add support for Rainbow Wal
 The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
 
 ```bash
-npm install @rainbow-me/rainbow-button@beta wagmi@2 viem@2
+npm install @rainbow-me/rainbow-button wagmi viem
 ```
 
 **2. Configure with Wagmi and install the RainbowButton**
 
-Pass an instance of the `rainbowConnector` to your Wagmi connector list, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component into your wallet list.
+Pass an instance of the `rainbowConnector` to `connectorsForWallets` then pass connectors to Wagmi's `createConfig`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, RainbowButton, rainbowConnector } from "@rainbow-me/rainbow-button";
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { mainnet } from 'viem/chains';
+
+const connectors = connectorsForWallets(rainbowConnector, {
+  projectId: 'YOUR_PROJECT_ID',
+  appName: 'My RainbowKit App',
+});
 
 const config = createConfig({
-  connectors: [rainbowConnector({ projectId, appName })],
-  publicClient
+  connectors,
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
       <RainbowButtonProvider>
-        {/* Your App */}
+        <RainbowButton />
       </RainbowButtonProvider>
     </WagmiProvider>
   );
-};
-
-export const YourApp = () => {
-  return <RainbowButton />;
 };
 ```
 
