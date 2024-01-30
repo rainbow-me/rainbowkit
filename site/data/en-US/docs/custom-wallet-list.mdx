@@ -43,7 +43,7 @@ import { RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 
-const connectors = connectorsForWallets({ /* ... */ });
+const connectors = connectorsForWallets(/* ... */);
 
 const config = createConfig({
   connectors,
