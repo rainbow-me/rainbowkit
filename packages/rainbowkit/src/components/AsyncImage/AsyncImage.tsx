@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { isIOS } from '../../utils/isMobile';
 import { Box, BoxProps } from '../Box/Box';
 import { AsyncImageSrc, useAsyncImage } from './useAsyncImage';
 
@@ -28,6 +29,7 @@ export function AsyncImage({
   width,
   testId,
 }: AsyncImageProps) {
+  const ios = isIOS();
   const src = useAsyncImage(srcProp);
   const isRemoteImage = src && /^http/.test(src);
   const [isRemoteImageLoaded, setRemoteImageLoaded] = useReducer(
@@ -66,6 +68,7 @@ export function AsyncImage({
             })}
         height="full"
         position="absolute"
+        {...(ios ? { WebkitUserSelect: 'none' } : {})}
         style={{
           touchCallout: 'none',
           transition: 'opacity .15s linear',
