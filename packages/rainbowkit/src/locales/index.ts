@@ -1,4 +1,4 @@
-import { I18n } from '../classes/I18n';
+import { I18n } from './I18n';
 import en_US from './en_US.json';
 
 export type Locale =
