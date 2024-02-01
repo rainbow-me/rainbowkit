@@ -8,6 +8,8 @@ export interface RainbowKitChain extends Chain {
   iconBackground?: string;
 }
 
+export type RainbowKitChains = readonly [RainbowKitChain, ...RainbowKitChain[]];
+
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
   initialChainId?: number;
