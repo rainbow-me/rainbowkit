@@ -1,5 +1,19 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.4
+
+### Patch Changes
+
+- c0a644a: Fixed an issue that caused components to re-render on every window resize event. Now components will only re-render once the user has finished resizing their window.
+- 41616b9: Fixed a bug where the `connectModalOpen` state incorrectly remained `true` after a successful `siwe` authentication. This fix ensures that `connectModalOpen` shows the correct state.
+- cf4955f: Fixed a bug where the back button wasn't showing on compact size modal when selecting `DownloadOptions` wallet step.
+
+  Removed back button for wide size modal entirely when selecting `DownloadOptions` wallet step to prevent incorrect wallet step switching.
+
+- e5f5f03: Removed external `i18n-js` dependency to reduce RainbowKit bundle sizes.
+- c0bd68e: Fixed a bug in the account modal transactions section where transactions that were not found or cancelled were incorrectly shown as 'pending' instead of 'failed'.
+- a79609b: Fixed a bug that allowed users to hold-press or cursor select wallet icons on iOS, which interrupted the connection experiencce.
+
 ## 1.3.3
 
 ### Patch Changes
