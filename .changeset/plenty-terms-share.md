@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Removed `i18n-js` and made a new `I18n` class for translations. This change was made to improve the package bundle size.
+Removed external `i18n-js` dependency to reduce RainbowKit bundle sizes.
