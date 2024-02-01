@@ -1,4 +1,3 @@
-import { Chain } from 'wagmi/chains';
 import { isNotNullish } from '../../utils/isNotNullish';
 import { RainbowKitChain } from './RainbowKitChainContext';
 
@@ -153,13 +152,16 @@ const chainMetadataById = Object.fromEntries(
     .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
-export const provideRainbowKitChains = (chains: readonly [Chain, ...Chain[]]) =>
+/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
+export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
+  chains: readonly [Chain, ...Chain[]],
+): Chain[] =>
   chains.map((chain) => {
     const defaultMetadata = chainMetadataById[chain.id] ?? {};
     return {
       ...chain,
-      name: defaultMetadata.name ?? chain.name, // Favor colloquial names
-      iconUrl: defaultMetadata.iconUrl,
-      iconBackground: defaultMetadata.iconBackground,
-    } as RainbowKitChain;
+      name: defaultMetadata.name ?? chain.name, // favor colloquial names
+      iconUrl: chain.iconUrl ?? defaultMetadata.iconUrl,
+      iconBackground: chain.iconBackground ?? defaultMetadata.iconBackground,
+    } as Chain;
   });
