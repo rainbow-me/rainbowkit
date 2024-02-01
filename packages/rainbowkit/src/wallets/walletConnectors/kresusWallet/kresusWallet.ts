@@ -2,7 +2,7 @@ import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainCon
 import { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
-export interface MyWalletOptions {
+export interface KresusWalletOptions {
   projectId: string;
   chains: Chain[];
 }
@@ -10,7 +10,7 @@ export interface MyWalletOptions {
 export const kresusWallet = ({
   chains,
   projectId,
-}: MyWalletOptions): Wallet => ({
+}: KresusWalletOptions): Wallet => ({
   id: 'kresus-wallet',
   name: 'Kresus Wallet',
   iconUrl:
