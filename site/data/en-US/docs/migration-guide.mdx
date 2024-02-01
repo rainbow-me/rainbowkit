@@ -65,7 +65,8 @@ const App = () => {
 -    <WagmiConfig config={config}>
 +    <WagmiProvider config={config}>
 +      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider chains={chains}>
+-        <RainbowKitProvider chains={chains}>
++        <RainbowKitProvider>
           {/* Your App */}
         </RainbowKitProvider>
 +      </QueryClientProvider>
