@@ -1,7 +1,7 @@
 {
   "name": "with-next-mint-nft",
   "private": true,
-  "version": "0.0.76",
+  "version": "0.0.77",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
