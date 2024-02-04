@@ -54,7 +54,7 @@ export function WalletButtonRenderer({
     .filter((_wallet) => _wallet.id.toLowerCase() === wallet.toLowerCase())
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
-  if (!firstConnector && isMounted()) {
+  if (!firstConnector) {
     throw new Error('Connector not found');
   }
 
