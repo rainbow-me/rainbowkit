@@ -75,9 +75,8 @@ export function WalletButtonRenderer({
 
   useAccountEffect({
     onConnect: () => {
-      /*  const lastClickedWalletName = getRecent */
-      // If you get error on desktop and thenswitch to mobile view
-      // then connect your wallet the error will remain there. We will
+      // If you get error on desktop and then switch to mobile view
+      // and connect your wallet the error will remain there. We will
       // reset the error in case that happens.
       if (isError) setIsError(false);
     },
