@@ -35,11 +35,6 @@ export const connectorsForWallets = (
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
-  // The 'connectorsForWallets' will run on server side. We wanna make sure we don't call
-  // the connectors at the time when we're rendering on server side otherwise we might
-  // expose too many event emitters at once
-  if (typeof window === 'undefined') return [];
-
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];

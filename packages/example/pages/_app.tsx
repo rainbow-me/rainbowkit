@@ -178,6 +178,7 @@ const config = getDefaultConfig({
       ],
     },
   ],
+  ssr: true,
 });
 
 const demoAppInfo = {
