@@ -57,14 +57,10 @@ export function Providers({
   children: React.ReactNode;
   locale: Locale;
 }) {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider locale={locale}>
-          {mounted && children}
-        </RainbowKitProvider>
+        <RainbowKitProvider locale={locale}>{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
