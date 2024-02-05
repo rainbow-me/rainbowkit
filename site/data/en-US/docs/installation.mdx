@@ -28,14 +28,22 @@ Alternatively, you can manually integrate RainbowKit into your existing project.
 Install RainbowKit and its peer dependencies, [Wagmi v2](https://wagmi.sh/) and [Viem](https://viem.sh).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@1 viem@1
+npm install @rainbow-me/rainbowkit wagmi viem
+```
+
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+
+Install it with the following command:
+
+```bash
+npm install @tanstack/react-query
 ```
 
 > Note: RainbowKit is a [React](https://reactjs.org/) library.
 
 #### Import
 
-Import RainbowKit and wagmi.
+Import RainbowKit, Wagmi and TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -53,6 +61,10 @@ import {
   base,
   zora,
 } from 'wagmi/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Configure
@@ -78,12 +90,16 @@ const config = getDefaultConfig({
 Wrap your application with `RainbowKitProvider` and [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider).
 
 ```tsx
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
     <WagmiProvider config={config}>
-      <RainbowKitProvider>
-        {/* Your App */}
-      </RainbowKitProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 };

@@ -37,7 +37,10 @@ import '@rainbow-me/rainbowkit/styles.css';
 
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { mainnet, sepolia } from 'wagmi/chains'
-+ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
++ import {
++  QueryClientProvider,
++  QueryClient,
++ } from "@rainbow-me/rainbowkit/wallets";
 - import { configureChains, WagmiConfig } from 'wagmi'
 - import { publicProvider } from 'wagmi/providers/public'
 + import { http, createConfig, WagmiProvider } from 'wagmi'
@@ -298,8 +301,7 @@ const injectedWallet = (): Wallet => ({
 Here is another example of a custom WalletConnect wallet.
 
 ```diff
-+ import { createConnector as wagmiCreateConnector } from 'wagmi';
-+ import { walletConnect } from 'wagmi/connectors';
+import { getWalletConnectConnector } from '@rainbow-me/rainbowkit';
 
 const customWallet = (): Wallet => ({
   id: 'custom',
@@ -319,14 +321,7 @@ const customWallet = (): Wallet => ({
 -  qrCode?: { ... };
 -  extension?: { ... };
 -  }),
-+  createConnector: (walletDetails: WalletDetailsParams) => {
-+    return wagmiCreateConnector((config) => ({
-+      ...walletConnect({
-+        projectId: '...',
-+      })(config),
-+      ...walletDetails,
-+    }));
-+  },
++  createConnector: getWalletConnectConnector({ projectId }),
 });
 ```
 
@@ -336,36 +331,36 @@ We've introduced a new way of adding a custom chain. You can either use `getDefa
 
 Example with `getDefaultConfig`.
 
-```
+```diff
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { mainnet, optimism } from 'wagmi/chains';
 
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [
-    {
-      ...mainnet,
-      iconBackground: '#000',
-      iconUrl: 'https://example.com/icons/ethereum.png',
-    },
-    {
-      ...optimism,
-      iconBackground: '#ff0000',
-      iconUrl: 'https://example.com/icons/optimism.png',
-    },
-  ],
++ chains: [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++   {
++     ...optimism,
++     iconBackground: '#ff0000',
++     iconUrl: 'https://example.com/icons/optimism.png',
++   },
++ ],
 });
 ```
 
 Example with `createConfig`.
 
-```
+```diff
 import { Chain } from '@rainbow-me/rainbowkit';
 import { createConfig, http } from 'wagmi';
 import { mainnet, optimism } from 'wagmi/chains';
 
-const chains: readonly [Chain, ...Chain[]] = [
++ const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
     iconBackground: '#000',

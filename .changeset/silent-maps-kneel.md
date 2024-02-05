@@ -30,7 +30,7 @@ If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s 
 
 **4. Check for breaking changes in `@rainbow-me/rainbow-button`**
 
-If you use `RainbowConnector` connector you would need to update it to `rainbowConnector` without specifyingg the `chains`.
+If you use `RainbowConnector` connector you would need to update it to `rainbowConnector` without including the `chains`.
 
 ```diff
 -import { RainbowConnector } from '@rainbow-me/rainbow-button';
@@ -39,14 +39,14 @@ If you use `RainbowConnector` connector you would need to update it to `rainbowC
 +import { http } from 'wagmi';
 import { createConfig } from 'wagmi';
 
-+ const connectors = connectorsForWallets([rainbowConnector], {
-+   appName: 'RainbowKit App',
-+   projectId: 'YOUR_PROJECT_ID',
-+ });
-
 const config = createConfig({
 - connectors: [new RainbowConnector({ chains, projectId })],
-+ connectors,
++ connectors: [
++   rainbowConnector({
++     appName: "RainbowKit demo",
++     projectId: "YOUR_PROJECT_ID",
++   }),
++ ],
 + chains: [mainnet],
 + transports: {
 +   [mainnet.id]: http(),

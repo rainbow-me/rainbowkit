@@ -69,10 +69,16 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@rainbow-me/rainbowkit/wallets";
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */
 });
+
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   // You'll need to resolve AUTHENTICATION_STATUS here
@@ -82,14 +88,16 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <WagmiProvider {...etc}>
-      <RainbowKitAuthenticationProvider
-        adapter={authenticationAdapter}
-        status={AUTHENTICATION_STATUS}
-      >
-        <RainbowKitProvider {...etc}>
-          <Component {...pageProps} />
-        </RainbowKitProvider>
-      </RainbowKitAuthenticationProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }

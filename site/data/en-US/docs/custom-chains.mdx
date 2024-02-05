@@ -18,6 +18,10 @@ import {
   Chain,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@rainbow-me/rainbowkit/wallets";
 
 const avalanche: Chain = {
   id: 43_114,
@@ -52,10 +56,16 @@ const config = getDefaultConfig({
   chains: [avalanche],
 });
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
     <WagmiProvider config={config}>
-      <RainbowKitProvider>{/* Your App */}</RainbowKitProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 };

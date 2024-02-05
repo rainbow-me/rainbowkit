@@ -39,7 +39,10 @@ npm i @tanstack/react-query
 - import { configureChains, WagmiConfig } from 'wagmi'
 - import { publicProvider } from 'wagmi/providers/public'
 + import { WagmiProvider } from 'wagmi'
-+ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
++ import {
++  QueryClientProvider,
++  QueryClient,
++ } from "@rainbow-me/rainbowkit/wallets";
 
 const projectId = 'YOUR_PROJECT_ID';
 
