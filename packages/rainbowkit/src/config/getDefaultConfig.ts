@@ -1,7 +1,7 @@
 import { Transport } from 'viem';
-import { http } from 'wagmi';
+import { http, CreateConfigParameters } from 'wagmi';
 import { WagmiProviderProps, createConfig } from 'wagmi';
-import { type Chain } from 'wagmi/chains';
+import { type RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import type { WalletList } from '../wallets/Wallet';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
@@ -12,22 +12,27 @@ import {
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
-export type _chains = readonly [Chain, ...Chain[]];
+export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
 
 // Define the '_transports' type as a Record
 // It maps each 'Chain' id to a 'Transport'
 export type _transports = Record<_chains[number]['id'], Transport>;
 
-interface GetDefaultConfigParameters {
+type WagmiConfigParameters = Omit<
+  CreateConfigParameters<_chains, _transports>,
+  // If you use 'client' you can't use 'transports' (we force to use 'transports')
+  // More info here https://wagmi.sh/core/api/createConfig#client
+  // We will also use our own 'connectors' instead of letting user specifying it
+  'client' | 'connectors'
+>;
+
+interface GetDefaultConfigParameters extends WagmiConfigParameters {
   appName: string;
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
   wallets?: WalletList;
   projectId: string;
-  chains: _chains;
-  transports?: _transports;
-  multiInjectedProviderDiscovery?: boolean;
 }
 
 const createDefaultTransports = (chains: _chains): _transports => {
@@ -47,10 +52,10 @@ export const getDefaultConfig = ({
   appIcon,
   wallets,
   projectId,
-  chains,
-  multiInjectedProviderDiscovery = true,
-  transports,
+  ...wagmiParameters
 }: GetDefaultConfigParameters): WagmiProviderProps['config'] => {
+  let { transports, chains, ...restWagmiParameters } = wagmiParameters;
+
   const metadata = computeWalletConnectMetaData({
     appName,
     appDescription,
@@ -88,6 +93,6 @@ export const getDefaultConfig = ({
     connectors,
     chains,
     transports,
-    multiInjectedProviderDiscovery,
+    ...restWagmiParameters,
   });
 };

@@ -86,6 +86,7 @@
     "fallback_title": "Сканувати за допомогою вашого телефону"
   },
   "connector_group": {
+    "installed": "Встановлено",
     "recommended": "Рекомендовано",
     "other": "Інші",
     "popular": "Популярні",

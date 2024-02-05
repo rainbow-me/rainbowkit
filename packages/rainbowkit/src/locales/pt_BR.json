@@ -86,6 +86,7 @@
     "fallback_title": "Digitalize com o seu telefone"
   },
   "connector_group": {
+    "installed": "Instalado",
     "recommended": "Recomendado",
     "other": "Outro",
     "popular": "Popular",
