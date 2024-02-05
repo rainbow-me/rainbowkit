@@ -31,19 +31,11 @@ import {
 } from "@rainbow-me/rainbowkit-siwe-next-auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const projectId = "YOUR_PROJECT_ID";
-
-const appName = "Rainbowkit Demo";
-
-const demoAppInfo = {
-  appName: "Rainbowkit Demo",
-};
-
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  projectId,
-  appName,
+  appName: "RainbowKit demo",
+  projectId: "YOUR_PROJECT_ID",
   wallets: [
     ...wallets,
     {
@@ -82,7 +74,7 @@ export default function App({
           <RainbowKitSiweNextAuthProvider
             getSiweMessageOptions={getSiweMessageOptions}
           >
-            <RainbowKitProvider appInfo={demoAppInfo}>
+            <RainbowKitProvider>
               <Component {...pageProps} />
             </RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>

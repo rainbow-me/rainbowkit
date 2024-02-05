@@ -9,12 +9,13 @@ import {
 } from "@rainbow-me/rainbow-button";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const projectId = "YOUR_PROJECT_ID";
-
-const appName = "RainbowKit demo";
-
 const config = createConfig({
-  connectors: [rainbowConnector({ appName, projectId })],
+  connectors: [
+    rainbowConnector({
+      appName: "RainbowKit demo",
+      projectId: "YOUR_PROJECT_ID",
+    }),
+  ],
   chains: [mainnet],
   transports: {
     [mainnet.id]: http(),
