@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PublicClient } from 'viem';
 import { useAccount, usePublicClient } from 'wagmi';
+import { useChainId } from '../hooks/useChainId';
 import { TransactionStore, createTransactionStore } from './transactionStore';
 
 // Only allow a single instance of the store to exist at once
@@ -17,9 +18,8 @@ export function TransactionStoreProvider({
   children: React.ReactNode;
 }) {
   const provider = usePublicClient() as PublicClient;
-  const { address, chain } = useAccount();
-
-  const chainId = chain?.id;
+  const { address } = useAccount();
+  const chainId = useChainId();
 
   // Use existing store if it exists, or lazily create one
   const [store] = useState(
