@@ -26,7 +26,8 @@ const config = getDefaultConfig({
     base,
     zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
-  ]
+  ],
+  ssr: true,
 });
 
 const client = new QueryClient();
