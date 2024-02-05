@@ -22,3 +22,60 @@ As a convenience, you can also pass a chain object.
 ```tsx
 <RainbowKitProvider initialChain={mainnet}>
 ```
+
+### Custom chain
+
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the iconUrl and iconBackground property.
+
+Example with `getDefaultConfig`
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Example with `createConfig`
+
+```tsx
+import { Chain } from '@rainbow-me/rainbowkit';
+import { createConfig, http } from 'wagmi';
+import { mainnet, optimism } from 'wagmi/chains';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+  transports: {
+    [mainnet.id]: http(),
+    [optimism.id]: http(),
+  },
+});
+```

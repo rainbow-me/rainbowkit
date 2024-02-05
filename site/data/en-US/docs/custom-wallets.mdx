@@ -28,6 +28,12 @@ The `Wallet` function type is provided to help you define your own custom wallet
       description: 'Human-readable wallet name',
     },
     {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
       name: 'shortName',
       required: false,
       type: 'string | undefined',

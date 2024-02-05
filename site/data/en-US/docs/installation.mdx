@@ -57,7 +57,7 @@ import {
 
 #### Configure
 
-Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config.
+Configure your desired chains and generate the required connectors. You will also need to setup a `wagmi` config. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
 
 > Note: Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
@@ -69,10 +69,9 @@ const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
-
-[Read more about configuring chains & config with `wagmi v2`](https://wagmi.sh/core/getting-started#create-config).
 
 #### Wrap providers
 

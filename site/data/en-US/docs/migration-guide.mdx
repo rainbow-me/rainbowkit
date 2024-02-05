@@ -17,7 +17,7 @@ Follow the steps below to migrate.
 **1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest version**
 
 ```bash
-npm i @rainbow-me/rainbowkit@beta wagmi@2 viem@2
+npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2
 ```
 
 **2. Install `@tanstack/react-query` peer dependency**
@@ -371,6 +371,7 @@ const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains,
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
 
