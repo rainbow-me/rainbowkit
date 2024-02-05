@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useAccount, useChainId } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { useTransactionStore } from './TransactionStoreContext';
 import type { Transaction } from './transactionStore';
 
 export function useRecentTransactions(): Transaction[] {
   const store = useTransactionStore();
-  const { address } = useAccount();
-  const chainId = useChainId();
+  const { address, chain } = useAccount();
+
+  const chainId = chain?.id;
 
   const [transactions, setTransactions] = useState(() =>
     store && address && chainId ? store.getTransactions(address, chainId) : [],

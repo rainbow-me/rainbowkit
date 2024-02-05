@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import { useAccount } from 'wagmi';
-import { useChainId } from 'wagmi';
 import { useTransactionStore } from './TransactionStoreContext';
 
 export function useClearRecentTransactions(): () => void {
   const store = useTransactionStore();
-  const { address } = useAccount();
-  const chainId = useChainId();
+  const { address, chain } = useAccount();
+
+  const chainId = chain?.id;
 
   return useCallback(() => {
     if (!address || !chainId) {
