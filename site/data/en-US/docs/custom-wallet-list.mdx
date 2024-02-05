@@ -419,16 +419,15 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      injectedWallet(),
-      metaMaskWallet({ projectId }),
-      walletConnectWallet({ projectId }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [metaMaskWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```
 
 Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
@@ -442,18 +441,20 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Suggested',
-    wallets: [
-      injectedWallet(),
-      rainbowWallet({ projectId }),
-      metaMaskWallet({ projectId }),
-      coinbaseWallet({ appName: 'My RainbowKit App' }),
-      walletConnectWallet({ projectId }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Suggested',
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```
 
 > Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
@@ -473,21 +474,17 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      injectedWallet(),
-      rainbowWallet({ projectId }),
-      metaMaskWallet({ projectId }),
-    ],
-  },
-  {
-    groupName: 'Others',
-    wallets: [
-      coinbaseWallet({ appName: 'My RainbowKit App' }),
-      walletConnectWallet({ projectId }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, metaMaskWallet],
+    },
+    {
+      groupName: 'Others',
+      wallets: [coinbaseWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```
