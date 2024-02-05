@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Meta,
   Links,
@@ -7,21 +7,21 @@ import {
   LiveReload,
   ScrollRestoration,
   useLoaderData,
-} from "@remix-run/react";
-import { json } from "@remix-run/node";
+} from '@remix-run/react';
+import { json } from '@remix-run/node';
 import type {
   MetaFunction,
   LinksFunction,
   LoaderFunction,
-} from "@remix-run/node";
+} from '@remix-run/node';
 
 import {
   RainbowKitProvider,
   ConnectButton,
   getDefaultConfig,
-} from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
-import type { Chain } from "wagmi/chains";
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import type { Chain } from 'wagmi/chains';
 import {
   arbitrum,
   base,
@@ -30,25 +30,25 @@ import {
   polygon,
   sepolia,
   zora,
-} from "wagmi/chains";
+} from 'wagmi/chains';
 
-import globalStylesUrl from "./styles/global.css";
-import rainbowStylesUrl from "@rainbow-me/rainbowkit/styles.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import globalStylesUrl from './styles/global.css';
+import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
 type LoaderData = { ENV: Env };
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "RainbowKit Remix Example",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'RainbowKit Remix Example',
+  viewport: 'width=device-width,initial-scale=1',
 });
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: globalStylesUrl },
-  { rel: "stylesheet", href: rainbowStylesUrl },
+  { rel: 'stylesheet', href: globalStylesUrl },
+  { rel: 'stylesheet', href: rainbowStylesUrl },
 ];
 
 // Note: These environment variables are hard coded for demonstration purposes.
@@ -56,7 +56,7 @@ export const links: LinksFunction = () => [
 export const loader: LoaderFunction = () => {
   const data: LoaderData = {
     ENV: {
-      PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || "false",
+      PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
 
@@ -73,7 +73,7 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
-    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [];
 
     const chains: readonly [Chain, ...Chain[]] = [
       mainnet,
@@ -86,8 +86,8 @@ export default function App() {
     ];
 
     const config = getDefaultConfig({
-      appName: "RainbowKit Remix Example",
-      projectId: "YOUR_PROJECT_ID",
+      appName: 'RainbowKit Remix Example',
+      projectId: 'YOUR_PROJECT_ID',
       chains,
       ssr: true,
     });
@@ -111,9 +111,9 @@ export default function App() {
               <RainbowKitProvider>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    padding: "12px",
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    padding: '12px',
                   }}
                 >
                   <ConnectButton />

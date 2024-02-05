@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   RainbowKitProvider,
   getDefaultWallets,
   getDefaultConfig,
-} from "@rainbow-me/rainbowkit";
+} from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+} from '@rainbow-me/rainbowkit/wallets';
 import {
   arbitrum,
   base,
@@ -19,19 +19,19 @@ import {
   polygon,
   sepolia,
   zora,
-} from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { WagmiProvider } from "wagmi";
+} from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
 
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
   wallets: [
     ...wallets,
     {
-      groupName: "Other",
+      groupName: 'Other',
       wallets: [argentWallet, trustWallet, ledgerWallet],
     },
   ],
@@ -42,7 +42,7 @@ const config = getDefaultConfig({
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
 });

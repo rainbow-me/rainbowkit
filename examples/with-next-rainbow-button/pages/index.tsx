@@ -1,7 +1,6 @@
-
-import type { NextPage } from "next";
-import { useAccount, useDisconnect } from "wagmi";
-import { RainbowButton } from "@rainbow-me/rainbow-button";
+import type { NextPage } from 'next';
+import { useAccount, useDisconnect } from 'wagmi';
+import { RainbowButton } from '@rainbow-me/rainbow-button';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
       <RainbowButton />
       {isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
     </div>
-  )
+  );
 };
 
 export default Home;

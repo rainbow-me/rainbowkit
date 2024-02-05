@@ -1,20 +1,20 @@
-import "../styles/global.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
-import { useRouter } from "next/router";
+import '../styles/global.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 
 import {
   RainbowKitProvider,
   getDefaultWallets,
   Locale,
   getDefaultConfig,
-} from "@rainbow-me/rainbowkit";
+} from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
-} from "@rainbow-me/rainbowkit/wallets";
-import { WagmiProvider } from "wagmi";
+} from '@rainbow-me/rainbowkit/wallets';
+import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -23,18 +23,18 @@ import {
   polygon,
   sepolia,
   zora,
-} from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+} from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
   wallets: [
     ...wallets,
     {
-      groupName: "Other",
+      groupName: 'Other',
       wallets: [argentWallet, trustWallet, ledgerWallet],
     },
   ],
@@ -45,7 +45,7 @@ const config = getDefaultConfig({
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
 });
