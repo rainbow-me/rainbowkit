@@ -60,7 +60,6 @@
     "postcss": "^8.4.32",
     "react": "^18.2.0",
     "vitest": "^0.33.0",
-    "@types/i18n-js": "^3.8.9",
     "@types/ua-parser-js": "^0.7.39"
   },
   "dependencies": {
@@ -70,7 +69,6 @@
     "clsx": "2.1.0",
     "qrcode": "1.5.3",
     "react-remove-scroll": "2.5.7",
-    "i18n-js": "^4.3.2",
     "ua-parser-js": "^1.0.37"
   },
   "repository": {
