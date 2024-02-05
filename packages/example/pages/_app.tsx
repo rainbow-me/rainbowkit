@@ -3,6 +3,7 @@ import './global.css';
 
 import {
   AvatarComponent,
+  type Chain,
   DisclaimerComponent,
   Locale,
   RainbowKitProvider,
@@ -59,7 +60,7 @@ import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   arbitrum,
@@ -79,6 +80,7 @@ import {
   zora,
   zoraSepolia,
 } from 'wagmi/chains';
+
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
@@ -87,6 +89,26 @@ const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets();
+
+const avalanche = {
+  id: 43_114,
+  name: 'Avalanche',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+} as const satisfies Chain;
 
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
@@ -100,6 +122,7 @@ const config = getDefaultConfig({
     zora,
     bsc,
     zkSync,
+    avalanche,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           goerli,

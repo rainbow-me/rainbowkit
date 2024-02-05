@@ -1,7 +1,7 @@
 import { Transport } from 'viem';
 import { http, CreateConfigParameters } from 'wagmi';
 import { WagmiProviderProps, createConfig } from 'wagmi';
-import { type Chain } from 'wagmi/chains';
+import { type RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import type { WalletList } from '../wallets/Wallet';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
@@ -12,7 +12,7 @@ import {
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
-export type _chains = readonly [Chain, ...Chain[]];
+export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
 
 // Define the '_transports' type as a Record
 // It maps each 'Chain' id to a 'Transport'
