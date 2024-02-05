@@ -38,19 +38,11 @@ const rinkeby = defineChain({
   testnet: true,
 });
 
-const projectId = "YOUR_PROJECT_ID";
-
-const appName = "RainbowKit demo";
-
 const { wallets } = getDefaultWallets();
 
-const demoAppInfo = {
-  appName: "RainbowKit Mint NFT Demo",
-};
-
 const config = getDefaultConfig({
-  projectId,
-  appName,
+  appName: "RainbowKit demo",
+  projectId: "YOUR_PROJECT_ID",
   wallets: [
     ...wallets,
     {
@@ -68,7 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider appInfo={demoAppInfo}>
+        <RainbowKitProvider>
           <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>

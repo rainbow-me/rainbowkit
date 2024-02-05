@@ -24,19 +24,11 @@ import {
 } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const projectId = "YOUR_PROJECT_ID";
-
-const appName = "RainbowKit demo";
-
 const { wallets } = getDefaultWallets();
 
-const demoAppInfo = {
-  appName: "Rainbowkit Demo",
-};
-
 const config = getDefaultConfig({
-  appName,
-  projectId,
+  appName: "RainbowKit demo",
+  projectId: "YOUR_PROJECT_ID",
   chains: [
     mainnet,
     polygon,
@@ -70,7 +62,7 @@ export function Providers({
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider appInfo={demoAppInfo} locale={locale}>
+        <RainbowKitProvider locale={locale}>
           {mounted && children}
         </RainbowKitProvider>
       </QueryClientProvider>

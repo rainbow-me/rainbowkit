@@ -27,7 +27,7 @@ const config = createConfig({
   connectors: [
     ...connectors,
     coinbaseWallet({
-      appName: "RainbowKit Example",
+      appName,
     }),
     walletConnect({
       projectId,
