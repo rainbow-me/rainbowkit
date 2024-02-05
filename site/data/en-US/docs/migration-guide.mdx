@@ -332,46 +332,58 @@ const customWallet = (): Wallet => ({
 
 **5. Custom chains**
 
-We've introduced a new function called `getChains` which allows you to create custom RainbowKit chains and integrate them into wagmi's configuration function.
+We've introduced a new way of adding a custom chain. You can either use `getDefaultConfig` which is recommended or `createConfig` from wagmi, but use strict types if you use TypeScript in your project.
+
+Example with `getDefaultConfig`.
+
+```
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
 
 Example with `createConfig`.
 
 ```
-import { mainnet, polygon } from 'wagmi/chains';
-import { getChains } from '@rainbow-me/rainbowkit';
-import { createConfig, http } from 'wagmi'
+import { Chain } from '@rainbow-me/rainbowkit';
+import { createConfig, http } from 'wagmi';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const chains = getChains([
-  { ...mainnet, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
-  { ...polygon, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
-]);
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
 
 const config = createConfig({
   chains,
   transports: {
     [mainnet.id]: http(),
-    [polygon.id]: http(),
+    [optimism.id]: http(),
   },
-});
-```
-
-Example with `getDefaultConfig` from `@rainbow-me/rainbowkit`.
-
-```
-import { mainnet, polygon } from 'wagmi/chains';
-import { getChains } from '@rainbow-me/rainbowkit';
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
-
-const chains = getChains([
-  { ...mainnet, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
-  { ...polygon, iconUrl: '<icon_url>', iconBackground: '<icon_background>' },
-]);
-
-const config = getDefaultConfig({
-  appName: 'RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
-  chains,
-  ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
 
