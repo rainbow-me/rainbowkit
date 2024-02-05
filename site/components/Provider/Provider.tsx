@@ -52,6 +52,7 @@ const config = getDefaultConfig({
       ],
     },
   ],
+  ssr: true,
 });
 
 const client = new QueryClient();
