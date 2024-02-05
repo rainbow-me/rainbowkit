@@ -18,7 +18,7 @@ npm install @rainbow-me/rainbow-button wagmi viem
 
 **2. Configure with Wagmi and install the RainbowButton**
 
-Pass an instance of the `rainbowConnector` to `connectorsForWallets` then pass connectors to Wagmi's `createConfig`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
+Pass an instance of the `rainbowConnector` to `createConfig` with projectId and appName, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -28,31 +28,36 @@ import {
   rainbowConnector,
 } from '@rainbow-me/rainbow-button';
 import { WagmiProvider, createConfig, http } from 'wagmi';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { mainnet } from 'viem/chains';
-
-const connectors = connectorsForWallets(rainbowConnector, {
-  projectId: 'YOUR_PROJECT_ID',
-  appName: 'My RainbowKit App',
-});
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = createConfig({
-  connectors,
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
   chains: [mainnet],
   transports: {
     [mainnet.id]: http(),
   },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
-      <RainbowButtonProvider>
-        <RainbowButton />
-      </RainbowButtonProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
-};
+}
 ```
 
 You can also use the `RainbowButton.Custom` component for custom implementations and styling.
