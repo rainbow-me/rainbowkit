@@ -1,5 +1,5 @@
 ---
-"@rainbow-me/rainbowkit": minor
+"@rainbow-me/rainbowkit": major
 ---
 
 **Breaking:**
@@ -26,13 +26,10 @@ npm i viem@2
 
 If you use `wagmi` hooks in your application, you will need to follow `wagmi`'s migration guide to v2.
 
-
 [You can see their migration guide from v1 to v2 here](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
-
 
 **4. Check for breaking changes in `@rainbow-me/rainbowkit`**
 
 If you use `@rainbow-me/rainbowkit` wallets in your application, you will need to follow `@rainbow-me/rainbowkit`'s migration guide.
-
 
 [You can see the migration guide here](https://beta.rainbowkit.com/guides/rainbowkit-wagmi-v2).
