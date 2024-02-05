@@ -8,10 +8,10 @@ The [Wagmi](https://wagmi.sh) peer dependency is migrated over to [Wagmi v2](htt
 
 Follow the steps below to migrate.
 
-**1. Upgrade RainbowKit to beta version and `wagmi` to v2 version**
+**1. Upgrade RainbowKit and wagmi to 2.x.x**
 
 ```bash
-npm i @rainbow-me/rainbowkit@beta wagmi
+npm i @rainbow-me/rainbowkit@2 wagmi@2
 ```
 
 **2. Install `viem` peer dependency**
