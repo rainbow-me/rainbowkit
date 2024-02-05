@@ -1,15 +1,55 @@
 import user from '@testing-library/user-event';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { describe, expect, it } from 'vitest';
-import { arbitrum, mainnet, optimism } from 'wagmi/chains';
+import { useConnect } from 'wagmi';
+import { Chain, arbitrum, mainnet, optimism } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test/';
 import { ChainModal } from './ChainModal';
 
+const ChainModalWithConnectButton = ({ onClose }: { onClose?: () => void }) => {
+  const { connect, connectors } = useConnect();
+
+  return (
+    <Fragment>
+      <ChainModal
+        onClose={() => {
+          if (onClose) onClose();
+        }}
+        open
+      />
+      <button
+        onClick={() => connect({ connector: connectors[0] })}
+        data-testid="rk-connect-btn"
+      >
+        connect
+      </button>
+    </Fragment>
+  );
+};
+
 describe('<ChainModal />', () => {
+  const renderChainModalWithConnectedWallet = async (
+    chains?: readonly [Chain, ...Chain[]],
+    onClose?: () => void,
+  ) => {
+    const modal = renderWithProviders(
+      <ChainModalWithConnectButton onClose={onClose} />,
+      {
+        mock: true,
+        chains,
+      },
+    );
+
+    const connectButtonOption = await modal.findByTestId('rk-connect-btn');
+
+    await user.click(connectButtonOption);
+
+    return modal;
+  };
+
   it('Show current connected chain indicator', async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      mock: true,
-    });
+    const modal = await renderChainModalWithConnectedWallet();
+
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
@@ -19,10 +59,11 @@ describe('<ChainModal />', () => {
   });
 
   it('List chains from <RainbowKitProvider />', async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      chains: [mainnet, arbitrum, optimism],
-      mock: true,
-    });
+    const modal = await renderChainModalWithConnectedWallet([
+      mainnet,
+      arbitrum,
+      optimism,
+    ]);
 
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${optimism.id}`,
@@ -39,15 +80,16 @@ describe('<ChainModal />', () => {
     expect(optimismOption).toBeInTheDocument();
   });
 
-  // Wagmi can also switch chains without having your wallet connected
   it('Can switch chains', async () => {
     let onCloseGotCalled = false;
-    const modal = renderWithProviders(
-      <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
-      {
-        mock: true,
+
+    const modal = await renderChainModalWithConnectedWallet(
+      [mainnet, arbitrum],
+      () => {
+        onCloseGotCalled = true;
       },
     );
+
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
@@ -68,9 +110,11 @@ describe('<ChainModal />', () => {
 
   it('Closes on close button press', async () => {
     let onCloseGotCalled = false;
+
     const modal = renderWithProviders(
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
     );
+
     const closeButton = await modal.findByLabelText('Close');
 
     await user.click(closeButton);
@@ -79,17 +123,18 @@ describe('<ChainModal />', () => {
   });
 
   it('Custom chain metadata passed from <RainbowKitProvider>', async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      chains: [mainnet],
-    });
+    const modal = await renderChainModalWithConnectedWallet([mainnet]);
+
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
+
     expect(mainnetOption).toHaveTextContent('Ethereum');
 
     const mainnetOptionIcon = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}-icon`,
     );
+
     expect(mainnetOptionIcon).toHaveAttribute(
       'style',
       'background: rgb(72, 76, 80);',
