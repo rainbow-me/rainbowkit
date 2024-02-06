@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Connecter le portefeuille"
+    "label": "Connecter le portefeuille",
+    "wrong_network": {
+      "label": "Réseau incorrect"
+    }
   },
   "intro": {
     "title": "Qu'est-ce qu'un portefeuille?",

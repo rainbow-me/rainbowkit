@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Conectar Carteira"
+    "label": "Conectar Carteira",
+    "wrong_network": {
+      "label": "Rede incorreta"
+    }
   },
   "intro": {
     "title": "O que é uma Carteira?",

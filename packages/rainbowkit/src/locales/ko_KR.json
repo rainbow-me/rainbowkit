@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "지갑 연결"
+    "label": "지갑 연결",
+    "wrong_network": {
+      "label": "잘못된 네트워크"
+    }
   },
   "intro": {
     "title": "지갑이란 무엇인가요?",
