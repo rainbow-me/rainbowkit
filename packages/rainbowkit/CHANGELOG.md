@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.5
+
+### Patch Changes
+
+- 2b0c7b3: Added missing i18n translations for `Wrong network` errors
+
 ## 1.3.4
 
 ### Patch Changes
