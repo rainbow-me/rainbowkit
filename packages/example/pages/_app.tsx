@@ -262,7 +262,7 @@ function RainbowKitApp({
   const [selectedAccentColor, setAccentColor] = useState<AccentColor>('blue');
   const [selectedRadiusScale, setRadiusScale] = useState<RadiusScale>('large');
   const [selectedOverlayBlur, setOverlayBlur] = useState<OverlayBlur>('none');
-  const [authEnabled, setAuthEnabled] = useState(true);
+  const [authEnabled, setAuthEnabled] = useState(pageProps.session !== null);
   const [showRecentTransactions, setShowRecentTransactions] = useState(true);
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
