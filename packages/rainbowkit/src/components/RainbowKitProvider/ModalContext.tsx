@@ -3,6 +3,7 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -88,6 +89,13 @@ export function ModalProvider({ children }: ModalProviderProps) {
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
     onDisconnect: () => closeModals(),
   });
+
+  useEffect(() => {
+    // Due to multiple connection feature in wagmi v2 we need to close
+    // modals when user is unauthenticated. When connectors changes we log user out
+    // This means we'll need to close the modals as well.
+    if (isUnauthenticated) closeModals();
+  }, [isUnauthenticated]);
 
   return (
     <ModalContext.Provider
