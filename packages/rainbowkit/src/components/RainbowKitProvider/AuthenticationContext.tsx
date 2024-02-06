@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { useAccount, useAccountEffect } from 'wagmi';
+import { Config, useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -79,8 +79,13 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
     }
   }, [status, adapter, isDisconnected]);
 
-  const handleChangedAccount = () => {
-    adapter.signOut();
+  const handleChangedAccount = (
+    data: Parameters<Config['_internal']['events']['change']>[0],
+  ) => {
+    // Only if account changes
+    if (data.accounts) {
+      adapter.signOut();
+    }
   };
 
   // Wait for user authentication before listening to "change" event.
