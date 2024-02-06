@@ -55,6 +55,7 @@ export async function getStaticProps({ params, locale }) {
     props: {
       doc,
       sectionName,
+      messages: (await import(`../../locales/${locale}.json`)).default,
     },
   };
 }
