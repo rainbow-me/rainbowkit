@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "ウォレットを接続"
+    "label": "ウォレットを接続",
+    "wrong_network": {
+      "label": "ネットワークが間違っています"
+    }
   },
   "intro": {
     "title": "ウォレットとは何ですか？",

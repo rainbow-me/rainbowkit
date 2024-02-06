@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "اتصال المحفظة"
+    "label": "اتصال المحفظة",
+    "wrong_network": {
+      "label": "شبكة خاطئة"
+    }
   },
   "intro": {
     "title": "ما هو المحفظة؟",
