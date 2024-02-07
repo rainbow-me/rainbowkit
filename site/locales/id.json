@@ -41,5 +41,14 @@
     "meta": {
       "description": "Cara terbaik untuk menghubungkan dompet 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Ikhtisar",
+        "getting_started": "Memulai",
+        "advanced": "Lanjutan"
+      }
+    }
   }
 }

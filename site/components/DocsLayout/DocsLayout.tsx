@@ -27,6 +27,7 @@ import {
   navigationSidebarScroller,
   paginationItem,
 } from './DocsLayout.css';
+import { allDocs } from '.contentlayer/generated';
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -35,8 +36,16 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
   const currentPageIndex = allDocsRoutes.findIndex(
     (page) => page.slug === currentPageSlug,
   );
-  const previous = allDocsRoutes[currentPageIndex - 1];
-  const next = allDocsRoutes[currentPageIndex + 1];
+  const previous = allDocs.find(
+    (doc) =>
+      doc.slug === allDocsRoutes[currentPageIndex - 1]?.slug &&
+      doc.locale === router.locale,
+  );
+  const next = allDocs.find(
+    (doc) =>
+      doc.slug === allDocsRoutes[currentPageIndex + 1]?.slug &&
+      doc.locale === router.locale,
+  );
   const docsMobileMenuRef = React.useRef<HTMLDivElement>(null);
 
   const { isConnected } = useAccount();

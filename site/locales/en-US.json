@@ -41,5 +41,14 @@
     "meta": {
       "description": "The best way to connect a wallet 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Overview",
+        "getting_started": "Getting Started",
+        "advanced": "Advanced"
+      }
+    }
   }
 }
