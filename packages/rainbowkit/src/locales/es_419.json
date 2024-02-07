@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Conectar la billetera"
+    "label": "Conectar la billetera",
+    "wrong_network": {
+      "label": "Red incorrecta"
+    }
   },
   "intro": {
     "title": "¿Qué es una billetera?",

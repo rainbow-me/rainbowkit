@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "वॉलेट को कनेक्ट करें"
+    "label": "वॉलेट को कनेक्ट करें",
+    "wrong_network": {
+      "label": "गलत नेटवर्क"
+    }
   },
   "intro": {
     "title": "वॉलेट क्या है?",
