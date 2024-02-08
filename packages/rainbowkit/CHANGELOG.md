@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 1.3.6
+
+### Patch Changes
+
+- 33a8266: Fixed a bug where `account.displayBalance` for the `<ConnectButton.Custom>` component would sometimes be undefined.
+
 ## 1.3.5
 
 ### Patch Changes
