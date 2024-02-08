@@ -15,7 +15,7 @@ This package is designed to be installed independent of [RainbowKit](https://www
 Install the `@rainbow-me/rainbow-button` package and its peer dependencies, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh/).
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem @tanstack/react-query
 ```
 
 ### Import
