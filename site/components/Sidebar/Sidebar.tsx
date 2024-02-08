@@ -2,12 +2,16 @@ import { Box } from 'components/Box/Box';
 import { SearchIcon } from 'components/Icons/Search';
 import { SearchButton } from 'components/Search/Search';
 import { Text } from 'components/Text/Text';
+import { useTranslations } from 'next-intl';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { link } from './Sidebar.css';
+import { allDocs } from '.contentlayer/generated';
 
 export function Sidebar({ routes }) {
+  const { locale } = useRouter();
+  const t = useTranslations('docs.sidebar.section');
   return (
     <>
       <SearchButton
@@ -69,7 +73,7 @@ export function Sidebar({ routes }) {
       </SearchButton>
 
       {routes.map((route) => (
-        <Box key={route.label} marginBottom="7">
+        <Box key={route.section} marginBottom="7">
           <Text
             as="h3"
             variant="subhead"
@@ -79,11 +83,15 @@ export function Sidebar({ routes }) {
             marginLeft="5"
             weight="semibold"
           >
-            {route.label}
+            {t(route.section)}
           </Text>
           {route.pages.map((page) => (
-            <Link key={page.title} slug={page.slug}>
-              {page.title}
+            <Link key={page.slug} slug={page.slug}>
+              {
+                allDocs.find(
+                  (doc) => doc.slug === page.slug && doc.locale === locale,
+                ).title
+              }
             </Link>
           ))}
         </Box>

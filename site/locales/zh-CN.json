@@ -41,5 +41,14 @@
     "meta": {
       "description": "连接钱包的最佳方式 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "概览",
+        "getting_started": "入门",
+        "advanced": "高级"
+      }
+    }
   }
 }

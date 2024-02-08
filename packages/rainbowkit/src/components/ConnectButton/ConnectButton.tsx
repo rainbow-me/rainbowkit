@@ -130,7 +130,7 @@ export function ConnectButton({
                           height="24"
                           paddingX="4"
                         >
-                          Wrong network
+                          {i18n.t('connect_wallet.wrong_network.label')}
                         </Box>
                       ) : (
                         <Box alignItems="center" display="flex" gap="6">

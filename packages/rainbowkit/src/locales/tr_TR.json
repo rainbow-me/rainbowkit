@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "Cüzdanı Bağla",
+    "wrong_network": {
+      "label": "Yanlış ağ"
+    }
   },
   "intro": {
     "title": "Cüzdan nedir?",

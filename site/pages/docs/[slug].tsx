@@ -44,7 +44,7 @@ export async function getStaticProps({ params, locale }) {
     for (const page of curr.pages) {
       if (page.slug === params.slug) {
         // biome-ignore lint/style/noParameterAssign: TODO
-        acc = curr.label;
+        acc = doc.title;
         break;
       }
     }
@@ -55,6 +55,7 @@ export async function getStaticProps({ params, locale }) {
     props: {
       doc,
       sectionName,
+      messages: (await import(`../../locales/${locale}.json`)).default,
     },
   };
 }
