@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "连接钱包"
+    "label": "连接钱包",
+    "wrong_network": {
+      "label": "错误的网络"
+    }
   },
   "intro": {
     "title": "什么是钱包？",

@@ -90,7 +90,7 @@ export function ConnectButtonRenderer({
     ? normalizeResponsiveValue(showBalance)[
         isMobile() ? 'smallScreen' : 'largeScreen'
       ]
-    : false;
+    : true;
   const { data: balanceData } = useBalance({
     address: shouldShowBalance ? address : undefined,
   });

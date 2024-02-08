@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <WalletButton wallet="rainbow" />
 
         <WalletButton.Custom wallet="metaMask">
-          {({ ready, connect, connector, mounted }) => {
+          {({ ready, connect, connector }) => {
             return (
               <button disabled={!ready} onClick={connect}>
                 {connector.name}

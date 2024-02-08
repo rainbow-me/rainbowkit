@@ -1,9 +1,9 @@
 // This example is based on the wagmi SIWE tutorial
 // https://wagmi.sh/examples/sign-in-with-ethereum
-import "../styles/global.css";
-import "@rainbow-me/rainbowkit/styles.css";
-import type { AppProps } from "next/app";
-import { useEffect, useMemo, useRef, useState } from "react";
+import '../styles/global.css';
+import '@rainbow-me/rainbowkit/styles.css';
+import type { AppProps } from 'next/app';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   RainbowKitProvider,
@@ -12,13 +12,13 @@ import {
   RainbowKitAuthenticationProvider,
   AuthenticationStatus,
   getDefaultConfig,
-} from "@rainbow-me/rainbowkit";
+} from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
-} from "@rainbow-me/rainbowkit/wallets";
-import { WagmiProvider } from "wagmi";
+} from '@rainbow-me/rainbowkit/wallets';
+import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -27,19 +27,19 @@ import {
   polygon,
   sepolia,
   zora,
-} from "wagmi/chains";
-import { SiweMessage } from "siwe";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+} from 'wagmi/chains';
+import { SiweMessage } from 'siwe';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
   wallets: [
     ...wallets,
     {
-      groupName: "Other",
+      groupName: 'Other',
       wallets: [argentWallet, trustWallet, ledgerWallet],
     },
   ],
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [sepolia] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
 });
@@ -60,7 +60,7 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   const fetchingStatusRef = useRef(false);
   const verifyingRef = useRef(false);
-  const [authStatus, setAuthStatus] = useState<AuthenticationStatus>("loading");
+  const [authStatus, setAuthStatus] = useState<AuthenticationStatus>('loading');
 
   // Fetch user when:
   useEffect(() => {
@@ -72,11 +72,11 @@ export default function App({ Component, pageProps }: AppProps) {
       fetchingStatusRef.current = true;
 
       try {
-        const response = await fetch("/api/me");
+        const response = await fetch('/api/me');
         const json = await response.json();
-        setAuthStatus(json.address ? "authenticated" : "unauthenticated");
+        setAuthStatus(json.address ? 'authenticated' : 'unauthenticated');
       } catch (_error) {
-        setAuthStatus("unauthenticated");
+        setAuthStatus('unauthenticated');
       } finally {
         fetchingStatusRef.current = false;
       }
@@ -86,14 +86,14 @@ export default function App({ Component, pageProps }: AppProps) {
     fetchStatus();
 
     // 2. window is focused (in case user logs out of another window)
-    window.addEventListener("focus", fetchStatus);
-    return () => window.removeEventListener("focus", fetchStatus);
+    window.addEventListener('focus', fetchStatus);
+    return () => window.removeEventListener('focus', fetchStatus);
   }, []);
 
   const authAdapter = useMemo(() => {
     return createAuthenticationAdapter({
       getNonce: async () => {
-        const response = await fetch("/api/nonce");
+        const response = await fetch('/api/nonce');
         return await response.text();
       },
 
@@ -101,9 +101,9 @@ export default function App({ Component, pageProps }: AppProps) {
         return new SiweMessage({
           domain: window.location.host,
           address,
-          statement: "Sign in with Ethereum to the app.",
+          statement: 'Sign in with Ethereum to the app.',
           uri: window.location.origin,
-          version: "1",
+          version: '1',
           chainId,
           nonce,
         });
@@ -117,16 +117,16 @@ export default function App({ Component, pageProps }: AppProps) {
         verifyingRef.current = true;
 
         try {
-          const response = await fetch("/api/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+          const response = await fetch('/api/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message, signature }),
           });
 
           const authenticated = Boolean(response.ok);
 
           if (authenticated) {
-            setAuthStatus(authenticated ? "authenticated" : "unauthenticated");
+            setAuthStatus(authenticated ? 'authenticated' : 'unauthenticated');
           }
 
           return authenticated;
@@ -138,8 +138,8 @@ export default function App({ Component, pageProps }: AppProps) {
       },
 
       signOut: async () => {
-        setAuthStatus("unauthenticated");
-        await fetch("/api/logout");
+        setAuthStatus('unauthenticated');
+        await fetch('/api/logout');
       },
     });
   }, []);

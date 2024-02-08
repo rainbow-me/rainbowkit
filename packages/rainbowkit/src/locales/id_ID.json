@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Hubungkan Dompet"
+    "label": "Hubungkan Dompet",
+    "wrong_network": {
+      "label": "Jaringan yang salah"
+    }
   },
   "intro": {
     "title": "Apa itu Dompet?",

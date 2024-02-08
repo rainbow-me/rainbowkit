@@ -1,19 +1,19 @@
-import "../styles/global.css";
-import "@rainbow-me/rainbow-button/styles.css";
-import type { AppProps } from "next/app";
-import { createConfig, http, WagmiProvider } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import '../styles/global.css';
+import '@rainbow-me/rainbow-button/styles.css';
+import type { AppProps } from 'next/app';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import {
   RainbowButtonProvider,
   rainbowConnector,
-} from "@rainbow-me/rainbow-button";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+} from '@rainbow-me/rainbow-button';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = createConfig({
   connectors: [
     rainbowConnector({
-      appName: "RainbowKit demo",
-      projectId: "YOUR_PROJECT_ID",
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
     }),
   ],
   chains: [mainnet],

@@ -41,5 +41,14 @@
     "meta": {
       "description": "La mejor manera de conectar una billetera 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Visión General",
+        "getting_started": "Primeros Pasos",
+        "advanced": "Avanzado"
+      }
+    }
   }
 }

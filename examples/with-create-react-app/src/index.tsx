@@ -1,11 +1,11 @@
-import "@rainbow-me/rainbowkit/styles.css";
-import "./polyfills";
-import "./index.css";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
-import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
+import '@rainbow-me/rainbowkit/styles.css';
+import './polyfills';
+import './index.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -14,14 +14,14 @@ import {
   polygon,
   sepolia,
   zora,
-} from "wagmi/chains";
+} from 'wagmi/chains';
 
-import App from "./App";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import App from './App';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = getDefaultConfig({
-  appName: "RainbowKit demo",
-  projectId: "YOUR_PROJECT_ID",
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
   chains: [
     mainnet,
     polygon,
@@ -29,12 +29,12 @@ const config = getDefaultConfig({
     arbitrum,
     base,
     zora,
-    ...(process.env.REACT_APP_ENABLE_TESTNETS === "true" ? [sepolia] : []),
+    ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
 });
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 
 const queryClient = new QueryClient();
