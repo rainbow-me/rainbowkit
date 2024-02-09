@@ -1,5 +1,5 @@
 ---
-"@rainbow-me/create-rainbowkit": patch
+"@rainbow-me/create-rainbowkit": minor
 ---
 
 Migrated template to Wagmi v2 with the following package changes:
