@@ -34,7 +34,7 @@ import { createConfig, WagmiConfig } from 'wagmi';
 
 ### Adopt the connector
 
-The `RainbowConnector` supports connecting with Rainbow just like wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
+The `RainbowConnector` supports connecting with Rainbow just like Wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
 
 Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in). This is absolutely free and only takes a few minutes.
 

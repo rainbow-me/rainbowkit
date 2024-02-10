@@ -16,17 +16,15 @@ For example, you can choose to only show Rainbow along with generic fallback wal
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
-  injectedWallet,
   rainbowWallet,
   walletConnectWallet,
 } from '@tanstack/react-query';
-import { mainnet } from 'wagmi/chains';
 
 const connectors = connectorsForWallets(
   [
     {
       groupName: 'Recommended',
-      wallets: [injectedWallet, rainbowWallet, walletConnectWallet],
+      wallets: [rainbowWallet, walletConnectWallet],
     },
   ],
   {
@@ -48,7 +46,7 @@ import { mainnet } from 'wagmi/chains';
 import {
   QueryClientProvider,
   QueryClient,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@tanstack/react-query';
 
 const connectors = connectorsForWallets(/* ... */);
 
