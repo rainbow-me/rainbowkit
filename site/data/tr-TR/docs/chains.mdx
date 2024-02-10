@@ -1,0 +1,75 @@
+---
+title: Zincirler
+description: Zincirleri özelleştirme
+---
+
+# Zincirler
+
+## Zincirleri özelleştirme
+
+RainbowKit, [wagmi’nin `chain` nesnesi](https://wagmi.sh/react/chains) ile entegre olacak şekilde tasarlanmıştır. Desteklenen zincirlerin listesine göz atın [here](https://wagmi.sh/react/chains#supported-chains).
+
+### Başlangıç zincirini özelleştirme
+
+Varsayılan olarak, RainbowKit ilk olarak Wagmi'ye sağlanan zincire bağlanacaktır. Bu davranış, `initialChain` prop aracılığıyla özelleştirilebilir.
+
+İlk zincir, bir zincir ID'si kullanılarak yapılandırılabilir.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+Bir kolaylık olarak, ayrıca bir zincir nesnesi geçirebilirsiniz.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### Özel zincir meta verileri
+
+Birçok zincir ikonu ve arka planı varsayılan olarak sağlanmaktadır, ancak her zincir için ikon ve arka planı `iconUrl` ve `iconBackground` özelliklerini kullanarak özelleştirebilirsiniz.
+
+`getDefaultConfig` ile örnek
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+`createConfig` ile örnek
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```
