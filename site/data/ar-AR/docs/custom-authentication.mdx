@@ -1,0 +1,106 @@
+---
+title: المصادقة المخصصة
+description: الاتصال بنظام المصادقة الخلفي الخاص بك
+---
+
+# المصادقة المخصصة
+
+## الاتصال بنظام المصادقة الخلفي الخاص بك
+
+بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth.js،](/docs/authentication#setupsigninwithethereumandnextauthjs) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل
+
+### إنشاء محول مخصص
+
+قم أولاً بإنشاء محول للمصادقة. هذا يسمح لـ RainbowKit بإنشاء / تحضير الرسائل والاتصال بخادم الخلفية الخاص بك.
+
+كمثال، يمكننا صنع محولاً للمصادقة يتيح لنا استخدام [تسجيل الدخول باستخدام Ethereum](https://login.xyz) ضد بعض [النقاط النهائية المخصصة لواجهة برمجة التطبيقات.](https://wagmi.sh/examples/sign-in-with-ethereum)
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### توفير حالة المصادقة
+
+باستخدام الافتراض أن تطبيقك يدير حياة المصادقة بطريقة ما، يمكنك تمرير حالة المصادقة الحالية مع المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، مع تغليف `RainbowKitProvider` الخاص بك
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+إذا وصلت إلى هذا الحد وأنشأت محولًا لمكتبة المصادقة المفتوحة المصدر الحالية، فيرجى النظر في إنشاء حزمة للآخرين لاستخدامها!
