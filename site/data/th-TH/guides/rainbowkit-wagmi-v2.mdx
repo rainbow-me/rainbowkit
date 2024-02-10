@@ -6,7 +6,7 @@ image: guide-rainbowkit-v2.png
 
 # การย้ายไปใช้ RainbowKit และ Wagmi v2
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+การพึ่งพา (peer dependencies) [wagmi](https://wagmi.sh) และ [viem](https://viem.sh) ได้ถึงเวอร์ชัน `2.x.x` พร้อมกับการเปลี่ยนแปลงหลัก
 
 ทำตามขั้นตอนด้านล่างเพื่อย้าย.
 
@@ -26,7 +26,7 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+\*\*3. อัพเกรดการตั้งค่า RainbowKit และ Wagmi ของคุณ
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -96,21 +96,21 @@ npm i @tanstack/react-query
 -   [คู่มือการย้ายข้อมูล Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 -   [การเปลี่ยนแปลงที่สำคัญของ Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### การเปลี่ยนแปลงของ RainbowKit
 
-**1. Improved behavior for EIP-6963 wallets**
+\*\*1. พฤติกรรมที่ปรับปรุงสำหรับกระเป๋าสตางค์ EIP-6963
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+กระเป๋าสตางค์ที่รองรับมาตรฐานการเชื่อมต่อใหม่ EIP-6963 (รวมถึง Rainbow, MetaMask และอื่นๆ) จะปรากฏในส่วน `Installed` โดยอัตโนมัติระหว่างประสบการณ์การเชื่อมต่อกระเป๋าสตางค์ สิ่งนี้ช่วยให้ผู้ใช้สามารถค้นหากระเป๋าสตางค์ที่ชื่นชอบได้เสมอและเชื่อมต่อกับ dApps โดยไม่มีความขัดแย้งหรือปุ่ม fallback
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+นักพัฒนายังคงมีการควบคุมเต็มที่เหนือรายการกระเป๋าสตางค์ที่กำหนดเองเพื่อเน้นกระเป๋าสตางค์ที่ต้องการสำหรับผู้ใช้ปลายทาง ขอแนะนำให้คุณยังคงรวม `injectedWallet` และ `walletConnectWallet` ในรายการของคุณเพื่อรองรับทุกแพลตฟอร์ม
 
-**2. Wagmi configuration with getDefaultConfig**
+\*\*2. การตั้งค่า Wagmi ด้วย getDefaultConfig
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+API ใหม่นี้ทำให้ประสบการณ์การกำหนดค่าง่ายขึ้นและทดแทนความจำเป็นในการใช้ `createConfig` ของ Wagmi โดยตรง การกำหนดค่าเชนถูกทำให้ง่ายขึ้น รวมถึงการให้บริการสาธารณะที่สามารถสรุปได้สำหรับ `transports`
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+รายการกระเป๋าเงินเริ่มต้นจะถูกรวมเข้ามาโดยอัตโนมัติ ทำให้ไม่จำเป็นต้องใช้ `getDefaultWallets` และ `connectorsForWallets`
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+คุณสามารถสร้างรายการกระเป๋าเงินที่กำหนดเองได้โดยการส่ง connectors กระเป๋าเงินที่นำเข้ามาหรือเชนที่กำหนดเองไปยัง `wallets` ไม่จำเป็นต้องสร้าง connectors กระเป๋าเงินและส่ง `projectId` และ `chains` อีกต่อไป
 
 ```
 const config = getDefaultConfig({
@@ -124,16 +124,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+คุณไม่จำเป็นต้องส่ง `chains` ไปยัง `<RainbowKitProvider>`
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. เชนที่กำหนดเอง**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+ประเภทของ `Chain` ได้เปลี่ยนแปลงตาม Wagmi v2 และยังคงสนับสนุน metadata `iconUrl` และ `iconBackground` ของ RainbowKit
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -159,7 +159,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+ตัวอย่างที่ใช้ `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -174,7 +174,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+ตัวอย่างโดยใช้ `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -193,10 +193,10 @@ Example with `createConfig`:
   })
 ```
 
-**5. Custom Wallets**
+**5. รายการกระเป๋าเงินที่กำหนดเอง**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+คอนเนคเตอร์กระเป๋าเงินของ RainbowKit ได้รับการเปลี่ยนแปลงอย่างมากเพื่อรองรับ Wagmi v2. อ้างอิง [เอกสารที่อัปเดต](https://www.rainbowkit.com/docs/custom-wallets) และ [ตัวอย่างคอนเนคเตอร์](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) เพื่ออัปเกรดคอนเนคเตอร์กระเป๋าเงินที่กำหนดเองใน dApp ของคุณ.
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+คอนเนคเตอร์กระเป๋าเงินยังรองรับมาตรฐาน EIP-6963 ด้วย prop `rdns`. ตรวจสอบให้แน่ใจว่ามีการกรอกข้อมูลนี้เพื่อป้องกันการอ้างอิงซ้ำๆ ไปยังกระเป๋าเงินที่รองรับ EIP-6963 ในรายการกระเป๋าเงินของคุณ.
 
-> Please report any issues or feedback for RainbowKit v2 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> กรุณาแจ้งปัญหาหรือข้อเสนอแนะสำหรับ RainbowKit v2 บน GitHub [ที่นี่](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
