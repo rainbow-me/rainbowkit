@@ -25,7 +25,7 @@ Alternativement, vous pouvez intégrer manuellement RainbowKit dans votre projet
 
 ### Configuration manuelle
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+Installez RainbowKit et ses dépendances associées, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), et [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -35,7 +35,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 #### Importer
 
-Import RainbowKit, Wagmi and TanStack Query.
+Importez RainbowKit, Wagmi et TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -61,7 +61,7 @@ import {
 
 #### Configuration
 
-Configurez vos chaînes souhaitées et générer les connecteurs requis. Vous aurez également besoin d'établir une configuration `wagmi`. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+Configurez vos chaînes souhaitées et générer les connecteurs requis. Vous aurez également besoin d'établir une configuration `wagmi`. Si votre dApp utilise le rendu côté serveur (SSR), assurez-vous de régler `ssr` sur `true`.
 
 > Remarque : Chaque dApp qui dépend de WalletConnect doit maintenant obtenir un `projectId` de [WalletConnect Cloud](https://cloud.walletconnect.com/). C'est absolument gratuit et ne prend que quelques minutes.
 
@@ -79,7 +79,7 @@ const config = getDefaultConfig({
 
 #### Envelopper les fournisseurs
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Encapsulez votre application avec `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), et [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
