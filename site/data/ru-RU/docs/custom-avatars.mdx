@@ -1,0 +1,51 @@
+---
+title: Пользовательские Аватары
+description: Настройка аватара пользователя вашего приложения
+---
+
+# Пользовательские Аватары
+
+## Настройка аватара пользователя вашего приложения
+
+По умолчанию мы предоставляем аватар для пользователей, если их изображение ENS не установлено, но вы можете настроить это, предоставив свой собственный компонент аватара. Вы можете импортировать тип `AvatarComponent`, если используете TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+`AvatarComponent` переданный в prop `avatar` имеет следующие типы prop: `<{ address: string; ensImage?: string | null; size: number;}>`
