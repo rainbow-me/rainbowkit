@@ -1,0 +1,75 @@
+---
+title: श्रृंखलाएँ
+description: श्रृंखलाओं को अनुकूलित करना
+---
+
+# श्रृंखलाएँ
+
+## श्रृंखलाओं को अनुकूलित करना
+
+RainbowKit को [wagmi की `chain` object](https://wagmi.sh/react/chains) के साथ एकीकृत करने के लिए डिज़ाइन किया गया है। समर्थित श्रृंखलाओं की सूची की जाँच करें [here](https://wagmi.sh/react/chains#supported-chains).
+
+### प्रारंभिक श्रृंखला को अनुकूलित करना
+
+डिफ़ॉल्ट रूप से, RainbowKit पहले चेन से जुड़ जाएगी जो Wagmi को दी गई है। यह व्यवहार `initialChain` prop के माध्यम से अनुकूलित किया जा सकता है।
+
+प्रारंभिक चेन को चेन ID का उपयोग करके कॉन्फ़िगर किया जा सकता है।
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+सुविधाजनकता के रूप में, आप चेन ऑब्जेक्ट भी पास कर सकते हैं।
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### कस्टम चेन मेटाडेटा
+
+कई चेन आइकन और बैकग्राउंड डिफ़ॉल्ट रूप से प्रदान किए जाते हैं, परन्तु आप प्रत्येक चेन के लिए आइकन और बैकग्राउंड को `iconUrl` और `iconBackground` गुणों का उपयोग करके कस्टमाइज़ कर सकते हैं।
+
+`getDefaultConfig` के साथ उदाहरण
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+`createConfig` के साथ उदाहरण
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```
