@@ -25,7 +25,7 @@ yarn create @rainbow-me/rainbowkit
 
 ### Ручне налаштування
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+Встановіть RainbowKit та його залежності, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), та [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -35,7 +35,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 #### Імпорт
 
-Import RainbowKit, Wagmi and TanStack Query.
+Імпортуйте RainbowKit, Wagmi та TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -61,7 +61,7 @@ import {
 
 #### Налаштувати
 
-Налаштуйте бажані ланцюги та створіть необхідні конектори. Вам також потрібно налаштувати конфігурацію `wagmi`. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+Налаштуйте бажані ланцюги та створіть необхідні конектори. Вам також потрібно налаштувати конфігурацію `wagmi`. Якщо ваш dApp використовує серверний рендеринг (SSR), переконайтеся, що встановили `ssr` в `true`.
 
 > Примітка: Кожен dApp, який використовує WalletConnect, тепер повинен отримати `projectId` з [WalletConnect Cloud](https://cloud.walletconnect.com/). Це абсолютно безкоштовно і займає лише кілька хвилин.
 
@@ -79,7 +79,7 @@ const config = getDefaultConfig({
 
 #### Обгортання провайдерів
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Обгорніть ваш додаток за допомогою `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), та [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
