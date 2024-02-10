@@ -6,9 +6,9 @@ title: Руководство по миграции
 
 ## Миграция RainbowKit
 
-### 2.x.x Breaking changes
+### 2.x.x Критические изменения
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+Пиринговые зависимости [wagmi](https://wagmi.sh) и [viem](https://viem.sh) достигли версии `2.x.x` с критическими изменениями.
 
 Следуйте шагам ниже для миграции.
 
@@ -28,7 +28,7 @@ npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+**3. Обновите конфигурации RainbowKit и Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -98,21 +98,21 @@ npm i @tanstack/react-query
 -   [Руководство по миграции Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 -   [Критические изменения Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### Изменения в RainbowKit
 
-**1. Improved behavior for EIP-6963 wallets**
+**1. Улучшенное поведение для кошельков EIP-6963**
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+Кошельки, поддерживающие новый стандарт подключения EIP-6963 (включая Rainbow, MetaMask и другие), теперь будут автоматически отображаться в разделе `Установленные` в процессе подключения кошелька. Это гарантирует, что пользователи всегда смогут найти свои любимые кошельки и подключиться к dApps без конфликтов или использования кнопок возврата.
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+Разработчики по-прежнему имеют полный контроль над Списком пользовательских кошельков, чтобы акцентировать внимание на предпочтительных кошельках для конечных пользователей. Рекомендуется продолжать включать `injectedWallet` и `walletConnectWallet` в ваш список для поддержки всех платформ.
 
-**2. Wagmi configuration with getDefaultConfig**
+**2. Конфигурация Wagmi с getDefaultConfig**
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+Этот новый API упрощает процесс настройки и заменяет необходимость прямого использования `createConfig` от Wagmi. Конфигурация сети стала проще, включая автоматическое определение публичных провайдеров для `transports`.
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+Список стандартных кошельков будет включен автоматически, что делает ненужным использование `getDefaultWallets` и `connectorsForWallets`.
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+Вы можете создать Свой Список Кошельков, передавая импортированные или Свои Коннекторы Кошельков в `wallets`. Теперь не требуется создание экземпляров коннекторов кошельков и передача `projectId` и `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+Вам больше не нужно передавать `chains` в `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. Пользовательские Сети**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+Тип `Chain` изменился в соответствии с Wagmi v2 и продолжает поддерживать метаданные `iconUrl` и `iconBackground` от RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+Пример с `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+Пример с `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,11 +195,11 @@ Example with `createConfig`:
   })
 ```
 
-**5. Custom Wallets**
+**5. Пользовательские кошельки**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+Коннекторы кошельков RainbowKit претерпели значительные изменения для поддержки Wagmi v2. Ссылка на [обновленную документацию](https://www.rainbowkit.com/docs/custom-wallets) и [пример коннектора](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для обновления любых Пользовательских Коннекторов Кошельков в вашем dApp.
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+Коннекторы кошельков теперь также поддерживают стандарт EIP-6963 с помощью свойства `rdns`. Убедитесь, что это свойство заполнено, чтобы избежать дублирования ссылок на кошельки, поддерживающие EIP-6963, в списке ваших кошельков.
 
 ### 1.x.x Критические изменения
 
