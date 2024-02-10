@@ -8,7 +8,7 @@ title: 迁移指南
 
 ### 1.x.x 破坏性更改
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+[wagmi](https://wagmi.sh)和[viem](https://viem.sh)的对等依赖已升级到`2.x.x`版本，带来了重大变更。
 
 3。 3。 迁移提供商
 
@@ -98,21 +98,21 @@ wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以�
 -   注意：wagmi 不再内部使用 `ethers` 包。 注意：wagmi 不再内部使用 `ethers` 包。 但如果你依赖 [Authentication](https://www.rainbowkit.com/docs/authentication) API，`siwe` 仍将需要 `ethers` 作为对等依赖。
 -   在依赖 [ethers](https://docs.ethers.org/v5/) 的早期 wagmi 版本中，WalletConnect 需要的 `fs`，`net` 和 `tls` 模块会自动进行 polyfill。 这在基于 [viem](https://viem.sh/) 构建的 RainbowKit v1 + wagmi v1 中已不再是这样。 在基于 [viem](https://viem.sh/) 的 RainbowKit v1 + wagmi v1 中，情况不再如此。
 
-#### RainbowKit Changes
+#### RainbowKit更新
 
-**1. Improved behavior for EIP-6963 wallets**
+\*\*1. 改进了对EIP-6963钱包的支持
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+现在支持新的EIP-6963连接标准的钱包（包括Rainbow、MetaMask等）将自动显示在连接钱包体验的`已安装`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
 
-**2. Wagmi configuration with getDefaultConfig**
+\*\*2. 使用getDefaultConfig的Wagmi配置
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+这个新的API简化了配置体验，取代了直接使用Wagmi的`createConfig`的需求。 链配置被简化，包括为`transports`推断出的公共提供者。
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+默认钱包列表将会自动包含，使得不再需要使用`getDefaultWallets`和`connectorsForWallets`。
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 \*\*3. RainbowKitProvider\*\*
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+您不再需要将`chains`传递给`<RainbowKitProvider>`。
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. 自定义链条**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+与Wagmi v2一致，`Chain`类型已经改变，并继续支持RainbowKit的`iconUrl`和`iconBackground`元数据。
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+使用`getDefaultConfig`的例子：
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+使用`createConfig`的例子：
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,11 +195,11 @@ Example with `createConfig`:
   })
 ```
 
-**5。 Custom Wallets**
+**5。 自定义钱包**
 
 RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便继续支持WalletConnect v1. 将很快提供对WalletConnect v2和`WalletConnectConnector`的支持，作为补丁版本发布，不会有破坏性的更改。
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。
 
 ### **注意所有内置钱包都使用新API。 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。** 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。\*\*
 
