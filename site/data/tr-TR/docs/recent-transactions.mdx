@@ -1,0 +1,75 @@
+---
+title: Son İşlemler
+description: Son işlemlerinizi gösterin
+---
+
+# Son İşlemler
+
+## Son işlemlerinizi gösterin
+
+RainbowKit'in hesap modülünde son işlemlerin görüntülenmesine izin verebilirsiniz. Tüm işlemlerin yerel depolamada tutulduğunu ve görüntülenebilmeleri için manuel olarak RainbowKit ile kayıt edilmesi gerektiğini unutmayın.
+
+Varsayılan `ConnectButton` uygulaması, bekleyen işlemler varsa kullanıcının avatarının etrafında bir yükleme göstergesi de görüntüleyecektir. Özel `ConnectButton` uygulamaları, bu davranışı `account.hasPendingTransactions` özelliği aracılığıyla render fonksiyonunuza ileterek yeniden oluşturabilir.
+
+Bu özelliği kullanmak için, öncelikle `RainbowKitProvider` da `showRecentTransactions` seçeneğini etkinleştirin.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+İşlemler daha sonra `useAddRecentTransaction` kancasını kullanarak RainbowKit ile kaydedilebilir.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+Bir işlem RainbowKit ile kaydedildikten sonra, durumu tamamlanma üzerine güncellenecektir.
+
+Varsayılan olarak, işlem bir işlem yapıldıktan sonra tek bir blok çıkarıldığında tamamlanmış sayılacaktır, ancak bunu özel bir `confirmations` değeri belirterek yapılandırabilirsiniz.
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
