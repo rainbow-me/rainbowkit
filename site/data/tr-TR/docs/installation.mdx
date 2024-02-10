@@ -25,7 +25,7 @@ Alternatif olarak, RainbowKit'i mevcut projenize manuel olarak entegre edebilirs
 
 ### Manuel kurulum
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+RainbowKit ve eş bağımlılıkları olan [wagmi](https://wagmi.sh/), [viem](https://viem.sh) ve [@tanstack/react-query](https://tanstack.com/query/v5) kurun.
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -35,7 +35,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 #### İçe Aktar
 
-Import RainbowKit, Wagmi and TanStack Query.
+RainbowKit, Wagmi ve TanStack Query'yi içe aktarın.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -61,7 +61,7 @@ import {
 
 #### Yapılandır
 
-İstediğiniz zincirleri yapılandırın ve gerekli bağlayıcıları oluşturun. Ayrıca bir `wagmi` konfigürasyonu kurmanız gerekecek. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+İstediğiniz zincirleri yapılandırın ve gerekli bağlayıcıları oluşturun. Ayrıca bir `wagmi` konfigürasyonu kurmanız gerekecek. Eğer dApp'iniz sunucu tarafı oluşturma (SSR) kullanıyorsa, `ssr`'yi `true` olarak ayarladığınızdan emin olun.
 
 > Not: Artık WalletConnect'e dayanan her dApp'in, [WalletConnect Cloud](https://cloud.walletconnect.com/) üzerinden bir `projectId` alması gerekiyor. Bu tamamen ücretsizdir ve sadece birkaç dakika sürer.
 
@@ -79,7 +79,7 @@ const config = getDefaultConfig({
 
 #### Sağlayıcıları sar
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Uygulamanızı `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) ve [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider) ile sarın.
 
 ```tsx
 const queryClient = new QueryClient();
