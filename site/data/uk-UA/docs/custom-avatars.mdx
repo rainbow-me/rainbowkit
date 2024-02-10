@@ -1,0 +1,51 @@
+---
+title: Користувацькі Аватари
+description: Налаштування аватара користувача вашого додатку
+---
+
+# Користувацькі Аватари
+
+## Налаштування аватара користувача вашого додатку
+
+За замовчуванням ми надаємо аватар для користувачів у випадку, якщо їх зображення ENS не встановлено, але ви можете налаштувати це, надавши свій компонент аватара. Ви можете імпортувати тип `AvatarComponent`, якщо використовуєте TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Переданий у властивість `avatar` компонент `AvatarComponent` має такі типи пропсів: `<{ address: string; ensImage?: string | null; size: number;}>`
