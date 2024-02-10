@@ -1,0 +1,106 @@
+---
+title: การรับรองความถูกต้องที่กำหนดเอง
+description: เชื่อมต่อกับระบบรับรองความถูกต้องด้านหลังของคุณเอง
+---
+
+# การรับรองความถูกต้องที่กำหนดเอง
+
+## เชื่อมต่อกับระบบรับรองความถูกต้องด้านหลังของคุณเอง
+
+ในขณะที่ RainbowKit ให้[การสนับสนุนระดับพิเศษสำหรับ Sign-In ด้วย Ethereum และ NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) คุณสามารถรวมกับ back-ends ที่กำหนดเองและรูปแบบข้อความได้ด้วย
+
+### การสร้าง adapter ที่กำหนดเอง
+
+ขั้นแรกสร้าง adapter สำหรับการรับรองความถูกต้อง นี่ช่วยให้ RainbowKit สร้าง/เตรียมข้อความและสื่อสารกับ back-end ของคุณ
+
+เป็นตัวอย่าง เราสามารถสร้าง adapter สำหรับการรับรองความถูกต้องที่ช่วยให้เราใช้ [Sign-In ด้วย Ethereum](https://login.xyz) อยู่ตรงข้ามกับ [จุดสิ้นสุด API ที่กำหนดเอง.](https://wagmi.sh/examples/sign-in-with-ethereum)
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### การให้สถานะการรับรองความถูกต้อง
+
+ถ้าสมมติว่าการสร้างแอปพลิเคชันของคุณจัดการวัฒนธรรมการรับรองความถูกต้องในทางหนึ่งบางอย่าง คุณสามารถส่งสถานะการรับรองความถูกต้องปัจจุบันพร้อม adapter ที่กำหนดเองไปยัง `RainbowKitAuthenticationProvider` วร่องการ `RainbowKitProvider` ที่มีอยู่ของคุณ
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+ถ้าคุณได้ไกลถึงจุดนี้และสร้าง adapter สำหรับไลบรารีการรับรองความถูกต้องโอเพนซอร์สที่มีอยู่แล้ว โปรดพิจารณาสร้างแพ็คเกจสำหรับผู้อื่นที่จะใช้!
