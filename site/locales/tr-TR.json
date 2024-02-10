@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "Cüzdan bağlamak için en iyi yöntem",
+    "subheadline": "Herkes için tasarlandı. Geliştiriciler için inşa edildi.",
+    "cta": "Dökümantasyonu Görüntüle",
+    "adopters": "En iyi Web3 ekipleri RainbowKit'i kullanarak ürünlerini geliştiriyor, kullanıcılarını memnun ediyor ve zaman kazanıyor.",
+    "playground": {
+      "headline": "RainbowKit'i deneyin",
+      "subheadline": "Ethereum oturum açma deneyiminizi web sitenizde tamamen özelleştirebilirsiniz. RainbowKit, renk, kenar yarıçapı, cüzdan sağlayıcıları ve daha fazlasını tamamen kullanıcı dostu bir API aracılığıyla özelleştirmenize olanak tanır. Aşağıda bir his alın!",
+      "modal": "Modal",
+      "mode": "Mod",
+      "accent": "Vurgu",
+      "radius": "Yarıçap",
+      "large": "B",
+      "medium": "O",
+      "small": "K"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Geliştiriciler",
+      "subheadline": "RainbowKit, geliştiricilerin uygulamalarına harika bir cüzdan deneyimi eklemeleri için hızlı, kolay ve son derece özelleştirilebilir bir yol sağlar. Zor işlemleri biz yönetiyoruz, böylece geliştiriciler ve ekipler harika ürünler ve kullanıcılar için topluluklar oluşturmaya odaklanabilir.",
+      "installation": "Kolay Kurulum",
+      "themes": "Dahili Temalar",
+      "darkmode": "Açık ve Koyu Mod",
+      "appstore": "App Store ve Google Play Entegrasyonu",
+      "custom_themes": "Özel Temalar",
+      "custom_wallet_list": "Özel Cüzdan Listesi",
+      "custom_chain": "Özel Zincirler",
+      "custom_connect": "Özel Bağlantı Düğmesi"
+    },
+    "madeby": {
+      "headline": "Kendi dostlarımız tarafından ❤️ ile yapıldı",
+      "subheadline": "RainbowKit'i geliştirmek eğlenceli bir çaba oldu ve birçok kişi tarafından Rainbow'da ve diğer şirketlerimizdeki dostlarımız tarafından yapıldı. RainbowKit'i her zaman daha da iyi yapmaya çalışıyoruz, bu yüzden lütfen nasıl iyileştirebileceğimizi bize bildirin.",
+      "twitter_cta": "Bizi Twitter'da takip edin",
+      "feedback_cta": "Bize geri bildirim gönderin"
+    },
+    "footer": {
+      "mediakit": "medya kiti",
+      "terms": "kullanım Koşulları'na",
+      "privacy": "gizlilik politikası"
+    },
+    "meta": {
+      "description": "Bir cüzdanı bağlamanın en iyi yolu 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Genel Bakış",
+        "getting_started": "Başlarken",
+        "advanced": "Gelişmiş"
+      }
+    }
+  }
+}
