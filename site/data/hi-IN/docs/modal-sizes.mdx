@@ -1,0 +1,28 @@
+---
+title: मोडल के आकार
+description: वाईड बनाम कॉम्पैक्ट
+---
+
+# मोडल के आकार
+
+## वाईड बनाम कॉम्पैक्ट आकार
+
+डिफ़ॉल्ट रूप से, RainbowKit का `modalSize` `wide` पर सेट होता है (और इस तरह दिखता है):
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+हम एक `compact` मोडल आकार भी प्रदान करते हैं, जो इस तरह दिखता है:
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+अपने मोडल के आकार को `compact` पर सेट करने के लिए, बस अपने `RainbowKitProvider` में `modalSize="compact"` को prop के रूप में जोड़ें:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
