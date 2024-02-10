@@ -8,7 +8,7 @@ title: Guia de Migração
 
 ### 1.x.x Alterações que quebram
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+As dependências de pares [wagmi](https://wagmi.sh) e [viem](https://viem.sh) alcançaram a versão `2.x.x` com mudanças significativas.
 
 Siga as etapas abaixo para migrar.
 
@@ -98,21 +98,21 @@ Se você usa hooks `wagmi` em seu aplicativo, você precisará seguir o guia de 
 -   [Guia de Migração do Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 -   [Mudanças que Quebram a Compatibilidade no Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### Mudanças no RainbowKit
 
-**1. Improved behavior for EIP-6963 wallets**
+**1. Comportamento aprimorado para carteiras EIP-6963**
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+Carteiras que suportam o novo padrão de conexão EIP-6963 (incluindo Rainbow, MetaMask e outras) agora aparecerão automaticamente em uma seção `Instaladas` durante a experiência de Conectar Carteira. Isso garante que os usuários possam sempre encontrar suas carteiras favoritas e se conectar a dApps sem conflitos ou botões de alternativa.
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+Os desenvolvedores continuam tendo controle total sobre a Lista de Carteiras Personalizadas para enfatizar carteiras preferenciais para os usuários finais. É incentivado que você continue a incluir a `injectedWallet` e a `walletConnectWallet` em sua lista para dar suporte a todas as plataformas.
 
 2.  Substitua import configureChains
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+Esta nova API simplifica a experiência de configuração e substitui a necessidade de usar diretamente o `createConfig` do Wagmi. A configuração da cadeia é simplificada, incluindo provedores públicos inferidos para `transports`.
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+A lista padrão de carteiras será incluída automaticamente, tornando obsoleta a necessidade de usar `getDefaultWallets` e `connectorsForWallets`.
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+Você pode criar uma Lista Personalizada de Carteiras passando conectores importados ou conectores de Carteiras Personalizadas para `wallets`. Não é mais necessário instanciar conectores de carteira e passar `projectId` e `chains`.
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+Você não precisa mais passar `chains` para `<RainbowKitProvider>`.
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. Correntes Personalizadas**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+O tipo `Chain` mudou de acordo com o Wagmi v2 e continua a suportar os metadados `iconUrl` e `iconBackground` do RainbowKit.
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+Exemplo com `getDefaultConfig`:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+Exemplo com `createConfig`:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,11 +195,11 @@ Example with `createConfig`:
   })
 ```
 
-**5. Custom Wallets**
+**5. Carteiras Personalizadas**
 
 O RainbowKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para manter o suporte à WalletConnect v1. O suporte para WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização de correção, sem quebras de compatibilidade.
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+Os conectores de carteira agora também suportam o padrão EIP-6963 com a propriedade `rdns`. Certifique-se de que isso esteja preenchido para evitar referências duplicadas a carteiras que suportam EIP-6963 na sua lista de carteiras.
 
 ### 1.x.x Alterações que quebram
 
