@@ -1,0 +1,28 @@
+---
+title: ขนาดของ Modal
+description: กว้าง ประมาณ กับ ขนาดกะทัดรัด
+---
+
+# ขนาดของ Modal
+
+## กว้าง ประมาณ กับ ขนาดกะทัดรัด
+
+โดยค่าเริ่มต้น, `modalSize` ของ RainbowKit กำหนดเป็น `wide` (และจะดูประมาณนี้):
+
+<Img src="/modal-default.png" height="569" width="1029" />
+
+เรายังมีขนาด `compact` ของ modal ด้วย ซึ่งจะดูประมาณนี้:
+
+<Img src="/modal-compact.png" height="569" width="1029" />
+
+เพื่อตั้งค่าขนาดของ modal ของคุณเป็น `compact`, เพิ่ม `modalSize="compact"` เป็น prop ใน `RainbowKitProvider` ของคุณ:
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider modalSize="compact" {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
