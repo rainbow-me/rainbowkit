@@ -6,9 +6,9 @@ title: マイグレーションガイド
 
 ## RainbowKitのマイグレーション
 
-### 2.x.x Breaking changes
+### 2.x.x 互換性のない変更
 
-The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+[wagmi](https://wagmi.sh) と [viem](https://viem.sh) のピア依存関係が `2.x.x` に達し、互換性のない変更が行われました。
 
 以下の手順でマイグレートしてください。
 
@@ -28,7 +28,7 @@ Wagmi v2では、[TanStack Query](https://tanstack.com/query/v5/docs/react/overv
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+**3. RainbowKit と Wagmi の設定をアップグレードしてください**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -98,21 +98,21 @@ dAppで`wagmi`フックと`viem`アクションを使用している場合、v2�
 -   [Wagmi v2移行ガイド](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 -   [Viem v2破壊的変更](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
-#### RainbowKit Changes
+#### RainbowKit の変更点
 
-**1. Improved behavior for EIP-6963 wallets**
+**1. EIP-6963 ウォレットの動作改善**
 
-Wallets that support the new EIP-6963 connection standard (including Rainbow, MetaMask, and more) will now automatically appear in an `Installed` section during the Connect Wallet experience. This ensures that users can always find their favorite wallets and connect to dApps without conflicts or fallback buttons.
+新しい EIP-6963 接続標準をサポートするウォレット（Rainbow、MetaMask などを含む）は、ウォレットを接続する体験の間に `Installed` セクションに自動的に表示されるようになりました。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。
 
-Developers continue to have full control over the Custom Wallet List to emphasize preferred wallets for end users. It is encouraged that you continue to include the `injectedWallet` and `walletConnectWallet` in your list to supports all platforms.
+開発者は引き続きカスタムウォレットリストを完全に制御でき、エンドユーザーにとって優先されるウォレットを強調表示できます。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。
 
-**2. Wagmi configuration with getDefaultConfig**
+**2. getDefaultConfig を使用した Wagmi 設定**
 
-This new API simplifies the configuration experience and replaces the need to use Wagmi's `createConfig` directly. Chain configuration is simplified, including inferred public providers for `transports`.
+この新しいAPIは設定体験を簡素化し、Wagmiの`createConfig`を直接使用する必要を置き換えます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。
 
-The default wallet list will be automatically included, deprecating the need to use `getDefaultWallets` and `connectorsForWallets`.
+デフォルトのウォレットリストが自動的に含まれるようになり、`getDefaultWallets`や`connectorsForWallets`を使用する必要がなくなります。
 
-You can create a Custom Wallet List by passing imported or Custom Wallet connectors to `wallets`. Instantiating wallet connectors and passing `projectId` and `chains` is no longer required.
+インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。
 
 ```
 const config = getDefaultConfig({
@@ -126,16 +126,16 @@ const config = getDefaultConfig({
 
 **3. RainbowKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+もはや`chains`を`<RainbowKitProvider>`に渡す必要はありません。
 
 ```diff
 - <RainbowKitProvider chains={chains}>
 + <RainbowKitProvider>
 ```
 
-**4. Custom Chains**
+**4. カスタムチェーン**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+Wagmi v2に従って`Chain`タイプが変更され、RainbowKitの`iconUrl`と`iconBackground`メタデータをサポートし続けています。
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -161,7 +161,7 @@ The `Chain` type has changed in accordance with Wagmi v2, and continues to suppo
   } as const satisfies Chain
 ```
 
-Example with `getDefaultConfig`:
+`getDefaultConfig`を使用した例:
 
 ```diff
 const config = getDefaultConfig({
@@ -176,7 +176,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`:
+`createConfig`を使用した例:
 
 ```diff
 + import { Chain } from '@rainbow-me/rainbowkit'
@@ -195,11 +195,11 @@ Example with `createConfig`:
   })
 ```
 
-**5。 Custom Wallets**
+**5。 カスタムウォレット**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)と[例のコネクタ](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。
 
-Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
+ウォレットコネクタは、`rdns`プロパティを使用してEIP-6963標準もサポートするようになりました。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。
 
 ### 1.x.x 破壊的変更
 
