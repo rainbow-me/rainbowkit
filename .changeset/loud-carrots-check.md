@@ -87,7 +87,7 @@ npm i @tanstack/react-query
   }
 ```
 
-[You can read an in-depth migration guide here](https://beta.rainbowkit.com/guides/rainbowkit-wagmi-v2).
+[You can read an in-depth migration guide here](https://rainbowkit.com/guides/rainbowkit-wagmi-v2).
 
 **4. Check for breaking changes in `wagmi` and `viem`**
 
