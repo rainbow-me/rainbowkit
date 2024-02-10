@@ -1,0 +1,42 @@
+---
+title: वॉलेट बटन
+description: वॉलेट बटन का उपयोग और अनुकूलन करना
+---
+
+# वॉलेट बटन
+
+यह नया `वॉलेट बटन` कंपोनेंट डीएपीइस और उसकी मेंटेनेंस-फ्री लाभों को अपनाने में dApps की मदद करता है।
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+`वॉलेट बटन.कस्टम` कंपोनेंट अनुकूलन और स्टाइलिंग के लिए उपलब्ध है, जैसा कि सीखा जाता है।
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+अधिकांश dApps को [ConnectButton](https://www.rainbowkit.com/docs/connect-button) से अच्छी सेवा प्रदान की जाती है। `वॉलेट बटन` के ग्रहण और उपयोग के बारे में अधिक जानकारी के लिए दस्तावेज़ [here](https://www.rainbowkit.com/docs/wallet-button) का संदर्भ लें।
+
+#### डेमो
+
+देखने के लिए नीचे बटन दबाएँ, इस रेंबोकिट प्रवेश बिंदु की दिखावट क्या होती है।
+
+<WalletButtonDemo />
