@@ -7,9 +7,11 @@ description: Customizing chains
 
 ## Customizing chains
 
+RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
+
 ### Customizing the initial chain
 
-By default, RainbowKit will connect to the first chain provided via the `initialChain` prop.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
 The initial chain can be configured using a chain ID.
 
@@ -23,19 +25,16 @@ As a convenience, you can also pass a chain object.
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Custom chain
+### Custom chain metadata
 
-Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the iconUrl and iconBackground property.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
 
-Example with `getDefaultConfig`.
+Example with `getDefaultConfig`
 
 ```tsx
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { mainnet, optimism } from 'wagmi/chains';
 
 const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
   chains: [
     {
       ...mainnet,
@@ -51,12 +50,11 @@ const config = getDefaultConfig({
 });
 ```
 
-Example with `createConfig`.
+Example with `createConfig`
 
 ```tsx
-import { Chain } from '@rainbow-me/rainbowkit';
-import { createConfig, http } from 'wagmi';
 import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {
@@ -73,9 +71,5 @@ const chains: readonly [Chain, ...Chain[]] = [
 
 const config = createConfig({
   chains,
-  transports: {
-    [mainnet.id]: http(),
-    [optimism.id]: http(),
-  },
 });
 ```
