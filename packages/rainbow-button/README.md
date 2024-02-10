@@ -47,16 +47,18 @@ const config = createConfig({
 
 ### Wrap providers
 
-Wrap your application with `RainbowButtonProvider` and `WagmiConfig`.
+Wrap your application with `RainbowButtonProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const App = () => {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          {/* Your App */}
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```
