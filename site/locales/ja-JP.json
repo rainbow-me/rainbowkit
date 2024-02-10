@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "ウォレットを接続する最良の方法",
+    "subheadline": "みんなのために設計。 開発者のために作られました。",
+    "cta": "ドキュメントを見る",
+    "adopters": "最高のWeb3チームは、RainbowKitを使用して製品を改善し、ユーザーを喜ばせ、ビルド時に時間を節約しています。",
+    "playground": {
+      "headline": "RainbowKitで試す",
+      "subheadline": "Ethereumのログインエクスペリエンスをあなたのウェブサイトで自由にカスタマイズできます。 RainbowKitを使用すると、使いやすいAPIを介して、色、ボーダーラジウス、ウォレットプロバイダーなどを完全にカスタマイズできます。 以下でその感触をつかんでください！",
+      "modal": "モーダル",
+      "mode": "モード",
+      "accent": "アクセント",
+      "radius": "半径",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 開発者",
+      "subheadline": "RainbowKitは、開発者がアプリケーションに素晴らしいウォレットエクスペリエンスを追加するための迅速で簡単かつ高度にカスタマイズ可能な方法を提供します。 開発者とチームは、ユーザーのために素晴らしい製品とコミュニティを構築するために困難な部分を処理するため、素晴らしい製品とコミュニティを構築するために時間を費やすことができます。",
+      "installation": "簡単なインストール",
+      "themes": "組み込みのテーマ",
+      "darkmode": "ライトモードとダークモード",
+      "appstore": "App StoreとGoogle Playの統合",
+      "custom_themes": "カスタムテーマ",
+      "custom_wallet_list": "カスタムウォレットリスト",
+      "custom_chain": "カスタムチェーン",
+      "custom_connect": "カスタム接続ボタン"
+    },
+    "madeby": {
+      "headline": "私たちのfrensが製作しました",
+      "subheadline": "Rainbowと他の企業の多くの人々との楽しいプロジェクトでRainbowKitを作りました。 RainbowKitをより良くするために常に改善しているので、どのように改善できるかお知らせください。",
+      "twitter_cta": "Twitterでフォローする",
+      "feedback_cta": "フィードバックを共有してください"
+    },
+    "footer": {
+      "mediakit": "メディアキット",
+      "terms": "利用規約",
+      "privacy": "プライバシーポリシー"
+    },
+    "meta": {
+      "description": "ウォレットを接続する最良の方法 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "概要",
+        "getting_started": "入門",
+        "advanced": "高度な設定"
+      }
+    }
+  }
+}
