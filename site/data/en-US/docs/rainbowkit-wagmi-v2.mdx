@@ -6,22 +6,24 @@ image: guide-walletconnect-v2.png
 
 **Breaking:**
 
-The [Wagmi](https://wagmi.sh) peer dependency is migrated over to [Wagmi v2](https://wagmi.sh/) which has been updated to `^2.0.0`.
+The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
 Follow the steps below to migrate.
 
-**1. Upgrade RainbowKit to beta version and `wagmi` to v2 version**
+**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
-npm i @rainbow-me/rainbowkit@beta wagmi@2
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Install `viem` peer dependency**
+**2. Install `@tanstack/react-query` peer dependency**
 
-Wagmi v2 requires the `viem` peer dependency. Install it with the following command:
+With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+
+Install it with the following command:
 
 ```bash
-npm i viem@2
+npm i @tanstack/react-query
 ```
 
 **3. Check for breaking changes in `wagmi`**
