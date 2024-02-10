@@ -1,0 +1,338 @@
+---
+title: 맞춤형 ConnectButton
+description: 맞춤형 ConnectButton 생성하기
+---
+
+# 맞춤형 ConnectButton
+
+## 맞춤형 ConnectButton 생성하기
+
+은 저수준의 `ConnectButton.Custom`을 사용하여 자신만의 맞춤 연결 버튼을 생성할 수 있습니다. 이 컴포넌트는 내장 버튼을 다시 구현할 필요가 있는 모든 것을 포함한 함수를 렌더링합니다.
+
+내장 버튼의 최소한의 재구현은 다음과 같을 것입니다:
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return (
+    <ConnectButton.Custom>
+      {({
+        account,
+        chain,
+        openAccountModal,
+        openChainModal,
+        openConnectModal,
+        authenticationStatus,
+        mounted,
+      }) => {
+        // Note: If your app doesn't use authentication, you
+        // can remove all 'authenticationStatus' checks
+        const ready = mounted && authenticationStatus !== 'loading';
+        const connected =
+          ready &&
+          account &&
+          chain &&
+          (!authenticationStatus ||
+            authenticationStatus === 'authenticated');
+
+        return (
+          <div
+            {...(!ready && {
+              'aria-hidden': true,
+              'style': {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
+          >
+            {(() => {
+              if (!connected) {
+                return (
+                  <button onClick={openConnectModal} type="button">
+                    Connect Wallet
+                  </button>
+                );
+              }
+
+              if (chain.unsupported) {
+                return (
+                  <button onClick={openChainModal} type="button">
+                    Wrong network
+                  </button>
+                );
+              }
+
+              return (
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <button
+                    onClick={openChainModal}
+                    style={{ display: 'flex', alignItems: 'center' }}
+                    type="button"
+                  >
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          background: chain.iconBackground,
+                          width: 12,
+                          height: 12,
+                          borderRadius: 999,
+                          overflow: 'hidden',
+                          marginRight: 4,
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? 'Chain icon'}
+                            src={chain.iconUrl}
+                            style={{ width: 12, height: 12 }}
+                          />
+                        )}
+                      </div>
+                    )}
+                    {chain.name}
+                  </button>
+
+                  <button onClick={openAccountModal} type="button">
+                    {account.displayName}
+                    {account.displayBalance
+                      ? ` (${account.displayBalance})`
+                      : ''}
+                  </button>
+                </div>
+              );
+            })()}
+          </div>
+        );
+      }}
+    </ConnectButton.Custom>
+  );
+};
+```
+
+다음 props는 렌더 함수에 전달됩니다.
+
+### 계정 속성
+
+<PropsTable
+  data={[
+    {
+      name: 'account',
+      required: false,
+      type: 'object | undefined',
+      description:
+        'Object containing details about the current account, described below',
+    },
+    {
+      name: 'account.address',
+      required: false,
+      type: 'string',
+      description: (
+        <>
+          The full account address, e.g.
+          "0x7a3d05c70581bD345fe117c06e45f9669205384f"
+        </>
+      ),
+    },
+    {
+      name: 'account.balanceDecimals',
+      required: false,
+      type: 'string | undefined	',
+      description: 'The account balance in decimals',
+    },
+    {
+      name: 'account.balanceFormatted',
+      required: false,
+      type: 'string | undefined	',
+      description: (
+        <>
+          The account balance formatted as a string, e.g.{' '}
+          <code>1.234567890123456789</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.balanceSymbol',
+      required: false,
+      type: 'string | undefined	',
+      description: (
+        <>
+          The currency symbol for the balance, e.g. <code>ETH</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.displayBalance',
+      required: false,
+      type: 'string | undefined	',
+      description: (
+        <>
+          The balance formatted to 3 significant digits, plus the
+          symbol, e.g. <code>1.23 ETH</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.displayName',
+      required: false,
+      type: 'string',
+      description: (
+        <>
+          The ENS name, or a truncated version of the address, e.g.{' '}
+          <code>"rainbowwallet.eth"</code> or <code>"0x7a…384f"</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.ensAvatar',
+      required: false,
+      type: 'string	| undefined',
+      description: 'The ENS avatar URI',
+    },
+    {
+      name: 'account.ensName',
+      required: false,
+      type: 'string	| undefined',
+      description: (
+        <>
+          The ENS name, e.g. <code>rainbowwallet.eth</code>
+        </>
+      ),
+    },
+    {
+      name: 'account.hasPendingTransactions',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the account has pending transactions for the current chain',
+    },
+  ]}
+/>
+
+### 체인 속성
+
+<PropsTable
+  data={[
+    {
+      name: 'chain',
+      required: false,
+      type: 'object | undefined',
+      description:
+        'Object containing details about the current chain, described below',
+    },
+    {
+      name: 'chain.hasIcon',
+      required: false,
+      type: 'boolean',
+      description: 'Whether the chain as an icon specified',
+    },
+    {
+      name: 'chain.iconUrl',
+      required: false,
+      type: 'string | undefined',
+      description:
+        'The chain icon URL (which may be also be undefined while downloading Base64 data URLs)',
+    },
+    {
+      name: 'chain.iconBackground',
+      required: false,
+      type: 'string | undefined',
+      description:
+        'The chain icon background which will be visible while images are loading',
+    },
+    {
+      name: 'chain.id',
+      required: false,
+      type: 'number',
+      description: (
+        <>
+          체인 ID, 예를 들어 <code>1</code>
+        </>
+      ),
+    },
+    {
+      name: 'chain.name',
+      required: false,
+      type: 'string | undefined',
+      description: (
+        <>
+          체인 이름, 예, <code>"Ethereum"</code>
+        </>
+      ),
+    },
+    {
+      name: 'chain.unsupported',
+      required: false,
+      type: 'boolean | undefined',
+      description:
+        '현재 체인이 지원되지 않는지 여부를 나타내는 Boolean',
+    },
+  ]}
+/>
+
+### 모달 상태 속성
+
+<PropsTable
+  data={[
+    {
+      name: 'openAccountModal',
+      required: false,
+      type: '() => void',
+      description: '계정 모달을 열기 위한 함수',
+    },
+    {
+      name: 'openChainModal',
+      required: false,
+      type: '() => void',
+      description: '체인 모달을 열기 위한 함수',
+    },
+    {
+      name: 'openConnectModal',
+      required: false,
+      type: '() => void',
+      description: '연결 모달을 열기 위한 함수',
+    },
+    {
+      name: 'accountModalOpen',
+      required: false,
+      type: 'boolean',
+      description:
+        '계정 모달이 열려 있는지를 나타내는 부울값',
+    },
+    {
+      name: 'chainModalOpen',
+      required: false,
+      type: 'boolean',
+      description: '체인 모달이 열려 있는지를 나타내는 부울값',
+    },
+    {
+      name: 'connectModalOpen',
+      required: false,
+      type: 'boolean',
+      description:
+        '연결 모달이 열려 있는지를 나타내는 부울값',
+    },
+  ]}
+/>
+
+### 일반 상태 속성
+
+<PropsTable
+  data={[
+    {
+      name: 'mounted',
+      required: false,
+      type: 'boolean',
+      description:
+        'Boolean indicating whether the component has mounted',
+    },
+    {
+      name: 'authenticationStatus',
+      required: false,
+      type: '"loading" | "unauthenticated" | "authenticated" | undefined',
+      description:
+        'The authentication status, or undefined if authentication has not been configured',
+    },
+  ]}
+/>
