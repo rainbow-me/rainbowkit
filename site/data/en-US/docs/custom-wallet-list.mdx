@@ -37,25 +37,14 @@ const connectors = connectorsForWallets(
 You can then pass your connectors to Wagmi's `createConfig`.
 
 ```tsx
-import {
-  RainbowKitProvider,
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-import { createConfig, http, WagmiProvider } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
-import {
-  QueryClientProvider,
-  QueryClient,
-} from '@tanstack/react-query';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { createConfig } from 'wagmi';
 
 const connectors = connectorsForWallets(/* ... */);
 
 const config = createConfig({
   connectors,
-  chains: [mainnet],
-  transports: {
-    [mainnet.id]: http(),
-  },
+  {/* Wagmi config */}
 });
 
 const queryClient = new QueryClient();
@@ -72,6 +61,8 @@ const App = () => (
 ```
 
 ### Built-in wallets
+
+The following wallets are provided via the `wallet` object.
 
 #### Generic Wallets
 
