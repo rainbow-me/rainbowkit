@@ -1,0 +1,75 @@
+---
+title: ธุรกรรมล่าสุด
+description: แสดงธุรกรรมล่าสุดของคุณ
+---
+
+# ธุรกรรมล่าสุด
+
+## แสดงธุรกรรมล่าสุดของคุณ
+
+คุณสามารถเลือกได้ที่จะแสดงธุรกรรมล่าสุดภายใน modal บัญชีของ RainbowKit. โปรดทราบว่าธุรกรรมทั้งหมดจะถูกเก็บไว้ใน local storage และต้องการลงทะเบียนกับ RainbowKit เพื่อที่จะแสดง.
+
+การทำงานเริ่มต้นของ `ConnectButton` จะแสดงเครื่องหมายโหลดรอบ avatar ของผู้ใช้ถ้ามีธุรกรรมที่กำลังดำเนินการ. การทำงานแบบกำหนดเองของ `ConnectButton` สามารถสร้างเลียนแบบพฤติกรรมนี้ผ่านทรัพย์สิน `account.hasPendingTransactions` ที่ถูกส่งไปยังฟังก์ชั่น render ของคุณ.
+
+เพื่อใช้คุณสมบัตินี้ ให้เปิดใช้งานตัวเลือก `showRecentTransactions` ใน `RainbowKitProvider` ก่อน.
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+ธุรกรรมจากนั้นสามารถลงทะเบียนกับ RainbowKit โดยใช้ hook `useAddRecentTransaction`
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
+
+ครั้งที่ธุรกรรมลงทะเบียนกับ RainbowKit สถานะจะถูกปรับปรุงเมื่อเสร็จสมบูรณ์.
+
+โดยค่าเริ่มต้น การทำธุรกรรมจะถือว่าเสร็จสิ้นเมื่อมีการขุดบล็อกเดียวบนบล็อกที่ทำการขุดธุรกรรมนั้น แต่สามารถกำหนดการตั้งค่าเองได้โดยระบุค่า `confirmations` ที่กำหนดเอง
+
+```tsx
+import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+
+export default () => {
+  const addRecentTransaction = useAddRecentTransaction();
+
+  return (
+    <button
+      onClick={() => {
+        addRecentTransaction({
+          hash: '0x...',
+          description: '...',
+          confirmations: 100,
+        });
+      }}
+    >
+      Add recent transaction
+    </button>
+  );
+};
+```
