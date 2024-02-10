@@ -1,0 +1,62 @@
+---
+title: Info Aplikasi Kustom
+description: Mengkustomisasi info aplikasi Anda
+---
+
+# Info Aplikasi Kustom
+
+## Mengkustomisasi info aplikasi Anda
+
+Anda dapat melewati info aplikasi Anda dalam prop `appInfo` untuk `RainbowKitProvider`. Properti yang dapat Anda modifikasi adalah nama aplikasi Anda (`appName`) dan tautan tempat tombol “Learn More” dalam modal koneksi diarahkan ke (`learnMoreUrl`):
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Tambahkan Disclaimer
+
+Anda dapat menyediakan disclaimer Anda sendiri untuk ditampilkan di bagian bawah modal koneksi. Properti `disclaimer` dalam `appInfo` menggunakan `DisclaimerComponent` dengan argumen `Text` dan `Link`. Anda dapat menggunakannya untuk membuat disclaimer Anda sendiri yang mewarisi sistem theming. Kami mengekspor tipe `DisclaimerComponent` untuk pengguna TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
