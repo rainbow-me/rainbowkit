@@ -11,7 +11,7 @@ Follow the steps below to migrate.
 **1. Upgrade Rainbow Button, `wagmi`, and `viem` to their latest versions****
 
 ```bash
-npm i @rainbow-me/rainbow-button@2 wagmi@2 viem@2
+npm i @rainbow-me/rainbow-button@2 wagmi@2 viem@2.x
 ```
 
 **2. Install `@tanstack/react-query` peer dependency**
