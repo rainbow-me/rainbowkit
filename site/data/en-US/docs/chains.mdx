@@ -7,74 +7,69 @@ description: Customizing chains
 
 ## Customizing chains
 
-The `chains` prop on `RainbowKitProvider` defines which chains are available for the user to select.
-
 RainbowKit is designed to integrate with [wagmi’s `chain` object](https://wagmi.sh/react/chains). Check out the list of supported chains [here](https://wagmi.sh/react/chains#supported-chains).
-
-> For more detail about the `chain` object, or to see examples when creating a custom chain definition, see the [source code for wagmi’s `chain` object](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-Your chain config can be defined in a single array provided to [`configureChains`](https://wagmi.sh/react/providers/configuring-chains).
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Customizing the initial chain
 
-By default, RainbowKit will connect to the first chain in your `chains` array to ensure users aren't immediately presented with the "Wrong network" state. This behavior can be customized via the `initialChain` prop.
+By default, RainbowKit will connect to the first chain supplied to Wagmi. This behavior can be customized via the `initialChain` prop.
 
 The initial chain can be configured using a chain ID.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 As a convenience, you can also pass a chain object.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Custom chain icons
+### Custom chain metadata
 
-Several chain icons are provided by default, but you can customize the icon for each chain using the iconUrl property.
+Several chain icons and backgrounds are provided by default, but you can customize the icon and background for each chain using the `iconUrl` and `iconBackground` properties.
+
+Example with `getDefaultConfig`
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Example with `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

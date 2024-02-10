@@ -19,46 +19,44 @@ import {
   rainbowWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, mainnet } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
 
-const { chains } = configureChains(
-  [mainnet],
+const connectors = connectorsForWallets(
   [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const connectors = connectorsForWallets([
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, walletConnectWallet],
+    },
+  ],
   {
-    groupName: 'Recommended',
-    wallets: [
-      rainbowWallet({ projectId, chains }),
-      walletConnectWallet({ projectId, chains }),
-    ],
-  },
-]);
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
+  }
+);
 ```
 
-You can then pass your connectors to `wagmi`'s `createConfig`.
+You can then pass your connectors to Wagmi's `createConfig`.
 
-```tsx line=1,4-99
-import { createConfig, WagmiConfig } from 'wagmi';
-...
-const connectors = connectorsForWallets([ /* ... */ ]);
+```tsx
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { createConfig } from 'wagmi';
 
-const wagmiConfig = createConfig({
+const connectors = connectorsForWallets(/* ... */);
+
+const config = createConfig({
   connectors,
+  {/* Wagmi config */}
 });
 
+const queryClient = new QueryClient();
+
 const App = () => (
-  <WagmiConfig config={wagmiConfig}>
-    <RainbowKitProvider {...etc}>
-      {/* Your App */}
-    </RainbowKitProvider>
-  </WagmiConfig>
+  <WagmiProvider config={config}>
+    <QueryClientProvider client={queryClient}>
+      <RainbowKitProvider {...etc}>
+        {/* Your App */}
+      </RainbowKitProvider>
+    </QueryClientProvider>
+  </WagmiProvider>
 );
 ```
 
@@ -81,19 +79,26 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 walletConnectWallet(options: {
   projectId: string;
-  chains: Chain[];
   options?: {
-    qrcodeModalOptions?: {
-      desktopLinks?: string[];
-      mobileLinks?: string[];
+    qrModalOptions?: {
+      desktopWallets?: DesktopWallet[];
+      mobileWallets?: MobileWallet[];
     };
   }
 });
 ```
 
-Additional documentation for supported `options` can be found [here](https://docs.walletconnect.com/1.0/quick-start/dapps/web3-provider#optional).
+##### Injected Wallet
 
-In preparation for the migration to WalletConnect v2, the `options` for Web3Modal v2 are also supported. Reference the [Ethereum Provider docs](https://docs.walletconnect.com/2.0/javascript/providers/ethereum#initialization). The required `projectId` is automatically pre-populated by RainbowKit.
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
+
+**It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
+
+```tsx
+import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+
+injectedWallet();
+```
 
 ### Specific Wallets
 
@@ -106,7 +111,6 @@ import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 argentWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -117,7 +121,6 @@ import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
 
 bitgetWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -125,9 +128,9 @@ bitgetWallet(options: {
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+
 bifrostWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -136,9 +139,15 @@ bifrostWallet(options: {
 ```tsx
 import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 
-bitskiWallet(options: {
-  chains: Chain[];
-});
+bitskiWallet();
+```
+
+#### Brave Wallet
+
+```tsx
+import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+
+braveWallet();
 ```
 
 #### Coinbase Wallet
@@ -148,7 +157,6 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 
 coinbaseWallet(options: {
   appName: string;
-  chains: Chain[];
 });
 ```
 
@@ -159,7 +167,6 @@ import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
 
 coin98Wallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -170,7 +177,6 @@ import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
 
 coreWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -179,18 +185,15 @@ coreWallet(options: {
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
 
-dawnWallet(options: {
-  chains: Chain[];
-});
+dawnWallet();
 ```
 
 #### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
-enkryptWallet(options: {
-  chains: Chain[];
-});
+
+enkryptWallet();
 ```
 
 #### FoxWallet
@@ -200,7 +203,6 @@ import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 foxWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -208,18 +210,17 @@ foxWallet(options: {
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
-frameWallet(options: {
-  chains: Chain[];
-});
+
+frameWallet();
 ```
 
 #### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+
 frontierWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -230,8 +231,6 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ledgerWallet(options: {
   projectId: string;
-  chains: Chain[];
-  infuraId?: string;
 });
 ```
 
@@ -242,7 +241,6 @@ import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 
 imTokenWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -253,7 +251,6 @@ import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 
 metaMaskWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -261,9 +258,8 @@ metaMaskWallet(options: {
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-mewWallet(options: {
-  chains: Chain[];
-});
+
+mewWallet();
 ```
 
 #### OKX Wallet
@@ -273,7 +269,6 @@ import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 okxWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -284,7 +279,6 @@ import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
 
 omniWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -293,9 +287,7 @@ omniWallet(options: {
 ```tsx
 import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
 
-oneKeyWallet(options: {
-  chains: Chain[];
-});
+oneKeyWallet();
 ```
 
 #### Phantom
@@ -303,9 +295,7 @@ oneKeyWallet(options: {
 ```tsx
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 
-phantomWallet(options: {
-  chains: Chain[];
-});
+phantomWallet();
 ```
 
 #### Rabby Wallet
@@ -313,9 +303,7 @@ phantomWallet(options: {
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 
-rabbyWallet(options: {
-  chains: Chain[];
-});
+rabbyWallet();
 ```
 
 #### Rainbow
@@ -325,8 +313,15 @@ import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
 rainbowWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
+```
+
+#### Safe (Gnosis Safe)
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+
+safeWallet();
 ```
 
 #### Safeheron
@@ -334,9 +329,7 @@ rainbowWallet(options: {
 ```tsx
 import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
 
-safeheronWallet(options: {
-  chains: Chain[];
-});
+safeheronWallet();
 ```
 
 #### Taho
@@ -344,9 +337,7 @@ safeheronWallet(options: {
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
 
-tahoWallet(options: {
-  chains: Chain[];
-});
+tahoWallet();
 ```
 
 #### Talisman
@@ -354,9 +345,7 @@ tahoWallet(options: {
 ```tsx
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
 
-talismanWallet(options: {
-  chains: Chain[];
-});
+talismanWallet();
 ```
 
 #### Tokenary
@@ -364,9 +353,7 @@ talismanWallet(options: {
 ```tsx
 import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
 
-tokenaryWallet(options: {
-  chains: Chain[];
-});
+tokenaryWallet();
 ```
 
 #### TokenPocket
@@ -376,7 +363,6 @@ import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
 
 tokenPocketWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -387,7 +373,6 @@ import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
 
 trustWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -398,7 +383,6 @@ import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
 
 uniswapWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -407,9 +391,7 @@ uniswapWallet(options: {
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 
-xdefiWallet(options: {
-  chains: Chain[];
-});
+xdefiWallet();
 ```
 
 #### Zerion
@@ -419,7 +401,6 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 zerionWallet(options: {
   projectId: string;
-  chains: Chain[];
 });
 ```
 
@@ -438,15 +419,15 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      metaMaskWallet({ projectId, chains }),
-      walletConnectWallet({ projectId, chains }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [metaMaskWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```
 
 Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
@@ -460,17 +441,20 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Suggested',
-    wallets: [
-      rainbowWallet({ projectId, chains }),
-      metaMaskWallet({ projectId, chains }),
-      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ projectId, chains }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Suggested',
+      wallets: [
+        rainbowWallet,
+        metaMaskWallet,
+        coinbaseWallet,
+        walletConnectWallet,
+      ],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```
 
 > Reminder: The order of the `wallets` array defines the order in which wallets will be displayed in the UI.
@@ -490,20 +474,17 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
-const connectors = connectorsForWallets([
-  {
-    groupName: 'Recommended',
-    wallets: [
-      rainbowWallet({ projectId, chains }),
-      metaMaskWallet({ projectId, chains }),
-    ],
-  },
-  {
-    groupName: 'Others',
-    wallets: [
-      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
-      walletConnectWallet({ projectId, chains }),
-    ],
-  },
-]);
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, metaMaskWallet],
+    },
+    {
+      groupName: 'Others',
+      wallets: [coinbaseWallet, walletConnectWallet],
+    },
+  ],
+  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+);
 ```

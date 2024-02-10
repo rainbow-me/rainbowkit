@@ -7,33 +7,33 @@ description: Create a custom chain
 
 ## Create a custom chain
 
-You can use the `Chain` type to help you create a custom chain. Then, pass that to the [`configureChains` function](https://wagmi.sh/docs/providers/configuring-chains).
+You can use the `Chain` type to help you create a custom chain. Then, pass that to `getDefaultConfig` or Wagmi's [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig).
 
 For example, here's how you can create an Avalanche chain for [avax.network](https://avax.network).
 
 ```tsx
-import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  RainbowKitProvider,
+  getDefaultConfig,
+  Chain,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
-const avalanche: Chain = {
+const avalanche = {
   id: 43_114,
   name: 'Avalanche',
-  network: 'avalanche',
-  iconUrl: 'https://example.com/icon.svg',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
   iconBackground: '#fff',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Avalanche',
-    symbol: 'AVAX',
-  },
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
   rpcUrls: {
-    public: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
     default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
   },
   blockExplorers: {
     default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
   },
   contracts: {
     multicall3: {
@@ -41,35 +41,25 @@ const avalanche: Chain = {
       blockCreated: 11_907_934,
     },
   },
-  testnet: false,
-};
+} as const satisfies Chain;
 
-const { provider, chains } = configureChains(
-  [avalanche],
-  [publicProvider()]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains,
+  chains: [avalanche],
 });
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  provider,
-});
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```
-
-Learn more about [configuring chains](https://wagmi.sh/docs/providers/configuring-chains).
