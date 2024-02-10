@@ -25,7 +25,7 @@ yarn create @rainbow-me/rainbowkit
 
 ### 수동 설정
 
-Install RainbowKit and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), and [@tanstack/react-query](https://tanstack.com/query/v5).
+RainbowKit 및 동료 의존성인 [wagmi](https://wagmi.sh/), [viem](https://viem.sh), 그리고 [@tanstack/react-query](https://tanstack.com/query/v5)를 설치하세요.
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -35,7 +35,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 #### 가져오기
 
-Import RainbowKit, Wagmi and TanStack Query.
+RainbowKit, Wagmi 및 TanStack Query를 가져오세요.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -61,7 +61,7 @@ import {
 
 #### 설정
 
-원하는 체인을 설정하고 필요한 커넥터를 생성합니다. `wagmi` 설정도 마련해야 합니다. If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
+원하는 체인을 설정하고 필요한 커넥터를 생성합니다. `wagmi` 설정도 마련해야 합니다. 귀하의 dApp이 서버 사이드 렌더링(SSR)을 사용하는 경우 `ssr`을 `true`로 설정해야 합니다.
 
 > 참고: WalletConnect를 사용하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 얻어야 합니다. 이것은 완전히 무료이며 몇 분 밖에 걸리지 않습니다.
 
@@ -79,7 +79,7 @@ const config = getDefaultConfig({
 
 #### 프로바이더 감싸기
 
-Wrap your application with `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+애플리케이션을 `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), 그리고 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)로 감싸세요.
 
 ```tsx
 const queryClient = new QueryClient();
