@@ -1,0 +1,51 @@
+---
+title: Avatar Kustom
+description: Mengkustomisasi avatar pengguna aplikasi Anda
+---
+
+# Avatar Kustom
+
+## Mengkustomisasi avatar pengguna aplikasi Anda
+
+Secara default kami menyediakan avatar untuk pengguna jika gambar ENS mereka tidak diatur, tetapi Anda dapat mengkustomisasi ini dengan menyediakan komponen avatar Anda sendiri. Anda dapat mengimpor tipe `AvatarComponent` jika menggunakan TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+`AvatarComponent` yang dijalankan ke prop `avatar` memiliki tipe prop sebagai berikut: `<{ address: string; ensImage?: string | null; size: number;}>`
