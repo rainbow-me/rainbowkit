@@ -1,0 +1,202 @@
+---
+title: ترقية تطبيقك اللامركزي لـ RainbowKit الإصدار 2
+description: تمت ترقية RainbowKit و Wagmi إلى الإصدار 2
+image: guide-rainbowkit-v2.png
+---
+
+# الترحيل إلى RainbowKit و Wagmi الإصدار 2
+
+لقد وصلت تبعيات [wagmi](https://wagmi.sh) و [viem](https://viem.sh) النظيرة إلى الإصدار `2.x.x` مع تغييرات جذرية.
+
+اتبع الخطوات أدناه للترحيل.
+
+**1. قم بترقية RainbowKit، `wagmi`، و `viem` إلى أحدث إصداراتها**
+
+```bash
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
+```
+
+\*\*2. تثبيت تبعية النظير `@tanstack/react-query`
+
+مع Wagmi v2، أصبح [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) تبعية ضرورية مشتركة.
+
+قم بتثبيتها بالأمر التالي:
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. قم بترقية تكوينات RainbowKit و Wagmi الخاصة بك**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. تحقق من التغييرات الجذرية في `wagmi` و `viem`**
+
+إذا كنت تستخدم خطافات `wagmi` وإجراءات `viem` في تطبيقك اللامركزي، ستحتاج إلى اتباع دليل الهجرة للإصدار v2:
+
+-   [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+-   [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### تغييرات RainbowKit
+
+**1. تحسين سلوك محافظ EIP-6963**
+
+المحافظ التي تدعم معيار الاتصال الجديد EIP-6963 (بما في ذلك Rainbow وMetaMask وغيرها) ستظهر الآن تلقائيًا في قسم `مُثبت` أثناء تجربة ربط المحفظة. هذا يضمن أن المستخدمين يمكنهم دائمًا العثور على محافظهم المفضلة والاتصال بالتطبيقات اللامركزية دون تعارضات أو أزرار احتياطية.
+
+يستمر المطورون في السيطرة الكاملة على قائمة المحافظ المخصصة لتسليط الضوء على المحافظ المفضلة للمستخدمين النهائيين. يُشجع على أن تستمر في تضمين `injectedWallet` و `walletConnectWallet` في قائمتك لدعم جميع المنصات.
+
+**2. تكوين Wagmi مع getDefaultConfig**
+
+هذه الواجهة البرمجية الجديدة تبسط تجربة التكوين وتحل محل الحاجة لاستخدام `createConfig` من Wagmi مباشرةً. تم تبسيط تكوين السلسلة، بما في ذلك مزودي الخدمات العامة المستنتجة لـ `transports`.
+
+سيتم تضمين قائمة المحافظ الافتراضية تلقائيًا، مما يلغي الحاجة إلى استخدام `getDefaultWallets` و `connectorsForWallets`.
+
+يمكنك إنشاء قائمة محافظ مخصصة عن طريق تمرير موصلات المحافظ المستوردة أو المخصصة إلى `wallets`. لم يعد مطلوبًا توصيل موصلات المحافظ وتمرير `projectId` و `chains`.
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted /*
+})
+```
+
+**3. RainbowKitProvider**
+
+لم تعد بحاجة إلى تمرير `chains` إلى `<RainbowKitProvider>`.
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. السلاسل المخصصة**
+
+تغير نوع `Chain` وفقًا لـ Wagmi v2، ويستمر في دعم بيانات `iconUrl` و `iconBackground` الوصفية لـ RainbowKit.
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+مثال مع `getDefaultConfig`:
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overides */
++ ],
+});
+```
+
+مثال باستخدام `createConfig`:
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+\*\*5. محافظ مخصصة
+
+موصلات محفظة RainbowKit قد خضعت لتغييرات جوهرية لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و [مثال الموصل](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيق dApp الخاص بك.
+
+موصلات المحفظة الآن تدعم أيضًا المعيار EIP-6963 بخاصية `rdns`. تأكد من ملء هذه الخاصية لمنع الإشارات المكررة إلى محافظ تدعم EIP-6963 في قائمة محفظتك.
+
+> يرجى الإبلاغ عن أية مشاكل أو ملاحظات لـ RainbowKit الإصدار 2 على GitHub [هنا](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
