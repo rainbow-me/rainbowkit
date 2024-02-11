@@ -7,33 +7,33 @@ description: 맞춤형 체인 생성
 
 ## 맞춤형 체인 생성
 
-`Chain` 타입을 사용하여 맞춤형 체인을 생성하는 데 도움을 받을 수 있습니다. 그런 다음, 그것을 [`configureChains` 함수](https://wagmi.sh/docs/providers/configuring-chains)에 전달합니다.
+`Chain` 타입을 사용하여 맞춤형 체인을 생성하는 데 도움을 받을 수 있습니다. 그런 다음, 그것을 `getDefaultConfig` 또는 Wagmi의 [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig)에 전달하세요.
 
 예를 들어, 여기에는 어떻게 [avax.network](https://avax.network)에 대한 아발란체 체인을 생성할 수 있는지에 대해 설명되어 있습니다.
 
 ```tsx
-import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  RainbowKitProvider,
+  getDefaultConfig,
+  Chain,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
-const avalanche: Chain = {
+const avalanche = {
   id: 43_114,
   name: 'Avalanche',
-  network: 'avalanche',
-  iconUrl: 'https://example.com/icon.svg',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
   iconBackground: '#fff',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Avalanche',
-    symbol: 'AVAX',
-  },
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
   rpcUrls: {
-    public: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
     default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
   },
   blockExplorers: {
     default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
   },
   contracts: {
     multicall3: {
@@ -41,35 +41,25 @@ const avalanche: Chain = {
       blockCreated: 11_907_934,
     },
   },
-  testnet: false,
-};
+} as const satisfies Chain;
 
-const { provider, chains } = configureChains(
-  [avalanche],
-  [publicProvider()]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains,
+  chains: [avalanche],
 });
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  provider,
-});
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```
-
-[체인 구성](https://wagmi.sh/docs/providers/configuring-chains)에 대해 더 알아보세요.
