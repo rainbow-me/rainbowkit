@@ -13,35 +13,54 @@ image: guide-rainbow-button.png
 पैकेज Next.js, React और Vite के साथ संगत है। उपेक्षा न करें और पियर डिपेंडन्सी चेतावनी का पालन करें।
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **2. Wagmi के साथ कॉन्फ़िगर करें और RainbowButton इंस्टॉल करें**
 
-अपने Wagmi कनेक्टर सूची में `RainbowConnector` का एक उदाहरण पास करें, और अपनो ऐप्प को `RainbowButtonProvider` में लपेटें। फिर अपनेवॉलेट सूची में `RainbowButton` कॉंपोनेंट ड्रॉप-इन करें।
+`rainbowConnector` का एक उदाहरण Wagmi के `createConfig` में `projectId` और `appName` के साथ पास करें, और अपने ऐप को `RainbowButtonProvider` में लपेटें। फिर `RainbowButton` कौम्पोनॅन्ट को ड्रॉप-इन करें।
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
 const config = createConfig({
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
-};
-
-export const YourApp = () => {
-  return <RainbowButton />;
-};
+}
 ```
 
 तथा अनुकूलन और स्टाइलिंग के लिए उपयोग करने के लिए `RainbowButton.Custom` कॉंपोनेंट भी है।
