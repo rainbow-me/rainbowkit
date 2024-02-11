@@ -247,7 +247,7 @@ Props ต่อไปนี้จะถูกส่งไปยังฟัง�
       type: 'number',
       description: (
         <>
-          รหัสโซ่, ยกตัวอย่างเช่น <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Props ต่อไปนี้จะถูกส่งไปยังฟัง�
       type: 'string | undefined',
       description: (
         <>
-          ชื่อโซ่, ยกตัวอย่างเช่น <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ Props ต่อไปนี้จะถูกส่งไปยังฟัง�
       required: false,
       type: 'boolean | undefined',
       description:
-        'บูลีนที่บ่งชี้ว่าโซ่ปัจจุบันไม่รองรับ',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ Props ต่อไปนี้จะถูกส่งไปยังฟัง�
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'ฟังก์ชันเพื่อเปิด account modal',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'ฟังก์ชันเพื่อเปิด chain modal',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'ฟังก์ชันเพื่อเปิด connect modal',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'บูลีนแสดงว่า account modal กำลังเปิดอยู่หรือไม่',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'บูลีนแสดงว่า chain modal กำลังเปิดอยู่หรือไม่',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'บูลีนแสดงว่า connect modal กำลังเปิดอยู่หรือไม่',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />

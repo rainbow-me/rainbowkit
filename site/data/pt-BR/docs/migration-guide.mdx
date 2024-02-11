@@ -106,7 +106,7 @@ Carteiras que suportam o novo padrão de conexão EIP-6963 (incluindo Rainbow, M
 
 Os desenvolvedores continuam tendo controle total sobre a Lista de Carteiras Personalizadas para enfatizar carteiras preferenciais para os usuários finais. É incentivado que você continue a incluir a `injectedWallet` e a `walletConnectWallet` em sua lista para dar suporte a todas as plataformas.
 
-2.  Instale a dependência de par `viem`\*\*
+**3. Garanta a compatibilidade do empacotador e do polyfill**
 
 Esta nova API simplifica a experiência de configuração e substitui a necessidade de usar diretamente o `createConfig` do Wagmi. A configuração da cadeia é simplificada, incluindo provedores públicos inferidos para `transports`.
 
@@ -291,13 +291,13 @@ A dependência de pares wagmi foi atualizada para `0.11.x`.
 
 Siga as etapas abaixo para migrar.
 
-#### 1.  Atualize RainbowKit e `wagmi` para a versão mais recente
+#### 1.  Atualize RainbowKit e `wagmi` para suas versões mais recentes
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2.  Verifique se há alterações que quebram em `wagmi`
+#### 2.  Verifique as alterações que quebram a compatibilidade em `wagmi`
 
 Se você usa os ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações que quebram a compatibilidade em `wagmi`.
 
@@ -309,13 +309,13 @@ A dependência de peer do wagmi foi atualizada para `0.12.x`.
 
 Siga as etapas abaixo para migrar.
 
-#### 1.  Atualize RainbowKit e `wagmi` para suas versões mais recentes
+#### 1.  Atualize as dependências
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  Verifique as alterações que quebram a compatibilidade em `wagmi`
+#### 2.  Verifique se há alterações que quebram a compatibilidade no `wagmi`
 
 Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações que quebram em `wagmi`.
 
@@ -327,13 +327,13 @@ A dependência par a par do wagmi foi atualizada para `0.9.x`.
 
 Siga as etapas abaixo para migrar.
 
-#### 1.  Atualize as dependências
+#### 1.  Atualizar dependências
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  Verifique se há alterações que quebram a compatibilidade no `wagmi`
+#### 2.  Substitua import configureChains
 
 Se você usa os hooks `wagmi` em seu aplicativo, você precisará verificar se seu aplicativo foi afetado pelas alterações que quebram a compatibilidade no `wagmi`.
 
@@ -351,7 +351,7 @@ Siga as etapas abaixo para migrar.
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2.  Substitua import configureChains
+#### 1.  Atualizar dependências
 
 Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua aplicação foi afetada pelas alterações que quebram em `wagmi`.
 

@@ -44,20 +44,20 @@ description: Создать пользовательский кошелек
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL для значка кошелька или обещание, которое разрешается в Base64 data URL',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Цвет акцента, используемый в потоках загрузки для кошельков с браузерным расширением и мобильным приложением',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Цвет фона во время загрузки значка кошелька',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: Создать пользовательский кошелек
       type: 'boolean | undefined',
       description: (
         <>
-          Известно ли, что кошелек установлен, или{' '}
-          <code>undefined</code> если это неопределенно
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: Создать пользовательский кошелек
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Объект, содержащий URL-адреса для скачивания',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: Создать пользовательский кошелек
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Функция для вычисления, должен ли этот кошелек быть скрытым из списка.' Это полезно для определения общих запасных кошельков, например, встроенный запасной кошелек "Injected Wallet" использует эту функцию',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: Создать пользовательский кошелек
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Функция для предоставления экземпляра коннектора и конфигурации для различных методов подключения, описанных ниже',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,37 +99,37 @@ description: Создать пользовательский кошелек
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Функция для разрешения URI подключения мобильного кошелька',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Функция для разрешения глубокой ссылки настольного приложения',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Объект, содержащий функцию для разрешения URI QR-кода, плюс необязательные инструкции по настройке мобильного кошелька',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Объект, содержащий необязательные инструкции по настройке браузерного расширения',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Функция для предоставления экземпляра коннектора',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

@@ -91,7 +91,7 @@ npm i @tanstack/react-query
   }
 ```
 
-2.  检查`wagmi`中的重大更改\*\*
+**2. 安装 `viem` 对等依赖项**
 
 wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以下命令安装：
 
@@ -102,17 +102,17 @@ wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以�
 
 \*\*1. 改进了对EIP-6963钱包的支持
 
-现在支持新的EIP-6963连接标准的钱包（包括Rainbow、MetaMask等）将自动显示在连接钱包体验的`已安装`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
+现在支持新的EIP-6963连接标准的钱包（包括Rainbow、MetaMask等）将自动显示在连接钱包体验的`已安装`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
 
-开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
+开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
 
 \*\*2. 安装 `viem` 对等依赖项\*\*
 
-这个新的API简化了配置体验，取代了直接使用Wagmi的`createConfig`的需求。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。
+这个新的API简化了配置体验，取代了直接使用Wagmi的`createConfig`的需求。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。
 
 默认钱包列表将会自动包含，使得不再需要使用`getDefaultWallets`和`connectorsForWallets`。
 
-您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 不再需要实例化钱包连接器并传递`projectId`和`chains`。
+您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 不再需要实例化钱包连接器并传递`projectId`和`chains`。
 
 ```
 const config = getDefaultConfig({
@@ -199,7 +199,7 @@ const config = getDefaultConfig({
 
 RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便继续支持WalletConnect v1. 将很快提供对WalletConnect v2和`WalletConnectConnector`的支持，作为补丁版本发布，不会有破坏性的更改。
 
-钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。
+钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。
 
 ### **注意所有内置钱包都使用新API。 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。** 大部分消费者不会受影响。 此修改只影响创建/使用过[自定义钱包](/docs/custom-wallets)的消费者。\*\*
 
@@ -215,7 +215,7 @@ wagmi 的同级依赖项已更新为 `0.10.x`。
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-**2. 安装 `viem` 对等依赖项**
+\*\*2. 安装 `viem` 对等依赖项\*\*
 
 wagmi v1 需要 `viem` 对等依赖项。 使用以下命令安装： 使用以下命令安装： 使用以下命令安装：
 
@@ -233,7 +233,7 @@ npm i viem
 
 Vite和Remix的附加框架指南可在此处获取 [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
 
-2.  检查`wagmi`中的破坏性更改
+2.  检查`wagmi`中的破坏性变化
 
 如果您在应用程序中使用`wagmi`钩子，您将需要按照`wagmi`的迁移指南进行升级到v1.
 
@@ -259,7 +259,7 @@ npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 
 #### 2.  提供WalletConnect Cloud projectId
 
-现在依赖于WalletConnect的每个dApp都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取`projectId`。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。
+现在依赖于WalletConnect的每个dApp都需要从[WalletConnect Cloud](https://cloud.walletconnect.com/)获取`projectId`。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。
 
 将 `projectId` 提供给 `getDefaultWallets` 和独立的 RainbowKit 钱包连接器，如下所示：
 
@@ -291,13 +291,13 @@ wagmi 的同级依赖项已更新为 `0.11.x`。
 
 按照以下步骤进行迁移。
 
-#### 1.  将RainbowKit和`wagmi`升级到最新版本
+#### 1.  升级依赖项
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2.  检查`wagmi`中的破坏性变化
+#### 4.  重命名 wagmi 的提供者
 
 如果你在应用程序中使用 `wagmi` 钩子，你需要查看你的应用程序是否受到 `wagmi` 中的重大变动的影响。
 
@@ -359,7 +359,7 @@ npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 
 ### 0.7.x 版本中的破坏性变化
 
-如果您正在创建一个自定义的钱包列表，那么现在您必须单独导入每一个钱包，以减少包的大小。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。
+如果您正在创建一个自定义的钱包列表，那么现在您必须单独导入每一个钱包，以减少包的大小。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。 请注意，由于钱包不再通过 `wallet` 对象进行命名空间命名，所有的钱包现在都有一个 `Wallet` 后缀。
 
 ```diff
 -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
@@ -503,7 +503,7 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 
 #### 2.  2。 替换configureChains导入
 
-RainbowKit不再导出`apiProvider` API。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。
+RainbowKit不再导出`apiProvider` API。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。 将其替换为您从wagmi选择的所需的提供商。
 
 ```diff
 - import { apiProvider } from '@rainbow-me/rainbowkit';

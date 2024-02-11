@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'لون خلفية/نص العناصر التفاعلية المختلفة.',
+        'The background/text color of various interactive elements.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'اللون المستخدم لعناصر المقدمة التي يتم تقديمها فوق لون التمييز.',
+        'The color used for foreground elements rendered on top of the accent color.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'حجم نصف قطر الحدود الكلي.',
+      description: 'The size of the entire border radius scale.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "مجموعة الخطوط المستخدمة في جميع أنحاء واجهة المستخدم.", <span class="notranslate">33</span>     }, <span class="notranslate">34</span>     { <span class="notranslate">35</span>       name: 'overlayBlur', <span class="notranslate">36</span>       required: false, <span class="notranslate">37</span>       default: 'none', <span class="notranslate">38</span>       type: '"large" | "small" | "none"', <span class="notranslate">39</span>       typeSimple: 'enum', <span class="notranslate">40</span>       description: 'طمس خلفية النافذة المنبثقة.', <span class="notranslate">41</span>     }, <span class="notranslate">42</span>   ]} <span class="notranslate">43</span> /> Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',

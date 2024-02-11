@@ -60,7 +60,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'Çeşitli etkileşimli öğelerin arka plan/metin rengi.',
+        'The background/text color of various interactive elements.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: '"white"',
       type: 'string',
       description:
-        'Vurgu rengi üzerinde yer alan ön plan öğeleri için kullanılan renk.',
+        'The color used for foreground elements rendered on top of the accent color.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'Tüm kenar yuvarlaklığı ölçeğinin boyutu.',
+      description: 'The size of the entire border radius scale.',
     },
     {
       name: 'fontStack',
@@ -85,18 +85,7 @@ Dahili tema fonksiyonları ayrıca bir seçenekler nesnesini kabul eder, size bi
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "Kullanıcı arayüzünde genel olarak kullanılan font yığını.", 
-     }, 
-     { 
-       name: 'overlayBlur', 
-       required: false, 
-       default: 'none', 
-       type: '"large" | "small" | "none"', 
-       typeSimple: 'enum', 
-       description: 'Modal arka plan bulanıklığı.', 
-     }, 
-   ]} 
- /> Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',

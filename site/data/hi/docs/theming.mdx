@@ -60,7 +60,7 @@ export const App = () => (
       default: '"#0E76FD"',
       type: 'string',
       description:
-        'विभिन्न इंटरैक्टिव तत्वों के पृष्ठभूमि/पाठ का रंग।',
+        'The background/text color of various interactive elements.',
     },
     {
       name: 'accentColorForeground',
@@ -68,7 +68,7 @@ export const App = () => (
       default: '"white"',
       type: 'string',
       description:
-        'मुख्य रंग पर रेंडर किए गए अग्रभूमि तत्वों के लिए प्रयुक्त रंग।',
+        'The color used for foreground elements rendered on top of the accent color.',
     },
     {
       name: 'borderRadius',
@@ -76,7 +76,7 @@ export const App = () => (
       default: 'large',
       type: '"none" | "small" | "medium" | "large"',
       typeSimple: 'enum',
-      description: 'संपूर्ण बॉर्डर त्रिज्या पैमाने का आकार।',
+      description: 'The size of the entire border radius scale.',
     },
     {
       name: 'fontStack',
@@ -85,7 +85,7 @@ export const App = () => (
       type: '"rounded" | "system"',
       typeSimple: 'enum',
       description:
-        "UI में पूरे उपयोग के लिए फॉन्ट स्टैक।" ध्यान दें कि `rounded` SF Pro Rounded का उपयोग करने का प्रयास करता है, जब यह उपलब्ध नहीं होता है तो सिस्टम फॉन्ट्स की ओर लौटता है।",
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
     },
     {
       name: 'overlayBlur',
@@ -93,7 +93,7 @@ export const App = () => (
       default: 'none',
       type: '"large" | "small" | "none"',
       typeSimple: 'enum',
-      description: 'मॉडल बैकड्रॉप धुंधलापन।',
+      description: 'The modal backdrop blur.',
     },
   ]}
 />

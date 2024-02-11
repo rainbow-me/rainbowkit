@@ -44,20 +44,20 @@ description: Створіть кастомний гаманець
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL для іконки гаманця або обіцянка, що повертає Base64 data URL',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Кольоровий акцент, що використовується в процесах завантаження для гаманців з браузерним розширенням та мобільним додатком',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Колір фону під час завантаження іконки гаманця',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: Створіть кастомний гаманець
       type: 'boolean | undefined',
       description: (
         <>
-          Чи відомо, що гаманець встановлений, або{' '}
-          <code>undefined</code> якщо невизначено
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: Створіть кастомний гаманець
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Об'єкт, що містить URL-адреси для завантаження',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: Створіть кастомний гаманець
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Функція для обчислення, чи повинен цей гаманець бути прихованим від списку.' Це корисно для визначення загальних запасних гаманців, наприклад, вбудований запасний гаманець "Injected Wallet" використовує цю функцію',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: Створіть кастомний гаманець
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Функція для надання екземпляра конектора та конфігурації для різних методів підключення, описаних нижче',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,37 +99,37 @@ description: Створіть кастомний гаманець
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'Функція для вирішення URI підключення мобільного гаманця',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'Функція для вирішення глибокого посилання додатку настільного гаманця',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Об'єкт, що містить функцію для вирішення URI QR-коду, а також необов'язкові інструкції з налаштування мобільного гаманця',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'Об'єкт, що містить необов'язкові інструкції з налаштування браузерного розширення',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'Функція для надання екземпляра конектора',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

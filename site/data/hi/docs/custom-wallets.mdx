@@ -44,20 +44,20 @@ description: एक कस्टम वॉलेट बनाएं
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'वॉलेट आइकन के लिए URL, या एक प्रॉमिस जो एक Base64 डेटा URL में रिज़ॉल्व होता है',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'डाउनलोड प्रवाह के लिए प्रयुक्त एक्सेंट रंग, जिन वॉलेट्स के ब्राउज़र एक्सटेंशन और मोबाइल ऐप दोनों हैं',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'वॉलेट आइकन लोड होने के दौरान पृष्ठभूमि का रंग',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: एक कस्टम वॉलेट बनाएं
       type: 'boolean | undefined',
       description: (
         <>
-          यह जानकारी कि वॉलेट स्थापित है या नहीं, या{' '}
-          <code>undefined</code> अगर निर्धारित नहीं है
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: एक कस्टम वॉलेट बनाएं
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'डाउनलोड URLs को युक्त ऑब्जेक्ट',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: एक कस्टम वॉलेट बनाएं
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'इस वॉलेट को सूची से छिपाने के लिए गणना करने वाला फंक्शन।' यह जेनेरिक फॉलबैक वॉलेट्स को परिभाषित करने के लिए उपयोगी है, उदाहरण के लिए निर्मित "Injected Wallet" फॉलबैक इस सुविधा का उपयोग करता है',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: एक कस्टम वॉलेट बनाएं
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'विभिन्न कनेक्शन तरीकों के लिए कनेक्टर इंस्टेंस और कॉन्फ़िगरेशन प्रदान करने वाला फंक्शन, नीचे वर्णित है',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,37 +99,37 @@ description: एक कस्टम वॉलेट बनाएं
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'मोबाइल वॉलेट कनेक्शन URI को रिज़ॉल्व करने वाला फंक्शन',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'डेस्कटॉप ऐप डीप लिंक को रिज़ॉल्व करने वाला फंक्शन',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'QR कोड URI को रिज़ॉल्व करने वाले फंक्शन युक्त ऑब्जेक्ट, साथ ही मोबाइल वॉलेट सेटअप निर्देश वैकल्पिक रूप से',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'ब्राउज़र एक्सटेंशन सेटअप निर्देश युक्त ऑब्जेक्ट',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'कनेक्टर इंस्टेंस प्रदान करने वाला फंक्शन',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

@@ -63,7 +63,7 @@ import {
 
 望ましいチェーンを設定し、必要なコネクタを生成します。 また、`wagmi` 設定もセットアップする必要があります。 あなたのdAppがサーバーサイドレンダリング(SSR)を使用している場合は、`ssr`を`true`に設定してください。
 
-> 注: WalletConnectを利用するすべてのdAppは、現在[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。
+> 注: WalletConnectを利用するすべてのdAppは、現在[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。
 
 ```tsx line=4-99
 ...
@@ -117,21 +117,21 @@ RainbowKitは今後、ユーザーのウォレット選択の処理、ウォレ�
 
 ##### React、Next.js、そしてWebpack
 
-Next.jsとCreate React Appが使用する[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/)バンドラは、[もはやNodeポリフィルを提供しない](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)ため、RainbowKitのピア依存関係を満たすためにはこれらのモジュールを自己負担する必要があります。 Create React Appでは特に`Buffer`をポリフィルする必要があります。
+Next.jsとCreate React Appが使用する[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/)バンドラは、[もはやNodeポリフィルを提供しない](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)ため、RainbowKitのピア依存関係を満たすためにはこれらのモジュールを自己負担する必要があります。 Create React Appでは特に`Buffer`をポリフィルする必要があります。 Create React Appでは特に`Buffer`をポリフィルする必要があります。
 
-[ethers](https://docs.ethers.org/v5/)に依存していたRainbowKitの以前のバージョンでは、`fs`、`net`、そして`tls`モジュールが自動的にポリフィルされました。 これは、RainbowKit v1 + wagmi v1には当てはまらず、これらは [viem](https://viem.sh/)を基礎にして構築されています。
+[ethers](https://docs.ethers.org/v5/)に依存していたRainbowKitの以前のバージョンでは、`fs`、`net`、そして`tls`モジュールが自動的にポリフィルされました。 これは、RainbowKit v1 + wagmi v1には当てはまらず、これらは [viem](https://viem.sh/)を基礎にして構築されています。 これは、RainbowKit v1 + wagmi v1には当てはまらず、これらは [viem](https://viem.sh/)を基礎にして構築されています。
 
 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)、[Next.jsアプリRouter Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js)、または[Create React Appのポリフィル](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts)サンプルを参考に、プロジェクトの設定ガイダンスを参照してください。
 
 ##### Vite
 
-[Vite](https://vitejs.dev)バンドラーはNode polyfillsを提供していないため、 `global`、 `Buffer`、 `process.env`のpolyfillsを含める必要があります。 例として、[私たちのサンプルViteプロジェクトのポリフィル](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)を参照することができます。
+[Vite](https://vitejs.dev)バンドラーはNode polyfillsを提供していないため、 `global`、 `Buffer`、 `process.env`のpolyfillsを含める必要があります。 例として、[私たちのサンプルViteプロジェクトのポリフィル](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)を参照することができます。 例として、[私たちのサンプルViteプロジェクトのポリフィル](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)を参照することができます。
 
 ##### Remix
 
 [Remix](https://remix.run)を使用する場合、全てのRainbowKitパッケージのエントリーポイントは、ESMパッケージとして公開されているため、Remixの設定の[サーバー依存関係](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages)のリストに追加する必要があります。
 
-Remixでは、`global`、`Buffer`、`process.env`をポリフィルする必要もあります。 [サンプル Remix プロジェクトの polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)を参照してください。
+Remixでは、`global`、`Buffer`、`process.env`をポリフィルする必要もあります。 Remixでは、`global`、`Buffer`、`process.env`をポリフィルする必要もあります。 [サンプル Remix プロジェクトの polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)を参照してください。
 
 ```js
 /**

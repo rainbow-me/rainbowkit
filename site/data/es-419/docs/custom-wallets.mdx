@@ -28,6 +28,12 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       description: 'Human-readable wallet name',
     },
     {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
@@ -86,6 +92,44 @@ El tipo de función `Wallet` se proporciona para ayudarlo a definir sus propias 
       typeSimple: 'RainbowKitConnector',
       description:
         'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'Function for resolving a mobile wallet connection URI',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Function for resolving a desktop app deep link',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing optional browser extension setup instructions',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

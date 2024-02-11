@@ -7,9 +7,9 @@ description: カスタムウォレットを作成
 
 ## カスタムウォレットを作成
 
-> 注意: このAPIは不安定で、近い将来に変更される可能性があります。 時間をかけて、内蔵ウォレットを増やしていきます。 [お知らせください](https://github.com/rainbow-me/rainbowkit/issues) あなたが興味を持っている特定のウォレットがあれば。
+> 注意: このAPIは不安定で、近い将来に変更される可能性があります。 時間をかけて、内蔵ウォレットを増やしていきます。 注意: このAPIは不安定で、近い将来に変更される可能性があります。 時間をかけて、内蔵ウォレットを増やしていきます。 [お知らせください](https://github.com/rainbow-me/rainbowkit/issues) あなたが興味を持っている特定のウォレットがあれば。
 
-`Wallet`関数型は、独自のカスタムウォレットを定義するのに役立ちます。 次のプロパティは `Wallet` 関数の戻り値に設定できます：
+`Wallet`関数型は、独自のカスタムウォレットを定義するのに役立ちます。 `Wallet`関数型は、独自のカスタムウォレットを定義するのに役立ちます。 次のプロパティは `Wallet` 関数の戻り値に設定できます：
 
 ### ウォレットのプロパティ
 
@@ -44,20 +44,20 @@ description: カスタムウォレットを作成
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'ウォレットアイコンのURL、またはBase64データURLに解決するプロミス',
+        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'ブラウザ拡張機能とモバイルアプリの両方を持つウォレットのダウンロードフローで使用されるアクセントカラー',
+        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'ウォレットアイコンの読み込み中の背景色',
+      description: 'Background color while the wallet icon loads',
     },
     {
       name: 'installed',
@@ -65,8 +65,8 @@ description: カスタムウォレットを作成
       type: 'boolean | undefined',
       description: (
         <>
-          ウォレットがインストールされているかどうか、または{' '}
-          <code>undefined</code> 不明な場合
+          Whether the wallet is known to be installed, or{' '}
+          <code>undefined</code> if indeterminate
         </>
       ),
     },
@@ -75,7 +75,7 @@ description: カスタムウォレットを作成
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'ダウンロードURLを含むオブジェクト',
+      description: 'Object containing download URLs',
     },
     {
       name: 'hidden',
@@ -83,7 +83,7 @@ description: カスタムウォレットを作成
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'このウォレットをリストから隠すかどうかを計算するための関数。 これは、一般的なフォールバックウォレットを定義するのに役立ちます。例えば、組み込みの"Injected Wallet"フォールバックはこの機能を利用しています',
+        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
     },
     {
       name: 'createConnector',
@@ -91,7 +91,7 @@ description: カスタムウォレットを作成
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'さまざまな接続方法のコネクタインスタンスと設定を提供する関数、以下で説明',
+        'Function for providing the connector instance and configuration for different connection methods, described below',
     },
     {
       name: 'mobile',
@@ -99,37 +99,37 @@ description: カスタムウォレットを作成
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
       description:
-        'モバイルウォレット接続URIを解決する関数',
+        'Function for resolving a mobile wallet connection URI',
     },
     {
       name: 'desktop',
       required: false,
       type: '{ getUri?: (uri: string) => string }',
       typeSimple: 'object',
-      description: 'デスクトップアプリのディープリンクを解決する関数',
+      description: 'Function for resolving a desktop app deep link',
     },
     {
       name: 'qrCode',
       required: false,
-      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'QRコードURIを解決する関数を含むオブジェクト、およびオプションのモバイルウォレット設定の説明',
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
     },
     {
       name: 'extension',
       required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
       typeSimple: 'object',
       description:
-        'ブラウザ拡張機能の設定説明を含むオブジェクト',
+        'Object containing optional browser extension setup instructions',
     },
     {
       name: 'createConnector',
       required: true,
       type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
       typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
-      description: 'コネクタインスタンスを提供する関数',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

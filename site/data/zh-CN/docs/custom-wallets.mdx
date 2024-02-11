@@ -9,7 +9,7 @@ description: 创建自定义钱包
 
 > 注意：此API不稳定，很可能在不久的将来发生变化。 我们建议现在避免更改钱包列表。 我们将随着时间推移增加更多内置钱包。 注意：此API不稳定，很可能在不久的将来发生变化。 我们建议现在避免更改钱包列表。 我们将随着时间推移增加更多内置钱包。 注意：此API不稳定，可能在不久的将来会发生变化。 我们将随着时间推移增加更多内置钱包。 如果您对任何特定的钱包有兴趣，[请告诉我们](https://github.com/rainbow-me/rainbowkit/issues)。
 
-`钱包`函数类型提供帮助你定义自己的自定义钱包。 `钱包`函数类型提供帮助你定义自己的自定义钱包。 您的`Wallet`函数返回值上可以配置以下属性： `Wallet`函数类型提供帮助你定义自己的自定义钱包。您的`Wallet`函数返回值上可以配置以下属性： `Wallet`函数类型提供帮助你定义自己的自定义钱包。您的`Wallet`函数返回值上可以配置以下属性：
+`钱包`函数类型提供帮助你定义自己的自定义钱包。 `钱包`函数类型提供帮助你定义自己的自定义钱包。 您的`Wallet`函数返回值上可以配置以下属性： `Wallet`函数类型提供帮助你定义自己的自定义钱包。您的`Wallet`函数返回值上可以配置以下属性： `Wallet`函数类型提供帮助你定义自己的自定义钱包。您的`Wallet`函数返回值上可以配置以下属性： `Wallet`函数类型提供帮助你定义自己的自定义钱包。您的`Wallet`函数返回值上可以配置以下属性：
 
 ### 钱包属性
 
@@ -26,6 +26,12 @@ description: 创建自定义钱包
       required: true,
       type: 'string',
       description: 'Human-readable wallet name',
+    },
+    {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
     },
     {
       name: 'shortName',
@@ -86,6 +92,44 @@ description: 创建自定义钱包
       typeSimple: 'RainbowKitConnector',
       description:
         'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'Function for resolving a mobile wallet connection URI',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Function for resolving a desktop app deep link',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing optional browser extension setup instructions',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />

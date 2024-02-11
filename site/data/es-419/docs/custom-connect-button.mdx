@@ -247,7 +247,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'number',
       description: (
         <>
-          El ID de la cadena, por ejemplo, <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       type: 'string | undefined',
       description: (
         <>
-          El nombre de la cadena, por ejemplo, <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       required: false,
       type: 'boolean | undefined',
       description:
-        'Booleano que indica si la cadena actual no es compatible',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ Las siguientes propiedades son pasadas a su función de renderizado.
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de la cuenta',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de la cadena',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'Función para abrir el modal de conexión',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el modal de la cuenta está abierto',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'Booleano que indica si el modal de la cadena está abierto',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'Booleano que indica si el modal de conexión está abierto',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
