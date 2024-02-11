@@ -28,6 +28,12 @@ description: एक कस्टम वॉलेट बनाएं
       description: 'Human-readable wallet name',
     },
     {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
@@ -38,20 +44,20 @@ description: एक कस्टम वॉलेट बनाएं
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        'वॉलेट आइकन के लिए URL, या एक प्रॉमिस जो एक Base64 डेटा URL में रिज़ॉल्व होता है',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        'डाउनलोड प्रवाह के लिए प्रयुक्त एक्सेंट रंग, जिन वॉलेट्स के ब्राउज़र एक्सटेंशन और मोबाइल ऐप दोनों हैं',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: 'वॉलेट आइकन लोड होने के दौरान पृष्ठभूमि का रंग',
     },
     {
       name: 'installed',
@@ -59,8 +65,8 @@ description: एक कस्टम वॉलेट बनाएं
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          यह जानकारी कि वॉलेट स्थापित है या नहीं, या{' '}
+          <code>undefined</code> अगर निर्धारित नहीं है
         </>
       ),
     },
@@ -69,7 +75,7 @@ description: एक कस्टम वॉलेट बनाएं
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: 'डाउनलोड URLs को युक्त ऑब्जेक्ट',
     },
     {
       name: 'hidden',
@@ -77,7 +83,7 @@ description: एक कस्टम वॉलेट बनाएं
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        'इस वॉलेट को सूची से छिपाने के लिए गणना करने वाला फंक्शन।' यह जेनेरिक फॉलबैक वॉलेट्स को परिभाषित करने के लिए उपयोगी है, उदाहरण के लिए निर्मित "Injected Wallet" फॉलबैक इस सुविधा का उपयोग करता है',
     },
     {
       name: 'createConnector',
@@ -85,7 +91,45 @@ description: एक कस्टम वॉलेट बनाएं
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        'विभिन्न कनेक्शन तरीकों के लिए कनेक्टर इंस्टेंस और कॉन्फ़िगरेशन प्रदान करने वाला फंक्शन, नीचे वर्णित है',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'मोबाइल वॉलेट कनेक्शन URI को रिज़ॉल्व करने वाला फंक्शन',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'डेस्कटॉप ऐप डीप लिंक को रिज़ॉल्व करने वाला फंक्शन',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        'QR कोड URI को रिज़ॉल्व करने वाले फंक्शन युक्त ऑब्जेक्ट, साथ ही मोबाइल वॉलेट सेटअप निर्देश वैकल्पिक रूप से',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        'ब्राउज़र एक्सटेंशन सेटअप निर्देश युक्त ऑब्जेक्ट',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'कनेक्टर इंस्टेंस प्रदान करने वाला फंक्शन',
     },
   ]}
 />
@@ -160,66 +204,18 @@ description: एक कस्टम वॉलेट बनाएं
   ]}
 />
 
-### RainbowKitConnector गुण
-
-निम्नलिखित गुण `createConnector` function की वापसी मूल्य पर परिभाषित किए गए हैं।
-
-<PropsTable
-  data={[
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-  ]}
-/>
-
 ### उदाहरण
 
 उदाहरण के लिए, WalletConnect का उपयोग करके एक कस्टम वॉलेट बनाने के लिए:
 
 ```tsx
-import {
-  Chain,
-  Wallet,
-  getWalletConnectConnector,
-} from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
   projectId: string;
-  chains: Chain[];
 }
 
-export const rainbow = ({
-  chains,
-  projectId,
-}: MyWalletOptions): Wallet => ({
+export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -230,73 +226,55 @@ export const rainbow = ({
     chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
     qrCode: 'https://my-wallet/qr',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
-
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-      },
-      qrCode: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend putting My Wallet on your home screen for faster access to your wallet.',
-              step: 'install',
-              title: 'Open the My Wallet app',
-            },
-            {
-              description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
-              step: 'scan',
-              title: 'Tap the scan button',
-            },
-          ],
-        },
-      },
-      extension: {
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
-              step: 'install',
-              title: 'Install the My Wallet extension',
-            },
-            {
-              description:
-                'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
-            },
-            {
-              description:
-                'Once you set up your wallet, click below to refresh the browser and load up the extension.',
-              step: 'refresh',
-              title: 'Refresh your browser',
-            },
-          ],
-        },
-      },
-    };
+  mobile: {
+    getUri: (uri: string) => uri,
   },
+  qrCode: {
+    getUri: (uri: string) => uri,
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend putting My Wallet on your home screen for faster access to your wallet.',
+          step: 'install',
+          title: 'Open the My Wallet app',
+        },
+        {
+          description:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          step: 'scan',
+          title: 'Tap the scan button',
+        },
+      ],
+    },
+  },
+  extension: {
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
+          step: 'install',
+          title: 'Install the My Wallet extension',
+        },
+        {
+          description:
+            'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+          step: 'create',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          description:
+            'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+          step: 'refresh',
+          title: 'Refresh your browser',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({ projectId }),
 });
 ```
 

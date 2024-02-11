@@ -28,7 +28,7 @@ Alternativamente, puedes integrar manualmente RainbowKit en tu proyecto existent
 Instala RainbowKit y sus dependencias de igual nivel, [wagmi](https://wagmi.sh/) y [viem](https://viem.sh).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@1 viem@1
+npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
 > Nota: RainbowKit es una biblioteca de [React](https://reactjs.org/).
@@ -41,10 +41,10 @@ Importar RainbowKit y wagmi.
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  getDefaultWallets,
+  getDefaultConfig,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -53,56 +53,46 @@ import {
   base,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 ```
 
 #### Configurar
 
-Configure sus cadenas deseadas y genere los conectores requeridos. También necesitará configurar una `wagmi` config.
+Configure sus cadenas deseadas y genere los conectores requeridos. También necesitará configurar una `wagmi` config. Si tu dApp utiliza renderizado del lado del servidor (SSR), asegúrate de establecer `ssr` en `true`.
 
 > Nota: Cada dApp que depende de WalletConnect ahora necesita obtener un `projectId` desde [WalletConnect Cloud](https://cloud.walletconnect.com/). Esto es absolutamente gratis y solo toma unos minutos.
 
 ```tsx line=4-99
 ...
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient
-})
 ```
-
-[Leer más sobre la configuración de cadenas y proveedores con `wagmi`](https://wagmi.sh/docs/providers/configuring-chains).
 
 #### Envolver proveedores
 
 Envuelva su aplicación con `RainbowKitProvider` y [`WagmiConfig`](https://wagmi.sh/docs/provider).
 
 ```tsx
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```

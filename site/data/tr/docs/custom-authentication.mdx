@@ -68,11 +68,17 @@ import {
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
-import { WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
 const authenticationAdapter = createAuthenticationAdapter({
   /* See above... */
 });
+
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   // You'll need to resolve AUTHENTICATION_STATUS here
@@ -81,16 +87,18 @@ export default function App({ Component, pageProps }: AppProps) {
   // 'unauthenticated' or 'authenticated'.
 
   return (
-    <WagmiConfig {...etc}>
-      <RainbowKitAuthenticationProvider
-        adapter={authenticationAdapter}
-        status={AUTHENTICATION_STATUS}
-      >
-        <RainbowKitProvider {...etc}>
-          <Component {...pageProps} />
-        </RainbowKitProvider>
-      </RainbowKitAuthenticationProvider>
-    </WagmiConfig>
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
 ```

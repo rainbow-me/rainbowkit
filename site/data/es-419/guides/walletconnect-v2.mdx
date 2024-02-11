@@ -1,7 +1,7 @@
 ---
 title: Actualizando tu dApp a WalletConnect v2
 description: RainbowKit ha migrado a v2, y puedes preparar tu dApp en 5 minutos o menos
-image: guide-walletconnect-v2.png
+image: guia-walletconnect-v2.png
 ---
 
 # Migrando a WalletConnect v2
@@ -67,36 +67,5 @@ RainbowKit es seguro en términos de tipos y te advertirá cuando un `projectId`
 -   [Router de Aplicación Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 -   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 -   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-
-#### Personalización avanzada
-
-Si tu dApp requiere soporte para una cartera legacy que aún no ha migrado a WalletConnect v2, la versión predeterminada de WalletConnect de RainbowKit se puede reemplazar para cada cartera de manera independiente.
-
-```ts
-metaMaskWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-});
-```
-
-Una vez que los servidores de WalletConnect v1 se apaguen el 28 de junio, se requiere un [servidor puente personalizado](https://docs.walletconnect.com/1.0/bridge-server) para continuar utilizando el protocolo v1. Consulta los siguientes ejemplos:
-
-```ts
-walletConnectWallet(options: {
-  chains: Chain[];
-  version: '1',
-  options: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-
-customWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-  walletConnectOptions: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-```
 
 Consulta el [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) para otras opciones soportadas.

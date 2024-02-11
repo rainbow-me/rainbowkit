@@ -7,74 +7,69 @@ description: Zincirleri özelleştirme
 
 ## Zincirleri özelleştirme
 
-`RainbowKitProvider` üzerindeki `chains` özelliği, kullanıcının seçebileceği zincirleri tanımlar.
-
 RainbowKit, [wagmi’nin `chain` nesnesi](https://wagmi.sh/react/chains) ile entegre olacak şekilde tasarlanmıştır. Desteklenen zincirlerin listesine göz atın [here](https://wagmi.sh/react/chains#supported-chains).
-
-> `chain` nesnesi hakkında daha fazla detay için, veya bir özel zincir tanımı oluştururken örnekleri görmek için, [wagmi’nin `chain` nesnesi için kaynak koduna](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts) bakın.
-
-Zincir konfigürasyonunuz, [`configureChains`](https://wagmi.sh/react/providers/configuring-chains) için sağlanan tek bir dizi içinde tanımlanabilir.
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Başlangıç zincirini özelleştirme
 
-Varsayılan olarak, RainbowKit, kullanıcılara hemen "Yanlış ağ" durumunu sunmamak için `chains` dizinizdeki ilk zincire bağlanır. Bu davranış, `initialChain` prop aracılığıyla özelleştirilebilir.
+Varsayılan olarak, RainbowKit ilk olarak Wagmi'ye sağlanan zincire bağlanacaktır. Bu davranış, `initialChain` prop aracılığıyla özelleştirilebilir.
 
 İlk zincir, bir zincir ID'si kullanılarak yapılandırılabilir.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 Bir kolaylık olarak, ayrıca bir zincir nesnesi geçirebilirsiniz.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Özel zincir simgeleri
+### Özel zincir meta verileri
 
-Birkaç zincir simgesi varsayılan olarak verilir, ancak iconUrl özelliğini kullanarak her zincir için simgeyi özelleştirebilirsiniz.
+Birçok zincir ikonu ve arka planı varsayılan olarak sağlanmaktadır, ancak her zincir için ikon ve arka planı `iconUrl` ve `iconBackground` özelliklerini kullanarak özelleştirebilirsiniz.
+
+`getDefaultConfig` ile örnek
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+`createConfig` ile örnek
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

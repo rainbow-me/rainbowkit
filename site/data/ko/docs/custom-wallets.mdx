@@ -28,6 +28,12 @@ description: 사용자 정의 지갑 생성
       description: 'Human-readable wallet name',
     },
     {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
@@ -38,20 +44,20 @@ description: 사용자 정의 지갑 생성
       required: true,
       type: 'string | (() => Promise<string>)',
       description:
-        'URL for wallet icon, or a promise that resolves to a Base64 data URL',
+        '지갑 아이콘의 URL 또는 Base64 데이터 URL을 반환하는 프라미스',
     },
     {
       name: 'iconAccent',
       required: false,
       type: 'string',
       description:
-        'Accent color used in download flows for wallets with both a browser extension and a mobile app',
+        '브라우저 확장 프로그램과 모바일 앱이 모두 있는 지갑에 대한 다운로드 흐름에서 사용되는 강조 색상',
     },
     {
       name: 'iconBackground',
       required: true,
       type: 'string',
-      description: 'Background color while the wallet icon loads',
+      description: '지갑 아이콘이 로드되는 동안의 배경색',
     },
     {
       name: 'installed',
@@ -59,8 +65,8 @@ description: 사용자 정의 지갑 생성
       type: 'boolean | undefined',
       description: (
         <>
-          Whether the wallet is known to be installed, or{' '}
-          <code>undefined</code> if indeterminate
+          지갑이 설치되었는지 여부, 또는{' '}
+          <code>undefined</code> 불확실한 경우
         </>
       ),
     },
@@ -69,7 +75,7 @@ description: 사용자 정의 지갑 생성
       required: false,
       type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
       typeSimple: 'DownloadUrls | undefined',
-      description: 'Object containing download URLs',
+      description: '다운로드 URL을 포함하는 객체',
     },
     {
       name: 'hidden',
@@ -77,7 +83,7 @@ description: 사용자 정의 지갑 생성
       type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
       typeSimple: '(args) => boolean | undefined',
       description:
-        'Function for calculating whether this wallet should be hidden from the list. This is useful for defining generic fallback wallets, e.g. the built-in "Injected Wallet" fallback makes use of this feature',
+        '이 지갑이 목록에서 숨겨져야 하는지를 계산하는 함수. 이는 일반적인 대체 지갑을 정의하는 데 유용합니다. 예를 들어, 내장된 "Injected Wallet" 대체 기능은 이 기능을 사용합니다',
     },
     {
       name: 'createConnector',
@@ -85,7 +91,45 @@ description: 사용자 정의 지갑 생성
       type: '() => RainbowKitConnector',
       typeSimple: 'RainbowKitConnector',
       description:
-        'Function for providing the connector instance and configuration for different connection methods, described below',
+        '다양한 연결 방법에 대한 커넥터 인스턴스 및 구성을 제공하는 함수, 아래에 설명됨',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        '모바일 지갑 연결 URI를 해결하는 함수',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: '데스크톱 앱 딥 링크를 해결하는 함수',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        'QR 코드 URI를 해결하는 함수와 선택적인 모바일 지갑 설정 지침을 포함하는 객체',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        '브라우저 확장 기능 설정 지침을 선택적으로 포함하는 객체',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: '커넥터 인스턴스를 제공하는 함수',
     },
   ]}
 />
@@ -160,66 +204,18 @@ description: 사용자 정의 지갑 생성
   ]}
 />
 
-### RainbowKitConnector 속성
-
-다음 속성들은 `createConnector` 함수의 반환 값에 정의되어 있습니다.
-
-<PropsTable
-  data={[
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-  ]}
-/>
-
 ### 예제
 
 예를 들어, WalletConnect를 사용하여 사용자 정의 지갑을 생성하는 방법:
 
 ```tsx
-import {
-  Chain,
-  Wallet,
-  getWalletConnectConnector,
-} from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
   projectId: string;
-  chains: Chain[];
 }
 
-export const rainbow = ({
-  chains,
-  projectId,
-}: MyWalletOptions): Wallet => ({
+export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -230,73 +226,55 @@ export const rainbow = ({
     chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
     qrCode: 'https://my-wallet/qr',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
-
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-      },
-      qrCode: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend putting My Wallet on your home screen for faster access to your wallet.',
-              step: 'install',
-              title: 'Open the My Wallet app',
-            },
-            {
-              description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
-              step: 'scan',
-              title: 'Tap the scan button',
-            },
-          ],
-        },
-      },
-      extension: {
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
-              step: 'install',
-              title: 'Install the My Wallet extension',
-            },
-            {
-              description:
-                'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
-            },
-            {
-              description:
-                'Once you set up your wallet, click below to refresh the browser and load up the extension.',
-              step: 'refresh',
-              title: 'Refresh your browser',
-            },
-          ],
-        },
-      },
-    };
+  mobile: {
+    getUri: (uri: string) => uri,
   },
+  qrCode: {
+    getUri: (uri: string) => uri,
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend putting My Wallet on your home screen for faster access to your wallet.',
+          step: 'install',
+          title: 'Open the My Wallet app',
+        },
+        {
+          description:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          step: 'scan',
+          title: 'Tap the scan button',
+        },
+      ],
+    },
+  },
+  extension: {
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
+          step: 'install',
+          title: 'Install the My Wallet extension',
+        },
+        {
+          description:
+            'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+          step: 'create',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          description:
+            'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+          step: 'refresh',
+          title: 'Refresh your browser',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({ projectId }),
 });
 ```
 
