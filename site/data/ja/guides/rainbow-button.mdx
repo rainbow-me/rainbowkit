@@ -10,38 +10,57 @@ image: guide-rainbow-button.png
 
 **1. `@rainbow-me/rainbow-button`とそのピア依存関係をインストールしてください**
 
-このパッケージはNext.js、React、Viteと互換性があります。 ピア依存関係の警告に従ってください。
+このパッケージはNext.js、React、Viteと互換性があります。 ピア依存関係の警告に従ってください。 ピア依存関係の警告に従ってください。
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **2. Wagmiと一緒に構成してRainbowButtonをインストールしてください**
 
-`RainbowConnector`のインスタンスをWagmiコネクタリストに渡し、アプリを`RainbowButtonProvider`でラップしてください。 その後、`RainbowButton`コンポーネントをウォレットリストにドロップインしてください。
+`rainbowConnector` のインスタンスを Wagmi の `createConfig` に `projectId` と `appName` と共に渡し、アプリを `RainbowButtonProvider` でラップします。 次に、`RainbowButton` コンポーネントをドロップインします。 次に、`RainbowButton` コンポーネントをドロップインします。
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
 const config = createConfig({
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
-};
-
-export const YourApp = () => {
-  return <RainbowButton />;
-};
+}
 ```
 
 カスタムな実装やスタイルには、`RainbowButton.Custom`コンポーネントを使用することもできます。

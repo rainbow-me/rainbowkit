@@ -8,7 +8,6 @@ import React, {
 import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
-import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -29,6 +28,8 @@ import {
 } from '../RainbowKitProvider/ModalSizeContext';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
+
+import { addLatestWalletId } from '../../wallets/latestWalletId';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -58,7 +59,6 @@ export enum WalletStep {
 
 export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const safari = isSafari();
   const [selectedOptionId, setSelectedOptionId] = useState<
     string | undefined
   >();
@@ -70,12 +70,15 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const compactModeEnabled = modalSize === ModalSizeOptions.COMPACT;
   const { disclaimer: Disclaimer } = useContext(AppContext);
   const { i18n } = useContext(I18nContext);
+  const safari = isSafari();
 
   const initialized = useRef(false);
 
   const { connector } = useContext(WalletButtonContext);
 
-  const wallets = useWalletConnectors()
+  const mergeEIP6963WithRkConnectors = true;
+
+  const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
 
@@ -87,6 +90,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     'Popular',
     'More',
     'Others',
+    'Installed',
   ];
 
   // If a user hasn't installed the extension we will get the
@@ -105,70 +109,54 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       wallet?.connect?.()?.catch(() => {
         setConnectionError(true);
       });
-
-      const getDesktopDeepLink = wallet.desktop?.getUri;
-      if (getDesktopDeepLink) {
-        // if desktop deep link, wait for uri
-        setTimeout(async () => {
-          const uri = await getDesktopDeepLink();
-          window.open(uri, safari ? '_blank' : '_self');
-        }, 0);
-      }
     }
   };
 
-  const selectWallet = (wallet: WalletConnector) => {
+  const onDesktopUri = async (wallet: WalletConnector) => {
+    const sWallet = wallets.find((w) => wallet.id === w.id);
+
+    if (!sWallet?.getDesktopUri) return;
+
+    setTimeout(async () => {
+      const uri = await sWallet?.getDesktopUri?.();
+      if (uri) window.open(uri, safari ? '_blank' : '_self');
+    }, 0);
+  };
+
+  const onQrCode = async (wallet: WalletConnector) => {
+    const sWallet = wallets.find((w) => wallet.id === w.id);
+
+    const uri = await sWallet?.getQrCodeUri?.();
+
+    setQrCodeUri(uri);
+
+    // This timeout prevents the UI from flickering if connection is instant,
+    // otherwise users will see a flash of the "connecting" state.
+    setTimeout(
+      () => {
+        setSelectedWallet(sWallet);
+        changeWalletStep(WalletStep.Connect);
+      },
+      uri ? 0 : 50,
+    );
+  };
+
+  const selectWallet = async (wallet: WalletConnector) => {
     // We still want to get the latest wallet id to show connected
     // green badge on our custom WalletButton API
     addLatestWalletId(wallet.id);
 
+    // This ensures that we listen to the provider.once("display_uri")
+    // before connecting to the wallet
+    if (wallet.ready) {
+      onQrCode(wallet);
+      onDesktopUri(wallet);
+    }
+
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
 
-    if (wallet.ready) {
-      // We need to guard against "onConnecting" callbacks being fired
-      // multiple times since connector instances can be shared between
-      // wallets. Ideally wagmi would let us scope the callback to the
-      // specific "connect" call, but this will work in the meantime.
-      let callbackFired = false;
-
-      wallet?.onConnecting?.(async () => {
-        if (callbackFired) return;
-        callbackFired = true;
-
-        const sWallet = wallets.find((w) => wallet.id === w.id);
-        const uri = await sWallet?.qrCode?.getUri();
-
-        setQrCodeUri(uri);
-
-        // This timeout prevents the UI from flickering if connection is instant,
-        // otherwise users will see a flash of the "connecting" state.
-        setTimeout(
-          () => {
-            setSelectedWallet(sWallet);
-            changeWalletStep(WalletStep.Connect);
-          },
-          uri ? 0 : 50,
-        );
-
-        // If the WalletConnect request is rejected, restart the wallet
-        // selection flow to create a new connection with a new QR code
-        const provider = await sWallet?.connector.getProvider();
-        const connection = provider?.signer?.connection;
-        if (connection?.on && connection?.off) {
-          const handleConnectionClose = () => {
-            removeHandlers();
-            selectWallet(wallet);
-          };
-          const removeHandlers = () => {
-            connection.off('close', handleConnectionClose);
-            connection.off('open', removeHandlers);
-          };
-          connection.on('close', handleConnectionClose);
-          connection.on('open', removeHandlers);
-        }
-      });
-    } else {
+    if (!wallet.ready) {
       setSelectedWallet(wallet);
       changeWalletStep(
         wallet?.extensionDownloadUrl
@@ -426,7 +414,11 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                     {groupName ? (
                       <Box marginBottom="8" marginTop="16" marginX="6">
                         <Text
-                          color="modalTextSecondary"
+                          color={
+                            groupName === 'Installed'
+                              ? 'accentColor'
+                              : 'modalTextSecondary'
+                          }
                           size="14"
                           weight="bold"
                         >
@@ -451,6 +443,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             ready={wallet.ready}
                             recent={wallet.recent}
                             testId={`wallet-option-${wallet.id}`}
+                            isRainbowKitConnector={wallet.isRainbowKitConnector}
                           />
                         );
                       })}

@@ -1,15 +1,10 @@
-
-import type { NextPage } from "next";
-import { useEffect, useState } from "react";
-import { useAccount, useDisconnect } from "wagmi";
-import { RainbowButton } from "@rainbow-me/rainbow-button";
+import type { NextPage } from 'next';
+import { useAccount, useDisconnect } from 'wagmi';
+import { RainbowButton } from '@rainbow-me/rainbow-button';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
   const { disconnect } = useDisconnect();
-
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
 
   return (
     <div
@@ -23,9 +18,9 @@ const Home: NextPage = () => {
       }}
     >
       <RainbowButton />
-      {isMounted && isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
+      {isConnected && <button onClick={() => disconnect()}>Disconnect</button>}
     </div>
-  )
+  );
 };
 
 export default Home;

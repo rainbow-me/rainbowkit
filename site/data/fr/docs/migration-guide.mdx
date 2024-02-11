@@ -6,6 +6,201 @@ title: Guide de migration
 
 ## Migration de RainbowKit
 
+### Changements incompatibles 2.x.x
+
+Les dépendances parallèles [wagmi](https://wagmi.sh) et [viem](https://viem.sh) ont atteint `2.x.x` avec des changements incompatibles.
+
+Suivez les étapes ci-dessous pour migrer.
+
+**1. Mettez à jour RainbowKit, `wagmi`, et `viem` vers leurs dernières versions**
+
+```bash
+npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
+```
+
+**2. Installez la dépendance parallèle `@tanstack/react-query`**
+
+Avec Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) est maintenant une dépendance parallèle obligatoire.
+
+Installez-le avec la commande suivante :
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. Mettez à jour vos configurations RainbowKit et Wagmi**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. Vérifiez les changements incompatibles dans `wagmi` et `viem`**
+
+Si vous utilisez les hooks `wagmi` et les actions `viem` dans votre dApp, vous devrez suivre les guides de migration pour la v2 :
+
+-   [Guide de Migration Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+-   [Changements Incompatibles Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### Changements dans RainbowKit
+
+**1. Comportement amélioré pour les portefeuilles EIP-6963**
+
+Les portefeuilles qui prennent en charge la nouvelle norme de connexion EIP-6963 (y compris Rainbow, MetaMask et d'autres) apparaîtront désormais automatiquement dans une section `Installée` lors de l'expérience de connexion au portefeuille. Cela garantit que les utilisateurs peuvent toujours trouver leurs portefeuilles préférés et se connecter aux dApps sans conflits ni boutons de repli.
+
+Les développeurs continuent d'avoir un contrôle total sur la Liste de Portefeuilles Personnalisée pour mettre en avant les portefeuilles préférés des utilisateurs finaux. Il est conseillé de continuer à inclure `injectedWallet` et `walletConnectWallet` dans votre liste pour prendre en charge toutes les plateformes.
+
+**2. Configuration de Wagmi avec getDefaultConfig**
+
+Cette nouvelle API simplifie l'expérience de configuration et remplace le besoin d'utiliser directement `createConfig` de Wagmi. La configuration de la chaîne est simplifiée, y compris les fournisseurs publics inférés pour les `transports`.
+
+La liste des portefeuilles par défaut sera automatiquement incluse, rendant obsolète le besoin d'utiliser `getDefaultWallets` et `connectorsForWallets`.
+
+Vous pouvez créer une liste de portefeuilles personnalisée en passant des connecteurs de portefeuilles importés ou personnalisés à `wallets`. Il n'est plus nécessaire d'instancier les connecteurs de portefeuilles et de passer `projectId` et `chains`.
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted /*
+})
+```
+
+**3. RainbowKitProvider**
+
+Vous n'avez plus besoin de passer `chains` à `<RainbowKitProvider>`.
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. Chaînes Personnalisées**
+
+Le type `Chain` a changé conformément à Wagmi v2, et continue de supporter les métadonnées `iconUrl` et `iconBackground` de RainbowKit.
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+Exemple avec `getDefaultConfig` :
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overides */
++ ],
+});
+```
+
+Exemple avec `createConfig` :
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+**5. Portefeuilles personnalisés**
+
+Les connecteurs de portefeuille RainbowKit ont subi d'importantes modifications pour prendre en charge Wagmi v2. Consultez la [documentation mise à jour](https://www.rainbowkit.com/docs/custom-wallets) et un [exemple de connecteur](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) pour mettre à niveau les connecteurs de portefeuille personnalisés dans votre dApp.
+
+Les connecteurs de portefeuille prennent également désormais en charge la norme EIP-6963 avec la propriété `rdns`. Assurez-vous que cela est renseigné pour éviter les références en double aux portefeuilles prenant en charge l'EIP-6963 dans votre liste de portefeuilles.
+
 ### 1.x.x Modifications rompant la rétrocompatibilité
 
 #### Mis à jour vers wagmi v1

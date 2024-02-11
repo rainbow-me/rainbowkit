@@ -7,74 +7,69 @@ description: Настройка сетей
 
 ## Настройка сетей
 
-Свойство `chains` в `RainbowKitProvider` определяет, какие сети доступны для выбора пользователем.
-
 RainbowKit разработан для интеграции с [объектом `chain` от wagmi](https://wagmi.sh/react/chains). Ознакомьтесь со списком поддерживаемых сетей [here](https://wagmi.sh/react/chains#supported-chains).
-
-> Для более подробной информации об объекте `chain`, или чтобы увидеть примеры создания пользовательской определения сети, см. [исходный код объекта `chain` от wagmi](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-Ваша конфигурация сети может быть определена в одном массиве, предоставленном [`configureChains`](https://wagmi.sh/react/providers/configuring-chains).
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Настройка начальной сети
 
-По умолчанию, RainbowKit будет подключаться к первой сети в вашем массиве `chains`, чтобы гарантировать, что пользователям сразу не показывается состояние "Неправильная сеть". Это поведение можно настроить с помощью свойства `initialChain`.
+По умолчанию RainbowKit будет подключаться к первой цепочке, предоставленной Wagmi. Это поведение можно настроить с помощью свойства `initialChain`.
 
 Начальная цепочка может быть настроена с использованием идентификатора цепочки.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 Для удобства вы также можете передать объект цепочки.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Пользовательские иконки цепочек
+### Пользовательская метадата цепочки
 
-Несколько иконок цепочек предоставляются по умолчанию, но вы можете настроить иконку для каждой цепочки, используя свойство iconUrl.
+Несколько иконок и фонов цепочек предоставляются по умолчанию, но вы можете настроить иконку и фон для каждой цепочки, используя свойства `iconUrl` и `iconBackground`.
+
+Пример с `getDefaultConfig`
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Пример с `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

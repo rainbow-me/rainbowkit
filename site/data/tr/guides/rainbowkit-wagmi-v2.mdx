@@ -1,0 +1,202 @@
+---
+title: RainbowKit v2 için dApp'inizi Yükseltme
+description: RainbowKit ve Wagmi v2'ye terfi ettirildi
+image: reber-rainbowkit-v2.png
+---
+
+# RainbowKit ve Wagmi v2'ye Geçiş
+
+[wagmi](https://wagmi.sh) ve [viem](https://viem.sh) eş bağımlılıkları `2.x.x` ile kırıcı değişikliklere ulaştı.
+
+Taşımak için aşağıdaki adımları takip edin.
+
+**1. RainbowKit, `wagmi` ve `viem`'ı en son sürümlerine yükseltin**
+
+```bash
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
+```
+
+**2. `@tanstack/react-query` eş bağımlılığını yükleyin**
+
+Wagmi v2 ile birlikte, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) artık zorunlu bir eş bağımlılık haline gelmiştir.
+
+Aşağıdaki komutla yükleyin:
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. RainbowKit ve Wagmi yapılandırmalarınızı güncelleyin**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. `wagmi` ve `viem`'daki kırılma değişikliklerini kontrol edin**
+
+Eğer dApp'inizde `wagmi` kancalarını ve `viem` işlemlerini kullanıyorsanız, v2 için göç rehberlerini takip etmeniz gerekecek:
+
+-   [Wagmi v2 Göç Rehberi](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+-   [Viem v2 Kırılma Değişiklikleri](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### RainbowKit Değişiklikleri
+
+**1. EIP-6963 cüzdanları için geliştirilmiş davranış**
+
+Yeni EIP-6963 bağlantı standardını destekleyen cüzdanlar (Rainbow, MetaMask ve daha fazlası dahil) artık Cüzdan Bağlama deneyimi sırasında otomatik olarak bir `Yüklü` bölümünde görünecek. Bu, kullanıcıların her zaman favori cüzdanlarını bulup dApp'lere çatışma veya yedek düğmeler olmadan bağlanabilmelerini sağlar.
+
+Geliştiriciler, son kullanıcılar için tercih edilen cüzdanları vurgulamak üzere Özel Cüzdan Listesi üzerinde tam kontrol sahibi olmaya devam eder. Tüm platformları desteklemek için listenize `injectedWallet` ve `walletConnectWallet`'ı dahil etmeye devam etmeniz önerilir.
+
+**2. getDefaultConfig ile Wagmi yapılandırması**
+
+Bu yeni API, konfigürasyon deneyimini basitleştirir ve Wagmi'nin `createConfig`'unu doğrudan kullanma ihtiyacını ortadan kaldırır. Zincir konfigürasyonu basitleştirilmiştir, `transports` için varsayılan kamu sağlayıcıları çıkarılmıştır.
+
+Varsayılan cüzdan listesi otomatik olarak dahil edilecek, `getDefaultWallets` ve `connectorsForWallets` kullanma ihtiyacını ortadan kaldıracaktır.
+
+Özel Cüzdan Listesi oluşturmak için, ithal edilmiş veya Özel Cüzdan konektörlerini `wallets`'a geçirerek yapabilirsiniz. Cüzdan konektörlerini örneklemek ve `projectId` ile `chains` geçmek artık gerekli değil.
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted /*
+})
+```
+
+**3. RainbowKitProvider**
+
+Artık `<RainbowKitProvider>` için `chains` geçmenize gerek yok.
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. Özel Zincirler**
+
+Wagmi v2 ile uyumlu olarak `Chain` tipi değişmiştir ve RainbowKit'in `iconUrl` ve `iconBackground` meta verilerini desteklemeye devam etmektedir.
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+`getDefaultConfig` ile örnek:
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overides */
++ ],
+});
+```
+
+`createConfig` ile örnek:
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+**5. Özel Cüzdanlar**
+
+RainbowKit cüzdan bağlayıcıları, Wagmi v2'yi desteklemek için önemli değişikliklerden geçti. DApp'inizdeki Özel Cüzdan Bağlayıcılarını güncellemek için [güncellenmiş belgelere](https://www.rainbowkit.com/docs/custom-wallets) ve bir [örnek bağlayıcıya](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) başvurun.
+
+Cüzdan bağlayıcıları artık `rdns` özelliği ile EIP-6963 standardını da desteklemektedir. Cüzdan listesinde EIP-6963 destekli cüzdanlara yönelik yinelenen referansları önlemek için bunun doldurulduğundan emin olun.
+
+> Lütfen herhangi bir sorun bildirimi veya geri bildirim için RainbowKit v2'yi GitHub [burada](https://github.com/rainbow-me/rainbowkit/issues/new/choose) rapor edin.

@@ -17,6 +17,7 @@ type Props = {
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
   testId?: string;
+  isRainbowKitConnector?: boolean;
 };
 
 export const ModalSelection = ({
@@ -29,6 +30,7 @@ export const ModalSelection = ({
   ready,
   recent,
   testId,
+  isRainbowKitConnector,
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
@@ -88,14 +90,25 @@ export const ModalSelection = ({
           <Box alignItems="center" display="flex" flexDirection="row" gap="12">
             <AsyncImage
               background={iconBackground}
-              {...(isMouseOver ? {} : { borderColor: 'actionButtonBorder' })}
+              {...(!isMouseOver && isRainbowKitConnector
+                ? { borderColor: 'actionButtonBorder' }
+                : {})}
+              // We want to use pure <img /> element
+              // to avoid bugs with eip6963 icons as sometimes
+              // background: url(...) does not work
+              useAsImage={!isRainbowKitConnector}
               borderRadius="6"
               height="28"
               src={iconUrl}
               width="28"
             />
             <Box>
-              <Box style={{ marginTop: recent ? -2 : undefined }}>{name}</Box>
+              <Box
+                style={{ marginTop: recent ? -2 : undefined }}
+                maxWidth="200"
+              >
+                {name}
+              </Box>
               {recent && (
                 <Text
                   color={

@@ -28,6 +28,12 @@ The `Wallet` function type is provided to help you define your own custom wallet
       description: 'Human-readable wallet name',
     },
     {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
       name: 'shortName',
       required: false,
       type: 'string | undefined',
@@ -86,6 +92,44 @@ The `Wallet` function type is provided to help you define your own custom wallet
       typeSimple: 'RainbowKitConnector',
       description:
         'Function for providing the connector instance and configuration for different connection methods, described below',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'Function for resolving a mobile wallet connection URI',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Function for resolving a desktop app deep link',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
+      typeSimple: 'object',
+      description:
+        'Object containing optional browser extension setup instructions',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Function for providing the connector instance',
     },
   ]}
 />
@@ -160,66 +204,18 @@ The `Wallet` function type is provided to help you define your own custom wallet
   ]}
 />
 
-### RainbowKitConnector properties
-
-The following properties are defined on the return value of the `createConnector` function.
-
-<PropsTable
-  data={[
-    {
-      name: 'mobile',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description:
-        'Function for resolving a mobile wallet connection URI',
-    },
-    {
-      name: 'desktop',
-      required: false,
-      type: '{ getUri?: () => Promise<string> }',
-      typeSimple: 'object',
-      description: 'Function for resolving a desktop app deep link',
-    },
-    {
-      name: 'qrCode',
-      required: false,
-      type: "{ getUri: () => Promise<string>, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing a function for resolving the QR code URI, plus optional mobile wallet setup instructions',
-    },
-    {
-      name: 'extension',
-      required: false,
-      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }> }}}",
-      typeSimple: 'object',
-      description:
-        'Object containing optional browser extension setup instructions',
-    },
-  ]}
-/>
-
 ### Examples
 
 For example, to create a custom wallet using WalletConnect:
 
 ```tsx
-import {
-  Chain,
-  Wallet,
-  getWalletConnectConnector,
-} from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
 
 export interface MyWalletOptions {
   projectId: string;
-  chains: Chain[];
 }
 
-export const rainbow = ({
-  chains,
-  projectId,
-}: MyWalletOptions): Wallet => ({
+export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',
@@ -230,73 +226,55 @@ export const rainbow = ({
     chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
     qrCode: 'https://my-wallet/qr',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({ projectId, chains });
-
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-      },
-      qrCode: {
-        getUri: async () => {
-          const provider = await connector.getProvider();
-          const uri = await new Promise<string>(resolve =>
-            provider.once('display_uri', resolve)
-          );
-          return uri;
-        },
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend putting My Wallet on your home screen for faster access to your wallet.',
-              step: 'install',
-              title: 'Open the My Wallet app',
-            },
-            {
-              description:
-                'After you scan, a connection prompt will appear for you to connect your wallet.',
-              step: 'scan',
-              title: 'Tap the scan button',
-            },
-          ],
-        },
-      },
-      extension: {
-        instructions: {
-          learnMoreUrl: 'https://my-wallet/learn-more',
-          steps: [
-            {
-              description:
-                'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
-              step: 'install',
-              title: 'Install the My Wallet extension',
-            },
-            {
-              description:
-                'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
-              step: 'create',
-              title: 'Create or Import a Wallet',
-            },
-            {
-              description:
-                'Once you set up your wallet, click below to refresh the browser and load up the extension.',
-              step: 'refresh',
-              title: 'Refresh your browser',
-            },
-          ],
-        },
-      },
-    };
+  mobile: {
+    getUri: (uri: string) => uri,
   },
+  qrCode: {
+    getUri: (uri: string) => uri,
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend putting My Wallet on your home screen for faster access to your wallet.',
+          step: 'install',
+          title: 'Open the My Wallet app',
+        },
+        {
+          description:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          step: 'scan',
+          title: 'Tap the scan button',
+        },
+      ],
+    },
+  },
+  extension: {
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
+          step: 'install',
+          title: 'Install the My Wallet extension',
+        },
+        {
+          description:
+            'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+          step: 'create',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          description:
+            'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+          step: 'refresh',
+          title: 'Refresh your browser',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({ projectId }),
 });
 ```
 

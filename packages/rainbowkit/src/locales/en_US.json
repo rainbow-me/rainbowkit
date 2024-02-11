@@ -94,6 +94,7 @@
   },
 
   "connector_group": {
+    "installed": "Installed",
     "recommended": "Recommended",
     "other": "Other",
     "popular": "Popular",

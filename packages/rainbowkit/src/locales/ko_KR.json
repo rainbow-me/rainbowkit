@@ -89,6 +89,7 @@
     "fallback_title": "휴대폰으로 스캔하기"
   },
   "connector_group": {
+    "installed": "설치됨",
     "recommended": "추천",
     "other": "기타",
     "popular": "인기",

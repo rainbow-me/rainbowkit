@@ -89,6 +89,7 @@
     "fallback_title": "المسح باستخدام هاتفك"
   },
   "connector_group": {
+    "installed": "مُثبّت",
     "recommended": "موصى به",
     "other": "آخر",
     "popular": "شائع",

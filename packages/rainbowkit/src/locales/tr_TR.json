@@ -89,6 +89,7 @@
     "fallback_title": "Telefonunuzla tarama yapın"
   },
   "connector_group": {
+    "installed": "Yüklendi",
     "recommended": "Tavsiye Edilen",
     "other": "Diğer",
     "popular": "Popüler",

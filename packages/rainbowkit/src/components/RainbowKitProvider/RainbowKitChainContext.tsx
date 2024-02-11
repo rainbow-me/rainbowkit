@@ -1,17 +1,12 @@
 import React, { ReactNode, createContext, useContext, useMemo } from 'react';
-import { Chain as WagmiChain } from 'wagmi';
+import { useConfig } from 'wagmi';
+import type { Chain } from 'wagmi/chains';
 import { provideRainbowKitChains } from './provideRainbowKitChains';
 
-export interface RainbowKitChain {
-  id: number;
-  name?: string;
+export interface RainbowKitChain extends Chain {
   iconUrl?: string | (() => Promise<string>) | null;
   iconBackground?: string;
 }
-
-// This type is a combination of wagmi and RainbowKit chain types to make
-// it easier for consumers to define their chain config in a single place.
-export type Chain = WagmiChain & RainbowKitChain;
 
 interface RainbowKitChainContextValue {
   chains: RainbowKitChain[];
@@ -23,16 +18,16 @@ const RainbowKitChainContext = createContext<RainbowKitChainContextValue>({
 });
 
 interface RainbowKitChainProviderProps {
-  chains: RainbowKitChain[];
-  initialChain?: RainbowKitChain | number;
+  initialChain?: Chain | number;
   children: ReactNode;
 }
 
 export function RainbowKitChainProvider({
-  chains,
   children,
   initialChain,
 }: RainbowKitChainProviderProps) {
+  const { chains } = useConfig();
+
   return (
     <RainbowKitChainContext.Provider
       value={useMemo(

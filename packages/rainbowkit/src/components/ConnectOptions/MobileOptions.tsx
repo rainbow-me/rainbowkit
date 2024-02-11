@@ -67,72 +67,62 @@ export function WalletButton({
 }) {
   const {
     connect,
-    connector,
     iconBackground,
     iconUrl,
     id,
-    mobile,
     name,
-    onConnecting,
+    getMobileUri,
     ready,
     shortName,
+    showWalletConnectModal,
   } = wallet;
-  const getMobileUri = mobile?.getUri;
+
   const coolModeRef = useCoolMode(iconUrl);
   const initialized = useRef(false);
 
   const { i18n } = useContext(I18nContext);
 
   const onConnect = useCallback(async () => {
-    if (id === 'walletConnect') onClose?.();
-    connect?.()?.catch(() => {});
+    const onMobileUri = async () => {
+      const mobileUri = await getMobileUri?.();
 
-    // We need to guard against "onConnecting" callbacks being fired
-    // multiple times since connector instances can be shared between
-    // wallets. Ideally wagmi would let us scope the callback to the
-    // specific "connect" call, but this will work in the meantime.
-    let callbackFired = false;
+      if (!mobileUri) return;
 
-    onConnecting?.(async () => {
-      if (callbackFired) return;
-      callbackFired = true;
-
-      if (getMobileUri) {
-        const mobileUri = await getMobileUri();
-
-        if (
-          connector.id === 'walletConnect' ||
-          connector.id === 'walletConnectLegacy'
-        ) {
-          // In Web3Modal, an equivalent setWalletConnectDeepLink routine gets called after
-          // successful connection and then the universal provider uses it on requests. We call
-          // it upon onConnecting; this now needs to be called for both v1 and v2 Wagmi connectors.
-          // The `connector` type refers to Wagmi connectors, as opposed to RainbowKit wallet connectors.
-          // https://github.com/WalletConnect/web3modal/blob/27f2b1fa2509130c5548061816c42d4596156e81/packages/core/src/utils/CoreUtil.ts#L72
-          setWalletConnectDeepLink({ mobileUri, name });
-        }
-
-        if (mobileUri.startsWith('http')) {
-          // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
-          // Using 'window.open' causes issues on iOS in non-Safari browsers and
-          // WebViews where a blank tab is left behind after connecting.
-          // This is especially bad in some WebView scenarios (e.g. following a
-          // link from Twitter) where the user doesn't have any mechanism for
-          // closing the blank tab.
-          // For whatever reason, links with a target of "_blank" don't suffer
-          // from this problem, and programmatically clicking a detached link
-          // element with the same attributes also avoids the issue.
-          const link = document.createElement('a');
-          link.href = mobileUri;
-          link.target = '_blank';
-          link.rel = 'noreferrer noopener';
-          link.click();
-        } else {
-          window.location.href = mobileUri;
-        }
+      if (mobileUri) {
+        setWalletConnectDeepLink({ mobileUri, name });
       }
-    });
-  }, [connector, connect, getMobileUri, onConnecting, onClose, name, id]);
+
+      if (mobileUri.startsWith('http')) {
+        // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
+        // Using 'window.open' causes issues on iOS in non-Safari browsers and
+        // WebViews where a blank tab is left behind after connecting.
+        // This is especially bad in some WebView scenarios (e.g. following a
+        // link from Twitter) where the user doesn't have any mechanism for
+        // closing the blank tab.
+        // For whatever reason, links with a target of "_blank" don't suffer
+        // from this problem, and programmatically clicking a detached link
+        // element with the same attributes also avoids the issue.
+        const link = document.createElement('a');
+        link.href = mobileUri;
+        link.target = '_blank';
+        link.rel = 'noreferrer noopener';
+        link.click();
+      } else {
+        window.location.href = mobileUri;
+      }
+    };
+
+    if (id !== 'walletConnect') onMobileUri();
+
+    // If the id is "walletConnect" then "showWalletConnectModal" will always be true
+    if (showWalletConnectModal) {
+      showWalletConnectModal();
+      onClose?.();
+      return;
+    }
+
+    connect?.();
+  }, [connect, getMobileUri, showWalletConnectModal, onClose, name, id]);
 
   useEffect(() => {
     // When using `reactStrictMode: true` in development mode the useEffect hook
@@ -215,7 +205,9 @@ enum MobileWalletStep {
 
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    (wallet) => wallet.isRainbowKitConnector,
+  );
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 
   let headerLabel = null;

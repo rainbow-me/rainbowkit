@@ -10,38 +10,57 @@ image: guide-rainbow-button.png
 
 **1. 安装 `@rainbow-me/rainbow-button` 及其对等依赖**
 
-此包兼容 Next.js、React 和 Vite。 请确保遵循对等依赖警告。
+此包兼容 Next.js、React 和 Vite。 请确保遵循对等依赖警告。 请确保遵循对等依赖警告。 请确保遵循对等依赖警告。 请确保遵循对等依赖警告。
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **2. 配置 Wagmi 并安装 RainbowButton**
 
-将 `RainbowConnector` 的一个实例传递给您的 Wagmi 连接器列表，并将您的应用包装在 `RainbowButtonProvider` 中。 然后将 `RainbowButton` 组件插入到您的钱包列表中。
+将 `RainbowConnector` 的一个实例传递给您的 Wagmi 连接器列表，并将您的应用包装在 `RainbowButtonProvider` 中。 然后将 `RainbowButton` 组件插入到您的钱包列表中。 然后加入`RainbowButton`组件。 然后加入`RainbowButton`组件。 然后加入`RainbowButton`组件。
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
 const config = createConfig({
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
-};
-
-export const YourApp = () => {
-  return <RainbowButton />;
-};
+}
 ```
 
 您还可以使用 `RainbowButton.Custom` 组件进行自定义实现和样式设置。

@@ -17,8 +17,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "~1.21.4",
-    "wagmi": "~1.4.13"
+    "viem": "^2.7.3",
+    "wagmi": "^2.5.5",
+    "@tanstack/react-query": "^5.18.1"
   },
   "devDependencies": {
     "@types/node": "^18.19.3",

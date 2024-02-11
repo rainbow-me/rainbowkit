@@ -89,6 +89,7 @@
     "fallback_title": "Escanea con tu teléfono"
   },
   "connector_group": {
+    "installed": "Instalado",
     "recommended": "Recomendado",
     "other": "Otro",
     "popular": "Popular",

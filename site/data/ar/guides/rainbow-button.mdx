@@ -10,38 +10,57 @@ image: guide-rainbow-button.png
 
 **1. قم بتثبيت `@rainbow-me/rainbow-button` والوابل اللازم**
 
-الحزمة متوافقة مع Next.js وReact وVite تأكد من اتباع الإرشادات بشأن الوابلِ اللازم.
+الحزمة متوافقة مع Next.js وReact وVite تأكد من اتباع الإرشادات بشأن الوابلِ اللازم. تأكد من اتباع الإرشادات بشأن الوابلِ اللازم.
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **2. قم بتكوينه مع Wagmi وقم بتثبيت RainbowButton**
 
-قم بتمرير نسخة من `RainbowConnector` إلى قائمة وصل Wagmi الخاصة بك وقم بتضمين تطبيقك في `RainbowButtonProvider`. ثم أضف المكون `RainbowButton` في قائمة المحافظ الخاصة بك.
+قم بتمرير نسخة من `rainbowConnector` إلى `createConfig` الخاص بـ Wagmi مع `projectId` و `appName`, وقم بتغليف تطبيقك في `RainbowButtonProvider`. ثم أضف مكون `RainbowButton` إلى التطبيق.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
+import {
+  RainbowButtonProvider,
+  RainbowButton,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { mainnet } from 'viem/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
 const config = createConfig({
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <RainbowButton />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
-};
-
-export const YourApp = () => {
-  return <RainbowButton />;
-};
+}
 ```
 
 يمكنك أيضًا استخدام المكون `RainbowButton.Custom` لأجل تنفيذات وتنسيقات مخصصة.

@@ -1,28 +1,15 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
-declare global {
-  interface Window {
-    xfi: any;
-  }
-}
-
-export interface XDEFIWalletOptions {
-  chains: Chain[];
-}
-
-export const xdefiWallet = ({
-  chains,
-  ...options
-}: XDEFIWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isInstalled =
-    typeof window !== 'undefined' && typeof window?.xfi !== 'undefined';
+export const xdefiWallet = (): Wallet => {
   return {
     id: 'xdefi',
     name: 'XDEFI Wallet',
-    installed: isInstalled,
+    rdns: 'io.xdefi',
+    installed: hasInjectedProvider({ namespace: 'xfi.ethereum' }),
     iconUrl: async () => (await import('./xdefiWallet.svg')).default,
     iconBackground: '#fff',
     downloadUrls: {
@@ -30,42 +17,28 @@ export const xdefiWallet = ({
         'https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf',
       browserExtension: 'https://xdefi.io',
     },
-    createConnector: () => ({
-      connector: new InjectedConnector({
-        chains,
-        options: {
-          //@ts-ignore
-          getProvider: () => {
-            return isInstalled ? (window.xfi?.ethereum as any) : undefined;
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://xdefi.io/support-categories/xdefi-wallet/',
+        steps: [
+          {
+            description: 'wallet_connectors.xdefi.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.xdefi.extension.step1.title',
           },
-          ...options,
-        },
-      }),
-      extension: {
-        instructions: {
-          learnMoreUrl: 'https://xdefi.io/support-categories/xdefi-wallet/',
-          steps: [
-            {
-              description:
-                'wallet_connectors.xdefi.extension.step1.description',
-              step: 'install',
-              title: 'wallet_connectors.xdefi.extension.step1.title',
-            },
-            {
-              description:
-                'wallet_connectors.xdefi.extension.step2.description',
-              step: 'create',
-              title: 'wallet_connectors.xdefi.extension.step2.title',
-            },
-            {
-              description:
-                'wallet_connectors.xdefi.extension.step3.description',
-              step: 'refresh',
-              title: 'wallet_connectors.xdefi.extension.step3.title',
-            },
-          ],
-        },
+          {
+            description: 'wallet_connectors.xdefi.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.xdefi.extension.step2.title',
+          },
+          {
+            description: 'wallet_connectors.xdefi.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.xdefi.extension.step3.title',
+          },
+        ],
       },
-    }),
+    },
+    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
   };
 };

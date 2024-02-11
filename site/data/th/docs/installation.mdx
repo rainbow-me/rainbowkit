@@ -25,26 +25,26 @@ yarn create @rainbow-me/rainbowkit
 
 ### การตั้งค่าด้วยต手
 
-ติดตั้ง RainbowKit และ peer dependencies ที่ต้องการ [wagmi](https://wagmi.sh/) and [viem](https://viem.sh).
+ติดตั้ง RainbowKit และ peer dependencies ที่เกี่ยวข้อง, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), และ [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@1 viem@1
+npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
 > หมายเหตุ: RainbowKit เป็นคลังภาพ [React](https://reactjs.org/)
 
 #### นำเข้า
 
-นำเข้า RainbowKit และ wagmi.
+นำเข้า RainbowKit, Wagmi และ TanStack Query.
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  getDefaultWallets,
+  getDefaultConfig,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -53,56 +53,46 @@ import {
   base,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 ```
 
 #### กำหนดค่า
 
-กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi`
+กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` หาก dApp ของคุณใช้การเรนเดอร์ฝั่งเซิร์ฟเวอร์ (SSR) ต้องตั้งค่า `ssr` เป็น `true`.
 
-> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/) นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที
+> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/) นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที
 
 ```tsx line=4-99
 ...
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient
-})
 ```
-
-[อ่านเพิ่มเติมเกี่ยวกับการกำหนดค่าเชื่อมโยงและผู้จัดการกับ `wagmi`](https://wagmi.sh/docs/providers/configuring-chains)
 
 #### ห่อผู้ให้บริการ
 
-ห่อแอปพลิเคชันของคุณด้วย `RainbowKitProvider` และ [`WagmiConfig`](https://wagmi.sh/docs/provider)
+ห่อแอปพลิเคชันของคุณด้วย `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), และ [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```

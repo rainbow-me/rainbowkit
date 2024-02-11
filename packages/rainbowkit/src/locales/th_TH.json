@@ -89,6 +89,7 @@
     "fallback_title": "สแกนด้วยโทรศัพท์ของคุณ"
   },
   "connector_group": {
+    "installed": "ติดตั้งแล้ว",
     "recommended": "แนะนำ",
     "other": "อื่น ๆ",
     "popular": "ยอดนิยม",

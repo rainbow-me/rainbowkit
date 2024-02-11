@@ -89,6 +89,7 @@
     "fallback_title": "使用您的手机扫描"
   },
   "connector_group": {
+    "installed": "已安装",
     "recommended": "推荐",
     "other": "其他",
     "popular": "流行",

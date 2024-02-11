@@ -1,6 +1,6 @@
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 
 export function useChainId(): number | null {
-  const { chain: activeChain } = useNetwork();
+  const { chain: activeChain } = useAccount();
   return activeChain?.id ?? null;
 }

@@ -3,11 +3,12 @@ import './global.css';
 
 import {
   AvatarComponent,
+  type Chain,
   DisclaimerComponent,
   Locale,
   RainbowKitProvider,
-  connectorsForWallets,
   darkTheme,
+  getDefaultConfig,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
@@ -53,18 +54,14 @@ import {
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
-import {
-  WagmiConfig,
-  configureChains,
-  createConfig,
-  useDisconnect,
-} from 'wagmi';
+import { useEffect, useState } from 'react';
+import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -83,14 +80,40 @@ import {
   zora,
   zoraSepolia,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
+const projectId =
+  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
+
+const { wallets } = getDefaultWallets();
+
+const avalanche = {
+  id: 43_114,
+  name: 'Avalanche',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+  },
+  blockExplorers: {
+    default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+} as const satisfies Chain;
+
+const config = getDefaultConfig({
+  appName: 'RainbowKit Demo',
+  projectId,
+  chains: [
     mainnet,
     polygon,
     optimism,
@@ -99,6 +122,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     zora,
     bsc,
     zkSync,
+    avalanche,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           goerli,
@@ -112,69 +136,49 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         ]
       : []),
   ],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
-    publicProvider(),
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [
+        argentWallet,
+        bifrostWallet,
+        bitgetWallet,
+        bitskiWallet,
+        clvWallet,
+        coin98Wallet,
+        coreWallet,
+        dawnWallet,
+        desigWallet,
+        enkryptWallet,
+        foxWallet,
+        frameWallet,
+        frontierWallet,
+        imTokenWallet,
+        ledgerWallet,
+        mewWallet,
+        oktoWallet,
+        okxWallet,
+        omniWallet,
+        oneKeyWallet,
+        phantomWallet,
+        rabbyWallet,
+        safeheronWallet,
+        safepalWallet,
+        subWallet,
+        tahoWallet,
+        talismanWallet,
+        tokenPocketWallet,
+        tokenaryWallet,
+        trustWallet,
+        uniswapWallet,
+        xdefiWallet,
+        zealWallet,
+        zerionWallet,
+      ],
+    },
   ],
-);
-
-const projectId =
-  process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
-
-const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
-  chains,
-  projectId,
-});
-
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ chains, projectId }),
-      bifrostWallet({ chains, projectId }),
-      bitgetWallet({ chains, projectId }),
-      bitskiWallet({ chains }),
-      clvWallet({ chains, projectId }),
-      coin98Wallet({ chains, projectId }),
-      coreWallet({ chains, projectId }),
-      dawnWallet({ chains }),
-      desigWallet({ chains }),
-      enkryptWallet({ chains }),
-      foxWallet({ chains, projectId }),
-      frameWallet({ chains }),
-      frontierWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-      mewWallet({ chains }),
-      oktoWallet({ chains, projectId }),
-      okxWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      oneKeyWallet({ chains }),
-      phantomWallet({ chains }),
-      rabbyWallet({ chains }),
-      safeheronWallet({ chains }),
-      safepalWallet({ chains, projectId }),
-      subWallet({ chains, projectId }),
-      tahoWallet({ chains }),
-      talismanWallet({ chains }),
-      tokenaryWallet({ chains }),
-      tokenPocketWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      uniswapWallet({ chains, projectId }),
-      xdefiWallet({ chains }),
-      zealWallet({ chains }),
-      zerionWallet({ chains, projectId }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
+  ssr: true,
 });
 
 const demoAppInfo = {
@@ -308,7 +312,6 @@ function RainbowKitApp({
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
         avatar={customAvatar ? CustomAvatar : undefined}
-        chains={chains}
         locale={locale}
         coolMode={coolModeEnabled}
         initialChain={selectedInitialChainId}
@@ -479,7 +482,7 @@ function RainbowKitApp({
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...chains].map((chain) => (
+                          {[undefined, ...config.chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
@@ -658,6 +661,8 @@ function RainbowKitApp({
   );
 }
 
+const queryClient = new QueryClient();
+
 export default function App(
   appProps: AppProps<{
     session: Session;
@@ -669,10 +674,13 @@ export default function App(
         <title>RainbowKit Example</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
+
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitApp {...appProps} />
-        </WagmiConfig>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitApp {...appProps} />
+          </QueryClientProvider>
+        </WagmiProvider>
       </SessionProvider>
     </>
   );

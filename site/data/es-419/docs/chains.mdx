@@ -7,37 +7,7 @@ description: Personalizando cadenas
 
 ## Personalizando cadenas
 
-La propiedad `chains` en `RainbowKitProvider` define qué cadenas están disponibles para que el usuario seleccione.
-
 RainbowKit está diseñado para integrarse con el objeto `chain` de [wagmi](https://wagmi.sh/react/chains). Consulte la lista de cadenas soportadas [here](https://wagmi.sh/react/chains#supported-chains).
-
-> Para obtener más detalles sobre el objeto `chain`, o para ver ejemplos al crear una definición de cadena personalizada, consulte el [código fuente del objeto `chain` de wagmi](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-Su configuración de cadena puede definirse en un solo array proporcionado a [`configureChains`](https://wagmi.sh/react/providers/configuring-chains).
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Personalizando la cadena inicial
 
@@ -46,35 +16,60 @@ Por defecto, RainbowKit se conectará a la primera cadena en su matriz `chains` 
 La cadena inicial puede ser configurada usando un ID de cadena.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 Como una facilidad, también puedes pasar un objeto de cadena.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
 ### Iconos de cadena personalizados
 
 Se proporcionan varios iconos de cadena por defecto, pero puedes personalizar el icono de cada cadena usando la propiedad iconUrl.
 
-```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+Ejemplo con `getDefaultConfig`
 
-const defaultChains: Chain[] = [
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Ejemplo con `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

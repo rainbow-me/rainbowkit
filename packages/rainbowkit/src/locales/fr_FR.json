@@ -89,6 +89,7 @@
     "fallback_title": "Scannez avec votre téléphone"
   },
   "connector_group": {
+    "installed": "Installé",
     "recommended": "Recommandé",
     "other": "Autre",
     "popular": "Populaire",
