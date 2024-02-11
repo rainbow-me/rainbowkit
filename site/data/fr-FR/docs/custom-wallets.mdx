@@ -1,0 +1,281 @@
+---
+title: Portefeuilles personnalisés
+description: Créer un portefeuille personnalisé
+---
+
+# Portefeuilles personnalisés
+
+## Créer un portefeuille personnalisé
+
+> Note : Cette API est instable et susceptible de changer dans un futur proche. Nous ajouterons plus de portefeuilles intégrés avec le temps. [Faites-nous savoir](https://github.com/rainbow-me/rainbowkit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
+
+Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres portefeuilles personnalisés. Les propriétés suivantes peuvent être configurées sur la valeur de retour de votre fonction `Wallet` :
+
+### Propriétés du portefeuille
+
+<PropsTable
+  data={[
+    {
+      name: 'id',
+      required: true,
+      type: 'string',
+      description: 'Unique ID per wallet',
+    },
+    {
+      name: 'name',
+      required: true,
+      type: 'string',
+      description: 'Human-readable wallet name',
+    },
+    {
+      name: 'rdns',
+      required: false,
+      type: 'string',
+      description: 'RDNS for wallet which supports EIP6963',
+    },
+    {
+      name: 'shortName',
+      required: false,
+      type: 'string | undefined',
+      description: 'Optional short name for mobile use',
+    },
+    {
+      name: 'iconUrl',
+      required: true,
+      type: 'string | (() => Promise<string>)',
+      description:
+        'URL pour l'icône du portefeuille, ou une promesse qui se résout en une URL de données Base64',
+    },
+    {
+      name: 'iconAccent',
+      required: false,
+      type: 'string',
+      description:
+        'Couleur d'accent utilisée dans les flux de téléchargement pour les portefeuilles disposant à la fois d'une extension de navigateur et d'une application mobile',
+    },
+    {
+      name: 'iconBackground',
+      required: true,
+      type: 'string',
+      description: 'Couleur de fond pendant le chargement de l'icône du portefeuille',
+    },
+    {
+      name: 'installed',
+      required: false,
+      type: 'boolean | undefined',
+      description: (
+        <>
+          Si le portefeuille est connu pour être installé, ou{' '}
+          <code>indéterminé</code> si indéterminé
+        </>
+      ),
+    },
+    {
+      name: 'downloadUrls',
+      required: false,
+      type: '{ android?: string, ios?: string, mobile?: string, qrCode?: string, chrome?: string, firefox?: string, edge?: string, safari?: string, opera?: string, browserExtension?: string } | undefined',
+      typeSimple: 'DownloadUrls | undefined',
+      description: 'Objet contenant les URL de téléchargement',
+    },
+    {
+      name: 'hidden',
+      required: false,
+      type: '(args: { wallets: Array<{ id: string, connector: Connector, installed?: boolean }> }) => boolean',
+      typeSimple: '(args) => boolean | undefined',
+      description:
+        'Fonction pour calculer si ce portefeuille doit être caché de la liste. Cela est utile pour définir des portefeuilles de secours génériques, par exemple, le portefeuille de secours "Injected Wallet" intégré tire parti de cette fonctionnalité',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: '() => RainbowKitConnector',
+      typeSimple: 'RainbowKitConnector',
+      description:
+        'Fonction pour fournir l'instance du connecteur et la configuration pour différentes méthodes de connexion, décrites ci-dessous',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description:
+        'Fonction pour résoudre une URI de connexion de portefeuille mobile',
+    },
+    {
+      name: 'desktop',
+      required: false,
+      type: '{ getUri?: (uri: string) => string }',
+      typeSimple: 'object',
+      description: 'Fonction pour résoudre un lien profond d'application de bureau',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: "{ getUri: (uri: string) => string, instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        'Objet contenant une fonction pour résoudre l'URI du code QR, plus des instructions optionnelles de configuration de portefeuille mobile',
+    },
+    {
+      name: 'extension',
+      required: false,
+      type: "{ instructions?: { learnMoreUrl: string, steps: Array<{ step: 'install' | 'create' | 'scan', title: string, description: string }}}}",
+      typeSimple: 'object',
+      description:
+        'Objet contenant des instructions optionnelles de configuration d'extension de navigateur',
+    },
+    {
+      name: 'createConnector',
+      required: true,
+      type: "createConnector: (details: WalletDetailsParams) => CreateConnectorFn",
+      typeSimple: '(details: WalletDetailsParams) => CreateConnectorFn',
+      description: 'Fonction pour fournir l'instance du connecteur',
+    },
+  ]}
+/>
+
+### Propriétés de DownloadUrls
+
+<PropsTable
+  data={[
+    {
+      name: 'android',
+      required: false,
+      type: 'string',
+      description: 'Google Play URL',
+    },
+    {
+      name: 'ios',
+      required: false,
+      type: 'string',
+      description: 'Apple App Store URL',
+    },
+    {
+      name: 'mobile',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for mobile users when `android` or `ios` are unavailable',
+    },
+    {
+      name: 'qrCode',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for users that scan the mobile download QR Code',
+    },
+    {
+      name: 'chrome',
+      required: false,
+      type: 'string',
+      description: 'Chrome Web Store URL',
+    },
+    {
+      name: 'edge',
+      required: false,
+      type: 'string',
+      description: 'Microsoft Edge Add-ons URL',
+    },
+    {
+      name: 'firefox',
+      required: false,
+      type: 'string',
+      description: 'Firefox Browser Add-ons URL',
+    },
+    {
+      name: 'opera',
+      required: false,
+      type: 'string',
+      description: 'Opera add-ons URL',
+    },
+    {
+      name: 'safari',
+      required: false,
+      type: 'string',
+      description: 'Mac App Store URL',
+    },
+    {
+      name: 'browserExtension',
+      required: false,
+      type: 'string',
+      description:
+        'Landing page for desktop extension users when browser-compatible URLs are unavailable',
+    },
+  ]}
+/>
+
+### Exemples
+
+Par exemple, pour créer un portefeuille personnalisé en utilisant WalletConnect :
+
+```tsx
+import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+
+export interface MyWalletOptions {
+  projectId: string;
+}
+
+export const rainbow = ({ projectId }: MyWalletOptions): Wallet => ({
+  id: 'my-wallet',
+  name: 'My Wallet',
+  iconUrl: 'https://my-image.xyz',
+  iconBackground: '#0c2f78',
+  downloadUrls: {
+    android: 'https://play.google.com/store/apps/details?id=my.wallet',
+    ios: 'https://apps.apple.com/us/app/my-wallet',
+    chrome: 'https://chrome.google.com/webstore/detail/my-wallet',
+    qrCode: 'https://my-wallet/qr',
+  },
+  mobile: {
+    getUri: (uri: string) => uri,
+  },
+  qrCode: {
+    getUri: (uri: string) => uri,
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend putting My Wallet on your home screen for faster access to your wallet.',
+          step: 'install',
+          title: 'Open the My Wallet app',
+        },
+        {
+          description:
+            'After you scan, a connection prompt will appear for you to connect your wallet.',
+          step: 'scan',
+          title: 'Tap the scan button',
+        },
+      ],
+    },
+  },
+  extension: {
+    instructions: {
+      learnMoreUrl: 'https://my-wallet/learn-more',
+      steps: [
+        {
+          description:
+            'We recommend pinning My Wallet to your taskbar for quicker access to your wallet.',
+          step: 'install',
+          title: 'Install the My Wallet extension',
+        },
+        {
+          description:
+            'Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.',
+          step: 'create',
+          title: 'Create or Import a Wallet',
+        },
+        {
+          description:
+            'Once you set up your wallet, click below to refresh the browser and load up the extension.',
+          step: 'refresh',
+          title: 'Refresh your browser',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({ projectId }),
+});
+```
+
+Vous pouvez ensuite ajouter votre portefeuille personnalisé dans la [liste de portefeuilles](/docs/custom-wallet-list).

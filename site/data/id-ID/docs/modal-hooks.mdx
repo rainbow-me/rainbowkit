@@ -1,0 +1,64 @@
+---
+title: Modal Hooks
+description: Membuka modals secara programatik melalui Hooks
+---
+
+# Modal Hooks
+
+## Membuka modals secara programatik melalui Hooks
+
+Berikut ini adalah Hooks yang disediakan untuk memungkinkan pembukaan modals secara programatik di mana saja dalam aplikasi Anda.
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+Masing-masing dari Hooks ini mengembalikan sebuah objek dengan fungsi untuk membuka modalnya masing-masing. Perlu diperhatikan bahwa fungsi yang dikembalikan akan menjadi undefined jika aplikasi Anda tidak dalam keadaan yang diperlukan untuk modal tersebut terbuka.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+Setiap hook juga mengembalikan boolean untuk status modal. Biasanya disarankan agar Anda sepenuhnya bergantung pada kait Wagmi (mis. `useAccount`) untuk bereaksi terhadap status koneksi dompet pengguna secara langsung, daripada mengandalkan keadaan Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit dirancang untuk tidak mengganggu dan responsif, sehingga dApps harus selalu merender antarmuka untuk pengguna apakah mereka telah menyambungkan dompet mereka atau tidak. Pengguna dapat menyambungkan atau memutuskan dompet mereka langsung dari MetaMask, jadi dApp harus responsif terhadap status koneksi yang mendasari secara langsung.
+
+dApps yang mengandalkan mekanisme seperti Sign-in with Ethereum untuk verifikasi pengguna sebaiknya mengandalkan fitur [Authentication](/docs/authentication).

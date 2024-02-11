@@ -1,0 +1,75 @@
+---
+title: Chaînes
+description: Personnalisation des chaînes
+---
+
+# Chaînes
+
+## Personnalisation des chaînes
+
+RainbowKit est conçu pour s'intégrer avec [l'objet `chain` de wagmi](https://wagmi.sh/react/chains). Consultez la liste des chaînes prises en charge [here](https://wagmi.sh/react/chains#supported-chains).
+
+### Personnalisation de la chaîne initiale
+
+Par défaut, RainbowKit se connectera à la première chaîne fournie à Wagmi. Ce comportement peut être personnalisé via la propriété `initialChain`.
+
+La chaîne initiale peut être configurée en utilisant un ID de chaîne.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+Pour plus de commodité, vous pouvez également passer un objet de chaîne.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### Métadonnées de chaîne personnalisées
+
+Plusieurs icônes et arrière-plans de chaîne sont fournis par défaut, mais vous pouvez personnaliser l'icône et l'arrière-plan pour chaque chaîne en utilisant les propriétés `iconUrl` et `iconBackground`.
+
+Exemple avec `getDefaultConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Exemple avec `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```

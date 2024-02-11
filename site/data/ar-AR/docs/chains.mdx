@@ -1,0 +1,75 @@
+---
+title: السلاسل
+description: تخصيص السلاسل
+---
+
+# السلاسل
+
+## تخصيص السلاسل
+
+تم تصميم RainbowKit للتكامل مع [كائن `chain` الخاص بـ wagmi](https://wagmi.sh/react/chains). تحقق من قائمة السلاسل المدعومة [here](https://wagmi.sh/react/chains#supported-chains).
+
+### تخصيص السلسلة الأولية
+
+بشكل افتراضي، سيتصل RainbowKit بأول سلسلة تم تزويدها إلى Wagmi. يمكن تخصيص هذا السلوك عبر خاصية `initialChain`.
+
+يمكن تكوين السلسلة الأولية باستخدام معرف السلسلة.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+للراحة، يمكنك أيضًا تمرير كائن السلسلة.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### بيانات سلسلة مخصصة
+
+يتم توفير عدة رموز وخلفيات للسلسلة بشكل افتراضي، ولكن يمكنك تخصيص الرمز والخلفية لكل سلسلة باستخدام خصائص `iconUrl` و `iconBackground`.
+
+مثال باستخدام `getDefaultConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+مثال باستخدام `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```

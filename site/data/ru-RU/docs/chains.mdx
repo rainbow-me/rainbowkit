@@ -1,0 +1,75 @@
+---
+title: Сети
+description: Настройка сетей
+---
+
+# Сети
+
+## Настройка сетей
+
+RainbowKit разработан для интеграции с [объектом `chain` от wagmi](https://wagmi.sh/react/chains). Ознакомьтесь со списком поддерживаемых сетей [here](https://wagmi.sh/react/chains#supported-chains).
+
+### Настройка начальной сети
+
+По умолчанию RainbowKit будет подключаться к первой цепочке, предоставленной Wagmi. Это поведение можно настроить с помощью свойства `initialChain`.
+
+Начальная цепочка может быть настроена с использованием идентификатора цепочки.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+Для удобства вы также можете передать объект цепочки.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### Пользовательская метадата цепочки
+
+Несколько иконок и фонов цепочек предоставляются по умолчанию, но вы можете настроить иконку и фон для каждой цепочки, используя свойства `iconUrl` и `iconBackground`.
+
+Пример с `getDefaultConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Пример с `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```

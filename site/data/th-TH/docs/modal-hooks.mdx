@@ -1,0 +1,64 @@
+---
+title: ตัวเชื่อมต่อ Modal
+description: เปิด modal ผ่าน Hooks แบบโปรแกรม
+---
+
+# ตัวเชื่อมต่อ Modal
+
+## เปิด modal ผ่าน Hooks แบบโปรแกรม
+
+Hooks ต่อไปนี้ได้รับเพื่อให้ความสามารถในการเปิด Modal แบบโปรแกรมได้ทุกที่ในแอปพลิเคชันของคุณ.
+
+-   `useConnectModal`
+-   `useAccountModal`
+-   `useChainModal`
+
+แต่ละ ฮุค ฯ นี้จะคืนค่าเป็นอ็อบเจคที่มีฟังก์ชันเพื่อเปิด modal ภายใต้ที่รับผิดชอบด้วยตัวเอง. โปรดทราบว่าฟังก์ชันที่จะถูกคืนค่าอาจเป็นค่าว่าง หากแอปพลิเคชันของคุณไม่ได้อยู่ในสถานะที่ต้องการเพื่อเปิด modal.
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+แต่ละ hook ยังคืนค่า boolean สำหรับสถานะของ modal. โดยทั่วไปแนะนำว่าคุณควรเชื่อมต่อมากับ Wagmi hooks (เช่น `useAccount`) เพื่อตอบสนองสถานะการเชื่อมต่อวัตถุประสงค์ของผู้ใช้โดยตรง ไม่กินแล้วดูแลสถานะของ Connect Modal.
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit ถูกออกแบบมาเพื่อไม่สร้างการขัดขวางและสามารถตอบสนองได้ดี ดังนั้น dApps ควรแสดงอินเทอร์เฟซสำหรับผู้ใช้ไม่ว่าพวกเขาจะเชื่อมต่อกระเป๋าเงินของตัวเองหรือไม่ ผู้ใช้สามารถเชื่อมต่อหรือยกเลิกการเชื่อมต่อกระเป๋าเงินของตนโดยตรงจาก MetaMask ดังนั้น dApp ต้องสามารถตอบสนองกับสถานะการเชื่อมต่อที่ขั้นพื้นฐานโดยตรง
+
+dApps ที่พึ่งพาเครื่องมืออย่าง Sign-in with Ethereum เพื่อตรวจสอบผู้ใช้ควรพึ่งพาคุณลักษณะ [Authentication](/docs/authentication) แทน

@@ -1,0 +1,42 @@
+---
+title: CüzdanDüğmesi
+description: CüzdanDüğmesi'nin Kullanımı ve Özelleştirilmesi
+---
+
+# CüzdanDüğmesi
+
+Yeni `WalletButton` bileşeni, özel cüzdan listesi uygulamalarında RainbowKit'i benimsemeleri ve bakım gerektirmeyen tüm avantajlarından faydalanmalarına yardımcı olur.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+`ConnectButton` gibi, `WalletButton.Custom` bileşeni özel uygulamalar ve stillemeler için kullanılabilir.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+Çoğu dApp, [ConnectButton](https://www.rainbowkit.com/docs/connect-button) ile en iyi şekilde hizmet verilir. `WalletButton` benimseme ve kullanımı hakkında daha fazla bilgi için dokümantasyona başvurun [here](https://www.rainbowkit.com/docs/wallet-button).
+
+#### Demo
+
+Bu RainbowKit giriş noktasının nasıl göründüğünü görmek için aşağıdaki düğmelere basın.
+
+<WalletButtonDemo />

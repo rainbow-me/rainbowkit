@@ -1,0 +1,42 @@
+---
+title: ウォレットボタン
+description: ウォレットボタンの使用とカスタマイズ
+---
+
+# ウォレットボタン
+
+新しい`WalletButton`コンポーネントは、カスタムウォレットリストの実装において、RainbowKitとそのメンテナンスフリーな利点を活用するための支援を提供します。
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+`ConnectButton`と同様に、`WalletButton.Custom`コンポーネントは、カスタム実装とスタイリングに利用できます。
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+ほとんどのdAppでは、 [ConnectButton]が最適です （https://www.rainbowkit.com/docs/connect-button） `WalletButton`の採用と使用例については、ドキュメント [here]を参照してください。 （https://www.rainbowkit.com/docs/wallet-button）
+
+#### デモ
+
+以下のボタンを押して、このRainbowKitエントリーポイントの表示をご確認ください。
+
+<WalletButtonDemo />

@@ -1,0 +1,106 @@
+---
+title: 사용자 정의 인증
+description: 자신의 인증 백엔드에 연결
+---
+
+# 사용자 정의 인증
+
+## 자신의 인증 백엔드에 연결
+
+RainbowKit은 Ethereum 및 NextAuth.js로의 로그인에 대한 first-class 지원을 제공하는 반면, 사용자 정의 백엔드 및 메시지 형식과도 통합할 수 있습니다.
+
+### 사용자 정의 어댑터 생성
+
+먼저 인증 어댑터를 생성합니다. 이를 통해 RainbowKit은 메시지를 생성/준비하고 백엔드와 통신할 수 있습니다.
+
+예를 들어, [사용자 지정 API 엔드포인트](https://wagmi.sh/examples/sign-in-with-ethereum)에 대해 [Sign-In with Ethereum](https://login.xyz)을 사용할 수 있는 인증 어댑터를 만들 수 있습니다.
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### 인증 상태 제공
+
+애플리케이션이 이미 어떤 방식으로든 인증 수명 주기를 관리하고 있다면, 사용자 정의 어댑터와 함께 현재 인증 상태를 'RainbowKitAuthenticationProvider'에 전달하여 기존의 'RainbowKitProvider'를 래핑할 수 있습니다.
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+이만큼 왔고 기존 오픈 소스 인증 라이브러리에 대한 어댑터를 생성한 경우, 다른 사람들이 사용할 수 있도록 패키지를 생성하는 것을 고려해 주세요!

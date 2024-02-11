@@ -1,0 +1,106 @@
+---
+title: कस्टम प्रमाणीकरण
+description: अपने स्वयं के प्रमाणीकरण बैक-एंड से जुड़ें
+---
+
+# कस्टम प्रमाणीकरण
+
+## अपने स्वयं के प्रमाणीकरण बैक-एंड से जुड़ें
+
+हालांकि RainbowKit [Ethereum और NextAuth.js के साथ साइन-इन के लिए पहले दर्जे की सपोर्ट](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) प्रदान करता है, आप कस्टम बैक-एंड्स और संदेश प्रारूपों के साथ भी एकीकृत कर सकते हैं।
+
+### एक कस्टम एडाप्टर बनाना
+
+पहले एक प्रमाणीकरण एडाप्टर बनाएं। इससे RainbowKit को संदेश बनाने/तैयार करने और आपके बैक-एंड से संवाद करने में मदद मिलती है।
+
+उदाहरण के लिए, हम एक प्रमाणीकरण एडाप्टर बना सकते हैं जो हमें [Ethereum के साथ साइन-इन करने](https://login.xyz) की अनुमति देता है कुछ [कस्टम API एंड पॉइंट्स](https://wagmi.sh/examples/sign-in-with-ethereum) के खिलाफ।
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### प्रमाणीकरण स्थिति प्रदान करना
+
+मान लीजिए कि आपका ऐप्लिकेशन पहले से ही किसी तरीके से प्रमाणीकरण जीवनचक्र का प्रबंधन कर रहा है, तो आप अपने कस्टम एडाप्टर के साथ वर्तमान प्रमाणीकरण स्थिति को `RainbowKitAuthenticationProvider`को पास कर सकते हैं, अपने मौजूदा `RainbowKitProvider` को लपेटते हुए।
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+यदि आप इतना दूर तक पहुंच गए हैं और किसी मौजूदा ओपन सोर्स प्रमाणीकरण पुस्तकालय के लिए एक एडाप्टर बना चुके हैं, तो कृपया अन्यों के उपयोग के लिए एक पैकेज बनाने पर विचार करें!

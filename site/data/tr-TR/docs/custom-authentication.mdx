@@ -1,0 +1,106 @@
+---
+title: Özel kimlik doğrulama
+description: Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
+---
+
+# Özel kimlik doğrulama
+
+## Kendi kimlik doğrulama arka ucunuzla bağlantı kurun
+
+RainbowKit, Ethereum ve NextAuth.js ile Giriş için birinci sınıf desteğini sağlasa da, özel arka uçlar ve mesaj formatlarıyla da entegrasyon yapabilirsiniz.
+
+### Özel bir adaptör oluşturma
+
+Öncelikle bir kimlik doğrulama adaptörü oluşturun. Bu, RainbowKit'in mesajlar oluşturmasına/hazırlamasına ve arka uçunuzla iletişim kurmasına olanak sağlar.
+
+Örneğin, bize Ethereum ile Giriş yapmayı sağlayan özel API uç noktalarına karşı bir kimlik doğrulama adaptörü yapabiliriz.
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### Kimlik doğrulama durumunu sağlama
+
+Uygulamanızın zaten bir şekilde kimlik doğrulama yaşam döngüsünü yönettiğini varsayarsak, mevcut `RainbowKitProvider`ınızı kapsayan `RainbowKitAuthenticationProvider`a özel adaptörünüzle beraber mevcut kimlik doğrulama durumunu iletebilirsiniz.
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+Eğer bu noktaya kadar geldiyseniz ve mevcut bir açık kaynaklı kimlik doğrulama kütüphanesi için bir adaptör oluşturduysanız, lütfen diğerlerinin de kullanabilmesi için bir paket oluşturmayı düşünün!

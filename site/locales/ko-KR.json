@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "지갑에 연결하는 최고의 방법",
+    "subheadline": "모두를 위한 디자인. 개발자를 위해 구축되었습니다.",
+    "cta": "문서 보기",
+    "adopters": "최고의 Web3 팀이 RainbowKit을 사용하여 제품을 개선하고 사용자를 기쁘게 하며 빌드 시간을 절약하고 있습니다.",
+    "playground": {
+      "headline": "RainbowKit 체험하기",
+      "subheadline": "귀하의 Ethereum 로그인 경험을 웹 사이트에서 완전히 맞춤 설정하세요. RainbowKit은 사용하기 쉬운 API를 통해 색상, 테두리 반경, 지갑 제공자 등을 완전히 사용자 정의할 수 있습니다. 아래에서 느껴보세요!",
+      "modal": "모달",
+      "mode": "모드",
+      "accent": "강조",
+      "radius": "반경",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 개발자들",
+      "subheadline": "RainbowKit은 개발자가 애플리케이션에 훌륭한 지갑 경험을 더할 수 있는 빠르고 쉬우며 매우 사용자 정의할 수 있는 방법을 제공합니다. 우리가 어려운 작업을 처리하므로 개발자와 팀은 훌륭한 제품과 사용자를 위한 커뮤니티를 구축하는 데 집중할 수 있습니다.",
+      "installation": "쉬운 설치",
+      "themes": "내장된 테마",
+      "darkmode": "라이트 모드와 다크 모드",
+      "appstore": "앱 스토어 및 구글 플레이 통합",
+      "custom_themes": "사용자 정의 테마",
+      "custom_wallet_list": "사용자 정의 지갑 목록",
+      "custom_chain": "사용자 정의 체인",
+      "custom_connect": "사용자 정의 연결 버튼"
+    },
+    "madeby": {
+      "headline": "우리의 친구들이 만든 ❤️",
+      "subheadline": "RainbowKit을 만드는 것은 Rainbow의 많은 사람들과 다른 회사의 친구들과 함께 하는 매우 재미있는 노력이었습니다. 우리는 항상 RainbowKit을 개선하려고 노력하고 있으니 어떻게 개선할 수 있는지 알려주시기 바랍니다.",
+      "twitter_cta": "트위터에서 팔로우하기",
+      "feedback_cta": "우리와 의견을 공유하세요"
+    },
+    "footer": {
+      "mediakit": "미디어 킷",
+      "terms": "이용 약관",
+      "privacy": "개인 정보 정책"
+    },
+    "meta": {
+      "description": "지갑을 연결하는 최고의 방법 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "개요",
+        "getting_started": "시작하기",
+        "advanced": "고급"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+---
+title: อวาตาร์ที่กำหนดเอง
+description: การปรับแต่งอวาตาร์ของผู้ใช้ในแอปของคุณ
+---
+
+# อวาตาร์ที่กำหนดเอง
+
+## การปรับแต่งอวาตาร์ของผู้ใช้ในแอปของคุณ
+
+ตามค่าเริ่มต้น เราจะให้อวาตาร์สำหรับผู้ใช้ในกรณีที่ภาพ ENS ของพวกเขาไม่ถูกตั้งค่า แต่คุณสามารถปรับแต่งสิ่งนี้โดยการให้องค์ประกอบอวาตาร์ของคุณเอง คุณสามารถนำเข้าประเภท `AvatarComponent` หากใช้ TypeScript:
+
+```tsx
+import {
+  RainbowKitProvider,
+  AvatarComponent,
+} from '@rainbow-me/rainbowkit';
+import { generateColorFromAddress } from './utils';
+
+const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+  const color = generateColorFromAddress(address);
+  return ensImage ? (
+    <img
+      src={ensImage}
+      width={size}
+      height={size}
+      style={{ borderRadius: 999 }}
+    />
+  ) : (
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: 999,
+        height: size,
+        width: size,
+      }}
+    >
+      :^)
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+`AvatarComponent` ที่ถูกส่งไปยัง `avatar` prop มีประเภท prop ดังต่อไปนี้: `<{ address: string; ensImage?: string | null; size: number;}>`

@@ -1,0 +1,149 @@
+---
+title: ConnectButton
+description: ConnectButton 사용 및 사용자 정의
+---
+
+# ConnectButton
+
+## ConnectButton 사용 및 사용자 정의
+
+이것은 주요 컴포넌트입니다. 연결/연결 해제 버튼과 체인 교환 UI를 렌더링하는 것에 책임이 있습니다.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+> 참고: 앱이 필요한 제공자로 묶여 있는지 확인하세요. [자세히 읽기](/docs/installation#wrap-providers).
+
+### Props
+
+`ConnectButton` 컴포넌트는 외관을 사용자 정의하는 데 여러 prop를 제공합니다, 이를테면 여러 요소의 가시성을 토글하는 것을 포함합니다.
+
+<PropsTable
+  data={[
+    {
+      name: 'label',
+      required: false,
+      default: 'Connect Wallet',
+      type: 'string',
+      description: 'The text label displayed on the Connect button',
+    },
+    {
+      name: 'accountStatus',
+      required: false,
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the active account's avatar and/or address is displayed",
+    },
+    {
+      name: 'chainStatus',
+      required: false,
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the current chain's icon and/or name is displayed, or hidden entirely",
+    },
+    {
+      name: 'showBalance',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description:
+        'Whether the balance is visible next to the account name',
+    },
+  ]}
+/>
+
+> 참고: 내장된 `largeScreen` 분기점은 `768px`입니다.
+
+### 예제
+
+#### 레이블
+
+`label` prop을 사용하여 사용자 정의 `ConnectButton` 텍스트를 설정하세요.
+
+```tsx
+<ConnectButton label="__Sign in__" />
+```
+
+#### 계정 상태
+
+`accountStatus` prop을 사용하는 몇 가지 다른 방법이 있습니다.
+
+계정의 아바타만 표시합니다.
+
+```tsx
+<ConnectButton accountStatus="__avatar__" />
+```
+
+계정의 주소만 표시합니다.
+
+```tsx
+<ConnectButton accountStatus="__address__" />
+```
+
+#### 체인 상태
+
+`chainStatus` prop을 사용하는 몇 가지 다른 방법이 있습니다.
+
+현재 체인의 아이콘만 표시합니다.
+
+```tsx
+<ConnectButton chainStatus="__icon__" />
+```
+
+현재 체인의 이름만 표시합니다.
+
+```tsx
+<ConnectButton chainStatus="__name__" />
+```
+
+체인 UI를 완전히 숨깁니다.
+
+```tsx
+<ConnectButton chainStatus="__none__" />
+```
+
+#### 잔액 표시
+
+`showBalance` prop을 사용하여 잔액을 숨기거나 표시하십시오.
+
+잔액을 숨깁니다.
+
+```tsx
+<ConnectButton showBalance={__false__} />
+```
+
+#### 응답형
+
+이 props들은 응답형 형식으로도 정의될 수 있습니다.
+
+작은 화면에서는 계정 아이콘만 표시합니다. 그러나 큰 화면에서는 아이콘과 주소를 표시합니다.
+
+```tsx
+<ConnectButton
+  accountStatus={{
+    smallScreen: 'avatar',
+    largeScreen: 'full',
+  }}
+/>
+```
+
+작은 화면에서는 잔액을 숨깁니다. 그러나 큰 화면에서는 그것을 표시합니다.
+
+```tsx
+<ConnectButton
+  showBalance={{
+    smallScreen: false,
+    largeScreen: true,
+  }}
+/>
+```
