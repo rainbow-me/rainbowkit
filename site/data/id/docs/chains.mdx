@@ -7,74 +7,69 @@ description: Mengkustomisasi rantai
 
 ## Mengkustomisasi rantai
 
-Properti `chains` pada `RainbowKitProvider` mendefinisikan rantai mana yang tersedia untuk pengguna pilih.
-
 RainbowKit dirancang untuk berintegrasi dengan [objek `chain` dari wagmi](https://wagmi.sh/react/chains). Lihat daftar rantai yang didukung [here](https://wagmi.sh/react/chains#supported-chains).
-
-> Untuk detail lebih lanjut tentang objek `chain`, atau untuk melihat contoh saat membuat definisi rantai kustom, lihat [kode sumber untuk objek `chain` dari wagmi](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-Konfigurasi rantai Anda dapat didefinisikan dalam satu array yang disediakan ke [`configureChains`](https://wagmi.sh/react/providers/configuring-chains).
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Mengkustomisasi rantai awal
 
-Secara default, RainbowKit akan terhubung ke rantai pertama dalam array `chains` Anda untuk memastikan pengguna tidak langsung disajikan dengan status "Jaringan salah". Perilaku ini dapat dikustomisasi melalui prop `initialChain`.
+Secara default, RainbowKit akan terhubung ke rantai pertama yang diberikan ke Wagmi. Perilaku ini dapat dikustomisasi melalui prop `initialChain`.
 
 Rantai awal dapat dikonfigurasi menggunakan ID rantai.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 Untuk kenyamanan, Anda juga dapat melewati sebuah objek rantai.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Ikon rantai khusus
+### Metadata rantai khusus
 
-Beberapa ikon rantai disediakan secara default, tetapi Anda dapat mengkustomisasi ikon untuk setiap rantai menggunakan properti iconUrl.
+Beberapa ikon rantai dan latar belakang disediakan secara default, tetapi Anda dapat menyesuaikan ikon dan latar belakang untuk setiap rantai menggunakan properti `iconUrl` dan `iconBackground`.
+
+Contoh dengan `getDefaultConfig`
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Contoh dengan `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

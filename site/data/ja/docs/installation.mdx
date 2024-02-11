@@ -25,26 +25,26 @@ yarn create @rainbow-me/rainbowkit
 
 ### 手動設定
 
-RainbowKitおよびそのピア依存関係、 [wagmi](https://wagmi.sh/) と [viem](https://viem.sh)をインストールします。
+RainbowKitおよびそのピア依存関係である[wagmi](https://wagmi.sh/)、[viem](https://viem.sh)、[@tanstack/react-query](https://tanstack.com/query/v5)をインストールしてください。
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi@1 viem@1
+npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
 > 注: RainbowKitは [React](https://reactjs.org/) ライブラリです。
 
 #### インポート
 
-RainbowKitとwagmiをインポートします。
+RainbowKit、Wagmi、TanStack Queryをインポートします。
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  getDefaultWallets,
+  getDefaultConfig,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
   polygon,
@@ -53,56 +53,46 @@ import {
   base,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 ```
 
 #### 設定
 
-望ましいチェーンを設定し、必要なコネクタを生成します。 また、`wagmi` 設定もセットアップする必要があります。
+望ましいチェーンを設定し、必要なコネクタを生成します。 また、`wagmi` 設定もセットアップする必要があります。 あなたのdAppがサーバーサイドレンダリング(SSR)を使用している場合は、`ssr`を`true`に設定してください。
 
 > 注: WalletConnectを利用するすべてのdAppは、現在[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。
 
 ```tsx line=4-99
 ...
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider()
-  ]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  ssr: true, // If your dApp uses server side rendering (SSR)
 });
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient
-})
 ```
-
-[`wagmi`でチェーンとプロバイダを設定する方法の詳細を読む](https://wagmi.sh/docs/providers/configuring-chains)。
 
 #### プロバイダを包み込む
 
-アプリケーションを`RainbowKitProvider`と[`WagmiConfig`](https://wagmi.sh/docs/provider)で包み込みます。
+アプリケーションを`RainbowKitProvider`、[`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider)、および[`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)でラップしてください。
 
 ```tsx
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```

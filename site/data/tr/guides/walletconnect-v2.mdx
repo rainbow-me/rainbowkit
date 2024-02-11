@@ -1,7 +1,7 @@
 ---
 title: dApp'inizi WalletConnect v2'ye yükseltme
 description: RainbowKit v2'ye geçti ve dApp'inizi 5 dakika veya daha kısa sürede hazırlayabilirsiniz
-image: guide-walletconnect-v2.png
+image: rehber-cüzdanbaglantisi-v2.png
 ---
 
 # WalletConnect v2'ye geçiş
@@ -67,36 +67,5 @@ RainbowKit tip güvenliğine sahip olup bir `projectId` eksik olduğunda sizi uy
 -   [Next.js Uygulama Yönlendiricisi](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 -   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 -   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-
-#### İleri düzey özelleştirme
-
-Eğer dApp'iniz henüz WalletConnect v2'ye taşınmamış bir eski cüzdanı desteklemeyi gerektiriyorsa, RainbowKit'in varsayılan WalletConnect sürümü her cüzdan için bağımsız olarak geçersiz kılınabilir.
-
-```ts
-metaMaskWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-});
-```
-
-WalletConnect v1 sunucuları 28 Haziran'da kapatıldığında, v1 protokolünü kullanmaya devam etmek için bir [özel köprü sunucu](https://docs.walletconnect.com/1.0/bridge-server) gereklidir. Aşağıdaki örnekleri inceleyin:
-
-```ts
-walletConnectWallet(options: {
-  chains: Chain[];
-  version: '1',
-  options: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-
-customWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-  walletConnectOptions: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-```
 
 Ek desteklenen seçenekler için [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) referansını inceleyin.
