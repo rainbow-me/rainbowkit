@@ -1,5 +1,15 @@
 # site
 
+## 0.0.90
+
+### Patch Changes
+
+- aa0269e: - Added migration guide for `@rainbow-me/rainbowkit` `2.x.x` breaking changes.
+  - Updated all documentation section to include the latest Wagmi, Viem and TanStack Query usage
+  - Added migration guide for `2.x.x` breaking changes
+- Updated dependencies [aa0269e]
+  - @rainbow-me/rainbowkit@2.0.0
+
 ## 0.0.89
 
 ### Patch Changes
