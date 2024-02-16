@@ -1,24 +1,14 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { WalletConnectConnectorOptions } from '../../getWalletConnectConnector';
-
-export interface BloomWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
 
 export const bloomWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
-}: BloomWalletOptions): Wallet => ({
+  walletConnectParameters,
+}: DefaultWalletOptions): Wallet => ({
   id: 'bloomWallet',
+  name: 'Bloom',
   iconBackground: '#000',
   iconAccent: '#000',
-  name: 'Bloom',
   iconUrl: async () => (await import('./bloomWallet.svg')).default,
   downloadUrls: {
     windows: 'https://bloomwallet.io/',
@@ -26,24 +16,32 @@ export const bloomWallet = ({
     linux: 'https://bloomwallet.io/',
     desktop: 'https://bloomwallet.io/',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-      chains,
-      version: '2',
-      options: walletConnectOptions,
-    });
-
-    return {
-      connector,
-      desktop: {
-        getUri: async () => {
-          const uri = await getWalletConnectUri(connector, '2');
-          return `bloom://wallet-connect/connect?uri=${encodeURIComponent(
-            uri,
-          )}`;
+  desktop: {
+    getUri: (uri: string) =>
+      `bloom://wallet-connect/wc?uri=${encodeURIComponent(uri)}`,
+    instructions: {
+      learnMoreUrl: 'https://bloomwallet.io/',
+      steps: [
+        {
+          description: 'wallet_connectors.bloom.desktop.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.bloom.desktop.step1.title',
         },
-      },
-    };
+        {
+          description: 'wallet_connectors.bloom.desktop.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.bloom.desktop.step2.title',
+        },
+        {
+          description: 'wallet_connectors.bloom.desktop.step3.description',
+          step: 'refresh',
+          title: 'wallet_connectors.bloom.desktop.step3.title',
+        },
+      ],
+    },
   },
+  createConnector: getWalletConnectConnector({
+    projectId,
+    walletConnectParameters,
+  }),
 });
