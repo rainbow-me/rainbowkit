@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          체인 ID, 예를 들어 <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          체인 이름, 예, <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        '현재 체인이 지원되지 않는지 여부를 나타내는 Boolean',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: '계정 모달을 열기 위한 함수',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: '체인 모달을 열기 위한 함수',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: '연결 모달을 열기 위한 함수',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '계정 모달이 열려 있는지를 나타내는 부울값',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: '체인 모달이 열려 있는지를 나타내는 부울값',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '연결 모달이 열려 있는지를 나타내는 부울값',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />

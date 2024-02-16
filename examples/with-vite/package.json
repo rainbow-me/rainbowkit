@@ -1,7 +1,8 @@
 {
   "name": "with-vite",
   "private": true,
-  "version": "0.0.60",
+  "version": "0.0.68",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,14 +13,15 @@
     "buffer": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~1.19.4",
-    "wagmi": "~1.4.7"
+    "viem": "^2.7.3",
+    "wagmi": "^2.5.5",
+    "@tanstack/react-query": "^5.18.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.0.3",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
     "typescript": "^5.0.4",
-    "vite": "^4.4.7"
+    "vite": "^5.0.7"
   }
 }

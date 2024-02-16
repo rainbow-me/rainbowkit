@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { DocsLayout } from '../components/DocsLayout/DocsLayout';
 import { GuidesLayout } from '../components/GuidesLayout/GuidesLayout';
 
+import { NextIntlClientProvider } from 'next-intl';
 import '../css/docsSearch.css';
 import '../css/global.css';
 import { vars } from '../css/vars.css';
@@ -59,7 +60,10 @@ function App({ Component, pageProps }: AppProps) {
   }, [isDocs, isGuides]);
 
   return (
-    <>
+    <NextIntlClientProvider
+      locale={router.locale}
+      messages={pageProps.messages}
+    >
       <Provider>
         {isDocs ? (
           <DocsLayout>
@@ -73,7 +77,7 @@ function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         )}
       </Provider>
-    </>
+    </NextIntlClientProvider>
   );
 }
 

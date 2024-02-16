@@ -1,7 +1,4 @@
-import {
-  connectorsForWallets,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -9,8 +6,9 @@ import {
   omniWallet,
   trustWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import { WagmiConfig, configureChains, createConfig } from 'wagmi';
+import { http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
@@ -20,46 +18,49 @@ import {
   polygon,
   zora,
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-export const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
-  [
-    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID ?? '' }),
-    publicProvider(),
-  ],
-);
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const { wallets } = getDefaultWallets({
+const transports = {
+  [mainnet.id]: http(),
+  [polygon.id]: http(),
+  [optimism.id]: http(),
+  [arbitrum.id]: http(),
+  [base.id]: http(),
+  [zora.id]: http(),
+  [bsc.id]: http(),
+};
+
+const { wallets } = getDefaultWallets();
+
+const config = getDefaultConfig({
   appName: 'rainbowkit.com',
-  chains,
   projectId,
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
+  transports,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'More',
+      wallets: [
+        argentWallet,
+        trustWallet,
+        omniWallet,
+        imTokenWallet,
+        ledgerWallet,
+      ],
+    },
+  ],
+  ssr: true,
 });
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'More',
-    wallets: [
-      argentWallet({ chains, projectId }),
-      trustWallet({ chains, projectId }),
-      omniWallet({ chains, projectId }),
-      imTokenWallet({ chains, projectId }),
-      ledgerWallet({ chains, projectId }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-});
+const client = new QueryClient();
 
 export function Provider({ children }) {
-  return <WagmiConfig config={wagmiConfig}>{children}</WagmiConfig>;
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  );
 }

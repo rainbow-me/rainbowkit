@@ -15,6 +15,7 @@ module.exports = {
       'ru-RU',
       'th-TH',
       'tr-TR',
+      'uk-UA',
       'zh-CN',
     ],
   },

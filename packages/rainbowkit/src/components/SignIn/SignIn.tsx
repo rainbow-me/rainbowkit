@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
-import { useAccount, useNetwork, useSignMessage } from 'wagmi';
+import { useAccount, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -13,8 +13,14 @@ import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
-export function SignIn({ onClose }: { onClose: () => void }) {
-  const i18n = useContext(I18nContext);
+export function SignIn({
+  onClose,
+  onCloseModal,
+}: {
+  onClose: () => void;
+  onCloseModal: () => void;
+}) {
+  const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
     errorMessage?: string;
@@ -35,7 +41,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         status: 'idle',
       }));
     }
-  }, [authAdapter, i18n]);
+  }, [authAdapter, i18n.t]);
 
   // Pre-fetch nonce when screen is rendered
   // to ensure deep linking works for WalletConnect
@@ -49,8 +55,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   }, [getNonce]);
 
   const mobile = isMobile();
-  const { address } = useAccount();
-  const { chain: activeChain } = useNetwork();
+  const { address, chain: activeChain } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
   const signIn = async () => {
@@ -97,10 +102,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
         const verified = await authAdapter.verify({ message, signature });
 
         if (verified) {
+          // This will ensure that 'connectModalOpen' state doesn't
+          // stay to true after a successful authentication
+          onCloseModal();
           return;
-        } else {
-          throw new Error();
         }
+
+        throw new Error();
       } catch {
         return setState((x) => ({
           ...x,
@@ -200,10 +208,10 @@ export function SignIn({ onClose }: { onClose: () => void }) {
               !state.nonce
                 ? i18n.t('sign_in.message.preparing')
                 : status === 'signing'
-                ? i18n.t('sign_in.signature.waiting')
-                : status === 'verifying'
-                ? i18n.t('sign_in.signature.verifying')
-                : i18n.t('sign_in.message.send')
+                  ? i18n.t('sign_in.signature.waiting')
+                  : status === 'verifying'
+                    ? i18n.t('sign_in.signature.verifying')
+                    : i18n.t('sign_in.message.send')
             }
             onClick={signIn}
             size={mobile ? 'large' : 'medium'}

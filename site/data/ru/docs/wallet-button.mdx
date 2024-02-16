@@ -1,0 +1,42 @@
+---
+title: КнопкаПортмонетка
+description: Использование и настройка КнопкаПортмонетка
+---
+
+# КнопкаПортмонетка
+
+Новый компонент `КнопкаПортмонетка` помогает децентрализованным приложениям (dApps) с реализацией пользовательского списка кошельков принять RainbowKit и воспользоваться всеми его преимуществами без необходимости поддержки.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+Подобно компоненту `КнопкаПодключить`, компонент `КнопкаПортмонетка.Настраиваемая` предназначен для пользовательских реализаций и стилизации.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+Большинство dApps лучше всего использовать [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Справка по `КнопкаПортмонетка` и ее применению: [here](https://www.rainbowkit.com/docs/wallet-button).
+
+#### Демо
+
+Нажмите на кнопки ниже, чтобы увидеть, как выглядит этот входной точк RainbowKit.
+
+<WalletButtonDemo />

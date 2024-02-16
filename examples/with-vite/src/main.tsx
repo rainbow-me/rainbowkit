@@ -1,37 +1,31 @@
 import './polyfills';
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora],
-  [publicProvider()]
-);
+import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'RainbowKit demo',
   projectId: 'YOUR_PROJECT_ID',
-  chains,
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
 });
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-});
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        <App />
-      </RainbowKitProvider>
-    </WagmiConfig>
-  </React.StrictMode>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          <App />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  </React.StrictMode>,
 );

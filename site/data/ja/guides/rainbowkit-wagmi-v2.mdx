@@ -1,0 +1,202 @@
+---
+title: RainbowKit v2へのdAppアップグレード
+description: RainbowKitとWagmiがv2に昇格しました
+image: guide-rainbowkit-v2.png
+---
+
+# RainbowKitとWagmi v2への移行
+
+[wagmi](https://wagmi.sh) と [viem](https://viem.sh) のピア依存関係が `2.x.x` に達し、互換性のない変更が行われました。
+
+以下の手順でマイグレートしてください。
+
+**1. RainbowKit、`wagmi`、および`viem`を最新バージョンにアップグレードしてください**
+
+```bash
+npm i @rainbow-me/rainbowkit wagmi viem@2.x
+```
+
+**2. `@tanstack/react-query`のピア依存をインストール**
+
+Wagmi v2では、[TanStack Query](https://tanstack.com/query/v5/docs/react/overview)が必須のピア依存関係になりました。
+
+以下のコマンドでインストールします:
+
+```bash
+npm i @tanstack/react-query
+```
+
+**3. RainbowKit と Wagmi の設定をアップグレードしてください**
+
+```diff
+  import '@rainbow-me/rainbowkit/styles.css'
+
++ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+- import { createPublicClient, http } from 'viem'
+- import { WagmiConfig } from 'wagmi'
++ import { WagmiProvider, http } from 'wagmi'
+- import { configureChains, createConfig } from 'wagmi'
+  import { mainnet } from 'wagmi/chains'
+  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
++ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+  /* getDefaultWallets is now optional */
+- const { wallets } = getDefaultWallets({
+-   appName: 'RainbowKit demo',
+-   projectId: 'YOUR_PROJECT_ID',
+-   chains,
+- })
+
+  /* connectorsForWallets is now optional */
+- const connectors = connectorsForWallets([...wallets])
+
+- const { chains, publicClient } = configureChains( 
+-   [mainnet, sepolia], 
+-   [publicProvider(), publicProvider()],
+- )
+
+- const config = createConfig({
+-   autoConnect: true,
+-   publicClient,
+- })
+
+  /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
++ const config = getDefaultConfig({
++   appName: 'RainbowKit demo',
++   projectId: 'YOUR_PROJECT_ID',
++   chains: [mainnet],
++   transports: {
++     [mainnet.id]: http(),
++   },
++ })
+
++ const queryClient = new QueryClient()
+
+  const App = () => {
+    return (
+-     <WagmiConfig config={config}>
++     <WagmiProvider config={config}>
++       <QueryClientProvider client={queryClient}>
+-         <RainbowKitProvider chains={chains}>
++         <RainbowKitProvider>
+            {/* Your App */}
+          </RainbowKitProvider>
++       </QueryClientProvider>
+-     </WagmiConfig>
++     </WagmiProvider>
+    )
+  }
+```
+
+**4. `wagmi`と`viem`の破壊的変更を確認してください**
+
+dAppで`wagmi`フックと`viem`アクションを使用している場合、v2の移行ガイドに従う必要があります：
+
+-   [Wagmi v2移行ガイド](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+-   [Viem v2破壊的変更](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+#### RainbowKit の変更点
+
+**1. EIP-6963 ウォレットの動作改善**
+
+新しい EIP-6963 接続標準をサポートするウォレット（Rainbow、MetaMask などを含む）は、ウォレットを接続する体験の間に `Installed` セクションに自動的に表示されるようになりました。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。 これにより、ユーザーはお気に入りのウォレットを常に見つけて、競合やフォールバックボタンなしで dApps に接続できるようになります。
+
+開発者は引き続きカスタムウォレットリストを完全に制御でき、エンドユーザーにとって優先されるウォレットを強調表示できます。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。 すべてのプラットフォームをサポートするために、`injectedWallet` と `walletConnectWallet` をリストに含め続けることをお勧めします。
+
+**2. getDefaultConfig を使用した Wagmi 設定**
+
+この新しいAPIは設定体験を簡素化し、Wagmiの`createConfig`を直接使用する必要を置き換えます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。 チェーン設定が簡素化され、`transports`のための推定された公開プロバイダーが含まれます。
+
+デフォルトのウォレットリストが自動的に含まれるようになり、`getDefaultWallets`や`connectorsForWallets`を使用する必要がなくなります。
+
+インポートされた、またはカスタムウォレットコネクタを`wallets`に渡すことでカスタムウォレットリストを作成できます。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。 ウォレットコネクタのインスタンス化と`projectId`および`chains`の渡しはもはや必要ありません。
+
+```
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet],
+  wallets: [rainbowWallet], /* optional custom wallet list */
+  /* Wagmi createConfig options including `transports` are also accepted /*
+})
+```
+
+**3. RainbowKitProvider**
+
+もはや`chains`を`<RainbowKitProvider>`に渡す必要はありません。
+
+```diff
+- <RainbowKitProvider chains={chains}>
++ <RainbowKitProvider>
+```
+
+**4. カスタムチェーン**
+
+Wagmi v2に従って`Chain`タイプが変更され、RainbowKitの`iconUrl`と`iconBackground`メタデータをサポートし続けています。
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
+
+  const avalanche = {
+    id: 43_114,
+    name: 'Avalanche',
+    iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
+    iconBackground: '#fff',
+    nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
+    rpcUrls: {
+      default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
+    },
+    blockExplorers: {
+      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+    },
+    contracts: {
+      multicall3: {
+        address: '0xca11bde05977b3631167028862be2a173976ca11',
+        blockCreated: 11_907_934,
+      },
+    },
+  } as const satisfies Chain
+```
+
+`getDefaultConfig`を使用した例:
+
+```diff
+const config = getDefaultConfig({
++ chains: [
++   avalanche, /* custom chain */
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   }, /* metadata overides */
++ ],
+});
+```
+
+`createConfig`を使用した例:
+
+```diff
++ import { Chain } from '@rainbow-me/rainbowkit'
++ const chains: readonly [Chain, ...Chain[]] = [
++   {
++     ...mainnet,
++     iconBackground: '#000',
++     iconUrl: 'https://example.com/icons/ethereum.png',
++   },
++ ];
+  const config = createConfig({
+    chains,
+    transports: {
+      [mainnet.id]: http(),
+    },
+  })
+```
+
+**5。 **5。 カスタムウォレット\*\*
+
+RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 RainbowKitのウォレットコネクタは、Wagmi v2をサポートするために大幅な変更が加えられました。 dAppのカスタムウォレットコネクタをアップグレードするために、[更新されたドキュメント](https://www.rainbowkit.com/docs/custom-wallets)と[例のコネクタ](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)を参照してください。
+
+ウォレットコネクタは、`rdns`プロパティを使用してEIP-6963標準もサポートするようになりました。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。 ウォレットリスト内でEIP-6963をサポートするウォレットへの重複する参照が発生しないように、これが入力されていることを確認してください。
+
+> RainbowKit v2に関する問題やフィードバックは、GitHubの[こちら](https://github.com/rainbow-me/rainbowkit/issues/new/choose)で報告してください。

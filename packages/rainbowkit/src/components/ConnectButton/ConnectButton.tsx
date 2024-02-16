@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   ResponsiveValue,
   mapResponsiveValue,
@@ -13,6 +13,7 @@ import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -40,10 +41,18 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
+  const { setShowBalance } = useShowBalance();
+  const [ready, setReady] = useState(false);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
-  return (
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    setShowBalance(showBalance);
+    if (!ready) setReady(true);
+  }, [showBalance, setShowBalance]);
+
+  return ready ? (
     <ConnectButtonRenderer>
       {({
         account,
@@ -118,7 +127,7 @@ export function ConnectButton({
                         height="24"
                         paddingX="4"
                       >
-                        Wrong network
+                        {i18n.t('connect_wallet.wrong_network.label')}
                       </Box>
                     ) : (
                       <Box alignItems="center" display="flex" gap="6">
@@ -257,7 +266,10 @@ export function ConnectButton({
                 background="accentColor"
                 borderRadius="connectButton"
                 boxShadow="connectButton"
-                className={touchableStyles({ active: 'shrink', hover: 'grow' })}
+                className={touchableStyles({
+                  active: 'shrink',
+                  hover: 'grow',
+                })}
                 color="accentColorForeground"
                 fontFamily="body"
                 fontWeight="bold"
@@ -278,6 +290,8 @@ export function ConnectButton({
         );
       }}
     </ConnectButtonRenderer>
+  ) : (
+    <></>
   );
 }
 

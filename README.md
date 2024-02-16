@@ -30,7 +30,7 @@ For full documentation, visit [rainbowkit.com](https://rainbowkit.com).
 
 ### Try it out
 
-You can use the CodeSandbox links below try out RainbowKit:
+You can use the CodeSandbox links below to try out RainbowKit:
 
 - with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)

@@ -1,13 +1,11 @@
+import { Address } from 'viem';
 import { useEnsName } from 'wagmi';
-import { useMainnet } from './useMainnet';
+import { mainnet } from 'wagmi/chains';
 
-export function useMainnetEnsName(address: string | undefined) {
-  const { chainId, enabled } = useMainnet();
-
+export function useMainnetEnsName(address: Address | undefined) {
   const { data: ensName } = useEnsName({
+    chainId: mainnet.id,
     address,
-    chainId,
-    enabled,
   });
 
   return ensName;

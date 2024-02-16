@@ -61,8 +61,8 @@ export function ActionButton({
     ? isPrimary
       ? 'accentColor'
       : isNotLarge
-      ? 'actionButtonSecondaryBackground'
-      : null
+        ? 'actionButtonSecondaryBackground'
+        : null
     : 'actionButtonSecondaryBackground';
   const { fontSize, height, paddingX, paddingY } = sizeVariants[size];
   const hasBorder = !mobile || !isNotLarge;

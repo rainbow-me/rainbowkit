@@ -1,5 +1,63 @@
 # with-next-mint-nft
 
+## 0.0.80
+
+### Patch Changes
+
+- Updated dependencies [aa0269e]
+  - @rainbow-me/rainbowkit@2.0.0
+
+## 0.0.79
+
+### Patch Changes
+
+- Updated dependencies [33a8266]
+  - @rainbow-me/rainbowkit@1.3.6
+
+## 0.0.78
+
+### Patch Changes
+
+- Updated dependencies [2b0c7b3]
+  - @rainbow-me/rainbowkit@1.3.5
+
+## 0.0.77
+
+### Patch Changes
+
+- Updated dependencies [c0a644a]
+- Updated dependencies [41616b9]
+- Updated dependencies [cf4955f]
+- Updated dependencies [e5f5f03]
+- Updated dependencies [c0bd68e]
+- Updated dependencies [a79609b]
+  - @rainbow-me/rainbowkit@1.3.4
+
+## 0.0.76
+
+### Patch Changes
+
+- Updated dependencies [24b5a88]
+- Updated dependencies [7565fb2]
+- Updated dependencies [5a184e9]
+  - @rainbow-me/rainbowkit@1.3.3
+
+## 0.0.75
+
+### Patch Changes
+
+- Updated dependencies [7ba94f48]
+  - @rainbow-me/rainbowkit@1.3.2
+
+## 0.0.74
+
+### Patch Changes
+
+- Updated dependencies [3feab0e6]
+- Updated dependencies [c9a8e469]
+- Updated dependencies [dba51779]
+  - @rainbow-me/rainbowkit@1.3.1
+
 ## 0.0.73
 
 ### Patch Changes

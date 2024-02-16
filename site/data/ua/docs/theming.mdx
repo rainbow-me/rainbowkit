@@ -1,0 +1,385 @@
+---
+title: Тематизація
+description: Використання та налаштування тем
+---
+
+# Тематизація
+
+## Використання та налаштування тем
+
+Ви можете налаштувати інтерфейс користувача RainbowKit, щоб він відповідав вашому брендингу. Ви можете вибрати з кількох попередньо визначених акцентних кольорів та конфігурацій радіусу кордонів.
+
+Існує 3 вбудовані функції теми:
+
+-   `lightTheme`   (за замовчуванням)
+-   `darkTheme`
+-   `midnightTheme`
+
+Функція теми повертає об'єкт теми. Ви можете передати об'єкт до пропа `theme` компонента `RainbowKitProvider`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Якщо хочете, ви можете передати `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` та `overlayBlur` для їх налаштування.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### Налаштування вбудованих тем
+
+Вбудовані функції теми також приймають об'єкт опцій, що дозволяє вам вибрати з кількох різних візуальних стилів.
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+Наприклад, щоб налаштувати темну тему з акцентним фіолетовим кольором та радіусом границі `medium`
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Кожна тема також пропонує декілька пресетів акцентних кольорів (`blue`, `green`, `orange`, `pink`, `purple`, `red`), які можна розповсюдити в об'єкт опцій. Наприклад, щоб використати пресет акцентного кольору `pink`
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Приклади
+
+#### Функція теми
+
+Ось кілька різних способів використання властивості `theme`.
+
+Використовуйте тему `darkTheme`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+Використовуйте тему `midnightTheme`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### Акцентний колір
+
+Ось кілька різних способів використання конфігурації `accentColor`.
+
+Встановіть акцентний колір на користувацьке фіолетове значення.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Встановіть акцентний колір на вбудований пресет `green`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Радіус кордону
+
+Ось кілька різних способів використання конфігурації `borderRadius`.
+
+Встановіть радіус кордону на `medium`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+Встановіть радіус кордону на `none`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> Нагадування: доступні значення радіусу кордону: `large` (за замовчуванням), `medium`, `small` та `none`.
+
+#### Набір шрифтів
+
+За замовчуванням, `fontStack` встановлено на `rounded`. А ось як ви можете використовувати конфігурацію `fontStack`.
+
+Встановіть шрифтовий стек на `system`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Розмиття на оверлеї
+
+За замовчуванням, `overlayBlur` встановлено на `none`. А ось як ви можете використати налаштування `overlayBlur`.
+
+Встановіть розмиття оверлею на `small`.
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Комбінуйте та підбирайте
+
+Ось кілька різних способів, як ви можете використовувати різні теми з пропсами `accentColor`, `borderRadius` та `fontStack` разом.
+
+-   Використовуйте тему `lightTheme`
+-   Встановіть акцентний колір на користувацьке фіолетове значення
+-   Встановіть радіус краю на `medium`
+-   Встановіть шрифтовий стек на `system`
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+-   Використовуйте тему `midnightTheme`
+-   Встановіть акцентний колір на вбудований пресет `pink`.
+-   Встановіть радіус границі на `small`
+-   Встановіть шрифтовий стек на `system`
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### Підтримка темного режиму
+
+Якщо ваш додаток використовує стандартний медіа-запит `prefers-color-scheme: dark` для перемикання між світлим і темним режимами, ви можете додатково надати динамічний об'єкт теми, що містить значення `lightMode` та `darkMode`.
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

@@ -1,5 +1,155 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.0
+
+### Major Changes
+
+- aa0269e: **Breaking:**
+
+  The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
+
+  Follow the steps below to migrate.
+
+  **1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+
+  ```bash
+  npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
+  ```
+
+  **2. Install `@tanstack/react-query` peer dependency**
+
+  With Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) is now a required peer dependency.
+
+  Install it with the following command:
+
+  ```bash
+  npm i @tanstack/react-query
+  ```
+
+  **3. Upgrade your RainbowKit and Wagmi configurations**
+
+  ```diff
+    import '@rainbow-me/rainbowkit/styles.css'
+
+  + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+  - import { createPublicClient, http } from 'viem'
+  - import { WagmiConfig } from 'wagmi'
+  + import { WagmiProvider, http } from 'wagmi'
+  - import { configureChains, createConfig } from 'wagmi'
+    import { mainnet } from 'wagmi/chains'
+    import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+  - import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
+  + import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+
+    /* getDefaultWallets is now optional */
+  - const { wallets } = getDefaultWallets({
+  -   appName: 'RainbowKit demo',
+  -   projectId: 'YOUR_PROJECT_ID',
+  -   chains,
+  - })
+
+    /* connectorsForWallets is now optional */
+  - const connectors = connectorsForWallets([...wallets])
+
+  - const { chains, publicClient } = configureChains(
+  -   [mainnet, sepolia],
+  -   [publicProvider(), publicProvider()],
+  - )
+
+  - const config = createConfig({
+  -   autoConnect: true,
+  -   publicClient,
+  - })
+
+    /* New API that includes Wagmi's createConfig and bundles getDefaultWallets and connectorsForWallets */
+  + const config = getDefaultConfig({
+  +   appName: 'RainbowKit demo',
+  +   projectId: 'YOUR_PROJECT_ID',
+  +   chains: [mainnet],
+  +   transports: {
+  +     [mainnet.id]: http(),
+  +   },
+  + })
+
+  + const queryClient = new QueryClient()
+
+    const App = () => {
+      return (
+  -     <WagmiConfig config={config}>
+  +     <WagmiProvider config={config}>
+  +       <QueryClientProvider client={queryClient}>
+  -         <RainbowKitProvider chains={chains}>
+  +         <RainbowKitProvider>
+              {/* Your App */}
+            </RainbowKitProvider>
+  +       </QueryClientProvider>
+  -     </WagmiConfig>
+  +     </WagmiProvider>
+      )
+    }
+  ```
+
+  [You can read an in-depth migration guide here](https://rainbowkit.com/guides/rainbowkit-wagmi-v2).
+
+  **4. Check for breaking changes in `wagmi` and `viem`**
+
+  If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follow the migration guides for v2:
+
+  - [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+  - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+
+## 1.3.6
+
+### Patch Changes
+
+- 33a8266: Fixed a bug where `account.displayBalance` for the `<ConnectButton.Custom>` component would sometimes be undefined.
+
+## 1.3.5
+
+### Patch Changes
+
+- 2b0c7b3: Added missing i18n translations for `Wrong network` errors
+
+## 1.3.4
+
+### Patch Changes
+
+- c0a644a: Fixed an issue that caused components to re-render on every window resize event. Now components will only re-render once the user has finished resizing their window.
+- 41616b9: Fixed a bug where the `connectModalOpen` state incorrectly remained `true` after a successful `siwe` authentication. This fix ensures that `connectModalOpen` shows the correct state.
+- cf4955f: Fixed a bug where the back button wasn't showing on compact size modal when selecting `DownloadOptions` wallet step.
+
+  Removed back button for wide size modal entirely when selecting `DownloadOptions` wallet step to prevent incorrect wallet step switching.
+
+- e5f5f03: Removed external `i18n-js` dependency to reduce RainbowKit bundle sizes.
+- c0bd68e: Fixed a bug in the account modal transactions section where transactions that were not found or cancelled were incorrectly shown as 'pending' instead of 'failed'.
+- a79609b: Fixed a bug that allowed users to hold-press or cursor select wallet icons on iOS, which interrupted the connection experiencce.
+
+## 1.3.3
+
+### Patch Changes
+
+- 7565fb2: Added `uk-UA` and `ua` locale support for the Ukranian language.
+
+  Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
+
+- 24b5a88: Improved support for `NodeNext` module resolution to resolve `"@rainbow-me/rainbowkit"' has no exported member 'RainbowKitProvider'` TypeScript warnings
+
+- 5a184e9: Fixed a bug where `eth_getBalance` would be called when `showBalance` was set to `false`. Optimized additional provider calls to fetch wallet balances only when a user interacts with the Account modal.
+
+## 1.3.2
+
+### Patch Changes
+
+- 7ba94f48: Optimized bundle size for localization feature
+
+## 1.3.1
+
+### Patch Changes
+
+- 3feab0e6: Support for Wagmi `1.4.12` to mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package. RainbowKit dApp's were not directly impacted, but dApps that used the `LedgerConnector` connector in earlier versions of Wagmi could have been. This issue has since been resolved [by Ledger](https://x.com/Ledger/status/1735326240658100414?s=20) but the [wagmi team](https://x.com/wevm_dev/status/1735300109879963685?s=20) is encouraging developers to upgrade Wagmi and RainbowKit out of an abundance of caution.
+- c9a8e469: Improved Korean localization. Thanks @Hyun2!
+- dba51779: Added support for `arbitrumSepolia`, `baseSepolia`, `optimismSepolia`, `zoraSepolia` testnet chains
+
 ## 1.3.0
 
 ### Minor Changes
@@ -259,7 +409,7 @@
   <RainbowKitProvider locale="zh-CN">
   ```
 
-  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specifed with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
+  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specified with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
 
   If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
 
@@ -628,7 +778,7 @@
 
   **Advanced options**
 
-  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overriden.
+  If a dApp requires supporting a legacy wallet that has not yet migrated to WalletConnect v2, the WalletConnect version can be overridden.
 
   ```ts
   metaMaskWallet(options: {

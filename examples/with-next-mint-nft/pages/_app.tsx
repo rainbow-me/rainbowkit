@@ -1,20 +1,20 @@
 import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import type { AppProps } from 'next/app';
+
 import {
   RainbowKitProvider,
   getDefaultWallets,
-  connectorsForWallets,
+  getDefaultConfig,
+  Chain,
 } from '@rainbow-me/rainbowkit';
 import { argentWallet, trustWallet } from '@rainbow-me/rainbowkit/wallets';
-import { createConfig, configureChains, WagmiConfig } from 'wagmi';
-import { Chain } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const rinkeby: Chain = {
   id: 4,
   name: 'Rinkeby',
-  network: 'rinkeby',
   nativeCurrency: { name: 'Rinkeby Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     alchemy: { http: ['https://eth-rinkeby.alchemyapi.io/v2'] },
@@ -38,48 +38,33 @@ const rinkeby: Chain = {
   testnet: true,
 };
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [rinkeby],
-  [publicProvider()]
-);
+const { wallets } = getDefaultWallets();
 
-const projectId = 'YOUR_PROJECT_ID';
-
-const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit Mint NFT Demo',
-  projectId,
-  chains,
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [argentWallet, trustWallet],
+    },
+  ],
+  chains: [rinkeby],
+  ssr: true,
 });
 
-const demoAppInfo = {
-  appName: 'RainbowKit Mint NFT Demo',
-};
-
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ projectId, chains }),
-      trustWallet({ projectId, chains }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-});
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider appInfo={demoAppInfo} chains={chains}>
-        <Component {...pageProps} />
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          <Component {...pageProps} />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
 

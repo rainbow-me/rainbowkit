@@ -4,81 +4,64 @@ import * as React from 'react';
 import {
   RainbowKitProvider,
   getDefaultWallets,
-  connectorsForWallets,
   Locale,
+  getDefaultConfig,
 } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   trustWallet,
   ledgerWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
 import {
-  mainnet,
-  polygon,
-  optimism,
   arbitrum,
   base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
   zora,
-  goerli,
 } from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
+const { wallets } = getDefaultWallets();
+
+const config = getDefaultConfig({
+  appName: 'RainbowKit demo',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [
     mainnet,
     polygon,
     optimism,
     arbitrum,
     base,
     zora,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
+    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
-  [publicProvider()]
-);
-
-const projectId = 'YOUR_PROJECT_ID';
-
-const { wallets } = getDefaultWallets({
-  appName: 'RainbowKit demo',
-  projectId,
-  chains,
+  wallets: [
+    ...wallets,
+    {
+      groupName: 'Other',
+      wallets: [argentWallet, trustWallet, ledgerWallet],
+    },
+  ],
+  ssr: true,
 });
 
-const demoAppInfo = {
-  appName: 'Rainbowkit Demo',
-};
+const queryClient = new QueryClient();
 
-const connectors = connectorsForWallets([
-  ...wallets,
-  {
-    groupName: 'Other',
-    wallets: [
-      argentWallet({ projectId, chains }),
-      trustWallet({ projectId, chains }),
-      ledgerWallet({ projectId, chains }),
-    ],
-  },
-]);
-
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  publicClient,
-  webSocketPublicClient,
-});
-
-export function Providers(
-  { children, locale }: 
-  { children: React.ReactNode, locale: Locale }
-) {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+export function Providers({
+  children,
+  locale,
+}: {
+  children: React.ReactNode;
+  locale: Locale;
+}) {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} appInfo={demoAppInfo} locale={locale}>
-        {mounted && children}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider locale={locale}>{children}</RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }

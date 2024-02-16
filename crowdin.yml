@@ -1,3 +1,9 @@
 files:
   - source: /packages/rainbowkit/src/locales/en_US.json
     translation: /packages/rainbowkit/src/locales/%locale_with_underscore%.json
+  - source: /site/data/en-US/docs/*.mdx
+    translation: /site/data/%locale%/docs/%original_file_name%
+  - source: /site/data/en-US/guides/*.mdx
+    translation: /site/data/%locale%/guides/%original_file_name%
+  - source: /site/locales/en-US.json
+    translation: /site/locales/%locale%.json

@@ -1,71 +1,21 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
 
-export interface BitgetWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
-export interface BitgetWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
-
-/**
- * @deprecated `BitKeepWalletLegacyOptions` is now `BitgetWalletLegacyOptions`
- */
-export interface BitKeepWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
-/**
- * @deprecated `BitKeepWalletOptions` is now `BitgetWalletOptions`
- */
-export interface BitKeepWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type BitgetWalletOptions = DefaultWalletOptions;
 
 export const bitgetWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
-  walletConnectVersion = '2',
-  ...options
-}: (
-  | BitgetWalletLegacyOptions
-  | BitgetWalletOptions
-  | BitKeepWalletLegacyOptions
-  | BitKeepWalletOptions
-) &
-  InjectedConnectorOptions): Wallet => {
-  const isBitKeepInjected =
-    typeof window !== 'undefined' &&
-    // @ts-expect-error
-    window.bitkeep !== undefined &&
-    // @ts-expect-error
-    window.bitkeep.ethereum !== undefined &&
-    // @ts-expect-error
-    window.bitkeep.ethereum.isBitKeep === true;
-
+  walletConnectParameters,
+}: BitgetWalletOptions): Wallet => {
+  const isBitKeepInjected = hasInjectedProvider({
+    namespace: 'bitkeep.ethereum',
+    flag: 'isBitKeep',
+  });
   const shouldUseWalletConnect = !isBitKeepInjected;
 
   return {
@@ -85,97 +35,75 @@ export const bitgetWallet = ({
       browserExtension: 'https://web3.bitget.com/en/wallet-download',
     },
 
-    createConnector: () => {
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            chains,
-            options: walletConnectOptions,
-            projectId,
-            version: walletConnectVersion,
-          })
-        : new InjectedConnector({
-            chains,
-            options: {
-              // @ts-expect-error
-              getProvider: () => window.bitkeep.ethereum,
-              ...options,
-            },
-          });
-
-      const getUri = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
-
-        return isAndroid()
-          ? uri
-          : `bitkeep://wc?uri=${encodeURIComponent(uri)}`;
-      };
-
-      return {
-        connector,
-        extension: {
+    extension: {
+      instructions: {
+        learnMoreUrl: 'https://web3.bitget.com/en/academy',
+        steps: [
+          {
+            description: 'wallet_connectors.bitget.extension.step1.description',
+            step: 'install',
+            title: 'wallet_connectors.bitget.extension.step1.title',
+          },
+          {
+            description: 'wallet_connectors.bitget.extension.step2.description',
+            step: 'create',
+            title: 'wallet_connectors.bitget.extension.step2.title',
+          },
+          {
+            description: 'wallet_connectors.bitget.extension.step3.description',
+            step: 'refresh',
+            title: 'wallet_connectors.bitget.extension.step3.description',
+          },
+        ],
+      },
+    },
+    mobile: {
+      getUri: shouldUseWalletConnect
+        ? (uri: string) => {
+            return isAndroid()
+              ? uri
+              : `bitkeep://wc?uri=${encodeURIComponent(uri)}`;
+          }
+        : undefined,
+    },
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl: 'https://web3.bitget.com/en/academy',
             steps: [
               {
                 description:
-                  'wallet_connectors.bitget.extension.step1.description',
+                  'wallet_connectors.bitget.qr_code.step1.description',
                 step: 'install',
-                title: 'wallet_connectors.bitget.extension.step1.title',
+                title: 'wallet_connectors.bitget.qr_code.step1.title',
               },
               {
                 description:
-                  'wallet_connectors.bitget.extension.step2.description',
+                  'wallet_connectors.bitget.qr_code.step2.description',
+
                 step: 'create',
-                title: 'wallet_connectors.bitget.extension.step2.title',
+                title: 'wallet_connectors.bitget.qr_code.step2.title',
               },
               {
                 description:
-                  'wallet_connectors.bitget.extension.step3.description',
-                step: 'refresh',
-                title: 'wallet_connectors.bitget.extension.step3.description',
+                  'wallet_connectors.bitget.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.bitget.qr_code.step3.title',
               },
             ],
           },
-        },
-        mobile: {
-          getUri: shouldUseWalletConnect ? getUri : undefined,
-        },
-        qrCode: shouldUseWalletConnect
-          ? {
-              getUri: async () =>
-                getWalletConnectUri(connector, walletConnectVersion),
-              instructions: {
-                learnMoreUrl: 'https://web3.bitget.com/en/academy',
-                steps: [
-                  {
-                    description:
-                      'wallet_connectors.bitget.qr_code.step1.description',
-                    step: 'install',
-                    title: 'wallet_connectors.bitget.qr_code.step1.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.bitget.qr_code.step2.description',
+        }
+      : undefined,
 
-                    step: 'create',
-                    title: 'wallet_connectors.bitget.qr_code.step2.title',
-                  },
-                  {
-                    description:
-                      'wallet_connectors.bitget.qr_code.step3.description',
-                    step: 'scan',
-                    title: 'wallet_connectors.bitget.qr_code.step3.title',
-                  },
-                ],
-              },
-            }
-          : undefined,
-      };
-    },
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : getInjectedConnector({
+          namespace: 'bitkeep.ethereum',
+          flag: 'isBitKeep',
+        }),
   };
 };
-
-/**
- * @deprecated `bitKeepWallet` is now `bitgetWallet`
- */
-export const bitKeepWallet = bitgetWallet;

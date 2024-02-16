@@ -18,7 +18,7 @@ export function ConnectModalIntro({
   getWallet: () => void;
 }) {
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <>

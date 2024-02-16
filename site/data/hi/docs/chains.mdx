@@ -7,74 +7,69 @@ description: श्रृंखलाओं को अनुकूलित क�
 
 ## श्रृंखलाओं को अनुकूलित करना
 
-`RainbowKitProvider` पर `chains` prop यह निर्धारित करता है कि उपयोगकर्ता के लिए कौन सी श्रृंखलाएँ उपलब्ध हैं।
-
 RainbowKit को [wagmi की `chain` object](https://wagmi.sh/react/chains) के साथ एकीकृत करने के लिए डिज़ाइन किया गया है। समर्थित श्रृंखलाओं की सूची की जाँच करें [here](https://wagmi.sh/react/chains#supported-chains).
-
-> `chain` object के बारे में अधिक विवरण के लिए, या एक अनुकूल श्रृंखला परिभाषा बनाने के उदाहरण देखने के लिए, [wagmi की `chain` object के लिए स्रोत कोड] देखें(https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-आपकी श्रृंखला कॉन्फ़िग [`configureChains`](https://wagmi.sh/react/providers/configuring-chains) को प्रदान किए गए एकल ऐरे में परिभाषित की जा सकती है।
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### प्रारंभिक श्रृंखला को अनुकूलित करना
 
-डिफ़ॉल्ट रूप से, RainbowKit आपके `chains` array में पहली श्रृंखला से कनेक्ट होगा ताकि सुनिश्चित किया जा सके कि उपयोगकर्ताओं को तुरंत "गलत नेटवर्क" स्थिति प्रस्तुत नहीं की जाती है। यह व्यवहार `initialChain` prop के माध्यम से अनुकूलित किया जा सकता है।
+डिफ़ॉल्ट रूप से, RainbowKit पहले चेन से जुड़ जाएगी जो Wagmi को दी गई है। यह व्यवहार `initialChain` prop के माध्यम से अनुकूलित किया जा सकता है।
 
 प्रारंभिक चेन को चेन ID का उपयोग करके कॉन्फ़िगर किया जा सकता है।
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 सुविधाजनकता के रूप में, आप चेन ऑब्जेक्ट भी पास कर सकते हैं।
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### कस्टम चेन आइकन
+### कस्टम चेन मेटाडेटा
 
-डिफ़ॉल्ट रूप से कई चेन आइकन प्रदान किए जाते हैं, लेकिन आप iconUrl संपत्ति का उपयोग करके प्रत्येक चेन के लिए आइकन को कस्टमाइज़ कर सकते हैं।
+कई चेन आइकन और बैकग्राउंड डिफ़ॉल्ट रूप से प्रदान किए जाते हैं, परन्तु आप प्रत्येक चेन के लिए आइकन और बैकग्राउंड को `iconUrl` और `iconBackground` गुणों का उपयोग करके कस्टमाइज़ कर सकते हैं।
+
+`getDefaultConfig` के साथ उदाहरण
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+`createConfig` के साथ उदाहरण
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

@@ -17,19 +17,20 @@
     "buffer-polyfill": "npm:buffer@^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "~1.19.4",
-    "wagmi": "~1.4.7"
+    "viem": "^2.7.3",
+    "wagmi": "^2.5.5",
+    "@tanstack/react-query": "^5.18.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.5.1",
     "@remix-run/eslint-config": "^1.5.1",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
     "eslint": "^8.15.0",
     "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=14"
   },
-  "version": "0.0.72"
+  "version": "0.0.79"
 }

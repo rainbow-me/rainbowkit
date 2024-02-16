@@ -36,7 +36,7 @@ Il est recommandé que les dApps `0.12.x` commencent à se mettre à niveau vers
 
 **2. Fourniture d'un projectId**
 
-Chaque dApp qui repose sur WalletConnect doit maintenant obtenir un `projectId` de [WalletConnect Cloud](https://cloud.walletconnect.com/). C'est absolument gratuit et ne prend que quelques minutes.
+Toute dApp qui dépend de WalletConnect doit maintenant obtenir un `projectId` de [WalletConnect Cloud](https://cloud.walletconnect.com/). C'est absolument gratuit et ne prend que quelques minutes.
 
 Fournissez votre `projectId` à `getDefaultWallets` et aux connecteurs de portefeuille RainbowKit individuels comme suit :
 
@@ -67,36 +67,5 @@ RainbowKit est sûr et vous avertira lorsque un `projectId` est manquant. Report
 -   [Routeur d'application Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 -   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 -   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-
-#### Personnalisation avancée
-
-Si votre dApp nécessite le support d'un portefeuille legacy qui n'a pas encore migré vers WalletConnect v2, la version WalletConnect par défaut de RainbowKit peut être écrasée pour chaque portefeuille individuellement.
-
-```ts
-metaMaskWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-});
-```
-
-Une fois que les serveurs WalletConnect v1 seront arrêtés le 28 juin, un [serveur de passerelle personnalisé](https://docs.walletconnect.com/1.0/bridge-server) est nécessaire pour continuer à utiliser le protocole v1. Référez-vous aux exemples suivants :
-
-```ts
-walletConnectWallet(options: {
-  chains: Chain[];
-  version: '1',
-  options: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-
-customWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-  walletConnectOptions: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-```
 
 Reportez-vous à [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) pour des options supplémentaires prises en charge.

@@ -36,7 +36,7 @@ npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 
 **2. توفير projectId**
 
-كل dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تماما ويستغرق فقط بضع دقائق.
+كل تطبيق dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تماما ولا يستغرق سوى بضع دقائق.
 
 قم بتزويد `projectId` الخاص بك إلى `getDefaultWallets` والموصلات المحفظة RainbowKit الفردية مثل ما يلي:
 
@@ -67,36 +67,5 @@ RainbowKit آمن من حيث النوع وسيحذرك عندما يكون `pro
 -   [توجيه تطبيق Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 -   [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 -   [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-
-#### التخصيص المتقدم
-
-إذا كان تطبيق dApp الخاص بك يتطلب دعم محفظة قديمة لم تنتقل بعد إلى WalletConnect v2، يمكن تجاوز إصدار WalletConnect الافتراضي في RainbowKit لكل محفظة بشكل مستقل.
-
-```ts
-metaMaskWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-});
-```
-
-بمجرد إيقاف خوادم WalletConnect v1 في 28 يونيو، سيكون مطلوبًا [custom bridge server] \(https://docs.walletconnect.com/1.0/bridge-server) لمواصلة استخدام بروتوكول v1. راجع الأمثلة التالية:
-
-```ts
-walletConnectWallet(options: {
-  chains: Chain[];
-  version: '1',
-  options: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-
-customWallet(options: {
-  chains: Chain[];
-  walletConnectVersion: '1',
-  walletConnectOptions: {
-    bridge: 'https://bridge.myhostedserver.com',
-  },
-});
-```
 
 راجع [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) للحصول على خيارات مدعومة إضافية.

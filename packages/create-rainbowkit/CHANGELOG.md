@@ -1,5 +1,29 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.0
+
+### Minor Changes
+
+- aa0269e: Migrated template to Wagmi v2 with the following package changes:
+
+  - updated `wagmi` from `1.4.x` to `^2.0.0`
+  - updated `viem` from `1.21.x` to `^2.0.0`
+  - added `@tanstack/react-query` dependency with version `^5`
+
+## 0.2.11
+
+### Patch Changes
+
+- d73b021: Updated wagmi to `~1.4.13` and viem to `~1.21.4`.
+
+## 0.2.10
+
+### Patch Changes
+
+- e50727f4: Updated wagmi to `~1.4.12` and viem to `~1.19.15`.
+
+  Wagmi `1.4.12` mitigates a supply-chain attack on the @ledgerhq/connect-kit package. RainbowKit dApp's were not directly impacted, but dApps that used the LedgerConnector connector in earlier versions of Wagmi could have been. This issue has since been resolved by Ledger but the wagmi team is encouraging developers to upgrade Wagmi and RainbowKit out of an abundance of caution.
+
 ## 0.2.9
 
 ### Patch Changes

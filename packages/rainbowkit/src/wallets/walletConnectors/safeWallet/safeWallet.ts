@@ -1,16 +1,8 @@
-import type { SafeConnectorOptions } from 'wagmi/connectors/safe';
-import { SafeConnector } from 'wagmi/connectors/safe';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { Wallet } from '../../Wallet';
+import { createConnector } from 'wagmi';
+import { safe } from 'wagmi/connectors';
+import { Wallet, WalletDetailsParams } from '../../Wallet';
 
-export interface SafeWalletOptions {
-  chains: Chain[];
-}
-
-export const safeWallet = ({
-  chains,
-  ...options
-}: SafeWalletOptions & SafeConnectorOptions): Wallet => ({
+export const safeWallet = (): Wallet => ({
   id: 'safe',
   name: 'Safe',
   iconAccent: '#12ff80',
@@ -25,7 +17,10 @@ export const safeWallet = ({
     // already running as a Safe App within the context of the Safe browser,
     // since it's unlikely to be a desired behavior for users.
   },
-  createConnector: () => ({
-    connector: new SafeConnector({ chains, options }),
-  }),
+  createConnector: (walletDetails: WalletDetailsParams) => {
+    return createConnector((config) => ({
+      ...safe()(config),
+      ...walletDetails,
+    }));
+  },
 });

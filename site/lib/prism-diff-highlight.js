@@ -8,30 +8,29 @@ module.exports = (Prism) => {
   const HTML_LINE = RegExp(
     /(?:__|[^\r\n<])*(?:\r\n?|\n|(?:__|[^\r\n<])(?![^\r\n]))/.source.replace(
       /__/g,
-      function () {
-        return HTML_TAG.source;
-      },
+      () => HTML_TAG.source,
     ),
     'gi',
   );
 
   const PREFIXES = Prism.languages.diff.PREFIXES;
 
-  Prism.hooks.add('before-sanity-check', function (env) {
+  Prism.hooks.add('before-sanity-check', (env) => {
     const lang = env.language;
     if (LANGUAGE_REGEX.test(lang) && !env.grammar) {
       env.grammar = Prism.languages[lang] = Prism.languages['diff'];
     }
   });
-  Prism.hooks.add('before-tokenize', function (env) {
+  Prism.hooks.add('before-tokenize', (env) => {
     const lang = env.language;
     if (LANGUAGE_REGEX.test(lang) && !Prism.languages[lang]) {
       Prism.languages[lang] = Prism.languages['diff'];
     }
   });
 
-  Prism.hooks.add('wrap', function (env) {
-    let diffLanguage, diffGrammar;
+  Prism.hooks.add('wrap', (env) => {
+    let diffLanguage;
+    let diffGrammar;
 
     if (env.language !== 'diff') {
       const langMatch = LANGUAGE_REGEX.exec(env.language);
@@ -72,7 +71,6 @@ module.exports = (Prism) => {
       const lines = [];
       let m;
       HTML_LINE.lastIndex = 0;
-      // biome-ignore lint/suspicious/noAssignInExpressions: TODO
       while ((m = HTML_LINE.exec(highlighted))) {
         lines.push(prefix + m[0]);
       }

@@ -21,31 +21,29 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "useButtonType": "off"
+      },
+      "complexity": {
+        "noBannedTypes": "off",
+        "useLiteralKeys": "off"
+      },
       "correctness": {
         "noUnusedVariables": "error"
-      },
-      "nursery": {
-        "useGroupedTypeImport": "off"
       },
       "performance": {
         "noDelete": "off"
       },
       "style": {
         "noNonNullAssertion": "off",
-        "useShorthandArrayType": "error",
-        "useSingleVarDeclarator": "off"
+        "useShorthandArrayType": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
+        "noAssignInExpressions": "off",
+        "noConfusingVoidType": "off",
         "noExplicitAny": "off",
         "noRedeclare": "off"
-      },
-      "complexity": {
-        "useLiteralKeys": "off",
-        "noForEach": "off"
-      },
-      "a11y": {
-        "noSvgWithoutTitle": "off"
       }
     }
   },

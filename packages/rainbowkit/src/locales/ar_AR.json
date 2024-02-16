@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "اتصال المحفظة"
+    "label": "اتصال المحفظة",
+    "wrong_network": {
+      "label": "شبكة خاطئة"
+    }
   },
   "intro": {
     "title": "ما هو المحفظة؟",
@@ -52,9 +55,12 @@
     "recent": "الأخير",
     "status": {
       "opening": "جار فتح %{wallet}...",
+      "connecting": "جارٍ الاتصال",
+      "connect_mobile": "استمر في %{wallet}",
       "not_installed": "%{wallet} غير مثبت",
       "not_available": "%{wallet} غير متاح",
-      "confirm": "تأكيد الاتصال في الامتداد"
+      "confirm": "تأكيد الاتصال في الامتداد",
+      "confirm_mobile": "قبل طلب الاتصال في المحفظة"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "المسح باستخدام هاتفك"
   },
   "connector_group": {
+    "installed": "مُثبّت",
     "recommended": "موصى به",
     "other": "آخر",
     "popular": "شائع",

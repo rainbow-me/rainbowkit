@@ -112,7 +112,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
   }
 
   function updateParticles() {
-    particles.forEach((p) => {
+    for (const p of particles) {
       p.left = p.left - p.speedHorz * p.direction;
       p.top = p.top - p.speedUp;
       p.speedUp = Math.min(p.size, p.speedUp - 1);
@@ -136,7 +136,7 @@ function makeElementCool(element: HTMLElement, imageUrl: string): () => void {
           `transform:rotate(${p.spinVal}deg)`,
         ].join(';'),
       );
-    });
+    }
   }
 
   let animationFrame: number | undefined;

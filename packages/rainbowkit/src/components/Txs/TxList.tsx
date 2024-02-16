@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useClearRecentTransactions } from '../../transactions/useClearRecentTransactions';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
@@ -8,7 +8,6 @@ import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { ExternalLinkIcon } from '../Icons/ExternalLink';
 import { AppContext } from '../RainbowKitProvider/AppContext';
-
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { Text } from '../Text/Text';
 import { TxItem } from './TxItem';
@@ -22,14 +21,14 @@ interface TxListProps {
 export function TxList({ address }: TxListProps) {
   const recentTransactions = useRecentTransactions();
   const clearRecentTransactions = useClearRecentTransactions();
-  const { chain: activeChain } = useNetwork();
+  const { chain: activeChain } = useAccount();
   const explorerLink = chainToExplorerUrl(activeChain);
   const visibleTxs = recentTransactions.slice(0, NUMBER_OF_VISIBLE_TXS);
   const hasTransactions = visibleTxs.length > 0;
   const mobile = isMobile();
   const { appName } = useContext(AppContext);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <>

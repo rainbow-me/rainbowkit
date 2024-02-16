@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "The best way to connect a wallet",
+    "subheadline": "Designed for everyone. Built for developers.",
+    "cta": "View the Docs",
+    "adopters": "The siqqest Web3 teams are using RainbowKit to improve their products, delight their users and save time when building.",
+    "playground": {
+      "headline": "Give RainbowKit a spin",
+      "subheadline": "Make your Ethereum login experience feel right at home on your website. RainbowKit allows you to fully customize color, border radius, wallet providers and a lot more — all through an easy-to-use API. Get a feel for it below!",
+      "modal": "Modal",
+      "mode": "Mode",
+      "accent": "Accent",
+      "radius": "Radius",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Developers",
+      "subheadline": "RainbowKit provides a fast, easy and highly customizable way for developers to add a great wallet experience to their application. We handle the hard stuff so developers and teams can focus on building amazing products and communities for their users.",
+      "installation": "Easy Installation",
+      "themes": "Built-in Themes",
+      "darkmode": "Light and Dark Mode",
+      "appstore": "App Store and Google Play Integration",
+      "custom_themes": "Custom Themes",
+      "custom_wallet_list": "Custom Wallets List",
+      "custom_chain": "Custom Chains",
+      "custom_connect": "Custom Connect Button"
+    },
+    "madeby": {
+      "headline": "Made with ❤️ by your frens at",
+      "subheadline": "Building RainbowKit has been an incredibly fun effort across many people at Rainbow and our frens at other companies. We're always looking to make RainbowKit better, so please let us know how we can improve.",
+      "twitter_cta": "Follow us on Twitter",
+      "feedback_cta": "Share feedback with us"
+    },
+    "footer": {
+      "mediakit": "media kit",
+      "terms": "terms of use",
+      "privacy": "privacy policy"
+    },
+    "meta": {
+      "description": "The best way to connect a wallet 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Overview",
+        "getting_started": "Getting Started",
+        "advanced": "Advanced"
+      }
+    }
+  }
+}

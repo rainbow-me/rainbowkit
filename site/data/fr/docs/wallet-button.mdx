@@ -1,0 +1,42 @@
+---
+title: BoutonWallet
+description: Utilisation et personnalisation du BoutonWallet
+---
+
+# BoutonWallet
+
+Le nouveau composant `BoutonWallet` aide les dApps avec des implémentations d'une liste de portefeuilles personnalisée à adopter RainbowKit et tous ses avantages sans entretien.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+Comme le `BoutonConnexion`, le composant `BoutonWallet.Custom` est disponible pour des implémentations personnalisées et un style spécifique.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+La plupart des dApps sont mieux servies par le [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Consultez la documentation pour plus d'informations sur l'adoption et les cas d'utilisation du `BoutonWallet` [here](https://www.rainbowkit.com/docs/wallet-button).
+
+#### Démo
+
+Appuyez sur les boutons ci-dessous pour voir à quoi ressemble ce point d'entrée RainbowKit.
+
+<WalletButtonDemo />

@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -13,13 +14,14 @@ type TitleAndMetaTagsProps = {
 
 export function TitleAndMetaTags({
   color = 'white',
-  description = 'The best way to connect a wallet 🌈',
+  description,
   image,
   pathname,
   title = 'RainbowKit',
   url = 'https://rainbowkit.com',
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
+  const t = useTranslations('landing');
 
   const imageUrl = `${url}/social/${image || 'default.png'}`;
   const path = pathname || router.pathname;
@@ -28,7 +30,7 @@ export function TitleAndMetaTags({
     <Head>
       <title>{title}</title>
 
-      <meta content={description} name="description" />
+      <meta content={description || t('meta.description')} name="description" />
 
       <meta content={`${url}${path}`} property="og:url" />
       <meta content={title} property="og:title" />

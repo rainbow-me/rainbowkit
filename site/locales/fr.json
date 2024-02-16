@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "La meilleure façon de connecter un portefeuille",
+    "subheadline": "Conçu pour tous. Construit pour les développeurs.",
+    "cta": "Consultez les documents",
+    "adopters": "Les équipes Web3 les plus géniales utilisent RainbowKit pour améliorer leurs produits, ravir leurs utilisateurs et gagner du temps lors du développement.",
+    "playground": {
+      "headline": "Essayez RainbowKit",
+      "subheadline": "Donnez à votre expérience de connexion Ethereum une ambiance familiale sur votre site web. RainbowKit vous permet de personnaliser entièrement la couleur, le rayon de la bordure, les fournisseurs de portefeuille et bien plus encore, le tout grâce à une API facile à utiliser. Testez-le ci-dessous !",
+      "modal": "Modale",
+      "mode": "Mode",
+      "accent": "Accent",
+      "radius": "Rayon",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Développeurs",
+      "subheadline": "RainbowKit offre un moyen rapide, facile et hautement personnalisable aux développeurs d'ajouter une excellente expérience de portefeuille à leur application. Nous nous chargeons des aspects techniques afin que les développeurs et les équipes puissent se concentrer sur la création de produits et de communautés extraordinaires pour leurs utilisateurs.",
+      "installation": "Installation facile",
+      "themes": "Thèmes intégrés",
+      "darkmode": "Mode clair et sombre",
+      "appstore": "Intégration App Store et Google Play",
+      "custom_themes": "Thèmes personnalisés",
+      "custom_wallet_list": "Liste de portefeuilles personnalisée",
+      "custom_chain": "Chaines personnalisées",
+      "custom_connect": "Bouton de connexion personnalisé"
+    },
+    "madeby": {
+      "headline": "Créé avec ❤️ par vos amis chez",
+      "subheadline": "Le développement de RainbowKit a été un effort incroyablement amusant impliquant de nombreuses personnes chez Rainbow et nos amis d'autres entreprises. Nous cherchons toujours à améliorer RainbowKit, alors n'hésitez pas à nous faire part de vos suggestions.",
+      "twitter_cta": "Suivez-nous sur Twitter",
+      "feedback_cta": "Partagez vos commentaires avec nous"
+    },
+    "footer": {
+      "mediakit": "kit média",
+      "terms": "conditions d'utilisation",
+      "privacy": "politique de confidentialité"
+    },
+    "meta": {
+      "description": "La meilleure façon de connecter un portefeuille 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Aperçu",
+        "getting_started": "Prise en main",
+        "advanced": "Avancé"
+      }
+    }
+  }
+}

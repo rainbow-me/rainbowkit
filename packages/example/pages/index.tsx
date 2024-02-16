@@ -11,10 +11,9 @@ import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
+import { Address, parseEther } from 'viem';
 import {
   useAccount,
-  useNetwork,
-  usePrepareSendTransaction,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
@@ -61,63 +60,25 @@ const Example = ({ authEnabled }: AppContextProps) => {
     defaultProps.showBalance.largeScreen,
   );
 
-  const { chain: activeChain } = useNetwork();
-
-  const { config: sendTransactionConfig } = usePrepareSendTransaction({
-    enabled: !!address,
-    to: address,
-    value: 0n,
-  });
+  const { chain: activeChain } = useAccount();
 
   const {
     data: transactionData,
     error: transactionError,
     sendTransaction,
-  } = useSendTransaction(sendTransactionConfig);
+  } = useSendTransaction();
 
   const {
     data: signingData,
     error: signingError,
     signMessage,
-  } = useSignMessage({
-    message: 'wen token',
-  });
+  } = useSignMessage();
 
   const {
     data: typedData,
     error: typedError,
     signTypedData,
-  } = useSignTypedData({
-    domain: {
-      chainId: 1,
-      name: 'Ether Mail',
-      verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
-      version: '1',
-    },
-    message: {
-      contents: 'Hello, Bob!',
-      from: {
-        name: 'Cow',
-        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
-      },
-      to: {
-        name: 'Bob',
-        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
-      },
-    },
-    primaryType: 'Mail',
-    types: {
-      Mail: [
-        { name: 'from', type: 'Person' },
-        { name: 'to', type: 'Person' },
-        { name: 'contents', type: 'string' },
-      ],
-      Person: [
-        { name: 'name', type: 'string' },
-        { name: 'wallet', type: 'address' },
-      ],
-    },
-  });
+  } = useSignTypedData();
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -326,21 +287,59 @@ const Example = ({ authEnabled }: AppContextProps) => {
             <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
               <button
                 disabled={!connected || !sendTransaction}
-                onClick={() => sendTransaction?.()}
+                onClick={() =>
+                  sendTransaction?.({
+                    to: address as Address,
+                    value: parseEther('0.00001'),
+                  })
+                }
                 type="button"
               >
                 Send Transaction
               </button>
               <button
                 disabled={!connected}
-                onClick={() => signMessage()}
+                onClick={() => signMessage({ message: 'wen token' })}
                 type="button"
               >
                 Sign Message
               </button>
               <button
                 disabled={!connected || activeChain?.id !== 1}
-                onClick={() => signTypedData()}
+                onClick={() =>
+                  signTypedData({
+                    domain: {
+                      chainId: 1,
+                      name: 'Ether Mail',
+                      verifyingContract:
+                        '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
+                      version: '1',
+                    },
+                    message: {
+                      contents: 'Hello, Bob!',
+                      from: {
+                        name: 'Cow',
+                        wallet: '0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826',
+                      },
+                      to: {
+                        name: 'Bob',
+                        wallet: '0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB',
+                      },
+                    },
+                    primaryType: 'Mail',
+                    types: {
+                      Mail: [
+                        { name: 'from', type: 'Person' },
+                        { name: 'to', type: 'Person' },
+                        { name: 'contents', type: 'string' },
+                      ],
+                      Person: [
+                        { name: 'name', type: 'string' },
+                        { name: 'wallet', type: 'address' },
+                      ],
+                    },
+                  })
+                }
                 type="button"
               >
                 Sign Typed Data

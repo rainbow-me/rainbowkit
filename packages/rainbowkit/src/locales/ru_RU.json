@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Подключить кошелек"
+    "label": "Подключить кошелек",
+    "wrong_network": {
+      "label": "Неправильная сеть"
+    }
   },
   "intro": {
     "title": "Что такое кошелек?",
@@ -52,9 +55,12 @@
     "recent": "Недавние",
     "status": {
       "opening": "Открывается %{wallet}...",
+      "connecting": "Подключение",
+      "connect_mobile": "Продолжить в %{wallet}",
       "not_installed": "%{wallet} не установлен",
       "not_available": "%{wallet} не доступен",
-      "confirm": "Подтвердите подключение в расширении"
+      "confirm": "Подтвердите подключение в расширении",
+      "confirm_mobile": "Принять запрос на подключение в кошельке"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "Сканировать с помощью вашего телефона"
   },
   "connector_group": {
+    "installed": "Установлено",
     "recommended": "Рекомендуемые",
     "other": "Другие",
     "popular": "Популярные",

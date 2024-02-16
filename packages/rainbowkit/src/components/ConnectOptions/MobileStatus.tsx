@@ -8,7 +8,7 @@ import { WalletButton } from './MobileOptions';
 
 export const MobileStatus = ({ onClose }: { onClose: () => void }) => {
   const { connector } = useContext(WalletButtonContext);
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
   const connectorName = connector?.name || '';
 
   return (

@@ -35,8 +35,8 @@ export function DialogContent({
             ? mobile
               ? styles.dialogContentWideMobile
               : compactModeEnabled
-              ? styles.dialogContentCompactMode
-              : styles.dialogContentWideDesktop
+                ? styles.dialogContentCompactMode
+                : styles.dialogContentWideDesktop
             : styles.dialogContent,
           mobile ? styles.dialogContentMobile : null,
           mobile && bottomSheetOnMobile ? styles.bottomSheetOverrides : null,

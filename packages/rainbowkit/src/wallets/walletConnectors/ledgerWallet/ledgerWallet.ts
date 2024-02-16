@@ -1,33 +1,13 @@
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isAndroid } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
 
-export interface LedgerWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
-export interface LedgerWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type LedgerWalletOptions = DefaultWalletOptions;
 
 export const ledgerWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
-  walletConnectVersion = '2',
-}: LedgerWalletLegacyOptions | LedgerWalletOptions): Wallet => ({
+  walletConnectParameters,
+}: LedgerWalletOptions): Wallet => ({
   id: 'ledger',
   iconBackground: '#000',
   iconAccent: '#000',
@@ -43,87 +23,67 @@ export const ledgerWallet = ({
     linux: 'https://www.ledger.com/ledger-live/download',
     desktop: 'https://www.ledger.com/ledger-live',
   },
-  createConnector: () => {
-    const connector = getWalletConnectConnector({
-      projectId,
-      chains,
-      version: walletConnectVersion,
-      options: walletConnectOptions,
-    });
-
-    return {
-      connector,
-      mobile: {
-        getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
-          return isAndroid()
-            ? uri
-            : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
-        },
-      },
-      desktop: {
-        getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
-          return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
-        },
-        instructions: {
-          learnMoreUrl:
-            'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
-          steps: [
-            {
-              description: 'wallet_connectors.ledger.desktop.step1.description',
-              step: 'install',
-              title: 'wallet_connectors.ledger.desktop.step1.title',
-            },
-            {
-              description: 'wallet_connectors.ledger.desktop.step2.description',
-              step: 'create',
-              title: 'wallet_connectors.ledger.desktop.step2.title',
-            },
-            {
-              description: 'wallet_connectors.ledger.desktop.step3.description',
-              step: 'connect',
-              title: 'wallet_connectors.ledger.desktop.step3.title',
-            },
-          ],
-        },
-      },
-      qrCode: {
-        getUri: async () => {
-          const uri = await getWalletConnectUri(
-            connector,
-            walletConnectVersion,
-          );
-          return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
-        },
-        instructions: {
-          learnMoreUrl:
-            'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
-          steps: [
-            {
-              description: 'wallet_connectors.ledger.qr_code.step1.description',
-              step: 'install',
-              title: 'wallet_connectors.ledger.qr_code.step1.title',
-            },
-            {
-              description: 'wallet_connectors.ledger.qr_code.step2.description',
-              step: 'create',
-              title: 'wallet_connectors.ledger.qr_code.step2.title',
-            },
-            {
-              description: 'wallet_connectors.ledger.qr_code.step3.description',
-              step: 'scan',
-              title: 'wallet_connectors.ledger.qr_code.step3.title',
-            },
-          ],
-        },
-      },
-    };
+  mobile: {
+    getUri: (uri: string) => {
+      return isAndroid()
+        ? uri
+        : `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+    },
   },
+  desktop: {
+    getUri: (uri: string) => {
+      return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+    },
+    instructions: {
+      learnMoreUrl:
+        'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
+      steps: [
+        {
+          description: 'wallet_connectors.ledger.desktop.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.ledger.desktop.step1.title',
+        },
+        {
+          description: 'wallet_connectors.ledger.desktop.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.ledger.desktop.step2.title',
+        },
+        {
+          description: 'wallet_connectors.ledger.desktop.step3.description',
+          step: 'connect',
+          title: 'wallet_connectors.ledger.desktop.step3.title',
+        },
+      ],
+    },
+  },
+  qrCode: {
+    getUri: (uri: string) => {
+      return `ledgerlive://wc?uri=${encodeURIComponent(uri)}`;
+    },
+    instructions: {
+      learnMoreUrl:
+        'https://support.ledger.com/hc/en-us/articles/4404389503889-Getting-started-with-Ledger-Live',
+      steps: [
+        {
+          description: 'wallet_connectors.ledger.qr_code.step1.description',
+          step: 'install',
+          title: 'wallet_connectors.ledger.qr_code.step1.title',
+        },
+        {
+          description: 'wallet_connectors.ledger.qr_code.step2.description',
+          step: 'create',
+          title: 'wallet_connectors.ledger.qr_code.step2.title',
+        },
+        {
+          description: 'wallet_connectors.ledger.qr_code.step3.description',
+          step: 'scan',
+          title: 'wallet_connectors.ledger.qr_code.step3.title',
+        },
+      ],
+    },
+  },
+  createConnector: getWalletConnectConnector({
+    projectId,
+    walletConnectParameters,
+  }),
 });

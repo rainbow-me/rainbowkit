@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "A melhor maneira de conectar uma carteira",
+    "subheadline": "Projetado para todos. Criado para desenvolvedores.",
+    "cta": "Ver a Documentação",
+    "adopters": "As equipes mais siccas de Web3 estão usando RainbowKit para melhorar seus produtos, encantar seus usuários e economizar tempo na construção.",
+    "playground": {
+      "headline": "Experimente o RainbowKit",
+      "subheadline": "Faça com que a experiência de login do Ethereum pareça em casa em seu site. O RainbowKit permite que você personalize totalmente a cor, o raio da borda, os provedores de carteira e muito mais - tudo através de uma API fácil de usar. Experimente abaixo!",
+      "modal": "Modal",
+      "mode": "Modo",
+      "accent": "Acento",
+      "radius": "Raio",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Desenvolvedores",
+      "subheadline": "O RainbowKit oferece uma maneira rápida, fácil e altamente personalizável para os desenvolvedores adicionarem uma ótima experiência de carteira à sua aplicação. Nós lidamos com as coisas difíceis para que os desenvolvedores e equipes possam se concentrar em construir produtos e comunidades incríveis para seus usuários.",
+      "installation": "Instalação Fácil",
+      "themes": "Temas Integrados",
+      "darkmode": "Modo Claro e Escuro",
+      "appstore": "Integração com App Store e Google Play",
+      "custom_themes": "Temas Personalizados",
+      "custom_wallet_list": "Lista de Carteiras Personalizada",
+      "custom_chain": "Cadeias Personalizadas",
+      "custom_connect": "Botão de Conexão Personalizado"
+    },
+    "madeby": {
+      "headline": "Feito com ❤️ por seus frens em",
+      "subheadline": "A construção do RainbowKit tem sido um esforço incrivelmente divertido envolvendo muitas pessoas na Rainbow e nossos frens em outras empresas. Estamos sempre buscando melhorar o RainbowKit, então nos informe como podemos melhorar.",
+      "twitter_cta": "Siga-nos no Twitter",
+      "feedback_cta": "Compartilhe seu feedback conosco"
+    },
+    "footer": {
+      "mediakit": "kit de mídia",
+      "terms": "termos de uso",
+      "privacy": "política de privacidade"
+    },
+    "meta": {
+      "description": "A melhor maneira de conectar uma carteira 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Visão Geral",
+        "getting_started": "Introdução",
+        "advanced": "Avançado"
+      }
+    }
+  }
+}

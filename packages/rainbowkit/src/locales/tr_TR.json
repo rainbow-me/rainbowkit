@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "Cüzdanı Bağla",
+    "wrong_network": {
+      "label": "Yanlış ağ"
+    }
   },
   "intro": {
     "title": "Cüzdan nedir?",
@@ -52,9 +55,12 @@
     "recent": "Son",
     "status": {
       "opening": "%{wallet}açılıyor...",
+      "connecting": "Bağlanıyor",
+      "connect_mobile": "%{wallet}'da devam edin",
       "not_installed": "%{wallet} yüklü değil",
       "not_available": "%{wallet} kullanılabilir değil",
-      "confirm": "Bağlantıyı eklentide onaylayın"
+      "confirm": "Bağlantıyı eklentide onaylayın",
+      "confirm_mobile": "Cüzdanında bağlantı isteğini kabul et"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "Telefonunuzla tarama yapın"
   },
   "connector_group": {
+    "installed": "Yüklendi",
     "recommended": "Tavsiye Edilen",
     "other": "Diğer",
     "popular": "Popüler",

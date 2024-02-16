@@ -54,6 +54,7 @@ export function QRCode({
       { x: 0, y: 1 },
     ];
 
+    // biome-ignore lint/complexity/noForEach: TODO
     qrList.forEach(({ x, y }) => {
       const x1 = (matrix.length - 7) * cellSize * x;
       const y1 = (matrix.length - 7) * cellSize * y;
@@ -77,7 +78,9 @@ export function QRCode({
     const matrixMiddleStart = matrix.length / 2 - clearArenaSize / 2;
     const matrixMiddleEnd = matrix.length / 2 + clearArenaSize / 2 - 1;
 
+    // biome-ignore lint/complexity/noForEach: TODO
     matrix.forEach((row: QRCodeUtil.QRCode[], i: number) => {
+      // biome-ignore lint/complexity/noForEach: TODO
       row.forEach((_: any, j: number) => {
         if (matrix[i][j]) {
           if (
@@ -155,6 +158,7 @@ export function QRCode({
           />
         </Box>
         <svg height={size} style={{ all: 'revert' }} width={size}>
+          <title>QR Code</title>
           <defs>
             <clipPath id="clip-wrapper">
               <rect height={logoWrapperSize} width={logoWrapperSize} />

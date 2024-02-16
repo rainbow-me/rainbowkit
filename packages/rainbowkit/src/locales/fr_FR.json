@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Connecter le portefeuille"
+    "label": "Connecter le portefeuille",
+    "wrong_network": {
+      "label": "Réseau incorrect"
+    }
   },
   "intro": {
     "title": "Qu'est-ce qu'un portefeuille?",
@@ -52,9 +55,12 @@
     "recent": "Récents",
     "status": {
       "opening": "Ouverture %{wallet}...",
+      "connecting": "Connect :)ing",
+      "connect_mobile": "Continuer dans %{wallet}",
       "not_installed": "%{wallet} n'est pas installé",
       "not_available": "%{wallet} n'est pas disponible",
-      "confirm": "Confirmez la connexion dans l'extension"
+      "confirm": "Confirmez la connexion dans l'extension",
+      "confirm_mobile": "Accepter la demande de connexion dans le portefeuille"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "Scannez avec votre téléphone"
   },
   "connector_group": {
+    "installed": "Installé",
     "recommended": "Recommandé",
     "other": "Autre",
     "popular": "Populaire",

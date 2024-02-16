@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Connect Wallet"
+    "label": "Connect Wallet",
+    "wrong_network": {
+      "label": "Wrong network"
+    }
   },
 
   "intro": {
@@ -91,6 +94,7 @@
   },
 
   "connector_group": {
+    "installed": "Installed",
     "recommended": "Recommended",
     "other": "Other",
     "popular": "Popular",

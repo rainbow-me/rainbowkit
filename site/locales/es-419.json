@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "La mejor manera de conectar una billetera",
+    "subheadline": "Diseñado para todos. Construido para desarrolladores.",
+    "cta": "Ver la Documentación",
+    "adopters": "Los equipos más destacados de Web3 están utilizando RainbowKit para mejorar sus productos, deleitar a sus usuarios y ahorrar tiempo al desarrollar.",
+    "playground": {
+      "headline": "Prueba RainbowKit",
+      "subheadline": "Haz que la experiencia de inicio de sesión de Ethereum se sienta como en casa en tu sitio web. RainbowKit te permite personalizar completamente el color, el radio de borde, los proveedores de billeteras y mucho más, todo a través de una API fácil de usar. ¡Prueba cómo se siente a continuación!",
+      "modal": "Modal",
+      "mode": "Modo",
+      "accent": "Acento",
+      "radius": "Radio",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Desarrolladores",
+      "subheadline": "RainbowKit proporciona una forma rápida, fácil y altamente personalizable para que los desarrolladores agreguen una gran experiencia de billetera a su aplicación. Nosotros nos encargamos de lo difícil, para que los desarrolladores y los equipos puedan centrarse en construir productos sorprendentes y comunidades para sus usuarios.",
+      "installation": "Instalación fácil",
+      "themes": "Temas incorporados",
+      "darkmode": "Modo claro y oscuro",
+      "appstore": "Integración con App Store y Google Play",
+      "custom_themes": "Temas personalizados",
+      "custom_wallet_list": "Lista de billeteras personalizadas",
+      "custom_chain": "Cadenas personalizadas",
+      "custom_connect": "Botón de conexión personalizado"
+    },
+    "madeby": {
+      "headline": "Hecho con ❤️ por tus amigos en",
+      "subheadline": "La creación de RainbowKit ha sido un esfuerzo increíblemente divertido que ha involucrado a muchas personas en Rainbow y a nuestros amigos en otras empresas. Siempre estamos buscando mejorar RainbowKit, así que por favor avísanos cómo podemos mejorar.",
+      "twitter_cta": "Síguenos en Twitter",
+      "feedback_cta": "Comparte tus comentarios con nosotros"
+    },
+    "footer": {
+      "mediakit": "kit de medios",
+      "terms": "términos de uso",
+      "privacy": "política de privacidad"
+    },
+    "meta": {
+      "description": "La mejor manera de conectar una billetera 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Visión General",
+        "getting_started": "Primeros Pasos",
+        "advanced": "Avanzado"
+      }
+    }
+  }
+}

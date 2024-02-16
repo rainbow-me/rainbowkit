@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "เชื่อมต่อกระเป๋าเงิน"
+    "label": "เชื่อมต่อกระเป๋าเงิน",
+    "wrong_network": {
+      "label": "เครือข่ายไม่ถูกต้อง"
+    }
   },
   "intro": {
     "title": "อะไรคือกระเป๋าเงิน?",
@@ -52,9 +55,12 @@
     "recent": "ล่าสุด",
     "status": {
       "opening": "กำลังเปิด %{wallet}...",
+      "connecting": "กำลังเชื่อมต่อ",
+      "connect_mobile": "ดำเนินการต่อใน %{wallet}",
       "not_installed": "%{wallet} ไม่ได้ติดตั้ง",
       "not_available": "%{wallet} ไม่สามารถใช้ได้",
-      "confirm": "ยืนยันการเชื่อมต่อในส่วนขยาย"
+      "confirm": "ยืนยันการเชื่อมต่อในส่วนขยาย",
+      "confirm_mobile": "ยอมรับคำขอเชื่อมต่อในกระเป๋าเงิน"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "สแกนด้วยโทรศัพท์ของคุณ"
   },
   "connector_group": {
+    "installed": "ติดตั้งแล้ว",
     "recommended": "แนะนำ",
     "other": "อื่น ๆ",
     "popular": "ยอดนิยม",

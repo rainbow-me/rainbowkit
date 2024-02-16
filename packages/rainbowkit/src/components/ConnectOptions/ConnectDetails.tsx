@@ -71,10 +71,13 @@ export function GetDetail({
   getWalletDownload: (walletId: string) => void;
   compactModeEnabled: boolean;
 }) {
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    (wallet) => wallet.isRainbowKitConnector,
+  );
+
   const shownWallets = wallets.splice(0, 5);
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -140,12 +143,12 @@ export function GetDetail({
                       {hasMobileAndExtension
                         ? i18n.t('get.mobile_and_extension.description')
                         : hasMobileAndDesktop
-                        ? i18n.t('get.mobile_and_desktop.description')
-                        : hasMobileCompanionApp
-                        ? i18n.t('get.mobile.description')
-                        : hasExtension
-                        ? i18n.t('get.extension.description')
-                        : null}
+                          ? i18n.t('get.mobile_and_desktop.description')
+                          : hasMobileCompanionApp
+                            ? i18n.t('get.mobile.description')
+                            : hasExtension
+                              ? i18n.t('get.extension.description')
+                              : null}
                     </Text>
                   </Box>
                 </Box>
@@ -210,17 +213,23 @@ export function ConnectDetail({
     qrCode,
     ready,
     showWalletConnectModal,
+    getDesktopUri,
   } = wallet;
-  const getDesktopDeepLink = wallet.desktop?.getUri;
+  const isDesktopDeepLinkAvailable = !!getDesktopUri;
   const safari = isSafari();
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   const hasExtension = !!wallet.extensionDownloadUrl;
   const hasQrCodeAndExtension = downloadUrls?.qrCode && hasExtension;
   const hasQrCodeAndDesktop =
     downloadUrls?.qrCode && !!wallet.desktopDownloadUrl;
   const hasQrCode = qrCode && qrCodeUri;
+
+  const onDesktopUri = async () => {
+    const uri = await getDesktopUri?.();
+    window.open(uri, safari ? '_blank' : '_self');
+  };
 
   const secondaryAction: {
     description: string;
@@ -239,19 +248,19 @@ export function ConnectDetail({
         },
       }
     : hasQrCode
-    ? {
-        description: i18n.t('connect.secondary_action.get.description', {
-          wallet: name,
-        }),
-        label: i18n.t('connect.secondary_action.get.label'),
-        onClick: () =>
-          changeWalletStep(
-            hasQrCodeAndExtension || hasQrCodeAndDesktop
-              ? WalletStep.DownloadOptions
-              : WalletStep.Download,
-          ),
-      }
-    : null;
+      ? {
+          description: i18n.t('connect.secondary_action.get.description', {
+            wallet: name,
+          }),
+          label: i18n.t('connect.secondary_action.get.label'),
+          onClick: () =>
+            changeWalletStep(
+              hasQrCodeAndExtension || hasQrCodeAndDesktop
+                ? WalletStep.DownloadOptions
+                : WalletStep.Download,
+            ),
+        }
+      : null;
 
   const { width: windowWidth } = useWindowSize();
   const smallWindow = windowWidth && windowWidth < 768;
@@ -279,8 +288,8 @@ export function ConnectDetail({
               compactModeEnabled
                 ? 318
                 : smallWindow
-                ? Math.max(280, Math.min(windowWidth - 308, 382))
-                : 382
+                  ? Math.max(280, Math.min(windowWidth - 308, 382))
+                  : 382
             }
             uri={qrCodeUri}
           />
@@ -299,7 +308,12 @@ export function ConnectDetail({
             gap="8"
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
-              <AsyncImage height={LOGO_SIZE} src={iconUrl} width={LOGO_SIZE} />
+              <AsyncImage
+                useAsImage={!wallet.isRainbowKitConnector}
+                height={LOGO_SIZE}
+                src={iconUrl}
+                width={LOGO_SIZE}
+              />
             </Box>
             <Box
               alignItems="center"
@@ -315,12 +329,12 @@ export function ConnectDetail({
                       wallet: name,
                     })
                   : hasExtension
-                  ? i18n.t('connect.status.not_installed', {
-                      wallet: name,
-                    })
-                  : i18n.t('connect.status.not_available', {
-                      wallet: name,
-                    })}
+                    ? i18n.t('connect.status.not_installed', {
+                        wallet: name,
+                      })
+                    : i18n.t('connect.status.not_available', {
+                        wallet: name,
+                      })}
               </Text>
               {!ready && hasExtension ? (
                 <Box paddingTop="20">
@@ -359,16 +373,10 @@ export function ConnectDetail({
                     {connectionError ? (
                       <ActionButton
                         label={i18n.t('connect.secondary_action.retry.label')}
-                        onClick={
-                          getDesktopDeepLink
-                            ? async () => {
-                                const uri = await getDesktopDeepLink();
-                                window.open(uri, safari ? '_blank' : '_self');
-                              }
-                            : () => {
-                                reconnect(wallet);
-                              }
-                        }
+                        onClick={async () => {
+                          if (isDesktopDeepLinkAvailable) onDesktopUri();
+                          reconnect(wallet);
+                        }}
                       />
                     ) : (
                       <Box color="modalTextSecondary">
@@ -625,7 +633,7 @@ export function DownloadOptionsDetail({
     mobileDownloadUrl,
   } = wallet;
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -732,7 +740,7 @@ export function DownloadDetail({
 }) {
   const { downloadUrls, qrCode } = wallet;
 
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   useEffect(() => {
     // Preload icons used on next screen
@@ -813,7 +821,7 @@ export function InstructionMobileDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -900,7 +908,7 @@ export function InstructionExtensionDetail({
 }: {
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box
@@ -989,7 +997,7 @@ export function InstructionDesktopDetail({
   connectWallet: (wallet: WalletConnector) => void;
   wallet: WalletConnector;
 }) {
-  const i18n = useContext(I18nContext);
+  const { i18n } = useContext(I18nContext);
 
   return (
     <Box

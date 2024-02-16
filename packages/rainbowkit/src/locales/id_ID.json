@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Hubungkan Dompet"
+    "label": "Hubungkan Dompet",
+    "wrong_network": {
+      "label": "Jaringan yang salah"
+    }
   },
   "intro": {
     "title": "Apa itu Dompet?",
@@ -52,9 +55,12 @@
     "recent": "Terkini",
     "status": {
       "opening": "Membuka %{wallet}...",
+      "connecting": "Menghubungkan",
+      "connect_mobile": "Lanjutkan di %{wallet}",
       "not_installed": "%{wallet} tidak terpasang",
       "not_available": "%{wallet} tidak tersedia",
-      "confirm": "Konfirmasikan koneksi di ekstensi"
+      "confirm": "Konfirmasikan koneksi di ekstensi",
+      "confirm_mobile": "Terima permintaan koneksi di dompet"
     },
     "secondary_action": {
       "get": {
@@ -83,6 +89,7 @@
     "fallback_title": "Pindai dengan ponsel Anda"
   },
   "connector_group": {
+    "installed": "Terinstal",
     "recommended": "Direkomendasikan",
     "other": "Lainnya",
     "popular": "Populer",

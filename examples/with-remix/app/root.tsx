@@ -14,26 +14,27 @@ import type {
   LinksFunction,
   LoaderFunction,
 } from '@remix-run/node';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  goerli,
-} from 'wagmi/chains';
-import { publicProvider } from 'wagmi/providers/public';
-import type { Chain } from 'wagmi';
+
 import {
   RainbowKitProvider,
   ConnectButton,
-  getDefaultWallets,
+  getDefaultConfig,
 } from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import type { Chain } from 'wagmi/chains';
+import {
+  arbitrum,
+  base,
+  mainnet,
+  optimism,
+  polygon,
+  sepolia,
+  zora,
+} from 'wagmi/chains';
 
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
 
@@ -62,6 +63,8 @@ export const loader: LoaderFunction = () => {
   return json(data);
 };
 
+const queryClient = new QueryClient();
+
 export default function App() {
   const { ENV } = useLoaderData<LoaderData>();
 
@@ -70,23 +73,23 @@ export default function App() {
   // and a lazy initialization function.
   // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
   const [{ config, chains }] = useState(() => {
-    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : [];
+    const testChains = ENV.PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : [];
 
-    const { chains, publicClient } = configureChains(
-      [mainnet, polygon, optimism, arbitrum, base, zora, ...testChains],
-      [publicProvider()]
-    );
+    const chains: readonly [Chain, ...Chain[]] = [
+      mainnet,
+      polygon,
+      optimism,
+      arbitrum,
+      base,
+      zora,
+      ...testChains,
+    ];
 
-    const { connectors } = getDefaultWallets({
+    const config = getDefaultConfig({
       appName: 'RainbowKit Remix Example',
       projectId: 'YOUR_PROJECT_ID',
       chains,
-    });
-
-    const config = createConfig({
-      autoConnect: true,
-      connectors,
-      publicClient,
+      ssr: true,
     });
 
     return {
@@ -103,20 +106,22 @@ export default function App() {
       </head>
       <body>
         {config && chains ? (
-          <WagmiConfig config={config}>
-            <RainbowKitProvider chains={chains as Chain[]}>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-                  padding: '12px',
-                }}
-              >
-                <ConnectButton />
-              </div>
-            </RainbowKitProvider>
-            <Outlet />
-          </WagmiConfig>
+          <WagmiProvider config={config}>
+            <QueryClientProvider client={queryClient}>
+              <RainbowKitProvider>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    padding: '12px',
+                  }}
+                >
+                  <ConnectButton />
+                </div>
+              </RainbowKitProvider>
+              <Outlet />
+            </QueryClientProvider>
+          </WagmiProvider>
         ) : null}
         <ScrollRestoration />
         <Scripts />

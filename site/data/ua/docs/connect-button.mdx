@@ -1,0 +1,149 @@
+---
+title: ConnectButton
+description: Використання та налаштування ConnectButton
+---
+
+# ConnectButton
+
+## Використання та налаштування ConnectButton
+
+Це основний компонент. Він відповідає за відображення кнопки підключення/відключення, а також інтерфейсу зміни мережі.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+> Примітка: Переконайтеся, що ваш додаток обгорнуто в необхідні провайдери. [Дізнатися більше](/docs/installation#wrap-providers).
+
+### Пропси
+
+Компонент `ConnectButton` надає кілька пропсів для налаштування його вигляду, включаючи перемикання видимості різних елементів.
+
+<PropsTable
+  data={[
+    {
+      name: 'label',
+      required: false,
+      default: 'Connect Wallet',
+      type: 'string',
+      description: 'The text label displayed on the Connect button',
+    },
+    {
+      name: 'accountStatus',
+      required: false,
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the active account's avatar and/or address is displayed",
+    },
+    {
+      name: 'chainStatus',
+      required: false,
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the current chain's icon and/or name is displayed, or hidden entirely",
+    },
+    {
+      name: 'showBalance',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description:
+        'Whether the balance is visible next to the account name',
+    },
+  ]}
+/>
+
+> Примітка: вбудований брейкпоінт `largeScreen` становить `768px`.
+
+### Приклади
+
+#### Мітка
+
+Використовуйте властивість `label`, щоб встановити спеціальний текст для `ConnectButton`.
+
+```tsx
+<ConnectButton label="__Sign in__" />
+```
+
+#### Статус акаунта
+
+Ось кілька різних способів використання властивості `accountStatus`.
+
+Показувати лише аватар акаунта.
+
+```tsx
+<ConnectButton accountStatus="__avatar__" />
+```
+
+Показувати лише адресу акаунта.
+
+```tsx
+<ConnectButton accountStatus="__address__" />
+```
+
+#### Статус мережі
+
+Ось кілька різних способів використання властивості `chainStatus`.
+
+Показувати лише іконку поточної мережі.
+
+```tsx
+<ConnectButton chainStatus="__icon__" />
+```
+
+Показувати лише назву поточної мережі.
+
+```tsx
+<ConnectButton chainStatus="__name__" />
+```
+
+Приховати інтерфейс мережі повністю.
+
+```tsx
+<ConnectButton chainStatus="__none__" />
+```
+
+#### Показати баланс
+
+Використовуйте властивість `showBalance`, щоб приховати/показати баланс.
+
+Приховати баланс.
+
+```tsx
+<ConnectButton showBalance={__false__} />
+```
+
+#### Адаптивний
+
+Ці властивості також можна визначити в адаптивному форматі.
+
+На малих екранах показувати тільки іконку облікового запису. Але на великих екранах показувати іконку та адресу.
+
+```tsx
+<ConnectButton
+  accountStatus={{
+    smallScreen: 'avatar',
+    largeScreen: 'full',
+  }}
+/>
+```
+
+На малих екранах приховувати баланс. Але на великих екранах показувати його.
+
+```tsx
+<ConnectButton
+  showBalance={{
+    smallScreen: false,
+    largeScreen: true,
+  }}
+/>
+```

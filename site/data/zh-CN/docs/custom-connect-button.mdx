@@ -7,7 +7,7 @@ description: 创建一个自定义的 ConnectButton
 
 ## 创建一个自定义的 ConnectButton
 
-您可以使用低级别的 `ConnectButton.Custom` 来创建自己的自定义连接按钮。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。
+您可以使用低级别的 `ConnectButton.Custom` 来创建自己的自定义连接按钮。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。 该组件渲染了一个函数，其中包含了您需要重新实现内置按钮的所有内容。
 
 内置按钮的最小实现可能看起来像这样:
 
@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          链的ID，例如 <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          链的名称，例如 <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        '指示当前链是否不受支持的布尔值',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: '用于打开账户模态的功能',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: '用于打开链模态的功能',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: '用于打开连接模态的功能',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '布尔值，表示账户模态是否打开',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: '布尔值，表示链模态是否打开',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        '布尔值，表示连接模态是否打开',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />

@@ -247,7 +247,7 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          चेन आईडी, उदा । <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
@@ -257,7 +257,7 @@ export const YourApp = () => {
       type: 'string | undefined',
       description: (
         <>
-          चेन का नाम, उदा । <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
@@ -266,7 +266,7 @@ export const YourApp = () => {
       required: false,
       type: 'boolean | undefined',
       description:
-        'बूलियन यह निर्देशित करता है कि वर्तमान चेन समर्थित नहीं है',
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'खाता मॉडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'चेन मॉडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'कनेक्ट मॉडल खोलने के लिए फ़ंक्शन',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'बूलियन जो दर्शाता है कि खाता मॉडल खुला है ',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'बूलियन जो दर्शाता है कि चेन मॉडल खुला है',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'बूलियन जो दर्शाता है कि कनेक्ट मॉडल खुला है',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />
