@@ -17,7 +17,7 @@ const connectors = connectorsForWallets([
   ...wallets,
   {
     groupName: 'Other',
-    wallets: [bloomWallet({ chains, projectId })],
+    wallets: [bloomWallet],
   },
 ]);
 ```
