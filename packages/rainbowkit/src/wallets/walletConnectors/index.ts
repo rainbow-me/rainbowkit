@@ -2,6 +2,7 @@ import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
+import { bloomWallet } from './bloomWallet/bloomWallet';
 import { braveWallet } from './braveWallet/braveWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
@@ -82,4 +83,5 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  bloomWallet,
 };
