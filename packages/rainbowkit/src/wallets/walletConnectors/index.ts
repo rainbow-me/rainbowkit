@@ -25,6 +25,7 @@ import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { ramperWallet } from './ramperWallet/ramperWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
@@ -82,4 +83,5 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  ramperWallet,
 };
