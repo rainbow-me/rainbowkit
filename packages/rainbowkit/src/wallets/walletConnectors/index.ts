@@ -47,6 +47,7 @@ export {
   bitgetWallet,
   bitskiWallet,
   braveWallet,
+  bloomWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
@@ -83,5 +84,4 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
-  bloomWallet,
 };
