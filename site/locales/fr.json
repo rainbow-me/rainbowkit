@@ -41,5 +41,14 @@
     "meta": {
       "description": "La meilleure façon de connecter un portefeuille 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Aperçu",
+        "getting_started": "Prise en main",
+        "advanced": "Avancé"
+      }
+    }
   }
 }

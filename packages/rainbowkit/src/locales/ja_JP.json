@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "ウォレットを接続"
+    "label": "ウォレットを接続",
+    "wrong_network": {
+      "label": "ネットワークが間違っています"
+    }
   },
   "intro": {
     "title": "ウォレットとは何ですか？",
@@ -86,6 +89,7 @@
     "fallback_title": "携帯電話でスキャンしてください"
   },
   "connector_group": {
+    "installed": "インストール済み",
     "recommended": "おすすめのウォレット",
     "other": "その他",
     "popular": "人気のウォレット",

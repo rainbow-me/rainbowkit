@@ -41,5 +41,14 @@
     "meta": {
       "description": "ウォレットを接続する最良の方法 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "概要",
+        "getting_started": "入門",
+        "advanced": "高度な設定"
+      }
+    }
   }
 }

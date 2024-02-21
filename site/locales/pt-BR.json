@@ -41,5 +41,14 @@
     "meta": {
       "description": "A melhor maneira de conectar uma carteira 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Visão Geral",
+        "getting_started": "Introdução",
+        "advanced": "Avançado"
+      }
+    }
   }
 }

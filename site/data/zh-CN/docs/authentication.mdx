@@ -41,7 +41,13 @@ import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
-import { WagmiConfig } from 'wagmi';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export default function App({
   Component,
@@ -50,15 +56,17 @@ export default function App({
   session: Session;
 }>) {
   return (
-    <WagmiConfig {...etc}>
+    <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
-        <RainbowKitSiweNextAuthProvider>
-          <RainbowKitProvider {...etc}>
-            <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitSiweNextAuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider {...etc}>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </QueryClientProvider>
       </SessionProvider>
-    </WagmiConfig>
+    </WagmiProvider>;
   );
 }
 ```
@@ -90,7 +98,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### 在服务器端访问会话
 
-您可以使用NextAuth的`getToken` 函数从`next-auth/jwt`导入会话令牌。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。
+您可以使用NextAuth的`getToken` 函数从`next-auth/jwt`导入会话令牌。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。 如果用户成功进行身份验证，会话令牌的`sub`属性（令牌的"主题"，即用户）将是用户的地址。
 
 您还可以通过`getServerSideProps`将已解析的会话对象从服务器传递下来，这样NextAuth就不需要在客户端再次解析它。
 

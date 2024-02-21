@@ -127,7 +127,6 @@ export function createTransactionStore({
         .filter((transaction) => transaction.status === 'pending')
         .map(async (transaction) => {
           const { confirmations, hash } = transaction;
-
           const existingRequest = transactionRequestCache.get(hash);
 
           if (existingRequest) {
@@ -135,7 +134,11 @@ export function createTransactionStore({
           }
 
           const requestPromise = provider
-            .waitForTransactionReceipt({ confirmations, hash: hash as Address })
+            .waitForTransactionReceipt({
+              confirmations,
+              hash: hash as Address,
+              timeout: 300_000, // 5 minutes
+            })
             .then(({ status }) => {
               transactionRequestCache.delete(hash);
 
@@ -150,6 +153,12 @@ export function createTransactionStore({
                 // @ts-ignore - types changed with viem@1.1.0
                 status === 0 || status === 'reverted' ? 'failed' : 'confirmed',
               );
+            })
+            .catch(() => {
+              // If a transaction is not found or cancelled
+              // viem will throw a 'TransactionNotFoundError'.
+              // In this case it should mark the transaction as 'failed'
+              setTransactionStatus(account, chainId, hash, 'failed');
             });
 
           transactionRequestCache.set(hash, requestPromise);

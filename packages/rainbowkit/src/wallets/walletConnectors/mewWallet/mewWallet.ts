@@ -1,29 +1,16 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/dist/connectors/injected';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
 import { Wallet } from '../../Wallet';
-export interface MewWalletOptions {
-  chains: Chain[];
-}
+import {
+  getInjectedConnector,
+  hasInjectedProvider,
+} from '../../getInjectedConnector';
 
-export const mewWallet = ({
-  chains,
-  ...options
-}: MewWalletOptions & InjectedConnectorOptions): Wallet => {
-  const isMewWalletInjected =
-    typeof window !== 'undefined' &&
-    Boolean(
-      (
-        window.ethereum as typeof window.ethereum &
-          (undefined | { isMEWwallet?: boolean })
-      )?.isMEWwallet,
-    );
+export const mewWallet = (): Wallet => {
   return {
     id: 'mew',
     name: 'MEW wallet',
     iconUrl: async () => (await import('./mewWallet.svg')).default,
     iconBackground: '#fff',
-    installed: isMewWalletInjected,
+    installed: hasInjectedProvider({ flag: 'isMEWwallet' }),
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=com.myetherwallet.mewwallet&referrer=utm_source%3Drainbow',
@@ -31,13 +18,6 @@ export const mewWallet = ({
       mobile: 'https://mewwallet.com',
       qrCode: 'https://mewwallet.com',
     },
-    createConnector: () => {
-      return {
-        connector: new InjectedConnector({
-          chains,
-          options,
-        }),
-      };
-    },
+    createConnector: getInjectedConnector({ flag: 'isMEWwallet' }),
   };
 };

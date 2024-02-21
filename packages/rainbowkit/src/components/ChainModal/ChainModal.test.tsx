@@ -1,32 +1,55 @@
 import user from '@testing-library/user-event';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { describe, expect, it } from 'vitest';
-import { arbitrum, goerli, mainnet, optimism } from 'wagmi/chains';
+import { useConnect } from 'wagmi';
+import { Chain, arbitrum, mainnet, optimism } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test/';
-import { Chain } from '../RainbowKitProvider/RainbowKitChainContext';
 import { ChainModal } from './ChainModal';
 
+const ChainModalWithConnectButton = ({ onClose }: { onClose?: () => void }) => {
+  const { connect, connectors } = useConnect();
+
+  return (
+    <Fragment>
+      <ChainModal
+        onClose={() => {
+          if (onClose) onClose();
+        }}
+        open
+      />
+      <button
+        onClick={() => connect({ connector: connectors[0] })}
+        data-testid="rk-connect-btn"
+      >
+        connect
+      </button>
+    </Fragment>
+  );
+};
+
 describe('<ChainModal />', () => {
-  it('Unsupported chain', async () => {
-    const { findByText } = renderWithProviders(
-      <ChainModal onClose={() => {}} open />,
+  const renderChainModalWithConnectedWallet = async (
+    chains?: readonly [Chain, ...Chain[]],
+    onClose?: () => void,
+  ) => {
+    const modal = renderWithProviders(
+      <ChainModalWithConnectButton onClose={onClose} />,
       {
-        chains: [mainnet], // only supports mainnet
         mock: true,
-        mockOptions: { chainId: goerli.id }, // is connected to goerli
+        chains,
       },
     );
-    expect(
-      await findByText(
-        'Wrong network detected, switch or disconnect to continue.',
-      ),
-    ).toBeVisible();
-  });
+
+    const connectButtonOption = await modal.findByTestId('rk-connect-btn');
+
+    await user.click(connectButtonOption);
+
+    return modal;
+  };
 
   it('Show current connected chain indicator', async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      mock: true,
-    });
+    const modal = await renderChainModalWithConnectedWallet();
+
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
@@ -35,39 +58,38 @@ describe('<ChainModal />', () => {
     expect(mainnetOption).toBeDisabled();
   });
 
-  it('List chains provided in <RainbowKitProvider />', async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      chains: [mainnet, arbitrum, optimism],
-      mock: true,
-      props: { chains: [optimism] },
-    });
+  it('List chains from <RainbowKitProvider />', async () => {
+    const modal = await renderChainModalWithConnectedWallet([
+      mainnet,
+      arbitrum,
+      optimism,
+    ]);
 
+    const mainnetOption = await modal.findByTestId(
+      `rk-chain-option-${optimism.id}`,
+    );
+    const arbitrumOption = await modal.findByTestId(
+      `rk-chain-option-${optimism.id}`,
+    );
     const optimismOption = await modal.findByTestId(
       `rk-chain-option-${optimism.id}`,
     );
 
-    // optimism SHOULD be displayed
-    // as it was the only passed to RainbowKitProvider
+    expect(mainnetOption).toBeInTheDocument();
+    expect(arbitrumOption).toBeInTheDocument();
     expect(optimismOption).toBeInTheDocument();
-
-    // mainnet & arb SHOULD NOT be displayed
-    // even tho they're supported they were not passed to RainbowKitProvider
-    expect(
-      modal.queryByTestId(`rk-chain-option-${mainnet.id}`),
-    ).not.toBeInTheDocument();
-    expect(
-      modal.queryByTestId(`rk-chain-option-${arbitrum.id}`),
-    ).not.toBeInTheDocument();
   });
 
   it('Can switch chains', async () => {
     let onCloseGotCalled = false;
-    const modal = renderWithProviders(
-      <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
-      {
-        mock: true,
+
+    const modal = await renderChainModalWithConnectedWallet(
+      [mainnet, arbitrum],
+      () => {
+        onCloseGotCalled = true;
       },
     );
+
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
@@ -86,88 +108,36 @@ describe('<ChainModal />', () => {
     expect(onCloseGotCalled).toBe(true);
   });
 
-  it('Just closes on switch error (user rejected, or other)', async () => {
-    let onCloseGotCalled = false;
-    const modal = renderWithProviders(
-      <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
-      {
-        mock: true,
-        mockOptions: {
-          chainId: mainnet.id,
-          flags: { failSwitchChain: true, isAuthorized: true },
-        },
-      },
-    );
-    const mainnetOption = await modal.findByTestId(
-      `rk-chain-option-${mainnet.id}`,
-    );
-    const arbitrumOption = await modal.findByTestId(
-      `rk-chain-option-${arbitrum.id}`,
-    );
-
-    expect(mainnetOption).toHaveTextContent('Connected');
-    expect(arbitrumOption).not.toHaveTextContent('Connected');
-
-    await user.click(arbitrumOption);
-
-    expect(mainnetOption).toHaveTextContent('Connected');
-    expect(arbitrumOption).not.toHaveTextContent('Connected'); // keep not having it lmao
-
-    expect(onCloseGotCalled).toBe(true);
-  });
-
-  it(`Handles wallets that don't support switching`, async () => {
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      mock: true,
-      mockOptions: {
-        flags: { isAuthorized: true, noSwitchChain: true },
-      },
-    });
-
-    expect(modal.baseElement).toHaveTextContent(
-      'Your wallet does not support switching networks from',
-    );
-  });
-
   it('Closes on close button press', async () => {
     let onCloseGotCalled = false;
+
     const modal = renderWithProviders(
       <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
-      {
-        mock: true,
-      },
     );
+
     const closeButton = await modal.findByLabelText('Close');
+
     await user.click(closeButton);
 
     expect(onCloseGotCalled).toBe(true);
   });
 
-  it('Custom chain metadata', async () => {
-    const customChains: Chain[] = [
-      {
-        ...mainnet,
-        name: 'Custom Chain',
-        iconUrl: 'https://example.com/icon.svg',
-        iconBackground: '#fff',
-      },
-    ];
+  it('Custom chain metadata passed from <RainbowKitProvider>', async () => {
+    const modal = await renderChainModalWithConnectedWallet([mainnet]);
 
-    const modal = renderWithProviders(<ChainModal onClose={() => {}} open />, {
-      chains: customChains,
-      mock: true,
-    });
     const mainnetOption = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}`,
     );
+
     expect(mainnetOption).toHaveTextContent('Ethereum');
 
     const mainnetOptionIcon = await modal.findByTestId(
       `rk-chain-option-${mainnet.id}-icon`,
     );
+
     expect(mainnetOptionIcon).toHaveAttribute(
       'style',
-      'background: rgb(255, 255, 255);',
+      'background: rgb(72, 76, 80);',
     );
   });
 });

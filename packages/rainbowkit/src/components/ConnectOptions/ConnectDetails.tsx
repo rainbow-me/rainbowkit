@@ -71,7 +71,10 @@ export function GetDetail({
   getWalletDownload: (walletId: string) => void;
   compactModeEnabled: boolean;
 }) {
-  const wallets = useWalletConnectors();
+  const wallets = useWalletConnectors().filter(
+    (wallet) => wallet.isRainbowKitConnector,
+  );
+
   const shownWallets = wallets.splice(0, 5);
 
   const { i18n } = useContext(I18nContext);
@@ -210,8 +213,9 @@ export function ConnectDetail({
     qrCode,
     ready,
     showWalletConnectModal,
+    getDesktopUri,
   } = wallet;
-  const getDesktopDeepLink = wallet.desktop?.getUri;
+  const isDesktopDeepLinkAvailable = !!getDesktopUri;
   const safari = isSafari();
 
   const { i18n } = useContext(I18nContext);
@@ -221,6 +225,11 @@ export function ConnectDetail({
   const hasQrCodeAndDesktop =
     downloadUrls?.qrCode && !!wallet.desktopDownloadUrl;
   const hasQrCode = qrCode && qrCodeUri;
+
+  const onDesktopUri = async () => {
+    const uri = await getDesktopUri?.();
+    window.open(uri, safari ? '_blank' : '_self');
+  };
 
   const secondaryAction: {
     description: string;
@@ -299,7 +308,12 @@ export function ConnectDetail({
             gap="8"
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
-              <AsyncImage height={LOGO_SIZE} src={iconUrl} width={LOGO_SIZE} />
+              <AsyncImage
+                useAsImage={!wallet.isRainbowKitConnector}
+                height={LOGO_SIZE}
+                src={iconUrl}
+                width={LOGO_SIZE}
+              />
             </Box>
             <Box
               alignItems="center"
@@ -359,16 +373,10 @@ export function ConnectDetail({
                     {connectionError ? (
                       <ActionButton
                         label={i18n.t('connect.secondary_action.retry.label')}
-                        onClick={
-                          getDesktopDeepLink
-                            ? async () => {
-                                const uri = await getDesktopDeepLink();
-                                window.open(uri, safari ? '_blank' : '_self');
-                              }
-                            : () => {
-                                reconnect(wallet);
-                              }
-                        }
+                        onClick={async () => {
+                          if (isDesktopDeepLinkAvailable) onDesktopUri();
+                          reconnect(wallet);
+                        }}
                       />
                     ) : (
                       <Box color="modalTextSecondary">

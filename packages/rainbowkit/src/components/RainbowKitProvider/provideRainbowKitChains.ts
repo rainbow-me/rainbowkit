@@ -1,5 +1,5 @@
 import { isNotNullish } from '../../utils/isNotNullish';
-import type { RainbowKitChain } from './RainbowKitChainContext';
+import { RainbowKitChain } from './RainbowKitChainContext';
 
 // Sourced from https://github.com/tmm/wagmi/blob/main/packages/core/src/constants/chains.ts
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
@@ -154,7 +154,7 @@ const chainMetadataById = Object.fromEntries(
 
 /** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
 export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
-  chains: Chain[],
+  chains: readonly [Chain, ...Chain[]],
 ): Chain[] =>
   chains.map((chain) => {
     const defaultMetadata = chainMetadataById[chain.id] ?? {};

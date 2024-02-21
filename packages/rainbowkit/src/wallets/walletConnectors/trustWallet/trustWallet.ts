@@ -1,54 +1,93 @@
-import type { InjectedConnectorOptions } from '@wagmi/core/connectors/injected';
-import { Chain } from '../../../components/RainbowKitProvider/RainbowKitChainContext';
-import { getWalletConnectUri } from '../../../utils/getWalletConnectUri';
 import { isMobile } from '../../../utils/isMobile';
-import { InstructionStepName, Wallet } from '../../Wallet';
+import {
+  DefaultWalletOptions,
+  InstructionStepName,
+  Wallet,
+} from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type {
-  WalletConnectConnectorOptions,
-  WalletConnectLegacyConnectorOptions,
-} from '../../getWalletConnectConnector';
 
-declare global {
-  interface Window {
-    trustwallet: Window['ethereum'];
-  }
-}
-
-export interface TrustWalletLegacyOptions {
-  projectId?: string;
-  chains: Chain[];
-  walletConnectVersion: '1';
-  walletConnectOptions?: WalletConnectLegacyConnectorOptions;
-}
-
-export interface TrustWalletOptions {
-  projectId: string;
-  chains: Chain[];
-  walletConnectVersion?: '2';
-  walletConnectOptions?: WalletConnectConnectorOptions;
-}
+export type TrustWalletOptions = DefaultWalletOptions;
 
 export const trustWallet = ({
-  chains,
   projectId,
-  walletConnectOptions,
-  walletConnectVersion = '2',
-  ...options
-}: (TrustWalletLegacyOptions | TrustWalletOptions) &
-  InjectedConnectorOptions): Wallet => {
+  walletConnectParameters,
+}: TrustWalletOptions): Wallet => {
   const isTrustWalletInjected = isMobile()
-    ? hasInjectedProvider('isTrust')
-    : hasInjectedProvider('isTrustWallet');
+    ? hasInjectedProvider({ flag: 'isTrust' })
+    : hasInjectedProvider({ flag: 'isTrustWallet' });
   const shouldUseWalletConnect = !isTrustWalletInjected;
+
+  const getUriMobile = (uri: string) => {
+    return `trust://wc?uri=${encodeURIComponent(uri)}`;
+  };
+
+  const getUriQR = (uri: string) => {
+    return uri;
+  };
+
+  const mobileConnector = {
+    getUri: shouldUseWalletConnect ? getUriMobile : undefined,
+  };
+
+  let qrConnector = undefined;
+
+  if (shouldUseWalletConnect) {
+    qrConnector = {
+      getUri: getUriQR,
+      instructions: {
+        learnMoreUrl: 'https://trustwallet.com/',
+        steps: [
+          {
+            description: 'wallet_connectors.trust.qr_code.step1.description',
+            step: 'install' as InstructionStepName,
+            title: 'wallet_connectors.trust.qr_code.step1.title',
+          },
+          {
+            description: 'wallet_connectors.trust.qr_code.step2.description',
+            step: 'create' as InstructionStepName,
+            title: 'wallet_connectors.trust.qr_code.step2.title',
+          },
+          {
+            description: 'wallet_connectors.trust.qr_code.step3.description',
+            step: 'scan' as InstructionStepName,
+            title: 'wallet_connectors.trust.qr_code.step3.title',
+          },
+        ],
+      },
+    };
+  }
+
+  const extensionConnector = {
+    instructions: {
+      learnMoreUrl: 'https://trustwallet.com/browser-extension',
+      steps: [
+        {
+          description: 'wallet_connectors.trust.extension.step1.description',
+          step: 'install' as InstructionStepName,
+          title: 'wallet_connectors.trust.extension.step1.title',
+        },
+        {
+          description: 'wallet_connectors.trust.extension.step2.description',
+          step: 'create' as InstructionStepName,
+          title: 'wallet_connectors.trust.extension.step2.title',
+        },
+        {
+          description: 'wallet_connectors.trust.extension.step3.description',
+          step: 'refresh' as InstructionStepName,
+          title: 'wallet_connectors.trust.extension.step3.title',
+        },
+      ],
+    },
+  };
 
   return {
     id: 'trust',
     name: 'Trust Wallet',
+    rdns: 'com.trustwallet.app',
     iconUrl: async () => (await import('./trustWallet.svg')).default,
     // Note that we never resolve `installed` to `false` because the
     // Trust Wallet provider falls back to other connection methods if
@@ -66,97 +105,16 @@ export const trustWallet = ({
         'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph',
       browserExtension: 'https://trustwallet.com/browser-extension',
     },
-    createConnector: () => {
-      const getUriMobile = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
-
-        return `trust://wc?uri=${encodeURIComponent(uri)}`;
-      };
-
-      const getUriQR = async () => {
-        const uri = await getWalletConnectUri(connector, walletConnectVersion);
-
-        return uri;
-      };
-
-      const connector = shouldUseWalletConnect
-        ? getWalletConnectConnector({
-            projectId,
-            chains,
-            version: walletConnectVersion,
-            options: walletConnectOptions,
-          })
-        : isMobile()
-          ? getInjectedConnector({ flag: 'isTrust', chains, options })
-          : getInjectedConnector({ flag: 'isTrustWallet', chains, options });
-
-      const mobileConnector = {
-        getUri: shouldUseWalletConnect ? getUriMobile : undefined,
-      };
-
-      let qrConnector = undefined;
-
-      if (shouldUseWalletConnect) {
-        qrConnector = {
-          getUri: getUriQR,
-          instructions: {
-            learnMoreUrl: 'https://trustwallet.com/',
-            steps: [
-              {
-                description:
-                  'wallet_connectors.trust.qr_code.step1.description',
-                step: 'install' as InstructionStepName,
-                title: 'wallet_connectors.trust.qr_code.step1.title',
-              },
-              {
-                description:
-                  'wallet_connectors.trust.qr_code.step2.description',
-                step: 'create' as InstructionStepName,
-                title: 'wallet_connectors.trust.qr_code.step2.title',
-              },
-              {
-                description:
-                  'wallet_connectors.trust.qr_code.step3.description',
-                step: 'scan' as InstructionStepName,
-                title: 'wallet_connectors.trust.qr_code.step3.title',
-              },
-            ],
-          },
-        };
-      }
-
-      const extensionConnector = {
-        instructions: {
-          learnMoreUrl: 'https://trustwallet.com/browser-extension',
-          steps: [
-            {
-              description:
-                'wallet_connectors.trust.extension.step1.description',
-              step: 'install' as InstructionStepName,
-              title: 'wallet_connectors.trust.extension.step1.title',
-            },
-            {
-              description:
-                'wallet_connectors.trust.extension.step2.description',
-              step: 'create' as InstructionStepName,
-              title: 'wallet_connectors.trust.extension.step2.title',
-            },
-            {
-              description:
-                'wallet_connectors.trust.extension.step3.description',
-              step: 'refresh' as InstructionStepName,
-              title: 'wallet_connectors.trust.extension.step3.title',
-            },
-          ],
-        },
-      };
-
-      return {
-        connector,
-        mobile: mobileConnector,
-        qrCode: qrConnector,
-        extension: extensionConnector,
-      };
-    },
+    mobile: mobileConnector,
+    qrCode: qrConnector,
+    extension: extensionConnector,
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
+          projectId,
+          walletConnectParameters,
+        })
+      : isMobile()
+        ? getInjectedConnector({ flag: 'isTrust' })
+        : getInjectedConnector({ flag: 'isTrustWallet' }),
   };
 };

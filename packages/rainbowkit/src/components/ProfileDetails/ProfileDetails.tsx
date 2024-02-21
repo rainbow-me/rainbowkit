@@ -1,5 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
+import { GetEnsNameReturnType } from 'viem';
+import { GetEnsAvatarReturnType } from 'viem/actions';
+import { useAccount } from 'wagmi';
 import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
@@ -19,8 +21,8 @@ import { ProfileDetailsAction } from './ProfileDetailsAction';
 
 interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
-  ensAvatar: ReturnType<typeof useEnsAvatar>['data'];
-  ensName: ReturnType<typeof useEnsName>['data'];
+  ensAvatar: GetEnsAvatarReturnType | undefined;
+  ensName: GetEnsNameReturnType | undefined;
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -34,9 +36,7 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
 
-  const balanceData = useRealtimeBalance({
-    address,
-  });
+  const { data: balanceData } = useRealtimeBalance(address);
 
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
@@ -116,7 +116,7 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              {balanceData && (
+              {!!balanceData && (
                 <Box textAlign="center">
                   <Text
                     as="h1"

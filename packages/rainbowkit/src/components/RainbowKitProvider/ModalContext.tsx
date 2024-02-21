@@ -3,10 +3,11 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount, useAccountEffect, useConfig } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
@@ -62,8 +63,11 @@ export function ModalProvider({ children }: ModalProviderProps) {
   } = useModalStateValue();
 
   const connectionStatus = useConnectionStatus();
-  const { chain } = useNetwork();
-  const chainSupported = !chain?.unsupported;
+
+  const { chainId } = useAccount();
+  const { chains } = useConfig();
+
+  const isCurrentChainSupported = chains.some((chain) => chain.id === chainId);
 
   interface CloseModalsOptions {
     keepConnectModalOpen?: boolean;
@@ -80,10 +84,18 @@ export function ModalProvider({ children }: ModalProviderProps) {
   }
 
   const isUnauthenticated = useAuthenticationStatus() === 'unauthenticated';
-  useAccount({
+
+  useAccountEffect({
     onConnect: () => closeModals({ keepConnectModalOpen: isUnauthenticated }),
     onDisconnect: () => closeModals(),
   });
+
+  useEffect(() => {
+    // Due to multiple connection feature in wagmi v2 we need to close
+    // modals when user is unauthenticated. When connectors changes we log user out
+    // This means we'll need to close the modals as well.
+    if (isUnauthenticated) closeModals();
+  }, [isUnauthenticated]);
 
   return (
     <ModalContext.Provider
@@ -93,7 +105,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           openAccountModal:
-            chainSupported && connectionStatus === 'connected'
+            isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
           openChainModal:
@@ -106,13 +118,13 @@ export function ModalProvider({ children }: ModalProviderProps) {
         }),
         [
           connectionStatus,
-          chainSupported,
           accountModalOpen,
           chainModalOpen,
           connectModalOpen,
           openAccountModal,
           openChainModal,
           openConnectModal,
+          isCurrentChainSupported,
         ],
       )}
     >

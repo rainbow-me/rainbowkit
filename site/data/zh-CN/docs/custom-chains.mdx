@@ -7,33 +7,33 @@ description: 创建自定义链
 
 ## 创建自定义链
 
-您可以使用 `Chain` 类型来帮助您创建自定义链。 您可以使用 `Chain` 类型来帮助您创建自定义链。 然后，将其传递到 [`configureChains` 函数](https://wagmi.sh/docs/providers/configuring-chains)。
+您可以使用 `Chain` 类型来帮助您创建自定义链。 您可以使用 `Chain` 类型来帮助您创建自定义链。 然后，将其传递到 [`configureChains` 函数](https://wagmi.sh/docs/providers/configuring-chains)。 然后，将其传递给 `getDefaultConfig` 或 Wagmi 的 [`createConfig`](https://wagmi.sh/core/api/createConfig#createconfig)。
 
 例如，这里是您可以为 [avax.network](https://avax.network) 创建 Avalanche 链的方式。
 
 ```tsx
-import { Chain, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { publicProvider } from 'wagmi/providers/public';
+import {
+  RainbowKitProvider,
+  getDefaultConfig,
+  Chain,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
 
-const avalanche: Chain = {
+const avalanche = {
   id: 43_114,
   name: 'Avalanche',
-  network: 'avalanche',
-  iconUrl: 'https://example.com/icon.svg',
+  iconUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png',
   iconBackground: '#fff',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Avalanche',
-    symbol: 'AVAX',
-  },
+  nativeCurrency: { name: 'Avalanche', symbol: 'AVAX', decimals: 18 },
   rpcUrls: {
-    public: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
     default: { http: ['https://api.avax.network/ext/bc/C/rpc'] },
   },
   blockExplorers: {
     default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
-    etherscan: { name: 'SnowTrace', url: 'https://snowtrace.io' },
   },
   contracts: {
     multicall3: {
@@ -41,35 +41,25 @@ const avalanche: Chain = {
       blockCreated: 11_907_934,
     },
   },
-  testnet: false,
-};
+} as const satisfies Chain;
 
-const { provider, chains } = configureChains(
-  [avalanche],
-  [publicProvider()]
-);
-
-const { connectors } = getDefaultWallets({
+const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains,
+  chains: [avalanche],
 });
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors,
-  provider,
-});
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
-        {/* Your App */}
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```
-
-了解更多关于 [配置链](https://wagmi.sh/docs/providers/configuring-chains)的信息。

@@ -40,6 +40,7 @@ export async function getStaticProps({ params, locale }) {
   return {
     props: {
       guide,
+      messages: (await import(`../../locales/${locale}.json`)).default,
     },
   };
 }

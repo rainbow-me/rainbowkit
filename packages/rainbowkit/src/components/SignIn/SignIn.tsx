@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useRef } from 'react';
 import { UserRejectedRequestError } from 'viem';
-import { useAccount, useNetwork, useSignMessage } from 'wagmi';
+import { useAccount, useSignMessage } from 'wagmi';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
@@ -13,7 +13,13 @@ import { Text } from '../Text/Text';
 
 export const signInIcon = async () => (await import('./sign.png')).default;
 
-export function SignIn({ onClose }: { onClose: () => void }) {
+export function SignIn({
+  onClose,
+  onCloseModal,
+}: {
+  onClose: () => void;
+  onCloseModal: () => void;
+}) {
   const { i18n } = useContext(I18nContext);
   const [{ status, ...state }, setState] = React.useState<{
     status: 'idle' | 'signing' | 'verifying';
@@ -49,8 +55,7 @@ export function SignIn({ onClose }: { onClose: () => void }) {
   }, [getNonce]);
 
   const mobile = isMobile();
-  const { address } = useAccount();
-  const { chain: activeChain } = useNetwork();
+  const { address, chain: activeChain } = useAccount();
   const { signMessageAsync } = useSignMessage();
 
   const signIn = async () => {
@@ -96,7 +101,13 @@ export function SignIn({ onClose }: { onClose: () => void }) {
       try {
         const verified = await authAdapter.verify({ message, signature });
 
-        if (verified) return;
+        if (verified) {
+          // This will ensure that 'connectModalOpen' state doesn't
+          // stay to true after a successful authentication
+          onCloseModal();
+          return;
+        }
+
         throw new Error();
       } catch {
         return setState((x) => ({

@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "वॉलेट को कनेक्ट करें"
+    "label": "वॉलेट को कनेक्ट करें",
+    "wrong_network": {
+      "label": "गलत नेटवर्क"
+    }
   },
   "intro": {
     "title": "वॉलेट क्या है?",
@@ -86,6 +89,7 @@
     "fallback_title": "अपने फोन से स्कैन करें"
   },
   "connector_group": {
+    "installed": "स्थापित",
     "recommended": "अनुशंसित",
     "other": "अन्य",
     "popular": "लोकप्रिय",

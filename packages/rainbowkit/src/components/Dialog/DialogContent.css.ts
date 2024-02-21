@@ -42,14 +42,8 @@ export const dialogContentWideMobile = style([
 export const dialogContentWideDesktop = style([
   dialogContent,
   {
-    width: largeScreenMinWidth,
-  },
-  {
-    '@media': {
-      [`screen and (min-width: ${largeScreenMinWidth}px)`]: {
-        width: '720px',
-      },
-    },
+    minWidth: '720px',
+    width: '720px',
   },
 ]);
 

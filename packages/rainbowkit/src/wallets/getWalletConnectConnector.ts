@@ -1,105 +1,114 @@
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { WalletConnectLegacyConnector } from 'wagmi/connectors/walletConnectLegacy';
-import { Chain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import { createConnector } from 'wagmi';
+import type { CreateConnectorFn } from 'wagmi';
+import { WalletConnectParameters, walletConnect } from 'wagmi/connectors';
+import type {
+  CreateConnector,
+  RainbowKitDetails,
+  RainbowKitWalletConnectParameters,
+  WalletDetailsParams,
+} from './Wallet';
 
-type SerializedOptions = string;
-const sharedConnectors = new Map<
-  SerializedOptions,
-  WalletConnectLegacyConnector | WalletConnectConnector
->();
-
-type WalletConnectVersion = '1' | '2';
-
-type WalletConnectConnectorConfig = ConstructorParameters<
-  typeof WalletConnectConnector
->[0];
-export type WalletConnectConnectorOptions =
-  // @ts-ignore
-  WalletConnectConnectorConfig['options'];
-
-type WalletConnectLegacyConnectorConfig = ConstructorParameters<
-  typeof WalletConnectLegacyConnector
->[0];
-export type WalletConnectLegacyConnectorOptions =
-  // @ts-ignore
-  WalletConnectLegacyConnectorConfig['options'];
-
-function createConnector(
-  version: WalletConnectVersion,
-  config: WalletConnectLegacyConnectorConfig | WalletConnectConnectorConfig,
-): WalletConnectLegacyConnector | WalletConnectConnector {
-  const connector =
-    version === '1'
-      ? new WalletConnectLegacyConnector(config)
-      : new WalletConnectConnector(config);
-  sharedConnectors.set(JSON.stringify(config), connector);
-  return connector;
+interface GetWalletConnectConnectorParams {
+  projectId: string;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-export function getWalletConnectConnector(config: {
-  version?: WalletConnectVersion;
-  projectId?: string;
-  chains: Chain[];
-  options?: WalletConnectConnectorOptions;
-}): WalletConnectConnector;
-
-export function getWalletConnectConnector(config: {
-  version: '1';
-  chains: Chain[];
-  options?: WalletConnectLegacyConnectorOptions;
-}): WalletConnectLegacyConnector;
-
-export function getWalletConnectConnector(config: {
-  version: '2';
+interface CreateWalletConnectConnectorParams {
   projectId: string;
-  chains: Chain[];
-  options?: WalletConnectConnectorOptions;
-}): WalletConnectConnector;
+  walletDetails: WalletDetailsParams;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
+}
 
-export function getWalletConnectConnector({
-  chains,
-  options = {},
+interface GetOrCreateWalletConnectInstanceParams {
+  projectId: string;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
+  rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
+}
+
+const walletConnectInstances = new Map<
+  string,
+  ReturnType<typeof walletConnect>
+>();
+
+// Function to get or create a walletConnect instance
+const getOrCreateWalletConnectInstance = ({
   projectId,
-  version = '2',
-}: {
-  chains: Chain[];
-  projectId?: string;
-  version?: WalletConnectVersion;
-  options?: WalletConnectLegacyConnectorOptions | WalletConnectConnectorOptions;
-}): WalletConnectConnector | WalletConnectLegacyConnector {
+  walletConnectParameters,
+  rkDetailsShowQrModal,
+}: GetOrCreateWalletConnectInstanceParams): ReturnType<
+  typeof walletConnect
+> => {
+  let config: WalletConnectParameters = {
+    ...(walletConnectParameters ? walletConnectParameters : {}),
+    projectId,
+    showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet
+  };
+
+  // `rkDetailsShowQrModal` should always be `true`
+  if (rkDetailsShowQrModal) {
+    config = { ...config, showQrModal: true };
+  }
+
+  const serializedConfig = JSON.stringify(config);
+
+  const sharedWalletConnector = walletConnectInstances.get(serializedConfig);
+
+  if (sharedWalletConnector) {
+    return sharedWalletConnector;
+  }
+
+  // Create a new walletConnect instance and store it
+  const newWalletConnectInstance = walletConnect(config);
+
+  walletConnectInstances.set(serializedConfig, newWalletConnectInstance);
+
+  return newWalletConnectInstance;
+};
+
+// Creates a WalletConnect connector with the given project ID and additional options.
+function createWalletConnectConnector({
+  projectId,
+  walletDetails,
+  walletConnectParameters,
+}: CreateWalletConnectConnectorParams): CreateConnectorFn {
+  // Create and configure the WalletConnect connector with project ID and options.
+  return createConnector((config) => ({
+    ...getOrCreateWalletConnectInstance({
+      projectId,
+      walletConnectParameters,
+      // Used in `connectorsForWallets` to add another
+      // walletConnect wallet into rainbowkit with modal popup option
+      rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
+    })(config),
+    ...walletDetails,
+  }));
+}
+
+// Factory function to obtain a configured WalletConnect connector.
+export function getWalletConnectConnector({
+  projectId,
+  walletConnectParameters,
+}: GetWalletConnectConnectorParams): CreateConnector {
   // We use this projectId in place of YOUR_PROJECT_ID for our examples.
   // This allows us our examples and templates to be functional with WalletConnect v2.
   // We warn developers against using this projectId in their dApp in production.
   const exampleProjectId = '21fef48091f12692cad574a6f7753643';
-  if (version === '2') {
-    if (!projectId || projectId === '')
-      throw new Error(
-        'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
-      );
-    if (projectId === 'YOUR_PROJECT_ID' || projectId === exampleProjectId)
-      console.warn(
-        'Invalid projectId. Please create a unique WalletConnect Cloud projectId for your dApp https://www.rainbowkit.com/docs/installation#configure',
-      );
+
+  if (!projectId || projectId === '') {
+    throw new Error(
+      'No projectId found. Every dApp must now provide a WalletConnect Cloud projectId to enable WalletConnect v2 https://www.rainbowkit.com/docs/installation#configure',
+    );
   }
 
-  const config = {
-    chains,
-    options:
-      version === '1'
-        ? {
-            qrcode: false,
-            ...options,
-          }
-        : {
-            projectId:
-              projectId === 'YOUR_PROJECT_ID' ? exampleProjectId : projectId,
-            showQrModal: false,
-            ...options,
-          },
-  };
+  if (projectId === 'YOUR_PROJECT_ID') {
+    projectId = exampleProjectId;
+  }
 
-  const serializedConfig = JSON.stringify(config);
-  const sharedConnector = sharedConnectors.get(serializedConfig);
-
-  return sharedConnector ?? createConnector(version, config);
+  // Return a function that merges additional wallet details with `CreateConnectorFn`.
+  return (walletDetails: WalletDetailsParams) =>
+    createWalletConnectConnector({
+      projectId,
+      walletDetails,
+      walletConnectParameters,
+    });
 }

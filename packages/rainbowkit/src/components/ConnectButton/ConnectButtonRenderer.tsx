@@ -1,5 +1,5 @@
 import React, { ReactNode, useContext } from 'react';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount, useConfig } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
 import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
@@ -67,17 +67,18 @@ export function ConnectButtonRenderer({
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
 
+  const { chainId } = useAccount();
+  const { chains: wagmiChains } = useConfig();
+  const isCurrentChainSupported = wagmiChains.some(
+    (chain) => chain.id === chainId,
+  );
+
   const rainbowkitChainsById = useRainbowKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
-
-  const { chain: activeChain } = useNetwork();
-  const rainbowKitChain = activeChain
-    ? rainbowkitChainsById[activeChain.id]
-    : undefined;
+  const rainbowKitChain = chainId ? rainbowkitChainsById[chainId] : undefined;
   const chainName = rainbowKitChain?.name ?? undefined;
   const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
   const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
-
   const resolvedChainIconUrl = useAsyncImage(chainIconUrl);
 
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
@@ -90,10 +91,10 @@ export function ConnectButtonRenderer({
     ? normalizeResponsiveValue(showBalance)[
         isMobile() ? 'smallScreen' : 'largeScreen'
       ]
-    : false;
-  const balanceData = useRealtimeBalance({
-    address: shouldShowBalance ? address : undefined,
-  });
+    : true;
+  const { data: balanceData } = useRealtimeBalance(
+    shouldShowBalance ? address : undefined,
+  );
   const displayBalance = balanceData
     ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
         balanceData.symbol
@@ -126,14 +127,14 @@ export function ConnectButtonRenderer({
           : undefined,
         accountModalOpen,
         authenticationStatus,
-        chain: activeChain
+        chain: chainId
           ? {
               hasIcon: Boolean(chainIconUrl),
               iconBackground: chainIconBackground,
               iconUrl: resolvedChainIconUrl,
-              id: activeChain.id,
-              name: chainName ?? activeChain.name,
-              unsupported: activeChain.unsupported,
+              id: chainId,
+              name: chainName,
+              unsupported: !isCurrentChainSupported,
             }
           : undefined,
         chainModalOpen,

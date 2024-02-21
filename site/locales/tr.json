@@ -41,5 +41,14 @@
     "meta": {
       "description": "Bir cüzdanı bağlamanın en iyi yolu 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Genel Bakış",
+        "getting_started": "Başlarken",
+        "advanced": "Gelişmiş"
+      }
+    }
   }
 }

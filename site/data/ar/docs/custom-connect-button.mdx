@@ -247,26 +247,26 @@ export const YourApp = () => {
       type: 'number',
       description: (
         <>
-          Chain ID ، مثل <code>1</code>
+          The chain ID, e.g. <code>1</code>
         </>
       ),
     },
     {
-      Name: 'chain.name',
+      name: 'chain.name',
       required: false,
-      نوع: 'string | undefined',
-      الوصف : (
+      type: 'string | undefined',
+      description: (
         <>
-          اسم السلسلة ، مثل <code>"Ethereum"</code>
+          The chain name, e.g. <code>"Ethereum"</code>
         </>
       ),
     },
     {
       name: 'chain.unsupported',
       required: false,
-      نوع: 'boolean | undefined',
-      الوصف:
-        'القيمة البوليانية تشير إلى ما إذا كانت السلسلة الحالية غير مدعومة',
+      type: 'boolean | undefined',
+      description:
+        'Boolean indicating whether the current chain is unsupported',
     },
   ]}
 />
@@ -279,39 +279,39 @@ export const YourApp = () => {
       name: 'openAccountModal',
       required: false,
       type: '() => void',
-      description: 'الوظيفة لفتح نافذة الحساب',
+      description: 'Function to open the account modal',
     },
     {
       name: 'openChainModal',
       required: false,
       type: '() => void',
-      description: 'الوظيفة لفتح نافذة السلسلة',
+      description: 'Function to open the chain modal',
     },
     {
       name: 'openConnectModal',
       required: false,
       type: '() => void',
-      description: 'الوظيفة لفتح نافذة الاتصال',
+      description: 'Function to open the connect modal',
     },
     {
       name: 'accountModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'البولين الذي يشير إلى ما إذا كانت نافذة الحساب مفتوحة',
+        'Boolean indicating whether the account modal is open',
     },
     {
       name: 'chainModalOpen',
       required: false,
       type: 'boolean',
-      description: 'البولين الذي يشير إلى ما إذا كانت نافذة السلسلة مفتوحة',
+      description: 'Boolean indicating whether the chain modal is open',
     },
     {
       name: 'connectModalOpen',
       required: false,
       type: 'boolean',
       description:
-        'البولين الذي يشير إلى ما إذا كانت نافذة الاتصال مفتوحة',
+        'Boolean indicating whether the connect modal is open',
     },
   ]}
 />

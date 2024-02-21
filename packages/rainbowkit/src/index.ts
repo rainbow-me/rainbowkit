@@ -1,6 +1,7 @@
 export { ConnectButton } from './components/ConnectButton/ConnectButton';
 export { WalletButton } from './components/WalletButton/WalletButton';
 export { RainbowKitProvider } from './components/RainbowKitProvider/RainbowKitProvider';
+export { getDefaultConfig } from './config/getDefaultConfig';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
@@ -14,8 +15,12 @@ export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
 } from './components/RainbowKitProvider/AuthenticationContext';
-export type { Wallet, WalletList } from './wallets/Wallet';
-export type { Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
+export type {
+  Wallet,
+  WalletList,
+  WalletDetailsParams,
+  RainbowKitWalletConnectParameters,
+} from './wallets/Wallet';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';
 export type {
   AuthenticationStatus,
@@ -24,6 +29,7 @@ export type {
 export type { Locale } from './locales/';
 export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
 export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
+export type { RainbowKitChain as Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
 export { midnightTheme } from './themes/midnightTheme';

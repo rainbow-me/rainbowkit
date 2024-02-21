@@ -1,9 +1,13 @@
-import { Connector } from 'wagmi';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
-import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { Wallet, WalletInstance, WalletList } from './Wallet';
+import type {
+  RainbowKitWalletConnectParameters,
+  Wallet,
+  WalletDetailsParams,
+  WalletList,
+} from './Wallet';
+import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -11,175 +15,147 @@ interface WalletListItem extends Wallet {
   groupName: string;
 }
 
-/*
-  Build your own list of wallets for the RainbowKit modal
-  with their necessary connectors. This way you have full
-  control over which wallets to display, and in which order.
-  Returns a `connectors` fn to pass directly to Wagmi's `createConfig`. 
-*/
-export function connectorsForWallets(walletList: WalletList): () => Connector[];
-
-/*
-  Assemble a list of low-level connectors for use with the
-  `WalletButton` and `RainbowButton` components in custom implementations.
-*/
-export function connectorsForWallets(wallets: Wallet[]): Connector[];
-
-/*
-  Overload implementation for `connectorsForWallets`.
-  1. Returns a `connectors` function that will then return a Connectors array
-  2. Returns a prepared Connectors array stuffed with dummy WalletList data
-*/
-export function connectorsForWallets(walletList: any): any {
-  if ('groupName' in walletList[0]) {
-    return _connectorsForWallets(walletList);
-  }
-  return _connectorsForWallets([
-    {
-      groupName: '',
-      wallets: walletList as Wallet[],
-    },
-  ])();
+export interface ConnectorsForWalletsParameters {
+  projectId: string;
+  appName: string;
+  appDescription?: string;
+  appUrl?: string;
+  appIcon?: string;
+  walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-const _connectorsForWallets = (walletList: WalletList): (() => Connector[]) => {
-  return () => {
-    let index = -1;
+export const connectorsForWallets = (
+  walletList: WalletList,
+  {
+    projectId,
+    walletConnectParameters,
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  }: ConnectorsForWalletsParameters,
+): CreateConnectorFn[] => {
+  let index = -1;
 
-    const connectors: Connector[] = [];
-    const visibleWallets: WalletListItem[] = [];
-    const potentiallyHiddenWallets: WalletListItem[] = [];
-    const walletInstances: WalletInstance[] = [];
+  const connectors: CreateConnectorFn[] = [];
+  const visibleWallets: WalletListItem[] = [];
+  const potentiallyHiddenWallets: WalletListItem[] = [];
 
-    // First collect all list items in the correct order, but keep
-    // track of which ones have a `hidden` function so we can
-    // evaluate them after all the visible wallet instances have
-    // been created. This is because the potentially hidden wallets
-    // need access to the list of resolved wallet instances so that
-    // they can decide whether or not they should be hidden,
-    // e.g. the "Injected Wallet" option hides itself if another
-    // injected wallet is available.
+  const walletConnectMetaData = computeWalletConnectMetaData({
+    appName,
+    appDescription,
+    appUrl,
+    appIcon,
+  });
+
+  // biome-ignore lint/complexity/noForEach: TODO
+  walletList.forEach(({ groupName, wallets }, groupIndex) => {
     // biome-ignore lint/complexity/noForEach: TODO
-    walletList.forEach(({ groupName, wallets }, groupIndex) => {
-      // biome-ignore lint/complexity/noForEach: TODO
-      wallets.forEach((wallet) => {
-        index++;
+    wallets.forEach((createWallet) => {
+      index++;
 
-        // guard against non-hex values for `iconAccent`
-        if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
-          throw new Error(
-            `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
-          );
-        }
-
-        const walletListItem = {
-          ...wallet,
-          groupIndex,
-          groupName,
-          index,
-        };
-
-        if (typeof wallet.hidden === 'function') {
-          potentiallyHiddenWallets.push(walletListItem);
-        } else {
-          visibleWallets.push(walletListItem);
-        }
+      const wallet = createWallet({
+        projectId,
+        appName,
+        appIcon,
+        // `option` is being used only for `walletConnectWallet` wallet
+        options: {
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+        },
+        // Every other wallet that supports walletConnect flow and is not
+        // `walletConnectWallet` wallet will have `walletConnectParameters` property
+        walletConnectParameters: {
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+        },
       });
-    });
 
-    // We process the known visible wallets first so that the potentially
-    // hidden wallets have access to the complete list of resolved wallets
-    const walletListItems: WalletListItem[] = [
-      ...visibleWallets,
-      ...potentiallyHiddenWallets,
-    ];
-
-    // biome-ignore lint/complexity/noForEach: TODO
-    walletListItems.forEach(
-      ({
-        createConnector,
-        groupIndex,
-        groupName,
-        hidden,
-        index,
-        ...walletMeta
-      }) => {
-        if (typeof hidden === 'function') {
-          // Run the function to check if the wallet needs to be hidden
-          const isHidden = hidden({
-            wallets: [
-              // Note: We only expose a subset of fields
-              // publicly to reduce API surface area
-              ...walletInstances.map(({ connector, id, installed, name }) => ({
-                connector,
-                id,
-                installed,
-                name,
-              })),
-            ],
-          });
-
-          // If wallet is hidden, bail out and proceed to the next list item
-          if (isHidden) {
-            return;
-          }
-        }
-
-        const { connector, ...connectionMethods } = omitUndefinedValues(
-          createConnector(),
+      // guard against non-hex values for `iconAccent`
+      if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
+        throw new Error(
+          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
         );
+      }
 
-        let walletConnectModalConnector: Connector | undefined;
-        if (
-          walletMeta.id === 'walletConnect' &&
-          connectionMethods.qrCode &&
-          !isMobile()
-        ) {
-          const { chains, options } = connector;
+      const walletListItem = {
+        ...wallet,
+        groupIndex: groupIndex + 1,
+        groupName,
+        index,
+      };
 
-          walletConnectModalConnector = new WalletConnectConnector({
-            chains,
-            options: {
-              ...options,
-              showQrModal: true,
-            },
-          });
+      if (typeof wallet.hidden === 'function') {
+        potentiallyHiddenWallets.push(walletListItem);
+      } else {
+        visibleWallets.push(walletListItem);
+      }
+    });
+  });
 
-          connectors.push(walletConnectModalConnector);
-        }
+  // We process the known visible wallets first so that the potentially
+  // hidden wallets have access to the complete list of resolved wallets
+  const walletListItems: WalletListItem[] = [
+    ...visibleWallets,
+    ...potentiallyHiddenWallets,
+  ];
 
-        const walletInstance: WalletInstance = {
-          connector,
+  for (const {
+    createConnector,
+    groupIndex,
+    groupName,
+    hidden,
+    ...walletMeta
+  } of walletListItems) {
+    if (typeof hidden === 'function') {
+      // Run the function to check if the wallet needs to be hidden
+      const isHidden = hidden();
+
+      // If wallet is hidden, bail out and proceed to the next list item
+      if (isHidden) {
+        continue;
+      }
+    }
+
+    const walletMetaData = (
+      // For now we should only use these as the additional parameters
+      additionalRkParams?: Pick<
+        WalletDetailsParams['rkDetails'],
+        'isWalletConnectModalConnector' | 'showQrModal'
+      >,
+    ) => {
+      return {
+        rkDetails: omitUndefinedValues({
+          ...walletMeta,
           groupIndex,
           groupName,
-          index,
-          walletConnectModalConnector,
-          ...walletMeta,
-          ...connectionMethods,
-        };
+          isRainbowKitConnector: true,
+          // These additional params will be used in rainbowkit react tree to
+          // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
+          // showQrModal: true. This way we can let the user choose if they want to
+          // connect via QR code or open the official walletConnect modal instead
+          ...(additionalRkParams ? additionalRkParams : {}),
+        }),
+      };
+    };
 
-        // We maintain an array of all wallet instances
-        // so they can be passed to the `hidden` function
-        // used by generic fallback wallets
-        walletInstances.push(walletInstance);
+    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
 
-        if (!connectors.includes(connector)) {
-          connectors.push(connector);
+    if (isWalletConnectConnector) {
+      connectors.push(
+        createConnector(
+          walletMetaData({
+            isWalletConnectModalConnector: true,
+            showQrModal: true,
+          }),
+        ),
+      );
+    }
 
-          // Reset private wallet list the first time we see
-          // a connector to avoid duplicates after HMR,
-          // otherwise we'll keep pushing wallets into
-          // the old list. This is happening because we're
-          // re-using the WalletConnectConnector instance
-          // so the wallet list already exists after HMR.
-          connector._wallets = [];
-        }
+    const connector = createConnector(walletMetaData());
 
-        // Add wallet to connector's list of associated wallets
-        connector._wallets.push(walletInstance);
-      },
-    );
+    connectors.push(connector);
+  }
 
-    return connectors;
-  };
+  return connectors;
 };

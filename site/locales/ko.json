@@ -41,5 +41,14 @@
     "meta": {
       "description": "지갑을 연결하는 최고의 방법 🌈"
     }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "개요",
+        "getting_started": "시작하기",
+        "advanced": "고급"
+      }
+    }
   }
 }

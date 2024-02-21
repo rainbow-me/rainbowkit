@@ -12,10 +12,10 @@ This package is designed to be installed independent of [RainbowKit](https://www
 
 ### Install
 
-Install the `@rainbow-me/rainbow-button` package and its peer dependencies, [wagmi](https://wagmi.sh/) and [viem](https://viem.sh/).
+Install the `@rainbow-me/rainbow-button` package and its peer dependencies, [wagmi](https://wagmi.sh/), [viem](https://viem.sh/), and [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem
+npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 ### Import
@@ -34,7 +34,7 @@ import { createConfig, WagmiConfig } from 'wagmi';
 
 ### Adopt the connector
 
-The `RainbowConnector` supports connecting with Rainbow just like wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
+The `RainbowConnector` supports connecting with Rainbow just like Wagmi's native `MetaMaskConnector` from `wagmi/connectors/metaMask`.
 
 Create an instance of the `RainbowConnector` and provide it in your wagmi config `connectors` list. Supply your `chains` list and your WalletConnect v2 `projectId`. You can obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in). This is absolutely free and only takes a few minutes.
 
@@ -47,16 +47,18 @@ const config = createConfig({
 
 ### Wrap providers
 
-Wrap your application with `RainbowButtonProvider` and `WagmiConfig`.
+Wrap your application with `RainbowButtonProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), and [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const App = () => {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        {/* Your App */}
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          {/* Your App */}
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 };
 ```

@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccountEffect } from 'wagmi';
+import type { Chain } from 'wagmi/chains';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
 import { ThemeVars } from '../../css/sprinkles.css';
 import { Locale } from '../../locales';
@@ -15,10 +16,7 @@ import {
   ModalSizeProvider,
   ModalSizes,
 } from './ModalSizeContext';
-import {
-  RainbowKitChain,
-  RainbowKitChainProvider,
-} from './RainbowKitChainContext';
+import { RainbowKitChainProvider } from './RainbowKitChainContext';
 import { RealtimeBalanceStatusProvider } from './RealtimeBalanceStatusContext';
 import { ShowBalanceProvider } from './ShowBalanceContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
@@ -54,8 +52,7 @@ export type Theme =
     };
 
 export interface RainbowKitProviderProps {
-  chains: RainbowKitChain[];
-  initialChain?: RainbowKitChain | number;
+  initialChain?: Chain | number;
   id?: string;
   children: ReactNode;
   theme?: Theme | null;
@@ -76,7 +73,6 @@ const defaultTheme = lightTheme();
 export function RainbowKitProvider({
   appInfo,
   avatar,
-  chains,
   children,
   coolMode = false,
   id,
@@ -89,7 +85,7 @@ export function RainbowKitProvider({
   usePreloadImages();
   useFingerprint();
 
-  useAccount({ onDisconnect: clearWalletConnectDeepLink });
+  useAccountEffect({ onDisconnect: clearWalletConnectDeepLink });
 
   if (typeof theme === 'function') {
     throw new Error(
@@ -107,7 +103,7 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainProvider chains={chains} initialChain={initialChain}>
+    <RainbowKitChainProvider initialChain={initialChain}>
       <RealtimeBalanceStatusProvider>
         <WalletButtonProvider>
           <I18nProvider locale={locale}>

@@ -2,10 +2,10 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ES2019",
+    "preserveSymlinks": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "preserveSymlinks": true,
     "declaration": true,
     "declarationDir": "dist",
     "jsx": "preserve",

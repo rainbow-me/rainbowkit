@@ -1,33 +1,39 @@
-import "../styles/global.css";
-import "@rainbow-me/rainbow-button/styles.css";
-import type { AppProps } from "next/app";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
-import { RainbowButtonProvider, RainbowConnector } from "@rainbow-me/rainbow-button";
-
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet],
-  [publicProvider()]
-);
-
-const projectId = "YOUR_PROJECT_ID";
+import '../styles/global.css';
+import '@rainbow-me/rainbow-button/styles.css';
+import type { AppProps } from 'next/app';
+import { createConfig, http, WagmiProvider } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
+import {
+  RainbowButtonProvider,
+  rainbowConnector,
+} from '@rainbow-me/rainbow-button';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const config = createConfig({
-  autoConnect: true,
-  // @ts-ignore - TODO: resolve wagmi/viem issue
-  connectors: [new RainbowConnector({ chains, projectId })],
-  publicClient,
-  webSocketPublicClient,
+  connectors: [
+    rainbowConnector({
+      appName: 'RainbowKit demo',
+      projectId: 'YOUR_PROJECT_ID',
+    }),
+  ],
+  chains: [mainnet],
+  transports: {
+    [mainnet.id]: http(),
+  },
+  ssr: true,
 });
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiConfig config={config}>
-      <RainbowButtonProvider>
-        <Component {...pageProps} />
-      </RainbowButtonProvider>
-    </WagmiConfig>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowButtonProvider>
+          <Component {...pageProps} />
+        </RainbowButtonProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
 }
 

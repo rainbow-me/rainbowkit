@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Conectar la billetera"
+    "label": "Conectar la billetera",
+    "wrong_network": {
+      "label": "Red incorrecta"
+    }
   },
   "intro": {
     "title": "¿Qué es una billetera?",
@@ -86,6 +89,7 @@
     "fallback_title": "Escanea con tu teléfono"
   },
   "connector_group": {
+    "installed": "Instalado",
     "recommended": "Recomendado",
     "other": "Otro",
     "popular": "Popular",

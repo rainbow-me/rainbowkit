@@ -211,6 +211,7 @@ const unresponsiveProperties = defineProperties({
     paddingRight: spacing,
     paddingTop: spacing,
     position: ['absolute', 'fixed', 'relative'],
+    WebkitUserSelect: ['none'],
     right: {
       '0': '0',
     },

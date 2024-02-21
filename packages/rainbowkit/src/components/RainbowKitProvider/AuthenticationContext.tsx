@@ -1,13 +1,12 @@
 import React, {
   ReactNode,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
-  useRef,
+  useState,
 } from 'react';
-import { ConnectorData, useAccount } from 'wagmi';
+import { Config, useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'
@@ -56,50 +55,69 @@ export function RainbowKitAuthenticationProvider<Message = unknown>({
 }: RainbowKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
-  const { connector } = useAccount({
+  const { connector } = useAccount();
+  // Used to track whether an active connector is changed to log user out.
+  // Wagmi supports multiple connections.
+  const [currentConnectorUid, setCurrentConnectorUid] = useState<string>();
+
+  useAccountEffect({
     onDisconnect: () => {
       adapter.signOut();
+      setCurrentConnectorUid(undefined);
     },
   });
 
-  // If the user is authenticated but their wallet is disconnected
-  // on page load (e.g. because they disconnected from within their
-  // wallet), we immediately sign them out using the auth adapter.
-  // This is because our UX is designed to present connection + auth
-  // as a single state, so we need to ensure these states are in sync.
-  const { isDisconnected } = useAccount();
-  const onceRef = useRef(false);
-  useEffect(() => {
-    if (onceRef.current) return;
-    onceRef.current = true;
-
-    if (isDisconnected && status === 'authenticated') {
+  const handleChangedAccount = (
+    data: Parameters<Config['_internal']['events']['change']>[0],
+  ) => {
+    // Only if account changes
+    if (data.accounts) {
+      // If account is changed we automatically log user out.
+      // Current connector uid only should be available only at "authenticated"
+      setCurrentConnectorUid(undefined);
       adapter.signOut();
     }
-  }, [status, adapter, isDisconnected]);
-
-  const handleChangedAccount = useCallback(
-    ({ account }: ConnectorData) => {
-      // Only if account is changed then signOut
-      if (account) adapter.signOut();
-    },
-    [adapter],
-  );
+  };
 
   // Wait for user authentication before listening to "change" event.
   // Avoid listening immediately after wallet connection due to potential SIWE authentication delay.
   // Ensure to turn off the "change" event listener for cleanup.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (connector && status === 'authenticated') {
+    // Wagmi renders emitter's partially on page load. We wanna make sure
+    // the event emitters gets updated before proceeding
+    if (
+      typeof connector?.emitter?.on === 'function' &&
+      status === 'authenticated'
+    ) {
+      // Set current connector uid
+      setCurrentConnectorUid(connector?.uid);
+
       // Attach the event listener when status is 'authenticated'
-      connector.on('change', handleChangedAccount);
+      connector.emitter.on('change', handleChangedAccount);
 
       // Cleanup function to remove the event listener
       return () => {
-        connector?.off('change', handleChangedAccount);
+        connector.emitter.off('change', handleChangedAccount);
       };
     }
-  }, [connector, status, handleChangedAccount]);
+  }, [connector?.emitter, status]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (
+      currentConnectorUid &&
+      typeof connector?.emitter?.on === 'function' &&
+      status === 'authenticated'
+    ) {
+      // If the current connector is not
+      // equal to previous connector then logout
+      if (connector?.uid !== currentConnectorUid) {
+        setCurrentConnectorUid(undefined);
+        adapter.signOut();
+      }
+    }
+  }, [connector?.emitter, currentConnectorUid, status]);
 
   return (
     <AuthenticationContext.Provider

@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "Cüzdanı Bağla"
+    "label": "Cüzdanı Bağla",
+    "wrong_network": {
+      "label": "Yanlış ağ"
+    }
   },
   "intro": {
     "title": "Cüzdan nedir?",
@@ -86,6 +89,7 @@
     "fallback_title": "Telefonunuzla tarama yapın"
   },
   "connector_group": {
+    "installed": "Yüklendi",
     "recommended": "Tavsiye Edilen",
     "other": "Diğer",
     "popular": "Popüler",

@@ -1,13 +1,12 @@
 import React from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
   useAccount,
-  useContractRead,
-  useContractWrite,
-  usePrepareContractWrite,
-  useWaitForTransaction,
+  useReadContract,
+  useWaitForTransactionReceipt,
+  useWriteContract,
 } from 'wagmi';
 import { abi } from '../contract-abi';
 import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
@@ -24,31 +23,28 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0n);
   const { isConnected } = useAccount();
 
-  const { config: contractWriteConfig } = usePrepareContractWrite({
-    ...contractConfig,
-    functionName: 'mint',
-  });
-
   const {
-    data: mintData,
-    write: mint,
-    isLoading: isMintLoading,
+    data: hash,
+    writeContract: mint,
+    isPending: isMintLoading,
     isSuccess: isMintStarted,
     error: mintError,
-  } = useContractWrite(contractWriteConfig);
+  } = useWriteContract();
 
-  const { data: totalSupplyData } = useContractRead({
+  const { data: totalSupplyData } = useReadContract({
     ...contractConfig,
     functionName: 'totalSupply',
-    watch: true,
   });
 
   const {
     data: txData,
     isSuccess: txSuccess,
     error: txError,
-  } = useWaitForTransaction({
-    hash: mintData?.hash,
+  } = useWaitForTransactionReceipt({
+    hash,
+    query: {
+      enabled: !!hash,
+    },
   });
 
   React.useEffect(() => {
@@ -88,7 +84,12 @@ const Home: NextPage = () => {
                 className="button"
                 data-mint-loading={isMintLoading}
                 data-mint-started={isMintStarted}
-                onClick={() => mint?.()}
+                onClick={() =>
+                  mint?.({
+                    ...contractConfig,
+                    functionName: 'mint',
+                  })
+                }
               >
                 {isMintLoading && 'Waiting for approval'}
                 {isMintStarted && 'Minting...'}
@@ -126,7 +127,7 @@ const Home: NextPage = () => {
                 </p>
                 <p style={{ marginBottom: 6 }}>
                   View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}>
+                  <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
                     Etherscan
                   </a>
                 </p>

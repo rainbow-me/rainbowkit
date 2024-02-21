@@ -1,5 +1,42 @@
 # site
 
+## 0.0.90
+
+### Patch Changes
+
+- aa0269e: - Added migration guide for `@rainbow-me/rainbowkit` `2.x.x` breaking changes.
+  - Updated all documentation section to include the latest Wagmi, Viem and TanStack Query usage
+  - Added migration guide for `2.x.x` breaking changes
+- Updated dependencies [aa0269e]
+  - @rainbow-me/rainbowkit@2.0.0
+
+## 0.0.89
+
+### Patch Changes
+
+- Updated dependencies [33a8266]
+  - @rainbow-me/rainbowkit@1.3.6
+
+## 0.0.88
+
+### Patch Changes
+
+- Updated dependencies [2b0c7b3]
+  - @rainbow-me/rainbowkit@1.3.5
+
+## 0.0.87
+
+### Patch Changes
+
+- 7fbe6f8: In the "Manual setup" section of the "Installation" page now shows to install `wagmi@1` and `viem@1`. This is because the latest `wagmi` and `viem` version is not compatible with the latest version `1.3.3` of rainbowkit.
+- Updated dependencies [c0a644a]
+- Updated dependencies [41616b9]
+- Updated dependencies [cf4955f]
+- Updated dependencies [e5f5f03]
+- Updated dependencies [c0bd68e]
+- Updated dependencies [a79609b]
+  - @rainbow-me/rainbowkit@1.3.4
+
 ## 0.0.86
 
 ### Patch Changes

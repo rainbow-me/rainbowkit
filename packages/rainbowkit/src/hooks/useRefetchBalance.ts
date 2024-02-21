@@ -3,7 +3,9 @@ import { useRealtimeBalanceStatus } from '../components/RainbowKitProvider/Realt
 export const useRefetchBalance = () => {
   const { setStatus } = useRealtimeBalanceStatus();
 
-  return () => {
+  const refetchBalance = () => {
     setStatus('refetch');
   };
+
+  return { refetchBalance };
 };

@@ -1,18 +1,13 @@
+import type { Address } from 'viem';
 import { useBalance } from 'wagmi';
 import { useRealtimeBalanceStatus } from '../components/RainbowKitProvider/RealtimeBalanceStatusContext';
 
-export const useRealtimeBalance = (
-  parameters: Parameters<typeof useBalance>[0],
-): ReturnType<typeof useBalance>['data'] => {
+export const useRealtimeBalance = (address: Address | undefined) => {
   const { status } = useRealtimeBalanceStatus();
 
-  const { data: balanceData } = useBalance({
-    ...parameters,
-    address:
-      status === 'show' && parameters?.address ? parameters.address : undefined,
-    // wagmi caches balance data which means we would have to set it to 0
-    cacheTime: 0,
+  const balance = useBalance({
+    address: status === 'show' && address ? address : undefined,
   });
 
-  return balanceData;
+  return balance;
 };

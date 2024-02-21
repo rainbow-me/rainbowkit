@@ -7,74 +7,69 @@ description: Налаштування ланцюгів
 
 ## Налаштування ланцюгів
 
-Властивість `chains` в `RainbowKitProvider` визначає, які ланцюги доступні для вибору користувачем.
-
 RainbowKit розроблений для інтеграції з [об’єктом `chain` від wagmi](https://wagmi.sh/react/chains). Перегляньте список підтримуваних ланцюгів [тут](https://wagmi.sh/react/chains#supported-chains).
-
-> Для отримання додаткової інформації про об’єкт `chain`, або щоб побачити приклади створення власного визначення ланцюга, перегляньте [вихідний код об’єкта `chain` від wagmi](https://github.com/wagmi-dev/references/blob/main/packages/chains/src/types.ts).
-
-Ваше налаштування ланцюга може бути визначене в одному масиві, наданому [`configureChains`](https://wagmi.sh/react/providers/configuring-chains).
-
-```tsx
-import { RainbowKitProvider, Chain } from '@rainbow-me/rainbowkit';
-import { configureChains } from 'wagmi';
-import { mainnet, optimism, zora } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-
-const { chains } = configureChains(
-  [mainnet, optimism, zora],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
-);
-
-const App = () => {
-  return (
-    <RainbowKitProvider chains={chains} {...etc}>
-      {/* ... */}
-    </RainbowKitProvider>
-  );
-};
-```
 
 ### Налаштування початкового ланцюга
 
-За замовчуванням, RainbowKit підключиться до першого ланцюга у вашому масиві `chains`, щоб користувачі не стикалися відразу зі станом "Неправильна мережа". Цю поведінку можна налаштувати через властивість `initialChain`.
+За замовчуванням, RainbowKit підключиться до першої мережі, яку ви надасте Wagmi. Цю поведінку можна налаштувати через властивість `initialChain`.
 
 Початковий ланцюг можна налаштувати, використовуючи ідентифікатор ланцюга.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={1}>
+<RainbowKitProvider initialChain={1}>
 ```
 
 Для зручності, ви також можете передати об'єкт ланцюга.
 
 ```tsx
-<RainbowKitProvider chains={chains} initialChain={mainnet}>
+<RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Іконки користувацьких ланцюгів
+### Метадані користувацької мережі
 
-Кілька іконок ланцюгів надаються за замовчуванням, але ви можете налаштувати іконку для кожного ланцюга, використовуючи властивість iconUrl.
+Декілька іконок та фонів мережі надаються за замовчуванням, але ви можете налаштувати іконку та фон для кожної мережі, використовуючи властивості `iconUrl` та `iconBackground`.
+
+Приклад з використанням `getDefaultConfig`
 
 ```tsx
-import { Chain, mainnet, optimism } from 'wagmi/chains';
+import { mainnet, optimism } from 'wagmi/chains';
 
-const defaultChains: Chain[] = [
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Приклад з використанням `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
   {
     ...mainnet,
+    iconBackground: '#000',
     iconUrl: 'https://example.com/icons/ethereum.png',
   },
   {
     ...optimism,
+    iconBackground: '#ff0000',
     iconUrl: 'https://example.com/icons/optimism.png',
   },
 ];
 
-const { chains } = configureChains(defaultChains, [
-  alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-  publicProvider(),
-]);
+const config = createConfig({
+  chains,
+});
 ```

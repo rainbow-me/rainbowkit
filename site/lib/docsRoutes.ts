@@ -1,50 +1,46 @@
 import { Doc } from '.contentlayer/generated';
 
-type PartialDoc = Pick<Doc, 'title'> & Pick<Doc, 'slug'>;
+type PartialDoc = Pick<Doc, 'slug'>;
 
 export type RouteProps = {
-  label: string;
+  section: string;
   pages: PartialDoc[];
-  section?: string;
 };
 
 export const docsRoutes: RouteProps[] = [
   {
-    label: 'Overview',
+    section: 'overview',
+    pages: [{ slug: 'introduction' }, { slug: 'migration-guide' }],
+  },
+
+  {
+    section: 'getting_started',
     pages: [
-      { title: 'Introduction', slug: 'introduction' },
-      { title: 'Migration Guide', slug: 'migration-guide' },
+      { slug: 'installation' },
+      { slug: 'connect-button' },
+      { slug: 'modal-sizes' },
+      { slug: 'theming' },
+      { slug: 'chains' },
+      { slug: 'localization' },
+      { slug: 'authentication' },
+      { slug: 'recent-transactions' },
     ],
   },
 
   {
-    label: 'Getting Started',
+    section: 'advanced',
     pages: [
-      { title: 'Installation', slug: 'installation' },
-      { title: 'ConnectButton', slug: 'connect-button' },
-      { title: 'Modal Sizes', slug: 'modal-sizes' },
-      { title: 'Theming', slug: 'theming' },
-      { title: 'Chains', slug: 'chains' },
-      { title: 'Localization', slug: 'localization' },
-      { title: 'Authentication', slug: 'authentication' },
-      { title: 'Recent Transactions', slug: 'recent-transactions' },
-    ],
-  },
-
-  {
-    label: 'Advanced',
-    pages: [
-      { title: 'Modal Hooks', slug: 'modal-hooks' },
-      { title: 'Custom ConnectButton', slug: 'custom-connect-button' },
-      { title: 'Custom Theme', slug: 'custom-theme' },
-      { title: 'Custom Wallet List', slug: 'custom-wallet-list' },
-      { title: 'Custom Wallets', slug: 'custom-wallets' },
-      { title: 'Custom Chains', slug: 'custom-chains' },
-      { title: 'Custom App Info', slug: 'custom-app-info' },
-      { title: 'Custom Avatars', slug: 'custom-avatars' },
-      { title: 'Custom Authentication', slug: 'custom-authentication' },
-      { title: 'WalletButton', slug: 'wallet-button' },
-      { title: 'Cool Mode', slug: 'cool-mode' },
+      { slug: 'modal-hooks' },
+      { slug: 'custom-connect-button' },
+      { slug: 'custom-theme' },
+      { slug: 'custom-wallet-list' },
+      { slug: 'custom-wallets' },
+      { slug: 'custom-chains' },
+      { slug: 'custom-app-info' },
+      { slug: 'custom-avatars' },
+      { slug: 'custom-authentication' },
+      { slug: 'wallet-button' },
+      { slug: 'cool-mode' },
     ],
   },
 ];

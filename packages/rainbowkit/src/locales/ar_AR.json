@@ -1,6 +1,9 @@
 {
   "connect_wallet": {
-    "label": "اتصال المحفظة"
+    "label": "اتصال المحفظة",
+    "wrong_network": {
+      "label": "شبكة خاطئة"
+    }
   },
   "intro": {
     "title": "ما هو المحفظة؟",
@@ -86,6 +89,7 @@
     "fallback_title": "المسح باستخدام هاتفك"
   },
   "connector_group": {
+    "installed": "مُثبّت",
     "recommended": "موصى به",
     "other": "آخر",
     "popular": "شائع",
