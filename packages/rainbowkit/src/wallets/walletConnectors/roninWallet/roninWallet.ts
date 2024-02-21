@@ -35,7 +35,8 @@ export const roninWallet = ({
       qrCode: 'https://wallet.roninchain.com/',
     },
     mobile: {
-      getUri: (uri: string) => `ronin://wc?uri=${encodeURIComponent(uri)}`,
+      getUri: (uri: string) =>
+        `roninwallet://wc?uri=${encodeURIComponent(uri)}`,
     },
     qrCode: {
       getUri: (uri: string) => uri,
