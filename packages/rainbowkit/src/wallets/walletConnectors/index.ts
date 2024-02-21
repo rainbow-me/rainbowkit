@@ -25,6 +25,7 @@ import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
+import { roninWallet } from './roninWallet/roninWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
@@ -68,6 +69,7 @@ export {
   phantomWallet,
   rabbyWallet,
   rainbowWallet,
+  roninWallet,
   safeWallet,
   safeheronWallet,
   safepalWallet,
