@@ -68,6 +68,7 @@ export {
   oneKeyWallet,
   phantomWallet,
   rabbyWallet,
+  ramperWallet,
   rainbowWallet,
   safeWallet,
   safeheronWallet,
@@ -83,5 +84,4 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
-  ramperWallet,
 };
