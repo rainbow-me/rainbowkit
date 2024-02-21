@@ -52,6 +52,7 @@ import {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  roninWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -79,6 +80,7 @@ import {
   zkSync,
   zora,
   zoraSepolia,
+  ronin,
 } from 'wagmi/chains';
 
 import { AppContextProps } from '../lib/AppContextProps';
@@ -163,6 +165,7 @@ const config = getDefaultConfig({
         oneKeyWallet,
         phantomWallet,
         rabbyWallet,
+        roninWallet,
         safeheronWallet,
         safepalWallet,
         subWallet,
