@@ -17,11 +17,6 @@ export const ramperWallet = (): Wallet => {
     iconAccent: '#CDA349',
     iconBackground: '#fff',
     downloadUrls: {
-      android:
-        'https://play.google.com/store/apps/details?id=ramper.wallet.crypto.finance',
-      ios: 'https://apps.apple.com/vn/app/ramper-wallet/id6461721561',
-      mobile: 'https://www.ramper.xyz/download',
-      qrCode: 'https://www.ramper.xyz/download',
       chrome:
         'https://chromewebstore.google.com/detail/ramper-wallet/nbdhibgjnjpnkajaghbffjbkcgljfgdi',
       browserExtension: 'https://www.ramper.xyz/download',
