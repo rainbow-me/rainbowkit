@@ -1,5 +1,17 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.1
+
+### Patch Changes
+
+- 5149dbd: Added Ramper Wallet support with `ramperWallet` wallet connector
+- 1e7d3f4: Added Ronin Wallet support with `roninWallet` wallet connector
+- c16541a: Added Kresus support with `kresusWallet` wallet connector
+- dbca966: Added Bloom Wallet support with `bloomWallet` wallet connector
+- f69c0e1: Added support for `ronin` chain
+- bb56562: Fixed a bug where the `showBalance` prop on `<ConnectButton />` didn't accept a boolean, and had only accepted responsive modal values.
+- 1a08977: Added EIP-6963 support for `coin98Wallet` wallet connector
+
 ## 2.0.0
 
 ### Major Changes
