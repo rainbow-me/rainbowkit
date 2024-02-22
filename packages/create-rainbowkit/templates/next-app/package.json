@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@tanstack/react-query": "^5.18.1",
+    "@tanstack/react-query": "^5.22.2",
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "^2.7.3",
-    "wagmi": "^2.5.5"
+    "viem": "^2.7.12",
+    "wagmi": "^2.5.7"
   },
   "devDependencies": {
     "@types/node": "^18.19.3",
