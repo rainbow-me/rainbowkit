@@ -1,5 +1,26 @@
 # site
 
+## 0.0.91
+
+### Patch Changes
+
+- 5149dbd: Added Ramper Wallet support with `ramperWallet` wallet connector
+- d623428: Updated the following packages:
+  - wagmi to `^2.5.7`
+  - viem to `^2.7.12`
+  - @tanstack/react-query to `^5.22.2`
+- 1e7d3f4: Added Ronin Wallet support with `roninWallet` wallet connector
+- c16541a: Added Kresus support with `kresusWallet` wallet connector
+- dbca966: Added Bloom Wallet support with `bloomWallet` wallet connector
+- Updated dependencies [5149dbd]
+- Updated dependencies [1e7d3f4]
+- Updated dependencies [c16541a]
+- Updated dependencies [dbca966]
+- Updated dependencies [f69c0e1]
+- Updated dependencies [bb56562]
+- Updated dependencies [1a08977]
+  - @rainbow-me/rainbowkit@2.0.1
+
 ## 0.0.90
 
 ### Patch Changes
