@@ -59,6 +59,15 @@ The `ConnectButton` component exposes several props to customize its appearance,
       description:
         'Whether the balance is visible next to the account name',
     },
+    {
+      name: 'showCurrentChain',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description:
+        'Whether the current chain should be shown without having to open the chain modal',
+    },
   ]}
 />
 
@@ -122,6 +131,16 @@ Hide the balance.
 <ConnectButton showBalance={__false__} />
 ```
 
+#### Show current chain
+
+Use the `showCurrentChain` prop to always show the current chain without having to open the chain modal.
+
+Show current chain.
+
+```tsx
+<ConnectButton showCurrentChain={__false__} />
+```
+
 #### Responsive
 
 These props can also be defined in a responsive format.
@@ -142,6 +161,17 @@ On small screens, hide balance. But on large screens, show it.
 ```tsx
 <ConnectButton
   showBalance={{
+    smallScreen: false,
+    largeScreen: true,
+  }}
+/>
+```
+
+On small screens, hide current chain. But on large screens, show it.
+
+```tsx
+<ConnectButton
+  showCurrentChain={{
     smallScreen: false,
     largeScreen: true,
   }}

@@ -52,6 +52,10 @@ const Example = ({ authEnabled }: AppContextProps) => {
     useState<ChainStatus>(defaultProps.chainStatus.smallScreen);
   const [chainStatusLargeScreen, setChainStatusLargeScreen] =
     useState<ChainStatus>(defaultProps.chainStatus.largeScreen);
+  const [showCurrentChainSmallScreen, setShowCurrentChainSmallScreen] =
+    useState<boolean>(defaultProps.showCurrentChain.smallScreen);
+  const [showCurrentChainLargeScreen, setShowCurrentChainLargeScreen] =
+    useState<boolean>(defaultProps.showCurrentChain.largeScreen);
 
   const [showBalanceSmallScreen, setShowBalanceSmallScreen] = useState<boolean>(
     defaultProps.showBalance.smallScreen,
@@ -113,13 +117,16 @@ const Example = ({ authEnabled }: AppContextProps) => {
             largeScreen: chainStatusLargeScreen,
             smallScreen: chainStatusSmallScreen,
           }}
+          showCurrentChain={{
+            largeScreen: showCurrentChainLargeScreen,
+            smallScreen: showCurrentChainSmallScreen,
+          }}
           showBalance={{
             largeScreen: showBalanceLargeScreen,
             smallScreen: showBalanceSmallScreen,
           }}
         />
       </div>
-
       <div>
         <h3 style={{ fontFamily: 'sans-serif' }}>Custom buttons</h3>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -431,6 +438,35 @@ const Example = ({ authEnabled }: AppContextProps) => {
                       id="showBalance"
                       onChange={(event) => {
                         setShowBalanceLargeScreen(event.currentTarget.checked);
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="showBalance">showCurrentChain</label>
+                  </td>
+                  <td>
+                    <input
+                      checked={showCurrentChainLargeScreen}
+                      id="showCurrentChain"
+                      onChange={(event) => {
+                        setShowCurrentChainLargeScreen(
+                          event.currentTarget.checked,
+                        );
+                      }}
+                      type="checkbox"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      checked={showCurrentChainSmallScreen}
+                      id="showCurrentChain"
+                      onChange={(event) => {
+                        setShowCurrentChainSmallScreen(
+                          event.currentTarget.checked,
+                        );
                       }}
                       type="checkbox"
                     />
