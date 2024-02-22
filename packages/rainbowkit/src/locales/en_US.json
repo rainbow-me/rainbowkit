@@ -309,6 +309,37 @@
       }
     },
 
+    "bloom": {
+      "desktop": {
+        "step1": {
+          "title": "Open the Bloom Wallet app",
+          "description": "We recommend putting Bloom Wallet on your home screen for quicker access."
+        },
+        "step2": {
+          "description": "Create or import a wallet using your recovery phrase.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you have a wallet, click on Connect to connect via Bloom. A connection prompt in the app will appear for you to confirm the connection.",
+          "title": "Click on Connect"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the Bloom Wallet app",
+          "description": "We recommend putting Bloom Wallet on your home screen for quicker access."
+        },
+        "step2": {
+          "description": "Create or import a wallet using your recovery phrase.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you have a wallet, click on Connect to connect via Bloom. A connection prompt in the app will appear for you to confirm the connection.",
+          "title": "Click on Connect"
+        }
+      }
+    },
+
     "coin98": {
       "qr_code": {
         "step1": {
@@ -795,6 +826,23 @@
         "step3": {
           "description": "Once you set up your wallet, click below to refresh the browser and load up the extension.",
           "title": "Refresh your browser"
+        }
+      }
+    },
+    
+    "ramper": {
+      "extension": {
+        "step1": {
+          "title": "Install the Ramper extension",
+          "description": "We recommend pinning Ramper to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "Create a Wallet",
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
         }
       }
     },

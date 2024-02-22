@@ -8,15 +8,15 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
     "@rainbow-me/rainbow-button": "workspace:*",
-    "@tanstack/react-query": "^5.18.1",
+    "@tanstack/react-query": "^5.22.2",
     "ethers": "^5.6.8",
     "next": "^14.0.4",
     "next-auth": "4.24.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "siwe": "^2.1.4",
-    "viem": "^2.7.3",
-    "wagmi": "^2.5.5"
+    "viem": "^2.7.12",
+    "wagmi": "^2.5.7"
   },
   "scripts": {
     "dev": "next dev",
