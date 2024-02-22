@@ -815,6 +815,38 @@
       }
     },
 
+    "ronin": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting Ronin Wallet on your home screen for quicker access.",
+          "title": "Open the Ronin Wallet app"
+        },
+        "step2": {
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the scan button"
+        }
+      },
+
+      "extension": {
+        "step1": {
+          "description": "We recommend pinning Ronin Wallet to your taskbar for quicker access to your wallet.",
+          "title": "Install the Ronin Wallet extension"
+        },
+        "step2": {
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension.",
+          "title": "Refresh your browser"
+        }
+      }
+    },
+
     "ramper": {
       "extension": {
         "step1": {
