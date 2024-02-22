@@ -17,7 +17,7 @@
 "site": patch
 ---
 
-Updated following packages:
-- wagmi: `^2.5.5` -> `^2.5.7`
-- viem: `^2.7.3` -> `^2.7.12`
-- @tanstack/react-query: `^5.18.1` -> `^5.22.2`
+Updated the following packages:
+- wagmi to `^2.5.7`
+- viem to `^2.7.12`
+- @tanstack/react-query to `^5.22.2`
