@@ -3,4 +3,4 @@
 "example": patch
 ---
 
-Added `ronin` chain to RainbowKit chain metadata
+Added support for `ronin` chain
