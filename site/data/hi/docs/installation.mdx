@@ -117,21 +117,21 @@ RainbowKit अब आपके उपयोगकर्ता के वॉल�
 
 ##### React, Next.js, और Webpack
 
-Next.js और Create React App द्वारा उपयोग किया जाने वाला [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler [अब Node polyfills प्रदान नहीं करता](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), इसलिए आपको RainbowKit के peer dependencies को संतुष्ट करने के लिए इन मॉड्यूल्स को खुद शामिल करने की आवश्यकता होगी। Create React App विशेष रूप से यह मांगती है कि आप `Buffer` के लिए polyfill तैयार करें।
+Next.js और Create React App द्वारा प्रयोग किया गया [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler [अब Node polyfills प्रदान नहीं करता](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), इसलिए आपको RainbowKit की peer dependencies को संतुष्ट करने के लिए इन मॉड्यूल्स को स्वयं शामिल करना होगा। Create React App विशेष रूप से आपको `Buffer` के लिए polyfill करने की आवश्यकता है।
 
-RainbowKit के पिछले संस्करणों में जो [ethers](https://docs.ethers.org/v5/) पर निर्भर करते थे, `fs`, `net`, और `tls` मॉड्यूल्स को स्वचालित रूप से polyfilled किया जाता था। RainbowKit v1 + wagmi v1 के साथ, जो [viem](https://viem.sh/) पर निर्माणित हैं, यह मामला अब नहीं है।
+RainbowKit के पिछले संस्करणों में जो [ethers](https://docs.ethers.org/v5/) पर निर्भर थे, `fs`, `net`, और `tls` मॉड्यूल्स स्वतः polyfilled होते थे। RainbowKit v1 + wagmi v1 के साथ जो [viem](https://viem.sh/) पर बनाया गया है, यह मामला अब नहीं है।
 
 हमारे [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), और [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) नमूनों की संदर्भ लें अपने प्रोजेक्ट के configuration guidance के लिए।
 
 ##### Vite
 
-[Vite](https://vitejs.dev) बंडलर Node polyfills प्रदान नहीं करता, इसलिए आपको `global`, `Buffer` और `process.env` के लिए polyfills शामिल करने की आवश्यकता होगी। उदाहरण के लिए, आप [हमारे नमूना Vite प्रोजेक्ट के polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts) की संदर्भ ले सकते हैं।
+[Vite](https://vitejs.dev) bundler भी Node polyfills प्रदान नहीं करता, इसलिए आपको `global`, `Buffer` और `process.env` के लिए polyfills शामिल करने होंगे। उदाहरण के तौर पर, आप हमारे नमूना Vite प्रोजेक्ट में [polyfills का संदर्भ ले सकते हैं](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)।
 
 ##### Remix
 
 जब आप [Remix](https://remix.run) का उपयोग कर रहे होते हैं, तो सभी RainbowKit पैकेज प्रवेश बिंदुओं को आपके [सर्वर डिपेंडेंसीज](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) की सूची में आपके Remix कॉन्फ़िग में जोड़ा जाना चाहिए क्योंकि वे ESM पैकेजों के रूप में प्रकाशित किए जाते हैं।
 
-Remix आवश्यकता होती है कि आप `global`, `Buffer` और `process.env` को पॉलीफिल करें। हमारी नमूना Remix परियोजना में [polyfills का संदर्भ लें](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
+Remix भी आपको `global`, `Buffer` और `process.env` के लिए polyfill करने की आवश्यकता है। हमारे नमूना Remix प्रोजेक्ट में [polyfills का संदर्भ लें](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)।
 
 ```js
 /**
@@ -159,8 +159,8 @@ RainbowKit के कुछ चलते हुए उदाहरण देख�
 
 RainbowKit को सीधे अपने ब्राउज़र में आज़माने के लिए, नीचे दिए गए CodeSandbox लिंक्स देखें:
 
--   [Create React App] के साथ(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
--   [Next.js]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
--   [Next.js App Router] के साथ(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
--   [Remix]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
--   [Vite]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- [Create React App] के साथ(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- [Next.js]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- [Next.js App Router] के साथ(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- [Remix]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- [Vite]के साथ  (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

@@ -95,8 +95,8 @@ npm i @tanstack/react-query
 
 Jika Anda menggunakan hook `wagmi` dan aksi `viem` dalam dApp Anda, Anda akan perlu mengikuti panduan migrasi untuk v2:
 
--   [Panduan Migrasi Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
--   [Perubahan Penting Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [Panduan Migrasi Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [Perubahan Penting Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### Perubahan pada RainbowKit
 
@@ -227,7 +227,7 @@ Catatan: wagmi tidak lagi menggunakan paket `ethers` secara internal. Tetapi jik
 
 **3. **Pastikan kompatibilitas bundler dan polyfill\*\*
 
-Dalam versi sebelumnya dari wagmi yang mengandalkan [ethers](https://docs.ethers.org/v5/), modul `fs`, `net`, dan `tls` yang dibutuhkan oleh WalletConnect secara otomatis dipenuhi polyfill. Hal ini tidak lagi berlaku dengan RainbowKit v1 + wagmi v1, yang dibangun pada [viem](https://viem.sh/).
+Dalam versi sebelumnya dari wagmi yang mengandalkan [ethers](https://docs.ethers.org/v5/), modul `fs`, `net`, dan `tls` yang dibutuhkan oleh WalletConnect secara otomatis dipenuhi polyfill. Hal ini tidak lagi berlaku dengan RainbowKit v1 + wagmi v1, yang dibangun di atas [viem](https://viem.sh/).
 
 Merujuk pada [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) kami dan sampel [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) untuk petunjuk konfigurasi untuk proyek Anda.
 
@@ -251,13 +251,13 @@ Setiap dApp sekarang harus menyediakan [WalletConnect Cloud](https://cloud.walle
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2.  Berikan WalletConnect Cloud projectId
+#### 2. Berikan WalletConnect Cloud projectId
 
 Setiap dApp yang mengandalkan WalletConnect sekarang perlu mendapatkan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini benar-benar gratis dan hanya membutuhkan beberapa menit.
 
@@ -291,13 +291,13 @@ Ketergantungan sejawat wagmi telah diperbarui menjadi `0.11.x`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2.  Periksa perubahan besar pada `wagmi`
+#### 2. Periksa perubahan besar pada `wagmi`
 
 Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
@@ -309,13 +309,13 @@ Ketergantungan sejawat wagmi telah diperbarui menjadi `0.10.x`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  Periksa perubahan besar pada `wagmi`
+#### 2. Periksa perubahan besar pada `wagmi`
 
 Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
@@ -327,13 +327,13 @@ Peer dependency wagmi telah diperbarui ke `0.9.x`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  Periksa perubahan besar pada `wagmi`
+#### 2. Periksa perubahan besar pada `wagmi`
 
 Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
@@ -345,13 +345,13 @@ Ketergantungan sebaya wagmi telah diperbarui ke `0.8.x`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
+#### 1. Upgrade RainbowKit dan `wagmi` ke versi terbaru mereka
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2.  Periksa perubahan besar pada `wagmi`
+#### 2. Periksa perubahan besar pada `wagmi`
 
 Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
@@ -404,7 +404,7 @@ RainbowKit telah memperbarui dependensi peer `wagmi` ke `0.5.x`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade dependensi
+#### 1. Upgrade dependensi
 
 Perbarui RainbowKit dan wagmi ke versi terbaru mereka
 
@@ -412,7 +412,7 @@ Perbarui RainbowKit dan wagmi ke versi terbaru mereka
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2.  Periksa perubahan besar pada `wagmi`
+#### 2. Periksa perubahan besar pada `wagmi`
 
 Jika Anda menggunakan hook `wagmi` di aplikasi Anda, Anda perlu memeriksa apakah aplikasi Anda telah dipengaruhi oleh perubahan besar pada `wagmi`.
 
@@ -484,7 +484,7 @@ RainbowKit telah memperbarui dependensi sejawat `wagmi` menjadi `^0.4`.
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-#### 1.  Upgrade dependensi
+#### 1. Upgrade dependensi
 
 Perbarui RainbowKit dan wagmi ke versi terbaru mereka
 
@@ -492,7 +492,7 @@ Perbarui RainbowKit dan wagmi ke versi terbaru mereka
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2.  Ganti impor configureChains
+#### 2. Ganti impor configureChains
 
 Impor `configureChains` dari wagmi bukan dari RainbowKit:
 
@@ -501,7 +501,7 @@ Impor `configureChains` dari wagmi bukan dari RainbowKit:
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3.  Pindahkan penyedia
+#### 3. Pindahkan penyedia
 
 RainbowKit tidak lagi mengekspor API `apiProvider`. Gantilah dengan provider yang Anda inginkan dari wagmi.
 
@@ -573,7 +573,7 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4.  Ubah nama provider wagmi
+#### 4. Ubah nama provider wagmi
 
 Ubah nama `WagmiProvider` menjadi `WagmiConfig`.
 

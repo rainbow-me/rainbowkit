@@ -93,8 +93,8 @@ npm i @tanstack/react-query
 
 إذا كنت تستخدم خطافات `wagmi` وإجراءات `viem` في تطبيقك اللامركزي، ستحتاج إلى اتباع دليل الهجرة للإصدار v2:
 
--   [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
--   [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### تغييرات RainbowKit
 
@@ -104,7 +104,7 @@ npm i @tanstack/react-query
 
 يستمر المطورون في السيطرة الكاملة على قائمة المحافظ المخصصة لتسليط الضوء على المحافظ المفضلة للمستخدمين النهائيين. يُشجع على أن تستمر في تضمين `injectedWallet` و `walletConnectWallet` في قائمتك لدعم جميع المنصات.
 
-**2. تكوين Wagmi مع getDefaultConfig**
+\*\*2. تكوين Wagmi مع getDefaultConfig\*\*
 
 هذه الواجهة البرمجية الجديدة تبسط تجربة التكوين وتحل محل الحاجة لاستخدام `createConfig` من Wagmi مباشرةً. تم تبسيط تكوين السلسلة، بما في ذلك مزودي الخدمات العامة المستنتجة لـ `transports`.
 
@@ -193,7 +193,7 @@ const config = getDefaultConfig({
   })
 ```
 
-\*\*5. محافظ مخصصة
+**4. السلاسل المخصصة**
 
 موصلات محفظة RainbowKit قد خضعت لتغييرات جوهرية لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و [مثال الموصل](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيق dApp الخاص بك.
 
