@@ -75,6 +75,7 @@ import {
   optimismSepolia,
   polygon,
   polygonMumbai,
+  ronin,
   sepolia,
   zkSync,
   zora,
@@ -123,6 +124,7 @@ const config = getDefaultConfig({
     bsc,
     zkSync,
     avalanche,
+    ronin,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           goerli,
