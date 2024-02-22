@@ -86,11 +86,23 @@ export function ConnectButtonRenderer({
     showRecentTransactions;
 
   const { showBalance } = useShowBalance();
-  const shouldShowBalance = showBalance
-    ? normalizeResponsiveValue(showBalance)[
+
+  const computeShouldShowBalance = () => {
+    if (typeof showBalance === 'boolean') {
+      return showBalance;
+    }
+
+    if (showBalance) {
+      return normalizeResponsiveValue(showBalance)[
         isMobile() ? 'smallScreen' : 'largeScreen'
-      ]
-    : true;
+      ];
+    }
+
+    return true;
+  };
+
+  const shouldShowBalance = computeShouldShowBalance();
+
   const { data: balanceData } = useBalance({
     address: shouldShowBalance ? address : undefined,
   });
