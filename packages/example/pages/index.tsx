@@ -447,12 +447,13 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   <td>
                     <label htmlFor="showBalance">showCurrentChain</label>
                   </td>
+
                   <td>
                     <input
-                      checked={showCurrentChainLargeScreen}
+                      checked={showCurrentChainSmallScreen}
                       id="showCurrentChain"
                       onChange={(event) => {
-                        setShowCurrentChainLargeScreen(
+                        setShowCurrentChainSmallScreen(
                           event.currentTarget.checked,
                         );
                       }}
@@ -461,10 +462,10 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   </td>
                   <td>
                     <input
-                      checked={showCurrentChainSmallScreen}
+                      checked={showCurrentChainLargeScreen}
                       id="showCurrentChain"
                       onChange={(event) => {
-                        setShowCurrentChainSmallScreen(
+                        setShowCurrentChainLargeScreen(
                           event.currentTarget.checked,
                         );
                       }}
