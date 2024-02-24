@@ -50,7 +50,7 @@
 
   1. Upgrade `next-auth` to `~4.22.0`
 
-  2. In your `next-auth` providers `async authorize(credentials)` implementation, alter the parameters passed to `getCsrfToken` like so. Reference our example implementation [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth).
+  2. In your `next-auth` providers `async authorize(credentials)` implementation, alter the parameters passed to `getCsrfToken` like so. Reference our example implementation [here](/examples/with-next-siwe-next-auth).
 
   ```ts
   - const nonce = await getCsrfToken({ req });

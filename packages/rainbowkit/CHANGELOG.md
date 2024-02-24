@@ -833,7 +833,7 @@
 
 ### Patch Changes
 
-- 9432a2f: The `ConnectButton` component is now tagged with `use client;` to support the Next 13 App Router and server-side rendered dApps. You can reference a full `app/` directory implementation example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app).
+- 9432a2f: The `ConnectButton` component is now tagged with `use client;` to support the Next 13 App Router and server-side rendered dApps. You can reference a full `app/` directory implementation example [here](/examples/with-next-app).
 - b2c66ff: Modified acceptable peer dependency versions to ensure proper peer warnings for future versions of wagmi and viem. `wagmi` now requires `~1.0.1` and `viem` now requires `~0.3.19`.
 - bcb3d18: Modal Hooks including `useConnectModal`, `useAccountModal`, and `useChainModal` now each return a boolean with the status of the modal.
 
