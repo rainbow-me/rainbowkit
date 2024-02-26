@@ -30,7 +30,7 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=14"
-  },
   "version": "0.0.80"
+    "node": ">=18.0.0"
+  }
 }
