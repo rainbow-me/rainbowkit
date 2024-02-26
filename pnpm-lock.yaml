@@ -164,8 +164,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/rainbowkit
       next-intl:
-        specifier: ^2.20.2
-        version: 2.22.3(next@14.1.0)(react@18.2.0)
+        specifier: ^3.9.1
+        version: 3.9.1(next@14.1.0)(react@18.2.0)
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -589,8 +589,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       next-intl:
-        specifier: ^2.20.2
-        version: 2.22.3(next@14.1.0)(react@18.2.0)
+        specifier: ^3.9.1
+        version: 3.9.1(next@14.1.0)(react@18.2.0)
       parse-numeric-range:
         specifier: 1.3.0
         version: 1.3.0
@@ -21463,9 +21463,8 @@ packages:
       - supports-color
     dev: true
 
-  /next-intl@2.22.3(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-6HNPxWPO7JRKhrMKJJQTsq6AOd3Neu5fsH0EUCYCwkIMqlrud24BkI6zBocWoOgAaqVrNylXtn53xbVTw6hdYg==}
-    deprecated: This was intended as 3.0, but CI accidentally published it as 2.22.3. Either stay on 2.22.1 or upgrade to 3.0
+  /next-intl@3.9.1(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-1j+5lLTY5kHshqnVoeAep+gQO1xX1KlJU3irZkdCOhr0woo562qLKOsGGVh+7bB5luBMu9qQBQy7ZwNK81Z2Ig==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -21474,7 +21473,7 @@ packages:
       negotiator: 0.6.3
       next: 14.1.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      use-intl: 2.22.3(react@18.2.0)
+      use-intl: 3.9.1(react@18.2.0)
     dev: false
 
   /next-sitemap@4.2.3(next@14.1.0):
@@ -26606,9 +26605,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /use-intl@2.22.3(react@18.2.0):
-    resolution: {integrity: sha512-aGBsRvVoincUV+skTg1qYInU9bu4OuCBx02uGa0er9X+eR43ZqaZehIZk7zAVubyVZNLyKbawxX+SXvdxOUKcA==}
-    deprecated: This was intended as 3.0, but CI accidentally published it as 2.22.3. Either stay on 2.22.1 or upgrade to 3.0
+  /use-intl@3.9.1(react@18.2.0):
+    resolution: {integrity: sha512-tWcT636/jYC0hILyFTLmiuE+ovbvPPBXwN/OOQxxE+4bssHXeeksdWXzpDsKqE37aV62DFrQ2jhumV8udecjNA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
