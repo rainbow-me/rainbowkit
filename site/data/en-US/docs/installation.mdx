@@ -129,19 +129,15 @@ The [Vite](https://vitejs.dev) bundler doesn't provide Node polyfills, so you'll
 
 ##### Remix
 
-When using [Remix](https://remix.run), all RainbowKit package entry points must be added to your list of [server dependencies](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) in your Remix config since they're published as ESM packages.
+When using [Remix](https://remix.run), you must polyfill `buffer`, `events` and `http` modules. Reference the Remix configuration below, or [our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
-Remix also requires that you polyfill `global`, `Buffer` and `process.env`. Reference the [polyfills in our sample Remix project](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
 
