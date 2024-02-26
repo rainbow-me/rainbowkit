@@ -109,7 +109,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
               ? openAccountModal
               : undefined,
           openChainModal:
-            connectionStatus === 'connected' ? openChainModal : undefined,
+            connectionStatus === 'connected' ||
+            connectionStatus === 'disconnected'
+              ? openChainModal
+              : undefined,
           openConnectModal:
             connectionStatus === 'disconnected' ||
             connectionStatus === 'unauthenticated'

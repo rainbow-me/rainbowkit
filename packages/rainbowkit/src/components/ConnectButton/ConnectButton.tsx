@@ -12,7 +12,11 @@ import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import {
+  useIgnoreChainModalOnConnect,
+  useInitialChainId,
+  useRainbowKitChains,
+} from '../RainbowKitProvider/RainbowKitChainContext';
 import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
@@ -41,10 +45,11 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
+  const ignoreChainModalOnConnect = useIgnoreChainModalOnConnect();
   const { setShowBalance } = useShowBalance();
-  const [ready, setReady] = useState(false);
-
+  const initialChainId = useInitialChainId();
   const { i18n } = useContext(I18nContext);
+  const [ready, setReady] = useState(false);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
@@ -62,6 +67,14 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
+        // Hide the chain button if the user has specified a custom "initialChainId".
+        // This prevents users from switching to a different chain when they have a desired
+        // chain that they want to switch to. We also hide the chain button if user is using
+        // our authentication provider and is not yet signed in.
+        const shouldHideChainButton =
+          ((initialChainId || ignoreChainModalOnConnect) &&
+            connectionStatus !== 'connected') ||
+          connectionStatus === 'unauthenticated';
         const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
 
@@ -78,98 +91,98 @@ export function ConnectButton({
               },
             })}
           >
-            {ready && account && connectionStatus === 'connected' ? (
-              <>
-                {chain && (chains.length > 1 || unsupportedChain) && (
+            {ready && !shouldHideChainButton && chain && chains.length > 1 && (
+              <Box
+                alignItems="center"
+                aria-label="Chain Selector"
+                as="button"
+                background={
+                  unsupportedChain
+                    ? 'connectButtonBackgroundError'
+                    : 'connectButtonBackground'
+                }
+                borderRadius="connectButton"
+                boxShadow="connectButton"
+                className={touchableStyles({
+                  active: 'shrink',
+                  hover: 'grow',
+                })}
+                color={
+                  unsupportedChain
+                    ? 'connectButtonTextError'
+                    : 'connectButtonText'
+                }
+                display={mapResponsiveValue(chainStatus, (value) =>
+                  value === 'none' ? 'none' : 'flex',
+                )}
+                fontFamily="body"
+                fontWeight="bold"
+                gap="6"
+                key={
+                  // Force re-mount to prevent CSS transition
+                  unsupportedChain ? 'unsupported' : 'supported'
+                }
+                onClick={openChainModal}
+                paddingX="10"
+                paddingY="8"
+                testId={
+                  unsupportedChain ? 'wrong-network-button' : 'chain-button'
+                }
+                transition="default"
+                type="button"
+              >
+                {unsupportedChain ? (
                   <Box
                     alignItems="center"
-                    aria-label="Chain Selector"
-                    as="button"
-                    background={
-                      unsupportedChain
-                        ? 'connectButtonBackgroundError'
-                        : 'connectButtonBackground'
-                    }
-                    borderRadius="connectButton"
-                    boxShadow="connectButton"
-                    className={touchableStyles({
-                      active: 'shrink',
-                      hover: 'grow',
-                    })}
-                    color={
-                      unsupportedChain
-                        ? 'connectButtonTextError'
-                        : 'connectButtonText'
-                    }
-                    display={mapResponsiveValue(chainStatus, (value) =>
-                      value === 'none' ? 'none' : 'flex',
-                    )}
-                    fontFamily="body"
-                    fontWeight="bold"
-                    gap="6"
-                    key={
-                      // Force re-mount to prevent CSS transition
-                      unsupportedChain ? 'unsupported' : 'supported'
-                    }
-                    onClick={openChainModal}
-                    paddingX="10"
-                    paddingY="8"
-                    testId={
-                      unsupportedChain ? 'wrong-network-button' : 'chain-button'
-                    }
-                    transition="default"
-                    type="button"
+                    display="flex"
+                    height="24"
+                    paddingX="4"
                   >
-                    {unsupportedChain ? (
+                    {i18n.t('connect_wallet.wrong_network.label')}
+                  </Box>
+                ) : (
+                  <Box alignItems="center" display="flex" gap="6">
+                    {chain.hasIcon ? (
                       <Box
-                        alignItems="center"
-                        display="flex"
+                        display={mapResponsiveValue(chainStatus, (value) =>
+                          value === 'full' || value === 'icon'
+                            ? 'block'
+                            : 'none',
+                        )}
                         height="24"
-                        paddingX="4"
+                        width="24"
                       >
-                        {i18n.t('connect_wallet.wrong_network.label')}
+                        <AsyncImage
+                          alt={chain.name ?? 'Chain icon'}
+                          background={chain.iconBackground}
+                          borderRadius="full"
+                          height="24"
+                          src={chain.iconUrl}
+                          width="24"
+                        />
                       </Box>
-                    ) : (
-                      <Box alignItems="center" display="flex" gap="6">
-                        {chain.hasIcon ? (
-                          <Box
-                            display={mapResponsiveValue(chainStatus, (value) =>
-                              value === 'full' || value === 'icon'
-                                ? 'block'
-                                : 'none',
-                            )}
-                            height="24"
-                            width="24"
-                          >
-                            <AsyncImage
-                              alt={chain.name ?? 'Chain icon'}
-                              background={chain.iconBackground}
-                              borderRadius="full"
-                              height="24"
-                              src={chain.iconUrl}
-                              width="24"
-                            />
-                          </Box>
-                        ) : null}
-                        <Box
-                          display={mapResponsiveValue(chainStatus, (value) => {
-                            if (value === 'icon' && !chain.iconUrl) {
-                              return 'block'; // Show the chain name if there is no iconUrl
-                            }
+                    ) : null}
+                    <Box
+                      display={mapResponsiveValue(chainStatus, (value) => {
+                        if (value === 'icon' && !chain.iconUrl) {
+                          return 'block'; // Show the chain name if there is no iconUrl
+                        }
 
-                            return value === 'full' || value === 'name'
-                              ? 'block'
-                              : 'none';
-                          })}
-                        >
-                          {chain.name ?? chain.id}
-                        </Box>
-                      </Box>
-                    )}
-                    <DropdownIcon />
+                        return value === 'full' || value === 'name'
+                          ? 'block'
+                          : 'none';
+                      })}
+                    >
+                      {chain.name ?? chain.id}
+                    </Box>
                   </Box>
                 )}
+                <DropdownIcon />
+              </Box>
+            )}
 
+            {ready && account && connectionStatus === 'connected' ? (
+              <>
                 {!unsupportedChain && (
                   <Box
                     alignItems="center"

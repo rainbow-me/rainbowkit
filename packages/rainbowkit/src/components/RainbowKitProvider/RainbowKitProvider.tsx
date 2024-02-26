@@ -65,6 +65,7 @@ export interface RainbowKitProviderProps {
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
   locale?: Locale;
+  ignoreChainModalOnConnect?: boolean;
 }
 
 const defaultTheme = lightTheme();
@@ -80,6 +81,7 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
+  ignoreChainModalOnConnect = false,
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
@@ -102,7 +104,10 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainProvider initialChain={initialChain}>
+    <RainbowKitChainProvider
+      initialChain={initialChain}
+      ignoreChainModalOnConnect={ignoreChainModalOnConnect}
+    >
       <WalletButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>
