@@ -88,6 +88,14 @@ This is a fallback wallet option designed for scenarios where `window.ethereum` 
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
+##### Safe Wallet
+
+For dApps that support Safe Apps to allow users to easily connect with their Safe vault or multi-sig, include the `safeWallet` option for automatic connections. The Safe option will only appear in the Safe Wallet browser environment.
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 ### Specific Wallets
 
 The following wallets are provided via the `wallet` object (in alphabetical order).
@@ -252,12 +260,6 @@ import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Safe (Gnosis Safe)
-
-```tsx
-import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Safeheron
