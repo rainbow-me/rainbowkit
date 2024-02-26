@@ -28,8 +28,8 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient} ignoreChainModalOnConnect={true}>
-        <RainbowKitProvider>{/* Your App */}</RainbowKitProvider>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider ignoreChainModalOnConnect={true}>{/* Your App */}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
