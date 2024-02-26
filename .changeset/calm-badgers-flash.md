@@ -1,4 +1,5 @@
 ---
+"@rainbow-me/create-rainbowkit": patch
 "generated-test-app": patch
 "rainbowkit-next-app": patch
 "with-next-siwe-iron-session": patch
