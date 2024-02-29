@@ -1,11 +1,12 @@
 ---
 "@rainbow-me/rainbowkit": patch
 "example": patch
+"site": patch
 ---
 
 `<ConnectButton>` now allows you to switch chains without having your wallet connected. 
 
-You also have the option to specify a `ignoreChainModalOnConnect` prop to the `<RainbowKitProvider>` if you want to wait until the user has connected their wallet.
+You just need to set `ignoreChainModalOnConnect` prop to `false` in `<RainbowKitProvider>` if you'd like to use the chain modal without having your wallet connected.
 
 **Example usage**
 
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider ignoreChainModalOnConnect={true}>{/* Your App */}</RainbowKitProvider>
+        <RainbowKitProvider ignoreChainModalOnConnect={false}>{/* Your App */}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

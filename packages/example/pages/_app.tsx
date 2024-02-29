@@ -278,7 +278,7 @@ function RainbowKitApp({
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [ignoreChainModalOnConnect, setIgnoreChainModalOnConnect] =
-    useState(false);
+    useState(true);
   const [customAvatar, setCustomAvatar] = useState(false);
 
   const routerLocale = router.locale as Locale;
