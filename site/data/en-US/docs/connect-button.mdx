@@ -122,6 +122,30 @@ Hide the balance.
 <ConnectButton showBalance={__false__} />
 ```
 
+#### Refetch balance
+
+To see realtime balance updates, you should use the `refetchBalance` function from the `useRefetchBalance` hook upon a successful transaction.
+
+Example usage with `wagmi`
+
+```tsx
+import { useEffect } from 'react';
+import { useSendTransaction, useWaitForTransactionReceipt } from 'wagmi';
+import { useRefetchBalance } from '@rainbow-me/rainbowkit';
+
+const { refetchBalance } = useRefetchBalance();
+
+const { data: hash, sendTransaction } = useSendTransaction();
+
+const { data: txReceipt } = useWaitForTransactionReceipt({
+  hash,
+});
+
+useEffect(() => {
+  if (txReceipt?.status === 'success') refetchBalance();
+}, [txReceipt]);
+```
+
 #### Responsive
 
 These props can also be defined in a responsive format.

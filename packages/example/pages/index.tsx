@@ -90,14 +90,14 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const connected =
     isWagmiConnected && (!authEnabled || status === 'authenticated');
 
-  const { data } = useWaitForTransactionReceipt({
+  const { data: txReceipt } = useWaitForTransactionReceipt({
     hash: transactionData,
   });
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (data) refetchBalance();
-  }, [data]);
+    if (txReceipt?.status === 'success') refetchBalance();
+  }, [txReceipt]);
 
   return (
     <div

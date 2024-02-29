@@ -1,44 +1,45 @@
 ---
 "@rainbow-me/rainbowkit": patch
 "example": patch
+"site": patch
 ---
 
-Added `useRefetchBalance` hook to support realtime balance in rainbowkit. The returned hook function should be called upon a successful transaction.
+Added `useRefetchBalance` hook which allows balance refresh support for `<RainbowKitProvider>` components.
 
-Example usage:
+The `refetchBalance` function from the hook should be called upon a successful transaction.
 
-```
-  import {
-    usePrepareSendTransaction,
-    useSendTransaction,
-    useWaitForTransaction,
-  } from "wagmi";
-  import { useRefetchBalance, ConnectButton } from '@rainbow-me/rainbowkit';
+**Example usage**
 
-  const YourApp = () => {
-    const refetchBalance = useRefetchBalance();
+```tsx
+import { useSendTransaction, useWaitForTransactionReceipt } from 'wagmi';
+import { useRefetchBalance } from '@rainbow-me/rainbowkit';
+import { parseEther } from 'viem';
+import { useEffect } from 'react';
 
-    const { config: sendTransactionConfig } = usePrepareSendTransaction({
-      to: "<to_address>",
-      value: "<value>",
-    });
+const YourApp = () => {
+  const { refetchBalance } = useRefetchBalance();
 
-    const { data: transactionData, sendTransaction } = useSendTransaction(
-      sendTransactionConfig
-    );
+  const { data: hash, sendTransaction } = useSendTransaction();
 
-    useWaitForTransaction({
-      hash: transactionData?.hash,
-      onSuccess: refetchBalance,
-    });
+  const { data: txReceipt } = useWaitForTransactionReceipt({
+    hash,
+  });
 
-    return (
-      <div>
-        <ConnectButton />
-        <button disabled={!sendTransaction} onClick={() => sendTransaction?.()}>
-          Send Transaction
-        </button>
-      </div>
-    );
-  };
+  useEffect(() => {
+    if (txReceipt?.status === 'success') refetchBalance();
+  }, [txReceipt]);
+
+  return (
+    <button
+      onClick={() =>
+        sendTransaction({
+          to: '<your_address>',
+          value: parseEther('<ether>'),
+        })
+      }
+    >
+      Send Transaction
+    </button>
+  );
+};
 ```
