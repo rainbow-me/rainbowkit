@@ -1,8 +1,11 @@
-'use client';
-
+import { NextIntlClientProvider } from 'next-intl';
 import type { Locale } from '@rainbow-me/rainbowkit';
 import { Providers } from './providers';
-import { NextIntlClientProvider } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
+
+export function generateStaticParams() {
+  return [{ locale: 'en-US' }, { locale: 'zh-CN' }];
+}
 
 export default function LocaleLayout({
   children,
@@ -11,14 +14,12 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: Locale };
 }) {
+  unstable_setRequestLocale(locale);
+
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider
-          locale={locale}
-          messages={{}}
-          timeZone='America/New_York' // Required to not get warnings
-        >
+        <NextIntlClientProvider locale={locale}>
           <Providers locale={locale}>{children}</Providers>
         </NextIntlClientProvider>
       </body>
