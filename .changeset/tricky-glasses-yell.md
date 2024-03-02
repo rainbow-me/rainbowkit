@@ -1,5 +1,6 @@
 ---
 "@rainbow-me/rainbowkit": patch
+
 "site": patch
 ---
 
