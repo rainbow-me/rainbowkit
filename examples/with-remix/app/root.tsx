@@ -27,10 +27,10 @@ import {
   base,
   mainnet,
   optimism,
-  polygon,
   sepolia,
   zora,
 } from 'wagmi/chains';
+import { polygon } from '@rainbow-me/rainbowkit/chains';
 
 import globalStylesUrl from './styles/global.css';
 import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';

@@ -9,10 +9,10 @@ import {
   base,
   mainnet,
   optimism,
-  polygon,
   sepolia,
   zora,
 } from 'wagmi/chains';
+import { polygon } from '@rainbow-me/rainbowkit/chains';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 const config = getDefaultConfig({

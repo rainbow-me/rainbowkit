@@ -137,9 +137,9 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
-  optimismSepolia: { chainId: 11155420, ...optimismIcon },
+  optimismSepolia: { chainId: 11155420, name: 'OP Sepolia', ...optimismIcon },
   polygon: { chainId: 137, name: 'Polygon', ...polygonIcon },
-  polygonMumbai: { chainId: 80_001, ...polygonIcon },
+  polygonMumbai: { chainId: 80_001, name: 'Polygon Mumbai', ...polygonIcon },
   rinkeby: { chainId: 4, ...ethereumIcon },
   ropsten: { chainId: 3, ...ethereumIcon },
   ronin: { chainId: 2020, ...roninIcon },
@@ -149,7 +149,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
   zora: { chainId: 7777777, name: 'Zora', ...zoraIcon },
-  zoraSepolia: { chainId: 999999999, ...zoraIcon },
+  zoraSepolia: { chainId: 999999999, name: 'Zora Sepolia', ...zoraIcon },
   zoraTestnet: { chainId: 999, ...zoraIcon },
 };
 

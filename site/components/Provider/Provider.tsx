@@ -1,4 +1,5 @@
 import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { bsc, polygon } from '@rainbow-me/rainbowkit/chains';
 import {
   argentWallet,
   imTokenWallet,
@@ -9,15 +10,7 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { http, WagmiProvider } from 'wagmi';
-import {
-  arbitrum,
-  base,
-  bsc,
-  mainnet,
-  optimism,
-  polygon,
-  zora,
-} from 'wagmi/chains';
+import { arbitrum, base, mainnet, optimism, zora } from 'wagmi/chains';
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';

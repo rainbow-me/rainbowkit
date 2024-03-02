@@ -18,10 +18,10 @@ import {
   base,
   mainnet,
   optimism,
-  polygon,
   sepolia,
   zora,
 } from 'wagmi/chains';
+import { polygon } from '@rainbow-me/rainbowkit/chains';
 
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';

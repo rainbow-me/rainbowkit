@@ -7,8 +7,9 @@ import App from './App';
 
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { arbitrum, base, mainnet, optimism, zora } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { polygon } from '@rainbow-me/rainbowkit/chains';
 
 const config = getDefaultConfig({
   appName: 'RainbowKit demo',

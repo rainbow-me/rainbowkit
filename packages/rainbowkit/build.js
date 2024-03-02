@@ -98,7 +98,21 @@ const walletsBuild = esbuild.build({
     : undefined,
 });
 
-Promise.all([mainBuild, walletsBuild])
+const chainsBuild = esbuild.build({
+  ...baseBuildConfig,
+  entryPoints: ['./src/chains/index.ts'],
+  outdir: 'dist/chains',
+  watch: isWatching
+    ? {
+        onRebuild(error, result) {
+          if (error) console.error('chains build failed:', error);
+          else console.log('chains build succeeded:', result);
+        },
+      }
+    : undefined,
+});
+
+Promise.all([mainBuild, walletsBuild, chainsBuild])
   .then(() => {
     if (isWatching) {
       console.log('watching...');

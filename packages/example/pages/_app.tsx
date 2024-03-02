@@ -58,6 +58,15 @@ import {
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 
+import {
+  bsc,
+  holesky,
+  optimismSepolia,
+  polygon,
+  polygonMumbai,
+  zkSync,
+  zoraSepolia,
+} from '@rainbow-me/rainbowkit/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { Session } from 'next-auth';
 import { SessionProvider, signOut } from 'next-auth/react';
@@ -71,21 +80,13 @@ import {
   arbitrumSepolia,
   base,
   baseSepolia,
-  bsc,
   goerli,
-  holesky,
   mainnet,
   optimism,
-  optimismSepolia,
-  polygon,
-  polygonMumbai,
   ronin,
   sepolia,
-  zkSync,
   zora,
-  zoraSepolia,
 } from 'wagmi/chains';
-
 import { AppContextProps } from '../lib/AppContextProps';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';

@@ -73,3 +73,27 @@ const config = createConfig({
   chains,
 });
 ```
+
+### RainbowKit chains
+
+Some chains might give you errors or warnings when you try to add them to your wallet. For these, use our built-in chains. We don't have them for all chains, just for the ones that often cause problems.
+
+Example with `getDefaultConfig`
+
+```tsx
+import { bsc, polygon } from '@rainbow-me/rainbowkit/chains';
+
+const config = getDefaultConfig({
+  chains: [bsc, polygon],
+});
+```
+
+Example with `createConfig`
+
+```tsx
+import { bsc, polygon } from '@rainbow-me/rainbowkit/chains';
+
+const config = createConfig({
+  chains: [bsc, polygon],
+});
+```

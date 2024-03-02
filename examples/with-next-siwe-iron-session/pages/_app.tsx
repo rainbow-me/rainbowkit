@@ -24,10 +24,10 @@ import {
   base,
   mainnet,
   optimism,
-  polygon,
   sepolia,
   zora,
 } from 'wagmi/chains';
+import { polygon } from '@rainbow-me/rainbowkit/chains';
 import { SiweMessage } from 'siwe';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
