@@ -181,5 +181,5 @@ export const connectorsForWallets = (
     connectors.push(connector);
   }
 
-  return [...connectors];
+  return connectors;
 };
