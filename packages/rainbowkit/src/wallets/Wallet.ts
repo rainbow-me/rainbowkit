@@ -104,7 +104,6 @@ export type RainbowKitWalletConnectParameters = Omit<
 >;
 
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
-  index: number;
   groupIndex: number;
   groupName: string;
   isWalletConnectModalConnector?: boolean;

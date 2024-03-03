@@ -1,5 +1,6 @@
 import type { CreateConnectorFn } from 'wagmi';
 import { isHexString } from '../utils/colors';
+import { isMobile } from '../utils/isMobile';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import type {
   RainbowKitWalletConnectParameters,
@@ -8,9 +9,9 @@ import type {
   WalletList,
 } from './Wallet';
 import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+import { injectedWallet } from './walletConnectors';
 
 interface WalletListItem extends Wallet {
-  index: number;
   groupIndex: number;
   groupName: string;
 }
@@ -35,11 +36,11 @@ export const connectorsForWallets = (
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
-  let index = -1;
-
   const connectors: CreateConnectorFn[] = [];
   const visibleWallets: WalletListItem[] = [];
   const potentiallyHiddenWallets: WalletListItem[] = [];
+
+  const mobile = isMobile();
 
   const walletConnectMetaData = computeWalletConnectMetaData({
     appName,
@@ -52,8 +53,6 @@ export const connectorsForWallets = (
   walletList.forEach(({ groupName, wallets }, groupIndex) => {
     // biome-ignore lint/complexity/noForEach: TODO
     wallets.forEach((createWallet) => {
-      index++;
-
       const wallet = createWallet({
         projectId,
         appName,
@@ -82,7 +81,6 @@ export const connectorsForWallets = (
         ...wallet,
         groupIndex: groupIndex + 1,
         groupName,
-        index,
       };
 
       if (typeof wallet.hidden === 'function') {
@@ -95,10 +93,29 @@ export const connectorsForWallets = (
 
   // We process the known visible wallets first so that the potentially
   // hidden wallets have access to the complete list of resolved wallets
-  const walletListItems: WalletListItem[] = [
+  let walletListItems: WalletListItem[] = [
     ...visibleWallets,
     ...potentiallyHiddenWallets,
   ];
+
+  // If you use a browser wallet, we add the injectedWallet to the wallet list
+  // if you haven't added one yet. This would avoid using WalletConnect when
+  // not needed and only use built in injected provider (window.ethereum)
+  if (mobile && typeof window !== 'undefined' && window.ethereum) {
+    const isInjectedWalletIncluded = walletListItems.some(
+      (walletItem) => walletItem.id === 'injected',
+    );
+
+    if (!isInjectedWalletIncluded) {
+      const injectedItem = {
+        ...injectedWallet(),
+        groupName: 'Installed',
+        groupIndex: 0,
+      };
+
+      walletListItems = [injectedItem, ...walletListItems];
+    }
+  }
 
   for (const {
     createConnector,
@@ -157,5 +174,5 @@ export const connectorsForWallets = (
     connectors.push(connector);
   }
 
-  return connectors;
+  return [...connectors];
 };
