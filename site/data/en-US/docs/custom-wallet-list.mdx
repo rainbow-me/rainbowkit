@@ -78,7 +78,11 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Injected Wallet
 
-This is a fallback wallet option designed for scenarios where `window.ethereum` exists but hasn’t been provided by another wallet in the list. This wallet will automatically hide itself from the list when the fallback is not necessary or if there is no injected wallet available.
+This is a fallback wallet option designed for scenarios where `window.ethereum` exists.
+
+If you're on mobile and `window.ethereum` exist, but the wallet isn't in your wallet list yet, this wallet gets added automatically. This usually occurs if you're using a browser wallet on mobile.
+
+You can stop the `injectedWallet` from automatically being added on mobile when detected by setting `injectedWalletOnMobile` to `false`. Do this by setting it as the first parameter in `getDefaultConfig`, or as the second parameter in `connectorsForWallets` if you're using Wagmi's `createConfig`.
 
 **It's recommended that you always include this wallet in the list to ensure all injected wallets are supported.**
 

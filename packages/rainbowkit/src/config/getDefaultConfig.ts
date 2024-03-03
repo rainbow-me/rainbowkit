@@ -33,6 +33,7 @@ interface GetDefaultConfigParameters extends WagmiConfigParameters {
   appIcon?: string;
   wallets?: WalletList;
   projectId: string;
+  injectedWalletOnMobile?: boolean;
 }
 
 const createDefaultTransports = (chains: _chains): _transports => {
@@ -52,6 +53,7 @@ export const getDefaultConfig = ({
   appIcon,
   wallets,
   projectId,
+  injectedWalletOnMobile,
   ...wagmiParameters
 }: GetDefaultConfigParameters): WagmiProviderProps['config'] => {
   let { transports, chains, ...restWagmiParameters } = wagmiParameters;
@@ -82,6 +84,7 @@ export const getDefaultConfig = ({
       appUrl,
       appIcon,
       walletConnectParameters: { metadata },
+      injectedWalletOnMobile,
     },
   );
 

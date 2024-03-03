@@ -23,17 +23,19 @@ export interface ConnectorsForWalletsParameters {
   appUrl?: string;
   appIcon?: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
+  injectedWalletOnMobile?: boolean;
 }
 
 export const connectorsForWallets = (
   walletList: WalletList,
   {
     projectId,
-    walletConnectParameters,
+    walletConnectParameters = {},
     appName,
     appDescription,
     appUrl,
     appIcon,
+    injectedWalletOnMobile = true,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
   const connectors: CreateConnectorFn[] = [];
@@ -101,7 +103,12 @@ export const connectorsForWallets = (
   // If you use a browser wallet, we add the injectedWallet to the wallet list
   // if you haven't added one yet. This would avoid using WalletConnect when
   // not needed and only use built in injected provider (window.ethereum)
-  if (mobile && typeof window !== 'undefined' && window.ethereum) {
+  if (
+    mobile &&
+    typeof window !== 'undefined' &&
+    window.ethereum &&
+    injectedWalletOnMobile
+  ) {
     const isInjectedWalletIncluded = walletListItems.some(
       (walletItem) => walletItem.id === 'injected',
     );
