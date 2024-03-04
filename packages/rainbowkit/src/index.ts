@@ -15,6 +15,7 @@ export {
   RainbowKitAuthenticationProvider,
   createAuthenticationAdapter,
 } from './components/RainbowKitProvider/AuthenticationContext';
+export { useAuthenticationStatus } from './components/RainbowKitProvider/AuthenticationContext';
 export type {
   Wallet,
   WalletList,
