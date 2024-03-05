@@ -6,7 +6,6 @@ import {
   useAddRecentTransaction,
   useChainModal,
   useConnectModal,
-  useIsWalletConnectModalOpen,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
@@ -39,9 +38,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openAccountModal, accountModalOpen } = useAccountModal();
   const { openChainModal, chainModalOpen } = useChainModal();
   const { openConnectModal, connectModalOpen } = useConnectModal();
-
-  const isWalletConnectModalOpen = useIsWalletConnectModalOpen();
-
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status } = useSession();
 
@@ -280,17 +276,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
                 {accountModalOpen
                   ? 'Account modal opened'
                   : 'Open account modal'}
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <h3 style={{ fontFamily: 'sans-serif' }}>Custom hooks status</h3>
-            <div style={{ display: 'flex', gap: 12, paddingBottom: 12 }}>
-              <button disabled={!isWalletConnectModalOpen} type="button">
-                {isWalletConnectModalOpen
-                  ? 'WalletConnect modal opened'
-                  : 'WalletConnect modal closed'}
               </button>
             </div>
           </div>
