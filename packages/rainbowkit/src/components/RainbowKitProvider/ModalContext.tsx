@@ -13,6 +13,7 @@ import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { useAuthenticationStatus } from './AuthenticationContext';
+import { useIsWalletConnectModalOpen } from './WalletConnectProvider';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -159,5 +160,11 @@ export function useChainModal() {
 
 export function useConnectModal() {
   const { connectModalOpen, openConnectModal } = useContext(ModalContext);
-  return { connectModalOpen, openConnectModal };
+
+  const isWalletConnectModalOpen = useIsWalletConnectModalOpen();
+
+  return {
+    connectModalOpen: connectModalOpen || isWalletConnectModalOpen,
+    openConnectModal,
+  };
 }
