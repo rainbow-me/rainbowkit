@@ -10,6 +10,7 @@ export {
   useChainModal,
   useConnectModal,
 } from './components/RainbowKitProvider/ModalContext';
+export { useIsWalletConnectModalOpen } from './components/RainbowKitProvider/WalletConnectProvider';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
 export {
   RainbowKitAuthenticationProvider,
