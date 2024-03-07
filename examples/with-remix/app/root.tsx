@@ -25,11 +25,11 @@ import type { Chain } from 'wagmi/chains';
 import {
   arbitrum,
   base,
+  bsc,
   mainnet,
   optimism,
   polygon,
   sepolia,
-  zora,
 } from 'wagmi/chains';
 
 import globalStylesUrl from './styles/global.css';
@@ -83,7 +83,7 @@ export default function App() {
       optimism,
       arbitrum,
       base,
-      zora,
+      bsc,
       ...testChains,
     ];
 

@@ -3,10 +3,10 @@ import { render } from '@testing-library/react';
 import React, { ReactElement } from 'react';
 import { http, type Chain } from 'viem';
 import { WagmiProvider, createConfig } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon, zora } from 'wagmi/chains';
+import { arbitrum, base, bsc, mainnet, optimism, polygon } from 'wagmi/chains';
 import { MockParameters, mock } from 'wagmi/connectors';
-import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
+import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
 import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
@@ -16,7 +16,7 @@ const defaultChains: readonly [Chain, ...Chain[]] = [
   optimism,
   arbitrum,
   base,
-  zora,
+  bsc,
 ];
 
 const queryClient = new QueryClient();
@@ -59,7 +59,7 @@ export function renderWithProviders(
       [optimism.id]: http(),
       [arbitrum.id]: http(),
       [base.id]: http(),
-      [zora.id]: http(),
+      [bsc.id]: http(),
     },
   });
 

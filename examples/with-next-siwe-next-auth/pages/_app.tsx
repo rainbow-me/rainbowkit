@@ -16,11 +16,11 @@ import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
+  bsc,
   mainnet,
   optimism,
   polygon,
   sepolia,
-  zora,
 } from 'wagmi/chains';
 
 import { SessionProvider } from 'next-auth/react';
@@ -49,7 +49,7 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    zora,
+    bsc,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
