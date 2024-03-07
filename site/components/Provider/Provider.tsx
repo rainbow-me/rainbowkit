@@ -11,7 +11,9 @@ import React from 'react';
 import { http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
+  avalanche,
   base,
+  blast,
   bsc,
   mainnet,
   optimism,
@@ -28,8 +30,10 @@ const transports = {
   [optimism.id]: http(),
   [arbitrum.id]: http(),
   [base.id]: http(),
-  [zora.id]: http(),
   [bsc.id]: http(),
+  [avalanche.id]: http(),
+  [zora.id]: http(),
+  [blast.id]: http(),
 };
 
 const { wallets } = getDefaultWallets();
