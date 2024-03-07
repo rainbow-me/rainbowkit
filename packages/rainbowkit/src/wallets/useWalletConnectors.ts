@@ -1,5 +1,6 @@
 import { Config, Connector, useConnect } from 'wagmi';
 import { ConnectMutateAsync } from 'wagmi/query';
+import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import { indexBy } from '../utils/indexBy';
 import {
   useInitialChainId,
@@ -42,6 +43,8 @@ export function useWalletConnectors(
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
 
+  const { setIsWalletConnectModalOpen } = useWalletConnectOpenState();
+
   const defaultConnectors = defaultCreatedConnectors.map((connector) => ({
     ...connector,
     // rkDetails is optional it does not exist in eip6963 connectors.
@@ -75,13 +78,17 @@ export function useWalletConnectors(
     walletConnectModalConnector: Connector,
   ) {
     try {
-      return await connectWallet(walletConnectModalConnector);
+      setIsWalletConnectModalOpen(true);
+      await connectWallet(walletConnectModalConnector);
+      setIsWalletConnectModalOpen(false);
     } catch (err) {
       const isUserRejection =
         // @ts-expect-error - Web3Modal v1 error name
         err.name === 'UserRejectedRequestError' ||
         // @ts-expect-error - Web3Modal v2 error message on desktop
         err.message === 'Connection request reset. Please try again.';
+
+      setIsWalletConnectModalOpen(false);
 
       if (!isUserRejection) {
         throw err;
