@@ -69,8 +69,11 @@ import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   arbitrum,
   arbitrumSepolia,
+  avalancheFuji,
   base,
   baseSepolia,
+  blast,
+  blastSepolia,
   bsc,
   goerli,
   holesky,
@@ -124,10 +127,11 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    zora,
     bsc,
-    zkSync,
     avalanche,
+    zora,
+    blast,
+    zkSync,
     ronin,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
@@ -139,6 +143,8 @@ const config = getDefaultConfig({
           arbitrumSepolia,
           baseSepolia,
           zoraSepolia,
+          blastSepolia,
+          avalancheFuji,
         ]
       : []),
   ],
