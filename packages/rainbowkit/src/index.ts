@@ -4,6 +4,7 @@ export { RainbowKitProvider } from './components/RainbowKitProvider/RainbowKitPr
 export { getDefaultConfig } from './config/getDefaultConfig';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';
+export { getInjectedConnector } from './wallets/getInjectedConnector';
 export { connectorsForWallets } from './wallets/connectorsForWallets';
 export {
   useAccountModal,
