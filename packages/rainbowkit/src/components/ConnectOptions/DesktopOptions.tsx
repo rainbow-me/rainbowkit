@@ -76,7 +76,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
 
   const { connector } = useContext(WalletButtonContext);
 
-  const mergeEIP6963WithRkConnectors = true;
+  const mergeEIP6963WithRkConnectors = !connector;
 
   const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
@@ -127,7 +127,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
     const sWallet = wallets.find((w) => wallet.id === w.id);
 
     const uri = await sWallet?.getQrCodeUri?.();
-
+    console.log({ uri });
     setQrCodeUri(uri);
 
     // This timeout prevents the UI from flickering if connection is instant,
@@ -152,6 +152,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
       onQrCode(wallet);
       onDesktopUri(wallet);
     }
+    console.log(wallet);
 
     connectToWallet(wallet);
     setSelectedOptionId(wallet.id);
