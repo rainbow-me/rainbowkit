@@ -1,9 +1,17 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@rainbow-me/rainbowkit';
 import { Providers } from './providers';
 
 export function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'zh-CN' }];
+}
+
+// Dynamic metadata with locale
+export async function generateMetadata({ params: { locale } }) {
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+  return {
+    title: t('title')
+  };
 }
 
 export default function LocaleLayout({
