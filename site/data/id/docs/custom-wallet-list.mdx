@@ -142,6 +142,16 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 bitskiWallet();
 ```
 
+#### Bloom Wallet
+
+```tsx
+import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bloomWallet(options: {
+  projectId: string;
+});
+```
+
 #### Brave Wallet
 
 ```tsx
@@ -214,7 +224,7 @@ import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 frameWallet();
 ```
 
-#### Dompet Frontier
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -240,6 +250,16 @@ ledgerWallet(options: {
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 
 imTokenWallet(options: {
+  projectId: string;
+});
+```
+
+#### Kresus Wallet
+
+```tsx
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+
+kresusWallet(options: {
   projectId: string;
 });
 ```
@@ -312,6 +332,24 @@ rabbyWallet();
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
 rainbowWallet(options: {
+  projectId: string;
+});
+```
+
+#### Ramper Wallet
+
+```tsx
+import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+
+ramperWallet();
+```
+
+#### Ronin Wallet
+
+```tsx
+import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+
+roninWallet(options: {
   projectId: string;
 });
 ```

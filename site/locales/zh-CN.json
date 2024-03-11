@@ -1,15 +1,15 @@
 {
   "landing": {
-    "headline": "连接钱包的最佳方式",
-    "subheadline": "为每个人而设计。为开发者而建立。",
+    "headline": "钱包登录的最佳方式",
+    "subheadline": "为所有用户设计。为开发者开发。",
     "cta": "查看文档",
-    "adopters": "最好的 Web3 团队正在使用 RainbowKit 来改进他们的产品，让用户满意并节省构建时间。",
+    "adopters": "那些最酷的 Web3 团队正在使用 RainbowKit 来增强产品体验，让用户开心同时也节约产品上线所需要的开发时间。",
     "playground": {
       "headline": "试用一下 RainbowKit",
-      "subheadline": "使您的以太坊登录体验感觉像在您的网站上。通过易于使用的 API，RainbowKit 允许您完全自定义颜色、边框半径、钱包提供商等等，以下面的方式来感受一下！",
+      "subheadline": "让以太（Ethereum）登录的体验在您的网站上相得益彰。通过一个易于使用的 API 实现对颜色、边框半径、各种钱包 App 的支持、及更多功能的定制。在下面的这个 Demo 里来试用一下吧！",
       "modal": "模态框",
       "mode": "模式",
-      "accent": "重点",
+      "accent": "主色调",
       "radius": "半径",
       "large": "大",
       "medium": "中",
@@ -17,7 +17,7 @@
     },
     "developers": {
       "headline": "Rainbow 🤝 开发者",
-      "subheadline": "RainbowKit 为开发者提供了一种快速、简单且高度可定制的方式来为他们的应用程序添加一个令人满意的钱包体验。我们处理困难的事情，使开发者和团队可以专注于为用户构建令人惊奇的产品和社区。",
+      "subheadline": "RainbowKit 为开发者提供了一种快速、简单并且可以高度定制化的方式来支持钱包登录。我们来搞定那些复杂的前端技术细节，让开发者们可以专注于为用户构建产品和社区。",
       "installation": "简单安装",
       "themes": "内置主题",
       "darkmode": "浅色和深色模式",
@@ -28,8 +28,8 @@
       "custom_connect": "自定义连接按钮"
     },
     "madeby": {
-      "headline": "由我们的 frens 在",
-      "subheadline": "构建 RainbowKit 是 Rainbow 和其他公司的许多人之间非常有趣的一次努力。我们一直在努力使 RainbowKit 变得更好，所以请告诉我们如何改进。",
+      "headline": "用 ❤️ 打造 by frens at",
+      "subheadline": "打造 RainbowKit 的过程是 Rainbow 公司和其他公司的朋友们一次非常有趣的经历。我们一直在寻求让产品变得更好，非常欢迎来自你的反馈。",
       "twitter_cta": "在 Twitter 上关注我们",
       "feedback_cta": "与我们分享反馈"
     },
@@ -39,7 +39,7 @@
       "privacy": "隐私政策"
     },
     "meta": {
-      "description": "连接钱包的最佳方式 🌈"
+      "description": "钱包登录的最佳方式 🌈"
     }
   },
   "docs": {

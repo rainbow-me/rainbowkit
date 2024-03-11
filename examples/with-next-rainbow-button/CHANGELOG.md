@@ -1,5 +1,27 @@
 # with-next-rainbow-button
 
+## 0.0.11
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+  - @rainbow-me/rainbow-button@0.2.2
+
+## 0.0.10
+
+### Patch Changes
+
+- d623428: Updated the following packages:
+  - wagmi to `^2.5.7`
+  - viem to `^2.7.12`
+  - @tanstack/react-query to `^5.22.2`
+  - @rainbow-me/rainbow-button@0.2.1
+
 ## 0.0.9
 
 ### Patch Changes

@@ -11,7 +11,7 @@ RainbowKit é projetado para integrar com [objeto `chain` do wagmi](https://wagm
 
 ### Personalizando a rede inicial
 
-Por padrão, o RainbowKit se conectará à primeira rede em seu array `chains` para garantir que os usuários não sejam imediatamente apresentados ao estado "Rede errada". Esse comportamento pode ser personalizado através da propriedade `initialChain`.
+Por padrão, o RainbowKit se conectará à primeira cadeia fornecida ao Wagmi. Esse comportamento pode ser personalizado através da propriedade `initialChain`.
 
 A cadeia inicial pode ser configurada usando um ID de cadeia.
 
@@ -25,7 +25,7 @@ Para sua conveniência, você também pode passar um objeto de cadeia.
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### Personalizando redes
+### Metadados de cadeia personalizada
 
 Vários ícones de cadeia são fornecidos por padrão, mas você pode personalizar o ícone para cada cadeia usando a propriedade iconUrl.
 

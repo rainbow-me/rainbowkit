@@ -77,7 +77,7 @@ const config = getDefaultConfig({
 });
 ```
 
-#### تغليف الموفرين
+#### تغليف المزودين
 
 قم بتغليف تطبيقك باستخدام `RainbowKitProvider`، [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider)، و [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
@@ -115,7 +115,7 @@ export const YourApp = () => {
 
 سيتطلب بعض أدوات البناء إعدادات إضافية.
 
-##### رياكت ، نكست.جس ، وويبباك
+##### React، Next.js، و Webpack
 
 الـ [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) الذي يستخدمه Next.js و Create React App [لا يقدم بعد الآن محاكاة ل Nodepolyfills](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)، لذا ستحتاج إلى تضمين هذه الوحدات بنفسك لتلبية اعتمادات RainbowKit المتساوية. يتطلب Create React App بشكل خاص منك أن تقوم بمحاكاة `Buffer`.
 
@@ -159,8 +159,8 @@ module.exports = {
 
 لتجربة RainbowKit مباشرة في المتصفح الخاص بك، تحقق من روابط CodeSandbox أدناه:
 
--   مع [إنشاء تطبيق React](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
--   مع [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
--   مع [تطبيق Next.js للتوجيه](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
--   مع [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
--   مع [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- مع [إنشاء تطبيق React](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- مع [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- مع [تطبيق Next.js للتوجيه](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- مع [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- مع [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

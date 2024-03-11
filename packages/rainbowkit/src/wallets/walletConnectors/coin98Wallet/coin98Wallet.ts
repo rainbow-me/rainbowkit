@@ -12,9 +12,10 @@ export const coin98Wallet = ({
   walletConnectParameters,
 }: Coin98WalletOptions): Wallet => {
   const isCoin98WalletInjected = hasInjectedProvider({
-    namespace: 'coin98Wallet',
+    namespace: 'coin98.provider',
     flag: 'isCoin98',
   });
+
   const shouldUseWalletConnect = !isCoin98WalletInjected;
   return {
     id: 'coin98',
@@ -23,6 +24,7 @@ export const coin98Wallet = ({
     installed: isCoin98WalletInjected,
     iconAccent: '#CDA349',
     iconBackground: '#fff',
+    rdns: 'coin98.com',
     downloadUrls: {
       android:
         'https://play.google.com/store/apps/details?id=coin98.crypto.finance.media',
