@@ -9,9 +9,9 @@ description: フック経由でプログラム的にモーダルを開く
 
 以下のフックは、アプリケーションのどこでもプログラム的にモーダルを開くことを可能にします。
 
--   `useConnectModal`
--   `useAccountModal`
--   `useChainModal`
+- `useConnectModal`
+- `useAccountModal`
+- `useChainModal`
 
 これらのフックのそれぞれは、それぞれのモーダルを開くための関数を持つオブジェクトを返します。 返された関数は、あなたのアプリケーションがモーダルを開くための必要な状態に無い場合には定義されていないことに注意してください。
 
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-各フックはまた、モーダルのステータスのための真偽値を返します。 通常は、Connect Modalの状態に頼るのではなく、ユーザーのウォレット接続状態に直接反応するために、純粋にWagmiフック (つまり `useAccount`) に頼ることをお勧めします。
+各フックはまた、モーダルのステータスのための真偽値を返します。 各フックはまた、モーダルのステータスのための真偽値を返します。 通常は、Connect Modalの状態に頼るのではなく、ユーザーのウォレット接続状態に直接反応するために、純粋にWagmiフック (つまり `useAccount`) に頼ることをお勧めします。
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKitは中断せず、応答性がありますので、dAppsはウォレットが接続されているかどうかに関わらず、ユーザーインターフェイスを常にレンダリングする必要があります。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。
+RainbowKitは中断せず、応答性がありますので、dAppsはウォレットが接続されているかどうかに関わらず、ユーザーインターフェイスを常にレンダリングする必要があります。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。 ユーザーはMetaMaskから直接ウォレットを接続または切断できるため、dAppは直接的に基礎となる接続ステータスに対して応答性が必要です。
 
 ユーザー認証のためにEthereumでサインインなどのメカニズムに依存するdAppsは、代わりに [Authentication](/docs/authentication) 機能に依存すべきです。

@@ -1,5 +1,26 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.2
+
+### Patch Changes
+
+- 524d7a0: `connectModalOpen` state for the `useConnectModal` hook will now also encompass the Web3Modal modal presentation status for users that interact with `walletConnectWallet`
+- 2f637e4: Fixed a bug where wagmi would throw `ChainNotConfiguredError` if `mainnet` is not configured as a chain. This is happening when fetching ens name and ens avatar.
+- c021746: Resolved an issue where the Connect Modal wallet list would appear empty for EIP-6963 connectors when using the `WalletButton` component
+- df572f1: Resolved an issue for Custom Wallets that displayed a "missing translation" error for instructions during connect and installation flows. Now Custom Wallets will display their original strings without attempted translation.
+
+## 2.0.1
+
+### Patch Changes
+
+- 5149dbd: Added Ramper Wallet support with `ramperWallet` wallet connector
+- 1e7d3f4: Added Ronin Wallet support with `roninWallet` wallet connector
+- c16541a: Added Kresus support with `kresusWallet` wallet connector
+- dbca966: Added Bloom Wallet support with `bloomWallet` wallet connector
+- f69c0e1: Added support for `ronin` chain
+- bb56562: Fixed a bug where the `showBalance` prop on `<ConnectButton />` didn't accept a boolean, and had only accepted responsive modal values.
+- 1a08977: Added EIP-6963 support for `coin98Wallet` wallet connector
+
 ## 2.0.0
 
 ### Major Changes
@@ -821,7 +842,7 @@
 
 ### Patch Changes
 
-- 9432a2f: The `ConnectButton` component is now tagged with `use client;` to support the Next 13 App Router and server-side rendered dApps. You can reference a full `app/` directory implementation example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app).
+- 9432a2f: The `ConnectButton` component is now tagged with `use client;` to support the Next 13 App Router and server-side rendered dApps. You can reference a full `app/` directory implementation example [here](/examples/with-next-app).
 - b2c66ff: Modified acceptable peer dependency versions to ensure proper peer warnings for future versions of wagmi and viem. `wagmi` now requires `~1.0.1` and `viem` now requires `~0.3.19`.
 - bcb3d18: Modal Hooks including `useConnectModal`, `useAccountModal`, and `useChainModal` now each return a boolean with the status of the modal.
 

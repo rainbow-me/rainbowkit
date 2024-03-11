@@ -63,6 +63,7 @@ function App({ Component, pageProps }: AppProps) {
     <NextIntlClientProvider
       locale={router.locale}
       messages={pageProps.messages}
+      timeZone="America/New_York" // Required to not get warnings
     >
       <Provider>
         {isDocs ? (
