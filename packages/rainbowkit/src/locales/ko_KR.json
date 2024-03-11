@@ -292,6 +292,36 @@
         }
       }
     },
+    "bloom": {
+      "desktop": {
+        "step1": {
+          "title": "Bloom Wallet 앱을 엽니다",
+          "description": "더 빠른 접근을 위해 Bloom Wallet을 홈 화면에 두는 것을 추천합니다."
+        },
+        "step2": {
+          "description": "복구 문구를 사용하여 지갑을 생성하거나 가져옵니다.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "지갑을 갖춘 후, Bloom을 통해 연결하려면 연결하기를 클릭합니다. 앱에서 연결을 확인하는 프롬프트가 나타납니다.",
+          "title": "연결하기를 클릭"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Bloom Wallet 앱을 엽니다",
+          "description": "더 빠른 접근을 위해 Bloom Wallet을 홈 화면에 두는 것을 추천합니다."
+        },
+        "step2": {
+          "description": "복구 문구를 사용하여 지갑을 생성하거나 가져옵니다.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "지갑을 갖춘 후, Bloom을 통해 연결하려면 연결하기를 클릭합니다. 앱에서 연결을 확인하는 프롬프트가 나타납니다.",
+          "title": "연결하기를 클릭"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -441,6 +471,22 @@
         "step3": {
           "title": "오른쪽 상단의 스캐너 아이콘을 누릅니다",
           "description": "새 연결을 선택하고 QR 코드를 스캔한 뒤, 연결하려는 프롬프트를 확인합니다."
+        }
+      }
+    },
+    "kresus": {
+      "qr_code": {
+        "step1": {
+          "title": "Kresus Wallet 앱을 엽니다",
+          "description": "Kresus 지갑을 홈 화면에 추가하여 지갑에 더 빠르게 접근하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "QR 아이콘을 탭하고 스캔하기",
+          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
         }
       }
     },
@@ -719,6 +765,52 @@
         "step3": {
           "title": "브라우저를 새로고침 하세요",
           "description": "지갑 설정을 완료하면 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드합니다."
+        }
+      }
+    },
+    "ronin": {
+      "qr_code": {
+        "step1": {
+          "description": "Ronin Wallet을 홈 화면에 두어 더 빠른 접근을 추천드립니다.",
+          "title": "Ronin Wallet 앱을 열기"
+        },
+        "step2": {
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "title": "스캔 버튼을 누릅니다"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "작업 표시줄에 Ronin Wallet을 고정하여 지갑에 더 빠르게 접근할 수 있도록 추천합니다.",
+          "title": "Ronin Wallet 확장 프로그램 설치하기"
+        },
+        "step2": {
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저를 새로 고침하세요"
+        }
+      }
+    },
+    "ramper": {
+      "extension": {
+        "step1": {
+          "title": "Ramper 확장 프로그램 설치하기",
+          "description": "작업 표시줄에 Ramper를 고정하여 지갑 접근을 용이하게 할 것을 추천합니다."
+        },
+        "step2": {
+          "title": "지갑 생성",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
         }
       }
     },

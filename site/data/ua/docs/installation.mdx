@@ -61,7 +61,7 @@ import {
 
 #### Налаштувати
 
-Налаштуйте бажані ланцюги та створіть необхідні конектори. Вам також потрібно налаштувати конфігурацію `wagmi`. Якщо ваш dApp використовує серверний рендеринг (SSR), переконайтеся, що встановили `ssr` в `true`.
+Налаштуйте бажані ланцюги та створіть необхідні конектори. Вам також потрібно налаштувати конфігурацію `wagmi`. Якщо ваш dApp використовує рендеринг на стороні сервера (SSR), переконайтеся, що встановлено `ssr` у `true`.
 
 > Примітка: Кожен dApp, який використовує WalletConnect, тепер повинен отримати `projectId` з [WalletConnect Cloud](https://cloud.walletconnect.com/). Це абсолютно безкоштовно і займає лише кілька хвилин.
 
@@ -117,21 +117,21 @@ RainbowKit тепер керуватиме вибором гаманця кор�
 
 ##### React, Next.js та Webpack
 
-Пакувальник [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/), який використовується Next.js та Create React App, [більше не надає поліфіли Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), тому вам потрібно буде включити ці модулі самостійно, щоб задовольнити залежності однолітків RainbowKit. Create React App конкретно вимагає, щоб ви зробили поліфіл `Buffer`.
+Збирач [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/), який використовують Next.js та Create React App, [більше не надає поліфіли Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), тому вам потрібно буде включити ці модулі самостійно, щоб задовольнити залежності однолітків RainbowKit. Create React App конкретно вимагає, щоб ви зробили поліфіл `Buffer`.
 
-У попередніх версіях RainbowKit, які базувалися на [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls` були автоматично поліфільні. Це більше не так з RainbowKit v1 + wagmi v1, які побудовані на [viem](https://viem.sh/).
+У попередніх версіях RainbowKit, які базувалися на [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls` автоматично поліфілувалися. Це вже не так у випадку з RainbowKit v1 + wagmi v1, які побудовані на [viem](https://viem.sh/).
 
 Дивіться наші зразки [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js) та [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) для керівництва з налаштування для вашого проекту.
 
 ##### Vite
 
-Пакувальник [Vite](https://vitejs.dev) не надає поліфіли Node, тому вам потрібно буде додати поліфіли для `global`, `Buffer` та `process.env`. Як приклад, ви можете ознайомитися з [поліфілами у нашому прикладі проекту Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
+Збирач [Vite](https://vitejs.dev) не надає поліфіли Node, тому вам потрібно буде включити поліфіли для `global`, `Buffer` та `process.env`. Як приклад, ви можете звернутися до [поліфілів у нашому зразковому проекті Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
 
 ##### Remix
 
 При використанні [Remix](https://remix.run), всі точки входу пакета RainbowKit мають бути додані до вашого списку [залежностей сервера](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) у вашій конфігурації Remix, оскільки вони публікуються як пакети ESM.
 
-Remix також вимагає, щоб ви забезпечили поліфіли для `global`, `Buffer` та `process.env`. Дивіться [поліфіли у нашому прикладі проекту Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
+Remix також вимагає, щоб ви зробили поліфіл `global`, `Buffer` та `process.env`. Посилайтеся на [поліфіли у нашому зразковому проекті Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
 
 ```js
 /**
@@ -159,8 +159,8 @@ module.exports = {
 
 Щоб спробувати RainbowKit безпосередньо у вашому браузері, скористайтеся нижченаведеними посиланнями CodeSandbox:
 
--   з [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
--   з [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
--   з [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
--   з [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
--   з [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- з [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- з [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- з [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- з [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- з [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

@@ -292,6 +292,36 @@
         }
       }
     },
+    "bloom": {
+      "desktop": {
+        "step1": {
+          "title": "打开 Bloom 钱包应用",
+          "description": "我们建议将 Bloom 钱包添加到主屏幕上，以便更快地访问。"
+        },
+        "step2": {
+          "description": "使用恢复短语创建或导入钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "拥有钱包后，点击连接以通过 Bloom 连接。应用中会出现一个连接提示，供您确认连接。",
+          "title": "点击连接"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开 Bloom 钱包应用",
+          "description": "我们建议将 Bloom 钱包添加到主屏幕上，以便更快地访问。"
+        },
+        "step2": {
+          "description": "使用恢复短语创建或导入钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "拥有钱包后，点击连接以通过 Bloom 连接。应用中会出现一个连接提示，供您确认连接。",
+          "title": "点击连接"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -441,6 +471,22 @@
         "step3": {
           "title": "点击右上角的扫描图标",
           "description": "选择新连接，然后扫描二维码并确认提示以进行连接。"
+        }
+      }
+    },
+    "kresus": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 Kresus 钱包应用",
+          "description": "将Kresus钱包添加到主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
         }
       }
     },
@@ -719,6 +765,52 @@
         "step3": {
           "title": "刷新您的浏览器",
           "description": "一旦您设置好您的钱包，点击以下以刷新浏览器并加载扩展程序。"
+        }
+      }
+    },
+    "ronin": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议您将Ronin钱包添加到主屏幕，以便更快地访问。",
+          "title": "打开Ronin钱包应用"
+        },
+        "step2": {
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击扫描按钮"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "我们建议您将Ronin钱包固定到任务栏，以便更快地访问您的钱包。",
+          "title": "安装Ronin钱包扩展"
+        },
+        "step2": {
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。",
+          "title": "刷新您的浏览器"
+        }
+      }
+    },
+    "ramper": {
+      "extension": {
+        "step1": {
+          "title": "安装Ramper扩展",
+          "description": "我们建议您将Ramper固定到任务栏，以便更容易地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建一个钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },

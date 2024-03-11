@@ -77,7 +77,7 @@ export default function App({
 
 [SIWEメッセージオプション](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)をカスタマイズするには、`getSiweMessageOptions` propに関数を渡すことにより、`RainbowKitSiweNextAuthProvider`上で行うことができます。
 
-新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
+新しいメッセージが作成されるたびに、この関数が呼び出されます。 この関数から返されるオプションは、デフォルトと合わせてマージされます。
 
 ```tsx
 import {
@@ -98,7 +98,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### セッションをサーバーサイドでアクセスします
 
-`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
+`next-auth/jwt`からインポートしたNextAuthの`getToken`関数を使用してセッショントークンにアクセスできます。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。 ユーザーが正常に認証されている場合、セッショントークンの`sub`プロパティ（トークンの「主題」、つまりユーザー）はユーザーの住所になります。
 
 また、NextAuthがクライアント側で再度それを解決する必要がないように、解決済みのセッションオブジェクトを`getServerSideProps`経由で渡すこともできます。
 
@@ -145,5 +145,5 @@ export default function AuthenticatedPage({
 
 セッションの管理に関する詳細は、以下のドキュメンテーションを参照してください：
 
--   [Next.js認証ガイド](https://nextjs.org/docs/authentication)
--   [NextAuth.jsドキュメンテーション](https://next-auth.js.org)
+- [Next.js認証ガイド](https://nextjs.org/docs/authentication)
+- [NextAuth.jsドキュメンテーション](https://next-auth.js.org)

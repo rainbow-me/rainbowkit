@@ -95,8 +95,8 @@ npm i @tanstack/react-query
 
 إذا كنت تستخدم خطافات `wagmi` وإجراءات `viem` في تطبيقك اللامركزي، ستحتاج إلى اتباع دليل الهجرة للإصدار v2:
 
--   [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
--   [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
+- [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
+- [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide.html#_2-x-x-breaking-changes)
 
 #### تغييرات RainbowKit
 
@@ -106,7 +106,7 @@ npm i @tanstack/react-query
 
 يستمر المطورون في السيطرة الكاملة على قائمة المحافظ المخصصة لتسليط الضوء على المحافظ المفضلة للمستخدمين النهائيين. يُشجع على أن تستمر في تضمين `injectedWallet` و `walletConnectWallet` في قائمتك لدعم جميع المنصات.
 
-**2. تكوين Wagmi مع getDefaultConfig**
+\*\*2. تكوين Wagmi مع getDefaultConfig\*\*
 
 هذه الواجهة البرمجية الجديدة تبسط تجربة التكوين وتحل محل الحاجة لاستخدام `createConfig` من Wagmi مباشرةً. تم تبسيط تكوين السلسلة، بما في ذلك مزودي الخدمات العامة المستنتجة لـ `transports`.
 
@@ -215,7 +215,7 @@ const config = getDefaultConfig({
 npm i @rainbow-me/rainbowkit@^1 wagmi@^1
 ```
 
-**2. تثبيت التبعية المتبادلة `viem`**
+\*\*2. تثبيت التبعية المتبادلة `viem`\*\*
 
 يتطلب wagmi v1 التبعية المتبادلة `viem`. قم بتثبيتها بالأمر التالي:
 
@@ -251,13 +251,13 @@ npm i viem
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
+#### 1. قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
 ```
 
-#### 2.  أقدم projectId من WalletConnect Cloud
+#### 2. أقدم projectId من WalletConnect Cloud
 
 كل تطبيق dApp يعتمد على WalletConnect يحتاج الآن إلى الحصول على `projectId` من [WalletConnect Cloud](https://cloud.walletconnect.com/). هذا مجاني تماما ولا يستغرق سوى بضع دقائق.
 
@@ -291,13 +291,13 @@ const connectors = connectorsForWallets([
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
+#### 1. قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
+#### 2. تحقق من التغييرات الكبيرة في `wagmi`
 
 إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
@@ -309,13 +309,13 @@ npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
+#### 1. قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
+#### 2. تحقق من التغييرات الكبيرة في `wagmi`
 
 إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
@@ -327,13 +327,13 @@ npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
+#### 1. قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
+#### 2. تحقق من التغييرات الكبيرة في `wagmi`
 
 إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
@@ -345,13 +345,13 @@ npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
+#### 1. قم بترقية RainbowKit و `wagmi` إلى أحدث نسخة لهم
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
+#### 2. تحقق من التغييرات الكبيرة في `wagmi`
 
 إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
@@ -404,7 +404,7 @@ const wallets = [
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  ترقية التبعيات
+#### 1. ترقية التبعيات
 
 ترقية RainbowKit و wagmi إلى أحدث إصدار لها
 
@@ -412,7 +412,7 @@ const wallets = [
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2.  تحقق من التغييرات الكبيرة في `wagmi`
+#### 2. تحقق من التغييرات الكبيرة في `wagmi`
 
 إذا كنت تستخدم خطافات `wagmi` في تطبيقك، ستحتاج إلى التحقق من إذا كان التطبيق الخاص بك قد تأثر بالتغييرات الكبيرة في `wagmi`.
 
@@ -484,7 +484,7 @@ const connectors = connectorsForWallets([
 
 اتبع الخطوات أدناه للترحيل.
 
-#### 1.  ترقية التبعيات
+#### 1. ترقية التبعيات
 
 ترقية RainbowKit و wagmi إلى أحدث إصدار لها
 
@@ -492,7 +492,7 @@ const connectors = connectorsForWallets([
 npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 ```
 
-#### 2.  استبدال استيراد configureChains
+#### 2. استبدال استيراد configureChains
 
 استورد `configureChains` من wagmi بدلاً من RainbowKit:
 
@@ -501,7 +501,7 @@ npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
 + import { configureChains } from 'wagmi';
 ```
 
-#### 3.  ترحيل المزودين
+#### 3. ترحيل المزودين
 
 RainbowKit لم يعد يتصدر `apiProvider` API. استبدله بالمزود المطلوب من wagmi.
 
@@ -573,7 +573,7 @@ const { chains, provider } = configureChains(
 );
 ```
 
-#### 4.  أعد تسمية موفر wagmi
+#### 4. أعد تسمية موفر wagmi
 
 قم بتغيير اسم `WagmiProvider` إلى `WagmiConfig`.
 

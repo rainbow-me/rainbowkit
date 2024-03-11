@@ -7,9 +7,9 @@ description: การปรับแต่งรายการ wallet
 
 ## การปรับแต่งรายการ wallet
 
-> หมายเหตุ: API นี้ไม่เสถียรและมีความเป็นไปได้ที่จะเปลี่ยนแปลงในอนาคตใกล้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้
+> หมายเหตุ: API นี้ไม่เสถียรและมีความเป็นไปได้ที่จะเปลี่ยนแปลงในอนาคตใกล้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้ เราขอแนะนำให้หลีกเลี่ยงการเปลี่ยนแปลงรายการ wallet ในช่วงนี้
 
-คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ
+คุณสามารถนำเข้า wallet แต่ละตัวจาก `'@rainbow-me/rainbowkit/wallets'` พร้อมกับฟังก์ชัน `connectorsForWallets` เพื่อสร้างรายการ wallet ของคุณเองพร้อมตัวเชื่อมต่อที่จำเป็น ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ ด้วยวิธีนี้คุณมีสิทธิ์ควบคุมเต็มรูปแบบในการแสดง wallet ที่จะแสดงและในลำดับที่คุณต้องการ
 
 ตัวอย่างเช่น คุณสามารถเลือกแสดงเฉพาะ Rainbow พร้อมกับ wallet ที่เป็นทั่วไป
 
@@ -66,7 +66,7 @@ Wallet ต่อไปนี้มีผ่านข้อมูล `wallet` obj
 
 #### Wallet ทั่วไป
 
-Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
+Wallet ต่อไปนี้จัดลำดับตามเมธอดการเชื่อมต่อทั่วไปเป็นหลักไม่เฉพาะแอป ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ ดังนั้นแนะนำให้กระเป๋าเหล่านี้มีอยู่เสมอ
 
 ##### WalletConnect
 
@@ -90,7 +90,7 @@ walletConnectWallet(options: {
 
 ##### Injected Wallet
 
-นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
+นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ นี่คือตัวเลือกกระเป๋าเงินสำรองที่ออกแบบมาสำหรับสถานการณ์ที่ `window.ethereum` มีอยู่แต่ยังไม่ได้ถูกให้มาจากกระเป๋าเงินอื่นในรายการ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้ กระเป๋าเงินนี้จะซ่อนตัวเองอัตโนมัติจากรายการเมื่อไม่จำเป็นต้องใช้สำรองหรือถ้าไม่มีกระเป๋าเงินที่ถูก Inject ให้ใช้งานได้
 
 **แนะนำว่าคุณควรรวมกระเป๋าเงินนี้ไว้ในรายการเสมอเพื่อให้แน่ใจว่ารองรับกระเป๋าเงินที่ถูก Inject ทั้งหมด**
 
@@ -140,6 +140,16 @@ bifrostWallet(options: {
 import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 
 bitskiWallet();
+```
+
+#### Bloom Wallet
+
+```tsx
+import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+
+bloomWallet(options: {
+  projectId: string;
+});
 ```
 
 #### Brave Wallet
@@ -214,7 +224,7 @@ import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 frameWallet();
 ```
 
-#### Frontier กระเป๋าสตางค์
+#### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -244,6 +254,16 @@ imTokenWallet(options: {
 });
 ```
 
+#### Kresus Wallet
+
+```tsx
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+
+kresusWallet(options: {
+  projectId: string;
+});
+```
+
 #### MetaMask
 
 ```tsx
@@ -254,7 +274,7 @@ metaMaskWallet(options: {
 });
 ```
 
-#### MEW กระเป๋าสตางค์
+#### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -262,7 +282,7 @@ import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
 mewWallet();
 ```
 
-#### OKX กระเป๋าสตางค์
+#### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -298,7 +318,7 @@ import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
 phantomWallet();
 ```
 
-#### Rabby กระเป๋าสตางค์
+#### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -312,6 +332,24 @@ rabbyWallet();
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 
 rainbowWallet(options: {
+  projectId: string;
+});
+```
+
+#### Ramper Wallet
+
+```tsx
+import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+
+ramperWallet();
+```
+
+#### Ronin Wallet
+
+```tsx
+import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+
+roninWallet(options: {
   projectId: string;
 });
 ```
@@ -394,7 +432,7 @@ import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
 xdefiWallet();
 ```
 
-#### เปิดแอป Zerion
+#### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -461,7 +499,7 @@ const connectors = connectorsForWallets(
 
 #### หลายกลุ่ม
 
-คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้
+คุณสามารถใช้กุญแจ `groupName` ในการตั้งชื่อกลุ่มกระเป๋าเงินที่แตกต่างกัน สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้ สิ่งนี้มีประโยชน์หากคุณต้องการแจ้งให้ผู้ใช้ของคุณทราบถึงกระเป๋าเงินที่คุณแนะนำ รวมถึงกระเป๋าเงินอื่นๆที่เป็นไปได้
 
 แนะนำ Rainbow และ MetaMask, แต่ยังเสนอ Coinbase พร้อมกับกระเป๋าเงิน fallback ทั่วไป
 

@@ -1,6 +1,6 @@
 {
   "name": "with-create-react-app",
-  "version": "0.1.79",
+  "version": "0.1.81",
   "private": true,
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
@@ -9,15 +9,15 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.2",
     "@types/node": "^18.19.3",
-    "@types/react": "^18.2.43",
+    "@types/react": "^18.2.64",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "react": "^18.2.0",
     "typescript": "^5.0.4",
     "util": "0.12.4",
-    "viem": "^2.7.3",
-    "wagmi": "^2.5.5",
-    "@tanstack/react-query": "^5.18.1",
+    "viem": "^2.7.12",
+    "wagmi": "^2.5.7",
+    "@tanstack/react-query": "^5.22.2",
     "web-vitals": "^2.1.4",
     "buffer": "npm:buffer@6.0.3"
   },
