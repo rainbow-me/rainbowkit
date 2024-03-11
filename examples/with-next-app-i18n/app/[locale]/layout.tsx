@@ -1,7 +1,6 @@
-import { NextIntlClientProvider } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@rainbow-me/rainbowkit';
 import { Providers } from './providers';
-import { unstable_setRequestLocale } from 'next-intl/server';
 
 export function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'zh-CN' }];
@@ -19,9 +18,7 @@ export default function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale}>
-          <Providers locale={locale}>{children}</Providers>
-        </NextIntlClientProvider>
+        <Providers locale={locale}>{children}</Providers>
       </body>
     </html>
   );
