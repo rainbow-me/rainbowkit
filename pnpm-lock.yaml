@@ -164,8 +164,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/rainbowkit
       next-intl:
-        specifier: ^3.9.1
-        version: 3.9.1(next@14.1.3)(react@18.2.0)
+        specifier: ^3.9.4
+        version: 3.9.4(next@14.1.3)(react@18.2.0)
     devDependencies:
       eslint:
         specifier: ^8.15.0
@@ -586,8 +586,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       next-intl:
-        specifier: ^3.9.1
-        version: 3.9.1(next@14.1.3)(react@18.2.0)
+        specifier: ^3.9.4
+        version: 3.9.4(next@14.1.3)(react@18.2.0)
       parse-numeric-range:
         specifier: 1.3.0
         version: 1.3.0
@@ -17922,8 +17922,8 @@ packages:
       - typescript
     dev: true
 
-  /next-intl@3.9.1(next@14.1.3)(react@18.2.0):
-    resolution: {integrity: sha512-1j+5lLTY5kHshqnVoeAep+gQO1xX1KlJU3irZkdCOhr0woo562qLKOsGGVh+7bB5luBMu9qQBQy7ZwNK81Z2Ig==}
+  /next-intl@3.9.4(next@14.1.3)(react@18.2.0):
+    resolution: {integrity: sha512-ktm7tKgD35GY08HrCbuTFdgaLFNykUB1EOef4JPUo63E7qDShBx8bD+A4HYjs/Y/zoq4K5IPyG03Thj+lKmymg==}
     peerDependencies:
       next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -17932,7 +17932,7 @@ packages:
       negotiator: 0.6.3
       next: 14.1.3(@babel/core@7.23.6)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      use-intl: 3.9.1(react@18.2.0)
+      use-intl: 3.9.4(react@18.2.0)
     dev: false
 
   /next-sitemap@4.2.3(next@14.1.3):
@@ -22723,8 +22723,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /use-intl@3.9.1(react@18.2.0):
-    resolution: {integrity: sha512-tWcT636/jYC0hILyFTLmiuE+ovbvPPBXwN/OOQxxE+4bssHXeeksdWXzpDsKqE37aV62DFrQ2jhumV8udecjNA==}
+  /use-intl@3.9.4(react@18.2.0):
+    resolution: {integrity: sha512-z53WpHqVMnIV23YO92nUhXePjPk18VIYQayMQbPYe7wPEau7IhXcZqWLC5xrzpj7HORKzwmHDOzDQ6X09BbsTA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
