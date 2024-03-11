@@ -1,5 +1,23 @@
 # with-next-siwe-next-auth
 
+## 0.0.65
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+
+- Updated dependencies [524d7a0]
+- Updated dependencies [2f637e4]
+- Updated dependencies [c021746]
+- Updated dependencies [df572f1]
+  - @rainbow-me/rainbowkit@2.0.2
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
 ## 0.0.64
 
 ### Patch Changes
