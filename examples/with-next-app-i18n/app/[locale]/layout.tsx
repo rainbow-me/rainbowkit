@@ -7,8 +7,9 @@ export function generateStaticParams() {
 }
 
 // Dynamic metadata with locale
-export async function generateMetadata({ params: { locale } }) {
-export async function generateMetadata({ params: { locale } }: { params: { locale: Locale } }) {
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Locale } }
+) {
   const t = await getTranslations({ locale, namespace: 'Metadata' });
   return {
     title: t('title')
