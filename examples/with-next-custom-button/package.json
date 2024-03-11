@@ -1,7 +1,7 @@
 {
   "name": "with-next-custom-button",
   "private": true,
-  "version": "0.0.81",
+  "version": "0.0.82",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

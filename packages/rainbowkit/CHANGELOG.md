@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.2
+
+### Patch Changes
+
+- 524d7a0: `connectModalOpen` state for the `useConnectModal` hook will now also encompass the Web3Modal modal presentation status for users that interact with `walletConnectWallet`
+- 2f637e4: Fixed a bug where wagmi would throw `ChainNotConfiguredError` if `mainnet` is not configured as a chain. This is happening when fetching ens name and ens avatar.
+- c021746: Resolved an issue where the Connect Modal wallet list would appear empty for EIP-6963 connectors when using the `WalletButton` component
+- df572f1: Resolved an issue for Custom Wallets that displayed a "missing translation" error for instructions during connect and installation flows. Now Custom Wallets will display their original strings without attempted translation.
+
 ## 2.0.1
 
 ### Patch Changes

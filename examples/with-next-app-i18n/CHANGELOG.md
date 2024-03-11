@@ -1,5 +1,23 @@
 # with-next-app-i18n
 
+## 0.0.30
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+
+- 6982833: We've migrated `with-next-app-i18n` to `next-intl` version `^3.9.4` and adopted the latest best practices. The example also now includes a `messages/` translation sample to replicate real-world usage.
+- Updated dependencies [524d7a0]
+- Updated dependencies [2f637e4]
+- Updated dependencies [c021746]
+- Updated dependencies [df572f1]
+  - @rainbow-me/rainbowkit@2.0.2
+
 ## 0.0.29
 
 ### Patch Changes

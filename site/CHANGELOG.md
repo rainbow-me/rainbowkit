@@ -1,5 +1,23 @@
 # site
 
+## 0.0.92
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+
+- c021746: Resolved an issue where the Connect Modal wallet list would appear empty for EIP-6963 connectors when using the `WalletButton` component
+- Updated dependencies [524d7a0]
+- Updated dependencies [2f637e4]
+- Updated dependencies [c021746]
+- Updated dependencies [df572f1]
+  - @rainbow-me/rainbowkit@2.0.2
+
 ## 0.0.91
 
 ### Patch Changes
