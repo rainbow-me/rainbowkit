@@ -17,9 +17,7 @@
 
 Updated the following packages:
 
-- `next` to `^14.1.0`
-- `eslint-config-next` to `^14.1.0`
-- `next-intl` to `^3.9.1`
-
-
-For a follow up update we've updated the `with-next-app-i18n` to use the latest internalization configuration.
+- `next` to `^14.1.3`
+- `eslint-config-next` to `^14.1.3`
+- `@types/react` to `^18.2.64`
+- `@types/react` to `^18.2.64`
