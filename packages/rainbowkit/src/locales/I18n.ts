@@ -1,3 +1,7 @@
+interface TranslationOptions {
+  rawKeyIfTranslationMissing?: boolean;
+}
+
 type GenericTranslationObject = Record<string, any>;
 
 const defaultOptions = {
@@ -73,7 +77,11 @@ export class I18n {
     return translatedString;
   }
 
-  public t(key: string, replacements?: Record<string, string>): string {
+  public t(
+    key: string,
+    replacements?: Record<string, string>,
+    options?: TranslationOptions,
+  ): string {
     const translationKey = `${this.locale}.${key}`;
     const translation = this.translations[translationKey];
 
@@ -92,6 +100,12 @@ export class I18n {
           );
         }
       }
+
+      // If translation is missing -> return the raw key instead.
+      // This is useful if someone were to create their own RainbowKit
+      // wallet with steps, but translations are missing. In this case
+      // we don't want to throw missing translation message.
+      if (options?.rawKeyIfTranslationMissing) return key;
 
       return this.missingMessage(key);
     }
