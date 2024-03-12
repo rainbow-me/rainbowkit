@@ -139,6 +139,32 @@ export default {
 };
 ```
 
+##### Preparing to deploy
+
+By default your dApp uses public RPC providers to fetch things like balances, ENS name, and more. Which means you might not want to rely on the default public RPC providers because they can be unreliable sometimes. Instead you can define your own Transports. This can be done by adding `transports` in `getDefaultConfig`.
+
+A Transport is the middle layer that handles sending JSON-RPC requests to the RPC Provider (like Alchemy, Infura, etc).
+
+Example with `http`
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+For more details, view the [wagmi transport documentation.](https://wagmi.sh/core/api/transports#transports)
+
 ### Add your own functionality
 
 Now that your users can connect their wallets, you can start building out the rest of your app using [wagmi.](https://wagmi.sh)

@@ -2,4 +2,4 @@
 "site": patch
 ---
 
-Added a section for how to add custom RPC in chains page.
+Added "Preparing to deploy" section in "Installation" page and explaining why it's important to use transports when deploying your dApp. Additionally added also a quick example with `http` and `getDefaultConfig`.

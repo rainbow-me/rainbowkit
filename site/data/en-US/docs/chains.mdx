@@ -73,37 +73,3 @@ const config = createConfig({
   chains,
 });
 ```
-
-
-### Custom RPC
-
-To add custom RPC for each chain, specify the `transports` option in `getDefaultConfig`. You also need to use `http` function from `wagmi` for each chain.
-
-```tsx
-import { RainbowKitProvider, getDefaultConfig } from '@rainbow-me/rainbowkit';
-import { WagmiProvider, http } from 'wagmi';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { mainnet, sepolia } from 'wagmi/chains';
-
-const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
-  projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, sepolia],
-  transports: {
-    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
-    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
-  },
-});
-
-const queryClient = new QueryClient();
-
-const App = () => {
-  return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>{/* Your App */}</RainbowKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
-  );
-};
-```
