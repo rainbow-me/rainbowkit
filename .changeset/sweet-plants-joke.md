@@ -1,5 +1,5 @@
 ---
-"@rainbow-me/rainbowkit": patch
+"@rainbow-me/rainbowkit": minor
 "example": patch
 "site": patch
 ---
