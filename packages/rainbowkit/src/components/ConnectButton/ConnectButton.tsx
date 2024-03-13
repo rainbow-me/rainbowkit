@@ -56,7 +56,7 @@ export function ConnectButton({
     setShowBalance(showBalance);
     if (!ready) setReady(true);
   }, [showBalance, setShowBalance]);
-  
+
   return ready ? (
     <ConnectButtonRenderer>
       {({
@@ -72,8 +72,9 @@ export function ConnectButton({
         // chain that they want to switch to. We also hide the chain button if user is using
         // our authentication provider and is not yet signed in.
         const shouldHideChainButton =
-          (initialChainId || !chainModalOnConnect) &&
-          connectionStatus !== 'connected';
+          ((initialChainId || !chainModalOnConnect) &&
+            connectionStatus !== 'connected') ||
+          connectionStatus === 'unauthenticated';
         const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
 

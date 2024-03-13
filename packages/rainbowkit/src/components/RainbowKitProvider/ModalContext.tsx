@@ -13,6 +13,10 @@ import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { useAuthenticationStatus } from './AuthenticationContext';
+import {
+  useChainModalOnConnect,
+  useInitialChainId,
+} from './RainbowKitChainContext';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -74,6 +78,9 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const { chainId } = useAccount();
   const { chains } = useConfig();
 
+  const chainModalOnConnect = useChainModalOnConnect();
+  const initialChainId = useInitialChainId();
+
   const isCurrentChainSupported = chains.some((chain) => chain.id === chainId);
 
   interface CloseModalsOptions {
@@ -104,6 +111,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
     if (isUnauthenticated) closeModals();
   }, [isUnauthenticated]);
 
+  const shouldHideChainModal =
+    ((initialChainId || !chainModalOnConnect) &&
+      connectionStatus !== 'connected') ||
+    connectionStatus === 'unauthenticated' ||
+    connectionStatus === 'loading';
+
   return (
     <ModalContext.Provider
       value={useMemo(
@@ -116,11 +129,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
             isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
-          openChainModal:
-            connectionStatus === 'connected' ||
-            connectionStatus === 'disconnected'
-              ? openChainModal
-              : undefined,
+          openChainModal: !shouldHideChainModal ? openChainModal : undefined,
           openConnectModal:
             connectionStatus === 'disconnected' ||
             connectionStatus === 'unauthenticated'
@@ -129,6 +138,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           setIsWalletConnectModalOpen,
         }),
         [
+          shouldHideChainModal,
           connectionStatus,
           accountModalOpen,
           chainModalOpen,
