@@ -27,10 +27,10 @@ As a convenience, you can also pass a chain object.
 
 ### Chain Modal v2
 
-If you want to switch chains before connecting your wallet, just set `ignoreChainModalOnConnect` prop to `false` in `<RainbowKitProvider>`. This will let you interact with the chain modal before your wallet is connected, and also while it is connected.
+If you want to switch chains before connecting your wallet, just set `chainModalOnConnect` prop to `true` in `<RainbowKitProvider>`. This will let you interact with the chain modal before your wallet is connected, and also while it is connected.
 
 ```tsx
-<RainbowKitProvider ignoreChainModalOnConnect={false}>
+<RainbowKitProvider chainModalOnConnect>
 ```
 
 ### Custom chain metadata

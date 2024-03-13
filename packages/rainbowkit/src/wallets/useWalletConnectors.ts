@@ -2,7 +2,7 @@ import { Config, Connector, useChainId, useConnect } from 'wagmi';
 import { ConnectMutateAsync } from 'wagmi/query';
 import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import {
-  useIgnoreChainModalOnConnect,
+  useChainModalOnConnect,
   useInitialChainId,
   useRainbowKitChains,
 } from '../components/RainbowKitProvider/RainbowKitChainContext';
@@ -41,7 +41,7 @@ export function useWalletConnectors(
   const rainbowKitChains = useRainbowKitChains();
   const currentChainId = useChainId();
   const intialChainId = useInitialChainId();
-  const ignoreChainModalOnConnect = useIgnoreChainModalOnConnect();
+  const chainModalOnConnect = useChainModalOnConnect();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
@@ -62,7 +62,7 @@ export function useWalletConnectors(
 
     // If user chooses to ignore the modal chain before connection
     // we will make sure to use one of our rainbowkit chains
-    if (ignoreChainModalOnConnect) {
+    if (!chainModalOnConnect) {
       const walletChainId = await connector.getChainId();
 
       // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.

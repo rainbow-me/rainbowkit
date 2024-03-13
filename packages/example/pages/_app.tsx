@@ -277,8 +277,7 @@ function RainbowKitApp({
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
-  const [ignoreChainModalOnConnect, setIgnoreChainModalOnConnect] =
-    useState(true);
+  const [chainModalOnConnect, setChainModalOnConnect] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
   const routerLocale = router.locale as Locale;
@@ -323,7 +322,7 @@ function RainbowKitApp({
           ...demoAppInfo,
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
-        ignoreChainModalOnConnect={ignoreChainModalOnConnect}
+        chainModalOnConnect={chainModalOnConnect}
         avatar={customAvatar ? CustomAvatar : undefined}
         locale={locale}
         coolMode={coolModeEnabled}
@@ -468,19 +467,19 @@ function RainbowKitApp({
                     <tr>
                       <td>
                         <label
-                          htmlFor="ignoreModalChainOnConnect"
+                          htmlFor="chainModalOnConnect"
                           style={{ userSelect: 'none' }}
                         >
-                          ignoreModalChainOnConnect
+                          chainModalOnConnect
                         </label>
                       </td>
                       <td>
                         <input
-                          checked={ignoreChainModalOnConnect}
-                          id="ignoreModalChainOnConnect"
-                          name="ignoreModalChainOnConnect"
+                          checked={chainModalOnConnect}
+                          id="chainModalOnConnect"
+                          name="chainModalOnConnect"
                           onChange={(e) =>
-                            setIgnoreChainModalOnConnect(e.target.checked)
+                            setChainModalOnConnect(e.target.checked)
                           }
                           type="checkbox"
                         />

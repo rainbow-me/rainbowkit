@@ -13,7 +13,7 @@ import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import {
-  useIgnoreChainModalOnConnect,
+  useChainModalOnConnect,
   useInitialChainId,
   useRainbowKitChains,
 } from '../RainbowKitProvider/RainbowKitChainContext';
@@ -45,7 +45,7 @@ export function ConnectButton({
 }: ConnectButtonProps) {
   const chains = useRainbowKitChains();
   const connectionStatus = useConnectionStatus();
-  const ignoreChainModalOnConnect = useIgnoreChainModalOnConnect();
+  const chainModalOnConnect = useChainModalOnConnect();
   const { setShowBalance } = useShowBalance();
   const initialChainId = useInitialChainId();
   const { i18n } = useContext(I18nContext);
@@ -56,7 +56,7 @@ export function ConnectButton({
     setShowBalance(showBalance);
     if (!ready) setReady(true);
   }, [showBalance, setShowBalance]);
-
+  
   return ready ? (
     <ConnectButtonRenderer>
       {({
@@ -72,9 +72,8 @@ export function ConnectButton({
         // chain that they want to switch to. We also hide the chain button if user is using
         // our authentication provider and is not yet signed in.
         const shouldHideChainButton =
-          ((initialChainId || ignoreChainModalOnConnect) &&
-            connectionStatus !== 'connected') ||
-          connectionStatus === 'unauthenticated';
+          (initialChainId || !chainModalOnConnect) &&
+          connectionStatus !== 'connected';
         const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
 
