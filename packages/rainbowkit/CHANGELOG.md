@@ -149,7 +149,7 @@
 
 ### Patch Changes
 
-- 7565fb2: Added `uk-UA` and `ua` locale support for the Ukranian language.
+- 7565fb2: Added `uk-UA` and `ua` locale support for the Ukrainian language.
 
   Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
 
