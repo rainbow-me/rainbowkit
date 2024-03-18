@@ -96,6 +96,10 @@ export const okxWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'okxwallet' }),
+      : getInjectedConnector({
+          id: 'okx',
+          name: 'OKX Wallet',
+          namespace: 'okxwallet',
+        }),
   };
 };

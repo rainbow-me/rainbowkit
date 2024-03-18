@@ -88,6 +88,8 @@ export const coreWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'core',
+          name: 'Core',
           namespace: 'avalanche',
           flag: 'isAvalanche',
         }),

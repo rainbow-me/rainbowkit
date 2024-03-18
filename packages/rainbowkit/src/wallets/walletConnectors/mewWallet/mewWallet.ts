@@ -18,6 +18,10 @@ export const mewWallet = (): Wallet => {
       mobile: 'https://mewwallet.com',
       qrCode: 'https://mewwallet.com',
     },
-    createConnector: getInjectedConnector({ flag: 'isMEWwallet' }),
+    createConnector: getInjectedConnector({
+      id: 'mew',
+      name: 'MEW wallet',
+      flag: 'isMEWwallet',
+    }),
   };
 };

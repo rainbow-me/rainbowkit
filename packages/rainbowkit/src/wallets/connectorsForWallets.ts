@@ -1,10 +1,11 @@
 import type { CreateConnectorFn } from 'wagmi';
+import { createConnector as createWagmiConnector } from 'wagmi';
+import { walletConnect } from 'wagmi/connectors';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import type {
   RainbowKitWalletConnectParameters,
   Wallet,
-  WalletDetailsParams,
   WalletList,
 } from './Wallet';
 import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
@@ -101,7 +102,7 @@ export const connectorsForWallets = (
   ];
 
   for (const {
-    createConnector,
+    createConnector: createRainbowKitConnector,
     groupIndex,
     groupName,
     hidden,
@@ -117,44 +118,31 @@ export const connectorsForWallets = (
       }
     }
 
-    const walletMetaData = (
-      // For now we should only use these as the additional parameters
-      additionalRkParams?: Pick<
-        WalletDetailsParams['rkDetails'],
-        'isWalletConnectModalConnector' | 'showQrModal'
-      >,
-    ) => {
-      return {
-        rkDetails: omitUndefinedValues({
-          ...walletMeta,
-          groupIndex,
-          groupName,
-          isRainbowKitConnector: true,
-          // These additional params will be used in rainbowkit react tree to
-          // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
-          // showQrModal: true. This way we can let the user choose if they want to
-          // connect via QR code or open the official walletConnect modal instead
-          ...(additionalRkParams ? additionalRkParams : {}),
-        }),
-      };
+    const rainbowKitDetails = {
+      rkDetails: omitUndefinedValues({
+        ...walletMeta,
+        groupIndex,
+        groupName,
+        isRainbowKitConnector: true,
+      }),
     };
 
-    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
-
-    if (isWalletConnectConnector) {
-      connectors.push(
-        createConnector(
-          walletMetaData({
-            isWalletConnectModalConnector: true,
-            showQrModal: true,
-          }),
-        ),
-      );
-    }
-
-    const connector = createConnector(walletMetaData());
+    const connector = createWagmiConnector((config) => ({
+      ...createRainbowKitConnector(config),
+      ...rainbowKitDetails,
+    }));
 
     connectors.push(connector);
+
+    if (walletMeta.id === 'walletConnect') {
+      const walletConnectConnector = createWagmiConnector((config) => ({
+        ...walletConnect({ projectId, showQrModal: true })(config),
+        ...rainbowKitDetails,
+        isWalletConnectModalConnector: true,
+      }));
+
+      connectors.push(walletConnectConnector);
+    }
   }
 
   return connectors;

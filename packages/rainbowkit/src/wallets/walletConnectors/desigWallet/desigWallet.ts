@@ -42,6 +42,8 @@ export const desigWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
+      id: 'desig',
+      name: 'Desig Wallet',
       namespace: 'desig.ethereum',
     }),
   };

@@ -51,6 +51,8 @@ export const oneKeyWallet = (): Wallet => {
     },
 
     createConnector: getInjectedConnector({
+      id: 'onekey',
+      name: 'OneKey',
       namespace: '$onekey.ethereum',
     }),
   };

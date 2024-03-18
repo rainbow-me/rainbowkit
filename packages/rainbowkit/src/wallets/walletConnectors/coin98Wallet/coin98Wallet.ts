@@ -94,6 +94,8 @@ export const coin98Wallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'coin98',
+          name: 'Coin98 Wallet',
           namespace: 'coin98Wallet',
           flag: 'isCoin98',
         }),

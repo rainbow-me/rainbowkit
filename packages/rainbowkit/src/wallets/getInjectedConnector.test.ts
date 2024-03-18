@@ -8,6 +8,8 @@ describe('getInjectedConnector', () => {
   it('only rainbow provider', () => {
     window.ethereum = { isMetaMask: true, isRainbow: true };
     const connector = getInjectedConnector({
+      id: 'rainbow',
+      name: 'Rainbow',
       flag: 'isRainbow',
     });
     expect(!!connector).toEqual(true);
@@ -16,6 +18,8 @@ describe('getInjectedConnector', () => {
   it('only metamask provider', () => {
     window.ethereum = { isMetaMask: true };
     const connector = getInjectedConnector({
+      id: 'metamask',
+      name: 'MetaMask',
       flag: 'isMetaMask',
     });
     expect(!!connector).toEqual(true);

@@ -17,5 +17,9 @@ export const braveWallet = (): Wallet => ({
     // more of a convenience for users who are already using Brave rather than
     // an explicit wallet choice for users coming from other browsers.
   },
-  createConnector: getInjectedConnector({ flag: 'isBraveWallet' }),
+  createConnector: getInjectedConnector({
+    id: 'brave',
+    name: 'Brave Wallet',
+    flag: 'isBraveWallet',
+  }),
 });

@@ -113,6 +113,10 @@ export const subWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'SubWallet' }),
+      : getInjectedConnector({
+          id: 'subwallet',
+          name: 'SubWallet',
+          namespace: 'SubWallet',
+        }),
   };
 };

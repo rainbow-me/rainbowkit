@@ -102,6 +102,8 @@ export const bitgetWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'bitget',
+          name: 'Bitget Wallet',
           namespace: 'bitkeep.ethereum',
           flag: 'isBitKeep',
         }),

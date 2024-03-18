@@ -40,6 +40,8 @@ export const tahoWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
+      id: 'taho',
+      name: 'Taho',
       namespace: 'tally',
       flag: 'isTally',
     }),

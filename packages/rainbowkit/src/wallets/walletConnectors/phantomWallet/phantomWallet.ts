@@ -48,6 +48,8 @@ export const phantomWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
+      id: 'phantom',
+      name: 'Phantom',
       namespace: 'phantom.ethereum',
     }),
   };

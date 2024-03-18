@@ -74,6 +74,8 @@ export const bifrostWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'bifrostWallet',
+          name: 'Bifrost Wallet',
           flag: 'isBifrost',
         }),
   };

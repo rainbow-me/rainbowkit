@@ -1,6 +1,19 @@
-import { createConnector } from 'wagmi';
+import { CreateConnectorFn } from 'wagmi';
 import { injected } from 'wagmi/connectors';
-import { CreateConnector, WalletDetailsParams } from './Wallet';
+
+interface CreateInjectedConnectorParameters {
+  id: string;
+  name: string;
+  provider?: any;
+}
+
+interface GetInjectedConnectorParameters {
+  id: string;
+  name: string;
+  flag?: string;
+  namespace?: string;
+  target?: any;
+}
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true
@@ -75,36 +88,32 @@ function getInjectedProvider({
   return window.ethereum;
 }
 
-function createInjectedConnector(provider?: any): CreateConnector {
-  return (walletDetails: WalletDetailsParams) => {
-    // Create the injected configuration object conditionally based on the provider.
-    const injectedConfig = provider
-      ? {
-          target: () => ({
-            id: walletDetails.rkDetails.id,
-            name: walletDetails.rkDetails.name,
-            provider,
-          }),
-        }
-      : {};
+function createInjectedConnector({
+  id,
+  name,
+  provider,
+}: CreateInjectedConnectorParameters) {
+  // Create the injected configuration object conditionally based on the provider.
+  const injectedConfig = provider
+    ? {
+        target: () => ({
+          id,
+          name,
+          provider,
+        }),
+      }
+    : {};
 
-    return createConnector((config) => ({
-      // Spread the injectedConfig object, which may be empty or contain the target function
-      ...injected(injectedConfig)(config),
-      ...walletDetails,
-    }));
-  };
+  return injected(injectedConfig);
 }
 
 export function getInjectedConnector({
+  id,
+  name,
   flag,
   namespace,
   target,
-}: {
-  flag?: string;
-  namespace?: string;
-  target?: any;
-}): CreateConnector {
+}: GetInjectedConnectorParameters): CreateConnectorFn {
   const provider = target ? target : getInjectedProvider({ flag, namespace });
-  return createInjectedConnector(provider);
+  return createInjectedConnector({ id, name, provider });
 }

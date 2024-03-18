@@ -84,7 +84,11 @@ export const roninWallet = ({
       },
     },
     createConnector: isRoninInjected
-      ? getInjectedConnector({ namespace: 'ronin.provider' })
+      ? getInjectedConnector({
+          id: 'ronin',
+          name: 'Ronin Wallet',
+          namespace: 'ronin.provider',
+        })
       : getWalletConnectConnector({
           projectId,
           walletConnectParameters,

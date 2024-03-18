@@ -1,6 +1,5 @@
-import { createConnector } from 'wagmi';
 import { safe } from 'wagmi/connectors';
-import { Wallet, WalletDetailsParams } from '../../Wallet';
+import { Wallet } from '../../Wallet';
 
 export const safeWallet = (): Wallet => ({
   id: 'safe',
@@ -17,10 +16,5 @@ export const safeWallet = (): Wallet => ({
     // already running as a Safe App within the context of the Safe browser,
     // since it's unlikely to be a desired behavior for users.
   },
-  createConnector: (walletDetails: WalletDetailsParams) => {
-    return createConnector((config) => ({
-      ...safe()(config),
-      ...walletDetails,
-    }));
-  },
+  createConnector: safe(),
 });
