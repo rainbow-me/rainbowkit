@@ -18,4 +18,7 @@
 "@rainbow-me/create-rainbowkit": patch
 ---
 
-g
+Updated the following packages:
+- wagmi to `^2.5.11`
+- viem to `^2.8.12`
+- @tanstack/react-query to `^5.28.4`
