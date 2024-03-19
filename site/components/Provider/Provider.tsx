@@ -1,8 +1,4 @@
-import {
-  Chain,
-  getDefaultConfig,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -41,11 +37,7 @@ const { wallets } = getDefaultWallets();
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
-  // TODO: Remove `as` type assertion operator
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc] as [
-    Chain,
-    ...Chain[],
-  ],
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
   transports,
   wallets: [
     ...wallets,
@@ -65,7 +57,7 @@ const config = getDefaultConfig({
 
 const client = new QueryClient();
 
-export function Provider({ children }) {
+export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>

@@ -24,7 +24,7 @@ const SearchContext = createContext({
   onOpen: () => {},
 });
 
-export function SearchProvider({ children }) {
+export function SearchProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -119,7 +119,7 @@ export function SearchProvider({ children }) {
   );
 }
 
-function Hit({ children, hit }) {
+function Hit({ children, hit }: { children: React.ReactNode; hit: any }) {
   return (
     <Link
       className={clsx({
@@ -153,7 +153,11 @@ export function SearchButton({ children, ...props }: SearchButtonProps) {
   );
 }
 
-function useDocSearchKeyboardEvents({ isOpen, onClose, onOpen }) {
+function useDocSearchKeyboardEvents({
+  isOpen,
+  onClose,
+  onOpen,
+}: { isOpen: boolean; onClose: () => void; onOpen: () => void }) {
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (
