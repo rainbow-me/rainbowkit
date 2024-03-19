@@ -41,7 +41,17 @@ const { wallets } = getDefaultWallets();
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
+  chains: [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    bsc,
+    avalanche,
+    zora,
+    blast,
+  ],
   transports,
   wallets: [
     ...wallets,
