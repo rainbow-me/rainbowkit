@@ -19,6 +19,7 @@ export default function GuidePage({ guide }: GuidePageProps) {
         title={`${guide.title} — RainbowKit`}
       />
       <Box as="article">
+        {/* @ts-ignore */}
         <Component components={components} />
       </Box>
     </>
@@ -33,7 +34,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({
+  params,
+  locale,
+}: { params: any; locale: string }) {
   const guide = allGuides.find(
     (guide) => guide.slug === params.slug && guide.locale === locale,
   );

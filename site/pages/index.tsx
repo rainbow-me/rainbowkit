@@ -20,7 +20,7 @@ import NextLink from 'next/link';
 import React, { Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context: { locale: string }) {
   return {
     props: {
       messages: (await import(`../locales/${context.locale}.json`)).default,

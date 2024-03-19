@@ -25,8 +25,8 @@ export const useCoolMode = (
       return makeElementCool(
         ref.current,
         resolvedImageUrl,
-        disabled,
-        ignoreCoolModeDocsDemo,
+        disabled || false,
+        ignoreCoolModeDocsDemo || false,
       );
     }
   }, [resolvedImageUrl, disabled, ignoreCoolModeDocsDemo]);
