@@ -4,6 +4,7 @@ import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { bloomWallet } from './bloomWallet/bloomWallet';
 import { braveWallet } from './braveWallet/braveWallet';
+import { bybitWallet } from './bybitWallet/bybitWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -50,6 +51,7 @@ export {
   bitgetWallet,
   bitskiWallet,
   bloomWallet,
+  bybitWallet,
   braveWallet,
   clvWallet,
   coin98Wallet,

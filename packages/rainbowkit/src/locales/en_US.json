@@ -340,6 +340,38 @@
       }
     },
 
+    "bybit": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting Bybit on your home screen for faster access to your wallet.",
+          "title": "Open the Bybit app"
+        },
+        "step2": {
+          "description": "You can easily backup your wallet using our backup feature on your phone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the scan button"
+        }
+      },
+
+      "extension": {
+        "step1": {
+          "description": "Click at the top right of your browser and pin Bybit Wallet for easy access.",
+          "title": "Install the Bybit Wallet extension"
+        },
+        "step2": {
+          "description": "Create a new wallet or import an existing one.",
+          "title": "Create or Import a wallet"
+        },
+        "step3": {
+          "description": "Once you set up Bybit Wallet, click below to refresh the browser and load up the extension.",
+          "title": "Refresh your browser"
+        }
+      }
+    },
+
     "coin98": {
       "qr_code": {
         "step1": {
