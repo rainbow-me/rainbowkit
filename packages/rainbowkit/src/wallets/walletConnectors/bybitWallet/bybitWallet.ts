@@ -18,12 +18,15 @@ export const bybitWallet = ({
   const shouldUseWalletConnect = !isBybitInjected;
 
   const getUri = (uri: string) => {
-    return `bybitapp://open/route?targetUrl=uri=${encodeURIComponent(uri)}`;
+    return `bybitapp://open/route?targetUrl=by://web3/walletconnect/wc?uri=${encodeURIComponent(
+      uri,
+    )}`;
   };
 
   return {
     id: 'bybit',
     name: 'Bybit Wallet',
+    rdns: 'com.bybit',
     iconUrl: async () => (await import('./bybitWallet.svg')).default,
     installed: !shouldUseWalletConnect ? isBybitInjected : undefined,
     iconBackground: '#000000',
