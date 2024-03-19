@@ -74,7 +74,6 @@ import {
   baseSepolia,
   blast,
   blastSepolia,
-  goerli,
   holesky,
   mainnet,
   optimism,
@@ -133,7 +132,6 @@ const config = getDefaultConfig({
     ronin,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
-          goerli,
           sepolia,
           holesky,
           polygonMumbai,
