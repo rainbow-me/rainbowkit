@@ -6,7 +6,9 @@ export const DocsMobileMenuContext = React.createContext<
   React.RefObject<HTMLDivElement>
 >({} as any);
 
-export function DocsMobileMenuSlot({ children }) {
+export function DocsMobileMenuSlot({
+  children,
+}: { children: React.ReactNode }) {
   const docsMobileMenuRef = React.useContext(DocsMobileMenuContext);
   const isMounted = useIsMounted();
 

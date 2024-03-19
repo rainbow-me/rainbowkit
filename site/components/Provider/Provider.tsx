@@ -57,7 +57,7 @@ const config = getDefaultConfig({
 
 const client = new QueryClient();
 
-export function Provider({ children }) {
+export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
