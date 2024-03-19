@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Resolved an issue where `normalize` would throw an error if there is a disallowed character in an ens name.
+Resolved an issue where ENS resolution would fail and throw an error for ENS names with special characters.
