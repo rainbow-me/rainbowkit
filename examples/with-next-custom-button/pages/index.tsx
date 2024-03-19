@@ -14,6 +14,7 @@ const Home: NextPage = () => {
       <ConnectButton.Custom>
         {({
           account,
+          disconnecting,
           chain,
           openAccountModal,
           openChainModal,
@@ -32,9 +33,9 @@ const Home: NextPage = () => {
               })}
             >
               {(() => {
-                if (!mounted || !account || !chain) {
+                if (!mounted || !account || !chain || disconnecting) {
                   return (
-                    <button onClick={openConnectModal} type="button">
+                    <button disabled={disconnecting} onClick={openConnectModal} type="button">
                       Connect Wallet
                     </button>
                   );

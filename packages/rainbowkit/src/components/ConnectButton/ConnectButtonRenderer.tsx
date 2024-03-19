@@ -18,6 +18,7 @@ import {
   useModalState,
 } from '../RainbowKitProvider/ModalContext';
 import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
+import { useRainbowKitWagmiState } from '../RainbowKitProvider/RainbowKitWagmiStateProvider';
 import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
 import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
 import { abbreviateETHBalance } from './abbreviateETHBalance';
@@ -48,6 +49,7 @@ export interface ConnectButtonRendererProps {
       unsupported?: boolean;
     };
     mounted: boolean;
+    disconnecting: boolean;
     authenticationStatus?: AuthenticationStatus;
     openAccountModal: () => void;
     openChainModal: () => void;
@@ -65,7 +67,6 @@ export function ConnectButtonRenderer({
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-
   const { chainId } = useAccount();
   const { chains: wagmiChains } = useConfig();
   const isCurrentChainSupported = wagmiChains.some(
@@ -115,6 +116,7 @@ export function ConnectButtonRenderer({
   const { openConnectModal } = useConnectModal();
   const { openChainModal } = useChainModal();
   const { openAccountModal } = useAccountModal();
+  const { isDisconnecting: disconnecting } = useRainbowKitWagmiState();
   const { accountModalOpen, chainModalOpen, connectModalOpen } =
     useModalState();
 
@@ -151,6 +153,7 @@ export function ConnectButtonRenderer({
         chainModalOpen,
         connectModalOpen,
         mounted: isMounted(),
+        disconnecting,
         openAccountModal: openAccountModal ?? noop,
         openChainModal: openChainModal ?? noop,
         openConnectModal: openConnectModal ?? noop,

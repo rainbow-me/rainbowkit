@@ -14,6 +14,7 @@ import { DropdownIcon } from '../Icons/Dropdown';
 import { I18nContext } from '../RainbowKitProvider/I18nContext';
 import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
 import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
+import * as styles from './ConnectButton.css';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -58,6 +59,7 @@ export function ConnectButton({
         account,
         chain,
         mounted,
+        disconnecting,
         openAccountModal,
         openChainModal,
         openConnectModal,
@@ -78,7 +80,10 @@ export function ConnectButton({
               },
             })}
           >
-            {ready && account && connectionStatus === 'connected' ? (
+            {ready &&
+            account &&
+            !disconnecting &&
+            connectionStatus === 'connected' ? (
               <>
                 {chain && (chains.length > 1 || unsupportedChain) && (
                   <Box
@@ -266,15 +271,19 @@ export function ConnectButton({
                 background="accentColor"
                 borderRadius="connectButton"
                 boxShadow="connectButton"
-                className={touchableStyles({
-                  active: 'shrink',
-                  hover: 'grow',
-                })}
+                className={[
+                  styles.button,
+                  touchableStyles({
+                    active: 'shrink',
+                    hover: 'grow',
+                  }),
+                ]}
                 color="accentColorForeground"
                 fontFamily="body"
                 fontWeight="bold"
                 height="40"
                 key="connect"
+                disabled={disconnecting}
                 onClick={openConnectModal}
                 paddingX="14"
                 testId="connect-button"

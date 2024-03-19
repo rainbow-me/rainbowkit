@@ -13,6 +13,7 @@ import { AccountModal } from '../AccountModal/AccountModal';
 import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { useAuthenticationStatus } from './AuthenticationContext';
+import { useRainbowKitWagmiState } from './RainbowKitWagmiStateProvider';
 
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -66,6 +67,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
+  const { isDisconnecting } = useRainbowKitWagmiState();
+
   const [isWalletConnectModalOpen, setIsWalletConnectModalOpen] =
     useState(false);
 
@@ -113,19 +116,25 @@ export function ModalProvider({ children }: ModalProviderProps) {
           connectModalOpen,
           isWalletConnectModalOpen,
           openAccountModal:
-            isCurrentChainSupported && connectionStatus === 'connected'
+            !isDisconnecting &&
+            isCurrentChainSupported &&
+            connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
           openChainModal:
-            connectionStatus === 'connected' ? openChainModal : undefined,
+            !isDisconnecting && connectionStatus === 'connected'
+              ? openChainModal
+              : undefined,
           openConnectModal:
-            connectionStatus === 'disconnected' ||
-            connectionStatus === 'unauthenticated'
+            (connectionStatus === 'disconnected' ||
+              connectionStatus === 'unauthenticated') &&
+            !isDisconnecting
               ? openConnectModal
               : undefined,
           setIsWalletConnectModalOpen,
         }),
         [
+          isDisconnecting,
           connectionStatus,
           accountModalOpen,
           chainModalOpen,
