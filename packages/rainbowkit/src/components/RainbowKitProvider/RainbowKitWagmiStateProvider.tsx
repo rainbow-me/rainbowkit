@@ -21,7 +21,6 @@ interface RainbowKitWagmiStateProviderProps {
   children: ReactNode;
 }
 
-// This provider is used for optimistic update purposes
 export function RainbowKitWagmiStateProvider({
   children,
 }: RainbowKitWagmiStateProviderProps) {
