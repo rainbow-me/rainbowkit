@@ -10,7 +10,7 @@ export function useMainnetEnsAvatar(name: GetEnsNameReturnType | undefined) {
     try {
       return normalize(ensName);
     } catch {
-      return ensName;
+      /* ignore */
     }
   };
 
