@@ -1,4 +1,8 @@
-import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import {
+  Chain,
+  getDefaultConfig,
+  getDefaultWallets,
+} from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   imTokenWallet,
@@ -37,7 +41,11 @@ const { wallets } = getDefaultWallets();
 const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc],
+  // TODO: Remove `as` type assertion operator
+  chains: [mainnet, polygon, optimism, arbitrum, base, zora, bsc] as [
+    Chain,
+    ...Chain[],
+  ],
   transports,
   wallets: [
     ...wallets,
