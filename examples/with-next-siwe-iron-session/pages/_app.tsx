@@ -22,7 +22,6 @@ import { WagmiProvider } from 'wagmi';
 import {
   arbitrum,
   base,
-  bsc,
   mainnet,
   optimism,
   polygon,
@@ -49,7 +48,6 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    bsc,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,

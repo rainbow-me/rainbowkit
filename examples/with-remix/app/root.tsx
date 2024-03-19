@@ -25,7 +25,6 @@ import type { Chain } from 'wagmi/chains';
 import {
   arbitrum,
   base,
-  bsc,
   mainnet,
   optimism,
   polygon,
@@ -83,7 +82,6 @@ export default function App() {
       optimism,
       arbitrum,
       base,
-      bsc,
       ...testChains,
     ];
 
