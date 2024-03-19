@@ -183,11 +183,11 @@
     }
   },
   "chains": {
-    "title": "Changer de Réseaux",
+    "title": "Changer de réseau",
     "wrong_network": "Mauvais réseau détecté, changez ou déconnectez-vous pour continuer.",
     "confirm": "Confirmer dans le portefeuille",
-    "switching_not_supported": "Votre portefeuille ne supporte pas le changement de réseaux depuis %{appName}. Essayez de changer de réseau depuis votre portefeuille.",
-    "switching_not_supported_fallback": "Votre portefeuille ne prend pas en charge le changement de réseaux à partir de cette application. Essayez de changer de réseau à partir de votre portefeuille à la place.",
+    "switching_not_supported": "Votre portefeuille ne supporte pas le changement de réseau depuis %{appName}. Essayez de changer de réseau depuis votre portefeuille.",
+    "switching_not_supported_fallback": "Votre portefeuille ne prend pas en charge le changement de réseau à partir de cette application. Essayez de changer de réseau à partir de votre portefeuille à la place.",
     "disconnect": "Déconnecter",
     "connected": "Connecté"
   },

@@ -860,10 +860,14 @@ export function InstructionMobileDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title)}
+                {i18n.t(d.title, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description)}
+                {i18n.t(d.description, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
             </Box>
           </Box>
@@ -947,10 +951,14 @@ export function InstructionExtensionDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title)}
+                {i18n.t(d.title, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description)}
+                {i18n.t(d.description, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
             </Box>
           </Box>
@@ -1036,10 +1044,14 @@ export function InstructionDesktopDetail({
             </Box>
             <Box display="flex" flexDirection="column" gap="4">
               <Text color="modalText" size="14" weight="bold">
-                {i18n.t(d.title)}
+                {i18n.t(d.title, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
               <Text color="modalTextSecondary" size="14" weight="medium">
-                {i18n.t(d.description)}
+                {i18n.t(d.description, undefined, {
+                  rawKeyIfTranslationMissing: true,
+                })}
               </Text>
             </Box>
           </Box>

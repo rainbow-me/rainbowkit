@@ -32,10 +32,11 @@ const THEMES = {
 
 type Modes = keyof typeof THEMES;
 type ThemeOptions = Parameters<typeof lightTheme>[0];
-type Accents = ThemeOptions['accentColor'];
-type Radii = ThemeOptions['borderRadius'];
+type Accents = NonNullable<NonNullable<ThemeOptions>['accentColor']>;
+type Radii = NonNullable<NonNullable<ThemeOptions>['borderRadius']>;
 type ModalSizes = 'compact' | 'wide';
 
+// @ts-ignore - Accents could be undefined
 const gradientColors: Record<Accents, any> = {
   blue: [
     [29, 100, 192],
@@ -72,19 +73,19 @@ const gradientColors: Record<Accents, any> = {
 export function Playground() {
   const [mode, setMode] = useState<Modes>('light');
   const [accent, setAccent] = useState<Accents>('blue');
-  const [radii, setRadii] = useState<Radii>('large');
+  const [radii, setRadii] = useState<NonNullable<Radii>>('large');
   const [modalSize, setModalSize] = useState<ModalSizes>('wide');
   const isCompact = modalSize === 'compact';
 
   const { locale } = useRouter() as { locale: Locale };
 
-  const handleModeChange = (value) => setMode(value);
-  const handleAccentChange = (value) => setAccent(value);
-  const handleRadiiChange = (value) => setRadii(value);
-  const handleModalSizeChange = (value) => setModalSize(value);
+  const handleModeChange = (value: Modes) => setMode(value);
+  const handleAccentChange = (value: Accents) => setAccent(value);
+  const handleRadiiChange = (value: Radii) => setRadii(value);
+  const handleModalSizeChange = (value: ModalSizes) => setModalSize(value);
 
   const selectedTheme = THEMES[mode]({
-    ...THEMES[mode].accentColors[accent],
+    ...(THEMES[mode].accentColors as Record<Accents, any>)[accent],
     borderRadius: radii,
   });
 
@@ -297,7 +298,9 @@ export function Playground() {
                       key={color}
                       style={{
                         backgroundColor: THEMES[mode]({
-                          ...THEMES[mode].accentColors[color],
+                          ...(
+                            THEMES[mode].accentColors as Record<Accents, any>
+                          )[color],
                         }).colors.accentColor,
                       }}
                       value={color}
@@ -355,7 +358,7 @@ export function Playground() {
   ) : null;
 }
 
-function ControlBox(props) {
+function ControlBox(props: React.ComponentProps<typeof Box>) {
   return (
     <Box
       alignItems="flex-start"
@@ -368,7 +371,12 @@ function ControlBox(props) {
   );
 }
 
-function Radio({ activeValue, id, value, ...props }) {
+function Radio({
+  activeValue,
+  id,
+  value,
+  ...props
+}: { activeValue: string; id: string; value: string; [key: string]: any }) {
   return (
     <div style={{ position: 'relative' }}>
       <RadioGroup.Item className={radio} value={value} {...props} />
@@ -377,7 +385,7 @@ function Radio({ activeValue, id, value, ...props }) {
   );
 }
 
-function Ring({ id }) {
+function Ring({ id }: { id: string }) {
   return (
     <motion.div
       className={ring}
