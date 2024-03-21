@@ -80,13 +80,16 @@ function createInjectedConnector(provider?: any): CreateConnector {
     // Create the injected configuration object conditionally based on the provider.
     const injectedConfig = provider
       ? {
+          shimDisconnect: true,
           target: () => ({
             id: walletDetails.rkDetails.id,
             name: walletDetails.rkDetails.name,
             provider,
           }),
         }
-      : {};
+      : {
+          shimDisconnect: true,
+        };
 
     return createConnector((config) => ({
       // Spread the injectedConfig object, which may be empty or contain the target function

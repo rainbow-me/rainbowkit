@@ -19,7 +19,7 @@ export const safeWallet = (): Wallet => ({
   },
   createConnector: (walletDetails: WalletDetailsParams) => {
     return createConnector((config) => ({
-      ...safe()(config),
+      ...safe({ shimDisconnect: true })(config),
       ...walletDetails,
     }));
   },
