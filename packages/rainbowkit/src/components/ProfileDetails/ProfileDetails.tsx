@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { GetEnsNameReturnType } from 'viem';
 import { GetEnsAvatarReturnType } from 'viem/actions';
-import { useAccount, useBalance } from 'wagmi';
+import { useAccount } from 'wagmi';
+import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -35,9 +36,7 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
 
-  const { data: balanceData } = useBalance({
-    address,
-  });
+  const { data: balanceData } = useRealtimeBalance(address);
 
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
