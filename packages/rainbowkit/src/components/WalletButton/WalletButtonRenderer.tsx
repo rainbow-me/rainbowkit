@@ -33,7 +33,7 @@ export interface WalletButtonRendererProps {
     ready: boolean;
     mounted: boolean;
     connector: WalletConnector;
-    connect: () => void;
+    connect: () => Promise<void>;
   }) => ReactNode;
 }
 
@@ -142,7 +142,7 @@ export function WalletButtonRenderer({
             return;
           }
 
-          connectWallet();
+          await connectWallet();
         },
       })}
     </>
