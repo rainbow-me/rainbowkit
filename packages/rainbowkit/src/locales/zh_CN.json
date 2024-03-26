@@ -458,36 +458,6 @@
         }
       }
     },
-    "gate": {
-      "qr_code": {
-        "step1": {
-          "title": "打开Gate钱包应用程序",
-          "description": "我们建议将Gate钱包放在您的主屏幕上，以便更快地访问。"
-        },
-        "step2": {
-          "title": "创建或导入钱包",
-          "description": "务必使用安全的方法备份您的钱包。千万不要与任何人分享您的秘密短语。"
-        },
-        "step3": {
-          "title": "点击扫描按钮",
-          "description": "扫描后，将出现一个连接提示，让您连接您的钱包。"
-        }
-      },
-      "extension": {
-        "step1": {
-          "title": "安装 Gate 钱包扩展",
-          "description": "我们建议将 Gate 钱包固定到您的任务栏，以便更快地访问您的钱包。"
-        },
-        "step2": {
-          "title": "创建或导入钱包",
-          "description": "务必使用安全的方法备份您的钱包。千万不要与任何人分享您的秘密短语。"
-        },
-        "step3": {
-          "title": "刷新您的浏览器",
-          "description": "一旦你设置好你的钱包，点击下方刷新浏览器并加载扩展。"
-        }
-      }
-    },
     "im_token": {
       "qr_code": {
         "step1": {

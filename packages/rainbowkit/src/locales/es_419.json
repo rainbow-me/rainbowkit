@@ -458,36 +458,6 @@
         }
       }
     },
-    "gate": {
-      "qr_code": {
-        "step1": {
-          "title": "Abre la aplicación Gate Wallet",
-          "description": "Recomendamos colocar Gate Wallet en tu pantalla de inicio para un acceso más rápido."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Toca el botón de escanear",
-          "description": "Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
-        }
-      },
-      "extension": {
-        "step1": {
-          "title": "Instala la extensión de Billetera Gate",
-          "description": "Recomendamos anclar la Billetera Gate a tu barra de tareas para un acceso más rápido a tu billetera."
-        },
-        "step2": {
-          "title": "Crear o Importar una Billetera",
-          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configure su billetera, haga clic abajo para actualizar el navegador y cargar la extensión."
-        }
-      }
-    },
     "im_token": {
       "qr_code": {
         "step1": {
