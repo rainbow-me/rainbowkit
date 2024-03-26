@@ -458,6 +458,36 @@
         }
       }
     },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Abra o aplicativo da Carteira Gate",
+          "description": "Recomendamos colocar a Carteira Gate na tela inicial para um acesso mais rápido."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Toque no botão de digitalização",
+          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instale a extensão Gate Wallet",
+          "description": "Recomendamos fixar a Gate Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
+        },
+        "step2": {
+          "title": "Criar ou Importar uma Carteira",
+          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
+        },
+        "step3": {
+          "title": "Atualize o seu navegador",
+          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
+        }
+      }
+    },
     "im_token": {
       "qr_code": {
         "step1": {
@@ -539,36 +569,6 @@
         "step1": {
           "title": "Instale a extensão OKX Wallet",
           "description": "Recomendamos fixar a OKX Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
-        },
-        "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
-        },
-        "step3": {
-          "title": "Atualize o seu navegador",
-          "description": "Uma vez que você configurou sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
-        }
-      }
-    },
-    "gate": {
-      "qr_code": {
-        "step1": {
-          "title": "Abra o aplicativo da Carteira Gate",
-          "description": "Recomendamos colocar a Carteira Gate na tela inicial para um acesso mais rápido."
-        },
-        "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira utilizando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
-        },
-        "step3": {
-          "title": "Toque no botão de digitalização",
-          "description": "Depois de escanear, aparecerá um prompt de conexão para você conectar sua carteira."
-        }
-      },
-      "extension": {
-        "step1": {
-          "title": "Instale a extensão Gate Wallet",
-          "description": "Recomendamos fixar a Gate Wallet na sua barra de tarefas para um acesso mais rápido à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",

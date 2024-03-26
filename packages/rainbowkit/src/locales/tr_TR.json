@@ -458,6 +458,36 @@
         }
       }
     },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Gate Wallet uygulamasını açın",
+          "description": "Daha hızlı erişim için Gate Wallet'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarama düğmesine dokunun",
+          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Gate Cüzdan eklentisini yükleyin",
+          "description": "Cüzdanınıza daha hızlı erişim için Gate Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluşturun veya İçe Aktarın",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
+        }
+      }
+    },
     "im_token": {
       "qr_code": {
         "step1": {
@@ -539,36 +569,6 @@
         "step1": {
           "title": "OKX Cüzdan eklentisini yükleyin",
           "description": "Cüzdanınıza daha hızlı erişim için OKX Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
-        }
-      }
-    },
-    "gate": {
-      "qr_code": {
-        "step1": {
-          "title": "Gate Wallet uygulamasını açın",
-          "description": "Daha hızlı erişim için Gate Wallet'ı ana ekranınıza koymanızı öneririz."
-        },
-        "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli cümlenizi asla kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarama düğmesine dokunun",
-          "description": "Tarama yaptıktan sonra, cüzdanınızı bağlama istemi görünecektir."
-        }
-      },
-      "extension": {
-        "step1": {
-          "title": "Gate Cüzdan eklentisini yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Gate Cüzdan'ı görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluşturun veya İçe Aktarın",
