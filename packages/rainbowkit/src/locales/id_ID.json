@@ -550,6 +550,36 @@
         }
       }
     },
+    "gate": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Gate Wallet",
+          "description": "Kami menyarankan untuk menaruh Gate Wallet di layar utama Anda untuk akses lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Wallet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Ketuk tombol scan",
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk Anda hubungkan dompet Anda."
+        }
+      },
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Gate Wallet",
+          "description": "Kami menyarankan untuk menempelkan Gate Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda mengatur wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
     "omni": {
       "qr_code": {
         "step1": {
