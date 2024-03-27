@@ -29,7 +29,6 @@ import {
   optimism,
   polygon,
   sepolia,
-  zora,
 } from 'wagmi/chains';
 
 import globalStylesUrl from './styles/global.css';
@@ -83,7 +82,6 @@ export default function App() {
       optimism,
       arbitrum,
       base,
-      zora,
       ...testChains,
     ];
 
