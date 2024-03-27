@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Update `connect` prop to include `await` when connecting to a wallet in `WalletButton` component.
+Amended the `connect` prop type for `WalletButton.Custom` components to expect a promise, and improved the synchronous connection flow for the `WalletButton`
