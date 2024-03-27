@@ -89,7 +89,7 @@ export const getDefaultConfig = ({
     transports = createDefaultTransports(chains);
   }
 
-  return createConfig({
+  return createConfig<_chains, _transports>({
     connectors,
     chains,
     transports,
