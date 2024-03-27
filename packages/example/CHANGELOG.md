@@ -1,5 +1,21 @@
 # example
 
+## 0.0.94
+
+### Patch Changes
+
+- 77dcec3: Added Bybit Wallet support with `bybitWallet` wallet connector
+- 6c240ba: Added Gate Wallet support with `gateWallet` wallet connector
+- 34419b5: Added Bitverse Wallet support with `bitverseWallet` wallet connector
+- 5c60239: Added 1inch Wallet support with `oneInchWallet` wallet connector
+- Updated dependencies [77dcec3]
+- Updated dependencies [6c240ba]
+- Updated dependencies [34419b5]
+- Updated dependencies [5c60239]
+  - @rainbow-me/rainbowkit@2.0.4
+  - @rainbow-me/rainbow-button@0.2.4
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
 ## 0.0.93
 
 ### Patch Changes
