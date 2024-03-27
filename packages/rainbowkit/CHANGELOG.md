@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.3
+
+### Patch Changes
+
+- b80e8fa: Improved the synchronous connection flow for the `WalletButton` and `WalletButton.Custom` components
+- 985b80b: Resolved an issue where ENS resolution would fail and throw an error for ENS names with disallowed characters.
+- b25db9a: Added `blast` and `blastSepolia` network support
+
 ## 2.0.2
 
 ### Patch Changes
