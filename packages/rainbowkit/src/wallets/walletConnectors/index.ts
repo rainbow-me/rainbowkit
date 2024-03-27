@@ -16,6 +16,7 @@ import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
+import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
@@ -66,6 +67,7 @@ export {
   foxWallet,
   frameWallet,
   frontierWallet,
+  gateWallet,
   imTokenWallet,
   injectedWallet,
   kresusWallet,
