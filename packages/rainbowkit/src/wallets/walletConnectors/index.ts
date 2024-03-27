@@ -2,8 +2,10 @@ import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
+import { bitverseWallet } from './bitverseWallet/bitverseWallet';
 import { bloomWallet } from './bloomWallet/bloomWallet';
 import { braveWallet } from './braveWallet/braveWallet';
+import { bybitWallet } from './bybitWallet/bybitWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -50,7 +52,9 @@ export {
   bifrostWallet,
   bitgetWallet,
   bitskiWallet,
+  bitverseWallet,
   bloomWallet,
+  bybitWallet,
   braveWallet,
   clvWallet,
   coin98Wallet,
