@@ -5,6 +5,7 @@ import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { ProfileDetails } from '../ProfileDetails/ProfileDetails';
+import { useRainbowKitWagmiState } from '../RainbowKitProvider/RainbowKitWagmiStateProvider';
 
 export interface AccountModalProps {
   open: boolean;
@@ -15,7 +16,14 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
   const { address } = useAccount();
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const { disconnect } = useDisconnect();
+  const { setIsDisconnecting } = useRainbowKitWagmiState();
+
+  const { disconnect } = useDisconnect({
+    mutation: {
+      onSuccess: () => setIsDisconnecting(false),
+      onError: () => setIsDisconnecting(false),
+    },
+  });
 
   if (!address) {
     return null;
@@ -33,7 +41,11 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
               ensAvatar={ensAvatar}
               ensName={ensName}
               onClose={onClose}
-              onDisconnect={disconnect}
+              onDisconnect={() => {
+                onClose();
+                setIsDisconnecting(true);
+                disconnect();
+              }}
             />
           </DialogContent>
         </Dialog>

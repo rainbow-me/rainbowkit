@@ -19,6 +19,7 @@ export const YourApp = () => {
     <ConnectButton.Custom>
       {({
         account,
+        disconnecting,
         chain,
         openAccountModal,
         openChainModal,
@@ -33,6 +34,7 @@ export const YourApp = () => {
           ready &&
           account &&
           chain &&
+          !disconnecting &&
           (!authenticationStatus ||
             authenticationStatus === 'authenticated');
 
@@ -50,7 +52,7 @@ export const YourApp = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={openConnectModal} type="button">
+                  <button disabled={disconnecting} onClick={openConnectModal} type="button">
                     Connect Wallet
                   </button>
                 );
