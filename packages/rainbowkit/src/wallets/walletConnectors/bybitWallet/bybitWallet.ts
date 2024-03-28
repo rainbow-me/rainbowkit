@@ -98,6 +98,8 @@ export const bybitWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'bybit',
+          name: 'Bybit Wallet',
           namespace: 'bybitWallet',
         }),
   };
