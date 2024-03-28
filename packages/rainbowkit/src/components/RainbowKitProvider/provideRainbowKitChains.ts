@@ -14,6 +14,8 @@ type ChainName =
   | 'base'
   | 'baseGoerli'
   | 'baseSepolia'
+  | 'blast'
+  | 'blastSepolia'
   | 'bsc'
   | 'bscTestnet'
   | 'goerli'
@@ -63,6 +65,11 @@ const avalancheIcon: IconMetadata = {
 const baseIcon: IconMetadata = {
   iconBackground: '#0052ff',
   iconUrl: async () => (await import('./chainIcons/base.svg')).default,
+};
+
+const blastIcon: IconMetadata = {
+  iconBackground: '#000000',
+  iconUrl: async () => (await import('./chainIcons/blast.svg')).default,
 };
 
 const bscIcon: IconMetadata = {
@@ -124,6 +131,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   base: { chainId: 8453, name: 'Base', ...baseIcon },
   baseGoerli: { chainId: 84531, ...baseIcon },
   baseSepolia: { chainId: 84532, ...baseIcon },
+  blast: { chainId: 81457, name: 'Blast', ...blastIcon },
+  blastSepolia: { chainId: 168_587_773, ...blastIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
   cronos: { chainId: 25, ...cronosIcon },

@@ -2,8 +2,10 @@ import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
+import { bitverseWallet } from './bitverseWallet/bitverseWallet';
 import { bloomWallet } from './bloomWallet/bloomWallet';
 import { braveWallet } from './braveWallet/braveWallet';
+import { bybitWallet } from './bybitWallet/bybitWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
@@ -14,6 +16,7 @@ import { enkryptWallet } from './enkryptWallet/enkryptWallet';
 import { foxWallet } from './foxWallet/foxWallet';
 import { frameWallet } from './frameWallet/frameWallet';
 import { frontierWallet } from './frontierWallet/frontierWallet';
+import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
@@ -23,6 +26,7 @@ import { mewWallet } from './mewWallet/mewWallet';
 import { oktoWallet } from './oktoWallet/oktoWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
+import { oneInchWallet } from './oneInchWallet/oneInchWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
@@ -49,7 +53,9 @@ export {
   bifrostWallet,
   bitgetWallet,
   bitskiWallet,
+  bitverseWallet,
   bloomWallet,
+  bybitWallet,
   braveWallet,
   clvWallet,
   coin98Wallet,
@@ -61,6 +67,7 @@ export {
   foxWallet,
   frameWallet,
   frontierWallet,
+  gateWallet,
   imTokenWallet,
   injectedWallet,
   kresusWallet,
@@ -70,6 +77,7 @@ export {
   oktoWallet,
   okxWallet,
   omniWallet,
+  oneInchWallet,
   oneKeyWallet,
   phantomWallet,
   rabbyWallet,

@@ -45,9 +45,12 @@ export const docsRoutes: RouteProps[] = [
   },
 ];
 
-export const allDocsRoutes: PartialDoc[] = docsRoutes.reduce((acc, curr) => {
-  // biome-ignore lint/style/noParameterAssign: TODO
-  // biome-ignore lint/performance/noAccumulatingSpread: TODO
-  acc = [...acc, ...curr.pages];
-  return acc;
-}, []);
+export const allDocsRoutes: PartialDoc[] = docsRoutes.reduce(
+  (acc: PartialDoc[], curr) => {
+    // biome-ignore lint/style/noParameterAssign: TODO
+    // biome-ignore lint/performance/noAccumulatingSpread: TODO
+    acc = [...acc, ...curr.pages];
+    return acc;
+  },
+  [],
+);
