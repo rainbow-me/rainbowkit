@@ -94,6 +94,10 @@ export const gateWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'gatewallet' }),
+      : getInjectedConnector({
+          id: 'gate',
+          name: 'Gate Wallet',
+          namespace: 'gatewallet',
+        }),
   };
 };

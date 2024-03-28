@@ -38,5 +38,9 @@ export const bitskiWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isBitski' }),
+  createConnector: getInjectedConnector({
+    id: 'bitski',
+    name: 'Bitski',
+    flag: 'isBitski',
+  }),
 });

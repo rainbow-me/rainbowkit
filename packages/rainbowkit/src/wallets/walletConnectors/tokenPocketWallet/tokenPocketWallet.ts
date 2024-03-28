@@ -98,6 +98,10 @@ export const tokenPocketWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ flag: 'isTokenPocket' }),
+      : getInjectedConnector({
+          id: 'tokenPocket',
+          name: 'TokenPocket',
+          flag: 'isTokenPocket',
+        }),
   };
 };

@@ -77,6 +77,10 @@ export const rainbowWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ flag: 'isRainbow' }),
+      : getInjectedConnector({
+          id: 'rainbow',
+          name: 'Rainbow',
+          flag: 'isRainbow',
+        }),
   };
 };

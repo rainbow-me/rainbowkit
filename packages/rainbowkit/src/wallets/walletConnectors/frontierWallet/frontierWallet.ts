@@ -105,6 +105,8 @@ export const frontierWallet = ({
     createConnector: shouldUseWalletConnect
       ? getWalletConnectConnector({ projectId, walletConnectParameters })
       : getInjectedConnector({
+          id: 'frontier',
+          name: 'Frontier Wallet',
           namespace: 'frontier.ethereum',
           flag: 'isFrontier',
         }),

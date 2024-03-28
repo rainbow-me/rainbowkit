@@ -44,6 +44,8 @@ export const ramperWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
+      id: 'ramper',
+      name: 'Ramper Wallet',
       namespace: 'ramper2.provider',
     }),
   };

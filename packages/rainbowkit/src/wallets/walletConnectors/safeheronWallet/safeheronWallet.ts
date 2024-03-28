@@ -44,6 +44,8 @@ export const safeheronWallet = (): Wallet => ({
     },
   },
   createConnector: getInjectedConnector({
+    id: 'safeheron',
+    name: 'Safeheron',
     namespace: 'safeheron',
     flag: 'isSafeheron',
   }),

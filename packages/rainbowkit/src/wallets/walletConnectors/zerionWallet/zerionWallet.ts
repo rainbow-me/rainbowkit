@@ -101,6 +101,8 @@ export const zerionWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'zerion',
+          name: 'Zerion',
           namespace: 'zerionWallet',
           flag: 'isZerion',
         }),

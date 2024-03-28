@@ -38,5 +38,9 @@ export const rabbyWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isRabby' }),
+  createConnector: getInjectedConnector({
+    id: 'rabby',
+    name: 'Rabby Wallet',
+    flag: 'isRabby',
+  }),
 });

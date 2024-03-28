@@ -74,7 +74,7 @@ export type Wallet = {
     desktop?: string;
   };
   hidden?: () => boolean;
-  createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
+  createConnector: CreateConnectorFn;
 } & RainbowKitConnector;
 
 export interface DefaultWalletOptions {
@@ -116,10 +116,6 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
 };
 
 export type WalletDetailsParams = { rkDetails: RainbowKitDetails };
-
-export type CreateConnector = (walletDetails: {
-  rkDetails: RainbowKitDetails;
-}) => CreateConnectorFn;
 
 // This is the default connector you get at first from wagmi
 // "Connector" + rainbowkit details we inject into the connector

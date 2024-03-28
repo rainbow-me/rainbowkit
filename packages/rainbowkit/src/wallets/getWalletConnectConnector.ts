@@ -1,28 +1,15 @@
-import { createConnector } from 'wagmi';
 import type { CreateConnectorFn } from 'wagmi';
 import { WalletConnectParameters, walletConnect } from 'wagmi/connectors';
-import type {
-  CreateConnector,
-  RainbowKitDetails,
-  RainbowKitWalletConnectParameters,
-  WalletDetailsParams,
-} from './Wallet';
+import type { RainbowKitWalletConnectParameters } from './Wallet';
 
 interface GetWalletConnectConnectorParams {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
-interface CreateWalletConnectConnectorParams {
-  projectId: string;
-  walletDetails: WalletDetailsParams;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
-}
-
 interface GetOrCreateWalletConnectInstanceParams {
   projectId: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
-  rkDetailsShowQrModal?: RainbowKitDetails['showQrModal'];
 }
 
 const walletConnectInstances = new Map<
@@ -34,20 +21,12 @@ const walletConnectInstances = new Map<
 const getOrCreateWalletConnectInstance = ({
   projectId,
   walletConnectParameters,
-  rkDetailsShowQrModal,
-}: GetOrCreateWalletConnectInstanceParams): ReturnType<
-  typeof walletConnect
-> => {
-  let config: WalletConnectParameters = {
+}: GetOrCreateWalletConnectInstanceParams): CreateConnectorFn => {
+  const config: WalletConnectParameters = {
     ...(walletConnectParameters ? walletConnectParameters : {}),
     projectId,
     showQrModal: false, // Required. Otherwise WalletConnect modal (Web3Modal) will popup during time of connection for a wallet
   };
-
-  // `rkDetailsShowQrModal` should always be `true`
-  if (rkDetailsShowQrModal) {
-    config = { ...config, showQrModal: true };
-  }
 
   const serializedConfig = JSON.stringify(config);
 
@@ -65,30 +44,11 @@ const getOrCreateWalletConnectInstance = ({
   return newWalletConnectInstance;
 };
 
-// Creates a WalletConnect connector with the given project ID and additional options.
-function createWalletConnectConnector({
-  projectId,
-  walletDetails,
-  walletConnectParameters,
-}: CreateWalletConnectConnectorParams): CreateConnectorFn {
-  // Create and configure the WalletConnect connector with project ID and options.
-  return createConnector((config) => ({
-    ...getOrCreateWalletConnectInstance({
-      projectId,
-      walletConnectParameters,
-      // Used in `connectorsForWallets` to add another
-      // walletConnect wallet into rainbowkit with modal popup option
-      rkDetailsShowQrModal: walletDetails.rkDetails.showQrModal,
-    })(config),
-    ...walletDetails,
-  }));
-}
-
 // Factory function to obtain a configured WalletConnect connector.
 export function getWalletConnectConnector({
   projectId,
   walletConnectParameters,
-}: GetWalletConnectConnectorParams): CreateConnector {
+}: GetWalletConnectConnectorParams): CreateConnectorFn {
   // We use this projectId in place of YOUR_PROJECT_ID for our examples.
   // This allows us our examples and templates to be functional with WalletConnect v2.
   // We warn developers against using this projectId in their dApp in production.
@@ -104,11 +64,8 @@ export function getWalletConnectConnector({
     projectId = exampleProjectId;
   }
 
-  // Return a function that merges additional wallet details with `CreateConnectorFn`.
-  return (walletDetails: WalletDetailsParams) =>
-    createWalletConnectConnector({
-      projectId,
-      walletDetails,
-      walletConnectParameters,
-    });
+  return getOrCreateWalletConnectInstance({
+    projectId,
+    walletConnectParameters,
+  });
 }

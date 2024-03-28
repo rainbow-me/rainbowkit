@@ -39,6 +39,10 @@ export const xdefiWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'xfi.ethereum' }),
+    createConnector: getInjectedConnector({
+      id: 'xdefi',
+      name: 'XDEFI Wallet',
+      namespace: 'xfi.ethereum',
+    }),
   };
 };

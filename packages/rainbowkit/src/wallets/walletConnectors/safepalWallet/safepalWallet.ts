@@ -113,6 +113,8 @@ export const safepalWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'safepal',
+          name: 'SafePal Wallet',
           namespace: 'safepalProvider',
           flag: 'isSafePal',
         }),

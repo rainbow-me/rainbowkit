@@ -48,6 +48,8 @@ export const enkryptWallet = (): Wallet => {
       },
     },
     createConnector: getInjectedConnector({
+      id: 'enkrypt',
+      name: 'Enkrypt Wallet',
       namespace: 'enkrypt.providers.ethereum',
     }),
   };

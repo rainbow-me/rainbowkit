@@ -44,6 +44,8 @@ export const talismanWallet = (): Wallet => ({
     },
   },
   createConnector: getInjectedConnector({
+    id: 'talisman',
+    name: 'Talisman',
     namespace: 'talismanEth',
     flag: 'isTalisman',
   }),

@@ -65,6 +65,10 @@ export const foxWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'foxwallet.ethereum' }),
+      : getInjectedConnector({
+          id: 'foxwallet',
+          name: 'FoxWallet',
+          namespace: 'foxwallet.ethereum',
+        }),
   };
 };

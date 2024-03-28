@@ -83,6 +83,6 @@ export const clvWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({ namespace: 'clover' }),
+      : getInjectedConnector({ id: 'clv', name: 'CLV', namespace: 'clover' }),
   };
 };

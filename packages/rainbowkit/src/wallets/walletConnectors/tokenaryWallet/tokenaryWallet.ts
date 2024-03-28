@@ -19,5 +19,9 @@ export const tokenaryWallet = (): Wallet => ({
     safari: 'https://tokenary.io/get',
     browserExtension: 'https://tokenary.io/get',
   },
-  createConnector: getInjectedConnector({ flag: 'isTokenary' }),
+  createConnector: getInjectedConnector({
+    id: 'tokenary',
+    name: 'Tokenary',
+    flag: 'isTokenary',
+  }),
 });

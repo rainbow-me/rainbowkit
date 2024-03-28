@@ -158,6 +158,8 @@ export const metaMaskWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
+          id: 'injected',
+          name: 'Browser Wallet',
           target:
             typeof window !== 'undefined'
               ? window.ethereum?.providers?.find(isMetaMask) ?? window.ethereum

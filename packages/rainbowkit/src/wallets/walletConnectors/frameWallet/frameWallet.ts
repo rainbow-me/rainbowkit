@@ -36,5 +36,9 @@ export const frameWallet = (): Wallet => ({
       ],
     },
   },
-  createConnector: getInjectedConnector({ flag: 'isFrame' }),
+  createConnector: getInjectedConnector({
+    id: 'frame',
+    name: 'Frame',
+    flag: 'isFrame',
+  }),
 });

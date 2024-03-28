@@ -114,7 +114,15 @@ export const trustWallet = ({
           walletConnectParameters,
         })
       : isMobile()
-        ? getInjectedConnector({ flag: 'isTrust' })
-        : getInjectedConnector({ flag: 'isTrustWallet' }),
+        ? getInjectedConnector({
+            id: 'trust',
+            name: 'Trust Wallet',
+            flag: 'isTrust',
+          })
+        : getInjectedConnector({
+            id: 'trust',
+            name: 'Trust Wallet',
+            flag: 'isTrustWallet',
+          }),
   };
 };
