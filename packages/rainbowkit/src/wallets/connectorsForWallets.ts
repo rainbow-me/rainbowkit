@@ -136,7 +136,12 @@ export const connectorsForWallets = (
 
     if (walletMeta.id === 'walletConnect') {
       const walletConnectConnector = createWagmiConnector((config) => ({
-        ...walletConnect({ projectId, showQrModal: true })(config),
+        ...walletConnect({
+          projectId,
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+          showQrModal: true,
+        })(config),
         ...rainbowKitDetails,
         isWalletConnectModalConnector: true,
       }));
