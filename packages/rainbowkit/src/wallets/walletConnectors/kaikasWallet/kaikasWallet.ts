@@ -18,6 +18,8 @@ export const kaikasWallet = (): Wallet => {
     downloadUrls: {
       chrome:
         'https://chromewebstore.google.com/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi',
+      android: 'https://play.google.com/store/apps/details?id=io.klutch.wallet',
+      ios: 'https://apps.apple.com/us/app/kaikas-mobile-crypto-wallet/id1626107061',
     },
     extension: {
       instructions: {
