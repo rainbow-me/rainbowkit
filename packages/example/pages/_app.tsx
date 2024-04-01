@@ -90,6 +90,8 @@ import {
   polygonMumbai,
   ronin,
   sepolia,
+  zetachain,
+  zetachainAthensTestnet,
   zkSync,
   zora,
   zoraSepolia,
@@ -138,6 +140,7 @@ const config = getDefaultConfig({
     zora,
     blast,
     zkSync,
+    zetachain,
     ronin,
     klaytn,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
@@ -151,6 +154,7 @@ const config = getDefaultConfig({
           zoraSepolia,
           blastSepolia,
           avalancheFuji,
+          zetachainAthensTestnet,
           klaytnBaobab,
         ]
       : []),
