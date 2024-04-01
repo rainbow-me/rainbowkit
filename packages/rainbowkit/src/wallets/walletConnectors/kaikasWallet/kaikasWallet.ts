@@ -23,7 +23,7 @@ export const kaikasWallet = ({
 
   return {
     id: 'kaikas',
-    name: 'Kaikas',
+    name: 'Kaikas Wallet',
     iconUrl: async () => (await import('./kaikasWallet.svg')).default,
     installed: isKaikasWalletInjected || undefined,
     iconBackground: '#fff',
