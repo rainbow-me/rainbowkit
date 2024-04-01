@@ -18,7 +18,6 @@ import {
   mainnet,
   optimism,
   polygon,
-  zetachain,
   zora,
 } from 'wagmi/chains';
 
@@ -35,7 +34,6 @@ const transports = {
   [avalanche.id]: http(),
   [zora.id]: http(),
   [blast.id]: http(),
-  [zetachain.id]: http(),
 };
 
 const { wallets } = getDefaultWallets();
@@ -53,7 +51,6 @@ const config = getDefaultConfig({
     avalanche,
     zora,
     blast,
-    zetachain,
   ],
   transports,
   wallets: [
