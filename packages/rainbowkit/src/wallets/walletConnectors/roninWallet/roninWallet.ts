@@ -15,6 +15,12 @@ export const roninWallet = ({
     namespace: 'ronin.provider',
   });
 
+  const shouldUseWalletConnect = !isRoninInjected;
+
+  const getUri = (uri: string) => {
+    return `roninwallet://wc?uri=${encodeURIComponent(uri)}`;
+  };
+
   return {
     id: 'ronin',
     name: 'Ronin Wallet',
@@ -35,32 +41,36 @@ export const roninWallet = ({
       qrCode: 'https://wallet.roninchain.com/',
     },
     mobile: {
-      getUri: (uri: string) =>
-        `roninwallet://wc?uri=${encodeURIComponent(uri)}`,
+      getUri: shouldUseWalletConnect ? getUri : undefined,
     },
-    qrCode: {
-      getUri: (uri: string) => uri,
-      instructions: {
-        learnMoreUrl: 'https://wallet.roninchain.com/',
-        steps: [
-          {
-            description: 'wallet_connectors.ronin.qr_code.step1.description',
-            step: 'install',
-            title: 'wallet_connectors.ronin.qr_code.step1.title',
+    qrCode: shouldUseWalletConnect
+      ? {
+          getUri: (uri: string) => uri,
+          instructions: {
+            learnMoreUrl: 'https://wallet.roninchain.com/',
+            steps: [
+              {
+                description:
+                  'wallet_connectors.ronin.qr_code.step1.description',
+                step: 'install',
+                title: 'wallet_connectors.ronin.qr_code.step1.title',
+              },
+              {
+                description:
+                  'wallet_connectors.ronin.qr_code.step2.description',
+                step: 'create',
+                title: 'wallet_connectors.ronin.qr_code.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.ronin.qr_code.step3.description',
+                step: 'scan',
+                title: 'wallet_connectors.ronin.qr_code.step3.title',
+              },
+            ],
           },
-          {
-            description: 'wallet_connectors.ronin.qr_code.step2.description',
-            step: 'create',
-            title: 'wallet_connectors.ronin.qr_code.step2.title',
-          },
-          {
-            description: 'wallet_connectors.ronin.qr_code.step3.description',
-            step: 'scan',
-            title: 'wallet_connectors.ronin.qr_code.step3.title',
-          },
-        ],
-      },
-    },
+        }
+      : undefined,
     extension: {
       instructions: {
         learnMoreUrl: 'https://wallet.roninchain.com/',
@@ -83,11 +93,11 @@ export const roninWallet = ({
         ],
       },
     },
-    createConnector: isRoninInjected
-      ? getInjectedConnector({ namespace: 'ronin.provider' })
-      : getWalletConnectConnector({
+    createConnector: shouldUseWalletConnect
+      ? getWalletConnectConnector({
           projectId,
           walletConnectParameters,
-        }),
+        })
+      : getInjectedConnector({ namespace: 'ronin.provider' }),
   };
 };
