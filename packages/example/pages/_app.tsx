@@ -36,6 +36,7 @@ import {
   frontierWallet,
   gateWallet,
   imTokenWallet,
+  kaikasWallet,
   kresusWallet,
   ledgerWallet,
   mewWallet,
@@ -80,6 +81,8 @@ import {
   blastSepolia,
   bsc,
   holesky,
+  klaytn,
+  klaytnBaobab,
   mainnet,
   optimism,
   optimismSepolia,
@@ -136,6 +139,7 @@ const config = getDefaultConfig({
     blast,
     zkSync,
     ronin,
+    klaytn,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -147,6 +151,7 @@ const config = getDefaultConfig({
           zoraSepolia,
           blastSepolia,
           avalancheFuji,
+          klaytnBaobab,
         ]
       : []),
   ],
@@ -174,6 +179,7 @@ const config = getDefaultConfig({
         gateWallet,
         imTokenWallet,
         kresusWallet,
+        kaikasWallet,
         ledgerWallet,
         mewWallet,
         oktoWallet,
