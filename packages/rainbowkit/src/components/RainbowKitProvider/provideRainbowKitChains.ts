@@ -109,9 +109,9 @@ const xdcIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/xdc.svg')).default,
 };
 
-const zetaIcon: IconMetadata = {
+const zetachainIcon: IconMetadata = {
   iconBackground: '#000000',
-  iconUrl: async () => (await import('./chainIcons/zeta.svg')).default,
+  iconUrl: async () => (await import('./chainIcons/zetachain.svg')).default,
 };
 
 const zkSyncIcon: IconMetadata = {
@@ -162,11 +162,11 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   sepolia: { chainId: 11_155_111, ...ethereumIcon },
   xdc: { chainId: 50, name: 'XinFin', ...xdcIcon },
   xdcTestnet: { chainId: 51, ...xdcIcon },
-  zetachain: { chainId: 7000, name: 'ZetaChain', ...zetaIcon },
+  zetachain: { chainId: 7000, name: 'ZetaChain', ...zetachainIcon },
   zetachainAthensTestnet: {
     chainId: 7001,
     name: 'Zeta Athens',
-    ...zetaIcon,
+    ...zetachainIcon,
   },
   zkSync: { chainId: 324, name: 'zkSync', ...zkSyncIcon },
   zkSyncTestnet: { chainId: 280, ...zkSyncIcon },
