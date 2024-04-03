@@ -16,8 +16,7 @@ import { WalletButton } from './WalletButton';
 let mockError: ReturnType<SpyInstance['mockImplementation']>;
 
 beforeAll(() => {
-  // Silence the error logs if the component throws an error.
-  // This is due to how the node.js environment works.
+  // Silence the error logs if the component throws an error
   mockError = vi.spyOn(console, 'error').mockImplementation(() => {});
 });
 
