@@ -13,11 +13,11 @@ import {
   polygon,
   zora,
 } from 'wagmi/chains';
-import { MockParameters, mock } from 'wagmi/connectors';
+import { mock } from 'wagmi/connectors';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
+import { WalletList } from '../src/wallets/Wallet';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
-import { getDefaultWallets } from '../src/wallets/getDefaultWallets';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -36,34 +36,28 @@ export function renderWithProviders(
   component: ReactElement,
   options?: {
     chains?: readonly [Chain, ...Chain[]];
-    mock?: boolean;
-    mockFeatures?: MockParameters['features'];
+    mockWallets?: WalletList;
     props?: Omit<RainbowKitProviderProps, 'children'>;
   },
 ) {
   const supportedChains = options?.chains || defaultChains;
 
-  const { wallets } = getDefaultWallets();
-
   const config = createConfig({
     chains: supportedChains,
-    connectors: options?.mock
-      ? [
+    connectors: options?.mockWallets
+      ? connectorsForWallets(options.mockWallets, {
+          appName: 'rainbowkit.com',
+          projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
+        })
+      : [
           mock({
-            ...(options?.mockFeatures
-              ? { features: options?.mockFeatures }
-              : {}),
             accounts: [
               '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
               '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
               '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
             ],
           }),
-        ]
-      : connectorsForWallets(wallets, {
-          appName: 'rainbowkit.com',
-          projectId: process.env.WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID',
-        }),
+        ],
     transports: {
       [mainnet.id]: http(),
       [polygon.id]: http(),
