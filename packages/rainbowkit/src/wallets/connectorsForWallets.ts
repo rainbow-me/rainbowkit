@@ -1,14 +1,14 @@
-import type { CreateConnectorFn } from 'wagmi';
-import { isHexString } from '../utils/colors';
-import { omitUndefinedValues } from '../utils/omitUndefinedValues';
-import { uniqueBy } from '../utils/uniqueBy';
+import type { CreateConnectorFn } from "wagmi";
+import { isHexString } from "../utils/colors";
+import { omitUndefinedValues } from "../utils/omitUndefinedValues";
+import { uniqueBy } from "../utils/uniqueBy";
 import type {
   RainbowKitWalletConnectParameters,
   Wallet,
   WalletDetailsParams,
   WalletList,
-} from './Wallet';
-import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+} from "./Wallet";
+import { computeWalletConnectMetaData } from "./computeWalletConnectMetaData";
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -34,7 +34,7 @@ export const connectorsForWallets = (
     appDescription,
     appUrl,
     appIcon,
-  }: ConnectorsForWalletsParameters,
+  }: ConnectorsForWalletsParameters
 ): CreateConnectorFn[] => {
   let index = -1;
 
@@ -75,7 +75,7 @@ export const connectorsForWallets = (
       // guard against non-hex values for `iconAccent`
       if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
         throw new Error(
-          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
+          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`
         );
       }
 
@@ -86,7 +86,7 @@ export const connectorsForWallets = (
         index,
       };
 
-      if (typeof wallet.hidden === 'function') {
+      if (typeof wallet.hidden === "function") {
         potentiallyHiddenWallets.push(walletListItem);
       } else {
         visibleWallets.push(walletListItem);
@@ -96,10 +96,10 @@ export const connectorsForWallets = (
 
   // Filtering out duplicated wallets in case there is any.
   // We process the known visible wallets first so that the potentially
-  // hidden wallets have access to the complete list of resolved wallets.
+  // hidden wallets have access to the complete list of resolved wallets
   const walletListItems: WalletListItem[] = uniqueBy(
     [...visibleWallets, ...potentiallyHiddenWallets],
-    'id',
+    "id"
   );
 
   for (const {
@@ -109,7 +109,7 @@ export const connectorsForWallets = (
     hidden,
     ...walletMeta
   } of walletListItems) {
-    if (typeof hidden === 'function') {
+    if (typeof hidden === "function") {
       // Run the function to check if the wallet needs to be hidden
       const isHidden = hidden();
 
@@ -122,9 +122,9 @@ export const connectorsForWallets = (
     const walletMetaData = (
       // For now we should only use these as the additional parameters
       additionalRkParams?: Pick<
-        WalletDetailsParams['rkDetails'],
-        'isWalletConnectModalConnector' | 'showQrModal'
-      >,
+        WalletDetailsParams["rkDetails"],
+        "isWalletConnectModalConnector" | "showQrModal"
+      >
     ) => {
       return {
         rkDetails: omitUndefinedValues({
@@ -141,7 +141,7 @@ export const connectorsForWallets = (
       };
     };
 
-    const isWalletConnectConnector = walletMeta.id === 'walletConnect';
+    const isWalletConnectConnector = walletMeta.id === "walletConnect";
 
     if (isWalletConnectConnector) {
       connectors.push(
@@ -149,8 +149,8 @@ export const connectorsForWallets = (
           walletMetaData({
             isWalletConnectModalConnector: true,
             showQrModal: true,
-          }),
-        ),
+          })
+        )
       );
     }
 
