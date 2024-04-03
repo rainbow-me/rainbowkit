@@ -18,6 +18,7 @@ import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvid
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { WalletList } from '../src/wallets/Wallet';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
+import { mockedAccounts } from './mockWallet';
 
 const defaultChains: readonly [Chain, ...Chain[]] = [
   mainnet,
@@ -51,11 +52,7 @@ export function renderWithProviders(
         })
       : [
           mock({
-            accounts: [
-              '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
-              '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
-              '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
-            ],
+            accounts: mockedAccounts,
           }),
         ],
     transports: {
