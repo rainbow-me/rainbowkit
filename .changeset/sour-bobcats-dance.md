@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Added `uniqueBy` util function to de-dupe wallets.
+Fixed an issue that allowed duplicate wallets to be added to the Connect Modal when using `connectorsForWallets`
