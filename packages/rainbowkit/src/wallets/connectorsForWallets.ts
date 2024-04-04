@@ -36,6 +36,16 @@ export const connectorsForWallets = (
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
+  if (!walletList.length) {
+    throw new Error('No wallet list was provided');
+  }
+
+  for (const { wallets, groupName } of walletList) {
+    if (!wallets.length) {
+      throw new Error(`No wallets provided for group: ${groupName}`);
+    }
+  }
+
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];
