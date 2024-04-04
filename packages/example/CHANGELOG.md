@@ -1,5 +1,21 @@
 # example
 
+## 0.0.95
+
+### Patch Changes
+
+- 81ba812: Added support for `zetachain` and `zetachainAthensTestnet` testnet chain
+- b11118f: Added Kaikas Wallet support with `kaikasWallet` wallet connector and added `klaytn` chain with `klaytnBaobab` testnet support.
+- Updated dependencies [81ba812]
+- Updated dependencies [fc4d7e1]
+- Updated dependencies [1a0f209]
+- Updated dependencies [b11118f]
+- Updated dependencies [4dd1e45]
+- Updated dependencies [ec41346]
+  - @rainbow-me/rainbowkit@2.0.5
+  - @rainbow-me/rainbow-button@0.2.5
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
 ## 0.0.94
 
 ### Patch Changes

@@ -3,6 +3,7 @@ import { createConnector as createWagmiConnector } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
+import { uniqueBy } from '../utils/uniqueBy';
 import type {
   RainbowKitWalletConnectParameters,
   Wallet,
@@ -36,6 +37,16 @@ export const connectorsForWallets = (
     appIcon,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
+  if (!walletList.length) {
+    throw new Error('No wallet list was provided');
+  }
+
+  for (const { wallets, groupName } of walletList) {
+    if (!wallets.length) {
+      throw new Error(`No wallets provided for group: ${groupName}`);
+    }
+  }
+
   let index = -1;
 
   const connectors: CreateConnectorFn[] = [];
@@ -94,12 +105,13 @@ export const connectorsForWallets = (
     });
   });
 
+  // Filtering out duplicated wallets in case there is any.
   // We process the known visible wallets first so that the potentially
   // hidden wallets have access to the complete list of resolved wallets
-  const walletListItems: WalletListItem[] = [
-    ...visibleWallets,
-    ...potentiallyHiddenWallets,
-  ];
+  const walletListItems: WalletListItem[] = uniqueBy(
+    [...visibleWallets, ...potentiallyHiddenWallets],
+    'id',
+  );
 
   for (const {
     createConnector: createRainbowKitConnector,
