@@ -1,5 +1,22 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.4
+
+### Patch Changes
+
+- 77dcec3: Added Bybit Wallet support with `bybitWallet` wallet connector
+- 6c240ba: Added Gate Wallet support with `gateWallet` wallet connector
+- 34419b5: Added Bitverse Wallet support with `bitverseWallet` wallet connector
+- 5c60239: Added 1inch Wallet support with `oneInchWallet` wallet connector
+
+## 2.0.3
+
+### Patch Changes
+
+- b80e8fa: Improved the synchronous connection flow for the `WalletButton` and `WalletButton.Custom` components
+- 985b80b: Resolved an issue where ENS resolution would fail and throw an error for ENS names with disallowed characters.
+- b25db9a: Added `blast` and `blastSepolia` network support
+
 ## 2.0.2
 
 ### Patch Changes

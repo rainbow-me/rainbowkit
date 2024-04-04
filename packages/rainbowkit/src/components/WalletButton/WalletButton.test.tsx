@@ -1,14 +1,41 @@
 import React from 'react';
-import { describe, expect, it } from 'vitest';
+import {
+  SpyInstance,
+  afterAll,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
+import { mockWallet } from '../../../test/mockWallet';
 import { WalletButton } from './WalletButton';
+
+let mockError: ReturnType<SpyInstance['mockImplementation']>;
+
+beforeAll(() => {
+  // Silence the error logs if the component throws an error
+  mockError = vi.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterAll(() => {
+  mockError.mockRestore();
+});
 
 describe('<WalletButton />', () => {
   const getWalletButtonLabel = async (connectorId?: string) => {
+    const wallets = [
+      { id: 'rainbow', name: 'Rainbow' },
+      { id: 'metaMask', name: 'MetaMask' },
+      { id: 'coinbase', name: 'Coinbase Wallet' },
+    ].map(({ id, name }) => mockWallet(id, name));
+
     const { findByTestId } = renderWithProviders(
       <WalletButton wallet={connectorId} />,
       {
+        mockWallets: [{ groupName: 'Popular', wallets }],
         chains: [mainnet],
       },
     );
@@ -46,7 +73,7 @@ describe('<WalletButton />', () => {
         renderWithProviders(<WalletButton wallet={connector} />, {
           chains: [mainnet],
         }),
-      ).toThrow('Connector not found');
+      ).toThrowError('Connector not found');
     }
   });
 });
