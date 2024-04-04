@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.5
+
+### Patch Changes
+
+- 81ba812: Added support for `zetachain` and `zetachainAthensTestnet` testnet chain
+- fc4d7e1: Resolved a bug where if `multiInjectedProviderDiscovery` was set to `false` the `roninWallet` would prevent showing `Opening Ronin Wallet...` UI in the connect modal.
+
 ## 2.0.4
 
 ### Patch Changes
