@@ -1,5 +1,19 @@
 # site
 
+## 0.0.95
+
+### Patch Changes
+
+- 3ab4bfd: Added "Preparing to deploy" section in "Installation" page and explaining why it's important to use transports when deploying your dApp. Additionally also added a quick example with `http` and `getDefaultConfig`.
+- b11118f: Added Kaikas Wallet support with `kaikasWallet` wallet connector and added `klaytn` chain with `klaytnBaobab` testnet support.
+- Updated dependencies [81ba812]
+- Updated dependencies [fc4d7e1]
+- Updated dependencies [1a0f209]
+- Updated dependencies [b11118f]
+- Updated dependencies [4dd1e45]
+- Updated dependencies [ec41346]
+  - @rainbow-me/rainbowkit@2.0.5
+
 ## 0.0.94
 
 ### Patch Changes
