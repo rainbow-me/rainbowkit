@@ -19,6 +19,7 @@ import { frontierWallet } from './frontierWallet/frontierWallet';
 import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
+import { kaikasWallet } from './kaikasWallet/kaikasWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
@@ -70,6 +71,7 @@ export {
   gateWallet,
   imTokenWallet,
   injectedWallet,
+  kaikasWallet,
   kresusWallet,
   ledgerWallet,
   metaMaskWallet,

@@ -21,6 +21,8 @@ type ChainName =
   | 'goerli'
   | 'hardhat'
   | 'holesky'
+  | 'klaytn'
+  | 'klaytnBaobab'
   | 'kovan'
   | 'localhost'
   | 'mainnet'
@@ -94,6 +96,11 @@ const hardhatIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
 };
 
+const klaytnIcon: IconMetadata = {
+  iconBackground: 'transparent',
+  iconUrl: async () => (await import('./chainIcons/klaytn.svg')).default,
+};
+
 const optimismIcon: IconMetadata = {
   iconBackground: '#ff5a57',
   iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
@@ -148,6 +155,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   kovan: { chainId: 42, ...ethereumIcon },
+  klaytn: { chainId: 8_217, name: 'Klaytn', ...klaytnIcon },
+  klaytnBaobab: { chainId: 1_001, name: 'Klaytn Baobab', ...klaytnIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
