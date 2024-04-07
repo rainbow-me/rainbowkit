@@ -1,28 +1,29 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, expectTypeOf, it } from 'vitest';
+import { CreateConnectorFn } from 'wagmi';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from './getInjectedConnector';
 
 describe('getInjectedConnector', () => {
-  it('only rainbow provider', () => {
-    window.ethereum = { isMetaMask: true, isRainbow: true };
+  it('should return wagmi connector type for rainbow', () => {
+    window.ethereum = { isRainbow: true };
     const connector = getInjectedConnector({
       id: 'rainbow',
       name: 'Rainbow',
       flag: 'isRainbow',
     });
-    expect(!!connector).toEqual(true);
+    expectTypeOf(connector).toMatchTypeOf<CreateConnectorFn>();
   });
 
-  it('only metamask provider', () => {
+  it('should return wagmi connector type for metamask', () => {
     window.ethereum = { isMetaMask: true };
     const connector = getInjectedConnector({
       id: 'metamask',
       name: 'MetaMask',
       flag: 'isMetaMask',
     });
-    expect(!!connector).toEqual(true);
+    expectTypeOf(connector).toMatchTypeOf<CreateConnectorFn>();
   });
 });
 

@@ -1,18 +1,18 @@
 import { RainbowKitWalletConnectParameters } from './Wallet';
 
-interface ComputeMetaDataParameters {
+interface GetWalletConnectMetaDataParameters {
   appName: string;
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
 }
 
-export const computeWalletConnectMetaData = ({
+export const getWalletConnectMetaData = ({
   appName,
   appDescription,
   appUrl,
   appIcon,
-}: ComputeMetaDataParameters): RainbowKitWalletConnectParameters['metadata'] => {
+}: GetWalletConnectMetaDataParameters): RainbowKitWalletConnectParameters['metadata'] => {
   return {
     name: appName,
     description: appDescription ?? appName,

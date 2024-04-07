@@ -1,18 +1,18 @@
 import type { CreateConnectorFn } from 'wagmi';
-import { createConnector as createWagmiConnector } from 'wagmi';
 import { walletConnect } from 'wagmi/connectors';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
 import type {
   RainbowKitWalletConnectParameters,
+  WagmiConnectorInstance,
   Wallet,
   WalletList,
 } from './Wallet';
-import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+import { createWagmiConnector } from './createWagmiConnector';
+import { getWalletConnectMetaData } from './getWalletConnectMetaData';
 
 interface WalletListItem extends Wallet {
-  index: number;
   groupIndex: number;
   groupName: string;
 }
@@ -41,97 +41,86 @@ export const connectorsForWallets = (
     throw new Error('No wallet list was provided');
   }
 
+  // If a group has no wallets, then throw an error
   for (const { wallets, groupName } of walletList) {
     if (!wallets.length) {
       throw new Error(`No wallets provided for group: ${groupName}`);
     }
   }
 
-  let index = -1;
-
+  const wallets: WalletListItem[] = [];
   const connectors: CreateConnectorFn[] = [];
-  const visibleWallets: WalletListItem[] = [];
-  const potentiallyHiddenWallets: WalletListItem[] = [];
 
-  const walletConnectMetaData = computeWalletConnectMetaData({
+  // Create WalletConnect metadata to later append it to the connectors
+  const walletConnectMetaData = getWalletConnectMetaData({
     appName,
     appDescription,
     appUrl,
     appIcon,
   });
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  walletList.forEach(({ groupName, wallets }, groupIndex) => {
-    // biome-ignore lint/complexity/noForEach: TODO
-    wallets.forEach((createWallet) => {
-      index++;
+  // Initialize group index as 1. This is because the 'Installed' section in the connect modal
+  // should be first in the list for EIP-6963 support
+  let groupIndex = 1;
 
+  // WalletConnect metadata options
+  const walletConnectOptions = {
+    metadata: walletConnectMetaData,
+    ...walletConnectParameters,
+  };
+
+  // Iterate over each wallet list group
+  for (const { groupName, wallets: groupedWallets } of walletList) {
+    // For each wallet group, create each wallet
+    for (const createWallet of groupedWallets) {
+      // Create a wallet with all necessary parameters
       const wallet = createWallet({
         projectId,
         appName,
         appIcon,
-        // `option` is being used only for `walletConnectWallet` wallet
-        options: {
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
-        },
+        // `options` argument is used only for `walletConnectWallet` wallet
+        options: walletConnectOptions,
         // Every other wallet that supports walletConnect flow and is not
-        // `walletConnectWallet` wallet will have `walletConnectParameters` property
-        walletConnectParameters: {
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
-        },
+        // `walletConnectWallet` will have `walletConnectParameters` argument
+        walletConnectParameters: walletConnectOptions,
       });
 
-      // guard against non-hex values for `iconAccent`
+      // Validate `iconAccent` property to ensure it's a hex value
       if (wallet?.iconAccent && !isHexString(wallet?.iconAccent)) {
         throw new Error(
-          `Property \`iconAccent\` is not a hex value for wallet: ${wallet.name}`,
+          `Property 'iconAccent' is not a hex value for wallet: ${wallet.name}`,
         );
       }
 
-      const walletListItem = {
+      // Create a wallet item with group details
+      // then add it to the wallets list
+      wallets.push({
         ...wallet,
-        groupIndex: groupIndex + 1,
+        groupIndex,
         groupName,
-        index,
-      };
+      });
+    }
 
-      if (typeof wallet.hidden === 'function') {
-        potentiallyHiddenWallets.push(walletListItem);
-      } else {
-        visibleWallets.push(walletListItem);
-      }
-    });
-  });
+    // Increment groupIndex after processing each group
+    groupIndex++;
+  }
 
-  // Filtering out duplicated wallets in case there is any.
-  // We process the known visible wallets first so that the potentially
-  // hidden wallets have access to the complete list of resolved wallets
-  const walletListItems: WalletListItem[] = uniqueBy(
-    [...visibleWallets, ...potentiallyHiddenWallets],
-    'id',
-  );
+  // Filter out duplicate wallets by 'id' to ensure uniqueness in the list
+  const uniqueWallets: WalletListItem[] = uniqueBy(wallets, 'id');
 
   for (const {
-    createConnector: createRainbowKitConnector,
+    createConnector,
     groupIndex,
     groupName,
     hidden,
     ...walletMeta
-  } of walletListItems) {
-    if (typeof hidden === 'function') {
-      // Run the function to check if the wallet needs to be hidden
-      const isHidden = hidden();
+  } of uniqueWallets) {
+    // If 'hidden' is a function and it returns true, skip to the next iteration
+    if (typeof hidden === 'function' && hidden()) continue;
 
-      // If wallet is hidden, bail out and proceed to the next list item
-      if (isHidden) {
-        continue;
-      }
-    }
-
-    const rainbowKitDetails = {
-      rkDetails: omitUndefinedValues({
+    // Create metadata for the wallet
+    const walletMetaData: Pick<WagmiConnectorInstance, 'wallet'> = {
+      wallet: omitUndefinedValues({
         ...walletMeta,
         groupIndex,
         groupName,
@@ -139,24 +128,27 @@ export const connectorsForWallets = (
       }),
     };
 
-    const connector = createWagmiConnector((config) => ({
-      ...createRainbowKitConnector(config),
-      ...rainbowKitDetails,
-    }));
+    const connector = createWagmiConnector({
+      connector: createConnector,
+      metaData: walletMetaData,
+    });
 
     connectors.push(connector);
 
+    // If 'walletConnectWallet' is used, then include an additional
+    // WalletConnect connector to enable opening the official WalletConnect modal
     if (walletMeta.id === 'walletConnect') {
-      const walletConnectConnector = createWagmiConnector((config) => ({
-        ...walletConnect({
+      const walletConnectConnector = createWagmiConnector({
+        connector: walletConnect({
           projectId,
-          metadata: walletConnectMetaData,
-          ...walletConnectParameters,
+          ...walletConnectOptions,
           showQrModal: true,
-        })(config),
-        ...rainbowKitDetails,
-        isWalletConnectModalConnector: true,
-      }));
+        }),
+        metaData: {
+          ...walletMetaData,
+          isWalletConnectModalConnector: true,
+        },
+      });
 
       connectors.push(walletConnectConnector);
     }

@@ -1,38 +1,24 @@
-import { describe, expect, expectTypeOf, it } from 'vitest';
-import { CreateConnector } from './Wallet';
+import { describe, expectTypeOf, it } from 'vitest';
+import { CreateConnectorFn } from 'wagmi';
 import { getWalletConnectConnector } from './getWalletConnectConnector';
 
-/*
- * Be careful when writing these tests. This util caches the connector
- * results, which can create unexpected issues when testing.
- */
-
 describe('getWalletConnectConnector', () => {
-  const projectId = 'test-project-id';
+  const projectId = '21fef48091f12692cad574a6f7753643';
 
-  describe('generic', () => {
-    it('without projectId', () => {
-      // @ts-expect-error
-      expect(() => getWalletConnectConnector()).toThrowError();
+  it('should return wagmi connector type', () => {
+    const connector = getWalletConnectConnector({
+      projectId,
     });
-    it('with projectId', () => {
-      const connector = getWalletConnectConnector({ projectId });
-      expectTypeOf(connector).toMatchTypeOf<CreateConnector>();
-    });
+    expectTypeOf(connector).toMatchTypeOf<CreateConnectorFn>();
   });
 
-  describe("version '2'", () => {
-    it('without options', () => {
-      const connector = getWalletConnectConnector({
-        projectId,
-      });
-      expectTypeOf(connector).toMatchTypeOf<CreateConnector>();
+  it('should return wagmi connector type with v2 options', () => {
+    const connector = getWalletConnectConnector({
+      projectId,
+      walletConnectParameters: {
+        isNewChainsStale: true,
+      },
     });
-    it('with options', () => {
-      const connector = getWalletConnectConnector({
-        projectId,
-      });
-      expectTypeOf(connector).toMatchTypeOf<CreateConnector>();
-    });
+    expectTypeOf(connector).toMatchTypeOf<CreateConnectorFn>();
   });
 });

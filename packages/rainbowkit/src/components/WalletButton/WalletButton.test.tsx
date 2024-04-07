@@ -67,7 +67,7 @@ describe('<WalletButton />', () => {
     expect(label).toBe('Coinbase Wallet');
   });
 
-  it('should throw error for non ready connectors', () => {
+  it('should throw an error for non ready connectors', () => {
     for (const connector of ['argent', 'xdefi', 'uniswap']) {
       expect(() =>
         renderWithProviders(<WalletButton wallet={connector} />, {

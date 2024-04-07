@@ -1,7 +1,7 @@
 import type { Address } from 'viem';
 import { createConnector } from 'wagmi';
 import { mock } from 'wagmi/connectors';
-import { Wallet, WalletDetailsParams } from '../src/wallets/Wallet';
+import { Wallet } from '../src/wallets/Wallet';
 
 export const mockedAccounts: readonly [Address, ...Address[]] = [
   '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266',
@@ -16,15 +16,12 @@ export const mockWallet = (id: string, name: string) => {
     iconBackground: '#fff',
     iconUrl: '',
     installed: true,
-    createConnector: (walletDetails: WalletDetailsParams) => {
-      return createConnector((config) => ({
-        ...mock({
-          accounts: mockedAccounts,
-        })(config),
-        id,
-        name,
-        ...walletDetails,
-      }));
-    },
+    createConnector: createConnector((config) => ({
+      ...mock({
+        accounts: mockedAccounts,
+      })(config),
+      id,
+      name,
+    })),
   });
 };

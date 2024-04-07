@@ -18,7 +18,6 @@ export {
 export type {
   Wallet,
   WalletList,
-  WalletDetailsParams,
   RainbowKitWalletConnectParameters,
 } from './wallets/Wallet';
 export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';

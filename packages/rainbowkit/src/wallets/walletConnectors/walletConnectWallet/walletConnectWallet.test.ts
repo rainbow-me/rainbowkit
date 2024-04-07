@@ -5,16 +5,14 @@ import { walletConnectWallet } from './walletConnectWallet';
 describe('walletConnectWallet', () => {
   const projectId = 'test-project-id';
 
-  it('without projectId', () => {
+  it("should throw an error when 'projectId' is not provided", () => {
     expect(() =>
       // @ts-ignore
-      walletConnectWallet({
-        /* no project id */
-      }),
+      walletConnectWallet({}),
     ).toThrowError();
   });
 
-  it('with projectId', () => {
+  it('should create a wallet with correct id and return wagmi connector type', () => {
     const wallet = walletConnectWallet({ projectId });
 
     expect(wallet.id).toBe('walletConnect');
@@ -23,7 +21,7 @@ describe('walletConnectWallet', () => {
     >();
   });
 
-  it('v2 options', () => {
+  it('should create a wallet with correct id and return wagmi connector type when v2 options are provided', () => {
     const wallet = walletConnectWallet({
       options: {
         isNewChainsStale: true,

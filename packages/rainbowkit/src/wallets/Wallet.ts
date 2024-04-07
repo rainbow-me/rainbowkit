@@ -104,7 +104,6 @@ export type RainbowKitWalletConnectParameters = Omit<
 >;
 
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
-  index: number;
   groupIndex: number;
   groupName: string;
   isWalletConnectModalConnector?: boolean;
@@ -115,14 +114,12 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   showQrModal?: true;
 };
 
-export type WalletDetailsParams = { rkDetails: RainbowKitDetails };
-
 // This is the default connector you get at first from wagmi
 // "Connector" + rainbowkit details we inject into the connector
 export type WagmiConnectorInstance = Connector & {
   // this is optional since we only get
   // rkDetails if we use rainbowkit connectors
-  rkDetails?: RainbowKitDetails;
+  wallet?: RainbowKitDetails;
 };
 
 // This will be the wallet instance we will return

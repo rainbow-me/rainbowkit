@@ -50,7 +50,7 @@ export function useWalletConnectors(
     // rkDetails is optional it does not exist in eip6963 connectors.
     // We only inject `rkDetails` in `connectorsForWallets` when we
     // want to have additional information in the connector.
-    ...(connector.rkDetails || {}),
+    ...(connector.wallet || {}),
   })) as WalletInstance[];
 
   async function connectWallet(connector: Connector) {
