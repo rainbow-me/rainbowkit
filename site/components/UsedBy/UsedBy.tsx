@@ -186,7 +186,7 @@ export function UsedBy() {
                     lg: '3',
                     xs: '2',
                   }}
-                  variant={null}
+                  variant={undefined}
                   weight="semibold"
                 >
                   {fren.name}

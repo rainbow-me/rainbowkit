@@ -9,7 +9,7 @@ import React from 'react';
 import { link } from './Sidebar.css';
 import { allDocs } from '.contentlayer/generated';
 
-export function Sidebar({ routes }) {
+export function Sidebar({ routes }: { routes: any }) {
   const { locale } = useRouter();
   const t = useTranslations('docs.sidebar.section');
   return (
@@ -72,35 +72,37 @@ export function Sidebar({ routes }) {
         )}
       </SearchButton>
 
-      {routes.map((route) => (
-        <Box key={route.section} marginBottom="7">
-          <Text
-            as="h3"
-            variant="subhead"
-            color="labelTertiary"
-            marginTop="2"
-            marginBottom="4"
-            marginLeft="5"
-            weight="semibold"
-          >
-            {t(route.section)}
-          </Text>
-          {route.pages.map((page) => (
-            <Link key={page.slug} slug={page.slug}>
-              {
-                allDocs.find(
-                  (doc) => doc.slug === page.slug && doc.locale === locale,
-                ).title
-              }
-            </Link>
-          ))}
-        </Box>
-      ))}
+      {routes.map(
+        (route: { section: React.Key | null | undefined; pages: any[] }) => (
+          <Box key={route.section} marginBottom="7">
+            <Text
+              as="h3"
+              variant="subhead"
+              color="labelTertiary"
+              marginTop="2"
+              marginBottom="4"
+              marginLeft="5"
+              weight="semibold"
+            >
+              {t(route.section)}
+            </Text>
+            {route.pages.map((page) => (
+              <Link key={page.slug} slug={page.slug}>
+                {
+                  allDocs.find(
+                    (doc) => doc.slug === page.slug && doc.locale === locale,
+                  )?.title
+                }
+              </Link>
+            ))}
+          </Box>
+        ),
+      )}
     </>
   );
 }
 
-function Link({ children, slug }) {
+function Link({ children, slug }: { children: React.ReactNode; slug: string }) {
   const router = useRouter();
 
   return (

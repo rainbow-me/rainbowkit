@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -138,6 +137,32 @@ export default {
   },
 };
 ```
+
+### Preparing to deploy
+
+By default, your dApp uses public RPC providers for each chain to fetch balances, resolve ENS names, and more. This can often cause reliability issues for your users as public nodes are rate-limited. You should instead purchase access to an RPC provider through services like [Alchemy](https://www.alchemy.com/) or [QuickNode](https://www.quicknode.com/), and define your own Transports in Wagmi. This can be achieved by adding the `transports` param in `getDefaultConfig` or via Wagmi's `createConfig` directly.
+
+A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
+
+**Example with an `http` transport**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+For more details, view the [wagmi transport docs](https://wagmi.sh/core/api/transports#transports).
 
 ### Add your own functionality
 

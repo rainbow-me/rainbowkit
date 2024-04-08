@@ -26,7 +26,6 @@ import {
   optimism,
   polygon,
   sepolia,
-  zora,
 } from 'wagmi/chains';
 import { SiweMessage } from 'siwe';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -49,7 +48,6 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    zora,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
