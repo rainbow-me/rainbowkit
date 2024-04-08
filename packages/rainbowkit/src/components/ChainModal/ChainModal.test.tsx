@@ -35,7 +35,6 @@ describe('<ChainModal />', () => {
     const modal = renderWithProviders(
       <ChainModalWithConnectButton onClose={onClose} />,
       {
-        mock: true,
         chains,
       },
     );
@@ -111,9 +110,9 @@ describe('<ChainModal />', () => {
   it('Closes on close button press', async () => {
     let onCloseGotCalled = false;
 
-    const modal = renderWithProviders(
-      <ChainModal onClose={() => (onCloseGotCalled = true)} open />,
-    );
+    const modal = await renderChainModalWithConnectedWallet([mainnet], () => {
+      onCloseGotCalled = true;
+    });
 
     const closeButton = await modal.findByLabelText('Close');
 

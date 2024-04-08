@@ -1,5 +1,33 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.5
+
+### Patch Changes
+
+- 4dd1e45: Fixed an issue that allowed duplicate wallets to be added to the Connect Modal when using `connectorsForWallets`
+- 1a0f209: Added a small check to throw an error if the wallet list is empty overall or empty within any category.
+- ec41346: Amended the `getDefaultConfig` return type to prevent indirect type annotation errors and better infer type for parameters from Wagmi's `createConfig`.
+- fc4d7e1: Resolved a bug where if `multiInjectedProviderDiscovery` was set to `false` the `roninWallet` would prevent showing `Opening Ronin Wallet...` UI in the connect modal.
+- 81ba812: Added support for `zetachain` and `zetachainAthensTestnet` testnet chain
+- b11118f: Added Kaikas Wallet support with `kaikasWallet` wallet connector and added `klaytn` chain with `klaytnBaobab` testnet support.
+
+## 2.0.4
+
+### Patch Changes
+
+- 77dcec3: Added Bybit Wallet support with `bybitWallet` wallet connector
+- 6c240ba: Added Gate Wallet support with `gateWallet` wallet connector
+- 34419b5: Added Bitverse Wallet support with `bitverseWallet` wallet connector
+- 5c60239: Added 1inch Wallet support with `oneInchWallet` wallet connector
+
+## 2.0.3
+
+### Patch Changes
+
+- b80e8fa: Improved the synchronous connection flow for the `WalletButton` and `WalletButton.Custom` components
+- 985b80b: Resolved an issue where ENS resolution would fail and throw an error for ENS names with disallowed characters.
+- b25db9a: Added `blast` and `blastSepolia` network support
+
 ## 2.0.2
 
 ### Patch Changes
