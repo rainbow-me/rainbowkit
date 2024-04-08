@@ -37,7 +37,6 @@ export function TransactionStoreProvider({
 
   const onTransactionStatus = useCallback(
     (txStatus: TransactionReceipt['status']) => {
-      console.log({ txStatus });
       if (txStatus === 'success') {
         setStatus('refetch');
       }
