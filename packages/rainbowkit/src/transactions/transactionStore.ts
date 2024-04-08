@@ -1,4 +1,4 @@
-import type { Address, PublicClient } from 'viem';
+import type { Address, PublicClient, TransactionReceipt } from 'viem';
 
 const storageKey = 'rk-transactions';
 
@@ -67,6 +67,9 @@ export function createTransactionStore({
 
   let provider = initialProvider;
   const listeners: Set<() => void> = new Set();
+  const transactionListeners: Set<
+    (txStatus: TransactionReceipt['status']) => void
+  > = new Set();
   const transactionRequestCache: Map<string, Promise<void>> = new Map();
 
   function setProvider(newProvider: PublicClient): void {
@@ -137,7 +140,7 @@ export function createTransactionStore({
             .waitForTransactionReceipt({
               confirmations,
               hash: hash as Address,
-              timeout: 300_000, // 5 minutes
+              timeout: 1000, // 5 minutes
             })
             .then(({ status }) => {
               transactionRequestCache.delete(hash);
@@ -153,6 +156,8 @@ export function createTransactionStore({
                 // @ts-ignore - types changed with viem@1.1.0
                 status === 0 || status === 'reverted' ? 'failed' : 'confirmed',
               );
+
+              notifyTransactionListeners(status);
             })
             .catch(() => {
               // If a transaction is not found or cancelled
@@ -207,6 +212,14 @@ export function createTransactionStore({
     }
   }
 
+  function notifyTransactionListeners(
+    txStatus: TransactionReceipt['status'],
+  ): void {
+    for (const transactionListener of transactionListeners) {
+      transactionListener(txStatus);
+    }
+  }
+
   function onChange(fn: () => void): () => void {
     listeners.add(fn);
 
@@ -215,10 +228,22 @@ export function createTransactionStore({
     };
   }
 
+  function onTransactionStatus(
+    fn: (txStatus: TransactionReceipt['status']) => void,
+  ): () => void {
+    transactionListeners.add(fn);
+
+    return () => {
+      console.log('delete!?');
+      transactionListeners.delete(fn);
+    };
+  }
+
   return {
     addTransaction,
     clearTransactions,
     getTransactions,
+    onTransactionStatus,
     onChange,
     setProvider,
     waitForPendingTransactions,

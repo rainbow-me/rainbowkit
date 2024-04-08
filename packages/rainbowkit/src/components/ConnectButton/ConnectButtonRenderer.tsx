@@ -2,9 +2,7 @@ import React, { ReactNode, useContext } from 'react';
 import { useAccount, useConfig } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
-import { useMainnetEnsAvatar } from '../../hooks/useMainnetEnsAvatar';
-import { useMainnetEnsName } from '../../hooks/useMainnetEnsName';
-import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
+import { useProfile } from '../../hooks/useProfile';
 import { useRecentTransactions } from '../../transactions/useRecentTransactions';
 import { isMobile } from '../../utils/isMobile';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
@@ -64,8 +62,6 @@ export function ConnectButtonRenderer({
 }: ConnectButtonRendererProps) {
   const isMounted = useIsMounted();
   const { address } = useAccount();
-  const ensName = useMainnetEnsName(address);
-  const ensAvatar = useMainnetEnsAvatar(ensName);
 
   const { chainId } = useAccount();
   const { chains: wagmiChains } = useConfig();
@@ -104,14 +100,13 @@ export function ConnectButtonRenderer({
 
   const shouldShowBalance = computeShouldShowBalance();
 
-  const { data: balanceData } = useRealtimeBalance(
-    shouldShowBalance ? address : undefined,
-  );
+  const { balance, ensAvatar, ensName } = useProfile({
+    address,
+    showBalance: shouldShowBalance,
+  });
 
-  const displayBalance = balanceData
-    ? `${abbreviateETHBalance(parseFloat(balanceData.formatted))} ${
-        balanceData.symbol
-      }`
+  const displayBalance = balance
+    ? `${abbreviateETHBalance(parseFloat(balance.formatted))} ${balance.symbol}`
     : undefined;
 
   const { openConnectModal } = useConnectModal();
@@ -126,9 +121,9 @@ export function ConnectButtonRenderer({
         account: address
           ? {
               address,
-              balanceDecimals: balanceData?.decimals,
-              balanceFormatted: balanceData?.formatted,
-              balanceSymbol: balanceData?.symbol,
+              balanceDecimals: balance?.decimals,
+              balanceFormatted: balance?.formatted,
+              balanceSymbol: balance?.symbol,
               displayBalance,
               displayName: ensName
                 ? formatENS(ensName)

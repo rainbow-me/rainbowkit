@@ -23,6 +23,7 @@ interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
   ensAvatar: GetEnsAvatarReturnType | undefined;
   ensName: GetEnsNameReturnType | undefined;
+  balanceData: ReturnType<typeof useRealtimeBalance>;
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -31,12 +32,11 @@ export function ProfileDetails({
   address,
   ensAvatar,
   ensName,
+  balanceData,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
-
-  const { data: balanceData } = useRealtimeBalance(address);
 
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {

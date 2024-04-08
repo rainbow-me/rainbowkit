@@ -6,7 +6,6 @@ import {
   useAddRecentTransaction,
   useChainModal,
   useConnectModal,
-  useRefetchBalance,
 } from '@rainbow-me/rainbowkit';
 import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
@@ -18,7 +17,6 @@ import {
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
-  useWaitForTransactionReceipt,
 } from 'wagmi';
 import { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
@@ -42,7 +40,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const { openConnectModal, connectModalOpen } = useConnectModal();
   const { address, isConnected: isWagmiConnected } = useAccount();
   const { status } = useSession();
-  const { refetchBalance } = useRefetchBalance();
 
   const defaultProps = ConnectButton.__defaultProps;
 
@@ -89,15 +86,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
   const ready = mounted && (!authEnabled || status !== 'loading');
   const connected =
     isWagmiConnected && (!authEnabled || status === 'authenticated');
-
-  const { data: txReceipt } = useWaitForTransactionReceipt({
-    hash: transactionData,
-  });
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    if (txReceipt?.status === 'success') refetchBalance();
-  }, [txReceipt]);
 
   return (
     <div

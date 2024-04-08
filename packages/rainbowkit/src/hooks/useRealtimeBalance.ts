@@ -2,12 +2,20 @@ import type { Address } from 'viem';
 import { useBalance } from 'wagmi';
 import { useRealtimeBalanceStatus } from '../components/RainbowKitProvider/RealtimeBalanceStatusContext';
 
-export const useRealtimeBalance = (address: Address | undefined) => {
+interface UseRealtimeBalanceParameters {
+  address?: Address;
+  showBalance?: boolean;
+}
+
+export function useRealtimeBalance({
+  address,
+  showBalance = true,
+}: UseRealtimeBalanceParameters) {
   const { status } = useRealtimeBalanceStatus();
 
-  const balance = useBalance({
-    address: status === 'show' && address ? address : undefined,
+  const { data: balanceData } = useBalance({
+    address: status === 'show' && showBalance ? address : undefined,
   });
 
-  return balance;
-};
+  return balanceData;
+}
