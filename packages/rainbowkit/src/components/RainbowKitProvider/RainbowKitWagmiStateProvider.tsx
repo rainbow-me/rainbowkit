@@ -24,6 +24,8 @@ interface RainbowKitWagmiStateProviderProps {
 export function RainbowKitWagmiStateProvider({
   children,
 }: RainbowKitWagmiStateProviderProps) {
+  // The 'status' state from the `useDisconnect` hook in wagmi can't be used for 'pending' logic,
+  // as it doesn't share its state globally. It only shares its state within the same component (like useState).
   const [isDisconnecting, setIsDisconnecting] = useState(false);
 
   return (

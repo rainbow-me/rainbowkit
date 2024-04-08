@@ -1,5 +1,6 @@
 import { useAccount } from 'wagmi';
 import { useAuthenticationStatus } from '../components/RainbowKitProvider/AuthenticationContext';
+import { useRainbowKitWagmiState } from '../components/RainbowKitProvider/RainbowKitWagmiStateProvider';
 
 export type ConnectionStatus =
   | 'disconnected'
@@ -10,8 +11,9 @@ export type ConnectionStatus =
 export function useConnectionStatus(): ConnectionStatus {
   const authenticationStatus = useAuthenticationStatus();
   const { isConnected } = useAccount();
+  const { isDisconnecting } = useRainbowKitWagmiState();
 
-  if (!isConnected) {
+  if (!isConnected || isDisconnecting) {
     return 'disconnected';
   }
 

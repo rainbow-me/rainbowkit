@@ -129,7 +129,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
               authenticationStatus,
               chain,
               mounted,
-              disconnecting,
               openAccountModal,
               openChainModal,
               openConnectModal,
@@ -138,7 +137,6 @@ const Example = ({ authEnabled }: AppContextProps) => {
               const connected =
                 ready &&
                 account &&
-                !disconnecting &&
                 chain &&
                 (!authenticationStatus ||
                   authenticationStatus === 'authenticated');
@@ -157,11 +155,7 @@ const Example = ({ authEnabled }: AppContextProps) => {
                   {(() => {
                     if (!connected) {
                       return (
-                        <button
-                          disabled={disconnecting}
-                          onClick={openConnectModal}
-                          type="button"
-                        >
+                        <button onClick={openConnectModal} type="button">
                           Connect Wallet
                         </button>
                       );

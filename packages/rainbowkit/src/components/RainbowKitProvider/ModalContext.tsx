@@ -67,12 +67,12 @@ export function ModalProvider({ children }: ModalProviderProps) {
     openModal: openChainModal,
   } = useModalStateValue();
 
-  const { isDisconnecting } = useRainbowKitWagmiState();
-
   const [isWalletConnectModalOpen, setIsWalletConnectModalOpen] =
     useState(false);
 
   const connectionStatus = useConnectionStatus();
+
+  const { isDisconnecting } = useRainbowKitWagmiState();
 
   const { chainId } = useAccount();
   const { chains } = useConfig();
@@ -116,19 +116,18 @@ export function ModalProvider({ children }: ModalProviderProps) {
           connectModalOpen,
           isWalletConnectModalOpen,
           openAccountModal:
-            !isDisconnecting &&
-            isCurrentChainSupported &&
-            connectionStatus === 'connected'
+            isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
           openChainModal:
-            !isDisconnecting && connectionStatus === 'connected'
-              ? openChainModal
-              : undefined,
+            connectionStatus === 'connected' ? openChainModal : undefined,
           openConnectModal:
+            // Prevent opening the connect modal during disconnecting mode. Even though `connectionStatus`
+            // may mark it as 'disconnected', we don't want the user to open the modal as the wagmi state
+            // still considers it 'connected'
+            !isDisconnecting &&
             (connectionStatus === 'disconnected' ||
-              connectionStatus === 'unauthenticated') &&
-            !isDisconnecting
+              connectionStatus === 'unauthenticated')
               ? openConnectModal
               : undefined,
           setIsWalletConnectModalOpen,

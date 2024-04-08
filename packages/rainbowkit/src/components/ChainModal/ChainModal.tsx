@@ -48,8 +48,8 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
 
   const { disconnect } = useDisconnect({
     mutation: {
-      onSuccess: () => setIsDisconnecting(false),
-      onError: () => setIsDisconnecting(false),
+      onMutate: () => setIsDisconnecting(true),
+      onSettled: () => setIsDisconnecting(false),
     },
   });
 
@@ -126,7 +126,6 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
                 <MenuButton
                   onClick={() => {
                     onClose();
-                    setIsDisconnecting(true);
                     disconnect();
                   }}
                   testId="chain-option-disconnect"

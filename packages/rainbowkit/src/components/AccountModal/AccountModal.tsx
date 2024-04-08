@@ -20,8 +20,8 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
 
   const { disconnect } = useDisconnect({
     mutation: {
-      onSuccess: () => setIsDisconnecting(false),
-      onError: () => setIsDisconnecting(false),
+      onMutate: () => setIsDisconnecting(true),
+      onSettled: () => setIsDisconnecting(false),
     },
   });
 
@@ -43,7 +43,6 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
               onClose={onClose}
               onDisconnect={() => {
                 onClose();
-                setIsDisconnecting(true);
                 disconnect();
               }}
             />
