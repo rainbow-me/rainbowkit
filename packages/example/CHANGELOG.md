@@ -1,5 +1,53 @@
 # example
 
+## 0.0.95
+
+### Patch Changes
+
+- 81ba812: Added support for `zetachain` and `zetachainAthensTestnet` testnet chain
+- b11118f: Added Kaikas Wallet support with `kaikasWallet` wallet connector and added `klaytn` chain with `klaytnBaobab` testnet support.
+- Updated dependencies [81ba812]
+- Updated dependencies [fc4d7e1]
+- Updated dependencies [1a0f209]
+- Updated dependencies [b11118f]
+- Updated dependencies [4dd1e45]
+- Updated dependencies [ec41346]
+  - @rainbow-me/rainbowkit@2.0.5
+  - @rainbow-me/rainbow-button@0.2.5
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
+## 0.0.94
+
+### Patch Changes
+
+- 77dcec3: Added Bybit Wallet support with `bybitWallet` wallet connector
+- 6c240ba: Added Gate Wallet support with `gateWallet` wallet connector
+- 34419b5: Added Bitverse Wallet support with `bitverseWallet` wallet connector
+- 5c60239: Added 1inch Wallet support with `oneInchWallet` wallet connector
+- Updated dependencies [77dcec3]
+- Updated dependencies [6c240ba]
+- Updated dependencies [34419b5]
+- Updated dependencies [5c60239]
+  - @rainbow-me/rainbowkit@2.0.4
+  - @rainbow-me/rainbow-button@0.2.4
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
+## 0.0.93
+
+### Patch Changes
+
+- c837995: Updated the following packages:
+  - wagmi to `^2.5.11`
+  - viem to `^2.8.12`
+  - @tanstack/react-query to `^5.28.4`
+  - typescript to `5.4.2`
+- Updated dependencies [b80e8fa]
+- Updated dependencies [985b80b]
+- Updated dependencies [b25db9a]
+  - @rainbow-me/rainbowkit@2.0.3
+  - @rainbow-me/rainbow-button@0.2.3
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
 ## 0.0.92
 
 ### Patch Changes
