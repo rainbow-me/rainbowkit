@@ -4,4 +4,4 @@
 "site": patch
 ---
 
-Added `useRefetchBalance` hook for real-time balance updates with `TransactionStoreContext` and added `useProfile` hook for easier access to ens name, ens avatar and real-time balance.
+Added real-time balance feature with `TransactionStoreContext` and added `useProfile` hook for easier access to ens name, ens avatar and balance.
