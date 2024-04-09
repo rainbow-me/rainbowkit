@@ -8,6 +8,8 @@
 
 You just need to set `chainModalOnConnect` prop to `true` in `<RainbowKitProvider>` if you'd like to use the chain modal without having your wallet connected.
 
+With this update, the `<ConnectButton />` will display the chains even when only one chain is configured. You can disable this behaviour by setting `chainStatus` to `none`.
+
 **Example usage**
 
 ```ts
