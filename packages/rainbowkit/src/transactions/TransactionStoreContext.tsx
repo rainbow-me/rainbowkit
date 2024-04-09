@@ -6,8 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { PublicClient, TransactionReceipt } from 'viem';
-import { useAccount, usePublicClient } from 'wagmi';
-import { useRealtimeBalanceStatus } from '../components/RainbowKitProvider/RealtimeBalanceStatusContext';
+import { useAccount, useBalance, usePublicClient } from 'wagmi';
 import { useChainId } from '../hooks/useChainId';
 import { TransactionStore, createTransactionStore } from './transactionStore';
 
@@ -27,7 +26,12 @@ export function TransactionStoreProvider({
   const provider = usePublicClient() as PublicClient;
   const { address } = useAccount();
   const chainId = useChainId();
-  const { setStatus } = useRealtimeBalanceStatus();
+  const { refetch } = useBalance({
+    address,
+    query: {
+      enabled: false,
+    },
+  });
 
   // Use existing store if it exists, or lazily create one
   const [store] = useState(
@@ -37,11 +41,9 @@ export function TransactionStoreProvider({
 
   const onTransactionStatus = useCallback(
     (txStatus: TransactionReceipt['status']) => {
-      if (txStatus === 'success') {
-        setStatus('refetch');
-      }
+      if (txStatus === 'success') refetch();
     },
-    [setStatus],
+    [refetch],
   );
 
   // Keep store provider up to date with any wagmi changes

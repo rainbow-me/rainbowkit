@@ -1,7 +1,7 @@
 import { Address } from 'viem';
+import { useBalance } from 'wagmi';
 import { useMainnetEnsAvatar } from './useMainnetEnsAvatar';
 import { useMainnetEnsName } from './useMainnetEnsName';
-import { useRealtimeBalance } from './useRealtimeBalance';
 
 interface UseProfileParameters {
   address?: Address;
@@ -11,7 +11,9 @@ interface UseProfileParameters {
 export function useProfile({ address, showBalance }: UseProfileParameters) {
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
-  const balance = useRealtimeBalance({ address, showBalance });
+  const { data: balance } = useBalance({
+    address: showBalance ? address : undefined,
+  });
 
   return { ensName, ensAvatar, balance };
 }

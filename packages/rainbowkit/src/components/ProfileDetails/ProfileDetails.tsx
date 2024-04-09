@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { GetEnsNameReturnType } from 'viem';
 import { GetEnsAvatarReturnType } from 'viem/actions';
 import { useAccount } from 'wagmi';
-import { useRealtimeBalance } from '../../hooks/useRealtimeBalance';
+import { useProfile } from '../../hooks/useProfile';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -23,7 +23,7 @@ interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
   ensAvatar: GetEnsAvatarReturnType | undefined;
   ensName: GetEnsNameReturnType | undefined;
-  balanceData: ReturnType<typeof useRealtimeBalance>;
+  balanceData: ReturnType<typeof useProfile>['balance'];
   onClose: () => void;
   onDisconnect: () => void;
 }
