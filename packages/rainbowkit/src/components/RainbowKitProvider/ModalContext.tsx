@@ -111,7 +111,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
     if (isUnauthenticated) closeModals();
   }, [isUnauthenticated]);
 
-  const shouldHideChainModal =
+  const isChainSwitchingDisabled =
     ((initialChainId || !chainModalOnConnect) &&
       connectionStatus !== 'connected') ||
     connectionStatus === 'unauthenticated' ||
@@ -129,7 +129,9 @@ export function ModalProvider({ children }: ModalProviderProps) {
             isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
-          openChainModal: !shouldHideChainModal ? openChainModal : undefined,
+          openChainModal: !isChainSwitchingDisabled
+            ? openChainModal
+            : undefined,
           openConnectModal:
             connectionStatus === 'disconnected' ||
             connectionStatus === 'unauthenticated'
@@ -138,7 +140,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
           setIsWalletConnectModalOpen,
         }),
         [
-          shouldHideChainModal,
+          isChainSwitchingDisabled,
           connectionStatus,
           accountModalOpen,
           chainModalOpen,

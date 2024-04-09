@@ -57,6 +57,22 @@ export function ConnectButton({
     if (!ready) setReady(true);
   }, [showBalance, setShowBalance]);
 
+  const computeResponsiveChainStatus = () => {
+    if (typeof chainStatus === 'string') {
+      return chainStatus;
+    }
+
+    if (chainStatus) {
+      return normalizeResponsiveValue(chainStatus)[
+        isMobile() ? 'smallScreen' : 'largeScreen'
+      ];
+    }
+  };
+
+  const responsiveChainStatus = computeResponsiveChainStatus();
+
+  const isChainStatusHidden = responsiveChainStatus === 'none';
+
   return ready ? (
     <ConnectButtonRenderer>
       {({
@@ -67,16 +83,17 @@ export function ConnectButton({
         openChainModal,
         openConnectModal,
       }) => {
-        // Hide the chain button if the user has specified a custom "initialChainId".
-        // This prevents users from switching to a different chain when they have a desired
-        // chain that they want to switch to. We also hide the chain button if user is using
-        // our authentication provider and is not yet signed in.
-        const shouldHideChainButton =
+        const isChainSwitchingDisabled =
           ((initialChainId || !chainModalOnConnect) &&
             connectionStatus !== 'connected') ||
           connectionStatus === 'unauthenticated';
+
         const ready = mounted && connectionStatus !== 'loading';
         const unsupportedChain = chain?.unsupported ?? false;
+
+        const hasMultipleChains = chains.length > 1;
+        const canShowCurrentChain =
+          chain && (!isChainStatusHidden || hasMultipleChains);
 
         return (
           <Box
@@ -91,7 +108,7 @@ export function ConnectButton({
               },
             })}
           >
-            {ready && !shouldHideChainButton && chain && chains.length > 1 && (
+            {ready && !isChainSwitchingDisabled && canShowCurrentChain && (
               <Box
                 alignItems="center"
                 aria-label="Chain Selector"
