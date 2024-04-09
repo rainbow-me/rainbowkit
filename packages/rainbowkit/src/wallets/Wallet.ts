@@ -1,5 +1,8 @@
 import { Connector, CreateConnectorFn } from 'wagmi';
-import { WalletConnectParameters } from 'wagmi/connectors';
+import {
+  CoinbaseWalletParameters,
+  WalletConnectParameters,
+} from 'wagmi/connectors';
 import { CoinbaseWalletOptions } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { WalletConnectWalletOptions } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
@@ -101,6 +104,13 @@ export type WalletList = {
 export type RainbowKitWalletConnectParameters = Omit<
   WalletConnectParameters,
   'showQrModal' | 'projectId'
+>;
+
+// `appName`, `appLogoUrl`, `headlessMode`, and `darkMode` are already
+// provided on our end. Rest of parameters can be included as needed
+export type RainbowKitCoinbaseWalletParameters = Omit<
+  CoinbaseWalletParameters,
+  'appName' | 'appLogoUrl' | 'headlessMode' | 'darkMode'
 >;
 
 export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {

@@ -3,6 +3,7 @@ import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
 import type {
+  RainbowKitCoinbaseWalletParameters,
   RainbowKitWalletConnectParameters,
   Wallet,
   WalletDetailsParams,
@@ -23,6 +24,7 @@ export interface ConnectorsForWalletsParameters {
   appUrl?: string;
   appIcon?: string;
   walletConnectParameters?: RainbowKitWalletConnectParameters;
+  coinbaseWalletParameters?: RainbowKitCoinbaseWalletParameters;
 }
 
 export const connectorsForWallets = (
@@ -30,6 +32,7 @@ export const connectorsForWallets = (
   {
     projectId,
     walletConnectParameters,
+    coinbaseWalletParameters,
     appName,
     appDescription,
     appUrl,
@@ -72,13 +75,15 @@ export const connectorsForWallets = (
         // `option` is being used only for `walletConnectWallet` wallet
         options: {
           metadata: walletConnectMetaData,
-          ...walletConnectParameters,
+          ...(walletConnectParameters ?? {}),
         },
+        // `walletOptions` is being used only for `coinbaseWallet` wallet
+        walletOptions: coinbaseWalletParameters,
         // Every other wallet that supports walletConnect flow and is not
         // `walletConnectWallet` wallet will have `walletConnectParameters` property
         walletConnectParameters: {
           metadata: walletConnectMetaData,
-          ...walletConnectParameters,
+          ...(walletConnectParameters ?? {}),
         },
       });
 

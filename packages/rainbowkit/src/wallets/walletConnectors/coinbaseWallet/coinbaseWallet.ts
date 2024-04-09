@@ -1,17 +1,23 @@
 import { createConnector } from 'wagmi';
 import { coinbaseWallet as coinbaseWagmiWallet } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletDetailsParams } from '../../Wallet';
+import {
+  RainbowKitCoinbaseWalletParameters,
+  Wallet,
+  WalletDetailsParams,
+} from '../../Wallet';
 import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface CoinbaseWalletOptions {
   appName: string;
   appIcon?: string;
+  walletOptions?: RainbowKitCoinbaseWalletParameters;
 }
 
 export const coinbaseWallet = ({
   appName,
   appIcon,
+  walletOptions,
 }: CoinbaseWalletOptions): Wallet => {
   const isCoinbaseWalletInjected = hasInjectedProvider({
     flag: 'isCoinbaseWallet',
@@ -101,8 +107,10 @@ export const coinbaseWallet = ({
     createConnector: (walletDetails: WalletDetailsParams) =>
       createConnector((config) => ({
         ...coinbaseWagmiWallet({
+          ...(walletOptions ?? {}),
           appName,
           appLogoUrl: appIcon,
+          darkMode: false,
           headlessMode: true,
         })(config),
         ...walletDetails,
