@@ -9,7 +9,7 @@ export const compassWallet = (): Wallet => ({
   iconBackground: '#fff',
   downloadUrls: {
     chrome:
-      'https://chromewebstore.google.com/detail/compass-canary-build/lifffofignanainchjlljapjekjjlaeb?hl=en-GB&authuser=0',
+      'https://chromewebstore.google.com/detail/compass-wallet-for-sei/anokgmphncpekkhclmingpimjmcooifb',
   },
   createConnector: getInjectedConnector({ target: window.compassEvm }),
 });
