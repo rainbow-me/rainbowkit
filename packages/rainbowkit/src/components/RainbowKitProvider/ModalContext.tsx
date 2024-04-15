@@ -116,8 +116,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
             isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
               : undefined,
-          openChainModal:
-            connectionStatus === 'connected' ? openChainModal : undefined,
+          openChainModal,
           openConnectModal:
             connectionStatus === 'disconnected' ||
             connectionStatus === 'unauthenticated'
