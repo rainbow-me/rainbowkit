@@ -25,6 +25,7 @@ import {
   bloomWallet,
   clvWallet,
   coin98Wallet,
+  compassWallet,
   coreWallet,
   dawnWallet,
   desigWallet,
@@ -115,6 +116,22 @@ const avalanche = {
   },
 } as const satisfies Chain;
 
+const sei = {
+  id: 713715,
+  name: 'Sei',
+  iconUrl:
+    'https://s3.coinmarketcap.com/static-gravity/image/992744cfbd5e40f5920018ee7a830b98.png',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Sei', symbol: 'SEI', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://evm-rpc.arctic-1.seinetwork.io'] },
+  },
+  blockExplorers: {
+    default: { name: 'Sei Explorer', url: 'https://www.seiscan.app' },
+  },
+  contracts: {},
+} as const satisfies Chain;
+
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -129,6 +146,7 @@ const config = getDefaultConfig({
     zkSync,
     avalanche,
     ronin,
+    sei,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           goerli,
@@ -153,6 +171,7 @@ const config = getDefaultConfig({
         bitskiWallet,
         bloomWallet,
         clvWallet,
+        compassWallet,
         coin98Wallet,
         coreWallet,
         dawnWallet,
