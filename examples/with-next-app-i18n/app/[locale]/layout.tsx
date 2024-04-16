@@ -1,21 +1,34 @@
-import { NextIntlClientProvider } from 'next-intl';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@rainbow-me/rainbowkit';
 import { Providers } from './providers';
- 
+
 export function generateStaticParams() {
   return [{ locale: 'en-US' }, { locale: 'zh-CN' }];
 }
 
-export default async function LocaleLayout(
-  { children, params: { locale }}: 
-  { children: React.ReactNode, params: { locale: Locale} }
+// Dynamic metadata with locale
+export async function generateMetadata(
+  { params: { locale } }: { params: { locale: Locale } }
 ) {
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+  return {
+    title: t('title')
+  };
+}
+
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
+  unstable_setRequestLocale(locale);
+
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider locale={locale}>
-          <Providers locale={locale}>{children}</Providers>
-        </NextIntlClientProvider>
+        <Providers locale={locale}>{children}</Providers>
       </body>
     </html>
   );

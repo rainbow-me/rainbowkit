@@ -1,5 +1,65 @@
 # site
 
+## 0.0.95
+
+### Patch Changes
+
+- 3ab4bfd: Added "Preparing to deploy" section in "Installation" page and explaining why it's important to use transports when deploying your dApp. Additionally also added a quick example with `http` and `getDefaultConfig`.
+- b11118f: Added Kaikas Wallet support with `kaikasWallet` wallet connector and added `klaytn` chain with `klaytnBaobab` testnet support.
+- Updated dependencies [81ba812]
+- Updated dependencies [fc4d7e1]
+- Updated dependencies [1a0f209]
+- Updated dependencies [b11118f]
+- Updated dependencies [4dd1e45]
+- Updated dependencies [ec41346]
+  - @rainbow-me/rainbowkit@2.0.5
+
+## 0.0.94
+
+### Patch Changes
+
+- 77dcec3: Added Bybit Wallet support with `bybitWallet` wallet connector
+- 6c240ba: Added Gate Wallet support with `gateWallet` wallet connector
+- 34419b5: Added Bitverse Wallet support with `bitverseWallet` wallet connector
+- 5c60239: Added 1inch Wallet support with `oneInchWallet` wallet connector
+- Updated dependencies [77dcec3]
+- Updated dependencies [6c240ba]
+- Updated dependencies [34419b5]
+- Updated dependencies [5c60239]
+  - @rainbow-me/rainbowkit@2.0.4
+
+## 0.0.93
+
+### Patch Changes
+
+- c837995: Updated the following packages:
+  - wagmi to `^2.5.11`
+  - viem to `^2.8.12`
+  - @tanstack/react-query to `^5.28.4`
+  - typescript to `5.4.2`
+- Updated dependencies [b80e8fa]
+- Updated dependencies [985b80b]
+- Updated dependencies [b25db9a]
+  - @rainbow-me/rainbowkit@2.0.3
+
+## 0.0.92
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+
+- c021746: Resolved an issue where the Connect Modal wallet list would appear empty for EIP-6963 connectors when using the `WalletButton` component
+- Updated dependencies [524d7a0]
+- Updated dependencies [2f637e4]
+- Updated dependencies [c021746]
+- Updated dependencies [df572f1]
+  - @rainbow-me/rainbowkit@2.0.2
+
 ## 0.0.91
 
 ### Patch Changes

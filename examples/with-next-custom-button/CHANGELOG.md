@@ -1,5 +1,58 @@
 # with-next-custom-button
 
+## 0.0.85
+
+### Patch Changes
+
+- Updated dependencies [81ba812]
+- Updated dependencies [fc4d7e1]
+- Updated dependencies [1a0f209]
+- Updated dependencies [b11118f]
+- Updated dependencies [4dd1e45]
+- Updated dependencies [ec41346]
+  - @rainbow-me/rainbowkit@2.0.5
+
+## 0.0.84
+
+### Patch Changes
+
+- Updated dependencies [77dcec3]
+- Updated dependencies [6c240ba]
+- Updated dependencies [34419b5]
+- Updated dependencies [5c60239]
+  - @rainbow-me/rainbowkit@2.0.4
+
+## 0.0.83
+
+### Patch Changes
+
+- c837995: Updated the following packages:
+  - wagmi to `^2.5.11`
+  - viem to `^2.8.12`
+  - @tanstack/react-query to `^5.28.4`
+  - typescript to `5.4.2`
+- Updated dependencies [b80e8fa]
+- Updated dependencies [985b80b]
+- Updated dependencies [b25db9a]
+  - @rainbow-me/rainbowkit@2.0.3
+
+## 0.0.82
+
+### Patch Changes
+
+- 6982833: Updated the following packages:
+
+  - `next` to `^14.1.3`
+  - `eslint-config-next` to `^14.1.3`
+  - `@types/react` to `^18.2.64`
+  - `@types/react` to `^18.2.64`
+
+- Updated dependencies [524d7a0]
+- Updated dependencies [2f637e4]
+- Updated dependencies [c021746]
+- Updated dependencies [df572f1]
+  - @rainbow-me/rainbowkit@2.0.2
+
 ## 0.0.81
 
 ### Patch Changes

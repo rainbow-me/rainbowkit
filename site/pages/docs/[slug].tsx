@@ -22,6 +22,7 @@ export default function DocPage({ doc, sectionName }: DocPageProps) {
         <p data-algolia-lvl0 style={{ display: 'none' }}>
           {sectionName}
         </p>
+        {/* @ts-ignore */}
         <Component components={components} />
       </Box>
     </>
@@ -36,10 +37,13 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getStaticProps({
+  params,
+  locale,
+}: { params: any; locale: any }) {
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
-  );
+  )!;
   const sectionName = docsRoutes.reduce((acc, curr) => {
     for (const page of curr.pages) {
       if (page.slug === params.slug) {

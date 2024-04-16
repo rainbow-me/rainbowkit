@@ -474,6 +474,22 @@
         }
       }
     },
+    "kaikas": {
+      "extension": {
+        "step1": {
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Kaikas Wallet을 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Kaikas Wallet 확장 프로그램을 설치하세요"
+        },
+        "step2": {
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 비밀 문구는 절대로 누구와도 공유하지 마세요.",
+          "title": "지갑 만들기 또는 가져오기"
+        },
+        "step3": {
+          "description": "지갑을 설정한 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저 새로고침"
+        }
+      }
+    },
     "kresus": {
       "qr_code": {
         "step1": {

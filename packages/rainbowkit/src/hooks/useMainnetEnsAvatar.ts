@@ -6,9 +6,17 @@ import { useIsMainnetConfigured } from './useIsMainnetConfigured';
 export function useMainnetEnsAvatar(name: GetEnsNameReturnType | undefined) {
   const mainnetConfigured = useIsMainnetConfigured();
 
+  const safeNormalize = (ensName: string) => {
+    try {
+      return normalize(ensName);
+    } catch {
+      /* ignore */
+    }
+  };
+
   const { data: ensAvatar } = useEnsAvatar({
     chainId: mainnet.id,
-    name: name ? normalize(name) : undefined,
+    name: name ? safeNormalize(name) : undefined,
     query: {
       enabled: mainnetConfigured,
     },

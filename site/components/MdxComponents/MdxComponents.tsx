@@ -17,9 +17,9 @@ import React, { useState } from 'react';
 import { Announcement } from '../Announcement/Announcement';
 
 export const components = {
-  a: (props) => <Link {...props} />,
+  a: (props: React.ComponentProps<typeof Link>) => <Link {...props} />,
   Announcement,
-  blockquote: (props) => (
+  blockquote: (props: React.ComponentProps<typeof Box>) => (
     <Box
       as="blockquote"
       borderColor="fillElevated"
@@ -35,7 +35,7 @@ export const components = {
       }}
     />
   ),
-  code: ({ children, ...props }) => {
+  code: ({ children, ...props }: { children: React.ReactNode }) => {
     const isInline = typeof children === 'string';
     return isInline ? (
       <Code {...props}>{children}</Code>
@@ -44,7 +44,7 @@ export const components = {
     );
   },
   CoolMode,
-  h1: (props) => (
+  h1: (props: React.ComponentProps<typeof Text>) => (
     <Text
       as="h1"
       marginBottom="1"
@@ -53,7 +53,7 @@ export const components = {
       {...props}
     />
   ),
-  h2: (props) => (
+  h2: (props: React.ComponentProps<typeof Text>) => (
     <Text
       as="h2"
       color="labelSecondary"
@@ -64,7 +64,7 @@ export const components = {
       {...props}
     />
   ),
-  h3: ({ id, ...props }) => {
+  h3: ({ id, ...props }: { id: string }) => {
     return (
       <Box id={id} marginBottom="2" marginTop="11" scrollMarginTop="12">
         <Link href={`#${id}`}>
@@ -79,7 +79,7 @@ export const components = {
       </Box>
     );
   },
-  h4: ({ id, ...props }) => (
+  h4: ({ id, ...props }: { id: string }) => (
     <Box id={id} marginBottom="2" marginTop="10" scrollMarginTop="12">
       <Link href={`#${id}`}>
         <Text
@@ -92,7 +92,7 @@ export const components = {
       </Link>
     </Box>
   ),
-  h5: ({ id, ...props }) => (
+  h5: ({ id, ...props }: { id: string }) => (
     <Box id={id} marginBottom="2" scrollMarginTop="2">
       <Link href={`#${id}`}>
         <Text
@@ -105,12 +105,12 @@ export const components = {
       </Link>
     </Box>
   ),
-  Img: ({ id, src, ...props }) => (
+  Img: ({ id, src, ...props }: { id: string; src: string }) => (
     <Box id={id} marginBottom="8">
       <NextImage layout="responsive" loading="lazy" src={src} {...props} />
     </Box>
   ),
-  li: ({ children, ...props }) => (
+  li: ({ children, ...props }: { children: React.ReactNode }) => (
     <Box alignItems="center" as="li" display="flex" {...props}>
       <Box
         as="span"
@@ -130,7 +130,7 @@ export const components = {
       </Text>
     </Box>
   ),
-  p: (props) => (
+  p: (props: React.ComponentProps<typeof Text>) => (
     <Text
       as="p"
       color="labelSecondary"
@@ -139,21 +139,21 @@ export const components = {
       {...props}
     />
   ),
-  pre: ({ children, ...props }) => {
+  pre: ({ children, ...props }: { children: React.ReactNode }) => {
     const [requestCopy, setRequestCopy] = useState(false);
-    const [code, setCode] = React.useState(undefined);
-    const preRef = React.useRef(null);
+    const [code, setCode] = React.useState<string | undefined>(undefined);
+    const preRef = React.useRef<HTMLElement | null>(null);
 
     React.useEffect(() => {
       if (preRef.current) {
         const codeElement = preRef.current.querySelector('code');
-        const code = codeElement.innerText.replace(/\n{2,}/g, '\n');
+        const code = codeElement!.innerText.replace(/\n{2,}/g, '\n');
         setCode(code);
       }
     }, [preRef, setCode]);
 
     React.useEffect(() => {
-      if (requestCopy) copy(code);
+      if (requestCopy) copy(code!);
       setTimeout(() => setRequestCopy(false), 1500);
     }, [requestCopy, code]);
 
@@ -187,11 +187,17 @@ export const components = {
       </Box>
     );
   },
-  PropsTable: (props) => <PropsTable aria-label="Component Props" {...props} />,
-  Table: (props) => <Table aria-label="Props Table" {...props} />,
-  ul: (props) => <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />,
+  PropsTable: (props: React.ComponentProps<typeof PropsTable>) => (
+    <PropsTable aria-label="Component Props" {...props} />
+  ),
+  Table: (props: React.ComponentProps<typeof Table>) => (
+    <Table aria-label="Props Table" {...props} />
+  ),
+  ul: (props: React.ComponentProps<typeof Box>) => (
+    <Box as="ul" marginBottom="5" paddingLeft="3" {...props} />
+  ),
   WalletButtonDemo,
-  Video: (props) => (
+  Video: (props: React.ComponentProps<typeof Box>) => (
     <Box
       as="video"
       autoPlay

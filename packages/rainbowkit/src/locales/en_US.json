@@ -309,6 +309,23 @@
       }
     },
 
+    "bitverse": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Bitverse Wallet app",
+          "description": "Add Bitverse Wallet to your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap the QR icon and scan",
+          "description": "Tap the QR icon on your homescreen, scan the code and confirm the prompt to connect."
+        }
+      }
+    },
+
     "bloom": {
       "desktop": {
         "step1": {
@@ -336,6 +353,38 @@
         "step3": {
           "description": "After you have a wallet, click on Connect to connect via Bloom. A connection prompt in the app will appear for you to confirm the connection.",
           "title": "Click on Connect"
+        }
+      }
+    },
+
+    "bybit": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting Bybit on your home screen for faster access to your wallet.",
+          "title": "Open the Bybit app"
+        },
+        "step2": {
+          "description": "You can easily backup your wallet using our backup feature on your phone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the scan button"
+        }
+      },
+
+      "extension": {
+        "step1": {
+          "description": "Click at the top right of your browser and pin Bybit Wallet for easy access.",
+          "title": "Install the Bybit Wallet extension"
+        },
+        "step2": {
+          "description": "Create a new wallet or import an existing one.",
+          "title": "Create or Import a wallet"
+        },
+        "step3": {
+          "description": "Once you set up Bybit Wallet, click below to refresh the browser and load up the extension.",
+          "title": "Refresh your browser"
         }
       }
     },
@@ -519,6 +568,37 @@
       }
     },
 
+    "kaikas": {
+      "extension": {
+        "step1": {
+          "description": "We recommend pinning Kaikas to your taskbar for quicker access to your wallet.",
+          "title": "Install the Kaikas extension"
+        },
+        "step2": {
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension.",
+          "title": "Refresh your browser"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the Kaikas app",
+          "description": "Put Kaikas app on your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap Scanner Icon in top right corner",
+          "description": "Choose New Connection, then scan the QR code and confirm the prompt to connect."
+        }
+      }
+    },
+
     "kresus": {
       "qr_code": {
         "step1": {
@@ -613,6 +693,23 @@
         "step3": {
           "title": "Tap the QR icon and scan",
           "description": "Tap the QR icon on your home screen, scan the code and confirm the prompt to connect."
+        }
+      }
+    },
+
+    "1inch": {
+      "qr_code": {
+        "step1": {
+          "description": "Put 1inch Wallet on your home screen for faster access to your wallet.",
+          "title": "Open the 1inch Wallet app"
+        },
+        "step2": {
+          "description": "Create a wallet and username, or import an existing wallet.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the Scan QR button"
         }
       }
     },

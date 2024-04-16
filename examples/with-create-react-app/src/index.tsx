@@ -13,7 +13,6 @@ import {
   optimism,
   polygon,
   sepolia,
-  zora,
 } from 'wagmi/chains';
 
 import App from './App';
@@ -28,7 +27,6 @@ const config = getDefaultConfig({
     optimism,
     arbitrum,
     base,
-    zora,
     ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
 });
