@@ -33,12 +33,20 @@ const baseBuildConfig = (onEnd) => {
       '.json': 'text',
     },
     plugins: [
-      replace({
-        include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
-        values: {
-          __buildVersion: process.env.npm_package_version,
+      replace(
+        {
+          include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
+          values: {
+            __buildVersion: process.env.npm_package_version,
+          },
         },
-      }),
+        {
+          include: /src\/core\/network\/enhancedProvider.ts$/,
+          values: {
+            __rainbowProviderApiKey: process.env.RAINBOW_PROVIDER_API_KEY,
+          },
+        },
+      ),
       vanillaExtractPlugin({
         identifiers: isCssMinified ? 'short' : 'debug',
         processCss: async (css) => {

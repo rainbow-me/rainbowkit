@@ -45,7 +45,8 @@
     "react": ">=18",
     "react-dom": ">=18",
     "viem": "2.x",
-    "wagmi": "2.x"
+    "wagmi": "2.x",
+    "@tanstack/react-query": "5.x"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.2.0",

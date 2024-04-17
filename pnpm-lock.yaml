@@ -429,6 +429,9 @@ importers:
       '@coinbase/wallet-sdk':
         specifier: 3.9.3
         version: 3.9.3
+      '@tanstack/react-query':
+        specifier: 5.x
+        version: 5.32.1(react@18.3.1)
       '@vanilla-extract/css':
         specifier: 1.14.0
         version: 1.14.0
