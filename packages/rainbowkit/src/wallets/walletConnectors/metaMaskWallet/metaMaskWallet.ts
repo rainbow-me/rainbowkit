@@ -122,11 +122,8 @@ export const metaMaskWallet = ({
             chains,
             options: {
               getProvider: () =>
-                providers
-                  ? providers.find(isMetaMask)
-                  : typeof window !== 'undefined'
-                    ? window.ethereum
-                    : undefined,
+                providers?.find(isMetaMask) ||
+                (typeof window !== 'undefined' ? window.ethereum : undefined),
               ...options,
             },
           });
