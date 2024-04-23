@@ -41,6 +41,7 @@ function isMetaMask(ethereum?: (typeof window)['ethereum']): boolean {
   if (ethereum.isPhantom) return false;
   if (ethereum.isPortal) return false;
   if (ethereum.isRabby) return false;
+  if (ethereum.isRainbow) return false;
   if (ethereum.isStatus) return false;
   if (ethereum.isTalisman) return false;
   if (ethereum.isTally) return false;
@@ -64,6 +65,8 @@ export const metaMaskWallet = ({
   // in window.providers scenarios with multiple wallets injected.
   const isMetaMaskInjected = hasInjectedProvider({ flag: 'isMetaMask' });
   const shouldUseWalletConnect = !isMetaMaskInjected;
+
+  const providers = typeof window !== 'undefined' && window.ethereum?.providers;
 
   const getUri = (uri: string) => {
     return isAndroid()
@@ -158,9 +161,8 @@ export const metaMaskWallet = ({
         })
       : getInjectedConnector({
           target:
-            typeof window !== 'undefined'
-              ? window.ethereum?.providers?.find(isMetaMask) ?? window.ethereum
-              : undefined,
+            (Array.isArray(providers) && providers.find(isMetaMask)) ||
+            (typeof window !== 'undefined' ? window.ethereum : undefined),
         }),
   };
 };
