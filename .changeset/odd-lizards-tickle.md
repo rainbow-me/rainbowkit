@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Updated `metaMaskWallet` to allow connection to Rainbow Wallet when MetaMask overrides through `window.ethereum.providers`.
+Resolved an issue where the MetaMask button would not fallback to an available wallet provider if MetaMask was not active. Now you can continue to use the MetaMask button to interact with all wallets, or directly with MetaMask when it is active.
