@@ -1,5 +1,12 @@
 # with-next-app
 
+## 0.0.28
+
+### Patch Changes
+
+- Updated dependencies [7a24ced]
+  - @rainbow-me/rainbowkit@1.3.7
+
 ## 0.0.27
 
 ### Patch Changes
