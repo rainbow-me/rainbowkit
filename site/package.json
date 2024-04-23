@@ -40,8 +40,8 @@
     "@tanstack/react-query": "^5.28.4"
   },
   "devDependencies": {
-    "contentlayer": "0.2.9",
-    "next-contentlayer": "0.2.9",
+    "contentlayer": "0.3.4",
+    "next-contentlayer": "0.3.4",
     "next-sitemap": "^4.2.3"
   },
   "scripts": {
