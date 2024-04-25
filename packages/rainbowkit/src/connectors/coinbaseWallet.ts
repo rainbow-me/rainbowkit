@@ -131,14 +131,23 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
       const chainId = await provider.request<number>({ method: 'eth_chainId' });
       return Number(chainId);
     },
+
     async getProvider() {
       if (!walletProvider) {
-        const { CoinbaseWalletSDK } = await import('@coinbase/wallet-sdk');
+        const { default: CoinbaseWalletSDK } = await import(
+          '@coinbase/wallet-sdk'
+        );
+        let SDK: typeof CoinbaseWalletSDK;
+        if (
+          typeof CoinbaseWalletSDK !== 'function' &&
+          typeof (CoinbaseWalletSDK as { default: typeof CoinbaseWalletSDK })
+            .default === 'function'
+        ) {
+          SDK = (CoinbaseWalletSDK as { default: typeof CoinbaseWalletSDK })
+            .default;
+        } else SDK = CoinbaseWalletSDK as unknown as typeof CoinbaseWalletSDK;
 
-        const sdk = new CoinbaseWalletSDK({
-          reloadOnDisconnect,
-          ...parameters,
-        });
+        const sdk = new SDK({ reloadOnDisconnect, ...parameters });
 
         // Force types to retrieve private `walletExtension` method from the Coinbase Wallet SDK.
         const walletExtensionChainId = (
