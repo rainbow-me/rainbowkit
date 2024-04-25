@@ -428,7 +428,7 @@ importers:
   packages/rainbowkit:
     dependencies:
       '@coinbase/wallet-sdk':
-        specifier: ^3.9.1
+        specifier: 3.9.1
         version: 3.9.1
       '@vanilla-extract/css':
         specifier: 1.14.0

@@ -149,7 +149,7 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
 
         const sdk = new SDK({
           reloadOnDisconnect,
-          headlessMode: false,
+          headlessMode: true,
           ...parameters,
         });
 
