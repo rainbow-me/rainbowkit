@@ -18,7 +18,7 @@ export type CoinbaseWalletParameters = Evaluate<
   Mutable<
     Omit<
       ConstructorParameters<typeof CoinbaseWalletSDK>[0],
-      'reloadOnDisconnect' // remove property since TSDoc says default is `true`
+      'reloadOnDisconnect' | 'headlessMode'
     >
   > & {
     /**
@@ -147,7 +147,11 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
             .default;
         } else SDK = CoinbaseWalletSDK as unknown as typeof CoinbaseWalletSDK;
 
-        const sdk = new SDK({ reloadOnDisconnect, ...parameters });
+        const sdk = new SDK({
+          reloadOnDisconnect,
+          headlessMode: false,
+          ...parameters,
+        });
 
         // Force types to retrieve private `walletExtension` method from the Coinbase Wallet SDK.
         const walletExtensionChainId = (
