@@ -21,7 +21,7 @@ export type CoinbaseWalletParameters = Evaluate<
   Mutable<
     Omit<
       ConstructorParameters<typeof CoinbaseWalletSDK>[0],
-      'reloadOnDisconnect' | 'headlessMode'
+      'reloadOnDisconnect' // remove property since TSDoc says default is `true`
     >
   > & {
     /**
@@ -49,6 +49,7 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
   type Provider = CoinbaseWalletProvider;
   type Properties = {};
 
+  let sdk: CoinbaseWalletSDK | undefined;
   let walletProvider: Provider | undefined;
 
   let accountsChanged: Connector['onAccountsChanged'] | undefined;
@@ -147,13 +148,11 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
         ) {
           SDK = (CoinbaseWalletSDK as { default: typeof CoinbaseWalletSDK })
             .default;
-        } else SDK = CoinbaseWalletSDK as unknown as typeof CoinbaseWalletSDK;
+        } else {
+          SDK = CoinbaseWalletSDK as unknown as typeof CoinbaseWalletSDK;
+        }
 
-        const sdk = new SDK({
-          reloadOnDisconnect,
-          headlessMode: true,
-          ...parameters,
-        });
+        sdk = new SDK({ reloadOnDisconnect, ...parameters });
 
         // Force types to retrieve private `walletExtension` method from the Coinbase Wallet SDK.
         const walletExtensionChainId = (

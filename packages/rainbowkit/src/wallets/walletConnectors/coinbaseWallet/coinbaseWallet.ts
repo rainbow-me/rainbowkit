@@ -103,6 +103,7 @@ export const coinbaseWallet = ({
         ...coinbaseWagmiWallet({
           appName,
           appLogoUrl: appIcon,
+          headlessMode: true,
         })(config),
         ...walletDetails,
       })),
