@@ -13,6 +13,9 @@ import {
 import { ChainNotConfiguredError, Connector, createConnector } from 'wagmi';
 import { Evaluate, Mutable, Omit } from '../types/utils';
 
+// Borrowed from wagmi@2.5.22
+// https://github.com/wevm/wagmi/blob/72a25ee00a7b6b1b41c1a4825d08440a852f9057/packages/connectors/src/coinbaseWallet.ts#L20
+
 // TODO(@3): Set `enableMobileWalletLink` to `true`
 export type CoinbaseWalletParameters = Evaluate<
   Mutable<
@@ -131,7 +134,6 @@ export function coinbaseWallet(parameters: CoinbaseWalletParameters) {
       const chainId = await provider.request<number>({ method: 'eth_chainId' });
       return Number(chainId);
     },
-
     async getProvider() {
       if (!walletProvider) {
         const { default: CoinbaseWalletSDK } = await import(
