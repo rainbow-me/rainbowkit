@@ -33,7 +33,7 @@ export function AccountModal({ onClose, open }: AccountModalProps) {
               address={address}
               ensAvatar={ensAvatar}
               ensName={ensName}
-              balanceData={balance}
+              balance={balance}
               onClose={onClose}
               onDisconnect={disconnect}
             />

@@ -23,7 +23,7 @@ interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
   ensAvatar: GetEnsAvatarReturnType | undefined;
   ensName: GetEnsNameReturnType | undefined;
-  balanceData: ReturnType<typeof useProfile>['balance'];
+  balance: ReturnType<typeof useProfile>['balance'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -32,7 +32,7 @@ export function ProfileDetails({
   address,
   ensAvatar,
   ensName,
-  balanceData,
+  balance,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
@@ -60,7 +60,7 @@ export function ProfileDetails({
   }
 
   const accountName = ensName ? formatENS(ensName) : formatAddress(address);
-  const ethBalance = balanceData?.formatted;
+  const ethBalance = balance?.formatted;
   const displayBalance = ethBalance
     ? abbreviateETHBalance(parseFloat(ethBalance))
     : undefined;
@@ -116,7 +116,7 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              {!!balanceData && (
+              {!!balance && (
                 <Box textAlign="center">
                   <Text
                     as="h1"
@@ -125,7 +125,7 @@ export function ProfileDetails({
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {displayBalance} {balanceData.symbol}
+                    {displayBalance} {balance.symbol}
                   </Text>
                 </Box>
               )}
