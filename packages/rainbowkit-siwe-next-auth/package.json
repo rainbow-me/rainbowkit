@@ -31,7 +31,7 @@
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "2.0.x",
     "next-auth": ">=4.21.0 <5",
-    "react": ">=17",
+    "react": ">=18",
     "siwe": "^2.1.4"
   },
   "devDependencies": {
