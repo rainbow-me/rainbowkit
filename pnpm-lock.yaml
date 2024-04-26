@@ -428,8 +428,8 @@ importers:
   packages/rainbowkit:
     dependencies:
       '@coinbase/wallet-sdk':
-        specifier: 3.6.6
-        version: 3.6.6
+        specifier: 3.7.2
+        version: 3.7.2
       '@vanilla-extract/css':
         specifier: 1.14.0
         version: 1.14.0
@@ -3608,8 +3608,8 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@coinbase/wallet-sdk@3.6.6:
-    resolution: {integrity: sha512-vX+epj/Ttjo7XRwlr3TFUUfW5GTRMvORpERPwiu7z2jl3DSVL4rXLmHt5y6LDPlUVreas2gumdcFbu0fLRG9Jg==}
+  /@coinbase/wallet-sdk@3.7.2:
+    resolution: {integrity: sha512-lIGvXMsgpsQWci/XOMQIJ2nIZ8JUy/L+bvC0wkRaYarr0YylwpXrJ2gRM3hCXPS477pkyO7N/kSiAoRgEXUdJQ==}
     engines: {node: '>= 10.0.0'}
     dependencies:
       '@metamask/safe-event-emitter': 2.0.0
@@ -8209,7 +8209,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.4
       '@noble/curves': 1.4.0
-      '@noble/hashes': 1.3.3
+      '@noble/hashes': 1.4.0
       '@solana/buffer-layout': 4.0.1
       agentkeepalive: 4.5.0
       bigint-buffer: 1.1.5
