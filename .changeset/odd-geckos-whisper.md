@@ -2,5 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-- Discontinued use of `coinbaseWallet` in `wagmi` due to the introduction of v4.
-- Developed a custom `coinbaseWallet` connector using the latest `@coinbase/wallet-sdk` (version 3).
+Locked the dependencies for the `coinbaseWallet` wallet connector to Coinbase Wallet SDK v3 to temporarily mitigate breaking changes included an upcoming version of Wagmi.
