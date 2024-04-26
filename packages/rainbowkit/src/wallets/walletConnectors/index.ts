@@ -9,6 +9,7 @@ import { bybitWallet } from './bybitWallet/bybitWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
+import { compassWallet } from './compassWallet/compassWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { desigWallet } from './desigWallet/desigWallet';
@@ -61,6 +62,7 @@ export {
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
+  compassWallet,
   coreWallet,
   dawnWallet,
   desigWallet,
