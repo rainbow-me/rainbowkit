@@ -5,14 +5,14 @@ import { useMainnetEnsName } from './useMainnetEnsName';
 
 interface UseProfileParameters {
   address?: Address;
-  showBalance?: boolean;
+  includeBalance?: boolean;
 }
 
-export function useProfile({ address, showBalance }: UseProfileParameters) {
+export function useProfile({ address, includeBalance }: UseProfileParameters) {
   const ensName = useMainnetEnsName(address);
   const ensAvatar = useMainnetEnsAvatar(ensName);
   const { data: balance } = useBalance({
-    address: showBalance ? address : undefined,
+    address: includeBalance ? address : undefined,
   });
 
   return { ensName, ensAvatar, balance };

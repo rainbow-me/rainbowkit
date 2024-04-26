@@ -102,7 +102,7 @@ export function ConnectButtonRenderer({
 
   const { balance, ensAvatar, ensName } = useProfile({
     address,
-    showBalance: shouldShowBalance,
+    includeBalance: shouldShowBalance,
   });
 
   const displayBalance = balance
