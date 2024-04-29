@@ -42,8 +42,8 @@
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17",
+    "react": ">=18",
+    "react-dom": ">=18",
     "viem": "2.x",
     "wagmi": "2.x"
   },
@@ -58,7 +58,7 @@
     "jsdom": "^23.0.1",
     "nock": "^13.4.0",
     "postcss": "^8.4.32",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "vitest": "^0.33.0",
     "@types/ua-parser-js": "^0.7.39"
   },
