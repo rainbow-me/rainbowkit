@@ -104,6 +104,7 @@ export const coinbaseWallet = ({
           appName,
           appLogoUrl: appIcon,
           headlessMode: true,
+          enableMobileWalletLink: true,
         })(config),
         ...walletDetails,
       })),
