@@ -65,9 +65,6 @@ importers:
       ethers:
         specifier: ^5.6.8
         version: 5.6.8
-      eventemitter3:
-        specifier: ^5.0.1
-        version: 5.0.1
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -20150,7 +20147,6 @@ packages:
 
   /qrcode-terminal-nooctal@0.12.1:
     resolution: {integrity: sha512-jy/kkD0iIMDjTucB+5T6KBsnirlhegDH47vHgrj5MejchSQmi/EAMM0xMFeePgV9CJkkAapNakpVUWYgHvtdKg==}
-    hasBin: true
 
   /qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
@@ -21466,7 +21462,6 @@ packages:
 
   /sha.js@2.4.11:
     resolution: {integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==}
-    hasBin: true
     dependencies:
       inherits: 2.0.4
       safe-buffer: 5.2.1

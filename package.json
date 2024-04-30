@@ -59,7 +59,6 @@
     "esbuild": "^0.14.39",
     "esbuild-plugin-replace": "^1.4.0",
     "ethers": "^5.6.8",
-    "eventemitter3": "^5.0.1",
     "husky": "^8.0.3",
     "jsdom": "^23.0.1",
     "lokijs": "^1.5.12",
