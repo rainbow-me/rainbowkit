@@ -18,6 +18,7 @@ const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [
+    // @ts-ignore - TODO: Fix this typing issue
     mainnet,
     polygon,
     optimism,

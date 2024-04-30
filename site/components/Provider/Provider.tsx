@@ -42,6 +42,7 @@ const config = getDefaultConfig({
   appName: 'rainbowkit.com',
   projectId,
   chains: [
+    // @ts-ignore - TODO: Fix this typing issue
     mainnet,
     polygon,
     optimism,
@@ -52,6 +53,7 @@ const config = getDefaultConfig({
     zora,
     blast,
   ],
+  // @ts-ignore - TODO: Fix this typing issue
   transports,
   wallets: [
     ...wallets,
