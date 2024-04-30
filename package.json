@@ -74,6 +74,9 @@
     "vitest": "^0.33.0",
     "wagmi": "^2.7.0"
   },
+  "resolutions": {
+    "@coinbase/wallet-sdk": "4.0.0-rc.1"
+  },
   "packageManager": "pnpm@8.15.8",
   "pnpm": {
     "onlyBuiltDependencies": [
