@@ -185,8 +185,8 @@ async function run() {
         )}. This could take a while.`,
       ),
     );
-    const flags = packageManager === 'npm' ? '--legacy-peer-deps' : undefined;
-    await execa(packageManager, ['install', ...(flags ? [flags] : [])], {
+    const flag = packageManager === 'npm' ? '--legacy-peer-deps' : undefined;
+    await execa(packageManager, ['install', ...(flag ? [flag] : [])], {
       cwd: targetPath,
       stdio: 'inherit',
     });
@@ -196,7 +196,7 @@ async function run() {
         [
           packageManager === 'yarn' ? 'add' : 'install',
           '@rainbow-me/rainbowkit',
-          ...(flags ? [flags] : []),
+          ...(flag ? [flag] : []),
         ],
         {
           cwd: targetPath,
