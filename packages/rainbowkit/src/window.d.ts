@@ -1,1 +1,1 @@
-import 'wagmi/window';
+import 'viem/window';
