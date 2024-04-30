@@ -73,6 +73,7 @@ const client = new QueryClient();
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
+    // @ts-ignore - TODO: Fix this typing issue
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
     </WagmiProvider>

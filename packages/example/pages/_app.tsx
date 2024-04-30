@@ -727,6 +727,7 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
+        {/* @ts-ignore - TODO: Fix this typing issue */}
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />
