@@ -8,11 +8,13 @@ import { CreateConnector, WalletDetailsParams } from './Wallet';
 function getExplicitInjectedProvider(flag: string) {
   if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
     return;
+  // @ts-ignore - viem/window clash
   const providers = window.ethereum.providers;
   return providers
     ? // @ts-expect-error - some provider flags are not typed in `InjectedProviderFlags`
       providers.find((provider) => provider[flag])
-    : window.ethereum[flag]
+    : // @ts-ignore - viem/window clash
+      window.ethereum[flag]
       ? window.ethereum
       : undefined;
 }
@@ -65,6 +67,7 @@ function getInjectedProvider({
     const windowProvider = getWindowProviderNamespace(namespace);
     if (windowProvider) return windowProvider;
   }
+  // @ts-ignore - viem/window clash
   const providers = window.ethereum?.providers;
   if (flag) {
     const provider = getExplicitInjectedProvider(flag);
