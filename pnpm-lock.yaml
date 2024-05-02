@@ -108,8 +108,8 @@ importers:
         specifier: ^0.33.0
         version: 0.33.0(jsdom@23.0.1)
       wagmi:
-        specifier: ^2.7.0
-        version: 2.7.0(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+        specifier: ^2.7.1
+        version: 2.7.1(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
 
   examples/with-create-react-app:
     dependencies:
@@ -404,8 +404,8 @@ importers:
         specifier: ^2.9.29
         version: 2.9.29(typescript@5.4.2)
       wagmi:
-        specifier: ^2.7.0
-        version: 2.7.0(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+        specifier: ^2.7.1
+        version: 2.7.1(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
 
   packages/rainbow-button:
     dependencies:
@@ -619,8 +619,8 @@ importers:
         specifier: ^2.9.29
         version: 2.9.29(typescript@5.4.2)
       wagmi:
-        specifier: ^2.7.0
-        version: 2.7.0(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+        specifier: ^2.7.1
+        version: 2.7.1(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
     devDependencies:
       contentlayer:
         specifier: 0.2.9
@@ -5993,7 +5993,7 @@ packages:
     resolution: {integrity: sha512-dVjBPlni4CoiBpESVqrxh6k4OR14w6GRXKSSXHFuITjuhALE42gNCkXTpL4cjNeOBUgTba3eGe5EI8cyc2QLRg==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@metamask/rpc-errors': 6.1.0
+      '@metamask/rpc-errors': 6.2.1
       '@metamask/safe-event-emitter': 3.0.0
       '@metamask/utils': 8.3.0
     transitivePeerDependencies:
@@ -6075,15 +6075,6 @@ packages:
       is-stream: 2.0.1
       readable-stream: 3.6.2
       webextension-polyfill: 0.10.0
-    transitivePeerDependencies:
-      - supports-color
-
-  /@metamask/rpc-errors@6.1.0:
-    resolution: {integrity: sha512-JQElKxai26FpDyRKO/yH732wI+BV90i1u6pOuDOpdADSbppB2g1pPh3AGST1zkZqEE9eIKIUw8UdBQ4rp3VTSg==}
-    engines: {node: '>=16.0.0'}
-    dependencies:
-      '@metamask/utils': 8.3.0
-      fast-safe-stringify: 2.1.1
     transitivePeerDependencies:
       - supports-color
 
@@ -9518,10 +9509,10 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/connectors@4.3.0(@types/react@18.3.0)(@wagmi/core@2.8.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
-    resolution: {integrity: sha512-FDmpHRKlk9M7GRIhmhqFl2WMOXUjaVCLb03TbYvwqFrEQtdsD7FJcfGzbpx8/eke1renWvZZTApuQuA7VZg04g==}
+  /@wagmi/connectors@4.3.1(@types/react@18.3.0)(@wagmi/core@2.8.1)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
+    resolution: {integrity: sha512-d59PGuaHDKhqzO1Zg98iBkFLIgA3lwF1h3gvpSTQD9sPcZZMVh/hR6rnJvd3PoCTxQRaaEiv4nIgwfl/7GOwaA==}
     peerDependencies:
-      '@wagmi/core': 2.8.0
+      '@wagmi/core': 2.8.1
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -9532,7 +9523,7 @@ packages:
       '@metamask/sdk': 0.18.6(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)
       '@safe-global/safe-apps-provider': 0.18.1(typescript@5.4.2)
       '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.4.2)
-      '@wagmi/core': 2.8.0(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+      '@wagmi/core': 2.8.1(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
       '@walletconnect/ethereum-provider': 2.11.2(@types/react@18.3.0)(react@18.3.0)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.0)(react@18.3.0)
       typescript: 5.4.2
@@ -9588,8 +9579,8 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@2.8.0(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
-    resolution: {integrity: sha512-u0CWfbpdv2T3jE1yZQPwxvLlUVMymMoy73g6UE4XYNilF+EjdYu43EjWNvvB9lJcfSyYk6/VdKNHxJ2G+iBxYw==}
+  /@wagmi/core@2.8.1(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
+    resolution: {integrity: sha512-w2MqeSfEKnQ1QWYD1sw0iS70fv7Z5HUHRQCHw8MjhvDtysdiY98tZpNy80ZZzhSb7Ye1rqZwFo2ZS/vL7HtFEg==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
       typescript: '>=5.0.4'
@@ -15378,7 +15369,7 @@ packages:
     dependencies:
       call-bind: 1.0.5
       get-intrinsic: 1.2.2
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.12
 
   /is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
@@ -18300,6 +18291,7 @@ packages:
 
   /node-gyp-build@4.6.0:
     resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
+    hasBin: true
 
   /node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -18949,6 +18941,7 @@ packages:
 
   /pino@7.11.0:
     resolution: {integrity: sha512-dMACeu63HtRLmCG8VKdy4cShCPKaYDR4youZqoSWLxl5Gu99HUw8bw75thbPv9Nip+H+QYX8o3ZJbTdVZZ2TVg==}
+    hasBin: true
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.1.2
@@ -20094,6 +20087,7 @@ packages:
 
   /qrcode-terminal-nooctal@0.12.1:
     resolution: {integrity: sha512-jy/kkD0iIMDjTucB+5T6KBsnirlhegDH47vHgrj5MejchSQmi/EAMM0xMFeePgV9CJkkAapNakpVUWYgHvtdKg==}
+    hasBin: true
 
   /qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
@@ -21070,6 +21064,7 @@ packages:
   /rollup-plugin-visualizer@5.12.0:
     resolution: {integrity: sha512-8/NU9jXcHRs7Nnj07PF2o4gjxmm9lXIrZ8r175bT9dK8qoLlvKTwRMArRCMgpMGlq8CTLugRvEmyMeMXIU2pNQ==}
     engines: {node: '>=14'}
+    hasBin: true
     peerDependencies:
       rollup: 2.x || 3.x || 4.x
     peerDependenciesMeta:
@@ -22593,7 +22588,7 @@ packages:
     dependencies:
       call-bind: 1.0.5
       for-each: 0.3.3
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.12
 
   /typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
@@ -23423,8 +23418,8 @@ packages:
       - zod
     dev: false
 
-  /wagmi@2.7.0(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
-    resolution: {integrity: sha512-9TYbO7TITPn3uxt2lv4M8g+v5JTDYpFYC6gmb7wJlHKpxCu3wbDYckOYh0TXEHVCu+WNS4HKDhwx8fqghObaBg==}
+  /wagmi@2.7.1(@tanstack/react-query@5.28.4)(@types/react@18.3.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29):
+    resolution: {integrity: sha512-AkTmhLosfeF1cdTKYIL/thZCBqZSDKQ9QyBY2EGLOBRT0iOOQQG2q4O3RM855rkJuUk+oelRNWQ8jUVwG7gnww==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
       react: '>=18'
@@ -23435,8 +23430,8 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-query': 5.28.4(react@18.3.0)
-      '@wagmi/connectors': 4.3.0(@types/react@18.3.0)(@wagmi/core@2.8.0)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
-      '@wagmi/core': 2.8.0(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+      '@wagmi/connectors': 4.3.1(@types/react@18.3.0)(@wagmi/core@2.8.1)(react-dom@18.3.0)(react-i18next@13.5.0)(react-native@0.73.3)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
+      '@wagmi/core': 2.8.1(@types/react@18.3.0)(react@18.3.0)(typescript@5.4.2)(viem@2.9.29)
       react: 18.3.0
       typescript: 5.4.2
       use-sync-external-store: 1.2.0(react@18.3.0)
