@@ -1,8 +1,6 @@
 ---
-"rainbowkit-next-app": minor
-"@rainbow-me/rainbowkit": minor
-"example": minor
-"site": minor
+"@rainbow-me/rainbowkit": patch
+"example": patch
 ---
 
-Add Kraken Wallet
+Added Kraken Wallet support with `krakenWallet` wallet connector
