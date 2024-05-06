@@ -35,7 +35,7 @@ type Props = {
 export function QRCode({
   ecl = 'M',
   logoBackground,
-  logoMargin = 13,
+  logoMargin = 10,
   logoSize = 50,
   logoUrl,
   size: sizeProp = 200,
@@ -74,7 +74,7 @@ export function QRCode({
       }
     });
 
-    const clearArenaSize = Math.floor((logoSize + logoMargin * 2) / cellSize);
+    const clearArenaSize = Math.floor((logoSize + 25) / cellSize);
     const matrixMiddleStart = matrix.length / 2 - clearArenaSize / 2;
     const matrixMiddleEnd = matrix.length / 2 + clearArenaSize / 2 - 1;
 
@@ -114,7 +114,7 @@ export function QRCode({
     });
 
     return dots;
-  }, [ecl, logoSize, logoMargin, size, uri]);
+  }, [ecl, logoSize, size, uri]);
 
   const logoPosition = size / 2 - logoSize / 2;
   const logoWrapperSize = logoSize + logoMargin * 2;
