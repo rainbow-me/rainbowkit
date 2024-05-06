@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.7
+
+### Patch Changes
+
+- af4ea4e: Added Kraken Wallet support with `krakenWallet` wallet connector
+- f0b3b25: Mitigated behavior in Coinbase Wallet where the user would be captured in the in-app browser upon redirect.
+
 ## 2.0.6
 
 ### Patch Changes
