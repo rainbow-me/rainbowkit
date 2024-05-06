@@ -320,6 +320,7 @@ function RainbowKitApp({
   const [coolModeEnabled, setCoolModeEnabled] = useState(false);
   const [modalSize, setModalSize] = useState<ModalSize>('wide');
   const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [chainModalOnConnect, setChainModalOnConnect] = useState(false);
   const [customAvatar, setCustomAvatar] = useState(false);
 
   const routerLocale = router.locale as Locale;
@@ -364,6 +365,7 @@ function RainbowKitApp({
           ...demoAppInfo,
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
         }}
+        chainModalOnConnect={chainModalOnConnect}
         avatar={customAvatar ? CustomAvatar : undefined}
         locale={locale}
         coolMode={coolModeEnabled}
@@ -501,6 +503,27 @@ function RainbowKitApp({
                           id="customAvatar"
                           name="customAvatar"
                           onChange={(e) => setCustomAvatar(e.target.checked)}
+                          type="checkbox"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label
+                          htmlFor="chainModalOnConnect"
+                          style={{ userSelect: 'none' }}
+                        >
+                          chainModalOnConnect
+                        </label>
+                      </td>
+                      <td>
+                        <input
+                          checked={chainModalOnConnect}
+                          id="chainModalOnConnect"
+                          name="chainModalOnConnect"
+                          onChange={(e) =>
+                            setChainModalOnConnect(e.target.checked)
+                          }
                           type="checkbox"
                         />
                       </td>

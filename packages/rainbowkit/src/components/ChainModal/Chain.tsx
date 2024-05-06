@@ -10,6 +10,7 @@ import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContex
 import { Text } from '../Text/Text';
 
 interface ChainProps {
+  isConnected?: boolean;
   chainId: number;
   currentChainId: number;
   switchChain: ReturnType<typeof useSwitchChain>['switchChain'];
@@ -31,6 +32,7 @@ const Chain = ({
   name,
   iconBackground,
   idx,
+  isConnected,
 }: ChainProps) => {
   const mobile = isMobile();
   const { i18n } = useContext(I18nContext);
@@ -74,7 +76,7 @@ const Chain = ({
               )}
               <div>{name ?? name}</div>
             </Box>
-            {isCurrentChain && (
+            {isCurrentChain && isConnected && (
               <Box
                 alignItems="center"
                 display="flex"
