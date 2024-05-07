@@ -70,9 +70,9 @@
     "react-dom": "^18.3.0",
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.4.2",
-    "viem": "^2.9.31",
+    "viem": "^2.10.1",
     "vitest": "^0.33.0",
-    "wagmi": "^2.7.1"
+    "wagmi": "^2.8.1"
   },
   "resolutions": {
     "@coinbase/wallet-sdk": "4.0.0-rc.3"
