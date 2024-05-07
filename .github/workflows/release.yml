@@ -3,7 +3,6 @@ name: Release
 on:
   push:
     branches:
-      - main
       - 0.12.x
 
 env:
