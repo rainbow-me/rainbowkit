@@ -31,6 +31,8 @@ export function useMainnetEnsName(address?: Address) {
     queryKey: createQueryKey('address', address),
     queryFn: () => getEnhancedProviderEnsName({ address: address! }),
     enabled: !mainnetConfigured && !!address,
+    staleTime: 10 * (60 * 1_000), // 10 minutes
+    retry: 1, // Retry once before returning undefined if the request fails
   });
 
   return ensName || enhancedProviderEnsName;
