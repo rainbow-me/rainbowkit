@@ -19,86 +19,103 @@ const getAllEntryPoints = async (rootPath) =>
         !path.includes('.test.'),
     );
 
-const baseBuildConfig = {
-  banner: {
-    js: '"use client";', // Required for Next 13 App Router
-  },
-  bundle: true,
-  format: 'esm',
-  loader: {
-    '.png': 'dataurl',
-    '.svg': 'dataurl',
-    '.json': 'text',
-  },
-  platform: 'browser',
-  plugins: [
-    replace({
-      include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
-      values: {
-        __buildVersion: process.env.npm_package_version,
-      },
-    }),
-    vanillaExtractPlugin({
-      identifiers: isCssMinified ? 'short' : 'debug',
-      processCss: async (css) => {
-        const result = await postcss([
-          autoprefixer,
-          prefixSelector({ prefix: '[data-rk]' }),
-        ]).process(css, {
-          from: undefined, // suppress source map warning
-        });
-
-        return result.css;
-      },
-    }),
-    {
-      name: 'make-all-packages-external',
-      setup(build) {
-        const filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
-        build.onResolve({ filter }, (args) => ({
-          external: true,
-          path: args.path,
-        }));
-      },
+const baseBuildConfig = (onEnd) => {
+  return {
+    banner: {
+      js: '"use client";', // Required for Next 13 App Router
     },
-  ],
-  splitting: true, // Required for tree shaking
+    bundle: true,
+    format: 'esm',
+    platform: 'browser',
+    loader: {
+      '.png': 'dataurl',
+      '.svg': 'dataurl',
+      '.json': 'text',
+    },
+    plugins: [
+      replace({
+        include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
+        values: {
+          __buildVersion: process.env.npm_package_version,
+        },
+      }),
+      vanillaExtractPlugin({
+        identifiers: isCssMinified ? 'short' : 'debug',
+        processCss: async (css) => {
+          const result = await postcss([
+            autoprefixer,
+            prefixSelector({ prefix: '[data-rk]' }),
+          ]).process(css, {
+            from: undefined, // suppress source map warning
+          });
+
+          return result.css;
+        },
+      }),
+      {
+        name: 'make-all-packages-external',
+        setup(build) {
+          const filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
+          build.onResolve({ filter }, (args) => {
+            return {
+              external: true,
+              path: args.path,
+            };
+          });
+
+          build.onEnd(onEnd);
+        },
+      },
+    ],
+    splitting: true, // Required for tree shaking
+  };
 };
 
-const mainBuild = esbuild.build({
-  ...baseBuildConfig,
+const mainBuildOptions = {
+  ...baseBuildConfig((result) => {
+    if (result.errors.length) {
+      console.error('❌ main build failed:', result.errors);
+    } else console.log('✅ main build succeeded');
+  }),
   entryPoints: [
     './src/index.ts',
-
     // esbuild needs these additional entry points in order to support tree shaking while also supporting CSS
     ...(await getAllEntryPoints('src/themes')),
   ],
   outdir: 'dist',
-  watch: isWatching
-    ? {
-        onRebuild(error, result) {
-          if (error) console.error('main build failed:', error);
-          else console.log('main build succeeded:', result);
-        },
-      }
-    : undefined,
-});
+};
 
-const walletsBuild = esbuild.build({
-  ...baseBuildConfig,
+const walletsBuildOptions = {
+  ...baseBuildConfig((result) => {
+    if (result.errors.length) {
+      console.error('❌ wallets build failed', result.errors);
+    } else console.log('✅ wallets build succeeded');
+  }),
   entryPoints: await getAllEntryPoints('src/wallets/walletConnectors'),
   outdir: 'dist/wallets/walletConnectors',
-  watch: isWatching
-    ? {
-        onRebuild(error, result) {
-          if (error) console.error('wallets build failed:', error);
-          else console.log('wallets build succeeded:', result);
-        },
-      }
-    : undefined,
-});
+};
 
-Promise.all([mainBuild, walletsBuild])
+const build = async () => {
+  // Build and watch for new changes if --watch flag is passed
+  if (isWatching) {
+    const [mainContext, walletsContext] = await Promise.all([
+      esbuild.context(mainBuildOptions),
+      esbuild.context(walletsBuildOptions),
+    ]);
+
+    await mainContext.watch();
+    await walletsContext.watch();
+    return;
+  }
+
+  // Only build once
+  await Promise.all([
+    esbuild.build(mainBuildOptions),
+    esbuild.build(walletsBuildOptions),
+  ]);
+};
+
+build()
   .then(() => {
     if (isWatching) {
       console.log('watching...');

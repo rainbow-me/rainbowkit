@@ -12,7 +12,7 @@ It's never a fun experience to have your pull request declined after investing a
 
 ## Prerequisites
 
-This project uses [`pnpm`](https://pnpm.io) as a package manager. The required `pnpm` version to get started is `8.15.5`.
+This project uses [`pnpm`](https://pnpm.io) as a package manager. The required `pnpm` version to get started is `9.1.0`.
 
 ## Development environment
 

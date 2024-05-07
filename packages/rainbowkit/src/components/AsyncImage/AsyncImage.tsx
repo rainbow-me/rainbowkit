@@ -38,7 +38,6 @@ export function AsyncImage({
     () => true,
     false,
   );
-
   return (
     <Box
       aria-label={alt}
@@ -57,19 +56,15 @@ export function AsyncImage({
       testId={testId}
     >
       <Box
-        {...(useAsImage
-          ? { 'aria-hidden': true, as: 'img', src }
-          : isRemoteImage
-            ? // biome-ignore format: design system keys
-              {
+        {...(isRemoteImage
+          ? // biome-ignore format: design system keys
+            {
               "aria-hidden": true,
               as: "img",
               onLoad: setRemoteImageLoaded,
               src,
             }
-            : {
-                backgroundSize: 'cover',
-              })}
+          : { 'aria-hidden': true, as: 'img', src })}
         height="full"
         position="absolute"
         {...(ios ? { WebkitUserSelect: 'none' } : {})}
@@ -77,16 +72,10 @@ export function AsyncImage({
           WebkitTouchCallout: 'none',
           transition: 'opacity .15s linear',
           userSelect: 'none',
-          ...(!useAsImage
-            ? isRemoteImage
-              ? {
-                  opacity: isRemoteImageLoaded ? 1 : 0,
-                }
-              : {
-                  backgroundImage: src ? `url(${src})` : undefined,
-                  backgroundRepeat: 'no-repeat',
-                  opacity: src ? 1 : 0,
-                }
+          ...(!useAsImage && isRemoteImage
+            ? {
+                opacity: isRemoteImageLoaded ? 1 : 0,
+              }
             : {}),
         }}
         width="full"
