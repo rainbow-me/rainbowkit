@@ -1,7 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { GetEnsNameReturnType } from 'viem';
 import { GetEnsAvatarReturnType } from 'viem/actions';
-import { useAccount, useBalance } from 'wagmi';
+import { useAccount } from 'wagmi';
+import { useProfile } from '../../hooks/useProfile';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -22,6 +23,7 @@ interface ProfileDetailsProps {
   address: ReturnType<typeof useAccount>['address'];
   ensAvatar: GetEnsAvatarReturnType | undefined;
   ensName: GetEnsNameReturnType | undefined;
+  balance: ReturnType<typeof useProfile>['balance'];
   onClose: () => void;
   onDisconnect: () => void;
 }
@@ -30,14 +32,11 @@ export function ProfileDetails({
   address,
   ensAvatar,
   ensName,
+  balance,
   onClose,
   onDisconnect,
 }: ProfileDetailsProps) {
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);
-
-  const { data: balanceData } = useBalance({
-    address,
-  });
 
   const [copiedAddress, setCopiedAddress] = useState(false);
   const copyAddressAction = useCallback(() => {
@@ -61,7 +60,7 @@ export function ProfileDetails({
   }
 
   const accountName = ensName ? formatENS(ensName) : formatAddress(address);
-  const ethBalance = balanceData?.formatted;
+  const ethBalance = balance?.formatted;
   const displayBalance = ethBalance
     ? abbreviateETHBalance(parseFloat(ethBalance))
     : undefined;
@@ -117,7 +116,7 @@ export function ProfileDetails({
                   {accountName}
                 </Text>
               </Box>
-              {!!balanceData && (
+              {!!balance && (
                 <Box textAlign="center">
                   <Text
                     as="h1"
@@ -126,7 +125,7 @@ export function ProfileDetails({
                     size={mobile ? '16' : '14'}
                     weight="semibold"
                   >
-                    {displayBalance} {balanceData.symbol}
+                    {displayBalance} {balance.symbol}
                   </Text>
                 </Box>
               )}
