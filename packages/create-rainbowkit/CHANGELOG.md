@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.3
+
+### Patch Changes
+
+- ef53ede: Added `--legacy-peer-deps` flag when running `npm init @rainbow-me/rainbowkit@latest`.
+
 ## 0.3.2
 
 ### Patch Changes
