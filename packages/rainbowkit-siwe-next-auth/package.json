@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "siwe": "^2.1.4",
-    "ethers": "^5.6.8"
+    "ethers": "^5.6.8",
+    "siwe": "^2.1.4"
   },
   "repository": {
     "type": "git",
