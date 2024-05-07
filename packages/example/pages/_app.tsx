@@ -27,6 +27,7 @@ import {
   bybitWallet,
   clvWallet,
   coin98Wallet,
+  compassWallet,
   coreWallet,
   dawnWallet,
   desigWallet,
@@ -37,6 +38,7 @@ import {
   gateWallet,
   imTokenWallet,
   kaikasWallet,
+  krakenWallet,
   kresusWallet,
   ledgerWallet,
   mewWallet,
@@ -126,6 +128,22 @@ const avalanche = {
   },
 } as const satisfies Chain;
 
+const sei = {
+  id: 713715,
+  name: 'Sei',
+  iconUrl:
+    'https://s3.coinmarketcap.com/static-gravity/image/992744cfbd5e40f5920018ee7a830b98.png',
+  iconBackground: '#fff',
+  nativeCurrency: { name: 'Sei', symbol: 'SEI', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://evm-rpc.arctic-1.seinetwork.io'] },
+  },
+  blockExplorers: {
+    default: { name: 'Sei Explorer', url: 'https://www.seiscan.app' },
+  },
+  contracts: {},
+} as const satisfies Chain;
+
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -143,6 +161,7 @@ const config = getDefaultConfig({
     zetachain,
     ronin,
     klaytn,
+    sei,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -172,6 +191,7 @@ const config = getDefaultConfig({
         bloomWallet,
         bybitWallet,
         clvWallet,
+        compassWallet,
         coin98Wallet,
         coreWallet,
         dawnWallet,
@@ -183,6 +203,7 @@ const config = getDefaultConfig({
         gateWallet,
         imTokenWallet,
         kresusWallet,
+        krakenWallet,
         kaikasWallet,
         ledgerWallet,
         mewWallet,

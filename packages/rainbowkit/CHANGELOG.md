@@ -1,5 +1,19 @@
 # @rainbow-me/rainbowkit
 
+## 2.0.7
+
+### Patch Changes
+
+- af4ea4e: Added Kraken Wallet support with `krakenWallet` wallet connector
+- f0b3b25: Mitigated behavior in Coinbase Wallet where the user would be captured in the in-app browser upon redirect.
+
+## 2.0.6
+
+### Patch Changes
+
+- 7ab6e50: Added Compass Wallet support with `compassWallet` wallet connector
+- 515498f: Locked the dependencies for the `coinbaseWallet` wallet connector to Coinbase Wallet SDK v3 to temporarily mitigate breaking changes included an upcoming version of Wagmi.
+
 ## 2.0.5
 
 ### Patch Changes

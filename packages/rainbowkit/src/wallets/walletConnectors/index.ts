@@ -9,6 +9,7 @@ import { bybitWallet } from './bybitWallet/bybitWallet';
 import { clvWallet } from './clvWallet/clvWallet';
 import { coin98Wallet } from './coin98Wallet/coin98Wallet';
 import { coinbaseWallet } from './coinbaseWallet/coinbaseWallet';
+import { compassWallet } from './compassWallet/compassWallet';
 import { coreWallet } from './coreWallet/coreWallet';
 import { dawnWallet } from './dawnWallet/dawnWallet';
 import { desigWallet } from './desigWallet/desigWallet';
@@ -20,6 +21,7 @@ import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { kaikasWallet } from './kaikasWallet/kaikasWallet';
+import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
@@ -61,6 +63,7 @@ export {
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
+  compassWallet,
   coreWallet,
   dawnWallet,
   desigWallet,
@@ -72,6 +75,7 @@ export {
   imTokenWallet,
   injectedWallet,
   kaikasWallet,
+  krakenWallet,
   kresusWallet,
   ledgerWallet,
   metaMaskWallet,

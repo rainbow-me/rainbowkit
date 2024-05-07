@@ -1,7 +1,7 @@
 {
   "name": "@rainbow-me/rainbow-button",
   "description": "Rainbow connector button",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "files": [
     "dist",
     "styles.css"
@@ -37,8 +37,8 @@
     "@rainbow-me/rainbowkit": "workspace:*"
   },
   "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17",
+    "react": ">=18",
+    "react-dom": ">=18",
     "viem": "2.x",
     "wagmi": "2.x"
   },
