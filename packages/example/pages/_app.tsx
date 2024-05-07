@@ -148,7 +148,6 @@ const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
   chains: [
-    // @ts-ignore - TODO: Fix this typing issue
     mainnet,
     polygon,
     optimism,
@@ -730,7 +729,6 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        {/* @ts-ignore - TODO: Fix this typing issue */}
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />

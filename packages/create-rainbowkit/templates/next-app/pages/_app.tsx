@@ -18,7 +18,6 @@ const config = getDefaultConfig({
   appName: 'RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [
-    // @ts-ignore - TODO: Fix this typing issue
     mainnet,
     polygon,
     optimism,
@@ -33,7 +32,6 @@ const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    // @ts-ignore - TODO: Fix this typing issue
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>
         <RainbowKitProvider>
