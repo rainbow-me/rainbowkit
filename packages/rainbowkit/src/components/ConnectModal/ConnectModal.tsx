@@ -4,6 +4,7 @@ import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { useRainbowKitWagmiState } from '../RainbowKitProvider/RainbowKitWagmiStateProvider';
 import { SignIn } from '../SignIn/SignIn';
 
 export interface ConnectModalProps {
@@ -14,8 +15,15 @@ export interface ConnectModalProps {
 export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
+  const { setIsDisconnecting } = useRainbowKitWagmiState();
 
-  const { disconnect } = useDisconnect();
+  const { disconnect } = useDisconnect({
+    mutation: {
+      onMutate: () => setIsDisconnecting(true),
+      onSettled: () => setIsDisconnecting(false),
+    },
+  });
+
   const { isConnecting } = useAccount();
 
   // when a user cancels or dismisses the SignIn modal for SIWE, disconnect and call onClose
