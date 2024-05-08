@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@coinbase/wallet-sdk': 4.0.0-rc.3
+  '@coinbase/wallet-sdk': 4.0.0-beta.14
 
 pnpmfileChecksum: 5fl5hmogurh2clirfzkh77tj3q
 
@@ -1592,8 +1592,8 @@ packages:
   '@changesets/write@0.3.0':
     resolution: {integrity: sha512-slGLb21fxZVUYbyea+94uFiD6ntQW0M2hIKNznFizDhZPDgn2c/fv1UzzlW43RVzh1BEDuIqW6hzlJ1OflNmcw==}
 
-  '@coinbase/wallet-sdk@4.0.0-rc.3':
-    resolution: {integrity: sha512-zlRXUzNsnSWm1ww6+KwqtKQ4rd33Mo3yH6m+LnwPVR5kfpIMcpzFOwNWREDhJtf36x5qPr+Igv+OSRklv31SbQ==}
+  '@coinbase/wallet-sdk@4.0.0-beta.14':
+    resolution: {integrity: sha512-3NtiupIMDjJEi1tP79o4zfsrxqSxuWw89+JKQDJ0UBSBcH08TFEWq4bNiyfgO/CTOOPvbTS8DABydnSlneDX/A==}
 
   '@commitlint/cli@18.6.1':
     resolution: {integrity: sha512-5IDE0a+lWGdkOvKH892HHAZgbAjcj1mT5QrfA/SVbLJV/BbBMGyKN0W5mhgjekPJJwEQdVNvhl9PwUacY58Usw==}
@@ -13190,7 +13190,7 @@ snapshots:
       human-id: 1.0.2
       prettier: 2.8.8
 
-  '@coinbase/wallet-sdk@4.0.0-rc.3':
+  '@coinbase/wallet-sdk@4.0.0-beta.14':
     dependencies:
       buffer: 6.0.3
       clsx: 1.2.1
@@ -16918,7 +16918,7 @@ snapshots:
 
   '@wagmi/connectors@4.3.3(@react-native-async-storage/async-storage@1.23.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)))(@types/react@18.3.1)(@wagmi/core@2.9.1(@tanstack/query-core@5.32.1)(@types/react@18.3.1)(bufferutil@4.0.8)(immer@9.0.21)(react@18.3.1)(typescript@5.4.2)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6))(zod@3.23.6))(bufferutil@4.0.8)(esbuild@0.20.2)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(rollup@4.17.2)(typescript@5.4.2)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6))(zod@3.23.6)':
     dependencies:
-      '@coinbase/wallet-sdk': 4.0.0-rc.3
+      '@coinbase/wallet-sdk': 4.0.0-beta.14
       '@metamask/sdk': 0.18.6(@react-native-async-storage/async-storage@1.23.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1)))(bufferutil@4.0.8)(esbuild@0.20.2)(react-dom@18.3.1(react@18.3.1))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(rollup@4.17.2)
       '@safe-global/safe-apps-provider': 0.18.1(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6)
       '@safe-global/safe-apps-sdk': 8.1.0(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6)
