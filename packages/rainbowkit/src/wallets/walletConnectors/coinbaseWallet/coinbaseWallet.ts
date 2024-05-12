@@ -2,7 +2,6 @@ import { createConnector } from 'wagmi';
 import { coinbaseWallet as coinbaseConnector } from '../../../connectors/coinbaseWallet';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet, WalletDetailsParams } from '../../Wallet';
-import { hasInjectedProvider } from '../../getInjectedConnector';
 
 export interface CoinbaseWalletOptions {
   appName: string;
@@ -13,10 +12,6 @@ export const coinbaseWallet = ({
   appName,
   appIcon,
 }: CoinbaseWalletOptions): Wallet => {
-  const isCoinbaseWalletInjected = hasInjectedProvider({
-    flag: 'isCoinbaseWallet',
-  });
-
   const getUri = (uri: string) => uri;
   const ios = isIOS();
 
@@ -28,10 +23,10 @@ export const coinbaseWallet = ({
     iconUrl: async () => (await import('./coinbaseWallet.svg')).default,
     iconAccent: '#2c5ff6',
     iconBackground: '#2c5ff6',
-    // Note that we never resolve `installed` to `false` because the
-    // Coinbase Wallet SDK falls back to other connection methods if
-    // the injected connector isn't available
-    installed: isCoinbaseWalletInjected || undefined,
+    // If the coinbase wallet browser extension is not installed, a popup will appear
+    // prompting the user to connect or create a wallet via passkey. This means if you either have
+    // or don't have the coinbase wallet browser extension installed it'll do some action anyways
+    installed: true,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=org.toshi',
       ios: 'https://apps.apple.com/us/app/coinbase-wallet-store-crypto/id1278383455',
