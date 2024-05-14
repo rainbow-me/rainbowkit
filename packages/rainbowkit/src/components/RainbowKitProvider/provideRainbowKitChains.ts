@@ -167,7 +167,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   klaytnBaobab: { chainId: 1_001, name: 'Klaytn Baobab', ...klaytnIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
-  manta: { chainId: 169, name: 'Manta Pacific', ...mantaIcon },
+  manta: { chainId: 169, name: 'Manta', ...mantaIcon },
   mantaSepolia: { chainId: 3_441_006, ...mantaIcon },
   mantaTestnet: { chainId: 3_441_005, ...mantaIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
