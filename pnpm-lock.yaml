@@ -12,10 +12,6 @@ pnpmfileChecksum: 5fl5hmogurh2clirfzkh77tj3q
 importers:
 
   .:
-    dependencies:
-      '@wagmi/core':
-        specifier: ^2.9.1
-        version: 2.9.1(@tanstack/query-core@5.32.1)(@types/react@18.3.1)(bufferutil@4.0.8)(immer@9.0.21)(react@18.3.1)(typescript@5.4.2)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6))(zod@3.23.6)
     devDependencies:
       '@biomejs/biome':
         specifier: 1.4.1
@@ -62,6 +58,9 @@ importers:
       '@vanilla-extract/vite-plugin':
         specifier: ^4.0.9
         version: 4.0.9(@types/node@18.19.31)(babel-plugin-macros@3.1.0)(terser@5.31.0)(vite@5.2.11(@types/node@18.19.31)(terser@5.31.0))
+      '@wagmi/core':
+        specifier: ^2.9.1
+        version: 2.9.1(@tanstack/query-core@5.32.1)(@types/react@18.3.1)(bufferutil@4.0.8)(immer@9.0.21)(react@18.3.1)(typescript@5.4.2)(viem@2.10.1(bufferutil@4.0.8)(typescript@5.4.2)(zod@3.23.6))(zod@3.23.6)
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.19(postcss@8.4.38)
