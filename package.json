@@ -75,7 +75,7 @@
     "vitest": "^0.33.0",
     "wagmi": "^2.5.11"
   },
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
