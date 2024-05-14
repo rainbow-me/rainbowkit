@@ -26,6 +26,9 @@ type ChainName =
   | 'kovan'
   | 'localhost'
   | 'mainnet'
+  | 'manta'
+  | 'mantaSepolia'
+  | 'mantaTestnet'
   | 'optimism'
   | 'optimismKovan'
   | 'optimismGoerli'
@@ -106,6 +109,11 @@ const optimismIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/optimism.svg')).default,
 };
 
+const mantaIcon: IconMetadata = {
+  iconBackground: '#ffffff',
+  iconUrl: async () => (await import('./chainIcons/manta.svg')).default,
+};
+
 const polygonIcon: IconMetadata = {
   iconBackground: '#9f71ec',
   iconUrl: async () => (await import('./chainIcons/polygon.svg')).default,
@@ -159,6 +167,9 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   klaytnBaobab: { chainId: 1_001, name: 'Klaytn Baobab', ...klaytnIcon },
   localhost: { chainId: 1_337, ...ethereumIcon },
   mainnet: { chainId: 1, name: 'Ethereum', ...ethereumIcon },
+  manta: { chainId: 169, name: 'Manta', ...mantaIcon },
+  mantaSepolia: { chainId: 3_441_006, ...mantaIcon },
+  mantaTestnet: { chainId: 3_441_005, ...mantaIcon },
   optimism: { chainId: 10, name: 'Optimism', ...optimismIcon },
   optimismGoerli: { chainId: 420, ...optimismIcon },
   optimismKovan: { chainId: 69, ...optimismIcon },
