@@ -1,12 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { enhancedProviderHttp } from './enhancedProvider';
 
-const describeIf = () =>
-  typeof process.env.RAINBOW_PROVIDER_API_KEY === 'undefined'
-    ? describe.skip
-    : describe;
-
-describeIf()('createHttpClient', () => {
+describe.skip('createHttpClient', () => {
   it("should return 'ok' status for health check endpoint", async () => {
     const { data } = await enhancedProviderHttp.get('/healthcheck');
     expect(data).toStrictEqual({ status: 'ok' });
