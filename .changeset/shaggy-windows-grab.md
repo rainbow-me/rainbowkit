@@ -1,5 +1,5 @@
 ---
-"@rainbow-me/rainbowkit": patch
+"@rainbow-me/rainbowkit": minor
 ---
 
 Introduced the Enhanced Provider to handle fallback resolutions when a Mainnet provider transport is unavailable.
