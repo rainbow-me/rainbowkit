@@ -72,11 +72,12 @@ export function RainbowKitSiweNextAuthProvider({
           await signOut({ redirect: false });
         },
 
-        verify: async ({ message, signature }) => {
+        verify: async ({ message, signature, address }) => {
           const response = await signIn('credentials', {
             message: JSON.stringify(message),
             redirect: false,
             signature,
+            address,
           });
 
           return response?.ok ?? false;

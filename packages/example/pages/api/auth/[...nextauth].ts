@@ -8,6 +8,8 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
+import { Address, publicActions } from 'viem';
+import { wagmiConfig } from '../../_app';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
@@ -39,7 +41,17 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
             return null;
           }
 
-          await siwe.verify({ signature: credentials?.signature || '' });
+          const valid = await wagmiConfig
+            .getClient()
+            .extend(publicActions)
+            .verifyMessage({
+              address: credentials?.address as Address,
+              signature: credentials?.signature as Address,
+              message: siwe.prepareMessage(),
+            });
+
+          if (!valid) throw { message: 'Invalid signature' };
+
           return {
             id: siwe.address,
           };
@@ -56,6 +68,11 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
         },
         signature: {
           label: 'Signature',
+          placeholder: '0x0',
+          type: 'text',
+        },
+        address: {
+          label: 'Address',
           placeholder: '0x0',
           type: 'text',
         },

@@ -99,7 +99,11 @@ export function SignIn({
       setState((x) => ({ ...x, status: 'verifying' }));
 
       try {
-        const verified = await authAdapter.verify({ message, signature });
+        const verified = await authAdapter.verify({
+          message,
+          signature,
+          address,
+        });
 
         if (verified) {
           // This will ensure that 'connectModalOpen' state doesn't

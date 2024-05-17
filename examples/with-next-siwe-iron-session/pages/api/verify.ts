@@ -2,24 +2,28 @@ import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { SiweMessage } from 'siwe';
 import { ironOptions } from './../../lib/iron';
+import { publicActions } from 'viem';
+import { wagmiConfig } from '../_app';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
   switch (method) {
     case 'POST':
       try {
-        const { message, signature } = req.body;
+        const { message, signature, address } = req.body;
         const siweMessage = new SiweMessage(message);
-        const { success, error, data } = await siweMessage.verify({
-          signature,
-        });
+ 
+        const valid = await wagmiConfig
+          .getClient()
+          .extend(publicActions)
+          .verifyMessage({
+            address,
+            signature,
+            message: siweMessage.prepareMessage(),
+          });
 
-        if (!success) throw error;
+        if (!valid) throw { message: "Invalid signature" };
 
-        if (data.nonce !== req.session.nonce)
-          return res.status(422).json({ message: 'Invalid nonce.' });
-
-        req.session.siwe = data;
         await req.session.save();
         res.json({ ok: true });
       } catch (_error) {

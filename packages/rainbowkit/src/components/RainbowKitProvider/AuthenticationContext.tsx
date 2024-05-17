@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { Address } from 'viem';
 import { Config, useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
@@ -21,7 +22,11 @@ export interface AuthenticationAdapter<Message> {
     chainId: number;
   }) => Message;
   getMessageBody: (args: { message: Message }) => string;
-  verify: (args: { message: Message; signature: string }) => Promise<boolean>;
+  verify: (args: {
+    message: Message;
+    signature: string;
+    address: Address;
+  }) => Promise<boolean>;
   signOut: () => Promise<void>;
 }
 
