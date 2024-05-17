@@ -421,7 +421,7 @@ importers:
         specifier: 2.x
         version: 2.9.31(bufferutil@4.0.8)(typescript@5.4.2)
       wagmi:
-        specifier: 2.x
+        specifier: ^2.9.0
         version: 2.9.2(@react-native-async-storage/async-storage@1.21.0(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0)))(@tanstack/query-core@5.28.4)(@tanstack/react-query@5.28.4(react@18.3.0))(@types/react@18.3.0)(bufferutil@4.0.8)(immer@9.0.21)(react-dom@18.3.0(react@18.3.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.0(react@18.3.0))(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0))(react@18.3.0))(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0))(react@18.3.0)(rollup@4.8.0)(typescript@5.4.2)(viem@2.9.31(bufferutil@4.0.8)(typescript@5.4.2))
 
   packages/rainbowkit:
@@ -457,7 +457,7 @@ importers:
         specifier: 2.x
         version: 2.9.31(bufferutil@4.0.8)(typescript@5.4.2)
       wagmi:
-        specifier: 2.x
+        specifier: ^2.9.0
         version: 2.9.2(@react-native-async-storage/async-storage@1.21.0(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0)))(@tanstack/query-core@5.28.4)(@tanstack/react-query@5.28.4(react@18.3.0))(@types/react@18.3.0)(bufferutil@4.0.8)(immer@9.0.21)(react-dom@18.3.0(react@18.3.0))(react-i18next@13.5.0(i18next@22.5.1)(react-dom@18.3.0(react@18.3.0))(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0))(react@18.3.0))(react-native@0.73.3(@babel/core@7.24.5)(@babel/preset-env@7.16.4(@babel/core@7.24.5))(bufferutil@4.0.8)(react@18.3.0))(react@18.3.0)(rollup@4.8.0)(typescript@5.4.2)(viem@2.9.31(bufferutil@4.0.8)(typescript@5.4.2))
     devDependencies:
       '@testing-library/jest-dom':
@@ -3817,7 +3817,6 @@ packages:
   '@remix-run/dev@2.7.2':
     resolution: {integrity: sha512-ejxzcQY5DFl1CNG5+5+y0UeklOqkRBO43lAPnSC8ITLigjZY6UZsBENlex/Y+xJzjIUtaRBxc7mVaWa62FDQOg==}
     engines: {node: '>=18.0.0'}
-    hasBin: true
     peerDependencies:
       '@remix-run/serve': ^2.7.2
       typescript: ^5.1.0
@@ -5116,7 +5115,6 @@ packages:
   autoprefixer@10.4.16:
     resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
     engines: {node: ^10 || ^12 || >=14}
-    hasBin: true
     peerDependencies:
       postcss: ^8.1.0
 
@@ -5806,7 +5804,6 @@ packages:
   css-blank-pseudo@3.0.3:
     resolution: {integrity: sha512-VS90XWtsHGqoM0t4KpH053c4ehxZ2E6HtGI7x68YFV0pTo/QmkV/YFA+NnlvK8guxZVNWGQhVNJGC39Q8XF4OQ==}
     engines: {node: ^12 || ^14 || >=16}
-    hasBin: true
     peerDependencies:
       postcss: ^8.4
 
@@ -5819,7 +5816,6 @@ packages:
   css-has-pseudo@3.0.4:
     resolution: {integrity: sha512-Vse0xpR1K9MNlp2j5w1pgWIJtm1a8qS0JwS9goFYcImjlHEmywP9VUF05aGBXzGpDJF86QXk4L0ypBmwPhGArw==}
     engines: {node: ^12 || ^14 || >=16}
-    hasBin: true
     peerDependencies:
       postcss: ^8.4
 
@@ -5851,7 +5847,6 @@ packages:
   css-prefers-color-scheme@6.0.3:
     resolution: {integrity: sha512-4BqMbZksRkJQx2zAjrokiGMd07RqOa2IxIrrN10lyBe9xhn9DEvjUK79J6jkeiv9D9hQFXKb6g1jwU62jziJZA==}
     engines: {node: ^12 || ^14 || >=16}
-    hasBin: true
     peerDependencies:
       postcss: ^8.4
 
@@ -7807,7 +7802,6 @@ packages:
   jest-cli@27.5.1:
     resolution: {integrity: sha512-Hc6HOOwYq4/74/c62dEE3r5elx8wjYqxY0r0G/nFrLDPMFRu6RA/u8qINOIkvhxG7mMQ5EJsOGfRpI8L6eFUVw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    hasBin: true
     peerDependencies:
       node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
     peerDependenciesMeta:
@@ -8005,7 +7999,6 @@ packages:
   jest@27.5.1:
     resolution: {integrity: sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    hasBin: true
     peerDependencies:
       node-notifier: ^8.0.1 || ^9.0.0 || ^10.0.0
     peerDependenciesMeta:
@@ -8831,14 +8824,12 @@ packages:
   next-sitemap@4.2.3:
     resolution: {integrity: sha512-vjdCxeDuWDzldhCnyFCQipw5bfpl4HmZA7uoo3GAaYGjGgfL4Cxb1CiztPuWGmS+auYs7/8OekRS8C2cjdAsjQ==}
     engines: {node: '>=14.18'}
-    hasBin: true
     peerDependencies:
       next: '*'
 
   next@14.2.3:
     resolution: {integrity: sha512-dowFkFTR8v79NPJO4QsBUtxv0g9BrS/phluVpMAt2ku7H+cbcBJlopXjkWlwxrk/xGqMemr7JkGPGemPrLLX7A==}
     engines: {node: '>=18.17.0'}
-    hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
       '@playwright/test': ^1.41.2
@@ -10131,7 +10122,6 @@ packages:
   react-scripts@5.0.1:
     resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==}
     engines: {node: '>=14.0.0'}
-    hasBin: true
     peerDependencies:
       eslint: '*'
       react: '>= 16'
@@ -11440,13 +11430,11 @@ packages:
 
   update-browserslist-db@1.0.11:
     resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
-    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
 
   update-browserslist-db@1.0.13:
     resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
-    hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
 
@@ -11602,7 +11590,6 @@ packages:
   vite@4.4.7:
     resolution: {integrity: sha512-6pYf9QJ1mHylfVh39HpuSfMPojPSKVxZvnclX1K1FyZ1PXDOcLBibdq5t1qxJSnL63ca8Wf4zts6mD8u8oc9Fw==}
     engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
     peerDependencies:
       '@types/node': '>= 14'
       less: '*'
@@ -11630,7 +11617,6 @@ packages:
   vite@5.0.12:
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
     peerDependencies:
       '@types/node': ^18.0.0 || >=20.0.0
       less: '*'
@@ -11658,7 +11644,6 @@ packages:
   vitest@0.33.0:
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
-    hasBin: true
     peerDependencies:
       '@edge-runtime/vm': '*'
       '@vitest/browser': '*'
@@ -11774,7 +11759,6 @@ packages:
   webpack-dev-server@4.15.0:
     resolution: {integrity: sha512-HmNB5QeSl1KpulTBQ8UT4FPrByYyaLxpJoQ0+s7EvUrMc16m0ZS1sgb1XGqzmgCPk0c9y+aaXxn11tbLzuM7NQ==}
     engines: {node: '>= 12.13.0'}
-    hasBin: true
     peerDependencies:
       webpack: ^4.37.0 || ^5.0.0
       webpack-cli: '*'
@@ -11804,7 +11788,6 @@ packages:
   webpack@5.82.0:
     resolution: {integrity: sha512-iGNA2fHhnDcV1bONdUu554eZx+XeldsaeQ8T67H6KKHl2nUSwX8Zm7cmzOA46ox/X1ARxf7Bjv8wQ/HsB5fxBg==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
     peerDependencies:
       webpack-cli: '*'
     peerDependenciesMeta:
