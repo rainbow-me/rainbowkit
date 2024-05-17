@@ -1,5 +1,26 @@
 # example
 
+## 0.0.97
+
+### Patch Changes
+
+- af4ea4e: Added Kraken Wallet support with `krakenWallet` wallet connector
+- Updated dependencies [af4ea4e]
+- Updated dependencies [f0b3b25]
+  - @rainbow-me/rainbowkit@2.0.7
+  - @rainbow-me/rainbow-button@0.2.7
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
+## 0.0.96
+
+### Patch Changes
+
+- Updated dependencies [7ab6e50]
+- Updated dependencies [515498f]
+  - @rainbow-me/rainbowkit@2.0.6
+  - @rainbow-me/rainbow-button@0.2.6
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.0
+
 ## 0.0.95
 
 ### Patch Changes
