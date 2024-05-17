@@ -1,5 +1,6 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
+import 'dotenv/config';
 import * as esbuild from 'esbuild';
 import { replace } from 'esbuild-plugin-replace';
 import postcss from 'postcss';
@@ -20,6 +21,12 @@ const getAllEntryPoints = async (rootPath) =>
     );
 
 const baseBuildConfig = (onEnd) => {
+  const rainbowProviderApiKey = process.env.RAINBOW_PROVIDER_API_KEY;
+
+  if (!rainbowProviderApiKey) {
+    throw new Error('missing RAINBOW_PROVIDER_API_KEY env variable');
+  }
+
   return {
     banner: {
       js: '"use client";', // Required for Next 13 App Router
@@ -34,9 +41,11 @@ const baseBuildConfig = (onEnd) => {
     },
     plugins: [
       replace({
-        include: /src\/components\/RainbowKitProvider\/useFingerprint.ts$/,
+        include:
+          /src\/components\/RainbowKitProvider\/useFingerprint.ts$|src\/core\/network\/enhancedProvider.ts$/,
         values: {
           __buildVersion: process.env.npm_package_version,
+          __rainbowProviderApiKey: rainbowProviderApiKey,
         },
       }),
       vanillaExtractPlugin({
