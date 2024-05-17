@@ -13,7 +13,7 @@
     "next": "^14.2.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "viem": "2.9.31",
+    "viem": "^2.10.9",
     "wagmi": "^2.9.2",
     "@tanstack/react-query": "^5.28.4"
   },
