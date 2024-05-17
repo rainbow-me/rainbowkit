@@ -73,12 +73,7 @@
     "typescript": "5.4.2",
     "viem": "^2.9.31",
     "vitest": "^0.33.0",
-    "wagmi": "^2.9.2",
-    "@wagmi/core": "^2.10.2",
-    "@coinbase/wallet-sdk": "4.0.0-beta.14"
-  },
-  "resolutions": {
-    "@coinbase/wallet-sdk": "4.0.0-beta.14"
+    "wagmi": "^2.9.2"
   },
   "packageManager": "pnpm@9.1.1",
   "pnpm": {

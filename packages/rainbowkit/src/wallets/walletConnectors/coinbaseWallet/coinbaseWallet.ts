@@ -1,5 +1,5 @@
 import { createConnector } from 'wagmi';
-import { coinbaseWallet as coinbaseConnector } from '../../../connectors/coinbaseWallet';
+import { coinbaseWallet as coinbaseConnector } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet, WalletDetailsParams } from '../../Wallet';
 
