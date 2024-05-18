@@ -4,10 +4,6 @@
 
 ### Minor Changes
 
-- 90d6931: Introduced the Enhanced Provider to handle fallback resolutions when a Mainnet provider transport is unavailable.
-
-  ENS names for dApps without a Mainnet provider will now properly resolve. Additional conveniences will be soon be rolling out in RainbowKit.
-
 - 82153ed: Upgraded compatible `wagmi` and `@coinbase/wallet-sdk` versions to support [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
 
   Smart Wallet enables users to create a new wallet in seconds with Passkeys, without installing an app or extension. Smart Wallet users can use the same account and address across all onchain apps with RainbowKit.
@@ -17,6 +13,10 @@
   Smart Wallet is currently only available for testnets while using RainbowKit in a local development environment. Support for Mainnet and full production rollout will occur automatically later this month.
 
   Coinbase Wallet users on desktop and mobile will now interact with a new connection flow in RainbowKit alongside Smart Wallet.
+
+- 90d6931: Introduced the Enhanced Provider to handle fallback resolutions when a Mainnet provider transport is unavailable.
+
+  ENS names for dApps without a Mainnet provider will now properly resolve. Additional conveniences will be soon be rolling out in RainbowKit.
 
 ## 2.0.8
 
