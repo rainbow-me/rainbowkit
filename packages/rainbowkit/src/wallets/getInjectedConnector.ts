@@ -1,19 +1,21 @@
 import { createConnector } from 'wagmi';
 import { injected } from 'wagmi/connectors';
+import { WalletProviderFlags, WindowProvider } from '../types/utils';
 import { CreateConnector, WalletDetailsParams } from './Wallet';
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true
  */
-function getExplicitInjectedProvider(flag: string) {
-  if (typeof window === 'undefined' || typeof window.ethereum === 'undefined')
+function getExplicitInjectedProvider(flag: WalletProviderFlags) {
+  const _window =
+    typeof window !== 'undefined' ? (window as WindowProvider) : undefined;
+  if (typeof _window === 'undefined' || typeof _window.ethereum === 'undefined')
     return;
-  const providers = window.ethereum.providers;
+  const providers = _window.ethereum.providers;
   return providers
-    ? // @ts-expect-error - some provider flags are not typed in `InjectedProviderFlags`
-      providers.find((provider) => provider[flag])
-    : window.ethereum[flag]
-      ? window.ethereum
+    ? providers.find((provider) => provider[flag])
+    : _window.ethereum[flag]
+      ? _window.ethereum
       : undefined;
 }
 
@@ -39,7 +41,7 @@ export function hasInjectedProvider({
   flag,
   namespace,
 }: {
-  flag?: string;
+  flag?: WalletProviderFlags;
   namespace?: string;
 }): boolean {
   if (namespace && typeof getWindowProviderNamespace(namespace) !== 'undefined')
@@ -56,23 +58,25 @@ function getInjectedProvider({
   flag,
   namespace,
 }: {
-  flag?: string;
+  flag?: WalletProviderFlags;
   namespace?: string;
 }) {
-  if (typeof window === 'undefined') return;
+  const _window =
+    typeof window !== 'undefined' ? (window as WindowProvider) : undefined;
+  if (typeof _window === 'undefined') return;
   if (namespace) {
     // prefer custom eip1193 namespaces
     const windowProvider = getWindowProviderNamespace(namespace);
     if (windowProvider) return windowProvider;
   }
-  const providers = window.ethereum?.providers;
+  const providers = _window.ethereum?.providers;
   if (flag) {
     const provider = getExplicitInjectedProvider(flag);
     if (provider) return provider;
   }
   if (typeof providers !== 'undefined' && providers.length > 0)
     return providers[0];
-  return window.ethereum;
+  return _window.ethereum;
 }
 
 function createInjectedConnector(provider?: any): CreateConnector {
@@ -101,7 +105,7 @@ export function getInjectedConnector({
   namespace,
   target,
 }: {
-  flag?: string;
+  flag?: WalletProviderFlags;
   namespace?: string;
   target?: any;
 }): CreateConnector {

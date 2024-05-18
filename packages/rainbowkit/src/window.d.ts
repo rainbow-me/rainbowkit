@@ -1,1 +1,0 @@
-import 'wagmi/window';

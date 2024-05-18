@@ -40,7 +40,7 @@
     "react": ">=18",
     "react-dom": ">=18",
     "viem": "2.x",
-    "wagmi": "2.x"
+    "wagmi": "^2.9.0"
   },
   "repository": {
     "type": "git",
