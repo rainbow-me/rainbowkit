@@ -1,6 +1,6 @@
 # @rainbow-me/rainbowkit-siwe-next-auth
 
-## 1.0.0
+## 0.4.1
 
 ### Patch Changes
 
