@@ -8,7 +8,7 @@
 - Updated dependencies [82153ed]
   - @rainbow-me/rainbowkit@2.1.0
   - @rainbow-me/rainbow-button@0.2.9
-  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.1
 
 ## 0.0.98
 
