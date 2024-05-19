@@ -2,6 +2,8 @@ import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { SiweMessage } from 'siwe';
 import { ironOptions } from './../../lib/iron';
+import { Address, publicActions } from 'viem';
+import { wagmiConfig } from '../_app';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
@@ -10,16 +12,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const { message, signature } = req.body;
         const siweMessage = new SiweMessage(message);
-        const { success, error, data } = await siweMessage.verify({
+
+        const wagmiClient = wagmiConfig.getClient().extend(publicActions);
+
+        const isValid = await wagmiClient.verifyMessage({
+          address: siweMessage.address as Address,
           signature,
+          message: siweMessage.prepareMessage(),
         });
 
-        if (!success) throw error;
+        if (!isValid) {
+          throw new Error('Invalid message');
+        }
 
-        if (data.nonce !== req.session.nonce)
-          return res.status(422).json({ message: 'Invalid nonce.' });
-
-        req.session.siwe = data;
+        req.session.siwe = siweMessage;
         await req.session.save();
         res.json({ ok: true });
       } catch (_error) {

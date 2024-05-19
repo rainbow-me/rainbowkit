@@ -14,6 +14,8 @@ This package is designed to work with the [official Sign-In with Ethereum boiler
 
 If you haven't already, first set up your [Next.js](https://nextjs.org) project with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
 
+[Sign-In with Ethereum](https://login.xyz) doesn't support smart wallet signature verification. If you're interested in adding support for smart wallets, please refer to the [smart wallet](https://www.smartwallet.dev/guides/siwe) documentation for guidance.
+
 ### Install
 
 Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and its peer dependency, [ethers](https://docs.ethers.org/v5/).

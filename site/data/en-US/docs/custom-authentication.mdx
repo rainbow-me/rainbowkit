@@ -15,6 +15,8 @@ First create an authentication adapter. This allows RainbowKit to create/prepare
 
 As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some [custom API endpoints.](https://wagmi.sh/examples/sign-in-with-ethereum)
 
+Note that [Sign-In with Ethereum](https://login.xyz) currently doesn't support smart wallet signature verification. For guidance on adding support for smart wallets, please refer to the [smart wallet](https://www.smartwallet.dev/guides/siwe) documentation.
+
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
 import { SiweMessage } from 'siwe';

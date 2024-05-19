@@ -32,7 +32,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const { wallets } = getDefaultWallets();
 
-const config = getDefaultConfig({
+export const wagmiConfig = getDefaultConfig({
   appName: 'RainbowKit demo',
   projectId: 'YOUR_PROJECT_ID',
   wallets: [
@@ -143,7 +143,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitAuthenticationProvider
           adapter={authAdapter}

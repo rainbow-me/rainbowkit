@@ -144,7 +144,7 @@ const sei = {
   contracts: {},
 } as const satisfies Chain;
 
-const config = getDefaultConfig({
+export const wagmiConfig = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
   chains: [
@@ -535,7 +535,7 @@ function RainbowKitApp({
                           }
                           value={selectedInitialChainId ?? 'default'}
                         >
-                          {[undefined, ...config.chains].map((chain) => (
+                          {[undefined, ...wagmiConfig.chains].map((chain) => (
                             <option
                               key={chain?.id ?? ''}
                               value={chain?.id ?? ''}
@@ -729,7 +729,7 @@ export default function App(
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
-        <WagmiProvider config={config}>
+        <WagmiProvider config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitApp {...appProps} />
           </QueryClientProvider>
