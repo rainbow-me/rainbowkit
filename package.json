@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "postinstall": "husky install",
-    "dev": "pnpm --recursive --parallel --filter @rainbow-me/rainbow* --filter with-next-siwe-next-auth dev",
+    "dev": "pnpm --recursive --parallel --filter @rainbow-me/rainbow* --filter example dev",
     "dev:lib": "pnpm --parallel --filter @rainbow-me/rainbow* dev",
     "dev:example": "pnpm dev:lib & pnpm --filter example dev",
     "dev:site": "pnpm dev:lib & pnpm --filter site dev",
