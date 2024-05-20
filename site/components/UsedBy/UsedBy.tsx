@@ -117,6 +117,11 @@ const frens = [
     name: 'Frax',
     url: 'https://app.frax.finance/',
   },
+  {
+    asset: 'speedtracer',
+    name: 'Speedtracer',
+    url: 'https://www.speedtracer.xyz/',
+  },
 ];
 
 export function UsedBy() {
