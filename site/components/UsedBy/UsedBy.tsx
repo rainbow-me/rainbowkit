@@ -23,6 +23,11 @@ const frens = [
     url: 'https://arbitrum.foundation/',
   },
   {
+    asset: 'warpcast',
+    name: 'Warpcast',
+    url: 'https://warpcast.com/',
+  },
+  {
     asset: 'opensea-pro',
     name: 'OpenSea Pro',
     url: 'https://pro.opensea.io/',
@@ -76,11 +81,6 @@ const frens = [
     asset: 'pooltogether',
     name: 'PoolTogether',
     url: 'https://app.pooltogether.com/',
-  },
-  {
-    asset: 'warpcast',
-    name: 'Warpcast',
-    url: 'https://warpcast.com/',
   },
   {
     asset: 'art-blocks',
