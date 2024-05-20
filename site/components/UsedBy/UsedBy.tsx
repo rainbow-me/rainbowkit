@@ -122,6 +122,11 @@ const frens = [
     name: 'Speedtracer',
     url: 'https://www.speedtracer.xyz/',
   },
+  {
+    asset: 'gitcoin',
+    name: 'Gitcoin',
+    url: 'https://www.gitcoin.co/',
+  },
 ];
 
 export function UsedBy() {
