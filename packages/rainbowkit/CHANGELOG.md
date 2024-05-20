@@ -1,5 +1,23 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.0
+
+### Minor Changes
+
+- 82153ed: Upgraded compatible `wagmi` and `@coinbase/wallet-sdk` versions to support [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
+
+  Smart Wallet enables users to create a new wallet in seconds with Passkeys, without installing an app or extension. Smart Wallet users can use the same account and address across all onchain apps with RainbowKit.
+
+  Smart Wallet and the underlying smart contract is fully compatible with Wagmi, but dApps need to ensure that their offchain signature validation is [ERC-6492](https://eips.ethereum.org/EIPS/eip-6492) compliant to support smart contract wallets. Follow [this guide](https://www.smartwallet.dev/guides/signature-verification) for more information.
+
+  Smart Wallet is currently only available for testnets while using RainbowKit in a local development environment. Support for Mainnet and full production rollout will occur automatically later this month.
+
+  Coinbase Wallet users on desktop and mobile will now interact with a new connection flow in RainbowKit alongside Smart Wallet.
+
+- 90d6931: Introduced the Enhanced Provider to handle fallback resolutions when a Mainnet provider transport is unavailable.
+
+  ENS names for dApps without a Mainnet provider will now properly resolve. Additional conveniences will be soon be rolling out in RainbowKit.
+
 ## 2.0.8
 
 ### Patch Changes

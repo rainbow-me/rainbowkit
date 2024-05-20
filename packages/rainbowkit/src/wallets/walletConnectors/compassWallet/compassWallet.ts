@@ -43,6 +43,10 @@ export const compassWallet = (): Wallet => {
         ],
       },
     },
-    createConnector: getInjectedConnector({ namespace: 'compassEvm' }),
+    createConnector: getInjectedConnector({
+      id: 'compass',
+      name: 'Compass Wallet',
+      namespace: 'compassEvm',
+    }),
   };
 };
