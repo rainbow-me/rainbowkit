@@ -93,9 +93,9 @@ const frens = [
     url: 'https://coolcatsnft.com/',
   },
   {
-    asset: 'partybid',
-    name: 'PartyBid',
-    url: 'https://www.partybid.app/',
+    asset: 'party',
+    name: 'Party',
+    url: 'https://www.party.app/',
   },
   {
     asset: 'superrare',
