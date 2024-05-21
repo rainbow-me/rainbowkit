@@ -3,10 +3,9 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
-  useState,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { RemoveScroll } from 'react-remove-scroll';
+import { useScrollLock } from '../../hooks/useScrollLock';
 import { isMobile } from '../../utils/isMobile';
 import { Box } from '../Box/Box';
 import { useThemeRootProps } from '../RainbowKitProvider/RainbowKitProvider';
@@ -25,6 +24,8 @@ interface DialogProps {
 }
 
 export function Dialog({ children, onClose, open, titleId }: DialogProps) {
+  useScrollLock(open);
+
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) =>
       open && event.key === 'Escape' && onClose();
@@ -34,13 +35,6 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, onClose]);
 
-  const [bodyScrollable, setBodyScrollable] = useState(true);
-  useEffect(() => {
-    setBodyScrollable(
-      getComputedStyle(window.document.body).overflow !== 'hidden',
-    );
-  }, []);
-
   const handleBackdropClick = useCallback(() => onClose(), [onClose]);
   const themeRootProps = useThemeRootProps();
   const mobile = isMobile();
@@ -49,28 +43,26 @@ export function Dialog({ children, onClose, open, titleId }: DialogProps) {
     <>
       {open
         ? createPortal(
-            <RemoveScroll enabled={bodyScrollable}>
-              <Box {...themeRootProps}>
-                <Box
-                  {...themeRootProps}
-                  alignItems={mobile ? 'flex-end' : 'center'}
-                  aria-labelledby={titleId}
-                  aria-modal
-                  className={styles.overlay}
-                  onClick={handleBackdropClick}
-                  position="fixed"
-                  role="dialog"
+            <Box {...themeRootProps}>
+              <Box
+                {...themeRootProps}
+                alignItems={mobile ? 'flex-end' : 'center'}
+                aria-labelledby={titleId}
+                aria-modal
+                className={styles.overlay}
+                onClick={handleBackdropClick}
+                position="fixed"
+                role="dialog"
+              >
+                <FocusTrap
+                  className={styles.content}
+                  onClick={stopPropagation}
+                  role="document"
                 >
-                  <FocusTrap
-                    className={styles.content}
-                    onClick={stopPropagation}
-                    role="document"
-                  >
-                    {children}
-                  </FocusTrap>
-                </Box>
+                  {children}
+                </FocusTrap>
               </Box>
-            </RemoveScroll>,
+            </Box>,
             document.body,
           )
         : null}
