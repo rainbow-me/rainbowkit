@@ -1,65 +1,53 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 type OriginalStyle = {
   overflow: CSSStyleDeclaration['overflow'];
   paddingRight: CSSStyleDeclaration['paddingRight'];
 };
 
-const IS_SERVER = typeof window === 'undefined';
-
 export function useScrollLock(locked: boolean) {
   const target = useRef<HTMLElement | null>(null);
   const originalStyle = useRef<OriginalStyle | null>(null);
 
-  const lock = () => {
-    if (target.current) {
-      const { overflow, paddingRight } = target.current.style;
+  const lock = useCallback(() => {
+    if (!target.current) return;
 
-      // Save the original styles
-      originalStyle.current = { overflow, paddingRight };
+    const { overflow, paddingRight } = target.current.style;
 
-      // Prevent width reflow
-      const offsetWidth =
-        target.current === document.body
-          ? window.innerWidth
-          : target.current.offsetWidth;
-      const currentPaddingRight =
-        parseInt(window.getComputedStyle(target.current).paddingRight, 10) || 0;
+    // Save the original styles
+    originalStyle.current = { overflow, paddingRight };
 
-      const scrollbarWidth = offsetWidth - target.current.scrollWidth;
-      target.current.style.paddingRight = `${
-        scrollbarWidth + currentPaddingRight
-      }px`;
+    // Prevent width reflow
+    const offsetWidth =
+      target.current === document.body
+        ? window.innerWidth
+        : target.current.offsetWidth;
+    const currentPaddingRight =
+      parseInt(window.getComputedStyle(target.current).paddingRight, 10) || 0;
 
-      // Lock the scroll
-      target.current.style.overflow = 'hidden';
-    }
-  };
+    const scrollbarWidth = offsetWidth - target.current.scrollWidth;
+    target.current.style.paddingRight = `${
+      scrollbarWidth + currentPaddingRight
+    }px`;
 
-  const unlock = () => {
-    if (target.current && originalStyle.current) {
-      target.current.style.overflow = originalStyle.current.overflow;
+    // Lock the scroll
+    target.current.style.overflow = 'hidden';
+  }, []);
 
-      // Only reset padding right if we changed it
-      target.current.style.paddingRight = originalStyle.current.paddingRight;
-    }
-  };
+  const unlock = useCallback(() => {
+    if (!target.current || !originalStyle.current) return;
 
-  const useHook = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+    target.current.style.overflow = originalStyle.current.overflow;
 
-  useHook(() => {
-    if (IS_SERVER) return;
+    // Only reset padding right if we changed it
+    target.current.style.paddingRight = originalStyle.current.paddingRight;
+  }, []);
 
+  useEffect(() => {
     target.current = document.body;
 
-    if (locked) {
-      lock();
-    } else {
-      unlock();
-    }
+    if (locked) lock();
 
-    return () => {
-      unlock();
-    };
-  }, [locked]);
+    return unlock;
+  }, [lock, unlock, locked]);
 }
