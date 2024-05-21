@@ -118,9 +118,6 @@ importers:
       '@types/jest':
         specifier: ^29.5.2
         version: 29.5.2
-      buffer:
-        specifier: npm:buffer@6.0.3
-        version: 6.0.3
       react-scripts:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.21.4(@babel/core@7.16.0))(@babel/plugin-transform-react-jsx@7.21.5(@babel/core@7.16.0))(@types/babel__core@7.20.5)(bufferutil@4.0.8)(esbuild@0.20.2)(eslint@8.15.0)(react@18.3.0)(type-fest@3.13.1)(typescript@5.4.2)
@@ -296,9 +293,6 @@ importers:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../../packages/rainbowkit
-      buffer:
-        specifier: ^6.0.3
-        version: 6.0.3
     devDependencies:
       '@vitejs/plugin-react':
         specifier: ^4.2.1
