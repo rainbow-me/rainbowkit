@@ -1,4 +1,3 @@
-import './polyfills';
 import './global.css';
 import '@rainbow-me/rainbowkit/styles.css';
 import React from 'react';

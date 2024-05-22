@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "@remix-run/node": "^2.7.2",
-    "@remix-run/react": "^2.7.2",
-    "@remix-run/serve": "^2.7.2",
+    "@remix-run/node": "^2.9.2",
+    "@remix-run/react": "^2.9.2",
+    "@remix-run/serve": "^2.9.2",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "viem": "2.9.31",
@@ -20,11 +20,9 @@
     "@tanstack/react-query": "^5.28.4"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.7.2",
-    "@remix-run/eslint-config": "^2.7.2",
+    "@remix-run/dev": "^2.9.2",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
-    "eslint": "^8.15.0",
     "typescript": "5.4.2"
   },
   "engines": {
