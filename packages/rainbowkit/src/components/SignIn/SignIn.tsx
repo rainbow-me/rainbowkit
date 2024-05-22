@@ -73,12 +73,11 @@ export function SignIn({
         status: 'signing',
       }));
 
-      const message = authAdapter.createMessage({ address, chainId, nonce });
       let signature: string;
 
       try {
         signature = await signMessageAsync({
-          message: authAdapter.getMessageBody({ message }),
+          message: authAdapter.createMessage({ address, chainId, nonce }),
         });
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {

@@ -6,6 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import type { Address } from 'viem';
 import { Config, useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
@@ -17,10 +18,9 @@ export interface AuthenticationAdapter<Message> {
   getNonce: () => Promise<string>;
   createMessage: (args: {
     nonce: string;
-    address: string;
+    address: Address;
     chainId: number;
   }) => Message;
-  getMessageBody: (args: { message: Message }) => string;
   verify: (args: { message: Message; signature: string }) => Promise<boolean>;
   signOut: () => Promise<void>;
 }
@@ -31,8 +31,8 @@ export interface AuthenticationConfig<Message> {
 }
 
 // Right now this function only serves to infer the generic Message type
-export function createAuthenticationAdapter<Message>(
-  adapter: AuthenticationAdapter<Message>,
+export function createAuthenticationAdapter(
+  adapter: AuthenticationAdapter<string>,
 ) {
   return adapter;
 }

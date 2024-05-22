@@ -4,16 +4,17 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import React, { ReactNode, useMemo } from 'react';
-import { SiweMessage } from 'siwe';
+import type { Address } from 'viem';
+import { type CreateSiweMessageParameters, createSiweMessage } from 'viem/siwe';
 
 type UnconfigurableMessageOptions = {
-  address: string;
+  address: Address;
   chainId: number;
   nonce: string;
 };
 
 type ConfigurableMessageOptions = Partial<
-  Omit<SiweMessage, keyof UnconfigurableMessageOptions>
+  Omit<CreateSiweMessageParameters, keyof UnconfigurableMessageOptions>
 > & {
   [_Key in keyof UnconfigurableMessageOptions]?: never;
 };
@@ -38,7 +39,6 @@ export function RainbowKitSiweNextAuthProvider({
         createMessage: ({ address, chainId, nonce }) => {
           const defaultConfigurableOptions: ConfigurableMessageOptions = {
             domain: window.location.host,
-            statement: 'Sign in with Ethereum to the app.',
             uri: window.location.origin,
             version: '1',
           };
@@ -49,7 +49,7 @@ export function RainbowKitSiweNextAuthProvider({
             nonce,
           };
 
-          return new SiweMessage({
+          return createSiweMessage({
             ...defaultConfigurableOptions,
 
             // Spread custom SIWE message options provided by the consumer
@@ -59,8 +59,6 @@ export function RainbowKitSiweNextAuthProvider({
             ...unconfigurableOptions,
           });
         },
-
-        getMessageBody: ({ message }) => message.prepareMessage(),
 
         getNonce: async () => {
           const nonce = await getCsrfToken();
