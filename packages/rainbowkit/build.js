@@ -1,11 +1,13 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
-import 'dotenv/config';
+import { config } from 'dotenv';
 import * as esbuild from 'esbuild';
 import { replace } from 'esbuild-plugin-replace';
 import postcss from 'postcss';
 import prefixSelector from 'postcss-prefix-selector';
 import readdir from 'recursive-readdir-files';
+
+config({ path: '.env.local' });
 
 const isWatching = process.argv.includes('--watch');
 const isCssMinified = process.env.MINIFY_CSS === 'true';
