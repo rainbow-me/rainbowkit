@@ -1,6 +1,5 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin';
 import autoprefixer from 'autoprefixer';
-import 'dotenv/config';
 import * as esbuild from 'esbuild';
 import { replace } from 'esbuild-plugin-replace';
 import postcss from 'postcss';
