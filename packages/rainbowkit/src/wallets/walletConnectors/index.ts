@@ -24,6 +24,7 @@ import { kaikasWallet } from './kaikasWallet/kaikasWallet';
 import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
+import { magicEdenWallet } from './magicEdenWallet/magicEdenWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
 import { oktoWallet } from './oktoWallet/oktoWallet';
@@ -78,6 +79,7 @@ export {
   krakenWallet,
   kresusWallet,
   ledgerWallet,
+  magicEdenWallet,
   metaMaskWallet,
   mewWallet,
   oktoWallet,
