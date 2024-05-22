@@ -7,14 +7,14 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
     CredentialsProvider({
       async authorize(credentials) {
         try {
-          const siwe = new SiweMessage(
+          const siwe = createSiweMessage(
             JSON.parse(credentials?.message || '{}')
           );
 

@@ -8,6 +8,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   AvatarComponent,
   DisclaimerComponent,
@@ -17,12 +19,7 @@ import {
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
-import {
-  GetSiweMessageOptions,
-  RainbowKitSiweNextAuthProvider,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, useDisconnect } from 'wagmi';
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
 
 import { AppContextProps } from '../lib/AppContextProps';
 import { config } from '../wagmi';
@@ -60,10 +57,6 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
     </div>
   );
 };
-
-const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to the RainbowKit Demo',
-});
 
 const themes = [
   { name: 'light', theme: lightTheme },
@@ -150,10 +143,7 @@ function RainbowKitApp({
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
   return (
-    <RainbowKitSiweNextAuthProvider
-      enabled={authEnabled}
-      getSiweMessageOptions={getSiweMessageOptions}
-    >
+    <RainbowKitSiweNextAuthProvider enabled={authEnabled}>
       <RainbowKitProvider
         appInfo={{
           ...demoAppInfo,

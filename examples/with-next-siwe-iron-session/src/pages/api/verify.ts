@@ -1,7 +1,7 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { SiweMessage } from 'siwe';
 import { ironOptions } from '../../../lib/iron';
+import { createSiweMessage } from 'viem/siwe';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     case 'POST':
       try {
         const { message, signature } = req.body;
-        const siweMessage = new SiweMessage(message);
+        const siweMessage = createSiweMessage(message);
         const { success, error, data } = await siweMessage.verify({
           signature,
         });
