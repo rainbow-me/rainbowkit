@@ -20,9 +20,9 @@
     "@tanstack/react-query": "^5.28.4"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "dev": "GENERATE_SOURCEMAP=false react-scripts start",
+    "start": "GENERATE_SOURCEMAP=false react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@rainbow-me)/\"",
     "eject": "react-scripts eject"
   },
