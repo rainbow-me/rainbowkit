@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-Fixed a bug where `process.env.RAINBOW_PROVIDER_API_KEY` was crashing when running vite in dev mode.
+Resolved an issue with the Enhanced Provider when using RainbowKit in Vite without a `process.env` polyfill
