@@ -24,7 +24,7 @@
   "scripts": {
     "build": "node build.js",
     "build:watch": "node build.js --watch",
-    "dev": "dotenv -e .env.local pnpm build:watch & pnpm typegen:watch",
+    "dev": "pnpm build:watch & pnpm typegen:watch",
     "prepare": "MINIFY_CSS=true pnpm build",
     "prebuild": "pnpm typegen",
     "typecheck": "pnpm tsc --noEmit",
@@ -57,12 +57,12 @@
     "@vanilla-extract/css-utils": "0.1.3",
     "@vanilla-extract/private": "^1.0.3",
     "autoprefixer": "^10.4.16",
-    "dotenv-cli": "^7.4.2",
     "jsdom": "^23.0.1",
     "nock": "^13.4.0",
     "postcss": "^8.4.32",
     "react": "^18.3.0",
-    "vitest": "^0.33.0"
+    "vitest": "^0.33.0",
+    "dotenv": "^16.4.5"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.14.0",
