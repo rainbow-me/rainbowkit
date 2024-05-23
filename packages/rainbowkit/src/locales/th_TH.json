@@ -598,6 +598,22 @@
         }
       }
     },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "Install the Magic Eden extension",
+          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "สร้างหรือนำเข้า Wallet",
+          "description": "แน่ใจว่าคุณได้สำรองกระเป๋าเงินของคุณโดยใช้วิธีที่ปลอดภัย อย่าเปิดเผยข้อความลับสำหรับการกู้คืนของคุณกับบุคคลใด ๆ"
+        },
+        "step3": {
+          "title": "รีเฟรชเบราว์เซอร์ของคุณ",
+          "description": "เมื่อคุณตั้งค่ากระเป๋าเงินของคุณแล้วคลิกด้านล่างเพื่อรีเฟรชเบราว์เซอร์และโหลดส่วนเสริม"
+        }
+      }
+    },
     "metamask": {
       "qr_code": {
         "step1": {
