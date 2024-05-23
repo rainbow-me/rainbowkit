@@ -114,16 +114,6 @@ RainbowKit artık kullanıcınızın cüzdan seçimini, cüzdan/ işlem bilgiler
 
 Bazı build araçları ek kurulum gerektirecektir.
 
-##### React, Next.js, ve Webpack
-
-Next.js ve Create React tarafından kullanılan [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) paketleyici, [artık Node polyfills sağlamıyor](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), bu yüzden RainbowKit'in eş bağımlılıklarını karşılamak için bu modülleri kendiniz eklemeniz gerekecek. Create React App, özellikle `Buffer` için polyfill oluşturmanızı gerektirir.
-
-Projelerinizin konfigürasyon rehberi olarak [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), ve [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) örneklerimize bakabilirsiniz.
-
-##### Vite
-
-[Vite](https://vitejs.dev) paketleyicisi Node polyfills sağlamaz, dolayısıyla `global`, `Buffer` ve `process.env` için polyfills eklemeniz gerekecektir. Örnek olarak, [örneğimizdeki Vite projesindeki polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts) atıfta bulunabilirsiniz.
-
 ##### Remix
 
 [Remix](https://remix.run) kullanırken, `buffer`, `events` ve `http` modüllerini polyfill yapmanız gerekmektedir. Aşağıdaki Remix konfigürasyonuna veya [örnek Remix projemize](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) referans alın.
