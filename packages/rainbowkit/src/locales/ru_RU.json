@@ -598,6 +598,22 @@
         }
       }
     },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "Install the Magic Eden extension",
+          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "Создать или Импортировать кошелек",
+          "description": "Обязательно сделайте резервную копию вашего кошелька с помощью безопасного метода. Никогда не делитесь своей секретной фразой восстановления с кем-либо."
+        },
+        "step3": {
+          "title": "Обновите ваш браузер",
+          "description": "После настройки вашего кошелька, нажмите ниже, чтобы обновить браузер и загрузить расширение."
+        }
+      }
+    },
     "metamask": {
       "qr_code": {
         "step1": {
