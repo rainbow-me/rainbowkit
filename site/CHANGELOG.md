@@ -1,5 +1,14 @@
 # site
 
+## 0.0.100
+
+### Patch Changes
+
+- 725a376: Added Magic Eden Wallet support with `magicEdenWallet` wallet connector
+- Updated dependencies [725a376]
+- Updated dependencies [9be5452]
+  - @rainbow-me/rainbowkit@2.1.1
+
 ## 0.0.99
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.1
+
+### Patch Changes
+
+- 725a376: Added Magic Eden Wallet support with `magicEdenWallet` wallet connector
+- 9be5452: Resolved an issue with the Enhanced Provider when using RainbowKit in Vite without a `process.env` polyfill
+
 ## 2.1.0
 
 ### Minor Changes
