@@ -601,8 +601,8 @@
     "magicEden": {
       "extension": {
         "step1": {
-          "title": "Install the Magic Eden extension",
-          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+          "title": "ติดตั้งส่วนขยาย Magic Eden",
+          "description": "เราแนะนำให้คุณปัก Magic Eden ไว้ที่แถบงานของคุณเพื่อเข้าถึงกระเป๋าเงินของคุณได้ง่ายขึ้น"
         },
         "step2": {
           "title": "สร้างหรือนำเข้า Wallet",
