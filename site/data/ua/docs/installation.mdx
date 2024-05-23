@@ -114,16 +114,6 @@ RainbowKit тепер керуватиме вибором гаманця кор�
 
 Деякі інструменти збірки потребують додаткового налаштування.
 
-##### React, Next.js та Webpack
-
-Збирач [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/), який використовують Next.js та Create React App, [більше не надає поліфіли Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), тому вам потрібно буде включити ці модулі самостійно, щоб задовольнити залежності однолітків RainbowKit. Create React App конкретно вимагає, щоб ви зробили поліфіл `Buffer`.
-
-Дивіться наші зразки [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js) та [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) для керівництва з налаштування для вашого проекту.
-
-##### Vite
-
-Збирач [Vite](https://vitejs.dev) не надає поліфіли Node, тому вам потрібно буде включити поліфіли для `global`, `Buffer` та `process.env`. Як приклад, ви можете звернутися до [поліфілів у нашому зразковому проекті Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
 При використанні [Remix](https://remix.run), вам необхідно зробити поліфіл модулів `buffer`, `events` та `http`. Дивіться нижче конфігурацію Remix або [наш зразковий проект Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
