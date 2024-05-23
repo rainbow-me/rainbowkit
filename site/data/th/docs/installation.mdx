@@ -114,16 +114,6 @@ RainbowKit จะดูแลเลือกกระเป๋าเงินข
 
 เครื่องมือสร้างบางตัวจะต้องการการตั้งค่าเพิ่มเติม.
 
-##### React, Next.js, และ Webpack
-
-[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler ที่ถูกใช้โดย Next.js และ Create React App [ไม่ให้ Node polyfills อีกต่อไป](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), ดังนั้นคุณจำเป็นต้องรวมโมดูลเหล่านี้เองเพื่อคุณครอง RainbowKit's peer dependencies. Create React App ต้องการให้คุณ polyfill `Buffer` โดยเฉพาะ.
-
-อ้างอิง [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), และ [สร้างตัวอย่าง polyfills ของ React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) สำหรับคำแนะนำการกำหนดค่าสำหรับโปรเจคของคุณ.
-
-##### Vite
-
-bundler [Vite](https://vitejs.dev) ไม่ได้ให้ Node polyfills, ดังนั้นคุณจำเป็นต้องรวม polyfills สำหรับ `global`, `Buffer` และ `process.env`. เป็นตัวอย่าง, คุณสามารถอ้างอิง [polyfills ในตัวอย่างโปรเจค Vite ของเรา](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
 เมื่อใช้งาน [Remix](https://remix.run) คุณต้อง polyfill โมดูล `buffer`, `events` และ `http` อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)
