@@ -601,8 +601,8 @@
     "magicEden": {
       "extension": {
         "step1": {
-          "title": "Install the Magic Eden extension",
-          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+          "title": "Magic Eden eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim sağlamak için Magic Eden'i görev çubuğunuza sabitlemenizi öneririz."
         },
         "step2": {
           "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
