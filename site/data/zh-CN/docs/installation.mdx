@@ -114,16 +114,6 @@ RainbowKit 现在将处理您用户的钱包选择，显示钱包/交易信息�
 
 一些构建工具将需要额外的设置。
 
-##### React，Next.js和Webpack
-
-Next.js 和 Create React App 使用的[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) 打包器[不再提供 Node polyfills](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)，所以你需要自行包含这些模块来满足 RainbowKit 的同级依赖。 Create React App 特别要求你对 `Buffer` 进行 polyfill。 Create React App 特别要求你对 `Buffer` 进行 polyfill。 Create React App 特别要求你对 `Buffer` 进行 polyfill。 Create React App 特别要求你对 `Buffer` 进行 polyfill。 Create React App 特别要求你对 `Buffer` 进行 polyfill。 Create React App 特别要求您为 `Buffer` 填充兼容性代码。 Create React App 特别要求您为 `Buffer` 填充兼容性代码。
-
-参考我们的 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)、[Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js)和[Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 示例，为您的项目提供配置指导。
-
-##### Vite
-
-[Vite](https://vitejs.dev) 打包程序不提供 Node polyfills，所以你需要包含 `global`、`Buffer` 和 `process.env` 的 polyfills。 例如，您可以参考我们的 [在我们的 Vite 项目示例中的 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)。 例如，您可以参考我们的 [Vite 示例项目中的 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)。
-
 ##### Remix
 
 使用 [Remix](https://remix.run) 时，您必须填充 `buffer`、`events` 和 `http` 模块。 参考下面的 Remix 配置，或者我们的样本 [Remix 项目](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)。
