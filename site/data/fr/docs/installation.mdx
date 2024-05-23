@@ -114,16 +114,6 @@ RainbowKit va désormais gérer la sélection du portefeuille de votre utilisate
 
 Certains outils de construction nécessiteront une configuration supplémentaire.
 
-##### React, Next.js, et Webpack
-
-Le [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler utilisé par Next.js et Create React App [ne fournit plus les polyfills Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), donc vous devrez inclure ces modules vous-même pour satisfaire les dépendances de pairs de RainbowKit. Create React App Exige spécifiquement que vous polyfilliez `Buffer`.
-
-Consultez notre [Configuration webpack de Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Configuration webpack de l'application routeur Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), et les [polyfills de Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) exemples pour des conseils de configuration pour votre projet.
-
-##### Vite
-
-Le constructeur [Vite](https://vitejs.dev) ne fournit pas les polyfills Node, donc vous devrez inclure les polyfills pour `global`, `Buffer` et `process.env`. Comme exemple, vous pouvez vous référer aux [polyfills dans notre exemple de projet Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
 Lorsque vous utilisez [Remix](https://remix.run), vous devez polyfiller les modules `buffer`, `events` et `http`. Référencez la configuration Remix ci-dessous, ou [notre exemple de projet Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
