@@ -598,6 +598,22 @@
         }
       }
     },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "Install the Magic Eden extension",
+          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 누구와도 비밀 복구 구문을 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
     "metamask": {
       "qr_code": {
         "step1": {
