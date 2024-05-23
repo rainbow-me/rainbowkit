@@ -601,8 +601,8 @@
     "magicEden": {
       "extension": {
         "step1": {
-          "title": "Install the Magic Eden extension",
-          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+          "title": "Instale a extensão Magic Eden",
+          "description": "Recomendamos fixar o Magic Eden na sua barra de tarefas para facilitar o acesso à sua carteira."
         },
         "step2": {
           "title": "Criar ou Importar uma Carteira",
