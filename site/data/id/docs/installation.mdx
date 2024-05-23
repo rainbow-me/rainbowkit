@@ -114,16 +114,6 @@ RainbowKit sekarang akan menangani pemilihan dompet pengguna Anda, menampilkan i
 
 Beberapa alat pembangunan akan memerlukan pengaturan tambahan.
 
-##### React, Next.js, dan Webpack
-
-Paket bundel [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) yang digunakan oleh Next.js dan Create React App [tidak lagi menyediakan polyfill Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), sehingga Anda perlu menyertakan modul-modul ini sendiri untuk memenuhi dependensi sejawat RainbowKit. Create React App secara khusus memerlukan Anda untuk melakukan polyfill `Buffer`.
-
-Merujuk pada [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), dan [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) sampel untuk petunjuk konfigurasi proyek Anda.
-
-##### Vite
-
-Paket bundel [Vite](https://vitejs.dev) tidak menyediakan polyfill Node, sehingga Anda perlu menyertakan polyfill untuk `global`, `Buffer` dan `process.env`. Sebagai contoh, Anda dapat merujuk pada [polyfill di proyek sampel Vite kami](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
 Ketika menggunakan [Remix](https://remix.run), Anda harus melakukan polyfill pada modul `buffer`, `events`, dan `http`. Lihat konfigurasi Remix di bawah ini, atau [projek contoh Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
