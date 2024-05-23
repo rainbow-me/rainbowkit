@@ -114,16 +114,6 @@ RainbowKit은 이제 사용자의 지갑 선택을 처리하며, 지갑/거래 �
 
 일부 빌드 도구는 추가 설정이 필요할 수 있습니다.
 
-##### React, Next.js, 그리고 Webpack
-
-Next.js와 Create React App에 사용되는 [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) 번들러는 더 이상 Node polyfills를 제공하지 않으므로, RainbowKit의 피어 의존성을 충족시키기 위해 이 모듈들을 직접 포함해야 합니다. Create React App은 특히 `Buffer`에 polyfill이 필요합니다.
-
-우리의 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), 및 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플들을 참조하여 프로젝트에 대한 구성 가이드를 받을 수 있습니다.
-
-##### Vite
-
-[Vite](https://vitejs.dev) 번들러는 Node polyfills을 제공하지 않으므로, `global`, `Buffer` 및 `process.env`에 대한 polyfills이 필요합니다. 예시로, [우리의 샘플 Vite 프로젝트의 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)을 참조할 수 있습니다.
-
 ##### Remix
 
 [Remix](https://remix.run)를 사용할 때 `buffer`, `events` 및 `http` 모듈을 폴리필해야 합니다. 아래 Remix 구성을 참조하거나 [샘플 Remix 프로젝트에서의 폴리필](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)을 참조하십시오.
