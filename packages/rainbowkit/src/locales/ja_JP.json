@@ -601,8 +601,8 @@
     "magicEden": {
       "extension": {
         "step1": {
-          "title": "Install the Magic Eden extension",
-          "description": "We recommend pinning Magic Eden to your taskbar for easier access to your wallet."
+          "title": "Magic Eden拡張機能をインストールする",
+          "description": "ウォレットへの容易なアクセスのため、Magic Edenをタスクバーにピン留めすることを推奨します。"
         },
         "step2": {
           "title": "ウォレットを作成またはインポート",
