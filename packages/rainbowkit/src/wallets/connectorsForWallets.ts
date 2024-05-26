@@ -1,4 +1,5 @@
 import type { CreateConnectorFn } from 'wagmi';
+import { CoinbaseWalletParameters } from 'wagmi/connectors';
 import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
@@ -22,6 +23,7 @@ export interface ConnectorsForWalletsParameters {
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
+  coinbaseWalletPreference?: CoinbaseWalletParameters<'4'>['preference'];
   walletConnectParameters?: RainbowKitWalletConnectParameters;
 }
 
@@ -29,11 +31,12 @@ export const connectorsForWallets = (
   walletList: WalletList,
   {
     projectId,
-    walletConnectParameters,
+    walletConnectParameters = {},
     appName,
     appDescription,
     appUrl,
     appIcon,
+    coinbaseWalletPreference,
   }: ConnectorsForWalletsParameters,
 ): CreateConnectorFn[] => {
   if (!walletList.length) {
@@ -69,6 +72,8 @@ export const connectorsForWallets = (
         projectId,
         appName,
         appIcon,
+        // `preference` is being used only for `coinbaseWallet` wallet
+        preference: coinbaseWalletPreference,
         // `option` is being used only for `walletConnectWallet` wallet
         options: {
           metadata: walletConnectMetaData,
