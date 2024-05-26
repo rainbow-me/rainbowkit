@@ -1,16 +1,21 @@
 import { CreateConnectorFn, createConnector } from 'wagmi';
-import { coinbaseWallet as coinbaseConnector } from 'wagmi/connectors';
+import {
+  CoinbaseWalletParameters,
+  coinbaseWallet as coinbaseConnector,
+} from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
 import { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export interface CoinbaseWalletOptions {
   appName: string;
   appIcon?: string;
+  preference?: CoinbaseWalletParameters<'4'>['preference'];
 }
 
 export const coinbaseWallet = ({
   appName,
   appIcon,
+  preference,
 }: CoinbaseWalletOptions): Wallet => {
   const getUri = (uri: string) => uri;
   const ios = isIOS();
@@ -97,6 +102,7 @@ export const coinbaseWallet = ({
       const connector: CreateConnectorFn = coinbaseConnector({
         appName,
         appLogoUrl: appIcon,
+        preference,
       });
 
       return createConnector((config) => ({
