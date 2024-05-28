@@ -31,7 +31,8 @@
   "peerDependencies": {
     "@rainbow-me/rainbowkit": "2.0.x || 2.1.x",
     "next-auth": ">=4.21.0 <5",
-    "react": ">=18"
+    "react": ">=18",
+    "viem": ">=2.12.0"
   },
   "devDependencies": {
     "@rainbow-me/rainbowkit": "workspace:*"
