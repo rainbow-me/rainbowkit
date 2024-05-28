@@ -61,12 +61,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
       createMessage: ({ nonce, address, chainId }) => {
         return createSiweMessage({
-          address,
-          chainId,
           domain: window.location.host,
-          nonce,
+          address,
+          statement: 'Sign in with Ethereum to the app.',
           uri: window.location.origin,
-          version: '1'
+          version: '1',
+          chainId,
+          nonce
         });
       },
 

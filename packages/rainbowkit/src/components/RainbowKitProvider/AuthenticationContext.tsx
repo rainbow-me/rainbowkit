@@ -21,7 +21,10 @@ export interface AuthenticationAdapter<Message> {
     address: Address;
     chainId: number;
   }) => Message;
-  verify: (args: { message: Message; signature: string }) => Promise<boolean>;
+  verify: (args: {
+    message: Message;
+    signature: string;
+  }) => Promise<boolean>;
   signOut: () => Promise<void>;
 }
 

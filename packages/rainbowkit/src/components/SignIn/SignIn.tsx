@@ -73,11 +73,13 @@ export function SignIn({
         status: 'signing',
       }));
 
+      const message = authAdapter.createMessage({ address, chainId, nonce });
+
       let signature: string;
 
       try {
         signature = await signMessageAsync({
-          message: authAdapter.createMessage({ address, chainId, nonce }),
+          message,
         });
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {
@@ -98,8 +100,6 @@ export function SignIn({
       setState((x) => ({ ...x, status: 'verifying' }));
 
       try {
-        // TODO: remove @ts-ignore
-        // @ts-ignore
         const verified = await authAdapter.verify({ message, signature });
 
         if (verified) {
