@@ -57,7 +57,7 @@ export function RainbowKitSiweNextAuthProvider({
 
             // Spread unconfigurable options last so they can't be overridden
             ...unconfigurableOptions,
-          });
+          } as CreateSiweMessageParameters);
         },
 
         getNonce: async () => {

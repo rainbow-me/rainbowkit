@@ -10,6 +10,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const { message, signature } = req.body;
         const siweMessage = createSiweMessage(message);
+        // TODO: remove @ts-ignore
+        // @ts-ignore
         const { success, error, data } = await siweMessage.verify({
           signature,
         });
