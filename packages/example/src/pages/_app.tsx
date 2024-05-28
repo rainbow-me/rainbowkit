@@ -58,6 +58,9 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
   );
 };
 
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to the RainbowKit Demo',
+});
 const themes = [
   { name: 'light', theme: lightTheme },
   { name: 'dark', theme: darkTheme },
@@ -143,7 +146,10 @@ function RainbowKitApp({
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
   return (
-    <RainbowKitSiweNextAuthProvider enabled={authEnabled}>
+    <RainbowKitSiweNextAuthProvider
+      enabled={authEnabled}
+      getSiweMessageOptions={getSiweMessageOptions}
+    >
       <RainbowKitProvider
         appInfo={{
           ...demoAppInfo,

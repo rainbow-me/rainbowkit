@@ -13,13 +13,12 @@ type UnconfigurableMessageOptions = {
   nonce: string;
 };
 
-type ConfigurableMessageOptions = Partial<
-  Omit<CreateSiweMessageParameters, keyof UnconfigurableMessageOptions>
-> & {
-  [_Key in keyof UnconfigurableMessageOptions]?: never;
-};
+type ConfigurableMessageOptions = Omit<
+  CreateSiweMessageParameters,
+  keyof UnconfigurableMessageOptions
+>;
 
-export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
+export type GetSiweMessageOptions = () => Partial<ConfigurableMessageOptions>;
 
 interface RainbowKitSiweNextAuthProviderProps {
   enabled?: boolean;
@@ -39,6 +38,7 @@ export function RainbowKitSiweNextAuthProvider({
         createMessage: ({ address, chainId, nonce }) => {
           const defaultConfigurableOptions: ConfigurableMessageOptions = {
             domain: window.location.host,
+            statement: 'Sign in with Ethereum to the app.',
             uri: window.location.origin,
             version: '1',
           };
@@ -49,15 +49,25 @@ export function RainbowKitSiweNextAuthProvider({
             nonce,
           };
 
+          const siweMessageOptions = getSiweMessageOptions?.() ?? {};
+
           return createSiweMessage({
-            ...defaultConfigurableOptions,
+            // Use provided SIWE message options, fallback to defaults if undefined
+            domain:
+              siweMessageOptions.domain ?? defaultConfigurableOptions.domain,
+            uri: siweMessageOptions.uri ?? defaultConfigurableOptions.uri,
+            version:
+              siweMessageOptions.version ?? defaultConfigurableOptions.version,
+            statement:
+              siweMessageOptions.statement ??
+              defaultConfigurableOptions.statement,
 
             // Spread custom SIWE message options provided by the consumer
-            ...getSiweMessageOptions?.(),
+            ...siweMessageOptions,
 
             // Spread unconfigurable options last so they can't be overridden
             ...unconfigurableOptions,
-          } as CreateSiweMessageParameters);
+          });
         },
 
         getNonce: async () => {
@@ -72,7 +82,7 @@ export function RainbowKitSiweNextAuthProvider({
 
         verify: async ({ message, signature }) => {
           const response = await signIn('credentials', {
-            message: JSON.stringify(message),
+            message,
             redirect: false,
             signature,
           });
