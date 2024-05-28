@@ -98,6 +98,8 @@ export function SignIn({
       setState((x) => ({ ...x, status: 'verifying' }));
 
       try {
+        // TODO: remove @ts-ignore
+        // @ts-ignore
         const verified = await authAdapter.verify({ message, signature });
 
         if (verified) {

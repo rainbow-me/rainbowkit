@@ -28,19 +28,27 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
           }
 
           const nextAuthHost = new URL(nextAuthUrl).host;
+          // TODO: remove @ts-ignore
+          // @ts-ignore
           if (siwe.domain !== nextAuthHost) {
             return null;
           }
 
           if (
+            // TODO: remove @ts-ignore
+            // @ts-ignore
             siwe.nonce !==
             (await getCsrfToken({ req: { headers: req.headers } }))
           ) {
             return null;
           }
 
+          // TODO: remove @ts-ignore
+          // @ts-ignore
           await siwe.verify({ signature: credentials?.signature || '' });
           return {
+            // TODO: remove @ts-ignore
+            // @ts-ignore
             id: siwe.address,
           };
         } catch (e) {
