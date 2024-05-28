@@ -1,25 +1,25 @@
-import './global.css';
+import '../styles/global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import type { AppProps } from 'next/app';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-import App from './App';
-import { config } from './wagmi';
+import { config } from '../wagmi';
 
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <App />
+          <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
-  </React.StrictMode>,
-);
+  );
+}
+
+export default MyApp;
