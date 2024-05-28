@@ -65,6 +65,7 @@ export interface RainbowKitProviderProps {
   avatar?: AvatarComponent;
   modalSize?: ModalSizes;
   locale?: Locale;
+  clasName?: string;
 }
 
 const defaultTheme = lightTheme();
@@ -80,6 +81,7 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
+  clasName,
 }: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
@@ -117,7 +119,10 @@ export function RainbowKitProvider({
                         <ShowBalanceProvider>
                           <ModalProvider>
                             {theme ? (
-                              <div {...createThemeRootProps(id)}>
+                              <div
+                                {...createThemeRootProps(id)}
+                                className={clasName}
+                              >
                                 <style
                                   // biome-ignore lint/security/noDangerouslySetInnerHtml: TODO
                                   dangerouslySetInnerHTML={{
