@@ -23,9 +23,9 @@ const frens = [
     url: 'https://arbitrum.foundation/',
   },
   {
-    asset: 'zora',
-    name: 'Zora',
-    url: 'https://zora.co/',
+    asset: 'warpcast',
+    name: 'Warpcast',
+    url: 'https://warpcast.com/',
   },
   {
     asset: 'opensea-pro',
@@ -83,16 +83,6 @@ const frens = [
     url: 'https://app.pooltogether.com/',
   },
   {
-    asset: 'warpcast',
-    name: 'Warpcast',
-    url: 'https://warpcast.com/',
-  },
-  {
-    asset: 'showtime',
-    name: 'Showtime',
-    url: 'https://showtime.xyz/',
-  },
-  {
     asset: 'art-blocks',
     name: 'Art Blocks',
     url: 'https://www.artblocks.io/',
@@ -103,9 +93,9 @@ const frens = [
     url: 'https://coolcatsnft.com/',
   },
   {
-    asset: 'partybid',
-    name: 'PartyBid',
-    url: 'https://www.partybid.app/',
+    asset: 'party',
+    name: 'Party',
+    url: 'https://www.party.app/',
   },
   {
     asset: 'superrare',
@@ -126,6 +116,16 @@ const frens = [
     asset: 'frax',
     name: 'Frax',
     url: 'https://app.frax.finance/',
+  },
+  {
+    asset: 'speedtracer',
+    name: 'Speedtracer',
+    url: 'https://www.speedtracer.xyz/',
+  },
+  {
+    asset: 'gitcoin',
+    name: 'Gitcoin',
+    url: 'https://www.gitcoin.co/',
   },
 ];
 

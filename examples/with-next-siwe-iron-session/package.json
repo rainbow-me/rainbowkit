@@ -1,12 +1,11 @@
 {
   "name": "with-next-siwe-iron-session",
   "private": true,
-  "version": "0.0.71",
+  "version": "0.0.72",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
@@ -23,8 +22,6 @@
   "devDependencies": {
     "@types/node": "^18.19.3",
     "@types/react": "^18.3.0",
-    "eslint": "^8.15.0",
-    "eslint-config-next": "^14.2.3",
     "typescript": "5.4.2"
   }
 }

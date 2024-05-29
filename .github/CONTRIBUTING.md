@@ -16,6 +16,9 @@ This project uses [`pnpm`](https://pnpm.io) as a package manager. The required `
 
 ## Development environment
 
+You'll first need to specify Environment Variables at both [`packages/rainbowkit/.env.local`](../packages/rainbowkit/) and
+[`packages/example/.env.local`](../packages/example/). Reference `.env.local.example` for required variables.
+
 To play around with code while making changes, you can run the local development environment:
 
 ```bash
@@ -27,7 +30,7 @@ This will run an example app on [localhost:3000](http://localhost:3000) and the 
 
 The example app code is located in [`packages/example`](../packages/example). The documentation site code is located in [`site`](../site). Make sure you clean up after yourself before pushing up any changes.
 
-All API changes should also include updates to [`README.md`](../README.md) and the documentation site. Documentation is crucial to helping developers of all experience levels use RainbowKit.
+All API changes should also include updates to the documentation site. Documentation is crucial to helping developers of all experience levels use RainbowKit.
 
 ## Coding standards
 
@@ -105,7 +108,7 @@ Each changeset defines which package(s) should be published and whether the chan
 
 To create a new changeset, run `pnpm changeset`. This will run the Changesets CLI, prompting you for details about the change. You’ll be able to edit the file after it’s created — don’t worry about getting everything perfect up front.
 
-Since we’re currently in beta, all changes should be marked as a minor/patch release to keep us within the `v0.x` range.
+All changes should be marked as a minor/patch release to keep us within the `v2.0` range.
 
 Even though you can technically use any markdown formatting you like, headings should be avoided since each changeset will ultimately be nested within a bullet list. Instead, bold text should be used as section headings.
 
