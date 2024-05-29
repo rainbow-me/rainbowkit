@@ -35,6 +35,7 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isImToken) return false;
   if (ethereum.isKuCoinWallet) return false;
   if (ethereum.isMathWallet) return false;
+  if (ethereum.isNestWallet) return false;
   if (ethereum.isOkxWallet || ethereum.isOKExWallet) return false;
   if (ethereum.isOneInchIOSWallet || ethereum.isOneInchAndroidWallet)
     return false;

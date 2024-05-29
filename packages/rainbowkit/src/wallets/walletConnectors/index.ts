@@ -27,6 +27,7 @@ import { ledgerWallet } from './ledgerWallet/ledgerWallet';
 import { magicEdenWallet } from './magicEdenWallet/magicEdenWallet';
 import { metaMaskWallet } from './metaMaskWallet/metaMaskWallet';
 import { mewWallet } from './mewWallet/mewWallet';
+import { nestWallet } from './nestWallet/nestWallet';
 import { oktoWallet } from './oktoWallet/oktoWallet';
 import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
@@ -82,6 +83,7 @@ export {
   magicEdenWallet,
   metaMaskWallet,
   mewWallet,
+  nestWallet,
   oktoWallet,
   okxWallet,
   omniWallet,
