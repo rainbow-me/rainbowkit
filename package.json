@@ -72,7 +72,7 @@
     "typescript": "5.4.2",
     "viem": "2.12.1",
     "vitest": "^0.33.0",
-    "wagmi": "^2.9.2",
+    "wagmi": "^2.9.7",
     "dotenv": "^16.4.5"
   },
   "packageManager": "pnpm@9.1.1",
