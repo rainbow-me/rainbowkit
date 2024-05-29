@@ -1,12 +1,4 @@
-import {
-  getDefaultConfig,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
-import {
-  argentWallet,
-  ledgerWallet,
-  trustWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   arbitrum,
   base,
@@ -15,8 +7,6 @@ import {
   polygon,
   sepolia,
 } from 'wagmi/chains';
-
-const { wallets } = getDefaultWallets();
 
 export const config = getDefaultConfig({
   appName: 'RainbowKit demo',
@@ -28,13 +18,6 @@ export const config = getDefaultConfig({
     arbitrum,
     base,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
-  ],
-  wallets: [
-    ...wallets,
-    {
-      groupName: 'Other',
-      wallets: [argentWallet, trustWallet, ledgerWallet],
-    },
   ],
   ssr: true,
 });
