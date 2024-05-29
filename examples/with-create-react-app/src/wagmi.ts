@@ -20,9 +20,3 @@ export const config = getDefaultConfig({
     ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
 });
-
-declare module 'wagmi' {
-  interface Register {
-    config: typeof config
-  }
-}
