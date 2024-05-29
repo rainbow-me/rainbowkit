@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
@@ -108,6 +108,7 @@ const Home: NextPage = () => {
                 width="500"
                 height="500"
                 alt="RainbowKit Demo NFT"
+                priority
               />
               <h1 style={{ marginTop: 24 }}>Rainbow NFT</h1>
               <ConnectButton />
@@ -120,6 +121,7 @@ const Home: NextPage = () => {
                   height="80"
                   alt="RainbowKit Demo NFT"
                   style={{ borderRadius: 8 }}
+                  priority
                 />
                 <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>
                 <p style={{ marginBottom: 24 }}>
