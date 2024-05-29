@@ -16,7 +16,7 @@
     "typescript": "5.4.2",
     "util": "0.12.5",
     "viem": "2.12.1",
-    "wagmi": "^2.9.2",
+    "wagmi": "^2.9.7",
     "@tanstack/react-query": "^5.28.4"
   },
   "scripts": {
