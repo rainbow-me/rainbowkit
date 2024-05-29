@@ -15,6 +15,8 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { SiweMessage } from 'siwe';
 
+import { config } from '../wagmi';
+
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
