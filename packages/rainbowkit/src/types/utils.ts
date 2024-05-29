@@ -37,6 +37,7 @@ export type WalletProviderFlags =
   | 'isKuCoinWallet'
   | 'isMathWallet'
   | 'isMetaMask'
+  | 'isNestWallet'
   | 'isOkxWallet'
   | 'isOKExWallet'
   | 'isOneInchAndroidWallet'
