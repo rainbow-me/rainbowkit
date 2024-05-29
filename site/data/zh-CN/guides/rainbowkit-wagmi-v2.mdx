@@ -26,7 +26,7 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. 升级 RainbowKit 和 Wagmi 配置**
+\*\*3. 升级 RainbowKit 和 Wagmi 配置\*\*
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,7 +89,7 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. 检查 `wagmi` 和 `viem` 中的重大变化**
+**2. 检查 `wagmi` 和 `viem` 中的重大变化**
 
 如果您在 dApp 中使用 `wagmi` 钩子和 `viem` 操作，您将需要遵循 v2 的迁移指南：
 
@@ -98,19 +98,19 @@ npm i @tanstack/react-query
 
 #### RainbowKit更新
 
-**1. 改进了对EIP-6963钱包的支持**
+\*\*1. 改进了对EIP-6963钱包的支持\*\*
 
-现在支持新的EIP-6963连接标准的钱包（包括Rainbow、MetaMask等）将自动显示在连接钱包体验的`Installed`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
+现在支持新的EIP-6963连接标准的钱包（包括Rainbow、MetaMask等）将自动显示在连接钱包体验的`Installed`部分。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。 这确保用户始终可以找到他们喜欢的钱包，并且在不发生冲突或需要后备按钮的情况下连接到dApps。
 
-开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 
+开发者仍然可以完全控制自定义钱包列表，以强调终端用户首选的钱包。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。 建议您继续在列表中包含`injectedWallet`和`walletConnectWallet`，以支持所有平台。
 
-**2. 使用getDefaultConfig的Wagmi配置**
+\*\*2. 使用getDefaultConfig的Wagmi配置\*\*
 
-这个新的API简化了配置体验，取代了直接使用Wagmi的`createConfig`的需求。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。 
+这个新的API简化了配置体验，取代了直接使用Wagmi的`createConfig`的需求。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。 链配置被简化，包括为`transports`推断出的公共提供者。
 
 默认钱包列表将会自动包含，使得不再需要使用`getDefaultWallets`和`connectorsForWallets`。
 
-您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 
+您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 您可以通过传递导入的或自定义钱包连接器到`wallets`来创建一个自定义钱包列表。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 不再需要实例化钱包连接器并传递`projectId`和`chains`。 不再需要实例化钱包连接器并传递`projectId`和`chains`。
 
 ```
 const config = getDefaultConfig({
@@ -122,7 +122,7 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**2. 自定义链条**
 
 您不再需要将`chains`传递给`<RainbowKitProvider>`。
 
@@ -131,7 +131,7 @@ const config = getDefaultConfig({
 + <RainbowKitProvider>
 ```
 
-**4. 自定义链**
+\*\*2. 自定义链\*\*
 
 与Wagmi v2一致，`Chain`类型已经改变，并继续支持RainbowKit的`iconUrl`和`iconBackground`元数据。
 
@@ -193,10 +193,10 @@ const config = getDefaultConfig({
   })
 ```
 
-**5. 自定义钱包**
+**4. 自定义钱包**
 
 RainbowKit已采用`wagmi`中的`WalletConnectLegacyConnector`连接器，以便继续支持WalletConnect v1. 将很快提供对WalletConnect v2和`WalletConnectConnector`的支持，作为补丁版本发布，不会有破坏性的更改。
 
-钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 
+钱包连接器现在也支持带有 `rdns` 属性的 EIP-6963 标准。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。 确保填充此属性以防止在您的钱包列表中重复引用支持 EIP-6963 的钱包。
 
 > 请在GitHub [这里](https://github.com/rainbow-me/rainbowkit/issues/new/choose)报告任何关于RainbowKit v2的问题或反馈。

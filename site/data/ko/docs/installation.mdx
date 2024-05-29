@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ RainbowKit은 이제 사용자의 지갑 선택을 처리하며, 지갑/거래 �
 
 일부 빌드 도구는 추가 설정이 필요할 수 있습니다.
 
-##### React, Next.js, 그리고 Webpack
-
-Next.js와 Create React App에 사용되는 [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) 번들러는 더 이상 Node polyfills를 제공하지 않으므로, RainbowKit의 피어 의존성을 충족시키기 위해 이 모듈들을 직접 포함해야 합니다. Create React App은 특히 `Buffer`에 polyfill이 필요합니다.
-
-[ethers](https://docs.ethers.org/v5/)에 의존하던 이전 버전의 RainbowKit에서는 `fs`, `net`, `tls` 모듈이 자동으로 polyfilled 되었습니다. 이는 RainbowKit v1 + wagmi v1에서는 더 이상 적용되지 않으며, 이들은 [viem](https://viem.sh/)를 기반으로 구축되었습니다.
-
-우리의 [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), 및 [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플들을 참조하여 프로젝트에 대한 구성 가이드를 받을 수 있습니다.
-
-##### Vite
-
-[Vite](https://vitejs.dev) 번들러는 Node polyfills을 제공하지 않으므로, `global`, `Buffer` 및 `process.env`에 대한 polyfills이 필요합니다. 예시로, [우리의 샘플 Vite 프로젝트의 polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts)을 참조할 수 있습니다.
-
 ##### Remix
 
-[Remix](https://remix.run)을 사용할 때, 모든 RainbowKit 패키지 엔트리 포인트는 ESM 패키지로 배포되므로 리믹스 구성에서 [서버 의존성](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) 목록에 추가해야 합니다.
+[Remix](https://remix.run)를 사용할 때 `buffer`, `events` 및 `http` 모듈을 폴리필해야 합니다. 아래 Remix 구성을 참조하거나 [샘플 Remix 프로젝트에서의 폴리필](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)을 참조하십시오.
 
-리믹스는 또한 `global`, `Buffer` 및 `process.env`에 대한 폴리필이 필요합니다. [샘플 Remix 프로젝트에서의 폴리필](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts)을 참조하십시오.
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### 배포 준비 중
+
+기본적으로, 귀하의 dApp은 각 체인에 대해 공개 RPC 제공자를 사용하여 잔액을 가져오고, ENS 이름을 확인하는 등의 작업을 수행합니다. 공개 노드는 속도 제한이 있기 때문에 종종 사용자에게 신뢰성 문제를 일으킬 수 있습니다. 대신 [Alchemy](https://www.alchemy.com/) 또는 [QuickNode](https://www.quicknode.com/)와 같은 서비스를 통해 RPC 제공자에 대한 액세스를 구매하고 Wagmi에서 직접 Transports를 정의해야 합니다. 이는 `getDefaultConfig`에서 `transports` 매개변수를 추가하거나 Wagmi의 `createConfig`를 직접 사용하여 달성할 수 있습니다.
+
+Transport는 Alchemy, Infura 등과 같은 이더리움 노드 제공자에게 JSON-RPC 요청을 보내는 네트워킹 중간 계층입니다.
+
+**`http` transport를 사용한 예시**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+자세한 내용은 [wagmi transport 문서](https://wagmi.sh/core/api/transports#transports)를 참조하십시오.
 
 ### 자신만의 기능을 추가하십시오
 

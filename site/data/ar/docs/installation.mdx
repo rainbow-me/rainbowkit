@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ export const YourApp = () => {
 
 سيتطلب بعض أدوات البناء إعدادات إضافية.
 
-##### React، Next.js، و Webpack
-
-الـ [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) الذي يستخدمه Next.js و Create React App [لا يقدم بعد الآن محاكاة ل Nodepolyfills](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed)، لذا ستحتاج إلى تضمين هذه الوحدات بنفسك لتلبية اعتمادات RainbowKit المتساوية. يتطلب Create React App بشكل خاص منك أن تقوم بمحاكاة `Buffer`.
-
-في الإصدارات السابقة من RainbowKit التي اعتمدت على [ethers](https://docs.ethers.org/v5/)، تمت محاكاة الوحدات `fs`، `net`، و `tls` بشكل تلقائي. هذا لم يعد الحال مع RainbowKit v1 + wagmi v1، اللذان تم بناؤهما على [viem](https://viem.sh/).
-
-راجع مرجعنا [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), و [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) عينات للحصول على توجيهات لتكوين مشروعك.
-
-##### Vite
-
-ال [Vite](https://vitejs.dev) لا يوفر Node polyfills، لذلك ستحتاج إلى تضمين ال polyfills لـ `global`, `Buffer` و `process.env`. كمثال، يمكنك الرجوع إلى [polyfills في مشروع Vite الذي نقدمه كعينة](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
-عند استخدام [Remix](https://remix.run)، يجب إضافة جميع نقاط دخول حزمة RainbowKit إلى قائمتك من [التبعيات الخادم](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) في تكوين Remix الخاص بك لأنها تم نشرها كحزم ESM.
+عند استخدام [Remix](https://remix.run)، يجب أن تقوم بتعبئة وحدات `buffer`، `events` و `http`. راجع تهيئة Remix أدناه، أو [مشروع Remix النموذجي الخاص بنا](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
-يتطلب Remix أيضًا أن تعبئ مُعالِجات `global`، `Buffer` و `process.env`. راجع [جزئيات التعبئة في مشروع Remix النموذجي](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### جاري التحضير للنشر
+
+بشكل افتراضي، يستخدم تطبيقك اللامركزي مزودي RPC عامين لكل سلسلة لجلب الأرصدة، حل أسماء ENS، والمزيد. هذا قد يتسبب غالبًا في مشاكل موثوقية لمستخدميك حيث أن العقد العامة تخضع لحدود معدل الاستخدام. بدلاً من ذلك، يجب عليك شراء الوصول إلى مزود RPC من خلال خدمات مثل [Alchemy](https://www.alchemy.com/) أو [QuickNode](https://www.quicknode.com/)، وتعريف Transports خاصة بك في Wagmi. يمكن تحقيق ذلك عن طريق إضافة معامل `transports` في `getDefaultConfig` أو مباشرةً عبر `createConfig` في Wagmi.
+
+Transport هي طبقة الوسط الشبكية التي تتولى إرسال طلبات JSON-RPC إلى مزود Node الإيثيريوم (مثل Alchemy، Infura، إلخ).
+
+**مثال باستخدام transport `http`**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+للمزيد من التفاصيل، عرض [وثائق wagmi للtransport](https://wagmi.sh/core/api/transports#transports).
 
 ### أضف وظيفتك الخاصة
 

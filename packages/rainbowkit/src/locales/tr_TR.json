@@ -292,6 +292,22 @@
         }
       }
     },
+    "bitverse": {
+      "qr_code": {
+        "step1": {
+          "title": "Bitverse Cüzdan uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Bitverse Cüzdan'ı ana ekranınıza ekleyin."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "QR simgesine dokunun ve tarayın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+        }
+      }
+    },
     "bloom": {
       "desktop": {
         "step1": {
@@ -319,6 +335,36 @@
         "step3": {
           "description": "Bir cüzdanınız olduktan sonra, Bloom üzerinden bağlanmak için Bağlan'a tıklayın. Uygulamada bağlantıyı onaylamanız için bir bağlantı istemi belirecektir.",
           "title": "Bağlan'a tıklayın"
+        }
+      }
+    },
+    "bybit": {
+      "qr_code": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için Bybit'i ana ekranınıza koymayı öneririz.",
+          "title": "Bybit uygulamasını açın"
+        },
+        "step2": {
+          "description": "Telefonunuzdaki yedekleme özelliğimizi kullanarak cüzdanınızı kolayca yedekleyebilirsiniz.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "Tarayıcı düğmesine dokunun"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Tarayıcınızın sağ üst köşesine tıklayın ve kolay erişim için Bybit Cüzdan'ı sabitleyin.",
+          "title": "Bybit Cüzdan uzantısını yükleyin"
+        },
+        "step2": {
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın.",
+          "title": "Bir cüzdan oluşturun veya içe aktarın"
+        },
+        "step3": {
+          "description": "Bybit Cüzdan'ı ayarladıktan sonra, tarayıcıyı yenilemek ve uzantıyı yüklemek için aşağıdaki butona tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
         }
       }
     },
@@ -378,6 +424,22 @@
         },
         "step3": {
           "description": "Cüzdanınızı kurduktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      }
+    },
+    "compass": {
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için Compass Wallet'ı görev çubuğunuza sabitlemenizi öneririz.",
+          "title": "Compass Wallet uzantısını yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
           "title": "Tarayıcınızı yenileyin"
         }
       }
@@ -474,6 +536,52 @@
         }
       }
     },
+    "kaikas": {
+      "extension": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için Kaikas'ı görev çubuğunuza sabitlemeyi öneririz.",
+          "title": "Kaikas uzantısını yükleyin"
+        },
+        "step2": {
+          "description": "Cüzdanınızı güvenli bir yöntemle yedeklemeye emin olun. Gizli ifadenizi asla kimseyle paylaşmayın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin.",
+          "title": "Tarayıcınızı yenileyin"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Kaikas uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Kaikas uygulamasını ana ekranınıza koyun."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "Sağ üst köşede Tarayıcı Simgesine dokunun",
+          "description": "Yeni Bağlantı'yı seçin, ardından QR kodunu tarayın ve bağlantıyı onaylamak için istemi onaylayın."
+        }
+      }
+    },
+    "kraken": {
+      "qr_code": {
+        "step1": {
+          "title": "Kraken Wallet uygulamasını açın",
+          "description": "Cüzdanınıza daha hızlı erişim için Kraken Wallet'ı ana ekranınıza koymanızı öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Yeni bir cüzdan oluşturun veya mevcut birini içe aktarın."
+        },
+        "step3": {
+          "title": "QR simgesine dokunun ve tarayın",
+          "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+        }
+      }
+    },
     "kresus": {
       "qr_code": {
         "step1": {
@@ -487,6 +595,22 @@
         "step3": {
           "title": "QR simgesine dokunun ve tarayın",
           "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmayı onaylamak için istemi kabul edin."
+        }
+      }
+    },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "Magic Eden eklentisini yükleyin",
+          "description": "Cüzdanınıza daha kolay erişim sağlamak için Magic Eden'i görev çubuğunuza sabitlemenizi öneririz."
+        },
+        "step2": {
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar",
+          "description": "Cüzdanınızı güvenli bir yöntem kullanarak yedeklediğinizden emin olun. Gizli kurtarma ifadenizi kimseyle paylaşmayın."
+        },
+        "step3": {
+          "title": "Tarayıcınızı yenileyin",
+          "description": "Cüzdanınızı kurduktan sonra, aşağıya tıklayın ve tarayıcıyı yenileyin ve eklentiyi yükleyin."
         }
       }
     },
@@ -563,6 +687,22 @@
         "step3": {
           "title": "QR simgesine dokunun ve tarayın",
           "description": "Ana ekranınızdaki QR simgesine dokunun, kodu tarayın ve bağlanmak için istemi onaylayın."
+        }
+      }
+    },
+    "1inch": {
+      "qr_code": {
+        "step1": {
+          "description": "Cüzdanınıza daha hızlı erişim için 1inch Cüzdan'ı ana ekranınıza koyun.",
+          "title": "1inch Cüzdan uygulamasını açın"
+        },
+        "step2": {
+          "description": "Bir cüzdan ve kullanıcı adı oluşturun veya mevcut bir cüzdanı içe aktarın.",
+          "title": "Cüzdan Oluştur veya Cüzdanı İçe Aktar"
+        },
+        "step3": {
+          "description": "Taradıktan sonra, cüzdanınızı bağlamak için bir bağlantı istemi görünecektir.",
+          "title": "QR tarayıcı düğmesine dokunun"
         }
       }
     },

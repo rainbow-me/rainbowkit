@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ RainbowKit тепер керуватиме вибором гаманця кор�
 
 Деякі інструменти збірки потребують додаткового налаштування.
 
-##### React, Next.js та Webpack
-
-Збирач [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/), який використовують Next.js та Create React App, [більше не надає поліфіли Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), тому вам потрібно буде включити ці модулі самостійно, щоб задовольнити залежності однолітків RainbowKit. Create React App конкретно вимагає, щоб ви зробили поліфіл `Buffer`.
-
-У попередніх версіях RainbowKit, які базувалися на [ethers](https://docs.ethers.org/v5/), модулі `fs`, `net` та `tls` автоматично поліфілувалися. Це вже не так у випадку з RainbowKit v1 + wagmi v1, які побудовані на [viem](https://viem.sh/).
-
-Дивіться наші зразки [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js) та [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) для керівництва з налаштування для вашого проекту.
-
-##### Vite
-
-Збирач [Vite](https://vitejs.dev) не надає поліфіли Node, тому вам потрібно буде включити поліфіли для `global`, `Buffer` та `process.env`. Як приклад, ви можете звернутися до [поліфілів у нашому зразковому проекті Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
-При використанні [Remix](https://remix.run), всі точки входу пакета RainbowKit мають бути додані до вашого списку [залежностей сервера](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) у вашій конфігурації Remix, оскільки вони публікуються як пакети ESM.
+При використанні [Remix](https://remix.run), вам необхідно зробити поліфіл модулів `buffer`, `events` та `http`. Дивіться нижче конфігурацію Remix або [наш зразковий проект Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
-Remix також вимагає, щоб ви зробили поліфіл `global`, `Buffer` та `process.env`. Посилайтеся на [поліфіли у нашому зразковому проекті Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### Підготовка до розгортання
+
+За замовчуванням ваш dApp використовує публічні RPC провайдери для кожної мережі для отримання балансів, розв'язання імен ENS та більше. Це часто може викликати проблеми з надійністю для ваших користувачів, оскільки публічні вузли мають обмеження за частотою запитів. Замість цього вам слід придбати доступ до RPC провайдера через такі сервіси, як [Alchemy](https://www.alchemy.com/) або [QuickNode](https://www.quicknode.com/), та визначити власні транспорти в Wagmi. Це можна зробити, додавши параметр `transports` у `getDefaultConfig` або безпосередньо через `createConfig` Wagmi.
+
+Транспорт - це проміжний мережевий шар, який обробляє відправлення JSON-RPC запитів до провайдера Ethereum Node (наприклад, Alchemy, Infura тощо).
+
+**Приклад з `http` транспортом**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+Для отримання додаткової інформації перегляньте [документацію транспортів wagmi](https://wagmi.sh/core/api/transports#transports).
 
 ### Додайте власний функціонал
 

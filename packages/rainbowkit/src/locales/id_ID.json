@@ -292,6 +292,22 @@
         }
       }
     },
+    "bitverse": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Bitverse Wallet",
+          "description": "Tambahkan Bitverse Wallet ke layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk ikon QR dan scan",
+          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+        }
+      }
+    },
     "bloom": {
       "desktop": {
         "step1": {
@@ -319,6 +335,36 @@
         "step3": {
           "description": "Setelah Anda memiliki dompet, klik pada Sambungkan untuk terhubung melalui Bloom. Sebuah permintaan sambungan akan muncul di aplikasi untuk Anda konfirmasi.",
           "title": "Klik pada Sambungkan"
+        }
+      }
+    },
+    "bybit": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami menyarankan menempatkan Bybit di layar utama Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi Bybit"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol scan"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "Klik di pojok kanan atas browser Anda dan sematkan Wallet Bybit untuk akses yang mudah.",
+          "title": "Pasang ekstensi Wallet Bybit"
+        },
+        "step2": {
+          "description": "Buat dompet baru atau impor yang sudah ada.",
+          "title": "Buat atau Impor sebuah dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda mengatur Wallet Bybit, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
         }
       }
     },
@@ -378,6 +424,22 @@
         },
         "step3": {
           "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      }
+    },
+    "compass": {
+      "extension": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menempelkan Compass Wallet ke taskbar Anda untuk akses lebih cepat ke dompet Anda.",
+          "title": "Instal ekstensi Compass Wallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
           "title": "Segarkan browser Anda"
         }
       }
@@ -474,6 +536,52 @@
         }
       }
     },
+    "kaikas": {
+      "extension": {
+        "step1": {
+          "description": "Kami menyarankan memasang Kaikas di taskbar Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Pasang ekstensi Kaikas"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Kaikas",
+          "description": "Letakkan aplikasi Kaikas di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk Ikon Scanner di pojok kanan atas",
+          "description": "Pilih Koneksi Baru, lalu pindai kode QR dan konfirmasi petunjuk untuk terhubung."
+        }
+      }
+    },
+    "kraken": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Kraken Wallet",
+          "description": "Tambahkan Kraken Wallet ke layar utama Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk ikon QR dan scan",
+          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+        }
+      }
+    },
     "kresus": {
       "qr_code": {
         "step1": {
@@ -487,6 +595,22 @@
         "step3": {
           "title": "Ketuk ikon QR dan scan",
           "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+        }
+      }
+    },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi Magic Eden",
+          "description": "Kami menyarankan untuk menempelkan Magic Eden ke taskbar Anda untuk akses lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frase pemulihan rahasia Anda kepada siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
         }
       }
     },
@@ -563,6 +687,22 @@
         "step3": {
           "title": "Ketuk ikon QR dan scan",
           "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi petunjuk untuk terhubung."
+        }
+      }
+    },
+    "1inch": {
+      "qr_code": {
+        "step1": {
+          "description": "Letakkan Wallet 1inch di layar utama Anda untuk akses yang lebih cepat ke dompet Anda.",
+          "title": "Buka aplikasi Wallet 1inch"
+        },
+        "step2": {
+          "description": "Buat dompet dan nama pengguna, atau impor dompet yang ada.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Tekan tombol Scan QR"
         }
       }
     },

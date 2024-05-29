@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ RainbowKit artık kullanıcınızın cüzdan seçimini, cüzdan/ işlem bilgiler
 
 Bazı build araçları ek kurulum gerektirecektir.
 
-##### React, Next.js, ve Webpack
-
-Next.js ve Create React tarafından kullanılan [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) paketleyici, [artık Node polyfills sağlamıyor](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), bu yüzden RainbowKit'in eş bağımlılıklarını karşılamak için bu modülleri kendiniz eklemeniz gerekecek. Create React App, özellikle `Buffer` için polyfill oluşturmanızı gerektirir.
-
-[ethers](https://docs.ethers.org/v5/) üzerine dayalı RainbowKit'in önceki sürümlerinde, `fs`, `net` ve `tls` modülleri otomatik olarak polyfilled oldu. RainbowKit v1 + wagmi v1 ile bu artık durum böyle değil, bunlar [viem](https://viem.sh/) üzerine kurulmuştur.
-
-Projelerinizin konfigürasyon rehberi olarak [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), ve [Create React App polyfills](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) örneklerimize bakabilirsiniz.
-
-##### Vite
-
-[Vite](https://vitejs.dev) paketleyicisi Node polyfills sağlamaz, dolayısıyla `global`, `Buffer` ve `process.env` için polyfills eklemeniz gerekecektir. Örnek olarak, [örneğimizdeki Vite projesindeki polyfills](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts) atıfta bulunabilirsiniz.
-
 ##### Remix
 
-[Remix](https://remix.run) kullanırken, tüm RainbowKit paket giriş noktalarını, ESM paketleri olarak yayınlandıkları için Remix konfigürasyonunuzdaki [sunucu bağımlılıkları](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) listesine eklemeniz gerekir.
+[Remix](https://remix.run) kullanırken, `buffer`, `events` ve `http` modüllerini polyfill yapmanız gerekmektedir. Aşağıdaki Remix konfigürasyonuna veya [örnek Remix projemize](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) referans alın.
 
-Remix ayrıca `global`, `Buffer` ve `process.env`'in polyfill gerektirir. [Örnek Remix projemizdeki polyfilllere](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts) referans verin.
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### Dağıtıma hazırlanıyor
+
+Varsayılan olarak, dApp'iniz her zincir için bakiyeleri getirmek, ENS isimlerini çözmek ve daha fazlası için genel RPC sağlayıcılarını kullanır. Bu, genel düğümlerin hız sınırlamasına tabi olması nedeniyle kullanıcılarınız için güvenilirlik sorunlarına sıkça neden olabilir. Bunun yerine, [Alchemy](https://www.alchemy.com/) veya [QuickNode](https://www.quicknode.com/) gibi hizmetler aracılığıyla bir RPC sağlayıcısına erişim satın almalı ve Wagmi'de kendi Transports'unuzu tanımlamalısınız. Bu, `getDefaultConfig` içindeki `transports` parametresini ekleyerek veya doğrudan Wagmi'nin `createConfig` fonksiyonu kullanılarak gerçekleştirilebilir.
+
+Bir Transport, Ethereum Node Sağlayıcısına (Alchemy, Infura vb. gibi) JSON-RPC isteklerini gönderen ağ orta katmanıdır.
+
+**Bir `http` transport ile örnek**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+Daha fazla ayrıntı için, [wagmi transport belgelerini](https://wagmi.sh/core/api/transports#transports) görüntüleyin.
 
 ### Kendi işlevselliğinizi ekleyin
 

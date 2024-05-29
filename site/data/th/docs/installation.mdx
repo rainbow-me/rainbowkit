@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -61,9 +60,9 @@ import {
 
 #### กำหนดค่า
 
-กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` หาก dApp ของคุณใช้การเรนเดอร์ฝั่งเซิร์ฟเวอร์ (SSR) ต้องตั้งค่า `ssr` เป็น `true`.
+กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` หาก dApp ของคุณใช้การเรนเดอร์ฝั่งเซิร์ฟเวอร์ (SSR) ต้องตั้งค่า `ssr` เป็น `true`.
 
-> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/) นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที
+> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/) นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที
 
 ```tsx line=4-99
 ...
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ RainbowKit จะดูแลเลือกกระเป๋าเงินข
 
 เครื่องมือสร้างบางตัวจะต้องการการตั้งค่าเพิ่มเติม.
 
-##### React, Next.js, และ Webpack
-
-[Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler ที่ถูกใช้โดย Next.js และ Create React App [ไม่ให้ Node polyfills อีกต่อไป](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), ดังนั้นคุณจำเป็นต้องรวมโมดูลเหล่านี้เองเพื่อคุณครอง RainbowKit's peer dependencies. Create React App ต้องการให้คุณ polyfill `Buffer` โดยเฉพาะ.
-
-ในเวอร์ชันก่อนหน้านี้ของ RainbowKit ที่พึ่งพาบน [ethers](https://docs.ethers.org/v5/), โมดูล `fs`, `net`, และ `tls` ถูก polyfilled โดยอัตโนมัติ. นี้ไม่ใช่กรณีอีกต่อไปด้วย RainbowKit v1 + wagmi v1, ซึ่งสร้างบน [viem](https://viem.sh/).
-
-อ้างอิง [Next.js Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Next.js App Router Webpack Config](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), และ [สร้างตัวอย่าง polyfills ของ React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) สำหรับคำแนะนำการกำหนดค่าสำหรับโปรเจคของคุณ.
-
-##### Vite
-
-bundler [Vite](https://vitejs.dev) ไม่ได้ให้ Node polyfills, ดังนั้นคุณจำเป็นต้องรวม polyfills สำหรับ `global`, `Buffer` และ `process.env`. เป็นตัวอย่าง, คุณสามารถอ้างอิง [polyfills ในตัวอย่างโปรเจค Vite ของเรา](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
-เมื่อใช้ [Remix](https://remix.run), จุดเริ่มต้นของแพคเกจ RainbowKit ทั้งหมดจะต้องถูกเพิ่มเข้าไปในรายการ[ขึ้นขึ้นของเซิร์ฟเวอร์](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) ใน Remix config ของคุณเนื่องจากพวกเขาเผยแพร่เป็นแพคเกจ ESM
+เมื่อใช้งาน [Remix](https://remix.run) คุณต้อง polyfill โมดูล `buffer`, `events` และ `http` อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)
 
-Remix ยังต้องการให้คุณ polyfill `global`, `Buffer` และ `process.env`. อ้างอิง [polyfills ในโปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### กำลังเตรียมการเผยแพร่
+
+โดยค่าเริ่มต้น แอปพลิเคชันของคุณใช้ผู้ให้บริการ RPC สาธารณะสำหรับแต่ละเชนในการดึงยอดคงเหลือ การแก้ไขชื่อ ENS และอื่นๆ สิ่งนี้อาจทำให้เกิดปัญหาความน่าเชื่อถือสำหรับผู้ใช้ของคุณ เนื่องจากโหนดสาธารณะมีการจำกัดอัตราการใช้งาน คุณควรซื้อการเข้าถึงผู้ให้บริการ RPC ผ่านบริการเช่น [Alchemy](https://www.alchemy.com/) หรือ [QuickNode](https://www.quicknode.com/) และกำหนด Transports ของคุณเองใน Wagmi สามารถทำได้โดยการเพิ่มพารามิเตอร์ `transports` ใน `getDefaultConfig` หรือผ่าน `createConfig` ของ Wagmi โดยตรง
+
+Transport เป็นชั้นกลางด้านเครือข่ายที่จัดการการส่งคำขอ JSON-RPC ไปยังผู้ให้บริการโหนด Ethereum (เช่น Alchemy, Infura ฯลฯ)
+
+**ตัวอย่างที่ใช้ `http` transport**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+สำหรับรายละเอียดเพิ่มเติม ดูที่ [เอกสาร wagmi transport](https://wagmi.sh/core/api/transports#transports).
 
 ### เพิ่มฟังก์ชันของคุณเอง
 

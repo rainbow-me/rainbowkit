@@ -51,7 +51,6 @@ import {
   optimism,
   arbitrum,
   base,
-  zora,
 } from 'wagmi/chains';
 import {
   QueryClientProvider,
@@ -72,7 +71,7 @@ import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 const config = getDefaultConfig({
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [mainnet, polygon, optimism, arbitrum, base, zora],
+  chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
 });
 ```
@@ -115,35 +114,45 @@ RainbowKit va désormais gérer la sélection du portefeuille de votre utilisate
 
 Certains outils de construction nécessiteront une configuration supplémentaire.
 
-##### React, Next.js, et Webpack
-
-Le [Webpack v5](https://webpack.js.org/blog/2020-10-10-webpack-5-release/) bundler utilisé par Next.js et Create React App [ne fournit plus les polyfills Node](https://webpack.js.org/blog/2020-10-10-webpack-5-release/#automatic-nodejs-polyfills-removed), donc vous devrez inclure ces modules vous-même pour satisfaire les dépendances de pairs de RainbowKit. Create React App Exige spécifiquement que vous polyfilliez `Buffer`.
-
-Dans les versions précédentes de RainbowKit qui reposaient sur [ethers](https://docs.ethers.org/v5/), les modules `fs`, `net` et `tls` étaient automatiquement polyfillés. Ce n'est plus le cas avec RainbowKit v1 + wagmi v1, qui sont construits sur [viem](https://viem.sh/).
-
-Consultez notre [Configuration webpack de Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js), [Configuration webpack de l'application routeur Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next-app/next.config.js), et les [polyfills de Create React App](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) exemples pour des conseils de configuration pour votre projet.
-
-##### Vite
-
-Le constructeur [Vite](https://vitejs.dev) ne fournit pas les polyfills Node, donc vous devrez inclure les polyfills pour `global`, `Buffer` et `process.env`. Comme exemple, vous pouvez vous référer aux [polyfills dans notre exemple de projet Vite](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-vite/src/polyfills.ts).
-
 ##### Remix
 
-Lors de l'utilisation de [Remix](https://remix.run), tous les points d'entrée du package RainbowKit doivent être ajoutés à votre liste de [dépendances serveur](https://remix.run/docs/en/v1/pages/gotchas#importing-esm-packages) dans votre configuration Remix puisqu'ils sont publiés en tant que packages ESM.
+Lorsque vous utilisez [Remix](https://remix.run), vous devez polyfiller les modules `buffer`, `events` et `http`. Référencez la configuration Remix ci-dessous, ou [notre exemple de projet Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
-Remix exige également que vous utilisiez un polyfill pour `global`, `Buffer` et `process.env`. Faites référence aux [polyfills dans notre exemple de projet Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix/app/polyfills.ts).
-
-```js
-/**
- * @type {import('@remix-run/dev').AppConfig}
- */
-module.exports = {
-  serverDependencies: [
-    '@rainbow-me/rainbowkit',
-    '@rainbow-me/rainbowkit/wallets',
-  ],
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
 };
 ```
+
+### Préparation au déploiement
+
+Par défaut, votre dApp utilise des fournisseurs RPC publics pour chaque chaîne afin de récupérer les soldes, résoudre les noms ENS, et plus encore. Cela peut souvent causer des problèmes de fiabilité pour vos utilisateurs car les nœuds publics sont limités en taux. Vous devriez plutôt acheter un accès à un fournisseur RPC via des services tels que [Alchemy](https://www.alchemy.com/) ou [QuickNode](https://www.quicknode.com/), et définir vos propres Transports dans Wagmi. Cela peut être réalisé en ajoutant le paramètre `transports` dans `getDefaultConfig` ou directement via `createConfig` de Wagmi.
+
+Un Transport est la couche intermédiaire de réseau qui gère l'envoi des requêtes JSON-RPC au fournisseur de nœuds Ethereum (comme Alchemy, Infura, etc).
+
+**Exemple avec un transport `http`**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+Pour plus de détails, consultez la [documentation sur les transports wagmi](https://wagmi.sh/core/api/transports#transports).
 
 ### Ajoutez votre propre fonctionnalité
 

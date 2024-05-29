@@ -28,7 +28,7 @@ Instálala con el siguiente comando:
 npm i @tanstack/react-query
 ```
 
-**3. RainbowKitProvider**
+**3. Actualice sus configuraciones de RainbowKit y Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -124,7 +124,7 @@ const config = getDefaultConfig({
 })
 ```
 
-**4. Cadenas Personalizadas**
+**4. RainbowKitProvider**
 
 Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 
@@ -133,7 +133,7 @@ Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 + <RainbowKitProvider>
 ```
 
-**5. Carteras Personalizadas**
+**5. Cadenas Personalizadas**
 
 El tipo `Chain` ha cambiado de acuerdo con Wagmi v2, y continúa soportando los metadatos `iconUrl` e `iconBackground` de RainbowKit.
 
@@ -195,7 +195,7 @@ Ejemplo con `createConfig`:
   })
 ```
 
-**2. Instala la dependencia de pares `viem`**
+**2. Carteras Personalizadas**
 
 RainbowKit ha adoptado el conector `WalletConnectLegacyConnector` en `wagmi` para continuar con el soporte de WalletConnect v1. El soporte para WalletConnect v2 y `WalletConnectConnector` pronto estará disponible como una versión de parche, sin cambios disruptivos.
 
@@ -309,7 +309,7 @@ La dependencia paralela de wagmi ha sido actualizada a `0.12.x`.
 
 Sigue los pasos a continuación para migrar.
 
-#### 1. Actualiza las dependencias
+#### \*\*1. Actualiza las dependencias
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
@@ -345,13 +345,13 @@ La dependencia paritaria de wagmi se ha actualizado a `0.8.x`.
 
 Sigue los pasos a continuación para migrar.
 
-#### 2. Busque cambios significativos en `wagmi`
+#### 2. Actualiza las dependencias
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. Reemplaza la importación de configureChains
+#### 2. Busque cambios significativos en `wagmi`
 
 Si usa los ganchos `wagmi` en su aplicación, tendrá que verificar si su aplicación ha sido afectada por los cambios disruptivos en `wagmi`.
 
@@ -412,7 +412,7 @@ Actualiza RainbowKit y wagmi a su última versión
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. Reemplaza la importación de configureChains
+#### \*\*4. Verifique los cambios radicales en `wagmi`
 
 Si utiliza los hooks de `wagmi` en su aplicación, necesitará verificar si su aplicación ha sido afectada por los cambios significativos en `wagmi`.
 

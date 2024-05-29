@@ -7,8 +7,6 @@ description: 지갑 목록 사용자 정의하기
 
 ## 지갑 목록 사용자 정의하기
 
-> 참고: 이 API는 불안정하며 가까운 미래에 변경될 가능성이 있습니다. 우리는 현재 지갑 목록의 변경을 피하하는 것을 권장합니다.
-
 '@rainbow-me/rainbowkit/wallets'에서 개별 지갑을 가져오고, 필요한 커넥터를 가진 자신의 지갑 목록을 만드는 `connectorsForWallets` 함수를 가져올 수 있습니다. 이렇게 하면 표시할 지갑과 그 순서를 전적으로 제어할 수 있습니다.
 
 예를 들어, Rainbow와 일반적인 대체 지갑만 표시하기로 선택할 수 있습니다.
@@ -76,16 +74,6 @@ const App = () => (
 
 ```tsx
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
-
-walletConnectWallet(options: {
-  projectId: string;
-  options?: {
-    qrModalOptions?: {
-      desktopWallets?: DesktopWallet[];
-      mobileWallets?: MobileWallet[];
-    };
-  }
-});
 ```
 
 ##### 인젝티드 지갑
@@ -96,8 +84,14 @@ walletConnectWallet(options: {
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-injectedWallet();
+##### 세이프 지갑
+
+세이프 앱을 지원하는 dApp의 경우 사용자가 자신의 세이프 볼트 또는 멀티시그에 쉽게 연결할 수 있도록 자동 연결을 위해 `safeWallet` 옵션을 포함시킵니다. 세이프 옵션이 세이프 지갑 브라우저 환경에서만 나타납니다.
+
+```tsx
+import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 ### 특정 지갑들
@@ -108,338 +102,264 @@ injectedWallet();
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
-
-argentWallet(options: {
-  projectId: string;
-});
 ```
 
 #### 비트겟
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bitgetWallet(options: {
-  projectId: string;
-});
 ```
 
 #### 바이프로스트 지갑
 
 ```tsx
 import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-
-bifrostWallet(options: {
-  projectId: string;
-});
 ```
 
 #### 비트스키
 
 ```tsx
 import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-bitskiWallet();
+#### Bitverse
+
+```tsx
+import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 블룸 지갑
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-bloomWallet(options: {
-  projectId: string;
-});
+#### Bybit 지갑
+
+```tsx
+import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 브레이브 지갑
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
-
-braveWallet();
 ```
 
 #### Coinbase Wallet
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-coinbaseWallet(options: {
-  appName: string;
-});
+#### 컴퍼스 월렛
+
+```tsx
+import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
 #### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
-
-coin98Wallet(options: {
-  projectId: string;
-});
 ```
 
 #### Core
 
 ```tsx
 import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
-
-coreWallet(options: {
-  projectId: string;
-});
 ```
 
 #### Dawn Wallet
 
 ```tsx
 import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
-
-dawnWallet();
 ```
 
 #### Enkrypt Wallet
 
 ```tsx
 import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
-
-enkryptWallet();
 ```
 
 #### FoxWallet
 
 ```tsx
 import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
-
-foxWallet(options: {
-  projectId: string;
-});
 ```
 
 #### Frame Wallet
 
 ```tsx
 import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
-
-frameWallet();
 ```
 
 #### Frontier Wallet
 
 ```tsx
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-frontierWallet(options: {
-  projectId: string;
-});
+#### Gate 지갑
+
+```tsx
+import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Ledger Live
 
 ```tsx
 import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
-
-ledgerWallet(options: {
-  projectId: string;
-});
 ```
 
 #### imToken
 
 ```tsx
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-imTokenWallet(options: {
-  projectId: string;
-});
+#### 크라켄 월렛
+
+```tsx
+import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### 크레수스 지갑
 
 ```tsx
 import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-kresusWallet(options: {
-  projectId: string;
-});
+#### Kaikas
+
+```tsx
+import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 매직 에덴 지갑
+
+```tsx
+import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MetaMask
 
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
-
-metaMaskWallet(options: {
-  projectId: string;
-});
 ```
 
 #### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
-
-mewWallet();
 ```
 
 #### OKX Wallet
 
 ```tsx
 import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
-
-okxWallet(options: {
-  projectId: string;
-});
 ```
 
 #### Omni
 
 ```tsx
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-omniWallet(options: {
-  projectId: string;
-});
+#### 1inch 지갑
+
+```tsx
+import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OneKey
 
 ```tsx
 import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
-
-oneKeyWallet();
 ```
 
 #### Phantom
 
 ```tsx
 import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
-
-phantomWallet();
 ```
 
 #### Rabby Wallet
 
 ```tsx
 import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
-
-rabbyWallet();
 ```
 
 #### Rainbow
 
 ```tsx
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
-
-rainbowWallet(options: {
-  projectId: string;
-});
 ```
 
 #### 램퍼 지갑
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
-
-ramperWallet();
 ```
 
 #### 로닌 지갑
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
-
-roninWallet(options: {
-  projectId: string;
-});
-```
-
-#### 세이프 (노시스 세이프)
-
-```tsx
-import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
-
-safeWallet();
 ```
 
 #### Safeheron
 
 ```tsx
 import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
-
-safeheronWallet();
 ```
 
 #### Taho
 
 ```tsx
 import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
-
-tahoWallet();
 ```
 
 #### Talisman
 
 ```tsx
 import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
-
-talismanWallet();
 ```
 
 #### Tokenary
 
 ```tsx
 import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
-
-tokenaryWallet();
 ```
 
 #### TokenPocket
 
 ```tsx
 import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
-
-tokenPocketWallet(options: {
-  projectId: string;
-});
 ```
 
 #### Trust Wallet
 
 ```tsx
 import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
-
-trustWallet(options: {
-  projectId: string;
-});
 ```
 
 #### Uniswap Wallet
 
 ```tsx
 import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
-
-uniswapWallet(options: {
-  projectId: string;
-});
 ```
 
 #### XDEFI Wallet
 
 ```tsx
 import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
-
-xdefiWallet();
 ```
 
 #### Zerion
 
 ```tsx
 import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
-
-zerionWallet(options: {
-  projectId: string;
-});
 ```
 
 ### 예제

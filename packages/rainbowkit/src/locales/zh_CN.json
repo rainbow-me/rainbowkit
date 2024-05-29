@@ -292,6 +292,22 @@
         }
       }
     },
+    "bitverse": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 Bitverse Wallet 应用",
+          "description": "将 Bitverse Wallet 添加到您的主屏幕上，以便更快访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      }
+    },
     "bloom": {
       "desktop": {
         "step1": {
@@ -319,6 +335,36 @@
         "step3": {
           "description": "拥有钱包后，点击连接以通过 Bloom 连接。应用中会出现一个连接提示，供您确认连接。",
           "title": "点击连接"
+        }
+      }
+    },
+    "bybit": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议将 Bybit 添加到您的主屏幕上，以便更快访问您的钱包。",
+          "title": "打开 Bybit 应用"
+        },
+        "step2": {
+          "description": "您可以使用我们的手机上的备份功能轻松备份您的钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击扫描按钮"
+        }
+      },
+      "extension": {
+        "step1": {
+          "description": "点击浏览器右上角并固定 Bybit Wallet，便于快速访问。",
+          "title": "安装 Bybit Wallet 扩展程序"
+        },
+        "step2": {
+          "description": "创建新钱包或导入现有钱包。",
+          "title": "创建或导入钱包。"
+        },
+        "step3": {
+          "description": "设置 Bybit Wallet 后，点击下方刷新浏览器并加载扩展程序。",
+          "title": "刷新您的浏览器"
         }
       }
     },
@@ -378,6 +424,22 @@
         },
         "step3": {
           "description": "设置好钱包后，点击下方以刷新浏览器并加载扩展。",
+          "title": "刷新您的浏览器"
+        }
+      }
+    },
+    "compass": {
+      "extension": {
+        "step1": {
+          "description": "我们建议将Compass Wallet固定在任务栏上，以便更快地访问您的钱包。",
+          "title": "安装Compass Wallet扩展"
+        },
+        "step2": {
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。",
           "title": "刷新您的浏览器"
         }
       }
@@ -474,6 +536,52 @@
         }
       }
     },
+    "kaikas": {
+      "extension": {
+        "step1": {
+          "description": "我们建议将 Kaikas 固定到任务栏上，以便更快访问您的钱包。",
+          "title": "安装 Kaikas 扩展程序"
+        },
+        "step2": {
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。",
+          "title": "刷新您的浏览器"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开 Kaikas 应用",
+          "description": "将 Kaikas 应用添加到您的主屏幕上，以便更快访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击右上角的扫描图标",
+          "description": "选择新连接，然后扫描二维码并确认提示以进行连接。"
+        }
+      }
+    },
+    "kraken": {
+      "qr_code": {
+        "step1": {
+          "title": "打开Kraken Wallet应用程序",
+          "description": "将Kraken Wallet添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      }
+    },
     "kresus": {
       "qr_code": {
         "step1": {
@@ -487,6 +595,22 @@
         "step3": {
           "title": "点击QR图标并扫描",
           "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      }
+    },
+    "magicEden": {
+      "extension": {
+        "step1": {
+          "title": "安装 Magic Eden 扩展程序",
+          "description": "我们建议将 Magic Eden 固定到任务栏，以便更轻松地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "确保使用安全的方法备份您的钱包。切勿与任何人分享您的秘密恢复短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },
@@ -563,6 +687,22 @@
         "step3": {
           "title": "点击QR图标并扫描",
           "description": "点击首页的二维码图标，扫描代码并确认提示以连接。"
+        }
+      }
+    },
+    "1inch": {
+      "qr_code": {
+        "step1": {
+          "description": "将 1inch Wallet 添加到您的主屏幕上，以便更快访问您的钱包。",
+          "title": "打开 1inch Wallet 应用"
+        },
+        "step2": {
+          "description": "创建钱包和用户名，或导入现有钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击扫描二维码按钮"
         }
       }
     },
