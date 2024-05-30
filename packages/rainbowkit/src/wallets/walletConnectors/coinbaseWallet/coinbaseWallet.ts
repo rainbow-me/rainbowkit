@@ -11,7 +11,12 @@ export interface CoinbaseWalletOptions {
   appIcon?: string;
 }
 
-const wallet = ({ appName, appIcon }: CoinbaseWalletOptions): Wallet => {
+type CoinbaseWallet = {
+  (params: CoinbaseWalletOptions): Wallet;
+  preference?: CoinbaseWalletParameters<'4'>['preference'];
+};
+
+export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
   const getUri = (uri: string) => uri;
   const ios = isIOS();
 
@@ -107,10 +112,3 @@ const wallet = ({ appName, appIcon }: CoinbaseWalletOptions): Wallet => {
     },
   };
 };
-
-export const coinbaseWallet = Object.assign<
-  typeof wallet,
-  { preference: CoinbaseWalletParameters<'4'>['preference'] }
->(wallet, {
-  preference: undefined,
-});
