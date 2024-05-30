@@ -1,5 +1,17 @@
 # example
 
+## 0.0.101
+
+### Patch Changes
+
+- fea278a: Removed `getDefaultWallets` in favor of a static `Popular` list to test the `coinbaseWallet.preference` setting
+- Updated dependencies [2180ddd]
+- Updated dependencies [fea278a]
+- Updated dependencies [9694368]
+  - @rainbow-me/rainbowkit@2.1.2
+  - @rainbow-me/rainbow-button@0.2.11
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.1
+
 ## 0.0.100
 
 ### Patch Changes
