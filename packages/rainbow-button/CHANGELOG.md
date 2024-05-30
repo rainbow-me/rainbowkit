@@ -1,5 +1,19 @@
 # @rainbow-me/rainbow-button
 
+## 0.2.11
+
+### Patch Changes
+
+- 9694368: Resolved an issue where the Rainbow Button styling was not exported. You can now import the styling in your project like so:
+
+  ```tsx
+  import "@rainbow-me/rainbow-button/styles.css";
+  ```
+
+- Updated dependencies [2180ddd]
+- Updated dependencies [fea278a]
+  - @rainbow-me/rainbowkit@2.1.2
+
 ## 0.2.10
 
 ### Patch Changes

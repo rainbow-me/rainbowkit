@@ -1,5 +1,12 @@
 # with-next-rainbow-button
 
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies [9694368]
+  - @rainbow-me/rainbow-button@0.2.11
+
 ## 0.0.19
 
 ### Patch Changes
