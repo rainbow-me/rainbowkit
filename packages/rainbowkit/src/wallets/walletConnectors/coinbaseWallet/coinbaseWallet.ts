@@ -112,5 +112,5 @@ export const coinbaseWallet = Object.assign<
   typeof wallet,
   { preference: CoinbaseWalletParameters<'4'>['preference'] }
 >(wallet, {
-  preference: 'all',
+  preference: undefined,
 });
