@@ -3,32 +3,27 @@
 "example": patch
 ---
 
-Added `preference` property to `coinbaseWallet`. You can now enable coinbase smart wallet feature like so:
+The `coinbaseWallet` wallet connector now has a `preference` argument to control whether Smart Wallet is enabled and available for users. Preference based behavior is documented [here](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+Smart Wallet will be enabled by default with `all` in early June, without a further upgrade.
+
+Developers can test Smart Wallet with `sepolia` and `baseSepolia` chains today by setting `smartWalletOnly` like so:
 
 ```tsx
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
-import {
-  arbitrum,
-  base,
-  mainnet,
-  optimism,
-  polygon,
-  sepolia,
-} from 'wagmi/chains';
 
-// Enable coinbase smart wallet feature
+// Enable Coinbase Smart Wallet for testing
 coinbaseWallet.preference = 'smartWalletOnly';
 
-export const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
-  projectId: 'YOUR_PROJECT_ID',
+// You must manually specify your wallet list with `wallets` in 
+// `getDefaultConfig` or `connectorsForWallets` to assign the preference
+const config = getDefaultConfig({
+  /* ... */
   wallets: [
     {
       groupName: 'Popular',
       wallets: [coinbaseWallet],
     },
   ],
-  chains: [mainnet],
+  /* ... */
 });
-```
