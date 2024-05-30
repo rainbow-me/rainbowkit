@@ -8,8 +8,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, useDisconnect } from 'wagmi';
 import {
   AvatarComponent,
   DisclaimerComponent,
@@ -19,7 +17,12 @@ import {
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import {
+  GetSiweMessageOptions,
+  RainbowKitSiweNextAuthProvider,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider, useDisconnect } from 'wagmi';
 
 import { AppContextProps } from '../lib/AppContextProps';
 import { config } from '../wagmi';
