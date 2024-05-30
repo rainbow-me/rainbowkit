@@ -9,7 +9,6 @@ import {
   RainbowKitProvider,
   darkTheme,
   getDefaultConfig,
-  getDefaultWallets,
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
@@ -27,6 +26,7 @@ import {
   bybitWallet,
   clvWallet,
   coin98Wallet,
+  coinbaseWallet,
   compassWallet,
   coreWallet,
   dawnWallet,
@@ -42,6 +42,7 @@ import {
   kresusWallet,
   ledgerWallet,
   magicEdenWallet,
+  metaMaskWallet,
   mewWallet,
   nestWallet,
   oktoWallet,
@@ -51,6 +52,7 @@ import {
   oneKeyWallet,
   phantomWallet,
   rabbyWallet,
+  rainbowWallet,
   ramperWallet,
   roninWallet,
   safeheronWallet,
@@ -62,6 +64,7 @@ import {
   tokenaryWallet,
   trustWallet,
   uniswapWallet,
+  walletConnectWallet,
   xdefiWallet,
   zealWallet,
   zerionWallet,
@@ -108,8 +111,6 @@ const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
 
-const { wallets } = getDefaultWallets();
-
 const avalanche = {
   id: 43_114,
   name: 'Avalanche',
@@ -146,6 +147,9 @@ const sei = {
   contracts: {},
 } as const satisfies Chain;
 
+// Enable coinbase smart wallet feature
+coinbaseWallet.preference = 'smartWalletOnly';
+
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -181,7 +185,15 @@ const config = getDefaultConfig({
       : []),
   ],
   wallets: [
-    ...wallets,
+    {
+      groupName: 'Popular',
+      wallets: [
+        rainbowWallet,
+        coinbaseWallet,
+        metaMaskWallet,
+        walletConnectWallet,
+      ],
+    },
     {
       groupName: 'Other',
       wallets: [
