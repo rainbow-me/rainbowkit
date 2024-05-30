@@ -11,10 +11,10 @@ export interface CoinbaseWalletOptions {
   appIcon?: string;
 }
 
-type CoinbaseWallet = {
+interface CoinbaseWallet {
   (params: CoinbaseWalletOptions): Wallet;
   preference?: CoinbaseWalletParameters<'4'>['preference'];
-};
+}
 
 export const coinbaseWallet: CoinbaseWallet = ({ appName, appIcon }) => {
   const getUri = (uri: string) => uri;
