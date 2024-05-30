@@ -147,8 +147,7 @@ const sei = {
   contracts: {},
 } as const satisfies Chain;
 
-// Enable coinbase smart wallet feature
-coinbaseWallet.preference = 'smartWalletOnly';
+coinbaseWallet.preference = 'all';
 
 const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
