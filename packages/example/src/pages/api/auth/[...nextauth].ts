@@ -9,7 +9,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import { ByteArray, Hex, Signature, publicActions } from 'viem';
 import { parseSiweMessage } from 'viem/siwe';
-import { wagmiConfig } from '../../_app';
+
+import { config } from '../../../wagmi';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
@@ -44,7 +45,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
             return null;
           }
 
-          const publicClient = wagmiConfig.getClient().extend(publicActions);
+          const publicClient = config.getClient().extend(publicActions);
 
           const valid = await publicClient.verifyMessage({
             address,
