@@ -1,8 +1,4 @@
-import {
-  type Chain,
-  getDefaultConfig,
-  getDefaultWallets,
-} from '@rainbow-me/rainbowkit';
+import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   bifrostWallet,
@@ -13,6 +9,7 @@ import {
   bybitWallet,
   clvWallet,
   coin98Wallet,
+  coinbaseWallet,
   compassWallet,
   coreWallet,
   dawnWallet,
@@ -28,6 +25,7 @@ import {
   kresusWallet,
   ledgerWallet,
   magicEdenWallet,
+  metaMaskWallet,
   mewWallet,
   nestWallet,
   oktoWallet,
@@ -37,6 +35,7 @@ import {
   oneKeyWallet,
   phantomWallet,
   rabbyWallet,
+  rainbowWallet,
   ramperWallet,
   roninWallet,
   safeheronWallet,
@@ -48,6 +47,7 @@ import {
   tokenaryWallet,
   trustWallet,
   uniswapWallet,
+  walletConnectWallet,
   xdefiWallet,
   zealWallet,
   zerionWallet,
@@ -80,8 +80,6 @@ import {
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
-
-const { wallets } = getDefaultWallets();
 
 const avalanche = {
   id: 43_114,
@@ -119,6 +117,10 @@ const sei = {
   contracts: {},
 } as const satisfies Chain;
 
+// Enable Smart Wallet and EOA
+// Testing `preference` type
+coinbaseWallet.preference = 'all';
+
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,
@@ -154,7 +156,15 @@ export const config = getDefaultConfig({
       : []),
   ],
   wallets: [
-    ...wallets,
+    {
+      groupName: 'Popular',
+      wallets: [
+        rainbowWallet,
+        coinbaseWallet,
+        metaMaskWallet,
+        walletConnectWallet,
+      ],
+    },
     {
       groupName: 'Other',
       wallets: [
