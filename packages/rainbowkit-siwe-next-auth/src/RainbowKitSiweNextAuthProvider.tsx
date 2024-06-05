@@ -4,21 +4,21 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import React, { ReactNode, useMemo } from 'react';
-import { SiweMessage } from 'siwe';
+import type { Address } from 'viem';
+import { type CreateSiweMessageParameters, createSiweMessage } from 'viem/siwe';
 
 type UnconfigurableMessageOptions = {
-  address: string;
+  address: Address;
   chainId: number;
   nonce: string;
 };
 
-type ConfigurableMessageOptions = Partial<
-  Omit<SiweMessage, keyof UnconfigurableMessageOptions>
-> & {
-  [_Key in keyof UnconfigurableMessageOptions]?: never;
-};
+type ConfigurableMessageOptions = Omit<
+  CreateSiweMessageParameters,
+  keyof UnconfigurableMessageOptions
+>;
 
-export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
+export type GetSiweMessageOptions = () => Partial<ConfigurableMessageOptions>;
 
 interface RainbowKitSiweNextAuthProviderProps {
   enabled?: boolean;
@@ -49,18 +49,26 @@ export function RainbowKitSiweNextAuthProvider({
             nonce,
           };
 
-          return new SiweMessage({
-            ...defaultConfigurableOptions,
+          const siweMessageOptions = getSiweMessageOptions?.() ?? {};
+
+          return createSiweMessage({
+            // Use provided SIWE message options, fallback to defaults if undefined
+            domain:
+              siweMessageOptions.domain ?? defaultConfigurableOptions.domain,
+            uri: siweMessageOptions.uri ?? defaultConfigurableOptions.uri,
+            version:
+              siweMessageOptions.version ?? defaultConfigurableOptions.version,
+            statement:
+              siweMessageOptions.statement ??
+              defaultConfigurableOptions.statement,
 
             // Spread custom SIWE message options provided by the consumer
-            ...getSiweMessageOptions?.(),
+            ...siweMessageOptions,
 
             // Spread unconfigurable options last so they can't be overridden
             ...unconfigurableOptions,
           });
         },
-
-        getMessageBody: ({ message }) => message.prepareMessage(),
 
         getNonce: async () => {
           const nonce = await getCsrfToken();
@@ -74,7 +82,7 @@ export function RainbowKitSiweNextAuthProvider({
 
         verify: async ({ message, signature }) => {
           const response = await signIn('credentials', {
-            message: JSON.stringify(message),
+            message,
             redirect: false,
             signature,
           });

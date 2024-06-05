@@ -7,41 +7,58 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
-import { SiweMessage } from 'siwe';
+import { ByteArray, Hex, Signature, publicActions } from 'viem';
+import { parseSiweMessage } from 'viem/siwe';
+
+import { config } from '../../../wagmi';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
     CredentialsProvider({
       async authorize(credentials) {
         try {
-          const siwe = new SiweMessage(
-            JSON.parse(credentials?.message || '{}'),
-          );
+          const message = credentials?.message ?? '';
+
+          const { domain, nonce, address } = parseSiweMessage(message);
+
+          if (!address) return null;
 
           const nextAuthUrl =
             process.env.NEXTAUTH_URL ||
             (process.env.VERCEL_URL
               ? `https://${process.env.VERCEL_URL}`
               : null);
+
           if (!nextAuthUrl) {
             return null;
           }
 
           const nextAuthHost = new URL(nextAuthUrl).host;
-          if (siwe.domain !== nextAuthHost) {
+
+          if (domain !== nextAuthHost) {
             return null;
           }
 
           if (
-            siwe.nonce !==
-            (await getCsrfToken({ req: { headers: req.headers } }))
+            nonce !== (await getCsrfToken({ req: { headers: req.headers } }))
           ) {
             return null;
           }
 
-          await siwe.verify({ signature: credentials?.signature || '' });
+          const publicClient = config.getClient().extend(publicActions);
+
+          const valid = await publicClient.verifyMessage({
+            address,
+            message,
+            signature: credentials?.signature as Hex | ByteArray | Signature,
+          });
+
+          if (!valid) {
+            throw new Error('Invalid message');
+          }
+
           return {
-            id: siwe.address,
+            id: address,
           };
         } catch (e) {
           console.error('siwe authorization failed', e);

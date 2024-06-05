@@ -1,9 +1,9 @@
 import 'iron-session';
-import { SiweMessage } from 'siwe';
+import { Address } from 'viem';
 
 declare module 'iron-session' {
   interface IronSessionData {
     nonce?: string;
-    siwe?: SiweMessage;
+    siwe?: { address: Address };
   }
 }
