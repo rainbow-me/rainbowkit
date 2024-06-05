@@ -59,6 +59,7 @@ const getOrCreateWalletConnectInstance = ({
 
   // Create a new walletConnect instance and store it
   const newWalletConnectInstance = walletConnect(config);
+  console.log('newWalletConnectInstance');
 
   walletConnectInstances.set(serializedConfig, newWalletConnectInstance);
 
