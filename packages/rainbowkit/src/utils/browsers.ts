@@ -26,6 +26,7 @@ export enum BrowserType {
 
 export function getBrowser(): BrowserType {
   if (typeof navigator === 'undefined') return BrowserType.Browser;
+  if (Object.keys(navigator).length === 0) return BrowserType.Browser;
   const ua = navigator.userAgent.toLowerCase();
   // @ts-ignore - brave is not in the navigator type
   if (navigator.brave?.isBrave) return BrowserType.Brave;
