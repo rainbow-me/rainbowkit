@@ -14,4 +14,4 @@ yarn create @rainbow-me/rainbowkit
 
 Licensed under the MIT License, Copyright © 2022-present [Rainbow](https://rainbow.me).
 
-See [LICENSE](./LICENSE) for more information.
+See [LICENSE](/LICENSE) for more information.

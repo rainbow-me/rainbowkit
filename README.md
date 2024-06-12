@@ -74,10 +74,10 @@ pnpm run dev
 
 ## Contributing
 
-Please follow our [contributing guidelines](./.github/CONTRIBUTING.md).
+Please follow our [contributing guidelines](/.github/CONTRIBUTING.md).
 
 ## License
 
 Licensed under the MIT License, Copyright © 2022-present [Rainbow](https://rainbow.me).
 
-See [LICENSE](./LICENSE) for more information.
+See [LICENSE](/LICENSE) for more information.
