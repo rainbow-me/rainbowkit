@@ -1,6 +1,7 @@
 export function isSafari(): boolean {
   return (
     typeof navigator !== 'undefined' &&
+    typeof navigator.userAgent !== 'undefined' &&
     /Version\/([0-9._]+).*Safari/.test(navigator.userAgent) // Source: https://github.com/DamonOehlman/detect-browser/blob/master/src/index.ts
   );
 }
@@ -25,7 +26,9 @@ export enum BrowserType {
 }
 
 export function getBrowser(): BrowserType {
-  if (typeof navigator === 'undefined') return BrowserType.Browser;
+  // bail out if `navigator` or `navigator.userAgent` is not available
+  if (typeof navigator === 'undefined' || Object.keys(navigator).length === 0)
+    return BrowserType.Browser;
   const ua = navigator.userAgent?.toLowerCase();
   // @ts-ignore - brave is not in the navigator type
   if (navigator.brave?.isBrave) return BrowserType.Brave;
