@@ -41,6 +41,7 @@ import { roninWallet } from './roninWallet/roninWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
+import { seifWallet } from './seifWallet/seifWallet';
 import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
@@ -97,6 +98,7 @@ export {
   safeWallet,
   safeheronWallet,
   safepalWallet,
+  seifWallet,
   subWallet,
   tahoWallet,
   talismanWallet,
