@@ -65,6 +65,8 @@ import {
   klaytn,
   klaytnBaobab,
   mainnet,
+  mantle,
+  mantleTestnet,
   optimism,
   optimismSepolia,
   polygon,
@@ -139,6 +141,7 @@ export const config = getDefaultConfig({
     ronin,
     klaytn,
     sei,
+    mantle,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -152,6 +155,7 @@ export const config = getDefaultConfig({
           avalancheFuji,
           zetachainAthensTestnet,
           klaytnBaobab,
+          mantleTestnet,
         ]
       : []),
   ],
