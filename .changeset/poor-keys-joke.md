@@ -2,4 +2,4 @@
 "@rainbow-me/rainbowkit": patch
 ---
 
-feat: add `mantle` and `mantleTestnet` network support
+Added `mantle` and `mantleTestnet` network support
