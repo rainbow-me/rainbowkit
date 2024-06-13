@@ -59,7 +59,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
     setIsOpen(false);
   }, [setIsOpen]);
 
-  // Listen to route change so we can programatically close
+  // Listen to route change so we can programmatically close
   // the docs mobile menu when changing routes.
   useEffect(() => {
     router.events.on('routeChangeStart', handleRouteChange);
