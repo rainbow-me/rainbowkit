@@ -6,7 +6,7 @@
 
 The simplest way to add support for Rainbow Wallet to dApps built on [wagmi](https://wagmi.sh/).
 
-This package is designed to be installed independent of [RainbowKit](https://www.rainbowkit.com).
+This package is designed to be installed independently of [RainbowKit](https://www.rainbowkit.com).
 
 ## Usage
 
