@@ -1,7 +1,7 @@
 {
   "name": "with-next-app-i18n",
   "private": true,
-  "version": "0.0.39",
+  "version": "0.0.40",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,5 +1,14 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.3
+
+### Patch Changes
+
+- 23e33b9: Added `mantle` and `mantleTestnet` network support
+- d81935c: Resolved an issue where `Object.keys(navigator).length` returned `0` because it couldn't access object properties due to how `navigator` window API works. This fix should now show the desired browser link and background when trying to install an extension from connect modal.
+- 7b00be5: Addes Seif Wallet support with `seifWallet` wallet connector
+- 001a0a9: Resolved an issue in development where browser detection would throw an error if `navigator.userAgent` was unavailable in the browser.
+
 ## 2.1.2
 
 ### Patch Changes

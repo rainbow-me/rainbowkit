@@ -1,7 +1,7 @@
 {
   "name": "rainbowkit-next-app",
   "private": true,
-  "version": "0.0.93",
+  "version": "0.0.94",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
