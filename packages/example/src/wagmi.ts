@@ -123,6 +123,10 @@ const sei = {
 // Testing `preference` type
 coinbaseWallet.preference = 'all';
 
+metaMaskWallet.parameters = {
+  // infuraAPIKey: '01234',
+};
+
 export const config = getDefaultConfig({
   appName: 'RainbowKit Demo',
   projectId,

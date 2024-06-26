@@ -255,8 +255,16 @@ import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
 
 #### MetaMask
 
+This wallet connector supports both the Metamask mobile app and extension.
+
+A `parameters` argument is available to add options to metamask connector. Parameters are documented [here](https://docs.metamask.io/wallet/reference/sdk-js-options/).
+
 ```tsx
 import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+
+metaMaskWallet.parameters = {
+  infuraAPIKey: '01234',
+};
 ```
 
 #### MEW Wallet

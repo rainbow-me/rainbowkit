@@ -1,91 +1,39 @@
-import { WindowProvider } from '../../../types/utils';
-import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { DefaultWalletOptions, Wallet } from '../../Wallet';
-import {
-  getInjectedConnector,
-  hasInjectedProvider,
-} from '../../getInjectedConnector';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { createConnector } from 'wagmi';
+import type { CreateConnectorFn } from 'wagmi';
+import { type MetaMaskParameters, metaMask } from 'wagmi/connectors';
+import { isMobile } from '../../../utils/isMobile';
+import type { CreateWalletFn, Wallet, WalletDetailsParams } from '../../Wallet';
+import { hasInjectedProvider } from '../../getInjectedConnector';
 
-export type MetaMaskWalletOptions = DefaultWalletOptions;
+export const METAMASK_WALLET_ID = 'metaMask';
 
-function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
-  // Logic borrowed from wagmi's MetaMaskConnector
-  // https://github.com/wagmi-dev/references/blob/main/packages/connectors/src/metaMask.ts
-  if (!ethereum?.isMetaMask) return false;
-  // Brave tries to make itself look like MetaMask
-  // Could also try RPC `web3_clientVersion` if following is unreliable
-  if (ethereum.isBraveWallet && !ethereum._events && !ethereum._state)
-    return false;
-  if (ethereum.isApexWallet) return false;
-  if (ethereum.isAvalanche) return false;
-  if (ethereum.isBackpack) return false;
-  if (ethereum.isBifrost) return false;
-  if (ethereum.isBitKeep) return false;
-  if (ethereum.isBitski) return false;
-  if (ethereum.isBlockWallet) return false;
-  if (ethereum.isCoinbaseWallet) return false;
-  if (ethereum.isDawn) return false;
-  if (ethereum.isEnkrypt) return false;
-  if (ethereum.isExodus) return false;
-  if (ethereum.isFrame) return false;
-  if (ethereum.isFrontier) return false;
-  if (ethereum.isGamestop) return false;
-  if (ethereum.isHyperPay) return false;
-  if (ethereum.isImToken) return false;
-  if (ethereum.isKuCoinWallet) return false;
-  if (ethereum.isMathWallet) return false;
-  if (ethereum.isNestWallet) return false;
-  if (ethereum.isOkxWallet || ethereum.isOKExWallet) return false;
-  if (ethereum.isOneInchIOSWallet || ethereum.isOneInchAndroidWallet)
-    return false;
-  if (ethereum.isOpera) return false;
-  if (ethereum.isPhantom) return false;
-  if (ethereum.isPortal) return false;
-  if (ethereum.isRabby) return false;
-  if (ethereum.isRainbow) return false;
-  if (ethereum.isStatus) return false;
-  if (ethereum.isTalisman) return false;
-  if (ethereum.isTally) return false;
-  if (ethereum.isTokenPocket) return false;
-  if (ethereum.isTokenary) return false;
-  if (ethereum.isTrust || ethereum.isTrustWallet) return false;
-  if (ethereum.isXDEFI) return false;
-  if (ethereum.isZeal) return false;
-  if (ethereum.isZerion) return false;
-  if (ethereum.__seif) return false;
-  return true;
+export type MetaMaskWalletOptions = Pick<
+  Parameters<CreateWalletFn>[0],
+  'appName' | 'appIcon'
+>;
+
+export interface MetamaskWallet {
+  (params: MetaMaskWalletOptions): Wallet;
+  parameters?: Pick<MetaMaskParameters, 'infuraAPIKey'>;
 }
 
-export const metaMaskWallet = ({
-  projectId,
-  walletConnectParameters,
-}: MetaMaskWalletOptions): Wallet => {
-  // Not using the explicit isMetaMask fn to check for MetaMask
-  // so that users can continue to use the MetaMask button
-  // to interact with wallets compatible with window.ethereum.
-  // The connector's getProvider will instead favor the real MetaMask
-  // in window.providers scenarios with multiple wallets injected.
-  const isMetaMaskInjected = hasInjectedProvider({ flag: 'isMetaMask' });
-  const shouldUseWalletConnect = !isMetaMaskInjected;
+export interface MetaMaskConnector extends ReturnType<CreateConnectorFn> {
+  getDisplayUri: () => Promise<string>;
+}
 
-  const getUri = (uri: string) => {
-    return isAndroid()
-      ? uri
-      : isIOS()
-        ? // currently broken in MetaMask v6.5.0 https://github.com/MetaMask/metamask-mobile/issues/6457
-          `metamask://wc?uri=${encodeURIComponent(uri)}`
-        : `https://metamask.app.link/wc?uri=${encodeURIComponent(uri)}`;
-  };
+export const metaMaskWallet: MetamaskWallet = (
+  dappParams: MetaMaskWalletOptions,
+): Wallet => {
+  const isExtensionInjected = hasInjectedProvider({ flag: 'isMetaMask' });
 
   return {
-    id: 'metaMask',
+    id: METAMASK_WALLET_ID,
     name: 'MetaMask',
     rdns: 'io.metamask',
     iconUrl: async () => (await import('./metaMaskWallet.svg')).default,
     iconAccent: '#f6851a',
     iconBackground: '#fff',
-    installed: !shouldUseWalletConnect ? isMetaMaskInjected : undefined,
+    installed: isExtensionInjected ? true : undefined,
     downloadUrls: {
       android: 'https://play.google.com/store/apps/details?id=io.metamask',
       ios: 'https://apps.apple.com/us/app/metamask/id1438144202',
@@ -98,13 +46,14 @@ export const metaMaskWallet = ({
       opera: 'https://addons.opera.com/extensions/details/metamask-10',
       browserExtension: 'https://metamask.io/download',
     },
-
-    mobile: {
-      getUri: shouldUseWalletConnect ? getUri : undefined,
-    },
-    qrCode: shouldUseWalletConnect
+    mobile: isMobile()
       ? {
-          getUri,
+          getUri: (uri: string) => uri,
+        }
+      : undefined,
+    qrCode: !isExtensionInjected
+      ? {
+          getUri: (uri: string) => uri,
           instructions: {
             learnMoreUrl: 'https://metamask.io/faqs/',
             steps: [
@@ -130,43 +79,105 @@ export const metaMaskWallet = ({
           },
         }
       : undefined,
-    extension: {
-      instructions: {
-        learnMoreUrl: 'https://metamask.io/faqs/',
-        steps: [
-          {
-            description:
-              'wallet_connectors.metamask.extension.step1.description',
-            step: 'install',
-            title: 'wallet_connectors.metamask.extension.step1.title',
+    extension: !isExtensionInjected
+      ? {
+          instructions: {
+            learnMoreUrl: 'https://metamask.io/faqs/',
+            steps: [
+              {
+                description:
+                  'wallet_connectors.metamask.extension.step1.description',
+                step: 'install',
+                title: 'wallet_connectors.metamask.extension.step1.title',
+              },
+              {
+                description:
+                  'wallet_connectors.metamask.extension.step2.description',
+                step: 'create',
+                title: 'wallet_connectors.metamask.extension.step2.title',
+              },
+              {
+                description:
+                  'wallet_connectors.metamask.extension.step3.description',
+                step: 'refresh',
+                title: 'wallet_connectors.metamask.extension.step3.title',
+              },
+            ],
           },
-          {
-            description:
-              'wallet_connectors.metamask.extension.step2.description',
-            step: 'create',
-            title: 'wallet_connectors.metamask.extension.step2.title',
+        }
+      : undefined,
+    createConnector: (walletDetails: WalletDetailsParams) => {
+      return createConnector((config) => {
+        const metamaskConnector = metaMask({
+          ...metaMaskWallet.parameters,
+          enableAnalytics: true,
+          extensionOnly: isExtensionInjected ? true : undefined,
+          dappMetadata: {
+            name: dappParams.appName,
+            iconUrl: dappParams.appIcon,
           },
-          {
-            description:
-              'wallet_connectors.metamask.extension.step3.description',
-            step: 'refresh',
-            title: 'wallet_connectors.metamask.extension.step3.title',
+          modals: {
+            install: () => {
+              return {
+                mount: () => {},
+                unmount: () => {},
+              };
+            },
           },
-        ],
-      },
+        })(config);
+
+        /**
+         * Override getChainId to avoid metamask error
+         *
+         * @see https://github.com/rainbow-me/rainbowkit/blob/cdcaa25d66b522119852502f71c8efc02b1abdd9/packages/rainbowkit/src/wallets/useWalletConnectors.ts#L57
+         * And @see https://github.com/wevm/wagmi/blob/275cccb51437908a2d7d3dab0549c6050b6340d3/packages/connectors/src/metaMask.ts#L154
+         */
+        const getChainId = metamaskConnector.getChainId;
+        metamaskConnector.getChainId = async () => {
+          try {
+            return await getChainId();
+          } catch {
+            return config.chains[0]?.id ?? 1;
+          }
+        };
+
+        /**
+         * Metamask emits the display_uri event only once when starting the connection.
+         * On subsequent attempts, it will wait for the first initialization.
+         * However, RainbowKit will listen for the display_uri event on each attempt.
+         * @see https://github.com/MetaMask/metamask-sdk/blob/90f2b7e96bcb7cca2f6c409909435325a615e2c1/packages/sdk/src/provider/initializeMobileProvider.ts#L122
+         */
+        const displayUri: { value?: string } = {};
+        const getDisplayUri = async () => {
+          if (displayUri.value) {
+            return displayUri.value;
+          }
+
+          const provider = await metamaskConnector.getProvider();
+          displayUri.value = await new Promise((resolve) => {
+            const onDisplayUri = (uri: unknown) => {
+              displayUri.value = uri as string;
+            };
+            provider.once('display_uri', (uri) => {
+              provider.on('display_uri', onDisplayUri);
+              provider.once('disconnect', () => {
+                provider.removeListener('display_uri', onDisplayUri);
+                displayUri.value = undefined;
+              });
+
+              resolve(uri as string);
+            });
+          });
+
+          return displayUri.value;
+        };
+
+        return {
+          getDisplayUri,
+          ...metamaskConnector,
+          ...walletDetails,
+        };
+      });
     },
-    createConnector: shouldUseWalletConnect
-      ? getWalletConnectConnector({
-          projectId,
-          walletConnectParameters,
-        })
-      : getInjectedConnector({
-          target:
-            typeof window !== 'undefined'
-              ? (window as WindowProvider).ethereum?.providers?.find(
-                  isMetaMask,
-                ) ?? window.ethereum
-              : undefined,
-        }),
   };
 };

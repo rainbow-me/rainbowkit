@@ -20,6 +20,10 @@ import {
   rainbowKitConnectorWithWalletConnect,
 } from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
+import {
+  METAMASK_WALLET_ID,
+  MetaMaskConnector,
+} from './walletConnectors/metaMaskWallet/metaMaskWallet';
 
 export interface WalletConnector extends WalletInstance {
   ready?: boolean;
@@ -105,6 +109,10 @@ export function useWalletConnectors(
     if (connector.id === 'coinbase') {
       // @ts-expect-error
       return provider.qrUrl;
+    }
+
+    if (connector.id === METAMASK_WALLET_ID) {
+      return (connector as unknown as MetaMaskConnector).getDisplayUri();
     }
 
     return new Promise<string>((resolve) =>
