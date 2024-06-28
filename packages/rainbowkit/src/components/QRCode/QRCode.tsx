@@ -48,6 +48,7 @@ export function QRCode({
     const dots: ReactElement[] = [];
     const matrix = generateMatrix(uri, ecl);
     const cellSize = size / matrix.length;
+    const dotZize = cellSize / (matrix.length < 70 ? 3 : 2); // calculate size of single dots
     const qrList = [
       { x: 0, y: 0 },
       { x: 1, y: 0 },
@@ -102,7 +103,7 @@ export function QRCode({
                   cy={j * cellSize + cellSize / 2}
                   fill="black"
                   key={`circle-${i}-${j}`}
-                  r={cellSize / 3} // calculate size of single dots
+                  r={dotZize}
                 />,
               );
             }

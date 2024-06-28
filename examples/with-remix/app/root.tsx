@@ -87,6 +87,8 @@ export default function App() {
 
     const config = getDefaultConfig({
       appName: 'RainbowKit Remix Example',
+      appUrl: 'https://rainbow.me',
+      appIcon: 'https://framerusercontent.com/images/Hml6PtJwt03gwFtTRYmbpo7EarY.png',
       projectId: 'YOUR_PROJECT_ID',
       chains,
       ssr: true,
