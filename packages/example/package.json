@@ -15,8 +15,8 @@
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "siwe": "^2.1.4",
-    "viem": "2.9.31",
-    "wagmi": "^2.9.2"
+    "viem": "2.12.5",
+    "wagmi": "^2.9.8"
   },
   "scripts": {
     "dev": "next dev",
