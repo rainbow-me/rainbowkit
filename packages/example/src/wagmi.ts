@@ -2,6 +2,7 @@ import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   bifrostWallet,
+  binanceWallet,
   bitgetWallet,
   bitskiWallet,
   bitverseWallet,
@@ -179,6 +180,7 @@ export const config = getDefaultConfig({
         bitverseWallet,
         bloomWallet,
         bybitWallet,
+        binanceWallet,
         clvWallet,
         compassWallet,
         coin98Wallet,

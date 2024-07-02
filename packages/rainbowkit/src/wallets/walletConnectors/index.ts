@@ -1,5 +1,6 @@
 import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
+import { binanceWallet } from './binanceWallet/binanceWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { bitverseWallet } from './bitverseWallet/bitverseWallet';
@@ -63,6 +64,7 @@ export {
   bloomWallet,
   bybitWallet,
   braveWallet,
+  binanceWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
