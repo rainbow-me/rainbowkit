@@ -43,7 +43,6 @@ function isMetaMask(ethereum?: WindowProvider['ethereum']): boolean {
   if (ethereum.isPhantom) return false;
   if (ethereum.isPortal) return false;
   if (ethereum.isRabby) return false;
-  if (ethereum.isRainbow) return false;
   if (ethereum.isStatus) return false;
   if (ethereum.isTalisman) return false;
   if (ethereum.isTally) return false;
