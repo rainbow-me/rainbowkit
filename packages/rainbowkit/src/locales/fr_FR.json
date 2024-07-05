@@ -1032,6 +1032,20 @@
           "title": "Rafraîchissez votre navigateur",
           "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
+      },
+      "qr_code": {
+        "step1": {
+          "description": "Ajoutez Zeal Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Zeal"
+        },
+        "step2": {
+          "description": "Créez un nouveau portefeuille ou importez-en un existant.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Appuyez sur l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour connecter.",
+          "title": "Appuyez sur l'icône QR et scannez"
+        }
       }
     },
     "safepal": {
@@ -1183,6 +1197,38 @@
         "step3": {
           "title": "Scannez le code",
           "description": "Appuyez sur WalletConnect puis passez au Scanner. Une fois que vous avez scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille."
+        }
+      }
+    },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Nous vous recommandons de placer Binance sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Binance"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonctionnalité de sauvegarde sur votre téléphone.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir scanné, une invite de connexion apparaîtra pour que vous puissiez connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "description": "Nous vous recommandons d'épingler NestWallet à votre barre des tâches pour un accès plus rapide à votre portefeuille.",
+          "title": "Installez l'extension NestWallet"
+        },
+        "step2": {
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec qui que ce soit.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension.",
+          "title": "Actualisez votre navigateur"
         }
       }
     }
