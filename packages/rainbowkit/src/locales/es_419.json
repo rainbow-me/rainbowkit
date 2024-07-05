@@ -1032,6 +1032,20 @@
           "title": "Refrescar tu navegador",
           "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
         }
+      },
+      "qr_code": {
+        "step1": {
+          "description": "Añade Zeal Wallet a tu pantalla de inicio para acceder más rápido a tu billetera.",
+          "title": "Abre la aplicación de Zeal"
+        },
+        "step2": {
+          "description": "Crea una nueva billetera o importa una existente.",
+          "title": "Crea o importa una billetera"
+        },
+        "step3": {
+          "description": "Toca el ícono de QR en tu pantalla de inicio, escanea el código y confirma el mensaje para conectar.",
+          "title": "Toca el ícono de QR y escanea"
+        }
       }
     },
     "safepal": {
@@ -1183,6 +1197,38 @@
         "step3": {
           "title": "Escanea el código",
           "description": "Toca WalletConnect y luego cambia a Scanner. Después de escanear, aparecerá un aviso de conexión para que conectes tu billetera."
+        }
+      }
+    },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos poner Binance en tu pantalla de inicio para acceder más rápido a tu billetera.",
+          "title": "Abre la aplicación de Binance"
+        },
+        "step2": {
+          "description": "Puedes respaldar fácilmente tu billetera usando nuestra función de respaldo en tu teléfono.",
+          "title": "Crea o importa una billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conectes tu billetera.",
+          "title": "Toca el botón WalletConnect"
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "description": "Recomendamos fijar NestWallet en tu barra de tareas para acceder más rápido a tu billetera.",
+          "title": "Instala la extensión NestWallet"
+        },
+        "step2": {
+          "description": "Asegúrate de respaldar tu billetera usando un método seguro. Nunca compartas tu frase secreta con nadie.",
+          "title": "Crea o importa una billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic a continuación para actualizar el navegador y cargar la extensión.",
+          "title": "Actualiza tu navegador"
         }
       }
     }
