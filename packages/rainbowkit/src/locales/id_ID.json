@@ -1032,6 +1032,20 @@
           "title": "Segarkan browser Anda",
           "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
         }
+      },
+      "qr_code": {
+        "step1": {
+          "description": "Tambahkan Zeal Wallet ke layar beranda Anda agar lebih cepat mengakses dompet Anda.",
+          "title": "Buka aplikasi Zeal"
+        },
+        "step2": {
+          "description": "Buat dompet baru atau impor dompet yang sudah ada.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Ketuk ikon QR di layar beranda Anda, pindai kode dan konfirmasi prompt untuk menghubungkan.",
+          "title": "Ketuk ikon QR dan pindai"
+        }
       }
     },
     "safepal": {
@@ -1183,6 +1197,38 @@
         "step3": {
           "title": "Pindai kode",
           "description": "Ketuk WalletConnect lalu Beralih ke Scanner. Setelah Anda scan, muncul prompt koneksi untuk Anda menghubungkan dompet Anda."
+        }
+      }
+    },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menempatkan Binance di layar beranda Anda agar lebih cepat mengakses dompet Anda.",
+          "title": "Buka aplikasi Binance"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan dompet Anda menggunakan fitur cadangan kami di ponsel Anda.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, prompt koneksi akan muncul untuk menghubungkan dompet Anda.",
+          "title": "Ketuk tombol WalletConnect"
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menyematkan NestWallet ke taskbar Anda agar lebih cepat mengakses dompet Anda.",
+          "title": "Instal ekstensi NestWallet"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan dompet Anda menggunakan metode yang aman. Jangan pernah membagikan frasa rahasia Anda kepada siapa pun.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda mengatur dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
         }
       }
     }
