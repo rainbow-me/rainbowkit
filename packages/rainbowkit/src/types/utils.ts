@@ -86,6 +86,7 @@ export type WalletProvider = Evaluate<
 export type WindowProvider = {
   coinbaseWalletExtension?: WalletProvider | undefined;
   ethereum?: WalletProvider | undefined;
+  klaytn?: WalletProvider | undefined;
   phantom?: { ethereum: WalletProvider } | undefined;
   providers?: any[] | undefined; // Adjust the type as needed
 };
