@@ -17,8 +17,8 @@ export const kaikasWallet = ({
 
   const shouldUseWalletConnect = !isKaikasWalletInjected;
 
-  const getUri = (uri: string) => {
-    return `kaikas://walletconnect?uri=${encodeURIComponent(uri)}`;
+  const getUri = () => {
+    return `kaikas://wallet/browser?url=${encodeURI(window.location.origin)}`
   };
 
   return {
@@ -36,7 +36,7 @@ export const kaikasWallet = ({
       android: 'https://play.google.com/store/apps/details?id=io.klutch.wallet',
       mobile: 'https://app.kaikas.io',
     },
-    mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
+    mobile: { getUri: shouldUseWalletConnect ? getUri : (uri: string) => `kaikas://wc?uri=${encodeURIComponent(uri)}` },
     qrCode: shouldUseWalletConnect
       ? {
           getUri: (uri: string) => uri,
@@ -93,7 +93,7 @@ export const kaikasWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          namespace: 'klaytn',
+          namespace: 'ethereum',
         }),
   };
 };
