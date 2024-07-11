@@ -93,7 +93,7 @@ export const kaikasWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          namespace: 'ethereum',
+          namespace: 'klaytn',
         }),
   };
 };
