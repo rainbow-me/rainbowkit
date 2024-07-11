@@ -93,7 +93,7 @@ export const kaikasWallet = ({
           walletConnectParameters,
         })
       : getInjectedConnector({
-          target: typeof window !== 'undefined' ? window.ethereum : undefined,
+          namespace: 'ethereum',
         }),
   };
 };
