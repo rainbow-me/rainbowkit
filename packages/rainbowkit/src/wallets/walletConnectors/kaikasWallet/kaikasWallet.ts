@@ -4,6 +4,7 @@ import {
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
+import { isMobile } from '../../../utils/isMobile';
 
 export type KaikasWalletOptions = DefaultWalletOptions;
 
@@ -92,8 +93,6 @@ export const kaikasWallet = ({
           projectId,
           walletConnectParameters,
         })
-      : getInjectedConnector({
-          namespace: 'klaytn',
-        }),
+      : getInjectedConnector(isMobile() ? { target: typeof window !== 'undefined' ? window.klaytn : undefined } : { namespace: 'klaytn' }),
   };
 };
