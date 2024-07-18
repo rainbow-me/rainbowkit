@@ -35,7 +35,7 @@ const frens = [
   {
     asset: 'ens',
     name: 'ENS',
-    url: 'https://ens.domains',
+    url: 'https://app.ens.domains/',
   },
   {
     asset: 'prop-house',
