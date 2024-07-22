@@ -1,4 +1,4 @@
-import { Config, Connector, useConnect } from 'wagmi';
+import { Config, Connector, useConnect, useDisconnect } from 'wagmi';
 import { ConnectMutateAsync } from 'wagmi/query';
 import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
 import { indexBy } from '../utils/indexBy';
@@ -39,6 +39,7 @@ export function useWalletConnectors(
 ): WalletConnector[] {
   const rainbowKitChains = useRainbowKitChains();
   const intialChainId = useInitialChainId();
+  const { disconnectAsync } = useDisconnect();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
     defaultConnectors_untyped as WagmiConnectorInstance[];
@@ -54,6 +55,11 @@ export function useWalletConnectors(
   })) as WalletInstance[];
 
   async function connectWallet(connector: Connector) {
+    // If you repeatedly connect and disconnect the wallet,
+    // you may encounter a ConnectorAlreadyConnectedError when trying to connect the wallet again.
+    // To avoid this, use await disconnectAsync({ connector }) before attempting to connect again.
+    await disconnectAsync({ connector });
+
     const walletChainId = await connector.getChainId();
     const result = await connectAsync({
       chainId:
