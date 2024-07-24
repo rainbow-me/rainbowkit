@@ -17,7 +17,8 @@
     "util": "0.12.5",
     "viem": "2.9.31",
     "wagmi": "^2.9.2",
-    "@tanstack/react-query": "^5.28.4"
+    "@tanstack/react-query": "^5.28.4",
+    "buffer": "^6.0.3"
   },
   "scripts": {
     "dev": "GENERATE_SOURCEMAP=false react-scripts start",
