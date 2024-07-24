@@ -90,6 +90,7 @@ export const subWallet = ({
   return {
     id: 'subwallet',
     name: 'SubWallet',
+    rdns: 'app.subwallet',
     iconUrl: async () => (await import('./subWallet.svg')).default,
     iconBackground: '#fff',
     installed: isSubWalletInjected || undefined,

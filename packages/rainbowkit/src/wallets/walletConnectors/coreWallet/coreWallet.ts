@@ -19,6 +19,7 @@ export const coreWallet = ({
   return {
     id: 'core',
     name: 'Core',
+    rdns: 'app.core.extension',
     iconUrl: async () => (await import('./coreWallet.svg')).default,
     iconBackground: '#1A1A1C',
     installed: !shouldUseWalletConnect ? isCoreInjected : undefined,
