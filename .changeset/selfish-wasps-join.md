@@ -9,14 +9,13 @@
 "with-create-react-app": patch
 "with-next-app-i18n": patch
 "with-next-mint-nft": patch
-"@rainbow-me/rainbow-button": patch
 "with-next-app": patch
 "with-remix": patch
-"@rainbow-me/rainbowkit": patch
 "with-next": patch
 "with-vite": patch
 "example": patch
 "site": patch
+"@rainbow-me/create-rainbowkit": patch
 ---
 
 - updated `wagmi` to `^2.12.0`
