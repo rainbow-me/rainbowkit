@@ -56,6 +56,7 @@
     "@vanilla-extract/esbuild-plugin": "^2.3.5",
     "@vanilla-extract/vite-plugin": "^4.0.9",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^16.4.5",
     "esbuild": "^0.20.2",
     "esbuild-plugin-replace": "^1.4.0",
     "ethers": "^5.6.8",
@@ -71,9 +72,8 @@
     "recursive-readdir-files": "^2.3.1",
     "typescript": "5.4.2",
     "viem": "2.17.0",
-    "vitest": "^0.33.0",
-    "wagmi": "^2.12.0",
-    "dotenv": "^16.4.5"
+    "vitest": "2.0.4",
+    "wagmi": "^2.12.0"
   },
   "packageManager": "pnpm@9.6.0",
   "pnpm": {
