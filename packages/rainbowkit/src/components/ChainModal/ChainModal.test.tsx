@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import React, { Fragment } from 'react';
 import { describe, expect, it } from 'vitest';

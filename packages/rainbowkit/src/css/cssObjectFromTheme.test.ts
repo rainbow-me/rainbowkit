@@ -37,7 +37,7 @@ describe('cssObjectFromTheme', () => {
         "--rk-colors-profileForeground": "rgba(60, 66, 66, 0.06)",
         "--rk-colors-selectedOptionBorder": "rgba(60, 66, 66, 0.1)",
         "--rk-colors-standby": "#FFD641",
-        "--rk-fonts-body": "SFRounded, ui-rounded, \\"SF Pro Rounded\\", -apple-system, BlinkMacSystemFont, \\"Segoe UI\\", Roboto, Helvetica, Arial, sans-serif, \\"Apple Color Emoji\\", \\"Segoe UI Emoji\\", \\"Segoe UI Symbol\\"",
+        "--rk-fonts-body": "SFRounded, ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"",
         "--rk-radii-actionButton": "9999px",
         "--rk-radii-connectButton": "12px",
         "--rk-radii-menuButton": "12px",
