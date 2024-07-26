@@ -20,6 +20,7 @@ export default {
   test: {
     environment: 'jsdom',
     globals: true,
+    setupFiles: ['./packages/rainbowkit/test/setup.ts'],
     watch: false,
   },
 };
