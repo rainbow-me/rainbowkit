@@ -109,7 +109,7 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   groupName: string;
   isRainbowKitConnector: boolean;
   // Only used for "walletConnectWallet" connector
-  walletConnectModalConnector?: CreateConnectorFn;
+  createWalletConnectModalConnector?: CreateConnectorFn;
 };
 
 export type WalletDetailsParams = { rkDetails: RainbowKitDetails };

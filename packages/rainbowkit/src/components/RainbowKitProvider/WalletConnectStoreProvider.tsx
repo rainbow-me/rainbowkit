@@ -42,24 +42,24 @@ export function WalletConnectStoreProvider({
   // biome-ignore lint/correctness/useExhaustiveDependencies: prevent new reference on every re-render
   const wallets = useMemo(() => getWalletsFromConnectors({ connectors }), []);
 
-  const walletConnectModalConnector = useMemo(
+  const createWalletConnectModalConnector = useMemo(
     () =>
       getWalletConnectWallet({
         walletId: 'walletConnect',
         wallets,
-      })?.walletConnectModalConnector,
+      })?.createWalletConnectModalConnector,
     [wallets],
   );
 
   // Preload WalletConnect modal
   useEffect(() => {
-    if (walletConnectModalConnector) {
+    if (createWalletConnectModalConnector) {
       walletConnectStore.createWalletConnectModalConnector({
         config,
-        createConnector: walletConnectModalConnector,
+        createConnector: createWalletConnectModalConnector,
       });
     }
-  }, [walletConnectStore, config, walletConnectModalConnector]);
+  }, [walletConnectStore, config, createWalletConnectModalConnector]);
 
   return (
     <WalletConnectStoreContext.Provider value={walletConnectStore}>

@@ -71,11 +71,11 @@ export function useWalletConnectors(
     // If WalletConnect URI is not found, then poll for it.
     return new Promise((resolve) => {
       const intervalId = setInterval(() => {
-        const _walletConnectUri = getWalletConnectUri();
-        if (_walletConnectUri) {
+        const walletConnectUri = getWalletConnectUri();
+        if (walletConnectUri) {
           clearInterval(intervalId);
           resolve(
-            uriConverter ? uriConverter(_walletConnectUri) : _walletConnectUri,
+            uriConverter ? uriConverter(walletConnectUri) : walletConnectUri,
           );
         }
       }, 1000);

@@ -142,7 +142,7 @@ export const connectorsForWallets = (
     const rkDetails: RainbowKitDetails = { ...metadata };
 
     if (isWalletConnectConnector) {
-      rkDetails.walletConnectModalConnector = getWalletConnectConnector({
+      rkDetails.createWalletConnectModalConnector = getWalletConnectConnector({
         projectId,
         showQrModal: true,
         walletConnectParameters: {
