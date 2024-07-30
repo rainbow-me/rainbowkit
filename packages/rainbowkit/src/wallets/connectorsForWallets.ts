@@ -3,12 +3,13 @@ import { isHexString } from '../utils/colors';
 import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
 import type {
+  RainbowKitDetails,
   RainbowKitWalletConnectParameters,
   Wallet,
-  WalletDetailsParams,
   WalletList,
 } from './Wallet';
 import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
+import { getWalletConnectConnector } from './getWalletConnectConnector';
 
 interface WalletListItem extends Wallet {
   index: number;
@@ -29,7 +30,7 @@ export const connectorsForWallets = (
   walletList: WalletList,
   {
     projectId,
-    walletConnectParameters,
+    walletConnectParameters = {},
     appName,
     appDescription,
     appUrl,
@@ -129,42 +130,29 @@ export const connectorsForWallets = (
       }
     }
 
-    const walletMetaData = (
-      // For now we should only use these as the additional parameters
-      additionalRkParams?: Pick<
-        WalletDetailsParams['rkDetails'],
-        'isWalletConnectModalConnector' | 'showQrModal'
-      >,
-    ) => {
-      return {
-        rkDetails: omitUndefinedValues({
-          ...walletMeta,
-          groupIndex,
-          groupName,
-          isRainbowKitConnector: true,
-          // These additional params will be used in rainbowkit react tree to
-          // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
-          // showQrModal: true. This way we can let the user choose if they want to
-          // connect via QR code or open the official walletConnect modal instead
-          ...(additionalRkParams ? additionalRkParams : {}),
-        }),
-      };
-    };
-
     const isWalletConnectConnector = walletMeta.id === 'walletConnect';
 
+    const metadata = omitUndefinedValues({
+      ...walletMeta,
+      groupIndex,
+      groupName,
+      isRainbowKitConnector: true,
+    });
+
+    const rkDetails: RainbowKitDetails = { ...metadata };
+
     if (isWalletConnectConnector) {
-      connectors.push(
-        createConnector(
-          walletMetaData({
-            isWalletConnectModalConnector: true,
-            showQrModal: true,
-          }),
-        ),
-      );
+      rkDetails.walletConnectModalConnector = getWalletConnectConnector({
+        projectId,
+        showQrModal: true,
+        walletConnectParameters: {
+          metadata: walletConnectMetaData,
+          ...walletConnectParameters,
+        },
+      })({ rkDetails: metadata });
     }
 
-    const connector = createConnector(walletMetaData());
+    const connector = createConnector({ rkDetails });
 
     connectors.push(connector);
   }

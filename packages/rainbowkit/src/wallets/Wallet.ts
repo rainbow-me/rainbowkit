@@ -107,12 +107,9 @@ export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;
   groupIndex: number;
   groupName: string;
-  isWalletConnectModalConnector?: boolean;
   isRainbowKitConnector: boolean;
-  walletConnectModalConnector?: Connector;
-  // Used specifically in `connectorsForWallets` logic
-  // to make sure we can also get WalletConnect modal in rainbowkit
-  showQrModal?: true;
+  // Only used for "walletConnectWallet" connector
+  walletConnectModalConnector?: CreateConnectorFn;
 };
 
 export type WalletDetailsParams = { rkDetails: RainbowKitDetails };
@@ -131,4 +128,5 @@ export type WagmiConnectorInstance = Connector & {
 
 // This will be the wallet instance we will return
 // in the rainbowkit connect modal
-export type WalletInstance = Connector & RainbowKitDetails;
+export type WalletInstance = Connector &
+  RainbowKitDetails & { connectorId: string };

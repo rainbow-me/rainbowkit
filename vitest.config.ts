@@ -22,5 +22,12 @@ export default {
     globals: true,
     setupFiles: ['./packages/rainbowkit/test/setup.ts'],
     watch: false,
+    browser: {
+      provider: 'playwright',
+      name: 'chromium',
+      enabled: true,
+      headless: true,
+      screenshotFailures: false,
+    },
   },
 };

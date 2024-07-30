@@ -62,7 +62,9 @@
     "postcss": "^8.4.32",
     "react": "^18.3.0",
     "vitest": "2.0.4",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "@vitest/browser": "2.0.4",
+    "playwright": "1.45.3"
   },
   "dependencies": {
     "@vanilla-extract/css": "1.14.0",

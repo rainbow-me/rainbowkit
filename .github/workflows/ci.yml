@@ -37,4 +37,4 @@ jobs:
       - name: Lint and format
         run: pnpm lint
       - name: Run tests
-        run: pnpm test && pnpm test:cli
+        run: pnpm exec playwright install && pnpm test && pnpm test:cli

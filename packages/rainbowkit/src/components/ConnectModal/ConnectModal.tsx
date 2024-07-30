@@ -4,6 +4,7 @@ import { useConnectionStatus } from '../../hooks/useConnectionStatus';
 import ConnectOptions from '../ConnectOptions/ConnectOptions';
 import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
+import { useWalletConnectStore } from '../RainbowKitProvider/WalletConnectStoreProvider';
 import { SignIn } from '../SignIn/SignIn';
 
 export interface ConnectModalProps {
@@ -15,9 +16,10 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
   const titleId = 'rk_connect_title';
   const connectionStatus = useConnectionStatus();
 
+  const { resetWalletConnectUri } = useWalletConnectStore();
+
   const { disconnect } = useDisconnect();
   const { isConnecting } = useAccount();
-
   // when a user cancels or dismisses the SignIn modal for SIWE, disconnect and call onClose
   const onAuthCancel = React.useCallback(() => {
     onClose();
@@ -29,9 +31,9 @@ export function ConnectModal({ onClose, open }: ConnectModalProps) {
     // the user closes it, we need to know the wallet isn't connecting anymore.
     // So if it's connecting, we disconnect it.
     if (isConnecting) disconnect();
-
+    resetWalletConnectUri();
     onClose();
-  }, [onClose, disconnect, isConnecting]);
+  }, [onClose, disconnect, resetWalletConnectUri, isConnecting]);
 
   if (connectionStatus === 'disconnected') {
     return (
