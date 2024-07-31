@@ -8,6 +8,7 @@ export const oneKeyWallet = (): Wallet => {
   return {
     id: 'onekey',
     name: 'OneKey',
+    rdns: 'so.onekey.app.wallet',
     iconAccent: '#00B812',
     iconBackground: '#fff',
     iconUrl: async () => (await import('./oneKeyWallet.svg')).default,

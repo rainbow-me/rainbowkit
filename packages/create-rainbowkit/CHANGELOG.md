@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.5
+
+### Patch Changes
+
+- 3fc2ec4: Reverted the addition of the `--legacy-peer-deps` flag because the conflict with wagmi peer dependencies no longer exists.
+
 ## 0.3.4
 
 ### Patch Changes

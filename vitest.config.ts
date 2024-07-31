@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
-import { configDefaults } from 'vitest/config';
 
 // Custom loader for JSON files
 function customJsonLoader() {
@@ -21,17 +20,7 @@ export default {
   test: {
     environment: 'jsdom',
     globals: true,
-    exclude: [
-      ...configDefaults.exclude,
-      '**/ChainModal.test.tsx',
-      '**/connectorsForWallets.test.ts',
-      '**/getInjectedConnector.test.ts',
-      '**/getWalletConnectConnector.test.ts',
-      '**/ConnectButton.test.tsx',
-      '**/ConnectModal.test.tsx',
-      '**/WalletButton.test.tsx',
-      '**/walletConnectWallet.test.ts',
-    ],
+    setupFiles: ['./packages/rainbowkit/test/setup.ts'],
     watch: false,
   },
 };
