@@ -1,5 +1,6 @@
 import { argentWallet } from './argentWallet/argentWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
+import { binanceWallet } from './binanceWallet/binanceWallet';
 import { bitgetWallet } from './bitgetWallet/bitgetWallet';
 import { bitskiWallet } from './bitskiWallet/bitskiWallet';
 import { bitverseWallet } from './bitverseWallet/bitverseWallet';
@@ -41,6 +42,7 @@ import { roninWallet } from './roninWallet/roninWallet';
 import { safeWallet } from './safeWallet/safeWallet';
 import { safeheronWallet } from './safeheronWallet/safeheronWallet';
 import { safepalWallet } from './safepalWallet/safepalWallet';
+import { seifWallet } from './seifWallet/seifWallet';
 import { subWallet } from './subWallet/subWallet';
 import { tahoWallet } from './tahoWallet/tahoWallet';
 import { talismanWallet } from './talismanWallet/talismanWallet';
@@ -62,6 +64,7 @@ export {
   bloomWallet,
   bybitWallet,
   braveWallet,
+  binanceWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
@@ -97,6 +100,7 @@ export {
   safeWallet,
   safeheronWallet,
   safepalWallet,
+  seifWallet,
   subWallet,
   tahoWallet,
   talismanWallet,

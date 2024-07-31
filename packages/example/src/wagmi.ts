@@ -2,6 +2,7 @@ import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
   bifrostWallet,
+  binanceWallet,
   bitgetWallet,
   bitskiWallet,
   bitverseWallet,
@@ -65,6 +66,8 @@ import {
   klaytn,
   klaytnBaobab,
   mainnet,
+  mantle,
+  mantleTestnet,
   optimism,
   optimismSepolia,
   polygon,
@@ -139,6 +142,7 @@ export const config = getDefaultConfig({
     ronin,
     klaytn,
     sei,
+    mantle,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -152,6 +156,7 @@ export const config = getDefaultConfig({
           avalancheFuji,
           zetachainAthensTestnet,
           klaytnBaobab,
+          mantleTestnet,
         ]
       : []),
   ],
@@ -175,6 +180,7 @@ export const config = getDefaultConfig({
         bitverseWallet,
         bloomWallet,
         bybitWallet,
+        binanceWallet,
         clvWallet,
         compassWallet,
         coin98Wallet,

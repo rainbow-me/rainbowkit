@@ -11,6 +11,7 @@ export const compassWallet = (): Wallet => {
     id: 'compass',
     name: 'Compass Wallet',
     installed: isCompassInjected,
+    rdns: 'io.leapwallet.CompassWallet',
     iconUrl: async () => (await import('./compassWallet.svg')).default,
     iconBackground: '#fff',
     downloadUrls: {
