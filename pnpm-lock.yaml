@@ -419,16 +419,13 @@ importers:
       react:
         specifier: '>=18'
         version: 18.3.0
+      viem:
+        specifier: '>=2.12.0'
+        version: 2.17.0(bufferutil@4.0.8)(typescript@5.4.2)(utf-8-validate@5.0.10)
     devDependencies:
       '@rainbow-me/rainbowkit':
         specifier: workspace:*
         version: link:../rainbowkit
-      ethers:
-        specifier: ^5.6.8
-        version: 5.6.8(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      siwe:
-        specifier: ^2.1.4
-        version: 2.1.4(ethers@5.6.8(bufferutil@4.0.8)(utf-8-validate@5.0.10))
 
   site:
     dependencies:
@@ -467,7 +464,7 @@ importers:
         version: 0.1.3
       '@vanilla-extract/next-plugin':
         specifier: 2.4.0
-        version: 2.4.0(@types/node@18.19.4)(babel-plugin-macros@3.1.0)(next@14.2.3(@babel/core@7.24.5)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))
+        version: 2.4.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(next@14.2.3(@babel/core@7.24.5)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))
       '@vanilla-extract/recipes':
         specifier: ^0.5.2
         version: 0.5.2(@vanilla-extract/css@1.15.1(babel-plugin-macros@3.1.0))
@@ -18375,9 +18372,34 @@ snapshots:
       - supports-color
       - terser
 
-  '@vanilla-extract/next-plugin@2.4.0(@types/node@18.19.4)(babel-plugin-macros@3.1.0)(next@14.2.3(@babel/core@7.24.5)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))':
+  '@vanilla-extract/integration@7.1.4(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(terser@5.31.0)':
     dependencies:
-      '@vanilla-extract/webpack-plugin': 2.3.8(@types/node@18.19.4)(babel-plugin-macros@3.1.0)(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))
+      '@babel/core': 7.24.5
+      '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.24.5)
+      '@vanilla-extract/babel-plugin-debug-ids': 1.0.5
+      '@vanilla-extract/css': 1.15.1(babel-plugin-macros@3.1.0)
+      dedent: 1.5.3(babel-plugin-macros@3.1.0)
+      esbuild: 0.19.9
+      eval: 0.1.8
+      find-up: 5.0.0
+      javascript-stringify: 2.1.0
+      mlly: 1.4.2
+      vite: 5.2.11(@types/node@20.12.12)(terser@5.31.0)
+      vite-node: 1.6.0(@types/node@20.12.12)(terser@5.31.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - babel-plugin-macros
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+
+  '@vanilla-extract/next-plugin@2.4.0(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(next@14.2.3(@babel/core@7.24.5)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))':
+    dependencies:
+      '@vanilla-extract/webpack-plugin': 2.3.8(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))
       next: 14.2.3(@babel/core@7.24.5)(@opentelemetry/api@1.8.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
     transitivePeerDependencies:
       - '@types/node'
@@ -18422,9 +18444,9 @@ snapshots:
       - supports-color
       - terser
 
-  '@vanilla-extract/webpack-plugin@2.3.8(@types/node@18.19.4)(babel-plugin-macros@3.1.0)(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))':
+  '@vanilla-extract/webpack-plugin@2.3.8(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(terser@5.31.0)(webpack@5.82.0(esbuild@0.20.2))':
     dependencies:
-      '@vanilla-extract/integration': 7.1.4(@types/node@18.19.4)(babel-plugin-macros@3.1.0)(terser@5.31.0)
+      '@vanilla-extract/integration': 7.1.4(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(terser@5.31.0)
       debug: 4.3.4
       loader-utils: 2.0.4
       picocolors: 1.0.0
@@ -27343,6 +27365,23 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.0.0
       vite: 5.2.11(@types/node@18.19.4)(terser@5.31.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+
+  vite-node@1.6.0(@types/node@20.12.12)(terser@5.31.0):
+    dependencies:
+      cac: 6.7.14
+      debug: 4.3.5
+      pathe: 1.1.2
+      picocolors: 1.0.0
+      vite: 5.2.11(@types/node@20.12.12)(terser@5.31.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
