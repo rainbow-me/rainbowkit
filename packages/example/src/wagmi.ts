@@ -7,6 +7,7 @@ import {
   bitskiWallet,
   bitverseWallet,
   bloomWallet,
+  braveWallet,
   bybitWallet,
   clvWallet,
   coin98Wallet,
@@ -39,6 +40,7 @@ import {
   rainbowWallet,
   ramperWallet,
   roninWallet,
+  safeWallet,
   safeheronWallet,
   safepalWallet,
   subWallet,
@@ -164,10 +166,12 @@ export const config = getDefaultConfig({
     {
       groupName: 'Popular',
       wallets: [
+        safeWallet,
         rainbowWallet,
         coinbaseWallet,
         metaMaskWallet,
         walletConnectWallet,
+        braveWallet,
       ],
     },
     {
