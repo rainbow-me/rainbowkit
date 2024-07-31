@@ -1,7 +1,7 @@
 {
   "name": "with-next-app-i18n",
   "private": true,
-  "version": "0.0.39",
+  "version": "0.0.40",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,9 +13,9 @@
     "next-intl": "^3.9.4",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "viem": "2.12.5",
-    "wagmi": "^2.9.8",
-    "@tanstack/react-query": "^5.28.4"
+    "viem": "2.17.0",
+    "wagmi": "^2.12.0",
+    "@tanstack/react-query": "^5.51.11"
   },
   "devDependencies": {
     "@types/node": "^18.19.3",
