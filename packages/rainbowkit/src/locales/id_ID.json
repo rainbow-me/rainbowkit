@@ -368,6 +368,22 @@
         }
       }
     },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk meletakkan Binance di layar utama Anda untuk akses lebih cepat ke wallet Anda.",
+          "title": "Buka aplikasi Binance"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Ketuk tombol WalletConnect"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -641,6 +657,22 @@
         "step3": {
           "title": "Segarkan browser Anda",
           "description": "Setelah Anda menyiapkan wallet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi NestWallet",
+          "description": "Kami menyarankan untuk memasang NestWallet ke taskbar Anda untuk akses dompet yang lebih cepat."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
         }
       }
     },
@@ -1019,6 +1051,20 @@
       }
     },
     "zeal": {
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Zeal",
+          "description": "Tambahkan Zeal Wallet ke layar utama Anda untuk akses yang lebih cepat ke wallet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk ikon QR dan scan",
+          "description": "Ketuk ikon QR di layar utama Anda, pindai kode dan konfirmasi prompt untuk terhubung."
+        }
+      },
       "extension": {
         "step1": {
           "title": "Instal ekstensi Zeal",

@@ -368,6 +368,22 @@
         }
       }
     },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos poner Binance en tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación Binance"
+        },
+        "step2": {
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón WalletConnect"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -641,6 +657,22 @@
         "step3": {
           "title": "Refresca tu navegador",
           "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión NestWallet",
+          "description": "Recomendamos fijar NestWallet a tu barra de tareas para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
         }
       }
     },
@@ -1019,6 +1051,20 @@
       }
     },
     "zeal": {
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación Zeal",
+          "description": "Agrega Zeal Wallet a tu pantalla de inicio para un acceso más rápido a tu billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toque el icono de QR y escanee",
+          "description": "Toca el icono QR en tu pantalla de inicio, escanea el código y confirma el prompt para conectar."
+        }
+      },
       "extension": {
         "step1": {
           "title": "Instale la extensión Zeal",

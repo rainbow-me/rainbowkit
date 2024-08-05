@@ -368,6 +368,22 @@
         }
       }
     },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "지갑에 빠르게 액세스하기 위해 홈 화면에 Binance를 두는 것을 권장합니다.",
+          "title": "Binance 앱 열기"
+        },
+        "step2": {
+          "description": "휴대폰에서 백업 기능을 이용하여 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "title": "WalletConnect 버튼을 누르세요"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -641,6 +657,22 @@
         "step3": {
           "title": "브라우저를 새로 고치세요",
           "description": "지갑 설정을 마친 후에는 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "title": "NestWallet 확장 프로그램 설치",
+          "description": "지갑에 더 빠르게 접근할 수 있도록 NestWallet을 작업 표시줄에 고정하는 것을 권장합니다."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요."
+        },
+        "step3": {
+          "title": "브라우저를 새로 고침하세요",
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요."
         }
       }
     },
@@ -1019,6 +1051,20 @@
       }
     },
     "zeal": {
+      "qr_code": {
+        "step1": {
+          "title": "Zeal 앱을 엽니다",
+          "description": "월렛에 더 빠르게 액세스할 수 있도록 Zeal Wallet을 홈 화면에 두세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "QR 아이콘을 탭하고 스캔하기",
+          "description": "홈화면의 QR 아이콘을 누르고 코드를 스캔하고 프롬프트를 확인하여 연결하세요."
+        }
+      },
       "extension": {
         "step1": {
           "title": "Zeal 확장 프로그램을 설치하세요",

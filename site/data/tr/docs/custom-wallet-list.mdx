@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### Binance Web3 Cüzdanı
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Bu cüzdan bağlayıcısı, hem Coinbase Cüzdan uygulamasını hem de uzantısını, ayrıca Web'de Coinbase Akıllı Cüzdan'ı destekler.
+
+Kullanıcılar için Akıllı Cüzdan’ın etkinleştirilip etkinleştirilmeyeceğini kontrol etmek için bir `preference` argümanı mevcuttur. Tercih tabanlı davranış [burada](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) belgelenmiştir.
+
+Akıllı Cüzdan, Haziran başında herhangi bir ek yükseltme olmadan varsayılan olarak `all` ile etkinleştirilecektir.
+
+Geliştiriciler, bugün `sepolia` ve `baseSepolia` zincirlerini ayarlayarak `smartWalletOnly` olarak test edebilir ve cüzdan listelerine `coinbaseWallet` ekleyebilirler:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Cüzdanı

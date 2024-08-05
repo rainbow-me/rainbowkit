@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### Binance Web3 Wallet
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Цей конектор гаманця підтримує як додаток Coinbase Wallet, так і розширення, а також Coinbase Smart Wallet в Інтернеті.
+
+Доступний аргумент `preference`, щоб контролювати, чи увімкнено Smart Wallet та чи доступний він для користувачів. Поведінка на основі налаштувань задокументована [тут](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+Smart Wallet буде увімкнено за замовчуванням із `all` на початку червня без подальшого оновлення.
+
+Розробники можуть тестувати Smart Wallet з ланцюгами `sepolia` та `baseSepolia` вже сьогодні, встановивши `smartWalletOnly` та включивши `coinbaseWallet` у свій список гаманців таким чином:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Wallet

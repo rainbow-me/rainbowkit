@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### Dompet Web3 Binance
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Konektor dompet ini mendukung baik aplikasi dan ekstensi Dompet Coinbase, serta Dompet Pintar Coinbase di Web.
+
+Argumen `preference` tersedia untuk mengontrol apakah Dompet Pintar diaktifkan dan tersedia untuk pengguna. Perilaku berdasarkan preferensi didokumentasikan [di sini](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+Dompet Pintar akan diaktifkan secara default dengan `all` di awal bulan Juni, tanpa pembaruan lebih lanjut.
+
+Pengembang dapat menguji Dompet Pintar dengan rantai `sepolia` dan `baseSepolia` hari ini dengan menyetel `smartWalletOnly` dan memasukkan `coinbaseWallet` dalam daftar dompet mereka seperti ini:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Wallet

@@ -368,6 +368,22 @@
         }
       }
     },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议将Binance放在您的主屏幕上，以便更快地访问您的钱包。",
+          "title": "打开 Binance 应用"
+        },
+        "step2": {
+          "description": "您可以使用我们的手机上的备份功能轻松备份您的钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击WalletConnect按钮"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -641,6 +657,22 @@
         "step3": {
           "title": "刷新您的浏览器",
           "description": "一旦您设置好您的钱包，点击下面刷新浏览器并加载扩展。"
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "title": "安装 NestWallet 扩展程序",
+          "description": "我们建议将NestWallet固定到任务栏，以便更快速地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。"
+        },
+        "step3": {
+          "title": "刷新您的浏览器",
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。"
         }
       }
     },
@@ -1019,6 +1051,20 @@
       }
     },
     "zeal": {
+      "qr_code": {
+        "step1": {
+          "title": "打开 Zeal 应用",
+          "description": "将Zeal钱包添加到您的主屏幕，以便更快地访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击QR图标并扫描",
+          "description": "在您的主屏幕上点击QR图标，扫描代码并确认提示以进行连接。"
+        }
+      },
       "extension": {
         "step1": {
           "title": "安装Zeal扩展程序",

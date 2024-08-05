@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### Binance Web3 지갑
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### 코인베이스
+
+이 지갑 커넥터는 코인베이스 지갑 앱과 확장 프로그램, 그리고 웹에서의 Coinbase 스마트 지갑을 모두 지원합니다.
+
+`preference` 인자를 사용하여 스마트 지갑이 사용되고 사용자에게 제공되는지 제어할 수 있습니다. 기호 기반 행동은 [여기](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)에서 문서화되어 있습니다.
+
+스마트 지갑은 별도의 업그레이드 없이 6월 초에 `all`로 기본 활성화됩니다.
+
+개발자는 오늘 `sepolia`와 `baseSepolia` 체인에서 `smartWalletOnly`를 설정하고 `coinbaseWallet`을 지갑 목록에 포함하여 스마트 지갑을 테스트할 수 있습니다:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### 컴퍼스 월렛

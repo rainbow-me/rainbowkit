@@ -368,6 +368,22 @@
         }
       }
     },
+    "binance": {
+      "qr_code": {
+        "step1": {
+          "description": "Nous vous recommandons de mettre Binance sur votre écran d'accueil pour un accès plus rapide à votre portefeuille.",
+          "title": "Ouvrez l'application Binance"
+        },
+        "step2": {
+          "description": "Vous pouvez facilement sauvegarder votre portefeuille en utilisant notre fonction de sauvegarde sur votre téléphone.",
+          "title": "Créer ou Importer un Portefeuille"
+        },
+        "step3": {
+          "description": "Après avoir numérisé, une invite de connexion apparaîtra pour vous permettre de connecter votre portefeuille.",
+          "title": "Appuyez sur le bouton WalletConnect"
+        }
+      }
+    },
     "coin98": {
       "qr_code": {
         "step1": {
@@ -641,6 +657,22 @@
         "step3": {
           "title": "Rafraîchissez votre navigateur",
           "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      }
+    },
+    "nestwallet": {
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension NestWallet",
+          "description": "Nous vous recommandons d'épingler NestWallet à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
         }
       }
     },
@@ -1019,6 +1051,20 @@
       }
     },
     "zeal": {
+      "qr_code": {
+        "step1": {
+          "title": "Ouvrez l'application Zeal",
+          "description": "Ajoutez Zeal Wallet à votre écran d'accueil pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer ou Importer un Portefeuille",
+          "description": "Créez un nouveau portefeuille ou importez-en un existant."
+        },
+        "step3": {
+          "title": "Touchez l'icône QR et scannez",
+          "description": "Touchez l'icône QR sur votre écran d'accueil, scannez le code et confirmez l'invite pour vous connecter."
+        }
+      },
       "extension": {
         "step1": {
           "title": "Installez l'extension Zeal",
