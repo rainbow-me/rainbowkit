@@ -1,6 +1,9 @@
 import React, {
+  Fragment,
   ReactNode,
+  Suspense,
   createContext,
+  lazy,
   useCallback,
   useContext,
   useEffect,
@@ -9,18 +12,31 @@ import React, {
 } from 'react';
 import { useAccount, useAccountEffect, useConfig } from 'wagmi';
 import { useConnectionStatus } from '../../hooks/useConnectionStatus';
-import { AccountModal } from '../AccountModal/AccountModal';
-import { ChainModal } from '../ChainModal/ChainModal';
 import { ConnectModal } from '../ConnectModal/ConnectModal';
 import { useAuthenticationStatus } from './AuthenticationContext';
 
+const AccountModal = lazy(() =>
+  import('../AccountModal/AccountModal').then((module) => ({
+    default: module.AccountModal,
+  })),
+);
+
+const ChainModal = lazy(() =>
+  import('../ChainModal/ChainModal').then((module) => ({
+    default: module.ChainModal,
+  })),
+);
+
 function useModalStateValue() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isUsing, setIsUsing] = useState(false);
 
   return {
     closeModal: useCallback(() => setModalOpen(false), []),
     isModalOpen,
     openModal: useCallback(() => setModalOpen(true), []),
+    isUsing,
+    setIsUsing: useCallback((isUsing: boolean) => setIsUsing(isUsing), []),
   };
 }
 
@@ -28,11 +44,15 @@ interface ModalContextValue {
   accountModalOpen: boolean;
   chainModalOpen: boolean;
   connectModalOpen: boolean;
+  isUsingChainModal: boolean;
+  isUsingAccountModal: boolean;
+  isWalletConnectModalOpen: boolean;
   openAccountModal?: () => void;
   openChainModal?: () => void;
   openConnectModal?: () => void;
-  isWalletConnectModalOpen: boolean;
   setIsWalletConnectModalOpen: (isWalletConnectModalOpen: boolean) => void;
+  setIsUsingChainModal: (isUsingChainModal: boolean) => void;
+  setIsUsingAccountModal: (isUsingAccountModal: boolean) => void;
 }
 
 const ModalContext = createContext<ModalContextValue>({
@@ -40,7 +60,11 @@ const ModalContext = createContext<ModalContextValue>({
   chainModalOpen: false,
   connectModalOpen: false,
   isWalletConnectModalOpen: false,
+  isUsingAccountModal: false,
+  isUsingChainModal: false,
   setIsWalletConnectModalOpen: () => {},
+  setIsUsingChainModal: () => {},
+  setIsUsingAccountModal: () => {},
 });
 
 interface ModalProviderProps {
@@ -58,12 +82,16 @@ export function ModalProvider({ children }: ModalProviderProps) {
     closeModal: closeAccountModal,
     isModalOpen: accountModalOpen,
     openModal: openAccountModal,
+    isUsing: isUsingAccountModal,
+    setIsUsing: setIsUsingAccountModal,
   } = useModalStateValue();
 
   const {
     closeModal: closeChainModal,
     isModalOpen: chainModalOpen,
     openModal: openChainModal,
+    isUsing: isUsingChainModal,
+    setIsUsing: setIsUsingChainModal,
   } = useModalStateValue();
 
   const [isWalletConnectModalOpen, setIsWalletConnectModalOpen] =
@@ -112,6 +140,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
           chainModalOpen,
           connectModalOpen,
           isWalletConnectModalOpen,
+          isUsingChainModal,
+          isUsingAccountModal,
           openAccountModal:
             isCurrentChainSupported && connectionStatus === 'connected'
               ? openAccountModal
@@ -124,6 +154,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
               ? openConnectModal
               : undefined,
           setIsWalletConnectModalOpen,
+          setIsUsingChainModal,
+          setIsUsingAccountModal,
         }),
         [
           connectionStatus,
@@ -133,15 +165,27 @@ export function ModalProvider({ children }: ModalProviderProps) {
           openAccountModal,
           openChainModal,
           openConnectModal,
+          setIsUsingChainModal,
+          setIsUsingAccountModal,
           isCurrentChainSupported,
           isWalletConnectModalOpen,
+          isUsingAccountModal,
+          isUsingChainModal,
         ],
       )}
     >
       {children}
       <ConnectModal onClose={closeConnectModal} open={connectModalOpen} />
-      <AccountModal onClose={closeAccountModal} open={accountModalOpen} />
-      <ChainModal onClose={closeChainModal} open={chainModalOpen} />
+      {isUsingAccountModal && (
+        <Suspense fallback={<Fragment />}>
+          <AccountModal onClose={closeAccountModal} open={accountModalOpen} />
+        </Suspense>
+      )}
+      {isUsingChainModal && (
+        <Suspense fallback={<Fragment />}>
+          <ChainModal onClose={closeChainModal} open={chainModalOpen} />
+        </Suspense>
+      )}
     </ModalContext.Provider>
   );
 }
@@ -158,12 +202,36 @@ export function useModalState() {
 }
 
 export function useAccountModal() {
-  const { accountModalOpen, openAccountModal } = useContext(ModalContext);
+  const {
+    accountModalOpen,
+    openAccountModal,
+    isUsingAccountModal,
+    setIsUsingAccountModal,
+  } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (!isUsingAccountModal) {
+      setIsUsingAccountModal(true);
+    }
+  }, [setIsUsingAccountModal, isUsingAccountModal]);
+
   return { accountModalOpen, openAccountModal };
 }
 
 export function useChainModal() {
-  const { chainModalOpen, openChainModal } = useContext(ModalContext);
+  const {
+    chainModalOpen,
+    openChainModal,
+    isUsingChainModal,
+    setIsUsingChainModal,
+  } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (!isUsingChainModal) {
+      setIsUsingChainModal(true);
+    }
+  }, [setIsUsingChainModal, isUsingChainModal]);
+
   return { chainModalOpen, openChainModal };
 }
 
