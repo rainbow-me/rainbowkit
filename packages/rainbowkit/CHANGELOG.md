@@ -1,5 +1,15 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.4
+
+### Patch Changes
+
+- b530c80: Added mobile support for `zealWallet` wallet connector
+- 7f6e36e: Added missing `rdns` property to some wallets. This helps them work with EIP-6963 connectors.
+- 2eeb7b9: Improved the Safe Wallet app browser connection flow with a Safe button included by default in the wallet list
+- 72fe07d: Added Binance Web3 Wallet support with `binanceWallet` wallet connector
+- d02d73f: Resolved an issue where the Phantom wallet did not appear as an EIP-6963 connector.
+
 ## 2.1.3
 
 ### Patch Changes

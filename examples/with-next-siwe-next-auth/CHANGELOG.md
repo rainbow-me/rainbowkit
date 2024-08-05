@@ -1,5 +1,20 @@
 # with-next-siwe-next-auth
 
+## 0.0.76
+
+### Patch Changes
+
+- 4cff94d: - updated `wagmi` to `^2.12.0`
+  - updated `viem` to `2.17.0`
+  - update `@tanstack/react-query` to `^5.51.11`
+- Updated dependencies [b530c80]
+- Updated dependencies [7f6e36e]
+- Updated dependencies [2eeb7b9]
+- Updated dependencies [72fe07d]
+- Updated dependencies [d02d73f]
+  - @rainbow-me/rainbowkit@2.1.4
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.1
+
 ## 0.0.75
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "generated-test-app",
   "private": true,
-  "version": "0.1.94",
+  "version": "0.1.95",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
