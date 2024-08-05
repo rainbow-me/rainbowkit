@@ -568,6 +568,23 @@
       }
     },
 
+    "fin": {
+      "qr_code": {
+        "step1": {
+          "description": "We recommend putting fin on your home screen for faster access to your wallet.",
+          "title": "Open the Fin app"
+        },
+        "step2": {
+          "description": "You can easily backup your wallet using our backup feature on your phone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet.",
+          "title": "Tap the WalletConnect button"
+        }
+      }
+    },
+
     "im_token": {
       "qr_code": {
         "step1": {

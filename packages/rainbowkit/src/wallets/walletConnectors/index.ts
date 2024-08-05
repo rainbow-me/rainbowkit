@@ -54,6 +54,7 @@ import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
+import { finWallet } from './finwallet/finWallet';
 
 export {
   argentWallet,
@@ -96,6 +97,7 @@ export {
   rabbyWallet,
   rainbowWallet,
   ramperWallet,
+  finWallet,
   roninWallet,
   safeWallet,
   safeheronWallet,
