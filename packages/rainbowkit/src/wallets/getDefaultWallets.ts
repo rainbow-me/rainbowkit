@@ -7,6 +7,7 @@ import {
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
+import { safeWallet } from './walletConnectors/safeWallet/safeWallet';
 import { walletConnectWallet } from './walletConnectors/walletConnectWallet/walletConnectWallet';
 
 export function getDefaultWallets(parameters: ConnectorsForWalletsParameters): {
@@ -21,6 +22,7 @@ export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
     {
       groupName: 'Popular',
       wallets: [
+        safeWallet,
         rainbowWallet,
         coinbaseWallet,
         metaMaskWallet,

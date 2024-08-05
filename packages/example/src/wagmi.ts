@@ -39,6 +39,7 @@ import {
   rainbowWallet,
   ramperWallet,
   roninWallet,
+  safeWallet,
   safeheronWallet,
   safepalWallet,
   subWallet,
@@ -164,6 +165,7 @@ export const config = getDefaultConfig({
     {
       groupName: 'Popular',
       wallets: [
+        safeWallet,
         rainbowWallet,
         coinbaseWallet,
         metaMaskWallet,
