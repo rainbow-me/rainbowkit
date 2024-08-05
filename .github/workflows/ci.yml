@@ -36,5 +36,7 @@ jobs:
         run: pnpm build
       - name: Lint and format
         run: pnpm lint
+      - name: Install playwright browser
+        run: pnpm exec playwright install
       - name: Run tests
-        run: pnpm exec playwright install && pnpm test && pnpm test:cli
+        run: pnpm test && pnpm test:cli
