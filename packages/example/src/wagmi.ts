@@ -7,7 +7,6 @@ import {
   bitskiWallet,
   bitverseWallet,
   bloomWallet,
-  braveWallet,
   bybitWallet,
   clvWallet,
   coin98Wallet,
@@ -171,7 +170,6 @@ export const config = getDefaultConfig({
         coinbaseWallet,
         metaMaskWallet,
         walletConnectWallet,
-        braveWallet,
       ],
     },
     {

@@ -4,7 +4,6 @@ import {
   ConnectorsForWalletsParameters,
   connectorsForWallets,
 } from './connectorsForWallets';
-import { braveWallet } from './walletConnectors/braveWallet/braveWallet';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';
 import { metaMaskWallet } from './walletConnectors/metaMaskWallet/metaMaskWallet';
 import { rainbowWallet } from './walletConnectors/rainbowWallet/rainbowWallet';
@@ -28,7 +27,6 @@ export function getDefaultWallets(parameters?: ConnectorsForWalletsParameters) {
         coinbaseWallet,
         metaMaskWallet,
         walletConnectWallet,
-        braveWallet,
       ],
     },
   ];
