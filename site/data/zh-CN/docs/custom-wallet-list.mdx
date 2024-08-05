@@ -88,7 +88,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ##### Safe (Gnosis Safe)
 
-对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。
+对于支持Safe Apps的dApps，以便用户可以轻松地连接到他们的Safe保险库或多重签名，包括`safeWallet`选项以实现自动连接。 Safe选项仅在Safe Wallet浏览器环境中出现。 Safe选项仅在Safe Wallet浏览器环境中出现。
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -104,7 +104,7 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bitget
+#### BitKeep
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -149,7 +149,24 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 #### Coinbase Wallet
 
 ```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+此钱包连接器支持Coinbase钱包应用程序和扩展，以及Web上的Coinbase智能钱包。
+
+提供了一个`preference`参数，用于控制是否为用户启用和提供智能钱包。 基于偏好的行为记录于[此处](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)。
+
+智能钱包将在6月初默认启用`all`，无需进一步升级。
+
+开发者今天可以通过设置`smartWalletOnly`并在他们的钱包列表中包括`coinbaseWallet`来测试`sepolia`和`baseSepolia`链上的智能钱包，如下所示：
+
+```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Wallet
@@ -419,7 +436,7 @@ const connectors = connectorsForWallets(
 
 #### 多个组
 
-你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果您想向用户推荐您推荐的钱包，以及其他可能的钱包，这将非常有用。 如果您想向用户推荐您推荐的钱包，以及其他可能的钱包，这将非常有用。
+你可以使用`groupName`键命名不同的钱包组。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果你想告诉你的用户你建议的钱包，以及其他可能的钱包，这是很有用的。 如果您想向用户推荐您推荐的钱包，以及其他可能的钱包，这将非常有用。 如果您想向用户推荐您推荐的钱包，以及其他可能的钱包，这将非常有用。 如果您想向用户推荐您推荐的钱包，以及其他可能的钱包，这将非常有用。
 
 推荐Rainbow和MetaMask，但也提供Coinbase以及一般的备选钱包。
 

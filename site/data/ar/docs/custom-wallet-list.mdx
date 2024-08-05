@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### محفظة Binance Web3
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### كوبياين بيز كوبيان
+
+يدعم هذا الموصل المحفظة كل من تطبيق Coinbase Wallet والإضافة، وكذلك Coinbase Smart Wallet على الويب.
+
+يتوفر وسيطة `preference` للتحكم فيما إذا تم تمكين المحفظة الذكية ومتاحة للمستخدمين. يتم توثيق السلوك القائم على التفضيل [هنا](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+سيتم تمكين المحفظة الذكية افتراضيًا مع `all` في أوائل يونيو، دون ترقية أخرى.
+
+يمكن للمطورين اختبار المحفظة الذكية مع سلاسل `sepolia` و `baseSepolia` اليوم عن طريق تعيين `smartWalletOnly` و تشمل `coinbaseWallet` في قائمة محافظهم على هذا النحو:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### محفظة Compass

@@ -1,5 +1,13 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.6
+
+### Patch Changes
+
+- 4cff94d: - updated `wagmi` to `^2.12.0`
+  - updated `viem` to `2.17.0`
+  - update `@tanstack/react-query` to `^5.51.11`
+
 ## 0.3.5
 
 ### Patch Changes

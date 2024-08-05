@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### Binance Web3 Кошелек
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Этот коннектор кошелька поддерживает как приложение Coinbase Wallet, так и расширение, а также умный кошелек Coinbase на веб-платформе.
+
+Аргумент `preference` доступен для управления тем, включен ли и доступен ли умный кошелек для пользователей. Поведение на основе предпочтений документировано [здесь](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+Умный кошелек будет включен по умолчанию с `all` в начале июня, без дальнейших обновлений.
+
+Разработчики могут протестировать умный кошелек с цепями `sepolia` и `baseSepolia` уже сегодня, установив `smartWalletOnly` и включив `coinbaseWallet` в список своих кошельков так:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Wallet

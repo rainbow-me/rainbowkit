@@ -1,5 +1,14 @@
 # with-next-rainbow-button
 
+## 0.0.22
+
+### Patch Changes
+
+- 4cff94d: - updated `wagmi` to `^2.12.0`
+  - updated `viem` to `2.17.0`
+  - update `@tanstack/react-query` to `^5.51.11`
+  - @rainbow-me/rainbow-button@0.2.13
+
 ## 0.0.21
 
 ### Patch Changes

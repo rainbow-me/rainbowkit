@@ -146,10 +146,27 @@ import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Coinbase Wallet
+#### बाइनेंस वेब3 वॉलेट
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### कॉइनबेस
+
+यह वॉलेट कनेक्टर कॉइनबेस वॉलेट ऐप और एक्सटेंशन के साथ-साथ वेब पर कॉइनबेस स्मार्ट वॉलेट दोनों को सपोर्ट करता है।
+
+'preference' आर्ग्युमेंट उपलब्ध है जिससे यह नियंत्रित किया जा सकता है कि स्मार्ट वॉलेट सक्षम और उपयोगकर्ताओं के लिए उपलब्ध है या नहीं। प्राथमिकता आधारित व्यवहार को [यहां](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) प्रलेखित किया गया है।
+
+सभी के लिए जून की शुरुआत में स्मार्ट वॉलेट डिफ़ॉल्ट रूप से सक्षम हो जाएगा, बिना किसी और अपग्रेड के।
+
+डेवलपर्स `smartWalletOnly` सेट करके और अपने वॉलेट सूची में `coinbaseWallet` सम्मिलित करके आज `sepolia` और `baseSepolia` चेन के साथ स्मार्ट वॉलेट का परीक्षण कर सकते हैं:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### कम्पास वॉलेट

@@ -104,7 +104,7 @@ As seguintes carteiras são fornecidas através do objeto `wallet` (em ordem alf
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Bitget
+#### BitKeep
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -149,7 +149,24 @@ import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 #### Coinbase Wallet
 
 ```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+Este conector de carteira suporta tanto o app Coinbase Wallet quanto a extensão, assim como o Coinbase Smart Wallet na Web.
+
+Um argumento `preference` está disponível para controlar se o Smart Wallet está ativado e disponível para os usuários. O comportamento baseado em preferências está documentado [aqui](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
+
+O Smart Wallet será ativado por padrão com `all` no início de junho, sem necessidade de atualização adicional.
+
+Os desenvolvedores podem testar o Smart Wallet com as cadeias `sepolia` e `baseSepolia` hoje, definindo `smartWalletOnly` e incluindo `coinbaseWallet` em sua lista de carteiras, assim:
+
+```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+
+// Enable Coinbase Smart Wallet for testing
+coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
 #### Compass Wallet
