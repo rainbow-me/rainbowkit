@@ -30,6 +30,7 @@ import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 
 import { addLatestWalletId } from '../../wallets/latestWalletId';
+import { useWalletConnectStore } from '../RainbowKitProvider/WalletConnectStoreProvider';
 import {
   ConnectDetail,
   DownloadDetail,
@@ -75,6 +76,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const initialized = useRef(false);
 
   const { connector } = useContext(WalletButtonContext);
+  const { onWalletConnectUri } = useWalletConnectStore();
 
   // The `WalletButton` component made the connect modal appear empty when trying to connect.
   // This happened because of a mix up between EIP-6963 and RainbowKit connectors.
@@ -86,6 +88,8 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
+
+  useEffect(() => onWalletConnectUri(setQrCodeUri), [onWalletConnectUri]);
 
   const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
 
@@ -111,7 +115,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const connectToWallet = (wallet: WalletConnector) => {
     setConnectionError(false);
     if (wallet.ready) {
-      wallet?.connect?.()?.catch(() => {
+      wallet?.connectWallet?.()?.catch(() => {
         setConnectionError(true);
       });
     }

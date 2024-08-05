@@ -102,7 +102,7 @@ export function WalletButtonRenderer({
     try {
       setLoading(true);
       if (isError) setIsError(false);
-      await firstConnector?.connect?.();
+      await firstConnector?.connectWallet?.();
     } catch {
       setIsError(true);
     } finally {

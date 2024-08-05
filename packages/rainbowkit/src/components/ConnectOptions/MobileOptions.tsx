@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isIOS } from '../../utils/isMobile';
+import { useWalletConnectModal } from '../../wallets/useWalletConnectModal';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -65,8 +66,12 @@ export function WalletButton({
   onClose: () => void;
   connecting?: boolean;
 }) {
+  const isWalletConnectWallet = wallet.id === 'walletConnect';
+
+  const { openWalletConnectModal } = useWalletConnectModal();
+
   const {
-    connect,
+    connectWallet,
     iconBackground,
     iconUrl,
     id,
@@ -74,7 +79,6 @@ export function WalletButton({
     getMobileUri,
     ready,
     shortName,
-    showWalletConnectModal,
   } = wallet;
 
   const coolModeRef = useCoolMode(iconUrl);
@@ -112,17 +116,21 @@ export function WalletButton({
       }
     };
 
-    if (id !== 'walletConnect') onMobileUri();
-
-    // If the id is "walletConnect" then "showWalletConnectModal" will always be true
-    if (showWalletConnectModal) {
-      showWalletConnectModal();
-      onClose?.();
-      return;
+    if (isWalletConnectWallet) {
+      onClose();
+      openWalletConnectModal();
+    } else {
+      onMobileUri();
+      connectWallet();
     }
-
-    connect?.();
-  }, [connect, getMobileUri, showWalletConnectModal, onClose, name, id]);
+  }, [
+    connectWallet,
+    isWalletConnectWallet,
+    openWalletConnectModal,
+    getMobileUri,
+    onClose,
+    name,
+  ]);
 
   useEffect(() => {
     // When using `reactStrictMode: true` in development mode the useEffect hook

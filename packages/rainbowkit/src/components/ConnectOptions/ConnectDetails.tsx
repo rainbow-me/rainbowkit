@@ -5,6 +5,7 @@ import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { PlatformType, getPlatform } from '../../utils/platforms';
 import { InstructionStepName } from '../../wallets/Wallet';
+import { useWalletConnectModal } from '../../wallets/useWalletConnectModal';
 import {
   WalletConnector,
   useWalletConnectors,
@@ -212,11 +213,14 @@ export function ConnectDetail({
     name,
     qrCode,
     ready,
-    showWalletConnectModal,
     getDesktopUri,
   } = wallet;
   const isDesktopDeepLinkAvailable = !!getDesktopUri;
   const safari = isSafari();
+
+  const isWalletConnectWallet = wallet.id === 'walletConnect';
+
+  const { openWalletConnectModal } = useWalletConnectModal();
 
   const { i18n } = useContext(I18nContext);
 
@@ -236,7 +240,7 @@ export function ConnectDetail({
     label: string;
     onClick?: () => void;
     href?: string;
-  } | null = showWalletConnectModal
+  } | null = isWalletConnectWallet
     ? {
         description: !compactModeEnabled
           ? i18n.t('connect.walletconnect.description.full')
@@ -244,7 +248,7 @@ export function ConnectDetail({
         label: i18n.t('connect.walletconnect.open.label'),
         onClick: () => {
           onClose();
-          showWalletConnectModal();
+          openWalletConnectModal();
         },
       }
     : hasQrCode
