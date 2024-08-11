@@ -19,6 +19,7 @@ type ChainName =
   | 'bsc'
   | 'bscTestnet'
   | 'goerli'
+  | 'gnosis'
   | 'hardhat'
   | 'holesky'
   | 'klaytn'
@@ -96,6 +97,11 @@ const ethereumIcon: IconMetadata = {
   iconUrl: async () => (await import('./chainIcons/ethereum.svg')).default,
 };
 
+const gnosisIcon: IconMetadata = {
+  iconBackground: '#04795c',
+  iconUrl: async () => (await import('./chainIcons/gnosis.svg')).default,
+};
+
 const hardhatIcon: IconMetadata = {
   iconBackground: '#f9f7ec',
   iconUrl: async () => (await import('./chainIcons/hardhat.svg')).default,
@@ -167,6 +173,7 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },
+  gnosis: { chainId: 100, name: 'Gnosis', ...gnosisIcon },
   hardhat: { chainId: 31_337, ...hardhatIcon },
   holesky: { chainId: 17000, ...ethereumIcon },
   kovan: { chainId: 42, ...ethereumIcon },
