@@ -21,6 +21,7 @@ import { frontierWallet } from './frontierWallet/frontierWallet';
 import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
+import { iopayWallet } from './iopayWallet/iopayWallet';
 import { kaikasWallet } from './kaikasWallet/kaikasWallet';
 import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
@@ -79,6 +80,7 @@ export {
   gateWallet,
   imTokenWallet,
   injectedWallet,
+  iopayWallet,
   kaikasWallet,
   krakenWallet,
   kresusWallet,
