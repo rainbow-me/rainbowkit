@@ -10,7 +10,7 @@ function isIoPayMobile(): boolean {
     typeof navigator !== 'undefined' &&
     typeof navigator.userAgent !== 'undefined' &&
     (navigator?.userAgent.includes('IoPayAndroid') ||
-      global?.navigator?.userAgent.includes('IoPayiOs'))
+      navigator?.userAgent.includes('IoPayiOs'))
   );
 }
 
