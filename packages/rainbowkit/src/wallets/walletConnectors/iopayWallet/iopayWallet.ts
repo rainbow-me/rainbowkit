@@ -14,14 +14,14 @@ function isIoPayMobile(): boolean {
   );
 }
 
-export const iopayWallet = ({
+export const ioPayWallet = ({
   projectId,
   walletConnectParameters,
 }: IoPayWalletOptions): Wallet => ({
   id: 'iopay',
   name: 'ioPay Wallet',
-  iconUrl: async () => (await import('./iopayWallet.svg')).default,
-  iconBackground: '#000000',
+  iconUrl: async () => (await import('./ioPayWallet.svg')).default,
+  iconBackground: '#fff',
   downloadUrls: {
     android:
       'https://play.google.com/store/apps/details?id=io.iotex.iopay.gp&pli=1',
