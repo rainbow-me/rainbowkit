@@ -51,6 +51,7 @@ import { tokenPocketWallet } from './tokenPocketWallet/tokenPocketWallet';
 import { tokenaryWallet } from './tokenaryWallet/tokenaryWallet';
 import { trustWallet } from './trustWallet/trustWallet';
 import { uniswapWallet } from './uniswapWallet/uniswapWallet';
+import { valoraWallet } from './valoraWallet/valoraWallet';
 import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zealWallet } from './zealWallet/zealWallet';
@@ -110,6 +111,7 @@ export {
   tokenPocketWallet,
   trustWallet,
   uniswapWallet,
+  valoraWallet,
   walletConnectWallet,
   xdefiWallet,
   zealWallet,
