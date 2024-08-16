@@ -9,6 +9,8 @@ type ChainName =
   | 'arbitrumSepolia'
   | 'avalanche'
   | 'avalancheFuji'
+  | 'celo'
+  | 'celoAlfajores'
   | 'cronos'
   | 'cronosTestnet'
   | 'base'
@@ -85,6 +87,11 @@ const blastIcon: IconMetadata = {
 const bscIcon: IconMetadata = {
   iconBackground: '#ebac0e',
   iconUrl: async () => (await import('./chainIcons/bsc.svg')).default,
+};
+
+const celoIcon: IconMetadata = {
+  iconBackground: '#FCFF52',
+  iconUrl: async () => (await import('./chainIcons/celo.svg')).default,
 };
 
 const cronosIcon: IconMetadata = {
@@ -170,6 +177,8 @@ const chainMetadataByName: Record<ChainName, ChainMetadata | null> = {
   blastSepolia: { chainId: 168_587_773, ...blastIcon },
   bsc: { chainId: 56, name: 'BSC', ...bscIcon },
   bscTestnet: { chainId: 97, ...bscIcon },
+  celo: { chainId: 42220, name: 'Celo', ...celoIcon },
+  celoAlfajores: { chainId: 44787, name: 'Celo Alfajores', ...celoIcon },
   cronos: { chainId: 25, ...cronosIcon },
   cronosTestnet: { chainId: 338, ...cronosIcon },
   goerli: { chainId: 5, ...ethereumIcon },

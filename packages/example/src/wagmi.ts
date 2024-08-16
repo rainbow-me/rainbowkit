@@ -64,6 +64,8 @@ import {
   blast,
   blastSepolia,
   bsc,
+  celo,
+  celoAlfajores,
   holesky,
   klaytn,
   klaytnBaobab,
@@ -145,6 +147,7 @@ export const config = getDefaultConfig({
     klaytn,
     sei,
     mantle,
+    celo,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [
           sepolia,
@@ -159,6 +162,7 @@ export const config = getDefaultConfig({
           zetachainAthensTestnet,
           klaytnBaobab,
           mantleTestnet,
+          celoAlfajores,
         ]
       : []),
   ],
