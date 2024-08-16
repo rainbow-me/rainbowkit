@@ -10,7 +10,7 @@ export const valoraWallet = ({
 }: ValoraWalletOptions): Wallet => ({
   id: 'valora',
   name: 'Valora',
-  iconUrl: async () => (await import('./valoraWallet.png')).default,
+  iconUrl: async () => (await import('./valoraWallet.svg')).default,
   iconBackground: '#FFFFFF',
   downloadUrls: {
     ios: 'https://apps.apple.com/app/id1520414263?mt=8',
