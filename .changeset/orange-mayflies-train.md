@@ -3,4 +3,4 @@
 "example": patch
 ---
 
-Add Celo blockchain
+Add icon for Celo chain
