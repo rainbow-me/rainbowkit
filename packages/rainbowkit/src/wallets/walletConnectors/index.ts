@@ -23,6 +23,7 @@ import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { iopayWallet } from './iopayWallet/iopayWallet';
 import { kaikasWallet } from './kaikasWallet/kaikasWallet';
+import { kaiaWallet } from './kaiaWallet/kaiaWallet';
 import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -82,6 +83,7 @@ export {
   injectedWallet,
   iopayWallet,
   kaikasWallet,
+  kaiaWallet,
   krakenWallet,
   kresusWallet,
   ledgerWallet,

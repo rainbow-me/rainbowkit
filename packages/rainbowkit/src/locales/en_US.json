@@ -633,6 +633,37 @@
       }
     },
 
+    "kaia": {
+      "extension": {
+        "step1": {
+          "description": "We recommend pinning Kaia to your taskbar for quicker access to your wallet.",
+          "title": "Install the Kaia extension"
+        },
+        "step2": {
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone.",
+          "title": "Create or Import a Wallet"
+        },
+        "step3": {
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension.",
+          "title": "Refresh your browser"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Open the Kaia app",
+          "description": "Put Kaia app on your home screen for faster access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap Scanner Icon in top right corner",
+          "description": "Choose New Connection, then scan the QR code and confirm the prompt to connect."
+        }
+      }
+    },
+
     "kraken": {
       "qr_code": {
         "step1": {
