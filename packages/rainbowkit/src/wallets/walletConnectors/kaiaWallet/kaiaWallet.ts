@@ -44,20 +44,17 @@ export const kaiaWallet = ({
             learnMoreUrl: 'https://kaiawallet.io',
             steps: [
               {
-                description:
-                  'wallet_connectors.kaia.qr_code.step1.description',
+                description: 'wallet_connectors.kaia.qr_code.step1.description',
                 step: 'install',
                 title: 'wallet_connectors.kaia.qr_code.step1.title',
               },
               {
-                description:
-                  'wallet_connectors.kaia.qr_code.step2.description',
+                description: 'wallet_connectors.kaia.qr_code.step2.description',
                 step: 'create',
                 title: 'wallet_connectors.kaia.qr_code.step2.title',
               },
               {
-                description:
-                  'wallet_connectors.kaia.qr_code.step3.description',
+                description: 'wallet_connectors.kaia.qr_code.step3.description',
                 step: 'refresh',
                 title: 'wallet_connectors.kaia.qr_code.step3.title',
               },

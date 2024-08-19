@@ -22,8 +22,8 @@ import { gateWallet } from './gateWallet/gateWallet';
 import { imTokenWallet } from './imTokenWallet/imTokenWallet';
 import { injectedWallet } from './injectedWallet/injectedWallet';
 import { iopayWallet } from './iopayWallet/iopayWallet';
-import { kaikasWallet } from './kaikasWallet/kaikasWallet';
 import { kaiaWallet } from './kaiaWallet/kaiaWallet';
+import { kaikasWallet } from './kaikasWallet/kaikasWallet';
 import { krakenWallet } from './krakenWallet/krakenWallet';
 import { kresusWallet } from './kresusWallet/kresusWallet';
 import { ledgerWallet } from './ledgerWallet/ledgerWallet';
@@ -60,13 +60,13 @@ import { zerionWallet } from './zerionWallet/zerionWallet';
 export {
   argentWallet,
   bifrostWallet,
+  binanceWallet,
   bitgetWallet,
   bitskiWallet,
   bitverseWallet,
   bloomWallet,
-  bybitWallet,
   braveWallet,
-  binanceWallet,
+  bybitWallet,
   clvWallet,
   coin98Wallet,
   coinbaseWallet,
@@ -82,8 +82,8 @@ export {
   imTokenWallet,
   injectedWallet,
   iopayWallet,
-  kaikasWallet,
   kaiaWallet,
+  kaikasWallet,
   krakenWallet,
   kresusWallet,
   ledgerWallet,
