@@ -1,13 +1,13 @@
 ---
 title: वॉलेट बटन
-description: वॉलेट बटन का उपयोग और अनुकूलन करना
+description: वॉलेट बटन का उपयोग और अनुकूलन
 ---
 
 # वॉलेट बटन
 
-> ध्यान दें: `WalletButton` वर्तमान में EIP-1193 वॉलेट मानक पर निर्भर करता है, परंतु निकट भविष्य में EIP-6963 का समर्थन करेगा।
+> नोट: `वॉलेट बटन` वर्तमान में EIP-1193 वॉलेट मानक पर निर्भर करता है, लेकिन निकट भविष्य में EIP-6963 का समर्थन करेगा।
 
-यह नया `वॉलेट बटन` कंपोनेंट डीएपीइस और उसकी मेंटेनेंस-फ्री लाभों को अपनाने में dApps की मदद करता है।
+नया `वॉलेट बटन` कॉंपोनेंट dApps को कस्टम वॉलेट सूची के कार्यान्वयन के साथ RainbowKit को अपनाने और इसके सभी रखरखाव-मुक्त लाभों के साथ मदद करता है।
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-`वॉलेट बटन.कस्टम` कंपोनेंट अनुकूलन और स्टाइलिंग के लिए उपलब्ध है, जैसा कि सीखा जाता है।
+`कनेक्ट बटन` की तरह, `वॉलेट बटन.Custom` कॉंपोनेंट अनुकूलन कार्यान्वयन और स्टाइलिंग के लिए उपलब्ध है।
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-अधिकांश dApps को [ConnectButton](https://www.rainbowkit.com/docs/connect-button) से अच्छी सेवा प्रदान की जाती है। `वॉलेट बटन` के ग्रहण और उपयोग के बारे में अधिक जानकारी के लिए दस्तावेज़ [here](https://www.rainbowkit.com/docs/wallet-button) का संदर्भ लें।
+अधिकांश dApps के लिए [ConnectButton](https://www.rainbowkit.com/docs/connect-button) सबसे अच्छा विकल्प है। अधिक जानकारी के लिए `वॉलेट बटन` को अपनाने और उपयोग के मामलों के बारे में [यहां](https://www.rainbowkit.com/docs/wallet-button) देखिए।
 
 #### डेमो
 
-देखने के लिए नीचे बटन दबाएँ, इस रेंबोकिट प्रवेश बिंदु की दिखावट क्या होती है।
+यह देखने के लिए नीचे दिए गए बटन दबाएं कि यह RainbowKit प्रवेश बिंदु कैसा दिखता है।
 
 <WalletButtonDemo />

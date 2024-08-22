@@ -7,7 +7,7 @@ description: الاتصال بنظام المصادقة الخلفي الخاص 
 
 ## الاتصال بنظام المصادقة الخلفي الخاص بك
 
-بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth.js،](/docs/authentication#setupsigninwithethereumandnextauthjs) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل
+بينما يقدم RainbowKit [دعمًا من الدرجة الأولى لتسجيل الدخول باستخدام Ethereum وNextAuth.js،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) يمكنك أيضًا الدمج مع الخلفيات المخصصة وتنسيقات الرسائل.
 
 ### إنشاء محول مخصص
 
@@ -59,7 +59,7 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### توفير حالة المصادقة
 
-باستخدام الافتراض أن تطبيقك يدير حياة المصادقة بطريقة ما، يمكنك تمرير حالة المصادقة الحالية مع المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، مع تغليف `RainbowKitProvider` الخاص بك
+باستخدام الافتراض أن تطبيقك يدير حياة المصادقة بطريقة ما، يمكنك تمرير حالة المصادقة الحالية مع المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، مع تغليف `RainbowKitProvider` الخاص بك.
 
 ```tsx
 import {

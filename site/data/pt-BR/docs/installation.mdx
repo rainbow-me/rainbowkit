@@ -25,7 +25,7 @@ Alternativamente, você pode integrar manualmente o RainbowKit ao seu projeto ex
 
 ### Configuração manual
 
-Instale o RainbowKit e suas dependências, [wagmi](https://wagmi.sh/) e [viem](https://viem.sh).
+Instale o RainbowKit e suas dependências, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), e [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -62,7 +62,7 @@ import {
 
 Configure suas cadeias desejadas e gere os conectores necessários. Você também precisará configurar um `wagmi` config. Se o seu dApp usa renderização no lado do servidor (SSR), certifique-se de definir `ssr` como `true`.
 
-> Nota: Todo dApp que depende do WalletConnect agora precisa obter um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/). Isso é totalmente gratuito e leva apenas alguns minutos.
+> Nota: Todo dApp que depende do WalletConnect agora precisa obter um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/). Isso é totalmente grátis e leva apenas alguns minutos.
 
 ```tsx line=4-99
 ...
@@ -78,7 +78,7 @@ const config = getDefaultConfig({
 
 #### Envolver provedores
 
-Envolva sua aplicação com `RainbowKitProvider` e [`WagmiConfig`](https://wagmi.sh/docs/provider).
+Envolva sua aplicação com `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), e [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
@@ -116,7 +116,7 @@ Algumas ferramentas de build podem necessitar de configuração adicional.
 
 ##### Remix
 
-Ao usar o [Remix](https://remix.run), você deve fazer polyfill dos módulos `buffer`, `events` e `http`. Faça referência à configuração do Remix abaixo, ou [ao nosso projeto Remix de exemplo](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Ao usar o [Remix](https://remix.run), você deve polyfill dos módulos `buffer`, `events` e `http`. Consulte a configuração do Remix abaixo, ou [nosso exemplo de projeto Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Preparando para o deploy
+### Preparando-se para implantar
 
-Por padrão, seu dApp usa provedores RPC públicos para cada rede para buscar saldos, resolver nomes ENS e mais. Isso pode frequentemente causar problemas de confiabilidade para seus usuários, pois os nós públicos têm limitação de taxa. Em vez disso, você deveria adquirir acesso a um provedor RPC por meio de serviços como [Alchemy](https://www.alchemy.com/) ou [QuickNode](https://www.quicknode.com/), e definir seus próprios Transportes no Wagmi. Isso pode ser alcançado adicionando o parâmetro `transports` em `getDefaultConfig` ou diretamente via `createConfig` do Wagmi.
+Por padrão, seu dApp usa provedores RPC públicos para cada cadeia para buscar saldos, resolver nomes ENS e mais. Isso pode muitas vezes causar problemas de confiabilidade para seus usuários, já que os nós públicos têm limite de taxa. Você deve, ao invés disso, adquirir acesso a um provedor RPC por meio de serviços como [Alchemy](https://www.alchemy.com/) ou [QuickNode](https://www.quicknode.com/), e definir seus próprios Transportes no Wagmi. Isso pode ser alcançado adicionando o parâmetro `transports` em `getDefaultConfig` ou diretamente via `createConfig` do Wagmi.
 
-Um Transporte é a camada intermediária de rede que lida com o envio de requisições JSON-RPC para o Provedor de Nó Ethereum (como Alchemy, Infura, etc).
+Um Transporte é a camada intermediária de rede que lida com o envio de solicitações JSON-RPC para o Provedor de Nó Ethereum (como Alchemy, Infura, etc).
 
-**Exemplo com um transporte `http`**
+**Exemplo com transporte `http`**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,7 +152,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Para mais detalhes, veja a [documentação de transporte wagmi](https://wagmi.sh/core/api/transports#transports).
+Para mais detalhes, veja a [documentação wagmi](https://wagmi.sh/core/api/transports#transports).
 
 ### Adicione sua própria funcionalidade
 

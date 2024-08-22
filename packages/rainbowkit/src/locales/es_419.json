@@ -552,6 +552,22 @@
         }
       }
     },
+    "iopay": {
+      "qr_code": {
+        "step1": {
+          "description": "Recomendamos poner ioPay en tu pantalla de inicio para un acceso más rápido a tu billetera.",
+          "title": "Abre la aplicación ioPay"
+        },
+        "step2": {
+          "description": "Puede respaldar fácilmente su billetera utilizando nuestra función de respaldo en su teléfono.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Después de escanear, aparecerá un mensaje de conexión para que conecte su billetera.",
+          "title": "Toque el botón WalletConnect"
+        }
+      }
+    },
     "kaikas": {
       "extension": {
         "step1": {
@@ -571,6 +587,36 @@
         "step1": {
           "title": "Abra la aplicación Kaikas",
           "description": "Ponga la aplicación Kaikas en su pantalla de inicio para un acceso más rápido a su billetera."
+        },
+        "step2": {
+          "title": "Crear o Importar una Billetera",
+          "description": "Crea una nueva billetera o importa una existente."
+        },
+        "step3": {
+          "title": "Toca el Icono del Escáner en la esquina superior derecha",
+          "description": "Elija Nueva Conexión, luego escanee el código QR y confirme el aviso para conectar."
+        }
+      }
+    },
+    "kaia": {
+      "extension": {
+        "step1": {
+          "description": "Recomendamos anclar Kaia a tu barra de tareas para un acceso más rápido a tu billetera.",
+          "title": "Instala la extensión Kaia"
+        },
+        "step2": {
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie.",
+          "title": "Crear o Importar una Billetera"
+        },
+        "step3": {
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión.",
+          "title": "Refrescar tu navegador"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Abre la aplicación Kaia",
+          "description": "Pon la aplicación Kaia en tu pantalla de inicio para un acceso más rápido a tu billetera."
         },
         "step2": {
           "title": "Crear o Importar una Billetera",

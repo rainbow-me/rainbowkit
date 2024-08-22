@@ -7,11 +7,11 @@ description: 최근 거래 내역을 표시합니다
 
 ## 최근 거래 내역을 표시합니다
 
-RainbowKit의 계정 모달 내에서 최근 거래 내역을 표시하도록 선택할 수 있습니다. 모든 거래는 로컬 저장소에 보관되며, 표시하려면 RainbowKit에 수동으로 등록해야 합니다.
+RainbowKit의 계정 모달에서 최근 거래 내역을 표시하는 선택을 할 수 있습니다. 모든 거래 내역은 로컬 스토리지에 저장되며 표시하려면 RainbowKit에 수동으로 등록해야 합니다.
 
-기본 `ConnectButton` 구현은 대기 중인 거래가 있으면 사용자의 아바타 주위에 로딩 지시자를 표시합니다. 사용자 정의 `ConnectButton` 구현은 render 함수에 전달되는 `account.hasPendingTransactions` 속성을 통해 이 동작을 재현할 수 있습니다.
+기본 `ConnectButton` 구현은 대기 중인 거래가 있으면 사용자 아바타 주변에 로딩 표시기를 표시합니다. 사용자 정의 `ConnectButton` 구현은 렌더 함수에 전달되는 `account.hasPendingTransactions` 속성을 통해 이 동작을 재현할 수 있습니다.
 
-이 기능을 사용하려면 먼저 `RainbowKitProvider`에 `showRecentTransactions` 옵션을 활성화해야 합니다.
+이 기능을 사용하려면 먼저 `RainbowKitProvider`에서 `showRecentTransactions` 옵션을 활성화합니다.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-그런 다음 `useAddRecentTransaction` hook을 사용하여 거래를 RainbowKit에 등록할 수 있습니다.
+그런 다음 `useAddRecentTransaction` 훅을 사용하여 거래 내역을 RainbowKit에 등록할 수 있습니다.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -50,7 +50,7 @@ export default () => {
 
 거래가 RainbowKit에 등록되면 완료 시 상태가 업데이트됩니다.
 
-기본적으로 트랜잭션이 채굴된 블록 위에 단일 블록이 채굴되면 트랜잭션은 완료로 간주되지만, 사용자 정의 `confirmations` 값을 지정하여 이를 설정할 수 있습니다.
+기본적으로 거래는 한 블록이 채굴된 후 완료된 것으로 간주되지만, 사용자 정의 확인 값을 지정하여 이를 구성할 수 있습니다.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

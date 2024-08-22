@@ -7,11 +7,11 @@ description: Tampilkan transaksi terakhir Anda
 
 ## Tampilkan transaksi terakhir Anda
 
-Anda dapat memilih untuk menampilkan transaksi terakhir dalam modal akun RainbowKit. Perhatikan bahwa semua transaksi disimpan dalam penyimpanan lokal dan harus didaftarkan secara manual dengan RainbowKit agar dapat ditampilkan.
+Anda dapat memilih untuk menampilkan transaksi terbaru di dalam modal akun RainbowKit. Perlu diingat bahwa semua transaksi disimpan di penyimpanan lokal dan harus didaftarkan secara manual dengan RainbowKit agar dapat ditampilkan.
 
-Implementasi `ConnectButton` default juga akan menampilkan indikator pemuatan di sekitar avatar pengguna jika ada transaksi yang sedang ditunda. Implementasi `ConnectButton` kustom dapat menciptakan perilaku ini melalui properti `account.hasPendingTransactions` yang diteruskan ke fungsi render Anda.
+Implementasi `TombolHubung` bawaan juga akan menampilkan indikator pemuatan di sekitar avatar pengguna jika ada transaksi yang tertunda. Implementasi `TombolHubung` kustom dapat mengulang perilaku ini melalui properti `account.hasPendingTransactions` yang dilewatkan ke fungsi render Anda.
 
-Untuk menggunakan fitur ini, pertama aktifkan opsi `showRecentTransactions` di `RainbowKitProvider`.
+Untuk menggunakan fitur ini, aktifkan opsi `showRecentTransactions` di `RainbowKitProvider` terlebih dahulu.
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -48,9 +48,9 @@ export default () => {
 };
 ```
 
-Setelah transaksi telah didaftarkan dengan RainbowKit, statusnya akan diperbarui setelah selesai.
+Setelah transaksi didaftarkan dengan RainbowKit, statusnya akan diperbarui setelah selesai.
 
-Secara default, transaksi akan dianggap selesai setelah satu blok ditambang di atas blok tempat transaksi ditambang, tetapi ini dapat dikonfigurasi dengan menentukan nilai `confirmations` kustom.
+Secara default, transaksi akan dianggap selesai setelah satu blok telah ditambang di atas blok di mana transaksi tersebut ditambang, tetapi ini dapat dikonfigurasi dengan menentukan nilai `confirmations` kustom.
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

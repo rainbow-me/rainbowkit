@@ -66,14 +66,16 @@ export const App = () => {
 
 <Table
   header={[
-    'Language', 'Region', 'Locale', 'Shortform'
+    '语言', '地区', '语言环境', '简写形式'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
   ]}
   data={[
     ['English', 'United States 🇺🇸', 'en-US', 'en'],
-    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh'],
+    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
+    ['繁體中文', 'Hong Kong 🇭🇰', 'zh-HK'],
+    ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
     ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
     ['Español', 'Latin America 🌎', 'es-419', 'es'],
     ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],

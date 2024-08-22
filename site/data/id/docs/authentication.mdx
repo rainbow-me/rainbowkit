@@ -77,7 +77,7 @@ Dengan `RainbowKitSiweNextAuthProvider` di tempat, pengguna Anda sekarang akan d
 
 Anda dapat menyesuaikan [opsi pesan SIWE](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) dengan melewatkan fungsi ke prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
 
-Fungsi ini akan dipanggil setiap kali pesan baru dibuat. Opsi yang dikembalikan dari fungsi ini akan digabungkan dengan nilai default.
+Fungsi ini akan dipanggil setiap kali pesan baru dibuat. Opsi yang dikembalikan dari fungsi ini akan digabungkan dengan setelan bawaan.
 
 ```tsx
 import {
@@ -98,7 +98,7 @@ const getSiweMessageOptions: GetSiweMessageOptions = () => ({
 
 #### Akses sesi dari sisi server
 
-Anda dapat mengakses token sesi dengan fungsi `getToken` dari NextAuth yang diimpor dari `next-auth/jwt`. Jika pengguna berhasil diautentikasi, properti `sub` dari token sesi ("subjek" dari token, yaitu pengguna) akan menjadi alamat pengguna.
+Anda dapat mengakses token sesi dengan fungsi `getToken` dari NextAuth yang diimpor dari `next-auth/jwt`. Jika pengguna telah berhasil autentikasi, properti `sub` dari token sesi ("subjek" token, yaitu pengguna) akan menjadi alamat pengguna.
 
 Anda juga dapat meneruskan objek sesi yang telah diselesaikan dari server melalui `getServerSideProps` sehingga NextAuth tidak perlu menyelesaikannya lagi di klien.
 

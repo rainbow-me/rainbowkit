@@ -552,6 +552,22 @@
         }
       }
     },
+    "iopay": {
+      "qr_code": {
+        "step1": {
+          "description": "Kami merekomendasikan untuk menaruh ioPay di layar utama Anda untuk akses wallet Anda lebih cepat.",
+          "title": "Buka aplikasi ioPay"
+        },
+        "step2": {
+          "description": "Anda dapat dengan mudah mencadangkan wallet Anda menggunakan fitur cadangan kami di telepon Anda.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda memindai, akan muncul petunjuk koneksi untuk Anda menghubungkan dompet Anda.",
+          "title": "Ketuk tombol WalletConnect"
+        }
+      }
+    },
     "kaikas": {
       "extension": {
         "step1": {
@@ -571,6 +587,36 @@
         "step1": {
           "title": "Buka aplikasi Kaikas",
           "description": "Letakkan aplikasi Kaikas di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
+        },
+        "step2": {
+          "title": "Buat atau Impor Dompet",
+          "description": "Buat dompet baru atau impor yang sudah ada."
+        },
+        "step3": {
+          "title": "Ketuk Ikon Scanner di pojok kanan atas",
+          "description": "Pilih Koneksi Baru, lalu pindai kode QR dan konfirmasi petunjuk untuk terhubung."
+        }
+      }
+    },
+    "kaia": {
+      "extension": {
+        "step1": {
+          "description": "Kami merekomendasikan menempelkan Kaia ke taskbar Anda untuk akses dompet Anda lebih cepat.",
+          "title": "Instal ekstensi Kaia"
+        },
+        "step2": {
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun.",
+          "title": "Buat atau Impor Dompet"
+        },
+        "step3": {
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi.",
+          "title": "Segarkan browser Anda"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Buka aplikasi Kaia",
+          "description": "Letakkan aplikasi Kaia di layar utama Anda untuk akses yang lebih cepat ke dompet Anda."
         },
         "step2": {
           "title": "Buat atau Impor Dompet",

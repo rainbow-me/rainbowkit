@@ -8,7 +8,7 @@ image: guide-rainbowkit-v2.png
 
 As dependências de pares [wagmi](https://wagmi.sh) e [viem](https://viem.sh) alcançaram a versão `2.x.x` com mudanças significativas.
 
-Siga as etapas abaixo para migrar.
+Siga os passos abaixo para migrar.
 
 **1. Atualize o RainbowKit, `wagmi` e `viem` para as suas versões mais recentes**
 
@@ -26,7 +26,7 @@ Instale-o com o seguinte comando:
 npm i @tanstack/react-query
 ```
 
-**3. RainbowKitProvider**
+**3. Atualize suas configurações do RainbowKit e Wagmi**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -104,7 +104,7 @@ Carteiras que suportam o novo padrão de conexão EIP-6963 (incluindo Rainbow, M
 
 Os desenvolvedores continuam tendo controle total sobre a Lista de Carteiras Personalizadas para enfatizar carteiras preferenciais para os usuários finais. É incentivado que você continue a incluir a `injectedWallet` e a `walletConnectWallet` em sua lista para dar suporte a todas as plataformas.
 
-\*\*2. Substitua import configureChains
+**2. Configuração do Wagmi com getDefaultConfig**
 
 Esta nova API simplifica a experiência de configuração e substitui a necessidade de usar diretamente o `createConfig` do Wagmi. A configuração da cadeia é simplificada, incluindo provedores públicos inferidos para `transports`.
 
@@ -122,7 +122,7 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. Garanta a compatibilidade do empacotador e do polyfill**
+**3. RainbowKitProvider**
 
 Você não precisa mais passar `chains` para `<RainbowKitProvider>`.
 
@@ -131,7 +131,7 @@ Você não precisa mais passar `chains` para `<RainbowKitProvider>`.
 + <RainbowKitProvider>
 ```
 
-**4. Correntes Personalizadas**
+**4. Cadeias Personalizadas**
 
 O tipo `Chain` mudou de acordo com o Wagmi v2 e continua a suportar os metadados `iconUrl` e `iconBackground` do RainbowKit.
 
@@ -195,7 +195,7 @@ Exemplo com `createConfig`:
 
 **5. Carteiras Personalizadas**
 
-O RainbowKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para manter o suporte à WalletConnect v1. O suporte para WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização de correção, sem quebras de compatibilidade.
+Os conectores de carteira do RainbowKit passaram por mudanças substanciais para suportar o Wagmi v2. Consulte a [documentação atualizada](https://www.rainbowkit.com/docs/custom-wallets) e um [conector de exemplo](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para atualizar quaisquer Conectores de Carteiras Personalizadas em seu dApp.
 
 Os conectores de carteira agora também suportam o padrão EIP-6963 com a propriedade `rdns`. Certifique-se de que isso esteja preenchido para evitar referências duplicadas a carteiras que suportam EIP-6963 na sua lista de carteiras.
 

@@ -1,17 +1,17 @@
 ---
-title: สร้อย
-description: ปรับแต่งสร้อย
+title: เชื่อมโยง
+description: ปรับแต่งเชื่อมโยง
 ---
 
-# สร้อย
+# เชื่อมโยง
 
-## ปรับแต่งสร้อย
+## ปรับแต่งเชื่อมโยง
 
-RainbowKit ถูกออกแบบมาเพื่อรวมกับ [object `chain` ของ wagmi](https://wagmi.sh/react/chains). ตรวจสอบรายการของสร้อยที่รองรับ [here](https://wagmi.sh/react/chains#supported-chains).
+RainbowKit ถูกออกแบบมาเพื่อรวมกับ [object `chain` ของ wagmi](https://wagmi.sh/react/chains). ตรวจสอบรายการของสร้อยที่รองรับ [ที่นี่](https://wagmi.sh/react/chains#supported-chains).
 
 ### ปรับแต่งสร้อยเริ่มต้น
 
-โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain` พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain`
+โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่ได้รับจาก Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain`
 
 สายเริ่มต้นสามารถกำหนดค่าได้โดยใช้ ID ของสาย
 
@@ -25,11 +25,11 @@ RainbowKit ถูกออกแบบมาเพื่อรวมกับ [o
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### ข้อมูลเมตาเชนที่กำหนดเอง
+### เมตาดาต้าโซ่ที่กำหนดเอง
 
-มีไอคอนและพื้นหลังเชนหลายอันที่จัดเตรียมไว้ล่วงหน้า แต่คุณสามารถกำหนดแบบไอคอนและพื้นหลังสำหรับแต่ละเชนโดยใช้คุณสมบัติ `iconUrl` และ `iconBackground`
+ไอคอนและพื้นหลังจำนวนมากมีให้โดยค่าเริ่มต้น แต่คุณสามารถปรับแต่งไอคอนและพื้นหลังสำหรับแต่ละโซ่โดยใช้คุณสมบัติ `iconUrl` และ `iconBackground`
 
-ตัวอย่างโดยใช้ `getDefaultConfig`
+ตัวอย่างที่ใช้ `getDefaultConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';

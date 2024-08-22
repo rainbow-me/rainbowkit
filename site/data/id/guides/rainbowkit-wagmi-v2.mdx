@@ -10,13 +10,13 @@ Peer dependencies [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah me
 
 Ikuti langkah-langkah berikut untuk migrasi.
 
-**1. Tingkatkan RainbowKit, `wagmi`, dan `viem` ke versi terbaru**
+**1. Perbarui RainbowKit, `wagmi`, dan `viem` ke versi terbaru mereka**
 
 ```bash
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-**2. Instal peer dependency `@tanstack/react-query`**
+**2. Instal dependensi rekan `@tanstack/react-query`**
 
 Dengan Wagmi v2, [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) kini menjadi dependensi rekan yang diperlukan.
 
@@ -26,7 +26,7 @@ Pasang itu dengan perintah berikut:
 npm i @tanstack/react-query
 ```
 
-**3. Tingkatkan konfigurasi RainbowKit dan Wagmi Anda**
+**3. Perbarui konfigurasi RainbowKit dan Wagmi Anda**
 
 ```diff
   import '@rainbow-me/rainbowkit/styles.css'
@@ -89,7 +89,7 @@ npm i @tanstack/react-query
   }
 ```
 
-**4. Periksa perubahan penting pada `wagmi` dan `viem`**
+**4. Periksa perubahan besar di `wagmi` dan `viem`**
 
 Jika Anda menggunakan hook `wagmi` dan aksi `viem` dalam dApp Anda, Anda akan perlu mengikuti panduan migrasi untuk v2:
 
@@ -100,17 +100,17 @@ Jika Anda menggunakan hook `wagmi` dan aksi `viem` dalam dApp Anda, Anda akan pe
 
 **1. Perilaku yang ditingkatkan untuk dompet EIP-6963**
 
-Dompet yang mendukung standar koneksi baru EIP-6963 (termasuk Rainbow, MetaMask, dan lainnya) akan secara otomatis muncul dalam bagian `Terinstal` selama pengalaman Menghubungkan Dompet. Ini memastikan bahwa pengguna selalu dapat menemukan dompet favorit mereka dan terhubung ke dApps tanpa konflik atau tombol alternatif.
+Dompet yang mendukung standar koneksi EIP-6963 baru (termasuk Rainbow, MetaMask, dan lainnya) sekarang akan otomatis muncul di bagian `Terpasang` selama pengalaman Connect Wallet. Ini memastikan bahwa pengguna selalu dapat menemukan dompet favorit mereka dan terhubung ke dApps tanpa konflik atau tombol fallback.
 
-Pengembang tetap memiliki kontrol penuh atas Daftar Dompet Kustom untuk menekankan dompet yang disukai oleh pengguna akhir. Dianjurkan agar Anda terus memasukkan `injectedWallet` dan `walletConnectWallet` dalam daftar Anda untuk mendukung semua platform.
+Pengembang terus memiliki kontrol penuh atas Daftar Dompet Kustom untuk menekankan dompet yang diutamakan bagi pengguna akhir. Disarankan agar Anda terus menyertakan `injectedWallet` dan `walletConnectWallet` dalam daftar Anda untuk mendukung semua platform.
 
 **2. Konfigurasi Wagmi dengan getDefaultConfig**
 
-API baru ini menyederhanakan pengalaman konfigurasi dan menggantikan kebutuhan untuk menggunakan `createConfig` dari Wagmi secara langsung. Konfigurasi rantai disederhanakan, termasuk penyedia publik yang disimpulkan untuk `transports`.
+API baru ini menyederhanakan pengalaman konfigurasi dan menggantikan kebutuhan untuk menggunakan secara langsung Wagmi `createConfig`. Konfigurasi rantai disederhanakan, termasuk penyedia publik yang disimpulkan untuk `transports`.
 
 Daftar dompet default akan secara otomatis disertakan, menghilangkan kebutuhan untuk menggunakan `getDefaultWallets` dan `connectorsForWallets`.
 
-Anda dapat membuat Daftar Dompet Kustom dengan meneruskan konektor Dompet yang diimpor atau Kustom ke `wallets`. Menginstansiasi konektor dompet dan meneruskan `projectId` serta `chains` tidak lagi diperlukan.
+Anda dapat membuat Daftar Dompet Kustom dengan mengoper konektor Dompet yang diimpor atau Kustom ke `wallets`. Membuat konektor dompet dan meneruskan `projectId` dan `chains` tidak lagi diperlukan.
 
 ```
 const config = getDefaultConfig({
@@ -195,8 +195,8 @@ Contoh dengan `createConfig`:
 
 **5. Dompet Kustom**
 
-Konektor dompet RainbowKit telah mengalami perubahan besar untuk mendukung Wagmi v2. Rujuk [dokumentasi yang diperbarui](https://www.rainbowkit.com/docs/custom-wallets) dan sebuah [contoh konektor](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk meningkatkan Konektor Dompet Kustom apa pun di dApp Anda.
+Konektor dompet RainbowKit telah mengalami perubahan substansial untuk mendukung Wagmi v2. Lihat [dokumen yang diperbarui](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh konektor](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk meningkatkan Konektor Dompet Kustom di dApp Anda.
 
-Konektor dompet sekarang juga mendukung standar EIP-6963 dengan properti `rdns`. Pastikan ini diisi untuk mencegah referensi duplikat ke dompet yang mendukung EIP-6963 di daftar dompet Anda.
+Konektor dompet juga kini mendukung standar EIP-6963 dengan prop `rdns`. Pastikan ini diisi untuk mencegah referensi ganda ke dompet yang mendukung EIP-6963 dalam daftar dompet Anda.
 
 > Silakan laporkan masalah atau umpan balik untuk RainbowKit v2 di GitHub [di sini](https://github.com/rainbow-me/rainbowkit/issues/new/choose).

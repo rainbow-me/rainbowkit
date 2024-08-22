@@ -1,21 +1,21 @@
 ---
 title: أحجام النموذج
-description: واسع مقابل مدمج
+description: واسع مقابل مضغوط
 ---
 
 # أحجام النموذج
 
-## حجم واسع مقابل حجم مدمج
+## حجم واسع مقابل مضغوط
 
-بشكل افتراضي، يتم تعيين `modalSize` في RainbowKit إلى `wide` (ويبدو مثل هذا):
+بشكل افتراضي، يتم تعيين `modalSize` لـ RainbowKit إلى `wide` (ويبدو هكذا):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
-كما نزود حجم للنموذج ` compact` ، والذي يبدو كما يلي:
+نحن نقدم أيضًا حجم نموذج `compact`، الذي يبدو هكذا:
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-لتعيين حجم النموذج الخاص بك على `compact`، ما عليك سوى إضافة `modalSize="compact"` كدعم في `RainbowKitProvider` الخاص بك:
+لتعيين حجم النموذج الخاص بك إلى `compact`، فقط أضف `modalSize="compact"` كخاصية في `RainbowKitProvider` الخاص بك:
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';

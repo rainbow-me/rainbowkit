@@ -1,5 +1,5 @@
 ---
-title: WalletConnect v2로 dApp 업그레이드 하기
+title: WalletConnect v2로 당신의 dApp 업그레이드
 description: RainbowKit는 v2로 마이그레이션 되었으며, 5분 이내에 dApp을 준비할 수 있습니다
 image: guide-walletconnect-v2.png
 ---
@@ -34,7 +34,7 @@ npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 
 `0.12.x` dApp 사용자는 wagmi v1로 업그레이드를 시작하는 것이 좋습니다. 왜냐하면 WalletConnect v2의 안정성 향상은 향후 wagmi 버전에서만 포함될 예정이기 때문입니다.
 
-**2. 프로젝트 아이디 제공**
+\*\*2. 프로젝트 아이디 제공
 
 WalletConnect에 의존하는 모든 dApp은 이제 [WalletConnect Cloud](https://cloud.walletconnect.com/)에서 `projectId`를 획득해야합니다. 이것은 완전히 무료이며 몇 분 밖에 걸리지 않습니다.
 
@@ -62,10 +62,10 @@ const connectors = connectorsForWallets([
 
 RainbowKit은 타입 안전하며, `projectId`가 누락될 경우 경고합니다. v2가 동작하는 예시를 참조하십시오:
 
-- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- [리액트 앱 생성](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)을 사용하여
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)을 사용하여
+- [Next.js 앱 라우터](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)을 사용하여
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)을 사용하여
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)을 사용하여
 
 추가 지원 옵션에 대한 참조는 [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect).

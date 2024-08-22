@@ -23,7 +23,7 @@ yarn create @rainbow-me/rainbowkit
 
 สำหรับอีกทางเลือก คุณสามารถรวม RainbowKit เข้ากับโครงการที่มีอยู่ของคุณเอง
 
-### การตั้งค่าด้วยต手
+### การตั้งค่าด้วยตมือ
 
 ติดตั้ง RainbowKit และ peer dependencies ที่เกี่ยวข้อง, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), และ [@tanstack/react-query](https://tanstack.com/query/v5).
 
@@ -31,7 +31,7 @@ yarn create @rainbow-me/rainbowkit
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-> หมายเหตุ: RainbowKit เป็นคลังภาพ [React](https://reactjs.org/)
+> หมายเหตุ: RainbowKit เป็นคลังภาพ [React](https://reactjs.org/).
 
 #### นำเข้า
 
@@ -60,9 +60,9 @@ import {
 
 #### กำหนดค่า
 
-กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างเชื่อมโยงที่ต้องการ คุณยังต้องการตั้งค่ากำหนดค่า `wagmi` หาก dApp ของคุณใช้การเรนเดอร์ฝั่งเซิร์ฟเวอร์ (SSR) ต้องตั้งค่า `ssr` เป็น `true`.
+กำหนดค่าสำหรับเชื่อมโยงที่คุณต้องการและสร้างตัวเชื่อมต่อที่ต้องการ คุณยังต้องตั้งค่ากำหนดค่า `wagmi`. หากแอปพลิเคชันของคุณใช้การเรนเดอร์ฝั่งเซิร์ฟเวอร์ (SSR) ต้องตั้งค่า `ssr` ให้เป็น `true`.
 
-> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/) นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที
+> หมายเหตุ: ทุก dApp ที่ใช้ WalletConnect ตอนนี้ต้องได้รับ `projectId` จาก [WalletConnect Cloud](https://cloud.walletconnect.com/). นี่เป็นบริการฟรีและใช้เวลาไม่กี่นาที.
 
 ```tsx line=4-99
 ...
@@ -116,7 +116,7 @@ RainbowKit จะดูแลเลือกกระเป๋าเงินข
 
 ##### Remix
 
-เมื่อใช้งาน [Remix](https://remix.run) คุณต้อง polyfill โมดูล `buffer`, `events` และ `http` อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)
+เมื่อใช้งาน [Remix](https://remix.run) คุณต้อง polyfill โมดูล `buffer`, `events` และ `http`. อ้างอิงการตั้งค่า Remix ด้านล่าง หรือ [โปรเจ็กต์ Remix ตัวอย่างของเรา](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### กำลังเตรียมการเผยแพร่
+### การเตรียมตัวเพื่อดีพลอย
 
-โดยค่าเริ่มต้น แอปพลิเคชันของคุณใช้ผู้ให้บริการ RPC สาธารณะสำหรับแต่ละเชนในการดึงยอดคงเหลือ การแก้ไขชื่อ ENS และอื่นๆ สิ่งนี้อาจทำให้เกิดปัญหาความน่าเชื่อถือสำหรับผู้ใช้ของคุณ เนื่องจากโหนดสาธารณะมีการจำกัดอัตราการใช้งาน คุณควรซื้อการเข้าถึงผู้ให้บริการ RPC ผ่านบริการเช่น [Alchemy](https://www.alchemy.com/) หรือ [QuickNode](https://www.quicknode.com/) และกำหนด Transports ของคุณเองใน Wagmi สามารถทำได้โดยการเพิ่มพารามิเตอร์ `transports` ใน `getDefaultConfig` หรือผ่าน `createConfig` ของ Wagmi โดยตรง สิ่งนี้อาจทำให้เกิดปัญหาความน่าเชื่อถือสำหรับผู้ใช้ของคุณ เนื่องจากโหนดสาธารณะมีการจำกัดอัตราการใช้งาน คุณควรซื้อการเข้าถึงผู้ให้บริการ RPC ผ่านบริการเช่น [Alchemy](https://www.alchemy.com/) หรือ [QuickNode](https://www.quicknode.com/) และกำหนด Transports ของคุณเองใน Wagmi สามารถทำได้โดยการเพิ่มพารามิเตอร์ `transports` ใน `getDefaultConfig` หรือผ่าน `createConfig` ของ Wagmi โดยตรง
+โดยค่าเริ่มต้น แอปพลิเคชันของคุณใช้ผู้ให้บริการ RPC สาธารณะสำหรับแต่ละเชนในการดึงยอดคงเหลือ การแก้ไขชื่อ ENS และอื่นๆ สิ่งนี้อาจทำให้เกิดปัญหาความน่าเชื่อถือสำหรับผู้ใช้ของคุณ เนื่องจากโหนดสาธารณะมีการจำกัดอัตราการใช้งาน. คุณควรซื้อการเข้าถึงผู้ให้บริการ RPC ผ่านบริการเช่น [Alchemy](https://www.alchemy.com/) หรือ [QuickNode](https://www.quicknode.com/) และกำหนด Transports ของคุณเองใน Wagmi. สามารถทำได้โดยการเพิ่มพารามิเตอร์ `transports` ใน `getDefaultConfig` หรือผ่าน `createConfig` ของ Wagmi โดยตรง.
 
-Transport เป็นชั้นกลางด้านเครือข่ายที่จัดการการส่งคำขอ JSON-RPC ไปยังผู้ให้บริการโหนด Ethereum (เช่น Alchemy, Infura ฯลฯ)
+Transport เป็นชั้นกลางการเครือข่ายที่จัดการส่งคำขอ JSON-RPC ไปยังผู้ให้บริการโหนด Ethereum (เช่น Alchemy, Infura เป็นต้น)
 
-**ตัวอย่างที่ใช้ `http` transport**
+**ตัวอย่างด้วย `http` transport**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,7 +152,7 @@ const config = getDefaultConfig({
 });
 ```
 
-สำหรับรายละเอียดเพิ่มเติม ดูที่ [เอกสาร wagmi transport](https://wagmi.sh/core/api/transports#transports).
+สำหรับรายละเอียดเพิ่มเติม ดูที่ [เอกสาร wagmi.](https://wagmi.sh/core/api/transports#transports).
 
 ### เพิ่มฟังก์ชันของคุณเอง
 

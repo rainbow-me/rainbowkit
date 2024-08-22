@@ -7,7 +7,7 @@ description: वॉलेट सूची को कस्टमाइज़ क
 
 ## वॉलेट सूची को कस्टमाइज़ करना
 
-आप `'@rainbow-me/rainbowkit/wallets'` से व्यक्तिगत वॉलेट्स आयात कर सकते हैं उनके आवश्यक कनेक्टर्स के साथ अपनी स्वयं की वॉलेट सूची तैयार करने के लिए `connectorsForWallets` कार्य के साथ। इस तरह आपका पूरा नियंत्रण होता है कि कौन से वॉलेट्स प्रदर्शित करने हैं, और किस क्रम में।
+आप `connectorsForWallets` फ़ंक्शन के साथ `'@rainbow-me/rainbowkit/wallets'` से व्यक्तिगत वॉलेट आयात कर सकते हैं ताकि उनके आवश्यक कनेक्टर्स के साथ अपनी स्वयं की वॉलेट सूची बना सकें। इस तरह आपके पास किस वॉलेट्स को प्रदर्शित करना है और किस क्रम में यह पूर्ण नियंत्रण होता है।
 
 उदाहरण के लिए, आप सामान्य फ़ॉलबैक वॉलेट्स के साथ केवल Rainbow दिखाने का चयन कर सकते हैं।
 
@@ -64,7 +64,7 @@ const App = () => (
 
 #### सामान्य वॉलेट्स
 
-निम्नलिखित वॉलेट्स विशेष ऐप्स की तुलना में सामान्य कनेक्शन विधियों के लिए स्कोप की गई हैं। इस परिणामस्वरूप, यह सिफारिश की जाती है कि इन वॉलेट्स को हमेशा शामिल किया जाए।
+निम्नलिखित वॉलेट्स सामान्य कनेक्शन विधियों तक सीमित हैं न कि विशिष्ट अनुप्रयोगों तक। परिणामस्वरूप, यह अनुशंसा की जाती है कि इन वॉलेट्स को हमेशा शामिल किया जाए।
 
 ##### WalletConnect
 
@@ -76,19 +76,19 @@ const App = () => (
 import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### इंजेक्टेड वॉलेट
+##### Injected Wallet
 
-यह एक फॉलबैक वॉलेट विकल्प है जो उन परिस्थितियों के लिए डिज़ाइन किया गया है जहां `window.ethereum` मौजूद होता है लेकिन सूची में दिए गए अन्य वॉलेट द्वारा प्रदान नहीं किया गया है। यह वॉलेट स्वतः ही सूची से खुद को छुपा लेगा जब फॉलबैक की आवश्यकता नहीं होती है या अगर कोई इंजेक्टेड वॉलेट उपलब्ध नहीं है।
+यह एक फॉलबैक वॉलेट विकल्प है जिसे उन परिदृश्यों के लिए डिजाइन किया गया है जहां `window.ethereum` मौजूद है लेकिन सूची में द्वारा अन्य वॉलेट द्वारा प्रदान नहीं किया गया है। यह वॉलेट सूची से स्वचालित रूप से छिप जाएगा जब फॉलबैक आवश्यक नहीं होगा या यदि कोई injected वॉलेट उपलब्ध नहीं है।
 
-**यह सिफारिश की जाती है कि आप हमेशा इस वॉलेट को सूची में शामिल करें ताकि सभी इंजेक्टेड वॉलेट्स का समर्थन किया जा सके।**
+**यह सिफारिश की जाती है कि आप इस वॉलेट को सूची में हमेशा शामिल करें ताकि सुनिश्चित किया जाए कि सभी injected वॉलेट्स समर्थित हैं।**
 
 ```tsx
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### सेफ वॉलेट
+##### Safe Wallet
 
-सेफ ऐप्स का समर्थन करने वाले dApps के लिए, जो उपयोगकर्ताओं को उनके सेफ वॉल्ट या मल्टी-सिग से आसानी से जोड़ने की अनुमति देते हैं, स्वचालित कनेक्शनों के लिए `safeWallet` विकल्प शामिल करें। सेफ विकल्प केवल सेफ वॉलेट ब्राउज़र वातावरण में दिखाई देगा।
+उन dApps के लिए जो उपयोगकर्ताओं को उनके Safe vault या multi-sig से आसानी से कनेक्ट होने की अनुमति देने के लिए Safe Apps का समर्थन करते हैं, स्वचालित कनेक्शनों के लिए `safeWallet` विकल्प को शामिल करें। Safe विकल्प केवल Safe Wallet ब्राउज़र वातावरण में ही प्रदर्शित होगा।
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,69 +98,75 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 निम्नलिखित वॉलेट `wallet` ऑब्जेक्ट के माध्यम से प्रदान किए जाते हैं (वर्णमाला के क्रम में।)
 
+#### 1inch Wallet
+
+```tsx
+import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Argent
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### बिटगेट
-
-```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### बिफ्रॉस्ट वॉलेट
-
-```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### बिट्स्की
-
-```tsx
-import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### बिटवर्स
-
-```tsx
-import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### ब्लूम वॉलेट
-
-```tsx
-import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### बायबिट वॉलेट
-
-```tsx
-import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### ब्रेव वॉलेट
-
-```tsx
-import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### बाइनेंस वेब3 वॉलेट
+#### Binance Web3 Wallet
 
 ```tsx
 import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### कॉइनबेस
+#### Bitget
 
-यह वॉलेट कनेक्टर कॉइनबेस वॉलेट ऐप और एक्सटेंशन के साथ-साथ वेब पर कॉइनबेस स्मार्ट वॉलेट दोनों को सपोर्ट करता है।
+```tsx
+import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-'preference' आर्ग्युमेंट उपलब्ध है जिससे यह नियंत्रित किया जा सकता है कि स्मार्ट वॉलेट सक्षम और उपयोगकर्ताओं के लिए उपलब्ध है या नहीं। प्राथमिकता आधारित व्यवहार को [यहां](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters) प्रलेखित किया गया है।
+#### Bifrost Wallet
 
-सभी के लिए जून की शुरुआत में स्मार्ट वॉलेट डिफ़ॉल्ट रूप से सक्षम हो जाएगा, बिना किसी और अपग्रेड के।
+```tsx
+import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+```
 
-डेवलपर्स `smartWalletOnly` सेट करके और अपने वॉलेट सूची में `coinbaseWallet` सम्मिलित करके आज `sepolia` और `baseSepolia` चेन के साथ स्मार्ट वॉलेट का परीक्षण कर सकते हैं:
+#### Bitski
+
+```tsx
+import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bitverse
+
+```tsx
+import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bloom Wallet
+
+```tsx
+import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Brave Wallet
+
+```tsx
+import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bybit Wallet
+
+```tsx
+import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Coinbase
+
+यह वॉलेट कनेक्टर Coinbase वॉलेट ऐप और एक्सटेंशन दोनों का समर्थन करता है, साथ ही वेब पर Coinbase Smart Wallet का भी समर्थन करता है।
+
+उपयोगकर्ताओं के लिए Smart Wallet सक्षम और उपलब्ध है या नहीं यह नियंत्रित करने के लिए एक `preference` तर्क उपलब्ध है। प्रेफरेन्स आधारित व्यवहार यहाँ प्रलेखित है [यहाँ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)।
+
+Smart Wallet प्रारंभिक जून में बिना किसी आगे अपग्रेड के `all` के साथ डिफ़ॉल्ट रूप से सक्षम हो जाएगा।
+
+विकसितकर्ता Smart Wallet का परीक्षण कर सकते हैं `sepolia` और `baseSepolia` चैन के साथ आज ही `smartWalletOnly` सेट करके और `coinbaseWallet` को अपनी वॉलेट सूची में शामिल करके जैसे:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -169,16 +175,16 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-#### कम्पास वॉलेट
-
-```tsx
-import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
-```
-
 #### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Compass Wallet
+
+```tsx
+import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
 #### Core
@@ -217,16 +223,10 @@ import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### गेट वॉलेट
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Ledger Live
-
-```tsx
-import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### imToken
@@ -235,40 +235,58 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### क्रैकन वॉलेट
+#### ioPay Wallet
 
 ```tsx
-import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### क्रेसस वॉलेट
+#### Kaia Wallet
 
 ```tsx
-import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### कैकस
+#### Kaikas
 
 ```tsx
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### मैजिक ईडन वॉलेट
+#### Kraken Wallet
+
+```tsx
+import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kresus Wallet
+
+```tsx
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ledger Live
+
+```tsx
+import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MetaMask
-
-```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MetaMask
+
+```tsx
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OKX Wallet
@@ -281,12 +299,6 @@ import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### 1inch वॉलेट
-
-```tsx
-import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OneKey
@@ -313,13 +325,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### रैम्पर वॉलेट
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### रोनिन वॉलेट
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -436,7 +448,7 @@ const connectors = connectorsForWallets(
 
 #### एकाधिक समूह
 
-आप `groupName` कुंजी का उपयोग विभिन्न वॉलेट समूहों को नाम देने के लिए कर सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं से संवाद करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स के बारे में भी।
+आप `groupName` कुंजी का उपयोग करके विभिन्न वॉलेट समूहों को नाम दे सकते हैं। यह उपयोगी है यदि आप अपने उपयोगकर्ताओं को यह सूचित करना चाहते हैं कि आप कौन से वॉलेट्स की सिफारिश करते हैं, साथ ही अन्य संभावित वॉलेट्स।
 
 रेनबो और मेटामास्क की सिफारिश करें, लेकिन सामान्य फ़ॉलबैक वॉलेट्स के साथ कोइनबेस की भी पेशकश करें।
 

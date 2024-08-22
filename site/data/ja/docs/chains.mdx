@@ -7,11 +7,11 @@ description: チェーンのカスタマイズ
 
 ## チェーンのカスタマイズ
 
-RainbowKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)と統合するように設計されています。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。
+RainbowKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)と統合するように設計されています。 サポートされているチェーンのリストを確認してください [here](https://wagmi.sh/react/chains#supported-chains)。
 
 ### 初期チェーンのカスタマイズ
 
-デフォルトでは、RainbowKitはWagmiに提供された最初のチェーンに接続します。 この動作は、`initialChain` propを介してカスタマイズできます。 この動作は、`initialChain` propを介してカスタマイズできます。 この動作は、`initialChain` propを介してカスタマイズできます。 この動作は、`initialChain` propを介してカスタマイズできます。 この動作は、`initialChain` propを介してカスタマイズできます。
+デフォルトでは、RainbowKitはWagmiに提供された最初のチェーンに接続します。 この動作は、`initialChain` propを介してカスタマイズできます。
 
 初期チェーンはチェーンIDを使用して設定できます。
 
@@ -25,11 +25,11 @@ RainbowKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)�
 <RainbowKitProvider initialChain={mainnet}>
 ```
 
-### カスタムチェーンメタデータ
+### カスタムチェーンのメタデータ
 
-複数のチェーンアイコンと背景がデフォルトで提供されていますが、`iconUrl` と `iconBackground` プロパティを使用して、各チェーンのアイコンと背景をカスタマイズできます。
+デフォルトでいくつかのチェーンアイコンと背景が提供されていますが、`iconUrl`および`iconBackground`プロパティを使用して各チェーンのアイコンと背景をカスタマイズできます。
 
-`getDefaultConfig` を使用した例
+`getDefaultConfig`を使用した例
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
@@ -50,7 +50,7 @@ const config = getDefaultConfig({
 });
 ```
 
-`createConfig` を使用した例
+`createConfig`を使用した例
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';

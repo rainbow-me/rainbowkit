@@ -7,7 +7,7 @@ description: Menggunakan dan menyesuaikan tema
 
 ## Menggunakan dan menyesuaikan tema
 
-Anda dapat menyesuaikan UI RainbowKit agar sesuai dengan merek Anda. Anda dapat memilih dari beberapa warna aksen dan konfigurasi radius batas yang telah ditentukan sebelumnya.
+Anda dapat mengubah UI RainbowKit agar sesuai dengan branding Anda. Anda dapat memilih dari beberapa warna aksen yang sudah ditentukan dan konfigurasi radius batas.
 
 Ada 3 fungsi tema bawaan:
 
@@ -15,7 +15,7 @@ Ada 3 fungsi tema bawaan:
 - `darkTheme`
 - `midnightTheme`
 
-Sebuah fungsi tema mengembalikan sebuah objek tema. Anda bisa memberikan objek ini ke properti `theme` dari `RainbowKitProvider`.
+Fungsi tema mengembalikan objek tema. Anda bisa memasukkan objek ke prop `theme` milik `RainbowKitProvider`.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -98,7 +98,7 @@ Fungsi tema bawaan juga menerima objek pilihan, yang memungkinkan Anda untuk mem
   ]}
 />
 
-Sebagai contoh, untuk menyesuaikan tema gelap dengan warna aksen ungu dan radius batas `medium` :
+Sebagai contoh, untuk menyesuaikan tema gelap dengan warna aksen ungu dan radius batas `medium`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -119,7 +119,7 @@ const App = () => {
 };
 ```
 
-Setiap tema juga menyediakan beberapa preset warna aksen (`biru`, `hijau`, `oranye`, `pink`, `ungu`, `merah`) yang dapat disebarkan ke objek opsi. Sebagai contoh, untuk menggunakan preset warna aksen `pink` :
+Setiap tema juga menyediakan beberapa preset warna aksen (`blue`, `green`, `orange`, `pink`, `purple`, `red`) yang dapat dimasukkan ke dalam objek pilihan. Sebagai contoh, untuk menggunakan preset warna aksen `pink`:
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -260,7 +260,7 @@ const App = () => {
 
 #### Tumpukan Font
 
-Secara default, `fontStack` diatur ke `rounded`. Namun berikut ini cara Anda bisa menggunakan config `fontStack`.
+Secara default, `fontStack` diatur ke `rounded`. Namun, berikut cara Anda bisa menggunakan konfigurasi `fontStack`.
 
 Tetapkan font stack ke `system`.
 
@@ -283,7 +283,7 @@ const App = () => {
 
 #### Kabur overlay
 
-Secara default, `overlayBlur` diatur ke `none`. Namun berikut ini cara Anda bisa menggunakan config `overlayBlur`.
+Secara default, `overlayBlur` diatur ke `none`. Namun, berikut cara Anda bisa menggunakan konfigurasi `overlayBlur`.
 
 Tetapkan kabur overlay ke `small`.
 
@@ -310,7 +310,7 @@ Berikut adalah beberapa cara berbeda yang bisa Anda gunakan dengan tema yang ber
 
 - Gunakan tema `lightTheme`
 - Atur warna aksen ke nilai ungu kustom
-- Atur radius borda menjadi `medium`
+- Atur radius tepi ke `medium`
 - Atur tumpukan font ke `system`
 
 ```tsx

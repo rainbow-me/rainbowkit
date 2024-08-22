@@ -7,7 +7,7 @@ description: ConnectButton'ı kullanma ve özelleştirme
 
 ## ConnectButton'ı kullanma ve özelleştirme
 
-Bu ana bileşendir. Bağlanma/bağlantıyı kesme düğmesini ve zincir değiştirme kullanıcı arayüzünü oluşturmakla sorumludur.
+Bu ana bileşendir. Bağlan/Bağlantıyı kes butonunu ve zincir değiştirme arayüzünü render etmekten sorumludur.
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> Not: Uygulamanızın gerekli sağlayıcılarla kaplandığından emin olun. [Daha fazla bilgi](/docs/installation#wrap-providers).
+> Not: Uygulamanızın gerekli sağlayıcılarla sarılı olduğundan emin olun. [Daha fazla oku](/docs/installation#wrap-providers).
 
-### Prop'lar
+### Props
 
-`ConnectButton` bileşeni, farklı elementlerin görünürlüğünü değiştirme dahil olmak üzere görünüşünü özelleştirmek için birkaç prop sunar.
+`ConnectButton` bileşeni, görünümünü özelleştirmek için çeşitli props'ları açığa çıkarır, farklı öğelerin görünürlüğünü değiştirmeyi içeren.
 
 <PropsTable
   data={[
@@ -62,13 +62,13 @@ export const YourApp = () => {
   ]}
 />
 
-> Not: yerleşik `largeScreen` kesme noktası `768px`dir.
+> Not: Yerleşik `largeScreen` kırılma noktası `768px`'dir.
 
 ### Örnekler
 
 #### Etiket
 
-Özel bir `ConnectButton` metni belirlemek için `label` prop'unu kullanın.
+Özel bir `ConnectButton` metni ayarlamak için `label` props'unu kullanın.
 
 ```tsx
 <ConnectButton label="__Sign in__" />
@@ -76,15 +76,15 @@ export const YourApp = () => {
 
 #### Hesap durumu
 
-`accountStatus` özelliğini kullanabileceğiniz birkaç farklı yol bulunmaktadır.
+`accountStatus` props'unu farklı şekillerde kullanabileceğiniz bazı yollar.
 
-Sadece hesabın avatarını gösterin.
+Sadece hesabın avatarını göster.
 
 ```tsx
 <ConnectButton accountStatus="__avatar__" />
 ```
 
-Sadece hesabın adresini gösterin.
+Sadece hesabın adresini göster.
 
 ```tsx
 <ConnectButton accountStatus="__address__" />
@@ -92,29 +92,29 @@ Sadece hesabın adresini gösterin.
 
 #### Zincir durumu
 
-`chainStatus` özelliğini kullanabileceğiniz birkaç farklı yol bulunmaktadır.
+`chainStatus` props'unu farklı şekillerde kullanabileceğiniz bazı yollar.
 
-Sadece mevcut zincirin simgesini gösterin.
+Sadece mevcut zincirin ikonunu göster.
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-Sadece mevcut zincirin adını gösterin.
+Sadece mevcut zincirin adını göster.
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-Zincir kullanıcı arayüzünü tamamen gizleyin.
+Zincir arayüzünü tamamen gizle.
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### Bakiye göster
+#### Bakiyeyi göster
 
-`showBalance` özelliğini kullanarak bakiyeyi gizleme/gösterme işlemini gerçekleştirin.
+Bakiyeyi gizlemek/göstermek için `showBalance` props'unu kullanın.
 
 Bakiyeyi gizle.
 
@@ -122,11 +122,11 @@ Bakiyeyi gizle.
 <ConnectButton showBalance={__false__} />
 ```
 
-#### Responsive
+#### Duyarlı
 
-Bu özellikler ayrıca responsive formatında da tanımlanabilir.
+Bu props'lar aynı zamanda duyarlı bir formatta tanımlanabilir.
 
-Küçük ekranlarda, sadece hesap simgesini gösterin. Fakat büyük ekranlarda, simge ve adresi gösterin.
+Küçük ekranlarda, yalnızca hesap ikonunu göster. Fakat büyük ekranlarda, ikon ve adresi göster.
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ Küçük ekranlarda, sadece hesap simgesini gösterin. Fakat büyük ekranlarda,
 />
 ```
 
-Küçük ekranlarda, bakiyeyi gizleyin. Ama büyük ekranlarda, göster.
+Küçük ekranlarda, bakiyeyi gizle. Fakat büyük ekranlarda, göster.
 
 ```tsx
 <ConnectButton

@@ -16,7 +16,7 @@ image: guide-rainbowkit-v2.png
 npm i @rainbow-me/rainbowkit wagmi viem@2.x
 ```
 
-\*\*2. تثبيت تبعية النظير `@tanstack/react-query`
+**2. تثبيت تبعية النظير `@tanstack/react-query`**
 
 مع Wagmi v2، أصبح [TanStack Query](https://tanstack.com/query/v5/docs/react/overview) تبعية ضرورية مشتركة.
 
@@ -104,7 +104,7 @@ npm i @tanstack/react-query
 
 يستمر المطورون في السيطرة الكاملة على قائمة المحافظ المخصصة لتسليط الضوء على المحافظ المفضلة للمستخدمين النهائيين. يُشجع على أن تستمر في تضمين `injectedWallet` و `walletConnectWallet` في قائمتك لدعم جميع المنصات.
 
-\*\*2. تكوين Wagmi مع getDefaultConfig\*\*
+**2. تكوين Wagmi مع getDefaultConfig**
 
 هذه الواجهة البرمجية الجديدة تبسط تجربة التكوين وتحل محل الحاجة لاستخدام `createConfig` من Wagmi مباشرةً. تم تبسيط تكوين السلسلة، بما في ذلك مزودي الخدمات العامة المستنتجة لـ `transports`.
 
@@ -193,7 +193,7 @@ const config = getDefaultConfig({
   })
 ```
 
-**4. السلاسل المخصصة**
+**5. محافظ مخصصة**
 
 موصلات محفظة RainbowKit قد خضعت لتغييرات جوهرية لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و [مثال الموصل](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيق dApp الخاص بك.
 

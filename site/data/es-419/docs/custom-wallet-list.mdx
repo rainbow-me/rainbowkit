@@ -86,9 +86,9 @@ Esta es una opción de cartera de respaldo diseñada para escenarios donde `wind
 import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-##### Billetera Segura
+##### Cartera Safe
 
-Para dApps que soportan Safe Apps y permiten a los usuarios conectarse fácilmente con su bóveda Safe o multi-firma, incluye la opción `safeWallet` para conexiones automáticas. La opción Safe solo aparecerá en el entorno del navegador de la Billetera Segura.
+Para dApps que soportan Safe Apps para permitir a los usuarios conectarse fácilmente con su bóveda Safe o multi-firma, incluya la opción `safeWallet` para conexiones automáticas. La opción Safe solo aparecerá en el entorno del navegador Safe Wallet.
 
 ```tsx
 import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -98,13 +98,25 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 
 Las siguientes billeteras se proporcionan a través del objeto `wallet` (en orden alfabético).
 
+#### Cartera 1inch
+
+```tsx
+import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
 #### Argent
 
 ```tsx
 import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### BitKeep
+#### Binance Web3 Wallet
+
+```tsx
+import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Bitget
 
 ```tsx
 import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -128,39 +140,33 @@ import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
 import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera Bloom
+#### Bloom Wallet
 
 ```tsx
 import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Cartera Bybit
-
-```tsx
-import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Billetera Brave
+#### Brave Wallet
 
 ```tsx
 import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Binance Web3 Wallet
+#### Bybit Wallet
 
 ```tsx
-import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Coinbase
 
-Este conector de billetera es compatible tanto con la aplicación y extensión Coinbase Wallet, como con Coinbase Smart Wallet en la Web.
+Este conector de cartera soporta tanto la aplicación y la extensión de Coinbase Wallet, como también Coinbase Smart Wallet en la Web.
 
 Un argumento de `preferencia` está disponible para controlar si Smart Wallet está habilitado y disponible para los usuarios. El comportamiento basado en preferencias está documentado [aquí](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters).
 
-Smart Wallet se habilitará de forma predeterminada con `all` a principios de junio, sin necesidad de una actualización adicional.
+Smart Wallet estará habilitado por defecto con `all` a principios de junio, sin necesidad de una actualización adicional.
 
-Los desarrolladores pueden probar Smart Wallet con las cadenas `sepolia` y `baseSepolia` hoy configurando `smartWalletOnly` e incluyendo `coinbaseWallet` en su lista de billeteras de la siguiente manera:
+Los desarrolladores pueden probar Smart Wallet con las cadenas `sepolia` y `baseSepolia` hoy configurando `smartWalletOnly` e incluyendo `coinbaseWallet` en su lista de carteras de la siguiente manera:
 
 ```tsx
 import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -169,16 +175,16 @@ import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 coinbaseWallet.preference = 'smartWalletOnly';
 ```
 
-#### Compass Wallet
-
-```tsx
-import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
-```
-
 #### Coin98 Wallet
 
 ```tsx
 import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Compass Wallet
+
+```tsx
+import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
 ```
 
 #### Core
@@ -217,16 +223,10 @@ import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
 import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Cartera Gate
+#### Gate Wallet
 
 ```tsx
 import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Ledger Live
-
-```tsx
-import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### imToken
@@ -235,16 +235,16 @@ import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
 import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Kraken Wallet
+#### ioPay Wallet
 
 ```tsx
-import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera Kresus
+#### Kaia Wallet
 
 ```tsx
-import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### Kaikas
@@ -253,22 +253,40 @@ import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
 import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera Magic Eden
+#### Kraken Wallet
+
+```tsx
+import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Kresus Wallet
+
+```tsx
+import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Ledger Live
+
+```tsx
+import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### Magic Eden Wallet
 
 ```tsx
 import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### MetaMask
-
-```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### MEW Wallet
 
 ```tsx
 import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+```
+
+#### MetaMask
+
+```tsx
+import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OKX Wallet
@@ -281,12 +299,6 @@ import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
 
 ```tsx
 import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Cartera 1inch
-
-```tsx
-import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
 #### OneKey
@@ -313,13 +325,13 @@ import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
 import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera Ramper
+#### Ramper Wallet
 
 ```tsx
 import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
 ```
 
-#### Billetera Ronin
+#### Ronin Wallet
 
 ```tsx
 import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
@@ -405,7 +417,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-Mostrar MetaMask junto con billeteras de reserva genéricas.
+Mostrar Rainbow, MetaMask y Coinbase junto con billeteras de reserva genéricas.
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';

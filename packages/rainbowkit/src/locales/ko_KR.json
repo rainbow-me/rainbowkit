@@ -552,6 +552,22 @@
         }
       }
     },
+    "iopay": {
+      "qr_code": {
+        "step1": {
+          "description": "지갑에 더 빠르게 접근하기 위해 ioPay를 홈 화면에 두는 것을 추천드립니다.",
+          "title": "ioPay 앱을 엽니다"
+        },
+        "step2": {
+          "description": "휴대폰에서 백업 기능을 이용하여 지갑을 쉽게 백업할 수 있습니다.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "스캔 후에 지갑을 연결하기 위한 연결 요청이 표시됩니다.",
+          "title": "WalletConnect 버튼을 누르세요"
+        }
+      }
+    },
     "kaikas": {
       "extension": {
         "step1": {
@@ -571,6 +587,36 @@
         "step1": {
           "title": "Kaikas 앱을 열어주세요",
           "description": "지갑에 더 빠르게 접근하기 위해 홈 화면에 Kaikas 앱을 추가하세요."
+        },
+        "step2": {
+          "title": "지갑 생성 또는 가져오기",
+          "description": "새로운 지갑을 만들거나 기존의 지갑을 가져옵니다."
+        },
+        "step3": {
+          "title": "오른쪽 상단의 스캐너 아이콘을 누릅니다",
+          "description": "새 연결을 선택하고 QR 코드를 스캔한 뒤, 연결하려는 프롬프트를 확인합니다."
+        }
+      }
+    },
+    "kaia": {
+      "extension": {
+        "step1": {
+          "description": "지갑에 더 빠르게 접근할 수 있도록 Kaia를 작업 표시줄에 고정하는 것을 권장합니다.",
+          "title": "Kaia 확장 프로그램을 설치하세요"
+        },
+        "step2": {
+          "description": "안전한 방법을 사용하여 지갑을 백업하세요. 절대로 비밀 구문을 누구와도 공유하지 마세요.",
+          "title": "지갑 생성 또는 가져오기"
+        },
+        "step3": {
+          "description": "지갑 설정을 마친 후 아래를 클릭하여 브라우저를 새로고침하고 확장 프로그램을 로드하세요.",
+          "title": "브라우저를 새로 고침하세요"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "Kaia 앱을 엽니다",
+          "description": "지갑에 더 빠르게 접근할 수 있도록 홈 화면에 Kaia 앱을 두는 것을 추천합니다."
         },
         "step2": {
           "title": "지갑 생성 또는 가져오기",

@@ -7,11 +7,11 @@ description: Création d'un thème personnalisé
 
 ## Création d'un thème personnalisé
 
-> Note: Cette API est instable et susceptible de changer
-> dans un futur proche. Nous recommandons de rester avec les [thèmes intégrés](/docs/theming) pour
-> maintenant.
+> Note : Cette API est instable et susceptible de changer
+> dans un futur proche. Nous recommandons de s'en tenir aux [thèmes intégrés](/docs/theming) pour
+> le moment.
 
-Alors que les thèmes intégrés offrent un certain niveau de personnalisation, le type `Theme` est fourni pour vous aider à définir vos propres thèmes personnalisés avec un accès de niveau inférieur aux variables de thème sous-jacentes.
+Bien que les thèmes intégrés offrent un certain niveau de personnalisation, le type `Theme` est fourni pour vous aider à définir vos propres thèmes personnalisés avec un accès de bas niveau aux variables de thème sous-jacentes.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +79,17 @@ const App = () => (
 )
 ```
 
-### Étendre un thème intégré
+### Extension d'un thème intégré
 
-Vous pouvez étendre un thème intégré sans avoir besoin de re-définir le thème entier. C'est utile lorsque vous souhaitez seulement remplacer des jetons de thème spécifiques.
+Vous pouvez étendre un thème intégré sans avoir à redéfinir tout le thème. Ceci est utile lorsque vous souhaitez simplement remplacer des tokens de thème spécifiques.
 
-Pour faire cela, installez `lodash.merge` (ou équivalent):
+Pour ce faire, installez `lodash.merge` (ou équivalent) :
 
 ```bash
 npm install lodash.merge
 ```
 
-Importez-le, avec le thème que vous souhaitez étendre (par exemple: `darkTheme`) et le type `Theme` de TypeScript:
+Importez-le, ainsi que le thème que vous souhaitez étendre (par exemple : `darkTheme`) et le type TypeScript `Theme` :
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +100,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Ensuite, fusionnez le thème intégré, avec les jetons de thème que vous aimeriez remplacer. Dans cet exemple, je remplace le jeton `accentColor` pour qu'il corresponde à la couleur d'accent de ma marque.
+Ensuite, fusionnez le thème intégré avec les tokens de thème que vous souhaitez remplacer. Dans cet exemple, je remplace le token `accentColor` pour correspondre à la couleur d'accent de ma marque.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +110,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-En fin de compte, vous pouvez désormais passer votre thème personnalisé à la propriété `theme` de `RainbowKitProvider`.
+Enfin, vous pouvez maintenant passer votre thème personnalisé à la propriété `theme` de `RainbowKitProvider`.
 
 ```tsx
 const App = () => {
@@ -124,14 +124,14 @@ const App = () => {
 
 ### Création de sélecteurs de thème personnalisés
 
-Si votre application est rendue sur le serveur/statiquement et permet aux utilisateurs de basculer manuellement entre les thèmes, le système de thématisation de RainbowKit peut être connecté à des sélecteurs CSS personnalisés avec les fonctions suivantes qui peuvent être utilisées avec n'importe quel système CSS-in-JS :
+Si votre application est rendue de manière serveur ou statiquement et permet aux utilisateurs de basculer manuellement entre les thèmes, le système de thématisation de RainbowKit peut être relié à des sélecteurs CSS personnalisés avec les fonctions suivantes qui peuvent être utilisées avec tout système CSS-in-JS :
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-Ces fonctions renvoient du CSS qui définit toutes les variables de thème requises. Comme les chaînes et les objets sont pris en charge, cela peut être intégré avec n'importe quel système CSS-in-JS.
+Ces fonctions renvoient du CSS qui définit toutes les variables de thème requises. Puisque les chaînes et les objets sont pris en charge, cela peut être intégré à tout système CSS-in-JS.
 
-Comme exemple de base, vous pouvez rendre votre propre élément `style` avec des sélecteurs personnalisés pour chaque thème. Comme nous prenons le contrôle du rendu du CSS du thème, nous passons `null` à la propriété `theme` pour que RainbowKitProvider ne rende aucun style pour nous. Notez également l'utilisation de l'option extends sur la fonction cssStringFromTheme qui omet toutes les variables de thème qui sont identiques au thème de base.
+Pour un exemple de base, vous pouvez rendre votre propre élément `style` avec des sélecteurs personnalisés pour chaque thème. Puisque nous prenons le contrôle du rendu du CSS du thème, nous passons `null` à la propriété `theme` afin que RainbowKitProvider ne rende aucun style pour nous. Notez également l'utilisation de l'option extends sur la fonction cssStringFromTheme qui omet toutes les variables de thème identiques au thème de base.
 
 ```tsx
 import {

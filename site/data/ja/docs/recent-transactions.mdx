@@ -7,11 +7,11 @@ description: 最近の取引を表示する
 
 ## 最近の取引を表示する
 
-RainbowKitのアカウントモーダル内に最近の取引を表示するようにオプトインできます。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。 RainbowKitのアカウントモーダル内に最近の取引を表示するようにオプトインできます。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。 RainbowKitのアカウントモーダル内に最近の取引を表示するようにオプトインできます。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。
+RainbowKitのアカウントモーダル内に最近の取引を表示するようにオプトインできます。 すべての取引はローカルストレージに保管され、表示するためにはRainbowKitに手動で登録する必要があります。
 
-デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りにローディングインジケーターを表示します。 デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りにローディングインジケーターを表示します。 カスタム`ConnectButton`実装は、レンダリング関数に渡される`account.hasPendingTransactions`プロパティを介してこの振る舞いを再現できます。 デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りにローディングインジケーターを表示します。 カスタム`ConnectButton`実装は、レンダリング関数に渡される`account.hasPendingTransactions`プロパティを介してこの振る舞いを再現できます。
+デフォルトの`ConnectButton`実装は、保留中の取引がある場合、ユーザーのアバターの周りにローディングインジケーターを表示します。 カスタム`ConnectButton`実装は、レンダリング関数に渡される`account.hasPendingTransactions`プロパティを介してこの振る舞いを再現できます。
 
-この機能を使用するには、まず`RainbowKitProvider`の`showRecentTransactions`オプションを有効にします。
+`RainbowKitProvider`で`showRecentTransactions`オプションを有効にしてこの機能を使用します。
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -25,7 +25,7 @@ const App = () => {
 };
 ```
 
-取引は、`useAddRecentTransaction`フックを使用してRainbowKitに登録できます。
+`useAddRecentTransaction`フックを使用して取引をRainbowKitに登録できます。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
@@ -50,7 +50,7 @@ export default () => {
 
 取引がRainbowKitに登録されると、そのステータスは完了時に更新されます。
 
-デフォルトでは、トランザクションが採掘されたブロックの上に単一のブロックが採掘された時点で、トランザクションは完了と見なされますが、カスタムな `confirmations` の値を指定することによってこれを設定することができます。
+デフォルトでは、トランザクションが採掘されたブロックの上に1つのブロックが採掘されると、トランザクションは完了したと見なされますが、カスタム`confirmations`値を指定することでこれを設定できます。
 
 ```tsx
 import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';

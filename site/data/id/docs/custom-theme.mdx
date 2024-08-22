@@ -8,10 +8,10 @@ description: Membuat tema khusus
 ## Membuat tema khusus
 
 > Catatan: API ini tidak stabil dan kemungkinan akan berubah
-> dalam waktu dekat. Kami menyarankan untuk tetap menggunakan [tema bawaan](/docs/theming) untuk
-> sekarang.
+> di masa mendatang. Kami menyarankan untuk tetap menggunakan [tema bawaan](/docs/theming) untuk
+> sementara.
 
-Meskipun tema bawaan menyediakan beberapa tingkat penyesuaian, tipe `Theme` disediakan untuk membantu Anda mendefinisikan tema kustom Anda sendiri dengan akses tingkat rendah ke variabel tema yang mendasar.
+Meskipun tema bawaan menyediakan beberapa tingkat kustomisasi, tipe `Theme` disediakan untuk membantu Anda mendefinisikan tema kustom Anda sendiri dengan akses tingkat rendah ke variabel tema dasar.
 
 ```tsx
 import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
@@ -79,17 +79,17 @@ const App = () => (
 )
 ```
 
-### Mengextend tema bawaan
+### Memperluas tema bawaan
 
-Anda dapat mengextend tema bawaan tanpa harus mendefinisikan ulang seluruh tema. Ini berguna ketika Anda hanya ingin menimpa token tema spesifik.
+Anda dapat memperluas tema bawaan tanpa harus mendefinisikan ulang keseluruhan tema. Ini berguna ketika Anda hanya ingin mengganti token tema tertentu.
 
-Untuk melakukan itu, instal `lodash.merge` (atau setara):
+Untuk melakukannya, instal `lodash.merge` (atau setara):
 
 ```bash
 npm install lodash.merge
 ```
 
-Impor itu, bersama dengan tema yang ingin Anda extend (mis: `darkTheme`) dan tipe `Theme` TypeScript:
+Impor ini, bersama dengan tema yang ingin Anda perpanjang (misalnya: `darkTheme`) dan tipe TypeScript `Theme`:
 
 ```tsx
 import merge from 'lodash.merge';
@@ -100,7 +100,7 @@ import {
 } from '@rainbow-me/rainbowkit';
 ```
 
-Lalu, gabungkan tema bawaan, dengan token tema yang ingin Anda timpa. Dalam contoh ini, saya menimpa token `accentColor` agar sesuai dengan warna aksen merek saya.
+Kemudian, gabungkan tema bawaan, dengan token tema yang ingin Anda ganti. Dalam contoh ini, saya mengganti token `accentColor` untuk mencocokkan warna aksen merek saya.
 
 ```tsx
 const myTheme = merge(darkTheme(), {
@@ -110,7 +110,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Akhirnya, Anda sekarang dapat meneruskan tema kustom Anda ke properti `theme` dari `RainbowKitProvider`.
+Akhirnya, Anda sekarang dapat memberikan tema kustom Anda ke properti `theme` di `RainbowKitProvider`.
 
 ```tsx
 const App = () => {
@@ -124,14 +124,14 @@ const App = () => {
 
 ### Membuat pemilih tema kustom
 
-Jika aplikasi Anda di-render oleh server/static dan memungkinkan pengguna untuk secara manual beralih di antara tema, sistem theming RainbowKit dapat dihubungkan ke pemilih CSS kustom dengan fungsi berikut yang dapat digunakan dengan sistem CSS-in-JS apa pun:
+Jika aplikasi Anda dirender oleh server/statis dan memungkinkan pengguna untuk beralih manual antara tema, sistem tematikan RainbowKit dapat dihubungkan ke selektor CSS kustom dengan fungsi berikut yang dapat digunakan dengan sistem CSS-in-JS apa pun:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
-Fungsi ini mengembalikan CSS yang mengatur semua variabel tema yang diperlukan. Karena kedua string dan objek didukung, ini dapat diintegrasikan dengan sistem CSS-in-JS apa pun.
+Fungsi ini mengembalikan CSS yang mengatur semua variabel tema yang diperlukan. Karena string dan objek didukung, ini dapat diintegrasikan dengan sistem CSS-in-JS apa pun.
 
-Sebagai contoh dasar, Anda dapat merender elemen `style` Anda sendiri dengan pemilih kustom untuk setiap tema. Karena kita mengambil kendali dalam merender CSS tema, kita melewatkan `null` ke properti `theme` sehingga RainbowKitProvider tidak merender gaya apa pun untuk kita. Harap juga catat penggunaan opsi extends pada fungsi cssStringFromTheme yang menghilangkan variabel tema apa pun yang sama dengan tema dasar.
+Sebagai contoh dasar, Anda dapat merender elemen `style` Anda sendiri dengan selektor kustom untuk setiap tema. Karena kita mengambil kontrol atas perenderan CSS tema, kita meneruskan `null` ke properti `theme` sehingga RainbowKitProvider tidak merender gaya apa pun untuk kita. Juga perhatikan penggunaan opsi extends pada fungsi cssStringFromTheme yang menghilangkan variabel tema yang sama dengan tema dasar.
 
 ```tsx
 import {

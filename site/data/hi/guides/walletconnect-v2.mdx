@@ -10,21 +10,21 @@ image: guide-walletconnect-v2.png
 
 WalletConnect v1 प्रोटोकॉल को 28 जून, 2023 को बंद कर दिया जाएगा, और RainbowKit आपके संक्रमण को बहुत सरल बनाने में आपकी मदद करेगा।
 
-अब WalletConnect v2 के लिए समर्थन RainbowKit में मानक है, बिना किसी टूट-फूट के। बस अपग्रेड करें और अतिरिक्त विवरण के लिए नीचे दिए गए गाइड का संदर्भ लें।
+RainbowKit में WalletConnect v2 के लिए समर्थन अब मानक है, बिना किसी तोड़फोड़ के बदलाव के। बस अपग्रेड करें और अतिरिक्त विवरण के लिए नीचे दिए गए गाइड का संदर्भ लें।
 
 #### WalletConnect v2 को समझना
 
-WalletConnect वह प्रोटोकॉल है जो उपयोगकर्ताओं को अपने मोबाइल वॉलेट को आपके dApp से जोड़ने की अनुमति देता है, और यह RainbowKit का महत्वपूर्ण आधार है। WalletConnect v2 की हाल ही में हुई रिलीज ने वॉलेट-डैप अनुभव को और बेहतर बनाने के लिए कई महत्वपूर्ण अपग्रेड लाया है।
+WalletConnect वह प्रोटोकॉल है जो उपयोगकर्ताओं को अपने मोबाइल वॉलेट को आपके dApp से कनेक्ट करने की अनुमति देता है, और यह RainbowKit की एक महत्वपूर्ण नींव है। WalletConnect v2 के हालिया रिलीज में बहुत महत्वपूर्ण अपग्रेड शामिल हैं जो वॉलेट-dApp के अनुभव को और भी बेहतर बनाते हैं।
 
-v2 के साथ, अब आपके उपयोगकर्ता एक साथ कई चेन्स से जुड़ सकते हैं, इसलिए आप चेन स्विचिंग हैंडशेक के बारे में भूल सकते हैं। यह अधिक नेटवर्कों के लिए समर्थन बढ़ाता है, और इथेरियम के साथ साइन-इन को और भी तेज़ करने के लिए सुधार लाता है।
+v2 के साथ, आपके उपयोगकर्ता अब कई श्रृंखलाओं (chains) से एक साथ जुड़ सकते हैं, जिससे आप श्रृंखला स्विचिंग हैंडशेक को भूल सकते हैं। यह और भी अधिक नेटवर्क के लिए समर्थन को विस्तारित करता है, और ऐसे सुधार लाता है जो Ethereum के साथ साइन-इन को और भी तेज़ बनाते हैं।
 
 #### अपना dApp अपग्रेड करना
 
-यदि आपने पहले से ही RainbowKit `0.12.x` और `1.0.x` के लिए माइग्रेशन गाइड का पालन किया है, तो आप लगभग वहां पहुंच गए हैं! बस नवीनतम पैच रिलीज़ पर अपग्रेड करें और उसे आज़माएं।
+यदि आपने पहले ही RainbowKit `0.12.x` और `1.0.x` के लिए माइग्रेशन गाइड का पालन किया है, तो आप लगभग वहां पहुंच चुके हैं! बस नवीनतम पैच रिलीज़ में अपग्रेड करें और इसे आज़माएं।
 
-RainbowKit ने डिफ़ॉल्ट रूप से WalletConnect v2 को `0.12.15` और `1.0.2` के साथ सक्षम किया। हम `0.12.x` के लिए समर्थन जारी रख रहे हैं, यदि आपका dApp अब तक wagmi v1 और RainbowKit v1 पर अपग्रेड नहीं किया है।
+RainbowKit ने डिफ़ॉल्ट रूप से WalletConnect v2 को `0.12.15` और `1.0.2` के साथ सक्षम किया। हम `0.12.x` के लिए समर्थन जारी रख रहे हैं यदि आपका dApp अभी तक wagmi v1 और RainbowKit v1 में अपग्रेड नहीं हुआ है।
 
-**1. निर्भरताओं का अपग्रेड**
+\*\*1. निर्भरता को अपग्रेड करना
 
 ```bash
 npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
@@ -34,9 +34,9 @@ npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
 
 यह अनुशंसित किया जाता है कि `0.12.x` dApps को वाग्मी v1 में अपग्रेड करना शुरु कर दें, क्योंकि WalletConnect v2 के लिए स्थिरता सुधार केवल भविष्य के वाग्मी संस्करणों में शामिल होंगे।
 
-\*\*2. परियोजना आईडी प्रदान करना
+\*\*2. प्रोजेक्ट आईडी प्रदान करना
 
-हर dApp को जो WalletConnect पर निर्भर करता है, को अब [WalletConnect Cloud](https://cloud.walletconnect.com/) से एक `projectId` प्राप्त करना होगा। इसमें बिल्कुल मुफ्त है और सिर्फ कुछ मिनट लगते हैं।
+हर dApp जो WalletConnect पर निर्भर करता है अब उसे [WalletConnect Cloud](https://cloud.walletconnect.com/) से एक `projectId` प्राप्त करना होगा। यह बिल्कुल मुफ्त है और केवल कुछ मिनट लगते हैं।
 
 अपने `projectId` को `getDefaultWallets` और व्यक्तिगत RainbowKit वॉलेट कनेक्टर्स को निम्नलिखित की तरह सप्लाई करें:
 
@@ -60,7 +60,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-RainbowKit type-safe है और जब एक `projectId` गायब होता है तो यह आपको चेतावनी देगा। हमारे उदाहरणों को देखने के लिए संदर्भ दें जिसमें v2 कार्यरत है:
+RainbowKit प्रकार-सुरक्षित है और जब एक `projectId` गायब होता है तो आपको चेतावनी देगा। हमारे उदाहरणों को देखें ताकि आप देख सकें कि v2 कैसे काम करता है:
 
 - [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
@@ -68,4 +68,4 @@ RainbowKit type-safe है और जब एक `projectId` गायब हो
 - [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
 - [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
 
-आतिरिक्त समर्थित विकल्पों के लिए [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) का संदर्भ लें।
+आत्यधिक समर्थित विकल्पों के लिए [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) का संदर्भ लें।

@@ -76,7 +76,7 @@ const config = getDefaultConfig({
 });
 ```
 
-#### تغليف المزودين
+#### تغليف الموفرين
 
 قم بتغليف تطبيقك باستخدام `RainbowKitProvider`، [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider)، و [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
@@ -116,7 +116,7 @@ export const YourApp = () => {
 
 ##### Remix
 
-عند استخدام [Remix](https://remix.run)، يجب أن تقوم بتعبئة وحدات `buffer`، `events` و `http`. راجع تهيئة Remix أدناه، أو [مشروع Remix النموذجي الخاص بنا](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+عند استخدام [Remix](https://remix.run)، يجب تعبئة polyfills لوحدات `buffer`, `events` و `http`. راجع تكوين Remix أدناه، أو [مشروع Remix النموذجي الخاص بنا](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### جاري التحضير للنشر
+### الاستعداد للنشر
 
-بشكل افتراضي، يستخدم تطبيقك اللامركزي مزودي RPC عامين لكل سلسلة لجلب الأرصدة، حل أسماء ENS، والمزيد. هذا قد يتسبب غالبًا في مشاكل موثوقية لمستخدميك حيث أن العقد العامة تخضع لحدود معدل الاستخدام. بدلاً من ذلك، يجب عليك شراء الوصول إلى مزود RPC من خلال خدمات مثل [Alchemy](https://www.alchemy.com/) أو [QuickNode](https://www.quicknode.com/)، وتعريف Transports خاصة بك في Wagmi. يمكن تحقيق ذلك عن طريق إضافة معامل `transports` في `getDefaultConfig` أو مباشرةً عبر `createConfig` في Wagmi.
+بشكل افتراضي، يستخدم dApp الخاص بك موفري RPC العامين لكل سلسلة لجلب الأرصدة، وحل أسماء ENS، وأكثر. هذا غالبًا ما يمكن أن يتسبب في مشاكل موثوقية للمستخدمين نظرًا لتحديد معدلات العقد العامة. يجب عليك بدلاً من ذلك شراء الوصول إلى موفر RPC عبر خدمات مثل [Alchemy](https://www.alchemy.com/) أو [QuickNode](https://www.quicknode.com/)، وتحديد وسائل النقل الخاصة بك في Wagmi. يمكن تحقيق ذلك عن طريق إضافة معامل `transports` في `getDefaultConfig` أو عبر `createConfig` في Wagmi مباشرة.
 
-Transport هي طبقة الوسط الشبكية التي تتولى إرسال طلبات JSON-RPC إلى مزود Node الإيثيريوم (مثل Alchemy، Infura، إلخ).
+الوسيلة هي الطبقة الوسطى الشبكية التي تتعامل مع إرسال طلبات JSON-RPC إلى موفر عقدة Ethereum (مثل Alchemy، Infura، إلخ).
 
-**مثال باستخدام transport `http`**
+**مثال مع وسيلة نقل `http`**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,7 +152,7 @@ const config = getDefaultConfig({
 });
 ```
 
-للمزيد من التفاصيل، عرض [وثائق wagmi للtransport](https://wagmi.sh/core/api/transports#transports).
+للمزيد من التفاصيل، عرض [وثائق wagmi للنقل](https://wagmi.sh/core/api/transports#transports).
 
 ### أضف وظيفتك الخاصة
 
