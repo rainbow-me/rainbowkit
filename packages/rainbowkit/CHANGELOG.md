@@ -1,5 +1,17 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.5
+
+### Patch Changes
+
+- c08f620: Added `zh-HK` and `zh-TW` locales for Traditional Chinese language support. You can also specify `zh-Hans` and `zh-Hant` locales to refer to the writing systems directly.
+
+  Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
+
+- 675f9dd: Add icon for Gnosis Chain
+- f65b5c4: Add icon for Celo chain
+- 9c36bfd: Added Kaia Wallet support with `kaiaWallet` wallet connector
+
 ## 2.1.4
 
 ### Patch Changes
