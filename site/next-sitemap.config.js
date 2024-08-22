@@ -31,6 +31,10 @@ module.exports = {
     '/ua/*',
     '/zh-CN',
     '/zh-CN/*',
+    '/zh-HK',
+    '/zh-HK/*',
+    '/zh-TW',
+    '/zh-TW/*',
   ],
   alternateRefs: [
     {
@@ -88,6 +92,14 @@ module.exports = {
     {
       href: 'https://rainbowkit.com/zh-CN/',
       hreflang: 'zh-CN',
+    },
+    {
+      href: 'https://rainbowkit.com/zh-HK/',
+      hreflang: 'zh-HK',
+    },
+    {
+      href: 'https://rainbowkit.com/zh-TW/',
+      hreflang: 'zh-TW',
     },
   ],
 };

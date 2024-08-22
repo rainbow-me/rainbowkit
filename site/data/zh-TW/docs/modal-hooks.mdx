@@ -1,0 +1,64 @@
+---
+title: 模態鉤子
+description: 通過鉤子以程式方式打開模態窗口
+---
+
+# 模態鉤子
+
+## 通過鉤子以程式方式打開模態窗口
+
+提供以下鉤子以允許在應用程式中的任何地方以程式方式打開模態窗口。
+
+- `useConnectModal`
+- `useAccountModal`
+- `useChainModal`
+
+這些鉤子中的每一個都返回一個對象，該對象帶有打開其相應模式窗口的功能。 請注意，如果您的應用程式未處於模式窗口打開所需的狀態，返回的功能將是未定義的。
+
+```tsx
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
+  return (
+    <>
+      {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+
+      {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )}
+
+      {openChainModal && (
+        <button onClick={openChainModal} type="button">
+          Open Chain Modal
+        </button>
+      )}
+    </>
+  );
+};
+```
+
+每個鉤子還返回一個表示模式窗口狀態的布爾值。 通常建議您純粹依賴 Wagmi 鉤子（例如 <b>`useAccount`</b>）直接響應用戶的錢包連接狀態，而不是依賴連接模態窗口的狀態。
+
+```tsx
+const { connectModalOpen } = useConnectModal();
+const { accountModalOpen } = useAccountModal();
+const { chainModalOpen } = useChainModal();
+```
+
+RainbowKit 被設計為非中斷和響應式，因此無論用戶是否已連接其錢包，dApp 都應始終為用戶渲染界面。 用戶可以直接從 MetaMask 連接或斷開他們的錢包，因此 dApp 必須直接響應底層連接狀態。
+
+依賴以太坊登錄等機制進行用戶驗證的 dApp 應該依賴 [身份驗證](/docs/authentication) 功能。

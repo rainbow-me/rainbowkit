@@ -17,6 +17,8 @@ module.exports = {
       'tr-TR',
       'uk-UA',
       'zh-CN',
+      'zh-HK',
+      'zh-TW',
     ],
   },
   reactStrictMode: true,

@@ -1,0 +1,62 @@
+---
+title: 自訂應用程式資訊
+description: 自訂您的應用程式資訊
+---
+
+# 自訂應用程式資訊
+
+## 自訂您的應用程式資訊
+
+您可以在 `RainbowKitProvider` 的 `appInfo` 屬性中傳遞您的應用程式資訊。 您可以修改的屬性包括應用程式名稱 (`appName`) 和連接模態對話框中 “了解更多” 按鈕的重新導向連結 (`learnMoreUrl`)：
+
+```tsx
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'Rainbowkit Demo',
+        learnMoreUrl: 'https://learnaboutcryptowallets.example',
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 新增免責聲明
+
+您可以提供自己的免責聲明，顯示在連接模態對話框的底部。 `appInfo` 中的 `disclaimer` 屬性接受帶有 `Text` 和 `Link` 參數的 `DisclaimerComponent`。 您可以使用它來建立符合主題系統的自訂免責聲明。 我們為 TypeScript 用戶導出了 `DisclaimerComponent` 類型：
+
+```tsx
+import {
+  RainbowKitProvider,
+  DisclaimerComponent,
+} from '@rainbow-me/rainbowkit';
+
+const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
+  <Text>
+    By connecting your wallet, you agree to the{' '}
+    <Link href="https://termsofservice.xyz">Terms of Service</Link> and
+    acknowledge you have read and understand the protocol{' '}
+    <Link href="https://disclaimer.xyz">Disclaimer</Link>
+  </Text>
+);
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      appInfo={{
+        appName: 'RainbowKit Demo',
+        disclaimer: Disclaimer,
+      }}
+      {...etc}
+    >
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```

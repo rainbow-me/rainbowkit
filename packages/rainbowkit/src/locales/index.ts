@@ -29,7 +29,11 @@ export type Locale =
   | 'ua'
   | 'uk-UA'
   | 'zh'
-  | 'zh-CN';
+  | 'zh-CN'
+  | 'zh-HK'
+  | 'zh-TW'
+  | 'zh-Hans'
+  | 'zh-Hant';
 
 export const i18n = new I18n({
   en: JSON.parse(en_US as any),
@@ -83,7 +87,13 @@ const fetchTranslations = async (locale: Locale): Promise<any> => {
       return (await import('./uk_UA.json')).default;
     case 'zh':
     case 'zh-CN':
+    case 'zh-Hans':
       return (await import('./zh_CN.json')).default;
+    case 'zh-HK':
+      return (await import('./zh_HK.json')).default;
+    case 'zh-Hant':
+    case 'zh-TW':
+      return (await import('./zh_TW.json')).default;
     default:
       return (await import('./en_US.json')).default;
   }

@@ -1,0 +1,385 @@
+---
+title: 主題
+description: 使用和自訂主題
+---
+
+# 主題
+
+## 使用和自訂主題
+
+您可以調整 RainbowKit 的 UI 以符合您的品牌。 您可以從一些預定義的重點顏色和邊框半徑配置中選擇。
+
+有3個內建的主題函數：
+
+- `lightTheme`   （預設）
+- `darkTheme`
+- `midnightTheme`
+
+主題函數會返回一個主題對象。 您可以將對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+如果您願意，您可以傳入 `accentColor`、`accentColorForeground`、`borderRadius`、`fontStack` 和 `overlayBlur` 來自定義它們。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider
+    theme={darkTheme({
+      __accentColor__: '#7b3fe4',
+      __accentColorForeground__: 'white',
+      __borderRadius__: 'small',
+      __fontStack__: 'system',
+      __overlayBlur__: 'small',
+    })}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+### 自訂內建的主題
+
+內建的主題函數也接受一個選項對象，允許您從幾種不同的視覺風格中進行選擇。
+
+<PropsTable
+  data={[
+    {
+      name: 'accentColor',
+      required: false,
+      default: '"#0E76FD"',
+      type: 'string',
+      description:
+        'The background/text color of various interactive elements.',
+    },
+    {
+      name: 'accentColorForeground',
+      required: false,
+      default: '"white"',
+      type: 'string',
+      description:
+        'The color used for foreground elements rendered on top of the accent color.',
+    },
+    {
+      name: 'borderRadius',
+      required: false,
+      default: 'large',
+      type: '"none" | "small" | "medium" | "large"',
+      typeSimple: 'enum',
+      description: 'The size of the entire border radius scale.',
+    },
+    {
+      name: 'fontStack',
+      required: false,
+      default: 'rounded',
+      type: '"rounded" | "system"',
+      typeSimple: 'enum',
+      description:
+        "The font stack used throughout the UI. Note that `rounded` attempts to use SF Pro Rounded, falling back to system fonts when it isn't available.",
+    },
+    {
+      name: 'overlayBlur',
+      required: false,
+      default: 'none',
+      type: '"large" | "small" | "none"',
+      typeSimple: 'enum',
+      description: 'The modal backdrop blur.',
+    },
+  ]}
+/>
+
+每個主題還提供數個強調色預設值（`blue`、`green`、`orange`、`pink`、`purple`、`red`），可以展開到選項對象中。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+每個主題還提供幾個強調色預設（`blue`、`green`、`orange`、`pink`、`purple`、`red`），可以擴展到選項對象中。 主題函數
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.pink,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### 範例
+
+#### 使用`darkTheme`主題。
+
+使用`midnightTheme`主題。
+
+強調色
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={darkTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+以下是一些不同的方式來使用`accentColor`配置。
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+export const App = () => (
+  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```
+
+#### 將強調色設置為自定義的紫色值。
+
+將強調色設置為內建的`green`預設值。
+
+邊框半徑
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+以下是一些不同的方式來使用`borderRadius`配置。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        ...darkTheme.accentColors.green,
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### 將邊框半徑設置為`medium`。
+
+將邊框半徑設置為`none`。
+
+提醒：可用的邊框半徑值有：`large`（預設）、`medium`、`small` 和 `none`。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'medium',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+字體堆疊
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        borderRadius: 'none',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+> 提醒：可用的邊框半徑值為：`large`（預設）、`medium`、`small`和`none`。
+
+#### 但這樣你可以使用`fontStack`配置。
+
+將字體堆疊設置為`system`。 背景模糊
+
+默認情況下，`overlayBlur`設置為`none`。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### 但這樣你可以使用`overlayBlur`配置。
+
+將背景模糊設定為`small`。 混合搭配
+
+這裡有一些不同的方式來一起使用不同的主題，連同`accentColor`、`borderRadius`和`fontStack`屬性。
+
+```tsx
+import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={darkTheme({
+        overlayBlur: 'small',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### 使用`lightTheme`主題
+
+將強調色設定為自定義的紫色值
+
+- 將邊框半徑設定為`medium`
+- 將字體堆疊設定為`system`
+- 使用`midnightTheme`主題
+- 將強調色設定為內建的`pink`預設值。
+
+```tsx
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={lightTheme({
+        accentColor: '#7b3fe4',
+        accentColorForeground: 'white',
+        borderRadius: 'medium',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+- 將邊框半徑設定為`small`
+- 暗模式支持
+- 如果您的應用程序使用標準的 `prefers-color-scheme: dark` 媒體查詢在淺色和深色模式之間切換，您可以選擇提供一個包含`lightMode`和`darkMode`值的動態主題對象。
+- 將強調色設定為內建的`pink`預設值。
+
+```tsx
+import {
+  RainbowKitProvider,
+  midnightTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider
+      theme={midnightTheme({
+        ...midnightTheme.accentColors.pink,
+        borderRadius: 'small',
+        fontStack: 'system',
+      })}
+      {...etc}
+    >
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+#### 深色模式支援
+
+如果您的應用程式使用標準的 `prefers-color-scheme: dark` 媒體查詢來切換明亮和黑暗模式，您可以選擇提供一個動態主題物件，包含 `lightMode` 和 `darkMode` 值。
+
+```tsx
+import {
+  RainbowKitProvider,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => (
+  <RainbowKitProvider
+    theme={{
+      lightMode: lightTheme(),
+      darkMode: darkTheme(),
+    }}
+    {...etc}
+  >
+    {/* Your App */}
+  </RainbowKitProvider>
+);
+```

@@ -1,0 +1,149 @@
+---
+title: 身份驗證
+description: 對用戶進行身份驗證
+---
+
+# 身份驗證
+
+## 提供應用程式的身份驗證存取權
+
+您可以選擇強制用戶在連接過程中使用錢包簽署訊息，證明他們擁有已連接的帳戶，並允許您創建具權限的身份驗證用戶會話，以便訪問您的應用程式。
+
+雖然可以[整合自訂後端和訊息格式，](/docs/custom-authentication) 但 RainbowKit 提供對 [Sign-In with Ethereum](https://login.xyz) 和 [NextAuth.js](https://next-auth.js.org) 的一流支援。
+
+### 設置 Sign-In with Ethereum 和 NextAuth.js
+
+如果您還沒有，請先使用 [Sign-In with Ethereum 官方樣板 for NextAuth.js](https://docs.login.xyz/integrations/nextauth.js) 設置您的 [Next.js](https://nextjs.org) 專案。
+
+#### 安裝
+
+安裝 `@rainbow-me/rainbowkit-siwe-next-auth` 套件及其對等依賴項 [ethers](https://docs.ethers.org/v5/).
+
+```bash
+npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+```
+
+> 注意：`siwe` 需要 [ethers](https://docs.ethers.org/v5/) 對等依賴項，而 [wagmi](https://wagmi.sh/) 現在依賴於替代 [viem](https://viem.sh)。
+
+#### 設置供應商
+
+在您的 `App` 組件中，導入 `RainbowKitSiweNextAuthProvider`。
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+```
+
+使用 `RainbowKitSiweNextAuthProvider` 包裝 `RainbowKitProvider`，確保其嵌套在 NextAuth 的 `SessionProvider` 中，以便訪問會話。
+
+```tsx
+import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { SessionProvider } from 'next-auth/react';
+import type { Session } from 'next-auth';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
+  return (
+    <WagmiProvider {...etc}>
+      <SessionProvider refetchInterval={0} session={pageProps.session}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider {...etc}>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </QueryClientProvider>
+      </SessionProvider>
+    </WagmiProvider>;
+  );
+}
+```
+
+有了 `RainbowKitSiweNextAuthProvider`，您的用戶現在會在連接錢包後被提示簽署訊息以驗證身份。
+
+#### 自訂 SIWE 訊息選項
+
+您可以透過將函數傳遞給 `RainbowKitSiweNextAuthProvider` 的 `getSiweMessageOptions` 屬性來自訂 [SIWE 訊息選項](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29)。
+
+每當創建新的訊息時，都會調用此函數。 從此函數返回的選項將與默認選項合併。
+
+```tsx
+import {
+  RainbowKitSiweNextAuthProvider,
+  GetSiweMessageOptions,
+} from '@rainbow-me/rainbowkit-siwe-next-auth';
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to my RainbowKit app',
+});
+
+<RainbowKitSiweNextAuthProvider
+  getSiweMessageOptions={getSiweMessageOptions}
+>
+  ...
+</RainbowKitSiweNextAuthProvider>;
+```
+
+#### 伺服器端訪問會話
+
+您可以使用從 `next-auth/jwt` 導入的 NextAuth 的 `getToken` 函數訪問會話令牌。 如果用戶已成功驗證身份，會話令牌的 <b>`sub`</b> 屬性（即令牌的“主體”，即用戶）將是用戶的地址。
+
+您還可以通過 `getServerSideProps` 從伺服器向下傳遞解析的會話對象，以便 NextAuth 不需要在客戶端再次解析它。
+
+例如：
+
+```tsx
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+import React from 'react';
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  const session = await getSession(context);
+  const token = await getToken({ req: context.req });
+
+  const address = token?.sub ?? null;
+  // If you have a value for "address" here, your
+  // server knows the user is authenticated.
+
+  // You can then pass any data you want
+  // to the page component here.
+  return {
+    props: {
+      address,
+      session,
+    },
+  };
+};
+
+type AuthenticatedPageProps = InferGetServerSidePropsType<
+  typeof getServerSideProps
+>;
+
+export default function AuthenticatedPage({
+  address,
+}: AuthenticatedPageProps) {
+  return address ? (
+    <h1>Authenticated as {address}</h1>
+  ) : (
+    <h1>Unauthenticated</h1>
+  );
+}
+```
+
+有關管理會話的更多信息，您可以參考以下文檔：
+
+- [Next.js 認證指南](https://nextjs.org/docs/authentication)
+- [NextAuth.js 文檔](https://next-auth.js.org)
