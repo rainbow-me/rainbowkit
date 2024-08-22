@@ -1,5 +1,16 @@
 # site
 
+## 0.0.104
+
+### Patch Changes
+
+- c08f620: Added `zh-HK` and `zh-TW` locales for Traditional Chinese language support
+- Updated dependencies [c08f620]
+- Updated dependencies [675f9dd]
+- Updated dependencies [f65b5c4]
+- Updated dependencies [9c36bfd]
+  - @rainbow-me/rainbowkit@2.1.5
+
 ## 0.0.103
 
 ### Patch Changes
