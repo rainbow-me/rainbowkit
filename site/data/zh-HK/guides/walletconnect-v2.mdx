@@ -1,0 +1,71 @@
+---
+title: 升級您的dApp至WalletConnect v2
+description: RainbowKit 已遷移至v2，您可以在5分鐘內準備好您的dApp
+image: guide-walletconnect-v2.png
+---
+
+# 遷移到WalletConnect v2
+
+## 在5分鐘或更短的時間內為v2升級準備您的dApp
+
+WalletConnect v1協議將於2023年6月28日停用，RainbowKit將幫助您使過渡變得超級簡單。
+
+RainbowKit 現已支持 WalletConnect v2，且不會引入重大變化。 只需升級並參考下方指南獲取更多詳情。
+
+#### 理解 WalletConnect v2
+
+WalletConnect 是允許用戶將他們的移動錢包連接到您的dApp的協議，它是RainbowKit的重要基礎。 最近發布的 WalletConnect v2 帶來了許多重要的升級，使錢包與dApp之間的體驗變得更加出色。
+
+使用 v2，您的用戶現在可以同時連接多個鏈，您可以不再擔心鏈切換握手。 它還擴展了對更多網絡的支持，並帶來了使以太坊登錄速度更快的改進。
+
+#### 升級您的dApp
+
+如果您已經按照 RainbowKit `0.12.x` 和 `1.0.x` 的遷移指南操作，那麼您已經快完成了！ 只需升級到最新的補丁版本並試試吧。
+
+RainbowKit 在 `0.12.15` 和 `1.0.2` 中默認啟用了WalletConnect v2。 我們將繼續支持 `0.12.x` 版本，以防您的dApp尚未升級到 wagmi v1 和RainbowKit v1。
+
+\*\*1. 升級依賴項
+
+```bash
+npm i @rainbow-me/rainbowkit@^1.0.2 wagmi@^1.2
+```
+
+如果您使用的是 `0.12.x` 或 `1.0.x` 之前的版本，只需按照[遷移指南](/docs/migration-guide)進行更新。
+
+建議 `0.12.x` 的dApp開始升級至wagmi v1，因為WalletConnect v2 的穩定性改進將僅包含在未來的wagmi版本中。
+
+\*\*2. 提供 projectId
+
+現在所有依賴WalletConnect的dApp都需要從[WalletConnect 自雲端](https://cloud.walletconnect.com/)獲取 `projectId`。 這是完全免費的，只需幾分鐘。
+
+向 `getDefaultWallets` 和各個RainbowKit錢包連接器提供您的 `projectId`，如下所示：
+
+```ts
+const projectId = 'YOUR_PROJECT_ID';
+const { wallets } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  projectId,
+  chains,
+});
+const connectors = connectorsForWallets([
+  ...wallets,
+  {
+    groupName: 'Other',
+    wallets: [
+      argentWallet({ projectId, chains }),
+      trustWallet({ projectId, chains }),
+      ledgerWallet({ projectId, chains }),
+    ],
+  },
+]);
+```
+
+RainbowKit 是類型安全的，如果缺少 `projectId`，它會警告您。 參考我們的範例來查看v2 的實際應用：
+
+- [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+
+參考[文件](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect)以獲取更多支持的選項。

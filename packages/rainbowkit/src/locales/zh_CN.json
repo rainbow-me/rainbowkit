@@ -552,6 +552,22 @@
         }
       }
     },
+    "iopay": {
+      "qr_code": {
+        "step1": {
+          "description": "我们建议您将ioPay添加到主屏幕，以便更快地访问您的钱包。",
+          "title": "打开ioPay应用"
+        },
+        "step2": {
+          "description": "您可以使用我们的手机上的备份功能轻松备份您的钱包。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "在您扫描后，将出现连接提示，供您连接您的钱包。",
+          "title": "点击WalletConnect按钮"
+        }
+      }
+    },
     "kaikas": {
       "extension": {
         "step1": {
@@ -571,6 +587,36 @@
         "step1": {
           "title": "打开 Kaikas 应用",
           "description": "将 Kaikas 应用添加到您的主屏幕上，以便更快访问您的钱包。"
+        },
+        "step2": {
+          "title": "创建或导入钱包",
+          "description": "创建新钱包或导入现有钱包。"
+        },
+        "step3": {
+          "title": "点击右上角的扫描图标",
+          "description": "选择新连接，然后扫描二维码并确认提示以进行连接。"
+        }
+      }
+    },
+    "kaia": {
+      "extension": {
+        "step1": {
+          "description": "我们建议将Kaia固定在您的任务栏上，以便更快地访问您的钱包。",
+          "title": "安装Kaia扩展程序"
+        },
+        "step2": {
+          "description": "务必使用安全的方法备份您的钱包。决不与任何人分享您的秘密短语。",
+          "title": "创建或导入钱包"
+        },
+        "step3": {
+          "description": "设置钱包后，点击下方刷新浏览器并加载扩展。",
+          "title": "刷新您的浏览器"
+        }
+      },
+      "qr_code": {
+        "step1": {
+          "title": "打开Kaia应用",
+          "description": "将Kaia应用放在您的主屏幕上，以更快地访问您的钱包。"
         },
         "step2": {
           "title": "创建或导入钱包",

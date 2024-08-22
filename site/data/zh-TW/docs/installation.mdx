@@ -1,0 +1,175 @@
+---
+title: 安裝
+description: 準備使用 RainbowKit
+---
+
+# 安裝
+
+## 準備使用 RainbowKit
+
+### 快速開始
+
+您可以使用以下命令之一，使用您選擇的包管理器，創建一個新的 RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) 應用程序：
+
+```bash
+npm init @rainbow-me/rainbowkit@latest
+# or
+pnpm create @rainbow-me/rainbowkit@latest
+# or
+yarn create @rainbow-me/rainbowkit
+```
+
+這將提示您輸入項目名稱，生成包含樣板項目的新目錄，並安裝所有所需的依賴項。
+
+或者，您可以手動將 RainbowKit 集成到現有項目中。
+
+### 手動設置
+
+安裝 RainbowKit 及其對等依賴項，[wagmi](https://wagmi.sh/)，[viem](https://viem.sh) 和 [@tanstack/react-query](https://tanstack.com/query/v5)。
+
+```bash
+npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
+```
+
+> 注意：RainbowKit 是一個 [React](https://reactjs.org/) 庫。
+
+#### 導入
+
+導入 RainbowKit、Wagmi 和 TanStack Query。
+
+```tsx
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultConfig,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+} from 'wagmi/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+```
+
+#### 配置
+
+配置您想要的鏈並生成所需的連接器。 您還需要設置 `wagmi` 配置。 如果您的 dApp 使用服務器端渲染（<b>SSR</b>），請確保將 <code>ssr</code> 設置為 <code>true</code>。
+
+> 注意：現在所有依賴 WalletConnect 的 dApp 都需要從 [WalletConnect Cloud](https://cloud.walletconnect.com/) 獲取一個 `projectId`。 這是完全免費的，只需幾分鐘。
+
+```tsx line=4-99
+...
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, polygon, optimism, arbitrum, base],
+  ssr: true, // If your dApp uses server side rendering (SSR)
+});
+```
+
+#### 包裝提供者
+
+將您的應用程序包裝在 `RainbowKitProvider`、[`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) 和 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider) 中。
+
+```tsx
+const queryClient = new QueryClient();
+
+const App = () => {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          {/* Your App */}
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+};
+```
+
+#### 添加連接按鈕
+
+然後，在您的應用中，導入並渲染 `ConnectButton` 組件。
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+RainbowKit 現在會處理用戶的錢包選擇、顯示錢包/交易信息並處理網絡/錢包切換。
+
+#### 額外的建構工具設置
+
+某些建構工具需要額外設置。
+
+##### Remix
+
+使用 [Remix](https://remix.run) 時，您必須填充 `buffer`、`events` 和 `http` 模塊。 請參考下方的 Remix 配置，或 [我們的 Remix 示例項目](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)。
+
+```ts
+/** @type {import('@remix-run/dev').AppConfig} */
+export default {
+  ignoredRouteFiles: ["**/.*"],
+  browserNodeBuiltinsPolyfill: {
+    modules: { buffer: true, events: true, http: true },
+  },
+};
+```
+
+### 準備部署
+
+默認情況下，您的 dApp 使用公共 RPC 提供者來為每個鏈獲取餘額、解決 ENS 名稱等。 這常常會導致用戶的穩定性問題，因為公共節點有速率限制。 您應該透過像 [Alchemy](https://www.alchemy.com/) 或 [QuickNode](https://www.quicknode.com/) 等服務購買 RPC 提供者的訪問權限，並在 Wagmi 中定義您自己的傳輸層。 這可以通過在 `getDefaultConfig` 中添加 `transports` 參數或直接通過 Wagmi 的 `createConfig` 來實現。
+
+傳輸層是一個網絡中間層，負責將 JSON-RPC 請求發送到以太坊節點提供者（如 Alchemy、Infura 等）。
+
+**使用 `http` 傳輸層的示例**
+
+```tsx
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { http } from 'wagmi';
+import { mainnet, sepolia } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, sepolia],
+  transports: {
+    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/...'),
+    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/...'),
+  },
+});
+```
+
+欲了解更多詳情，請查看 [wagmi 傳輸文檔](https://wagmi.sh/core/api/transports#transports)。
+
+### 添加自己的功能
+
+現在您的用戶可以連接他們的錢包，您可以開始使用 [wagmi](https://wagmi.sh) 構建應用的其餘部分。
+
+使用 wagmi 的全套 React Hooks 發送交易、與合約互動、解決 ENS 詳情等等。
+
+欲了解更多詳情，請查看 [wagmi 文檔](https://wagmi.sh)。
+
+### 進一步的示例
+
+要查看一些正在運行的 RainbowKit 示例，甚至使用它們自動創建一個新項目，請查看 [官方示例](https://github.com/rainbow-me/rainbowkit/tree/main/examples)。
+
+要在瀏覽器中直接嘗試 RainbowKit，請查看以下 CodeSandbox 連結：
+
+- 使用 [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
+- 使用 [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- 使用 [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
+- 使用 [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
+- 使用 [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

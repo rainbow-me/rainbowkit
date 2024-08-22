@@ -25,7 +25,7 @@ yarn create @rainbow-me/rainbowkit
 
 ### 手动设置
 
-安装RainbowKit及其对等依赖项， [wagmi](https://wagmi.sh/) 和 [viem](https://viem.sh).
+安装RainbowKit及其对等依赖项， [wagmi](https://wagmi.sh/)， [viem](https://viem.sh)，和 [@tanstack/react-query](https://tanstack.com/query/v5)。
 
 ```bash
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
@@ -33,7 +33,7 @@ npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 
 > 注意：RainbowKit 是一个 [React](https://reactjs.org/) 库。
 
-#### 已导入
+#### 导入
 
 导入 RainbowKit 和 wagmi。
 
@@ -60,9 +60,9 @@ import {
 
 #### 配置
 
-配置您所需的链并生成所需的连接器。 配置您所需的链并生成所需的连接器。 您还需要设置一个 `wagmi` 配置。 如果您的 dApp 使用服务器端渲染（SSR），请确保将 `ssr` 设置为 `true`。
+配置您所需的链并生成所需的连接器。 您还需要设置一个 `wagmi` 配置。 如果您的 dApp 使用服务器端渲染 (SSR)，请确保将 `ssr` 设置为 `true`。
 
-> 注意：现在依赖 WalletConnect 的每一个 dApp 都需要从 [WalletConnect Cloud](https://cloud.walletconnect.com/) 获得一个 `projectId`。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。 这完全免费，只需要几分钟。
+> 注意：现在依赖 WalletConnect 的每一个 dApp 都需要从 [WalletConnect Cloud](https://cloud.walletconnect.com/) 获得一个 `projectId`。 这完全免费，只需要几分钟。
 
 ```tsx line=4-99
 ...
@@ -78,7 +78,7 @@ const config = getDefaultConfig({
 
 #### 包装提供者
 
-用 `RainbowKitProvider`、[`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) 和 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider) 包装你的应用程序。
+用 `RainbowKitProvider`、[`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider) 和 [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider) 包装您的应用。
 
 ```tsx
 const queryClient = new QueryClient();
@@ -116,7 +116,7 @@ RainbowKit 现在将处理您用户的钱包选择，显示钱包/交易信息�
 
 ##### Remix
 
-使用 [Remix](https://remix.run) 时，您必须填充 `buffer`、`events` 和 `http` 模块。 参考下面的 Remix 配置，或者我们的样本 [Remix 项目](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)。 参考下面的 Remix 配置，或者我们的样本 [Remix 项目](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)。
+使用 [Remix](https://remix.run) 时，您必须填充 `buffer`、`events` 和 `http` 模块。 参考下面的 Remix 配置，或者我们的样本 [Remix 项目](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)。
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -130,11 +130,11 @@ export default {
 
 ### 准备部署
 
-默认情况下，您的dApp使用每个链的公共RPC提供者来获取余额、解析ENS名称等。 这通常会导致您的用户遇到可靠性问题，因为公共节点受到速率限制。 您应该通过[Alchemy](https://www.alchemy.com/)或[QuickNode](https://www.quicknode.com/)等服务购买对RPC提供者的访问权限，并在Wagmi中定义您自己的Transports。 这可以通过在`getDefaultConfig`中添加`transports`参数或直接通过Wagmi的`createConfig`来实现。
+默认情况下，您的 dApp 使用每个链的公共 RPC 提供商来获取余额、解析 ENS 名称等。 这通常会导致用户的可靠性问题，因为公共节点的速率有限。 您应该通过 [Alchemy](https://www.alchemy.com/) 或 [QuickNode](https://www.quicknode.com/) 等服务购买 RPC 提供商的访问权限，并在 Wagmi 中定义您自己的传输方式。 这可以通过在 `getDefaultConfig` 中添加 `transports` 参数或通过 Wagmi 的 `createConfig` 直接实现。
 
-Transport是网络中间层，负责将JSON-RPC请求发送到以太坊节点提供者（如Alchemy、Infura等）。
+传输层是处理将 JSON-RPC 请求发送到以太坊节点提供商（如 Alchemy、Infura 等）的网络中间层。
 
-**使用`http` transport的示例**
+**使用 `http` 传输的例子**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,15 +152,15 @@ const config = getDefaultConfig({
 });
 ```
 
-查看更多详细信息，请查阅[wagmi transport文档](https://wagmi.sh/core/api/transports#transports)。
+查看更多详细信息，请查阅[wagmi文档](https://wagmi.sh/core/api/transports#transports)。
 
 ### 添加你自己的功能
 
-现在您的用户可以连接他们的钱包，您可以开始使用 [wagmi.](https://wagmi.sh)构建应用程序的其余部分
+现在您的用户可以连接他们的钱包，您可以开始使用 [wagmi.](https://wagmi.sh) 构建应用程序的其余部分
 
-使用 wagmi 的全面的 React Hooks 套件发送交易、与合约互动、解析 ENS 详情等等。
+发送交易，交互合同，解析 ENS 详情以及使用 wagmi 的全面 React 钩子套件做更多事情。
 
-查看更多详细信息，请查阅[wagmi文档](https://wagmi.sh)
+查看更多详细信息，请查阅[wagmi文档](https://wagmi.sh)。
 
 ### 更多示例
 

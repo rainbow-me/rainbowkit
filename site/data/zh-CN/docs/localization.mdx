@@ -9,7 +9,7 @@ description: 通过内置翻译自定义您的 dApp 语言
 
 默认情况下，RainbowKit 支持`en-US`地区的英语用户。
 
-如有可用，RainbowKit 将检测用户的[首选语言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)并选择合适的翻译。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。 开发者可以随时覆盖默认语言。
+如有可用，RainbowKit 将检测用户的[首选语言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)并选择合适的翻译。 开发者可以随时覆盖默认语言。
 
 要为您的用户指定一种语言，只需在您的 `RainbowKitProvider`中添加 `locale="zh-CN"` 作为一个 prop
 
@@ -56,9 +56,9 @@ export const App = () => {
 
 您可以在[这里](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)参考页面路由器的示例。
 
-应用路由器尚未支持i18n。 应用路由器尚未支持i18n。 参考我们的单独示例 [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)以[`next-intl`](https://github.com/amannn/next-intl)中间件的实施最佳实践。 应用路由器尚未支持i18n。应用路由器尚未支持i18n。在[这里](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)参考我们以[`next-intl`](https://github.com/amannn/next-intl)为中间件的最佳实践。 应用路由器尚未支持i18n。应用路由器尚未支持i18n。在[这里](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)参考我们以[`next-intl`](https://github.com/amannn/next-intl)为中间件的最佳实践。
+应用路由器尚未支持i18n。 在[这里](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)参考我们以[`next-intl`](https://github.com/amannn/next-intl)为中间件的最佳实践。
 
-建议使用相同的技术翻译您的dApp的内容，以便全面支持本地化。 建议使用相同的技术翻译您的dApp的内容，以便全面支持本地化。 建议使用相同的技术翻译您的dApp的内容，以便全面支持本地化。  像[`i18n-js`](https://github.com/fnando/i18n)和[`next-intl`](https://github.com/amannn/next-intl)这样的本地化库以及像 Crowdin 这样的管理工具将简化此过程。
+建议使用相同的技术翻译您的dApp的内容，以便全面支持本地化。 像[`i18n-js`](https://github.com/fnando/i18n)和[`next-intl`](https://github.com/amannn/next-intl)这样的本地化库以及像 Crowdin 这样的管理工具将简化此过程。
 
 ### 支持的语言
 
@@ -85,6 +85,7 @@ export const App = () => {
     ['Türkçe', 'Turkey 🇹🇷', 'tr-TR', 'tr'],
     ['한국어', 'South Korea 🇰🇷', 'ko-KR', 'ko'],
     ['ภาษาไทย', 'Thailand 🇹🇭', 'th-TH', 'th'],
+    ['українська', 'Ukraine 🇺🇦', 'uk-UA', 'ua'],
   ]}
 />
 

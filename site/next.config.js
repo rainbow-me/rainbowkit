@@ -24,6 +24,8 @@ const nextConfig = {
       'tr',
       'ua',
       'zh-CN',
+      'zh-HK',
+      'zh-TW',
     ],
     defaultLocale: 'en-US',
   },
