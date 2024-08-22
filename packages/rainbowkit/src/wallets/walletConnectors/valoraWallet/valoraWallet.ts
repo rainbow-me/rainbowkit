@@ -15,8 +15,8 @@ export const valoraWallet = ({
   downloadUrls: {
     ios: 'https://apps.apple.com/app/id1520414263?mt=8',
     android: 'https://play.google.com/store/apps/details?id=co.clabs.valora',
-    mobile: 'https://valora.xyz/',
-    qrCode: 'https://app.adjust.com/rbp5nws',
+    mobile: 'https://valora.xyz',
+    qrCode: 'https://valora.xyz',
   },
   mobile: {
     getUri: (uri: string) =>
