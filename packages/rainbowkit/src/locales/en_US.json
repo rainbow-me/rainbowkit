@@ -1328,7 +1328,7 @@
         },
         "step2": {
           "title": "Create or import a wallet",
-          "description": "Create a new wallet or import an existing one"
+          "description": "Create a new wallet or import an existing one."
         },
         "step3": {
           "title": "Tap the scan button",
