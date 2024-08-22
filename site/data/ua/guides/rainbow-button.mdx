@@ -8,17 +8,17 @@ image: guide-rainbow-button.png
 
 Компонент `RainbowButton` - найпростіший спосіб додати підтримку гаманця Rainbow до dApp, які використовують `wagmi` та віддають перевагу більш кастомізованому досвіду підключення ніж [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. Встановіть `@rainbow-me/rainbow-button` та його пір-залежності**
+**1. Встановіть `@rainbow-me/rainbow-button` і його пір-залежності**
 
-Пакет сумісний з Next.js, React та Vite. Переконайтеся, що ви дотримуєтеся попереджень щодо пір-залежностей.
+Пакет сумісний із Next.js, React і Vite. Переконайтеся, що ви дотримуєтесь попереджень про пір-залежності.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Налаштуйте за допомогою Wagmi та встановіть RainbowButton**
+**2. Налаштуйте з Wagmi і встановіть RainbowButton**
 
-Передайте екземпляр `rainbowConnector` до `createConfig` Wagmi з `projectId` та `appName`, та обгорніть ваш додаток в `RainbowButtonProvider`. Потім додайте компонент `RainbowButton`.
+Передайте екземпляр `rainbowConnector` до `createConfig` Wagmi з `projectId` і `appName`, і обгорніть ваш додаток у `RainbowButtonProvider`. Далі додайте компонент `RainbowButton`.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. І ось і все!**
+**3. І це все!**
 
 Тепер ваші користувачі можуть насолоджуватися безперебійним досвідом підключення до Rainbow — без будь-якого обслуговування чи головного болю.
 

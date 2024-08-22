@@ -116,7 +116,7 @@ Bazı build araçları ek kurulum gerektirecektir.
 
 ##### Remix
 
-[Remix](https://remix.run) kullanırken, `buffer`, `events` ve `http` modüllerini polyfill yapmanız gerekmektedir. Aşağıdaki Remix konfigürasyonuna veya [örnek Remix projemize](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) referans alın.
+[Remix](https://remix.run) kullanırken, `buffer`, `events` ve `http` modüllerini polyfill yapmanız gerekiyor. Aşağıdaki Remix yapılandırmasına veya [örnek Remix projemize](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix) referans verin.
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### Dağıtıma hazırlanıyor
+### Yayınlamaya hazırlanıyor
 
-Varsayılan olarak, dApp'iniz her zincir için bakiyeleri getirmek, ENS isimlerini çözmek ve daha fazlası için genel RPC sağlayıcılarını kullanır. Bu, genel düğümlerin hız sınırlamasına tabi olması nedeniyle kullanıcılarınız için güvenilirlik sorunlarına sıkça neden olabilir. Bunun yerine, [Alchemy](https://www.alchemy.com/) veya [QuickNode](https://www.quicknode.com/) gibi hizmetler aracılığıyla bir RPC sağlayıcısına erişim satın almalı ve Wagmi'de kendi Transports'unuzu tanımlamalısınız. Bu, `getDefaultConfig` içindeki `transports` parametresini ekleyerek veya doğrudan Wagmi'nin `createConfig` fonksiyonu kullanılarak gerçekleştirilebilir.
+Varsayılan olarak, dApp'iniz, dengeleri getirmek, ENS adlarını çözmek ve daha fazlası için her zincir için genel RPC sağlayıcılarını kullanır. Bu, genellikle kullanıcılarınız için güvenilirlik sorunlarına neden olabilir, çünkü genel nodlar oran sınırlıdır. Bunun yerine, [Alchemy](https://www.alchemy.com/) veya [QuickNode](https://www.quicknode.com/) gibi hizmetler aracılığıyla bir RPC sağlayıcısına erişim satın almalı ve Wagmi'de kendi Transportlarınızı tanımlamalısınız. Bu, `getDefaultConfig` içine `transports` parametresini ekleyerek veya doğrudan Wagmi'nin `createConfig` yoluyla gerçekleştirilebilir.
 
-Bir Transport, Ethereum Node Sağlayıcısına (Alchemy, Infura vb. gibi) JSON-RPC isteklerini gönderen ağ orta katmanıdır.
+Transport, JSON-RPC isteklerini Ethereum Node Sağlayıcısına (Alchemy, Infura, vb. gibi) göndermeyi yöneten ağın orta katmanıdır.
 
-**Bir `http` transport ile örnek**
+`http` transport ile örnek
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -156,11 +156,11 @@ Daha fazla ayrıntı için, [wagmi transport belgelerini](https://wagmi.sh/core/
 
 ### Kendi işlevselliğinizi ekleyin
 
-Artık kullanıcılarınız cüzdanlarını bağlayabilir, [wagmi.](https://wagmi.sh) kullanarak uygulamanızın geri kalanını oluşturmaya başlayabilirsiniz.
+Artık kullanıcılarınız cüzdanlarını bağlayabilir, [wagmi](https://wagmi.sh) kullanarak uygulamanızın geri kalanını oluşturmaya başlayabilirsiniz
 
 Wagmi'nin kapsamlı React Hooks seti ile işlemler gönderin, sözleşmelerle etkileşimde bulunun, ENS detaylarını çözün ve çok daha fazlasını yapın.
 
-Daha fazla ayrıntı için, [wagmi belgelerini](https://wagmi.sh) görüntüleyin.
+Daha fazla ayrıntı için, [wagmi belgelerini](https://wagmi.sh) görüntüleyin
 
 ### Daha fazla örnek
 
@@ -169,7 +169,7 @@ RainbowKit örneklerinin bazılarını çalıştırmanın yada yeni bir proje ot
 RainbowKit'i doğrudan tarayıcınızda denemek için aşağıdaki CodeSandbox linklerini kontrol edin:
 
 - [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app) ile
-- [Next.js]ile (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
+- [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next) ile
 - [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app) ile
-- [Remix]ile (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- [Vite]ile (https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
+- [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix) ile
+- [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) ile

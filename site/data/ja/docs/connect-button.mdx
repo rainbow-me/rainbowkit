@@ -7,7 +7,7 @@ description: ConnectButtonの使用とカスタマイズ
 
 ## ConnectButtonの使用とカスタマイズ
 
-これはメインのコンポーネントです。 接続/切断ボタンの描画やチェーン切り替えUIを担当しています。
+これは主要なコンポーネントです。 接続/切断ボタンのレンダリングやチェーンのスワップUIを担当します。
 
 ```tsx
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -17,11 +17,11 @@ export const YourApp = () => {
 };
 ```
 
-> 注: 必要なプロバイダでアプリがラップされていることを確認してください。 [詳細はこちら](/docs/installation#wrap-providers). [詳細はこちら](/docs/installation#wrap-providers).
+> 注: 必要なプロバイダでアプリがラップされていることを確認してください。 [詳細はこちら](/docs/installation#wrap-providers).
 
-### Props
+### プロップ
 
-`ConnectButton` コンポーネントは、外観をカスタマイズするためのいくつかのpropsを公開しており、さまざまな要素の表示のオン/オフを切り替えることも可能です。
+`ConnectButton`コンポーネントはいくつかのプロップを公開して、その外観をカスタマイズしたり、異なる要素の表示/非表示を切り替えたりすることができます。
 
 <PropsTable
   data={[
@@ -62,21 +62,21 @@ export const YourApp = () => {
   ]}
 />
 
-> 注:組み込みの `largeScreen` ブレークポイントは `768px` です。
+> 注: 組み込みの`largeScreen`ブレークポイントは`768px`です。
 
 ### 例
 
 #### ラベル
 
-`label` propを使用して、カスタム `ConnectButton` テキストを設定します。
+`label`プロップを使用してカスタム`ConnectButton`テキストを設定します。
 
 ```tsx
 <ConnectButton label="__Sign in__" />
 ```
 
-#### アカウント状態
+#### アカウントステータス
 
-`accountStatus` propを使用するいくつかの異なる方法があります。
+`accountStatus`プロップを使用するいくつかの異なる方法です。
 
 アカウントのアバターのみを表示します。
 
@@ -90,31 +90,31 @@ export const YourApp = () => {
 <ConnectButton accountStatus="__address__" />
 ```
 
-#### チェーンのステータス
+#### チェーンステータス
 
-`chainStatus` propを使用するいくつかの異なる方法があります。
+`chainStatus`プロップを使用するいくつかの異なる方法です。
 
-現在のチェインのアイコンのみを表示します。
+現在のチェーンのアイコンのみを表示します。
 
 ```tsx
 <ConnectButton chainStatus="__icon__" />
 ```
 
-現在のチェインの名前のみを表示します。
+現在のチェーンの名前のみを表示します。
 
 ```tsx
 <ConnectButton chainStatus="__name__" />
 ```
 
-チェーンのUI全体を非表示にします。
+チェーンUIを完全に非表示にします。
 
 ```tsx
 <ConnectButton chainStatus="__none__" />
 ```
 
-#### 残高を表示します
+#### 残高の表示
 
-`showBalance` propを使用して残高を非表示/表示することができます。
+`showBalance`プロップを使用して残高を表示/非表示にします。
 
 残高を非表示にします。
 
@@ -124,9 +124,9 @@ export const YourApp = () => {
 
 #### レスポンシブ
 
-これらのpropsもレスポンシブな形式で定義することができます。
+これらのプロップはレスポンシブ形式でも定義できます。
 
-小さいスクリーンでは、アカウントのアイコンのみを表示します。 しかし、大きなスクリーンでは、アイコンとアドレスを表示します。 しかし、大きなスクリーンでは、アイコンとアドレスを表示します。 しかし、大きなスクリーンでは、アイコンとアドレスを表示します。 しかし、大きなスクリーンでは、アイコンとアドレスを表示します。
+小さいスクリーンではアカウントのアイコンのみを表示します。 しかし、大きなスクリーンではアイコンとアドレスを表示します。
 
 ```tsx
 <ConnectButton
@@ -137,7 +137,7 @@ export const YourApp = () => {
 />
 ```
 
-小さいスクリーンでは、残高を非表示にします。 しかし、大画面では表示します。
+小さいスクリーンでは残高を非表示にします。 しかし、大きなスクリーンでは表示します。
 
 ```tsx
 <ConnectButton

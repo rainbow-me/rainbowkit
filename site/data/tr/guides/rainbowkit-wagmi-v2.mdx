@@ -104,7 +104,7 @@ Yeni EIP-6963 bağlantı standardını destekleyen cüzdanlar (Rainbow, MetaMask
 
 Geliştiriciler, son kullanıcılar için tercih edilen cüzdanları vurgulamak üzere Özel Cüzdan Listesi üzerinde tam kontrol sahibi olmaya devam eder. Tüm platformları desteklemek için listenize `injectedWallet` ve `walletConnectWallet`'ı dahil etmeye devam etmeniz önerilir.
 
-**2. getDefaultConfig ile Wagmi yapılandırması**
+**2. GetDefaultConfig ile Wagmi yapılandırması**
 
 Bu yeni API, konfigürasyon deneyimini basitleştirir ve Wagmi'nin `createConfig`'unu doğrudan kullanma ihtiyacını ortadan kaldırır. Zincir konfigürasyonu basitleştirilmiştir, `transports` için varsayılan kamu sağlayıcıları çıkarılmıştır.
 
@@ -122,7 +122,7 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. RainbowKit Sağlayıcı**
 
 Artık `<RainbowKitProvider>` için `chains` geçmenize gerek yok.
 

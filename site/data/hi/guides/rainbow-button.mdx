@@ -8,17 +8,17 @@ image: guide-rainbow-button.png
 
 `RainbowButton` कॉंपोनेंट, `wagmi` का उपयोग करने वाले dApps के लिए Rainbow Wallet के समर्थन के लिए एक सरलतम तरीका है जो [RainbowKit](https://www.rainbowkit.com/docs/installation) से अधिक, एक कस्टम कनेक्टर अनुभव का प्रोत्साहन करते हैं।
 
-**1. `@rainbow-me/rainbow-button` और इसके अंशीय आवश्यकता इंस्टॉल करें**
+**1. `@rainbow-me/rainbow-button` और इसके सहायक निर्भरताओं को स्थापित करें**
 
-पैकेज Next.js, React और Vite के साथ संगत है। उपेक्षा न करें और पियर डिपेंडन्सी चेतावनी का पालन करें।
+यह पैकेज Next.js, React, और Vite के साथ संगत है। सुनिश्चित करें कि आप सहायक निर्भरता चेतावनियों का पालन करें।
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Wagmi के साथ कॉन्फ़िगर करें और RainbowButton इंस्टॉल करें**
+**2. Wagmi के साथ कॉन्फ़िगर करें और RainbowButton स्थापित करें**
 
-`rainbowConnector` का एक उदाहरण Wagmi के `createConfig` में `projectId` और `appName` के साथ पास करें, और अपने ऐप को `RainbowButtonProvider` में लपेटें। फिर `RainbowButton` कौम्पोनॅन्ट को ड्रॉप-इन करें।
+`rainbowConnector` के उदाहरण को Wagmi के `createConfig` में `projectId` और `appName` के साथ पास करें, और अपने ऐप को `RainbowButtonProvider` में रैप करें। फिर `RainbowButton` कॉंपोनेंट को ड्रॉप-इन करें।
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';
@@ -81,7 +81,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 </RainbowButton.Custom>
 ```
 
-**3. और यही है!**
+**3. और यह हो गया!**
 
 अब आपके उपयोगकर्ता Rainbow के लिए एक अविभाज्य कनेक्शन अनुभव का आनंद ले सकते हैं - कोई रखरखाव या परेशानी के बिना।
 

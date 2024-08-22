@@ -6,9 +6,9 @@ image: guide-rainbowkit-v2.png
 
 # Migrando a RainbowKit y Wagmi v2
 
-La dependencia de pares [wagmi](https://wagmi.sh) ha sido actualizada a `1.x.x`.
+La dependencia de pares [wagmi](https://wagmi.sh) y [viem](https://viem.sh) han llegado a `2.x.x` con cambios disruptivos.
 
-Sigue los pasos a continuación para migrar.
+Sigue los pasos abajo para migrar.
 
 **1. Actualice RainbowKit, `wagmi`, y `viem` a sus últimas versiones**
 
@@ -122,7 +122,7 @@ const config = getDefaultConfig({
 })
 ```
 
-**4. RainbowKitProvider**
+**3. RainbowKitProvider**
 
 Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 
@@ -131,7 +131,7 @@ Ya no necesitas pasar `chains` a `<RainbowKitProvider>`.
 + <RainbowKitProvider>
 ```
 
-**3. Cadenas Personalizadas**
+**4. Cadenas Personalizadas**
 
 El tipo `Chain` ha cambiado de acuerdo con Wagmi v2, y continúa soportando los metadatos `iconUrl` e `iconBackground` de RainbowKit.
 
@@ -193,9 +193,9 @@ Ejemplo con `createConfig`:
   })
 ```
 
-**5. Carteras Personalizadas**
+**5. Billeteras personalizadas**
 
-RainbowKit ha adoptado el conector `WalletConnectLegacyConnector` en `wagmi` para continuar con el soporte de WalletConnect v1. El soporte para WalletConnect v2 y `WalletConnectConnector` pronto estará disponible como una versión de parche, sin cambios disruptivos.
+RainbowKit wallet connectors han sufrido cambios sustanciales para soportar Wagmi v2. Consulte la [documentación actualizada](https://www.rainbowkit.com/docs/custom-wallets) y un [conector de ejemplo](packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para actualizar cualquier Conector de Billetera Personalizada en su dApp.
 
 Los conectores de billetera ahora también soportan el estándar EIP-6963 con la propiedad `rdns`. Asegúrese de que esto esté poblado para evitar referencias duplicadas a billeteras que soportan EIP-6963 en su lista de billeteras.
 

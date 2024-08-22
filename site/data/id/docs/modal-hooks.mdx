@@ -1,19 +1,19 @@
 ---
-title: Modal Hooks
+title: Hook Modal
 description: Membuka modals secara programatik melalui Hooks
 ---
 
-# Modal Hooks
+# Hook Modal
 
 ## Membuka modals secara programatik melalui Hooks
 
-Berikut ini adalah Hooks yang disediakan untuk memungkinkan pembukaan modals secara programatik di mana saja dalam aplikasi Anda.
+Hook berikut disediakan untuk memungkinkan pembukaan modals secara programatik di mana saja dalam aplikasi Anda.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Masing-masing dari Hooks ini mengembalikan sebuah objek dengan fungsi untuk membuka modalnya masing-masing. Perlu diperhatikan bahwa fungsi yang dikembalikan akan menjadi undefined jika aplikasi Anda tidak dalam keadaan yang diperlukan untuk modal tersebut terbuka.
+Masing-masing Hook ini mengembalikan objek dengan fungsi untuk membuka modalnya masing-masing. Perhatikan bahwa fungsi yang dikembalikan akan menjadi undefined jika aplikasi Anda tidak dalam keadaan yang diperlukan agar modal dapat dibuka.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Setiap hook juga mengembalikan boolean untuk status modal. Biasanya disarankan agar Anda sepenuhnya bergantung pada kait Wagmi (mis. `useAccount`) untuk bereaksi terhadap status koneksi dompet pengguna secara langsung, daripada mengandalkan keadaan Connect Modal.
+Setiap hook juga mengembalikan boolean untuk status modal. Biasanya disarankan agar Anda hanya mengandalkan hook Wagmi (misalnya, `useAccount`) untuk merespon status koneksi dompet pengguna secara langsung, daripada mengandalkan status Connect Modal.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit dirancang untuk tidak mengganggu dan responsif, sehingga dApps harus selalu merender antarmuka untuk pengguna apakah mereka telah menyambungkan dompet mereka atau tidak. Pengguna dapat menyambungkan atau memutuskan dompet mereka langsung dari MetaMask, jadi dApp harus responsif terhadap status koneksi yang mendasari secara langsung.
+RainbowKit dirancang untuk tidak mengganggu dan responsif, jadi dApps harus selalu merender antarmuka untuk pengguna, baik mereka telah menghubungkan dompet atau tidak. Pengguna bisa menghubungkan atau memutuskan koneksi dompet mereka langsung dari MetaMask, jadi dApp harus responsif terhadap status koneksi yang mendasarinya secara langsung.
 
-dApps yang mengandalkan mekanisme seperti Sign-in with Ethereum untuk verifikasi pengguna sebaiknya mengandalkan fitur [Authentication](/docs/authentication).
+dApp yang mengandalkan mekanisme seperti Sign-in with Ethereum untuk verifikasi pengguna seharusnya mengandalkan fitur [Authentication](/docs/authentication).

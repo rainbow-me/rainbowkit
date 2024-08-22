@@ -1,9 +1,9 @@
 ---
-title: Temalandırma
+title: Tema Oluşturma
 description: Temaları kullanma ve özelleştirme
 ---
 
-# Temalandırma
+# Tema Oluşturma
 
 ## Temaları kullanma ve özelleştirme
 
@@ -175,7 +175,7 @@ export const App = () => (
 
 `accentColor` config'ını çeşitli yollarla kullanabilirsiniz.
 
-Vurgu rengini özel mor değeri olarak ayarlayın.
+Vurgu rengini özel bir mor değere ayarlayın.
 
 ```tsx
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
@@ -256,9 +256,9 @@ const App = () => {
 };
 ```
 
-> Hatırlatma: mevcut kenar yarıçapı değerleri: `large` (default), `medium`, `small` ve `none`.
+> Hatırlatma: mevcut kenar yarıçapı değerleri: `large` (varsayılan), `medium`, `small` ve `none`.
 
-#### Yazı tipi yığınağı
+#### Yazı tipi yığını
 
 Varsayılan olarak, `fontStack` `rounded` olarak ayarlanmıştır. Ama işte `fontStack` konfigürasyonunu nasıl kullanabileceğiniz.
 
@@ -309,8 +309,8 @@ const App = () => {
 `accentColor`, `borderRadius` ve `fontStack` propsları ile farklı temaları nasıl kullanabileceğinizin birkaç farklı yolu.
 
 - `lightTheme` temasını kullanın
-- Vurgu rengini özel bir mor değere ayarlayın
-- Kenar yuvarlaklığını `medium` olarak ayarlayın
+- Vurgu rengini özel mor değeri olarak ayarlayın
+- Kenar yarıçapını `medium` olarak ayarlayın
 - Yazı tipi yığınını `system` olarak ayarlayın
 
 ```tsx
@@ -362,7 +362,7 @@ const App = () => {
 
 #### Karanlık mod desteği
 
-Uygulamanız ışık ve karanlık modlar arasında geçiş yapmak için standart 'prefers-color-scheme: dark' medya sorgusunu kullanıyorsa, seçeneğe bağlı olarak 'lightMode' ve 'darkMode' değerlerini içeren dinamik bir tema nesnesi sağlayabilirsiniz.
+Uygulamanız ışık ve karanlık modlar arasında geçiş yapmak için standart `prefers-color-scheme: dark` medya sorgusunu kullanıyorsa, seçeneğe bağlı olarak `lightMode` ve `darkMode` değerlerini içeren dinamik bir tema nesnesi sağlayabilirsiniz.
 
 ```tsx
 import {

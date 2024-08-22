@@ -1,13 +1,13 @@
 ---
 title: ปุ่มกระเป๋าเงิน
-description: การใช้งานและปรับแต่งปุ่มกระเป๋าเงิน
+description: การใช้และปรับแต่งปุ่มกระเป๋าเงิน
 ---
 
 # ปุ่มกระเป๋าเงิน
 
-> หมายเหตุ: `WalletButton` ในปัจจุบันพึ่งพามาตรฐานกระเป๋าเงิน EIP-1193, แต่จะรองรับ EIP-6963 ในอนาคตอันใกล้.
+> หมายเหตุ: `ปุ่มกระเป๋าเงิน` ปัจจุบันอาศัยมาตรฐานกระเป๋าเงิน EIP-1193 แต่จะรองรับ EIP-6963 ในอนาคตอันใกล้
 
-ส่วนประกอบ `WalletButton` ใหม่ช่วยในการนำเอา RainbowKit และผลประโยชน์ที่บำรุงรักษาได้ทั้งหมดใส่ใจไว้สำหรับการใช้งานร่วมกับรายการกระเป๋าเงินที่กำหนดเองสำหรับ dApp
+คอมโพแนนต์ใหม่ `ปุ่มกระเป๋าเงิน` ช่วยให้ dApps ใช้การนำเสนอรายการกระเป๋าเงินแบบกำหนดเองเพื่อยอมรับ RainbowKit และประโยชน์ที่ปราศจากการบำรุงรักษาทั้งหมด
 
 ```tsx
 import { WalletButton } from '@rainbow-me/rainbowkit';
@@ -17,7 +17,7 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 <WalletButton wallet="coinbase" />
 ```
 
-เหมือนกับ `ConnectButton` ส่วนประกอบ `WalletButton.Custom` จะมีอยู่สำหรับการสร้างรายการกระเป๋าเงินและการปรับแต่งที่กำหนดเอง
+เหมือนกับ `ConnectButton`, คอมโพแนนต์ `WalletButton.Custom` พร้อมสำหรับการดำเนินการและการออกแบบแบบกำหนดเอง
 
 ```tsx
 <WalletButton.Custom wallet="rainbow">
@@ -35,10 +35,10 @@ import { WalletButton } from '@rainbow-me/rainbowkit';
 </WalletButton.Custom>
 ```
 
-ส่วนใหญ่ของ dApp จะได้รับประโยชน์มากที่สุดจาก [ConnectButton](https://www.rainbowkit.com/docs/connect-button) อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ
+ส่วนใหญ่ของ dApp จะได้รับประโยชน์มากที่สุดจาก [ConnectButton](https://www.rainbowkit.com/docs/connect-button) อ้างอิงเอกสาร [here](https://www.rainbowkit.com/docs/wallet-button) เพื่อข้อมูลเพิ่มเติมเกี่ยวกับการใช้งานและการนำเอา `WalletButton` มาใช้ในฐานะตัวดำเนินการ
 
-#### ตัวอย่าง
+#### สาธิต
 
-กดปุ่มด้านล่างเพื่อดูว่าจุดเริ่มต้นนี้ของ RainbowKit มีลักษณะเป็นอย่างไร
+กดปุ่มด้านล่างเพื่อดูว่าจุดเข้า RainbowKit นี้มีลักษณะอย่างไร
 
 <WalletButtonDemo />

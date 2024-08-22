@@ -11,7 +11,7 @@ RainbowKit está diseñado para integrarse con el objeto `chain` de [wagmi](http
 
 ### Personalizando la cadena inicial
 
-Por defecto, RainbowKit se conectará a la primera cadena proporcionada a Wagmi. Este comportamiento puede ser personalizado a través de la prop `initialChain`.
+Por defecto, RainbowKit se conectará a la primera cadena en su matriz `chains` para asegurar que los usuarios no se encuentren inmediatamente con el estado de "Red incorrecta". Este comportamiento puede ser personalizado a través de la prop `initialChain`.
 
 La cadena inicial puede ser configurada usando un ID de cadena.
 

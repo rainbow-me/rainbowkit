@@ -102,7 +102,7 @@ npm i @tanstack/react-query
 
 **1. EIP-6963 지갑에 대한 개선된 동작**
 
-새로운 EIP-6963 연결 표준을 지원하는 지갑(레인보우, 메타마스크 등 포함)은 이제 연결 지갑 경험 중에 '설치됨' 섹션에 자동으로 표시됩니다. 이렇게 하면 사용자가 항상 자신의 선호하는 지갑을 찾아 dApps에 문제없이 연결할 수 있습니다.
+새로운 EIP-6963 연결 표준을 지원하는 지갑 (레인보우, 메타마스크 등 포함) 은 이제 연결 지갑 경험 중에 '설치됨' 섹션에 자동으로 표시됩니다. 이렇게 하면 사용자가 항상 자신의 선호하는 지갑을 찾아 dApps에 문제없이 연결할 수 있습니다.
 
 개발자는 최종 사용자에게 선호하는 지갑을 강조하기 위해 사용자 지정 지갑 목록을 완전히 제어할 수 있습니다. 모든 플랫폼을 지원하기 위해 `injectedWallet` 및 `walletConnectWallet`을 목록에 계속 포함하는 것이 권장됩니다.
 
@@ -197,7 +197,7 @@ const config = getDefaultConfig({
 
 **5. 사용자 정의 지갑**
 
-RainbowKit 지갑 커넥터는 Wagmi v2를 지원하기 위해 상당한 변경을 거쳤습니다. [업데이트된 문서](https://www.rainbowkit.com/docs/custom-wallets)와 [예제 커넥터](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)를 참조하여 dApp의 사용자 정의 지갑 커넥터를 업그레이드하세요.
+RainbowKit 지갑 커넥터는 Wagmi v2를 지원하기 위해 상당한 변경을 거쳤습니다. dApp의 사용자 정의 지갑 커넥터를 업그레이드하려면 [업데이트된 문서](https://www.rainbowkit.com/docs/custom-wallets)와 [예제 커넥터](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)를 참조하세요.
 
 지갑 커넥터는 이제 `rdns` prop을 사용하여 EIP-6963 표준도 지원합니다. 지갑 목록에서 EIP-6963을 지원하는 지갑에 대한 중복 참조를 방지하기 위해 이를 채워 넣는 것이 중요합니다.
 
@@ -229,19 +229,19 @@ npm i viem
 
 이전 버전의 wagmi는 [ethers](https://docs.ethers.org/v5/)에 의존했고, WalletConnect에 의해 필요로 하는 `fs`, `net`, `tls` 모듈들이 자동으로 폴리필되었습니다. 이는 RainbowKit v1 + wagmi v1에서는 더 이상 적용되지 않으며, 이들은 [viem](https://viem.sh/)를 기반으로 구축되었습니다.
 
-[Next.js 웹팩 설정](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js)와 [Create React App 폴리필들](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플을 참조하여 귀하의 프로젝트를 위한 설정 가이드를 참고하세요.
+프로젝트 설정 가이드를 위해 [Next.js 웹팩 설정](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) 및 [Create React App 폴리필들](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-create-react-app/src/polyfills.ts) 샘플을 참조하세요.
 
-Vite 및 Remix에 대한 추가 프레임워크 가이드를 사용할 수 있습니다 [here](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
+Vite 및 Remix에 대한 추가 프레임워크 가이드를 [여기](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup)에서 사용할 수 있습니다.
 
 **4. `wagmi`에서 중대한 변경 사항 확인**
 
-애플리케이션에서 `wagmi` hook을 사용하는 경우, v1로의 `wagmi` 마이그레이션 가이드를 따를 필요가 있습니다.
+애플리케이션에서 `wagmi` hook을 사용하는 경우, v1으로의 `wagmi` 마이그레이션 가이드를 따를 필요가 있습니다.
 
-[여기에서 마이그레이션 가이드를 확인할 수 있습니다](https://wagmi.sh/react/migration-guide).
+[마이그레이션 가이드는 여기에서 확인할 수 있습니다](https://wagmi.sh/react/migration-guide).
 
 ### 0.12.x 중대한 변경 사항
 
-wagmi 피어 디펜던시가 `0.12.x`로 업데이트되었습니다.
+wagmi 피어 의존성이 `0.12.x`로 업데이트되었습니다.
 
 RainbowKit은 계속된 WalletConnect v1 지원을 위해 `wagmi`의 `WalletConnectLegacyConnector` 커넥터를 채택하였습니다. WalletConnect v2와 `WalletConnectConnector`에 대한 지원이 곧 패치 릴리스로 사용 가능해질 예정이며, 이는 기존의 변경 사항을 깨트리지 않습니다.
 
@@ -251,7 +251,7 @@ RainbowKit은 계속된 WalletConnect v1 지원을 위해 `wagmi`의 `WalletConn
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1. RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
+#### 1. RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
@@ -285,41 +285,41 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.11.x 중단 변경
+### 0.11.x 중대한 변경 사항
 
-wagmi 동료 의존성이 `0.11.x`으로 업데이트되었습니다.
+wagmi 피어 의존성이 `0.11.x`로 업데이트되었습니다.
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1. RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
+#### 1. RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
 ```
 
-#### 2. `wagmi`에서 중단 변경 확인
+#### 2. `wagmi`에서 중대한 변경 사항 확인
 
 `wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [마이그레이션 가이드는 여기에서 확인하실 수 있습니다](https://wagmi.sh/react/migration-guide#011x-breaking-changes).
 
-### 0.10.x 중단 변경
+### 0.10.x 중대한 변경 사항
 
-wagmi 동료 의존성이 `0.10.x`로 업데이트되었습니다.
+wagmi 피어 의존성이 `0.10.x`로 업데이트되었습니다.
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1. RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
+#### 1. RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
 ```
 
-#### 2. `wagmi`에서 중단 변경 확인
+#### 2. `wagmi`에서 중대한 변경 사항 확인
 
 `wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
-[이곳에서 그들의 마이그레이션 가이드를 볼 수 있습니다](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
+[마이그레이션 가이드는 여기에서 확인하실 수 있습니다](https://wagmi.sh/react/migration-guide#010x-breaking-changes).
 
 ### 0.9.x 중대한 변경 사항
 
@@ -327,37 +327,37 @@ wagmi 피어 의존성이 `0.9.x`로 업데이트되었습니다.
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1. RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
+#### 1. RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
 ```
 
-#### 2. `wagmi`에서 중단 변경 확인
+#### 2. `wagmi`에서 중대한 변경 사항 확인
 
 `wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
-[여기에서 마이그레이션 가이드를 확인하세요](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
+[마이그레이션 가이드는 여기에서 확인하실 수 있습니다](https://wagmi.sh/react/migration-guide#09x-breaking-changes).
 
-### 0.8.x 파괴적인 변경사항
+### 0.8.x 중대한 변경 사항
 
-wagmi 피어 의존성이 `0.8.x`로 업데이트 되었습니다.
+wagmi 피어 의존성이 `0.8.x`로 업데이트되었습니다.
 
 아래의 단계를 따라 마이그레이션하세요.
 
-#### 1. RainbowKit와 `wagmi`를 그들의 최신 버전으로 업그레이드하세요
+#### 1. RainbowKit과 `wagmi`를 최신 버전으로 업그레이드하세요
 
 ```bash
 npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
 ```
 
-#### 2. `wagmi`에서 중단 변경 확인
+#### 2. `wagmi`에서 중대한 변경 사항 확인
 
 `wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
-[여기에서 그들의 마이그레이션 가이드를 볼 수 있습니다](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
+[마이그레이션 가이드는 여기에서 확인하실 수 있습니다](https://wagmi.sh/react/migration-guide#08x-breaking-changes).
 
-### 0.7.x 파괴적인 변화
+### 0.7.x 중대한 변경 사항
 
 커스텀 월렛 목록을 생성하는 경우, 번들 사이즈를 줄이기 위해 이제 각 월렛을 개별적으로 가져와야 합니다. `wallet` 객체를 통해 네임스페이스화되지 않은 월렛들은 이제 모두 `Wallet` 접미사를 가지고 있다는 점을 주목해주세요.
 
@@ -398,7 +398,7 @@ const wallets = [
 ];
 ```
 
-### 0.4.x 파괴적인 변화
+### 0.4.x 중대한 변경 사항
 
 RainbowKit는 `wagmi` 피어 종속성을 `0.5.x`로 업데이트했습니다.
 
@@ -412,13 +412,13 @@ RainbowKit과 wagmi를 최신 버전으로 업그레이드하세요
 npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
 ```
 
-#### 2. `wagmi`에서 중단 변경 확인
+#### 2. `wagmi`에서 중대한 변경 사항 확인
 
 `wagmi` 훅을 애플리케이션에 사용하는 경우, 애플리케이션이 `wagmi`의 중단 변경에 영향을 받았는지 확인해야 합니다.
 
 [여기에서 마이그레이션 가이드를 확인할 수 있습니다](https://wagmi.sh/react/migration-guide#05x-breaking-changes).
 
-### 0.3.x 중단 변경 사항
+### 0.3.x 중대한 변경 사항
 
 `Wallet` 타입의 `createConnector`에서 `chainId` 매개변수를 제거했습니다.
 
@@ -478,7 +478,7 @@ const connectors = connectorsForWallets([
 ]);
 ```
 
-### 0.2.x 버전의 중대한 변경 사항
+### 0.2.x 중대한 변경 사항
 
 RainbowKit는 `wagmi` 피어 종속성을 `^0.4`로 업데이트하였습니다.
 

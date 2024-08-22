@@ -7,13 +7,13 @@ description: Kancalar aracılığıyla programatik olarak modalların açılmas�
 
 ## Kancalar aracılığıyla programatik olarak modalların açılması
 
-Modalların programatik olarak açılmasına izin veren aşağıdaki Kanca'lar sağlanmıştır.
+Uygulamanızın herhangi bir yerinde modalların programatik olarak açılmasına olanak tanımak için aşağıdaki kancalar sağlanmıştır.
 
 - `useConnectModal`
 - `useAccountModal`
 - `useChainModal`
 
-Bu Kanca'lardan her biri, ilgili modalı açmak için bir fonksiyon içeren bir nesne döndürür. Modalin açılması için gerekli durumda olmadığında, döndürülen fonksiyonların tanımlanamayacağına dikkat edin.
+Bu kancaların her biri, ilgili modalın açılması için bir işlev içeren bir nesne döndürür. Uygulamanız modalın açılması için gerekli durumda değilse, döndürülen işlevlerin tanımsız olacağını unutmayın.
 
 ```tsx
 import {
@@ -51,7 +51,7 @@ export const YourApp = () => {
 };
 ```
 
-Her kanca ayrıca modalın durumu için bir boolean döndürür. Tipik olarak, Connect Modalın durumuna dayanmak yerine, bir kullanıcının cüzdan bağlantı durumuna doğrudan tepki vermek için yalnızca Wagmi kancalarına (`useAccount` gibi) güvenmeniz önerilir.
+Her kanca ayrıca modalın durumu için bir boole değeri döndürür. Genellikle, kullanıcının cüzdan bağlantı durumuna doğrudan tepki vermek için Wagmi kancalarına (ör. `useAccount`) tamamen güvenmeniz ve Connect Modal durumuna güvenmemeniz önerilir.
 
 ```tsx
 const { connectModalOpen } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit, kesintisiz ve duyarlı olacak şekilde tasarlanmıştır, bu yüzden dApps, kullanıcıların cüzdanlarını bağlamış olup olmadıklarına bakılmaksızın her zaman bir arayüz render etmelidir. Bir kullanıcı, cüzdanını MetaMask üzerinden doğrudan bağlayabilir veya bağlantısını kesebilir, bu yüzden dApp, doğrudan altta yatan bağlantı durumuna duyarlı olmalıdır.
+RainbowKit, kesintisiz ve duyarlı olacak şekilde tasarlanmıştır, bu nedenle dApp'ler, kullanıcının cüzdanını bağlayıp bağlamadığına bakılmaksızın her zaman bir arayüz oluşturmalıdır. Bir kullanıcı, MetaMask'tan direkt olarak cüzdanını bağlayabilir veya bağlantısını kesebilir, bu yüzden dApp, temel bağlantı durumuna doğrudan duyarlı olmalıdır.
 
-Kullanıcı doğrulaması için Ethereum ile Oturum açma gibi mekanizmalara dayanan dApps, bunun yerine [Authentication](/docs/authentication) özelliğine güvenmelidir.
+Kullanıcı doğrulaması için Ethereum ile Oturum Açma gibi mekanizmalara güvenen dApp'ler bunun yerine [Kimlik Doğrulama](/docs/authentication) özelliğine güvenmelidir.

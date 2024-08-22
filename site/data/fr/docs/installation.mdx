@@ -116,7 +116,7 @@ Certains outils de construction nécessiteront une configuration supplémentaire
 
 ##### Remix
 
-Lorsque vous utilisez [Remix](https://remix.run), vous devez polyfiller les modules `buffer`, `events` et `http`. Référencez la configuration Remix ci-dessous, ou [notre exemple de projet Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Lors de l'utilisation de [Remix](https://remix.run), vous devez polyfill les modules `buffer`, `events` et `http`. Référez-vous à la configuration Remix ci-dessous, ou à [notre exemple de projet Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,11 +128,11 @@ export default {
 };
 ```
 
-### Préparation au déploiement
+### Préparer le déploiement
 
-Par défaut, votre dApp utilise des fournisseurs RPC publics pour chaque chaîne afin de récupérer les soldes, résoudre les noms ENS, et plus encore. Cela peut souvent causer des problèmes de fiabilité pour vos utilisateurs car les nœuds publics sont limités en taux. Vous devriez plutôt acheter un accès à un fournisseur RPC via des services tels que [Alchemy](https://www.alchemy.com/) ou [QuickNode](https://www.quicknode.com/), et définir vos propres Transports dans Wagmi. Cela peut être réalisé en ajoutant le paramètre `transports` dans `getDefaultConfig` ou directement via `createConfig` de Wagmi.
+Par défaut, votre dApp utilise des fournisseurs RPC publics pour chaque chaîne afin de récupérer les soldes, résoudre les noms ENS, et plus. Cela peut souvent causer des problèmes de fiabilité pour vos utilisateurs car les nœuds publics sont limités en termes de taux. Vous devriez plutôt acheter l'accès à un fournisseur RPC via des services comme [Alchemy](https://www.alchemy.com/) ou [QuickNode](https://www.quicknode.com/), et définir vos propres Transports dans Wagmi. Cela peut être réalisé en ajoutant le paramètre `transports` dans `getDefaultConfig` ou directement via la fonction `createConfig` de Wagmi.
 
-Un Transport est la couche intermédiaire de réseau qui gère l'envoi des requêtes JSON-RPC au fournisseur de nœuds Ethereum (comme Alchemy, Infura, etc).
+Un Transport est la couche intermédiaire de mise en réseau qui gère l'envoi des requêtes JSON-RPC au fournisseur de nœud Ethereum (comme Alchemy, Infura, etc.).
 
 **Exemple avec un transport `http`**
 
@@ -152,21 +152,21 @@ const config = getDefaultConfig({
 });
 ```
 
-Pour plus de détails, consultez la [documentation sur les transports wagmi](https://wagmi.sh/core/api/transports#transports).
+Pour plus de détails, consultez la [documentation wagmi](https://wagmi.sh/core/api/transports#transports).
 
 ### Ajoutez votre propre fonctionnalité
 
-Maintenant que vos utilisateurs peuvent connecter leurs portefeuilles, vous pouvez commencer à construire le reste de votre application en utilisant [wagmi.](https://wagmi.sh)
+Maintenant que vos utilisateurs peuvent connecter leurs portefeuilles, vous pouvez commencer à construire le reste de votre application en utilisant [wagmi](https://wagmi.sh)
 
 Envoyez des transactions, interagissez avec des contrats, résolvez les détails ENS et bien plus encore avec la suite complète de React Hooks de wagmi.
 
-Pour plus de détails, consultez la [documentation wagmi.](https://wagmi.sh)
+Pour plus de détails, consultez la [documentation wagmi](https://wagmi.sh)
 
 ### Exemples supplémentaires
 
 Pour voir quelques exemples d'exécution de RainbowKit, ou même les utiliser pour automatiser la création d'un nouveau projet, consultez les [exemples officiels](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
 
-Pour essayer RainbowKit directement dans votre navigateur, consultez les liens CodeSandbox ci-dessous:
+Pour essayer RainbowKit directement dans votre navigateur, consultez les liens CodeSandbox ci-dessous :
 
 - avec [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
 - avec [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)

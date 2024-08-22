@@ -66,14 +66,16 @@ App Router 尚不支援 i18n。 參考我們的另一個示例[在這裡](https:
 
 <Table
   header={[
-    '語言', '地區', '語系', '簡稱'
+    '語言', '地區', '語言地區代碼', '簡寫'
   ]}
   dataTypes={[
     'string', 'string', 'code', 'code'
   ]}
   data={[
     ['English', 'United States 🇺🇸', 'en-US', 'en'],
-    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh'],
+    ['中文', 'Mainland China 🇨🇳', 'zh-CN', 'zh-Hans', 'zh'],
+    ['繁體中文', 'Hong Kong 🇭🇰', 'zh-HK'],
+    ['繁體中文', 'Taiwan 🇹🇼', 'zh-TW', 'zh-Hant'],
     ['हिंदी', 'India 🇮🇳', 'hi-IN', 'hi'],
     ['Español', 'Latin America 🌎', 'es-419', 'es'],
     ['Français', 'France 🇫🇷', 'fr-FR', 'fr'],

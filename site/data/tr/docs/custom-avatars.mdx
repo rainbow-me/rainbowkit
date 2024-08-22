@@ -7,7 +7,7 @@ description: Uygulamanızın kullanıcı avatarını özelleştirme
 
 ## Uygulamanızın kullanıcı avatarını özelleştirme
 
-Varsayılan olarak, ENS resimleri ayarlanmamış kullanıcılar için bir avatar sağlarız, ancak bunu kendi avatar bileşeninizi sağlayarak özelleştirebilirsiniz. TypeScript kullanıyorsanız `AvatarComponent` türünü içe aktarabilirsiniz:
+Varsayılan olarak, ENS resmi ayarlanmadığı takdirde kullanıcılar için bir avatar sağlıyoruz, ancak kendi avatar bileşeninizi sağlayarak bunu özelleştirebilirsiniz. TypeScript kullanıyorsanız `AvatarComponent` türünü içe aktarabilirsiniz:
 
 ```tsx
 import {
@@ -48,4 +48,4 @@ const App = () => {
 };
 ```
 
-`Avatar` prop'una aktarılan `AvatarComponent`'ın prop türleri şu şekildedir: `<{ address: string; ensImage?: string | null; size: number;}>`
+`avatar` özelliğine geçirilen `AvatarComponent` şu tür özelliklere sahiptir: `<{ address: string; ensImage?: string | null; size: number;}>`

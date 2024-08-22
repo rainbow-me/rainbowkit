@@ -60,9 +60,9 @@ import {
 
 #### Konfigurasi
 
-Konfigurasikan rantai yang diinginkan dan hasilkan konektor yang diperlukan. Anda juga perlu menyiapkan konfigurasi `wagmi`. Jika dApp Anda menggunakan server side rendering (SSR) pastikan untuk mengatur `ssr` menjadi `true`.
+Konfigurasikan chain yang Anda inginkan dan hasilkan konektor yang dibutuhkan. Anda juga perlu menyetel konfigurasi `wagmi`. Jika dApp Anda menggunakan server side rendering (SSR) pastikan untuk mengatur `ssr` ke `true`.
 
-> Catatan: Setiap dApp yang bergantung pada WalletConnect sekarang harus mendapatkan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini benar-benar gratis dan hanya membutuhkan beberapa menit.
+> Catatan: Setiap dApp yang bergantung pada WalletConnect sekarang perlu mendapatkan `projectId` dari [WalletConnect Cloud](https://cloud.walletconnect.com/). Ini benar-benar gratis dan hanya membutuhkan beberapa menit.
 
 ```tsx line=4-99
 ...
@@ -116,7 +116,7 @@ Beberapa alat pembangunan akan memerlukan pengaturan tambahan.
 
 ##### Remix
 
-Ketika menggunakan [Remix](https://remix.run), Anda harus melakukan polyfill pada modul `buffer`, `events`, dan `http`. Lihat konfigurasi Remix di bawah ini, atau [projek contoh Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Saat menggunakan [Remix](https://remix.run), Anda harus mem-polyfill modul `buffer`, `events` dan `http`. Rujuk konfigurasi Remix di bawah, atau [proyek contoh Remix kami](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,11 +128,11 @@ export default {
 };
 ```
 
-### Bersiap untuk melakukan penempatan
+### Mempersiapkan untuk diterapkan
 
-Secara default, dApp Anda menggunakan penyedia RPC publik untuk setiap rantai untuk mengambil saldo, menyelesaikan nama ENS, dan lainnya. Hal ini seringkali menyebabkan masalah keandalan bagi pengguna Anda karena node publik memiliki batasan laju. Sebagai gantinya, Anda seharusnya membeli akses ke penyedia RPC melalui layanan seperti [Alchemy](https://www.alchemy.com/) atau [QuickNode](https://www.quicknode.com/), dan mendefinisikan Transports Anda sendiri di Wagmi. Hal ini dapat dicapai dengan menambahkan parameter `transports` dalam `getDefaultConfig` atau langsung melalui `createConfig` Wagmi.
+Secara default, dApp Anda menggunakan penyedia RPC publik untuk setiap chain untuk mengambil saldo, menyelesaikan nama ENS, dan lainnya. Ini sering dapat menyebabkan masalah keandalan bagi pengguna Anda karena node publik dibatasi kecepatannya. Sebagai gantinya, Anda harus membeli akses ke penyedia RPC melalui layanan seperti [Alchemy](https://www.alchemy.com/) atau [QuickNode](https://www.quicknode.com/), dan menentukan Transports Anda sendiri di Wagmi. Ini dapat dicapai dengan menambahkan parameter `transports` dalam `getDefaultConfig` atau langsung melalui `createConfig` Wagmi.
 
-Transport adalah lapisan jaringan tengah yang menangani pengiriman permintaan JSON-RPC ke Penyedia Node Ethereum (seperti Alchemy, Infura, dll).
+Transport adalah lapisan tengah jaringan yang menangani pengiriman permintaan JSON-RPC ke Penyedia Node Ethereum (seperti Alchemy, Infura, dll).
 
 **Contoh dengan transport `http`**
 
@@ -152,7 +152,7 @@ const config = getDefaultConfig({
 });
 ```
 
-Untuk detail lebih lanjut, lihat [dokumentasi transport wagmi](https://wagmi.sh/core/api/transports#transports).
+Untuk detail lebih lanjut, lihat [dokumentasi wagmi transport](https://wagmi.sh/core/api/transports#transports).
 
 ### Tambahkan fungsionalitas Anda sendiri
 

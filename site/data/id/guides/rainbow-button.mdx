@@ -8,17 +8,17 @@ image: panduan-rainbow-button.png
 
 Komponen `RainbowButton` adalah cara termudah untuk menambahkan dukungan Rainbow Wallet ke dApp yang menggunakan `wagmi` dan lebih memilih pengalaman konektor kustom daripada [RainbowKit](https://www.rainbowkit.com/docs/installation).
 
-**1. Pasang `@rainbow-me/rainbow-button` dan depedensi terkait**
+**1. Instal `@rainbow-me/rainbow-button` dan dependensi peernya**
 
-Paket ini kompatibel dengan Next.js, React, dan Vite. Pastikan Anda mengikuti peringatan depedensi terkait.
+Paket ini kompatibel dengan Next.js, React, dan Vite. Pastikan Anda mengikuti peringatan dependensi peer.
 
 ```bash
 npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
-**2. Konfigurasikan dengan Wagmi dan pasang RainbowButton**
+**2. Konfigurasi dengan Wagmi dan instal RainbowButton**
 
-Berikan instance dari `rainbowConnector` ke `createConfig` Wagmi dengan `projectId` dan `appName`, serta bungkus aplikasi Anda dalam `RainbowButtonProvider`. Kemudian masukkan komponen `RainbowButton`.
+Berikan sebuah instance dari `rainbowConnector` ke `createConfig` Wagmi dengan `projectId` dan `appName`, dan bungkus aplikasi Anda dengan `RainbowButtonProvider`. Kemudian tambahkan komponen `RainbowButton`.
 
 ```tsx
 import '@rainbow-me/rainbow-button/styles.css';

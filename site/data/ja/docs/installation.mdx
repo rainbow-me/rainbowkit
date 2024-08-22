@@ -60,9 +60,9 @@ import {
 
 #### 設定
 
-望ましいチェーンを設定し、必要なコネクタを生成します。 また、`wagmi` 設定もセットアップする必要があります。 あなたのdAppがサーバーサイドレンダリング(SSR)を使用している場合は、`ssr`を`true`に設定してください。
+希望するチェーンを設定し、必要なコネクタを生成します。 `wagmi` 設定も行う必要があります。 If your dApp uses server side rendering (SSR) make sure to set `ssr` to `true`.
 
-> 注: WalletConnectを利用するすべてのdAppは、現在[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。 これは完全に無料で、数分で完了します。
+> 注: WalletConnectを利用するすべてのdAppは、現在[WalletConnect Cloud](https://cloud.walletconnect.com/)から`projectId`を取得する必要があります。 これは完全に無料で、数分で完了します。
 
 ```tsx line=4-99
 ...
@@ -116,7 +116,7 @@ RainbowKitは今後、ユーザーのウォレット選択の処理、ウォレ�
 
 ##### Remix
 
-[Remix](https://remix.run)を使用する場合、`buffer`、`events`、`http`モジュールをポリフィルする必要があります。 以下のRemix設定を参照するか、[サンプル Remix プロジェクト](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)を参照してください。 以下のRemix設定を参照するか、[サンプル Remix プロジェクト](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)を参照してください。
+[Remix](https://remix.run)を使用する場合、`buffer`、`events`、`http`モジュールをポリフィルする必要があります。 以下のRemix設定を参照するか、[サンプル Remix プロジェクト](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix)を参照してください。
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -128,13 +128,13 @@ export default {
 };
 ```
 
-### デプロイの準備をしています
+### デプロイの準備
 
-デフォルトでは、dAppは各チェーンの公開RPCプロバイダーを使用して残高を取得したり、ENS名を解決したりなどの処理を行います。 これにより、公開ノードはレート制限されているため、ユーザーに信頼性の問題が発生することがよくあります。 代わりに、[Alchemy](https://www.alchemy.com/) や [QuickNode](https://www.quicknode.com/) などのサービスを通じてRPCプロバイダーへのアクセスを購入し、Wagmiで独自のTransportsを定義するべきです。 これは、`getDefaultConfig`で`transports`パラメータを追加するか、Wagmiの`createConfig`を直接使用することで実現できます。
+デフォルトでは、dAppは各チェーンの公開RPCプロバイダーを使用してバランスを取得し、ENS名を解決などを行います。 これは、パブリックノードがレート制限されているため、ユーザーに信頼性の問題を引き起こすことがよくあります。 代わりに、[Alchemy](https://www.alchemy.com/)や[QuickNode](https://www.quicknode.com/)などのサービスを通じてRPCプロバイダーへのアクセスを購入し、Wagmiで独自のトランスポートを定義する必要があります。 これは、`getDefaultConfig`の`transports` パラメータを追加するか、Wagmiの `createConfig` を直接使用することで達成できます。
 
-Transportは、JSON-RPCリクエストをEthereumノードプロバイダー（Alchemy、Infuraなど）に送信するネットワーキングの中間層です。
+A Transport is the networking middle layer that handles sending JSON-RPC requests to the Ethereum Node Provider (like Alchemy, Infura, etc).
 
-**`http`トランスポートを使用した例**
+**`http` トランスポートの例**
 
 ```tsx
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
@@ -152,13 +152,13 @@ const config = getDefaultConfig({
 });
 ```
 
-詳細については、[wagmi のトランスポート文書](https://wagmi.sh/core/api/transports#transports)をご覧ください。
+詳細については、[wagmi トランスポートドキュメント](https://wagmi.sh/core/api/transports#transports)をご覧ください。
 
 ### 自分自身の機能を追加する
 
 ユーザーがウォレットを接続できるようになったので、あなたは [wagmi.](https://wagmi.sh)を使用してアプリの残りの部分を構築を開始することができます。
 
-wagmiの包括的なReactフックスを使用して、トランザクションの送信、コントラクトとのやり取り、ENSの詳細の解決などを行うことができます。
+トランザクションを送信し、コントラクトと対話し、ENSの詳細を解決し、その他の多くのことを、wagmiの包括的なReactフックスイートを使用して行います。
 
 詳細については、[wagmi の文書化](https://wagmi.sh)をご覧ください。
 
@@ -172,4 +172,4 @@ RainbowKitの一部の実行例を見るため、またはそれらを使って�
 - [Next.js]を使用(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
 - [Next.js App Router]を使用(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
 - [Remix]を使用(https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- [Vite]を使用（https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite）
+- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)

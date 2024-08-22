@@ -1,13 +1,13 @@
 ---
 title: Özel Uygulama Bilgisi
-description: Uygulamanızın bilgilerini özelleştirme
+description: Uygulamanızın bilgilerini özelleştiriyorsunuz
 ---
 
 # Özel Uygulama Bilgisi
 
-## Uygulamanızın bilgilerini özelleştirme
+## Uygulamanızın bilgilerini özelleştiriyorsunuz
 
-`RainbowKitProvider` için `appInfo` özelliği geçirerek uygulamanızın bilgilerini iletebilirsiniz. Değiştirebileceğiniz özellikler uygulamanın adı (`appName`) ve bağlantı modali içindeki "Daha Fazla Bilgi" düğmesinin yönlendirildiği bağlantı (`learnMoreUrl`) dir:
+Uygulamanızın bilgilerini `RainbowKitProvider` için `appInfo` özelliğinde geçirebilirsiniz. Özelleştirebileceğiniz özellikler, uygulamanızın adı (`appName`) ve bağlantı modundaki “Daha Fazla Bilgi” düğmesinin yönlendirdiği bağlantıdır (`learnMoreUrl`):
 
 ```tsx
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
@@ -27,9 +27,9 @@ const App = () => {
 };
 ```
 
-### Bir Feragatname Ekleyin
+### Bir Feragatname Ekle
 
-Bağlantı modalının altında görüntülenecek kendi feragatnamenizi sağlayabilirsiniz. `appInfo` içindeki `disclaimer` özelliği, `Text` ve `Link` argümanları olan bir `DisclaimerComponent` alır. Tema sistemini miras alan kendi feragatnamenizi oluşturmak için bunu kullanabilirsiniz. TypeScript kullanıcıları için `DisclaimerComponent` türünü dışa aktarıyoruz:
+Bağlantı modunun altına gösterilecek kendi feragatnamenizi sağlayabilirsiniz. `appInfo` içindeki `disclaimer` özelliği, `Text` ve `Link` argümanlarına sahip bir `DisclaimerComponent` alır. Temalandırma sistemini devralan kendi feragatnamenizi oluşturmak için kullanabilirsiniz. TypeScript kullanıcıları için `DisclaimerComponent` türünü dışa aktarıyoruz:
 
 ```tsx
 import {
