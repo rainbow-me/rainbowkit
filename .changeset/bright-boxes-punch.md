@@ -4,4 +4,4 @@
 "site": patch
 ---
 
-Add Valora wallet
+Added Valora support with `valorWallet` wallet connector
