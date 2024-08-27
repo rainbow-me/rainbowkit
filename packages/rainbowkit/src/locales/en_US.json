@@ -1349,6 +1349,23 @@
           "description": "Tap WalletConnect then Switch to Scanner. After you scan, a connection prompt will appear for you to connect your wallet."
         }
       }
+    },
+
+    "valora": {
+      "qr_code": {
+        "step1": {
+          "title": "Open the Valora app",
+          "description": "We recommend putting Valora on your home screen for quicker access."
+        },
+        "step2": {
+          "title": "Create or import a wallet",
+          "description": "Create a new wallet or import an existing one."
+        },
+        "step3": {
+          "title": "Tap the scan button",
+          "description": "After you scan, a connection prompt will appear for you to connect your wallet."
+        }
+      }
     }
   }
 }
