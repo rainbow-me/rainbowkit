@@ -27,10 +27,7 @@ export const iopayWallet = ({
       'https://play.google.com/store/apps/details?id=io.iotex.iopay.gp&pli=1',
     ios: 'https://apps.apple.com/us/app/iopay-multichain-crypto-wallet/id1478086371',
     qrCode: 'https://iopay.me/',
-    chrome: 'https://iopay.me/',
-    edge: 'https://iopay.me/',
-    firefox: 'https://iopay.me/',
-    opera: 'https://iopay.me/'
+    browserExtension: 'https://iopay.me/'
   },
   mobile: {
     getUri: (uri: string) => {
