@@ -17,7 +17,7 @@
     "wagmi": "^2.12.8"
   },
   "devDependencies": {
-    "@types/node": "^18.19.3",
+    "@types/node": "^20.14.8",
     "@types/react": "^18.3.0",
     "typescript": "5.4.2"
   }
