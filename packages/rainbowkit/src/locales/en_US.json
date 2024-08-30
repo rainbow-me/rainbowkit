@@ -340,20 +340,6 @@
           "description": "After you have a wallet, click on Connect to connect via Bloom. A connection prompt in the app will appear for you to confirm the connection.",
           "title": "Click on Connect"
         }
-      },
-      "qr_code": {
-        "step1": {
-          "title": "Open the Bloom Wallet app",
-          "description": "We recommend putting Bloom Wallet on your home screen for quicker access."
-        },
-        "step2": {
-          "description": "Create or import a wallet using your recovery phrase.",
-          "title": "Create or Import a Wallet"
-        },
-        "step3": {
-          "description": "After you have a wallet, click on Connect to connect via Bloom. A connection prompt in the app will appear for you to confirm the connection.",
-          "title": "Click on Connect"
-        }
       }
     },
 
