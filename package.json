@@ -59,7 +59,6 @@
     "dotenv": "^16.4.5",
     "esbuild": "^0.20.2",
     "esbuild-plugin-replace": "^1.4.0",
-    "ethers": "^5.6.8",
     "husky": "^8.0.3",
     "jsdom": "^23.0.1",
     "lokijs": "^1.5.12",
