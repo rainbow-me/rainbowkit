@@ -2,11 +2,7 @@
   "name": "@rainbow-me/rainbowkit",
   "version": "2.1.5",
   "description": "The best way to connect a wallet",
-  "files": [
-    "dist",
-    "styles.css",
-    "wallets"
-  ],
+  "files": ["dist", "styles.css", "wallets"],
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
@@ -15,9 +11,7 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": [
-    "src/css/reset.css.ts"
-  ],
+  "sideEffects": ["src/css/reset.css.ts"],
   "engines": {
     "node": ">=12.4"
   },
@@ -31,14 +25,7 @@
     "typegen": "tsc --emitDeclarationOnly || true",
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
-  "keywords": [
-    "ens",
-    "ethereum",
-    "react",
-    "react-hook",
-    "hooks",
-    "blockchain"
-  ],
+  "keywords": ["ens", "ethereum", "react", "react-hook", "hooks", "blockchain"],
   "author": "Rainbow",
   "license": "MIT",
   "peerDependencies": {

@@ -2,8 +2,8 @@ import {
   Head,
   Html,
   Main,
-  NextScript,
   default as NextDocument,
+  NextScript,
 } from 'next/document';
 import React from 'react';
 

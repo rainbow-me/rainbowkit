@@ -1,14 +1,18 @@
 import { calc } from '@vanilla-extract/css-utils';
 import {
-  ConditionalValue,
-  RequiredConditionalValue,
+  type ConditionalValue,
+  type RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,
   defineProperties,
 } from '@vanilla-extract/sprinkles';
 
-import { Breakpoint, breakpointNames, breakpoints } from './breakpoints';
+import {
+  type Breakpoint,
+  type breakpointNames,
+  breakpoints,
+} from './breakpoints';
 import { vars } from './vars.css';
 
 // Ensure reset has lowest specificity

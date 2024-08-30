@@ -1,5 +1,5 @@
 import { isAndroid, isIOS } from '../../../utils/isMobile';
-import { DefaultWalletOptions, Wallet } from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,

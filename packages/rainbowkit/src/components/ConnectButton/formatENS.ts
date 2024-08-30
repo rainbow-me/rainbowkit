@@ -1,4 +1,4 @@
-import { GetEnsNameReturnType } from 'viem';
+import type { GetEnsNameReturnType } from 'viem';
 
 export function formatENS(name: GetEnsNameReturnType): string {
   if (!name) return '';

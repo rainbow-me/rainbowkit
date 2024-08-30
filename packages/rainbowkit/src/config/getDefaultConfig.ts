@@ -1,5 +1,5 @@
 import type { Transport } from 'viem';
-import { http, CreateConfigParameters } from 'wagmi';
+import { http, type CreateConfigParameters } from 'wagmi';
 import { createConfig } from 'wagmi';
 import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
 import type { WalletList } from '../wallets/Wallet';

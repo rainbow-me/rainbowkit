@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  ResponsiveValue,
+  type ResponsiveValue,
   mapResponsiveValue,
   normalizeResponsiveValue,
 } from '../../css/sprinkles.css';

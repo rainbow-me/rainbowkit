@@ -1,6 +1,6 @@
-import clsx, { ClassValue } from 'clsx';
-import * as React from 'react';
-import { Atoms, atoms } from '../../css/atoms';
+import clsx, { type ClassValue } from 'clsx';
+import React from 'react';
+import { type Atoms, atoms } from '../../css/atoms';
 import { sprinkles } from '../../css/sprinkles.css';
 
 type HTMLProperties<T = HTMLElement> = Omit<

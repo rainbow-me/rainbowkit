@@ -4,7 +4,7 @@ import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { docsRoutes } from 'lib/docsRoutes';
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
 import React from 'react';
-import { Doc, allDocs } from '.contentlayer/generated';
+import { type Doc, allDocs } from '.contentlayer/generated';
 
 type DocPageProps = { doc: Doc; sectionName: string };
 

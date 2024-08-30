@@ -1,4 +1,4 @@
-import { GetEnsNameReturnType, normalize } from 'viem/ens';
+import { type GetEnsNameReturnType, normalize } from 'viem/ens';
 import { useEnsAvatar } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { useIsMainnetConfigured } from './useIsMainnetConfigured';

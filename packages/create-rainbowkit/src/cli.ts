@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { createRequire } from 'module';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
 import { Command } from 'commander';
 import cpy from 'cpy';

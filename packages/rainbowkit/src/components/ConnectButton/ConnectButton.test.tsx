@@ -3,7 +3,7 @@ import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { mainnet } from 'wagmi/chains';
 import { renderWithProviders } from '../../../test';
-import { Locale } from '../../locales';
+import type { Locale } from '../../locales';
 import { ConnectButton } from './ConnectButton';
 
 describe('<ConnectButton />', () => {

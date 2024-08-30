@@ -1,4 +1,4 @@
-import { RainbowKitWalletConnectParameters } from './Wallet';
+import type { RainbowKitWalletConnectParameters } from './Wallet';
 
 interface ComputeMetaDataParameters {
   appName: string;

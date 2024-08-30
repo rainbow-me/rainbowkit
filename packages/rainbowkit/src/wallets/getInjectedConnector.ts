@@ -1,7 +1,7 @@
 import { createConnector } from 'wagmi';
 import { injected } from 'wagmi/connectors';
-import { WalletProviderFlags, WindowProvider } from '../types/utils';
-import { CreateConnector, WalletDetailsParams } from './Wallet';
+import type { WalletProviderFlags, WindowProvider } from '../types/utils';
+import type { CreateConnector, WalletDetailsParams } from './Wallet';
 
 /*
  * Returns the explicit window provider that matches the flag and the flag is true

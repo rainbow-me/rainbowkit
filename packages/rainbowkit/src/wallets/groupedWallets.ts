@@ -1,4 +1,4 @@
-import { WalletInstance } from './Wallet';
+import type { WalletInstance } from './Wallet';
 
 export const groupedWallets = (
   recentWallets: WalletInstance[],

@@ -14,7 +14,7 @@
     "build": "pnpm --recursive --parallel --filter=!rainbowkit-next-app --filter=!generated-test-app build",
     "start": "pnpm dev",
     "lint": "biome lint . && pnpm format:check && pnpm --recursive typecheck",
-    "lint:fix": "biome lint . --apply && pnpm format:fix",
+    "lint:fix": "biome lint . --write && pnpm format:fix",
     "format:check": "biome check .",
     "format:fix": "biome format . --write",
     "link:cli": "cd packages/create-rainbowkit && pnpm link --global",
@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "1.4.1",
+    "@biomejs/biome": "1.8.3",
     "@changesets/cli": "2.27.7",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
@@ -77,8 +77,6 @@
   },
   "packageManager": "pnpm@9.9.0",
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "onlyBuiltDependencies": ["esbuild"]
   }
 }

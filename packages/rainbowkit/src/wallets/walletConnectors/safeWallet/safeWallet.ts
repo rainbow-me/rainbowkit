@@ -1,6 +1,6 @@
 import { createConnector } from 'wagmi';
 import { safe } from 'wagmi/connectors';
-import { Wallet, WalletDetailsParams } from '../../Wallet';
+import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export const safeWallet = (): Wallet => ({
   id: 'safe',

@@ -1,4 +1,4 @@
-import { ThemeVars } from '../css/sprinkles.css';
+import type { ThemeVars } from '../css/sprinkles.css';
 
 // Source: https://css-tricks.com/snippets/css/system-font-stack
 // Note that quotes have been removed to avoid escaping and server/client mismatch issues

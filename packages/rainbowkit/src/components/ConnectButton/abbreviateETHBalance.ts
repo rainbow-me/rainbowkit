@@ -15,7 +15,9 @@ export function abbreviateETHBalance(number: number): string {
   if (number < 1) return toPrecision(number, 3);
   if (number < 10 ** 2) return toPrecision(number, 2);
   if (number < 10 ** 4)
-    return new Intl.NumberFormat().format(parseFloat(toPrecision(number, 1)));
+    return new Intl.NumberFormat().format(
+      Number.parseFloat(toPrecision(number, 1)),
+    );
 
   const decimalsDivisor = 10 ** 1; // 1 decimal place
 

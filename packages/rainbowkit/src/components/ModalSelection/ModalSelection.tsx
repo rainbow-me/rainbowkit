@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
@@ -34,9 +34,9 @@ export const ModalSelection = ({
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
-  const [isMouseOver, setIsMouseOver] = useState<boolean>(false);
+  const [isMouseOver, setIsMouseOver] = React.useState<boolean>(false);
 
-  const { i18n } = useContext(I18nContext);
+  const { i18n } = React.useContext(I18nContext);
 
   return (
     <Box

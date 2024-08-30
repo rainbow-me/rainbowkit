@@ -1,5 +1,5 @@
-import clsx, { ClassValue } from 'clsx';
-import { Atoms, atoms } from 'css/atoms';
+import clsx, { type ClassValue } from 'clsx';
+import { type Atoms, atoms } from 'css/atoms';
 import { sprinkles } from 'css/sprinkles.css';
 import React from 'react';
 

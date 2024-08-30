@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import { RecipeVariants, recipe } from '@vanilla-extract/recipes';
+import { type RecipeVariants, recipe } from '@vanilla-extract/recipes';
 import { atoms } from 'css/atoms';
-import { Sprinkles } from 'css/sprinkles.css';
+import type { Sprinkles } from 'css/sprinkles.css';
 import { vars } from 'css/vars.css';
 
 const size = {

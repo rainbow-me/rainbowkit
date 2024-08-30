@@ -1,5 +1,5 @@
 import { isAndroid } from '../../../utils/isMobile';
-import { DefaultWalletOptions, Wallet } from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type OmniWalletOptions = DefaultWalletOptions;

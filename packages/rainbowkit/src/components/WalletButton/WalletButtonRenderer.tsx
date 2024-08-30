@@ -1,5 +1,5 @@
 import React, {
-  ReactNode,
+  type ReactNode,
   useContext,
   useEffect,
   useMemo,
@@ -15,7 +15,7 @@ import {
   getLatestWalletId,
 } from '../../wallets/latestWalletId';
 import {
-  WalletConnector,
+  type WalletConnector,
   useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import {

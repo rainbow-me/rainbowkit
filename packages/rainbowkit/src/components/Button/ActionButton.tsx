@@ -1,8 +1,8 @@
 import React from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { isMobile } from '../../utils/isMobile';
-import { Box, BoxProps } from '../Box/Box';
-import { Text, TextProps } from '../Text/Text';
+import { Box, type BoxProps } from '../Box/Box';
+import { Text, type TextProps } from '../Text/Text';
 
 type Size = 'small' | 'medium' | 'large';
 

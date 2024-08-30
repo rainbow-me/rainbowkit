@@ -1,7 +1,7 @@
 import type { CreateConnectorFn } from 'wagmi';
 import type { WalletList } from './Wallet';
 import {
-  ConnectorsForWalletsParameters,
+  type ConnectorsForWalletsParameters,
   connectorsForWallets,
 } from './connectorsForWallets';
 import { coinbaseWallet } from './walletConnectors/coinbaseWallet/coinbaseWallet';

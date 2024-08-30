@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import { CreateConnector } from './Wallet';
+import type { CreateConnector } from './Wallet';
 import { getWalletConnectConnector } from './getWalletConnectConnector';
 
 /*

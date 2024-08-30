@@ -150,7 +150,7 @@ export const components = {
         const code = codeElement!.innerText.replace(/\n{2,}/g, '\n');
         setCode(code);
       }
-    }, [preRef, setCode]);
+    }, []);
 
     React.useEffect(() => {
       if (requestCopy) copy(code!);

@@ -1,12 +1,12 @@
 import React, {
-  ReactNode,
+  type ReactNode,
   createContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
 
-import { Locale, i18n, setLocale } from '../../locales';
+import { type Locale, i18n, setLocale } from '../../locales';
 import { detectedBrowserLocale } from '../../utils/locale';
 
 export const I18nContext = createContext<{ i18n: typeof i18n }>({ i18n });

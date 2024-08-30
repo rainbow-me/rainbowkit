@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import { useAccount, useConfig } from 'wagmi';
 import { normalizeResponsiveValue } from '../../css/sprinkles.css';
 import { useIsMounted } from '../../hooks/useIsMounted';
@@ -7,7 +7,7 @@ import { useRecentTransactions } from '../../transactions/useRecentTransactions'
 import { isMobile } from '../../utils/isMobile';
 import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
-  AuthenticationStatus,
+  type AuthenticationStatus,
   useAuthenticationStatus,
 } from '../RainbowKitProvider/AuthenticationContext';
 import {
@@ -106,7 +106,7 @@ export function ConnectButtonRenderer({
   });
 
   const displayBalance = balance
-    ? `${abbreviateETHBalance(parseFloat(balance.formatted))} ${balance.symbol}`
+    ? `${abbreviateETHBalance(Number.parseFloat(balance.formatted))} ${balance.symbol}`
     : undefined;
 
   const { openConnectModal } = useConnectModal();

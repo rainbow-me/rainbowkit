@@ -5,7 +5,7 @@ import { Text } from 'components/Text/Text';
 import { useTranslations } from 'next-intl';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import type React from 'react';
 import { link } from './Sidebar.css';
 import { allDocs } from '.contentlayer/generated';
 

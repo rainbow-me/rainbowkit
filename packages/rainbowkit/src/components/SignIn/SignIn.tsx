@@ -29,7 +29,6 @@ export function SignIn({
 
   const authAdapter = useAuthenticationAdapter();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: correct setState usage
   const getNonce = useCallback(async () => {
     try {
       const nonce = await authAdapter.getNonce();

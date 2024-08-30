@@ -1,20 +1,28 @@
-import React, { ReactNode, createContext, useContext } from 'react';
+import React, { type ReactNode, createContext, useContext } from 'react';
 import { useAccountEffect } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
 import { cssStringFromTheme } from '../../css/cssStringFromTheme';
-import { ThemeVars } from '../../css/sprinkles.css';
-import { Locale } from '../../locales';
+import type { ThemeVars } from '../../css/sprinkles.css';
+import type { Locale } from '../../locales';
 import { lightTheme } from '../../themes/lightTheme';
 import { TransactionStoreProvider } from '../../transactions/TransactionStoreContext';
-import { AppContext, DisclaimerComponent, defaultAppInfo } from './AppContext';
-import { AvatarComponent, AvatarContext, defaultAvatar } from './AvatarContext';
+import {
+  AppContext,
+  type DisclaimerComponent,
+  defaultAppInfo,
+} from './AppContext';
+import {
+  type AvatarComponent,
+  AvatarContext,
+  defaultAvatar,
+} from './AvatarContext';
 import { CoolModeContext } from './CoolModeContext';
 import { I18nProvider } from './I18nContext';
 import { ModalProvider } from './ModalContext';
 import {
   ModalSizeOptions,
   ModalSizeProvider,
-  ModalSizes,
+  type ModalSizes,
 } from './ModalSizeContext';
 import { RainbowKitChainProvider } from './RainbowKitChainContext';
 import { ShowBalanceProvider } from './ShowBalanceContext';

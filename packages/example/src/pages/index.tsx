@@ -7,18 +7,18 @@ import {
   useChainModal,
   useConnectModal,
 } from '@rainbow-me/rainbowkit';
-import { GetServerSideProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
-import React, { ComponentProps, useEffect, useState } from 'react';
-import { Address, parseEther } from 'viem';
+import React, { type ComponentProps, useEffect, useState } from 'react';
+import { type Address, parseEther } from 'viem';
 import {
   useAccount,
   useSendTransaction,
   useSignMessage,
   useSignTypedData,
 } from 'wagmi';
-import { AppContextProps } from '../lib/AppContextProps';
+import type { AppContextProps } from '../lib/AppContextProps';
 import { getAuthOptions } from './api/auth/[...nextauth]';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {

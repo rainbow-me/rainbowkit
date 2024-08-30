@@ -1,4 +1,4 @@
-import { DefaultWalletOptions, Wallet } from '../../Wallet';
+import type { DefaultWalletOptions, Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type BitverseWalletOptions = DefaultWalletOptions;

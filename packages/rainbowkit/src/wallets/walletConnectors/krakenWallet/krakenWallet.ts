@@ -1,6 +1,6 @@
-import { Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import { DefaultWalletOptions } from './../../Wallet';
+import type { DefaultWalletOptions } from './../../Wallet';
 
 export type KrakenWalletOptions = DefaultWalletOptions;
 

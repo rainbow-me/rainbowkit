@@ -25,6 +25,7 @@ const localStorageMock: Storage = {
 };
 
 beforeAll((): void => {
+  // biome-ignore lint/suspicious/noGlobalAssign: TODO
   localStorage = localStorageMock;
 });
 

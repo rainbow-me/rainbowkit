@@ -1,5 +1,5 @@
 import { isMobile } from '../../../utils/isMobile';
-import {
+import type {
   DefaultWalletOptions,
   InstructionStepName,
   Wallet,

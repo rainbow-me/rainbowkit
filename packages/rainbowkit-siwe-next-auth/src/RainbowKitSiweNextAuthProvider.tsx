@@ -3,7 +3,7 @@ import {
   createAuthenticationAdapter,
 } from '@rainbow-me/rainbowkit';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
-import React, { ReactNode, useMemo } from 'react';
+import React, { type ReactNode, useMemo } from 'react';
 import { SiweMessage } from 'siwe';
 
 type UnconfigurableMessageOptions = {
