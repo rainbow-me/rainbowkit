@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useRequestWalletConnectUri } from '../../hooks/useRequestWalletConnectUri';
 import { isMobile } from '../../utils/isMobile';
 import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
 import { DesktopOptions } from './DesktopOptions';
@@ -7,6 +8,8 @@ import { MobileStatus } from './MobileStatus';
 
 export default function ConnectOptions({ onClose }: { onClose: () => void }) {
   const { connector } = useContext(WalletButtonContext);
+  // Prefetch WalletConnect URI
+  useRequestWalletConnectUri();
 
   return isMobile() ? (
     connector ? (
