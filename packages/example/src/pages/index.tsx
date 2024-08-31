@@ -11,7 +11,7 @@ import { GetServerSideProps } from 'next';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { ComponentProps, useEffect, useState } from 'react';
-import { Address, parseEther } from 'viem';
+import { type Address, parseEther } from 'viem';
 import {
   useAccount,
   useSendTransaction,

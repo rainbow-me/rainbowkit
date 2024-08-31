@@ -74,7 +74,6 @@ export function SignIn({
       }));
 
       const message = authAdapter.createMessage({ address, chainId, nonce });
-
       let signature: string;
 
       try {

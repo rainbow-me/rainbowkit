@@ -1,5 +1,5 @@
 import 'iron-session';
-import { Address } from 'viem';
+import { type Address } from 'viem';
 
 declare module 'iron-session' {
   interface IronSessionData {
