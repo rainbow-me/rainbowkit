@@ -300,7 +300,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         ? WalletStep.Connect
         : compactModeEnabled
           ? WalletStep.None
-          : WalletStep.Get;
+          : initialWalletStep;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
