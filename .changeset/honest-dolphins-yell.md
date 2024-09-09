@@ -15,4 +15,4 @@
 "example": patch
 ---
 
-Upgraded `wagmi` to `^2.12.8`
+Upgraded `wagmi` to `^2.12.9`
