@@ -86,6 +86,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const wallets = useWalletConnectors(mergeEIP6963WithRkConnectors)
     .filter((wallet) => wallet.ready || !!wallet.extensionDownloadUrl)
     .sort((a, b) => a.groupIndex - b.groupIndex);
+  const unfilteredWallets = useWalletConnectors();
 
   const groupedWallets = groupBy(wallets, (wallet) => wallet.groupName);
 
@@ -172,8 +173,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   };
 
   const getWalletDownload = (id: string) => {
-    setSelectedOptionId(id);
-    const sWallet = wallets.find((w) => id === w.id);
+    const sWallet = unfilteredWallets.find((w) => id === w.id);
     const isMobile = sWallet?.downloadUrls?.qrCode;
     const isDesktop = !!sWallet?.desktopDownloadUrl;
     const isExtension = !!sWallet?.extensionDownloadUrl;
@@ -300,7 +300,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
         ? WalletStep.Connect
         : compactModeEnabled
           ? WalletStep.None
-          : null;
+          : initialWalletStep;
       break;
     case WalletStep.Download:
       walletContent = selectedWallet && (
