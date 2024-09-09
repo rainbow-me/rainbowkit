@@ -55,9 +55,9 @@
     "@vanilla-extract/css": "1.15.5",
     "@vanilla-extract/dynamic": "2.1.2",
     "@vanilla-extract/sprinkles": "1.6.3",
-    "clsx": "2.1.0",
-    "qrcode": "1.5.3",
-    "react-remove-scroll": "2.5.7",
+    "clsx": "2.1.1",
+    "qrcode": "1.5.4",
+    "react-remove-scroll": "2.6.0",
     "ua-parser-js": "^1.0.37"
   },
   "repository": {
