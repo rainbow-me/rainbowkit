@@ -1,5 +1,16 @@
 # with-next-siwe-next-auth
 
+## 0.0.78
+
+### Patch Changes
+
+- 17c22b2: Upgraded `wagmi` to `^2.12.9`
+- Updated dependencies [63d8386]
+- Updated dependencies [8d9a4e6]
+- Updated dependencies [d46637a]
+  - @rainbow-me/rainbowkit@2.1.6
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.4.1
+
 ## 0.0.77
 
 ### Patch Changes
