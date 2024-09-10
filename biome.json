@@ -4,6 +4,7 @@
     "ignore": [
       "CHANGELOG.md",
       "pnpm-lock.yaml",
+      "package.json",
       "tsconfig.json",
       "tsconfig.*.json",
       "examples/*",
