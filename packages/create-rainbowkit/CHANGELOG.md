@@ -1,5 +1,11 @@
 # @rainbow-me/create-rainbowkit
 
+## 0.3.7
+
+### Patch Changes
+
+- 17c22b2: Upgraded `wagmi` to `^2.12.9`
+
 ## 0.3.6
 
 ### Patch Changes

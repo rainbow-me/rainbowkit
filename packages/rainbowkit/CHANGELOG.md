@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.6
+
+### Patch Changes
+
+- 63d8386: Added Valora support with `valoraWallet` wallet connector
+- 8d9a4e6: Fixed an issue where some options in the "Get Wallet" flow would appear as a blank page, or lack a back button to return to the Connect flow.
+- d46637a: Added `safeWallet` wallet connector to `getDefaultConfig` by default to improve the Safe Wallet app browser connection flow with a Safe button included by default in the wallet list
+
 ## 2.1.5
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # with-next-rainbow-button
 
+## 0.0.24
+
+### Patch Changes
+
+- 17c22b2: Upgraded `wagmi` to `^2.12.9`
+  - @rainbow-me/rainbow-button@0.2.15
+
 ## 0.0.23
 
 ### Patch Changes

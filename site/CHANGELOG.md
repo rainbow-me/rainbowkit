@@ -1,5 +1,15 @@
 # site
 
+## 0.0.105
+
+### Patch Changes
+
+- 63d8386: Added Valora support with `valoraWallet` wallet connector
+- Updated dependencies [63d8386]
+- Updated dependencies [8d9a4e6]
+- Updated dependencies [d46637a]
+  - @rainbow-me/rainbowkit@2.1.6
+
 ## 0.0.104
 
 ### Patch Changes
