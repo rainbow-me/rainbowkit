@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import * as styles from './Code.css';
 
 type Props = {

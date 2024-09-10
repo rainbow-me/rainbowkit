@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import { Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import { walletConnectWallet } from './walletConnectWallet';
 
 describe('walletConnectWallet', () => {

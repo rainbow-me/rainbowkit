@@ -1,4 +1,4 @@
-import { type EIP1193Provider } from 'viem';
+import type { EIP1193Provider } from 'viem';
 
 /** Combines members of an intersection into a readable type. */
 export type Evaluate<type> = { [key in keyof type]: type[key] } & unknown;

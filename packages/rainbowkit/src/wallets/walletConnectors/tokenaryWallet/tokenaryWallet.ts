@@ -1,5 +1,5 @@
 import { isSafari } from '../../../utils/browsers';
-import { Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,

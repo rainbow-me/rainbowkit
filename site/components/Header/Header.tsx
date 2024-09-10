@@ -1,6 +1,6 @@
 import {
   ConnectButton,
-  Locale,
+  type Locale,
   RainbowKitProvider,
   darkTheme,
   lightTheme,
@@ -11,7 +11,7 @@ import { Text } from 'components/Text/Text';
 import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import type React from 'react';
 import pckg from '../../../packages/rainbowkit/package.json';
 import { header, logo, row } from './Header.css';
 

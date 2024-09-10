@@ -9,7 +9,7 @@ import { touchableStyles } from '../../css/touchableStyles';
 import { isSafari } from '../../utils/browsers';
 import { groupBy } from '../../utils/groupBy';
 import {
-  WalletConnector,
+  type WalletConnector,
   useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { Box } from '../Box/Box';

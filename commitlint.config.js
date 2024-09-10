@@ -1,6 +1,6 @@
-const defaultConfig = require('@commitlint/config-conventional');
+import defaultConfig from '@commitlint/config-conventional';
 
-module.exports = {
+const Configuration = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     ...defaultConfig.rules,
@@ -22,3 +22,5 @@ module.exports = {
     ],
   },
 };
+
+export default Configuration;

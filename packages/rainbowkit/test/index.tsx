@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render } from '@testing-library/react';
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import { http, type Chain } from 'viem';
 import { WagmiProvider, createConfig } from 'wagmi';
 import {
@@ -16,7 +16,7 @@ import {
 import { mock } from 'wagmi/connectors';
 import type { RainbowKitProviderProps } from '../src/components/RainbowKitProvider/RainbowKitProvider';
 import { RainbowKitProvider } from '../src/components/RainbowKitProvider/RainbowKitProvider';
-import { WalletList } from '../src/wallets/Wallet';
+import type { WalletList } from '../src/wallets/Wallet';
 import { connectorsForWallets } from '../src/wallets/connectorsForWallets';
 import { mockedAccounts } from './mockWallet';
 

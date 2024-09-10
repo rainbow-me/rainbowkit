@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 // Custom loader for JSON files

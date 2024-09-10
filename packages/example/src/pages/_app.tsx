@@ -9,22 +9,22 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import {
-  AvatarComponent,
-  DisclaimerComponent,
-  Locale,
+  type AvatarComponent,
+  type DisclaimerComponent,
+  type Locale,
   RainbowKitProvider,
   darkTheme,
   lightTheme,
   midnightTheme,
 } from '@rainbow-me/rainbowkit';
 import {
-  GetSiweMessageOptions,
+  type GetSiweMessageOptions,
   RainbowKitSiweNextAuthProvider,
 } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, useDisconnect } from 'wagmi';
 
-import { AppContextProps } from '../lib/AppContextProps';
+import type { AppContextProps } from '../lib/AppContextProps';
 import { config } from '../wagmi';
 
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
@@ -324,7 +324,7 @@ function RainbowKitApp({
                           onChange={(e) =>
                             setInitialChainId(
                               e.target.value
-                                ? parseInt(e.target.value, 10)
+                                ? Number.parseInt(e.target.value, 10)
                                 : undefined,
                             )
                           }

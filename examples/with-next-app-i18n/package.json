@@ -9,21 +9,21 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "workspace:*",
-    "next": "^14.2.3",
-    "next-intl": "^3.9.4",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
+    "next": "^14.2.9",
+    "next-intl": "^3.19.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "viem": "2.17.0",
-    "wagmi": "^2.12.0",
+    "wagmi": "^2.12.9",
     "@tanstack/react-query": "^5.51.11"
   },
   "devDependencies": {
-    "@types/node": "^18.19.3",
-    "@types/react": "^18.3.0",
-    "next": "^14.2.3",
-    "typescript": "5.4.2"
+    "@types/node": "^20.14.8",
+    "@types/react": "^18.3.5",
+    "next": "^14.2.9",
+    "typescript": "5.5.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }

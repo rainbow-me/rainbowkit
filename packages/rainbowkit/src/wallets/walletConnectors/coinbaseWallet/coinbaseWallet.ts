@@ -1,10 +1,10 @@
-import { CreateConnectorFn, createConnector } from 'wagmi';
+import { type CreateConnectorFn, createConnector } from 'wagmi';
 import {
-  CoinbaseWalletParameters,
+  type CoinbaseWalletParameters,
   coinbaseWallet as coinbaseConnector,
 } from 'wagmi/connectors';
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet, WalletDetailsParams } from '../../Wallet';
+import type { Wallet, WalletDetailsParams } from '../../Wallet';
 
 export interface CoinbaseWalletOptions {
   appName: string;

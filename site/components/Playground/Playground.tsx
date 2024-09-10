@@ -1,6 +1,6 @@
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import {
-  Locale,
+  type Locale,
   RainbowKitProvider,
   __private__,
   darkTheme,
@@ -17,7 +17,8 @@ import { isAndroid } from 'lib/isMobile';
 import { useIsMounted } from 'lib/useIsMounted';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { CompactIcon } from './CompactIcon';
 import { radio, ring } from './Playground.css';
 import { WideIcon } from './WideIcon';

@@ -1,5 +1,5 @@
 import { cssObjectFromTheme } from './cssObjectFromTheme';
-import { ThemeVars } from './sprinkles.css';
+import type { ThemeVars } from './sprinkles.css';
 
 export function cssStringFromTheme(
   theme: ThemeVars | (() => ThemeVars),

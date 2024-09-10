@@ -1,7 +1,7 @@
 import {
-  AccentColor,
-  AccentColorPreset,
-  ThemeOptions,
+  type AccentColor,
+  type AccentColorPreset,
+  type ThemeOptions,
   baseTheme,
 } from './baseTheme';
 

@@ -2,10 +2,7 @@
   "name": "@rainbow-me/create-rainbowkit",
   "description": "Scaffold a new RainbowKit project",
   "version": "0.3.6",
-  "files": [
-    "dist",
-    "templates"
-  ],
+  "files": ["dist", "templates"],
   "license": "MIT",
   "type": "module",
   "bin": {

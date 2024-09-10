@@ -19,7 +19,7 @@ import { allDocsRoutes, docsRoutes } from 'lib/docsRoutes';
 import { useCoolMode } from 'lib/useCoolMode';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Ref, useCallback, useEffect } from 'react';
+import React, { type Ref, useCallback, useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import {
   content,
@@ -57,7 +57,7 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   const handleRouteChange = useCallback(() => {
     setIsOpen(false);
-  }, [setIsOpen]);
+  }, []);
 
   // Listen to route change so we can programatically close
   // the docs mobile menu when changing routes.

@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { GetEnsNameReturnType } from 'viem';
-import { GetEnsAvatarReturnType } from 'viem/actions';
-import { useAccount } from 'wagmi';
-import { useProfile } from '../../hooks/useProfile';
+import type { GetEnsNameReturnType } from 'viem';
+import type { GetEnsAvatarReturnType } from 'viem/actions';
+import type { useAccount } from 'wagmi';
+import type { useProfile } from '../../hooks/useProfile';
 import { isMobile } from '../../utils/isMobile';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
@@ -62,7 +62,7 @@ export function ProfileDetails({
   const accountName = ensName ? formatENS(ensName) : formatAddress(address);
   const ethBalance = balance?.formatted;
   const displayBalance = ethBalance
-    ? abbreviateETHBalance(parseFloat(ethBalance))
+    ? abbreviateETHBalance(Number.parseFloat(ethBalance))
     : undefined;
   const titleId = 'rk_profile_title';
   const mobile = isMobile();

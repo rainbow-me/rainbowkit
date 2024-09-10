@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  SpyInstance,
+  type SpyInstance,
   afterAll,
   beforeAll,
   describe,

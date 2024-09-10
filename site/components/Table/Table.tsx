@@ -20,7 +20,7 @@ function TableRow({
   return (
     <Box as="tr" key={key}>
       {data.map((value, i) => (
-        <Box as="td" className={td}>
+        <Box as="td" className={td} key={i}>
           {dataTypes[i] === 'code' ? (
             <Code>{value}</Code>
           ) : (
@@ -56,8 +56,8 @@ export function Table({
       <Box as="table" className={table}>
         <Box as="thead">
           <Box as="tr">
-            {header.map((headerName) => (
-              <Box as="th" className={th}>
+            {header.map((headerName, i) => (
+              <Box as="th" className={th} key={i}>
                 {headerName}
               </Box>
             ))}

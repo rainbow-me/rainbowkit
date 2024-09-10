@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box } from '../Box/Box';
 import { SpinnerIcon } from '../Icons/Spinner';
-import { AvatarComponent } from '../RainbowKitProvider/AvatarContext';
+import type { AvatarComponent } from '../RainbowKitProvider/AvatarContext';
 import { emojiAvatarForAddress } from './emojiAvatarForAddress';
 
 export const EmojiAvatar: AvatarComponent = ({ address, ensImage, size }) => {

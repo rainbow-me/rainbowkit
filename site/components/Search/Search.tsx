@@ -1,11 +1,12 @@
 import { DocSearchModal } from '@docsearch/react';
 import clsx from 'clsx';
-import { Box, BoxProps } from 'components/Box/Box';
+import { Box, type BoxProps } from 'components/Box/Box';
 import { useActionKey } from 'lib/useActionKey';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, {
+import type React from 'react';
+import {
   createContext,
   useCallback,
   useContext,

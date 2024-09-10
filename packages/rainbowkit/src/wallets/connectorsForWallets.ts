@@ -59,10 +59,8 @@ export const connectorsForWallets = (
     appIcon,
   });
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  walletList.forEach(({ groupName, wallets }, groupIndex) => {
-    // biome-ignore lint/complexity/noForEach: TODO
-    wallets.forEach((createWallet) => {
+  for (const [groupIndex, { groupName, wallets }] of walletList.entries()) {
+    for (const createWallet of wallets) {
       index++;
 
       const wallet = createWallet({
@@ -101,8 +99,8 @@ export const connectorsForWallets = (
       } else {
         visibleWallets.push(walletListItem);
       }
-    });
-  });
+    }
+  }
 
   // Filtering out duplicated wallets in case there is any.
   // We process the known visible wallets first so that the potentially

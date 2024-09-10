@@ -1,11 +1,11 @@
 import { isIOS } from '../../../utils/isMobile';
-import { Wallet } from '../../Wallet';
+import type { Wallet } from '../../Wallet';
 import {
   getInjectedConnector,
   hasInjectedProvider,
 } from '../../getInjectedConnector';
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import { DefaultWalletOptions } from './../../Wallet';
+import type { DefaultWalletOptions } from './../../Wallet';
 
 export type ZerionWalletOptions = DefaultWalletOptions;
 

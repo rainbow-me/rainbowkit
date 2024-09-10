@@ -2,18 +2,8 @@
   "name": "@rainbow-me/rainbow-button",
   "description": "Rainbow connector button",
   "version": "0.2.14",
-  "files": [
-    "dist",
-    "styles.css"
-  ],
-  "keywords": [
-    "rainbow",
-    "wallet",
-    "ethereum",
-    "react",
-    "react-hook",
-    "hooks"
-  ],
+  "files": ["dist", "styles.css"],
+  "keywords": ["rainbow", "wallet", "ethereum", "react", "react-hook", "hooks"],
   "author": "Rainbow",
   "license": "MIT",
   "type": "module",

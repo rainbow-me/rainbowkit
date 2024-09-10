@@ -2,7 +2,8 @@ import { Box } from 'components/Box/Box';
 import { Header } from 'components/Header/Header';
 import { Wrapper } from 'components/Wrapper/Wrapper';
 import { useCoolMode } from 'lib/useCoolMode';
-import React, { Ref } from 'react';
+import type React from 'react';
+import type { Ref } from 'react';
 import { useAccount } from 'wagmi';
 import { content } from './GuidesLayout.css';
 

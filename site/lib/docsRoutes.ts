@@ -1,4 +1,4 @@
-import { Doc } from '.contentlayer/generated';
+import type { Doc } from '.contentlayer/generated';
 
 type PartialDoc = Pick<Doc, 'slug'>;
 

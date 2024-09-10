@@ -1,6 +1,6 @@
 import { createGlobalThemeContract } from '@vanilla-extract/css';
 import {
-  RequiredConditionalValue,
+  type RequiredConditionalValue,
   createMapValueFn,
   createNormalizeValueFn,
   createSprinkles,

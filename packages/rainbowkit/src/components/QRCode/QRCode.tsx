@@ -1,7 +1,7 @@
 import QRCodeUtil from 'qrcode';
-import React, { ReactElement, useMemo } from 'react';
+import React, { type ReactElement, useMemo } from 'react';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
 
 const generateMatrix = (
@@ -42,7 +42,7 @@ export function QRCode({
   uri,
 }: Props) {
   const padding: NonNullable<BoxProps['padding']> = '20';
-  const size = sizeProp - parseInt(padding, 10) * 2;
+  const size = sizeProp - Number.parseInt(padding, 10) * 2;
 
   const dots = useMemo(() => {
     const dots: ReactElement[] = [];
@@ -78,9 +78,7 @@ export function QRCode({
     const matrixMiddleStart = matrix.length / 2 - clearArenaSize / 2;
     const matrixMiddleEnd = matrix.length / 2 + clearArenaSize / 2 - 1;
 
-    // biome-ignore lint/complexity/noForEach: TODO
     matrix.forEach((row: QRCodeUtil.QRCode[], i: number) => {
-      // biome-ignore lint/complexity/noForEach: TODO
       row.forEach((_: any, j: number) => {
         if (matrix[i][j]) {
           if (

@@ -1,17 +1,17 @@
-import React, { ReactNode, useContext, useEffect } from 'react';
+import React, { type ReactNode, useContext, useEffect } from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import { BrowserType, getBrowser, isSafari } from '../../utils/browsers';
 import { getGradientRGBAs } from '../../utils/colors';
 import { PlatformType, getPlatform } from '../../utils/platforms';
-import { InstructionStepName } from '../../wallets/Wallet';
+import type { InstructionStepName } from '../../wallets/Wallet';
 import {
-  WalletConnector,
+  type WalletConnector,
   useWalletConnectors,
 } from '../../wallets/useWalletConnectors';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { loadImages } from '../AsyncImage/useAsyncImage';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { ActionButton } from '../Button/ActionButton';
 import { ConnectIcon, preloadConnectIcon } from '../Icons/Connect';
 import { CreateIcon, preloadCreateIcon } from '../Icons/Create';

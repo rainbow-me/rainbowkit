@@ -1,6 +1,6 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { type ReactNode, useContext } from 'react';
 import { isMobile } from '../../utils/isMobile';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import {
   ModalSizeContext,
   ModalSizeOptions,

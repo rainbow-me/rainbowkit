@@ -1,12 +1,12 @@
 import React, {
-  ReactNode,
+  type ReactNode,
   createContext,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { Config, useAccount, useAccountEffect } from 'wagmi';
+import { type Config, useAccount, useAccountEffect } from 'wagmi';
 
 export type AuthenticationStatus =
   | 'loading'

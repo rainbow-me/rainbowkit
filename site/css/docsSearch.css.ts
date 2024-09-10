@@ -82,6 +82,10 @@ globalStyle('.DocSearch-MagnifierLabel svg', {
   display: 'none',
 });
 
+globalStyle('.DocSearch-VisuallyHiddenForAccessibility', {
+  display: 'none',
+});
+
 globalStyle('.DocSearch-Input', {
   backgroundColor: 'transparent',
   border: 'none',

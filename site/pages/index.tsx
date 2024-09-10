@@ -17,7 +17,7 @@ import { useCoolMode } from 'lib/useCoolMode';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/legacy/image';
 import NextLink from 'next/link';
-import React, { Ref, useState } from 'react';
+import React, { type Ref, useState } from 'react';
 import { useAccount } from 'wagmi';
 
 export async function getStaticProps(context: { locale: string }) {

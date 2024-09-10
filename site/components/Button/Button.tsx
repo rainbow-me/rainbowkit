@@ -1,6 +1,6 @@
-import { Theme } from 'css/types';
+import type { Theme } from 'css/types';
 import React from 'react';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import * as styles from './Button.css';
 
 type BaseProps = {
