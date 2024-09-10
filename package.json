@@ -42,7 +42,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@changesets/cli": "2.27.7",
+    "@changesets/cli": "2.27.8",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
