@@ -35,6 +35,7 @@ export const connectorsForWallets = (
     appUrl,
     appIcon,
   }: ConnectorsForWalletsParameters,
+  // TODO Reduce function complexity
 ): CreateConnectorFn[] => {
   if (!walletList.length) {
     throw new Error('No wallet list was provided');
@@ -59,10 +60,8 @@ export const connectorsForWallets = (
     appIcon,
   });
 
-  // biome-ignore lint/complexity/noForEach: TODO
-  walletList.forEach(({ groupName, wallets }, groupIndex) => {
-    // biome-ignore lint/complexity/noForEach: TODO
-    wallets.forEach((createWallet) => {
+  for (const [groupIndex, { groupName, wallets }] of walletList.entries()) {
+    for (const createWallet of wallets) {
       index++;
 
       const wallet = createWallet({
@@ -101,8 +100,8 @@ export const connectorsForWallets = (
       } else {
         visibleWallets.push(walletListItem);
       }
-    });
-  });
+    }
+  }
 
   // Filtering out duplicated wallets in case there is any.
   // We process the known visible wallets first so that the potentially
@@ -146,11 +145,10 @@ export const connectorsForWallets = (
           // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
           // showQrModal: true. This way we can let the user choose if they want to
           // connect via QR code or open the official walletConnect modal instead
-          ...(additionalRkParams ? additionalRkParams : {}),
+          ...additionalRkParams,
         }),
       };
     };
-
     const isWalletConnectConnector = walletMeta.id === 'walletConnect';
 
     if (isWalletConnectConnector) {

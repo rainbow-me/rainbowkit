@@ -8,7 +8,7 @@ import { Doc, allDocs } from '.contentlayer/generated';
 
 type DocPageProps = { doc: Doc; sectionName: string };
 
-export default function DocPage({ doc, sectionName }: DocPageProps) {
+export default function DocPage({ doc, sectionName }: Readonly<DocPageProps>) {
   const Component = useMDXComponent(doc.body.code);
   useLiveReload();
 
@@ -40,16 +40,17 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
   locale,
-}: { params: any; locale: any }) {
+}: {
+  params: any;
+  locale: any;
+}) {
   const doc = allDocs.find(
     (doc) => doc.slug === params.slug && doc.locale === locale,
   )!;
   const sectionName = docsRoutes.reduce((acc, curr) => {
     for (const page of curr.pages) {
       if (page.slug === params.slug) {
-        // biome-ignore lint/style/noParameterAssign: TODO
-        acc = doc.title;
-        break;
+        return doc.title;
       }
     }
     return acc;

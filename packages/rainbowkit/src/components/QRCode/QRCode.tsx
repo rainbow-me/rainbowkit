@@ -1,8 +1,26 @@
 import QRCodeUtil from 'qrcode';
-import React, { ReactElement, useMemo } from 'react';
+import React, { type ReactElement, useMemo } from 'react';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
-import { Box, BoxProps } from '../Box/Box';
+import { Box, type BoxProps } from '../Box/Box';
 import { QRCodeBackgroundClassName } from '../ConnectOptions/DesktopOptions.css';
+
+const DEFAULT_ECL: QRCodeUtil.QRCodeErrorCorrectionLevel = 'M';
+const DEFAULT_LOGO_MARGIN = 10;
+const DEFAULT_LOGO_SIZE = 50;
+const DEFAULT_SIZE = 200;
+const DEFAULT_PADDING: NonNullable<BoxProps['padding']> = '20';
+const CORNER_SQUARE_COUNT = 3;
+const CORNER_SQUARE_SIZE = 7;
+const LOGO_CLEAR_AREA_PADDING = 25;
+const DOT_SIZE_RATIO = 1 / 3;
+const BORDER_RADIUS_BASE = 5;
+const LOGO_BORDER_RADIUS = '13';
+const CORNER_POSITIONS = [
+  { x: 0, y: 0 },
+  { x: 1, y: 0 },
+  { x: 0, y: 1 },
+];
+const LOGO_BACKGROUND_OPACITY = 0.06;
 
 const generateMatrix = (
   value: string,
@@ -33,61 +51,57 @@ type Props = {
 };
 
 export function QRCode({
-  ecl = 'M',
+  ecl = DEFAULT_ECL,
   logoBackground,
-  logoMargin = 10,
-  logoSize = 50,
+  logoMargin = DEFAULT_LOGO_MARGIN,
+  logoSize = DEFAULT_LOGO_SIZE,
   logoUrl,
-  size: sizeProp = 200,
+  size: sizeProp = DEFAULT_SIZE,
   uri,
-}: Props) {
-  const padding: NonNullable<BoxProps['padding']> = '20';
-  const size = sizeProp - parseInt(padding, 10) * 2;
+}: Readonly<Props>) {
+  const padding = DEFAULT_PADDING;
+  const size = sizeProp - Number.parseInt(padding, 10) * 2;
 
   const dots = useMemo(() => {
     const dots: ReactElement[] = [];
     const matrix = generateMatrix(uri, ecl);
     const cellSize = size / matrix.length;
-    const qrList = [
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
-      { x: 0, y: 1 },
-    ];
 
-    // biome-ignore lint/complexity/noForEach: TODO
-    qrList.forEach(({ x, y }) => {
-      const x1 = (matrix.length - 7) * cellSize * x;
-      const y1 = (matrix.length - 7) * cellSize * y;
-      for (let i = 0; i < 3; i++) {
+    for (const { x, y } of CORNER_POSITIONS) {
+      const x1 = (matrix.length - CORNER_SQUARE_SIZE) * cellSize * x;
+      const y1 = (matrix.length - CORNER_SQUARE_SIZE) * cellSize * y;
+      for (let i = 0; i < CORNER_SQUARE_COUNT; i++) {
         dots.push(
           <rect
             fill={i % 2 !== 0 ? 'white' : 'black'}
-            height={cellSize * (7 - i * 2)}
+            height={cellSize * (CORNER_SQUARE_SIZE - i * 2)}
             key={`${i}-${x}-${y}`}
-            rx={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
-            ry={(i - 2) * -5 + (i === 0 ? 2 : 0)} // calculated border radius for corner squares
-            width={cellSize * (7 - i * 2)}
+            rx={(i - 2) * -BORDER_RADIUS_BASE + (i === 0 ? 2 : 0)}
+            ry={(i - 2) * -BORDER_RADIUS_BASE + (i === 0 ? 2 : 0)}
+            width={cellSize * (CORNER_SQUARE_SIZE - i * 2)}
             x={x1 + cellSize * i}
             y={y1 + cellSize * i}
           />,
         );
       }
-    });
+    }
 
-    const clearArenaSize = Math.floor((logoSize + 25) / cellSize);
+    const clearArenaSize = Math.floor(
+      (logoSize + LOGO_CLEAR_AREA_PADDING) / cellSize,
+    );
     const matrixMiddleStart = matrix.length / 2 - clearArenaSize / 2;
     const matrixMiddleEnd = matrix.length / 2 + clearArenaSize / 2 - 1;
 
-    // biome-ignore lint/complexity/noForEach: TODO
-    matrix.forEach((row: QRCodeUtil.QRCode[], i: number) => {
-      // biome-ignore lint/complexity/noForEach: TODO
-      row.forEach((_: any, j: number) => {
+    for (const [i, row] of matrix.entries()) {
+      for (const [j] of row.entries()) {
         if (matrix[i][j]) {
           if (
             !(
-              (i < 7 && j < 7) ||
-              (i > matrix.length - 8 && j < 7) ||
-              (i < 7 && j > matrix.length - 8)
+              (i < CORNER_SQUARE_SIZE && j < CORNER_SQUARE_SIZE) ||
+              (i > matrix.length - (CORNER_SQUARE_SIZE + 1) &&
+                j < CORNER_SQUARE_SIZE) ||
+              (i < CORNER_SQUARE_SIZE &&
+                j > matrix.length - (CORNER_SQUARE_SIZE + 1))
             )
           ) {
             if (
@@ -104,18 +118,17 @@ export function QRCode({
                   cy={j * cellSize + cellSize / 2}
                   fill="black"
                   key={`circle-${i}-${j}`}
-                  r={cellSize / 3} // calculate size of single dots
+                  r={cellSize * DOT_SIZE_RATIO}
                 />,
               );
             }
           }
         }
-      });
-    });
+      }
+    }
 
     return dots;
   }, [ecl, logoSize, size, uri]);
-
   const logoPosition = size / 2 - logoSize / 2;
   const logoWrapperSize = logoSize + logoMargin * 2;
 
@@ -150,8 +163,10 @@ export function QRCode({
         >
           <AsyncImage
             background={logoBackground}
-            borderColor={{ custom: 'rgba(0, 0, 0, 0.06)' }}
-            borderRadius="13"
+            borderColor={{
+              custom: `rgba(0, 0, 0, ${LOGO_BACKGROUND_OPACITY})`,
+            }}
+            borderRadius={LOGO_BORDER_RADIUS}
             height={logoSize}
             src={logoUrl}
             width={logoSize}

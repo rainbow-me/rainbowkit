@@ -185,13 +185,11 @@ function makeElementCool(
   const tapHandler = (e: MouseEvent | TouchEvent) => {
     if (disabled) return;
 
-    // HACK: sorry, bit short on time here to find a more elegant solution
-    // but if this option is true, we don't wanna show particles if users
-    // are tapping on the buttons in #cool-mode-demo which is an `id`
-    // added to the CoolMode.tsx Component - otherwise we get double emoji showers!
     if (ignoreCoolModeDocsDemo) {
-      const element = document.getElementById('cool-mode-demo');
-      if (element?.contains(e.target as any)) return;
+      const coolModeDemo = document.getElementById('cool-mode-demo');
+      if (coolModeDemo?.contains(e.target as Node)) {
+        return;
+      }
     }
 
     updateMousePosition(e);
