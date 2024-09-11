@@ -108,7 +108,7 @@ export function RainbowKitProvider({
   };
 
   const avatarContext = avatar ?? defaultAvatar;
-
+  const themeProps = theme ? createThemeRootProps(id) : {};
   const themeStyles = theme
     ? [
         `${selector}{${cssStringFromTheme(
@@ -138,14 +138,21 @@ export function RainbowKitProvider({
                       <ThemeIdContext.Provider value={id}>
                         <ShowBalanceProvider>
                           <ModalProvider>
-                            {theme ? (
-                              <>
-                                <style>{themeStyles}</style>
-                                {children}
-                              </>
-                            ) : (
-                              children
-                            )}
+                            <React.Fragment>
+                              {theme && (
+                                <style
+                                  // biome-ignore lint/security/noDangerouslySetInnerHtml: TODO
+                                  dangerouslySetInnerHTML={{
+                                    __html: themeStyles,
+                                  }}
+                                />
+                              )}
+                              {React.Children.map(children, (child) =>
+                                React.isValidElement(child)
+                                  ? React.cloneElement(child, themeProps)
+                                  : child,
+                              )}
+                            </React.Fragment>
                           </ModalProvider>
                         </ShowBalanceProvider>
                       </ThemeIdContext.Provider>
