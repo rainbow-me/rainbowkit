@@ -88,7 +88,7 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
-}: Readonly<RainbowKitProviderProps>) {
+}: RainbowKitProviderProps) {
   usePreloadImages();
   useFingerprint();
 
