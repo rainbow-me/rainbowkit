@@ -230,6 +230,22 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "安裝 BeraSig 擴充功能",
+          "description": "我們建議把 BeraSig 釘在工作列上以便更容易地進入你的錢包。"
+        },
+        "step2": {
+          "title": "建立錢包",
+          "description": "請確保使用安全方法備份你的錢包，絕不要與任何人分享你的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "設置你的錢包後，點擊下方按鈕刷新瀏覽器並載入擴展。"
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {

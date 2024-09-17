@@ -230,6 +230,22 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "Instala la extensión BeraSig",
+          "description": "Recomendamos anclar BeraSig a tu barra de tareas para acceder más fácilmente a tu cartera."
+        },
+        "step2": {
+          "title": "Crea una Cartera",
+          "description": "Asegúrese de respaldar su billetera utilizando un método seguro. Nunca comparta su frase secreta con nadie."
+        },
+        "step3": {
+          "title": "Refrescar tu navegador",
+          "description": "Una vez que configures tu billetera, haz clic a continuación para refrescar el navegador y cargar la extensión."
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {

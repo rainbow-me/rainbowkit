@@ -230,6 +230,22 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension BeraSig",
+          "description": "Nous vous recommandons d'épingler BeraSig à votre barre des tâches pour un accès plus facile à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créer un Portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quiconque."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour actualiser le navigateur et charger l'extension."
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {

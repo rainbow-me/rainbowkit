@@ -230,6 +230,22 @@
         }
       }
     },
+    "berasig": {
+      "extension": {
+        "step1": {
+          "title": "Instal ekstensi BeraSig",
+          "description": "Kami merekomendasikan menempelkan BeraSig ke taskbar Anda untuk akses dompet Anda lebih mudah."
+        },
+        "step2": {
+          "title": "Buat Dompet",
+          "description": "Pastikan untuk mencadangkan wallet Anda menggunakan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
+        },
+        "step3": {
+          "title": "Segarkan browser Anda",
+          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
+        }
+      }
+    },
     "bifrost": {
       "qr_code": {
         "step1": {
