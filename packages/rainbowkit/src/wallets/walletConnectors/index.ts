@@ -1,4 +1,5 @@
 import { argentWallet } from './argentWallet/argentWallet';
+import { berasigWallet } from './berasigWallet/berasigWallet';
 import { bestWallet } from './bestWallet/bestWallet';
 import { bifrostWallet } from './bifrostWallet/bifrostWallet';
 import { binanceWallet } from './binanceWallet/binanceWallet';
@@ -63,6 +64,7 @@ import { zerionWallet } from './zerionWallet/zerionWallet';
 
 export {
   argentWallet,
+  berasigWallet,
   bestWallet,
   bifrostWallet,
   binanceWallet,
