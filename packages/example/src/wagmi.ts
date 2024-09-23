@@ -1,6 +1,7 @@
 import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
 import {
   argentWallet,
+  bestWallet,
   bifrostWallet,
   binanceWallet,
   bitgetWallet,
@@ -183,6 +184,7 @@ export const config = getDefaultConfig({
       groupName: 'Other',
       wallets: [
         argentWallet,
+        bestWallet,
         bifrostWallet,
         binanceWallet,
         bitgetWallet,
