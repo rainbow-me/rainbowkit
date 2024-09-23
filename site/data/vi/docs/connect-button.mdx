@@ -1,0 +1,149 @@
+---
+title: Nút Kết Nối
+description: Sử dụng và tùy chỉnh Nút Kết Nối
+---
+
+# Nút Kết Nối
+
+## Sử dụng và tùy chỉnh Nút Kết Nối
+
+Đây là thành phần chính. Nó chịu trách nhiệm vẽ nút kết nối/ngắt kết nối, cũng như giao diện trao đổi chuỗi.
+
+```tsx
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+export const YourApp = () => {
+  return <ConnectButton />;
+};
+```
+
+> Lưu ý: Đảm bảo ứng dụng của bạn được bao trong nhà cung cấp cần thiết. [Đọc thêm](/docs/installation#wrap-providers).
+
+### Thuộc tính
+
+Thành phần `ConnectButton` cung cấp nhiều thuộc tính để tùy chỉnh giao diện của nó, bao gồm bật/tắt hiển thị các phần tử khác nhau.
+
+<PropsTable
+  data={[
+    {
+      name: 'label',
+      required: false,
+      default: 'Connect Wallet',
+      type: 'string',
+      description: 'The text label displayed on the Connect button',
+    },
+    {
+      name: 'accountStatus',
+      required: false,
+      default: 'full',
+      type: '"avatar" | "address" | "full" | { smallScreen: AccountStatus, largeScreen?: AccountStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the active account's avatar and/or address is displayed",
+    },
+    {
+      name: 'chainStatus',
+      required: false,
+      default: '{ smallScreen: "icon", largeScreen: "full" }',
+      type: '"icon" | "name" | "full" | "none" | { smallScreen: ChainStatus, largeScreen?: ChainStatus }',
+      typeSimple: 'enum',
+      description:
+        "Whether the current chain's icon and/or name is displayed, or hidden entirely",
+    },
+    {
+      name: 'showBalance',
+      required: false,
+      default: '{ smallScreen: false, largeScreen: true }',
+      type: 'boolean | { smallScreen: boolean, largeScreen?: boolean }',
+      typeSimple: 'enum',
+      description:
+        'Whether the balance is visible next to the account name',
+    },
+  ]}
+/>
+
+> Lưu ý: điểm ngắt `largeScreen` tích hợp là `768px`.
+
+### Ví dụ
+
+#### Nhãn
+
+Sử dụng thuộc tính `label` để đặt văn bản tuỳ chỉnh cho `ConnectButton`.
+
+```tsx
+<ConnectButton label="__Sign in__" />
+```
+
+#### Trạng thái tài khoản
+
+Đây là một vài cách khác nhau bạn có thể sử dụng thuộc tính `accountStatus`.
+
+Chỉ hiển thị ảnh đại diện của tài khoản.
+
+```tsx
+<ConnectButton accountStatus="__avatar__" />
+```
+
+Chỉ hiển thị địa chỉ của tài khoản.
+
+```tsx
+<ConnectButton accountStatus="__address__" />
+```
+
+#### Trạng thái chuỗi
+
+Đây là một vài cách khác nhau bạn có thể sử dụng thuộc tính `chainStatus`.
+
+Chỉ hiển thị biểu tượng chuỗi hiện tại.
+
+```tsx
+<ConnectButton chainStatus="__icon__" />
+```
+
+Chỉ hiển thị tên chuỗi hiện tại.
+
+```tsx
+<ConnectButton chainStatus="__name__" />
+```
+
+Ẩn hoàn toàn giao diện chuỗi.
+
+```tsx
+<ConnectButton chainStatus="__none__" />
+```
+
+#### Hiển thị số dư
+
+Sử dụng thuộc tính `showBalance` để ẩn/hiển thị số dư.
+
+Ẩn số dư.
+
+```tsx
+<ConnectButton showBalance={__false__} />
+```
+
+#### Đáp ứng
+
+Các thuộc tính này cũng có thể được định nghĩa ở định dạng đáp ứng.
+
+Trên màn hình nhỏ, chỉ hiển thị biểu tượng tài khoản. Nhưng trên màn hình lớn, hiển thị biểu tượng và địa chỉ.
+
+```tsx
+<ConnectButton
+  accountStatus={{
+    smallScreen: 'avatar',
+    largeScreen: 'full',
+  }}
+/>
+```
+
+Trên màn hình nhỏ, ẩn số dư. Nhưng trên màn hình lớn, hiển thị nó.
+
+```tsx
+<ConnectButton
+  showBalance={{
+    smallScreen: false,
+    largeScreen: true,
+  }}
+/>
+```

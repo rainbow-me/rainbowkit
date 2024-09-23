@@ -1,0 +1,75 @@
+---
+title: Chuỗi
+description: Tùy chỉnh chuỗi
+---
+
+# Chuỗi
+
+## Tùy chỉnh chuỗi
+
+RainbowKit được thiết kế để tích hợp với [đối tượng `chain` của wagmi](https://wagmi.sh/react/chains). Xem danh sách các chuỗi được hỗ trợ [tại đây](https://wagmi.sh/react/chains#supported-chains).
+
+### Tùy chỉnh chuỗi ban đầu
+
+Theo mặc định, RainbowKit sẽ kết nối với chuỗi đầu tiên được cung cấp cho Wagmi. Hành vi này có thể được tùy chỉnh thông qua `initialChain` prop.
+
+Chuỗi ban đầu có thể được cấu hình bằng cách sử dụng chain ID.
+
+```tsx
+<RainbowKitProvider initialChain={1}>
+```
+
+Để thuận tiện, bạn cũng có thể truyền một đối tượng chuỗi.
+
+```tsx
+<RainbowKitProvider initialChain={mainnet}>
+```
+
+### Siêu dữ liệu chuỗi tùy chỉnh
+
+Một số biểu tượng và hình nền chuỗi được cung cấp theo mặc định, nhưng bạn có thể tùy chỉnh biểu tượng và hình nền cho mỗi chuỗi bằng cách sử dụng các thuộc tính `iconUrl` và `iconBackground`.
+
+Ví dụ với `getDefaultConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+
+const config = getDefaultConfig({
+  chains: [
+    {
+      ...mainnet,
+      iconBackground: '#000',
+      iconUrl: 'https://example.com/icons/ethereum.png',
+    },
+    {
+      ...optimism,
+      iconBackground: '#ff0000',
+      iconUrl: 'https://example.com/icons/optimism.png',
+    },
+  ],
+});
+```
+
+Ví dụ với `createConfig`
+
+```tsx
+import { mainnet, optimism } from 'wagmi/chains';
+import { Chain } from '@rainbow-me/rainbowkit';
+
+const chains: readonly [Chain, ...Chain[]] = [
+  {
+    ...mainnet,
+    iconBackground: '#000',
+    iconUrl: 'https://example.com/icons/ethereum.png',
+  },
+  {
+    ...optimism,
+    iconBackground: '#ff0000',
+    iconUrl: 'https://example.com/icons/optimism.png',
+  },
+];
+
+const config = createConfig({
+  chains,
+});
+```

@@ -29,6 +29,8 @@ module.exports = {
     '/tr/*',
     '/ua',
     '/ua/*',
+    '/vi',
+    '/vi/*',
     '/zh-CN',
     '/zh-CN/*',
     '/zh-HK',
@@ -88,6 +90,10 @@ module.exports = {
     {
       href: 'https://rainbowkit.com/ua/',
       hreflang: 'ua',
+    },
+    {
+      href: 'https://rainbowkit.com/vi/',
+      hreflang: 'vi',
     },
     {
       href: 'https://rainbowkit.com/zh-CN/',

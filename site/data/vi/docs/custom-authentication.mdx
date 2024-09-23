@@ -1,0 +1,106 @@
+---
+title: Xác thực Tùy chỉnh
+description: Kết nối với hệ thống xác thực của bạn
+---
+
+# Xác thực Tùy chỉnh
+
+## Kết nối với hệ thống xác thực của bạn
+
+Mặc dù RainbowKit cung cấp [hỗ trợ hạng nhất cho Đăng nhập bằng Ethereum và NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) bạn cũng có thể tích hợp với các hệ thống và định dạng tin nhắn tùy chỉnh.
+
+### Tạo bộ điều hợp tùy chỉnh
+
+Đầu tiên, tạo bộ điều hợp xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị các tin nhắn và giao tiếp với hệ thống của bạn.
+
+Lấy ví dụ, chúng ta có thể tạo bộ điều hợp xác thực cho phép chúng ta sử dụng [Đăng nhập bằng Ethereum](https://login.xyz) với một số [điểm cuối API tùy chỉnh.](https://wagmi.sh/examples/sign-in-with-ethereum)
+
+```tsx
+import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { SiweMessage } from 'siwe';
+
+const authenticationAdapter = createAuthenticationAdapter({
+  getNonce: async () => {
+    const response = await fetch('/api/nonce');
+    return await response.text();
+  },
+
+  createMessage: ({ nonce, address, chainId }) => {
+    return new SiweMessage({
+      domain: window.location.host,
+      address,
+      statement: 'Sign in with Ethereum to the app.',
+      uri: window.location.origin,
+      version: '1',
+      chainId,
+      nonce,
+    });
+  },
+
+  getMessageBody: ({ message }) => {
+    return message.prepareMessage();
+  },
+
+  verify: async ({ message, signature }) => {
+    const verifyRes = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, signature }),
+    });
+
+    return Boolean(verifyRes.ok);
+  },
+
+  signOut: async () => {
+    await fetch('/api/logout');
+  },
+});
+```
+
+#### Cung cấp trạng thái xác thực
+
+Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ điều hợp tùy chỉnh của bạn vào `RainbowKitAuthenticationProvider`, bao bọc `RainbowKitProvider` hiện có của bạn.
+
+```tsx
+import {
+  createAuthenticationAdapter,
+  RainbowKitAuthenticationProvider,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { AppProps } from 'next/app';
+import { WagmiProvider } from 'wagmi';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+
+const authenticationAdapter = createAuthenticationAdapter({
+  /* See above... */
+});
+
+const queryClient = new QueryClient();
+
+export default function App({ Component, pageProps }: AppProps) {
+  // You'll need to resolve AUTHENTICATION_STATUS here
+  // using your application's authentication system.
+  // It needs to be either 'loading' (during initial load),
+  // 'unauthenticated' or 'authenticated'.
+
+  return (
+    <WagmiProvider {...etc}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitAuthenticationProvider
+          adapter={authenticationAdapter}
+          status={AUTHENTICATION_STATUS}
+        >
+          <RainbowKitProvider {...etc}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </RainbowKitAuthenticationProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+Nếu bạn đã tạo được bộ điều hợp cho một thư viện xác thực mã nguồn mở hiện có, xin vui lòng tạo một gói cho người khác sử dụng!
