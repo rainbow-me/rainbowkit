@@ -1,6 +1,6 @@
 import type { Wallet } from '../../Wallet';
-import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 import type { DefaultWalletOptions } from '../../Wallet';
+import { getWalletConnectConnector } from '../../getWalletConnectConnector';
 
 export type ParaSwapWalletOptions = DefaultWalletOptions;
 
