@@ -28,6 +28,8 @@ export type Locale =
   | 'tr-TR'
   | 'ua'
   | 'uk-UA'
+  | 'vi'
+  | 'vi-VN'
   | 'zh'
   | 'zh-CN'
   | 'zh-HK'
@@ -85,6 +87,9 @@ const fetchTranslations = async (locale: Locale): Promise<any> => {
     case 'ua':
     case 'uk-UA':
       return (await import('./uk_UA.json')).default;
+    case 'vi':
+    case 'vi-VN':
+      return (await import('./vi_VN.json')).default;
     case 'zh':
     case 'zh-CN':
     case 'zh-Hans':

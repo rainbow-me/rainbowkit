@@ -23,6 +23,7 @@ const nextConfig = {
       'th',
       'tr',
       'ua',
+      'vi',
       'zh-CN',
       'zh-HK',
       'zh-TW',

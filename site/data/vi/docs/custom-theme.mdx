@@ -1,0 +1,166 @@
+---
+title: Chủ đề tùy chỉnh
+description: Tạo chủ đề tùy chỉnh
+---
+
+# Chủ đề tùy chỉnh
+
+## Tạo chủ đề tùy chỉnh
+
+> Lưu ý: API này không ổn định và có khả năng thay đổi
+> trong tương lai gần. Chúng tôi khuyến nghị bạn sử dụng [chủ đề tích hợp](/docs/theming) vào lúc này.
+
+Mặc dù các chủ đề tích hợp cung cấp một số mức độ tùy chỉnh, loại `Theme` được cung cấp để giúp bạn định nghĩa các chủ đề tùy chỉnh của riêng bạn với quyền truy cập cấp thấp hơn vào các biến chủ đề cơ bản.
+
+```tsx
+import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+
+const myCustomTheme: Theme = {
+  blurs: {
+    modalOverlay: '...',
+  },
+  colors: {
+    accentColor: '...',
+    accentColorForeground: '...',
+    actionButtonBorder: '...',
+    actionButtonBorderMobile: '...',
+    actionButtonSecondaryBackground: '...',
+    closeButton: '...',
+    closeButtonBackground: '...',
+    connectButtonBackground: '...',
+    connectButtonBackgroundError: '...',
+    connectButtonInnerBackground: '...',
+    connectButtonText: '...',
+    connectButtonTextError: '...',
+    connectionIndicator: '...',
+    downloadBottomCardBackground: '...',
+    downloadTopCardBackground: '...',
+    error: '...',
+    generalBorder: '...',
+    generalBorderDim: '...',
+    menuItemBackground: '...',
+    modalBackdrop: '...',
+    modalBackground: '...',
+    modalBorder: '...',
+    modalText: '...',
+    modalTextDim: '...',
+    modalTextSecondary: '...',
+    profileAction: '...',
+    profileActionHover: '...',
+    profileForeground: '...',
+    selectedOptionBorder: '...',
+    standby: '...',
+  },
+  fonts: {
+    body: '...',
+  },
+  radii: {
+    actionButton: '...',
+    connectButton: '...',
+    menuButton: '...',
+    modal: '...',
+    modalMobile: '...',
+  },
+  shadows: {
+    connectButton: '...',
+    dialog: '...',
+    profileDetailsAction: '...',
+    selectedOption: '...',
+    selectedWallet: '...',
+    walletLogo: '...',
+  },
+};
+
+const App = () => (
+  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+    {/* Your App */}
+  </RainbowKitProvider>;
+)
+```
+
+### Mở rộng chủ đề tích hợp
+
+Bạn có thể mở rộng một chủ đề tích hợp mà không cần phải định nghĩa lại toàn bộ chủ đề. Điều này hữu ích khi bạn chỉ muốn ghi đè các token chủ đề cụ thể.
+
+Để làm điều đó, cài đặt `lodash.merge` (hoặc tương đương):
+
+```bash
+npm install lodash.merge
+```
+
+Nhập nó, cùng với chủ đề bạn muốn mở rộng (vd: `darkTheme`) và loại `Theme` của TypeScript:
+
+```tsx
+import merge from 'lodash.merge';
+import {
+  RainbowKitProvider,
+  darkTheme,
+  Theme,
+} from '@rainbow-me/rainbowkit';
+```
+
+Sau đó, hợp nhất chủ đề tích hợp, với các token chủ đề bạn muốn ghi đè. Trong ví dụ này, tôi đang ghi đè token `accentColor` để phù hợp với màu nhấn thương hiệu của tôi.
+
+```tsx
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: '#07296d',
+  },
+} as Theme);
+```
+
+Cuối cùng, bạn có thể chuyển chủ đề tùy chỉnh của mình đến prop `theme` của `RainbowKitProvider`.
+
+```tsx
+const App = () => {
+  return (
+    <RainbowKitProvider theme={myTheme} {...etc}>
+      {/* Your App */}
+    </RainbowKitProvider>
+  );
+};
+```
+
+### Tạo bộ chọn chủ đề tùy chỉnh
+
+Nếu ứng dụng của bạn được render trên máy chủ hoặc render tĩnh và cho phép người dùng chuyển đổi giữa các chủ đề, hệ thống chủ đề của RainbowKit có thể được kết nối với các bộ chọn CSS tùy chỉnh với các hàm sau đây, có thể sử dụng với bất kỳ hệ thống CSS-in-JS nào:
+
+- `cssStringFromTheme`
+- `cssObjectFromTheme`
+
+Những hàm này trả về CSS thiết lập tất cả các biến chủ đề cần thiết. Vì cả chuỗi và đối tượng đều được hỗ trợ, điều này có thể tích hợp với bất kỳ hệ thống CSS-in-JS nào.
+
+Với một ví dụ cơ bản, bạn có thể render phần tử `style` của riêng mình với các bộ chọn tùy chỉnh cho mỗi chủ đề. Vì chúng tôi đang kiểm soát việc render CSS của chủ đề, chúng tôi chuyển `null` cho prop `theme` để RainbowKitProvider không render bất kỳ kiểu nào cho chúng tôi. Cũng lưu ý việc sử dụng tùy chọn extends trên hàm cssStringFromTheme để loại bỏ bất kỳ biến chủ đề nào giống với chủ đề cơ bản.
+
+```tsx
+import {
+  RainbowKitProvider,
+  cssStringFromTheme,
+  lightTheme,
+  darkTheme,
+} from '@rainbow-me/rainbowkit';
+
+const App = () => {
+  return (
+    <RainbowKitProvider theme={null} {...etc}>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            :root {
+              ${cssStringFromTheme(lightTheme)}
+            }
+
+            html[data-dark] {
+              ${cssStringFromTheme(darkTheme, {
+                extends: lightTheme,
+              })}
+            }
+          `,
+        }}
+      />
+
+      {/* ... */}
+    </RainbowKitProvider>
+  );
+};
+```
