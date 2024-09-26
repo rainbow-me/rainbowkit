@@ -52,3 +52,5 @@ jobs:
           commit: 'chore: version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RAINBOW_PROVIDER_API_KEY: ${{ secrets.RAINBOW_PROVIDER_API_KEY }}
+          WALLETCONNECT_PROJECT_ID: ${{ secrets.WALLETCONNECT_PROJECT_ID }}
