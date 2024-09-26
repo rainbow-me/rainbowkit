@@ -1,5 +1,13 @@
 # @rainbow-me/rainbowkit
 
+## 2.1.7
+
+### Patch Changes
+
+- 4014d80: Added `vi-VN` and `vi` locale support for the Vietnamese language.
+- f93cd0e: Added ParaSwap Wallet support with `paraSwapWallet` wallet connector
+- 6393498: Added Best Wallet support with `bestWallet` wallet connector
+
 ## 2.1.6
 
 ### Patch Changes
