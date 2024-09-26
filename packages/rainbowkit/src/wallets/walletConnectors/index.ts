@@ -36,6 +36,7 @@ import { okxWallet } from './okxWallet/okxWallet';
 import { omniWallet } from './omniWallet/omniWallet';
 import { oneInchWallet } from './oneInchWallet/oneInchWallet';
 import { oneKeyWallet } from './oneKeyWallet/oneKeyWallet';
+import { paraSwapWallet } from './paraSwapWallet/paraswapWallet';
 import { phantomWallet } from './phantomWallet/phantomWallet';
 import { rabbyWallet } from './rabbyWallet/rabbyWallet';
 import { rainbowWallet } from './rainbowWallet/rainbowWallet';
@@ -97,6 +98,7 @@ export {
   omniWallet,
   oneInchWallet,
   oneKeyWallet,
+  paraSwapWallet,
   phantomWallet,
   rabbyWallet,
   rainbowWallet,
