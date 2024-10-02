@@ -14,7 +14,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "viem": "2.17.0",
-    "wagmi": "^2.12.9",
+    "wagmi": "^2.12.16",
     "@tanstack/react-query": "^5.51.11"
   },
   "devDependencies": {
