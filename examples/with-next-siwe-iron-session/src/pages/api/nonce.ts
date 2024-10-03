@@ -1,13 +1,14 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { generateNonce } from 'siwe';
+import { generateSiweNonce } from 'viem/siwe';
+
 import { ironOptions } from '../../../lib/iron';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
   switch (method) {
     case 'GET':
-      req.session.nonce = generateNonce();
+      req.session.nonce = generateSiweNonce();
       await req.session.save();
       res.setHeader('Content-Type', 'text/plain');
       res.send(req.session.nonce);

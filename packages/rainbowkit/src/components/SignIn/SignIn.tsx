@@ -77,7 +77,7 @@ export function SignIn({
 
       try {
         signature = await signMessageAsync({
-          message: authAdapter.getMessageBody({ message }),
+          message,
         });
       } catch (error) {
         if (error instanceof UserRejectedRequestError) {
