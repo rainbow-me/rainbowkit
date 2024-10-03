@@ -13,7 +13,7 @@ import {
   RainbowKitAuthenticationProvider,
   AuthenticationStatus,
 } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 import { config } from '../wagmi';
 
@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
       },
 
       createMessage: ({ nonce, address, chainId }) => {
-        return new SiweMessage({
+        return createSiweMessage({
           domain: window.location.host,
           address,
           statement: 'Sign in with Ethereum to the app.',
@@ -69,10 +69,6 @@ export default function App({ Component, pageProps }: AppProps) {
           chainId,
           nonce,
         });
-      },
-
-      getMessageBody: ({ message }) => {
-        return message.prepareMessage();
       },
 
       verify: async ({ message, signature }) => {

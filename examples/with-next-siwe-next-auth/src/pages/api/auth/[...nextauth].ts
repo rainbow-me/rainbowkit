@@ -7,16 +7,31 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
-import { SiweMessage } from 'siwe';
+import {
+  type SiweMessage,
+  parseSiweMessage,
+  validateSiweMessage,
+} from 'viem/siwe';
+
+import { publicClient } from '../../../wagmi';
 
 export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
   const providers = [
     CredentialsProvider({
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         try {
-          const siwe = new SiweMessage(
-            JSON.parse(credentials?.message || '{}')
-          );
+          const siweMessage = parseSiweMessage(
+            credentials?.message!,
+          ) as SiweMessage;
+
+          if (
+            !validateSiweMessage({
+              address: credentials?.address,
+              message: siweMessage,
+            })
+          ) {
+            return null;
+          }
 
           const nextAuthUrl =
             process.env.NEXTAUTH_URL ||
@@ -28,20 +43,29 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
           }
 
           const nextAuthHost = new URL(nextAuthUrl).host;
-          if (siwe.domain !== nextAuthHost) {
+          if (siweMessage.domain !== nextAuthHost) {
             return null;
           }
 
           if (
-            siwe.nonce !==
+            siweMessage.nonce !==
             (await getCsrfToken({ req: { headers: req.headers } }))
           ) {
             return null;
           }
 
-          await siwe.verify({ signature: credentials?.signature || '' });
+          const valid = await publicClient.verifyMessage({
+            address: credentials?.address,
+            message: credentials?.message,
+            signature: credentials?.signature,
+          });
+
+          if (!valid) {
+            return null;
+          }
+
           return {
-            id: siwe.address,
+            id: siweMessage.address,
           };
         } catch (e) {
           return null;
@@ -55,6 +79,11 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
         },
         signature: {
           label: 'Signature',
+          placeholder: '0x0',
+          type: 'text',
+        },
+        address: {
+          label: 'Address',
           placeholder: '0x0',
           type: 'text',
         },
