@@ -78,9 +78,9 @@ export function RainbowKitSiweNextAuthProvider({
 
         verify: async ({ message, signature }) => {
           const response = await signIn('credentials', {
-            message: JSON.stringify(message),
-            redirect: false,
+            message,
             signature,
+            redirect: false,
           });
 
           return response?.ok ?? false;
