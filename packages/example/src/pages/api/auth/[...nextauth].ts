@@ -21,12 +21,12 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
       async authorize(credentials: any) {
         try {
           const siweMessage = parseSiweMessage(
-            credentials?.message!,
+            credentials?.message,
           ) as SiweMessage;
 
           if (
             !validateSiweMessage({
-              address: credentials?.address,
+              address: siweMessage?.address,
               message: siweMessage,
             })
           ) {
@@ -55,7 +55,7 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
           }
 
           const valid = await publicClient.verifyMessage({
-            address: credentials?.address,
+            address: siweMessage?.address,
             message: credentials?.message,
             signature: credentials?.signature,
           });
@@ -80,11 +80,6 @@ export function getAuthOptions(req: IncomingMessage): NextAuthOptions {
         },
         signature: {
           label: 'Signature',
-          placeholder: '0x0',
-          type: 'text',
-        },
-        address: {
-          label: 'Address',
           placeholder: '0x0',
           type: 'text',
         },
