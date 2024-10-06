@@ -12,7 +12,7 @@
     "@rainbow-me/rainbowkit": "workspace:*",
     "@react-spring/three": "^9.4.4",
     "@react-three/fiber": "^8.17.7",
-    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query": "^5.55.3",
     "@vanilla-extract/css": "1.15.5",
     "@vanilla-extract/css-utils": "0.1.4",
     "@vanilla-extract/next-plugin": "2.4.5",
@@ -37,7 +37,7 @@
     "unified": "11.0.5",
     "unist-util-visit": "5.0.0",
     "viem": "2.17.0",
-    "wagmi": "^2.12.16"
+    "wagmi": "^2.12.17"
   },
   "devDependencies": {
     "contentlayer": "npm:contentlayer2@0.5.1",

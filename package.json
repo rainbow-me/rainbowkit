@@ -27,7 +27,7 @@
     "test:cli:clean": "rm -rf ./packages/create-rainbowkit/generated-test-app",
     "changeset": "changeset",
     "clean": "rm -rf ./packages/rainbowkit/dist && rm -rf ./packages/rainbowkit-siwe-next-auth/dist && rm -rf ./packages/rainbow-button/dist && rm -rf ./packages/create-rainbowkit/dist && rm -rf ./packages/rainbowkit/node_modules && pnpm install",
-    "clean:untracked": "git clean -fxd && pnpm install",
+    "clean:untracked": "git clean -fxd -e '.env.local' -e '.env' && pnpm install",
     "release": "pnpm release:verify-git && pnpm release:build && changeset publish --tag latest",
     "release:verify-git": "git diff --exit-code && git rev-parse --abbrev-ref HEAD | grep \"main\"",
     "release:build": "pnpm clean && pnpm lint && pnpm test && MINIFY_CSS=true pnpm --recursive --parallel --filter \"!*-app\" build && cp README.md packages/rainbowkit/README.md",
@@ -46,7 +46,7 @@
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@lavamoat/preinstall-always-fail": "^2.0.0",
-    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query": "^5.55.3",
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
@@ -72,7 +72,7 @@
     "typescript": "5.5.2",
     "viem": "2.17.0",
     "vitest": "2.0.5",
-    "wagmi": "^2.12.16"
+    "wagmi": "^2.12.17"
   },
   "packageManager": "pnpm@9.12.0",
   "pnpm": {
