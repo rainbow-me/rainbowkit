@@ -1064,6 +1064,22 @@
         }
       }
     },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "Installez l'extension Wigwam",
+          "description": "Nous vous recommandons d'épingler Wigwam à votre barre des tâches pour un accès plus rapide à votre portefeuille."
+        },
+        "step2": {
+          "title": "Créez ou Importez un portefeuille",
+          "description": "Assurez-vous de sauvegarder votre portefeuille en utilisant une méthode sécurisée. Ne partagez jamais votre phrase secrète avec quelqu'un."
+        },
+        "step3": {
+          "title": "Rafraîchissez votre navigateur",
+          "description": "Une fois que vous avez configuré votre portefeuille, cliquez ci-dessous pour rafraîchir le navigateur et charger l'extension."
+        }
+      }
+    },
     "talisman": {
       "extension": {
         "step1": {

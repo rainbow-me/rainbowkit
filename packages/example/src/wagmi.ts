@@ -58,6 +58,7 @@ import {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  wigwamWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   arbitrum,
@@ -237,6 +238,7 @@ export const config = getDefaultConfig({
         xdefiWallet,
         zealWallet,
         zerionWallet,
+        wigwamWallet,
       ],
     },
   ],

@@ -59,6 +59,7 @@ import { walletConnectWallet } from './walletConnectWallet/walletConnectWallet';
 import { xdefiWallet } from './xdefiWallet/xdefiWallet';
 import { zealWallet } from './zealWallet/zealWallet';
 import { zerionWallet } from './zerionWallet/zerionWallet';
+import { wigwamWallet } from './wigwamWallet/wigwamWallet';
 
 export {
   argentWallet,
@@ -122,4 +123,5 @@ export {
   xdefiWallet,
   zealWallet,
   zerionWallet,
+  wigwamWallet,
 };

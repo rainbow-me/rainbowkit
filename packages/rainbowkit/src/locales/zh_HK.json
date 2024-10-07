@@ -1064,6 +1064,22 @@
         }
       }
     },
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "安裝 Wigwam 擴充功能",
+          "description": "我們建議把 Wigwam 釘在工作列上，以便更快捷地進入你的錢包。"
+        },
+        "step2": {
+          "title": "創建或導入錢包",
+          "description": "請確保使用安全方法備份你的錢包，絕不要與任何人分享你的秘密短語。"
+        },
+        "step3": {
+          "title": "刷新你的瀏覽器",
+          "description": "設置你的錢包後，點擊下方按鈕刷新瀏覽器並載入擴展。"
+        }
+      }
+    },
     "talisman": {
       "extension": {
         "step1": {
