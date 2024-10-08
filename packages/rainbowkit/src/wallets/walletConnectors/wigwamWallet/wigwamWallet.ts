@@ -15,11 +15,13 @@ export const wigwamWallet = (): Wallet => {
         'https://chromewebstore.google.com/detail/wigwam-%E2%80%94-web3-wallet/lccbohhgfkdikahanoclbdmaolidjdfl',
       browserExtension: 'https://wigwam.app',
     },
-    installed: hasInjectedProvider({ namespace: 'wigwamEthereum', flag: 'isWigwam' }),
+    installed: hasInjectedProvider({
+      namespace: 'wigwamEthereum',
+      flag: 'isWigwam',
+    }),
     extension: {
       instructions: {
-        learnMoreUrl:
-          'https://wigwam.app/',
+        learnMoreUrl: 'https://wigwam.app/',
         steps: [
           {
             description: 'wallet_connectors.wigwam.extension.step1.description',

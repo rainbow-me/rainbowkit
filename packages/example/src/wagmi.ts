@@ -55,10 +55,10 @@ import {
   uniswapWallet,
   valoraWallet,
   walletConnectWallet,
+  wigwamWallet,
   xdefiWallet,
   zealWallet,
   zerionWallet,
-  wigwamWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   arbitrum,
@@ -235,10 +235,10 @@ export const config = getDefaultConfig({
         trustWallet,
         uniswapWallet,
         valoraWallet,
+        wigwamWallet,
         xdefiWallet,
         zealWallet,
         zerionWallet,
-        wigwamWallet,
       ],
     },
   ],
