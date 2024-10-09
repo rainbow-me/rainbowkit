@@ -1,5 +1,11 @@
 # with-create-react-app
 
+## 0.1.96
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+
 ## 0.1.95
 
 ### Patch Changes
