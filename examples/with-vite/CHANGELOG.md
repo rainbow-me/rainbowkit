@@ -1,5 +1,11 @@
 # with-vite
 
+## 0.0.85
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+
 ## 0.0.84
 
 ### Patch Changes

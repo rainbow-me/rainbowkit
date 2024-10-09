@@ -1,5 +1,11 @@
 # generated-test-app
 
+## 0.1.99
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+
 ## 0.1.98
 
 ### Patch Changes

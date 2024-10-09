@@ -1,5 +1,11 @@
 # example
 
+## 0.0.107
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+
 ## 0.0.106
 
 ### Patch Changes

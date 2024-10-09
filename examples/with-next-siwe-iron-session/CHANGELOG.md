@@ -1,5 +1,11 @@
 # with-next-siwe-iron-session
 
+## 0.0.79
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+
 ## 0.0.78
 
 ### Patch Changes
