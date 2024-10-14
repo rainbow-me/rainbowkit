@@ -31,7 +31,7 @@ jobs:
       - name: Check comment for spam
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SPAM_KEYWORDS: ${{ secrets.COMMENT_WATCHDOG_KEYWORDS }}
+          SPAM_KEYWORDS: ${{ vars.COMMENT_WATCHDOG_KEYWORDS }}
         run: |
           COMMENT_ID=$(jq -r '.comment.id' < "$GITHUB_EVENT_PATH")
           COMMENT_BODY=$(jq -r '.comment.body' < "$GITHUB_EVENT_PATH")
