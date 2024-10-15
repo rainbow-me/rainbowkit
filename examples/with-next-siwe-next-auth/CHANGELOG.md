@@ -8,7 +8,7 @@
 - Updated dependencies [f02bced]
 - Updated dependencies [f02bced]
   - @rainbow-me/rainbowkit@2.2.0
-  - @rainbow-me/rainbowkit-siwe-next-auth@1.0.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
 
 ## 0.0.79
 
