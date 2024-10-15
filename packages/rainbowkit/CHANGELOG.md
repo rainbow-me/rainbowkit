@@ -12,7 +12,7 @@
 
   Follow the appropriate steps below to migrate.
 
-  ** NextAuth Authentication **
+  **NextAuth Authentication**
 
   1. Remove `siwe` and `ethers`
 
@@ -87,7 +87,7 @@
 
   Reference the [with-next-siwe-next-auth](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) example for more guidance.
 
-  ** Custom Authentication **
+  **Custom Authentication**
 
   1. Remove `siwe` and `ethers`
 
