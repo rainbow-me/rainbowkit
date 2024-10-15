@@ -1,4 +1,5 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { publicActions } from 'viem';
 import {
   arbitrum,
   base,
@@ -21,3 +22,5 @@ export const config = getDefaultConfig({
   ],
   ssr: true,
 });
+
+export const publicClient = config.getClient().extend(publicActions);

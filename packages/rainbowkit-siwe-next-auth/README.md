@@ -4,25 +4,19 @@
 
 # rainbowkit-siwe-next-auth
 
-[Sign-In with Ethereum](https://login.xyz) and [NextAuth.js](https://next-auth.js.org) authentication adapter for [RainbowKit](https://www.rainbowkit.com).
-
-This package is designed to work with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+[Sign-In with Ethereum](https://login.xyz) and [NextAuth](https://next-auth.js.org) authentication adapter for [RainbowKit](https://www.rainbowkit.com).
 
 ## Usage
 
-### Set up Sign-In with Ethereum and NextAuth.js
-
-If you haven't already, first set up your [Next.js](https://nextjs.org) project with the [official Sign-In with Ethereum boilerplate for NextAuth.js.](https://docs.login.xyz/integrations/nextauth.js)
+### Set up Sign-In with Ethereum and NextAuth
 
 ### Install
 
-Install the `@rainbow-me/rainbowkit-siwe-next-auth` package and its peer dependency, [ethers](https://docs.ethers.org/v5/).
+Install the `@rainbow-me/rainbowkit-siwe-next-auth` package.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth siwe@^2 ethers@^5
+npm install @rainbow-me/rainbowkit-siwe-next-auth
 ```
-
-> Note: `siwe` requires the [ethers](https://docs.ethers.org/v5/) peer dependency, while [wagmi](https://wagmi.sh/) now relies on the alternative [viem](https://viem.sh).
 
 ### Set up the provider
 
@@ -66,7 +60,7 @@ With `RainbowKitSiweNextAuthProvider` in place, your users will now be prompted 
 
 ### Customize the SIWE message options
 
-You can customize the [SIWE message options](https://github.com/spruceid/siwe/blob/v1.1.6/packages/siwe/lib/client.ts#L29) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
+You can customize the [SIWE message options](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) by passing a function to the `getSiweMessageOptions` prop on `RainbowKitSiweNextAuthProvider`.
 
 This function will be called whenever a new message is created. Options returned from this function will be merged with the defaults.
 
@@ -133,7 +127,7 @@ export default function AuthenticatedPage({ address }: AuthenticatedPageProps) {
 For more information about managing the session, you can refer to the following documentation:
 
 - [Next.js authentication guide](https://nextjs.org/docs/authentication)
-- [NextAuth.js documentation](https://next-auth.js.org)
+- [NextAuth documentation](https://next-auth.js.org)
 
 ## Contributing
 

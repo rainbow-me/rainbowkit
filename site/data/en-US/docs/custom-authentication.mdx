@@ -7,17 +7,17 @@ description: Connect to your own authentication back-end
 
 ## Connect to your own authentication back-end
 
-While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth.js,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauthjs) you can also integrate with custom back-ends and message formats.
+While RainbowKit provides [first-class support for Sign-In with Ethereum and NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) you can also integrate with custom back-ends and message formats.
 
 ### Creating a custom adapter
 
 First create an authentication adapter. This allows RainbowKit to create/prepare messages and communicate with your back-end.
 
-As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some [custom API endpoints.](https://wagmi.sh/examples/sign-in-with-ethereum)
+As an example, we could make an authentication adapter that lets us use [Sign-In with Ethereum](https://login.xyz) against some custom API endpoints, like [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
 import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
-import { SiweMessage } from 'siwe';
+import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
@@ -26,7 +26,7 @@ const authenticationAdapter = createAuthenticationAdapter({
   },
 
   createMessage: ({ nonce, address, chainId }) => {
-    return new SiweMessage({
+    return createSiweMessage({
       domain: window.location.host,
       address,
       statement: 'Sign in with Ethereum to the app.',
@@ -35,10 +35,6 @@ const authenticationAdapter = createAuthenticationAdapter({
       chainId,
       nonce,
     });
-  },
-
-  getMessageBody: ({ message }) => {
-    return message.prepareMessage();
   },
 
   verify: async ({ message, signature }) => {

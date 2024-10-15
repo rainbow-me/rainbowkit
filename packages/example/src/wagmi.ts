@@ -59,6 +59,7 @@ import {
   zealWallet,
   zerionWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { publicActions } from 'viem';
 import {
   arbitrum,
   arbitrumSepolia,
@@ -242,3 +243,5 @@ export const config = getDefaultConfig({
   ],
   ssr: true,
 });
+
+export const publicClient = config.getClient().extend(publicActions);
