@@ -1,5 +1,16 @@
 # example
 
+## 0.0.107
+
+### Patch Changes
+
+- dc31926: Upgraded `wagmi` to `^2.12.17`
+- Updated dependencies [f02bced]
+- Updated dependencies [f02bced]
+  - @rainbow-me/rainbowkit@2.2.0
+  - @rainbow-me/rainbowkit-siwe-next-auth@0.5.0
+  - @rainbow-me/rainbow-button@0.2.17
+
 ## 0.0.106
 
 ### Patch Changes
