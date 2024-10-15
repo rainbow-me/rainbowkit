@@ -1,7 +1,3 @@
-// Code in this file is based on https://docs.login.xyz/integrations/nextauth.js
-// with added process.env.VERCEL_URL detection to support preview deployments
-// and with auth option logic extracted into a 'getAuthOptions' function so it
-// can be used to get the session server-side with 'getServerSession'
 import { IncomingMessage } from 'http';
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth, { NextAuthOptions } from 'next-auth';
