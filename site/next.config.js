@@ -16,6 +16,7 @@ const nextConfig = {
     locales: [
       'en-US',
       'ar',
+      'de',
       'es-419',
       'fr',
       'hi',

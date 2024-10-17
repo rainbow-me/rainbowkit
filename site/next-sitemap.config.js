@@ -7,6 +7,8 @@ module.exports = {
     '/ds',
     '/ar',
     '/ar/*',
+    '/de',
+    '/de/*',
     '/es-419',
     '/es-419/*',
     '/fr',
@@ -46,6 +48,10 @@ module.exports = {
     {
       href: 'https://rainbowkit.com/ar/',
       hreflang: 'ar',
+    },
+    {
+      href: 'https://rainbowkit.com/de/',
+      hreflang: 'de',
     },
     {
       href: 'https://rainbowkit.com/es-419/',

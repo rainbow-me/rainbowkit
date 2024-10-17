@@ -9,6 +9,7 @@ module.exports = {
     defaultLocale: 'en-US',
     locales: [
       'ar-AR',
+      'de-DE',
       'en-US',
       'es-419',
       'fr-FR',

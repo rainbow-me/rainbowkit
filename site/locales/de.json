@@ -1,0 +1,54 @@
+{
+  "landing": {
+    "headline": "Der beste Weg, eine Wallet zu verbinden",
+    "subheadline": "Für alle gestaltet. Für Entwickler gebaut.",
+    "cta": "Dokumentation ansehen",
+    "adopters": "Die angesagtesten Web3-Teams nutzen RainbowKit, um ihre Produkte zu verbessern, ihre Nutzer zu begeistern und Zeit bei der Entwicklung zu sparen.",
+    "playground": {
+      "headline": "Probieren Sie RainbowKit aus",
+      "subheadline": "Gestalten Sie Ihr Ethereum-Login-Erlebnis auf Ihrer Website ganz nach Ihrem Geschmack. RainbowKit ermöglicht es Ihnen, Farben, Randradien, Wallet-Anbieter und vieles mehr vollständig anzupassen – alles über eine benutzerfreundliche API. Erleben Sie es unten!",
+      "modal": "Modal",
+      "mode": "Modus",
+      "accent": "Akzent",
+      "radius": "Radius",
+      "large": "L",
+      "medium": "M",
+      "small": "S"
+    },
+    "developers": {
+      "headline": "Rainbow 🤝 Entwickler",
+      "subheadline": "RainbowKit bietet Entwicklern eine schnelle, einfache und hoch anpassbare Möglichkeit, ein großartiges Wallet-Erlebnis in ihre Anwendung zu integrieren. Wir übernehmen die schwierigen Aufgaben, sodass sich Entwickler und Teams auf den Aufbau erstaunlicher Produkte und Communities für ihre Nutzer konzentrieren können.",
+      "installation": "Einfache Installation",
+      "themes": "Eingebaute Themes",
+      "darkmode": "Heller und Dunkler Modus",
+      "appstore": "Integration von App Store und Google Play",
+      "custom_themes": "Benutzerdefinierte Themes",
+      "custom_wallet_list": "Benutzerdefinierte Wallet-Liste",
+      "custom_chain": "Benutzerdefinierte Chains",
+      "custom_connect": "Benutzerdefinierte Verbindungs-Schaltfläche"
+    },
+    "madeby": {
+      "headline": "Hergestellt mit ❤️ von Ihren Freunden bei",
+      "subheadline": "Die Entwicklung von RainbowKit war ein unglaublich spaßiges Unterfangen, an dem viele Leute bei Rainbow und unsere Freunde bei anderen Unternehmen beteiligt sind. Wir sind ständig bemüht, RainbowKit zu verbessern, also lassen Sie uns bitte wissen, wie wir uns verbessern können.",
+      "twitter_cta": "Folgen Sie uns auf Twitter",
+      "feedback_cta": "Teilen Sie Ihr Feedback mit uns"
+    },
+    "footer": {
+      "mediakit": "Medienkit",
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzrichtlinie"
+    },
+    "meta": {
+      "description": "Der beste Weg, eine Wallet zu verbinden 🌈"
+    }
+  },
+  "docs": {
+    "sidebar": {
+      "section": {
+        "overview": "Übersicht",
+        "getting_started": "Erste Schritte",
+        "advanced": "Erweitert"
+      }
+    }
+  }
+}
