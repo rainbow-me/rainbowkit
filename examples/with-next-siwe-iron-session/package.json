@@ -1,7 +1,7 @@
 {
   "name": "with-next-siwe-iron-session",
   "private": true,
-  "version": "0.0.79",
+  "version": "0.0.80",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

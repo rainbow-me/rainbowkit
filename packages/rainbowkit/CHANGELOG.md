@@ -1,5 +1,11 @@
 # @rainbow-me/rainbowkit
 
+## 2.2.1
+
+### Patch Changes
+
+- 5b8e146: Added `de-DE` and `de` locale support for the German language.
+
 ## 2.2.0
 
 ### Minor Changes
