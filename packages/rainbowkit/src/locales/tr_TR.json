@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "Wigwam uzantısını yükleyin",
-          "description": "Cüzdanınıza daha hızlı erişim için Wigwam'yu görev çubuğunuza sabitlemenizi öneririz."
-        },
-        "step2": {
-          "title": "Bir Cüzdan Oluşturun veya İçe Aktarın",
-          "description": "Cüzdanınızı güvenli bir yöntemle yedeklediğinizden emin olun. Gizli ifadenizi hiç kimseyle paylaşmayın."
-        },
-        "step3": {
-          "title": "Tarayıcınızı yenileyin",
-          "description": "Cüzdanınızı ayarladıktan sonra, tarayıcıyı yenilemek ve eklentiyi yüklemek için aşağıya tıklayın."
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {

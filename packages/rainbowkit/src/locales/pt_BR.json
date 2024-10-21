@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "Instale a extensão Wigwam",
-          "description": "Recomendamos fixar o Wigwam na sua barra de tarefas para um acesso mais rápido à sua carteira."
-        },
-        "step2": {
-          "title": "Criar ou Importar uma Carteira",
-          "description": "Certifique-se de fazer o backup da sua carteira usando um método seguro. Nunca compartilhe sua frase secreta com ninguém."
-        },
-        "step3": {
-          "title": "Atualize seu navegador",
-          "description": "Depois de configurar sua carteira, clique abaixo para atualizar o navegador e carregar a extensão."
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {

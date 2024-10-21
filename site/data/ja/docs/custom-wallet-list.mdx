@@ -9,30 +9,30 @@ description: ウォレットリストのカスタマイズ
 
 '@rainbow-me/rainbowkit/wallets'から個々のウォレットをインポートし、その必要なコネクターを持つウォレットのリストを作成するために`connectorsForWallets`関数を使うことができます。 これにより、どのウォレットを表示するか、そしてどの順序で表示するかを完全に制御することができます。
 
-例えば、Rainbowと一般的なフォールバックウォレットのみを表示するように選択できます。
+例えば、Rainbow と一般的なフォールバックウォレットのみを表示するように選択できます。
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   rainbowWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Recommended',
+      groupName: "Recommended",
       wallets: [rainbowWallet, walletConnectWallet],
     },
   ],
   {
-    appName: 'My RainbowKit App',
-    projectId: 'YOUR_PROJECT_ID',
-  }
+    appName: "My RainbowKit App",
+    projectId: "YOUR_PROJECT_ID",
+  },
 );
 ```
 
-次に、コネクタをWagmiの`createConfig`に渡すことができます。
+次に、コネクタを Wagmi の`createConfig`に渡すことができます。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -68,12 +68,12 @@ const App = () => (
 
 ##### WalletConnect
 
-これは、リストの他のウォレットで提供されていないWalletConnectベースのウォレット用に設計されたフォールバックウォレットオプションです。
+これは、リストの他のウォレットで提供されていない WalletConnect ベースのウォレット用に設計されたフォールバックウォレットオプションです。
 
-**全てのWalletConnectベースのウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
+**全ての WalletConnect ベースのウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
 
 ```tsx
-import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+import { walletConnectWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 ##### インジェクトウォレット
@@ -83,15 +83,15 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 **全てのインジェクトウォレットがサポートされるように、常にこのウォレットをリストに含めることをお勧めします。**
 
 ```tsx
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 ##### セーフウォレット
 
-Safe AppsをサポートするdAppsのために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
+Safe Apps をサポートする dApps のために、ユーザーがセーフボールトまたはマルチシグに簡単に接続できるようにするには、自動接続のための`safeWallet`オプションを含めてください。 セーフオプションはセーフウォレットブラウザ環境でのみ表示されます。
 
 ```tsx
-import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 ### 特定のウォレット
@@ -101,300 +101,294 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 #### 1inch Wallet
 
 ```tsx
-import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneInchWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Argent
 
 ```tsx
-import { argentWallet } from '@rainbow-me/rainbowkit/wallets';
+import { argentWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Binance Web3 Wallet
 
 ```tsx
-import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+import { binanceWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bitget
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitgetWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bifrost Wallet
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bifrostWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bitski
 
 ```tsx
-import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitskiWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bitverse
 
 ```tsx
-import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitverseWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bloom Wallet
 
 ```tsx
-import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bloomWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Brave Wallet
 
 ```tsx
-import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+import { braveWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Bybit Wallet
 
 ```tsx
-import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bybitWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Coinbase
 
-このウォレットコネクタは、Coinbase Walletアプリと拡張機能、およびウェブ上でのCoinbase Smart Walletの両方をサポートします。
+このウォレットコネクタは、Coinbase Wallet アプリと拡張機能、およびウェブ上での Coinbase Smart Wallet の両方をサポートします。
 
-Smart Walletがユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
+Smart Wallet がユーザーに対して有効で利用可能かどうかを制御するために、`preference`引数が使用可能です。 [ここ](https://www.smartwallet.dev/sdk/makeWeb3Provider#parameters)にプリファレンスに基づく振る舞いが記述されています。
 
-Smart Walletは、追加のアップグレードなしに、6月初旬からデフォルトで`all`と共に有効になります。
+Smart Wallet は、追加のアップグレードなしに、6 月初旬からデフォルトで`all`と共に有効になります。
 
-開発者は今日、`sepolia`および`baseSepolia`チェーンで`smartWalletOnly`を設定し、次のように`coinbaseWallet`をウォレットリストに含めることでSmart Walletをテストできます:
+開発者は今日、`sepolia`および`baseSepolia`チェーンで`smartWalletOnly`を設定し、次のように`coinbaseWallet`をウォレットリストに含めることで Smart Wallet をテストできます:
 
 ```tsx
-import { coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
+import { coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
 
 // Enable Coinbase Smart Wallet for testing
-coinbaseWallet.preference = 'smartWalletOnly';
+coinbaseWallet.preference = "smartWalletOnly";
 ```
 
 #### Coin98 Wallet
 
 ```tsx
-import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+import { coin98Wallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Compass Wallet
 
 ```tsx
-import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
+import { compassWallet } from "@rainbow-me/rainbowkit/compassWallet";
 ```
 
 #### Core
 
 ```tsx
-import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+import { coreWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Dawn Wallet
 
 ```tsx
-import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+import { dawnWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Enkrypt Wallet
 
 ```tsx
-import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+import { enkryptWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### FoxWallet
 
 ```tsx
-import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { foxWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Frame Wallet
 
 ```tsx
-import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frameWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Frontier Wallet
 
 ```tsx
-import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frontierWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Gate Wallet
 
 ```tsx
-import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+import { gateWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### imToken
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { imTokenWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### ioPay Wallet
 
 ```tsx
-import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
+import { iopayWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Kaia Wallet
 
 ```tsx
-import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaiaWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Kaikas
 
 ```tsx
-import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaikasWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Kraken Wallet
 
 ```tsx
-import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { krakenWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Kresus Wallet
 
 ```tsx
-import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kresusWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Ledger Live
 
 ```tsx
-import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ledgerWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Magic Eden Wallet
 
 ```tsx
-import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { magicEdenWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### MEW Wallet
 
 ```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+import { mewWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### MetaMask
 
 ```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+import { metaMaskWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### OKX Wallet
 
 ```tsx
-import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { okxWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Omni
 
 ```tsx
-import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+import { omniWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### OneKey
 
 ```tsx
-import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneKeyWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Phantom
 
 ```tsx
-import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { phantomWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Rabby Wallet
 
 ```tsx
-import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rabbyWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Rainbow
 
 ```tsx
-import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rainbowWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Ramper Wallet
 
 ```tsx
-import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ramperWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Ronin Wallet
 
 ```tsx
-import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+import { roninWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Safeheron
 
 ```tsx
-import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeheronWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Taho
 
 ```tsx
-import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tahoWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Talisman
 
 ```tsx
-import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+import { talismanWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Tokenary
 
 ```tsx
-import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenaryWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### TokenPocket
 
 ```tsx
-import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenPocketWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Trust Wallet
 
 ```tsx
-import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+import { trustWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Uniswap Wallet
 
 ```tsx
-import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+import { uniswapWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### XDEFI Wallet
 
 ```tsx
-import { xdefiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { xdefiWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 #### Zerion
 
 ```tsx
-import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
-```
-
-#### Wigwam
-
-```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
 ```
 
 ### 例
@@ -403,41 +397,41 @@ import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
 
 さまざまなウォレットをさまざまな順序で表示するいくつかの例をここに示します。
 
-Metamaskと一般的なfallbackウォレットを並べて表示します。
+Metamask と一般的な fallback ウォレットを並べて表示します。
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   metaMaskWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Recommended',
+      groupName: "Recommended",
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" },
 );
 ```
 
-Rainbow、MetaMask、Coinbaseおよび一般的なフォールバックウォレットを表示します。
+Rainbow、MetaMask、Coinbase および一般的なフォールバックウォレットを表示します。
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Suggested',
+      groupName: "Suggested",
       wallets: [
         rainbowWallet,
         metaMaskWallet,
@@ -446,38 +440,38 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" },
 );
 ```
 
-> リマインダー：`wallets` 配列の順序は、UIでウォレットが表示される順序を定義します。
+> リマインダー：`wallets` 配列の順序は、UI でウォレットが表示される順序を定義します。
 
 #### 複数のグループ
 
 `groupName`キーを使用して、異なるウォレットグループに名前をつけることができます。 これは、推奨するウォレットやその他の可能性のあるウォレットをユーザーに伝えたい場合に便利です。
 
-RainbowとMetaMaskを推奨しますが、Coinbaseと一般的なフォールバックウォレットも提供します。
+Rainbow と MetaMask を推奨しますが、Coinbase と一般的なフォールバックウォレットも提供します。
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets(
   [
     {
-      groupName: 'Recommended',
+      groupName: "Recommended",
       wallets: [rainbowWallet, metaMaskWallet],
     },
     {
-      groupName: 'Others',
+      groupName: "Others",
       wallets: [coinbaseWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: "RainbowKit App", projectId: "YOUR_PROJECT_ID" },
 );
 ```

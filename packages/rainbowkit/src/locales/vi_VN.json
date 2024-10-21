@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "Cài đặt tiện ích mở rộng Wigwam",
-          "description": "Chúng tôi khuyên bạn nên ghim Wigwam vào thanh tác vụ để truy cập ví nhanh hơn."
-        },
-        "step2": {
-          "title": "Tạo hoặc Nhập ví",
-          "description": "Hãy chắc chắn rằng bạn đã sao lưu ví của mình bằng phương pháp an toàn. Đừng bao giờ chia sẻ cụm từ bí mật của bạn với bất kỳ ai."
-        },
-        "step3": {
-          "title": "Làm mới trình duyệt của bạn",
-          "description": "Một khi bạn thiết lập xong ví của mình, nhấp vào dưới đây để làm mới trình duyệt và tải lại tiện ích mở rộng."
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {

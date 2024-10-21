@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "Instala la extensión de Wigwam",
-          "description": "Recomendamos anclar Wigwam a tu barra de tareas para un acceso más rápido a tu billetera."
-        },
-        "step2": {
-          "title": "Crea o Importa una Billetera",
-          "description": "Asegúrate de respaldar tu billetera utilizando un método seguro. Nunca compartas tu frase secreta con nadie."
-        },
-        "step3": {
-          "title": "Refresca tu navegador",
-          "description": "Una vez que configures tu billetera, haz clic abajo para refrescar el navegador y cargar la extensión."
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {

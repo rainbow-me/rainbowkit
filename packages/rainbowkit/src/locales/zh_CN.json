@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "安装Wigwam扩展程序",
-          "description": "我们建议将Wigwam固定在您的任务栏上，以便更快地访问您的钱包。"
-        },
-        "step2": {
-          "title": "创建或导入钱包",
-          "description": "确保使用安全的方法备份您的钱包。切勿与任何人分享您的秘密短语。"
-        },
-        "step3": {
-          "title": "刷新您的浏览器",
-          "description": "设置好您的钱包后，点击下方以刷新浏览器并加载扩展程序。"
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {

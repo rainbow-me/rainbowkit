@@ -1064,22 +1064,6 @@
         }
       }
     },
-    "wigwam": {
-      "extension": {
-        "step1": {
-          "title": "Instal ekstensi Wigwam",
-          "description": "Kami merekomendasikan pengepinan Wigwam ke taskbar Anda untuk akses yang lebih cepat ke dompet Anda."
-        },
-        "step2": {
-          "title": "Buat atau Impor Dompet",
-          "description": "Pastikan untuk mencadangkan dompet Anda dengan metode yang aman. Jangan pernah berbagi frasa rahasia Anda dengan siapa pun."
-        },
-        "step3": {
-          "title": "Segarkan browser Anda",
-          "description": "Setelah Anda menyiapkan dompet Anda, klik di bawah ini untuk menyegarkan browser dan memuat ekstensi."
-        }
-      }
-    },
     "talisman": {
       "extension": {
         "step1": {
