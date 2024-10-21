@@ -1,0 +1,44 @@
+---
+title: WalletButton
+description: Verwenden und Anpassen des WalletButton
+---
+
+# WalletButton
+
+> Hinweis: Der `WalletButton` basiert derzeit auf dem Wallet-Standard EIP-1193, wird aber in naher Zukunft EIP-6963 unterstützen.
+
+Die neue `WalletButton`-Komponente hilft dApps mit benutzerdefinierten Wallet-Listenimplementierungen, RainbowKit und alle seine wartungsfreien Vorteile zu übernehmen.
+
+```tsx
+import { WalletButton } from '@rainbow-me/rainbowkit';
+
+<WalletButton wallet="rainbow" />
+<WalletButton wallet="metamask" />
+<WalletButton wallet="coinbase" />
+```
+
+Wie der `ConnectButton` ist die `WalletButton.Custom`-Komponente für benutzerdefinierte Implementierungen und Stilistik verfügbar.
+
+```tsx
+<WalletButton.Custom wallet="rainbow">
+  {({ ready, connect }) => {
+    return (
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={connect}
+      >
+        Connect Rainbow
+      </button>
+    );
+  }}
+</WalletButton.Custom>
+```
+
+Die meisten dApps sind am besten mit dem [ConnectButton](https://www.rainbowkit.com/docs/connect-button) bedient. Weitere Informationen zur Einführung und zu Anwendungsfällen von `WalletButton` finden Sie in den [Dokumentationen](https://www.rainbowkit.com/docs/wallet-button).
+
+#### Demo
+
+Drücken Sie die untenstehenden Tasten, um zu sehen, wie dieser Einstiegspunkt von RainbowKit aussieht.
+
+<WalletButtonDemo />
