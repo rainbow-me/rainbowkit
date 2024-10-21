@@ -28,7 +28,7 @@ const connectors = connectorsForWallets(
   {
     appName: 'My RainbowKit App',
     projectId: 'YOUR_PROJECT_ID',
-  },
+  }
 );
 ```
 
@@ -397,7 +397,7 @@ import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
 
 以下是一些顯示不同錢包、不同順序的例子。
 
-顯示 MetaMask 及通用的後備錢包。
+顯示MetaMask及通用的後備錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -417,7 +417,7 @@ const connectors = connectorsForWallets(
 );
 ```
 
-顯示 Rainbow、MetaMask 和 Coinbase 以及通用的後備錢包。
+顯示Rainbow、MetaMask和Coinbase以及通用的後備錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
@@ -444,13 +444,13 @@ const connectors = connectorsForWallets(
 );
 ```
 
-> 提醒：`wallets`數組的順序定義了在 UI 中顯示錢包的順序。
+> 提醒：`wallets`數組的順序定義了在UI中顯示錢包的順序。
 
 #### 多個組別
 
 您可以使用`groupName`鍵來為不同的錢包組命名。 這在您希望向用戶傳達推薦的錢包以及其他可能的錢包時非常有用。
 
-推薦 Rainbow 和 MetaMask，但也提供 Coinbase 及通用的後備錢包。
+推薦Rainbow和MetaMask，但也提供Coinbase及通用的後備錢包。
 
 ```tsx
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
