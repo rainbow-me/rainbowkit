@@ -1148,6 +1148,23 @@
       }
     },
 
+    "wigwam": {
+      "extension": {
+        "step1": {
+          "title": "Install the Wigwam extension",
+          "description": "We recommend pinning Wigwam to your taskbar for quicker access to your wallet."
+        },
+        "step2": {
+          "title": "Create or Import a Wallet",
+          "description": "Be sure to back up your wallet using a secure method. Never share your secret phrase with anyone."
+        },
+        "step3": {
+          "title": "Refresh your browser",
+          "description": "Once you set up your wallet, click below to refresh the browser and load up the extension."
+        }
+      }
+    },
+
     "talisman": {
       "extension": {
         "step1": {
